@@ -1,5 +1,12 @@
 # 接入安全隐私框架
 
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @feibuzhide-->
+<!--Designer: @gcw_AzEdve8G-->
+<!--Tester: @weixin_48873925-->
+<!--Adviser: @zengyawen-->
+
 安全隐私接入框架允许两种接入方式：ExtensionAbility和UIAbility方式接入。
 
 应用接入后，将按照bundleName的字母顺序在隐私中心展示。
@@ -37,7 +44,7 @@
 
 ## 修改应用配置文件
 
-各模块的module.json5配置文件中，承载了该模块UIAbility组件和ExtensionAbility组件的描述信息、应用运行过程中所需的权限等信息。接入安全隐私框架需将一下相关字段配置到module.json5中。
+各模块的module.json5配置文件中，承载了该模块UIAbility组件和ExtensionAbility组件的描述信息、应用运行过程中所需的权限等信息。接入安全隐私框架需将以下相关字段配置到module.json5中。
 
 ### 配置action
 

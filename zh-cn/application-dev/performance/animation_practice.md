@@ -1,7 +1,15 @@
 # 应用程序动效能力实践
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 本文介绍如何在开发应用程序时合理地使用动效，来获得更好的性能。主要通过减少布局和属性的变更频次，避免冗余刷新，从而降低性能开销。
+
 基于上述考虑，提供四种较为推荐的动效实现方式：
 
 - 组件转场动画使用transition。
@@ -14,7 +22,7 @@
 ### 组件转场动画使用transition
 在实现组件出现和消失的动画效果时，通常有两种方式：
 
-- 使用组件动画（animateTo），并在在动画结束回调中增加逻辑处理。
+- 使用组件动画（animateTo），并在动画结束回调中增加逻辑处理。
 - 直接使用转场动画（transition）。
 
 animateTo需要在动画前后做两次属性更新，而transition只需做一次条件改变更新，性能更好。此外，使用transition，可以避免在结束回调中做复杂逻辑处理，开发实现更容易。因此，推荐优先使用transition。
@@ -176,6 +184,7 @@ struct MyComponent {
 
 ### 动画参数相同时使用同一个animateTo
 每次animateTo都需要进行动画前后的对比，因此，减少animateTo的使用次数（例如使用同一个animateTo设置组件属性），可以减少该组件更新的次数，从而获得更好的性能。
+
 如果各个属性要做动画的参数相同，推荐将它们放到同一个动画闭包中执行。
 
 反例：相同动画参数的状态变量更新放在不同的动画闭包中。
@@ -252,6 +261,7 @@ struct MyComponent {
 
 ### 多次animateTo时统一更新状态变量
 animateTo会将执行动画闭包前后的状态进行对比，对差异部分进行动画。为了对比，会在执行animateTo的动画闭包之前，将所有变更的状态变量和脏节点都刷新。
+
 如果多个animateTo之间存在状态更新，会导致执行下一个animateTo之前又存在需要更新的脏节点，可能造成冗余更新。
 
 反例：多个animateTo之间更新状态变量。
@@ -296,6 +306,7 @@ struct MyComponent {
 ```
 
 在第一个animateTo前，重新设置了textWidth属性，所以Row组件需要更新一次。在第一个animateTo的动画闭包中，改变了textWidth属性，所以Row组件又需要更新一次并对比产生宽高动画。第二个animateTo前，重新设置了color属性，所以Row组件又需要更新一次。在第二个animateTo的动画闭包中，改变了color属性，所以Row组件再更新一次并产生了背景色动画。Row组件总共更新了4次属性。
+
 此外还更改了与动画无关的状态textHeight，如果不需要改变无关状态，则不应改变造成冗余更新。
 
 正例：统一更新状态变量。

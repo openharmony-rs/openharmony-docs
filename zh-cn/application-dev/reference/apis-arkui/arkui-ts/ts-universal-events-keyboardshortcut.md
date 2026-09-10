@@ -34,7 +34,7 @@ keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?
 | ----- | ------------------------------------- | ---- | ---------------------------------------- |
 | value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | 是 | 热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10)。<br>空字符串意为取消快捷键绑定；绑定了多个快捷键的组件不能解除绑定快捷键。<br>当value有多个字符时，不绑定组合键，先前绑定的组合键仍然有效。<br> |
 | keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | 是 | 热键组合。<br>仅当value为[FunctionKey](ts-appendix-enums.md#functionkey10)的情况下keys的值可以为空。<br>当keys有重复的控制键时，不绑定组合键，先前绑定的组合键仍然有效。<br> |
-| action  | () => void    | 否    | 组合快捷键触发成功后的自定义事件回调。<br>                               |
+| action  | () => void    | 否    | 组合快捷键触发成功后的自定义事件回调。若未设置该参数，则组合快捷键行为与click行为一致。<br>                               |
 
 **返回值：**
 

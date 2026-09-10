@@ -89,7 +89,7 @@ LazyForEach懒加载API提供了cachedCount属性，用于配置可缓存列表�
 
 ### 实现示例
 
-在介绍List、Grid等容器组件下使用LazyForEach懒加载的示例代码之前，首先针对前面介绍的第三点使用场景，给出以下反例来进行说明，帮助开发者更好的理解和使用LazyForEach。
+在介绍List、Grid等容器组件下使用LazyForEach懒加载的示例代码之前，首先针对前面介绍的第三点使用场景，给出以下反例来进行说明，帮助开发者更好地理解和使用LazyForEach。
 
 **反例：在使用LazyForEach进行组件复用的key生成器函数里，使用stringify**
 
@@ -222,7 +222,7 @@ struct ReusableKeyGeneratorUseStringify {
 在反例中，在使用LazyForEach进行组件复用的key生成器函数里使用了stringify。在实际复杂的业务场景中，懒加载的item数据较大，item数量较多，使用stringify会对整个item对象进行序列化操作最终把item转换成字符串，需要消耗大量的时间和计算资源，从而导致页面性能降低。因此，为了减少页面渲染耗时，提升页面性能，应避免在LazyForEach组件复用的key生成器函数里使用stringify。建议使用简洁的短字符串，如使用item.id，这里假设每个item都有一个唯一的id属性。
 
 
-以上使用场景的反例介绍是为了帮忙开发者更好的理解和正确使用LazyForEach懒加载。下面将给出正例的基本写法，在List、Grid等容器组件下使用LazyForEach懒加载的示例代码如下：
+以上使用场景的反例介绍是为了帮助开发者更好地理解和正确使用LazyForEach懒加载。下面将给出正例的基本写法，在List、Grid等容器组件下使用LazyForEach懒加载的示例代码如下：
 
 ```ts
 // LazyForEach要遍历的数据源，为实现接口IDataSource的实例   
@@ -257,33 +257,33 @@ BasicDataSource是一个抽象类，不同的具体列表页面的数据源需�
 
 ```ts
 class ChatListData extends BasicDataSource {  
-    /**  
-    * 聊天列表项数组  
-    */  
+    /**
+     * 聊天列表项数组
+     */
     private chatList: Array<ChatModel> = [];
-    /**  
-    * 数据源的数据总量  
-    */  
+    /**
+     * 数据源的数据总量
+     */
     public totalCount(): number {  
         return this.chatList.length;
     }  
 
-    /**  
-    * 返回指定索引位置的数据  
-    */  
+    /**
+     * 返回指定索引位置的数据
+     */
     public getData(index: number): ChatModel {  
         return this.chatList[index];
     }  
-    /**  
-    * 指定位置添加一条聊天列表数据  
-    */  
+    /**
+     * 指定位置添加一条聊天列表数据
+     */
     public addData(index: number, data: ChatModel): void {  
         this.chatList.splice(index, 0, data);  
         this.notifyDataAdd(index);  
     }  
-    /**  
-    * 添加一条聊天列表数据  
-    */  
+    /**
+     * 添加一条聊天列表数据
+     */
     public pushData(data: ChatModel): void {  
         this.chatList.push(data);  
         this.notifyDataAdd(this.chatList.length - 1);  
@@ -330,9 +330,9 @@ build() {
 
 在聊天示例程序中，通过模拟10000条聊天数据，来对比测试在开启、关闭懒加载时的性能。测试项包含页面启动完成时间和列表滑动时帧率。
 
-使用ForEach一次性加载时，页面启动完成时间为3530ms；开懒加载时，页面启动完成时间为752ms。开启懒加载后，启动完成时间缩短为开启前的21.3%。
+使用ForEach一次性加载时，页面启动完成时间为3530ms；开启懒加载时，页面启动完成时间为752ms。开启懒加载后，启动完成时间缩短为开启前的21.3%。
 
-使用ForEach一次性加载时，丢帧率为26.64%；开懒加载时，丢帧率降低到2.33%。
+使用ForEach一次性加载时，丢帧率为26.64%；开启懒加载时，丢帧率降低到2.33%。
 
 ![](figures/list-perf-comparison.png)
 
@@ -391,7 +391,7 @@ build() {
 
 ![](figures/list-perf-loss-rate.png)
 
-应该如何根据实际场景，设置缓存数量的值呢？ 例如列表项中需要显示网络数据，而网络数据加载较慢，为了提升列表信息的浏览效率和浏览体验，可以适当的多设置一些缓存数量；如果列表中需要加载一些大图或者视频等，这些数据占用的内存较大，为了减少内存占用，需要适当减少缓存数量的设置；因此，在实际场景中，需要不断尝试验证，设置适当的缓存数量，来达到体验和内存的平衡。
+应该如何根据实际场景，设置缓存数量的值呢？ 例如列表项中需要显示网络数据，而网络数据加载较慢，为了提升列表信息的浏览效率和浏览体验，可以适当地多设置一些缓存数量；如果列表中需要加载一些大图或者视频等，这些数据占用的内存较大，为了减少内存占用，需要适当减少缓存数量的设置；因此，在实际场景中，需要不断尝试验证，设置适当的缓存数量，来达到体验和内存的平衡。
 
 ## 组件复用
 
@@ -457,8 +457,8 @@ build() {
 
 ```ts
 /**
-  * 可复用且优化布局的聊天页面组件
-  */
+ * 可复用且优化布局的聊天页面组件
+ */
 @Reusable
 @Component
 struct ReusableOptLayoutChatView {
@@ -634,7 +634,7 @@ build() {
 
 ![](figures/list-perf-flat-layout.png)
 
-系统还提供了更多的扁平化布局方案，例如绝对定位、自定义布局、Grid、GridRow等，适用更多不同的场景，具体的使用方法可以参考[官方文档](../ui/Readme-CN.md)。
+系统还提供了更多的扁平化布局方案，例如绝对定位、自定义布局、Grid、GridRow等，适用更多不同的场景，具体的使用方法可以参考[布局概述](../ui/arkts-layout-development-overview.md)。
 
 ## 总结
 

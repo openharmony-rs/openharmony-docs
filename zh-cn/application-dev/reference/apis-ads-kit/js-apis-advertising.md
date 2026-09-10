@@ -47,7 +47,7 @@ showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.UIAbilityC
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 | 21800004 | Failed to display the ad. | 
 
@@ -101,8 +101,8 @@ getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise&lt;
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -146,8 +146,8 @@ parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context:
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported. | 
 | 21800001 | System internal error. | 
 | 21800005 | Failed to parse the ad response. | 
 
@@ -202,7 +202,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -259,7 +259,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -315,7 +315,7 @@ deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boo
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -409,8 +409,8 @@ loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener)
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported.<br>适用版本：12+ | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported.<br>适用版本：12+ | 
 | 21800001 | System internal error. | 
 | 21800003 | Failed to load the ad request. | 
 
@@ -470,8 +470,8 @@ loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported.<br>适用版本：12+ | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported.<br>适用版本：12+ | 
 | 21800001 | System internal error. | 
 | 21800003 | Failed to load the ad request. | 
 

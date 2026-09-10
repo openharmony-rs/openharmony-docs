@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,6 +13,12 @@
 > - 该组件从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
+
+## 导入模块
+
+```ts
+import { DynamicLayout } from '@kit.ArkUI';
+```
 
 ## 子组件
 
@@ -66,7 +72,7 @@ DynamicLayout(algorithm: LayoutAlgorithm)
 从API version 24开始，新增onMeasure、onLayout。
 
 ```typescript
-import { DynamicLayout, DynamicLayoutAttribute, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position } from '@kit.ArkUI';
+import { DynamicLayout, CustomLayoutAlgorithm, LayoutAlgorithm, FrameNode, LayoutConstraint, Position } from '@kit.ArkUI';
 
 // 瀑布流布局算法
 class WaterfallLayout extends CustomLayoutAlgorithm {
@@ -243,7 +249,7 @@ interface Product {
 从API version 24开始，新增RowLayoutAlgorithm、ColumnLayoutAlgorithm、StackLayoutAlgorithm、GridLayoutAlgorithm。
 
 ```typescript
-import { DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, ColumnLayoutAlgorithm, StackLayoutAlgorithm, GridLayoutAlgorithm, LayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
+import { DynamicLayout, RowLayoutAlgorithm, ColumnLayoutAlgorithm, StackLayoutAlgorithm, GridLayoutAlgorithm, LayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -359,7 +365,7 @@ struct LayoutSwitchExample {
 从API version 24开始，新增space、justifyContent属性。
 
 ```typescript
-import { DynamicLayout, DynamicLayoutAttribute, RowLayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
+import { DynamicLayout, RowLayoutAlgorithm, LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2

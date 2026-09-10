@@ -1,4 +1,4 @@
-# Cross-Device Agent Wake-Up and Message Transmission
+# Cross-Device Agent Wake-Up and Message Transmission (for System Applications Only)
 
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
@@ -6,7 +6,7 @@
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b05dcf4516f8cf4d9f7a7e45d9561a73d2ebee04 translatedAt=2026-07-22T01:43:43.702Z pushedAt=2026-07-22T03:38:51.278Z -->
+<!-- md-trans-meta sourceCommit=0a98ce16f37887e40e6b2d0e4ac5e2fbd6b63617 translatedAt=2026-08-10T01:27:08.010Z pushedAt=2026-08-10T02:20:57.978Z -->
 
 ## Overview
 

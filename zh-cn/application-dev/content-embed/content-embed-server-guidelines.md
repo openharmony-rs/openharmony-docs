@@ -14,7 +14,7 @@
 OE服务端应用使用OE Extension框架[content_embed_extension.h](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md)提供的接口，向客户端应用提供特定格式文档的嵌入与编辑能力。
 
 ## 约束限制
-在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[canIUse()](../reference/common/init.md#caniuse)接口查询指定的系统能力是否被支持。并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
+在使用接口前，需先确认设备具备SystemCapability.ContentEmbed.ObjectEditor系统能力，判断方式请参阅[canIUse()](../reference/common/syscap__ndk_8h.md#caniuse)接口查询指定的系统能力是否被支持。并申请ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION权限，配置方式请参阅[声明权限](../security/AccessToken/declare-permissions.md)。
 
 ## 接口说明
 
@@ -102,26 +102,19 @@ OE服务端应用使用OE Extension框架[content_embed_extension.h](../referenc
 - description：OE文档查询显示描述，要求采用该名称的资源索引，以支持多语言。
 
 ### 添加动态链接库
+在Native工程的src/main/cpp/CMakeLists.txt，添加如下链接库：
 
-CMakeLists.txt中添加以下lib。
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# piexlmap
-libpixelmap.so
-# ability
-libability_runtime.so
-# want
-libability_base_want.so
-# fileuri
-libohfileuri.so
-# libimage_source
-libimage_source.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+    libability_runtime.so
+    libability_base_want.so
+    libohfileuri.so
+    libimage_source.so
+)
 ```
 
 ### 导入头文件

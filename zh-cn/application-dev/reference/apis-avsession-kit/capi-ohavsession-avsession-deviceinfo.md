@@ -1,8 +1,8 @@
 # AVSession_DeviceInfo
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct AVSession_DeviceInfo AVSession_DeviceInfo
 
 ## 概述
 
-设备信息的结构体声明。该结构体用于存储设备信息及详细属性。
+设备信息的结构体声明。该结构体用于存储设备的详细属性。
 
 **起始版本：** 23
 

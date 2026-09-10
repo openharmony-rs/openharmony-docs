@@ -42,9 +42,11 @@
 - 预加载子组件的个数在[cachedCount](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#cachedcount8)属性中配置。
 
 Swiper共5页，当开发者设置了cachedCount属性为1且loop属性为false时，预加载的结果如下：
+
 ![loop=false](figures/swiper_loop_false.png)
 
 Swiper共5页，当开发者设置了cachedCount属性为1且loop属性为true时，预加载的结果如下：
+
 ![loop=true](figures/swiper_loop_true.png)
 
 - Swiper组件的子组件使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)动态加载和销毁组件。
@@ -165,8 +167,9 @@ struct SwiperExample {
 
 由于组件构建和布局计算需要一定时间，cachedCount也不是设置得越大越好，过大的cachedCount可能会导致应用性能降低。当前Swiper组件滑动离手后的动效时间大约是400ms，如果应用加载一个子组件的时间在100ms~200ms之间，为了在离手动效时间内完成组件的预加载，cachedCount属性建议设置为1或2，设置过大会导致主线程阻塞而产生卡顿。
 
-那么方案可以继续优化，在抛滑场景时，Swiper组件有一个[OnAnimationStart](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#事件)回调接口，切换动画开始时触发该回调。此时，主线程空闲，应用可以充分利用这段时间进行图片等资源的预加载，减少后续cachedCount范围内的节点预加载耗时；
-跟手滑动阶段不会触发[OnAnimationStart](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#事件)回调，只有在离手后做切换动画(也就是抛滑阶段)才会触发。
+那么方案可以继续优化，在抛滑场景时，Swiper组件有一个[OnAnimationStart](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onanimationstart9)回调接口，切换动画开始时触发该回调。此时，主线程空闲，应用可以充分利用这段时间进行图片等资源的预加载，减少后续cachedCount范围内的节点预加载耗时；
+
+跟手滑动阶段不会触发[OnAnimationStart](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onanimationstart9)回调，只有在离手后做切换动画（也就是抛滑阶段）才会触发。
 
 **示例**
 

@@ -26,14 +26,14 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 | 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| imageCount<sup>11+</sup> | number | 是   | 是   | 相册中图片数量。|
-| videoCount<sup>11+</sup> | number | 是   | 是   | 相册中视频数量。|
+| imageCount<sup>11+</sup> | number | 是   | 是   | 相册中图片数量。 |
+| videoCount<sup>11+</sup> | number | 是   | 是   | 相册中视频数量。 |
 
 ## commitModify
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-更新相册属性修改到数据库中。使用callback异步回调。
+更新相册属性到数据库中。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -83,7 +83,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
   album.albumName = 'hello';
   album.commitModify((err) => {
-    if (err !== undefined) {
+    if (err) {
       console.error(`commitModify failed with error: ${err.code}, ${err.message}`);
     } else {
       console.info('commitModify successfully');
@@ -96,7 +96,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 commitModify(): Promise&lt;void&gt;
 
-更新相册属性修改到数据库中。使用Promise异步回调。
+更新相册属性到数据库中。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -146,6 +146,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     return;
   }
   album.albumName = 'hello';
+  // 提交相册名称修改到数据库。
   album.commitModify().then(() => {
     console.info('commitModify successfully');
   }).catch((err: BusinessError) => {
@@ -158,7 +159,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-向用户相册中添加图片或视频，需预置相册和文件资源。使用callback异步回调。
+向用户相册添加图片或视频，调用前需确保已获取相册对象并准备好资源文件。使用callback异步回调。
 
 > **说明：** 
 >
@@ -172,7 +173,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 待添加到相册中的图片或视频数组。 |
+| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 待添加到相册的图片或视频数组。  |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当添加图片或视频成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -211,7 +212,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     album.addAssets([asset], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('album addAssets successfully');
       } else {
         console.error(`album addAssets failed with error: ${err.code}, ${err.message}`);
@@ -227,7 +228,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-向用户相册添加图片或视频，需预置相册和文件资源。使用Promise异步回调。
+向用户相册添加图片或视频，调用前需确保已获取相册对象并准备好资源文件。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -285,6 +286,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       console.error('addAssetsDemoPromise asset is undefined');
       return;
     }
+    // 向相册添加资源。
     album.addAssets([asset]).then(() => {
       console.info('album addAssets successfully');
     }).catch((err: BusinessError) => {
@@ -300,7 +302,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-从用户相册移除图片或视频，需预置相册和文件资源。使用callback异步回调。
+从用户相册中移除图片或视频，调用前需确保已获取相册对象并准备好资源文件。使用callback异步回调。
 
 > **说明：** 
 >
@@ -353,7 +355,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     album.removeAssets([asset], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('album removeAssets successfully');
       } else {
         console.error(`album removeAssets failed with error: ${err.code}, ${err.message}`);
@@ -369,7 +371,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-从用户相册中移除图片或视频，需预置相册和文件资源。使用Promise异步回调。
+从用户相册中移除图片或视频，调用前需确保已获取相册对象并准备好资源文件。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -431,6 +433,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       console.error('removeAssetsPromise asset is undefined');
       return;
     }
+    // 从相册移除资源。
     album.removeAssets([asset]).then(() => {
       console.info('album removeAssets successfully');
     }).catch((err: BusinessError) => {

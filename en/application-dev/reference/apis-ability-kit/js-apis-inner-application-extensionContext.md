@@ -1,14 +1,15 @@
 # ExtensionContext
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=54a85e57a9e078c186b756489db16f65a538d313 translatedAt=2026-09-03T11:57:44.867Z pushedAt=2026-09-05T10:47:30.796Z -->
 
-ExtensionContext provides the context environment for an [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It inherits from [Context](js-apis-inner-application-context.md#context).
+ExtensionContext is the context environment of an [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It inherits from [Context](js-apis-inner-application-context.md#context) and is used to access the resources of a specific ExtensionAbility, and to obtain HAP module information, configuration information, and information about the ExtensionAbility itself.
 
-This module provides APIs for accessing resources of a specific [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
+This module provides APIs for accessing the information of a specific [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
 
 > **NOTE**
 >
@@ -27,18 +28,18 @@ import { common } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name| Type| Read-Only| Optional| Description| 
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No| No| Information about the HAP file.|
-| config   | [Configuration](js-apis-app-ability-configuration.md) | No| No| Module configuration information.|
-| extensionAbilityInfo | [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md) | No| No| [ExtensionAbility](js-apis-app-ability-extensionAbility.md) information.|
+| currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | No | No | Information about the HAP module to which the current ExtensionAbility belongs, including the module name, type, and description. |
+| config   | [Configuration](js-apis-app-ability-configuration.md) | No | No | Configuration information of the current ExtensionAbility, which can be used to obtain the language, color mode, and other configurations. |
+| extensionAbilityInfo | [ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md) | No | No | Information about the current ExtensionAbility, including the name, type, label ID, and so on. |
 
 ## When to Use
-ExtensionContext provides information about an ExtensionAbility, module, and HAP file. You can use the information based on service requirements.
+ExtensionContext is mainly used to query the information about the ExtensionAbility to which it belongs, the configuration information of the module, and the information about the HAP module. This helps developers fully understand the runtime environment and configuration of the extension ability, so that they can perform correct logic processing based on actual service requirements.
 
 **Example**
 
-Obtain the context of a [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md) and query information such as its HAP file.
+Obtain the context in the extended [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md), and query the information such as the HAP module to which the FormExtensionAbility of the extension belongs.
 
 ```ts
 import { FormExtensionAbility, formBindingData } from '@kit.FormKit';

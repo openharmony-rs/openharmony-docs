@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.061Z pushedAt=2026-07-23T04:53:23.763Z -->
+<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.061Z pushedAt=2026-07-23T10:39:09.212Z -->
 
 To enhance the state management framework's capability of monitoring State Variable changes, you can use the [\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor) decorator to listen for State Variable changes.
 
@@ -350,7 +350,7 @@ When the properties listened by \@Monitor change, the callback is triggered.
 
   ![monitor-sync-3](./figures/monitor-sync-3.png)
 
-- \@Monitor can listen for the changes of lower-level properties which should be decorated by @Trace.
+- \@Monitor can listen for the changes of deep properties which should be decorated by @Trace.
 
   <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) --> 
 
@@ -1560,16 +1560,16 @@ The following table compares the usage and functions of \@Monitor and \@Watch.
 | ------------------ | ----------------------------------------- | ------------------------------------------------------------ |
 | Parameter              | Callback method name.                             | Listened state variable name and property name.                                    |
 | Number of listened targets        | A single state variable.                   | Multiple state variables.                                    |
-| Listening capability          | Listen for the top-level state variables.           | Listen for the lower-level state variables.                              |
+| Listening capability          | Listen for the top-level state variables.           | Listen for the deep state variables.                              |
 | Obtain the value before change| No.                     | Yes.                                          |
 | Listening Condition          | The listened object is a state variable.                     | The listened object is a state variable or a class member property decorated by \@Trace.             |
 | Constraints          | Used only in \@Component decorated custom components.| Used in \@ComponentV2 decorated custom components and \@ObservedV2 decorated classes.|
 
 ## When to Use
 
-### Listening for Lower-level Property Changes
+### Listening for Deep Property Changes
 
-\@Monitor can listen for the lower-level property changes and classify them based on the values before and after the changes.
+\@Monitor can listen for the deep property changes and classify them based on the values before and after the changes.
 
 In the following example, the change of property **value** is listened to and the display style of the **Text** component is changed based on the change amplitude.
 

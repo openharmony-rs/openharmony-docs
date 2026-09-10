@@ -1,4 +1,4 @@
-#  @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
+# @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -16,13 +16,13 @@
 > - 本模块接口为系统接口。
 
 
-##  导入模块
+## 导入模块
 
 ```js
-import { shortKey } from '@kit.InputKit';
+import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
-##  shortKey.setKeyDownDuration
+## shortKey.setKeyDownDuration
 
 setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -141,7 +141,7 @@ struct Index {
 
 指纹手势事件类型的枚举。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称                 | 值          | 说明                |
 | ---------------------| ---------- | --------------------|
@@ -155,7 +155,7 @@ struct Index {
 
 指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |

@@ -6,25 +6,15 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=abb2cbc3c0ee7701da88cfed86a07b11347a25be translatedAt=2026-07-08T06:43:51.059Z pushedAt=2026-07-08T10:41:13.951Z -->
+<!-- md-trans-meta sourceCommit=289c8c10483fd7ff62041ea0fb074264a65ea506 translatedAt=2026-08-21T03:20:51.421Z pushedAt=2026-08-21T09:47:44.492Z -->
 
 ## Overview
 
 <!--RP1-->
 
-The app gray-scale collection feature uses a cloud platform (OS developers can refer to [HiRetrieval Cloud-Side Capabilities](hiretrieval-cloud-server-guidelines.md) to implement their own cloud-side integration)<!--RP1End--> to select devices for targeted fault log collection and upload the collected logs to the cloud. This feature helps developers diagnose issues occurring in production environments. The following fault types and corresponding fault logs are currently supported:
+The app gray-scale collection feature uses a cloud platform (refer to [HiRetrieval Cloud-Side Capabilities](hiretrieval-cloud-server-guidelines.md) to implement your own cloud-side integration)<!--RP1End--> to select devices for targeted fault log collection and upload the collected logs to the cloud. This feature helps you diagnose issues occurring in production environments and is suitable for scenarios where detailed information about online faults is required.<!--RP2--> The device side implements fault log collection and upload.
 
-- Resource leaks
-
-  - FD leak: File descriptor leak logs and file descriptor stack logs
-
-  - GPU leak: Memory sampling logs and memory stack logs
-
-  - ArkTS OOM leak: ArkTS virtual machine memory snapshot logs
-
-  - RSS leak: **smaps** logs, memory stack logs, ArkTS virtual machine memory snapshot logs, and Kotlin memory snapshot logs
-
-When creating a task on the cloud platform, developers can choose any of the preceding fault types. During the task's active period, if a selected device encounters the specified fault, the corresponding logs are collected automatically and uploaded to the cloud.
+When creating a task on the cloud platform, you can choose one of the implemented fault types.<!--RP2End--> During the task's active period, if a selected device encounters the corresponding fault, the corresponding logs are collected automatically and uploaded to the cloud.
 
 > **NOTE**
 >
@@ -98,7 +88,7 @@ Fault log collection mainly relies on the fault collection APIs provided by the 
            deviceModel: "M70",
          };
          hiRetrieval.participate(cfg);
-         // Start app gray-scale data collection tasks
+         // Execute the app gray-scale collection task.
          hiRetrieval.run();
        } catch (err) {
          hilog.error(DOMAIN, 'testTag', 'hiretrieval error: %{public}s', JSON.stringify(err));

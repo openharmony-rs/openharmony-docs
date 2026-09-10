@@ -1,10 +1,11 @@
 # Distributed File System Overview
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-26T04:31:16.592Z pushedAt=2026-08-28T03:41:06.344Z -->
 
 OpenHarmony distributed file system (hmdfs) provides cross-device file access capabilities in the following scenarios:
 
@@ -28,7 +29,7 @@ The hmdfs provides a globally consistent access view across devices dynamically 
   > Files in the directory [/data/storage/el2/distributedfiles/](app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths) must not be deleted arbitrarily. For details, see [Accessing Files Across Devices](file-access-across-devices.md).
 
   - Cache management
-    - After devices are connected to form a Virtual Device, the hmdfs provides file access capabilities, but does not proactively transmit or copy files. Active copy is required when an application needs to save data to a local directory.
+    - After devices are connected to form a distributed networking, the hmdfs provides file access capabilities, but does not proactively transmit or copy files. Active copy is required when an application needs to save data to a local directory.
     - The hmdfs ensures close-to-open cache consistency, which allows data to be flushed when a client closes a file. Then, the latest data can be read when the file is opened on any other client. The hmdfs does not ensure real-time consistency of the file content.
     - If data written at the remote end has not been flushed to the local end in a timely manner due to network problems, the file system flushes the data to the local end upon the next network access. However, if the data has been modified on the remote end, only the latest data can be flushed.
   - File access
@@ -42,7 +43,7 @@ The hmdfs provides a globally consistent access view across devices dynamically 
     - In distributed networking, file creation, deletion, and modification on a device are synced to another device, at a speed subject to the network condition.
     - If a device goes offline, its data is no longer visible to other devices. However, due to the delay in sensing the device offline, the files of some offline devices may also be visible to other devices. Therefore, you need to consider the network delay in application development.
   - Conflict resolution
-    - If a file name conflict occurs on the local and remote devices, the file on the remote device is renamed.
+    - If a local file has the same name as a remote file, a conflict occurs. The file synced from the remote device to the local device is automatically renamed, while the local file name remains unchanged.
     - If a file name conflict occurs between multiple remote devices, the name of the file with the smallest device access ID is retained and the files on other devices are renamed.
     - If the directory tree already has remote files in networking scenario, a file with a duplicate file name cannot be created successfully.
     - The conflict files are renamed in "_conflict_dev_ID" format. The IDs automatically increment from 1.

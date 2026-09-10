@@ -36,9 +36,9 @@
 | -- | -- | -- |
 | [typedef void (\*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData)](#oh_lowpowervideosink_ondataneeded) | OH_LowPowerVideoSink_OnDataNeeded | LowPowerVideoSink需要数据时调用该方法。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVErrCode errCode, const char* errMsg, void* userData)](#oh_lowpowervideosink_onerror) | OH_LowPowerVideoSink_OnError | LowPowerVideoSink发生错误时调用该方法。 |
-| [typedef void (\*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData)](#oh_lowpowervideosink_ontargetarrived) | OH_LowPowerVideoSink_OnTargetArrived | LowPowerVideoSink到达目标点时调用该方法。 |
+| [typedef void (\*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink, const int64_t targetPts, const bool isTimeout, void* userData)](#oh_lowpowervideosink_ontargetarrived) | OH_LowPowerVideoSink_OnTargetArrived | LowPowerVideoSink到达指定的播放目标位置时调用该方法。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)](#oh_lowpowervideosink_onrenderstarted) | OH_LowPowerVideoSink_OnRenderStarted | LowPowerVideoSink开始渲染时调用该方法。 |
-| [typedef void (\*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)](#oh_lowpowervideosink_onstreamchanged) | OH_LowPowerVideoSink_OnStreamChanged | LowPowerVideoSink流切换调用该方法。 |
+| [typedef void (\*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)](#oh_lowpowervideosink_onstreamchanged) | OH_LowPowerVideoSink_OnStreamChanged | LowPowerVideoSink流切换时调用该方法。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData)](#oh_lowpowervideosink_onfirstframedecoded) | OH_LowPowerVideoSink_OnFirstFrameDecoded | LowPowerVideoSink第一帧解码成功时调用该方法。 |
 | [typedef void (\*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData)](#oh_lowpowervideosink_oneos) | OH_LowPowerVideoSink_OnEos | LowPowerVideoSink播放完成时调用该方法。 |
 
@@ -47,7 +47,7 @@
 ### OH_LowPowerVideoSink_OnDataNeeded()
 
 ```c
-typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void *userData)
+typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH_AVSamplesBuffer* buffer, void* userData)
 ```
 
 **描述**
@@ -63,7 +63,7 @@ LowPowerVideoSink需要数据时调用该方法。
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
 | [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* buffer | 指向OH_AVSamplesBuffer实例的指针。 |
-| void *userData | 用户执行回调所依赖的数据。 |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 ### OH_LowPowerVideoSink_OnError()
 
@@ -95,7 +95,7 @@ typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,
 
 **描述**
 
-LowPowerVideoSink到达目标点时调用该方法。
+LowPowerVideoSink到达指定的播放目标位置时调用该方法。
 
 **起始版本：** 20
 
@@ -105,7 +105,7 @@ LowPowerVideoSink到达目标点时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const int64_t targetPts | 目标点的pts。单位为微秒。 |
+| const int64_t targetPts | 目标点的pts值。单位为微秒（μs）。 |
 | const bool isTimeout | 表示等待目标点是否超时。若为true，表示等待目标点超时；若为false，则表示未超时。 |
 | void* userData | 用户执行回调所依赖的数据。 |
 
@@ -137,7 +137,7 @@ typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink,
 
 **描述**
 
-LowPowerVideoSink流切换调用该方法。
+LowPowerVideoSink流切换时调用该方法。
 
 **起始版本：** 20
 
@@ -188,6 +188,6 @@ LowPowerVideoSink播放完成时调用该方法。
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-|  void* userData | 用户执行回调所依赖的数据。 |
+| void* userData | 用户执行回调所依赖的数据。 |
 
 

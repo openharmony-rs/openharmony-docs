@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=64024f548cc684cfeb13b5f6892f435b909453a8 translatedAt=2026-09-03T10:16:29.831Z pushedAt=2026-09-05T10:47:30.383Z -->
 
 EmbeddedUIExtensionAbility is a component that enables cross-process UI embedding. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md).
 
@@ -29,8 +30,10 @@ import { EmbeddedUIExtensionAbility } from '@kit.AbilityKit';
 
 EmbeddedUIExtensionAbility is a component that enables cross-process UI embedding. It inherits from [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md).
 
-Currently, an EmbeddedUIExtensionAbility instance can be started only by a UIAbility that belongs to the same application.
+> **NOTE**
+>
+> EmbeddedUIExtensionAbility can only be started by a UIAbility in the same application. Since API version 26.0.0, EmbeddedComponent is allowed to start EmbeddedUIExtensionAbility across applications when the following conditions are met:
+> - The application to which EmbeddedComponent belongs has applied for the ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA permission (this permission can be applied for only by enterprise normal applications).
+> - The [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the application is in the application list supported by EmbeddedUIExtensionAbility (that is, the appIdentifierAllowList attribute of the [extensionAbilities tag](../../quick-start/module-configuration-file.md#extensionabilities)).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices and tablets. It is unavailable on other devices.

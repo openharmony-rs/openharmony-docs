@@ -5,13 +5,14 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=ddb6d958a436ed28224ab183195eb9a9304c854d translatedAt=2026-08-26T04:52:25.706Z pushedAt=2026-08-28T08:46:41.122Z -->
 
 When creating an ArkTS widget, you need to implement the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) lifecycle APIs.
 
 1. Import related modules to **EntryFormAbility.ets**.
 
-    <!-- @[import_entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
-    
+    <!-- @[import_entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
     import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
@@ -22,8 +23,8 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
 
 2. In **EntryFormAbility.ets**, implement the [FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md) lifecycle API, including **onAddForm**, in which [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) can be used to obtain the widget information through [FormParam](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam).
 
-    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
-    
+    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
     const TAG: string = 'EntryFormAbility';
@@ -68,14 +69,26 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
         hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-        // ···
+        class FormDataClass {
+          title: string = 'Title Update.'; // Corresponds to the card layout.
+          detail: string = 'Description update success.'; // Corresponds to the card layout.
+        }
+    
+        // Replace with the actual card data to refresh based on your service.
+        let formData = new FormDataClass();
+        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+        formProvider.updateForm(formId, formInfo).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        });
       }
     
       onRemoveForm(formId: string): void {
         // Remove widget data.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         // Remove the persistent widget instance data.
-        // Implement this API based on project requirements.
+        // Implement this API based on the actual situation. For details, see FormExtensionAbility Stage Model Card Instance.
       }
     
       onConfigurationUpdate(config: Configuration) {
@@ -84,13 +97,15 @@ When creating an ArkTS widget, you need to implement the [FormExtensionAbility](
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
       }
     
+    
       onAcquireFormState(want: Want): formInfo.FormState {
         // Called upon a status query request from the widget. By default, the initial widget state is returned.
         return formInfo.FormState.READY;
       }
+    
     }
     ```
 
 > **NOTE**
 >
-> The FormExtensionAbility cannot reside in the background. It persists for 10 seconds after the lifecycle callback is completed and exits if no new lifecycle callback is invoked during this time frame. This means that continuous tasks cannot be processed in the widget lifecycle callbacks. For the service logic that may take more than 10 seconds to complete, it is recommended that you [start the application](arkts-ui-widget-event-overview.md) for processing. After the processing is complete, use [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) to notify the widget of the update.
+> The FormExtensionAbility process cannot remain resident in the background. That is, long-running tasks cannot be processed in widget lifecycle callbacks. After lifecycle scheduling is complete, the process persists for 10 seconds. If no new lifecycle callback is received within 10 seconds, the process exits automatically. For business logic that may take more than 10 seconds to complete, you are advised to [launch the main app](arkts-ui-widget-event-overview.md) for processing, and then use [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) to notify the widget to refresh.

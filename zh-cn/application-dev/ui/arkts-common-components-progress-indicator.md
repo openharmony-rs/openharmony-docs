@@ -17,10 +17,12 @@ Progress通过调用接口来创建，接口调用方式如下：
 Progress(options: {value: number, total?: number, type?: ProgressType})
 ```
 
-其中，value用于设置初始进度值，total用于设置进度总长度，type用于设置Progress样式。
+其中，value用于设置当前进度值，total用于设置进度总长度，type用于设置Progress样式。
 
-```ts
-Progress({ value: 24, total: 100, type: ProgressType.Linear }) // 创建一个进度总长为100，初始进度值为24的线性进度条
+<!-- @[progress_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Progress({ value: 24, total: 100, type: ProgressType.Linear }) // 创建一个进度总长为100，当前进度值为24的线性进度条
 ```
 
 ![create](figures/create.png)
@@ -52,12 +54,12 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   <!-- @[progress_style_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为2.0vp
+  // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为4.0vp
   Progress({ value: 40, total: 150, type: ProgressType.Ring }).width(100).height(100)
   // 从左往右，2号环形进度条
   Progress({ value: 40, total: 150, type: ProgressType.Ring }).width(100).height(100)
     .color(Color.Grey)    // 进度条前景色为灰色
-    .style({ strokeWidth: 15})    // 设置strokeWidth进度条宽度为15.0vp
+    .style({ strokeWidth: 15})    // 设置strokeWidth进度条宽度为15vp
   ```
     
   ![progress_ring](figures/progress_ring.png)
@@ -72,10 +74,10 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
     .style({ scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条总刻度数为20，刻度宽度为5vp
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
     .backgroundColor(Color.Black)
-    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为5vp
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条宽度15vp，总刻度数为20，刻度宽度为5vp
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
     .backgroundColor(Color.Black)
-    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为3vp
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // 设置环形有刻度进度条宽度15vp，总刻度数为20，刻度宽度为3vp
   ```
 
   ![progress_scalering](figures/progress_scalering.png)
@@ -127,7 +129,7 @@ struct ProgressCase1 {
   build() {
     Column() {
       Column() {
-        Progress({value:0, total:100, type:ProgressType.Capsule}).width(200).height(50).value(this.progressValue)
+        Progress({value:this.progressValue, total:100, type:ProgressType.Capsule}).width(200).height(50)
         Row().width('100%').height(5)
         // 请将$r('app.string.progress_add')替换为实际资源文件，在本示例中该资源文件的value值为"进度条+5"
         Button($r('app.string.progress_add'))

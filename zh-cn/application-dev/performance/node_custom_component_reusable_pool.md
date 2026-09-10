@@ -450,7 +450,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
    NodePool.getInstance()
      .preBuild('reuse_type_', this.viewItems[this.todoCount], flowItemWrapper, this.uiContext);
    hiTraceMeter.finishTrace('onIdle_prebuild', 1);
-   // 预创建完成后，更新本帧剩余空闲空闲时间。
+   // 预创建完成后，更新本帧剩余空闲时间。
    let now = systemDateTime.getTime(true);
    timeLeft = timeLeft - (now - cur);
    cur = now;
@@ -504,7 +504,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
    ![](figures/node_custom_component_onidle_7.png)
 
-9. 通过图9可以看到，从桌面点击图标到广告页的展示，变的更加流畅了。
+9. 通过图9可以看到，从桌面点击图标到广告页的展示，变得更加流畅了。
 
    图9 使用onIdle预创建组件演示
 
@@ -539,4 +539,4 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 ## 参考资料
 
-[场景示例代码](https://gitee.com/harmonyos_samples/arkweb-same-level-rendering)
+[场景示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/ComponentPrebuildByOnIdle)

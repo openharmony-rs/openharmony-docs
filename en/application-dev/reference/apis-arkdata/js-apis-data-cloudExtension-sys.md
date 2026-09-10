@@ -75,7 +75,7 @@ Represents the cloud service information.
 | id             | string  | No  | No  | Cloud account ID generated using SHA-256.                          |
 | totalSpace     | number  | No  | No  | Total account space on the server, in KB.                                |
 | remainingSpace | number  | No  | No  | Available account space on the server, in KB.                              |
-| user           | number  | No  | No  | Current user ID of the device.                                          |
+| user           | number  | No  | No  | Current user account ID of the device.                                          |
 
 ## Flag
 
@@ -1258,7 +1258,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'share succeeded',
       value: result
-    }
+    };
   }
   // ...
 }
@@ -1315,7 +1315,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'unshare succeeded',
       value: result
-    }
+    };
   }
   // ...
 }
@@ -1361,7 +1361,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'exit share succeeded'
-    }
+    };
   }
   // ...
 }
@@ -1418,7 +1418,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change privilege succeeded',
       value: result
-    }
+    };
   }
   // ...
 }
@@ -1476,7 +1476,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     participants.push({
       identity: '111111111',
       role: cloudData.sharing.Role.ROLE_INVITEE,
@@ -1489,12 +1489,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'query participants succeeded',
       value: participants
-    }
+    };
   }
   // ...
 }
@@ -1552,7 +1552,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     participants.push({
       identity: '111111111',
       role: cloudData.sharing.Role.ROLE_INVITEE,
@@ -1565,12 +1565,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'query participants by invitation succeeded',
       value: participants
-    }
+    };
   }
   // ...
 }
@@ -1618,7 +1618,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'confirm invitation succeeded',
       value: 'sharing_resource_test'
-    }
+    };
   }
   // ...
 }
@@ -1665,11 +1665,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change confirm succeeded'
-    }
+    };
   }
   // ...
 }
 ```
+
 ## Complete Sample Code
 
 The classes in the preceding examples are implemented using **implements**, and the sample code cannot be executed independently until all the methods in the parent classes are implemented. The following provides complete sample code for your reference.
@@ -1814,7 +1815,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'share succeeded',
       value: result
-    }
+    };
   }
 
   async unshare(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
@@ -1834,7 +1835,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'unshare succeeded',
       value: result
-    }
+    };
   }
 
   async exit(userId: number, bundleName: string, sharingResource: string):
@@ -1846,7 +1847,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'exit share succeeded'
-    }
+    };
   }
 
   async changePrivilege(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
@@ -1866,7 +1867,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change privilege succeeded',
       value: result
-    }
+    };
   }
 
   async queryParticipants(userId: number, bundleName: string, sharingResource: string):
@@ -1888,7 +1889,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     participants.push({
       identity: '111111111',
       role: cloudData.sharing.Role.ROLE_INVITEE,
@@ -1901,12 +1902,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'query participants succeeded',
       value: participants
-    }
+    };
   }
 
   async queryParticipantsByInvitation(userId: number, bundleName: string, invitationCode: string):
@@ -1928,7 +1929,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     participants.push({
       identity: '111111111',
       role: cloudData.sharing.Role.ROLE_INVITEE,
@@ -1941,12 +1942,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
         shareable: false
       },
       attachInfo: ''
-    })
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'query participants by invitation succeeded',
       value: participants
-    }
+    };
   }
 
   async confirmInvitation(userId: number, bundleName: string, invitationCode: string, state: cloudData.sharing.State):
@@ -1959,7 +1960,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'confirm invitation succeeded',
       value: 'sharing_resource_test'
-    }
+    };
   }
 
   async changeConfirmation(userId: number, bundleName: string, sharingResource: string, state: cloudData.sharing.State):
@@ -1971,7 +1972,7 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change confirm succeeded'
-    }
+    };
   }
 }
 

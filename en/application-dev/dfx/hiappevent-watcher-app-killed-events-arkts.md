@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @xuxinao-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=ec121c2784bcfdcd6bed31c59479fdb588154d76 translatedAt=2026-08-21T03:18:32.963Z pushedAt=2026-08-21T09:00:42.781Z -->
 
 ## Event Specifications
 
@@ -22,7 +23,7 @@ For details about how to use the APIs, see [@ohos.hiviewdfx.hiAppEvent (Applicat
 
 ## How to Develop
 
-To ensure that the event callback can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use the C ++ fault injection code to construct a fault to trigger the application killed event.
+To ensure smooth reception of event callbacks during development, you are advised to adopt the following approach: create a new Native C++ project, implement the subscription in ArkTS code, and use fault injection code in C++ to construct faults that trigger `APP_KILLED` events.
 
 1. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules.
 
@@ -59,6 +60,9 @@ To ensure that the event callback can be successfully received in the developmen
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
            // Obtain the cause of the application killed event.
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.reason=${eventInfo.params['reason']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.last_exit_detail_info=${JSON.stringify(eventInfo.params['last_exit_detail_info'])}`);
          }
        }
      }
@@ -155,4 +159,7 @@ To ensure that the event callback can be successfully received in the developmen
    HiAppEvent eventInfo.params.time=1717597063727
    HiAppEvent eventInfo.params.reason="RssThresholdKiller"
    HiAppEvent eventInfo.params.foreground=true
+   HiAppEvent eventInfo.params.app_running_unique_id=207544
+   HiAppEvent eventInfo.params.bundle_version=1000000
+   HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"28549","process_name":"com.samples.freezedebug","process_state":"2","pss":"0","rss":"0","timestamp":"1785743803766","uid":"20020204"}
    ```

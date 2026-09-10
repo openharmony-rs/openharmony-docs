@@ -5,6 +5,8 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=4c1f08fcf9b2e36ccd83092dd38f04e3fb630b79 translatedAt=2026-08-26T04:57:46.287Z pushedAt=2026-08-28T08:53:06.842Z -->
+
 The FA model is supported since API version 7, and no longer recommended. Application components are specified by exporting anonymous objects and fixed entry files. You cannot perform derivation for capability expansion. Now, the stage model is recommended for application development.
 
 ## Available APIs
@@ -23,18 +25,18 @@ The **FormAbility** has the following APIs.
 | onShare?(formId: string): {[key: string]: any} | Called by the widget provider to receive shared widget data.|
 | onShareForm?(formId:&nbsp;string):&nbsp;Record&lt;string,&nbsp;Object&gt; | Called by the widget provider to receive shared widget data. You are advised to use this API, instead of **onShare()**. If this API is implemented, **onShare()** will not be triggered.|
 
-The **FormProvider** class has the following APIs. For details, see [FormProvider](../reference/apis-form-kit/js-apis-app-form-formProvider.md).
+The FormProvider class provides the following APIs. For details about the APIs, see [@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/js-apis-app-form-formProvider.md).
 
 
 | API| Description|
 | -------- | -------- |
-| setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void;| Sets the next refresh time for a widget. This API uses an asynchronous callback to return the result.|
-| setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;;| Sets the next refresh time for a widget. This API uses a promise to return the result.|
+| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void; | Sets the next refresh time for a specified widget. This API uses an asynchronous callback to return the result. |
+| setFormNextRefreshTime(formId:&nbsp;string,&nbsp;minute:&nbsp;number):&nbsp;Promise&lt;void&gt;; | Sets the next refresh time for a specified widget. This API uses a promise to return the result. |
 | updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void; | Updates a widget. This API uses an asynchronous callback to return the result.|
 | updateForm(formId: string, formBindingData: FormBindingData): Promise&lt;void&gt;; | Updates a widget. This API uses a promise to return the result.|
 
 
-The **FormBindingData** class has the following APIs. For details, see [FormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md).
+The FormBindingData class provides the following APIs. For details about the APIs, see [@ohos.app.form.formBindingData (formBindingData)](../reference/apis-form-kit/js-apis-app-form-formBindingData.md).
 
 
 | API| Description|
@@ -64,7 +66,7 @@ The widget provider development based on the [FA model](../application-models/fa
 To create a widget in the FA model, implement the widget lifecycle callbacks. Before that, generate a widget template by referring to <!--RP1-->[Creating an ArkTS Widget](./arkts-ui-widget-creation.md)<!--RP1End-->.
 
 1. Import related modules to **form.ts**.
-   
+
     ```ts
     import type featureAbility from '@ohos.ability.featureAbility';
     import type Want from '@ohos.app.ability.Want';
@@ -76,17 +78,17 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Be
     ```
 
 2. Implement the widget lifecycle callbacks in **form.ts**.
-   
+
     ```ts
     const TAG: string = '[Sample_FAModelAbilityDevelop]';
     const domain: number = 0xFF00;
     
     const DATA_STORAGE_PATH: string = 'form_store';
     let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
-      // Only the widget ID (formId), widget name (formName), and whether the widget is a temporary one (tempFlag) are persistently stored.
+      // Only the card name (formName) and whether it is a temporary card (tempFlag) are persisted here.
       let formInfo: Record<string, string | number | boolean> = {
-        'formName': 'formName',
-        'tempFlag': 'tempFlag',
+        'formName': formName,
+        'tempFlag': tempFlag,
         'updateCount': 0
       };
       try {
@@ -119,10 +121,6 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Be
       onUpdate: (formId: string) => void = (formId) => {
       };
       onVisibilityChange: (newStatus: Record<string, number>) => void = (newStatus) => {
-        let obj: Record<string, number> = {
-          'test': 1
-        };
-        return obj;
       };
       onEvent: (formId: string, message: string) => void = (formId, message) => {
       };
@@ -216,7 +214,7 @@ To create a widget in the FA model, implement the widget lifecycle callbacks. Be
 The widget configuration file is named **config.json**. Find the **config.json** file for the widget and edit the file depending on your need.
 
 - The **JS** module in the **config.json** file provides JavaScript resources of the widget. The internal structure is described as follows.
-    | Name| Description| Data Type| Initial Value Allowed|
+  | Name| Description| Data Type| Initial Value Allowed|
   | -------- | -------- | -------- | -------- |
   | name | Name of a JavaScript component. The default value is **default**.| String| No|
   | pages | Route information about all pages in the JavaScript component, including the page path and page name. The value is an array, in which each element represents a page. The first element in the array represents the home page of the JavaScript FA.| Array| No|
@@ -226,8 +224,8 @@ The widget configuration file is named **config.json**. Find the **config.json**
 
   Example configuration:
 
-  
-  ```json
+
+  ```json5
   "js": [
     // ...
     {
@@ -238,14 +236,14 @@ The widget configuration file is named **config.json**. Find the **config.json**
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true
-    	},
+      },
         "type": "form"
       }
     ]
   ```
-  
+
 - The **abilities** module in the **config.json** file corresponds to **FormAbility** of the widget. The internal structure is described as follows.
-    | Name| Description| Data Type| Initial Value Allowed|
+  | Name| Description| Data Type| Initial Value Allowed|
   | -------- | -------- | -------- | -------- |
   | name | Class name of a widget. The value is a string with a maximum of 127 bytes.| String| No|
   | description | Description of the widget. The value can be a string or a resource index to descriptions in multiple languages. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
@@ -265,8 +263,8 @@ The widget configuration file is named **config.json**. Find the **config.json**
 
   Example configuration:
 
-  
-  ```json
+
+  ```json5
   "abilities": [
     // ...
     {
@@ -312,10 +310,10 @@ const domain: number = 0xFF00;
 
 const DATA_STORAGE_PATH: string = 'form_store';
 let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
-  // Only the widget ID (formId), widget name (formName), and whether the widget is a temporary one (tempFlag) are persistently stored.
+  // Persist only the card name (formName) and whether it is a temporary card (tempFlag) here.
   let formInfo: Record<string, string | number | boolean> = {
-    'formName': 'formName',
-    'tempFlag': 'tempFlag',
+    'formName': formName,
+    'tempFlag': tempFlag,
     'updateCount': 0
   };
   try {
@@ -436,7 +434,7 @@ You can use the web-like paradigm (HML+CSS+JSON) to develop JS widget pages. Thi
 > In the FA model, only the JavaScript-based web-like development paradigm is supported when developing the widget UI.
 
 - HML: uses web-like paradigm components to describe the widget page information.
-  
+
   ```html
   <div class="container">
       <stack>
@@ -451,9 +449,9 @@ You can use the web-like paradigm (HML+CSS+JSON) to develop JS widget pages. Thi
       </stack>
   </div>
   ```
-  
+
 - CSS: defines style information about the web-like paradigm components in HML.
-  
+
   ```css
   .container {
       flex-direction: column;
@@ -503,9 +501,9 @@ You can use the web-like paradigm (HML+CSS+JSON) to develop JS widget pages. Thi
       margin-top: 6px;
   }
   ```
-  
+
 - JSON: defines data and event interaction on the widget UI page.
-  
+
   ```json
   {
     "data": {
@@ -539,8 +537,8 @@ You can set router and message events for components on a widget. The router eve
 
 2. Set the router event.
    - **action**: **"router"**, which indicates a router event.
-   - **abilityName**: name of the ability to redirect to (PageAbility component in the FA model and UIAbility component in the stage model). For example, the default UIAbility name created by DevEco Studio in the FA model is com.example.entry.EntryAbility.
-   - **params**: custom parameters passed to the target ability. Set them as required. The value can be obtained from **parameters** in **want** used for starting the target ability. For example, in the lifecycle function **onCreate** of the EntryAbility in the FA model, **featureAbility.getWant()** can be used to obtain **want** and its **parameters** field.
+   - **abilityName**: name of the ability to redirect to (supports redirecting to the PageAbility component in the FA model and the UIAbility component in the Stage model). For example, the default UIAbility name created by DevEco Studio in the Stage model is `com.example.entry.EntryAbility`.
+   - **params**: custom parameters passed to the target ability. Set them as needed. The values can be obtained from **parameters** in **want** when the target ability starts. For example, in the FA model, you can obtain **want** by calling `featureAbility.getWant()` in the PageAbility `onCreate` lifecycle, and then retrieve the configured parameters from its **parameters** field.
 
 3. Set the message event.
    - **action**: **"message"**, which indicates a message event.
@@ -549,7 +547,7 @@ You can set router and message events for components on a widget. The router eve
 The following is an example:
 
 - HML file:
-  
+
   ```html
   <div class="container">
       <stack>
@@ -564,9 +562,9 @@ The following is an example:
       </stack>
   </div>
   ```
-  
+
 - CSS file:
-  
+
   ```css
   .container {
       flex-direction: column;
@@ -616,9 +614,9 @@ The following is an example:
       margin-top: 6px;
   }
   ```
-  
+
 - JSON file:
-  
+
   ```json
   {
     "data": {

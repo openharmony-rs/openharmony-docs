@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:17.959Z pushedAt=2026-07-07T08:39:42.889Z -->
+<!-- md-trans-meta sourceCommit=608175d8fd85ddfce5e6f9d9b165b9d12862adb2 translatedAt=2026-08-01T00:31:44.136Z pushedAt=2026-08-03T03:26:16.985Z -->
 
 ArkUI provides four scrollable components: [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), and [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md). Among them, **Scroll** does not support lazy loading. Although **List**, **Grid**, and **WaterFlow** support lazy loading with [LazyForEach](./rendering-control/arkts-rendering-control-lazyforeach.md), each supports only a specific layout mode. In actual service scenarios, a scrolling page often needs to mix multiple layout modes. For example, an e-commerce homepage may simultaneously contain multi-column grid category entries, waterfall product cards, and linear list recommendations; a social app feed may simultaneously contain text lists, nine-grid images, and video cards. In such cases, a single scrollable component cannot flexibly adapt and has certain limitations.
 
@@ -809,7 +809,7 @@ MonthHeaderBuilder(title: string, count: number) {
       .fontSize(16)
       .fontWeight(FontWeight.Bold)
     Blank()
-    // Replace $r('app.string.lazyLayout_photo_count') with the actual resource file. In this example, the value of this resource file is "%d photos", indicating the number of photos.示照片的张数
+    // Replace $r('app.string.lazyLayout_photo_count') with the actual resource file. In this example, the value of this resource file is "%d photos", indicating the number of photos.
     Text($r('app.string.lazyLayout_photo_count', count))
       .fontSize(14)
       .fontColor(Color.Gray)

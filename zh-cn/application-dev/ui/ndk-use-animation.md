@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[ArkUI](arkui-overview.md)开发框架在[NDK](../napi/ndk-development-overview.md)接口里提供了动画相关接口，能够在应用中使用C和C++代码实现高效精致的动画效果，其中包括属性动画，组件出现/消失转场，关键帧动画，同时支持通过Node-API桥接ArkTS侧帧动画能力，覆盖Native端UI开发中绝大多数动效场景。其核心动画能力主要包括：
+[ArkUI](arkui-overview.md)开发框架在[NDK](../napi/ndk-development-overview.md)接口里提供了动画相关接口，能够在应用中使用C和C++代码实现高效精致的动画效果，其中包括属性动画，组件出现/消失转场，一镜到底转场，关键帧动画，同时支持通过Node-API桥接ArkTS侧帧动画能力，覆盖Native端UI开发中绝大多数动效场景。其核心动画能力主要包括：
 
 - **属性动画**
 

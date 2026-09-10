@@ -1,8 +1,8 @@
 # ArkUI简介
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,7 +22,7 @@ ArkUI（方舟UI框架）为应用的UI开发提供了完整的基础设施，�
 
 - **声明式开发范式**：采用基于TypeScript声明式UI语法扩展而来的[ArkTS语言](../quick-start/arkts-get-started.md)，从组件、动画和状态管理三个维度提供UI绘制能力。
 
-- **类Web开发范式**：采用经典的<!--RP1-->HML<!--RP1End-->、CSS、JavaScript三段式开发方式，即使用HML标签文件搭建布局、使用CSS文件描述样式、使用JavaScript文件处理逻辑。该范式更符合Web前端开发者的使用习惯，便于快速将已有的Web应用改造成方舟UI框架应用。
+- **类Web开发范式**：采用经典的HML、CSS、JavaScript三段式开发方式，即使用HML标签文件搭建布局、使用CSS文件描述样式、使用JavaScript文件处理逻辑。该范式更符合Web前端开发者的使用习惯，便于快速将已有的Web应用改造成方舟UI框架应用。
 
 在开发一款新应用时，推荐采用声明式开发范式来构建UI，主要基于以下几点考虑：
 
@@ -63,3 +63,6 @@ ArkUI（方舟UI框架）为应用的UI开发提供了完整的基础设施，�
 - **NDK开发**：ArkUI开发框架提供了一系列NDK接口，能够在应用中使用C和C++代码构建UI界面，包括UI组件创建、UI树操作、属性设置和事件监听等。详细使用方式可参考[NDK接口概述](ndk-build-ui-overview.md)。
 
   **适用场景**：需要精细化创建和挂载UI组件、对性能有高要求的场景、业务已存在C或C++库可使用NDK能力进行对接。
+
+<!--RP1-->
+<!--RP1End-->

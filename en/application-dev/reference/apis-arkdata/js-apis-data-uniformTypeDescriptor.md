@@ -5,12 +5,16 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=15496fed0cae2d3de7549779264807cf5940b7af translatedAt=2026-09-04T04:00:28.955Z pushedAt=2026-09-09T09:11:03.751Z -->
 
-The **uniformTypeDescriptor** module abstracts and defines uniform data types.
+This module abstracts and defines uniform data types to uniformly represent and manage the hierarchy and belonging relationships of various data types (for example, JPEG belongs to IMAGE, and IMAGE belongs to MEDIA), facilitating consistent data interaction across modules and applications. For details about the design principles, see [Prebuilt UTDs](../../database/uniform-data-type-list.md).
+
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -38,7 +42,7 @@ The following table lists the common uniform data types.
 | XML<sup>11+</sup>    | 'general.xml'                   | XML.<br>This type belongs to **TEXT**.               |
 | XHTML<sup>12+</sup>    | 'general.xhtml'                   | XHTML.<br>This type belongs to **XML**.               |
 | RSS<sup>12+</sup>    | 'general.rss'                   | RSS.<br>This type belongs to **XML**.               |
-| SMIL<sup>12+</sup>                         | 'com.real.smil'                    |  Synchronized Multimedia Integration Language (SMIL).<br>This type belongs to **XML**.      |
+| SMIL<sup>12+</sup>                         | 'com.real.smil'                    | Synchronized Multimedia Integration Language type, belonging to XML.       |
 | SOURCE_CODE<sup>11+</sup>                | 'general.source-code'                  | Generic source code type.<br>This type belongs to **TEXT**.       |
 | SCRIPT<sup>11+</sup>    | 'general.script'                  | Source code in any scripting language.<br>This type belongs to **SOURCE_CODE**.  |
 | SHELL_SCRIPT<sup>11+</sup>               | 'general.shell-script'                  | Shell script.<br>This type belongs to **SCRIPT**.           |
@@ -83,7 +87,7 @@ The following table lists the common uniform data types.
 | EFX_FAX<sup>12+</sup>                         | 'com.js.efx-fax'                    | EFX file format.<br>This type belongs to **FAX**.      |
 | XBITMAP_IMAGE<sup>12+</sup>                         | 'general.xbitmap-image'                    | X BitMAP (XBM) used in the X Window system (X11).<br>This type belongs to **IMAGE**.      |
 | GIF<sup>12+</sup>                         | 'general.gif'                    | GIF.<br>This type belongs to **IMAGE**.      |
-| TGA_IMAGE<sup>12+</sup>                         | 'com.truevision.tga-image'                    | Tagged Graphics (TGA) format.<br>This type belongs to **IMAGE**.      |
+| TGA_IMAGE<sup>12+</sup>                         | 'com.truevision.tga-image'                    | Truevision Graphics Adapter image file format, belonging to IMAGE.       |
 | SGI_IMAGE<sup>12+</sup>                         | 'com.sgi.sgi-image'                    | Silicon Graphics image (SGI) format.<br>This type belongs to **IMAGE**.      |
 | OPENEXR_IMAGE<sup>12+</sup>                         | 'com.ilm.openexr-image'                    | OpenXR image format.<br>This type belongs to **IMAGE**.      |
 | FLASHPIX_IMAGE<sup>12+</sup>                         | 'com.kodak.flashpix.image'                    | FlashPix image format.<br>This type belongs to **IMAGE**.      |
@@ -207,9 +211,9 @@ The following table lists the common uniform data types.
 | CONTENT_FORM<sup>15+</sup>                         | 'general.content-form'                    | Content widget type.<br>This type belongs to **OBJECT**.      |
 
 
-## TypeDescriptor<sup>11+</sup> 
+## TypeDescriptor<sup>11+</sup>
 
-Represents a class for defining a uniform data type. It provides properties and methods for describing a uniform data type and its relationship with other uniform data types.
+Describes a uniform data type. It contains properties and methods for describing the uniform data type itself and its belonging and hierarchy relationships with other uniform data types. For example, the type mapping relationship is maintained through **typeId** and **belongingToTypes**, and methods such as hierarchy determination are provided. For details about the properties and methods, see the following descriptions.
 
 ### Properties
 
@@ -217,7 +221,7 @@ Represents a class for defining a uniform data type. It provides properties and 
 
 | Name   | Type                   | Read-Only| Optional| Description                                                      |
 | ------- | ----------------------- | ---- | ---- |----------------------------------------------------------|
-| typeId<sup>11+</sup>     | string | No  | No  | ID of the uniform data type (that is, the enum value in [UTD list](#uniformdatatype)), or a custom UTD.|
+| typeId<sup>11+</sup>     | string | No   | No   | ID of the Uniform Data Type (that is, the UTD-ID corresponding to each type in the [Prebuilt UTDs](../../database/uniform-data-type-list.md)), or a custom UTD. For a custom UTD, the reverse domain name format (for example, 'com.example.mytype') is recommended. |
 | belongingToTypes<sup>11+</sup>  | Array\<string>          | No  | No  | Data types to which the uniform data type belongs.                                  |
 | description<sup>11+</sup>     | string                  | No  | No  | Brief description of the uniform data type.                                           |
 | referenceURL<sup>11+</sup>     | string                  | No  | No  | URL of the link to the reference (detailed information) of the uniform data type.                           |
@@ -225,11 +229,15 @@ Represents a class for defining a uniform data type. It provides properties and 
 | filenameExtensions<sup>12+</sup>  | Array\<string>          | No  | No  | List of file name extensions associated with the uniform data type.                                  |
 | mimeTypes<sup>12+</sup>  | Array\<string>          | No  | No  | List of MIME types associated with the uniform data type.                                  |
 
-### belongsTo<sup>11+</sup> 
+### belongsTo<sup>11+</sup>
 
 belongsTo(type: string): boolean
 
 Checks whether this data type belongs to the specified uniform data type.
+
+**Use cases**
+- Verify whether the data format is supported before data transmission.
+- Check whether the data type meets the requirements when sharing content.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -237,7 +245,7 @@ Checks whether this data type belongs to the specified uniform data type.
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | Yes   |Uniform data type specified, which is a value of [UniformDataType](#uniformdatatype).  |
+| type    | string  | Yes    |The specified Uniform Data Type (that is, the UTD-ID corresponding to each type in the [Prebuilt UTDs](../../database/uniform-data-type-list.md) or a custom UTD-ID).   |
 
 **Return value**
 
@@ -251,7 +259,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -259,23 +267,30 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
-    let ret = typeObj.belongsTo('general.source-code');
-    if(ret) {
-        console.info('type general.type-script belongs to type general.source-code');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`belongsTo throws an exception. code is ${error.code}, message is ${error.message} `);
+try {
+  // Obtain the TypeDescriptor object.
+  let typeObj: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+  // Check whether it belongs to the specified type.
+  let ret = typeObj.belongsTo('general.source-code');
+  if (ret) {
+    console.info('type general.type-script belongs to type general.source-code');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`belongsTo throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
-### isLowerLevelType<sup>11+</sup> 
+### isLowerLevelType<sup>11+</sup>
 
 isLowerLevelType(type: string): boolean
 
 Checks whether this data type is a lower-level type of the specified uniform data type. For example, **TYPE_SCRIPT** is a lower-level type of **SOURCE_CODE**, and **TYPE_SCRIPT** and **SOURCE_CODE** are lower-level types of **TEXT**.
+
+**Use cases**
+- Determine whether conversion is required during data format conversion.
+- Intelligently select the most appropriate data type.
+- Verify the hierarchy of data types.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -283,7 +298,7 @@ Checks whether this data type is a lower-level type of the specified uniform dat
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | Yes   |Uniform data type specified, which is a value of [UniformDataType](#uniformdatatype).  |
+| type    | string  | Yes    |Specified Uniform Data Type (that is, the UTD-ID corresponding to each type in the [Prebuilt UTDs](../../database/uniform-data-type-list.md) or a custom UTD-ID).   |
 
 **Return value**
 
@@ -297,7 +312,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -305,23 +320,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
-    let ret = typeObj.isLowerLevelType('general.source-code');
-    if(ret) {
-        console.info('type general.type-script is lower level type of type general.source-code');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`isLowerLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
+try {
+  // Obtain the TypeDescriptor object.
+  let typeObj: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+  let ret = typeObj.isLowerLevelType('general.source-code');
+  if (ret) {
+    console.info('type general.type-script is lower level type of type general.source-code');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`isLowerLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
-### isHigherLevelType<sup>11+</sup> 
+### isHigherLevelType<sup>11+</sup>
 
 isHigherLevelType(type: string): boolean
 
 Checks whether this data type is a higher-level type of the specified uniform data type. For example, **SOURCE_CODE** is a higher-level type of **TYPE_SCRIPT**, and **TEXT** is a higher-level type of **SOURCE_CODE** and **TYPE_SCRIPT**.
+
+**Use cases**
+- Compatibility check of data types
+- Find data of all subtypes
+- Traverse and filter the type hierarchy
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -329,7 +350,7 @@ Checks whether this data type is a higher-level type of the specified uniform da
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | Yes   |Uniform data type specified, which is a value of [UniformDataType](#uniformdatatype).  |
+| type    | string  | Yes    |The specified Uniform Data Type (that is, the UTD-ID corresponding to each type in the [Prebuilt UTDs](../../database/uniform-data-type-list.md) or a custom UTD-ID).   |
 
 **Return value**
 
@@ -343,7 +364,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -351,23 +372,29 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
-    let ret = typeObj.isHigherLevelType('general.type-script');
-    if(ret) {
-        console.info('type general.source-code is higher level type of type general.type-script');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`isHigherLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
+try {
+  // Obtain the TypeDescriptor object.
+  let typeObj: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
+  let ret = typeObj.isHigherLevelType('general.type-script');
+  if (ret) {
+    console.info('type general.source-code is higher level type of type general.type-script');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`isHigherLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
-### equals<sup>11+</sup> 
+### equals<sup>11+</sup>
 
 equals(typeDescriptor: TypeDescriptor): boolean
 
 Checks whether this data type is the same as the specified uniform data type. That is, compares **typeId**s of two [TypeDescriptor](#typedescriptor11) objects.
+
+**Use cases**
+- Compare whether two data types are the same
+- Deduplicate data types
+- Verify type matching
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -381,7 +408,7 @@ Checks whether this data type is the same as the specified uniform data type. Th
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the type IDs are the same; returns **false** otherwise.|
+| boolean | **true** indicates that the two compared **TypeDescriptor** objects are the same; **false** indicates that they are different. |
 
 **Error codes**
 
@@ -389,7 +416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -397,15 +424,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeA : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
-    let typeB : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
-    if(!typeA.equals(typeB)) {
-      console.info('typeA is not equal to typeB');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`throws an exception. code is ${error.code}, message is ${error.message} `);
+try {
+  // Obtain two TypeDescriptor objects for comparison.
+  let typeA: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+  let typeB: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
+  if (!typeA.equals(typeB)) {
+    console.info('typeA is not equal to typeB');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -414,6 +442,11 @@ try{
 getTypeDescriptor(typeId: string): TypeDescriptor
 
 Obtains the **TypeDescriptor** object based on the uniform data type ID.
+
+**Use cases**
+- Obtain detailed information about a data type (such as description and icon)
+- Query the belonging relationship of a data type
+- Build a selector for a data type
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -427,7 +460,7 @@ Obtains the **TypeDescriptor** object based on the uniform data type ID.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [TypeDescriptor](#typedescriptor11) | **TypeDescriptor** object obtained. If the uniform data type does not exist, **null** is returned.|
+| [TypeDescriptor](#typedescriptor11) | Uniform Data Type descriptor object. If the Uniform Data Type to query does not exist, null is returned. |
 
 **Error codes**
 
@@ -435,7 +468,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -444,22 +477,24 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
-    if (typeObj) {
-        let typeId = typeObj.typeId;
-        let belongingToTypes = typeObj.belongingToTypes;
-        let description = typeObj.description;
-        let referenceURL = typeObj.referenceURL;
-        let iconFile = typeObj.iconFile;
-        let filenameExtensions = typeObj.filenameExtensions;
-        let mimeTypes = typeObj.mimeTypes;
-        console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL}, iconFile: ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
-    } else {
-        console.info('type com.adobe.photoshop-image does not exist');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getTypeDescriptor throws an exception. code is ${error.code}, message is ${error.message} `);
+  // Obtain the TypeDescriptor object of the specified type.
+  let typeObj: uniformTypeDescriptor.TypeDescriptor =
+    uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
+  if (typeObj) {
+    let typeId = typeObj.typeId;
+    let belongingToTypes = typeObj.belongingToTypes;
+    let description = typeObj.description;
+    let referenceURL = typeObj.referenceURL;
+    let iconFile = typeObj.iconFile;
+    let filenameExtensions = typeObj.filenameExtensions;
+    let mimeTypes = typeObj.mimeTypes;
+    console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL}, iconFile: ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
+  } else {
+    console.info('type com.adobe.photoshop-image does not exist');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getTypeDescriptor throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -469,20 +504,25 @@ getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: str
 
 Obtains the uniform data type ID based on the given file name extension and data type. If there are multiple uniform data type IDs matching the conditions, the first one is returned.
 
+**Use cases**
+- Identifying the file type when importing a file
+- Selecting an appropriate preview method when previewing a file
+- Determining the data type when uploading a file
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| filenameExtension    | string  | Yes   |File name extension.  |
-| belongsTo    | string  | No   |ID of the uniform data type, to which the data type to be obtained belongs. This parameter has no default value. If it is not specified, the [uniform data type ID](../../database/uniform-data-type-descriptors.md) is queried based on the file name extension.  |
+| filenameExtension    | string  | Yes    |File name extension, which must contain a dot, for example, '.ts' and '.jpg'.   |
+| belongsTo    | string  | No    |ID of the belonging type of the uniform data type to query, used to limit the query scope. Pass this parameter when you need to query data types under a specific belonging type. There is no default value. If this parameter is not passed, the [UTDs (ArkTS)](../../database/uniform-data-type-descriptors.md) is queried only by the file name extension.   |
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| string | ID of the uniform data type that matches the specified file name extension and **belongsTo** (if specified). If no match is found, the data type dynamically generated based on the rules specified by the input parameters is returned.|
+| string | Uniform data type ID that matches the given file name extension and the belonging type ID (if the belongsTo parameter is set). If the uniform data type to query does not exist, a dynamic type generated based on the input parameters according to the specified rules is returned. A dynamic type is a type identifier dynamically generated by the system, prefixed with 'flex.', and used to represent a data type that is not predefined. |
 
 **Error codes**
 
@@ -490,7 +530,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -499,24 +539,24 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.ts', 'general.source-code');
-    if(typeId) {
-        console.info('typeId is general.type-script');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.ts', 'general.source-code');
+  if (typeId) {
+    console.info('typeId is general.type-script');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
 // If no uniform data type ID is found based on ".myts" and "general.plain-text", the type generated based on the input parameters is returned.
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
-    if(typeId) {
-        console.info('typeId is flex.************');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
+  if (typeId) {
+    console.info('typeId is flex.************');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -526,14 +566,19 @@ getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string
 
 Obtains the uniform data type ID based on the given MIME type and data type. If there are multiple uniform data type IDs matching the conditions, the first one is returned.
 
+**Use cases**
+- Identifying the data type when processing clipboard data
+- Parsing the Content-Type of a network request
+- Determining the data type during data drag-and-drop transfer
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| mimeType    | string  | Yes   |MIME type.  |
-| belongsTo    | string  | No   |ID of the uniform data type, to which the data type to be obtained belongs. This parameter has no default value. If it is not specified, the [uniform data type ID](../../database/uniform-data-type-descriptors.md) is queried based on the MIME name.  |
+| mimeType    | string  | Yes    |MIME type name in the format of 'type/subtype', for example, 'image/jpeg' and 'text/plain'.   |
+| belongsTo    | string  | No   |ID of the uniform data type, to which the data type to be obtained belongs. This parameter has no default value. If it is not specified, the [UTDs (ArkTS)](../../database/uniform-data-type-descriptors.md) is queried based on the MIME name.  |
 
 **Return value**
 
@@ -547,7 +592,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -556,24 +601,24 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/jpeg', 'general.image');
-    if(typeId) {
-        console.info('typeId is general.jpeg');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/jpeg', 'general.image');
+  if (typeId) {
+    console.info('typeId is general.jpeg');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
 // If no uniform data type ID is found based on "image/myimage" and "general.image", the type generated based on the input parameters is returned.
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
-    if(typeId) {
-        console.info('typeId is flex.************');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
+  if (typeId) {
+    console.info('typeId is flex.************');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -582,6 +627,11 @@ try {
 getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: string): Array\<string>
 
 Obtains the uniform data type IDs based on the given file name extension and data type.
+
+**Use cases**
+- Display all possible data types corresponding to a file extension
+- Provide multiple type options in the file type selector
+- Analyze the correspondence between file formats and data types
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -604,7 +654,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -613,24 +663,24 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.ts', 'general.source-code');
-    for (let typeId of typeIds) {
-        console.info(`typeId is ${typeId}`);
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.ts', 'general.source-code');
+  for (let typeId of typeIds) {
+    console.info(`typeId is ${typeId}`);
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
 // If no uniform data type ID is found based on ".myts" and "general.plain-text", the types generated based on the input parameters are returned.
 try {
-    let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.myts', 'general.plain-text');
-    for (let flexTypeId of flexTypeIds) {
-        console.info(`typeId is flex type, flex typeId is ${flexTypeId}`);
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
+  let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.myts', 'general.plain-text');
+  for (let flexTypeId of flexTypeIds) {
+    console.info(`typeId is flex type, flex typeId is ${flexTypeId}`);
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -640,14 +690,19 @@ getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<stri
 
 Obtains the uniform data type IDs based on the given MIME type and data type.
 
+**Use cases**
+- Obtain all possible data types corresponding to a MIME type
+- Display data type analysis and mapping relationships
+- Match and select multiple types
+
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
 **Parameters**
 
 | Name | Type| Mandatory | Description                   |
 | -----  | ------  | ----  | ----------------------- |
-| mimeType    | string  | Yes   |MIME type.  |
-| belongsTo    | string  | No   |ID of the uniform data type, to which the data type to be obtained belongs. This parameter has no default value. If it is not specified, the [uniform data type ID](../../database/uniform-data-type-descriptors.md) is queried based on the MIME name.  |
+| mimeType    | string  | Yes    |MIME type name in the format of 'type/subtype', for example, 'image/jpeg' and 'text/plain'.   |
+| belongsTo    | string  | No   |ID of the uniform data type, to which the data type to be obtained belongs. This parameter has no default value. If it is not specified, the [UTDs (ArkTS)](../../database/uniform-data-type-descriptors.md) is queried based on the MIME name.  |
 
 **Return value**
 
@@ -661,7 +716,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **Example**
 
@@ -670,23 +725,23 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('text/plain', 'general.text');
-    for (let typeId of typeIds) {
-        console.info(`typeId is ${typeId}`);
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('text/plain', 'general.text');
+  for (let typeId of typeIds) {
+    console.info(`typeId is ${typeId}`);
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// If no uniform data type ID is found based on "image/myimage" and "general.image", the types generated based on the input parameters are returned.
+// If no preset data type is found for "image/myimage" and "general.image", return the dynamic type list generated based on the input parameters.
 try {
-    let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('image/myimage', 'general.image');
-    for (let flexTypeId of flexTypeIds) {
-        console.info(`typeId is flex type, flex typeId is ${flexTypeId}`);
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('image/myimage', 'general.image');
+  for (let flexTypeId of flexTypeIds) {
+    console.info(`typeId is flex type, flex typeId is ${flexTypeId}`);
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```

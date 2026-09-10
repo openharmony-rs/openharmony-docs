@@ -5,8 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:20.252Z pushedAt=2026-06-30T09:58:49.798Z -->
+<!--Adviser: @HelloCrease-->
 
 ## When to Use
 
@@ -229,7 +228,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
     let isIdleState = usageStatistics.isIdleStateSync("com.ohos.camera");
     ```
 
-8. Query FA usage records. The maximum number of returned records cannot exceed **maxNum**. If **maxNum** is not specified, the default value is 1000. The **ohos.permission.BUNDLE_ACTIVE_INFO** permission is required.
+8. Query FA usage records. The maximum number of returned records cannot exceed the value specified by `maxNum`. If `maxNum` is not specified, the default value is 1000. The `ohos.permission.BUNDLE_ACTIVE_INFO` permission is required.
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -448,3 +447,11 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
         }
     });
     ```
+
+## Samples
+
+For device usage statistics, the following samples are available:
+
+- [StorageStatistic (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DeviceManagement/StorageStatistic)
+
+- [DeviceUsageStatistics (ArkTS) (Full SDK) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DeviceUsageStatistics/DeviceUsageStatistics)

@@ -5,10 +5,12 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-Form Kit provides a development framework and APIs for embedding application information into system entries like the home screen <!--RP3--><!--RP3End-->. It can extract key user information or frequent operations into service widgets (referred to as "widgets"), which can be added to the home screen <!--RP3--><!--RP3End--> for easy access to information and direct service interactions.
+<!-- md-trans-meta sourceCommit=62c367e25c754253033ba0b2b60ba0a06413a197 translatedAt=2026-08-26T04:56:00.225Z pushedAt=2026-08-28T08:51:22.215Z -->
+
+Form Kit provides a development framework and APIs for embedding app information on the home screen<!--RP3--><!--RP3End-->. It allows you to extract important information or frequently used operations from an app into service widgets (widgets for short). By adding widgets to the home screen<!--RP3--><!--RP3End-->, you can achieve convenient information display and direct service access.
 
 ## Scenarios for Widget Usage
-- Supported devices: smartphones, tablets, PCs/2-in-1 devices, smart TVs, smart watches, and head units. This kit is not supported on lite wearables.
+- Supported device types: phones, tablets, PCs/2-in-1 devices, TVs, wearables, and head units. Lite wearables do not support this Kit.
 - Supported application types: Widgets can be developed in both applications and atomic services.
 - Supported positions: Users can add widgets to the home screen <!--RP3--><!--RP3End-->. Widgets cannot be embedded in common applications.
 - To use a widget:

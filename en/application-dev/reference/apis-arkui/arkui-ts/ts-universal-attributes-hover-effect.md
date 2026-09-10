@@ -5,8 +5,9 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:40:02.135Z -->
 
-The hover effect is applied to a component in hover state.
+Sets the mouse hover display effect of a component. It supports multiple hover effect types such as scaling, fade-in/fade-out, and the system default, providing visual feedback when the mouse pointer hovers over a component to help users identify the current interaction area and improve the UI interaction experience.
 
 >  **NOTE**
 >
@@ -16,7 +17,7 @@ The hover effect is applied to a component in hover state.
 
 hoverEffect(value: HoverEffect): T
 
-Sets the hover effect for the component. When no hover effect is specified, the component uses the default **HoverEffect.Auto** effect. For components with hover effects applied, the hover effect is hidden when the mouse hovers and presses down on the component, and restored when the mouse button is released.
+Sets the mouse hover display effect of a component. When hoverEffect is not set, the default hover effect of the component is HoverEffect.Auto. For a component with a hover effect set, the hover effect disappears when the mouse hovers over the component and is pressed; the hover effect is restored when the mouse is released and the mouse pointer remains hovering over the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -32,7 +33,7 @@ Sets the hover effect for the component. When no hover effect is specified, the 
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which supports chained calls. |
 
 ## Example
 
@@ -55,30 +56,30 @@ struct HoverExample {
           .backgroundColor(Color.Gray)
           .position({ x: 40, y: 120 })
           .hoverEffect(HoverEffect.Scale)
-          .onHover((isHover?: boolean) => {
-            console.info(`Scale isHover: ${isHover}`)
-            this.isHoverVal = isHover as boolean
+          .onHover((isHover: boolean) => {
+            console.info(`Scale isHover: ${isHover}`);
+            this.isHoverVal = isHover;
           })
 
-        Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 })
+        Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 });
         Column()
           .width('80%')
           .height(200)
           .backgroundColor(Color.Yellow)
           .hoverEffect(HoverEffect.Highlight)
           .position({ x: 40, y: 420 })
-          .onHover((isHover?: boolean) => {
-            console.info(`Highlight isHover: ${isHover}`)
-            this.isHoverVal = isHover as boolean
+          .onHover((isHover: boolean) => {
+            console.info(`Highlight isHover: ${isHover}`);
+            this.isHoverVal = isHover;
           })
       }
       .hoverEffect(HoverEffect.None)
       .width('100%')
       .height('100%')
       .border({ width: 1 })
-      .onHover((isHover?: boolean) => {
-        console.info('HoverEffect.None')
-        this.isHoverVal = isHover as boolean
+      .onHover((isHover: boolean) => {
+        console.info('HoverEffect.None');
+        this.isHoverVal = isHover;
       })
     }
   }

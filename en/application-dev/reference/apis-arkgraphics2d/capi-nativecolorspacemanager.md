@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:15:32.276Z pushedAt=2026-08-25T07:18:32.208Z -->
 
 ## Overview
 
@@ -14,6 +15,7 @@ Provides the capabilities of creating a color space and obtaining color space at
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
 **Since**: 13
+
 ## Files
 
 | Name| Description|

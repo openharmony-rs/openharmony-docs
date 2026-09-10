@@ -6,7 +6,6 @@
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:37.455Z pushedAt=2026-06-25T09:29:37.947Z -->
 
 ## When to Use
 
@@ -40,7 +39,8 @@ Strong consistency has high requirements on distributed data management and may 
 
 When data is synced across devices, access control is performed based on the device level and data security label. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
 
+## Samples
 
+For the development of distributed applications, the following sample is available for reference:
 
-
-
+- [DistributedAuthentication (ArkTS) (Full SDK) (API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)

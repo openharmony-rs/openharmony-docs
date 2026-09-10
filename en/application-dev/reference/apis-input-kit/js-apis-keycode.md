@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.keyCode (Keycode)
+# @ohos.multimodalInput.keyCode (Key Code)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:18.955Z pushedAt=2026-06-12T08:24:27.880Z -->
+<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:21:27.905Z pushedAt=2026-09-03T08:37:43.257Z -->
 
 The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
@@ -57,8 +57,8 @@ Enumerates the key codes.
 | KEYCODE_7                        |  2007 | Key 7                      |
 | KEYCODE_8                        |  2008 | Key 8                      |
 | KEYCODE_9                        |  2009 | Key 9                      |
-| KEYCODE_STAR                     |  2010 | Key /                      |
-| KEYCODE_POUND                    |  2011 | Key /                      |
+| KEYCODE_STAR                     |  2010 | Key *                      |
+| KEYCODE_POUND                    |  2011 | Key #                      |
 | KEYCODE_DPAD_UP                  |  2012 | Up key on D-pad                     |
 | KEYCODE_DPAD_DOWN                |  2013 | Down key on D-pad                     |
 | KEYCODE_DPAD_LEFT                |  2014 | Left key on D-pad                     |
@@ -103,16 +103,16 @@ Enumerates the key codes.
 | KEYCODE_ENVELOPE                 |  2053 | Email key, which is used to start the email application   |
 | KEYCODE_ENTER                    |  2054 | Enter key                        |
 | KEYCODE_DEL                      |  2055 | Delete key                        |
-| KEYCODE_GRAVE                    |  2056 | Key /                      |
+| KEYCODE_GRAVE                    |  2056 | Key `                      |
 | KEYCODE_MINUS                    |  2057 | Key -                      |
 | KEYCODE_EQUALS                   |  2058 | Key =                      |
 | KEYCODE_LEFT_BRACKET             |  2059 | Key [                      |
 | KEYCODE_RIGHT_BRACKET            |  2060 | Key ]                      |
-| KEYCODE_BACKSLASH                |  2061 | Key \                      |
+| KEYCODE_BACKSLASH                |  2061 | Key \\                      |
 | KEYCODE_SEMICOLON                |  2062 | Key ;                      |
 | KEYCODE_APOSTROPHE               |  2063 | Key '                |
 | KEYCODE_SLASH                    |  2064 | Key /                      |
-| KEYCODE_AT                       |  2065 | Key /                      |
+| KEYCODE_AT                       |  2065 | Key @                      |
 | KEYCODE_PLUS                     |  2066 | Key +                      |
 | KEYCODE_MENU                     |  2067 | Menu key                        |
 | KEYCODE_PAGE_UP                  |  2068 | Page Up key                      |
@@ -161,7 +161,7 @@ Enumerates the key codes.
 | KEYCODE_NUMPAD_8                 |  2111 | Key 8 on numeric keypad                   |
 | KEYCODE_NUMPAD_9                 |  2112 | Key 9 on numeric keypad                   |
 | KEYCODE_NUMPAD_DIVIDE            |  2113 | Key / on numeric keypad                   |
-| KEYCODE_NUMPAD_MULTIPLY          |  2114 | Key ) on numeric keypad                   |
+| KEYCODE_NUMPAD_MULTIPLY          |  2114 | Key * on numeric keypad                   |
 | KEYCODE_NUMPAD_SUBTRACT          |  2115 | Key - on numeric keypad                   |
 | KEYCODE_NUMPAD_ADD               |  2116 | Key + on numeric keypad                   |
 | KEYCODE_NUMPAD_DOT               |  2117 | Key . on numeric keypad                   |
@@ -203,7 +203,7 @@ Enumerates the key codes.
 | KEYCODE_STOP                     |  2616 | Stop key                        |
 | KEYCODE_AGAIN                    |  2617 | Again key                        |
 | KEYCODE_PROPS                    |  2618 | Props key                        |
-| KEYCODE_UNDO                     |  2619 | Undo key                        |
+| KEYCODE_UNDO                     |  2619 | Undo key                         |
 | KEYCODE_COPY                     |  2620 | Copy key                        |
 | KEYCODE_OPEN                     |  2621 | Open key                        |
 | KEYCODE_PASTE                    |  2622 | Paste key                        |

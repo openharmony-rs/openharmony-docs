@@ -1,10 +1,11 @@
 # Developing a File Manager Application (for System Applications Only)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-26T04:31:05.571Z pushedAt=2026-08-28T03:34:40.216Z -->
 
 OpenHarmony is prebuilt with the **FileManager** application. You can also develop your own file manager application as required.
 
@@ -33,7 +34,7 @@ For details about the APIs for developing the user file manager, see [User File 
 
 3. Query device information.
 
-   You can obtain attributes of the devices managed by one or all file management servers in the system. You can also filter devices as required.
+   You can obtain attributes of the devices managed by all file management servers in the system, or attributes of the devices managed by a specific file management server.
 
    In the user file access framework, **RootInfo** indicates the attribute information of a device. For example, obtain **RootInfo** of all devices.
 
@@ -84,7 +85,7 @@ For details about the APIs for developing the user file manager, see [User File 
 
 4. View directories.
 
-   In the user file access framework, **FileInfo** indicates basic information about a file or folder. You can use **listfile()** to obtain a **FileIterator** object that traverses all files (folder) of the next level or use **scanfile()** to obtain a **FileIterator** object that meets the specified conditions.
+   In the user file access framework, **FileInfo** indicates basic information about a file or folder. You can use **listfile()** to obtain a **FileIterator** object that traverses all files (folders) of the next level or use **scanfile()** to obtain a **FileIterator** object that meets the specified conditions.
 
     Currently, **listfile()** and **scanfile()** can be called by the **RootInfo** object to traverse the next-level files or filter the entire directory tree. In addition, **listfile()** and **scanfile()** can be called by the **FileInfo** object to traverse the next-level files or filter the specified directories.
 
@@ -94,7 +95,7 @@ For details about the APIs for developing the user file manager, see [User File 
 
    // Start from the root directory.
    let rootInfos = [];
-   // Obtain rootInfos by using getRoots().
+   // Obtain rootInfos from getRoots().
    let rootInfo: fileAccess.RootInfo = rootInfos[0];
    let fileInfos: Array<fileAccess.FileInfo> = [];
    let isDone: boolean = false;
@@ -215,7 +216,7 @@ You can use **notify()** to observe not only the changes of directories, but als
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
 
-   // Define the observer callback.
+   // Provide the listening callback method.
    const callbackDir1 = (NotifyMessageDir: fileAccess.NotifyMessage) => {
      if (NotifyMessageDir != undefined) {
        console.info('NotifyType: ' + NotifyMessageDir.type + 'NotifyUri:' + NotifyMessageDir.uris[0]);
@@ -239,7 +240,7 @@ You can use **notify()** to observe not only the changes of directories, but als
          console.error("createFileAccessHelper failed, errCode:" + error.code + ", errMessage:" + error.message);
      }
    }
-   // Pass in DEVICES_URI to registerObserver() to listen for the device online/offline status.
+   // Register the device observer. You can pass the provided DEVICES_URI to registerObserver() to listen for device online and offline status.
    async function RegisterObserver03() {
      try {
        // Subscribe to the device online/offline status.
@@ -249,7 +250,7 @@ You can use **notify()** to observe not only the changes of directories, but als
        console.error("unregisterObserver failed, errCode:" + error.code + ", errMessage:" + error.message);
      }
    }
-   // Pass in DEVICES_URI to unregisterObserver() to cancel the device status listening.
+   // Unregister the device observer. You can pass the provided DEVICES_URI to unregisterObserver() to stop listening for device online and offline status.
    async function UnregisterObserver04() {
      try {
        // Unsubscribe from the device online/offline status.

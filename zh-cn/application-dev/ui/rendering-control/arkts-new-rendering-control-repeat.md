@@ -99,7 +99,7 @@ struct RepeatExample {
 
 Repeat提供渲染模板（template）能力，可以在同一个数据源中渲染多种子组件。每个数据项会根据[.templateId()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)得到template type，从而渲染type对应的`.template()`中的子组件。
 
-> **说明:**
+> **说明：**
 >
 > - `.template()`需要在[懒加载模式](#懒加载能力说明)下使用。
 > - `.each()`等价于template type为空字符串的`.template()`。
@@ -167,7 +167,7 @@ Repeat的[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repea
 
 当`.key()`缺省时，Repeat会生成新的随机键值。当发现有重复key时，Repeat会在已有键值的基础上递归生成新的键值，直到没有重复键值。
 
-> **说明:**
+> **说明：**
 >
 > - 键值（key）与索引（index）的区别：键值是数据项的唯一标识符，Repeat根据键值是否发生变化判断数据项是否更新；索引只标识数据项在数组中的位置。
 > - 在[懒加载模式](#懒加载能力说明)下，Repeat也会通过状态管理机制监听数据本身的变化，从而实现高效的更新。
@@ -181,11 +181,13 @@ Repeat的[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repea
 
 键值生成示例：
 
-```ts
+<!-- @[repeat_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatKeyGeneration.ets) -->
+
+``` TypeScript
 @ObservedV2
 class ExampleData {
-  @Trace str: string;
-  num: number;
+  @Trace public str: string;
+  public num: number;
 
   constructor(s: string, n: number) {
     this.str = s;
@@ -195,7 +197,7 @@ class ExampleData {
 
 @Entry
 @ComponentV2
-struct Index {
+struct RepeatKeyGeneration {
   @Local exampleList: Array<ExampleData> = [];
 
   aboutToAppear(): void {
@@ -1618,7 +1620,9 @@ struct EntryCompSucc {
 
 示例代码如下：
 
-``` ts
+<!-- @[repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
+
+``` TypeScript
 import { UIUtils, Binding } from '@kit.ArkUI';
 
 @Entry
@@ -1657,9 +1661,12 @@ struct RepeatBuilderPage {
           .each((ri) => {
             ListItem() {
               Column({ space: 2 }) {
-                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item)) // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新。
-                this.buildItem2(ri) // 按引用传递，状态变量的改变会引起@Builder函数内的UI刷新。
-                this.buildItem3(ri.item) // 反例。按值传递，状态变量的改变不会引起@Builder函数内的UI刷新。
+                // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新。
+                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item))
+                // 按引用传递，状态变量的改变会引起@Builder函数内的UI刷新。
+                this.buildItem2(ri)
+                // 反例。按值传递，状态变量的改变不会引起@Builder函数内的UI刷新。
+                this.buildItem3(ri.item)
               }
             }.border({ width: 1 })
           }).virtualScroll()
@@ -1679,8 +1686,6 @@ struct RepeatBuilderPage {
   }
 }
 ```
-
-<!-- [repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
 
 @Builder传参方式依次为makeBinding()、地址传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
 

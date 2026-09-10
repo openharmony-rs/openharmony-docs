@@ -832,7 +832,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-### List Scrolling - ForEach Usage Scenario
+### List Scrolling with ForEach
 
 When **ForEach** is used to create reusable custom components, the full-expansion behavior of the **ForEach** rendering control syntax prevents the reusable components from being reused. In the example: clicking **update** successfully refreshes the data, but when scrolling the list, ListItemView cannot be reused. Clicking **clear** and then clicking **update** again allows ListItemView to be reused successfully, because multiple custom components that have already been destroyed are re-created within a single frame.
 

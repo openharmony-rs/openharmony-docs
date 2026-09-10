@@ -1,10 +1,11 @@
-# Adding Widgets to the Home Screen
+# Adding ArkTS Widgets to the Home Screen from Within an App
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a845c476ce2343c19fff0bcc26c64859afe6b660 translatedAt=2026-08-26T04:53:07.747Z pushedAt=2026-08-28T08:47:51.822Z -->
 
 Since API version 18, Form Kit provides the capability of adding ArkTS widgets to the home screen in an application, allowing users to conveniently view information or quickly access the application.
 
@@ -15,7 +16,7 @@ The following demonstrates how to add a widget to the home screen by tapping the
 2. Add a button for opening the Widget Manager page in the application using the [openFormManager](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18) method.
 
    <!-- @[FormManagerDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormManagerDemo/entry/src/main/ets/pages/Index.ets) --> 
-   
+
    ``` TypeScript
    // entry/src/main/ets/pages/Index.ets
    import { formProvider } from '@kit.FormKit';

@@ -1,7 +1,7 @@
 # AppServiceExtensionContext (应用后台服务扩展组件上下文)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
@@ -131,6 +131,10 @@ connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 将当前AppServiceExtensionAbility连接到一个ServiceExtensionAbility（ServiceExtensionAbility仅支持由系统应用开发，三方应用可连接），通过ConnectOptions的onConnect回调返回的remote对象与ServiceExtensionAbility通信，以使用ServiceExtensionAbility对外提供的能力。可使用返回的connectionID调用disconnectServiceExtensionAbility()断开连接。
 
+> **说明：**
+>
+> 该接口不支持连接分身应用的ServiceExtensionAbility。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **参数：**
@@ -175,8 +179,8 @@ const TAG: string = '[AppServiceExtensionAbility]';
 export default class AppServiceExtension extends AppServiceExtensionAbility {
   connection: number = 0;
 
-  onCreate(localWant: Want) {
-    let want: Want = {
+  onCreate(want: Want) {
+    let wantInfo: Want = {
       bundleName: 'com.example.myapp',
       abilityName: 'MyAbility'
     };
@@ -195,7 +199,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 
     try {
-      this.connection = this.context.connectServiceExtensionAbility(want, callback);
+      this.connection = this.context.connectServiceExtensionAbility(wantInfo, callback);
     } catch (paramError) {
       commRemote = null;
       // 处理入参错误异常
@@ -230,7 +234,7 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在[connectServiceExtensionAbility](#connectserviceextensionability)中返回的连接id。 |
+| connection | number | 是 | 在[connectServiceExtensionAbility](#connectserviceextensionability)中返回的连接ID。 |
 
 **返回值：**
 

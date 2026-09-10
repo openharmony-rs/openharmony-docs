@@ -5,8 +5,9 @@
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=12b765c141d566f832c33228e36b35617de964ef translatedAt=2026-09-04T03:33:23.482Z pushedAt=2026-09-09T09:11:03.718Z -->
 
-The **DataShareResultSet** module provides APIs for accessing the result set obtained from the database. You can access the values in the specified rows or the value of the specified data type.
+The **DataShareResultSet** module provides APIs for accessing the result set obtained from the database. You can access the values in the specified rows or the values of the specified data type.
 
 > **NOTE**
 >
@@ -38,21 +39,21 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
-        console.error("createDataShareHelper fail, error message : " + err);
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
       }
       let columns = ["*"];
-      let da = new dataSharePredicates.DataSharePredicates();
+      let predicates = new dataSharePredicates.DataSharePredicates();
       let resultSet: DataShareResultSet | undefined = undefined;
-      da.equalTo("name0", "ZhangSan");
+      predicates.equalTo("name0", "ZhangSan");
       if (dataShareHelper != undefined) {
-        (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
+        (dataShareHelper as dataShare.DataShareHelper).query(uri, predicates, columns).then((data: DataShareResultSet) => {
           console.info("query end, data : " + data);
           resultSet = data;
         }).catch((err: BusinessError) => {
-          console.error("query fail, error message : " + err);
+          console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
         });
       }
     });
@@ -67,7 +68,7 @@ The column or key names are returned as a string array, in which the strings are
 
 ### Properties
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 | Name       | Type     | Read-Only| Optional| Description                    |
 | ----------- | ------------- | ---- | ---- | ------------------------ |
@@ -106,7 +107,7 @@ goToLastRow(): boolean
 
 Moves to the last row of the result set.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Return value**
 
@@ -129,7 +130,7 @@ goToNextRow(): boolean
 
 Moves to the next row in the result set.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Return value**
 
@@ -152,7 +153,7 @@ goToPreviousRow(): boolean
 
 Moves to the previous row in the result set.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Return value**
 
@@ -175,7 +176,7 @@ goTo(offset: number): boolean
 
 Moves based on the specified offset.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
@@ -205,13 +206,13 @@ goToRow(position: number): boolean
 
 Moves to the specified row in the result set.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name**| **Type**| **Mandatory**| Description                                   |
 | ---------- | -------- | -------- | --------------------------------------- |
-| position   | number   | Yes      | Position to move to, starting from 0.|
+| position   | number   | Yes       | Target position to move to, starting from 0, in the range [0, rowCount-1]. |
 
 **Return value**
 
@@ -237,13 +238,13 @@ Obtains the value in the form of a byte array based on the specified column and 
 
 If the specified column or key is empty or the value is not of the Blob type, you need to determine whether to throw an exception.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number   | Yes       | Specified column index, starting from 0, with a value range of [0, columnCount-1]. |
 
 **Return value**
 
@@ -274,13 +275,13 @@ Obtains the value in the form of a string based on the specified column and the 
 
 If the specified column or key is empty or the value is not of the string type, you need to determine whether to throw an exception.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number | Yes | Index of the specified column, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value**
 
@@ -294,8 +295,12 @@ If the specified column or key is empty or the value is not of the string type, 
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getString = (resultSet as DataShareResultSet).getString(columnIndex);
-  console.info('resultSet.getString: ' + getString);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getString = (resultSet as DataShareResultSet).getString(columnIndex);
+    console.info('resultSet.getString: ' + getString);
+  }
 }
 ```
 
@@ -307,13 +312,13 @@ Obtains the value in the form of a long integer based on the specified column an
 
 If the specified column or key is empty or the value is not of the long type, you need to determine whether to throw an exception.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number   | Yes       | Index of the specified column, starting from 0, in the value range [0, columnCount-1]. |
 
 **Return value**
 
@@ -327,8 +332,12 @@ If the specified column or key is empty or the value is not of the long type, yo
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getLong = (resultSet as DataShareResultSet).getLong(columnIndex);
-  console.info('resultSet.getLong: ' + getLong);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getLong = (resultSet as DataShareResultSet).getLong(columnIndex);
+    console.info('resultSet.getLong: ' + getLong);
+  }
 }
 ```
 
@@ -340,13 +349,13 @@ Obtains the value in the form of a double-precision floating-point number based 
 
 If the specified column or key is empty or the value is not of the double type, you need to determine whether to throw an exception.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number   | required | Index of the specified column, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value**
 
@@ -360,8 +369,12 @@ If the specified column or key is empty or the value is not of the double type, 
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getDouble = (resultSet as DataShareResultSet).getDouble(columnIndex);
-  console.info('resultSet.getDouble: ' + getDouble);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getDouble = (resultSet as DataShareResultSet).getDouble(columnIndex);
+    console.info('resultSet.getDouble: ' + getDouble);
+  }
 }
 ```
 
@@ -373,7 +386,7 @@ Closes this result set.
 
 Calling this API will invalidate the result set and release all its resources.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Example**
 
@@ -391,7 +404,7 @@ Obtains the column index based on a column name.
 
 The column name is passed in as an input parameter.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
@@ -408,9 +421,9 @@ The column name is passed in as an input parameter.
 **Example**
 
 ```ts
-let ColumnName = "name";
+let columnName = "name";
 if (resultSet != undefined) {
-  let getColumnIndex = (resultSet as DataShareResultSet).getColumnIndex(ColumnName);
+  let getColumnIndex = (resultSet as DataShareResultSet).getColumnIndex(columnName);
   console.info('resultSet.getColumnIndex: ' + getColumnIndex);
 }
 ```
@@ -423,13 +436,13 @@ Obtains the column name based on a column index.
 
 The column index is passed in as an input parameter.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name** | **Type**| **Mandatory**| Description                      |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | Yes      | Column index.|
+| columnIndex | number   | Yes       | Index of the specified column in the result set, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value**
 
@@ -455,13 +468,13 @@ Obtains the data type based on the specified column index.
 
 If the specified column or key is empty or the value is not of the DataType type, you need to determine whether to throw an exception.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 **Parameters**
 
 | **Name** | **Type**| **Mandatory**| Description                      |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | Yes      | Column index.|
+| columnIndex | number   | Yes       | Index of the specified column in the result set, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value**
 
@@ -474,8 +487,13 @@ If the specified column or key is empty or the value is not of the DataType type
 ```ts
 let columnIndex = 1;
 if (resultSet != undefined) {
-  let getDataType = (resultSet as DataShareResultSet).getDataType(columnIndex);
-  console.info('resultSet.getDataType: ' + getDataType);
+  let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getDataType = (resultSet as DataShareResultSet).getDataType(columnIndex);
+    console.info('resultSet.getDataType: ' + getDataType);
+  }
 }
 ```
 
@@ -483,7 +501,7 @@ if (resultSet != undefined) {
 
 Enumerates the data types.
 
-**System capability**: SystemCapability.DistributedDataManager.DataShare.Core
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
 | Name       | Value| Description                |
 | ----------- | ------ | -------------------- |

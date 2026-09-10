@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Defines the tab content view. This component is used only in [Tabs](ts-container-tabs.md).
+The **TabContent** component is used to define the content view of each tab in the [Tabs](ts-container-tabs.md) component. It supports features such as rendering a single child component, content cropping control, and customizing the page in approved sample mode. This component is applicable to application scenarios where multiple tabs need to be switched, such as category navigation and function module switching. It helps developers quickly implement content display and interaction by page.
 
 >  **NOTE**
 >
@@ -30,6 +30,10 @@ TabContent()
 
 Creates the **TabContent** component, which represents the content associated with a specific tab.
 
+>  **NOTE**
+>
+>  The **TabContent** component can only be used as a child component of the **Tabs** component. Otherwise, the component cannot be displayed properly.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -43,8 +47,6 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 
 Sets the content displayed on the tab bar.
-
-If the icon uses an SVG image source, delete the width and height attribute values built in the SVG image source. Otherwise, the width and height attribute values built in the SVG image source are used.
 
 If the content exceeds the space provided by the tab bar, it will be clipped.
 
@@ -62,11 +64,15 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 
-Sets the content displayed on the tab bar. The bottom tab style does not include an indicator. When an icon display error occurs, a gray blank block is displayed.
+Sets the content displayed on the tab bar. The bottom tab style does not include an indicator. If the icon resource fails to be loaded or does not exist, a gray block is displayed.
+
+If the icon uses an SVG image, you need to delete the built-in width and height attributes of the image. Otherwise, the width and height attribute values built in the SVG image source are used.
+
+If the content exceeds the space provided by the tab bar, it will be clipped.
 
 >  **NOTE**
 >
->  - [SubTabBarStyle](#subtabbarstyle9): text + underline or text + board. The text style can be set. It is recommended that the subtab be placed at the top or bottom. By default, the animation transition effect is displayed when a tab is switched. This style is applicable to the top categories (such as Following, Video, Digital) of information apps and level-2 navigation scenarios of functional modules.
+>  - Subtab style ([SubTabBarStyle](#subtabbarstyle9)): Generally, the tab bar is in the style of text + underline or text + background. The text style can be set. It is recommended that the tab bar be placed at the top or bottom. By default, the animation transition effect is displayed when a tab is switched. This style is applicable to the top categories (such as Following, Video, Digital) of information apps and level-2 navigation scenarios of functional modules.
 >  
 >  - [BottomTabBarStyle](#bottomtabbarstyle9): icon + text, without underline or board. By default, no animation transition effect is displayed when a tab is switched. Bottom tabs are usually used for the main navigation of an app (such as Home, Discover, and Recommended). Side tabs are applicable to wide-screen scenarios. You can set **vertical(true)** to enable the vertical layout so that the tabs are displayed on the side. By default, the tabs are displayed on the left.
 
@@ -78,7 +84,7 @@ Sets the content displayed on the tab bar. The bottom tab style does not include
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: bottom and side tab style|
+| value  | [SubTabBarStyle](#subtabbarstyle9) \| [BottomTabBarStyle](#bottomtabbarstyle9) | Yes  | Content displayed on the tab bar. The approved sample style of the sub tab bar or bottom tab bar is supported.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.|
 
 ### tabBar<sup>18+</sup>
 
@@ -86,11 +92,13 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 Sets the content displayed on the tab bar.
 
-If **BottomTabBarStyle** or **TabBarOptions** is used and an icon is set, a gray block will be displayed if the icon is invalid. If the icon uses an SVG image source, delete the width and height attribute values built in the SVG image source. Otherwise, the width and height attribute values built in the SVG image source are used.
+If the **BottomTabBarStyle** or **TabBarOptions** type is used as the input parameter and the **icon** is set, a gray block is displayed when the icon resource fails to be loaded or does not exist. If the **icon** uses the SVG image source, you need to delete the built-in width and height attributes of the image source. Otherwise, the width and height attribute values built in the SVG image source are used.
 
 If the content exceeds the space provided by the tab bar, it will be clipped.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,11 +106,11 @@ If the content exceeds the space provided by the tab bar, it will be clipped.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content, which can be customized.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**: resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs.|
+| content | [ComponentContent](../js-apis-arkui-ComponentContent.md)&nbsp;\|<br>[SubTabBarStyle](#subtabbarstyle9) \|[BottomTabBarStyle](#bottomtabbarstyle9)&nbsp;\|<br>string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|<br>[CustomBuilder](ts-types.md#custombuilder8)\|&nbsp;<br>[TabBarOptions](#tabbaroptions18) | Yes  | Content displayed on the tab bar.<br>**ComponentContent**: encapsulation of the component content, which can be customized.<br>**NOTE**<br>1. Custom content does not support the **labelStyle** attribute.<br>2. If the custom content exceeds the content box of the tab page, the excess part is not displayed.<br>3. If the custom content is within the content box of the tab page, it is aligned in the center.<br>4. If the custom content is abnormal or no display component is available, a blank area is displayed.<br>**SubTabBarStyle**: subtab style.<br>**BottomTabBarStyle**: style of the bottom and side tabs. The bottom style does not have the underline effect.<br>**string**: string type.<br>**Resource**: resource reference for importing strings from system or application resources.<br>**CustomBuilder**: builder that can take components as arguments.<br>**TabBarOptions**: options for configuring images and text content on the tabs.|
 
 >  **NOTE**
 >
->  - The **TabContent** component does not support setting of the common width attribute. By default, its width is the same as that of the parent **Tabs** component.
+>  - The **TabContent** component does not support the setting of the general width attribute. By default, the width of the **TabContent** component is the width of the parent **Tabs** component.
 >  - The **TabContent** component does not support setting of the universal height attribute. Its height is determined by the height of the parent **Tabs** component and the **TabBar** component.
 >  - When **vertical** is **false**, the width and height restrictions described above are exchanged.
 >  - **TabContent** does not support page scrolling. If page scrolling is required, consider nesting a list.
@@ -120,11 +128,13 @@ Defines the options for configuring images and text content on the tabs.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type        | Read-Only| Optional| Description|
 | -------- | -------- | --- | ----- | -------- |
-| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Image for the tab. If this parameter is not set, no image is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Image for the tab. If this parameter is not set, no image is displayed. If the icon uses an SVG image, you need to delete the built-in width and height attributes of the image. Otherwise, the width and height attribute values built in the SVG image source are used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | No| Yes| Text for the tab. If this parameter is not set, no text is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## SubTabBarStyle<sup>9+</sup>
@@ -155,6 +165,8 @@ Constructor used to create a **SubTabBarStyle** instance. You can set custom con
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -171,6 +183,8 @@ Static constructor used to create a **SubTabBarStyle** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -183,7 +197,7 @@ Static constructor used to create a **SubTabBarStyle** instance.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object created.|
+| [SubTabBarStyle](#subtabbarstyle9) | Returns the created **SubTabBarStyle** object, which is used to set the child tab style.|
 
 ### of<sup>12+</sup>
 
@@ -192,6 +206,8 @@ static of(content: ResourceStr | ComponentContent): SubTabBarStyle
 Static constructor used to create a **SubTabBarStyle** instance. You can set custom content with **ComponentContent**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,7 +221,7 @@ Static constructor used to create a **SubTabBarStyle** instance. You can set cus
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object created.|
+| [SubTabBarStyle](#subtabbarstyle9) | Returns the created **SubTabBarStyle** object, which is used to set the style of the selected subtab.|
 
 ### indicator<sup>10+</sup>
 
@@ -215,19 +231,21 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [IndicatorStyle](#indicatorstyle10)| Yes  | Indicator style object for the selected subtab.|
+| value | [IndicatorStyle](#indicatorstyle10)| Yes  | Underline style object of the selected subtab, which is used to set the color, height, width, and corner radius of the underline.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | Returns the **SubTabBarStyle** object itself for chain calls.|
 
 ### indicator<sup>22+</sup>
 
@@ -237,13 +255,15 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [IndicatorStyle](#indicatorstyle10) \| [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
+| value | [IndicatorStyle](#indicatorstyle10) | [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
 
 > **NOTE**
 > - **IndicatorStyle**: a solid line. By default, the animation transition effect is displayed when a tab is switched.
@@ -253,7 +273,7 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
 
 ### selectedMode<sup>10+</sup>
 
@@ -263,19 +283,21 @@ Sets the display mode of the selected subtab. It takes effect only in the horizo
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [SelectedMode](#selectedmode10) | Yes  | Display mode of the selected subtab.<br>Default value: **SelectedMode.INDICATOR**|
+| value | [SelectedMode](#selectedmode10) | Yes  | Display mode of the selected subtab, which is used to control the style of the selected subtab. The value can be **SelectedMode.INDICATOR** (underline mode, which is applicable to scenarios where the selected state needs to be clearly indicated) or **SelectedMode.BOARD** (backing board mode, which is applicable to scenarios where the selected tab needs to be highlighted).<br>Default value: **SelectedMode.INDICATOR**|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
 
 ### board<sup>10+</sup>
 
@@ -285,27 +307,31 @@ Sets the background style (board style) of the selected subtab. It takes effect 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [BoardStyle](#boardstyle10) | Yes  | Background style object for the selected subtab.|
+| value | [BoardStyle](#boardstyle10) | Yes  | Backing board style object of the selected subtab, which is used to set the corner radius and other styles of the backing board.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
 
 ### labelStyle<sup>10+</sup>
 
 labelStyle(value: LabelStyle): SubTabBarStyle
 
-Sets the style of the label text and font for the subtab.
+Sets the style of the label text and font for the subtab. The label text and font style of the subtab are valid only in horizontal mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,13 +339,13 @@ Sets the style of the label text and font for the subtab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [LabelStyle](#labelstyle10) | Yes  | Style object for the label text and font of the subtab.|
+| value | [LabelStyle](#labelstyle10) | Yes  | Label text and font style object of a subtab, which is used to set the text color, size, font, and number of lines.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain call.|
 
 ### padding<sup>10+</sup>
 
@@ -329,19 +355,21 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding attributes of a subtab (percentage setting is not supported), which are used to adjust the distance between the tab content and the boundary.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**<br>**NOTE**<br>Since API version 12, the [padding<sup>12+</sup>](#padding12) method is added to support the [LocalizedPadding](ts-types.md#localizedpadding12) type and the mirroring capability.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain call.|
 
 ### padding<sup>12+</sup>
 
@@ -351,27 +379,31 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>If the value is abnormal, the default value is used.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Inner margin of the subtab, which is used to adjust the distance between the tab content and the boundary. The value cannot be set to a percentage. This property supports the mirroring capability.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
 
 ### id<sup>11+</sup>
 
 id(value: string): SubTabBarStyle
 
-Sets the subtab ID.
+Sets the subtab ID. It can be used to find or control a specified tab through **TabsController**, and identify different tabs in status management and event processing.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -379,13 +411,13 @@ Sets the subtab ID.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | ID of a subtab.|
+| value | string | Yes  | ID of a subtab, which is used to identify and distinguish different tabs. This parameter can be set when you need to display, hide, or perform other operations on a specified tab using code. The ID must be unique in the same **Tabs** component.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [SubTabBarStyle](#subtabbarstyle9) | **SubTabBarStyle** object.|
+| [SubTabBarStyle](#subtabbarstyle9) | The **SubTabBarStyle** object itself, which is used for chain calling.|
 
 ## IndicatorStyle<sup>10+</sup>
 
@@ -393,15 +425,17 @@ Represents an indicator style object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the indicator and board.<br>Default value: **#FF007DFF** (light blue)|
-| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
-| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
-| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
-| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
+| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
 
 ## DrawableTabBarIndicator<sup>22+</sup>
 
@@ -409,15 +443,17 @@ Uses an image resource as the indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
 | drawable | [DrawableDescriptor](#drawabledescriptor22) | No| Yes| Image resource of the indicator.<br>Supported types: [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor), [PixelMapDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#pixelmapdrawabledescriptor12), [LayeredDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#layereddrawabledescriptor), and [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12). If an invalid image resource is passed, the default solid indicator is displayed.|
-| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
-| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>If this parameter is set to **0**, the tab text width will be used instead.|
-| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
-| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.<br>If this parameter is set to **0**, the tab text width will be used instead.|
+| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
+| marginTop | [Length](ts-types.md#length) | No| Yes| Spacing between the indicator and text. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
 
 ## DrawableDescriptor<sup>22+</sup>
 
@@ -426,6 +462,8 @@ type DrawableDescriptor = DrawableDescriptor
 Defines the input parameter object of the **drawable** attribute in the **DrawableTabBarIndicator** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -439,12 +477,14 @@ Enumerates the display modes of selected subtabs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name      | Value| Description              |
 | ---------- | ----- | ------------------------ |
-| INDICATOR | 0 | Indicator mode.    |
-| BOARD   | 1 | Board mode.    |
+| INDICATOR | 0 | Indicator mode. This mode is applicable to scenarios where the selected state needs to be clearly indicated, such as news apps.|
+| BOARD   | 1 | Board mode. This mode is applicable to scenarios where the selected tab needs to be clearly distinguished, such as function navigation apps.    |
 
 ## BoardStyle<sup>10+</sup>
 
@@ -452,24 +492,28 @@ Represents a board style object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | ------------ | ------------------------ |
-| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the board. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞)|
+| borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the board. It cannot be set in percentage.<br>Default value: **8.0**<br>Unit: vp<br>Value range: [0, +∞) If the value is abnormal, the default value is used.|
 
 ## LabelStyle<sup>10+</sup>
 
 Represents a style object for the label text and font.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                | Type                                                    | Read-Only| Optional| Description                                                        |
 | -------------------- | ----------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
 | overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No| Yes  | Display mode when the label text is too long. By default, an ellipsis (...) is used to represent text overflow.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxLines             | number                                                       | No| Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. You can use **textOverflow** to specify how to represent text overflow. Default value: **1**<br>Value range: [1, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: (0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: [minFontSize, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxLines             | number                                                       | No| Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. You can use **textOverflow** to specify how to represent text overflow. Default value: **1**<br>Value range: [1, +∞) If the value is abnormal, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Minimum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: (0, +∞) This parameter does not take effect when the value is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No| Yes  | Maximum font size of the label text. It cannot be set in percentage. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings. When the adaptive text size is set, **font.size** does not take effect. The default value is **0.0fp**, indicating that the adaptive text size has no effect.<br>Value range: [minFontSize, +∞) This parameter does not take effect when the value is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No| Yes  | How the adaptive height is determined for the label text. By default, the **maxLines** settings are prioritized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | font                 | [Font](ts-types.md#font)                                     | No| Yes | Font of the label text.<br>When the tab is a subtab, the default font is in 16.0 fp size, 'HarmonyOS Sans' family, normal font style, medium weight when selected, and normal weight when not selected.<br>When the tab is a bottom tab, the default font is in 10.0 fp size, 'HarmonyOS Sans' family, normal font style, and medium weight.<br>The default font size of the bottom tab page is 12.0 fp since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | unselectedColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the label text when it is not selected.<br>Default value: **#99182431**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -493,7 +537,7 @@ A constructor used to create a **BottomTabBarStyle** instance.
 
 | Name| Type        | Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12)| Yes| Image for the tab.|
+| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12)| Yes| Image for the tab. If the icon resource fails to be loaded or does not exist, a gray block is displayed. If the icon uses an SVG image source, the built-in width and height attributes of the image source must be deleted. Otherwise, the width and height attribute values built in the SVG image source are used.|
 | text | [ResourceStr](ts-types.md#resourcestr) | Yes| Text for the tab.|
 
 ### of<sup>10+</sup>
@@ -504,20 +548,22 @@ Static constructor used to create a **BottomTabBarStyle** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type        | Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12)| Yes| Image for the tab.|
+| icon | [ResourceStr](ts-types.md#resourcestr) \| [TabBarSymbol<sup>12+</sup>](#tabbarsymbol12)| Yes| Image for the tab. When the icon resource fails to be loaded or does not exist, a gray block is displayed. If the icon uses an SVG image source, the built-in width and height attributes of the image source must be deleted. Otherwise, the width and height attribute values built in the SVG image source are used.|
 | text | [ResourceStr](ts-types.md#resourcestr) | Yes| Text for the tab.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object created.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the created **BottomTabBarStyle** object, which is used to set the bottom tab and side tab in approved sample mode.|
 
 ### padding<sup>10+</sup>
 
@@ -527,19 +573,21 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab.<br>Value range: [0, +∞]<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | Yes  | Padding of the bottom tab, which is used to set the distance between the tab content and the boundary. (The percentage setting is not supported.) When you need to adjust the interior space distribution of the tab and optimize the visual effect, pass a custom value.<br>Value range: [0, +∞]<br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}**<br>If of the LocalizedPadding type, this attribute supports the mirroring capability.<br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),**<br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | The **BottomTabBarStyle** object itself is returned for chain call.|
 
 ### verticalAlign<sup>10+</sup>
 
@@ -548,6 +596,8 @@ verticalAlign(value: VerticalAlign): BottomTabBarStyle
 Sets the vertical alignment mode of the images and text on the bottom tab.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -561,7 +611,7 @@ Sets the vertical alignment mode of the images and text on the bottom tab.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chained calls.|
 
 ### layoutMode<sup>10+</sup>
 
@@ -570,6 +620,8 @@ layoutMode(value: LayoutMode): BottomTabBarStyle
 Sets the layout mode of the images and texts on the bottom tab.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -583,7 +635,7 @@ Sets the layout mode of the images and texts on the bottom tab.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chained calls.|
 
 ### symmetricExtensible<sup>10+</sup>
 
@@ -593,19 +645,21 @@ Sets whether the images and text on the bottom tab can be symmetrically extended
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | boolean | Yes  | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.<br>Default value: **false**, indicating that the images and text on the bottom tab cannot be symmetrically extended by the minimum value of the available space on the left and right bottom tabs.|
+| value | boolean | Yes  | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. If **true** is passed, the symmetric borrowing function is enabled (when you need to optimize the tab layout and fully utilize the space). If **false** is passed, the symmetric borrowing function is disabled (when you need to keep the fixed tab layout and avoid positional changes of tab content).<br>The default value is **false**.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chaining calls.|
 
 ### labelStyle<sup>10+</sup>
 
@@ -615,19 +669,21 @@ Sets the style of the label text and font for the bottom tab.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [LabelStyle](#labelstyle10) | Yes  | Style of the label text and font for the bottom tab.|
+| value | [LabelStyle](#labelstyle10) | Yes  | Label text and font style of the bottom tab, which is used to set the text color, size, font, and number of lines.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chaining calls.|
 
 ### id<sup>11+</sup>
 
@@ -637,27 +693,31 @@ Sets the ID of the bottom tab.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | Sets the ID of the bottom tab.|
+| value | string | Yes  | ID of the bottom tab.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | Returns the **BottomTabBarStyle** object itself for chaining calls.|
 
 ### iconStyle<sup>12+</sup>
 
 iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
-Sets the style of the label icon on the bottom tab.
+Sets the style of the bottom tab icon.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -665,19 +725,21 @@ Sets the style of the label icon on the bottom tab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| style | [TabBarIconStyle](#tabbariconstyle12) | Yes  | Style of the label icon on the bottom tab.|
+| style | [TabBarIconStyle](#tabbariconstyle12) | Yes  | Style of the bottom tab icon, which is used to set the colors of the selected and unselected states of the settings icon.|
 
 **Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| [BottomTabBarStyle](#bottomtabbarstyle9) | **BottomTabBarStyle** object.|
+| [BottomTabBarStyle](#bottomtabbarstyle9) | The **BottomTabBarStyle** object itself, which is used for chain call.|
 
 ## TabBarSymbol<sup>12+</sup>
 
 Represents a tab bar symbol style object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -692,26 +754,30 @@ Enumerates the layout modes of the images and texts on the bottom tabs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name        | Value| Description                                    |
 | ----------  | - | ---------------------------------------- |
-| AUTO        | 0 | When the tab width is greater than 104 vp, the tab content is arranged from left to right. Otherwise,the tab content is arranged from top to bottom. This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
-| VERTICAL    | 1 | The tab content is arranged from top to bottom.|
-| HORIZONTAL  | 2 | The tab content is arranged from left to right.|
+| AUTO        | 0 | If the tab width is greater than 104 vp, the tab content is arranged from left to right (icon on the left and text on the right). Otherwise, the tab content is arranged from top to bottom (icon on the top and text at the bottom). This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
+| VERTICAL    | 1 | The tab content is arranged from top to bottom, with the icon on the top and the text at the bottom. This value is applicable to scenarios where the tab width is limited and space needs to be saved.|
+| HORIZONTAL  | 2 | The tab content is arranged from left to right, with the icon on the left and the text on the right. This value is applicable to scenarios where the tab width is sufficient and more content needs to be displayed.|
 
 ## TabBarIconStyle<sup>12+</sup>
 
-Represents a label icon style object.
+Represents a tab bar icon style object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                | Type                                                    | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the label icon when it is not selected.<br>Default value: **#33182431**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the label icon when it is selected.<br>Default value: **#FF007DFF**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the icon when it is not selected.<br>Default value: **#33182431**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the icon when it is selected.<br>Default value: **#FF007DFF**<br>**NOTE**<br>This attribute only applies to an SVG image. Once set, the fill color will replace that of the SVG image.|
 
 ## Events
 
@@ -728,6 +794,8 @@ Called when the tab content is about to be displayed. The scenarios include the 
 > This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -749,6 +817,8 @@ Called when the tab content is about to be hidden. The scenarios include the tab
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -765,7 +835,7 @@ This example demonstrates how to use [onAnimationStart](ts-container-tabs.md#ona
 
 > **NOTE**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** > **resOptions** > **copyCodeResource** in the module's **build-profile.json5** file, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).
 
 ```ts
 // xxx.ets
@@ -776,8 +846,10 @@ struct TabContentExample {
   @State selectedFontColor: string = '#007DFF';
   @State currentIndex: number = 0;
   @State selectedIndex: number = 0;
+  // Create a Tabs controller to control the switching of TabContent.
   private controller: TabsController = new TabsController();
 
+  // Customize the TabBar builder to switch the icon and text color based on the selection status.
   @Builder tabBuilder(index: number) {
     Column() {
       // The common directory is at the same level as the pages directory.
@@ -796,6 +868,7 @@ struct TabContentExample {
 
   build() {
     Column() {
+      // Create the Tabs component, set the position of the tab bar to the bottom, and bind the controller.
       Tabs({ barPosition: BarPosition.End, controller: this.controller }) {
         TabContent() {
           Column() {
@@ -810,7 +883,7 @@ struct TabContentExample {
               .color('#182431')
               .opacity(0.05)
           }.width('100%')
-        }.tabBar(this.tabBuilder(0))
+        }.tabBar(this.tabBuilder(0)) // Set the tab bar to a custom style.
 
         TabContent() {
           Column() {
@@ -860,11 +933,12 @@ struct TabContentExample {
       .vertical(false)
       .barHeight(56)
       .onChange((index: number) => {
-        // currentIndex controls the displayed tab in TabContent.
+        // currentIndex controls the tab page displayed in TabContent, and selectedIndex controls the color switching of the custom TabBar.
         this.currentIndex = index;
         this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
+        // If the index of the current tab is the same as that of the target tab, the status does not need to be updated.
         if (index === targetIndex) {
           return;
         }
@@ -888,7 +962,7 @@ This example demonstrates how to create side tabs using [vertical](./ts-containe
 
 > **NOTE**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** > **resOptions** > **copyCodeResource** in the module's **build-profile.json5** file, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).
 
 ```ts
 // xxx.ets
@@ -919,9 +993,10 @@ struct TabContentExample {
 
   build() {
     Column() {
+      // Create the Tabs component, set the position of the TabBar to the start end, and bind the controller.
       Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
         TabContent()
-          .tabBar(this.tabBuilder(0))
+          .tabBar(this.tabBuilder(0)) // Set the TabBar to a custom style.
         TabContent()
           .tabBar(this.tabBuilder(1))
         TabContent()
@@ -933,11 +1008,12 @@ struct TabContentExample {
       .barWidth(96)
       .barHeight(414)
       .onChange((index: number) => {
-        // currentIndex controls the displayed tab in TabContent.
+        // currentIndex controls the tab page displayed in TabContent, and selectedIndex controls the color switching of the custom TabBar.
         this.currentIndex = index;
         this.selectedIndex = index;
       })
       .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
+        // If the index of the current tab page is the same as that of the target tab page, the status does not need to be updated.
         if (index === targetIndex) {
           return;
         }
@@ -968,14 +1044,17 @@ struct TabBarStyleExample {
     Column({ space: 5 }) {
       Text('Subtab style')
       Column() {
+        // Create the Tabs component and set the position of the tab bar to the start.
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
-          }.tabBar(new SubTabBarStyle('Pink'))
+          }.tabBar(new SubTabBarStyle('Pink')) // Set the tab bar to the sub tab approved sample style.
           .onWillShow(() => {
+            // Triggered when the TabContent is about to be displayed.
             console.info('Pink will show');
           })
           .onWillHide(() => {
+            // Triggered when the TabContent is about to be hidden.
             console.info('Pink will hide');
           })
 
@@ -1020,10 +1099,11 @@ struct TabBarStyleExample {
       }.width('100%').height(200)
       Text('Bottom tab style')
       Column() {
+        // Create a Tabs component and set the position of the tab bar to the bottom.
         Tabs({ barPosition: BarPosition.End }) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
-          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Pink'))
+          }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Pink')) // Set the tab bar to the bottom page in approved sample style.
           .onWillShow(() => {
             console.info('Pink will show');
           })
@@ -1113,7 +1193,8 @@ struct TabBarStyleExample {
             console.info('Green will hide');
           })
         }
-        .vertical(true).scrollable(true).barMode(BarMode.Fixed)
+        .vertical(true) // Set the tab mode to vertical.
+        .scrollable(true).barMode(BarMode.Fixed)
         .onChange((index: number) => {
           console.info(index.toString());
         })
@@ -1154,7 +1235,7 @@ struct TabsAttr {
     Column() {
       Button('Change Indicator Color').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Animation configuration for the width and height attributes of the <Button> component
+          // Configure the animation for the underline color attribute.
           if (this.colorFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1186,7 +1267,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Height').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Animation configuration for the width and height attributes of the <Button> component
+          // Configure the animation for the underline height attribute.
           if (this.heightFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1218,7 +1299,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Width').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Animation configuration for the width and height attributes of the <Button> component
+          // Configure the animation for the underline width attribute.
           if (this.widthFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1250,7 +1331,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Corner Radius').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Animation configuration for the width and height attributes of the <Button> component
+          // Configure the animation for the underline corner radius attribute.
           if (this.borderFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1282,7 +1363,7 @@ struct TabsAttr {
         })
       Button('Change Indicator Spacing').width('100%').margin({ bottom: '12vp' })
         .onClick((event?: ClickEvent) => {
-          // Animation configuration for the width and height attributes of the <Button> component
+          // Configure the animation for the underline spacing attribute.
           if (this.spaceFlag) {
             this.getUIContext()?.animateTo({
               duration: 1000, // Animation duration.
@@ -1374,9 +1455,7 @@ This example demonstrates how to achieve adaptive height for subtab text using [
 @Entry
 @Component
 struct TabsTextOverflow {
-  @State message: string = 'Hello World';
   private controller: TabsController = new TabsController();
-  @State subTabOverflowOpaque: boolean = true;
 
   build() {
     Column() {
@@ -1615,7 +1694,7 @@ how to change the icon color of bottom tabs using **unselectedColor** and **sele
 
 > **NOTE**
 >
-> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** > **resOptions** > **copyCodeResource** in the module's **build-profile.json5** file, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).
 
 ```ts
 // xxx.ets
@@ -1725,7 +1804,7 @@ struct Index {
   build() {
     Column({space: 5}) {
       Text('Bottom tab style')
-      Column(){
+      Column() {
         Tabs({barPosition: BarPosition.End}) {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
@@ -1778,7 +1857,7 @@ struct Index {
         .vertical(false)
         .scrollable(true)
         .barMode(BarMode.Fixed)
-        .onChange((index:number)=>{
+        .onChange((index: number) => {
           console.info(index.toString());
         })
         .width('100%')
@@ -2018,7 +2097,7 @@ struct TabsPreloadItems {
               console.info('preloadItems success.');
             })
             .catch((error: BusinessError) => {
-              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message);
+              console.error(`preloadItems failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
 
@@ -2031,7 +2110,7 @@ struct TabsPreloadItems {
               console.info('preloadItems success.');
             })
             .catch((error: BusinessError) => {
-              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message);
+              console.error(`preloadItems failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
       Button('preload items: [3]')
@@ -2043,7 +2122,7 @@ struct TabsPreloadItems {
               console.info('preloadItems success.');
             })
             .catch((error: BusinessError) => {
-              console.error('preloadItems failed, error code: ' + error.code + ', error message: ' + error.message);
+              console.error(`preloadItems failed. Code: ${error.code}, message: ${error.message}`);
             });
         })
     }
@@ -2085,9 +2164,6 @@ import { DrawableDescriptor } from '@kit.ArkUI';
 @Entry
 @Component
 struct TabsIndicatorExample {
-  @State isVertical: boolean = false;
-  @State text: string = 'Text';
-  @State barMode: BarMode = BarMode.Fixed;
   @State pixmapDesc: DrawableDescriptor | null = null;
 
   async aboutToAppear() {

@@ -178,25 +178,26 @@ try {
   // 需要调用UserAuthInstance的start()接口，启动认证后，才能通过onResult获取到认证结果。
   userAuthInstance.on('result', {
     onResult: (result) => {
-        if (!result.token) {
-            console.error('userAuthInstance callback result.token is null');
-            return;
-        }
-        try {
-          // 发起AuthToken验证请求。
-          userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
-              .then((retAuthToken: userAccessCtrl.AuthToken) => {
-                  Object.keys(retAuthToken).forEach((key) => {
-                      // 处理业务逻辑。
-                      console.info(`retAuthToken key:${key}`);
-                  })
-              }).catch ((error: BusinessError) => {
-                  console.error(`verify authToken failed. Code is ${error?.code}, message is ${error?.message}`);
-              })
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          console.error(`verify authToken failed. Code is ${err?.code}, message is ${err?.message}`);
-        }
+      if (!result.token) {
+        console.error('Failed to get auth token.');
+        return;
+      }
+      try {
+        // 发起AuthToken验证请求。
+        userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
+          .then((retAuthToken: userAccessCtrl.AuthToken) => {
+            Object.keys(retAuthToken).forEach((key) => {
+              // 处理业务逻辑。
+              console.info(`retAuthToken key: ${key}`);
+            });
+          })
+          .catch((error: BusinessError) => {
+            console.error(`Failed to verify authToken. Code: ${error?.code}, message: ${error?.message}`);
+          });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to verify authToken. Code: ${err?.code}, message: ${err?.message}`);
+      }
     }
   });
   console.info('auth on successfully.');
@@ -205,6 +206,6 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

@@ -431,7 +431,7 @@ struct ArcListAndIndexer {
 }
 ```
 
-![arc-alphabet-indexer-preview1](figures/arc-alphabet-indexer-preview1.gif)
+![arc-alphabet-indexer-preview1-w200](figures/arc-alphabet-indexer-preview1.gif)
 
 
 ### 示例2（设置弹窗显示）
@@ -530,4 +530,4 @@ struct ArcListAndIndexer {
 }
 ```
 
-![arc-alphabet-indexer-preview2](figures/arc-alphabet-indexer-preview2.gif)
+![arc-alphabet-indexer-preview2-w200](figures/arc-alphabet-indexer-preview2.gif)

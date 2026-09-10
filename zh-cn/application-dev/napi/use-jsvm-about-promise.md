@@ -179,7 +179,7 @@ OH_JSVM_ResolveDeferred resolve
 OH_JSVM_RejectDeferred reject
 ```
 
-## OH_JSVM_PromiseRegisterHandler
+### OH_JSVM_PromiseRegisterHandler
 
 用于设置 Promise 解析或拒绝后的回调，等效于调用原生的 `Promise.then()` 或 `Promise.catch()`。
 

@@ -1,10 +1,11 @@
 # oh_preferences_value.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=56ed0768936d754cf596777e5bea964ac3d6187b translatedAt=2026-09-04T02:52:43.062Z pushedAt=2026-09-09T09:11:03.653Z -->
 
 ## Overview
 
@@ -26,7 +27,7 @@ Provides APIs, enums, and structs for accessing the **PreferencesValue** object.
 
 | Name                                              | typedef Keyword      | Description                                 |
 | -------------------------------------------------- | ------------------- | ------------------------------------- |
-| [OH_PreferencesPair](capi-preferences-oh-preferencespair.md)   | OH_PreferencesPair  | Defines a struct for the **Preferences** data in KV format.|
+| [OH_PreferencesPair](capi-preferences-oh-preferencespair.md)   | OH_PreferencesPair  | Defines a struct for the key-value pair data object type used by Preferences. |
 | [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | OH_PreferencesValue | Defines a struct for the **PreferencesValue** object.       |
 
 ### Enums
@@ -39,8 +40,8 @@ Provides APIs, enums, and structs for accessing the **PreferencesValue** object.
 
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t index)](#oh_preferencespair_getkey) | Obtains the key based on the specified index from the KV data.                              |
-| [const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_PreferencesPair *pairs, uint32_t index)](#oh_preferencespair_getpreferencesvalue) | Obtains the value based on the specified index from the KV pairs.                              |
+| [const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t index)](#oh_preferencespair_getkey) | Obtains the key corresponding to the index in the key-value pair data. |
+| [const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_PreferencesPair *pairs, uint32_t index)](#oh_preferencespair_getpreferencesvalue) | Obtains the value corresponding to the index in the key-value pair data array. |
 | [Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue *object)](#oh_preferencesvalue_getvaluetype) | Obtains the data type of an **OH_PreferencesValue** instance.                        |
 | [int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)](#oh_preferencesvalue_getint) | Obtains an integer from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
 | [int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)](#oh_preferencesvalue_getbool) | Obtains a Boolean value from an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
@@ -109,7 +110,7 @@ const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t 
 
 **Description**
 
-Obtains the key based on the specified index from the KV data.
+Obtains the key of the data corresponding to the index in the key-value pair data.
 
 **Since**: 13
 
@@ -118,8 +119,8 @@ Obtains the key based on the specified index from the KV data.
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the target [OH_PreferencesPair](capi-preferences-oh-preferencespair.md).|
-| uint32_t index                                               | Index of the target [OH_PreferencesPair](capi-preferences-oh-preferencespair.md).|
+| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the target key-value pair data [OH_PreferencesPair](capi-preferences-oh-preferencespair.md). |
+| uint32_t index                                               | Index of the target key-value pair data [OH_PreferencesPair](capi-preferences-oh-preferencespair.md). |
 
 **Returns**
 
@@ -135,7 +136,7 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 
 **Description**
 
-Obtains the value based on the specified index from the KV pairs.
+Obtains the value corresponding to the index in the key-value pair data array.
 
 **Since**: 13
 
@@ -144,14 +145,14 @@ Obtains the value based on the specified index from the KV pairs.
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the target [OH_PreferencesPair](capi-preferences-oh-preferencespair.md).|
-| uint32_t index                                               | Index of the target [OH_PreferencesPair](capi-preferences-oh-preferencespair.md).|
+| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | Pointer to the target key-value pair data [OH_PreferencesPair](capi-preferences-oh-preferencespair.md). |
+| uint32_t index                                               | Index of the target key-value pair data [OH_PreferencesPair](capi-preferences-oh-preferencespair.md), in the range [0, count-1] (count is the length of the pairs array). |
 
 **Returns**
 
 | Type                                                    | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| const [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | Returns the pointer to the value obtained if the operation is successful; returns a null pointer if the operation fails or invalid parameters are specified.|
+| const [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) * | Pointer to the obtained value object if the operation is successful. A null pointer is returned if the operation fails or the parameter is invalid. |
 
 
 ### OH_PreferencesValue_GetValueType()
@@ -293,7 +294,7 @@ Creates an [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instan
 
 | Type| Description|
 | -- | -- |
-| [OH_PreferencesValue*](capi-preferences-oh-preferencesvalue.md) | Returns the pointer to the [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) object; returns a null pointer otherwise.|
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)* | If the operation is successful, a pointer to the [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) value object is returned; otherwise, **nullptr** is returned. |
 
 ### OH_PreferencesValue_Destroy()
 
@@ -336,7 +337,7 @@ Sets an integer value for an [OH_PreferencesValue](capi-preferences-oh-preferenc
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetBool()
 
@@ -361,7 +362,7 @@ Sets a boolean value for an [OH_PreferencesValue](capi-preferences-oh-preference
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetString()
 
@@ -380,13 +381,13 @@ Sets a string value for an [OH_PreferencesValue](capi-preferences-oh-preferences
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const char *value | String value to be set.|
+| const char *value | Pointer to the string value to be set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetInt64()
 
@@ -411,7 +412,7 @@ Sets an int64 value for an [OH_PreferencesValue](capi-preferences-oh-preferences
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetInt64()
 
@@ -436,7 +437,7 @@ Obtains an int64 value from an [OH_PreferencesValue](capi-preferences-oh-prefere
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetDouble()
 
@@ -461,7 +462,7 @@ Sets a double value for an [OH_PreferencesValue](capi-preferences-oh-preferences
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetDouble()
 
@@ -486,7 +487,7 @@ Obtains a double value from an [OH_PreferencesValue](capi-preferences-oh-prefere
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetIntArray()
 
@@ -505,14 +506,14 @@ Sets an integer array for an [OH_PreferencesValue](capi-preferences-oh-preferenc
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const int *value | Integer array to be set.|
-| uint32_t count | Pointer to the size of the array to be set.|
+| const int *value | Pointer to the integer array value that needs to be set. |
+| uint32_t count | Array size that needs to be set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetIntArray()
 
@@ -538,7 +539,7 @@ Obtains an integer array from an [OH_PreferencesValue](capi-preferences-oh-prefe
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetBoolArray()
 
@@ -557,14 +558,14 @@ Sets a boolean array for an [OH_PreferencesValue](capi-preferences-oh-preference
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const bool *value | Boolean array to be set.|
-| uint32_t count | Pointer to the size of the array to be set.|
+| const bool *value | Pointer that points to the required boolean array value to be set. |
+| uint32_t count | Array size that needs to be set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetBoolArray()
 
@@ -590,7 +591,7 @@ Obtains a boolean array from an [OH_PreferencesValue](capi-preferences-oh-prefer
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetStringArray()
 
@@ -609,14 +610,14 @@ Sets a string array for an [OH_PreferencesValue](capi-preferences-oh-preferences
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const char **value | String array to be set.|
-| uint32_t count | Pointer to the size of the array to be set.|
+| const char **value | Double pointer to the required string array value. |
+| uint32_t count | Array size that needs to be set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetStringArray()
 
@@ -635,14 +636,14 @@ Obtains a string array of an [OH_PreferencesValue](capi-preferences-oh-preferenc
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| char ***value | Double pointer to the obtained string array.|
+| char ***value | Triple pointer to the obtained string array value. |
 | uint32_t *count | Pointer to the size of the array obtained.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetInt64Array()
 
@@ -661,14 +662,14 @@ Sets an int64 array for an [OH_PreferencesValue](capi-preferences-oh-preferences
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const int64_t *value | Int64 array to be set.|
-| uint32_t count | Pointer to the size of the array to be set.|
+| const int64_t *value | Pointer to the int64 array value that needs to be set. |
+| uint32_t count | Size of the array to set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetInt64Array()
 
@@ -694,7 +695,7 @@ Obtains an int64 array from an [OH_PreferencesValue](capi-preferences-oh-prefere
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetDoubleArray()
 
@@ -713,14 +714,14 @@ Sets a double array for an [OH_PreferencesValue](capi-preferences-oh-preferences
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const double *value | Double array to be set.|
-| uint32_t count | Pointer to the size of the array to be set.|
+| const double *value | Pointer to the double array value to set. |
+| uint32_t count | Array size to set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetDoubleArray()
 
@@ -746,7 +747,7 @@ Obtains a double array of an [OH_PreferencesValue](capi-preferences-oh-preferenc
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_SetBlob()
 
@@ -765,14 +766,14 @@ Sets a blob value for an [OH_PreferencesValue](capi-preferences-oh-preferencesva
 | Name| Description|
 | -- | -- |
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | Pointer to the target [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) instance.|
-| const uint8_t *value | Blob value to be set.|
-| uint32_t count | Pointer to the size of the blob value to be set.|
+| const uint8_t *value | Pointer to the binary value that needs to be set. |
+| uint32_t count | Size of the binary data that needs to be set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |
 
 ### OH_PreferencesValue_GetBlob()
 
@@ -798,4 +799,4 @@ Obtains a blob value from an [OH_PreferencesValue](capi-preferences-oh-preferenc
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates a storage exception.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid.<br>Returns **PREFERENCES_ERROR_STORAGE** if a storage error occurs.<br>Returns **PREFERENCES_ERROR_MALLOC** if memory allocation fails. |

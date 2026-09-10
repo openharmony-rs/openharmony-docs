@@ -18,7 +18,7 @@ System resource does not exist.
 
 **错误描述**
 
-当前系统资源不存在。
+系统资源不存在。
 
 **可能原因**
 
@@ -26,7 +26,7 @@ System resource does not exist.
 
 **处理步骤**
 
-step1.请检查输入的参数
+请检查输入参数的值是否正确，确保传入的参数值正确。类型是否与接口要求的类型一致，确保传入的参数类型正确。值是否在有效范围内，确保传入的参数值在有效范围内。
 
 ## 180002 系统资源类型不正确
 
@@ -36,7 +36,7 @@ The type of system resources is incorrect.
 
 **错误描述**
 
-当前系统资源类型不正确。
+系统资源类型不正确。
 
 **可能原因**
 
@@ -44,7 +44,7 @@ The type of system resources is incorrect.
 
 **处理步骤**
 
-step1.请检查输入的参数
+请检查输入参数的类型是否正确。
 
 ## 180003 颜色资源获取失败
 
@@ -62,4 +62,4 @@ Failed to obtain the color resource.
 
 **处理步骤**
 
-step1.请检查输入的参数
+请检查输入参数的值是否正确。

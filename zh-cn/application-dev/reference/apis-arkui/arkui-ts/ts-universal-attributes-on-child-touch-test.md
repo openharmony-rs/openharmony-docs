@@ -320,7 +320,7 @@ struct ListExample {
     .backgroundColor(0xF1F3F5)
     .justifyContent(FlexAlign.End)
     .padding({ left: 12, right: 12, bottom: 24 })
-    .onChildTouchTest((touchInfo) => {
+    .onChildTouchTest(() => {
       return { strategy: TouchTestStrategy.DEFAULT }
     })
   }

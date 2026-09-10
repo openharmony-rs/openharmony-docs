@@ -132,7 +132,7 @@ Crypto engine error or UKey driver error.
 1. 排查密文数据是否正确。
 2. 排查加解密参数是否正确。
 
-## 12000007 密钥访问失败 - 密钥已失效
+## 12000007 密钥访问失败-密钥已失效
 
 **错误信息**
 
@@ -154,7 +154,7 @@ This credential is invalidated permanently.
 1. 确认日志中记录的认证失败方式。
 2. 如果使用了正确参数，但是失效控制导致认证不通过，则该密钥已经无法使用。
 
-## 12000008 密钥访问失败 - 密钥认证失败
+## 12000008 密钥访问失败-密钥认证失败
 
 **错误信息**
 
@@ -173,7 +173,7 @@ The authentication token verification failed.
 1. 检查userIAM认证的challenge参数组装是否正确。
 2. 如果是challenge参数不正确导致，则修改正确的组装方式，使用huks生成challenge组装，并传入userIAM重新认证。
 
-## 12000009 密钥访问失败 - 密钥访问超时
+## 12000009 密钥访问失败-密钥访问超时
 
 **错误信息**
 

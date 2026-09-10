@@ -374,7 +374,7 @@ Flex多行组件布局，组件大小一致，走焦正常。
 
 ![Project_Area_Focus_1](figures/Project_Area_Focus_1.gif)
 
-<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets) -->
+<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectAreaFocusFlex.ets) -->
 
 ``` TypeScript
 @Entry
@@ -965,19 +965,19 @@ export struct FocusScopePriorityPrevious {
 
 **整体获焦的焦点链形成**
 
-1.[层级页面](#基础概念)首次获焦：
+1. [层级页面](#基础概念)首次获焦：
 
-- 焦点链叶节点为配置了defaultFocus的节点。
+   - 焦点链叶节点为配置了defaultFocus的节点。
 
-- 未配置defaultFocus时，焦点停留在[层级页面](#基础概念)的根容器上。
+   - 未配置defaultFocus时，焦点停留在[层级页面](#基础概念)的根容器上。
 
-2.[层级页面](#基础概念)非首次获焦：由上次获焦的节点获焦。
+2. [层级页面](#基础概念)非首次获焦：由上次获焦的节点获焦。
 
-3.获焦链上存在配置了获焦优先级的组件和容器：
+3. 焦点链上存在配置了获焦优先级的组件和容器：
 
-- 容器内存在优先级大于PREVIOUS的组件，由优先级最高的组件获焦。
+   - 容器内存在优先级大于PREVIOUS的组件，由优先级最高的组件获焦。
 
-- 容器内不存在优先级大于PREVIOUS的组件，由上次获焦的节点获焦。例如，窗口失焦后重新获焦。
+   - 容器内不存在优先级大于PREVIOUS的组件，由上次获焦的节点获焦。例如，窗口失焦后重新获焦。
 
 
 ## 焦点样式

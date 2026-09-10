@@ -1,17 +1,20 @@
 # OH_NativeBuffer_Smpte2086
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=094ced2c1714888f81b48ee277d1e52615f35dc2 translatedAt=2026-08-24T09:18:40.590Z pushedAt=2026-08-31T11:58:35.315Z -->
 
+```c
+typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
 ```
-typedef struct {...} OH_NativeBuffer_Smpte2086
-```
+
 ## Overview
 
-This struct describes the SMPTE ST 2086 static metadata.
+Represents the SMPTE 2086 static metadata.
 
 **Since**: 12
 

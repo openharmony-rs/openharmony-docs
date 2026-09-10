@@ -1,12 +1,10 @@
 # native_audio_common.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1961de06e85063963f633ec54a8a4baaf5cb7dc8 translatedAt=2026-07-21T03:50:38.208Z pushedAt=2026-07-21T07:15:13.137Z -->
 
 ## Overview
 
@@ -30,8 +28,8 @@ The file declares the common basic audio data structs.<br> It defines the types 
 | -- | -- | -- |
 | [OH_AudioCommon_Result](#oh_audiocommon_result) | OH_AudioCommon_Result | Enumerates the audio operation results.|
 | [OH_AudioScene](#oh_audioscene) | OH_AudioScene | Enumerates the audio scenes.|
-| [OH_AudioRingerMode](#oh_audioringermode) | OH_AudioRingerMode | Enumerates the ringer modes. |
-| [OH_AudioNoiseReductionMode](#oh_audionoisereductionmode) | OH_AudioNoiseReductionMode | Enumerates the noise reduction modes for audio recording. |
+| [OH_AudioRingerMode](#oh_audioringermode) | OH_AudioRingerMode | Defines the ringer modes.|
+| [OH_AudioNoiseReductionMode](#oh_audionoisereductionmode) | OH_AudioNoiseReductionMode | Defines the recording noise reduction mode.|
 
 ## Enum Description
 
@@ -51,7 +49,7 @@ Enumerates the audio operation results.
 | -- | -- |
 | AUDIOCOMMON_RESULT_SUCCESS = 0 | Operation successful.|
 | AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101 | Incorrect parameter.|
-| AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | Insufficient memory. |
+| AUDIOCOMMON_RESULT_ERROR_NO_MEMORY = 6800102 | Insufficient memory.|
 | AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE = 6800103 | Invalid state.|
 | AUDIOCOMMON_RESULT_ERROR_UNSUPPORTED = 6800104 | Unsupported operation.|
 | AUDIOCOMMON_RESULT_ERROR_TIMEOUT = 6800105 | Operation timeout.|
@@ -85,7 +83,7 @@ enum OH_AudioRingerMode
 
 **Description**
 
-Enumerates the ringer modes.
+Defines the ringer modes.
 
 **Device behavior difference**: If this API is set to the vibration mode on a device without a vibration component, no vibration effect is generated.
 
@@ -105,12 +103,12 @@ enum OH_AudioNoiseReductionMode
 
 **Description**
 
-Enumerates the noise reduction modes for audio recording
+Defines the recording noise reduction mode.
 
 **Since:** 26.0.0
 
-| Value | Description |
+| Enum Item| Description|
 | -- | -- |
-| AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0 | Fidelity mode, with no noise reduction. |
-| AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1 | Pure vocals mode, with strong noise reduction. |
-| AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2 | Standard mode, with weak noise reduction. |
+| AUDIO_NOISE_REDUCTION_MODE_FIDELITY = 0 | Fidelity mode, with no noise reduction applied.|
+| AUDIO_NOISE_REDUCTION_MODE_PURE_VOCALS = 1 | Pure vocals mode, with strong noise reduction.|
+| AUDIO_NOISE_REDUCTION_MODE_STANDARD = 2 | Standard mode, with weak noise reduction.|

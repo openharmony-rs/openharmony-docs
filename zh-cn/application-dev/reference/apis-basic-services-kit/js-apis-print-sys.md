@@ -217,7 +217,7 @@ print.disconnectPrinter(printerId).then(() => {
 
 queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
-查询打印机能力，使用callback异步回调。调用该接口触发指定打印机的能力查询，能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
+查询打印机能力，使用callback异步回调。能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -262,7 +262,7 @@ print.queryPrinterCapability(printerId, (error: BusinessError) => {
 
 queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
-查询打印机能力，使用Promise异步回调。调用该接口触发指定打印机的能力查询，能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
+查询打印机能力，使用Promise异步回调。能力查询结果可通过监听[on('printerStateChange')](#printon)事件回调中的PrinterInfo.capability获取。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -310,7 +310,7 @@ print.queryPrinterCapability(printerId).then(() => {
 
 startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 
-开始打印任务，使用callback异步回调。
+开始打印任务，使用callback异步回调。可通过监听[on('jobStateChange')](#printon-1)事件获取打印任务状态变化。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -371,7 +371,7 @@ print.startPrintJob(jobInfo, (error: BusinessError) => {
 
 startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
-开始打印任务，使用Promise异步回调。
+开始打印任务，使用Promise异步回调。可通过监听[on('jobStateChange')](#printon-1)事件获取打印任务状态变化。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -871,7 +871,7 @@ on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'extInfoChange' | 是 | 表示打印机扩展信息改变。 |
-| callback | (extensionId: string, info: string) => void | 是 | 打印机扩展信息改变之后的回调。 |
+| callback | (extensionId: string, info: string) => void | 是 | 打印机扩展信息改变之后的回调。extensionId表示打印机扩展ID，info表示扩展信息内容。 |
 
 **错误码：**
 
@@ -1738,7 +1738,7 @@ print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
 
 startGettingPrintFile(jobId: string, printAttributes: PrintAttributes, fd: number, onFileStateChanged: Callback&lt;PrintFileCreationState&gt;): void
 
-开始获取打印文件，使用callback异步回调。在print()已执行、jobId已创建、adapter已注册之后，可以调用该函数获取实际打印文件内容。
+开始获取打印文件，使用callback回调。在print()已执行、jobId已创建、[PrintDocumentAdapter](js-apis-print.md#printdocumentadapter11)已注册之后，可以调用该函数获取实际打印文件内容。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -1820,7 +1820,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示已创建的打印任务ID。 |
 | type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | 是 | 表示打印预览界面关闭信息的类型。'spooler_closed_for_cancelled'表示因取消当前打印任务而关闭打印预览界面；'spooler_closed_for_started'表示因打印任务成功下发而关闭打印预览界面。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步将spooler关闭信息通知打印服务之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步将打印预览界面关闭信息通知打印服务之后的回调。 |
 
 **错误码：**
 
@@ -1865,13 +1865,13 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示已创建的打印任务ID。 |
-| type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | 是 | 表示spooler关闭信息的类型。'spooler_closed_for_cancelled'表示因取消当前打印任务而关闭打印预览界面；'spooler_closed_for_started'表示因打印任务成功下发而关闭打印预览界面。 |
+| type | 'spooler_closed_for_cancelled' \| 'spooler_closed_for_started' | 是 | 表示打印预览界面关闭信息的类型。'spooler_closed_for_cancelled'表示因取消当前打印任务而关闭打印预览界面；'spooler_closed_for_started'表示因打印任务成功下发而关闭打印预览界面。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。将spooler关闭信息通知打印服务成功时resolve，失败时reject并返回错误信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。将打印预览界面关闭信息通知打印服务成功时resolve，失败时reject并返回错误信息。 |
 
 **错误码：**
 
@@ -2049,7 +2049,7 @@ print.setPrinterPreferences(printerId, preferences).then(() => {
 
 discoverUsbPrinters(): Promise&lt;Array&lt;PrinterInformation&gt;&gt;
 
-发现USB打印机，使用Promise异步回调。
+发现USB打印机，使用Promise异步回调。返回发现的USB打印机信息，其打印机URI可用于[queryPrinterCapabilityByUri](#printqueryprintercapabilitybyuri24)查询打印机能力或[addPrinterToCups](#printaddprintertocups24)添加打印机到CUPS。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -2089,7 +2089,7 @@ print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
 
 setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise&lt;void&gt;
 
-设置默认打印机，使用Promise异步回调。用于在需要指定系统默认打印机时，如用户手动选择默认打印机或系统自动设置最后使用的打印机为默认的场景。
+设置默认打印机，使用Promise异步回调。用于需要指定系统默认打印机的场景，如用户手动选择默认打印机或系统自动将最后使用的打印机设为默认打印机。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -2210,7 +2210,7 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrinterCapabilities](js-apis-print.md#printercapabilities14)&gt; | Promise对象，返回打印机能力。 |
+| Promise&lt;[PrinterCapabilities](js-apis-print.md#printercapabilities14)&gt; | Promise对象，返回查询到的打印机能力，用于获取打印机支持的功能与配置选项。 |
 
 **错误码：**
 
@@ -2228,6 +2228,7 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// printerUri 可通过 discoverUsbPrinters 接口返回的 PrinterInformation 获取
 let printerUri : string = 'testPrinterUri';
 let printerId : string = 'testPrinterId';
 print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: print.PrinterCapabilities) => {
@@ -2281,6 +2282,7 @@ addPrinterToCups(printerUri: string, printerName: string, printerMake: string): 
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// printerUri 可通过 discoverUsbPrinters 接口返回的 PrinterInformation 获取
 let printerUri : string = 'testPrinterUri';
 let printerName : string = 'testPrinterName';
 let printerMake : string = 'testPrinterMake';

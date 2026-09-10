@@ -13,7 +13,7 @@ typedef struct OH_CryptoSm2CiphertextSpec OH_CryptoSm2CiphertextSpec
 
 ## 概述
 
-定义SM2密文规格结构。
+SM2密文规格结构体，表示SM2密文规格。
 
 **起始版本：** 20
 

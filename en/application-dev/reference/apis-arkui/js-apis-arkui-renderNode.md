@@ -1,12 +1,14 @@
 # RenderNode
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3941aef1b3f2e81ba6f36ef0d30f9e1a4994e8fa translatedAt=2026-07-29T09:17:58.023Z pushedAt=2026-08-03T11:03:20.752Z -->
 
-The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
+The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs. **RenderNode** also supports capabilities such as render node tree management (adding, removing, and querying child nodes), visual attribute settings like background color and opacity, transformations (scaling, rotation, translation, and transformation matrices), shadows, borders, masks and clipping, and blur effects. It is suitable for custom rendering and node tree management scenarios in the stage model.
 
 > **NOTE**
 >
@@ -264,6 +266,7 @@ Deletes the specified child node from this RenderNode.
 | node   | [RenderNode](#rendernode-1) | Yes  | Child node to delete.|
 
 **Example**
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -319,6 +322,7 @@ struct Index {
   }
 }
 ```
+
 ### clearChildren
 
 clearChildren(): void
@@ -371,11 +375,11 @@ struct Index {
         .borderWidth(1)
         .width(200)
         .height(300)
-      Button("clearChildren")
+      Button('clearChildren')
         .onClick(() => {
           renderNode.clearChildren(); // Remove all child nodes from the renderNode.
         })
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -394,7 +398,7 @@ Obtains the child node in the specified position of this RenderNode.
 
 | Name | Type   | Mandatory| Description              |
 | ------- | ------- | ---- | ------------------ |
-| index | number | Yes  | Index of the child node to obtain.|
+| index | number | Yes  | Sequence number of the child node to query, starting from 0. Value range: [0, Number of child nodes - 1]. **null** is returned if the value is out of range. Negative indexes are not supported. |
 
 **Return value**
 
@@ -444,11 +448,11 @@ struct Index {
         .borderWidth(1)
         .width(200)
         .height(300)
-      Button("getChild")
+      Button('getChild')
         .onClick(() => {
           for (let i = 0; i < 11; i++) {
             let childNode: RenderNode | null = renderNode.getChild(i);
-            if (childNode == null) {
+            if (childNode === null) {
               // Return null if the renderNode has no child node at index 10.
               console.error(`the ${i} of renderNode's childNode is null`);
             } else {
@@ -458,7 +462,7 @@ struct Index {
           }
 
         })
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -535,9 +539,9 @@ struct Index {
           // Obtain the first child node of the renderNode.
           const firstChild = renderNode.getFirstChild();
           if (firstChild === null) {
-            console.error('the fist child is null');
+            console.error(`the first child is null`);
           } else {
-            console.info(`the position of fist child is x: ${firstChild.position.x}, y: ${firstChild.position.y}`);
+            console.info(`the position of first child is x: ${firstChild.position.x}, y: ${firstChild.position.y}`);
           }
         })
     }
@@ -562,6 +566,7 @@ Obtains the next sibling node of this RenderNode.
 | [RenderNode](#rendernode-1) \| null | Next sibling node of the current RenderNode. If the RenderNode does not have the next sibling node, null is returned.|
 
 **Example**
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -614,12 +619,16 @@ struct Index {
       Button('getNextSibling')
         .onClick(() => {
           const child = renderNode.getChild(1);
-          // Obtain the child node at index 1 of the renderNode, and then obtain its next sibling node.
-          const nextSibling = child!.getNextSibling()
-          if (nextSibling === null || child === null) {
-            console.error('the child or nextChild is null');
+          if (child === null) {
+            console.error(`the child is null`);
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            // Obtain the child node with sequence number 1 of the renderNode, and then obtain its next sibling node.
+            const nextSibling = child.getNextSibling();
+            if (nextSibling === null) {
+              console.error(`the nextSibling is null`);
+            } else {
+              console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            }
           }
         })
     }
@@ -644,6 +653,7 @@ Obtains the previous sibling node of this RenderNode.
 | [RenderNode](#rendernode-1) \| null | Previous sibling node of the current RenderNode. If the RenderNode does not have the previous sibling node, null is returned.|
 
 **Example**
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -696,12 +706,16 @@ struct Index {
       Button('getPreviousSibling')
         .onClick(() => {
           const child = renderNode.getChild(1);
-          // Obtain the child node at index 1 of the renderNode, and then obtain its previous sibling node.
-          const previousSibling = child!.getPreviousSibling()
-          if (child === null || previousSibling === null) {
-            console.error('the child or previousChild is null');
+          if (child === null) {
+            console.error(`the child is null`);
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
+            // Obtain the child node with sequence number 1 of the renderNode, and then obtain its previous sibling node.
+            const previousSibling = child.getPreviousSibling();
+            if (previousSibling === null) {
+              console.error(`the previousSibling is null`);
+            } else {
+              console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
+            }
           }
         })
     }
@@ -723,7 +737,7 @@ Sets the background color for this RenderNode.
 
 | Name| Type  | Mandatory| Description                  |
 | ------ | ------ | ---- | ---------------------- |
-| color  | number | Yes  | Background color value, in ARGB format, for example, **0xE5E5E5**.|
+| color  | number | Yes   | Background color in ARGB format, for example, **0xFFE5E5E5**. |
 
 get backgroundColor(): number
 
@@ -740,8 +754,9 @@ Obtains the background color of this RenderNode.
 | number | Background color of the current RenderNode. The default value is **0X00000000**.|
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
@@ -792,7 +807,7 @@ Sets whether to clip this RenderNode. The value **true** means to clip the Rende
 
 | Name | Type   | Mandatory| Description              |
 | ------- | ------- | ---- | ------------------ |
-| useClip | boolean | Yes  | Whether to clip the RenderNode.<br>The value **true** means to clip the RenderNode, and **false** means the opposite.|
+| useClip | boolean | Yes | Whether to clip the RenderNode.<br>The value **true** means to clip the RenderNode, and **false** means the opposite. |
 
 get clipToFrame(): boolean
 
@@ -806,11 +821,12 @@ Obtains whether this RenderNode needs to be clipped.
 
 | Type   | Description                                               |
 | ------- | --------------------------------------------------- |
-| boolean | Whether the current RenderNode needs to be clipped. The default value is **true**.<br>The value **true** means the RenderNode needs to be clipped, and **false** means the opposite.|
+| boolean | Whether the current RenderNode needs to be clipped. The default value is **true**.<br>The value **true** means the RenderNode needs to be clipped, and **false** means the opposite. |
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
@@ -868,7 +884,7 @@ Sets the opacity for this RenderNode. If the value passed in is less than **0**,
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| value  | number | Yes  | Opacity to set.<br>Value range: [0, 1]. A larger value indicates lower transparency.|
+| value  | number | Yes  | Opacity to set. The value range is [0, 1], and a larger value indicates lower transparency. |
 
 get opacity(): number
 
@@ -882,11 +898,12 @@ Obtains the opacity of this RenderNode.
 
 | Type  | Description                                     |
 | ------ | ----------------------------------------- |
-| number | Opacity of the current RenderNode. The default value is **1** (fully opaque).|
+| number | Opacity of the current RenderNode. The default value is **1**, which means opaque.<br>Value range: [0, 1]. |
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
@@ -929,7 +946,7 @@ struct Index {
 
 set size(size: Size)
 
-Sets the size for this RenderNode.
+Sets the size of the current RenderNode. When used together with [frame](#frame), the one set later prevails.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -939,7 +956,7 @@ Sets the size for this RenderNode.
 
 | Name| Type                                    | Mandatory| Description                        |
 | ------ | ---------------------------------------- | ---- | ---------------------------- |
-| size   | [Size](./js-apis-arkui-graphics.md#size) | Yes  | Size to set.|
+| size   | [Size](./js-apis-arkui-graphics.md#size) | Yes  | Size to set for the RenderNode.|
 
 get size(): Size
 
@@ -953,11 +970,12 @@ Obtains the size of this RenderNode.
 
 | Type                                    | Description                                           |
 | ---------------------------------------- | ----------------------------------------------- |
-| [Size](./js-apis-arkui-graphics.md#size) | Size of the current RenderNode. The default width and height are **0**.|
+| [Size](./js-apis-arkui-graphics.md#size) | Size of the current RenderNode. The default value is **{ width: 0, height: 0 }**. |
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -999,7 +1017,7 @@ struct Index {
 
 set position(position: Position)
 
-Sets the position for this RenderNode.
+Sets the position of the current RenderNode. When used together with [frame](#frame), the one set later prevails.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1026,8 +1044,9 @@ Obtains the position of this RenderNode.
 | [Position](./js-apis-arkui-graphics.md#position) | Position of the current RenderNode. The default value is **{ x: 0, y: 0 }**.|
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1094,11 +1113,12 @@ Obtains the size and position of this RenderNode.
 
 | Type           | Description                                                                         |
 | --------------- | ----------------------------------------------------------------------------- |
-| [Frame](#frame) | Size and position of the current RenderNode. The default value is **{ x: 0, y: 0, width: 0, height: 0 }**.|
+| [Frame](./js-apis-arkui-graphics.md#frame) | Size and position of the current RenderNode. The default value is **{ x: 0, y: 0, width: 0, height: 0 }**. |
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1167,8 +1187,9 @@ Obtains the pivot of this RenderNode.
 | [Pivot](./js-apis-arkui-graphics.md#pivot) | Pivot of the current RenderNode. The default value is **{ x: 0.5, y: 0.5}**.|
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1213,7 +1234,7 @@ struct Index {
 
 set scale(scale: Scale)
 
-Sets the scale factor for this RenderNode.
+Sets the scale factor of the current RenderNode. Scaling is performed centered on the pivot set by [pivot](#pivot).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1227,7 +1248,7 @@ Sets the scale factor for this RenderNode.
 
 get scale(): Scale
 
-Obtains the scale factor of this RenderNode.
+Obtains the scale factor of the current RenderNode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1237,11 +1258,12 @@ Obtains the scale factor of this RenderNode.
 
 | Type                                      | Description                                              |
 | ------------------------------------------ | -------------------------------------------------- |
-| [Scale](./js-apis-arkui-graphics.md#scale) | Scale factor of the current RenderNode. The default value is **{ x: 1, y: 1 }**.|
+| [Scale](./js-apis-arkui-graphics.md#scale) | Scale factor of the current RenderNode. The default value is **{ x: 1, y: 1 }**. |
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1311,8 +1333,9 @@ Obtains the translation amount of this RenderNode.
 | [Translation](./js-apis-arkui-graphics.md#translation) | Translation amount of the current RenderNode. The default value is **{ x: 0, y: 0 }**.|
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1355,7 +1378,7 @@ struct Index {
 
 set rotation(rotation: Rotation)
 
-Sets the rotation angle for this RenderNode.
+Sets the rotation angle of the current RenderNode. Rotation is performed centered on the pivot set by [pivot](#pivot).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1382,8 +1405,9 @@ Obtains the rotation angle of this RenderNode.
 | [Rotation](./js-apis-arkui-graphics.md#rotation) | Rotation angle of the current RenderNode. The default value is **{ x: 0, y: 0, z: 0}**.|
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1441,6 +1465,7 @@ Sets the transformation matrix for this RenderNode.
 get transform(): Matrix4
 
 Obtains the transformation matrix of this RenderNode. The default value is as follows:
+
 ```ts
 [
   1, 0, 0, 0,
@@ -1458,11 +1483,12 @@ Obtains the transformation matrix of this RenderNode. The default value is as fo
 
 | Type                                          | Description                      |
 | ---------------------------------------------- | -------------------------- |
-| [Matrix4](./js-apis-arkui-graphics.md#matrix4) | Transformation matrix of the current RenderNode.|
+| [Matrix4](./js-apis-arkui-graphics.md#matrix4) | Transformation matrix of the current RenderNode. The default value is the identity matrix. |
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1520,7 +1546,7 @@ Sets the shadow color for this RenderNode, in ARGB format. If [shadowAlpha](#sha
 
 | Name| Type  | Mandatory| Description                                      |
 | ------ | ------ | ---- | ------------------------------------------ |
-| color  | number | Yes  | Shadow color to set, in ARGB format.<br>The value must be a valid ARGB color.|
+| color  | number | Yes   | Shadow color to set for the RenderNode, in ARGB format.<br>Example: **0xFF00FF00** |
 
 get shadowColor(): number
 
@@ -1537,8 +1563,9 @@ Obtains the shadow color of this RenderNode.
 | number | Shadow color of the current RenderNode, in ARGB format. The default value is **0X00000000**.|
 
 **Example**
+
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1611,7 +1638,7 @@ Obtains the shadow offset of this RenderNode.
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1656,7 +1683,7 @@ struct Index {
 
 set label(label: string)
 
-Sets the label for this RenderNode. If the RenderNode was created with **new**, the set label will appear in the node Inspector information.
+Sets the label of the current RenderNode. If the current node is a RenderNode created through **new**, the label information will be displayed in the attribute of the node's **Inspector** information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1685,7 +1712,7 @@ Obtains the label of this RenderNode.
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -1724,11 +1751,12 @@ struct Index {
   }
 }
 ```
+
 ### shadowAlpha
 
 set shadowAlpha(alpha: number)
 
-Sets the alpha value of the shadow color for this RenderNode.
+Sets the alpha value of the shadow color of the current RenderNode. If this attribute is set, the opacity of the shadow color is determined by this attribute, overriding the alpha value in [shadowColor](#shadowcolor).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1738,7 +1766,7 @@ Sets the alpha value of the shadow color for this RenderNode.
 
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
-| alpha  | number | Yes  | Alpha value of the shadow color to set.<br> The value must be a valid alpha value.|
+| alpha  | number | Yes   | Alpha value of the shadow color to set for the RenderNode.<br>Value range: [0, 1]. Values out of range will be clamped to [0, 1]. |
 
 get shadowAlpha(): number
 
@@ -1752,12 +1780,12 @@ Obtains the alpha value of the shadow color of this RenderNode.
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| number | Alpha value of the shadow color of the current RenderNode. The default value is **0**.|
+| number | Alpha value of the shadow color of the current RenderNode. The default value is **0**.<br>Value range: [0, 1]. |
 
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1803,7 +1831,7 @@ struct Index {
 
 set shadowElevation(elevation: number)
 
-Sets the shadow elevation for this RenderNode.
+Sets the shadow elevation of the current RenderNode. The shadow elevation simulates the height of the light source relative to the node. A larger value results in a more diffused shadow.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1813,7 +1841,7 @@ Sets the shadow elevation for this RenderNode.
 
 | Name   | Type  | Mandatory| Description                            |
 | --------- | ------ | ---- | -------------------------------- |
-| elevation | number | Yes  | Shadow elevation to set.<br> Value range: [0, +∞).|
+| elevation | number | Yes | Shadow elevation to set for the RenderNode, in vp.<br>Value range: [0, +∞). No shadow is generated when a negative number is passed in. |
 
 get shadowElevation(): number
 
@@ -1827,12 +1855,12 @@ Obtains the shadow elevation of this RenderNode.
 
 | Type  | Description                                 |
 | ------ | ------------------------------------- |
-| number | Shadow elevation of the current RenderNode. The default value is **0**.<br> Value range: [0, +∞).|
+| number | Shadow elevation of the current RenderNode. The default value is **0**. <br> Value range: [0, +∞). |
 
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
@@ -1889,7 +1917,7 @@ Sets the shadow blur radius for this RenderNode.
 
 | Name| Type  | Mandatory| Description                                |
 | ------ | ------ | ---- | ------------------------------------ |
-| radius | number | Yes  | Shadow blur radius to set.<br> Value range: [0, +∞).|
+| radius | number | Yes  | Blur radius of the shadow to set for the RenderNode, in vp.<br>Value range: [0, +∞). No shadow is drawn when a negative number is passed in. |
 
 get shadowRadius(): number
 
@@ -1903,7 +1931,7 @@ Obtains the shadow blur radius of this RenderNode.
 
 | Type  | Description                                     |
 | ------ | ----------------------------------------- |
-| number | Shadow blur radius of the current RenderNode. The default value is **0**.<br> Value range: [0, +∞).|
+| number | Shadow blur radius of the current RenderNode. The default value is **0**.<br> Value range: [0, +∞). |
 
 **Example**
 
@@ -1924,7 +1952,7 @@ renderNode.shadowAlpha = 0.7;
 renderNode.shadowRadius = 30;
 // Obtain the shadow blur radius of the renderNode.
 const shadowRadius = renderNode.shadowRadius;
-console.info(`FrameNode ${shadowRadius}`);
+console.info(`RenderNode shadowRadius: ${shadowRadius}`);
 
 // Implement a custom UI controller by extending NodeController.
 class MyNodeController extends NodeController {
@@ -1985,7 +2013,7 @@ Code in ArkTS:
 
 ```ts
 // Index.ets
-import bridge from "libentry.so"; // This .so file is compiled from your Node-API implementation.
+import bridge from 'libentry.so'; // The .so file is written and generated from your Node-API implementation.
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // Extend RenderNode to implement custom drawing.
@@ -2000,7 +2028,7 @@ class MyRenderNode extends RenderNode {
   // Invoked when the RenderNode undergoes drawing operations.
   draw(context: DrawContext) {
     // The width and height in the context need to be converted from vp to px.
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height), this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width), this.uiContext.vp2px(context.size.height));
   }
 }
 
@@ -2014,7 +2042,7 @@ class MyNodeController extends NodeController {
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
       const renderNode = new MyRenderNode(uiContext);
-      renderNode.size = { width: 100, height: 100 }
+      renderNode.size = { width: 100, height: 100 };
       rootRenderNode.appendChild(renderNode);
     }
 
@@ -2081,6 +2109,9 @@ static napi_value OnDraw(napi_env env, napi_callback_info info)
     OH_Drawing_CanvasAttachPen(canvas, pen);
     
     OH_Drawing_CanvasDrawPath(canvas, path);
+    OH_Drawing_CanvasDetachPen(canvas);
+    OH_Drawing_PenDestroy(pen);
+    OH_Drawing_PathDestroy(path);
 
     return nullptr;
 }
@@ -2097,7 +2128,7 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 
 static napi_module demoModule = {
-    .nm_version =1,
+    .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
@@ -2132,7 +2163,7 @@ target_link_libraries(entry PUBLIC libace_ndk.z.so)
 target_link_libraries(entry PUBLIC libnative_drawing.so)
 ```
 
-In addition, add the definition of the custom drawing API on the ArkTs side to the **src/main/cpp/types/libentry/index.d.ts** file of the project. The following is an example:
+In the `src/main/cpp/types/libentry/index.d.ts` file of the project, add the definition of the custom drawing API on the ArkTS side, for example:
 
 <!--code_no_check-->
 
@@ -2146,7 +2177,7 @@ export const nativeOnDraw: (id: number, context: DrawContext, width: number, hei
 
 invalidate(): void
 
-Triggers the re-rendering of this RenderNode.
+Triggers re-rendering of the RenderNode, during which the [draw](#draw) API is called. If you inherit the RenderNode and implement the **draw** API, calling **invalidate()** will re-execute the drawing logic in the **draw** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2155,7 +2186,7 @@ Triggers the re-rendering of this RenderNode.
 **Example**
 
 ```ts
-import bridge from "libentry.so"; // This .so file is compiled from your Node-API implementation.
+import bridge from 'libentry.so'; // The .so file is written and generated by your Node-API implementation.
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // Extend RenderNode to implement custom drawing.
@@ -2169,7 +2200,7 @@ class MyRenderNode extends RenderNode {
 
   draw(context: DrawContext) {
     // The width and height in the context need to be converted from vp to px.
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.height), this.uiContext.vp2px(context.size.width));
+    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width), this.uiContext.vp2px(context.size.height));
   }
 }
 
@@ -2204,7 +2235,7 @@ struct Index {
         Button('Invalidate')
           .onClick(() => {
             // Trigger re-rendering of the RenderNode.
-            this.myNodeController.newNode?.invalidate()
+            this.myNodeController.newNode?.invalidate();
           })
       }
       .width('100%')
@@ -2231,7 +2262,7 @@ Sets the border style for this RenderNode.
 
 | Name| Type                                                                                                  | Mandatory| Description                  |
 | ------ | ------------------------------------------------------------------------------------------------------ | ---- | ---------------------- |
-| style  | [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | Yes  | Border style of the RenderNode.|
+| style  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | Yes   | Border style of the RenderNode. |
 
 get borderStyle(): Edges\<BorderStyle>
 
@@ -2245,9 +2276,10 @@ Obtains the border style of this RenderNode.
 
 | Type                                                                                                  | Description                  |
 | ------------------------------------------------------------------------------------------------------ | ---------------------- |
-| [Edges](./js-apis-arkui-graphics.md#edgest12)<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | Border style of the RenderNode.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<[BorderStyle](./arkui-ts/ts-appendix-enums.md#borderstyle)> | Border style of the RenderNode. The default style for all borders is **BorderStyle.Solid**. |
 
 **Example**
+
 ```ts
 import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
@@ -2261,7 +2293,7 @@ renderNode.borderStyle = {
   top: BorderStyle.Dotted,
   right: BorderStyle.Dashed,
   bottom: BorderStyle.Solid
-}
+};
 // Obtain the border style of the renderNode.
 const borderStyle = renderNode.borderStyle;
 
@@ -2309,7 +2341,7 @@ Sets the border width for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border width of the RenderNode, in vp.|
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes   | Border width of the RenderNode, in vp.<br>Value range: [0, +∞). No border is drawn when a negative number or 0 is passed in. |
 
 get borderWidth(): Edges\<number>
 
@@ -2382,7 +2414,7 @@ Sets the border color for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border color of the RenderNode.|
+| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes   | Border color of the RenderNode, in ARGB format. Example: **0XFF000000** |
 
 get borderColor(): Edges\<number>
 
@@ -2457,7 +2489,6 @@ Sets the border corner radius for this RenderNode.
 | Name| Type                                                        | Mandatory| Description                  |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------- |
 | radius | [BorderRadiuses](./js-apis-arkui-graphics.md#borderradiuses12) | Yes  | Border corner radius of the RenderNode, in vp.|
-
 
 get borderRadius(): BorderRadiuses
 
@@ -2544,7 +2575,7 @@ Obtains the shape mask of this RenderNode.
 
 | Type                                              | Description                  |
 | -------------------------------------------------- | ---------------------- |
-| [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | Shape mask of the RenderNode.|
+| [ShapeMask](./js-apis-arkui-graphics.md#shapemask12) | Mask of the RenderNode. There is no mask effect by default. |
 
 **Example**
 
@@ -2624,7 +2655,7 @@ Obtains the clipping shape for this RenderNode.
 
 | Type                                              | Description                  |
 | -------------------------------------------------- | ---------------------- |
-| [ShapeClip](./js-apis-arkui-graphics.md#shapeclip12) | Clipping shape of the RenderNode.|
+| [ShapeClip](./js-apis-arkui-graphics.md#shapeclip12) | Clipping shape of the RenderNode. There is no clipping effect by default. |
 
 **Example**
 
@@ -2633,7 +2664,7 @@ import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
 
 // Create a shape clip and set the path drawing commands.
 const clip = new ShapeClip();
-clip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
 
 const renderNode = new RenderNode();
 renderNode.frame = {
@@ -2673,7 +2704,7 @@ struct Index {
     Column() {
       NodeContainer(this.myNodeController)
         .borderWidth(1)
-      Button("setRectShape")
+      Button('setRectShape')
         .onClick(() => {
           shapeClip.setRectShape({
             left: 0,
@@ -2683,7 +2714,7 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-      Button("setRoundRectShape")
+      Button('setRoundRectShape')
         .onClick(() => {
           shapeClip.setRoundRectShape({
             rect: {
@@ -2701,12 +2732,12 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-      Button("setCircleShape")
+      Button('setCircleShape')
         .onClick(() => {
           shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
           renderNode.shapeClip = shapeClip;
         })
-      Button("setOvalShape")
+      Button('setOvalShape')
         .onClick(() => {
           shapeClip.setOvalShape({
             left: 0,
@@ -2716,9 +2747,9 @@ struct Index {
           });
           renderNode.shapeClip = shapeClip;
         })
-      Button("setCommandPath")
+      Button('setCommandPath')
         .onClick(() => {
-          shapeClip.setCommandPath({ commands: "M100 0 L0 100 L50 200 L150 200 L200 100 Z" });
+          shapeClip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
           renderNode.shapeClip = shapeClip;
         })
     }
@@ -2730,7 +2761,7 @@ struct Index {
 
 dispose(): void
 
-Releases this RenderNode immediately.
+Immediately releases the current RenderNode. After this API is called, the RenderNode will release its reference to the backend entity node. Calling APIs of this node again may cause a crash or return default values. You can query whether the node has been released through the [isDisposed](#isdisposed20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2764,7 +2795,7 @@ class MyNodeController extends NodeController {
 
   disposeRenderNode() {
     const rootRenderNode = this.rootNode!.getRenderNode();
-    // Removes all child nodes before releasing the renderNode.
+    // Remove the renderNode from the parent node rootRenderNode before releasing it.
     if (rootRenderNode !== null) {
       rootRenderNode.removeChild(renderNode);
     }
@@ -2794,7 +2825,7 @@ struct Index {
 
 set markNodeGroup(isNodeGroup: boolean)
 
-Sets whether to enable drawing priority for this node and its child nodes. When this feature is enabled, visual attributes like opacity are applied during composition after drawing completes. The configuration result is as follows.
+Sets whether to enable drawing priority for this node and its child nodes. When this feature is enabled, visual attributes like opacity are applied during composition after drawing completes. This API is suitable for scenarios where multiple semi-transparent nodes overlap and correct compositing of the opacity effect is required. The configuration result is as follows.
 
 ![markNodeGroup](./figures/renderNode-markNodeGroup.png)
 
@@ -2806,11 +2837,11 @@ Sets whether to enable drawing priority for this node and its child nodes. When 
 
 | Name   | Type                                              | Mandatory| Description              |
 | --------- | -------------------------------------------------- | ---- | ------------------ |
-| isNodeGroup | boolean | Yes  | Whether to enable drawing priority for this node and its child nodes.<br>**true**: Enable drawing priority. **false**: Disable drawing priority.|
+| isNodeGroup | boolean | Yes | Whether to enable drawing priority for this node and its child nodes.<br>**true**: enable drawing priority. **false**: disable drawing priority. |
 
 get markNodeGroup(): boolean
 
-Obtains whether to prioritize the drawing of this RenderNode and its childe nodes.
+Obtains whether to prioritize the drawing of this RenderNode and its child nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2820,7 +2851,7 @@ Obtains whether to prioritize the drawing of this RenderNode and its childe node
 
 | Type   | Description                                       |
 | ------- | ------------------------------------------- |
-| boolean | Whether to prioritize the drawing of this RenderNode and its childe nodes.<br>The value **true** means to prioritize the drawing of the current RenderNode and its childe nodes, and **false** means the opposite.<br>Default value: **false**|
+| boolean | Whether the current node is marked for drawing priority.<br>The value **true** indicates that the current node is marked for drawing priority, and **false** indicates the opposite.<br>The default value is **false**. |
 
 **Example**
 
@@ -2887,7 +2918,7 @@ struct Index {
 
 set lengthMetricsUnit(unit: LengthMetricsUnit)
 
-Sets the metric unit used by attributes of this RenderNode.
+Sets the metric unit used by attributes of the RenderNode. This API is suitable for scenarios that require precise pixel control (such as using px) or following the system default layout (such as using DEFAULT).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2976,7 +3007,7 @@ struct Index {
 
 isDisposed(): boolean
 
-Checks whether this RenderNode object has released its reference to its backend entity node. Frontend nodes maintain references to corresponding backend entity nodes. After a node calls the **dispose** API to release this reference, subsequent API calls may cause crashes or return default values. This API facilitates validation of node validity prior to operations, thereby mitigating risks in scenarios where calls after disposal are required.
+Queries whether the current RenderNode object has released its reference to the backend entity node. After a node calls the **dispose** API, calling other APIs may cause a crash or return default values. You are advised to call this API to check the validity of the node before operating on it, to avoid potential risks.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2986,7 +3017,7 @@ Checks whether this RenderNode object has released its reference to its backend 
 
 | Type   | Description              |
 | ------- | ------------------ |
-| boolean | Whether the reference to the backend node is released. The value **true** means that the reference to backend node is released, and **false** means the opposite.|
+| boolean | Whether the reference to the backend node is released. The value **true** indicates that the reference to the backend node is released, and **false** indicates the opposite. |
 
 **Example**
 
@@ -3027,8 +3058,7 @@ class MyNodeController extends NodeController {
       // Check whether the RenderNode's reference to the backend node is released.
       if (renderNode.isDisposed()) {
         return 'renderNode isDisposed is true';
-      }
-      else {
+      } else {
         return 'renderNode isDisposed is false';
       }
     }
@@ -3073,7 +3103,7 @@ struct Index {
 
 set backgroundBlur(blurValue: BackgroundBlur | undefined)
 
-Sets a background blur effect.
+Sets the background blur effect of the current RenderNode, which blurs the background area of the node.
 
 **Since**: 26.0.0
 
@@ -3160,7 +3190,7 @@ class MyNodeController extends NodeController {
       .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
       .backgroundImageSize({ width: 200, height: 200 });
     let renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
+    if (renderNode !== null) {
       let myRenderNode = new MyRenderNode(uiContext);
       // Set a background blur effect.
       myRenderNode.backgroundBlur = {
@@ -3198,7 +3228,7 @@ struct Index {
 
 set contentBlur(blurValue: ContentBlur | undefined)
 
-Sets a content blur effect.
+Sets the content blur effect of the current RenderNode, which blurs the drawn content of the node.
 
 **Since**: 26.0.0
 
@@ -3285,7 +3315,7 @@ class MyNodeController extends NodeController {
       .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
       .backgroundImageSize({ width: 200, height: 200 });
     let renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
+    if (renderNode !== null) {
       let myRenderNode = new MyRenderNode(uiContext);
       // Set a content blur effect.
       myRenderNode.contentBlur = {
@@ -3323,7 +3353,7 @@ struct Index {
 
 set foregroundBlur(blurValue: ForegroundBlur | undefined)
 
-Sets a foreground blur effect.
+Sets the foreground blur effect of the current RenderNode, which blurs the foreground area of the node.
 
 **Since**: 26.0.0
 
@@ -3410,7 +3440,7 @@ class MyNodeController extends NodeController {
       .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
       .backgroundImageSize({ width: 200, height: 200 });
     let renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
+    if (renderNode !== null) {
       let myRenderNode = new MyRenderNode(uiContext);
       // Set a foreground blur effect.
       myRenderNode.foregroundBlur = {
@@ -3418,7 +3448,7 @@ class MyNodeController extends NodeController {
       };
       renderNode.appendChild(myRenderNode);
       const foregroundBlurConfig = myRenderNode.foregroundBlur;
-      console.info(`foreground blur radius: ${foregroundBlurConfig.radius}]`);
+      console.info(`foreground blur radius: ${foregroundBlurConfig.radius}`);
     }
     return this.rootNode;
   }

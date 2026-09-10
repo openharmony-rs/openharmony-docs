@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:24:45.409Z pushedAt=2026-09-03T02:13:11.555Z -->
 
-**@StorageProp** is used in state management V1 to establish unidirectional data synchronization with the corresponding property in AppStorage. The changes of the corresponding property in AppStorage are synchronized to the variable decorated with **@StorageProp**, but the changes of the variable decorated with **@StorageProp** will not be synchronized back to AppStorage. It is applicable to scenarios where the global state changes of AppStorage need to be detected across pages and abilities and only unidirectional data flow is required. This can avoid unnecessary data writeback.
+**\@StorageProp** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to establish unidirectional data synchronization with the corresponding property in [AppStorage](./ts-state-management.md#appstorage). The changes of the corresponding property in AppStorage are synchronized to the variable decorated with **\@StorageProp**, but the changes of the variable decorated with **\@StorageProp** will not be synchronized back to AppStorage. It is applicable to scenarios where the global state changes of AppStorage need to be detected across pages and [abilities](../../apis-ability-kit/js-apis-ability-ability.md) and only unidirectional data flow is required. This can avoid unnecessary data writeback.
 
 For details, see [AppStorage: Storing Application-wide UI State](../../../ui/state-management/arkts-appstorage.md).
 
@@ -71,3 +72,4 @@ struct StoragePropComponent {
   }
 }
 ```
+

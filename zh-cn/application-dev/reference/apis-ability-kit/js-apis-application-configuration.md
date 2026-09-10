@@ -29,8 +29,6 @@ import Configuration from '@ohos.application.Configuration';
 | language<sup>8+</sup> | string | 否 | 是 | 表示应用程序的当前语言。例如：zh。 |
 | colorMode<sup>8+</sup> | [ConfigurationConstant.ColorMode](js-apis-application-configurationConstant.md#colormode) | 否 | 是 | 表示深浅色模式，取值范围：浅色模式（COLOR_MODE_LIGHT），深色模式（COLOR_MODE_DARK）。默认为浅色。 |
 
-具体字段描述参考ohos.application.Configuration.d.ts文件
-
 **示例：**
 ```ts
 import UIAbility from '@ohos.app.ability.UIAbility';

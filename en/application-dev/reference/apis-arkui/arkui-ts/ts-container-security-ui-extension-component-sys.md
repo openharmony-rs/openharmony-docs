@@ -1,10 +1,12 @@
 # SecurityUIExtensionComponent (System API)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-19T07:17:20.536Z pushedAt=2026-08-20T10:45:03.050Z -->
 
 **SecurityUIExtensionComponent** is used to embed the UI provided by another application on the current page. The displayed content runs in another process, and the current application does not participate in its layout and rendering.
 
@@ -38,7 +40,7 @@ Creates a **SecurityUIExtensionComponent** component to embed and display the UI
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes| Ability information to load. The **UIExtensionAbilit**y to be started is determined by both **bundleName** and **abilityName**. In addition, the **ability.want.params.uiExtensionType** field must be specified in **parameters** to indicate the type of the **UIExtensionAbility**. Currently, only **sysPicker/photoPicker** is supported.|
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes| Ability information to load. The **UIExtensionAbility** to be started is determined by both **bundleName** and **abilityName**. In addition, the **ability.want.params.uiExtensionType** field must be specified in **parameters** to indicate the type of the **UIExtensionAbility**. Currently, only **sysPicker/photoPicker** is supported.|
 | options | [SecurityUIExtensionOptions](#securityuiextensionoptions) | No| Options used to construct **SecurityUIExtensionComponent**. If this parameter is left empty, the default value is used for each field.|
 
 ## SecurityUIExtensionOptions
@@ -53,8 +55,8 @@ Defines the options to be passed when constructing **SecurityUIExtensionComponen
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isTransferringCaller | boolean | No| Yes| Whether the **UIExtensionComponent** forwards the upper-level caller information when it is used for nesting.<br>**true**: yes; **false**: no.<br>The default value is **false**.|
-| placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | No| Yes| Placeholder to be displayed before the **SecurityUIExtensionComponent** establishes a connection with the **UIExtensionAbility**.|
+| isTransferringCaller | boolean | No | Yes | Whether to forward the Caller information of the upper-level caller (that is, the identity information of the **Ability** that initiates the call) when **SecurityUIExtensionComponent** is nested, so as to support call chain passing in multi-level nesting scenarios.<br>**true**: forwards the Caller information of the upper level; **false**: does not forward the Caller information of the upper level.<br>Default value: **false** |
+| placeholder | [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) | No | Yes | Placeholder displayed before the connection between **SecurityUIExtensionComponent** and the **UIExtensionAbility** is established. No placeholder is displayed if this attribute is not set. |
 | dpiFollowStrategy | [SecurityDpiFollowStrategy](#securitydpifollowstrategy) | No| Yes| Resolution following strategy for **SecurityUIExtensionComponent**, used to control whether the embedded **UIExtensionAbility** content follows the host application's resolution or uses its own resolution.<br>Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI**|
 
 ## SecurityDpiFollowStrategy
@@ -96,7 +98,7 @@ Triggered when the **UIExtensionAbility** connection is complete. This API uses 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | Yes| Callback invoked to send data to the remote ability.|
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> | Yes | Callback whose input parameter is **SecurityUIExtensionProxy**, which can be used to send data to the peer **Ability** and subscribe to events. |
 
 ### onReceive
 
@@ -114,13 +116,13 @@ Triggered when the data sent by the started **UIExtensionAbility** is received. 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\> | Yes| Callback invoked to return the data received from the remote ability.|
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\> | Yes | Callback invoked to return the data received from the peer **Ability**. The data is a **Record<string, Object>** key-value pair, and the specific fields are customized by the sender (the launched Ability) through the **sendData** method. |
 
 ### onError
 
 onError(callback: ErrorCallback)
 
-Triggered when an exception occurs during the running of the started ability extension, excluding the scenario where the **UIExtensionAbility** is disconnected. This API uses an asynchronous callback to return the result.
+Callback triggered when an exception occurs during the running of the launched **UIExtensionAbility**. This does not include the scenario where the connection to the **UIExtensionAbility** is disconnected. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -136,7 +138,7 @@ Triggered when an exception occurs during the running of the started ability ext
 
 ### onTerminated
 
-onTerminated(callback: Callback\<TerminationInfo>)
+onTerminated(callback: Callback\<TerminationInfo\>)
 
 Triggered when the started **UIExtensionAbility** exits normally by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself). This API uses an asynchronous callback to return the result.
 
@@ -164,18 +166,24 @@ Defines the result returned when the started **UIExtensionAbility** exits normal
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | No| No| Result code returned when the **UIExtensionAbility** exits. The value **0** indicates that the **UIExtensionAbility** exits normally, and a non-zero value indicates that the **UIExtensionAbility** exits abnormally. The meaning of the result code is defined by the **UIExtensionAbility** that is started.|
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | No| Yes| Data returned when the **UIExtensionAbility** exits.|
+| code | number | No | No | Result code returned when the launched **UIExtensionAbility** exits. The value **0** indicates normal exit, and a non-zero value indicates abnormal exit. The specific meaning of the result code is defined by the launched **UIExtensionAbility**. |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | No | Yes | Data returned when the launched **UIExtensionAbility** exits. This field is empty if no data is returned. |
 
 ## SecurityUIExtensionProxy
 
-Implements a **SecurityUIExtensionProxy** instance for the component host to send data to, subscribe to, or unsubscribe from the started ability through the connection established between the two parties.
+Used to send data to the launched **Ability** and subscribe to and unsubscribe from event callbacks after a successful connection is established.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### send
 
 send(data: Record\<string, Object\>): void
 
-Asynchronously sends data to the ability started by the component host through the connection established between the two parties.
+Used to send data to the launched **Ability** after a successful connection is established, providing asynchronous sending capability. The data will be received and processed by the extension **Ability** through [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback).
 
 **Since:** 26.0.0
 
@@ -187,13 +195,13 @@ Asynchronously sends data to the ability started by the component host through t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| data | Record\<string, Object\> | Yes| Data to be asynchronously sent to the started **UIExtensionAbility**.|
+| data | Record\<string, Object\> | Yes | Data asynchronously sent to the launched **Ability**. |
 
 ### sendSync
 
 sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
-Synchronously sends data to the ability started by the component host through the connection established between the two parties.
+Sends data to the launched **Ability** after a successful connection is established. The data will be processed by the launched **Ability** through **setReceiveDataForResultCallback** and the result will be returned.
 
 **Since:** 26.0.0
 
@@ -205,13 +213,13 @@ Synchronously sends data to the ability started by the component host through th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| data | Record\<string, Object\> | Yes| Data to be synchronously sent to the started **UIExtensionAbility**.|
+| data | Record\<string, Object\> | Yes | Data synchronously sent to the launched **Ability**. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Record\<string, Object\> | Data returned by the extension ability.|
+| Record\<string, Object\> | Response data returned by the launched **Ability** after processing the synchronous send request. |
 
 **Error codes**
 
@@ -226,7 +234,7 @@ For details about the error codes, see [UIExtension Error Codes](../errorcode-ui
 
 on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
-Subscribes to the callback triggered for asynchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+After a successful connection is established, subscribes to the callback triggered when the launched **Ability** performs asynchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -238,14 +246,14 @@ Subscribes to the callback triggered for asynchronous registration of the starte
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| The value is fixed to **asyncReceiverRegister**, indicating a subscription to the callback triggered for asynchronous registration of the extended ability.|
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | Yes|  Callback triggered after the extension ability registers a [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback).|
+| type | string | Yes | Fixed value **'asyncReceiverRegister'**, which indicates the callback triggered when the launched **Ability** performs asynchronous registration. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | Yes | Callback triggered after the launched **Ability** registers [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback). |
 
 ### on('syncReceiverRegister')
 
 on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
-Subscribes to the callback triggered for synchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+After a successful connection is established, subscribes to the callback triggered when the launched **Ability** performs synchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -257,14 +265,14 @@ Subscribes to the callback triggered for synchronous registration of the started
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| The value is fixed to **syncReceiverRegister**, indicating subscription to the asynchronous registration of the extension ability.|
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | Yes|  Callback triggered after the extension ability registers a [setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedataforresultcallback11).|
+| type | string | Mandatory | Fixed value **'syncReceiverRegister'**, which indicates the callback triggered when the launched **Ability** performs synchronous registration. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | Mandatory | Callback function. Callback triggered after the launched **Ability** registers [setReceiveDataForResultCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedataforresultcallback11). |
 
 ### off('asyncReceiverRegister')
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-Unsubscribes from the callback triggered for the asynchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+Unsubscribes from the callback triggered when the launched **Ability** performs asynchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -276,14 +284,14 @@ Unsubscribes from the callback triggered for the asynchronous registration of th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| The value is fixed to **asyncReceiverRegister**, indicating unsubscription from the callback triggered for asynchronous registration of the extended ability.|
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | No| Callback function. If this parameter is left empty, it means unsubscribing from all callbacks triggered after **UIExtensionAbility**'s asynchronous registration. If this parameter is not empty, it means unsubscribing from callbacks corresponding to **type**.|
+| type | string | Yes | Fixed value **'asyncReceiverRegister'**, used to unsubscribe from the callback triggered when the launched **Ability** performs asynchronous registration. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | No | Callback function. If this parameter is left empty, all callbacks for asynchronous registration are unsubscribed. If it is not empty, the specified callback for asynchronous registration is unsubscribed. |
 
 ### off('syncReceiverRegister')
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-Unsubscribes from the callback triggered for the synchronous registration of the started ability. This API uses an asynchronous callback to return the result.
+Unsubscribes from the callback triggered when the launched **Ability** performs synchronous registration. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -295,16 +303,18 @@ Unsubscribes from the callback triggered for the synchronous registration of the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| The value is fixed to **syncReceiverRegister**, indicating unsubscription to the asynchronous registration of the extension ability.|
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | No| Callback to unsubscribe from. If this parameter is left empty, it means unsubscribing from all callbacks triggered after **UIExtensionAbility**'s synchronous registration.|
+| type | string | Yes | Fixed value **'syncReceiverRegister'**, used to unsubscribe from the callback triggered when the launched **Ability** performs synchronous registration. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | No | Callback function. If it is empty, unsubscribes from all synchronously registered callbacks. If it is not empty, unsubscribes from the specified synchronously registered callback. |
 
 ## Examples
 
-### Example 1: Basic Usage of SecurityUIExtensionComponent
+### Example 1: Launching a Remote UIExtensionAbility and Performing Bidirectional Data Communication Using SecurityUIExtensionComponent
 
-This example demonstrates the basic usage of **SecurityUIExtensionComponent**. It shows how to start the **UIExtensionAbility** of a specified ability by configuring **Want**, and how to obtain error information through the **onError** callback when a connection exception occurs.
+This example demonstrates how to use **SecurityUIExtensionComponent**, including launching a specified **UIExtensionAbility** by configuring [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want), obtaining [SecurityUIExtensionProxy](#securityuiextensionproxy) through [onRemoteReady](#onremoteready), sending data using [send](#send) or [sendSync](#sendsync), and handling events through callbacks such as [onReceive](#onreceive), [onError](#onerror), and [onTerminated](#onterminated).
 
-Since API version 26.0.0, the [onError](#onerror) event is added.
+Since API version 26.0.0, the [onRemoteReady](#onremoteready), [onReceive](#onreceive), [onError](#onerror), and [onTerminated](#onterminated) events are added.
+
+**Component consumer**
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -315,36 +325,269 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  @State want: Want = {
-    bundleName: 'com.ohos.myapplication',
-    abilityName: 'SUIExtensionProvider',
+  @State receiveData: string = '';
+  private want: Want = {
+    bundleName: 'com.example.securityUIExtProvider',
+    abilityName: 'SecurityUIExtProvider',
     parameters: {
       'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
-  }
+  };
+  private proxy: SecurityUIExtensionProxy | null = null;
 
   build() {
     Column() {
-      Button('top')
-        .width('80%')
-        .height(40)
-        .margin(3)
+      Text(this.message).fontSize(20).margin(10)
+      Text('Data received: ' + this.receiveData).fontSize(16).margin(10)
 
       SecurityUIExtensionComponent(this.want)
         .width('90%')
-        .height('90%').backgroundColor(Color.Green)
+        .height('60%')
+        .backgroundColor(Color.Green)
+        .onRemoteReady((proxy: SecurityUIExtensionProxy) => {
+          hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
+          this.proxy = proxy;
+
+          this.proxy.on('asyncReceiverRegister', asyncRegisterCallback);
+          this.proxy.on('syncReceiverRegister', syncRegisterCallback);
+        })
+        .onReceive((data: Record<string, Object>) => {
+          this.receiveData = JSON.stringify(data['data']);
+          hilog.info(0x0000, 'SUECDemo', 'onReceive: ' + this.receiveData);
+        })
         .onError((error: BusinessError) => {
-          this.message = 'Error: ' + JSON.stringify(error);
-          hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
+          this.message = `Error: ${JSON.stringify(error)}`;
+          hilog.error(0x0000, 'SUECDemo', `onError. Code: ${error.code}, message: ${error.message}`);
+        })
+        .onTerminated((info: TerminationInfo) => {
+          hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
         })
 
-      Button('bottom')
-        .width('80%')
-        .height(40)
-        .margin(3)
+      Button('Send Async Data')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy) {
+            this.proxy.send({ data: 'Async message from the consumer' });
+          }
+        })
+
+      Button('Send Sync Data')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy) {
+            try {
+              let result = this.proxy.sendSync({ data: 'Sync message from the consumer' });
+              hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
+            } catch (err) {
+              hilog.error(0x0000, 'SUECDemo', `sendSync failed. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+            }
+          }
+        })
+
+
+      Button('Unregister Sync Listener')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy) {
+            this.proxy.off('syncReceiverRegister');
+            hilog.info(0x0000, 'SUECDemo', `offSyncReceiverRegister`);
+          }
+        })
+
+      Button('Unregister Async Listener')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy) {
+            this.proxy.off('asyncReceiverRegister');
+            hilog.info(0x0000, 'SUECDemo', `offAsyncReceiverRegister`);
+          }
+        })
     }
     .height('90%')
     .width('90%')
   }
 }
+
+
+const asyncRegisterCallback = (proxy: UIExtensionProxy) => {
+  hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
+};
+
+const syncRegisterCallback = (proxy: UIExtensionProxy) => {
+  hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
+};
 ```
+
+**Component provider**
+
+The provider needs to modify the following three files.
+
+- The provider adds the extension entry file `/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`.
+
+  ```ts
+  import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = '[SecurityUIExtAbility]';
+  
+  export default class SecurityUIExtProvider extends UIExtensionAbility {
+    onCreate() {
+      hilog.info(0x0000, TAG, 'onCreate');
+    }
+  
+    onForeground() {
+      hilog.info(0x0000, TAG, 'onForeground');
+    }
+  
+    onBackground() {
+      hilog.info(0x0000, TAG, 'onBackground');
+    }
+  
+    onDestroy() {
+      hilog.info(0x0000, TAG, 'onDestroy');
+    }
+  
+    onSessionCreate(want: Want, session: UIExtensionContentSession) {
+      hilog.info(0x0000, TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      let param: Record<string, UIExtensionContentSession> = {
+        'session': session
+      };
+      let storage: LocalStorage = new LocalStorage(param);
+      try {
+        session.loadContent('pages/SecurityExtension', storage);
+      } catch (error) {
+        hilog.error(0x0000, TAG, `onSessionCreate loadContent failed. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+      }
+    }
+  
+    onSessionDestroy(session: UIExtensionContentSession) {
+      hilog.info(0x0000, TAG, 'onSessionDestroy');
+    }
+  }
+  ```
+
+- The provider adds the extension **Ability** entry page file `/src/main/ets/pages/SecurityExtension.ets`.
+
+  ```ts
+  import { UIExtensionContentSession } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  let storage = LocalStorage.getShared();
+  AppStorage.setOrCreate('message', 'UIExtensionAbility');
+  
+  @Entry(storage)
+  @Component
+  struct SecurityExtension {
+    @StorageLink('message') storageLink: string = '';
+    private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  
+    build() {
+      Scroll() {
+        Column() {
+          Text(this.storageLink)
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+            .width('80%')
+            .height('10%')
+  
+          Button('Click to send data to Component')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              hilog.info(0x0000, 'SecurityExtension', 'send 543321, for test start');
+              if (this.session != undefined) {
+                this.session.sendData({ 'data': 'Data that Component should receive' });
+                hilog.info(0x0000, 'SecurityExtension', 'send for test');
+              }
+            })
+  
+          Button('terminate')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              hilog.info(0x0000, 'SecurityExtension', 'terminate');
+              if (this.session != undefined) {
+                this.session.terminateSelf();
+              }
+              storage.clear();
+            })
+  
+          Button('terminate with result')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              hilog.info(0x0000, 'SecurityExtension', 'terminateSelfWithResult');
+              if (this.session != undefined) {
+                this.session.terminateSelfWithResult({
+                  resultCode: 0,
+                  want: {
+                    bundleName: 'myBundleName',
+                    parameters: { 'result': 123456 }
+                  }
+                });
+              }
+              storage.clear();
+            })
+
+          Button('setReceiveDataCallback')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              this.session?.setReceiveDataCallback((data) => {
+                this.storageLink = JSON.stringify(data);
+                hilog.info(0x0000, 'SecurityExtension', 'test setReceiveDataCallback successfully: ' + this.storageLink);
+              })
+            })
+  
+          Button('setReceiveDataForResultCallback')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              this.session?.setReceiveDataForResultCallback(receiveDataForResultCallback);
+            })
+        }
+      }
+      .id('providerScroll')
+      .width('100%')
+      .height('100%')
+    }
+  }
+  
+  const receiveDataForResultCallback = (data: Record<string, Object>): Record<string, Object> => {
+    let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
+    linkToMsg.set(JSON.stringify(data));
+    hilog.info(0x0000, 'SecurityExtension',
+      'invoke for test, handle callback set by setReceiveDataForResultCallback successfully');
+    return data;
+  }
+  ```
+
+- Provider module.json5 configuration.
+
+  ```json
+  "extensionAbilities": [
+        {
+          "name": "SecurityUIExtProvider",
+          "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
+          "description": "$string:module_desc",
+          "label": "$string:EntryAbility_desc",
+          "type": "sysPicker/photoPicker",
+          "exported": true,
+          "metadata" : [{
+            "name" : "supportUIInteraction",
+            "value": "false"
+          }]
+        }
+      ]
+  ```

@@ -821,3 +821,84 @@ struct Index {
 }
 ```
 ![buttontextalign](figures/buttontextalign.jpeg)
+
+### 示例9（设置按钮的沉浸光感效果）
+
+该示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来设置组件的系统材质，以实现沉浸光感效果。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+> **说明：**
+>
+> 如果开发者没有主动设置Button的背景色属性，即使用Button组件默认的背景色参数时，设置系统材质后会自动继承默认的背景色参数。如果开发者主动设置了背景色，且背景色参数设置在系统材质参数之前，则系统材质参数会强制清除开发者主动设置的背景色，将其改为透明色。 如果主动设置的背景色在系统材质之后，则背景色和系统材质会叠加显示（背景色层级更高）。
+
+
+从API版本26.0.0开始，新增systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  NavigationTitle() {
+    Column() {
+      Button('helloWorld')
+        .width(200)
+        .fontColor(Color.Black)
+        // 通过systemMaterial设置系统材质
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.THIN
+        }))
+        .backgroundColor('#7755bbff')
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        Row() {
+          Column()
+            .width('50%')
+            .height('100%')
+            .background(Color.White)
+
+          Column()
+            .width('50%')
+            .height('100%')
+            .background(Color.Black)
+        }
+        .height('100%')
+        .width('100%')
+        .margin({ top: 12, left: '10%' })
+      }
+      .title(this.NavigationTitle, {
+        systemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          colorInvert: true,
+          interactive: true,
+          lightEffect: {}
+        }),
+        // systemMaterial和barStyle没有关联性，但是同时设置barStyle为STACK样式可获得最佳沉浸效果
+        barStyle: BarStyle.STACK
+      })
+      .hideTitleBar(false)
+      .titleMode(NavigationTitleMode.Free)
+      .onTitleModeChange((titleModel: NavigationTitleMode) => {
+        console.info('titleMode' + titleModel)
+      })
+    }
+  }
+}
+```
+
+未设置系统材质时：
+
+![未设置系统材质时](figures/buttonWithoutNewMaterial.png)
+
+设置系统材质后：
+
+![设置系统材质后](figures/buttonNewMaterial.png)

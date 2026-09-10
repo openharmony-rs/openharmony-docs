@@ -255,7 +255,7 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( <br>
   &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> <br>
 ): T | undefined
 
-将键值对数据存储在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`collections.Array`，`collections.Map`，`collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+将键值对数据存储在应用磁盘中。支持[集合类型](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持的集合类型)（Array、Map、Set、collections.Array、collections.Map、collections.Set）和Date类型的持久化。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
 > **说明：**
 >
@@ -441,7 +441,7 @@ globalConnect参数类型。
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   | 用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认构造器`defaultCreator`，不提供默认构造器会导致持久化失败。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
-|defaultSubCreator   | StorageDefaultCreator\<S\> |否   |是   | 使用该集合项默认构造函数，用于持久化容器类数据。使用此参数时，必须同时提供`defaultCreator`，否则会导致持久化失败。如果defaultSubCreator返回的是`undefined`或`null`时，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
+|defaultSubCreator   | StorageDefaultCreator\<S\> |否   |是   | 使用该集合项默认构造函数，用于持久化容器类数据。使用此参数时，必须同时提供`defaultCreator`，否则会导致持久化失败。持久化容器类数据时，若未传入该参数，或`defaultSubCreator`返回`undefined`或`null`，将导致持久化操作失败。当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 
@@ -1277,7 +1277,7 @@ class ObservedClass {
 
   constructor() {
     // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange
-    UIUtils.addMonitor(this, 'age', this.onChange);
+    UIUtils.addMonitor(this, 'age', this.onChange, { isSynchronous: true });
   }
 }
 
@@ -1719,7 +1719,6 @@ new(...args: any): T
 import { PersistenceV2 } from '@kit.ArkUI';
 
 @ObservedV2
-  // TypeConstructorWithArgs 指的是 SampleClass
 class SampleClass {
   @Trace id: number = 0;
   count: number = 1;
@@ -1731,6 +1730,7 @@ class FatherSampleClass {
 }
 
 // 将key为FatherSampleClass、value为new FatherSampleClass()对象的键值对持久化，并赋值给source
+// TypeConstructorWithArgs指的是FatherSampleClass
 const source: FatherSampleClass | undefined = PersistenceV2.connect(FatherSampleClass, () => new FatherSampleClass());
 
 @Entry

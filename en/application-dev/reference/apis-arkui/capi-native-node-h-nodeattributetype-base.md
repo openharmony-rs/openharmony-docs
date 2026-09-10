@@ -1,10 +1,12 @@
 # ArkUI_NodeAttributeType (Basic Attribute)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @wangyang2022; @zju_ljz-->
-<!--Designer: @hehongyang3; @wangyang2022; @lanshouren-->
+<!--Designer: @hehongyang3; @wangyang2022; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0bfa5619d73331e1954e3ffb456d2d3524a5513a translatedAt=2026-08-21T12:12:06.484Z pushedAt=2026-08-24T08:46:13.301Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -35,7 +37,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Background color, in 0xARGB format. The value range is from 0x00000000 to 0xFFFFFFFF. For example, `0xFFFF0000` indicates red. |
 
 **Returns**
 
@@ -59,7 +61,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .string | Image address. In API version 22 and earlier versions, the value can be a network image resource address, local image resource address, Base64 string, or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) resource, but cannot be the address of an animated image such as an [SVG](arkui-js/js-components-svg.md), GIF, or WebP image. In API version 23 and later versions, animated images of the WebP and GIF types are supported. Only the first frame of the animated image is displayed. Other types of animated images are not supported.|
-| .value[0]?.i32 | Whether the image is repeated. This parameter is optional. The parameter type is [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat). The default value is **ARKUI_IMAGE_REPEAT_NONE**.|
+| .value[0].?i32 | Whether the image is repeated. This parameter is optional. The parameter type is [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat). The default value is **ARKUI_IMAGE_REPEAT_NONE**. |
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either **.object** or **.string** must be set.|
 
 **Returns**
@@ -133,7 +135,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Background image size with style. The value is an enumerated value of [ArkUI_ImageSize](capi-image-h.md#arkui_imagesize).|
+| .value[0].i32 | Background image size with style. The value is an enumerated value of [ArkUI_ImageSize](capi-image-h.md#arkui_imagesize). Different enumerated values determine how the background image is scaled and cropped, such as displaying at the original size, covering the component area while maintaining the aspect ratio, or displaying completely while maintaining the aspect ratio. |
 
 **Returns**
 
@@ -233,7 +235,6 @@ Inspector label, which helps you distinguish nodes of the same type to improve d
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since:** 26.0.0
-
 
 **Parameters**
 

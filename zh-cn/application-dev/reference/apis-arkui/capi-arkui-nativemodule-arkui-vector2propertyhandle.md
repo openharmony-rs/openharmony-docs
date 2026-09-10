@@ -1,4 +1,4 @@
-# ArkUI_Vector2PropertyHandle
+# ArkUI_Vector2Property*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

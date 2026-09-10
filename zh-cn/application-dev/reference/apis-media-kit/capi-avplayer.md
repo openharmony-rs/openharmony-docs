@@ -2,13 +2,13 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-提供用于播放媒体源的接口。AVPlayer基于状态机设计，支持音频和视频播放、播放控制、播放速率和音量调节等功能。
+提供用于播放媒体源的接口。AVPlayer基于状态机设计，支持音频和视频播放、播放控制、播放速率和音量调节等功能。适用于音乐播放器、视频播放器、在线教育应用、短视频应用等场景。
 
 根据开发需求，参考对应的开发指南及样例。
 

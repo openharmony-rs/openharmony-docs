@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:48:29.093Z pushedAt=2026-08-28T08:43:18.777Z -->
 
 ArkTS widgets provide page interaction capabilities, including page redirection between widgets and widget providers (such as applications), process startup of widget providers, and message transfer between widgets and widget providers. You can call [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) to implement a [dynamic widget](arkts-form-overview.md#dynamic-widget) and use [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md) to implement page interaction of a [static widget](arkts-form-overview.md#static-widget). Both **postCardAction** and **FormLink** support router, message, and call events. The usage scenarios are as follows:
 

@@ -51,7 +51,7 @@ cpp部分代码：
 <!-- @[oh_jsvm_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createerror/src/main/cpp/hello.cpp) -->
 
 ``` C++
-// 捕获清除并打印错误,该函数作为公共函数，在本文档后续样例中不再声明和定义
+// 捕获清除并打印错误，该函数作为公共函数，在本文档后续样例中不再声明和定义
 static void GetLastErrorAndClean(JSVM_Env env)
 {
     // 调用OH_JSVM_GetAndClearLastException接口获取并清除最后一个未处理的异常。即使存在挂起的JavaScript异常，也可以调用此API

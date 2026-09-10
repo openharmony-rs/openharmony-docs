@@ -2,10 +2,11 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8a9ac7af74f2683ec2b34a282ded5aded5051ea3 translatedAt=2026-08-24T07:53:49.648Z pushedAt=2026-08-25T03:36:21.490Z -->
 
 > **NOTE**
 >
@@ -21,7 +22,7 @@ Enumerates the blend modes. A blend mode combines two colors (source color and d
 
 For brevity, the following abbreviations are used:
 
-**s**: source. **d**: destination. **sa**: source alpha. **da**: destination alpha.
+s: source; d: destination; sa: source alpha; da: destination alpha.
 
 The following abbreviations are used in the calculation result:
 
@@ -33,39 +34,39 @@ The table below shows the effect of each blend mode, where the yellow rectangle 
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ------------------------------------------------------------ | -------- |
-| CLEAR       | 0    | r = 0, sets the destination pixels to fully transparent.                               | ![CLEAR](figures/BlendMode-Clear.png)|
-| SRC         | 1    | r = s (all channels of the result equal those of the source), replaces the destination pixels with the source pixels.| ![SRC](figures/BlendMode-Src.png)|
-| DST         | 2    | r = d (all channels of the result equal those of the destination), keeps the destination pixels unchanged.| ![DST](figures/BlendMode-Dst.png)|
-| SRC_OVER    | 3    | r = s + (1 - sa) * d, draws the source pixels over the destination pixels, considering the source's transparency.| ![SRC_OVER](figures/BlendMode-SrcOver.png)|
-| DST_OVER    | 4    | r = d + (1 - da) * s, draws the destination pixels over the source pixels, considering the destination's transparency.| ![DST_OVER](figures/BlendMode-DstOver.png)|
-| SRC_IN      | 5    | r = s * da, retains only the intersection of the source pixels with the opaque parts of the destination.| ![SRC_IN](figures/BlendMode-SrcIn.png)|
-| DST_IN      | 6    | r = d * sa, retains only the intersection of the destination pixels with the opaque parts of the source.| ![DST_IN](figures/BlendMode-DstIn.png)|
-| SRC_OUT     | 7    | r = s * (1 - da), retains the parts of the source pixels that do not overlap with the destination.| ![SRC_OUT](figures/BlendMode-SrcOut.png)|
-| DST_OUT     | 8    | r = d * (1 - sa), retains the parts of the destination pixels that do not overlap with the source.| ![DST_OUT](figures/BlendMode-DstOut.png)|
-| SRC_ATOP    | 9    | r = s * da + d * (1 - sa), covers the destination pixels with the source pixels, showing the source only in the opaque parts of the destination.| ![SRC_ATOP](figures/BlendMode-SrcATop.png)|
-| DST_ATOP    | 10   | r = d * sa + s * (1 - da), covers the source pixels with the destination pixels, showing the destination only in the opaque parts of the source.| ![DST_ATOP](figures/BlendMode-DstATop.png)|
-| XOR         | 11   | r = s * (1 - da) + d * (1 - sa), shows only the non-overlapping parts of the source and destination pixels.| ![XOR](figures/BlendMode-Xor.png)|
-| PLUS        | 12   | r = min(s + d, 1), adds the color values of the source and destination pixels.                  | ![PLUS](figures/BlendMode-Plus.png)|
-| MODULATE    | 13   | r = s * d, multiplies the color values of the source and destination pixels.                          | ![MODULATE](figures/BlendMode-Modulate.png)|
-| SCREEN      | 14   | r = s + d - s * d, inverts the color values of the source and destination pixels, multiplies them, and then inverts the result, typically producing a brighter outcome.| ![SCREEN](figures/BlendMode-Screen.png)|
-| OVERLAY     | 15   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the destination pixels, enhancing contrast.| ![OVERLAY](figures/BlendMode-Overlay.png)|
-| DARKEN      | 16   | rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d, takes the darker color values between the source and destination pixels.| ![DARKEN](figures/BlendMode-Darken.png)|
-| LIGHTEN     | 17   | rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d, takes the lighter color values between the source and destination pixels.| ![LIGHTEN](figures/BlendMode-Lighten.png)|
-| COLOR_DODGE | 18   | Brightens the destination pixels by reducing contrast to reflect the source pixels.          | ![COLOR_DODGE](figures/BlendMode-ColorDodge.png)|
-| COLOR_BURN  | 19   | Darkens the destination pixels by increasing contrast to reflect the source pixels.          | ![COLOR_BURN](figures/BlendMode-ColorBurn.png)|
-| HARD_LIGHT  | 20   | Selectively applies **MULTIPLY** or **SCREEN** based on the brightness of the source pixels.   | ![HARD_LIGHT](figures/BlendMode-HardLight.png)|
-| SOFT_LIGHT  | 21   | Softly brightens or darkens the destination pixels based on the brightness of the source pixels.            | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png)|
-| DIFFERENCE  | 22   | rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d, calculates the difference between the color values of the source and destination pixels.| ![DIFFERENCE](figures/BlendMode-Difference.png)|
-| EXCLUSION   | 23   | rc = s + d - two(s * d), ra = s + (1 - sa) * d, similar to **DIFFERENCE** but with lower contrast.| ![EXCLUSION](figures/BlendMode-Exclusion.png)|
-| MULTIPLY    | 24   | r = s * (1 - da) + d * (1 - sa) + s * d, multiplies the color values of the source and destination pixels, typically resulting in a darker outcome.| ![MULTIPLY](figures/BlendMode-Multiply.png)|
-| HUE         | 25   | Uses the hue of the source pixels and the saturation and brightness of the destination pixels.              | ![HUE](figures/BlendMode-Hue.png)|
-| SATURATION  | 26   | Uses the saturation of the source pixels and the hue and brightness of the destination pixels.            | ![SATURATION](figures/BlendMode-Saturation.png)|
-| COLOR       | 27   | Uses the hue and saturation of the source pixels and the brightness of the destination pixels.              | ![COLOR](figures/BlendMode-Color.png)|
-| LUMINOSITY  | 28   | Uses the brightness of the source pixels and the hue and saturation of the destination pixels.              | ![LUMINOSITY](figures/BlendMode-Luminosity.png)|
+| CLEAR       | 0    | Clear mode. r = 0, set to fully transparent.                                | ![CLEAR](figures/BlendMode-Clear.png) |
+| SRC         | 1    | r = s. All four channels of the result are equal to the four channels of the source, that is, the result equals the source. Replaces the target pixel with the source pixel. | ![SRC](figures/BlendMode-Src.png) |
+| DST         | 2    | r = d. All four channels of the result are equal to the four channels of the destination, that is, the result equals the target. Keeps the target pixel unchanged. | ![DST](figures/BlendMode-Dst.png) |
+| SRC_OVER    | 3    | r = s + (1 - sa) * d. Draws the source pixel over the target pixel, taking into account the transparency of the source pixel. | ![SRC_OVER](figures/BlendMode-SrcOver.png) |
+| DST_OVER    | 4    | r = d + (1 - da) * s. Draws the target pixel over the source pixel, taking into account the transparency of the target pixel. | ![DST_OVER](figures/BlendMode-DstOver.png) |
+| SRC_IN      | 5    | r = s * da. Keeps only the intersection of the source pixel and the opaque part of the target. | ![SRC_IN](figures/BlendMode-SrcIn.png) |
+| DST_IN      | 6    | r = d * sa. Keeps only the intersection of the target pixel and the opaque part of the source. | ![DST_IN](figures/BlendMode-DstIn.png) |
+| SRC_OUT     | 7    | r = s * (1 - da). Keeps the part of the source pixel that does not overlap the target. | ![SRC_OUT](figures/BlendMode-SrcOut.png) |
+| DST_OUT     | 8    | r = d * (1 - sa). Keeps the part of the target pixel that does not overlap the source. | ![DST_OUT](figures/BlendMode-DstOut.png) |
+| SRC_ATOP    | 9    | r = s * da + d * (1 - sa). The source pixel is overlaid on the target pixel, and the source pixel is displayed only in the opaque part of the target. | ![SRC_ATOP](figures/BlendMode-SrcATop.png) |
+| DST_ATOP    | 10   | r = d * sa + s * (1 - da). The target pixel is overlaid on the source pixel, and the target pixel is displayed only in the opaque part of the source. | ![DST_ATOP](figures/BlendMode-DstATop.png) |
+| XOR         | 11   | r = s * (1 - da) + d * (1 - sa). Displays only the non-overlapping parts of the source pixel and the target pixel. | ![XOR](figures/BlendMode-Xor.png) |
+| PLUS        | 12   | r = min(s + d, 1). Adds the color values of the source and target pixels.                   | ![PLUS](figures/BlendMode-Plus.png) |
+| MODULATE    | 13   | r = s * d. Multiplies the color values of the source and target pixels.                           | ![MODULATE](figures/BlendMode-Modulate.png) |
+| SCREEN      | 14   | Screen mode. r = s + d - s * d. Inverts the color values of the source and target pixels, multiplies them, and then inverts the result, which is usually brighter. | ![SCREEN](figures/BlendMode-Screen.png) |
+| OVERLAY     | 15   | Overlay mode. Selectively applies the MULTIPLY or SCREEN mode based on the brightness of the target pixel to enhance contrast. | ![OVERLAY](figures/BlendMode-Overlay.png) |
+| DARKEN      | 16   | Darken mode. rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d. Takes the darker color value of the source and target pixels. | ![DARKEN](figures/BlendMode-Darken.png) |
+| LIGHTEN     | 17   | Lighten mode. rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d. Takes the lighter color value of the source and target pixels. | ![LIGHTEN](figures/BlendMode-Lighten.png) |
+| COLOR_DODGE | 18   | Color dodge mode. Brightens the target pixel by reducing contrast to reflect the source pixel.           | ![COLOR_DODGE](figures/BlendMode-ColorDodge.png) |
+| COLOR_BURN  | 19   | Color burn mode. Darkens the target pixel by increasing contrast to reflect the source pixel.           | ![COLOR_BURN](figures/BlendMode-ColorBurn.png) |
+| HARD_LIGHT  | 20   | Hard light mode. Selectively applies the MULTIPLY or SCREEN mode based on the brightness of the source pixel.    | ![HARD_LIGHT](figures/BlendMode-HardLight.png) |
+| SOFT_LIGHT  | 21   | Soft light mode. Softly brightens or darkens the target pixel based on the brightness of the source pixel.             | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png) |
+| DIFFERENCE  | 22   | Difference mode. rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d. Calculates the difference between the color values of the source and target pixels. | ![DIFFERENCE](figures/BlendMode-Difference.png) |
+| EXCLUSION   | 23   | Exclusion mode. rc = s + d - two(s * d), ra = s + (1 - sa) * d. Similar to DIFFERENCE, but with lower contrast. | ![EXCLUSION](figures/BlendMode-Exclusion.png) |
+| MULTIPLY    | 24   | Multiply mode. r = s * (1 - da) + d * (1 - sa) + s * d. Multiplies the color values of the source and target pixels, and the result is usually darker. | ![MULTIPLY](figures/BlendMode-Multiply.png) |
+| HUE         | 25   | Hue mode. Uses the hue of the source pixel and the saturation and brightness of the target pixel.               | ![HUE](figures/BlendMode-Hue.png) |
+| SATURATION  | 26   | Saturation mode. Uses the saturation of the source pixel and the hue and brightness of the target pixel.             | ![SATURATION](figures/BlendMode-Saturation.png) |
+| COLOR       | 27   | Color mode. Uses the hue and saturation of the source pixel and the brightness of the target pixel.               | ![COLOR](figures/BlendMode-Color.png) |
+| LUMINOSITY  | 28   | Luminosity mode. Uses the brightness of the source pixel and the hue and saturation of the target pixel.               | ![LUMINOSITY](figures/BlendMode-Luminosity.png) |
 
 ## PathMeasureMatrixFlags<sup>12+</sup>
 
-Enumerates the dimensions of matrix information in path measurement. It is often used in animation scenarios where objects move along a path.
+Enumerates the matrix information dimensions in path measurement, commonly used in animation scenarios where an object moves along a path. The position matrix contains the coordinate translation information of a point on the path; the tangent matrix contains the rotation transformation information of the tangent direction at a point on the path; the position and tangent matrix contains both position and tangent information, providing complete path geometry information.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -77,7 +78,7 @@ Enumerates the dimensions of matrix information in path measurement. It is often
 
 ## SrcRectConstraint<sup>12+</sup>
 
-Enumerates the constraints on the source rectangle. It is used to specify whether to limit the sampling range within the source rectangle when drawing an image on a canvas.
+Enumerates the source rectangle constraint types, used to specify whether to restrict the sampling range (the range from which image pixels are read) to the source rectangle area when drawing an image on a canvas.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -107,15 +108,15 @@ Enumerates the path operation types. It is often used in path combination and cl
 
 | Name                  | Value  | Description                          |
 | ---------------------- | ---- | ------------------------------ |
-| DIFFERENCE     | 0    | Difference operation.|
-| INTERSECT    | 1    | Intersection operation.|
-| UNION    | 2    | Union operation.|
-| XOR     | 3    | XOR operation.|
-| REVERSE_DIFFERENCE     | 4    | Reverse difference operation.|
+| DIFFERENCE     | 0    | Difference operation. Retains the area in the first path that does not overlap the second path. Applicable to scenarios where certain areas need to be subtracted from a path. |
+| INTERSECT    | 1    | Intersection operation. Retains the overlapping area of the two paths. Applicable to scenarios where the intersection of paths needs to be obtained. |
+| UNION    | 2    | Union operation. Merges all areas of the two paths. Applicable to scenarios where multiple paths need to be merged. |
+| XOR     | 3    | Exclusive OR operation. Retains the non-overlapping areas of the two paths. Applicable to scenarios where the non-overlapping parts of paths need to be obtained. |
+| REVERSE_DIFFERENCE     | 4    | Reverse difference operation. Retains the area in the second path that does not overlap the first path. Applicable to scenarios where a path needs to be subtracted in reverse. |
 
 ## PathIteratorVerb<sup>18+</sup>
 
-Enumerates the path operation types contained in an iterator. It is used to read path operation instructions.
+Enumerates the path operation types contained in an iterator, which can be used to read the operation instructions of a path. It is commonly used in scenarios that require parsing the path composition, such as path analysis, path transformation, and path animation.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -139,9 +140,9 @@ Enumerates the text encoding types.
 
 | Name                  | Value  | Description                          |
 | ---------------------- | ---- | ------------------------------ |
-| TEXT_ENCODING_UTF8     | 0    | One byte is used to indicate UTF-8 or ASCII characters. |
-| TEXT_ENCODING_UTF16    | 1    | Two bytes are used to indicate most Unicode characters.|
-| TEXT_ENCODING_UTF32    | 2    | Four bytes are used to indicate all Unicode characters.  |
+| TEXT_ENCODING_UTF8     | 0    | UTF-8 or ASCII encoding. UTF-8 uses 1 to 4 bytes to represent a character, and ASCII uses 1 byte to represent a character. |
+| TEXT_ENCODING_UTF16    | 1    | Uses 2 bytes to represent most Unicode characters. |
+| TEXT_ENCODING_UTF32    | 2    | Uses 4 bytes to represent all Unicode characters.   |
 | TEXT_ENCODING_GLYPH_ID | 3    | Two bytes are used to indicate the glyph index.  |
 
 ## ClipOp<sup>12+</sup>
@@ -152,8 +153,8 @@ Enumerates the canvas clipping modes.
 
 | Name                | Value   | Description          | Diagram  |
 | ------------------ | ---- | ---------------- | -------- |
-| DIFFERENCE | 0    | Clips a specified area. That is, the difference set is obtained.| ![DIFFERENCE](figures/ClipOp-Difference.png) |
-| INTERSECT  | 1    | Retains a specified area. That is, the intersection is obtained.| ![INTERSECT](figures/ClipOp-Intersect.png)|
+| DIFFERENCE | 0    | Clips the specified area (difference). | ![DIFFERENCE](figures/ClipOp-Difference.png) |
+| INTERSECT  | 1    | Keeps the specified area (intersection). | ![INTERSECT](figures/ClipOp-Intersect.png) |
 
 > **NOTE**
 >
@@ -167,8 +168,8 @@ Enumerates the filter modes.
 
 | Name                 | Value   | Description     |
 | ------------------- | ---- | ------- |
-| FILTER_MODE_NEAREST | 0    | Nearest filter mode.|
-| FILTER_MODE_LINEAR  | 1    | Linear filter mode.|
+| FILTER_MODE_NEAREST | 0    | Nearest filter mode, which samples using the nearest pixel. |
+| FILTER_MODE_LINEAR  | 1    | Linear filter mode, which samples using the weighted average of surrounding pixels. |
 
 ## PathDirection<sup>12+</sup>
 
@@ -191,16 +192,16 @@ Enumerates the fill types of a path.
 | ------------------- | ---- | ------- |
 | WINDING   | 0    | Specifies that "inside" is computed by a non-zero sum of signed edge crossings. Specifically, draws a point and emits a ray in any direction. A count is used to record the number of intersection points of the ray and path, and the initial count is 0. When encountering a clockwise intersection point (the path passes from the left to the right of the ray), the count increases by 1. When encountering a counterclockwise intersection point (the path passes from the right to the left of the ray), the count decreases by 1. If the final count is not 0, the point is inside the path and needs to be colored. If the final count is 0, the point is not colored.|
 | EVEN_ODD  | 1    | Specifies that "inside" is computed by an odd number of edge crossings. Specifically, draws a point and emits a ray in any direction. If the number of intersection points of the ray and path is an odd number, the point is considered to be inside the path and needs to be colored. If the number is an even number, the point is not colored.|
-| INVERSE_WINDING  | 2    | Same as **WINDING**, but draws outside of the path, rather than inside.|
-| INVERSE_EVEN_ODD  | 3    | Same as **EVEN_ODD**, but draws outside of the path, rather than inside.|
+| INVERSE_WINDING  | 2    | Inverts the WINDING fill rule. If the final count result is not 0, the point is considered inside the path and is not filled; if the count is 0, it is filled. |
+| INVERSE_EVEN_ODD  | 3    | Inverts the EVEN_ODD fill rule. If the number of intersections between the ray and the path is odd, the point is considered inside the path and is not filled; if it is even, it is filled. |
 
 > **NOTE**<br>
 > ![WINDING&EVEN_ODD](figures/PathFillType-Winding-Even-Odd.png)<br>
-> As shown in the above figure, the path is a circle, the arrow indicates the path direction, **p** is any point "inside" the path, the blue line is the ray emitted from **p**, and the black arrow indicates the fill result using blue under the corresponding fill type. Under the **WINDING** fill rule, the number of intersection points of the ray and path is 2 (not 0), and therefore **p** is colored. Under the **EVEN_ODD** filling rule, the number of intersection points of the ray and path is 2 (an even number), and therefore **p** is not colored.
+> As shown in the figure, the ring is the path, the arrow indicates the direction of the path, p is an arbitrary point in the area, the blue line is the ray starting from point p, and the black arrow indicates the result of filling the path with blue under the corresponding fill rule. Under the WINDING fill rule, the number of intersections between the ray and the path is 2, which is not 0, so point p is filled; under the EVEN_ODD fill rule, the number of intersections between the ray and the path is 2, which is an even number, so point p is not filled.
 
 ## PointMode<sup>12+</sup>
 
-Enumerates the modes for drawing multiple points in an array.
+Enumerates the ways of drawing an array of points.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -213,6 +214,10 @@ Enumerates the modes for drawing multiple points in an array.
 ## FontEdging<sup>12+</sup>
 
 Enumerates the font edging types.
+
+> **NOTE**
+>
+> FontEdging does not support bitmap fonts (such as dot-matrix fonts and emoji).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -241,7 +246,7 @@ Enumerates the font hinting types.
 
 ## FontMetricsFlags<sup>12+</sup>
 
-Enumerates the font measurement flags, which is used to specify whether a field in the [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) struct is valid.
+Enumerates the font measurement flags, which indicate whether the data of each field in the font metrics is valid. It is commonly used in scenarios that require obtaining detailed font measurement information, such as precise text layout and custom text rendering.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -249,15 +254,15 @@ Enumerates the font measurement flags, which is used to specify whether a field 
 
 | Name                         | Value       | Description                          |
 | ----------------------------- | --------- | ------------------------------ |
-| UNDERLINE_THICKNESS_VALID     | 1 << 0    | The **underlineThickness** field is valid.   |
+| UNDERLINE_THICKNESS_VALID     | 1 << 0    | Indicates that the underlineThickness field in the [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) structure is valid.    |
 | UNDERLINE_POSITION_VALID      | 1 << 1    | The **underlinePosition** field is valid. |
-| STRIKETHROUGH_THICKNESS_VALID | 1 << 2    | The **strikethroughThickness** field is valid.|
-| STRIKETHROUGH_POSITION_VALID  | 1 << 3    | The **strikethroughPosition** field is valid. |
+| STRIKETHROUGH_THICKNESS_VALID | 1 << 2    | Indicates that the strikethroughThickness field in the [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) structure is valid.|
+| STRIKETHROUGH_POSITION_VALID  | 1 << 3    | Indicates that the strikethroughPosition field in the [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) structure is valid.  |
 | BOUNDS_INVALID                | 1 << 4    | The boundary measurement values (such as **top**, **bottom**, **xMin**, and **xMax**) are invalid. |
 
 ## RectType<sup>12+</sup>
 
-Enumerates the types of rectangles used to fill the lattices. Used only in [Lattice](arkts-apis-graphics-drawing-Lattice.md).
+Enumerates the rectangle types used to fill the lattices, used to specify the fill mode of each rectangle area when drawing an image by segmentation. Used only in [Lattice](arkts-apis-graphics-drawing-Lattice.md).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -300,9 +305,9 @@ Enumerates the join styles of a pen. The join style defines the shape of the joi
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | Mitered corner. If the angle of a polyline is small, its miter length may be inappropriate. In this case, you need to use the miter limit to limit the miter length.| ![MITER_JOIN](figures/JoinStyle-Miter-Join.png)|
-| ROUND_JOIN | 1    | Round corner.| ![ROUND_JOIN](figures/JoinStyle-Round-Join.png)|
-| BEVEL_JOIN | 2    | Beveled corner.| ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png)|
+| MITER_JOIN | 0    | The corner type is a miter (sharp) corner. If the polyline angle is small, the miter corner will be long and must be limited by the miter limit. | ![MITER_JOIN](figures/JoinStyle-Miter-Join.png) |
+| ROUND_JOIN | 1    | The corner type is a round corner. | ![ROUND_JOIN](figures/JoinStyle-Round-Join.png) |
+| BEVEL_JOIN | 2    | The corner type is a bevel (flat) corner. | ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png) |
 
 ## CapStyle<sup>12+</sup>
 
@@ -312,22 +317,22 @@ Enumerates the cap styles of a pen. The cap style defines the style of both ends
 
 | Name       | Value  | Description                                                        | Diagram  |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | There is no cap style. Both ends of the line segment are cut off square.| ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg)|
-| SQUARE_CAP | 1    | Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.| ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg)|
-| ROUND_CAP  | 2    | Round cap style. Both ends have a semicircle centered, the diameter of which is the same as the width of the line segment.| ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg)|
+| FLAT_CAP   | 0    | No cap style. The line is cut off at the start and end endpoints. | ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg) |
+| SQUARE_CAP | 1    | A square cap. A square is added at the start and end endpoints, with the same width as the line and a height equal to half the line width. | ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg) |
+| ROUND_CAP  | 2    | A round cap. A semicircle is added at the start and end endpoints, with a diameter equal to the line width. | ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg) |
 
 ## BlurType<sup>12+</sup>
 
-Enumerates the blur types of a mask filter.
+Enumerates the operation types in mask filter blur. A mask is used to define the drawable area of an image, and a filter is used to apply visual effects such as blur. This enumeration controls how the blur effect is applied to the area defined by the mask.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
 | Name  | Value| Description              | Diagram  |
 | ------ | - | ------------------ | -------- |
-| NORMAL | 0 | Both the outer edges and the inner solid parts are blurred.| ![NORMAL](figures/BlurType-Normal.png)|
-| SOLID  | 1 | The inner solid part remains unchanged, while only the outer edges are blurred.| ![SOLID](figures/BlurType-Solid.png)|
-| OUTER  | 2 | Only the outer edges are blurred, with the inner solid part being fully transparent.| ![OUTER](figures/BlurType-Outer.png)|
-| INNER  | 3 | Only the inner solid part is blurred, while the outer edges remain sharp.| ![INNER](figures/BlurType-Inner.png)|
+| NORMAL | 0 | Blurs the entire area, including both the outer edge and the inner solid area. | ![NORMAL](figures/BlurType-Normal.png) |
+| SOLID  | 1 | Keeps the inner solid area unchanged and blurs only the outer edge. | ![SOLID](figures/BlurType-Solid.png) |
+| OUTER  | 2 | Blurs only the outer edge, with the inner solid area fully transparent. | ![OUTER](figures/BlurType-Outer.png) |
+| INNER  | 3 | Blurs only the inner solid area, with the outer edge remaining sharp. | ![INNER](figures/BlurType-Inner.png) |
 
 ## ScaleToFit<sup>12+</sup>
 
@@ -344,18 +349,18 @@ Enumerates the modes of scaling a source rectangle into a destination rectangle.
 
 ## RegionOp<sup>12+</sup>
 
-Enumerates the operations for combining two regions.
+Enumerates the operations for combining two regions. It is commonly used in scenarios such as graphics editing and clipping area calculation that require combining multiple areas.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
 | Name                  | Value  | Description                          | Diagram  |
 | --------------------- | ---- | ------------------------------ | -------- |
-| DIFFERENCE         | 0    | Difference operation. | ![CLEAR](figures/RegionOp-Difference.png)|
-| INTERSECT          | 1    | Intersect operation.| ![INTERSECT](figures/RegionOp-Intersect.png)|
-| UNION              | 2    | Union operation.  | ![UNION](figures/RegionOpe-Union.png)|
-| XOR                | 3    | XOR operation.  | ![XOR](figures/RegionOp-Xor.png)|
-| REVERSE_DIFFERENCE | 4    | Reverse difference operation.  | ![REVERSE_DIFFERENCE](figures/RegionOp-Reverse-difference.png)|
-| REPLACE            | 5    | Replace operation.  | ![REPLACE](figures/RegionOp-Replace.png)|
+| DIFFERENCE         | 0    | Subtracts the second area from the first area. Applicable to scenarios where a specific area needs to be clipped out.  | ![DIFFERENCE](figures/RegionOp-Difference.png) |
+| INTERSECT          | 1    | Intersects the two areas and retains the overlapping area. Applicable to scenarios where the common area needs to be obtained. | ![INTERSECT](figures/RegionOp-Intersect.png) |
+| UNION              | 2    | Unions the two areas and merges all parts of the two areas. Applicable to scenarios where areas need to be merged.   | ![UNION](figures/RegionOpe-Union.png) |
+| XOR                | 3    | Performs an XOR operation on the two areas and retains the non-overlapping parts. Applicable to scenarios where the non-overlapping area needs to be obtained.   | ![XOR](figures/RegionOp-Xor.png) |
+| REVERSE_DIFFERENCE | 4    | Subtracts the first area from the second area. Applicable to scenarios where reverse clipping is needed.   | ![REVERSE_DIFFERENCE](figures/RegionOp-Reverse-difference.png) |
+| REPLACE            | 5    | Replaces the first area with the second area completely. Applicable to scenarios where complete coverage is needed.   | ![REPLACE](figures/RegionOp-Replace.png) |
 
 > **NOTE**
 >
@@ -382,6 +387,6 @@ Enumerates the connection modes for vertex drawing.
 
 | Name                  | Value  | Description                          | Diagram  |
 | --------------------- | ---- | ------------------------------ | -------- |
-| TRIANGLES_VERTEXMODE           | 0    | Every three vertices come from different triangles. |![TRIANGLES_VERTEXMODE](figures/Triangles-VertexMode.png)|
-| TRIANGLESSTRIP_VERTEXMODE          | 1    | Consecutive triangles share one edge. It is efficient for continuous surfaces.|![TRIANGLESSTRIP_VERTEXMODE](figures/TrianglesStrip-VertexMode.png)|
-| TRIANGLESFAN_VERTEXMODE       | 2    | All triangles share one vertex. It is suitable for circles and sectors.  |![TRIANGLESFAN_VERTEXMODE](figures/TrianglesFan-VertexMode.png)|
+| TRIANGLES_VERTEXMODE           | 0    | Vertices are grouped into sets of three in order, each forming an independent triangle. |![TRIANGLES_VERTEXMODE](figures/Triangles-VertexMode.png) |
+| TRIANGLESSTRIP_VERTEXMODE          | 1    | Consecutive triangles share an edge, which is efficient for continuous surfaces. |![TRIANGLESSTRIP_VERTEXMODE](figures/TrianglesStrip-VertexMode.png) |
+| TRIANGLESFAN_VERTEXMODE       | 2    | All triangles share a vertex. This is applicable to the scenario of drawing circles or fans.   |![TRIANGLESFAN_VERTEXMODE](figures/TrianglesFan-VertexMode.png) |

@@ -1,12 +1,14 @@
 # @ohos.graphics.common2D (Common Data Types of 2D Graphics)
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4e50217bab17d31bea74ffd285654969c1ffbf06 translatedAt=2026-08-24T09:21:40.390Z pushedAt=2026-08-31T12:03:42.238Z -->
 
-This module defines some common data types in the 2D graphics field.
+This module defines some common data types in the 2D graphics field, including color, rectangular area, and coordinate point, which are applicable to scenarios such as 2D graphics drawing. It provides developers with common graphics data structures to facilitate graphics computation and rendering operations.
 
 > **NOTE**
 >
@@ -37,7 +39,7 @@ Describes a color in ARGB format.
 
 ## Rect
 
-Describes a rectangle, which can be defined by two coordinate points: upper left corner point and lower right corner point.
+Defines a rectangular area by two coordinate points: the upper-left corner point and the lower-right corner point.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -45,10 +47,10 @@ Describes a rectangle, which can be defined by two coordinate points: upper left
 
 | Name  | Type  | Read-Only| Optional| Description                          |
 | ------ | ------ | ---- | ---- | ------------------------------ |
-| left   | number | No  | No  | X coordinate of the upper left corner of the rectangle. The value is a floating point number.|
-| top    | number | No  | No  | Y coordinate of the upper left corner of the rectangle. The value is a floating point number.|
-| right  | number | No  | No  | X coordinate of the lower right corner of the rectangle. The value is a floating point number.|
-| bottom | number | No  | No  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number.|
+| left   | number | No   | No   | X-coordinate of the upper left corner of the rectangular area, a floating-point number. The unit is physical pixel px. |
+| top    | number | No   | No   | Y-coordinate of the upper left corner of the rectangular area, a floating-point number. The unit is physical pixel px. |
+| right  | number | No   | No   | X-coordinate of the lower right corner of the rectangular area, a floating-point number. The unit is physical pixel px. |
+| bottom | number | No   | No   | Y-coordinate of the lower right corner of the rectangular area, a floating-point number. The unit is physical pixel px. |
 
 ## Point<sup>12+</sup>
 
@@ -60,12 +62,12 @@ Describes a coordinate point.
 
 | Name  | Type  | Read-Only| Optional| Description                          |
 | ------ | ------ | ---- | ---- | ------------------------------ |
-| x      | number | No  | No  | Horizontal coordinate. The value is a floating point number.              |
-| y      | number | No  | No  | Vertical coordinate. The value is a floating point number.              |
+| x      | number | No   | No   | Horizontal coordinate, which is a floating-point value in physical pixels (px).               |
+| y      | number | No   | No   | Vertical coordinate, which is a floating-point value in physical pixels (px).               |
 
 ## Color4f<sup>20+</sup>
 
-Describes a color in ARGB format.
+Describes a color in ARGB format, where each color component is a floating-point number ranging from 0.0 to 1.0.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -84,4 +86,4 @@ Describes a 3D coordinate point. It inherits from [Point](#point12).
 
 | Name  | Type  | Read-Only| Optional| Description                          |
 | ------ | ------ | ---- | ---- | ------------------------------ |
-| z      | number | No  | No  | Z-axis coordinate. The value is a floating point number.              |
+| z      | number | No   | No   | z-coordinate, a floating-point number. The unit is physical pixel px.               |

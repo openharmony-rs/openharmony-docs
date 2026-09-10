@@ -92,7 +92,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
-同时请求动态照片的图片内容和视频内容，并写入参数指定的对应的uri中。使用Promise异步回调。
+同时请求动态照片的图片内容和视频内容，并写入参数指定的URI中。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -107,8 +107,8 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| imageFileUri | string                      | 是   | 待写入动态照片图片内容的uri。示例imageFileUri为："file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg"。 |
-| videoFileUri | string                                            | 是   | 待写入动态照片视频内容的uri。示例videoFileUri为："file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4"。 |
+| imageFileUri | string                      | 是   | 待写入动态照片图片内容的URI。示例imageFileUri："file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg"。 |
+| videoFileUri | string                                            | 是   | 待写入动态照片视频内容的URI。需为应用沙箱内有效的、可写的文件路径。示例videoFileUri："file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4"。 |
 
 **返回值：**
 
@@ -139,7 +139,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
       console.error('Error occurred when preparing data');
       return;
     }
-    // 应用需要确保待写入的uri是有效的。
+    // 应用应确保待写入的URI有效。
     let imageFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg";
     let videoFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4";
     try {
@@ -202,7 +202,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | resourceType | [ResourceType](arkts-apis-photoAccessHelper-e.md#resourcetype11)                      | 是   | 所请求动态照片内容的资源类型。 |
-| fileUri | string                                                    | 是   |待写入动态照片内容的uri。 |
+| fileUri | string                                                    | 是   | 待写入动态照片内容的URI。需为应用沙箱内有效的、可写的文件路径。 |
 
 **返回值：**
 

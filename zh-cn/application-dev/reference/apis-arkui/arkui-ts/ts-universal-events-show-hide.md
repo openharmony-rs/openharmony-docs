@@ -47,7 +47,7 @@ onAttach(callback: Callback\<void>): T
 
 onDetach(callback: Callback\<void>): T
 
-组件从组件树卸载时触发此回调。建议使用[onDisAppear](#ondisappear)替代此接口。
+组件从组件树卸载时触发此回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -162,4 +162,4 @@ struct AppearExample {
 }
 ```
 
-![onDisAppear](figures/onDisAppear.gif)
+![attach_and_detach](figures/onDisAppear.gif)

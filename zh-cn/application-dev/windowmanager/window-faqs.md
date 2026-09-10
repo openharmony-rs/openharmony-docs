@@ -393,7 +393,7 @@ try {
 > 
 > - 通过其他接口如[resize](../reference/apis-arkui/arkts-apis-window-Window.md#resize9-1)、[resizeAsync](../reference/apis-arkui/arkts-apis-window-Window.md#resizeasync12)设置窗口大小时，不受ratio约束。
 > 
-> - 仅主窗可设置，且仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下生效。
+> - 仅主窗口可设置，且仅在自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下生效。
 > 
 > - API version 21以前的版本，请使用[setAspectRatio()](../reference/apis-arkui/arkts-apis-window-Window.md#setaspectratio10)设置窗口内容布局。
 

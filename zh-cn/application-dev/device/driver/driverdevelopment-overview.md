@@ -77,6 +77,8 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 | C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
 | C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
 
+Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用。在其他进程（包括子进程）中使用可能会出现功能异常，具体可参考[在子进程或非驱动ability中调用ddk的c-api失败](./externaldevice-faqs.md#在子进程或非驱动ability中调用ddk的c-api失败)。
+
 <!--RP1--><!--RP1End-->
 
 针对 DriverExtensionAbility接口调用限制，详细请参考 API 中的[约束限制](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md#约束限制)。
@@ -106,6 +108,10 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 3.基于DriverExtensionAbility生命周期管理说明
 - ExtensionAbility是基于场景服务的扩展能力的统称，简称为扩展能力（例如用户态扩展驱动、卡片、输入法等）以便满足不同的使用场景。
 - 各类Extension的生命周期由各个SA管理，通过connectAbility启动Extension，并驱动定义的业务接口；业务结束，SA调用disconnectAbility接口断开Extension连接，AMS会根据该Extension是否有SA连接来决定是否销毁该Extension及进程。在用户态扩展驱动开发场景下，管理DriverExtensionAbility生命周期的系统SA为外设扩展服务SA。
+- DriverExtensionAbility的生命周期取决于外设的接入时间，具体来说表现为：
+  - 当DriverExtensionAbility配置的“VID + PID”设备列表中的某个外设接入时，其生命周期区间跟该外设接入的时间段一致。
+  - 当DriverExtensionAbility配置的“VID + PID”设备列表中的多个外设依次接入时，其生命周期区间从第一个外设的接入持续到最后一个外设的拔出。
+  - 接入的外设同时出现在多个DriverExtensionAbility配置的“VID + PID”列表中时，该外设只会影响最先安装的驱动Ability的生命周期，详见[多个驱动Ability配置了同一型号外设的情况下，插入该外设只会拉起一个驱动Ability](./externaldevice-faqs.md#多个驱动ability配置了同一型号外设的情况下插入该外设只会拉起一个驱动ability)。
 
 4.在DriverExtensionAbility中API访问安全管控说明
 - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。

@@ -110,7 +110,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
 | text | string | 是    | 插入的文本内容。 |
-| textOperationOptions   | [TextContentControllerOptions](#textcontentcontrolleroptions15) | 否    | 插入文本的配置选项，用于自定义插入位置等参数。当需要在指定位置插入文本时传入此参数，不设置时默认插入文本至末尾。 |
+| textOperationOptions   | [TextContentControllerOptions](#textcontentcontrolleroptions15) | 否    | 插入文本的配置选项，用于自定义插入位置等参数。<br>默认值：无（插入文本至末尾） |
 
 **返回值：**
 
@@ -126,7 +126,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 > **说明：**
 >
-> - 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
+> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -191,7 +191,7 @@ clearPreviewText(): void
 
 > **说明：**
 >
-> - 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
+> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -209,7 +209,7 @@ deleteBackward(): void
 
 > **说明：**
 >
-> - 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
+> 当controller未绑定组件或绑定controller的组件被释放时，该接口不生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

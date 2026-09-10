@@ -1,12 +1,14 @@
 # Class (Magnifier)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer:  @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:05:38.456Z pushedAt=2026-08-05T07:14:18.513Z -->
 
-Provides the capability of displaying and hiding of the magnifier. The magnifier enlarges the component content for you to view the component details.
+Provides the ability to control the display and hiding of the magnifier. The magnifier enlarges component content to facilitate viewing of details. This is suitable for scenarios where non‑text components (such as images) require detail inspection.
 
 > **NOTE**
 >
@@ -14,7 +16,7 @@ Provides the capability of displaying and hiding of the magnifier. The magnifier
 >
 > - The initial APIs of this class are supported since API version 22.
 >
-> - In the following API examples, you must first use [getMagnifier()](arkts-apis-uicontext-uicontext.md#getmagnifier22) in **UIContext** to obtain a **Magnifier** instance, and then call the APIs using the obtained instance.
+> - For the following APIs, you must first use [getMagnifier()](arkts-apis-uicontext-uicontext.md#getmagnifier22) in **UIContext** to obtain a **Magnifier** instance, and then call the APIs using the obtained instance.
 >
 > - The magnifier capability of this class does not affect that of text components. For text components, you are advised to use the built-in magnifier capability.
 
@@ -24,7 +26,13 @@ bind(id: string): void
 
 Binds the magnifier to the component with the specified ID.
 
+> **NOTE**
+>
+> Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in UIContext.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,18 +63,18 @@ struct MagnifierExample {
         .height(200)
         .margin(50)
         .id('image')
-        .onTouch((event?: TouchEvent) => {
+        .onTouch((event: TouchEvent) => {
           if (event && event.sourceTool === SourceTool.Finger) {
             if (event.type === TouchType.Down) {
-              this.magnifier.bind('image')
+              this.magnifier.bind('image');
             } else if (event.type === TouchType.Move) {
-              let x = event.touches[0].x
-              let y = event.touches[0].y
-              this.magnifier.show(x, y)
+              let touchX = event.touches[0].x;
+              let touchY = event.touches[0].y;
+              this.magnifier.show(touchX, touchY);
             } else if (event.type === TouchType.Up) {
-              this.magnifier.unbind()
+              this.magnifier.unbind();
             } else if (event.type === TouchType.Cancel) {
-              this.magnifier.unbind()
+              this.magnifier.unbind();
             }
           }
         })
@@ -85,9 +93,15 @@ Sets the position of the component content displayed by the magnifier relative t
 
 > **NOTE**
 >
-> When the content of the component bound to the magnifier changes, the magnifier does not automatically update the displayed content. You need to call the **show** API to update the displayed content of the magnifier.
+> - Before using this API, obtain a Magnifier instance through the getMagnifier() method in UIContext.
+>
+> - Before calling this method, call [bind](#bind) to bind the target component.
+>
+> - When the content of the component bound to the magnifier changes, the magnifier display content is not automatically updated. You need to actively call the **show** API to update the content.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,8 +109,8 @@ Sets the position of the component content displayed by the magnifier relative t
 
 | Parameter     | Type        | Mandatory  | Description  |
 | -------- | ---------- | ---- | ---- |
-| x | number | Yes   | Horizontal coordinate of the component content displayed by the magnifier, relative to the component itself, in vp. If the coordinate value is greater than the component width or less than 0, the magnifier is not displayed. If the value is **undefined**, the current display status of the magnifier is retained.|
-| y | number | Yes   | Vertical coordinate of the component content displayed by the magnifier, relative to the component itself, in vp. If the coordinate value is greater than the component height or less than 0, the magnifier is not displayed. If the value is **undefined**, the current display status of the magnifier is retained.|
+| x | number | Yes    | Horizontal coordinate of the component content displayed in the magnifier relative to the upper left corner of the component, in vp. The magnifier is not displayed when the coordinate value is greater than the component width or less than 0. If **undefined** is passed, the setting does not take effect and the current display state of the magnifier is retained. |
+| y | number | Yes    | Vertical coordinate of the component content displayed in the magnifier relative to the upper left corner of the component, in vp. The magnifier is not displayed when the coordinate value is greater than the component height or less than 0. If **undefined** is passed, the setting does not take effect and the current display state of the magnifier is retained. |
 
 **Example**
 
@@ -106,9 +120,11 @@ For details, see the [bind](#bind) example.
 
 unbind(): void
 
-Unbinds the magnifier from the current component.
+Unbinds the magnifier from the current component. Before using this API, obtain a **Magnifier** instance through the **getMagnifier()** method in UIContext.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

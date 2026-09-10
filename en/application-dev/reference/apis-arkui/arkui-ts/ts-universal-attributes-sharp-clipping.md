@@ -1,10 +1,11 @@
 # Shape Clipping
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-02T12:08:22.466Z -->
 
 Shape clipping changes the visible portion of a component through clipping or masking.
 
@@ -16,7 +17,9 @@ Shape clipping changes the visible portion of a component through clipping or ma
 
 clip(value: boolean): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area of child components extending beyond the current component's bounds is not clipped by default.
+Whether to clip the areas of child components that extend beyond this component's bounds. If **value** is set to **true**, the areas of child components that extend beyond this component's bounds are clipped and become invisible. If **value** is set to **false**, child components are not clipped. If this attribute is not set, the areas of child components that extend beyond this component's bounds are not clipped by default.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,19 +31,21 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to clip the areas of child components that extend beyond the current component's bounds.<br>The value **true** means to clip the areas of child components that extend beyond the current component's bounds, and **false** means the opposite.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
+| value  | boolean | Yes   | Whether to clip child components based on the edge contour of the current component.<br>The value **true** means to clip child components based on the edge contour of the current component, and **false** means not to clip child components. <br>**Note:** When this parameter is set to **true**, the areas of child components outside the current component range do not respond to bound gesture events. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## clip<sup>18+</sup>
 
 clip(clip: Optional\<boolean>): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area of child components extending beyond the current component's bounds is not clipped by default. Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type.
+Whether to clip the areas of child components that extend beyond this component's bounds. If this attribute is not set, the areas of child components that extend beyond this component's bounds are not clipped by default. Compared with [clip<sup>12+</sup>](#clip12), this API adds support for the **undefined** type.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,19 +57,19 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type              | Mandatory                                                        | Description|
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes| Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
+| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Sets whether to clip child components based on the outline of the current component edge. The value true means to clip child components based on the outline of the current component edge, and false means not to clip child components.<br>**Note:** After this attribute is set to true, the area of child components outside the current component range does not respond to the bound gesture events.<br>When the value of clip is undefined, the area of child components outside the current component range is not clipped.    |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## clip<sup>(deprecated)</sup>
 
 clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute): T
 
-Sets whether to clip this component based on the given shape.
+Clips the current component based on the specified shape, or sets whether to clip based on the edge contour of the current component.
 
 > **NOTE** 
 >
@@ -80,19 +85,19 @@ Sets whether to clip this component based on the given shape.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | Yes  | Clip mode. If the value is a shape attribute, the component is clipped based on the specified shape. If the value is of the Boolean type, it specifies whether to clip the component based on the boundaries of the parent container.<br>Default value: **false**.<br>Note: If the value is a shape attribute, the clipped area can still respond to bound gesture events. If the value is of the Boolean type, the clipped area will not respond to bound gesture events.|
+| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | Yes   | When the parameter is a component of the corresponding type, clips the current component and its child components according to the specified shape. When the parameter is of the boolean type, sets whether to clip according to the edge contour of the current component.<br>Default value: false <br>true means to clip according to the edge contour of the current component, and false means not to clip.<br>**Note:** When the parameter is a component of the corresponding type, clipping does not prevent the clipped area from responding to bound gesture events. When the parameter is of the boolean type, clipping prevents the clipped area from responding to bound gesture events. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## clipShape<sup>12+</sup>
 
 clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
-Clips this component according to the specified shape (which may include position information).
+Clips the current component based on the specified shape (which may contain position information), clipping away the areas of the component that extend beyond the shape so that they become invisible. Unlike [maskShape](#maskshape12), **clipShape** clips away the areas of the component that extend beyond the shape (making them invisible), whereas **maskShape** overlays a mask layer of the specified shape on the component.
 
 > **NOTE** 
 >
@@ -101,6 +106,8 @@ Clips this component according to the specified shape (which may include positio
 > Path shapes do not support setting width and height attributes. For details about the supported attributes, see the specific shape documentation.
 >
 > The [fill](../js-apis-arkui-shape.md#fill) attribute of shapes has no effect on the **clipShape** API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,13 +119,13 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.|
+| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | Yes   | Component of the corresponding type. Clips the current component according to the specified shape (the shape can contain position information).<br>**Note:** Clipping does not prevent the clipped area from responding to bound gesture events. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## clipShape<sup>18+</sup>
 
@@ -134,6 +141,8 @@ Clips this component according to the specified shape (which may include positio
 >
 > The [fill](../js-apis-arkui-shape.md#fill) attribute of shapes has no effect on the **clipShape** API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
@@ -144,20 +153,22 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes   | The parameter is a component of the corresponding type, which clips the current component according to the specified shape (the shape can contain position information).<br>**Note:** Clipping does not prevent the clipped area from responding to bound gesture events.<br>When the value of shape is undefined, the mask with the specified shape is removed. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## CircleShape<sup>12+</sup>
 
-type CircleShape = CircleShape
+type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 Defines the CircleShape type.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -166,14 +177,16 @@ Defines the CircleShape type.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [CircleShape](../js-apis-arkui-shape.md#circleshape) | Circle shape.|
+| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | Circular shape. |
 
 ## EllipseShape<sup>12+</sup>
 
-type EllipseShape = EllipseShape
+type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 Defines the EllipseShape type.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -182,14 +195,16 @@ Defines the EllipseShape type.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | Ellipse shape.|
+| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | Ellipse shape. |
 
 ## PathShape<sup>12+</sup>
 
-type PathShape = PathShape
+type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 Defines the PathShape type.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -198,13 +213,15 @@ Defines the PathShape type.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | Path shape.|
+| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | Path shape. |
 
 ## RectShape<sup>12+</sup>
 
-type RectShape = RectShape
+type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 Defines the RectShape type.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,13 +231,15 @@ Defines the RectShape type.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [RectShape](../js-apis-arkui-shape.md#rectshape) | Rectangle shape.|
+| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | Rectangular shape. |
 
 ## mask<sup>12+</sup>
 
 mask(value: ProgressMask): T
 
-Adds a mask to the component to indicate the progress.
+Adds a mask with adjustable progress to the component. The mask is overlaid on the component content, and the display range of the mask is controlled by the progress value.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -236,13 +255,15 @@ Adds a mask to the component to indicate the progress.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## mask<sup>18+</sup>
 
 mask(mask: Optional\<ProgressMask>): T
 
-Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask12), this API supports the **undefined** type.
+Adds a mask with adjustable progress to the component. The mask is overlaid on the component content, and the display range of the mask is controlled by the progress value. Compared with [mask<sup>12+</sup>](#mask12), this API adds support for the **undefined** type.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,19 +273,19 @@ Adds a mask to the component to indicate the progress. Compared with [mask<sup>1
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ProgressMask](#progressmask10)> | Yes| Mask to add to the component, which allows for dynamic adjustment of progress, maximum value, and color settings.<br>If **mask** is set to **undefined**, the component to revert to its original effect without the mask to indicate the progress.    |
+| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ProgressMask](#progressmask10)> | Yes | Adds a mask to the current component that allows dynamically setting the progress and color. The maximum value (total) of the mask is set when the ProgressMask object is constructed and cannot be dynamically modified. You can call updateProgress() of the ProgressMask object to update the progress value, updateColor() to update the color, and enableBreathingAnimation() to enable or disable the breathing halo animation.<br>When the value of mask is undefined, the no-progress mask effect is restored. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## mask<sup>(deprecated)</sup>
 
 mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute | ProgressMask): T
 
-Adds a mask of the specified shape to the component.
+Adds a mask of the specified shape or adjustable progress to the component.
 
 > **NOTE** 
 >
@@ -280,19 +301,29 @@ Adds a mask of the specified shape to the component.
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) \|&nbsp;[ProgressMask](#progressmask10)<sup>10+</sup> | Yes  | Mask of the specified shape to add to the component.|
+| value  | [CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) \|&nbsp;[ProgressMask](#progressmask10)<sup>10+</sup> | Yes   | When the parameter is a component of the corresponding shape type, adds a mask of the specified shape (circle, ellipse, path, or rectangle) to the current component; when the parameter is ProgressMask, adds a mask whose progress and color can be dynamically set to the current component. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## maskShape<sup>12+</sup>
 
 maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
-Adds a mask of the specified shape to the component.
+Adds a mask of the specified shape to the component, overlaying a cover layer of the specified shape on the component.
+
+> **NOTE**
+>
+> - Different shapes support different attribute ranges. A path is a shape, and in addition there are shapes such as ellipses and rectangles.
+>
+> - A path shape does not support setting the width and height. For the attributes supported by a specific shape, see the documentation of that shape.
+>
+> - The **fill** attribute in a shape takes effect on the **maskShape** API and is used to set the color of the mask.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -304,19 +335,29 @@ Adds a mask of the specified shape to the component.
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | Yes  | Mask of the specified shape to add to the component.|
+| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | Yes   | Adds a mask of the specified shape or a mask with adjustable progress to the current component. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## maskShape<sup>18+</sup>
 
 maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape12), this API supports the **undefined** type.
+Adds a mask of the specified shape to the component, overlaying a cover layer of the specified shape on the component. Compared with [maskShape<sup>12+</sup>](#maskshape12), this API adds support for the **undefined** type.
+
+> **NOTE**
+>
+> Different shapes support different attribute ranges. A path is a shape, and in addition there are shapes such as ellipses and rectangles.
+>
+> A path shape does not support setting the width and height. For the attributes supported by a specific shape, see the documentation of that shape.
+>
+> The **fill** attribute in a shape takes effect on the **maskShape** API and is used to set the color of the mask.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,19 +369,21 @@ Adds a mask of the specified shape to the component. Compared with [maskShape<su
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Mask of the specified shape to add to the component.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes   | When the parameter is a component of the corresponding shape type, a mask of the specified shape (circle, ellipse, path, or rectangle) is added to the current component. When the parameter is ProgressMask, a mask whose progress, maximum value, and color can be dynamically set is added to the current component.<br>When the value of shape is undefined, the current value is reset to restore the effect of no specified shape mask. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## ProgressMask<sup>10+</sup>
 
-Sets the progress, maximum value, and color for a mask.
+**ProgressMask** is used to set the progress, maximum value, and color of the mask.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,14 +395,16 @@ Constructs a **ProgressMask** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| value  | number                                     | Yes  | Current value of the progress mask.<br> Value range: [0.0, +∞)|
-| total  | number                                     | Yes  | Maximum value of the progress mask.<br> Value range: [0.0, +∞)|
+| value  | number                                     | Yes   | Current value of the progress mask. It is used together with total to determine the progress ratio. When value equals total, the progress is full.<br>Value range: [0.0, +∞). If a negative number is passed in, it is automatically corrected to 0. |
+| total  | number                                     | Yes   | Maximum value of the progress mask.<br> Value range: [0.0, +∞). If a negative number is passed in, it is automatically corrected to 100. |
 | color  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the progress mask.  |
 
 ### updateProgress<sup>10+</sup>
@@ -368,7 +413,13 @@ updateProgress(value: number): void
 
 Updates the progress value of the progress mask.
 
+**Usage**
+- You must first apply the **ProgressMask** object to the component through the [mask()](#mask12) method. After this method is called, the progress value of the mask is dynamically updated.
+- If the **ProgressMask** object has not been applied to the component through the mask() method, calling this method only updates the internal state of the **ProgressMask** object and does not produce any visible change in the mask effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -376,7 +427,7 @@ Updates the progress value of the progress mask.
 
 | Name| Type| Mandatory| Description          |
 | ------ | -------- | ---- | ------------------ |
-| value  | number   | Yes  | Current value of the progress mask.|
+| value  | number   | Yes   | Current value of the progress mask.<br>Value range: [0.0, +∞). If a negative number is passed in, it is automatically corrected to 0. |
 
 ### updateColor<sup>10+</sup>
 
@@ -384,7 +435,13 @@ updateColor(value: ResourceColor): void
 
 Updates the color of the progress mask.
 
+**Usage**
+- You must first apply the ProgressMask object to a component through the [mask()](#mask12) method. After this method is called, the mask color is dynamically updated.
+- If the ProgressMask object has not been applied to a component through the mask() method, calling this method only updates the internal state of the ProgressMask object and does not produce any visible change in the mask effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,9 +455,11 @@ Updates the color of the progress mask.
 
 enableBreathingAnimation(value: boolean): void
 
-Sets whether to enable the breathing animation when the progress indicator is full. If this API is not set, the breathing animation is disabled by default.
+Switch for the breathing glow animation when the progress is full. When enabled, a periodic brightening and dimming glow effect appears at the mask edge when the progress is full. When not set, the breathing glow animation is disabled by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -408,7 +467,7 @@ Sets whether to enable the breathing animation when the progress indicator is fu
 
 | Name| Type                                  | Mandatory| Description        |
 | ------ | ------------------------------------------ | ---- | ---------------- |
-| value  | boolean | Yes  | Whether to enable the breathing animation.<br>**true**: The breathing animation is enabled.<br>**false**: The breathing halo animation is disabled.|
+| value  | boolean | Yes   | Whether to enable the breathing halo animation when the progress is full.<br>true: enables the breathing halo animation.<br>false: disables the breathing halo animation. |
 
 
 ## Example
@@ -469,8 +528,7 @@ This example demonstrates how to mask an image using [mask](#mask12).
 @Entry
 @Component
 struct ProgressMaskExample {
-  @State progressFlag1: boolean = true;
-  @State color: Color = 0x01006CDE;
+  @State isRedColor: boolean = true;
   @State value: number = 10.0;
   @State enableBreathingAnimation: boolean = false;
   @State progress: ProgressMask = new ProgressMask(10.0, 100.0, Color.Gray);
@@ -478,7 +536,7 @@ struct ProgressMaskExample {
   build() {
     Column({ space: 15 }) {
       Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a 280 × 280 px progress mask to the image.
+      // Add a progress mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .width('500px').height('280px')
@@ -489,7 +547,7 @@ struct ProgressMaskExample {
           delay: 0, // Animation delay.
           iterations: 1, // Number of playback times.
           playMode: PlayMode.Normal // Animation playback mode.
-        }) // Animation configuration for the width and height attributes of the <Button> component.
+        }) // Configure the animation for the mask progress change of the Image component.
 
       // Update the progress value of the progress mask.
       Button('updateProgress')
@@ -501,12 +559,12 @@ struct ProgressMaskExample {
       // Update the color of the progress mask.
       Button('updateColor')
         .onClick((event?: ClickEvent) => {
-          if (this.progressFlag1) {
+          if (this.isRedColor) {
             this.progress.updateColor(0x9fff0000);
           } else {
             this.progress.updateColor(0x9f0000ff);
           }
-          this.progressFlag1 = !this.progressFlag1
+          this.isRedColor = !this.isRedColor;
         }).width(200).height(50).margin(20)
 
       // Enable or disable the breathing animation.
@@ -517,7 +575,7 @@ struct ProgressMaskExample {
         }).width(200).height(50).margin(20)
 
       // Restore the progress mask.
-      Button('click reset!')
+      Button('click reset')
         .onClick((event?: ClickEvent) => {
           this.value = 0;
           this.progress.updateProgress(this.value);

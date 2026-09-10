@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T11:00:52.789Z pushedAt=2026-09-05T10:47:30.505Z -->
 
 The module provides the kiosk status information, including whether the system is in kiosk mode and the information about the application in kiosk mode.
 
@@ -22,4 +23,4 @@ The module provides the kiosk status information, including whether the system i
 | --------------------- | ---------------------- | ---- | ---- | ---------------------------------------------------- |
 | isKioskMode           | boolean                | No  | No  | Whether the system is in kiosk mode. **true** if in kiosk mode, **false** otherwise.|
 | kioskBundleName       | string                 | No  | No  | Bundle name of the application in kiosk mode.                         |
-| kioskBundleUid        | number                 | No  | No  | UID of the application in kiosk mode.                          |
+| kioskBundleUid        | number                 | No   | No   | UID of the application that enters Kiosk mode. It is assigned by the system and is a positive integer.    |

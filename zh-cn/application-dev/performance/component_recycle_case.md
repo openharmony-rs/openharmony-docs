@@ -32,7 +32,7 @@
 
 ## 减少组件复用的嵌套层级
 
-在组件复用场景下，过深的自定义组件的嵌套会增加组件复用的使用难度，比如需要逐个实现所有嵌套组件中aboutToReuse回调实现数据更新；因此推荐优先使用@Builder替代自定义组件，减少嵌套层级，利于维护切能提升页面加载速度。正反例如下：
+在组件复用场景下，过深的自定义组件的嵌套会增加组件复用的使用难度，比如需要逐个实现所有嵌套组件中aboutToReuse回调实现数据更新；因此推荐优先使用@Builder替代自定义组件，减少嵌套层级，利于维护且能提升页面加载速度。正反例如下：
 
 反例：
 
@@ -107,7 +107,7 @@ export struct InteractiveButton {
 
 ```
 
-上述反例的操作中，在复用的自定义组件中嵌套了新的自定义组件。ArkUI中使用自定义组件时，在build阶段将在后端FrameNode树创建一个相应的CustomNode节点，在渲染阶段时也会创建对应的RenderNode节点。会造成组件复用下，CustomNode创建和RenderNod渲染的耗时。且嵌套的自定义组件InteractiveButton，也需要实现aboutToReuse来进行数据的刷新。
+上述反例的操作中，在复用的自定义组件中嵌套了新的自定义组件。ArkUI中使用自定义组件时，在build阶段将在后端FrameNode树创建一个相应的CustomNode节点，在渲染阶段时也会创建对应的RenderNode节点。会造成组件复用下，CustomNode创建和RenderNode渲染的耗时。且嵌套的自定义组件InteractiveButton，也需要实现aboutToReuse来进行数据的刷新。
 
 优化前，以11号列表项复用过程为例，观察Trace信息，看到该过程中需要逐个实现所有嵌套组件InteractiveButton中aboutToReuse回调，导致复用时间较长，BuildLazyItem耗时7ms。
 
@@ -199,7 +199,7 @@ class Temp {
 
 ![useBuilder](./figures/component_recycle_case/useBuilder.png)
 
-所以，Trace数据证明，优先使用@Builder替代自定义组件，减少嵌套层级，可以利于维护切能提升页面加载速度。
+所以，Trace数据证明，优先使用@Builder替代自定义组件，减少嵌套层级，可以利于维护且能提升页面加载速度。
 
 ## 优化状态管理，精准控制组件刷新范围使用
 
@@ -258,7 +258,7 @@ export struct OneMomentNoModifier {
 
 ![noModifier1](./figures/component_recycle_case/noModifier1.png)
 
-优化前，由`H:ViewPU.viewPropertyHasChanged OneMomentNoModifier color 1`标签可知，OneMomentNoModifier自定义组件下的状态变量color发生变化，与之相关联的子控件数量为1，即有一个子控件发生了标脏，之后Text全部属性会进行了刷新。
+优化前，由`H:ViewPU.viewPropertyHasChanged OneMomentNoModifier color 1`标签可知，OneMomentNoModifier自定义组件下的状态变量color发生变化，与之相关联的子控件数量为1，即有一个子控件发生了标脏，之后Text全部属性会进行刷新。
 
 此时，`H:CustomNode:BuildRecycle`耗时543μs，`Create[Text]`耗时为4μs。
 
@@ -462,7 +462,7 @@ export class FriendMoment {
 
 ### 避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse方法中再进行更新
 
-在父子组件数据同步时，如果子组件已经使用@Link/@ObjectLink/@Prop等会自动同步父子组件数据、且驱动组件刷新的状态变量。不需要再在boutToReuse方法中再进行数据更新，此操作会造成不必要的方法执行和变量更新的耗时。正反例如下：
+在父子组件数据同步时，如果子组件已经使用@Link/@ObjectLink/@Prop等会自动同步父子组件数据、且驱动组件刷新的状态变量。不需要再在aboutToReuse方法中再进行数据更新，此操作会造成不必要的方法执行和变量更新的耗时。正反例如下：
 
 反例：
 
@@ -562,7 +562,7 @@ export class FriendMoment {
 
 **优化效果**
 
-在正反例中，针对列表滑动场景，反例中在aboutToReuse方法中，冗余刷新了自动刷新的变量moment中的各个成员变量。正例中，利用@ObjectLink修饰的变量moment自动同步数据的特性，直接进行刷新，不在aboutToReuse方法再进行刷新。
+在正反例中，针对列表滑动场景，反例中在aboutToReuse方法中，冗余刷新了自动刷新的变量moment中的各个成员变量。正例中，利用@ObjectLink修饰的变量moment自动同步数据的特性，直接进行刷新，不再在aboutToReuse方法中进行刷新。
 
 优化后，避免在复用组件OneMoment的aboutToReuse方法中，重复刷新变量moment的各个成员变量，aboutToReuse耗时110μs。
 
@@ -637,7 +637,7 @@ export struct OneMoment {
 }
 ```
 
-上述反例的操作中，在一个reuseId标识的组件TrueOneMoment中，通过if来控制其中的组件走不同的分支，选择是否创建FalseOneMoment或OneMoment组件。导致更新if分支时仍然可能走删除重创的逻辑（此处BuildItem重新创建了OneMoment组件）。考虑采用根据不同的分支设置不同的reuseId来提高复用的性能。
+上述反例的操作中，在一个reuseId标识的组件TrueOneMoment中，通过if来控制其中的组件走不同的分支，选择是否创建FalseOneMoment或OneMoment组件。导致更新if分支时仍然可能走删除重建的逻辑（此处BuildItem重新创建了OneMoment组件）。考虑采用根据不同的分支设置不同的reuseId来提高复用的性能。
 
 优化前，15号列表项复用时长为10ms左右，且存在自定义组件创建的情况。
 
@@ -807,7 +807,7 @@ struct WithoutFuncParam {
 }
 ```
 
-上述正例的操作中，通过耗时函数countAndRecord生成的结果不变，可以将其放到页面初始渲染时执行一次，将结果赋值给this.sum。在复用组件的参数传递时，通过this.sum来进行。
+上述正例的操作中，通过耗时函数countAndReturn生成的结果不变，可以将其放到页面初始渲染时执行一次，将结果赋值给this.sum。在复用组件的参数传递时，通过this.sum来进行。
 
 **优化效果**
 

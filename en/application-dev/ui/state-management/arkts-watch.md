@@ -1,14 +1,15 @@
 # \@Watch Decorator: Getting Notified of State Variable Changes
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:38:47.692Z pushedAt=2026-07-01T09:00:11.832Z -->
+<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:16.166Z pushedAt=2026-07-24T03:23:32.656Z -->
 
-@Watch is used to observe state variables. If you need to monitor whether the value of a particular state variable has changed, use @Watch to set a callback for that state variable.
+
+[@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md#watch) is used to listen for changes to state variables. If a developer needs to monitor whether the value of a state variable has changed, they can use @Watch to set a callback function for the state variable.
+
 
 \@Watch can only listen for changes that can be observed.
 
@@ -23,6 +24,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 ## Overview
 
 @Watch is used to listen for changes in state variables. When a state variable changes, the callback method registered with @Watch is invoked. Internally, the ArkUI framework determines whether a value has been updated using strict equality (===), adhering to strict equality semantics. The @Watch callback is triggered when the strict equality comparison evaluates to false (i.e., the values are not equal).
+
 
 ## Decorator Description
 
@@ -39,6 +41,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 | ---------------------------------------- | ---------------------------------------- |
 | (changedPropertyName? : string) =&gt; void | This function is a member function of the custom component. **changedPropertyName** indicates the name of the watched attribute.<br>It is useful when you use the same function as a callback to several watched attributes.<br>It takes the attribute name as a string input parameter and returns nothing.|
 
+
 ## Observed Changes and Behavior
 
 1. \@Watch callback is triggered when a change of a state variable (including the change of a key in [AppStorage](./arkts-appstorage.md) and [LocalStorage](./arkts-localstorage.md) that are bound in a two-way manner) is observed.
@@ -48,6 +51,7 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 3. If the \@Watch callback mutates other watched variables, their variable @Watch callbacks in the same and other custom components as well as state updates are triggered.
 
 4. A \@Watch function is not called upon custom component variable initialization, because initialization is not considered as variable mutation. A \@Watch function is called upon change of the custom component variable.
+
 
 ## Constraints
 
@@ -103,11 +107,13 @@ change() {
 }
 ```
 
+
 ## Use Cases
 
 ### \@Watch and Custom Component Update
 
 This example is used to clarify the processing steps of custom component updates and \@Watch. **count** is decorated by \@State in **CountModifier** and \@Prop in **TotalView**.
+
 
 <!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) --> 
 
@@ -159,9 +165,11 @@ Procedure:
 
 3. The **Text** component in the child component **TotalView** is re-rendered.
 
+
 ### Combination of \@Watch and \@Link
 
 This example illustrates how to watch an \@Link decorated variable in a child component.
+
 
 <!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) --> 
 
@@ -366,7 +374,6 @@ The procedure is as follows:
 1. When you click the button to switch the task state, the parent component updates **taskB** associated with \@ObjectLink and **taskA** associated with \@Link.
 
 2. The following information is displayed in sequence in logs:
-
     ```text
     Property of this parent component task is changed: taskB
     Property of this parent component task is changed: taskA
@@ -381,6 +388,7 @@ From the logs, it can be observed that the order of callbacks in the parent comp
 ### Using changedPropertyName for Different Logic Processing
 
 The following example shows how to use **changedPropertyName** in the \@Watch function for different logic processing.
+
 
 <!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) --> 
 

@@ -2,7 +2,7 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
@@ -505,7 +505,7 @@ constructor(jsonObject: Object)
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-let eventInfo = new accessibility.EventInfo({
+let eventInfo: accessibility.EventInfo = ({
   type: 'click',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'click',

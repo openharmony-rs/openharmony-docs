@@ -1,4 +1,4 @@
-# 使用MindSpore Lite实现图像分类（C/C++）
+# 使用MindSpore Lite实现图像分类 (C/C++)
 
 <!--Kit: MindSpore Lite Kit-->
 <!--Subsystem: AI-->
@@ -12,10 +12,6 @@
 开发者可以使用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
-
-## 基本概念
-
-- N-API：用于构建ArkTS本地化组件的一套接口。可利用N-API，将C/C++开发的库封装成ArkTS模块。
 
 ## 开发流程
 
@@ -96,7 +92,7 @@
    }
    ```
 
-3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用NNRt推理。
+3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用[NNRt](mindspore-lite-term.md#nnrt神经网络运行时)推理。
 
    <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 

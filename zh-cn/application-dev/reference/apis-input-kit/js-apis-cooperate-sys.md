@@ -92,7 +92,7 @@ enable(enable: boolean): Promise&lt;void&gt;
 >
 >从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.prepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperatepreparecooperate11-1)、[cooperate.unprepareCooperate](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateunpreparecooperate11-1)替代。
 
-**系统能力**： SystemCapability.MultimodalInput.Input.Cooperator
+**系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
 **参数**：
 

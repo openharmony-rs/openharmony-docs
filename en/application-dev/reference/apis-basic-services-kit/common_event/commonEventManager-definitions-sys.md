@@ -257,6 +257,8 @@ Indicates the common event of exiting by locking the screen.
 
 Before exiting by locking the screen, the common event service is triggered to publish this event without checking whether the file system is decrypted.
 
+**Since:** 26.0.0
+
 **System API:** This is a system API.
 
 **System capability:** SystemCapability.Notification.CommonEvent

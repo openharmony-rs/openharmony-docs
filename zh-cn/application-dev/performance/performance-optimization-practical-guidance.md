@@ -14,12 +14,12 @@
 ### 性能规范总览目录
 | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;  &emsp;&emsp; <br />分类<br />&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;   |<br />高频程度 (5满分)<br />&emsp;&emsp;&emsp;&emsp;   | 规范（检查项）                                             | 实操方法                |            <br />代码示例<br />&emsp;&emsp;&emsp;&emsp;                 |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------:|:----------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------:|
-| 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          5                          | 不建议在aboutToAppear(),aboutToDisappear()等生命周期中执行耗时操作。 | 排查所有的aboutToAppear和aboutToDisappear函数(或者通过Trace查看)，查看是否有耗时操作，改为setTimeOut或者在TaskPool中执行。                                          |       [代码示例](#不建议在abouttoappearabouttodisappear等生命周期中执行耗时操作)        |
-| 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          5                          | 不要在回调函数中执行耗时操作(ArkUI接口回调、网络访问回调、await等)。            | 排查所有的回调函数(或者通过Trace查看)，尤其是ArkUI接口，网络回调函数，查看是否有耗时操作，是否使用了await操作，改为setTimeOut或者在TaskPool中执行。                      |            [代码示例](#不要在回调函数中执行耗时操作arkui接口回调网络访问回调await等)             |
+| 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          5                          | 不建议在aboutToAppear(),aboutToDisappear()等生命周期中执行耗时操作。 | 排查所有的aboutToAppear和aboutToDisappear函数(或者通过Trace查看)，查看是否有耗时操作，改为setTimeout或者在TaskPool中执行。                                          |       [代码示例](#不建议在abouttoappearabouttodisappear等生命周期中执行耗时操作)        |
+| 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          5                          | 不要在回调函数中执行耗时操作(ArkUI接口回调、网络访问回调、await等)。            | 排查所有的回调函数(或者通过Trace查看)，尤其是ArkUI接口，网络回调函数，查看是否有耗时操作，是否使用了await操作，改为setTimeout或者在TaskPool中执行。                      |            [代码示例](#不要在回调函数中执行耗时操作arkui接口回调网络访问回调await等)             |
 | 响应时延&nbsp;/&nbsp;完成时延&nbsp;/&nbsp;帧率                                                                                                                                     |                          5                          | 列表场景未使用LazyForEach+组件复用+缓存列表项。                      | 排查使用LazyForEach的代码，确认是否有使用组件复用(@Reusable)+缓存列表项(cachedCount)。                                                                                                           |                [代码示例](#列表场景未使用lazyforeach组件复用缓存列表项)                 |
-| 完成时延                                                                                                                                                                     |                          5                          | Web未使用预连接，未提前初始化引擎。                                 | 在应用创建Ability的时候，在OnCreate阶段预先初始化内核，建议把引擎的初始化放在setTimeOut中。                                                                                                              |                     [代码示例](#web未使用预连接未提前初始化引擎)                      |
+| 完成时延                                                                                                                                                                     |                          5                          | Web未使用预连接，未提前初始化引擎。                                 | 在应用创建Ability的时候，在OnCreate阶段预先初始化内核，建议把引擎的初始化放在setTimeout中。                                                                                                              |                     [代码示例](#web未使用预连接未提前初始化引擎)                      |
 | 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          5                          | 高频接口中不要打印Trace和日志。                                  | 排查接口onTouch、onItemDragMove、onDragMove、onDidScroll、onMouse、onVisibleAreaChange、OnAreaChange、onActionUpdate、animator的onFrame、组件复用场景下的aboutToReuse，不建议在里面打印trace和日志。          |                     [代码示例](#高频接口中不要打印trace和日志)                      |
-| 完成时延&nbsp;/&nbsp;帧率                                                                                                                                                      |                          4                          | 组件复用里面有if语句，但是未使用reuseId。                           | 排查使用了@Reusable的自定义组件，查看build中给是否使用了if/else或ForEach等条件渲染语句，如果使用了，需要配合reuseId一起使用。                                                                                        |                  [代码示例](#组件复用里面有if语句但是未使用reuseid)                   |
+| 完成时延&nbsp;/&nbsp;帧率                                                                                                                                                      |                          4                          | 组件复用里面有if语句，但是未使用reuseId。                           | 排查使用了@Reusable的自定义组件，查看build中是否使用了if/else或ForEach等条件渲染语句，如果使用了，需要配合reuseId一起使用。                                                                                        |                  [代码示例](#组件复用里面有if语句但是未使用reuseid)                   |
 | 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          4                          | 不建议使用@Prop装饰器。                                      | 全局搜索@Prop并且替换                                                                                                                                           |                        [代码示例](#不建议使用prop装饰器)                        |
 | 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          3                          | 避免在ResourceManager的getXXXSync接口入参中直接使用资源信息。         | 排查ResourceManager.getXXXSync接口，查看入参时需要使用getStringSync($r('app.media.icon').id)的形式，如果未使用需要整改。                                                 | [代码示例](#避免在resourcemanager的getxxxsync接口入参中直接使用资源信息) |
 | 响应时延&nbsp;/&nbsp;完成时延                                                                                                                                                    |                          3                          | 展示用的自定义组件（数据从父组件中获取，无独立数据处理）使用@Builder替换。           | 审视@Component标记的自定义组件，如果里面没有独立的生命周期处理逻辑，数据由父组件传递，建议@Builder替代。                                                           |            [代码示例](#展示用的自定义组件数据从父组件中获取无独立数据处理使用builder替换)            |
@@ -41,7 +41,7 @@
 
 **解决方法**
 
-排查所有的aboutToAppear和aboutToDisappear函数(或者通过Trace查看)，查看是否有耗时操作，改为setTimeOut或者在TaskPool中执行。
+排查所有的aboutToAppear和aboutToDisappear函数(或者通过Trace查看)，查看是否有耗时操作，改为setTimeout或者在TaskPool中执行。
 
 **反例**
 
@@ -126,7 +126,7 @@ struct ViewB {
 
 **解决方法**
 
-排查所有的回调函数(或者通过Trace查看)，尤其是ArkUI接口，网络回调函数，查看是否有耗时操作，是否使用了await操作，改为setTimeOut或者在TaskPool中执行。
+排查所有的回调函数(或者通过Trace查看)，尤其是ArkUI接口，网络回调函数，查看是否有耗时操作，是否使用了await操作，改为setTimeout或者在TaskPool中执行。
 
 **反例**
 
@@ -295,7 +295,7 @@ struct GoodItems {
 
 **解决方法**
 
-在应用创建Ability的时候，在OnCreate阶段预先初始化内核，建议把引擎的初始化放在setTimeOut中。
+在应用创建Ability的时候，在OnCreate阶段预先初始化内核，建议把引擎的初始化放在setTimeout中。
 
 **反例**
 
@@ -414,7 +414,7 @@ struct PositiveOfOnDidScroll {
 
 **解决方法**
 
-排查使用了@Reusable的自定义组件，查看build中给是否使用了if/else或ForEach等条件渲染语句，如果使用了，需要配合reuseId一起使用。
+排查使用了@Reusable的自定义组件，查看build中是否使用了if/else或ForEach等条件渲染语句，如果使用了，需要配合reuseId一起使用。
 
 **反例**
 

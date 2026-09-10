@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:22:19.369Z pushedAt=2026-09-03T01:55:52.476Z -->
 
-**@Observed** is a class decorator used in state management V1 to observe property changes of nested class objects.
+**\@Observed** is a class decorator used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to observe property changes of nested class objects.
 
 For details, see [@Observed and @ObjectLink Decorators: Observing Property Changes in Nested Class Objects](../../../ui/state-management/arkts-observed-and-objectlink.md).
 
@@ -48,3 +49,6 @@ struct Index {
   }
 }
 ```
+
+
+

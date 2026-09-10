@@ -279,7 +279,11 @@ counter.increment();  // 1
 
 // 方法引用调用：this可能丢失
 let method: () => void = counter.getIncrementMethod();
-method();  // 可能丢失this，取决于调用方式
+try {
+  method();  // 可能丢失this，取决于调用方式
+} catch (e) {
+  console.info('this丢失');
+}
 
 // 安全方法引用：this保持
 let safeMethod: () => void = counter.getSafeIncrementMethod();
@@ -1269,7 +1273,7 @@ class Timer {
   
   // 普通方法：this可能丢失
   start(): void {
-    setInterval(() => {
+    mockSetInterval(() => {
       this.tick();  // 箭头函数保持this
     }, 1000);
   }
@@ -1292,7 +1296,7 @@ class Timer {
   }
 }
 
-function setInterval(callback: () => void, ms: number): void {
+function mockSetInterval(callback: () => void, ms: number): void {
   callback();
 }
 
@@ -1401,7 +1405,7 @@ class EventHandler {
 }
 
 // 模拟事件系统
-function addEventListener(callbackHandler: () => void): void {
+function mockAddEventListener(callbackHandler: () => void): void {
   callbackHandler();
 }
 
@@ -1409,13 +1413,17 @@ let callbackHandler: EventHandler = new EventHandler('Button');
 
 // 直接传递：this可能丢失
 let callbackMethod: () => void = callbackHandler.handleClick;
-callbackMethod();  // 可能丢失this
+try {
+  callbackMethod();  // 可能丢失this，取决于调用方式
+} catch (e) {
+  console.info('this丢失');
+}
 
 // 使用箭头函数方法
-addEventListener(callbackHandler.handleSafeClick);  // 'Button safe clicked'
+mockAddEventListener(callbackHandler.handleSafeClick);  // 'Button safe clicked'
 
 // 使用显式包装方法
-addEventListener(callbackHandler.getClickHandler());  // 'Button clicked'
+mockAddEventListener(callbackHandler.getClickHandler());  // 'Button clicked'
 ```
 
 ### 可选链调用方法（instance?.method()）

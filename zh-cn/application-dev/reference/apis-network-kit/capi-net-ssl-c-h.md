@@ -27,15 +27,15 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)](#oh_netstack_certverification) | 证书链校验接口。 |
+| [uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, const struct NetStack_CertBlob *caCert)](#oh_netstack_certverification) | 对外暴露的证书链校验接口。 |
 | [int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_CertificatePinning *pin)](#oh_netstack_getpinsetforhostname) | 获取证书锁定信息。 |
 | [int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Certificates *certs)](#oh_netstack_getcertificatesforhostname) | 获取证书信息。 |
 | [void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)](#oh_netstack_destroycertificatescontent) | 释放证书内容。 |
 | [int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)](#oh_netstack_iscleartextpermitted) | 整体明文HTTP是否允许。 |
 | [int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)](#oh_netstack_iscleartextpermittedbyhostname) | 按域名明文HTTP是否允许。 |
 | [int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)](#oh_netstack_iscleartextcfgbycomponent) | 检查组件是否已配置开启明文HTTP拦截功能。 |
-| [uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob \*cert, size_t certCount, const struct NetStack_CertBlob \*caCert, const char \*hostname, struct NetStack_CertBlob \*\*outSortedChain, size_t \*outSortedCount)](#oh_netstack_createandverifysortedcertchain) | 创建并校验证书链，返回排序后的证书链。 |
-| [void OH_NetStack_FreeCertChain(struct NetStack_CertBlob \*certChain, size_t certCount)](#oh_netstack_freecertchain) | 释放由[OH_NetStack_CreateAndVerifySortedCertChain](#oh_netstack_createandverifysortedcertchain)分配的证书链内存。 |
+| [uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBlob *cert, size_t certCount, const struct NetStack_CertBlob *caCert, const char *hostname, struct NetStack_CertBlob **outSortedChain, size_t *outSortedCount)](#oh_netstack_createandverifysortedcertchain) | 创建并校验证书链，返回排序后的证书链。 |
+| [void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certCount)](#oh_netstack_freecertchain) | 释放由[OH_NetStack_CreateAndVerifySortedCertChain](#oh_netstack_createandverifysortedcertchain)分配的证书链内存。 |
 
 
 ## 函数说明
@@ -203,7 +203,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 ### OH_Netstack_IsCleartextCfgByComponent()
 
 ```c
-int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
+int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)
 ```
 
 **描述**
@@ -242,6 +242,8 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(
 
 传入证书链数组进行校验，并构建从叶子节点到根节点的排序证书链。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 26.0.0
@@ -273,6 +275,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **描述**
 
 释放由[OH_NetStack_CreateAndVerifySortedCertChain](#oh_netstack_createandverifysortedcertchain)分配的证书链内存。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 

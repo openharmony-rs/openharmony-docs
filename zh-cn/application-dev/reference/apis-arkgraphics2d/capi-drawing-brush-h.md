@@ -37,7 +37,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_Brush* OH_Drawing_BrushCreate(void)](#oh_drawing_brushcreate) | 用于创建一个画刷对象。调用本接口创建的画刷对象，在使用完毕后必须调用[OH_Drawing_BrushDestroy](#oh_drawing_brushdestroy)销毁并回收内存，否则会导致内存泄漏。 |
-| [OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)](#oh_drawing_brushcopy) | 拷贝一个已有画刷对象，创建其画刷对象副本[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>brush为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)](#oh_drawing_brushcopy) | 拷贝一个已有画刷对象，创建其画刷对象副本[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)。调用本接口创建的画刷对象，在使用完毕后必须调用[OH_Drawing_BrushDestroy](#oh_drawing_brushdestroy)销毁并回收内存，否则会导致内存泄漏。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>brush为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_BrushDestroy(OH_Drawing_Brush* brush)](#oh_drawing_brushdestroy) | 用于销毁画刷对象并回收该对象占用的内存。应与[OH_Drawing_BrushCreate](#oh_drawing_brushcreate)或[OH_Drawing_BrushCopy](#oh_drawing_brushcopy)配对使用，对已创建或拷贝得到的画刷对象进行释放，避免内存泄漏。 |
 | [bool OH_Drawing_BrushIsAntiAlias(const OH_Drawing_Brush* brush)](#oh_drawing_brushisantialias) | 用于获取画刷是否设置抗锯齿属性，如果为真则说明画刷会启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>brush为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush* brush, bool antiAlias)](#oh_drawing_brushsetantialias) | 用于设置画刷的抗锯齿属性，设置为真则画刷在绘制图形时会对图形的边缘像素进行半透明的模糊处理。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>brush为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
@@ -87,7 +87,7 @@ OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)
 
 **描述**
 
-拷贝一个已有画刷对象，创建其画刷对象副本[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>brush为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+拷贝一个已有画刷对象，创建其画刷对象副本[OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)。调用本接口创建的画刷对象，在使用完毕后必须调用[OH_Drawing_BrushDestroy](#oh_drawing_brushdestroy)销毁并回收内存，否则会导致内存泄漏。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>brush为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

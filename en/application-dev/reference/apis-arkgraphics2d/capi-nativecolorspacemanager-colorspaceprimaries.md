@@ -1,10 +1,12 @@
 # ColorSpacePrimaries
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:14:42.213Z pushedAt=2026-08-25T07:18:01.333Z -->
 
 ```c
 typedef struct {...} ColorSpacePrimaries

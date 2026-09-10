@@ -1,16 +1,16 @@
 # Multi-Language Capability
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-31T01:15:30.804Z pushedAt=2026-07-31T12:04:26.617Z -->
 
 Applications designed based on the JS UI framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
 
-
 You only need to perform operations in [Defining Resource Files](#defining-resource-files) and [Referencing Resources](#referencing-resources) to use the multi-language capability of this framework.
-
 
 ## Defining Resource Files
 
@@ -18,7 +18,7 @@ Resource files store application content in multiple languages. This framework u
 
 Place the resource file of each locale in the **i18n** directory described in [File Organization](js-service-widget-file.md). Resource files are named in *language-region***.json** format. For example, the resource file for English (United States) is named **en-US.json**. If there is no resource file of the locale that matches the system language, content in the **en-US.json** file will be used by default.
 
-Different languages have different matching rules for singular and plural forms. In the resource file, **zero**, **one**, **two**, **few**, **many**, and **other** are used to define the string content in different singular and plural forms. For example, there is only the **other** scenario in Chinese since the language does not have singular and plural forms. **One** and **other** scenarios are applicable to English. All the preceding six scenarios are needed for Arabic.
+Different languages have different matching rules for singular and plural forms. In the resource file, **zero**, **one**, **two**, **few**, **many**, and **other** are used to define the string content in different singular and plural forms. For example, there is only the **other** scenario in Chinese since the language does not have singular and plural forms. **one** and **other** scenarios are applicable to English. All the preceding six scenarios are needed for Arabic.
 
  The following example takes **en-US.json** and **ar-AE.json** as examples:
 
@@ -39,7 +39,6 @@ Different languages have different matching rules for singular and plural forms.
 }
 ```
 
-
 ```json
 {
     "strings": {
@@ -54,7 +53,6 @@ Different languages have different matching rules for singular and plural forms.
     }
 }
 ```
-
 
 ## Referencing Resources
 

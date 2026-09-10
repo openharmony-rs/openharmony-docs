@@ -3,13 +3,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=fd4a15396b80efc1154943b82adce302d07cd529 translatedAt=2026-09-03T09:58:12.209Z pushedAt=2026-09-05T10:47:30.233Z -->
 
 The appManager module provides APIs for application management. For example, you can query whether the system is undergoing a stability test, determine whether the device is RAM-constrained, obtain the maximum memory available to the current application, and retrieve information about running processes.
 
 > **NOTE**
-> 
+>
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -70,7 +71,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.isRunningInStabilityTest((err, flag) => {
   if (err) {
-    console.error(`isRunningInStabilityTest fail, err: ${JSON.stringify(err)}`);
+    console.error(`isRunningInStabilityTest fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
   }
@@ -94,9 +95,9 @@ Checks whether the system is undergoing a stability test. This API uses a promis
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result **true** or **false**. You can perform error handling or custom processing in this callback.<br>**true** is returned if the system is undergoing a stability test; **false** is returned otherwise.|
+  | Promise&lt;boolean&gt; | Promise object. Returns true if the system is in a stability test scenario; returns false otherwise. |
 
 **Error codes**
 
@@ -132,9 +133,9 @@ Checks whether the current device is a RAM-constrained device (a device with sev
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise used to return the API call result and the result indicating whether the device is RAM-constrained. You can perform error handling or custom processing in this callback.<br>**true** is returned if the device is RAM-constrained; **false** is returned otherwise.|
+  | Promise&lt;boolean&gt; | Promise object. The value true indicates that the current device is a RAM-restricted device; the value false indicates that the current device is not a RAM-restricted device. |
 
 **Error codes**
 
@@ -189,7 +190,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.isRamConstrainedDevice((err, data) => {
   if (err) {
-    console.error(`isRamConstrainedDevice fail, err: ${JSON.stringify(err)}`);
+    console.error(`isRamConstrainedDevice fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
   }
@@ -208,9 +209,9 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 **Return value**
 
-  | Type| Description| 
+  | Type| Description|
   | -------- | -------- |
-  | Promise&lt;number&gt; | Promise used to return the maximum memory (RAM allocation) size, in MB. You can perform error processing or other custom processing based on the size.  |
+  | Promise&lt;number&gt; | Promise object that returns the maximum memory (RAM) value available to the current application. This value can be used for error handling or other custom processing, in MB. |
 
 **Error codes**
 
@@ -229,7 +230,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 appManager.getAppMemorySize().then((data) => {
   console.info(`The size of app memory is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.error(`code: ${error.code}, msg:${error.message}`);
 });
 ```
 
@@ -245,9 +246,9 @@ Obtains the maximum memory (RAM allocation) available to the current application
 
 **Parameters**
 
-  | Name| Type| Mandatory| Description| 
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the maximum memory (RAM allocation) available to the current application. Otherwise, **err** is an error object. You can perform error handling or other custom processing based on the return value.|
+  | callback | AsyncCallback&lt;number&gt; | Yes | Callback function. If the API call is successful, err is undefined and data is the maximum memory (RAM) available to the current application, in MB. Otherwise, err is an error object. You can perform error handling or other custom processing based on this value. |
 
 **Error codes**
 
@@ -265,7 +266,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.getAppMemorySize((err, data) => {
   if (err) {
-    console.error(`getAppMemorySize fail, err: ${JSON.stringify(err)}`);
+    console.error(`getAppMemorySize fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The size of app memory is: ${JSON.stringify(data)}`);
   }
@@ -276,16 +277,15 @@ appManager.getAppMemorySize((err, data) => {
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
-Obtains information about the running processes of the current application. This API uses a promise to return the result.
-
-> **NOTE**
->
-> - In versions earlier than API version 11, this API requires the ohos.permission.GET_RUNNING_INFO permission, which is available only for system applications.
-> - Starting from API version 11, this API is used only to obtain the process information of the caller. No permission is required.
+Starting from API version 11, only the process information of the caller is returned by default. If the caller has the ohos.permission.GET_RUNNING_INFO permission (available only for system applications), the process information of all applications can be queried. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Required permissions:**
+
+API versions 9 to 10: ohos.permission.GET_RUNNING_INFO (available only for system applications)
 
 **Return value**
 
@@ -310,7 +310,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 appManager.getRunningProcessInformation().then((data) => {
   console.info(`The running process information is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.error(`code: ${error.code}, msg:${error.message}`);
 });
 ```
 
@@ -318,16 +318,15 @@ appManager.getRunningProcessInformation().then((data) => {
 
 getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-Obtains information about the running processes of the current application. This API uses an asynchronous callback to return the result.
-
-> **NOTE**
->
-> - In versions earlier than API version 11, this API requires the ohos.permission.GET_RUNNING_INFO permission, which is available only for system applications.
-> - Starting from API version 11, this API is used only to obtain the process information of the caller. No permission is required.
+Starting from API version 11, only the process information of the caller is returned by default. If the caller has the ohos.permission.GET_RUNNING_INFO permission (available only for system applications), the process information of all applications can be queried. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Required permissions:**
+
+API versions 9 to 10: ohos.permission.GET_RUNNING_INFO (available only for system applications)
 
 **Parameters**
 
@@ -351,7 +350,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.getRunningProcessInformation((err, data) => {
   if (err) {
-    console.error(`getRunningProcessInformation fail, err: ${JSON.stringify(err)}`);
+    console.error(`getRunningProcessInformation fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The running process information is: ${JSON.stringify(data)}`);
   }
@@ -398,25 +397,25 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -447,7 +446,7 @@ Registers an observer to listen for lifecycle changes of the specified applicati
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
 | observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to listen for application lifecycle changes.|
-| bundleNameList | `Array<string>` | Yes| **bundleName** array of the application. A maximum of 128 bundle names can be passed.|
+| bundleNameList | `Array<string>` | Yes | Array of bundle names for which listeners need to be registered. The maximum number is 128. If this number is exceeded, error code 16000050 is returned. |
 
 **Return value**
 
@@ -472,25 +471,25 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -550,25 +549,25 @@ let observerId = 0;
 
 // 1. Register an application state observer.
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -587,7 +586,7 @@ try {
   appManager.off('applicationState', observerId).then((data) => {
     console.info(`unregisterApplicationStateObserver success, data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`unregisterApplicationStateObserver fail, err: ${JSON.stringify(err)}`);
+    console.error(`unregisterApplicationStateObserver fail, code: ${err.code}, msg:${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -612,7 +611,7 @@ Unregisters the observer used to listen for application state changes. This API 
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
 | observerId | number | Yes| ID of the observer registered, which is the listener ID returned by [on('applicationState')](#appmanageronapplicationstate14).|
-| callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the application state observer is deregistered, **err** is undefined; otherwise, **error** is an error object.|
+| callback | AsyncCallback\<void> | Yes | Callback function. When the application state listener is unregistered successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -634,25 +633,25 @@ let observerId = 0;
 
 // 1. Register an application state observer.
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -700,7 +699,7 @@ Kills a process by bundle name. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
 | clearPageStack | boolean | Yes| Whether to clear the page stack. **true** to clear, **false** otherwise.|
-| appIndex | number | No| ID of an application clone. The default value is **0**. If the value is **0**, all processes of the main application are terminated. If the value is greater than 0, all processes of the specified application clone are terminated.|
+| appIndex | number | No | Application clone ID. The default value is **0** if this parameter is not passed. Value range: 0 to 1000. The value **0** means to terminate all processes of the main application. A value greater than 0 means to terminate all processes of the specified clone application. |
 
 **Return value**
 
@@ -732,7 +731,7 @@ try {
   appManager.killProcessesByBundleName(bundleName, isClearPageStack, appIndex).then((data) => {
     console.info('killProcessesByBundleName success.');
   }).catch((err: BusinessError) => {
-    console.error(`killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
+    console.error(`killProcessesByBundleName fail, code: ${err.code}, msg:${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -760,22 +759,22 @@ Checks whether the application with the specified bundle name and application cl
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| appCloneIndex | number | No| Index of an application clone. The value ranges from 0 to 1000. The value **0** means the main application, and a value greater than 0 means a specific application clone.|
+| appCloneIndex | number | No | Index of the clone application. The default value is 0 if this parameter is not passed. Value range: 0 to 1000. The value 0 indicates whether the main application is running; a value greater than 0 indicates whether the specified clone application is running. |
 
 **Return value**
 
 | Type          | Description             |
 | -------------- | ---------------- |
-| Promise\<boolean> | Promise used to return the result. **true** is returned if at least one user is running the specified application. **false** is returned if none of the users are running the application.|
+| Promise\<boolean> | Promise object. Returns true if at least one user is running the application with the specified bundle name and clone application index; returns false if the application with the specified bundle name and clone application index is not running under any user. |
 
 **Error codes**
 
-  For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16000073 | The app clone index is invalid. |
 
@@ -783,18 +782,19 @@ Checks whether the application with the specified bundle name and application cl
 
 ```ts
 import { appManager } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   appManager.isAppRunning(bundleName).then((data: boolean) => {
-      hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
+      console.info(`data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `isAppRunning error, code: ${err.code}, msg:${err.message}`);
-    })
+      console.error(`isAppRunning error, code: ${err.code}, msg:${err.message}`);
+    });
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `isAppRunning error, code: ${err.code}, msg:${err.message}`);
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`isAppRunning error, code: ${code}, msg:${message}`);
 }
 ```
 
@@ -808,7 +808,7 @@ Defines the ability state data.
 
 | Type| Description|
 | --- | --- |
-| [_AbilityStateData.default](js-apis-inner-application-abilityStateData.md) | Ability state data.|
+| _[AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Defines the ability state information. |
 
 ## AppStateData<sup>14+</sup>
 
@@ -820,7 +820,7 @@ Defines the application state data.
 
 | Type| Description|
 | --- | --- |
-| [_AppStateData.default](js-apis-inner-application-appStateData.md) | Application state data.|
+| _[AppStateData](js-apis-inner-application-appStateData.md).default | Application state information. |
 
 ## ApplicationStateObserver<sup>14+</sup>
 
@@ -832,7 +832,7 @@ Defines the observer used to listen for application state changes.
 
 | Type| Description|
 | --- | --- |
-| [_ApplicationStateObserver.default](js-apis-inner-application-applicationStateObserver.md) | Application state observer.|
+| _[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).default | Application state listener. |
 
 ## ProcessInformation
 
@@ -846,7 +846,7 @@ Defines the process information.
 
 | Type| Description|
 | --- | --- |
-| [_ProcessInformation](js-apis-inner-application-processInformation.md) | Process information.|
+| _[ProcessInformation](js-apis-inner-application-processInformation.md) | Process information. |
 
 ## ProcessData<sup>14+</sup>
 
@@ -858,4 +858,4 @@ Defines the process data.
 
 | Type| Description|
 | --- | --- |
-| [_ProcessData.default](js-apis-inner-application-processData.md) | Process data.|
+| _[ProcessData](js-apis-inner-application-processData.md).default | Process data. |

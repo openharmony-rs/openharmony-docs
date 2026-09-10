@@ -411,7 +411,7 @@ class DragSortCtrl<T> {
   }
 
   onMove(item: T, offset: number) {
-    this.offsetY = offset - this.dragRefOffset; // 逐帧计算传入的offect，每满足一个item高度时，进入下方if逻辑，更新dragRefOffset的值
+    this.offsetY = offset - this.dragRefOffset; // 逐帧计算传入的offset，每满足一个item高度时，进入下方if逻辑，更新dragRefOffset的值
     let index = this.arr.indexOf(item); // 在数组中查找传入的item
     this.modify[index].offsetY = this.offsetY;
     if (this.offsetY < -this.ITEM_INTV / 2) { // 通过判断使指定的item逐一移动到首位

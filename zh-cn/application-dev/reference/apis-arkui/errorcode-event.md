@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> 交互事件错误码用于定位组件事件处理、事件分发、滚动容器、手势识别器和事件数据操作中的异常，帮助开发者根据错误原因快速选择正确的组件、事件或接口参数并完成问题处理。以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 ## 100017 组件不支持阻止默认事件
 
@@ -18,11 +18,11 @@ Component does not support prevent function.
 
 **错误描述**
 
-组件不支持阻止默认事件。
+组件不支持阻止默认事件。该错误码为string类型。
 
 **可能原因**
 
-使用的组件不支持preventDefault方法。
+所使用的组件不支持[preventDefault](./arkui-ts/ts-universal-events-touch.md#touchevent对象说明)方法。
 
 **处理步骤**
 
@@ -36,7 +36,7 @@ The component does not support specific properties or events.
 
 **错误描述**
 
-组件不支持特定的属性或者事件。
+组件不支持特定的属性或者事件。该错误码为string类型。
 
 **可能原因**
 
@@ -44,7 +44,7 @@ The component does not support specific properties or events.
 
 **处理步骤**
 
-使用支持的组件设定属性或事件。
+使用支持当前属性或事件的组件。
 
 ## 180001 非滚动类容器
 
@@ -54,7 +54,7 @@ Component is not a scroll container.
 
 **错误描述**
 
-非滚动类容器。
+非滚动类容器。该错误码为string类型。
 
 **可能原因**
 
@@ -72,11 +72,11 @@ Buffer is not large enough.
 
 **错误描述**
 
-存储区大小不足。
+存储区大小不足。该错误码为string类型。
 
 **可能原因**
 
-数组的长度过小。
+传入数组的长度小于接口要求的长度。
 
 **处理步骤**
 
@@ -90,11 +90,11 @@ The input event pointer is not a cloned event pointer.
 
 **错误描述**
 
-该事件不是克隆事件。
+该事件不是克隆事件。该错误码为string类型。
 
 **可能原因**
 
-克隆事件接口传入非克隆事件指针。
+调用克隆事件接口时，必须传入通过克隆事件接口生成的克隆事件指针。
 
 **处理步骤**
 
@@ -108,7 +108,7 @@ The component status is abnormal.
 
 **错误描述**
 
-组件状态异常。
+组件状态异常。该错误码为string类型。
 
 **可能原因**
 
@@ -126,7 +126,7 @@ No component hit to response to the event.
 
 **错误描述**
 
-未命中可响应事件的组件。
+未命中可响应事件的组件。该错误码为string类型。
 
 **可能原因**
 
@@ -136,6 +136,24 @@ No component hit to response to the event.
 
 为组件添加该事件的监听，或使用支持响应该事件的组件。
 
+## 180006 不支持输入事件类型
+
+**错误信息**
+
+Input event type not supported.
+
+**错误描述**
+
+不支持输入事件类型。该错误码为string类型。
+
+**可能原因**
+
+当前接口不支持传入的输入事件类型。
+
+**处理步骤**
+
+根据接口说明，传入该接口支持类型的输入事件对象。
+
 ## 180102 不支持手势识别器类型
 
 **错误信息**
@@ -144,12 +162,12 @@ The gesture recognizer type is not supported.
 
 **错误描述**
 
-不支持手势识别器类型。
+不支持手势识别器类型。该错误码为string类型。
 
 **可能原因**
 
-手势接口调用不支持的手势识别器类型。
+调用手势接口时传入了不支持的手势识别器类型。
 
 **处理步骤**
 
-调用类型匹配的手势识别器。
+调用接口支持的手势识别器类型。

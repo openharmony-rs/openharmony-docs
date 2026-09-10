@@ -5,6 +5,8 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a08d450b4f575e3d4749ddeef9dd32275ec0a19e translatedAt=2026-08-26T04:44:21.363Z pushedAt=2026-08-28T08:39:20.507Z -->
+
 You can create an ArkTS widget package in either of the following ways:  <br>
 Method 1: Create a shared package. For details, see [Creating a Shared Package](./arkts-ui-widget-creation.md#method-1-creating-a-shared-package). The widget UI and application code are in the same module, and the final compilation product is in the same HAP.<br>
 Method 2: Create a standalone package. For details, see [Creating a Standalone Package](./arkts-ui-widget-creation.md#method-2-creating-a-standalone-package). The widget UI and application code are in different modules, and the final compilation products are in separate widget and application packages. The initial APIs of this module are supported since API version 20.<br>

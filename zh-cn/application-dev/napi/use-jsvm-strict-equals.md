@@ -18,7 +18,7 @@ JSVM-API 中的函数用于判断两个 JavaScript 值是否严格相等，类�
 
 | 接口                       | 功能说明                            |
 |----------------------------|-------------------------------------|
-| OH_JSVM_StrictEquals         | 判断两个JSVM_Value对象是否相等 |
+| OH_JSVM_StrictEquals         | 判断两个JSVM_Value对象是否严格相等 |
 
 ## 使用示例
 
@@ -41,7 +41,7 @@ cpp部分代码：
 // OH_JSVM_StrictEquals的样例方法
 static JSVM_Value IsStrictEquals(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 接受两个入参
+    // 接收两个入参
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);

@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e2c3267fc728379ed661f6395560cc18d085c54a translatedAt=2026-09-03T12:00:27.430Z pushedAt=2026-09-05T10:47:30.846Z -->
 
 The module defines the snapshot of a mission. The snapshot can be obtained through [missionManager.getMissionSnapShot](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissionsnapshot).
 
@@ -38,6 +39,7 @@ import { missionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Obtain the mission snapshot information.
   missionManager.getMissionInfos('', 10, (error, missions) => {
     if (error) {
       console.error(`getMissionInfos failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
@@ -45,6 +47,10 @@ try {
     }
     console.info(`size = ${missions.length}`);
     console.info(`missions = ${JSON.stringify(missions)}`);
+    if (missions.length === 0) {
+      console.error('missions is empty');
+      return;
+    }
     let id = missions[0].missionId;
 
     missionManager.getMissionSnapShot('', id, (err, snapshot) => {

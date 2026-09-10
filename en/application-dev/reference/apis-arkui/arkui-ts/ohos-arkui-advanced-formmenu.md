@@ -1,10 +1,13 @@
 # FormMenu
+
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=821c74215aeca4d678118a56c1e1a598f447c058 translatedAt=2026-08-28T01:32:32.834Z pushedAt=2026-08-28T06:06:02.356Z -->
+
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
 This component facilitates the quick addition of service widgets to the home screen through a long-press menu within the application:
@@ -15,7 +18,6 @@ This component facilitates the quick addition of service widgets to the home scr
 
 3. The service widget framework triggers the addition of the service widget to the home screen by sending the addition data to the home screen, initiating the service widget placement operation.
 
-
 > **NOTE**
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
@@ -24,30 +26,23 @@ This component facilitates the quick addition of service widgets to the home scr
 >
 > For details about how to develop a service widget, see the [service widget development guidelines](../../../form/formkit-overview.md).
 
-
 ## Modules to Import
 
 ```ts
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
-
 ## Child Components
 
 Not supported
 
 ## Attributes
+
 The [universal attributes](ts-component-general-attributes.md) are not supported.
 
-## AddFormMenuItem 
+## AddFormMenuItem
 
-```ts
-AddFormMenuItem(
-  want: Want,
-  componentId: string,
-  options?: AddFormOptions
-): void
-```
+AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 
 **Decorator**: @Builder
 
@@ -70,12 +65,12 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name            | Type|Read-Only|Optional| Description                                                     |
 | --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
 | formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | No| Yes| Service widget data.|
 | callback        | AsyncCallback\<string>                                                                                                | No| Yes | Callback used to return the result. The value **0** means that the service widget is added successfully, and a non-zero value means that the service widget fails to be added. For details about the error codes, see [Form Error Codes](../../apis-form-kit/errorcode-form.md). |
 | style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | No| Yes | Custom menu style.|
-
 
 ## FormMenuItemStyle
 
@@ -84,6 +79,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
+
 | Name| Type| Read-Only|Optional| Description|
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
@@ -93,6 +89,7 @@ AddFormMenuItem(
 > If **style** is left empty or unspecified, the default icon and menu text are applied.
 
 ## Events
+
 Menu click events are supported.
 
 ## Example
@@ -137,11 +134,11 @@ struct Index {
             }
           },
           style: {
-            // options: {
-            // startIcon: $r("app.media.icon"), // Menu icon, which can be provided by yourself. The default value is "sys.media.ic_public_add."
-            //   content: "Add to home screen",  // Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
-            //   endIcon: $r("app.media.icon") // Menu icon, which can be provided by yourself.
-            // }
+            options: {
+              startIcon: $r("app.media.icon"), // Menu icon. You can provide your own. The system uses "sys.media.ic_public_add" by default.
+              content: "Add to Home Screen",  // Menu content. You can provide your own. "sys.string.ohos_add_form_to_desktop" is used by default.
+              endIcon: $r("app.media.icon") // Menu icon. You can provide your own.
+            }
           }
         }
       )
@@ -223,4 +220,10 @@ struct WidgetCard {
 
 **UI of the FormMenu component**
 
-![addFormToDesktop](figures/addFormToDesktop.jpeg)
+![en-us_image_0000001616959836](figures/add-form-to-desktop.jpeg)
+
+**Result of using Add to home screen with the FormMenu component**
+
+The left side shows the result of adding to the home screen when **formBindingData** is empty, and the right side shows the result when **formBindingData** is **{ data: 'share' }**.
+
+<!--Del--> <!--DelEnd-->

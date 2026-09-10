@@ -1,16 +1,19 @@
 # MenuItemGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=85a246303a3306c0a0ebfe5d53b17f767869db93 translatedAt=2026-09-03T04:15:04.053Z pushedAt=2026-09-09T10:30:21.537Z -->
 
-The **MenuItemGroup** component represents a group of menu items.
+The **MenuItemGroup** component represents a group of menu items. It supports setting the header and footer information of a group, and is used to organize and manage the classification structure of menu items. It is applicable to scenarios where multiple menu items need to be organized by category in a menu. By grouping, it clearly presents the hierarchical structure of the menu, improving the readability of the menu and the user experience.
 
 > **NOTE**
 >
-> This component is supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
 
 ## Child Components
 
@@ -28,11 +31,11 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | Name| Type                                                 | Mandatory| Description                                       |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------- |
-| value  | [MenuItemGroupOptions](#menuitemgroupoptions) | No  | Header and footer of the menu item group.|
+| value  | [MenuItemGroupOptions](#menuitemgroupoptions) | No   | Header and footer of the menu item group.<br/> If this parameter is not set, the header and footer information is not displayed. |
 
 ## MenuItemGroupOptions
 
-Describes the header and footer of the menu item group.
+Describes the header and footer information of the menu item group.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -40,8 +43,8 @@ Describes the header and footer of the menu item group.
 
 | Name  | Type                                                        | Read-Only| Optional| Description                         |
 | ------ | ------------------------------------------------------------ | ---- | ---- | ----------------------------- |
-| header | [ResourceStr](ts-types.md#resourcestr) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes  | Header of the menu item group.|
-| footer | [ResourceStr](ts-types.md#resourcestr) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes  | Footer of the menu item group.|
+| header | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | No   | Yes   | Header information of the menu item group, which is displayed at the top of all menu items in the group. <br/> If not set, no header is displayed. |
+| footer | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | No   | Yes   | Footer information of the menu item group, which is displayed at the bottom of all menu items in the group. <br/> If not set, no footer is displayed. |
 
 ## Sample
 

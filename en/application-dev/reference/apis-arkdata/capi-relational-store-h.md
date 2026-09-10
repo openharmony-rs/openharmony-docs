@@ -96,7 +96,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)](#oh_rdb_executev2) | - | Executes an SQL statement with a return value. This API supports vector stores.|
 | [int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)](#oh_rdb_executebytrxid) | - | Executes an SQL statement that returns no value based on the specified transaction ID. This API supports only vector stores.|
 | [OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)](#oh_rdb_executequery) | - | Queries data in the database using the specified SQL statement. This API supports vector stores.|
-| [OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_executequeryv2) | - | Queries data in the database using the specified SQL statement. This API supports vector stores.|
+| [OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_executequeryv2) | - | Queries data in the database using the specified SQL statement. This API supports SQL parameter binding and vector stores.|
 | [int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)](#oh_rdb_begintransaction) | - | Begins the transaction before executing SQL statements.|
 | [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | Rolls back the SQL statements executed. Before using this function, call [OH_Rdb_BeginTransaction](#oh_rdb_begintransaction) to start a transaction.|
 | [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | Commits the executed SQL statements. Before using this function, call [OH_Rdb_BeginTransaction](#oh_rdb_begintransaction) to start a transaction.|
@@ -130,7 +130,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)](#oh_rdb_rekeyex) | - | Changes the key used to encrypt the database.<br>Key update is not supported for databases in non-WAL mode.<br>Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.<br>Parameter update for an encrypted database and conversion between an encrypted database and a non-encrypted database are supported.<br>The larger the database, the longer the update takes.<br>Exercise caution when changing the encryption parameters. The correct encryption parameters must be passed when **OH_Rdb_CreateOrOpen** is called. Otherwise, the database may fail to be opened.|
 | [typedef void (\*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)](#rdb_corruptedhandler) | Rdb_CorruptedHandler | Defines a handler for processing database exceptions.|
 | [int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_registercorruptedhandler) | - | Registers a handler for processing database exceptions. When a database exception occurs, this handler is called.<br>The exception handling logic is user-defined. You should ensure the service quality each time the callback is triggered.<br>Only one handler can be registered for each path.|
-| [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | Unregisters the handler for processing database exceptions.<br>The handler and context must be the same as those during subscription. Otherwise, the operation fails.|
+| [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | Unregisters the handler for processing database exceptions.<br>The handler and context must be the same as those during registration. Otherwise, the operation fails.|
 | [OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predicates, const char * const columns[], int length)](#oh_rdb_querywithoutrowcount) | - | Queries data from the database based on specified conditions without calculating the row count.|
 | [OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_querysqlwithoutrowcount) | - | Executes an SQL statement with a return value. This function does not calculate the row count, and supports vector stores.|
 | [int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdb_batchinsertwithreturning) | - | Inserts batch data into the target table and outputs the change information to the context.|
@@ -610,7 +610,7 @@ Sets the database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)) for
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| int dbType | Database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).|
+| int dbType | Database kernel type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).|
 
 **Returns**
 
@@ -793,7 +793,7 @@ Sets whether to persist an RDB store.
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance,<br>which specifies the database configuration.|
-| bool isPersistent | Whether to persist the database data.|
+| bool isPersistent | Whether to persist an RDB store. The value **true** indicates that persistence is required, and the value **false** indicates that persistence is not required, that is, the in-memory database.|
 
 **Returns**
 
@@ -1106,7 +1106,7 @@ Ensure that you comply with this constraint when calling this API to avoid error
 | Parameter                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store                                        | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| const char *table                                                                 |  Pointer to the names of the distributed tables to set.|
+| const char *table                                                                 |  Pointer to the name of the target table to which data is to be inserted.|
 | const [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows                        | An array of data to insert.|
 | [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Policy used to resolve file conflicts.|
 | int64_t *changes                                                                   | Pointer to the number of successful insertions.|
@@ -1278,7 +1278,7 @@ Statements starting with comments are not supported.
 |------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store          | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.                                                                                         |
 | const char *sql                                      | SQL statement to execute.                                                                                                                           |
-| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | (Optional) Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.                                                                                                  |
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the **OH_Data_Values** instance, indicating the value of the parameter in the SQL statement. If the SQL statement is complete, **args** can be set to **nullptr**.                                                                                                  |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) **result                           | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance when the execution is successful. Use [OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy) to release the memory in time.|
 
 **Returns**
@@ -1362,7 +1362,7 @@ OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_
 
 **Description**
 
-Queries data in the database using the specified SQL statement. This API supports vector stores.
+Queries data in the database using the specified SQL statement. This API supports SQL parameter binding and vector stores.
 
 **Since**: 18
 
@@ -1373,7 +1373,7 @@ Queries data in the database using the specified SQL statement. This API support
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *sql | SQL statement to execute.|
-| const OH_Data_Values *args | (Optional) Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the **OH_Data_Values** instance, indicating the value of the parameter in the SQL statement. If the SQL statement is complete, **args** can be set to **nullptr**.|
 
 **Returns**
 
@@ -2039,7 +2039,7 @@ Queries the locked data in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### OH_Rdb_CreateTransaction()
 
@@ -2246,7 +2246,7 @@ int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *conte
 
 Unregisters the handler for processing database exceptions.
 
-The handler and context must be the same as those during subscription. Otherwise, the operation fails.
+The handler and context must be the same as those during registration. Otherwise, the operation fails.
 
 **Since**: 22
 
@@ -2289,7 +2289,7 @@ Queries data from the database based on specified conditions without calculating
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** if the **store** acquisition fails or the result set is empty.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** if the **store** acquisition fails or the result set is empty.|
 
 
 ### OH_Rdb_QuerySqlWithoutRowCount()
@@ -2310,7 +2310,7 @@ Executes an SQL statement with a return value. This function does not calculate 
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *sql | SQL statement to execute.|
-| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance. If the SQL statement is complete, **args** can be set to **nullptr**.|
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the **OH_Data_Values** instance, indicating the value of the parameter in the SQL statement. If the SQL statement is complete, **args** can be set to **nullptr**.|
 
 **Returns**
 

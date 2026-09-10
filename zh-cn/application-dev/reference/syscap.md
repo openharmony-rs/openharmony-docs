@@ -65,7 +65,11 @@ SysCap与SDK、Kit形成结构化、层级化结构，如下图所示：
 
 ## SysCap与Device type的关系
 
-在SDK的“device-define”文件夹下，以json文件定义了各设备类型支持的SysCap集合。例如：tablet.json文件定义了Tablet设备支持SystemCapability.ArkUI.ArkUI.Full、SystemCapability.Communication.NFC.Core等SysCap。如下图所示：
+在SDK的“device-define”文件夹下，以json文件定义了各设备类型支持的SysCap集合。例如：tablet.json文件定义了Tablet设备支持SystemCapability.ArkUI.ArkUI.Full、SystemCapability.Communication.NFC.Core等SysCap。
+
+<!--RP2--><!--RP2End-->
+
+如下图所示：
 
 ![Syscap-DT](figures/Syscap-DT.png) 
 

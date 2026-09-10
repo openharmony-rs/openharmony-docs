@@ -1,10 +1,11 @@
 # Obtaining Application and File System Space Statistics
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @Dyylll-->
+<!--Designer: @hwzhangchuang; @yangwei_814916-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=23fd3050bf417376fb6020b82cd43307338e4432 translatedAt=2026-08-26T04:26:43.965Z pushedAt=2026-08-28T02:47:49.245Z -->
 
 This topic describes how to obtain statistics on the space occupied by your application and the free space and total space of a file system.
 
@@ -42,7 +43,7 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
 ## How to Develop
 
 - Obtain the free space of **/data** of the file system.
-  
+
   ```ts
   import { statfs } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -65,13 +66,13 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
 
 
 - Obtain the space occupied by the current application.
-  
+
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-  
+
   ``` TypeScript
   storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
     if (err) {
@@ -90,7 +91,7 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-  
+
   ``` TypeScript
   storageStatistics.getTotalSize().then((number: number) => {
     console.info(`getTotalSize successfully, number is ${number}`);
@@ -107,7 +108,7 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-  
+
   ``` TypeScript
   try {
     let number = storageStatistics.getTotalSizeSync();
@@ -126,7 +127,7 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-  
+
   ``` TypeScript
   storageStatistics.getFreeSize().then((number: number) => {
     console.info(`getFreeSize successfully, number is ${number}`);
@@ -143,7 +144,7 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
   <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
-  
+
   ``` TypeScript
   try {
     let number = storageStatistics.getFreeSizeSync();
@@ -153,3 +154,4 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
     console.error(`getFreeSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
   }
   ```
+

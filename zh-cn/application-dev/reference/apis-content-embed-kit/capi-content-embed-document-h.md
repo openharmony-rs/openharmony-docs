@@ -9,7 +9,7 @@
 
 ## 概述
 
-提供OE技术实现的被嵌入文档（简称OE文档）相关数据结构及对应操作接口。
+提供通过OE技术实现的被嵌入文档（简称OE文档）的数据结构及操作接口。<br>本模块核心概念采用Document-Storage-Stream层级存储结构，其中Document为顶层容器，Storage类似于文件系统中的目录可包含子Storage和Stream，Stream类似于文件支持二进制数据读写。
 
 **引用文件：** <ContentEmbedKit/content_embed/content_embed_document.h>
 
@@ -27,11 +27,11 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ContentEmbed_Document](capi-contentembed-contentembed-document.md) | ContentEmbed_Document | 声明OE文档结构体类型。封装了被嵌入文档的元数据、内容和存储结构。 |
-| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) | ContentEmbed_Storage | 声明OE文档Storage结构体类型。类似于文件系统中的目录，Storage对象的父对象必须是另一个Storage对象或根Storage对象。 |
-| [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) | ContentEmbed_StorageElement | 声明OE文档存储元素的结构体类型。包含名称、类型、时间等信息。 |
-| [ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md) | ContentEmbed_StorageElements | 声明ContentEmbed_StorageElements结构体类型。包含[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)集合信息。 |
-| [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) | ContentEmbed_Stream | 声明OE文档Stream结构体类型。类似于文件系统中的文件，可对其进行读取或写入，且Stream对象只能存在于Storage对象中。 |
+| [ContentEmbed_Document](capi-contentembed-contentembed-document.md) | ContentEmbed_Document | 声明OE文档结构体类型。封装了被嵌入文档的元数据、内容和存储结构，用于在应用中统一管理嵌入文档的数据，便于对嵌入文档进行访问、解析与存储。<br>开发者可根据数据来源选取：<br>拥有OEID时使用[OH_ContentEmbed_CreateDocumentByOEid](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyoeid)；<br>拥有源文件并需嵌入/链接时使用[OH_ContentEmbed_CreateDocumentByFile](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyfile)；<br>拥有已保存的OE格式文件时使用[OH_ContentEmbed_LoadDocumentFromFile](capi-content-embed-document-h.md#oh_contentembed_loaddocumentfromfile)。 |
+| [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) | ContentEmbed_Storage | 声明OE文档Storage结构体类型。类似于文件系统中的目录，用于组织和管理OE文档中的层级数据，除根Storage外，Storage对象的父对象必须是另一个Storage对象，适用于需要嵌套存储和组织文档元素的场景。<br>基于[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例，然后通过[OH_ContentEmbed_Document_GetRootStorage](capi-content-embed-document-h.md#oh_contentembed_document_getrootstorage)获取根Storage对象。<br>基于Storage对象和名称使用[OH_ContentEmbed_Storage_CreateStorage](capi-content-embed-document-h.md#oh_contentembed_storage_createstorage)在OE文档中创建一个子Storage对象，或使用[OH_ContentEmbed_Storage_GetStorage](capi-content-embed-document-h.md#oh_contentembed_storage_getstorage)在OE文档中获取一个子Storage对象。 |
+| [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) | ContentEmbed_StorageElement | 声明OE文档存储元素的结构体类型。通过[OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement)从[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)获取该对象实例后，可通过[OH_ContentEmbed_StorageElement_GetName](capi-content-embed-document-h.md#oh_contentembed_storageelement_getname)获取名称、[OH_ContentEmbed_StorageElement_GetCTime](capi-content-embed-document-h.md#oh_contentembed_storageelement_getctime)获取创建时间和[OH_ContentEmbed_StorageElement_GetMTime](capi-content-embed-document-h.md#oh_contentembed_storageelement_getmtime)获取修改时间。<br>通过[OH_ContentEmbed_StorageElement_IsStorage](capi-content-embed-document-h.md#oh_contentembed_storageelement_isstorage)判断当前元素是[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)的封装对象后，可以使用[OH_ContentEmbed_Storage_GetStorage](capi-content-embed-document-h.md#oh_contentembed_storage_getstorage)在OE文档中获取一个子Storage对象。<br>通过[OH_ContentEmbed_StorageElement_IsStream](capi-content-embed-document-h.md#oh_contentembed_storageelement_isstream)判断当前元素是[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)的封装对象后，可以使用[OH_ContentEmbed_Storage_GetStream](capi-content-embed-document-h.md#oh_contentembed_storage_getstream)在OE文档中获取一个Stream对象。 |
+| [ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md) | ContentEmbed_StorageElements | 声明ContentEmbed_StorageElements结构体类型。通过[OH_ContentEmbed_Storage_GetElements](capi-content-embed-document-h.md#oh_contentembed_storage_getelements)获取某个[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象下所有的[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)和[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象集合，每个对象封装成[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)结构体。可以通过[OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount)获取当前查询元素的数量，[OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement)获取指定索引位置的[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例对象。 |
+| [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) | ContentEmbed_Stream | 声明OE文档Stream结构体类型。类似于文件系统中的文件，可对其进行读取或写入，且Stream对象只能存在于Storage对象中。适用于在Storage对象中对OE文档内容进行流式读取或写入的场景。基于Storage对象和名称使用[OH_ContentEmbed_Storage_CreateStream](capi-content-embed-document-h.md#oh_contentembed_storage_createstream)在OE文档中创建一个Stream对象，或使用[OH_ContentEmbed_Storage_GetStream](capi-content-embed-document-h.md#oh_contentembed_storage_getstream)在OE文档中获取一个Stream对象。 |
 
 ### 宏定义
 
@@ -43,34 +43,34 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyoeid) | 使用提供的标识符OEID创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br> 开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFilePath, size_t length, bool isLinking, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyfile) | 从源文件创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br> 开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)](#oh_contentembed_loaddocumentfromfile) | 通过已存在的OE格式文件加载[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br> 开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t length, ContentEmbed_Document *document, size_t offset, size_t *readSize)](#oh_contentembed_document_read) | 从OE文档对象的指定偏移位置读取原始二进制数据到缓冲区。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyoeid) | 使用提供的标识符OEID创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFilePath, size_t length, bool isLinking, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyfile) | 从源文件创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)](#oh_contentembed_loaddocumentfromfile) | 通过已存在的OE格式文件加载[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t length, ContentEmbed_Document *document, size_t offset, size_t *readSize)](#oh_contentembed_document_read) | 从OE文档对象的指定偏移位置读取原始二进制数据到缓冲区。适用于文档备份、数据传输或自定义解析等需要直接访问文档原始二进制内容的场景。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Document *document, char *oeid)](#oh_contentembed_document_getoeid) | 从OE文档对象获取标识符OEID。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Document *document, bool *isLinking)](#oh_contentembed_document_islinking) | OE文档是否以链接方式创建。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentEmbed_Document *document, char *nativeFilePath)](#oh_contentembed_document_getnativefilepath) | 从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Document *document, ContentEmbed_Storage **storage)](#oh_contentembed_document_getrootstorage) | 从OE文档对象获取根[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Document *document)](#oh_contentembed_document_flush) | 将OE文档中数据落盘至OE格式文件。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)](#oh_contentembed_storage_createstorage) | 根据OE文档父Storage对象和名称创建子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)](#oh_contentembed_storage_getstorage) | 从OE文档父Storage对象和名称获取子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)](#oh_contentembed_storage_createstream) | 在OE文档父Storage对象和名称创建[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)](#oh_contentembed_storage_getstream) | 从OE文档父Storage对象和名称获取子[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage *parentStorage, const char *name)](#oh_contentembed_storage_deleteentry) | 从OE文档父Storage对象删除指定名称的子Storage对象或子Stream对象。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Storage *storage)](#oh_contentembed_storage_deleteallentry) | 从OE文档Storage对象删除所有条目，包括子Storage对象和子Stream对象。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Document *document, bool *isLinking)](#oh_contentembed_document_islinking) | 判断OE文档是否以链接方式创建。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentEmbed_Document *document, char *nativeFilePath)](#oh_contentembed_document_getnativefilepath) | 从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。适用于需要直接访问或操作被嵌入源文件的场景，如文件预览或二次编辑。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Document *document, ContentEmbed_Storage **storage)](#oh_contentembed_document_getrootstorage) | 从OE文档对象获取根[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Document *document)](#oh_contentembed_document_flush) | 将OE文档中数据落盘至OE格式文件。建议在对OE文档的Storage或Stream对象进行修改后调用此接口，以确保修改内容持久化保存；未调用可能导致修改数据丢失。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)](#oh_contentembed_storage_createstorage) | 根据OE文档父Storage对象和名称创建子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Storage **childStorage)](#oh_contentembed_storage_getstorage) | 从OE文档父Storage对象和名称获取子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br>与[OH_ContentEmbed_Storage_CreateStorage](capi-content-embed-document-h.md#oh_contentembed_storage_createstorage)不同，本接口用于获取OE文档中已存在的Storage对象。<br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)](#oh_contentembed_storage_createstream) | 根据OE文档父Storage对象和名称创建[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *parentStorage, const char *name, ContentEmbed_Stream **childStream)](#oh_contentembed_storage_getstream) | 从OE文档父Storage对象和名称获取子[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br>与[OH_ContentEmbed_Storage_CreateStream](capi-content-embed-document-h.md#oh_contentembed_storage_createstream)不同，本接口用于获取OE文档中已存在的子Stream对象。<br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage *parentStorage, const char *name)](#oh_contentembed_storage_deleteentry) | 从OE文档父Storage对象删除指定名称的子Storage对象或子Stream对象。适用于需要清理或重组OE文档内部存储结构的场景，删除后数据不可恢复，请谨慎操作。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Storage *storage)](#oh_contentembed_storage_deleteallentry) | 从OE文档Storage对象删除所有条目，包括子Storage对象和子Stream对象。适用于需要清空Storage对象全部内容的场景，删除后数据不可恢复，请谨慎操作。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStorage(ContentEmbed_Storage *storage)](#oh_contentembed_destroystorage) | 销毁OE文档[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象实例并回收内存。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, unsigned char **buffer, size_t length, size_t *num)](#oh_contentembed_stream_read) | 从OE文档Stream对象的当前位置读取指定长度的数据到缓冲区。读取成功后，Stream对象的偏移量会按实际读取的字节数递增。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream, const unsigned char *data, size_t length, size_t *num)](#oh_contentembed_stream_write) | 将指定长度的数据从缓冲区写入OE文档Stream对象的当前位置。写入成功后，Stream对象的偏移量会按实际写入的字节数递增。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, size_t position)](#oh_contentembed_stream_seek) | 将OE文档Stream对象的当前读取位置设置为指定的偏移量。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, size_t position)](#oh_contentembed_stream_seek) | 将OE文档Stream对象的当前位置设置为指定的偏移量。适用于需要随机访问Stream中特定位置数据的场景，常与读取或写入操作配合使用。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *stream, size_t *position)](#oh_contentembed_stream_getposition) | 获取OE文档Stream对象的当前位置偏移量。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *stream, size_t *size)](#oh_contentembed_stream_getsize) | 获取OE文档Stream对象的总大小，单位为字节。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream)](#oh_contentembed_destroystream) | 销毁OE文档[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象实例并回收内存。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *document)](#oh_contentembed_destroydocument) | 销毁[ContentEmbed_Document](capi-contentembed-contentembed-document.md)对象实例并回收内存。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)](#oh_contentembed_storage_getoeid) | 获取OE文档Storage对象的标识符OEID。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)](#oh_contentembed_storage_setoeid) | 设置OE文档Storage对象的标识符OEID。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_StorageElements **storageElements)](#oh_contentembed_storageelements_create) | 创建并初始化[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。<br> 开发者可通过[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)](#oh_contentembed_storage_getoeid) | 通过OE文档Storage对象获取其所属文档的标识符OEID。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)](#oh_contentembed_storage_setoeid) | 通过OE文档Storage对象设置其所属文档的标识符OEID。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_StorageElements **storageElements)](#oh_contentembed_storageelements_create) | 创建并初始化[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。<br>开发者可通过[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_StorageElements *storageElements)](#oh_contentembed_storageelements_destroy) | 销毁[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例并回收其占用的内存。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_Storage *storage, ContentEmbed_StorageElements *storageElements)](#oh_contentembed_storage_getelements) | 获取OE文档Storage对象中的元素列表。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_Storage *storage, ContentEmbed_StorageElements *storageElements)](#oh_contentembed_storage_getelements) | 获取OE文档Storage对象中的元素列表。<br>需先调用[OH_ContentEmbed_StorageElements_Create](capi-content-embed-document-h.md#oh_contentembed_storageelements_create)创建[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。调用此方法将Storage对象中的元素列表填充到StorageElements实例后，使用[OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount)获取元素数量。调用[OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement)获取指定索引位置的元素。使用完毕后，调用[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmbed_StorageElements *storageElements, size_t *count)](#oh_contentembed_storageelements_getcount) | 获取[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例的元素数量。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentEmbed_StorageElements *storageElements, size_t index, ContentEmbed_StorageElement **storageElement)](#oh_contentembed_storageelements_getelement) | 获取[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例的指定索引位置的元素。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed_StorageElement *storageElement, char *name, size_t nameSize)](#oh_contentembed_storageelement_getname) | 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的名称。 |
@@ -78,7 +78,7 @@
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbed_StorageElement *element, uint64_t *mtime)](#oh_contentembed_storageelement_getmtime) | 获取[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例的最后修改时间戳，单位为毫秒。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmbed_StorageElement *storageElement, bool *isStorage)](#oh_contentembed_storageelement_isstorage) | 检查[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例是否为OE文档Storage对象。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbed_StorageElement *element, bool *isStream)](#oh_contentembed_storageelement_isstream) | 检查[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例是否为OE文档Stream对象。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcStorage, ContentEmbed_Storage *destStorage)](#oh_contentembed_storage_copyto) | 将源OE文档Storage对象中的所有子Storage对象和Stream对象复制到目标OE文档Storage对象。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcStorage, ContentEmbed_Storage *destStorage)](#oh_contentembed_storage_copyto) | 将源OE文档Storage对象中的所有子Storage对象和Stream对象复制到目标OE文档Storage对象。该操作为递归深拷贝，会复制所有子层级；若目标Storage中已存在同名条目将覆盖原有内容。 |
 
 ## 函数说明
 
@@ -90,7 +90,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, Co
 
 **描述**
 
-使用提供的标识符OEID创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br> 开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
+使用提供的标识符OEID创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -105,7 +105,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, Co
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_CreateDocumentByFile()
 
@@ -115,7 +115,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 
 **描述**
 
-从源文件创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br> 开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
+从源文件创建一个新的[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -123,8 +123,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *srcFilePath | 源文件路径。 |
-| size_t length | 源文件路径字符串的长度，不包括终止符。 |
+| const char *srcFilePath | 源文件路径。当isLinking为true时，不能传入沙箱路径，否则将返回CE_ERR_INVALID_LINKING_PATH错误。 |
+| size_t length | 源文件路径字符串的长度，不包括终止符，必须大于0。 |
 | bool isLinking | 是否以链接方式创建OE文档。true表示以链接方式创建OE文档，当服务端编辑OE文档时，源文件也会被修改；<br>                  false表示以嵌入方式创建OE文档，当客户端请求服务端编辑OE文档时，会先拷贝一份临时文件到客户端应用沙箱目录。 |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) **document | 输出参数。该指针指向新创建的OE文档对象。 |
 
@@ -132,7 +132,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFileP
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。<br>     CE_ERR_INVALID_LINKING_PATH：表示链接文件在应用沙箱中，无法创建链接。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。<br>     CE_ERR_INVALID_LINKING_PATH：表示链接文件在应用沙箱中，无法创建链接。 |
 
 ### OH_ContentEmbed_LoadDocumentFromFile()
 
@@ -142,7 +142,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFileP
 
 **描述**
 
-通过已存在的OE格式文件加载[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br> 开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
+通过已存在的OE格式文件加载[ContentEmbed_Document](capi-contentembed-contentembed-document.md)实例。<br>开发者可通过[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -150,15 +150,15 @@ ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFileP
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *srcFilePath | 源文件路径，指向要加载的OE格式文件。 |
-| size_t length | 源文件路径字符串的长度，不包括终止符。 |
+| const char *srcFilePath | 源文件路径，指向要加载的OE格式文件，不能为空字符串。 |
+| size_t length | 源文件路径字符串的长度，不包括终止符，必须大于0。 |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) **document | 输出参数。该指针指向新创建的OE文档对象。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Document_Read()
 
@@ -168,7 +168,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 
 **描述**
 
-从OE文档对象的指定偏移位置读取原始二进制数据到缓冲区。
+从OE文档对象的指定偏移位置读取原始二进制数据到缓冲区。适用于文档备份、数据传输或自定义解析等需要直接访问文档原始二进制内容的场景。
 
 **起始版本：** 24
 
@@ -177,7 +177,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 | 参数项 | 描述 |
 | -- | -- |
 | uint8_t *buffer | 输出参数。用于存储从OE文档读取的数据的缓冲区。 |
-| size_t length | 缓冲区的大小，单位为字节。 |
+| size_t length | 缓冲区的大小，单位为字节。当length为0时，返回成功且实际读取0字节。 |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | 指向OE文档对象指针。 |
 | size_t offset | 从OE文档开始读取的字节偏移位置，从0开始。 |
 | size_t *readSize | 输出参数。实际读取的数据长度，单位为字节。 |
@@ -186,7 +186,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Document_GetOEid()
 
@@ -221,7 +221,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Doc
 
 **描述**
 
-OE文档是否以链接方式创建。
+判断OE文档是否以链接方式创建。
 
 **起始版本：** 24
 
@@ -230,7 +230,7 @@ OE文档是否以链接方式创建。
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | 指向OE文档对象指针。 |
-| bool *isLinking | 输出参数。true表示以链接方式创建OE文档；false表示嵌入方式创建OE文档。 |
+| bool *isLinking | 输出参数。true表示以链接方式创建OE文档，false表示以非链接方式创建OE文档。 |
 
 **返回：**
 
@@ -246,7 +246,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentE
 
 **描述**
 
-从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。
+从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。适用于需要直接访问或操作被嵌入源文件的场景，如文件预览或二次编辑。
 
 **起始版本：** 24
 
@@ -271,7 +271,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 
 **描述**
 
-从OE文档对象获取根[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
+从OE文档对象获取根[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -286,7 +286,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Docu
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Document_Flush()
 
@@ -296,7 +296,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Flush(const ContentEmbed_Documen
 
 **描述**
 
-将OE文档中数据落盘至OE格式文件。
+将OE文档中数据落盘至OE格式文件。建议在对OE文档的Storage或Stream对象进行修改后调用此接口，以确保修改内容持久化保存；未调用可能导致修改数据丢失。
 
 **起始版本：** 24
 
@@ -320,7 +320,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 
 **描述**
 
-根据OE文档父Storage对象和名称创建子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
+根据OE文档父Storage对象和名称创建子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -336,7 +336,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败，可能是parentStorage无效或名称无效。<br>     CE_ERR_NULL_POINTER：表示返回空指针，可能是childStorage创建失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示存储操作失败，可能是磁盘空间不足。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败，可能是parentStorage无效或名称无效。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误，可能是childStorage创建失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_GetStorage()
 
@@ -346,7 +346,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 
 **描述**
 
-从OE文档父Storage对象和名称获取子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
+从OE文档父Storage对象和名称获取子[ContentEmbed_Storage](capi-contentembed-contentembed-storage.md)对象。<br>与[OH_ContentEmbed_Storage_CreateStorage](capi-content-embed-document-h.md#oh_contentembed_storage_createstorage)不同，本接口用于获取OE文档中已存在的Storage对象。<br>开发者可通过[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -362,7 +362,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_CreateStream()
 
@@ -372,7 +372,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 
 **描述**
 
-在OE文档父Storage对象和名称创建[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
+根据OE文档父Storage对象和名称创建[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -388,7 +388,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE格式文件流操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_GetStream()
 
@@ -398,7 +398,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 
 **描述**
 
-从OE文档父Storage对象和名称获取子[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br> 开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
+从OE文档父Storage对象和名称获取子[ContentEmbed_Stream](capi-contentembed-contentembed-stream.md)对象。<br>与[OH_ContentEmbed_Storage_CreateStream](capi-content-embed-document-h.md#oh_contentembed_storage_createstream)不同，本接口用于获取OE文档中已存在的子Stream对象。<br>开发者可通过[OH_ContentEmbed_DestroyStream](capi-content-embed-document-h.md#oh_contentembed_destroystream)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -414,7 +414,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE格式文件流操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_DeleteEntry()
 
@@ -424,7 +424,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage 
 
 **描述**
 
-从OE文档父Storage对象删除指定名称的子Storage对象或子Stream对象。
+从OE文档父Storage对象删除指定名称的子Storage对象或子Stream对象。适用于需要清理或重组OE文档内部存储结构的场景，删除后数据不可恢复，请谨慎操作。
 
 **起始版本：** 24
 
@@ -439,7 +439,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage 
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示OE格式文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_DeleteAllEntry()
 
@@ -449,7 +449,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Stora
 
 **描述**
 
-从OE文档Storage对象删除所有条目，包括子Storage对象和子Stream对象。
+从OE文档Storage对象删除所有条目，包括子Storage对象和子Stream对象。适用于需要清空Storage对象全部内容的场景，删除后数据不可恢复，请谨慎操作。
 
 **起始版本：** 24
 
@@ -463,7 +463,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteAllEntry(ContentEmbed_Stora
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_DestroyStorage()
 
@@ -507,14 +507,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Read(ContentEmbed_Stream *stream, 
 | -- | -- |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) *stream | 指向OE文档Stream对象指针。 |
 | unsigned char **buffer | 输出参数。指向存储读取数据的缓冲区的指针。函数内部将分配内存，调用者需要负责释放。 |
-| size_t length | 要读取的数据的最大字节数。 |
-| size_t *num | 输出参数。实际读取的数据项数量，单位为字节。 |
+| size_t length | 要读取的数据的最大字节数，必须大于0。 |
+| size_t *num | 输出参数。实际读取的数据长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示流操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Stream_Write()
 
@@ -534,14 +534,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Write(ContentEmbed_Stream *stream,
 | -- | -- |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) *stream | 指向OE文档Stream对象指针。 |
 | const unsigned char *data | 输入参数。指向要写入数据的缓冲区的指针。 |
-| size_t length | 要写入的数据的字节数。 |
-| size_t *num | 输出参数。实际写入的数据项数量，单位为字节。 |
+| size_t length | 要写入的数据的字节数。当length为0时，直接返回成功且写入0字节。 |
+| size_t *num | 输出参数。实际写入的数据长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示流操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Stream_Seek()
 
@@ -551,7 +551,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, 
 
 **描述**
 
-将OE文档Stream对象的当前读取位置设置为指定的偏移量。
+将OE文档Stream对象的当前位置设置为指定的偏移量。适用于需要随机访问Stream中特定位置数据的场景，常与读取或写入操作配合使用。
 
 **起始版本：** 24
 
@@ -560,13 +560,13 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_Seek(ContentEmbed_Stream *stream, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) *stream | 指向OE文档Stream对象指针。 |
-| size_t position | 要设置的Stream对象相对起始位置的偏移量，单位为字节，从0开始。 |
+| size_t position | 要设置的Stream对象相对起始位置的偏移量，单位为字节，从0开始。不能超过Stream对象[OH_ContentEmbed_Stream_GetSize](capi-content-embed-document-h.md#oh_contentembed_stream_getsize)返回的大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE格式文件流相关操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Stream_GetPosition()
 
@@ -591,7 +591,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetPosition(ContentEmbed_Stream *s
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE格式文件流相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Stream_GetSize()
 
@@ -616,7 +616,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *strea
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE格式文件流相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_STREAM_OPERATION_FAILED：表示OE文档Stream对象相关操作失败。<br>     CE_ERR_FILE_OPERATION_FAILED：表示文件操作失败。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_DestroyStream()
 
@@ -674,7 +674,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *sto
 
 **描述**
 
-获取OE文档Storage对象的标识符OEID。
+通过OE文档Storage对象获取其所属文档的标识符OEID。
 
 **起始版本：** 24
 
@@ -690,7 +690,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *sto
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_SetOEid()
 
@@ -700,7 +700,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *sto
 
 **描述**
 
-设置OE文档Storage对象的标识符OEID。
+通过OE文档Storage对象设置其所属文档的标识符OEID。
 
 **起始版本：** 24
 
@@ -716,7 +716,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *sto
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElements_Create()
 
@@ -726,7 +726,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_Stora
 
 **描述**
 
-创建并初始化[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。<br> 开发者可通过[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。
+创建并初始化[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。<br>开发者可通过[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -740,7 +740,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_Stora
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElements_Destroy()
 
@@ -764,7 +764,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_Stor
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_GetElements()
 
@@ -774,7 +774,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_St
 
 **描述**
 
-获取OE文档Storage对象中的元素列表。
+获取OE文档Storage对象中的元素列表。<br>需先调用[OH_ContentEmbed_StorageElements_Create](capi-content-embed-document-h.md#oh_contentembed_storageelements_create)创建[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例。调用此方法将Storage对象中的元素列表填充到StorageElements实例后，使用[OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount)获取元素数量。调用[OH_ContentEmbed_StorageElements_GetElement](capi-content-embed-document-h.md#oh_contentembed_storageelements_getelement)获取指定索引位置的元素。使用完毕后，调用[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -789,7 +789,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_St
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE格式文件目录相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElements_GetCount()
 
@@ -814,7 +814,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetCount(const ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElements_GetElement()
 
@@ -833,14 +833,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_GetElement(const ContentE
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md) *storageElements | 指向[ContentEmbed_StorageElements](capi-contentembed-contentembed-storageelements.md)实例指针。 |
-| size_t index | 要获取的元素的索引位置，从0开始计数。 |
+| size_t index | 要获取的元素的索引位置，从0开始计数。索引范围为[0, count-1]，其中count可通过[OH_ContentEmbed_StorageElements_GetCount](capi-content-embed-document-h.md#oh_contentembed_storageelements_getcount)获取。 |
 | [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) **storageElement | 输出参数。指向[ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md)实例指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElement_GetName()
 
@@ -866,7 +866,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetName(const ContentEmbed
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElement_GetCTime()
 
@@ -891,7 +891,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetCTime(const ContentEmbe
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElement_GetMTime()
 
@@ -916,7 +916,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_GetMTime(const ContentEmbe
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElement_IsStorage()
 
@@ -941,7 +941,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStorage(const ContentEmb
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElement_IsStream()
 
@@ -966,7 +966,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_StorageElement_IsStream(const ContentEmbe
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_CopyTo()
 
@@ -976,7 +976,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcS
 
 **描述**
 
-将源OE文档Storage对象中的所有子Storage对象和Stream对象复制到目标OE文档Storage对象。
+将源OE文档Storage对象中的所有子Storage对象和Stream对象复制到目标OE文档Storage对象。该操作为递归深拷贝，会复制所有子层级；若目标Storage中已存在同名条目将覆盖原有内容。
 
 **起始版本：** 24
 
@@ -991,6 +991,6 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcS
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示返回空指针。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示存储操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_NULL_POINTER：表示出现空指针错误。<br>     CE_ERR_STORAGE_OPERATION_FAILED：表示OE文档Storage对象相关操作失败。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 

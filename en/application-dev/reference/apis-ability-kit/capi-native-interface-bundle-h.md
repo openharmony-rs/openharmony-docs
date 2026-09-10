@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b1e39aedfe1dc3f164c93ee083af03b62dfe063f translatedAt=2026-09-03T09:00:43.840Z pushedAt=2026-09-05T10:47:30.130Z -->
 
 ## Overview
 
@@ -35,10 +36,10 @@ The file declares the APIs for obtaining the application information, including 
 
 | Name| Description|
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | Obtains the current application information, including the bundle name and fingerprint information.|
+| [OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()](#oh_nativebundle_getcurrentapplicationinfo) | Obtains the current application information, including the package name and application fingerprint information. After using this interface, to avoid memory leak, you need to manually release the pointer of the field under the object returned by the interface. |
 | [char* OH_NativeBundle_GetAppId()](#oh_nativebundle_getappid) | Obtains the appId of the current application. The appId is the unique identifier of an application and is determined by the bundle name and signature information of the application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [char* OH_NativeBundle_GetAppIdentifier()](#oh_nativebundle_getappidentifier)| Obtains the appIdentifier of the current application. The appIdentifier does not change throughout the application lifecycle, including version updates, certificate changes, public and private key changes, and application migration. After using this function, you must manually release the pointer returned to prevent memory leakage.|
-| [OH_NativeBundle_ElementName_OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | Obtains the mainElement information of the current application, including the bundle name, module name, and ability name. After using this function, you must manually release the pointer returned to prevent memory leakage.|
+| [OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()](#oh_nativebundle_getmainelementname) | Obtains the information about the mainElement of the current application entry, including the package name, module name, and component name. After using this interface, to avoid memory leak, you need to manually release the pointer of the field under the object returned by the interface. |
 | [char* OH_NativeBundle_GetCompatibleDeviceType()](#oh_nativebundle_getcompatibledevicetype) | Obtains the compatible device type of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
 | [bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)](#oh_nativebundle_isdebugmode) | Checks whether the current application is in debug mode.|
 | [OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)](#oh_nativebundle_getmodulemetadata) | Obtains the module metadata array of the current application. After using this function, you must manually release the pointer returned to prevent memory leakage.|
@@ -80,7 +81,7 @@ Obtains the appId of the current application. The appId is the unique identifier
 
 | Type| Description|
 | -- | -- |
-| char* | Pointer to a new string that indicates the appID. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
+| char* | Returns a newly created string used to indicate the appId information. If the returned object is NULL, it indicates that creation failed.<br> A possible cause of failure is that the application address space is full, causing space allocation failure. |
 
 ### OH_NativeBundle_GetAppIdentifier()
 
@@ -114,7 +115,7 @@ Obtains the mainElement information of the current application, including the bu
 **Returns**
 | Type| Description|
 | -- | -- |
-| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | Pointer to the OH_NativeBundle_ElementName object. If the returned object is NULL, the creation fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
+| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | Returns a newly created OH_NativeBundle_ElementName object. If any field in the returned object is NULL, it indicates that creation failed.<br> A possible cause of failure is that the application address space is full, causing space allocation failure. |
 
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
@@ -181,7 +182,7 @@ Obtains the module metadata array of the current application. After using this f
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | An array of module metadata. If the returned object is NULL, the retrieval fails.<br> The possible cause is that the application address space is full, causing space allocation to fail.|
+| [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)* | Returns the module metadata array. If the returned object is NULL, it indicates that the acquisition failed.<br> The possible cause of failure is that the application address space is full, causing space allocation failure. |
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 
@@ -203,7 +204,7 @@ Obtains a list of ability resource information that supports opening a specific 
 
 | Name| Description|
 | -- | -- |
-| char* fileType | File type to query. You are advised to use [UTD types](../../database/uniform-data-type-descriptors.md) such as 'general.plain-text' and 'general.image'. For compatibility, [MIME types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com) (for example, 'text/xml') and file name extensions (for example, '.png') are also currently accepted. For details about the mappings between file name extensions and file types, see [Prebuilt UTDs](../../database/uniform-data-type-list.md). '\*/\*' is not supported.|
+| char* fileType | Specific file type to query. It is recommended to use the [UTD type](../../database/uniform-data-type-descriptors.md), for example, "general.plain-text" and "general.image". Currently, it is also compatible with the [MIME type](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com) and file extension names, such as "text/xml" and ".png". For the mapping between file extensions and file types, see [UTD preset list](../../database/uniform-data-type-list.md). Passing "\*/\*" is not supported. |
 | [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | Double pointer to the list of ability resource information.|
 | size_t* size | Pointer to the size of the ability resource information list.|
 

@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=5cbda8a742fe4c75db3800c28ccfc8ffcd9cebc0 translatedAt=2026-06-30T03:38:48.362Z pushedAt=2026-07-01T07:48:07.698Z -->
+<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:52.547Z pushedAt=2026-07-24T03:40:38.415Z -->
 
 In a declarative UI programming framework, the primary responsibility of state management is to trigger a refresh of the components associated with a state variable when that variable changes. Therefore, the most common issue when using state variables is that components fail to refresh. This document addresses two aspects of non-refresh problems that you may encounter when working with state variables.
 
@@ -38,10 +38,17 @@ You can use the following tools to check whether the state variable has collecte
 
 When a value is assigned to a state variable, the state management framework checks whether the value of the state variable is changed. If the value is not changed, the state management framework directly returns the value and does not perform any operation. The simplest troubleshooting method is to print the values before and after the state variable is modified and check whether the values change. Example:
 
-```ts
+<!-- @[StateValueChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/StateValueChangePage.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[Sample_TroubleshootingStateManage]';
+
 @Entry
 @Component
-struct Index {
+struct StateValueChangePage {
   @State message: string = 'Hello World';
 
   build() {
@@ -49,9 +56,9 @@ struct Index {
       Text(this.message)
         .onClick(() => {
           // Log output: print this.message before and after assignment
-          console.info(`message set before ${this.message}`);
+          hilog.info(DOMAIN, TAG, '%{public}s', `message set before ${this.message}`);
           this.message = 'Welcome';
-          console.info(`message set after ${this.message}`);
+          hilog.info(DOMAIN, TAG, '%{public}s', `message set after ${this.message}`);
         })
     }
   }
@@ -79,16 +86,16 @@ In the following example, the value assigned to **this.inner.value** cannot trig
 
   - Use the Profiler tool of DevEco Studio to check whether any state variable changes are reported. For details, see [State Management: Profiler](../ui-inspector-profiler.md#state-management-profiler).
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 class Outer {
-  value: string = 'outer';
-  inner: Inner = new Inner();
+  public value: string = 'outer';
+  public inner: Inner = new Inner();
 }
 
 class Inner {
-  value: string = 'inner';
+  public value: string = 'inner';
 }
 
 @Entry
@@ -149,44 +156,50 @@ Note that not all class objects need to be decorated by \@Observed. By default, 
 
 Correct:
 
-```ts
+<!-- @[V1ObserveCorrect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ObservabilityPage.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[Sample_TroubleshootingStateManage]';
 
 class Outer {
-  value: string = 'outer';
-  inner: Inner = new Inner();
+  public value: string = 'outer';
+  public inner: Inner = new Inner();
 }
 
 @Observed
 class Inner {
-  value: string = 'inner';
+  public value: string = 'inner';
 }
 
 @Entry
 @Component
-struct Index {
+struct ObservabilityPage {
   @State outer: Outer = new Outer();
 
   build() {
     Column() {
       Text(`Index: outer value: ${this.outer.value}`)
-      Child({ inner: this.outer.inner })
+      InnerDisplay({ inner: this.outer.inner })
     }
   }
 }
 
 @Component
-struct Child {
+struct InnerDisplay {
   @ObjectLink @Watch('onChange') inner: Inner;
 
   aboutToAppear(): void {
     // Log output: inner is observed object
-    console.info(`inner is ${UIUtils.getTarget(this.inner) === this.inner ? 'not observed object' :
+    hilog.info(DOMAIN, TAG, '%{public}s', `inner is ${UIUtils.getTarget(this.inner) === this.inner ? 'not observed object' :
       'observed object'}`);
   }
 
   onChange() {
-    console.info(`inner property has been changed ${this.inner.value}`)
+    hilog.info(DOMAIN, TAG, '%{public}s', `inner property has been changed ${this.inner.value}`)
   }
 
   build() {
@@ -212,15 +225,15 @@ In the correct example:
 
 **State Management (V2)**
 
-In the state management V2, the observation of complex objects is classified into the following two types:
+In state management V2, the observation of complex objects is classified into the following two types:
 
 - Common:
 
-  Different from the state management V1, the framework does not create a proxy object for the instance when the state management V2 observes the common class. Therefore, the getTarget cannot be used to determine whether the instance is a proxy object. You can use the following methods:
+  Different from state management V1, the framework does not create a proxy object for the instance when state management V2 observes the common class. Therefore, **getTarget** cannot be used to determine whether the instance is a proxy object. You can use the following methods:
 
   - Check whether the attribute to be observed is decorated with [\@Trace](./arkts-new-observedV2-and-trace.md).
 
-  - Check whether the ArkUI State lane reports state variable changes. For details, see [State Management: Profiler](../ui-inspector-profiler.md#state-management-profiler).
+  - Check whether the ArkUI State lane reports state variable changes. For details, see [Inspector Debugging Capability](../ui-inspector-profiler.md#inspector-debugging-capability).
 
 - Built-in types:
 
@@ -228,14 +241,20 @@ In the state management V2, the observation of complex objects is classified int
 
 Specific examples are as follows:
 
-```ts
+<!-- @[V2Observe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ObservabilityV2Page.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[Sample_TroubleshootingStateManage]';
 
 @ObservedV2
 class Info {
-  @Trace value: string = 'info';
-  @Trace numberArr: number[] = [];
-  count: number = 0;
+  @Trace public value: string = 'info';
+  @Trace public numberArr: number[] = [];
+  public count: number = 0;
 
   constructor(val: string) {
     this.value = val;
@@ -245,12 +264,12 @@ class Info {
 
 @Entry
 @ComponentV2
-struct Index {
+struct ObservabilityV2Page {
   info: Info = new Info('info');
 
   aboutToAppear(): void {
     // Log output: this.info.numberArr is observed array
-    console.info(`this.info.numberArr is ${UIUtils.getTarget(this.info.numberArr) === this.info.numberArr ?
+    hilog.info(DOMAIN, TAG, '%{public}s', `this.info.numberArr is ${UIUtils.getTarget(this.info.numberArr) === this.info.numberArr ?
       'not observed array' :
       'observed array'}`);
   }
@@ -261,7 +280,8 @@ struct Index {
       Text(`Index: info numberArr length: ${this.info.numberArr.length}`)
       Text(`Index: info count: ${this.info.count}`)
 
-      Button('change info property').onClick(() => {
+      Button('change info property')
+        .onClick(() => {
         this.info.value = 'new info';
         this.info.numberArr.push(3);
         this.info.count++;
@@ -284,7 +304,7 @@ State management V1 supports the following synchronization modes:
 
   - Synchronization object (sync peer): for example, \@State, [\@Link](./arkts-link.md), [\@Provide](./arkts-provide-and-consume.md), and [\@Consume](./arkts-provide-and-consume.md). You can use the ArkUI Inspector of DevEco Studio to check whether there is a synchronization relationship between data sources and synchronization objects. For details, see [Inspector Debugging Capability](../ui-inspector-profiler.md#inspector-debugging-capability).
 
-  - Dependency on the update functions of their owner components: For example, @State notifies @Prop of changes, and @State notifies @ObjectLink of changes. You can use breakpoint debugging tools or the [getHash](../../reference/apis-arkts/js-apis-util.md#utilgethash12) API to determine whether the data source and the synchronized object refer to the same object instance (note that the hashcode is not fixed; it should be based on the actual value printed).
+  - Depending on the update function of its owning component: for example, @State notifying @Prop of changes, or @State notifying @ObjectLink of changes. You can use breakpoint debugging tools or [getHash](../../reference/apis-arkts/js-apis-util.md#utilgethash12) to determine whether the data source and the sync object are references to the same object (the hashcode is not fixed; the value printed shall prevail).
 
 **State Management (V2)**
 
@@ -292,13 +312,13 @@ State management V2 does not involve the concept of sync peer. The synchronizati
 
 In this case, the common scenario is that the data source is disconnected from the synchronization object because the data source is used together with the [ForEach](../rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md). Example:
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
 
 @Observed
 class Info {
-  value: string = 'info';
+  public value: string = 'info';
 }
 
 @Entry
@@ -358,37 +378,45 @@ struct Child {
 
 Correct:
 
-```ts
+<!-- @[ForEachSyncCorrect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ForEachSyncPage.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[Sample_TroubleshootingStateManage]';
 
 @Observed
 class Info {
-  value: string = 'info';
+  public value: string = 'info';
 }
 
 @Entry
 @Component
-struct Index {
+struct ForEachSyncPage {
   @State infos: Info[] = [new Info()];
 
   build() {
     Column() {
       // Step 1: Click the button.
       // Trigger the update of ForEach. ForEach compares the key values before and after the update and triggers the rebuilding of Child. @ObjectLink info points to the new Info instance.
-      Button('change first item value').onClick(() => {
+      Button('change first item value')
+        .onClick(() => {
         this.infos[0] = new Info();
       })
 
       // Step 2: Click the button. The @Watch function of @ObjectLink info is triggered.
       // Log information: this.infos[0] hashcode: 358024053
-      Button('change first item value').onClick(() => {
+      Button('change first item value')
+        .onClick(() => {
         this.infos[0].value += '1';
-        console.info(`this.infos[0] hashcode: ${util.getHash(this.infos[0])}`);
+        hilog.info(DOMAIN, TAG, '%{public}s', `this.infos[0] hashcode: ${util.getHash(this.infos[0])}`);
       })
 
       ForEach(this.infos, (item: Info) => {
-        Child({ info: item })
+        InfoItemDisplay({ info: item })
       }, (item: Info) => {
         // Random number key value
         return item.value + Math.random().toString();
@@ -398,19 +426,19 @@ struct Index {
 }
 
 @Component
-struct Child {
+struct InfoItemDisplay {
   @ObjectLink @Watch('onChange') info: Info;
 
   aboutToAppear(): void {
     // Log output:
     // Initial creation: info is observed object, hashcode: 2026693567
     // Click Button('change first item value') to trigger Child rebuilding: info is observed object, hashcode: 358024053
-    console.info(`info is ${UIUtils.getTarget(this.info) === this.info ? 'not observed object' :
+    hilog.info(DOMAIN, TAG, '%{public}s', `info is ${UIUtils.getTarget(this.info) === this.info ? 'not observed object' :
       'observed object'}, hashcode: ${util.getHash(this.info)}`);
   }
 
   onChange() {
-    console.info(`info property has been changed ${this.info.value}`);
+    hilog.info(DOMAIN, TAG, '%{public}s', `info property has been changed ${this.info.value}`);
   }
 
   build() {
@@ -432,7 +460,7 @@ This problem often occurs when the developer changes the state variable in the s
 
 You can encapsulate the method for obtaining component attributes to check whether the current component is re-rendered. Example:
 
-```ts
+``` TypeScript
 @Entry
 @Component
 struct Page {
@@ -491,42 +519,54 @@ Correct:
 
 You can use **setTimeout** to convert the value assignment of the state variable in the synchronous callback of the component to asynchronous execution. The following is an example:
 
-```ts
+<!-- @[RenderUpdateCorrect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/RenderUpdatePage.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = '[Sample_TroubleshootingStateManage]';
+const INIT_WIDTH: number = 100; // Image initial width value
+const CHANGED_WIDTH: number = 200; // Image width value after change
+const IMAGE_HEIGHT: number = 500; // Image fixed height value
+
 @Entry
 @Component
-struct Page {
-  @State widthValue: number = 100;
-  @State flag: boolean = true;
+struct RenderUpdatePage {
+  @State widthValue: number = INIT_WIDTH;
+  @State resourceFlag: boolean = true;
 
   getHeightValue(): number {
-    console.info('Image render');
-    return 500;
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Image render');
+    return IMAGE_HEIGHT;
   }
 
   build() {
     Column() {
-      Image(this.flag ? $r('app.media.startIcon') : $r('app.media.background'))
+      Image(this.resourceFlag ? $r('app.media.startIcon') : $r('app.media.background'))
         .width(this.widthValue)
         .height(this.getHeightValue())
         .backgroundColor(Color.Pink)
         .onComplete((event) => {
           setTimeout(() =>{
-            this.widthValue = 200;
-            console.info(`Image onComplete ${this.widthValue} load status: ${event?.loadingStatus}`);
+            this.widthValue = CHANGED_WIDTH;
+            hilog.info(DOMAIN, TAG, '%{public}s', `Image onComplete ${this.widthValue} load status: ${event?.loadingStatus}`);
           });
         })
 
-      Button('change resource').onClick(() => {
-        // Step 1: Change the flag so that the two Resource variables enter the cache of the Image component.
+      Button('change resource')
+        .onClick(() => {
+        // Step 1: Change resourceFlag so that both Resource variables enter the Image component's cache.
         // Step 3: Change the resource of the image again. In this case, onComplete is a synchronous callback.
         // Asynchronously change the value of widthValue to 200 in the callback of onComplete.
         // Update the image width to 200.
-        this.flag = !this.flag;
+        this.resourceFlag = !this.resourceFlag;
       })
 
-      Button('change widthValue').onClick(() => {
+      Button('change widthValue')
+        .onClick(() => {
         // Step 2: Change the image width to 100.
-        this.widthValue = 100;
+        this.widthValue = INIT_WIDTH;
       })
     }
     .height('100%')

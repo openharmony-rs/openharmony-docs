@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:51:55.741Z pushedAt=2026-07-17T06:14:50.788Z -->
+<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-19T04:17:28.889Z pushedAt=2026-08-19T07:14:23.219Z -->
 
 ```c
 typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
@@ -14,7 +14,7 @@ typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
 
 ## Overview
 
-Describes the metrics of a custom span, including layout information such as the width, height, and position. You can use this struct to set the width and height data of a custom span, enabling more precise text layout control and typesetting optimization. It is suitable for scenarios that require fine-grained control over text display effects, such as mixed text and image layout in rich text editors, emoji embedding in chat applications, and custom markers in document applications.
+Describes the metrics of a custom span, which is used to set layout information such as the width and height of a component. It applies to mixed text and image layout in scenarios such as rich text editors and chat applications.
 
 **Since**: 12
 

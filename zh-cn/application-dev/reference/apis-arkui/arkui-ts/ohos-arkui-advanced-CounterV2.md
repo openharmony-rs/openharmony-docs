@@ -12,9 +12,9 @@ CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值�
 
 > **说明：**
 >
-> - 如果CounterV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议为CounterV2设置通用属性和通用事件。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> - 该组件接口仅可在Stage模型下使用。
+> - 如果CounterV2设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议CounterV2设置通用属性和通用事件。
 
 **起始版本：** 26.0.0
 
@@ -281,12 +281,6 @@ CounterV2DateStyleOptions定义日期内联型CounterV2的属性和事件。
 | month        | number                              | 否  | 是  | 设置日期内联型初始月份。<br>默认值：1<br>取值范围：[1, 12]<br>超出取值范围按默认值处理。<br/>值为undefined时，按默认值处理。 |
 | day          | number                              | 否  | 是  | 设置日期内联型初始日。<br>默认值：1<br>取值范围：[1, 31]<br>必须为合法日期，如month为2月时，day传入30将视为异常值，按默认值处理。<br>超出取值范围按默认值处理。<br/>值为undefined时，按默认值处理。 |
 | onDateChange | [OnDateCounterV2ChangeCallback](#ondatecounterv2changecallback) | 否  | 是  | 当日期改变时，触发该回调。回调参数date表示当前显示的日期值。<br>使用场景：当需要在日期变化时执行自定义操作（如更新关联数据、触发业务逻辑、记录日志等）时传入此回调。<br>默认值：undefined，表示不触发该回调。<br>值为undefined时，按默认值处理。 |
-
-## 属性
-不支持[通用属性](ts-component-general-attributes.md)。
-
-## 事件
-不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 

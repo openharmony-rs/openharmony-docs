@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:35.048Z pushedAt=2026-06-25T06:57:19.555Z -->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:34:49.565Z pushedAt=2026-08-21T02:05:13.599Z -->
 
 **CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a **CameraManager** instance.
 
@@ -1054,9 +1054,9 @@ function isTorchLevelControlSupported(cameraManager: camera.CameraManager): bool
 }
 ```
 
-## SetTorchModeOnWithLevel
+## setTorchModeOnWithLevel
 
-SetTorchModeOnWithLevel(torchLevel: number): void
+setTorchModeOnWithLevel(torchLevel: number): void
 
 Sets the specified brightness level for the flashlight.
 
@@ -1064,7 +1064,7 @@ Sets the specified brightness level for the flashlight.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

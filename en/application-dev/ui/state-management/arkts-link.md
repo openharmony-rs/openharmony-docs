@@ -119,7 +119,7 @@ To understand the value initialization and update mechanism of the \@Link decora
     struct Child {
       // Incorrect usage 1: The type of the @Link decorated variable is different from that of the @State decorated variable.
       @Link test: Cousin;
-      // Incorrect usage 2: non-status variable of the data source
+      // Incorrect usage 2: non-state variable of the data source
       @Link testStr: string;
 
       build() {

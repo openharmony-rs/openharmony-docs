@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=cfa59f2ade5e74278a5dbd3dbd7bab536925f809 translatedAt=2026-08-24T08:06:26.318Z pushedAt=2026-08-29T03:49:52.291Z -->
 
-Implements a path operation iterator. You can read path operation instructions by traversing the iterator.
+Represents a path operation iterator. You can read the operation instructions of a path segment by segment by traversing the iterator. The iterator traverses the operation instructions in the path in sequence, facilitating fine-grained analysis and custom processing of the path.
 
 > **NOTE**
 >
@@ -37,7 +38,7 @@ Creates an iterator and binds it with a path.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| path | [Path](arkts-apis-graphics-drawing-Path.md) | Yes  | **Path** object bound to the iterator.                |
+| path | [Path](arkts-apis-graphics-drawing-Path.md) | Yes | Path object bound to the iterator. After binding, the iterator traverses the operation instructions in the path. You can use methods such as next, peek, and hasNext to read the operation type and coordinate data of the path. |
 
 **Example**
 
@@ -46,13 +47,14 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let path: drawing.Path = new drawing.Path();
 let iter: drawing.PathIterator = new drawing.PathIterator(path);
+console.info('PathIterator created successfully');
 ```
 
 ## next<sup>18+</sup>
 
-next(points: Array<common2D.Point>, offset?: number): PathIteratorVerb
+next(points: Array\<common2D.Point>, offset?: number): PathIteratorVerb
 
-Retrieves the next operation in this path and moves the iterator to that operation.
+Returns the next operation in the current path and advances the iterator to that operation, and writes the path coordinate point data into the passed-in points array based on the operation type. If you only need to preview the next operation without changing the iterator state, use [peek](#peek18). This method is usually used together with [hasNext](#hasnext18) to traverse the path.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -67,7 +69,7 @@ Retrieves the next operation in this path and moves the iterator to that operati
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) | Path operation type contained in the iterator.|
+| [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) | Operation type of the current path segment. |
 
 **Error codes**
 
@@ -85,15 +87,15 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 let path: drawing.Path = new drawing.Path();
 path.moveTo(10, 20);
 let iter: drawing.PathIterator = new drawing.PathIterator(path);
-let verbStr: Array<string> = ["MOVE", "LINE", "QUAD", "CONIC", "CUBIC", "CLOSE", "DONE"];
-let pointCount: Array<number> = [1,2,3,4,4,0,0];
+let verbStr: Array<string> = ['MOVE', 'LINE', 'QUAD', 'CONIC', 'CUBIC', 'CLOSE', 'DONE'];
+let pointCount: Array<number> = [1, 2, 3, 4, 4, 0, 0];
 let points: Array<common2D.Point> = [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}];
 let offset = 0;
 let verb = iter.next(points, offset);
-let outputMessage: string = "pathIteratorNext: ";
-outputMessage += "verb =" + verbStr[verb] + "; has " + pointCount[verb] + " pairs: ";
+let outputMessage: string = 'pathIteratorNext: ';
+outputMessage += 'verb =' + verbStr[verb] + '; has ' + pointCount[verb] + ' pairs: ';
 for (let j = 0; j < pointCount[verb] + offset; j++) {
-  outputMessage += "[" + points[j].x + ", " + points[j].y + "]";
+  outputMessage += '[' + points[j].x + ', ' + points[j].y + ']';
 }
 console.info(outputMessage);
 ```
@@ -102,7 +104,7 @@ console.info(outputMessage);
 
 peek(): PathIteratorVerb
 
-Retrieves the next operation in this path, without moving the iterator.
+Returns the next operation in the current path, with the iterator remaining at the original operation. Unlike next, peek does not advance the iterator position.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -110,7 +112,7 @@ Retrieves the next operation in this path, without moving the iterator.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) | Path operation type contained in the iterator.|
+| [PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18) | Operation type of the current path segment. |
 
 **Example**
 
@@ -126,7 +128,7 @@ let res = iter.peek();
 
 hasNext(): boolean
 
-Checks whether there is any next operation in the path operation iterator.
+Checks whether there is a next operation in the iterator. This method is usually used together with next() or peek() to traverse the path.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -134,7 +136,7 @@ Checks whether there is any next operation in the path operation iterator.
 
 | Type   | Description          |
 | ------- | -------------- |
-| boolean | Check result. **true** means yes; **false** otherwise.|
+| boolean | Whether the iterator has a next operation to traverse. true indicates that there are subsequent path operations to read, and false indicates that the end of the path has been reached and there are no more operations. |
 
 **Example**
 

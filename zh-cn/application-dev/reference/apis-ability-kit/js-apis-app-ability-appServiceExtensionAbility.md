@@ -1,7 +1,7 @@
 # @ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @zhang_hao_zheng-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
@@ -18,6 +18,8 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 
 - 当前仅支持PC/2in1设备。
 - 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请，申请方式参考[权限申请指导](../../security/AccessToken/declare-permissions.md)。
+- 为保障系统安全性和稳定性，防止AppServiceExtensionAbility滥用系统资源，系统对其能力进行管控，不支持[@ohos.window (窗口)](../apis-arkui/arkts-apis-window.md)模块的引用。
+- 当前不支持在分身应用中实现和使用AppServiceExtensionAbility。
 
 ## 生命周期
 
@@ -180,7 +182,7 @@ onConnect(want: Want): rpc.RemoteObject
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | RemoteObject对象，用于客户端和服务端通信。 |
+| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | RemoteObject对象，用于客户端和服务端通信。 |
 
 **示例：**
 
@@ -196,7 +198,8 @@ onConnect(want: Want): rpc.RemoteObject
       super(des);
     }
 
-    onConnect(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, options: rpc.MessageOption): boolean {
+      return true;
     }
   }
 

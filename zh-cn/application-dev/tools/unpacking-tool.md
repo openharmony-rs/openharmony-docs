@@ -229,7 +229,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | label                          | String  | 标识应用的label。  | NA          |
 | description                    | String  | 标识应用的描述信息。    | Stage模型新增。   |
 | minCompatibleVersionCode       | int     | 标识应用能够兼容的最低版本号。  | NA          |
-| distributedNotificationEnabled | boolean | 标记该应用是否开启分布式通知。true表示开启，false表示不开启。   | Stage模型新增。   |
+| distributedNotificationEnabled | boolean | 标识该应用是否开启分布式通知。true表示开启，false表示不开启。   | Stage模型新增。   |
 | bundleType                     | String  | 标识bundle的类型，取值：<br/>- app：应用。<br/>- atomicService：原子化服务。 <br/>- shared：应用间共享库。 | NA   |
 | compileSdkVersion              | String  | 标识编译该应用时使用的sdk版本。   | 仅限API10及以后的应用。   |
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
@@ -493,7 +493,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | name                | String                   | 标识forms的名称。                                              | NA        |
 | type                | String                   | 标签标识卡片的类型。                                           | NA        |
 | updateEnabled       | boolean                  | 标识该卡片是否支持定时刷新。true表示支持，false表示不支持。                                   | NA        |
-| scheduledUpdateTime | String                   | 标签标识卡片顶点刷新的时间，采用24小时计数，精确到分钟。       | NA        |
+| scheduledUpdateTime | String                   | 标签标识卡片定时刷新的时间，采用24小时计数，精确到分钟。       | NA        |
 | updateDuration      | int                      | 标识卡片定时刷新的更新频率，单位为30分钟，取值为30的倍数值。   | NA        |
 | supportDimensions   | List\<String>            | 标识卡片外观规格，取值为”1 * 2“，”2 * 2“，”2 * 4“，”4 * 4“。   | NA        |
 | defaultDimension    | String                   | 标识卡片默认外观规格，取值必须在supportDimensions配置的列表中。 | NA        |

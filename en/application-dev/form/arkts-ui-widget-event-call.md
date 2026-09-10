@@ -5,8 +5,9 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f66217a374191afa08e6502e3cd59173c85fd1ac translatedAt=2026-08-26T04:46:50.005Z pushedAt=2026-08-28T08:40:15.975Z -->
 
-There may be cases you want to provide in a widget access to features available in your application running in the foreground, for example, the play, pause, and stop buttons in a music application widget. This is where the **call** capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API comes in handy. This capability, when used in a widget, can start the specified UIAbility of the widget provider in the background. It also allows the widget to call the specified method of the application and transfer data so that the application, while in the background, can behave accordingly in response to touching of the buttons on the widget.
+Many apps want to leverage widget capabilities to achieve the same functionality as when the app is running in the foreground. For example, a music widget provides buttons such as play and pause. Tapping different buttons triggers different functions of the music app, thereby improving the user experience. Using the call capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API in a widget, you can pull the UIAbility specified by the widget provider app to the background. In addition, the call capability allows you to invoke a specified method of the app and pass data, so that the app can execute different functions through the buttons on the widget while running in the background.
 
 > **NOTE**
 >
@@ -15,14 +16,14 @@ There may be cases you want to provide in a widget access to features available 
 ## How to Develop
 1. Create a dynamic widget.
 
-    Create a dynamic widget named WidgetEventCall.
+    Create an ArkTS dynamic widget named **WidgetEventCall**.
 
 2. Implement page layout.
 
-    In this example, two buttons (A and B) are laid out on the widget page. When one button is touched, the **postCardAction** API is called to send a call event to the target UIAbility, with the method to be called defined in the event. Button A and button B correspond to the funA and funB methods, respectively. The funA method carries the **formID** parameter, and the funB method carries the **formID** and **num** parameters. Pass parameters as required during development. In **postCardAction**, the **method** parameter is mandatory and identifies the name of the method to be invoked, which should match the method listened for by the UIAbility in step 3. Other parameters are optional.
+    **Button A** and **Button B** correspond to calling the `funA` and `funB` methods, respectively. `funA` carries the `formId` parameter, and `funB` carries the `formId` and `num` parameters. Pass parameters based on your actual needs during development. The `method` parameter in `postCardAction` is mandatory and identifies the method name to be called. It must be consistent with the method listened for by the UIAbility in step 3. Other parameters are optional.
 
     <!-- @[widget_event_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets) -->
-    
+
     ``` TypeScript
     //src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets
     let storageEventCall = new LocalStorage();
@@ -87,11 +88,11 @@ There may be cases you want to provide in a widget access to features available 
     ```
 
 3. Create a UIAbility.
-    
-    Listen for the call event in the UIAbility, call the corresponding method based on the **method** parameter, and obtain the parameter by using [rpc.Parcelable](../reference/apis-ipc-kit/js-apis-rpc.md#parcelable9). The method in the UIAbility must be the same as that in step 2.
 
-    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->
-    
+    Listen for the call event in the UIAbility. Based on the method name in the `method` parameter, call the corresponding method and obtain parameters through [rpc.MessageSequence](../reference/apis-ipc-kit/js-apis-rpc.md#messagesequence9). The method listened for in the UIAbility must be consistent with the method called in step 2.
+
+    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) --> 
+
     ``` TypeScript
     //src/main/ets/WidgetEventCallEntryAbility/WidgetEventCallEntryAbility.ets
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -134,16 +135,16 @@ There may be cases you want to provide in a widget access to features available 
           // Listen for the method required by the call event and call the method.
           this.callee.on('funA', (data: rpc.MessageSequence) => {
             // Obtain all parameters passed in the call event.
-            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${JSON.stringify(data.readString())}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${data.readString()}`);
             return new MyParcelable(CONST_NUMBER_1, 'aaa');
           });
           this.callee.on('funB', (data: rpc.MessageSequence) => {
             // Obtain all parameters passed in the call event.
-            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${JSON.stringify(data.readString())}`);
+            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${data.readString()}`);
             return new MyParcelable(CONST_NUMBER_2, 'bbb');
           });
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. Cause: ${JSON.stringify(err as BusinessError)}`);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     
@@ -152,8 +153,8 @@ There may be cases you want to provide in a widget access to features available 
         try {
           this.callee.off('funA');
           this.callee.off('funB');
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. Cause: ${JSON.stringify(err as BusinessError)}`);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }
@@ -164,7 +165,7 @@ There may be cases you want to provide in a widget access to features available 
     To receive the call event, the widget provider must add the background running permission ([ohos.permission.KEEP_BACKGROUND_RUNNING](../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running)) to the **module.json5** file.
 
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
-    
+
     ``` JSON5
     //src/main/module.json5
     "requestPermissions": [
@@ -181,7 +182,7 @@ There may be cases you want to provide in a widget access to features available 
     Add the WidgetEventCallEntryAbility configuration information to the abilities array in the **module.json5** file.
 
     <!-- @[module_json5_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
-    
+
     ``` JSON5
     //src/main/module.json5
     "abilities": [

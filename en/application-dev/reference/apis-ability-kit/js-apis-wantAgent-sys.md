@@ -4,12 +4,13 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=acba00b4edca6db1d20615b479cf478c7de4ec19 translatedAt=2026-09-03T12:34:59.690Z pushedAt=2026-09-05T10:47:30.950Z -->
 
 <!--deprecated_code_no_check-->
 
-The WantAgent module provides APIs for creating and comparing WantAgent objects, and obtaining the user ID and bundle name of a WantAgent object.
+The WantAgent module provides the capabilities of creating a WantAgent instance, obtaining the user ID of an instance, obtaining the Want information, comparing WantAgent instances, and obtaining the bundle name.
 
 > **NOTE**
 > 
@@ -47,11 +48,11 @@ import WantAgent, { WantAgent as _WantAgent} from '@ohos.wantAgent';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
 
-// WantAgent object
+// wantAgent object
 let wantAgent: _WantAgent;
 
 // getWantAgent callback
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
     console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
         wantAgent = data;
@@ -123,7 +124,7 @@ Obtains the Want in a WantAgent object. This API uses a promise to return the re
 import WantAgent, { WantAgent as _WantAgent} from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-// WantAgent object
+// wantAgent object
 let wantAgent: _WantAgent;
 
 WantAgent.getWantAgent({

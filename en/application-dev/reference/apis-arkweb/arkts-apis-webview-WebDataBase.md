@@ -1,12 +1,63 @@
 # Class (WebDataBase)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yuzhouhang1-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=cb3bcbeb60045c709f23a1022353e0111d4ac4f4 translatedAt=2026-08-07T04:36:49.828Z pushedAt=2026-08-07T08:11:31.512Z -->
 
 Implements a **WebDataBase** object.
+
+## Overview
+
+WebDataBase is a database management class provided by the Web component, used to manage HTTP authentication credentials in the Web component, including saving, querying, checking, and deleting credentials. It is suitable for scenarios where automatic management of HTTP authentication credentials for web apps is required, helping to solve the problem of users frequently entering usernames and passwords, improving user experience and reducing repetitive operations.
+
+### Basic Concepts
+
+- **HTTP authentication credentials**: Authentication information containing a username and password, used to access protected HTTP resources.
+
+- **Host and realm**: The target host and realm to which the credentials apply.
+
+- **Synchronous method**: All methods provided by WebDataBase are synchronous methods, which return results immediately upon invocation.
+
+### Key Design
+
+WebDataBase adopts a static class design:
+
+1. Provides static methods for managing HTTP authentication credentials.
+
+2. Supports saving, querying, and deleting credentials.
+
+3. All methods require a Web component to be loaded before use.
+
+### Main Methods
+
+| Method Name | Description |
+|--------|------|
+| [getHttpAuthCredentials](#gethttpauthcredentials) | Retrieves HTTP authentication credentials for a given host and realm. Used to obtain saved credential information when re-login or user identity verification is required, for example, automatically filling in login forms after an app restarts, or accessing protected web pages that require authentication. |
+| [saveHttpAuthCredentials](#savehttpauthcredentials) | Saves HTTP authentication credentials for a given host and realm. Used to save credentials after a user successfully logs in for the first time, so that the next time the same website is accessed, automatic login can be performed or authentication information does not need to be re-entered, improving user experience. |
+| [existHttpAuthCredentials](#existhttpauthcredentials) | Checks whether any saved HTTP authentication credentials exist. Used to check whether credentials have been saved when an app starts up to decide whether to display the login page, or to determine whether re-authentication is required before a user accesses protected resources. |
+| [deleteHttpAuthCredentials](#deletehttpauthcredentials) | Clears all saved HTTP authentication credentials. Used to delete all credential information when a user logs out, switches accounts, or clears app data, protecting user privacy and account security. |
+
+### Example
+
+```ts
+import { webview } from '@kit.ArkWeb';
+
+// Save HTTP authentication credentials.
+webview.WebDataBase.saveHttpAuthCredentials('www.example.com', 'protected', 'username', 'password');
+
+// Retrieve credentials.
+let credentials = webview.WebDataBase.getHttpAuthCredentials('www.example.com', 'protected');
+
+// Check whether credentials exist.
+let exists = webview.WebDataBase.existHttpAuthCredentials();
+
+// Delete all credentials.
+webview.WebDataBase.deleteHttpAuthCredentials();
+```
 
 > **NOTE**
 >
@@ -36,8 +87,8 @@ Retrieves HTTP authentication credentials for a given host and realm. This API r
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| host   | string | Yes  | Host to which the HTTP authentication credential is applied.|
-| realm  | string | Yes  | Realm to which the HTTP authentication credential is applied.  |
+| host | string | Yes | Host address of the HTTP authentication credential app, in the format of 'www.example.com' or '192.168.1.1', excluding the protocol and port number. |
+| realm | string | Yes | Authentication realm of the HTTP authentication credential app, which indicates the scope or protection area for authentication under the same host. It is usually specified by the WWW-Authenticate header returned by the server. |
 
 **Return value**
 
@@ -64,17 +115,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  host: string = "www.spincast.org";
-  realm: string = "protected example";
-  username_password: string[] = [];
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
+  usernamePassword: string[] = [];
 
   build() {
     Column() {
       Button('getHttpAuthCredentials')
         .onClick(() => {
           try {
-            this.username_password = webview.WebDataBase.getHttpAuthCredentials(this.host, this.realm);
-            console.info('num: ' + this.username_password.length);
+            this.usernamePassword = webview.WebDataBase.getHttpAuthCredentials(this.host, this.realm);
+            console.info('num: ' + this.usernamePassword.length);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -97,10 +148,10 @@ Saves HTTP authentication credentials for a given host and realm. This API retur
 
 | Name  | Type  | Mandatory| Description                        |
 | -------- | ------ | ---- | ---------------------------- |
-| host     | string | Yes  | Host to which the HTTP authentication credential is applied.|
-| realm    | string | Yes  | Realm to which the HTTP authentication credential is applied.  |
-| username | string | Yes  | User name.                    |
-| password | string | Yes  | Password.                      |
+| host     | string | Yes  | Host of the HTTP authentication credential. Used to match the host corresponding to the credential. |
+| realm    | string | Yes  | Realm of the HTTP authentication credential. Used to match the authentication realm corresponding to the credential. |
+| username | string | Yes  | Username for HTTP authentication, which serves as the identity for accessing protected resources. |
+| password | string | Yes  | Password for HTTP authentication. Used with the username to complete authentication. |
 
 **Error codes**
 
@@ -121,15 +172,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  host: string = "www.spincast.org";
-  realm: string = "protected example";
+  host: string = 'www.spincast.org';
+  realm: string = 'protected example';
 
   build() {
     Column() {
       Button('saveHttpAuthCredentials')
         .onClick(() => {
           try {
-            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, "Stromgol", "Laroche");
+            webview.WebDataBase.saveHttpAuthCredentials(this.host, this.realm, 'Stromgol', 'Laroche');
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -171,7 +222,11 @@ struct WebComponent {
       Button('existHttpAuthCredentials')
         .onClick(() => {
           try {
-            let result = webview.WebDataBase.existHttpAuthCredentials();
+            if (webview.WebDataBase.existHttpAuthCredentials()) {
+                console.info('HTTP auth credentials exist.');
+              } else {
+                console.info('No HTTP auth credentials found.');
+              }
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }

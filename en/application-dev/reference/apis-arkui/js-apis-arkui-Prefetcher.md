@@ -1,10 +1,12 @@
 # @ohos.arkui.Prefetcher (Prefetching)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3cd7a88aa48788902d0133e2f69247ba0fd6a00d translatedAt=2026-07-29T09:23:45.369Z pushedAt=2026-08-03T08:00:58.762Z -->
 
 Used in conjunction with **LazyForEach**, the **Prefetcher** module provides content prefetching capabilities for container components such as **List**, **Grid**, **WaterFlow**, and **Swiper** during scrolling, to enhance the user browsing experience.
 
@@ -22,8 +24,8 @@ Used in conjunction with **LazyForEach**, the **Prefetcher** module provides con
 import { BasicPrefetcher, IDataSourcePrefetching, IPrefetcher } from '@kit.ArkUI';
 ```
 
-
 ## IPrefetcher
+
 Provides the prefetching capability. It works with **LazyForEach** to prefetch data items when users swipe through container components such as **List** and **Grid**, improving user browsing experience.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -31,6 +33,7 @@ Provides the prefetching capability. It works with **LazyForEach** to prefetch d
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### setDataSource
+
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
 Sets the prefetching-capable data source to bind to the **Prefetcher**.
@@ -60,6 +63,7 @@ class MyPrefetcher implements IPrefetcher {
 ```
 
 ### visibleAreaChanged
+
 visibleAreaChanged(minVisible: number, maxVisible: number): void;
 
 Called when the boundary of the visible area changes. It notifies **Prefetcher** of the current visible area range so that **Prefetcher** can determine whether to prefetch or cancel the prefetching of data items. Before calling this API, you need to set a data source using **setDataSource**. This API works with the **List**, **Grid**, **WaterFlow**, and **Swiper** components.
@@ -72,8 +76,8 @@ Called when the boundary of the visible area changes. It notifies **Prefetcher**
 
 | Name       | Type    | Mandatory| Description       |
 |------------|--------|----|-----------|
-| minVisible | number | Yes | Index of the first data item in the current visible area.|
-| maxVisible | number | Yes | Index of the last data item in the current visible area.|
+| minVisible | number | Yes  | Index of the first data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |
+| maxVisible | number | Yes  | Index of the last data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |
 
 ```typescript
 class MyPrefetcher implements IPrefetcher {
@@ -90,6 +94,7 @@ class MyPrefetcher implements IPrefetcher {
 ```
 
 ## BasicPrefetcher
+
 **BasicPrefetcher** is a fundamental implementation of **IPrefetcher**. It offers an intelligent data prefetching algorithm that decides the data items to prefetch based on real-time changes in the visible area on the screen and variations in the prefetch duration. It can also determine the prefetch requests to be canceled based on the user's scrolling actions.
 
 **BasicPrefetcher** objects do not support JSON serialization.
@@ -99,6 +104,7 @@ class MyPrefetcher implements IPrefetcher {
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor
+
 constructor(dataSource?: IDataSourcePrefetching);
 
 Passes the data source that supports prefetching and binds it to **Prefetcher** when an object is created. If no data source is passed during the creation, you can use **setDataSource** to set a data source after the creation.
@@ -114,6 +120,7 @@ Passes the data source that supports prefetching and binds it to **Prefetcher** 
 | dataSource | [IDataSourcePrefetching](#idatasourceprefetching) | No | Prefetching-capable data source. If this parameter is not specified, the value is empty by default. You can set a data source using **setDataSource** later.|
 
 ### setDataSource
+
 setDataSource(dataSource: IDataSourcePrefetching): void;
 
 Sets the prefetching-capable data source to bind to the **Prefetcher**.
@@ -129,6 +136,7 @@ Sets the prefetching-capable data source to bind to the **Prefetcher**.
 | dataSource | [IDataSourcePrefetching](#idatasourceprefetching) | Yes | Prefetching-capable data source.|
 
 ### visibleAreaChanged
+
 visibleAreaChanged(minVisible: number, maxVisible: number): void;
 
 Called when the boundary of the visible area changes. It notifies **Prefetcher** of the current visible area range so that **Prefetcher** can determine whether to prefetch or cancel the prefetching of data items. Before calling this API, ensure that the data source has been set using the constructor or the **setDataSource** API. This API works with the **List**, **Grid**, **WaterFlow**, and **Swiper** components.
@@ -141,8 +149,8 @@ Called when the boundary of the visible area changes. It notifies **Prefetcher**
 
 | Name       | Type    | Mandatory| Description       |
 |------------|--------|----|-----------|
-| minVisible | number | Yes | Index of the first data item in the current visible area.|
-| maxVisible | number | Yes | Index of the last data item in the current visible area.|
+| minVisible | number | Yes  | Index of the first data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |
+| maxVisible | number | Yes  | Index of the last data item in the current visible area. The value range is [0, totalCount() - 1]. An out-of-range value causes a calculation error. |
 
 ## IDataSourcePrefetching
 
@@ -153,6 +161,7 @@ Extends the [IDataSource](./arkui-ts/ts-rendering-control-lazyforeach.md#idataso
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### prefetch
+
 prefetch(index: number): Promise\<void\> \| void;
 
 Prefetches a specified data item from the dataset. This API can be either synchronous or asynchronous. When the visible area changes, the prefetching algorithm calls this API if it determines that the data item about to enter the visible area needs to be prefetched.
@@ -174,6 +183,7 @@ Prefetches a specified data item from the dataset. This API can be either synchr
 | Promise\<void\> \| void | Promise when this API is executed asynchronously; no return value when this API is executed synchronously. The promise only indicates that the operation is completed and contains no actual return content.|
 
 ### cancel
+
 cancel?(index: number): Promise\<void\> \| void;
 
 Cancels the prefetching of a specified data item from the dataset. This API can be either synchronous or asynchronous. This API is optional. If the data source does not implement this API, the prefetching cancellation operation will not be performed.

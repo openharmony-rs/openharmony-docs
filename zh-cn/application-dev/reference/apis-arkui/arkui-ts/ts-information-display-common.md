@@ -27,6 +27,6 @@
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | -- | -- | -------- |
-| radius | number \| [Resource](ts-types.md#resource) | 否 | 是 | 投影模糊半径。 <br>API version 10及以前，默认值：5<br>API version 11及以后，默认值：20<br>单位：vp <br>取值范围：(0, +∞)。<br>**说明：** <br>设置小于等于0的值时，按默认值显示。|
+| radius | number \| [Resource](ts-types.md#resource) | 否 | 是 | 投影模糊半径。 <br>API version 10，默认值：5<br>API version 11及以后，默认值：20<br>单位：vp <br>取值范围：(0, +∞)。<br>**说明：** <br>设置小于等于0的值时，按默认值显示。|
 | offsetX | number \| [Resource](ts-types.md#resource) | 否 | 是 | X轴偏移量。 <br>number类型取值范围不做限制。<br>默认值：5<br>单位：vp |
 | offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是 | Y轴偏移量。 <br>number类型取值范围不做限制。<br>默认值：5<br>单位：vp |

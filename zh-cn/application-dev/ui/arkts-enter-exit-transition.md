@@ -33,7 +33,7 @@
    ``` TypeScript
    // 出现时会是所有出现转场效果的叠加，消失时会是所有消失转场效果的叠加
    // 说明各个effect跟随的动画参数
-   private effect: object =
+   private effect: TransitionEffect =
      TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数
        // 通过combine方法，添加缩放转场效果，并指定了springMotion(0.6, 1.2)曲线
        .combine(TransitionEffect.scale({ x: 0, y: 0 }).animation({ curve: curves.springMotion(0.6, 1.2) }))

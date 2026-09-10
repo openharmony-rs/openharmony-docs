@@ -97,7 +97,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
@@ -169,7 +169,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400104  | Operation timeout. |
-| 5400106  | Unsupported format. Returned by promise.  |
+| 5400106  | Unsupported format. Returned by promise. |
 | 5400108  | Parameter check failed. Returned by promise. |
 | 5411012  | Http cleartext traffic is not permitted. |
 
@@ -265,7 +265,7 @@ async function fetchFramesByTimesDemo() {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
-        console.info(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
+        console.error(`fetchFramesByTimes callback failed, code: ${err.code} message: ${err.message}`);
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
@@ -389,7 +389,7 @@ fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | 是   | 回调函数。异步返回音视频元数据对象（AVMetadata）。|
+| callback | AsyncCallback\<[AVMetadata](arkts-apis-media-i.md#avmetadata11)>       | 是   | 回调函数。当获取媒体元数据成功，err为undefined，data为获取到的AVMetadata实例，否则为错误对象。|
 
 **错误码：**
 
@@ -477,7 +477,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
+| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未完成元数据获取操作，则返回操作超时错误码5400104。|
 
 **返回值：**
 
@@ -529,7 +529,7 @@ fetchAlbumCover(callback: AsyncCallback\<image.PixelMap>): void
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | 是   | 回调函数。异步返回专辑封面。 |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>    | 是   | 回调函数。当获取音频专辑封面成功，err为undefined，data为获取到的PixelMap实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -658,7 +658,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<void> | 异步方式释放资源release方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 

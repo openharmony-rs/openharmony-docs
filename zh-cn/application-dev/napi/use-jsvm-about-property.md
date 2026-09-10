@@ -32,7 +32,7 @@
 | OH_JSVM_SetNamedProperty   | 用给定的属性的名称为目标对象设置属性，此方法等效于调用OH_JSVM_SetProperty， 其中，通过utf8Name传入的字符串用于创建JSVM_Value。|
 | OH_JSVM_GetNamedProperty   | 用给定的属性的名称，检索目标对象的属性，此方法等效于调用OH_JSVM_GetProperty， 其中，通过utf8Name传入的字符串用于创建JSVM_Value。|
 | OH_JSVM_HasNamedProperty   | 用给定的属性的名称，查询目标对象是否有此属性，此方法等效于使用从作为utf8Name传入的字符串创建的JSVM_Value调用OH_JSVM_HasProperty。|
-| OH_JSVM_DefineProperties   | 批量的向给定对象中定义属性 |
+| OH_JSVM_DefineProperties   | 批量地向给定对象中定义属性 |
 | OH_JSVM_GetAllPropertyNames | 获取给定对象的所有可用属性名称，结果变量将存储一个包含所有可枚举属性名称的JavaScript数组 |
 
 ## 使用示例
@@ -78,7 +78,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 
 // 样例测试js
 const char *SRC_CALL_NATIVE = R"JS(
-    let obj = '{ data: 0, message: "hello world"}';
+    let obj = { data: 0, message: "hello world"};
     let script = getPropertyNames(obj);
 )JS";
 ```
@@ -209,7 +209,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
-    // 将参数传入OH_JSVM_HasProperty方法中，若接口调用成功则将结果转化为JSVM_Value类型抛出，否则抛出错误
+    // 将参数传入OH_JSVM_HasProperty方法中，若接口调用成功则将结果转换为JSVM_Value类型抛出，否则抛出错误
     bool result = false;
     JSVM_Status status = OH_JSVM_HasProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
@@ -218,7 +218,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_HasProperty success:%{public}d", result);
     }
-    // 若传入属性存在传入对象中，则输出true将结果转化为JSVM_Value类型抛出
+    // 若传入属性存在传入对象中，则输出true将结果转换为JSVM_Value类型抛出
     JSVM_Value returnResult = nullptr;
     OH_JSVM_GetBoolean(env, result, &returnResult);
     return returnResult;

@@ -1,10 +1,12 @@
 # @ohos.bundle.launcherBundleManager (launcherBundleManager Module) (System API)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-08-13T02:42:35.365Z pushedAt=2026-08-13T04:06:00.157Z -->
 
 The module providers APIs for launcher applications (applications with icons on the home screen) to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo.md).
 
@@ -19,7 +21,6 @@ The module providers APIs for launcher applications (applications with icons on 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
-
 
 ## launcherBundleManager.getLauncherAbilityInfo
 
@@ -38,8 +39,8 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained. Otherwise, **err** is an error object.|
+| userId     | number | Yes   | ID of the user to query, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the operation is successful, **err** is **undefined** and **data** is the [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) information contained in the bundle. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -93,7 +94,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
+| userId     | number | Yes   | ID of the user to query, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
@@ -150,8 +151,8 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | -------------- |
-| userId | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) objects obtained. Otherwise, **err** is an error object.|
+| userId | number | Yes | ID of the user to query, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | Yes | Callback used to return the result. If the function call is successful, **err** is **undefined** and **data** is the [LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md) information of all applications under the specified user. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -165,7 +166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not support. |
 | 17700004 | The specified user ID is not found.      |
 
-Example
+**Example**
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
@@ -186,6 +187,7 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+
 ## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
@@ -202,7 +204,7 @@ Obtains the [launcher ability information](js-apis-bundleManager-launcherAbility
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | -------------- |
-| userId | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).|
+| userId | number | Yes | ID of the user to query, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
@@ -261,7 +263,7 @@ No permission is required for obtaining the caller's own information.
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Yes| [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the array of [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) objects obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback). If the function call is successful, **err** is **undefined** and **data** is the [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) information of the specified applications under the current user. Otherwise, it is an error object. |
 
 **Error codes**
 
@@ -431,7 +433,7 @@ No permission is required for obtaining the caller's own information.
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | Yes  | Bundle name.|
-| userId     | number | Yes  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
+| userId     | number | Yes   | User ID, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).  |
 
 **Return value**
 
@@ -492,7 +494,7 @@ Starts an ability based on the specified [shortcut information](js-apis-bundleMa
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -555,15 +557,15 @@ The launched ability can obtain the launch reason through the **launchReasonMess
 
 | Name       | Type  | Mandatory| Description        |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundle-ShortcutInfo.md) | Yes  | Shortcut information of the application.|
-| startReason  | string   | Yes  | Reason for launching the shortcut. The value can be [AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#constants), indicating a home screen shortcut launch.|
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | Yes | Shortcut information of the app. |
+| startReason | string | Yes | Reason for starting the shortcut. The value range is [AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#constants), which indicates that the shortcut is started from the home screen. |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | No  | Parameters used to specify the window mode of the target ability.|
 
 **Return value**
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 

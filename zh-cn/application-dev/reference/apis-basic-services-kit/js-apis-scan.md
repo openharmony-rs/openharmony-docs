@@ -7,7 +7,7 @@
 <!--Tester:@baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-该模块提供扫描框架的 JS API，支持扫描仪的发现与管理、扫描执行、设备事件监听等能力，适用于应用需要集成扫描仪进行文档数字化采集与设备管理的场景，可帮助开发者实现扫描相关功能。
+该模块提供扫描框架的 JS API，支持扫描仪的发现与管理、扫描执行、设备事件监听等能力，适用于应用需要集成扫描仪进行文档数字化采集与设备管理的场景。
 
 > **说明：**
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -136,13 +136,13 @@ import { scan } from '@kit.BasicServicesKit';
 | optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
 | optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
 | optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型，决定有效的约束字段。当类型为SCAN_CONSTRAINT_NONE时无约束。 |
-| optionConstraintString | string[] | 否 | 是 | 选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。 |
-| optionConstraintInt | number[] | 否 | 是 | 选项整数约束，仅在optionConstraintType为SCAN_CONSTRAINT_WORD_LIST时有效。 |
+| optionConstraintString | string[] | 否 | 是 | 选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。默认为空数组。 |
+| optionConstraintInt | number[] | 否 | 是 | 选项整数约束，仅在optionConstraintType为SCAN_CONSTRAINT_WORD_LIST时有效。默认为空数组。 |
 | optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束，仅在optionConstraintType为SCAN_CONSTRAINT_RANGE时有效。 |
 
 ## ScannerOptionValue
 
-定义扫描仪选项值的接口。
+定义扫描仪选项值的接口。当对应选项的约束类型为SCAN_CONSTRAINT_STRING_LIST时，选项取值应为optionConstraintString集合中的字符串。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -163,7 +163,7 @@ import { scan } from '@kit.BasicServicesKit';
 **属性：**
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| progress | number | 否 | 否 | 当前进度百分比，范围从0~100。单位：百分比。 |
+| progress | number | 否 | 否 | 当前进度百分比，取值范围为0~100。 |
 | pictureFd | number | 否 | 否 | 扫描图片的文件描述符。 |
 | isFinal | boolean | 否 | 否 | 是否是本次扫描的最后一张图片。true表示是最后一张图片，false表示不是最后一张图片。 |
 
@@ -177,7 +177,7 @@ import { scan } from '@kit.BasicServicesKit';
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | 否 | 否 | 扫描仪的ID。 |
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式，用于指定发现扫描仪的方式。 |
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式，表示发现扫描仪的方式。 |
 | uniqueId | string | 否 | 否 | 扫描仪的唯一ID。 |
 | manufacturer | string | 否 | 否 | 扫描仪的制造商。 |
 | model | string | 否 | 否 | 扫描仪的型号。 |
@@ -193,7 +193,7 @@ import { scan } from '@kit.BasicServicesKit';
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | 否 | 否 | 扫描仪的ID。 |
-| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式，用于指定发现扫描仪的方式。 |
+| discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式，表示发现扫描仪的方式。 |
 | uniqueId | string | 否 | 否 | 扫描仪的唯一ID。 |
 | syncMode | [ScannerSyncMode](#scannersyncmode) | 否 | 否 | 同步模式，决定oldScannerId是否有效：当syncMode为"update"时oldScannerId有效，为"delete"时oldScannerId无效。 |
 | oldScannerId | string | 否 | 是 | 旧的扫描仪ID，仅在syncMode为"update"时有效，默认值为空字符串。 |
@@ -384,7 +384,7 @@ scan.closeScanner(scannerId).then(() => {
 
 getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 
-获取扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。应用可通过此方法获取参数索引（optionIndex），用于其它扫描方法的调用。
+获取扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。应用可通过此方法获取参数索引（optionIndex），用于setScannerParameter、setScanAutoOption和getScannerCurrentSetting等方法的调用。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -637,7 +637,7 @@ scan.cancelScan(scannerId).then(() => {
 
 getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 
-获取图片扫描进度。使用Promise异步回调。必须在开始扫描后才能调用此方法。
+获取图片扫描进度。使用Promise异步回调。必须在开始扫描之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 

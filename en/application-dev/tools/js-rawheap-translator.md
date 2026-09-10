@@ -1,4 +1,4 @@
-# js-rawheap-translator Tool
+# js-rawheap-translator
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: ArkCompiler-->

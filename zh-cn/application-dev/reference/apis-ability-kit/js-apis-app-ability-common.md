@@ -171,6 +171,9 @@ type PacMap = _PacMap
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
 | 类型 | 说明 |
 | --- | --- |
 | [_PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap) | 存储基础数据类型的容器。 |

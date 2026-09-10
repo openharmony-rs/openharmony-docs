@@ -1,13 +1,14 @@
 # Text Drawing
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2fe06c91e0a27d15dbfdba21fc4a3873ff6d81b0 translatedAt=2026-08-05T10:14:45.919Z pushedAt=2026-08-06T07:20:18.589Z -->
 
 The **svg** component can also be used to draw text.
-
 
 ## Text
 
@@ -20,14 +21,14 @@ The **svg** component can also be used to draw text.
 
 Set the following attributes to define text styles: **x** (X coordinate), **y** (Y coordinate), **dx** (x-axis offset of the text), **dy** (y-axis offset of the text), **fill** (font fill color), **stroke** (text border color), and **stroke-width** (text border width).
 
-
 ```html
 <!-- xxx.hml -->
 <div class="container">
   <svg>
-    <text x="200" y="300" font-size="80px" fill="blue" >Hello World</text>    <text x="200" y="300" dx="20" dy="80" font-size="80px" fill="blue" fill-opacity="0.5" stroke="red" stroke-width="2">Hello World</text>
+    <text x="200" y="300" font-size="80px" fill="blue" >Hello World</text>
+    <text x="200" y="300" dx="20" dy="80" font-size="80px" fill="blue" fill-opacity="0.5" stroke="red" stroke-width="2">Hello World</text>
     <text x="20" y="550" fill="#D2691E">
-      <tspan dx="40" fill="red" font-size="80" fill-opacity="0.4">Hello World </tspan>
+      <tspan dx="40" fill="red" font-size="80px" fill-opacity="0.4">Hello World </tspan>
     </text>
   </svg>
 </div>
@@ -35,11 +36,9 @@ Set the following attributes to define text styles: **x** (X coordinate), **y** 
 
 ![Text](figures/Text.png)
 
-
 ## Drawing Text Along the Path
 
-Set **textpath** to draw text along the path.
-
+The `textpath` text is drawn along the path specified by the `path` attribute.
 
 ```html
 <!-- xxx.hml -->

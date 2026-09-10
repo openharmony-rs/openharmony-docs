@@ -18,11 +18,14 @@ childProcessManager模块提供子进程管理能力，支持子进程创建和�
 
 ## 约束限制
 
-- 通过本模块中接口创建的子进程有如下限制：
-  - 创建的子进程不支持创建UI界面。  
-  - 创建的子进程不支持依赖Context的API调用（包括Context模块自身API及将Context实例作为入参的API）。  
-  - 创建的子进程内不支持再次创建子进程。  
+### 功能限制
+
+- 创建的子进程不支持创建UI界面。
+- 创建的子进程不支持依赖Context的API调用（包括Context模块自身API及将Context实例作为入参的API）。
+- 仅允许在主进程中创建子进程，子进程内不支持再次创建子进程。
   
+### 规格限制
+
 - 通过本模块中定义的创建子进程的接口和[native_child_process.h](capi-native-child-process-h.md)中定义的创建子进程的接口启动的子进程总数最大为512个（系统资源充足情况下），其中[startChildProcess](#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程不计入总数内。
 
 ## 导入模块
@@ -63,7 +66,7 @@ startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
-  | startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC。 |
+  | startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
 
 **返回值：**
 
@@ -78,14 +81,14 @@ startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
 
 ```ts
-// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess } from '@kit.AbilityKit';
 
@@ -98,7 +101,7 @@ export default class DemoProcess extends ChildProcess {
 
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startChildProcess方法启动子进程:
+// 使用childProcessManager.startChildProcess方法启动子进程：
 // entry/src/main/ets/tool/Tool.ets
 import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,7 +141,7 @@ startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallbac
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
-  | startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC。 |
+  | startMode | [StartMode](#startmode) | 是 | 子进程启动模式。SELF_FORK（值为0）：从App自身进程Fork子进程，继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出；APP_SPAWN_FORK（值为1）：从AppSpawn Fork子进程，不继承父进程资源，可使用Binder IPC和其他进程通信。 |
   | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
 
 **错误码**：
@@ -148,14 +151,14 @@ startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallbac
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
 
 ```ts
-// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在entry模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // entry/src/main/ets/process/DemoProcess.ets
 import { ChildProcess } from '@kit.AbilityKit';
 
@@ -168,7 +171,7 @@ export default class DemoProcess extends ChildProcess {
 
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startChildProcess方法启动子进程:
+// 使用childProcessManager.startChildProcess方法启动子进程：
 // entry/src/main/ets/tool/Tool.ets
 import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -227,16 +230,16 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. <br>适用版本：13+ |
 
 **示例：**
 
 子进程部分：
 
 ```ts
-// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类:
+// 在module1模块的src/main/ets/process下创建DemoProcess.ets子进程类：
 // module1/src/main/ets/process/DemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
 
@@ -254,7 +257,7 @@ export default class DemoProcess extends ChildProcess {
 
 <!--code_no_check-->
 ```ts
-// 使用childProcessManager.startArkChildProcess方法启动子进程:
+// 使用childProcessManager.startArkChildProcess方法启动子进程：
 // module1/src/main/ets/tool/Tool.ets
 import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -287,13 +290,13 @@ struct Index {
               };
               childProcessManager.startArkChildProcess("module1/ets/process/DemoProcess.ets", args, options)
                 .then((pid) => {
-                  console.info(`startChildProcess success, pid: ${pid}`);
+                  console.info(`startArkChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
             } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
             }
           });
       }
@@ -345,13 +348,13 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 16000050 | Internal error. Possible causes: 1. System internal exception; 2. Resource allocation failed. |
+| 16000050 | Internal error. |
 | 16000061  | Operation not supported. |
-| 16000062  | The number of child processes exceeds the upper limit. Please reduce the number of child processes and try again. |
+| 16000062  | The number of child processes exceeds the upper limit. |
 
 **示例：**
 
-子进程部分，详见[Native子进程开发指导（C/C++）- 创建支持参数传递的Native子进程](../../application-models/capi-nativechildprocess-development-guideline.md#创建支持参数传递的native子进程)：
+子进程部分，详见[子进程开发指导（ArkTS）- 创建支持参数传递的Native子进程](../../application-models/arkts-child-process-development-guideline.md#创建支持参数传递的native子进程)：
 
 ```c++
 #include <AbilityKit/native_child_process.h>
@@ -365,7 +368,7 @@ extern "C" {
  */
 void Main(NativeChildProcess_Args args)
 {
-    // 获取传入的entryPrams
+    // 获取传入的entryParams
     char *entryParams = args.entryParams;
     // 获取传入的fd列表，对应ChildProcessArgs中的args.fds
     NativeChildProcess_Fd *current = args.fdList.head;
@@ -383,7 +386,7 @@ void Main(NativeChildProcess_Args args)
 
 ```ts
 // 主进程：
-// 使用childProcessManager.startNativeChildProcess方法启动子进程:
+// 使用childProcessManager.startNativeChildProcess方法启动子进程：
 import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -413,13 +416,13 @@ struct Index {
               };
               childProcessManager.startNativeChildProcess("libentry.so:Main", args, options)
                 .then((pid) => {
-                  console.info(`startChildProcess success, pid: ${pid}`);
+                  console.info(`startNativeChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startNativeChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
             } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+              console.error(`startNativeChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
             }
           });
       }
@@ -526,4 +529,51 @@ struct Index {
     .height('100%')
   }
 }
+```
+
+## childProcessManager.getChildProcessInfos
+
+getChildProcessInfos(): Promise&lt;Array&lt;ChildProcessInformation&gt;&gt;
+
+获取当前应用的所有子进程信息，使用Promise异步回调。包括通过以下方式启动的子进程：
+- [OH_Ability_CreateNativeChildProcess](capi-native-child-process-h.md#oh_ability_createnativechildprocess) / [OH_Ability_CreateNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)
+- [OH_Ability_StartNativeChildProcess](capi-native-child-process-h.md#oh_ability_startnativechildprocess) / [OH_Ability_StartNativeChildProcessWithConfigs](capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)
+- [childProcessManager.startChildProcess](#childprocessmanagerstartchildprocess)（非SELF_FORK模式）
+- [childProcessManager.startArkChildProcess](#childprocessmanagerstartarkchildprocess12)
+- [childProcessManager.startNativeChildProcess](#childprocessmanagerstartnativechildprocess13)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;Array&lt;[ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)&gt;&gt; | Promise对象，返回当前应用的子进程信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | 连接系统服务失败。 |
+
+**示例：**
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+childProcessManager.getChildProcessInfos().then((data) => {
+  console.info(`getChildProcessInfos success, count: ${data.length}`);
+  for (let info of data) {
+    console.info(`pid: ${info.pid}, parentPid: ${info.parentPid}, processName: ${info.processName}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`getChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
+});
 ```

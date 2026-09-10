@@ -27,6 +27,6 @@ typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 | 名称 | 描述 |
 | -- | -- |
 | [Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes)* hidAbsAxes | 指向绝对坐标属性编码数组首元素的指针。需与length配合使用，指针需有效且不为 NULL。 |
-| uint16_t length | 数组的有效长度，表示hidAbsAxes指针指向的有效元素个数。取值范围：0~65535。 |
+| uint16_t length | 数组的有效长度，表示hidAbsAxes指针指向的有效元素个数。取值范围：[0, 65535]。 |
 
 

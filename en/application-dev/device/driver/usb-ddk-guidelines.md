@@ -1,11 +1,12 @@
 # USB DDK Development
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:33.659Z pushedAt=2026-06-25T06:57:21.036Z -->
+<!-- md-trans-meta sourceCommit=09d00a95d1d887d97b87c4ee8f0a2a7b0621646c translatedAt=2026-08-20T06:24:53.558Z pushedAt=2026-08-20T13:07:24.877Z -->
 
 ## Overview
 
@@ -23,11 +24,11 @@ Before you get started, understand the following concepts:
 
 - **DDK**
 
-  DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB serial port devices based on the peripheral framework.
+  DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB devices based on the peripheral framework.
 
 ### Implementation Principles
 
-A non-standard peripheral application obtains the USB device ID by using the peripheral management service, and delivers the ID and the action to the USB driver application through RPC. The USB driver application can obtain or set the device descriptor and initiate a control transfer or interrupt transfer request by calling the UsbDdk API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
+A non-standard peripheral application obtains the USB device ID by using the peripheral management service, and delivers the ID and the action to the USB driver application through RPC. The USB driver application can obtain the device descriptor and configuration descriptor and initiate a control transfer or interrupt transfer request by calling the UsbDdk API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
 
 **Figure 1** Principle of invoking the UsbDdk
 
@@ -63,8 +64,8 @@ Before you get started, make necessary preparations by following instructions in
 | OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup \*setup, uint32_t timeout, const uint8_t \*data, uint32_t dataLen) | Sends a control write transfer request. This API returns the result synchronously.|
 | OH_Usb_ReleaseInterface(uint64_t interfaceHandle) | Releases a USB interface.|
 | OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap) | Sends a pipe request. This API returns the result synchronously. It applies to interrupt transfer and bulk transfer.|
-| OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap) | Create a buffer. To avoid resource leakage, use **OH_Usb_DestroyDeviceMemMap()** to destroy a buffer after use.|
-| OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | Destroy a buffer. To avoid resource leakage, destroy a buffer in time after use.|
+| OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap) | Creates a buffer. To avoid resource leakage, use **OH_Usb_DestroyDeviceMemMap()** to destroy a buffer after use.|
+| OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap) | Destroys a buffer. To avoid resource leakage, destroy a buffer in time after use.|
 | OH_Usb_GetDevices(struct Usb_DeviceArray *devices) | Obtains the USB device ID list. Ensure that the input pointer is valid and the number of devices does not exceed 128. To prevent resource leakage, release the member memory after usage. Besides, make sure that the obtained USB device ID has been filtered by **vid** in the driver configuration information.|
 
 For details about the APIs, see [UsbDdk](../../reference/apis-driverdevelopment-kit/capi-usbddk.md).
@@ -76,11 +77,13 @@ To develop a USB driver using the UsbDdk, perform the following steps:
 **Adding Dynamic Link Libraries**
 
 Add the following libraries to **CMakeLists.txt**.
+
 ```txt
 libusb_ndk.z.so
 ```
 
 **Including Header Files**
+
 ```c++
 #include <usb/usb_ddk_api.h>
 #include <usb/usb_ddk_types.h>
@@ -124,7 +127,7 @@ libusb_ndk.z.so
        OH_LOG_ERROR(LOG_APP, "GetInterfaceAndEndpoint failed");
        return false;
    }
-   // Release the configuration descriptor to prevent memory leakage.
+   // Release the configuration descriptor to prevent memory leaks.
    OH_Usb_FreeConfigDescriptor(config);
    g_dataEp = endpoint;
    g_maxPktSize = maxPktSize;
@@ -173,7 +176,6 @@ libusb_ndk.z.so
     auto ret = OH_Usb_SendControlReadRequest(g_interfaceHandle, &strDescSetup, UINT32_MAX, strDesc, &len);
     ```
 
-
     <!-- @[driver_usb_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
 
     ``` C++
@@ -201,7 +203,6 @@ libusb_ndk.z.so
     // Create a buffer for storing data.
     int32_t ret = OH_Usb_CreateDeviceMemMap(g_devHandle, bufferLen, &devMmap);
     ```
-
 
     <!-- @[driver_usb_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/hello.cpp) -->  
 

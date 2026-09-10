@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:11:32.902Z pushedAt=2026-09-05T10:47:30.360Z -->
 
-**CompletionHandlerForAtomicService** is an optional parameter of [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) and is used to handle the result of an atomic service launch request.
+CompletionHandlerForAtomicService, as an optional parameter of [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md), is used to receive the result of opening an atomic service request. Through this callback function, developers can obtain the execution status and related information of opening the atomic service, so as to perform subsequent operations on success and error handling on failure.
 
 
 > **NOTE**
@@ -91,13 +92,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let completionHandler: CompletionHandlerForAtomicService = {
+      // Define the callback function for a successful atomic service request.
       onAtomicServiceRequestSuccess(appId: string) {
         hilog.info(0x0000, 'testTag', `appId:${appId}`);
       },
+      // Define the callback function for a failed atomic service request.
       onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
         hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
       }
     };
+    // Create an atomic service object.
     let options: AtomicServiceOptions = {
       completionHandlerForAtomicService: completionHandler
     };

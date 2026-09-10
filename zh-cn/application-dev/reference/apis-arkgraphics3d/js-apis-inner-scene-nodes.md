@@ -59,8 +59,8 @@ function layerMask(): void {
           let enabled: boolean = node.layerMask.getEnabled(1);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -96,8 +96,8 @@ function layerMask(): void {
           node.layerMask.setEnabled(1, true);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -150,8 +150,8 @@ function append(): void {
         result.root?.children.get(0)?.children.append(node);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -187,8 +187,8 @@ function insertAfter(): void {
         result.root?.children.get(0)?.children.insertAfter(node, null);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -223,8 +223,8 @@ function remove(): void {
         result.root?.children.remove(node);
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -260,11 +260,13 @@ function get(): void {
   scene.then(async (result: Scene) => {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode/Scene/");
-      // 从children中get 0号节点
-      result.root?.children.get(0)?.children.insertAfter(node, null);
+      if (node) {
+        // 从children中get 0号节点
+        result.root?.children.get(0)?.children.insertAfter(node, null);
+      }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -293,8 +295,8 @@ function clear(): void {
         node.children.clear();
       }
     }
-  }).catch((error: Error) => {
-    console.error('Scene load failed:', error);
+  }).catch((err: Error) => {
+    console.error(`Failed to load scene. Message: ${err.message}`);
   });
 }
 ```
@@ -336,7 +338,7 @@ function count(): void {
 
 ## Node
 
-3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
+3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource)。
 
 ### 属性
 
@@ -449,7 +451,7 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | 是 | 否 | 光源类型。 |
 | color | [Color](js-apis-inner-scene-types.md#color) | 否 | 否 | 颜色。 |
-| intensity | number | 否 | 否 | 光照密度，单位为坎德拉（cd），取值范围是大于0的实数。 |
+| intensity | number | 否 | 否 | 光照强度，单位为坎德拉（cd），取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
@@ -515,7 +517,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | 返回命中的结果数组（按距离从近到远排序），若无命中则返回空数组。 |
+| Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | Promise对象，返回命中的结果数组（按距离从近到远排序），若无命中则返回空数组。 |
 
 **示例：**
 
@@ -623,7 +625,7 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
         y: m2.x - m0.z,
         z: m0.y - m1.x,
         w: t
-      }
+      };
     }
   }
   node.position = eye;

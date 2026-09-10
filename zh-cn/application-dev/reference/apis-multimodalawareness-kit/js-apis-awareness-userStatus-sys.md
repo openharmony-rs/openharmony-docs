@@ -8,7 +8,7 @@
 
 本模块提供用户状态感知能力，包括用户手势识别、人脸位姿识别、手眼协同检测、用户吹气状态检测、用户情绪检测、用户环境音检测等功能。适用于需要感知用户状态来优化交互体验的场景，能够帮助应用提供更自然、更个性化的用户体验。模块采用订阅/回调机制，通过底层传感器数据采集、特征提取和状态判断三个阶段实现用户状态检测，开发者可根据业务需求订阅相应的检测功能。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 > **说明：**
 >
@@ -135,7 +135,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | feature | [UserStatusFeature](#userstatusfeature) | 是 | 否 | 表示用户状态检测功能类型。 |
-| status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。该字符串取值已表明响应的检测状态，字符串最大长度是64。 |
+| status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。该字符串取值已表明相应的检测状态，字符串最大长度是64。 |
 | result | number | 是 | 否 | 表示用户状态检测结果。0表示成功，非0表示失败。 |
 | errCode | number | 是 | 否 | 表示业务错误码。0表示成功，非0表示失败。 |
 
@@ -151,7 +151,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                 |
 | --- | --- | --- | --- |--------------------------------------------------------------------|
-| facePosition | number[] | 是 | 是 | 表示人脸相对于屏幕的坐标位置。数组长度为8，分别表示上下左右四个顶点的x、y坐标，归一化坐标系的取值范围是[0,640]。 |
+| facePosition | number[] | 是 | 是 | 表示人脸相对于屏幕的坐标位置。数组长度为8，分别表示上下左右四个顶点的x、y坐标，归一化坐标系的取值范围是[0,640]。单位：px |
 | strengthLevel | number | 是 | 是 | 表示吹气力度。取值范围[1,12]。                                                 |
 | blowDirection | number | 是 | 是 | 表示吹气方向。取值范围[0,2]。0：未吹气，1：底部麦克风，2：顶部麦克风。                            |
 | emotion | number | 是 | 是 | 表示用户情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。           |
@@ -172,7 +172,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明                                                          |
 | --- | --- | --- | --- |-------------------------------------------------------------|
 | emotionRealTime | number | 是 | 是 | 表示用户实时情绪级别。取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。  |
-| confidence | number | 是 | 是 | 表示用户情绪置信度。取值范围[0,100]                                  |
+| confidence | number | 是 | 是 | 表示用户情绪置信度百分比。取值范围[0,100]。                                  |
 | isRealTime | boolean | 是 | 是 | 表示情绪数据是否为实时数据。取值范围[true,false]。                             |
 | emotionNonRealTime | number[] | 是 | 是 | 表示用户非实时情绪级别。数组包含一段时间内采集的多个情绪值，每个元素取值范围[0,5]。0：非常愉悦，1：有点愉悦，2：平静，3：有点不愉悦，4：大怒，5：大哭。 |
 | gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。数组长度为3，分别表示x、y、z三个方向的加速度分量，单位：m/s²。                                    |
@@ -209,7 +209,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | visualAngle | number[] | 是 | 是 | 表示用户看屏幕的视角。取值范围[0,90]。单位：deg。                                            |
 | angularVelocity | number[] | 是 | 是 | 表示当前状态下设备的角速度。数组长度为3，分别表示绕x、y、z三个轴旋转的角速度分量，单位：rad/s。                     |
 | gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。数组长度为3，分别表示x、y、z三个方向的加速度分量，单位：m/s²。                      |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。二维数组，外层表示多个时间点的采样，内层为长度3的数组，分别表示x、y、z三个方向的加速度分量，单单位：m/s²。 |
+| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。二维数组，外层表示多个点位的采样，内层为长度3的数组，分别表示x、y、z三个方向的加速度分量，单位：m/s²。 |
 | azimuth | number[] | 是 | 是 | 表示当前状态下设备的方位角。数组长度为3，分别表示偏航角（绕y轴）、俯仰角（绕x轴）和翻滚角（绕z轴），取值范围[0,360]。单位：deg。  |
 | faceNum | number | 是 | 是 | 表示检测到的人脸数量。取值范围[0,3]。                                                    |
 
@@ -230,7 +230,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | motionGesture | number | 是 | 是 | 表示用户动态手势类型。取值范围[0,3]。0：上翻，1：下翻，2：抓屏，3：释放。                         |
 | handType | number | 是 | 是 | 表示用户静态手势类型。取值范围[0,3]。0：掌型，1：拳型，2：剪刀，3：比心。                         |
 | directionAngle | number[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。数组包含手势在多个维度的角度值，每个元素取值范围[0,90]，单位：deg。             |
-| gestureSpeed | number[] | 是 | 是 | 表示手势速度。数组长度为2，分别表示速度分量和默认值0，单位：帧/秒。                           |
+| gestureSpeed | number[] | 是 | 是 | 表示手势速度。数组长度为2，第一个元素表示速度值，第二个元素为保留位（固定为0），单位：帧/秒。                           |
 
 ## UserFaceAngleData
 
@@ -264,7 +264,7 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 | --- | --- | --- | --- |
 | featureId | [UserStatusFeature](#userstatusfeature) | 是 | 表示用户状态检测功能类型。 |
 | callback | Callback<[UserStatusData](#userstatusdata)> | 是 | 回调函数，用于接收用户状态数据。当订阅的用户状态数据更新时会被调用。 |
-| deviceInfo | [DeviceInfo](#deviceinfo)[] | 否 | 表示要开启用户状态监控的设备列表。当featureId为HAND_GAZE_COORDINATION时需要输入有效且非空的deviceInfo信息；其他featureId可省略此参数。如果输入空、undefined或null，则认为没有传入实际值。 |
+| deviceInfo | [DeviceInfo](#deviceinfo)[] | 否 | 表示要开启用户状态监控的设备列表。当featureId为HAND_GAZE_COORDINATION时需要输入有效且非空的deviceInfo信息，否则影响功能使用；其他featureId可省略此参数。如果输入空、undefined或null，则认为没有传入实际值。 |
 
 **返回值**：
 
@@ -344,7 +344,6 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 import { BusinessError } from '@kit.BasicServicesKit';
 import { userStatus } from '@kit.MultimodalAwarenessKit';
 
-const TAG = 'UserStatusDemo';
 try {
   let mistouchFeatureId = userStatus.UserStatusFeature.ANTI_MISTOUCH;
   userStatus.unsubscribe(mistouchFeatureId);
@@ -358,7 +357,7 @@ try {
 
 configure(featureId: UserStatusFeature, detail: string): number
 
-配置功能参数。调用成功后，将更新指定功能的配置参数，影响后续该功能的检测行为。配置参数会修改检测算法的内部参数，如检测灵敏度、采样频率、启用的检测项等，从而改变检测性能和结果。建议在subscribe()之前调用configure()配置功能参数，确保配置在订阅时生效。configure()的配置参数会影响subscribe()订阅后接收到的用户状态数据的检测行为和精度。对于需要特定配置的功能（如USER_MOOD的实时/非实时模式），必须先configure()再subscribe()。
+配置功能参数。调用成功后，将更新指定功能的配置参数，影响后续该功能的检测行为，如检测灵敏度、采样频率、启用的检测项等。建议在subscribe()之前调用configure()配置功能参数，确保配置在订阅时生效。对于需要特定配置的功能（如USER_MOOD的实时/非实时模式），建议先configure()再subscribe()。
 
 **起始版本**：26.0.0
 
@@ -443,7 +442,7 @@ queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capabilities | [UserStatusAtomicCap](#userstatusatomiccap)[] | 是 | 返回设备实际支持的原子化服务能力列表，为输入参数中设备支持的能力子集。可用于判断设备是否支持特定能力，用于后续调用前的能力校验。 |
+| capabilities | [UserStatusAtomicCap](#userstatusatomiccap)[] | 是 | 表示要查询的原子化服务能力列表。 |
 
 **返回值**：
 

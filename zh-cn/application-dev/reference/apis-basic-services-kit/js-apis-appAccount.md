@@ -2405,7 +2405,7 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | 是    | 鉴权会话的标识。 |
+| sessionId | string                                   | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;[AuthCallback](#authcallback9)&gt; | 是    | 回调函数。当获取成功时，err为null，data为鉴权会话的认证器回调对象；否则为错误对象。 |
 
 **错误码：**
@@ -2466,7 +2466,7 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 | 参数名       | 类型     | 必填   | 说明       |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | 是    | 鉴权会话的标识。 |
+| sessionId | string | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -3041,7 +3041,7 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | 是    | 认证器的所有者的包名。          |
+| owner    | string                | 是    | 认证器的所有者的包名。最大长度为1024个字符。 |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回设置属性的结果。 |
 
 **错误码：**
@@ -3091,7 +3091,7 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | 是    | 认证器的所有者的包名。          |
+| owner    | string                | 是    | 认证器的所有者的包名。最大长度为1024个字符。  |
 | options  | [SetPropertiesOptions](#setpropertiesoptions9)  | 是    | 设置属性的选项。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调，返回设置属性的结果。 |
 
@@ -3179,7 +3179,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
 | name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。                              |
-| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
+| extraInfo | string                    | 是    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
 **示例：**
@@ -3208,7 +3208,7 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 | 参数名       | 类型     | 必填   | 说明                                       |
 | --------- | ------ | ---- | ---------------------------------------- |
 | name      | string | 是    | 应用账号的名称。最大长度为512个字符。                            |
-| extraInfo | string | 否    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。 |
+| extraInfo | string | 否    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -3656,7 +3656,7 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 | 参数名       | 类型                        | 必填   | 说明              |
 | --------- | ------------------------- | ---- | --------------- |
 | name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。         |
-| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。       |
+| extraInfo | string                    | 是    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -3690,7 +3690,7 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
 | 参数名       | 类型     | 必填   | 说明        |
 | --------- | ------ | ---- | --------- |
 | name      | string | 是    | 应用账号的名称。最大长度为512个字符。   |
-| extraInfo | string | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
+| extraInfo | string | 是    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -3802,8 +3802,8 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 | 参数名      | 类型                        | 必填   | 说明                |
 | -------- | ------------------------- | ---- | ----------------- |
 | name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。           |
-| key      | string                    | 是    | 关联数据的键名。 |
-| value    | string                    | 是    | 关联数据的取值。         |
+| key      | string                    | 是    | 关联数据的键名。最大长度为1024个字符。          |
+| value    | string                    | 是    | 关联数据的取值。最大长度为1024个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置与此应用账号关联的数据成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -3837,8 +3837,8 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
 | 参数名   | 类型     | 必填   | 说明                |
 | ----- | ------ | ---- | ----------------- |
 | name  | string | 是    | 应用账号的名称。最大长度为512个字符。           |
-| key      | string | 是    | 关联数据的键名。 |
-| value    | string | 是    | 关联数据的取值。 |
+| key      | string | 是    | 关联数据的键名。最大长度为1024个字符。 |
+| value    | string | 是    | 关联数据的取值。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4156,7 +4156,7 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 | 参数名      | 类型                          | 必填   | 说明                |
 | -------- | --------------------------- | ---- | ----------------- |
 | name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。           |
-| key      | string                      | 是    | 关联数据的键名。         |
+| key      | string                      | 是    | 关联数据的键名。最大长度为1024个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为关联数据的取值；否则为错误对象。 |
 
 **示例：**
@@ -4190,7 +4190,7 @@ getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
 | name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
-| key  | string | 是    | 关联数据的键名。 |
+| key  | string | 是    | 关联数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4883,7 +4883,7 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | 是    | 鉴权会话的标识。 |
+| sessionId | string                                   | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;[AuthenticatorCallback](#authenticatorcallbackdeprecated)&gt; | 是    | 回调函数。当获取鉴权会话的认证器回调函数成功时，err为null，data为认证器回调函数；否则为错误对象。 |
 
 **示例：**
@@ -4928,7 +4928,7 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
 
 | 参数名       | 类型     | 必填   | 说明       |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | 是    | 鉴权会话的标识。 |
+| sessionId | string | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -5157,23 +5157,23 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 名称                            | 值                    | 说明                   |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。  |
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。         |
-| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。  |
-| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。         |
-| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。  |
-| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。      |
-| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。  |
-| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。|
-| KEY_TOKEN                        | 'token'                | 表示键名，令牌。         |
-| KEY_ACTION                       | 'action'               | 表示键名，操作。         |
-| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。     |
-| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。     |
-| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。    |
-| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。    |
-| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。    |
-| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。    |
-| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。    |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | "addAccountImplicitly" | 表示操作，隐式添加账号。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。  |
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | "authenticate"         | 表示操作，鉴权。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。         |
+| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | "createAccountImplicitly" | 表示操作，隐式创建账号。  |
+| ACTION_AUTH<sup>9+</sup>              | "auth"         | 表示操作，鉴权。         |
+| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | "verifyCredential" | 表示操作，验证凭据。  |
+| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | "setAuthenticatorProperties" | 表示操作，设置认证器属性。      |
+| KEY_NAME                         | "name"                 | 表示键名，应用账号的名称。  |
+| KEY_OWNER                        | "owner"                | 表示键名，应用账号所有者的包名。|
+| KEY_TOKEN                        | "token"                | 表示键名，令牌。         |
+| KEY_ACTION                       | "action"               | 表示键名，操作。         |
+| KEY_AUTH_TYPE                    | "authType"             | 表示键名，鉴权类型。     |
+| KEY_SESSION_ID                   | "sessionId"            | 表示键名，会话标识。     |
+| KEY_CALLER_PID                   | "callerPid"            | 表示键名，调用方PID。    |
+| KEY_CALLER_UID                   | "callerUid"            | 表示键名，调用方UID。    |
+| KEY_CALLER_BUNDLE_NAME           | "callerBundleName"     | 表示键名，调用方包名。    |
+| KEY_REQUIRED_LABELS<sup>9+</sup> | "requiredLabels"       | 表示键名，必需的标签。    |
+| KEY_BOOLEAN_RESULT<sup>9+</sup>  | "booleanResult"        | 表示键名，布尔返回值。    |
 
 ## ResultCode<sup>(deprecated)</sup>
 
@@ -5436,7 +5436,7 @@ addAccountImplicitly(authType: string, callerBundleName: string, options: { [key
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃，建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5474,7 +5474,7 @@ authenticate(name: string, authType: string, callerBundleName: string, options: 
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃，建议使用[auth](#auth9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[auth](#auth9-2)替代。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -5592,6 +5592,30 @@ getRemoteObject(): rpc.RemoteObject
   import { Want } from '@kit.AbilityKit';
 
   class MyAuthenticator extends appAccount.Authenticator {
+    createAccountImplicitly(
+      options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.loginAbility',
+      };
+      callback.onRequestRedirected(want);
+    }
+
+    auth(name: string, authType: string,
+      options: Record<string, Object>, callback: appAccount.AuthCallback) {
+      let result: appAccount.AuthResult = {
+        account: {
+          name: 'Lisi',
+          owner: 'com.example.accountjsdemo',
+        },
+        tokenInfo: {
+          token: 'xxxxxx',
+          authType: 'getSocialData',
+        }
+      };
+      callback.onResult(0, result);
+    }
+
     verifyCredential(name: string,
       options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
         let want: Want = {
@@ -5625,7 +5649,7 @@ getRemoteObject(): rpc.RemoteObject
   }
 
   export default {
-    onConnect(want: Want): rpc.RemoteObject { // serviceAbility 生命周期函数, 需要放在serviceAbility中
+    onConnect(want: Want): rpc.RemoteObject { // serviceAbility 生命周期函数，需要放在serviceAbility中
       let authenticator = new MyAuthenticator();
       return authenticator.getRemoteObject();
     }

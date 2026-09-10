@@ -2,22 +2,23 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4fbb151d5d06197ab5bea36827f51c1d37a38ef1 translatedAt=2026-08-24T08:04:52.526Z pushedAt=2026-08-29T03:46:17.003Z -->
 
-Implements a matrix.
+A matrix object used for coordinate transformation of graphics, supporting transformation operations such as translation, rotation, scaling, and skewing. Matrix transformation can be used to implement mapping between different coordinate systems.
 
-A 3 x 3 matrix is shown as below.
+It is represented as a 3 x 3 matrix, as shown below:
 
 ![matrix_3x3](figures/matrix3X3.PNG)
 
-Elements in the matrix from left to right and from top to bottom respectively represent a horizontal scale coefficient, a horizontal skew coefficient, a horizontal translation coefficient, a vertical skew coefficient, a vertical scale coefficient, a vertical translation coefficient, an X-axis perspective coefficient, a Y-axis perspective coefficient, and a perspective scale coefficient.
-If (x<sub>1</sub>, y<sub>1</sub>) is the source coordinate point, (x<sub>2</sub>, y<sub>2</sub>) is the coordinate point obtained by transforming the source coordinate point using the matrix, then the relationship between the two coordinate points is as follows:
+The elements in the matrix from left to right and from top to bottom respectively represent the horizontal scale factor, horizontal skew coefficient, horizontal translation coefficient, vertical skew coefficient, vertical scale factor, vertical translation coefficient, x-axis perspective coefficient, y-axis perspective coefficient, and perspective scale factor.
+
+Let (x<sub>1</sub>, y<sub>1</sub>) be the source coordinate point and (x<sub>2</sub>, y<sub>2</sub>) be the coordinate point obtained after the source coordinate point is transformed by the matrix. The relationship between the two coordinate points is as follows:
 
 ![matrix-xy](figures/matrix-xy.PNG)
-
 
 > **NOTE**
 >
@@ -95,8 +96,8 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
-let isAff = matrix.isAffine();
-console.info('isAff :', isAff);
+let isAffine = matrix.isAffine();
+console.info('isAffine :', isAffine);
 ```
 
 ## rectStaysRect<sup>20+</sup>
@@ -129,7 +130,7 @@ console.info('isRect :', isRect);
 
 setSkew(kx: number, ky: number, px: number, py: number): void
 
-Sets the skew coefficients of a matrix.
+Sets the matrix as an identity matrix and performs a skew transformation around the tilt center point (px, py) by (kx, ky). Similar to [setRotation](#setrotation12), [setScale](#setscale12), and [setTranslation](#settranslation12), this method resets the matrix and then applies a single transformation.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -139,8 +140,8 @@ Sets the skew coefficients of a matrix.
 | ----------- | ---------------------------------------- | ---- | -------------------             |
 | kx          | number                  | Yes   | Amount of tilt on the X axis. The value is a floating point number. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis.       |
 | ky          | number                  | Yes   | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis.       |
-| px          | number                  | Yes   | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.    |
-| py          | number                  | Yes   | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.    |
+| px          | number                  | Yes    | X-axis coordinate of the tilt center point. This parameter is a floating-point number. 0 indicates the coordinate origin, a positive number indicates located at the right of the origin, and a negative number indicates located at the left of the origin. The unit is physical pixel px.     |
+| py          | number                  | Yes    | Y-axis coordinate of the tilt center point. This parameter is a floating-point number. 0 indicates the coordinate origin, a positive number indicates located below the origin, and a negative number indicates located above the origin. The unit is physical pixel px.     |
 
 **Example**
 
@@ -156,7 +157,7 @@ matrix.setSkew(2, 0.5, 0.5, 2);
 
 setSinCos(sinValue: number, cosValue: number, px: number, py: number): void
 
-Sets the matrix to rotate around the rotation center (px, py) with the specified sine and cosine values.
+Sets the matrix as an identity matrix so that it rotates around the rotation center point (px, py) with the specified sine and cosine values. Similar to [setRotation](#setrotation12), but setRotation directly passes in an angle value, whereas this method passes in sine and cosine values.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -166,8 +167,8 @@ Sets the matrix to rotate around the rotation center (px, py) with the specified
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | sinValue          | number                  | Yes   | Sine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is **1**, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.         |
 | cosValue          | number                  | Yes   | Cosine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is **1**, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.           |
-| px          | number                  | Yes   | X coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.    |
-| py          | number                  | Yes   | Y coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.   |
+| px          | number                  | Yes    | X-axis coordinate of the rotation center. This parameter is a floating-point number. 0 indicates the coordinate origin. A positive number indicates that it is located to the right of the coordinate origin. A negative number indicates that it is located to the left of the coordinate origin. The unit is physical pixel px.     |
+| py          | number                  | Yes    | Y-axis coordinate of the rotation center. This parameter is a floating-point number. 0 indicates the coordinate origin. A positive number indicates that it is located below the coordinate origin. A negative number indicates that it is located above the coordinate origin. The unit is physical pixel px.    |
 
 **Example**
 
@@ -178,11 +179,12 @@ let matrix = new drawing.Matrix();
 matrix.setMatrix([1, 0.5, 1, 0.5, 1, 1, 1, 1, 1]);
 matrix.setSinCos(0, 1, 1, 0);
 ```
+
 ## setRotation<sup>12+</sup>
 
 setRotation(degree: number, px: number, py: number): void
 
-Sets this matrix as an identity matrix and rotates it by a given degree around the rotation point (px, py).
+Sets the matrix as an identity matrix and rotates it around the rotation center point (px, py).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -191,8 +193,8 @@ Sets this matrix as an identity matrix and rotates it by a given degree around t
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | degree      | number                  | Yes   | Angle to rotate, in degrees. A positive number indicates a clockwise rotation, and a negative number indicates a counterclockwise rotation. The value is a floating point number.|
-| px          | number                  | Yes   | X coordinate of the rotation point. The value is a floating point number.    |
-| py          | number                  | Yes   | Y coordinate of the rotation point. The value is a floating point number.    |
+| px          | number                  | Yes    | x-axis coordinate of the rotation center point. This parameter is a floating-point number. The unit is physical pixel px.     |
+| py          | number                  | Yes    | y-axis coordinate of the rotation center point. This parameter is a floating-point number. The unit is physical pixel px.     |
 
 **Error codes**
 
@@ -215,7 +217,7 @@ matrix.setRotation(90, 100, 100);
 
 setScale(sx: number, sy: number, px: number, py: number): void
 
-Sets this matrix as an identity matrix and scales it with the coefficients (sx, sy) at the scale point (px, py).
+Sets the matrix as an identity matrix and scales it by sx and sy around the scale center point (px, py).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -223,10 +225,10 @@ Sets this matrix as an identity matrix and scales it with the coefficients (sx, 
 
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| sx          | number                  | Yes   | Scale coefficient along the X axis. If a negative number is passed in, the matrix is mirrored around y = px before being scaled. The value is a floating point number.    |
-| sy          | number                  | Yes   | Scale coefficient along the Y axis. If a negative number is passed in, the matrix is mirrored around x = py before being scaled. The value is a floating point number.    |
-| px          | number                  | Yes   |  X coordinate of the scale point. The value is a floating point number.     |
-| py          | number                  | Yes   |  Y coordinate of the scale point. The value is a floating point number.     |
+| sx          | number                  | Yes    | Scale factor in the x-axis direction. When negative, it can be viewed as a mirror flip about x = px followed by scaling. This parameter is a floating-point number.     |
+| sy          | number                  | Yes    | Scale factor in the y-axis direction. When negative, it can be viewed as a mirror flip about y = py followed by scaling. This parameter is a floating-point number.     |
+| px          | number                  | Yes    | X-axis coordinate of the scale center. This parameter is a floating-point number. The unit is physical pixel px.      |
+| py          | number                  | Yes    | Y-axis coordinate of the scale center. This parameter is a floating-point number. The unit is physical pixel px.      |
 
 **Error codes**
 
@@ -249,7 +251,7 @@ matrix.setScale(100, 100, 150, 150);
 
 setTranslation(dx: number, dy: number): void
 
-Sets this matrix as an identity matrix and translates it by a given distance (dx, dy).
+Sets the matrix as an identity matrix and translates it by (dx, dy).
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -257,8 +259,8 @@ Sets this matrix as an identity matrix and translates it by a given distance (dx
 
 | Name        | Type                                      | Mandatory  | Description                 |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| dx          | number                  | Yes   | Horizontal distance to translate. A positive number indicates a translation towards the positive direction of the X axis, and a negative number indicates a translation towards the negative direction of the X axis. The value is a floating point number.    |
-| dy          | number                  | Yes   | Vertical distance to translate. A positive number indicates a translation towards the positive direction of the Y axis, and a negative number indicates a translation towards the negative direction of the Y axis. The value is a floating point number.    |
+| dx          | number                  | Yes    | Translation distance along the x-axis. A positive number indicates translation in the positive x-axis direction, and a negative number indicates translation in the negative x-axis direction. This parameter is a floating-point number. The unit is physical pixel px.     |
+| dy          | number                  | Yes    | Translation distance along the y-axis. A positive number indicates translation in the positive y-axis direction, and a negative number indicates translation in the negative y-axis direction. This parameter is a floating-point number. The unit is physical pixel px.     |
 
 **Error codes**
 
@@ -289,7 +291,7 @@ Sets parameters for this matrix.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| values  | Array\<number> | Yes  | Floating-point array that holds the parameter values, with the array length set to 9. The values in the array respectively represent a horizontal scale coefficient, a horizontal skew coefficient, a horizontal translation coefficient, a vertical skew coefficient, a vertical scale coefficient, a vertical translation coefficient, an X-axis perspective coefficient, a Y-axis perspective coefficient, and a perspective scale coefficient, in ascending order of indexes.|
+| values  | Array\<number> | Yes   | A floating-point array of length 9, representing the parameters of the matrix object. The values in the array, in ascending order of subscript, represent the horizontal scale factor, horizontal skew coefficient, horizontal translation coefficient (in physical pixel px), vertical skew coefficient, vertical scale factor, vertical translation coefficient (in physical pixel px), x-axis perspective coefficient, y-axis perspective coefficient, and perspective scale factor. |
 
 **Error codes**
 
@@ -313,7 +315,7 @@ matrix.setMatrix(value);
 
 preConcat(matrix: Matrix): void
 
-Preconcats the existing matrix with the passed-in matrix.
+Right-multiplies the existing matrix by the passed-in matrix, that is, the new transformation is applied before the transformation of the existing matrix. To apply the new transformation after the transformation of the existing matrix, use the postConcat method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -321,7 +323,7 @@ Preconcats the existing matrix with the passed-in matrix.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes  | **Matrix** object, which is on the right of a multiplication expression.|
+| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes   | Indicates the matrix used for the operation, located on the right side of the multiplication expression. |
 
 **Error codes**
 
@@ -355,7 +357,7 @@ Updates the existing matrix with another matrix.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | Array\<number\> \| [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes  | Array or matrix for the update.|
+| matrix | Array\<number\> \| [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes | Array or matrix used for the update. When the type is an array, the length is fixed at 9. |
 
 **Example**
 
@@ -372,7 +374,7 @@ matrix1.setMatrix(matrix2);
 
 setConcat(matrixA: Matrix, matrixB: Matrix): void
 
-Updates the existing matrix with the product of two matrices.
+Updates the existing matrix with the product of two matrices, that is, existing matrix = matrixA × matrixB.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -380,8 +382,8 @@ Updates the existing matrix with the product of two matrices.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrixA  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes  | Matrix A used for calculation.|
-| matrixB  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes  | Matrix B used for calculation.|
+| matrixA  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes   | Matrix A used for the operation, located on the left side of the multiplication expression. |
+| matrixB  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes   | Matrix B used for the operation, located on the right side of the multiplication expression. |
 
 **Example**
 
@@ -399,7 +401,7 @@ matrix1.setConcat(matrix2, matrix1);
 
 postConcat(matrix: Matrix): void
 
-Right-multiply the existing matrix by another matrix.
+Left-multiplies the existing matrix by another matrix, that is, the new transformation is applied after the transformation of the existing matrix. To apply the new transformation before the transformation of the existing matrix, use the preConcat method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -407,7 +409,7 @@ Right-multiply the existing matrix by another matrix.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes  | Matrix used for calculation.|
+| matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes | Indicates the matrix used for the operation, located on the left side of the multiplication expression. |
 
 **Example**
 
@@ -420,6 +422,7 @@ if (matrix.isIdentity()) {
 } else {
   console.info("matrix is not identity.");
 }
+
 let matrix1 = new drawing.Matrix();
 matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
 let matrix2 = new drawing.Matrix();
@@ -429,7 +432,7 @@ matrix1.postConcat(matrix2);
 
 ## isEqual<sup>12+</sup>
 
-isEqual(matrix: Matrix): Boolean
+isEqual(matrix: Matrix): boolean
 
 Checks whether two **OH_Drawing_Matrix** objects are equal.
 
@@ -439,13 +442,13 @@ Checks whether two **OH_Drawing_Matrix** objects are equal.
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes  | Matrix to compare.|
+| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | Yes   | Another matrix used to compare with the current matrix for equality. |
 
 **Returns**
 
 | Type                       | Description                 |
 | --------------------------- | -------------------- |
-| Boolean | Comparison result of the two matrices. The value **true** means that the two matrices are equal, and **false** means the opposite.|
+| boolean | Returns the comparison result of the two matrices. true indicates that the two matrices are equal, and false indicates that they are not equal. |
 
 **Error codes**
 
@@ -473,7 +476,7 @@ if (matrix1.isEqual(matrix2)) {
 
 ## invert<sup>12+</sup>
 
-invert(matrix: Matrix): Boolean
+invert(matrix: Matrix): boolean
 
 Inverts this matrix and returns the result.
 
@@ -489,7 +492,7 @@ Inverts this matrix and returns the result.
 
 | Type                       | Description                 |
 | --------------------------- | -------------------- |
-| Boolean | Check result. The value **true** means that the matrix is revertible and the **matrix** object is set to its inverse, and **false** means that the matrix is not revertible and the **matrix** object remains unchanged.|
+| boolean | Returns whether the matrix is set to the inverse matrix. true indicates that the current matrix is invertible and the matrix is set to the inverse matrix; false indicates that the current matrix is not invertible and the matrix is not set. |
 
 **Error codes**
 
@@ -517,7 +520,7 @@ if (matrix1.invert(matrix2)) {
 
 ## isIdentity<sup>12+</sup>
 
-isIdentity(): Boolean
+isIdentity(): boolean
 
 Checks whether an **OH_Drawing_Matrix** object is an identity matrix:
 
@@ -527,7 +530,7 @@ Checks whether an **OH_Drawing_Matrix** object is an identity matrix:
 
 | Type                       | Description                 |
 | --------------------------- | -------------------- |
-| Boolean | Check result. The value **true** means that the matrix is an identity matrix, and **false** means the opposite.|
+| boolean | Whether the matrix is a unit matrix. true indicates the matrix is a unit matrix, and false indicates the matrix is not a unit matrix. |
 
 **Example**
 
@@ -585,7 +588,7 @@ for (let i = 0; i < 9; i++) {
 
 postRotate(degree: number, px: number, py: number): void
 
-Post multiplies this matrix by a matrix that is derived from an identity matrix after it has been rotated by a given degree around the rotation point (px, py).
+Sets the matrix to the matrix obtained by right-multiplying the existing matrix by an identity matrix that has been rotated by a given degree around the rotation point (px, py), that is, the new rotation transformation is applied after the transformation of the existing matrix. To apply the rotation transformation before the transformation of the existing matrix, use the preRotate method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -594,8 +597,8 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | degree | number | Yes  | Angle to rotate, in degrees. A positive number indicates a clockwise rotation, and a negative number indicates a counterclockwise rotation. The value is a floating point number.|
-| px | number | Yes  | X coordinate of the rotation point. The value is a floating point number.|
-| py | number | Yes  | Y coordinate of the rotation point. The value is a floating point number.|
+| px | number | Yes | X-axis coordinate of the rotation center point. This parameter is a floating-point number. The unit is physical pixel px. |
+| py | number | Yes | Y-axis coordinate of the rotation center point. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -622,7 +625,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 postScale(sx: number, sy: number, px: number, py: number): void
 
-Post multiplies this matrix by a matrix that is derived from an identity matrix after it has been scaled with the coefficient (sx, sy) at the scale point (px, py).
+Sets the matrix to the matrix obtained by right-multiplying the existing matrix by an identity matrix that has been scaled with the coefficients (sx, sy) at the scale point (px, py), that is, the new scaling transformation is applied after the transformation of the existing matrix. To apply the scaling transformation before the transformation of the existing matrix, use the preScale method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -630,10 +633,10 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| sx | number | Yes  | Scale coefficient along the X axis. If a negative number is passed in, the matrix is mirrored around y = px before being scaled. The value is a floating point number.|
-| sy | number | Yes  | Scale coefficient along the Y axis. If a negative number is passed in, the matrix is mirrored around x = py before being scaled. The value is a floating point number.|
-| px | number | Yes  | X coordinate of the scale point. The value is a floating point number.|
-| py | number | Yes  | Y coordinate of the scale point. The value is a floating point number.|
+| sx | number | Yes | Scale factor in the x-axis direction. A negative value indicates mirror flip about x = px before scaling. This parameter is a floating-point number. |
+| sy | number | Yes | Scale factor in the y-axis direction. A negative value indicates mirror flip about y = py before scaling. This parameter is a floating-point number. |
+| px | number | Yes | X-axis coordinate of the scale center. This parameter is a floating-point number. The unit is physical pixel px. |
+| py | number | Yes | Y-axis coordinate of the scale center. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -661,7 +664,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 postTranslate(dx: number, dy: number): void
 
-Post multiplies this matrix by a matrix that is derived from an identity matrix after it has been translated by a given distance (dx, dy).
+Sets the matrix to the matrix obtained by right-multiplying the existing matrix by an identity matrix that has been translated by a given distance (dx, dy), that is, the new translation transformation is applied after the transformation of the existing matrix. To apply the translation transformation before the transformation of the existing matrix, use the preTranslate method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -669,8 +672,8 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | Yes  | Horizontal distance to translate. A positive number indicates a translation towards the positive direction of the X axis, and a negative number indicates a translation towards the negative direction of the X axis. The value is a floating point number.|
-| dy | number | Yes  | Vertical distance to translate. A positive number indicates a translation towards the positive direction of the Y axis, and a negative number indicates a translation towards the negative direction of the Y axis. The value is a floating point number.|
+| dx | number | Yes | Translation distance along the x-axis. A positive number indicates translation in the positive x-axis direction, and a negative number indicates translation in the negative x-axis direction. This parameter is a floating-point number. The unit is physical pixel px. |
+| dy | number | Yes | Translation distance along the y-axis. A positive number indicates translation in the positive y-axis direction, and a negative number indicates translation in the negative y-axis direction. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -696,7 +699,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 preRotate(degree: number, px: number, py: number): void
 
-Premultiplies this matrix by a matrix that is derived from an identity matrix after it has been rotated by a given degree around the rotation point (px, py).
+Sets the matrix to the matrix obtained by left-multiplying the existing matrix by an identity matrix that has been rotated by a given degree around the rotation point (px, py), that is, the new rotation transformation is applied before the transformation of the existing matrix. To apply the rotation transformation after the transformation of the existing matrix, use the postRotate method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -705,8 +708,8 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | degree | number | Yes  | Angle to rotate, in degrees. A positive number indicates a clockwise rotation, and a negative number indicates a counterclockwise rotation. The value is a floating point number.|
-| px | number | Yes  | X coordinate of the rotation point. The value is a floating point number.|
-| py | number | Yes  | Y coordinate of the rotation point. The value is a floating point number.|
+| px | number | Yes | x-axis coordinate of the rotation center point. This parameter is a floating-point number. The unit is physical pixel px. |
+| py | number | Yes | y-axis coordinate of the rotation center point. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -743,13 +746,13 @@ Right-multiply the existing matrix by a skew transformation matrix.
 | ----------- | ---------------------------------------- | ---- | -------------------   |
 | kx          | number                  | Yes   | Amount of tilt on the X axis. The value is a floating point number. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis.          |
 | ky          | number                  | Yes   | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis.          |
-| px          | number                  | Yes   | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.   |
-| py          | number                  | Yes   | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.  |
+| px          | number                  | Yes    | X-axis coordinate of the tilt center point. This parameter is a floating point number. 0 indicates the coordinate origin, a positive number indicates located at the right of the origin, and a negative number indicates located at the left of the origin. The unit is physical pixel px.    |
+| py          | number                  | Yes    | Y-axis coordinate of the tilt center point. This parameter is a floating point number. 0 indicates the coordinate origin, a positive number indicates located below the origin, and a negative number indicates located above the origin. The unit is physical pixel px.   |
 
 **Example**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 matrix.postSkew(2.0, 1.0, 2.0, 1.0);
@@ -757,7 +760,7 @@ matrix.postSkew(2.0, 1.0, 2.0, 1.0);
 
 ## preSkew<sup>20+</sup>
 
- preSkew(kx: number, ky: number, px: number, py: number): void
+preSkew(kx: number, ky: number, px: number, py: number): void
 
 Left-multiply the existing matrix by a skew transformation matrix.
 
@@ -769,13 +772,13 @@ Left-multiply the existing matrix by a skew transformation matrix.
 | ----------- | ---------------------------------------- | ---- | -------------------   |
 | kx          | number                  | Yes   | Amount of tilt on the X axis. The value is a floating point number. A positive number tilts the drawing rightwards along the positive direction of the Y axis, and a negative number tilts the drawing leftwards along the positive direction of the Y axis.          |
 | ky          | number                  | Yes   | Amount of tilt on the Y axis. The value is a floating point number. A positive number tilts the drawing downwards along the positive direction of the X axis, and a negative number tilts the drawing upwards along the positive direction of the X axis.          |
-| px          | number                  | Yes   | X coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.       |
-| py          | number                  | Yes   | Y coordinate of the shear center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.       |
+| px          | number                  | Yes    | X-axis coordinate of the tilt center point. This parameter is a floating point number. 0 indicates the coordinate origin, a positive number indicates located at the right of the origin, and a negative number indicates located at the left of the origin. The unit is physical pixel px.        |
+| py          | number                  | Yes    | Y-axis coordinate of the tilt center point. This parameter is a floating point number. 0 indicates the coordinate origin, a positive number indicates located below the origin, and a negative number indicates located above the origin. The unit is physical pixel px.        |
 
 **Example**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 matrix.preSkew(2.0, 1.0, 2.0, 1.0);
@@ -793,18 +796,18 @@ Returns the average radius of the ellipse formed after a circle with the specifi
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| radius  | number | Yes  | Radius of the circle used for calculation. The value is a floating point number. The absolute value is used if the number is negative.|
+| radius  | number | Yes   | Radius of the circle used for calculation, a floating-point number. If it is a negative number, the absolute value is used for calculation. The unit is physical pixel px. |
 
 **Returns**
 
 | Type                       | Description                 |
 | --------------------------- | -------------------- |
-| number | Average radius after transformation.|
+| number | Returns the average radius after transformation. Unit is physical pixel px. |
 
 **Example**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
@@ -816,7 +819,7 @@ console.info('radius', radius);
 
 preScale(sx: number, sy: number, px: number, py: number): void
 
-Premultiplies this matrix by a matrix that is derived from an identity matrix after it has been scaled with the coefficient (sx, sy) at the scale point (px, py).
+Sets the matrix to the matrix obtained by premultiplying this matrix by the identity matrix scaled with the coefficients sx and sy around the scale center point, that is, the new scaling transformation is applied before the transformation of the current matrix. If the scaling transformation needs to be applied after the transformation of the current matrix, use the postScale method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -824,10 +827,10 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| sx | number | Yes  | Scale coefficient along the X axis. If a negative number is passed in, the matrix is mirrored around y = px before being scaled. The value is a floating point number.|
-| sy | number | Yes  | Scale coefficient along the Y axis. If a negative number is passed in, the matrix is mirrored around x = py before being scaled. The value is a floating point number.|
-| px | number | Yes  | X coordinate of the scale point. The value is a floating point number.|
-| py | number | Yes  | Y coordinate of the scale point. The value is a floating point number.|
+| sx | number | Yes | Scale factor in the x-axis direction. When negative, it can be viewed as a mirror flip about x = px before scaling. This parameter is a floating-point number. |
+| sy | number | Yes | Scale factor in the y-axis direction. When negative, it can be viewed as a mirror flip about y = py before scaling. This parameter is a floating-point number. |
+| px | number | Yes | X-axis coordinate of the scale center. This parameter is a floating-point number. The unit is physical pixel px. |
+| py | number | Yes | Y-axis coordinate of the scale center. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -855,7 +858,7 @@ console.info("matrix"+matrix.getAll().toString());
 
 preTranslate(dx: number, dy: number): void
 
-Premultiplies this matrix by a matrix that is derived from an identity matrix after it has been translated by a given distance (dx, dy).
+Sets the matrix to the matrix obtained by premultiplying this matrix by the identity matrix translated by dx and dy, that is, the new translation transformation is applied before the transformation of the current matrix. If the translation transformation needs to be applied after the transformation of the current matrix, use the postTranslate method.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -863,8 +866,8 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | Yes  | Horizontal distance to translate. A positive number indicates a translation towards the positive direction of the X axis, and a negative number indicates a translation towards the negative direction of the X axis. The value is a floating point number.|
-| dy | number | Yes  | Vertical distance to translate. A positive number indicates a translation towards the positive direction of the Y axis, and a negative number indicates a translation towards the negative direction of the Y axis. The value is a floating point number.|
+| dx | number | Yes | Translation distance along the x-axis. A positive number indicates translation in the positive x-axis direction, and a negative number indicates translation in the negative x-axis direction. This parameter is a floating-point number. The unit is physical pixel px. |
+| dy | number | Yes | Translation distance along the y-axis. A positive number indicates translation in the positive y-axis direction, and a negative number indicates translation in the negative y-axis direction. This parameter is a floating-point number. The unit is physical pixel px. |
 
 **Error codes**
 
@@ -917,7 +920,7 @@ Maps a source point array to a destination point array by means of matrix transf
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes  | Array of source points.|
+| src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes | Source point array, used as the input points for matrix transformation. |
 
 **Returns**
 
@@ -1027,15 +1030,15 @@ Sets this matrix to a transformation matrix that maps a source rectangle to a de
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| src | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Source rectangle.|
-| dst | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Destination rectangle.|
+| src | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes | Source rectangle, used to specify the source area for mapping. |
+| dst | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes | Target rectangle, used to specify the target area for mapping. |
 | scaleToFit | [ScaleToFit](arkts-apis-graphics-drawing-e.md#scaletofit12) | Yes  | Mapping mode from the source rectangle to the target rectangle.|
 
 **Returns**
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| boolean | Check result. The value **true** means that the matrix can represent the mapping, and **false** means the opposite. If either the width or the height of the source rectangle is less than or equal to 0, the API returns **false** and sets the matrix to an identity matrix. If either the width or height of the destination rectangle is less than or equal to 0, the API returns **true** and sets the matrix to a matrix with all values **0**, except for a perspective scaling coefficient of **1**.|
+| boolean | Whether the matrix can represent the mapping between rectangles. true indicates that it can, and false indicates that it cannot. If either the width or height of the source rectangle is less than or equal to 0, false is returned and the matrix is set to the unit matrix. If either the width or height of the target rectangle is less than or equal to 0, true is returned and the matrix is set to a matrix in which all values are 0 except the perspective scale factor, which is 1. |
 
 **Error codes**
 
@@ -1052,7 +1055,7 @@ import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
 let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
-let scaleToFit: drawing.ScaleToFit = drawing.ScaleToFit.FILL_SCALE_TO_FIT
+let scaleToFit: drawing.ScaleToFit = drawing.ScaleToFit.FILL_SCALE_TO_FIT;
 let matrix = new drawing.Matrix();
 if (matrix.setRectToRect(src, dst, scaleToFit)) {
     console.info("matrix"+matrix.getAll().toString());
@@ -1073,7 +1076,7 @@ Sets this matrix to a transformation matrix that maps the source point array to 
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes  | Array of source points. The array length must be the same as the value of **count**.|
 | dst | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes  | Array of destination points. The array length must be the same as the value of **count**.|
-| count | number | Yes  | Number of points in each array. The value is an integer.|
+| count | number | Yes | Number of points in src and dst. The value range is [0, 4]. This parameter is an integer. |
 
 **Returns**
 

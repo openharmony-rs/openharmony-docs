@@ -85,7 +85,7 @@
 ### OH_IPC_MemAllocator()
 
 ```C
-typedef void* (*OH_IPC_MemAllocator)(int32_t len);
+typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 ```
 
 **描述：**
@@ -509,7 +509,7 @@ int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)
 
 **描述：**
 
-向OHIPCParcel对象写入int32_t值。写入数据受IPC序列化总大小限制，参见[OH_IPCParcel_Create](#oh_ipcparcel_create)。
+向OHIPCParcel对象写入int32_t值。写入数据受IPC序列化总大小限制（参见[OH_IPCParcel_Create](#oh_ipcparcel_create)）。
 
 - 必须与[OH_IPCParcel_ReadInt32](#oh_ipcparcel_readint32)方法配对使用。
 - 调用顺序：先调用WriteInt()写入数据，接收端再调用[OH_IPCParcel_ReadInt32](#oh_ipcparcel_readint32)读取数据。
@@ -1261,8 +1261,8 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 - 将文件描述符的副本写入到OHIPCParcel对象中。
 - 写入位置自动后移。
 - 文件描述符信息被序列化存储，可在IPC通信中传递。
-- 调用顺序：先调用[OH_IPCParcel_WriteFileDescriptor](#oh_ipcparcel_writefiledescriptor)写入文件描述符，接收端再调用
-- [OH_IPCParcel_ReadFileDescriptor](#oh_ipcparcel_readfiledescriptor)读取。
+- 调用顺序：先调用[OH_IPCParcel_WriteFileDescriptor](#oh_ipcparcel_writefiledescriptor)写入文件描述符。
+- 接收端再调用[OH_IPCParcel_ReadFileDescriptor](#oh_ipcparcel_readfiledescriptor)读取。
 - 未正确配对：如果未按顺序调用或未配对使用，会导致接收端无法获取正确的文件描述符，影响跨进程文件共享和访问。
 - 文件描述符有效性：fd必须为有效的非负整数文件描述符。
 - 资源管理：写入后原文件描述符仍由调用者管理，需自行关闭。

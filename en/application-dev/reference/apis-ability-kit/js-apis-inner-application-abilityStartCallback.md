@@ -3,15 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @zexin_c-->
-<!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=aee2f7468d1b3b04e493c7068f7ee7eaa8e0ca32 translatedAt=2026-09-03T11:38:10.089Z pushedAt=2026-09-05T10:47:30.661Z -->
 
 The module describes the callback invoked to return the UIExtensionAbility startup result.
 
@@ -54,7 +48,7 @@ Called when the UIExtensionAbility fails to start.
 | Name      | Type                    | Mandatory  | Description           |
 | -------- | ---------------------- | ---- | ------------- |
 | code | number | Yes   | Result code returned when the UIExtensionAbility fails to start.|
-| name | string | Yes   | Name returned when the UIExtensionAbility fails to start.|
+| name | string | Yes | Error name returned when the UIExtensionAbility fails to be started, used to identify the error type. |
 | message | string | Yes   | Error information returned when the UIExtensionAbility fails to start.|
 
 **Example**
@@ -70,7 +64,7 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code: ${code}, name: ${name}, message: ${message}`);
+        console.error(`code: ${code}, name: ${name}, message: ${message}`);
       },
       onResult: (abilityResult: common.AbilityResult) => {
         console.info(`resultCode: ${abilityResult.resultCode}, bundleName: ${abilityResult.want?.bundleName}`);
@@ -88,7 +82,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### onResult<sup>12+<sup>
+### onResult<sup>12+</sup>
 
 onResult?(parameter: AbilityResult): void
 
@@ -117,10 +111,10 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code: ${code}, name: ${name}, message: ${message}`);
       },
       onResult: (abilityResult: common.AbilityResult) => {
-        console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
+        console.info(`resultCode: ${abilityResult.resultCode}, bundleName: ${abilityResult.want?.bundleName}`);
       }
     };
 

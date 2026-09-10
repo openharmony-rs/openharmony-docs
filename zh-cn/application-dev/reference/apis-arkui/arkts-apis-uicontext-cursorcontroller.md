@@ -24,6 +24,10 @@ restoreDefault(): void
 
 恢复默认的光标样式。
 
+> **说明：**
+>
+> 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -46,8 +50,8 @@ struct CursorControlExample {
   build() {
     Column() {
       Row().height(200).width(200).backgroundColor(Color.Green).position({x: 150, y:70})
-        .onHover((flag) => {
-          if (flag) {
+        .onHover((isHover) => {
+          if (isHover) {
             this.cursorController.setCursor(pointer.PointerStyle.EAST);
           } else {
             console.info('restoreDefault');
@@ -80,7 +84,7 @@ setCursor(value: PointerStyle): void
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle12) | 是    | 鼠标光标样式，指定要设置的系统预定义光标类型（如箭头、手型指针、十字准星等），各样式含义详见PointerStyle枚举说明。 |
+| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle) | 是    | 鼠标光标样式，指定要设置的系统预定义光标类型（如箭头、手型指针、十字准星等），各样式含义详见PointerStyle枚举说明。 |
 
 **示例：**
 
@@ -93,14 +97,13 @@ import { CursorController } from '@kit.ArkUI';
 @Entry
 @Component
 struct CursorControlExample {
-  @State text: string = '';
   cursorCustom: CursorController = this.getUIContext().getCursorController();
 
   build() {
     Column() {
       Row().height(200).width(200).backgroundColor(Color.Blue).position({x: 100, y:70})
-        .onHover((flag) => {
-          if (flag) {
+        .onHover((isHover) => {
+          if (isHover) {
             this.cursorCustom.setCursor(pointer.PointerStyle.WEST);
           } else {
             this.cursorCustom.restoreDefault();

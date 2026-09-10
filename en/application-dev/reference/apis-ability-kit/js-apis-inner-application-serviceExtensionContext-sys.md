@@ -1,14 +1,15 @@
 # ServiceExtensionContext (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T12:11:52.721Z pushedAt=2026-09-05T10:47:30.890Z -->
 
 The ServiceExtensionContext module provides the context environment for the ServiceExtensionAbility. It inherits from ExtensionContext.
 
-You can use the APIs of this module to start, terminate, connect, and disconnect an ability.
+The ServiceExtensionContext module provides the capabilities of the ServiceExtensionAbility, including starting, terminating, connecting, and disconnecting an ability (application component).
 
 > **NOTE**
 > 
@@ -25,7 +26,7 @@ import { common } from '@kit.AbilityKit';
 
 ## Usage
 
-Before using the ServiceExtensionContext module, you must define a child class that inherits from ServiceExtensionAbility.
+Before using the ServiceExtensionContext functions, obtain a ServiceExtensionContext instance through a ServiceExtensionAbility subclass instance.
 
 **Example**
 
@@ -48,6 +49,10 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 Starts an ability. This API can be called only on the main thread. It uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
@@ -56,7 +61,7 @@ Starts an ability. This API can be called only on the main thread. It uses an as
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes | Want type parameter. Pass required information about the Ability to start, such as the Ability name and bundle name. |
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -65,7 +70,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -76,20 +81,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -129,6 +134,10 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 Starts an ability. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
 
+> **NOTE**
+>
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
@@ -137,14 +146,14 @@ Starts an ability. This API can be called only on the main thread. It uses a pro
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want type parameter, carrying the information of the Ability to start, such as the Ability name and bundle name. |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried when starting the Ability. Pass this parameter when you need to specify startup parameters such as the window mode and display device. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -152,7 +161,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -163,20 +172,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -219,6 +228,10 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 Starts an ability. This API can be called only on the main thread. It uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
@@ -237,31 +250,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 9-11 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>Applicable Version: 9-11 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -307,7 +320,8 @@ Starts an ability with the account ID specified. This API can be called only on 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - When accountId is the current user, no permission verification is required.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -320,7 +334,7 @@ Starts an ability with the account ID specified. This API can be called only on 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -343,18 +357,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -398,7 +412,8 @@ Starts an ability with the account ID and start options specified. This API can 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - When accountId is the current user, no permission verification is required.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -411,7 +426,7 @@ Starts an ability with the account ID and start options specified. This API can 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
@@ -425,26 +440,28 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>Applicable Version: 9 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -460,6 +477,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained via the getOsAccountLocalId API. Here 100 is used as an example.
     let accountId = 100;
     let options: StartOptions = {
       windowMode: 0
@@ -492,7 +510,8 @@ Starts an ability with the account ID specified. This API can be called only on 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> When accountId is the current user, no permission verification is required.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -505,14 +524,14 @@ Starts an ability with the account ID specified. This API can be called only on 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried when starting an Ability. Pass this parameter when you need to specify startup parameters such as the window mode and display device. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -534,18 +553,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -561,6 +580,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained through the getOsAccountLocalId API. 100 is used as an example here.
     let accountId = 100;
     let options: StartOptions = {
       windowMode: 0
@@ -588,7 +608,12 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-Starts a ServiceExtensionAbility. This API uses an asynchronous callback to return the result.
+Starts a new ServiceExtensionAbility. This API can be called only on the main thread. It uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - This API does not support starting the ServiceExtensionAbility of a clone application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -612,14 +637,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -659,7 +684,12 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-Starts a ServiceExtensionAbility. This API uses a promise to return the result asynchronously.
+Starts a new ServiceExtensionAbility. This API can be called only in the main thread. This API uses a promise to return the result asynchronously.
+
+> **NOTE**
+>
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - This API does not support starting the ServiceExtensionAbility of a clone application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -675,7 +705,7 @@ Starts a ServiceExtensionAbility. This API uses a promise to return the result a
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -688,14 +718,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -735,12 +765,13 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-Starts a ServiceExtensionAbility with the account ID specified. This API uses an asynchronous callback to return the result.
+Starts a new ServiceExtensionAbility. This API can be called only in the main thread. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> 
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
-> Permission verification is not required when **accountId** specifies the current user.
+>
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - When accountId is the current user, no permission verification is required.
+> - This API does not support starting the ServiceExtensionAbility of a clone application.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -753,7 +784,7 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses an
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ServiceExtensionAbility is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -767,14 +798,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -791,6 +822,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained through the getOsAccountLocalId API. Here 100 is used as an example.
     let accountId = 100;
 
     try {
@@ -815,12 +847,13 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-Starts a ServiceExtensionAbility with the account ID specified. This API uses a promise to return the result asynchronously.
+Starts a new ServiceExtensionAbility. This API can be called only in the main thread. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
-> 
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
-> Permission verification is not required when **accountId** specifies the current user.
+>
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - When accountId is the current user, no permission verification is required.
+> - This API does not support starting the ServiceExtensionAbility of a clone application.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -833,13 +866,13 @@ Starts a ServiceExtensionAbility with the account ID specified. This API uses a 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -852,14 +885,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
+| 16000019 | No matching ability is found. <br>Applicable Version: 12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -876,6 +909,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained through the getOsAccountLocalId API. Here 100 is used as an example.
     let accountId = 100;
 
     try {
@@ -896,7 +930,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
@@ -904,7 +938,7 @@ Starts an ability with the caller information specified. The caller information 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Application Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Application Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -940,14 +974,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -975,7 +1009,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
@@ -983,7 +1017,7 @@ Starts an ability with the caller information and start options specified. The c
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1018,14 +1052,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -1057,7 +1091,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
@@ -1065,7 +1099,7 @@ Starts an ability with the start options specified. The caller information is ca
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1076,13 +1110,13 @@ Starts an ability with the start options specified. The caller information is ca
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried when starting an Ability. Need to specify startup parameters such as window mode and display device when passing. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -1107,14 +1141,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -1151,7 +1185,11 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-Stops a ServiceExtensionAbility. This API uses an asynchronous callback to return the result.
+Stops the specified ServiceExtensionAbility background service. This API can be called only in the main thread and uses an asynchronous callback.
+
+> **NOTE**
+>
+> This API does not support stopping the ServiceExtensionAbility of a clone application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1170,12 +1208,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1218,7 +1256,11 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-Stops a ServiceExtensionAbility. This API uses a promise to return the result asynchronously.
+Stops the specified ServiceExtensionAbility background service. This API can be called only in the main thread and uses a promise to return the result.
+
+> **NOTE**
+>
+> This API does not support stopping the ServiceExtensionAbility of a clone application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1234,7 +1276,7 @@ Stops a ServiceExtensionAbility. This API uses a promise to return the result as
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -1242,12 +1284,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1290,11 +1332,12 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-Stops a ServiceExtensionAbility with the specified account. This API uses an asynchronous callback to return the result.
+Stops the specified ServiceExtensionAbility background service of the specified account. This API can be called only in the main thread and uses an asynchronous callback.
 
 > **NOTE**
 > 
-> Permission verification is not required when **accountId** specifies the current user.
+> - When accountId is the current user, no permission verification is required.
+> - This API does not support stopping the ServiceExtensionAbility of a clone application.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1307,7 +1350,7 @@ Stops a ServiceExtensionAbility with the specified account. This API uses an asy
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
+| accountId | number | Yes | Account ID of the system account to stop, which can be obtained by the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) API. |
 | callback | AsyncCallback\<void\> | Yes| Callback used to return the result. If the ServiceExtensionAbility is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1321,7 +1364,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1341,6 +1384,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained through the getOsAccountLocalId API. 100 is used as an example here.
     let accountId = 100;
 
     try {
@@ -1365,11 +1409,12 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-Stops a ServiceExtensionAbility with the specified account. This API uses a promise to return the result asynchronously.
+Stops the specified ServiceExtensionAbility background service of the specified account. This API can be called only in the main thread and uses a promise to return the result.
 
 > **NOTE**
 > 
-> Permission verification is not required when **accountId** specifies the current user.
+> - When accountId is the current user, no permission verification is required.
+> - This API does not support stopping the ServiceExtensionAbility of a clone application.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1382,13 +1427,13 @@ Stops a ServiceExtensionAbility with the specified account. This API uses a prom
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
+| accountId | number | Yes | Account ID of the system account to stop, which can be obtained by the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) API. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -1401,7 +1446,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1421,6 +1466,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained through the getOsAccountLocalId API. 100 is used as an example here.
     let accountId = 100;
 
     try {
@@ -1464,6 +1510,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>Applicable Version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 9 |
+| 16000005 | The specified process does not have the permission. <br>Applicable Version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
@@ -1503,7 +1552,7 @@ Terminates this ability. This API can be called only on the main thread. It uses
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -1511,6 +1560,9 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 16000001 | The specified ability does not exist. <br>Applicable Version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 9 |
+| 16000005 | The specified process does not have the permission. <br>Applicable Version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
@@ -1542,7 +1594,8 @@ Connects this ability to a ServiceExtensionAbility. This API can be called only 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - This API does not support connecting to the ServiceExtensionAbility of a clone application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1552,14 +1605,14 @@ Connects this ability to a ServiceExtensionAbility. This API can be called only 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Callback used to return the information indicating that the connection is successful, interrupted, or failed.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes | Want type parameter, which carries the information about the Ability to connect, such as the Ability name and bundle name. |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes | Connection options object, which contains the callback functions invoked when the service is connected, disconnected, or fails to connect. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | A number, based on which the connection will be interrupted.|
+| number | Connection identifier used to disconnect the connection later. |
 
 **Error codes**
 
@@ -1570,14 +1623,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 10+ |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000006 | Cross-user operations are not allowed. <br>Applicable Version: 10+ |
+| 16000008 | The crowdtesting application expires. <br>Applicable Version: 10+ |
+| 16000053 | The ability is not on the top of the UI. <br>Applicable Version: 10+ |
+| 16000055 | Installation-free timed out. <br>Applicable Version: 10+ |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
 | 16000050 | Internal error. |
 
 **Example**
@@ -1587,7 +1642,7 @@ import { ServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let commRemote: rpc.IRemoteObject; // Release the instance when the connection is disconnected.
+let commRemote: rpc.IRemoteObject | null; // Release when disconnecting.
 
 class EntryAbility extends ServiceExtensionAbility {
   onCreate() {
@@ -1627,8 +1682,9 @@ Connects this ability to a ServiceExtensionAbility of a given account. This API 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md). 
-> Permission verification is not required when **accountId** specifies the current user.
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - When accountId is the current user, no permission verification is required.
+> - This API does not support connecting to the ServiceExtensionAbility of a clone application.
 
 **Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1642,15 +1698,15 @@ Connects this ability to a ServiceExtensionAbility of a given account. This API 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| accountId | number | Yes| ID of the target system account.|
-| options | ConnectOptions | Yes| Remote object instance.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want information for connecting to the Ability. |
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes | Connection options object, which contains the callback functions invoked when the service is connected, disconnected, or fails to connect. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Result code of the connection.|
+| number | Connection identifier used to disconnect the connection later. |
 
 **Error codes**
 
@@ -1662,14 +1718,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 10+ |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000006 | Cross-user operations are not allowed. <br>Applicable Version: 10+ |
+| 16000008 | The crowdtesting application expires. <br>Applicable Version: 10+ |
+| 16000053 | The ability is not on the top of the UI. <br>Applicable Version: 10+ |
+| 16000055 | Installation-free timed out. <br>Applicable Version: 10+ |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. <br>Applicable Version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable Version: 10+ |
 | 16000050 | Internal error. |
 
 **Example**
@@ -1679,7 +1737,7 @@ import { ServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let commRemote: rpc.IRemoteObject; // Release the instance when the connection is disconnected.
+let commRemote: rpc.IRemoteObject | null; // Release it when disconnecting.
 
 class EntryAbility extends ServiceExtensionAbility {
   onCreate() {
@@ -1688,6 +1746,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId is the system account ID, which can be obtained through the getOsAccountLocalId API. Here 100 is used as an example.
     let accountId = 100;
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
@@ -1717,7 +1776,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API can be called only on the main thread. It uses an asynchronous callback to return the result.
+Disconnects an ability from a connected service-type ability. After the disconnection, set the remote object returned upon successful connection to null. This API can be called only on the main thread. It uses an asynchronous callback.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1728,7 +1787,7 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | connection | number | Yes| Number returned after **connectServiceExtensionAbility** is called.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is disconnected, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback function. If the Ability is successfully disconnected from the connected service-type Ability, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -1777,7 +1836,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API can be called only on the main thread. It uses a promise to return the result asynchronously.
+Disconnects an ability from a connected service-type ability. After the disconnection, set the remote object returned upon successful connection to null. This API can be called only on the main thread. It uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1793,7 +1852,7 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -1850,7 +1909,7 @@ This API cannot be used to start the UIAbility with the launch type set to [spec
 Observe the following when using this API:
  - If an application running in the background needs to call this API to start an ability, it must have the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission.
  - If **exported** of the target ability is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
- - The rules for using this API in the same-device and cross-device scenarios are different. For details, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+ - The usage rules of this API differ between the intra-device and cross-device scenarios. For details, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **Required permissions**: ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
 
@@ -1881,10 +1940,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>Applicable Version: 9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>Applicable Version: 9 |
 
 **Example**
 
@@ -1968,7 +2029,7 @@ Starts an ability. If the ability has multiple instances, the latest instance is
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1987,8 +2048,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
+| 202 | The application is not system-app, can not use system-api. <br>Applicable Version: 14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2002,14 +2063,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 14+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -2054,7 +2115,7 @@ You can use this API to carry start options.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2074,10 +2135,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
+| 202 | The application is not system-app, can not use system-api. <br>Applicable Version: 14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
@@ -2087,14 +2149,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 14+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -2141,7 +2203,7 @@ Starts an ability. If the ability has multiple instances, the latest instance is
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2152,7 +2214,13 @@ Starts an ability. If the ability has multiple instances, the latest instance is
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried when starting an Ability. Pass when you need to specify startup parameters such as window mode and display device. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
@@ -2160,8 +2228,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 10+ |
+| 202 | The application is not system-app, can not use system-api. <br>Applicable Version: 14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2175,14 +2243,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable Version: 14+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -2233,7 +2301,7 @@ Observe the following when using this API:
  - If an application needs to call this API to start an ability that belongs to another user, it must have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permissions.
  - If an application running in the background needs to call this API to start an ability, it must have the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission.
  - If **exported** of the target ability is **false** in cross-application scenarios, the caller must have the ohos.permission.START_INVISIBLE_ABILITY permission.
- - The rules for using this API in the same-device and cross-device scenarios are different. For details, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+ - The usage rules of this API differ between the intra-device and cross-device scenarios. For details, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **Required permissions**: ohos.permission.ABILITY_BACKGROUND_COMMUNICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -2246,7 +2314,7 @@ Observe the following when using this API:
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | Yes| Information about the ability to start, including **abilityName**, **moduleName**, **bundleName**, **deviceId** (optional), and **parameters** (optional). If **deviceId** is left blank or null, the local ability is started. If **parameters** is left blank or null, the ability is started in the background.|
-| accountId | number | Yes| ID of the target system account. The value **-1** indicates the current user.|
+| accountId | number | Yes | Account ID of the system account, which can be obtained by [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). |
 
 **Return value**
 
@@ -2266,7 +2334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16000005 | Static permission denied. The specified process does not have the permission. |
+| 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
@@ -2316,7 +2384,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.requestModalUIExtension<sup>11+<sup>
+## ServiceExtensionContext.requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
@@ -2326,7 +2394,7 @@ Before starting the UIExtensionAbility, ensure that the focused application has 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2336,13 +2404,13 @@ Before starting the UIExtensionAbility, ensure that the focused application has 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | Yes| Want information used to start the UIExtensionAbility.|
+| pickerWant | [Want](js-apis-app-ability-want.md)  | Yes | Want information for starting the UIExtension. Ensure that the target application has completed page initialization before calling this API. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object with no return result. |
 
 **Error codes**
 
@@ -2350,9 +2418,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 11 |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>Applicable Version: 11 |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>Applicable Version: 11 |
 
 **Example**
 
@@ -2393,7 +2466,7 @@ class ServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.requestModalUIExtension<sup>11+<sup>
+## ServiceExtensionContext.requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
@@ -2403,7 +2476,7 @@ Before starting the UIExtensionAbility, ensure that the focused application has 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Applications Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2422,9 +2495,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable Version: 11 |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>Applicable Version: 11 |
+| 16000002 | Incorrect ability type. <br>Applicable Version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable Version: 11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>Applicable Version: 11 |
 
 **Example**
 
@@ -2465,7 +2543,7 @@ class ServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.openLink<sup>12+<sup>
+## ServiceExtensionContext.openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 
@@ -2480,7 +2558,7 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2491,13 +2569,13 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | link | string | Yes| URL to open, which must be in the standard format.|
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | No| Options of the URL.|
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | No | Option parameters for opening the URL, which can be used to set whether to enable only App Linking. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -2510,18 +2588,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Failed to start the invisible ability. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>Applicable Version: 23+ |
 
 **Example**
 
@@ -2565,7 +2643,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.preStartMission<sup>12+<sup>
+## ServiceExtensionContext.preStartMission<sup>12+</sup>
 
 preStartMission(bundleName: string, moduleName: string, abilityName: string, startTime: string): Promise&lt;void&gt;
 
@@ -2592,7 +2670,7 @@ If parameter verification is successful but the atomic service fails to start, y
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -2650,15 +2728,16 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startUIServiceExtensionAbility<sup>14+<sup>
+## ServiceExtensionContext.startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). This API uses a promise to return the result asynchronously.
+Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md). This API can be called only in the main thread. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+> - This API does not support starting the UIServiceExtensionAbility of a clone application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2667,13 +2746,13 @@ Starts a new [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionA
 **Parameters**
 | Name| Type| Mandatory| Description                |
 | ------ | ---- | ---- | -------------------- |
-| want   | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability, such as the ability name and bundle name.|
+| want   | [Want](js-apis-app-ability-want.md) | Yes | Want type parameter, carrying the information about the Ability to start, such as the Ability name and bundle name. |
 
 **Return value**
 
 | Type               | Description                                  |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -2688,7 +2767,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000002 | Incorrect ability type.                             |
 | 16000004 | Cannot start an invisible component.              |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed.              |
 | 16000008 | The crowdtesting application expires.               |
 | 16000011 | The context does not exist.                         |
 | 16000012 | The application is controlled.                      |
@@ -2719,14 +2797,14 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.openAtomicService<sup>18+<sup>
+## ServiceExtensionContext.openAtomicService<sup>18+</sup>
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;void&gt;
 
-Starts an atomic service based on an application ID. This API uses a promise to return the result asynchronously.
+Starts an atomic service by application ID. This API can be called only in the main thread. This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2743,7 +2821,7 @@ Starts an atomic service based on an application ID. This API uses a promise to 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object, no return result. |
 
 **Error codes**
 
@@ -2763,7 +2841,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { ServiceExtensionAbility, AtomicServiceOptions } from '@kit.AbilityKit';
+import { ServiceExtensionAbility, Want, AtomicServiceOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ServiceExtension extends ServiceExtensionAbility {
@@ -2799,8 +2877,7 @@ You can pass the Want information of multiple UIAbility instances, which can poi
 
 > **NOTE**
 >
-> 
-> For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
 
 **System API**: This is a system API.
 
@@ -2812,7 +2889,7 @@ You can pass the Want information of multiple UIAbility instances, which can poi
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------ |
-| wantList | Array\<[Want](js-apis-app-ability-want.md)> | Yes| List of launch parameters for multiple UIAbility components to be started simultaneously. A maximum of four Want objects can be passed. The **Want** parameter does not support implicit launch, cross-user launch, distributed launch, instant installation, or on-demand loading. By default, the main application is launched unless specified otherwise.|
+| wantList | Array\<[Want](js-apis-app-ability-want.md)> | Yes | List of startup parameters for multiple UIAbility instances that need to be started simultaneously. A maximum of 4 Want objects can be passed in. The Want startup parameters do not support implicit startup, cross-user startup, distributed startup, installation-free startup, or on-demand loading. If no clone is specified, the main application is started by default. |
 
 **Return value**
 
@@ -2879,3 +2956,89 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
   }
 }
 ```
+## ServiceExtensionContext.requestModalUIExtensionWithAccount
+
+requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise\<void>
+
+Requests to start a UIExtensionAbility of the corresponding type on the specified focused application for the specified user. The focused application is specified by bundleName in want.parameters. If no focused application is specified or the specified application is not focused, the UIExtensionAbility is started directly on the system UI. The UIExtensionAbility to be started is determined by the bundleName, abilityName, and moduleName fields in Want, and its type must be configured through the ability.want.params.uiExtensionType field in want.parameters. This operation can be called only on the main thread and provides an asynchronous callback in Promise form.
+
+Before the focused application starts the UIExtensionAbility, ensure that the application has completed page initialization; otherwise, the startup will fail. The application can determine the timing for starting the UIExtensionAbility by listening to the page loading status.
+
+> **NOTE**
+>
+> For details about the component startup rules, see [Intra-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-inner-device-sys.md) and [Cross-device Component Startup Rules (System Only)](../../application-models/component-startup-rules-cross-device-sys.md).
+
+**Required Permission**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | Yes | Want information for starting the UIExtension. The focused application is specified by bundleName in want.parameters. The UIExtensionAbility to be started is determined by the bundleName, abilityName, and moduleName fields in Want, and its type must be configured through the ability.want.params.uiExtensionType field in want.parameters. Ensure that the focused application has completed page initialization before calling this API. |
+| accountId | number | Yes | Account ID of the system account, which can be obtained through [getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23). |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise object that returns no result. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.The logical screen corresponding to the specified accountId is not in the foreground.|
+
+**Example**
+
+```ts
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class ServiceExtension extends ServiceExtensionAbility {
+  onCreate(want: Want) {
+    let pullUIExtWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // Same as the type configured for com.example.myapplication.UIExtAbility.
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // Account ID description:
+    // 1. Fixed value 100 in the example.
+    // 2. You can call the system account management API getForegroundOsAccountLocalId(displayId: number) to obtain the ID of the foreground system account running on the specified logical display.
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(pullUIExtWant, accountId)
+        .then(() => {
+          // Execute normal service logic.
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError) => {
+          // Handle service logic errors.
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // Handle input parameter errors.
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+<!--no_check-->
