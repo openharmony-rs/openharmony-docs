@@ -16,7 +16,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
@@ -161,7 +161,7 @@
       - [轴事件](arkui-ts/ts-universal-events-axis.md)
       - [按键事件](arkui-ts/ts-universal-events-key.md)
       - [表冠事件](arkui-ts/ts-universal-events-crown.md)
-      - [焦点轴事件](arkui-ts/ts-universal-events-focus_axis.md)
+      - [焦点轴事件](arkui-ts/ts-universal-events-focus-axis.md)
     - 交互响应事件<!--interaction-events-->
       - [点击事件](arkui-ts/ts-universal-events-click.md)
       - [拖拽事件](arkui-ts/ts-universal-events-drag-drop.md)
@@ -1011,4 +1011,4 @@
     - [屏幕错误码](errorcode-display.md)
     - [窗口错误码](errorcode-window.md)
   - UI编译<!--arkui-compile-arkts-errcode-->
-    - [编译错误码](_ark_ui_compile.md)
+    - [编译错误码](errorcode-arkui-compile.md)
