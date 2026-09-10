@@ -600,7 +600,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 | -- | -- |
 | uint32_t type | 指定要使用的自动增强效果类型。 |
 | bool enable | 启用或禁用指定的XComponent中该自动增强效果类型。|
-| const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此接口的效果只对第一个活跃的XComponent生效。 |
+| const char *name | 指定XComponent的名称。|
 
 **返回：**
 
@@ -616,7 +616,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, c
 
 **描述**
 
-设置与XComponent关联的自动增强效果参数。当前自动增强效果仅对最后调用的XComponent生效。
+对名字为name的XComponent设置AISR的参数param。此函数调用后，本次调用时指定的名为name的XComponent获得AISR效果，其他的XComponent失去AISR效果。
 
 **起始版本：** 26.1.0
 
@@ -625,7 +625,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, c
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t type | 指定要使用的自动增强效果类型。 |
-| const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此参数仅对第一个活跃的XComponent生效。 |
+| const char *name | 指定XComponent的名称。|
 | const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* param | 此参数依据type参数，具体的type可参考video_processing_types.h中的[变量](capi-video-processing-types-h.md#变量)。 |
 
 **返回：**
