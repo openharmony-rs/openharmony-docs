@@ -1,4 +1,4 @@
-# OpenHarmony SDK 升级助手
+# OpenHarmony SDK升级助手
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
