@@ -16,7 +16,7 @@
 > - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
-此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件, 将鼠标右键点击事件转换为长按事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。
+此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件，将鼠标右键点击事件转换为长按事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。
 
 ## 处理鼠标移动
 
@@ -601,7 +601,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 **1. 设备类型**
 
-第一层配置，设置鼠标事件转换在不同设备类型下的表现。鼠标右键转换只支持在2in1和tablet配置，common和phone不支持。
+第一层配置，设置鼠标事件转换在不同设备类型下的表现。鼠标右键转换只支持在2in1和tablet配置，common和phone不支持。若在common或phone中配置contextMenuOptions，编译阶段会报错，无法通过编译。
 
 ``` json
 { 
@@ -613,7 +613,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 | 枚举值 | 说明                                                         | 可选 |
 | ------ | ------------------------------------------------------------ | ---- |
 | 2in1   | PC/2in1类型设备上生效的配置                              | 是   |
-| tablet | Tablet类型设备上生效的配置 							    | 是 |
+| tablet | Tablet类型设备上生效的配置                               | 是   |
 
 **2. 鼠标右键转换输入选项**
 
@@ -621,7 +621,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
-| rightMouse2LongPress | boolean | 是否启用右键转长按策略。`true` 表示启用，`false` 表示不启用，当rightMouse2LongPress为false时，needTransferComponent配置不生效。 | 否   |
+| rightMouse2LongPress | boolean | 是否启用右键转长按策略。取值范围：true表示启用右键转长按策略，右键点击事件将被转换为长按事件；false表示不启用，右键点击事件将按默认方式处理。当取值为false时，needTransferComponent配置不生效。 | 否   |
 | needTransferComponent | string[] | 指定生效组件列表，决定哪些组件上的右键事件会被转换为长按事件。 | 是   |
 
 needTransferComponent数组中可选枚举类型说明：
@@ -654,8 +654,6 @@ needTransferComponent字段额外说明：
 
 ``` json
 {
-  "common": {
-  },
   "2in1": {
     "contextMenuOptions": {
       "rightMouse2LongPress": true,
