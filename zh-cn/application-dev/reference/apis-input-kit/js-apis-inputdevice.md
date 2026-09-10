@@ -1197,7 +1197,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 输入设备的轴信息。
 
-**系统能力**： SystemCapability.MultimodalInput.Input.InputDevice
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
