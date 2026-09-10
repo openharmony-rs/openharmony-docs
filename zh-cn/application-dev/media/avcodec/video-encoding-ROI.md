@@ -9,7 +9,7 @@
 
 ## 基础概念
 
-从API version 20开始支持ROI视频编码（Region Of Interest Video Coding），该功能是基于硬件H.264/H.265编码能力扩展的高级优化技术。其核心逻辑为对画面中指定的重点区域分配更多编码资源实现高画质编码。在有限带宽条件下保障ROI区域内容清晰呈现，显著提升整体视觉体验。
+从API version 20开始支持ROI视频编码（Region Of Interest Video Coding），该功能是基于硬件H.264/H.265编码能力扩展的高级优化技术。其核心逻辑为对画面中指定的重点区域分配更多编码资源以实现高画质编码，从而在有限带宽条件下保障ROI区域内容清晰呈现，显著提升整体视觉体验。
 
 开发者可自主定义视频画面中的ROI区域（如直播中的人脸、监控中的车牌等），并通过设定质量偏移参数，调节ROI区域与非ROI区域的编码质量差异，实现编码资源的差异化分配。
 
@@ -24,7 +24,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 - 网课视频：将课件文字、讲义图表、板书内容区域设为ROI，保证知识点清晰可读，降低视觉疲劳，提升教学效果。
 - 安全监控：将摄像头画面中的人脸、车牌、出入口等关键区域设为ROI，提升抓拍清晰度，便于后续识别分析。
 
-根据编码模式和ROI配置方式的不同，提供了三种ROI编码开发示例，开发者可根据实际业务和技术架构选择。
+根据编码模式和ROI配置方式的不同，提供了三个ROI编码开发示例，分为NativeBuffer元数据配置方式和编码输入回调配置方式两种，开发者可根据实际业务和技术架构选择。
 
 | 不同场景对照点 | 直播/视频通话场景| 录像场景 | 编辑导出/内容发布场景 |
 | :----: |:----:|:----:| :----: |
@@ -33,7 +33,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 | **编码视频帧直接生产者** | 图形 | 图形 | 应用 |
 | **编码模式** | Surface模式 | Surface模式 | Buffer模式 |
 | **ROI参数配置方式** | NativeBuffer元数据配置（推荐） | 编码输入参数回调配置 | 编码输入Buffer回调配置 |
-| **开发示例** | [Surface模式 - 方式一](#方式一通过nativebuffer元数据配置推荐) | [Surface模式 - 方式二](#方式二通过编码输入参数回调配置) | [Buffer模式](#方式三buffer模式下配置roi) |
+| **开发示例** | [NativeBuffer元数据配置方式](#nativebuffer元数据配置方式推荐) | [方式一：参数回调配置](#方式一通过编码输入参数回调配置) | [方式二：Buffer模式配置](#方式二buffer模式下配置roi) |
 
 > **说明：**
 >
@@ -50,7 +50,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 ## 参数要求说明
 
-ROI配置参数最终以字符串形式下发到编码器。从API版本26.0.0开始支持键值对格式，同时兼容旧版纯数值格式。所有坐标参数和数值参数均为整数。
+ROI配置参数最终以字符串形式下发到编码器。从API version 26开始支持键值对格式，同时兼容旧版纯数值格式。所有坐标参数和数值参数均为整数。
 
 当ROI数据来源于相机帧的NativeBuffer元数据时，开发者无需手动拼接字符串。可使用`OH_VideoMetadata_GetRoiCount`、`OH_VideoMetadata_ParseRoiString`和`OH_VideoMetadata_AppendRoiString`接口直接从相机帧的ROI元数据中解析区域信息、设置键值对参数（如`OH_MD_KEY_VIDEO_METADATA_ROI_DELTA_QP`、`OH_MD_KEY_VIDEO_METADATA_ROI_SEM_LABEL`），并自动生成符合编码器要求的配置字符串。
 
@@ -67,7 +67,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 | 参数 | 含义 | 取值范围 | 是否必填 |       默认行为       |
 | :----: | :----: | :----: |:----:|:----------------:|
 | dqp | 量化参数偏移值（DeltaQP） | [-51, 51] |  否   | 未设置时编码器使用默认QP策略（=-3）。 |
-| slb | 语义标签（Semantic Label） | 0（其他）或1（人脸） |  否   | 该参数仅供开发者区分ROI区域类型，不影响编码行为。  |
+| slb | 语义标签（Semantic Label） | 0（未指定）或1（人脸） |  否   | 该参数仅供开发者区分ROI区域类型，不影响编码行为。  |
 
 - dqp为负表示ROI区域编码画质优于非ROI区域，绝对值越大质量差异越大。
 - slb取值对应[OH_VideoMetadataRoiSemanticLabel](../../reference/apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel)枚举：`OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER`（0）表示未指定区域类型，`OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE`（1）表示人脸区域。
@@ -107,13 +107,11 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 
 **同时配置时的生效优先级：** 当某一帧的两种方式均有配置ROI参数，仅生效以编码输入回调配置方式下发的ROI参数，无论其能否解析出有效ROI信息。
 
-## 开发示例
+## NativeBuffer元数据配置方式（推荐）
 
-以下开发示例按照编码模式组织。Surface模式和Buffer模式共用相同的ROI信息获取与组装流程，区别在于如何将ROI配置到编码器。
+Surface模式和Buffer模式共用相同的ROI信息获取与组装流程，区别在于如何将ROI配置到编码器。
 
 当相机输出视频帧时，如果检测到ROI区域（如人脸），会将ROI信息写入帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考[OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。
-
-### 方式一：通过NativeBuffer元数据配置（推荐）
 
 Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开发者在帧处理线程中从每帧的NativeBuffer元数据提取ROI信息并组装成配置字符串，随后将ROI字符串写入编码器输入帧的NativeBuffer元数据，实现ROI随帧下发到编码器（如图2所示）。
 
@@ -272,9 +270,15 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    }
    ```
 
-### 方式二：通过编码输入参数回调配置
+## 编码输入回调配置方式
 
-此方式同样适用于Surface模式。从帧的NativeBuffer元数据中提取ROI信息，配置方式通过`OH_VideoEncoder_RegisterParameterCallback`注册的编码输入参数回调完成（如图3所示）。
+编码输入回调配置方式使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置ROI参数。根据编码模式的不同，分为以下两种方式：
+- 方式一（Surface模式）：通过`OH_VideoEncoder_RegisterParameterCallback`注册的编码输入参数回调配置。
+- 方式二（Buffer模式）：在`OnNeedInputBuffer`回调中通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
+
+### 方式一：通过编码输入参数回调配置
+
+此方式同样适用于Surface模式。从帧的NativeBuffer元数据中提取ROI信息，通过`OH_VideoEncoder_RegisterParameterCallback`注册的编码输入参数回调完成配置（如图3所示）。
 
 编码器在接收到视频帧时触发参数回调，由于参数回调不包含帧时间戳信息，开发者需要使用以PTS（时间戳）为键的同步队列（RoiQueue）将帧处理线程中的ROI数据按时间顺序传递到编码回调。回调中从队列弹出PTS最小的ROI条目，通过`OH_AVFormat_SetStringValue`配置到参数格式中。
 
@@ -286,15 +290,15 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 1. 在CMakeLists.txt中链接动态库。
 
-   同[方式一：通过nativebuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤1。
+   同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤1。
 
 2. 从视频帧NativeBuffer元数据提取ROI信息。
 
-   同[方式一：通过nativebuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤2。
+   同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤2。
 
 3. 使用OH_VideoMetadata API组装ROI配置字符串。
 
-   同[方式一：通过nativebuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤3。
+   同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤3。
 
 4. 实现PTS同步队列与回调用户数据结构。
 
@@ -314,7 +318,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 5. 注册编码输入参数回调。
 
-   在创建编码器后、Configure之前，注册编码输入参数回调。必须在Configure之前注册，否则回调不会生效。
+   回调必须在创建编码器后、Configure之前完成注册，否则无法生效。
 
    <!-- @[roi_register_parameter_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/VideoEncoder.cpp) -->
    
@@ -398,7 +402,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 >
 > RoiQueue以PTS为键排序存储ROI条目。编码回调取出PTS最小的条目，保证帧与ROI的顺序一致性。如果队列为空，最多等待3ms再返回空字符串。队列会自动清理超过2秒的陈旧条目，防止无限增长。每帧均应把ROI字符串入队（包括空ROI字符串），空ROI字符串用于明确标识该帧未配置ROI区域；关闭ROI时调用`ClearRoiQueue`清空队列。
 
-### 方式三：Buffer模式下配置ROI
+### 方式二：Buffer模式下配置ROI
 
 Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码器，开发者需要在`OnNeedInputBuffer`回调中填充帧像素数据的同时配置ROI信息。由于Buffer模式没有编码器Surface，帧像素数据需要从相机帧Buffer中拷贝出来，连同ROI字符串一起推入帧队列供编码回调消费（如图4所示）。
 
@@ -410,15 +414,15 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
 1. 在CMakeLists.txt中链接动态库。
 
-   同[方式一：通过nativebuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤1。
+   同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤1。
 
 2. 从视频帧NativeBuffer元数据提取ROI信息。
 
-   同[方式一：通过nativebuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤2。
+   同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤2。
 
 3. 使用OH_VideoMetadata API组装ROI配置字符串。
 
-   同[方式一：通过nativebuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)步骤3。
+   同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤3。
 
 4. 定义帧数据结构和帧队列。
 
@@ -464,7 +468,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    int32_t frameWidth = bufferHandle->width;
    int32_t frameHeight = bufferHandle->height;
    int32_t stride = bufferHandle->stride;
-   int32_t frameSize = stride * frameHeight;
+   int32_t frameSize = stride * frameHeight * 3 / 2;
    FrameItem frameItem;
    frameItem.width = frameWidth;
    frameItem.height = frameHeight;
@@ -486,7 +490,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
 6. 在编码输入Buffer回调中配置ROI信息。
 
-   当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调，回调中将Buffer入队供消费线程处理。Buffer模式的消费线程从队列取出Buffer，调用`FillBufferModeInput`从帧队列弹出帧数据项，将像素数据拷贝到编码器Buffer中，并通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
+   当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调，该回调中将Buffer入队，交由消费线程处理。Buffer模式的消费线程从队列取出Buffer，调用`FillBufferModeInput`从帧队列弹出帧数据项，将像素数据拷贝到编码器Buffer中，并通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
 
    `OnNeedInputBuffer`回调将Buffer入队，供消费线程处理过程如下：
 
@@ -546,19 +550,20 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
        }
        uint8_t *bufferAddr = OH_AVBuffer_GetAddr(buffer);
        int32_t bufferCapacity = OH_AVBuffer_GetCapacity(buffer);
-       if (bufferAddr != nullptr && bufferCapacity >= static_cast<int32_t>(frameItem.pixels.size())) {
-           std::copy(frameItem.pixels.data(), frameItem.pixels.data() + frameItem.pixels.size(), bufferAddr);
-           OH_AVCodecBufferAttr attr;
-           attr.size = static_cast<int32_t>(frameItem.pixels.size());
-           attr.offset = 0;
-           attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-           OH_AVBuffer_SetBufferAttr(buffer, &attr);
+       if (bufferAddr == nullptr || bufferCapacity < static_cast<int32_t>(frameItem.pixels.size())) {
+           SAMPLE_LOGE("Buffer capacity %{public}d is less than frame size %{public}d, skip this frame",
+               bufferCapacity, static_cast<int32_t>(frameItem.pixels.size()));
+           return;
        }
-       if (!frameItem.roiStr.empty()) {
-           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-           if (format != nullptr) {
-               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
-           }
+       std::copy(frameItem.pixels.data(), frameItem.pixels.data() + frameItem.pixels.size(), bufferAddr);
+       OH_AVCodecBufferAttr attr;
+       attr.size = static_cast<int32_t>(frameItem.pixels.size());
+       attr.offset = 0;
+       attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
+       OH_AVBuffer_SetBufferAttr(buffer, &attr);
+       OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+       if (format != nullptr) {
+           OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
        }
        OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
    }
