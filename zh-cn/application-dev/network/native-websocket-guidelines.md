@@ -219,20 +219,20 @@ libnet_websocket.so
 3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
 
    <!-- @[websocket_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void *)0),
-    .reserved = {0},
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
-```
+   
+   ``` C++
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void *)0),
+       .reserved = {0},
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+   ```
 
 4. 在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
 
