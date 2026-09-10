@@ -15,8 +15,6 @@ ProxyConfig是ArkWeb框架中用于配置网络代理规则的类，配合[Proxy
 > - 本Class首批接口从API version 15开始支持。
 >
 > - 示例效果请以真机运行为准。
->
-> - 当前仅支持HTTP和Socks4代理协议，不支持Socks5。
 
 ## insertProxyRule<sup>15+</sup>
 
