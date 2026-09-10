@@ -1115,7 +1115,7 @@ Worker线程向宿主线程发送消息，消息中的[Sendable对象](../../ark
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见[序列化支持类型](#序列化支持类型)，共享支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为空数组。|
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为undefined。|
 
 **错误码：**
 
@@ -1317,7 +1317,7 @@ Worker线程向宿主线程发送插队消息，消息中的[Sendable对象](../
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | message | Object | 是 | 发送至宿主线程的数据，该数据对象必须是可序列化或可共享，序列化支持类型见[序列化支持类型](#序列化支持类型)，共享支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
 | priority | [Priority](#priority) | 是 | 消息发送的优先级。 |
-| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为空数组。|
+| transfer | ArrayBuffer[] | 否 | 表示可转移的ArrayBuffer实例对象数组，该数组中对象的所有权会被转移到宿主线程，在Worker线程中将会变为不可用，仅在宿主线程中可用，数组不可传入null。默认值为undefined。|
 
 **错误码：**
 
@@ -2208,12 +2208,13 @@ Worker线程自身的运行环境，WorkerGlobalScope类继承[EventTarget](#eve
 ```ts
 // Index.ets
 import { worker, MessageEvents } from '@kit.ArkTS';
+import { MyModel } from 'workers/worker';
 
 const workerInstance = new worker.ThreadWorker("workers/worker.ets");
 workerInstance.postMessage("message from main thread to worker");
 workerInstance.onmessage = (d: MessageEvents): void => {
   // 当Worker线程传递myModel时，data即为myModel。data没有init的方法
-  let data: string  = d.data;
+  let data: MyModel  = d.data;
 }
 ```
 ```ts
@@ -2221,7 +2222,7 @@ workerInstance.onmessage = (d: MessageEvents): void => {
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
-class MyModel {
+export class MyModel {
     name = "undefined";
     init() {
         this.name = "MyModel";

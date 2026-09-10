@@ -221,7 +221,7 @@ async function fn(args: Array<string | number | Function>) {
 let cb = util.callbackWrapper(fn);
 let args: Array<string | number | Function> = ['hello world', 8]
 cb(args, (err : Object, ret : string) => {
-  if (err) throw new Error;
+  if (err) throw new Error();
   console.info(ret); // 输出结果：hello world
 });
 ```
@@ -1251,7 +1251,7 @@ console.info("retStr = " + retStr);
 // 输出结果：retStr = abc
 let retJson = JSON.stringify(retStr)
 console.info("retJson = " + retJson);
-// 输出结果：retJson = ab/u0000c
+// 输出结果：retJson = "ab\u0000c"
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -3909,7 +3909,7 @@ end(chunk?: string | Uint8Array): string
 
 | 参数名 | 类型       | 必填 | 说明                |
 | ------ | ---------- | ---- | ------------------- |
-| chunk  | string \| Uint8Array | 否   | 需要解码的最后一部分数据。当还有剩余数据需要在结束解码时一并处理时传入此参数；不传入时默认为undefined，即仅返回内部缓冲区中存储的不完整字节序列的解码结果，不再处理新数据。要解码的字符串。默认为undefined。 |
+| chunk  | string \| Uint8Array | 否   | 需要解码的最后一部分数据。当还有剩余数据需要在结束解码时一并处理时传入此参数；不传入时默认为undefined，即仅返回内部缓冲区中存储的不完整字节序列的解码结果，不再处理新数据。 |
 
 **返回值：**
 
@@ -6778,7 +6778,7 @@ Base64的构造函数。
 **示例：**
 
   ```ts
-  let base64 = new  util.Base64();
+  let base64 = new util.Base64();
   ```
 
 ### encodeSync<sup>(deprecated)</sup>
