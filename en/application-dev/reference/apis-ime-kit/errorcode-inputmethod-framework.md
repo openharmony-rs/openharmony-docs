@@ -190,15 +190,15 @@ Not the preconfigured default input method.
 
 **Description**
 
-This error code is reported when the invoking application is not the preconfigured default input method.
+This error code is reported when the invoking application is neither the preconfigured default input method nor an input method that provides extended input capability.
 
 **Possible Causes**
 
-The API is called by an application other than the preconfigured default input method.
+The API is called by an application other than the preconfigured default input method or an input method that provides extended input capability.
 
 **Solution**
 
-Use [getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11) to query the default input method of the system and determine whether the application uses the default input method. If the application does not use the default input method, this API cannot be called.
+Use [getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11) to query the default input method of the system and determine whether the application uses the default input method. If not, determine whether the application provides extended input capability. If the application meets neither condition, this API cannot be called.
 
 ## 12800011 Text Preview Not Supported
 
