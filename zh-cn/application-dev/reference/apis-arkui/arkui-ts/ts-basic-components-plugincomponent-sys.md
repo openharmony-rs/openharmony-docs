@@ -141,6 +141,8 @@ type PluginErrorCallback = (info: PluginErrorData) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名     | 类型         | 必填      | 说明                        |
 | -------- | ------------------| ------ | --------------------------- |
 | info     | [PluginErrorData](#pluginerrordata18类型说明) | 是  | 发生错误时提供的数据。 |
