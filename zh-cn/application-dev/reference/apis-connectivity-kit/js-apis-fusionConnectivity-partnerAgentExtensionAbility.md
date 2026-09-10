@@ -13,6 +13,7 @@ PartnerAgentExtensionAbility是外设互通扩展能力的基础类，提供设�
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
+> - 本能力支持调用蓝牙接口实现与设备的交互业务，例如发起配对、建立连接、进行[GATT](../../connectivity/bluetooth/terminology.md#gatt)通信等，详情请参考[@ohos.bluetooth.connection](js-apis-bluetooth-connection.md)和[@ohos.bluetooth.ble](js-apis-bluetooth-ble.md)。
 
 ## 约束限制
 
