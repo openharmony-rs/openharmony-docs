@@ -12,23 +12,15 @@
 
 > **适用版本：** 从 API 版本 26.1.0（OpenHarmony 7.1-Release）开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
-### 三代演进表
-
-| 代次 | 接口形态 | 代表 API | 编程模型 | 版本 |
-|------|---------|---------|---------|------|
-| 第一代 | 命令式静态方法 | `AlertDialog.show()`、`TextPickerDialog.show()` | 静态方法 + 选项对象 | API 9+ |
-| 第二代 | 装饰器 + Controller | `@CustomDialog` + `CustomDialogController` | 装饰器组件 + Controller 生命周期 | API 8+ |
-| 第三代 | Unified Dialog API | `DialogPresenter.present()` + `@ohos.arkui.dialog` 类型 | UIContext 获取 Presenter + Promise 异步 | API 26.1.0+ |
-
 ### 快速导航
 
 如需直接迁移，可按弹窗类别跳转至“适配指导”对应小节：
 
-- [CustomDialog 迁移映射](#1-customdialog--dialogpresenterpresent自定义弹窗)
-- [AlertDialog 迁移映射](#2-alertdialog--dialogpresenterpresent固定样式弹窗)
-- [TextPickerDialog 迁移映射](#3-textpickerdialog--dialogpresenterpresent自定义弹窗承载-textpicker)
-- [TimePickerDialog 迁移映射](#4-timepickerdialog--dialogpresenterpresent自定义弹窗承载-timepicker)
-- [DatePickerDialog 迁移映射](#5-datepickerdialog--dialogpresenterpresent自定义弹窗承载-datepicker)
+- [CustomDialog 迁移](#customdialog--dialogpresenterpresent自定义弹窗)
+- [AlertDialog 迁移](#alertdialog--dialogpresenterpresent固定样式弹窗)
+- [TextPickerDialog 迁移](#textpickerdialog--dialogpresenterpresent自定义弹窗内嵌-textpicker)
+- [TimePickerDialog 迁移](#timepickerdialog--dialogpresenterpresent自定义弹窗内嵌-timepicker)
+- [DatePickerDialog 迁移](#datepickerdialog--dialogpresenterpresent自定义弹窗内嵌-datepicker)
 
 ## 能力介绍
 
@@ -221,15 +213,15 @@ struct DialogStatePage {
 
 ### 差异总览
 
-新老接口在编程模型、回调机制、动画参数、更新能力和适用模型五个维度存在差异，总览如下（差异编号对应下方"使用差异"详述）：
+弹窗接口经历三代演进：第一代（API 9+，命令式静态方法如 `AlertDialog.show()`）、第二代（API 8+，`@CustomDialog` 装饰器 + `CustomDialogController`）、第三代（API 26.1.0+，Unified Dialog API，`DialogPresenter.present()` + Promise）。新老接口在以下维度存在差异，按"属性差异"和"使用差异"两类分述（详见下方对应小节）：
 
-| 对比维度 | 老接口（第一/二代） | 新接口（第三代 `@ohos.arkui.dialog`） | 差异编号 |
-|---------|-------------------|----------------------------|---------|
-| 编程模型 | 静态方法 / 装饰器 + Controller | `UIContext.getDialogPresenter()` + Promise | G1 |
-| 取消回调 | `onCancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` | G2 |
-| 高级动画 | `customStyle` + `animationStyle`/`transition` | `dialogTransition` + `maskTransition`（TransitionEffect） | G3 |
-| update 更新面 | `CustomDialogController.update()` 支持多属性 | `DialogPresenter.update()` 仅支持 `alignment`/`offset`/`autoCancel`/`maskColor` | G4 |
-| FA 模型适用面 | 部分老接口支持 FA 模型 | 仅 Stage 模型（`@stagemodelonly`） | G5 |
+| 差异类型 | 对比维度 | 老接口（第一/二代） | 新接口（第三代 `@ohos.arkui.dialog`） |
+|---------|---------|-------------------|----------------------------|
+| 属性差异 | 高级动画 | `customStyle` + `animationStyle`/`transition` | `dialogTransition` + `maskTransition`（TransitionEffect） |
+| 属性差异 | update 更新面 | `CustomDialogController.update()` 支持多属性 | `DialogPresenter.update()` 仅支持 `alignment`/`offset`/`autoCancel`/`maskColor` |
+| 使用差异 | 编程模型 | 静态方法 / 装饰器 + Controller | `UIContext.getDialogPresenter()` + Promise |
+| 使用差异 | 取消回调 | `onCancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
+| 使用差异 | FA 模型适用面 | 部分老接口支持 FA 模型 | 仅 Stage 模型（`@stagemodelonly`） |
 
 ### 属性差异
 
@@ -284,7 +276,7 @@ struct DialogStatePage {
 
 | 属性 | 老接口（TextPickerDialog.show） | 新接口（迁移到 DialogPresenter + ComponentContent） |
 |------|------|------|
-| 编程模型 | `TextPickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容承载 TextPicker（见 G1） |
+| 编程模型 | `TextPickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 TextPicker（见 G1） |
 | 选择范围 | `range: string[] \| Resource` / `TextPickerRangeContent[]` | 内容组件中嵌入 `TextPicker`，通过自定义弹窗承载 |
 | 默认选中 | `selected: number` | TextPicker 组件 `selected` 属性 |
 | 确认回调 | `onAccept: (value: string\|TextPickerResult) => void` | 自定义组件内 `onAccept` 回调 |
@@ -298,7 +290,7 @@ struct DialogStatePage {
 
 | 属性 | 老接口（TimePickerDialog.show） | 新接口（迁移到 DialogPresenter + ComponentContent） |
 |------|------|------|
-| 编程模型 | `TimePickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容承载 TimePicker（见 G1） |
+| 编程模型 | `TimePickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 TimePicker（见 G1） |
 | 24小时制 | `useMilitaryTime: boolean` | TimePicker 组件 `useMilitaryTime` 属性 |
 | 响应回调 | `onAccept: (value: TimePickerValue) => void` | 自定义组件内回调 |
 | 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
@@ -309,7 +301,7 @@ struct DialogStatePage {
 
 | 属性 | 老接口（DatePickerDialog.show） | 新接口（迁移到 DialogPresenter + ComponentContent） |
 |------|------|------|
-| 编程模型 | `DatePickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容承载 DatePicker（见 G1） |
+| 编程模型 | `DatePickerDialog.show(options)` 静态方法 | 使用 `DialogPresenter.present(content, DialogCustomOptions)` 自定义内容内嵌 DatePicker（见 G1） |
 | 起始日期 | `start: Date` | DatePicker 组件 `start` 属性 |
 | 结束日期 | `end: Date` | DatePicker 组件 `end` 属性 |
 | 选中类型 | `type: DatePickerType` | DatePicker 组件 `type` 属性 |
@@ -317,6 +309,16 @@ struct DialogStatePage {
 | 取消回调 | `onCancel` | `onWillDismiss: Callback<DialogDismissal>`（见 G2） |
 | 变化回调 | `onChange` | DatePicker 组件 `onChange` |
 | 样式 | `alignment` / `offset` / `maskColor` 等 | 继承自 `DialogBaseOptions` |
+
+#### G3：高级动画参数差异
+
+老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`animationStyle`（已废弃）/ `transition` 控制动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
+
+#### G4：update 更新面收窄
+
+老接口 `CustomDialogController.update()` 可更新多种属性。新接口 `DialogPresenter.update(content, options)` 的 `options` 类型为 `DialogBaseOptions`，实际可更新面收窄为 `alignment`、`offset`、`autoCancel`、`maskColor` 四项。其他属性（如 `backgroundColor`、`borderRadius` 等）不支持通过 `update` 运行时更新。
+
+> **说明：** 本指南如实标注此收窄，不推动 G4 能力补齐（非目标）。
 
 ### 使用差异
 
@@ -367,16 +369,6 @@ this.getUIContext().getDialogPresenter().present({
 })
 ```
 
-#### G3：高级动画参数差异
-
-老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`animationStyle`（已废弃）/ `transition` 控制动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
-
-#### G4：update 更新面收窄
-
-老接口 `CustomDialogController.update()` 可更新多种属性。新接口 `DialogPresenter.update(content, options)` 的 `options` 类型为 `DialogBaseOptions`，实际可更新面收窄为 `alignment`、`offset`、`autoCancel`、`maskColor` 四项。其他属性（如 `backgroundColor`、`borderRadius` 等）不支持通过 `update` 运行时更新。
-
-> **说明：** 本指南如实标注此收窄，不推动 G4 能力补齐（非目标）。
-
 #### G5：FA 模型适用面
 
 新接口 `@ohos.arkui.dialog` 标注 `@stagemodelonly`，仅支持 Stage 模型。老接口中部分接口支持 FA 模型。本指南对 FA 适用面不作显式说明（FA 模型开发者如需弹窗请继续使用老接口）。
@@ -390,14 +382,14 @@ this.getUIContext().getDialogPresenter().present({
 | 示例页面 | 对应章节 | 覆盖 AC |
 |---------|---------|--------|
 | `Index.ets` | 迁移映射入口 | AC-1, AC-4 |
-| `CustomDialogMigrationPage.ets` | 迁移映射 1（CustomDialog） | AC-3.1, AC-4 |
-| `AlertDialogMigrationPage.ets` | 迁移映射 2（AlertDialog） | AC-3.1, AC-4 |
-| `TextPickerMigrationPage.ets` | 迁移映射 3（TextPickerDialog） | AC-3.1, AC-4 |
-| `TimePickerMigrationPage.ets` | 迁移映射 4（TimePickerDialog） | AC-3.1, AC-4 |
-| `DatePickerMigrationPage.ets` | 迁移映射 5（DatePickerDialog） | AC-3.1, AC-4 |
-| `DialogStatePage.ets` | 能力地图（DialogBaseController/DialogState） | AC-2, AC-3.1 |
+| `CustomDialogMigrationPage.ets` | CustomDialog 迁移 | AC-3.1, AC-4 |
+| `AlertDialogMigrationPage.ets` | AlertDialog 迁移 | AC-3.1, AC-4 |
+| `TextPickerMigrationPage.ets` | TextPickerDialog 迁移 | AC-3.1, AC-4 |
+| `TimePickerMigrationPage.ets` | TimePickerDialog 迁移 | AC-3.1, AC-4 |
+| `DatePickerMigrationPage.ets` | DatePickerDialog 迁移 | AC-3.1, AC-4 |
+| `DialogStatePage.ets` | 能力介绍（DialogBaseController/DialogState） | AC-2, AC-3.1 |
 
-### 1. CustomDialog → DialogPresenter.present（自定义弹窗）
+### CustomDialog → DialogPresenter.present（自定义弹窗）
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
@@ -511,7 +503,7 @@ struct CustomDialogMigrationPage {
 }
 ```
 
-### 2. AlertDialog → DialogPresenter.present（固定样式弹窗）
+### AlertDialog → DialogPresenter.present（固定样式弹窗）
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
@@ -617,7 +609,7 @@ struct AlertDialogMigrationPage {
 }
 ```
 
-### 3. TextPickerDialog → DialogPresenter.present（自定义弹窗承载 TextPicker）
+### TextPickerDialog → DialogPresenter.present（自定义弹窗内嵌 TextPicker）
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
@@ -705,7 +697,7 @@ struct TextPickerMigrationPage {
 }
 ```
 
-### 4. TimePickerDialog → DialogPresenter.present（自定义弹窗承载 TimePicker）
+### TimePickerDialog → DialogPresenter.present（自定义弹窗内嵌 TimePicker）
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
@@ -788,7 +780,7 @@ struct TimePickerMigrationPage {
 }
 ```
 
-### 5. DatePickerDialog → DialogPresenter.present（自定义弹窗承载 DatePicker）
+### DatePickerDialog → DialogPresenter.present（自定义弹窗内嵌 DatePicker）
 
 | 老接口签名 | 新接口签名 | 说明 |
 |-----------|-----------|------|
@@ -873,15 +865,3 @@ struct DatePickerMigrationPage {
   }
 }
 ```
-
-## 相关文档
-
-- [弹窗概述](arkts-dialog-overview.md)
-- [@ohos.arkui.dialog（Unified Dialog API）](../reference/apis-arkui/js-apis-dialog.md)
-- [@ohos.arkui.dialog 系统接口](../reference/apis-arkui/js-apis-dialog-sys.md)
-- [DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md)
-- [CustomDialogController（老接口）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
-- [AlertDialog（老接口）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)
-- [TextPickerDialog（老接口）](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)
-- [TimePickerDialog（老接口）](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)
-- [DatePickerDialog（老接口）](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)
