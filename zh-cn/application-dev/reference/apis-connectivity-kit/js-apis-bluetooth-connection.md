@@ -943,7 +943,7 @@ setLocalName(name: string): void
 设置本机蓝牙设备名称，不能设置为空字符串。如果设为空字符串会失败。
 
 > **说明：**<br/>
-> 从API version 10开始支持，从API version 12开始废弃，不再提供替代接口。
+> 从API version 10开始支持，但出于安全与敏感信息等考虑，此接口从API version 12开始废弃，不再提供替代接口。若需要修改本机蓝牙设备名称，可在系统设置中进行修改。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 

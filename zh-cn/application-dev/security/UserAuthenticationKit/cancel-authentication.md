@@ -77,7 +77,7 @@ cancelingUserAuthentication() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: int) {
@@ -125,4 +125,4 @@ cancelingUserAuthentication() {
 ## 示例代码
 
   - [认证过程中取消认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
-  - [认证过程中取消认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [认证过程中取消认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)

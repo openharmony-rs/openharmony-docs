@@ -74,6 +74,7 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | 否 | - | 宫格视图进入到大图视图、大图浏览切换时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | 否 | - | 使用PhotoPickerComponent组件发生错误时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | onPhotoBrowserZoom| [PhotoBrowserZoomCallback](#photobrowserzoomcallback) | 否 | - | PhotoPickerComponent进入大图后，双指放大缩小时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0 |
+| onUnselectableItemClicked| [UnselectableItemClickedCallback](#unselectableitemclickedcallback) | 否 | - | 在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.1.0 |
 
 ## PickerOptions
 
@@ -452,6 +453,26 @@ PhotoPickerComponent进入大图后，大图放大缩小时的回调。
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | scale  | number | 是 | 图片相比原图放大缩小的比例。 |
 
+## UnselectableItemClickedCallback 
+ 
+type UnselectableItemClickedCallback = (unselectableItemInfo: UnselectableItemInfo) => void
+ 
+在picker宫格或大图预览界面，当不可选中的图片被点击时产生的回调。
+ 
+**起始版本：** 26.1.0
+ 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+ 
+**参数：**
+ 
+| 参数名 | 类型                            | 必填 | 说明 |
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| unselectableItemInfo  | [UnselectableItemInfo](#unselectableiteminfo) | 是 | 被点击的不可选中的图片详情。 |
+
 ## PickerController
 
 应用可通过PickerController向picker组件发送数据。
@@ -533,7 +554,7 @@ setMaxSelected(maxSelected: MaxSelected): void
 
 setPhotoBrowserItem(uri: string, photoBrowserRange?: PhotoBrowserRange): void
 
-应用可通过该接口,切换picker组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
+应用可通过该接口，切换picker组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -906,6 +927,23 @@ Picker上次退出时现场的信息。
 | contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | 否   | 否 | PhotoPicker退出状态的上下文信息。  |
 | movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | 否   | 否 | 已选择媒体文件的动态照片状态。当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates包含动态照片状态；否则为空。 |
 
+## UnselectableItemInfo
+ 
+被点击的不可选中的图片详情。
+ 
+**起始版本：** 26.1.0
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+ 
+| 名称 | 类型                                             | 只读 | 可选 | 说明      |
+| ---- | ------------------------------------------------ | ---- | ---- |---------|
+| mimeType | string | 否   | 是 | 媒体文件类型。 |
+| photoSubType | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否   | 是 | 图片资源的子类型。|
+
 ## DataType
 
 枚举，PickerController向picker组件发送数据的数据类型。
@@ -1000,7 +1038,7 @@ Picker的颜色模式。
 |-------------------|-----|-----------|
 | NONE | 0   | 不提示。      |
 | TOAST | 1   | 弹toast提示。 |
-| MASK | 2   | 蒙灰提示。     |
+| MASK | 2   | 蒙层提示。     |
 
 ## MaxCountType
 

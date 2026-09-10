@@ -26,14 +26,14 @@
 以查询PIN认证类型的认证冻结状态为例：
 
 ArkTS-Dyn示例：
-<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 async obtainingAuthLockState() : Promise<string> {
   try {
     Logger.info(`get auth lock state start`);
     const authLockState : userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
-    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+    if (authLockState.isLocked && authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
       Logger.info('the authentication of given authType is permanent locked.');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);
@@ -48,14 +48,14 @@ async obtainingAuthLockState() : Promise<string> {
 ```
 
 ArkTS-Sta示例：
-<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 async obtainingAuthLockState(): Promise<string> {
   try {
     Logger.info(`get auth lock state start`);
     const authLockState: userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
-    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+    if (authLockState.isLocked && authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
       Logger.info('the authentication of given authType is permanent locked.');
     }
     const authLockStateContent: string = JSON.stringify(authLockState);
@@ -73,4 +73,4 @@ async obtainingAuthLockState(): Promise<string> {
 ## 示例代码
 
   - [查询指定认证类型的认证冻结状态(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
-  - [查询指定认证类型的认证冻结状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [查询指定认证类型的认证冻结状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)

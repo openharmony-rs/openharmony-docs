@@ -922,15 +922,15 @@ struct ReusableV2Component {
   @Require @Param num: number;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear', this.num); // 创建时触发
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToAppear ${this.num}`); // 创建时触发
   }
 
   aboutToRecycle() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle', this.num); // 回收时触发
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToRecycle ${this.num}`); // 回收时触发
   }
 
   aboutToReuse() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse', this.num); // 复用时触发
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToReuse ${this.num}`); // 复用时触发
   }
 
   build() {
@@ -1088,19 +1088,19 @@ struct ChildComponent {
   @Require @Param data: string;
 
   aboutToAppear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToAppear ${this.data}`);
   }
 
   aboutToDisappear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToDisappear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToDisappear ${this.data}`);
   }
 
   aboutToReuse(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToReuse', this.data); // 复用时触发
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToReuse ${this.data}`); // 复用时触发
   }
 
   aboutToRecycle(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToRecycle', this.data); // 回收时触发
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToRecycle ${this.data}`); // 回收时触发
   }
 
   build() {

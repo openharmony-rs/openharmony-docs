@@ -65,10 +65,10 @@
   // 复杂类型
   @Prop title: Model;
   // 可以观察到赋值的变化
-  this.title = new Model('Hi');
+  this.title = new Model('Hi', new Info('ArkUI'));
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop复杂类型的同步](#从父组件中的state类对象属性到prop复杂类型的同步)。
 
   <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
@@ -386,7 +386,7 @@ struct Index {
 
 - this.arr的更改触发ForEach更新，this.arr更新的前后都有数值为3的数组项：[3, 4, 5] 和[1, 2, 3]。根据diff算法，数组项“3”将被保留，删除“1”和“2”的数组项，添加为“4”和“5”的数组项。这就意味着，数组项“3”的组件不会重新生成，而是将其移动到第一位。所以“3”对应的组件不会更新，此时“3”对应的组件数值为“7”，ForEach最终的渲染结果是“7”，“4”，“5”。
 
-### 从父组件中的\@State类对象属性到\@Prop简单类型的同步
+### 从父组件中的\@State类对象属性到\@Prop复杂类型的同步
 
 如果图书馆有一本图书和两位用户，每位用户都可以将图书标记为已读，此标记行为不会影响其他用户。从代码角度讲，对\@Prop图书对象的本地更改不会同步给图书馆组件中的\@State图书对象。
 

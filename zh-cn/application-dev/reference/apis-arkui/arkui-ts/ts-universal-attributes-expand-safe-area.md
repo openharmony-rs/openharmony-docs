@@ -363,7 +363,7 @@ struct SafeAreaExample3 {
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { KeyboardAvoidMode } from '@kit.ArkUI';
+import { window, KeyboardAvoidMode } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -417,7 +417,7 @@ struct KeyboardAvoidExample1 {
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { KeyboardAvoidMode } from '@kit.ArkUI';
+import { window, KeyboardAvoidMode } from '@kit.ArkUI';
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability

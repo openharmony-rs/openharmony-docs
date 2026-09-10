@@ -615,7 +615,7 @@ struct Index {
 
 ## inputDevice.supportKeys<sup>9+</sup>
 
-supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
+supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void
 
 Checks whether the input device supports the specified keys. This API uses an asynchronous callback to return the result.
 

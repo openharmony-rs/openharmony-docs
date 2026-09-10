@@ -834,6 +834,7 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, c
 > 
 > - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -921,6 +922,7 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): 
 > 
 > - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1010,7 +1012,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1093,7 +1096,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1272,6 +1276,10 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口不支持停止分身应用的ServiceExtensionAbility。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -1342,6 +1350,10 @@ class EntryAbility extends ServiceExtensionAbility {
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
 停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1423,7 +1435,8 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, ca
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1505,7 +1518,8 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): P
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1700,7 +1714,8 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1843,6 +1858,7 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 >
 > - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 > - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -2228,7 +2244,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Caller&gt; | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;Caller&gt; | Promise对象，返回要通信的caller对象。 |
 
 **错误码：**
 
@@ -2595,7 +2611,8 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持启动分身应用的UIServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2723,7 +2740,7 @@ ArkTS-Sta: startAbilityByCallWithAccount(want: Want, accountId: int): Promise&lt
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Caller&gt; | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;Caller&gt; | Promise对象，返回要通信的caller对象。 |
 
 **错误码：**
 
@@ -2836,7 +2853,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
-请求在指定的获焦应用上拉起对应类型的UIExtensionAbility。其中，获焦应用通过want.parameters中bundleName来指定，如果未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility；被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需要通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型。仅支持在主线程调用。使用promise形式异步回调。
+请求在指定的获焦应用上拉起对应类型的UIExtensionAbility。其中，获焦应用通过want.parameters中bundleName来指定，如果未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility；被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需要通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型。仅支持在主线程调用。使用Promise形式异步回调。
 
 在获焦应用上拉起UIExtensionAbility之前，必须确保该应用已完成页面初始化，否则将导致拉起失败。应用可通过监听页面加载状态来判断拉起UIExtensionAbility的时机。
 

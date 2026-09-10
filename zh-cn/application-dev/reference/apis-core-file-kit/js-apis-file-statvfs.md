@@ -1,9 +1,9 @@
 # @ohos.file.statvfs (文件系统空间统计)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向应用程序提供获取文件系统总字节数、空闲字节数的ArkTS接口。通过该模块，开发者可以实时掌握文件系统存储状况，避免因存储空间不足导致的应用崩溃，提升用户体验和系统稳定性。
@@ -24,7 +24,7 @@ import { statfs } from '@kit.CoreFileKit';
 
 getFreeSize(path: string): Promise&lt;number&gt;
 
-获取指定文件或目录所在文件系统的空闲字节数，即当前可供应用使用的存储空间大小。使用Promise异步回调。
+获取指定文件或目录所在文件系统的空闲字节数。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -81,7 +81,7 @@ getFreeSize(path: string): Promise&lt;number&gt;
 
 getFreeSize(path: string, callback:AsyncCallback&lt;number&gt;): void
 
-获取指定文件或目录所在文件系统的空闲字节数，即当前可供应用使用的存储空间大小。使用callback异步回调。
+获取指定文件或目录所在文件系统的空闲字节数。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -135,7 +135,7 @@ getFreeSize(path: string, callback:AsyncCallback&lt;number&gt;): void
 
 getFreeSizeSync(path: string): number
 
-以同步方法获取指定文件或目录所在文件系统的空闲字节数，即当前可供应用使用的存储空间大小。
+以同步方法获取指定文件或目录所在文件系统的空闲字节数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -188,7 +188,7 @@ getFreeSizeSync(path: string): number
 
 getTotalSize(path: string): Promise&lt;number&gt;
 
-获取指定文件或目录所在文件系统的总字节数，即文件系统的总存储空间大小。使用Promise异步回调。
+获取指定文件或目录所在文件系统的总字节数。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -245,7 +245,7 @@ getTotalSize(path: string): Promise&lt;number&gt;
 
 getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定文件或目录所在文件系统的总字节数，即文件系统的总存储空间大小。使用callback异步回调。
+获取指定文件或目录所在文件系统的总字节数。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -299,7 +299,7 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
 
 getTotalSizeSync(path: string): number
 
-以同步方法获取指定文件或目录所在文件系统的总字节数，即文件系统的总存储空间大小。
+以同步方法获取指定文件或目录所在文件系统的总字节数。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

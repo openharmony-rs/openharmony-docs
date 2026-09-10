@@ -72,7 +72,7 @@
 | \@Consume变量装饰器  | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
 | 装饰器参数           | 别名：常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。 |
-| 允许装饰的变量类型   | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>**说明：** <br/>API version 20之前，\@Consume装饰的变量，在其父组件或者祖先组件上，必须有对应的属性和别名的\@Provide装饰的变量。 |
+| 允许装饰的变量类型   | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[@Provide和@Consume支持联合类型实例](#provide和consume支持联合类型实例)。<br/>**说明：** <br/>API version 20之前，\@Consume装饰的变量，在其父组件或者祖先组件上，必须有对应的属性和别名的\@Provide装饰的变量。 |
 | 不允许装饰的变量类型 | 不支持装饰Function类型。                                     |
 | 初始化规则           | API version 20之前，\@Consume装饰的变量不支持本地设置默认值，必须要有与其匹配的\@Provide装饰的变量。<br/>从API version 20开始，\@Consume支持设置默认值。若存在匹配成功的\@Provide，则会使用\@Provide的变量值作为初始值。若未匹配到\@Provide变量，则使用本地默认值。示例见[\@Consume装饰的变量支持设置默认值](#consume装饰的变量支持设置默认值)。 |
 | 同步规则             | **在子组件使用时：** <br/>与祖先组件匹配的\@Provide变量双向同步。<br/>**在父组件使用时：** <br/>可以初始化子组件的常规变量、\@State、\@Link、\@Prop、\@Provide。<br/>@Consume变量的变化会同步给子组件的\@Link、\@Prop变量。 |
@@ -857,7 +857,7 @@ struct MyComponent {
 ``` TypeScript
 @Component
 struct GrandSon {
-  // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
+  // @Consume装饰的变量通过相同的别名绑定其祖先内的@Provide装饰的变量
   @Consume('reviewVotes') reviewVotes: number;
 
   build() {
@@ -1314,9 +1314,9 @@ struct HomePage {
           } else {
             this.name = 'ddd';
           }
-          })
-          .width(300)
-          .margin(10)
+        })
+        .width(300)
+        .margin(10)
       // 修正点2：CustomWidget不再声明@Provide，仅作为容器传递builder
       CustomWidget() {
         CustomWidgetChild({ builder: this.builder2 })

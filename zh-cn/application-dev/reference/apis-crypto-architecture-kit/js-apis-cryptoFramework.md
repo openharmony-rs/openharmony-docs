@@ -1354,7 +1354,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
@@ -1392,7 +1392,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
@@ -1509,12 +1509,12 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestPubKeyPkcs1ToX509BySync1024() {
+function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
   let pubPemKey = keyPair.pubKey;
   let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
 }
 ```
 
@@ -1736,12 +1736,12 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
-  let pirKey = keyPair.priKey;
-  let eccPrimeP = pirKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  let priKey = keyPair.priKey;
+  let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + eccPrimeP.toString(16));
 }
 ```
@@ -1773,7 +1773,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
   let keyPair = await generatorBySpec.generateKeyPair();
@@ -1901,12 +1901,12 @@ let priKeyPkcs1Str1024: string =
     + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
     + '-----END RSA PRIVATE KEY-----\n';
 
-function TestPriKeyPkcs1ToPkcs8BySync1024() {
+function testPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info('[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
 }
 ```
 
@@ -1970,7 +1970,7 @@ let priKeyPkcs1Str1024: string =
     + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
     + '-----END RSA PRIVATE KEY-----\n';
 
-function TestPriKeyPkcs1Encoded() {
+function testPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
   let options: cryptoFramework.KeyEncodingConfig = {
@@ -1979,7 +1979,7 @@ function TestPriKeyPkcs1Encoded() {
   }
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info('[sync]TestPriKeyPkcs1Encoded priString output = ' + priString);
+  console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -2187,7 +2187,7 @@ function generateAsyKey() {
 
 getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
-指定密钥数据项类型，获取对应类型的公钥数据。使用Promise异步回调。
+指定密钥数据项类型，获取对应类型的私钥数据。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3420,7 +3420,7 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024)
     .then(keyPair => {
@@ -3459,7 +3459,7 @@ let publicPkcs1Str1024: string  =
     + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try{
     let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
@@ -3542,7 +3542,7 @@ let priKeyPkcs1EncodingStr: string =
     + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     + '-----END RSA PRIVATE KEY-----\n'
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
     .then(keyPair => {
@@ -3578,7 +3578,7 @@ let priKeyPkcs1EncodingStr : string =
     +'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     +'-----END RSA PRIVATE KEY-----\n'
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPair = await asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456');
@@ -3659,7 +3659,7 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestConvertPemKeyBySync() {
+function testConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
@@ -3739,7 +3739,7 @@ let priKeyPkcs1EncodingStr: string =
     + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     + '-----END RSA PRIVATE KEY-----\n'
 
-function TestConvertPemKeyBySync() {
+function testConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, '123456');
@@ -6103,7 +6103,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-function testsetCipherSpec() {
+function testSetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let pSource = new Uint8Array([1, 2, 3, 4]);
   cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);

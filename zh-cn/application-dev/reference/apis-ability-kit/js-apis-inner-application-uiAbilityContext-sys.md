@@ -41,9 +41,11 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, callback
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。  
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 >
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -144,9 +146,11 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options:
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。  
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 >
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -250,9 +254,11 @@ ArkTS-Sta: startAbilityForResultWithAccount(want: Want, accountId: int, options?
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 >
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -710,6 +716,10 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口不支持停止应用分身的ServiceExtensionAbility。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -783,7 +793,11 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止同一应用程序内的服务。使用Promise异步回调。
+停止指定的ServiceExtensionAbility服务。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -863,11 +877,12 @@ ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number,
 
 ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
-停止同一应用程序内指定账户的服务。使用callback异步回调。
+停止指定账户的ServiceExtensionAbility服务。使用callback异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -946,11 +961,12 @@ ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number)
 
 ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
-停止同一应用程序内指定账户的服务。使用Promise异步回调。
+停止指定账户的ServiceExtensionAbility服务。使用Promise异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1038,11 +1054,9 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
->
-> 当accountId为当前用户时，无需进行权限校验。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1198,9 +1212,12 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCa
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。  
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 >
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
+
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1300,9 +1317,11 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options: StartOpt
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。  
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 >
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1406,9 +1425,11 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。  
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 >
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1665,6 +1686,8 @@ startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 >
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 更多的组件启动规则详见[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
@@ -1764,6 +1787,8 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 >
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 更多的组件启动规则详见[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
@@ -1868,6 +1893,8 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 >
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 更多的组件启动规则详见[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
@@ -1975,6 +2002,10 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
  - 跨应用场景下，目标UIAbility的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。
  - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
+> **说明：**
+>
+> 该接口支持应用分身，开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用；不传appIndex时拉起主应用；不支持隐式匹配。
+
 **需要权限**：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -2076,7 +2107,9 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2160,8 +2193,6 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 > **说明：**
 >
 > 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
->
-> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2246,7 +2277,9 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2343,7 +2376,9 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2473,8 +2508,6 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 > **说明：**
 >
 > 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
->
-> 该接口不支持应用分身。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

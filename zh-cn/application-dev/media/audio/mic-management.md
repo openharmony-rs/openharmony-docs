@@ -1,8 +1,8 @@
 # 管理麦克风静音状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zyy0412-->
-<!--Designer: @weixin_41398971-->
+<!--Owner: @songshenke-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -21,7 +21,7 @@
 1. 创建audioVolumeGroupManager对象。
 
    ArkTS-Dyn示例：
-   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
+   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -37,10 +37,10 @@
    ```
 
    ArkTS-Sta示例：
-   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
+   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->  
    
    ``` TypeScript
-   import { audio } from '@kit.AudioKit'; // 导入audio模块。
+   import audio from '@ohos.multimedia.audio';
    import {
      Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
    } from '@kit.ArkUI';

@@ -45,7 +45,9 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -138,7 +140,9 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -239,7 +243,9 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -350,7 +356,9 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -450,7 +458,9 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -555,7 +565,9 @@ UIAbility被启动后，有如下情况：
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1000,9 +1012,8 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1363,6 +1374,8 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 > - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 >
 > - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -2228,7 +2241,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
-通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2295,7 +2308,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByType(type: string, wantParam: Record\<string, RecordData>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>) : void
 
-通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2361,7 +2374,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
-通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2432,7 +2445,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByType(type: string, wantParam: Record\<string, RecordData>, abilityStartCallback: AbilityStartCallback) : Promise\<void>
 
-通过type隐式启动UIExtensionAbility。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3079,7 +3092,9 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+>
+> - 该接口支持应用分身，开发者可在[OpenLinkOptions](js-apis-app-ability-openLinkOptions.md)的parameters传入[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)指定拉起分身应用。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3566,9 +3581,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 该接口不支持启动分身应用的UIServiceExtensionAbility。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -3706,9 +3720,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 该接口不支持连接分身应用的UIServiceExtensionAbility。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -4315,9 +4328,9 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 > **说明：**
 >
-> 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+> - 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
 >
-> 该接口不支持应用分身。
+> - 该接口不支持启动分身应用的AppServiceExtensionAbility实例。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -4487,9 +4500,9 @@ ArkTS-Sta: connectAppServiceExtensionAbility(want: Want, callback: ConnectOption
 
 > **说明：**
 >
-> 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+> - 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
 >
-> 该接口不支持应用分身。
+> - 该接口不支持连接分身应用的AppServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -5206,7 +5219,7 @@ startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<vo
 >
 > 子进程生命周期跟随父进程，父进程退出时子进程自动退出。
 >
-> 该接口不支持应用分身。
+> 该接口支持应用分身，使用规则：Want中的appIndex必须与当前应用一致。例如调用方应用appIndex为1时，Want中的appIndex也必须为1。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

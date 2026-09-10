@@ -30,6 +30,7 @@
     - [Class (PathEffect)](arkts-apis-graphics-drawing-PathEffect.md)
     - [Class (PathIterator)](arkts-apis-graphics-drawing-PathIterator.md)
     - [Class (Pen)](arkts-apis-graphics-drawing-Pen.md)
+    - [Class (RecordCmdUtils)](arkts-apis-graphics-drawing-RecordCmdUtils.md)
     - [Class (RectUtils)](arkts-apis-graphics-drawing-RectUtils.md)
     - [Class (Region)](arkts-apis-graphics-drawing-Region.md)
     - [Class (RoundRect)](arkts-apis-graphics-drawing-RoundRect.md)
