@@ -15,10 +15,10 @@
 
 应用通过本模块注册后台加载任务后，由系统的后台加载任务管理模块在空闲时段统一调度执行，应用本身无法决定任务的具体触发时机。其基本工作流程如下：
 
-1. 应用在主UIAbility的onCreate生命周期中，通过Callee注册ON_START和ON_STOP回调函数，用于接收系统触发的任务开始与停止事件。Callee回调随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
-2. 应用调用registerTask接口注册后台加载任务，任务信息通过TaskInfo（包含目标abilityName和taskId）指定。注册后，应用还可通过getTaskInfo查询任务信息，或通过unregisterTask取消注册。
+1. 应用在主UIAbility的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，通过[Callee](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee)注册[ON_START](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量)和[ON_STOP](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#常量)回调函数，用于接收系统触发的任务开始与停止事件。Callee回调随主UIAbility生命周期存在，随其销毁自动释放，无需手动注销。
+2. 应用调用[registerTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderregistertask)接口注册后台加载任务，任务信息通过[TaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#taskinfo)（包含目标abilityName和taskId）指定。注册后，应用还可通过[getTaskInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloadergettaskinfo)查询任务信息，或通过[unregisterTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderunregistertask)取消注册。
 3. 系统后台加载任务管理模块统一决策何时执行后台加载任务，应用无法对触发时机进行干预。
-4. 系统在决策满足时拉起应用并触发ON_START回调，应用在ON_START回调中执行预先加载逻辑（如数据请求、缓存写入等），完成后调用finishTask接口通知系统任务结束，任务停止时系统触发ON_STOP回调。
+4. 系统在决策满足时拉起应用并触发ON_START回调，应用在ON_START回调中执行预先加载逻辑（如数据请求、缓存写入等），完成后调用[finishTask](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundLoader.md#backgroundloaderfinishtask)接口通知系统任务结束，任务停止时系统触发ON_STOP回调。
 5. 任务执行受约束：单次执行最长30秒；执行期间禁止音频播放、音频录制、定位、操作闪光灯等可感知行为；若应用多次超时或存在可感知操作，系统将禁用该应用后续的后台加载任务调度。
 
 ![backgroundloader](figures/backgroundloader.png)
