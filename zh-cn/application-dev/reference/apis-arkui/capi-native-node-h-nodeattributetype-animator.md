@@ -324,95 +324,95 @@ NODE_CLIP_SHAPE = 24
 
 **参数：**
 
-1.rect类型：<br>
+1. rect类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
-| .value[1].f32 | 矩形宽度，单位为vp。 |
-| .value[2].f32 | 矩形高度，单位为vp。 |
-| .value[3].f32 | 矩形圆角宽度，单位为vp。 |
-| .value[4].f32 | 矩形圆角高度，单位为vp。 |
-| .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
-| .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
-| .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
-| .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，矩形形状的坐标偏移量，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
+   | .value[1].f32 | 矩形宽度，单位为vp。 |
+   | .value[2].f32 | 矩形高度，单位为vp。 |
+   | .value[3].f32 | 矩形圆角宽度，单位为vp。 |
+   | .value[4].f32 | 矩形圆角高度，单位为vp。 |
+   | .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
+   | .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
+   | .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
+   | .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，矩形形状的坐标偏移量，在仅传入.object参数时生效。 |
 
-2.circle类型：<br>
+2. circle类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
-| .value[1].f32 | 圆形宽度，单位为vp。 |
-| .value[2].f32 | 圆形高度，单位为vp。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，圆形坐标偏移量，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
+   | .value[1].f32 | 圆形宽度，单位为vp。 |
+   | .value[2].f32 | 圆形高度，单位为vp。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，圆形坐标偏移量，在仅传入.object参数时生效。 |
 
-3.ellipse类型：<br>
+3. ellipse类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
-| .value[1].f32 | 椭圆形宽度，单位为vp。 |
-| .value[2].f32 | 椭圆形高度，单位为vp。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，椭圆形坐标偏移量，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
+   | .value[1].f32 | 椭圆形宽度，单位为vp。 |
+   | .value[2].f32 | 椭圆形高度，单位为vp。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，椭圆形坐标偏移量，在仅传入.object参数时生效。 |
 
-4.path类型：<br>
+4. path类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
-| .value[1].f32 | 路径宽度，单位为vp。 |
-| .value[2].f32 | 路径高度，单位为vp。 |
-| .string | 路径绘制的命令字符串。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，路径绘制的命令，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
+   | .value[1].f32 | 路径宽度，单位为vp。 |
+   | .value[2].f32 | 路径高度，单位为vp。 |
+   | .string | 路径绘制的命令字符串。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，路径绘制的命令，在仅传入.object参数时生效。 |
 
 **返回：**
 
-1.rect类型：<br>
+1. rect类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
-| .value[1].f32 | 矩形宽度，单位为vp。 |
-| .value[2].f32 | 矩形高度，单位为vp。 |
-| .value[3].f32 | 矩形圆角宽度，单位为vp。 |
-| .value[4].f32 | 矩形圆角高度，单位为vp。 |
-| .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
-| .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
-| .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
-| .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
-| .value[9]?.f32 | 矩形形状的横坐标偏移，单位为vp。 |
-| .value[10]?.f32 | 矩形形状的纵坐标偏移，单位为vp。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
+   | .value[1].f32 | 矩形宽度，单位为vp。 |
+   | .value[2].f32 | 矩形高度，单位为vp。 |
+   | .value[3].f32 | 矩形圆角宽度，单位为vp。 |
+   | .value[4].f32 | 矩形圆角高度，单位为vp。 |
+   | .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
+   | .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
+   | .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
+   | .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
+   | .value[9]?.f32 | 矩形形状的横坐标偏移，单位为vp。 |
+   | .value[10]?.f32 | 矩形形状的纵坐标偏移，单位为vp。 |
 
-2.circle类型：<br>
+2. circle类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
-| .value[1].f32 | 圆形宽度，单位为vp。 |
-| .value[2].f32 | 圆形高度，单位为vp。 |
-| .value[3]?.f32 | 圆形横坐标偏移，单位为vp。 |
-| .value[4]?.f32 | 圆形纵坐标偏移，单位为vp。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
+   | .value[1].f32 | 圆形宽度，单位为vp。 |
+   | .value[2].f32 | 圆形高度，单位为vp。 |
+   | .value[3]?.f32 | 圆形横坐标偏移，单位为vp。 |
+   | .value[4]?.f32 | 圆形纵坐标偏移，单位为vp。 |
 
-3.ellipse类型：<br>
+3. ellipse类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
-| .value[1].f32 | 椭圆形宽度，单位为vp。 |
-| .value[2].f32 | 椭圆形高度，单位为vp。 |
-| .value[3]?.f32 | 椭圆形横坐标偏移，单位为vp。 |
-| .value[4]?.f32 | 椭圆形纵坐标偏移，单位为vp。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
+   | .value[1].f32 | 椭圆形宽度，单位为vp。 |
+   | .value[2].f32 | 椭圆形高度，单位为vp。 |
+   | .value[3]?.f32 | 椭圆形横坐标偏移，单位为vp。 |
+   | .value[4]?.f32 | 椭圆形纵坐标偏移，单位为vp。 |
 
-4.path类型：<br>
+4. path类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
-| .value[1].f32 | 路径宽度，单位为vp。 |
-| .value[2].f32 | 路径高度，单位为vp。 |
-| .string | 路径绘制的命令字符串。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
+   | .value[1].f32 | 路径宽度，单位为vp。 |
+   | .value[2].f32 | 路径高度，单位为vp。 |
+   | .string | 路径绘制的命令字符串。 |
 
 
 ## NODE_TRANSFORM
