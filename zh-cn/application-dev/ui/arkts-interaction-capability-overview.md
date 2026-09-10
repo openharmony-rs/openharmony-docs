@@ -25,7 +25,7 @@ ArkUI框架提供了丰富的交互功能，支持直接处理基础输入事件
 
 非指向性事件是指没有具体位置信息的事件，即事件的发生不依赖于特定的操作位置信息。此类事件以当前焦点组件为派发目标。
 
-包括：[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)，[表冠事件](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md)，[焦点轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md)。
+包括：[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)，[表冠事件](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md)，[焦点轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md)。
 
 
 ### 其他说明

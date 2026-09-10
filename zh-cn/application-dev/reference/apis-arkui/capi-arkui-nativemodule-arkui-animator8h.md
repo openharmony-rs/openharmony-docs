@@ -1,4 +1,4 @@
-# ArkUI_Animator\*
+# ArkUI_Animator*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->

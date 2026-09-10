@@ -181,7 +181,7 @@
 
     通过[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)可以设置三种[颜色模式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)，分别为：跟随系统深浅色模式、固定使用浅色模式和固定使用深色模式。
 
-    在WithTheme作用范围内，组件的样式资源值将依据指定模式，读取对应的深浅色模式系统和应用资源值。这表明，在WithTheme作用范围内，组件的配色将根据指定的深浅模式进行调整。详情请参阅[设置应用页面局部深浅色](./theme_skinning.md#设置应用页面局部深浅色)。
+    在WithTheme作用范围内，组件的样式资源值将依据指定模式，读取对应的深浅色模式系统和应用资源值。这表明，在WithTheme作用范围内，组件的配色将根据指定的深浅模式进行调整。详情请参阅[设置应用页面局部深浅色](./theme-skinning.md#设置应用页面局部深浅色)。
 
 ## 应用主动设置深浅色模式
 
