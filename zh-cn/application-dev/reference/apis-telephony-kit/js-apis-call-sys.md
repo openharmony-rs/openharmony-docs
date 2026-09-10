@@ -394,7 +394,7 @@ answerCall(videoState: VideoStateType, callId: int, isRtt:boolean\): Promise\<vo
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | videoState | [VideoStateType](#videostatetype7) | 是   | 表示以视频或语音接听呼叫。|
-| callId | number | 是   | 表示待接听的callId。|
+| callId | int | 是   | 表示待接听的callId。|
 | isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
 
 **返回值：**
