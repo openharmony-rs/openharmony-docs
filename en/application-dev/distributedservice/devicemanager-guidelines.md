@@ -312,7 +312,7 @@ Queries device information. For details, see [getAvailableDeviceListSync](../ref
        this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
        // ...
      } catch (error) {
-       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
+       logger.error(`[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}`);
        this.showErrMsg('getTrustedDeviceList failed');
      }
    }
