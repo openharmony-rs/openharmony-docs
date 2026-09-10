@@ -52,9 +52,9 @@ on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Opti
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>适用版本：11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**：
 
@@ -102,9 +102,9 @@ on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>适用版本：11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**：
 
@@ -152,8 +152,8 @@ off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>适用版本：11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -210,8 +210,8 @@ off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**：
 
@@ -298,8 +298,8 @@ off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>适用版本：11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -356,8 +356,8 @@ off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback&l
 
 | 错误码ID | 错误信息                                                                                                                                    |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------|
-| 202      | Permission check failed. A non-system application uses the system API.                                                                  |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API.                                                                  |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **示例**：
 
