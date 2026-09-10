@@ -6,11 +6,13 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## 概述
+
 本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（CustomDialog、AlertDialog、TextPickerDialog、TimePickerDialog、DatePickerDialog）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射和示例。
 
 > **适用版本：** 从 API 版本 26.1.0（OpenHarmony 7.1-Release）开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
-## 三代演进表
+### 三代演进表
 
 | 代次 | 接口形态 | 代表 API | 编程模型 | 版本 |
 |------|---------|---------|---------|------|
@@ -18,9 +20,19 @@
 | 第二代 | 装饰器 + Controller | `@CustomDialog` + `CustomDialogController` | 装饰器组件 + Controller 生命周期 | API 8+ |
 | 第三代 | Unified Dialog API | `DialogPresenter.present()` + `@ohos.arkui.dialog` 类型 | UIContext 获取 Presenter + Promise 异步 | API 26.1.0+ |
 
+### 快速导航
+
+如需直接迁移，可按弹窗类别跳转至对应映射章节：
+
+- [CustomDialog 迁移映射](#1-customdialog--dialogpresenterpresent自定义弹窗)
+- [AlertDialog 迁移映射](#2-alertdialog--dialogpresenterpresent固定样式弹窗)
+- [TextPickerDialog 迁移映射](#3-textpickerdialog--dialogpresenterpresent自定义弹窗承载-textpicker)
+- [TimePickerDialog 迁移映射](#4-timepickerdialog--dialogpresenterpresent自定义弹窗承载-timepicker)
+- [DatePickerDialog 迁移映射](#5-datepickerdialog--dialogpresenterpresent自定义弹窗承载-datepicker)
+
 ## 新老接口能力差异
 
-### 差异总览
+新老接口在编程模型、回调机制、动画参数、更新能力和适用模型五个维度存在差异，总览如下（GAP 编号对应下方"GAP 5 项说明"详述）：
 
 | 对比维度 | 老接口（第一/二代） | 新接口（第三代 `@ohos.arkui.dialog`） | GAP 编号 |
 |---------|-------------------|----------------------------|---------|
@@ -182,9 +194,7 @@ this.getUIContext().getDialogPresenter().present({
 
 ## 新接口能力地图
 
-`@ohos.arkui.dialog.d.ts` 包含 13 个声明单元，均标注 `@since 26.1.0 dynamic`、`@stagemodelonly`、`@crossplatform`、`@atomicservice`。
-
-### 类型继承关系
+`@ohos.arkui.dialog.d.ts` 包含 13 个声明单元，均标注 `@since 26.1.0 dynamic`、`@stagemodelonly`、`@crossplatform`、`@atomicservice`。各单元按"选项类型 / 控制器与结果 / 枚举"逻辑分组，类型继承关系如下：
 
 ```
 DialogBaseOptions（基类）
@@ -370,6 +380,20 @@ struct DialogStatePage {
 - **参考文档：** [js-apis-dialog.md#dialogdismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)
 
 ## 迁移映射
+
+以下每个"迁移后示例（新接口）"代码块前均标注了 `<!-- @[tag](sample 文件 URL) -->` 同源注释，指向 samples 工程中对应的 `.ets` 文件。代码块内容为该文件的逐字摘录，开发者可点击注释中的链接查看完整源文件。
+
+> 示例工程路径：`applications_app_samples/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/`
+
+| 示例页面 | 对应章节 | 覆盖 AC |
+|---------|---------|--------|
+| `Index.ets` | 迁移映射入口 | AC-1, AC-4 |
+| `CustomDialogMigrationPage.ets` | 迁移映射 1（CustomDialog） | AC-3.1, AC-4 |
+| `AlertDialogMigrationPage.ets` | 迁移映射 2（AlertDialog） | AC-3.1, AC-4 |
+| `TextPickerMigrationPage.ets` | 迁移映射 3（TextPickerDialog） | AC-3.1, AC-4 |
+| `TimePickerMigrationPage.ets` | 迁移映射 4（TimePickerDialog） | AC-3.1, AC-4 |
+| `DatePickerMigrationPage.ets` | 迁移映射 5（DatePickerDialog） | AC-3.1, AC-4 |
+| `DialogStatePage.ets` | 能力地图（DialogBaseController/DialogState） | AC-2, AC-3.1 |
 
 ### 1. CustomDialog → DialogPresenter.present（自定义弹窗）
 
@@ -847,22 +871,6 @@ struct DatePickerMigrationPage {
   }
 }
 ```
-
-## 同源示例
-
-上方"迁移映射"章节中每个"迁移后示例（新接口）"代码块前均标注了 `<!-- @[tag](sample 文件 URL) -->` 同源注释，指向 samples 工程中对应的 `.ets` 文件。代码块内容为该文件的逐字摘录，开发者可点击注释中的链接查看完整源文件。
-
-> 示例工程路径：`applications_app_samples/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/`
-
-| 示例页面 | 对应章节 | 覆盖 AC |
-|---------|---------|--------|
-| `Index.ets` | 迁移映射入口 | AC-1, AC-4 |
-| `CustomDialogMigrationPage.ets` | 迁移映射 1（CustomDialog） | AC-3.1, AC-4 |
-| `AlertDialogMigrationPage.ets` | 迁移映射 2（AlertDialog） | AC-3.1, AC-4 |
-| `TextPickerMigrationPage.ets` | 迁移映射 3（TextPickerDialog） | AC-3.1, AC-4 |
-| `TimePickerMigrationPage.ets` | 迁移映射 4（TimePickerDialog） | AC-3.1, AC-4 |
-| `DatePickerMigrationPage.ets` | 迁移映射 5（DatePickerDialog） | AC-3.1, AC-4 |
-| `DialogStatePage.ets` | 能力地图（DialogBaseController/DialogState） | AC-2, AC-3.1 |
 
 ## 相关文档
 
