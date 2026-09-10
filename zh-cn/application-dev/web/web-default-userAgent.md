@@ -243,17 +243,13 @@ OpenHarmony提供[setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webvie
 
 ### 如何解决H5页面的UA兼容性问题
 
-**Q：如何在UA中判断网页由自带的浏览器中打开还是在应用webview中打开**
-
-A：手机自带浏览器有"HuaweiBrowser"字段，可以通过该字段进行区分。
-
 **Q：移动设备上网页呈现电脑版样式或电脑设备上网页呈现移动样式展示**
 
 A：网站会针对不同UA展示不同样式页面。需要移动设备UA设置DeviceCompat为"Mobile"，DeviceType为"Phone"，PC设备UA设置DeviceCompat为""，DeviceType为"PC"，平板设备UA设置DeviceCompat为""，DeviceType则为"Tablet"。
 
 **Q：部分网页打不开或显示“不支持的浏览器”**
 
-A：网页未适配OpenHarmony UA，需要网页对"OpenHarmony"标识作兼容处理；在网页对OpenHarmony UA适配前，可通过[setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在默认UA中追加其他兼容性字段进行临时过渡适配。
+A：网页未适配OpenHarmony UA，需要网页对"OpenHarmony"标识作兼容处理。在网页适配前，可通过[setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在默认UA中追加其他兼容性字段进行临时过渡适配。
 
 **Q：页面循环跳转**
 
