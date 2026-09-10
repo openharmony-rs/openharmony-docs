@@ -258,36 +258,36 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
    如下为globalConnect支持Date类型的持久化示例：
 
    <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) --> 
-    
-    ``` TypeScript
-    import { PersistenceV2, UIUtils } from '@kit.ArkUI';
-    
-    @Entry
-    @ComponentV2
-    struct Page1 {
-      // 支持直接持久化Date类型的数据
-      @Local date: Date = PersistenceV2.globalConnect({
-        type: Date,
-        defaultCreator: () => UIUtils.makeObserved(new Date())
-      })!;
-    
-      build() {
-        Column({ space: 40 }) {
-          Text(`date: ${this.date.toISOString()}`)
-            .fontSize(24)
-            .margin(10)
-          // 点击'date.setTime( Date.now() )', 杀掉应用，进入应用后，显示日期
-          Button('date.setTime( Date.now() )')
-            .margin(10)
-            .onClick(() => {
-              this.date.setTime(Date.now());
-            })
-            .fontSize(24)
-        }
-        .width('100%')
-      }
-    }
-    ```
+   
+   ``` TypeScript
+   import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+   
+   @Entry
+   @ComponentV2
+   struct Page1 {
+     // 支持直接持久化Date类型的数据
+     @Local date: Date = PersistenceV2.globalConnect({
+       type: Date,
+       defaultCreator: () => UIUtils.makeObserved(new Date())
+     })!;
+   
+     build() {
+       Column({ space: 40 }) {
+         Text(`date: ${this.date.toISOString()}`)
+           .fontSize(24)
+           .margin(10)
+         // 点击'date.setTime( Date.now() )', 杀掉应用，进入应用后，显示日期
+         Button('date.setTime( Date.now() )')
+           .margin(10)
+           .onClick(() => {
+             this.date.setTime(Date.now());
+           })
+           .fontSize(24)
+       }
+       .width('100%')
+     }
+   }
+   ```
 
    ![persistencev2-sync-2](./figures/persistencev2-sync-2.gif)
 
