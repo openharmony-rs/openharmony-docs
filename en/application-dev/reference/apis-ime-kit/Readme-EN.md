@@ -5,6 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=9f850cad2dd8fc5caa8424b4814cd548a7156e46 translatedAt=2026-08-26T12:11:15.009Z pushedAt=2026-09-09T10:23:11.263Z -->
 
 - ArkTS APIs<!--ime-arkts-->
   - [@ohos.InputMethodExtensionAbility (InputMethodExtensionAbility)](js-apis-inputmethod-extension-ability.md)
@@ -14,12 +15,13 @@
   <!--Del-->
   - [@ohos.inputMethod (Input Method Framework) (System API)](js-apis-inputmethod-sys.md)
   - [@ohos.inputMethodEngine (Input Method Service) (System API)](js-apis-inputmethodengine-sys.md)
+  - [@ohos.InputMethodExtensionContext (InputMethodExtensionContext) (System API)](js-apis-inputmethod-extension-context-sys.md)
+  - [@ohos.inputMethodSystemPanelManager (Input Method System Panel Manager) (System API)](js-apis-inputmethod-system-panel-manager-sys.md)
   <!--DelEnd-->
   - [@ohos.inputMethod (Input Method Framework)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (Input Method Service)](js-apis-inputmethodengine.md)
   - [@ohos.inputMethodList (Input Method List)](js-apis-inputmethodlist.md)
   - [@ohos.inputMethod.ExtraConfig (Input Method Extension Information)](js-apis-inputmethod-extraconfig.md)
-  - [@ohos.inputMethodSystemPanelManager (Input Method System Panel Manager) (System API)](js-apis-inputmethod-system-panel-manager-sys.md)
 - C APIs<!--ime-c-->
   - Modules<!--ime-module-->
     - [InputMethod](capi-inputmethod.md)
@@ -43,4 +45,3 @@
     - [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md)
 - Error Codes<!--ime-arkts-errcode-->
   - [Input Method Framework Error Codes](errorcode-inputmethod-framework.md)
- <!--no_check--> 
