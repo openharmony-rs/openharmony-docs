@@ -1293,13 +1293,17 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let mgr = userAuth.getUserRecognitionMgr();
-mgr.getUserRecognitionResult()
-  .then((result: userAuth.UserRecognitionResult) => {
-    console.info(`status: ${result.status}, userId: ${result.userId}`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`getUserRecognitionResult failed, Code: ${err?.code}, message: ${err?.message}`);
-  });
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  mgr.getUserRecognitionResult()
+    .then((result: userAuth.UserRecognitionResult) => {
+      console.info(`status: ${result.status}, userId: ${result.userId}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`getUserRecognitionResult failed, Code: ${err?.code}, message: ${err?.message}`);
+    });
+}
 ```
 
 ### onUserRecognitionChange
@@ -1336,10 +1340,14 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 import { userAuth } from '@kit.UserAuthenticationKit';
 
 let mgr = userAuth.getUserRecognitionMgr();
-let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
-  console.info(`status: ${result.status}, userId: ${result.userId}`);
-};
-mgr.onUserRecognitionChange(callback);
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
+    console.info(`status: ${result.status}, userId: ${result.userId}`);
+  };
+  mgr.onUserRecognitionChange(callback);
+}
 ```
 
 ### offUserRecognitionChange
@@ -1376,14 +1384,18 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 import { userAuth } from '@kit.UserAuthenticationKit';
 
 let mgr = userAuth.getUserRecognitionMgr();
-let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
-  console.info(`status: ${result.status}, userId: ${result.userId}`);
-};
-mgr.onUserRecognitionChange(callback);
-// 取消指定回调
-mgr.offUserRecognitionChange(callback);
-// 取消所有回调
-mgr.offUserRecognitionChange();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRecognitionResult) => {
+    console.info(`status: ${result.status}, userId: ${result.userId}`);
+  };
+  mgr.onUserRecognitionChange(callback);
+  // 取消指定回调
+  mgr.offUserRecognitionChange(callback);
+  // 取消所有回调
+  mgr.offUserRecognitionChange();
+}
 ```
 
 ## userAuth.getUserRecognitionMgr
@@ -1424,6 +1436,11 @@ getUserRecognitionMgr(): UserRecognitionMgr | null
 import { userAuth } from '@kit.UserAuthenticationKit';
 
 let mgr = userAuth.getUserRecognitionMgr();
+if (mgr == null) {
+  console.error('device does not support user recognition');
+} else {
+  console.info(`get user recognition mgr: ${mgr}`);
+}
 ```
 
 ## AuthResultInfo<sup>(deprecated)</sup>
