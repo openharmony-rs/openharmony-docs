@@ -78,7 +78,7 @@ FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据�
 
 ### UDMF (Unified Data Management Framework)；统一数据管理框架
 
-标准化数据管理框架，为跨应用、跨设备的数据交互提供统一的数据语言。包括UTD（标准化数据类型）和UDS（标准化数据结构）。详细介绍请查看[UDMF开发指导](native-unified-data-management-framework-guidelines.md)。
+标准化数据管理框架，为跨应用、跨设备的数据交互提供统一的数据语言。包括UTD（标准化数据类型）和UDS（标准化数据结构），详细介绍请查看[标准化数据定义概述](unified-data-definition-overview.md)。
 
 ## V
 
