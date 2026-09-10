@@ -5,7 +5,7 @@
 <!--Designer: @shiyu-hu-->
 <!--Tester: @abec123-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=892ccc1267568dece54921013fb48099ac0ac493 translatedAt=2026-09-03T04:11:23.185Z -->
+<!-- md-trans-meta sourceCommit=892ccc1267568dece54921013fb48099ac0ac493 translatedAt=2026-09-03T04:11:23.185Z pushedAt=2026-09-09T09:11:32.595Z -->
 
 The **MediaCachedImage** component, with APIs that inherit from [Image](ts-basic-components-image.md) and the added capability of loading texture resources (for system applications only), is typically used to display images in applications.
 
@@ -55,7 +55,7 @@ Describes texture stitching.
 | Name   | Type| Mandatory| Description                                     |
 | ------- | --- | --- | ------------------------------------------ |
 | sources | Array&lt;string&gt; | Yes| URI array, indicating the textures to be stitched.|
-| column  | number | Yes| Column size, indicating the number of textures to be stitched in each row.   |
+| column  | number | Yes| Column size, indicating the number of textures to be stitched in each row.<br>The value must be a positive integer; otherwise, the image cannot be loaded.  |
 
 ## Example
 

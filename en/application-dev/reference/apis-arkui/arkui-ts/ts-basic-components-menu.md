@@ -5,39 +5,38 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b8b4794b3c3d5c0d1e8a60dabec4f0be6dbcbe75 translatedAt=2026-09-03T04:12:44.190Z -->
 
-A menu displayed as a vertical list. The **Menu** component supports configuring menu items, submenus, icons, dividers, and other content, and can be used to display operation options, function entries, and other scenarios.
+The **Menu** component is a vertical list of items presented to the user. It supports menu items, submenus, icons, and separators, which can be used to display operation options and feature entries.
 
 > **NOTE**
 >
-> - This component is supported since API version 9. Newly added content in later versions will be marked with a superscript to indicate the version in which it was introduced.
+> - This component is supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The **Menu** component must be used together with the [bindMenu](ts-universal-attributes-menu.md#bindmenu) or [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) method. It cannot be used as a standalone component.
+> - The **Menu** component must be used together with the [bindMenu](ts-universal-attributes-menu.md#bindmenu) or [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) method. It does not work when used alone.
 
 ## Child Components
 
-Contains the [MenuItem](ts-basic-components-menuitem.md) and [MenuItemGroup](ts-basic-components-menuitemgroup.md) child components.
+This component contains the [MenuItem](ts-basic-components-menuitem.md) and [MenuItemGroup](ts-basic-components-menuitemgroup.md) child components.
 
 ## APIs
 
 Menu()
 
-Serves as a fixed container of a menu and takes no parameters.
+Creates a fixed container for a menu. This API does not have any parameters.
 
 > **NOTE**
 >
-> - Rules for calculating the width of a menu and its menu items:
+> - Rules for calculating the width of menus and menu items:
 >
->   - During layout, the width of each menu item is expected to be consistent. If a child component has a width set, the width specified by [constraintSize](ts-universal-attributes-size.md#constraintsize) prevails.
+>   - During the layout, the width of each menu item is expected to be the same. If a child component has its width set, [constraintSize](ts-universal-attributes-size.md#constraintsize) prevails.
 >
->   - When the width of **Menu** is not set: **Menu** sets a default width of 2 grids for its child components **MenuItem** and **MenuItemGroup**. If the content area of a menu item is wider than 2 grids, the menu item automatically expands to fit the content.
+>   - If no width is set for the **Menu** component, it applies a default two-column width to the **MenuItem** and **MenuItemGroup** child components. If a menu item's content area exceeds the two-column width, the **Menu** component automatically expands the menu item's content area.
 >
->   - When the width of **Menu** is set: **Menu** sets a fixed width, which is the set width minus the padding, for its child components **MenuItem** and **MenuItemGroup**.
+>   - When an explicit width is set for the **Menu** component, its child components **MenuItem** and **MenuItemGroup** adopt a fixed width (equal to the **Menu** component's configured width minus the padding).
 >
->   - The minimum width supported by **Menu** is 64 vp.
+>   - The minimum width is 64 vp.
 >
-> - Universal attributes not supported by **Menu**: attributes under [outline settings](ts-universal-attributes-outline.md) and [shadow](ts-universal-attributes-image-effect.md#shadow).
+> - Common attributes that are not supported by **Menu** include the following: attributes [Outline Styling](ts-universal-attributes-outline.md) and the [shadow](ts-universal-attributes-image-effect.md#shadow) attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -45,13 +44,13 @@ Serves as a fixed container of a menu and takes no parameters.
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported:
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
 ### font<sup>10+</sup>
 
 font(value: Font)
 
-Sets the font style of all text in the menu through a unified setting.
+Sets the font style of all text within the menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -61,14 +60,14 @@ Sets the font style of all text in the menu through a unified setting.
 
 **Parameters**
 
-| Name | Type                     | Mandatory | Description                                                  |
-| ---- | ------------------------ | --------- | ------------------------------------------------------------ |
-| value | [Font](ts-types.md#font) | Yes       | Font style of all text in the menu.<br/>Default value:<br/>{<br/>      size: '16.0fp',<br/>      family: 'HarmonyOS Sans',<br/>      weight: FontWeight.Medium,<br/>      style: FontStyle.Normal<br/>} |
+| Name| Type                    | Mandatory| Description                                                        |
+| ------ | ------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [Font](ts-types.md#font) | Yes  | Font style of all text within the menu.<br>Default value:<br>{<br>      size: '16.0fp',<br>      family: 'HarmonyOS Sans',<br>      weight: FontWeight.Medium,<br>      style: FontStyle.Normal<br>} |
 ### fontColor<sup>10+</sup>
 
 fontColor(value: ResourceColor)
 
-Sets the color of all text in the Menu.
+Sets the font color of all text within the menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -78,15 +77,15 @@ Sets the color of all text in the Menu.
 
 **Parameters**
 
-| Name | Type                                       | Mandatory | Description                   |
+| Name| Type                                      | Mandatory| Description                  |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Color of all text in the Menu. |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color of all text within the menu.|
 
 ### radius<sup>10+</sup>
 
 radius(value: Dimension | BorderRadiuses)
 
-Sets the radius of the rounded corners of the menu border.
+Sets the radius of the menu border corners.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -96,17 +95,17 @@ Sets the radius of the rounded corners of the menu border.
 
 **Parameters**
 
-| Name | Type                                                         | Mandatory | Description                                                         |
+| Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9) | Yes   | Radius of the rounded corners of the menu border.<br/>Default value: **8vp** on 2-in-1 devices and **20vp** on other devices.<br/>Since API version 12, when the maximum sum of the radii of the two horizontal rounded corners is greater than the menu width, or the maximum sum of the radii of the two vertical rounded corners is greater than the menu height, the default corner radius of the menu is applied to all four corners.<br/>When the value is of the Dimension type and an invalid value is passed in, the default corner radius is used.<br/>When the value is of the BorderRadiuses type and an invalid value is passed in, the menu has no rounded corners by default. |
+| value  | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9) | Yes  | Radius of the menu border corners.<br>Default value: **8vp** for 2-in-1 devices and **20vp** for other devices<br> Since API version 12, if the sum of the two maximum corner radii in the horizontal direction exceeds the menu width, or if the sum of the two maximum corner radii in the vertical direction exceeds the menu height, the default corner radius will be used for all four corners of the menu.<br>When the Dimension type is used: Invalid input values will trigger a fallback to the default corner radius.<br>When the BorderRadiuses type is used: Invalid input values will result in the menu having no rounded corners by default.|
 
 ### menuItemDivider<sup>12+</sup>
 
 menuItemDivider(options: DividerStyleOptions | undefined)
 
-Sets the divider style of a MenuItem. If this attribute is not set, no divider is displayed.
+Sets the style of the menu item divider. If this attribute is not set, the divider will not be displayed.
 
-If the sum of startMargin and endMargin exceeds the component width, startMargin and endMargin are set to 0.
+If the sum of **startMargin** and **endMargin** exceeds the component width, both **startMargin** and **endMargin** will be set to **0**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -116,15 +115,15 @@ If the sum of startMargin and endMargin exceeds the component width, startMargin
 
 **Parameters**
 
-| Name     | Type                                                     | Mandatory         | Description           |
+| Name    | Type                                                    | Mandatory        | Description          |
 |---------|--------------------------------------------------------|------------| -------------- |
-| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes   | Sets the divider style of a MenuItem.<br />-strokeWidth: line width of the divider. The default value is 1px.<br />-color: color of the divider. The default value is #33000000.<br />-startMargin: distance between the divider and the start edge of the MenuItem side. The default value is 16vp, in vp.<br />-endMargin: distance between the divider and the end edge of the MenuItem side. The default value is 16vp, in vp.<br />-mode: mode of the divider. The default value is FLOATING_ABOVE_MENU.<br />If the sum of startMargin and endMargin exceeds the component width, startMargin and endMargin are set to 0. |
+| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes  | Style of the menu item divider.<br>- **strokeWidth**: stroke width of the divider. The default value is 1 px.<br>- **color**: color of the divider. The default value is **#33000000**.<br>- **startMargin**: distance between the divider and the start edge of the menu item, in vp. The default value is 16 vp.<br>- **endMargin**: distance between the divider and the end edge of the menu item, in vp. The default value is 16 vp.<br>- **mode**: mode of the divider, which is **FLOATING_ABOVE_MENU** by default.<br>If the sum of **startMargin** and **endMargin** exceeds the component width, both **startMargin** and **endMargin** will be set to **0**.|
 
 ### menuItemGroupDivider<sup>12+</sup>
 
 menuItemGroupDivider(options: DividerStyleOptions | undefined)
 
-Sets the style of the dividers at the top and bottom of a MenuItemGroup. If this attribute is not set, the dividers are displayed by default.
+Sets the style of the top and bottom dividers for the menu item group. If this attribute is not set, the dividers will be displayed by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -134,15 +133,15 @@ Sets the style of the dividers at the top and bottom of a MenuItemGroup. If this
 
 **Parameters**
 
-| Name     | Type                                                     | Mandatory         | Description           |
+| Name    | Type                                                    | Mandatory        | Description          |
 |---------|--------------------------------------------------------|------------| -------------- |
-| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes   | Sets the style of the dividers at the top and bottom of a MenuItemGroup.<br />-strokeWidth: width of the divider. The default value is 1px.<br />-color: color of the divider. The default value is #33000000.<br />-startMargin: distance between the divider and the start edge of the MenuItemGroup. The default value is 16vp, in vp.<br />-endMargin: distance between the divider and the end edge of the MenuItemGroup. The default value is 16vp, in vp.<br />-mode: mode of the divider. The default value is FLOATING_ABOVE_MENU.<br />If startMargin + endMargin exceeds the component width, startMargin and endMargin are set to 0. |
+| options | [DividerStyleOptions](ts-types.md#dividerstyleoptions12)&nbsp;\| &nbsp;undefined | Yes  | Style of the top and bottom dividers for the menu item group.<br>- **strokeWidth**: stroke width of the divider. The default value is 1 px.<br>- **color**: color of the divider. The default value is **#33000000**.<br>- **startMargin**: distance between the divider and the start edge of the menu item group, in vp. The default value is 16 vp.<br>- **endMargin**: distance between the divider and the end edge of the menu item group, in vp. The default value is 16 vp.<br>- **mode**: mode of the divider, which is **FLOATING_ABOVE_MENU** by default.<br>If the sum of **startMargin** and **endMargin** exceeds the component width, both **startMargin** and **endMargin** will be set to **0**.|
 
 ### subMenuExpandingMode<sup>12+</sup>
 
 subMenuExpandingMode(mode: SubMenuExpandingMode)
 
-Sets the expansion style of the submenu of the Menu component.
+Sets the submenu expanding mode of the menu.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -152,15 +151,15 @@ Sets the expansion style of the submenu of the Menu component.
 
 **Parameters**
 
-| Name | Type                         | Required | Description           |
+| Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- |--------------|
-| mode  | [SubMenuExpandingMode](#submenuexpandingmode12) | Yes   | Expansion style of the submenu of the Menu component.<br/>Default value: **SubMenuExpandingMode.SIDE_EXPAND**<br/>When this parameter is set to **SIDE_EXPAND**, the [subMenuExpandSymbol](#submenuexpandsymbol20) attribute is not displayed. When this parameter is set to **EMBEDDED_EXPAND** or **STACK_EXPAND**, the **subMenuExpandSymbol** attribute takes effect.  |
+| mode  | [SubMenuExpandingMode](#submenuexpandingmode12) | Yes  | Submenu expanding mode of the menu.<br>Default value: **SubMenuExpandingMode.SIDE_EXPAND**<br>If this parameter is set to **SIDE_EXPAND**, the [subMenuExpandSymbol](#submenuexpandsymbol20) attribute will not be displayed. If this parameter is set to **EMBEDDED_EXPAND** or **STACK_EXPAND**, the **subMenuExpandSymbol** attribute takes effect. |
 
 ### subMenuExpandSymbol<sup>20+</sup>
 
 subMenuExpandSymbol(symbol: SymbolGlyphModifier)
 
-Sets the expansion symbol of the Menu submenu. It is displayed only in SubMenuExpandingMode.EMBEDDED_EXPAND or SubMenuExpandingMode.STACK_EXPAND mode, and is not displayed in SubMenuExpandingMode.SIDE_EXPAND mode.
+Sets the submenu expand symbol of the menu. This attribute is displayed only in **SubMenuExpandingMode.EMBEDDED_EXPAND** or **SubMenuExpandingMode.STACK_EXPAND** mode, and is not displayed in **SubMenuExpandingMode.SIDE_EXPAND** mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -170,15 +169,15 @@ Sets the expansion symbol of the Menu submenu. It is displayed only in SubMenuEx
 
 **Parameters**
 
-| Name | Type                         | Mandatory | Description           |
+| Name| Type                        | Mandatory| Description          |
 | ------ | ---------------------------- | ---- |--------------|
-| symbol  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| Yes   | Expansion symbol of the Menu submenu.<br/>1. When the expansion style of the submenu is SubMenuExpandingMode.SIDE_EXPAND, the expansion symbol is not displayed.<br/>2. When the expansion style of the submenu is SubMenuExpandingMode.EMBEDDED_EXPAND, the expansion symbol rotates 180° clockwise when expanded. The expansion symbol uses `new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontSize('24vp')` by default.<br/>3. When the expansion style of the submenu is SubMenuExpandingMode.STACK_EXPAND, the expansion symbol rotates 90° clockwise when expanded. The expansion symbol uses `new SymbolGlyphModifier($r('sys.symbol.chevron_forward')).fontSize('20vp').padding('2vp')` by default.|
+| symbol  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| Yes  | Submenu expand symbol of the menu.<br>1. **SubMenuExpandingMode.SIDE_EXPAND**: The expand symbol is not displayed.<br>2. **SubMenuExpandingMode.EMBEDDED_EXPAND**: The symbol rotates 180° clockwise upon expansion. By default, the expand symbol uses **new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontSize('24vp')**.<br>3. **SubMenuExpandingMode.STACK_EXPAND**: The symbol rotates 90° clockwise upon expansion. By default, the expand symbol uses **new SymbolGlyphModifier($r('sys.symbol.chevron_forward')).fontSize('20vp').padding('2vp')**.|
 
 ### fontSize<sup>(deprecated)</sup>
 
 fontSize(value: Length)
 
-Sets the font size of all text in the Menu uniformly.
+Sets the size of all text within the menu.
 
 > **NOTE**
 >
@@ -188,13 +187,13 @@ Sets the font size of all text in the Menu uniformly.
 
 **Parameters**
 
-| Name | Type                         | Mandatory | Description                                                         |
+| Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes   | Font size of all text in the Menu. When the value of **Length** is of the number type, the unit fp is used. Percentage is not supported. |
+| value  | [Length](ts-types.md#length) | Yes  | Size of all text within the menu. If the value of the Length type is a number, the unit is fp. Percentage values are not supported.|
 
-## SubMenuExpandingMode<sup>12+</sup> Enum Description
+## SubMenuExpandingMode<sup>12+</sup>
 
-Enumerates the expansion styles of the Menu submenu.
+Enumerates the submenu expanding modes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -202,23 +201,23 @@ Enumerates the expansion styles of the Menu submenu.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name            | Value | Description                                       |
-| --------------- | ----- | ------------------------------------------------- |
-| SIDE_EXPAND     | 0     | Default expansion style. The submenu expands on the side of the same plane. |
-| EMBEDDED_EXPAND | 1     | Embedded expansion style. The submenu expands within the main menu. |
-| STACK_EXPAND    | 2     | Stack style. The submenu expands above the main menu. |
+| Name           | Value  | Description                                      |
+| --------------- | ---- | ------------------------------------------ |
+| SIDE_EXPAND     | 0    | Default mode. Submenus are expanded on the side on the same plane.|
+| EMBEDDED_EXPAND | 1    | Embedded mode. Submenus are expanded within the main menu.    |
+| STACK_EXPAND    | 2    | Stack mode. Submenus are expanded above the main menu.      |
 
 ## Example
 
-### Example 1 (Setting a Multi-level Menu)
+### Example 1: Implementing a Multi-Level Menu
 
-This example implements a multi-level menu by configuring the builder parameter in MenuItem.
+This example demonstrates how to implement a multi-level menu by configuring the **builder** parameter in **MenuItem**.
 
 ```ts
 @Entry
 @Component
 struct Index {
-  // $r('app.media.xxx') needs to be replaced with the image resource file required by the developer.
+  // Replace $r('app.media.xxx') with the image resource file you use.
   private iconStr: ResourceStr = $r('app.media.view_list_filled');
   private iconStr2: ResourceStr = $r('app.media.arrow_right_filled');
 
@@ -233,32 +232,32 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu option' })
-      MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu option' })
+      MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu item' })
+      MenuItem({ startIcon: $r('app.media.icon'), content: 'Menu item' })
         .enabled(false)
       MenuItem({
         startIcon: this.iconStr,
-        content: 'Menu option',
+        content: 'Menu item',
         endIcon: this.iconStr2,
         builder: (): void => this.SubMenu()
       })
       MenuItemGroup({ header: 'Subtitle' }) {
         MenuItem({
           startIcon: this.iconStr,
-          content: 'Menu option',
+          content: 'Menu item',
           endIcon: this.iconStr2,
           builder: (): void => this.SubMenu()
         })
         MenuItem({
           startIcon: $r('app.media.app_icon'),
-          content: 'Menu option',
+          content: 'Menu item',
           endIcon: this.iconStr2,
           builder: (): void => this.SubMenu()
         })
       }
       MenuItem({
         startIcon: this.iconStr,
-        content: 'Menu option',
+        content: 'Menu item',
       })
     }
   }
@@ -280,9 +279,9 @@ struct Index {
 
 ![menu](figures/menu.png)
 
-### Example 2 (Setting a Symbol-Type Icon)
+### Example 2: Setting the Symbol Icon
 
-This example implements a menu with symbol-type icons by configuring symbolStartIcon and symbolEndIcon.
+This example demonstrates how to implement a menu with symbol icons by configuring **symbolStartIcon** and **symbolEndIcon**.
 
 ```ts
 // xxx.ets
@@ -308,31 +307,31 @@ struct Index {
   @Builder
   MyMenu() {
     Menu() {
-      MenuItem({ symbolStartIcon: this.startIconModifier, content: 'Menu option' })
-      MenuItem({ symbolStartIcon: this.startIconModifier, content: 'Menu option' })
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: 'Menu item' })
+      MenuItem({ symbolStartIcon: this.startIconModifier, content: 'Menu item' })
         .enabled(false)
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: 'Menu option',
+        content: 'Menu item',
         symbolEndIcon: this.endIconModifier,
         builder: (): void => this.SubMenu()
       })
       MenuItemGroup({ header: 'Subtitle' }) {
         MenuItem({
           symbolStartIcon: this.startIconModifier,
-          content: 'Menu option',
+          content: 'Menu item',
           symbolEndIcon: this.endIconModifier,
           builder: (): void => this.SubMenu()
         })
         MenuItem({
           symbolStartIcon: this.startIconModifier,
-          content: 'Menu option',
+          content: 'Menu item',
           symbolEndIcon: this.endIconModifier,
           builder: (): void => this.SubMenu()
         })
       }
       MenuItem({
-        content: 'Menu option',
+        content: 'Menu item',
       }).selected(this.select).selectIcon(this.selectIconModifier)
     }
   }
@@ -354,9 +353,9 @@ struct Index {
 
 ![en-us_image_0000001174582862](figures/normal-symbol.png)
 
-### Example 3 (Setting the Menu Submenu Expansion Symbol)
+### Example 3: Setting the Menu Submenu Expand Symbol
 
-This example configures the color and size of the Menu submenu expansion symbol through subMenuExpandSymbol.
+This example demonstrates how to use **subMenuExpandSymbol** to set the color and size of the menu submenu expand symbol.
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -399,14 +398,14 @@ struct Index {
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: 'View by',
+        content: 'View mode',
         builder: (): void => this.SubMenu(),
       })
     }
-    // Set the submenu expansion style to embedded expansion.
+    // Set the submenu expand mode to embedded.
     .subMenuExpandingMode(SubMenuExpandingMode.EMBEDDED_EXPAND)
     .backgroundColor(Color.Grey)
-    // Set the submenu expansion symbol.
+    // Set the submenu expand symbol.
     .subMenuExpandSymbol(this.expandSymbolModifier)
   }
 
@@ -420,9 +419,9 @@ struct Index {
 
 ![image](figures/menu-arrow.gif)
 
-### Example 4 (Setting the Divider Style)
+### Example 4: Using the Divider Style
 
-This example implements the divider style by setting the menuItemDivider and menuItemGroupDivider attributes.
+This example demonstrates how to set the divider style using the **menuItemDivider** and **menuItemGroupDivider** attributes.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI'
@@ -443,13 +442,13 @@ struct Index {
       }
       MenuItem({ content: 'Item Content' })
     }
-    // Set the menu item divider style.
+    // Set the style of the menu item divider.
     .menuItemDivider({
       strokeWidth: LengthMetrics.vp(5),
       color: '#d5d5d5',
       mode: DividerMode.EMBEDDED_IN_MENU
     })
-    // Set the menu item group divider style.
+    // Set the style of the menu item group divider.
     .menuItemGroupDivider({
       strokeWidth: LengthMetrics.vp(5),
       color: '#707070',
@@ -470,11 +469,11 @@ struct Index {
 
 ![dividerStyleMode](figures/MenudividerStyleMode.png)
 
-### Example 5 (Setting a Multi-level Menu for Custom Menu Items)
+### Example 5: Setting Multi-level Menus for a Custom Menu Item
 
-This example adds a multi-level menu to custom menu items by setting the subMenuBuilder attribute.
+This example demonstrates how to use **subMenuBuilder** to add multi-level menus for a custom menu item.
 
-Since API version 26.0.0, the [subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder) attribute is added.
+The [subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder) attribute is added since API version 26.0.0.
 
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
@@ -494,7 +493,7 @@ struct Index {
   @Builder
   SubMenuContent() {
     Row() {
-      // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       Image($r('app.media.startIcon')).width(20).height(20)
       Text('Custom Menu Item').margin({start: LengthMetrics.vp(5)})
     }.padding(20)
@@ -526,5 +525,3 @@ struct Index {
 ```
 
 ![subMenuBuilder](figures/subMenuBuilder.jpg)
-
-<!--no_check-->
