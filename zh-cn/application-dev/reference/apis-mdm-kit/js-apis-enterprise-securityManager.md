@@ -501,13 +501,13 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 
 > **说明：**
 >
-> 1.该接口能力仅在设备无锁屏密码时生效。
+> 1. 该接口能力仅在设备无锁屏密码时生效。
 > 
-> 2.设备默认属于启用滑动解锁的状态。
+> 2. 设备默认属于启用滑动解锁的状态。
 >
-> 3.设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
+> 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
-> 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+> 4. 下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
 
 **起始版本：** 26.0.0
 
@@ -961,9 +961,9 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
 > **说明：**
 >
-> 1.本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+> 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 >
-> 2.水印图片会以平铺方式重复覆盖整个应用界面。
+> 2. 水印图片会以平铺方式重复覆盖整个应用界面。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1521,9 +1521,9 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 
 > **说明：**
 >
-> 1.屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
+> 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
-> 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+> 2. 当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
 
 **起始版本：** 26.0.0
 
@@ -1641,11 +1641,11 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 
 > **说明：**
 >
-> 1.只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
+> 1. 只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
 >
-> 2.单个用户下最多可以禁用200个权限。
+> 2. 单个用户下最多可以禁用200个权限。
 >
-> 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
+> 3. 权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
 
 **起始版本：** 26.0.0
 
@@ -1768,15 +1768,15 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 
 > **说明：**
 >
-> 1.必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
+> 1. 必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
 >
-> 2.应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
+> 2. 应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
 >
-> 3.当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
+> 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
-> 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
+> 4. 所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
-> 5.系统应用和普通应用都可以添加。
+> 5. 系统应用和普通应用都可以添加。
 
 **起始版本：** 26.0.0
 

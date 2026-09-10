@@ -51,9 +51,9 @@ libnet_websocket.so
 ```
 ### 构建工程
 
-1、在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
+1. 在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
 
-<!-- @[websocket_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[websocket_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -197,9 +197,9 @@ static napi_value CloseWebsocket(napi_env env, napi_callback_info info)
 ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返回true，否则返回false。在创建代表WebSocket客户端的WebSocket结构体指针前，需要定义以下回调函数：连接开启时的onOpen回调、接收普通消息的onMessage回调、接收错误消息的onError回调、接收关闭消息的onClose回调。在示例代码中，还调用了[`OH_WebSocketClient_Send`](../reference/apis-network-kit/capi-net-websocket-h.md#oh_websocketclient_send)、[`OH_WebSocketClient_Close`](../reference/apis-network-kit/capi-net-websocket-h.md#oh_websocketclient_close)等函数向服务器发送消息，主动关闭WebSocket连接。
 
 
-2、将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。
+2. 将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。
 
-<!-- @[websocket_extern_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[websocket_extern_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 EXTERN_C_START
@@ -216,9 +216,9 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-3、将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
+3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
 
-<!-- @[websocket_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[websocket_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_module demoModule = {
@@ -234,9 +234,9 @@ static napi_module demoModule = {
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 ```
 
-4、在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
+4. 在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
 
-<!-- @[websocket_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @[websocket_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const Connect: (url: string) => boolean;
@@ -244,9 +244,9 @@ export const Send: (data: string) => number;
 export const Close: () => number;
 ```
 
-5、在index.ets文件中对上述封装好的接口进行调用。
+5. 在index.ets文件中对上述封装好的接口进行调用。
 
-<!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import testWebsocket from 'libentry.so';
@@ -343,37 +343,37 @@ struct Index {
 }
 ```
 
-6、配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_websocket.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
+6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_websocket.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
-注意：如图所示，在`add_library`中的`entry`是工程自动生成的`modename`，若要做修改，需和步骤3中`.nm_modname`保持一致。
+   注意：如图所示，在`add_library`中的`entry`是工程自动生成的`modename`，若要做修改，需和步骤3中`.nm_modname`保持一致。
 
-![netmanager-4.png](./figures/websocket-notemod.png)
+   ![netmanager-4.png](./figures/websocket-notemod.png)
 
-7、调用WebSocket C API接口要求应用拥有`ohos.permission.INTERNET`权限，在`module.json5`中的`requestPermissions`项添加该权限。
+7. 调用WebSocket C API接口要求应用拥有`ohos.permission.INTERNET`权限，在`module.json5`中的`requestPermissions`项添加该权限。
 
-经过以上步骤，整个工程的搭建已经完成，接下来就可以连接设备运行工程进行日志查看了。
+   经过以上步骤，整个工程的搭建已经完成，接下来就可以连接设备运行工程进行日志查看了。
 
 ## 测试步骤
 
-1、连接设备，使用DevEco Studio打开搭建好的工程。
+1. 连接设备，使用DevEco Studio打开搭建好的工程。
 
-2、运行工程，设备上会弹出以下图片所示界面：
+2. 运行工程，设备上会弹出以下图片所示界面：
 
-![demo初始画面](./figures/websocket-demo-1.jpg)
+   ![demo初始画面](./figures/websocket-demo-1.jpg)
 
-简要说明：
+   简要说明：
 
-- 在第一行的输入框中，输入`ws://`或`wss://`开头的WebSocket URL。
+   - 在第一行的输入框中，输入`ws://`或`wss://`开头的WebSocket URL。
 
-- 在输入完WebSocket URL，点击`Connect`按钮后，如果访问成功，会触发onOpen的回调，打印日志。
+   - 在输入完WebSocket URL，点击`Connect`按钮后，如果访问成功，会触发onOpen的回调，打印日志。
 
-- 在Content输入框里输入要发送给服务器的内容，点击`Send`按钮发送。如果服务器返回消息，会触发onMessage回调，打印日志。
+   - 在Content输入框里输入要发送给服务器的内容，点击`Send`按钮发送。如果服务器返回消息，会触发onMessage回调，打印日志。
 
-- 点击`Close`按钮，WebSocket连接释放，可以重新输入新的WebSocket URL。
+   - 点击`Close`按钮，WebSocket连接释放，可以重新输入新的WebSocket URL。
 
-![demo输入界面](./figures/websocket-demo-2.jpg)
+   ![demo输入界面](./figures/websocket-demo-2.jpg)
 
-![demo日志输出](./figures/websocket-demo-log.png)
+   ![demo日志输出](./figures/websocket-demo-log.png)
 
 ## 相关实例
 
