@@ -1434,7 +1434,7 @@ struct ImageExample4 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/image-view4.gif)
+![en-us_image_0000001607845173](figures/image-view4.gif)
 <!--RP2End-->
 ### Example 6: Stretching an Image Using slice
 

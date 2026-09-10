@@ -1838,7 +1838,7 @@ struct Index {
 
 This example shows how to call [menuSystemMaterial](#menusystemmaterial) to set the system material of the drop-down menu to achieve the immersive light effect, and call [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) to set the system material of the **Select** component to achieve the immersive light effect.
 
-The immersive light effect of the component automatically adapts to the device's computing power and the immersive light effect set by the user in the system. No additional adaptation is required.
+The figures in this example show the strong immersive light effects on a high-computing device. The immersive light effect of the component automatically adapts to the device's computing power and the immersive light effect set by the user in the system. No additional adaptation is required.
 
 Since API version 26.0.0, the **menuSystemMaterial** API is added.
 
@@ -1873,6 +1873,9 @@ struct Index {
     }
     // Replace $r('app.media.img') with the image resource file you use.
     .backgroundImage($r('app.media.img'))
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
