@@ -257,7 +257,7 @@ try {
 
 writeInterfaceToken(token: string): void
 
-将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证以及标识服务端提供的接口类型。建议使用唯一且有意义的描述符字符串（如'com.example.service'），避免使用敏感信息，长度应小于40960。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法性。
+将接口描述符写入MessageSequence对象，远端对象可使用该信息校验本次通信。适用于需要验证通信双方接口一致性的场景，如跨进程服务调用、安全通信验证以及标识服务端提供的接口类型。建议使用唯一且有意义的描述符字符串（如"com.example.service"），避免使用敏感信息，长度应小于40960。调用此方法后，接口描述符字符串会被序列化并存入MessageSequence缓冲区。远端在接收到通信请求后，可读取该描述符来验证请求来源的合法性。
 
 - 必须与[readInterfaceToken](#readinterfacetoken9)配对使用。
 - 长度超过限制会抛出参数错误异常。
@@ -9941,7 +9941,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class testRemoteObject extends rpc.RemoteObject {
+class TestRemoteObject extends rpc.RemoteObject {
   onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
     option: rpc.MessageOption): boolean {
     // 根据业务实际逻辑，进行相应处理
