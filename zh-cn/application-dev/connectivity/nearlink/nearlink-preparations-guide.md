@@ -42,8 +42,8 @@
 1. 导入相关模块。
 
     <!-- @[manager_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
-
-    ```ts
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { manager } from '@kit.ConnectivityKit';
