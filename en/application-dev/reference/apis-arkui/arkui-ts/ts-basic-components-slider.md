@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d1b4ee1c18a5a865168b9c5acdec05b37306a484 translatedAt=2026-09-03T12:01:51.306Z pushedAt=2026-09-08T11:57:29.006Z -->
+<!-- md-trans-meta sourceCommit=d1b4ee1c18a5a865168b9c5acdec05b37306a484 translatedAt=2026-09-03T12:01:51.306Z pushedAt=2026-09-10T03:45:35.902Z -->
 
 The **Slider** component is used to quickly adjust settings, such as the volume and brightness. It supports style customization, direction configuration, interaction modes, and accessibility, which helps resolve UI consistency issues and improve development efficiency, thereby enhancing user experience and reducing development costs.
 
@@ -139,7 +139,7 @@ Since API version 12, the **LinearGradient** type can be used to set the gradien
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
-**Atomic service API**: This API supports only the **ResourceColor** type in atomic services since API version 11, 
+**Atomic service API**: This API supports only the **ResourceColor** type in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
