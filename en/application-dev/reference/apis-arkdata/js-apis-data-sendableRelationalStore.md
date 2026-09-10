@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=2c591998eed5470f922791050fc78c8f5b16882a translatedAt=2026-09-04T03:49:24.411Z pushedAt=2026-09-09T09:11:03.729Z -->
 
 The **sendableRelationalStore** module provides APIs for obtaining **ValuesBucket** of the sendable type from the query result set and transferring it between concurrent instances.
 
@@ -338,7 +339,7 @@ Represents the asset (such as a document, image, or video). **Asset** inherits f
 
 type Assets = collections.Array\<Asset>
 
-Represent an array of [Assets](#asset), which allows assets to be passed across threads.
+Represent an array of [Asset](#asset), which allows assets to be passed across threads.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

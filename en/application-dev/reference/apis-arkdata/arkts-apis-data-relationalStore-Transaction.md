@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=99f27ed5372b3353f2b572028e1a2823f9d04616 translatedAt=2026-09-04T02:44:41.909Z pushedAt=2026-09-09T09:11:03.651Z -->
 
 Provides APIs for managing databases in transaction mode. A transaction object is created by using [createTransaction](arkts-apis-data-relationalStore-RdbStore.md#createtransaction14). Operations on different transaction objects are isolated. For details about the transaction types, see [TransactionType](arkts-apis-data-relationalStore-e.md#transactiontype14).
 
@@ -72,7 +73,7 @@ import { relationalStore } from '@kit.ArkData';
 
 commit(): Promise&lt;void&gt;
 
-Commits this executed SQL statement. This API uses a promise to return the result. When using asynchronous APIs to execute SQL statements, ensure that **commit()** is called after the asynchronous API execution is completed. Otherwise, the SQL operations may be lost. After **commit()** is called, the transaction object and the created **ResultSet** object will be closed.
+Commits the executed SQL statements. This API uses a promise to return the result. If the SQL statements are executed using an asynchronous API, ensure that the asynchronous API has finished execution before calling **commit**; otherwise, the SQL operations may be lost. After **commit** is called, the **Transaction** object and the created **ResultSet** objects will be closed.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -80,7 +81,7 @@ Commits this executed SQL statement. This API uses a promise to return the resul
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -131,7 +132,7 @@ Rolls back this executed SQL statement. This API uses a promise to return the re
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -174,9 +175,15 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Promise&lt;number&gt;
 
-Inserts a row of data into a table. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into the target table. This API uses a promise to return the result.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+Due to the limit of the shared memory, the size of a single data record must be strictly less than 2 MB.
+
+If a single data record exceeds this limit, after a **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling the get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, you are advised to use the blob type.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -184,7 +191,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                       | Mandatory| Description                      |
 | -------- | ------------------------------------------- | ---- | -------------------------- |
-| table    | string                                      | Yes  | Name of the target table.          |
+| table    | string                                      | Yes   | Target table name. It cannot be an empty string, and it must not contain spaces, commas, or asterisks, and cannot start or end with a dot. Otherwise, error code 401 is thrown.           |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)               | Yes  | Row of data to insert.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.        |
 
@@ -192,7 +199,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| Promise&lt;number&gt; | Promise object that returns the row ID of the inserted data. |
 
 **Error codes**
 
@@ -249,9 +256,15 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution): number
 
-Inserts a row of data into a table. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Inserts a row of data into the target table.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+Due to the limit of the shared memory, the size of a single data record must be strictly less than 2 MB.
+
+If a single data record exceeds this limit, after a **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling the get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. If you need to store content larger than 8 MB, use the blob type.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -259,7 +272,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| table    | string                                      | Yes  | Name of the target table.                                            |
+| table    | string                                      | Yes   | Name of the target table. It cannot be an empty string.                                             |
 | values   | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) \| [sendableRelationalStore.ValuesBucket](./js-apis-data-sendableRelationalStore.md#valuesbucket)   | Yes  | Row of data to insert.                                  |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| No  | Resolution used to resolve the conflict. <br>Default value: **relationalStore.ConflictResolution.ON_CONFLICT_NONE**.|
 
@@ -267,7 +280,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| number | If the operation is successful, the row ID will be returned. Otherwise, **-1** will be returned.|
+| number | Row ID of the inserted data. |
 
 **Error codes**
 
@@ -333,9 +346,15 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 
 Inserts data into a table in batches. This API uses a promise to return the result.
 
-Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
+Because the size limit of shared memory is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+If a single data record exceeds this limit, when you later obtain a **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. If you need to store content larger than 8 MB, use the blob type.
+
+Data is written in batches of 32766 parameters at a time using the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The number of parameters is calculated as the number of inserted data records multiplied by the size of the union of all fields of the inserted data. If a failure occurs midway, the API returns immediately.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -343,14 +362,14 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes   | Name of the target table. It cannot be an empty string.             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 
 **Return value**
 
 | Type                 | Description                                                       |
 | --------------------- | ----------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| Promise&lt;number&gt; | Promise object used to return the number of data records inserted in batch. |
 
 **Error codes**
 
@@ -422,9 +441,15 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
 Inserts data into a table in batches. This API returns the result synchronously.
 
-Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
+Because the size limit of shared memory is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+If a single data record exceeds this limit, when you later obtain a **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. If you need to store content larger than 8 MB, use the blob type.
+
+Writes data in batches of 32766 parameters using the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The number of parameters is calculated as the number of data records to insert multiplied by the size of the union of all fields in the inserted data. If a failure occurs midway, the operation returns immediately.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -432,14 +457,14 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes   | Name of the target table. It cannot be an empty string.             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 
 **Return value**
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| number | If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| number | Number of data records inserted in batch. |
 
 **Error codes**
 
@@ -511,11 +536,19 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
 
-A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+Because the shared memory size limit is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
+If a single data record exceeds this limit, after obtaining a **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
 
-Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -523,7 +556,7 @@ Ensure that your application complies with this constraint when calling this API
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes   | Name of the target table. It cannot be an empty string.             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict. If **ON_CONFLICT_ROLLBACK** is used, the transaction will be rolled back when a conflict occurs.|
 
@@ -531,7 +564,7 @@ Ensure that your application complies with this constraint when calling this API
 
 | Type                 | Description                                                       |
 | --------------------- | ----------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result. If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| Promise&lt;number&gt; | Promise object used to return the number of data records inserted in batch. |
 
 **Error codes**
 
@@ -611,13 +644,19 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 Inserts data into a table with conflict resolutions in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
 
-A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+Because the shared memory size limit is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
+If a single data record exceeds this limit, after obtaining a **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
 
-Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
+
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+
+For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -625,7 +664,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| table  | string                                     | Yes  | Name of the target table.            |
+| table  | string                                     | Yes   | Name of the target table. It cannot be an empty string.             |
 | values | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert.|
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)| Yes  | Resolution used to resolve the conflict. If **ON_CONFLICT_ROLLBACK** is used, the transaction will be rolled back when a conflict occurs.|
 
@@ -633,7 +672,7 @@ A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB,
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| number | If the operation is successful, the number of inserted data records is returned. Otherwise, **-1** is returned.|
+| number | Number of data records inserted in batch. |
 
 **Error codes**
 
@@ -710,42 +749,48 @@ if (store != undefined) {
 
 batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: ReturningConfig, conflict?: ConflictResolution): Promise\<Result\>
 
-Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10), and [Result](arkts-apis-data-relationalStore-i.md#result23) is returned. This API uses a promise to return the result.
+Inserts a batch of data into the target table. You can use the **conflict** parameter to specify the conflict resolution mode [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) when a data conflict occurs, and the API returns [Result](arkts-apis-data-relationalStore-i.md#result23). This API uses a promise to return the result.
 
-A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code 14800001 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+Because the shared memory size limit is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
+If a single data record exceeds this limit, after you obtain the **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**, calling the get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
 
-Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
 
-It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
+A single string type field supports writing up to 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+The maximum number of parameters for a single insert is 32766. If the limit is exceeded, error code 14800001 is returned. The number of parameters is calculated as the number of inserted data records multiplied by the size of the union of all fields of the inserted data.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+For example, if the size of the union of all fields of the inserted data is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this limit when calling the API to avoid errors caused by too many parameters.
+
+It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, because the correct result may not be returned.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
+| Name     | Type                                                         | Mandatory | Description                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table    | string                                                       | Yes  | Name of the target table for data insertion. Note: A valid table name must not contain spaces ( ), commas (,), or asterisks (*), and must not start or end with a dot (.). Otherwise, a parameter error will be thrown.|
-| values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert. Note: An empty array or data containing duplicate asset records will trigger a parameter error.|
-| config   | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                                      |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No  | Resolution used to resolve the conflict. Default value: **ON_CONFLICT_NONE**.                    |
+| table    | string                                                       | Yes  | Name of the target table to insert data into. Note: A valid table name must not contain spaces, commas, or asterisks, and must not start or end with a dot. Otherwise, a parameter error is thrown. |
+| values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | Set of data to insert into the table. Note: An empty array or an array containing duplicate asset data throws a parameter error. |
+| config   | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration of the return value.                                       |
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No   | Conflict resolution mode. The default value is **ON_CONFLICT_NONE**.                     |
 
 **Return value**
 
-| Type                                                        | Description                                           |
+| Type                                                         | Description                                            |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)> | Promise used to return the result. If the operation is successful, the affected dataset is returned.|
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)> | Promise object used to return the affected data set. |
 
-**Error codes**
+**Error codes:**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the error codes, see [RDB Store Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.         |
@@ -759,7 +804,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**Example**:
+**Example**
 
 ```ts
 async function transBatchInsertWithReturningExample(trans: relationalStore.Transaction)
@@ -785,42 +830,48 @@ async function transBatchInsertWithReturningExample(trans: relationalStore.Trans
 
 batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, config: ReturningConfig, conflict?: ConflictResolution): Result
 
-Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10), and [Result](arkts-apis-data-relationalStore-i.md#result23) is returned.
+Inserts a group of data records into the target table. You can use the **conflict** parameter to specify the conflict resolution mode [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) when a data conflict occurs, and the API returns [Result](arkts-apis-data-relationalStore-i.md#result23).
 
-A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code 14800001 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+Because the shared memory size limit is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
+If a single data record exceeds this limit, after you obtain the **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling the get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
 
-Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
 
-It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
 
-A single string field supports a maximum of 8 MB data. If the data exceeds 8 MB, only the first 8 MB data is retained. For data storage requirements exceeding 8 MB, the Blob type is recommended.
+The maximum number of parameters for a single insert is 32766. If the limit is exceeded, error code 14800001 is returned. The number of parameters is calculated as the number of inserted data records multiplied by the size of the union of all fields of the inserted data.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+For example, if the size of the union of all fields of the inserted data is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+
+Ensure that you comply with this limit when calling the API to avoid errors caused by too many parameters.
+
+For the **conflict** parameter, the **ON_CONFLICT_FAIL policy** is not recommended, because the correct result may not be returned.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table    | string                                                       | Yes  | Name of the target table for data insertion. Note: A valid table name must not contain spaces ( ), commas (,), or asterisks (*), and must not start or end with a dot (.). Otherwise, a parameter error will be thrown.|
-| values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes  | An array of data to insert. Note: An empty array or data containing duplicate asset records will trigger a parameter error.|
-| config   | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                                      |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No  | Resolution used to resolve the conflict. Default value: **ON_CONFLICT_NONE**.                  |
+| Name     | Type                                                         | Mandatory | Description                                                         |
+| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| table    | string                                                       | Yes       | Target table to insert data into. Note: A valid table name must not contain spaces, commas, or asterisks, and must not start or end with a dot. Otherwise, a parameter error is thrown. |
+| values   | Array&lt;[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)&gt; | Yes       | Set of data to insert into the table. Note: An empty array or an array containing duplicate asset data throws a parameter error. |
+| config   | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes       | Configuration of the return value.                                       |
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No        | Conflict resolution mode. The default value is **ON_CONFLICT_NONE**.                   |
 
 **Return value**
 
-| Type                                                   | Description                              |
+| Type                                                    | Description                               |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | If the operation is successful, the affected dataset is returned.|
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | Affected data set. |
 
-**Error codes**
+**Error codes:**
 
 For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.         |
@@ -834,7 +885,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**Example**:
+**Example**
 
 ```ts
 function transBatchInsertWithReturningSyncExample(trans: relationalStore.Transaction)
@@ -860,7 +911,15 @@ function transBatchInsertWithReturningSyncExample(trans: relationalStore.Transac
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution): Promise&lt;number&gt;
 
-Updates data based on the specified **RdbPredicates** object. This API uses a promise to return the result. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data in the database based on the specified **RdbPredicates** instance. This API uses a promise to return the result asynchronously.
+
+Because the shared memory size is limited to 2 MB, the size of a single data record must also be strictly less than 2 MB.
+
+If a single data record exceeds this limit, after the **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling the get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -876,7 +935,7 @@ Updates data based on the specified **RdbPredicates** object. This API uses a pr
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the number of rows updated.|
+| Promise&lt;number&gt; | Promise object used to return the number of affected rows. |
 
 **Error codes**
 
@@ -935,7 +994,15 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution): number
 
-Updates data in the RDB store based on the specified **RdbPredicates** object. This API returns the result synchronously. Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB. Otherwise, data cannot be obtained using the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) after **ResultSet** is obtained through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of **RdbStore**. As a result, the operation may fail or an exception may be thrown.
+Updates data in the database based on the specified **RdbPredicates** instance.
+
+Because the shared memory size limit is 2 MB, the size of a single data record must also be strictly less than 2 MB.
+
+If a single data record exceeds this limit, when you later obtain a **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1010,34 +1077,42 @@ if (store != undefined) {
 
 updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: ReturningConfig, conflict?: ConflictResolution): Promise\<Result\>
 
-Updates data in the RDB store based on the specified **RdbPredicates** instance object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10), and [Result](arkts-apis-data-relationalStore-i.md#result23) is returned. This API uses a promise to return the result.
+Updates data in the database based on the specified **RdbPredicates** instance. You can use the **conflict** parameter to specify the conflict resolution mode [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) when a data conflict occurs. This API returns a [Result](arkts-apis-data-relationalStore-i.md#result23) and uses a promise to return the result asynchronously.
 
-It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
+Because the size limit of the shared memory is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+If a single data record exceeds this limit, after a **ResultSet** is obtained through [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) of RdbStore, calling get methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep).
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, you are advised to use the blob type.
+
+You are advised not to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, because the correct result may not be returned.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type                                                        | Mandatory| Description                                                        |
+| Name      | Type                                                         | Mandatory | Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Update conditions specified by the **RdbPredicates** object.                     |
-| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                                      |
-| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No  | Resolution used to resolve the conflict. Default value: **ON_CONFLICT_NONE**.                  |
+| values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes  | Data row to update in the database. The key-value pairs are associated with the column names of the database table. |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Update conditions specified by the **RdbPredicates** instance.   |
+| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.               |
+| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No   | Conflict resolution mode. The default value is **ON_CONFLICT_NONE**. |
 
 **Return value**
 
-| Type                                                   | Description                                           |
+| Type                                                    | Description                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise used to return the result. If the operation is successful, the affected dataset is returned.|
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise object used to return the affected data set. |
 
-**Error codes**
+**Error Codes**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the error codes, see [RDB Store Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.         |
@@ -1051,7 +1126,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**Example**:
+**Example**
 
 ```ts
 async function transUpdateWithReturningExample(trans: relationalStore.Transaction)
@@ -1081,34 +1156,42 @@ async function transUpdateWithReturningExample(trans: relationalStore.Transactio
 
 updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config: ReturningConfig, conflict?: ConflictResolution): Result
 
-Updates data in the RDB store based on the specified **RdbPredicates** instance object. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10), and [Result](arkts-apis-data-relationalStore-i.md#result23) is returned.
+Updates data in the database based on the specified **RdbPredicates** instance. You can use the **conflict** parameter to specify the conflict resolution mode [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) when a data conflict occurs, and this API returns [Result](arkts-apis-data-relationalStore-i.md#result23).
 
-It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as this may prevent the return of correct results.
+Because the shared memory size limit is 2 MB, the size of a single data record must also be strictly less than 2 MB.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+If a single data record exceeds this limit, after you obtain the **ResultSet** through the [query](arkts-apis-data-relationalStore-RdbStore.md#query) or [querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql) API of RdbStore, calling the **get** methods such as [getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12) and [getString](arkts-apis-data-relationalStore-ResultSet.md#getstring) will fail to obtain the data, and may cause the operation to fail or throw an exception.
+
+To read data larger than 2 MB, use the [queryByStep](arkts-apis-data-relationalStore-RdbStore.md#querybystep) API.
+
+A single string type field supports writing a maximum of 8 MB. The excess part will be truncated, and only the first 8 MB of data is retained. To store content larger than 8 MB, use the blob type.
+
+It is not recommended to use the **ON_CONFLICT_FAIL** policy for the **conflict** parameter, as it may fail to return the correct result.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type                                                        | Mandatory| Description                                                        |
+| Name       | Type                                                         | Mandatory | Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Update conditions specified by the **RdbPredicates** object.                     |
-| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                                      |
-| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No  | Resolution used to resolve the conflict. Default value: **ON_CONFLICT_NONE**.                  |
+| values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Yes  | Data rows to update in the database. The key-value pairs are associated with the column names of the database table. |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Update conditions specified by the **RdbPredicates** instance.                      |
+| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                                       |
+| conflict   | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | No   | Conflict resolution mode. The default value is **ON_CONFLICT_NONE**.                   |
 
 **Return value**
 
-| Type                                                   | Description                              |
+| Type                                                    | Description                               |
 | ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | If the operation is successful, the affected dataset is returned.|
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | Data set affected. |
 
-**Error codes**
+**Error Codes**
 
 For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted.         |
@@ -1122,7 +1205,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 | 14800033     | SQLite: Data type mismatch.                                  |
 | 14800047     | The WAL file size exceeds the default limit.                 |
 
-**Example**:
+**Example**
 
 ```ts
 function transUpdateWithReturningSyncExample(trans: relationalStore.Transaction)
@@ -1285,44 +1368,44 @@ if (store != undefined) {
 
 deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise\<Result\>
 
-Deletes data from the RDB store based on the specified **RdbPredicates** object and returns [Result](arkts-apis-data-relationalStore-i.md#result23). This API uses a promise to return the result.
+Deletes data from the database based on the **RdbPredicates** instance and returns the [Result](arkts-apis-data-relationalStore-i.md#result23). This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type                                                        | Mandatory| Description                                   |
-| ---------- | ------------------------------------------------------------ | ---- | --------------------------------------- |
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Deletion conditions specified by the **RdbPredicates** object.|
-| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                 |
+| Name       | Type                                                         | Mandatory | Description                                    |
+| ---------- | ------------------------------------------------------------ | --------- | ---------------------------------------------- |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes       | Deletion conditions specified by the **RdbPredicates** instance. |
+| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes       | Configuration information of the return value. |
 
 **Return value**
 
-| Type                                                   | Description                                           |
-| ------------------------------------------------------- | ----------------------------------------------- |
-| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise used to return the result. If the operation is successful, the affected dataset is returned.|
+| Type                                                    | Description                                            |
+| ------------------------------------------------------- | ------------------------------------------------------ |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise object used to return the affected data set. |
 
-**Error codes**
+**Error codes:**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
-| ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | The current operation failed because the database is corrupted.         |
-| 14800014     | The target instance is already closed.                 |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800024     | SQLite: The database file is locked.                         |
-| 14800025     | SQLite: A table in the database is locked.                   |
-| 14800028     | SQLite: Some kind of disk I/O error occurred.                |
-| 14800029     | SQLite: The database is full.                                |
-| 14800032     | SQLite: Abort due to constraint violation.                   |
-| 14800033     | SQLite: Data type mismatch.                                  |
-| 14800047     | The WAL file size exceeds the default limit.                 |
+| **Error Code ID** | **Error Message**                                                 |
+| ----------------- | ------------------------------------------------------------ |
+| 14800001          | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011          | The current operation failed because the database is corrupted.         |
+| 14800014          | The target instance is already closed.                 |
+| 14800021          | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800024          | SQLite: The database file is locked.                         |
+| 14800025          | SQLite: A table in the database is locked.                   |
+| 14800028          | SQLite: Some kind of disk I/O error occurred.                |
+| 14800029          | SQLite: The database is full.                                |
+| 14800032          | SQLite: Abort due to constraint violation.                   |
+| 14800033          | SQLite: Data type mismatch.                                  |
+| 14800047          | The WAL file size exceeds the default limit.                 |
 
-**Example**:
+**Example**
 
 ```ts
 async function transDeleteWithReturningExample(trans: relationalStore.Transaction)
@@ -1349,44 +1432,44 @@ async function transDeleteWithReturningExample(trans: relationalStore.Transactio
 
 deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Result
 
-Deletes data from the RDB store based on the specified **RdbPredicates** object and returns [Result](arkts-apis-data-relationalStore-i.md#result23).
+Deletes data from the database based on the **RdbPredicates** instance and returns the [Result](arkts-apis-data-relationalStore-i.md#result23).
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type                                                        | Mandatory| Description                                   |
-| ---------- | ------------------------------------------------------------ | ---- | --------------------------------------- |
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Deletion conditions specified by the **RdbPredicates** object.|
-| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes  | Configuration information of the return value.                 |
+| Name       | Type                                                         | Mandatory | Description                                    |
+| ---------- | ------------------------------------------------------------ | --------- | ---------------------------------------------- |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes       | Deletion conditions specified by the **RdbPredicates** instance. |
+| config     | [ReturningConfig](arkts-apis-data-relationalStore-i.md#returningconfig23) | Yes       | Configuration information of the return value. |
 
 **Return value**
 
-| Type                                                   | Description                              |
-| ------------------------------------------------------- | ---------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | If the operation is successful, the affected dataset is returned.|
+| Type                                                    | Description                               |
+| ------------------------------------------------------- | ----------------------------------------- |
+| [Result](arkts-apis-data-relationalStore-i.md#result23) | Data set affected by the operation. |
 
-**Error codes**
+**Error codes:**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
-| ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | The current operation failed because the database is corrupted.         |
-| 14800014     | The target instance is already closed.                 |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
-| 14800024     | SQLite: The database file is locked.                         |
-| 14800025     | SQLite: A table in the database is locked.                   |
-| 14800028     | SQLite: Some kind of disk I/O error occurred.                |
-| 14800029     | SQLite: The database is full.                                |
-| 14800032     | SQLite: Abort due to constraint violation.                   |
-| 14800033     | SQLite: Data type mismatch.                                  |
-| 14800047     | The WAL file size exceeds the default limit.                 |
+| **Error Code ID** | **Error Message**                                             |
+| ----------------- | ------------------------------------------------------------ |
+| 14800001          | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011          | The current operation failed because the database is corrupted.         |
+| 14800014          | The target instance is already closed.                 |
+| 14800021          | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800024          | SQLite: The database file is locked.                         |
+| 14800025          | SQLite: A table in the database is locked.                   |
+| 14800028          | SQLite: Some kind of disk I/O error occurred.                |
+| 14800029          | SQLite: The database is full.                                |
+| 14800032          | SQLite: Abort due to constraint violation.                   |
+| 14800033          | SQLite: Data type mismatch.                                  |
+| 14800047          | The WAL file size exceeds the default limit.                 |
 
-**Example**:
+**Example**
 
 ```ts
 function transDeleteWithReturningSyncExample(trans: relationalStore.Transaction)
@@ -1422,13 +1505,13 @@ Queries data from the RDB store based on specified conditions. This API uses a p
 | Name    | Type                                | Mandatory| Description                                            |
 | ---------- | ------------------------------------ | ---- | ------------------------------------------------ |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions specified by the **RdbPredicates** object.       |
-| columns    | Array&lt;string&gt;                  | No  | Columns to query. If null is passed in, all columns are queried.|
+| columns    | Array&lt;string&gt;                  | No  | Columns to query. If this parameter is not specified, the query applies to all columns.|
 
 **Return value**
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise object used to return the **ResultSet** object. |
 
 **Error codes**
 
@@ -1468,7 +1551,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      // Release the memory of the result set. Otherwise, fd leak and memory leak may occur.
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1496,13 +1579,13 @@ Queries data in a database based on specified conditions. This API returns the r
 | Name    | Type                           | Mandatory| Description                                                        |
 | ---------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions specified by the **RdbPredicates** object.                     |
-| columns    | Array&lt;string&gt;             | No  | Columns to query. If null is passed in, all columns are queried. The default value is null.|
+| columns    | Array&lt;string&gt;             | No  | Columns to query. If this parameter is not specified, the query applies to all columns. The default value is null.|
 
 **Return value**
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | If the operation is successful, a **ResultSet** object will be returned.|
+| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | **ResultSet** object. |
 
 **Error codes**
 
@@ -1542,7 +1625,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      // Release the memory of the result set. Otherwise, fd leak and memory leak may occur.
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1561,7 +1644,7 @@ if (store != undefined) {
 
 querySql(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. This API uses a promise to return the result.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1569,14 +1652,14 @@ Queries data in the RDB store using the specified SQL statement. The number of r
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
+| sql      | string                               | Yes   | SQL statement to execute. It cannot be an empty string.                                        |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No   | Value of the parameter in the SQL statement. This value corresponds to the placeholder in the sql parameter statement. When the sql parameter statement is complete, this parameter is not required. The default value is empty. |
 
 **Return value**
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise object used to return the **ResultSet** object. |
 
 **Error codes**
 
@@ -1613,7 +1696,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      // Release the memory of the result set. Failure to release it may cause fd leakage and memory leakage.
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1632,7 +1715,7 @@ if (store != undefined) {
 
 querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 
-Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in the RDB store using the specified SQL statement. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1000. If complex logic and a large number of loops are involved in the operations on the **resultSet** obtained by **querySqlSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1640,14 +1723,14 @@ Queries data in the RDB store using the specified SQL statement. The number of r
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
+| sql      | string                               | Yes   | SQL statement to execute. It cannot be an empty string.                                        |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is null.|
 
 **Return value**
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | If the operation is successful, a **ResultSet** object will be returned.|
+| [ResultSet](arkts-apis-data-relationalStore-ResultSet.md) | **ResultSet** object. |
 
 **Error codes**
 
@@ -1684,7 +1767,7 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+      // Release the memory of the result set. Otherwise, fd leak and memory leak may occur.
       resultSet.close();
       await transaction.commit();
     } catch (error) {
@@ -1703,34 +1786,34 @@ if (store != undefined) {
 
 queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet&gt;
 
-Queries data from the RDB store based on specified conditions without calculating the row count. This API delivers better performance than the [query](#query14) API. This API uses a promise to return the result.
+Queries data in the database based on specified conditions. This API does not calculate the row count, and its performance is better than that of [query](#query14). This API uses a promise to return the result asynchronously.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type                           | Mandatory| Description                                                        |
+| Name       | Type                            | Mandatory | Description                                                         |
 | ---------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions specified by the **RdbPredicates** object.                     |
-| columns    | Array&lt;string&gt;             | No  | Columns to query. If null is passed in, all columns are queried. The default value is null.|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes   | Query conditions specified by the **RdbPredicates** instance.                      |
+| columns    | Array&lt;string&gt;             | No   | Columns to query. If this parameter is left empty, the query applies to all columns. The default value is empty. |
 
 **Return value**
 
-| Type                   | Description                               |
+| Type                    | Description                                |
 | ----------------------- | ----------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | If the operation is successful, a **LiteResultSet** object will be returned.|
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Returns the **LiteResultSet** object. |
 
 **Error codes**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800014     | The target instance is already closed.                 |
 
-**Example**:
+**Example**
 
 ```ts
 async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
@@ -1743,7 +1826,7 @@ async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
       try {
         resultSet = await transaction.queryWithoutRowCount(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
         if (resultSet != undefined) {
-          // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
+          // resultSet is a cursor of a data set. By default, it points to the -1st record, and valid data starts from 0.
           while (resultSet.goToNextRow()) {
             const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
             const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
@@ -1751,13 +1834,13 @@ async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+          // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+        // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
         if (resultSet != undefined) {
           resultSet.close();
         }
@@ -1774,34 +1857,34 @@ async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
 
 queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet
 
-Queries data from the RDB store based on specified conditions without calculating the row count. If complex logic and a large number of loops are involved in the operations on the **LiteResultSet** obtained by **queryWithoutRowCountSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in the database based on specified conditions without counting the number of rows. When operating on the **LiteResultSet** obtained by the synchronous API **queryWithoutRowCountSync**, if the logic is complex and the number of loops is too large, a freeze issue may occur. It is recommended that you execute this step in a [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
-| Name    | Type                           | Mandatory| Description                                                        |
+| Name       | Type                            | Mandatory | Description                                                         |
 | ---------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | Query conditions specified by the **RdbPredicates** object.                     |
-| columns    | Array&lt;string&gt;             | No  | Columns to query. If null is passed in, all columns are queried. The default value is null.|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes   | Query conditions specified by the **RdbPredicates** instance.                      |
+| columns    | Array&lt;string&gt;             | No   | Columns to query. If this parameter is left empty, the query applies to all columns. The default value is empty. |
 
 **Return value**
 
-| Type                   | Description                               |
+| Type                    | Description                                |
 | ----------------------- | ----------------------------------- |
-| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | If the operation is successful, a **LiteResultSet** object will be returned.|
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | **LiteResultSet** object. |
 
-**Error codes**
+**Error codes:**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800014     | The target instance is already closed.                 |
 
-**Example**:
+**Example**
 
 ```ts
 async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore) {
@@ -1814,7 +1897,7 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
       try {
         resultSet = transaction.queryWithoutRowCountSync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
         if (resultSet != undefined) {
-          // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
+          // resultSet is a cursor of a data set. By default, it points to the -1st record, and valid data starts from 0.
           while (resultSet.goToNextRow()) {
             const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
             const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
@@ -1822,13 +1905,13 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+          // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+        // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
         if (resultSet != undefined) {
           resultSet.close();
         }
@@ -1845,46 +1928,46 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
 
 querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet&gt;
 
-Queries data from the RDB store based on specified conditions without calculating the row count. This API uses a promise to return the result and delivers better performance than the [querySql](#querysql14) API. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000.
+Queries data in the database based on the specified conditions without counting the number of rows. This API uses a promise to return the result. It delivers better performance than [querySql](#querysql14). The SQL statement can contain no more than 1000 relational operators between expressions and operators.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters**
 
-| Name  | Type                                | Mandatory| Description                                                        |
+| Name     | Type                                 | Mandatory | Description                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
+| sql      | string                               | Yes  | SQL statement to execute. It cannot be an empty string.                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No   | Values of the parameters in the SQL statement. This parameter corresponds to the placeholders in the sql parameter. When the sql parameter is a complete statement, this parameter is not required. The default value is empty. |
 
 **Return value**
 
-| Type                                                   | Description                                              |
+| Type                                                    | Description                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **LiteResultSet** object will be returned.|
+| Promise&lt;[LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md)&gt; | Promise object that returns a **LiteResultSet** object. |
 
-**Error codes**
+**Error Codes**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014  | The target instance is already closed. |
 
-**Example**:
+**Example**
 
 ```ts
 async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) {
   if (store != undefined) {
     try {
-    const transaction = await store.createTransaction();
-    let resultSet: relationalStore.LiteResultSet | undefined;
+      const transaction = await store.createTransaction();
+      let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = await transaction.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
         if (resultSet != undefined) {
-          // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
+          // resultSet is a cursor of a data set. By default, it points to the -1st record, and valid data starts from 0.
           while (resultSet.goToNextRow()) {
             const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
             const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
@@ -1892,20 +1975,20 @@ async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) 
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+          // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+        // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
         if (resultSet != undefined) {
           resultSet.close();
         }
         await transaction.rollback();
       }
     } catch (err) {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+      console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
   }
 }
@@ -1915,46 +1998,46 @@ async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) 
 
 querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):LiteResultSet
 
-Queries data from the RDB store based on specified SQL statements without calculating the row count. The number of relational operators between expressions and operators in the SQL statement cannot exceed 1,000. If complex logic and a large number of loops are involved in the operations on the **LiteResultSet** obtained by **querySqlWithoutRowCountSync**, the freeze problem may occur. You are advised to perform this operation in the [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
+Queries data in the database based on the specified SQL statement without counting the number of rows. The number of relational operators between various expressions and operators in the SQL statement cannot exceed 1000. When operating the **LiteResultSet** obtained by the synchronous **querySqlWithoutRowCountSync** API, if the logic is complex and the number of loops is too large, a freeze issue may occur. It is recommended that you perform this step in a [taskpool](../apis-arkts/js-apis-taskpool.md) thread.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters**
 
-| Name  | Type                                | Mandatory| Description                                                        |
-| -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank. The default value is null.|
+| Name     | Type                                 | Mandatory | Description                                                         |
+| -------- | ------------------------------------ | --------- | ------------------------------------------------------------ |
+| sql      | string                               | Yes       | SQL statement to execute. It cannot be an empty string.                                        |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No        | Value of the parameter in the SQL statement. This value corresponds to the placeholder in the sql parameter. When the sql parameter statement is complete, this parameter is not required. The default value is empty. |
 
 **Return value**
 
-| Type                   | Description                               |
+| Type                    | Description                                |
 | ----------------------- | ----------------------------------- |
-| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | If the operation is successful, a **LiteResultSet** object will be returned.|
+| [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md) | **LiteResultSet** object. |
 
-**Error codes**
+**Error codes:**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
+| **Error Code ID** | **Error Message**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
 | 14800014     | The target instance is already closed. |
 
-**Example**:
+**Example**
 
 ```ts
 async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbStore) {
   if (store != undefined) {
     try {
-    const transaction = await store.createTransaction();
-    let resultSet: relationalStore.LiteResultSet | undefined;
+      const transaction = await store.createTransaction();
+      let resultSet: relationalStore.LiteResultSet | undefined;
       try {
         resultSet = transaction.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
         if (resultSet != undefined) {
-          // resultSet is a cursor of a data set. By default, the cursor points to the -1st record. Valid data starts from 0.
+          // resultSet is a cursor of a data set. By default, it points to the -1st record, and valid data starts from 0.
           while (resultSet.goToNextRow()) {
             const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
             const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
@@ -1962,20 +2045,20 @@ async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbSto
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+          // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
           resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // Release the memory of resultSet. If the memory is not released, FD or memory leaks may occur.
+        // Release the memory of the result set. Failure to release it may cause fd leak and memory leak.
         if (resultSet != undefined) {
           resultSet.close();
         }
         await transaction.rollback();
       }
     } catch (err) {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
+      console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
   }
 }
@@ -1985,7 +2068,7 @@ async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbSto
 
 execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
-Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1,000. This API uses a promise to return a value of the **ValueType** type.
+Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1000. This API uses a promise to return a value of the ValueType type.
 
 This API can be used to add, delete, and modify data, run SQL statements of the PRAGMA syntax, and create, delete, and modify a table. The type of the return value varies, depending on the execution result.
 
@@ -1993,7 +2076,7 @@ This API does not support query, database attachment, and transaction operations
 
 Statements separated by semicolons (\;) are not supported.
 
-Statements starting with comments are not supported.
+Statements that start with a comment are not supported.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2001,7 +2084,7 @@ Statements starting with comments are not supported.
 
 | Name  | Type                                | Mandatory| Description                                                        |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql      | string                               | Yes  | SQL statement to run.                                       |
+| sql      | string                               | Yes   | SQL statement to execute. It cannot be an empty string.                                        |
 | args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If the SQL parameter statement is complete, leave this parameter blank.|
 
 **Return value**
@@ -2061,7 +2144,7 @@ if (store != undefined) {
 
 executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 
-Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1,000. This API returns a value of the **ValueType** type.
+Executes an SQL statement that contains specified arguments. The number of relational operators between expressions and operators in the statement cannot exceed 1000. This API returns a value of the ValueType type.
 
 This API can be used to add, delete, and modify data, run SQL statements of the PRAGMA syntax, and create, delete, and modify a table. The type of the return value varies, depending on the execution result.
 
@@ -2069,7 +2152,7 @@ This API does not support query, database attachment, and transaction operations
 
 Statements separated by semicolons (\;) are not supported.
 
-Statements starting with comments are not supported.
+Statements that start with a comment are not supported.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -2077,7 +2160,7 @@ Statements starting with comments are not supported.
 
 | Name| Type                                | Mandatory| Description                                                        |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| sql    | string                               | Yes  | SQL statement to run.                                       |
+| sql    | string                               | Yes   | SQL statement to execute. It cannot be an empty string.                                        |
 | args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | No  | Arguments in the SQL statement. The value corresponds to the placeholders in the SQL parameter statement. If this parameter is left blank or set to **null** or **undefined**, the SQL statement is complete. The default value is null.|
 
 **Return value**
