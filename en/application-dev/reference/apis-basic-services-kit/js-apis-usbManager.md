@@ -187,7 +187,7 @@ hasRight(deviceName: string): boolean
 
 Checks whether the application has the permission to access the device.
 
-The value **true** is returned if the user has the device access permissions; the value **false** is returned otherwise.
+The value **true** is returned if the app has the device access permissions; the value **false** is returned otherwise.
 
 **System capability**: SystemCapability.USB.USBManager
 
