@@ -14,13 +14,19 @@
 
 此变更涉及应用适配。
 
-- 变更前：针对支持开启沉浸光感的所有组件，沉浸光感开启后，沉浸光感效果生效。
+变更前：针对支持开启沉浸光感的所有组件，沉浸光感开启后，沉浸光感效果生效。
 
-- 变更后：
-  - 弹窗类组件（AlertDialog、ActionSheet、CustomDialog、CalendarPickerDialog、DatePickerDialog、TimePickerDialog、TextPickerDialog、SelectionMenu、AlphabetIndexer弹窗、Text设置copyOption后长按或双击触发的文本菜单）和弹窗类接口（PromptAction、ArkUI_NativeDialog、@ohos.promptAction (弹窗)、Popup控制、Tips控制、菜单控制、半模态转场）以及按钮与选择类组件（Slider、Toggle、Select）仍可在页面内全部区域生效，与变更前无变化。
-  - 其他组件仅在Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
+变更后：
 
-以下示例展示了，其他组件（如Column）不在Navigation/NavDestination标题栏或底部TabBar区域中设置沉浸光感，在变更前后的效果变化：
+针对支持开启沉浸光感的所有组件或接口，
+
+- 以下组件或接口仍可在页面内全部区域生效，与变更前无变化。
+  - 指定弹窗类组件：AlertDialog、ActionSheet、CustomDialog、CalendarPickerDialog、DatePickerDialog、TimePickerDialog、TextPickerDialog、SelectionMenu、AlphabetIndexer弹窗、Text设置copyOption后长按或双击触发的文本菜单
+  - 指定弹窗类接口：PromptAction、ArkUI_NativeDialog、@ohos.promptAction (弹窗)、Popup控制、Tips控制、菜单控制、半模态转场
+  - Slider、Toggle、Select
+- 其他组件仅在Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
+
+以下示例展示了，其他组件（如Column）不在Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中设置沉浸光感，在变更前后的效果变化：
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
@@ -82,19 +88,19 @@ struct MaterialScopeExample {
 
 除以下清单以外的所有ArkUI组件：
 
-- 弹窗类组件（[AlertDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[AlphabetIndexer](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)弹窗、[Text](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置copyOption后长按或双击触发的文本菜单）。
-- 弹窗类接口（[PromptAction](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[ArkUI_NativeDialog](../../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction](../../../application-dev/reference/apis-arkui/js-apis-promptAction.md) (弹窗)、[Popup控制](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)）。
-- 按钮与选择类组件（[Slider](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)）。
+- 指定弹窗类组件（[AlertDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[AlphabetIndexer](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)弹窗、[Text](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置copyOption后长按或双击触发的文本菜单）。
+- 指定弹窗类接口（[PromptAction](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[ArkUI_NativeDialog](../../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction](../../../application-dev/reference/apis-arkui/js-apis-promptAction.md) (弹窗)、[Popup控制](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)）。
+- [Slider](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)。
 
 **适配指导**
 
-变更后，如果组件需要沉浸光感效果，需要将该组件放置于Navigation/NavDestination标题栏或Tabs的底部TabBar。
+变更后，如果组件需要沉浸光感效果，需要将该组件放置于Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中。
 
 下面提供三个示例，分别介绍如何将组件放置于Navigation标题栏、横向Tabs中barPosition为BarPosition.End的底部TabBar中，开启沉浸光感效果，以及弹窗类组件开启沉浸光感的使用示例。
 
 - Navigation标题栏适配指导
 
-  以下示例展示了通过Navigation标题栏，使得通过systemMaterial设置Column组件的沉浸光感效果生效。
+  以下示例展示了将Column组件放置于Navigation标题栏，使得通过systemMaterial设置的沉浸光感效果生效。
 
   ```ts
   import { CircleShape, uiMaterial } from '@kit.ArkUI';
@@ -178,7 +184,7 @@ struct MaterialScopeExample {
 
 - 底部TabBar适配指导
 
-  以下示例展示了使用底部TabBar，使得通过systemMaterial设置Column组件的沉浸光感效果生效。
+  以下示例展示了将Column组件放置于底部TabBar，使得通过systemMaterial设置的沉浸光感效果生效。
 
   ```ts
   import { CircleShape, uiMaterial } from '@kit.ArkUI';
