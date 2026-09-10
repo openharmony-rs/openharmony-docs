@@ -174,36 +174,36 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效行高值�
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string | 是   | 当前网格布局行的数量或最小行高值。 |
 
->  **说明：**
+> **说明：**
 >
->  Grid组件根据rowsTemplate、columnsTemplate属性的设置情况，可分为以下三种布局模式：
+> Grid组件根据rowsTemplate、columnsTemplate属性的设置情况，可分为以下三种布局模式：
 >
->  1、rowsTemplate、columnsTemplate同时设置：
+> 1. rowsTemplate、columnsTemplate同时设置：
 >
->  - Grid只展示固定行列数的元素，其余元素不展示，且Grid不可滚动。
->  - 此模式下以下属性不生效：layoutDirection、maxCount、minCount、cellLength。
->  - Grid的宽高没有设置时，默认适应父组件尺寸。
->  - Grid网格列大小按照Grid自身内容区域大小减去所有行列Gap后按各个行列所占比重分配。
->  - GridItem默认填满网格大小。
+>    - Grid只展示固定行列数的元素，其余元素不展示，且Grid不可滚动。
+>    - 此模式下以下属性不生效：layoutDirection、maxCount、minCount、cellLength。
+>    - Grid的宽高没有设置时，默认适应父组件尺寸。
+>    - Grid网格列大小按照Grid自身内容区域大小减去所有行列Gap后按各个行列所占比重分配。
+>    - GridItem默认填满网格大小。
 >
->  2、rowsTemplate、columnsTemplate仅设置其中的一个：
+> 2. rowsTemplate、columnsTemplate仅设置其中的一个：
 >
->  - 元素按照设置的方向进行排布，超出Grid显示区域后，Grid可通过滚动的方式展示。
->  - 如果设置了columnsTemplate，Grid滚动方向为垂直方向，主轴方向为垂直方向，交叉轴方向为水平方向。
->  - 如果设置了rowsTemplate，Grid滚动方向为水平方向，主轴方向为水平方向，交叉轴方向为垂直方向。
->  - 此模式下以下属性不生效：layoutDirection、maxCount、minCount、cellLength。
->  - 网格交叉轴方向尺寸根据Grid自身内容区域交叉轴尺寸减去交叉轴方向所有Gap后按所占比重分配。
->  - 网格主轴方向尺寸取当前网格交叉轴方向所有GridItem主轴方向尺寸最大值。
->  - 此模式下GridItem交叉轴方向尺寸与网格一致，可以通过设置[constraintSize](./ts-universal-attributes-size.md#constraintsize)中的maxWidth或maxHeight限制GridItem交叉轴方向尺寸小于网格。
+>    - 元素按照设置的方向进行排布，超出Grid显示区域后，Grid可通过滚动的方式展示。
+>    - 如果设置了columnsTemplate，Grid滚动方向为垂直方向，主轴方向为垂直方向，交叉轴方向为水平方向。
+>    - 如果设置了rowsTemplate，Grid滚动方向为水平方向，主轴方向为水平方向，交叉轴方向为垂直方向。
+>    - 此模式下以下属性不生效：layoutDirection、maxCount、minCount、cellLength。
+>    - 网格交叉轴方向尺寸根据Grid自身内容区域交叉轴尺寸减去交叉轴方向所有Gap后按所占比重分配。
+>    - 网格主轴方向尺寸取当前网格交叉轴方向所有GridItem主轴方向尺寸最大值。
+>    - 此模式下GridItem交叉轴方向尺寸与网格一致，可以通过设置[constraintSize](./ts-universal-attributes-size.md#constraintsize)中的maxWidth或maxHeight限制GridItem交叉轴方向尺寸小于网格。
 >
->  3、rowsTemplate、columnsTemplate都不设置：
+> 3. rowsTemplate、columnsTemplate都不设置：
 >
->  - 元素在layoutDirection方向上排布，列数由Grid的宽度、首个元素的宽度、minCount、maxCount、columnsGap共同决定。
->  - 行数由Grid高度、首个元素高度、cellLength、rowsGap共同决定。超出行列容纳范围的元素不显示，也不能通过滚动进行展示。
->  - 此模式下仅生效以下属性：layoutDirection、maxCount、minCount、cellLength、editMode、columnsGap、rowsGap。
->  - 当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。剩余高度不足时不再布局，整体内容顶部居中。
->  - 当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，剩余宽度不足时不再布局。整体内容顶部居中。
->  - 当前Grid下面没有GridItem时，Grid的宽高为0。
+>    - 元素在layoutDirection方向上排布，列数由Grid的宽度、首个元素的宽度、minCount、maxCount、columnsGap共同决定。
+>    - 行数由Grid高度、首个元素高度、cellLength、rowsGap共同决定。超出行列容纳范围的元素不显示，也不能通过滚动进行展示。
+>    - 此模式下仅生效以下属性：layoutDirection、maxCount、minCount、cellLength、editMode、columnsGap、rowsGap。
+>    - 当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。剩余高度不足时不再布局，整体内容顶部居中。
+>    - 当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，剩余宽度不足时不再布局。整体内容顶部居中。
+>    - 当前Grid下面没有GridItem时，Grid的宽高为0。
 >
 
 ### columnsGap
@@ -725,10 +725,10 @@ GridItem的对齐方式枚举。
 
 > **说明：** 
 >
-> 1、只有可滚动的Grid中，设置STRETCH参数会生效，其他场景不生效。<br/>
-> 2、在Grid的一行中，如果每个GridItem都是大小规律的（只占一行一列），设置STRETCH参数会生效，存在跨行或跨列的GridItem的场景不生效。<br/>
-> 3、设置STRETCH后，只有不设置高度的GridItem才会以当前行中最高的GridItem作为自己的高度，设置过高度的GridItem高度不会变化。<br/>
-> 4、设置STRETCH后，Grid布局时会有额外的布局流程，可能会带来额外的性能开销。
+> 1. 只有可滚动的Grid中，设置STRETCH参数会生效，其他场景不生效。<br/>
+> 2. 在Grid的一行中，如果每个GridItem都是大小规律的（只占一行一列），设置STRETCH参数会生效，存在跨行或跨列的GridItem的场景不生效。<br/>
+> 3. 设置STRETCH后，只有不设置高度的GridItem才会以当前行中最高的GridItem作为自己的高度，设置过高度的GridItem高度不会变化。<br/>
+> 4. 设置STRETCH后，Grid布局时会有额外的布局流程，可能会带来额外的性能开销。
 
 ## GridDirection<sup>8+</sup>枚举说明
 
