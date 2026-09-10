@@ -1057,7 +1057,7 @@ VM内存信息。
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
-| threadName           | string  | 否  | 是  | 线程CPU使用率。 |
+| threadName           | string  | 否  | 是  | 线程名。 |
 
 ## tags<sup>12+</sup>
 
