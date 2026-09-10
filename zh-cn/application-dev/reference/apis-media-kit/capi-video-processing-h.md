@@ -49,7 +49,7 @@
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)](#oh_videoprocessingcallback_bindonnewoutputbuffer) | 绑定回调函数[OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer)到回调对象。绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)，将回调对象注册到视频处理实例，才能使其生效。 |
 | [bool OH_VideoProcessing_IsAutoEffectSupported(uint32_t type)](#oh_videoprocessing_isautoeffectsupported) | 系统查询是否支持视频自动增强效果。 |
 | [VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool enable, const char *name)](#oh_videoprocessing_useautoeffect) | 在将要创建名字为name的XComponent中指定是否启用类型为type的自动增强效果。此接口应在[OH_VideoProcessing_SetAutoEffectParam](#oh_videoprocessing_setautoeffectparam)之前调用。 |
-| [VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, const char *name, const OH_AVFormat *param)](#oh_videoprocessing_setautoeffectparam) | 设置与XComponent关联的自动增强效果参数。当前自动增强效果仅对最后调用的XComponent生效。 |
+| [VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, const char *name, const OH_AVFormat *param)](#oh_videoprocessing_setautoeffectparam) | 对名字为name的XComponent设置AISR的参数param。此函数调用后，本次调用时指定的名为name的XComponent获得AISR效果，其他的XComponent失去AISR效果。 |
 
 ## 函数说明
 
@@ -590,7 +590,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 
 **使用场景**
 
-在视频播放场景使用。AISR称作AI超分，是AutoEffect中的一种。视频只支持SDR，不支持HDR。应用进行SDR视频播放，希望对播放的画面进行清晰度提升时，可使用AUTOEFFECT的AISR超分能力，对视频播放的XComponent组件使能此效果。
+在视频播放场景使用。AISR称作AI超分，是AutoEffect中的一种。应用在进行SDR视频播放，希望对播放的画面进行清晰度提升时，可使用AUTOEFFECT的AISR超分能力，对视频播放的XComponent组件使能此效果。HDR视频类型不支持本功能。
 
 **起始版本：** 26.1.0
 
@@ -599,8 +599,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t type | 指定要使用的自动增强效果类型。 |
-| bool enable | 启用或禁用在随后创建的名为name的XComponent中的该类型效果。 |
-| const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此接口的效果只对第一个活跃的XComponent生效。 |
+| bool enable | 启用或禁用指定的XComponent中该自动增强效果类型。|
+| const char *name | 指定XComponent的名称。|
 
 **返回：**
 
@@ -616,7 +616,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, c
 
 **描述**
 
-设置与XComponent关联的自动增强效果参数。当前自动增强效果仅对最后调用的XComponent生效。
+对名字为name的XComponent设置AISR的参数param。此函数调用后，本次调用时指定的名为name的XComponent获得AISR效果，其他的XComponent失去AISR效果。
 
 **起始版本：** 26.1.0
 
@@ -625,7 +625,7 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, c
 | 参数项 | 描述 |
 | -- | -- |
 | uint32_t type | 指定要使用的自动增强效果类型。 |
-| const char *name | 指定XComponent的名称。如果当前应用有多个同名的XComponent，此参数仅对第一个活跃的XComponent生效。 |
+| const char *name | 指定XComponent的名称。|
 | const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* param | 此参数依据type参数，具体的type可参考video_processing_types.h中的[变量](capi-video-processing-types-h.md#变量)。 |
 
 **返回：**
