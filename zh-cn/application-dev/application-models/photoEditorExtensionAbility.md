@@ -15,7 +15,7 @@
 | **接口名**  | **描述** |
 | -------- | -------- |
 | onStartContentEditing(uri: string, want:Want, session: UIExtensionContentSession):void       | 可以执行读取原始图片、加载页面等操作。|
-| saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>  | 传入编辑过的图片的PixelMap对象并保存。   |
+| saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>  | 传入编辑过的图片的PixelMap对象并保存。   |
 
 ## 图片编辑类应用实现图片编辑页面
 
@@ -240,7 +240,9 @@
     } catch (e) {
       hilog.error(0x0000, TAG, `readImage failed:${e}`);
     } finally {
-      fileIo.close(file);
+      if (file) {
+        fileIo.close(file);
+      }
     }
    ```
 4. 在startAbilityByType回调函数中，通过want.uri获取编辑后的图片uri，并做对应的处理。
@@ -323,7 +325,9 @@ struct Index {
     } catch(e) {
       hilog.error(0x0000, TAG, `readImage failed:${e}`);
     } finally {
-      fileIo.close(file);
+      if (file) {
+        fileIo.close(file);
+      }
     }
     return null;
   }
@@ -379,7 +383,9 @@ struct Index {
             } catch (e) {
               hilog.info(0x0000, TAG, `readImage failed:${e}`);
             } finally {
-              fileIo.close(file);
+              if (file) {
+                fileIo.close(file);
+              }
             }
           })
 
