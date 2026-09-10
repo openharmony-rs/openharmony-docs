@@ -100,12 +100,12 @@
 | napi_create_symbol | 创建一个ArkTS Symbol。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_create_symbol | 创建一个ArkTS Symbol。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_create_symbol | 创建一个ArkTS Symbol。 | napi_invalid_arg | 入参description不为nullptr，且不是ArkTS String类型 | 确保入参正确 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 | napi_invalid_arg | 入参arraybuffer为nullptr | 确保入参正确 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 | napi_invalid_arg | 入参type不为napi_typedarray_type类型 | 确保入参正确 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 | napi_arraybuffer_expected | 入参arraybuffer不为ArkTS ArrayBuffer类型 | 确保入参正确 |
-| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypeArray。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 | napi_invalid_arg | 入参arraybuffer为nullptr | 确保入参正确 |
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 | napi_invalid_arg | 入参type不为napi_typedarray_type类型 | 确保入参正确 |
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 | napi_arraybuffer_expected | 入参arraybuffer不为ArkTS ArrayBuffer类型 | 确保入参正确 |
+| napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_create_dataview | 通过现有的ArrayBuffer创建一个ArkTS DataView。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_create_dataview | 通过现有的ArrayBuffer创建一个ArkTS DataView。 | napi_invalid_arg | 入参arraybuffer为nullptr | 确保入参正确 |
 | napi_create_dataview | 通过现有的ArrayBuffer创建一个ArkTS DataView。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
