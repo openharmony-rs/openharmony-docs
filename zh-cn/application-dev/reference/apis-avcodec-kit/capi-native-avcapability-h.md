@@ -232,7 +232,7 @@ OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_
 bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 ```
 
-**描述** 
+**描述**
 
 检查能力实例是否描述了硬件编解码器。
 
