@@ -20,7 +20,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 各场景中ROI区域的选择建议如下：
 - 秀场直播：将主播面部区域设为ROI，优化人脸细节（如肤色、五官轮廓），提升观众沉浸式观看体验。
 - 户外直播：将主播主体/核心拍摄景物（如自然风光、赛事画面核心区域）设为ROI，在移动网络带宽波动时保障核心内容清晰。
-- 电商直播：将商品展示区域（如美妆试色、电子产品细节）设为ROI，清晰呈现商品外观、材质与功能细节，助力商品转化。
+- 电商直播：将商品展示区域（如美妆试色、电子产品细节）设为ROI，清晰呈现商品外观、材质与功能细节，提升商品转化率。
 - 网课视频：将课件文字、讲义图表、板书内容区域设为ROI，保证知识点清晰可读，降低视觉疲劳，提升教学效果。
 - 安全监控：将摄像头画面中的人脸、车牌、出入口等关键区域设为ROI，提升抓拍清晰度，便于后续识别分析。
 
@@ -46,7 +46,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 **支持的码控模式：** VBR(Variable Bit Rate)、CBR(Constant Bit Rate)、SQR(Stable Quality Rate Control)。
 
-**依赖ROI检测识别能力：** 编码器不具备ROI的检测识别能力，所以ROI编码技术生效依赖于开发者输入的ROI信息。开发者可根据业务场景自行设计并实现ROI识别能力，或通过调用系统相机模块原生提供的人脸区域信息，降低开发成本，具体参考[元数据(C/C++)](../camera/native-camera-metadata.md)。
+**依赖ROI检测识别能力：** 编码器不具备ROI的检测识别能力，所以ROI编码技术生效依赖于开发者输入的ROI信息。开发者可根据业务场景自行设计并实现ROI识别能力，或通过系统相机模块原生提供的人脸区域信息（元数据）获取ROI区域，降低开发成本。元数据的配置与获取参考[元数据（ArkTS）](../camera/camera-metadata.md)和[元数据(C/C++)](../camera/native-camera-metadata.md)；从视频帧NativeBuffer元数据提取ROI信息的开发步骤，参考[NativeBuffer元数据配置方式](#nativebuffer元数据配置方式推荐)。
 
 ## 参数要求说明
 
@@ -439,6 +439,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
        std::vector<uint8_t> pixels;
        int32_t width = 0;
        int32_t height = 0;
+       int32_t stride = 0;
        std::string roiStr;
    };
    ```
@@ -472,6 +473,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    FrameItem frameItem;
    frameItem.width = frameWidth;
    frameItem.height = frameHeight;
+   frameItem.stride = stride;
    frameItem.roiStr = assembledRoiStr;
    frameItem.pixels.resize(frameSize);
    std::copy(static_cast<uint8_t *>(virAddr),
@@ -550,20 +552,50 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
        }
        uint8_t *bufferAddr = OH_AVBuffer_GetAddr(buffer);
        int32_t bufferCapacity = OH_AVBuffer_GetCapacity(buffer);
-       if (bufferAddr == nullptr || bufferCapacity < static_cast<int32_t>(frameItem.pixels.size())) {
-           SAMPLE_LOGE("Buffer capacity %{public}d is less than frame size %{public}d, skip this frame",
-               bufferCapacity, static_cast<int32_t>(frameItem.pixels.size()));
+       if (bufferAddr == nullptr) {
+           SAMPLE_LOGE("Buffer addr is nullptr, skip this frame");
            return;
        }
-       std::copy(frameItem.pixels.data(), frameItem.pixels.data() + frameItem.pixels.size(), bufferAddr);
+       // 获取编码器输入Buffer的跨距，按跨距逐行拷贝Y和UV平面。
+       int32_t encStride = frameItem.stride;
+       OH_AVFormat *desc = OH_VideoEncoder_GetInputDescription(videoEncoder_->GetCodec());
+       if (desc != nullptr) {
+           OH_AVFormat_GetIntValue(desc, "stride", &encStride);
+           OH_AVFormat_Destroy(desc);
+       }
+       int32_t width = frameItem.width;
+       int32_t height = frameItem.height;
+       int32_t srcStride = frameItem.stride;
+       int32_t frameSize = encStride * height * 3 / 2;
+       if (bufferCapacity < frameSize) {
+           SAMPLE_LOGE("Buffer capacity %{public}d is less than frame size %{public}d, skip this frame",
+               bufferCapacity, frameSize);
+           return;
+       }
+       uint8_t *src = frameItem.pixels.data();
+       uint8_t *dst = bufferAddr;
+       for (int32_t i = 0; i < height; i++) {
+           std::copy(src, src + width, dst);
+           src += srcStride;
+           dst += encStride;
+       }
+       for (int32_t i = 0; i < height / 2; i++) {
+           std::copy(src, src + width, dst);
+           src += srcStride;
+           dst += encStride;
+       }
        OH_AVCodecBufferAttr attr;
-       attr.size = static_cast<int32_t>(frameItem.pixels.size());
+       attr.size = frameSize;
        attr.offset = 0;
        attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
+       attr.pts = static_cast<int64_t>(encContext_->inputFrameCount) * MICROSECOND / sampleInfo_.videoInfo.frameRate;
+       encContext_->inputFrameCount++;
        OH_AVBuffer_SetBufferAttr(buffer, &attr);
        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
        if (format != nullptr) {
            OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
+           OH_AVBuffer_SetParameter(buffer, format);
+           OH_AVFormat_Destroy(format);
        }
        OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
    }
