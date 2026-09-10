@@ -1012,9 +1012,8 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)、[跨设备组件启动规则](../../application-models/component-startup-rules-cross-device.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3582,9 +3581,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 该接口不支持启动分身应用的UIServiceExtensionAbility。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -3722,9 +3720,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 > **说明：**
 >
-> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
->
-> 该接口不支持应用分身。
+> - 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
+> - 该接口不支持连接分身应用的UIServiceExtensionAbility。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -4331,9 +4328,9 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 > **说明：**
 >
-> 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+> - 该接口的调用方必须为[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
 >
-> 该接口不支持应用分身。
+> - 该接口不支持启动分身应用的AppServiceExtensionAbility实例。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -4503,9 +4500,9 @@ ArkTS-Sta: connectAppServiceExtensionAbility(want: Want, callback: ConnectOption
 
 > **说明：**
 >
-> 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
+> - 如果[AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用。
 >
-> 该接口不支持应用分身。
+> - 该接口不支持连接分身应用的AppServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
