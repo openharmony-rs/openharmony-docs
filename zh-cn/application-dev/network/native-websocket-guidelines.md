@@ -247,101 +247,101 @@ libnet_websocket.so
 5. 在index.ets文件中对上述封装好的接口进行调用。
 
    <!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import testWebsocket from 'libentry.so';
-
-@Entry
-@Component
-struct Index {
-  @State wsUrl: string = '';
-  @State content: string = '';
-  @State connecting: boolean = false;
-
-  build() {
-    Navigation() {
-      Column() {
-        Column() {
-          Text($r('app.string.WebSocket_address'))
-            .fontColor(Color.Gray)
-            .textAlign(TextAlign.Start)
-            .width('100%')
-          TextInput()
-            .width('100%')
-            .id('textInput_address')
-            .onChange((value) => {
-              this.wsUrl = value;
-            })
-        }
-        .margin({
-          bottom: 16 // 与底间隔
-        })
-        .padding({
-          left: 16, // 与左间隔
-          right: 16 // 与右间隔
-        })
-
-        Column() {
-          Text($r('app.string.Content'))
-            .fontColor(Color.Gray)
-            .textAlign(TextAlign.Start)
-            .width('100%')
-          TextInput()
-            .width('100%')
-            .id('textInput_content')
-            .enabled(this.connecting)
-            .onChange((value) => {
-              this.content = value;
-            })
-        }
-        .margin({
-          bottom: 16 // 与底间隔
-        })
-        .padding({
-          left: 16, // 与左间隔
-          right: 16 // 与右间隔
-        })
-
-        Blank()
-
-        Column({
-          space: 12 // 占位空间
-        }) {
-          Button($r('app.string.Connect'))
-            .id('Connect')
-            .enabled(!this.connecting)
-            .onClick(() => {
-              let connRet = testWebsocket.Connect(this.wsUrl);
-              if (connRet) {
-                this.connecting = true;
-                // ···
-              } 
-            // ···
-            })
-          Button($r('app.string.Send'))
-            .id('Send')
-            .enabled(this.connecting)
-            .onClick(() => {
-              testWebsocket.Send(this.content);
-            // ···
-            })
-          Button($r('app.string.Close'))
-            .id('Close')
-            .enabled(this.connecting)
-            .onClick(() => {
-              let closeResult = testWebsocket.Close();
-              if (closeResult != -1) {
-                this.connecting = false;
-                // ···
-              } 
-            // ···
-            })
-        }
-      }
-    }
-  }
-}
-```
+   
+   ``` TypeScript
+   import testWebsocket from 'libentry.so';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State wsUrl: string = '';
+     @State content: string = '';
+     @State connecting: boolean = false;
+   
+     build() {
+       Navigation() {
+         Column() {
+           Column() {
+             Text($r('app.string.WebSocket_address'))
+               .fontColor(Color.Gray)
+               .textAlign(TextAlign.Start)
+               .width('100%')
+             TextInput()
+               .width('100%')
+               .id('textInput_address')
+               .onChange((value) => {
+                 this.wsUrl = value;
+               })
+           }
+           .margin({
+             bottom: 16 // 与底间隔
+           })
+           .padding({
+             left: 16, // 与左间隔
+             right: 16 // 与右间隔
+           })
+   
+           Column() {
+             Text($r('app.string.Content'))
+               .fontColor(Color.Gray)
+               .textAlign(TextAlign.Start)
+               .width('100%')
+             TextInput()
+               .width('100%')
+               .id('textInput_content')
+               .enabled(this.connecting)
+               .onChange((value) => {
+                 this.content = value;
+               })
+           }
+           .margin({
+             bottom: 16 // 与底间隔
+           })
+           .padding({
+             left: 16, // 与左间隔
+             right: 16 // 与右间隔
+           })
+   
+           Blank()
+   
+           Column({
+             space: 12 // 占位空间
+           }) {
+             Button($r('app.string.Connect'))
+               .id('Connect')
+               .enabled(!this.connecting)
+               .onClick(() => {
+                 let connRet = testWebsocket.Connect(this.wsUrl);
+                 if (connRet) {
+                   this.connecting = true;
+                   // ...
+                 } 
+                 // ...
+               })
+             Button($r('app.string.Send'))
+               .id('Send')
+               .enabled(this.connecting)
+               .onClick(() => {
+                 testWebsocket.Send(this.content);
+                 // ...
+               })
+             Button($r('app.string.Close'))
+               .id('Close')
+               .enabled(this.connecting)
+               .onClick(() => {
+                 let closeResult = testWebsocket.Close();
+                 if (closeResult != -1) {
+                   this.connecting = false;
+                   // ...
+                 } 
+                 // ...
+               })
+           }
+         }
+       }
+     }
+   }
+   ```
 
 6. 配置`CMakeLists.txt`，本模块需要用到的共享库是`libnet_websocket.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
