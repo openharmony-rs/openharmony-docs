@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于编解码能力查询到的Native API。
+声明用于编解码能力查询的Native API。
 
 **引用文件：** <multimedia/player_framework/native_avcapability.h>
 
