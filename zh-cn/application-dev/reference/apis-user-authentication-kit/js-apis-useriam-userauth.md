@@ -33,7 +33,7 @@
 - **[UserAuthResultCode](#userauthresultcode9)**：认证结果码枚举。
 - **[ReuseMode](#reusemode12)**：认证结果复用模式枚举。
 - **[UserAuthTipCode](#userauthtipcode20)**：认证提示码枚举。
-- **[UserRecognitionStatus](#userrecognitionstatus2610)**：用户识别状态枚举。
+- **[UserRecognitionStatus](#userrecognitionstatus)**：用户识别状态枚举。
 
 ### 核心接口类型
 
@@ -43,12 +43,12 @@
 - **[ReuseUnlockResult](#reuseunlockresult12)**：认证结果复用信息接口。
 - **[EnrolledState](#enrolledstate12)**：已注册凭据状态接口。
 - **[AuthLockState](#authlockstate22)**：认证锁定状态接口。
-- **[UserRecognitionResult](#userrecognitionresult2610)**：用户识别结果接口。
+- **[UserRecognitionResult](#userrecognitionresult)**：用户识别结果接口。
 
 ### 核心类
 
 - **[UserAuthInstance](#userauthinstance10)**：用户认证实例类，提供认证执行、取消、事件订阅等能力。
-- **[UserRecognitionMgr](#userrecognitionmgr2610)**：用户识别管理类，提供查询和订阅识别结果的能力。
+- **[UserRecognitionMgr](#userrecognitionmgr)**：用户识别管理类，提供查询和订阅识别结果的能力。
 
 ![类关系图](figures/uml_userauth.png)
 
@@ -1864,11 +1864,13 @@ try {
 }
 ```
 
-## UserRecognitionStatus<sup>26.1.0+</sup>
+## UserRecognitionStatus
 
 用户识别状态枚举。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1880,30 +1882,30 @@ try {
 | MISMATCH  | 1  | 识别用户与当前系统用户不匹配。       |
 | MATCH     | 2  | 识别用户与当前系统用户匹配。         |
 
-## UserRecognitionResult<sup>26.1.0+</sup>
+## UserRecognitionResult
 
 用户识别结果。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称           | 类型                                    | 只读 | 可选 | 说明                                                     |
 | -------------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| status         | [UserRecognitionStatus](#userrecognitionstatus2610) | 否   | 否   | 识别状态。                        |
+| status         | [UserRecognitionStatus](#userrecognitionstatus) | 否   | 否   | 识别状态。                        |
 | userId         | number                                  | 否   | 否   | 识别的系统用户ID，为非负整数。                              |
 | userInfo       | string                                  | 否   | 否   | 识别用户的信息。                                           |
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8)      | 否   | 是   | 认证信任等级。仅在status为MATCH时有效。                    |
 
-## UserRecognitionResultCallback<sup>26.1.0+</sup>
+## UserRecognitionResultCallback
 
 type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 
 用户识别结果回调类型。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1911,29 +1913,31 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 
 | 参数名 | 类型                                              | 必填 | 说明           |
 | ------ | ------------------------------------------------- | ---- | -------------- |
-| result | [UserRecognitionResult](#userrecognitionresult2610) | 是   | 用户识别结果。 |
+| result | [UserRecognitionResult](#userrecognitionresult) | 是   | 用户识别结果。 |
 
-## UserRecognitionMgr<sup>26.1.0+</sup>
+## UserRecognitionMgr
 
-提供查询和订阅用户识别结果的接口。通过[getUserRecognitionMgr](#userauthgetuserrecognitionmgr2610)获取实例。
+提供查询和订阅用户识别结果的接口。通过[getUserRecognitionMgr](#userauthgetuserrecognitionmgr)获取实例。
 
 > **说明：**
 >
 > 每次调用getUserRecognitionMgr返回新的UserRecognitionMgr实例。on和off需使用同一实例。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-### getUserRecognitionResult<sup>26.1.0+</sup>
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
+### getUserRecognitionResult
 
 getUserRecognitionResult(): Promise\<UserRecognitionResult\>
 
-获取最新的用户识别结果，使用Promise方式返回。
+获取最新的用户识别结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1943,11 +1947,11 @@ getUserRecognitionResult(): Promise\<UserRecognitionResult\>
 
 | 类型                                                   | 说明                       |
 | ------------------------------------------------------ | -------------------------- |
-| Promise\<[UserRecognitionResult](#userrecognitionresult2610)\> | 返回用户识别结果的Promise。 |
+| Promise\<[UserRecognitionResult](#userrecognitionresult)\> | Promise对象，返回用户识别结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
@@ -1969,13 +1973,15 @@ mgr.getUserRecognitionResult()
   });
 ```
 
-### onUserRecognitionChange<sup>26.1.0+</sup>
+### onUserRecognitionChange
 
 onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 订阅用户识别结果变化事件。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1985,11 +1991,11 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback2610) | 是   | 用户识别结果回调。 |
+| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback) | 是   | 用户识别结果回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
@@ -2007,13 +2013,15 @@ let callback: userAuth.UserRecognitionResultCallback = (result: userAuth.UserRec
 mgr.onUserRecognitionChange(callback);
 ```
 
-### offUserRecognitionChange<sup>26.1.0+</sup>
+### offUserRecognitionChange
 
 offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 
 取消订阅用户识别结果变化事件。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2023,11 +2031,11 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback2610) | 否   | 要取消的回调。不指定则取消所有回调。 |
+| callback | [UserRecognitionResultCallback](#userrecognitionresultcallback) | 否   | 要取消的回调。仅可取消通过本实例[onUserRecognitionChange](#onuserrecognitionchange)订阅的回调；不指定则取消本实例下所有已注册的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
@@ -2049,25 +2057,29 @@ mgr.offUserRecognitionChange(callback);
 mgr.offUserRecognitionChange();
 ```
 
-## userAuth.getUserRecognitionMgr<sup>26.1.0+</sup>
+## userAuth.getUserRecognitionMgr
 
 getUserRecognitionMgr(): UserRecognitionMgr | null
 
-获取[UserRecognitionMgr](#userrecognitionmgr2610)实例，用于查询和订阅用户识别结果。如果设备不支持此能力则返回null。
+获取[UserRecognitionMgr](#userrecognitionmgr)实例，用于查询和订阅用户识别结果。每次调用返回新的UserRecognitionMgr实例。
 
 **需要权限：** ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
 **返回值：**
 
 | 类型                                        | 说明                     |
 | ------------------------------------------- | ------------------------ |
-| [UserRecognitionMgr](#userrecognitionmgr2610) \| null | 用户识别管理实例。如果设备不支持此能力则返回null。 |
+| [UserRecognitionMgr](#userrecognitionmgr) \| null | 用户识别管理实例。如果设备不支持此能力则返回null。 |
 
 **错误码：**
 
