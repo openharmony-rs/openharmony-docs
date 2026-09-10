@@ -250,7 +250,7 @@ bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果能力实例描述的是硬件编解码器，则返回true，如果功能实例描述的是软件编解码器，则为false。 |
+| bool | 返回值表示该能力实例描述的是硬件编解码器还是软件编解码器，返回true表示该能力实例描述的是硬件编解码器，返回false表示该能力实例描述的是软件编解码器。 |
 
 ### OH_AVCapability_IsSecure()
 
