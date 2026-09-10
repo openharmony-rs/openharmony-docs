@@ -25,13 +25,7 @@
 
 在设备上指定用户已完成引导并加载系统，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
-**系统接口：** 此接口为系统接口。
-
 **系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
@@ -135,15 +129,9 @@
 
 ### COMMON_EVENT_KIOSK_MODE_ON<sup>20+</sup>
 
-进入Kiosk模式时，事件通知服务将触发并发布系统公共事件。此事件仅由系统发送。
-
-**系统接口：** 此接口为系统接口。
+进入Kiosk模式时，将会触发事件通知服务发布该系统公共事件。此事件仅由系统发送。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：20
-
-**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -152,15 +140,9 @@
 
 ### COMMON_EVENT_KIOSK_MODE_OFF<sup>20+</sup>
 
-退出Kiosk模式时，事件通知服务将触发并发布系统公共事件。
-
-**系统接口：** 此接口为系统接口。
+退出Kiosk模式时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：20
-
-**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
