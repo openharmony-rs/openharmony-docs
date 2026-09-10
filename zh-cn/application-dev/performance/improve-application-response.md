@@ -736,8 +736,8 @@ class AVPlayerManager {
         return ControllerManager.instance;
       }
 
-      /**
-       * 初始化需要UIContext 需在Ability获取
+     /**
+      * 初始化需要UIContext 需在Ability获取
       * @param uiContext
       * @param numbers
       */
@@ -747,16 +747,16 @@ class AVPlayerManager {
         this.myNodeController.initNode(uiContext);
       }
 
-      /**
-       * 自定义获取NodeController实例接口
+     /**
+      * 自定义获取NodeController实例接口
       * @returns MyNodeController
       */
       getNode(): MyNodeController | undefined {
         return this.myNodeController;
       }
 
-      /**
-       * 解除占用，防止内存泄漏
+     /**
+      * 解除占用，防止内存泄漏
       */
       clearNode(): void {
         this.myNodeController = undefined;

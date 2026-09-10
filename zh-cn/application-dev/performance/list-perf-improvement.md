@@ -73,7 +73,7 @@ LazyForEach懒加载的原理如下：
 
 4. LazyForEach懒加载中的键值生成函数keyGenerator用于给数据源中的每一个数据项生成唯一且固定的键值。键值生成器必须针对每个数据生成唯一的值，如果键值相同，将导致键值相同的UI组件渲染出现问题。
 
-    LazyForEach实现了按需加载，针对列表数据量大、列表组件复杂的场景，减少了页面首次启动时一次性加载数据的时间消耗，减少了内存峰值。可以显著提升页面的能效比和用户体验。
+LazyForEach实现了按需加载，针对列表数据量大、列表组件复杂的场景，减少了页面首次启动时一次性加载数据的时间消耗，减少了内存峰值。可以显著提升页面的能效比和用户体验。
 
 ### 使用场景和限制
 
@@ -259,31 +259,31 @@ build() {
     class ChatListData extends BasicDataSource {  
         /**
          * 聊天列表项数组
-        */
+         */
         private chatList: Array<ChatModel> = [];
         /**
          * 数据源的数据总量
-        */
+         */
         public totalCount(): number {  
             return this.chatList.length;
         }  
 
         /**
          * 返回指定索引位置的数据
-        */
+         */
         public getData(index: number): ChatModel {  
             return this.chatList[index];
         }  
         /**
          * 指定位置添加一条聊天列表数据
-        */
+         */
         public addData(index: number, data: ChatModel): void {  
             this.chatList.splice(index, 0, data);  
             this.notifyDataAdd(index);  
         }  
         /**
          * 添加一条聊天列表数据
-        */
+         */
         public pushData(data: ChatModel): void {  
             this.chatList.push(data);  
             this.notifyDataAdd(this.chatList.length - 1);  
