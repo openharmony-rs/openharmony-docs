@@ -245,9 +245,9 @@ ArkTS-Sta: dataDetectorConfig(config: TextDataDetectorConfig | undefined)
 
 当有两个实体A、B重叠时，按以下规则保留实体：
 
-1.&nbsp;若A&nbsp;⊂&nbsp;B，则保留B，反之则保留A。
+1. &nbsp;若A&nbsp;⊂&nbsp;B，则保留B，反之则保留A。
 
-2.&nbsp;当A&nbsp;⊄&nbsp;B且B&nbsp;⊄&nbsp;A时，若A.start&nbsp;<&nbsp;B.start，则保留A，反之则保留B。
+2. &nbsp;当A&nbsp;⊄&nbsp;B且B&nbsp;⊄&nbsp;A时，若A.start&nbsp;<&nbsp;B.start，则保留A，反之则保留B。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
