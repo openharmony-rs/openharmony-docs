@@ -29,7 +29,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 快捷键选项。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：14
 
@@ -45,7 +45,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 按键事件消费设置。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **设备行为差异**：API version 19之前，该接口在Phone、Tablet和PC/2in1设备中可正常调用，在其他设备上返回801错误码。从API version 19开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
@@ -67,7 +67,7 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 获取所有系统快捷键，使用Promise异步回调。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
@@ -151,7 +151,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onHotkeyChange](#inputconsumeronhotkeychange23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：14
 
@@ -286,7 +286,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offhotkeyChange](#inputconsumeroffhotkeychange23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **ArkTS-Dyn起始版本**：14
 
@@ -457,7 +457,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputconsumeronkeypressed23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **设备行为差异**：API version 19之前，该接口在Phone、Tablet和PC/2in1设备中可正常调用，在其他设备上返回801错误码。从API version 19开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
@@ -587,7 +587,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[offKeyPressed](#inputconsumeroffkeypressed23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **设备行为差异**：API version 19之前，该接口在Phone、Tablet和PC/2in1设备中可正常调用，在其他设备上返回801错误码。从API version 19开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 

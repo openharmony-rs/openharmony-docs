@@ -25,7 +25,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 鼠标事件类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -47,7 +47,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 鼠标按键。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -68,7 +68,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 鼠标轴类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -85,7 +85,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 鼠标轴类型和轴的值。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：9
 
@@ -100,7 +100,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 工具类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：11
 
@@ -117,7 +117,7 @@ import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from 
 
 鼠标事件。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |

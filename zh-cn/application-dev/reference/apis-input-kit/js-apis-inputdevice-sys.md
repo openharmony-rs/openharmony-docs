@@ -34,7 +34,7 @@ ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&g
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -132,7 +132,7 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -179,7 +179,7 @@ struct Index {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Succeeded in setting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -231,7 +231,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(callback: AsyncCallback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -328,7 +328,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -420,7 +420,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;)
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -517,7 +517,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -564,7 +564,7 @@ struct Index {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Succeeded in setting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -614,7 +614,7 @@ ArkTS-Sta: getKeyboardRepeatRate(callback: AsyncCallback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -709,7 +709,7 @@ ArkTS-Sta: getKeyboardRepeatRate(): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -750,7 +750,7 @@ struct Index {
             inputDevice.getKeyboardRepeatRate().then((rate: number) => {
               console.info(`Succeeded in getting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -800,7 +800,7 @@ ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;vo
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：18
 
@@ -828,7 +828,7 @@ ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;vo
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. The application does not have the permission required to call the API. |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **示例**：
@@ -899,11 +899,13 @@ ArkTS-Sta: bindToDisplay(inputDeviceId: int, displayId: int): Promise&lt;void&gt
 
 将输入设备绑定到显示器组。仅支持外接USB和蓝牙的鼠标、触摸板、键盘和游戏手柄。绑定后，输入设备将固定在指定显示器所在的显示器组上操作。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：26.1.0
 
