@@ -849,7 +849,7 @@ splitMessage\(content: string\): Promise\<Array\<string\>\>
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| Promise<Array<string\>> | 以Promise形式返回多个片段的结果。 |
+| Promise\<Array<string\>> | 以Promise形式返回多个片段的结果。 |
 
 **错误码：**
 
