@@ -404,7 +404,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 ### 方式二：Buffer模式下配置ROI
 
-Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码器，开发者需要在`OnNeedInputBuffer`回调中填充帧像素数据的同时配置ROI信息。由于Buffer模式没有编码器Surface，帧像素数据需要从相机帧Buffer中拷贝出来，连同ROI字符串一起推入帧队列供编码回调消费（如图4所示）。
+Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码器。由于Buffer模式没有编码器Surface，ROI字符串无法通过NativeBuffer元数据下发，需要通过编码输入回调配置：在帧处理线程中将ROI字符串连同帧PTS推入RoiQueue（同[方式一：通过编码输入参数回调配置](#方式一通过编码输入参数回调配置)的PTS同步队列），编码器请求输入Buffer时触发`OnNeedInputBuffer`回调，在回调中从RoiQueue取出ROI字符串并设置到输入Buffer参数中（如图4所示）。
 
 **图4：编码输入Buffer回调接口配置ROI流程图**
 
@@ -424,80 +424,16 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    同[NativeBuffer元数据配置方式（推荐）](#nativebuffer元数据配置方式推荐)步骤3。
 
-4. 定义帧数据结构和帧队列。
+4. 将ROI字符串连同帧PTS传递到RoiQueue。
 
-   Buffer模式下，编码器通过回调请求输入Buffer。开发者需要将相机帧的像素数据和ROI字符串封装为帧数据项，推入线程安全的帧队列供编码回调消费。
+   在帧处理线程中提取并组装ROI字符串后，需要将ROI字符串以PTS为索引推入RoiQueue，供编码回调按帧顺序取用。其传递方式同[方式一：通过编码输入参数回调配置](#方式一通过编码输入参数回调配置)步骤7。
 
-   <!-- @[roi_frame_item_struct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/common/FrameQueue.h) -->
-   
-   ``` C
-   // Buffer模式编码的帧数据项。
-   constexpr uint32_t FRAME_QUEUE_POP_TIMEOUT_MS = 4;
-   constexpr size_t FRAME_QUEUE_MAX_SIZE = 3;
-   
-   struct FrameItem {
-       std::vector<uint8_t> pixels;
-       int32_t width = 0;
-       int32_t height = 0;
-       int32_t stride = 0;
-       std::string roiStr;
-   };
-   ```
+5. 在编码输入Buffer回调中配置ROI信息。
 
-5. 将帧像素数据和ROI字符串推入帧队列。
-
-   在帧处理线程中，从相机帧Buffer读取像素数据，连同组装好的ROI字符串一起推入帧队列。
-
-   <!-- @[roi_buffer_pixel_read](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
-   
-   ``` C++
-   // Buffer模式：从相机帧读取像素数据并推入帧队列。
-   BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(InBuffer);
-   if (bufferHandle == nullptr) {
-       return;
-   }
-   OH_NativeBuffer *cameraNativeBuffer = nullptr;
-   int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(InBuffer, &cameraNativeBuffer);
-   if (ret != 0 || cameraNativeBuffer == nullptr) {
-       return;
-   }
-   void *virAddr = nullptr;
-   ret = OH_NativeBuffer_Map(cameraNativeBuffer, &virAddr);
-   if (ret != 0 || virAddr == nullptr) {
-       return;
-   }
-   int32_t frameWidth = bufferHandle->width;
-   int32_t frameHeight = bufferHandle->height;
-   int32_t stride = bufferHandle->stride;
-   int32_t frameSize = stride * frameHeight * 3 / 2;
-   FrameItem frameItem;
-   frameItem.width = frameWidth;
-   frameItem.height = frameHeight;
-   frameItem.stride = stride;
-   frameItem.roiStr = assembledRoiStr;
-   frameItem.pixels.resize(frameSize);
-   std::copy(static_cast<uint8_t *>(virAddr),
-             static_cast<uint8_t *>(virAddr) + frameSize,
-             frameItem.pixels.data());
-   frameQueue_->Push(frameItem);
-   OH_NativeBuffer_Unmap(cameraNativeBuffer);
-   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "RenderThread",
-                "Buffer模式: pushed frame to queue, size: %{public}d, ROI: %{public}s",
-                frameSize, assembledRoiStr.c_str());
-   ```
-
-   > **说明：**
-   >
-   > Buffer模式需要从相机帧Buffer拷贝像素数据到应用内存，存在额外的数据拷贝开销，相比Surface模式的零拷贝机制会有更高的延迟。开发者应根据实际场景选择合适的编码模式。
-
-6. 在编码输入Buffer回调中配置ROI信息。
-
-   当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调，该回调中将Buffer入队，交由消费线程处理。Buffer模式的消费线程从队列取出Buffer，调用`FillBufferModeInput`从帧队列弹出帧数据项，将像素数据拷贝到编码器Buffer中，并通过`OH_AVBuffer_GetParameter`获取格式后设置ROI字符串。
-
-   `OnNeedInputBuffer`回调将Buffer入队，供消费线程处理过程如下：
+   当编码器请求输入Buffer时，触发`OnNeedInputBuffer`回调。在回调中从RoiQueue取出PTS最小的ROI字符串，通过`OH_AVBuffer_GetParameter`获取输入Buffer的参数格式，使用`OH_AVFormat_SetStringValue`设置ROI字符串后，调用`OH_AVBuffer_SetParameter`写回Buffer使配置生效，最后将Buffer入队交由消费线程填充帧像素数据。
 
    <!-- @[roi_buffer_input_callback_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
-   
+
    ``` C++
    void CodecCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
@@ -505,98 +441,25 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
            return;
        }
        CodecUserData *codecUserData = static_cast<CodecUserData *>(userData);
+       // Buffer模式：从RoiQueue取ROI字符串，设置到输入Buffer参数。
+       if (codecUserData->roiPathType == ROI_PATH_BUFFER_MODE && codecUserData->roiQueue != nullptr) {
+           std::string roiStr = codecUserData->roiQueue->Pop();
+           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+           if (format != nullptr) {
+               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiStr.c_str());
+               OH_AVBuffer_SetParameter(buffer, format);
+               OH_AVFormat_Destroy(format);
+           }
+       }
        std::unique_lock<std::mutex> lock(codecUserData->inputMutex);
        codecUserData->inputBufferInfoQueue.emplace(index, buffer);
        codecUserData->inputCond.notify_all();
    }
    ```
 
-   Buffer模式消费线程从队列取出Buffer并调用`FillBufferModeInput`填充帧数据和ROI示例如下：
+   > **说明：**
+   >
+   > - ROI配置完成后，还需向输入Buffer填充帧像素数据并通过`OH_VideoEncoder_PushInputBuffer`送入编码器，此处不展开，具体参考[视频编码](video-encoding.md)Buffer模式相关说明。
+   > - `OH_AVBuffer_GetParameter`返回的是参数副本，必须调用`OH_AVBuffer_SetParameter`写回才能使ROI配置生效，使用后需调用`OH_AVFormat_Destroy`释放。
+   > - RoiQueue的PTS同步机制与关闭ROI时的清空处理同[方式一：通过编码输入参数回调配置](#方式一通过编码输入参数回调配置)的相关说明。
 
-   <!-- @[roi_buffer_mode_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
-   
-   ``` C++
-   void Recorder::VideoEncBufferInputThread()
-   {
-       while (isStarted_) {
-           CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-           std::unique_lock<std::mutex> lock(encContext_->inputMutex);
-           bool condRet = encContext_->inputCond.wait_for(
-               lock, std::chrono::seconds(THREAD_WAIT_TIMEOUT_SEC),
-               [this]() { return !isStarted_ || !encContext_->inputBufferInfoQueue.empty(); });
-           CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-           CHECK_AND_CONTINUE_LOG(!encContext_->inputBufferInfoQueue.empty(),
-               "Buffer queue is empty, continue, cond ret: %{public}d", condRet);
-   
-           CodecBufferInfo bufferInfo = encContext_->inputBufferInfoQueue.front();
-           encContext_->inputBufferInfoQueue.pop();
-           lock.unlock();
-   
-           OH_AVBuffer *buffer = reinterpret_cast<OH_AVBuffer *>(bufferInfo.buffer);
-           FillBufferModeInput(bufferInfo.bufferIndex, buffer);
-       }
-   }
-   ```
-
-   `FillBufferModeInput`的实现如下：
-
-   <!-- @[roi_buffer_mode_fill_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
-   
-   ``` C++
-   void Recorder::FillBufferModeInput(uint32_t index, OH_AVBuffer *buffer)
-   {
-       FrameItem frameItem;
-       if (!encContext_->frameQueue->Pop(frameItem, std::chrono::milliseconds(FRAME_QUEUE_POP_TIMEOUT_MS))) {
-           OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
-           return;
-       }
-       uint8_t *bufferAddr = OH_AVBuffer_GetAddr(buffer);
-       int32_t bufferCapacity = OH_AVBuffer_GetCapacity(buffer);
-       if (bufferAddr == nullptr) {
-           SAMPLE_LOGE("Buffer addr is nullptr, skip this frame");
-           return;
-       }
-       // 获取编码器输入Buffer的跨距，按跨距逐行拷贝Y和UV平面。
-       int32_t encStride = frameItem.stride;
-       OH_AVFormat *desc = OH_VideoEncoder_GetInputDescription(videoEncoder_->GetCodec());
-       if (desc != nullptr) {
-           OH_AVFormat_GetIntValue(desc, "stride", &encStride);
-           OH_AVFormat_Destroy(desc);
-       }
-       int32_t width = frameItem.width;
-       int32_t height = frameItem.height;
-       int32_t srcStride = frameItem.stride;
-       int32_t frameSize = encStride * height * 3 / 2;
-       if (bufferCapacity < frameSize) {
-           SAMPLE_LOGE("Buffer capacity %{public}d is less than frame size %{public}d, skip this frame",
-               bufferCapacity, frameSize);
-           return;
-       }
-       uint8_t *src = frameItem.pixels.data();
-       uint8_t *dst = bufferAddr;
-       for (int32_t i = 0; i < height; i++) {
-           std::copy(src, src + width, dst);
-           src += srcStride;
-           dst += encStride;
-       }
-       for (int32_t i = 0; i < height / 2; i++) {
-           std::copy(src, src + width, dst);
-           src += srcStride;
-           dst += encStride;
-       }
-       OH_AVCodecBufferAttr attr;
-       attr.size = frameSize;
-       attr.offset = 0;
-       attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-       attr.pts = static_cast<int64_t>(encContext_->inputFrameCount) * MICROSECOND / sampleInfo_.videoInfo.frameRate;
-       encContext_->inputFrameCount++;
-       OH_AVBuffer_SetBufferAttr(buffer, &attr);
-       OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-       if (format != nullptr) {
-           OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
-           OH_AVBuffer_SetParameter(buffer, format);
-           OH_AVFormat_Destroy(format);
-       }
-       OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
-   }
-   ```
