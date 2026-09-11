@@ -29432,7 +29432,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":36,
 						"name":"workSchedulerExtension",
 						"start_line":21
 					},
