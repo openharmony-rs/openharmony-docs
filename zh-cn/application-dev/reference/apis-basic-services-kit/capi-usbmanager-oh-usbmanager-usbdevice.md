@@ -1,5 +1,12 @@
 # OH_UsbManager_UsbDevice
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 ```c
 typedef struct OH_UsbManager_UsbDevice {...} OH_UsbManager_UsbDevice
 ```

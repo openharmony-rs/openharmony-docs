@@ -2,10 +2,16 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
 声明用于USB设备管理的C API。
+
+**引用文件：** <BasicServicesKit/ohusb_manager.h>
 
 **库：** libohusb_manager.so
 
