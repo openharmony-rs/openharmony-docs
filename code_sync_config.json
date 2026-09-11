@@ -35061,6 +35061,26 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":275,
+						"name":"webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"the_arkts_interface_is_exposed_on_the_node_api_side",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
