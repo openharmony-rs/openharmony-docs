@@ -15,14 +15,14 @@ ArkUI提供了Grid容器组件和子组件GridItem，用于构建网格布局。
 
 > **说明：** 
 >
-> 本文仅展示关键代码片段，可运行的完整代码请参考<!--RP2-->[创建网格代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableComponent)<!--RP2End-->。
+> 本文仅展示关键代码片段，可运行的完整代码请参考<!--RP2-->创建网格代码<!--RP2End-->。
 
 ## 布局与约束
 
 Grid组件为网格容器，其中容器内各条目对应一个GridItem组件，如下图所示。
 
   **图1** Grid与GridItem组件关系  
-![grid](figures/grid.png)
+grid
 
 >**说明：**
 >
@@ -31,7 +31,7 @@ Grid组件为网格容器，其中容器内各条目对应一个GridItem组件�
 网格布局是一种二维布局。Grid组件支持自定义行列数和每行每列尺寸占比、设置子组件横跨几行或者几列，同时提供了垂直和水平布局能力。当网格容器组件尺寸发生变化时，所有子组件以及间距会等比例调整，从而实现网格布局的自适应能力。根据Grid的这些布局能力，可以构建出不同样式的网格布局，如下图所示。
 
   **图2** 网格布局  
-![grid2](figures/grid2.png)
+grid2
 
 如果Grid组件设置了宽高属性，则其尺寸为设置值。如果没有设置宽高属性，Grid组件的尺寸默认适应其父组件的尺寸。
 
@@ -54,13 +54,13 @@ Grid组件根据行列数量与占比属性的设置，可以分为三种布局�
 rowsTemplate和columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即网格布局的行或列数，fr前面的数值大小，用于计算该行或列在网格布局对应方向上的尺寸占比，最终决定该行的高度或列的宽度。
 
   **图3** 行列数量占比示例  
-![grid3](figures/grid3.png)
+grid3
 
 如上图所示，构建的是一个三行三列的网格布局，其在垂直方向上分为三等份，每行占一份；在水平方向上分为四等份，第一列占一份，第二列占两份，第三列占一份。
 
 只要将rowsTemplate设置为'1fr 1fr 1fr'，同时将columnsTemplate设置为'1fr 2fr 1fr'，即可实现上述网格布局。
 
-<!-- @[build_a_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridLayout.ets) -->
+<!-- @build_a_grid -->
 
 ``` TypeScript
 Grid() {
@@ -81,19 +81,19 @@ Grid() {
 
   **图4** 不均匀网格布局 
 
-![grid4](figures/grid4.png)
+grid4
 
 例如计算器的按键布局就是常见的不均匀网格布局场景。如下图，计算器中的按键“0”和“=”，按键“0”横跨第一、二两列，按键“=”横跨第六、七两行。使用Grid构建的网格布局，其行列标号从0开始，依次编号。
 
   **图5** 计算器  
 
-![grid5](figures/grid5.png)
+grid5
 
 在网格中，可以通过onGetRectByIndex返回的[rowStart,columnStart,rowSpan,columnSpan]来实现跨行跨列布局，其中rowStart和columnStart属性表示指定当前元素起始行号和起始列号，rowSpan和columnSpan属性表示指定当前元素的占用行数和占用列数。
 
 所以“0”按键横跨第一列和第二列，“=”按键横跨第六行和第七行，只要将“0”对应onGetRectByIndex的rowStart和columnStart设为6和0，rowSpan和columnSpan设为1和2，将“=”对应onGetRectByIndex的rowStart和columnStart设为5和3，rowSpan和columnSpan设为2和1即可。
 
-<!-- @[Set_numberrows_columns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridCalculator.ets) -->
+<!-- @Set_numberrows_columns -->
 
 ``` TypeScript
 layoutOptions: GridLayoutOptions = {
@@ -123,11 +123,11 @@ Grid(undefined, this.layoutOptions) {
 
   **图6** 主轴方向示意图  
 
-![grid6](figures/grid6.png)
+grid6
 
 当前layoutDirection设置为Row时，先从左到右排列，排满一行再排下一行。当前layoutDirection设置为Column时，先从上到下排列，排满一列再排下一列，如上图所示。此时，将maxCount属性设为3，表示主轴方向上最大显示的网格单元数量为3。
 
-<!-- @[Set_the_direction_of_the_main_axis_of_the_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridLayout.ets) -->
+<!-- @Set_the_direction_of_the_main_axis_of_the_grid -->
 
 ``` TypeScript
 Grid() {
@@ -150,11 +150,11 @@ Grid() {
 
 **图7** 通用办公服务  
 
-![grid7](figures/grid7.png)
+grid7
 
 Grid组件可以通过二维布局的方式显示一组GridItem子组件。
 
-<!-- @[build_a_office_services_meeting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
+<!-- @build_a_office_services_meeting -->
 
 ``` TypeScript
 Grid() {
@@ -190,7 +190,7 @@ Grid() {
 
 对于内容结构相似的多个GridItem，通常更推荐使用ForEach语句中嵌套GridItem的形式，来减少重复代码。
 
-<!-- @[build_a_office_services_grid_of_foreach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
+<!-- @build_a_office_services_grid_of_foreach -->
 
 ``` TypeScript
 @Entry
@@ -238,11 +238,11 @@ export struct DataInGrid {
 
 **图8** 网格的行列间距  
 
-![grid8](figures/grid8.png)
+grid8
 
 通过Grid的rowsGap和columnsGap可以设置网格布局的行列间距。在图5所示的计算器中，行间距为15vp，列间距为10vp。
 
-<!-- @[set_rows_and_columns_occupied](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridColumnsGap.ets) -->
+<!-- @set_rows_and_columns_occupied -->
 
 ``` TypeScript
 Grid() {
@@ -258,13 +258,13 @@ Grid() {
 
 **图9** 横向可滚动网格布局
 
-![zh-cn_image_0000001511740512](figures/zh-cn_image_0000001511740512.gif)
+zh-cn_image_0000001511740512
 
 如果设置的是columnsTemplate，Grid的滚动方向为垂直方向；如果设置的是rowsTemplate，Grid的滚动方向为水平方向。
 
 如上图所示的横向可滚动网格布局，只要设置rowsTemplate属性的值且不设置columnsTemplate属性，当内容超出Grid组件宽度时，Grid可横向滚动进行内容展示。
 
-<!-- @[build_scrollable_horizontally_grid_layouts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollableGrid.ets) -->
+<!-- @build_scrollable_horizontally_grid_layouts -->
 
 ``` TypeScript
 @Entry
@@ -310,11 +310,11 @@ export struct ScrollableGrid {
 
   **图10** 日历翻页  
 
-![grid10](figures/grid10.gif)
+grid10
 
 Grid组件初始化时，可以绑定一个Scroller对象，用于进行滚动控制，例如通过Scroller对象的scrollPage方法进行翻页。
 
-<!-- @[build_a_private_scrolling_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollPositionGrid.ets) -->
+<!-- @build_a_private_scrolling_object -->
 
 ``` TypeScript
 private scroller: Scroller = new Scroller();
@@ -322,7 +322,7 @@ private scroller: Scroller = new Scroller();
 
 在日历页面中，用户在点击“下一页”按钮时，应用响应点击事件，通过指定scrollPage方法的参数next为true，滚动到下一页。
 
- <!-- @[Control_scrolling_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSideToSide.ets) -->
+ <!-- @Control_scrolling_position -->
  
  ``` TypeScript
  Column({ space: 5 }){
@@ -355,7 +355,7 @@ private scroller: Scroller = new Scroller();
 网格组件Grid可与ScrollBar组件配合使用，为网格添加外置滚动条。两者通过绑定同一个Scroller滚动控制器对象实现联动。
 
 1. 首先，需要创建一个Scroller类型的对象gridScroller。
-   <!-- @[Add_external_scrollbar_gridScroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   <!-- @Add_external_scrollbar_gridScroller -->
    
    ``` TypeScript
    private gridScroller: Scroller = new Scroller();
@@ -363,7 +363,7 @@ private scroller: Scroller = new Scroller();
 
 2. 然后，通过scroller参数绑定滚动控制器。
    
-   <!-- @[Add_external_scrollbar1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   <!-- @Add_external_scrollbar1 -->
    
    ``` TypeScript
    // gridScroller初始化Grid组件的scroller参数，绑定gridScroller与网格。
@@ -376,7 +376,7 @@ private scroller: Scroller = new Scroller();
 3. 最后，滚动条通过scroller参数绑定滚动控制器。
       
 
-   <!-- @[Add_external_scrollbar2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   <!-- @Add_external_scrollbar2 -->
    
    ``` TypeScript
    // gridScroller初始化ScrollBar组件的scroller参数，绑定gridScroller与滚动条。
@@ -385,7 +385,7 @@ private scroller: Scroller = new Scroller();
 
   **图11** 网格的外置滚动条 
 
-![ScrollBar](figures/grid_scrollbar.gif)
+ScrollBar
 
 >**说明：**
 >- 滚动条组件ScrollBar，还可配合其他可滚动组件使用，如ArcList、List、Scroll、WaterFlow。
@@ -397,14 +397,14 @@ private scroller: Scroller = new Scroller();
 
 **Grid手指滑动多选示例效果图**
 
-![gridSwipeSelect](figures/gridSwipeSelect.gif)
+gridSwipeSelect
 
 ### 设置编辑模式
 
 通过enableEditMode设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过onEditModeChange监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
 
 通过editModeOptions配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
-<!-- @[Add_grid_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
+<!-- @Add_grid_select -->
 
 ``` TypeScript
 Grid() {
@@ -420,7 +420,7 @@ Grid() {
 ### 记录网格项选择结果
 
 在GridItem上配置selectable、selected和onSelect。selectable用于设置网格项是否允许被选择，selected用于设置网格项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个网格项的最新选择结果。
-<!-- @[Add_grid_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
+<!-- @Add_grid_item_select -->
 
 ``` TypeScript
 GridItem() {
@@ -449,7 +449,7 @@ GridItem() {
 
   设置预加载数量后，会在Grid显示区域前后各缓存cachedCount\*列数个GridItem，超出显示和缓存范围的GridItem会被释放。
 
-<!-- @[long_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/LongGrid.ets) -->
+<!-- @long_list -->
 
 ``` TypeScript
 Grid() {
@@ -470,7 +470,7 @@ Grid() {
 
 针对网格开发，有以下相关实例可供参考：
 
-- [游戏2048（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
+- 游戏2048（ArkTS）（API9）
 
-- [分布式计算器](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
+- 分布式计算器
 <!--RP1End-->

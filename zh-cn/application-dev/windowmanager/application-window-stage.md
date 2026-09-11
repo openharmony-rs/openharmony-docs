@@ -71,7 +71,7 @@
 
    通过`loadContent`接口加载主窗口的目标页面。
    
-<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @create_main_window -->
 
 ``` TypeScript
 import { UIAbility} from '@kit.AbilityKit';
@@ -156,7 +156,7 @@ export default class EntryAbility extends UIAbility {
 
 直接在onWindowStageCreate里面创建子窗口的整体示例代码如下：
 
-<!-- @[create_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @create_sub_window -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -262,7 +262,7 @@ export default class EntryAbility extends UIAbility {
 
 另外，也可以在某个page页面通过点击按钮创建子窗口，整体示例代码如下：
 
-<!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @create_sub_window2_entryability -->
 
 ``` TypeScript
 // EntryAbility.ets
@@ -289,7 +289,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
+<!-- @create_sub_window2_index -->
 
 ``` TypeScript
 // Index.ets
@@ -414,7 +414,7 @@ struct Index {
 }
 ```
 
-<!-- @[create_sub_window2_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/SubWindow.ets) -->
+<!-- @create_sub_window2_subwindow -->
 
 ``` TypeScript
 // subWindow.ets
@@ -461,7 +461,7 @@ struct SubWindow {
 
    通过`loadContent`接口加载沉浸式窗口的具体内容。
    
-<!-- @[set_window_system_bar_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SetWindowSystemBarEnable/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @set_window_system_bar_enable -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -558,7 +558,7 @@ export default class EntryAbility extends UIAbility {
 
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁全局悬浮窗。
 
-<!-- @[create_float_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @create_float_window -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -633,7 +633,7 @@ export default class EntryAbility extends UIAbility {
 
 在创建WindowStage对象后可通过监听`'windowStageEvent'`事件类型，监听到窗口进入前台、后台、前台可交互、前台不可交互等事件，应用可根据这些上报的事件状态进行相应的业务处理。
 
-<!-- @[listen_window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ListenWindowStage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @listen_window_stage -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -682,8 +682,8 @@ export default class EntryAbility extends UIAbility {
 
 针对window开发（Stage模型），有以下相关实例可供参考：
 
-- [`Window`：一多设置典型页面（Settings）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings)
+- `Window`：一多设置典型页面（Settings）（API9）
 
-- [全局悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
+- 全局悬浮窗（ArkTS）（API10）（Full SDK）
 
-- [窗口管理（ArkTS）（API12）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowManage)
+- 窗口管理（ArkTS）（API12）（Full SDK）

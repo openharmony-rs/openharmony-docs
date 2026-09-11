@@ -42,7 +42,7 @@ list是用来显示列表的组件，包含一系列相同宽度的列表项，�
 }
 ```
 
-![list-Component](figures/list-Component.png)
+list-Component
 
 > **说明：**
 > - &lt;list-item-group&gt;是&lt;list&gt;的子组件，实现列表分组功能，不能再嵌套&lt;list&gt;，可以嵌套&lt;list-item&gt;。
@@ -86,7 +86,7 @@ list是用来显示列表的组件，包含一系列相同宽度的列表项，�
 }
 ```
 
-![Adding-Scrollbar](figures/Adding-Scrollbar.gif)
+Adding-Scrollbar
 
 
 ## 添加侧边索引栏
@@ -115,7 +115,7 @@ list是用来显示列表的组件，包含一系列相同宽度的列表项，�
 }
 ```
 
-![Side-Index-Bar](figures/Side-Index-Bar.png)
+Side-Index-Bar
 
 > **说明：**
 > - indexer属性生效需要flex-direction属性配合设置为column，且columns属性设置为1。
@@ -198,7 +198,7 @@ export default {
 }
 ```
 
-![Expanding-List](figures/Expanding-List.gif)
+Expanding-List
 
 > **说明：**
 >
@@ -314,4 +314,4 @@ export default {
 ```
 
 
-![Example-Scenario-7](figures/Example-Scenario-7.gif)
+Example-Scenario-7

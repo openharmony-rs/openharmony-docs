@@ -16,7 +16,7 @@
 
 if语句在条件为true时执行对应代码块，可搭配else if和else处理多分支场景。
 
-<!-- @[basic_if_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @basic_if_statement -->
 
 ``` TypeScript
 let score: number = 85;
@@ -42,7 +42,7 @@ function startService(): void {
 
 当需要处理多个互斥条件时，可以使用`else if`串联多个判断分支：
 
-<!-- @[if_else_if_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @if_else_if_chain -->
 
 ``` TypeScript
 let chainScore: number = 85;
@@ -84,7 +84,7 @@ if (role === 'admin') {
 
 对于只需满足条件即执行、无需处理其他分支的简单场景，可省略`else`部分：
 
-<!-- @[simple_condition_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @simple_condition_check -->
 
 ``` TypeScript
 let value: number = 10;
@@ -127,7 +127,7 @@ switch (expression) {
 
 下面通过日期和状态匹配的具体示例展示`switch`的基本用法：
 
-<!-- @[switch_basic_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_basic_usage -->
 
 ``` TypeScript
 let day: number = 3;
@@ -177,7 +177,7 @@ switch (status) {
 
 多个`case`标签可以共享同一段执行逻辑，实现值的分组匹配：
 
-<!-- @[switch_case_fallthrough](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_case_fallthrough -->
 
 ``` TypeScript
 let fallValue: number = 5;
@@ -220,7 +220,7 @@ switch (color) {
 
 对于范围判断，`switch`和`if...else if`各有适用场景，以下示例对比两种写法：
 
-<!-- @[switch_vs_if_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_vs_if_range -->
 
 ``` TypeScript
 let rangeScore: number = 85;
@@ -262,7 +262,7 @@ switch (grade) {
 
 switch也可结合`typeof`或判别字段处理联合类型，在`case`分支内安全使用收窄后的类型。
 
-<!-- @[switch_typeof_matching](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_typeof_matching -->
 
 ``` TypeScript
 let stmValue: number | string | boolean = 'text';
@@ -284,7 +284,7 @@ switch (typeof stmValue) {
 
 使用枚举作为判别字段，配合统一接口，可在switch中按枚举值分支处理。
 
-<!-- @[switch_enum_matching](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_enum_matching -->
 
 ``` TypeScript
 enum ShapeKind {
@@ -318,7 +318,7 @@ switch (semShape.kind) {
 
 `switch`的`default`分支用于捕获所有未匹配的情况，适合处理未知命令等场景：
 
-<!-- @[switch_default_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_default_handling -->
 
 ``` TypeScript
 let command: string = 'unknown';
@@ -345,7 +345,7 @@ function handleUnknown(cmd: string): void {
 
 `break`语句控制`switch`是否继续向下穿透，省略`break`会触发贯穿执行：
 
-<!-- @[switch_break_fallthrough](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @switch_break_fallthrough -->
 
 ``` TypeScript
 let fallValue2: number = 1;
@@ -383,7 +383,7 @@ switch (fallValue2) {
 
 for...of遍历可迭代对象的元素，语法简洁、通用性强、类型安全，且不会遍历原型链属性。
 
-<!-- @[for_of_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @for_of_iteration -->
 
 ``` TypeScript
 // 遍历数组
@@ -433,7 +433,7 @@ for (let key of map.keys()) {
 
 遍历`Map`的键值对时，ArkTS不支持解构语法，需通过索引单独提取`entry`中的键和值：
 
-<!-- @[for_of_key_value_pairs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @for_of_key_value_pairs -->
 
 ``` TypeScript
 // TypeScript支持：for (let [key, value] of pairsMap)
@@ -465,7 +465,7 @@ for (let pair of pairs) {
 
 **TypeScript对照**
 
-<!-- @[ts_for_in_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Control.ts) -->
+<!-- @ts_for_in_loop -->
 
 ``` TypeScript
 // TypeScript对照写法（ArkTS不支持for...in）
@@ -492,7 +492,7 @@ for (let index in finArr) {
 
 执行流程为：先执行初始化表达式（仅一次），再判断条件表达式（为true则继续、为false则退出），然后执行循环体，执行迭代表达式后回到条件判断循环。
 
-<!-- @[traditional_for_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @traditional_for_loop -->
 
 ``` TypeScript
 // 基本结构
@@ -528,7 +528,7 @@ for (let i: number = 0, j = 10; i < j; i++, j--) {
 
 借助计数器变量，`for`循环还可以实现指定范围的遍历：
 
-<!-- @[iterate_range_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @iterate_range_numbers -->
 
 ``` TypeScript
 // 遍历指定范围
@@ -569,7 +569,7 @@ while (condition) {
 
 `while`适合循环次数在编译时无法确定、基于特定条件（如队列非空）、等待条件满足（如轮询）或需动态调整循环条件的场景。
 
-<!-- @[while_loop_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @while_loop_basic -->
 
 ``` TypeScript
 // 基本结构
@@ -612,7 +612,7 @@ console.info(`累加到 ${sum}`);
 
 do...while循环先执行循环体，再判断条件，适用于用户输入验证（至少询问一次）、资源获取（至少尝试一次）、状态检查等需要先执行再判断的场景。执行流程为：先执行循环体，再判断条件表达式，条件为true则继续执行，为false则退出循环。
 
-<!-- @[do_while_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @do_while_loop -->
 
 ``` TypeScript
 // 基本结构：至少执行一次
@@ -662,7 +662,7 @@ break用于跳出循环或switch，立即终止当前循环或分支的执行。
 
 break常用于查找元素后终止、条件满足时退出、遇到错误时跳出以及提前结束无意义循环以优化性能。
 
-<!-- @[break_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @break_statement -->
 
 ``` TypeScript
 // 跳出for循环
@@ -696,7 +696,7 @@ for (let num of breakNumbers) {
 
 在`switch`语句中，`break`同样用于终止当前分支的执行：
 
-<!-- @[break_in_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @break_in_switch -->
 
 ``` TypeScript
 let switchValue: number = 2;
@@ -718,7 +718,7 @@ switch (switchValue) {
 
 嵌套循环中，带标签的`break`可以直接跳出外层循环：
 
-<!-- @[nested_loop_break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @nested_loop_break -->
 
 ``` TypeScript
 // 带标签的break：跳出外层循环
@@ -738,7 +738,7 @@ continue用于跳过当前迭代，继续下一次循环，是循环控制的重
 
 continue常用于过滤无效数据、满足条件时跳过、避免执行不必要代码以优化性能，以及替代复杂if-else嵌套以简化逻辑。
 
-<!-- @[continue_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @continue_statement -->
 
 ``` TypeScript
 // 跳过偶数
@@ -776,7 +776,7 @@ function processItem(item: string): void {
 
 类似地，`continue`也支持标签语法，用于跳过外层循环的当前迭代：
 
-<!-- @[nested_loop_continue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @nested_loop_continue -->
 
 ``` TypeScript
 // 带标签的continue：跳过外层循环当前迭代
@@ -794,7 +794,7 @@ outerLoop: for (let i: number = 0; i < 5; i++) {
 
 return用于从函数返回，立即终止函数执行并将控制权交还给调用者，同时返回指定的值。return后的代码不会执行。常用于返回计算结果、参数无效时提前退出、根据条件返回不同结果、以及遇到错误时返回错误信息。
 
-<!-- @[return_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @return_statement -->
 
 ``` TypeScript
 // 基本返回
@@ -853,7 +853,7 @@ interface User {
 
 在函数入口处对前置条件（参数合法性、权限、状态）做校验，不满足时直接return退出，避免层层嵌套，使主流程逻辑保持平坦清晰。
 
-<!-- @[early_exit_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @early_exit_pattern -->
 
 ``` TypeScript
 // 参数验证后提前退出
@@ -910,7 +910,7 @@ function getArrayElement(arr: number[], index: number): number | null {
 
 在可选值为null/undefined时提前return，避免深层嵌套。
 
-<!-- @[null_undefined_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @null_undefined_check -->
 
 ``` TypeScript
 // 处理可选参数
@@ -975,7 +975,7 @@ interface Inner {
 
 通过typeof检测对象方法是否存在，判断当前运行时环境。
 
-<!-- @[check_object_method_existence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @check_object_method_existence -->
 
 ``` TypeScript
 // 检测全局对象
@@ -1027,7 +1027,7 @@ function fallbackMethod(): void {
 
 运行时通过版本号或功能开关判断当前环境是否支持某特性，据此在新实现与兼容的旧实现之间分支选择，从而保证向后兼容。
 
-<!-- @[version_feature_platform_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Control.ets) -->
+<!-- @version_feature_platform_check -->
 
 ``` TypeScript
 // 版本检查

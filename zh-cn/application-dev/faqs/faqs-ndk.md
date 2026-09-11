@@ -22,15 +22,15 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 1. GN构建：  
 
-    [基于gn_example编译三方库代码](https://gitcode.com/openharmony/build/wiki/gn%E6%9E%84%E5%BB%BA%E4%B8%89%E6%96%B9%E5%BA%93%2F%E5%9F%BA%E4%BA%8Egn_example%E7%BC%96%E8%AF%91%E4%B8%89%E6%96%B9%E5%BA%93%E4%BB%A3%E7%A0%81.md)  
+    基于gn_example编译三方库代码  
 
-    [基于三方编译框架移植OHOS](https://gitcode.com/openharmony/build/wiki/gn%E6%9E%84%E5%BB%BA%E4%B8%89%E6%96%B9%E5%BA%93%2F%E5%9F%BA%E4%BA%8E%E4%B8%89%E6%96%B9%E7%BC%96%E8%AF%91%E6%A1%86%E6%9E%B6%E7%A7%BB%E6%A4%8DOHOS.md)
+    基于三方编译框架移植OHOS
 
 2. CMake构建： 
 
-    linux：[HOW TO USE NDK (linux)](https://gitcode.com/openharmony/build/wiki/NDK%2FHOW%20TO%20USE%20NDK%20(linux).md)  
+    linux：HOW TO USE NDK (linux)  
 
-    windows：[HOW TO USE NDK (windows)](https://gitcode.com/openharmony/build/wiki/NDK%2FHOW%20TO%20USE%20NDK%20(windows).md)
+    windows：HOW TO USE NDK (windows)
 
 ## 开发者使用napi扩展TS接口时，常用的属性和实现接口的基本用法是什么？例如怎么获取env，怎么实现callback和promise，怎么使用libuv？(API 10)
 

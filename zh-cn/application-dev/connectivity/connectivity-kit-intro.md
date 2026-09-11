@@ -88,7 +88,7 @@ NFC英文全称Near Field Communication，近距离无线通信。NFC服务提�
   融合测距模块，提供了星闪HADM测距服务，在模块内可以使用星闪HADM测距的能力。详情请参考@ohos.FusionConnectivity.ranging文档。
 
 - **融合测距模块**<br/>
-  融合测距模块，提供了星闪[HADM](fusion-connectivity/fusion-connectivity-terminology.md#hadm)测距服务，在模块内可以使用星闪HADM测距的能力。详情请参考[@ohos.FusionConnectivity.ranging](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-ranging.md)文档。
+  融合测距模块，提供了星闪HADM测距服务，在模块内可以使用星闪HADM测距的能力。详情请参考@ohos.FusionConnectivity.ranging文档。
 
 ### 星闪简介
 
@@ -97,25 +97,25 @@ NFC英文全称Near Field Communication，近距离无线通信。NFC服务提�
 星闪提供了多种API，适用于设备发现、连接和数据传输等不同场景，助力开发者完成星闪相关开发。
 
 - **manager模块**<br/>
-  提供星闪开关状态查询、设备信息查询、配对设备管理等能力。详情请参考API [@ohos.nearlink.manager (星闪基础管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
+  提供星闪开关状态查询、设备信息查询、配对设备管理等能力。详情请参考API @ohos.nearlink.manager (星闪基础管理能力)。
 
 - **advertising模块**<br/>
-  提供发送星闪广播、停止广播和订阅广播状态变化等能力。详情请参考API [@ohos.nearlink.advertising (星闪广播能力)](../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
+  提供发送星闪广播、停止广播和订阅广播状态变化等能力。详情请参考API @ohos.nearlink.advertising (星闪广播能力)。
 
 - **scan模块**<br/>
-  提供发起星闪扫描、停止扫描、订阅扫描结果和查询扫描设备信息等能力。详情请参考API [@ohos.nearlink.scan (星闪扫描能力)](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
+  提供发起星闪扫描、停止扫描、订阅扫描结果和查询扫描设备信息等能力。详情请参考API @ohos.nearlink.scan (星闪扫描能力)。
 
 - **remoteDevice模块**<br/>
-  提供创建远端设备实例、发起配对、查询远端设备信息和订阅设备状态变化等能力。详情请参考API [@ohos.nearlink.remoteDevice (星闪远端设备连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md)。
+  提供创建远端设备实例、发起配对、查询远端设备信息和订阅设备状态变化等能力。详情请参考API @ohos.nearlink.remoteDevice (星闪远端设备连接能力)。
 
 - **ssap模块**<br/>
-  提供SSAP服务端/客户端连接建立、属性读写与通知等能力。详情请参考API [@ohos.nearlink.ssap (星闪SSAP连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+  提供SSAP服务端/客户端连接建立、属性读写与通知等能力。详情请参考API @ohos.nearlink.ssap (星闪SSAP连接能力)。
 
 - **dataTransfer模块**<br/>
-  提供基于端口通道的数据传输能力。详情请参考API [@ohos.nearlink.dataTransfer (星闪数传能力)](../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+  提供基于端口通道的数据传输能力。详情请参考API @ohos.nearlink.dataTransfer (星闪数传能力)。
 
 - **cdsm模块**<br/>
-  提供合作设备集合成员设备信息的查询与订阅等能力。详情请参考API [@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
+  提供合作设备集合成员设备信息的查询与订阅等能力。详情请参考API @ohos.nearlink.cdsm (星闪合作设备集合管理能力)。
 
 ### 运作机制
 
@@ -129,4 +129,4 @@ Connectivity能力作为系统为应用提供的一种基础通信服务，需�
 
 针对蓝牙相关的业务，有以下相关实例可供参考：
 
-- [bluetooth](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Bluetooth)
+- bluetooth

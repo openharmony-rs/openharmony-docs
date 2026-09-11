@@ -309,7 +309,7 @@
 
 > **说明：**
 > 
-> - 如果开发者希望针对不同设备类型配置不同的最小值，可通过[多HAP工程](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-modular-design#section1260019161216)实现。
+> - 如果开发者希望针对不同设备类型配置不同的最小值，可通过多HAP工程实现。
 > 
 > - 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为：
 >
@@ -333,7 +333,7 @@
 
 示意图中，windowRect为窗口尺寸，类型为Rect；drawableRect为可绘制区域尺寸，类型为Rect；decorHeight为标题栏高度，类型为number，单位为vp；density为本窗口所处屏幕的系统显示大小缩放系数，类型为number；w为窗口宽度，类型为number，单位为px；h为窗口高度，类型为number，单位为px。
 
-![window](figures/window.png)
+window
 
 典型场景及对应方案如下：
 
@@ -350,7 +350,7 @@
 
 如果应用希望在窗口内有更大的可绘制区域，可以通过隐藏标题栏，并适配窗口三键的位置和尺寸。
 
-![button](figures/button.png)
+button
 
 典型场景及对应方案如下：
 
@@ -482,11 +482,11 @@
 
 下图表示不隐藏标题栏时，应用最顶部的布局区域（粉色区域）只能在标题栏之下。
 
-![existTitleBar](figures/existTitleBar.png)
+existTitleBar
 
 下图表示隐藏标题栏时，避让窗口三键后，应用最顶部可用于布局的区域（粉色区域）。
 
-![notExistTitleBar](figures/notExistTitleBar.png)
+notExistTitleBar
 
 ## 自由窗口状态下窗口进入全屏显示
 

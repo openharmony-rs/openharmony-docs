@@ -14,11 +14,11 @@
 授权弹窗如下图所示：
 
 <!--RP1-->
-![alt text](figures/allow_this_time.png)
+alt text
 
 设置选项如下图所示：
 
-![alt text](figures/setting_allow_this.png)
+alt text
 
 路径：设置 > 隐私 > 权限管理 > 应用 > 目标应用 > 位置信息
 <!--RP1End-->
@@ -49,6 +49,6 @@
     <!--RP2-->
     如下图样例所示，相机应用处于卡片可见状态：
 
-    ![alt text](figures/form_visible.png)
+    alt text
     <!--RP2End-->
 - 当用户在位置的权限设置中选择“每次询问”时，应用将获得模糊位置和位置临时权限。取消临时授权的操作与此相同。

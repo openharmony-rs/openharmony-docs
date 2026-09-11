@@ -64,11 +64,11 @@ Deep Linking与App Linking均可以使用openLink()接口实现，不同条件�
 
 通过App Linking方式拉起指定应用的示意图如下：
 
-![App Linking拉起指定应用示意图](figures/AppLinking-launch.png)
+App Linking拉起指定应用示意图
 
 通过Deep Linking方式拉起应用时，如果存在多个符合条件的应用，需要用户选择后方可跳转到指定应用。示意图如下：
 
-![Deep Linking拉起指定应用示意图](figures/DeepLinking-launch.png)
+Deep Linking拉起指定应用示意图
 
 <!--RP1-->
 <!--RP1End-->

@@ -63,7 +63,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 示例如下：
 
-<!-- @[gcm_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_encryption_decryption.cpp) -->
+<!-- @gcm_encrypt_decrypt_aes_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -227,7 +227,7 @@ end:
 
 示例如下：
 
-<!-- @[ccm_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_ccm_encryption_decryption.cpp) -->
+<!-- @ccm_encrypt_decrypt_aes_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -363,7 +363,7 @@ end:
 
 示例如下：
 
-<!-- @[cbc_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_cbc_encryption_decryption.cpp) -->
+<!-- @cbc_encrypt_decrypt_aes_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -474,7 +474,7 @@ end:
 
 示例如下：
 
-<!-- @[ecb_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_ecb_encryption_decryption.cpp) -->
+<!-- @ecb_encrypt_decrypt_aes_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -603,7 +603,7 @@ end:
 
 示例如下：
 
-<!-- @[gcm_seg_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_segment_encryption_decryption.cpp) -->
+<!-- @gcm_seg_encrypt_decrypt_aes_symkey -->
 
 ``` C++
 #include <cstring>

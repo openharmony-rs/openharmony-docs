@@ -44,7 +44,7 @@ text{
 }
 ```
 
-![stepper-Component](figures/stepper-Component.gif)
+stepper-Component
 
 
 ## 设置index和label属性
@@ -83,7 +83,7 @@ text{
 }
 ```
 
-![Setting-Index](figures/Setting-Index-1.gif)
+Setting-Index
 
 通过设置label属性，自定义stepper-item的提示按钮。
 
@@ -144,7 +144,7 @@ export default {
 }
 ```
 
-![Setting-Index](figures/Setting-Index.gif)
+Setting-Index
 
 
 ## 设置样式
@@ -188,7 +188,7 @@ text{
 }
 ```
 
-![Setting-Styles-3](figures/Setting-Styles-3.png)
+Setting-Styles-3
 
 
 ## 添加事件
@@ -290,4 +290,4 @@ export default {
 }
 ```
 
-![Adding-Events-1](figures/Adding-Events-1.gif)
+Adding-Events-1

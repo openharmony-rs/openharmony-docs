@@ -16,7 +16,7 @@
 
 **图1** 全场景通知去重流程图
 
-![distributed_messageid](figures/notification_messageid.png)
+distributed_messageid
 
 ## 约束条件
 
@@ -33,7 +33,7 @@
 
 1. 导入模块。
 
-   <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   <!-- @clear_duplicate_notifications_header -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -42,7 +42,7 @@
 
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
-   <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
+   <!-- @pub_appMsgId_notify -->
    
    ``` TypeScript
    // publish回调

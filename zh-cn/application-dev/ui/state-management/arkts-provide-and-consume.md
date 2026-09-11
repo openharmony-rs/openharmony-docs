@@ -10,7 +10,7 @@
 
 其中\@Provide装饰的变量是在祖先组件中，可以理解为被“提供”给后代的状态变量。\@Consume装饰的变量是在后代组件中，去“消费（绑定）”祖先组件提供的变量。
 
-\@Provide/\@Consume是跨组件层级的双向同步。在阅读\@Provide和\@Consume文档前，建议开发者对UI范式基本语法和自定义组件有基本的了解。建议提前阅读：基本语法概述，声明式UI描述，创建自定义组件。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考状态管理常见问题。
+\@Provide/\@Consume是跨组件层级的双向同步。在阅读\@Provide和\@Consume文档前，建议开发者对UI范式基本语法和自定义组件有基本的了解。建议提前阅读：基本语法概述，声明式UI描述，创建自定义组件。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
 
 > **说明：**
 >
@@ -66,7 +66,7 @@
 
   **图1** \@Provide初始化规则图示  
 
-![provide-initialization](figures/provide-initialization.png)
+provide-initialization
 
 <!--Table: 25%; 75%-->
 | \@Consume变量装饰器  | 说明                                                         |
@@ -80,7 +80,7 @@
   **图2** \@Consume初始化规则图示  
 
 
-![consume-initialization](figures/consume-initialization.png)
+consume-initialization
 
 ## 观察变化和行为表现
 
@@ -114,7 +114,7 @@
 
    通过初始渲染的步骤可知，子组件\@Consume持有\@Provide的实例。在\@Consume更新后调用\@Provide的更新方法，将更新的数值同步回\@Provide，以此实现\@Consume向\@Provide的同步更新。
 
-![Provide_Consume_framework_behavior_withDefault](figures/Provide_Consume_framework_behavior_withDefault.png)
+Provide_Consume_framework_behavior_withDefault
 
 ## 限制条件
 
@@ -159,7 +159,7 @@
    ```
 
    【正例】
-   <!-- @[provide_consume_proper_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemo.ets) --> 
+   <!-- @provide_consume_proper_demo --> 
    
    ``` TypeScript
    @Component
@@ -190,7 +190,7 @@
    }
    ```
 
-   ![provide-initialization-right](figures/provide-initialization-right.png)
+   provide-initialization-right
 
 3. \@Provide的key重复定义时，框架会抛出运行时错误，从API version 23开始，将返回错误码140114，提醒开发者重复定义key。如果开发者需要重复key，可以使用allowOverride。
 
@@ -236,7 +236,7 @@
     ```
 
    【正例】
-   <!-- @[provide_consume_proper_demo_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProperDemoTwo.ets) --> 
+   <!-- @provide_consume_proper_demo_two --> 
    
    ``` TypeScript
    @Component
@@ -268,7 +268,7 @@
    }
    ```
 
-   ![consume-initialization-right](figures/consume-initialization-right.png)
+   consume-initialization-right
 
 5. \@Provide与\@Consume不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
@@ -288,7 +288,7 @@
 
    在非BuilderNode场景中，仍建议配对的\@Provide/\@Consume类型一致。虽然在运行时不会有强校验，但在\@Consume装饰的变量初始化时，会隐式转换成\@Provide装饰变量的类型。
 
-   <!-- @[provide_consume_Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBuilderNode.ets) -->
+   <!-- @provide_consume_Builder_Node -->
    
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -352,11 +352,11 @@
    }
    ```
 
-   ![provide_consume_builder_node](figures/provide_consume_builder_node.png)
+   provide_consume_builder_node
 
 7. 父组件传入undefined时，\@Provide装饰的变量仍使用本地默认值进行初始化。
    
-   <!-- @[provide_consume_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeUndefined.ets) -->  
+   <!-- @provide_consume_undefined -->  
    
    ``` TypeScript
    @Entry
@@ -389,7 +389,7 @@
    }
    ```
 
-   ![provide_consume_undefined](figures/provide_consume_undefined.png)
+   provide_consume_undefined
 
 ## 使用场景
 
@@ -397,7 +397,7 @@
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击ToDo和ToDoItem组件内的Button时，count的更改会双向同步在ToDo和ToDoItem中。
 
-<!-- @[provide_consume_bidirectional_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeBidirectionalSync.ets) --> 
+<!-- @provide_consume_bidirectional_sync --> 
 
 ``` TypeScript
 @Component
@@ -455,13 +455,13 @@ struct ToDo {
 }
 ```
 
-![provide_consume_bidirectional_sync](figures/provide_consume_bidirectional_sync.gif)
+provide_consume_bidirectional_sync
 
 ### 装饰Array类型变量
 
 以下示例中，message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[provide_consume_array_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeArraySync.ets) --> 
+<!-- @provide_consume_array_sync --> 
 
 ``` TypeScript
 @Entry
@@ -529,7 +529,7 @@ struct Child {
 }
 ```
 
-![provide_consume_array_sync](figures/provide_consume_array_sync.gif)
+provide_consume_array_sync
 
 ### 装饰Map类型变量
 
@@ -539,7 +539,7 @@ struct Child {
 
 以下示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[provide_consume_map_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeMapSync.ets) -->  
+<!-- @provide_consume_map_sync -->  
 
 ``` TypeScript
 @Component
@@ -617,7 +617,7 @@ struct MapSample {
 }
 ```
 
-![provide_consume_map_sync](figures/provide_consume_map_sync.gif)
+provide_consume_map_sync
 
 ### 装饰Set类型变量
 
@@ -627,7 +627,7 @@ struct MapSample {
 
 以下示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[provide_consume_set_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeSetSync.ets) -->  
+<!-- @provide_consume_set_sync -->  
 
 ``` TypeScript
 @Component
@@ -696,13 +696,13 @@ struct SetSample {
 }
 ```
 
-![provide_consume_set_sync](figures/provide_consume_set_sync.gif)
+provide_consume_set_sync
 
 ### 装饰Date类型变量
 
 以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[provide_consume_date_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDateSync.ets) -->  
+<!-- @provide_consume_date_sync -->  
 
 ``` TypeScript
 @Component
@@ -766,13 +766,13 @@ struct Parent {
 }
 ```
 
-![provide_consume_date_sync](figures/provide_consume_date_sync.gif)
+provide_consume_date_sync
 
 ### @Provide和@Consume支持联合类型实例
 
 @Provide和@Consume支持联合类型和undefined和null。以下示例中，count类型为string | undefined，当点击祖先组件Ancestors中的Button改变count的值或者类型时，Child中也会对应刷新。
 
-<!-- @[provide_consume_Provide_Consume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeFederation.ets) --> 
+<!-- @provide_consume_Provide_Consume --> 
 
 ``` TypeScript
 @Component
@@ -822,7 +822,7 @@ struct Ancestors {
 }
 ```
 
-![provide_consume_provide_consume](figures/provide_consume_provide_consume.gif)
+provide_consume_provide_consume
 
 ### \@Provide支持allowOverride参数
 
@@ -836,7 +836,7 @@ allowOverride：\@Provide重写选项。
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | allowOverride | string | 否 | 是否允许@Provide重写。允许在同一组件树下通过allowOverride重写同名的@Provide。如果开发者未写allowOverride，定义同名的@Provide，运行时会报错。 |
 
-<!-- @[Provide_Consume_Provide_AllowOverride1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) -->  
+<!-- @Provide_Consume_Provide_AllowOverride1 -->  
 
 ``` TypeScript
 @Component
@@ -852,7 +852,7 @@ struct MyComponent {
 
 完整示例如下：
 
-<!-- @[Provide_Consume_Provide_AllowOverride2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideAllowOverride.ets) --> 
+<!-- @Provide_Consume_Provide_AllowOverride2 --> 
 
 ``` TypeScript
 @Component
@@ -912,7 +912,7 @@ struct GrandParent {
 }
 ```
 
-![provide_consume_provide_allowoverride](figures/provide_consume_provide_allowoverride.gif)
+provide_consume_provide_allowoverride
 
 在上面的示例中：
 - GrandParent声明了@Provide('reviewVotes') reviewVotes: number = 40。
@@ -927,7 +927,7 @@ struct GrandParent {
 >
 > 从API version 20开始，\@Consume装饰的变量支持设置默认值。
 
-<!-- @[Provide_Consume_Decorated_Variable1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) -->  
+<!-- @Provide_Consume_Decorated_Variable1 -->  
 
 ``` TypeScript
 @Component
@@ -943,7 +943,7 @@ struct MyComponent {
 
 完整示例如下：
 
-<!-- @[Provide_Consume_Decorated_Variable2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeDecoratedVariable.ets) --> 
+<!-- @Provide_Consume_Decorated_Variable2 --> 
 
 ``` TypeScript
 @Entry
@@ -1035,7 +1035,7 @@ struct Child {
 }
 ```
 
-![provide_consume_decorated_variable](figures/provide_consume_decorated_variable.gif)
+provide_consume_decorated_variable
 
 在上面的示例中：
 - Parent声明了@Provide('firstKey') provideOne: string | undefined = undefined 与 @Provide('secondKey') provideTwo: string = 'the second provider'。
@@ -1063,7 +1063,7 @@ BuilderNode支持\@Provide/\@Consume，需注意：
 2. \@Provide和\@Consume配对后，建立双向同步关系。点击```Text(`@Provide: ${this.message}`)```和```Text(`@Consume ${this.message}`)```，\@Provide和\@Consume绑定的Text组件刷新，并回调\@Provide和\@Consume的\@Watch方法。
 3. 点击`remove Child`, BuilderNode子节点下树，`Child`中的\@Consume和`Index`中的\@Provide断开连接，`Child`中的\@Consume恢复成默认值，并回调\@Consume的\@Watch方法。
 4. 点击`dispose Child`，释放BuilderNode下子节点，BuilderNode子节点`Child`销毁，执行aboutToDisappear。
-<!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeTwoWay.ets) -->  
+<!-- @provide_consume_Two_Way -->  
 
 ``` TypeScript
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -1211,7 +1211,7 @@ struct Child {
 }
 ```
 
-![provide_consume_two_way](figures/provide_consume_two_way.gif)
+provide_consume_two_way
 
 ## 常见问题
 
@@ -1285,7 +1285,7 @@ struct CustomWidgetChild {
 
 正确示例：
 
-<!-- @[provide_consume_Two_Way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/provideAndConsume/ProvideConsumeProvideError.ets) -->   
+<!-- @provide_consume_Two_Way -->   
 
 ``` TypeScript
 class Tmp {
@@ -1352,4 +1352,4 @@ struct CustomWidgetChild {
 }
 ```
 
-![provide_consume_right](figures/provide_consume_right.gif)
+provide_consume_right

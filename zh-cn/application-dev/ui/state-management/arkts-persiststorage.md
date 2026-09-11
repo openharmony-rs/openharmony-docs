@@ -86,7 +86,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    ```
 
    完整代码如下：
-   <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) --> 
+   <!-- @Persistent_page_one --> 
    
    ``` TypeScript
    PersistentStorage.persistProp('aProp', 47);
@@ -119,7 +119,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    }
    ```
 
-   ![persistent-sync-0](figures/persistent-sync-0.png)
+   persistent-sync-0
 
 - 新应用安装后首次启动运行：
   1. 调用persistProp初始化PersistentStorage，首先查询在PersistentStorage本地文件中是否存在“aProp”，查询结果为不存在，因为应用是第一次安装。
@@ -130,7 +130,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
   **图1** persistProp初始化流程  
 
-  ![zh-cn_image_0000001553348833](figures/PersistProp-initialization.png)
+  zh-cn_image_0000001553348833
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
@@ -163,12 +163,12 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
 
-<!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
+<!-- @Persistent_page_first --> 
 
 ``` TypeScript
 const MAX_NUM: number = 50;
 ```
-<!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
+<!-- @Persistent_page_three --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('aProp', 48);
@@ -184,7 +184,7 @@ if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
 
 PersistentStorage支持联合类型和undefined和null，在下面的示例中，使用persistProp方法初始化“P”为undefined。通过@StorageLink('P')绑定变量p，类型为number | undefined | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
-<!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) --> 
+<!-- @Persistent_page_four --> 
 
 ``` TypeScript
 // 定义常量替代魔法值，明确数值含义
@@ -234,13 +234,13 @@ struct TestCase6 {
 }
 ```
 
-![persistent-sync-1](figures/persistent-sync-1.gif)
+persistent-sync-1
 
 ### 持久化Date类型变量
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
 
-<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->  
+<!-- @Persistent_page_five -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedDate', new Date());
@@ -303,13 +303,13 @@ struct PersistedDate {
 }
 ```
 
-![persistent-sync-2](figures/persistent-sync-2.gif)
+persistent-sync-2
 
 ### 持久化Map类型变量
 
 在下面的示例中，@StorageLink装饰的persistedMapString类型为Map\<number, string\>，点击Button改变persistedMapString的值，视图会随之刷新。且persistedMapString的值被持久化存储。
 
-<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->  
+<!-- @Persistent_page_six -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
@@ -361,13 +361,13 @@ struct PersistedMap {
 }
 ```
 
-![persistent-sync-3](figures/persistent-sync-3.gif)
+persistent-sync-3
 
 ### 持久化Set类型变量
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->  
+<!-- @Persistent_page_seven -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedSet', new Set<number>([]));
@@ -440,4 +440,4 @@ struct PersistedSet {
 }
 ```
 
-![persistent-sync-4](figures/persistent-sync-4.gif)
+persistent-sync-4

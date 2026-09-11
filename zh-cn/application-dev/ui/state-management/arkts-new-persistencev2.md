@@ -61,7 +61,7 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
 
    如下是新增接口globalConnect支持collections.Array的示例代码:
     
-    <!-- @[top_level_collections_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelCollectionsArray.ets) -->
+    <!-- @top_level_collections_array -->
      
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -157,7 +157,7 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
     }
     ```
 
-     ![persistencev2-sync-0](./figures/persistencev2-sync-0.gif)
+     persistencev2-sync-0
 
 - globalConnect在持久化多个相同集合类型时，需要提供不同的`key`来区分持久化数据。
 
@@ -195,7 +195,7 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
 
    如下为新增globalConnect支持`Array<ClassA>`类型的持久化示例：
 
-    <!-- @[top_level_array_classa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassA.ets) -->
+    <!-- @top_level_array_classa -->
    
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -253,11 +253,11 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
     }
     ```
 
-   ![persistencev2-sync-1](./figures/persistencev2-sync-1.gif)
+   persistencev2-sync-1
 
    如下为globalConnect支持Date类型的持久化示例：
 
-    <!-- @[top_level_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelDate.ets) --> 
+    <!-- @top_level_date --> 
     
     ``` TypeScript
     import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -289,11 +289,11 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
     }
     ```
 
-    ![persistencev2-sync-2](./figures/persistencev2-sync-2.gif)
+    persistencev2-sync-2
 
   如下为globalConnect支持Number类型作为class子属性的持久化示例：
 
-  <!-- @[non_top_level_number_of_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/NonTopLevelNumberOfClass.ets) --> 
+  <!-- @non_top_level_number_of_class --> 
   
   ``` TypeScript
   import { PersistenceV2 } from '@kit.ArkUI';
@@ -332,7 +332,7 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
   }
   ```
 
-  ![persistencev2-sync-3](./figures/persistencev2-sync-3.png)
+  persistencev2-sync-3
 
 6、在API version 23以前，不支持循环引用对象的持久化。
 
@@ -340,7 +340,7 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
 
    如下为globalConnect支持循环引用的对象的持久化示例：
 
-   <!-- @[circular_reference_of_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/CircularReferenceOfObject.ets) --> 
+   <!-- @circular_reference_of_object --> 
    
    ``` TypeScript
    import { PersistenceV2 } from '@kit.ArkUI';
@@ -404,7 +404,7 @@ PersistenceV2继承自AppStorageV2，支持通过connect创建或获取存储的
    }
    ```
 
-   ![persistencev2-sync-4](./figures/persistencev2-sync-4.png)
+   persistencev2-sync-4
 
 7、只有\@Trace的数据改变会触发自动持久化，如V1状态变量、\@Observed对象、普通数据的改变不会触发持久化。
 
@@ -527,7 +527,7 @@ class PersistClass {
 
 如下展示`globalConnect`持久化`Array<ClassA>`的示例：
 
-<!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
+<!-- @top_level_array_classa_apis -->
  
 ``` TypeScript
 import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -641,14 +641,14 @@ struct Page1 {
 }
 ```
 
- ![persistencev2-sync-5](./figures/persistencev2-sync-5.gif)
+ persistencev2-sync-5
 
 ## 使用场景
 
 ### 在两个页面之间存储数据
 
 数据页面
-<!-- @[persistence_v2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/Sample.ets) --> 
+<!-- @persistence_v2_sample --> 
 
 ``` TypeScript
 
@@ -671,7 +671,7 @@ export class Sample {
 ```
 
 页面1
-<!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page1.ets) --> 
+<!-- @Persistence_Use_Case_Data_Page --> 
 
 ``` TypeScript
 // Page1.ets
@@ -756,7 +756,7 @@ struct Page1 {
 ```
 
 页面2
-<!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page2.ets) --> 
+<!-- @Persistence_Use_Case_Data_Page --> 
 
 ``` TypeScript
 // Page2.ets
@@ -831,11 +831,11 @@ struct Page2 {
 }
 ```
 
-![persistencev2-sync-6](./figures/persistencev2-sync-6.gif)
+persistencev2-sync-6
 
 ### 使用globalConnect存储数据
 
-<!-- @[persistence_v2_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets) -->   
+<!-- @persistence_v2_global_connect -->   
 
 ``` TypeScript
 import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
@@ -996,7 +996,7 @@ struct Page1 {
 }
 ```
 
-![persistencev2-sync-7](./figures/persistencev2-sync-7.gif)
+persistencev2-sync-7
 
 ### 在不同的module中使用connect和globalConnect
 
@@ -1012,7 +1012,7 @@ globalConnect虽然是应用级别的路径，但是可以设置不同的加密�
 
 示例代码如下：开发者需要在项目基础上，新建一个module，并按照示例代码跳转到新module中。
 
-<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) --> 
+<!-- @persistence_v2_module_connect_storage_one --> 
 
 ``` TypeScript
 // 模块1
@@ -1104,9 +1104,9 @@ struct Page1 {
 }
 ```
 
-![persistencev2-sync-8](./figures/persistencev2-sync-8.png)
+persistencev2-sync-8
 
-<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) -->  
+<!-- @persistence_v2_module_connect_storage_two -->  
 
 ``` TypeScript
 // 模块2
@@ -1166,7 +1166,7 @@ struct Page1 {
 }
 ```
 
-![persistencev2-sync-9](./figures/persistencev2-sync-9.png)
+persistencev2-sync-9
 
 当开发者对newModule使用不同启动方式会有以下现象：
 
@@ -1178,7 +1178,7 @@ struct Page1 {
 
 当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。从API版本26.0.0开始，开发者可通过向notifyOnError的入参回调中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观感知到数据结构的差异。
 
-<!-- @[persistence_v2_notifyOnError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2NotifyOnError.ets) --> 
+<!-- @persistence_v2_notifyOnError --> 
 
 ``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
@@ -1252,7 +1252,7 @@ struct Index {
 }
 ```
 
-![persistencev2-sync-10](./figures/persistencev2-sync-10.gif)
+persistencev2-sync-10
 
 起始时，SampleChild中的childInfo变量类型为SampleInfo，正常存储后，将childInfo变量的类型切换为number，并赋值为1，之后再次启动程序，此时会由于存储数据的结构与当前数据的结构不一致，导致数据反序列化失败。此时会通过notifyOnError中写入的回调，将磁盘中存储的旧的序列化数据打印出来。即在Error日志中显示：
 ```text
@@ -1265,7 +1265,7 @@ error key: connectSample, reason: serialization, message: TypeError: Receiver is
 
 ### connect向globalConnect迁移实现
 
-<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) --> 
+<!-- @persistence_v2_connect_migration_one --> 
 
 ``` TypeScript
 // 使用connect存储数据
@@ -1327,9 +1327,9 @@ struct Page1 {
 }
 ```
 
-![persistencev2-sync-11](./figures/persistencev2-sync-11.gif)
+persistencev2-sync-11
 
-<!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) -->  
+<!-- @persistence_v2_connect_migration_two -->  
 
 ``` TypeScript
 // 迁移到globalConnect
@@ -1413,7 +1413,7 @@ struct Page1 {
 }
 ```
 
-![persistencev2-sync-12](./figures/persistencev2-sync-12.gif)
+persistencev2-sync-12
 
 connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect进行存储，之后当自定义组件使用globalConnect连接时，globalConnect绑定的数据即为之前使用connect保存的数据，开发者可以自定义move函数，并将其放在合适位置迁移即可。
 
@@ -1421,7 +1421,7 @@ connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect
 
 在使用connect/globalConnect存储数据后，不建议变更数据结构，因为变更数据结构可能导致存储的数据反序列化失败，从而无法获取之前的数据。上文通过notifyOnError获取旧的序列化数据介绍了在变更数据结构后，如何通过旧的序列化数据定位数据结构的具体变更。但是，某些场景下由于代码实现中存在数据结构隐式转换等原因，不会触发notifyOnError，导致无法获取旧的序列化数据，例如下面代码所示场景。
 
-<!-- @[persistence_v2_change_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ChangeDataStructure.ets) -->  
+<!-- @persistence_v2_change_data_structure -->  
 
 ``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
@@ -1473,7 +1473,7 @@ struct Index {
 }
 ```
 
-![persistencev2-sync-13](./figures/persistencev2-sync-13.png)
+persistencev2-sync-13
 
 下表将结合样例，说明在变更数据结构时会触发notifyOnError的情形。
 

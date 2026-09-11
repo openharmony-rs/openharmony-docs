@@ -13,13 +13,13 @@ Web组件引用第三方H5页面加载的视频，当单击视频全屏时，视
 
 | 图1 退出全屏模式 | 图2 非沉浸式全屏模式 | 图3 沉浸式全屏模式 |
 | :--------------------------------------------: | :---------------------------------------------: | :---------------------------------------------: |
-| ![web_fullscreen1](figures/web_fullscreen1.png)| ![web_fullscreen2](figures/web_fullscreen2.png) | ![web_fullscreen3](figures/web_fullscreen3.png) |
+| web_fullscreen1| web_fullscreen2 | web_fullscreen3 |
 
 Web组件可通过onFullScreenEnter和onFullScreenExit回调监听全屏按键的单击事件。其中，onFullScreenEnter表示Web组件进入全屏模式，onFullScreenExit表示Web组件退出全屏模式。在这两个监听事件中，可根据具体业务场景调整某些全局变量，例如组件的显隐状态、组件的margin属性等，以实现退出和进入沉浸式全屏模式的界面效果，如图1和图3所示。
 
 可见性visibility是ArkUI提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。
 
-<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
+<!-- @web_full_screen -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -80,7 +80,7 @@ Web组件全屏模式仅改变内容布局，不触发应用窗口方向切换�
 
 使用Web组件进入全屏模式时，窗口的横竖屏状态不会主动发生变化，需要通过Web组件的onFullScreenEnter和onFullScreenExit方法，监听Web组件进入和退出全屏模式事件。
 
-<!-- @[toggle fullscreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+<!-- @toggle fullscreen -->
 
 ``` TypeScript
 Web({
@@ -101,7 +101,7 @@ Web({
 
 通过Window提供的setPreferredOrientation方法设置横竖屏。
 
-<!-- @[toggle screen orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+<!-- @toggle screen orientation -->
 
 ``` TypeScript
 // 改变设备横竖屏状态
@@ -119,7 +119,7 @@ let context: common.UIAbilityContext = this.getUIContext().getHostContext() as c
 
 自定义侧滑操作时，判断当前视频是否处于全屏状态，若处于全屏状态下则先执行侧滑退出全屏的逻辑。
 
-<!-- @[exit full screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+<!-- @exit full screen -->
 
 ``` TypeScript
 onBackPress(): boolean | void {
@@ -136,7 +136,7 @@ onBackPress(): boolean | void {
 
 完整示例：
 
-<!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
+<!-- @switch between portrait and landscape -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

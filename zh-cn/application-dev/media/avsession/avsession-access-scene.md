@@ -45,7 +45,7 @@ AVSession在构造方法中支持不同的类型参数，由 AVSessionType 定�
 >
 > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-<!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/CreateAVSession.ets) -->
+<!-- @createAVSession -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -94,7 +94,7 @@ struct Index {
 
 元数据信息AVMetadata包括：当前媒体的ID（assetId）、上一首媒体的ID（previousAssetId）、下一首媒体的ID（nextAssetId）、标题（title）、专辑作者（author）、艺术家（artist）、专辑名称（album）、词作者（writer）、媒体图片（mediaImage）和媒体时长（duration）等。
 
-<!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
+<!-- @setAVMetadata -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -158,7 +158,7 @@ struct Index {
 >
 > - lyric字段和singleLyricText字段的大小均不允许超过40960字节，否则会由于系统传输限制导致歌词信息设置失效。
 
-<!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
+<!-- @settingLyrics -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -213,7 +213,7 @@ struct Index {
 
 元数据信息AVMetadata中包含播放资源时长duration字段（单位为ms），应用如果希望在系统播控中心界面展示播放资源的进度条，需要在duration字段中填写正确的资源播放时长信息。
 
-<!-- @[settingTheProgressBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheProgressBar.ets) -->
+<!-- @settingTheProgressBar -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -307,7 +307,7 @@ struct Index {
 
 元数据信息AVMetadata中提供了displayTags字段用于展示媒体资源金标（应用音频音源的标识）。应用设置displayTags字段信息后，系统的播控中心界面会同步展示，当前系统只支持展示Audio Vivid标识。
 
-<!-- @[displayTagsOfMediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/DisplayTagsOfMediaAssets.ets) -->  
+<!-- @displayTagsOfMediaAssets -->  
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -362,7 +362,7 @@ struct Index {
 
 播放状态信息AVPlaybackState包括：当前媒体的播放状态（state）、播放位置（position，包含elapsedTime已播放时长和updateTime更新时间戳）、播放倍速（speed）、缓冲时间（bufferedTime）、循环模式（loopMode）、是否收藏（isFavorite）、正在播放的媒体ID（activeItemId）、自定义媒体数据（extras）等。
 
-<!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->  
+<!-- @settingGeneralStateInformation -->  
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -450,7 +450,7 @@ struct Index {
 
 应用若不支持某些控制命令操作（如应用不支持“上一首”命令的控制处理），可以通过off接口注销对应的控制命令，系统播控中心界面会置灰显示或者不显示对应的控制按钮，以明确提示用户应用不支持该控制操作。
 
-<!-- @[handing_unSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/HandlingUnsupportedCommands.ets) --> 
+<!-- @handing_unSupported --> 
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -510,7 +510,7 @@ struct Index {
   | 注册快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
   | 注册上一首/下一首及快进/快退事件 | “快进”、“快退”|  注册快进事件 →“快进”按钮可用。<br>注册快退事件 →“快退”按钮可用。<br>未注册对应事件的按钮不可用。 |
 
-  <!-- @[settingFastForward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingFastForward.ets) -->
+  <!-- @settingFastForward -->
   
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -572,7 +572,7 @@ struct Index {
 
 音乐类应用可以通过注册收藏的控制命令on('toggleFavorite')实现收藏功能。
 
-<!-- @[toggleFavorite_mediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/FavoritingMediaAssets.ets) -->
+<!-- @toggleFavorite_mediaAssets -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -631,7 +631,7 @@ struct Index {
 
 实现参考：
 
-<!-- @[settingTheLoopMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingTheLoopMode.ets) -->
+<!-- @settingTheLoopMode -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -696,7 +696,7 @@ struct Index {
 
 应用如果支持进度条显示，则需要同步支持进度条控制功能，即注册seek控制指令。当用户在播控中心界面拖动进度条时，应用会收到对应的回调，应用需要正确响应，参考实现：
 
-<!-- @[performingProgressControl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/PerformingProgressControl.ets) -->
+<!-- @performingProgressControl -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -786,7 +786,7 @@ struct Index {
   | fastForward    | 快进命令。 |
   | rewind    | 快退命令。 |
 
-  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
+  <!-- @adaptingToBluetoothMethodOne -->
   
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -867,7 +867,7 @@ struct Index {
   | KEYCODE_MEDIA_PLAY    | 多媒体键：播放 |
   | KEYCODE_MEDIA_PAUSE   | 多媒体键：暂停|
 
-  <!-- @[adaptingToBluetoothMethodTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodTwo.ets) -->  
+  <!-- @adaptingToBluetoothMethodTwo -->  
   
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';

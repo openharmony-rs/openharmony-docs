@@ -36,7 +36,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -44,7 +44,7 @@
 
 2. 处理号码。
 
-   <!-- @[format_phone_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
+   <!-- @format_phone_numbers -->
    
    ``` TypeScript
    // 格式化电话号码

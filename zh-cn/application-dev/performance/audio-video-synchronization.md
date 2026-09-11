@@ -62,7 +62,7 @@
 
 ### 连续播放音频帧方案示意图    
 
-<img src="./figures/audio-video.png"></img>  
+</img>  
 
 音频和视频的管道必须同时以相同的时间戳呈现每帧数据。音频播放位置用作主时间参考，而视频管道只输出与最新渲染音频帧匹配的视频帧。对于所有可能的实现，精确计算最后一次呈现的音频时间戳是至关重要的。OH_AudioRenderer_GetTimestamp()视频管道，使视频帧与音频帧匹配。
 
@@ -206,5 +206,5 @@
    
 ## 示例代码
 
-[AudioToVideoSync](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AudioToVideoSync)
+AudioToVideoSync
 

@@ -47,13 +47,13 @@
 
 ### 解决措施
 
-根据应用调试中[安装HAP时提示“code:9568347 error: install parse native so failed”错误，或者运行时候提示“TypeError：Cannot read property xxx of undefined”错误](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5)提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。
+根据应用调试中安装HAP时提示“code:9568347 error: install parse native so failed”错误，或者运行时候提示“TypeError：Cannot read property xxx of undefined”错误提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。
 
 ## 使用基于缓冲区发送数据的DDK接口时，未按照指定的offset和bufferLength发送
 
 ### 问题现象
 
-以[OH_Usb_SendPipeRequest](../../reference/apis-driverdevelopment-kit/capi-usb-ddk-api-h.md#oh_usb_sendpiperequest)为例，使用此类基于缓冲区发送数据的接口时，对参数[UsbDeviceMemMap](../../reference/apis-driverdevelopment-kit/capi-usbddk-usbdevicememmap.md)的offset、bufferLength字段做了赋值，但是实际传输的数据内容是按照size大小将整个缓冲区的数据发送。
+以OH_Usb_SendPipeRequest为例，使用此类基于缓冲区发送数据的接口时，对参数UsbDeviceMemMap的offset、bufferLength字段做了赋值，但是实际传输的数据内容是按照size大小将整个缓冲区的数据发送。
 
 ### 解决措施
 
@@ -90,7 +90,7 @@ OH_Usb_DestroyDeviceMemMap(devMmap);
 
 ### 解决措施
 
-Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用，如果在其他进程中需要实现外设的管理和通信，建议使用[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/js-apis-usbManager.md)、libusb三方库等提供的接口。
+Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用，如果在其他进程中需要实现外设的管理和通信，建议使用@ohos.usbManager (USB管理)、libusb三方库等提供的接口。
 
 ## 多个驱动Ability配置了同一型号外设的情况下，插入该外设只会拉起一个驱动Ability
 
@@ -100,4 +100,4 @@ Driver Development Kit提供的C-API仅支持在DriverExtension进程中使用�
 
 ### 解决措施
 
-驱动Ability的设计初衷是支持厂商为单个或多个型号的外设开发一个驱动应用，规格上不支持为同一外设同时部署多个驱动Ability的场景。若确实存在该诉求（例如：上游需要封装USB功能实现，并分发给下游多个应用），可以使用USB系统服务提供的[@ohos.usbManager (USB管理)](../../reference/apis-basic-services-kit/js-apis-usbManager.md)、libusb三方库等实现封装。
+驱动Ability的设计初衷是支持厂商为单个或多个型号的外设开发一个驱动应用，规格上不支持为同一外设同时部署多个驱动Ability的场景。若确实存在该诉求（例如：上游需要封装USB功能实现，并分发给下游多个应用），可以使用USB系统服务提供的@ohos.usbManager (USB管理)、libusb三方库等实现封装。

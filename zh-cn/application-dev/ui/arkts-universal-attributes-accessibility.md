@@ -52,7 +52,7 @@ accessibilityText支持字符串或资源引用。
 
 示例1：仅有图片且未设置无障碍文本时，播报“图片，单指双击即可执行”，用户无法通过语音播报感知此图片按钮的功能。
 
-<!-- @[accessibility_text_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase01.ets) -->
+<!-- @accessibility_text_start01 -->
 
 ``` TypeScript
 @Entry
@@ -77,7 +77,7 @@ export struct AccessibilityTextCase01 {
 
 示例2：在示例1的基础上，增加accessibilityText属性，设置无障碍文本为“播放”，用户通过语音播报可以感知此图片按钮的功能。
 
-<!-- @[accessibility_text_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets) -->
+<!-- @accessibility_text_start02 -->
 
 ``` TypeScript
 @Entry
@@ -111,7 +111,7 @@ accessibilityDescription属性用于提供更详细的组件说明，帮助用�
 
 示例1：使用Button作为视频播放全屏按钮，聚焦Button时播报“按钮，单指双击即可**执行**”，用户难以理解具体执行内容。
 
-<!-- @[accessibility_description_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase01.ets) -->
+<!-- @accessibility_description_start01 -->
 
 ``` TypeScript
 @Entry
@@ -131,7 +131,7 @@ export struct AccessibilityDescriptionCase01 {
 
 示例2：在示例1的基础上设置accessibilityDescription后播报“按钮，单指双击即可**全屏**”，用户可以明确是全屏操作。
 
-<!-- @[accessibility_description_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase02.ets) -->
+<!-- @accessibility_description_start02 -->
 
 ``` TypeScript
 @Entry
@@ -164,7 +164,7 @@ accessibilityGroup属性，用于设置是否启用无障碍分组。若启用�
 
 示例1：此场景下有3个可单独聚焦的Text节点，用户难以有效感知完整的时间信息。
 
-<!-- @[accessibility_group_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase01.ets) --> 
+<!-- @accessibility_group_start01 --> 
 
 ``` TypeScript
 @Entry
@@ -184,7 +184,7 @@ export struct AccessibilityGroupCase01 {
 
 示例2：在示例1的基础上增加accessibilityGroup后，Column组件可被聚焦，并且将Column组件下的所有Text文本拼接成文本“2026年1月27日星期二”，同时禁止单个Text节点聚焦。
 
-<!-- @[accessibility_group_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets) --> 
+<!-- @accessibility_group_start02 --> 
 
 ``` TypeScript
 @Entry
@@ -217,7 +217,7 @@ accessibilityLevel属性表示组件的无障碍重要性，用于控制组件�
 
 本示例以Text组件为例，设置Text.accessibilityLevel("yes")可被辅助工具识别，若无此设置，“文本1”不可被单独聚焦。
 
-<!-- @[accessibility_level_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityLevelCase01.ets) -->
+<!-- @accessibility_level_start01 -->
 
 ``` TypeScript
 @Entry
@@ -252,7 +252,7 @@ accessibilityChecked属性，用于表示组件是否被勾选（如复选框、
 
 这里以Column组件为例，设置其在支持多选的情况下被选中：
 
-<!-- @[accessibility_checked_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+<!-- @accessibility_checked_start -->
 
 ``` TypeScript
 Column() {
@@ -277,7 +277,7 @@ accessibilitySelected属性，用于表示组件在支持单选的情况下是�
 
 这里以Column组件为例，设置在支持单选的情况下由系统自行确定其选中状态：
 
-<!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+<!-- @accessibility_selected_start -->
 
 ``` TypeScript
 Column() {
@@ -308,7 +308,7 @@ accessibilityVirtualNode属性，用于为自绘制组件添加虚拟无障碍�
 
 本示例以Column组件为例，设置accessibilityVirtualNode后，“文本2”在无障碍模式下可被辅助工具识别聚焦并播报，UI仍然显示为“文本1”。
 
-<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+<!-- @virtual_node_example_start -->
 
 ``` TypeScript
 @Entry
@@ -351,7 +351,7 @@ struct VirtualNodeExample {
 
 其中，对于该组件的无障碍文本的内容，在既拥有文本属性又拥有无障碍文本属性的情况下，当组件被聚焦时，仅播报无障碍文本内容。
 
-<!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+<!-- @accessibility_text_start -->
 
 ``` TypeScript
 @Entry
@@ -393,4 +393,4 @@ export struct AccessibilityText {
 }
 ```
 
-![zh-cn_image_0000001745415556](figures/Supporting-Accessibility.jpg)
+zh-cn_image_0000001745415556

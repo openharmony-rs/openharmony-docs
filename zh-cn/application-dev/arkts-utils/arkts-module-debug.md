@@ -167,34 +167,34 @@ hdc shell param set persist.ark.properties 0x000105c
 >  
 > HiSmartPerf工具是一个独立的性能调优工具，用于采集测试时间段内系统、CPU和GPU的性能数据。通过可视化界面进行直观的呈现，便于开发者分析所开发应用运行时的性能表现和原因，以此为基础进行深入的性能优化，以使应用运行更加流畅。
 >
-> HiSmartPerf工具完整的介绍可参考指南：[HiSmartPerf](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929)。
+> HiSmartPerf工具完整的介绍可参考指南：HiSmartPerf。
 
 1. 进入CPU Trace
 
    打开HiSmartPerf工具，进入游戏性能分析的CPU Trace页面。虽然标题是游戏性能分析，但分析场景并不仅限于游戏场景。
 
-   ![CPU trace](figures/his_trace.PNG)  
+   CPU trace  
 
 2. 配置采集时间并开始采集
 
    采集完成后将提示文件回传，当文件较大时请耐心等待。
 
-   ![采集过程](figures/his_con.PNG)   
+   采集过程   
 
 3. 打开trace文件并选择需要查看的应用
 
-   ![打开trace](figures/his_note.PNG)  
+   打开trace  
 
 ### trace文件分析
 
 实例化的文件以及so在SourceTextModule::Instantiate下。   
 
-![实例化阶段](figures/his_Instantiate.PNG) 
+实例化阶段 
 
 执行的文件以及so在SourceTextModule::Evaluate下。  
 
-![执行阶段](figures/his_Evaluate.PNG)   
+执行阶段   
 
 选中需要分析的区域，会在下方生成表格。可以根据表格数据对耗时长的文件进行性能优化。  
 
-![分析trace](figures/his_analysis.PNG)  
+分析trace  

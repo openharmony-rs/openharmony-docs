@@ -8,7 +8,7 @@
 
 \@Prop装饰的变量可以和父组件建立单向同步关系。
 
-在阅读\@Prop文档前，建议开发者首先了解\@State的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考状态管理常见问题。
+在阅读\@Prop文档前，建议开发者首先了解\@State的基本用法。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
 
 > **说明：**
 >
@@ -47,7 +47,7 @@
 
  初始化规则图示：
 
-![prop-initialization](figures/prop-initialization.png)
+prop-initialization
 
 ## 观察变化和行为表现
 
@@ -70,7 +70,7 @@
 
 - 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考从父组件中的\@State类对象属性到\@Prop简单类型的同步。
 
-  <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  <!-- @prop_seventeen_start -->
   
   ``` TypeScript
   // 定义嵌套类
@@ -92,18 +92,18 @@
     }
   }
   ```
-  <!-- @[prop_twentyone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  <!-- @prop_twentyone_start -->
   
   ``` TypeScript
   @Prop title: Model;
   ```
-  <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  <!-- @prop_nineteen_start -->
   
   ``` TypeScript
   // 可以观察到第一层的变化
   this.title.value = 'Hi';
   ```
-  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  <!-- @prop_twenty_start -->
   
   ``` TypeScript
   // 观察不到第二层的变化
@@ -159,7 +159,7 @@
 
 以下示例中，当@State装饰的变量message改变时，Father组件会刷新。由于Son组件使用@Prop接收了该变量，因此Father组件刷新的过程中会使用message的最新值去更新@Prop的值。@Prop更新后，会触发Son组件的刷新。
 
-<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) --> 
+<!-- @prop_one_start --> 
 
 ``` TypeScript
 @Component
@@ -201,7 +201,7 @@ struct Father {
 
 - 父组件传入undefined时，\@Prop装饰的变量仍使用本地默认值进行初始化。
   
-  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) --> 
+  <!-- @prop_twenty_start --> 
   
   ``` TypeScript
   @Entry
@@ -242,7 +242,7 @@ struct Father {
 
 ParentComponent的状态变量countDownStartValue的变化将重置CountDownComponent的count。
 
-<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwo.ets) -->
+<!-- @prop_two_start -->
 
 ``` TypeScript
 @Component
@@ -303,7 +303,7 @@ struct ParentComponent {
 
 父组件中@State如果装饰数组类型的变量，其数组项也可以初始化@Prop。以下示例中，父组件Index中@State装饰数组arr，将其数组项初始化子组件Child中@Prop装饰的value。
 
-<!-- @[prop_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFour.ets) -->
+<!-- @prop_four_start -->
 
 ``` TypeScript
 @Component
@@ -392,7 +392,7 @@ struct Index {
 
 在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在从父组件中的\@State数组项到\@Prop class类型的同步说明。
 
-<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) --> 
+<!-- @prop_five_start --> 
 
 ``` TypeScript
 class Book {
@@ -440,7 +440,7 @@ struct Library {
 
 以下示例中，更改了\@State装饰的allBooks数组中Book对象的属性，但点击“Mark read for everyone”时，没有触发UI更新。这是因为该属性是第二层的嵌套属性，\@State装饰器只能观察到第一层属性，不会观察到此属性更改，所以框架不会更新ReaderComp。
 
-<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) --> 
+<!-- @prop_six_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -572,7 +572,7 @@ class Book {
 
 \@Observed装饰的类的实例会被不透明的代理对象包装，此代理可以检测到包装对象内的所有属性更改。如果发生这种情况，此时，代理通知\@Prop，\@Prop对象值被更新。
 
-![Video-prop-UsageScenario-one](figures/Video-prop-UsageScenario-one.gif)
+Video-prop-UsageScenario-one
 
 ### \@Prop本地初始化不和父组件同步
 
@@ -584,7 +584,7 @@ class Book {
 
 - \@Prop customCounter2有本地初始化，在这种情况下，\@Prop依旧允许但非强制父组件同步数据源给\@Prop。
 
-<!-- @[prop_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeven.ets) -->
+<!-- @prop_seven_start -->
 
 ``` TypeScript
 @Component
@@ -650,13 +650,13 @@ struct MainProgram {
 ```
 
 
-![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
+Video-prop-UsageScenario-two
 
 ### \@Prop嵌套场景
 
 在嵌套场景下，每一层都要用\@Observed装饰，且每一层都要被\@Prop接收，这样才能观察到嵌套场景。
 
-<!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
+<!-- @prop_eight_start -->
 
 ``` TypeScript
 // 以下是嵌套类对象的数据结构。
@@ -683,7 +683,7 @@ class Father {
 
 以下组件层次结构展示了\@Prop嵌套场景的数据结构。
 
-<!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
+<!-- @prop_nine_start -->
 
 ``` TypeScript
 @Entry
@@ -764,13 +764,13 @@ struct Child {
 }
 ```
 
-![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
+Video-prop-UsageScenario-three
 
 ### 装饰Array类型变量
 
 在下面的示例中，message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNineteen.ets) -->
+<!-- @prop_nineteen_start -->
 
 ``` TypeScript
 @Entry
@@ -841,7 +841,7 @@ struct Child {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
-<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) --> 
+<!-- @prop_ten_start --> 
 
 ``` TypeScript
 @Component
@@ -901,7 +901,7 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) --> 
+<!-- @prop_eleven_start --> 
 
 ``` TypeScript
 @Component
@@ -954,7 +954,7 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变Date的值，视图会随之刷新。
 
-<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) --> 
+<!-- @prop_twelve_start --> 
 
 ``` TypeScript
 @Component
@@ -1014,7 +1014,7 @@ struct ParentComponent {
 
 @Prop支持联合类型和undefined和null，在下面的示例中，animal类型为Animals | undefined，点击父组件Zoo中的Button改变animal的属性或者类型，Child中也会对应刷新。
 
-<!-- @[prop_thirteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageThirteen.ets) -->
+<!-- @prop_thirteen_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

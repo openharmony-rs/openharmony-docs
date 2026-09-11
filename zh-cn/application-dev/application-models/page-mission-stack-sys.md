@@ -12,7 +12,7 @@
 单个UIAbility组件可以实现多个页面，并在多个页面之间跳转，这种UIAbility组件内部的页面跳转关系称为“页面栈”，由ArkUI框架统一管理，如下图中的UIAbility1的Page1-&gt;Page2-&gt;Page3和UIAbility2的PageA-&gt;PageB-&gt;PageC。
 
 **图1** 页面栈示意图  
-![mission-record](figures/mission-record.png)
+mission-record
 
 - 页面栈的形成（下面2/3/5/6步骤为页面跳转，由ArkUI管理）
   1. 点击桌面图标（startAbility()）启动UIAbility1，UIAbility1的初始页面为Page1。
@@ -49,12 +49,12 @@ MissionList任务链记录了任务之间的拉起关系，但是这个任务链
 
 - 进入任务列表，把任务链中间某个任务移动到前台。
 
-  ![mission-chain1](figures/mission-chain1.png)
+  mission-chain1
 
 - 进入任务列表，把任务链中间某个任务清理掉。
 
-  ![mission-chain2](figures/mission-chain2.png)
+  mission-chain2
 
 - 单实例UIAbility的任务，被不同的任务（包括Ability或桌面）反复拉起（AbilityB为单例）。
   
-  ![mission-chain3](figures/mission-chain3.png)
+  mission-chain3

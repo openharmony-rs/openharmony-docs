@@ -37,7 +37,7 @@ Canvas通过drawTextBlob()来绘制字块。函数接受三个参数：TextBlob�
 
 基本效果的示例代码和效果图如下：
 
-<!-- @[arkts_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @arkts_graphics_draw_base_text -->
 
 ``` TypeScript
 // 创建字型对象
@@ -50,7 +50,7 @@ const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.Te
 canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 ```
 
-![Screenshot_20241225151030139](figures/Screenshot_20241225151030139.jpg)
+Screenshot_20241225151030139
 
 ## 文字描边
 
@@ -62,7 +62,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 英文文字描边的简要示例和示意图如下：
 
-<!-- @[arkts_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @arkts_graphics_draw_stroke_text -->
 
 ``` TypeScript
 // 创建画笔
@@ -87,7 +87,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 canvas.detachPen();
 ```
 
-![Screenshot_20241225152446749](figures/Screenshot_20241225152446749.jpg)
+Screenshot_20241225152446749
 
 ### 中文文字描边
 
@@ -95,7 +95,7 @@ canvas.detachPen();
 
 中文文字描边的简要示例和示意图如下：
 
-<!-- @[arkts_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @arkts_graphics_draw_chinese_stroke_text -->
 
 ``` TypeScript
 
@@ -132,7 +132,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 canvas.detachBrush();
 ```
 
-![chinese_stroke_text_ark](figures/chinese_stroke_text_ark.png)
+chinese_stroke_text_ark
 
 ## 文字渐变
 
@@ -140,7 +140,7 @@ canvas.detachBrush();
 
 以下为文字添加了线性渐变着色器效果的简要示例和示意图：
 
-<!-- @[arkts_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @arkts_graphics_draw_gradient_text -->
 
 ``` TypeScript
 let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
@@ -166,7 +166,7 @@ canvas.drawTextBlob(textBlob, VALUE_100, VALUE_300);
 canvas.detachBrush();
 ```
 
-![Screenshot_20241225155707415](figures/Screenshot_20241225155707415.jpg)
+Screenshot_20241225155707415
 
 ## 主题字体
 
@@ -174,7 +174,7 @@ canvas.detachBrush();
 
 设置跟随主题字体的示例代码和效果图如下：
 
-<!-- @[arkts_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) --> 
+<!-- @arkts_graphics_draw_theme_text --> 
 
 ``` TypeScript
 // 创建字型对象
@@ -191,7 +191,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 | 未跟随主题字体的效果图 | 跟随主题字体的效果图（不同主题字体显示效果不同，此处仅示意） |
 | -------- | -------- |
-| ![Snapshot_setThemeFontFollowed_sys](figures/Snapshot_setThemeFontFollowed_sys.jpg) | ![Snapshot_setThemeFontFollowed](figures/Snapshot_setThemeFontFollowed.jpg) |
+| Snapshot_setThemeFontFollowed_sys | Snapshot_setThemeFontFollowed |
 
 > **说明**
 >
@@ -205,7 +205,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 对于无需字体特征的常规文本渲染场景，可以使用drawSingleCharacter绘制单个字符，使用measureSingleCharacter测量单个字符的宽度，示例代码和效果图如下：
 
-<!-- @[arkts_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @arkts_graphics_draw_single_text -->
 
 ``` TypeScript
 // 创建字型对象
@@ -224,13 +224,13 @@ for (let s of text) {
 }
 ```
 
-![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
+Snapshot_drawSingleCharacter
 
 进阶场景：绘制带字体特征的字符。
 
 对于需要字体特征的文本渲染场景，可以使用drawSingleCharacterWithFeatures绘制单个字符，使用measureSingleCharacterWithFeatures测量单个字符的宽度，示例代码和效果图如下：
 
-<!-- @[arkts_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+<!-- @arkts_graphics_draw_feature_text -->
 
 ``` TypeScript
 // 创建字型对象
@@ -251,7 +251,7 @@ for (let s of text) {
 }
 ```
 
-![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
+Snapshot_drawSingleCharacter
 
 > **说明**
 >
@@ -262,5 +262,5 @@ for (let s of text) {
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
+- ArkTSGraphicsDraw (API20)
 <!--RP1End-->

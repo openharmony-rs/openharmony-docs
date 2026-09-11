@@ -50,7 +50,7 @@ libnative_window.so
     可通过`OH_NativeXComponent_Callback`接口获取OHNativeWindow。代码示例如下。关于XComponent模块的使用方法，详见XComponent开发指导。
 
     1. 在xxx.ets中添加一个XComponent组件。
-        <!-- @[create_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/ets/pages/Index.ets) -->
+        <!-- @create_native_window -->
         
         ``` TypeScript
         XComponent({ id: 'xcomponentId', type: 'texture', libraryname: 'nativerender' })
@@ -62,7 +62,7 @@ libnative_window.so
 
 
     2. 在 native c++ 层获取 NativeXComponent。
-        <!-- @[get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+        <!-- @get_native_xcomponent -->
         
         ``` C++
         napi_value exportInstance = nullptr;
@@ -89,7 +89,7 @@ libnative_window.so
 
         
     3. 定义 OH_NativeXComponent_Callback。
-        <!-- @[xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+        <!-- @xcomponent_callback -->
         
         ``` C++
         void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
@@ -127,15 +127,15 @@ libnative_window.so
 
        
     4. 将OH_NativeXComponent_Callback 注册给 NativeXComponent。
-        <!-- @[register_xcomponent_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+        <!-- @register_xcomponent_callback -->
         
         ``` C++
         OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
         ```
 
 
-2. 设置OHNativeWindow的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性（默认携带NATIVEBUFFER_USAGE_CPU_READ usage参数，如果不使用CPU读写数据，建议去除NATIVEBUFFER_USAGE_CPU_READ usage参数，具体可见[关闭CPU访问窗口缓冲区数据](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-14)）。
-    <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+2. 设置OHNativeWindow的属性。使用`OH_NativeWindow_NativeWindowHandleOpt`设置`OHNativeWindowBuffer`的属性（默认携带NATIVEBUFFER_USAGE_CPU_READ usage参数，如果不使用CPU读写数据，建议去除NATIVEBUFFER_USAGE_CPU_READ usage参数，具体可见关闭CPU访问窗口缓冲区数据）。
+    <!-- @set_buffer_geometry -->
     
     ``` C++
     int code = SET_BUFFER_GEOMETRY;
@@ -146,7 +146,7 @@ libnative_window.so
 
 
 3. 从图形队列申请OHNativeWindowBuffer。
-    <!-- @[request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    <!-- @request_buffer -->
     
     ``` C++
     int releaseFenceFd = -1;
@@ -160,7 +160,7 @@ libnative_window.so
 
 
 4. 内存映射mmap。
-    <!-- @[map_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    <!-- @map_addr -->
     
     ``` C++
     void *mappedAddr =
@@ -169,7 +169,7 @@ libnative_window.so
 
 
 5. 将生产的内容写入OHNativeWindowBuffer，在这之前需要等待releaseFenceFd可用（注意releaseFenceFd不等于-1才需要调用poll）。如果没有等待releaseFenceFd事件的数据可用（POLLIN），则可能造成花屏、裂屏、HEBC（High Efficiency Bandwidth Compression，高效带宽压缩） fault等问题。releaseFenceFd是消费者进程创建的一个文件句柄，代表消费者消费buffer完毕，buffer可读，生产者可以开始填充buffer内容。
-    <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    <!-- @write_addr -->
     
     ``` C++
     int retCode = -1;
@@ -194,7 +194,7 @@ libnative_window.so
 
 
 6. 提交OHNativeWindowBuffer到图形队列。请注意OH_NativeWindow_NativeWindowFlushBuffer接口的acquireFenceFd不可以和OH_NativeWindow_NativeWindowRequestBuffer接口获取的releaseFenceFd相同，acquireFenceFd可传入默认值-1。acquireFenceFd是生产者需要传入的文件句柄，消费者获取到buffer后可根据生产者传入的acquireFenceFd决定何时去渲染并上屏buffer内容。
-    <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    <!-- @flush_buffer -->
     
     ``` C++
     struct Region region = {0};
@@ -209,7 +209,7 @@ libnative_window.so
 
 
 7. 使用munmap取消内存映射。
-    <!-- @[munmap_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    <!-- @munmap_addr -->
     
     ``` C++
     if (munmap(mappedAddr, bufferHandle->size) < 0) {
@@ -224,4 +224,4 @@ libnative_window.so
 
 针对NativeWindow的开发，有以下相关实例可供参考：
 
-- [NativeWindow（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)
+- NativeWindow（API12）

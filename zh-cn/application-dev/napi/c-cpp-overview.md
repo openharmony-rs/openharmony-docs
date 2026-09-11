@@ -45,7 +45,7 @@ OpenHarmony中动态库加载namespace配置的情况
 1. default ns和ndk ns可以互相访问全部so，不能访问app ns的so。
 2. app ns能访问ndk ns的全部so，不能访问default ns的so。
 
-![zh-cn_image_musl_ld_namespace](figures/dl_namespace.png)
+zh-cn_image_musl_ld_namespace
 
 ### rpath机制
 rpath（run-time path）是在运行时指定共享库搜索路径的机制。该机制允许在可执行文件或共享库中嵌入一个用于在运行时指定库的搜索路径的信息。
@@ -57,13 +57,13 @@ rpath（run-time path）是在运行时指定共享库搜索路径的机制。�
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 SET(CMAKE_INSTALL_RPATH "\${ORIGIN}/module")
 ```
-![zh-cn_image_musl_ld_rpath](figures/dl_rpath.png)
+zh-cn_image_musl_ld_rpath
 
 ### 支持dlclose
 支持使用dlclose真正卸载动态库的能力。
 
 ### 支持symbol-version机制
-symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机制，支持不同版本的符号重定位，也可以帮助解决重复符号的问题。可参考<a href="https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html">LD Version Scripts (GNU Gnulib)</a>。
+symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机制，支持不同版本的符号重定位，也可以帮助解决重复符号的问题。可参考LD Version Scripts (GNU Gnulib)。
 
 ### 网络接口select支持fd fortify检测
 宏定义FD_SET和FD_CLR增加了对fd有效值的检查。如果传入的fd不在区间`[0, 1024)`中，将触发abort crash。

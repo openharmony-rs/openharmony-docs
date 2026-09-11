@@ -41,7 +41,7 @@
 
 **图一 模块流程图**
 
-![模块流程图](./figures/file-upload-and-download-pic1.png)
+模块流程图
 
 ## 常见场景与方案
 
@@ -67,7 +67,7 @@
 
 **图二 相册批量上传图片示例图**
 
-![相册批量上传图片示例图](./figures/file-upload-and-download-pic2.png)
+相册批量上传图片示例图
 
 以批量上传照片（分辨率为480\*640，24位，平均大小50\~120KB）为例，在RK设备上测试的结果如下表所示：
 
@@ -83,7 +83,7 @@
 
 **图三 上传数量和耗时对比图表**
 
-![上传数量和耗时对比图表](./figures/file-upload-and-download-pic3.png)
+上传数量和耗时对比图表
 
 由于上传耗时受网络状态影响偏差较大，结果取的是几次测量结果的最小值。从数据上可以看出，优化前的耗时基本为线性增长，压缩优化后的耗时在上传文件数量较低时效果不明显，还会因为额外压缩处理增加耗时。但随着上传照片数量增多，优化后的耗时和优化之前的耗时差距越来越明显，优化效果逐步提升。
 
@@ -157,7 +157,7 @@
 
 通过结合应用端和服务器端的相关技术，可以共同实现高效且可靠的文件断点续传功能，提供更好的用户体验并确保数据传输的稳定性。
 
-本文基于[上传和下载](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)中的后台上传场景，给出了部分断点续传的示例代码，具体可以参考该工程。
+本文基于上传和下载中的后台上传场景，给出了部分断点续传的示例代码，具体可以参考该工程。
 
 **文件上传**
 
@@ -165,11 +165,11 @@
 
 **图四 断点续传上传流程图**
 
-![断点续传上传流程图](./figures/file-upload-and-download-pic4.png)
+断点续传上传流程图
 
  **断点续传上传示例代码如下：**
 
-具体可以参考[RequestUpload.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Connectivity/UploadAndDownLoad/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)
+具体可以参考RequestUpload.ets
 
 1. 导入相关模块：
 
@@ -320,7 +320,7 @@ Range语法如下：
 
 **断点续传下载示例代码如下：**
 
-具体可以参考[RequestDownload.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Connectivity/UploadAndDownLoad/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)
+具体可以参考RequestDownload.ets
 
 1. 导入模块：
 
@@ -415,4 +415,4 @@ Range语法如下：
 
 针对断点续传，有以下相关实例可以参考：  
 
-- [上传和下载](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
+- 上传和下载

@@ -70,7 +70,7 @@
 批量新增两条关键资产，密码分别为demo_pwd1和demo_pwd2，别名分别为demo_alias1和demo_alias2。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -84,7 +84,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[batch_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   <!-- @batch_add -->
    
    ``` TypeScript
    let attributesArray: asset.AssetMap[] = [];

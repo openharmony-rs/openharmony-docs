@@ -6,73 +6,73 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-- [ArkWeb简介](web-component-overview.md)
-- [ArkWeb进程](web-component-process.md)
-- [Web组件的生命周期](web-event-sequence.md)
+- ArkWeb简介
+- ArkWeb进程
+- Web组件的生命周期
 - 设置基本属性和事件<!--web-set-attributes-events-->
-  - [User-Agent开发指导](web-default-userAgent.md)
-  - [管理Cookie及数据存储](web-cookie-and-data-storage-mgmt.md)
-  - [Web深色模式适配](web-set-dark-mode.md)
-  - [在新窗口中打开页面](web-open-in-new-window.md)
-  - [管理位置权限](web-geolocation-permission.md)
-  - [使用隐私模式](web-incognito-mode.md)
-  - [使用运动和方向传感器监测设备状态](web-sensor.md)
+  - User-Agent开发指导
+  - 管理Cookie及数据存储
+  - Web深色模式适配
+  - 在新窗口中打开页面
+  - 管理位置权限
+  - 使用隐私模式
+  - 使用运动和方向传感器监测设备状态
 - Web渲染和布局<!--web-render-layout-->
-  - [Web组件渲染模式](web-render-mode.md)
-  - [Web组件大小自适应页面内容布局](web-fit-content.md)
-  - [优化跳转至新Web组件过程中的页面闪烁现象](web-router-flash-optimization.md)
-  - [获取网页内容高度](web-getpage-height.md)
+  - Web组件渲染模式
+  - Web组件大小自适应页面内容布局
+  - 优化跳转至新Web组件过程中的页面闪烁现象
+  - 获取网页内容高度
 - 在应用中使用前端页面JavaScript<!--web-use-frontend-page-js-->
-  - [应用侧调用前端页面函数](web-in-app-frontend-page-function-invoking.md)
-  - [前端页面调用应用侧函数](web-in-page-app-function-invoking.md)
-  - [建立应用侧与前端页面数据通道](web-app-page-data-channel.md)
-  - [应用侧与前端页面的相互调用(C/C++)](arkweb-ndk-jsbridge.md)
-  - [建立应用侧与前端页面数据通道(C/C++)](arkweb-ndk-page-data-channel.md)
+  - 应用侧调用前端页面函数
+  - 前端页面调用应用侧函数
+  - 建立应用侧与前端页面数据通道
+  - 应用侧与前端页面的相互调用(C/C++)
+  - 建立应用侧与前端页面数据通道(C/C++)
 - 管理网页交互<!--web-manage-page-interaction-->
-  - [Web组件嵌套滚动](web-nested-scrolling.md)
-  - [Web页面显示内容滚动](web-content-scrolling.md)
-  - [Web组件对接软键盘](web-docking-softkeyboard.md)
-  - [Web组件焦点管理](web-focus.md)
-  - [使用Web组件的手势与应用交互](web-gesture.md)
-  - [使用Web组件管理网页缩放](web-scale-zoom.md)
-  - [使用Web组件显示网页弹框](web-dialog.md)
-  - [使用Web组件的拖拽功能与网页交互](web-drag.md)<!--RP2--><!--RP2End-->
+  - Web组件嵌套滚动
+  - Web页面显示内容滚动
+  - Web组件对接软键盘
+  - Web组件焦点管理
+  - 使用Web组件的手势与应用交互
+  - 使用Web组件管理网页缩放
+  - 使用Web组件显示网页弹框
+  - 使用Web组件的拖拽功能与网页交互<!--RP2--><!--RP2End-->
 - 管理Web组件的网络安全与隐私<!--web-manage-cyber-security-privacy-->
-  - [解决Web组件本地资源跨域问题](web-cross-origin.md)
-  - [使用智能防跟踪功能](web-intelligent-tracking-prevention.md)
-  - [使用Web组件的广告过滤功能](web-adsblock.md)
-  - [坚盾守护模式](web-secure-shield-mode.md)
+  - 解决Web组件本地资源跨域问题
+  - 使用智能防跟踪功能
+  - 使用Web组件的广告过滤功能
+  - 坚盾守护模式
 - 管理网页加载与浏览记录<!--web-manage-loading-browsing-->
-  - [使用Web组件加载页面](web-page-loading-with-web-components.md)<!--RP4--><!--RP4End-->
-  - [管理页面跳转及浏览记录导航](web-redirection-and-browsing-history-mgmt.md)
-  - [拦截Web组件发起的网络请求](web-scheme-handler.md)
-  - [自定义页面请求响应](web-resource-interception-request-mgmt.md)
-  - [加速Web页面的访问](web-predictor.md)
-  - [设置Web组件前进后退缓存](web-set-back-forward-cache.md)
-  - [Web组件在不同的窗口间迁移](web-component-migrate.md)
+  - 使用Web组件加载页面<!--RP4--><!--RP4End-->
+  - 管理页面跳转及浏览记录导航
+  - 拦截Web组件发起的网络请求
+  - 自定义页面请求响应
+  - 加速Web页面的访问
+  - 设置Web组件前进后退缓存
+  - Web组件在不同的窗口间迁移
 - 管理网页文件上传与下载<!--web-manage-upload-download-->
-  - [使用Web组件上传文件](web-file-upload.md)
-  - [使用Web组件的下载能力](web-download.md)
+  - 使用Web组件上传文件
+  - 使用Web组件的下载能力
 - 使用网页多媒体<!--web-use-multimedia-->
-  - [在Web中打开摄像头和麦克风](web-rtc.md)
-  - [托管网页中的媒体播放](app-takeovers-web-media.md)
-  - [Web组件支持画中画](web-picture-in-picture.md)
-  - [Web组件支持视频沉浸式全屏播放](web-full-screen.md)
+  - 在Web中打开摄像头和麦克风
+  - 托管网页中的媒体播放
+  - Web组件支持画中画
+  - Web组件支持视频沉浸式全屏播放
 - 处理网页内容<!--web-process-page-content-->
-  - [使用Web组件打印前端页面](web-print.md)
-  - [使用Web组件保存前端页面为PDF](web-createpdf.md)
-  - [使用Web组件的PDF文档预览能力](web-pdf-preview.md)
-  - [网页中安全区域计算和避让适配](web-safe-area-insets.md)
-  - [使用Web组件菜单处理网页内容](web-menu.md)
-  - [使用Web组件与系统剪贴板交互处理网页内容](web-clipboard.md)
-  - [使用Web组件的智能分词能力](web-data-detector.md)<!--RP5--><!--RP5End-->
+  - 使用Web组件打印前端页面
+  - 使用Web组件保存前端页面为PDF
+  - 使用Web组件的PDF文档预览能力
+  - 网页中安全区域计算和避让适配
+  - 使用Web组件菜单处理网页内容
+  - 使用Web组件与系统剪贴板交互处理网页内容
+  - 使用Web组件的智能分词能力<!--RP5--><!--RP5End-->
 - 同层渲染<!--same-layer-rendering-->
-  - [同层渲染](web-same-layer.md)<!--RP3--><!--RP3End-->
-- [使用离线Web组件](web-offline-mode.md)
-- [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景](web-native-messaging.md)
+  - 同层渲染<!--RP3--><!--RP3End-->
+- 使用离线Web组件
+- 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 - Web调试维测<!--web-debugging-->
-  - [使用DevTools工具调试前端页面](web-debugging-with-devtools.md)
-  - [使用Crashpad收集Web组件崩溃信息](web-crashpad.md)
-  - [定位与解决Web白屏问题](web-white-screen.md)<!--RP1--><!--RP1End-->
-  - [定位网页加载问题](web-page-loading.md)
-- [ArkWeb术语](arkweb-glossary.md)
+  - 使用DevTools工具调试前端页面
+  - 使用Crashpad收集Web组件崩溃信息
+  - 定位与解决Web白屏问题<!--RP1--><!--RP1End-->
+  - 定位网页加载问题
+- ArkWeb术语

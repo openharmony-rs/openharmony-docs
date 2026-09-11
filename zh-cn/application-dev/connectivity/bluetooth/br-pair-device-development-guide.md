@@ -47,7 +47,7 @@ try {
 
 配对过程中，系统会弹出对话框。不同配对类型，对话框样式可能不一样，其中“确认配对密钥（Confirm Passkey）”模式如下图1。若用户同意授权，才能配对成功。
 
-![pair request dialog](figures/pair-request-dialog.png)
+pair request dialog
 
 **图1** 蓝牙配对请求对话框
 

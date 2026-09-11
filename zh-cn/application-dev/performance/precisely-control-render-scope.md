@@ -70,7 +70,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-![precisely-control-render-scope-01.gif](figures/precisely-control-render-scope-01.gif)
+precisely-control-render-scope-01.gif
 
 下面的示例代码为一个较典型的冗余刷新场景。
 
@@ -247,7 +247,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-![precisely-control-render-scope-02.gif](figures/precisely-control-render-scope-02.gif)
+precisely-control-render-scope-02.gif
 
 对此，推荐将属性进行拆分，将一个大的属性对象拆分成几个小的属性对象，来减少甚至避免冗余刷新的现象，达到精准控制组件的更新范围。
 
@@ -333,7 +333,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-![precisely-control-render-scope-03.gif](figures/precisely-control-render-scope-03.gif)
+precisely-control-render-scope-03.gif
 
 利用这一个机制，可以做到精准控制组件的更新范围。
 
@@ -430,7 +430,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-![precisely-control-render-scope-04.gif](figures/precisely-control-render-scope-04.gif)
+precisely-control-render-scope-04.gif
 
 通过这个方法，可以将上文的复杂冗余刷新场景进行属性拆分实现性能优化。
 
@@ -671,17 +671,17 @@ struct Page {
 
 上文代码运行图示如下：
 
-![precisely-control-render-scope-05.gif](figures/precisely-control-render-scope-05.gif)
+precisely-control-render-scope-05.gif
 
 可以使用SmartPerf Host工具分别抓取优化前后点击“move”按钮时的trace数据，来查看属性拆分的性能收益。
 
 优化前点击move按钮的脏节点更新耗时如下图：
 
-![precisely-control-render-scope-dirty-node-trace-01](figures/precisely-control-render-scope-dirty-node-trace-01.PNG)
+precisely-control-render-scope-dirty-node-trace-01
 
 优化后点击move按钮的脏节点更新耗时如下图：
 
-![precisely-control-render-scope-dirty-node-trace-02](figures/precisely-control-render-scope-dirty-node-trace-02.PNG)
+precisely-control-render-scope-dirty-node-trace-02
 
 从上面trace图中的“H:FlushDirtyNodeUpdate”标签可以看出，优化前点击“move”按钮的脏节点更新耗时为1ms416μs，而通过拆分属性进行优化后耗时仅836μs，性能提升了大约40.9%。
 
@@ -836,7 +836,7 @@ struct ListItemComponent {
 
 下面是运行效果图。
 
-![redundant_refresh](./figures/redundant_refresh.gif)
+redundant_refresh
 
 可以看到每次点击后即使其中部分Text组件的颜色并没有发生改变，所有的Text组件也都会刷新。这是由于ListItemComponent组件中的Text组件直接关联了currentIndex，而不是根据currentIndex计算得到的颜色。
 
@@ -910,7 +910,7 @@ struct ListItemComponent {
 
 运行效果图如下。
 
-![precise_refresh.gif](./figures/precise_refresh.gif)
+precise_refresh.gif
 
 【效果对比】
 
@@ -918,11 +918,11 @@ struct ListItemComponent {
 
 反例点击组件2的脏节点更新耗时如下图：
 
-![precisely-control-render-scope-dirty-node-trace-03](figures/precisely-control-render-scope-dirty-node-trace-03.PNG)
+precisely-control-render-scope-dirty-node-trace-03
 
 正例点击组件2的脏节点更新耗时如下图：
 
-![precisely-control-render-scope-dirty-node-trace-04](figures/precisely-control-render-scope-dirty-node-trace-04.PNG)
+precisely-control-render-scope-dirty-node-trace-04
 
 从上面的trace图可以看出，反例中点击组件2后十个ListItemComponent组件节点都触发了更新，脏节点更新耗时3ms179μs，而正例只有三个节点触发更新，脏节点更新耗时仅为1ms600μs，性能提升了大约49.7%。
 

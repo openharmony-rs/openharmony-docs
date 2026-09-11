@@ -68,8 +68,8 @@
 
 解决方案：
 
-1. 使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，选择HAR对外暴露的接口场景，并将生成的白名单添加到HAR的`consumer-rules.txt`文件中。
-2. 将本地源码`HAR`改造为[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)，单独编译生成对应的`HAR`包，然后依赖此`HAR`包。
+1. 使用混淆助手配置保留选项，选择HAR对外暴露的接口场景，并将生成的白名单添加到HAR的`consumer-rules.txt`文件中。
+2. 将本地源码`HAR`改造为字节码HAR，单独编译生成对应的`HAR`包，然后依赖此`HAR`包。
 
 ### 发布态源码HAR包
 

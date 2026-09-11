@@ -19,7 +19,7 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 
 如下图所示，在需要离屏创建Web组件时，定义一个自定义组件以封装Web组件，此Web组件在离线状态下被创建，封装于无状态的NodeContainer节点中，并与相应的NodeController组件绑定。Web组件在后台预渲染完毕后，当需要展示时，通过NodeController将其挂载到ViewTree的NodeContainer中，即与对应的NodeContainer组件绑定，即可挂载上树并显示。
 
-![web-offline-mode](figures/web-offline-mode.png)
+web-offline-mode
 
 ## 创建离线Web组件
 
@@ -29,7 +29,7 @@ Web组件能够实现在不同窗口的组件树上进行挂载或移除操作�
 >
 > 创建Web组件将占用内存（每个Web组件大约200MB）和计算资源，建议避免一次性创建大量离线Web组件，以减少资源消耗。
 
-<!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @entry_ability_window_stage_created_after_specified_page_loaded -->
 
 ``` TypeScript
 import { createNWeb } from "../pages/Common";
@@ -53,7 +53,7 @@ import { window } from '@kit.ArkUI';
   }
 ```
 <!--  -->
-<!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
+<!-- @manage_dynamic_webview_components_in_harmonyos_app -->
 
 ``` TypeScript
 // Common.ets
@@ -145,7 +145,7 @@ export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
 ```
 
 <!--  -->
-<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @nodeContainer_bind_controller_to_show_dynamic_pages -->  
 
 ``` TypeScript
 import { getNWeb } from './Common'
@@ -180,7 +180,7 @@ struct Index {
 
 示例在onWindowStageCreate时预创建Web组件加载blank页面，提前启动Render进程，从index跳转到index2时，优化了Web渲染进程启动和初始化的耗时。
 
-<!-- @[entry_ability_window_stage_created_after_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/entry1ability/Entry1Ability.ets) --> 
+<!-- @entry_ability_window_stage_created_after_page_loaded --> 
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -206,7 +206,7 @@ import { createNWeb } from '../pages/Common';
 ```
 
 <!--  -->
-<!-- @[manage_dynamic_webview_components_in_harmonyos_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets) -->
+<!-- @manage_dynamic_webview_components_in_harmonyos_app -->
 
 ``` TypeScript
 // Common.ets
@@ -298,7 +298,7 @@ export const getNWeb = (url: ResourceStr): MyNodeController | undefined => {
 ```
 
 <!--  -->
-<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) --> 
+<!-- @navigate_to_web_page_pre_start_webview_load --> 
 
 ``` TypeScript
 // index.ets
@@ -324,7 +324,7 @@ struct Index1 {
 ```
 
 <!--  -->
-<!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index2.ets) --> 
+<!-- @nodeContainer_bind_controller_show_dynamic_pages --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -361,7 +361,7 @@ struct Index2 {
 > 2. 由于该方案会将不可见的后台Web设置为Active状态，建议不要预渲染包含自动播放音视频的页面。应用开发者请自行检查和管理页面行为。
 > 3. 预渲染的网页会在后台不断进行渲染，建议在预渲染完成后立即停止渲染，以防止发热和功耗问题。可以参考以下示例，使用 onFirstMeaningfulPaint 来确定停止时机，该接口适用于http和https网页。
 
-<!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @entry_ability_window_stage_created_after_specified_page_loaded -->
 
 ``` TypeScript
 import { createNWeb } from "../pages/Common";
@@ -385,7 +385,7 @@ import { window } from '@kit.ArkUI';
   }
 ```
 <!--  -->
-<!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) --> 
+<!-- @offline_web_component_builder_with_render_controller --> 
 
 ``` TypeScript
 // Common.ets
@@ -495,7 +495,7 @@ export const getNWeb = (url: string): MyNodeController | undefined => {
 ```
 
 <!--  -->
-<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @nodeContainer_bind_controller_to_show_dynamic_pages --> 
 
 ``` TypeScript
 import { getNWeb } from './Common'
@@ -546,7 +546,7 @@ struct Index {
 
 **代码实现：**
 
-<!-- @[manage_dynamic_webview_components_core_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/pages/Common.ets) -->
+<!-- @manage_dynamic_webview_components_core_functions -->
 
 ``` TypeScript
 // 创建Map保存所需要的NodeController
@@ -631,7 +631,7 @@ export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
 
 示例演示了如何让应用退后台释放离线Web组件以及切前台恢复离线Web组件，在UIAbility的onBackground和onForeground回调中分别进行了离线Web组件的释放和恢复。 
 
-<!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+<!-- @entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs -->
 
 ``` TypeScript
 onForeground(): void {
@@ -666,19 +666,19 @@ onBackground(): void {
   * 第一个离线Web组件执行了预渲染，可以直接显示页面内容，比第二个离线Web组件更快。 
   * 第二个离线Web组件是复用空闲的离线Web组件，其在UI页面的aboutToAppear的生命周期中动态加载这个url。
 
-  ![web-offline-preload-compare](figures/offline-nweb-preload-compare.gif)
+  web-offline-preload-compare
 
 * Page2页面显示单个Web页面，使用复用空闲离线Web组件的方式加载指定url。
   * Page2页面可以通过传入参数加载指定url，并允许用户在加载后跳转到其他url。
   * Page2会在NavDestination的onWillHide回调中，让当前Web组件加载空白页并取消与当前UI的关联，为下次复用做准备。
   * Page2页面支持嵌套，即使有多层UI页面嵌套，由于采用复用离线Web组件的方式，Web组件数量不会增加。
 
-![web-offline-reuse-recycle-restore](figures/offline-nweb-reuse-recycle-restore.gif)
+web-offline-reuse-recycle-restore
 
 **完整示例**
 
 <!--RP1-->
-[复用和释放离线Web组件示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3)
+复用和释放离线Web组件示例代码
 <!--RP1End-->
 
 ## 常见白屏问题排查
@@ -687,7 +687,7 @@ onBackground(): void {
 
 检查是否已在module.json5中添加网络权限，添加方法请参考在配置文件中声明权限。
 
-<!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+<!-- @add_network_permission -->
 
 ``` JSON5
 "requestPermissions":[

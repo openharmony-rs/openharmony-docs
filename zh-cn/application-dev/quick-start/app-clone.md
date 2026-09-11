@@ -17,7 +17,7 @@
 
 以下图片展示了应用分身的效果：
 
-![示例图1](figures/app-clone1.png)
+示例图1
 
 ## 约束与限制
 输入法应用配置分身无效，无法创建应用分身。
@@ -27,7 +27,7 @@
 1. 配置应用分身的方法。
 
     在工程项目中对AppScope/app.json5配置文件配置multiAppMode字段。具体配置如下：
-    <!-- @[app_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppClone/AppScope/app.json5) -->
+    <!-- @app_clone -->
     
     ``` JSON5
     {
@@ -45,17 +45,17 @@
 
     - 首先将已配置好的工程编译打包安装到设备上。
  
-      ![示例图2](figures/app-clone4.png)
+      示例图2
 
     - 然后打开设置>系统>应用分身，点击“创建分身”。
 
-      ![示例图3](figures/app-clone5.png)
+      示例图3
 
-      ![示例图4](figures/app-clone3.png)
+      示例图4
 
     - 返回桌面，检查创建是否成功。
 
-      ![示例图1](figures/app-clone1.png)
+      示例图1
 
       图中的三个应用的进程、运行、数据、通知等，都是彼此独立的。
 

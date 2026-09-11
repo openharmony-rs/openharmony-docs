@@ -7,5 +7,5 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-- [融合短距服务开发概述](fusion-connectivity-overview.md)
-- [伙伴设备与OpenHarmony设备互通的开发指南](partneragent-life-application-guide.md)
+- 融合短距服务开发概述
+- 伙伴设备与OpenHarmony设备互通的开发指南

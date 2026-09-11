@@ -21,9 +21,9 @@ ArkTS卡片开发支持V2装饰器语法(如\@ObservedV2、\@ComponentV2)，建�
 
 ### 问题现象
 导入particleAbility、audio、camera、media、backgroundTaskManager后应用崩溃，FaultLog指向相关调用行。<br>
-![CrashCode](figures/Crash代码行.png)<br>
+CrashCode<br>
 报错对应的代码行如下：<br>
-![CrashMessage](figures/Crash信息.png)
+CrashMessage
 
 ### 原因
 ArkTS卡片的FormExtensionAbility不支持加载上述模块，参考@ohos.app.form.FormExtensionAbility。强行加载得到的对象是undefined，使用时就会产生JS crash。

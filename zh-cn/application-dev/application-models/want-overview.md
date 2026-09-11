@@ -14,7 +14,7 @@ Want是一种对象，用于在应用组件之间传递信息。
 其中，一种常见的使用场景是作为startAbility()方法的参数。例如，当UIAbilityA需要启动UIAbilityB并向UIAbilityB传递一些数据时，可以使用Want作为一个载体，将数据传递给UIAbilityB。
 
 **图1** Want用法示意  
-![usage-of-want](figures/usage-of-want.png)  
+usage-of-want  
 
 
 ## Want的类型
@@ -26,7 +26,7 @@ Want是一种对象，用于在应用组件之间传递信息。
     >
     > 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用，推荐通过指定应用链接的方式来实现。
 
-  <!-- @[explicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/ExplicitPage.ets) -->
+  <!-- @explicit_start -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -45,7 +45,7 @@ Want是一种对象，用于在应用组件之间传递信息。
   当需要处理的对象不明确时，可以使用隐式Want，在当前应用中使用其他应用提供的某个能力，而不关心提供该能力的具体应用。隐式Want使用skills标签来定义需要使用的能力，并由系统匹配声明支持该请求的所有应用来处理请求。例如，需要打开一个链接的请求，系统将匹配所有声明支持该请求的应用，然后让用户选择使用哪个应用打开链接。
 
 
-  <!-- @[implicit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/WantOverview/entry/src/main/ets/pages/ImplicitPage.ets) -->
+  <!-- @implicit_start -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';

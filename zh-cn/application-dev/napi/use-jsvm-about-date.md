@@ -36,7 +36,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/createdate/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_date -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -95,7 +95,7 @@ JSVM CreateDate success:Mon Jul 7 10:42:34 2025
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/getdatevalue/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_date_value -->
 
 ``` C++
 #include <ctime>
@@ -144,7 +144,7 @@ JSVM GetDateValue success:Mon Jul 7 10:47:08 2025
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/isdate/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_date -->
 
 ``` C++
 // OH_JSVM_IsDate的样例方法

@@ -19,7 +19,7 @@ wukong是系统自带的一种命令行工具，支持Ability的随机事件注�
 
 wukong部件架构图以及部件内子模块职责如下所述。
   
-![Alternate text](figures/wukongRandomTestFlow.png)
+Alternate text
 
 - 命令行解析：支持命令行获取参数并解析。
 - 运行环境管理：根据命令行初始化wukong整体运行环境。

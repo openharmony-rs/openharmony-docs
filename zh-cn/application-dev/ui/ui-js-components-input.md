@@ -34,7 +34,7 @@ input是交互式组件，用于接收用户数据。其类型可设置为日期
 }
 ```
 
-![input-Component](figures/input-Component.png)
+input-Component
 
 
 ## 设置input类型
@@ -105,7 +105,7 @@ export default {
 ```
 
 
-![Input-Type](figures/Input-Type.gif)
+Input-Type
 
 
 > **说明：**
@@ -162,7 +162,7 @@ export default {
 }
 ```
 
-![JsInputTranslate](figures/JsInputTranslateEx.gif)
+JsInputTranslate
 
 
 ## 设置输入提示
@@ -230,7 +230,7 @@ import promptAction from '@ohos.promptAction'
  }
 ```
 
-![Input-Error-Message](figures/Input-Error-Message.gif)
+Input-Error-Message
 
 > **说明：** 
 >
@@ -318,4 +318,4 @@ export default {
 ```
 
 
-![Example-Scenario](figures/Example-Scenario.gif)
+Example-Scenario

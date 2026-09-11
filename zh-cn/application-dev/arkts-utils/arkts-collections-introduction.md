@@ -17,7 +17,7 @@ ArkTS共享容器不是线程安全的，内部使用了fail-fast（快速失败
 ArkTS共享容器包含如下几种：Array、Map、Set、TypedArray（Int8Array、Uint8Array、Int16Array、Uint16Array、Int32Array、Uint32Array、Uint8ClampedArray、Float32Array）、ArrayBuffer、BitVector、ConcatArray，具体可见@arkts.collections (ArkTS容器集)。
 
 容器集使用示例如下：
-<!-- @[example_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectRelated/entry/src/main/ets/managers/ArktsCollectionsIntroduction.ets) --> 
+<!-- @example_use --> 
 
 ``` TypeScript
 import { ArkTSUtils, collections, taskpool } from '@kit.ArkTS';

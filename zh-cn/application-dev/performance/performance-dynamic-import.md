@@ -14,7 +14,7 @@
 
 ## 场景示例
 
-![场景示例图](figures/dynamic_import_1.gif)
+场景示例图
 
 下面示例应用通过Navigation组件常规加载与动态加载的对比，介绍如何在跳转时触发加载方法，实现按需加载子模块。
 
@@ -91,7 +91,7 @@
 
 图1 常规加载主页面泳道图
 
-![image-20240725204758662](figures/dynamic_import_normal_1.PNG)
+image-20240725204758662
 
 ### 动态加载
 
@@ -139,11 +139,11 @@ export struct Page2 {
 
 图2 动态加载主页面泳道图
 
-![di1](figures/dynamic_import_dynamic_1.PNG)
+di1
 
 图3 动态加载子页面泳道图
 
-![di2](figures/dynamic_import_dynamic_2.PNG)
+di2
 
 ### 性能对比
 
@@ -158,4 +158,4 @@ export struct Page2 {
 
 ## 参考链接
 
-[动态import](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-dynamic-import-V5)
+动态import

@@ -13,7 +13,7 @@
 >
 > ShadowOptions的radius参数，在API版本26.0.0之前取值范围为[0, +∞)，设置的值为0时不绘制阴影(设置小于0的值时按值为0处理)；从API版本26.0.0开始取值范围变更为(-∞, +∞)，值小于0时不绘制阴影。
 
-<!-- @[shadow_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Shadow/entry/src/main/ets/pages/Shadow.ets) -->
+<!-- @shadow_option -->
 
 ``` TypeScript
 @Entry
@@ -60,4 +60,4 @@ struct ShadowOptionDemo {
 
 
 
-![zh-cn_image_0000001598502322](figures/Shadow-Effect.png)
+zh-cn_image_0000001598502322

@@ -103,7 +103,7 @@ static OH_Crypto_ErrCode doSm2Test() {
 
 4. 调用OH_CryptoVerify_Final，对数据进行验签。
 
-<!-- @[verify_signatures_with_sm2_key_pair_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_signature_verification.cpp) -->
+<!-- @verify_signatures_with_sm2_key_pair_c -->
 
 ``` C++
 #include "signing_signature_verification.h"

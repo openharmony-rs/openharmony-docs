@@ -35,7 +35,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 启动任务队列，执行任务。
 
 cpp部分代码：
-<!-- @[oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/pumpmessageloop/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint -->
 
 ``` C++
 #include <chrono>

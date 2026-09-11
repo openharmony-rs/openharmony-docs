@@ -33,7 +33,7 @@
 
    此例中，可通过点击“触发消息发送”按钮，发送消息给Worker线程。
 
-   <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerPostAtFront/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @parent_worker -->
    
    ``` TypeScript
    import { MessageEvents, worker } from '@kit.ArkTS';
@@ -88,7 +88,7 @@
 
    Worker线程收到宿主线程发送的消息后，发送普通消息和插队消息。
 
-   <!-- @[child_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerPostAtFront/entry/src/main/ets/workers/Worker.ets) -->
+   <!-- @child_worker -->
    
    ``` TypeScript
    import { MessageEvents, ThreadWorkerGlobalScope, worker, Priority } from '@kit.ArkTS';

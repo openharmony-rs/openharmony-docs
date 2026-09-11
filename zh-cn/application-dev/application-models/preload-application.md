@@ -33,7 +33,7 @@
 
 - windowStageCreated：WindowStage创建完成阶段。开发者配置此阶段后，预加载机制会创建空进程并初始化Application，随后触发entry模块AbilityStage的onCreate回调。接着会拉起entry模块的入口UIAbility，并触发其onCreate回调和onWindowStageCreate回调。开发者可以在UIAbility的onCreate回调中，通过launchParam.launchReason的枚举值获取启动原因。枚举值为PRELOAD表示当前UIAbility是由预加载机制启动的。
 
-![preload-application-procedure](figures/preload-application-procedure.png)
+preload-application-procedure
 
 ## 应用预加载状态识别与判断
 

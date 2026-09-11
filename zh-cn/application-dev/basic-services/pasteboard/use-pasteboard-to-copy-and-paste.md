@@ -22,7 +22,7 @@
 
 - 剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下：
 
-![pasteboard](figures/pastedata.png)
+pasteboard
 
 - Record对应复制数据的不同内容片段； </br>
 - Entry对应同一份数据的不同格式； </br>
@@ -74,7 +74,7 @@ ArkTS数据类型对应剪贴板类型，详见ohos.pasteboard。NDK数据类型
 
 ### 示例代码
 
-<!-- @[pasteboard_usedata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+<!-- @pasteboard_usedata -->
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -130,7 +130,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 ### 示例代码
 
-<!-- @[pasteboard_useudc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->
+<!-- @pasteboard_useudc -->
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';

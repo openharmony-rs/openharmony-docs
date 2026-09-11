@@ -15,7 +15,7 @@ URI类型可以归纳为文档类URI和媒体文件URI两类
 - 文档类URI：由picker拉起文件管理器选择或保存返回。具体获取方式参见文档类URI获取方式。
 - 媒体文件URI：由picker通过拉起图库选择图片或者视频返回，通过photoAccessHelper模块获取图片或者视频文件的URI，以及通过userFileManager模块获取图片、视频或者音频文件的URI。具体获取方式参见媒体文件URI获取方式。
 
-![user-file-uri-intro](figures/user-file-uri-intro-new.png)
+user-file-uri-intro
 
 ## 文档类URI
 
@@ -112,7 +112,7 @@ system_basic等级及以上的应用使用此类URI的方式除了上述通过ph
 
 下面为通过临时授权方式使用媒体文件URI进行获取缩略图和读取文件部分信息的示例代码：
 
-<!-- @[import_get_uri_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/UserFileURI/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @import_get_uri_assets -->    
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

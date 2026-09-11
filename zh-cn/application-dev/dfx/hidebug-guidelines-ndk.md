@@ -37,7 +37,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
 2. 编辑“test_backtrace.h”文件，内容如下：
 
-   <!-- @[TestHidebugNdk_Backtrace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_backtrace.h) -->
+   <!-- @TestHidebugNdk_Backtrace -->
    
    ``` C
    #ifndef MYAPPLICATION_TESTBACKTRACE_H
@@ -50,7 +50,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
 3. 编辑“test_backtrace.cpp”文件，内容如下：
 
-   <!-- @[TestHidebugNdk_Backtrace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_backtrace.cpp) -->
+   <!-- @TestHidebugNdk_Backtrace -->
    
    ``` C++
    #include "test_backtrace.h"
@@ -196,7 +196,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
 5. 编辑“napi_init.cpp”文件，导入依赖文件并定义测试方法：
 
-   <!-- @[TestHidebugNdk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @TestHidebugNdk_Function -->
    
    ``` C++
    #include <thread>
@@ -237,7 +237,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 
    注册“TestHiDebugNdk”为ArkTS接口并初始化主线程的信号处理函数：
 
-   <!-- @[TestHidebugNdk_Define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @TestHidebugNdk_Define -->
    
    ``` C++
    napi_property_descriptor desc[] = {
@@ -247,7 +247,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    ```
 
 6. 编辑“index.d.ts”文件，声明ArkTS接口：
-   <!-- @[TestHidebugNdk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @TestHidebugNdk -->
    
    ``` TypeScript
    export const testGetThreadCpuUsage: () => void;
@@ -257,13 +257,13 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 7. 编辑“Index.ets”文件，添加触发接口调用的按钮，示例代码如下：
 
    导入依赖：
-   <!-- @[TestHidebugNdk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @TestHidebugNdk_Import -->
    
    ``` TypeScript
    import testNapi from 'libentry.so';
    ```
    定义测试方法：
-   <!-- @[TestHidebugNdk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @TestHidebugNdk_Function -->
    
    ``` TypeScript
    function testBackTraceJsFrame(i : number) : void {
@@ -282,7 +282,7 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    }
    ```
    添加按钮以触发接口调用：
-   <!-- @[TestHidebugNdk_Buttons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @TestHidebugNdk_Buttons -->
    
    ``` TypeScript
    Button('testGetThreadCpuUsage')

@@ -43,11 +43,11 @@
 
 Swiper共5页，当开发者设置了cachedCount属性为1且loop属性为false时，预加载的结果如下：
 
-![loop=false](figures/swiper_loop_false.png)
+loop=false
 
 Swiper共5页，当开发者设置了cachedCount属性为1且loop属性为true时，预加载的结果如下：
 
-![loop=true](figures/swiper_loop_true.png)
+loop=true
 
 - Swiper组件的子组件使用LazyForEach动态加载和销毁组件。
 

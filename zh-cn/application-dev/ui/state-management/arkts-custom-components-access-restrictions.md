@@ -33,7 +33,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 1. 当成员变量被private访问限定符和\@State/\@Prop/\@Provide/\@BuilderParam装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
 
    【反例】
-    <!-- @[LinkWithPrivate_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateErrorCase.ets) -->
+    <!-- @LinkWithPrivate_ErrorCase -->
     
     ``` TypeScript
     @Entry
@@ -98,7 +98,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[LinkWithPrivate_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateCorrectCase.ets) --> 
+    <!-- @LinkWithPrivate_CorrectCase --> 
     
     ``` TypeScript
     @Entry
@@ -150,7 +150,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
-    <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
+    <!-- @PublicWithStorageProp_ErrorCase -->
     
     ``` TypeScript
     @Entry
@@ -201,7 +201,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[PublicWithStorageProp_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropCorrectCase.ets) --> 
+    <!-- @PublicWithStorageProp_CorrectCase --> 
     
     ``` TypeScript
     @Entry
@@ -239,7 +239,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 3. 当成员变量被private访问限定符和\@Link/\@ObjectLink装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
-    <!-- @[PrivateWithLink_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkErrorCase.ets) -->
+    <!-- @PrivateWithLink_ErrorCase -->
     
     ``` TypeScript
     @Entry
@@ -286,7 +286,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[PrivateWithLink_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkCorrectCase.ets) --> 
+    <!-- @PrivateWithLink_CorrectCase --> 
     
     ``` TypeScript
     @Entry
@@ -327,7 +327,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 4. 当成员变量被protected访问限定符修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
-   <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
+   <!-- @ProtectedInStruct_ErrorCase -->
    
    ``` TypeScript
    @Entry
@@ -364,7 +364,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[ProtectedInStruct_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructCorrectCase.ets) --> 
+    <!-- @ProtectedInStruct_CorrectCase --> 
     
     ``` TypeScript
     @Entry
@@ -397,7 +397,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
 5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
-    <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->
+    <!-- @PrivateWithRequire_ErrorCase -->
     
     ``` TypeScript
     @Entry
@@ -435,7 +435,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
    【正例】
-    <!-- @[PrivateWithRequire_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireCorrectCase.ets) --> 
+    <!-- @PrivateWithRequire_CorrectCase --> 
     
     ``` TypeScript
     @Entry

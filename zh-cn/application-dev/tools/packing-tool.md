@@ -10,7 +10,7 @@
 
 打包工具支持生成：Ability类型的模块包（HAP）、动态共享包（HSP）、应用程序包（App）、快速修复模块包（HQF）、快速修复包（APPQF）。
 
-打包指令中的文件来源于[DevEco Studio编译构建产物](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)，文件路径查看操作如下。<br>
+打包指令中的文件来源于DevEco Studio编译构建产物，文件路径查看操作如下。<br>
 1. 在DevEco Studio工程根目录下的/hvigor/hvigor-config.json5文件中，修改"logging"下的"level"字段为"debug"。<br>
 2. 在DevEco Studio菜单栏，依次选择"构建 -> 清理项目"。<br>
 3. 在DevEco Studio菜单栏，依次选择"构建 -> 构建APP(s)"。<br>
@@ -20,7 +20,7 @@
 
 **表1** module.json与配置文件属性的对照表
 
-| module.json属性          | 含义          | module.json5配置项         | app.json5配置项            | [工程级build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)配置项  |
+| module.json属性          | 含义          | module.json5配置项         | app.json5配置项            | 工程级build-profile.json5配置项  |
 | ------------------------ | ------------------------ | ------------------------ | -------------------------- | --------------------------       |
 | bundleName               | 应用的Bundle名称。        | -                        | bundleName                 | -                                |
 | bundleType               | 应用的Bundle类型。        | -                        | bundleType                 | -                                |
@@ -85,8 +85,8 @@
 | --ets-path       | 否         | NA            | 存放ets文件目录路径。                                        | 仅Stage模型生效。 |
 | --out-path       | 是         | NA            | 目标文件路径，文件名必须以.hap为后缀。                       | NA              |
 | --force          | 否         | boolean       | 当目标文件路径已存在时，控制是否强制执行覆盖。当--out-path目标文件打包前已存在，该参数为true时，覆盖写入；为false时，终止打包过程并报错。当--out-path目标文件打包前不存在，正常打包，该参数无效。默认值为false。 | NA              |
-| --an-path        | 否         | NA            | 存放[an文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
-| --ap-path        | 否         | NA            | 存放[ap文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
+| --an-path        | 否         | NA            | 存放an文件的路径。| 仅Stage模型生效。 |
+| --ap-path        | 否         | NA            | 存放ap文件的路径。| 仅Stage模型生效。 |
 | --dir-list       | 否         | NA            | 可指定目标文件夹列表，将其打入HAP包内。                      | NA              |
 | --compress-level | 否         | number        | lib库下文件压缩等级，默认值1。可选等级1-9。在应用配置compressNativeLibs参数为true的情况下生效，数值越大压缩率越高、压缩速度越慢。 | NA  |
 | --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。 | 仅Stage模型生效。              |
@@ -236,7 +236,7 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 
 ## HQF打包指令
 
-HQF包适用于[增量调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging)场景。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的HQF包。
+HQF包适用于增量调试场景。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的HQF包。
 
 > **说明：** 
 >
@@ -253,7 +253,7 @@ java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>]
 | 指令          | 是否必选项 | 选项          | 描述                                 |
 |-------------|-------|-------------|------------------------------------|
 | --mode      | 是     | hqf         | 打包类型。                              |
-| --json-path | 是     | NA          | .json文件路径，文件名必须为[patch.json](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging#section28031446182019)。        |
+| --json-path | 是     | NA          | .json文件路径，文件名必须为patch.json。        |
 | --lib-path  | 否     | NA          | lib库文件的路径。                         |
 | --ets-path  | 否     | NA          | 存放ets文件目录路径。                       |
 | --resources-path  | 否     | NA          | resources资源包路径。                       |
@@ -265,7 +265,7 @@ java -jar app_packing_tool.jar --mode hqf --json-path <path> [--lib-path <path>]
 APPQF包由一个或多个HQF文件组成。这些HQF包在应用市场会从APPQF包中拆分出来，再被分发到具体的设备上。开发者可以使用打包工具的jar包对应用进行打包，通过传入打包选项、文件路径，生成所需的APPQF包。
 
 **APPQF打包合法性校验**
-- 在打包生成APPQF包时，确保每个HQF的[patch.json文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging#section28031446182019)中的versionName、versionCode、patchVersionName、patchVersionCode保持一致。
+- 在打包生成APPQF包时，确保每个HQF的patch.json文件中的versionName、versionCode、patchVersionName、patchVersionCode保持一致。
 - 所有HQF不得重复。HQF重复是指同时满足以下两个条件：
     1. 两个HQF的patch.json文件中module下的name字段相同。
     2. 两个HQF的patch.json文件中module下的deviceTypes属性相交（至少存在一个相同的设备类型）。
@@ -1200,7 +1200,7 @@ Check shared App mode invalid.
 
 1. 存在两个以上的HSP包。例如下图使用DevEco Studio构建App时，工程中包含了两个HSP包library和library1，此时打包APP包失败。
 
-    ![alt text](figures/error-causes.png)
+    alt text
 
 2. HSP包在`module.json5`中配置了`dependencies`。
 
@@ -1273,7 +1273,7 @@ IO exception when compress app.
 
 **可能原因**
 
-打包App时，应用的[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)文件覆盖HAP或HSP包内pack.info文件时抛I/O异常。
+打包App时，应用的pack.info文件覆盖HAP或HSP包内pack.info文件时抛I/O异常。
 
 **处理步骤**
 
@@ -1398,7 +1398,7 @@ res打包模式下，解析moduleName失败。
 
 **可能原因**
 
-res打包模式下，--pack-info-path指定的[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)文件缺失moduleName标签或moduleName标签值为空。
+res打包模式下，--pack-info-path指定的pack.info文件缺失moduleName标签或moduleName标签值为空。
 
 **处理步骤**
 
@@ -1652,7 +1652,7 @@ Check deduplicateHar field failed.
 
 **错误描述**
 
-打包HSP/HAP时，校验[deduplicateHar](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)属性失败。
+打包HSP/HAP时，校验deduplicateHar属性失败。
 
 **可能原因**
 
@@ -2372,7 +2372,7 @@ Check two distroFilter policy disjoint invalid.
 
 **错误描述**
 
-[HAP唯一性校验](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-verification-rule)需要判断分发策略是否相交，由于分发策略配置错误，导致无法判断分发策略是否相交。
+HAP唯一性校验需要判断分发策略是否相交，由于分发策略配置错误，导致无法判断分发策略是否相交。
 
 **可能原因**
 
@@ -2452,7 +2452,7 @@ Check entry module invalid.
 
 **处理步骤**
 
-参考[HAP唯一性校验](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-verification-rule)，调整工程中的Entry类型HAP配置。
+参考HAP唯一性校验，调整工程中的Entry类型HAP配置。
 
 ### 10016008 检查dependency属性无效
 **错误信息**

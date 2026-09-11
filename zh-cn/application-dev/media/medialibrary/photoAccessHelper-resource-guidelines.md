@@ -36,7 +36,7 @@
 
 下面以查询文件名为'test.jpg'的图片资源为例。
 
-<!-- @[get_media_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediaresourceability/GetMediaResourceAbility.ets) --> 
+<!-- @get_media_resource --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -92,7 +92,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用FetchResult.getFirstObject接口获取第一张图片。
 4. 调用PhotoAsset.getThumbnail获取图片的缩略图的PixelMap。
 
-<!-- @[get_media_thumbnails](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediathumbnailsability/GetMediaThumbnailsAbility.ets) -->
+<!-- @get_media_thumbnails -->
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -197,7 +197,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 4. 调用MediaAssetChangeRequest.setTitle接口将图片重命名。
 5. 调用PhotoAccessHelper.applyChanges接口将修改的图片属性更新到数据库中完成修改。
 
-<!-- @[rename_media](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/renamemediaability/RenameMediaAbility.ets) --> 
+<!-- @rename_media --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -254,7 +254,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用FetchResult.getFirstObject接口获取第一张图片，即要放入回收站的图片对象。
 4. 调用MediaAssetChangeRequest.deleteAssets接口将文件放入回收站。
 
-<!-- @[move_media_to_recycle_bin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/movemediatorecyclebinability/MoveMediaToRecycleBinAbility.ets) --> 
+<!-- @move_media_to_recycle_bin --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

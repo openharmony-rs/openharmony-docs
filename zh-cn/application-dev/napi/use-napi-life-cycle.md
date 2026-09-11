@@ -74,7 +74,7 @@ import testNapi from 'libentry.so';
 
 cpp部分代码
 
-<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @napi_open_close_handle_scope -->  
 
 ``` C++
 // napi_open_handle_scope、napi_close_handle_scope
@@ -124,7 +124,7 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 接口声明
 
 index.d.ts
-<!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_open_close_handle_scope_api -->
 
 ``` TypeScript
 export const handleScopeTest: () => string; // napi_open_handle_scope、napi_close_handle_scope
@@ -135,7 +135,7 @@ export const handleScope: () => string;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_open_close_handle_scope -->
 
 ``` TypeScript
 // napi_open_handle_scope  napi_close_handle_scope
@@ -195,7 +195,7 @@ static napi_value Init(napi_env env, napi_value exports)
 
 cpp部分代码
 
-<!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_open_close_escapable_handle_scope -->
 
 ``` C++
 // napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
@@ -227,7 +227,7 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 接口声明
 
 index.d.ts
-<!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_open_close_escapable_handle_scope_api -->
 
 ``` TypeScript
 export const escapableHandleScopeTest: () => string; // napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
@@ -236,7 +236,7 @@ export const escapableHandleScopeTest: () => string; // napi_open_escapable_hand
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_open_close_escapable_handle_scope -->
 
 ``` TypeScript
 // napi_open_escapable_handle_scope napi_close_escapable_handle_scope、napi_escape_handle
@@ -454,7 +454,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_delete_reference -->
 
 ``` C++
 // 创建一个napi_ref类型的指针，用于存储创建的引用。在调用napi_add_finalizer函数前，分配一个napi_ref类型的变量，并传递其地址作为result参数。
@@ -594,7 +594,7 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 接口声明
 
 // index.d.ts
-<!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_delete_reference_api -->
 
 ``` TypeScript
 export const addFinalizer: () => Object | undefined; // napi_add_finalizer
@@ -609,7 +609,7 @@ export const deleteReference: () => string | undefined; // napi_delete_reference
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_delete_reference -->
 
 ``` TypeScript
 // napi_add_finalizer
@@ -643,7 +643,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_global_handle_count -->
 
 ``` C++
 // napi_get_global_handle_count
@@ -666,7 +666,7 @@ static napi_value GetGlobalHandleCount(napi_env env, napi_callback_info info)
 接口声明
 
 // index.d.ts
-<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_global_handle_count -->
 
 ``` TypeScript
 export const getGlobalHandleCount: () => number;
@@ -674,7 +674,7 @@ export const getGlobalHandleCount: () => number;
 
 ArkTS侧示例代码
 
-<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
+<!-- @napi_get_global_handle_count -->
 
 ``` TypeScript
 try {

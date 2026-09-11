@@ -239,8 +239,8 @@ struct Index {
 
 3. 打开应用页面，点击"verifyAbc"按钮进行校验，输出"VerifyAbc successfully"日志；
 
-   ![zh-cn_image_0000001746521386](figures/verifyAbc.jpg)
+   zh-cn_image_0000001746521386
 
-   ![zh-cn_image_0000001502381065](figures/VerifyAbc-successfully.png)
+   zh-cn_image_0000001502381065
 
 4. 点击"showIsolatedComponent"按钮，显示IsolatedComponent组件，内容为"Hello World"。

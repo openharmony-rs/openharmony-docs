@@ -14,7 +14,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 **图1** 启动框架使用场景
 
-![app-startup-intro](figures/app-startup-intro.png)
+app-startup-intro
 
 ## 运行机制
 
@@ -22,13 +22,13 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 **图2** 启动框架自动模式执行时机
 
-![app-startup-auto](figures/app-startup-auto.png)
+app-startup-auto
 
 开发者也可以在AbilityStage创建完后调用startupManager.run方法，执行手动模式的启动任务。
 
 **图3** 启动框架手动模式执行时机
 
-![app-startup-run](figures/app-startup-run.png)
+app-startup-run
 
 
 ## 支持的范围
@@ -76,7 +76,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
    module.json5示例代码如下。
 
-    <!-- @[startup_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/module.json5) -->
+    <!-- @startup_module -->
 
     ``` JSON5
     {
@@ -125,7 +125,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 **图4** 启动任务依赖关系图
 
-![app-startup-task](figures/app-startup-task.png)
+app-startup-task
 
 1. 在“ets/startup”路径下，依次创建6个启动任务文件。文件名称必须确保唯一性。本例中的6个文件名分别为StartupTask_001.ets~StartupTask_006.ets。
 2. 在启动框架配置文件startup_config.json中，添加启动任务配置。
@@ -214,7 +214,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 **图5** so预加载任务依赖关系图
 
-![app-startup-so-task](figures/app-startup-so-task.png)
+app-startup-so-task
 
 1. 参考Node-API创建so文件。本例中的6个so文件名称分别为libentry_001.so~libentry_006.so。
 2. 在启动框架配置文件startup_config.json中，添加预加载so任务配置。
@@ -296,7 +296,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 - StartupConfig：用于设置任务超时时间和启动框架的监听器。
 - StartupListener：用于监听启动任务是否执行成功。
 
-<!-- @[startup_entryconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
+<!-- @startup_entryconfig -->
 
 ``` TypeScript
 import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
@@ -342,7 +342,7 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
 > 
 > 由于StartupTask采用了Sendable协议，在继承该接口时，必须添加Sendable注解。
 
-<!-- @[startup_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupTask_001.ets) -->
+<!-- @startup_task -->
 
 ``` TypeScript
 import { StartupTask, common } from '@kit.AbilityKit';
@@ -385,7 +385,7 @@ export default class StartupTask_001 extends StartupTask {
 
 **图6** 启动任务与so预加载依赖关系图
 
-![app-startup](figures/app-startup-hsp-har.png)
+app-startup
 
 
 
@@ -431,7 +431,7 @@ export default class StartupTask_001 extends StartupTask {
 
         hsp1、hsp2以及har1的module.json5示例代码如下。
 
-        <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5) -->
+        <!-- @startup_hsp1module -->
 
         ``` JSON5
         {
@@ -444,7 +444,7 @@ export default class StartupTask_001 extends StartupTask {
           }
         }
         ```
-        <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5) -->
+        <!-- @startup_hsp2module -->
 
         ``` JSON5
         {
@@ -457,7 +457,7 @@ export default class StartupTask_001 extends StartupTask {
           }
         }
         ```
-        <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
+        <!-- @startup_harmodule -->
         
         ``` JSON5
         {
@@ -483,7 +483,7 @@ AppStartup分别提供了自动和手动两种方式来执行启动任务，entr
 下面以UIAbility的onCreate生命周期中为例，介绍如何采用手动模式来启动任务，示例代码如下。
 
 
-<!-- @[startup_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @startup_entry -->
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want, startupManager } from '@kit.AbilityKit';
@@ -516,7 +516,7 @@ export default class EntryAbility extends UIAbility {
 
 开发者还可以在页面加载完成后，在页面中调用启动框架手动模式，示例代码如下。
 
-<!-- @[startup_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/pages/Index.ets) -->
+<!-- @startup_index -->
 
 ``` TypeScript
 import { startupManager } from '@kit.AbilityKit';
@@ -560,7 +560,7 @@ struct Index {
 
 **图7** 启动任务设置匹配规则
 
-![app-startup-matchRules](figures/app-startup-matchRules.png)
+app-startup-matchRules
 
 可以通过以下两种方式添加匹配规则：
 
@@ -628,7 +628,7 @@ struct Index {
 
   1. 对设置启动参数步骤中的MyStartupConfigEntry.ets文件进行修改，新增onRequestCustomMatchRule方法。
 
-     <!-- @[startup_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/startup/StartupConfig.ets) -->
+     <!-- @startup_config -->
      
      ``` TypeScript
      import { StartupConfig, StartupConfigEntry, StartupListener, Want } from '@kit.AbilityKit';
@@ -676,7 +676,7 @@ struct Index {
 
 **图8** 设置启动任务提前调度
 
-![app-startup-preAbilityStageLoad](figures/app-startup-preAbilityStageLoad.png)
+app-startup-preAbilityStageLoad
 
 例如，应用首页需要通过网络请求获取Feed流数据，且希望该任务能在异步线程中与AbilityStage模块加载并发执行。假设网络请求任务为定义启动任务配置步骤中的StartupTask_004，开发步骤如下：
 

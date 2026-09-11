@@ -37,7 +37,7 @@
 
 - 通过await返回结果：
 
-  <!-- @[use_pbkdf2_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Await.ets) -->
+  <!-- @use_pbkdf2_for_key_derivation_await -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -59,7 +59,7 @@
 
 - 通过Promise返回结果：
 
-  <!-- @[use_pbkdf2_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Promise.ets) -->
+  <!-- @use_pbkdf2_for_key_derivation_promise -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -85,7 +85,7 @@
 
 
 - 通过同步方式返回结果：
-  <!-- @[use_pbkdf2_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Sync.ets) -->
+  <!-- @use_pbkdf2_for_key_derivation_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

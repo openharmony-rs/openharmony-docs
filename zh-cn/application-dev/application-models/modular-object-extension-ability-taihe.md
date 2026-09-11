@@ -108,7 +108,7 @@ taihec -G modobj-ipc -O example/generated example/Easy.ohidl
 
 **文件示例：**
 
-<!-- @[example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampletwo/ITestInterface.ohidl) -->
+<!-- @example -->
 
 ```ohipc
 @!namespace("OHOS", "IPC")
@@ -141,7 +141,7 @@ interface ITestCallbackService {
 
 1. 创建example文件夹，并新建Easy.ohidl文件。
 
-   <!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
+   <!-- @easy -->
    
    ```ohipc
    @!namespace("OHOS", "IPC")
@@ -173,7 +173,7 @@ interface ITestCallbackService {
 
      `GetDescriptor()`返回接口描述符字符串，`IpcCode`枚举为每个方法分配唯一命令码，从1001开始。
 
-     <!-- @[ICalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/icalculator.h) -->
+     <!-- @ICalculator -->
    
         ``` C
         class ICalculator {
@@ -201,7 +201,7 @@ interface ITestCallbackService {
 
      `CalculatorProxy`继承`ICalculator`，并包含了远端代理对象`remoteProxy_`。
 
-     <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.h) -->
+     <!-- @CalculatorProxy -->
    
         ``` C
         class CalculatorProxy : public ICalculator {
@@ -224,7 +224,7 @@ interface ITestCallbackService {
 
      调用`OH_IPCRemoteProxy_SendRequest()`发起同步IPC，并读取`reply`中的错误码与返回值。
 
-     <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp) -->
+     <!-- @CalculatorProxy -->
    
         ``` C++
         ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
@@ -277,7 +277,7 @@ interface ITestCallbackService {
 
      `OnRemoteRequest`作为IPC调用入口，`OnRemoteRequestInner`根据`code`分发到具体`HandleXXX`方法。
 
-     <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.h) -->
+     <!-- @CalculatorStub -->
    
         ``` C
         class CalculatorStub : public ICalculator {
@@ -302,7 +302,7 @@ interface ITestCallbackService {
 
      `OnRemoteRequestInner`方法中先校验接口描述符，再调用`HandleAdd`从`data`中读取参数，调用真实`Add`业务实现，并将`errCode`和结果写回`reply`。
 
-     <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.cpp) -->
+     <!-- @CalculatorStub -->
    
         ``` C++
         int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)

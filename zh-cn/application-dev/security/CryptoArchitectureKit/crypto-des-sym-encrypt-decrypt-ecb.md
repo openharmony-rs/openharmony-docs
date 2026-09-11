@@ -48,7 +48,7 @@ DES解密失败返回错误码17630001可参考使用DES/3DES算法解密时调�
 
 - 异步方法示例：
 
-  <!-- @[async_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_asynchronous.ets) -->
+  <!-- @async_symmetry_encrypt_decrypt -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -103,7 +103,7 @@ DES解密失败返回错误码17630001可参考使用DES/3DES算法解密时调�
 
 - 同步方法示例：
 
-  <!-- @[sync_symmetry_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/ets/pages/des/des_ecb_encryption_decryption_synchronous.ets) -->
+  <!-- @sync_symmetry_encrypt_decrypt -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

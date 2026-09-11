@@ -16,7 +16,7 @@
 
 2. 调用genEccSignature，将EccSignatureSpec对象传入，转换为DER格式的SM2密文。
 
-<!-- @[sm2_sign_data_rs_to_der](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_rs_to_der.ets) -->
+<!-- @sm2_sign_data_rs_to_der -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -44,7 +44,7 @@ function testSm2SignDataRsToDer() {
 
 2. 调用genEccSignatureSpec，将DER格式数据传入，转换为（r、s）格式的SM2密文。
 
-<!-- @[sm2_sign_data_der_to_rs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_der_to_rs.ets) -->
+<!-- @sm2_sign_data_der_to_rs -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

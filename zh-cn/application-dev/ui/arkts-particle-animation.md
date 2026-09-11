@@ -39,7 +39,7 @@ struct ParticleExample {
 }
 ```
 
-![particle-base](figures/particle-base.gif)
+particle-base
 
 
 ## 实现粒子发射器
@@ -61,7 +61,7 @@ Particle(...).width(300).height(300).emitter(this.emitterProperties) // 动态�
 // ...
 ```
 
-![particle-emitter](figures/particle-emitter.gif)
+particle-emitter
 
 
 ## 设置粒子颜色
@@ -77,7 +77,7 @@ color: {
 // ...
 ```
 
-![particle-color](figures/particle-color.gif)
+particle-color
 
 
 ## 粒子的生命周期
@@ -102,7 +102,7 @@ color: {
 // ...
 ```
 
-![particle-lifetime](figures/particle-lifetime.gif)
+particle-lifetime
 
 
 ## 设置粒子扰动场
@@ -158,4 +158,4 @@ Particle({ particles: [
 // ... 
 ```
 
-![particle-disturbance](figures/particle-disturbance.gif)
+particle-disturbance

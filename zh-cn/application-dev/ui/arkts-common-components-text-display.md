@@ -20,14 +20,14 @@ Text可通过以下两种方式来创建：
 
 - string字符串。
 
-  <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
+  <!-- @create_a_text_in_one_way -->
   
   ``` TypeScript
   Text('我是一段文本')
   ```
 
 
-![text-basic](figures/text-basic.png)
+text-basic
 
 
 - 引用Resource资源。
@@ -45,7 +45,7 @@ Text可通过以下两种方式来创建：
   }
   ```
 
-  <!-- @[create_a_text_in_another_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
+  <!-- @create_a_text_in_another_way -->
   
   ``` TypeScript
   // 请将$r('app.string.module_desc')替换为实际资源文件，在本示例中该资源文件的value值为"模块描述"
@@ -57,7 +57,7 @@ Text可通过以下两种方式来创建：
     .width(300)
   ```
 
-  ![text-create](figures/text-create.png)
+  text-create
 
 ## 绑定文本事件
 
@@ -65,7 +65,7 @@ Text组件可以添加通用事件，可以绑定onClick、onTouch等事件来�
 
 以下示例通过在文本上绑定事件，实现触发事件时刷新文本下方展示内容。
 
-  <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
+  <!-- @General_Events -->
   
   ``` TypeScript
   // xxx.ets
@@ -103,7 +103,7 @@ Text组件可以添加通用事件，可以绑定onClick、onTouch等事件来�
   }
   ```
 
-![text_event](figures/text_event.gif)
+text_event
 
 ## 设置文本样式
 
@@ -148,7 +148,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
 - 通过textAlign属性设置文本对齐样式。
 
-  <!-- @[custom_text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_text_align -->
   
   ``` TypeScript
   // 请将$r('app.string.TextAlign_Start')替换为实际资源文件，在本示例中该资源文件的value值为"左对齐"
@@ -171,11 +171,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .padding(10)
   ```
 
-  ![text-styled](figures/text-styled.png)
+  text-styled
 
 - 通过textOverflow属性控制文本超长处理，textOverflow需配合maxLines一起使用（默认情况下文本自动折行）。从API version 18开始，文本超长时设置跑马灯的方式展示时，支持设置跑马灯的配置项，比如开关、步长、循环次数、方向等。
 
-  <!-- @[custom_text_overflow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_text_overflow -->
   
   ``` TypeScript
   Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow ' +
@@ -227,11 +227,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     })
   ```
 
-  ![text-custom-style](figures/text-custom-style.gif)
+  text-custom-style
 
 - 通过lineHeight属性设置文本行高。
 
-  <!-- @[custom_line_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_line_height -->
   
   ``` TypeScript
   Text('This is the text with the line height set. This is the text with the line height set.')
@@ -244,11 +244,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .lineHeight(20)
   ```
 
-  ![radio-default](figures/radio-default.png)
+  radio-default
 
 - 通过decoration属性设置文本装饰线样式、颜色及其粗细。
 
-  <!-- @[custom_text_line_and_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_text_line_and_color -->
   
   ``` TypeScript
   Text('This is the text')
@@ -300,11 +300,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .borderWidth(1).padding(15).margin(5)
   ```
 
-  ![Text_decoration](figures/Text_decoration.jpg)
+  Text_decoration
 
 - 通过baselineOffset属性设置文本基线的偏移量。
 
-  <!-- @[custom_text_baseline_offset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_text_baseline_offset -->
   
   ``` TypeScript
   Text('This is the text content with baselineOffset 0.')
@@ -330,11 +330,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
 
-  ![text-styled-span](figures/text-styled-span.png)
+  text-styled-span
 
 - 通过letterSpacing属性设置文本字符间距。
 
-  <!-- @[custom_text_letter_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_text_letter_space -->
   
   ``` TypeScript
   Text('This is the text content with letterSpacing 0.')
@@ -360,13 +360,13 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
 
-  ![text-styled-span2](figures/text-styled-span2.png)
+  text-styled-span2
 
 - 通过minFontSize与maxFontSize自适应字体大小。
 
   minFontSize用于设置文本的最小显示字号，maxFontSize用于设置文本的最大显示字号。这两个属性必须同时设置才能生效，并且需要与maxLines属性或布局大小限制配合使用，单独设置任一属性将不会产生效果。
 
-  <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_the_size_of_text -->
   
   ``` TypeScript
   /* 请将$r('app.string.CustomTextStyle_textContent_one_style')替换为实际资源文件，
@@ -415,11 +415,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
 
-  ![radio-styled](figures/radio-styled.png)
+  radio-styled
 
 - 通过textCase属性设置文本大小写。
 
-  <!-- @[custom_the_text_by_text_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_the_text_by_text_case -->
   
   ``` TypeScript
   Text('This is the text content with textCase set to Normal.')
@@ -443,11 +443,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
   
-  ![text-styled-span3](figures/text-styled-span3.png)
+  text-styled-span3
 
 - 通过copyOption属性设置文本是否可复制粘贴。
 
-  <!-- @[custom_the_text_by_copy_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_the_text_by_copy_option -->
   
   ``` TypeScript
   // 请将$r('app.string.CustomTextStyle_textContent_incopy')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段可复制文本。"
@@ -456,11 +456,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![text-copy-option](figures/text-copy-option.png)
+  text-copy-option
 
 - 通过fontFamily属性设置文本字体族。应用当前支持'HarmonyOS Sans'字体和注册自定义字体。
 
-  <!-- @[custom_the_text_fontFamily](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
+  <!-- @custom_the_text_fontFamily -->
   
   ``` TypeScript
   Text('This is the text content with fontFamily')
@@ -468,11 +468,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .fontFamily('HarmonyOS Sans')
   ```
 
-  ![Text_font_family](figures/Text_font_family.png)
+  Text_font_family
 
 - 从API version 20开始，支持通过contentTransition属性设置数字翻牌效果。
 
-  <!-- @[Content_Transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ContentTransition.ets) -->
+  <!-- @Content_Transition -->
   
   ``` TypeScript
   
@@ -503,11 +503,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     }
   }
   ```
-  ![Text_content_transition](figures/Text_content_transition.gif)
+  Text_content_transition
 
 - 从API version 20开始，支持通过optimizeTrailingSpace设置是否在文本布局过程中优化每行末尾的空格，可解决行尾空格影响对齐显示效果问题。
 
-  <!-- @[Last_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+  <!-- @Last_space -->
   
   ``` TypeScript
   Column() {
@@ -528,11 +528,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   }
   ```
 
-  ![Text_optimize_trailing_space](figures/Text_optimize_trailing_space.jpg)
+  Text_optimize_trailing_space
 
 - 从API version 20开始，支持通过lineSpacing设置文本的行间距。当不配置LineSpacingOptions时，首行上方和尾行下方默认会有行间距，当onlyBetweenLines设置为true时，行间距仅适用于行与行之间，首行上方无额外的行间距。
 
-  <!-- @[Line_Spacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LineSpacing.ets) -->
+  <!-- @Line_Spacing -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -562,11 +562,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   }
   ```
 
-  ![Text_line_spacing](figures/Text_line_spacing.jpg)
+  Text_line_spacing
 
 - 从API version 20开始，支持通过enableAutoSpacing设置是否开启中文与西文的自动间距。
 
-  <!-- @[Enable_AutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets) -->
+  <!-- @Enable_AutoSpacing -->
   
   ``` TypeScript
   @Entry
@@ -619,11 +619,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   }
   ```
 
-  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
+  Text_enable_auto_spacing
 
 - 从API version 20开始，支持通过shaderStyle设置渐变色。
 
-  <!-- @[Shader_Style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ShaderStyle.ets) -->
+  <!-- @Shader_Style -->
   
   ``` TypeScript
   @Entry
@@ -657,11 +657,11 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   }
   ```
 
-  ![Text_shader_style](figures/Text_shader_style.png)
+  Text_shader_style
 
 - 从API version 20开始，Text组件支持通过textVerticalAlign属性实现文本段落在垂直方向的对齐。以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
 
-    <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+    <!-- @text_VerticalAlign -->
     
     ``` TypeScript
     // 请将$r('app.media.startIcon')替换为实际资源文件
@@ -676,7 +676,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .textVerticalAlign(TextVerticalAlign.CENTER)
     ```
 
-    ![Text_vertical_align](figures/Text_vertical_align.png)
+    Text_vertical_align
 
 ## 添加文本Span子组件
 
@@ -686,7 +686,7 @@ Span只能作为Text和RichEditor组件的子组件显示文本内容。可以�
 
 Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任何内容。Text与Span同时配置文本内容时，Span内容将覆盖Text内容。
 
-<!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+<!-- @create_span -->
 
 ``` TypeScript
 // 请将$r('app.string.TextSpan_textContent_text')替换为实际资源文件，在本示例中该资源文件的value值为"我是Text"
@@ -698,13 +698,13 @@ Text($r('app.string.TextSpan_textContent_text')) {
 .borderWidth(1)
 ```
 
-![text-child-component](figures/text-child-component.png)
+text-child-component
 
 ### 设置Span文本装饰线及颜色
 
 通过decoration设置文本装饰线及颜色。
 
-<!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+<!-- @create_span_with_lines -->
 
 ``` TypeScript
 Text() {
@@ -729,13 +729,13 @@ Text() {
 .padding(10)
 ```
 
-![text-child-span](figures/text-child-span.png)
+text-child-span
 
 ### 设置Span文本大小写
 
 通过textCase设置文字一直保持大写或者小写状态。
 
-  <!-- @[create_span_with_upper_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+  <!-- @create_span_with_upper_case -->
   
   ``` TypeScript
   Text() {
@@ -746,14 +746,14 @@ Text() {
   .padding(10)
   ```
 
-  ![text-child-image](figures/text-child-image.png)
+  text-child-image
 
 ### 绑定Span文本事件
 
 由于Span组件无尺寸信息，仅支持添加点击事件onClick、悬浮事件onHover。
 
 
-  <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
+  <!-- @textspan_onhover -->
   
   ``` TypeScript
   // xxx.ets
@@ -796,7 +796,7 @@ Text() {
   }
   ```
 
-  ![span_event](figures/span_event.gif)
+  span_event
 
 ## 设置文本菜单
 文本菜单包括系统菜单、AI菜单、自定义菜单。
@@ -812,7 +812,7 @@ AI菜单是基于AI文本分析动态识别实体后出现的智能操作菜单�
 
 Text组件需要设置copyOption属性才可以被选中。
 
-  <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+  <!-- @copy_Option -->
   
   ``` TypeScript
   // 请将$r('app.string.selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
@@ -821,11 +821,11 @@ Text组件需要设置copyOption属性才可以被选中。
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![Text_select_menu](figures/Text_select_menu.jpg)
+  Text_select_menu
 
 可在Text组件区域内点击空白处正常关闭选择状态和菜单；若Text组件区域外点击空白处关闭选中菜单，需要设置selection属性，具体示例如下。
 
-  <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
+  <!-- @Selection_Change -->
   
   ``` TypeScript
   // xxx.ets
@@ -867,12 +867,12 @@ Text组件需要设置copyOption属性才可以被选中。
   }
   ```
 
-![close_selection_menu](figures/close_selection_menu.gif)
+close_selection_menu
 
 ### 系统菜单中自定义菜单项
 - Text组件通过设置editMenuOptions属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
 
-  <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  <!-- @set_selection_menu_with_editmenuoptions -->
   
   ``` TypeScript
   // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
@@ -884,7 +884,7 @@ Text组件需要设置copyOption属性才可以被选中。
     })
   ```
 
-    <!-- @[onCreate_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+    <!-- @onCreate_Menu -->
     
     ``` TypeScript
     // 定义onCreateMenu，onMenuItemClick
@@ -933,11 +933,11 @@ Text组件需要设置copyOption属性才可以被选中。
     };
     ```
 
-    ![text_editmenuoptions](figures/text_editmenuoptions.gif)
+    text_editmenuoptions
 
 - 从API version 20开始，当文本选择区域变化后显示菜单之前触发onPrepareMenu回调，可在该回调中进行菜单数据设置，提供系统菜单自定义刷新能力。
 
-  <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->  
+  <!-- @Prepare_Menu -->  
   
   ``` TypeScript
   // 请将$r('app.media.xxx')替换为实际资源文件
@@ -1018,13 +1018,13 @@ Text组件需要设置copyOption属性才可以被选中。
   }
   ```
 
-    ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
+    text_on_prepare_menu
 
 ### 系统菜单中屏蔽系统服务类菜单项
 
 - 从API version 20开始，支持通过disableSystemServiceMenuItems屏蔽文本选择菜单内所有系统服务菜单项。更多详见disableSystemServiceMenuItems的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如UIAbility的onCreate和onDestroy。
 
-  <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
+  <!-- @Service_MenuItems -->
   
   ``` TypeScript
   import { TextMenuController } from '@kit.ArkUI';
@@ -1070,11 +1070,11 @@ Text组件需要设置copyOption属性才可以被选中。
   }
   ```
 
-    ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
+    text_disable_system_service_menuItems
 
 - 从API version 20开始，支持通过disableMenuItems屏蔽文本选择菜单内指定的系统服务菜单项。更多详见disableMenuItems的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如UIAbility的onCreate和onDestroy。
 
-  <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
+  <!-- @Disable_MenuItems -->
   
   ``` TypeScript
   import { TextMenuController } from '@kit.ArkUI';
@@ -1122,11 +1122,11 @@ Text组件需要设置copyOption属性才可以被选中。
   }
   ```
 
-    ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
+    text_disable_menuItems
 
 - 从API version 12开始，支持通过editMenuOptions屏蔽系统菜单回调和自定义扩展菜单项。 
 
-  <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
+  <!-- @Custom_Block_Menus -->
   
   ``` TypeScript
   // xxx.ets
@@ -1260,7 +1260,7 @@ Text组件需要设置copyOption属性才可以被选中。
   }
   ```
 
-    ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
+    text_disable_system_menu_callback_and_custom_menu
 
 ### 设置AI菜单
 
@@ -1273,7 +1273,7 @@ Text组件通过enableDataDetector和dataDetectorConfig属性实现AI菜单的�
 >  该功能生效时，需选中范围内，包括一个完整的AI实体，才能展示对应的选项。
 
 - 如果需要单击AI实体弹出菜单的实体识别选项，可以配置enableDataDetector为true。具体示例如下所示：
-  <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) --> 
+  <!-- @set_ai_menu --> 
   
   ``` TypeScript
   // 'app.string.AIMenu_Text_One'资源文件中的value值为'电话号码：(86) (755) ********  \n \n 链接：www.********.com
@@ -1300,14 +1300,14 @@ Text组件通过enableDataDetector和dataDetectorConfig属性实现AI菜单的�
 
 Text组件通过设置bindSelectionMenu属性绑定自定义选择菜单。
 
-  <!-- @[set_selection_menu_with_bindselectionmenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  <!-- @set_selection_menu_with_bindselectionmenu -->
   
   ``` TypeScript
   controller: TextController = new TextController();
   options: TextOptions = { controller: this.controller };
   ```
 
-  <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  <!-- @set_selection_menu_with_bindselectionmenu_sec -->
   
   ``` TypeScript
   // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
@@ -1330,7 +1330,7 @@ Text组件通过设置bindSelectionMenu属性绑定自定义选择菜单。
     })
   ```
 
-  <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  <!-- @Right_Click_Text_CustomMenu -->
   
   ``` TypeScript
   // 定义菜单项
@@ -1353,13 +1353,13 @@ Text组件通过设置bindSelectionMenu属性绑定自定义选择菜单。
   }
   ```
 
-  ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
+  text_bindselectionmenu
 
 ### 在子窗口中显示文本菜单
 
 Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
-  <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
+  <!-- @set_menu_options_with_textmenushowmode -->
   
   ``` TypeScript
   this.getUIContext()
@@ -1371,7 +1371,7 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
     );
   ```
 
-  <!-- @[textmenushowmode_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
+  <!-- @textmenushowmode_create_text -->
   
   ``` TypeScript
   // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
@@ -1381,13 +1381,13 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
+  Text-menu-subwindow
 
 ## 实现热搜榜
 
 该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
 
-  <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
+  <!-- @the_text_fact_example -->
   
   ``` TypeScript
   @Entry
@@ -1494,5 +1494,5 @@ Text组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染
   ```
   
 
-![text-hot-search](figures/text-hot-search.png)
+text-hot-search
 <!--RP1--><!--RP1End-->

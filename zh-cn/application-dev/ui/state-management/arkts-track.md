@@ -27,7 +27,7 @@
 
 状态管理V1中\@State等装饰器默认支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，下面的例子就展示了这一限制：
 
-<!-- @[Index_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) --> 
+<!-- @Index_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -84,7 +84,7 @@ struct Index {
 }
 ```
 
-![track-demo-0](figures/track-demo-0.gif)
+track-demo-0
 
 > **说明：**
 >
@@ -128,7 +128,7 @@ struct Index {
 
 使用\@Track装饰器可以避免冗余刷新。
 
-<!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) --> 
+<!-- @AddLog_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -207,7 +207,7 @@ struct AddLog {
 }
 ```
 
-![track-demo-1](figures/track-demo-1.gif)
+track-demo-1
 
 在上面的示例中：
 
@@ -238,7 +238,7 @@ struct AddLog {
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track装饰的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
 
-<!-- @[addLog3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) --> 
+<!-- @addLog3_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -292,7 +292,7 @@ struct AddLog {
 }
 ```
 
-![track-demo-2](figures/track-demo-2.gif)
+track-demo-2
 
 处理步骤：
 

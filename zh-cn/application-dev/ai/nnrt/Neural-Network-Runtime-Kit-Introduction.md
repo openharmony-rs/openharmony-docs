@@ -27,7 +27,7 @@ AI推理框架和应用开发者也可以无需调用NNRt构图接口，直接�
 7. <b>离线模型推理</b>：除了支持通过构图接口构造模型图，NNRt也支持直接使用AI硬件相关的模型文件（简称为离线模型）进行推理。应用开发者使用AI硬件厂商提供的模型转换器将原始训练模型转换为AI硬件对应的离线模型文件，并将它部署在应用程序中，在应用运行期间通过NNRt的离线模型编译接口传入。离线模型仅能在对应AI硬件上编译和推理，无法支持跨AI硬件兼容。但由于离线模型和硬件直接相关，因此编译速度通常很快。
 
 **图1** Neural Network Runtime架构图
-!["neural-network-runtime-intro"](figures/neural-network-runtime-intro.jpg)
+"neural-network-runtime-intro"
 
 ## 亮点特征
 

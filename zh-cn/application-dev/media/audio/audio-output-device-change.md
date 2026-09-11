@@ -51,11 +51,11 @@
 
 ## 参考示例
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ### AudioRenderer示例
 
-  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  <!-- @onOutputDeviceChangeWithInfo --> 
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -122,7 +122,7 @@
 
 ### AudioSessionManager示例
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) --> 
+  <!-- @onCurrentOutputDeviceChanged --> 
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';

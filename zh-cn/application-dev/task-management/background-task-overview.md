@@ -35,7 +35,7 @@ Background Tasks Kit提供了规范内受约束的后台任务，包括短时任
 同时，对于提供基础能力的系统应用，系统单独提供能效资源申请接口。应用调用能效资源接口后，系统对应用进行一定的管控豁免。<!--DelEnd-->
 
   **图1** 后台任务类型选择  
-![bgtask_choice](figures/bgtask_choice.png)
+bgtask_choice
 
 
 > **说明：**

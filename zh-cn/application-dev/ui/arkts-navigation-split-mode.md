@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[Navigation](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-basic-components-navigation)作为一个容器组件，提供了两种布局样式：单栏布局、分栏布局。分栏布局一般适用于宽屏设备，在分栏布局下，导航栏（navBar）会固定显示， 子页面（NavDestination）通过导航控制器（NavPathStack）切换显示， 在导航栏和子页面之间有一条分割线， 可以通过分割线拖拽控制左右显示的比例。架构图详见Navigation基础架构介绍。
+Navigation作为一个容器组件，提供了两种布局样式：单栏布局、分栏布局。分栏布局一般适用于宽屏设备，在分栏布局下，导航栏（navBar）会固定显示， 子页面（NavDestination）通过导航控制器（NavPathStack）切换显示， 在导航栏和子页面之间有一条分割线， 可以通过分割线拖拽控制左右显示的比例。架构图详见Navigation基础架构介绍。
 
 ## 分栏相关接口介绍
 
@@ -16,19 +16,19 @@ mode属性用于控制Navigation的显示模式，有四种模式：单栏，分
 
 **图1** 单栏（NavigationMode.Stack）效果
 
-![img](figures/NavigationModeStack.png)
+img
 
 **图2** 分栏（NavigationMode.Split）效果
 
-![img](figures/NavigationModeSplit.png)
+img
 
 **图3** 自适应（NavigationMode.Auto）效果
 
-![img](figures/NavigationModeAuto.gif)
+img
 
 **图4** 根据高宽比自适应（NavigationMode.AUTO_WITH_ASPECT_RATIO）效果
 
-![img](figures/NavigationModeAUTO_WITH_ASPECT_RATIO.gif)
+img
 
 ### navBarPosition
 
@@ -38,21 +38,21 @@ navBarPosition用于控制导航栏显示的位置，用navBarPosition控制导�
 
 **图5** 系统语言为LTR时NavBarPosition.Start效果
 
-![img](figures/LTR-NavBarPositionStart.png)
+img
 
 **图6** 系统语言为RTL时NavBarPosition.Start效果
 
-![img](figures/RTL-NavBarPositionStar.png)
+img
 
 **NavBarPosition.End**
 
 **图7** 系统语言为LTR时NavBarPosition.End效果
 
-![img](figures/LTR-NavBarPositionEnd.png)
+img
 
 **图8** 系统语言为RTL时NavBarPosition.End效果
 
-![img](figures/RTL-NavBarPositionEnd.png)
+img
 
 ### enableDragBar
 
@@ -60,11 +60,11 @@ enableDragBar用于控制是否显示分栏的拖动按钮。
 
 **图9** enableDragBar为false效果
 
-![img](figures/enableDragBar-false.png)
+img
 
 **图10** enableDragBar为true
 
-![img](figures/enableDragBar-true.png)
+img
 
 ### navBarWidth
 
@@ -119,7 +119,7 @@ splitPlaceholder用于设置分栏模式下内容区的默认占位页。分栏�
 
 子页代码：
 
-<!-- @[NewsDetail](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/splitmode/NewsDetail.ets) -->
+<!-- @NewsDetail -->
 
 ``` TypeScript
 // 自定义的参数类型，用于在push页面时给子页传递参数
@@ -165,7 +165,7 @@ struct NewsDetail {
 
 主页代码：
 
-<!-- @[SplitNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/splitmode/SplitNavigation.ets) -->
+<!-- @SplitNavigation -->
 
 ``` TypeScript
 import { NewsItem } from './NewsDetail'
@@ -235,4 +235,4 @@ struct Index {
 
 **图11** 运行效果
 
-![img](figures/NavigationSplitModeExample.gif)
+img

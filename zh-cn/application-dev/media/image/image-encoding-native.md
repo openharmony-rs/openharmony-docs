@@ -35,7 +35,7 @@
 
 如下为图片编码调用关系图：
 
-![Invoking relationship of image native encode](figures/image-encode-native.png)
+Invoking relationship of image native encode
 
 ### 在 CMake 脚本中链接动态库
 

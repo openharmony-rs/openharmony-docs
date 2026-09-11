@@ -13,11 +13,11 @@
 
 应用冷启动过程大致可分成以下四个阶段：应用进程创建&初始化、Application&Ability初始化、Ability生命周期、加载绘制首页。
 
-![](figures/ColdStart.png)
+
 
 **加载绘制首页**不仅是应用冷启动的四个阶段之一，还是首帧绘制最重要的阶段。而它可以分为三个阶段：加载页面、测量和布局、渲染。本文从这三个阶段入手，分成下面三个场景进行案例优化。
 
-![](figures/Render-FirstFrame.png)
+
 
 ## 减少加载页面时间
 
@@ -162,11 +162,11 @@ struct SmartLoad {
 
 优化前页面Build耗时：
 
-![reduce-redundant-operations-when-render-first-frame-all-load](figures/reduce-redundant-operations-when-render-first-frame-all-load.png)
+reduce-redundant-operations-when-render-first-frame-all-load
 
 优化后页面Build耗时：
 
-![reduce-redundant-operations-when-render-first-frame-smart-load](figures/reduce-redundant-operations-when-render-first-frame-smart-load.png)
+reduce-redundant-operations-when-render-first-frame-smart-load
 
 从trace图可以看出，使用ForEach时在Build阶段会创建所有元素，Build耗时65ms290μs，改为使用LazyForEach后Build耗时减少到745μs，性能收益明显。
 
@@ -272,11 +272,11 @@ parentPort.onmessage = (message) => {
 
 优化前loadpage耗时：
 
-![reduce-redundant-operations-when-render-first-frame-task-sync](figures/reduce-redundant-operations-when-render-first-frame-task-sync.png)
+reduce-redundant-operations-when-render-first-frame-task-sync
 
 优化后loadpage耗时：
 
-![reduce-redundant-operations-when-render-first-frame-task-async](figures/reduce-redundant-operations-when-render-first-frame-task-async.png)
+reduce-redundant-operations-when-render-first-frame-task-async
 
 从trace图可以看出，优化前加载页面时loadpage耗时2s778ms807μs，其中主要耗时函数为自定义组件的生命周期函数aboutToAppear，将aboutToAppear中的耗时操作放到worker子线程中执行后，loadpage耗时减少到4ms745μs，页面加载时间大幅减少。
 
@@ -349,11 +349,11 @@ struct AsyncLoadImage {
 
 优化前布局耗时：
 
-![reduce-redundant-operations-when-render-first-frame-image-sync](figures/reduce-redundant-operations-when-render-first-frame-image-sync.png)
+reduce-redundant-operations-when-render-first-frame-image-sync
 
 优化后布局耗时：
 
-![reduce-redundant-operations-when-render-first-frame-image-async](figures/reduce-redundant-operations-when-render-first-frame-image-async.png)
+reduce-redundant-operations-when-render-first-frame-image-async
 
 在优化前的trace图中可以看到，同步加载的每一张图片在参与布局时都会执行CreateImagePixelMap去创建图像，导致页面布局时间过长，FlushLayoutTask阶段耗时346ms458μs。图像使用异步加载进行优化后，页面布局时不再执行创建图像的任务，FlushLayoutTask阶段耗时减少到了2ms205μs，页面布局更快。
 
@@ -437,11 +437,11 @@ struct Depth2 {
 
 优化前布局耗时：
 
-![reduce-redundant-operations-when-render-first-frame-view-nested-layout](figures/reduce-redundant-operations-when-render-first-frame-view-nested-layout.png)
+reduce-redundant-operations-when-render-first-frame-view-nested-layout
 
 优化后布局耗时：
 
-![reduce-redundant-operations-when-render-first-frame-view-unnested-layout](figures/reduce-redundant-operations-when-render-first-frame-view-unnested-layout.png)
+reduce-redundant-operations-when-render-first-frame-view-unnested-layout
 
 根据trace图对比优化前后的布局时长，优化前FlushLayoutTask阶段耗时11ms48μs，优化后FlushLayoutTask耗时减少到5ms33μs，布局时间明显减少。
 
@@ -509,19 +509,19 @@ struct IsVisibleExample {
 
 优化前页面Build耗时：
 
-![reduce-redundant-operations-when-render-first-frame-visibility-build](figures/reduce-redundant-operations-when-render-first-frame-visibility-build.png)
+reduce-redundant-operations-when-render-first-frame-visibility-build
 
 优化前render_service首帧耗时：
 
-![reduce-redundant-operations-when-render-first-frame-visibility-rs](figures/reduce-redundant-operations-when-render-first-frame-visibility-rs.png)
+reduce-redundant-operations-when-render-first-frame-visibility-rs
 
 优化后Build耗时：
 
-![reduce-redundant-operations-when-render-first-frame-ifelse-build](figures/reduce-redundant-operations-when-render-first-frame-ifelse-build.png)
+reduce-redundant-operations-when-render-first-frame-ifelse-build
 
 优化后render_service首帧耗时：
 
-![reduce-redundant-operations-when-render-first-frame-ifelse-rs](figures/reduce-redundant-operations-when-render-first-frame-ifelse-rs.png)
+reduce-redundant-operations-when-render-first-frame-ifelse-rs
 
 >**说明**：
 >

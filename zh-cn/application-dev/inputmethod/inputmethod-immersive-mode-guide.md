@@ -11,7 +11,7 @@
 为了让应用能够提供一致的沉浸式体验，我们提供了前台应用和输入法应用之间的通信机制。通过该机制，输入法应用根据前台应用设置的沉浸模式来决定最终沉浸模式。
 
 ## 框架原理
-![输入法沉浸模式原理图](./figures/输入法沉浸模式原理图.png)
+输入法沉浸模式原理图
 - 前台应用根据应用场景，设置应用期望的沉浸模式。
 - 输入法框架在拉起输入法应用时会将前台应用期望的沉浸模式传递给输入法应用。
 - 输入法应用根据前台应用的沉浸模式决定最终的沉浸模式，并设置最终沉浸模式给输入法框架。
@@ -19,7 +19,7 @@
 ## 接入指导
 1. 前台应用设置编辑框沉浸模式keyboardappearance。示例代码如下。
 
-   <!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   <!-- @input_case_input_KeyboardAppearance -->
    
    ``` TypeScript
    TextArea({placeholder: '沉浸模式'})
@@ -32,7 +32,7 @@
 
 2. 输入法应用订阅编辑框属性变化事件editorAttributeChanged，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。
 
-   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   <!-- @input_case_input_immersiveMode -->
    
    ``` TypeScript
    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
@@ -54,7 +54,7 @@
 
    设置沉浸模式，示例代码如下。setImmersiveMode接口需使用createPanel获取到Panel实例后，通过实例调用。
    
-   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   <!-- @input_case_input_immersiveMode -->
    
    ``` TypeScript
    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型

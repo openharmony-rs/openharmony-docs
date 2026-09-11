@@ -143,7 +143,7 @@ SQL语句中的函数，如下所示：
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
-   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@vector_TS_isVectorSupported--> 
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -171,7 +171,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@vector_TS_getStore--> 
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -202,7 +202,7 @@ SQL语句中的函数，如下所示：
    
    示例代码如下：
 
-   <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@vector_TS_execute_insert-->
    
    ``` TypeScript
    try {
@@ -218,7 +218,7 @@ SQL语句中的函数，如下所示：
 
 4. 获取到RdbStore后，调用execute接口修改或删除数据。示例代码如下：
 
-   <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@vector_TS_execute_update_and_delete-->
    
    ``` TypeScript
    // 修改数据
@@ -251,7 +251,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@vector_TS_query--> 
    
    ``` TypeScript
    // 单表查询
@@ -316,7 +316,7 @@ SQL语句中的函数，如下所示：
 
 6. 创建视图并执行查询。示例代码如下：
 
-   <!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@vector_TS_execute_create_view-->
    
    ``` TypeScript
    // 视图查询
@@ -380,7 +380,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@vector_TS_execute_create_index-->
    
    ``` TypeScript
    // 基础用法
@@ -423,7 +423,7 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
-   <!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@vector_TS_execute_gsdiskann-->
    
    ``` TypeScript
    try {
@@ -467,7 +467,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@vector_TS_execute_auto_dataAging-->
    
    ``` TypeScript
    try {
@@ -492,7 +492,7 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
-    <!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@vector_TS_execute_dataAging-->
     
     ``` TypeScript
     try {
@@ -507,7 +507,7 @@ SQL语句中的函数，如下所示：
 
     调用deleteRdbStore方法，删除数据库及数据库相关文件。示例代码如下：
 
-    <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@vector_TS_deleteStore-->
     
     ``` TypeScript
     try {

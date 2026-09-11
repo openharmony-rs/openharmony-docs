@@ -17,7 +17,7 @@ Asset Store Kit（关键资产存储服务，简称ASSET）用于提供用户短
 
 ASSET数据存储结构如下图所示：
 
-![asset-store-architecture](figures/asset-store-architecture.png)
+asset-store-architecture
 
 ## 基本概念
 

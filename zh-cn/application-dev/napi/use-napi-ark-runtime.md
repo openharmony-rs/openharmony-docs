@@ -18,7 +18,7 @@
 
 - 接口声明
 
-   <!-- @[napi_ark_runtime_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @napi_ark_runtime_dts -->
    
    ``` TypeScript
    // index.d.ts
@@ -46,7 +46,7 @@
 
   在当前模块的build-profile.json5文件中进行以下配置：
 
-  <!-- @[napi_ark_runtime_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
+  <!-- @napi_ark_runtime_build -->
   
   ``` JSON5
     "buildOption": {
@@ -96,7 +96,7 @@
 
   新建线程并创建ArkTS基础运行时环境，加载自定义模块请参考napi_load_module_with_info。
 
-  <!-- @[napi_ark_runtime_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  <!-- @napi_ark_runtime_cpp -->
   
   ``` C++
   #include "napi/native_api.h"
@@ -170,7 +170,7 @@
 
 - ArkTS代码示例
   
-  <!-- @[napi_ark_runtime_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/ObjectUtils.ets) -->
+  <!-- @napi_ark_runtime_utils -->
   
   ``` TypeScript
   export function Logger() {
@@ -178,7 +178,7 @@
   }
   ```
 
-  <!-- @[napi_ark_runtime_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @napi_ark_runtime_ets -->
   
   ``` TypeScript
   // index.ets

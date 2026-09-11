@@ -77,7 +77,7 @@ Web组件焦点、焦点链和走焦的详情说明请参考ArkUI焦点基础概
 1. requestFocus接口允许应用开发者主动控制让Web组件获焦。
 2. onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+<!-- @WebFocusManagement -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -143,7 +143,7 @@ struct WebComponent {
 
 通过requestFocus接口主动请求获焦，并监听通用接口onFocus和onBlur事件，改变Web组件边框颜色。
 
-![web-focus1.gif](figures/web-focus1.gif)
+web-focus1.gif
 
 ## Web组件内H5元素焦点控制
 - W3C标准事件focus，前端感知网页获焦
@@ -166,7 +166,7 @@ onblur = (event) => {};
 
 **示例：**
 
-<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+<!-- @WebFocusManagement2 -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -225,4 +225,4 @@ form.addEventListener(
 
 通过监听W3C接口focus和blur事件，改变输入背景色。
 
-![web-focus2.gif](figures/web-focus2.gif)
+web-focus2.gif

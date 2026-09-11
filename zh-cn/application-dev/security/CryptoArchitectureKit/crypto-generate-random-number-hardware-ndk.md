@@ -56,7 +56,7 @@
 
 5. 调用OH_CryptoRand_GetAlgoName，获取随机数生成器使用的算法名称。
 
-<!-- @[rand_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureHardWareRandomNumberGeneration/entry/src/main/cpp/types/project/rand_test.cpp) -->
+<!-- @rand_test_cpp -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"

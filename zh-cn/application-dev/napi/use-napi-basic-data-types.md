@@ -52,7 +52,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_get_value_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_uint32 -->
 
 ``` C++
 // napi_get_value_uint32
@@ -80,7 +80,7 @@ static napi_value GetValueUint32(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_uint32_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_uint32_api -->
 
 ``` TypeScript
 export const getValueUint32: <T>(data: T) => number | undefined; // napi_get_value_uint32
@@ -88,7 +88,7 @@ export const getValueUint32: <T>(data: T) => number | undefined; // napi_get_val
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_uint32 -->
 
 ``` TypeScript
 // napi_get_value_uint32
@@ -108,7 +108,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_uint32_number %{public}d',
 
 cpp部分代码
 
-<!-- @[napi_get_value_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_int32 -->
 
 ``` C++
 // napi_get_value_int32
@@ -134,7 +134,7 @@ static napi_value GetValueInt32(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_int32_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_int32_api -->
 
 ``` TypeScript
 export const getValueInt32: (value: number | string) => number | undefined; // napi_get_value_int32
@@ -142,7 +142,7 @@ export const getValueInt32: (value: number | string) => number | undefined; // n
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_int32 -->
 
 ``` TypeScript
 // napi_get_value_int32
@@ -170,7 +170,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_int32_number_-Infinity %{public}d',
 
 cpp部分代码
 
-<!-- @[napi_get_value_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_int64 -->
 
 ``` C++
 // napi_get_value_int64
@@ -196,7 +196,7 @@ static napi_value GetValueInt64(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_int64_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_int64_api -->
 
 ``` TypeScript
 export const getValueInt64: (value: number | string) => number | undefined; // napi_get_value_int64
@@ -204,7 +204,7 @@ export const getValueInt64: (value: number | string) => number | undefined; // n
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_int64 -->
 
 ``` TypeScript
 // napi_get_value_int64
@@ -230,7 +230,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_int64_number_-Infinity %{public}d',
 
 cpp部分代码
 
-<!-- @[napi_get_value_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_double -->
 
 ``` C++
 // napi_get_value_double
@@ -253,7 +253,7 @@ static napi_value GetDouble(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_double_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_double_api -->
 
 ``` TypeScript
 export const getDouble: (value: number | string) => number | undefined; // napi_get_value_double
@@ -261,7 +261,7 @@ export const getDouble: (value: number | string) => number | undefined; // napi_
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_double -->
 
 ``` TypeScript
 // napi_get_value_double
@@ -277,7 +277,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_double_not_number %{public}s', testNap
 
 cpp部分代码
 
-<!-- @[napi_create_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_int32 -->
 
 ``` C++
 // napi_create_int32
@@ -299,7 +299,7 @@ static napi_value CreateInt32(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_int32_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_int32_api -->
 
 ``` TypeScript
 export const createInt32: () => number; // napi_create_int32
@@ -307,7 +307,7 @@ export const createInt32: () => number; // napi_create_int32
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_int32 -->
 
 ``` TypeScript
 // napi_create_int32
@@ -320,7 +320,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_int32：' + testNapi.cr
 
 cpp部分代码
 
-<!-- @[napi_create_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_uint32 -->
 
 ``` C++
 // napi_create_uint32
@@ -344,7 +344,7 @@ static napi_value CreateUInt32(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_uint32_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_uint32_api -->
 
 ``` TypeScript
 export const createUInt32: () => number; // napi_create_uint32
@@ -352,7 +352,7 @@ export const createUInt32: () => number; // napi_create_uint32
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_uint32 -->
 
 ``` TypeScript
 // napi_create_uint32
@@ -365,7 +365,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_uint32: ' + testNapi.cr
 
 cpp部分代码
 
-<!-- @[napi_create_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_int64 -->
 
 ``` C++
 // napi_create_int64
@@ -388,7 +388,7 @@ static napi_value CreateInt64(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_int64_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_int64_api -->
 
 ``` TypeScript
 export const createInt64: () => number; // napi_create_int64
@@ -396,7 +396,7 @@ export const createInt64: () => number; // napi_create_int64
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_int64 -->
 
 ``` TypeScript
 // napi_create_int64
@@ -409,7 +409,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_int64: ' + testNapi.cre
 
 cpp部分代码
 
-<!-- @[napi_create_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_double -->
 
 ``` C++
 // napi_create_double
@@ -429,7 +429,7 @@ static napi_value CreateDouble(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_double_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_double_api -->
 
 ``` TypeScript
 export const createDouble: () => number; // napi_create_double
@@ -437,7 +437,7 @@ export const createDouble: () => number; // napi_create_double
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBasicDataTypes/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_double -->
 
 ``` TypeScript
 // napi_create_double

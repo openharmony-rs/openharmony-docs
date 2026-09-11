@@ -43,7 +43,7 @@
 
 快启技术会提前完成启动流程中可复用部分的初始化工作。应用启动时，可复用相关初始化结果，从而跳过这部分启动流程，达到启动加速的目标。如下图所示，快启相较于普通启动可跳过启动过程中的部分阶段，从而减少启动时延：
 
-![image](./figures/hyperstartup-application-process.png)
+image
 
 **包含在快启点内的流程有**：AbilityStage模块加载、AbilityStage.onCreate和UIAbility模块加载。其中，在模块加载过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
 
@@ -297,7 +297,7 @@ export class LauncherAbility extends UIAbility {
 
 * **将启动过程中的加载依赖库逻辑前置到快启点内**
 
-  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。通过[DevEco Profiler调优工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-profiler)扫描关键词“Evaluate”，获取启动过程中的import动作。
+  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。通过DevEco Profiler调优工具扫描关键词“Evaluate”，获取启动过程中的import动作。
 
   不建议将启动后的import动作前置到启动流程甚至快启初始化流程中，否则可能导致以下问题。
 

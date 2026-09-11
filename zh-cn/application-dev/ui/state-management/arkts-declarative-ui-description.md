@@ -20,7 +20,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 如果组件接口定义中不包含必选构造参数，则组件后面的“()”不需要配置任何内容。例如：Divider组件不包含构造参数。
 
- <!-- @[segment1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) --> 
+ <!-- @segment1 --> 
  
  ``` TypeScript
  Column() {
@@ -36,7 +36,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - Image组件的必选参数src。
 
-   <!-- @[segment2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @segment2 -->
    
    ``` TypeScript
    Image('https://xyz/test.jpg')
@@ -45,7 +45,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - Text组件的非必选参数content。
 
-  <!-- @[segment3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment3 -->
   
   ``` TypeScript
   // string类型的参数
@@ -60,7 +60,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
   例如，设置变量或表达式来构造Image和Text组件的参数。
 
-  <!-- @[segment4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment4 -->
   
   ``` TypeScript
   Image(this.imagePath)
@@ -76,7 +76,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 配置Text组件的字体大小。
 
-  <!-- @[segment5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment5 -->
   
   ``` TypeScript
   Text('test')
@@ -85,7 +85,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 配置组件的多个属性。
 
-  <!-- @[segment6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment6 -->
   
   ``` TypeScript
   Image('test.jpg')
@@ -96,7 +96,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 除了直接传递常量参数，还可以传递变量或表达式。
 
-  <!-- @[segment7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment7 -->
   
   ``` TypeScript
   Text('hello')
@@ -110,7 +110,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
   例如，可以按以下方式配置Text组件的颜色和字体样式。
 
-  <!-- @[segment8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment8 -->
 
   ``` TypeScript
   Text('hello')
@@ -126,7 +126,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 使用箭头函数配置组件的事件方法。
 
-  <!-- @[segment9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment9 -->
 
   ``` TypeScript
   Button('Click me')
@@ -137,7 +137,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 使用箭头函数表达式配置组件的事件方法，要求使用“() => {...}”，以确保函数与组件绑定，同时符合ArkTS语法规范。
 
-  <!-- @[segment10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment10 -->
   
   ``` TypeScript
   Button('add counter')
@@ -148,7 +148,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 使用组件的成员函数配置组件的事件方法，需要bind this。ArkTS语法不建议使用成员函数配合bind this来配置组件的事件方法。
 
-  <!-- @[segment11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment11 -->
   
   ``` TypeScript
     myClickHandler(): void {
@@ -162,7 +162,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 使用声明的箭头函数时可以直接调用，不需要bind this。
 
-  <!-- @[segment12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment12 -->
   
   ``` TypeScript
     fn = () => {
@@ -186,7 +186,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 以下是简单的Column组件配置子组件的示例。
 
-  <!-- @[segment13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment13 -->
   
   ``` TypeScript
   Column() {
@@ -201,7 +201,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
 
 - 容器组件均支持子组件配置，可以实现相对复杂的多级嵌套。
 
-  <!-- @[segment14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @segment14 -->
   
   ``` TypeScript
   Column() {

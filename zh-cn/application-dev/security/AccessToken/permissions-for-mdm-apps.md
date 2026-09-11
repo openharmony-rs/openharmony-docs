@@ -14,7 +14,7 @@ MDM应用的详细介绍，请参考MDM Kit简介。
 
 > **注意：**
 > 
-> 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
+> 以下权限不支持自动签名，因此在调试和发布阶段，均需参照手动签名的步骤，完成手动签名。
 <!--RP2End-->
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO

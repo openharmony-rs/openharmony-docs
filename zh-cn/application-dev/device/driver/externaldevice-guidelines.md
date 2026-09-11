@@ -43,7 +43,7 @@
 
 开发示例如下（仅供参考）：为开发者提供的示例代码为同时开发客户端和服务端的Demo，并实现IPC通信。
 
-1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。
+1. 创建新工程，请参考创建一个新的工程，创建一个OpenHarmony工程。
 
    > **说明：**
    >
@@ -57,7 +57,7 @@
    >
    > 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。
 
-   <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @driver_ui_step2 --> 
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -77,7 +77,7 @@
    >
    > 第3步开始，以下接口均在struct Index{}中定义。
 
-   <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @driver_ui_step3 --> 
    
    ``` TypeScript
    @State message: string = 'Hello';
@@ -86,7 +86,7 @@
 
 4. 定义查询设备接口，通过queryDevices获取目标设备ID。
 
-   <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @driver_ui_step4 --> 
    
    ``` TypeScript
    private async queryTargetDeviceId(): Promise<number> {
@@ -113,7 +113,7 @@
 
 5. 定义获取对应驱动远程对象的接口，通过bindDeviceDriver获取远程对象。
 
-   <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @driver_ui_step5 --> 
    
    ``` TypeScript
    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
@@ -132,7 +132,7 @@
 
 6. 定义与远程对象通信接口，通过sendMessageRequest与远程对象进行IPC通信。
 
-   <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @driver_ui_step6 --> 
    
    ``` TypeScript
    private async communicateWithRemote(): Promise<void> {
@@ -167,9 +167,9 @@
    }
    ```
 
-7. 渲染UI界面，更多UI界面开发请参考[UI开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-ui-development)。
+7. 渲染UI界面，更多UI界面开发请参考UI开发。
 
-   <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @driver_ui_step7 --> 
    
    ``` TypeScript
    build() {
@@ -218,5 +218,5 @@
       }
       ```
 
-自动签名方法： 请参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+自动签名方法： 请参考配置调试签名。
 <!--RP1End-->

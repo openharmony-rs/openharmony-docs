@@ -12,7 +12,7 @@
 
 通过openMenu可以弹出菜单。
    
- <!-- @[open_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+ <!-- @open_menu -->
  
  ``` TypeScript
  this.getUIContext().getPromptAction()
@@ -27,13 +27,13 @@
    });
  ```
  
- ![openMenu](figures/openMenu.gif)
+ openMenu
 
 ### 创建ComponentContent
    
    通过调用openMenu接口弹出菜单，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考ComponentContent说明。
    
-  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
+  <!-- @content_node --> 
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
@@ -42,7 +42,7 @@
    
    如果在wrapBuilder中包含其他组件（例如：Popup、Chip组件），则应在创建ComponentContent时设置nestingBuilderSupported属性为true。
    
- <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+ <!-- @build_text -->
  
  ``` TypeScript
  @Builder
@@ -105,7 +105,7 @@
    
 - target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
    
-   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+   <!-- @frame_node -->
    
    ``` TypeScript
    let frameNode: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(this.getUniqueId());
@@ -114,7 +114,7 @@
    
 - target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性id值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
    
-   <!-- @[openMenuWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/OpenMenuWithTargetIdString.ets) -->
+   <!-- @openMenuWithTargetIdString -->
    
    ``` TypeScript
    build() {
@@ -159,7 +159,7 @@
    
    通过调用openMenu接口弹出菜单，可以设置MenuOptions中的属性调整菜单样式。title属性不生效。preview参数仅支持设置MenuPreviewMode类型。
    
-  <!-- @[menu_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+  <!-- @menu_options -->
   
   ``` TypeScript
   private options: MenuOptions = { enableArrow: true, placement: Placement.Bottom };
@@ -169,7 +169,7 @@
 
 从API version 18开始，通过updateMenu可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新MenuOptions中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
-<!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
+<!-- @update_menu -->
 
 ``` TypeScript
 this.getUIContext().getPromptAction()
@@ -184,13 +184,13 @@ this.getUIContext().getPromptAction()
   });
 ```
    
-   ![openMenu](figures/openMenu.gif)
+   openMenu
 
 ## 关闭菜单
 
 从API version 18开始，通过调用closeMenu可以关闭菜单。
    
-<!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
+<!-- @close_menu --> 
 
 ``` TypeScript
 this.getUIContext().getPromptAction()
@@ -203,7 +203,7 @@ this.getUIContext().getPromptAction()
   });
 ```
    
-![openMenu](figures/openMenu.gif)
+openMenu
 
 > **说明：**
 >

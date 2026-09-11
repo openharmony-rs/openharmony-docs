@@ -37,7 +37,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 使用MindSpore Lite进行模型训练的开发流程如下图所示。
 
 **图 1** 使用MindSpore Lite进行模型训练的开发流程
-![how-to-use-train](figures/train_sequence_unify_api.png)
+how-to-use-train
 
 进入主要流程之前需要先引用相关的头文件，并编写函数生成随机的输入，具体如下：
 
@@ -70,8 +70,8 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
     准备的模型格式为`.ms`，本文以lenet_train.ms为例（此模型是提前准备的`ms`模型，本文相关效果仅以此模型文件为例）。开发者请自行准备所需的模型，可以按如下步骤操作：
 
-    - 首先基于MindSpore架构使用Python创建网络模型，并导出为`.mindir`文件，详细指南参考[这里](https://www.mindspore.cn/tutorials/zh-CN/r2.1/beginner/quick_start.html)。
-    - 然后将`.mindir`模型文件转换成`.ms`文件，转换操作步骤可以参考[训练模型转换](https://www.mindspore.cn/lite/docs/zh-CN/r2.1/use/converter_train.html)，`.ms`文件可以导入端侧设备并基于MindSpore Lite端侧框架进行训练。
+    - 首先基于MindSpore架构使用Python创建网络模型，并导出为`.mindir`文件，详细指南参考这里。
+    - 然后将`.mindir`模型文件转换成`.ms`文件，转换操作步骤可以参考训练模型转换，`.ms`文件可以导入端侧设备并基于MindSpore Lite端侧框架进行训练。
 
 2. 创建上下文，设置设备类型、训练配置等参数。
 
@@ -126,7 +126,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
 4. 输入数据。
 
-    模型执行之前需要向输入的[张量](mindspore-lite-term.md#tensor张量)中填充数据。本例使用随机的数据对模型进行填充。
+    模型执行之前需要向输入的张量中填充数据。本例使用随机的数据对模型进行填充。
 
     ```c
     // Get Inputs

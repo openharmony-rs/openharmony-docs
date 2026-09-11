@@ -44,7 +44,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_promise -->
 
 ``` C++
 // napi_is_promise
@@ -71,7 +71,7 @@ static napi_value IsPromise(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_is_promise_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_is_promise_api -->
 
 ``` TypeScript
 export const isPromise: <T>(value: T) => boolean; // napi_is_promise
@@ -79,7 +79,7 @@ export const isPromise: <T>(value: T) => boolean; // napi_is_promise
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_promise -->
 
 ``` TypeScript
 // napi_is_promise
@@ -124,7 +124,7 @@ napi_value NapiPromiseDemo(napi_env env, napi_callback_info info)
 
 CPP部分代码
 
-<!-- @[napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_resolve_reject_deferred -->
 
 ``` C++
 // napi_resolve_deferred & napi_reject_deferred
@@ -187,7 +187,7 @@ static napi_value ResolveRejectDeferred(napi_env env, napi_callback_info info)
 
 接口声明示例
 
-<!-- @[napi_resolve_reject_deferred_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_resolve_reject_deferred_api -->
 
 ``` TypeScript
 export const createPromise: () => boolean | undefined; // napi_resolve_deferred & napi_reject_deferred
@@ -197,7 +197,7 @@ export const resolveRejectDeferred: (resolve: string, reject: string, status: bo
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_resolve_reject_deferred -->
 
 ``` TypeScript
 // napi_resolve_deferred & napi_reject_deferred

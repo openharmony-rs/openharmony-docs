@@ -6,5 +6,5 @@
 <!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-- [Contacts Kit简介](contacts-intro.md)
-- [使用picker管理联系人](contacts-addcontactviaui.md)
+- Contacts Kit简介
+- 使用picker管理联系人

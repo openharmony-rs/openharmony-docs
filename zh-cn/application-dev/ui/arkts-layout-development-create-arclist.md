@@ -15,7 +15,7 @@
 
 ArcList可通过调用以下接口来创建。
 
-<!-- @[arcList_create_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCreate.ets) -->
+<!-- @arcList_create_start -->
 
 ``` TypeScript
 ArcList({
@@ -39,7 +39,7 @@ ArcList({
 
 弧形列表视图垂直展示项目集合，当列表项超出屏幕范围时，提供滚动功能，这使得它非常适合展示大型数据集合。在最简单的弧形列表形式中，ArcList静态创建其列表项ArcListItem的内容。
 
-<!-- @[arcListShow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListShow.ets) -->
+<!-- @arcListShow_start -->
 
 ``` TypeScript
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute, LengthMetrics } from '@kit.ArkUI';
@@ -156,7 +156,7 @@ export struct ArcListShow {
 
   **图1** 显示弧形列表数据
 
-![arcList_item](figures/arcList_item.png)
+arcList_item
 
 ## 迭代弧形列表内容
 
@@ -164,7 +164,7 @@ export struct ArcListShow {
 
 ArkTS通过ForEach提供了组件的循环渲染能力。以简单的联系人列表为例，将联系人名称和头像数据以Contact类结构存储到contacts数组中，使用ForEach中嵌套的ArcListItem来代替多个平铺的、内容相似的ArcListItem，从而减少重复代码，使代码更加简洁高效。
 
-<!-- @[arcListContentsTitle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListContents.ets) -->
+<!-- @arcListContentsTitle_start -->
 
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
@@ -236,7 +236,7 @@ export struct ArcListContents {
 
   **图2** 迭代弧形列表内容
 
-![arcList_foreach](figures/arcList_foreach.png)
+arcList_foreach
 
 ## 自定义弧形列表样式
 
@@ -246,7 +246,7 @@ export struct ArcListContents {
 
 1. 首先，需要构造自定义标题组件customHeader。
 
-   <!-- @[create_customHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   <!-- @create_customHeader_start -->
    
    ``` TypeScript
    @Builder
@@ -261,7 +261,7 @@ export struct ArcListContents {
 
 2. 由于header参数的类型是ComponentContent，所以需要对自定义标题组件进行封装。
 
-   <!-- @[componentContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   <!-- @componentContent_start -->
    
    ``` TypeScript
    context: UIContext = this.getUIContext();
@@ -270,7 +270,7 @@ export struct ArcListContents {
 
 3. 最后，通过header参数将arcListHeader设置到弧形列表中。
 
-   <!-- @[arcListHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+   <!-- @arcListHeader_start -->
    
    ``` TypeScript
    ArcList({ header: this.arcListHeader }) {
@@ -288,13 +288,13 @@ export struct ArcListContents {
 
   **图3** 自定义弧形列表标题
 
-![arcList_header](figures/arcList_header.png)
+arcList_header
 
 ### 设置弧形列表项间距
 
 在初始化列表时，若需在列表项之间添加间距，可以通过space属性实现。例如，为在每个列表项的垂直方向上增加30px的间距。
 
-<!-- @[arcListSpace_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+<!-- @arcListSpace_start -->
 
 ``` TypeScript
 ArcList({ initialIndex: 2 }) {
@@ -305,13 +305,13 @@ ArcList({ initialIndex: 2 }) {
 
   **图4** 设置弧形列表项间距
 
-![arcList_space](figures/arcList_space.png)
+arcList_space
 
 ### 列表项关闭自动缩放
 
 在弧形列表中，列表项默认具有在接近上下两端时自动缩放的效果。然而，在某些情况下，可能不希望有这种缩放效果。此时，可以通过设置ArcListItem的autoScale属性为false来禁用该效果。例如，如图5所示，“网络”和“显示”两个列表项，在关闭了自动缩放属性后，无论它们所处的位置如何，都不会出现缩放效果。
 
-<!-- @[arcListScale_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
+<!-- @arcListScale_start -->
 
 ``` TypeScript
 ArcListItem() {
@@ -322,7 +322,7 @@ ArcListItem() {
 
   **图5** 列表项关闭自动缩放
 
-![arcListItem_autoScale](figures/arcListItem_autoScale.png)
+arcListItem_autoScale
 
 ### 添加内置滚动条
 
@@ -330,7 +330,7 @@ ArcListItem() {
 
 在使用ArcList组件时，可以通过scrollBar属性来控制弧形列表滚动条的显示。scrollBar的取值类型为BarState，当设置为BarState.Auto时，表示滚动条将按需显示。在这种模式下，当用户触摸到滚动条区域时，滚动条会显示出来，支持上下拖拽以快速浏览内容，且在拖拽过程中滚动条会变粗。若用户不进行任何操作，滚动条将在2秒后自动消失。此外，还可以通过scrollBarWidth属性来设置滚动条在按压状态下的宽度，以及通过scrollBarColor属性来设置滚动条的颜色。
 
-<!-- @[arcListBuiltInScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/arcListBuiltInScrollerBar.ets) -->
+<!-- @arcListBuiltInScrollBar_start -->
 
 ``` TypeScript
 ArcList({ header: this.arcListHeader }) {
@@ -343,7 +343,7 @@ ArcList({ header: this.arcListHeader }) {
 
   **图6** 弧形列表的内置滚动条 
 
-![arcList_scrollBar](figures/arcList_scrollBar.gif)
+arcList_scrollBar
 
 ## 添加外置滚动条ArcScrollBar
 
@@ -351,7 +351,7 @@ ArcList({ header: this.arcListHeader }) {
 
 1. 首先，需要创建一个Scroller类型的对象arcListScroller。
 
-   <!-- @[create_arcListScroller_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   <!-- @create_arcListScroller_start -->
    
    ``` TypeScript
    private arcListScroller: Scroller = new Scroller();
@@ -359,7 +359,7 @@ ArcList({ header: this.arcListHeader }) {
 
 2. 然后，弧形列表通过scroller参数绑定滚动控制器。
 
-   <!-- @[bind_arcList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   <!-- @bind_arcList_start -->
    
    ``` TypeScript
    // 将arcListScroller用于初始化ArcList组件的scroller参数，完成arcListScroller与弧形列表的绑定。
@@ -370,7 +370,7 @@ ArcList({ header: this.arcListHeader }) {
 
 3. 最后，弧形滚动条通过scroller参数绑定滚动控制器。
 
-   <!-- @[bind_arcScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
+   <!-- @bind_arcScrollBar_start -->
    
    ``` TypeScript
    // 将arcListScroller用于初始化ArcScrollBar组件的scroller参数，完成arcListScroller与滚动条的绑定。
@@ -379,7 +379,7 @@ ArcList({ header: this.arcListHeader }) {
 
   **图7** 弧形列表的外置滚动条 
 
-![arcScrollBar](figures/arcScrollBar.gif)
+arcScrollBar
 
 >**说明：**
 >
@@ -396,7 +396,7 @@ ArcList({ header: this.arcListHeader }) {
 在选中索引项时，根据此时选中项的索引值index，重新计算列表联系人对应的位置，然后通过列表绑定的滚动控制器arcListScroller的scrollToIndex方法控制列表跳转到对应的联系人位置。弧形列表ArcList可通过scroller参数绑定Scroller（滚动控制器）。
 
 
-<!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->
+<!-- @arcAlphabetIndexer_start -->
 
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
@@ -463,7 +463,7 @@ export struct ArcListArcIndexerBar {
 
   **图8** 弧形列表与弧形索引条联动
 
-![arcAlphabetIndexer](figures/arcAlphabetIndexer.gif)
+arcAlphabetIndexer
 
 ## 响应列表项侧滑
 
@@ -473,7 +473,7 @@ ArcListItem的swipeAction属性可用于实现列表项的左右滑动功能。s
 
 1. 首先，实现尾端滑出组件的构建。
 
-   <!-- @[create_SideSlip_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   <!-- @create_SideSlip_start -->
    
    ``` TypeScript
    @Builder
@@ -507,7 +507,7 @@ ArcListItem的swipeAction属性可用于实现列表项的左右滑动功能。s
 2. 然后，绑定swipeAction属性到可左滑的ArcListItem上。
 
 
-   <!-- @[bind_swipeAction_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   <!-- @bind_swipeAction_start -->
    
    ``` TypeScript
    // 构建ArcList时，通过ForEach基于数据源this.contacts循环渲染ArcListItem
@@ -527,7 +527,7 @@ ArcListItem的swipeAction属性可用于实现列表项的左右滑动功能。s
 
   **图9** 侧滑删除列表项
 
-![arcListItem_swipeAction](figures/arcListItem_swipeAction.gif)
+arcListItem_swipeAction
 
 ## 处理长列表
 
@@ -536,7 +536,7 @@ ArcListItem的swipeAction属性可用于实现列表项的左右滑动功能。s
 当使用懒加载方式渲染列表时，为了减少列表滑动时出现白块，ArcList组件提供了cachedCount属性，该属性用于设置列表项缓存数，只在懒加载LazyForEach中生效。
 
 
-<!-- @[arcLongList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcLongList.ets) -->
+<!-- @arcLongList_start -->
 
 ``` TypeScript
 ArcList() {
@@ -559,7 +559,7 @@ ArcList() {
 >
 > 仅设置默认焦点相关属性不能保证ArcList获焦。ArcList中还需包含可获焦的叶子节点组件，具体设置方式请参考设置组件是否可获焦。
 
-<!-- @[arcListCrown_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
+<!-- @arcListCrown_start -->
 
 ``` TypeScript
 ArcList({
@@ -577,7 +577,7 @@ ArcList({
 
 还可以通过digitalCrownSensitivity属性设置表冠响应事件的灵敏度，以应对不同量级的列表项数据。列表项数据较多时可以设置更高的响应事件灵敏度，数据较少时可以设置较低的响应事件灵敏度。
 
-<!-- @[arcListCrownDigitalCrownSensitivity_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
+<!-- @arcListCrownDigitalCrownSensitivity_start -->
 
 ``` TypeScript
 ArcList({

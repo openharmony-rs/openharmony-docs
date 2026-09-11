@@ -41,7 +41,7 @@
   - 调用FocusController的activate(false)方法。
   - 发生点击事件时（包括触屏点击或鼠标左键点击）。
 
-<!-- @[dynamic_focus_active](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusActive.ets) -->
+<!-- @dynamic_focus_active -->
 
 ``` TypeScript
 @Entry
@@ -66,12 +66,12 @@ export struct FocusActiveExample {
 
 按下Tab键，焦点激活态显示。点击鼠标退出焦点激活态。
 
-![Active_Focus_1](figures/Active_Focus_1.gif)
+Active_Focus_1
 
 
 调用activate接口进入和退出焦点激活态。
 
-![Active_Focus_2](figures/Active_Focus_2.gif)
+Active_Focus_2
 
 示例操作步骤：
 1. 点击Set Active按钮，调用activate接口进入焦点激活态。
@@ -107,7 +107,7 @@ export struct FocusActiveExample {
 
 在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
 
-<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
+<!-- @dynamic_focus_transfer -->
 
 ``` TypeScript
 @Entry
@@ -202,7 +202,7 @@ export struct FocusTransferExample {
 
 运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
 
-![Liner_Focus_1](figures/Focus_transfer.gif)
+Liner_Focus_1
 
 ### 走焦规范
 
@@ -272,7 +272,7 @@ export struct FocusTransferExample {
 - 方向键走焦：当使用与容器定义方向垂直的方向键时，容器不接受该方向的走焦请求。例如，在横向的Row容器中，无法使用方向键进行上下移动。
 - 边界处理：当焦点位于容器的首尾子节点时，容器将拒绝与当前焦点方向相反的方向键走焦请求。例如，焦点在一个横向的Row容器的第一个子节点上时，该容器无法处理方向键左的走焦请求。
 
-<!-- @[dynamic_focus_liner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets) -->
+<!-- @dynamic_focus_liner -->
 
 ``` TypeScript
 @Entry
@@ -315,15 +315,15 @@ export struct FocusLinerExample {
 
 Tab键走焦：按照子节点的挂载顺序循环走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_1.gif)
+Liner_Focus_1
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-![Liner_Focus_2](figures/Liner_Focus_2.gif)
+Liner_Focus_2
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-![Liner_Focus_3](figures/Liner_Focus_3.gif)
+Liner_Focus_3
 
 
 **投影走焦算法**
@@ -335,7 +335,7 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 - Tab键走焦时，先使用规格1，按照方向键右进行判定，若找到则成功退出，若无法找到，则将当前获焦子组件的位置模拟往下移动该获焦子组件的高度，然后再按照方向键左进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次Tab键走焦请求。
 - Shift+Tab键走焦时，先使用规格1，按照方向键左进行判定，找到则成功退出。若无法找到，则将当前获焦子组件的位置模拟向上移动该获焦子组件的高度，然后再按照方向键右进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次的Shift+Tab键走焦请求。
 
- <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
+ <!-- @dynamic_focus_project_area -->
  
  ``` TypeScript
  @Entry
@@ -372,9 +372,9 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 Flex多行组件布局，组件大小一致，走焦正常。
 
-![Project_Area_Focus_1](figures/Project_Area_Focus_1.gif)
+Project_Area_Focus_1
 
-<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectAreaFocusFlex.ets) -->
+<!-- @dynamic_focus_project_area_flex -->
 
 ``` TypeScript
 @Entry
@@ -405,7 +405,7 @@ export struct ProjectAreaFocusFlexExample {
 
 Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab键走焦至下方4、5按钮组件。
 
-![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
+Project_Area_Focus_2
 
 
 **自定义走焦算法**
@@ -429,7 +429,7 @@ onBlur(event: () => void)
 
 onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-<!-- @[focus_dynamic_reflect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/onFocusBlur.ets) -->
+<!-- @focus_dynamic_reflect -->
 
 ``` TypeScript
 @Entry
@@ -492,7 +492,7 @@ export struct OnFocusBlur {
 ```
 
 
-![focus-event](figures/focus-event.gif)
+focus-event
 
 
 上述示例包含以下3步：
@@ -505,7 +505,7 @@ export struct OnFocusBlur {
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
+<!-- @dynamic_focus_blur --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -623,7 +623,7 @@ focusOnTouch(value: boolean)
 >当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照走焦规范将焦点转移给其他组件。
 
 
- <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
+ <!-- @dynamic_focus_control_manage --> 
  
  ``` TypeScript
  @Entry
@@ -724,7 +724,7 @@ focusOnTouch(value: boolean)
 运行效果：
 
 
-![focus-1.gif](figures/focus-1.gif)
+focus-1.gif
 
 上述示例包含以下3步：
 
@@ -743,7 +743,7 @@ focusOnTouch(value: boolean)
 > - 容器配置有onClick或是单指单击的Tap手势。
 > - 容器本身未设置focusable属性，或设置在onClick或是单指单击的Tap手势之后。
 
-<!-- @[dynamic_focus_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets) -->
+<!-- @dynamic_focus_scope -->
 
 ``` TypeScript
 
@@ -793,7 +793,7 @@ export struct ScopeFocusExample {
 ```
 
 
-![Scope_Focus_1.gif](figures/Scope_Focus_1.gif)
+Scope_Focus_1.gif
 
 上述示例包含以下2步：
 
@@ -807,7 +807,7 @@ tabStop(isTabStop: boolean)
 ```
 设置当前容器组件的tabStop属性，可决定在走焦时焦点是否会停留在当前容器。
 
-<!-- @[dynamic_focus_tab_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabStop.ets) -->
+<!-- @dynamic_focus_tab_stop -->
 
 ``` TypeScript
 @Entry
@@ -837,7 +837,7 @@ export struct TabStopExample {
 }
 ```
 
-![TabStop_Focus_1.gif](figures/TabStop_Focus_1.gif)
+TabStop_Focus_1.gif
 
 上述示例包含以下2步：
 
@@ -854,7 +854,7 @@ defaultFocus(value: boolean)
 
 设置当前组件是否为当前层级页面上的默认焦点。
 
-<!-- @[focus_visualization_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/DefaultFocus.ets) -->
+<!-- @focus_visualization_manage -->
 
 ``` TypeScript
 @Entry
@@ -918,7 +918,7 @@ export struct DefaultFocus {
 }
 ```
 
-![defaultFocus.gif](figures/defaultFocus.gif)
+defaultFocus.gif
 
 上述示例包含以下2步：
 
@@ -935,7 +935,7 @@ defaultFocus是用于指定层级页面首次展示时的默认获焦节点，Fo
 
 示例
 
-<!-- @[dynamic_focus_scope_priority_previous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriorityPrevious.ets) -->
+<!-- @dynamic_focus_scope_priority_previous -->
 
 ``` TypeScript
 @Entry
@@ -993,7 +993,7 @@ focusBox(style: FocusBoxStyle)
 
 设置当前组件系统焦点框样式。
 
-<!-- @[dynamic_focus_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/RequestFocus.ets) -->
+<!-- @dynamic_focus_request -->
 
 ``` TypeScript
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -1024,7 +1024,7 @@ export struct RequestFocusExample {
 }
 ```
 
-![focusBox](figures/focusBox.gif)
+focusBox
 
 
 上述示例包含以下2步：
@@ -1060,7 +1060,7 @@ export struct RequestFocusExample {
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) --> 
+  <!-- @dynamic_focus_control_demo --> 
   
   ``` TypeScript
   @Entry
@@ -1141,7 +1141,7 @@ export struct RequestFocusExample {
   }
   ```
 
-![focus-2](figures/focus-2.gif)
+focus-2
 
 上述示例包含以下3步：
 
@@ -1163,7 +1163,7 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 >
 >  - 该能力从API version 18开始支持。
 
-  <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets) -->
+  <!-- @dynamic_focus_next -->
   
   ``` TypeScript
   @Entry
@@ -1211,11 +1211,11 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 
 Tab键走焦：未配置nextFocus时，Tab键走焦顺序为A->B->C->D->E->F。配置nextFocus之后，Tab键走焦顺序为A->F->B->C->D->E->A。
 
-![NextFocus_Focus_1.gif](figures/NextFocus_Focus_1.gif)
+NextFocus_Focus_1.gif
 
 方向键走焦（以方向下键为例）：未配置nextFocus时，按下Tab键激活焦点态之后，按方向下键走焦顺序为A->D->E->F。配置nextFocus之后，按下Tab键激活焦点态之后，按方向下键走焦顺序为A->B->C->D->E->F->A。
 
-![NextFocus_Focus_2.gif](figures/NextFocus_Focus_2.gif)
+NextFocus_Focus_2.gif
 
 ### tabIndex自定义走焦
 
@@ -1235,7 +1235,7 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用nextFocus。
 
-  <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
+  <!-- @dynamic_focus_tab_index -->
   
   ``` TypeScript
   @Entry
@@ -1269,11 +1269,11 @@ tabIndex自定义组件Tab键走焦顺序。
 
 Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
-![TabIndex_Focus_1.gif](figures/TabIndex_Focus_1.gif)
+TabIndex_Focus_1.gif
 
 tabIndex配置在容器上时，如果容器中的所有组件都没有获焦过，则走到第一个可获焦组件上，否则会走到上次获焦的节点。
 
-<!-- @[dynamic_focus_tab_index_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndexFocus.ets) -->
+<!-- @dynamic_focus_tab_index_focus -->
 
 ``` TypeScript
 @Entry
@@ -1305,7 +1305,7 @@ export struct TabIndexFocusExample {
 
 Tab键走焦：tabIndex配置在容器上。
 
-![TabIndex_Focus_2.gif](figures/TabIndex_Focus_2.gif)
+TabIndex_Focus_2.gif
 
 上述示例包含以下3步：
 
@@ -1328,7 +1328,7 @@ focusScopeId(id: string, isGroup?: boolean)
 
 设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
 
-<!-- @[focus_scope_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriority.ets) -->
+<!-- @focus_scope_navigation -->
 
 ``` TypeScript
 @Entry
@@ -1463,7 +1463,7 @@ export struct FocusScopePriority {
 ```
 
 
-![focus-3](figures/focus-3.gif)
+focus-3
 
 
 
@@ -1478,7 +1478,7 @@ export struct FocusScopePriority {
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean)
 ```
 
-<!-- @[dynamic_focus_scope_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopeId.ets) -->
+<!-- @dynamic_focus_scope_id -->
 
 ``` TypeScript
 @Entry
@@ -1539,7 +1539,7 @@ export struct FocusScopeIdExample {
 ```
 
 
-![FocusScopeId_1](figures/FocusScopeId_1.gif)
+FocusScopeId_1
 
 上述示例包含以下3步：
 - Group1和Group2设置焦点组，因此按下Tab键后焦点会快速从Group1和Group2的方框内走出。
@@ -1564,7 +1564,7 @@ export struct FocusScopeIdExample {
 >
 > - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（`onClick`）。
 
-   <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
+   <!-- @dynamic_focus_on_click -->
    
    ``` TypeScript
    @Entry
@@ -1593,7 +1593,7 @@ export struct FocusScopeIdExample {
    }
    ```
 
-![focus-4](figures/focus-4.gif)
+focus-4
 
 ## 组件获焦能力说明
 

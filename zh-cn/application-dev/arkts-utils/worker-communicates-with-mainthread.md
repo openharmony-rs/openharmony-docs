@@ -15,7 +15,7 @@
 
 1. 首先，创建一个执行任务的Worker。创建方法可参考创建Worker的注意事项。
 
-   <!-- @[create_worker_execute_multi_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) --> 
+   <!-- @create_worker_execute_multi_task --> 
    
    ``` TypeScript
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
@@ -32,7 +32,7 @@
 
 2. 这里的宿主线程是UI主线程，在宿主线程中创建Worker对象，当点击"Hello World"时调用postMessage方法向Worker线程发送消息，Worker线程将通过注册的onmessage回调处理宿主线程发送的消息。
 
-   <!-- @[respond_worker_instant_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerCommunicatesWithMainthread.ets) -->
+   <!-- @respond_worker_instant_message -->
    
    ``` TypeScript
    import { worker, ErrorEvent, MessageEvents } from '@kit.ArkTS';

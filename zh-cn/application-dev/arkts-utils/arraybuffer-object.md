@@ -10,11 +10,11 @@ ArrayBuffer包含两部分：底层存储数据的Native内存区域，以及封
 
 Native内存使用拷贝方式（递归遍历）传输时，传输后两个线程可以独立访问ArrayBuffer。此方式需要重建JS壳和拷贝Native内存，传输效率较低。通信过程如下图所示：
 
-![copy_transfer](figures/copy_transfer.png)
+copy_transfer
 
 Native内存使用转移方式传输时，传输后原线程将无法使用此ArrayBuffer对象。跨线程时只需重建JS壳，Native内存无需拷贝，从而提高效率。通信过程如下图所示：
 
-![transfer](figures/transfer.png)
+transfer
 
 ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理图片（如调整亮度、饱和度、大小等）会比较耗时，为了避免长时间阻塞UI主线程，可以将图片传递到子线程中进行处理。采用转移方式传递ArrayBuffer可提高传输性能，但原线程将无法再访问该ArrayBuffer对象。如果两个线程都需要访问该对象，只能采用拷贝方式。反之，建议采用转移方式以提升性能。
 
@@ -22,7 +22,7 @@ ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理
 
 ## ArrayBuffer拷贝传输方式
 
-在ArkTS中，TaskPool传递ArrayBuffer数据时，默认采用转移方式。通过调用[setTransferList()](../reference/apis-arkts/js-apis-taskpool.md#settransferlist10)接口，可以指定部分数据的传递方式为转移方式，其他部分数据可以切换为拷贝方式。
+在ArkTS中，TaskPool传递ArrayBuffer数据时，默认采用转移方式。通过调用setTransferList()接口，可以指定部分数据的传递方式为转移方式，其他部分数据可以切换为拷贝方式。
 
 首先，实现一个处理ArrayBuffer的接口，该接口在Task中执行。
 
@@ -30,7 +30,7 @@ ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理
 
 最后，UI主线程接收到Task执行完毕后返回的ArrayBuffer数据，进行拼接并展示。
 
-<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
+<!-- @copy_arraybuffer_transfer --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';

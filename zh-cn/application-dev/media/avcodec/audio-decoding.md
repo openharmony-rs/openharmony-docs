@@ -40,7 +40,7 @@
 
 - 实线表示必选。
 
-![Invoking relationship of audio decode stream](figures/audio-codec.png)
+Invoking relationship of audio decode stream
 
 ### 在 CMake 脚本中链接动态库
 
@@ -250,13 +250,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    配置选项key值说明：
 
    <!--RP6-->
-   ![Audio decoder key configuration](figures/decoder_key.png)
+   Audio decoder key configuration
    <!--RP6End-->
 
    各音频解码类型参数范围说明：
 
    <!--RP7-->
-   ![Audio decoder format range description](figures/decoder_format.png)
+   Audio decoder format range description
    <!--RP7End-->
 
    从API version 20开始，支持通过OH_AVCapability_GetAudioSupportedSampleRateRanges接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
@@ -537,4 +537,4 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 针对音频解码，有以下相关实例可供参考：
 
-- [音频解码](https://gitcode.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_decoder_demo.cpp)
+- 音频解码

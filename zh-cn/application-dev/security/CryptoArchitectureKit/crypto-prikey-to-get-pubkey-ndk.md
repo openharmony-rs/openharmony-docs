@@ -30,7 +30,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 比较公钥数据与期望值是否相等。
 
-<!-- @[prikey_get_pubkey_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/cpp/types/project/prikey_get_pubkey.cpp) -->
+<!-- @prikey_get_pubkey_obj -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

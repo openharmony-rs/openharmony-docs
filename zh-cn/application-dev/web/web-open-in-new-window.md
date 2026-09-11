@@ -30,7 +30,7 @@ Web组件提供了在新窗口打开页面的能力，开发者可以通过multi
 
 - 应用侧代码。
 
-<!-- @[receive_a_web_component_new_window_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/OpenPageNewWin.ets) -->
+<!-- @receive_a_web_component_new_window_event -->
 
 ``` TypeScript
 // xxx.ets
@@ -121,11 +121,11 @@ struct WebComponent {
 
 **图1** 新窗口中打开页面效果图  
 
-![web-open-in-new-window](figures/web-open-in-new-window.png)
+web-open-in-new-window
 
   
 ## 相关实例
 
 针对创建新窗口，有以下相关实例可供参考：
 
-- [浏览器（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/Browser)
+- 浏览器（ArkTS）（Full SDK）（API9）

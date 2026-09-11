@@ -26,7 +26,7 @@ aboutToReuse(params: Record<string, number>) {
 
 图1 滑动时的aboutToReuse日志
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_01.png)
+
 
 如图1所示，滑动时框架会频繁调用组件复用的aboutToReuse来更新节点。
 
@@ -72,11 +72,11 @@ aboutToReuse(params: Record<string, number>) {
 
 图2 反例滑动时单个aboutToReuse耗时
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_02.png)
+
 
 图3 正例滑动时单个aboutToReuse耗时
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_03.png)
+
 
 如图2所示，从反例trace中“H:aboutToReuse ReusableChildComponent”标签可以看出，单个aboutToReuse执行耗时21ms。而从图3正例trace中“H:aboutToReuse ReusableChildComponent”标签看，单个aboutToReuse执行耗时仅80μs。在高频调用aboutToReuse的场景中，如果每次调用aboutToReuse中都去执行耗时操作，将会导致应用性能大幅下降。因此，组件复用时应避免在aboutToReuse中执行耗时操作。
 
@@ -144,7 +144,7 @@ struct CustomComponentB {
 
 图4 点击10次按钮的aboutToAppear和aboutToDisappear日志
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_04.png)
+
 
 模拟频繁创建和销毁组件的场景，进行10次点击按钮切换自定义组件的操作。如图4所示，从日志中可以看出aboutToAppear和aboutToDisappear共调用了20次。因为示例中使用了条件渲染，每次销毁前一个自定义组件都会调用一次aboutToDisappear函数，然后创建新的自定义组件时，又会调用一次aboutToAppear，所以调用较为频繁。
 
@@ -255,7 +255,7 @@ struct ReusableChildComponent {
 
 图5 懒加载滑动Grid日志
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_05.png)
+
 
 如图5所示，从日志中可以看出，在懒加载Grid滑动时，会频繁调用getData，itemGenerator，keyGenerator。因为滑动时框架会对比item键值，判断是使用缓存节点还是新建节点。因此会先调用getData获取索引位置的数据，并提供给keyGenerator去对比键值，如果需要新建节点就会去调用itemGenerator。因此，在懒加载滑动场景中，会频繁调用getData，itemGenerator，keyGenerator。如果滑动时在这些函数中执行耗时操作，将会导致应用出现卡顿丢帧的问题。
 
@@ -426,13 +426,13 @@ public getData(index: number): number {
 
 图6 itemGenerator中执行耗时操作的滑动效果
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_06.gif)
+
 
 图6是在itemGenerator入参函数中执行耗时操作的滑动效果，可以明显看出滑动时存在卡顿，item节点刷新慢等问题。
 
 图7 itemGenerator中不执行耗时操作的滑动效果
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_07.gif)
+
 
 图7是在aboutToAppear中执行耗时操作，把耗时操作计算的值timeConsumingValue传入itemGenerator的滑动效果，可以看出滑动效果流畅，无卡顿问题。
 
@@ -475,7 +475,7 @@ struct Index {
 
 图8 点击按钮改变Row宽度日志
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_08.png)
+
 
 如图8所示，从日志中可以看出，每次点击按钮改变Row组件宽度时，Row的高度也会同时刷新。由此可见，在组件单一属性刷新时，组件的其他属性也会同时进行刷新。因此，在高频刷新组件属性的场景中，将会频繁调用组件所有属性的刷新。
 
@@ -553,13 +553,13 @@ struct Index {
 
 图9 反例改变Row组件宽度日志
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_09.png)
+
 
 如图9所示，从日志可以看出，每次改变Row组件宽度rowWidth，都会调用一次耗时的Row高度入参函数getHeight()。
 
 图10 正例改变Row组件宽度日志
 
-![](./figures/avoid_high_frequency_callback_execute_lengthy_operation_10.png)
+
 
 如图10所示，从日志可以看出，页面加载时通过taskpool方式仅执行一次耗时的getHeight()。然后返回结果直接赋值给Row高度变量rowHeight。修改6次Row组件宽度，不需要再重复调用耗时的getHeight()，有效减少了不必要的性能损耗。
 

@@ -27,7 +27,7 @@
 3. 配置StartOptions的windowMode，指定窗口模式。windowMode的说明参见StartOptions。如果未指定windowMode，UIAbility将以系统默认的窗口展示形态启动。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_windowMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/StartWithSpecifiedWindowMode/src/main/ets/pages/Index.ets) --> 
+<!-- @startOptions_windowMode --> 
 
 
 ``` TypeScript
@@ -94,7 +94,7 @@ struct StartWithSpecifiedWindowModeAbility {
 3. 配置StartOptions的supportWindowModes，设置窗口显示模式。supportWindowModes的说明参见StartOptions。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_supportWindowModes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SupportWindowModes/src/main/ets/pages/Index.ets) --> 
+<!-- @startOptions_supportWindowModes --> 
 
 
 ``` TypeScript
@@ -158,7 +158,7 @@ struct SetWindowDisplayModeAbility {
 3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见StartOptions和SplitRatioPreference。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_setSplitRatioAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetSplitRatioAbility/src/main/ets/pages/Index.ets) --> 
+<!-- @startOptions_setSplitRatioAbility --> 
 
 ``` TypeScript
 import { common, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
@@ -223,7 +223,7 @@ struct SetSplitRatioAbility {
 3. 配置StartOptions的displayId，指定要显示的屏幕。displayId的说明参见StartOptions。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_displayId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SpecifyDisplayScreen/src/main/ets/pages/Index.ets) -->
+<!-- @startOptions_displayId -->
 
 ``` TypeScript
 import { common, Want, StartOptions } from '@kit.AbilityKit';
@@ -283,7 +283,7 @@ struct SpecifyDisplayScreen {
 3. 配置StartOptions的withAnimation，控制是否有启动动效。withAnimation的说明参见StartOptions。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_withAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/ControlStartupAnimation/src/main/ets/pages/Index.ets) --> 
+<!-- @startOptions_withAnimation --> 
 
 ``` TypeScript
 import { common, Want, StartOptions } from '@kit.AbilityKit';
@@ -348,7 +348,7 @@ struct ControlStartupAnimation {
 3. 配置StartOptions的windowLeft、windowTop、windowWidth、windowHeight属性，设置窗口位置和尺寸。相关属性的说明参见StartOptions。建议同时配置windowLeft和windowTop字段。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_windowPosition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetWindowPosition/src/main/ets/pages/Index.ets) --> 
+<!-- @startOptions_windowPosition --> 
 
 ``` TypeScript
 import { common, Want, StartOptions } from '@kit.AbilityKit';
@@ -415,7 +415,7 @@ struct SetWindowPosition {
 3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见StartOptions。可以通过getWindowLimitsVP()获取当前窗口的尺寸限制。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_windowSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetWindowSizeConstraints/src/main/ets/pages/Index.ets) --> 
+<!-- @startOptions_windowSize --> 
 
 ``` TypeScript
 import { common, Want, StartOptions } from '@kit.AbilityKit';
@@ -487,7 +487,7 @@ struct SetWindowSizeConstraintsAbility {
 > - Dock栏不会有图标。
 > - 目标UIAbility的onForeground生命周期不会被调用。
 
-<!-- @[startOptions_startupVisibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/HideStartedUIAbility/src/main/ets/hidestarteduiabilityability/HideStartedUIAbilityAbility.ets) --> 
+<!-- @startOptions_startupVisibility --> 
 
 ``` TypeScript
 import { AbilityConstant, contextConstant, StartOptions, UIAbility, Want } from '@kit.AbilityKit';
@@ -563,7 +563,7 @@ export default class HideStartedUIAbilityAbility extends UIAbility {
 > - 如果未配置startWindowBackgroundColor，则默认采用module.json5文件中startWindowBackground字段的配置。
 > - 背景颜色为ARGB格式，如：`#E5FFFFFF`（透明度为E5，RGB值为FFFFFF）。
 
-<!-- @[startOptions_bgColor_and_windowParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetBackgroundColor/src/main/ets/setbackgroundcolorability/SetBackgroundColorAbility.ets) --> 
+<!-- @startOptions_bgColor_and_windowParam --> 
 
 ``` TypeScript
 import { AbilityConstant, StartOptions, UIAbility, Want } from '@kit.AbilityKit';
@@ -643,7 +643,7 @@ export default class SetBackgroundColorAbility extends UIAbility {
 3. 配置StartOptions的completionHandler，设置启动结果回调。completionHandler的说明参见StartOptions。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_completionHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/GetLaunchResult/src/main/ets/getlaunchresultability/GetLaunchResultAbility.ets) --> 
+<!-- @startOptions_completionHandler --> 
 
 ``` TypeScript
 import { AbilityConstant, CompletionHandler, StartOptions, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
@@ -714,7 +714,7 @@ export default class GetLaunchResultAbility extends UIAbility {
 >
 > 启动页介绍和规格详见StartWindow。
 
-<!-- @[startOptions_hidesplash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/HideSplashScreen/src/main/ets/hidesplashscreenability/HideSplashScreenAbility.ets) -->
+<!-- @startOptions_hidesplash -->
 
 ``` TypeScript
 import { AbilityConstant, StartOptions, UIAbility, Want } from '@kit.AbilityKit';
@@ -769,7 +769,7 @@ export default class HideSplashScreenAbility extends UIAbility {
 3. 配置StartOptions的windowCreateParams，设置窗口参数。窗口参数配置详见WindowCreateParams。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_bgColor_and_windowParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetBackgroundColor/src/main/ets/setbackgroundcolorability/SetBackgroundColorAbility.ets) --> 
+<!-- @startOptions_bgColor_and_windowParam --> 
 
 ``` TypeScript
 import { AbilityConstant, StartOptions, UIAbility, Want } from '@kit.AbilityKit';

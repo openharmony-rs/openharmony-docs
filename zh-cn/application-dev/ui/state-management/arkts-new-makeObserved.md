@@ -78,7 +78,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   - UIUtils.makeObserved的入参如果是@Observed装饰的class的实例，会直接返回自身。
   
   因此`message2`的初始值不是makeObserved返回的代理对象，而是@State装饰的`this.message`。
-  <!-- @[UI_will_not_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page1.ets) --> 
+  <!-- @UI_will_not_refresh --> 
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -109,7 +109,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   }
   ```
 
-  ![makeobserved-sync-0](./figures/makeobserved-sync-0.png)
+  makeobserved-sync-0
 
 ### makeObserved仅对入参对象进行深度观察
 
@@ -117,7 +117,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
  - 点击`change id`可以触发UI刷新。
  - 点击`change Info`，将`this.message`重新赋值为不可观察数据后，再次点击`change id`，无法触发UI刷新。
  - 再次点击`change Info1`，将`this.message`重新赋值为可观察数据，再次点击`change id`，可以触发UI刷新。
-  <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) -->  
+  <!-- @MakeObserved_only_applies_to_input_parameters -->  
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -158,7 +158,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   }
   ```
 
-  ![makeobserved-sync-1](./figures/makeobserved-sync-1.gif)
+  makeobserved-sync-1
 
 ## 支持类型和观察变化
 
@@ -195,7 +195,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
 - 将数据从主线程传递回子线程时，仅传递不可观察的数据。makeObserved的返回值不可直接传给子线程。
 
 例子如下：
-<!-- @[SendableData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/Model/modelView.ets) --> 
+<!-- @SendableData --> 
 
 ``` TypeScript
 @Sendable
@@ -209,7 +209,7 @@ export class SendableData  {
 }
 ```
 
-<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->   
+<!-- @function_threadGetData -->   
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -271,7 +271,7 @@ struct Page3 {
 }
 ```
 
-![makeobserved-sync-2](./figures/makeobserved-sync-2.gif)
+makeobserved-sync-2
 
 需要注意：数据的构建和处理可以在子线程中完成，但有观察能力的数据不能传给子线程，只有在主线程里才可以操作可观察的数据。所以上述例子中只是将`this.send`的属性`name`传给子线程操作。
 
@@ -287,7 +287,7 @@ collections.Array可以触发UI刷新的API有：
 - 改变数组项本身：sort、fill、reverse
 
 其他API不会改变原始数组，所以不会触发UI刷新。
-<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 
+<!-- @makeObserved_collections_Array_Set_Map --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -440,12 +440,12 @@ struct Page4 {
   }
 }
 ```
-![makeobserved-array](figures/makeobserved-array.gif)
+makeobserved-array
 
 **collections.Map**
 
 collections.Map可以触发UI刷新的API有：set、clear、delete。
-<!-- @[foreach_mapCollect_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets) -->  
+<!-- @foreach_mapCollect_keys -->  
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -510,12 +510,12 @@ struct Page5 {
   }
 }
 ```
-![makeobserved-map](figures/makeobserved-map.gif)
+makeobserved-map
 
 **collections.Set**
 
 collections.Set可以触发UI刷新的API有：add、clear、delete。
-<!-- @[Array_rom_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page6.ets) -->  
+<!-- @Array_rom_shallow_copy -->  
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -578,11 +578,11 @@ struct Page6 {
   }
 }
 ```
-![makeobserved-set](figures/makeobserved-set.gif)
+makeobserved-set
 
 ### makeObserved的入参为JSON.parse的返回值
 JSON.parse返回Object，无法使用@Trace装饰其属性，可以使用makeObserved使其变为可观察数据。
-<!-- @[makeObserved_JSON.parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page7.ets) -->  
+<!-- @makeObserved_JSON.parse -->  
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -631,13 +631,13 @@ struct Page7 {
 }
 ```
 
-![makeobserved-sync-3](figures/makeobserved-sync-3.gif)
+makeobserved-sync-3
 
 ### makeObserved和V2装饰器配合使用
 makeObserved可以和V2的装饰器一起使用。对于@Monitor和@Computed，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
 
 例子如下：
-<!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) -->  
+<!-- @name_change_from_monitor_value -->  
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -718,11 +718,11 @@ struct Child {
   }
 }
 ```
-![makeobserved-componentv2](figures/makeobserved-componentv2.gif)
+makeobserved-componentv2
 
 ### makeObserved在@Component内使用
 makeObserved不能和V1的状态变量装饰器一起使用，但可以在@Component装饰的自定义组件里使用。
-<!-- @[makeObserved_Component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page9.ets) --> 
+<!-- @makeObserved_Component --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -757,7 +757,7 @@ struct Page9 {
 }
 ```
 
-![makeobserved-sync-4](figures/makeobserved-sync-4.gif)
+makeobserved-sync-4
 
 ## 常见问题
 ### getTarget后的数据可以正常赋值，但是无法触发UI刷新
@@ -768,7 +768,7 @@ makeObserved封装的观察对象，可以通过getTarget获取到其原始对�
 如下面例子：
 1. 先点击第一个Text组件，通过getTarget获取其原始对象，此时修改原始对象的属性不会触发UI刷新，但数据会正常赋值。
 2. 再点击第二个Text组件，此时修改`this.observedObj`的属性会触发UI刷新，Text显示21。
-<!-- @[getTarget_observedObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page10.ets) --> 
+<!-- @getTarget_observedObj --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -807,4 +807,4 @@ struct Page10 {
 }
 ```
 
-![makeobserved-sync-5](figures/makeobserved-sync-5.gif)
+makeobserved-sync-5

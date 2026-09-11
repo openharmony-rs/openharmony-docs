@@ -38,7 +38,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 以下示例代码中介绍了如何注册过滤函数和取消过滤函数，以过滤ESC退出按键和数字按键为例。
 
-<!-- @[keyEventFilter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventDistribution/KeyEventFilter/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @keyEventFilter -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -150,7 +150,7 @@ target_link_libraries(entry PUBLIC libnative_window_manager.so libohinput.so)
 
 以下示例代码介绍了如何将多模触摸事件注入目标窗口，以单次事件注入为例。
 
-<!-- @[injectTouchEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventDistribution/InjectTouchEvent/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @injectTouchEvent -->
 
 ``` C++
 #include "napi/native_api.h"

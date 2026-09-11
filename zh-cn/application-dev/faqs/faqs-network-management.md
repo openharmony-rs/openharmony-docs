@@ -32,7 +32,7 @@ extraData代表发送请求的额外数据，支持如下数据：
 
 **参考链接**
 
-http常见响应码和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
+http常见响应码和Curl错误码
 
 
 ## http请求中response错误码返回6是什么意思(API 9)
@@ -47,7 +47,7 @@ http常见响应码和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.h
 
 **参考链接**
 
-更多错误码参考http常见响应码和[Curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
+更多错误码参考http常见响应码和Curl错误码
 
 ## \@ohos/axios三方件post请求queryParams参数场景下如何传参(API 9)
 

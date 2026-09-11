@@ -34,7 +34,7 @@ svg组件还可以绘制文本。
 </div>
 ```
 
-![Text](figures/Text.png)
+Text
 
 
 ## 沿路径绘制文本
@@ -56,4 +56,4 @@ textpath文本沿着path属性指定的路径进行绘制。
 </div>
 ```
 
-![Drawing-Text-Along](figures/Drawing-Text-Along.png)
+Drawing-Text-Along

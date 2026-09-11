@@ -18,7 +18,7 @@
 
 ### 示例代码
 - 功能实现
-  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
+  <!-- @napi_event_loop_cpp -->  
   
   ``` C++
   #include "napi/native_api.h"
@@ -181,7 +181,7 @@
   ```
 
 - 接口声明
-  <!-- @[napi_event_loop_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  <!-- @napi_event_loop_dts -->
   
   ``` TypeScript
   // index.d.ts
@@ -211,7 +211,7 @@
 
 2. 需要在模块的build-profile.json5文件中进行以下配置
 
-   <!-- @[napi_event_loop_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/build-profile.json5) -->
+   <!-- @napi_event_loop_build -->
    
    ``` JSON5
      "buildOption": {
@@ -232,14 +232,14 @@
   import testNapi from 'libentry.so'
   ```
 
-  <!-- @[napi_event_loop_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @napi_event_loop_ets -->
   
   ``` TypeScript
   // index.ets
   testNapi.runEventLoop(true);
   ```
   
-  <!-- @[napi_event_loop_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/ObjectUtils.ets) -->
+  <!-- @napi_event_loop_utils -->
   
   ``` TypeScript
   export function SetTimeout(): Promise<void> {

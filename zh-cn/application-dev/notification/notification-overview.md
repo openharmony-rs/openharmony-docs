@@ -22,10 +22,10 @@ Notification Kit支持的能力主要包括：
  - 查询应用自身通知开关状态。
  - 应用通知用户的能力默认关闭，开发者可拉起授权框，请求用户授权发布通知。
 
- ![notification_introduction](figures/notification_introduction.png) 
+ notification_introduction 
 
 ## 业务流程
- ![notification_principle](figures/notification_principle.png) 
+ notification_principle 
 
 使用Notification Kit的主要业务流程如下：
 
@@ -46,10 +46,10 @@ Notification Kit支持的能力主要包括：
 Notification Kit中常用的通知样式如下：
 | 类型 | 通知样式 | 规格描述 |
 | ---- | --------| ------- |
-| 文本           | ![text_notification](figures/text_notification.png)   | 通知文本内容最多显示三行，超长后以“...”截断。 |
-| 多行文本       | ![multiline_notification](figures/multiline_notification.png)   | 最多可显示三行内容，每行内容超长后以“...”截断。 |
-| 通知角标      | ![notification_badge](figures/notification_badge.png)   | 以数字的形式展示在右上角。 |
-| 进度条 | ![progress_notification](figures/progress_notification.png)    | 进度类通知。 |
+| 文本           | text_notification   | 通知文本内容最多显示三行，超长后以“...”截断。 |
+| 多行文本       | multiline_notification   | 最多可显示三行内容，每行内容超长后以“...”截断。 |
+| 通知角标      | notification_badge   | 以数字的形式展示在右上角。 |
+| 进度条 | progress_notification    | 进度类通知。 |
 <!--DelEnd-->
 
 ## 约束限制

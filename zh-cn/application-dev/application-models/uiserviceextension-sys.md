@@ -30,7 +30,7 @@ UIServiceExtension提供了onCreate()、onWindowWillCreate()、onWindowDidCreate
 
 **图1** UIServiceExtension生命周期
 
-![UIServiceExtensionAbility-lifecycle](figures/UIServiceExtension-lifecycle.png)
+UIServiceExtensionAbility-lifecycle
 
 
 
@@ -316,7 +316,7 @@ UIServiceExtension启动时，有如下操作：
 1. 客户端通过调用connectUIServiceExtensionAbility(), 返回UIServiceProxy对象。使用该proxy对象往UIServiceExtension服务端发送数据。
 2. UIServiceExtension通过onConnect()回调，获得UIServiceHostProxy对象。通过这个proxy往客户端发送数据。
 
-![UIServiceExtensionAbility-bidirectionalcommunication](figures/UIServiceExtension-bidirectionalcommunication.png)
+UIServiceExtensionAbility-bidirectionalcommunication
 
 
 ### 客户端与服务端通信

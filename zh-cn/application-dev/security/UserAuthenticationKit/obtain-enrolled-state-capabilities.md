@@ -25,7 +25,7 @@
 
 以查询用户人脸注册凭据的状态为例：
 
-<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @obtain_enrolled_capabilities -->
 
 ``` TypeScript
 obtainingEnrolledCredentialInformation() {
@@ -44,4 +44,4 @@ obtainingEnrolledCredentialInformation() {
 
 ## 示例代码
 
-  - [查询用户注册凭据的状态](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 查询用户注册凭据的状态

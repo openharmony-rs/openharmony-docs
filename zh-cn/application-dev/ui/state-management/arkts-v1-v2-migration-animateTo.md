@@ -12,7 +12,7 @@
 
 **V1实现代码如下：**
 
-<!-- @[Local_Question_V1_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV1animateTo.ets) -->   
+<!-- @Local_Question_V1_animateTo -->   
 
 ``` TypeScript
 @Entry
@@ -52,11 +52,11 @@ struct Index {
 
 预期动画效果：绿色矩形从长宽100变为200，字符串从Hello World变为Hello ArkUI。
 
-![arkts-new-local-animateTo-2](./figures/arkts-new-local-animateTo-2.gif)
+arkts-new-local-animateTo-2
 
 **V1迁移V2**
 
-<!-- @[Local_Question_V2_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV2animateTo.ets) -->
+<!-- @Local_Question_V2_animateTo -->
 
 ``` TypeScript
 @Entry
@@ -96,7 +96,7 @@ struct Index {
 
 由于当前animateTo与V2的刷新机制不兼容，执行动画前的额外修改未生效，实际显示的动画效果如下图所示：绿色矩形从长宽50变为200，字符串从Hello变为Hello ArkUI。
 
-![arkts-new-local-animateTo-1](./figures/arkts-new-local-animateTo-1.gif)
+arkts-new-local-animateTo-1
 
 
 ## 迁移方案
@@ -108,7 +108,7 @@ struct Index {
 
 完整代码如下：
 
-<!-- @[Local_Question_animateToImmediately](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionAnimateToImmediately.ets) -->
+<!-- @Local_Question_animateToImmediately -->
 
 ``` TypeScript
 @Entry
@@ -157,7 +157,7 @@ struct Index {
 
 原理为使用applySync接口同步刷新闭包函数内的状态变量变化，再执行原来的动画达成预期的效果。
 
-<!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
+<!-- @Local_Question_Expected_Effect -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';

@@ -24,7 +24,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 不开启该功能时，ArkWeb内核的播放架构如下所示：
 
-  ![arkweb media pipeline](figures/arkweb_media_pipeline.png)
+  arkweb media pipeline
 
   > **说明：**
   >
@@ -33,7 +33,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 开启该功能后，ArkWeb内核的播放架构如下：
 
-  ![arkweb native media player](figures/arkweb_native_media_player.png)
+  arkweb native media player
 
   > **说明：**
   >
@@ -43,7 +43,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 ### ArkWeb内核与应用的交互
 
-  ![interactions between arkweb and native media player](figures/interactions_between_arkweb_and_native_media_player.png)
+  interactions between arkweb and native media player
 
   > **说明：**
   >
@@ -152,7 +152,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 1. 在应用启动阶段，应用应保存UIContext，以便后续的同层渲染绘制流程能够使用该UIContext。
 
-   <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   <!-- @allow_subsequent_rendering_to_use_ui -->
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';

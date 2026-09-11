@@ -28,7 +28,7 @@ CPU密集型任务是指需要占用系统资源进行大量计算的任务，�
 
 3. 汇总处理结果数组。
 
-<!-- @[process_image_histogram](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) --> 
+<!-- @process_image_histogram --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -94,13 +94,13 @@ struct Index {
 
 1. DevEco Studio提供了Worker创建的模板，创建一个Worker线程，例如命名为“MyWorker1”。
 
-   ![newWorker](figures/newWorker.png)
+   newWorker
 
 2. 在宿主线程中首先调用ThreadWorker的constructor()方法创建Worker对象；然后通过注册onmessage()回调接收Worker线程发送过来的消息；最后通过调用postMessage()方法向Worker线程发送消息。
 
    例如，向Worker线程发送训练和预测的消息，并接收Worker线程发送回来的消息。
 
-   <!-- @[call_worker_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) --> 
+   <!-- @call_worker_message --> 
    
    ``` TypeScript
    import { worker } from '@kit.ArkTS';
@@ -133,7 +133,7 @@ struct Index {
 
     例如，在Worker线程中定义预测模型及其训练过程，并与宿主线程进行信息交互。
 
-    <!-- @[interact_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker1.ets) -->
+    <!-- @interact_main_thread -->
     
     ``` TypeScript
     import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
@@ -192,7 +192,7 @@ struct Index {
 
     在宿主线程中通过调用onexit()回调定义Worker线程销毁后的处理逻辑。
 
-    <!-- @[after_destroy_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets) -->
+    <!-- @after_destroy_callback -->
     
     ``` TypeScript
     // Worker线程销毁后，执行onexit回调方法

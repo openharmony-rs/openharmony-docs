@@ -15,7 +15,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和控制3D场景、相机以及动画资源。
 
-   <!-- @[anim_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   <!-- @anim_header -->
    
    ``` TypeScript
    import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
@@ -25,7 +25,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    调用Scene.load()方法从应用的resources/rawfile/目录加载.glb（或.gltf）模型，并在加载完成后获取Scene对象。
 
-   <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   <!-- @anim_load -->
    
    ``` TypeScript
    Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb'))
@@ -46,7 +46,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
     - onStarted()：动画开始播放时触发，start与restart操作均会触发该回调。
     - onFinished()：动画播放完成或执行finish操作时触发。
 
-   <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   <!-- @anim_pick_anim -->
    
    ``` TypeScript
    this.anim = this.scene.animations[0];
@@ -72,7 +72,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    通过SceneResourceFactory.createCamera()创建相机并调整观察位置。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，以便通过Component3D在界面上进行渲染。
 
-   <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   <!-- @anim_camera_sceneopt -->
    
    ``` TypeScript
    // create a new camera.
@@ -95,7 +95,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
     - 重启（restart）：从动画的起点开始播放动画。
     - 跳转（seek）：按比例跳转动画进度（例如seek(0.3)跳至总时长的30%）。
 
-   <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
+   <!-- @anim_controls -->
    
    ``` TypeScript
    Button('start')
@@ -164,5 +164,5 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 ## 相关实例
 
 对于3D动画更详细的使用可以参考以下实例：
-- [3D引擎接口示例（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
+- 3D引擎接口示例（ArkTS）（API12）
 <!--RP1End-->

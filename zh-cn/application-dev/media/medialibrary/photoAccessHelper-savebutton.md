@@ -19,7 +19,7 @@
 
 调用phAccessHelper.getSupportedPhotoFormats接口获取支持保存的图片类型资源格式。
 
-<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) --> 
+<!-- @Supported_Resource_Formats --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -90,7 +90,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 4. 调用MediaAssetChangeRequest.createImageAssetRequest和PhotoAccessHelper.applyChanges接口创建图片资源。
 5. 调用getAsset接口获取保存的资产，并获取资产URI。在接收到资产URI的NOTIFY_ADD通知后，完成后续业务。
 
-<!-- @[Creating_Media_Asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene2.ets) -->
+<!-- @Creating_Media_Asset -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -199,7 +199,7 @@ export struct Scene2 {
    弹框需要显示应用名称，无法直接获取应用名称，依赖于配置项的label和icon，因此调用此接口时请确保module.json5文件中的abilities标签中配置了label和icon项。当传入uri为沙箱路径时，可正常保存图片/视频，但无界面预览。
 4. 将应用沙箱的照片内容写入媒体库的目标URI。
 
-<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) --> 
+<!-- @Saving_MediaAsset_Using_Authorization_Popup --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';

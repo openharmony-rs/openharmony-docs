@@ -57,7 +57,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ### X25519非对称密钥协商用例
 准备X25519密钥协商材料：
-<!-- @[prepare_X25519_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_X25519.cpp) -->
+<!-- @prepare_X25519_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -131,7 +131,7 @@ static struct OH_Huks_Blob g_keyAlias02001 = {(uint32_t)strlen("HksX25519AgreeKe
                                               (uint8_t *)"HksX25519AgreeKeyAliasTest001_2"};
 ```
 执行密钥协商：
-<!-- @[key_agreement_X25519_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_X25519.cpp) -->
+<!-- @key_agreement_X25519_cpp -->
 
 ``` C++
 /* 导出密钥 */
@@ -315,7 +315,7 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
 
 ### DH密钥协商用例
 准备DH密钥协商材料：
-<!-- @[prepare_DH_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_DH.cpp) -->
+<!-- @prepare_DH_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -404,7 +404,7 @@ static struct OH_Huks_Blob g_keyAlias02001 = {(uint32_t)strlen("HksDHAgreeKeyAli
                                               (uint8_t *)"HksDHAgreeKeyAliasTest001_2"};
 ```
 执行密钥协商：
-<!-- @[key_agreement_DH_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_DH.cpp) -->
+<!-- @key_agreement_DH_cpp -->
 
 ``` C++
 static OH_Huks_Result MallocAndCheckBlobData(struct OH_Huks_Blob *blob, const uint32_t blobSize)
@@ -603,7 +603,7 @@ napi_value DhAgreeKey(napi_env env, napi_callback_info info)
 
 ### ECDH密钥协商用例
 准备ECDH密钥协商材料：
-<!-- @[prepare_ECDH_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_ECDH.cpp) -->
+<!-- @prepare_ECDH_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -676,7 +676,7 @@ static struct OH_Huks_Blob g_keyAlias02001 = {(uint32_t)strlen("HksECDHAgreeKeyA
 ```
 <!-- -->
 ECDH密钥协商的功能函数实现，包括内存分配、参数初始化、密钥生成、和资源清理等：
-<!-- @[key_agreement_ECDH_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_ECDH.cpp) -->
+<!-- @key_agreement_ECDH_cpp_one -->
 
 ``` C++
 static OH_Huks_Result MallocAndCheckBlobData(struct OH_Huks_Blob *blob, const uint32_t blobSize)
@@ -817,7 +817,7 @@ static void CleanKey(struct OH_Huks_Blob *genKeyAlias,
 ```
 <!-- -->
 ECDH密钥协商的完整流程实现：
-<!-- @[key_agreement_ECDH_cpp_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/cpp/types/projects/napi_ECDH.cpp) -->
+<!-- @key_agreement_ECDH_cpp_two -->
 
 ``` C++
 /* 协商密钥整体流程 */

@@ -27,7 +27,7 @@
 
 ### 数据跨设备同步机制
 
-![relationalStore_sync](figures/relationalStore_sync.jpg)
+relationalStore_sync
 
 业务将数据写入关系型数据库后，向数据管理服务发起同步请求。
 
@@ -54,7 +54,7 @@
 
 需要注意的是，该模式下不支持对其他设备同步过来的数据进行修改。这一限制旨在保障数据一致性与同步逻辑的稳定性。
 
-![deviceRDBStore](figures/deviceRDBStore.jpg)
+deviceRDBStore
 
 **单版本表模式**
 
@@ -62,7 +62,7 @@
 
 使用单版本表模式跨设备同步，需要配置schema文件，指定所需同步列以及解冲突列；单版本表模式同步数据支持修改对端设备同步过来的数据。
 
-![singleRDBStore](figures/singleRDBStore.jpg)
+singleRDBStore
 
 ## 约束限制
 
@@ -102,7 +102,7 @@
 > 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见跨设备同步访问控制机制。
 
 1. 导入模块。
-   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@sync_import--> 
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -120,7 +120,7 @@
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见向用户申请授权。
 
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认采用多设备协同表模式进行数据存储和管理。
-   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
+   <!--@setDefaultDistributedTables-->  
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -144,7 +144,7 @@
 4. 订阅组网内其他设备的数据变化消息。
    1. 调用on('dataChange')接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
    2. 通过设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
-   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@on_data_change--> 
    
    ``` TypeScript
    // 订阅组网内其他设备的数据变化消息
@@ -186,7 +186,7 @@
    1. 当前设备分布式表中的数据发生变化后，调用RdbStore的sync接口传入SYNC_MODE_PUSH参数推送数据变化至其他设备。
    2. 通过谓词的inDevices方法指定推送的目标设备。
   
-   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@data_sync_push--> 
    
    ``` TypeScript
    // 同步当前设备数据变化至组网内其他设备
@@ -239,7 +239,7 @@
    1. 当前设备可调用RdbStore的sync接口传入SYNC_MODE_PULL参数拉取组网内其他设备的数据变化。
    2. 通过谓词的inDevices方法指定拉取的目标设备。
    
-   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@data_sync_pull--> 
    
    ``` TypeScript
    // 拉取组网内其他设备的数据变化
@@ -282,7 +282,7 @@
    ```
 
 7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的remoteQuery方法查询组网内指定设备上分布式表中的数据。
-   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@data_remote_query--> 
    
    ``` TypeScript
    // 查询组网内指定设备上分布式表中的数据
@@ -315,7 +315,7 @@
 ## 使用单版本表模式进行数据同步
 
 使用单版本表模式进行数据同步，基本开发步骤与使用多设备协同表模式进行数据同步相似。不过在创建数据表时（即使用多设备协同表模式进行数据同步中的步骤3），需要将进行跨设备同步的数据表设置为SINGLE_VERSION单版本类型。示例如下：
-   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
+   <!--@setSingleDistributedTables-->  
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -1179,8 +1179,8 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 
 针对关系型数据库开发，有以下相关实例可供参考：
 
-- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
+- 分布式组网认证（ArkTS）（Full SDK）（API10）
 
-- [分布式关系型数据库（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedRdb)
+- 分布式关系型数据库（ArkTS）（Full SDK）（API10）
 
-- [分布式账号（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAccount)
+- 分布式账号（ArkTS）（Full SDK）（API10）

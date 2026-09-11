@@ -10,7 +10,7 @@ ArkTS卡片开发采用通用<!--RP1-->ArkTS语言<!--RP1End-->，开发者可�
 
 如下卡片页面由DevEco Studio模板自动生成，开发者可以根据自身的业务场景进行调整。 
 
-![WidgetPreviewPage](figures/WidgetPreviewPage.png)
+WidgetPreviewPage
 
 
 ## ArkTS卡片支持的页面能力
@@ -21,4 +21,4 @@ ArkTS卡片具备JS卡片的全量能力，并且新增了动效能力和自定�
 
 例如：以下说明表示CircleShape可在ArkTS卡片中使用。  
 
-![WidgetSupportApi](figures/WidgetSupportApi.png)
+WidgetSupportApi

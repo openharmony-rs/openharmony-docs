@@ -245,9 +245,9 @@ struct GoodItems {
 
 通过DevEco Studio的profiler工具分析复用前后的组件创建时间，可以得到应用使能组件复用后的优化情况，组件创建的时间平均从1800us降低到了570us。
 
-![before reuse](./figures/before-recycle.png)
+before reuse
 
-![using reuse](./figures/using-recycle.png)
+using reuse
 
 |                | 创建组件时间 |
 | -------------- | ------------ |

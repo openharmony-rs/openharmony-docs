@@ -30,7 +30,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 调用OH_CryptoSign_Destroy等释放内存。
 
-<!-- @[pkcs1_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature.cpp) -->
+<!-- @pkcs1_rsa_keypair_sign -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -119,7 +119,7 @@ bool DoTestRsaSignature()
 
 4. 调用OH_CryptoVerify_Final，对数据进行验签。
 
-<!-- @[pkcs1_verify_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature_validator.cpp) -->
+<!-- @pkcs1_verify_rsa_keypair_sign -->
 
 ``` C++
 #include "signing_signature_verification.h"
@@ -219,7 +219,7 @@ bool DoTestRsaVerify()
 
 3. 调用OH_CryptoVerify_Recover，对数据进行签名恢复。
 
-<!-- @[pkcs1_recover_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature_restoration.cpp) -->
+<!-- @pkcs1_recover_rsa_keypair_sign -->
 
 ``` C++
 #include "signing_signature_verification.h"
@@ -318,7 +318,7 @@ OH_Crypto_ErrCode DoTestRsaSignatureRecover()
 
 5. 调用OH_CryptoSign_Destroy等释放内存。
 
-<!-- @[pkcs1_seg_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_segment_signature.cpp) -->
+<!-- @pkcs1_seg_rsa_keypair_sign -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -425,7 +425,7 @@ bool DoTestRsaSignatureSeg()
 
 4. 调用OH_CryptoVerify_Final，对数据进行验签。
 
-<!-- @[pkcs1_seg_verify_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_segment_signature_verify.cpp) -->
+<!-- @pkcs1_seg_verify_rsa_keypair_sign -->
 
 ``` C++
 #include "signing_signature_verification.h"
@@ -553,7 +553,7 @@ bool DoTestRsaSignatureVerifySeg()
 4. 调用OH_CryptoSign_Final，获取签名后的数据。
 5. 调用OH_CryptoSign_Destroy等释放内存。
 
-<!-- @[pss_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pss_signature_tool.cpp) -->
+<!-- @pss_rsa_keypair_sign -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -638,7 +638,7 @@ bool DoTestRsaPssSignSeg()
 
 4. 调用OH_CryptoVerify_Final，对数据进行验签。
 
-<!-- @[pss_verify_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pss_verification_tool.cpp) -->
+<!-- @pss_verify_rsa_keypair_sign -->
 
 ``` C++
 #include "signing_signature_verification.h"

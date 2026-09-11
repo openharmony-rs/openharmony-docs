@@ -229,17 +229,17 @@ struct MyComponent {
 }
 ```
 
-![list1](figures/list1.gif)
+list1
 
 使用SmartPerf Host工具分别抓取List不设置宽高时和设置宽高时的trace数据。
 
 **List不设置宽高：**
 
-![list-trace-01](figures/arkts-performance-improvement-recommendation-list-trace-01.PNG)
+list-trace-01
 
 **List设置宽高：**
 
-![list-trace-02](figures/arkts-performance-improvement-recommendation-list-trace-02.PNG)
+list-trace-02
 
 从trace图可以看出，List不设置宽高时100个子组件全部参与布局，布局时间46.62ms。而给List设置宽高后只有给定高度内的12个子组件参与布局，布局时间减少到8.51ms，大幅提升了首次加载时的性能。
 
@@ -301,7 +301,7 @@ struct ColumnAndRowBuild {
 }
 ```
 
-![flex1](figures/flex1.PNG)
+flex1
 
 使用SmartPerf Host抓取上述两种不同布局方式示例程序的trace数据，对比其性能消耗，如下表所示。
 
@@ -360,7 +360,7 @@ class MyDataSource implements IDataSource {
   }
 }
 ```
-![list2](figures/list2.gif)
+list2
 
 **使用说明：**
 cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。

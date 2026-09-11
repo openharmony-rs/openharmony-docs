@@ -61,7 +61,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @import_the_aip_module --> 
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
@@ -72,7 +72,7 @@
 
    调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_getTextEmbeddingModel_operating_parameter --> 
    
    ``` TypeScript
    let textConfig: intelligence.ModelConfig = {
@@ -84,7 +84,7 @@
    let modelInfo:  intelligence.CloudModelInfo;
    ```
 
-   <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_getTextEmbeddingModel_operating --> 
    
    ``` TypeScript
    intelligence.getTextEmbeddingModel(textConfig)
@@ -103,7 +103,7 @@
 
    调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_loadTextModel_operating --> 
    
    ``` TypeScript
    textEmbedding.loadModel()
@@ -121,7 +121,7 @@
 
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_splitText_operating --> 
    
    ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
@@ -145,7 +145,7 @@
 
    调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_getTextEmbedding_operating --> 
    
    ``` TypeScript
    let text = 'text';
@@ -175,7 +175,7 @@
 
    调用releaseModel方法，释放文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_releaseTextModel_operating --> 
    
    ``` TypeScript
    textEmbedding.releaseModel()
@@ -193,7 +193,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @import_the_aip_module --> 
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
@@ -204,7 +204,7 @@
 
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_getImageEmbeddingModel_operating_parameter --> 
    
    ``` TypeScript
    let imageConfig: intelligence.ModelConfig = {
@@ -215,7 +215,7 @@
    let imageEmbedding: intelligence.ImageEmbedding;
    ```
 
-   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_getImageEmbeddingModel_operating --> 
    
    ``` TypeScript
    intelligence.getImageEmbeddingModel(imageConfig)
@@ -234,7 +234,7 @@
 
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
 
-    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @aip_loadImageModel_operating --> 
     
     ``` TypeScript
     imageEmbedding.loadModel()
@@ -252,7 +252,7 @@
 
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
 
-    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @aip_getImageEmbedding_operating --> 
     
     ``` TypeScript
     let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
@@ -271,7 +271,7 @@
 
    调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @aip_releaseImageModel_operating --> 
    
    ``` TypeScript
    imageEmbedding.releaseModel()

@@ -38,7 +38,7 @@
 
    通过getTransitionController()接口获取控制器。后续的动画操作都由属性控制器来完成。
 
-   <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
+   <!-- @window_animation_config --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -70,7 +70,7 @@
 
    通过动画函数animateTo()配置具体的属性动画，可通过opacity()设置窗口不透明度，通过scale()设置缩放参数，通过rotate()设置旋转参数，通过translate()设置平移参数。
 
-   <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
+   <!-- @window_animation_show --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -131,7 +131,7 @@
 
    通过completeTransition()传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
 
-   <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
+   <!-- @window_animation_complete_transition --> 
    
    ``` TypeScript
    struct WindowAnimationDemo {
@@ -168,7 +168,7 @@
 
    调用showWithAnimation()接口，来显示窗口并播放动画。调用hideWithAnimation()接口，来隐藏窗口并播放动画。
 
-   <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
+   <!-- @window_animation_play --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -193,7 +193,7 @@
    }
    ```
 
-![showAndHideWindow](figures/showAndHideWindow.gif)
+showAndHideWindow
 <!--DelEnd-->
 
 ## 设置应用内UIAbility组件启动淡入淡出动效
@@ -204,7 +204,7 @@
 
 示例代码如下：
 
-<!-- @[window_animation_start_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityWithFadeinoutSample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @window_animation_start_ability --> 
 
 ``` TypeScript
 import { Want, StartOptions, common } from '@kit.AbilityKit';
@@ -261,7 +261,7 @@ struct Index {
 }
 ```
 
-![startAbilityWithFadeInOut](figures/startAbilityWithFadeInOut.gif)
+startAbilityWithFadeInOut
 
 ## 设置主窗口销毁时的转场动画
 
@@ -269,7 +269,7 @@ struct Index {
 
 示例代码如下：
 
-<!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @window_destroy_transition_animation -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -339,4 +339,4 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![appDestroyAnimation](figures/appDestroyAnimation.gif)
+appDestroyAnimation

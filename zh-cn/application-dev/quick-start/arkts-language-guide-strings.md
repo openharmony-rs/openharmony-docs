@@ -16,7 +16,7 @@
 
 字符串可以使用单引号、双引号或反引号声明，推荐使用单引号保持风格一致。
 
-<!-- @[string_literal_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_literal_types -->
 
 ``` TypeScript
 let single: string = 'Hello';
@@ -30,7 +30,7 @@ let template: string = `ArkTS`;
 
 模板字符串（反引号）天然支持多行文本，无需使用转义字符，适合用于存储长文本（如邮件内容、HTML片段）、编写代码片段（如SQL查询）以及格式化报表与文档输出。
 
-<!-- @[multiline_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @multiline_string -->
 
 ``` TypeScript
 let multiLine: string = `Line 1
@@ -48,7 +48,7 @@ let paragraph: string = `这是一段
 
 特殊字符需要使用转义符表示，包括换行符`\n`、制表符`\t`、引号等。
 
-<!-- @[escape_characters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @escape_characters -->
 
 ``` TypeScript
 let newline: string = 'Line1\nLine2';
@@ -62,7 +62,7 @@ let mixed: string = 'Hello\n\tWorld';
 
 模板字符串（反引号）能够保留原始格式（换行、空格），便于在字符串中嵌入多行代码并保持可读性。
 
-<!-- @[template_string_escape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @template_string_escape -->
 
 ``` TypeScript
 // 模板字符串保留换行和空格
@@ -87,7 +87,7 @@ let backtick: string = `Use \`backticks\``;
 
 使用`let`声明可以重新赋值的字符串变量，适用于动态构建内容、运行时更新状态、处理消息以及接收用户输入等场景。
 
-<!-- @[string_reassignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_reassignment -->
 
 ``` TypeScript
 let message: string = 'Hello';
@@ -104,7 +104,7 @@ text += ' Part 2';
 
 使用`const`声明字符串常量，确保字符串值不被重新赋值。适用于配置常量（如应用名称、版本号）、固定消息、API端点等不变信息。推荐使用大写命名（如`const APP_NAME`），集中定义并添加类型注解，便于管理。
 
-<!-- @[ts_string_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+<!-- @ts_string_constant -->
 
 ``` TypeScript
 const APP_NAME: string = 'MyApp';
@@ -117,7 +117,7 @@ APP_NAME = 'NewApp';  // 编译错误：不能重新赋值
 
 字符串创建后不能被修改，所有操作都会返回新字符串，这是字符串的核心特性。
 
-<!-- @[ts_string_immutability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+<!-- @ts_string_immutability -->
 
 ``` TypeScript
 let original: string = 'Hello';
@@ -139,7 +139,7 @@ ArkTS没有独立的字符类型，单字符使用string表示。
 
 可以通过索引或for-of循环逐个访问字符串中的每个字符。
 
-<!-- @[string_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_iteration -->
 
 ``` TypeScript
 let iterText: string = 'Hello';
@@ -166,7 +166,7 @@ for (let char of chars) {
 
 字符可以使用Unicode转义或直接使用单字符字符串表示。
 
-<!-- @[character_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @character_access -->
 
 ``` TypeScript
 let accessText: string = 'Hello';
@@ -191,7 +191,7 @@ let charFromCode: string = String.fromCharCode(72);  // 'H'
 
 字符串可以使用+运算符或拼接方法组合成新字符串。
 
-<!-- @[string_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_concatenation -->
 
 ``` TypeScript
 let firstName: string = 'John';
@@ -212,7 +212,7 @@ let joined: string = parts.join(' ');  // "John Doe"
 
 字符串和字符拼接时，字符会被自动转换为字符串形式。
 
-<!-- @[string_append](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_append -->
 
 ``` TypeScript
 let appendText: string = 'Hello';
@@ -229,7 +229,7 @@ let combinedChars: string = appendChars.join('');  // "abc"
 
 拼接赋值运算符+=将右侧字符串追加到左侧变量，简化拼接代码。
 
-<!-- @[compound_assignment_concat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @compound_assignment_concat -->
 
 ``` TypeScript
 let compoundMessage: string = '';
@@ -253,7 +253,7 @@ compoundText += ' Part 2';  // "Part 1 Part 2"
 
 模板字符串使用${}嵌入表达式，表达式结果自动转换为字符串。
 
-<!-- @[template_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @template_interpolation -->
 
 ``` TypeScript
 let name: string = 'Alice';
@@ -281,7 +281,7 @@ let profile: string = `User: ${user.name} (${user.email})`;
 
 插值表达式必须是有效的表达式，不能包含未转义的反引号或$符号。
 
-<!-- @[ts_template_expressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+<!-- @ts_template_expressions -->
 
 ``` TypeScript
 // 支持的表达式类型
@@ -311,7 +311,7 @@ Unicode编码表示国际化字符，支持多种编码形式。
 
 Unicode标量值是有效的Unicode编码点范围，排除代理项代码点。
 
-<!-- @[unicode_representation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @unicode_representation -->
 
 ``` TypeScript
 // Unicode字符表示
@@ -336,7 +336,7 @@ let fromEmoji: string = String.fromCodePoint(128512); // '😀'
 
 在字符串、Unicode码点数组和Unicode转义序列三种表示形式之间相互转换，使用codePointAt和fromCodePoint方法。
 
-<!-- @[unicode_codepoint_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @unicode_codepoint_conversion -->
 
 ``` TypeScript
 let unicodeText: string = 'Hello';
@@ -372,7 +372,7 @@ console.info(`${unicodeEscaped}`);  // "\u0048\u0065\u006c\u006c\u006f"
 
 字符串length属性返回UTF-16代码单元数量，代理项对占两个单元。
 
-<!-- @[string_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_length -->
 
 ``` TypeScript
 let lengthText: string = 'Hello';
@@ -394,7 +394,7 @@ let multiLength: number = lengthMultiLine.length;  // 11（含 \n）
 
 计算包含复杂Unicode字符的字符串长度时，需考虑代理项对的影响。
 
-<!-- @[multibyte_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @multibyte_length -->
 
 ``` TypeScript
 // 普通ASCII字符
@@ -433,7 +433,7 @@ console.info(`${countCharacters('😀').toString()}`);  // 1（正确统计）
 
 charAt和索引访问获取单个字符，charCodeAt获取字符编码。
 
-<!-- @[string_indexing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_indexing -->
 
 ``` TypeScript
 let indexText: string = 'Hello World';
@@ -455,7 +455,7 @@ let outOfBounds2: string = indexText.charAt(100);      // ''（空字符串）
 
 indexOf查找子字符串位置，lastIndexOf从后向前查找。
 
-<!-- @[string_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_search -->
 
 ``` TypeScript
 let searchText: string = 'Hello World';
@@ -484,7 +484,7 @@ let prevIndex: number = indexOfO - 1;          // 3
 
 substring和slice方法提取字符串片段，split分割为数组。**两者的关键区别**：`substring`会自动调整参数顺序（如`substring(5, 0)`等价于`substring(0, 5)`），负数参数被视为0；`slice`不调整参数顺序，支持负索引（从末尾开始计数）。
 
-<!-- @[substring_extraction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @substring_extraction -->
 
 ``` TypeScript
 let extractText: string = 'Hello World';
@@ -510,7 +510,7 @@ let reversedSlice: string = extractText.slice(5, 0);  // ""（不调整）
 
 子字符串是新字符串，与原字符串独立存在，修改子字符串不影响原字符串。
 
-<!-- @[substring_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @substring_operations -->
 
 ``` TypeScript
 let original: string = 'Hello World';
@@ -539,7 +539,7 @@ let replaced: string = original.replace(sub, 'Hi');  // "Hi World"
 
 使用===比较字符串的值和类型，避免==的隐式转换。
 
-<!-- @[string_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_comparison -->
 
 ``` TypeScript
 let str1: string = 'Hello';
@@ -564,7 +564,7 @@ let equalIgnoreCase: boolean =
 
 startsWith方法检查字符串是否以指定文本开头，用于格式验证。
 
-<!-- @[starts_with_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @starts_with_check -->
 
 ``` TypeScript
 let startsWithText: string = 'Hello World';
@@ -586,7 +586,7 @@ function hasPrefix(text: string, prefix: string): boolean {
 
 endsWith()判断字符串是否以指定子串结尾。
 
-<!-- @[ends_with_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @ends_with_check -->
 
 ``` TypeScript
 let endsWithText: string = 'Hello World';
@@ -613,7 +613,7 @@ function hasSuffix(text: string, suffix: string): boolean {
 
 toUpperCase方法将字符串所有字符转换为大写形式。
 
-<!-- @[to_uppercase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @to_uppercase -->
 
 ``` TypeScript
 let upperText: string = 'Hello World';
@@ -639,7 +639,7 @@ let upperResult: string = capitalizeWords('hello world');  // "Hello World"
 
 toLowerCase()将字符串中的大写字母转换为小写。
 
-<!-- @[to_lowercase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @to_lowercase -->
 
 ``` TypeScript
 let lowerText: string = 'Hello World';
@@ -666,7 +666,7 @@ console.info(`${isLowerCase('Hello')}`);  // false
 
 查找方法用于定位子字符串或字符在字符串中的位置。
 
-<!-- @[string_search_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_search_methods -->
 
 ``` TypeScript
 let searchText2: string = 'Hello World';
@@ -689,7 +689,7 @@ let endsWorld: boolean = searchText2.endsWith('World'); // true
 
 提取方法用于从字符串中获取指定范围的子字符串。
 
-<!-- @[string_slice_split](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_slice_split -->
 
 ``` TypeScript
 let sliceText: string = 'Hello World';
@@ -711,7 +711,7 @@ console.info(`[${splitAll.join(', ')}]`);  // H, e, l, l, o,  , W, o, r, l, d
 
 修改方法用于改变字符串内容，如替换、切割、拼接等。
 
-<!-- @[string_common_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_common_methods -->
 
 ``` TypeScript
 let commonMethodsText: string = 'Hello World';
@@ -746,7 +746,7 @@ let repeated: string = 'ab'.repeat(3);      // "ababab"
 
 字符串还提供charAt、charCodeAt、concat、localeCompare、toString、valueOf等实用方法。
 
-<!-- @[string_utility_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_utility_methods -->
 
 ``` TypeScript
 let utilityText: string = 'Hello';
@@ -775,7 +775,7 @@ let value: string = 'test'.valueOf();  // "test"
 
 正则表达式用于字符串的匹配、查找和替换，通过RegExp对象创建。
 
-<!-- @[string_regex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_regex -->
 
 ``` TypeScript
 // match：匹配正则
@@ -800,7 +800,7 @@ let allMatches: IterableIterator<RegExpMatchArray> = regexText.matchAll(/\w+/g);
 
 字符串中的字符可能由多个UTF-16编码单元组成（如emoji），使用`codePointAt`和`fromCodePoint`处理完整Unicode码点。
 
-<!-- @[unicode_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @unicode_handling -->
 
 ``` TypeScript
 let unicodeEmoji: string = '🎉';
@@ -823,7 +823,7 @@ for (let uc of unicodeText2) {
 
 `padStart`和`padEnd`用于在字符串开头或末尾填充到指定长度，`repeat`用于重复字符串。
 
-<!-- @[string_pad_repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @string_pad_repeat -->
 
 ``` TypeScript
 // padStart：在开头填充
@@ -848,7 +848,7 @@ console.info(`${prS4}`);  // ababab
 
 **TypeScript对照**
 
-<!-- @[ts_string_at](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+<!-- @ts_string_at -->
 
 ``` TypeScript
 // TypeScript对照写法（ES2022），ArkTS中用charAt替代
@@ -859,7 +859,7 @@ console.info(`${tsAtWord.at(-1)}`);  // 'o'（最后一个字符）
 
 ArkTS不支持`at`方法，使用`charAt`和手动计算替代。
 
-<!-- @[at_method_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @at_method_alternative -->
 
 ``` TypeScript
 let atWord: string = 'hello';
@@ -874,7 +874,7 @@ console.info(`${atWord.charAt(10)}`);             // （空字符串，越界）
 
 **TypeScript对照**
 
-<!-- @[ts_template_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Strings.ts) -->
+<!-- @ts_template_literal_type -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不支持
@@ -894,7 +894,7 @@ type TltUncap = Uncapitalize<'Hello'>;   // 'hello'
 
 ArkTS不支持模板字面量类型，使用普通字符串常量、枚举或联合类型替代，通过运行时字符串拼接实现动态字符串。
 
-<!-- @[template_literal_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Strings.ets) -->
+<!-- @template_literal_alternative -->
 
 ``` TypeScript
 enum TltEventType {

@@ -26,7 +26,7 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 
 用例简化了异常处理和线程安全相关的一些逻辑，实现代码如下所示：
 
-<!-- @[serial_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue.h) -->
+<!-- @serial_c_header -->
 
 ``` C
 #include <cstdio>
@@ -37,7 +37,7 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 ```
 
-<!-- @[serial_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue.cpp) -->
+<!-- @serial_c -->
 
 ``` C++
 #undef LOG_TAG

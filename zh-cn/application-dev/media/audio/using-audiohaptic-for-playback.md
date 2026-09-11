@@ -27,7 +27,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    - 方式1：使用registerSource接口，通过文件URI来注册资源。
    - 方式2（推荐）：从API版本20开始，支持使用registerSourceFromFd接口，通过文件描述符来注册资源。
 
-   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @get_haptic -->
    
    ``` TypeScript
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -78,7 +78,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 2. 设置音振播放器音频时延模式和音频流使用类型，具体作用和类型可以查看setAudioLatencyMode和setStreamUsage接口的文档，推荐短信、通知音等短提示音搭配FAST模式，来电铃声等长铃声搭配NORMAL模式。
 
-   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @set_hapticparam -->
    
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
@@ -90,7 +90,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 3. 调用createPlayer方法，创建AudioHapticPlayer实例，其中options参数控制是否将音频静音，是否禁止振动。参数为空时，播放器默认开启音频，允许振动。
 
-   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @create_haptic -->
    
    ``` TypeScript
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
@@ -108,7 +108,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 4. 调用start方法，开启音频播放并同步开启振动。
 
-   <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @haptic_start -->
    
    ``` TypeScript
    audioHapticPlayer.start().then(() => {
@@ -122,7 +122,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 5. 调用stop方法，停止音频播放并同步停止振动。
 
-   <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @haptic_stop -->
    
    ``` TypeScript
    audioHapticPlayer.stop().then(() => {
@@ -136,7 +136,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 6. 应用在使用完音振协同播放器后应主动调用release方法，释放AudioHapticPlayer实例，防止播放器实例长期占用系统音振资源，产生严重的内存与系统资源泄漏，从而导致应用后续无法再创建音振协同播放器。
 
-   <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @haptic_release -->
    
    ``` TypeScript
    audioHapticPlayer.release().then(() => {
@@ -150,7 +150,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 7. 当资源不再使用时，应用必须调用unregisterSource方法，将已注册的音频及振动资源移除注册，若长期堆积未注销的无效资源，会快速耗尽应用128个资源注册配额，直接导致后续所有音振资源注册失败、播放器无法创建，音振协同播放功能不可用，同时会引发持续性资源泄漏问题。
 
-   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @haptic_unregist -->
    
    ``` TypeScript
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {

@@ -63,7 +63,7 @@
 查询别名是demo_alias的关键资产明文。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -83,7 +83,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
+   <!-- @query_single_plaintext -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();
@@ -115,7 +115,7 @@
 查询别名是demo_alias的关键资产属性。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -129,7 +129,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
+   <!-- @query_single_attribute -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();
@@ -160,7 +160,7 @@
 批量查询标签为demo_label的关键资产属性，共返回10条符合条件的查询结果，结果按DATA_LABEL_NORMAL_1属性内容排序。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -174,7 +174,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
+   <!-- @query_batch_attributes -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();

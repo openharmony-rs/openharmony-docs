@@ -23,7 +23,7 @@ Navigation存在默认转场动画，此外也提供了自定义转场和共享�
   
   Navigation可以通过NavPathStack提供的disableAnimation接口，关闭或打开当前Navigation的所有转场动画。
 
-  <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
+  <!-- @PageAnimated -->
   
   ``` TypeScript
   pageStack: NavPathStack = new NavPathStack();
@@ -62,7 +62,7 @@ NavDestination之间切换时可以通过geometryTransition实现共享元素转
 
 1. 为需要实现共享元素转场的组件添加geometryTransition属性，id参数必须在两个NavDestination之间保持一致。
 
-   <!-- @[GeometryTransitionFromPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+   <!-- @GeometryTransitionFromPage -->
    
    ``` TypeScript
    // 起始页配置共享元素id
@@ -78,7 +78,7 @@ NavDestination之间切换时可以通过geometryTransition实现共享元素转
    }.title('FromPage')
    ```
 
-   <!-- @[GeometryTransitionToPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+   <!-- @GeometryTransitionToPage -->
    
    ``` TypeScript
    // 目的页配置共享元素id
@@ -96,7 +96,7 @@ NavDestination之间切换时可以通过geometryTransition实现共享元素转
 
 2. 将页面路由的操作，放到animateTo动画闭包中，配置对应的动画参数以及关闭系统默认的转场。
 
-   <!-- @[GeometryTransitionFromPageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+   <!-- @GeometryTransitionFromPageOne -->
    
    ``` TypeScript
    NavDestination() {

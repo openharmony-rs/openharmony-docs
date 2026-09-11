@@ -23,13 +23,13 @@
 
 下图为复用池中NodeItem实例跟随NodeContainer组件创建与销毁的复用过程。
 
-![component_pool_reuse_process](figures/node_custom_component_reusable_pool_process.jpg)
+component_pool_reuse_process
 
 ### 数据结构
 
 NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool通过HashMap管理NodeItem的复用和回收。
 
-![image-20240531161153519](figures/node_custom_component_reusable_pool_struct.png)
+image-20240531161153519
 
 ## 应用场景
 
@@ -139,7 +139,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 图1 常规复用Trace图
 
-![img](figures/node_custom_component_reusable_pool_trace_1.JPG)
+img
 
 ### 自定义组件复用池
 
@@ -287,7 +287,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 图2 自定义组件复用池Trace图
 
-![img](figures/node_custom_component_reusable_pool_trace_2.JPG)
+img
 
 ### 性能数据对比
 
@@ -298,7 +298,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 ## 使用onIdle进行组件预创建
 
-在上一个章节的优化示例中，第一次进入首页时耗时依旧较高。这是因为第一次进入时，自定义组件复用池中没有组件可以复用，全部需要重新创建。要解决这个问题，可以提前预创建组件复用池中的组件，减少进入首页的启动耗时。目前，应用冷启动是一个比较好的预创建组件的时机。当组件数量较多时，集中预创建本身也耗时较长，容易导致主线程阻塞。ArkUI中提供了[onIdle回调接口](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-arkui-uicontext-V5#onidle12)，可以返回每一帧帧尾的空闲时间，在帧尾空闲时逐步进行预创建是一个比较好的分摊主线程负载的方式。
+在上一个章节的优化示例中，第一次进入首页时耗时依旧较高。这是因为第一次进入时，自定义组件复用池中没有组件可以复用，全部需要重新创建。要解决这个问题，可以提前预创建组件复用池中的组件，减少进入首页的启动耗时。目前，应用冷启动是一个比较好的预创建组件的时机。当组件数量较多时，集中预创建本身也耗时较长，容易导致主线程阻塞。ArkUI中提供了onIdle回调接口，可以返回每一帧帧尾的空闲时间，在帧尾空闲时逐步进行预创建是一个比较好的分摊主线程负载的方式。
 
 ### 示例代码
 
@@ -367,25 +367,25 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
    图3 预创建组件Trace图
 
-   ![](figures/node_custom_component_onidle_1.png)
+   
 
 4. 然后查看冷启动耗时，如图4所示，加载Index页面（H:load page: pages/Index(id:1)）耗时大概144ms左右。
 
    图4 预创建组件冷启动Trace图-1
 
-   ![](figures/node_custom_component_onidle_2.png)
+   
 
 5. 如图5所示，将图4中的Trace进一步放大后可以看到，加载Index页面时主要耗时都是用于创建子组件（H:CustomNode:BuildItem \[SubFlowItem]\[self:47][parent:48]）。虽然单个组件耗时并不多，只有426μs，但是当数量较多时，总的预创建耗时就会变长，导致主线程阻塞。
 
    图5 预创建组件冷启动Trace图-2
 
-   ![](figures/node_custom_component_onidle_3.png)
+   
 
 6. 如图6所示，能够看到从桌面点击图标，到进入广告页，有明显的卡顿，这是因为预创建耗时较长，引起了主线程的阻塞。
 
    图6 预创建组件演示
 
-   ![](figures/node_custom_component_onidle_4.gif)
+   
 
 ### 优化方案
 
@@ -395,7 +395,7 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 当系统执行完全部任务后，会将帧尾的空闲时间通知到onIdle回调。此时，如果组件复用池中有需要预创建的组件，则判断空闲时间是否足够进行预创建。如果时间充足，则进行组件预创建，否则将onIdle回调传递到下一帧中执行，直到所有的组件全部预创建完成。
 
-![](figures/node_custom_component_onidle_5.png)
+
 
 ### 优化代码
 
@@ -496,19 +496,19 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
    图7 使用onIdle预创建组件Trace图
 
-   ![](figures/node_custom_component_onidle_6.png)
+   
 
 8. 如图8所示，组件的预创建，被放在了onIdle中执行，并且是在帧尾空闲时间中，并不会影响到帧的正常功能。
 
    图8 使用onIdle预创建组件空闲时间Trace图
 
-   ![](figures/node_custom_component_onidle_7.png)
+   
 
 9. 通过图9可以看到，从桌面点击图标到广告页的展示，变得更加流畅了。
 
    图9 使用onIdle预创建组件演示
 
-   ![](figures/node_custom_component_onidle_8.gif)
+   
 
 ### 性能对比
 
@@ -539,4 +539,4 @@ NodeItem继承NodeController，并实现makeNode方法，创建组件。NodePool
 
 ## 参考资料
 
-[场景示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/ComponentPrebuildByOnIdle)
+场景示例代码

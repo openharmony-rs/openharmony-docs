@@ -45,7 +45,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 开发者如果期望检测耗时函数调用，并期望检测到时通过打印日志来记录，可参考如下步骤进行开发。
 
 1. 新建一个ArkTS应用工程，在“Project”窗口点击“entry > src > main > ets > entryability ”，打开工程中的“EntryAbility.ets”文件；在页面执行加载后，在自己的业务中调用HiChecker的接口，添加检测规则， 示例代码如下：
-   <!-- @[HiChecker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @HiChecker -->
    
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

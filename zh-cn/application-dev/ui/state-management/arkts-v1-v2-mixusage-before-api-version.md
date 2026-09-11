@@ -78,7 +78,7 @@
 
 在V1中使用V2的自定义组件时，如果不存在变量传递，则不会产生影响。以下示例代码中，ChildSix是不接受参数的V2自定义组件，IndexSix可直接使用ChildSix。
 
-<!-- @[v1_use_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2InV1.ets) -->
+<!-- @v1_use_v2 -->
 
 ``` TypeScript
 @ComponentV2
@@ -128,7 +128,7 @@ struct IndexSix {
 
 以下代码示例中，定义了ChildTwo为V2组件，组件接受message、undefinedVal、info等参数。ChildTwo中用\@Param接收的简单类型message和undefinedVal，能观测到变化；Class类型变量info未被\@ObservedV2和\@Trace修饰，无法观测到类属性变化。
 
-<!-- @[v1_to_v2_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1CommonVariablesToV2CustomComponent.ets) -->
+<!-- @v1_to_v2_common_variables -->
 
 ``` TypeScript
 class InfoTwo {
@@ -225,7 +225,7 @@ struct IndexTwo {
 
 若在V1中使用V2组件时，传递了使用\@State装饰的Class类型或内置类型（Array、Map、Set、Date），会造成编译报错。以下示例代码中，info和set变量需删除\@State装饰器。\@Prop、\@Link、\@ObjectLink、\@Provide、\@Consume、\@StorageProp、\@StorageLink、\@LocalStorageProp、\@LocalStorageLink的行为和\@State保持一致。
 
-<!-- @[v1_to_v2_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1StateVariablesToV2CustomComponent.ets) -->
+<!-- @v1_to_v2_state_variables -->
 
 ``` TypeScript
 class InfoFour {
@@ -323,7 +323,7 @@ struct IndexFour {
 
 V2装饰器不能和\@Observed一起使用，V1传递\@Observed装饰的class类给V2自定义组件时，不直接用\@Param接收数据，如下图所示先定义V1BridgeComponent组件作为桥接层。在桥接层监听V1组件的数据，同步到V2定义的单例数据。V1组件直接使用V1BridgeComponent，在V1BridgeComponent中引入V2自定义组件。
 
-![mixusage-example-observed-class](./figures/mixusage-example-observed-class.png)
+mixusage-example-observed-class
 
 具体实现可参考以下示例代码：
 
@@ -331,7 +331,7 @@ V2装饰器不能和\@Observed一起使用，V1传递\@Observed装饰的class类
 2. V1组件V1Comp和V2组件V2Comp之间新增\@Component修饰的桥接组件V1BridgeComponent，用\@Watch监听，将V1中\@Observed修饰的class数据赋值给V2中\@ObservedV2修饰的class数据。
 3. V1组件V1Comp中直接引入桥接组件V1BridgeComponent，桥接组件V1BridgeComponent引入V2组件V2Comp。
 
-<!-- @[v1_to_v2_observed_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedClass.ets) -->
+<!-- @v1_to_v2_observed_class -->
 
 ``` TypeScript
 @Observed
@@ -429,7 +429,7 @@ struct V2Comp {
 
 \@ObservedV2+\@Trace的观测能力在V1和V2版本中均受支持，但在V1中不支持将V1装饰器与\@ObservedV2装饰的实例对象共同使用。以下示例代码中，若info对象被\@State修饰，则会导致编译错误，需移除V1的装饰器。
 
-<!-- @[v1_to_v2_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V1ToV2_ObservedV2AndTrace.ets) -->
+<!-- @v1_to_v2_observedV2_trace -->
 
 ``` TypeScript
 @ObservedV2
@@ -502,7 +502,7 @@ V1装饰器的观测能力是对数据本身做代理，因此当数据存在嵌
 - messageInfo属性传递给V1组件，V1组件ChildOne要用\@ObjectLink接收，而传递给V2组件GrandSon1的info属性的class类用\@ObservedV2修饰。
 - \@Track防止MessageInfo1类中的info因messageId改变而连带刷新，开发者去掉\@Track可观测到，当messageId改变时，info的连带刷新，但这并非\@ObjectLink的观测能力。
 
-<!-- @[observed_object_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObservedAndObjectLink.ets) -->
+<!-- @observed_object_link -->
 
 ``` TypeScript
 @ObservedV2
@@ -607,7 +607,7 @@ struct IndexOne {
 
 \@ObservedV2+\@Trace将观测能力实现在类属性上，所以当类属性被\@Trace标记时，无论嵌套多少层，均能观测到变化。以下示例代码中，MessageInfoNested对象及其属性均被\@ObservedV2修饰，在V1组件Index中使用时，不能和V1装饰器一起使用。将messageInfo属性从V1组件传递给V2组件，V2组件Child通过\@Param接收，且修改能被观测。
 
-<!-- @[observed_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/ObserveNestedClasses_ObsevedV2AndTrace.ets) -->
+<!-- @observed_trace -->
 
 ``` TypeScript
 @ObservedV2
@@ -710,7 +710,7 @@ V2的状态变量传递给V1的自定义组件，存在以下限制：
 
 V2向V1自定义组件传递简单类型状态变量时，V1仅能通过\@State、\@Prop、\@Provide装饰器接收数据。以下示例代码中，ThirdPartyComp组件模拟第三方库，接收来自V2组件的布尔值。
 
-<!-- @[v2_to_v1_simpleData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_SimpleData.ets) -->
+<!-- @v2_to_v1_simpleData -->
 
 ``` TypeScript
 // 模拟三方库导入的V1组件
@@ -749,7 +749,7 @@ struct V2Comp2 {
 
 V2向V1自定义组件传递数据时，支持普通class类。在以下示例代码中，InfoFive类未被\@ObservedV2修饰，传递给V1组件ChildFive时，可以使用\@State接收。修改V1组件中的info变量，依赖\@State的观测能力刷新UI。
 
-<!-- @[v2_to_v1_common_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2CommonVariablesToV1CustomComponent.ets) -->
+<!-- @v2_to_v1_common_variables -->
 
 ``` TypeScript
 class InfoFive {
@@ -802,7 +802,7 @@ struct IndexFive {
 
 V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@ObservedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 
-<!-- @[v2_to_v1_observedV2_trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_ObservedV2AndTrace.ets) -->
+<!-- @v2_to_v1_observedV2_trace -->
 
 ``` TypeScript
 @ObservedV2
@@ -860,7 +860,7 @@ V2->V1传递内置类型，V2定义内置类型的装饰器和V1接收内置类�
 
 在以下示例代码中，V2向V1自定义组件传递set变量，V1组件使用\@Provide接收。因此，在V2组件IndexEight中定义set变量时，为避免编译错误，set变量不能用\@Local修饰。
 
-<!-- @[v2_to_v1_common_buildIn_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsMixingUse/entry/src/main/ets/pages/MixingUseofCustomComponents/V2ToV1_CommonBuildInClass.ets) -->
+<!-- @v2_to_v1_common_buildIn_class -->
 
 ``` TypeScript
 @Component

@@ -28,7 +28,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 以下以生成3DES密钥为例：
 
-<!-- @[generate_3des_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormat/entry/src/main/cpp/types/project/3des.cpp) -->
+<!-- @generate_3des_key -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -80,7 +80,7 @@ OH_Crypto_ErrCode doTestDataConvertSymKey()
 
 以下以生成HMAC密钥为例：
 
-<!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormat/entry/src/main/cpp/types/project/hmac.cpp) -->
+<!-- @generate_hmac_key -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

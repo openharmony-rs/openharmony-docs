@@ -20,7 +20,7 @@ Web页面保活可以参考使用离线Web组件。
 
 **图1**  Web组件网页正常加载过程中的回调事件
 
-![web-event-sequence](figures/web-event-sequence.png)
+web-event-sequence
 
 ## Web组件网页正常加载过程所涉及的状态说明 
 

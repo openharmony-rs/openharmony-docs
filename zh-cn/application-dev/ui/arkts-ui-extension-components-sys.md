@@ -8,7 +8,7 @@
 
 UIExtension允许开发者创建可以嵌入到其他应用窗口上的界面扩展，使得应用能够提供更加丰富和灵活的用户体验。
 
-![uiextension-ability](figures/uiextension-ability.png)
+uiextension-ability
 
 ## 基本概念
 
@@ -27,11 +27,11 @@ UIExtension提供了一种跨进程的应用组件共享机制。 使用方应�
 
 实现后能够在使用方应用页面中以组件方式展示提供方应用的页面：
 
-![uiextension-component](figures/uiextension-component.png)
+uiextension-component
 
 通过AMS拉起后，提供方和使用方之间可以进行数据交互。
 
-![uiextension-process-model](figures/uiextension-process-model.png)
+uiextension-process-model
 
 - 使用方应用向提供方应用发送消息：使用方可以通过UIExtensionProxy.send和提供方应用进行消息的通信，提供方应用中可以使用UIExtensionContentSession.setReceiveDataCallback获取使用方应用发送的数据信息。
 - 提供方应用向使用方应用发送消息：提供方可以使用 UIExtensionContentSession.sendData向使用方应用发送数据，使用方使用 UIExtensionProxy.onReceive接收消息。

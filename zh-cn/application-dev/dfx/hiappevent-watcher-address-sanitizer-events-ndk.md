@@ -23,7 +23,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 ### 步骤一：新建工程
 
-1. 参考[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)README中**Using JsonCpp in your project**介绍的使用方法获取到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 参考三方开源库jsoncpp代码仓README中**Using JsonCpp in your project**介绍的使用方法获取到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下：
 

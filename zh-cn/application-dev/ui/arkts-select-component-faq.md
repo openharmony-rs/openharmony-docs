@@ -14,11 +14,11 @@ Slider的滑块与滑轨显示样式SliderStyle有三种，其中SliderStyle.Out
 
 SliderStyle.OutSet模式下，滑块的中心与滑轨的端点对齐，示例图如下：
 
-![OutSet示意图](figures/SliderOutset.jpg)
+OutSet示意图
 
 SliderStyle.InSet模式下，滑块与滑轨的中心对齐，即距离端点滑轨高度的一半的位置，示例图如下：
 
-![InSet示意图](figures/SliderInset.jpg)
+InSet示意图
 
 **示例**
 
@@ -67,7 +67,7 @@ struct Index {
 
 为避免不同设置方式导致的显示差异，建议在通过AttributeModifier接口设置LabelStyle时，显式指定weight的值，以确保文本样式符合预期，具体示例如下。
 
-<!-- @[button_modifier_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonModifierFAQ.ets) -->
+<!-- @button_modifier_faq -->
 
 ```ts
 
@@ -117,7 +117,7 @@ struct Index {
 }
 ```
 
-![ButtonModifier差异示意图](figures/ButtonModifier.png)
+ButtonModifier差异示意图
 
 ## Button组件设置type时，ButtonType枚举值与数字值不一致
 
@@ -144,7 +144,7 @@ ButtonType枚举数值的定义仅表示枚举项的索引，与type属性实际
 
 **示例**
 
-<!-- @[button_type_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonTypeFAQ.ets) -->
+<!-- @button_type_faq -->
 
 ``` TypeScript
 // pages/ButtonTypeFAQ.ets
@@ -188,4 +188,4 @@ struct ButtonTypeDemo {
 }
 ```
 
-![ButtonType枚举与数值示意图](figures/ButtonTypeValue.png)
+ButtonType枚举与数值示意图

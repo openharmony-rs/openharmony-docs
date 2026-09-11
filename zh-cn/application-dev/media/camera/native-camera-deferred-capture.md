@@ -17,7 +17,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.h) -->    
+   <!-- @import_header -->    
    
    ``` C
    #include <cstdint>
@@ -90,7 +90,7 @@
    - 通过mediaAsset直接落盘图片或者通过mediaAsset配置策略模式请求图像资源，业务处理后通过buffer保存图片，或显示图片(参考拍照(C/C++)步骤5)。
    - 使用完后解注册分段式拍照回调函数。
 
-   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->    
+   <!-- @deferred_photo -->    
    
    ``` C++
    // 分段式拍照回调函数。

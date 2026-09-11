@@ -30,7 +30,7 @@
 ### 使用规则
 
 - 和\@Styles不同，\@Extend支持封装指定组件的私有属性、私有事件和自身定义的全局方法。
-  <!-- @[Extend_Global_Function_Extension_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/GlobalFunctionExtension.ets) -->
+  <!-- @Extend_Global_Function_Extension_one -->
   
   ``` TypeScript
   // @Extend(Text)可以支持Text的私有属性fontColor
@@ -63,7 +63,7 @@
   ```
 
 - 和\@Styles不同，\@Extend装饰的方法支持传入参数，调用遵循TS方法传值调用。
-  <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
+  <!-- @Extend_private_property_fancy_two -->
   
   ``` TypeScript
   // xxx.ets
@@ -88,7 +88,7 @@
   ```
 
 - \@Extend装饰的方法的参数可以为function，作为Event事件的句柄。
-  <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) --> 
+  <!-- @Extend_Function_handle_three --> 
   
   ``` TypeScript
   // @Extend装饰的方法支持function参数
@@ -119,7 +119,7 @@
   ```
 
 - \@Extend的参数可以为状态变量，当状态变量改变时，UI可以正常地被刷新渲染。
-  <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
+  <!-- @Extend_Refresh_rendering_four --> 
   
   ``` TypeScript
   // 将状态变量作为@Extend参数，状态变化驱动Text样式刷新
@@ -147,7 +147,7 @@
   }
   ```
   
-  ![](figures/arkts-extend-1.gif)
+  
 
 ## 限制条件
 
@@ -180,7 +180,7 @@
   ```
   
   【正例】
-  <!-- @[Extend_Positive_Example_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets) --> 
+  <!-- @Extend_Positive_Example_five --> 
   
   ``` TypeScript
   // 正确写法
@@ -290,7 +290,7 @@
 ## 使用场景
 
 以下示例声明了3个Text组件，每个Text组件均设置了fontStyle、fontWeight 和backgroundColor样式。
-<!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) --> 
+<!-- @Extend_Usage_Scenario_one --> 
 
 ``` TypeScript
 @Entry
@@ -317,10 +317,10 @@ struct FancyUse {
   }
 }
 ```
-![](figures/arkts-extend-2.png)
+
 
 使用@Extend将样式组合复用，示例如下。
-<!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
+<!-- @Extend_Usage_Scenario_two --> 
 
 ``` TypeScript
 // 使用@Extend封装Text样式组合，便于复用
@@ -333,7 +333,7 @@ function fancyText(weightValue: number, color: Color) {
 ```
 
 通过\@Extend组合样式后，使得代码更加简洁，增强可读性。
-<!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
+<!-- @Extend_Usage_Scenario_three --> 
 
 ``` TypeScript
 @Entry

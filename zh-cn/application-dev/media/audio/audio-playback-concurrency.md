@@ -155,7 +155,7 @@
 
 在监听音频播放焦点变化事件之前，需要先获取AudioRenderer实例。若使用其他接口开发音频播放或音频录制功能，处理方法类似，具体的代码实现，开发者可结合实际情况编写，处理方法也可自行调整。
 
-<!-- @[renderer_interrupt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @renderer_interrupt --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -248,7 +248,7 @@ async function onAudioInterrupt(): Promise<void> {
 
 **规格图例：**
 
-![INTERRUPT_MODE](figures/audio-focus-interrupt-mode.png)
+INTERRUPT_MODE
 
 推荐使用共享焦点模式（SHARE_MODE）。应用可按需自行管控各流的播放、暂停、恢复等操作，避免系统默认策略（如STOP）导致音频流无法恢复。
 
@@ -270,7 +270,7 @@ async function onAudioInterrupt(): Promise<void> {
 
 推荐做法：采用默认焦点模式（SHARE_MODE），应用自行管控各流的播放与恢复。当流B开始播放时，应用主动暂停流A；当流B停止播放时，应用主动恢复流A。优于独立焦点模式（INDEPENDENT_MODE）下系统停止后不恢复的策略。
 
-<!-- @[toggle_stream_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioIntraAppFocusSample/entry/src/main/ets/pages/MusicVsMusicPage.ets) -->
+<!-- @toggle_stream_b -->
 
 ``` TypeScript
 async toggleStreamB() { // 切换流B的播放状态。

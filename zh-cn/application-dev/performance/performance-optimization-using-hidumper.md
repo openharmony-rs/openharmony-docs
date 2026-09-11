@@ -28,7 +28,7 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
     hdc shell hidumper -s WindowManagerService -a '-a'
     ```
 
-   ![WinId](figures/hidumper-winid.PNG)
+   WinId
 
 
    * `hidumper -s`: 导出系统全部的元能力信息。
@@ -49,7 +49,7 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
    hdc shell hidumper -s WindowManagerService -a '-w 28 -element -c' // 28 即为查找到的WinId
    ```
 
-   ![FilePath](figures/hidumper-filepath.PNG)
+   FilePath
 
 
 5. 下载组件树文件到本地。由于安全机制此处的路径非真实路径，需要使用 `find` 命令查找对应文件的准确路径。
@@ -57,7 +57,7 @@ HiDumper是系统为开发、测试人员、IDE工具提供的系统信息获取
    hdc shell find /data/ -name arkui.dump
    ```
 
-   ![CorrectFilePath2](figures/hidumper-filepath2.PNG)
+   CorrectFilePath2
 
    ```shell
    hdc file recv /data/app/el2/100/base/com.example.demo/haps/entry/files/arkui.dump  // 获取文件到本地
@@ -236,13 +236,13 @@ struct VisibilityComponent {
 hdc shell hidumper --mem [pid]
 ```
 
-![内存信息](figures/hidumper-mem.png)
+内存信息
 
 一般情况下，开发者只需要关注PSS （Proportional Set Size（实际使用物理内存））Total一列的数据，即示例应用实际使用的物理内存。在上图中可以看到，应用总共占用了53395KB的内存，主要包括ark ts heap（ArkUI堆内存）的3411KB以及native heap的45846KB。
 
 ## HiDumper查看CPU信息
 
-在应用开发中，经常会遇到需要大量计算的场景，HiDumper提供了查看CPU使用率的功能，方便开发者进行性能优化。下面将以[Chat](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)为例，展示如何使用HiDumper查看CPU信息。 
+在应用开发中，经常会遇到需要大量计算的场景，HiDumper提供了查看CPU使用率的功能，方便开发者进行性能优化。下面将以Chat为例，展示如何使用HiDumper查看CPU信息。 
 
 1. 编译项目、安装并打开Chat应用，运行以下HiDumper命令获取当前应用的Pid。
     ```shell
@@ -253,6 +253,6 @@ hdc shell hidumper --mem [pid]
     hdc shell hidumper --cpuusage [pid]
     ```
    
-    ![CPU信息](figures/hidumper-cpu.png)
+    CPU信息
     
     一般情况下，只需要关注Total Usage（总使用率）、User Space（用户程序的运行空间）、Kernel Space（内核的运行空间）。其中，Total Usage用于统计应用的总CPU使用率，User Space用于执行简单的运算，Kernel Space用于调用系统的资源。通过上图可以看到，当前示例的三项数据分别是11%，11%，0%，表示当前应用并没有调用系统资源，只需要查看应用的运行空间即可。如果想要查看CPU在一段时间内的使用率，则可以通过Shell脚本，多次执行 `hdc shell hidumper --cpuusage [pid]` 命令，并通过 `hdc shell hidumper --zip --cpuusage` 将结果输出到手机的/data/log/hidumper目录下，方便进行分析。 

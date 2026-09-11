@@ -28,7 +28,7 @@ Core File Kit（文件基础服务）为开发者提供一套访问和管理应�
 
 **图1** 文件分类模型示意图
 
-![File classification model](figures/file-classification-model.png)
+File classification model
 
 在Core File Kit套件中提供高性能的压缩解压缩能力，按照使用场景的不同分为以下类型：
 
@@ -91,7 +91,7 @@ Core File Kit常见的使用场景：
 
 **图2** 用户文件访问框架示意图
 
-![User file access framework](figures/user-file-access-framework.png)
+User file access framework
 
 - 系统应用或三方应用（即图中的文件访问客户端）若需访问用户文件，如选择一张照片或保存多个文档等，可以通过拉起“文件选择器应用”来实现。
 
@@ -113,6 +113,6 @@ Ability Kit：Core File Kit中用户文件访问框架依赖Ability Kit提供的
 
 针对Core File Kit开发，有以下相关实例可供参考：
 
-- [文件管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/FileManagement/FileManager)
+- 文件管理（ArkTS）（Full SDK）（API10）
 
 <!--RP5--><!--RP5End-->

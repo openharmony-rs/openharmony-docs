@@ -120,7 +120,7 @@ struct AspectRatioExample11 {
 
 例如，以下是一个自适应的效果：
 
-![输入图片说明](figures/layout-ui-view.png)
+输入图片说明
 
 反例：
 
@@ -204,7 +204,7 @@ struct MyComponent {
 
 分析元素之间的布局关系可以得到如下：
 
-![输入图片说明](figures/layout-relative-view.png)
+输入图片说明
 
 正例：
 
@@ -292,7 +292,7 @@ struct MyComponent {
 
 从上述案例中可以看到，使用扁平化布局逻辑概念设计更清晰，避免使用不参与绘制的布局组件，优化性能并减少占用内存。这种将一棵深度很高的UI树，改造为将内容排布到同一个节点下的思路，为扁平化布局。如下图所示，采用扁平化布局去除了中间冗余的两层布局节点。
 
-![输入图片说明](figures/layout-relative-introduce.png)
+输入图片说明
 
 使用扁平化布局推荐使用RelativeContainer、位置设置、Grid组件等
 
@@ -625,7 +625,7 @@ struct NormalCustom {
 
 图1 常规设置自定义组件全局属性
 
-![image-20240624191206151](figures/custom_component_node_1.png)
+image-20240624191206151
 
 **正例**
 
@@ -678,7 +678,7 @@ class ColumnModifier implements AttributeModifier<ColumnAttribute> {
 
 图2 使用Modifier设置自定义组件全局属性
 
-![image-20240624192653146](figures/custom_component_node_2.png)
+image-20240624192653146
 
 
 
@@ -712,7 +712,7 @@ struct ComponentStackNormal {
 
 图3 使用Stack实现遮罩效果
 
-![image-20240624195032415](figures/stack_normal.png)
+image-20240624195032415
 
 **正例**
 
@@ -739,7 +739,7 @@ struct ComponentStackOverlay {
 
 通过DevEco Studio内置ArkUI Inspector工具，查看组件树结构，如图4所示。和反例中的代码相比，虽然组件树层数相同，但是减少了Stack组件的创建，优化了性能。
 
-![image-20240624195635402](figures/stack_overlay.png)
+image-20240624195635402
 
 ### 按压态效果
 
@@ -783,7 +783,7 @@ struct GrayScaleNormalCustom {
 
 图5 常规遮罩实现
 
-![image-20240624204921380](figures/mask_normal.png)
+image-20240624204921380
 
 **正例**
 
@@ -818,7 +818,7 @@ struct GrayScaleCustom {
 
 图6 通过组件效果实现遮罩
 
-![image-20240624205531083](figures/mask_grayscale.png)
+image-20240624205531083
 
 ### 颜色叠加效果
 
@@ -873,7 +873,7 @@ struct Index {
 
 图7 
 
-![image-20240628153525200](figures/color_normal.png)
+image-20240628153525200
 
 **正例**
 
@@ -931,10 +931,10 @@ struct Index {
 
 图8
 
-![image-20240628154436228](figures/color_measure.png)
+image-20240628154436228
 
 ## 优化布局工具介绍
 
-[DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)内置ArkUI Inspector工具，开发者可以使用ArkUI
+DevEco Studio内置ArkUI Inspector工具，开发者可以使用ArkUI
 
 Inspector，在DevEco Studio上查看应用在真机上的UI显示效果。利用ArkUI Inspector工具，开发者可以快速定位布局不理想或其他UI相关问题，同时也可以观察和了解不同组件之间的布局关系和属性。

@@ -18,7 +18,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 两个设备的交互实现如下，在使用linkEnhance能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
 
-![linkEnhance-process](figures/linkEnhance-process.png)
+linkEnhance-process
 
 ### 约束与限制
 
@@ -43,7 +43,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 ### 搭建环境
 
-1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，版本要求在4.1及以上。
+1. 在PC上安装DevEco Studio，版本要求在4.1及以上。
 2. 将public-SDK更新到API 20或以上<!--Del-->，具体操作参见更新指南<!--DelEnd-->。
 3. 用USB线缆将两台调测设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的蓝牙开关。

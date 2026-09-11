@@ -41,7 +41,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvalueuint32/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_uint32 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -96,7 +96,7 @@ JSVM GetValueUint32 success: 123
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvalueint32/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_int32 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -150,7 +150,7 @@ JSVM GetValueInt32 success: -123
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvalueint64/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_int64 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -203,7 +203,7 @@ JSVM GetValueInt64 success: -123
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvaluedouble/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_double -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -254,7 +254,7 @@ JSVM GetDouble success: -110.045600
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createint32/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_int32 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -306,7 +306,7 @@ JSVM CreateInt32 success: -20
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createuint32/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_uint32 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -362,7 +362,7 @@ JSVM CreateUInt32 success: 26
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createint64/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_int64 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -416,7 +416,7 @@ JSVM CreateInt64 success: 2147483648
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createdouble/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_double -->
 
 ``` C++
 #include "napi/native_api.h"

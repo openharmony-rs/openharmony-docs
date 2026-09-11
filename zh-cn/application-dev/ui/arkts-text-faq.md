@@ -18,7 +18,7 @@
 
 在Text组件上未设置宽度，当内容过长时，省略号与组件边缘之间会留有较大空白，且内容更新时省略号的位置会发生变化。
 
-![](figures/EllipsisDemo1.gif)
+
 
 **原因分析**
 
@@ -29,7 +29,7 @@
 设置wordBreak属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
 
 示例代码如下：
-  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
+  <!-- @Word_Break -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -64,7 +64,7 @@
   }
   ```
 
-![](figures/text_faq_Word_Break.gif)
+
 
 ### Text组件如何实现行末展开样式
 
@@ -83,7 +83,7 @@
 设置heightAdaptivePolicy为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
 
 示例代码如下：
-  <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
+  <!-- @Height_AdaptivePolicy --> 
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -126,7 +126,7 @@
   }
   ```
 
-![](figures/EllipsisDemo2.gif)
+
 
 ### 在文本前后添加自定义标签
 
@@ -162,7 +162,7 @@
 
 示例：
 
-  <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) --> 
+  <!-- @Length_Metric --> 
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -257,7 +257,7 @@
   }
   ```
 
-![](figures/text_tag_case_2.png)
+
 
 ### Text组件如何实现表情与文字一起显示
 
@@ -269,7 +269,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 
 使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过Span和ImageSpan同时展示表情和文字。
 
-  <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
+  <!-- @Displayed_Together -->
   
   ``` TypeScript
   // 请将$r('app.media.xxx')替换为实际资源文件
@@ -372,7 +372,7 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   }
   ```
 
-![](figures/text-emoji.png)
+
 
 ### 文本超长时如何展示
 
@@ -386,7 +386,7 @@ Text文本是自动折行的，当没有限制Text高度height时，Text高度�
 
 以下示例展示了限制Text组件不超过三行的场景。
 
-  <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
+  <!-- @Text_Long -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -418,13 +418,13 @@ Text文本是自动折行的，当没有限制Text高度height时，Text高度�
   }
   ```
 
-![](figures/text_too_long_maxLines.png)
+
 
 **解决措施二**
 
 上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器Scroll内，再通过手势滑动来浏览全部文本，具体示例如下：
 
-  <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
+  <!-- @Text_Long_Tow -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -457,7 +457,7 @@ Text文本是自动折行的，当没有限制Text高度height时，Text高度�
   }
   ```
 
-![](figures/text_too_long_scroll.gif)
+
 
 ### selection如何触发弹出自定义菜单并设置菜单字体大小
 
@@ -468,7 +468,7 @@ Text文本是自动折行的，当没有限制Text高度height时，Text高度�
 **解决措施**
 
 若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在Menu组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
-  <!-- @[How_To_Set_Custom_Selection_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToSetCustomSelectionMenu.ets) -->
+  <!-- @How_To_Set_Custom_Selection_Menu -->
 
   ``` TypeScript
   @Entry
@@ -528,7 +528,7 @@ Text文本是自动折行的，当没有限制Text高度height时，Text高度�
   }
   ```
 
-![](figures/selectionAndBindMenuAndFont.gif)
+
 
 ### 如何屏蔽文本的长按手势
 
@@ -591,7 +591,7 @@ TextInput被遮挡时，如果通过TextInputController设置焦点和选中区�
 
 以下示例展示了一个典型的问题场景，存在一个内容为“TextInput被遮挡不显示”的TextInput组件被隐藏，但点击按钮后，图片上会出现TextInput操作手柄。此时，开发者需要检查应用代码，确保在输入框被遮挡时没有设置选中区域。移除设置输入框选中区域的代码逻辑，即可解决操作手柄出现的问题。
 
-<!--@[Cursor_Persists_When_TextInput_Is_Covered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/CursorPersistsWhenTextInputIsCovered.ets)-->
+<!--@Cursor_Persists_When_TextInput_Is_Covered-->
 
 ``` TypeScript
 @Entry
@@ -634,7 +634,7 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
 }
 ```
 
-![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)
+textInput_faq_show_handle
 
 ### 如何设置TextArea的文本最少展示行数并自适应高度
 
@@ -646,7 +646,7 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
 
 设置minLines（从API version 20开始），或者设置height为"auto"，并使用constraintSize自行计算高度。
 
-<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
+<!-- @normal_question_text_example -->
 
 ``` TypeScript
 import { MeasureUtils } from '@kit.ArkUI';
@@ -703,4 +703,4 @@ struct TextExample {
 }
 ```
 
-![textinputkeyboardavoid](figures/textareaHeight.gif)
+textinputkeyboardavoid

@@ -15,7 +15,7 @@ UI界面除了运行动画之外，还承载着与用户进行实时交互的功
 
 示例如下。通过点击Click，红色方块的缩放属性会发生变化。当连续快速点击Click时，缩放属性的终点值连续发生变化，当前动画也会平滑过渡到朝着新的缩放属性终点值运动。
 
-<!-- @[animation_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/cohesion/template1/Index.ets) -->
+<!-- @animation_template1_start -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -67,7 +67,7 @@ struct AnimationToAnimationDemo {
 ```
 
 
-![zh-cn_image_0000001599971890](figures/Animation-smoothing.gif)
+zh-cn_image_0000001599971890
 
 
 
@@ -81,7 +81,7 @@ struct AnimationToAnimationDemo {
 
 示例代码如下，小球跟手运动。
 
-<!-- @[animation_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/cohesion/template2/Index.ets) -->
+<!-- @animation_template2_start -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -149,4 +149,4 @@ struct SpringMotionDemo {
 
 
 
-![zh-cn_image_0000001647027001](figures/Smoothing-Gestures-Animations.gif)
+zh-cn_image_0000001647027001

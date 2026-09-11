@@ -59,7 +59,7 @@ ArkUI提供了四种阻尼弹簧曲线接口。
 
 
 
-<!-- @[spring_curve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/springCurve/template1/SpringCurve.ets) -->     
+<!-- @spring_curve -->     
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -159,5 +159,5 @@ export struct SpringCurve {
 
 
 
-![zh-cn_image_0000001649089041](figures/spring_curve.gif)
+zh-cn_image_0000001649089041
 

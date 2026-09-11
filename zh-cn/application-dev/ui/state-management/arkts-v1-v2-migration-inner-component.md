@@ -42,7 +42,7 @@
 
 V1：
 
-<!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) --> 
+<!-- @Child1_start --> 
 
 ``` TypeScript
 const INITIAL_VALUE = 10;
@@ -66,7 +66,7 @@ struct Child {
 
 V2迁移策略：直接替换。
 
-<!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) --> 
+<!-- @Child2_start --> 
 
 ``` TypeScript
 const INITIAL_VALUE = 10;
@@ -90,7 +90,7 @@ struct Child {
 
 示例效果图：
 
-![state-easy](figures/migration-state-easy.png)
+state-easy
 
 **复杂类型**
 
@@ -98,7 +98,7 @@ V1的\@State能够观察复杂对象的第一层属性变化，但V2的\@Local�
 
 V1：
 
-<!-- @[example1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV1.ets) -->
+<!-- @example1_start -->
 
 ``` TypeScript
 const INITIAL_VALUE = 10;
@@ -132,7 +132,7 @@ struct Example {
 
 V2迁移策略：使用\@ObservedV2和\@Trace。
 
-<!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
+<!-- @example2_start -->
 
 ``` TypeScript
 const INITIAL_VALUE = 10;
@@ -167,7 +167,7 @@ struct Example {
 
 示例效果图：
 
-![state-complex](figures/migration-state-complex.gif)
+state-complex
 
 **外部初始化状态变量**
 
@@ -175,7 +175,7 @@ V1的\@State变量可以从外部初始化，V2的\@Local禁止外部初始化�
 
 V1实现：
 
-<!-- @[Parent5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV1.ets) -->
+<!-- @Parent5_start -->
 
 ``` TypeScript
 @Component
@@ -204,7 +204,7 @@ struct Parent {
 
 V2迁移策略：使用\@Param和\@Once。
 
-<!-- @[Parent6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateExternalInitializationV2.ets) -->
+<!-- @Parent6_start -->
 
 ``` TypeScript
 @ComponentV2
@@ -234,7 +234,7 @@ struct Parent {
 
 示例效果图：
 
-![state-external-init](figures/migration-state-external-init.png)
+state-external-init
 
 ### \@Prop -> \@Param
 
@@ -256,7 +256,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV1.ets) --> 
+<!-- @Parent9_start --> 
 
 ``` TypeScript
 @Component
@@ -285,7 +285,7 @@ struct Parent {
 
 V2迁移策略：直接替换。
 
-<!-- @[Parent10_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropEasyV2.ets) -->
+<!-- @Parent10_start -->
 
 ``` TypeScript
 @ComponentV2
@@ -314,7 +314,7 @@ struct Parent {
 
 示例效果图：
 
-![prop-easy](figures/migration-prop-easy.png)
+prop-easy
 
 **复杂类型的单向数据传递**
 
@@ -322,7 +322,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->
+<!-- @Parent11_start -->
 
 ``` TypeScript
 const APPLE_INITIAL_COUNT = 5;
@@ -385,7 +385,7 @@ struct Parent {
 
 V2迁移策略：使用深拷贝。
 
-<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->
+<!-- @Parent12_start -->
 
 ``` TypeScript
 const APPLE_INITIAL_COUNT = 5;
@@ -456,7 +456,7 @@ struct Parent {
 
 示例效果图：
 
-![prop-complex](figures/migration-prop-complex.gif)
+prop-complex
 
 **子组件修改变量**
 
@@ -464,7 +464,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent13_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV1.ets) -->
+<!-- @Parent13_start -->
 
 ``` TypeScript
 @Component
@@ -502,7 +502,7 @@ struct Parent {
 
 V2迁移策略：使用\@Param和\@Once。
 
-<!-- @[Parent14_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarV2.ets) -->
+<!-- @Parent14_start -->
 
 ``` TypeScript
 @ComponentV2
@@ -540,7 +540,7 @@ struct Parent {
 
 示例效果图：
 
-![prop-update-var](figures/migration-prop-update-var.gif)
+prop-update-var
 
 在V1中，子组件可以修改\@Prop的变量，且只会在本地更新，不会同步回父组件。父组件数据源更新时，会通知子组件更新，并覆写子组件本地\@Prop的值。
 
@@ -549,7 +549,7 @@ V1：
 - 改变子组件Child的localValue，不会同步回父组件Parent。
 - 父组件更新value，通知子组件Child更新，并覆写本地子组件localValue的值。
 
-<!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
+<!-- @Parent15_start -->
 
 ``` TypeScript
 const PARENT_INITIAL_STATE_VALUE = 10;
@@ -604,7 +604,7 @@ V2实现：
 - 子组件Child改变localValue的值，不会同步给父组件Parent。
 - 父组件Parent中再次改变value，将会继续通知给子组件，并覆写子组件本地localValue的值。
 
-<!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
+<!-- @Parent16_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -665,7 +665,7 @@ struct Parent {
 
 示例效果图：
 
-![prop-update-var-local](figures/migration-prop-update-var-local.gif)
+prop-update-var-local
 
 ### \@Link -> \@Param/\@Event
 
@@ -677,7 +677,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
+<!-- @Parent7_start -->
 
 ``` TypeScript
 const INITIAL_MYVAL = 10;
@@ -722,7 +722,7 @@ struct Parent {
 
 V2迁移策略：使用\@Param和\@Event。
 
-<!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
+<!-- @Parent8_start -->
 
 ``` TypeScript
 const INITIAL_MYVAL = 10;
@@ -769,7 +769,7 @@ struct Parent {
 
 示例效果图：
 
-![link](figures/migration-link.gif)
+link
 
 ### \@ObjectLink -> \@Param
 
@@ -783,7 +783,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent23_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ObjectLinkMigrationV1.ets) -->
+<!-- @Parent23_start -->
 
 ``` TypeScript
 @Observed
@@ -843,7 +843,7 @@ struct Parent {
 
 V2迁移策略：使用\@Param接收对象。
 
-<!-- @[Parent24_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ObjectLinkMigrationV2.ets) -->
+<!-- @Parent24_start -->
 
 ``` TypeScript
 @ObservedV2
@@ -904,7 +904,7 @@ struct Parent {
 
 示例效果图：
 
-![objectlink](figures/migration-objectlink.gif)
+objectlink
 
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
 
@@ -932,7 +932,7 @@ V1的\@Provide和\@Consume与V2的\@Provider和\@Consumer定位和作用类似�
 
 V1实现：
 
-<!-- @[Parent17_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV1.ets) -->
+<!-- @Parent17_start -->
 
 ``` TypeScript
 @Component
@@ -970,7 +970,7 @@ struct Parent {
 
 V2迁移策略：确保alias一致，没有指定alias的情况下，依赖属性名进行匹配。
 
-<!-- @[Parent18_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAliasV2.ets) -->
+<!-- @Parent18_start -->
 
 ``` TypeScript
 @ComponentV2
@@ -1008,7 +1008,7 @@ struct Parent {
 
 示例效果图：
 
-![provide-alias](figures/migration-provide-alias.png)
+provide-alias
 
 **V1的\@Consume不支持本地初始化，V2支持**
 
@@ -1016,7 +1016,7 @@ V1中，API version 20之前，\@Consume不允许本地初始化变量，必须�
 
 V1实现：
 
-<!-- @[Parent19_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeNoInitV1.ets) -->
+<!-- @Parent19_start -->
 
 ``` TypeScript
 @Component
@@ -1047,7 +1047,7 @@ struct Parent {
 
 V2迁移策略：\@Consumer可以本地初始化。
 
-<!-- @[Parent20_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideConsumeInitV2.ets) -->
+<!-- @Parent20_start -->
 
 ``` TypeScript
 @ComponentV2
@@ -1076,7 +1076,7 @@ struct Parent {
 
 示例效果图：
 
-![provide-no-init](figures/migration-provide-no-init.png)
+provide-no-init
 
 **V1的\@Provide可以从父组件初始化，V2不支持**
 
@@ -1084,7 +1084,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent21_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets) -->
+<!-- @Parent21_start -->
 
 ``` TypeScript
 const STATE_INITIAL_PARENT_VALUE = 42;
@@ -1120,7 +1120,7 @@ struct Child {
 
 V2迁移策略：使用\@Param和\@Once接收初始值，再赋值给\@Provider。
 
-<!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
+<!-- @Parent22_start -->
 
 ``` TypeScript
 const LOCAL_INITIAL_PARENT_VALUE = 42;
@@ -1157,7 +1157,7 @@ struct Child {
 
 示例效果图：
 
-![provide-parent-init](figures/migration-provide-parent-init.png)
+provide-parent-init
 
 **V1的\@Provide默认不支持重载，V2默认支持**
 
@@ -1165,7 +1165,7 @@ struct Child {
 
 V1实现：
 
-<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) --> 
+<!-- @GrandParent1_start --> 
 
 ``` TypeScript
 const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
@@ -1208,7 +1208,7 @@ struct Child {
 
 V2迁移策略：取消allowOverride设置。
 
-<!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
+<!-- @GrandParent2_start -->
 
 ``` TypeScript
 const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
@@ -1252,7 +1252,7 @@ struct Child {
 
 示例效果图：
 
-![provide-override](figures/migration-provide-override.png)
+provide-override
 
 ### \@Watch -> \@Monitor
 
@@ -1272,7 +1272,7 @@ struct Child {
 
 V1实现：
 
-<!-- @[WatchExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV1.ets) -->
+<!-- @WatchExample1_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1309,7 +1309,7 @@ struct WatchExample {
 
 V2迁移策略：直接替换。
 
-<!-- @[MonitorExample1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchSingleVarV2.ets) -->
+<!-- @MonitorExample1_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1347,7 +1347,7 @@ struct MonitorExample {
 
 示例效果图：
 
-![watch-single](figures/migration-watch-single.gif)
+watch-single
 
 **多变量监听**
 
@@ -1355,7 +1355,7 @@ struct MonitorExample {
 
 V1实现：
 
-<!-- @[WatchExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV1.ets) -->
+<!-- @WatchExample2_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1407,7 +1407,7 @@ struct WatchExample {
 
 V2迁移策略：同时监听多个变量，以及获取变化前的值。
 
-<!-- @[MonitorExample2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/WatchMoreVarV2.ets) -->
+<!-- @MonitorExample2_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1458,7 +1458,7 @@ struct MonitorExample {
 
 示例效果图：
 
-![watch-multi](figures/migration-watch-multi.gif)
+watch-multi
 
 ### 重复计算 -> \@Computed计算属性
 
@@ -1470,7 +1470,7 @@ V1：
 
 在下面的示例中，每次改变lastName都会触发Text组件的刷新，每次Text组件的刷新，都需要重复计算this.lastName + ' ' + this.firstName。
 
-<!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
+<!-- @ComputedV1_start -->
 
 ``` TypeScript
 @Entry
@@ -1504,7 +1504,7 @@ V2:
 
 使用V2中的\@Computed，每次改变lastName仅会触发一次计算。
 
-<!-- @[ComputedV2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets) -->
+<!-- @ComputedV2_start -->
 
 ``` TypeScript
 @Entry
@@ -1542,7 +1542,7 @@ struct Index {
 
 示例效果图：
 
-![computed](figures/migration-computed.gif)
+computed
 
 ### 双向绑定由$$迁移!!
 
@@ -1558,7 +1558,7 @@ struct Index {
 
 V1实现：
 
-<!-- @[Migration_Sync_Dollar_Dollar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/migrationDataObjectVariables/MigrationSyncDollarDollar.ets) -->
+<!-- @Migration_Sync_Dollar_Dollar -->
 
 ``` TypeScript
 @Entry
@@ -1588,7 +1588,7 @@ struct TextInputExample {
 
 V2迁移策略：装饰器修改为V2的同时，$$直接替换为!!。
 
-<!-- @[sync_state_manager_!!](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets) -->
+<!-- @sync_state_manager_!! -->
 
 ``` TypeScript
 @Entry
@@ -1618,4 +1618,4 @@ struct TextInputExampleV2 {
 
 示例效果图：
 
-![sync](figures/migration-sync.gif)
+sync

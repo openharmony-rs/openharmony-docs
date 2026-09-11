@@ -33,7 +33,7 @@
 
    通过CameraOutputCapability中的photoProfiles属性，可获取当前设备支持的拍照输出流。通过createPhotoOutput方法传入支持的某一个输出流Profile创建拍照输出流。
 
-   <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_getPhotoOutput -->
    
    ``` TypeScript
    getPhotoOutput(cameraManager: camera.CameraManager,
@@ -62,7 +62,7 @@
 
    需要在photoOutput.on('photoAvailable')接口获取到buffer时，将buffer在安全控件中保存到媒体库。
 
-   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_photoAvailable -->
    
    ``` TypeScript
    setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
@@ -116,7 +116,7 @@
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
 
-   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   <!-- @camera_param_config -->    
    ``` TypeScript
    configuringSession(photoSession: camera.PhotoSession | camera.VideoSession): void {
      // 判断设备是否支持闪光灯。
@@ -196,7 +196,7 @@
    > 图片地理位置信息Location，使用方法可参考capture示例。
 
 
-   <!-- @[camera_capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_capture -->
    
    ``` TypeScript
    capture(captureLocation?: camera.Location): void {
@@ -431,7 +431,7 @@
 
 - 通过注册固定的captureStart回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，相机设备已经准备开始这次拍照时触发，该事件返回此次拍照的captureId。
 
-  <!-- @[capture_start_with_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  <!-- @capture_start_with_info -->
   
   ``` TypeScript
   // 监听拍照开始
@@ -443,7 +443,7 @@
 - 通过注册固定的captureEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听，该事件返回结果为拍照完全结束后的相关信息CaptureEndInfo。
 
 
-  <!-- @[capture_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  <!-- @capture_end -->
   
   ``` TypeScript
   // 监听拍照结束
@@ -455,7 +455,7 @@
 
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-  <!-- @[capture_ready](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  <!-- @capture_ready -->
   
   ``` TypeScript
   photoOutput.on('captureReady', (err: BusinessError) => {
@@ -468,7 +468,7 @@
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见CameraErrorCode。
 
-  <!-- @[photoOutput_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  <!-- @photoOutput_error -->
   
   ``` TypeScript
   // 监听拍照异常

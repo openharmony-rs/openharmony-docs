@@ -48,7 +48,7 @@
 
 2. 导入依赖的相关头文件。
 
-   <!-- @[c_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_include -->
    
    ``` C++
    #include <native_drawing/drawing_font_collection.h>
@@ -58,7 +58,7 @@
 
 3. 创建段落生成器ParagraphBuilder，并设置段落样式。
 
-   <!-- @[c_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_create_paragraph -->
    
    ``` C++
    // 创建文本样式，设置文本颜色为黑色并设置字体大小为50
@@ -82,7 +82,7 @@
 
 4. 调用排版接口并设置段落排版宽度，对段落进行塑形排版。
 
-   <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_layout -->
    
    ``` C++
    // 对段落进行塑形排版，设置排版宽度为maxWidth
@@ -91,7 +91,7 @@
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
+   <!-- @c_text_metrics_get_all_case --> 
    
    ``` C++
    // case1: 获取排版后最长行行宽
@@ -131,7 +131,7 @@
 
    使用OH_Drawing_TypographyLayoutWithConstraintsWithBuffer接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（OH_Drawing_RectSize）和适配的字符串范围。
 
-   <!-- @[c_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_layout_with_constraints -->
 
    ``` C++
    // 设置限定区域的宽高
@@ -161,7 +161,7 @@
 
    使用OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
 
-   <!-- @[c_text_metrics_char_position_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_char_position_step1 -->
 
    ``` C++
    // 根据坐标获取字符位置，使用UTF-8编码
@@ -181,7 +181,7 @@
 
    使用OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer根据字形范围获取对应的字符范围。
 
-   <!-- @[c_text_metrics_glyph_info_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_glyph_info_step1 -->
 
    ``` C++
    // 根据字形范围[0, 5)获取对应的字符范围
@@ -203,7 +203,7 @@
 
    使用OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer根据字符范围获取对应的字形范围。
 
-   <!-- @[c_text_metrics_glyph_info_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @c_text_metrics_glyph_info_step2 -->
 
    ``` C++
    // 根据字符范围[0, 10)获取对应的字形范围

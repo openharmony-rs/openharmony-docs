@@ -17,7 +17,7 @@
 
 在经过连续点击后，图标大小会出现不正常的放大缩小，产生闪屏问题。
 
-![](figures/screen_flicker_solution_click_error.gif)
+
 
 ```ts
 @Entry
@@ -126,7 +126,7 @@ struct ClickRight {
 
 运行效果如下图所示。
 
-![](figures/screen_flicker_solution_click_right.gif)
+
 
 ### 动画过程中，Tabs页签切换场景下的闪屏问题
 
@@ -134,7 +134,7 @@ struct ClickRight {
 
 滑动Tabs组件时，上方标签不能同步更新，在下方内容完全切换后才会闪动跳转，产生闪屏问题。
 
-![](figures/screen_flicker_solution_tabs_error.gif)
+
 
 ```ts
 @Entry
@@ -361,7 +361,7 @@ private startAnimateTo(duration: number, leftMargin: number, width: number) {
 
 运行效果如下图所示。
 
-![](figures/screen_flicker_solution_tabs_right.gif)
+
 
 ### 刷新过程中，ForEach键值生成函数未设置导致的闪屏问题
 
@@ -369,7 +369,7 @@ private startAnimateTo(duration: number, leftMargin: number, width: number) {
 
 下拉刷新时，应用产生卡顿，出现闪屏问题。
 
-![](figures/screen_flicker_solution_pull_to_refresh_error.gif)
+
 
 ```ts
 @Builder
@@ -447,7 +447,7 @@ private getListView() {
 
 运行效果如下图所示。
 
-![](figures/screen_flicker_solution_pull_to_refresh_right.gif)
+
 
 ## 总结
 

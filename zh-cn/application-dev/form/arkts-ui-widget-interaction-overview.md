@@ -24,13 +24,13 @@ ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间
 
 **图1 卡片提供方主动刷新卡片流程图**
 
-![updateForm](figures/updateForm.PNG)
+updateForm
 
 卡片提供方应用运行过程中，如果识别到有要更新卡片数据的诉求，可以主动通过formProvider提供的updateForm接口更新卡片。
 
 **图2 卡片使用方主动刷新卡片流程图**
 
-![requestForm](figures/requestForm.PNG)
+requestForm
 
 当卡片使用方检测到系统语言或主题模式（如深浅色）发生变化时，可以主动通过formHost提供的requestForm（仅支持系统应用使用）接口请求更新卡片，卡片管理服务会进而通知卡片提供方完成卡片更新。
 
@@ -48,7 +48,7 @@ ArkTS卡片管理服务支持卡片提供方（例如：应用）和卡片之间
 
 **图3 卡片管理服务通知卡片提供方定时定点刷新卡片流程图**
 
-![timer_updateForm](figures/timer_updateForm.PNG)
+timer_updateForm
 
 根据卡片提供方开发者提前配置声明的定时刷新信息，卡片管理服务会根据定时信息、卡片可见状态、刷新次数等因素综合判断是否需要通知卡片提供方更新卡片。
 

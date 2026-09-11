@@ -53,4 +53,4 @@ export default {
 }
 ```
 
- ![Adding-Title](figures/Adding-Title.PNG) 
+ Adding-Title 

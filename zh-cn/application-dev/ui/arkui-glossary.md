@@ -194,4 +194,4 @@ UI实例的抽象运行环境，UI操作在该上下文中执行并最终反映�
 
 以组件左上角为坐标原点的坐标系，其中向右为x正轴，向下为y正轴。如果为三维坐标系，则由屏幕向外为z正轴。
 
-![coordinates](../reference/apis-arkui/arkui-ts/figures/coordinates.png)
+coordinates

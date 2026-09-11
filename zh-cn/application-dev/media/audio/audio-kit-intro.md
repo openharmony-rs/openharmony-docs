@@ -36,7 +36,7 @@ Audio Kit（音频服务）旨在提供场景化的音频播放和录制接口�
 
 开发者可以利用Audio Kit的接口，使用音频系统提供的播放、录音及音频策略管理能力，进而访问相应的音频硬件。音频架构定义了系统如何封装和管理音频硬件能力。音频架构图如下：
 
-![Audio Architecture](figures/audio-architecture.png)
+Audio Architecture
 
 **Application**
 
@@ -124,6 +124,6 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 针对Audio Kit开发，有以下相关实例可供参考：
 
-- [音频管理（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio)
+- 音频管理（ArkTS）（API10）
 
 <!--RP1--><!--RP1End-->

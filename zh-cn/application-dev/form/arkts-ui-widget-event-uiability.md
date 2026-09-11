@@ -16,7 +16,7 @@
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发router事件拉起UIAbility至前台。
   
-    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
+    <!-- @widget_update_router_card --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
@@ -77,7 +77,7 @@
   
 - 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用updateForm接口刷新卡片。
   
-    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
+    <!-- @widget_event_router_entry_ability --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
@@ -139,7 +139,7 @@
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发call事件拉起UIAbility至后台。
   
-    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
+    <!-- @widget_update_call_card --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
@@ -201,7 +201,7 @@
   
 - 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用updateForm接口刷新卡片。
   
-    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
+    <!-- @widget_callee_entry_ability -->
     
     ``` TypeScript
     // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
@@ -286,7 +286,7 @@
     ```
     
   要拉起UIAbility至后台，需要在`module.json5`配置文件中，配置`ohos.permission.KEEP_BACKGROUND_RUNNING`权限。
-    <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
+    <!-- @module_json5_request_permissions -->
     
     ``` JSON5
     //src/main/module.json5

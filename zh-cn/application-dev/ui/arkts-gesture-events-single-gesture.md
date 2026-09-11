@@ -13,7 +13,7 @@
 onClick与其他手势类型相同，也会参与命中测试、响应链收集等过程。可以使用干预手势处理机制对onClick的响应进行动态决策。
 
 
-<!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) --> 
+<!-- @click_event --> 
 
 ``` TypeScript
 @Entry
@@ -82,7 +82,7 @@ TapGesture(value?: TapGestureParameters)
 
 点击手势支持单次点击和多次点击，参数定义参考TapGesture。
 
-<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->   
+<!-- @catch_click_twice_event -->   
 
 ``` TypeScript
 @Entry
@@ -122,7 +122,7 @@ export struct Tap {
 }
 ```
 
-  ![tap](figures/tap.gif)
+  tap
 
 
 ## 长按手势（LongPressGesture）
@@ -136,7 +136,7 @@ LongPressGesture(value?:{fingers?:number, repeat?:boolean, duration?:number})
 
 以在Text组件上绑定可以重复触发的长按手势为例：
 
-<!-- @[catch_long_press_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/LongPressGesture.ets) -->
+<!-- @catch_long_press_event -->
 
 ``` TypeScript
 @Entry
@@ -182,7 +182,7 @@ export struct LongPress {
 ```
 
 
-![longPress](figures/longPress.gif)
+longPress
 
 
 ## 滑动手势（PanGesture）
@@ -203,7 +203,7 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 4. 单指按住触控板上下滑动；
 5. 使用触控板双指滑动。
 
-<!-- @[sliding_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PanCombinationGesture.ets) -->
+<!-- @sliding_gesture -->
 
 ``` TypeScript
 @Entry
@@ -287,7 +287,7 @@ export struct VolumeControlDemo {
 ```
 
 
-![pan](figures/pan.gif)
+pan
 
 
 >**说明：**
@@ -310,7 +310,7 @@ PinchGesture(value?: { fingers?: number; distance?: number })
 
 以在Column组件上绑定三指捏合手势为例，可以通过在捏合手势的函数回调中获取缩放比例，实现对组件的缩小或放大：
 
-<!-- @[catch_pinch_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PinchGesture.ets) -->
+<!-- @catch_pinch_gesture_event -->
 
 ``` TypeScript
 @Entry
@@ -367,7 +367,7 @@ export struct Pinch {
 ```
 
 
-![pinch](figures/pinch.gif)
+pinch
 
 
 ## 旋转手势（RotationGesture）
@@ -381,7 +381,7 @@ RotationGesture(value?: { fingers?: number; angle?: number })
 
 以在Text组件上绑定旋转手势实现组件的旋转为例，可以通过在旋转手势的回调函数中获取旋转角度，从而实现组件的旋转：
 
-<!-- @[catch_rotation_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/RotationGesture.ets) --> 
+<!-- @catch_rotation_gesture_event --> 
 
 ``` TypeScript
 @Entry
@@ -437,7 +437,7 @@ export struct Rotation {
 ```
 
 
-![rotation](figures/rotation-2.gif)
+rotation
 
 
 ## 快滑手势（SwipeGesture）
@@ -451,7 +451,7 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 以在Column组件上绑定快滑手势实现组件的旋转为例：
 
-<!-- @[catch_swipe_gesture_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/SwipeGesture.ets) --> 
+<!-- @catch_swipe_gesture_event --> 
 
 ``` TypeScript
 @Entry
@@ -499,7 +499,7 @@ export struct Swipe {
 ```
 
 
-![swipe](figures/swipe.gif)
+swipe
 
 
 >**说明：**

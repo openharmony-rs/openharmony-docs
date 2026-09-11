@@ -34,7 +34,7 @@
 
 3. 调用OH_CryptoAsymCipher_Final，传入密文，获取解密后的数据。
 
-  <!-- @[rsa_pkcs1_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/PKCS1_RSA.cpp) -->
+  <!-- @rsa_pkcs1_encrypt_decrypt -->
   
   ``` C++
   
@@ -169,7 +169,7 @@
 3. 多次调用OH_CryptoAsymCipher_Final，传入密文，获取解密后的数据。
 
 
-<!-- @[rsa_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/RSAEncryptDecrypt.cpp) -->
+<!-- @rsa_encrypt_decrypt -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"

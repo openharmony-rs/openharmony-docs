@@ -20,7 +20,7 @@
 
 ## 组件复用原理机制
 
-![组件复用机制图](./figures/component_recycle_case.png)
+组件复用机制图
 
 1. 如上图①中，ListItem N-1滑出可视区域**即将销毁**时，如果标记了@Reusable，就会进入这个自定义组件**所在父组件**的复用缓存区。需注意**在自定义组件首次显示时，不会触发组件复用**。后续创建新组件节点时，会复用缓存区中的节点，节约组件重新创建的时间。尤其是该复用组件具有相同的布局结构，仅有某些数据差异时，通过组件复用可以提高列表页面的加载速度和响应速度。
 
@@ -111,7 +111,7 @@ export struct InteractiveButton {
 
 优化前，以11号列表项复用过程为例，观察Trace信息，看到该过程中需要逐个实现所有嵌套组件InteractiveButton中aboutToReuse回调，导致复用时间较长，BuildLazyItem耗时7ms。
 
-![noBuilder](./figures/component_recycle_case/noBuilder.png)
+noBuilder
 
 正例：
 
@@ -197,7 +197,7 @@ class Temp {
 
 优化后，11号列表项复用时，不再需要逐个实现所有嵌套组件中aboutToReuse回调，BuildLazyItem耗时3ms。可见该示例中，BuildLazyItem优化大约4ms。
 
-![useBuilder](./figures/component_recycle_case/useBuilder.png)
+useBuilder
 
 所以，Trace数据证明，优先使用@Builder替代自定义组件，减少嵌套层级，可以利于维护且能提升页面加载速度。
 
@@ -256,15 +256,15 @@ export struct OneMomentNoModifier {
 
 上述反例的操作中，通过aboutToReuse对fontColor状态变量更新，进而导致组件的全部属性进行刷新，造成不必要的耗时。因此可以考虑对需要更新的组件的属性，进行精准刷新，避免不必要的重绘和渲染。
 
-![noModifier1](./figures/component_recycle_case/noModifier1.png)
+noModifier1
 
 优化前，由`H:ViewPU.viewPropertyHasChanged OneMomentNoModifier color 1`标签可知，OneMomentNoModifier自定义组件下的状态变量color发生变化，与之相关联的子控件数量为1，即有一个子控件发生了标脏，之后Text全部属性会进行刷新。
 
 此时，`H:CustomNode:BuildRecycle`耗时543μs，`Create[Text]`耗时为4μs。
 
-![noModifier2](./figures/component_recycle_case/noModifier2.png)
+noModifier2
 
-![noModifier3](./figures/component_recycle_case/noModifier3.png)
+noModifier3
 
 正例：
 
@@ -330,7 +330,7 @@ export struct OneMoment {
 
 上述正例的操作中，通过AttributeUpdater来对Text组件需要刷新的属性进行精准刷新，避免Text其它不需要更改的属性的刷新。  
 
-![useUpdater1](./figures/component_recycle_case/useUpdater1.png)
+useUpdater1
 
 优化后，在`H:aboutToReuse`标签下没有`H:ViewPU.viewPropertyHasChanged`标签，后续也没有`Create[Text]`标签。此时，`H:CustomNode:BuildRecycle`耗时415μs。
 
@@ -403,7 +403,7 @@ export class FriendMoment {
 
 优化前，子组件在初始化时都在本地拷贝了一份数据，BuildItem耗时7ms175μs。
 
-![useProp](./figures/component_recycle_case/useProp.png)
+useProp
 
 正例：
 
@@ -452,7 +452,7 @@ export class FriendMoment {
 
 优化后，子组件直接同步父组件数据，无需深拷贝，BuildItem耗时缩短为7ms1μs。
 
-![useLink](./figures/component_recycle_case/useLink.png)
+useLink
 
 所以，Trace数据证明，使用@Link/@ObjectLink替代@Prop减少深拷贝，可以提升组件创建速度。
 
@@ -517,7 +517,7 @@ export class FriendMoment {
 
 优化前，由于在复用组件OneMoment的aboutToReuse方法中，对moment变量的各个成员变量进行了刷新，aboutToReuse耗时168μs。
 
-![refresh_auto_fresh_variable](./figures/component_recycle_case/avoid_auto_variable_false_trace.png)
+refresh_auto_fresh_variable
 
 正例：
 
@@ -566,7 +566,7 @@ export class FriendMoment {
 
 优化后，避免在复用组件OneMoment的aboutToReuse方法中，重复刷新变量moment的各个成员变量，aboutToReuse耗时110μs。
 
-![avoid_refresh_auto_fresh_variable](./figures/component_recycle_case/avoid_auto_variable_true_trace.png)
+avoid_refresh_auto_fresh_variable
 
 所以，通过上述Trace数据证明，避免在复用组件中，对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse方法中再进行更新。会减少aboutToReuse方法的时间，进而减少复用组件的创建时间。
 
@@ -641,7 +641,7 @@ export struct OneMoment {
 
 优化前，15号列表项复用时长为10ms左右，且存在自定义组件创建的情况。
 
-![noReuseId](./figures/component_recycle_case/noReuseId.png)
+noReuseId
 
 正例：
 
@@ -711,7 +711,7 @@ export struct OneMoment {
 
 优化后，15号列表项复用时长缩短为3ms左右，不存在自定义组件的创建。
 
-![ReuseId](./figures/component_recycle_case/ReuseId.png)
+ReuseId
 
 所以，Trace数据证明，针对不同逻辑创建不同布局结构嵌套的组件的情况，通过使用reuseId来区分不同结构的组件，能减少删除重创的逻辑，提高组件复用的效率和性能。
 
@@ -760,7 +760,7 @@ struct WithFuncParam {
 
 优化前，aboutToReuse中需要重复执行入参中的函数来获取入参结果，导致耗时较长为4ms。
 
-![FuncParam](./figures/component_recycle_case/FuncParam.png)
+FuncParam
 
 正例：
 
@@ -815,10 +815,10 @@ struct WithoutFuncParam {
 
 优化后，aboutToReuse中只是通过变量传参，无需重复执行计算函数，耗时缩短为2ms。
 
-![noFuncParam](./figures/component_recycle_case/noFuncParam.png)
+noFuncParam
 
 所以，Trace数据证明，避免使用函数/方法作为复用组件创建时的入参，可以减少重复执行入参中的函数所带来的性能消耗。
 
 ## 示例代码
 
-[组件复用性能优化指导示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/ComponentReuse)
+组件复用性能优化指导示例代码

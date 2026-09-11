@@ -28,7 +28,7 @@
 
 - 使用所属自定义组件的自定义构建函数或者全局的自定义构建函数，在本地初始化\@BuilderParam装饰的方法。
 
-  <!-- @[builder_param_init_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethod.ets) -->
+  <!-- @builder_param_init_method -->
   
   ``` TypeScript
   @Builder
@@ -54,7 +54,7 @@
 
 - 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->  
+  <!-- @builder_param_init_method_demo01 -->  
   
   ``` TypeScript
   @Component
@@ -91,14 +91,14 @@
 
 示例效果图
 
-![builderparam-demo1](figures/builderparam-demo1.png)
+builderparam-demo1
 
 
 - 需要注意this的指向。
 
   示例如下：
 
-  <!-- @[builder_param_init_method_demo02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo02.ets) -->
+  <!-- @builder_param_init_method_demo02 -->
   
   ``` TypeScript
   @Component
@@ -154,7 +154,7 @@
 
 示例效果图
 
-![builderparam-demo2](figures/builderparam-demo2.png)
+builderparam-demo2
 
 
 ## 限制条件
@@ -171,7 +171,7 @@
 
 \@BuilderParam装饰的方法为有参数或无参数的形式，必须与指向的\@Builder方法类型匹配。
 
-<!-- @[builder_param_scene_init_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInitComponent.ets) -->
+<!-- @builder_param_scene_init_component -->
 
 ``` TypeScript
 class Tmp {
@@ -227,7 +227,7 @@ struct Parent {
 ```
 示例效果图
 
-![builderparam-demo3](figures/builderparam-demo3.png)
+builderparam-demo3
 
 
 ### 尾随闭包初始化组件
@@ -244,7 +244,7 @@ struct Parent {
 
 示例1：
 
-<!-- @[builder_param_scene_trailing_closure_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure01.ets) -->
+<!-- @builder_param_scene_trailing_closure_01 -->
 
 ``` TypeScript
 @Component
@@ -300,13 +300,13 @@ struct CustomContainerUser {
 ```
 示例效果图
 
-![builderparam-demo4](figures/builderparam-demo4.gif)
+builderparam-demo4
 
 可以使用全局或局部\@Builder通过尾随闭包的形式对\@ComponentV2装饰的自定义组件中的\@BuilderParam装饰的方法进行初始化。
 
 示例2：
 
-<!-- @[builder_param_scene_trailing_closure_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure02.ets) -->
+<!-- @builder_param_scene_trailing_closure_02 -->
 
 ``` TypeScript
 @ComponentV2
@@ -377,7 +377,7 @@ struct ParentPage {
 ```
 示例效果图
 
-![builderparam-demo8](figures/builderparam-demo8.png)
+builderparam-demo8
 
 ### 使用\@BuilderParam隔离多组件对\@Builder跳转逻辑的调用
 
@@ -387,7 +387,7 @@ struct ParentPage {
 >
 > 当前示例代码中使用了Navigation组件导航，具体实现逻辑可以查询Navigation指南。
 
-<!-- @[builder_param_scene_jump_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/BuilderParamSceneJumpLogic.ets) -->
+<!-- @builder_param_scene_jump_logic -->
 
 ``` TypeScript
 import { HelloWorldPageBuilder } from './helloworld';
@@ -471,7 +471,7 @@ struct ChildPage_BuilderParam {
 ```
 
 
-<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
+<!-- @builder_param_scene_jump_logic_comp --> 
 
 ``` TypeScript
 @Builder
@@ -501,13 +501,13 @@ struct HelloWorldPage {
 
 示例效果图
 
-![builderparam-demo7](figures/builderparam-demo7.gif)
+builderparam-demo7
 
 ### 使用全局和局部\@Builder初始化\@BuilderParam
 
 在自定义组件中，使用\@BuilderParam装饰的变量接收父组件通过\@Builder传递的内容进行初始化，由于父组件的\@Builder可以使用箭头函数改变当前的this指向，因此使用\@BuilderParam装饰的变量会展示不同的内容。
 
-<!-- @[builder_param_scene_global_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneGlobalLocalInit.ets) -->
+<!-- @builder_param_scene_global_local_init -->
 
 ``` TypeScript
 @Component
@@ -588,13 +588,13 @@ struct ParentPage {
 ```
 示例效果图
 
-![builderparam-demo5](figures/builderparam-demo5.png)
+builderparam-demo5
 
 ### 在@ComponentV2装饰的自定义组件中使用@BuilderParam
 
 使用全局或局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
 
-<!-- @[builder_param_scene_in_component_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInComponentV2.ets) -->
+<!-- @builder_param_scene_in_component_v2 -->
 
 ``` TypeScript
 @ComponentV2
@@ -675,7 +675,7 @@ struct ParentPage {
 ```
 示例效果图
 
-![builderparam-demo6](figures/builderparam-demo6.png)
+builderparam-demo6
 
 
 ## 常见问题
@@ -686,7 +686,7 @@ struct ParentPage {
 
 【反例】
 
-<!-- @[builder_param_problem_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshOpposite.ets) -->
+<!-- @builder_param_problem_not_refresh_opposite -->
 
 ``` TypeScript
 @Component
@@ -740,7 +740,7 @@ struct ParentPage {
 
 【正例】
 
-<!-- @[builder_param_problem_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshPositive.ets) -->
+<!-- @builder_param_problem_not_refresh_positive -->
 
 ``` TypeScript
 @Component
@@ -830,7 +830,7 @@ struct ChildPage {
 
 【正例】
 
-<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) --> 
+<!-- @builder_param_problem_combined_positive --> 
 
 ``` TypeScript
 @Builder
@@ -902,7 +902,7 @@ struct ChildPage {
 
 【正例】
 
-<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) --> 
+<!-- @builder_param_problem_must_builder_positive --> 
 
 ``` TypeScript
 @Builder

@@ -41,7 +41,7 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 
 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（H5示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。
 
-<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) --> 
+<!-- @DragArkTSPage --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb'
@@ -205,18 +205,18 @@ H5示例:
 </body>
 </html>
 ```
-![web-drag-drop](figures/web-dragdrop.gif)
+web-drag-drop
 
 日志打印：
 
-![web-drag-log](figures/web-drag-log.png)
+web-drag-log
 
 ## 常见问题
 
 ### 为什么H5设置的拖拽事件没有触发？
 请检查相关CSS资源是否正常设置，因为有些网页UA做了判断，针对特定设备的UA才会进行CSS样式设置。可以考虑在Web组件设置自定义UA解决这种问题，例如：
 
-<!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
+<!-- @SetUAPage -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb'
@@ -312,7 +312,7 @@ H5示例1:
 </html>
 ```
 
-![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
+w3c-forbid-drag
 
 html示例2:
 
@@ -349,11 +349,11 @@ html示例2:
 </html>
 ```
 
-![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
+runJs-forbid-drag
 
 ArkTS示例:
 
-<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
+<!-- @ForbidDragPage -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

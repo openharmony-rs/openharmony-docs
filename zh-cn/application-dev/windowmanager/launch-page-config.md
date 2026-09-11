@@ -27,7 +27,7 @@
 > - 全屏资源的展示建议采用配置增强启动页。
 
 在创建的UIAbility模板中，简易启动页相关字段的默认配置如下：
-<!-- @[startWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/sampleForStartWindow/entry/src/main/module.json5) -->
+<!-- @startWindow -->
 
 ``` JSON5
 "startWindowIcon": "$media:startIcon",
@@ -38,7 +38,7 @@
 
 **图1** 默认启动页示意图 
 
-![Default-starting-window](figures/Default-starting-window.png)
+Default-starting-window
 
 开发者可以根据应用需要，配置使用自定义设计的图标资源和颜色资源。
 
@@ -57,7 +57,7 @@ startWindow字段提供了增强的启动页配置能力，可用于元素更复
 1. 在创建的UIAbility模板中，开发者可以新增startWindow字段指向二级配置json文件，以启用启动页增强配置。
 
    其中，json文件需要由开发者自行创建并放置到工程目录下。推荐的文件名及路径为resources/base/profile/start_window.json，此时需在module.json5的abilities标签中配置如下：
-   <!-- @[enhancedStartWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StartWindow/EnhancedStartingWindow/entry/src/main/module.json5) -->
+   <!-- @enhancedStartWindow -->
    
    ``` JSON5
    "startWindow": "$profile:start_window",
@@ -80,7 +80,7 @@ startWindow字段提供了增强的启动页配置能力，可用于元素更复
    
 **图2** 增强启动页示意图
    
-![Enhanced-starting-window](figures/Enhanced-starting-window.png)
+Enhanced-starting-window
    
 示例如下：
    

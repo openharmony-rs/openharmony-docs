@@ -56,7 +56,7 @@
 
    通过window.createWindow()接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
-   <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @floating_window --> 
    
    ``` TypeScript
    let floatWindowClass: window.Window | undefined = undefined;
@@ -81,7 +81,7 @@
 
    全局悬浮窗创建成功后，可以改变其大小、位置等，还可以根据应用需要设置全局悬浮窗的背景色、亮度等属性。
 
-   <!-- @[floating_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @floating_window_properties --> 
    
    ``` TypeScript
    // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
@@ -109,7 +109,7 @@
 
    通过setUIContent()和showWindow()接口加载显示全局悬浮窗的具体内容。
 
-   <!-- @[floating_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @floating_window_uiContent --> 
    
    ``` TypeScript
    // 3.为全局悬浮窗加载对应的目标页面。
@@ -134,7 +134,7 @@
 
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroyWindow()接口销毁全局悬浮窗。
 
-   <!-- @[destroy_floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @destroy_floating_window --> 
    
    ``` TypeScript
    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。

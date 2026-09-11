@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 1. 导入相关头文件。
 
-   <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   <!-- @decodingPicture_import -->     
    
    ``` C++
    #include <hilog/log.h>
@@ -47,7 +47,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
+   <!-- @define_logInfo -->   
    
    ``` C++
    #undef LOG_DOMAIN
@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 3. 定义用于图像处理的常量。
 
-   <!-- @[define_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
+   <!-- @define_const -->      
    
    ``` C++
    #define AUTO 0
@@ -69,7 +69,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 4. 定义ImagePictureNative类。
 
-   <!-- @[define_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->   
+   <!-- @define_pictureClass -->   
    
    ``` C
    class ImagePictureNative {
@@ -87,7 +87,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 5. 创建ImagePictureNative的一个实例。
 
-   <!-- @[create_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->   
+   <!-- @create_pictureClass -->   
    
    ``` C++
    static ImagePictureNative *g_thisPicture = new ImagePictureNative();
@@ -95,7 +95,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 6. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @get_returnValue -->   
    
    ``` C++
    // 处理napi返回值。
@@ -109,7 +109,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 7. 创建ImagePacker实例，指定编码参数后，将Picture多图对象编码至文件或缓冲区。
 
-   <!-- @[pack_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
+   <!-- @pack_picture -->    
    
    ``` C++
    // 设置编码参数。

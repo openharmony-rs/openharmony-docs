@@ -208,11 +208,11 @@
 
 流程图如下。
 
-![image](./figures/env-flow.png)
+image
 
 基于上面流程，下面的示例中以@Env使用`SystemProperties.BREAK_POINT`为例，各个组件中的初始化如下图。
 
-![image](./figures/env-flow2.png)
+image
 
 1. `Child1`初始化`@Env(SystemProperties.BREAK_POINT)`：
    - 递归查找直到父组件为空：向上查找父组件`Index`，没有\@Env对应的`SystemProperties.BREAK_POINT`实例。
@@ -226,7 +226,7 @@
    - 查找当前窗口：有\@Env对应的`SystemProperties.BREAK_POINT`实例。
    - 复用窗口中`SystemProperties.BREAK_POINT`对应的环境变量实例。
 
-<!-- @[EnvInitFlow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInitFlow.ets) -->
+<!-- @EnvInitFlow -->
 
 ``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
@@ -302,7 +302,7 @@ struct GrandChild2 {
 - 将\@Env装饰的变量传递给`CompV2`中\@Param装饰的变量和`Comp`中的常规变量。
 - 点击`Button('Landscape')`和`Button('Portrait')`切换横竖屏，`Index`、`CompV2`和`Comp`关联组件进行对应的刷新，`orientationChange`被触发监听回调。
 
-<!-- @[EnvInComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInComponentV2.ets) -->
+<!-- @EnvInComponentV2 -->
 
 ``` TypeScript
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
@@ -379,7 +379,7 @@ struct Comp {
 
 \@Env在\@Component中使用和其在\@ComponentV2中使用类似，示例如下。
 
-<!-- @[EnvInComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvInComponent.ets) -->
+<!-- @EnvInComponent -->
 
 ``` TypeScript
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
@@ -490,7 +490,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @[EnvBuilderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNode.ets) -->
+<!-- @EnvBuilderNode -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, uiObserver, window } from '@kit.ArkUI';
@@ -695,7 +695,7 @@ struct Comp {
 }
 ```
 
-<!-- @[EnvBuilderNodeSubWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNodeSubWindow.ets) -->
+<!-- @EnvBuilderNodeSubWindow -->
 
 ``` TypeScript
 import { MyNodeController } from './EnvBuilderNode';
@@ -729,13 +729,13 @@ struct SubWindow {
 
 运行效果图如下。
 
-![gif](./figures/env_switch_instance1.gif)
+gif
 
 可以使用lambda闭包函数将`ComponentUnderBuilderNode`中的\@Env向下传递。通过这种方式`ComponentUnderBuilderNode`中的\@Env可以收集到子组件`Comp`内组件的依赖，在切换窗口实例的时候触发`Comp`内组件的刷新。
 
 仅需修改`ComponentUnderBuilderNode`向`Comp`的传参方式以及`Comp`自身的取值方式，其余部分（`EntryAbility`、`MyNodeController`、`Index`、`createSubWindow`、`destroySubWindow`、`SubWindow`、`CompV2`）与上例完全相同。具体示例如下。
 
-<!-- @[EnvBuilderNodeLambda](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvBuilderNodeLambda.ets) -->
+<!-- @EnvBuilderNodeLambda -->
 
 ``` TypeScript
 // 仅修改 ComponentUnderBuilderNode 与 Comp，其余与上例相同
@@ -771,11 +771,11 @@ struct Comp {
 
 运行效果图如下。
 
-![gif](./figures/env_switch_instance2.gif)
+gif
 
 ### \@Watch与\@Monitor监听\@Env装饰的变量
 从API版本26.0.0开始，在\@Component中，可通过\@Watch监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Watch监听回调，其内部属性的变化不会触发回调。
-<!-- @[EnvWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvWatch.ets) -->
+<!-- @EnvWatch -->
 
 ``` TypeScript
 import { WithEnv } from '@kit.ArkUI';
@@ -821,10 +821,10 @@ struct ChildV1 {
 ```
 运行效果图如下。
 
-![png](./figures/env-f.png)
+png
 
 在\@ComponentV2中，可通过\@Monitor监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
-<!-- @[EnvMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvSample/entry/src/main/ets/pages/EnvMonitor.ets) -->
+<!-- @EnvMonitor -->
 
 ``` TypeScript
 import { WithEnv } from '@kit.ArkUI';
@@ -876,4 +876,4 @@ struct Child {
 
 运行效果图如下。
 
-![image](./figures/env-m.png)
+image

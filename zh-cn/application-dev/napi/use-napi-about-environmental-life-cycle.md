@@ -32,7 +32,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_set_instance_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIEnvironmentalLifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_set_instance_data -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -78,7 +78,7 @@ static napi_value SetInstanceData(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_set_instance_data_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIEnvironmentalLifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_set_instance_data_api -->
 
 ``` TypeScript
 export const setInstanceData: (data: number) => boolean | undefined; // napi_set_instance_data
@@ -86,7 +86,7 @@ export const setInstanceData: (data: number) => boolean | undefined; // napi_set
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_set_instance_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIEnvironmentalLifeCycle/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_set_instance_data -->
 
 ``` TypeScript
 // napi_set_instance_data
@@ -101,7 +101,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_instance_data:%{public}s',
 
 cpp部分代码
 
-<!-- @[napi_get_instance_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIEnvironmentalLifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_instance_data -->
 
 ``` C++
 // napi_get_instance_data
@@ -126,7 +126,7 @@ static napi_value GetInstanceData(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_instance_data_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIEnvironmentalLifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_instance_data_api -->
 
 ``` TypeScript
 export const getInstanceData: () => number | undefined; // napi_get_instance_data
@@ -134,7 +134,7 @@ export const getInstanceData: () => number | undefined; // napi_get_instance_dat
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_instance_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIEnvironmentalLifeCycle/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_instance_data -->
 
 ``` TypeScript
 // napi_get_instance_data

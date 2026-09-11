@@ -44,7 +44,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getprototype/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_prototype -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -93,7 +93,7 @@ JSVM GetPrototype success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createobject/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_object -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -147,7 +147,7 @@ JSVM CreateObject success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/objectfreeze/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_object_freeze -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -200,7 +200,7 @@ Test JSVM OH_JSVM_ObjectFreeze success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/objectseal/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_object_seal -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -266,7 +266,7 @@ Test JSVM OH_JSVM_ObjectSeal success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/typeof/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_typeof -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -355,7 +355,7 @@ JSVM Input type is boolean
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/instanceof/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_instanceof -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -418,7 +418,7 @@ JSVM InstanceOf：1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_check_object_type_tag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/checkobjecttypetag/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_check_object_type_tag -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -517,7 +517,7 @@ JSVM CheckObjectTypeTag:1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createexternal/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_external -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -575,7 +575,7 @@ OH_JSVM_CreateExternal可以创建并包装自定义的C/C++对象，并将其�
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getvalueexternal/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_external -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -632,7 +632,7 @@ JSVM GetValueExternal success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/createsymbol/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_symbol -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -681,7 +681,7 @@ JSVM CreateSymbol Success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_symbol_for](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/symbolfor/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_symbol_for -->
 
 ``` C++
 #include "napi/native_api.h"

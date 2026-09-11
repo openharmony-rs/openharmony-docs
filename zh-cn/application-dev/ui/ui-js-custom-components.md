@@ -102,11 +102,11 @@
 
 
 **图1** 自定义组件的效果
-![zh-cn_image_0000001070693737](figures/zh-cn_image_0000001070693737.png)
+zh-cn_image_0000001070693737
 
 
 ## 相关实例
 
 针对自定义组件开发，有以下相关实例可供参考：
 
-- [自定义抽奖转盘（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/JSCanvasComponent)
+- 自定义抽奖转盘（JS）（API9）

@@ -15,7 +15,7 @@ Web组件支持前端页面选择文件上传功能，应用开发者可以使�
 
 - 应用侧代码。
 
-<!-- @[web_file_upload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/UploadFiles.ets) -->
+<!-- @web_file_upload -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -68,7 +68,7 @@ struct WebComponent {
   </body>
   </html>
   ```
-![web-app-document](./figures/web-app-document.gif)
+web-app-document
 
 ## 使用onShowFileSelector拉起图库
 
@@ -131,7 +131,7 @@ struct WebComponent {
   </body>
   </html>
   ```
-![web-app-photo](./figures/web-app-photo.gif)
+web-app-photo
 
 ## 使用onShowFileSelector拉起相机
 
@@ -227,7 +227,7 @@ HTML页面代码
 </body>
 </html>
 ```
-![web-app-camera](./figures/web-app-camera.gif)
+web-app-camera
 
 ## 使用ArkWeb默认的方式处理文件上传请求
 
@@ -318,7 +318,7 @@ struct Index {
   }
 }
 ```
-![web-default-camera](./figures/web-default-camera.gif)
+web-default-camera
 
 ## 自定义处理JS接口拉起的文件请求
 
@@ -467,7 +467,7 @@ struct WebComponent {
   }
 }
 ```
-![web-custom-mode-file-picker.gif](./figures/web-custom-mode-file-picker.gif)
+web-custom-mode-file-picker.gif
 
 样例以HTML中的`showSaveFilePicker()`配合ArkTS中`documentViewPicker.save()`方法为例。
 

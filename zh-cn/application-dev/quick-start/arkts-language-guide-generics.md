@@ -16,7 +16,7 @@
 
 泛型让类型参数化，一份代码适用于多种类型且保持编译期类型安全，编译器在调用处检查类型参数后将其擦除，兼顾复用性、类型推断与零运行时开销。
 
-<!-- @[generics_introduction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generics_introduction -->
 
 ``` TypeScript
 // 不使用泛型：需要为每种类型编写函数
@@ -46,7 +46,7 @@ console.info(`${bool}`);  // true
 
 使用`Object`类型会丢失具体类型信息，泛型在复用逻辑的同时保留传入值的原始类型。
 
-<!-- @[ts_generics_vs_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_generics_vs_object -->
 
 ``` TypeScript
 // 使用Object类型会丢失具体类型信息
@@ -69,7 +69,7 @@ result2.toUpperCase(); // 编译错误：类型错误提示
 
 泛型同样适用于数据结构，避免为每种元素类型重复定义类。
 
-<!-- @[generic_stack_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_stack_class -->
 
 ``` TypeScript
 // 不使用泛型：为每种类型创建数据结构
@@ -126,7 +126,7 @@ console.info(`${stringStack.pop()}`); // World
 
 泛型通过类型参数`<T>`占位，定义时不绑定具体类型，调用时再指定或由编译器推断。
 
-<!-- @[generic_function_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_function_usage -->
 
 ``` TypeScript
 // 泛型定义
@@ -159,7 +159,7 @@ let genericOutput3 = genericIdentity('ArkTS');  // 自动推断T为string
 
 在函数名后用`<T>`声明类型参数，在参数和返回值中使用该参数。
 
-<!-- @[generic_function_declarations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_function_declarations -->
 
 ``` TypeScript
 // 基本泛型函数声明
@@ -183,7 +183,7 @@ console.info(`${identityAlias<boolean>(true)}`);   // true
 
 类型参数通常使用大写字母命名，常见约定如`T`（Type）、`U`、`K`（Key）、`V`（Value）、`E`（Element）。
 
-<!-- @[multi_type_parameter_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @multi_type_parameter_class -->
 
 ``` TypeScript
 // 使用不同命名规范的示例
@@ -213,7 +213,7 @@ console.info(`${personInfo.second}`); // 25
 
 调用泛型函数时可显式指定类型参数，也可省略由编译器根据实参自动推断。
 
-<!-- @[generic_type_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_type_inference -->
 
 ``` TypeScript
 function genericIdentityInferred<T>(arg: T): T {
@@ -244,7 +244,7 @@ console.info(`${pair2[0]}: ${pair2[1]}`); // Height: 180
 
 函数可声明多个类型参数（如`<T, U>`），各自独立占位，支持不同类型间的关系表达。
 
-<!-- @[multi_type_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @multi_type_parameter_function -->
 
 ``` TypeScript
 // 多类型参数的基本用法
@@ -309,7 +309,7 @@ console.info(`${uppercased.join(', ')}`); // A, B, C
 
 在类名后用`<T>`声明类型参数，在类的属性和方法中使用。
 
-<!-- @[generic_class_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_class_basic -->
 
 ``` TypeScript
 // 基本泛型类声明
@@ -344,7 +344,7 @@ console.info(`${stringContainer.getValue()}`); // World
 
 实例化泛型类时通过`new ClassName<Type>(...)`指定类型参数，类型一致时可省略由编译器推断。
 
-<!-- @[generic_class_instantiation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_class_instantiation -->
 
 ``` TypeScript
 class GciContainer<T> {
@@ -377,7 +377,7 @@ console.info(`${gciContainer3.getValue()}`); // true
 
 泛型类的属性和方法可以使用类型参数，实现类型安全的容器和操作。例如`GenericCollection<T>`的`add(item: T)`确保只能添加`T`类型元素，`get(index: number): T`返回值自动推断为`T`类型，无需类型断言。
 
-<!-- @[generic_collection_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_collection_class -->
 
 ``` TypeScript
 class GenericCollection<T> {
@@ -439,7 +439,7 @@ console.info(`${evenNumbers.getAll().join(', ')}`); // 2, 4
 
 泛型类可声明多个类型参数（如`<K, V>`），常用于键值对等需要多种类型协作的结构。
 
-<!-- @[multi_type_parameter_generic_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @multi_type_parameter_generic_class -->
 
 ``` TypeScript
 // 多类型参数的泛型类
@@ -523,7 +523,7 @@ ArkTS支持元组类型（如`[A, B, C]`）作为返回类型和变量类型，�
 
 在接口名后用`<T>`声明类型参数，在成员签名中使用。
 
-<!-- @[generic_interface_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_interface_basic -->
 
 ``` TypeScript
 // 基本泛型接口声明
@@ -562,7 +562,7 @@ console.info(`${myIdentityFunction.invoke(42)}`); // 42
 
 用泛型接口描述回调或函数签名，使回调的类型参数与具体实现保持一致。
 
-<!-- @[generic_interface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_interface_callback -->
 
 ``` TypeScript
 // 泛型接口定义函数类型
@@ -613,7 +613,7 @@ processAsyncData<string>('Hello', new AsyncStringCallback());
 
 类实现泛型接口时需指定具体类型参数，统一约束该类对外暴露的方法签名与实体类型。
 
-<!-- @[generic_interface_repository](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_interface_repository -->
 
 ``` TypeScript
 interface Repository<T> {
@@ -671,7 +671,7 @@ console.info(`${userRepo.findAll().length}`); // 1
 
 泛型接口的默认类型参数在未指定时使用默认类型，简化调用。
 
-<!-- @[generic_interface_default_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_interface_default_type -->
 
 ``` TypeScript
 // 泛型接口的默认类型参数
@@ -721,7 +721,7 @@ console.info(`${pair3}`);
 
 用`<T extends SomeInterface>`约束类型参数必须具备特定结构（如`length`属性），不满足则编译报错。
 
-<!-- @[ts_generic_constraint_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_generic_constraint_length -->
 
 ``` TypeScript
 // 约束泛型参数必须具有length属性
@@ -753,7 +753,7 @@ console.info(`${getLength(42)}`);
 
 将类型参数约束为某个接口或类，确保泛型函数内可调用该接口定义的方法。
 
-<!-- @[ts_generic_constraint_serializable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_generic_constraint_serializable -->
 
 ``` TypeScript
 interface Serializable {
@@ -808,7 +808,7 @@ saveToStorage(42);
 
 通过接口定义所需属性集合，约束类型参数必须同时拥有这些属性，可叠加多个接口约束。
 
-<!-- @[generic_constraint_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_constraint_property -->
 
 ``` TypeScript
 interface HasId {
@@ -861,7 +861,7 @@ console.info(`${userByName ? userByName.id : 0}`); // 2
 
 TypeScript常用交叉类型组合多个约束。ArkTS中优先声明一个继承多个接口的具名接口，再把泛型参数约束到该接口。
 
-<!-- @[generic_constraint_multiple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_constraint_multiple -->
 
 ``` TypeScript
 interface MultipleHasId {
@@ -914,7 +914,7 @@ TypeScript提供了`Partial<T>`、`Required<T>`、`Readonly<T>`、`Pick<T, K>`�
 
 ArkTS不支持`Pick<T,K>`和`Omit<T,K>`，详见从TypeScript到ArkTS的适配规则，改用显式定义的接口表达所需的属性子集。
 
-<!-- @[related_interfaces](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @related_interfaces -->
 
 ``` TypeScript
 interface Product {
@@ -960,7 +960,7 @@ let createRequest: CreateProductRequest = {
 
 使用Map或类替代复杂Record类型，获得更清晰的类型约束。
 
-<!-- @[generic_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_map -->
 
 ``` TypeScript
 interface MenuItem {
@@ -984,7 +984,7 @@ if (home !== undefined) {
 
 用`readonly`修饰符标记类属性为只读，替代`Readonly<T>`实现不可变字段约束。
 
-<!-- @[readonly_user](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @readonly_user -->
 
 ``` TypeScript
 class ReadonlyUser {
@@ -1005,7 +1005,7 @@ console.info(`${userUser.name}`);
 
 用`?`修饰符定义可选属性，替代`Partial<T>`表达部分更新的对象结构。
 
-<!-- @[partial_update_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @partial_update_request -->
 
 ``` TypeScript
 interface UpdateUserRequest {
@@ -1030,7 +1030,7 @@ function updateUser(id: number, request: UpdateUserRequest): void {
 
 条件类型、映射类型和infer是TypeScript的高级类型工具，ArkTS中不作为常规语法使用。
 
-<!-- @[ts_utility_types_note](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_utility_types_note -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS中不作为常规语法使用
@@ -1043,7 +1043,7 @@ type ElementType<T> = T extends Array<infer Item> ? Item : T;
 
 编译器根据实参推断类型参数，但当存在多个候选或联合类型时推断可能不够精确，需要显式指定。
 
-<!-- @[generic_first_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_first_element -->
 
 ``` TypeScript
 function first<T>(items: T[]): T | undefined {
@@ -1058,7 +1058,7 @@ let firstName: string | undefined = first<string>(names);
 
 泛型参数默认值在未指定时使用默认类型，减少调用时的类型参数。
 
-<!-- @[generic_default_type_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_default_type_parameter -->
 
 ``` TypeScript
 // 泛型参数默认值
@@ -1105,7 +1105,7 @@ console.info(`${response3.error?.message}`);
 
 泛型与嵌套类型结合，构建递归数据结构如树和链表。
 
-<!-- @[generic_nested_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_nested_types -->
 
 ``` TypeScript
 // 泛型嵌套类型：树
@@ -1149,7 +1149,7 @@ while (tsCurrent !== undefined) {
 
 **TypeScript对照**
 
-<!-- @[ts_keyof_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_keyof_operator -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1166,7 +1166,7 @@ function getProperty<T, K extends keyof T>(obj: T, key: K) {
 
 ArkTS中优先使用显式属性名和类型标注替代`keyof`。
 
-<!-- @[keyof_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @keyof_alternative -->
 
 ``` TypeScript
 interface KeyofPoint {
@@ -1193,7 +1193,7 @@ console.info(`${keyofGetY(keyofPt).toString()}`);  // 20
 
 **TypeScript对照**
 
-<!-- @[ts_typeof_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_typeof_operator -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1203,7 +1203,7 @@ type TsConfig = typeof tsConfig; // { url: string; timeout: number; }
 
 ArkTS中优先使用interface显式声明。
 
-<!-- @[typeof_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @typeof_alternative -->
 
 ``` TypeScript
 interface TypeofConfig {
@@ -1226,7 +1226,7 @@ console.info(`${typeofConfig.timeout.toString()}`);
 
 **TypeScript对照**
 
-<!-- @[ts_indexed_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_indexed_access -->
 
 ``` TypeScript
 // 变型标注：协变out、逆变in、不变in out
@@ -1237,7 +1237,7 @@ type IndexedAge = IndexedPerson['age'];     // number
 
 ArkTS中直接使用属性类型。
 
-<!-- @[indexed_access_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @indexed_access_alternative -->
 
 ``` TypeScript
 interface IndexedAccessPerson {
@@ -1261,7 +1261,7 @@ console.info(`${iaPersonAlive.toString()}`);
 
 **TypeScript对照**
 
-<!-- @[ts_conditional_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_conditional_types -->
 
 ``` TypeScript
 // 变型标注：协变out、逆变in、不变in out
@@ -1280,7 +1280,7 @@ type CondResult = ToArray<string | number>;  // string[] | number[]
 
 ArkTS中使用函数重载或联合类型替代条件类型。
 
-<!-- @[conditional_type_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @conditional_type_alternative -->
 
 ``` TypeScript
 function formatCondValue(value: string): string;
@@ -1304,7 +1304,7 @@ console.info(`${condN}`);  // 42.00
 
 **TypeScript对照**
 
-<!-- @[ts_mapped_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_mapped_types -->
 
 ``` TypeScript
 // 变型标注：协变out、逆变in、不变in out
@@ -1319,7 +1319,7 @@ type MappedGetters<T> = {
 
 ArkTS中显式声明替代映射类型。
 
-<!-- @[mapped_type_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @mapped_type_alternative -->
 
 ``` TypeScript
 interface MappedReadonlyUser {
@@ -1356,7 +1356,7 @@ class MappedUser implements MappedUserGetters {
 
 变型描述泛型类型参数的子类型关系如何传递到泛型类型本身。协变（`out`）表示子类型关系保持方向——`Producer<Cat>`是`Producer<Animal>`的子类型；逆变（`in`）表示方向反转——`Consumer<Animal>`是`Consumer<Cat>`的子类型；不变（`in out`）表示无子类型关系。ArkTS支持`in`/`out`/`in out`变型标注语法，编译器通常能自动推断变型关系，手动标注仅用于极少数循环类型场景。
 
-<!-- @[variance_annotations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @variance_annotations -->
 
 ``` TypeScript
 interface VaConsumer<in T> { consume: (arg: T) => void; }
@@ -1372,7 +1372,7 @@ TypeScript还提供`Exclude`、`Extract`、`NonNullable`、`Parameters`、`Retur
 
 **Exclude与Extract**
 
-<!-- @[ts_exclude_extract](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_exclude_extract -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1383,7 +1383,7 @@ type Extracted = Extract<AllTypes, 'a' | 'x'>; // 'a'
 
 ArkTS中直接声明联合类型。
 
-<!-- @[exclude_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @exclude_alternative -->
 
 ``` TypeScript
 type ExcludeAllTypes = 'a' | 'b' | 'c';
@@ -1395,7 +1395,7 @@ console.info(`${excludeValue}`);
 
 **NonNullable**
 
-<!-- @[ts_nonnullable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_nonnullable -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1405,7 +1405,7 @@ type NonNullType = NonNullable<NullableType>;  // string
 
 ArkTS中直接使用非空类型。
 
-<!-- @[nonnullable_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @nonnullable_alternative -->
 
 ``` TypeScript
 let nnValue: string = 'hello';
@@ -1414,7 +1414,7 @@ console.info(`${nnValue}`);
 
 **Parameters与ReturnType**
 
-<!-- @[ts_parameters_returntype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_parameters_returntype -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1425,7 +1425,7 @@ type PRReturn = ReturnType<typeof prFunction>;   // number
 
 ArkTS中显式声明参数和返回值类型。
 
-<!-- @[params_return_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @params_return_alternative -->
 
 ``` TypeScript
 function prArkFunc(s: string): number {
@@ -1439,7 +1439,7 @@ console.info(`${prResult.toString()}`);  // 5
 
 **Awaited**
 
-<!-- @[ts_awaited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_awaited -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1448,7 +1448,7 @@ type AwaitedType = Awaited<Promise<string>>;  // string
 
 ArkTS中直接使用解包后的类型。
 
-<!-- @[awaited_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @awaited_alternative -->
 
 ``` TypeScript
 async function awaitedGetData(): Promise<string> {
@@ -1465,7 +1465,7 @@ awaitedMain();
 
 **ConstructorParameters与InstanceType**
 
-<!-- @[ts_ctor_params_instance_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_ctor_params_instance_type -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1478,7 +1478,7 @@ type CpInstance = InstanceType<typeof CpPoint>;             // CpPoint
 
 ArkTS中显式声明构造函数参数类型和实例类型。
 
-<!-- @[ctor_params_instance_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @ctor_params_instance_alternative -->
 
 ``` TypeScript
 class CpaPoint {
@@ -1498,7 +1498,7 @@ console.info(`${cpaInstance.x}, ${cpaInstance.y}`); // 3, 4
 
 **字符串操作类型（Uppercase/Lowercase/Capitalize/Uncapitalize）**
 
-<!-- @[ts_string_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_string_utils -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中不作为常规语法使用
@@ -1510,7 +1510,7 @@ type Uncap = Uncapitalize<'Bar'>;  // 'bar'
 
 ArkTS中直接使用字符串方法处理大小写转换。
 
-<!-- @[string_method_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @string_method_alternative -->
 
 ``` TypeScript
 let smUpperStr: string = 'hello'.toUpperCase();
@@ -1523,7 +1523,7 @@ console.info(`${smLowerStr}`); // world
 
 TypeScript的`ThisType<T>`用于标记`this`的上下文类型，常在对象字面量中指定`this`类型。ArkTS中不使用`ThisType`，通过类和方法明确`this`的指向。
 
-<!-- @[ts_thistype_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Generics.ts) -->
+<!-- @ts_thistype_usage -->
 
 ``` TypeScript
 // TypeScript对照写法（ArkTS不支持）
@@ -1539,7 +1539,7 @@ const obj: ThisType<MyContext> = {
 
 ArkTS替代：使用类明确`this`绑定。
 
-<!-- @[thistype_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @thistype_alternative -->
 
 ``` TypeScript
 class ThContext {
@@ -1566,7 +1566,7 @@ console.info(`${thCtx.greet()}`); // Alice
 
 泛型数据结构如栈、队列适用于任意元素类型。
 
-<!-- @[generic_data_structures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_data_structures -->
 
 ``` TypeScript
 // 通用栈数据结构
@@ -1771,7 +1771,7 @@ console.info(`${linkedList.size()}`); // 3
 
 泛型工具函数如map、filter适用于任意类型的集合操作。
 
-<!-- @[generic_array_utilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_array_utilities -->
 
 ``` TypeScript
 // 通用数组工具函数
@@ -1842,7 +1842,7 @@ console.info(`${utilitiesUser.name}`);  // Bob
 
 泛型组件通过类型参数描述props、render等结构，使同一组件适配多种数据类型而不失去类型安全。
 
-<!-- @[generic_ui_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_ui_components -->
 
 ``` TypeScript
 // 通用列表组件
@@ -1944,7 +1944,7 @@ console.info(`${userTable.render()}`);
 
 泛型封装网络请求，统一处理不同接口的请求和响应类型。
 
-<!-- @[generic_api_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Generics.ets) -->
+<!-- @generic_api_client -->
 
 ``` TypeScript
 interface ClientApiResponse<T> {

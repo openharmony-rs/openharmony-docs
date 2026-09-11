@@ -16,7 +16,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 1. 导入相关模块。
 
-   <!-- @[xmp_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+   <!-- @xmp_import -->
    
    ``` TypeScript
    // 导入相关模块。
@@ -30,7 +30,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
    - 方式一：手动创建新的XMPMetadata对象。适用于需要构造全新XMP元数据的场景。
 
-     <!-- @[create_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+     <!-- @create_xmp_metadata -->
      
      ``` TypeScript
      async createXMPMetadata(): Promise<image.XMPMetadata> {
@@ -42,7 +42,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
    - 方式二：通过ImageSource读取图片中的XMP元数据。适用于需要读取或修改已有图片中XMP元数据的场景。<br>推荐使用readImageMetadataByType接口获取XMP元数据，可以直接传入`MetadataType.XMP_METADATA`，精准获取XMP类型的元数据，避免读取其他无关元数据。
 
-     <!-- @[read_xmp_metadata_from_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+     <!-- @read_xmp_metadata_from_image -->
      
      ``` TypeScript
      async readXMPMetadataFromImage(imageSource: image.ImageSource): Promise<image.XMPMetadata | undefined> {
@@ -68,7 +68,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
    使用XMP路径定位到目标标签后，调用对应的方法进行编辑。例如：通过setValue设置标签值，通过getTag获取标签值，通过removeTag删除标签。
 
-   <!-- @[operate_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+   <!-- @operate_xmp_metadata -->
    
    ``` TypeScript
    async operateXMPMetadata(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -96,7 +96,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
    >
    > DNG和TIFF格式的图片不支持将XMP元数据写回图片文件。
 
-   <!-- @[write_xmp_metadata_to_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+   <!-- @write_xmp_metadata_to_image -->
    
    ``` TypeScript
    async writeXMPMetadataToImage(imageSource: image.ImageSource, xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -126,7 +126,7 @@ XMP路径由以下语法构件组合而成。在使用getTag、setValue、remove
 
 **示例：**
 
-<!-- @[set_and_get_basic_tag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @set_and_get_basic_tag -->
 
 ``` TypeScript
 async setAndGetBasicTag(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -155,7 +155,7 @@ async setAndGetBasicTag(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
-<!-- @[create_array_and_add_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @create_array_and_add_elements -->
 
 ``` TypeScript
 async createArrayAndAddElements(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -179,7 +179,7 @@ async createArrayAndAddElements(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
-<!-- @[get_array_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @get_array_elements -->
 
 ``` TypeScript
 async getArrayElements(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -209,7 +209,7 @@ async getArrayElements(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
-<!-- @[create_struct_and_operate_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @create_struct_and_operate_members -->
 
 ``` TypeScript
 async createStructAndOperateMembers(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -247,7 +247,7 @@ async createStructAndOperateMembers(xmpMetadata: image.XMPMetadata): Promise<voi
 
 以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
 
-<!-- @[set_and_get_qualifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @set_and_get_qualifier -->
 
 ``` TypeScript
 async setAndGetQualifierValue(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -271,7 +271,7 @@ async setAndGetQualifierValue(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 多语言文本（语言替代数组）本质上也是一种数组，类型为`ALTERNATE_TEXT`。在添加元素前，必须先创建数组容器；且每个元素**必须**通过`"xml:lang"`限定符指定语言，否则在序列化时会失败，导致无法写回文件。
 
-<!-- @[set_language_qualifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @set_language_qualifier -->
 
 ``` TypeScript
 async setLanguageQualifier(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -306,7 +306,7 @@ async setLanguageQualifier(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例：**
 
-<!-- @[enumerate_namespace_tags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
+<!-- @enumerate_namespace_tags -->
 
 ``` TypeScript
 async enumerateNamespaceTags(xmpMetadata: image.XMPMetadata): Promise<void> {

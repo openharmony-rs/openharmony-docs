@@ -18,7 +18,7 @@
 
 参数的具体内容可参考相机管理器回调接口实例Camera_SystemPressureLevel。
 
-<!-- @[system_pressure_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+<!-- @system_pressure_callback -->
 
 ``` C++
 void SystemPressureLevelChangeCallback(Camera_CaptureSession *captureSession,

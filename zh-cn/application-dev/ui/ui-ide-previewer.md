@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-DevEco Studio为开发者提供了UI预览功能，方便查看UI效果并随时调整页面布局。预览支持页面预览和组件预览。图1中左侧图标![ide_previewer_002](figures/ide_previewer_002.png)表示页面预览，右侧图标![ide_previewer_003](figures/ide_previewer_003.png)表示组件预览。
+DevEco Studio为开发者提供了UI预览功能，方便查看UI效果并随时调整页面布局。预览支持页面预览和组件预览。图1中左侧图标ide_previewer_002表示页面预览，右侧图标ide_previewer_003表示组件预览。
 
 > **说明：**
 >
@@ -15,7 +15,7 @@ DevEco Studio为开发者提供了UI预览功能，方便查看UI效果并随时
 
 **图1** 预览图标
 
-![ide_previewer_001](figures/ide_previewer_001.png)
+ide_previewer_001
 
 ## 页面预览
 
@@ -31,7 +31,7 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 
 ### 极速预览
 
-支持在修改组件的属性时，无需使用`Ctrl+S`进行保存，可以直接观察到修改后的预览效果。极速预览默认开启，若需关闭，点击预览器右上角按钮![ide_previewer_004](figures/ide_previewer_004.png)即可。
+支持在修改组件的属性时，无需使用`Ctrl+S`进行保存，可以直接观察到修改后的预览效果。极速预览默认开启，若需关闭，点击预览器右上角按钮ide_previewer_004即可。
 
 > **注意：**
 >
@@ -47,11 +47,11 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 
 **图2** 极速预览演示图
 
-![ide_previewer_001](figures/ide_previewer_001.gif)
+ide_previewer_001
 
 ### Inspector双向预览
 
-支持ets文件与预览器的双向预览。使用时，点击预览器界面图标![ide_previewer_006](figures/ide_previewer_006.png)开启双向预览功能。
+支持ets文件与预览器的双向预览。使用时，点击预览器界面图标ide_previewer_006开启双向预览功能。
 
 开启双向预览功能后，支持代码编辑器、UI界面和组件树之间的联动：
 
@@ -67,12 +67,12 @@ ArkTS应用/原子化服务均支持页面预览。页面预览通过在工程�
 
 **图3** Inspector双向预览演示图
 
-![ide_previewer_002](figures/ide_previewer_002.gif)
+ide_previewer_002
 
 ## 组件预览
 
 ArkTS应用/原子化服务支持组件预览功能。组件预览通过在自定义组件前添加@Preview装饰器实现。在单个源文件中，最多可以使用10个`@Preview`装饰自定义组件。启动方式：
-- 当组件被\@Entry和\@Preview装饰时，点击右侧侧边栏的Previewer按钮，启动页面预览，页面加载成功后，点击![ide_previewer_003](figures/ide_previewer_003.png)，切换到组件预览。
+- 当组件被\@Entry和\@Preview装饰时，点击右侧侧边栏的Previewer按钮，启动页面预览，页面加载成功后，点击ide_previewer_003，切换到组件预览。
 - 当组件仅被\@Preview装饰时，点击右侧侧边栏的Previewer按钮，则默认为组件预览。
 
 组件预览时，使用@Preview装饰器的默认属性（请参考PreviewParams）进行效果显示。可以通过设置@Preview的参数，指定预览设备的相关属性，包括设备类型、屏幕形状等。
@@ -119,14 +119,14 @@ struct ComponentPreviewTwo {
 
 **图4** 组件预览效果图
 
-![ide_previewer_005](figures/ide_previewer_005.png)
+ide_previewer_005
 
 ## 动态修改分辨率
 
-同一个应用/元服务可以运行在多个设备上，因不同设备的屏幕分辨率、形状、大小等不同，开发者需要在不同的设备上查看应用/元服务的UI布局和交互效果。预览支持动态修改分辨率，方便开发者随时查看不同设备上的页面显示效果。启动方式：启动页面预览后，点击右上角![ide_preview_007](figures/ide_previewer_007.png)，即可拖动页面选中框动态修改当前设备的屏幕大小。
+同一个应用/元服务可以运行在多个设备上，因不同设备的屏幕分辨率、形状、大小等不同，开发者需要在不同的设备上查看应用/元服务的UI布局和交互效果。预览支持动态修改分辨率，方便开发者随时查看不同设备上的页面显示效果。启动方式：启动页面预览后，点击右上角ide_preview_007，即可拖动页面选中框动态修改当前设备的屏幕大小。
 
 效果如图5所示：
 
 **图5** 动态修改分辨率效果图
 
-![ide_previewer_003](figures/ide_previewer_003.gif)
+ide_previewer_003

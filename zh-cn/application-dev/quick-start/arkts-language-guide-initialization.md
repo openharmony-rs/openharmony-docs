@@ -16,7 +16,7 @@ ArkTS通过构造函数、属性初始化器、静态初始化块等机制在对
 
 初始化通过默认值、构造函数、初始化顺序和静态初始化等机制，在对象创建时为属性设置有效初值。
 
-<!-- @[basic_constructor_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @basic_constructor_initialization -->
 
 ``` TypeScript
 class Person {
@@ -51,7 +51,7 @@ class ClassName {
   }
 }
 ```
-<!-- @[constructor_responsibilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @constructor_responsibilities -->
 
 ``` TypeScript
 class DatabaseConnection {
@@ -104,7 +104,7 @@ db.connect();
 
 `new`创建实例时依次执行：字段默认值初始化、构造函数体内赋值，最终对象所有属性处于有效状态。
 
-<!-- @[initialization_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @initialization_flow -->
 
 ``` TypeScript
 class Order {
@@ -166,7 +166,7 @@ order.complete();
 
 默认构造函数是无参数的构造函数，在未定义构造函数时编译器自动生成。
 
-<!-- @[default_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @default_constructor -->
 
 ``` TypeScript
 class SimpleClass {
@@ -208,7 +208,7 @@ console.info(`${defaultObj.getValues()}`);  // '0, 0'
 
 自定义构造函数是带参数的构造函数，通过参数接收初始值进行初始化。
 
-<!-- @[custom_constructor_with_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @custom_constructor_with_parameters -->
 
 ``` TypeScript
 class Point {
@@ -257,7 +257,7 @@ console.info(`${user.validate()}`);  // true
 
 通过public/private/protected修饰构造函数控制实例化权限：private构造函数常用于单例模式，protected用于只允许子类实例化。
 
-<!-- @[constructor_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @constructor_access_modifiers -->
 
 ``` TypeScript
 class PublicConstructor {
@@ -311,7 +311,7 @@ let child: ChildOfProtected = new ChildOfProtected(20);
 
 使用`new`关键字调用构造函数完成实例化：分配内存→调用构造函数初始化属性→返回实例引用。
 
-<!-- @[instantiation_with_new_keyword](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @instantiation_with_new_keyword -->
 
 ``` TypeScript
 class Product {
@@ -361,7 +361,7 @@ console.info(`${complex.getData().get('key')}`);  // 'value'
 
 通过声明多个参数列表不同的构造函数签名，使对象可以按不同的参数组合初始化，编译器根据传入参数自动匹配对应签名。
 
-<!-- @[constructor_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @constructor_overloading -->
 
 ``` TypeScript
 class OverloadPoint {
@@ -415,7 +415,7 @@ let color2: Color = new Color(255, 128, 0);
 
 根据传入参数的数量和类型，编译器自动匹配最合适的构造函数签名，调用对应的初始化逻辑。
 
-<!-- @[overload_call_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @overload_call_selection -->
 
 ``` TypeScript
 class Size {
@@ -456,7 +456,7 @@ console.info(`${size3.getArea()}`);  // 200
 
 构造函数重载的使用场景包括提供默认值初始化、部分参数初始化和全参数初始化等方式，根据参数类型和数量设计具有明确命名和逻辑层次的重载方案。
 
-<!-- @[static_factory_methods_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @static_factory_methods_alternative -->
 
 ``` TypeScript
 // 使用场景：多种初始化方式
@@ -517,7 +517,7 @@ let customConfig: ConfigFactory = ConfigFactory.createCustom('EXAMPLE_API_URL', 
 
 当子类构造函数未显式调用父类构造函数时，若父类存在无参构造函数，编译器会自动生成调用父类无参构造函数的代码；若父类仅有带参构造函数，则编译报错。
 
-<!-- @[inheriting_parent_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @inheriting_parent_constructor -->
 
 ``` TypeScript
 class Parent {
@@ -564,7 +564,7 @@ let emptyChild: EmptyChild = new EmptyChild();
 
 子类构造函数必须通过`super()`调用父类构造函数，且`super()`必须是构造函数体的第一条语句，在`this`访问之前执行。
 
-<!-- @[ts_super_call_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Initialization.ts) -->
+<!-- @ts_super_call_rules -->
 
 ``` TypeScript
 class Vehicle {
@@ -615,7 +615,7 @@ class InvalidChild extends Vehicle {
 
 当父类定义了构造函数时，子类构造函数必须显式调用`super()`且必须在使用`this`之前执行。
 
-<!-- @[ts_super_call_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Initialization.ts) -->
+<!-- @ts_super_call_scenarios -->
 
 ``` TypeScript
 // 必须调用super() 的场景：
@@ -675,7 +675,7 @@ class TimingChild extends TimingParent {
 
 子类构造函数通过super(...)将参数转发给父类构造函数。
 
-<!-- @[passing_parameters_to_super](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @passing_parameters_to_super -->
 
 ``` TypeScript
 class MultiParamParent {
@@ -755,7 +755,7 @@ class TransformedChild extends TransformedParent {
 
 实例属性的声明时初始化是在属性声明处赋值，确保属性有初始值。
 
-<!-- @[declaration_time_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @declaration_time_initialization -->
 
 ``` TypeScript
 class DirectInitialization {
@@ -790,7 +790,7 @@ console.info(`${direct.active}`); // true
 
 构造函数内属性初始化是在构造函数中为属性赋值，适合需要参数或动态计算的初始化。
 
-<!-- @[constructor_body_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @constructor_body_initialization -->
 
 ``` TypeScript
 class ConstructorInitialization {
@@ -850,7 +850,7 @@ ArkTS编译器默认强制执行属性初始化检查（等效于TypeScript的`s
 
 用`?`修饰符声明可选属性，创建对象时可不初始化，访问时需处理`undefined`或用`??`提供默认值。
 
-<!-- @[optional_properties_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @optional_properties_initialization -->
 
 ``` TypeScript
 class OptionalProperties {
@@ -895,7 +895,7 @@ console.info(`${optional.getAge()}`);  // 25
 
 只读属性在声明或构造函数中赋值以保持不可变。
 
-<!-- @[ts_readonly_initialization_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Initialization.ts) -->
+<!-- @ts_readonly_initialization_rules -->
 
 ``` TypeScript
 class ReadOnlyProperties {
@@ -927,7 +927,7 @@ console.info(`${readOnly.optionalConstant}`);  // 100
 
 readonly属性限制：仅可在声明时或构造函数中赋值，其他地方不可修改。
 
-<!-- @[immutable_object_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @immutable_object_pattern -->
 
 ``` TypeScript
 class ImmutablePoint {
@@ -950,7 +950,7 @@ class ImmutablePoint {
 
 当基类和派生类都有字段初始化时，执行顺序为：基类字段 → 基类构造函数 → 派生类字段 → 派生类构造函数。此外，静态初始化块（`static { }`）在类首次被加载时执行，先于所有实例字段初始化和构造函数调用；静态字段的初始化按声明顺序执行，静态初始化块穿插在静态字段之间按顺序执行。
 
-<!-- @[init_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @init_order -->
 
 ``` TypeScript
 class IoBase {
@@ -997,7 +997,7 @@ let ioD: IoDerived = new IoDerived();
 
 在主构造函数基础上封装static工厂方法，提供命名构造入口。
 
-<!-- @[static_factory_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @static_factory_methods -->
 
 ``` TypeScript
 class FactoryUser {
@@ -1039,7 +1039,7 @@ let defaultUser: FactoryUser = FactoryUser.createDefaultUser('Bob');
 
 ArkTS不支持this()调用，使用static工厂方法替代便捷构造。
 
-<!-- @[private_constructor_with_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @private_constructor_with_factory -->
 
 ``` TypeScript
 class FactoryConfiguration {
@@ -1083,7 +1083,7 @@ let copiedConfig: FactoryConfiguration = FactoryConfiguration.copy(factoryDefaul
 
 静态工厂在参数较多时提供命名的简化构造入口。
 
-<!-- @[static_factory_use_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @static_factory_use_cases -->
 
 ``` TypeScript
 class CasesPoint {
@@ -1138,7 +1138,7 @@ let fromArr: CasesPoint = CasesPoint.fromArray([3, 4]);
 
 静态属性是在声明时直接赋值的类级别属性。
 
-<!-- @[static_properties_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @static_properties_initialization -->
 
 ``` TypeScript
 class StaticProperties {
@@ -1173,7 +1173,7 @@ console.info(`${StaticProperties.PI}`);            // 3.14159
 
 静态代码块是类加载时执行的代码块，用于初始化需要多行代码或条件判断的静态成员。ArkTS支持静态块语法，不支持`#`私有标识符，使用`private`修饰符替代。
 
-<!-- @[static_initialization_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @static_initialization_function -->
 
 ``` TypeScript
 class StaticInitialization {
@@ -1208,7 +1208,7 @@ console.info(`${config.get('apiUrl')}`);  // EXAMPLE_API_URL
 
 除了手动管理初始化状态，ArkTS还支持静态代码块（`static { }`），它在类加载时自动执行，无需显式调用即可完成初始化。
 
-<!-- @[static_block_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @static_block_usage -->
 
 ``` TypeScript
 class StaticBlockConfig {
@@ -1235,7 +1235,7 @@ console.info(`${StaticBlockConfig.getCount()}`); // 3
 
 静态初始化块和静态字段在类首次被访问时执行，用于加载全局配置、初始化静态资源池等类级别的一次性设置。
 
-<!-- @[global_config_static_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @global_config_static_initialization -->
 
 ``` TypeScript
 class GlobalConfig {
@@ -1293,7 +1293,7 @@ console.info(`${GlobalConfig.get('customKey')}`);   // 'customValue'
 
 编译器对未初始化的属性报错或警告：`strictPropertyInitialization`要求所有属性在构造函数结束前被赋值，否则编译失败。
 
-<!-- @[ts_required_properties_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Initialization.ts) -->
+<!-- @ts_required_properties_initialization -->
 
 ``` TypeScript
 class StrictInitialization {
@@ -1343,7 +1343,7 @@ class OptionalInitialization {
 
 通过确保属性有值、使用可选链（`?.`）和空值合并（`??`）等安全访问方式，避免undefined异常。
 
-<!-- @[safe_initialization_techniques](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @safe_initialization_techniques -->
 
 ``` TypeScript
 class SafeInitialization {
@@ -1390,7 +1390,7 @@ class SafeInitialization {
 
 使用可选链（`?.`）安全访问可能未初始化的属性，避免运行时undefined错误。
 
-<!-- @[optional_chaining_safe_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @optional_chaining_safe_access -->
 
 ``` TypeScript
 interface OptionalProfile {
@@ -1448,7 +1448,7 @@ class OptionalChainExample {
 
 子类中重新声明继承字段的更精确类型时，使用`declare`避免运行时覆盖父类值。
 
-<!-- @[declare_field_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
+<!-- @declare_field_init -->
 
 ``` TypeScript
 interface DfiAnimal {

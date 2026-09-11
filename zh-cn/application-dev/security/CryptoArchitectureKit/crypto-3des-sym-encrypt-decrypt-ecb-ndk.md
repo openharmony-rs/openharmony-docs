@@ -67,7 +67,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 如果使用CBC、CTR、OFB、CFB分组模式，需设置加解密参数IV。请参考设置加解密参数IV，无论加密还是解密，在生成和初始化Cipher实例时均需修改相关参数。
 
-<!-- @[crypt_decrypt_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidance3DES/entry/src/main/cpp/types/project/3des_ecb_encryption_decryption.cpp) -->
+<!-- @crypt_decrypt_flow -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

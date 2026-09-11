@@ -58,7 +58,7 @@
 
 4. 在module目录 > src > main > ets > insightintents目录下生成入口代码文件。开发者在意图执行函数中实现意图的功能代码。
 
-    <!-- @[playmusic_executor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/PlayMusicExecutor.ets) -->
+    <!-- @playmusic_executor -->
 
     ``` TypeScript
     // 本示例对应意图配置中的'srcEntry'字段对应的文件
@@ -124,7 +124,7 @@
 
 意图执行器实现：
 
-<!-- @[playmusic_extension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/ExtensionExecutor.ets) -->
+<!-- @playmusic_extension -->
 
 ``` TypeScript
 import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
@@ -168,7 +168,7 @@ export default class ExtensionExecutor extends InsightIntentExecutor {
 
 意图执行器实现：
 
-<!-- @[playmusic_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/InsightIntentConfigDevelopment/entry/src/main/ets/insightintents/DownloadExecutor.ets) -->
+<!-- @playmusic_download -->
 
 ``` TypeScript
 import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';

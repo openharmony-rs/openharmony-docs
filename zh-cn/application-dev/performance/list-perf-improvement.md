@@ -55,7 +55,7 @@ ForEach循环渲染的过程如下：
 
 3. 列表内容显示时，只渲染屏幕可视区内的ListItem组件。可视区外的ListItem组件滑动进入屏幕内时，因为已经完成数据加载和组件创建挂载，直接渲染即可。
 
-![](figures/list-perf-foreach.png)
+
 
 ForEach循环渲染在列表数据量大、组件结构复杂的情况下，会出现性能瓶颈。因为要一次性加载所有的列表数据，创建所有组件节点并完成组件树的构建，在数据量大时会非常耗时，从而导致页面启动时间过长。另外，屏幕可视区外的组件虽然不会显示在屏幕上，但是仍然会占用内存。在系统处于高负载的情况下，更容易出现性能问题，极限情况下甚至会导致应用异常退出。   
 
@@ -69,7 +69,7 @@ LazyForEach懒加载的原理如下：
 
 3. 屏幕可视区只展示部分组件。当可视区外的组件需要在屏幕内显示时，需要从头完成数据加载、组件创建、挂载组件树这一过程，直至渲染到屏幕上。
 
-    ![](figures/list-perf-lazyforeach.png)
+    
 
 4. LazyForEach懒加载中的键值生成函数keyGenerator用于给数据源中的每一个数据项生成唯一且固定的键值。键值生成器必须针对每个数据生成唯一的值，如果键值相同，将导致键值相同的UI组件渲染出现问题。
 
@@ -249,9 +249,9 @@ build() {
 
 3、为列表项指定唯一的键值编码
 
-![](figures/list-perf-realization.png)
 
-代码实现如下。首先，在使用LazyForEach数据懒加载之前，需要实现懒加载数据源接口类IDataSource。数据源接口类提供了获取数据总量，返回指定索引位置的数据，以及注册、注销数据监听器的接口。编写一个实现数据源接口IDataSource的数据源类BasicDataSource，该类包含数据变更监听器DataChangeListener类型的实例变量listeners，用于维护注册的数据变更监听器，在数据变更时调用相应的回调函数。每一个listener实例对应一个ArkUI框架侧的LazyForEach实例，数据源数据发生变更时，listener实例会通知LazyForEach需要触发界面刷新。详细代码请参考[BasicDataSource.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/viewmodel/BasicDataSource.ets)。
+
+代码实现如下。首先，在使用LazyForEach数据懒加载之前，需要实现懒加载数据源接口类IDataSource。数据源接口类提供了获取数据总量，返回指定索引位置的数据，以及注册、注销数据监听器的接口。编写一个实现数据源接口IDataSource的数据源类BasicDataSource，该类包含数据变更监听器DataChangeListener类型的实例变量listeners，用于维护注册的数据变更监听器，在数据变更时调用相应的回调函数。每一个listener实例对应一个ArkUI框架侧的LazyForEach实例，数据源数据发生变更时，listener实例会通知LazyForEach需要触发界面刷新。详细代码请参考BasicDataSource.ets。
 
 BasicDataSource是一个抽象类，不同的具体列表页面的数据源需要根据业务场景分别实现该抽象类。以聊天列表场景为例，数据源具体类ChatListData实现如下。其中，列表项数组变量chatList: Array用于为List子组件提供数据。ChatModel类表示聊天列表中列表项，包含联系人信息、最后一条消息内容、时间戳、未读消息数量等信息；totalCount()和getData(index: number)是实现数据源接口类IDataSource中定义的方法，用于给LazyForEach提供数据，应用框架会调用这些方法；addData()和pushData()方法为数据源类中定义的方法，可用于给数据源增加数据。需要注意的是，在这2个方法中需要调用notifyDataAdd方法，用于调用DataChangeListener中的接口来触发LazyForEach刷新。
 
@@ -291,7 +291,7 @@ class ChatListData extends BasicDataSource {
 }
 ```
 
-接下来，需要创建示例数据。在自定义组件ChatListDisplayView中，创建一个ChatListData类型的局部变量chatListLazy，并在aboutToAppear()方法中创建示例数据，详细代码请参考[文件ChatListPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/pages/ChatListPage.ets)。
+接下来，需要创建示例数据。在自定义组件ChatListDisplayView中，创建一个ChatListData类型的局部变量chatListLazy，并在aboutToAppear()方法中创建示例数据，详细代码请参考文件ChatListPage.ets。
 
 ```ts
 @Component
@@ -306,7 +306,7 @@ export struct ChatListDisplayView {
 }
 ```
 
-最后，在List组件容器中，使用LazyForEach接口遍历数据源this.chatListLazy循环生成ListItem列表项。其中，chatViewBuilder()方法用于布局页面列表项；代码行(msg: ChatModel) => msg.user.userId使用用户的编码作为列表项唯一的键值编码，用于区分不同的列表项。至此，使用懒加载代码实现完成，可以访问[Chat聊天示例程序](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)获取详细代码。
+最后，在List组件容器中，使用LazyForEach接口遍历数据源this.chatListLazy循环生成ListItem列表项。其中，chatViewBuilder()方法用于布局页面列表项；代码行(msg: ChatModel) => msg.user.userId使用用户的编码作为列表项唯一的键值编码，用于区分不同的列表项。至此，使用懒加载代码实现完成，可以访问Chat聊天示例程序获取详细代码。
 
 ```ts
 build() {
@@ -334,7 +334,7 @@ build() {
 
 使用ForEach一次性加载时，丢帧率为26.64%；开启懒加载时，丢帧率降低到2.33%。
 
-![](figures/list-perf-comparison.png)
+
 
 ## 缓存列表项
 
@@ -354,7 +354,7 @@ LazyForEach懒加载可以通过设置cachedCount属性来指定缓存数量。�
 
 4. 如果不显式设置cachedCount，默认缓存1条数据。
 
-![](figures/list-perf-cachedCount.png)
+
 
 ### 使用场景和限制
 
@@ -364,7 +364,7 @@ LazyForEach懒加载可以通过设置cachedCount属性来指定缓存数量。�
 
 ### 实现示例
 
-List/Grid容器组件的cachedCount属性用于为LazyForEach懒加载设置列表项ListItem的最少缓存数量。应用可以通过增加cachedCount参数，调整屏幕外预加载项的数量。在示例代码[文件ChatListPage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/IM/Chat/features/chatlist/src/main/ets/pages/ChatListPage.ets)中，提供了一个开关用于设置是否使能该属性，如下所示。在设置cachedCount后，当列表界面滑动时，除了获取屏幕上展示的数据，还会额外获取指定数量的列表项数据缓存起来。
+List/Grid容器组件的cachedCount属性用于为LazyForEach懒加载设置列表项ListItem的最少缓存数量。应用可以通过增加cachedCount参数，调整屏幕外预加载项的数量。在示例代码文件ChatListPage.ets中，提供了一个开关用于设置是否使能该属性，如下所示。在设置cachedCount后，当列表界面滑动时，除了获取屏幕上展示的数据，还会额外获取指定数量的列表项数据缓存起来。
 
 ```ts
 build() {
@@ -389,7 +389,7 @@ build() {
 
 在示例程序中，屏幕上每页展示9条数据。基于示例程序，测试了不同缓存数量对帧率的影响情况，不设置缓存数量时，丢帧率为7.79%，当逐渐增加缓存数量时，丢帧率降低。当设置当前屏幕展示数量的一半，即缓存5个列表项时，丢帧率最低。再增加缓存数量，丢帧率不再有显著的下降，增加缓存数量太多时，甚至会影响丢帧率。测试数据仅限于示例程序，不同的应用程序设置的最佳缓存数量不一致，需要针对应用程序测试得出最佳缓存数量。
 
-![](figures/list-perf-loss-rate.png)
+
 
 应该如何根据实际场景，设置缓存数量的值呢？ 例如列表项中需要显示网络数据，而网络数据加载较慢，为了提升列表信息的浏览效率和浏览体验，可以适当地多设置一些缓存数量；如果列表中需要加载一些大图或者视频等，这些数据占用的内存较大，为了减少内存占用，需要适当减少缓存数量的设置；因此，在实际场景中，需要不断尝试验证，设置适当的缓存数量，来达到体验和内存的平衡。
 
@@ -407,7 +407,7 @@ build() {
 
 3. 找到可复用节点并对其进行更新后添加到组件树中。从而节省了组件节点和JSView对象的创建时间。
 
-![](figures/list-perf-component-tree.png)
+
 
 @Reusable组件复用结合LazyForEach懒加载，可以进一步解决列表滑动场景的瓶颈问题，提供滑动场景下高性能创建组件的方式来提升滑动帧率。
 
@@ -495,21 +495,21 @@ struct ReusableOptLayoutChatView {
 
 | 页面                               | 代码                                    |
 |----------------------------------|---------------------------------------|
-| ![](figures/list-perf-scene.png) | ![](figures/list-perf-scene-code.png) |
+|  |  |
 
 布局中存在冗余布局，如build()函数下第一层的Column布局；例如GridContainer下的嵌套结构，使用了多个线性布局Column嵌套，层级较深。 还有下面的场景示例中也存在频繁使用线性布局导致嵌套过深的情况：
 
 | 页面                                 | 代码                                      |
 |------------------------------------|-----------------------------------------|
-| ![](figures/list-perf-picture.png) | ![](figures/list-perf-picture-code.png) |
+|  |  |
 
 构建了10、20、30、40、50层的嵌套组件作为列表项，在列表中插入100条该嵌套组件，测试这些嵌套组件在滑动场景下对内存的影响，数据如下所示：
 
-![](figures/list-perf-memory.png)
+
 
 嵌套组件的示意结构如下所示：
 
-![](figures/list-perf-structure.png)
+
 
 从内存数据可以得知，嵌套层级越深，会有更大的系统内存开销。因此在开发过程中，要尽可能减少布局嵌套，使布局更加扁平化。那么应该如何进行布局优化呢？
 
@@ -519,7 +519,7 @@ struct ReusableOptLayoutChatView {
 
 | **场景预览**                           | **优化前的列表项布局结构**                              |
 | ---------------------------------- | -------------------------------------------- |
-| ![](figures/list-perf-preview.png) | ![](figures/list-perf-preview-structure.png) |
+|  |  |
 
 从场景预览图中可以知道，列表项中包含了图片、消息数、昵称、聊天信息、时间这5个部分的内容；使用线性布局的写法方式，就是一个横向布局Row，嵌套了3个纵向布局Column，由于红色消息字体需要和图片进行重叠，还使用了Stack布局进行堆叠，最终的布局方式就如上图所示，共使用组件10个，嵌套4层，源码如下所示：
 
@@ -623,7 +623,7 @@ build() {
 }
 ```
 
-![](figures/list-perf-optimization.png)
+
 
 | **优化情况**    | **组件总数** | **视图嵌套层数** |
 | ----------- | -------- | ---------- |
@@ -632,16 +632,16 @@ build() {
 
 从上述案例中可以看到，选用正确的布局组件，不但去除了中间嵌套的组件层级，减少了组件数量，使代码更易于维护，也避免系统绘制更多的布局组件，达到优化性能、减少内存占用的目的，这就是扁平化布局改造的思路。
 
-![](figures/list-perf-flat-layout.png)
+
 
 系统还提供了更多的扁平化布局方案，例如绝对定位、自定义布局、Grid、GridRow等，适用更多不同的场景，具体的使用方法可以参考布局概述。
 
 ## 总结
 
-本文基于[Sample聊天示例应用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)中的聊天列表场景，分析了列表滑动性能的优化方法，包含懒加载、缓存列表项、组件复用、页面布局优化。对每个优化方法详细介绍了原理、使用场景，并基于示例程序给出了优化效果和对比数据。在开发类似列表场景时，可以借鉴这些优化方法。
+本文基于Sample聊天示例应用中的聊天列表场景，分析了列表滑动性能的优化方法，包含懒加载、缓存列表项、组件复用、页面布局优化。对每个优化方法详细介绍了原理、使用场景，并基于示例程序给出了优化效果和对比数据。在开发类似列表场景时，可以借鉴这些优化方法。
 
 ## 相关实例
 
 可参考以下实例：
 
-- [Sample聊天实例应用（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)
+- Sample聊天实例应用（ArkTS）（API12）

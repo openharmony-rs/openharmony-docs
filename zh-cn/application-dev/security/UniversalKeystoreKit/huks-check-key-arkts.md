@@ -19,7 +19,7 @@ HUKS提供了接口供应用查询指定密钥是否存在。
 
 3. 调用接口hasKeyItem，查询密钥是否存在。
 
-<!-- @[querying_the_existence_of_a_key_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/ets/pages/CheckKeyExists.ets) -->
+<!-- @querying_the_existence_of_a_key_arkts -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

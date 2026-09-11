@@ -16,7 +16,7 @@
 
 为解决以上问题，Job Partner并发范式应运而生。
 
-![image](figures/ffrt_figure8.png)
+image
 
 Job Partner并发范式中定义原先的线程为master线程，并支持动态管理partner线程（伙伴线程）。它有两个特性：
 
@@ -77,7 +77,7 @@ namespace market_system {
 
 | 名称                                                                                                                      | 描述                 |
 | ------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| [job_partner](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#job_partner) | 细粒度任务伙伴接口。 |
+| job_partner | 细粒度任务伙伴接口。 |
 
 > **说明：**
 >

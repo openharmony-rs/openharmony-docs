@@ -270,7 +270,7 @@ aa dump -a
   aa dump -a
   ```
 
-  ![aa-dump-a](figures/aa-dump-a.png)
+  aa-dump-a
 
   
   ```bash
@@ -278,7 +278,7 @@ aa dump -a
   aa dump -l
   ```
 
-  ![aa-dump-l](figures/aa-dump-l.png)
+  aa-dump-l
 
   
   ```bash
@@ -286,7 +286,7 @@ aa dump -a
   aa dump -i 105
   ```
 
-  ![aa-dump-i](figures/aa-dump-i.png)
+  aa-dump-i
 
 ## 强制停止进程命令（force-stop）
 
@@ -952,15 +952,15 @@ The target application is under control.
 - 目标应用是系统预装应用，并且使用本地编译的版本进行覆盖安装。
 - 目标应用开发证书过期，拉起时被系统管控拦截，此时会有系统弹框提示“应用已过期”。
 - 目标应用刚完成应用克隆，处于数据恢复中，此时会有系统弹框提示“数据恢复中，请稍后再试”。
-- [创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)的5天有效期已过期，导致应用拉起时被系统管控拦截。
+- 创建试用调试Profile的5天有效期已过期，导致应用拉起时被系统管控拦截。
 
 **处理步骤**
 
 - 针对可能原因1，建议卸载该应用。
 - 针对可能原因2，需要先卸载该应用，再使用本地编译的版本进行安装。
-- 针对可能原因3，需要[更换证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519)。
+- 针对可能原因3，需要更换证书。
 - 针对可能原因4，需要等待数据恢复完成后再尝试启动。
-- 针对可能原因5，需要重新[创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)。
+- 针对可能原因5，需要重新创建试用调试Profile。
 
 ### 10106106 目标应用被EDM管控
 
@@ -1196,4 +1196,4 @@ Cannot debug applications using a release certificate.
 
 使用Debug签名证书重新签名，安装新签名出的HAP后，再尝试执行该命令。
 
-签名工具及签名证书的生成方式可以参考：[签名工具指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+签名工具及签名证书的生成方式可以参考：签名工具指导。

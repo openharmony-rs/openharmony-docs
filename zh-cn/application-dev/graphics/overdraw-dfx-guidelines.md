@@ -16,7 +16,7 @@
   param set debug.graphic.overdraw true
   ```
 
-  ![](figures/overdraw-enable.png)
+  
 
 - 关闭过度绘制调试功能：
 
@@ -24,7 +24,7 @@
   param set debug.graphic.overdraw false
   ```
 
-  ![](figures/overdraw-disable.png)
+  
 
 - 查看是否开启了过度绘制调试功能：
 
@@ -34,7 +34,7 @@
   param get debug.graphic.overdraw
   ```
 
-  ![](figures/overdraw-check.png)
+  
 
 
 ## 过度绘制组件分析
@@ -88,7 +88,7 @@ struct Index {
 }
 ```
 
-![开启过度绘制功能后的示例程序界面](figures/overdraw-demo-enable.png)
+开启过度绘制功能后的示例程序界面
 
 编译安装后打开过度绘制调试功能，应用界面如上图所示。
 

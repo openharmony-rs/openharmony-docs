@@ -21,7 +21,7 @@
 
 3. 调用接口deleteKeyItem，删除密钥。
 
-<!-- @[key_deletions_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/ets/pages/KeyDeletion.ets) -->
+<!-- @key_deletions_arkts -->
 
 ``` TypeScript
 /*

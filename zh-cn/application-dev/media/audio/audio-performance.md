@@ -47,7 +47,7 @@
 
 由于不同音频硬件设备通路多种多样，系统从设备获取的时间信息并无法确保准确，时间戳的计算过程也会存在一些预估值处理，因此与实际硬件数据时间并不完全对等，存在一定误差是正常的。
 
-典型的用途是音视频同步，音频时间戳在此场景的使用方式，可以参考：[音画同步](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/audio-video-synchronization)。
+典型的用途是音视频同步，音频时间戳在此场景的使用方式，可以参考：音画同步。
 
 ## 音频性能分析方法
 
@@ -61,7 +61,7 @@
 
 DevEco Profiler是一个帮助开发者更高效地进行性能问题的分析的场景化调优工具，集成在DevEco Studio中，可以在应用开发过程中直接使用。
 
-工具的具体使用方式可参考指南：[性能调优工具简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-description)。
+工具的具体使用方式可参考指南：性能调优工具简介。
 
 DevEco Profiler主要用于对应用内运行流程进行分析和调优，指南中有详细的分析步骤说明，此文不再赘述。
 
@@ -69,45 +69,45 @@ DevEco Profiler主要用于对应用内运行流程进行分析和调优，指�
 
 HiSmartPerf工具是一个独立的性能调优工具，用于采集测试时间段内系统、CPU和GPU的性能数据。通过可视化界面进行直观的呈现，便于开发者分析所开发应用运行时的性能表现和原因，以此为基础进行深入的性能优化，以使应用运行更加流畅。
 
-HiSmartPerf工具完整的介绍可参考指南：[HiSmartPerf](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929)。
+HiSmartPerf工具完整的介绍可参考指南：HiSmartPerf。
 
 在此，提供使用HiSmartPerf分析音频播放场景的案例。
 
 1. 进入CPU Trace。
 
-   ![CPU trace](figures/his_trace.png)
+   CPU trace
 
    打开HiSmartPerf工具，进入游戏性能分析的CPU Trace页面。虽然标题是游戏性能分析，但分析场景并不仅限于游戏场景。
 
 2. 抓取配置。
 
-   ![配置项](figures/his_con.png)
+   配置项
 
    配置项主要有数据文件名、缓存容量、最大文件大小、数据项和采集时间。要抓取系统音频相关的数据项，需要勾选zaudio。采集时间可以按测试场景进行调节，需要注意，测试时长和勾选的数据项数量会影响文件大小，往往需要同步调节。
 
 3. 开始采集。
 
-   ![采集过程](figures/his_collection.png)
+   采集过程
 
    采集完成后将提示文件回传，当文件较大时请耐心等待。
 
 4. 查看Trace。
 
-   ![Trace结果](figures/trace_res_all.png)
+   Trace结果
 
    采集时间内的cpu性能分析结果。
 
 5. 找到音频数据处理线程。
 
-   ![音频数据](figures/trace_res_audio.png)
+   音频数据
 
    对于音频播放业务，可以通过OnWriteData搜索目标测试应用为系统输入播放数据的位置，进一步分析数据的生产来源的性能情况。
 
-   ![资源分配](figures/trace_res_explain.png)
+   资源分配
 
     Runnable表示线程在等待调度，当存在由于过长的Runnable导致数据未能被及时写入的情况，包括应用自身的数据生产线程，则需要考虑接入音频工作组，以提升线程的优先级并保障CPU资源分配。
 
-    ![CPU占用](figures/trace_cpu_usage.png)
+    CPU占用
 
     在CPU Usage中可以查看每个任务的CPU占用情况。
 

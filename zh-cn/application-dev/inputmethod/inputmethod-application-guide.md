@@ -45,7 +45,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
 
    在InputMethodService.ets文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
-   <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
+   <!-- @input_case_module_import_InputMethodExtensionAbility -->
    
    ``` TypeScript
    
@@ -76,9 +76,9 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
 
 2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以使用Panel对象的getSystemPanelCurrentInsets获取输入法键盘与系统面板的偏移区域，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
-   ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
+   偏移区域示意图
 
-   <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @input_case_input_KeyboardController358 -->
    
    ``` TypeScript
    
@@ -244,7 +244,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
    ```
    
  
-   <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @input_case_input_KeyboardController507 -->
    
    ``` TypeScript
    private registerListener(): void {
@@ -331,7 +331,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
    ```
  
 
-   <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @input_case_input_KeyboardController587 -->
    
    ``` TypeScript
      public isShiftKeyHold(): boolean {
@@ -488,7 +488,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
    定义软键盘的按键显示内容。
 
 
-   <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   <!-- @input_case_input_KeyboardKeyData016 -->
    
    ``` TypeScript
    export interface keySourceListType {
@@ -660,7 +660,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
    ```
 
 
-   <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   <!-- @input_case_input_KeyboardKeyData186 -->
    
    ``` TypeScript
    export let numberSourceListData: sourceListType[] = [
@@ -839,7 +839,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
 
    <!--Del-->同时在resources/base/profile/main_pages.json文件的src字段中添加此文件路径。<!--DelEnd-->
 
-   <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   <!-- @input_case_input_index -->
    
    ``` TypeScript
    import { deviceInfo } from '@kit.BasicServicesKit';
@@ -958,7 +958,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
 6. 在工程Module对应的module.json5配置文件中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
 
-   <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
+   <!-- @input_case_entry_module_extensionAbilities -->
    
    ``` JSON5
    "extensionAbilities": [
@@ -994,7 +994,7 @@ InputMethodExtensionAbility提供了onCreate()和onDestroy()生命周期回调�
 
 针对InputMethodExtensionAbility开发，有以下相关实例可供参考：
 
-- [轻量级输入法](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/InputMethod/KikaInput)
+- 轻量级输入法
 
 ## 示例效果图
-![示例效果图](./figures/实现一个输入法应用示例效果图.png)
+示例效果图

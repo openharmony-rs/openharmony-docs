@@ -10,7 +10,7 @@
 
 1. 在EntryFormAbility.ets中，导入相关模块。
 
-    <!-- @[import_entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+    <!-- @import_entry_form_ability --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -22,7 +22,7 @@
     
 2. 在EntryFormAbility.ets中，实现FormExtensionAbility生命周期接口，其中在onAddForm的入参want中可以通过FormParam取出卡片的相关信息。
 
-    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+    <!-- @entry_form_ability --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts

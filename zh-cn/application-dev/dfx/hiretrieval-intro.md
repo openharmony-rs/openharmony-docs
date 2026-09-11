@@ -32,7 +32,7 @@
 
 ### 整体架构
 
-![hiretrieval-intro](figures/hiretrieval-architecture.png)
+hiretrieval-intro
 
 ### 集成步骤
 

@@ -17,7 +17,7 @@
 
 2. 实现卡片布局，在卡片上添加一个刷新按钮，点击按钮后通过postCardAction接口，触发onFormEvent回调。
 
-   <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) -->
+   <!-- @update_by_message_card -->
    
    ``` TypeScript
    // entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets
@@ -80,7 +80,7 @@
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
-   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+   <!-- @update_by_message_form_ability -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -191,7 +191,7 @@
    }
    ```
 ### 运行结果
-![WidgetPrinciple](figures/主动刷新结果.gif)
+WidgetPrinciple
 
 ## 卡片提供方批量请求刷新卡片内容
 从API version 22开始，支持卡片提供方批量请求刷新卡片内容。卡片提供方可以通过reloadForms和reloadAllForms接口在应用主进程中通知FormExtension进程进行批量更新，仅支持在UIAbility中调用。
@@ -202,7 +202,7 @@
 
 2. 实现卡片布局，在卡片上创建两个待刷新的Text。
 
-   <!-- @[ReloadByUIAbilityCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets) -->
+   <!-- @ReloadByUIAbilityCard -->
    
    ``` TypeScript
    // entry/src/main/ets/reloadbyuiability/pages/ReloadByUIAbilityCard.ets
@@ -236,7 +236,7 @@
 
 3. 在FormExtensionAbility中实现onUpdateForm回调，通过updateForm接口定义卡片刷新逻辑。
 
-   <!-- @[EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+   <!-- @EntryFormAbility -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -292,7 +292,7 @@
 
 4. 在UIAbility的界面中添加两个批量刷新按钮，点击按钮后通过reloadForms或reloadAllForms接口，批量触发FormExtensionAbility中的onUpdateForm回调。
 
-   <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ReloadFormsDoc/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @index -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/index.ets
@@ -361,14 +361,14 @@
    }
    ```
 ### 运行结果
-![WidgetPrinciple](figures/批量刷新结果.gif)
+WidgetPrinciple
 
 <!--Del-->
 ## 卡片使用方主动刷新卡片内容（仅对系统应用开放）
 
 由于定时、定点刷新存在时间限制，卡片使用方可以通过调用requestForm接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的onUpdateForm生命周期回调，回调中可以使用updateForm接口刷新卡片内容。
 
-   <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @FormUpdate_page -->
    
    ``` TypeScript
    import { formHost } from '@kit.FormKit';

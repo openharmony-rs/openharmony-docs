@@ -14,7 +14,7 @@
 
 **图1** 转码状态变化示意图
 
-![Transcoding status change](figures/avtranscoder-status-change-ndk.png)
+Transcoding status change
 
 状态的详细说明请参考OH_AVTranscoder_State。
 
@@ -284,7 +284,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 ## 运行完整示例
 
-1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK)，并将示例工程的以下资源复制到对应目录。
+1. 新建工程，下载示例工程，并将示例工程的以下资源复制到对应目录。
 
    ```txt
    AVTranscoderNDK

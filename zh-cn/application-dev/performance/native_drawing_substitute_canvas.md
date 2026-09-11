@@ -21,7 +21,7 @@ Canvas 画布组件是用来显示自绘内容的组件，它具有保留历史�
 
 ## 场景示例
 
-![](./figures/drawing-canvas.gif)
+
 
 上图是一个绘制1000个透明空心圆与背景图融合的绘制场景，下面我们分别使用 Canvas 的 CanvasRenderingContext2D(反例) 和 Native 侧的 Drawing(正例) 来实现该场景，并分析两者的性能差异。  
 
@@ -152,7 +152,7 @@ export default struct GlassCoverView {
 
 使用Canvas 的 CanvasRenderingContext2D 绘制trace图
 
-![](./figures/drawing_with_canvas.png)
+
 
 从图可以看到绘制1000个圆圈耗时34.1毫秒。
 
@@ -406,7 +406,7 @@ static void NativeOnDrawPixelMap(OH_Drawing_Canvas *canvas, NativePixelMap *nati
 
 使用Native侧Drawing绘制trace图
 
-![](./figures/drawing_with_ndk.png)
+
 
 从图可以看到绘制1000个圆圈耗时1.2毫秒，相较于 Canvas 的 CanvasRenderingContext2D 绘制有较大的性能提升。
 

@@ -35,7 +35,7 @@ JSVM-API 接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_arraybuffer_info -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -93,7 +93,7 @@ JSVM GetArraybufferInfo: success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_arraybuffer -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -151,7 +151,7 @@ JSVM IsArrayBuffer: 1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_detached_arraybuffer -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -225,7 +225,7 @@ JSVM IsArrayBuffer: 1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_arraybuffer -->
 
 ``` C++
 #include "napi/native_api.h"

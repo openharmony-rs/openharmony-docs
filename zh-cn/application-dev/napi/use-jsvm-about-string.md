@@ -40,7 +40,7 @@ OH_JSVM_GetValueStringUtf8接口可以将JavaScript的字符类型的数据转�
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringutf8/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_string_utf8 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -104,7 +104,7 @@ JSVM GetValueStringUtf8 success: aaBC+-$%^你好123
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringutf8/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_string_utf8 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -154,7 +154,7 @@ OH_JSVM_GetValueStringUtf16，将JavaScript的字符类型的数据转换为utf1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringutf16/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_string_utf16 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -222,7 +222,7 @@ JSVM GetValueStringUtf16 success: ahello。
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringutf16/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_string_utf16 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -278,7 +278,7 @@ OH_JSVM_GetValueStringLatin1接口可以将JavaScript的字符类型的数据转
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/getvaluestringlatin1/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_string_latin1 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -326,7 +326,7 @@ const char *SRC_CALL_NATIVE = R"JS(
 
 预期输出结果（ISO-8859-1编码不支持中文，传入中文字符会导致乱码）：
 
-![GetValueStringLatin1](figures/jsvm_about_string_GetValueStringLatin1.png)
+GetValueStringLatin1
 
 **注意事项**：`getValueStringLatin1(arg)`入参`arg`必须为字符串类型，否则接口调用会失败。
 
@@ -336,7 +336,7 @@ const char *SRC_CALL_NATIVE = R"JS(
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutString/createstringlatin1/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_string_latin1 -->
 
 ``` C++
 #include "napi/native_api.h"

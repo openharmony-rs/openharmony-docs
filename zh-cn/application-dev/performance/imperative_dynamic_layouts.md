@@ -17,21 +17,21 @@
 
 图一
 
-![图一](./figures/imperative_dynamic_layouts_diff.jpg)
+图一
 
 ### 直接操作组件树
 使用声明式前端还存在组件树结构更新操作困难的痛点，比如将组件树中的一个子树从当前子节点完整移到另一个子节点，如图二所示。使用声明式前端无法直接调整组件实例的结构关系，只能通过重新渲染整棵组件树的方式实现上述操作。而使用ArkUI的FrameNode扩展，则可以通过操作FrameNode来很方便的操控该子树，将其移植到另一个节点，这样只会进行局部渲染刷新，性能更优。
 
 图二
 
-![图二](./figures/imperative_dynamic_layouts_component_tree.jpg)
+图二
 
 ## 场景示例
 下面使用视频首页刷新图片资源作为场景，如图三所示，来介绍如何使用ArkUI的FrameNode扩展来实现。
 
 图三
 
-![图三](./figures/imperative_dynamic_layouts.gif)
+图三
 
 ### ArkUI的声明式扩展使用
 
@@ -441,13 +441,13 @@
 
     图四
 
-    ![图四](./figures/imperative_dynamic_layouts_trace_1.png)
+    图四
 
 2. FrameNode扩展模式下刷新图片资源场景的完成时延为7.6ms（根据设备和场景不同，数据会有差异，本数据仅供参考），如图五所示。
 
     图五
 
-    ![图五](./figures/imperative_dynamic_layouts_trace_2.png)
+    图五
 
 ## 总结
 
@@ -455,4 +455,4 @@
 
 ## 示例代码
 
-[使用ArkUI的FrameNode扩展实现动态布局类框架](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ImperativeDynamicLayouts)
+使用ArkUI的FrameNode扩展实现动态布局类框架

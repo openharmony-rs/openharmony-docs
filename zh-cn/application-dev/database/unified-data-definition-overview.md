@@ -24,7 +24,7 @@ UDMF标准化数据定义包括标准化数据类型和标准化数据结构。
 
 在设备、应用交互过程中，一次交互会存在多条记录，每条记录可能存在不同的表达形式（即样式），因此提出了多样式数据概念。在交互过程中，数据提供方提供记录的不同数据样式，数据使用方获取到数据后，根据业务需要从记录中获取样式数据。
 
-![multi-entry-structure](figures/multi-entry-structrue.PNG)
+multi-entry-structure
 
 在上图中，不同的UnifiedRecord表示不同的记录，不同记录之间承载的内容是不一致的；在同一个UnifiedRecord中，同一内容以不同的样式存储，丰富了数据的表现形式。
 
@@ -32,4 +32,4 @@ UDMF标准化数据定义包括标准化数据类型和标准化数据结构。
 
 针对标准化数据定义的开发，有以下相关实例可供参考：
 
-- [标准化数据定义与描述（ArkTS）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)
+- 标准化数据定义与描述（ArkTS）（API11）

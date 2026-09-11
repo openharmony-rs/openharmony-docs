@@ -57,7 +57,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope -->
 
 ``` C++
 // OH_JSVM_OpenHandleScope、OH_JSVM_CloseHandleScope的三种样例方法
@@ -114,7 +114,7 @@ JSVM HandleScopeFor: success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_open_escapable_handle_scope_close_escapable_handle_scope_escape_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openescapablehandlescope/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_open_escapable_handle_scope_close_escapable_handle_scope_escape_handle -->
 
 ``` C++
 // OH_JSVM_OpenEscapableHandleScope、OH_JSVM_CloseEscapableHandleScope、OH_JSVM_EscapeHandle的样例方法
@@ -186,7 +186,7 @@ JSVM EscapableHandleScopeTest: success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_reference_ref_and_oh_jsvm_reference_unref](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/referenceref/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_reference_ref_and_oh_jsvm_reference_unref -->
 
 ``` C++
 static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
@@ -272,7 +272,7 @@ Finalizer 方法被注册后无法取消，如果在调用 OH_JSVM_DestroyEnv �
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_add_finalizer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/addfinalizer/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_add_finalizer -->
 
 ``` C++
 static int AddFinalizer(JSVM_VM vm, JSVM_Env env)

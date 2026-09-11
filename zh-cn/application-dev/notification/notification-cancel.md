@@ -32,7 +32,7 @@
 
 1. 导入模块。
 
-   <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
+   <!-- @cancel_notification_header -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -49,7 +49,7 @@
 
 3. 取消通知。
 
-   <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
+   <!-- @cancel_notification_content -->
    
    ``` TypeScript
    // 当拉起应用到前台，查看消息后，调用该接口取消通知。

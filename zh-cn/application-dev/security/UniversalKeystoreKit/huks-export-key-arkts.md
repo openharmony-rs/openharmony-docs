@@ -22,7 +22,7 @@
 
 3. 返回值为HuksReturnResult类型对象，获取的公钥明文在outData字段中，以标准的X.509规范的DER格式封装，具体请参考公钥材料格式。
 
-<!-- @[fetch_persistent_security_public_keys_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/KeyExport/entry/src/main/ets/pages/KeyExport.ets) -->
+<!-- @fetch_persistent_security_public_keys_ets -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

@@ -12,13 +12,13 @@ Web组件在不同窗口间迁移，是基于自定义节点能力实现的。�
 
 在以下示例中，主窗口Ability启动时，通过命令式的方式创建了一个Web组件。开发者可以利用common.ets中提供的方法和类，实现Web组件的挂载和移除。Index.ets则提供了一种挂载和移除Web组件的实现方法。通过这种方式，开发者能够实现Web组件在不同窗口中页面的挂载与移除，即实现了Web组件在不同窗口间的迁移。下图是展示了这一迁移过程的示意图。
 
-![Web组件迁移示例](./figures/web-component-migrate.png)
+Web组件迁移示例
 
 > **说明：**
 >
 > 不要将一个Web组件同时挂载在两个父节点下，这会导致非预期行为。
 
-<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+<!-- @create_main_window -->
 
 ``` TypeScript
 // 主窗口Ability
@@ -43,7 +43,7 @@ import { createNWeb, defaultUrl } from '../pages/common';
 // ...
 ```
 
-<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
+<!-- @dynamic_web_module_manage -->
 
 ``` TypeScript
 // 提供动态挂载Web组件能力
@@ -149,7 +149,7 @@ export const getWebviewController = (url : string) : webview.WebviewController |
 }
 ```
 
-<!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
+<!-- @web_module_dynamic_attach_detach -->
 
 ``` TypeScript
 // 使用NodeController的Page页

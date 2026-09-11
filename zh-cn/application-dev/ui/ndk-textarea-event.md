@@ -20,7 +20,7 @@
     
     事件注册有统一接口，详情请参见registerNodeEvent。输入框支持的事件类型，请参见NativeNode组件支持的事件类型定义ArkUI_NodeEventType，搜索前缀NODE_TEXT_AREA_。
 
-    <!-- @[obtain_create_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
+    <!-- @obtain_create_textarea -->
     
     ``` C++
     ArkUI_NodeHandle text = nodeApi->createNode(ARKUI_NODE_TEXT);
@@ -44,7 +44,7 @@
 
     事件回调注册有统一接口，详情请参见registerNodeEventReceiver。
 
-    <!-- @[obtain_textarea_NodeEventReceiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
+    <!-- @obtain_textarea_NodeEventReceiver -->
     
     ``` C++
     nodeApi->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
@@ -72,9 +72,9 @@
 
 - 完整示例
 
-   本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[TextAreaEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/TextAreaEventNDK)<!--RP1End-->。
+   本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->TextAreaEventNDK<!--RP1End-->。
     
-    <!-- @[obtain_textarea_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
+    <!-- @obtain_textarea_all -->
     
     ``` C++
     #include "manager.h"
@@ -224,4 +224,4 @@
     ```
 
 
-![textarea_getstringevent](figures/textarea_getstringevent.gif)
+textarea_getstringevent

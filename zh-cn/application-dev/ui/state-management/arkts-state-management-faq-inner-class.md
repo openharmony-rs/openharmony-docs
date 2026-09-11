@@ -26,7 +26,7 @@ UIUtils.getTarget(value) === value
 当开发者将修改`isSuccess`的箭头函数放在`query`中时，已完成`TestModel`对象初始化和代理封装。通过`this.viewModel.query()`调用`query`时，`query`函数中的`this`指向`viewModel`代理对象，对代理对象成员属性`isSuccess`的更改能够被观测到，因此触发`query`事件可以被状态管理观测到变化。
 
 【反例】
-<!-- @[state_problem_this_unable_observe_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObserveOpposite.ets) -->  
+<!-- @state_problem_this_unable_observe_opposite -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -84,7 +84,7 @@ export class Model {
 上述示例代码中，状态变量的修改在构造函数内。界面刚开始时显示“failed”，点击后日志打印“this.isSuccess: true”，表明修改成功，但界面仍然显示“failed”，这说明UI未刷新。
 
 【正例】
-<!-- @[state_problem_this_unable_observe_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemThisUnableObservePositive.ets) -->  
+<!-- @state_problem_this_unable_observe_positive -->  
 
 ``` TypeScript
 @Entry
@@ -140,7 +140,7 @@ export class Model {
 在箭头函数中改变状态变量不会触发UI刷新，这是因为箭头函数体内的`this`对象是定义该函数时所在的作用域指向的对象，而不是调用时所在的作用域指向的对象。所以在该场景下，`changeCoverUrl`的`this`指向`PlayDetailViewModel`，而不是状态变量本身。
 
 【反例】
-<!-- @[play_detail_opposite_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailViewModel.ets) --> 
+<!-- @play_detail_opposite_model --> 
 
 ``` TypeScript
 export default class PlayDetailViewModel {
@@ -151,7 +151,7 @@ export default class PlayDetailViewModel {
 }
 ```
 
-<!-- @[state_problem_arrow_function_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets) -->  
+<!-- @state_problem_arrow_function_opposite -->  
 
 ``` TypeScript
 import PlayDetailViewModel from './PlayDetailViewModel';
@@ -185,7 +185,7 @@ struct PlayDetailPage {
 
 【正例】
 
-<!-- @[play_detail_positive_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailViewModel.ets) --> 
+<!-- @play_detail_positive_model --> 
 
 ``` TypeScript
 export default class PlayDetailViewModel {
@@ -196,7 +196,7 @@ export default class PlayDetailViewModel {
 }
 ```
 
-<!-- @[state_problem_arrow_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets) -->
+<!-- @state_problem_arrow_function_positive -->
 
 ``` TypeScript
 import PlayDetailViewModel from './PlayDetailViewModel';
@@ -235,7 +235,7 @@ struct PlayDetailPage {
 
 【反例】
 
-<!-- @[TextComponent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets) -->   
+<!-- @TextComponent1_start -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -322,7 +322,7 @@ struct Index {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develop-1](figures/properly-use-state-management-to-develop-1.gif)
+properly-use-state-management-to-develop-1
 
 页面内通过ForEach显示了20条信息，当点击某一条信息中age的Text组件时，可以通过日志发现其他的19条信息中age的Text组件也进行了刷新(这体现在日志上，所有的age的Text组件都打出了日志)，但实际上其他19条信息的age的数值并没有改变，也就是说其他19个Text组件并不需要刷新。
 
@@ -334,7 +334,7 @@ struct Index {
 
 【正例】
 
-<!-- @[Information_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets) -->  
+<!-- @Information_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -445,7 +445,7 @@ struct Page {
 
 上述代码的运行效果如下。
 
-![properly-use-state-management-to-develop-2](figures/properly-use-state-management-to-develop-2.gif)
+properly-use-state-management-to-develop-2
 
 修改后的代码使用对象数组代替了原有的多个属性数组，能够避免数组的“冗余刷新”的情况。这是因为对于数组来说，对象内的变化是无法感知的，数组只能观测数组项层级的变化，例如新增数据项，修改数据项（普通数组是直接修改数据项的值，在对象数组的场景下是整个对象被重新赋值，改变某个数据项对象中的属性不会被观测到）、删除数据项等。这意味着当改变对象内的某个属性时，对于数组来说，对象是没有变化的，也就不会去刷新。在当前状态管理的观测能力中，除了数组嵌套对象的场景外，对象嵌套对象的场景也是无法观测到变化的，这一部分内容将在使用多属性类对象导致冗余刷新中讲到。同时修改代码时使用了自定义组件与ForEach的结合，这一部分内容将在ForEach和对象数组结合使用导致UI不刷新讲到。
 
@@ -459,7 +459,7 @@ struct Page {
 
 【反例】
 
-<!-- @[StateArrayBig_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets) -->  
+<!-- @StateArrayBig_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -636,11 +636,11 @@ struct Page {
 
 上述代码的运行效果如下。
 
-![properly-use-state-management-to-develop-3](figures/properly-use-state-management-to-develop-3.gif)
+properly-use-state-management-to-develop-3
 
 优化前点击move按钮的脏节点更新耗时如下图：
 
-![img](figures/properly-use-state-management-to-develop-11.PNG)
+img
 
 在上面的示例中，UiStyle定义了多个属性，并且这些属性分别被多个组件关联。当点击任意一个按钮更改其中的某些属性时，会导致所有这些关联uiStyle的组件进行刷新，虽然它们其实并不需要进行刷新（因为组件的属性都没有改变）。通过定义的一系列isRender函数，可以观察到这些组件的刷新。当点击“move”按钮进行平移动画时，由于translateY的值的多次改变，会导致每一次都存在“冗余刷新”的问题，这对应用的性能有着很大的负面影响。
 
@@ -650,7 +650,7 @@ struct Page {
 
 【正例】
 
-<!-- @[StateArrayPrecise_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayPrecise.ets) --> 
+<!-- @StateArrayPrecise_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -890,11 +890,11 @@ struct Page {
 
 
 
-上述代码的运行效果如下。![properly-use-state-management-to-develop-4](figures/properly-use-state-management-to-develop-4.gif)
+上述代码的运行效果如下。properly-use-state-management-to-develop-4
 
 优化后点击move按钮的脏节点更新耗时如下图：
 
-![img](figures/properly-use-state-management-to-develop-12.PNG)
+img
 
 修改后的代码将原来的大类中的十五个属性拆成了八个小类，并且在绑定的组件上也做了相应的适配。属性拆分遵循以下几点原则：
 
@@ -906,7 +906,7 @@ struct Page {
 
 \@Track是类属性装饰器。当一个类对象是状态变量时，\@Track装饰的属性发生变化，只会触发该属性关联的UI更新，所以使用@Track装饰器则无需做属性拆分，也能达到同样控制组件更新范围的作用。
 
-<!-- @[StateArrayTrack_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets) -->  
+<!-- @StateArrayTrack_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1087,7 +1087,7 @@ struct Page {
 
 【反例】
 
-<!-- @[StateArrayObserve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets) -->  
+<!-- @StateArrayObserve_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1242,13 +1242,13 @@ struct Page {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develop-5](figures/properly-use-state-management-to-develop-5.gif)
+properly-use-state-management-to-develop-5
 
 上述代码维护了一个ChildList类型的数据源，点击"X"按钮删除一些数据后再点击Recover进行恢复ChildList，发现再次点击"X"按钮进行删除时，UI并没有刷新，同时也没有打印出“CompList ChildList change”的日志。
 
 代码中对数据源childList重新赋值时，是通过Ancestor对象的方法loadData。
 
-<!-- @[StateArrayLoadDate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLoadDate.ets) --> 
+<!-- @StateArrayLoadDate_start --> 
 
 ``` TypeScript
 public loadData() {
@@ -1262,7 +1262,7 @@ public loadData() {
 
 有些开发者会注意到，在Page中初始化定义childList的时候，也是以这样一种方法去进行初始化的。
 
-<!-- @[StateArrayInit_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayInit.ets) --> 
+<!-- @StateArrayInit_start --> 
 
 ``` TypeScript
 @State childList: ChildList = [new Child(1), new Child(2), new Child(3), new Child(4), new Child(5)];
@@ -1276,7 +1276,7 @@ public loadData() {
 
 【正例】
 
-<!-- @[StateArrayNo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets) -->  
+<!-- @StateArrayNo_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1433,11 +1433,11 @@ struct Page {
 
 上述代码运行效果如下。
 
-![properly-use-state-management-to-develop-6](figures/properly-use-state-management-to-develop-6.gif)
+properly-use-state-management-to-develop-6
 
 核心的修改点是将原本Child[]类型的tempList修改为具有被观测能力的ChildList类。
 
-<!-- @[StateArrayNo2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo2.ets) --> 
+<!-- @StateArrayNo2_start --> 
 
 ``` TypeScript
 public loadData() {

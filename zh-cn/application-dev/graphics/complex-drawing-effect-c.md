@@ -27,7 +27,7 @@
 
 此处以使用画刷设置叠加混合模式为例（为了防止混合模式的效果被背景色干扰，示例中的canvas并未设置背景色，使用的是默认的黑色背景），关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_mixed_mode -->
 
 ``` C++
 // 创建画刷对象
@@ -58,7 +58,7 @@ OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
 
-![Blend-Mode](figures/Blend-Mode.png)
+Blend-Mode
 
 
 ## 路径效果
@@ -75,7 +75,7 @@ OH_Drawing_PointDestroy(point);
 
 此处以绘制矩形虚线路径效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_path_effect -->
 
 ``` C++
 // 创建画笔
@@ -105,7 +105,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 | 不设置虚线路径效果的示意图 | 设置虚线路径效果的示意图 |
 | -------- | -------- |
-| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
+| Path-Without-Dashed-Lines | Path-With-Dashed-Lines |
 
 
 ## 着色器效果
@@ -133,7 +133,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_linear_gradient -->
 
 ``` C++
 // 开始点
@@ -168,7 +168,7 @@ OH_Drawing_PointDestroy(endPt);
 
 此例绘制的具有线性渐变着色器效果的矩形如下所示：
 
-![Linear-Gradient-Shader-Effect](figures/Linear-Gradient-Shader-Effect.png)
+Linear-Gradient-Shader-Effect
 
 
 ### 径向渐变着色器效果
@@ -179,7 +179,7 @@ OH_Drawing_PointDestroy(endPt);
 
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_path_gradient -->
 
 ``` C++
 // 圆心坐标
@@ -213,7 +213,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有径向渐变着色器效果的矩形如下所示：
 
-![Radial-Gradient-Shader-Effect](figures/Radial-Gradient-Shader-Effect.png)
+Radial-Gradient-Shader-Effect
 
 
 ### 扇形渐变着色器效果
@@ -224,7 +224,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_sector_gradient -->
 
 ``` C++
 // 中心点
@@ -256,7 +256,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有扇形渐变着色器效果的矩形如下所示：
 
-![sector-gradient-shader-effect](figures/sector-gradient-shader-effect.png)
+sector-gradient-shader-effect
 
 
 ## 滤波器效果
@@ -308,7 +308,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 此处以绘制矩形并使用画刷设置具有5x4颜色矩阵的颜色滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_color_filter -->
 
 ``` C++
 // 创建画刷
@@ -350,7 +350,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置颜色滤波器效果的示意图 | 设置5x4颜色矩阵的颜色滤波器效果的示意图 |
 | -------- | -------- |
-| ![Original-Image6](figures/Original-Image6.png) | ![Image-with-a-Color](figures/Image-with-a-Color.png) |
+| Original-Image6 | Image-with-a-Color |
 
 
 ### 图像滤波器效果
@@ -371,7 +371,7 @@ OH_Drawing_FilterDestroy(filter);
 
 此处以绘制矩形并使用画笔添加模糊效果的图像滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_image_filter -->
 
 ``` C++
 // 创建画笔
@@ -408,7 +408,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置图像滤波器效果的示意图 | 设置图像滤波器效果的示意图 |
 | -------- | -------- |
-| ![Original-Image5](figures/Original-Image5.png) | ![Image-with-the-Filter](figures/Image-with-the-Filter.png) |
+| Original-Image5 | Image-with-the-Filter |
 
 
 ### 蒙版滤波器效果
@@ -427,7 +427,7 @@ OH_Drawing_FilterDestroy(filter);
 
 此处以绘制矩形并使用画笔设置蒙版滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @[ndk_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_mask_filter -->
 
 ``` C++
 // 创建画笔
@@ -463,12 +463,12 @@ OH_Drawing_FilterDestroy(filter);
 
 | 不设置蒙版滤波器效果的示意图 | 设置蒙版滤波器效果的示意图 |
 | -------- | -------- |
-| ![Original-Image4](figures/Original-Image4.png) | ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png) |
+| Original-Image4 | Image-with-the-Mask-Effect |
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
+- NDKGraphicsDraw (API20)
 <!--RP1End-->

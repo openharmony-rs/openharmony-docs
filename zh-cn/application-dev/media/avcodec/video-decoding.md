@@ -27,7 +27,7 @@
 
 AVCodec支持的视频解码格式请参考视频解码。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考示例工程。
 
 ## 状态机调用关系
 
@@ -53,7 +53,7 @@ AVCodec支持的视频解码格式请参考视频解码。
 
 **图1** 状态机调用关系示意图
 
-![Invoking relationship of state](figures/state-invocation.png)
+Invoking relationship of state
 
 ## 开发指导
 
@@ -67,7 +67,7 @@ AVCodec支持的视频解码格式请参考视频解码。
 
 - 实线表示必选。
 
-![Invoking relationship of video decode stream](figures/video-decode.png)
+Invoking relationship of video decode stream
 
 ### 在 CMake 脚本中链接动态库
 
@@ -1140,7 +1140,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     - OH_MD_KEY_VIDEO_STRIDE表示wStride；
     - OH_MD_KEY_VIDEO_SLICE_HEIGHT表示hStride。
 
-    ![copy by line](figures/copy-by-line-decoder.png)
+    copy by line
 
     添加头文件。
 

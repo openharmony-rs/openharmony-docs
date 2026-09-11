@@ -108,6 +108,6 @@ struct AttrAnimationExample1 {
 
 | 属性动画                                         | 帧动画                                          |   
 |----------------------------------------------------|----------------------------------------------------|
-| ![img](./figures/using-animation-instaeadof-animator-animation.png) | ![img](./figures/using-animation-instaeadof-animator-animator.png) |
+| img | img |
 
 上述示例通过使用属性动画将UI应用主线程的负载降为0。

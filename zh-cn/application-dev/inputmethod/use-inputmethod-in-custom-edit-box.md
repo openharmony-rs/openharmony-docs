@@ -24,7 +24,7 @@
 
 2. 在控件中，使用Text组件作为自绘编辑框的文本显示组件，使用状态变量inputText作为Text组件要显示的内容。
 
-   <!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
+   <!-- @input_case_input_CustomInputText -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -64,7 +64,7 @@
    >
    > 在PC/2in1、Tablet类型设备上，自绘编辑框通过监听输入法的insertText事件插入文本，但物理数字键的事件无法被消费，数字无法插入。开发者可配置自绘编辑框接收数字物理键盘输入能力，使自绘编辑框正常接收数字物理键盘输入。配置方式见自绘编辑框接收数字物理键盘输入配置。
 
-   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
+   <!-- @input_case_input_CustomInput -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -130,7 +130,7 @@
 
 4. 在应用界面布局中引入该控件即可，此处假设使用界面为Index.ets和控件CustomInput.ets在同一目录下。
 
-   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   <!-- @input_case_input_CustomInput -->
    
    ``` TypeScript
    CustomInput()
@@ -151,7 +151,7 @@
 
    在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在module.json5配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
 
-   ![easy_go](./figures/easy_go.png)
+   easy_go
 
 2. 增加物理数字键转换配置
 
@@ -222,4 +222,4 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
    ```
 
 ## 示例效果图
-  ![示例效果图](./figures/image-1.png)
+  示例效果图

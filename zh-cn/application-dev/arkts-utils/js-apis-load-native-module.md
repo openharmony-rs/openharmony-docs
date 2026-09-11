@@ -37,7 +37,7 @@ loadNativeModule(moduleName: string): Object;
 
 1. 在模块级`oh-package.json5`文件中配置`dependencies`字段。
 
-    <!-- @[hap_load_native_dependence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/oh-package.json5) -->
+    <!-- @hap_load_native_dependence -->
     
     ``` JSON5
     "dependencies": {
@@ -47,7 +47,7 @@ loadNativeModule(moduleName: string): Object;
 
 2. 在模块级`build-profile.json5`文件中配置`runtimeOnly.packages`字段。
 
-    <!-- @[hap_load_native_dependence_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/build-profile.json5) -->
+    <!-- @hap_load_native_dependence_01 -->
     
     ``` JSON5
     "buildOption": {
@@ -66,7 +66,7 @@ loadNativeModule(moduleName: string): Object;
 
 **示例1**：HAP加载系统库模块
 
-<!-- @[hap_load_system_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @hap_load_system_module --> 
 
 ``` TypeScript
 // HAP加载系统库模块
@@ -78,7 +78,7 @@ hilog.info(0, 'testTag', 'loadNativeModule ohos.hilog success');
 
 libentry.so的index.d.ts文件如下：
 
-<!-- @[hap_load_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/src/main/cpp/types/libentry/index.d.ts) -->
+<!-- @hap_load_native -->
 
 ``` TypeScript
 export const add: (a: number, b: number) => number;
@@ -86,7 +86,7 @@ export const add: (a: number, b: number) => number;
 
 完成使用注意事项中的依赖配置后，使用`loadNativeModule`加载`libentry.so`并调用`add`函数。
 
-<!-- @[load_native_module_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/src/main/ets/pages/Index.ets) -->
+<!-- @load_native_module_libentry -->
 
 ``` TypeScript
 //HAP加载Native库

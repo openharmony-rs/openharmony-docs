@@ -10,7 +10,7 @@
 NDK通过CMake和Ninja编译应用的C/C++代码，编译过程如下图所示。
 
 
-![Snipaste_2023-11-03_14-41-18](figures/Snipaste_2023-11-03_14-41-18.png)
+Snipaste_2023-11-03_14-41-18
 
 
 核心编译过程如下：
@@ -80,4 +80,4 @@ externalNativeOptions具体参数说明如下表所示。
 | arguments | string | CMake编译参数。 | 
 | cppFlags | string | C++编译器参数。 | 
 
-更多关于build-profile.json5中参数的说明，请参考<!--RP1-->[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5)<!--RP1End-->。
+更多关于build-profile.json5中参数的说明，请参考<!--RP1-->build-profile.json5<!--RP1End-->。

@@ -28,7 +28,7 @@
 
 1. 引用头文件。
 
-   <!-- @[event_publisher_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.h) -->
+   <!-- @event_publisher_import -->
    
    ``` C
    #include <cstdint>
@@ -62,7 +62,7 @@
 
    发布携带数据的公共事件时，需要通过OH_CommonEvent_CreatePublishInfo创建公共事件属性对象，并通过以下接口设置公共事件属性。
 
-   <!-- @[event_publisher_create_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+   <!-- @event_publisher_create_set -->
    
    ``` C++
    // 创建并添加公共事件属性附加信息
@@ -161,7 +161,7 @@
      >
      > 不携带信息的公共事件，只能发布为无序公共事件。
 
-     <!-- @[event_publisher_publish](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+     <!-- @event_publisher_publish -->
      
      ``` C++
      void Publish(const char *event)
@@ -173,7 +173,7 @@
 
    - 通过OH_CommonEvent_PublishWithInfo发布携带信息的公共事件。
 
-     <!-- @[event_publisher_publish_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+     <!-- @event_publisher_publish_info -->
      
      ``` C++
      void PublishWithInfo(const char *event, CommonEvent_PublishInfo *info)
@@ -189,7 +189,7 @@
 
    如果后续无需使用已创建的公共事件对象来发布公共事件，需要先通过OH_CommonEvent_DestroyParameters销毁`CommonEvent_Parameters`对象，然后再通过OH_CommonEvent_DestroyPublishInfo销毁公共事件对象。
    
-   <!-- @[event_publisher_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.cpp) -->
+   <!-- @event_publisher_destroy -->
    
    ``` C++
    void DestroyPublishInfo(CommonEvent_Parameters *param, CommonEvent_PublishInfo *info)

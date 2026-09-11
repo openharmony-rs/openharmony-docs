@@ -53,7 +53,7 @@ tabs是一种常见的界面导航结构。通过页签容器，用户可以快�
 }
 ```
 
-![Creating-Tabs](figures/Creating-Tabs.gif)
+Creating-Tabs
 
 
 ## 设置样式
@@ -107,7 +107,7 @@ tabs是一种常见的界面导航结构。通过页签容器，用户可以快�
 }
 ```
 
-![Setting-Styles](figures/Setting-Styles.gif)
+Setting-Styles
 
 
 ## 显示页签索引
@@ -146,7 +146,7 @@ export default {
 }
 ```
 
-![Displaying-the-Tab-Index](figures/Displaying-the-Tab-Index.gif)
+Displaying-the-Tab-Index
 
 
 > **说明：**
@@ -266,4 +266,4 @@ export default {
 }
 ```
 
-![Example-Scenario-9](figures/Example-Scenario-9.gif)
+Example-Scenario-9

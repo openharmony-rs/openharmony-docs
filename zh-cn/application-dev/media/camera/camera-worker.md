@@ -248,8 +248,8 @@ Worker主要作用是为应用程序提供一个多线程的运行环境，可�
 
 不使用Worker：
 
-![camera-in-ui-thread](figures/camera-in-ui-thread.png)
+camera-in-ui-thread
 
 使用Worker：
 
-![camera-in-worker-thread](figures/camera-in-worker-thread.png)
+camera-in-worker-thread

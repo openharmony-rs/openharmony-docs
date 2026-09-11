@@ -22,11 +22,11 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 异步调用支持callback和Promise两种方式，选择哪种方式由开发者决定。以下是两种方式的示例代码：
 
-![NAPI 异步任务线程](figures/napi_async_work.png)
+NAPI 异步任务线程
 
 ## 使用Promise方式示例
 
-![NAPI Promise异步流程](figures/napi_async_work_with_promise.png)
+NAPI Promise异步流程
 1. CMakeLists.txt配置
    ``` txt
    # the minimum version of CMake.
@@ -51,7 +51,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 2. 使用napi_create_async_work创建异步任务，使用napi_queue_async_work将任务加入队列，等待执行。
 
-   <!-- @[napi_create_async_work_promise_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @napi_create_async_work_promise_cpp -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -93,7 +93,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 3. 定义异步任务的第一个回调函数，该函数在工作线程中执行，处理具体的业务逻辑。
 
-   <!-- @[napi_first_call_back_work_promise_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @napi_first_call_back_work_promise_cpp -->
    
    ``` C++
    static void ExecuteCB(napi_env env, void *data)
@@ -105,7 +105,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 4. 定义异步任务的第二个回调函数，该函数在主线程执行，将结果传递给ArkTS侧。
 
-   <!-- @[napi_second_call_back_main_promise_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @napi_second_call_back_main_promise_cpp -->
    
    ``` C++
    static void CompleteCB(napi_env env, napi_status status, void *data)
@@ -140,7 +140,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    ```
 
    接口对应的.d.ts描述。
-   <!-- @[promise_call_interface_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @promise_call_interface_dts -->
    
    ``` TypeScript
    // index.d.ts
@@ -153,7 +153,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    import testNapi from 'libentry.so';
    ```
 
-   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @promise_call_interface -->
    
    ``` TypeScript
    testNapi.asyncWork(1024).then((result: number) => {
@@ -167,11 +167,11 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 ## 使用callback方式示例
 
-![NAPI Callback异步流程](figures/napi_async_work_with_callback.png)
+NAPI Callback异步流程
 
 1. 使用napi_create_async_work创建异步任务，并使用napi_queue_async_work将异步任务加入队列，等待执行。
 
-   <!-- @[napi_create_queue_async_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   <!-- @napi_create_queue_async_work_callback_cpp -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -211,7 +211,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 2. 定义异步任务的第一个回调函数，该函数在工作线程中执行，处理具体的业务逻辑。
 
-   <!-- @[napi_async_first_call_back_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   <!-- @napi_async_first_call_back_work_callback_cpp -->
    
    ``` C++
    static void ExecuteCB(napi_env env, void *data)
@@ -223,7 +223,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 3. 定义异步任务的第二个回调函数，该函数在主线程执行，将结果传递给ArkTS侧。
 
-   <!-- @[napi_async_second_call_back_work_callback_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/callback.cpp) -->
+   <!-- @napi_async_second_call_back_work_callback_cpp -->
    
    ``` C++
    static void CompleteCB(napi_env env, napi_status status, void *data)
@@ -262,7 +262,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    ```
 
    接口对应的.d.ts描述。
-   <!-- @[callback_call_interface_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
+   <!-- @callback_call_interface_dts -->
    
    ``` TypeScript
    export const asyncWork: (arg1: number, arg2: number, callback: (result: number) => void) => void;
@@ -277,7 +277,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    let num2: number = 456;
    ```
 
-   <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @callback_call_interface -->  
    
    ``` TypeScript
    nativeModule.asyncWork(num1, num2, (result: number) => {
@@ -309,7 +309,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 2. Worker线程示例代码。
 
-   <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->  
+   <!-- @napi_create_async_work_worker -->  
    
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
@@ -336,7 +336,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    let num2: number = 456;
    ```
 
-   <!-- @[AsyncWorkCallbackWorker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @AsyncWorkCallbackWorker -->  
    
    ``` TypeScript
    const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
@@ -382,7 +382,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    }
    ```
 
-   <!-- @[AsyncWorkCallbackTaskPool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @AsyncWorkCallbackTaskPool -->
    
    ``` TypeScript
    testTaskpool();

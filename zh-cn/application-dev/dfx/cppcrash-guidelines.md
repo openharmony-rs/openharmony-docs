@@ -8,7 +8,7 @@
 
 ## 简介
 
-进程发生崩溃后，系统首先感知到崩溃，然后抓取崩溃相关的信息，最后生成崩溃日志并上报崩溃事件，为开发者提供详细的维测日志以辅助故障定位。本文分为基本概念、实现原理、约束与限制、日志获取、日志规格五个小节介绍系统提供的CppCrash检测方法。开发者如果想进一步了解如何分析CppCrash问题，请参见[CppCrash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-cpp-way)。
+进程发生崩溃后，系统首先感知到崩溃，然后抓取崩溃相关的信息，最后生成崩溃日志并上报崩溃事件，为开发者提供详细的维测日志以辅助故障定位。本文分为基本概念、实现原理、约束与限制、日志获取、日志规格五个小节介绍系统提供的CppCrash检测方法。开发者如果想进一步了解如何分析CppCrash问题，请参见CppCrash类问题分析方法。
 
 ## 基本概念
 
@@ -167,7 +167,7 @@ SIGSEGV是一种信号，它表示进程试图访问一个不属于它的内存�
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备“/data/log/faultlog/faultlogger/”路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障类型分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
+DevEco Studio会收集设备“/data/log/faultlog/faultlogger/”路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障类型分类显示。获取日志的方法参见：DevEco Studio使用指南-FaultLog。
 
 **方式二：通过HiAppEvent接口订阅**
 
@@ -188,7 +188,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参
 | Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因。 | 8 | 是 | - |
 | Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见应用通过HiAppEvent设置崩溃日志配置参数场景日志规格。 |
 | Module name | 模块名 | 8 | 是 | - |
-| ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
+| ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为release版本应用，debug表示应用为debug版本应用。 |
 | CpuAbi | 二进制接口类型 | 23 | 否 | 仅在应用进程提供。 |
 | Version | 应用版本号（点分格式） | 8 | 否 | 仅在应用进程提供。 |
 | VersionCode | 应用版本号（整数格式） | 8 | 否 | 仅在应用进程提供。 |
@@ -422,7 +422,7 @@ HiTraceId：HiTraceChain提供的唯一跟踪标识，参考HiTraceChain介绍�
 >
 >   2. 二进制文件中保存的函数名长度超过256字节。
 >
-> - 函数名是通过解析二进制符号表和[MiniDebugInfo](https://sourceware.org/gdb/current/onlinedocs/gdb.html/MiniDebugInfo.html)得来，**可能会随版本函数名变更、编译优化等原因而改变**。
+> - 函数名是通过解析二进制符号表和MiniDebugInfo得来，**可能会随版本函数名变更、编译优化等原因而改变**。
 >
 > - 如果没打印BuildID，可以通过readelf -n xxx.so确认二进制是否有BuildID。如果没有则尝试在编译选项里增加编译参数--enable-linker-build-id，同时注意编译选项中不要加编译参数--build-id=none。
 
@@ -594,7 +594,7 @@ cpsr:608f0010
 
 原理示意图如下：
 
-![工作机制说明](figures/submitter_stacktrace.png)
+工作机制说明
 
 1. 提交线程搜集自身的调用栈信息，保存至进程特定区域内存的异步栈表中。
 

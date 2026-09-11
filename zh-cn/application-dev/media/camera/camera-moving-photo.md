@@ -35,7 +35,7 @@
 
    通过CameraOutputCapability中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过createPhotoOutput方法创建拍照输出流。
 
-   <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_getPhotoOutput -->
    
    ``` TypeScript
    getPhotoOutput(cameraManager: camera.CameraManager,
@@ -62,7 +62,7 @@
    >
    > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考会话管理。
 
-   <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_moving_photo_support -->
    
    ``` TypeScript
    isMovingPhotoSupported(): boolean {
@@ -88,7 +88,7 @@
    >
    > 使能动态照片前需要使能分段式拍照能力。
 
-   <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_moving_photo_enable -->
    
    ``` TypeScript
    enableMovingPhoto(enable: boolean): void {
@@ -111,7 +111,7 @@
 
 在相机应用开发过程中，可以随时监听动态照片拍照输出流状态。通过注册photoAsset的回调函数获取监听结果，photoOutput创建成功时即可监听。
 
-<!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+<!-- @photo_asset_available -->
 
 ``` TypeScript
 onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {

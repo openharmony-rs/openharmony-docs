@@ -68,7 +68,7 @@
    export class KvInterface {
    }
    ```
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store1 -->
    
    ``` TypeScript
    public CreateKvManager = (() => {
@@ -93,7 +93,7 @@
 
 2. 使用getKVStore()方法创建并获取键值数据库。示例代码如下所示：
 
-   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store3 -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -153,7 +153,7 @@
 
 3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用off('dataChange')关闭。示例代码如下所示：
 
-   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store12 -->
    
    ``` TypeScript
    public On = (() =>{
@@ -175,7 +175,7 @@
 
 4. 调用put()方法向键值数据库中插入数据。示例代码如下所示：
 
-   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store4 -->
    
    ``` TypeScript
    public Put = (() => {
@@ -208,7 +208,7 @@
 
 5. 调用get()方法获取指定键的值。示例代码如下所示：
 
-   <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store5 -->
    
    ``` TypeScript
    public Get = (() => {
@@ -235,7 +235,7 @@
 
 6. 调用delete()方法删除指定键值的数据。示例代码如下所示：
 
-   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store6 -->
    
    ``` TypeScript
    public Delete = (() => {
@@ -262,7 +262,7 @@
 
 7. 调用closeKVStore()方法通过storeId的值关闭指定的分布式键值数据库。示例代码如下所示：
 
-    <!-- @[kv_store10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+    <!-- @kv_store10 -->
     
     ``` TypeScript
     public CloseKVStore = (()=>{
@@ -290,7 +290,7 @@
 
 8. 调用deleteKVStore()方法通过storeId的值删除指定的分布式键值数据库。示例代码如下所示：
 
-    <!-- @[kv_store11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+    <!-- @kv_store11 -->
     
     ``` TypeScript
     public DeleteKvStore = (()=>{

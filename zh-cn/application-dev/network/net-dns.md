@@ -27,11 +27,11 @@
 >
 > 在本文档的示例中，资源文件中hostName需修改成一个实际的中文域名。
 
-完整示例代码见：[DNS_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case)
+完整示例代码见：DNS_case
 
 1. 导入所需文件。
 
-   <!-- @[Dns_GetAddress_Ascii_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @Dns_GetAddress_Ascii_Import -->
    
    ``` TypeScript
    import { connection } from '@kit.NetworkKit';
@@ -41,7 +41,7 @@
 
 2. 初始化数据成员。
 
-   <!-- @[Dns_GetAddress_Ascii_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @Dns_GetAddress_Ascii_Data -->
    
    ``` TypeScript
    @State hostVal: string = '';     // 转码之后的主机名
@@ -51,7 +51,7 @@
 
 3. 获取资源文件中hostName值并赋值。
 
-   <!-- @[Dns_GetSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @Dns_GetSource -->
    
    ``` TypeScript
    aboutToAppear() {
@@ -62,7 +62,7 @@
 
 4. 创建网络地址解析函数，将域名转换为IP地址，isChange为是否将域名转码为ASCII编码的标识。
 
-   <!-- @[Dns_GetAddress_Ascii_Fun](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @Dns_GetAddress_Ascii_Fun -->
    
    ``` TypeScript
    getAddressName(isChange: boolean) {
@@ -93,7 +93,7 @@
 
 5. 获取中文域名地址对应的IP。由于未经过ASCII编码，因此预期结果为获取IP失败。
 
-   <!-- @[UnChange_Handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @UnChange_Handle -->
    
    ``` TypeScript
    this.getAddressName(false);
@@ -101,7 +101,7 @@
 
 6. 将中文域名转换为对应ASCII编码后获取对应IP。
 
-   <!-- @[Change_Handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @Change_Handle -->
    
    ``` TypeScript
    this.getAddressName(true);
@@ -109,7 +109,7 @@
 
 7. 将转换后的ASCII编码转成原中文域名。
 
-   <!-- @[Change_Unicode_Handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/Unicode.ets) -->
+   <!-- @Change_Unicode_Handle -->
    
    ``` TypeScript
    this.hostVal = connection.getDnsUnicode(this.hostVal);
@@ -118,11 +118,11 @@
 ## DNS接口支持配置获取的IP地址类型
 
 从API version 23开始，DNS解析支持通过`options`参数指定IP地址类型（如 IPv4 或 IPv6），也支持在特定的网络连接`NetHandle`上按给定的IP类型解析主机名，从而实现更精准的地址解析。<br/><br/>
-完整示例代码见：[DNS_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case)
+完整示例代码见：DNS_case
 
 1. 导入所需文件。
 
-   <!-- @[Get_Ip_Address_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
+   <!-- @Get_Ip_Address_Import -->
    
    ``` TypeScript
    import { connection } from '@kit.NetworkKit';
@@ -131,7 +131,7 @@
 
 2. 初始化数据成员。
 
-   <!-- @[Dns_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
+   <!-- @Dns_Data -->
    
    ``` TypeScript
    @State hostName: string = 'www.example.com';
@@ -139,7 +139,7 @@
 
 3. 使用当前默认网络解析主机名以获取所有IP地址。
 
-   <!-- @[Get_All_Ip_Address](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
+   <!-- @Get_All_Ip_Address -->
    
    ``` TypeScript
    connection.getAddressesByName(this.hostName).then((data: connection.NetAddress[]) => {
@@ -149,7 +149,7 @@
 
 4. 使用当前默认网络，指定IP类型解析主机名以获取指定IP地址。
 
-   <!-- @[Get_Ip_Address_With_Options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
+   <!-- @Get_Ip_Address_With_Options -->
    
    ``` TypeScript
    let options: connection.QueryOptions = {
@@ -162,7 +162,7 @@
 
 5. 使用指定的网络连接（NetHandle），并按给定的IP类型解析主机名。
 
-   <!-- @[Get_NetHandle_Ip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case/entry/src/main/ets/pages/DNS.ets) -->
+   <!-- @Get_NetHandle_Ip -->
    
    ``` TypeScript
    let netSpecifier: connection.NetSpecifier = {
@@ -199,4 +199,4 @@
 
 针对域名解析（DNS）功能相关实例可供参考：
 
-* [DNS_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/DNS_case)
+* DNS_case

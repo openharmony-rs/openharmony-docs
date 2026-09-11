@@ -9,7 +9,7 @@ Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Pic
 
 若使用线上视频资源，则需在配置文件中设置网络权限。权限的添加方法请参考在配置文件中声明权限。
 
-<!-- @[web_picture_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/module.json5) -->
+<!-- @web_picture_permissions -->
 
 ``` JSON5
 "requestPermissions": [
@@ -97,7 +97,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
   画中画窗口控制层包含“关闭”（关闭画中画窗口）、“恢复”（从画中画窗口恢复到原应用界面）。<br/>  
   播放控制包含暂停，播放，前进/后退（默认显示前进/后退UI控件，若原视频不支持前进后退，单击无响应）。<br/>
   
-  ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
+  web-picture-in-picture
 
 
 ## 完整示例
@@ -106,7 +106,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 应用侧ets代码。
 
-  <!-- @[web_picture_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @web_picture_ets -->
 
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';

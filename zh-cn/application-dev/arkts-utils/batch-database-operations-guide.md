@@ -16,7 +16,7 @@
 
 2. UI主线程发起数据库操作请求，在子线程中完成数据库的增删改查等操作。
 
-<!-- @[operate_child_thread_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingTaskPool.ets) -->
+<!-- @operate_child_thread_data -->
 
 ``` TypeScript
 import { relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -154,7 +154,7 @@ struct Index {
 
 1. 定义数据库中的数据格式，可以使用Sendable，以减少跨线程操作的耗时。
 
-   <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
+   <!-- @define_data_format -->
    
    ``` TypeScript
    export interface IValueBucket {
@@ -182,7 +182,7 @@ struct Index {
 
 2. UI主线程发起数据库操作请求，在子线程完成数据的增删改查等操作。
 
-   <!-- @[taskpool_frequently_operate_database](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingSendable.ets) -->
+   <!-- @taskpool_frequently_operate_database -->
    
    ``` TypeScript
    import { relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -324,7 +324,7 @@ struct Index {
 
 1. 定义数据库中的数据格式，采用Sendable，减少跨线程耗时。
 
-   <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
+   <!-- @define_data_format -->
    
    ``` TypeScript
    export interface IValueBucket {
@@ -352,7 +352,7 @@ struct Index {
 
 2. 定义普通类实例对象，持有Sendable类实例对象。
 
-   <!-- @[define_normal_class_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Material.ets) -->
+   <!-- @define_normal_class_instance_object -->
    
    ``` TypeScript
    import { SharedValuesBucket } from './SharedValuesBucket';
@@ -382,7 +382,7 @@ struct Index {
 
 3. UI主线程发起数据库操作请求，在子线程进行数据的增删改查等操作。
 
-   <!-- @[complex_class_instance_object_using_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ComplexClassInstanceObjectUsingSendable.ets) -->
+   <!-- @complex_class_instance_object_using_sendable -->
    
    ``` TypeScript
    import { relationalStore, ValuesBucket } from '@kit.ArkData';

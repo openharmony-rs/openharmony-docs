@@ -35,7 +35,7 @@ photoAccessHelper提供对收藏夹、视频相册、截屏和录屏相册的相
 1. 设置获取收藏夹的参数为photoAccessHelper.AlbumType.SYSTEM和photoAccessHelper.AlbumSubtype.FAVORITE。
 2. 调用PhotoAccessHelper.getAlbums接口获取收藏夹对象。
 
-<!-- @[get_favorite_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getfavoriteobjectability/GetFavoriteObjectAbility.ets) -->
+<!-- @get_favorite_object -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -119,7 +119,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用Album.getAssets接口获取图片资源。
 4. 调用FetchResult.getFirstObject接口获取第一张图片。
 
-<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) --> 
+<!-- @get_media_from_favorites --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -230,7 +230,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 1. 设置获取视频相册的参数为photoAccessHelper.AlbumType.SYSTEM和photoAccessHelper.AlbumSubtype.VIDEO。
 2. 调用PhotoAccessHelper.getAlbums接口获取视频相册。
 
-<!-- @[get_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideoalbumability/GetVideoAlbumAbility.ets) -->
+<!-- @get_video_album -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -270,7 +270,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用Album.getAssets接口获取视频资源。
 4. 调用FetchResult.getFirstObject接口获取第一个视频。
 
-<!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) --> 
+<!-- @get_videos_from_video_album --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

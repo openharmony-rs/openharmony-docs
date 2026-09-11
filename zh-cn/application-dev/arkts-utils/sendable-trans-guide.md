@@ -8,7 +8,7 @@
 
 ## 简介
 
-本文介绍[TurboTrans](https://gitcode.com/openharmony-sig/turbo_trans)三方库中@hadss/turbo-trans-json（下文简称**TurboTransJSON**）与@hadss/turbo-trans-protobuf（下文简称**TurboTransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
+本文介绍TurboTrans三方库中@hadss/turbo-trans-json（下文简称**TurboTransJSON**）与@hadss/turbo-trans-protobuf（下文简称**TurboTransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
 
 - 使用**TurboTransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考使用TurboTransJSON序列化/反序列化并生成Sendable对象。
 - 使用**TurboTransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考使用TurboTransProtobuf生成Sendable对象并编解码。
@@ -22,7 +22,7 @@
 
    引入TurboTrans三方库。
 
-   <!-- @[transferableObject_jsonPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigor/hvigor-config.json5) -->
+   <!-- @transferableObject_jsonPlugin -->
    
    ``` JSON5
      "dependencies": {
@@ -39,7 +39,7 @@
 
    插件生效还需在工程根目录hvigorfile.ts添加相关插件配置。
 
-   <!-- @[transferableObject_configPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts) --> 
+   <!-- @transferableObject_configPlugin --> 
    
    ``` TypeScript
    import { turboTransJsonPlugin } from '@hadss/turbo-trans-json-plugin';
@@ -66,7 +66,7 @@
    - `@Serializable({ generateSendable: true })`：表示需要生成与该模型对应的Sendable类型与转换方法。
    - `@SerialName({ name: 'xxx' })`：将类属性与JSON字段名绑定。
 
-     <!-- @[transferableObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) --> 
+     <!-- @transferableObject_Layout --> 
      
      ``` TypeScript
      // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/layout.ets
@@ -96,7 +96,7 @@
    - testJSON1方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
    - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
-     <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) --> 
+     <!-- @transferableObject_testJSON --> 
      
      ``` TypeScript
      // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/test1.ets
@@ -318,7 +318,7 @@
 
 定义observeJSON1与observeJSON2并发任务
 
-<!-- @[transferableObject_observeJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/concurrentFunc.ets) -->
+<!-- @transferableObject_observeJSON -->
 
 ``` TypeScript
 import { LayoutS } from '../turbotrans_JSON/layout';
@@ -353,7 +353,7 @@ export function observeProtobuf(): test_pb {
 
 执行observeJSON1并发任务返回Sendable对象工程示例如下：
 
-<!-- @[transferableObject_makeObserved](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) -->
+<!-- @transferableObject_makeObserved -->
 
 ``` TypeScript
 runTests() {
@@ -379,7 +379,7 @@ Index.ets中通过`@Local`状态保存任务返回值，再由Text组件绑定`p
 
 observeJSON1返回的Sendable对象工程示例如下：
 
-<!-- @[transferableObject_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @transferableObject_Text --> 
 
 ``` TypeScript
 import { LayoutS } from '../turbotrans_JSON/layout';

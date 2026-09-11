@@ -25,7 +25,7 @@ function functionName(parameters: parameterTypes): returnType {
 }
 ```
 
-<!-- @[function_declaration_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_declaration_basic -->
 
 ``` TypeScript
 // 基本函数声明
@@ -65,7 +65,7 @@ ArkTS要求函数参数和返回值显式标注类型。在上下文类型推断
 
 函数名使用camelCase动词短语（如calculateTotal、validateInput），应描述"做什么"而非"怎么做"；参数名使用描述性名词，避免缩写和无意义命名。
 
-<!-- @[function_naming_conventions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_naming_conventions -->
 
 ``` TypeScript
 // 函数名：动词或动词短语，camelCase
@@ -102,7 +102,7 @@ interface Point {
 
 函数支持直接调用、链式调用、嵌套调用和条件调用。链式调用从内向外执行，函数返回值作为外层调用的参数；嵌套调用在函数内部调用其他函数，适合组合复杂逻辑。
 
-<!-- @[function_invocation_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_invocation_methods -->
 
 ``` TypeScript
 // 直接调用
@@ -162,7 +162,7 @@ function processValidData(data: string): void {
 
 函数通过`return`语句返回结果，返回类型由声明决定；无返回值时使用`void`。
 
-<!-- @[function_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_return_values -->
 
 ``` TypeScript
 // 单一返回值
@@ -238,7 +238,7 @@ console.info(`${range.join(', ')}`);  // 1, 2, 3, 4, 5
 
 形参是函数声明中的参数名，实参是调用时传入的值，按位置一一对应。
 
-<!-- @[parameters_formal_and_actual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @parameters_formal_and_actual -->
 
 ``` TypeScript
 interface FormalPoint {
@@ -281,7 +281,7 @@ console.info(`${fpPoint.x}, ${fpPoint.y}`); // 10, 20
 
 可选参数使用`?`标记，表示调用时可以省略该参数。在类型层面，可选参数的类型为`T | undefined`——传入时为`T`，省略时为`undefined`。因此函数体内访问可选参数前须检查`!== undefined`，或使用空值合并`??`提供默认值。注意：可选参数必须排在必选参数之后。
 
-<!-- @[optional_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @optional_parameters -->
 
 ``` TypeScript
 // 可选参数
@@ -335,7 +335,7 @@ interface Config {
 
 为参数指定默认值，调用时若未传入该参数则使用默认值，可与可选参数混用。
 
-<!-- @[default_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @default_parameters -->
 
 ``` TypeScript
 // 默认参数
@@ -398,7 +398,7 @@ calculatePrice(100, 0.2); // 100 + 20 - 5 = 115
 
 使用`...`语法将不定数量的参数收集为数组，实现参数数量可变的函数。
 
-<!-- @[rest_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @rest_parameters -->
 
 ``` TypeScript
 // 剩余参数
@@ -459,7 +459,7 @@ function logAll(...messages: string[]): void {
 
 TypeScript支持解构参数将元组或对象成员直接提取为参数（如`function foo({x, y}: Point)`）。ArkTS不支持解构参数，需要通过接口类型参数接收后手动提取属性。
 
-<!-- @[parameter_destructuring_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @parameter_destructuring_limitation -->
 
 ``` TypeScript
 // ArkTS不支持解构参数，需通过接口类型参数接收后手动提取
@@ -513,7 +513,7 @@ configure({ timeout: 5000, retries: 3, verbose: true });
 
 void函数不返回值，用于执行操作但不产生结果。
 
-<!-- @[void_type_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @void_type_functions -->
 
 ``` TypeScript
 // void类型函数
@@ -560,7 +560,7 @@ interface FunctionsConfig {
 
 函数通过`return`返回单个值，返回类型可为基本类型、对象或数组。
 
-<!-- @[return_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @return_types -->
 
 ``` TypeScript
 // 返回基本类型
@@ -614,7 +614,7 @@ class TypesUser {
 
 通过数组或元组类型返回多个值，调用方按索引逐个获取各返回项。
 
-<!-- @[multiple_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @multiple_return_values -->
 
 ``` TypeScript
 // 使用数组承载多个返回值
@@ -682,7 +682,7 @@ let error: Error | null = dataResult[1];
 
 返回类型为T | undefined的函数，表示结果可能不存在。
 
-<!-- @[optional_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @optional_return_values -->
 
 ``` TypeScript
 interface OrvUser {
@@ -760,7 +760,7 @@ function getConfigValue(key: string): string | null {
 
 函数类型赋值时需满足参数兼容和返回值兼容，参数类型可按子类型方向协变。
 
-<!-- @[ts_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
+<!-- @ts_function_types -->
 
 ``` TypeScript
 // 函数类型定义
@@ -793,7 +793,7 @@ let invalid: MathOperation = (a: string) => a; // 编译错误
 
 将函数作为参数（回调函数）传递，可实现自定义的比较器、过滤器、事件处理器等灵活逻辑。
 
-<!-- @[functions_as_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @functions_as_parameters -->
 
 ``` TypeScript
 // 函数作为参数
@@ -856,7 +856,7 @@ console.info(`${evens.join(', ')}`); // 2, 4, 6
 
 函数可以作为返回值，用于创建闭包（捕获外层变量）、工厂函数（按参数生成不同行为）和延迟执行的策略模式。
 
-<!-- @[functions_returning_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @functions_returning_functions -->
 
 ``` TypeScript
 type RetMathOperation = (a: number, b: number) => number;
@@ -906,7 +906,7 @@ let descComparator: (a: number, b: number) => number = createComparator(false);
 
 用type为复杂函数类型起别名，简化签名书写。
 
-<!-- @[function_type_aliases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_type_aliases -->
 
 ``` TypeScript
 // 使用类型别名
@@ -951,7 +951,7 @@ let doubled: number[] = mapArray([1, 2, 3], (n: number): number => n * 2);
 
 内层箭头函数捕获外层作用域的变量，即使外层函数已返回，捕获的变量仍保留状态。
 
-<!-- @[closure_counter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @closure_counter -->
 
 ``` TypeScript
 function createCounter(): () => number {
@@ -976,7 +976,7 @@ console.info(`${counter()}`);  // 3
 
 闭包可捕获外层函数的参数，返回的函数持续引用该参数并据此处理后续调用。
 
-<!-- @[closure_multiplier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @closure_multiplier -->
 
 ``` TypeScript
 function multiplierCreateMultiplier(factor: number): (value: number) => number {
@@ -996,7 +996,7 @@ console.info(`${multiplierDouble(5)}`);  // 10
 
 箭头函数支持表达式体简写：单表达式可省略`return`和花括号，常用于回调。
 
-<!-- @[arrow_function_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @arrow_function_syntax -->
 
 ``` TypeScript
 let arrowAdd: (a: number, b: number) => number = (a: number, b: number): number => {
@@ -1010,7 +1010,7 @@ let arrowGreet: () => string = (): string => 'Hello';
 
 箭头函数最常见的用途是作为数组方法的回调，其简洁的语法在高阶函数调用中尤为实用。
 
-<!-- @[arrow_function_array_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @arrow_function_array_callback -->
 
 ``` TypeScript
 let numbers: number[] = [1, 2, 3, 4, 5];
@@ -1023,7 +1023,7 @@ let callbackDoubled: number[] = numbers.map((value: number): number => {
 
 箭头函数不绑定自己的`this`，而是捕获外层作用域的`this`，适合在类方法中作回调。
 
-<!-- @[arrow_function_this_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @arrow_function_this_binding -->
 
 ``` TypeScript
 class BindingTimer {
@@ -1053,7 +1053,7 @@ TypeScript的嵌套函数声明在ArkTS中不支持，需改用带显式函数�
 
 **TypeScript对照**
 
-<!-- @[ts_nested_function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
+<!-- @ts_nested_function_declaration -->
 
 ``` TypeScript
 function addNum(a: number, b: number): void {
@@ -1068,7 +1068,7 @@ function addNum(a: number, b: number): void {
 
 ArkTS不支持上述嵌套函数声明，需将局部函数改写为带显式函数类型的箭头函数表达式：
 
-<!-- @[local_function_expression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @local_function_expression -->
 
 ``` TypeScript
 function expressionAddNum(a: number, b: number): void {
@@ -1085,7 +1085,7 @@ function expressionAddNum(a: number, b: number): void {
 
 局部函数封装辅助逻辑，限制作用域提高内聚性。
 
-<!-- @[multiple_local_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @multiple_local_functions -->
 
 ``` TypeScript
 function functionsProcessData(data: string[]): string {
@@ -1112,7 +1112,7 @@ function functionsProcessData(data: string[]): string {
 
 函数重载先写多个签名（仅参数和返回值类型），最后用一个实现签名覆盖。
 
-<!-- @[function_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_overloading -->
 
 ``` TypeScript
 // 重载签名
@@ -1166,7 +1166,7 @@ console.info(`${JSON.stringify(point2)}`);  // {"x":10,"y":20}
 
 通过多个签名声明同一函数的不同调用形式，实现签名必须兼容所有重载签名。
 
-<!-- @[overload_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @overload_signatures -->
 
 ``` TypeScript
 // 实现签名必须兼容所有重载签名
@@ -1211,7 +1211,7 @@ function sigFormat(input: string | number): string {
 
 重载签名之间必须类型兼容，实现签名需统一处理所有情况，调用方只能按已声明的签名调用。优先使用联合类型而非重载。
 
-<!-- @[overload_type_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @overload_type_constraints -->
 
 ``` TypeScript
 interface OverloadData {
@@ -1257,7 +1257,7 @@ console.info(`${parsedNum}`); // 42
 
 高阶函数接受函数作为参数或返回函数作为结果，可将遍历、过滤、映射等集合操作抽象为可复用的通用逻辑。
 
-<!-- @[higher_order_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @higher_order_functions -->
 
 ``` TypeScript
 // 接受函数作为参数
@@ -1302,7 +1302,7 @@ doubleThenAddOne(5);  // 11
 
 `map`对每个元素变换生成新数组，`filter`按条件筛选元素，`reduce`将数组归约为单个值。
 
-<!-- @[array_higher_order_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @array_higher_order_methods -->
 
 ``` TypeScript
 // map：映射每个元素
@@ -1354,7 +1354,7 @@ console.info(`${orderResult.join(', ')}`);  // 4, 8
 
 封装通用的遍历、过滤逻辑为高阶函数，通过回调参数实现灵活扩展。
 
-<!-- @[custom_array_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @custom_array_methods -->
 
 ``` TypeScript
 // 自定义map
@@ -1416,7 +1416,7 @@ function customFind<T>(arr: T[], predicate: (item: T) => boolean): T | undefined
 
 func?.()在func不为undefined时才执行调用，否则返回undefined。
 
-<!-- @[ts_optional_chaining_function_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
+<!-- @ts_optional_chaining_function_call -->
 
 ``` TypeScript
 // 可选调用函数
@@ -1460,7 +1460,7 @@ handler?.onClick?.();  // 执行
 
 可选链调用用于回调可能未注册、事件处理器可能未绑定的场景。
 
-<!-- @[ts_optional_chaining_use_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
+<!-- @ts_optional_chaining_use_cases -->
 
 ``` TypeScript
 // 事件处理器
@@ -1525,7 +1525,7 @@ response?.data?.items?.forEach?.(item => console.info(`${item}`));
 
 **TypeScript对照**
 
-<!-- @[ts_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
+<!-- @ts_call_signature -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中用接口分离属性和方法
@@ -1537,7 +1537,7 @@ type DescribableFunction = {
 
 ArkTS中使用接口分离属性和方法。
 
-<!-- @[call_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @call_signature_alternative -->
 
 ``` TypeScript
 interface CsDescribableFunction {
@@ -1567,7 +1567,7 @@ csDoSomething(csFn);  // default description returned true
 
 **TypeScript对照**
 
-<!-- @[ts_construct_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
+<!-- @ts_construct_signature -->
 
 ``` TypeScript
 // TypeScript构造签名，ArkTS不支持（arkts-no-ctor-signatures-type）
@@ -1592,7 +1592,7 @@ console.info(`${someObj.value}`); // hello
 
 ArkTS不支持构造函数类型（`arkts-no-ctor-signatures-funcs`），详见从TypeScript到ArkTS的适配规则，使用工厂模式替代。
 
-<!-- @[construct_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @construct_signature_alternative -->
 
 ``` TypeScript
 class CsaPoint {
@@ -1627,7 +1627,7 @@ console.info(`${csaP.x}, ${csaP.y}`); // 3, 4
 
 TypeScript中回调函数类型不应使用可选参数，因为可选参数意味着"可能不传该参数调用"，而回调的调用方通常会传入所有参数。少参数的函数可赋给多参数的函数类型（参数逆变）。
 
-<!-- @[callback_no_optional_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @callback_no_optional_params -->
 
 ``` TypeScript
 // 回调参数全部为必选
@@ -1653,7 +1653,7 @@ let cbSimple: CbCallback = (value: string): void => {
 
 TypeScript有全局`Function`类型，接受任意函数。`Function`类型调用返回`any`，不安全。需要接受任意函数时，使用`() => void`替代。
 
-<!-- @[function_type_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @function_type_usage -->
 
 ``` TypeScript
 // 不建议：使用Function类型
@@ -1676,7 +1676,7 @@ ftRunCallback((): void => console.info('executed'));
 
 `void`返回类型的函数类型有一个特殊规则：返回值为`void`的函数类型可接受返回任意值的函数实现。返回值会被忽略。此设计允许返回值的函数（如`push`返回`number`）用于期望`void`回调的场景。
 
-<!-- @[void_return_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+<!-- @void_return_compatibility -->
 
 ``` TypeScript
 type VcCallback = () => void;

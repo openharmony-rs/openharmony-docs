@@ -21,7 +21,7 @@
 
 示例代码如下：
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @quick_start --> 
 
 ``` TypeScript
 import { window } from '@kit.ArkUI';
@@ -95,13 +95,13 @@ struct Index {
 
 开发者可通过以下两种方式实现视频播放界面的横竖屏切换：
 
-- 通过[调用窗口管理的setPreferredOrientation()接口](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section188583141719)设置主窗口方向。
+- 通过调用窗口管理的setPreferredOrientation()接口设置主窗口方向。
 
-- 通过跳转到不同显示方向的页面来设置视频窗口方向。实现方式参考[通过页面跳转实现横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section161651074615)。
+- 通过跳转到不同显示方向的页面来设置视频窗口方向。实现方式参考通过页面跳转实现横竖屏切换。
 
 ## 实现屏幕方向和窗口的orientation的相互转换
 
-目前存在屏幕orientation、屏幕rotation和窗口orientation概念，它们之间存在关联，但并不相同，可以参考[display.Orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section5175174443718)。
+目前存在屏幕orientation、屏幕rotation和窗口orientation概念，它们之间存在关联，但并不相同，可以参考display.Orientation与display.rotation的关系。
 
 在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的rotation（物理角度）和屏幕的orientation（逻辑横竖状态）并不总是一一对应。
 
@@ -135,7 +135,7 @@ struct Index {
 
 4. 调用setPreferredOrientation()接口设置旋转策略锁定显示方向。
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @quick_start -->
 
 ``` TypeScript
 import { display, window } from '@kit.ArkUI';

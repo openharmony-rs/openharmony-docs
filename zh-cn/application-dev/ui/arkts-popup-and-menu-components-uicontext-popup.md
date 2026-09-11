@@ -12,7 +12,7 @@
 
 通过openPopup可以弹出气泡。
    
- <!-- @[open_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+ <!-- @open_popup -->
  
  ``` TypeScript
  this.promptAction.openPopup(this.contentNode, { id: targetId }, {
@@ -30,7 +30,7 @@
    
    通过调用openPopup接口弹出气泡，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考ComponentContent说明。
    
-  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
+  <!-- @content_node --> 
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
@@ -39,7 +39,7 @@
    
    如果在wrapBuilder中包含其他组件（例如：Popup、Chip组件），则应在创建ComponentContent时设置nestingBuilderSupported属性为true。
    
-  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+  <!-- @build_text -->
   
   ``` TypeScript
   @Builder
@@ -100,7 +100,7 @@
    
 - target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
    
-   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+   <!-- @frame_node -->
    
    ``` TypeScript
    let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
@@ -109,7 +109,7 @@
    
 - target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性id值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
    
-   <!-- @[openPopupWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets) -->
+   <!-- @openPopupWithTargetIdString -->
    
    ``` TypeScript
    build() {
@@ -151,7 +151,7 @@
    
    通过调用openPopup接口弹出气泡，可以设置PopupCommonOptions属性调整气泡样式。
    
-  <!-- @[private_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+  <!-- @private_options -->
   
   ``` TypeScript
   private options: PopupCommonOptions = { enableArrow: true };
@@ -161,7 +161,7 @@
 
 从API version 18开始，通过updatePopup可以更新气泡的样式。支持全量更新和增量更新其气泡样式，不支持更新PopupCommonOptions中的showInSubWindow、focusable、onStateChange、onWillDismiss和transition属性。
    
-  <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+  <!-- @update_popup -->
   
   ``` TypeScript
   this.promptAction.updatePopup(this.contentNode, {
@@ -180,7 +180,7 @@
 
 从API version 18开始，通过调用closePopup可以关闭气泡。
    
-  <!-- @[close_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+  <!-- @close_popup -->
   
   ``` TypeScript
   this.promptAction.closePopup(this.contentNode)
@@ -202,7 +202,7 @@
 
 以下示例通过HAR包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
 
-  <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
+  <!-- @main_page -->
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -275,7 +275,7 @@
   ```
   
 
-  <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
+  <!-- @open_popup_main --> 
   
   ``` TypeScript
   import { PromptActionClass } from './PopupMainPage';
@@ -356,4 +356,4 @@
   ```
   
 
-![image](figures/UIopenPopup.gif)
+image

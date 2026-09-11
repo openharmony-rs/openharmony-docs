@@ -44,7 +44,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_string_utf8 -->
 
 ``` C++
 static napi_value GetValueStringUtf8(napi_env env, napi_callback_info info)
@@ -86,7 +86,7 @@ static napi_value GetValueStringUtf8(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_string_utf8_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_string_utf8_api -->
 
 ``` TypeScript
 export const getValueStringUtf8: (param: string | number) => string | undefined;
@@ -94,7 +94,7 @@ export const getValueStringUtf8: (param: string | number) => string | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_string_utf8 -->
 
 ``` TypeScript
 // 分别传入字符和非字符检测接口，传入字符串类型的数据将返回原字符串，传入其他类型返回undefined
@@ -110,7 +110,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_utf8_not_string %{
 
 cpp部分代码
 
-<!-- @[napi_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_string_utf8 -->
 
 ``` C++
 static napi_value CreateStringUtf8(napi_env env, napi_callback_info info)
@@ -129,7 +129,7 @@ static napi_value CreateStringUtf8(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_string_utf8_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_string_utf8_api -->
 
 ``` TypeScript
 export const createStringUtf8: () => string | undefined;
@@ -137,7 +137,7 @@ export const createStringUtf8: () => string | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_string_utf8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_string_utf8 -->
 
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf8:%{public}s',
@@ -150,7 +150,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf8:%{public}s'
 
 cpp部分代码
 
-<!-- @[napi_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_string_utf16 -->
 
 ``` C++
 static napi_value GetValueStringUtf16(napi_env env, napi_callback_info info)
@@ -176,7 +176,7 @@ static napi_value GetValueStringUtf16(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_string_utf16_api -->
 
 ``` TypeScript
 export const getValueStringUtf16: (data: string) => string;
@@ -184,7 +184,7 @@ export const getValueStringUtf16: (data: string) => string;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_string_utf16 -->
 
 ``` TypeScript
 let result = testNapi.getValueStringUtf16('hello,');
@@ -197,7 +197,7 @@ hilog.info(0x0000, 'testTag', 'Node-API napi_get_value_string_utf16:%{public}s',
 
 cpp部分代码
 
-<!-- @[napi_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_string_utf16 -->
 
 ``` C++
 static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
@@ -216,7 +216,7 @@ static napi_value CreateStringUtf16(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_string_utf16_api -->
 
 ``` TypeScript
 export const createStringUtf16: () => string | undefined;
@@ -224,7 +224,7 @@ export const createStringUtf16: () => string | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_string_utf16 -->
 
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf16:%{public}s ',
@@ -237,7 +237,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_string_utf16:%{public}s
 
 cpp部分代码
 
-<!-- @[napi_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_string_latin1 -->
 
 ``` C++
 static napi_value GetValueStringLatin1(napi_env env, napi_callback_info info)
@@ -260,7 +260,7 @@ static napi_value GetValueStringLatin1(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_string_latin1_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_string_latin1_api -->
 
 ``` TypeScript
 export const getValueStringLatin1: (param: number | string) => string | undefined;
@@ -268,7 +268,7 @@ export const getValueStringLatin1: (param: number | string) => string | undefine
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_string_latin1 -->
 
 ``` TypeScript
 // 传入非字符型数据，函数返回undefined
@@ -288,7 +288,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get_value_string_latin1_string %{pu
 
 cpp部分代码
 
-<!-- @[napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_string_latin1 -->
 
 ``` C++
 static napi_value CreateStringLatin1(napi_env env, napi_callback_info info)
@@ -308,7 +308,7 @@ static napi_value CreateStringLatin1(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_string_latin1_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_string_latin1_api -->
 
 ``` TypeScript
 export const createStringLatin1: () => string | undefined;
@@ -316,7 +316,7 @@ export const createStringLatin1: () => string | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_string_latin1 -->
 
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
@@ -329,7 +329,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
+<!-- @napi_create_external_string_utf16 --> 
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -373,7 +373,7 @@ static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info inf
 
 接口声明
 
-<!-- @[napi_create_external_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_external_string_utf16_api -->
 
 ``` TypeScript
 export const CreateExternalStringUtf16: () => string | undefined;
@@ -381,7 +381,7 @@ export const CreateExternalStringUtf16: () => string | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_external_string_utf16 -->
 
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_utf16:%{public}s',
@@ -395,7 +395,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_utf16:
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_external_string_ascii -->
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -440,7 +440,7 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
 
 接口声明
 
-<!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_external_string_ascii_api -->
 
 ``` TypeScript
 export const CreateExternalStringAscii: () => string | undefined;
@@ -448,7 +448,7 @@ export const CreateExternalStringAscii: () => string | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_external_string_ascii -->
 
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_external_string_ascii:%{public}s',

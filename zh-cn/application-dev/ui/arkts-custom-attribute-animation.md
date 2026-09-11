@@ -16,7 +16,7 @@
 
 该示例中通过@AnimatableExtend装饰器定义了可动画属性接口animatableWidth，通过传入number数据类型修改属性width的值，实现了逐帧改变Text组件宽度的动画。
 
-<!-- @[Animation_AnimatableProperty](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template1/Index.ets) -->
+<!-- @Animation_AnimatableProperty -->
 
 ``` TypeScript
 // 第一步：使用@AnimatableExtend装饰器，自定义可动画属性接口
@@ -47,14 +47,14 @@ struct AnimatablePropertyExample {
 ```
 
 
-![animation-frame](figures/animation-frame.gif)
+animation-frame
 
 
 ## 使用自定义数据类型改变图形形状
 
 该示例中通过@AnimatableExtend装饰器定义了可动画属性接口animatablePoints，通过传入自定义的数据类型修改不可动画属性points的值，实现了改变Polyline组件形状的动画。由于系统不支持Polyline组件points属性的动画，因此需要通过实现AnimatableArithmetic\<T>接口中加法、减法、乘法和判断相等函数，为该属性的参数定义做动画插值的方法。在动画过程中，系统侧根据定义的数据插值方法计算每帧的数据值，回调到@AnimatableExtend装饰器修饰的自定义可动画属性接口，进而设置points属性，为points属性产生动画。
 
-<!-- @[Animation_AnimatableProperty](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template2/Index.ets) -->
+<!-- @Animation_AnimatableProperty -->
 
 ``` TypeScript
 declare type Point = number[];
@@ -195,10 +195,10 @@ struct AnimatedShape {
 ```
 
 
-![animation-shape](figures/animation-shape.gif)
+animation-shape
 
 ## 相关实例
 
 针对自定义属性动画开发，有以下相关实例可供参考：
 
-- [自定义下拉刷新动画（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/AnimateRefresh)
+- 自定义下拉刷新动画（ArkTS）（API9）

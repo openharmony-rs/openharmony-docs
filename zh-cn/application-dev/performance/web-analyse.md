@@ -11,7 +11,7 @@
 
 图一 场景动画  
 
-![alt text](./figures/web-analyse-0.gif)
+alt text
 
 ## 问题定位流程
 
@@ -32,13 +32,13 @@
 
     图二 Trace起点
 
-    ![alt text](./figures/web-analyse-1.png)
+    alt text
 
 2. 确认终点：一般以render_service侧的第一帧为终点，如图三蓝线所示：
 
     图三 Trace终点
 
-    ![alt text](./figures/web-analyse-2.png)
+    alt text
 
     可以发现后续动画已经达到最大帧率，说明无响应是红线到蓝线阶段。
 
@@ -46,24 +46,24 @@
 
     图四 Trace帧率分析
 
-    ![alt text](./figures/web-analyse-3.png)
+    alt text
 4. 同时可以发现在此过程中，应用长时间占用CPU，因此可能是产生了大量的计算。
 
     图五 可能耗时原因
 
-    ![alt text](./figures/web-analyse-4.png)
+    alt text
 
 经过前面的分析，应用侧发现可能是H5侧产生了大量的计算，此时需要使用DevTools工具进一步分析。
 
 ### 使用DevTools进行分析
 
-使用DevTools调试可以参考此链接：[使用DevTools工具调试前端页面](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/web-debugging-with-devtools-V5?catalogVersion=V5)。
+使用DevTools调试可以参考此链接：使用DevTools工具调试前端页面。
 
 抓取的DevTools泳道图如图六所示，本文把可能发生的异常区域进行分析： 
 
 图六：DevTools泳道图区域划分
 
-![alt text](./figures/web-analyse-5.png)
+alt text
 
 - 区域1: 该处为起点，输入Event搜索点击事件。
 - 区域2：该处为组件加载区域，主要是JS执行。
@@ -101,11 +101,11 @@ H5页面点击切换场景下，此时Web组件已经初始化，点击事件为
 
 图七：方法跳转至源码  
 
-![alt text](./figures/web-analyse-7.png)  
+alt text  
 
 图八：源码耗时  
 
-![alt text](./figures/web-analyse-8.png)  
+alt text  
 
 如图八所示，源码处会显示具体方法的耗时，此时可以发现myFun1方法采用了递归，大幅增加了CPU的运算耗时，导致了响应延时。
 
@@ -146,7 +146,7 @@ trace特点：网络区域每一阶段网络请求完成后都会对应执行js�
 
 图九：优化后的泳道图
 
-![alt text](./figures/web-analyse-9.png)  
+alt text  
 
 从图九可以看出耗时明显减少，回归正常水平。
 
@@ -156,7 +156,7 @@ trace特点：网络区域每一阶段网络请求完成后都会对应执行js�
 
 图十：Web网页整体加载流程   
 
-![alt text](./figures/web-analyse-6.png)
+alt text
 
 | Web网页加载流程拆解 | 关键Trace                                                                                          |  
 | --- |--------------------------------------------------------------------------------------------------|  

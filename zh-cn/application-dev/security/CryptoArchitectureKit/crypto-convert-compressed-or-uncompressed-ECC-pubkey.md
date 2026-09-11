@@ -25,7 +25,7 @@ ECC的算法规格请查看非对称密钥生成和转换规格：ECC。
 3. 调用AsyKeyGenerator.convertKey，传入封装后的DataBlob对象，生成非对称密钥对象（KeyPair）。
 4. 调用PubKey.getEncodedDer，设置参数为'X509|COMPRESSED'，获取压缩公钥数据的字节流。
 
-<!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/SpecifyUncompressedPublicKey.ets) -->
+<!-- @convert_ecc_uncompressed_pub_keypair -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

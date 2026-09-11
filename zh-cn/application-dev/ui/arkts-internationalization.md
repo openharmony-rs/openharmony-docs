@@ -18,7 +18,7 @@
 
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
-|![](figures/mirroring_1-0.PNG)|![](figures/mirroring_1-1.PNG)|
+|||
 
 当组件满足以下任意条件时，镜像能力生效：
 
@@ -63,7 +63,7 @@ ArkUI 如下能力已默认适配镜像：
 
 以position为例，需要把绝对方向x、y描述改为新入参类型start、end的描述，其他属性类似。
 
-  <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
+  <!-- @Interface_Layout_Border_Settings -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -101,7 +101,7 @@ CanvasRenderingContext2D的文本绘制支持镜像能力，在使用时需要�
 2. Canvas组件本身不会自动跟随系统语言切换镜像效果，需要应用监听到系统语言切换后自行重新绘制。
 3. CanvasRenderingContext2D绘制文本时，只有符号等文本会对绘制方向生效，英文字母和数字不响应绘制方向的变化。
 
-  <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
+  <!-- @Customize_Canvas_Component_Drawing -->
   
   ``` TypeScript
   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -168,7 +168,7 @@ CanvasRenderingContext2D的文本绘制支持镜像能力，在使用时需要�
   
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
-|![](figures/mirroring_2-0.jpg)|![](figures/mirroring_2-1.jpg)|
+|||
 
 ### 镜像状态字符对齐
 Direction是指文字的方向，即文本在屏幕上呈现时字符的顺序。在从左到右（LTR）文本中，显示顺序是从左向右；在从右到左（RTL）文本中，显示顺序是从右到左。
@@ -177,7 +177,7 @@ TextAlign是将文本作为一个整体，在布局上的影响，具体位置�
 
 在LTR与RTL文本混排时，如一个英文句子中包含阿拉伯语的单词或短语，显示顺序将变得复杂。下图为数字和维吾尔语混合时对应的字符逻辑顺序。
 
-![alt text](figures/image-8.png)
+alt text
 
 此时，文本渲染引擎会采用名为“双向算法”或“Unicode双向算法”（Unicode Bidirectional Algorithm）的方法来确定字符的显示顺序。下图展示了LTR与RTL文本混合时对应的字符显示顺序，确定字符方向的基本原则如下：
 1. 强字符的方向性：强字符具有明确的方向性，例如，中文为LTR，阿拉伯语为RTL，这类字符的方向性会影响其周围的中性字符。
@@ -186,4 +186,4 @@ TextAlign是将文本作为一个整体，在布局上的影响，具体位置�
 
 3. 中性字符的方向性：中性字符无固定方向性，它们会继承其最近的强字符的方向；若附近无强字符，则采用全局方向。
 
-![alt text](figures/image-1.png)
+alt text

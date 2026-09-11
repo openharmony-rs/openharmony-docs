@@ -26,7 +26,7 @@
 ### 第二步：状态变量发生改变
 在给状态变量赋值时，状态管理框架会检查当前被赋值的状态变量的值是否有变化，如果没有变化，则会直接返回，不做任何操作。最简单的排查手段是分别打印修改状态变量前后的值，检查是否有变化。如以下示例。
 
-<!-- @[StateValueChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/StateValueChangePage.ets) -->
+<!-- @StateValueChange -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -126,13 +126,13 @@ struct Child {
 - 日志提示`inner is not observed object`。
 - ArkUI State泳道没有状态变量变化的上报信息。
 
-  ![image](./figures/arkui_state_profiler1.png)
+  image
 
 需要注意，并非所有的类对象都需要被\@Observed装饰。\@State装饰器会默认对复杂对象包装第一层代理，而对嵌套对象，则需要在内层对象的类声明上增加\@Observed装饰。
 
 正确示例：
 
-<!-- @[V1ObserveCorrect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ObservabilityPage.ets) -->
+<!-- @V1ObserveCorrect -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -193,7 +193,7 @@ struct InnerDisplay {
 - 日志提示`inner is observed object`。
 - ArkUI State泳道有状态变量变化的上报信息。
 
-  ![image](./figures/arkui_state_profiler2.png)
+  image
 
 **状态管理V2**
 
@@ -209,7 +209,7 @@ struct InnerDisplay {
 
 具体示例如下：
 
-<!-- @[V2Observe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ObservabilityV2Page.ets) -->
+<!-- @V2Observe -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -260,7 +260,7 @@ struct ObservabilityV2Page {
 ```
 基于上面的示例，观察ArkUI State泳道，有两次状态变量的变化上报，即`this.info.value`和`this.info.numberArr`。`count`不是\@Trace装饰的，所以不会被观察到变化，也不会在Profiler上报状态变量的变化。
 
-![image](./figures/arkui_state_profiler3.png)
+image
 
 ### 第四步：数据源和被同步的对象是否有关联关系
 状态管理中，数据源会通过双向或单向机制通知同步对象。如果开发者遇到数据源改变，但其同步对象没有被通知的情况，可以按下面的方式排查。
@@ -342,7 +342,7 @@ struct Child {
 
 正确示例：
 
-<!-- @[ForEachSyncCorrect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/ForEachSyncPage.ets) -->
+<!-- @ForEachSyncCorrect -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -481,7 +481,7 @@ Image onComplete 200 load status: 1
 
 可以将组件的同步回调中对状态变量的赋值通过setTimeout转换为异步执行，示例如下。
 
-<!-- @[RenderUpdateCorrect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TroubleshootingStateManage/entry/src/main/ets/pages/RenderUpdatePage.ets) -->
+<!-- @RenderUpdateCorrect -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

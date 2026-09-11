@@ -26,7 +26,7 @@ PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链
 
 - 异步方法示例：
 
-<!-- @[create-parse-pkcs12-async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParsePkcs12Async.ets) -->
+<!-- @create-parse-pkcs12-async -->
 
 ``` TypeScript
 
@@ -190,7 +190,7 @@ async function doTestCreatePkcs12() {
 
 - 同步方法示例：
 
-<!-- @[create-parse-pkcs12-sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParsePkcs12Sync.ets) -->
+<!-- @create-parse-pkcs12-sync -->
 
 ``` TypeScript
 

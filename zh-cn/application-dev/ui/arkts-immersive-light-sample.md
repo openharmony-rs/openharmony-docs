@@ -12,8 +12,8 @@
 
 在信息浏览类应用（如新闻、贴吧、小说阅读等应用）的场景中，用户上滑首页内容区后，标题栏显示范围可随之缩小，同时通过沉浸光感提升标题栏的交互体验。
 
-1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用[ExpandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)将显示内容延伸至状态栏区域，使应用整体体验更加一致。
-   <!-- @[immersive_tabs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets) -->
+1. 设置底部Tabs悬浮并为Tabs组件开启沉浸光感，同时使用ExpandSafeArea将显示内容延伸至状态栏区域，使应用整体体验更加一致。
+   <!-- @immersive_tabs -->
    ```TypeScript
    @Entry
    @ComponentV2
@@ -86,8 +86,8 @@
    }
    ```
 
-2. 针对跳转的目标页面，通过[NavigationTitleOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationtitleoptions11)为对应的页签页面标题栏区域开启沉浸光感。建议将Navigation组件的BarStyle设置为STACK模式，使内容区显示在标题栏下方，从而实现透底的效果。下面代码实现以下效果：标题栏以及标题栏子组件开启沉浸光感。上滑时搜索框隐藏，分类列表保留并突出显示。分类列表项开启沉浸光感，提升用户交互体验和内容曝光率。
-   <!-- @[explore_home_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ExploreHomePage.ets) -->
+2. 针对跳转的目标页面，通过NavigationTitleOptions为对应的页签页面标题栏区域开启沉浸光感。建议将Navigation组件的BarStyle设置为STACK模式，使内容区显示在标题栏下方，从而实现透底的效果。下面代码实现以下效果：标题栏以及标题栏子组件开启沉浸光感。上滑时搜索框隐藏，分类列表保留并突出显示。分类列表项开启沉浸光感，提升用户交互体验和内容曝光率。
+   <!-- @explore_home_page -->
    ```TypeScript
    @ComponentV2
    struct ExploreHomePage {
@@ -181,10 +181,10 @@
 
 ## 内容区标题栏开启沉浸光感
 
-当前沉浸光感存在生效约束，具体约束参考[沉浸光感功耗优化](./arkts-immersive-light-sense-constraints.md)。针对内容区滑动且内容区存在多层标题的场景，当内容区的标题滑动到标题栏区域时，可将对应的内容嵌入标题栏中显示，实现内容区标题在NavDestination标题栏区域的展示，从而提升用户交互体验。
+当前沉浸光感存在生效约束，具体约束参考沉浸光感功耗优化。针对内容区滑动且内容区存在多层标题的场景，当内容区的标题滑动到标题栏区域时，可将对应的内容嵌入标题栏中显示，实现内容区标题在NavDestination标题栏区域的展示，从而提升用户交互体验。
 
 1. 提取内容区中小标题为独立组件。
-   <!-- @[classify_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/Utils.ets) -->
+   <!-- @classify_component -->
 
    ``` TypeScript
    @ComponentV2
@@ -225,7 +225,7 @@
 
 2. 滑动内容区，当内容区标题滑动到标题栏区域时，将其切换到标题栏中显示。
 
-   <!-- @[game_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/GamePage.ets) -->
+   <!-- @game_page -->
   
    ``` TypeScript
    @ComponentV2

@@ -23,7 +23,7 @@
 
 在线短视频滑动切换。
 
-![performance-quick-switch-short-video-image0.gif](figures/performance-quick-switch-short-video-image0.gif)
+performance-quick-switch-short-video-image0.gif
 
 ## 场景说明
 
@@ -91,13 +91,13 @@ AVPlayer：
 
 **功能时序图**
 
-![](../performance/figures/performance-quick-switch-short-video-image1.png)
+
 
 
 ### 在线短视频快速切换
 **实现流程图**
 
-![](../performance/figures/performance-quick-switch-short-video-image2.png)
+
 
 **关键点**
 
@@ -111,7 +111,7 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
 
 在通过Swiper切换时，会根据当前轮询滑动的窗口索引index到缓存池中找到对应的视频（prepared阶段），直接进行播放，从而提升切换性能。
 
-![](../performance/figures/performance-quick-switch-short-video-image3.png)
+
 
 **异步视频预加载**
 
@@ -119,11 +119,11 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
 
 （1）本地播放一个短视频的耗时。
 
-![](../performance/figures/performance-quick-switch-short-video-image4.png)
+
 
 （2）播放视频A的时候，提前预加载视频B。在切换短视频时，可以马上开始播放已预加载完成的视频B，从而减少了切换时间，提高了切换性能。
 
-![](../performance/figures/performance-quick-switch-short-video-image5.png)
+
 
 
 **视频播放预启动能力**
@@ -136,7 +136,7 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
 
 视频播放预启动接力：类似于4*100接力赛，想要尽快完成接力赛，当第一个选手快到达终点时，第二个选手就提前起跑并且和第一个选手完美完成接力棒，从而减少整个接力赛过程中的时间。短视频切换也是如此，如下图所示：
 
-![](../performance/figures/performance-quick-switch-short-video-image6.png)
+
 
 **关键代码片段**
 
@@ -374,4 +374,4 @@ LazyForEach:数据懒加载
 
 ## 示例代码
 
-[实现流畅切换短视频](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/SmoothSwitchShortVideos)
+实现流畅切换短视频

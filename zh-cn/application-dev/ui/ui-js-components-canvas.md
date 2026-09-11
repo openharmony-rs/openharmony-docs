@@ -39,7 +39,7 @@ canvas {
 }
 ```
 
-![canvas-Component](figures/canvas-Component.png)
+canvas-Component
 
 > **说明：**
 > - Canvas组件默认背景色与父组件的背景色一致。
@@ -79,7 +79,7 @@ canvas {
 }
 ```
 
-![Adding-Styles](figures/Adding-Styles.png)
+Adding-Styles
 
 
 ## 添加事件
@@ -152,7 +152,7 @@ export default {
 }
 ```
 
-![Adding-Events](figures/Adding-Events.gif)
+Adding-Events
 
 > **说明：** 
 >
@@ -162,6 +162,6 @@ export default {
 
 针对Canvas开发，有以下相关实例可供参考：
 
-- [自定义抽奖转盘（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/JSCanvasComponent)
+- 自定义抽奖转盘（JS）（API9）
 
-- [图片编辑（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEditorTemplate)
+- 图片编辑（JS）（API9）

@@ -223,7 +223,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
    };
    ```
 
-![zh-cn_image_0000001118642007](figures/Obtaining-DOM-Element.gif)
+zh-cn_image_0000001118642007
 
 ## 获取ViewModel
 
@@ -249,7 +249,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001118642008](figures/Obtaining-ViewModel.png)
+zh-cn_image_0000001118642008
 
 自定义parent组件：
 
@@ -307,4 +307,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001118642009](figures/Obtaining-ViewModel.gif)
+zh-cn_image_0000001118642009

@@ -86,7 +86,7 @@ DRM插件管理功能一般由DRM解决方案集成方实现<!--Del-->，具体�
 
 应用集成DRM Kit工作流程如图所示。
 
-![Drm Development Model](figures/drm-development-model.png)
+Drm Development Model
 
 工作流程主要包括：
 

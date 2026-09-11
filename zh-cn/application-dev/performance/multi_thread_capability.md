@@ -32,7 +32,7 @@ CSP（Communicating Sequential Processes，通信顺序进程）中的计算单�
 
 **图1**  Actor消息传递示意图  
 
-![Actor消息传递图](figures/actor-message-post.png)
+Actor消息传递图
 
 CSP与Actor之间的主要区别：
 
@@ -50,13 +50,13 @@ CSP与Actor之间的主要区别：
 
 **图2**  线程交互示意图
 
-![线程交互图](figures/worker-thread-message.png)
+线程交互图
 
 在多核的情况下（下图中的CPU 1和CPU 2同时工作），多个Worker线程（下图中的worker thread1和worker thread2）可以同时执行，因此Worker线程做到了真正的并发，如下图所示：  
 
 **图3**  Worker线程并发示意图  
 
-![Worker线程并发图](figures/worker-thread-concurrent.png)
+Worker线程并发图
 
 ### 使用场景和开发示例
 
@@ -72,7 +72,7 @@ CSP与Actor之间的主要区别：
 
 **图4**  场景预览图
 
-![场景预览图](figures/video-preview.jpg)
+场景预览图
 
 使用步骤如下：
 
@@ -175,7 +175,7 @@ CSP与Actor之间的主要区别：
 
 **图5**  TaskPool流程示意图
 
-![TaskPool流程图](figures/taskpool-process.png)
+TaskPool流程图
 
 TaskPool有如下的特点：
 
@@ -209,7 +209,7 @@ TaskPool的适用场景主要分为如下三类：
 
 **图6**  朋友圈场景预览图  
 
-![朋友圈场景预览图](figures/friendmoment-preview.jpg)
+朋友圈场景预览图
 
 使用步骤如下：
 
@@ -415,7 +415,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 如下图所示，在对3000条数据进行查询的过程中，整个任务总耗时接近8秒。其中，“getListFromResultSet”函数负责查询结果数据格式化，其执行时间超过1秒；而用于检测数据库元素是否存在重复的“includes”方法，其运行时间超过5秒，这两项操作的显著耗时，成为导致滑动操作卡顿的关键因素。
 
-![数据库查询耗时图](figures/multi_thread_capability_search_rdb.PNG)
+数据库查询耗时图
 
 **解决方案**
 
@@ -776,19 +776,19 @@ workerPort.onmessage = (e: MessageEvents): void => {
   
   如下图所示，在主线程的调度中，包含Task1、查询数据库（queryData）以及Task2这三个相继执行的任务。查询数据库操作耗时逾9秒，延缓了后续Task2的启动，从而对主线程的及时响应与整体流畅性产生影响。
   
-  ![主线程查询任务](figures/multi_thread_capability_mainthread.PNG)
+  主线程查询任务
 
 - 子线程中执行查询任务
   
   如下图所示，在主线程的任务调度中，原先是Task1、查询数据库操作(queryData)，以及紧随其后的Task2。为优化性能，现已将查询数据库的操作移至一个单独的子线程Subthread_queryData中执行。此调整后，数据库查询方法的调用仅耗时2毫秒，且Task2与子线程Subthread_queryData得以并行执行，彼此互不干扰。此举有效避免了查询任务对主线程造成的任何阻塞，确保了主线程操作的流畅无阻。
   
-  ![子线程查询任务](figures/multi_thread_capability_subthread.PNG)
+  子线程查询任务
 
 **数据库批量插入操作**
 
 根据下图展示的批量插入数据库操作追踪详情，处理3000条记录耗时大约2.2秒，大数据批量写入任务的时间消耗。为确保应用程序的流畅操作与即时响应能力，优化策略建议将批量插入操作部署至子线程执行。减轻主线程负担，避免阻塞情况发生，增强用户体验，提高应用运行效率。
 
-![批量插入数据任务](figures/multi_thread_capability_batch_Insert.PNG)
+批量插入数据任务
 
 **结论**
 
@@ -800,4 +800,4 @@ workerPort.onmessage = (e: MessageEvents): void => {
 
 针对多线程并发，有以下相关实例可供参考：  
 
-* [聊天实例应用（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat)
+* 聊天实例应用（ArkTS）（API10）

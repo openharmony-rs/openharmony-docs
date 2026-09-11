@@ -10,7 +10,7 @@
 
 ### Cross-device Data Sync；跨设备数据同步
 
-将同应用数据库中的数据同步到组网环境中其他设备的功能（即分布式功能）。根据数据生命周期分为临时数据（使用分布式数据对象）和持久数据（使用关系型数据库或键值型数据库）。同应用跨设备数据同步仅支持最终一致性。详细介绍请查看[同应用跨设备数据同步概述](sync-app-data-across-devices-overview.md)。
+将同应用数据库中的数据同步到组网环境中其他设备的功能（即分布式功能）。根据数据生命周期分为临时数据（使用分布式数据对象）和持久数据（使用关系型数据库或键值型数据库）。同应用跨设备数据同步仅支持最终一致性。详细介绍请查看同应用跨设备数据同步概述。
 
 ## D
 
@@ -26,7 +26,7 @@
 
 ### E-class Encrypted Database；E类加密数据库
 
-安全级别较高的加密数据库，用于存储用户敏感信息。在锁屏时触发密钥销毁，解锁后密钥恢复。详细介绍请查看[E类加密数据库的使用](encrypted-estore-guidelines.md)。
+安全级别较高的加密数据库，用于存储用户敏感信息。在锁屏时触发密钥销毁，解锁后密钥恢复。详细介绍请查看E类加密数据库的使用。
 
 ## F
 
@@ -34,7 +34,7 @@
 
 FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据修改时，SQLite都会调用底层操作系统的xSync方法，保证所有数据均安全写入磁盘。可在系统崩溃、断电场景保证数据库不会损坏。
 
-详细介绍请查看SQLite [synchronous](https://sqlite.org/pragma.html#pragma_synchronous)。
+详细介绍请查看SQLite synchronous。
 
 ## K
 
@@ -56,7 +56,7 @@ FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据�
 
 ### RelationalStore；关系型数据库
 
-基于SQLite组件提供的数据持久化方案，以行和列形式存储数据。支持增删改查接口和自定义SQL语句，提供事务、索引等特性。从API version 18开始支持向量数据库能力。详细介绍请查看[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+基于SQLite组件提供的数据持久化方案，以行和列形式存储数据。支持增删改查接口和自定义SQL语句，提供事务、索引等特性。从API version 18开始支持向量数据库能力。详细介绍请查看@ohos.data.relationalStore (关系型数据库)。
 
 ### ResultSet；结果集
 
@@ -66,7 +66,7 @@ FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据�
 
 ### Security Level；安全等级
 
-数据和设备分类分级的标识体系。数据安全标签分为S1（低）、S2（中）、S3（高）、S4（严重）四个等级，用于标识数据敏感程度；设备安全等级分为SL1~SL5五个等级，取决于设备的安全能力。跨设备同步时，数据安全标签不高于对端设备安全等级方可同步。详细介绍请查看[基于设备分类和数据分级的访问控制](access-control-by-device-and-data-level.md)。
+数据和设备分类分级的标识体系。数据安全标签分为S1（低）、S2（中）、S3（高）、S4（严重）四个等级，用于标识数据敏感程度；设备安全等级分为SL1~SL5五个等级，取决于设备的安全能力。跨设备同步时，数据安全标签不高于对端设备安全等级方可同步。详细介绍请查看基于设备分类和数据分级的访问控制。
 
 ## T
 
@@ -78,7 +78,7 @@ FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据�
 
 ### UDMF (Unified Data Management Framework)；统一数据管理框架
 
-标准化数据管理框架，为跨应用、跨设备的数据交互提供统一的数据语言。包括UTD（标准化数据类型）和UDS（标准化数据结构），详细介绍请查看[标准化数据定义概述](unified-data-definition-overview.md)。
+标准化数据管理框架，为跨应用、跨设备的数据交互提供统一的数据语言。包括UTD（标准化数据类型）和UDS（标准化数据结构），详细介绍请查看标准化数据定义概述。
 
 ## V
 
@@ -92,4 +92,4 @@ FULL模式是SQLite中数据库同步写入策略之一，当每次执行数据�
 
 WAL（Write Ahead Log）模式是SQLite日志模式中的一种，区别于传统的rollback journal（回滚日志）模式，用于提升并发性能和写入效率。
 
-详细介绍请查看SQLite [Write-Ahead Logging](https://sqlite.org/wal.html)。
+详细介绍请查看SQLite Write-Ahead Logging。

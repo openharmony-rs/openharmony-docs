@@ -30,7 +30,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 ### OH_JSVM function整合测试
 
 cpp测试全量代码，入口为TEST_FUNC
-<!-- @[jsvm_function_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/functioncall/src/main/cpp/hello.cpp) -->
+<!-- @jsvm_function_call -->
 
 ``` C++
 #include "napi/native_api.h"

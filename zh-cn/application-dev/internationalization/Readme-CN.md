@@ -7,39 +7,39 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
-- [Localization Kit简介](i18n-l10n.md)
+- Localization Kit简介
 - 应用国际化<!--i18n-->
-    - [国际化界面设计](i18n-ui-design.md)
-    - [区域ID与文化习惯划分](i18n-locale-culture.md)
+    - 国际化界面设计
+    - 区域ID与文化习惯划分
     - 语言与用户偏好<!--i18n-language-user-preferences-->
-        - [系统语言与区域](i18n-system-language-region.md)
-        - [应用偏好语言](i18n-preferred-language.md)
-        - [用户偏好](i18n-user-preferences.md)
-    - [时间日期国际化](i18n-time-date.md)
-    - [数字与度量衡国际化](i18n-numbers-weights-measures.md)
-    - [电话号码格式化](i18n-phone-numbers.md)
-    - [设置日历和历法](i18n-calendar.md)
+        - 系统语言与区域
+        - 应用偏好语言
+        - 用户偏好
+    - 时间日期国际化
+    - 数字与度量衡国际化
+    - 电话号码格式化
+    - 设置日历和历法
     - 时区与夏令时国际化<!--i18n-time-zone-dst-->
-        - [时区](i18n-time-zone.md)
-        - [夏令时跳变](i18n-dst-transition.md)
+        - 时区
+        - 夏令时跳变
     - 多语言排序<!--i18n-sorting-->
-        - [概述](i18n-sorting-overview.md)
-        - [本地习惯排序](i18n-sorting-local.md)
-        - [创建索引](i18n-sorting-index.md)
-    - [字符处理](i18n-character-processing.md)
+        - 概述
+        - 本地习惯排序
+        - 创建索引
+    - 字符处理
     - 本地化名称<!--i18n-name-localization-->
-        - [概述](i18n-display-overview.md)
-        - [本地化语言与地区名称](i18n-language-region-display.md)
+        - 概述
+        - 本地化语言与地区名称
 - 应用本地化<!--l10n-->
-    - [多语言适配](l10n-multilingual-resources.md)
+    - 多语言适配
     - 提升可翻译性<!--l10n-translation-->
-        - [避免硬编码与拼接](l10n-hard-coding-concatenate.md)
-        - [提供翻译场景](l10n-translation-scene.md)
-        - [支持单复数](l10n-singular-plural.md)
+        - 避免硬编码与拼接
+        - 提供翻译场景
+        - 支持单复数
 - 本地化测试<!--l10n-testing-->
     - 伪本地化测试<!--pseudo-i18n-testing-->
-        - [伪本地化测试概述](pseudo-i18n-testing-overview.md)
-        - [翻译伪本地化测试](pseudo-i18n-testing-translation.md)
-        - [界面镜像伪本地化测试](pseudo-i18n-testing-mirror.md)
-    - [语言测试](linguistic-testing.md)
-- [Localization Kit术语](localization-glossary.md)
+        - 伪本地化测试概述
+        - 翻译伪本地化测试
+        - 界面镜像伪本地化测试
+    - 语言测试
+- Localization Kit术语

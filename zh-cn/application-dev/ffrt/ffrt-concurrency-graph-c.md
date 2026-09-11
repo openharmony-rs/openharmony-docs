@@ -65,7 +65,7 @@ task4(OUT A);
 task5(OUT A);
 ```
 
-![image](figures/ffrt_figure3.png)
+image
 
 为表述方便，本文中的数据流图均以圆圈表示Task，方块表示数据。
 
@@ -79,11 +79,11 @@ task5(OUT A);
 
 用户上传视频到流媒体平台，处理步骤包含：视频解析A、视频转码B、视频缩略图生成C、视频水印添加D和视频发布E，其中步骤B和步骤C可以并行执行。任务流程如下图所示：
 
-![image](figures/ffrt_figure1.png)
+image
 
 借助FFRT提供的图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
 
-<!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
+<!-- @parallel_dep_c_header -->
 
 ``` C
 #include <cstdio>
@@ -94,7 +94,7 @@ task5(OUT A);
 #define LOG_TAG "ParallelTag"
 ```
 
-<!-- @[parallel_dep_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
+<!-- @parallel_dep_c -->
 
 ``` C++
 void FuncTaskA(void* arg)
@@ -177,7 +177,7 @@ int DependenceCExec()
 
 斐波那契数列中每个数字是前两个数字之和，计算斐波那契数的过程可以很好地通过数据对象来表达任务依赖关系。使用FFRT并发编程框架计算斐波那契数的代码如下所示：
 
-<!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
+<!-- @parallel_dep_c_header -->
 
 ``` C
 #include <cstdio>
@@ -188,7 +188,7 @@ int DependenceCExec()
 #define LOG_TAG "ParallelTag"
 ```
 
-<!-- @[parallel_fib_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
+<!-- @parallel_fib_c -->
 
 ``` C++
 const int FIB_NUM = 5;
@@ -261,7 +261,7 @@ Fibonacci(5) is 5
 
 各个任务在FFRT内部形成了一棵调用树：
 
-![image](figures/ffrt_figure2.png)
+image
 
 ## 接口说明
 

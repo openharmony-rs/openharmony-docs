@@ -35,7 +35,7 @@ CES（Common Event Service，公共事件服务）为应用程序提供订阅、
 <!--DelEnd-->
 
 **图1** 公共事件示意图  
-![common-event](figures/common-event.png)
+common-event
 
 ## 安全注意事项
 

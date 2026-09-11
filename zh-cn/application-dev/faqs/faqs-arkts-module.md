@@ -35,7 +35,7 @@
 
 (1) 打开应用工程级编译构建文件: entry > src/main/module.json5
 
-([OpenHarmony工程管理介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V3/ohos-project-overview-0000001218440650-V3))
+(OpenHarmony工程管理介绍)
 
 module.json5部分参数示例如下:
 ``` json5
@@ -218,7 +218,7 @@ export class Animal {
 ```
 
 ### 循环依赖的解决方法：
-[安全规则@security/no-cycle](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide_no-cycle-V5)
+安全规则@security/no-cycle
 
 
 ##  ArkTS 符号未初始化报错场景示例

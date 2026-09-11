@@ -31,7 +31,7 @@ NAPI方法在泳道图上被特殊标记为黄色，此类方法会调用到Nati
 
 图1 **ArkTS Callstack泳道图**
 
-![ArkTS Callstack泳道图](figures/arkts-callstack-eg.png)
+ArkTS Callstack泳道图
 
 **Details图**
 
@@ -39,7 +39,7 @@ NAPI方法在泳道图上被特殊标记为黄色，此类方法会调用到Nati
 
 图2 **阶段耗时详情示意图**
 
-![阶段耗时详情示意图](figures/details-img-eg.png)
+阶段耗时详情示意图
 
 从上图中我们不仅可以看到JS调用栈，还可以看到NAPI接口Native实现部分的C++调用栈。
 
@@ -59,17 +59,17 @@ Chrome浏览器JavaScript Profiler工具默认调用V8引擎提供的Profiler工
 
 图3 **JavaScript Profiler工具入口**
 
-![JavaScript Profiler工具入口](figures/javascript-profiler-entry.png)
+JavaScript Profiler工具入口
 
 图4 **加载cpuprofile文件**
 
-![加载cpuprofile文件](figures/load-cpuprofiler-file.png)
+加载cpuprofile文件
 
 如果找不到此工具，可勾选下图选项后F12重新打开。
 
 图5 **启用JavaScript Profiler功能**
 
-![启用JavaScript Profiler功能](figures/enable-cpuprofiler-func.png)
+启用JavaScript Profiler功能
 
 该工具可将性能分析数据展示在三种视图：时序火焰图（Chart）、比重图（Heavy）、树形图（Tree）。
 
@@ -77,13 +77,13 @@ Chrome浏览器JavaScript Profiler工具默认调用V8引擎提供的Profiler工
 
 图6 **时序火焰图（Chart）总览**
 
-![时序火焰图（Chart）总览](figures/chart-overview.png)
+时序火焰图（Chart）总览
 
 该视图从时间维度展示应用运行过程中每个时刻的函数调用栈，最为直观，时间轴0时刻代表开始采集，可通过鼠标滚轮放大局部。
 
 图7 **时序火焰图（Chart）详情**
 
-![时序火焰图（Chart）详情](figures/chart-details.png)
+时序火焰图（Chart）详情
 
 可将鼠标放在某一函数上，展示该函数详细信息，详情中包含以下几个字段：
 
@@ -121,11 +121,11 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 图8 **Chrome比重图（Heavy）示例**
 
-![Chrome比重图（Heavy）示例](figures/heavy-view.png)
+Chrome比重图（Heavy）示例
 
 图9 **VSCode比重图（Heavy）示例**
 
-![VSCode比重图（Heavy）示例](figures/vscode-cpuprofile-eg.png)
+VSCode比重图（Heavy）示例
 
 **树形图（Tree）**
 
@@ -137,7 +137,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 图10 **树形图（Tree）示例**
 
-![树形图（Tree）示例](figures/tree-view.png)
+树形图（Tree）示例
 
 ### 函数名标签(TAG)的相关说明
 
@@ -183,7 +183,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 图11 **时间占比统计示例**
 
-![时间占比统计示例](figures/time-distribution-statistic-eg.png)
+时间占比统计示例
 
 ## 数据采集方法及适用场景
 
@@ -206,7 +206,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
    图12 **DevEco Studio Profiler采集指引**
 
-   ![DevEco Studio Profiler采集指引](figures/deveco-studio-profiler-catch-guide.png)
+   DevEco Studio Profiler采集指引
 
 3. 点击开始录制按钮，箭头变成方块代表开始录制。
 
@@ -240,7 +240,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
    图13 **端口映射**
 
-   ![端口映射](figures/commandline-eg.png)
+   端口映射
 
 3. 在Chrome浏览器输入网址： `devtools://devtools/bundled/inspector.html?ws=//127.0.0.1:9006` ，端口号与上文一致，点击回车，进入JavaScript Profiler页面。
 
@@ -254,7 +254,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
     图14 **JavaScript Profile视图布局**
 
-   ![JavaScript Profiler视图布局](figures/javascript-profiler-view.png)
+   JavaScript Profiler视图布局
 
 ### hdc shell命令采集
 
@@ -340,7 +340,7 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
     图15 **加载cpuprofile文件**
 
-    ![加载cpuprofile文件](figures/load-cpuprofiler-file.png)
+    加载cpuprofile文件
 
 ### 应用代码插桩采集
 
@@ -376,4 +376,4 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
     图16 **加载cpuprofile文件**
 
-    ![加载cpuprofile文件](figures/load-cpuprofiler-file.png)
+    加载cpuprofile文件

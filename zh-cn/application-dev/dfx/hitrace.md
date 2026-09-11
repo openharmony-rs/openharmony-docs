@@ -47,7 +47,7 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 
 > **说明：**
 >
-> trace信息可以用两种不同的格式保存，分别为文本格式和二进制格式。文本格式的trace可以直接用文本编辑器查看，二进制格式的trace可以使用[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化trace分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
+> trace信息可以用两种不同的格式保存，分别为文本格式和二进制格式。文本格式的trace可以直接用文本编辑器查看，二进制格式的trace可以使用Smartperf_Host工具进行可视化trace分析。工具下载链接：developtools_smartperf_host官方发行版。
 
 
 ## 常用命令
@@ -617,7 +617,7 @@ hitrace --boot_trace off
 | --increment | 启用增量命名。启用后，输出文件名为`{file_prefix}_{n}.sys`，序号`n`从0开始；每次采集成功后序号加1。该选项须写在`--boot_trace`之后。 |
 | --file_prefix prefix | 设置输出文件名前缀，未指定时默认值为`boot_trace`。未启用`--increment`时，输出文件名为`{file_prefix}.sys`。 |
 
-配置成功后，将生成或覆盖配置文件`/data/local/tmp/boot_trace.cfg`。系统重启时，init进程会读取该配置文件并触发trace抓取，生成`.sys`文件。生成的`.sys`文件可使用[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)等工具进行分析。
+配置成功后，将生成或覆盖配置文件`/data/local/tmp/boot_trace.cfg`。系统重启时，init进程会读取该配置文件并触发trace抓取，生成`.sys`文件。生成的`.sys`文件可使用Smartperf_Host等工具进行分析。
 
 **使用样例1**：配置后续3次启动自动采集，采集tag为`sched`和`app`，单次时长20s：
 

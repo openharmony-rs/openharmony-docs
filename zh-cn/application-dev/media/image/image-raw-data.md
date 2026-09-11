@@ -19,7 +19,7 @@
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
    
-   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
+   <!-- @decodingPixelMap_import -->    
    
    ``` TypeScript
    // 导入相关模块。
@@ -33,7 +33,7 @@
 2. 获取图片。
    - 方法一：通过沙箱路径直接获取，此方法**仅适用**于应用沙箱中的图片。获取方式请参考获取应用文件路径。
      
-     <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_filePath -->   
      
      ``` TypeScript
      function getFilePath(context: Context, fileName: string): string {
@@ -44,7 +44,7 @@
 
    - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考@ohos.file.fs (文件管理)文档。该方法需要导入\@kit.CoreFileKit模块。
    
-     <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_fileFd -->   
      
      ``` TypeScript
      function getFileFd(context: Context, fileName: string): number | undefined {
@@ -62,7 +62,7 @@
       
    - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考getRawFileContent接口。该方法需要导入\@kit.LocalizationKit模块。
 
-     <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_fileBuffer -->   
      
      ``` TypeScript
      async function getFileBuffer(context: Context, fileName: string): Promise<ArrayBuffer | undefined> {
@@ -83,7 +83,7 @@
       
    - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考getRawFd接口。该方法需要导入\@kit.LocalizationKit模块。
    
-     <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_RawFd -->   
      
      ``` TypeScript
      async function getRawFd(context: Context, fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
@@ -103,7 +103,7 @@
 
    - 方法一：通过沙箱路径创建ImageSource。沙箱路径可以通过步骤2的方法一获取。
 
-     <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @createImageSource_filePath -->   
      
      ``` TypeScript
      // path为已获得的沙箱路径。
@@ -112,7 +112,7 @@
 
    - 方法二：通过文件描述符fd创建ImageSource。文件描述符可以通过步骤2的方法二获取。
 
-     <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @createImageSource_fd -->   
      
      ``` TypeScript
      // fd为已获得的文件描述符。
@@ -121,7 +121,7 @@
 
    - 方法三：通过缓冲区数组创建ImageSource。缓冲区数组可以通过步骤2的方法三获取。
 
-     <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @createImageSource_buffer -->   
      
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(buffer);
@@ -129,7 +129,7 @@
 
    - 方法四：通过资源文件的RawFileDescriptor创建ImageSource。RawFileDescriptor可以通过步骤2的方法四获取。
 
-     <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @createImageSource_rawFd -->   
      
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
@@ -137,7 +137,7 @@
 
 4. 获取ImageRawData图片对象并打印像素值。
 
-   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->      
+   <!-- @createImageRawData -->      
    
    ``` TypeScript
    async createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
@@ -169,7 +169,7 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
+   <!-- @release_pixelMapDecoder -->    
    
    ``` TypeScript
    async release() {

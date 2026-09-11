@@ -40,7 +40,7 @@ NodeController提供了一系列生命周期回调，通过makeNode回调返回�
 
 通过NodeController在NodeContainer下挂载自定义节点。
 
-<!-- @[place_holder_common](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/Common.ets) -->
+<!-- @place_holder_common -->
 
 ``` TypeScript
 // common.ets
@@ -78,7 +78,7 @@ export function getOrCreateNode(uiContext: UIContext): BuilderNode<[Params]> | n
 }
 ```
 
-<!-- @[place_holder_custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/CustomNode.ets) -->
+<!-- @place_holder_custom_node -->
 
 ``` TypeScript
 // Index.ets
@@ -168,7 +168,7 @@ struct Index {
 
 NodeContainer是一个容器节点，布局参考左上角对齐的Stack组件，不会按照父容器的布局规则进行布局。ContentSlot只是一个语法节点，不参与布局，添加的子节点会按照父容器的布局规则进行布局。
 
-<!-- @[place_holder_layout_diff](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserPlaceHolder/entry/src/main/ets/pages/LayoutDiff.ets) -->
+<!-- @place_holder_layout_diff -->
 
 ``` TypeScript
 import { FrameNode, NodeContent, NodeController, typeNode, UIContext } from '@kit.ArkUI';
@@ -287,4 +287,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_user-defined-node-01](figures/user-defined-node-01.gif)
+zh-cn_image_user-defined-node-01

@@ -44,7 +44,7 @@ libnative_fence.so
 #include <unistd.h>
 ```
 1. **使用signalfd()接口创建fenceFd**。
-    <!-- @[create_fencefd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @create_fencefd -->
     
     ``` C++
     sigset_t mask;
@@ -56,7 +56,7 @@ libnative_fence.so
     ```
 
 2. **判断传入的fenceFd是否合法**。
-    <!-- @[check_fence_invalid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @check_fence_invalid -->
     
     ``` C++
     bool isValid = OH_NativeFence_IsValid(INVALID_FD);
@@ -66,7 +66,7 @@ libnative_fence.so
     ```
 
 3. **调用OH_NativeFence_Wait阻塞接口，等待fence完成后进行下一步操作**。
-    <!-- @[wait_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @wait_fence -->
     
     ``` C++
     constexpr uint32_t TIMEOUT_MS = 5000;
@@ -75,7 +75,7 @@ libnative_fence.so
     ```
     
 4. **调用OH_NativeFence_WaitForever阻塞接口，等待fence完成后进行下一步操作**。
-    <!-- @[wait_fence_forever](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @wait_fence_forever -->
     
     ``` C++
     bool result2 = false;
@@ -95,7 +95,7 @@ libnative_fence.so
 5. **GPU或CPU发送同步信号(signal)，通知fenceFd解除阻塞**。
 
 6. **关闭fenceFd**。
-    <!-- @[close_fence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeFence/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @close_fence -->
     
     ``` C++
     OH_NativeFence_Close(sfd);
@@ -105,4 +105,4 @@ libnative_fence.so
 
 针对NativeFence的开发，有以下相关实例可供参考：
 
-- [Native Fence（API20）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/NdkNativeFence)
+- Native Fence（API20）

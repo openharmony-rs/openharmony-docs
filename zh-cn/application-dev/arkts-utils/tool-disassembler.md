@@ -44,7 +44,7 @@ options选项说明：
 
 假设已存在方舟字节码文件：test.abc，其源代码如下：
 
-<!-- @[disassembler_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Disassembler.ts) -->
+<!-- @disassembler_source -->
 
 ``` TypeScript
 // Disassembler.ts

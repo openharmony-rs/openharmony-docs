@@ -33,7 +33,7 @@ form是一个表单容器，支持容器内Input组件内容的提交和重置�
 }
 ```
 
-![form-Component](figures/form-Component.png)
+form-Component
 
 
 ## 实现表单缩放
@@ -74,7 +74,7 @@ form是一个表单容器，支持容器内Input组件内容的提交和重置�
 ```
 
 
-![Form-Style](figures/Form-Style.gif)
+Form-Style
 
 
 ## 添加响应事件
@@ -138,7 +138,7 @@ export default{
 ```
 
 
-![Response-Events](figures/Response-Events.gif)
+Response-Events
 
 
 ## 场景示例
@@ -218,4 +218,4 @@ export default {
 }
 ```
 
-![Example-Scenario-2](figures/Example-Scenario-2.gif)
+Example-Scenario-2

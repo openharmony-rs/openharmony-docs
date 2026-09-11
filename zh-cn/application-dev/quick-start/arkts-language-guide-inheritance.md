@@ -16,7 +16,7 @@
 
 继承通过`extends`关键字建立父子类层次，子类复用父类成员并可扩展或重写，实现多态。
 
-<!-- @[extends_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @extends_syntax -->
 
 ``` TypeScript
 class Parent {
@@ -30,7 +30,7 @@ class Child extends Parent {
 
 继承让子类复用父类成员以减少重复代码、随父类修改自动同步提升可维护性、通过重写实现多态，并建立清晰的类型层次。
 
-<!-- @[basic_inheritance_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @basic_inheritance_example -->
 
 ``` TypeScript
 // 父类（基类）
@@ -82,7 +82,7 @@ dog.fetch();   // 'Max fetches the ball'（新增方法）
 
 基类（父类）提供通用成员供复用，派生类（子类）在继承的基础上特化扩展，通过`extends`关键字建立层次关系。
 
-<!-- @[base_and_derived_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @base_and_derived_class -->
 
 ``` TypeScript
 // 基类（Base Class）：被继承的类
@@ -141,7 +141,7 @@ console.info(`${motorcycle.getInfo()}`); // 'Honda sport motorcycle'
 
 ArkTS只支持单继承，一个子类只能通过`extends`继承一个父类，不支持多继承（如`class C extends A, B`会编译报错）。限制为单继承的原因是：多继承会引入菱形继承问题——当两个父类定义了同名方法时，子类无法确定继承哪一个，导致歧义。若需要复用多个类型的行为，使用`implements`实现多个接口替代多继承，接口只定义契约不包含实现，不会产生冲突。
 
-<!-- @[ts_single_inheritance_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_single_inheritance_limitation -->
 
 ``` TypeScript
 // ArkTS只支持单继承：一个子类只能有一个父类
@@ -175,7 +175,7 @@ child.methodA();  // 'Method A', 'Child overrides Method A'
 
 需要组合多个类型的行为时，可以通过实现多个接口来替代多继承。
 
-<!-- @[interface_multi_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @interface_multi_implementation -->
 
 ``` TypeScript
 // 多继承的替代方案：接口实现
@@ -208,7 +208,7 @@ ArkTS与TypeScript均只支持单类继承（一个子类只能有一个父类�
 
 通过继承复用父类的属性和方法，避免在多个子类中重复编写相同逻辑。
 
-<!-- @[inheritance_code_reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @inheritance_code_reuse -->
 
 ``` TypeScript
 // 不使用继承：重复代码
@@ -318,7 +318,7 @@ cat.meow();   // 子类特有方法
 
 通过`extends`关键字声明继承关系，子类自动获得父类的public和protected成员，可在子类中新增或重写成员。
 
-<!-- @[extends_keyword_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @extends_keyword_usage -->
 
 ``` TypeScript
 // 基类定义
@@ -390,7 +390,7 @@ console.info(`${rectangle.getArea()}`);
 
 子类实例同时包含父类和自身的成员，通过`super`关键字可访问父类的构造函数、方法和属性。
 
-<!-- @[parent_child_relation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @parent_child_relation -->
 
 ``` TypeScript
 class Employee {
@@ -459,7 +459,7 @@ manager.manage();                  // 'Alice manages 10 people in Engineering'
 
 空子类是不添加新成员的子类，用途包括：类型标记（如`class RegularUser extends User`和`class PremiumUser extends User`通过类型区分用户等级）、为未来扩展预留继承位置、在不修改父类的前提下通过`instanceof`做运行时区分。
 
-<!-- @[empty_child_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @empty_child_class -->
 
 ``` TypeScript
 class Base {
@@ -528,7 +528,7 @@ class FutureFeature extends Base {
 
 继承可形成多层结构，子类逐级继承祖先链上的成员，建议层级不超过3层以控制复杂度。
 
-<!-- @[multi_level_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @multi_level_inheritance -->
 
 ``` TypeScript
 // 继承层级：多层继承
@@ -584,7 +584,7 @@ multiLevelChild.methodGrandParent();     // 'MultiLevelParent overrides GrandPar
 
 子类继承父类的实例属性和方法是继承机制的核心功能，根据访问修饰符决定可继承的内容及访问权限。
 
-<!-- @[ts_access_modifier_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_access_modifier_inheritance -->
 
 ``` TypeScript
 class Parent {
@@ -644,7 +644,7 @@ accessChild.testPrivate();    // 'Private method'
 
 子类继承父类的静态属性和方法，通过类名访问继承的静态成员。
 
-<!-- @[static_member_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @static_member_inheritance -->
 
 ``` TypeScript
 class MemberBase {
@@ -702,7 +702,7 @@ console.info(`${derived.getInheritedStaticValue()}`);  // 100
 
 子类可访问父类的public和protected成员，private成员不可直接访问；通过访问修饰符控制成员在继承链中的可见性。
 
-<!-- @[ts_access_permission_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_access_permission_rules -->
 
 ``` TypeScript
 class AccessBase {
@@ -771,7 +771,7 @@ console.info(`${permChild.privateProp}`);   // 编译错误
 
 子类无法访问的父类成员主要是private成员，通过封装保护父类的内部实现。
 
-<!-- @[ts_private_member_restriction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_private_member_restriction -->
 
 ``` TypeScript
 class SecretBase {
@@ -836,7 +836,7 @@ console.info(`${secret.getSecretKey()}`);  // newsecretkey
 
 方法重写规则要求子类与父类方法签名一致且访问修饰符不能更严格。
 
-<!-- @[method_override](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @method_override -->
 
 ``` TypeScript
 class Communicator {
@@ -881,7 +881,7 @@ email.sendHtmlEmail('<p>Content</p>');
 
 重写方法的参数和返回值必须与父类方法保持匹配，确保类型安全。
 
-<!-- @[ts_method_signature_match](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_method_signature_match -->
 
 ``` TypeScript
 class NumberProcessor {
@@ -930,7 +930,7 @@ console.info(`${baseProcessor.process(5).toString()}`);  // 15（调用子类重
 
 子类方法的访问权限必须不低于父类方法。
 
-<!-- @[ts_override_access_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_override_access_permission -->
 
 ``` TypeScript
 class AccessParent {
@@ -989,7 +989,7 @@ overrideChild.protectedMethod();  // 'Child public (was protected)'
 
 使用`super.方法名()`调用父类实例方法，常在重写方法中复用父类逻辑后再添加子类特有行为。
 
-<!-- @[super_call_parent_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @super_call_parent_method -->
 
 ``` TypeScript
 class Worker {
@@ -1051,7 +1051,7 @@ parentManager.fullDay();
 
 通过`super()`调用父类构造函数，用于初始化子类实例中的父类部分，必须放在子类构造函数的第一行。
 
-<!-- @[super_call_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @super_call_constructor -->
 
 ``` TypeScript
 class Person {
@@ -1104,7 +1104,7 @@ console.info(`${employee.getInfo()}`);  // 'Bob, 30, Engineering'
 
 子类静态方法可通过类名或super关键字调用父类静态成员。
 
-<!-- @[static_method_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @static_method_call -->
 
 ``` TypeScript
 class StaticBase {
@@ -1159,7 +1159,7 @@ StaticChild.callViaSuper();         // 'Base static method'
 
 super的使用场景包括：调用父类构造函数（`super()`）、调用父类方法（`super.method()`）、在静态方法中调用父类静态方法（`super.staticMethod()`）；限制包括：`super()`必须在构造函数第一行、不能通过`super`直接访问父类属性（应使用`this`）。
 
-<!-- @[ts_super_usage_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_super_usage_limitation -->
 
 ``` TypeScript
 class SuperBase {
@@ -1222,7 +1222,7 @@ super使用场景总结：`super()`在构造函数中调用父类构造，`super
 
 子类构造函数的默认行为是编译器自动生成调用父类构造函数的代码。
 
-<!-- @[auto_constructor_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @auto_constructor_call -->
 
 ``` TypeScript
 class SimpleParent {
@@ -1272,7 +1272,7 @@ console.info(`${callEmpty.name}`);  // 'custom'
 
 子类构造函数必须在任何其他操作之前调用super()，以确保父类部分正确初始化。
 
-<!-- @[super_call_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @super_call_rules -->
 
 ``` TypeScript
 class RequiredParent {
@@ -1326,7 +1326,7 @@ super() 调用规则：子类构造函数必须调用`super()`，且必须位于
 
 当父类有构造函数时，子类构造函数必须调用`super()`且必须是第一条语句（在访问`this`之前）。`super()`的参数须与父类构造函数匹配。若子类未定义构造函数，编译器自动生成默认`super()`调用。
 
-<!-- @[ts_super_mandatory_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_super_mandatory_call -->
 
 ``` TypeScript
 // 必须调用super() 的场景：
@@ -1394,7 +1394,7 @@ class TimingChild extends StrictParent {
 
 子类构造函数通过super()调用将参数传递给父类构造函数进行初始化。
 
-<!-- @[constructor_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @constructor_parameter_passing -->
 
 ``` TypeScript
 class MultiParamParent {
@@ -1470,7 +1470,7 @@ class DefaultValueChild extends DefaultValueParent {
 
 TypeScript类继承底层基于原型链，实例通过`__proto__`逐级向上查找继承的属性和方法。
 
-<!-- @[prototype_chain_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @prototype_chain_inheritance -->
 
 ``` TypeScript
 class PrototypeBase {
@@ -1534,7 +1534,7 @@ console.info(`${chainDog instanceof Object}`);   // true
 
 成员查找沿原型链从自身向上一级级查找：先查实例自身属性，未命中则查父类原型，依次向上直到Object.prototype。
 
-<!-- @[prototype_chain_lookup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @prototype_chain_lookup -->
 
 ``` TypeScript
 class ChainBase {
@@ -1616,7 +1616,7 @@ class LookupChild extends LookupParent {
 
 原型继承与类继承是两种继承方式，类继承是原型继承的语法糖。`extends`关键字实现原型链继承，`super`关键字调用父类构造函数和方法，类方法定义在原型上。ArkTS不支持原型赋值和`function`表达式，使用`class extends`实现继承，通过`instanceof`验证原型链关系。
 
-<!-- @[class_inheritance_essence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @class_inheritance_essence -->
 
 ``` TypeScript
 class ProtoAnimalClass {
@@ -1655,7 +1655,7 @@ console.info(`${protoDog instanceof ProtoAnimalClass}`); // true
 
 **TypeScript对照**
 
-<!-- @[ts_class_inheritance_essence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_class_inheritance_essence -->
 
 ``` TypeScript
 // 原型继承（传统方式），ArkTS不支持prototype赋值和function表达式
@@ -1688,7 +1688,7 @@ dogProtoInstance.bark();
 
 继承链建议不超过3层，过深的继承会增加理解难度和成员查找开销；复杂场景可考虑组合模式替代深层继承。
 
-<!-- @[inheritance_depth_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @inheritance_depth_limit -->
 
 ``` TypeScript
 // 推荐层级：不超过3层
@@ -1749,7 +1749,7 @@ class CombinedFeatures {
 
 多态是面向对象编程的核心特性，允许不同子类对同一方法有不同实现，通过父类引用调用时表现出不同行为。
 
-<!-- @[polymorphism_concept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @polymorphism_concept -->
 
 ``` TypeScript
 // 多态示例：不同子类对同一方法的不同实现
@@ -1822,7 +1822,7 @@ for (let shape of shapes) {
 
 抽象类是不能被实例化的类，用于定义子类的通用模板和契约。
 
-<!-- @[ts_abstract_class_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_abstract_class_usage -->
 
 ``` TypeScript
 // 抽象类定义：不能实例化，只能继承
@@ -1903,7 +1903,7 @@ cat.sleep();  // Whiskers is sleeping（继承的方法）
 
 `implements`子句用于检查类是否满足接口契约。与`extends`不同，`implements`仅做类型检查，不继承实现。
 
-<!-- @[implements_clause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Inheritance.ets) -->
+<!-- @implements_clause -->
 
 ``` TypeScript
 interface InhComparable {
@@ -1947,7 +1947,7 @@ class InhDiscountedProduct extends InhProduct implements InhComparable {
 
 **TypeScript对照**
 
-<!-- @[ts_inherit_builtin_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_inherit_builtin_error -->
 
 ``` TypeScript
 // TypeScript对照写法，演示继承Error时修复原型链
@@ -1981,7 +1981,7 @@ TypeScript中类之间的类型兼容性基于结构类型（鸭子类型），�
 
 **TypeScript对照**
 
-<!-- @[ts_class_structural_relation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Inheritance.ts) -->
+<!-- @ts_class_structural_relation -->
 
 ``` TypeScript
 class InhPoint1 {

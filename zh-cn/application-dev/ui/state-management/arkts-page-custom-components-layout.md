@@ -18,7 +18,7 @@
 
 **示例：**
 
-<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
+<!-- @CustomLayout -->
 
 ``` TypeScript
 // xxx.ets
@@ -84,4 +84,4 @@ struct CustomLayout {
 }
 ```
 
-![custom-component-custom-layout](figures/custom-component-custom-layout.png)
+custom-component-custom-layout

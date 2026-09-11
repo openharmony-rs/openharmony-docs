@@ -27,7 +27,7 @@
 
 以下示例展示如何在module.json5中配置enable模式：
 
-<!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
+<!-- @MaterialStateConfig -->
 
 ```json5
 {

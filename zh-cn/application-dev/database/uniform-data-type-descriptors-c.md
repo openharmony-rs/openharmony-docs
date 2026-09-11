@@ -44,7 +44,7 @@ libudmf.so, libhilog_ndk.z.so
 
 ## 引用头文件
 
-<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @import_module -->
 
 ``` C++
 #include <cstdio>
@@ -72,7 +72,7 @@ libudmf.so, libhilog_ndk.z.so
 7. 比较两种方式获取到的typeIds1[0]是否是typeIds2[0]的高层级类型。
 8. 使用结束后，删除上述步骤中产生的指针。
 
-<!-- @[uniform_data_type_descriptors_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @uniform_data_type_descriptors_c -->
 
 ``` C++
 // 1. 通过文件后缀名获取纯文本类型的UTD的typeId

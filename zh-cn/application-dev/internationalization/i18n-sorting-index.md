@@ -17,7 +17,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/MultilingualSorting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -25,7 +25,7 @@
 
 2. 获取索引列表和索引值。
 
-   <!-- @[create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/MultilingualSorting.ets) -->
+   <!-- @create_index -->
    
    ``` TypeScript
    // 创建索引

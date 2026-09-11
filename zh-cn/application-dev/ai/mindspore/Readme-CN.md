@@ -7,14 +7,14 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
-- [MindSpore Lite Kit简介](MindSpore-Lite-Kit-Introduction.md)
-- [使用MindSpore Lite进行模型转换](mindspore-lite-converter-guidelines.md)
+- MindSpore Lite Kit简介
+- 使用MindSpore Lite进行模型转换
 - 模型部署<!--deployment-->
-  - [使用MindSpore Lite进行模型推理 (C/C++)](mindspore-lite-guidelines.md)
-  - [使用MindSpore Lite进行端侧训练 (C/C++)](mindspore-lite-train-guidelines.md)
-- [使用MindSpore Lite实现图像分类 (ArkTS)](mindspore-guidelines-based-js.md)
-- [使用MindSpore Lite实现图像分类 (C/C++)](mindspore-guidelines-based-native.md)
-- [使用MindSpore Lite实现语音识别 (C/C++)](mindspore-asr-based-native.md)
+  - 使用MindSpore Lite进行模型推理 (C/C++)
+  - 使用MindSpore Lite进行端侧训练 (C/C++)
+- 使用MindSpore Lite实现图像分类 (ArkTS)
+- 使用MindSpore Lite实现图像分类 (C/C++)
+- 使用MindSpore Lite实现语音识别 (C/C++)
 - 附录<!--mindspore-lite-appendix-->
-  - [MindSpore Lite Kit算子支持列表](mindspore-lite-supported-operators.md)
-  - [MindSpore Lite Kit术语](mindspore-lite-term.md)
+  - MindSpore Lite Kit算子支持列表
+  - MindSpore Lite Kit术语

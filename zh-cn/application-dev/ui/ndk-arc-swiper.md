@@ -16,9 +16,9 @@ ArkUI开发框架支持在NDK接口使用弧形滑块视图容器ArcSwiper，提
 
 本示例通过调用createNode创建ARKUI_NODE_ARC_SWIPER类型的UI组件节点，用于后续设置属性等操作。并通过addChild在ArcSwiper组件下挂载多个Text文本组件，作为轮播页面内容。
 
-本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->NDKArcSwiperSample<!--RP1End-->。
 
-<!-- @[arc_swiper_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @arc_swiper_create -->
 
 ``` C++
 ArkUI_NativeNodeAPI_1 *nodeApi = nullptr;
@@ -43,9 +43,9 @@ AddChild(arcSwiper, nodeApi);
 | NODE_ARC_SWIPER_EFFECT_MODE | 滑动到可滚动内容边界时的边缘滑动效果，参数类型为ArkUI_EdgeEffect。 |
 | NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION | 是否禁用转场动画。 |
 
-本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->NDKArcSwiperSample<!--RP1End-->。
 
-<!-- @[arc_swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @arc_swiper_attribute -->
 
 ``` C++
 ArkUI_NumberValue value[] = {0};
@@ -103,9 +103,9 @@ nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_INDICATOR, &indicatorItem);
 | NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END | 页面切换动画结束时，当前显示页面的索引和当前页面位移。 |
 | NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE | 页面跟手滑动过程中逐帧触发，返回当前显示页面的索引和当前页面位移。 |
 
-本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->NDKArcSwiperSample<!--RP1End-->。
 
-<!-- @[arc_swiper_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @arc_swiper_event -->
 
 ``` C++
 nodeApi->registerNodeEvent(arcSwiper, NODE_ARC_SWIPER_EVENT_ON_CHANGE, 0, nullptr);  // 0: onChange事件id

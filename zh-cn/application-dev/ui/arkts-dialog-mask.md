@@ -73,7 +73,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 设置autoCancel为false，取消默认点击蒙层时弹窗消失。
 
-<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @custom_dialog_control_autoCancel --> 
 
 ``` TypeScript
 autoCancelOpt: promptAction.CustomDialogOptions = {
@@ -100,11 +100,11 @@ build() {
   }
 }
 ```
- ![dialog_mask_autoCancel](figures/dialog_mask_autoCancel.gif)
+ dialog_mask_autoCancel
 
 设置isModal为false，将默认的模态弹出框变为非模态弹出框。
 
-<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @custom_dialog_control_modal --> 
 
 ``` TypeScript
 modalOpt: promptAction.CustomDialogOptions = {
@@ -132,7 +132,7 @@ build() {
   }
 }
 ```
- ![dialog_mask_modal](figures/dialog_mask_modal.PNG)
+ dialog_mask_modal
 
 
 ## 弹出框蒙层样式控制
@@ -142,7 +142,7 @@ build() {
 
 设置maskRect和maskColor，实现蒙层区域和蒙层颜色的设置。
 
-<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @custom_dialog_control_mask --> 
 
 ``` TypeScript
 maskOpt: promptAction.CustomDialogOptions = {
@@ -176,11 +176,11 @@ build() {
   }
 }
 ```
- ![dialog_mask_mask](figures/dialog_mask_mask.PNG)
+ dialog_mask_mask
 
 
 在levelMode为LevelMode.EMBEDDED下，展示不同immersiveMode对蒙层在导航栏和状态栏的延伸效果。
-<!-- @[custom_dialog_control_immersive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @custom_dialog_control_immersive -->
 
 ``` TypeScript
   @State immersiveMode: ImmersiveMode = ImmersiveMode.DEFAULT;
@@ -211,14 +211,14 @@ build() {
     }
   }
 ```
- ![dialog_mask_immersiveMode](figures/dialog_mask_immersiveMode.gif)
+ dialog_mask_immersiveMode
 
 ## 弹出框蒙层动画控制
 
 该示例通过transition和maskTransition分别展示弹出框在蒙层动画方面的能力。
 
 设置transition，实现弹出框与蒙层整体的动画。
-<!-- @[custom_dialog_control_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @custom_dialog_control_transition -->
 
 ``` TypeScript
   transitionOpt: promptAction.CustomDialogOptions = {
@@ -246,10 +246,10 @@ build() {
     }
   }
 ```
- ![dialog_mask_transition](figures/dialog_mask_transition.gif)
+ dialog_mask_transition
 
 设置maskTransition，实现弹出框中蒙层单独的动画定制能力。
-<!-- @[custom_dialog_control_mask_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @custom_dialog_control_mask_transition -->
 
 ``` TypeScript
 Button('openCustomDialog maskTransition')
@@ -265,11 +265,11 @@ Button('openCustomDialog maskTransition')
     });
   })
 ```
- ![dialog_mask_maskTransition](figures/dialog_mask_maskTransition.gif)
+ dialog_mask_maskTransition
 
 CustomDialog虽然不支持transition接口，但与之对应的openAnimation和closeAnimation接口在动画的打开和关闭时可进行定制，示例代码如下：
 
-<!-- @[custom_dialog_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogAnimation.ets) -->
+<!-- @custom_dialog_animation -->
 
 ``` TypeScript
 // xxx.ets
@@ -329,12 +329,12 @@ export struct CustomDialogAnimation {
   }
 }
 ```
- ![CustomDialogController](figures/dialog_mask_CustomDialogController.gif)
+ CustomDialogController
 
 
 ## 完整示例
 
-<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
+<!-- @custom_dialog_control --> 
 
 ``` TypeScript
 // xxx.ets
@@ -453,4 +453,4 @@ export struct CustomDialogControl {
   }
 }
 ```
- ![openCustomDialog](figures/dialog_mask_openCustomDialog.gif)
+ openCustomDialog

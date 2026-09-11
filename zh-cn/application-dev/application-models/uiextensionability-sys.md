@@ -42,7 +42,7 @@ UIExtensionAbility支持多实例，每个嵌入式显示对应一个UIExtension
 
 **图1** bundle模型配置示意图
 
-![uiextability-bundle-processmodel](figures/uiextability-bundle-processmodel.png)
+uiextability-bundle-processmodel
 
 **Index.ets示例代码如下：**
 ```ts
@@ -139,7 +139,7 @@ struct Index {
 ```
 **图2** 根据上述代码，生成的Index页面如下：
 
-![uiextension-bundle-example](figures/uiextability-bundle-example.png)
+uiextension-bundle-example
 
 采用该进程模型，进程名格式为：
 
@@ -149,14 +149,14 @@ process name [{bundleName}:{UIExtensionAbility的类型}]
 
 **图3** 进程模型展示
 
-![uiextension-bundle-process-example](figures/uiextability-bundle-process-example.png)
+uiextension-bundle-process-example
 
 ### 同UIExtensionAbility类的所有UIExtensionAbility共进程
 根据UIExtensionAbility类进行分配进程，拉起多个同样的UIExtensionAbility实例时，这些实例将配置在同一个进程中。将同UIExtensionAbility类配置在同一个进程下，方便应用针对UIExtensionAbility类型对实例进行管理。
 
 **图4** type模型配置示意图
 
-![uiextability-type-processmodel](figures/uiextability-type-processmodel.png)
+uiextability-type-processmodel
 
 **Index.ets示例代码如下：**
 ```ts
@@ -253,7 +253,7 @@ struct Index {
 ```
 **图5** 根据上述代码，生成的Index页面如下：
 
-![uiextability-type-example](figures/uiextability-type-example.png)
+uiextability-type-example
 
 采用该进程模型，进程名格式为：
 
@@ -263,14 +263,14 @@ process name [{bundleName}:{UIExtensionAbility名}]
 
 **图6** 进程模型展示
 
-![uiextability-type-process-example](figures/uiexteability-type-precess-example.png)
+uiextability-type-process-example
 
 ### UIExtensionAbility实例独立进程
 根据UIExtensionAbility实例进行分配进程，配置了instance的UIExtensionAbility实例，将每个实例独立一个进程。独立进程的场景下，UIExtensionAbility实例之间只能通过跨进程进行通信，但实例之间的状态不会彼此影响，安全性更高。
 
 **图7** instance模型配置示意图
 
-![uiextability-instance-processmodel](figures/uiextability-instance-processmodel.png)
+uiextability-instance-processmodel
 
 
 **Index.ets示例代码如下：**
@@ -368,7 +368,7 @@ struct Index {
 ```
 **图8** 根据上述代码，生成的Index页面如下：
 
-![uiextability-instance-example](figures/uiextability-instance-example.png)
+uiextability-instance-example
 
 采用该进程模型，进程名格式为：
 
@@ -378,7 +378,7 @@ process name [{bundleName}:{UIExtensionAbility的类型}:{实例后缀}]
 
 **图9** 进程模型展示
 
-![uiextability-instance-process-example](figures/uiextability-instance-process-example.png)
+uiextability-instance-process-example
 
 UIExtensionAbility通过UIExtensionContext和UIExtensionContentSession提供相关能力。本文描述中称被启动的UIExtensionAbility为提供方，称启动UIExtensionAbility的UIExtensionComponent组件为使用方。
 

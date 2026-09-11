@@ -14,7 +14,7 @@
     - ArkTS卡片统一了卡片和应用页面的开发范式，应用页面的布局可以直接复用到卡片布局中，提升开发体验和开发效率。具体请参考图1 卡片工程结构对比。
 
     **图1** 卡片工程结构对比   
-    ![WidgetProject](figures/WidgetProject.png)
+    WidgetProject
 
 2. 卡片能力增强
 
@@ -33,10 +33,10 @@
 - 卡片渲染服务：用于管理卡片渲染实例，渲染实例与卡片使用方的<!--Del--><!--DelEnd-->卡片组件<!--Del--><!--DelEnd-->一一绑定。卡片渲染服务根据form_config.json配置的卡片信息运行widget.abc文件的卡片页面代码进行渲染，并将渲染后的数据发送至卡片使用方对应的<!--Del--><!--DelEnd-->卡片组件<!--Del--><!--DelEnd-->。
 
 **图2** ArkTS卡片实现原理  
-![WidgetPrinciple](figures/WidgetPrinciple.png)
+WidgetPrinciple
 
 **图3** ArkTS卡片渲染服务运行原理  
-![WidgetRender](figures/WidgetRender.png)
+WidgetRender
 
 与JS卡片相比，ArkTS卡片支持在卡片中运行逻辑代码，为确保ArkTS卡片发生问题后不影响卡片使用方应用的使用，ArkTS卡片新增了卡片渲染服务用于运行卡片页面代码widget.abc，卡片渲染服务由卡片管理服务管理。卡片使用方的每个卡片组件都对应了卡片渲染服务里的一个渲染实例，同一卡片提供方的渲染实例运行在同一个ArkTS虚拟机运行环境中，不同卡片提供方的渲染实例运行在不同的ArkTS虚拟机运行环境中，通过ArkTS虚拟机运行环境隔离不同卡片提供方卡片之间的资源与状态。开发过程中需要注意的是globalThis对象的使用，相同卡片提供方的卡片globalThis对象是同一个，不同卡片提供方的卡片globalThis对象是不同的。
 
@@ -55,7 +55,7 @@ ArkTS卡片分为动态卡片、静态卡片和互动卡片三种类型。
 ArkTS卡片中提供了postCardAction接口用于卡片Card.ets和FormExtensionAbility之间的交互，当前支持router、message和call三种类型的事件，仅在卡片控件的点击事件中可以调用。
 
 **图4** ArkTS事件交互实现原理<br>
-![WidgetPostCardAction](figures/WidgetPostCardAction.png)
+WidgetPostCardAction
 
 动态卡片事件的主要使用场景如下：
 - router事件：可以使用router事件跳转到应用自身的UIAbility，以完成点击卡片跳转应用内页面的交互功能。
@@ -93,10 +93,10 @@ ArkTS卡片支持在UI内运行逻辑代码，相较于JS卡片具备了更加�
 
 - 不支持setTimeout。
 
-- DevEco Studio的相关约束请参考[使用约束](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-service-widget#section1181172254318)。
+- DevEco Studio的相关约束请参考使用约束。
 
 ## 相关实例
 
 针对ArkTS卡片开发，有以下相关实例可供参考：
 
-- [Stage模型卡片JS与C++通信（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/FormGame)
+- Stage模型卡片JS与C++通信（ArkTS）（API10）

@@ -53,7 +53,7 @@
 效果展示：
 
 <!--RP4-->
-![image-location](figures/image-location.png)
+image-location
 <!--RP4End-->
 
 1. 申请ohos.permission.LOCATION、ohos.permission.APPROXIMATELY_LOCATION权限，配置方式请参见声明权限。
@@ -62,7 +62,7 @@
 
    在进行权限申请之前，需要先检查当前应用程序是否已经被授予权限。可以通过调用checkAccessToken()方法来校验当前是否已经授权。如果已经授权，则可以直接访问目标操作，否则需要进行下一步操作，即向用户申请授权。
 
-   <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->    
+   <!-- @check_permission_func -->    
    
    ``` TypeScript
    import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
@@ -125,7 +125,7 @@
 
    - 在UIAbility中向用户申请授权。
 
-   <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->    
+   <!-- @request_permission_in_UIAbility -->    
    
    ``` TypeScript
    import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
@@ -171,7 +171,7 @@
 
    - 在UI中向用户申请授权。
 
-   <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->    
+   <!-- @request_permission_in_UI -->    
    
    ``` TypeScript
    import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';

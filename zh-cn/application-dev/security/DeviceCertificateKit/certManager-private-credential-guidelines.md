@@ -13,7 +13,7 @@
 
 您的应用可以读取已安装应用证书凭据的证书链，及使用对应私钥进行签名，但不能读取私钥数据（保护私钥数据的安全）。应用证书凭据的公私钥对存储在Universal Keystore Kit。
 
-![](figures/certificate-manager-app-credential.PNG)
+
 
 > **说明：**
 >
@@ -81,7 +81,7 @@
 
 ## 样例代码
 
-<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
+<!-- @certificate_management_development_guidance -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

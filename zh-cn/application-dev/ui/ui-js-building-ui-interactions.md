@@ -8,7 +8,7 @@
 
 添加交互可以通过在组件上关联事件实现。本节将介绍如何用div、text、image组件关联click事件，构建一个如下图所示的点赞按钮。
 
-![Adding-Interactions](figures/Adding-Interactions.gif)
+Adding-Interactions
 
 
 点赞按钮通过一个div组件关联click事件实现。div组件包含一个image组件和一个text组件：

@@ -29,7 +29,7 @@
    import { Environment } from '@kit.CoreFileKit';
    
    ```
-   <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
+   <!--@get_user_dir_example-->    
    
    ``` TypeScript
    function getUserDirExample() {
@@ -59,7 +59,7 @@
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    
    ```
-   <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@read_user_download_dir_example-->      
    
    ``` TypeScript
    function readUserDownloadDirExample(context: common.UIAbilityContext) {
@@ -97,7 +97,7 @@
    import { fileIo } from '@kit.CoreFileKit';
    
    ```
-   <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@write_user_download_dir_example-->      
    
    ``` TypeScript
    function writeUserDownloadDirExample() {
@@ -161,7 +161,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <cstdlib>
    
    ```
-   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
+   <!--@get_user_download_dir_example-->      
    
    ``` C++
    void GetUserDownloadDirExample()
@@ -185,7 +185,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <dirent.h>
    
    ```
-   <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@scan_user_download_dir_path_example-->    
    
    ``` C++
    void ScanUserDownloadDirPathExample()
@@ -226,7 +226,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <fstream>
    
    ```
-   <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@write_user_download_dir_path_example-->    
    
    ``` C++
    void WriteUserDownloadDirPathExample()

@@ -67,7 +67,7 @@ export default {
 ```
 
 
-![chart-Component](figures/chart-Component.png)
+chart-Component
 
 
 ## 设置图表类型
@@ -214,7 +214,7 @@ export default {
 }
 ```
 
-![Chart-Type](figures/Chart-Type.gif)
+Chart-Type
 
 > **说明：** 
 >
@@ -525,4 +525,4 @@ export default {
 }
 ```
 
-![Example-Scenario-4](figures/Example-Scenario-4.gif)
+Example-Scenario-4

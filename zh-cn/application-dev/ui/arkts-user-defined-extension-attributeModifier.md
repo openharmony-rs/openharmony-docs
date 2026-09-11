@@ -31,7 +31,7 @@
 
 ## 接口定义
 
-  <!-- @[Common_AttributeModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  <!-- @Common_AttributeModifier -->
   
   ``` TypeScript
   declare interface AttributeModifier<T> {
@@ -52,7 +52,7 @@
 
 `AttributeModifier`是一个接口，开发者需要实现其中的`applyXxxAttribute`方法来实现对应场景的属性设置。`Xxx`表示多态的场景，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。`T`是组件的属性类型，开发者可以在回调中获取到属性对象，通过该对象设置属性。
 
-  <!-- @[Common_CommonMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  <!-- @Common_CommonMethod -->
   
   ``` TypeScript
   declare class CommonMethod<T> {
@@ -79,7 +79,7 @@
 
 AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编写，并且通过状态变量触发刷新。
 
-  <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  <!-- @Common_MyButtonModifier -->
   
   ``` TypeScript
   export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -106,7 +106,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
 
-  <!-- @[main_button1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button1.ets) -->
+  <!-- @main_button1 -->
   
   ``` TypeScript
   
@@ -136,10 +136,10 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
 
-  ![AttributeModifier](figures/AttributeModifier01.gif)
+  AttributeModifier
 
 
-  <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  <!-- @Common_MyButtonModifier -->
   
   ``` TypeScript
   export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -165,7 +165,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  <!-- @[main_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button2.ets) -->
+  <!-- @main_button2 -->
   
   ``` TypeScript
   
@@ -195,11 +195,11 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
 
-  ![AttributeModifier](figures/AttributeModifier03.gif) 
+  AttributeModifier 
 
 当一个组件上多次使用`applyNormalAttribute`设置不同的Modifier实例时，每次状态变量刷新均会按顺序执行这些实例的方法属性设置，遵循属性覆盖原则，即后设置的属性生效。
 
-  <!-- @[Common_MyButtonModifier2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier02.ets) -->
+  <!-- @Common_MyButtonModifier2 -->
   
   ``` TypeScript
   export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
@@ -220,7 +220,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  <!-- @[Common_MyButtonModifier3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier03.ets) -->
+  <!-- @Common_MyButtonModifier3 -->
   
   ``` TypeScript
   export class MyButtonModifier3 implements AttributeModifier<ButtonAttribute> {
@@ -239,7 +239,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  <!-- @[main_button3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button3.ets) -->
+  <!-- @main_button3 -->
   
   ``` TypeScript
   
@@ -271,13 +271,13 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
 
-  ![AttributeModifier](figures/AttributeModifier04.gif) 
+  AttributeModifier 
 
 ## 设置多态样式、事件
 
 使用`AttributeModifier`设置多态样式、事件，实现事件逻辑的复用，支持默认态（`Normal`）、按压态（`Pressed`）、焦点态（`Focused`）、禁用态（`Disabled`）、选择态（`Selected`）。例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现`applyPressedAttribute`方法完成。
 
-  <!-- @[Common_MyButtonModifier4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier04.ets) -->
+  <!-- @Common_MyButtonModifier4 -->
   
   ``` TypeScript
   export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
@@ -296,7 +296,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
-  <!-- @[main_button4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button4.ets) -->
+  <!-- @main_button4 -->
   
   ``` TypeScript
   
@@ -321,7 +321,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   }
   ```
   
-  ![AttributeModifier](figures/AttributeModifier02.gif) 
+  AttributeModifier 
 
   ## 属性或事件对attributeModifier的支持情况
   

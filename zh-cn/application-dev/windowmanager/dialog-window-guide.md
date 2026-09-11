@@ -15,7 +15,7 @@
 
    通过window.createWindow()接口创建模态窗口（TYPE_DIALOG）。
 
-   <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @dialog_window --> 
    
    ``` TypeScript
    let dialogWindowClass: window.Window | undefined = undefined;
@@ -42,7 +42,7 @@
 
    - 在调用showWindow()之前，建议设置模态窗口的大小和位置。
 
-   <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @dialog_window_properties --> 
    
    ``` TypeScript
    // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
@@ -70,7 +70,7 @@
 
    通过setUIContent()和showWindow()接口加载显示模态窗口的具体内容。
 
-   <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @dialog_window_uiContent --> 
    
    ``` TypeScript
    // 3.为模态窗口加载对应的目标页面。
@@ -95,7 +95,7 @@
 
    当不再需要模态窗口时，可根据具体实现逻辑，使用destroyWindow()接口销毁模态窗口。
 
-   <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) --> 
+   <!-- @destroy_dialog_window --> 
    
    ``` TypeScript
    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。

@@ -22,4 +22,4 @@
 
 ## 运作机制
 
-![distributed_overview](figures/distributed_overview.png)
+distributed_overview

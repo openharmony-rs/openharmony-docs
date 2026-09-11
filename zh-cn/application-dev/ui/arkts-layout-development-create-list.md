@@ -29,7 +29,7 @@ ListItemGroup用于列表数据的分组展示，其子组件也是ListItem。Li
 
   **图1** List、ListItemGroup和ListItem组件关系  
 
-![list1](figures/list1.png)
+list1
 
 >**说明：**
 >
@@ -44,13 +44,13 @@ List除了提供垂直和水平布局能力、超出屏幕时可以滚动的自�
 
   **图2** 垂直滚动列表（左：单列；右：多列）  
 
-![list2](figures/list2.png)
+list2
 
 利用水平布局能力可以构建单行或多行水平滚动列表，如下图所示。
 
   **图3** 水平滚动列表（左：单行；右：多行）  
 
-![list3](figures/list3.png)
+list3
 
 
 Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽，且不需要跨行跨列布局，相比Grid和WaterFlow，则更推荐使用List。
@@ -63,7 +63,7 @@ Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽�
 
   **图4** 列表的主轴与交叉轴  
 
-![list4](figures/list4.png)
+list4
 
 如果List组件主轴或交叉轴方向设置了尺寸，则其对应方向上的尺寸为设置值。
 
@@ -73,7 +73,7 @@ Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽�
 
   **图5** 列表主轴高度约束示例1（**A**: List的父组件; **B**: List组件; **C**: List的所有子组件）  
 
-![list5](figures/list5.png)
+list5
 
 如果子组件主轴方向总尺寸超过List父组件尺寸时，List主轴方向尺寸适应List的父组件尺寸。
 
@@ -81,7 +81,7 @@ Grid和WaterFlow也可以实现单列、多列布局，如果布局每列等宽�
 
   **图6** 列表主轴高度约束示例2（**A**: List的父组件; **B**: List组件; **C**: List的所有子组件）  
 
-![zh-cn_image_0000001511740548](figures/zh-cn_image_0000001511740548.png)
+zh-cn_image_0000001511740548
 
 List组件交叉轴方向在没有设置尺寸时，其尺寸默认自适应父组件尺寸。
 
@@ -96,7 +96,7 @@ List组件主轴默认是垂直方向，即默认情况下不需要手动设置L
 若是水平滚动列表场景，将List的listDirection属性设置为Axis.Horizontal即可实现。listDirection默认为Axis.Vertical，即主轴默认是垂直方向。
 
 
-<!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+<!-- @build_a_horizontal_scrolling_list -->
 
 ``` TypeScript
 List(
@@ -115,7 +115,7 @@ List组件的交叉轴布局可以通过lanes和alignListItem属性进行设置�
 List组件的lanes属性通常用于在不同尺寸的设备自适应构建不同行数或列数的列表，即一次开发、多端部署的场景。lanes属性的取值类型是"number | LengthConstrain"，即整数或者LengthConstrain类型。以垂直列表为例，如果将lanes属性设为2，表示构建的是一个两列的垂直列表，如图2中右图所示。lanes的默认值为1，即默认情况下，垂直列表的列数是1。
 
 
-<!-- @[lanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+<!-- @lanes_add -->
 
 ``` TypeScript
 List(
@@ -129,7 +129,7 @@ List(
 当其取值为LengthConstrain类型时，表示会根据LengthConstrain与List组件的尺寸自适应决定行或列数。
 
 
-<!-- @[egLanes_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+<!-- @egLanes_add -->
 
 ``` TypeScript
 @Entry
@@ -158,7 +158,7 @@ export struct ListLayout {
 同样以垂直列表为例，当alignListItem属性设置为ListItemAlign.Center表示列表项在水平方向上居中对齐。alignListItem的默认值是ListItemAlign.Start，即列表项在列表交叉轴方向上默认按首部对齐。
 
 
-<!-- @[build_list_with_align_horizontally_in_the_center](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
+<!-- @build_list_with_align_horizontally_in_the_center -->
 
 ``` TypeScript
 List(
@@ -177,7 +177,7 @@ List组件创建时，所有ListItem将会被创建。显示区域内的ListItem
 当List组件滑动时，进入预加载及显示区域的ListItem将会创建其内部的子组件并完成布局，而滑出预加载及显示区域的ListItem将不会被销毁。
 
 **图7** ForEach创建ListItem的生命周期
-![](./figures/list_foreach.png)
+
 
 ### 使用LazyForEach创建ListItem
 List组件创建时，显示区域中的ListItem会被创建与布局。预加载范围内的ListItem在空闲时创建与布局，但是不会被挂载到组件树上。预加载范围外的ListItem则不会被创建。
@@ -185,7 +185,7 @@ List组件创建时，显示区域中的ListItem会被创建与布局。预加�
 当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部包含@Reusable标记的自定义组件，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
 
 **图8** LazyForEach创建ListItem的生命周期
-![](./figures/list_lazyforeach.png)
+
 
 ### 使用Repeat创建ListItem
 **使用virtualScroll**
@@ -195,7 +195,7 @@ List组件创建时，使用设置了virtualScroll的Repeat生成ListItem，此�
 当List组件滑动时，进入预加载及显示区域的ListItem，将从缓存池中获取ListItem并复用及布局，若缓存池中无ListItem，则会新创建并布局。滑出预加载及显示区域的ListItem将被回收至缓存池。
 
 **图9** Repeat使用virtualScroll创建ListItem的生命周期
-![](./figures/list_repeatv.png)
+
 
 **不使用virtualScroll**
 
@@ -204,7 +204,7 @@ List组件创建时，所有ListItem均被创建。显示区域内的ListItem在
 当List组件滑动时，进入预加载及显示区域的ListItem将进行布局。滑出预加载及显示区域的ListItem不会销毁。
 
 **图10** Repeat不使用virtualScroll创建ListItem的生命周期
-![](./figures/list_repeat.png)
+
 
 
 ## 在列表中显示数据
@@ -213,9 +213,9 @@ List组件创建时，所有ListItem均被创建。显示区域内的ListItem在
 
   **图11** 城市列表  
 
-![list11](figures/list11.png)
+list11
 
-<!-- @[list_statically_creates_the_contents_of_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
+<!-- @list_statically_creates_the_contents_of_list_item -->
 
 ``` TypeScript
 @Entry
@@ -253,12 +253,12 @@ export struct DataInList {
 
   **图12** 联系人列表项示例  
 
-![list12](figures/list12.png)
+list12
 
 如上图所示，联系人列表的列表项中，每个联系人都有头像和名称。此时，需要将Image和Text封装到一个Row容器内。
 
 
-<!-- @[encapsulate_the_image_and_text_into_a_row](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
+<!-- @encapsulate_the_image_and_text_into_a_row -->
 
 ``` TypeScript
 List() {
@@ -299,7 +299,7 @@ List() {
 ArkTS通过ForEach提供了组件的循环渲染能力。以简单形式的联系人列表为例，将联系人名称和头像数据以Contact类结构存储到contacts数组，使用ForEach中嵌套ListItem的形式来代替多个平铺的、内容相似的ListItem，从而减少重复代码。
 
 
-<!-- @[use_foreach_to_replace_similar_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListIteration.ets) -->
+<!-- @use_foreach_to_replace_similar_list_items -->
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';
@@ -360,7 +360,7 @@ export struct ListIteration {
 在初始化列表时，如需在列表项之间添加间距，可以使用ListOptions的space参数。例如，在每个列表项之间沿主轴方向添加10vp的间距。
 
 
-<!-- @[set_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+<!-- @set_space -->
 
 ``` TypeScript
 List({ space: 10 }) {
@@ -374,14 +374,14 @@ List({ space: 10 }) {
 
   **图13** 设置列表分隔线样式  
 
-![list13](figures/list13.png)
+list13
 
 List提供了divider属性用于给列表项之间添加分隔线。在设置divider属性时，可以通过strokeWidth和color属性设置分隔线的粗细和颜色。
 
 startMargin和endMargin属性分别用于设置分隔线距离列表侧边起始端的距离和距离列表侧边结束端的距离。
 
 
-<!-- @[set_the_divider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+<!-- @set_the_divider -->
 
 ``` TypeScript
 class DividerTmp {
@@ -435,12 +435,12 @@ export struct CustomListStyle {
 
   **图14** 列表的滚动条 
 
-![zh-cn_image_0000001511740544](figures/zh-cn_image_0000001511740544.gif)
+zh-cn_image_0000001511740544
 
 在使用List组件时，可通过scrollBar属性控制列表滚动条的显示。scrollBar的取值类型为BarState，当取值为BarState.Auto表示按需显示滚动条。此时，当触摸到滚动条区域时显示控件，可上下拖拽滚动条快速浏览内容，拖拽时会变粗。若不进行任何操作，2秒后滚动条自动消失。
 
 scrollBar属性API version 9及以下版本默认值为BarState.Off，从API version 10版本开始默认值为BarState.Auto。
-<!-- @[add_a_scrollbar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+<!-- @add_a_scrollbar -->
 
 ``` TypeScript
 List(
@@ -458,7 +458,7 @@ List(
 
 1. 首先，需要创建一个Scroller类型的对象listScroller。
 
-   <!-- @[external_scroll_ctrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+   <!-- @external_scroll_ctrl -->
    
    ``` TypeScript
    private listScroller: Scroller = new Scroller();
@@ -466,7 +466,7 @@ List(
 
 2. 然后，列表通过scroller参数绑定滚动控制器。
 
-   <!-- @[external_scroll_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+   <!-- @external_scroll_list -->
    
    ``` TypeScript
    // listScroller初始化List组件的scroller参数，绑定listScroller与列表。
@@ -477,7 +477,7 @@ List(
 
 3. 最后，滚动条通过scroller参数绑定滚动控制器。
 
-   <!-- @[external_scroll_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CustomListStyle.ets) -->
+   <!-- @external_scroll_bar -->
    
    ``` TypeScript
    // listScroller初始化ScrollBar组件的scroller参数，绑定listScroller与列表。
@@ -486,7 +486,7 @@ List(
 
   **图15** 列表的外置滚动条 
 
-![ScrollBar](figures/list_scrollbar.gif)
+ScrollBar
 
 >**说明：**
 >- 滚动条组件ScrollBar，还可配合其他可滚动组件使用，如ArcList、Grid、Scroll、WaterFlow。
@@ -498,14 +498,14 @@ List(
 
   **图16** 联系人分组列表 
 
-![list16](figures/list16.png)
+list16
 
 在List组件中使用ListItemGroup对项目进行分组，可以构建二维列表。
 
 在List组件中可以直接使用一个或者多个ListItemGroup组件，ListItemGroup的宽度默认充满List组件。在初始化ListItemGroup时，可通过header参数设置列表分组的头部组件。
 
 
-<!-- @[set_the_head_component_of_the_list_grouping_by_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/GroupedList.ets) -->
+<!-- @set_the_head_component_of_the_list_grouping_by_header -->
 
 ``` TypeScript
 @Entry
@@ -551,14 +551,14 @@ export struct GroupedList {
 
   **图17** 粘性标题  
 
-![zh-cn_image_0000001511740552](figures/zh-cn_image_0000001511740552.gif)
+zh-cn_image_0000001511740552
 
 List组件的sticky属性配合ListItemGroup组件使用，用于设置ListItemGroup中的头部组件是否呈现吸顶效果或者尾部组件是否呈现吸底效果。
 
 通过给List组件设置sticky属性为StickyStyle.Header，即可实现列表的粘性标题效果。如果需要支持吸底效果，可以通过footer参数初始化ListItemGroup的底部组件，并将sticky属性设置为StickyStyle.Footer。
 
 
-<!-- @[add_sticky_titles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/StickyHeaderList.ets) -->
+<!-- @add_sticky_titles -->
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';
@@ -675,13 +675,13 @@ export struct StickyHeaderList {
 
   **图18** 返回列表顶部  
 
-![list18](figures/list18.gif)
+list18
 
 List组件初始化时，可以通过scroller参数绑定一个Scroller对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
 
 首先，需要创建一个Scroller的对象listScroller。
 
-   <!-- @[create_private_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+   <!-- @create_private_list_scroller -->
    
    ``` TypeScript
    private listScroller: Scroller = new Scroller();
@@ -690,7 +690,7 @@ List组件初始化时，可以通过scroller参数绑定一个Scroller对象，
 然后，通过将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。在需要跳转的位置指定scrollToIndex的参数为0，表示返回列表顶部。
 
 
-<!-- @[control_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
+<!-- @control_scrolling -->
 
 ``` TypeScript
 Stack({ alignContent: Alignment.Bottom }) {
@@ -719,14 +719,14 @@ Stack({ alignContent: Alignment.Bottom }) {
 
 **图19** 字母索引响应联系人列表滚动  
 
-![list19](figures/list19.gif)
+list19
 
 如上图所示，当联系人列表从A滚动到B时，右侧索引栏也需要同步从选中A状态变成选中B状态。此场景可以通过监听List组件的onScrollIndex事件来实现，右侧索引栏需要使用字母表索引组件AlphabetIndexer。
 
 在列表滚动时，根据列表此时所在的索引值位置firstIndex，重新计算字母索引栏对应字母的位置selectedIndex。由于AlphabetIndexer组件通过selected属性设置了选中项索引值，当selectedIndex变化时会触发AlphabetIndexer组件重新渲染，从而显示为选中对应字母的状态。
 
 
-<!-- @[respond_to_scroll_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets) -->
+<!-- @respond_to_scroll_position -->
 
 ``` TypeScript
 const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
@@ -777,7 +777,7 @@ export struct ResponsiveScrollPositionList {
 
 **图20** 侧滑删除列表项  
 
-![list20](figures/list20.gif)
+list20
 
 ListItem的swipeAction属性可用于实现列表项的左右滑动功能。swipeAction属性方法初始化时有必填参数SwipeActionOptions，其中，start参数表示设置列表项右滑时起始端滑出的组件，end参数表示设置列表项左滑时尾端滑出的组件。
 
@@ -785,7 +785,7 @@ ListItem的swipeAction属性可用于实现列表项的左右滑动功能。swip
 
 1. 实现尾端滑出组件的构建。
 
-   <!-- @[build_the_tail_slide_out_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SwipeableListItem.ets) -->
+   <!-- @build_the_tail_slide_out_component -->
    
    ``` TypeScript
    @Builder
@@ -806,7 +806,7 @@ ListItem的swipeAction属性可用于实现列表项的左右滑动功能。swip
 
 2. 绑定swipeAction属性到可左滑的ListItem上。
 
-   <!-- @[bind_the_swipeAction_property_to_left_swipe_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SwipeableListItem.ets) -->
+   <!-- @bind_the_swipeAction_property_to_left_swipe_list_item -->
    
    ``` TypeScript
    // 构建List时，通过ForEach基于数据源this.messages循环渲染ListItem。
@@ -829,7 +829,7 @@ ListItem的swipeAction属性可用于实现列表项的左右滑动功能。swip
 
   **图21** 给列表项添加标记  
 
-![list21](figures/list21.png)
+list21
 
 在ListItem中使用Badge组件可实现给列表项添加标记功能。Badge是可以附加在单个组件上用于信息标记的容器组件。
 
@@ -838,7 +838,7 @@ ListItem的swipeAction属性可用于实现列表项的左右滑动功能。swip
 在Badge组件中，count和position参数用于设置需要展示的消息数量和提示点显示位置，还可以通过style参数灵活设置标记的样式。
 
 
-<!-- @[add_tags_to_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/TaggedListItems.ets) -->
+<!-- @add_tags_to_list_items -->
 
 ``` TypeScript
 ListItem() {
@@ -873,7 +873,7 @@ ListItem() {
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
-下拉刷新与上拉加载的具体实现可参考相关实例中新闻数据加载。若开发者希望快速实现此功能，也可使用三方组件[PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)。<!--DelEnd-->
+下拉刷新与上拉加载的具体实现可参考相关实例中新闻数据加载。若开发者希望快速实现此功能，也可使用三方组件PullToRefresh。<!--DelEnd-->
 
 
 ## 编辑列表
@@ -889,13 +889,13 @@ ListItem() {
 
   **图22** 新增待办  
 
-![zh-cn_image_0000001511740556](figures/zh-cn_image_0000001511740556.gif)
+zh-cn_image_0000001511740556
 
 添加列表项功能实现主要流程如下：
 
 1. 定义列表项数据结构，以待办事项管理为例，首先定义待办数据结构。
 
-   <!-- @[define_the_data_to_be_done](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDo.ets) -->
+   <!-- @define_the_data_to_be_done -->
    
    ``` TypeScript
    // ToDo.ets
@@ -913,7 +913,7 @@ ListItem() {
 
 2. 构建列表整体布局和列表项。
 
-   <!-- @[build_the_overall_list_layout_and_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ToDoListItem.ets) -->
+   <!-- @build_the_overall_list_layout_and_list_items -->
    
    ``` TypeScript
    import { ToDo } from './ToDo';
@@ -947,7 +947,7 @@ ListItem() {
 
 3. 初始化待办列表数据和可选事项，最后，构建列表布局和列表项。
 
-   <!-- @[build_list_layouts_and_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/AddListItem.ets) -->
+   <!-- @build_list_layouts_and_list_items -->
    
    ``` TypeScript
    import { ToDo } from './ToDo';
@@ -1069,7 +1069,7 @@ ListItem() {
 
   **图23** 长按删除待办事项  
 
-![list23](figures/list23.gif)
+list23
 
 删除列表项功能实现主要流程如下：
 
@@ -1077,7 +1077,7 @@ ListItem() {
 
    以待办列表为例，通过监听列表项的长按事件，当用户长按列表项时，进入编辑模式。
 
-   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   <!-- @structural_references -->
    
    ``` TypeScript
    import { util } from '@kit.ArkTS';
@@ -1095,7 +1095,7 @@ ListItem() {
    ```
 
    实现参考：
-   <!-- @[enter_edit_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   <!-- @enter_edit_mode -->
    
    ``` TypeScript
    Flex({ justifyContent: FlexAlign.SpaceBetween, alignItems: ItemAlign.Center }) {
@@ -1118,7 +1118,7 @@ ListItem() {
 
    在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
 
-   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   <!-- @structural_references -->
    
    ``` TypeScript
    import { util } from '@kit.ArkTS';
@@ -1136,7 +1136,7 @@ ListItem() {
    ```
 
    实现参考：
-   <!-- @[is_edit_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   <!-- @is_edit_mode -->
    
    ``` TypeScript
    if (this.isEditMode) {
@@ -1156,7 +1156,7 @@ ListItem() {
 
 3. 需要响应用户点击删除按钮事件，删除列表中对应的选项。
 
-   <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   <!-- @structural_references -->
    
    ``` TypeScript
    import { util } from '@kit.ArkTS';
@@ -1174,7 +1174,7 @@ ListItem() {
    ```
 
    实现参考：
-   <!-- @[implement_deletion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+   <!-- @implement_deletion -->
    
    ``` TypeScript
    // app.string.delete 资源文件中的value值为'删除'
@@ -1198,7 +1198,7 @@ ListItem() {
 当使用懒加载方式渲染列表时，为了更好的列表滚动体验，减少列表滑动时出现白块，List组件提供了cachedCount参数用于设置列表项缓存数，懒加载方式只会预加载List显示区域外cachedCount的内容，而非懒加载会全部加载。无论懒加载还是非懒加载都只布局List显示区域+List显示区域外cachedCount的内容。
 
 
-<!-- @[implement_cached_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
+<!-- @implement_cached_count -->
 
 ``` TypeScript
 List(
@@ -1227,13 +1227,13 @@ List(
 
   **图24** 列表项的折叠与展开 
 
-![list24](figures/list24.gif)
+list24
 
 列表项折叠与展开效果实现主要流程如下：
 
 1. 定义列表项数据结构。
 
-   <!-- @[data_structures_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   <!-- @data_structures_head -->
    
    ``` TypeScript
    import { curves } from '@kit.ArkUI';
@@ -1252,7 +1252,7 @@ List(
 
 2. 构造列表结构。
 
-   <!-- @[list_item_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   <!-- @list_item_data_structure -->
    
    ``` TypeScript
      @State routes: ItemGroupInfo[] = [
@@ -1389,7 +1389,7 @@ List(
 
 3. 通过改变ListItem的状态，来控制每个列表项是否展开，并通过animation和animateTo来实现展开与折叠过程中的动效效果。
 
-   <!-- @[list_item_data_group_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/CollapseAndExpand.ets) -->
+   <!-- @list_item_data_group_info -->
    
    ``` TypeScript
    @Builder
@@ -1423,11 +1423,11 @@ List(
 
   **图25** 实时消息滚动显示
 
-![list25](figures/list25.gif)
+list25
 
 1. 定义列表项数据结构。
 
-   <!-- @[listitem_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
+   <!-- @listitem_data_structure -->
    
    ``` TypeScript
    interface Message {
@@ -1439,7 +1439,7 @@ List(
 
 2. 构造列表结构，同时把stackFromEnd接口参数值设置为true，即可实现List列表在底部插入数据时，内容向上滚动。
 
-   <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
+   <!-- @construct_list_structure -->
    
    ``` TypeScript
    @State messages: Message[] = [];
@@ -1505,11 +1505,11 @@ List(
 
   **图26** 自定义限位滚动效果
 
-![onWillStopDragging](figures/onWillStopDragging.gif)
+onWillStopDragging
 
 1. 定义新闻条目数据结构。
 
-   <!-- @[class_news_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+   <!-- @class_news_content -->
    
    ``` TypeScript
    class News {
@@ -1529,7 +1529,7 @@ List(
 
 2. 构造新闻条目结构，通过type属性来区分长新闻，短新闻。
 
-   <!-- @[news_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+   <!-- @news_data -->
    
    ``` TypeScript
    @State newsData: Array<News> = [
@@ -1547,7 +1547,7 @@ List(
 3. 滑动离手事件onWillStopDragging及新闻处理逻辑：
    - 上报离手瞬间滑动速度，支持正负方向速度检测，向上滑动为正，向下滑动为负。
 
-     <!-- @[scroll_index_scroller_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     <!-- @scroll_index_scroller_list -->
      
      ``` TypeScript
      .onWillStopDragging((velocity: number) => {
@@ -1562,7 +1562,7 @@ List(
 
    - 通过getItemRect接口方法获取当前项位置信息。
 
-     <!-- @[scroller_list_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     <!-- @scroller_list_rect -->
      
      ``` TypeScript
      let rect = this.scrollerForList.getItemRect(this.currentIndex);
@@ -1570,7 +1570,7 @@ List(
 
    - 处理短新闻：直接跳转相邻项。
 
-     <!-- @[scroll_to_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     <!-- @scroll_to_index -->
      
      ``` TypeScript
      if (velocity > 10) {
@@ -1582,7 +1582,7 @@ List(
 
    - 处理长新闻：计算剩余显示范围决定滚动终点。
    
-     <!-- @[scroller_for_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/SupportSlidingHand.ets) -->
+     <!-- @scroller_for_list -->
      
      ``` TypeScript
      let rect = this.scrollerForList.getItemRect(this.currentIndex);
@@ -1619,19 +1619,19 @@ List(
 
   **图27** 边缘回弹效果
 
-![edge_effect_spring](figures/edge_effect_spring.gif)
+edge_effect_spring
 
 设置.edgeEffect(EdgeEffect.None)时，List无边缘滑动效果，如下图所示。
 
   **图28** 无边缘滑动效果
 
-![edge_effect_none](figures/edge_effect_none.gif)
+edge_effect_none
 
 从API version 18开始，List还支持只设置单边的边缘滑动效果，如设置.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })来实现起始边有边缘回弹效果，末尾边无效果，如下图所示。
 
   **图29** 单边边缘滑动效果
 
-![edge_effect_spring_start](figures/edge_effect_spring_start.gif)
+edge_effect_spring_start
 
 需要注意的是，当List组件的内容区小于一屏时，List默认无边缘滑动效果。若要启用边缘回弹效果，可以通过设置.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true })来实现。
 
@@ -1641,14 +1641,14 @@ List(
 
 **List手指滑动多选示例效果图**
 
-![listSwipeSelect](figures/listSwipeSelect.gif)
+listSwipeSelect
 
 ### 设置编辑模式
 
 通过enableEditMode设置是否进入编辑模式。设置为true时，List进入编辑模式，用户可以单指滑动经过多个ListItem进行批量选择或取消选择；设置为false时，List退出编辑模式。通过onEditModeChange监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
 
 通过editModeOptions配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示ListItem右侧的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
-<!-- @[Add_list_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
+<!-- @Add_list_select -->
 
 ``` TypeScript
 List({ space: 10 }) {
@@ -1672,7 +1672,7 @@ List({ space: 10 }) {
 3. 自定义选择控件和ListItem使用同一份选择结果数据。ListItem仍需配置selectable、selected和onSelect，用于在手指滑动多选过程中同步最新选择结果。
 
 4. 关闭了默认编辑样式以后，开发者需要通过onGestureRecognizerJudgeBegin进行手势裁决，来决定滑动哪块区域能够进行滑动多选。开发者可根据编辑模式状态、手势类型、手势tag或触摸区域返回GestureJudgeResult.REJECT或GestureJudgeResult.CONTINUE，决定当前业务手势是否继续参与识别。
-<!-- @[Add_list_GestureRecognizerJudgeBegin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
+<!-- @Add_list_GestureRecognizerJudgeBegin -->
 
 ``` TypeScript
 .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
@@ -1689,7 +1689,7 @@ List({ space: 10 }) {
 ### 记录列表项选择结果
 
 在ListItem上配置selectable、selected和onSelect。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
-<!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
+<!-- @Add_list_item_select -->
 
 ``` TypeScript
 ListItem() {
@@ -1713,16 +1713,16 @@ ListItem() {
 
 如需详细了解ArkUI中列表的创建与使用，请参考以下示例：
 
-- [新闻数据加载](https://gitcode.com/openharmony/codelabs/tree/master/NetworkManagement/NewsDataArkTS)
+- 新闻数据加载
 
-- [常用组件和容器低代码开发示例（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/EfficiencyEnhancementKit/SuperVisualSample)
+- 常用组件和容器低代码开发示例（ArkTS）（API9）
 
-- [二级联动（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SecondLevelLinkage)
+- 二级联动（ArkTS）（API9）
 
-- [List组件的使用之商品列表（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/List)
+- List组件的使用之商品列表（ArkTS）（API9）
 
-- [List组件的使用之设置项（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/List_HDC)
+- List组件的使用之设置项（ArkTS）（API9）
 
-- [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)
+- PullToRefresh
 
 <!--RP2End-->

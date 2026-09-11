@@ -12,13 +12,13 @@ AppStorage是与应用进程绑定的全局UI状态存储中心，由UI框架在
 
 作为应用的“中枢”，AppStorage是持久化数据PersistentStorage和环境变量Environment与UI交互的中转桥梁。其核心价值在于为开发者提供跨ability的大范围UI状态数据共享能力。
 
-AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合AppStorage API文档阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+AppStorage提供了API接口，允许开发者在自定义组件外手动触发AppStorage对应属性的增、删、改、查操作。建议配合AppStorage API文档阅读。最佳实践请参考状态管理最佳实践。
 
 > **说明：**
 >
-> 多组件间状态共享和同步、状态管理和UI解耦，可以参考解决方案[基于StateStore的全局状态管理开发实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-global-state-management-state-store)。
+> 多组件间状态共享和同步、状态管理和UI解耦，可以参考解决方案基于StateStore的全局状态管理开发实践。
 >
-> 不涉及UI组件同步的数据处理工作，建议[通过用户首选项实现数据持久化](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/data-persistence-by-preferences)。
+> 不涉及UI组件同步的数据处理工作，建议通过用户首选项实现数据持久化。
 
 ## 概述
 
@@ -56,7 +56,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
   **图1** \@StorageProp初始化规则图示  
 
-![storageprop-initialization](figures/storageprop-initialization.png)
+storageprop-initialization
 
 ### 观察变化和行为表现
 
@@ -109,7 +109,7 @@ AppStorage中的属性可以被双向同步，并具有不同的功能，比如�
 
   **图2** \@StorageLink初始化规则图示  
 
-![storagelink-initialization](figures/storagelink-initialization.png)
+storagelink-initialization
 
 ### 观察变化和行为表现
 
@@ -208,7 +208,7 @@ prop.get() // == 49
 
 @StorageProp与AppStorage配合使用，通过AppStorage中的属性创建单向数据同步。
 
-<!-- @[appstorage_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTwo.ets) --> 
+<!-- @appstorage_page_two --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -286,13 +286,13 @@ struct TestStorageProp {
 }
 ```
 
-![appstorage-demo-0](figures/appstorage-demo-0.gif)
+appstorage-demo-0
 
 ### AppStorage支持联合类型
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @[appstorage_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageThree.ets) -->  
+<!-- @appstorage_page_three -->  
 
 ``` TypeScript
 @Component
@@ -368,13 +368,13 @@ struct TestPageStorageLink {
 }
 ```
 
-![appstorage-demo-1](figures/appstorage-demo-1.gif)
+appstorage-demo-1
 
 ### 装饰Array类型变量
 
 在下面的示例中，@StorageLink装饰的message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[appstorage_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets) --> 
+<!-- @appstorage_page_one --> 
 
 ``` TypeScript
 @Entry
@@ -423,7 +423,7 @@ struct ArraySample {
 }
 ```
 
-![appstorage-demo-2](figures/appstorage-demo-2.gif)
+appstorage-demo-2
 
 ### 装饰Date类型变量
 
@@ -433,7 +433,7 @@ struct ArraySample {
 
 在下面的示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[appstorage_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFour.ets) -->  
+<!-- @appstorage_page_four -->  
 
 ``` TypeScript
 @Entry
@@ -478,7 +478,7 @@ struct DateSample {
 }
 ```
 
-![appstorage-demo-3](figures/appstorage-demo-3.gif)
+appstorage-demo-3
 
 ### 装饰Map类型变量
 
@@ -488,7 +488,7 @@ struct DateSample {
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[appstorage_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageFive.ets) -->  
+<!-- @appstorage_page_five -->  
 
 ``` TypeScript
 @Entry
@@ -547,7 +547,7 @@ struct MapSample {
 }
 ```
 
-![appstorage-demo-4](figures/appstorage-demo-4.gif)
+appstorage-demo-4
 
 ### 装饰Set类型变量
 
@@ -557,7 +557,7 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-<!-- @[appstorage_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageSix.ets) -->  
+<!-- @appstorage_page_six -->  
 
 ``` TypeScript
 @Entry
@@ -607,13 +607,13 @@ struct SetSample {
 }
 ```
 
-![appstorage-demo-5](figures/appstorage-demo-5.gif)
+appstorage-demo-5
 
 ### AppStorage在多页面中共享使用
 
 在下面示例中，Index和Page页面通过同一个全局AppStorage对象共享linkA数据。在一处修改其值，另一处也能获取到更新后的值。
 
-<!-- @[appstorage_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @appstorage_Index -->  
 
 ``` TypeScript
 AppStorage.setOrCreate('linkA', 47)
@@ -667,7 +667,7 @@ struct Index {
 }
 ```
 
-<!-- @[appstorage_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets) -->  
+<!-- @appstorage_Page -->  
 
 ``` TypeScript
 @Builder
@@ -742,7 +742,7 @@ struct Page {
 }
 ```
 
-![appstorage-demo-6](figures/appstorage-demo-6.gif)
+appstorage-demo-6
 
 ## AppStorage使用建议
 
@@ -754,7 +754,7 @@ struct Page {
 
 使用该机制实现事件通知时，应确保AppStorage中的变量不直接被绑定到UI上，同时控制@Watch函数的复杂度。如果@Watch函数执行时间过长，会影响UI刷新效率。
 
-<!-- @[appstorage_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/ViewData.ets) -->   
+<!-- @appstorage_page_seven -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -845,7 +845,7 @@ export struct TapImage {
 >
 > emit接口不支持在Previewer预览器中使用。
 
-<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) --> 
+<!-- @appstorage_page_eight --> 
 
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
@@ -965,7 +965,7 @@ export struct TapImage {
 
 以上通知事件逻辑简单，也可以简化成三元表达式。
 
-<!-- @[appstorage_page_nine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Gallery.ets) -->   
+<!-- @appstorage_page_nine -->   
 
 ``` TypeScript
 
@@ -1041,7 +1041,7 @@ export struct TapImage {
 
 使用setOrCreate/set接口更新key的值时，如果值相同，setOrCreate不会通知\@StorageLink/\@StorageProp更新，但因为\@StorageProp本身有数据副本，更改值不会同步给AppStorage，这会导致开发者误认已通过AppStorage改了值，但实际上未通知\@StorageProp更新值的情况。示例如下。
 
-<!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) --> 
+<!-- @appstorage_page_ten --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1082,7 +1082,7 @@ struct PageStorageProp {
 }
 ```
 
-![appstorage-demo-7](figures/appstorage-demo-7.gif)
+appstorage-demo-7
 
 上述示例，在点击事件之前，propA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新propA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
 

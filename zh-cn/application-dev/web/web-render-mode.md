@@ -19,7 +19,7 @@ Web组件提供了两种可配置的渲染模式，能够根据不同的容器�
 
 **图一 异步渲染模式场景**
 
-![web-render-mode-sample](figures/arkweb-render-mode-async-render.png)
+web-render-mode-sample
 
 ## 同步渲染模式
 
@@ -33,11 +33,11 @@ Web组件提供了两种可配置的渲染模式，能够根据不同的容器�
 
 **图二 同步渲染模式场景**
 
-![web-render-mode-sample](figures/arkweb-render-mode-sync-render.png)
+web-render-mode-sample
 
 ## 示例代码
 
-<!-- @[web_component_rendering_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/RenderMode.ets) -->
+<!-- @web_component_rendering_mode -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

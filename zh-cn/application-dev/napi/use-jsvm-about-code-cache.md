@@ -31,7 +31,7 @@ JSVM提供了生成并使用code cache加速编译过程的方法，其获取和
 
 外层跨语言交互的部分可以参考 使用JSVM-API实现JS与C/C++语言交互开发流程。
 
-<!-- @[jsvm_code_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/aboutcodecache/src/main/cpp/hello.cpp) -->
+<!-- @jsvm_code_cache -->
 
 ``` C++
 #include "napi/native_api.h"

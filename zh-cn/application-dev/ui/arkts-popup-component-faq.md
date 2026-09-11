@@ -22,7 +22,7 @@ Popup气泡优先在开发者设置的placement位置显示，当空间不足时
 
 1. Popup气泡的默认显示区域是绑定组件以外的窗口区域，如下示意图所示：
 
-   ![Popup气泡显示区域示意图](figures/popup-placement-diagram.png)
+   Popup气泡显示区域示意图
 
 2. 如果设置的位置可用空间不够完整显示气泡，ArkUI框架会判断该位置的镜像位置是否可以显示。例如Placement.Bottom的镜像位置是Placement.Top，Placement.Left的镜像位置是Placement.Right。
 

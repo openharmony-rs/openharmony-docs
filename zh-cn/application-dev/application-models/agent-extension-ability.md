@@ -31,7 +31,7 @@
 
 3. 在AgentExtAbility.ets文件中，补充AgentExtensionAbility的导入模块，自定义类AgentExtAbility继承AgentExtensionAbility并实现生命周期回调。
 
-    <!-- @[ability_agent_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
+    <!-- @ability_agent_service_one -->
     
     ``` TypeScript
     import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
@@ -119,7 +119,7 @@
 
 应用可以在服务端AgentExtensionAbility组件的onData()方法中接收客户端传递的数据和AgentHostProxy对象，并且可以通过调用AgentHostProxy对象的sendData()方法将数据发送给客户端。
 
-<!-- @[ability_agent_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
+<!-- @ability_agent_service_two -->
 
 ``` TypeScript
 import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
@@ -147,7 +147,7 @@ export default class AgentExtAbility extends AgentExtensionAbility {
 
 应用可以在服务端AgentExtensionAbility组件的onAuth()方法中接收客户端的安全认证请求以及AgentHostProxy对象，并且可以通过AgentHostProxy的authorize()方法向客户端发送安全认证请求。
 
-<!-- @[ability_agent_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
+<!-- @ability_agent_service_three -->
 
 ``` TypeScript
 import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';

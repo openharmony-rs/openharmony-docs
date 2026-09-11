@@ -8,7 +8,7 @@
 
 ## 使用场景
 
-为方便开发者定位问题，应用在ArkWeb或JSVM的JS堆内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。开发者可使用js_rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的[Heap Snapshot离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)或Chrome浏览器的开发者工具中的内存工具导入并查看。
+为方便开发者定位问题，应用在ArkWeb或JSVM的JS堆内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。开发者可使用js_rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的Heap Snapshot离线导入或Chrome浏览器的开发者工具中的内存工具导入并查看。
 
 ## 使用指导
 

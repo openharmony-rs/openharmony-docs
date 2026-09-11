@@ -78,7 +78,7 @@ export default {
 }
 ```
 
-![animation2](figures/animation2.gif)
+animation2
 
 > **说明：**
 > - 使用createAnimator创建动画对象时必须传入options参数。
@@ -233,7 +233,7 @@ export default {
 }
 ```
 
-![reverseAnimation](figures/reverseAnimation.gif)
+reverseAnimation
 
 > **说明：** 
 >

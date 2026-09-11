@@ -87,9 +87,9 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 >
 > - isLoggable()返回值：如果指定的domain、tag、level日志可以打印则返回true；否则返回false。
 >
->   [debug应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)：不做日志级别管控，所有级别日志都能够正常打印出来；
+>   debug应用：不做日志级别管控，所有级别日志都能够正常打印出来；
 >
->   [release应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)：按照全局日志级别管控，当日志的级别不低于全局日志级别时，才能正常打印出来；
+>   release应用：按照全局日志级别管控，当日志的级别不低于全局日志级别时，才能正常打印出来；
 >   调试过程中，可手动修改日志级别，参考：查看和设置日志级别。
 
 
@@ -109,7 +109,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 3. 在**Project**窗口单击entry&gt; src&gt; main&gt; ets&gt; pages，打开工程中的Index.ets文件，添加两个按钮，单击按钮打印日志。
 
    示例代码如下：
-   <!-- @[HiLog_ArkTS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Hilog/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @HiLog_ArkTS -->
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    // ...

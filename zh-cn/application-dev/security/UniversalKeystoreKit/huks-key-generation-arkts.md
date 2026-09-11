@@ -30,7 +30,7 @@
 >
 > 如果业务再次使用相同别名调用HUKS生成密钥，HUKS将生成新密钥并直接覆盖历史的密钥文件。
 
-<!-- @[generate_key_ar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/GenerateKey/entry/src/main/ets/pages/Index.ets) -->
+<!-- @generate_key_ar -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';

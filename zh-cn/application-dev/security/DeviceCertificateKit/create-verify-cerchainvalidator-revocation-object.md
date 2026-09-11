@@ -30,7 +30,7 @@ API 22开始支持本地证书链吊销状态校验时仅校验终端实体证�
 
 本地仅校验终端实体证书的吊销状态示例：
 
-<!-- @[create-only-check-leaf-cert-revocate-object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateOnlyCheckLeafCertRevocateObject.ets) -->
+<!-- @create-only-check-leaf-cert-revocate-object -->
 
 ``` TypeScript
 
@@ -143,7 +143,7 @@ async function doTestLeafCertCrlCheck() {
 
 在线校验中间证书的吊销状态示例：
 
-<!-- @[create-online-check-intermediate-certificateonly-object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateOnlineCheckIntermediateCertificateonlyObject.ets) -->
+<!-- @create-online-check-intermediate-certificateonly-object -->
 
 ``` TypeScript
 
@@ -236,7 +236,7 @@ async function doTestCaCheck() {
 
 在线CRL检查忽略网络不可达异常示例：
 
-<!-- @[ignore-network-unreachable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/IgnoreNetworkUnreachable.ets) -->
+<!-- @ignore-network-unreachable -->
 
 ``` TypeScript
 

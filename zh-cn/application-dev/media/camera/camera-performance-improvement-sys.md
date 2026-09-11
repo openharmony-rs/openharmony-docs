@@ -18,7 +18,7 @@
 
 延时配流方案是把配流启流与surface解耦，在组件尚未给应用surface之前，可以先进行配流启流，只需要在启流结束之前提供surface，可以提升启动速度，防止影响其他启动优化方案的落地。
 
-![deferred-surface-scene](figures/deferred-surface-scene.png)
+deferred-surface-scene
 
 优化前：配流动作依赖surface对象，surface对象依赖于UI加载完成。也就是在UI加载完成后，才可以创建Session、配置输入输出流、启动Session，由相机HDI进行配流。
 
@@ -37,7 +37,7 @@
 
 接口调用流程建议如下图所示：
 
-![](figures/deferred-surface-sequence-diagram.png)
+
 
 Context获取方式请参考：获取UIAbility的上下文信息。
 
@@ -116,7 +116,7 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 接口调用流程建议如下图所示：
 
-![](figures/quick-thumbnail-sequence-diagram.png)
+
 
 Context获取方式请参考：获取UIAbility的上下文信息。
 ```ts
@@ -196,7 +196,7 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 使用预热启动前后的相机应用流程对比如下：
 
-![prelaunch-scene](figures/prelaunch-scene.png)
+prelaunch-scene
 
 ### 接口说明
 
@@ -212,7 +212,7 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 接口调用流程建议如下图所示：
 
-![](figures/prelaunch-sequence-diagram.png)
+
 
 Context获取方式请参考：获取UIAbility的上下文信息。
 

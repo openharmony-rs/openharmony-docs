@@ -32,7 +32,7 @@
 
 2. 设置cropRegion参数执行区域解码。
 
-   <!-- @[decode_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
+   <!-- @decode_region --> 
    
    ``` C++
    // 区域解码示例。
@@ -88,7 +88,7 @@
 
 2. 设置`desiredSize`参数执行下采样解码。
 
-   <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
+   <!-- @decode_downsample --> 
    
    ``` C++
    // 下采样解码示例。
@@ -142,7 +142,7 @@
 
 2. 同时设置`cropRegion`、`desiredSize`和`cropAndScaleStrategy`参数。
 
-   <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
+   <!-- @decode_combined --> 
    
    ``` C++
    // 区域解码与下采样组合使用示例。

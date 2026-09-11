@@ -38,7 +38,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 用于注册一个环境清理钩子函数，该函数将在环境退出时执行。这是确保资源在环境销毁前得到清理的重要机制。
 
-需要注意的是，napi_add_env_cleanup_hook接口并不支持对同一arg绑定多个回调。若出现env已销毁，但cleanup回调未被执行的情况，可以在启用ArkTS运行时[多线程检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-multi-thread-check)功能的前提下，查看hilog流水日志`AddCleanupHook Failed, data cannot register multiple times.`来查找发生注册失败的调用。
+需要注意的是，napi_add_env_cleanup_hook接口并不支持对同一arg绑定多个回调。若出现env已销毁，但cleanup回调未被执行的情况，可以在启用ArkTS运行时多线程检测功能的前提下，查看hilog流水日志`AddCleanupHook Failed, data cannot register multiple times.`来查找发生注册失败的调用。
 
 ### napi_remove_env_cleanup_hook
 
@@ -46,7 +46,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_remove_add_env_cleanup_hook -->
 
 ``` C++
 #include <hilog/log.h>
@@ -133,7 +133,7 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_remove_add_env_cleanup_hook_api -->
 
 ``` TypeScript
 export const napiEnvCleanUpHook: () => Object | undefined;
@@ -141,7 +141,7 @@ export const napiEnvCleanUpHook: () => Object | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[connect_with_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
+<!-- @connect_with_worker -->
 
 ``` TypeScript
 let wk = new worker.ThreadWorker('entry/ets/workers/worker.ts');
@@ -154,7 +154,7 @@ wk.onmessage = (message) => {
   wk.terminate();
 };
 ```
-<!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
+<!-- @connect_with_main_thread -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -184,7 +184,7 @@ worker相关开发配置和流程参考以下链接：
 
 cpp部分代码
 
-<!-- @[napi_add_remove_async_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_add_remove_async_cleanup_hook -->
 
 ``` C++
 typedef struct {
@@ -272,7 +272,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libuv.so)
 
 接口声明
 
-<!-- @[napi_add_remove_async_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_add_remove_async_cleanup_hook_api -->
 
 ``` TypeScript
 export const napiAsyncCleanUpHook: () => boolean | undefined;
@@ -280,7 +280,7 @@ export const napiAsyncCleanUpHook: () => boolean | undefined;
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_remove_add_env_cleanup_hook -->
 
 ``` TypeScript
 try {

@@ -22,7 +22,7 @@
 
 4. 调用CertExtension.checkCA判断证书是否为CA证书。
 
-<!-- @[create_parse_validate_certificate_extension_info_objects](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertextensionObject.ets) -->
+<!-- @create_parse_validate_certificate_extension_info_objects -->
 
 ``` TypeScript
 

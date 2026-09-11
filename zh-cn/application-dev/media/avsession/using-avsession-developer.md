@@ -47,7 +47,7 @@
    >
    > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-   <!-- @[createAVSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/CreateAVSession.ets) -->
+   <!-- @createAVSession -->
       
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -93,7 +93,7 @@
 
    音视频应用设置的媒体会话信息，会被媒体会话控制方通过AVSessionController相关方法获取后进行显示或处理。
      
-   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetAVSessionInformation.ets) -->
+   <!-- @setAVSessionInformation -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -199,7 +199,7 @@
 
    设置UIAbility时通过WantAgent接口实现，更多关于WantAgent的信息请参考WantAgent。
 
-   <!-- @[wantAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/WantAgent.ets) -->
+   <!-- @wantAgent -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -250,7 +250,7 @@
    > **说明：**<br>
    > 通过dispatchSessionEvent方法发送的数据不会保存在会话对象或AVSession服务中。
 
-   <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
+   <!-- @dispatchSessionEvent -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -294,7 +294,7 @@
    > **说明：**<br>
    > 通过setExtras方法设置的数据包会被存储在AVSession服务中，数据的生命周期与会话一致；会话对应的Controller可以使用getExtras来获取该数据。
 
-   <!-- @[setExtras](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/SetExtras.ets) -->
+   <!-- @setExtras -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -345,7 +345,7 @@
 
    控制场景包括：播控中心点击、播控中心通知栏移除、蓝牙耳机佩戴、蓝牙耳机/有线耳机按键、语音助手控制等。
      
-   <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
+   <!-- @fixedPlaybackControlCommands -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -452,7 +452,7 @@
    - outputDeviceChange: 输出设备变化的事件。
    - commonCommand: 自定义控制命令变化的事件。
 
-   <!-- @[advancedPlayback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/AdvancedPlaybackControlEvents.ets) -->
+   <!-- @advancedPlayback -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -514,7 +514,7 @@
 
 7. 获取当前媒体会话自身的控制器，与媒体会话对应进行通信交互。
      
-   <!-- @[getController](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/GetController.ets) -->
+   <!-- @getController -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -569,7 +569,7 @@
 
    取消播控命令监听的示例代码如下所示：
 
-   <!-- @[off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Off.ets) -->
+   <!-- @off -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -609,7 +609,7 @@
 
    销毁媒体会话示例代码如下所示：
      
-   <!-- @[destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/Destroy.ets) -->
+   <!-- @destroy -->
    
    ``` TypeScript
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -652,4 +652,4 @@
 
 针对媒体会话提供方开发，有以下相关实例可供参考：
 
-- [媒体会话——提供方（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVSession/MediaProvider)
+- 媒体会话——提供方（ArkTS）（Full SDK）（API10）

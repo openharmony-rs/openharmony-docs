@@ -10,7 +10,7 @@ ArcSwiper是弧形轮播组件，在圆形屏幕场景下使用，提供弧形�
 
 在使用ArcSwiper组件之前，需要在代码中先导入ArcSwiper模块。
 
-<!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+<!-- @import -->
 
 ``` TypeScript
 import {
@@ -30,7 +30,7 @@ ArcSwiper提供了默认的弧形导航点样式，导航点默认显示在ArcSw
 
 - 导航点使用默认样式
 
-  <!-- @[styles_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+  <!-- @styles_default -->
   
   ``` TypeScript
   ArcSwiper() {
@@ -56,13 +56,13 @@ ArcSwiper提供了默认的弧形导航点样式，导航点默认显示在ArcSw
       .fontSize(30)
   }
   ```
-  ![indicator](figures/arcswiper_indicator.png)
+  indicator
 
 - 自定义导航点样式
 
   导航点位于ArcSwiper组件6点钟方向，导航点颜色设为红色，被选中导航点颜色为蓝色。
 
-  <!-- @[styles_customize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperStyles.ets) -->
+  <!-- @styles_customize -->
   
   ``` TypeScript
   ArcSwiper() {
@@ -75,7 +75,7 @@ ArcSwiper提供了默认的弧形导航点样式，导航点默认显示在ArcSw
       .selectedItemColor(Color.Blue) // 设置选中导航点颜色为蓝色
   )
   ```
-  ![indicator2](figures/arcswiper_indicator2.png)
+  indicator2
 
 ## 控制页面切换方式
 
@@ -83,7 +83,7 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
 
 - 控制控制器翻页。
 
-  <!-- @[toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  <!-- @toggle -->
   
   ``` TypeScript
   // 导入ArcButton和ArcSwiper模块
@@ -155,13 +155,13 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
   }
   ```
 
-  ![controller](figures/arcswiper_control.gif)
+  controller
 
 - 旋转表冠翻页。
 
   ArcSwiper在获得焦点时能够响应旋转表冠的操作，用户可以通过旋转表冠来滑动ArcSwiper，从而浏览数据。
 
-  <!-- @[toggle_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  <!-- @toggle_focus -->
   
   ``` TypeScript
   ArcSwiper(
@@ -178,7 +178,7 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
 
   还可以通过设置digitalCrownSensitivity属性来调整表冠对事件响应的灵敏度，以适应不同规模的数据处理。在处理大量数据时，可以提高响应事件的灵敏度；而在处理少量数据时，则可以降低灵敏度设置。
 
-  <!-- @[toggle_sensitivity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets) -->
+  <!-- @toggle_sensitivity -->
   
   ``` TypeScript
   ArcSwiper(
@@ -199,7 +199,7 @@ ArcSwiper支持水平和垂直方向上进行轮播，主要通过vertical属性
 
 - 设置水平方向上轮播。
 
-  <!-- @[horizontal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperHorizontal.ets) -->
+  <!-- @horizontal -->
   
   ``` TypeScript
   ArcSwiper() {
@@ -208,12 +208,12 @@ ArcSwiper支持水平和垂直方向上进行轮播，主要通过vertical属性
   .indicator(true)
   .vertical(false)
   ```
-  ![vertical](figures/arcswiper_indicator.png)
+  vertical
 
 
 - 设置垂直方向轮播，导航点设为3点钟方向。
 
-  <!-- @[vertical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperVertical.ets) -->
+  <!-- @vertical -->
   
   ``` TypeScript
   ArcSwiper() {
@@ -223,13 +223,13 @@ ArcSwiper支持水平和垂直方向上进行轮播，主要通过vertical属性
     .arcDirection(ArcDirection.THREE_CLOCK_DIRECTION))
   .vertical(true)
   ```
-  ![vertical2](figures/arcswiper_vertical.png)
+  vertical2
 
 ## 自定义切换动画
 
 ArcSwiper支持通过customContentTransition设置自定义切换动画，可以在回调中对视窗内所有页面逐帧设置透明度、缩放比例、位移、渲染层级等属性，从而实现自定义切换动画效果。
 
-<!-- @[action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperAction.ets) -->
+<!-- @action -->
 
 ``` TypeScript
 import { Decimal } from '@kit.ArkTS';
@@ -294,13 +294,13 @@ export struct ArcSwiperAction {
 }
 ```
 
-![customContentTransition](figures/arcswiper_custom_animation.gif)
+customContentTransition
 
 ## 实现侧滑返回
 
 ArcSwiper的滑动事件会与侧滑返回冲突，可以通过onGestureRecognizerJudgeBegin去判断ArcSwiper是否滑动到开头去拦截ArcSwiper的滑动手势，实现再次左滑返回上一页的功能。
 
-<!-- @[side_slip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets) -->
+<!-- @side_slip -->
 
 ``` TypeScript
 import {
@@ -357,4 +357,4 @@ export struct ArcSwiperSideSlip {
   }
 }
 ```
-![onGestureRecognizerJudgeBegin](figures/arcswiper_onGestureRecognizerJudgeBegin.gif)
+onGestureRecognizerJudgeBegin

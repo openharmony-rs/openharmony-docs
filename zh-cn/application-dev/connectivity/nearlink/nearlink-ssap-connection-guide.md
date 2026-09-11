@@ -15,19 +15,19 @@
 
 典型开发场景如：键盘、鼠标等外围设备作为服务端向中心设备提供输入服务，中心设备上的应用作为客户端访问外围设备的服务与属性。
 
-开发前需按[开发准备](nearlink-preparations-guide.md)完成权限声明与运行时申请，并确保设备已开启星闪（参见[开发准备 > 查询星闪开关状态](nearlink-preparations-guide.md#查询星闪开关状态)）。
+开发前需按开发准备完成权限声明与运行时申请，并确保设备已开启星闪（参见开发准备 > 查询星闪开关状态）。
 
 ## SSAP服务端开发
 
-SSAP服务端是服务的承载方：创建服务并声明属性，接收和响应客户端的属性读写请求，并可通过[notifyPropertyChanged()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#notifypropertychanged)将属性变化推送给已开启通知的客户端。
+SSAP服务端是服务的承载方：创建服务并声明属性，接收和响应客户端的属性读写请求，并可通过notifyPropertyChanged()将属性变化推送给已开启通知的客户端。
 
 > **说明：**
 >
-> 建立SSAP连接后，SSAP服务端广播会自动停止。后续如果服务端期望被客户端发现，可参见[发现星闪设备 > 发起星闪广播](nearlink-device-discovery-guide.md#发起星闪广播)，重新发起广播。
+> 建立SSAP连接后，SSAP服务端广播会自动停止。后续如果服务端期望被客户端发现，可参见发现星闪设备 > 发起星闪广播，重新发起广播。
 
 ### 接口说明
 
-SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+SSAP服务端管理功能，完整的API说明以及示例代码请参考：@ohos.nearlink.ssap (星闪SSAP连接能力)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -42,7 +42,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
 
 1. 导入相关模块。
 
-    <!-- @[ssap_server_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_module_import -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -52,7 +52,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
 
 2. 定义SSAP服务端变量，供后续步骤使用。
 
-    <!-- @[ssap_server_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_declare -->
     
     ``` TypeScript
     let server: ssap.Server;
@@ -62,7 +62,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
 
 3. 创建SSAP服务端实例。
 
-    <!-- @[ssap_server_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_create -->
     
     ``` TypeScript
     try {
@@ -73,9 +73,9 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-4. 添加服务端支持的服务。服务与属性使用自定义UUID（禁止使用标准UUID），参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)；支持通知的属性需声明客户端属性值配置描述符，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。若需客户端通过扫描发现服务端并建立连接，服务端需调用[advertising.startAdvertising()](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising)主动发起广播，参见[发现星闪设备 > 发起星闪广播](nearlink-device-discovery-guide.md#发起星闪广播)。
+4. 添加服务端支持的服务。服务与属性使用自定义UUID（禁止使用标准UUID），参见星闪常见问题 > 标准UUID与自定义UUID有什么区别；支持通知的属性需声明客户端属性值配置描述符，参见星闪常见问题 > SSAP属性描述符的作用。若需客户端通过扫描发现服务端并建立连接，服务端需调用advertising.startAdvertising()主动发起广播，参见发现星闪设备 > 发起星闪广播。
 
-    <!-- @[ssap_server_add_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_add_service -->
     
     ``` TypeScript
     try {
@@ -112,9 +112,9 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-5. 订阅连接状态变化事件，并在回调中保存客户端地址，供后续通知使用。不再需要订阅事件时，调用[offConnectionStateChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offconnectionstatechange)取消订阅。
+5. 订阅连接状态变化事件，并在回调中保存客户端地址，供后续通知使用。不再需要订阅事件时，调用offConnectionStateChange()取消订阅。
 
-    <!-- @[ssap_server_on_conn_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_on_conn_state -->
     
     ``` TypeScript
     try {
@@ -131,7 +131,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
 
 6. 订阅客户端读属性请求事件，服务端收到读请求后由框架自动回复属性当前值。
 
-    <!-- @[ssap_server_on_property_read](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_on_property_read -->
     
     ``` TypeScript
     try {
@@ -145,9 +145,9 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用[offPropertyRead()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertyread)、[offPropertyWrite()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertywrite)取消订阅。
+7. 订阅客户端写属性请求事件，将写入的值保存到对应属性。不再需要订阅事件时，调用offPropertyRead()、offPropertyWrite()取消订阅。
 
-    <!-- @[ssap_server_on_property_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_on_property_write -->
     
     ``` TypeScript
     try {
@@ -164,7 +164,7 @@ SSAP服务端管理功能，完整的API说明以及示例代码请参考：[@oh
 
 8. 通知客户端属性值更新。其中connectedAddress为已连接客户端的地址，在步骤5的连接状态回调中赋值保存。
 
-    <!-- @[ssap_server_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapServerPage.ets) -->
+    <!-- @ssap_server_notify -->
     
     ``` TypeScript
     try {
@@ -191,7 +191,7 @@ SSAP客户端是服务的使用方：通过扫描发现服务端设备并发起�
 
 ### 接口说明
 
-SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@ohos.nearlink.ssap (星闪SSAP连接能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+SSAP客户端连接功能，完整的API说明以及示例代码请参考：@ohos.nearlink.ssap (星闪SSAP连接能力)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -208,7 +208,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 1. 导入相关模块。
 
-    <!-- @[ssap_client_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_module_import -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -217,15 +217,15 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 2. 定义SSAP客户端变量，供后续步骤使用。
 
-    <!-- @[ssap_client_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_declare -->
     
     ``` TypeScript
     let client: ssap.Client;
     ```
 
-3. 创建SSAP客户端实例。其中参数address是通过[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)获取的远端设备地址。
+3. 创建SSAP客户端实例。其中参数address是通过发起星闪扫描获取的远端设备地址。
 
-    <!-- @[ssap_client_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_create -->
     
     ``` TypeScript
     try {
@@ -238,7 +238,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 4. 订阅连接状态变化事件。
 
-    <!-- @[ssap_client_on_conn_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_on_conn_state -->
     
     ``` TypeScript
     try {
@@ -252,9 +252,9 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-5. 订阅属性变化事件。不再需要订阅事件时，调用[offConnectionStateChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offconnectionstatechange)、[offPropertyChange()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#offpropertychange)取消订阅。
+5. 订阅属性变化事件。不再需要订阅事件时，调用offConnectionStateChange()、offPropertyChange()取消订阅。
 
-    <!-- @[ssap_client_on_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_on_property_change -->
     
     ``` TypeScript
     try {
@@ -270,7 +270,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 6. 向服务端发起连接。连接成功后将触发步骤4订阅的连接状态事件，可在回调中确认连接结果。
 
-    <!-- @[ssap_client_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_connect -->
     
     ``` TypeScript
     try {
@@ -284,7 +284,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 7. 获取服务端支持的服务列表。服务列表用于确认服务端提供的服务能力，后续读取、写入属性时指定的服务与属性必须包含在服务列表中。
 
-    <!-- @[ssap_client_get_services](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_get_services -->
     
     ``` TypeScript
     let services: ssap.Service[] = [];
@@ -297,9 +297,9 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-8. 设置属性变化通知。仅当服务端对应属性支持通知（NOTIFY）操作并声明了客户端属性值配置描述符时，通知才能生效，参见[星闪常见问题 > SSAP属性描述符的作用](nearlink-faq-guide.md#ssap属性描述符的作用)。
+8. 设置属性变化通知。仅当服务端对应属性支持通知（NOTIFY）操作并声明了客户端属性值配置描述符时，通知才能生效，参见星闪常见问题 > SSAP属性描述符的作用。
 
-    <!-- @[ssap_client_set_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_set_notification -->
     
     ``` TypeScript
     try {
@@ -311,9 +311,9 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
     }
     ```
 
-9. 读取指定服务的属性值。property为待读取的属性，可从[getServices()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#getservices)返回的服务列表中获得。服务与属性UUID必须为自定义UUID，且与服务端声明的UUID一致，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
+9. 读取指定服务的属性值。property为待读取的属性，可从getServices()返回的服务列表中获得。服务与属性UUID必须为自定义UUID，且与服务端声明的UUID一致，参见星闪常见问题 > 标准UUID与自定义UUID有什么区别。
 
-    <!-- @[ssap_client_read_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_read_property -->
     
     ``` TypeScript
     let result: ssap.Property | null = null;
@@ -327,7 +327,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 
 10. 写入指定服务的属性值。property为待写入的属性，可从服务列表中获得。
 
-    <!-- @[ssap_client_write_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/SsapClientPage.ets) -->
+    <!-- @ssap_client_write_property -->
     
     ``` TypeScript
     try {

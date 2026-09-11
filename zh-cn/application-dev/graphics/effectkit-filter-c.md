@@ -137,8 +137,8 @@
    绘制效果如下：
    | 图像处理 | 绘制效果 |
    | -------- | -------- |
-   | 原始图像 | ![effectfilter_origin](figures/effectfilter_origin.png) |
-   | 添加模糊效果 |![effectfilter_blur](figures/effectfilter_blur.png) |
-   | 添加提亮效果 |![effectfilter_brighten](figures/effectfilter_brighten.png) |
-   | 添加灰度效果 |![effectfilter_grayscale](figures/effectfilter_grayscale.png)  |
-   | 添加反色效果 |![effectfilter_invert](figures/effectfilter_invert.png)  |
+   | 原始图像 | effectfilter_origin |
+   | 添加模糊效果 |effectfilter_blur |
+   | 添加提亮效果 |effectfilter_brighten |
+   | 添加灰度效果 |effectfilter_grayscale  |
+   | 添加反色效果 |effectfilter_invert  |

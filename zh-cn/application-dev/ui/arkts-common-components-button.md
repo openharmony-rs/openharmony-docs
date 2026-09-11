@@ -23,7 +23,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
   其中，label用来设置按钮文字，type用于设置Button类型，stateEffect属性设置Button是否开启点击效果。
 
-  <!-- @[create_button_by_label2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
+  <!-- @create_button_by_label2 -->
   
   ``` TypeScript
   Button('Ok', { type: ButtonType.Normal, stateEffect: true })
@@ -33,7 +33,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
     .height(40)
   ```
 
-  ![button-code](figures/button-code.png)
+  button-code
 
 
 - 通过ButtonOptions创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
@@ -44,7 +44,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
   只支持包含一个子组件，子组件可以是基础组件或者容器组件。
 
-  <!-- @[create_button_by_button_options2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
+  <!-- @create_button_by_button_options2 -->
   
   ``` TypeScript
   Button({ type: ButtonType.Normal, stateEffect: true }) {
@@ -56,7 +56,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   }.borderRadius(8).backgroundColor(0x317aff).width(90).height(40)
   ```
 
-  ![button-create](figures/button-create.png)
+  button-create
 
 
 ## 设置按钮类型
@@ -68,7 +68,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   此类型按钮的圆角自动设置为高度的一半，不支持通过borderRadius属性重新设置圆角。
 
-  <!-- @[create_capsule_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  <!-- @create_capsule_button2 -->
   
   ``` TypeScript
   Button('Disable', { type: ButtonType.Capsule, stateEffect: false })
@@ -77,14 +77,14 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![button-set-type](figures/button-set-type.png)
+  button-set-type
 
 
 - 圆形按钮。
 
   此类型按钮为圆形，不支持通过borderRadius属性重新设置圆角。
 
-  <!-- @[create_circle_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  <!-- @create_circle_button2 -->
   
   ``` TypeScript
   Button('Circle', { type: ButtonType.Circle, stateEffect: false })
@@ -93,13 +93,13 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(90)
   ```
 
-  ![button-type](figures/button-type.png)
+  button-type
 
 - 普通按钮。
 
   此类型的按钮默认圆角为0，支持通过borderRadius属性重新设置圆角。
 
-  <!-- @[create_normal_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  <!-- @create_normal_button2 -->
   
   ``` TypeScript
   Button('Ok', { type: ButtonType.Normal, stateEffect: true })
@@ -109,13 +109,13 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![button-submit](figures/button-submit.png)
+  button-submit
 
 - 圆角矩形按钮。
 
   当controlSize为NORMAL时，默认圆角大小为20vp，controlSize为SMALL时，圆角大小为14vp，支持通过borderRadius属性重新设置圆角。
 
-  <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  <!-- @create_rounded_rectangle_button -->
   
   ``` TypeScript
   Button('Disable', { type: ButtonType.ROUNDED_RECTANGLE, stateEffect: true })
@@ -124,7 +124,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![button-set-type](figures/button-set-type.png)
+  button-set-type
 
 ## 自定义样式
 
@@ -132,7 +132,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   使用通用属性来自定义按钮样式。例如通过borderRadius属性设置按钮的边框弧度。
 
-  <!-- @[custom_button_border_radius2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  <!-- @custom_button_border_radius2 -->
   
   ``` TypeScript
   Button('circle border', { type: ButtonType.Normal })
@@ -140,14 +140,14 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![button-style](figures/button-style.png)
+  button-style
 
 
 - 设置文本样式。
 
   通过添加文本样式设置按钮文本的展示样式。
 
-  <!-- @[custom_font_style2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  <!-- @custom_font_style2 -->
   
   ``` TypeScript
   Button('font style', { type: ButtonType.Normal })
@@ -156,26 +156,26 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .fontWeight(800)
   ```
 
-  ![button-capsule](figures/button-capsule.png)
+  button-capsule
 
 
 - 设置背景颜色。
 
   添加backgroundColor属性设置按钮的背景颜色。
 
-  <!-- @[custom_background_color2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  <!-- @custom_background_color2 -->
   
   ``` TypeScript
   Button('background color').backgroundColor(0xF55A42)
   ```
 
-  ![button-bgcolor](figures/button-bgcolor.png)
+  button-bgcolor
 
 
 - 创建功能型按钮。
 
   创建删除操作的按钮。
-  <!-- @[custom_create_function_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  <!-- @custom_create_function_button -->
   
   ``` TypeScript
   Button({ type: ButtonType.Circle, stateEffect: true }) {
@@ -184,14 +184,14 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
   ```
 
-  ![button-round](figures/button-round.png)
+  button-round
 
 
 ## 添加事件
 
 Button组件通常用于触发某些操作，可以绑定onClick事件来响应点击操作后的自定义行为。
 
-<!-- @[button_case2_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
+<!-- @button_case2_add_event -->
 
 ``` TypeScript
 Button('Ok', { type: ButtonType.Normal, stateEffect: true })
@@ -207,7 +207,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在List容器里通过点击按钮进行页面跳转。
 
-  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) --> 
+  <!-- @button_case_1 --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -334,13 +334,13 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![button-full-example](figures/button-full-example.gif)
+  button-full-example
 
 
 - 用于提交表单。
 
   在用户登录/注册页面，使用按钮进行登录或注册操作。
-  <!-- @[button_case_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
+  <!-- @button_case_2 -->
   
   ``` TypeScript
   // xxx.ets
@@ -364,13 +364,13 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![button-example](figures/button-example.png)
+  button-example
 
 - 悬浮按钮。
 
   在可以滑动的界面，滑动时按钮始终保持悬浮状态。
 
-  <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) -->
+  <!-- @hover_button_example -->
   
   ``` TypeScript
   // xxx.ets
@@ -418,4 +418,4 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![floating_button](figures/floating_button.gif)
+  floating_button

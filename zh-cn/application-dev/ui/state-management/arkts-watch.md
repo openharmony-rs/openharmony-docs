@@ -114,7 +114,7 @@ change() {
 以下示例展示组件更新和\@Watch的处理步骤。count在CountModifier中由\@State装饰，在TotalView中由\@Prop装饰。
 
 
-<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) --> 
+<!-- @count_modifier --> 
 
 ``` TypeScript
 @Component
@@ -154,7 +154,7 @@ struct CountModifier {
 }
 ```
 
-![watch-count-modifier](figures/watch-count-modifier.gif)
+watch-count-modifier
 
 处理步骤：
 
@@ -170,7 +170,7 @@ struct CountModifier {
 以下示例说明了如何在子组件中观察\@Link变量。
 
 
-<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) --> 
+<!-- @basket_modifier --> 
 
 ``` TypeScript
 class PurchaseItem {
@@ -245,13 +245,13 @@ struct BasketModifier {
 
 效果图如下：
 
-![watch_001](figures/watch_001.gif)
+watch_001
 
 ### \@Watch的触发时机
 
 为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和\@ObjectLink装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明\@Watch触发的时机与赋值、同步的关系。
 
-<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) --> 
+<!-- @parent_component --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -366,7 +366,7 @@ struct ChildComponent {
 }
 ```
 
-![watch-parent-component](figures/watch-parent-component.gif)
+watch-parent-component
 
 处理步骤如下：
 
@@ -389,7 +389,7 @@ struct ChildComponent {
 以下示例说明了如何在\@Watch函数中使用changedPropertyName进行不同的逻辑处理。
 
 
-<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) --> 
+<!-- @use_property_name --> 
 
 ``` TypeScript
 @Entry
@@ -435,7 +435,7 @@ struct UsePropertyName {
 }
 ```
 
-![watch-use-property-name](figures/watch-use-property-name.gif)
+watch-use-property-name
 
 处理步骤如下：
 

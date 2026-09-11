@@ -39,7 +39,7 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 >
 > - 当前默认User-Agent的ArkWeb字段前有两个空格。
 >
-> - 依据[RFC 7230 Section 3.2](https://www.rfc-editor.org/info/rfc7230/#section-3.2)规范，自定义User-Agent字符串严禁包含空字符(\0)、回车符(\r)和换行符(\n)，否则会导致应用崩溃。
+> - 依据RFC 7230 Section 3.2规范，自定义User-Agent字符串严禁包含空字符(\0)、回车符(\r)和换行符(\n)，否则会导致应用崩溃。
 >
 > - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置metaViewport属性为true来覆盖关闭状态。
 >
@@ -50,7 +50,7 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 ## 自定义User-Agent结构
 
 在下面的示例中，通过调用getUserAgent()接口获取当前默认的用户代理（User-Agent）字符串。这一接口提供的默认User-Agent信息为开发者提供了基础，使开发者能够基于这个默认信息进行定制或扩展。
-<!-- @[get_the_current_default_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
+<!-- @get_the_current_default_user_agent -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -84,7 +84,7 @@ struct WebComponent {
 当Web组件src设置了url时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。若未在onControllerAttached回调事件中设置User-Agent，后续调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
 
 当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
-<!-- @[set_up_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
+<!-- @set_up_a_custom_user_agent -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -118,7 +118,7 @@ struct WebComponent {
 从API version 20开始，可通过setAppCustomUserAgent()接口设置应用级自定义用户代理，或者通过setUserAgentForHosts()对特定网站设置应用级自定义用户代理，覆盖系统的用户代理，应用内所有Web组件生效。
 
 建议在Web组件创建前先调用静态接口getDefaultUserAgent获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
-<!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
+<!-- @set_app_custom_user_agent -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';    
@@ -156,7 +156,7 @@ struct WebComponent {
 ```
 
 在下面的示例中，通过getCustomUserAgent()接口获取自定义用户代理。
-<!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
+<!-- @get_a_custom_user_agent -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

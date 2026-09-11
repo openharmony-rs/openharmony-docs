@@ -41,7 +41,7 @@
 
 创建并显示操作菜单后，菜单的响应结果会异步返回选中按钮在buttons数组中的索引。
 
-<!-- @[fixed_style_pop_up_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets) -->
+<!-- @fixed_style_pop_up_box -->
 
 ``` TypeScript
 import { PromptAction } from '@kit.ArkUI';
@@ -91,7 +91,7 @@ export struct ShowActionMenuExample {
 }
 ```
 
-![image](figures/UIContextShowMenu.gif)
+image
 
 ## 对话框 (showDialog)
 
@@ -101,7 +101,7 @@ export struct ShowActionMenuExample {
 
 创建并显示对话框，对话框响应后异步返回选中按钮在buttons数组中的索引。
 
-<!-- @[show_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowDialog.ets) -->
+<!-- @show_dialog_example -->
 
 ``` TypeScript
 // xxx.ets
@@ -157,7 +157,7 @@ export struct ShowDialogExample {
 }
 ```
 
-![image](figures/UIShowDialog.gif)
+image
 
 ## 选择器弹窗 (PickerDialog)
 
@@ -171,7 +171,7 @@ export struct ShowDialogExample {
 
 通过配置CalendarDialogOptions中的acceptButtonStyle、cancelButtonStyle属性可以实现自定义按钮样式。
 
-<!-- @[calender_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/CalendarPickerDialog.ets) -->
+<!-- @calender_picker_dialog -->
 
 ``` TypeScript
 // xxx.ets
@@ -225,7 +225,7 @@ export struct CalendarDialog {
 ```
 
 
-![image](figures/UIContextShowCalendarpickerDialog.gif)
+image
 
 ### 日期滑动选择器弹窗 (DatePickerDialog)
 
@@ -235,7 +235,7 @@ export struct CalendarDialog {
 
 弹窗中配置DatePickerDialogOptions的lunarSwitch、showTime属性为true时，会展示切换农历的开关和时间，当checkbox被选中时，会显示农历。当按下确定按钮时，弹窗会通过onDateAccept返回目前所选中的日期。如需弹窗再次弹出时显示选中的是上一次确定的日期，就要在回调中重新给selectTime进行赋值。
 
-<!-- @[date_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerDialog.ets) -->
+<!-- @date_picker_dialog -->
 
 ``` TypeScript
 
@@ -277,12 +277,12 @@ export struct DatePickerDialogExample {
 ```
 
 
-![image](figures/UIContextShowdatepickerDialog.gif)
+image
 
 该示例通过配置textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
 
-<!-- @[date_picker_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/DatePickerCustomDialog.ets) -->
+<!-- @date_picker_custom_dialog -->
 
 ``` TypeScript
 
@@ -324,7 +324,7 @@ export struct DatePickerCustomDialogExample {
 }
 ```
 
-![image](figures/UIShowDatePickerDialog.gif)
+image
 
 ### 时间滑动选择器弹窗 (TimePickerDialog)
 
@@ -334,7 +334,7 @@ export struct DatePickerCustomDialogExample {
 
 该示例通过配置disappearTextStyle、textStyle、selectedTextStyle、acceptButtonStyle、cancelButtonStyle实现了自定义文本以及按钮样式。
 
-<!-- @[time_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TimePickerDialog.ets) -->
+<!-- @time_picker_dialog -->
 
 ``` TypeScript
 // xxx.ets
@@ -379,7 +379,7 @@ export struct TimePickerDialogExample {
 }
 ```
 
-![image](figures/UIContextShowTimepickerDialog.gif)
+image
 
 ### 文本滑动选择器弹窗 (TextPickerDialog)
 
@@ -389,7 +389,7 @@ export struct TimePickerDialogExample {
 
 该示例通过设置range的参数类型为TextCascadePickerRangeContent[]，实现3列文本选择器弹窗。当按下确定按钮时，弹窗会通过onAccept返回目前所选中文本和索引值。如需弹窗再次弹出时显示选中的是上一次确定的文本，就要在回调中重新给select进行赋值。
 
-<!-- @[text_picker_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/TextPickerCNDialog.ets) -->
+<!-- @text_picker_dialog -->
 
 ``` TypeScript
 
@@ -436,7 +436,7 @@ export struct TextPickerCNDialogExample {
 }
 ```
 
-![image](figures/UIShowTextPickerDialog.gif)
+image
 
 ## 列表选择弹出框 (ActionSheet)
 
@@ -448,7 +448,7 @@ export struct TextPickerCNDialogExample {
 
 该示例通过配置width、height、transition等接口，定义了弹窗的样式以及弹出动效。
 
-<!-- @[action_sheet_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ActionSheet.ets) --> 
+<!-- @action_sheet_dialog --> 
 
 ``` TypeScript
 @Entry
@@ -523,7 +523,7 @@ export struct showActionSheetExample {
 ```
 
 
-![image](figures/UIContextShowactionSheet.gif)
+image
 
 ## 警告弹窗 (AlertDialog)
 
@@ -538,7 +538,7 @@ export struct showActionSheetExample {
 
 该示例通过配置transition等接口，定义了多个按钮弹窗的样式以及弹出动效。
 
-<!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
+<!-- @alert_dialog -->
 
 ``` TypeScript
 
@@ -600,6 +600,6 @@ export struct showAlertDialogExample {
 }
 ```
 
-![image](figures/UIContextShowAlertDialog.gif)
+image
 
 

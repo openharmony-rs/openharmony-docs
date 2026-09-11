@@ -16,7 +16,7 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 下图展示了组件元素的构成。
 
-![alt text](figures/RichEditor_guide_composition.jpg)
+alt text
 
 组件的元素构成包括：
 
@@ -37,7 +37,7 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 相比于使用controller提供的接口进行内容样式更新，使用起来更加灵活便捷。同时属性字符串对象可以设置到各类支持属性字符串的文本组件中，可以快速实现内容的迁移。
 
-<!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) --> 
+<!-- @richEditor_create --> 
 
 ``` TypeScript
 @Entry
@@ -84,13 +84,13 @@ struct CreateRichEditor {
 }
 ```
 
-![alt text](figures/richeditor_image_stylestringoptions.gif)
+alt text
 
 ### 基于Span的RichEditor组件
 
 使用RichEditor(value: RichEditorOptions)接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过RichEditorController提供的接口实现内容、样式的管理。
 
-<!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) --> 
+<!-- @richEditor_create_span --> 
 
 ``` TypeScript
 @Entry
@@ -133,7 +133,7 @@ struct CreateRichEditor {
 }
 ```
 
-![alt text](figures/richeditor_image_options.gif)
+alt text
 
 ## 添加内容
 
@@ -147,7 +147,7 @@ struct CreateRichEditor {
 
 如果组件是获焦状态并且光标在闪烁，那么通过addTextSpan添加文本内容后，光标位置会更新，在新添加文本内容的右侧闪烁。
 
-<!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) --> 
+<!-- @richEditor_addText --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -189,7 +189,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_add_text.gif)
+alt text
 
 ### 添加图片内容
 
@@ -199,7 +199,7 @@ build() {
 
 如果组件是获焦状态并且光标在闪烁，那么通过addImageSpan添加图片内容后，光标位置会更新，在新添加图片内容的右侧闪烁。
 
-<!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) --> 
+<!-- @richEditor_addImage --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -240,7 +240,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_add_image.gif)
+alt text
 
 ### 添加@Builder装饰器修饰的内容
 
@@ -250,7 +250,7 @@ build() {
 
 该接口内可通过RichEditorBuilderSpanOptions设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
 
-<!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
+<!-- @richEditor_addBuilder -->
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -310,7 +310,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_add_builder_span2.0.gif)
+alt text
 
 ### 添加SymbolSpan内容
 
@@ -320,7 +320,7 @@ build() {
 
 Symbol内容暂不支持手势、复制、拖拽处理。
 
-<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) --> 
+<!-- @richEditor_addSymbol --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -362,7 +362,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_add_SymbolSpan.gif)
+alt text
 
 ## 管理内容
 
@@ -374,7 +374,7 @@ build() {
 
 此接口适用于已有的内容样式获取与检查，例如在模板应用场景下，可利用此接口获取文本样式。此外，它还适用于内容解析与处理，例如在文本分析应用中，此接口能够获取特定范围内的文本信息。
 
-<!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) --> 
+<!-- @richEditor_getSpans --> 
 
 ``` TypeScript
 @Entry
@@ -428,7 +428,7 @@ struct GetGraphicInfoInComponent {
 }
 ```
 
-![alt text](figures/richeditor_image_getspan.gif)
+alt text
 
 ### 设置无输入时的提示文本
 
@@ -436,7 +436,7 @@ struct GetGraphicInfoInComponent {
 
 例如，在用户登录界面采用提示文本，有助于用户区分用户名与密码的输入框。又如，在文本编辑框中，使用提示文本明确输入要求，如“限输入100字以内”，以此指导用户正确操作。
 
-<!-- @[richEditor_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @richEditor_placeholder --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -467,13 +467,13 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_placeholder.gif)
+alt text
 
 ### 设置最大长度
 
 从API version 18开始，支持通过maxLength属性设置富文本的最大可输入字符数。
 
-<!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @richEditor_maxLength --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -495,7 +495,7 @@ build() {
 }
 ```
 
-![max Length](figures/RichEditor_maxLength.gif)
+max Length
 
 ## 设置文本样式
 
@@ -507,7 +507,7 @@ build() {
 
 此接口可用于个性化的写作体验，例如可以使用此接口让输入的不同层级标题自动应用相应格式（如一级、二级标题）。
 
-<!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) --> 
+<!-- @richEditor_setTypingStyle --> 
 
 ``` TypeScript
 @Entry
@@ -559,7 +559,7 @@ struct SetUserPresetTextStyles {
 }
 ```
 
-![alt text](figures/richeditor_image_setTypingStyle.gif)
+alt text
 
 ### 设置装饰线
 
@@ -567,7 +567,7 @@ struct SetUserPresetTextStyles {
 
 设置文本装饰线可突出关键信息、区分文本状态、增强视觉层次。例如，为重要标题或关键词添加装饰线，帮助用户快速获取信息。
 
-<!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @richEditor_decoration --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -600,13 +600,13 @@ build() {
 }
 ```
 
-![RichEditor_decoration](figures/RichEditor_decoration.jpg)
+RichEditor_decoration
 
 从API version 20开始，支持通过DecorationOptions中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
 
 此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
 
-<!-- @[richEditor_decorationOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+<!-- @richEditor_decorationOptions -->
 
 ``` TypeScript
 RichEditor({ controller: this.styledStringController });
@@ -654,7 +654,7 @@ Button($r('app.string.Demo_SetStyledStringButton'))
   })
 ```
 
-![RichEditor_decoration_multi_type](figures/RichEditor_decoration_multi_type.jpg)
+RichEditor_decoration_multi_type
 
 ### 设置垂直居中
 
@@ -662,7 +662,7 @@ Button($r('app.string.Demo_SetStyledStringButton'))
 
 此接口可用于优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
 
-<!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @richEditor_textVerticalAlign --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -701,7 +701,7 @@ build() {
 }
 ```
 
-![RichEditor_text_vertical_align](figures/RichEditor_text_vertical_align.jpg)
+RichEditor_text_vertical_align
 
 ### 设置中西文自动间距
 
@@ -709,7 +709,7 @@ build() {
 
 此接口可用于优化文本排版，提升组件内文本的可读性。设置自动间距后，中西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
 
-<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->  
+<!-- @richEditor_enableAutoSpacing -->  
 
 ``` TypeScript
 @Component
@@ -752,7 +752,7 @@ struct EnableAutoSpacing {
 }
 ```
 
-![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
+RichEditor_enable_auto_spacing
 
 ### 设置最大行数
 
@@ -760,7 +760,7 @@ struct EnableAutoSpacing {
 
 此接口用于控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
 
-<!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+<!-- @richEditor_maxLines -->
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -793,7 +793,7 @@ build() {
 }
 ```
 
-![max lines](figures/RichEditor_maxLines.gif)
+max lines
 
 ## 事件回调
 
@@ -807,7 +807,7 @@ build() {
 
 使用RichEditorStyledStringOptions构建的RichEditor组件不支持上述两种回调。
 
-<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+<!-- @richEditor_eventChange -->
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -868,7 +868,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_ondid.gif)
+alt text
 
 ### 添加输入法输入内容前和完成输入后可触发的回调
 
@@ -880,7 +880,7 @@ build() {
 
 使用RichEditorStyledStringOptions构建的组件不支持上述两种回调功能。
 
-<!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
+<!-- @richEditor_eventInput --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -940,7 +940,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_aboutToIMEInput4.gif)
+alt text
 
 ### 添加完成粘贴前可触发的回调
 
@@ -950,7 +950,7 @@ build() {
 
 由于组件默认的粘贴行为仅限于纯文本，无法处理图片粘贴，开发者可利用此方法实现图文并茂的粘贴功能，从而替代组件原有的粘贴行为。
 
-<!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
+<!-- @richEditor_eventPaste --> 
 
 ``` TypeScript
 import { pasteboard } from '@kit.BasicServicesKit';
@@ -1041,7 +1041,7 @@ struct on_cut_copy_paste {
 
 由于组件默认的剪切行为仅限于纯文本，无法处理图片剪切，开发者可利用此方法实现图文并茂的剪切功能，从而替代组件原有的剪切行为。
 
-<!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
+<!-- @richEditor_eventCut --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -1096,7 +1096,7 @@ build() {
 
 组件默认的复制行为仅限于纯文本，无法处理图片。开发者可利用此方法实现图文并茂的复制功能，替代组件的默认行为。
 
-<!-- @[richEditor_eventCopy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
+<!-- @richEditor_eventCopy --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -1143,7 +1143,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_oncut_paste_copy.gif)
+alt text
 
 更多事件使用请参考RichEditor事件。
 
@@ -1157,7 +1157,7 @@ build() {
 
 设置不同颜色的光标和手柄可以提高视觉辨识度，特别是在包含多个输入区域的复杂界面中，独特的光标颜色能帮助快速定位当前操作的输入区域。这一特性也可以提升用户体验，使光标颜色与应用页面整体的风格相协调。
 
-<!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @richEditor_color --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -1188,7 +1188,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_caretcolor.gif)
+alt text
 
 ### 添加组件内容选择区域或编辑状态下光标位置改变时可触发的回调
 
@@ -1196,7 +1196,7 @@ build() {
 
 该回调可用于实时监听组件内容选中区域变化，例如实现实时更新工具栏状态（显示字体、段落格式等）、统计选中内容长度或生成选中内容摘要。实时响应选中状态，动态联动交互元素，提升富文本编辑的操作反馈体验和功能的灵活性。
 
-<!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
+<!-- @richEditor_eventSelectChange --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -1240,7 +1240,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_onSelectionChange.gif)
+alt text
 
 ### 设置内容选中区范围
 
@@ -1250,7 +1250,7 @@ build() {
 
 当组件内未获焦出现光标时，调用该接口不产生选中效果。
 
-<!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) --> 
+<!-- @richEditor_selection --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -1287,7 +1287,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_set_selection.gif)
+alt text
 
 ## 菜单配置
 
@@ -1297,7 +1297,7 @@ build() {
 
 当富文本选择区域变化后显示菜单之前触发onPrepareMenu回调，可在该回调中进行菜单数据设置。
 
-<!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+<!-- @richEditor_prepareMenu -->
 
 ``` TypeScript
 @Component
@@ -1387,7 +1387,7 @@ struct PrepareMenu {
 }
 ```
 
-![alt text](figures/richeditor_on_prepare_menu.gif)
+alt text
 
 ### 屏蔽系统服务类菜单项
 
@@ -1396,7 +1396,7 @@ struct PrepareMenu {
 此接口保护内容安全，适用于限制文本操作的场景，例如展示保密内容或禁止复制的版权文本。屏蔽系统服务菜单项，防止用户通过系统服务菜单复制、分享文本，降低内容泄露风险。
 
 
-<!-- @[richEditor_disableSystemMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets) --> 
+<!-- @richEditor_disableSystemMenu --> 
 
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
@@ -1446,14 +1446,14 @@ struct DisableSystemServiceMenu {
 }
 ```
 
-![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
+RichEditor_disable_system_service_menuItems
 
 通过disableMenuItems可以屏蔽富文本选择菜单内指定的系统服务菜单项。
 
 此接口可精确屏蔽指定的系统服务菜单项，保留应用所需的系统菜单功能，使菜单更贴合实际交互设计。
 
   
-<!-- @[richEditor_disableMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets) --> 
+<!-- @richEditor_disableMenu --> 
 
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
@@ -1502,7 +1502,7 @@ struct DisableMenuItem {
 }
 ```
 
-  ![alt text](figures/richEditor_disable_menuItems.gif)
+  alt text
 
 ### 设置自定义选择菜单
 
@@ -1512,7 +1512,7 @@ struct DisableMenuItem {
 
 当自定义菜单超长时，建议内部嵌套Scroll组件使用，避免菜单被键盘遮挡。
 
-<!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+<!-- @richEditor_bindSelectionMenu --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -1585,6 +1585,6 @@ SystemMenu() {
 }
 ```
 
-![alt text](figures/richeditor_image_bindselectionmenu.gif)
+alt text
 
 <!--RP1--><!--RP1End-->

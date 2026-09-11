@@ -28,12 +28,12 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 
 **图1** 自定义容器组件
 
-![customContainer](figures/customContainer.png)
+customContainer
 
 1. 按照接入ArkTS页面创建前置工程。
 
 2. 创建自定义容器组件封装对象。
-   <!-- @[custom-components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/ArkUICustomContainerNode.h) -->
+   <!-- @custom-components -->
 
    ``` C
    // ArkUICustomContainerNode.h
@@ -157,7 +157,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    ```
 
 3. 使用自定义容器创建带文本的示例界面。
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) --> 
+   <!-- @entrance --> 
    
    ``` C++
    #include "NativeEntry.h"
@@ -274,12 +274,12 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 
 **图2** 自定义绘制组件
  
-![customNode](figures/customNode.png)
+customNode
 
 1. 按照自定义布局容器章节准备前置工程。
 
 2. 创建自定义绘制组件封装对象。
-   <!-- @[custom-draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/ArkUICustomNode.h) -->
+   <!-- @custom-draw -->
    
    ``` C
    // ArkUICustomNode.h
@@ -396,7 +396,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    ```
 
 3. 使用自定义绘制组件和自定义容器创建示例界面。
-   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) --> 
+   <!-- @entrance --> 
    
    ``` C++
    
@@ -511,16 +511,16 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 
 ## 不规则网格布局示例
 
-以下示例创建了一个不规则网格布局容器，支持不同大小的网格单元，实现类似瀑布流的布局效果。完整示例请参考<!--RP1-->[CustomDrawIrregularSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample)<!--RP1End-->。
+以下示例创建了一个不规则网格布局容器，支持不同大小的网格单元，实现类似瀑布流的布局效果。完整示例请参考<!--RP1-->CustomDrawIrregularSample<!--RP1End-->。
 
 **图3** 不规则网格布局效果
 
-![irregularGrid](figures/irregularGrid.jpg)
+irregularGrid
 
 1. 按照自定义布局容器章节准备前置工程。
 
 2. 创建不规则网格布局容器组件封装对象。
-   <!-- @[irregular-grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h) -->
+   <!-- @irregular-grid -->
    
    ``` C
     // ArkUIIrregularGridNode.h
@@ -738,7 +738,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 
 
 3. 使用不规则网格布局容器创建示例界面。
-   <!-- @[irregular-grid-entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @irregular-grid-entrance -->
    
    ``` C++
     #include "NativeEntry.h"

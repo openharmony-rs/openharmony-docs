@@ -19,7 +19,7 @@
 
 ArkTS文件定义。
 
-<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
+<!-- @arkts_define_obj -->
 
 ``` TypeScript
 @Sendable
@@ -36,7 +36,7 @@ export class SendableObjTest {
 
 实现Native加载ArkTS模块的能力。
 
-<!-- @[native_load_arkts_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @native_load_arkts_module -->
 
 ``` C++
 #include <thread>
@@ -100,7 +100,7 @@ static void* CreateEnvAndSendSendable(void*)
 
 ArkTS文件定义。
 
-<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
+<!-- @arkts_define_obj -->
 
 ``` TypeScript
 @Sendable
@@ -117,7 +117,7 @@ export class SendableObjTest {
 
 在Native中实现两个线程的序列化和反序列化Sendable的逻辑。
 
-<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @native_deserialize_sendable -->
 
 ``` C++
 #include <thread>
@@ -254,7 +254,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
-<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @native_deserialize_sendable -->
 
 ``` TypeScript
 export const testSendSendable: () => void;
@@ -262,7 +262,7 @@ export const testSendSendable: () => void;
 
 UI主线程发起调用。
 
-<!-- @[main_thread_init_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/Index.ets) -->
+<!-- @main_thread_init_call -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

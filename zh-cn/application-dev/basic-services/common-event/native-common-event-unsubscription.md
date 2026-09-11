@@ -22,7 +22,7 @@
 
 1. 引用头文件。
 
-   <!-- @[event_unsubscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.h) -->
+   <!-- @event_unsubscriber_import -->
    
    ``` C
    #include "hilog/log.h"
@@ -45,7 +45,7 @@
 
    订阅者订阅公共事件并完成业务需求后，可以通过OH_CommonEvent_UnSubscribe主动取消订阅事件。
 
-   <!-- @[event_unsubscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.cpp) -->
+   <!-- @event_unsubscriber -->
    
    ``` C++
    void Unsubscribe(CommonEvent_Subscriber *subscriber)

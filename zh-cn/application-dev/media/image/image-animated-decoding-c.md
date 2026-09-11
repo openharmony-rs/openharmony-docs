@@ -37,7 +37,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 1. 导入相关头文件。
 
-   <!-- @[animatedDecoding_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+   <!-- @animatedDecoding_import -->
    
    ``` C++
    #include <string>
@@ -51,7 +51,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->
+   <!-- @define_logInfo -->
    
    ``` C++
    #undef LOG_DOMAIN
@@ -62,7 +62,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 3. 定义动图解码相关类，用于保存ImageSource实例、帧数和解码得到的PixelMap对象。
 
-   <!-- @[define_animatedSourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->
+   <!-- @define_animatedSourceClass -->
    
    ``` C
    class ImageAnimatedNative {
@@ -79,7 +79,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 4. 创建ImageAnimatedNative实例。
 
-   <!-- @[create_animatedSourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+   <!-- @create_animatedSourceClass -->
    
    ``` C++
    static ImageAnimatedNative *g_thisAnimated = new ImageAnimatedNative();
@@ -87,7 +87,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 5. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @get_returnValue -->
    
    ``` C++
    // 处理napi返回值。
@@ -101,7 +101,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 6. 常量定义。
 
-   <!-- @[animatedDecoding_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->   
+   <!-- @animatedDecoding_maxStringLength -->   
    
    ``` C++
    const int ANIMATED_MAX_STRING_LENGTH = 1024;
@@ -109,7 +109,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 7. 创建ImageSource实例。
 
-   <!-- @[animatedDecoding_createImageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+   <!-- @animatedDecoding_createImageSource -->
    
    ``` C++
    // 创建ImageSource实例。
@@ -138,7 +138,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 8. 获取图片帧数。帧数大于1时，可按动图处理。
 
-   <!-- @[animatedDecoding_getFrameCount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+   <!-- @animatedDecoding_getFrameCount -->
    
    ``` C++
    // 获取图像帧数。帧数大于1时，可按动图处理。
@@ -161,7 +161,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 9. 获取动图帧延迟时间列表。延迟时间列表用于控制每帧显示时长。
 
-   <!-- @[animatedDecoding_getDelayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+   <!-- @animatedDecoding_getDelayTimeList -->
    
    ``` C++
    // 获取图像延迟时间列表。
@@ -195,7 +195,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     全量解码动图帧示例如下。
 
-    <!-- @[animatedDecoding_createPixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+    <!-- @animatedDecoding_createPixelmapList -->
     
     ``` C++
     // 通过图片解码参数创建PixelMap列表。
@@ -234,7 +234,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     按索引解码指定帧示例如下。
 
-    <!-- @[animatedDecoding_createPixelmapByIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+    <!-- @animatedDecoding_createPixelmapByIndex -->
     
     ``` C++
     // 通过帧索引创建指定帧PixelMap。
@@ -284,7 +284,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     使用完成后，需要释放ImageSource、PixelMap列表、单帧PixelMap等资源。
 
-    <!-- @[animatedDecoding_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAnimatedImageSource.cpp) -->
+    <!-- @animatedDecoding_release -->
     
     ``` C++
     // 释放动图解码相关资源。

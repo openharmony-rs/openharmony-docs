@@ -15,7 +15,7 @@
 
 具有高帧率（>30fps）视频源的播放场景；视频帧率小于或等于30的场景建议以30Hz的刷新率运行。下图以播放一段60fps的视频为例，算法根据视频内容实时调整屏幕刷新率，调节过程中，当刷新率小于视频帧率时，显示前会丢弃部分视频帧以节省功耗。
 
-![Video variable refreshrate](figures/video-variable-refreshrate.png)
+Video variable refreshrate
 
 ## 约束与限制
 

@@ -21,7 +21,7 @@
 
 **ArkTS示例：**
 
-<!-- @[swift_type_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @swift_type_annotation -->
 
 ``` TypeScript
 // 类型注解（类似Swift）
@@ -63,7 +63,7 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 
 **ArkTS示例：** 函数定义
 
-<!-- @[swift_function_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @swift_function_definition -->
 
 ``` TypeScript
 // 常规函数定义，与Swift类似
@@ -81,7 +81,7 @@ function add(x: number, y: number): number {
 
    **ArkTS示例：** ArkTS函数重载
 
-   <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @function_overload_demo -->    
 
    ``` TypeScript
    function foo(x: number): void;            /* 第一个函数定义 */
@@ -95,7 +95,7 @@ function add(x: number, y: number): number {
 
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
-   <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @optional_parameter -->    
 
    ``` TypeScript
    function foo2(name?: string) {}  /* name为可选参数 */
@@ -122,7 +122,7 @@ ArkTS也有自己的模块和包管理机制，同样通过import语句引入其
 
 **ArkTS示例：**
 
-<!-- @[import_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @import_collections -->
 
 ``` TypeScript
 // 引入ArkTS标准库中的ArkTS容器集
@@ -148,7 +148,7 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 
 **ArkTS示例：**
 
-<!-- @[namespace_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @namespace_demo -->
 
 ``` TypeScript
 namespace Models {
@@ -197,7 +197,7 @@ ArkTS的`this`指向取决于函数调用时的上下文。
 
 **ArkTS示例：**
 
-<!-- @[this_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @this_context -->
 
 ``` TypeScript
 class A {
@@ -240,13 +240,13 @@ ArkTS具有强大的类型推断能力，编译器能够根据上下文自动推
 
 **ArkTS示例：**
 
-<!-- @[auto_type_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @auto_type_inference -->
 
 ``` TypeScript
 let num = 10; // 编译器自动推断num为number类型
 ```
 
-<!-- @[optional_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @optional_property -->
 
 ``` TypeScript
 interface Person {
@@ -267,7 +267,7 @@ ArkTS支持联合类型（`|`）。联合类型表示一个值可以是多种类
 
 **ArkTS示例：**
 
-<!-- @[union_type_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @union_type_demo -->
 
 ``` TypeScript
 // 联合类型示例

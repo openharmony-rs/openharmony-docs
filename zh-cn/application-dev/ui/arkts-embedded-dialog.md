@@ -27,7 +27,7 @@ ArkUI的弹出框默认设置为全局级别，弹窗节点作为页面根节点
 
 当弹出框弹出时，会自动获取当前显示的Page页面并将弹出框节点挂载在此页面下。此时弹出框的显示层级高于此Page页面下的所有Navigation页面。
 
-<!-- [open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+<!-- open_custom_dialog -->
 
 ``` TypeScript
 this.getUIContext().getPromptAction().openCustomDialog({
@@ -48,7 +48,7 @@ this.getUIContext().getPromptAction().openCustomDialog({
 
 如下代码示例所示，Text节点为指定页面的节点，设置自定义id后，通过getFrameNodeById方法获取该节点，再通过getUniqueId获取节点的内部id，并将其作为levelUniqueId的值传入。
 
-<!-- [test_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+<!-- test_text -->
 
 ``` TypeScript
 Text(this.message).id('test_text')
@@ -70,7 +70,7 @@ Text(this.message).id('test_text')
 
 如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将immersiveMode参数的值设为ImmersiveMode.EXTEND。
 
-<!-- @[dialog_embedded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+<!-- @dialog_embedded -->
 
 ``` TypeScript
 Text(this.message).id('test_text')
@@ -103,7 +103,7 @@ Text(this.message).id('test_text')
 ## 完整示例
 
 下述示例为基于Router路由模式下的页面级弹出框。
-<!-- [page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+<!-- page_level_dialog -->
 
 ``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -169,7 +169,7 @@ export struct PageLevelDialogBox {
 
 ```
 
-<!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
+<!-- @next -->
 
 ``` TypeScript
 // Next.ets
@@ -194,11 +194,11 @@ struct Next {
   }
 }
 ```
-![embedded_dialog](figures/embedded_dialog.gif)
+embedded_dialog
 
 下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考Navigation使用NavDestination作为导航页文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
 
-<!-- [page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogInNavigation.ets) -->
+<!-- page_level_dialog -->
 
 ``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
@@ -298,4 +298,4 @@ export struct PageLevelDialogInNavigationTestTwo {
 }
 ```
 
-![embedded_dialog_navigation](figures/page_dialog_in_navigation.gif)
+embedded_dialog_navigation

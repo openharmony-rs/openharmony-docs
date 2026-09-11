@@ -105,7 +105,7 @@ BackupExtensionAbility是Stage模型中扩展组件ExtensionAbility的派生类�
     }
     ```
 
-   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   <!-- @on_backup_restore -->    
    
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -153,7 +153,7 @@ BackupExtensionAbility是Stage模型中扩展组件ExtensionAbility的派生类�
 
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
-   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   <!-- @on_release -->    
    
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -248,4 +248,4 @@ BackupExtensionAbility是Stage模型中扩展组件ExtensionAbility的派生类�
 
 针对应用接入数据的备份与恢复，有以下相关实例可供参考：
 
-- [应用接入数据备份恢复（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/FileBackupExtension)
+- 应用接入数据备份恢复（ArkTS）（Full SDK）（API10）

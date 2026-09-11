@@ -12,7 +12,7 @@
 
 从API版本26.0.0开始，PC/2in1设备还支持基于AudioDeviceEnhanceManager和native_audio_device_enhance_manager.h的输入设备切换能力，应用可按应用级或音频流级精确指定输入设备，满足多设备场景下对收音来源的控制需求。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。其中，PC/2in1设备输入设备切换的完整示例请参见[ArkTS示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS)和[C/C++示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。其中，PC/2in1设备输入设备切换的完整示例请参见ArkTS示例和C/C++示例。
 
 ## 选择使用蓝牙或者星闪设备进行录音
 
@@ -22,7 +22,7 @@
 >
 > 通话场景下，如果蓝牙或星闪设备在线，系统默认使用蓝牙或星闪设备作为输入设备。
 
-<!-- @[setBluetoothAndNearlinkPreferredRecordCategory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
+<!-- @setBluetoothAndNearlinkPreferredRecordCategory -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -51,7 +51,7 @@ let audioSessionManager = audioManager.getSessionManager();
 >
 > 通话场景下，输入设备跟随当前输出设备，此时其他与通话并发的录音流也会跟随通话输入设备。
 
-<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->  
+<!-- @selectMediaInputDevice -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -142,7 +142,7 @@ PC/2in1设备经常存在多路输入设备可用（如内置麦克风、USB/蓝
 
 ArkTS示例：
 
-<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+<!-- @isEnhancedRoutingSupported -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -159,7 +159,7 @@ C/C++示例：
 
 使用前需添加头文件：
 
-<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+<!-- @header_file -->
 
 ``` C++
 #include <ohaudio/native_audio_device_enhance_manager.h>
@@ -170,7 +170,7 @@ C/C++示例：
 #include <ohaudio/native_audiostreambuilder.h>
 ```
 
-<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+<!-- @isEnhancedRoutingSupported -->
 
 ``` C++
 napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
@@ -196,7 +196,7 @@ ArkTS示例：
 
 - **应用级：** 通过selectInputDevice选择指定的输入设备，设置成功后对应用下创建的所有录制流生效。
 
-  <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+  <!-- @select_InputDevice -->
 
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -216,7 +216,7 @@ ArkTS示例：
 
 - **音频流级：** 通过selectInputDeviceForAudioCapturer为指定音频录制流选择输入设备，设置成功后仅对该录制流生效。
 
-  <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+  <!-- @select_InputDeviceForAudioCapturer -->
 
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -238,7 +238,7 @@ C/C++示例：
 
 - **应用级：** 通过OH_AudioDeviceEnhanceManager_SelectInputDevice选择指定的输入设备。
 
-  <!-- @[select_InputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+  <!-- @select_InputDevice -->
 
   ``` C++
   // 获取音频设备增强管理器。
@@ -311,7 +311,7 @@ C/C++示例：
 
 - **音频流级：** 通过OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer为指定音频录制流选择输入设备。
 
-  <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+  <!-- @select_InputDeviceForAudioCapturer -->
 
   ``` C++
   // 获取音频设备增强管理器。

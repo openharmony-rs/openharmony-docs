@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 1. 导入相关头文件。
 
-   <!-- @[hdrColorSpace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+   <!-- @hdrColorSpace_import -->
    
    ``` C++
    #include <cstring>
@@ -75,7 +75,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->
+   <!-- @define_logInfo -->
    
    ``` C++
    #undef LOG_DOMAIN
@@ -86,7 +86,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 3. 定义HDR图片解码相关类，用于保存ImageSource、PixelMap、Picture和解码结果信息。
 
-   <!-- @[define_hdrColorSpaceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->
+   <!-- @define_hdrColorSpaceClass -->
    
    ``` C
    class ImageHdrColorSpaceNative {
@@ -106,7 +106,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 4. 创建ImageHdrColorSpaceNative实例。
 
-   <!-- @[create_hdrColorSpaceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+   <!-- @create_hdrColorSpaceClass -->
    
    ``` C++
    static ImageHdrColorSpaceNative *g_hdrColorSpace = new ImageHdrColorSpaceNative();
@@ -114,7 +114,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 5. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @get_returnValue -->
    
    ``` C++
    // 处理napi返回值。
@@ -128,7 +128,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 6. 常量定义。
 
-   <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+   <!-- @define_maxStringLength -->
    
    ``` C++
    const int MAX_STRING_LENGTH = 1024;
@@ -138,7 +138,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    ImageSource用于管理图片源数据。后续HDR解码、Picture解码和图片信息获取均基于ImageSource完成。
 
-   <!-- @[hdrColorSpace_createImageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+   <!-- @hdrColorSpace_createImageSource -->
    
    ``` C++
    napi_value CreateHdrImageSource(napi_env env, napi_callback_info info)
@@ -174,7 +174,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    | `IMAGE_DYNAMIC_RANGE_HDR` | 期望输出HDR结果。实际结果仍受图片源、设备能力和解码条件影响。 |
    | `IMAGE_DYNAMIC_RANGE_SDR` | 期望输出SDR结果，适用于普通显示、编辑、分享或兼容性优先的场景。 |
 
-   <!-- @[hdrColorSpace_decodePixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+   <!-- @hdrColorSpace_decodePixelMap -->
    
    ``` C++
    napi_value DecodeHdrPixelMap(napi_env env, napi_callback_info info)
@@ -204,7 +204,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    解码完成后，可以通过`OH_PixelmapNative_GetImageInfo`获取PixelMap图像信息，再通过`OH_PixelmapImageInfo_GetDynamicRange`判断解码结果是否为HDR。该结果表示当前PixelMap的动态范围，不等同于源图片文件一定是HDR或SDR。
 
-   <!-- @[hdrColorSpace_checkDynamicRange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+   <!-- @hdrColorSpace_checkDynamicRange -->
    
    ``` C++
    napi_value CheckHdrDynamicRange(napi_env env, napi_callback_info info)
@@ -243,7 +243,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     当应用需要兼容普通显示、编辑、分享或不支持HDR的场景时，可以将期望动态范围设置为`IMAGE_DYNAMIC_RANGE_SDR`。该方式可作为HDR解码失败或设备不支持HDR时的降级处理。
 
-    <!-- @[hdrColorSpace_decodeSdrPixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_decodeSdrPixelMap -->
     
     ``` C++
     napi_value DecodeSdrPixelMap(napi_env env, napi_callback_info info)
@@ -276,7 +276,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
     - 需要兼容普通显示或分享时，可使用SDR主图。
     - 需要用于HDR显示或处理时，可合成HDR PixelMap。
 
-    <!-- @[hdrColorSpace_decodePicture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_decodePicture -->
     
     ``` C++
     napi_value DecodeHdrPicture(napi_env env, napi_callback_info info)
@@ -317,7 +317,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     SDR主图可用于普通显示、编辑、分享或HDR处理失败时的回退显示。对于带GainMap的HDR图片，主图通常是兼容SDR显示链路的图像数据。
 
-    <!-- @[hdrColorSpace_getMainPixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_getMainPixelmap -->
     
     ``` C++
     napi_value GetMainPixelmapFromPicture(napi_env env, napi_callback_info info)
@@ -338,7 +338,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     GainMap记录用于从SDR主图还原或增强HDR效果的增益信息。应用如果需要自定义HDR处理，可获取GainMap PixelMap进行后续处理。
 
-    <!-- @[hdrColorSpace_getGainmapPixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_getGainmapPixelmap -->
     
     ``` C++
     napi_value GetGainmapPixelmapFromPicture(napi_env env, napi_callback_info info)
@@ -359,7 +359,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     当Picture中包含有效GainMap时，可直接获取合成后的HDR PixelMap。若Picture中不包含GainMap，接口可能返回`IMAGE_UNSUPPORTED_OPERATION`，应用可回退到SDR主图。
 
-    <!-- @[hdrColorSpace_getHdrComposedPixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_getHdrComposedPixelmap -->
     
     ``` C++
     napi_value GetHdrComposedPixelmapFromPicture(napi_env env, napi_callback_info info)
@@ -380,7 +380,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     如果应用需要将处理后的HDR PixelMap保存为文件，可通过ImagePacker设置编码参数。编码结果是否为HDR与源PixelMap动态范围、编码格式、设备能力和编码参数有关。若业务仅要求兼容分享或普通显示，可优先编码为SDR结果。
 
-    <!-- @[hdrColorSpace_packHdrPixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_packHdrPixelMap -->
     
     ``` C++
     napi_value PackHdrPixelMap(napi_env env, napi_callback_info info)
@@ -437,7 +437,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
     使用完成后，需要释放ImageSource、PixelMap、Picture等资源，避免内存泄漏。
 
-    <!-- @[hdrColorSpace_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadHdrColorSpace.cpp) -->
+    <!-- @hdrColorSpace_release -->
     
     ``` C++
     napi_value ReleaseHdrColorSpaceSource(napi_env env, napi_callback_info info)

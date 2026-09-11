@@ -29,7 +29,7 @@ UIAbility是系统调度的最小单元。在设备内的功能模块之间跳�
 
 1. 在EntryAbility中，通过调用startAbility()方法启动UIAbility，want为UIAbility实例启动的入口参数，其中bundleName为待启动应用的Bundle名称，abilityName为待启动的Ability名称，moduleName在待启动的UIAbility属于不同的Module时添加，parameters为自定义信息参数。示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
-    <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    <!-- @FuncAbilityA -->
     
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
@@ -86,7 +86,7 @@ UIAbility是系统调度的最小单元。在设备内的功能模块之间跳�
 
 2. 在FuncAbility的onCreate()或者onNewWant()生命周期回调文件中接收EntryAbility传递过来的参数。
 
-    <!-- @[Ability_FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityA.ets) -->
+    <!-- @Ability_FuncAbilityA -->
 
     ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -110,7 +110,7 @@ UIAbility是系统调度的最小单元。在设备内的功能模块之间跳�
 
 3. 在FuncAbility业务完成之后，如需要停止当前UIAbility实例，在FuncAbility中通过调用terminateSelf()方法实现。
 
-    <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    <!-- @FuncAbilityAPage -->
     
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
@@ -157,7 +157,7 @@ UIAbility是系统调度的最小单元。在设备内的功能模块之间跳�
 
 1. 在EntryAbility中，调用startAbilityForResult()接口启动FuncAbility，异步回调中的data用于接收FuncAbility停止自身后返回给EntryAbility的信息。示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
-    <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    <!-- @FuncAbilityA_Result -->
     
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
@@ -225,7 +225,7 @@ UIAbility是系统调度的最小单元。在设备内的功能模块之间跳�
 
 2. 在FuncAbility停止自身时，需要调用terminateSelfWithResult()方法，入参abilityResult为FuncAbility需要返回给EntryAbility的信息。
 
-    <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
+    <!-- @FuncAbilityB -->
     
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
@@ -280,7 +280,7 @@ UIAbility是系统调度的最小单元。在设备内的功能模块之间跳�
 
 3. FuncAbility停止自身后，EntryAbility通过startAbilityForResult()方法回调接收被FuncAbility返回的信息，RESULT_CODE需要与前面的数值保持一致。
 
-    <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+    <!-- @FuncAbilityA_For_Result -->
     
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
@@ -366,7 +366,7 @@ UIAbility的启动分为两种情况：UIAbility冷启动和UIAbility热启动�
 调用方UIAbility启动另外一个UIAbility时，通常需要跳转到指定的页面。例如FuncAbility包含两个页面（Index对应首页，Second对应功能A页面），此时需要在传入的want参数中配置指定的页面路径信息，可以通过Want中的parameters参数增加一个自定义参数传递页面跳转信息。示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
 
-<!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
+<!-- @FuncAbility_Cold -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -425,7 +425,7 @@ struct MainPage {
 
 目标UIAbility冷启动时，在目标UIAbility的onCreate()生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的onWindowStageCreate()生命周期回调中，解析调用方传递过来的want参数，获取到需要加载的页面信息url，传入windowStage.loadContent()方法。
 
-<!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
+<!-- @ColdAbility -->
 
 ``` TypeScript
 import { AbilityConstant, Want, UIAbility } from '@kit.AbilityKit';
@@ -473,13 +473,13 @@ export default class ColdStartAbility extends UIAbility {
 
 图1 目标UIAbility热启动
 
-![](figures/uiability-hot-start.png)
+
 
 开发步骤如下所示。
 
 1. 冷启动短信应用的UIAbility实例时，在onWindowStageCreate()生命周期回调中，通过调用getUIContext()接口获取UI上下文实例UIContext对象。
 
-    <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+    <!-- @HotAbility -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -523,7 +523,7 @@ export default class ColdStartAbility extends UIAbility {
 
     1. 导入相关模块，并在onNewWant()生命周期回调中设置全局变量nameForNavi的值。
 
-        <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
+        <!-- @onNewWant -->
         
         ``` TypeScript
         import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -544,7 +544,7 @@ export default class ColdStartAbility extends UIAbility {
 
     2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
-        <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
+        <!-- @Index -->
         
         ``` TypeScript
         @Entry
@@ -583,7 +583,7 @@ export default class ColdStartAbility extends UIAbility {
 
     3. 实现Navigation子页面。
 
-        <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
+        <!-- @PageOne -->
         
         ``` TypeScript
         @Builder
@@ -638,7 +638,7 @@ export default class ColdStartAbility extends UIAbility {
 
     5. 在module.json5配置文件中配置routerMap路由映射。
 
-        <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
+        <!-- @routerMap -->
         
         ``` JSON5
         {
@@ -734,7 +734,7 @@ struct Page_UIAbilityComponentsInteractive {
 
 效果示意如下图所示。
 
-![](figures/start-uiability-floating-window.png)
+
 
 <!--DelEnd-->
 
@@ -742,5 +742,5 @@ struct Page_UIAbilityComponentsInteractive {
 
 针对UIAbility组件间交互开发，有以下相关实例可供参考：
 
-- [UIAbility内和UIAbility间页面的跳转（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Ability/StageAbility)
-- [UIAbility内页面间的跳转（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Ability/PagesRouter)
+- UIAbility内和UIAbility间页面的跳转（ArkTS）（API9）
+- UIAbility内页面间的跳转（ArkTS）（API9）

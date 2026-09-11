@@ -62,7 +62,7 @@
 ```
 
 完整示例代码如下：
-<!-- @[Nested_scrolling_Sheet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets) -->
+<!-- @Nested_scrolling_Sheet -->
 
 ``` TypeScript
 
@@ -122,7 +122,7 @@ struct SheetDemo {
 ```
 
 
-![sheetTwo](figures/sheetTwo.PNG)
+sheetTwo
 
 ## 二次确认能力
 
@@ -131,7 +131,7 @@ struct SheetDemo {
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
-<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
+<!-- @onWillDismiss_Dismiss -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -206,7 +206,7 @@ struct OnWillDismiss_Dismiss {
 ```
 
 
-![onWillDismiss](figures/onWillDismiss.png)
+onWillDismiss
 
 ## 屏蔽部分关闭行为
 
@@ -248,7 +248,7 @@ onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
 - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
 完整示例代码如下：
-<!-- @[SheetTransitionExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets) -->
+<!-- @SheetTransitionExample -->
 
 ``` TypeScript
 
@@ -315,4 +315,4 @@ struct SheetTransitionExample {
 ```
 
 
-![sheetOne](figures/sheetOne.PNG)
+sheetOne

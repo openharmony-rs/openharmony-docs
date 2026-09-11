@@ -41,7 +41,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
 
 1. 导入模块。
 
-   <!-- @[import_the_device_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @import_the_device_status_module --> 
    
    ``` TypeScript
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
@@ -50,7 +50,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
    
 2. 订阅设备静止姿态（支架态）感知事件。
 
-   <!-- @[device_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @device_status_subscribe --> 
    
    ``` TypeScript
    try {
@@ -67,7 +67,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
 
 3. 取消本客户端订阅的所有设备静止姿态（支架态）感知事件。
 
-   <!-- @[device_status_unsubscribe_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @device_status_unsubscribe_all --> 
    
    ``` TypeScript
    try {
@@ -82,7 +82,7 @@ DeviceStatus（设备状态感知）模块提供设备状态感知能力，可�
 
 4. 取消订阅设备静止姿态（支架态）感知事件的特定回调。
 
-   <!-- @[device_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/DeviceStatus/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @device_status_unsubscribe --> 
    
    ``` TypeScript
    // 定义callback变量

@@ -67,7 +67,7 @@ export default {
 }
 ```
 
-![dialog-Component](figures/dialog-Component.gif)
+dialog-Component
 
 
 ## 设置弹窗响应
@@ -148,7 +148,7 @@ export default {
 ```
 
 
-![Dialog-Box-Response](figures/Dialog-Box-Response.gif)
+Dialog-Box-Response
 
 
 > **说明：**
@@ -319,11 +319,11 @@ export default {
 ```
 
 
-![Example-Scenario-3](figures/Example-Scenario-3.gif)
+Example-Scenario-3
 
 
 ## 相关实例
 
 针对dialog开发，有以下相关实例可供参考：
 
-- [弹窗基本使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/DialogDemo)
+- 弹窗基本使用（JS）（API9）

@@ -35,7 +35,7 @@
 
 该示例代码以UIAbility为例介绍如何配置静态指定进程。在需要运行在独立进程的UIAbility的module.json5配置文件中，在abilities标签下对应的ability中添加process字段。process字段值以":"开头，表示应用私有进程。配置相同process字段值的多个ability将运行在同一进程中。以下示例中，EntryAbility未配置process字段，运行在默认进程中；EntryAbility1和EntryAbility2的process字段均配置为":processTag"，它们将运行在同一独立进程中，进程名为"应用包名:processTag"：
 
-<!-- @[static_isolation_process_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StaticIsolationProcess/entry/src/main/module.json5) --> 
+<!-- @static_isolation_process_config --> 
 
 ``` JSON5
 {
@@ -91,7 +91,7 @@
 
     以下示例中，名为EntryAbility1的UIAbility实例配置了isolationProcess为true，其运行进程由AbilityStage的onNewProcessRequest回调方法返回的字符串动态指定
 
-    <!-- @[dynamic_isolation_process_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/module.json5) --> 
+    <!-- @dynamic_isolation_process_config --> 
     
     ``` JSON5
     {
@@ -117,7 +117,7 @@
 
     在srcEntry指定的AbilityStage源文件中，实现onNewProcessRequest回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态的指定UIAbility实例所运行的独立进程。
 
-    <!-- @[dynamic_isolation_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets) --> 
+    <!-- @dynamic_isolation_process --> 
     
     ``` TypeScript
     import AbilityStage from '@ohos.app.ability.AbilityStage';
@@ -154,7 +154,7 @@
 
 以下示例以entry模块配置isolationOnly模式为例：
 
-<!-- @[module_isolation_process_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModuleIsolationProcess/entry/src/main/module.json5) --> 
+<!-- @module_isolation_process_config --> 
 
 ``` JSON5
 {

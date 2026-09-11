@@ -10,7 +10,7 @@
 
 在状态变量相关装饰器中，@State是最基础的装饰器，也是大部分状态变量的数据源。
 
-在阅读\@State文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：状态管理概述。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考状态管理常见问题。
+在阅读\@State文档前，建议开发者对状态管理框架有基本的了解。建议提前阅读：状态管理概述。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@
 
   **图1** 初始化规则图示
 
-![state-initialization](figures/state-initialization.png)
+state-initialization
 
 ## 观察变化和行为表现
 
@@ -66,7 +66,7 @@
 - 当装饰的数据类型为class或Object时，可以观察到自身的赋值和属性赋值的变化，即Object.keys(observedObject)返回的所有属性。示例如下：
   
   声明Person和Model类。
-  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
+  <!-- @state_change_observation_object --> 
   
   ``` TypeScript
   // 声明Person类
@@ -91,7 +91,7 @@
   ```
 
   \@State装饰的类型是Model。
-    <!-- @[state_decorate_type_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    <!-- @state_decorate_type_object -->
   
     ``` TypeScript
     // class类型
@@ -99,7 +99,7 @@
     ```
 
   对\@State装饰变量的赋值。
-    <!-- @[state_decorate_object_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    <!-- @state_decorate_object_change_01 -->
   
     ``` TypeScript
     // class类型赋值
@@ -107,7 +107,7 @@
     ```
 
   对\@State装饰变量的属性赋值。
-    <!-- @[state_decorate_object_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    <!-- @state_decorate_object_change_02 -->
   
     ``` TypeScript
     // class属性的赋值
@@ -115,7 +115,7 @@
     ```
 
   对嵌套对象的属性直接赋值无法被框架观察到，因此不会触发UI刷新。
-    <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+    <!-- @state_decorate_object_change_03 -->
   
     ``` TypeScript
     // 嵌套的属性赋值观察不到
@@ -154,7 +154,7 @@
 
 3. 父组件传入undefined时，\@State装饰的变量仍使用本地初始值进行初始化。
    
-   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
+   <!-- @state_input_undefined --> 
    
    ``` TypeScript
    @Entry
@@ -196,7 +196,7 @@
 - 当状态变量count改变时，只能查询到Button组件与之关联。
 
 - 执行Button组件的更新方法，实现按需刷新。
-    <!-- @[state_scene_simple_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneSimpleType.ets) -->
+    <!-- @state_scene_simple_type -->
     
     ``` TypeScript
     @Entry
@@ -220,7 +220,7 @@
     }
     ```
 
-![state-simple](figures/state-simple.gif)
+state-simple
 
 ### 装饰class对象类型的变量
 
@@ -228,7 +228,7 @@
 
 - EntryComponent中有多个MyComponent组件实例，第一个MyComponent内部状态的更改不会影响第二个MyComponent。
 
-    <!-- @[state_scene_type_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
+    <!-- @state_scene_type_class -->
     
     ``` TypeScript
     class Model {
@@ -283,12 +283,12 @@
     }
     ```
 
-![Video-state](figures/Video-state.gif)
+Video-state
 
 ### 装饰Array类型变量
 
 在下面的示例中，\@State装饰的变量fruits的类型为Array\<Fruit\>，点击Button改变fruits的值，视图会随之刷新。
-<!-- @[state_scene_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeArray.ets) -->
+<!-- @state_scene_type_array -->
 
 ``` TypeScript
 class Fruit {
@@ -355,7 +355,7 @@ struct ArraySample {
 }
 ```
 
-![state-array](figures/state-array.gif)
+state-array
 
 ### 装饰Map类型变量
 
@@ -364,7 +364,7 @@ struct ArraySample {
 > 从API version 11开始，\@State支持Map类型。
 
 在下面的示例中，\@State装饰的变量fruits的类型为Map\<string, number\>，点击Button改变fruits的值，视图会随之刷新。
-<!-- @[state_scene_type_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets) -->
+<!-- @state_scene_type_map -->
 
 ``` TypeScript
 @Entry
@@ -423,7 +423,7 @@ struct MapSample {
 }
 ```
 
-![state-map](figures/state-map.gif)
+state-map
 
 ### 装饰Set类型变量
 
@@ -432,7 +432,7 @@ struct MapSample {
 > 从API version 11开始，\@State支持Set类型。
 
 在下面的示例中，\@State装饰的变量fruits的类型为Set\<string\>，点击Button改变fruits的值，视图会随之刷新。
-<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->  
+<!-- @state_scene_type_set -->  
 
 ``` TypeScript
 @Entry
@@ -484,12 +484,12 @@ struct SetSample {
 }
 ```
 
-![state-set](figures/state-set.gif)
+state-set
 
 ### 装饰Date类型变量
 
 在下面的示例中，\@State装饰的变量selectedDate的类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
-<!-- @[state_scene_type_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeDate.ets) -->
+<!-- @state_scene_type_date -->
 
 ``` TypeScript
 @Entry
@@ -541,12 +541,12 @@ struct DatePickerExample {
 }
 ```
 
-![state-date](figures/state-date.gif)
+state-date
 
 ### \@State支持联合类型实例
 
 \@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的值，视图会随之刷新。
-<!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
+<!-- @state_scene_joint_type_instance -->
 
 ``` TypeScript
 @Entry
@@ -579,4 +579,4 @@ struct UnionTypeSample {
   }
 }
 ```
-![state-union](figures/state-union.gif)
+state-union

@@ -19,7 +19,7 @@
 ## 配置文件示例
 
 通过一个示例，整体了解module.json5配置文件。
-<!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_all -->
 
 ``` JSON5
 {
@@ -188,7 +188,7 @@ module.json5配置文件包含以下标签。
 
 deviceTypes示例：
 
-<!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+<!-- @module_deviceTypes -->
 
 ``` JSON5
 {
@@ -208,7 +208,7 @@ deviceTypes示例：
 
 该标签是一个profile文件资源，用于指定描述页面信息的配置文件。
 
-<!-- @[module_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_pages -->
 
 ``` JSON5
 {
@@ -262,7 +262,7 @@ deviceTypes示例：
 | value | 标识数据项的值，取值为长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | resource | 标识了用户自定义数据，取值为长度不超过255字节的字符串，内容为该数据的资源索引，例如配置成$profile:shortcuts_config，表示指向了/resources/base/profile/shortcuts_config.json配置文件。| 字符串 | 该标签可缺省，缺省值为空。 |
 
-<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_metadata -->
 
 ``` JSON5
 {
@@ -328,7 +328,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 
 abilities示例：
 
-<!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+<!-- @module_abilities -->
 
 ``` JSON5
 {
@@ -437,7 +437,7 @@ skills示例：
 > 如下示例为通用配置，部分组件和模块在实际配置时存在差异<!--RP15--><!--RP15End-->，具体请参考对应文档说明。
 >
 
-<!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_abilities_skills -->
 
 ``` JSON5
 {
@@ -507,7 +507,7 @@ skills示例：
 
 extensionAbilities示例：
 
-<!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+<!-- @module_extensionAbilities -->
 
 ``` JSON5
 {
@@ -676,7 +676,7 @@ metadata中指定shortcut信息，其中：
 
 2. 在module.json5配置文件的abilities标签中，针对需要添加快捷方式的UIAbility进行配置metadata标签，使shortcut配置文件对该UIAbility生效。
 
-   <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5)  -->
+   <!-- @module_abilities_metadata  -->
    
    ``` JSON5
    {
@@ -751,7 +751,7 @@ wants标签示例：
 
 - **适用场景：** 当一个工程中存在多个Entry，且多个Entry配置的deviceTypes存在交集时，则需要通过该标签进行区分。比如下面的两个Entry都支持tablet类型，就需要通过该标签进行区分。
 
-  <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
+  <!-- @module_distributionFilter_01 -->
   
   ``` JSON5
   // entry1支持的设备类型
@@ -769,7 +769,7 @@ wants标签示例：
   ```
 
 
-  <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
+  <!-- @module_distributionFilter_02 -->
   
   ``` JSON5
   // entry2支持的设备类型
@@ -885,7 +885,7 @@ wants标签示例：
 
 2. 在module.json5配置文件的module标签中定义metadata信息。
 
-  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
+  <!-- @module_distributionFilter_metadata   -->
   
   ``` JSON5
   {
@@ -915,7 +915,7 @@ wants标签示例：
 
 testRunner标签示例：
 
-<!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+<!-- @module_testRunner -->
 
 ``` JSON5
 {
@@ -952,7 +952,7 @@ testRunner标签示例：
 
 atomicService标签示例：
 
-<!-- @[module_atomicService](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile04/entry/src/main/module.json5) -->
+<!-- @module_atomicService -->
 
 ``` JSON5
 {
@@ -986,7 +986,7 @@ atomicService标签示例：
 
 dependencies标签示例：
 
-<!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+<!-- @module_dependencies -->
 
 ``` JSON5
 {
@@ -1018,7 +1018,7 @@ dependencies标签示例：
 
 proxyData标签示例：
 
-<!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+<!-- @module_proxyData -->
 
 ``` JSON5
 {
@@ -1164,7 +1164,7 @@ customData标签示例：
 
 appEnvironments标签示例：
 
-<!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_appEnvironments -->
 
 ``` JSON5
 {
@@ -1196,7 +1196,7 @@ appEnvironments标签示例：
 hnpPackages示例：
 
 
-<!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+<!-- @module_hnpPackages -->
 
 ``` JSON5
 {
@@ -1220,7 +1220,7 @@ hnpPackages示例：
 
 fileContextMenu标签示例
 
-<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_fileContextMenu -->
 
 ``` JSON5
 {
@@ -1344,7 +1344,7 @@ resources/base/profile路径下的start_window.json资源文件示例如下：
 
 systemTheme标签示例：
 
-<!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_systemTheme -->
 
 ``` JSON5
 {
@@ -1376,7 +1376,7 @@ resources/base/profile路径下的theme_config.json资源文件示例如下：
 <!--Del-->
 ## definePermissions标签
 
-该标签仅支持系统资源hap定义权限，不支持应用自定义权限。权限定义方式参见[系统资源权限定义](https://gitcode.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json)。
+该标签仅支持系统资源hap定义权限，不支持应用自定义权限。权限定义方式参见系统资源权限定义。
 
 **表30** definePermissions标签说明
 
@@ -1393,7 +1393,7 @@ resources/base/profile路径下的theme_config.json资源文件示例如下：
 
 definePermissions标签示例：
 
-<!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+<!-- @module_definePermissions -->
 
 ``` JSON5
 {
@@ -1428,7 +1428,7 @@ definePermissions标签示例：
 
 executableBinaryPaths示例：
 
-<!-- @[module_executableBinaryPaths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+<!-- @module_executableBinaryPaths -->
 
 ``` JSON5
 {
@@ -1461,7 +1461,7 @@ executableBinaryPaths示例：
 | visibility | 标识技能的可见性，用于控制技能的可见范围。支持的取值如下：<br/>-&nbsp;"private"：私有，仅当前应用可见。<br/>-&nbsp;"system"：系统级，系统应用和当前应用可见。<br/>-&nbsp;"public"：公开，所有应用都可见。<br/>**说明：**<br/>该标签缺省值为"system"。 | 字符串 | 该标签可缺省，缺省值为"system"。 |
 
 skillProfiles标签示例：
-<!-- @[module_skillProfiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+<!-- @module_skillProfiles -->
 
 ``` JSON5
 {

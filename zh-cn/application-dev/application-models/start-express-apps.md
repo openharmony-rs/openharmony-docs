@@ -76,7 +76,7 @@ startAbilityByType接口中type字段为express，支持查询快递意图，对
     
     效果示例图：
         
-    ![效果示例图](./figures/start-express-panel.png)
+    效果示例图
 
 ## 目标方开发步骤
 

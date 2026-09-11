@@ -22,7 +22,7 @@
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@distributed_Data_Permission-->      
 
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
@@ -52,7 +52,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { fileUri } from '@kit.CoreFileKit';
    ```
-   <!--@[copy_sand_to_distributed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
+   <!--@copy_sand_to_distributed-->     
 
    ``` TypeScript
    let pathDir: string = context.filesDir;
@@ -96,7 +96,7 @@
    import { fileUri } from '@kit.CoreFileKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@[copy_distributed_to_sand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
+   <!--@copy_distributed_to_sand-->        
    
    ``` TypeScript
    // ...
@@ -165,7 +165,7 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit'
    import { fileIo } from '@kit.CoreFileKit';
    ```
-   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
+   <!--@access_DisConnectDfs-->        
    
    ``` TypeScript
    // 获取设备A的networkId

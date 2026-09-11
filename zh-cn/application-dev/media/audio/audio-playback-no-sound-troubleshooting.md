@@ -53,7 +53,7 @@
 
    可参考以下示例进行音频参数的设置。
    
-   <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+   <!-- @Render_ConfigStream -->
    
    ``` C++
    // 设置音频采样率。
@@ -90,7 +90,7 @@
    - 回调耗时：确认没有在`OH_AudioRenderer_OnWriteDataCallback`回调中执行复杂音效处理、大文件写入合并等耗时任务或长时间不返回，避免阻塞下一次数据回调。
    
    回调注册可参考AudioRendererSampleC页面代码中的`SetRendererWriteDataCallback`。
-   <!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+   <!-- @Render_SetRendererWriteDataCallback -->
    
    ``` C++
    // 自定义写入数据函数。

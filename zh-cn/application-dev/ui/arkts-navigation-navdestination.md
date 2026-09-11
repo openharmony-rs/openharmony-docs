@@ -20,7 +20,7 @@ NavDestination提供了两种类型。
   
   NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。弹窗类型的NavDestination显示和消失时不会影响下层标准类型的NavDestination的显示和生命周期，两者可以同时显示。
 
-  <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
+  <!-- @PageDisplayType -->
   
   ``` TypeScript
   // Dialog NavDestination
@@ -80,7 +80,7 @@ NavDestination提供了两种类型。
   }
   ```
 
-  ![dialog_navdestination](figures/DialogNavDestinationExample.gif)
+  dialog_navdestination
 
 ## 页面生命周期
 
@@ -88,7 +88,7 @@ NavDestination提供了两种类型。
 
 生命周期时序如下图所示：
 
-![navigation_lifecycle](figures/navigation_lifecycle.png)
+navigation_lifecycle
 
 - **aboutToAppear**：在创建自定义组件后，执行其build()函数之前执行（NavDestination创建之前），允许在该方法中改变状态变量，更改将在后续执行build()函数中生效。
 - **onWillAppear**：NavDestination创建后，挂载到组件树之前执行，在该方法中更改状态变量会在当前帧显示生效。
@@ -116,7 +116,7 @@ NavDestination提供了两种类型。
 
   自定义组件提供queryNavDestinationInfo方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为NavDestinationInfo，若查询不到则返回undefined。
 
-  <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template1/Index.ets) -->
+  <!-- @MyComponent -->
   
   ``` TypeScript
   import { uiObserver } from '@kit.ArkUI';

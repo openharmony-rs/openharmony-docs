@@ -179,27 +179,27 @@ struct Index {
 
 如下图所示，反例中启动时总耗时为457ms。
 
-![反例总时长](./figures/improve-application-response-promise-all-duration.png)
+反例总时长
 
 反例中启动时aboutToAppear阶段耗时为295ms。
 
-![反例时长](./figures/improve-application-response-promise-duration.png)
+反例时长
 
 正例中启动时总耗时为169ms。
 
-![正例总时长](./figures/improve-application-response-settimeout-all-duration.png)
+正例总时长
 
 正例中启动时aboutToAppear阶段耗时为167μs。
 
-![正例时长](./figures/improve-application-response-settimeout-duration.png)
+正例时长
 
 其中setTimeout真正的耗时为308ms。
 
-![正例时长](./figures/improve-application-response-settimeout-real-duration.png)
+正例时长
 
 异步运行机制如图所示。
 
-![异步运行机制](./figures/improve-application-response-async.png)
+异步运行机制
 
 ## 减少刷新的组件数量
 
@@ -299,11 +299,11 @@ struct StackExample2 {
 
 当Text('New Page')隐藏状态时开始抓取耗时，此时点击按钮显示Text('New Page')组件时结束抓取，此时引起了兄弟节点中ForEach中的文本测量，Text总共创建个数为stack容器1个Text+兄弟节点中ForEach中的100个Text，共101个，Text总耗时为3ms。
 
-![img](./figures/improve_application_response_1.png)
+img
 
 基于上例，将Stack容器指定宽高，相同操作抓取耗时，此时没有引起父组件兄弟节点的布局计算和测量更新，仅有Stack容器中的1个Text创建耗时，Text总耗时为255μs。
 
-![img](./figures/improve_application_response_2.png)
+img
 
 可见，对于可以指定宽高的容器可以限制刷新范围。
 
@@ -768,11 +768,11 @@ export class ControllerManager {
 
 反例响应时延：18.1ms。
 
-![反例响应时延](./figures/preload_counter_example_delay.png)
+反例响应时延
 
 正例响应时延：9.4ms。
 
-![正例响应时延](./figures/preload_positive_example_delay.png)
+正例响应时延
 
 由上述对比数据即可得出结论，预加载首页能优化首页响应时延。
 
@@ -854,17 +854,17 @@ struct ArticleSkeletonView { // 自定义骨架图
 
 效果如下图：
 
-![骨架图占位](./figures/improve-application-response-skeleton.png)
+骨架图占位
 
 将使用和未使用骨架图的组件通过SmartPerf-Host工具抓取trace后对比可得：
 
 未使用骨架图时，响应时间约为321.5ms。（其中包含setTimeout的300ms）。
 
-![骨架图占位](./figures/improve-application-response-no-skeleton-duration.png)
+骨架图占位
 
 使用了骨架图后，响应时间变为10.3ms。
 
-![骨架图占位](./figures/improve-application-response-skeleton-duration.png)
+骨架图占位
 
 ## 延迟执行相机的资源释放操作
 
@@ -912,7 +912,7 @@ public async release() {
 
 利用Smart-Perf工具分析得到反例trace图，追踪流程从应用侧的`DispatchTouchEvent`（type=1，标识手指离开屏幕）标签开始，到render_service直至RSHardwareThread硬件提交vsync，最终定位到首帧渲染的变化。在直接于`onPageHide`中执行相机关闭与释放操作时，该过程耗时457.5ms。
 
-![](./figures/camera_release.PNG)
+
 
 ### 正例
 
@@ -959,7 +959,7 @@ public async release() {
 
 而利用Smart-Perf工具分析得到正例trace图，追踪流程从应用侧的`DispatchTouchEvent`（type=1，标识手指离开屏幕）标签开始，到render_service直至RSHardwareThread硬件提交vsync，最终定位到首帧渲染的变化。而通过在`onPageHide`中引入200ms的`setTimeout`延迟机制，执行时间减少至85.6ms。
 
-![](./figures/camera_release_use_settimeout.PNG)
+
 
 ### 性能比对 
 
@@ -1037,13 +1037,13 @@ struct PanGestureExample {
 
 反例trace图
 
-![反例响应时延](./figures/pangesture_distance_max.png)
+反例响应时延
 
 日志主要关注从应用接收TouchDown事件到pan识别耗时，该过程耗时127ms。（注：日志信息和trace图非同一时间获取，所获得的性能数据存在差异，提供的数值仅供参考。）
 
 反例日志
 
-![反例响应时延日志](./figures/pangesture_distance_max_log.png)
+反例响应时延日志
 
 ### 正例
 
@@ -1106,13 +1106,13 @@ struct PanGestureExample {
 
 正例trace图
 
-![正例响应时延](./figures/pangesture_distance_min.png)
+正例响应时延
 
 日志主要关注从应用接收TouchDown事件到pan识别耗时，该过程耗时42ms。（注：日志信息和trace图非同一时间获取，所获得的性能数据存在差异，提供的数值仅供参考。）
 
 正例日志
 
-![正例响应时延日志](./figures/pangesture_distance_min_log.png)
+正例响应时延日志
 
 ### 性能比对 
 （注：不同设备特性和具体应用场景的多样性，所获得的性能数据存在差异，提供的数值仅供参考，该表格仅分析trace图。）

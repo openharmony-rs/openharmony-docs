@@ -27,7 +27,7 @@
 
 1. 导入模块。
 
-    <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
+    <!-- @specified_customized_ringtone_header --> 
     
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
@@ -47,7 +47,7 @@
 
    (1) 将音频资源放入项目的resources/rawfile目录下。<br/>
    (2) 创建发布通知的sound信息。
-    <!-- @[specified_resources_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    <!-- @specified_resources_rawfile -->
     
     ``` TypeScript
     let soundFile: string = SOUND_FILE_NAME; // 需要替换为resources/rawfile目录下对应的音频文件
@@ -56,7 +56,7 @@
    场景二：使用沙箱内音频资源作为通知铃声。
 
    (1) 生成沙箱内音频资源路径。
-    <!-- @[specified_customized_ringtone_getAppContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    <!-- @specified_customized_ringtone_getAppContext -->
     
     ``` TypeScript
     // 生成沙箱内音频资源路径
@@ -74,7 +74,7 @@
 
    (2) 将网络下载或者用户生成的音频资源放在沙箱文件目录EL1区域的files目录下或者其子目录下，下面示例展示了如何将resources/rawfile目录下的音频资源拷贝到指定沙箱目录。
 
-    <!-- @[specified_customized_ringtone_copyToSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    <!-- @specified_customized_ringtone_copyToSandbox -->
     
     ``` TypeScript
     // 拷贝resources/rawfile/目录下的音频文件到应用沙箱EL1的files目录下
@@ -95,7 +95,7 @@
 
    (3) 创建发布通知的sound信息。
 
-    <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
+    <!-- @specified_sandbox_file --> 
     
     ``` TypeScript
     // 获取沙箱文件uri
@@ -104,7 +104,7 @@
     ```
 3. 发布携带自定义铃声的通知。
 
-    <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) --> 
+    <!-- @specified_customized_ringtone_publish_notification --> 
     
     ``` TypeScript
     let notificationRequest: notificationManager.NotificationRequest = {

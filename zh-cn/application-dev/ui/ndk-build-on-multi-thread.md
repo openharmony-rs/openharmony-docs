@@ -189,7 +189,7 @@
 
 点击CreateNodeTree按钮触发在多个非UI线程并行创建Button组件，之后在UI线程将创建完成的Button组件挂载到UI主树上，使组件显示在页面上。点击DisposeNodeTree按钮将已创建的组件从UI主树上卸载并销毁，清空页面。
 
-![build_on_multi_thread](figures/build_on_multi_thread.gif)
+build_on_multi_thread
 
 示例主要展示了如何获取和使用多线程NDK接口，并使用OH_ArkUI_PostAsyncUITask、OH_ArkUI_PostUITask和OH_ArkUI_PostUITaskAndWait等接口将组件创建和属性设置等任务分发到多线程并行执行。
 
@@ -262,7 +262,7 @@ export const createNodeTreeOnMultiThread: (content1: Object, content2: Object) =
 export const disposeNodeTreeOnMultiThread: (content1: Object) => void;
 ```
 
-<!-- @[cmake_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBuildOnMultiThread/entry/src/main/cpp/CMakeLists.txt) -->
+<!-- @cmake_start -->
 
 ``` Text
 # the minimum version of CMake.
@@ -649,5 +649,5 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 如下实例展示了在高负载组件创建场景下如何使用多线程NDK接口，将组件创建任务拆分成多个子任务，分派给多个线程并发执行来优化页面跳转场景的响应时延和完成时延。
 
 <!--RP1-->
-[使用NDK多线程创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/NdkBuildOnMultiThread)
+使用NDK多线程创建UI组件
 <!--RP1End-->

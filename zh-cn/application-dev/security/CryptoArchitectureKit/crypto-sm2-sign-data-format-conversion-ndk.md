@@ -20,7 +20,7 @@
 
 4. 调用OH_CryptoEccSignatureSpec_Destroy释放对象。
 
-<!-- @[sm2_signature_format_conversion_der](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_signature_format_conversion_der.cpp) -->
+<!-- @sm2_signature_format_conversion_der -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -79,7 +79,7 @@ OH_Crypto_ErrCode DoTestSm2RStoDER()
 
 3. 调用OH_CryptoEccSignatureSpec_Destroy释放内存。
 
-<!-- @[sm2_der_convert_r_s](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/sm2_der_convert_r_s.cpp) -->
+<!-- @sm2_der_convert_r_s -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

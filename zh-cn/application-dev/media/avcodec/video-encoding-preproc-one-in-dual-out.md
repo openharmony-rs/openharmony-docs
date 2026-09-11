@@ -22,7 +22,7 @@
 
 以下为一入二出架构图：
 
-![one input dual output](figures/video-encoding-one-in-dual-out.png)
+one input dual output
 
 ### 使用场景
 应用可依据自己的场景选择使用，场景使用举例见下表：

@@ -11,7 +11,7 @@
 
 DataAbility的提供方和使用方都通过URI（Uniform Resource Identifier）来标识一个具体的数据，例如数据库中的某个表或磁盘上的某个文件。此处的URI仍基于URI通用标准，格式如下：
 
-![fa-dataability-uri](figures/fa-dataability-uri.png)
+fa-dataability-uri
 
 - scheme：协议方案名，固定为"dataability"，代表Data Ability所使用的协议类型。
 

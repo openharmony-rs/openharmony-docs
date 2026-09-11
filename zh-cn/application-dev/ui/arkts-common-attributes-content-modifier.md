@@ -12,7 +12,7 @@
 
 使用ContentModifier自定义Checkbox样式，用五边形Checkbox替换默认Checkbox。选中时，五边形内部显示红色三角图案，标题显示“选中”；取消选中时，红色三角图案消失，标题显示“非选中”。
 
- <!-- @[checkbox_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Modifier/entry/src/main/ets/pages/MyCheckboxStyle.ets) -->
+ <!-- @checkbox_demo -->
  
  ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -104,4 +104,4 @@
  }
  ```
 
-![](figures/common_builder.gif)
+

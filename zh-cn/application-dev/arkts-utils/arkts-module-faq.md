@@ -96,7 +96,7 @@ ModuleImportStack:
 
 **可能原因**
 
-应用在升级时并未升级版本号，或者应用使用了[normalized](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section13181758123312)特性，但是在升级或者更新时没有重启应用。
+应用在升级时并未升级版本号，或者应用使用了normalized特性，但是在升级或者更新时没有重启应用。
 
 **解决措施**
 
@@ -106,15 +106,15 @@ ModuleImportStack:
 
    若不一致，则为应用版本号降级导致更新失败，应用需要更新版本号。
 
-   ![hapVersion](./figures/module_hapVersion.PNG)
+   hapVersion
 
-   ![crashVersion](./figures/module_crashVersion.PNG)
+   crashVersion
 
 3. 检查是否使用了normalized特性但未重启应用。
 
    查看反编译后的abc文件为normalized ohmurl格式。可以在文件内搜索@normalized：
 
-   ![normalized](./figures/module_normalized.PNG)
+   normalized
 
 4. 重新启动应用，确保normalized特性生效。
 
@@ -146,13 +146,13 @@ Disassembler反汇编工具
 
    情况一：搜索不到完整的文件名，但可以搜索到相似的名字。
 
-      ![unComplete](./figures/module_unComplete.PNG)
+      unComplete
 
       解决办法：每行的第一个和第二个分号之间会有完整的名字，报错中的文件名和编译产物中的文件名需要修改为一致。
 
    情况二：filesInfo.txt搜索不到这个文件，在编译产物区域也找不到对应产物的文件生成。
 
-      ![entry](./figures/module_entry.PNG)
+      entry
 
       解决方法：每个被打入abc的文件都会在编译产物中生成，如entry包、har包。开发者如果在对应路径没有查到该文件，则排查是否为动态加载文件。
 

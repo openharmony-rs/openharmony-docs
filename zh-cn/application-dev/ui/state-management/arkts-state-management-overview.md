@@ -10,7 +10,7 @@
 
   **图1** 效果图  
 
-![Video_2023-03-06_152548](figures/Video_2023-03-06_152548.gif)
+Video_2023-03-06_152548
 
 上面的示例中，用户与应用程序的交互触发了文本状态变更，状态变更引起了UI渲染，UI从“Hello World”变更为“Hello ArkUI”。
 
@@ -18,7 +18,7 @@
 
 自定义组件中的变量，必须使用装饰器装饰，才能成为状态变量，状态变量的改变会引起UI的渲染刷新。如果不使用状态变量，UI只能在初始化时渲染，后续将不会再刷新。下图展示了State和View（UI）之间的关系。
 
-![zh-cn_image_0000001562352677](figures/State-UI-relationship.png)
+zh-cn_image_0000001562352677
 
 - View(UI)：UI渲染，指将build方法内的UI描述和\@Builder装饰的方法内的UI描述映射到界面。
 
@@ -53,7 +53,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 图示如下，具体装饰器的介绍，可详见<!--RP1-->管理组件拥有的状态<!--RP1End-->和<!--RP2-->管理应用拥有的状态<!--RP2End-->。开发者可以利用这些能力来实现数据和UI的联动。
 
-![zh-cn_image_0000001502704640](figures/V1-Decorators.png)
+zh-cn_image_0000001502704640
 
 上图中，Components部分的装饰器为组件级别的状态管理，Application部分为应用的状态管理。开发者可以通过@StorageLink/@LocalStorageLink实现应用和组件状态的双向同步，通过@StorageProp/@LocalStorageProp实现应用和组件状态的单向同步。
 
@@ -97,9 +97,9 @@ $$运算符：给系统组件提供TS变量的引用，使得TS变量和系统�
 
 针对页面状态管理，有以下相关实例可供参考：
 
-- [状态管理（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/StateManagement)
+- 状态管理（ArkTS）（API9）
 
-- [目标管理（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
+- 目标管理（ArkTS）（API9）
 
 ## 状态管理（V2）
 
@@ -114,7 +114,7 @@ $$运算符：给系统组件提供TS变量的引用，使得TS变量和系统�
 - 在更改对象中属性以及更改数组中元素的场景下存在冗余更新的问题。
 - 装饰器间配合使用限制多，不易用。组件中没有明确状态变量的输入与输出，不利于组件化。
 
-![arkts-old-state-management](figures/arkts-old-state-management.png)
+arkts-old-state-management
 
 状态管理V2增强了数据的观察能力，使数据本身可观察。更改数据时，会触发相应视图的更新。相较于状态管理V1，状态管理V2有如下优点：
 
@@ -126,7 +126,7 @@ $$运算符：给系统组件提供TS变量的引用，使得TS变量和系统�
 
 - 装饰器易用性高、拓展性强，在组件中明确输入与输出，有利于组件化。
 
-![arkts-new-state-management](figures/arkts-new-state-management.png)
+arkts-new-state-management
 
 ### 装饰器总览
 

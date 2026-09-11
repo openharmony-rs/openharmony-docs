@@ -27,7 +27,7 @@ Navigation组件结构较为复杂，包含几个关键概念：
 
 **图1** Navigation总体架构图
 
-![NavigationArchitectureDiagram](figures/NavigationArchitectureDiagram.png)
+NavigationArchitectureDiagram
 
 此外Navigation提供两种布局模式：单栏模式、分栏模式，不同模式下的结构如下。
 
@@ -37,9 +37,9 @@ Navigation组件结构较为复杂，包含几个关键概念：
 
   **图2** 单栏布局示意图
 
-  ![NavigationStackModeArchitectureDiagram](figures/NavigationStackModeArchitectureDiagram.png)
+  NavigationStackModeArchitectureDiagram
 
-  ![导航单栏模式](figures/导航单栏模式.jpg)
+  导航单栏模式
 
 - 分栏模式：
 
@@ -47,9 +47,9 @@ Navigation组件结构较为复杂，包含几个关键概念：
 
   **图3** 分栏布局示意图
 
-  ![NavigationSplitModeArchitectureDiagram](figures/NavigationSplitModeArchitectureDiagram.png)
+  NavigationSplitModeArchitectureDiagram
 
-  ![导航分栏模式](figures/导航分栏模式.jpg)
+  导航分栏模式
 
 ## Navigation（导航容器）
 
@@ -77,7 +77,7 @@ NavBar的内容区可以通过两种方式指定：
 
  - 方式一：直接指定Navigation的子节点。
 
-  <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
+  <!-- @NavigationDemo -->
   
   ``` TypeScript
   @Entry
@@ -187,9 +187,9 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   **图4** Mini模式标题栏
 
-  ![mini](figures/mini.jpg)
+  mini
 
-  <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
+  <!-- @NavigationTitleModeMini -->
   
   ``` TypeScript
   Navigation() {
@@ -204,9 +204,9 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   **图5** Full模式标题栏
 
-  ![free1](figures/free1.jpg)
+  free1
 
-  <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
+  <!-- @NavigationTitleModeFUll -->
   
   ``` TypeScript
   Navigation() {
@@ -221,9 +221,9 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 **图6** 设置了3个图标的菜单栏
 
-![菜单栏2](figures/菜单栏2.jpg)
+菜单栏2
 
-   <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
+   <!-- @NavigationMenuThreeImage -->
    
    ``` TypeScript
    let menuItem: NavigationMenuItem  = {
@@ -240,7 +240,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 图片也可以引用resources中的资源。
 
-   <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
+   <!-- @NavigationMenuThreeResource -->
    
    ``` TypeScript
    let menuItem: NavigationMenuItem  = {
@@ -257,11 +257,11 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 **图7** 设置了4个图标的菜单栏 
 
-![菜单栏](figures/菜单栏.jpg)
+菜单栏
 
 竖屏状态下菜单栏，最多支持显示3个按钮，当按钮超过3个时，多余的按钮会被折叠。
 
-   <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
+   <!-- @NavigationMenuFour -->
    
    ``` TypeScript
    let menuItem: NavigationMenuItem  = {
@@ -283,9 +283,9 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   **图8** 工具栏
 
-![free3](figures/free3.jpg)
+free3
 
-   <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
+   <!-- @ToolBar -->
    
    ``` TypeScript
    let toolTmp: ToolbarItem = {

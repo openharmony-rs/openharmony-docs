@@ -62,7 +62,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
   | d/i | 支持打印十进制整数类型。 | 123 |
   | s | 支持打印char\*类型。 | "this is a hilog" |
 
-  格式字符串中可以设置多个参数，例如格式字符串为"%s World"，“%s”为参数类型为字符串的变参标识，具体取值在args中定义，格式说明符使用参考[printf](https://man7.org/linux/man-pages/man3/printf.3.html)。
+  格式字符串中可以设置多个参数，例如格式字符串为"%s World"，“%s”为参数类型为字符串的变参标识，具体取值在args中定义，格式说明符使用参考printf。
 
   debug应用无隐私管控机制，使用上述任意隐私标识符打印日志，都可明文显示参数。
 

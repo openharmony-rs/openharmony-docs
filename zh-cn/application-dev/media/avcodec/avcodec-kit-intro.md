@@ -53,7 +53,7 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
 
   视频编解码的逻辑如图所示。
   
-  ![](figures/avcodec-vcodec-logic.png)
+  
 
   具体开发指导请参考异步模式视频解码Surface模式、异步模式视频编码Surface模式。
 
@@ -65,7 +65,7 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
 
   音频编解码逻辑如图所示。
 
-  ![](figures/avcodec-acodec-logic.png)
+  
 
   具体开发指导请参考异步模式音频解码、异步模式音频编码。
 
@@ -77,7 +77,7 @@ AVCodec Kit（Audio & Video Codec Kit，音视频编解码，封装，解封装�
 
   文件封装、解封装逻辑如图所示。
 
-  ![](figures/avcodec-muxer-demuxer-logic.png)
+  
 
   具体开发指导请参考媒体数据封装和媒体数据解封装。
 

@@ -29,7 +29,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
 1. 全局导入Image模块。
 
-   <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPicture.ets) -->    
+   <!-- @decodingPicture_import -->    
    
    ``` TypeScript
    // 导入相关模块。
@@ -43,7 +43,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 2. 获取图片。
    - 方法一：通过沙箱路径直接获取。该方法仅适用于应用沙箱中的图片。更多细节请参考获取应用文件路径。应用沙箱的介绍及如何向应用沙箱推送文件，请参考文件管理。
 
-     <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_filePath -->   
      
      ``` TypeScript
      function getFilePath(context: Context, fileName: string): string {
@@ -54,7 +54,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考文档@ohos.file.fs (文件管理)。该方法需要导入\@kit.CoreFileKit模块。
    
-     <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_fileFd -->   
      
      ``` TypeScript
      function getFileFd(context: Context, fileName: string): number | undefined {
@@ -72,7 +72,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
    
    - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考getRawFileContent。该方法需要导入\@kit.LocalizationKit模块。
    
-     <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
+     <!-- @get_fileBuffer -->    
      
      ``` TypeScript
      async function getFileBuffer(context: Context, fileName: string): Promise<ArrayBuffer | undefined> {
@@ -93,7 +93,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
    
    - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考getRawFd。该方法需要导入\@kit.LocalizationKit模块。
      
-     <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @get_RawFd -->   
      
      ``` TypeScript
      async function getRawFd(context: Context, fileName: string): Promise<resourceManager.RawFileDescriptor | undefined> {
@@ -113,7 +113,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    - 方法一：通过沙箱路径创建ImageSource。沙箱路径可以通过步骤2的方法一获取。
 
-     <!-- @[createImageSource_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @createImageSource_filePath -->   
      
      ``` TypeScript
      // path为已获得的沙箱路径。
@@ -122,7 +122,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    - 方法二：通过文件描述符fd创建ImageSource。文件描述符可以通过步骤2的方法二获取。
 
-     <!-- @[createImageSource_fd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+     <!-- @createImageSource_fd -->  
      
      ``` TypeScript
      // fd为已获得的文件描述符。
@@ -131,7 +131,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    - 方法三：通过缓冲区数组创建ImageSource。缓冲区数组可以通过步骤2的方法三获取。
 
-     <!-- @[createImageSource_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
+     <!-- @createImageSource_buffer -->  
      
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(buffer);
@@ -139,7 +139,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    - 方法四：通过资源文件的RawFileDescriptor创建ImageSource。RawFileDescriptor可以通过步骤2的方法四获取。
 
-     <!-- @[createImageSource_rawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     <!-- @createImageSource_rawFd -->   
      
      ``` TypeScript
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
@@ -161,7 +161,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
    >
    > 并非所有图片都包含辅助图。在获取辅助图前，应先调用Picture的getAuxiliaryPicture方法尝试获取。其他辅助图类型请参考AuxiliaryPictureType。
 
-   <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @create_picture -->   
    
    ``` TypeScript
    async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: Boolean)
@@ -220,7 +220,7 @@ Picture和PixelMap是两种不同的图片解码对象，适用于不同的场�
 
    确认picture的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
    
-   <!-- @[release_pictureDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @release_pictureDecoder -->   
    
    ``` TypeScript
    async release(picture: image.Picture) {

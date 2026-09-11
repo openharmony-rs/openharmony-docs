@@ -111,12 +111,12 @@
    此处需要使用hidebug.setAppResourceLimit设置内存限制，造成内存泄漏，同步在“开发者选项”中打开“系统资源泄漏日志”（开关状态变更后需重启设备）。
 
    <!--RP1-->
-   资源泄漏问题定位可参考[内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-snapshot)。
+   资源泄漏问题定位可参考内存泄漏分析。
    <!--RP1End-->
 
    接口示例代码如下：
 
-   <!-- @[PssLeakEventTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @PssLeakEventTS_Button -->
    
    ``` TypeScript
    Button('pss leak')
@@ -153,7 +153,7 @@
    
    - 头文件加入：
 
-   <!-- @[Pss_Leak_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @Pss_Leak_Header -->
    
    ``` C++
    #include <iostream>
@@ -164,7 +164,7 @@
 
    - 定义 pss leak 相关方法：
 
-   <!-- @[Pss_Leak](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @Pss_Leak -->
    
    ``` C++
    // 读 /proc/self/smaps_rollup 中的 PSS 字段，统计当前进程的 PSS (单位 KB)
@@ -292,7 +292,7 @@
 
    - 初始化：
 
-   <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @Pss_Leak_Init -->
    
    ``` C++
    static napi_value Init(napi_env env, napi_value exports)
@@ -310,7 +310,7 @@
 
    - 添加类型声明：
 
-   <!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @Pss_Leak_Index.d.ts -->
    
    ``` TypeScript
    export const leakMB: (size: number) => void;
@@ -350,9 +350,9 @@
 
 请应用在收到该订阅事件后，首先从事件的external_log字段中获取堆快照文件存储路径，并将其尽快搬移或上传云，然后再删除原堆快照文件，以避免因应用沙箱路径目录剩余存储空间不足（最大2GB）导致下次堆快照文件无法生成。
 
-订阅后生成的.log日志文件需要将后缀名修改为.rawheap文件，再通过translator工具转换为.heapsnapshot文件，通过DevEco Studio或浏览器打开展示，详情见[离线导入内存快照](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)。
+订阅后生成的.log日志文件需要将后缀名修改为.rawheap文件，再通过translator工具转换为.heapsnapshot文件，通过DevEco Studio或浏览器打开展示，详情见离线导入内存快照。
 
-API version 14后，开发者可以将日志文件后缀名修改为.rawheap后，将其导入DevEco Studio并展示，详情见[离线导入内存快照](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)。
+API version 14后，开发者可以将日志文件后缀名修改为.rawheap后，将其导入DevEco Studio并展示，详情见离线导入内存快照。
 
 提供两种方法，任选其一即可。
 

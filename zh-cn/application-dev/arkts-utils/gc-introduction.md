@@ -18,7 +18,7 @@ GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是
 
 - 优点：引用计数算法设计简单，而且会在对象成为垃圾时及时回收该部分内存，因此无需引入单独的暂停业务代码（Stop The World，STW）阶段。
 - 缺点：在对象操作时插入了计数环节，增加了内存分配和赋值的开销，影响性能。存在因循环引用而导致的内存泄漏问题。
-<!-- @[reference_counting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSGC/entry/src/main/ets/ReferenceCounting.ts) -->
+<!-- @reference_counting -->
 
 ``` TypeScript
 class Parent {
@@ -45,7 +45,7 @@ function main() {
 在上述代码中，对象parent被对象child持有，parent的引用计数加1。同时，child也被parent持有，child的引用计数也会加1。这形成了循环引用，导致直到main函数结束，parent和child都无法释放，从而引发内存泄漏。
 **对象追踪**
 
-![image](./figures/tracing-gc.png)
+image
 
 根对象包括程序运行中的栈内对象和全局对象等当前时刻一定存活的对象。从根对象开始，通过引用链可以访问到的所有对象（可达对象）也是存活的。通过遍历可以找到所有存活对象。如图所示，从根对象开始遍历，所有可达对象标记为蓝色，即为活对象。剩下的不可达对象标记为黄色，即为垃圾。
 
@@ -60,7 +60,7 @@ function main() {
 
 **标记-清扫回收**
 
-![image](./figures/mark-clearn.png)
+image
   
 完成对象图遍历后，删除不可达对象内容，并将其放入空闲队列，以便下次对象分配。
 
@@ -68,7 +68,7 @@ function main() {
 
 **标记-复制回收**
 
-![image](./figures/mark-copy.png)
+image
 
 遍历对象图时，将可达对象复制到新内存空间。遍历完成后，回收旧内存空间。
 
@@ -76,7 +76,7 @@ function main() {
 
 **标记-整理回收**
 
-![image](./figures/mark-shuffle.png)
+image
 
 完成对象图遍历后，将可达对象（蓝色）复制到本区域或指定区域的头部空闲位置，然后将已复制的对象回收整理到空闲队列中。
 - 优点：解决了“标记-清扫回收”导致的大量内存碎片问题，避免了“标记-复制回收”浪费一半内存空间。
@@ -89,7 +89,7 @@ HPP GC（High Performance Partial Garbage Collection），即高性能部分垃�
 
 ArkTS运行时采用传统的分代模型，将对象进行分类。大多数新分配的对象会在一次GC后被回收，而大多数经过多次GC后依然存活的对象会继续存活。ArkTS运行时将对象划分为年轻代和老年代对象，并分配到不同空间。
 
-![image](./figures/generational-model.png)
+image
 
 ArkTS运行时将新分配的对象直接分配到年轻代（YoungSpace，又称SemiSpace）的From空间。经过一次GC后依然存活的对象，会移动到To空间。经过再次GC后依然存活的对象，会被移动到老年代（OldSpace）。
 
@@ -121,7 +121,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 
 ## GC流程
 
-![image](./figures/gc-process.png)
+image
 
 ### HPP GC的类型
 
@@ -216,7 +216,7 @@ Heap包含两种类型：LocalHeap和SharedHeap。LocalHeap是应用进程中每
 
 ### LocalHeap结构
 
-![image](./figures/gc-heap-space.png)
+image
 
 - YoungSpace：年轻代（Young Generation），又称SemiSpace，存放新创建出来的对象，存活率低，主要使用半空间复制算法进行内存回收。
 - OldSpace：老年代（Old Generation），存放年轻代多次回收仍存活的对象会被移动到该空间，根据场景混合多种算法进行内存回收。
@@ -309,7 +309,7 @@ Heap中生成两个SemiSpace，供复制使用。
 
 ### SharedHeap结构
 
-![image](./figures/gc-shared-heap.png)
+image
 
 - SharedOldSpace：共享堆老年代空间，存放一般的共享对象。
 - SharedHugeObjectSpace：共享堆大对象空间，使用单独的Region存放一个大对象的空间。
@@ -366,7 +366,7 @@ Smart GC是一种智能GC抑制机制，在冷启动场景和性能敏感场景�
 
 **交互流程**
 
-![image](./figures/gc-smart-feature.png)
+image
 
 ## 日志解释
 
@@ -460,7 +460,7 @@ C03F00/ArkCompiler: Heap average alive rate: 0.635325
 
 **使用参考：**
 
-<!-- @[arktools_hintGC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSGC/entry/src/main/ets/pages/Index.ets) -->
+<!-- @arktools_hintGC -->
 
 ``` TypeScript
 // 首先需要声明接口
@@ -499,8 +499,8 @@ GC稳定性问题主要由两种异常引起：一是非法多线程操作导致
 
 可以通过线程名称和堆栈中的方法来识别GC任务：`OS_GC_Thread`线程主要执行GC任务和PGO相关任务（采集型任务）；或者通过堆栈中包含`GCTask`等关键词识别GC任务。GC任务上报地址异常类型的崩溃时，开发者应首先排查非法多线程问题和内存访问问题。
 
-- 检测非法多线程操作：[方舟运行时检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-multi-thread-check)。
-- 检测踩内存问题：[HWASan检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hwasan)。
+- 检测非法多线程操作：方舟运行时检测。
+- 检测踩内存问题：HWASan检测。
 
 以下示例列举部分情况，实际问题上报的地址异常类型多样，不再赘述。
 

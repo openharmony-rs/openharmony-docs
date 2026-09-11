@@ -144,7 +144,7 @@ Button('Change state variable')
 
 如下图所示，展示V1和V2组件状态变量更新差异的流程图，相比V1状态管理，V2状态管理在状态变量变化时，会异步标脏组件。
 
-![v1v2updatedifference](figures/v1v2update.PNG)
+v1v2updatedifference
 
 ### V1组件的更新
 

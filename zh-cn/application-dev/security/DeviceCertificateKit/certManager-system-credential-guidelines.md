@@ -9,7 +9,7 @@
 
 系统证书凭据用于系统服务（如WLAN、VPN服务）连接服务器时，服务器对接入设备进行身份认证。系统证书凭据功能提供了系统级别的证书凭据（包含证书链和私钥）的安全存储和签名能力。系统证书凭据的公私钥对存储在Universal Keystore Kit。
 
-![](figures/certificate-manager-system-credential-arch.PNG)
+
 
 系统证书凭据可以由设备的用户进行安装和管理，也可以由应用通过API拉起证书管理服务的对话框，引导用户完成安装。
 
@@ -55,7 +55,7 @@
 
 ## 样例代码
 
-<!-- @[certificate_management_system_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerSystemCredSample.ets) -->
+<!-- @certificate_management_system_cred_guidance -->
 
 ``` TypeScript
 import { certificateManagerDialog } from '@kit.DeviceCertificateKit';

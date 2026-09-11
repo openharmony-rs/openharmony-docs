@@ -20,7 +20,7 @@ MDM应用进程模型继承于普通应用进程模型，在普通应用模型�
 
 **图1** MDM应用进程模型
 
-![mdm_process_model](./figures/mdm_process_model.png)
+mdm_process_model
 
 ### EnterpriseAdmin进程的生命周期
 
@@ -28,19 +28,19 @@ Admin组件被激活后有独立的进程，支持系统状态变更回调。与
 
 **图2** MDM应用处于前台并且已经激活时
 
-![process_ui_foreground](./figures/process_ui_foreground.png)
+process_ui_foreground
 
 **图3** 存在MDM应用的前台进程和EnterpriseAdmin进程
 
-![process_main_and_enterpriseadmin](./figures/process_main_and_enterpriseadmin.png)
+process_main_and_enterpriseadmin
 
 **图4** 应用主进程停止时，EnterpriseAdmin进程仍然运行
 
-![process_only_enterpriseadmin](./figures/process_only_enterpriseadmin.png)
+process_only_enterpriseadmin
 
 **图5** EnterpriseAdmin进程支持系统事件回调
 
-![admin_life_time](./figures/admin_life_time.png)
+admin_life_time
 
 - onAdminEnabled：当MDM应用的Admin组件被激活时的事件回调。
 - onAdminDisabled：当MDM应用的Admin组件被取消激活时的事件回调。
@@ -76,7 +76,7 @@ MDM管控接口使用ACL授权进行访问权限校验，同时会校验Admin组
 
 **图6** EDM服务校验逻辑
 
-![permission_check](./figures/permission_check.png)
+permission_check
 
 
 

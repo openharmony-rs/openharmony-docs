@@ -61,7 +61,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 2. 在myappserviceextability目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为MyAppServiceExtAbility.ets。
 
-    ![](figures/app-service-extension-ability-create-new-file.png)
+    
 
     其目录结构如下所示：
 
@@ -74,7 +74,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 3. 在MyAppServiceExtAbility.ets文件中，增加导入AppServiceExtensionAbility的依赖包，自定义类继承AppServiceExtensionAbility组件并实现生命周期回调。
 
-    <!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+    <!-- @ability_app_service_one -->
     
     ``` TypeScript
     import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -127,7 +127,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 4. 在工程Module对应的module.json5配置文件中注册AppServiceExtensionAbility组件，type标签需要设置为“appService”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-    <!-- @[my_app_service_module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5) -->
+    <!-- @my_app_service_module_start -->
 
     ``` JSON5
     {
@@ -160,7 +160,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - 在应用中启动一个新的AppServiceExtensionAbility组件。示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
-  <!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
+  <!-- @app_ext_service_one_start -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -215,7 +215,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - 在应用中停止一个已启动的AppServiceExtensionAbility组件。
 
-  <!-- @[app_ext_service_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StopAppServiceExt.ets) -->
+  <!-- @app_ext_service_two_start -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -270,7 +270,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - 已启动的AppServiceExtensionAbility组件停止自身。
 
-  <!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
+  <!-- @ability_app_service_two -->
   
   ``` TypeScript
   import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -306,7 +306,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - 使用connectAppServiceExtensionAbility()建立与后台服务的连接。示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
-  <!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
+  <!-- @app_ext_service_three_start -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -378,7 +378,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - 使用disconnectAppServiceExtensionAbility()断开与后台服务的连接。
 
-  <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
+  <!-- @app_ext_service_four_start -->
 
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -435,7 +435,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 **客户端**：使用sendMessageRequest接口向服务端发送消息。
 
-<!-- @[app_ext_service_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ClientServerExt.ets) -->
+<!-- @app_ext_service_five_start -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -523,7 +523,7 @@ struct ClientServerExt {
 
 **服务端**：使用onRemoteMessageRequest接口接收客户端发送的消息。
 
-<!-- @[ability_app_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitytwo/MyAppServiceExtAbility.ets) -->
+<!-- @ability_app_service_three -->
 
 ``` TypeScript
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -583,7 +583,7 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 通过调用getCallingUid()接口获取客户端的uid，再调用getBundleNameByUid()接口获取uid对应的bundleName，从而识别客户端身份。此处需要注意的是getBundleNameByUid()是一个异步接口，因此服务端无法将校验结果返回给客户端，这种校验方式适合客户端向服务端发起执行异步任务请求的场景，示例代码如下：
 
-<!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
+<!-- @ability_app_service_five -->
 
 ``` TypeScript
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -676,7 +676,7 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 通过调用getCallingTokenId()接口获取客户端的tokenID，再调用verifyAccessTokenSync()接口判断客户端是否有某个具体权限，由于当前不支持自定义权限，因此只能校验当前系统所定义的权限。示例代码如下：
 
-<!-- @[ability_app_service_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets) -->
+<!-- @ability_app_service_four -->
 
 ``` TypeScript
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';

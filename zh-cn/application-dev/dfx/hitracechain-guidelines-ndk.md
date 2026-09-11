@@ -71,7 +71,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
 
 2. 在“entry&gt; src&gt; main&gt; cpp&gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下：
 
-   <!-- @[hitracechain_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- @hitracechain_ndk_cmake_code -->
    
    ``` cmake
    # the minimum version of CMake.
@@ -94,7 +94,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
 
 3. 编辑“entry&gt; src&gt; main&gt; cpp&gt; napi_init.cpp”文件，使用HiTraceChain跟踪多线程任务，完整的示例代码如下：
 
-   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @hitracechain_ndk_native_code -->
    
    ``` C++
    #include <thread>
@@ -208,7 +208,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
    
    编辑“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
    
-   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @hitracechain_ndk_page_code -->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';

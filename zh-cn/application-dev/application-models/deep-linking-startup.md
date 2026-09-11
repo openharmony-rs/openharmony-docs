@@ -27,7 +27,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 配置示例如下：
 
-<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+<!-- @skills_custom --> 
 
 ``` JSON5
 {
@@ -72,7 +72,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 在目标应用的UIAbility的onCreate()或者onNewWant()生命周期回调中，获取、解析拉起方传入的应用链接。
 
-<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
+<!-- @deep_ability -->
 
 ``` TypeScript
 // 以DeepAbility.ets为例
@@ -111,7 +111,7 @@ export default class DeepAbility extends UIAbility {
 
 示例代码如下：
 
-<!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
+<!-- @deep_open -->
 
 ``` TypeScript
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
@@ -158,7 +158,7 @@ startAbility()接口是将应用链接放入Want中，通过调用隐式Want匹�
 
 示例代码如下：
 
-<!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
+<!-- @deep_start -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -202,7 +202,7 @@ Web组件可以在onLoadIntercept()的回调函数中实现应用跳转。
 
 示例代码如下：
 
-<!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
+<!-- @deep_web -->
 
 ``` TypeScript
 // DeepWebIndex.ets

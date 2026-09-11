@@ -37,7 +37,7 @@
 
 9.  调用X509CRLEntry.getRevocationDate获取被吊销日期。
 
-<!-- @[create_parse_verify_certificate_revocation_list_objects](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCrlObject.ets) -->
+<!-- @create_parse_verify_certificate_revocation_list_objects -->
 
 ``` TypeScript
 

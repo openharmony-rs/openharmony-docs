@@ -70,7 +70,7 @@ AppStorageV2支持应用的主线程内多个UIAbility实例间的状态共享�
 
 AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被@Trace装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码：
 
-<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->
+<!-- @appStorageV2_index -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -178,12 +178,12 @@ struct Child {
 }
 ```
 
-![appstoragev2-sync-0](./figures/appstoragev2-sync-0.gif)
+appstoragev2-sync-0
 
 ### 在两个页面之间存储数据
 
 数据页面
-<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
+<!-- @appStorageV2_sample -->
 
 ``` TypeScript
 // 数据中心
@@ -196,7 +196,7 @@ export class Sample {
 ```
 
 页面1
-<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->
+<!-- @appStorageV2_pageOne -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -261,7 +261,7 @@ struct PageOne {
 ```
 
 页面2
-<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->
+<!-- @appStorageV2_pageTwo -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -334,4 +334,4 @@ struct PageTwo {
 }
 ```
 
-![appstoragev2-sync-1](./figures/appstoragev2-sync-1.gif)
+appstoragev2-sync-1

@@ -71,7 +71,7 @@ PhotoViewPicker在后续版本不再演进，请使用PhotoAccessHelper的PhotoV
 
 3. 创建文件选择器DocumentViewPicker实例。调用select()接口拉起FilePicker应用界面进行文件选择。
 
-   <!--@[picker_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
+   <!--@picker_select-->        
    
    ``` TypeScript
    let uris: string[] = [];
@@ -138,7 +138,7 @@ PhotoViewPicker在后续版本不再演进，请使用PhotoAccessHelper的PhotoV
 
 3. 创建音频选择器AudioViewPicker实例。调用select()接口拉起AudioPicker应用界面进行文件选择。
 
-   <!--@[audio_select_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SelectingUserFiles/entry/src/main/ets/pages/Index.ets)-->        
+   <!--@audio_select_picker-->        
    
    ``` TypeScript
    let uris: string[] = [];
@@ -187,6 +187,6 @@ PhotoViewPicker在后续版本不再演进，请使用PhotoAccessHelper的PhotoV
 
 针对用户文件的选择，有以下相关实例可供参考：
 
-- [选择并查看文档与媒体文件（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-4.0-Release/code/BasicFeature/FileManagement/FileShare/Picker) 
+- 选择并查看文档与媒体文件（ArkTS）（API10） 
 
 <!--RP1--><!--RP1End-->

@@ -63,7 +63,7 @@
 ## 开发案例
 
 ### ECC256/SHA256
-<!-- @[key_algorithm_ECC256SHA256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/ECC256SHA256.ets) -->
+<!-- @key_algorithm_ECC256SHA256 -->
 
 ``` TypeScript
 /*
@@ -232,7 +232,7 @@ async function testSignVerify() {
 }
 ```
 ### SM2/SM3
-<!-- @[key_algorithm_SM2SM3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/SM2SM3.ets) -->
+<!-- @key_algorithm_SM2SM3 -->
 
 ``` TypeScript
 /*
@@ -401,7 +401,7 @@ export async function testSignVerify() {
 }
 ```
 ### SM2/NoDigest
-<!-- @[key_algorithm_SM2NoDigest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/SM2NoDigest.ets) -->
+<!-- @key_algorithm_SM2NoDigest -->
 
 ``` TypeScript
 /*
@@ -573,7 +573,7 @@ async function testSignVerify() {
 }
 ```
 ### RSA/SHA256/PSS
-<!-- @[key_algorithm_RSASHA256PSS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSASHA256PSS.ets) -->
+<!-- @key_algorithm_RSASHA256PSS -->
 
 ``` TypeScript
 /*
@@ -752,7 +752,7 @@ export async function testSignVerify() {
 }
 ```
 ### RSA/SHA256/PKCS1_V1_5
-<!-- @[key_algorithm_RSASHA256PKCS1_V1_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSASHA256PKCS1_V1_5.ets) -->
+<!-- @key_algorithm_RSASHA256PKCS1_V1_5 -->
 
 ``` TypeScript
 /*
@@ -923,7 +923,7 @@ export async function testSignVerify() {
 }
 ```
 ### RSA2048/SHA384/PSS
-<!-- @[key_algorithm_RSA2048SHA384PSS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSA2048SHA384PSS.ets) -->
+<!-- @key_algorithm_RSA2048SHA384PSS -->
 
 ``` TypeScript
 /*

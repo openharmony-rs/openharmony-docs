@@ -39,7 +39,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码
 
-<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_vm -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -93,7 +93,7 @@ JSVM OH_JSVM_GetVM: success
 
 cpp部分代码
 
-<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_heap_statistics -->
 
 ``` C++
 #include "napi/native_api.h"

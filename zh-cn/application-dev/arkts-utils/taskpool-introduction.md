@@ -12,7 +12,7 @@ TaskPool为应用程序提供多线程环境，降低资源消耗并提高系统
 
 TaskPool运作机制示意图
 
-![TaskPool-Operating-Mechanism](figures/TaskPool-Operating-Mechanism.png)
+TaskPool-Operating-Mechanism
 
 TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的工作线程执行任务，并将结果返回给宿主线程。接口易用，支持任务执行、取消和指定优先级。通过系统统一线程管理，结合动态调度和负载均衡算法，可以节约系统资源。系统默认启动一个任务工作线程，任务多时会自动扩容。工作线程数量上限由设备的物理核数决定，内部管理具体数量，确保调度和执行效率最优。长时间无任务分发时会缩容，减少工作线程数量。具体扩缩容机制请参见TaskPool扩缩容机制。
 
@@ -32,7 +32,7 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 - ArrayBuffer参数在TaskPool中默认转移，需要设置转移列表的话可通过接口setTransferList()设置。如果需要多次调用使用ArrayBuffer作为参数的task，则需要通过接口setCloneList()把ArrayBuffer在线程中的传输行为改成拷贝传递，避免对原有对象产生影响。
 
-<!-- @[concurrent_taskpool_notes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/notes.ets) --> 
+<!-- @concurrent_taskpool_notes --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -136,7 +136,7 @@ function foo() {
 
 示例：
 
-<!-- @[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets) --> 
+<!-- @concurrent_taskpool_common_usage --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -179,7 +179,7 @@ struct Index {
 
 示例：
 
-<!-- @[concurrent_taskpool_promise_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets) --> 
+<!-- @concurrent_taskpool_promise_return --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -297,7 +297,7 @@ struct Index {
 
 示例：
 
-<!-- @[concurrent_taskpool_custom_class_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/customclasses.ets) --> 
+<!-- @concurrent_taskpool_custom_class_function --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -377,7 +377,7 @@ struct Index {
 }
 ```
 
-<!-- @[concurrent_taskpool_test_resources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/Test.ets) -->
+<!-- @concurrent_taskpool_test_resources -->
 
 ``` TypeScript
 export function testAdd(arg: number) {
@@ -403,7 +403,7 @@ export class MyTestB {
 
 示例：
 
-<!-- @[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets) -->
+<!-- @concurrent_taskpool_async_promise_usage -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';

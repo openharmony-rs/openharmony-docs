@@ -22,7 +22,7 @@ Radio(options: {value: string, group: string})
 
 Radio支持设置选中状态和非选中状态的样式。
 
-<!-- @[click_radio_to_show_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
+<!-- @click_radio_to_show_function -->
 
 ``` TypeScript
 Radio({ value: 'Radio1', group: 'radioGroup' })
@@ -32,13 +32,13 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 ```
 
 
-![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
+zh-cn_image_0000001562820821
 
 ## 添加事件
 
 除支持通用事件外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
 
-<!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
+<!-- @click_radio_event_function -->
 
 ``` TypeScript
 Radio({ value: 'Radio1', group: 'radioGroup' })
@@ -62,7 +62,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 通过点击Radio切换声音模式。
 
-<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) --> 
+<!-- @click_radio_to_change_function --> 
 
 ``` TypeScript
 // xxx.ets
@@ -135,12 +135,12 @@ export struct RadioExample {
 ```
 
 
-![zh-cn_image_0000001562700457](figures/zh-cn_image_0000001562700457.gif)
+zh-cn_image_0000001562700457
 
 为不同Swiper页中的Radio设置独立的group值，实现各季节活动选项的隔离与独立选择。
 
 
-<!-- @[radio_control_swiper_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSwiper.ets) -->
+<!-- @radio_control_swiper_function -->
 
 ``` TypeScript
 // xxx.ets
@@ -215,4 +215,4 @@ export struct RadioSwiperSample {
 ```
 
 
-![radio-swiper](figures/radio-swiper.gif)
+radio-swiper

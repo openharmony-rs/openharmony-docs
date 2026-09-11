@@ -5,4 +5,4 @@
 <!--Designer: @shi-yang-2012-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-- [使用WebGL绘制图形](webgl-2d-guidelines.md)
+- 使用WebGL绘制图形

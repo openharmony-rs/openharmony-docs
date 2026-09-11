@@ -24,13 +24,13 @@
 
 ## 开发指导
 
-  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCapturerSampleC)。
+  以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ### 创建音频录制
 
 通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建录制音频流。指定对应的OH_AudioStream_Type，设置为AUDIOSTREAM_TYPE_CAPTURER。
 
-<!-- @[Create_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @Create_Capture -->
 
 ``` C++
 OH_AudioStreamBuilder* builder;
@@ -41,7 +41,7 @@ OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
 
 通过OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，构建播放音频流。指定对应的OH_AudioStream_Type，设置为AUDIOSTREAM_TYPE_RENDERER。
 
-<!-- @[Create_Renderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @Create_Renderer -->
 
 ``` C++
 OH_AudioStreamBuilder* builder;
@@ -54,7 +54,7 @@ OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
 
 在创建音频录制构造器时调用OH_AudioStreamBuilder_SetLatencyMode()设置低时延模式，播放和录制均按如下方式设置为低时延模式。
 
-<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @latencyMode_Capture -->
 
 ``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
@@ -65,7 +65,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 定义公共缓冲区和录制、播放函数
 
-<!-- @[public_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @public_Function -->
 
 ``` C++
 int32_t MyOnReadData_Legacy(
@@ -97,7 +97,7 @@ int32_t MyOnWriteData(
 
 以录制流参数设置为例：
 
-<!-- @[Configure_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @Configure_Capture -->
 
 ``` C++
 // 设置音频采样率。
@@ -118,7 +118,7 @@ OH_AudioStreamBuilder_SetCapturerInfo(builder, AUDIOSTREAM_SOURCE_TYPE_MIC);
 
 工作场景参数设置如下：
 
-<!-- @[SetRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @SetRendererInfo -->
 
 ``` C++
 OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
@@ -126,7 +126,7 @@ OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
 
 ### 设置录制回调函数
 
-<!-- @[SetCapturerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @SetCapturerCallback -->
 
 ``` C++
 int32_t MyOnReadData_Legacy(
@@ -178,7 +178,7 @@ int32_t MyOnError_Legacy(
 
 ### 设置播放回调函数
 
-<!-- @[SetRendererCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->  
+<!-- @SetRendererCallback -->  
 
 ``` C++
 int32_t MyOnWriteData(
@@ -232,7 +232,7 @@ int32_t MyOnError_Renderer(
 
 ### 构造录制音频流
 
-<!-- @[GenerateCapturer_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @GenerateCapturer_Capture -->
 
 ``` C++
 OH_AudioCapturer* audioCapturer;
@@ -241,7 +241,7 @@ OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
 
 ### 构造播放音频流
 
-<!-- @[GenerateRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @GenerateRenderer -->
 
 ``` C++
 OH_AudioRenderer* audioRenderer;
@@ -268,7 +268,7 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 
 构造器不再使用时，采用如下方式释放资源。
 
-<!-- @[Destroy_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @Destroy_Capture -->
 
 ``` C++
 OH_AudioStreamBuilder_Destroy(builder);

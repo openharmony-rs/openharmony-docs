@@ -18,7 +18,7 @@
 
 接口在编译期约束对象结构、通过统一契约解耦模块依赖、支持多个类复用同一类型定义，是TypeScript/ArkTS实现松耦合与类型安全的核心机制。
 
-<!-- @[simple_interface_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @simple_interface_definition -->
 
 ``` TypeScript
 // 定义一个简单的接口
@@ -42,7 +42,7 @@ console.info(user.name); // Alice
 
 接口可以作为协议，定义一组必须实现的方法和属性，使不同实现类可以以统一的方式被调用。
 
-<!-- @[interface_as_protocol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_as_protocol -->
 
 ``` TypeScript
 // 接口定义协议
@@ -104,7 +104,7 @@ makePayment(paypal, 50);      // Processing PayPal payment: €50
 
 单一职责要求每个接口只定义一组相关成员，接口隔离避免强迫实现者提供不需要的方法，依赖倒置让高层模块依赖抽象而非具体实现，命名应清晰表达用途。
 
-<!-- @[interface_segregation_principle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_segregation_principle -->
 
 ``` TypeScript
 // 好的设计：单一职责
@@ -151,7 +151,7 @@ interface关键字声明接口结构，类通过implements实现接口契约。
 
 通过`interface`关键字声明接口，定义属性（名：类型）、方法签名和索引签名，描述对象的结构契约。
 
-<!-- @[basic_interface_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @basic_interface_declaration -->
 
 ``` TypeScript
 // 基本接口声明
@@ -176,7 +176,7 @@ console.info(`Point: (${point.x}, ${point.y})`);
 
 接口属性包括必选属性、可选属性（`?`）和只读属性（`readonly`）。
 
-<!-- @[ts_interface_property_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_interface_property_types -->
 
 ``` TypeScript
 interface Product {
@@ -213,7 +213,7 @@ product.createdAt = new Date(); // 编译错误
 
 接口方法包括无参方法、带参方法和可选方法（`?`），类通过`implements`实现接口方法。
 
-<!-- @[interface_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_method_declaration -->
 
 ``` TypeScript
 interface Calculator {
@@ -263,7 +263,7 @@ console.info(`${sum}`); // 15
 
 **TypeScript对照**
 
-<!-- @[ts_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_index_signature -->
 
 ``` TypeScript
 // 数字索引签名
@@ -313,7 +313,7 @@ console.info(`${mixed.key1}`);  // Value1
 
 ArkTS中使用`Map`替代索引签名，实现动态键值存储：
 
-<!-- @[map_replaces_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @map_replaces_index_signature -->
 
 ``` TypeScript
 // ArkTS替代方案：使用Map
@@ -329,7 +329,7 @@ console.info(`${dictMap.get('city')}`);  // New York
 
 类通过implements关键字实现接口，必须提供接口中所有成员的具体实现，不同类可以实现同一接口提供不同行为。
 
-<!-- @[class_implements_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @class_implements_interface -->
 
 ``` TypeScript
 interface Logger {
@@ -387,7 +387,7 @@ fileLogger.error('Connection failed');
 
 接口可以通过extends继承其他接口，形成多级层次结构，子接口包含父接口的全部成员并可以添加新成员。
 
-<!-- @[interface_multi_level_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_multi_level_inheritance -->
 
 ``` TypeScript
 interface Animal {
@@ -435,7 +435,7 @@ myDog.bark(); // Buddy barks: Woof! Woof!
 
 接口使用extends继承单个父接口，子接口在父接口成员基础上添加新成员，对象需同时满足父子接口的结构。
 
-<!-- @[interface_inheritance_object_literal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_inheritance_object_literal -->
 
 ``` TypeScript
 interface Vehicle {
@@ -462,7 +462,7 @@ console.info(`${myCar.brand} ${myCar.model} (${myCar.year})`);
 
 接口可以extends多个父接口，组合多个类型契约。
 
-<!-- @[interface_multiple_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_multiple_inheritance -->
 
 ``` TypeScript
 interface MiSerializable {
@@ -529,7 +529,7 @@ console.info(`${miClonedUser.name}`); // Alice
 
 **TypeScript对照**
 
-<!-- @[ts_interface_composition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_interface_composition -->
 
 ``` TypeScript
 interface Nameable {
@@ -576,7 +576,7 @@ console.info(`${employee.name} works in ${employee.department}`);
 
 接口继承时可以添加新成员和覆盖同名方法（保持签名一致），但不能修改父接口成员的类型，否则会编译错误。
 
-<!-- @[ts_interface_inheritance_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_interface_inheritance_rules -->
 
 ``` TypeScript
 interface Base {
@@ -620,7 +620,7 @@ interface Shape extends Colorable, Sized {
 
 可选成员使用`?`标记，声明时置于成员名后，实现对象可省略该成员。
 
-<!-- @[optional_properties_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @optional_properties_methods -->
 
 ``` TypeScript
 interface Configuration {
@@ -667,7 +667,7 @@ if (config2.logError) {
 
 可选属性（?）和方法表示成员可能不存在，访问前需要检查。
 
-<!-- @[optional_members_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @optional_members_implementation -->
 
 ``` TypeScript
 interface Service {
@@ -747,7 +747,7 @@ advancedService.postShutdown();
 
 调用可选成员前需检查是否存在，避免访问undefined。
 
-<!-- @[using_optional_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @using_optional_members -->
 
 ``` TypeScript
 interface OptionalInterface {
@@ -786,7 +786,7 @@ function useOptionalInterface(obj: OptionalInterface): void {
 
 通过让扩展接口继承基础接口并添加可选成员，可以为不同实现者提供按需提供可选能力的灵活方案。
 
-<!-- @[extending_interface_with_optionals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @extending_interface_with_optionals -->
 
 ``` TypeScript
 // 基础接口（必选成员）
@@ -852,7 +852,7 @@ processObject(extendedObj);
 
 在接口名后用`<T>`声明类型参数，使接口适用于多种类型。
 
-<!-- @[generic_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @generic_interface -->
 
 ``` TypeScript
 // 泛型接口
@@ -905,7 +905,7 @@ console.info(`${strContainer.getValue()}`); // Hello
 
 通过`<T extends SomeType>`约束泛型参数必须满足特定接口，使泛型接口能够安全访问约束类型的成员。
 
-<!-- @[generic_constraint_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @generic_constraint_interface -->
 
 ``` TypeScript
 interface Lengthwise {
@@ -941,7 +941,7 @@ console.info(`${arrayContainer.getLength()}`);  // 5
 
 类通过指定具体类型参数实现泛型接口（如`implements Repository<User>`），为接口中所有方法提供具体实现。
 
-<!-- @[generic_repository_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @generic_repository_interface -->
 
 ``` TypeScript
 interface RepoRepository<T> {
@@ -1001,7 +1001,7 @@ console.info(`${userRepo.findAll().length}`); // 1
 
 泛型接口常用于通用数据结构（Collection）、转换器（Mapper/Filter/Reducer）和回调契约（Callback）等场景。
 
-<!-- @[generic_interface_use_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @generic_interface_use_cases -->
 
 ``` TypeScript
 // 使用场景1: 通用数据结构
@@ -1045,7 +1045,7 @@ interface AsyncCallback<T> {
 
 类使用implements关键字实现单个接口，必须提供接口中所有成员的具体实现。
 
-<!-- @[single_interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @single_interface_implementation -->
 
 ``` TypeScript
 interface Drawable {
@@ -1072,7 +1072,7 @@ circle.draw(); // Drawing a circle with radius 5
 
 类通过逗号分隔实现多个接口（如`implements A, B, C`），必须提供所有接口的成员实现。
 
-<!-- @[multiple_interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @multiple_interface_implementation -->
 
 ``` TypeScript
 interface Printable {
@@ -1120,7 +1120,7 @@ document.load();
 
 类可以同时使用extends继承父类和implements实现接口，既复用父类代码又满足接口契约。
 
-<!-- @[class_inheritance_with_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @class_inheritance_with_interface -->
 
 ``` TypeScript
 class BaseEntity {
@@ -1184,7 +1184,7 @@ interfaceUser.deactivate();
 
 接口可用作泛型参数的约束（如`<T extends Comparable<T>>`），限制类型参数必须实现指定接口，从而在泛型代码中安全调用接口成员。
 
-<!-- @[comparable_equatable_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @comparable_equatable_interface -->
 
 ``` TypeScript
 interface EquatableComparable<T> {
@@ -1248,7 +1248,7 @@ console.info(`${maxValue ? maxValue.value : 0}`); // 15
 
 接口名可直接作为变量的类型注解，赋值时对象字面量必须包含所有必选成员且类型匹配，多余属性会被编译器拒绝。
 
-<!-- @[interface_object_literal_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_object_literal_type -->
 
 ``` TypeScript
 interface LiteralPoint {
@@ -1274,7 +1274,7 @@ console.info(`Color: RGB(${color.red}, ${color.green}, ${color.blue})`);
 
 接口作为函数参数和返回值类型，约束输入输出的结构。
 
-<!-- @[interface_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_function_types -->
 
 ``` TypeScript
 interface TypesUser {
@@ -1335,7 +1335,7 @@ if (response.success && response.data !== undefined) {
 
 接口类型变量可以指向任何实现该接口的类实例，调用同名方法时执行各自实现，实现运行时多态。
 
-<!-- @[interface_polymorphism](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_polymorphism -->
 
 ``` TypeScript
 interface PolyAnimal {
@@ -1404,7 +1404,7 @@ animals.forEach(animal => {
 
 接口类型变量可以通过instanceof判断具体类型后使用as断言转换回子类型，以访问实现类特有的成员。
 
-<!-- @[interface_type_casting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_type_casting -->
 
 ``` TypeScript
 interface CastingVehicle {
@@ -1471,7 +1471,7 @@ processVehicle(motorcycle);
 
 对象字面量赋值给接口类型时，ArkTS检查是否存在接口未定义的属性，帮助发现拼写错误。
 
-<!-- @[excess_property_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @excess_property_check -->
 
 ``` TypeScript
 interface SquareConfig {
@@ -1499,7 +1499,7 @@ let epSquare1 = createSquare({ color: 'blue', width: 100 });
 
 **TypeScript对照**
 
-<!-- @[ts_excess_property_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_excess_property_error -->
 
 ``` TypeScript
 // TypeScript对照写法，演示多余属性检查的编译错误
@@ -1529,7 +1529,7 @@ let tsEpSquare2 = tsCreateSquare({ colour: 'red', width: 100 });
 
 使用extends关键字让一个接口继承另一个接口的成员。
 
-<!-- @[ts_interface_declaration_merging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_interface_declaration_merging -->
 
 ``` TypeScript
 // 原始接口
@@ -1566,7 +1566,7 @@ myWindow.open();
 
 通过抽象类或装饰器模式为接口方法提供默认实现。
 
-<!-- @[interface_default_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_default_implementation -->
 
 ``` TypeScript
 interface ImplementationLogger {
@@ -1616,7 +1616,7 @@ customLogger.error('Something went wrong'); // [ERROR] Something went wrong
 
 接口扩展用于按需组合类型，避免定义单一庞大的接口。
 
-<!-- @[ts_extending_third_party_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_extending_third_party_interface -->
 
 ``` TypeScript
 // 假设这是第三方库定义的接口
@@ -1643,7 +1643,7 @@ console.info(`${config.customTimeout}`); // 5000
 
 声明合并也可以跨模块进行，不同模块可分别向同一接口添加成员。
 
-<!-- @[ts_module_interface_merging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_module_interface_merging -->
 
 ``` TypeScript
 // 基础模块定义的接口
@@ -1682,7 +1682,7 @@ console.info(`${entity.productName}`);
 
 **TypeScript对照**
 
-<!-- @[ts_type_vs_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_type_vs_interface -->
 
 ``` TypeScript
 // type可描述联合类型和元组
@@ -1722,7 +1722,7 @@ type TvDog2 = TvAnimal2 & { breed: string };
 
 **implements只检查实例侧**——静态成员不受`implements`检查。
 
-<!-- @[implements_cautions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @implements_cautions -->
 
 ``` TypeScript
 interface ImplCheckable {
@@ -1754,7 +1754,7 @@ console.info(`${implC.x.toString()}`);  // 0
 
 **TypeScript对照**
 
-<!-- @[ts_implements_optional_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_implements_optional_error -->
 
 ``` TypeScript
 // TypeScript对照写法，演示implements不创建可选属性
@@ -1777,7 +1777,7 @@ tsImplC.y = 10;  // 编译错误：Property 'y' does not exist on type 'TsImplC'
 
 - 一个类只能继承一个抽象类，而一个类可以实现一个或多个接口。
 
-<!-- @[bird_multiple_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @bird_multiple_interface -->
 
 ``` TypeScript
 abstract class AcAnimal {
@@ -1824,7 +1824,7 @@ acBird.swim();      // Sparrow swims
 
 - 接口中不能含有静态代码块以及静态方法，而抽象类可以有静态代码块和静态方法。
 
-<!-- @[abstract_vs_interface_static](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @abstract_vs_interface_static -->
 
 ``` TypeScript
 abstract class AviAbstractClass {
@@ -1837,7 +1837,7 @@ abstract class AviAbstractClass {
 
 抽象类可以有方法的实现，接口没有方法的实现。
 
-<!-- @[abstract_vs_interface_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @abstract_vs_interface_method -->
 
 ``` TypeScript
 abstract class AimAbstractClass {
@@ -1849,7 +1849,7 @@ abstract class AimAbstractClass {
 
 抽象类可以有构造函数，接口不能有构造函数。
 
-<!-- @[abstract_vs_interface_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @abstract_vs_interface_constructor -->
 
 ``` TypeScript
 abstract class AvicAbstractClass {
@@ -1868,7 +1868,7 @@ TypeScript中接口扩展和交叉类型都能组合多个类型，但行为不�
 - **接口扩展（`extends`）**：同名属性不兼容时编译报错。
 - **交叉类型（`&`）**：同名属性不兼容时合并为`never`。
 
-<!-- @[ts_intersection_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_intersection_type -->
 
 ``` TypeScript
 // TypeScript交叉类型写法，ArkTS不支持
@@ -1888,7 +1888,7 @@ console.info(`${tsCc.color}, ${tsCc.radius}`); // red, 10
 
 ArkTS替代：接口多继承。
 
-<!-- @[interface_extends_multiple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_extends_multiple -->
 
 ``` TypeScript
 interface IfColorful {
@@ -1918,7 +1918,7 @@ TypeScript支持同名声明的合并，将多个独立声明合并为一个定�
 
 **TypeScript对照**
 
-<!-- @[ts_declaration_merging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @ts_declaration_merging -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS不支持接口声明合并
@@ -1937,7 +1937,7 @@ console.info(`${tsWin.title}, ${tsWin.count}`); // Main, 3
 
 ArkTS替代方式：在原接口定义中直接添加成员，或使用接口继承扩展。
 
-<!-- @[interface_extends_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @interface_extends_base -->
 
 ``` TypeScript
 interface IfBaseWindow {

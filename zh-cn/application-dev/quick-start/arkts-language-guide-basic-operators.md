@@ -16,7 +16,7 @@ ArkTS提供丰富的操作符用于数据运算、逻辑判断和赋值操作。
 
 使用`=`将右侧的值赋给左侧的变量。赋值是引用语义——对对象类型的变量赋值后，新旧变量指向同一对象，修改其中一个会影响另一个。
 
-<!-- @[basic_variable_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @basic_variable_assignment -->
 
 ``` TypeScript
 let value: number = 10;
@@ -32,7 +32,7 @@ name = 'Bob';
 
 ArkTS不支持元组解构赋值（如`let [a, b] = [1, 2]`），需逐个变量赋值。
 
-<!-- @[ts_no_destructuring_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Operators.ts) -->
+<!-- @ts_no_destructuring_assignment -->
 
 ``` TypeScript
 // 不支持解构赋值
@@ -48,7 +48,7 @@ let bVal: number = arr[1];
 
 赋值表达式本身返回被赋的值，语法上支持链式赋值`a = b = 10`，但**不建议使用**，建议分开赋值以提高可读性。
 
-<!-- @[chain_vs_separate_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @chain_vs_separate_assignment -->
 
 ``` TypeScript
 let a: number;
@@ -66,7 +66,7 @@ b = 10;
 
 将对象赋值给变量传递的是引用而非副本——新旧变量指向同一对象，修改其中一个的属性会影响另一个。如需独立副本，须手动实现深拷贝。
 
-<!-- @[object_property_and_reference_assignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @object_property_and_reference_assignment -->
 
 ``` TypeScript
 class Point {
@@ -90,7 +90,7 @@ another.x = 30;    // point.x也变为30
 
 加法运算符执行数值相加或字符串拼接，返回相加或拼接结果。
 
-<!-- @[addition_and_string_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @addition_and_string_concatenation -->
 
 ``` TypeScript
 let addA: number = 10;
@@ -107,7 +107,7 @@ let message: string = 'Count: ' + 10;
 
 减法运算符（`-`）计算两个数值操作数的差值。操作数必须为`number`类型，ArkTS不允许`number`与`string`等跨类型运算。
 
-<!-- @[subtraction_and_negative_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @subtraction_and_negative_number -->
 
 ``` TypeScript
 let numberA: number = 10;
@@ -121,7 +121,7 @@ let negative: number = -10; // 负数表示
 
 乘法运算符（`*`）计算两个数值操作数的乘积。操作数必须为`number`类型，ArkTS不支持字符串重复（如Python的`'ab' * 3`），字符串重复需使用`repeat()`方法。
 
-<!-- @[multiplication_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @multiplication_operator -->
 
 ``` TypeScript
 let mulA: number = 10;
@@ -139,7 +139,7 @@ let area: number = width * height;  // 50
 
 除法运算符（/）计算两数商值，结果始终为浮点数。
 
-<!-- @[division_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @division_operator -->
 
 ``` TypeScript
 let divA: number = 10;
@@ -160,7 +160,7 @@ let zeroByZero: number = 0 / 0;  // NaN
 
 取余运算符返回除法的余数，用于循环、周期计算。
 
-<!-- @[modulo_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @modulo_operator -->
 
 ``` TypeScript
 let modA: number = 10;
@@ -177,7 +177,7 @@ let isOdd: boolean = (modA % 2) !== 0;
 
 一元负号（-）将数值取反，正变负、负变正。
 
-<!-- @[unary_negation_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @unary_negation_operator -->
 
 ``` TypeScript
 let negA: number = 5;
@@ -191,7 +191,7 @@ let positive: number = -negB;  // 10
 
 一元正号运算符将值转换为数值类型，用于类型转换。
 
-<!-- @[unary_plus_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @unary_plus_operator -->
 
 ``` TypeScript
 let plusA: number = 5;
@@ -205,7 +205,7 @@ let strNum: number = Number.parseInt('42', 10);
 
 指数运算符计算幂次，返回底数的指数次幂。
 
-<!-- @[exponentiation_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @exponentiation_operator -->
 
 ``` TypeScript
 let base: number = 2;
@@ -221,7 +221,7 @@ let cube: number = 3 ** 3;     // 27
 
 复合赋值运算符合并运算和赋值，简化代码编写。
 
-<!-- @[compound_assignment_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @compound_assignment_operators -->
 
 ``` TypeScript
 // 加法赋值
@@ -268,7 +268,7 @@ console.info(`${compoundBase}`);  // 16
 
 严格相等（===）在值和类型都相同时返回true。
 
-<!-- @[strict_equality_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @strict_equality_operator -->
 
 ``` TypeScript
 // 数值比较
@@ -300,7 +300,7 @@ console.info(`${p1 === p2}`);  // false（不同对象）
 
 严格不等（!==）在值或类型不同时返回true。
 
-<!-- @[strict_inequality_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @strict_inequality_operator -->
 
 ``` TypeScript
 let neA: number = 5;
@@ -316,7 +316,7 @@ console.info(`${neNum1 !== neNum2}`); // true
 
 大于运算符（>）在左侧值大于右侧时返回true。
 
-<!-- @[greater_than_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @greater_than_operator -->
 
 ``` TypeScript
 let gtA: number = 10;
@@ -335,7 +335,7 @@ console.info(`${'abc' > 'abb'}`); // true
 
 小于运算符（<）在左侧值小于右侧时返回true。
 
-<!-- @[less_than_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @less_than_operator -->
 
 ``` TypeScript
 let ltA: number = 10;
@@ -350,7 +350,7 @@ console.info(`${ltA < ltA}`);   // false
 
 大于等于（>=）在左侧值大于或等于右侧时返回true。
 
-<!-- @[greater_than_or_equal_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @greater_than_or_equal_operator -->
 
 ``` TypeScript
 let gteA: number = 10;
@@ -366,7 +366,7 @@ console.info(`${gteB >= gteA}`);  // false
 
 小于等于（<=）在左侧值小于或等于右侧时返回true。
 
-<!-- @[less_than_or_equal_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @less_than_or_equal_operator -->
 
 ``` TypeScript
 let lteA: number = 10;
@@ -382,7 +382,7 @@ console.info(`${lteB <= lteA}`);  // true
 
 数组和元组没有内置的逐元素相等比较，`===`比较的是引用而非内容。手动比较时先判断长度相同，再逐索引比较每个元素。
 
-<!-- @[tuple_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @tuple_comparison -->
 
 ``` TypeScript
 function compareTuples(a: number[], b: number[]): boolean {
@@ -410,7 +410,7 @@ console.info(`${compareTuples(tuple1, tuple2)}`);  // true
 条件表达式 ? 真值 : 假值
 ```
 
-<!-- @[ternary_conditional_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @ternary_conditional_operator -->
 
 ``` TypeScript
 let age: number = 20;
@@ -440,7 +440,7 @@ let role: string = isAdmin ? 'admin' : 'user';
 
 空值合并运算符 ?? 提供默认值，处理null和undefined。
 
-<!-- @[nullish_coalescing_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @nullish_coalescing_operator -->
 
 ``` TypeScript
 let coalesceValue: string | null = null;
@@ -480,7 +480,7 @@ console.info(`${result3}`);  // "default"
 
 闭区间判断使用`>=`和`<=`检查值是否在指定范围内，包含两个边界值。
 
-<!-- @[closed_range_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @closed_range_check -->
 
 ``` TypeScript
 function inClosedRange(checkValue: number, min: number, max: number): boolean {
@@ -495,7 +495,7 @@ let inRange: boolean = inClosedRange(checkValue, 10, 100);  // true
 
 半开区间判断检查值是否在范围内，包含起始不含结束。
 
-<!-- @[half_open_range_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @half_open_range_check -->
 
 ``` TypeScript
 function inHalfOpenRange(checkValue2: number, min: number, max: number): boolean {
@@ -510,7 +510,7 @@ let checkInRange: boolean = inHalfOpenRange(checkValue2, 10, 100);  // false
 
 单侧区间判断检查值是否大于或小于某个边界。
 
-<!-- @[single_boundary_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @single_boundary_check -->
 
 ``` TypeScript
 function aboveMin(checkValue3: number, min: number): boolean {
@@ -534,7 +534,7 @@ let isBelow: boolean = belowMax(checkValue3, 200);  // true
 
 逻辑非（!）将true变false、false变true。
 
-<!-- @[logical_not_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @logical_not_operator -->
 
 ``` TypeScript
 let isA: boolean = true;
@@ -552,7 +552,7 @@ console.info(`${!!notValue}`);  // true（等同于Boolean(notValue)）
 
 逻辑与（&&）两侧均为true才返回true，左侧为false时短路跳过右侧。
 
-<!-- @[logical_and_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @logical_and_operator -->
 
 ``` TypeScript
 let andA: boolean = true;
@@ -580,7 +580,7 @@ let canDrive: boolean = andAge >= 18 && hasLicense && hasInsurance;
 
 逻辑或（||）任一侧为true即返回true，左侧为true时短路跳过右侧。
 
-<!-- @[logical_or_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @logical_or_operator -->
 
 ``` TypeScript
 let orA: boolean = true;
@@ -607,7 +607,7 @@ let canAccess: boolean = orRole === 'admin' || hasPermission;
 
 逻辑运算符组合实现复杂条件，注意优先级和短路求值。
 
-<!-- @[boolean_logic_combination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @boolean_logic_combination -->
 
 ``` TypeScript
 let boolLogAge: number = 25;
@@ -637,7 +637,7 @@ let invalid2: boolean = !boolLogHasLicense || boolLogAge < 18;
 
 逻辑与（&&）和逻辑或（||）在左侧已能决定结果时跳过右侧执行。
 
-<!-- @[short_circuit_evaluation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @short_circuit_evaluation -->
 
 ``` TypeScript
 // && 短路：左边为false，右边不执行
@@ -672,7 +672,7 @@ let circuitResult2: string = provided ?? expensiveDefault();  // 不执行expens
 
 用括号显式标注运算优先级，避免依赖默认规则导致歧义。
 
-<!-- @[parentheses_for_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @parentheses_for_precedence -->
 
 ``` TypeScript
 let precA: number = 5;
@@ -690,7 +690,7 @@ let precValue: string = (precInput ?? 'default') + ' suffix';
 
 递增（++）和递减（--）对数值加1或减1，前置先变后用、后置先用后变。
 
-<!-- @[increment_decrement_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @increment_decrement_operators -->
 
 ``` TypeScript
 let decrCount: number = 5;
@@ -712,7 +712,7 @@ let postDec: number = decrCount--; // decrCount=5, postDec=6
 
 可选链运算符（?.）在属性可能为null/undefined时安全访问，避免运行时错误。
 
-<!-- @[optional_chaining_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @optional_chaining_operator -->
 
 ``` TypeScript
 class User {
@@ -760,7 +760,7 @@ ArkTS支持松散相等（`==`），但不建议使用，推荐使用严格相�
 
 ArkTS支持`==`和`!=`松散相等，但不建议使用，推荐使用`===`和`!==`严格相等，避免隐式类型转换导致的潜在问题。
 
-<!-- @[loose_equality_not_recommended](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @loose_equality_not_recommended -->
 
 ``` TypeScript
 let inputValue: string | null = null;
@@ -771,7 +771,7 @@ if (itemCount == 0) { }
 
 推荐使用严格相等：
 
-<!-- @[strict_equality_preferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Operators.ets) -->
+<!-- @strict_equality_preferred -->
 
 ``` TypeScript
 let eqValue: string | null = null;
@@ -785,7 +785,7 @@ if (eqCount === 0) { }
 
 ArkTS不支持解构赋值，需通过索引逐个取出元素并单独赋值。
 
-<!-- @[ts_no_destructuring_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Operators.ts) -->
+<!-- @ts_no_destructuring_supported -->
 
 ``` TypeScript
 // 不支持
@@ -805,7 +805,7 @@ ArkTS要求运算符两侧操作数类型一致或在编译期可确定地兼容
 
 **错误示例**
 
-<!-- @[ts_static_type_checking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Operators.ts) -->
+<!-- @ts_static_type_checking -->
 
 ``` TypeScript
 let num: number = 5;

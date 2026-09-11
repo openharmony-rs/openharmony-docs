@@ -13,7 +13,7 @@
 ## 问题场景
 列表无限滑动的场景，在即将触底的时候需要进行数据请求，如果在主线程中直接处理请求数据，可能会导致滑动动画被中断。如果回调函数处理的耗时较长，会直接阻塞主线程，卡顿就会非常明显。使用异步执行的方式进行异步调用，回调函数的执行还是会在主线程，一样会阻塞UI绘制和渲染。场景预览如下，列表滑动过程中，图片会显示延迟。
 
-![](./figures/avoid_time_consuming_demo.gif)
+
 
 ## 优化示例
 
@@ -59,7 +59,7 @@
 ```
 编译运行后，通过SmartPerf Host工具抓取Trace。如下图所示，其中红色框选的部分就是getRawFileContent的回调耗时。
 
-![](./figures/trace_mainthread_callback.png)
+
 
 从图中可以看到，在主线程中出现了大块的耗时，直接导致用户在滑动的时候能感受到明显的卡顿。异步回调函数最后也由主线程执行，所以应该尽量避免在回调函数中执行耗时操作。
 
@@ -158,7 +158,7 @@ async function mockRequestData(index: number, context: Context): Promise<ModelDe
 
 在上面的代码里，优化的思路主要是用子线程处理耗时操作，避免在主线程中执行耗时操作影响UI渲染，编译运行后，通过SmartPerf Host工具抓取Trace。如下图所示，原先在主线程中的getRawFileContent的标签转移到了TaskWorker线程。
 
-![](./figures//trace_taskpool_callback.png) 
+ 
 
 从图中可以看到，主线程阻塞耗时明显减少，同时在右上角出现了新的trace，__H:Deserialize__，这个trace表示在反序列化taskpool线程返回的数据。依然存在一定耗时(17ms)，容易出现丢帧等问题。针对跨线程的序列化耗时问题，系统提供了@Sendable装饰器来实现内存共享。可以在返回的类对象ModelDetailVO上使用@Sendable装饰器，继续优化性能。
 
@@ -256,7 +256,7 @@ struct ViewB {
 ```
 上面的代码在子线程返回的类对象上使用了@Sendable，系统会使用共享内存的方式处理使用了@Sendable的类，从而降低反序列化的开销。
 
-![](./figures//trace_sendable_callback.png) 
+ 
 
 从图中可以看到，反序列化的大小和耗时明显变少。
 

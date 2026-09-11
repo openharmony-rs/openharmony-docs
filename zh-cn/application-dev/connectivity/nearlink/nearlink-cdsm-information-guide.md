@@ -8,13 +8,13 @@
 
 ## 场景介绍
 
-合作设备集合是由多个成员设备协同提供特定服务的整体，例如一副星闪耳机包含左右两个耳机单元。当配对的外设属于某个合作设备集合时，通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)接口仅能获取该集合中首个配对的成员设备，无法直接获取其他成员设备信息。作为集合使用者，可通过主动查询或订阅通知的方式，获取该合作设备集合内所有成员设备的完整信息。
+合作设备集合是由多个成员设备协同提供特定服务的整体，例如一副星闪耳机包含左右两个耳机单元。当配对的外设属于某个合作设备集合时，通过getPairedDevices()接口仅能获取该集合中首个配对的成员设备，无法直接获取其他成员设备信息。作为集合使用者，可通过主动查询或订阅通知的方式，获取该合作设备集合内所有成员设备的完整信息。
 
-开发前需按[开发准备](nearlink-preparations-guide.md)完成权限声明与运行时申请，并确保设备已开启星闪（参见[开发准备 > 查询星闪开关状态](nearlink-preparations-guide.md#查询星闪开关状态)），且已配对设备属于某个合作设备集合，已通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取集合中成员设备的地址。
+开发前需按开发准备完成权限声明与运行时申请，并确保设备已开启星闪（参见开发准备 > 查询星闪开关状态），且已配对设备属于某个合作设备集合，已通过getPairedDevices()获取集合中成员设备的地址。
 
 ## 接口说明
 
-提供获取合作设备集合信息的方式，主动查询和订阅信息变化，完整的API说明以及示例代码请参考：[@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
+提供获取合作设备集合信息的方式，主动查询和订阅信息变化，完整的API说明以及示例代码请参考：@ohos.nearlink.cdsm (星闪合作设备集合管理能力)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -27,7 +27,7 @@
 
 1. 导入相关模块。
 
-    <!-- @[cdsm_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
+    <!-- @cdsm_module_import -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -35,9 +35,9 @@
     import { cdsm } from '@kit.ConnectivityKit';
     ```
 
-2. 定义CDSM客户端变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取的设备地址，且该设备是合作设备集合的成员设备。
+2. 定义CDSM客户端变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过getPairedDevices()获取的设备地址，且该设备是合作设备集合的成员设备。
 
-    <!-- @[cdsm_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
+    <!-- @cdsm_declare -->
     
     ``` TypeScript
     let cdsmClient: cdsm.CdsmClient;
@@ -46,7 +46,7 @@
 
 3. 创建合作设备集合客户端实例。
 
-    <!-- @[cdsm_create_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
+    <!-- @cdsm_create_client -->
     
     ``` TypeScript
     try {
@@ -61,7 +61,7 @@
 
 4. 主动查询合作设备集合里所有成员设备的信息。
 
-    <!-- @[cdsm_get_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
+    <!-- @cdsm_get_info -->
     
     ``` TypeScript
     try {
@@ -76,7 +76,7 @@
 
 5. 通过注册的方式订阅合作设备集合成员设备的信息变化。
 
-    <!-- @[cdsm_on_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
+    <!-- @cdsm_on_info_change -->
     
     ``` TypeScript
     try {
@@ -93,7 +93,7 @@
 
 6. 取消订阅合作设备集合成员设备的信息变化。
 
-    <!-- @[cdsm_off_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
+    <!-- @cdsm_off_info_change -->
     
     ``` TypeScript
     try {

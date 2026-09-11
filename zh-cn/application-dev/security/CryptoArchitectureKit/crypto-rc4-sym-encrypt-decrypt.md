@@ -34,7 +34,7 @@ RC4为流密码算法，无需分组模式与填充。
 3. 当解密内容长度较短时，可以省略调用update，直接调用Cipher.doFinal，获取解密后的数据。
 
 - 异步方法示例：
-  <!-- @[encrypt_decrypt_rc4_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_asynchronous.ets) -->
+  <!-- @encrypt_decrypt_rc4_asynchronous -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -82,7 +82,7 @@ RC4为流密码算法，无需分组模式与填充。
   ```
 
 - 同步方法示例：
-  <!-- @[encrypt_decrypt_rc4_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc4_encryption_decryption/rc4_encryption_decryption_synchronous.ets) -->
+  <!-- @encrypt_decrypt_rc4_synchronous -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

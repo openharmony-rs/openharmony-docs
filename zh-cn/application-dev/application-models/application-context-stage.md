@@ -39,7 +39,7 @@ UIAbility组件和各种ExtensionAbility派生类组件都有各自不同的Cont
 
 ApplicationContext在基类Context的基础上提供了监听应用内应用组件的生命周期的变化、监听系统内存变化、监听应用内系统环境变化、设置应用语言、设置应用颜色模式、清除应用自身数据的同时撤销应用向用户申请的权限等能力，在UIAbility、ExtensionAbility、AbilityStage中均可以获取。
 
-<!-- @[application_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryexampleability/EntryAbility.ets) -->
+<!-- @application_context_start -->
 
 ``` TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -56,7 +56,7 @@ export default class EntryAbility extends UIAbility {
 
 AbilityStageContext和基类Context相比，额外提供HapModuleInfo、Configuration等信息。
 
-<!-- @[abilityStageContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/abilitystagecontextability/MyAbilityStage.ets) -->
+<!-- @abilityStageContext_start -->
 
 ``` TypeScript
 import { AbilityStage } from '@kit.AbilityKit';
@@ -73,7 +73,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 调用createModuleContext方法，获取本应用中其他Module的Context。获取到其他Module的Context之后，即可获取到相应Module的资源信息。
 
-<!-- @[createModuleContext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/CreateModuleContext.ets) -->
+<!-- @createModuleContext_start -->
 
 ``` TypeScript
 import { common, application } from '@kit.AbilityKit';
@@ -132,7 +132,7 @@ UIAbilityContext和基类Context相比，额外提供abilityInfo、currentHapMod
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
-  <!-- @[ui_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/uiAbilitycontextability/UIAbilityContextAbility.ets) -->
+  <!-- @ui_ability_context_start -->
 
   ``` TypeScript
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -147,7 +147,7 @@ UIAbilityContext和基类Context相比，额外提供abilityInfo、currentHapMod
 
 - 在页面中获取UIAbility实例的上下文信息。
 
-  <!-- @[ui_ability_eventHub_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/EventHub.ets) -->
+  <!-- @ui_ability_eventHub_start -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit'; // 导入依赖资源context模块
@@ -176,7 +176,7 @@ UIAbilityContext和基类Context相比，额外提供abilityInfo、currentHapMod
   也可以在导入依赖资源context模块后，在具体使用UIAbilityContext前进行变量定义。
 
 
-  <!-- @[ui_ability_basic_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsBasicUsage.ets) -->
+  <!-- @ui_ability_basic_usage_start -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -202,7 +202,7 @@ UIAbilityContext和基类Context相比，额外提供abilityInfo、currentHapMod
 
 - 当业务完成后，开发者如果想要终止当前UIAbility实例，可以通过调用terminateSelf()方法实现。
 
-  <!-- @[ui_ability_usage_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/UIAbilityComponentsUsage.ets) -->
+  <!-- @ui_ability_usage_start -->
 
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -248,7 +248,7 @@ UIAbilityContext和基类Context相比，额外提供abilityInfo、currentHapMod
 
 获取特定场景ExtensionContext。以FormExtensionContext为例，表示卡片服务的上下文环境，继承自ExtensionContext，提供卡片服务相关的接口能力。
 
-<!-- @[extension_ability_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/extensionability/MyFormExtensionAbility.ets) -->
+<!-- @extension_ability_context_start -->
 
 ``` TypeScript
 import { FormExtensionAbility, formBindingData } from '@kit.FormKit';
@@ -288,7 +288,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 如果需要跨包获取资源对象，可以参考资源访问。
 
-<!-- @[scene_entry_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrysceneability/EntryAbility.ets) -->
+<!-- @scene_entry_ability_start -->
 
 ``` TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -337,7 +337,7 @@ Context提供了获取应用文件路径的能力，ApplicationContext、Ability
 
 - **获取应用缓存目录**
 
-  <!-- @[app_context_cache_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextCache.ets) -->
+  <!-- @app_context_cache_start -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -374,7 +374,7 @@ Context提供了获取应用文件路径的能力，ApplicationContext、Ability
 
 - **获取应用文件目录**
 
-  <!-- @[app_context_file_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/ApplicationContextFile.ets) -->
+  <!-- @app_context_file_start -->
 
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -449,7 +449,7 @@ Context提供了获取应用文件路径的能力，ApplicationContext、Ability
 
 要实现获取和设置当前加密分区，可以通过读写Context的`area`属性来实现。
 
-<!-- @[ability_area_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entryareaability/EntryAbility.ets) -->
+<!-- @ability_area_start -->
 
 ``` TypeScript
 import { UIAbility, contextConstant, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -479,7 +479,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @[scene_area_context_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/pages/AreaContext.ets) -->
+<!-- @scene_area_context_start -->
 
 ``` TypeScript
 // AreaContext.ets
@@ -546,7 +546,7 @@ struct AreaContext {
 
 每次注册回调函数时，都会返回一个监听生命周期的ID，此ID会自增1。以UIAbilityContext中的使用为例进行说明。
 
-<!-- @[entry_lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrylifecycleability/EntryLifecycleAbility.ets) -->
+<!-- @entry_lifecycle_ability_start -->
 
 ``` TypeScript
 import { AbilityConstant, AbilityLifecycleCallback, UIAbility, Want } from '@kit.AbilityKit';

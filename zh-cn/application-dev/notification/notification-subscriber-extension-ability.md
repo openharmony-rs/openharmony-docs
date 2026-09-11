@@ -27,4 +27,4 @@
 4. 三方穿戴应用需申请ohos.permission.SUBSCRIBE_NOTIFICATION权限，权限为system_basic级别。
 
 ## 运作机制
-![notification_subscription_extension_ability](figures/notification_subscription_extension_ability.png)
+notification_subscription_extension_ability

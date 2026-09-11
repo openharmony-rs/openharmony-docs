@@ -22,7 +22,7 @@
     - "entities"列表中包含"entity.system.browsable"。
     - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考uri匹配，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
-    <!-- @[domainVerify_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+    <!-- @domainVerify_true --> 
     
     ``` JSON5
     {
@@ -61,7 +61,7 @@
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则跳转默认浏览器打开网页。
 
-    <!-- @[want_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets) --> 
+    <!-- @want_page --> 
     
     ``` TypeScript
     import { common, OpenLinkOptions } from '@kit.AbilityKit';
@@ -131,7 +131,7 @@
     - "entities"列表中包含"entity.system.browsable"。
     - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考uri匹配，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
-    <!-- @[pull_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+    <!-- @pull_results --> 
     
     ``` JSON5
     {
@@ -170,7 +170,7 @@
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
     - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则跳转默认浏览器打开网页。
 
-    <!-- @[want_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage2.ets) --> 
+    <!-- @want_ability --> 
     
     ``` TypeScript
     import { common, OpenLinkOptions } from '@kit.AbilityKit';

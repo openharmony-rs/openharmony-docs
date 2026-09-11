@@ -17,7 +17,7 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 
 直播评论、即时聊天等应用场景需要在列表底部插入数据时，内容应自动向上滚动，以展示新插入的节点，此功能可通过配置stackFromEnd实现。
 
-![list2](figures/list2.png)
+list2
 
 ## 网格
 
@@ -25,7 +25,7 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 
 对于部分项目占用多行或多列的场景，可以通过在创建Grid时传入合适的GridLayoutOptions来实现。
 
-![grid2](figures/grid2.png)
+grid2
 
 ## 瀑布流
 
@@ -33,19 +33,19 @@ List适合单列和多列宽度相同的场景，如通讯录、音乐列表、�
 
 同一个页面内有不同列数分段混合布局的场景，可以通过设置WaterFlowOptions对象说明的sections实现。
 
-![](figures/waterflow.png)
+
 
 ## 弧形列表
 
 弧形列表是一种专为圆形屏幕设备设计的特殊列表，支持列表项在接近屏幕上下两端自动缩放的效果。
 
-![](figures/arcList_item.png)
+
 
 ## 懒加载布局
 
 懒加载布局容器是一类嵌套在可滚动父组件（Scroll、List、WaterFlow）内部，负责按需加载子组件的布局容器。这类容器本身不提供滚动能力，由父组件统一处理滚动。它仅创建和布局处于可滚动父组件可视区域内的子组件，并在帧间空闲时隙预加载可视区域上方和下方各半屏的内容，从而减少首帧渲染时间和内存开销。ArkUI提供了四种支持懒加载的布局容器组件：垂直线性布局LazyColumnLayout（从API版本26.0.0开始支持）、垂直网格布局LazyVGridLayout（从API version 19开始支持）、垂直瀑布流布局LazyVWaterFlowLayout（从API版本26.0.0开始支持）、自定义布局LazyDynamicLayout（从API版本26.0.0开始支持）。不同的懒加载布局容器提供不同的布局模式，开发者可以将多种类型的懒加载布局容器组合在同一个父组件中使用，灵活实现混合布局。
 
-![](figures/list-nested-lazy-layout.gif)
+
 
 ## 能力对比
 

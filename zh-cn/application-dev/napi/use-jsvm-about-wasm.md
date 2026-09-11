@@ -44,7 +44,7 @@ JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly �
 
 cpp 部分代码：
 
-<!-- @[jsvm_wasm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/webassembly/src/main/cpp/hello.cpp) -->
+<!-- @jsvm_wasm -->
 
 ``` C++
 #include "napi/native_api.h"

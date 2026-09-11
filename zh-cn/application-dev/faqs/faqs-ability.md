@@ -592,8 +592,8 @@ export const forkAndExecute: (bundleName: string, abilityName: string) => number
 
 安装并启动CliSandbox应用后，点击“启动 AgentExtension (ohos-aa)”，即可通过ohos-aa拉起目标应用。若返回值为0表示启动成功，非0表示启动失败。
 
-![Image 1](figures/ohos-aa-pc.gif)
+Image 1
 
 **参考文档**
 
-[ohos-aa工具说明](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/tools/ohos-aa/README.md)
+ohos-aa工具说明

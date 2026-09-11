@@ -45,11 +45,11 @@ HAR与HSP都是为了实现代码和资源的共享，都可以包含代码、C+
 
 在多包场景下，如果应用的多个HAP或HSP包使用HAR包实现代码和资源的共享，那么打包后的每个HAP或HSP包中都会存在一份共享HAR包的拷贝，导致App包中存在冗余代码和资源。如下图示例，应用模块HAP1和HAP2/HSP1都引用了HAR2和HAR3，打包后，App包中HAR2和HAR3存在多份重复拷贝，体积较大。
 
-![多HAP引用HAR示意图](./figures/reduce-package-size-har.PNG)
+多HAP引用HAR示意图
 
 这种场景下，推荐开发者使用HSP代替HAR实现代码和资源共享。如下图示例，使用HSP2对原应用进行升级改造，打包后，App包中HAR2和HAR3只存在一份拷贝，HAR2、HAR3总大小大于HSP（11k）时，可以减小应用包大小。
 
-![多HAP引用HSP示意图](./figures/reduce-package-size-hsp.PNG)
+多HAP引用HSP示意图
 
 ### 使用扫描工具分析应用包
 

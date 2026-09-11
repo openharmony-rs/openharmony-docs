@@ -50,7 +50,7 @@ JSVM-API 接口开发流程参考使用 JSVM-API 实现 JS 与 C/C++ 语言交�
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->  
+<!-- @oh_jsvm_create_array -->  
 
 ``` C++
 #include "napi/native_api.h"
@@ -107,7 +107,7 @@ JSVM CreateArray success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_array_with_length -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -171,7 +171,7 @@ JSVM CreateArrayWithLength success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_typedarray -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -279,7 +279,7 @@ JSVM CreateTypedArray success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_dataview -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -400,7 +400,7 @@ JSVM CreateDataView success, returnOffset: 4
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_array_length -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -458,7 +458,7 @@ JSVM length: 6
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_typedarray_info -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -585,7 +585,7 @@ JSVM GetTypedArrayInfo success, byteOffset: 0
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_dataview_info -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -687,7 +687,7 @@ JSVM GetDataViewInfo success, byteOffset: 0
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_array -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -739,7 +739,7 @@ JSVM IsArray success, IsArray: 1
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_set_element -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -790,7 +790,7 @@ JSVM SetElement success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_element -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -845,7 +845,7 @@ JSVM GetElement success
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_has_element -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -904,7 +904,7 @@ JSVM hasElement: 0
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_delete_element -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -962,7 +962,7 @@ JSVM DeleteElement: 1
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_dataview -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -1016,7 +1016,7 @@ JSVM IsDataView: 1
 
 cpp 部分代码：
 
-<!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_typedarray -->
 
 ``` C++
 #include "napi/native_api.h"

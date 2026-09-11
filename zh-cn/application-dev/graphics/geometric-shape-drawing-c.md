@@ -54,7 +54,7 @@
 
 简单示例如下：
 
-<!-- @[ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_point -->
 
 ``` C++
 // 创建画笔对象
@@ -87,7 +87,7 @@ OH_Drawing_PenDestroy(pen);
 效果如下：
 
 
-![Drawing-Points](figures/Drawing-Points.png)
+Drawing-Points
 
 
 ## 绘制圆弧
@@ -104,7 +104,7 @@ OH_Drawing_PenDestroy(pen);
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
-<!-- @[ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_arc -->
 
 ``` C++
 // 创建画笔对象
@@ -128,7 +128,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![Drawing-Arc](figures/Drawing-Arc.png)
+Drawing-Arc
 
 
 ## 绘制圆
@@ -143,7 +143,7 @@ OH_Drawing_RectDestroy(rect);
 
 此处以使用画笔绘制圆为例，简单示例如下：
 
-<!-- @[ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_circle -->
 
 ``` C++
 // 创建画笔对象
@@ -167,7 +167,7 @@ OH_Drawing_PointDestroy(point);
 
 效果如下：
 
-![Drawing-a-Circle](figures/Drawing-a-Circle.png)
+Drawing-a-Circle
 
 
 ## 绘制路径
@@ -184,7 +184,7 @@ OH_Drawing_PointDestroy(point);
 
 此处以使用画笔和画刷绘制五角星为例，示例如下：
 
-<!-- @[ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_path -->
 
 ``` C++
 // 创建画笔对象
@@ -237,7 +237,7 @@ OH_Drawing_PathDestroy(path);
 
 效果如下：
 
-![Drawing-a-Path](figures/Drawing-a-Path.png)
+Drawing-a-Path
 
 
 ## 绘制区域
@@ -248,7 +248,7 @@ OH_Drawing_PathDestroy(path);
 
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
-<!-- @[ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_region -->
 
 ``` C++
 // 创建画刷对象
@@ -280,7 +280,7 @@ OH_Drawing_RectDestroy(rect2);
 
 效果如下：
 
-![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
+Screenshot_20241206112505234
 
 
 ## 绘制矩形
@@ -289,7 +289,7 @@ OH_Drawing_RectDestroy(rect2);
 
 简单示例如下：
 
-<!-- @[ndk_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_rect -->
 
 ``` C++
 // 创建画刷对象
@@ -310,7 +310,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![draw-rect](figures/draw-rect.png)
+draw-rect
 
 
 ## 绘制圆角矩形
@@ -325,7 +325,7 @@ OH_Drawing_RectDestroy(rect);
 
 简单示例如下：
 
-<!-- @[ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_round_rect -->
 
 ``` C++
 // 创建画刷对象
@@ -352,12 +352,12 @@ OH_Drawing_RoundRectDestroy(roundRect);
 效果如下：
 
 
-![Drawing-Rounded-Rectangle](figures/Drawing-Rounded-Rectangle.png)
+Drawing-Rounded-Rectangle
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
+- NDKGraphicsDraw (API20)
 <!--RP1End-->

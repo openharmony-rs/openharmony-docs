@@ -45,7 +45,7 @@
   - 根节点的父节点对其的引用关系：由于父节点为FrameNode对象对应的节点，可以直接通过FrameNode的removeChild方法解除引用关系。
   - BuilderNode对象对根节点的引用关系：通过BuilderNode的dispose接口直接解除引用关系。
 
-<!-- @[Main_MemoryManagementPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/MemoryManagementPage.ets) -->
+<!-- @Main_MemoryManagementPage -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeContent } from '@kit.ArkUI';
@@ -298,7 +298,7 @@ export struct pageThreeTmp {
 
 - 调用dispose接口的情况（点击示例中的"Destroy with dispose"按钮），aboutToDisappear回调能够触发。
 
-<!-- @[Main_CircularReferenceDisposePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/CircularReferenceDisposePage.ets) -->
+<!-- @Main_CircularReferenceDisposePage -->
 
 ``` TypeScript
 import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';

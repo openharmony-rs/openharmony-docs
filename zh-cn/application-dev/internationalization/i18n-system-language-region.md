@@ -21,7 +21,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -31,7 +31,7 @@
 2. 使用场景。
 - 获取系统语言、系统地区、系统区域。
 
-   <!-- @[get_system_language_and_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   <!-- @get_system_language_and_region -->
    
    ``` TypeScript
    // 获取系统语言

@@ -27,7 +27,7 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
 
 2. 参考<!--RP1-->Native访问应用沙箱<!--RP1End-->实现访问应用沙箱dmp文件；也可将存放dmp文件的沙箱路径的文件复制到可以查看的路径。示例如下
 
-<!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
+<!-- @web_get_dmp_files -->
 
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit'
@@ -69,7 +69,7 @@ struct Index {
 
 这个路径可以利用DevEco Studio查看。
 
-![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
+image.png
 
 3. 获取dmp文件后进行解析，具体步骤如下：
 
@@ -79,7 +79,7 @@ struct Index {
      ./minidump_stackwalk b678e0b5-894b-4794-9ab3-fb5d6dda06a3.dmp > parsed_stacktrace.txt
      ```
 
-     minidump_stackwalk由Breakpad项目源码编译得到，编译方法见项目仓库：[Breakpad仓库地址](https://chromium.googlesource.com/breakpad/breakpad)。
+     minidump_stackwalk由Breakpad项目源码编译得到，编译方法见项目仓库：Breakpad仓库地址。
 
    * 查看解析后的文件，以下示例列出部分内容：
 

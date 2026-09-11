@@ -71,7 +71,7 @@
     |PrimaryContactMgmt|从API version 23开始，新增支持该字段。指示社交通讯类应用“重要联系人列表”的设置功能。<!--RP2--><!--RP2End-->|
 2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
 
-    ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
+    exempted-dialog-between-apps
 
     |值|说明|
     |---|---|
@@ -92,7 +92,7 @@
 
    其中，linkFeature字段必须配置为AppStorageMgmt，其他字段取值请根据实际情况修改为实际值。
 
-    <!-- @[pulllink_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+    <!-- @pulllink_clearcache -->
     
     ``` JSON5
     {
@@ -124,7 +124,7 @@
 
 效果图如下：
 
-![app-uri-config_storage](figures/app_uri_config_storage.png)
+app-uri-config_storage
 
 
 
@@ -137,7 +137,7 @@
 
 2. 设置scheme、host、port、path/pathStartWith属性，与Want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
-    <!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+    <!-- @pulllink_login -->
 
     ``` JSON5
     "uris": [

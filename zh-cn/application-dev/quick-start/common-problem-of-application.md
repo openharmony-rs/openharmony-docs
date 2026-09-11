@@ -12,7 +12,7 @@
 
 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含指纹信息，使用哈希算法SHA-256生成。
 
-<!-- @[get_fingerprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetFingerprint.ets) -->
+<!-- @get_fingerprint -->
 
 ``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -41,26 +41,26 @@ hdc shell
 bm dump -n com.example.myapplication | grep fingerprint 
 ```
 
-![alt text](figures/get_fingerprint.png)
+alt text
 
-* 通过.cer证书文件获取，可以参考[APP备案FAQ](https://developer.huawei.com/consumer/cn/doc/app/50130)中HarmonyOS应用/元服务如何获取公钥和签名信息，指纹信息使用哈希算法SHA-1生成。
+* 通过.cer证书文件获取，可以参考APP备案FAQ中HarmonyOS应用/元服务如何获取公钥和签名信息，指纹信息使用哈希算法SHA-1生成。
 
-* 通过keytool工具获取，详情参考[生成签名证书指纹](https://developer.huawei.com/consumer/cn/doc/AppGallery-connect-Guides/appgallerykit-preparation-game-0000001055356911#section147011294331)，使用哈希算法SHA-256生成。
+* 通过keytool工具获取，详情参考生成签名证书指纹，使用哈希算法SHA-256生成。
 
 ## 什么是appIdentifier
 
 appIdentifier是<!--RP1-->Profile签名文件<!--RP1End-->中的一个字段，为应用的唯一标识，在应用签名时生成，其中：
 
-1. 通过DevEco Studio工具[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)生成，此时的appIdentifier字段是随机生成的，在不同的设备上签名、或者重新签名均会导致appIdentifier字段不一致。
+1. 通过DevEco Studio工具自动签名生成，此时的appIdentifier字段是随机生成的，在不同的设备上签名、或者重新签名均会导致appIdentifier字段不一致。
 2. <!--RP2-->手动配置签名，详情参考应用包签名工具指导，此时appIdentifier字段取值为HarmonyAppProvision配置文件中app-identifier字段。 <!--RP2End-->
 
-因此，在跨设备调试、跨应用交互调试、或者多用户共同开发且需要共享密钥等要求appIdentifier不变的场景下，推荐使用手动签名，具体场景请参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+因此，在跨设备调试、跨应用交互调试、或者多用户共同开发且需要共享密钥等要求appIdentifier不变的场景下，推荐使用手动签名，具体场景请参考使用场景说明。
 
 ## 如何获取应用信息中的appIdentifier
 
 * 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appIdentifier信息。
 
-<!-- @[get_app_identifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppIdentifier.ets) -->
+<!-- @get_app_identifier -->
 
 ``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -89,7 +89,7 @@ hdc shell
 bm dump -n com.example.myapplication | grep appIdentifier
 ```
 
-![alt text](figures/get_appIdentifier.png)
+alt text
 
 
 ## 什么是appId
@@ -100,7 +100,7 @@ appId是应用的唯一标识，由包名、下划线和证书公钥的Base64编
 
 * 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，应用包信息中包含signatureInfo签名信息，签名信息中包含appId信息。
 
-<!-- @[get_app_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/CommonProblemOfApplication/entry/src/main/ets/pages/GetAppId.ets) -->
+<!-- @get_app_id -->
 
 ``` TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -128,7 +128,7 @@ hdc shell
 # 需将ohos.app.hap.myapplication替换为实际应用的包名
 bm dump -n ohos.app.hap.myapplication |grep '"appId":'
 ```
-![alt text](figures/get_appId.png)
+alt text
 
 ## 应用的uid
 
@@ -145,6 +145,6 @@ hdc shell
 # 需将ohos.app.hap.myapplication替换为实际应用的包名
 bm dump -n ohos.app.hap.myapplication |grep uid
 ```
-![alt text](figures/get_uid.png)
+alt text
 
 * 可以调用bundleManager.getBundleInfoForSelf获取自身的BundleInfo应用包信息，示例代码可以参考如何获取应用信息中的appId，取值方式为bundleInfo.appInfo.uid。<!--RP3--><!--RP3End-->

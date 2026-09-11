@@ -34,7 +34,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
 1. 引入模块。
 
-   <!-- @[xmlSerializer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   <!-- @xmlSerializer_import -->
    
    ``` TypeScript
    import { xml, util } from '@kit.ArkTS';
@@ -44,7 +44,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
    方式1：基于ArrayBuffer构造XmlSerializer对象
 
-   <!-- @[xmlSerializer_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   <!-- @xmlSerializer_new -->
    
    ``` TypeScript
    let arrayBuffer: ArrayBuffer = new ArrayBuffer(2048); // 创建一个2048字节的缓冲区
@@ -53,7 +53,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
    方式2：基于DataView构造XmlSerializer对象
 
-   <!-- @[xmlSerializer_differentFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   <!-- @xmlSerializer_differentFunction -->
    
    ``` TypeScript
    let arrayBuffer: ArrayBuffer = new ArrayBuffer(2048); // 创建一个2048字节的缓冲区
@@ -63,7 +63,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
 3. 调用XML元素生成函数。
 
-   <!-- @[xmlSerializer_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   <!-- @xmlSerializer_function -->
    
    ``` TypeScript
    serializer.setDeclaration(); // 写入XML的声明
@@ -86,7 +86,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
 4. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
 
-   <!-- @[xmlSerializer_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlSerializer.ets) -->
+   <!-- @xmlSerializer_console -->
    
    ``` TypeScript
    let uint8Array: Uint8Array = new Uint8Array(arrayBuffer); // 使用Uint8Array读取arrayBuffer的数据
@@ -111,7 +111,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
 1. 引入模块。
 
-   <!-- @[xmlDySerializer_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   <!-- @xmlDySerializer_import -->
    
    ``` TypeScript
    import { xml, util } from '@kit.ArkTS';
@@ -119,7 +119,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
 2. 调用XML元素生成函数。
 
-   <!-- @[xmlDySerializer_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   <!-- @xmlDySerializer_function -->
    
    ``` TypeScript
    let dySerializer = new xml.XmlDynamicSerializer('utf-8');
@@ -144,7 +144,7 @@ XML模块的API接口可以参考@ohos.xml的详细描述，按需求调用相�
 
 3. 使用Uint8Array操作ArrayBuffer，并调用TextDecoder对Uint8Array解码后输出。
 
-   <!-- @[xmlDySerializer_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XMLGeneration/entry/src/main/ets/pages/XmlDynamicSerializer.ets) -->
+   <!-- @xmlDySerializer_console -->
    
    ``` TypeScript
    let uint8Array: Uint8Array = new Uint8Array(arrayBuffer);

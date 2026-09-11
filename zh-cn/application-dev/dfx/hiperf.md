@@ -10,7 +10,7 @@
 hiperf是一款集成多种性能分析功能的命令行工具，可用于分析系统性能瓶颈、定位软件热点及优化代码效率，支持采集和统计程序运行时的性能数据。
 
 
-开发者可以通过[Deveco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)或[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases)使用hiperf采集函数的调用栈，获取调用栈上各层函数的执行时间，通过泳道图等方式查看调用链信息进而进行性能分析，具体使用方式参考[通过Deveco Studio使用hiperf介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-time)，[通过SmartPerf使用hiperf介绍](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md)。若需要指定采集的事件、采样周期、采集时长、CPU核数等选项，可以单独使用 hiperf 命令行工具。采样数据 perf.data 文件可以使用SmartPerf工具打开并以可视化的火焰图进行展示。
+开发者可以通过Deveco Studio或SmartPerf使用hiperf采集函数的调用栈，获取调用栈上各层函数的执行时间，通过泳道图等方式查看调用链信息进而进行性能分析，具体使用方式参考通过Deveco Studio使用hiperf介绍，通过SmartPerf使用hiperf介绍。若需要指定采集的事件、采样周期、采集时长、CPU核数等选项，可以单独使用 hiperf 命令行工具。采样数据 perf.data 文件可以使用SmartPerf工具打开并以可视化的火焰图进行展示。
 
 
 本文档详细说明了hiperf命令行工具的使用方法，帮助开发者借助该工具进行详细的性能分析。
@@ -415,7 +415,7 @@ $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 | --json | 输出json格式数据。 | 
 | --diff | 显示源文件与转换后文件的差别。不能与--proto、--json、-s参数一起使用。 | 
 | --branch | 根据函数地址显示分支。 | 
-| --&lt;keys&gt; &lt;keyname1&gt;[,keyname2][,...] | 可选关键字：comms、pids、tids、dsos、funcs、from_dsos、from_funcs，例如： --comms hiperf。 | 
+| --&lt;keys&gt; &lt;keyname1&gt;,keyname2 | 可选关键字：comms、pids、tids、dsos、funcs、from_dsos、from_funcs，例如： --comms hiperf。 | 
 | --sort [key1],[key2],[...] | 按关键字排序。 | 
 | --hide_count | 报告中不显示数值。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 
@@ -480,6 +480,6 @@ hdc shell "bm dump -n bundlename | grep profileable"
 "profileable": true
 ```
 
-构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：申请调试证书。
 
 开启profileable标签属性可参考：配置文件标签。

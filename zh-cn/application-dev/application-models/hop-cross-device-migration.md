@@ -30,7 +30,7 @@
 
 ## 运作机制
 
-![hop-cross-device-migration](figures/hop-cross-device-migration.png)
+hop-cross-device-migration
 
 1. 在源端，通过UIAbility的onContinue()回调，开发者可以保存待迁移的业务数据。例如，在浏览器应用中完成跨端迁移，开发者需要使用onContinue()回调保存页面URL等业务内容。
 2. 分布式框架提供了跨设备应用页面栈以及业务数据的保存和恢复机制，它负责将数据从源端发送到对端。
@@ -40,7 +40,7 @@
 
 以从对端的迁移入口发起迁移为例，跨端迁移流程如下图所示。
 
-![hop-cross-device-migration](figures/hop-cross-device-migration4.png)
+hop-cross-device-migration
 
 ## 约束限制
 
@@ -131,7 +131,7 @@
 
     不同的启动方式下会调用不同的接口，详见下图。
 
-    ![hop-cross-device-migration](figures/hop-cross-device-migration5.png)
+    hop-cross-device-migration
 
     > **说明：**
     > 1. 在应用迁移启动时，无论是冷启动还是热启动，都会在执行完onCreate()/onNewWant()后，触发onWindowStageRestore()生命周期函数，不执行onWindowStageCreate()生命周期函数。
@@ -472,7 +472,7 @@ export default class MigrationAbility extends UIAbility {
 
 快速拉起流程如下图所示。
 
-![hop-cross-device-migration](figures/continue_quick_start.png)
+hop-cross-device-migration
 
 配置了快速拉起的应用，触发迁移时会收到两次启动请求，区别如下：
 
@@ -1082,13 +1082,13 @@ export default class MigrationAbility extends UIAbility {
 
     1. 为了正确编译安装全局任务中心，开发者需要替换Full-SDK，具体操作可参见替换指南。
 
-    2. 下载[MissionCenter_Demo](https://gitcode.com/openharmony/ability_dmsfwk/tree/master/services/dtbschedmgr/test/missionCenterDemo/dmsDemo/entry/src/main)示例代码。
+    2. 下载MissionCenter_Demo示例代码。
 
     3. 编译工程文件。
 
         1. 新建一个工程，找到对应的文件夹替换下载文件。
 
-            ![hop-cross-device-migration](figures/hop-cross-device-migration1.png)
+            hop-cross-device-migration
 
         2. 自动签名，编译安装。
 
@@ -1098,11 +1098,11 @@ export default class MigrationAbility extends UIAbility {
 
            b. 点击 **file->Project Structure**。
 
-              ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
+              hop-cross-device-migration
 
            c. 点击 **Signing Configs**  点击 **OK**。
 
-              ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
+              hop-cross-device-migration
 
         3. 连接开发板运行生成demo。
 
@@ -1169,4 +1169,4 @@ export default class MigrationAbility extends UIAbility {
 
 针对跨端迁移的开发，有以下相关实例可供参考：
 
-[跨端迁移随手记（ArkTS）（Public SDK）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedJotNote)
+跨端迁移随手记（ArkTS）（Public SDK）（API12）

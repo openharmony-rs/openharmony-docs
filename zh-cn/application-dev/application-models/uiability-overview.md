@@ -40,7 +40,7 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
 
 为使应用能够正常使用UIAbility，需要在module.json5配置文件的abilities标签中声明UIAbility的名称、入口、标签等相关信息。
 
-<!-- @[module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/module.json5) -->  
+<!-- @module_start -->  
 
 ``` JSON5
 {

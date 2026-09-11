@@ -60,7 +60,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## 开发案例
 ### HKDF
-<!-- @[key_derivation_hkdf256_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/cpp/types/projects/napi_hkdf256.cpp) -->
+<!-- @key_derivation_hkdf256_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -184,7 +184,7 @@ napi_value HkdfDeriveKey(napi_env env, napi_callback_info info)
 ```
 
 ### PBKDF2
-<!-- @[key_derivation_pbkdf2_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/cpp/types/projects/napi_pbkdf2.cpp) -->
+<!-- @key_derivation_pbkdf2_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

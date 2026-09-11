@@ -36,7 +36,7 @@
 
 调用backup.getLocalCapabilities()获取能力文件。
 
-<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+<!-- @get_local_cap_ability -->
 
 ``` TypeScript
 import { fileIo } from '@kit.CoreFileKit';
@@ -103,7 +103,7 @@ export async function getLocalCapabilities(): Promise<void> {
 
 **示例**
 
-  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  <!-- @session_backup -->
   
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';
@@ -202,7 +202,7 @@ export async function getLocalCapabilities(): Promise<void> {
 
 **示例**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
+  <!-- @session_restore -->
   
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';

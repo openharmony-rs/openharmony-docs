@@ -31,7 +31,7 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 **图1** 同层渲染整体架构 
 
-![web-same-layer](figures/web-same-layer-develop-architecture.png)
+web-same-layer
 
 ## 规格约束
 ### 可被同层渲染的ArkUI组件
@@ -124,18 +124,18 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
   **图2** 未使用Stack包裹，TextInput的位置错位
 
-  ![web-same-layer-develop](figures/web-same-layer-develop-textinput1.png)
+  web-same-layer-develop
 
   **图3** 使用Stack包裹，TextInput的位置正常
 
-  ![web-same-layer-develop](figures/web-same-layer-develop-textinput2.png)
+  web-same-layer-develop
 
 ## Web页面中同层渲染输入框
 在Web页面中，可以使用ArkUI系统的TextInput组件进行同层渲染。此处利用同层渲染展示三个输入框，渲染效果图如下：
 
 **图4** 同层渲染输入框
 
-  ![web-same-layer-develop](figures/web-same-layer-develop-input.png)
+  web-same-layer-develop
 
 1. 在Web页面中标记需要同层渲染的HTML标签。
 
@@ -169,7 +169,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    - 采用&lt;object&gt;标签。
 
      需要使用registerNativeEmbedRule注册object标签。
-     <!-- @[register_object_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+     <!-- @register_object_label --> 
      
      ``` TypeScript
      Web({src: $rawfile('test2.html'), controller: this.browserTabController})
@@ -204,7 +204,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    同层渲染功能默认不开启，如果要使用同层渲染的功能，可通过enableNativeEmbedMode来开启。
 
-   <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   <!-- @enable_native_embedmode -->
    
    ``` TypeScript
    Web({src: $rawfile('test2.html'), controller: this.browserTabController})
@@ -217,7 +217,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    同层渲染功能开启后，展示在对应区域的系统组件。
 
-   <!-- @[text_input_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+   <!-- @text_input_component --> 
    
    ``` TypeScript
    @Component
@@ -253,7 +253,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    用于控制和反馈对应NodeContainer上的节点行为。
 
-   <!-- @[create_nodecontainer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   <!-- @create_nodecontainer -->
    
    ``` TypeScript
    // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
@@ -327,7 +327,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    开发者则需要调用onNativeEmbedLifecycleChange来监听同层渲染标签的生命周期变化。
 
-   <!-- @[native_embed_lifecycle_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+   <!-- @native_embed_lifecycle_change --> 
    
    ``` TypeScript
    // 获取embed标签的生命周期变化数据。
@@ -397,7 +397,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    开发者则需要调用onNativeEmbedGestureEvent来监听同层渲染区域的手势事件。
 
-   <!-- @[native_embed_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+   <!-- @native_embed_gesture --> 
    
    ``` TypeScript
    // 获取同层渲染组件触摸事件信息。
@@ -431,7 +431,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    开发者则需要调用onNativeEmbedMouseEvent来监听同层渲染区域的鼠标事件。
 
-   <!-- @[native_embed_mouse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+   <!-- @native_embed_mouse --> 
    
    ``` TypeScript
    .onNativeEmbedMouseEvent((mouse) => {
@@ -459,7 +459,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 使用前请在module.json5中添加网络权限，添加方法请参考在配置文件中声明权限。
 
-<!-- @[request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/module.json5) --> 
+<!-- @request_permissions --> 
 
 ``` JSON5
 "requestPermissions":[
@@ -470,7 +470,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 ```
 
 应用侧代码。
-  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  <!-- @set_web_peer_render -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -723,7 +723,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 ## 绘制XComponent+AVPlayer和Button组件
 
 - 应用侧代码组件使用示例。
-  <!-- @[draw_x_component_av_player_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/DrawXCompAVPBtn.ets) -->
+  <!-- @draw_x_component_av_player_button -->
   
   ``` TypeScript
   // 创建NodeController
@@ -973,7 +973,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
   ```
 
 - 应用侧代码示例，视频播放，使用时需替换为正确的视频链接地址。
-  <!-- @[mp4_player_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets) -->
+  <!-- @mp4_player_example -->
   
   ``` TypeScript
   import { media } from '@kit.MediaKit';
@@ -1090,7 +1090,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
 - 实现效果：
 
-  ![web-same-layer](figures/web-same-layer.png)
+  web-same-layer
 
 ## 同层标签设置为最高层级
 
@@ -1102,7 +1102,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 | overlay-infinity | 设置同层标签层级高于其他Web元素和设置overlay的同层标签。 |
 
 - 应用侧代码：
-<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) -->
+<!-- @native_embed_overlay -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1389,11 +1389,11 @@ struct Page{
   
   未设置arkwebnativestyle的display属性：
 
-  ![web-same-layer](figures/web-same-layer-nativeEmbedOverlay1.png)
+  web-same-layer
 
   设置arkwebnativestyle的display属性：
 
-  ![web-same-layer](figures/web-same-layer-nativeEmbedOverlay2.png)
+  web-same-layer
 
 ## 同层渲染纹理贴图对齐方式
 
@@ -1407,7 +1407,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 | object-fit:none | 纹理不拉伸，左顶角对齐。|
 
 - 应用侧代码：
-  <!-- @[texture_map_alignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/TextureMapAlignment.ets) --> 
+  <!-- @texture_map_alignment --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';

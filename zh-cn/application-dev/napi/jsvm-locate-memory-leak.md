@@ -16,7 +16,7 @@ JSVM的内存占用包括Native内存占用(C/C++侧的内存占用)和底层的
 ```hdc
 hidumper --mem $(pidof dest_app)
 ```
-<div align=left><img src="figures/jsvm_locate_memory_leak_hidump.png"/></div>
+<div align=left></div>
 
 
 ## Native内存泄漏定位
@@ -38,14 +38,14 @@ OH_JSVM_GetReferenceValue(env, reference, &result);
 ```
 
 ### 定位步骤
-为了分析Native内存泄漏，可以借助DevEco Studio的内存分析模块，具体参考文档：[内存分析及优化](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations-memory)。
+为了分析Native内存泄漏，可以借助DevEco Studio的内存分析模块，具体参考文档：内存分析及优化。
 1. 使用Profiler的Allocation模块记录一段时间内的Native内存信息。
 
-   <div align=left><img src="figures/jsvm_locate_memory_leak_allocation1.png"/></div>  
+   <div align=left></div>  
 
 2. 比较这段时间内"Created & Existing"的内存变化情况，如果存在占比较大且Count较大的未释放内存，则怀疑存在内存泄漏，展开进一步查看调用栈。
 
-   <div align=left><img src="figures/jsvm_locate_memory_leak_allocation2.png"/></div> 
+   <div align=left></div> 
 
 
 ## JS引擎堆内存泄漏定位
@@ -64,8 +64,8 @@ function createElements() {
 
 ### 定位步骤
 
-JSVM目前提供了OH_JSVM_OpenInspector开启inspector，参考[使用OH_JSVM_OpenInspector](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#%E4%BD%BF%E7%94%A8-oh_jsvm_openinspector)，在此基础上可以[使用 Chrome inspect 页面进行调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/jsvm-debugger-cpuprofiler-heapsnapshot#%E4%BD%BF%E7%94%A8-chrome-inspect-%E9%A1%B5%E9%9D%A2%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95)。
+JSVM目前提供了OH_JSVM_OpenInspector开启inspector，参考使用OH_JSVM_OpenInspector，在此基础上可以使用 Chrome inspect 页面进行调试。
 
 通过使用DevTools工具，对目标场景内的堆内存进行快照（快照前先点击上方的垃圾回收按钮进行垃圾回收），利用快照对比功能，找到未释放的JS对象和其所在源码中的位置，进一步指导定位堆内存未释放的原因。
 
-<div align=left><img src="figures/jsvm_locate_memory_leak_devtool.png"/></div> 
+<div align=left></div> 

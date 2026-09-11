@@ -23,7 +23,7 @@
 - 数据访问方：由createDataShareHelper()方法所创建的工具类，利用工具类便可以访问提供方提供的这些数据。
 
 **图1** 数据共享运作机制  
-![dataShare](figures/dataShare.jpg)
+dataShare
 
 - DataShareExtensionAbility模块为数据提供方，实现跨应用数据共享的相关业务。
 
@@ -368,4 +368,4 @@ DataShareExtensionAbility提供以下API，根据需要重写对应回调方法�
 
 针对数据共享开发，有以下相关实例可供参考：
 
-- [系统应用跨应用数据共享（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DataManagement/CrossAppDataShare)
+- 系统应用跨应用数据共享（ArkTS）（Full SDK）（API9）

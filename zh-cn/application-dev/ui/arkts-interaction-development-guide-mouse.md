@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-![mouse](figures/device_mouse.png)
+mouse
 
 鼠标设备是PC/2in1、Tablet类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过MouseEvent及AxisEvent上报给应用。
 
@@ -37,7 +37,7 @@ onMouse(event: (event?: MouseEvent) => void)
 >
 > 按键（MouseButton）的值：Left/Right/Middle/Back/Forward均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示没有鼠标按键按下或松开的状态下，仅移动鼠标所触发的事件。
 
-<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) --> 
+<!-- @mouse_move --> 
 
 ``` TypeScript
 @Entry
@@ -101,10 +101,10 @@ struct MouseMove {
    右键点击时：button = 2（MouseButton.Right的枚举值），按下时：action = 1（MouseAction.Press的枚举值），抬起时：action = 2（MouseAction.Release的枚举值）。
 
 
-![onMouse1](figures/onMouse_1.gif)
+onMouse1
 
 如果需要阻止鼠标事件冒泡，可以通过调用stopPropagation方法进行设置。
-<!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
+<!-- @stop_propagation -->
 
 ``` TypeScript
 @Entry
@@ -157,7 +157,7 @@ struct StopPropagation {
   }
 }
 ```
-![onMouse2](figures/onMouse_2.gif)
+onMouse2
 
 在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如上）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
 
@@ -174,7 +174,7 @@ onHover(event: (isHover: boolean) => void)
 
 若组件绑定了该接口，当鼠标指针从组件外部进入到该组件的瞬间会触发事件回调，参数isHover等于true；鼠标指针离开组件的瞬间也会触发该事件回调，参数isHover等于false。
 
-<!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/onHover/OnHover.ets) -->
+<!-- @on_hover -->
 
 ``` TypeScript
 @Entry
@@ -208,7 +208,7 @@ struct OnHover {
 
 当鼠标从Button内移动到Button外的瞬间，回调响应，isHover值等于false，又将组件变成了初始的样式。
 
-![onHover](figures/onHover.gif)
+onHover
 
 
 ## 处理鼠标按键
@@ -217,7 +217,7 @@ struct OnHover {
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
+<!-- @mouse_button -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -351,7 +351,7 @@ struct ListExample {
 }
 ```
 
-![ChangeMouse](figures/ChangeMouse.gif)
+ChangeMouse
 
 ## 处理滚轮
 
@@ -375,7 +375,7 @@ struct ListExample {
 
 以下是纵向和横向的List响应滚轮的示例：
 
-<!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
+<!-- @list_data_source -->
 
 ``` TypeScript
 export class ListDataSource implements IDataSource {
@@ -435,7 +435,7 @@ export class ListDataSource implements IDataSource {
 }
 ```
 
-<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) --> 
+<!-- @mouse_wheel --> 
 
 ``` TypeScript
 import { ListDataSource } from './ListDataSource';
@@ -498,7 +498,7 @@ struct MouseWheel {
 }
 ```
 
-![ListAxis](figures/listAxis.gif)
+ListAxis
 
 ## 鼠标事件转换
 如果开发者在开发应用时，只考虑实现了触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致出现应用在使用鼠标操作时发生实际行为与预期不一致、甚至无法操作的情况。针对该场景，系统提供兜底方案，会默认将鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上的操作体验。
@@ -510,7 +510,7 @@ struct MouseWheel {
 
 在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在module.json5配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
 
-![easy_go](figures/easy_go.png)
+easy_go
 
 **2. 增加事件转换配置**
 

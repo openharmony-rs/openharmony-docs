@@ -23,11 +23,11 @@
 
 ## 开发步骤
 
-完整的工程示例详见[SelectionAppSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/SelectionService/SelectionAppSample)。
+完整的工程示例详见SelectionAppSample。
 
 1. 创建划词应用工程。
 
-    1.1 打开[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)，点击"File>New>Create Project"创建一个Empty Ability，设备类型勾选"PC/2in1"。
+    1.1 打开DevEco Studio，点击"File>New>Create Project"创建一个Empty Ability，设备类型勾选"PC/2in1"。
 
     1.2 在工程对应的ets目录下，右键选择"New>Directory"，新建两个目录，分别命名为selectionextability、models。
 
@@ -47,10 +47,10 @@
     ├── module.json5                             # 配置文件
     ```
 
-    ![划词应用工程](figures/selection-application-project.png)
+    划词应用工程
 
-2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
-    <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
+2. 在SelectionModel.ets文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
+    <!-- @SelectionModel -->
     
     ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
@@ -118,7 +118,7 @@
     }
     ```
 
-3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承SelectionExtensionAbility，用于划词扩展生命周期的管理。
+3. 在SelectionExtAbility.ets文件中，开发者可实现扩展能力类。该类需要继承SelectionExtensionAbility，用于划词扩展生命周期的管理。
 
     ``` TypeScript
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
@@ -160,7 +160,7 @@
 
 
 4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用show接口），以缩短用户在第一次划词时的响应延迟。同时，可以在onConnect中监听划词事件，执行后续的弹窗操作。通过监听selectionCompleted获取SelectionInfo其中包含了划词操作的起始和结束坐标等信息。通过调用getSelectionContent接口获取划词内容。
-    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
+    <!-- @SelectionExtAbility -->
     
     ``` TypeScript
     import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility } from '@kit.BasicServicesKit';
@@ -265,8 +265,8 @@
     export default SelectionExtAbility;
     ```
 
-5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
-    <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
+5. 在MenuPanel.ets文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
+    <!-- @MenuPanel -->
     
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
@@ -363,8 +363,8 @@
     }
     ```
 
-6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
-    <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
+6. 在MainPanel.ets文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
+    <!-- @MainPanel -->
 
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
@@ -406,7 +406,7 @@
     }
     ```
 
-7. 配置[main_pages.json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/resources/base/profile/main_pages.json)文件。
+7. 配置main_pages.json文件。
 
     在..\resources\base\profile\main_pages.json文件中的`src`字段中添加新增的`MainPanel`和`MenuPanel`页面。
 
@@ -417,10 +417,10 @@
     ]
     ```
 
-8.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
+8.  配置module.json5文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
-    <!-- @[extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5) -->
+    <!-- @extensionAbilities -->
     
     ``` JSON5
     "extensionAbilities": [
@@ -435,11 +435,11 @@
 
 9.  配置签名。
 
-    点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
+    点击DevEco Studio右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
 
 ## 调测验证
 
-1. 连接设备后，点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的绿色三角形"Run entry"按钮，编译器会执行编译并自动将应用安装到设备中。
+1. 连接设备后，点击DevEco Studio右上角的绿色三角形"Run entry"按钮，编译器会执行编译并自动将应用安装到设备中。
 
 2. 设置划词服务的系统参数。
 
@@ -451,6 +451,6 @@
 
 3. 通过日志观察划词服务拉起划词扩展能力的过程。
 
-    使用[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)的Hilog窗口查看日志。
+    使用DevEco Studio的Hilog窗口查看日志。
 
 4. 使用鼠标左键双击、三击或拖动选中文本后，键盘点击ctrl键，观察菜单面板的弹出。点击菜单面板上的按钮，观察主面板的弹出。

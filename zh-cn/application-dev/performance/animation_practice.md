@@ -266,7 +266,7 @@ animateTo会将执行动画闭包前后的状态进行对比，对差异部分�
 
 反例：多个animateTo之间更新状态变量。
 
-![多个animateTo之间更新状态变量](figures/multi_animateto.png)
+多个animateTo之间更新状态变量
 
 以下代码在两个animateTo之间更新组件的其他状态。
 
@@ -311,7 +311,7 @@ struct MyComponent {
 
 正例：统一更新状态变量。
 
-![统一更新状态变量1](figures/unify_animateto.png) 或 ![统一更新状态变量2](figures/unify_animateto_three_step.png)
+统一更新状态变量1 或 统一更新状态变量2
 
 正例1：在animateTo之前使用原始状态，让动画从原始状态过渡到指定状态，这样也能避免动画在开始时发生跳变。
 

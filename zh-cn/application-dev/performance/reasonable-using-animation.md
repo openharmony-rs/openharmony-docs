@@ -63,7 +63,7 @@ struct AttrAnimationExample0 {
 }
 ```
 
-![img](./figures/reasonable-using-animation-1.png)
+img
 
 ### 使用系统提供的属性动效API
 
@@ -103,7 +103,7 @@ struct AttrAnimationExample1 {
 }
 ```
 
-![img](./figures/reasonable-using-animation-2.png)
+img
 
 更详细的API文档请参考：属性动画。
 
@@ -154,7 +154,7 @@ struct AnimateToExample2 {
 }
 ```
 
-![img](./figures/reasonable-using-animation-3.png)
+img
 
 更详细的API文档请参考：显式动画。
 
@@ -198,7 +198,7 @@ struct TabsExample {
 }
 ```
 
-![img](./figures/reasonable-using-animation-4.PNG)
+img
 
 ### 正例：
 
@@ -226,13 +226,13 @@ struct TabsExample {
 }
 ```
 
-![img](./figures/reasonable-using-animation-5.PNG)
+img
 
 ### 优化效果
 
 | 优化前 1000ms                                         | 优化后 100ms                                          |   
 |----------------------------------------------------|----------------------------------------------------|
-| ![img](./figures/reasonable-using-animation-6.gif) | ![img](./figures/reasonable-using-animation-7.gif) |
+| img | img |
 
 上述示例通过减少`animationDuration`数值，减少Tabs切换完成时延。当数值设置为0且TabBar不为BottomTabBarStyle样式时，隐式动效延时为默认的300ms。开发者可根据实际场景适当减少隐式动效时延，如果应用没有特殊的动效要求时，建议设置数值为1，减少阻塞主线程，提高应用性能。
 
@@ -292,11 +292,11 @@ struct ListExample {
 
 100vp/s：
 
-![img](./figures/reasonable-using-animation-8.PNG)
+img
 
 10000vp/s：
 
-![img](./figures/reasonable-using-animation-9.PNG)
+img
 
 | 示例  | 动效耗时（ms） |
 |-----|----------|

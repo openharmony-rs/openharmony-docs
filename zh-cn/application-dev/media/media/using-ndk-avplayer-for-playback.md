@@ -15,7 +15,7 @@
 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数OH_AVPlayerOnInfoCallback和错误监听回调函数OH_AVPlayerOnErrorCallback主动获取播放过程信息。如果应用在音频播放器处于错误状态时执行操作，系统可能会抛出异常或生成其他未定义的行为。
 
 **图1** 播放状态变化示意图  
-![Playback status change](figures/playback-status-change-ndk.png)
+Playback status change
 
 状态的详细说明请参考AVPlayerState。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
 
@@ -82,7 +82,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
 ## 运行完整示例
 
-1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKAudio)，并将示例工程的以下资源复制到对应目录。
+1. 新建工程，下载示例工程，并将示例工程的以下资源复制到对应目录。
     ```txt
     AVPlayerNDKAudio
     entry/src/main/ets/

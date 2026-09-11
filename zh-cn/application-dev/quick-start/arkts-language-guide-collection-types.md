@@ -12,7 +12,7 @@
 
 集合按修改权限分为可变和只读两种，可变集合支持增删改，只读集合仅允许读取。
 
-<!-- @[ts_mutable_and_readonly_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @ts_mutable_and_readonly_collections -->
 
 ``` TypeScript
 // 可变集合
@@ -40,7 +40,7 @@ readonlyArray.push(4);  // 编译错误：不可修改
 
 数组可以通过字面量或构造函数创建，声明时指定元素类型以确保类型安全。
 
-<!-- @[array_creation_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_creation_methods -->
 
 ``` TypeScript
 // 使用类型后缀 []
@@ -72,7 +72,7 @@ let extended: number[] = [...original, 4, 5];
 
 数组元素通过索引访问和修改，常用于读取值、更新数据、数据处理和运行时状态更新等场景。
 
-<!-- @[array_element_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_element_access -->
 
 ``` TypeScript
 let arr: number[] = [10, 20, 30, 40, 50];
@@ -104,7 +104,7 @@ if (index >= 0 && index < arr.length) {
 
 数组遍历常用于数据处理、查找、统计和转换。选择方式时：只需值用`for...of`，需要索引用`for`循环，函数式处理用`forEach`，遍历中不要修改数组长度。
 
-<!-- @[array_for_loop_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_for_loop_iteration -->
 
 ``` TypeScript
 let iterArr: number[] = [1, 2, 3, 4, 5];
@@ -121,7 +121,7 @@ for (let i: number = 0; i < iterArr.length; i++) {
 
 `forEach`方法以函数式风格遍历数组，对每个元素执行回调：
 
-<!-- @[array_forEach_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_forEach_method -->
 
 ``` TypeScript
 let forEachArr: number[] = [1, 2, 3];
@@ -133,7 +133,7 @@ forEachArr.forEach((value: number, index: number): void => {
 
 `forEach`不支持`break`，需要提前退出遍历时使用`for...of`或`for`循环。ArkTS中箭头函数参数必须显式标注类型，不能省略参数类型注解。
 
-<!-- @[array_indexed_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_indexed_iteration -->
 
 ``` TypeScript
 let iterArr2: number[] = [1, 2, 3];
@@ -147,7 +147,7 @@ for (let i: number = 0; i < iterArr2.length; i++) {
 
 数组提供push、pop、shift、splice等常用操作，用于增删改查元素。
 
-<!-- @[array_add_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_add_elements -->
 
 ``` TypeScript
 let elemArr: number[] = [1, 2];
@@ -166,7 +166,7 @@ console.info(`${elemArr.join(', ')}`);  // -1, -2, 0, 1, 2, 3, 4, 5, 6
 
 删除元素使用pop、shift、splice等方法：
 
-<!-- @[array_remove_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_remove_elements -->
 
 ``` TypeScript
 let elemArr2: number[] = [1, 2, 3, 4, 5];
@@ -187,7 +187,7 @@ console.info(`${removed.join(', ')}`);  // 3, 4
 
 `concat`和`slice`方法用于拼接和截取数组，均返回新数组而不修改原数组：
 
-<!-- @[array_concat_and_slice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_concat_and_slice -->
 
 ``` TypeScript
 let arr1: number[] = [1, 2];
@@ -211,7 +211,7 @@ console.info(`${sliceCopy.join(', ')}`);  // 1, 2, 3, 4, 5（拷贝）
 
 数组的查找与过滤方法包括`indexOf`、`includes`、`find`和`filter`等：
 
-<!-- @[array_search_and_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_search_and_filter -->
 
 ``` TypeScript
 let filterArr: number[] = [1, 2, 3, 2, 1];
@@ -261,7 +261,7 @@ console.info(`${greaterThan3.join(', ')}`);  // 4, 5, 6
 
 元组通过明确指定每个位置的元素类型来声明，长度和类型序列固定。
 
-<!-- @[tuple_basics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @tuple_basics -->
 
 ``` TypeScript
 // TypeScript中的元组
@@ -280,7 +280,7 @@ let triple: [number, string, boolean] = [1, 'text', true];  // 类型标注
 
 元组元素通过索引访问，每个位置有明确的类型，编译器会据此进行类型检查；元组也常用于让函数返回多个相关值。
 
-<!-- @[tuple_element_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @tuple_element_access -->
 
 ``` TypeScript
 // 索引访问
@@ -308,7 +308,7 @@ function getPairElement(arr: number[], index: number): number | undefined {
 
 只读元组确保数据不被修改，适用于配置数据、常量坐标、函数参数保护等场景，编译器会强制检查修改操作。
 
-<!-- @[ts_readonly_tuple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @ts_readonly_tuple -->
 
 ``` TypeScript
 // TypeScript中的只读元组
@@ -326,7 +326,7 @@ TypeScript使用`readonly`关键字修饰元组，ArkTS不支持该语法，需�
 
 元组具有固定长度和类型序列，数组长度可变且元素类型统一。
 
-<!-- @[tuple_vs_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @tuple_vs_array -->
 
 ``` TypeScript
 // 元组：固定长度和类型
@@ -352,7 +352,7 @@ Set用于存储不重复元素的集合，适合去重、成员存在性检查�
 
 Set用于存储唯一值的集合，通过构造函数创建并指定元素类型。
 
-<!-- @[set_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_creation -->
 
 ``` TypeScript
 // 创建空Set
@@ -371,7 +371,7 @@ stringSet.add('b');
 
 Set保证元素唯一性，自动去重，提供高效的存在性检查。
 
-<!-- @[set_uniqueness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_uniqueness -->
 
 ``` TypeScript
 let set: Set<number> = new Set([1, 2, 2, 3, 3, 3]);
@@ -391,7 +391,7 @@ console.info(`${unique.join(', ')}`);  // 1, 2, 3
 
 Set提供添加、删除、查找、遍历等基本操作，所有元素唯一不重复。
 
-<!-- @[set_add_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_add_method -->
 
 ``` TypeScript
 let addSet: Set<number> = new Set();
@@ -405,7 +405,7 @@ let addedSet: Set<number> = addSet.add(4);  // 返回Set本身
 
 删除元素用delete方法，返回是否成功删除：
 
-<!-- @[set_delete_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_delete_method -->
 
 ``` TypeScript
 let delSet: Set<number> = new Set([1, 2, 3]);
@@ -418,7 +418,7 @@ console.info(`${delSet.size}`);  // 2
 
 使用`has`方法检查Set中是否存在某个元素：
 
-<!-- @[set_has_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_has_method -->
 
 ``` TypeScript
 let hasSet: Set<number> = new Set([1, 2, 3]);
@@ -429,7 +429,7 @@ let hasHas10: boolean = hasSet.has(10);  // false
 
 遍历Set用for...of或forEach，也可通过values()、keys()获取迭代器：
 
-<!-- @[set_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_iteration -->
 
 ``` TypeScript
 let iterSet: Set<number> = new Set([1, 2, 3]);
@@ -459,7 +459,7 @@ for (let key of keys) {
 
 Set与数组之间可以相互转换，利用Set的唯一性可实现数组去重：
 
-<!-- @[set_array_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_array_conversion -->
 
 ``` TypeScript
 // Set转数组
@@ -480,7 +480,7 @@ console.info(`${convUnique.join(', ')}`);  // 1, 2, 3
 
 clear方法清空Set中所有元素：
 
-<!-- @[set_clear_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @set_clear_method -->
 
 ``` TypeScript
 let clearSet: Set<number> = new Set([1, 2, 3]);
@@ -496,7 +496,7 @@ Map是存储键值对的集合，键和值可以是任意类型。
 
 Map用于存储键值对的集合，通过构造函数创建并指定键和值的类型。
 
-<!-- @[map_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @map_creation -->
 
 ``` TypeScript
 // 创建空Map
@@ -519,7 +519,7 @@ map.set('two', 2);
 
 Map通过get、set、delete方法访问和修改键值对，支持动态数据管理。
 
-<!-- @[map_basic_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @map_basic_operations -->
 
 ``` TypeScript
 let opsMap: Map<string, number> = new Map();
@@ -554,7 +554,7 @@ console.info(`${opsMap.size}`);  // 0
 
 Map遍历使用forEach或for-of循环，可以遍历键、值或键值对。
 
-<!-- @[map_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @map_iteration -->
 
 ``` TypeScript
 let iterMap: Map<string, number> = new Map([
@@ -597,7 +597,7 @@ for (let entry of iterMap.entries()) {
 
 `Record<K, V>`是ArkTS内置的工具类型，将键类型`K`映射到值类型`V`，适合表达“字符串键值对象”。当键固定为字符串或数值、结构相对简单时，比`Map`更轻量，常用对象字面量初始化。
 
-<!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @record_type_basic -->
 
 ``` TypeScript
 let ages: Record<string, number> = {
@@ -611,7 +611,7 @@ ages['John']; // 25
 
 当值为复合结构时，可用接口描述其形状：
 
-<!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @record_type_complex -->
 
 ``` TypeScript
 interface PersonInfo {
@@ -630,7 +630,7 @@ let staff: Record<string, PersonInfo> = {
 
 Map键可以是任意类型，对象键只能是字符串，Map更适合动态键值存储。
 
-<!-- @[map_vs_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @map_vs_object -->
 
 ``` TypeScript
 // Map：任意键类型
@@ -682,7 +682,7 @@ let objSize: number = Object.keys(obj).length;
 
 ReadonlyArray提供只读接口，禁止push、pop等修改操作。
 
-<!-- @[ts_readonly_array_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @ts_readonly_array_usage -->
 
 ``` TypeScript
 let readonlyArr: ReadonlyArray<number> = [1, 2, 3];
@@ -714,7 +714,7 @@ let nums: ReadOnlyNumbers = [1, 2, 3];
 
 只读集合通过`ReadonlyMap`或`ReadonlySet`类型声明，防止意外修改。`ReadonlyMap`和`ReadonlySet`为ArkTS内置只读接口。
 
-<!-- @[readonly_map_set_interfaces](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @readonly_map_set_interfaces -->
 
 ``` TypeScript
 interface ReadonlyMap<K, V> {
@@ -742,7 +742,7 @@ function getReadOnlyMap(): ReadonlyMap<string, number> {
 
 只读集合适用于配置数据、常量列表等不应被修改的场景。
 
-<!-- @[readonly_collection_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @readonly_collection_scenarios -->
 
 ``` TypeScript
 // 配置数据：只读，防止意外修改
@@ -774,7 +774,7 @@ function getConstants(): ReadonlyArray<string> {
 
 for-of循环遍历可迭代对象，语法简洁，直接获取元素值。
 
-<!-- @[for_of_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @for_of_iteration -->
 
 ``` TypeScript
 // 数组
@@ -806,7 +806,7 @@ for (let char of text) {
 
 迭代器通过next()方法按需取值，支持手动控制遍历节奏。
 
-<!-- @[iterator_manual_traversal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @iterator_manual_traversal -->
 
 ``` TypeScript
 // 获取迭代器
@@ -842,7 +842,7 @@ ArkTS不支持集合的解构赋值，需通过索引或迭代器逐个访问元
 
 **TypeScript对照**
 
-<!-- @[ts_destructuring_alternatives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @ts_destructuring_alternatives -->
 
 ``` TypeScript
 // 数组解构
@@ -889,7 +889,7 @@ let secondVal: number = values[1];
 
 反模式一：忽略可能为`undefined`的读取结果。
 
-<!-- @[ts_map_safe_access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @ts_map_safe_access -->
 
 ``` TypeScript
 let scores: Map<string, number> = new Map();
@@ -907,7 +907,7 @@ if (aliceScoreSafe !== undefined) {
 
 反模式二：用数组承担唯一集合职责。
 
-<!-- @[unique_collection_with_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @unique_collection_with_set -->
 
 ``` TypeScript
 // 反例：每次插入都手动includes，容易遗漏去重逻辑
@@ -927,7 +927,7 @@ console.info(`${uniqueIds.size}`);  // 1
 
 **TypeScript对照**
 
-<!-- @[ts_map_entry_iteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Collections.ts) -->
+<!-- @ts_map_entry_iteration -->
 
 ``` TypeScript
 let userScores: Map<string, number> = new Map([['Alice', 95], ['Bob', 88]]);
@@ -948,7 +948,7 @@ for (let entry of userScores.entries()) {
 
 普通对象（`Record<string, T>`）的键只能是字符串，用对象作键需手动调用`toString()`转换，丢失对象身份，不同对象转换后可能产生相同的字符串键导致覆盖。
 
-<!-- @[object_key_with_record](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @object_key_with_record -->
 
 ``` TypeScript
 // 用普通对象保存对象键，需手动调用toString()转换
@@ -972,7 +972,7 @@ console.info(`${recordCache[recordKey.toString()]}`); // value
 
 推荐做法：使用`Map`保存对象键，保留对象身份，无需手动转换。
 
-<!-- @[object_key_with_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @object_key_with_map -->
 
 ``` TypeScript
 class CacheKey {
@@ -992,7 +992,7 @@ console.info(`${cache.get(key)!}`); // value
 
 反模式五：修改只应读取的入参。
 
-<!-- @[readonly_array_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @readonly_array_parameter -->
 
 ``` TypeScript
 // 反例：调用方传入的数组会被修改
@@ -1014,7 +1014,7 @@ function countItems(items: ReadonlyArray<string>): number {
 
 `map`对数组每个元素执行变换，返回新数组。
 
-<!-- @[array_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_map -->
 
 ``` TypeScript
 let amNumbers: number[] = [1, 2, 3, 4, 5];
@@ -1030,7 +1030,7 @@ console.info(`${amStrings.join(', ')}`);  // Item 1, Item 2, Item 3, Item 4, Ite
 
 `filter`方法对数组每个元素执行判断函数，返回所有满足条件的元素组成的新数组，原数组不变。常用于数据筛选，如从用户列表中筛选活跃用户、从商品列表中筛选在售商品。
 
-<!-- @[array_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_filter -->
 
 ``` TypeScript
 let afNumbers: number[] = [1, 2, 3, 4, 5, 6];
@@ -1043,7 +1043,7 @@ console.info(`${afEvens.join(', ')}`);  // 2, 4, 6
 
 `reduce`将数组归约为单个值，需提供初始值。
 
-<!-- @[array_reduce](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_reduce -->
 
 ``` TypeScript
 let arNumbers: number[] = [1, 2, 3, 4, 5];
@@ -1059,7 +1059,7 @@ console.info(`${arProduct.toString()}`);  // 120
 
 `sort`方法对数组元素原地排序，可传入比较函数自定义排序规则；`reverse`方法将数组元素顺序反转。两者都修改原数组，若需保留原数组，先调用`slice()`创建副本再排序。
 
-<!-- @[array_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_sort -->
 
 ``` TypeScript
 let asNumbers: number[] = [3, 1, 4, 1, 5, 9, 2, 6];
@@ -1078,7 +1078,7 @@ console.info(`${asReversed.join(', ')}`);  // 6, 2, 9, 5, 1, 4, 1, 3
 
 `map`、`filter`、`reduce`可通过链式调用组合使用，实现"筛选→变换→汇总"的数据处理管道。例如：先`filter`筛选有效数据，再`map`提取关键字段，最后`reduce`计算汇总值。链式调用时每一步返回新数组，不影响原始数据。
 
-<!-- @[array_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @array_chain -->
 
 ``` TypeScript
 interface AcProduct {
@@ -1106,7 +1106,7 @@ console.info(`Electronics total: ${acTotal}`);  // 1099
 
 `flat()`将嵌套数组展平为一维数组，可指定展平深度。`flatMap()`先对每个元素执行映射函数，再将结果展平一级，等价于`map()`后再`flat()`，常用于将嵌套结构转换并展平。两者也可使用`reduce`和展开运算符手动实现相同效果。
 
-<!-- @[flat_flatmap_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @flat_flatmap_usage -->
 
 ``` TypeScript
 let ffnNested: number[][] = [[1, 2], [3, 4], [5, 6]];
@@ -1131,7 +1131,7 @@ console.info(`${ffnFlatReduce.join(', ')}`); // 1, 2, 3, 4, 5, 6
 
 通过`values()`获取迭代器，使用`next()`方法手动控制遍历节奏。
 
-<!-- @[iterator_manual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Collections.ets) -->
+<!-- @iterator_manual -->
 
 ``` TypeScript
 let imArr: number[] = [10, 20, 30];

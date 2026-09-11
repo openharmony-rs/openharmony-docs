@@ -27,7 +27,7 @@
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@distributed_Data_Permission-->      
    
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
@@ -56,7 +56,7 @@
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@access_A_write_distributed_file-->      
    
    ``` TypeScript
    let pathDir: string = context.distributedFilesDir;
@@ -90,7 +90,7 @@
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->         
+   <!--@access_ConnectDfs-->         
    
    ``` TypeScript
    // 通过分布式设备管理的接口获取设备A的networkId信息
@@ -147,7 +147,7 @@
 
 4. B设备访问跨设备文件完成，断开链路。
 
-   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
+   <!--@access_DisConnectDfs-->        
    
    ``` TypeScript
    // 获取设备A的networkId

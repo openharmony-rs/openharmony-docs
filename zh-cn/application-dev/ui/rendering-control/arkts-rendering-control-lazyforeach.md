@@ -14,7 +14,7 @@
 
 > **说明：**
 >
-> 在大量子组件的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考[长列表加载丢帧优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
+> 在大量子组件的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考长列表加载丢帧优化。
 > Repeat组件也提供了循环渲染能力。相较于LazyForEach，Repeat基于状态管理监听数据源变化，使用更加便利。同时，Repeat具有子组件复用能力，UI渲染效率更高。建议开发者优先使用Repeat。开发者也可参考循环渲染迁移，将现有的LazyForEach组件迁移至Repeat组件。
 
 ## 使用限制
@@ -65,7 +65,7 @@
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[initial_rendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/InitialRendering.ets) -->
+<!-- @initial_rendering -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -125,7 +125,7 @@ struct InitialRendering {
 运行效果如下图所示。
 
 **LazyForEach正常首次渲染**  
-![LazyForEach-Render-DifferentKey](figures/LazyForEach-Render-DifferentKey.gif)
+LazyForEach-Render-DifferentKey
 
 **错误案例：键值相同导致渲染异常**
 
@@ -185,11 +185,11 @@ struct MyComponent {
 运行效果如下图所示。
 
 **LazyForEach存在相同键值**  
-![LazyForEach-Render-SameKey](figures/LazyForEach-Render-SameKey.gif)
+LazyForEach-Render-SameKey
 
 修改上述示例中LazyForEach的键值生成函数，使每个数据项生成唯一的键值，保证渲染效果符合预期。
 
-<!-- @[initial_rendering_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/InitialRendering2.ets) -->
+<!-- @initial_rendering_two -->
 
 ``` TypeScript
 LazyForEach(this.data, (item: string) => {
@@ -207,7 +207,7 @@ LazyForEach(this.data, (item: string) => {
 修改后运行效果如下图所示。
 
 **LazyForEach生成唯一键值**  
-![LazyForEach-Render-UniqueKey](figures/LazyForEach-Render-UniqueKey.gif)
+LazyForEach-Render-UniqueKey
 
 ### 数据更新
 
@@ -217,7 +217,7 @@ LazyForEach(this.data, (item: string) => {
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[add_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
+<!-- @add_data -->
 
 ``` TypeScript
 // BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。
@@ -279,13 +279,13 @@ struct AddingData {
 运行效果如下图所示。
 
 **LazyForEach添加数据**  
-![LazyForEach-Add-Data](figures/LazyForEach-Add-Data.gif)
+LazyForEach-Add-Data
 
 **删除数据**
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DataDeletion.ets) -->
+<!-- @delete_data -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -357,13 +357,13 @@ struct DataDeletion {
 运行效果如下图所示。
 
 **LazyForEach删除数据**  
-![LazyForEach-Delete-Data](figures/LazyForEach-Delete-Data.gif)
+LazyForEach-Delete-Data
 
 **交换数据**
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[swap_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/SwappingData.ets) -->
+<!-- @swap_data -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -442,13 +442,13 @@ struct SwappingData {
 运行效果如下图所示。
 
 **LazyForEach交换数据**  
-![LazyForEach-Exchange-Data](figures/LazyForEach-Exchange-Data.gif)
+LazyForEach-Exchange-Data
 
 **改变单个数据**
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[change_individual_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingIndividualDataItems.ets) -->
+<!-- @change_individual_data -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -515,13 +515,13 @@ struct ModifyingIndividualDataItems {
 运行效果如下图所示。
 
 **LazyForEach改变单个数据**  
-![LazyForEach-Change-SingleData](figures/LazyForEach-Change-SingleData.gif)
+LazyForEach-Change-SingleData
 
 **改变多个数据**
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[change_multiple_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ModifyingMultipleDataItems.ets) -->
+<!-- @change_multiple_data -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -594,13 +594,13 @@ struct ModifyingMultipleDataItems {
 运行效果如下图所示。
 
 **LazyForEach改变多个数据**  
-![LazyForEach-Reload-Data](figures/LazyForEach-Reload-Data.gif)
+LazyForEach-Reload-Data
 
 **精准批量修改数据**
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[precisely_modifying_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData.ets) -->
+<!-- @precisely_modifying_data -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -683,13 +683,13 @@ struct PreciselyModifyingData {
 onDatasetChange接口允许开发者一次性通知LazyForEach进行数据添加、删除、移动和交换等操作。在上述例子中，点击“change data”文本后，第二项数据被移动到第四项位置，第五项与第七项数据交换位置，并且从第九项开始添加了数据"Hello 1"和"Hello 2"，同时从第十一项开始删除了两项数据。  
 
 **LazyForEach改变多个数据**  
-![LazyForEach-Change-MultiData](figures/LazyForEach-Change-MultiData.gif)  
+LazyForEach-Change-MultiData  
 
 第二个例子，直接给数组赋值，不涉及 splice 操作。operations直接从比较原数组和新数组得到。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[precisely_modifying_data_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/PreciselyModifyingData2.ets) -->
+<!-- @precisely_modifying_data_two -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -763,7 +763,7 @@ struct PreciselyModifyingDataTwo {
 ```
 
 **LazyForEach改变多个数据**  
-![LazyForEach-Change-MultiData2](figures/LazyForEach-Change-MultiData2.gif)  
+LazyForEach-Change-MultiData2  
 
 使用该接口时请注意以下事项。
 
@@ -799,7 +799,7 @@ struct PreciselyModifyingDataTwo {
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 
-<!-- @[changing_data_sub_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ChangingDataSubproperties.ets) -->
+<!-- @changing_data_sub_properties -->
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
@@ -874,7 +874,7 @@ struct ChangingDataSubpropertiesChildComponent {
 点击`LazyForEach`子组件改变`item.message`时，重渲染依赖`ChangingDataSubpropertiesChildComponent`的`@ObjectLink`成员变量对子属性的监听。框架仅刷新`Text(this.data.message)`，不会重建整个`ListItem`子组件。
 
 **LazyForEach改变数据子属性**  
-![LazyForEach-Change-SubProperty](figures/LazyForEach-Change-SubProperty.gif)
+LazyForEach-Change-SubProperty
 
 ### 使用状态管理V2修改数据子属性
 
@@ -884,7 +884,7 @@ struct ChangingDataSubpropertiesChildComponent {
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 
-<!-- @[observing_nested_class_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingNestedClassProperties.ets) -->    
+<!-- @observing_nested_class_properties -->    
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
@@ -973,7 +973,7 @@ struct ObservingNestedClassProperties {
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 
-<!-- @[observing_component_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ObservingComponentInternalState.ets) -->    
+<!-- @observing_component_internal_state -->    
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
@@ -1057,7 +1057,7 @@ struct ObservingComponentChildComponent {
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 
-<!-- @[receiving_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ReceivingExternalInput.ets) -->    
+<!-- @receiving_external_input -->    
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
@@ -1134,7 +1134,7 @@ struct ReceivingExternalInputChildComponent {
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[drag_sorting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets) -->
+<!-- @drag_sorting -->
 
 ``` TypeScript
 // BasicDataSource代码见文档末尾BasicDataSource示例代码: String类型数组的BasicDataSource代码。
@@ -1199,7 +1199,7 @@ struct DragandDropSorting {
 ```
 
 **LazyForEach拖拽排序效果图**  
-![LazyForEach-Drag-Sort](figures/LazyForEach-Drag-Sort.gif)
+LazyForEach-Drag-Sort
 
 ## 常见问题
 
@@ -1266,7 +1266,7 @@ struct MyComponent {
 ```
 
 **LazyForEach删除数据非预期**  
-![LazyForEach-Render-Not-Expected](figures/LazyForEach-Render-Not-Expected.gif)
+LazyForEach-Render-Not-Expected
 
 多次点击子组件时，发现删除的不一定是点击的那个子组件。原因在于删除某个子组件后，该子组件之后的数据项的`index`应减1，但实际后续数据项对应的子组件仍使用最初分配的`index`，`itemGenerator`中的`index`未更新，导致删除结果与预期不符。
 
@@ -1274,7 +1274,7 @@ struct MyComponent {
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[unexpected_rendering_results](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UnexpectedRenderingResults.ets) -->
+<!-- @unexpected_rendering_results -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1347,7 +1347,7 @@ struct UnexpectedRenderingResults {
 在删除一个数据项后调用`reloadData`方法，重建后面的数据项，以达到更新`index`索引的目的。要保证`reloadData`方法重建数据项，必须保证数据项能生成新的key。这里用了`item + index.toString()`保证被删除数据项后面的数据项都被重建。如果用`item + Date.now().toString()`替代，那么所有数据项都生成新的key，导致所有数据项都被重建。这种方法，效果是一样的，只是性能略差。
 
 **修复LazyForEach删除数据非预期**  
-![LazyForEach-Render-Not-Expected-Repair](figures/LazyForEach-Render-Not-Expected-Repair.gif)
+LazyForEach-Render-Not-Expected-Repair
 
 ### 重渲染时图片闪烁
 
@@ -1426,7 +1426,7 @@ struct MyComponent {
 ```
 
 **LazyForEach仅改变文字但是图片闪烁问题**  
-![LazyForEach-Image-Flush](figures/LazyForEach-Image-Flush.gif)
+LazyForEach-Image-Flush
 
 单击`ListItem`子组件时，只改变了数据项的`message`属性，但因为键值发生变化，导致整个`ListItem`被重建。由于`Image`组件异步刷新，视觉上图片会闪烁。解决方法是保持键值不变，并使用`@ObjectLink`和`@Observed`单独刷新子组件`Text`。
 
@@ -1434,7 +1434,7 @@ struct MyComponent {
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 
-<!-- @[image_flickering_during_rerenders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ImageFlickeringDuringRerenders.ets) -->    
+<!-- @image_flickering_during_rerenders -->    
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1519,7 +1519,7 @@ struct ImageFlickeringChildComponent {
 ```
 
 **修复LazyForEach仅改变文字但是图片闪烁问题**  
-![LazyForEach-Image-Flush-Repair](figures/LazyForEach-Image-Flush-Repair.gif)
+LazyForEach-Image-Flush-Repair
 
 ### @ObjectLink属性变化UI未更新
 
@@ -1606,7 +1606,7 @@ struct ChildComponent {
 ```
 
 **ObjectLink属性变化后UI未更新**  
-![LazyForEach-ObjectLink-NotRenderUI](figures/LazyForEach-ObjectLink-NotRenderUI.gif)
+LazyForEach-ObjectLink-NotRenderUI
 
 @ObjectLink装饰的成员变量仅能监听到其子属性的变化，无法监听深层嵌套属性，因此，只能通过修改子属性来通知组件重新渲染。具体请查看@ObjectLink装饰器与@Observed装饰器的详细使用方法和限制条件。
 
@@ -1614,7 +1614,7 @@ struct ChildComponent {
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 
-<!-- @[ui_not_rerendered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/UINotRerenderedWhenObjectLinkIsChanged.ets) -->    
+<!-- @ui_not_rerendered -->    
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
@@ -1696,7 +1696,7 @@ struct UINotRerenderedChildComponent {
 ```
 
 **修复ObjectLink属性变化后UI更新**  
-![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
+LazyForEach-ObjectLink-NotRenderUI-Repair
 
 ### 在List内使用屏幕闪烁
 在List的onScrollIndex方法中调用onDataReloaded可能会导致屏幕闪烁。
@@ -1772,13 +1772,13 @@ struct MyComponent {
 ```
 
 **当List下拉到底时，屏幕闪烁**  
-![LazyForEach-Screen-Flicker](figures/LazyForEach-Screen-Flicker.gif)
+LazyForEach-Screen-Flicker
 
 使用`onDatasetChange`代替`onDataReloaded`，不仅可以修复闪屏问题，还能提升加载性能。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 
-<!-- @[screen_flickering_in_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ScreenFlickeringInList.ets) -->
+<!-- @screen_flickering_in_list -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1853,7 +1853,7 @@ struct ScreenFlickeringInList {
 ```
 
 **修复后，当List下拉到底时，屏幕不闪烁**  
-![LazyForEach-Screen-Flicker-Repair](figures/LazyForEach-Screen-Flicker-Repair.gif)
+LazyForEach-Screen-Flicker-Repair
 
 ### 组件复用渲染异常
 
@@ -2009,11 +2009,11 @@ struct MyComponent {
 ```
 
 **点击按钮更新数据，组件不会刷新**  
-![LazyForEach-Refresh-Not-Expected](figures/LazyForEach-Refresh-Not-Expected.gif)
+LazyForEach-Refresh-Not-Expected
 
 LazyForEach依赖生成的键值判断是否刷新子组件，如果更新的数据没有改变键值（如示例中开发者没有定义键值生成函数，此时键值仅与组件索引index有关，更新数据时键值不变），则LazyForEach不会刷新对应组件。
 
-<!-- @[define_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/ComponentRerenderingFailure.ets) -->
+<!-- @define_key -->
 
 ``` TypeScript
 LazyForEach(this.data, (item: string) => {
@@ -2024,7 +2024,7 @@ LazyForEach(this.data, (item: string) => {
 ```
 
 **定义键值生成函数后，点击按钮更新数据，组件刷新**  
-![LazyForEach-Refresh-Not-Expected-Repair](figures/LazyForEach-Refresh-Not-Expected-Repair.gif)
+LazyForEach-Refresh-Not-Expected-Repair
 
 ### 子组件尺寸缺失导致懒加载失效
 
@@ -2095,7 +2095,7 @@ struct ChildComponent {
 
 为子组件设置默认高度，确保父组件能正确计算可视范围，从而恢复此场景下懒加载功能（此示例无实际显示内容，可通过日志观察到仅显示区域和预加载区域内的节点打印了`about to appear`日志）。
 
-<!-- @[set_default_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/LazyLoadingFailure.ets) -->
+<!-- @set_default_height -->
 
 ``` TypeScript
 LazyForEach(this.data, (item: string, index: number) => {
@@ -2109,7 +2109,7 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->
+<!-- @basic_data_source_string -->
 
 ``` TypeScript
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
@@ -2190,7 +2190,7 @@ export class BasicDataSource implements IDataSource {
 
 ### 泛型数组的BasicDataSource代码
 
-<!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets) -->
+<!-- @generic_basic_data_source -->
 
 ``` TypeScript
 // GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新

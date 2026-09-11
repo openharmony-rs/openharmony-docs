@@ -15,7 +15,7 @@
 
 粘贴控件效果如图所示。
 
-![paste-control-effect](figures/paste-control-effect.gif)
+paste-control-effect
 
 ## 约束与限制
 
@@ -43,7 +43,7 @@
 
    当前示例使用了默认参数。具体详情，请参见PasteButton控件。此外，所有安全控件均继承了安全控件通用属性，可用于自定义样式。
    
-   <!-- @[use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->    
+   <!-- @use_paste_button -->    
    
    ``` TypeScript
    import { pasteboard, BusinessError } from '@kit.BasicServicesKit';

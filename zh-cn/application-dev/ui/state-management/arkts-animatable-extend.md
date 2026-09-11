@@ -49,7 +49,7 @@
 以下示例通过改变Text组件宽度实现逐帧布局的效果。
 
 
-<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->  
+<!-- @animatable_extend_text -->  
 
 ``` TypeScript
 @AnimatableExtend(Text)
@@ -79,13 +79,13 @@ struct AnimatablePropertyText {
 }
 ```
 
-![image](figures/AnimatableProperty.gif)
+image
 
 
 以下示例实现折线的动画效果。  
 
 
-<!-- @[animatable_extend_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyExample.ets) -->
+<!-- @animatable_extend_example -->
 
 ``` TypeScript
 class Point {
@@ -208,4 +208,4 @@ struct  AnimatablePropertyExample {
 }
 ```
 
-![image](figures/animatable-points.gif)
+image

@@ -33,7 +33,7 @@ UIServiceExtensionAbility组件是带用户界面（UI）的扩展服务组件�
 
 如下示例通过startUIServiceExtensionAbility方法启动一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见获取UIAbility的上下文信息。
 
-<!-- @[service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Start.ets) -->
+<!-- @service_ext_start -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -80,7 +80,7 @@ struct Start {
 
 如下示例通过connectUIServiceExtensionAbility方法连接一个UIServiceExtensionAbility组件，示例中的context的获取方式请参见获取UIAbility的上下文信息
 
-<!-- @[connect_service_ext_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIServiceExtensionAbility/entry/src/main/ets/pages/Connect.ets) -->
+<!-- @connect_service_ext_start -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';

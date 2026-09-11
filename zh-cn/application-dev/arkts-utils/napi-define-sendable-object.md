@@ -12,7 +12,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 1. 接口声明中自定义Sendable类。
 
-   <!-- @[export_myObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets) -->
+   <!-- @export_myObject -->
    
    ``` TypeScript
    // Index.d.ets
@@ -52,7 +52,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
    修改与Index.d.ets同目录下的配置文件oh-package.json5，配置如下：
 
-   <!-- @[define_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5) -->    
+   <!-- @define_libentry -->    
    
    ``` JSON5
    {
@@ -65,7 +65,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 3. Native实现各项接口功能，例如取值、设置值或者给Native对象的值加1等功能。
 
-   <!-- @[init_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @init_sendable -->
    
    ``` C++
    // napi_init.cpp
@@ -246,7 +246,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 4. ArkTS侧在UI主线程中定义Sendable实例对象并传递给TaskPool子线程，子线程处理完数据后返回UI主线程，UI主线程可以继续访问该Sendable实例对象。
 
-   <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @load_nativeSendable --> 
    
    ``` TypeScript
    // Index.ets

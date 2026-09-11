@@ -12,7 +12,7 @@
 
 | 一帧切换效果 | 一镜到底效果 |
 | ------ | ---- |
-| ![Frame-transition-effect](figures/Frame-transition-effect.gif)|![one-shot-style](figures/one-shot-style.gif) |
+| Frame-transition-effect|one-shot-style |
 
 一镜到底的动效有多种实现方式，在实际开发过程中，应根据具体场景选择合适的方法进行实现。
 
@@ -21,8 +21,8 @@
 | 一镜到底实现方式 | 特点 | 适用场景 |
 | ------ | ---- | ---- |
 | 不新建容器直接变化原容器 | 不发生路由跳转，需要在一个组件中实现展开及关闭两种状态的布局，展开后组件层级不变。| 适用于转场开销小的简单场景，如点开页面无需加载大量数据及组件。 |
-| 新建容器并跨容器迁移组件 | 通过使用[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
-| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口绑定同一id，同时将转场逻辑置于[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
+| 新建容器并跨容器迁移组件 | 通过使用NodeController，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
+| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用geometryTransition接口绑定同一id，同时将转场逻辑置于animateTo动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
 
 ## 不新建容器并直接变化原容器
 
@@ -36,7 +36,7 @@
 
 以点击卡片后显示卡片内容详情场景为例：
 
-<!-- @[post_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template2/Index.ets) -->
+<!-- @post_data -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -193,7 +193,7 @@ export default struct Post {
 }
 ```
 
-![one-shot-style-container](figures/one-shot-style-container.gif)
+one-shot-style-container
 
 ## 新建容器并跨容器迁移组件
 
@@ -211,7 +211,7 @@ export default struct Post {
 
 - 在动画结束回调函数中将展开页B中的组件迁移回被点击卡片A处。
 
-<!-- @[stack_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/Index.ets) -->
+<!-- @stack_index -->
 
 ``` TypeScript
 // Index.ets
@@ -432,7 +432,7 @@ class AnimationProperties {
 }
 ```
 
-<!-- @[stack_post_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template3/PostNode.ets) -->
+<!-- @stack_post_node -->
 
 ``` TypeScript
 // PostNode.ets
@@ -581,7 +581,7 @@ export const deleteNode = (id: string) => {
 }
 ```
 
-![sharedElementsNodeTransfer](figures/sharedElementsNodeTransfer.gif)
+sharedElementsNodeTransfer
 
 ### 结合Navigation使用
 
@@ -616,7 +616,7 @@ export const deleteNode = (id: string) => {
 └──entry/src/main/resources           // 资源文件
 ```
 
-<!-- @[navigation_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/Index.ets) -->
+<!-- @navigation_index -->
 
 ``` TypeScript
 // Index.ets
@@ -691,7 +691,7 @@ struct Index {
 }
 ```
 
-<!-- @[navigation_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/PageOne.ets) -->
+<!-- @navigation_page_one -->
 
 ``` TypeScript
 // PageOne.ets
@@ -791,7 +791,7 @@ export struct PageOne {
 }
 ```
 
-<!-- @[navigation_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template4/PageTwo.ets) -->
+<!-- @navigation_page_two -->
 
 ``` TypeScript
 // PageTwo.ets
@@ -892,7 +892,7 @@ export struct PageTwo {
 }
 ```
 
-<!-- @[custom_navigation_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/CustomTransition/CustomNavigationUtils.ets) -->
+<!-- @custom_navigation_utils -->
 
 ``` TypeScript
 // CustomNavigationUtils.ets
@@ -967,7 +967,7 @@ export class CustomTransition {
 }
 ```
 
-<!-- @[navigation_animation_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/CustomTransition/AnimationProperties.ets) -->
+<!-- @navigation_animation_properties -->
 
 ``` TypeScript
 // AnimationProperties.ets
@@ -1110,7 +1110,7 @@ export class AnimationProperties {
 }
 ```
 
-<!-- @[bind_sheet_component_attr_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/ComponentAttrUtils.ets) -->
+<!-- @bind_sheet_component_attr_utils -->
 
 ``` TypeScript
 // ComponentAttrUtils.ets
@@ -1166,7 +1166,7 @@ export class RectJson {
 }
 ```
 
-<!-- @[bind_sheet_window_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/WindowUtils.ets) -->
+<!-- @bind_sheet_window_utils -->
 
 ``` TypeScript
 // WindowUtils.ets
@@ -1182,7 +1182,7 @@ export class WindowUtils {
 }
 ```
 
-<!-- @[bind_sheet_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @bind_sheet_entry_ability -->
 
 ``` TypeScript
 // EntryAbility.ets
@@ -1298,7 +1298,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @[navigation_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/NodeContainer/CustomComponent.ets) -->
+<!-- @navigation_custom_component -->
 
 ``` TypeScript
 // CustomComponent.ets
@@ -1372,7 +1372,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-![NavigationNodeTransfer](figures/NavigationNodeTransfer.gif)
+NavigationNodeTransfer
 
 ### 结合BindSheet使用
 
@@ -1664,7 +1664,7 @@ struct ImageNode {
 }
 ```
 
-<!-- @[bind_custom_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/NodeContainer/CustomComponentBindSheet.ets) -->
+<!-- @bind_custom_component -->
 
 ``` TypeScript
 // CustomComponent.ets
@@ -1738,7 +1738,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-<!-- @[bind_sheet_component_attr_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/ComponentAttrUtils.ets) -->
+<!-- @bind_sheet_component_attr_utils -->
 
 ``` TypeScript
 // ComponentAttrUtils.ets
@@ -1794,7 +1794,7 @@ export class RectJson {
 }
 ```
 
-<!-- @[bind_sheet_window_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/utils/WindowUtils.ets) -->
+<!-- @bind_sheet_window_utils -->
 
 ``` TypeScript
 // WindowUtils.ets
@@ -1810,7 +1810,7 @@ export class WindowUtils {
 }
 ```
 
-<!-- @[bind_sheet_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @bind_sheet_entry_ability -->
 
 ``` TypeScript
 // EntryAbility.ets
@@ -1926,7 +1926,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![BindSheetNodeTransfer](figures/BindSheetNodeTransfer.gif)
+BindSheetNodeTransfer
 
 ## 使用geometryTransition共享元素转场
 
@@ -1940,7 +1940,7 @@ geometryTransition绑定两个对象的实现方式使得geometryTransition区�
 
 对于同一个页面中的两个元素的一镜到底效果，geometryTransition接口的简单使用示例如下：
 
-<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) -->
+<!-- @geometry_transition_simple -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -2002,13 +2002,13 @@ struct IfElseGeometryTransition {
 }
 ```
 
-![one-shot-style-page](figures/one-shot-style-page.gif)
+one-shot-style-page
 
 ### geometryTransition结合模态转场使用
 
 更多的场景中，需要对一个页面的元素与另一个页面的元素添加一镜到底动效。可以通过geometryTransition搭配模态转场接口实现。以点击头像弹出个人信息页的demo为例：
 
-<!-- @[geometry_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template7/Index.ets) -->
+<!-- @geometry_transition -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -2190,6 +2190,6 @@ export default struct Post {
 
 效果为点击主页的头像后，弹出模态页面显示个人信息，并且两个页面之间的头像做一镜到底动效：
 
-![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
+one-shot-style-avatar
 
 <!--RP2--><!--RP2End-->

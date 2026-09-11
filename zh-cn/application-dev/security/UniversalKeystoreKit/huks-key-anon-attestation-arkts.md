@@ -22,7 +22,7 @@
 4. 将密钥别名与参数集作为参数传入anonAttestKeyItem方法中，即可证明密钥。
 
 ## 开发案例
-<!-- @[anonymous_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/ets/pages/AnonymousKeyProof.ets) -->
+<!-- @anonymous_key_proof -->
 
 ``` TypeScript
 /*

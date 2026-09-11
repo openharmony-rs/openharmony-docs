@@ -6,41 +6,41 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-- [Connectivity Kit简介](connectivity-kit-intro.md)
+- Connectivity Kit简介
 - 蓝牙<!--bluetooth-->
-  - [蓝牙服务开发概述](bluetooth/bluetooth-overview.md)
-  - [蓝牙设置](bluetooth/br-development-guide.md)
+  - 蓝牙服务开发概述
+  - 蓝牙设置
   - 传统蓝牙<!--bluetooth-br-->
-    - [查找设备](bluetooth/br-discovery-development-guide.md)
-    - [配对与连接设备](bluetooth/br-pair-device-development-guide.md)
-    - [连接和传输数据](bluetooth/spp-development-guide.md)
+    - 查找设备
+    - 配对与连接设备
+    - 连接和传输数据
   - 低功耗蓝牙<!--bluetooth-ble-->
-    - [查找设备](bluetooth/ble-development-guide.md)
-    - [连接和传输数据](bluetooth/gatt-development-guide.md)
+    - 查找设备
+    - 连接和传输数据
   - 蓝牙常见问题<!--bluetooth-faq-->
-    - [可选属性显式设置为undefined报401无效参数](bluetooth/bluetooth-faq-401-invalid-parameter.md)<!--RP1--><!--RP1End-->
-  - [蓝牙术语](bluetooth/terminology.md)
+    - 可选属性显式设置为undefined报401无效参数<!--RP1--><!--RP1End-->
+  - 蓝牙术语
 - NFC<!--nfc-->
-  - [NFC服务开发概述](nfc/nfc-overview.md)
-  - [NFC标签读写开发指南](nfc/nfc-tag-access-guide.md)
-  - [HCE卡模拟开发指南](nfc/nfc-hce-guide.md)
-  - [安全单元访问开发指南](nfc/nfc-se-access-guide.md)
+  - NFC服务开发概述
+  - NFC标签读写开发指南
+  - HCE卡模拟开发指南
+  - 安全单元访问开发指南
 - WLAN<!--wlan-->
-  - [WLAN服务开发概述](wlan/wlan-overview.md)
-  - [P2P模式开发指南](wlan/p2p-development-guide.md)
-  - [STA模式开发指南](wlan/sta-development-guide.md)
-  - [Wi-Fi扫描开发指南](wlan/scan-development-guide.md)
-  - [WLAN术语](wlan-glossary.md)
+  - WLAN服务开发概述
+  - P2P模式开发指南
+  - STA模式开发指南
+  - Wi-Fi扫描开发指南
+  - WLAN术语
 - 融合短距<!--fusion-connectivity-->
-  - [融合短距服务开发概述](fusion-connectivity/fusion-connectivity-overview.md)
-  - [伙伴设备与OpenHarmony设备互通的开发指南](fusion-connectivity/partneragent-life-application-guide.md)
-  - [融合短距术语](fusion-connectivity/fusion-connectivity-terminology.md)
+  - 融合短距服务开发概述
+  - 伙伴设备与OpenHarmony设备互通的开发指南
+  - 融合短距术语
 - 星闪<!--nearlink-->
-  - [星闪简介](nearlink/nearlink-introduction-guide.md)
-  - [开发准备](nearlink/nearlink-preparations-guide.md)
-  - [发现星闪设备](nearlink/nearlink-device-discovery-guide.md)
-  - [管理SSAP连接及服务](nearlink/nearlink-ssap-connection-guide.md)
-  - [使用星闪传输数据](nearlink/nearlink-data-transfer-guide.md)
-  - [获取星闪合作设备集合信息](nearlink/nearlink-cdsm-information-guide.md)
-  - [星闪常见问题](nearlink/nearlink-faq-guide.md)
-  - [星闪术语](nearlink/nearlink-glossary-guide.md)
+  - 星闪简介
+  - 开发准备
+  - 发现星闪设备
+  - 管理SSAP连接及服务
+  - 使用星闪传输数据
+  - 获取星闪合作设备集合信息
+  - 星闪常见问题
+  - 星闪术语

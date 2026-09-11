@@ -31,7 +31,7 @@
 
 - 以使用await方式单次传入数据，获取摘要计算结果为例：
 
-  <!-- @[message_digest_sha256_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeAsync.ets) -->
+  <!-- @message_digest_sha256_single_time_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -53,7 +53,7 @@
 
 - 以使用同步方式单次传入数据，获取摘要计算结果为例：
 
-  <!-- @[message_digest_sha256_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/singleTime/SingleTimeSync.ets) -->
+  <!-- @message_digest_sha256_single_time_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -84,7 +84,7 @@
 4. 调用Md.getMdLength，获取摘要计算长度，单位为字节。
 
 - 以使用await方式分段传入数据，获取摘要计算结果为例：
-  <!-- @[message_digest_sha256_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationAsync.ets) -->
+  <!-- @message_digest_sha256_segmentation_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -112,7 +112,7 @@
 
 - 以使用同步方式分段传入数据，获取摘要计算结果为例：
 
-  <!-- @[message_digest_sha256_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/ets/pages/sha256/segmentation/SegmentationSync.ets) -->
+  <!-- @message_digest_sha256_segmentation_sync -->
   
   ``` TypeScript
   

@@ -32,7 +32,7 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 }
 ```
 
-![button-Component](figures/button-Component.png)
+button-Component
 
 
 ## 设置button类型
@@ -76,7 +76,7 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 ```
 
 
-![button-type](figures/button-type.png)
+button-type
 
 
 > **说明：**
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![Download-Progress](figures/Download-Progress.gif)
+Download-Progress
 
 > **说明：** 
 >
@@ -285,4 +285,4 @@ export default {
 ```
 
 
-![Example-Scenario-1](figures/Example-Scenario-1.gif)
+Example-Scenario-1

@@ -87,7 +87,7 @@ Locale匹配规则：Locale匹配需满足以下三条规则。
 
 **--compressed-config参数说明**
 
-在DevEco Studio配置[纹理压缩](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section2095319147103)的编译配置参数，编译后会在模块的`build\default\intermediates\res\default`下生成restool的纹理压缩配置文件opt-compression.json，文件结构如下：
+在DevEco Studio配置纹理压缩的编译配置参数，编译后会在模块的`build\default\intermediates\res\default`下生成restool的纹理压缩配置文件opt-compression.json，文件结构如下：
 
 ```json5
 {
@@ -336,7 +336,7 @@ JSON文件格式错误，如包含多余的逗号等。
 
 **处理步骤**
 
-检查JSON文件格式，可参考[JSON](https://www.json.org/json-zh.html)。
+检查JSON文件格式，可参考JSON。
 
 ### 11203003 JSON节点的类型与预期不匹配
 
@@ -1110,7 +1110,7 @@ id_defined.json中资源类型type的取值不在["boolean","color","float","id"
 
 **错误信息**
 
-Invalid ID value 'xxx' in the id_defined.json file. It should be a hexadecimal string, match the pattern ^0[xX][0-9a-fA-F]{8}, and be in the scope [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
+Invalid ID value 'xxx' in the id_defined.json file. It should be a hexadecimal string, match the pattern ^0xX{8}, and be in the scope [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
 **错误描述**
 

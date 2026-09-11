@@ -102,7 +102,7 @@ public interface ISigner {
 
 **获取HAP签名工具**
 
-- [签名工具仓库下载](https://gitcode.com/openharmony/developtools_hapsigner/blob/master/dist/hap-sign-tool.jar)。
+- 签名工具仓库下载。
 - 通过SDK获取，签名工具路径：`${SDK安装目录}/toolchains/lib/hap-sign-tool.jar`。
 
 ## 开发步骤

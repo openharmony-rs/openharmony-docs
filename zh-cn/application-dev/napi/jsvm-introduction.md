@@ -26,7 +26,7 @@ OpenHarmony JSVM-API是并发不安全接口，开发者需保障JSVM-API的并�
 
 **图1** JSVM-API的组成架构
   
-![jsvm-api_mechanism](figures/jsvm-api_mechanism.png)
+jsvm-api_mechanism
 
 - Native Module：开发者使用JSVM-API开发的模块，用于在Native侧使用。
 
@@ -60,7 +60,7 @@ OpenHarmony JSVM-API是并发不安全接口，开发者需保障JSVM-API的并�
 
 **图2** JSVM-API的关键交互流程
 
-![JSVM-API 关键交互流程](figures/process_jsvm-api.png)
+JSVM-API 关键交互流程
 
 JSVM-API与Native模块之间的交互流程主要分为以下两步：
 

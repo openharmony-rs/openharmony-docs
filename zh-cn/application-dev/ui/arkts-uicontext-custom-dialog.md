@@ -41,7 +41,7 @@
    
    ComponentContent用于定义自定义弹出框的内容。其中，wrapBuilder(buildText)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
    
-   <!-- @[open_dialog_and_update_create_componentContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
+   <!-- @open_dialog_and_update_create_componentContent -->
    
    ``` TypeScript
    private contentNode: ComponentContent<Object> =
@@ -51,7 +51,7 @@
    
    调用openCustomDialog接口打开的弹出框默认customStyle为true，即弹出框的内容样式完全按照contentNode自定义样式显示。
    
-   <!-- @[prompt_action_class_open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+   <!-- @prompt_action_class_open_custom_dialog -->
    
    ``` TypeScript
    PromptActionClassNew.ctx.getPromptAction().openCustomDialog(PromptActionClassNew.contentNode, PromptActionClassNew.options)
@@ -70,7 +70,7 @@
    
    关闭弹出框之后若需要释放对应的ComponentContent，则需要调用ComponentContent的dispose方法。
    
-   <!-- @[prompt_action_class_close_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+   <!-- @prompt_action_class_close_custom_dialog -->
    
    ``` TypeScript
    PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
@@ -101,7 +101,7 @@ this.contentNode.update(new Params('update'))
 
 更新属性时，未设置的属性会恢复为默认值。例如，初始设置{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }，更新时设置{ alignment: DialogAlignment.Bottom }，则初始设置的offset: { dx: 0, dy: 50 }不会保留，会恢复为默认值。
 
-<!-- @[prompt_action_class_update_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+<!-- @prompt_action_class_update_options -->
 
 ``` TypeScript
 PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)
@@ -123,7 +123,7 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
 >
 > 当isModal为true时，蒙层将显示，此时可以设置蒙层的动画效果；否则，maskTransition将不生效。
 
-<!-- @[custom_dialog_with_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogComponentWithTransition.ets) -->
+<!-- @custom_dialog_with_transition -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -194,7 +194,7 @@ export struct CustomDialogComponentWithTransition {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
+ UIContextPromptAction
 
 ## 设置弹出框避让软键盘的距离
 
@@ -202,7 +202,7 @@ export struct CustomDialogComponentWithTransition {
 
 设置软键盘间距时，需要将keyboardAvoidMode值设为KeyboardAvoidMode.DEFAULT。
 
-<!-- @[custom_dialog_with_key_board_distance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogWithKeyboardAvoidDistance.ets) -->
+<!-- @custom_dialog_with_key_board_distance -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -253,12 +253,12 @@ export struct CustomDialogWithKeyboardAvoidDistance {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
+ UIContextPromptAction
 
 
 ## 完整示例
 
-<!-- @[prompt_action_class_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+<!-- @prompt_action_class_new -->
 
 ``` TypeScript
 // PromptActionClassNew.ets
@@ -334,7 +334,7 @@ export class PromptActionClassNew {
 ```
 
 
-<!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
+<!-- @open_dialog_and_update -->
 
 ``` TypeScript
 // Index.ets
@@ -411,6 +411,6 @@ export struct OpenDialogAndUpdate {
 }
 ```
 
- ![UIContextPromptAction](figures/UIContextPromptAction.gif)
+ UIContextPromptAction
 
 

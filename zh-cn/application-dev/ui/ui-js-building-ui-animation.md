@@ -67,7 +67,7 @@
 
 **图1** 静态动画效果图
 
-![Static-Animation](figures/Static-Animation.png)
+Static-Animation
 
 
 ## 连续动画
@@ -166,4 +166,4 @@ export default {
 
 **图2** 连续动画效果图
 
-![Continuous-Animation](figures/Continuous-Animation.gif)
+Continuous-Animation

@@ -57,4 +57,4 @@
 
 ## 开发步骤
 
-具体可参考[Intl.Locale](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)。
+具体可参考Intl.Locale。

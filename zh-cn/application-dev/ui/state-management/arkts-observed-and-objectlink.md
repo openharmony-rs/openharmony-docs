@@ -8,7 +8,7 @@
 
 上文所述的装饰器（包括\@State、\@Prop、\@Link、\@Provide和\@Consume装饰器）仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如二维数组、对象数组、嵌套类场景，无法观察到第二层的属性变化。因此，为了实现对嵌套数据结构中深层属性变化的观察，引入了\@Observed和\@ObjectLink装饰器。
 
-\@Observed/\@ObjectLink适用于观察嵌套对象（对象的属性是对象）属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：\@State的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考状态管理常见问题。
+\@Observed/\@ObjectLink适用于观察嵌套对象（对象的属性是对象）属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：\@State的基本用法。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
 
 > **说明：**
 >
@@ -71,7 +71,7 @@ this.objLink= ...
 
   **图1** 初始化规则图示  
 
-  ![zh-cn_image_0000001502255261](figures/Initialization-rules01.png)
+  zh-cn_image_0000001502255261
 
 
 ## 观察变化和行为表现
@@ -92,7 +92,7 @@ API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，
 
 \@ObjectLink装饰继承于Date的class时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
 
-<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->  
+<!-- @Observation_ChangeInheritance -->  
 
 ``` TypeScript
 @Observed
@@ -162,7 +162,7 @@ struct Parent {
 }
 ```
 
-![observe-date](figures/observe-date.gif)
+observe-date
 
 \@ObjectLink装饰继承于Map的class时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。示例请参考继承Map类。
 
@@ -286,7 +286,7 @@ struct Parent {
 
    【正例】
 
-   <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) --> 
+   <!-- @variables_decorated_ObjectLink_read_only --> 
    
    ``` TypeScript
    
@@ -341,7 +341,7 @@ struct Parent {
    }
    ```
 
-   ![observed-sync-0](./figures/observed-sync-0.gif)
+   observed-sync-0
 
 ## 使用场景
 
@@ -349,7 +349,7 @@ struct Parent {
 
 该场景包含built-in类型（Array、Map、Set和Date）和普通class。从API version 19开始，\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
 
-<!-- @[State_To_Objectlink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets) --> 
+<!-- @State_To_Objectlink --> 
 
 ``` TypeScript
 class Book {
@@ -396,11 +396,11 @@ struct Index {
 }
 ```
 
-![observed-sync-1](./figures/observed-sync-1.gif)
+observed-sync-1
 
 ### 嵌套对象
 
-<!-- @[Nested_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/NestedObject.ets) --> 
+<!-- @Nested_Object --> 
 
 ``` TypeScript
 @Observed
@@ -467,7 +467,7 @@ struct Index {
 }
 ```
 
-![Observed_ObjectLink_nested_object](figures/Observed_ObjectLink_nested_object.gif)
+Observed_ObjectLink_nested_object
 
 上述示例中：
 
@@ -483,7 +483,7 @@ struct Index {
 >
 > NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，标识对应的组件。
 
-<!-- @[Object_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets) --> 
+<!-- @Object_Array --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -578,7 +578,7 @@ struct Parent {
 }
 ```
 
-![Observed_ObjectLink_object_array](figures/Observed_ObjectLink_object_array.gif)
+Observed_ObjectLink_object_array
 
 - this.arrA[Math.floor(this.arrA.length/2)] = new Info(..) ：该状态变量的改变触发2次更新：
   1. ForEach：数组项的赋值导致ForEach的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
@@ -606,7 +606,7 @@ class ObservedArray<T> extends Array<T> {
 
 在下面的示例中，展示了如何利用\@Observed观察二维数组的变化。
 
-<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) -->  
+<!-- @Two_dimensional_array_example -->  
 
 ``` TypeScript
 @Observed
@@ -681,13 +681,13 @@ struct IndexPage {
 }
 ```
 
-![observed-sync-2](./figures/observed-sync-2.gif)
+observed-sync-2
 
 API version 19及以后，\@ObjectLink也可以被makeV1Observed的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
 
 完整例子如下。
 
-<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) -->  
+<!-- @Complete_Example_Two_Dimensional_Array -->  
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -750,7 +750,7 @@ struct IndexPage {
 }
 ```
 
-![Observed_ObjectLink_2D_array](figures/Observed_ObjectLink_2D_array.gif)
+Observed_ObjectLink_2D_array
 
 ### 继承Map类
 
@@ -760,7 +760,7 @@ struct IndexPage {
 
 在下面的示例中，myMap类型为MyMap\<number, string\>，点击Button改变myMap的属性，视图会随之刷新。
 
-<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) -->  
+<!-- @Inherit_From_Map_Class -->  
 
 ``` TypeScript
 @Observed
@@ -848,7 +848,7 @@ struct MapSampleNestedChild {
 }
 ```
 
-![Observed_ObjectLink_inherit_map](figures/Observed_ObjectLink_inherit_map.gif)
+Observed_ObjectLink_inherit_map
 
 ### 继承Set类
 
@@ -858,7 +858,7 @@ struct MapSampleNestedChild {
 
 在下面的示例中，mySet类型为MySet\<number\>，点击Button改变mySet的属性，视图会随之刷新。
 
-<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) -->  
+<!-- @Inherit_From_Set_Class -->  
 
 ``` TypeScript
 @Observed
@@ -938,13 +938,13 @@ struct SetSampleNestedChild {
 }
 ```
 
-![Observed_ObjectLink_inherit_set](figures/Observed_ObjectLink_inherit_set.gif)
+Observed_ObjectLink_inherit_set
 
 ### \@ObjectLink支持联合类型
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child组件中对应的Text组件刷新。
 
-<!-- @[ObjectLink_Supports_Union_Types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectLinkSupportsUnionTypes.ets) --> 
+<!-- @ObjectLink_Supports_Union_Types --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1034,7 +1034,7 @@ struct Child {
 }
 ```
 
-![ObjectLink-support-union-types](figures/ObjectLink-support-union-types.gif)
+ObjectLink-support-union-types
 
 ## 常见问题
 
@@ -1150,7 +1150,7 @@ struct MyView {
 以下示例使用\@Observed/\@ObjectLink来观察嵌套对象的属性更改。
 
 
-<!-- @[Basic_nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/BasicNesting.ets) --> 
+<!-- @Basic_nesting --> 
 
 ``` TypeScript
 class Parent {
@@ -1273,7 +1273,7 @@ struct MyView {
 }
 ```
 
-![observed-sync-3](./figures/observed-sync-3.gif)
+observed-sync-3
 
 ### 复杂嵌套对象属性更改失效
 
@@ -1386,7 +1386,7 @@ incrSubCounter和setSubCounter都是同一个SubCounter的函数。在第一个�
 对于上述问题，为了直接观察SubCounter中的属性，以便this.counter[0].setSubCounter(10)操作有效，可以利用下面的方法：
 
 
-<!-- @[Complex_Methods_Nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexMethodsNesting.ets) --> 
+<!-- @Complex_Methods_Nesting --> 
 
 ``` TypeScript
 let nextId = 1;
@@ -1460,14 +1460,14 @@ struct CounterChild {
 }
 ```
 
-![observed-sync-4](./figures/observed-sync-4.gif)
+observed-sync-4
 
 该方法使得\@ObjectLink分别代理了ParentCounter和SubCounter的属性，这样对于这两个类的属性的变化都可以观察到，即都会对UI视图进行刷新。即使删除了上面所说的this.counter[0].incrCounter()，UI也会进行正确的刷新。
 
 该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考@Prop与@ObjectLink的差异。
 
 
-<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) -->  
+<!-- @Complex_nested_observation_levels -->  
 
 ``` TypeScript
 let nextId = 1;
@@ -1586,7 +1586,7 @@ struct ParentComp {
 }
 ```
 
-![observed-sync-5](./figures/observed-sync-5.gif)
+observed-sync-5
 
 ### \@Prop与\@ObjectLink的差异
 
@@ -1597,7 +1597,7 @@ struct ParentComp {
 1. 修改\@ObjectLink装饰的对象内容将影响数据源对象，并重新同步给\@Prop，因此两个Text组件都将刷新。
 2. 修改\@Prop装饰的对象内容仅影响使用该对象的Text2组件，不会影响数据源对象。
 
-<!-- @[Differences_Prop_ObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DifferencesPropObjectLink.ets) --> 
+<!-- @Differences_Prop_ObjectLink --> 
 
 ``` TypeScript
 let nextId = 0;
@@ -1659,11 +1659,11 @@ struct UserChild {
 }
 ```
 
-![observed-sync-6](./figures/observed-sync-6.gif)
+observed-sync-6
 
 上面的示例关系如图所示：
 
-![zh-cn_image_0000001653949465](figures/Differences-example.jpg)
+zh-cn_image_0000001653949465
 
 ### 在\@Observed装饰类的构造函数中延时更改成员变量
 
@@ -1719,7 +1719,7 @@ struct Index {
 
 【正例】
 
-<!-- @[Delayed_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) --> 
+<!-- @Delayed_change --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1763,7 +1763,7 @@ struct DelayedChangeIndex {
 }
 ```
 
-![observed-sync-7](./figures/observed-sync-7.png)
+observed-sync-7
 
 上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is: false”。待定时器触发时，renderClass的值改变，触发@Watch回调，此时界面刷新显示“The value of renderClass is: true”，日志输出“The value of renderClass is changed to: true”。
 
@@ -1771,7 +1771,7 @@ struct DelayedChangeIndex {
 
 ### \@ObjectLink数据源更新时机
 
-<!-- @[ObjectLink_Data_source_update_timing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ObjectLinkDataSourceUpdate.ets) --> 
+<!-- @ObjectLink_Data_source_update_timing --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1860,7 +1860,7 @@ struct Child {
 }
 ```
 
-![observed-sync-8](./figures/observed-sync-8.gif)
+observed-sync-8
 
 \@ObjectLink的数据源更新依赖其父组件，当父组件中数据源改变引起父组件刷新时，会重新设置子组件\@ObjectLink的数据源。这个过程不是在父组件数据源变化后立刻发生的，而是在父组件实际刷新时才会进行。上述示例中，Parent包含Child，Parent传递箭头函数给Child，在点击时，日志打印顺序是1-2-3-4-5，打印到日志4时，点击事件流程结束，此时仅仅是将子组件Child标记为需要父组件更新的节点，因此日志4打印的this.per.name的值仍为Bob，等到父组件真正更新时，才会更新Child的数据源。
 
@@ -1882,7 +1882,7 @@ struct Child {
 
 当clickEvent中更改this.info.person.name时，修改会立刻生效，此时日志4打印的值是Jack。
 
-<!-- @[ClickEvent_Jack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ClickEventJack.ets) --> 
+<!-- @ClickEvent_Jack --> 
 
 ``` TypeScript
 Child({
@@ -1929,7 +1929,7 @@ struct Index {
 
 【正例】
 
-<!-- @[Change_Property_In_Constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets) --> 
+<!-- @Change_Property_In_Constructor --> 
 
 ``` TypeScript
 @Observed
@@ -1969,7 +1969,7 @@ struct Index {
 }
 ```
 
-![observed_constructor_no_update_ui.gif](./figures/observed_constructor_no_update_ui.gif)
+observed_constructor_no_update_ui.gif
 
 ### LazyForEach和@ObjectLink一起使用时，替换数组数据后UI不刷新
 
@@ -2111,7 +2111,7 @@ struct ChildComponent {
 
 【正例】
 
-<!-- @[Use_With_LazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/UseWithLazyForEach.ets) --> 
+<!-- @Use_With_LazyForEach --> 
 
 ``` TypeScript
 // LazyForEach遍历数据基类
@@ -2256,4 +2256,4 @@ struct ChildComponent {
 }
 ```
 
-![observed_lazyforeach_refresh.gif](./figures/observed_lazyforeach_refresh.gif)
+observed_lazyforeach_refresh.gif

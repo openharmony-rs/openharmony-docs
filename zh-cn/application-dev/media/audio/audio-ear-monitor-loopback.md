@@ -36,13 +36,13 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 **AudioLoopback状态变化示意图**
 
-![AudioLoopback status change](figures/audioloopback-status-change.png)
+AudioLoopback status change
 
 使用on('statusChange')方法可以监听AudioLoopback的状态变化，每个状态对应值与说明见AudioLoopbackStatus。
 
 ### 开发步骤及注意事项
 
-  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
+  以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 1. 查询返听能力并创建AudioLoopback实例。关于音频返听模式，请查看AudioLoopbackMode。
 
@@ -50,7 +50,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > 返听需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：向用户申请授权。
 
-   <!-- @[create_AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   <!-- @create_AudioLoopback -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -84,7 +84,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > - 如果当前没有可用的返听输入输出设备组合，将返回空数组。
    > - 建议优先判断返回数组是否为空，再处理输入输出设备组合信息。
    
-   <!-- @[get_SupportedDevicePairs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->    
+   <!-- @get_SupportedDevicePairs -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -101,7 +101,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > 如果当前没有可用的返听输入输出设备组合，将返回null。
    
-   <!-- @[get_PreferredDevicePair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->    
+   <!-- @get_PreferredDevicePair -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -118,7 +118,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > 音频返听状态受音频焦点、低时延管控、采集与播放设备等因素影响。
 
-   <!-- @[get_Status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   <!-- @get_Status -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -140,7 +140,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > - 在启用返听后设置音量，音量将立即生效。
    > - 启用返听前未设置音量，启用返听时将采用默认音量0.5。
 
-   <!-- @[set_Volume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   <!-- @set_Volume -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -162,7 +162,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > 返回的音量范围为[0.0, 1.0]。
    
-   <!-- @[get_Volume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->    
+   <!-- @get_Volume -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -181,7 +181,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > - 在启用返听后设置混响模式，混响模式将立即生效。
    > - 启用返听前未设置混响模式，启用返听时将采用默认混响模式THEATER。
 
-   <!-- @[set_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->      
+   <!-- @set_ReverbPreset -->      
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -210,7 +210,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > 
    > 若未设置混响模式，查询得到将是默认混响模式THEATER。
 
-   <!-- @[get_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   <!-- @get_ReverbPreset -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -228,7 +228,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
    > - 在启用返听后设置均衡器类型，均衡器类型将立即生效。
    > - 启用返听前未设置均衡器类型，启用返听时将采用默认均衡器类型FULL。
 
-   <!-- @[set_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   <!-- @set_EqualizerPreset -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -257,7 +257,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     > 
     > 若未设置均衡器类型，查询得到将是默认均衡器类型FULL。
 
-    <!-- @[get_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->    
+    <!-- @get_EqualizerPreset -->    
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -269,7 +269,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 11. 调用enable方法，启用或禁用音频返听功能。
 
-    <!-- @[enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->    
+    <!-- @enable -->    
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
@@ -341,7 +341,7 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
 
 使用AudioLoopback启用音频低时延返听示例代码如下所示。
 
-<!-- @[all_audioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->  
+<!-- @all_audioLoopback -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。

@@ -22,11 +22,11 @@
 
 >  **说明：**
 >
->  以上接口均为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口blur。最佳实践请参考：[图像模糊动效优化-使用场景](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519)。
+>  以上接口均为实时模糊接口，每帧执行实时渲染，性能负载较大。当模糊内容与模糊半径均无需变动时，推荐采用静态模糊接口blur。最佳实践请参考：图像模糊动效优化-使用场景。
 
 ## 使用backdropBlur为组件添加背景模糊
 
-<!-- @[animationBlur_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template1/BlurEffectsExample.ets) -->
+<!-- @animationBlur_template1_start -->
 
 ``` TypeScript
 @Entry
@@ -53,12 +53,12 @@ struct BlurEffectsExample {
 ```
 
 
-![zh-cn_image_0000001599812870](figures/backdropBlur.png)
+zh-cn_image_0000001599812870
 
 
 ## 使用blur为组件添加内容模糊
 
-<!-- @[animationBlur_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets) -->
+<!-- @animationBlur_template2_start -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -119,12 +119,12 @@ struct Index {
 ```
 
 
-![zh-cn_image_0000001599813588](figures/Applying-Foreground-Blur.gif)
+zh-cn_image_0000001599813588
 
 
 ## 使用backgroundBlurStyle为组件添加背景模糊效果
 
-<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) --> 
+<!-- @animationBlur_template3_start --> 
 
 ``` TypeScript
 @Entry
@@ -393,13 +393,13 @@ struct BackDropBlurStyleDemo {
 ```
 
 
-![zh-cn_image_0000001649455517](figures/backgroundBlurStyle.png)
+zh-cn_image_0000001649455517
 
 
 
 ## 使用foregroundBlurStyle为组件添加内容模糊效果
 
-<!-- @[animationBlur_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template4/ForegroundBlurStyleDemo.ets) -->
+<!-- @animationBlur_template4_start -->
 
 ``` TypeScript
 @Entry
@@ -666,12 +666,12 @@ struct ForegroundBlurStyleDemo {
 ```
 
 
-![zh-cn_image_0000001599658168](figures/foregroundBlurStyle.png)
+zh-cn_image_0000001599658168
 
 
 ## 使用motionBlur为组件添加运动模糊效果
 
-<!-- @[animationBlur_template5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template5/MotionBlurTest.ets) -->
+<!-- @animationBlur_template5_start -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -717,4 +717,4 @@ struct motionBlurTest {
 
 
 
-![motionBlurTest](figures/motionBlur.gif)
+motionBlurTest

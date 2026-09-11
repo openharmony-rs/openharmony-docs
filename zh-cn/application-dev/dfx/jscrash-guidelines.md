@@ -21,7 +21,7 @@
 
 3. 维测进程Hiview补充仅其有权限获取的信息（如整机内存状态、应用页面切换轨迹），生成对应的崩溃日志文件, 存储在“/data/log/faultlog/faultlogger”目录下。
 
-4. 上报崩溃事件，开发者可通过HiAppEvent订阅崩溃事件。如需了解JS Crash问题分析方法，请参见[JS Crash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-js-way)。
+4. 上报崩溃事件，开发者可通过HiAppEvent订阅崩溃事件。如需了解JS Crash问题分析方法，请参见JS Crash类问题分析方法。
 
 
 ## 约束与限制
@@ -35,7 +35,7 @@
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog中，根据进程名、故障和时间分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
+DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog中，根据进程名、故障和时间分类显示。获取日志的方法参见：DevEco Studio使用指南-FaultLog。
 
 **方式二：通过HiAppEvent接口订阅**
 
@@ -61,7 +61,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Fingerprint | 故障特征，聚类同类问题的哈希值 | 8 | 是 | - |
 | Timestamp | 时间戳 | 8 | 是 | - |
 | Module name | 包名 | 8 | 是 | - |
-| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 | 23 | 是 | - |
+| ReleaseType | 应用的版本类型。release表示应用为release版本应用，debug表示应用为debug版本应用。 | 23 | 是 | - |
 | CpuAbi | 二进制接口类型 | 23 | 是 | - |
 | Version | hap版本 | 8 | 是 | - |
 | VersionCode | 版本编码 | 8 | 是 | - |
@@ -266,7 +266,7 @@ at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 2. 执行方法名：onPageShow表示触发该异常的调用方法名称。
 
 3. 编译产物结构如下：
-   - 编译产物路径：详见[异常堆栈解析原理 sourcemap结构：key字段介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713)。
+   - 编译产物路径：详见异常堆栈解析原理 sourcemap结构：key字段介绍。
 
    - 文件类型：文件扩展名为.ts文件后缀（.js文件无需 SourceMap 映射可直接定位异常）。
 

@@ -28,7 +28,7 @@
 
 \@Consumer，即数据消费方，可以通过绑定同样的key获取其最近父节点的\@Provider的数据，当查找不到\@Provider的数据时，使用本地默认值。图示如下。
 
-![ProviderConsumer_1](./figures/Provider_Consumer_1.png)
+ProviderConsumer_1
 
 \@Provider和\@Consumer装饰的数据类型需要一致。
 
@@ -157,7 +157,7 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str，通知其对应的\@Consumer，对应UI刷新。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，通知其对应的\@Provider，对应UI刷新。
 
-<!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) --> 
+<!-- @Twoway_Binding --> 
 
 ``` TypeScript
 @Entry
@@ -198,7 +198,7 @@ struct Child {
 }
 ```
 
-![provider-sync-0](figures/provider-sync-0.gif)
+provider-sync-0
 
 **未建立双向绑定**
 
@@ -210,7 +210,7 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str1，仅刷新\@Provider关联的Button组件。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
-<!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) --> 
+<!-- @No_Twoway_Binding --> 
 
 ``` TypeScript
 @Entry
@@ -251,13 +251,13 @@ struct Child {
 }
 ```
 
-![provider-sync-1](figures/provider-sync-1.gif)
+provider-sync-1
 
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->  
+<!-- @Decorative_Array -->  
 
 ``` TypeScript
 @Entry
@@ -338,13 +338,13 @@ struct Child {
 }
 ```
 
-![provider-sync-2](figures/provider-sync-2.gif)
+provider-sync-2
 
 ### 装饰Date类型变量
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->  
+<!-- @Decorative_Date -->  
 
 ``` TypeScript
 @Entry
@@ -428,13 +428,13 @@ struct Child {
 }
 ```
 
-![provider-sync-3](figures/provider-sync-3.gif)
+provider-sync-3
 
 ### 装饰Map类型变量
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->  
+<!-- @Decorative_Map -->  
 
 ``` TypeScript
 @Entry
@@ -544,13 +544,13 @@ struct Child {
 }
 ```
 
-![provider-sync-4](figures/provider-sync-4.gif)
+provider-sync-4
 
 ### 装饰Set类型变量
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->  
+<!-- @Decorative_Set -->  
 
 ``` TypeScript
 @Entry
@@ -646,7 +646,7 @@ struct Child {
 }
 ```
 
-![provider-sync-5](figures/provider-sync-5.gif)
+provider-sync-5
 
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
@@ -654,7 +654,7 @@ struct Child {
 
 在拖拽场景中，若需将子组件的拖拽起始位置信息同步给父组件，可参考以下示例。
 
-<!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) --> 
+<!-- @Drag_Drop --> 
 
 ``` TypeScript
 @Entry
@@ -696,14 +696,14 @@ struct Child {
 }
 ```
 
-![provider-sync-6](figures/provider-sync-6.gif)
+provider-sync-6
 
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
 1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，可以配合\@Trace一起使用，也可以使用makeObserved将非可观察数据变为可观察数据。
 2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同\@Trace。
 
-<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->  
+<!-- @Decorative_Complex -->  
 
 ``` TypeScript
 @ObservedV2
@@ -773,13 +773,13 @@ struct Child {
 }
 ```
 
-![provider-sync-7](figures/provider-sync-7.gif)
+provider-sync-7
 
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 
 \@Provider可以在组件树上重名，\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
-<!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) --> 
+<!-- @Provider_Same --> 
 
 ``` TypeScript
 @Entry
@@ -826,7 +826,7 @@ struct Child {
 }
 ```
 
-![provider-sync-8](figures/provider-sync-8.png)
+provider-sync-8
 
 上面的例子中：
 
@@ -837,7 +837,7 @@ struct Child {
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->  
+<!-- @Decorative_Initialized -->  
 
 ``` TypeScript
 @Entry
@@ -901,7 +901,7 @@ struct Child {
 }
 ```
 
-![provider-sync-9](figures/provider-sync-9.gif)
+provider-sync-9
 
 上面的例子中：
 
@@ -922,7 +922,7 @@ struct Child {
 4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
 5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
 
-<!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) --> 
+<!-- @Builder_Node --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1059,7 +1059,7 @@ struct TestRemove {
 }
 ```
 
-![provider-sync-10](figures/provider-sync-10.gif)
+provider-sync-10
 
 上面的例子中：
 

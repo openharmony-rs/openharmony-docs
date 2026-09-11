@@ -31,7 +31,7 @@ HMAC通过指定摘要算法，以通信双方共享密钥与消息作为输入�
 
 7. 调用OH_CryptoMac_GetLength，获取MAC消息认证码的长度，单位为字节。
 
-<!-- @[message_auth_hmac_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/hmac/singleTime.cpp) -->
+<!-- @message_auth_hmac_single_time -->
 
 ``` C++
 
@@ -167,7 +167,7 @@ cleanup:
 
 与一次性传入的步骤基本相同，区别在于多次调用OH_CryptoMac_Update来处理分段数据。
 
-<!-- @[message_auth_hmac_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/hmac/segmentation.cpp) -->
+<!-- @message_auth_hmac_segmentation -->
 
 ``` C++
 

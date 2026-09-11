@@ -28,7 +28,7 @@ HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包
 
 - 多HAP场景下，在安装或更新时，存在一致性校验，详情参考应用安装与更新一致性校验。使用打包工具进行打包成APP时，也会进行合法性校验，详情请参考打包工具。
 
-- 多HAP场景下，同一应用的所有HAP、HSP的签名证书要保持一致。上架应用市场是以App Pack形式上架，应用市场分发时会将所有HAP从App Pack中拆分出来，同时对所有HAP进行重签名，以保证签名证书的一致性。在调试阶段，开发者通过命令行或DevEco Studio将HAP安装到设备上时，要保证所有HAP签名证书一致，否则会出现安装失败的问题，签名操作请参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+- 多HAP场景下，同一应用的所有HAP、HSP的签名证书要保持一致。上架应用市场是以App Pack形式上架，应用市场分发时会将所有HAP从App Pack中拆分出来，同时对所有HAP进行重签名，以保证签名证书的一致性。在调试阶段，开发者通过命令行或DevEco Studio将HAP安装到设备上时，要保证所有HAP签名证书一致，否则会出现安装失败的问题，签名操作请参考配置调试签名。
 
 ## 创建
 
@@ -44,17 +44,17 @@ HAP（Harmony Ability Package）是应用安装和运行的基本单元。HAP包
 
 ## 开发
 
-- HAP中支持添加UIAbility组件或ExtensionAbility组件，以及pages页面。具体操作可参考[在模块中添加Ability](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability)和[添加Page](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-page)。
+- HAP中支持添加UIAbility组件或ExtensionAbility组件，以及pages页面。具体操作可参考在模块中添加Ability和添加Page。
 
 - HAP中支持引用HAR或HSP共享包，详见HAR的使用、HSP的使用。
 
 ## 调试
 
-通过DevEco Studio编译打包，生成单个或者多个HAP，即可基于HAP进行调试。如需根据不同的部署环境、目标人群、运行环境等，将同一个HAP定制编译为不同版本，请参见[定制编译指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-customized-multi-targets-and-products-guides#section1011341611469)。
+通过DevEco Studio编译打包，生成单个或者多个HAP，即可基于HAP进行调试。如需根据不同的部署环境、目标人群、运行环境等，将同一个HAP定制编译为不同版本，请参见定制编译指导。
 
 开发者可以使用DevEco Studio或者hdc工具进行调试：
 
-- **方法一：** 使用DevEco Studio进行调试，详见[应用程序包调试方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations)。
+- **方法一：** 使用DevEco Studio进行调试，详见应用程序包调试方法。
 
 - **方法二：** 使用hdc工具进行调试。
 

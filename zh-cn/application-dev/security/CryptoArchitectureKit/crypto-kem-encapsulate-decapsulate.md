@@ -43,7 +43,7 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
 
 - 异步方法示例：
 
-  <!-- @[kem_encapsulate_decapsulate_await_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Await.ets) -->
+  <!-- @kem_encapsulate_decapsulate_await_test -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -71,7 +71,7 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
 
 - 同步方法示例：
 
-  <!-- @[kem_encapsulate_decapsulate_sync_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Sync.ets) -->
+  <!-- @kem_encapsulate_decapsulate_sync_test -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

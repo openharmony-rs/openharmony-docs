@@ -31,7 +31,7 @@ declare class DrawModifier {
 
 DrawModifier可设置遮罩层前景（drawOverlay）、前景（drawForeground）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，开发者需要重载这些方法，并通过Canvas的接口进行自定义绘制。自定义绘制层级图如下所示。
 
-![](figures/drawModifier.png)
+
 
 DrawModifier还提供主动触发重绘的方法invalidate，该接口开发者无需也无法重载，调用会触发所绑定组件的重绘。
 
@@ -51,7 +51,7 @@ DrawModifier还提供主动触发重绘的方法invalidate，该接口开发者�
 
 通过drawFront、drawContent、drawBehind接口，在内容前景、内容和内容背景三个层级上对Text组件进行了自定义绘制，从而按需改变组件的绘制效果。
 
-<!-- @[drawFront_drawContent_drawBehind_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawFrontDrawContentDrawBehind.ets) -->
+<!-- @drawFront_drawContent_drawBehind_start -->
 
 ``` TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
@@ -254,13 +254,13 @@ struct DrawModifierExample {
 }
 ```
 
-![drawModifier.gif](figures/drawModifier.gif)
+drawModifier.gif
 
 ## 通过drawForeground进行自定义绘制
 
 通过drawForeground接口，在组件前景层级上对Column组件进行了自定义绘制，从而改变组件前景的绘制效果。
 
-<!-- @[drawForeground_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/DrawForeground.ets) -->
+<!-- @drawForeground_start -->
 
 ``` TypeScript
 import { drawing } from '@kit.ArkGraphics2D';
@@ -321,7 +321,7 @@ struct DrawModifierExample {
 }
 ```
 
-![drawForeground.png](figures/drawForeground.png)
+drawForeground.png
 
 ## 调整自定义绘制Canvas的变换矩阵
 
@@ -337,7 +337,7 @@ struct DrawModifierExample {
 
 **ArkTS接口调用示例：**
 
-<!-- @[Canvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DrawModifier/entry/src/main/ets/pages/Canvas.ets) -->
+<!-- @Canvas_start -->
 
 ``` TypeScript
 import { DrawContext } from '@kit.ArkUI';
@@ -447,4 +447,4 @@ struct Index {
 }
 ```
 
-![drawModifier-canvas](./figures/drawModifier-canvas.png)
+drawModifier-canvas

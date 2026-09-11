@@ -6,4 +6,4 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 
-- [压缩与解压](deflate-and-inflate.md)
+- 压缩与解压

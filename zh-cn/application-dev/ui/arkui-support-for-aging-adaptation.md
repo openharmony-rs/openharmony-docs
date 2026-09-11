@@ -49,7 +49,7 @@
 
 SideBarContainer组件通过长按控制按钮触发适老化弹窗。在系统字体为1倍的情况下，长按控制按钮不能弹窗。在系统字体大于1倍的情况下，长按控制按钮可以弹窗。
 
-<!-- @[trigger_aging_friendly_by_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets) --> 
+<!-- @trigger_aging_friendly_by_long_press --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -113,11 +113,11 @@ struct SideBarContainerExample {
 
 | 系统字体为一倍（适老化能力开启前） | 系统字体为1.75倍（适老化能力开启后） |
 | ---------------------------------- | ------------------------------------ |
-| ![](figures/aging_01_replace.png)          | ![](figures/aging_02_replace.png)            |
+|           |             |
 
 TextPickerDialog组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
 
-<!-- @[trigger_aging_friendly_by_set_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets) --> 
+<!-- @trigger_aging_friendly_by_set_font_size --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -217,5 +217,5 @@ struct TextPickerExample {
 
 | 系统字体为一倍（适老化能力开启前） | 系统字体为1.75倍（适老化能力开启后） |
 | ---------------------------------- | ------------------------------------ |
-| ![](figures/aging_03_replace.png)          | ![](figures/aging_04_replace.png)            |
+|           |             |
 <!--RP1End-->

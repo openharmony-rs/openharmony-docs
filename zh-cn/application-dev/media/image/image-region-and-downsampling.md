@@ -29,7 +29,7 @@
 
 2. 设置desiredRegion参数执行区域解码。
 
-   <!-- @[decode_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
+   <!-- @decode_region --> 
    
    ``` TypeScript
    async DecodeRegion(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
@@ -73,7 +73,7 @@
 
 2. 设置desiredSize参数执行下采样解码。
 
-   <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
+   <!-- @decode_downsample --> 
    
    ``` TypeScript
    async DownsampleDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
@@ -113,7 +113,7 @@
 
 2. 同时设置desiredRegion、desiredSize和cropAndScaleStrategy参数。
 
-   <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
+   <!-- @decode_combined --> 
    
    ``` TypeScript
    async CombinedDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {

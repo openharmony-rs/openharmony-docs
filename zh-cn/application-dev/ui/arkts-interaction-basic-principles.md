@@ -50,7 +50,7 @@
 
 下图展示了组件树的层级结构与事件响应链的收集过程。图中父、子节点分别对应父组件和子组件，左子树和右子树对应兄弟组件，右子树对应的组件会显示在左子树对应组件的上方。
 
-![EventResponseChain](figures/EventResponseChain.png)
+EventResponseChain
 
 通过hitTestBehavior属性可以设置组件的触摸测试模式。在本示例中，所有组件的触摸测试模式均设置为HitTestMode.Default。如果用户点按的动作发生在组件5上，则响应链收集过程如下：
 
@@ -72,7 +72,7 @@
 
 对于指向性基础事件的派发，系统不会直接从页面根节点递归遍历所有组件节点，而是在首次事件发生时确定能够响应此次交互的组件范围，即识别用户点击的组件。对于未被点击的组件，在此次交互中将不会有任何响应。这一过程称为命中测试（hit test/touch test）。系统依据组件响应热区是否包含事件坐标来判定是否被点击。
 
-![touch test](figures/interaction-basic-touch-test-01.png)
+touch test
 
 当用户触发按下事件时，系统将自上而下、自右向左遍历组件树，收集每个组件上绑定的手势和事件，然后将这些信息逐级向上冒泡至父组件进行整合，最终构建完整的事件响应链。
 
@@ -80,7 +80,7 @@
 
 以下是描述命中测试过程的流程图：
 
-![TouchTest](figures/TouchTest.png)
+TouchTest
 
 如图所示，当起始事件被分发至组件时，组件会收集自身绑定的手势与事件，随后将收集结果传递给父组件，直至达到根节点。若组件透明、已从组件树中移除，或事件坐标不在组件响应热区范围内，将不会触发收集过程，父组件接收的反馈为空。除此之外，所有组件均会执行手势与事件的收集，并将结果反馈给父组件。
 
@@ -120,7 +120,7 @@
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
-   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   <!-- @focus_onclick -->
    
    ``` TypeScript
    @Entry
@@ -161,7 +161,7 @@
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。
 
-   ![response region](figures/interaction-basic-response-region-01.png)
+   response region
 
 2. 触摸测试控制
 
@@ -171,27 +171,27 @@
 
    - HitTestMode.Default：默认不配置hitTestBehavior属性，自身如果命中会阻塞兄弟组件，但是不阻塞子组件。
 
-     ![hitTestModeDefault](figures/hitTestModeDefault.png)
+     hitTestModeDefault
 
    - HitTestMode.None：自身不接收事件，但不会阻塞兄弟组件或子组件继续做触摸测试。
 
-     ![hitTestModeNone](figures/hitTestModeNone.png)
+     hitTestModeNone
 
    - HitTestMode.Block：阻塞子组件的触摸测试，如果自身触摸测试命中，会阻塞兄弟组件及父组件的触摸测试。
 
-     ![hitTestModeBlock](figures/hitTestModeBlock.png)
+     hitTestModeBlock
 
    - HitTestMode.Transparent：自身进行触摸测试，同时不阻塞兄弟组件及父组件。
 
-     ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
+     hitTestModeTransparent
 
    - HitTestMode.BLOCK_HIERARCHY（从API version 20开始支持）: 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。
 
-     ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
+     hitTestModeBLOCK_HIERARCHY.png
 
    - HitTestMode.BLOCK_DESCENDANTS（从API version 20开始支持）: 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
 
-     ![hitTestModeBLOCK_DESCENDANTS.png](figures/hitTestModeBLOCK_DESCENDANTS.png)
+     hitTestModeBLOCK_DESCENDANTS.png
 
 3. 自定义事件拦截
 
@@ -213,7 +213,7 @@ ArkUI包含的安全组件有：使用粘贴控件、使用保存控件等。
 
 stopPropagation可终止冒泡。如下图所示，以Touch事件为例，当一个Touch事件传递至C节点时，如果调用了该事件上的stopPropagation接口，则B节点和root节点将不再接收到此事件，但B节点上的手势对象仍能接收和处理该Touch事件。
 
-![stopPropagation](figures/raw_event_stop_propagation.png)
+stopPropagation
 
 > **说明：**
 >

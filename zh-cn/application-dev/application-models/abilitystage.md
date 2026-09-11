@@ -41,7 +41,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 3. 打开MyAbilityStage.ets文件，导入AbilityStage的依赖包，自定义类继承AbilityStage并加上需要的生命周期回调，示例中增加了一个onCreate()生命周期回调。
 
-    <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
+    <!-- @my_example_ability_start -->
 
     ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
@@ -60,7 +60,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 4. 在module.json5配置文件中，通过配置 `srcEntry` 参数来指定模块对应的代码路径，以作为HAP加载的入口。
 
-    <!-- @[abilityModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/module.json5) -->
+    <!-- @abilityModule_start -->
 
     ``` JSON5
     {
@@ -83,7 +83,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 - 通过关闭应用进程，可以触发AbilityStage的onDestroy()生命周期回调。
 
-  <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
+  <!-- @myAbility_start -->
 
   ``` TypeScript
   import { EnvironmentCallback, AbilityStage } from '@kit.AbilityKit';

@@ -39,7 +39,7 @@ Call调用示意图如下所示。
 
 **图1** Call调用示意图
 
-![call](figures/call.png)
+call
 
 - CallerAbility调用startAbilityByCall()接口获取Caller，并使用Caller对象的call()方法向CalleeAbility发送数据。
 

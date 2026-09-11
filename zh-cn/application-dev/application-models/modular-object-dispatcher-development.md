@@ -24,7 +24,7 @@
 
 ## 运行机制
 
-![modular_object_dispatcher_mechanism](figures/modular_object_dispatcher_mechanism.png)
+modular_object_dispatcher_mechanism
 
 ModularObjectDispatcher的调用流程分为以下几个阶段：
 
@@ -57,7 +57,7 @@ ModularObjectDispatcher的调用流程分为以下几个阶段：
 
 以下步骤假设已通过连接回调获取到类型为`OHIPCRemoteProxy*`的`g_remoteProxy`对象，以及保存分发器、类型描述符的全局变量`g_ModObjDispatcher`、`g_TypeDescriptor`。
 
-<!-- @[modular_object_extension_dispatcher_createMainServiceInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_createMainServiceInstance -->
 
 ``` C++
 AbilityRuntime_ErrorCode err =
@@ -76,7 +76,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 1. 通过OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor接口判断远端服务是否提供了类型库元数据。只有支持动态接口的服务端才能进行后续的元数据查询和动态调用。
 
-    <!-- @[modular_object_extension_dispatcher_hasTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_hasTypeDescriptor -->
 
     ``` C++
     uint32_t hasTypeDescriptor = 0;
@@ -93,7 +93,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 2. 确认远端支持类型库元数据后，通过OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor获取类型描述符句柄。
 
-    <!-- @[modular_object_extension_dispatcher_getTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getTypeDescriptor -->
 
     ``` C++
     err = OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(g_ModObjDispatcher, &g_TypeDescriptor);
@@ -113,7 +113,7 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 通过OH_AbilityRuntime_TypeDescriptor_GetVersion获取类型库版本号字符串。
 
-<!-- @[modular_object_extension_dispatcher_getVersion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_getVersion -->
 
 ``` C++
 char version[256];
@@ -130,7 +130,7 @@ OH_LOG_INFO(LOG_APP, "Version:%{public}s", version);
 
 通过OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName获取主服务接口名称。
 
-<!-- @[modular_object_extension_dispatcher_getMainServiceInterfaceName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_getMainServiceInterfaceName -->
 
 ``` C++
 char mainServiceInterfaceName[256];
@@ -147,7 +147,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 1. 查询所有接口名称：通过OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount获取接口数量，再通过OH_AbilityRuntime_TypeDescriptor_GetInterfaceName逐个获取接口名称。
 
-    <!-- @[modular_object_extension_dispatcher_getInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getInterface -->
 
     ``` C++
     uint32_t interfaceCount = 0;
@@ -173,7 +173,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 2. 遍历接口下的方法名称：针对每个接口，通过OH_AbilityRuntime_TypeDescriptor_GetMethodCount获取方法数量，再通过OH_AbilityRuntime_TypeDescriptor_GetMethodName和OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId获取方法名称及其MemberID。
 
-    <!-- @[modular_object_extension_dispatcher_getMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getMethod -->
 
     ``` C
     static void QueryMethodMetadata(const char *interfaceName)
@@ -213,7 +213,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 1. 查询所有结构体名称：通过OH_AbilityRuntime_TypeDescriptor_GetStructCount获取结构体数量，再通过OH_AbilityRuntime_TypeDescriptor_GetStructName逐个获取结构体名称。
 
-    <!-- @[modular_object_extension_dispatcher_getStructName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getStructName -->
 
     ``` C++
     uint32_t structCount = 0;
@@ -238,7 +238,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 2. 遍历结构体的字段名称和类型：针对每个结构体，通过OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount获取字段数量，再通过OH_AbilityRuntime_TypeDescriptor_GetStructFieldName和OH_AbilityRuntime_TypeDescriptor_GetStructFieldType逐个获取字段名称和类型。
 
-    <!-- @[modular_object_extension_dispatcher_getStructField](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getStructField -->
     
     ``` C++
     // 获取结构体的字段数量，逐个遍历字段名和字段类型
@@ -273,7 +273,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 1. 查询所有枚举名称：通过OH_AbilityRuntime_TypeDescriptor_GetEnumCount获取枚举数量，再通过OH_AbilityRuntime_TypeDescriptor_GetEnumName逐个获取枚举名称。
 
-    <!-- @[modular_object_extension_dispatcher_getEnumName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getEnumName -->
 
     ``` C++
     uint32_t enumCount = 0;
@@ -299,7 +299,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 2. 遍历所有枚举值名称和枚举值：针对每个枚举，通过OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount获取枚举值数量，再通过OH_AbilityRuntime_TypeDescriptor_GetEnumValueName和OH_AbilityRuntime_TypeDescriptor_GetEnumValue逐个获取枚举值名称和枚举值。
 
-    <!-- @[modular_object_extension_dispatcher_getEnumValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @modular_object_extension_dispatcher_getEnumValue -->
 
     ``` C++
     // 遍历枚举的所有枚举值名称和对应的枚举值
@@ -338,7 +338,7 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 通过OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount获取方法参数数量，再通过OH_AbilityRuntime_TypeDescriptor_GetMethodParamName和OH_AbilityRuntime_TypeDescriptor_GetMethodParamType逐个获取参数名称和类型。
 
-<!-- @[modular_object_extension_dispatcher_getMethodParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_getMethodParam -->
 
 ``` C++
 static void QueryMethodParamInfo(const char *interfaceName, const char *methodName)
@@ -380,7 +380,7 @@ static void QueryMethodParamInfo(const char *interfaceName, const char *methodNa
 
 通过OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType获取方法的返回值类型信息。TypeInfo中的`vt`字段标识数据类型。
 
-<!-- @[modular_object_extension_dispatcher_getMethodReturnType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_getMethodReturnType -->
 
 ``` C++
 static void QueryMethodReturnType(const char *interfaceName, const char *methodName)
@@ -435,7 +435,7 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 
 以调用`Add(int32_t a, int32_t b)`方法为例，将参数封装为Variant数组，通过OH_AbilityRuntime_ModObjDispatcher_CallMethod发起调用。
 
-<!-- @[modular_object_extension_dispatcher_callMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callMethod -->
 
 ``` C++
 // 构造参数
@@ -486,7 +486,7 @@ OH_LOG_INFO(LOG_APP, "addResult :%{public}d", addResult);
 
 创建并填充二维数组：先构造嵌套的TypeInfo（内层`array<i32,5>`，外层`array<inner,5>`），再用`ArrayCreate`创建外层数组，逐行创建内层数组并填充元素后设入外层。
 
-<!-- @[modular_object_extension_dispatcher_callTypeArray_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeArray_build -->
 
 ``` C++
 static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t arrSize)
@@ -529,7 +529,7 @@ static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t 
 
 组装参数并调用方法：将数组句柄包装为Variant参数，通过`CallMethod`发起调用。
 
-<!-- @[modular_object_extension_dispatcher_callTypeArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeArray -->
 
 ``` C++
 uint32_t arrSize = 5;
@@ -555,7 +555,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 解析返回的二维数组：通过`ArrayGetSize`获取行列数，用`ArrayGet`逐层读取元素。
 
-<!-- @[modular_object_extension_dispatcher_callTypeArray_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeArray_parse -->
 
 ``` C
 static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
@@ -590,7 +590,7 @@ static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 
 通过OH_AbilityRuntime_ModObjDispatcher_VectorCreate创建向量，使用OH_AbilityRuntime_ModObjDispatcher_VectorAdd添加元素。向量为动态长度容器。
 
-<!-- @[modular_object_extension_dispatcher_callTypeVector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeVector -->
 
 ``` C++
 // 创建 vector<i32> 并添加元素
@@ -645,7 +645,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 通过OH_AbilityRuntime_ModObjDispatcher_SetCreate创建集合，使用OH_AbilityRuntime_ModObjDispatcher_SetAdd添加元素。集合中的元素不重复。
 
-<!-- @[modular_object_extension_dispatcher_callTypeSet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeSet -->
 
 ``` C++
 // 创建 set<i32> 并添加元素
@@ -702,7 +702,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 创建映射并填充键值对：通过`MapCreate`指定键值类型后，构造key和value的Variant调用`MapPut`逐条添加。
 
-<!-- @[modular_object_extension_dispatcher_callTypeMap_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeMap_fill -->
 
 ``` C
 static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
@@ -723,7 +723,7 @@ static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
 
 组装参数并调用方法：将映射句柄包装为Variant参数，通过`CallMethod`发起调用。
 
-<!-- @[modular_object_extension_dispatcher_callTypeMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeMap -->
 
 ``` C++
 // 创建 map<String,i32>，填充键值对后调用方法
@@ -754,7 +754,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 解析返回的映射：通过`MapGetSize`获取元素数量，用`MapGetKeyAt`和`MapGetValueAt`逐条读取键值。
 
-<!-- @[modular_object_extension_dispatcher_callTypeMap_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeMap_parse -->
 
 ``` C
 static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
@@ -783,7 +783,7 @@ static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 
 创建结构体并设置字段：通过`StructCreate`按名称创建实例，再用`StructSetField`逐个设置字段值。
 
-<!-- @[modular_object_extension_dispatcher_callTypeStruct_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeStruct_create -->
 
 ``` C
 static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t x, int32_t y)
@@ -805,7 +805,7 @@ static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t
 
 组装参数并调用方法：将结构体句柄包装为Variant参数，通过`CallMethod`发起调用。
 
-<!-- @[modular_object_extension_dispatcher_callTypeStruct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeStruct -->
 
 ``` C++
 // 创建 Point 结构体入参，组装参数后调用方法
@@ -838,7 +838,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 解析返回的结构体：通过`StructGetField`按字段名读取返回结构体中的字段值。
 
-<!-- @[modular_object_extension_dispatcher_callTypeStruct_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @modular_object_extension_dispatcher_callTypeStruct_parse -->
 
 ``` C
 static void ParseStructResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)

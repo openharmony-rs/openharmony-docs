@@ -17,7 +17,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -27,7 +27,7 @@
 2. 使用场景。
 - 获取用户偏好。
 
-   <!-- @[get_user_preference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   <!-- @get_user_preference -->
    
    ``` TypeScript
    // 判断系统当前是否使用本地数字

@@ -80,7 +80,7 @@ libudmf.so
 
 ## 引用头文件
 
-<!-- @[udmf_sample_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @udmf_sample_head_file -->
 
 ``` C++
 #include <cstdint>
@@ -106,7 +106,7 @@ libudmf.so
 4. 比较UTD实例对象是否相等。
 5. 使用结束后，删除上述步骤中产生的指针。
 
-<!-- @[udmf_sample_get_typeId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @udmf_sample_get_typeId -->
 
 ``` C++
 int32_t GetTypeId()
@@ -148,7 +148,7 @@ int32_t GetTypeId()
 5. 保存以上数据至数据库中，得到返回的key值。
 6. 使用结束后，删除上述步骤中产生的指针。
 
-<!-- @[udmf_sample_send_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @udmf_sample_send_unifieddata -->
 
 ``` C++
 int32_t SendUnifiedData()
@@ -197,7 +197,7 @@ int32_t SendUnifiedData()
 5. 读取hyperlink数据中的各项信息。
 6. 使用结束后，删除上述步骤中产生的指针。
 
-<!-- @[udmf_sample_get_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @udmf_sample_get_unifieddata -->
 
 ``` C++
 static void ProcessHyperlinkFromRecord(OH_UdmfRecord* record, OH_UdsHyperlink* hyperlink)
@@ -263,7 +263,7 @@ int32_t GetUnifiedData()
 3. 设置hyperlink中的URL和描述信息。
 4. 定义OH_UdmfRecordProvider实例注销回调函数。
 
-<!-- @[udmf_sample_get_data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @udmf_sample_get_data_callback -->
 
 ``` C++
 // 为了代码可读性，代码中省略了各个步骤操作结果的校验，实际开发中需要确认每次调用的成功。
@@ -294,7 +294,7 @@ static void ProviderFinalizeCallback(void* context) { OH_LOG_INFO(LOG_APP, "OH_U
 4. 构建数据，将数据写入数据库中，得到返回的Key值。
 5. 使用结束后，删除上述步骤中产生的指针。
 
-<!-- @[udmf_sample_send_delay_unifieddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UdmfNdkSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @udmf_sample_send_delay_unifieddata -->
 
 ``` C++
 int32_t SendDelayUnifiedData()

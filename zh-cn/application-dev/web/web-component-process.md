@@ -14,7 +14,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
 **图1** ArkWeb进程模型图
 
-![web-component-process](figures/arkweb_component_process.png)
+web-component-process
 
 - 应用进程中Web相关线程（应用唯一）
 
@@ -50,7 +50,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
    移动设备默认为单进程渲染，而2in1设备则默认采用多进程渲染。通过调用getRenderProcessMode可查询当前的渲染子进程模式，其中枚举值0表示单进程模式，枚举值1对应多进程模式。若setRenderProcessMode接口传入的值不在RenderProcessMode枚举值范围内，系统将自动采用多进程渲染模式作为默认设置。
 
-    <!-- @[setRenderProcessMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/SetRenderProcessMode.ets) -->
+    <!-- @setRenderProcessMode -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -84,7 +84,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
 2. 可通过terminateRenderProcess来主动关闭渲染进程。若渲染进程尚未启动或已销毁，此操作将不会产生任何影响。此外，销毁渲染进程将同时影响所有与之关联的其他实例。
 
-    <!-- @[terminateRenderProcess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/TerminateRenderProcess.ets) -->
+    <!-- @terminateRenderProcess -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -109,7 +109,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
 3. 可通过onRenderExited来监听渲染进程的退出事件，从而获知退出的具体原因（如内存OOM、crash或正常退出等）。由于多个Web组件可能共用同一个渲染进程，因此，每当渲染进程退出时，每个受此影响的Web组件均会触发相应的回调。
 
-    <!-- @[onRenderExited](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderExited.ets) -->
+    <!-- @onRenderExited -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -136,7 +136,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
    当Web组件无法处理输入事件，或未能在预期时间内导航至新URL时，系统会判定网页进程为无响应状态，并触发onRenderProcessNotResponding回调。在网页进程持续无响应期间，该回调可能反复触发，直至进程恢复至正常运行状态，此时将触发onRenderProcessResponding回调。
 
-    <!-- @[onRenderProcessNotResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessNotResponding.ets) -->
+    <!-- @onRenderProcessNotResponding -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -158,7 +158,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
     }
     ```
 
-    <!-- @[onRenderProcessResponding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/OnRenderProcessResponding.ets) -->
+    <!-- @onRenderProcessResponding -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -181,7 +181,7 @@ ArkWeb是多进程模型，分为应用进程、Web渲染进程、Web GPU进程�
 
 5. Web组件创建参数涵盖了多进程模型的运用。其中，sharedRenderProcessToken标识了当前Web组件所指定的共享渲染进程的token。在多渲染进程模式下，拥有相同token的Web组件将优先尝试重用与该token绑定的渲染进程。token与渲染进程的绑定关系，在渲染进程的初始化阶段形成。一旦渲染进程不再关联任何Web组件，它与token的绑定关系将被解除。
 
-    <!-- @[WebComponentCreat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/WebComponentCreat.ets) -->
+    <!-- @WebComponentCreat -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';

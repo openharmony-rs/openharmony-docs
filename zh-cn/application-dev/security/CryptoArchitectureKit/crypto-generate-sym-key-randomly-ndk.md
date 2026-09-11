@@ -25,7 +25,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 2. 调用OH_CryptoSymKeyGenerator_Generate，随机生成对称密钥对象（OH_CryptoSymKey）。
 
 3. 调用OH_CryptoSymKey_GetKeyData，获取密钥对象的二进制数据。
-<!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/aes.cpp) -->
+<!-- @generate_aes_key -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -68,7 +68,7 @@ OH_Crypto_ErrCode testGenerateSymKey()
 
 3. 调用OH_CryptoSymKey_GetKeyData，获取密钥对象的二进制数据。
 
-<!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/sm4.cpp) -->
+<!-- @generate_sm4_key -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

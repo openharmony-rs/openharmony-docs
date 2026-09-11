@@ -24,7 +24,7 @@
 
 以下示例展示了如何为单个缓存下载任务配置重试参数：
 
-<!-- @[cache_download_with_retry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadRetry.ets)--> 
+<!-- @cache_download_with_retry--> 
 
 ``` TypeScript
 startCacheDownloadWithRetry(): void {
@@ -65,7 +65,7 @@ startCacheDownloadWithRetry(): void {
 
 以下示例展示了如何为单个缓存下载任务配置超时参数：
 
-<!-- @[cache_download_with_timeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadTimeout.ets)--> 
+<!-- @cache_download_with_timeout--> 
 
 ``` TypeScript
 startCacheDownloadWithTimeout(): void {
@@ -105,7 +105,7 @@ startCacheDownloadWithTimeout(): void {
 
 以下示例展示了如何设置全局重试配置：
 
-<!-- @[set_global_retry_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/GlobalRetryOptions.ets)--> 
+<!-- @set_global_retry_options--> 
 
 ``` TypeScript
 setGlobalRetryOptions(): void {
@@ -138,7 +138,7 @@ setGlobalRetryOptions(): void {
 
 以下示例展示了如何设置全局超时配置：
 
-<!-- @[set_global_timeout_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/GlobalTimeoutOptions.ets)--> 
+<!-- @set_global_timeout_options--> 
 
 ``` TypeScript
 setGlobalTimeoutOptions(): void {
@@ -181,7 +181,7 @@ setGlobalTimeoutOptions(): void {
 
 注册和注销回调的基本用法如下：
 
-<!-- @[cache_download_register_callbacks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadRetry.ets)--> 
+<!-- @cache_download_register_callbacks--> 
 
 ``` TypeScript
 // 注册回调监听（页面生命周期内只注册一次）
@@ -207,7 +207,7 @@ private registerCallbacks(): void {
 
 <!-- --> 
 
-<!-- @[cache_download_unregister_callbacks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadRetry.ets)--> 
+<!-- @cache_download_unregister_callbacks--> 
 
 ``` TypeScript
 // 注销回调监听
@@ -221,7 +221,7 @@ private unregisterCallbacks(): void {
 
 开发者可以通过cancel接口取消正在进行的缓存下载任务。
 
-<!-- @[cache_download_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadRetry.ets)-->
+<!-- @cache_download_cancel-->
 
 ``` TypeScript
 cancelCacheDownload(): void {

@@ -16,7 +16,7 @@ uniqueId是系统分配的唯一标识的节点Id。
 
 从API version 20开始，使用OH_ArkUI_NodeUtils_GetNodeUniqueId接口，可以获取目标节点的uniqueId。使用OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId接口，可以通过uniqueId获取目标节点的指针。
 
-<!-- @[ndknodequeryoperate1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp) -->
+<!-- @ndknodequeryoperate1_start -->
 
 ```cpp
 const unsigned int VALUE_1 = 480;
@@ -64,7 +64,7 @@ const unsigned int VALUE_3 = 50;
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
+   <!-- @ndknodequeryoperate2_start -->
    
    ``` TypeScript
    import nativeNode from 'libentry.so';
@@ -94,7 +94,7 @@ const unsigned int VALUE_3 = 50;
 
 2. 新建`GetNodeByIdExample.h`文件，在其中创建Text节点并设置id属性，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口拿到节点。
 
-   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
+   <!-- @ndknodequeryoperate3_start -->
    
    ```c
    // GetNodeByIdExample.h
@@ -199,7 +199,7 @@ const unsigned int VALUE_3 = 50;
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @ndknodequeryoperate3_start -->
    
    ```cpp
    // NativeEntry.cpp
@@ -260,7 +260,7 @@ const unsigned int VALUE_3 = 50;
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
+   <!-- @ndknodequeryoperate4_start -->
    
    ``` TypeScript
    // MoveTo.ets
@@ -291,7 +291,7 @@ const unsigned int VALUE_3 = 50;
 
 2. 新建`MoveTo.h`文件，在其中创建Stack节点，通过OH_ArkUI_NodeUtils_MoveTo接口移动Stack节点。
 
-   <!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
+   <!-- @ndknodequeryoperate5_start -->
 
    ```c
    // MoveToExample.h
@@ -445,7 +445,7 @@ const unsigned int VALUE_3 = 50;
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @ndknodequeryoperate3_start -->
 
    ```cpp
    // NativeEntry.cpp
@@ -496,7 +496,7 @@ const unsigned int VALUE_3 = 50;
 
 4. 运行程序，点击按钮，Stack节点会移动到目标位置。
 
-   ![moveToNativeDemo](figures/moveToNativeDemo.gif)
+   moveToNativeDemo
 
 ## 在当前即时帧触发节点属性更新
 
@@ -504,7 +504,7 @@ const unsigned int VALUE_3 = 50;
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
+   <!-- @ndknodequeryoperate6_start -->
    
    ``` TypeScript
    
@@ -554,7 +554,7 @@ const unsigned int VALUE_3 = 50;
 
 2. 新建`Attribute_util.h`用于设置组件属性。
 
-   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
+   <!-- @ndknodequeryoperate7_start -->
    
    ```c
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
@@ -601,7 +601,7 @@ const unsigned int VALUE_3 = 50;
 
 3. 在`napi_init.cpp`中，挂载Native节点。
 
-   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @ndknodequeryoperate7_start -->
    
    ```cpp
    #include "Attribute_util.h"
@@ -698,7 +698,7 @@ const unsigned int VALUE_3 = 50;
 
 4. 运行程序，点击按钮，切换图片正常展示。
 
-   ![moveToNativeDemo](figures/OH_ArkUI_NativeModule_InvalidateAttributes_test.png)
+   moveToNativeDemo
 
 ## 用不同的展开模式获取对应下标的子节点
 
@@ -976,7 +976,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
   
 2. NDK侧通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口获取ArkTS组件，并通过懒展开模式获取对应的子组件信息。
 
-   <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
+   <!-- @ndknodequeryoperate9_start -->
    
    ```c
    ArkUI_NodeHandle childNode = nullptr;
@@ -1176,4 +1176,4 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
 
 4. 运行程序，点击change text visibility后打印text是否在渲染树上。
 
-   ![isInRenderState](figures/isInRenderState_c.png)
+   isInRenderState

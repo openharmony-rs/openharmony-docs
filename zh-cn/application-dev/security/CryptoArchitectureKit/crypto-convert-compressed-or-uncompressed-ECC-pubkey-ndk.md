@@ -25,7 +25,7 @@
 3. 调用OH_CryptoAsymKeyGenerator_Convert，传入封装后的Crypto_DataBlob，生成非对称密钥对象（OH_CryptoKeyPair）。
 4. 调用OH_CryptoPubKey_Encode，设置参数为'X509|COMPRESSED'，获取压缩公钥数据的字节流。
 
-<!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/specifyUncompressedPublicKey.cpp) -->
+<!-- @convert_ecc_uncompressed_pub_keypair -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

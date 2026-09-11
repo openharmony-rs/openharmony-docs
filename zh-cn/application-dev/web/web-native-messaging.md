@@ -12,10 +12,10 @@
 
 从API version 21开始，支持开发者在应用中使用WebNativeMessagingExtensionAbility组件，为浏览器扩展提供后台服务能力。
 
-浏览器扩展通过[WebExtensions runtime API](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions/API/runtime)连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。
+浏览器扩展通过WebExtensions runtime API连接WebNativeMessagingExtensionAbility，双方通信是通过共享pipe文件描述符后调用IO接口实现。
 
 
-![](figures/connect-native-overview.png)
+
 
 > **说明**
 >
@@ -47,7 +47,7 @@
 
 ### 整体流程
 
-![](figures/connect-native-detail.png)
+
 - **流程：**
 1. **浏览器扩展**调用runtime.connectNative接口传入应用包名，来创建NativeMessaging连接。
 2. **浏览器应用**调用dataShare获取应用配置信息，包括WebNativeMessagingExtension的名称，和限制访问规则（是否允许某个扩展访问该WebNativeMessagingExtension）。

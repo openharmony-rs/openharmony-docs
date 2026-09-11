@@ -17,7 +17,7 @@ Web组件的文本选中菜单是一种通过自定义元素实现的上下文�
 2. 通过onMenuItemClick方法处理菜单项点击事件，当返回false时会执行系统默认逻辑。
 3. 创建一个EditMenuOptions对象，包含onCreateMenu和onMenuItemClick两个方法，通过Web组件的editMenuOptions接口与Web组件绑定。
 
-<!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) --> 
+<!-- @web_textMenuItem --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -104,7 +104,7 @@ struct WebComponent {
     </body>
   </html>
   ```
-  ![editMenuOption](./figures/editMenuOption.gif)
+  editMenuOption
 ## 上下文菜单
 上下文菜单是用户通过特定操作（如右键点击或长按富文本）触发的快捷菜单，用于提供与当前操作对象或界面元素相关的功能选项。菜单项纵向排列。系统未提供默认实现，若应用未实现，则不显示上下文菜单。应用需要创建一个Menu组件并与Web组件绑定，在菜单弹出时可通过Web组件的onContextMenuShow回调接口获取上下文菜单的详细信息，包括点击位置的HTML元素信息及点击位置信息。
 
@@ -112,7 +112,7 @@ struct WebComponent {
 2. 使用bindPopup方法将Menu组件与Web组件绑定。当上下文菜单弹出时，将显示创建的Menu组件。
 3. 在onContextMenuShow回调中获取上下文菜单事件信息onContextMenuShowEvent。其中param为WebContextMenuParam类型，包含点击位置对应HTML元素信息和位置信息，result为WebContextMenuResult类型，提供常见的菜单能力。
 
-<!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) --> 
+<!-- @web_ContextMenu --> 
 
 ``` TypeScript
 // xxx.ets
@@ -253,7 +253,7 @@ struct WebComponent {
 </body>
 </html>
 ```
-![onContextMenuShow](./figures/onContextMenuShow.gif)
+onContextMenuShow
 ## 自定义菜单
 自定义菜单赋予开发者灵活控制菜单触发时机与视觉呈现的能力，使应用能够根据用户操作场景动态匹配功能入口，显著简化开发过程中的界面适配工作，同时让交互体验更贴近用户直觉。
 
@@ -261,7 +261,7 @@ struct WebComponent {
 1. 创建Menu组件作为菜单弹窗。
 2. 通过Web组件的bindSelectionMenu方法绑定MenuBuilder菜单弹窗。将WebElementType设置为WebElementType.IMAGE，responseType设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在options中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
 
-<!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
+<!-- @web_BindSelectionMenu -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -360,13 +360,13 @@ struct WebComponent {
   </body>
 </html>
 ```
-![bindSelectionMenu](./figures/bindSelectionMenu.gif)
+bindSelectionMenu
 
 自API version 20起，支持绑定长按超链接菜单。可以为图片和链接绑定不同的自定义菜单。
 
 以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用Progress组件展示了加载进度。
 
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
+<!-- @web_PreviewBuilder --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -562,14 +562,14 @@ html示例
 </body>
 </html>
 ```
-![bindSelectionMenu_link](./figures/web-menu-bindselectionmenu-link.gif)
+bindSelectionMenu_link
 
 ## Web菜单保存图片
 1. 创建MenuBuilder组件作为菜单弹窗，使用SaveButton组件实现图片保存，通过bindContextMenu将MenuBuilder与Web绑定。
 2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
+<!-- @web_Save_Image -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -716,14 +716,14 @@ struct WebComponent {
   </body>
   </html>
   ```
-![emptyEditMenuOption](./figures/web-menu-savePic.gif)
+emptyEditMenuOption
 
 ## Web菜单获取选中文本
 Web组件的editMenuOptions接口中没有提供获取选中文本的方式。开发者可通过javaScriptProxy获取到JavaScript的选中文本，实现自定义菜单的逻辑。
 1. 创建SelectClass类，通过javaScriptProxy将SelectClass对象注册到Web组件中。
 2. 在HTML侧注册选区变更监听器，在选区变更时通过SelectClass对象将选区设置到ArkTS侧。
 
-<!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
+<!-- @web_EditMenuOptions -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -814,7 +814,7 @@ struct WebComponent {
   </body>
   </html>
   ```
-![web-menu-get-select](./figures/web-menu-get-select.gif)
+web-menu-get-select
 
 <!--RP1-->
 <!--RP1End-->
@@ -823,7 +823,7 @@ struct WebComponent {
 ### 如何禁用长按选择时弹出菜单
 可通过editMenuOptions接口将系统默认菜单全部过滤，此时无菜单项，则不会显示菜单。
 
-<!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
+<!-- @web_Disable_long_press --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -871,17 +871,17 @@ struct WebComponent {
     </body>
   </html>
   ```
-![emptyEditMenuOption](./figures/emptyEditMenuOption.gif)
+emptyEditMenuOption
 
 ### 出现选区时手柄菜单不显示
-可排查是否通过JavaScript的[selection-api](https://www.w3.org/TR/selection-api/)对选区进行了操作，目前通过这种方式改变选区会导致文本选中菜单不显示。
+可排查是否通过JavaScript的selection-api对选区进行了操作，目前通过这种方式改变选区会导致文本选中菜单不显示。
 
 ### 如何修改文本选中菜单的样式
 从API version 21开始，应用可通过bindSelectionMenu接口，实现自定义文本选中菜单。
 
 **示例代码**
 
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
+<!-- @web_BindSelectionMenu_Text -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1023,4 +1023,4 @@ struct WebComponent {
 </body>
 </html>
 ```
-![bindselectionmen-text](./figures/web-menu-bindselectionmen-text.gif)
+bindselectionmen-text

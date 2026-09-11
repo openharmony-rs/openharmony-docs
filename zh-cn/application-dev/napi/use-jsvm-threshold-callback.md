@@ -48,7 +48,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 **cpp部分代码**
 
- <!-- @[oh_jsvm_take_raw_heap_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutRawheap/entry/src/main/cpp/hello.cpp) -->    
+ <!-- @oh_jsvm_take_raw_heap_snapshot -->    
  
  ``` C++
  #include <iostream>

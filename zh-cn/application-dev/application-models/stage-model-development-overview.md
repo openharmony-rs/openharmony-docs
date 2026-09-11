@@ -27,7 +27,7 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
 
 **图1** Stage模型概念图
 
-![stage-concepts](figures/stage-concepts.png)
+stage-concepts
 
 
 - AbilityStage
@@ -106,7 +106,7 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
 
 **图2** Stage模型构成要素
 
-![stage-model-components](figures/stage-model-components-brief.png)
+stage-model-components
 
 **开发阶段** ：需要通过Stage模型提供的应用组件（UIAbility组件和ExtensionAbility组件）开发应用功能，并在应用的配置文件（app.json5和module.json5）中注册应用的相关信息。
 
@@ -132,4 +132,4 @@ Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应�
 
 针对Stage模型开发，有以下相关实例可供参考：
 
-- [Stage模型（ArkTS）（Full SDK）(API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/StageModel)
+- Stage模型（ArkTS）（Full SDK）(API10)

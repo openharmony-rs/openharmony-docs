@@ -30,7 +30,7 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS作为PKCS #7的
 
 解封装示例：
 
-<!-- @[create-cms-decapsulation-object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsDecapsulationObject.ets) -->
+<!-- @create-cms-decapsulation-object -->
 
 ``` TypeScript
 

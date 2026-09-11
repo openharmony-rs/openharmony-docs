@@ -7,8 +7,8 @@
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
-- [Calendar Kit简介](calendarmanager-overview.md)
-- [日历账户管理](calendarmanager-calendar-developer.md)
-- [日程管理](calendarmanager-event-developer.md)
+- Calendar Kit简介
+- 日历账户管理
+- 日程管理
 <!--RP1-->
 <!--RP1End-->

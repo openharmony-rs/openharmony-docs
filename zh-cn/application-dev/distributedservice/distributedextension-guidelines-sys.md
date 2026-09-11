@@ -44,7 +44,7 @@
 
 设备A应用集成**DistributedExtensionAbility**，当设备A侧分布式软总线收到应用的消息时，通过DistributedExtensionAbility拉起设备A侧应用后台服务，设备A侧应用后台服务将设备B侧应用消息发送到应用服务。
 
-![实现原理](figures/distributedextension.png)
+实现原理
 
 ## 约束与限制
 
@@ -62,7 +62,7 @@
 
 ### 搭建环境
 
-1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
+1. 在PC上安装DevEco Studio，要求版本在4.1及以上。
 2. 将public-SDK更新到API 20或以上，更新SDK的具体操作可参见更新指南。
 3. 打开设备A和设备B的蓝牙，互相识别，实现组网。
 

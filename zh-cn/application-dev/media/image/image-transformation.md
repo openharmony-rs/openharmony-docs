@@ -16,7 +16,7 @@
 
 2. 获取图片信息。
 
-   <!-- @[pixelmap_get_image_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @pixelmap_get_image_info -->
    
    ``` TypeScript
    // 获取图片大小。
@@ -33,11 +33,11 @@
 
    原图：
 
-   ![Original drawing](figures/original-drawing.jpeg)
+   Original drawing
 
    - 裁剪
 
-     <!-- @[pixelmap_crop_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_crop_image -->
      
      ``` TypeScript
      const imageInfo = this.pixelMap.getImageInfoSync();
@@ -52,11 +52,11 @@
      });
      ```
 
-     ![cropping](figures/cropping.jpeg)
+     cropping
 
    - 缩放
 
-     <!-- @[pixelmap_scale_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_scale_image -->
      
      ``` TypeScript
      // 宽为原来的0.5倍。
@@ -66,11 +66,11 @@
      });
      ```
 
-     ![zoom](figures/zoom.jpeg)
+     zoom
 
    - 平移
 
-     <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_translate_image -->
      
      ``` TypeScript
      // 向下平移100。
@@ -80,11 +80,11 @@
      });
      ```
 
-     ![offsets](figures/offsets.jpeg)
+     offsets
 
    - 旋转
 
-     <!-- @[pixelmap_rotate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_rotate_image -->
      
      ``` TypeScript
      // 顺时针旋转90°。
@@ -93,11 +93,11 @@
      });
      ```
 
-     ![rotate](figures/rotate.jpeg)
+     rotate
 
    - 翻转
 
-     <!-- @[pixelmap_vertical_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_vertical_flip_image -->
      
      ``` TypeScript
      // 垂直翻转。
@@ -106,9 +106,9 @@
      });
      ```
 
-     ![Vertical Flip](figures/vertical-flip.jpeg)
+     Vertical Flip
 
-     <!-- @[pixelmap_horizontal_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_horizontal_flip_image -->
      
      ``` TypeScript
      // 水平翻转。
@@ -117,11 +117,11 @@
      });
      ```
 
-     ![Horizontal Flip](figures/horizontal-flip.jpeg)
+     Horizontal Flip
 
    - 透明度
 
-     <!-- @[pixelmap_change_opacity_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @pixelmap_change_opacity_image -->
      
      ``` TypeScript
      // 将所有像素的透明度改为0.5。
@@ -130,7 +130,7 @@
      });
      ```
 
-     ![Transparency](figures/transparency.png)
+     Transparency
 
 <!--RP1-->
 <!--RP1End-->

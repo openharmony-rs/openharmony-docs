@@ -23,7 +23,7 @@
 1. 应用多实例的配置方法。
 
     在工程项目中对App/app.json5配置文件配置multiAppMode字段。具体配置如下：
-    <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5)  -->
+    <!-- @multi_instance  -->
     
     ``` JSON5
     {

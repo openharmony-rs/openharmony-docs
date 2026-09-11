@@ -36,7 +36,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## 开发案例
 构造安全导入密钥的参数集
-<!-- @[prepare_import_key_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @prepare_import_key_cpp_one -->
 
 ``` C++
 
@@ -109,7 +109,7 @@ static struct OH_Huks_Blob g_importedKeyAliasAes256 = {.size = (uint32_t)strlen(
 static struct OH_Huks_Blob g_importedAes256PlainKey = {.size = (uint32_t)strlen("This is plain key to be imported"),
                                                        .data = (uint8_t *)"This is plain key to be imported"};
 ```
-<!-- @[prepare_import_key_cpp_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @prepare_import_key_cpp_two -->
 
 ``` C++
 static struct OH_Huks_Param g_importWrappedAes256Params[] = {
@@ -171,7 +171,7 @@ static struct OH_Huks_Param g_importAgreeKeyParams[] = {
 <!-- -->
 
 安全导入密钥的核心函数实现
-<!-- @[encrypt_import_key_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @encrypt_import_key_cpp_one -->
 
 ``` C++
 OH_Huks_Result HuksAgreeKey(const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *keyAlias,
@@ -331,7 +331,7 @@ static OH_Huks_Result BuildWrappedKeyData(struct OH_Huks_Blob **blobArray, uint3
     return ret;
 }
 ```
-<!-- @[encrypt_import_key_cpp_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @encrypt_import_key_cpp_two -->
 
 ``` C++
 static OH_Huks_Result CheckParamsValid(const struct HksImportWrappedKeyTestParams *params)
@@ -469,7 +469,7 @@ static OH_Huks_Result ImportWrappedKey(const struct HksImportWrappedKeyTestParam
 <!-- -->
 
 安全导入密钥的完整流程实现
-<!-- @[encrypt_import_key_cpp_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @encrypt_import_key_cpp_three -->
 
 ``` C++
 OH_Huks_Result HksImportWrappedKeyTestCommonCase(const struct HksImportWrappedKeyTestParams *params)

@@ -73,7 +73,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
 可参考文档：  
 
-[Native侧子线程与UI主线程通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/native_subthread-to-uimain) 
+Native侧子线程与UI主线程通信 
 
 使用Node-API接口进行异步任务开发   
 
@@ -81,7 +81,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
 - 参考文档：  
 
-[如何在C++调用从ArkTS传递过来的function](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-26)    
+如何在C++调用从ArkTS传递过来的function    
 
 ## 如何确保数据类型的正确映射与内存管理的安全性
 
@@ -196,16 +196,16 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 
 1. napi_env和ArkTS线程是绑定的，napi_env不能跨线程使用，否则会导致稳定性问题。可参考文档
 
-   [多线程限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-process#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%99%90%E5%88%B6)。
+   多线程限制。
 
 2. 在使用env调用napi接口时，需要注意，大部分的napi接口只能在env所在的ArkTS线程上调用，不然会出现多线程安全问题。
 
-   可参考该文档的第四点【multi-thread】 [开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。   
+   可参考该文档的第四点【multi-thread】 开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题。   
 3. 最好不要缓存napi env，否则容易出现多线程安全问题和use-after-free问题。
 
-   可参考该文档的第八点【use-after-free】[开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。 
+   可参考该文档的第八点【use-after-free】开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题。 
 
-4. [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73)。
+4. napi_env禁止缓存的原因是什么。
 
 
 ## napi_call_threadsafe_function执行顺序不符合预期
@@ -380,4 +380,4 @@ void FinalizeB(napi_env env, void* data, void* hint) {
 
 OpenHarmony提供了丰富的Node-API接口示例。参考开发指南和示例工程，可以快速掌握Node-API模块开发流程。
 
-可以使用[AKI](https://gitcode.com/openharmony-sig/aki)或[napi-generator](https://gitcode.com/openharmony/napi_generator)等开发工具，辅助Node-API开发，降低学习难度并提高开发效率。
+可以使用AKI或napi-generator等开发工具，辅助Node-API开发，降低学习难度并提高开发效率。

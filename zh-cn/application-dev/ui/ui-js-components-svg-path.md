@@ -33,7 +33,7 @@ svg组件绘制路径时，通过Path中的M（起点）、H（水平线）、a�
 ```
 
 
-![Path-Drawing](figures/Path-Drawing.png)
+Path-Drawing
 
 
 > **说明：**

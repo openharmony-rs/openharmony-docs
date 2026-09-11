@@ -22,7 +22,7 @@ EventHub为UIAbility组件提供了事件机制，使它们能够进行订阅、
 
 1. 在UIAbility中调用eventHub.on()方法注册一个自定义事件“event1”，eventHub.on()有如下两种调用方式，使用其中一种即可。
 
-    <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @onCreate -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -55,7 +55,7 @@ EventHub为UIAbility组件提供了事件机制，使它们能够进行订阅、
 
 2. 在UI中通过eventHub.emit()方法触发该事件，在触发事件的同时，根据需要传入参数信息。
 
-    <!-- @[EventHubPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/pages/EventHubPage.ets) -->
+    <!-- @EventHubPage -->
 
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
@@ -121,7 +121,7 @@ EventHub为UIAbility组件提供了事件机制，使它们能够进行订阅、
    
 4. 在自定义事件“event1”使用完成后，可以根据需要调用eventHub.off()方法取消该事件的订阅。
 
-    <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @onDestroy -->
     
     ``` TypeScript
     // ···

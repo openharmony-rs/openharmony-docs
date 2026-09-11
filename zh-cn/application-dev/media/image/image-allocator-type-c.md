@@ -90,7 +90,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 1. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @get_returnValue -->    
    
    ``` C++
    // 处理napi返回值。
@@ -104,7 +104,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 获取和操作stride值。
 
-   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->      
+   <!-- @allocator_operations -->      
    
    ``` C++
    #include <cstring>
@@ -312,7 +312,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 使用YUV格式解码时，需通过OH_DecodingOptions_SetPixelFormat设置像素格式，并推荐配合DMA内存分配使用。
 
-<!-- @[allocator_yuv_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->
+<!-- @allocator_yuv_operations -->
 
 ``` C++
 napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
@@ -386,7 +386,7 @@ napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
 
 ## 解码单张图片的内存限制
 
-为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
+为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考应用被查杀问题检测方法。
 
 图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用OH_PixelmapNative时及时释放，以避免进程被系统终止。
 

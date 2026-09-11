@@ -29,7 +29,7 @@
 
 1. 引用头文件。
 
-   <!-- @[event_subscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.h) -->
+   <!-- @event_subscriber_import -->
    
    ``` C
    #include <cstdint>
@@ -53,7 +53,7 @@
 
    通过OH_CommonEvent_CreateSubscribeInfo创建订阅者信息。
 
-   <!-- @[event_subscriber_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   <!-- @event_subscriber_create_destroy -->
    
    ``` C++
    CommonEvent_SubscribeInfo *CreateSubscribeInfo(const char *events[], int32_t eventsNum, const char *permission,
@@ -86,7 +86,7 @@
 
    创建订阅者时需传入公共事件的回调函数CommonEvent_ReceiveCallback。待事件发布时，订阅者会接收到回调数据CommonEvent_RcvData。
 
-   <!-- @[event_subscriber_on_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   <!-- @event_subscriber_on_receive -->
    
    ``` C++
    // 公共事件回调函数
@@ -112,7 +112,7 @@
 
    通过CommonEvent_Parameters传入key来获取附加信息内容。
 
-   <!-- @[event_subscriber_get_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   <!-- @event_subscriber_get_parameters -->
    
    ``` C++
    void GetParameters(const CommonEvent_RcvData *data)
@@ -141,7 +141,7 @@
 
    通过OH_CommonEvent_CreateSubscriber创建订阅者，传入订阅者信息CommonEvent_SubscribeInfo和步骤4公共事件回调函数OnReceive。
 
-   <!-- @[event_subscriber_create_and_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   <!-- @event_subscriber_create_and_destroy -->
    
    ``` C++
    // 创建订阅者
@@ -163,7 +163,7 @@
 
    通过OH_CommonEvent_Subscribe订阅事件。
 
-   <!-- @[event_subscriber_subscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+   <!-- @event_subscriber_subscriber -->
    
    ``` C++
    void Subscribe(CommonEvent_Subscriber *subscriber)
@@ -187,7 +187,7 @@
 
      通过OH_CommonEvent_AbortCommonEvent与OH_CommonEvent_FinishCommonEvent配合使用，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
-     <!-- @[event_subscriber_abort_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     <!-- @event_subscriber_abort_event -->
      
      ``` C++
      void AbortCommonEvent(CommonEvent_Subscriber *subscriber)
@@ -215,7 +215,7 @@
 
      通过OH_CommonEvent_ClearAbortCommonEvent与OH_CommonEvent_FinishCommonEvent配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。
 
-     <!-- @[event_subscriber_clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     <!-- @event_subscriber_clear -->
      
      ``` C++
      void ClearAbortCommonEvent(CommonEvent_Subscriber *subscriber)
@@ -248,7 +248,7 @@
 
      通过OH_CommonEvent_SetCodeToSubscriber与OH_CommonEvent_SetDataToSubscriber设置有序公共事件的代码和数据。
 
-     <!-- @[event_subscriber_set_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
+     <!-- @event_subscriber_set_get -->
      
      ``` C++
      void SetToSubscriber(CommonEvent_Subscriber *subscriber, const int32_t code, const char *data)

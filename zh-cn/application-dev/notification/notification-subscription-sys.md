@@ -21,7 +21,7 @@
 
 **图1** 通知业务流程  
 
-![notification_internal_principle](figures/notification_internal_principle.png)
+notification_internal_principle
 
 
 ## 接口说明

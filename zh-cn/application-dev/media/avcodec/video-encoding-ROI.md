@@ -79,7 +79,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 
 **图1：ROI坐标和最大允许面积占比示意图**
 
-![ROI坐标和最大允许面积占比示意图](figures/roi-size-and-coordinate.png)
+ROI坐标和最大允许面积占比示意图
 
 ## 生效机制说明
 
@@ -119,13 +119,13 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 **图2：NativeBuffer元数据接口配置ROI流程图**
 
-![NativeBuffer元数据接口配置ROI流程图](figures/roi-nativebuffer.png)
+NativeBuffer元数据接口配置ROI流程图
 
 详细开发步骤如下：
 
 1. 在CMakeLists.txt中链接动态库。
 
-   <!-- @[roi_cmake_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- @roi_cmake_link_libraries -->
    
    ``` Text
    set(BASE_LIBRARY
@@ -159,7 +159,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    相机输出视频帧时，若检测到ROI区域（如人脸），会将ROI信息写入帧的NativeBuffer元数据中。开发者可通过`OH_NativeBuffer_GetMetadataValue`提取ROI原始字符串。
 
-   <!-- @[roi_buffer_roi_extraction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
+   <!-- @roi_buffer_roi_extraction -->
    
    ``` C++
    OH_NativeBuffer *nativeBuffer = nullptr;
@@ -183,7 +183,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    提取的ROI原始字符串包含区域坐标信息，开发者需要通过`OH_VideoMetadata_GetRoiCount`、`OH_VideoMetadata_ParseRoiString`和`OH_VideoMetadata_AppendRoiString`接口解析原始ROI并追加DeltaQP参数，生成完整的ROI配置字符串（如"100,50-300,200=dqp:-6"）。
 
-   <!-- @[roi_buffer_roi_assembly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
+   <!-- @roi_buffer_roi_assembly -->
    
    ``` C++
    if (currentRoiStr.empty()) {
@@ -226,7 +226,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    在Surface模式下，编码器通过Surface接收视频帧。开发者需要先通过`OH_NativeWindow_NativeWindowRequestBuffer`从编码器Surface请求Buffer，再将组装好的ROI字符串写入该Buffer的NativeBuffer元数据中。
 
-   <!-- @[roi_nativebuffer_metadata_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
+   <!-- @roi_nativebuffer_metadata_config -->
    
    ``` C++
    OH_NativeBuffer *encoderNativeBuffer = nullptr;
@@ -254,7 +254,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    ROI配置完成后，通过`OH_NativeWindow_NativeWindowFlushBuffer`将预览Buffer和编码器Buffer提交，并释放相机帧资源。
 
-   <!-- @[roi_surface_flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
+   <!-- @roi_surface_flush_buffer -->
    
    ``` C++
    void RenderThread::FlushAndCleanup(OHNativeWindowBuffer *InBuffer, int32_t fenceFd1,
@@ -280,7 +280,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
 **图3：编码输入参数回调接口配置ROI流程图**
 
-![编码输入参数回调接口配置ROI流程图](figures/roi-input-param-callback.png)
+编码输入参数回调接口配置ROI流程图
 
 详细开发步骤如下：
 
@@ -302,7 +302,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    `CodecUserRoi`是定义在VideoEncoder类内部的嵌套结构体，包含队列指针以便回调直接访问。
 
-   <!-- @[roi_user_data_struct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/include/VideoEncoder.h) -->
+   <!-- @roi_user_data_struct -->
    
    ``` C
    // 参数回调配置的用户数据结构。
@@ -316,7 +316,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    在创建编码器后、Configure之前，注册编码输入参数回调。必须在Configure之前注册，否则回调不会生效。
 
-   <!-- @[roi_register_parameter_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/VideoEncoder.cpp) -->
+   <!-- @roi_register_parameter_callback -->
    
    ``` C++
    // 参数回调配置：在Configure之前注册参数回调。
@@ -341,7 +341,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    当编码器接收到输入数据时，会触发`OnNeedInputParameter`回调。在回调中，从RoiQueue中弹出PTS最小的ROI条目，并通过`OH_AVFormat_SetStringValue`配置到参数格式中。空字符串同样需配置至编码参数，以明确标识该帧未配置ROI区域。
 
-   <!-- @[roi_encode_parameter_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/VideoEncoder.cpp) -->
+   <!-- @roi_encode_parameter_callback -->
    
    ``` C++
    static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
@@ -365,7 +365,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    在帧处理线程中提取并组装ROI字符串后，需要将ROI字符串以PTS为索引，推入VideoEncoder的RoiQueue中。RoiQueue以PTS为键排序，确保编码回调按帧顺序获取ROI数据，避免错位。
 
-   <!-- @[roi_parameter_callback_str_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
+   <!-- @roi_parameter_callback_str_passing -->
    
    ``` C++
    int64_t pts = OH_NativeImage_GetTimestamp(nativeImage_);
@@ -376,7 +376,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    VideoEncoder将ROI数据推入RoiQueue：
 
-   <!-- @[roi_parameter_callback_queue_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/VideoEncoder.cpp) -->
+   <!-- @roi_parameter_callback_queue_storage -->
    
    ``` C++
    // 参数回调配置：将ROI条目按PTS推入RoiQueue。
@@ -404,7 +404,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
 **图4：编码输入Buffer回调接口配置ROI流程图**
 
-![编码输入Buffer回调接口配置ROI流程图](figures/roi-input-buffer-callback.png)
+编码输入Buffer回调接口配置ROI流程图
 
 详细开发步骤如下：
 
@@ -424,7 +424,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    Buffer模式下，编码器通过回调请求输入Buffer。开发者需要将相机帧的像素数据和ROI字符串封装为帧数据项，推入线程安全的帧队列供编码回调消费。
 
-   <!-- @[roi_frame_item_struct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/common/FrameQueue.h) -->
+   <!-- @roi_frame_item_struct -->
    
    ``` C
    // Buffer模式编码的帧数据项。
@@ -443,7 +443,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    在帧处理线程中，从相机帧Buffer读取像素数据，连同组装好的ROI字符串一起推入帧队列。
 
-   <!-- @[roi_buffer_pixel_read](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
+   <!-- @roi_buffer_pixel_read -->
    
    ``` C++
    // Buffer模式：从相机帧读取像素数据并推入帧队列。
@@ -490,7 +490,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    `OnNeedInputBuffer`回调将Buffer入队，供消费线程处理过程如下：
 
-   <!-- @[roi_buffer_input_callback_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
+   <!-- @roi_buffer_input_callback_queue -->
    
    ``` C++
    void CodecCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
@@ -507,7 +507,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    Buffer模式消费线程从队列取出Buffer并调用`FillBufferModeInput`填充帧数据和ROI示例如下：
 
-   <!-- @[roi_buffer_mode_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
+   <!-- @roi_buffer_mode_callback -->
    
    ``` C++
    void Recorder::VideoEncBufferInputThread()
@@ -534,7 +534,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    `FillBufferModeInput`的实现如下：
 
-   <!-- @[roi_buffer_mode_fill_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
+   <!-- @roi_buffer_mode_fill_input -->
    
    ``` C++
    void Recorder::FillBufferModeInput(uint32_t index, OH_AVBuffer *buffer)

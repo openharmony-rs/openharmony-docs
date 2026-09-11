@@ -61,7 +61,7 @@
 - 第四个参数表示是否需要进行抗锯齿处理。
 
 
-<!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_canvas_clip -->
 
 ``` C++
 // 创建画刷对象
@@ -86,7 +86,7 @@ OH_Drawing_RectDestroy(rect);
 
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
-| ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
+| Screenshot_20250120154655737 | Screenshot_20250118152812670 |
 
 
 ## 矩阵变换操作
@@ -120,7 +120,7 @@ OH_Drawing_RectDestroy(rect);
 
 简单示例和示意图如下所示：
 
-<!-- @[ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_canvas_translation -->
 
 ``` C++
 // 创建画刷对象
@@ -145,7 +145,7 @@ OH_Drawing_BrushDestroy(brush);
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
-| ![Original-Image3](figures/Original-Image3.png) | ![Translated-Image](figures/Translated-Image.png) |
+| Original-Image3 | Translated-Image |
 
 
 ### 旋转
@@ -154,7 +154,7 @@ OH_Drawing_BrushDestroy(brush);
 
 简单示例和示意图如下所示：
 
-<!-- @[ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_canvas_rotation -->
 
 ``` C++
 // 创建画刷对象
@@ -179,7 +179,7 @@ OH_Drawing_BrushDestroy(brush);
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
-| ![Original-Image1](figures/Original-Image1.png) | ![Rotated-Image](figures/Rotated-Image.png) |
+| Original-Image1 | Rotated-Image |
 
 
 ### 缩放
@@ -188,7 +188,7 @@ OH_Drawing_BrushDestroy(brush);
 
 简单示例和示意图如下所示：
 
-<!-- @[ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_canvas_scale -->
 
 ``` C++
 // 创建画刷对象
@@ -213,7 +213,7 @@ OH_Drawing_BrushDestroy(brush);
 
 | 原始图 | 放大后的效果图 |
 | -------- | -------- |
-| ![Original-Image2](figures/Original-Image2.png) | ![Scaled-up-Image](figures/Scaled-up-Image.png) |
+| Original-Image2 | Scaled-up-Image |
 
 
 ## 画布状态保存与恢复
@@ -234,7 +234,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 开发示例
 
-<!-- @[ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+<!-- @ndk_graphics_draw_canvas_state_operation -->
 
 ``` C++
 // 创建画笔对象
@@ -265,12 +265,12 @@ OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-![Development-example](figures/Development-example.png)
+Development-example
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
+- NDKGraphicsDraw (API20)
 <!--RP1End-->

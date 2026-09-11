@@ -30,7 +30,7 @@ animateTo接口参数中，value指定AnimateParam对象（包括时长、曲线
 > **说明：**
 >
 > 直接使用animateTo可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用animateTo调用绑定实例的animateTo。
-<!-- @[attrAnimateToDemo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template2/Index.ets) -->
+<!-- @attrAnimateToDemo2 -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -87,14 +87,14 @@ struct attrAnimateToDemo2 {
 }
 ```
 
-![zh-cn_image_0000001599958466](figures/animateTo-01.gif)
+zh-cn_image_0000001599958466
 
 
 ## 使用animation产生属性动画
 
 相比于animateTo接口需要将属性修改封装在闭包中执行，animation接口无需使用闭包，只需将其加在要做动画的可动画属性后即可。animation只要检测到其绑定的可动画属性发生变化，就会自动添加属性动画，animateTo则必须在动画闭包内改变可动画属性的值从而生成动画。
 
-<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->  
+<!-- @attrAnimationDemo3 -->  
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -154,7 +154,7 @@ struct attrAnimationDemo3 {
 ```
 
 
-![zh-cn_image_0000001649279705](figures/animation-01.gif)
+zh-cn_image_0000001649279705
 
 ## 使用keyframeAnimateTo产生属性动画
 
@@ -168,7 +168,7 @@ keyframeAnimateTo接口参数中，第一个参数KeyframeAnimateParam为关键�
 
 以下示例主要演示如何通过keyframeAnimateTo来设置关键帧动画。
 
-<!-- @[KeyframeAnimateToDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template4/Index.ets) -->
+<!-- @KeyframeAnimateToDemo -->
 
 ``` TypeScript
 @Entry
@@ -233,7 +233,7 @@ struct KeyframeAnimateToDemo {
 }
 ```
 
-![keyframeAnimateTo1](figures/keyframeAnimateTo1.gif)
+keyframeAnimateTo1
 
 > **说明：**
 > - 在对组件位置大小变化做动画的时候，由于布局属性的改变会触发测量布局，性能开销大。而scale属性的改变不会触发测量布局，性能开销小。因此，在组件位置大小持续发生变化的场景，如跟手触发组件大小变化的场景，推荐使用scale。

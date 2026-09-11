@@ -14,7 +14,7 @@
 
    计算器业务模块定义如下：
 
-   <!-- @[define_calculator_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/Calculator.ets) -->
+   <!-- @define_calculator_module -->
    
    ``` TypeScript
    import { collections } from '@kit.ArkTS';
@@ -82,7 +82,7 @@
 
    定时器业务模块的定义如下：
 
-   <!-- @[define_timer_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/sdk/TimerSdk.ets) -->
+   <!-- @define_timer_module -->
    
    ``` TypeScript
    @Sendable
@@ -107,7 +107,7 @@
 
 2. 在UI主线程触发各业务模块分发到子线程，加载完成后在UI主线程使用，示例如下：
 
-   <!-- @[distribute_child_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ConcurrentLoadingModulesGuide.ets) -->
+   <!-- @distribute_child_thread -->
    
    ``` TypeScript
    import { Calculator } from '../sdk/Calculator';

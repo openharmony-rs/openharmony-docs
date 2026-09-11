@@ -64,7 +64,7 @@ export default {
 }
 ```
 
-![animate2](figures/animate2.gif)
+animate2
 
 > **说明：**
 > -   使用animate方法时必须传入Keyframes和Options参数。
@@ -143,7 +143,7 @@ export default {
 }
 ```
 
-![animate](figures/animate.gif)
+animate
 
 > **说明：**
 > - translate、scale和rotate的先后顺序会影响动画效果。
@@ -211,7 +211,7 @@ export default {
 }
 ```
 
-![animate4](figures/animate4.gif)
+animate4
 
 > **说明：** 
 >

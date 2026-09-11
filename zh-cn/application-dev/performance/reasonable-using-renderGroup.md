@@ -27,7 +27,7 @@ renderGroup本质上使用了用空间换时间的思想，如果缓存能够一
 
 图1 组件渲染流程
 
-![](figures/reasonable-using-renderGroup-image1.png)
+
 
 
 以下流程图展示了缓存管理上的流程细节。
@@ -45,7 +45,7 @@ renderGroup本质上使用了用空间换时间的思想，如果缓存能够一
 
 图2 缓存管理流程
 
-![](figures/reasonable-using-renderGroup-image2.png)
+
 
 
 ## 使用约束
@@ -68,7 +68,7 @@ renderGroup本质上使用了用空间换时间的思想，如果缓存能够一
 
 图3 使用场景示例
 
- ![reasonable-using-renderGroup-image3.gif](figures/reasonable-using-renderGroup-image3.gif)
+ reasonable-using-renderGroup-image3.gif
 
 ## 推荐示例
 
@@ -222,12 +222,12 @@ export struct  IconItem  {
 
 图4 丢帧率（关闭renderGroup）
 
-![](figures/reasonable-using-renderGroup-image4.png)
+
 
 
 图5 丢帧率（开启renderGroup）
 
-![](figures/reasonable-using-renderGroup-image5.png)
+
 
 
 ### CPU使用率分析
@@ -236,12 +236,12 @@ export struct  IconItem  {
 
 图6 CPU使用率（关闭renderGroup）
 
-![](figures/reasonable-using-renderGroup-image6.png)
+
 
 
 图7 CPU使用率（开启renderGroup）
 
-![](figures/reasonable-using-renderGroup-image7.png)
+
 
 
 ### GPU使用率分析
@@ -250,12 +250,12 @@ export struct  IconItem  {
 
 图8 GPU使用率（关闭renderGroup）
 
-![](figures/reasonable-using-renderGroup-image8.png)
+
 
 
 图9 GPU使用率（开启renderGroup）
 
-![](figures/reasonable-using-renderGroup-image9.png)
+
 
 
 ## 不推荐示例
@@ -313,12 +313,12 @@ export  struct IconItem {
 
 图10 反例场景——组件内部子组件应用动效（关闭renderGroup）
 
-![](figures/reasonable-using-renderGroup-image10.png)
+
 
 
 图11 反例场景——组件内部子组件应用动效（开启renderGroup）
 
-![](figures/reasonable-using-renderGroup-image11.png)
+
 
 
 ### 调用栈分析
@@ -327,21 +327,20 @@ export  struct IconItem {
 
 图12 反例场景——组件内部子组件应用动效，调用栈信息（关闭renderGroup）
 
-![](figures/reasonable-using-renderGroup-image12.png)
+
 
 
 图13 反例场景——组件内部子组件应用动效，调用栈信息（开启renderGroup）
 
-![](figures/reasonable-using-renderGroup-image13.png)
+
 
 
 接着查看FlushFrame方法，此方法为分发绘制指令给gpu执行绘制操作，图14中，在关闭renderGroup时，渲染耗时3ms左右；图15中，在开启renderGroup时，由于大量的缓存更新需要重新绘制，渲染耗时15ms左右，是关闭时的5倍。
 
 图14 反例场景——组件内部子组件应用动效，FlushFrame耗时（关闭renderGroup）
 
-![](figures/reasonable-using-renderGroup-image14.png)
+
 
 
 图15 反例场景——组件内部子组件应用动效，FlushFrame耗时（开启renderGroup）
 
-![](figures/reasonable-using-renderGroup-image15.png)

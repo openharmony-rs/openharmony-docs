@@ -16,7 +16,7 @@
 
 ## 接口定义
 
-<!-- @[att_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/Common.ets) -->
+<!-- @att_class -->
 
 ``` TypeScript
 export declare class AttributeUpdater<T, C = Initializer<T>> implements AttributeModifier<T> {
@@ -46,7 +46,7 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 
 组件初始化完成之后，开发者可以通过`AttributeUpdater`实例的`attribute`属性方法，获取到属性对象。通过属性对象直接修改属性，会立即触发组件属性的更新。
 
-<!-- @[att_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
+<!-- @att_modifier -->
 
 ``` TypeScript
 import { AttributeUpdater } from '@kit.ArkUI';
@@ -81,14 +81,14 @@ struct updaterDemo {
   }
 }
 ```
-![AttributeUpdater](figures/AttributeUpdater.gif)
+AttributeUpdater
 
 
 ## 通过modifier更新组件的构造参数
 
 可以通过`AttributeUpdater`实例的`updateConstructorParams`属性，直接更新组件的构造参数。
 
-<!-- @[att_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttUpdate.ets) -->
+<!-- @att_update -->
 
 ``` TypeScript
 import { AttributeUpdater } from '@kit.ArkUI';
@@ -127,4 +127,4 @@ struct updaterDemo {
   }
 }
 ```
-![AttributeUpdater](figures/AttributeUpdater2.gif)
+AttributeUpdater

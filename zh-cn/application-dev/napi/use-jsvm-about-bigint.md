@@ -39,7 +39,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintwords/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_bigint_words -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -107,7 +107,7 @@ OH_JSVM_GetValueBigintWords signBit: 0.
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintwords/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_bigint_words -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -156,7 +156,7 @@ JSVM OH_JSVM_CreateBigintWords success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintuint64/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_bigint_uint64 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -204,7 +204,7 @@ JSVM OH_JSVM_CreateBigintUint64 success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintuint64/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_bigint_uint64 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -257,7 +257,7 @@ JSVM GetValueBigintUint64 success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/createbigintint64/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_bigint_int64 -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -303,7 +303,7 @@ JSVM OH_JSVM_CreateBigintInt64 success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_value_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintint64/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_value_bigint_int64 -->
 
 ``` C++
 #include "napi/native_api.h"

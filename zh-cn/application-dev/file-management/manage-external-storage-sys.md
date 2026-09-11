@@ -12,7 +12,7 @@
 
 **图1** 外置存储设备管理示意图  
 
-![External storage device management](figures/external-storage-device-management.png)
+External storage device management
 
 - 插入外卡时，StorageDaemon进程通过netlink监听获取到外卡插入事件，创建对应的磁盘设备以及卷设备。此时，已创建的卷设备状态为卸载状态（UNMOUNTED）。
 

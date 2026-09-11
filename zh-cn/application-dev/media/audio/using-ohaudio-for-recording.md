@@ -12,14 +12,14 @@ OHAudio是系统在API version 10中引入的一套C API，此API在设计上实
 
 OHAudio音频录制状态变化示意图：
 
-![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
+OHAudioCapturer status change
 
 
 ## 使用入门
 
 开发者要使用OHAudio提供的录制能力，需要添加对应的头文件。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCapturerSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -29,7 +29,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 ### 添加头文件
 开发者通过引入<native_audiostreambuilder.h>和<native_audiocapturer.h>头文件，使用音频录制相关API。
 
-<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @header_file -->
 
 ``` C++
 #include <ohaudio/native_audiocapturer.h>
@@ -51,7 +51,7 @@ OHAudio提供OH_AudioStreamBuilder接口，遵循构造器设计模式，用于�
 
 使用OH_AudioStreamBuilder_Create创建构造器示例：
 
-<!-- @[create_StreamType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @create_StreamType -->
 
 ``` C++
 OH_AudioStreamBuilder* builder;
@@ -60,7 +60,7 @@ OH_AudioStreamBuilder_Create(&builder, streamType);
 
 在音频业务结束之后，开发者应该执行OH_AudioStreamBuilder_Destroy接口来销毁构造器。
 
-<!-- @[Destroy_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @Destroy_Capture -->
 
 ``` C++
 OH_AudioStreamBuilder_Destroy(builder);
@@ -72,7 +72,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
 1. 创建构造器。
 
-   <!-- @[Create_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @Create_Capture -->
 
    ``` C++
    OH_AudioStreamBuilder* builder;
@@ -83,7 +83,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
    创建音频录制构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
-   <!-- @[Configure_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @Configure_Capture -->
 
    ``` C++
    // 设置音频采样率。
@@ -106,7 +106,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
    多音频并发处理可参考文档处理音频焦点事件，仅接口语言差异。
 
-   <!-- @[Set_AudioCallbackFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @Set_AudioCallbackFunction -->
    
    ``` C++
    void MyOnReadData_NewAPI(
@@ -150,7 +150,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
 4. 构造录制音频流。
 
-   <!-- @[GenerateCapturer_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @GenerateCapturer_Capture -->
 
    ``` C++
    OH_AudioCapturer* audioCapturer;
@@ -177,7 +177,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 
    构造器不再使用时，需要释放相关资源。
 
-   <!-- @[Destroy_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @Destroy_Capture -->
 
    ``` C++
    OH_AudioStreamBuilder_Destroy(builder);
@@ -194,7 +194,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 > - 当音频录制场景OH_AudioStream_SourceType为`AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输入的音频通路。
 > - 部分场景（如通话来电）下系统能力受限会回落至普通音频通路模式，缓冲区大小也会发生变化，此时应同普通音频通路模式一样根据缓冲区大小将缓冲区中数据一次性全部取走，否则录制的数据会出现不连续，导致杂音。
 
-<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @latencyMode_Capture -->
 
 ``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
@@ -207,7 +207,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 需要在调用OH_AudioStreamBuilder_GenerateCapturer生成录制流前设置该接口，且目标录制流需配置为AUDIOSTREAM_LATENCY_MODE_FAST低时延模式。
 
-<!-- @[SetCapturerLoopbackEffectEnabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @SetCapturerLoopbackEffectEnabled -->
 
 ``` C++
 OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled != nullptr ?
@@ -224,7 +224,7 @@ OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEn
 
 该接口仅允许在录音流处于运行态时调用，否则会返回`AUDIOSTREAM_ERROR_ILLEGAL_STATE`。如果同一录音流同时设置了流级静音提示和会话级静音提示OH_AudioSessionManager_SetCaptureMuteHint，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。
 
-<!-- @[cset_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) --> 
+<!-- @cset_mute_hint --> 
 
 ``` C++
 bool mute = true;
@@ -239,11 +239,11 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
 
 ### 设置录音流静音提示
 
-从API version 24开始，当应用已在业务侧将某条录音流静音时，可以调用[OH_AudioCapturer_SetMuteHint](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setmutehint)接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前录音流进行过静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+从API version 24开始，当应用已在业务侧将某条录音流静音时，可以调用OH_AudioCapturer_SetMuteHint接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前录音流进行过静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
 
-该接口仅允许在录音流处于运行态时调用，否则会返回`AUDIOSTREAM_ERROR_ILLEGAL_STATE`。如果同一录音流同时设置了流级静音提示和会话级静音提示[OH_AudioSessionManager_SetCaptureMuteHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setcapturemutehint)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。
+该接口仅允许在录音流处于运行态时调用，否则会返回`AUDIOSTREAM_ERROR_ILLEGAL_STATE`。如果同一录音流同时设置了流级静音提示和会话级静音提示OH_AudioSessionManager_SetCaptureMuteHint，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。
 
-<!-- @[cset_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) --> 
+<!-- @cset_mute_hint --> 
 
 ``` C++
 bool mute = true;
@@ -263,7 +263,7 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
 在启用前，建议先调用OH_AudioStreamManager_IsAcousticEchoCancelerSupported接口（从API version 20开始支持）查询当前设备对音频输入源类型OH_AudioStream_SourceType是否支持回声消除功能，以确保功能的可用性。若支持，则可在创建音频录制构造器时通过OH_AudioStreamBuilder_SetCapturerInfo 设置相应的音频输入源类型，从而激活回声消除处理流程。
 
 ### 相关实例
-针对OHAudio开发音频录制相关实例请参考：[OHAudio录制和播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio)。
+针对OHAudio开发音频录制相关实例请参考：OHAudio录制和播放。
 
 ## 注意事项
 
@@ -271,7 +271,7 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
 
 - 方式1：请确保OH_AudioCapturer_Callbacks的每一个回调都被**自定义的回调方法**或**空指针**初始化。
 
-  <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+  <!-- @callback_Capture -->
   
   ``` C++
   int32_t MyOnReadData_Legacy(
@@ -304,7 +304,7 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
 
 - 方式2：使用前，初始化并清零结构体。
 
-  <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+  <!-- @callbackNullptr_Capture -->
   
   ``` C++
   int32_t MyOnReadData_Legacy(

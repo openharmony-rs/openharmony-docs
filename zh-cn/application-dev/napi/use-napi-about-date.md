@@ -37,7 +37,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_date -->
 
 ``` C++
 #include <hilog/log.h>
@@ -57,7 +57,7 @@ static napi_value CreateDate(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+<!-- @napi_create_date_api -->    
 
 ``` TypeScript
 export const createDate: () => Date; // napi_create_date
@@ -65,7 +65,7 @@ export const createDate: () => Date; // napi_create_date
 
 ArkTS侧示例代码
 
- <!-- @[ark_napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->   
+ <!-- @ark_napi_create_date -->   
  
  ``` TypeScript
  // napi_create_date
@@ -79,7 +79,7 @@ ArkTS侧示例代码
 
 cpp部分代码
 
-<!-- @[napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_date_value -->
 
 ``` C++
 // napi_get_date_value
@@ -109,7 +109,7 @@ static napi_value GetDateValue(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+<!-- @napi_get_date_value_api -->   
 
 ``` TypeScript
 export const getDateValue: (date: Date) => number | undefined; // napi_get_date_value
@@ -117,7 +117,7 @@ export const getDateValue: (date: Date) => number | undefined; // napi_get_date_
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_date_value -->
 
 ``` TypeScript
 // napi_get_date_value
@@ -140,7 +140,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_date -->
 
 ``` C++
 // napi_is_date
@@ -168,7 +168,7 @@ static napi_value IsDate(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_is_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+<!-- @napi_is_date_api -->    
 
 ``` TypeScript
 export const isDate: <T>(date: T) => boolean | undefined; // napi_is_date
@@ -176,7 +176,7 @@ export const isDate: <T>(date: T) => boolean | undefined; // napi_is_date
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_date -->
 
 ``` TypeScript
 // napi_is_date

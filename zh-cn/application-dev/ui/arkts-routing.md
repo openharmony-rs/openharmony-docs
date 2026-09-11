@@ -18,7 +18,7 @@
 页面跳转是开发过程中的一个重要组成部分。在使用应用程序时，通常需要在不同的页面之间跳转，有时还需要将数据从一个页面传递到另一个页面。
 
   **图1** 页面跳转  
-![router-jump-to-detail](figures/router-jump-to-detail.gif)
+router-jump-to-detail
 
 Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两种模式决定了目标页面是否会替换当前页。
 
@@ -41,7 +41,7 @@ Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两
 
 - 场景一：有一个主页（Home）和一个详情页（Detail），希望从主页点击一个商品，跳转到详情页。同时，需要保留主页在页面栈中，以便返回时恢复状态。这种场景下，可以使用pushUrl方法，并且使用Standard实例模式（或者省略）。
 
-  <!-- @[jump_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Index.ets) -->
+  <!-- @jump_click -->
   
   ``` TypeScript
   import { router } from '@kit.ArkUI';
@@ -77,7 +77,7 @@ Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两
 
 - 场景二：有一个登录页（Login）和一个个人中心页（Profile），希望从登录页成功登录后，跳转到个人中心页。同时，销毁登录页，在返回时直接退出应用。这种场景下，可以使用replaceUrl方法，并且使用Standard实例模式（或者省略）。
 
-  <!-- @[login_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Login.ets) -->
+  <!-- @login_click -->
   
   ``` TypeScript
   import { router } from '@kit.ArkUI';
@@ -113,7 +113,7 @@ Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两
 
 - 场景三：有一个设置页（Setting）和一个主题切换页（Theme），希望从设置页点击主题选项，跳转到主题切换页。同时，需要保证每次只有一个主题切换页存在于页面栈中，在返回时直接回到设置页。这种场景下，可以使用pushUrl方法，并且使用Single实例模式。
 
-  <!-- @[setting_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/Setting.ets) -->
+  <!-- @setting_click -->
   
   ``` TypeScript
   import { router } from '@kit.ArkUI';
@@ -145,7 +145,7 @@ Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两
     
 - 场景四：有一个搜索结果列表页（SearchResult）和一个搜索结果详情页（SearchDetail），希望从搜索结果列表页点击某一项结果，跳转到搜索结果详情页。同时，如果该结果已经被查看过，则不需要再新建一个详情页，而是直接跳转到已经存在的详情页。这种场景下，可以使用replaceUrl方法，并且使用Single实例模式。
 
-  <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
+  <!-- @search_click -->
   
   ``` TypeScript
   import { router } from '@kit.ArkUI';
@@ -181,7 +181,7 @@ Router模块提供了两种跳转模式，分别是pushUrl和replaceUrl。这两
 
 如果需要在跳转时传递一些数据给目标页面，则可以在调用Router模块的方法时，添加一个params属性，并指定一个对象作为参数。例如：
 
-<!-- @[home_param1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/IndexPara.ets) -->
+<!-- @home_param1 -->
 
 ``` TypeScript
 class DataModelInfo {
@@ -196,7 +196,7 @@ class DataModel {
 
 
 
-<!-- @[home_param2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/IndexPara.ets) -->
+<!-- @home_param2 -->
 
 ``` TypeScript
 onJumpClick(): void {
@@ -223,7 +223,7 @@ onJumpClick(): void {
 
 在目标页面中，可以通过调用Router模块的getParams方法来获取传递过来的参数。例如：
 
-<!-- @[detail_param1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/DetailPara.ets) -->
+<!-- @detail_param1 -->
 
 ``` TypeScript
 class InfoTmp {
@@ -240,7 +240,7 @@ class RouTmp {
 
 
 
-<!-- @[detail_param2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/DetailPara.ets) -->
+<!-- @detail_param2 -->
 
 ``` TypeScript
 private params: RouTmp = (this.getUIContext().getRouter().getParams()) as RouTmp; // 获取传递过来的参数对象
@@ -255,7 +255,7 @@ private age: number = this.params.info.age; // 获取age属性的值
 
   **图2** 页面返回  
 
-![router-back-to-home](figures/router-back-to-home.gif)
+router-back-to-home
 
 直接使用router可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用getRouter获取绑定实例的router。
 
@@ -264,7 +264,7 @@ private age: number = this.params.info.age; // 获取age属性的值
 - 方式一：返回到上一个页面。
 
 
-<!-- @[back_detail1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+<!-- @back_detail1 -->
 
 ``` TypeScript
 this.getUIContext().getRouter().back();
@@ -277,7 +277,7 @@ this.getUIContext().getRouter().back();
 
   返回普通页面。
 
-  <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  <!-- @back_detail21 -->
   
   ``` TypeScript
   this.getUIContext().getRouter().back({
@@ -287,7 +287,7 @@ this.getUIContext().getRouter().back();
 
   返回命名路由页面。
 
-  <!-- @[back_detail22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  <!-- @back_detail22 -->
 
   ``` TypeScript
   this.getUIContext().getRouter().back({
@@ -302,7 +302,7 @@ this.getUIContext().getRouter().back();
 
   返回到普通页面。
 
-  <!-- @[back_detail31](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  <!-- @back_detail31 -->
   
   ``` TypeScript
   this.getUIContext().getRouter().back({
@@ -316,7 +316,7 @@ this.getUIContext().getRouter().back();
 
   返回命名路由页面。
 
-  <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
+  <!-- @back_detail32 -->
   
   ``` TypeScript
   this.getUIContext().getRouter().back({
@@ -336,7 +336,7 @@ this.getUIContext().getRouter().back();
 > 
 > 直接使用router可能导致UI上下文不明确的问题，建议使用getUIContext()获取UIContext实例，并使用getRouter获取绑定实例的router。
 
-<!-- @[home_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/backPage/Home.ets) -->
+<!-- @home_router -->
 
 ``` TypeScript
 @Entry
@@ -372,7 +372,7 @@ router页面生命周期，即被\@Entry装饰的组件生命周期，提供以�
 
 - onBackPress：当用户点击返回按钮时触发。
 
-<!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Index.ets) -->
+<!-- @life_index -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -413,7 +413,7 @@ struct MyComponent {
 
 
 
-<!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
+<!-- @life_page -->   
 
 ``` TypeScript
  import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -463,7 +463,7 @@ struct Page {
   }
 }
 ```
-![router_2025-07-02_152548](figures/router_2025-07-02_152548.gif)
+router_2025-07-02_152548
 
 ## 自定义转场
 
@@ -477,7 +477,7 @@ router自定义转场可以通过pageTransition实现，具体参考页面间转
 
   **图3** 页面返回前增加一个询问框  
 
-![router-add-query-box-before-back](figures/router-add-query-box-before-back.gif)
+router-add-query-box-before-back
 
 
 ### 系统默认询问框
@@ -488,7 +488,7 @@ router自定义转场可以通过pageTransition实现，具体参考页面间转
 
 如果想要在目标界面开启页面返回询问框，需要在调用back方法之前，通过调用showAlertBeforeBackPage方法设置返回询问框的信息。例如，在支付页面中定义一个返回按钮的点击事件处理函数：
 
-<!-- @[page_showAlert1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
+<!-- @page_showAlert1 -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -499,7 +499,7 @@ const TAG = '[Sample_ArkTSRouter]';
 
 
 
-<!-- @[page_showAlert2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowAlert.ets) -->
+<!-- @page_showAlert2 -->
 
 ``` TypeScript
 // 定义一个返回按钮的点击事件处理函数
@@ -537,7 +537,7 @@ message：string类型，表示询问框的内容。
 
 在事件回调中，调用弹窗的showDialog方法：
 
-<!-- @[page_showDialog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
+<!-- @page_showDialog1 -->
 
 ``` TypeScript
 import { promptAction } from '@kit.ArkUI';
@@ -549,7 +549,7 @@ const TAG = '[Sample_ArkTSRouter]';
 
 
 
-<!-- @[page_showDialog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
+<!-- @page_showDialog2 -->
 
 ``` TypeScript
 onBackClick() {
@@ -596,11 +596,11 @@ onBackClick() {
 
   **图4** 命名路由跳转  
 
-![(figures/router-add-query-box-before-back.gif)](figures/namedroute-jump-to-mypage.gif)
+(figures/router-add-query-box-before-back.gif)
 
 在想要跳转到的共享包HAR或者HSP页面里，给@Entry装饰的自定义组件EntryOptions命名：
 
-<!-- @[page_router_hsp2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
+<!-- @page_router_hsp2 -->
 
 ``` TypeScript
 // library/src/main/ets/pages/Index.ets
@@ -635,7 +635,7 @@ export struct MyComponent {
 > }
 >```
 
-<!-- @[page_router_hsp3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp3.ets) -->
+<!-- @page_router_hsp3 -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -683,4 +683,4 @@ struct Index {
 
 针对页面路由开发，有以下相关实例可供参考：
 
-- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)
+- 页面布局和连接（ArkTS）（API9）

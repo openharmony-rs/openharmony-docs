@@ -12,7 +12,7 @@
 
 **图1**：音频编创实现原理图
 
-![audiosuite-pipeline](figures/audiosuite-pipeline.png)
+audiosuite-pipeline
 
 ## 引擎
 
@@ -57,7 +57,7 @@ OHAudioSuite支持三种节点类型，分别是输入节点、输出节点、�
 
 **图2**：管线运行状态图
 
-![audiosuite-pipeline-state](figures/audiosuite-pipeline-state.png)
+audiosuite-pipeline-state
 
 状态的功能如下表所示。
 
@@ -100,5 +100,5 @@ OHAudioSuite支持三种节点类型，分别是输入节点、输出节点、�
 <!--RP1-->
 ## 完整示例代码
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- 音频编创示例代码
 <!--RP1End-->

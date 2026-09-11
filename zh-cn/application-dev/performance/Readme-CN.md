@@ -7,76 +7,76 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @huipeizi-->
 
-  - [应用性能优化概览](performance-overview.md)
-  - [应用开发性能优化入门引导](application-performance-optimization-guidance.md)
-  - [应用性能优化常见问题解决指导](performance-optimization-practical-guidance.md)
+  - 应用性能优化概览
+  - 应用开发性能优化入门引导
+  - 应用性能优化常见问题解决指导
   - ArkTS高性能编程<!--arkts-high-performance-->
-    - [高效并发编程](efficient-concurrent-programming.md)
-    - [安全和高效地使用N-API开发Native模块](develop-Native-modules-using-NAPI-safely-and-efficiently.md)
-    - [多线程能力场景化示例实践](multi_thread_capability.md)
-    - [利用native的方式实现跨线程调用](native-threads-call-js.md)
-    - [避免开发过程中的冗余操作](avoiding-redundant-operations.md)
-    - [使用AOT进行性能优化](performance-optimization-using-aot.md)
-    - [高负载场景下线程优先级设置防止关键线程被打断](qos-protect-critical-threads.md)
-    - [延迟加载lazy-import使用指导](Lazy-Import-Instructions.md)
+    - 高效并发编程
+    - 安全和高效地使用N-API开发Native模块
+    - 多线程能力场景化示例实践
+    - 利用native的方式实现跨线程调用
+    - 避免开发过程中的冗余操作
+    - 使用AOT进行性能优化
+    - 高负载场景下线程优先级设置防止关键线程被打断
+    - 延迟加载lazy-import使用指导
   - 减少卡顿丢帧<!--reduce-frame-drops-->
-    - [正确使用LazyForEach优化](lazyforeach_optimization.md)
-    - [组件复用实践](component-recycle.md)
-    - [组件复用性能优化指导](component_recycle_case.md)
-    - [组件复用总览](component-reuse-overview.md)
-    - [WaterFlow高性能开发指导](waterflow_optimization.md)
-    - [Swiper高性能开发指导](swiper_optimization.md)
-    - [合理进行状态管理](proper_state_management.md)
-    - [精准控制组件的更新范围](precisely-control-render-scope.md)
-    - [合理使用renderGroup](reasonable-using-renderGroup.md)
-    - [合理使用动画](reasonable-using-animation.md)
-    - [合理使用多线程共享内存](thread_memory_shared.md)
-    - [Grid高性能开发指导](grid_optimization.md)
-    - [合理使用自定义组件冻结功能](custom_component_freeze.md)
-    - [避免在滑动场景的高频回调接口中处理耗时操作](avoid_high_frequency_callback_execute_lengthy_operation.md)
-    - [合理使用系统提供的接口](reasonable_using_system_interfaces.md)
-    - [避免在主线程中执行耗时操作](avoid_time_consuming_operations_in_mainthread.md)
-    - [图像模糊动效优化：静态模糊与动态模糊的性能对比解析](fuzzy_scene_performance_optimization.md)
-    - [复杂绘制场景下使用Native Drawing自绘制能力替代Canvas提升性能](native_drawing_substitute_canvas.md)
-    - [应用闪屏问题解决方案](screen_flicker_solution.md)
+    - 正确使用LazyForEach优化
+    - 组件复用实践
+    - 组件复用性能优化指导
+    - 组件复用总览
+    - WaterFlow高性能开发指导
+    - Swiper高性能开发指导
+    - 合理进行状态管理
+    - 精准控制组件的更新范围
+    - 合理使用renderGroup
+    - 合理使用动画
+    - 合理使用多线程共享内存
+    - Grid高性能开发指导
+    - 合理使用自定义组件冻结功能
+    - 避免在滑动场景的高频回调接口中处理耗时操作
+    - 合理使用系统提供的接口
+    - 避免在主线程中执行耗时操作
+    - 图像模糊动效优化：静态模糊与动态模糊的性能对比解析
+    - 复杂绘制场景下使用Native Drawing自绘制能力替代Canvas提升性能
+    - 应用闪屏问题解决方案
   - 提升应用启动和响应速度<!--improve-speed-->
-    - [提升应用冷启动速度](improve-application-cold-start-speed.md)
-    - [提升应用响应速度](improve-application-response.md)
-    - [Flex布局性能提升使用指导](flex-development-performance-boost.md)
-    - [优化布局性能](reduce-view-nesting-levels.md)
-    - [合理选择条件渲染和显隐控制](proper-choice-between-if-and-visibility.md)
-    - [文件上传下载性能提升指导](improve-file-upload-and-download-performance.md)
-    - [减少首帧绘制时的冗余操作](reduce-redundant-operations-when-render-first-frame.md)
-    - [列表场景性能提升实践](list-perf-improvement.md)
-    - [应用程序动效能力实践](animation_practice.md)
-    - [性能提升的其他方法](arkts-performance-improvement-recommendation.md)
-    - [运行时动态加载页面提升性能](performance-dynamic-import.md)
-    - [合理运行后台任务](reasonable-running-backgroundTask.md)
-    - [Web组件开发性能提升指导](performance-web-import.md)
-    - [使用同层渲染在Webview上渲染原生组件](webview-render-app-components.md)
-    - [减小应用包大小](reduce-package-size.md)
-    - [全局自定义组件复用实现](node_custom_component_reusable_pool.md)
-    - [使用ArkUI的FrameNode扩展实现动态布局类框架](imperative_dynamic_layouts.md)
-    - [在线短视频流畅切换](performance-quick-switch-short-video.md)
-    - [合理使用缓存提升性能](reasonable_using_cache_improve_performance.md)
-    - [滑动白块问题解决指导](resolve_sliding_white_blocks.md)
-    - [相机分段式拍照性能提升实践](performance-camera-shot2see.md)
-    - [在线视频播放卡顿优化实践](online_video_playback_lags_practice.md)
-    - [音画同步最佳实践](audio-video-synchronization.md)
+    - 提升应用冷启动速度
+    - 提升应用响应速度
+    - Flex布局性能提升使用指导
+    - 优化布局性能
+    - 合理选择条件渲染和显隐控制
+    - 文件上传下载性能提升指导
+    - 减少首帧绘制时的冗余操作
+    - 列表场景性能提升实践
+    - 应用程序动效能力实践
+    - 性能提升的其他方法
+    - 运行时动态加载页面提升性能
+    - 合理运行后台任务
+    - Web组件开发性能提升指导
+    - 使用同层渲染在Webview上渲染原生组件
+    - 减小应用包大小
+    - 全局自定义组件复用实现
+    - 使用ArkUI的FrameNode扩展实现动态布局类框架
+    - 在线短视频流畅切换
+    - 合理使用缓存提升性能
+    - 滑动白块问题解决指导
+    - 相机分段式拍照性能提升实践
+    - 在线视频播放卡顿优化实践
+    - 音画同步最佳实践
   - 性能工具<!--performance-tools-->
-    - [应用性能分析工具CPU Profiler的使用指导](application-performance-analysis.md)
-    - [使用HiDumper命令行工具优化性能](performance-optimization-using-hidumper.md)
-    - [使用SmartPerf-Host分析应用性能](performance-optimization-using-smartperf-host.md)
-    - [常用Trace使用指导](common-trace-using-instructions.md)
-    - [状态变量组件定位工具实践](state-variable-dfx-practice.md)
-    - [应用滑动场景帧率问题分析实践](long-frame-optimization.md)
-    - [时延类性能问题分析实践](delay_related_performance.md)
-    - [Web性能问题分析案例](web-analyse.md)
-    - [应用性能问题分析指导](application-performance-guide.md)
-    - [页面布局检查器ArkUI Inspector使用指导](arkUI-inspector.md)
-    - [跨线程序列化耗时点分析](cross-thread-serialization-time-consumption-analysis.md)
+    - 应用性能分析工具CPU Profiler的使用指导
+    - 使用HiDumper命令行工具优化性能
+    - 使用SmartPerf-Host分析应用性能
+    - 常用Trace使用指导
+    - 状态变量组件定位工具实践
+    - 应用滑动场景帧率问题分析实践
+    - 时延类性能问题分析实践
+    - Web性能问题分析案例
+    - 应用性能问题分析指导
+    - 页面布局检查器ArkUI Inspector使用指导
+    - 跨线程序列化耗时点分析
   - 功耗<!--power-consumption-->
-    - [高效利用HWC的低功耗设计](utilize_hwc_efficiently.md)
-    - [主动关闭CPU访问窗口缓冲区数据降低功耗](close_CPU_access_window_buffer_data.md)
-    - [使用属性动画替换帧动画](using-animation-insteadof-animator.md)
-    - [冗余刷新类问题解决方案](invisible-refresh-performance.md)
+    - 高效利用HWC的低功耗设计
+    - 主动关闭CPU访问窗口缓冲区数据降低功耗
+    - 使用属性动画替换帧动画
+    - 冗余刷新类问题解决方案

@@ -178,9 +178,9 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.getAppVMMemoryInfo | 获取VM内存相关信息。 |
 | hidebug.getVMRuntimeStats | 获取系统GC统计信息。 |
 | hidebug.getVMRuntimeStat | 根据参数获取指定的系统GC统计信息。 |
-| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
+| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助JS内存泄漏分析。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
 | hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
-| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
+| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助JS内存泄漏分析。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
 | hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
@@ -226,7 +226,7 @@ HiDebug提供了开启和停止VM虚拟机CpuProfiler采集的接口，帮助开
 ARM64架构函数栈帧的结构如下图所示：
 
 **图1**
-![arm64 stack](figures/arm64_stack.png)
+arm64 stack
 
 FP：栈顶指针，指向一个栈帧的顶部，当函数发生跳转时，会记录当时的栈的起始位置。
 
@@ -317,7 +317,7 @@ JS帧格式如下：
 
 ## 设置资源泄漏检测阈值
 
-HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考资源泄漏检测。
 
 ### 接口说明（ArkTS）
 
@@ -327,7 +327,7 @@ HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据�
 
 ## 管理GWP-ASan
 
-HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection)使能和查询使能天数的能力。
+HiDebug提供了启停GWP-ASan使能和查询使能天数的能力。
 
 ### 接口说明（ArkTS）
 

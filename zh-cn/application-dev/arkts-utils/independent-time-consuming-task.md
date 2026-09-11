@@ -12,7 +12,7 @@
 
 1. 实现子线程需要执行的任务。
 
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IconItemSource.ets) -->
+   <!-- @implement_child_thread_task -->
    
    ``` TypeScript
    export class IconItemSource {
@@ -26,7 +26,7 @@
    }
    ```
 
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTask.ets) -->
+   <!-- @implement_child_thread_task -->
    
    ``` TypeScript
    import { IconItemSource } from './IconItemSource';
@@ -52,7 +52,7 @@
 
 2. 使用TaskPool的execute方法执行任务，加载图片。
 
-   <!-- @[execute_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTimeConsumingTask.ets) -->
+   <!-- @execute_task -->
    
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';

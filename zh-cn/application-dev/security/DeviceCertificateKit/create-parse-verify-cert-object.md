@@ -26,7 +26,7 @@
 
 5. 调用X509Cert.checkValidityWithDate校验证书有效期。入参date用于确认此日期是否在X.509证书有效期内。
 
-<!-- @[certificate_object_creation_resolution_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertObject.ets) -->
+<!-- @certificate_object_creation_resolution_validation -->
 
 ``` TypeScript
 

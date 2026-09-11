@@ -42,7 +42,7 @@
 
 - 实线表示必选。
 
-![Invoking relationship of synchronous audio encode stream](figures/synchronous-audio.png)
+Invoking relationship of synchronous audio encode stream
 
 ### 在CMake脚本中链接动态库
 
@@ -93,13 +93,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    配置选项key值说明：
 
    <!--RP1-->
-   ![Audio encoder key configuration](figures/encoder_key.png)
+   Audio encoder key configuration
    <!--RP1End-->
 
    各音频编码类型参数范围说明：
 
    <!--RP2-->
-   ![Audio encoder format range description](figures/encoder_format.png)
+   Audio encoder format range description
    <!--RP2End-->
 
    例如，对44100Hz采样率、2声道立体声、SAMPLE_S16LE采样格式的PCM音频，以32000bps的码率进行AAC编码的调用流程如下：

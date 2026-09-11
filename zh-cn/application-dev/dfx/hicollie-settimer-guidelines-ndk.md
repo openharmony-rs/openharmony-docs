@@ -60,7 +60,7 @@
 
    引入头文件及定义LOG_TAG。
 
-   <!-- @[EventSub_napi_nohiappevent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @EventSub_napi_nohiappevent_Header -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -71,7 +71,7 @@
    #define LOG_TAG "testTag"
    ```
 
-   <!-- @[Hicollie_Set_Timer_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @Hicollie_Set_Timer_h -->
    
    ``` C++
    #include <unistd.h>
@@ -80,7 +80,7 @@
 
    构造任务执行时间超时场景，并使用OH_HiCollie_SetTimer及OH_HiCollie_CancelTimer函数进行监控。
 
-   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @Hicollie_Set_Timer -->  
    
    ``` C++
    // 定义回调函数
@@ -106,7 +106,7 @@
 
    在Init函数中的desc[]数组中将TestHiCollieTimerNdk注册为ArkTS接口。
 
-   <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @test_hicollie_timer -->
    
    ``` C++
    // 将TestHiCollieTimerNdk注册为ArkTS接口
@@ -115,7 +115,7 @@
 
 4. 编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口。
 
-   <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @test_hicollie_timer_Index.d.ts -->
    
    ``` TypeScript
    export const TestHiCollieTimerNdk: () => void;
@@ -125,7 +125,7 @@
    
    引入调用C接口的头文件。
 
-   <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @EventSub_Index_Capi_Header -->
    
    ``` TypeScript
    import testNapi from 'libentry.so';
@@ -133,7 +133,7 @@
 
    在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
 
-   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @hicollie_timer_ndk_Button --> 
    
    ``` TypeScript
    // 添加点击事件，触发TestHiCollieTimerNdk方法。

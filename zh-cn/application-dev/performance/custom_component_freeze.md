@@ -29,7 +29,7 @@
 
 ## 场景示例
 
-![](./figures/custom_component_freeze_scene.gif)
+
 
 上图是一个使用Grid懒加载的仿图库长按图片显示复选框的场景。下面将基于该场景对比分析冻结能力使用前后的性能差异。
 
@@ -312,13 +312,13 @@ struct NotUseFreezeItem {
 
 图1 不开启自定义组件冻结功能
 
-![](./figures/custom_component_freeze_not_freeze_duration.png)
+
 
 如图2所示，FlushDirtyNodeUpdate里可以看到执行了832个CustomNodeUpdate NotUseFreezeItem（自定义组件节点刷新）任务，这里的832个自定义组件节点指的是屏幕内可见的32个GridItem节点和不可见的800个缓存GridItem节点。
 
 图2 不开启冻结功能后CustomNodeUpdate耗时
 
-![](./figures/custom_component_freeze_not_freeze_item.png)
+
 
 ### 开启冻结功能
 
@@ -326,18 +326,18 @@ struct NotUseFreezeItem {
 
 图3 开启自定义组件冻结功能
 
-![](./figures/custom_component_freeze_freeze_duration.png)
+
 
 如图4所示，FlushDirtyNodeUpdate里执行了32个CustomNodeUpdate UseFreezeItem（自定义组件节点刷新）任务，这里的32个自定义组件节点指的是屏幕内可见的所有GridItem节点。和图2相比，可以发现开启冻结功能比不开启冻结功能少执行了800个自定义组件节点的刷新任务，大大缩短了渲染耗时。
 
 图4 开启冻结功能后CustomNodeUpdate耗时
 
-![](./figures/custom_component_freeze_freeze_item.png)
+
 
 图5为Grid懒加载场景下，设置不同预加载缓存GridItem数量（cachedCount）的UIVsyncTask耗时对比图。可以看出懒加载中设置的预加载缓存GridItem的数量越大，UIVsyncTask耗时越长。
 
 图5 UIVsyncTask耗时对比（性能耗时数据因设备型号版本而异，以实测为准）
 
-![](./figures/custom_component_freeze_duration.png)
+
 
 通过上述对比可以发现，懒加载场景下开启冻结功能后，仅会刷新屏幕可见的GridItem，屏幕外不可见的缓存GridItem不会刷新，相比不开启冻结功能，大大减少了需要刷新的自定义组件节点数量，有效降低页面重新渲染的耗时。在实际业务场景中，自定义组件布局更为复杂，需要更新的状态变量更多，而合理使用自定义组件冻结功能能有效减少渲染耗时和操作卡顿，提升页面性能，给用户带来更好的体验。

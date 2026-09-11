@@ -29,7 +29,7 @@
 
 以用户点击按钮触发崩溃事件为例，开发步骤如下：
 
-1. 获取该示例工程依赖的jsoncpp文件，打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，点击“下载当前目录”，下载EventSub工程文件。
+1. 获取该示例工程依赖的jsoncpp文件，打开链接HiAppEvent示例工程EventSub，点击“下载当前目录”，下载EventSub工程文件。
 
 2. 在DevEco Studio新建Native C++模板工程，并将上述文件导入到新建工程，目录结构如下。
 
@@ -53,7 +53,7 @@
                - Index.ets
    ```
 
-   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6)。
+   该示例工程中jsoncpp库文件对应的源码来自三方开源库jsoncpp。
 
 3. 在"CMakeLists.txt"文件中，添加源文件和动态库。
 
@@ -76,7 +76,7 @@
 
 4. 在"napi_init.cpp"文件中，导入依赖文件，并定义LOG_TAG。
 
-    <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+    <!-- @EventSub_napi_Header -->    
     
     ``` C++
     #include "napi/native_api.h"
@@ -96,7 +96,7 @@
 
       在"napi_init.cpp"文件中，定义onReceive类型观察者的方法：
 
-      <!-- @[Sys_Crash_Crash_OnReceive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @Sys_Crash_Crash_OnReceive -->
       
       ``` C++
       static void OnReceiveCrashEvent(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups,
@@ -204,7 +204,7 @@
 
       在"napi_init.cpp"文件中，定义OnTrigger类型观察者：
 
-      <!-- @[Sys_Crash_Event_OnTrigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @Sys_Crash_Event_OnTrigger -->
       
       ``` C++
       // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。
@@ -291,7 +291,7 @@
 6. 将RegisterWatcher注册为ArkTS接口。
 
    在"napi_init.cpp"文件中，将RegisterWatcher注册为ArkTS接口：
-    <!-- @[Sys_Crash_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @Sys_Crash_Event_C++_Init -->
     
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
@@ -311,7 +311,7 @@
 
    在"index.d.ts"文件中，定义ArkTS接口：
 
-    <!-- @[Sys_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    <!-- @Sys_Crash_Event_C++_Index.d.ts -->
     
     ``` TypeScript
     export const registerWatcherClickCrash: () => void;
@@ -320,7 +320,7 @@
 
 7. 在"EntryAbility.ets"文件的onCreate()函数中添加接口调用。
 
-    <!-- @[Sys_Crash_Event_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @Sys_Crash_Event_Call_Capi_Function -->
     
     ``` TypeScript
     // 在onCreate()函数中添加C API接口调用
@@ -335,7 +335,7 @@
 
     - 构造JsError类型崩溃
 
-    <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @JsError_CrashEvent_Button -->
     
     ``` TypeScript
     Button('JsError')
@@ -356,7 +356,7 @@
 
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，导入依赖模块。示例代码如下：
 
-      <!-- @[Native_CrashEvent_Log_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      <!-- @Native_CrashEvent_Log_Header -->
 
       ``` TypeScript
       import { fileIo } from '@kit.CoreFileKit';
@@ -364,7 +364,7 @@
 
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
 
-      <!-- @[Native_CrashEvent_Log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+      <!-- @Native_CrashEvent_Log -->
       
       ``` TypeScript
       Button('MergeLogNativeCrash')
@@ -445,7 +445,7 @@ HiAppEvent eventInfo.params.log_over_limit=0
 
 1. 移除事件观察者。
 
-    <!-- @[Sys_Crash_Event_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @Sys_Crash_Event_C++_RemoveWatcher -->
     
     ``` C++
     static napi_value RemoveWatcherCrash(napi_env env, napi_callback_info info)
@@ -459,7 +459,7 @@ HiAppEvent eventInfo.params.log_over_limit=0
 
 2. 销毁事件观察者。
 
-    <!-- @[Sys_Crash_Event_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @Sys_Crash_Event_C++_DestroyWatcher -->
     
     ``` C++
     static napi_value DestroyWatcherCrash(napi_env env, napi_callback_info info)

@@ -95,7 +95,7 @@
 }
 ```
 
-![Designing-Static-Animation](figures/Designing-Static-Animation.png)
+Designing-Static-Animation
 
 
 ## 设置平移动画
@@ -174,7 +174,7 @@
 }
 ```
 
-![Translation-Animation](figures/Translation-Animation.gif)
+Translation-Animation
 
 
 ## 设置旋转动画
@@ -307,7 +307,7 @@
 }
 ```
 
-![Designing-Rotation-Animation](figures/Designing-Rotation-Animation.gif)
+Designing-Rotation-Animation
 
 > **说明：** 
 >
@@ -420,7 +420,7 @@ text{
 }
 ```
 
-![Designing-Scaling-Animation](figures/Designing-Scaling-Animation.gif)
+Designing-Scaling-Animation
 
 > **说明：** 
 >
@@ -469,7 +469,7 @@ matrix是一个参数为六个值的矩阵，6个值分别代表：scaleX, skewY
 }
 ```
 
-![Setting-matrix](figures/Setting-matrix.gif)
+Setting-matrix
 
 
 ## 整合transform属性
@@ -579,7 +579,7 @@ transform可以设置多个值并且多个值可同时设置，下面案例中�
 }
 ```
 
-![Integrating-transform-Attributes](figures/Integrating-transform-Attributes.gif)
+Integrating-transform-Attributes
 
 > **说明：**
 > - 当设置多个transform时，后续的transform值会把前面的覆盖掉。若想同时使用多个动画样式可用复合写法，例：transform: scale(1) rotate(0) translate(0,0)。
@@ -593,8 +593,8 @@ transform可以设置多个值并且多个值可同时设置，下面案例中�
 
 针对transform样式动画开发，有以下相关实例可供参考：
 
-- [`JsClock`：时钟（JS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock)
+- `JsClock`：时钟（JS）（API10）
 
-- [动画样式（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/AnimationDemo)
+- 动画样式（JS）（API9）
 
-- [图片常见操作（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)
+- 图片常见操作（JS）（API9）

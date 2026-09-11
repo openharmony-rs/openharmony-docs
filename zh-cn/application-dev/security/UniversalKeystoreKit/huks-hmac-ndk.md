@@ -38,7 +38,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 5. 调用OH_Huks_FinishSession结束密钥会话，获取哈希后的数据。
 
-<!-- @[hmac_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @hmac_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

@@ -43,7 +43,7 @@
 
     在源文件中引入头文件。
 
-    <!-- @[child_process_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+    <!-- @child_process_head_file -->
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
@@ -56,7 +56,7 @@
 
     子进程启动后会先调用NativeChildProcess_OnConnect获取IPC Stub对象，之后再调用NativeChildProcess_MainProc移交主线程控制权，该函数返回后子进程随即退出。
     
-    <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) --> 
+    <!-- @child_process_must_method --> 
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
@@ -141,7 +141,7 @@
 
 4. 在主进程中实现子进程启动结果回调函数。
 
-    <!-- @[main_handle_child_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    <!-- @main_handle_child_start_callback -->
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
@@ -168,7 +168,7 @@
 
     调用OH_Ability_CreateNativeChildProcessWithConfigs接口启动Native子进程，可通过OH_Ability_CreateChildProcessConfigs创建子进程配置信息对象，并按需设置进程名、隔离模式和uid隔离等。需注意返回值为NCP_NO_ERROR仅代表成功调用native子进程启动逻辑，实际的启动结果通过回调函数异步通知。需注意**仅允许在主进程中创建子进程**。
 
-    <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    <!-- @main_processIpc_launch_native_child -->
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
@@ -240,7 +240,7 @@
 
     在源文件中引入头文件。
 
-    <!-- @[create_native_child_param_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+    <!-- @create_native_child_param_header -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -250,7 +250,7 @@
 
     在子进程中，实现参数为NativeChildProcess_Args的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
 
-    <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) --> 
+    <!-- @child_process_necessary_export_impl --> 
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -307,7 +307,7 @@
 
     调用OH_Ability_StartNativeChildProcessWithConfigs接口启动Native子进程，可通过OH_Ability_CreateChildProcessConfigs创建子进程配置信息对象，并按需设置进程名、隔离模式和uid隔离等。返回值为NCP_NO_ERROR代表成功启动native子进程。
 
-    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
+    <!-- @main_process_launch_native_child -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -388,7 +388,7 @@
 
     在源文件中引入头文件。
 
-    <!-- @[child_get_start_params_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
+    <!-- @child_get_start_params_header -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -398,7 +398,7 @@
 
     OH_Ability_StartNativeChildProcessWithConfigs创建子进程后，子进程内的任意so和任意子线程可以通过调用OH_Ability_GetCurrentChildProcessArgs()获取到子进程的启动参数NativeChildProcess_Args，便于操作相关的文件描述符。
 
-    <!-- @[child_get_start_params_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) --> 
+    <!-- @child_get_start_params_main --> 
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -454,7 +454,7 @@
 
     在源文件中引入头文件。
 
-    <!-- @[kill_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
+    <!-- @kill_child_process_header -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -464,7 +464,7 @@
 
     通过native_child_process和childProcessManager（非SELF_FORK模式）中的接口创建子进程后，主进程可以调用OH_Ability_KillChildProcess(int32_t pid)根据传入的pid终止相应的子进程。
 
-    <!-- @[kill_child_process_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
+    <!-- @kill_child_process_main -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -493,7 +493,7 @@
 
     在源文件中引入头文件。
 
-    <!-- @[native_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
+    <!-- @native_child_process_header -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -505,7 +505,7 @@
 
     调用OH_Ability_UnregisterNativeChildProcessExitCallback解注册Native子进程，如果返回值为NCP_NO_ERROR表示解注册成功。
 
-    <!-- @[register_native_child_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->
+    <!-- @register_native_child_process_exit -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>

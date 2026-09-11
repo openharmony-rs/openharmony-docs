@@ -62,7 +62,7 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
   **图1** color-scheme效果图
 
-  ![web-color-scheme](figures/arkweb_color_scheme.png)
+  web-color-scheme
 
 - prefers-color-scheme是CSS中的一个媒体查询功能，可以检测系统的主题颜色。网页开发者可以通过该特性，为不同的系统主题颜色定义不同的网页CSS样式，以适应用户的主题偏好。使用样例如下：
 
@@ -98,7 +98,7 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
   **图2** prefers-color-scheme效果图
 
-  ![web-prefers-color-scheme](figures/arkweb_prefers_color_scheme.png)
+  web-prefers-color-scheme
 
 
 ## Web深色模式设置
@@ -126,7 +126,7 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
 forceDarkAccess()接口仅在Web深色模式开启时生效。在下面的示例中，应用设置Web深色模式跟随系统。系统开启深色模式时，Web进入强制深色模式。
 
-<!-- @[force_the_page_to_be_configured_to_dark_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_two.ets) -->
+<!-- @force_the_page_to_be_configured_to_dark_mode -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -176,7 +176,7 @@ darkModePage.html页面在深色模式关闭、深色模式开启及强制深色
 
 **图3** Web深色模式和强制深色模式效果图
 
-![web-dark-mode](figures/arkweb_dark_mode.png)
+web-dark-mode
 
 ## Web组件背景色适配
 
@@ -185,7 +185,7 @@ Web组件发生旋转或大小改变等事件时，Web网页尺寸改变，变�
 Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web组件默认背景色为白色。仅当强制深色模式下，默认背景色变为黑色。未开启强制深色模式时，可通过以下方法进行适配。
 
 - 应用侧设置WebDarkMode.On和WebDarkMode.Off控制深色模式开启和关闭时，背景色跟随深色模式开启和关闭状态改变。
-  <!-- @[set_web_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_three.ets) -->
+  <!-- @set_web_background_color -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -207,7 +207,7 @@ Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web
   ```
 
 - 应用侧设置WebDarkMode.Auto跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
-  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @set_web_darkmode_auto -->
   
   ``` TypeScript
   import { window } from '@kit.ArkUI';
@@ -231,7 +231,7 @@ Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web
   }
   ```
   <!-- -->
-  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets) -->
+  <!-- @set_web_darkmode_auto -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';

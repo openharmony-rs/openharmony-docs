@@ -17,12 +17,12 @@
 
 ## 开发步骤
 
-开发者在实现NotificationSubscriberExtensionAbility提供方时，需在[DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)工程中新建一个NotificationSubscriberExtensionAbility。具体步骤如下。
+开发者在实现NotificationSubscriberExtensionAbility提供方时，需在DevEco Studio工程中新建一个NotificationSubscriberExtensionAbility。具体步骤如下。
 
 1. 在entry/src/main/ets/创建目录extensionability。
 
 2. 在entry/src/main/ets/extensionability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
-   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
+   <!--@callback_start-->   
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -55,7 +55,7 @@
 4. 实现NotificationSubscriberExtensionAbility后，还需要在合适的时机调用openSubscriptionSettingsWithResult接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示，并在弹窗关闭时返回授权的结果。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用openSubscriptionSettingsWithResult接口。
 
 5. 在应用的module.json5文件中配置extensionAbilities。
-   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/module.json5)-->
+   <!--@quick_start-->
    
    ``` JSON5
    {
@@ -92,7 +92,7 @@
 10. 如果使用该蓝牙连接发送消息失败，则需要重新建立蓝牙连接，连接成功后即可发送消息。
 
 11. 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考声明权限和向用户申请授权。
-    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
+    <!--@quick_start-->   
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';

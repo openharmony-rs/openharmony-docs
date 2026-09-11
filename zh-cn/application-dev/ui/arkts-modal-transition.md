@@ -65,7 +65,7 @@ bindContentCover接口用于为组件绑定全屏模态页面，在组件出现�
 
 完整示例代码和效果如下。
 
-<!-- @[bind_content_cover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template1/BindContentCoverDemo.ets) -->
+<!-- @bind_content_cover -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -264,7 +264,7 @@ struct BindContentCoverDemo {
 
 
 
-![zh-cn_image_0000001646921957](figures/Modal-Transition-bindContentCover.gif)
+zh-cn_image_0000001646921957
 
 
 
@@ -275,7 +275,7 @@ bindSheet属性可为组件绑定半模态页面，在组件出现时可通过�
 完整示例和效果如下。
 
 
-<!-- @[bind_sheet_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template2/BindSheetDemo.ets) -->
+<!-- @bind_sheet_demo -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -386,7 +386,7 @@ struct BindSheetDemo {
 }
 ```
 
-![zh-cn_image_0000001599977924](figures/Sheet-Transition-bindSheet.gif)
+zh-cn_image_0000001599977924
 
 
 ## 使用bindMenu实现菜单弹出效果
@@ -394,7 +394,7 @@ struct BindSheetDemo {
 bindMenu为组件绑定弹出式菜单，通过点击触发。完整示例和效果如下。
 
 
-<!-- @[bind_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template3/BindMenuDemo.ets) -->
+<!-- @bind_menu_demo -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -446,7 +446,7 @@ struct BindMenuDemo {
 }
 ```
 
-![zh-cn_image_0000001599643478](figures/Creating-Menu-bindMenu.gif)
+zh-cn_image_0000001599643478
 
 
 ## 使用bindContextMenu实现菜单弹出效果
@@ -456,7 +456,7 @@ bindContextMenu为组件绑定弹出式菜单，通过长按或右键点击触�
 完整示例和效果如下。
 
 
-<!-- @[bind_context_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template4/BindContextMenuDemo.ets) -->
+<!-- @bind_context_menu_demo -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -531,7 +531,7 @@ struct BindContextMenuDemo {
 }
 ```
 
-![zh-cn_image_0000001600137920](figures/Context-Menu-bindContextMenu.gif)
+zh-cn_image_0000001600137920
 
 
 ## 使用bindPopup实现气泡弹窗效果
@@ -541,7 +541,7 @@ bindPopup属性可为组件绑定弹窗，并设置弹窗内容，交互逻辑�
 完整示例和效果如下。
 
 
-<!-- @[bind_popup_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template5/BindPopupDemo.ets) -->
+<!-- @bind_popup_demo -->
 
 ``` TypeScript
 @Entry
@@ -599,7 +599,7 @@ struct BindPopupDemo {
 
 
 
-![zh-cn_image_0000001649282285](figures/Creating-Popup-with-bindPopup.gif)
+zh-cn_image_0000001649282285
 
 
 ## 使用if实现模态转场
@@ -609,7 +609,7 @@ struct BindPopupDemo {
 完整示例和效果如下。
 
 
-<!-- @[modal_transition_with_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets) -->
+<!-- @modal_transition_with_if -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -809,4 +809,4 @@ struct ModalTransitionWithIf {
 }
 ```
 
-![zh-cn_image_0000001597792146](figures/Modal-Transition.gif)
+zh-cn_image_0000001597792146

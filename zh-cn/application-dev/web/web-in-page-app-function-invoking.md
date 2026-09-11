@@ -16,7 +16,7 @@
 
 应用侧使用javaScriptProxy()接口注册示例：
 
-<!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
+<!-- @functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -83,7 +83,7 @@ struct WebComponent {
 
 - 示例1：
 
-  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
+  <!-- @Register_before_loaded -->    
   
   ``` TypeScript
   // xxx.ets
@@ -146,7 +146,7 @@ struct WebComponent {
  
 - 示例2：
 
-   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
+   <!-- @Register_after_loaded -->    
    
    ``` TypeScript
    // xxx.ets
@@ -875,4 +875,4 @@ struct WebComponent {
 
    使用复杂类型使用方法中应用侧和前端页面之间传递Array作为示例，调试结果如下图所示：
 
-   ![DevTools工具验证成功示例](figures/webtoolstest.png)
+   DevTools工具验证成功示例

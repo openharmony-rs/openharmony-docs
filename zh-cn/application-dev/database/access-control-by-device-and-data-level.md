@@ -30,7 +30,7 @@
 在设备组网时，可以通过`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
-![Device-Security-Levels](figures/Device-Security-Levels.png)
+Device-Security-Levels
 <!--DelEnd-->
 
 ## 跨设备同步访问控制机制
@@ -84,7 +84,7 @@
    export class KvInterface {
    }
    ```
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store1 -->
    
    ``` TypeScript
    public CreateKvManager = (() => {
@@ -106,7 +106,7 @@
      }
    })
    ```
-   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store3 -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -171,7 +171,7 @@
 具体接口及功能，可见@ohos.data.relationalStore (关系型数据库)。
 
 
-<!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
+<!-- @rdb_accessControlByDeviceAndDataLevel -->  
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';

@@ -6,7 +6,7 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-OpenHarmony NDK中提供了OpenMP的动态库和静态库文件，支持开发者在Native应用中使用OpenMP。本文用于指导开发者在[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中调用库文件使用OpenMP的并行化能力，更详细的使用示例和API标准请查看官方文档[clang-OpenMPSupport](https://clang.llvm.org/docs/OpenMPSupport.html)。
+OpenHarmony NDK中提供了OpenMP的动态库和静态库文件，支持开发者在Native应用中使用OpenMP。本文用于指导开发者在DevEco Studio中调用库文件使用OpenMP的并行化能力，更详细的使用示例和API标准请查看官方文档clang-OpenMPSupport。
 
 ## 开发步骤
 
@@ -19,7 +19,7 @@ OpenMP库的引入可以通过静态链接和动态链接两种方式实现。
 
 > **注意：**
 > 
-> [OMPT(OpenMP Tools Interface)](https://www.openmp.org/spec-html/5.0/openmpsu15.html#x25-240001.5.1)工具目前仅支持静态链接时使用。
+> OMPT(OpenMP Tools Interface)工具目前仅支持静态链接时使用。
 >
 
 **静态链接**
@@ -152,12 +152,12 @@ struct Index {
 
 ### 运行并校验结果
 
-运行前请检查设备连接并配置好[Signature](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-signing-V5)信息。直接点击右上角运行按钮，应用启动后设备进入“Hello OpenMP”界面，点击“Hello OpenMP”标签，打开DevEco Studio下方“Log”查看页面，即可看到并行打印的“Hello OpenMP！”消息。
+运行前请检查设备连接并配置好Signature信息。直接点击右上角运行按钮，应用启动后设备进入“Hello OpenMP”界面，点击“Hello OpenMP”标签，打开DevEco Studio下方“Log”查看页面，即可看到并行打印的“Hello OpenMP！”消息。
 
-![image1](./figures/omp-result.png)
+image1
 
 > **注意：**
 > 
 > OpenMP程序运行时，HiLog中会输出“dlopen_impl load library header failed for libarcher.so”的报错信息（如下图）。该报错信息中提到的libarcher.so，在OpenMP程序开启Tsan检测时才需要使用。目前OpenHarmony未支持OpenMP程序的Tsan检测能力，因此该错误信息可忽略，不影响程序正常运行。
 >
-> ![image2](./figures/omp-error.png)
+> image2

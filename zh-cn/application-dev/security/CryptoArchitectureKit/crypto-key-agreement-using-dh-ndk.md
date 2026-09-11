@@ -20,7 +20,7 @@
 3. 调用OH_CryptoKeyAgreement_GenerateSecret，基于传入的私钥（keyPair.priKey）与公钥（keyPair.pubKey）进行密钥协商，返回共享密钥。
 
 
-<!-- @[TestDh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiationCpp/entry/src/main/cpp/types/project/DH.cpp) -->
+<!-- @TestDh -->
 
 ``` C++
 

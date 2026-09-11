@@ -29,7 +29,7 @@ Promise提供了then、catch、finally方法来注册回调函数，以处理异
 
 例如，以下代码创建了一个Promise对象并模拟了一个异步操作：
 
-<!-- @[promise_async_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+<!-- @promise_async_operation -->
 
 ``` TypeScript
 const promise: Promise<number> = new Promise((resolve: Function, reject: Function) => {
@@ -49,7 +49,7 @@ const promise: Promise<number> = new Promise((resolve: Function, reject: Functio
 
 Promise还可以使用finally注册回调函数，无论Promise最终状态如何（fulfilled或rejected），都会执行该回调函数。例如：
 
-<!-- @[promise_then_catch_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @promise_then_catch_handling --> 
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -93,7 +93,7 @@ async函数返回Promise对象，实现异步操作。函数内部可包含零�
 
 下面是一个使用async/await的示例，模拟同步方法执行异步操作的场景，3秒后返回一个字符串。
 
-<!-- @[async_await_sync_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+<!-- @async_await_sync_operation -->
 
 ``` TypeScript
 async function myAsyncFunction(): Promise<string> {
@@ -135,7 +135,7 @@ struct PromiseAsyncAwait {
 
 需要注意的是，等待异步操作时，需将操作放在async函数中，并搭配await使用，且await关键字只在async函数内有效（只能在async函数内使用）。同时也可使用try/catch块来捕获异常。
 
-<!-- @[async_operation_error_handling_with_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/AsyncConcurrencyOverview/entry/src/main/ets/pages/Index.ets) -->
+<!-- @async_operation_error_handling_with_try_catch -->
 
 ``` TypeScript
 async function myAsyncFunction(): Promise<void> {

@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 3. 调用接口OH_Huks_DeleteKeyItem，删除密钥。
 
-<!-- @[key_deletion_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyDeletion/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @key_deletion_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

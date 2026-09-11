@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-开发者在实现音量变化监听功能时，可能会遇到注册回调报错、回调始终不触发、取消回调后回调仍继续触发等问题。本文主要围绕[on('streamVolumeChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)/[off('streamVolumeChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md#offstreamvolumechange20)回调接口的常见问题进行说明，内容包括相关背景知识、问题现象及定位方法，并附上可直接对照的定位流程，帮助开发者快速排查和解决问题。
+开发者在实现音量变化监听功能时，可能会遇到注册回调报错、回调始终不触发、取消回调后回调仍继续触发等问题。本文主要围绕on('streamVolumeChange')/off('streamVolumeChange')回调接口的常见问题进行说明，内容包括相关背景知识、问题现象及定位方法，并附上可直接对照的定位流程，帮助开发者快速排查和解决问题。
 
 ## 问题现象
 

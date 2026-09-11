@@ -10,19 +10,19 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 
 ## 使用场景
 - 支持应用内共享，也可以作为二方库（SDK）、三方库（SDK）发布后供其他应用使用。
-- 作为二方库（SDK），发布到[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供公司内部其他应用使用。
-- 作为三方库（SDK），发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)，供其他应用使用。
+- 作为二方库（SDK），发布到OHPM私仓，供公司内部其他应用使用。
+- 作为三方库（SDK），发布到OHPM中心仓，供其他应用使用。
 
 ## 约束限制
 
 - HAR不支持在设备上单独安装或运行，只能作为应用模块的依赖项被引用。
-- 从API version 14开始，HAR支持在配置文件中声明UIAbility组件，配置UIAbility的方法参考[在模块中添加Ability](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，拉起HAR中UIAbility的方式与启动应用内的UIAbility方法相同。
+- 从API version 14开始，HAR支持在配置文件中声明UIAbility组件，配置UIAbility的方法参考在模块中添加Ability，拉起HAR中UIAbility的方式与启动应用内的UIAbility方法相同。
 
 > **说明：**
 >
 > 如果使用startAbility接口拉起HAR中的UIAbility，接口参数中的moduleName取值需要为依赖该HAR的HAP/HSP的moduleName。
 
-- 从API version 18开始，HAR支持在配置文件中声明ExtensionAbility组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HAR中配置ExtensionAbility的方法和支持的类型请参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。API version 17及之前版本，不支持在配置文件中声明ExtensionAbility组件。
+- 从API version 18开始，HAR支持在配置文件中声明ExtensionAbility组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HAR中配置ExtensionAbility的方法和支持的类型请参考模块中添加ExtensionAbility。API version 17及之前版本，不支持在配置文件中声明ExtensionAbility组件。
 - HAR不支持在配置文件中声明pages页面，但是可以包含pages页面，并通过Navigation跳转的方式进行跳转。
 - HAR不支持引用AppScope目录中的资源。在编译构建时，AppScope中的内容不会打包到HAR中，因此会导致HAR资源引用失败。
 - 由于HSP仅支持应用内共享，如果HAR依赖了HSP，则该HAR文件仅支持应用内共享，不支持发布到二方仓或三方仓供其他应用使用，否则会导致编译失败。
@@ -38,7 +38,7 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 
 
 ## 创建
-开发者可以通过DevEco Studio创建一个用于调用C++代码的HAR模块，创建过程中需要在Configure New Module界面中开启Enable native。详见[创建库模块](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har#section643521083015)。
+开发者可以通过DevEco Studio创建一个用于调用C++代码的HAR模块，创建过程中需要在Configure New Module界面中开启Enable native。详见创建库模块。
 
 
 ## 开发
@@ -47,7 +47,7 @@ HAR（Harmony Archive）是静态共享包，可以包含代码、C++库、资�
 
 Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，统一在Index.ets文件中导出。Index.ets文件是DevEco Studio默认自动生成的，开发者也可以自定义，在模块的oh-package.json5文件中的main字段配置入口声明文件，配置如下所示：
 
-<!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
+<!-- @har_package_001 -->
 
 ``` JSON5
 {
@@ -64,7 +64,7 @@ Index.ets文件是HAR导出声明文件的入口，HAR需要导出的接口，�
 ### 导出ArkUI组件
 通过`export`导出ArkUI组件，示例如下：
 
-<!-- @[har_package_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/components/mainpage/MainPage.ets) -->
+<!-- @har_package_002 -->
 
 ``` TypeScript
 // library/src/main/ets/components/mainpage/MainPage.ets
@@ -103,7 +103,7 @@ export struct MainPage {
 
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
 
-<!-- @[har_package_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
+<!-- @har_package_003 -->
 
 ``` TypeScript
 // library/Index.ets
@@ -114,7 +114,7 @@ export { MainPage } from './src/main/ets/components/mainpage/MainPage';
 ### 导出类和方法
 通过`export`导出类和方法，支持导出多个类和方法，示例如下所示：
 
-<!-- @[har_package_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/test.ets) -->
+<!-- @har_package_004 -->
 
 ``` TypeScript
 // library/src/main/ets/test.ets
@@ -136,7 +136,7 @@ export function func2() {
 
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
 
-<!-- @[har_package_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
+<!-- @har_package_005 -->
 
 ``` TypeScript
 // library/Index.ets
@@ -147,7 +147,7 @@ export { Log, func, func2 } from './src/main/ets/test';
 ### 导出native方法
 在HAR中也可以包含C++编写的so。对于so中的native方法，HAR通过以下方式导出，以导出liblibrary.so的加法接口add为例：
 
-<!-- @[har_package_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/ets/utils/nativeTest.ets) -->
+<!-- @har_package_007 -->
 
 ``` TypeScript
 // library/src/main/ets/utils/nativeTest.ets
@@ -162,7 +162,7 @@ export function nativeAdd(a: number, b: number): number {
 
 HAR对外暴露的接口，在Index.ets导出文件中声明如下所示：
 
-<!-- @[har_package_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/Index.ets) -->
+<!-- @har_package_006 -->
 
 ``` TypeScript
 // library/Index.ets
@@ -179,7 +179,7 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
 > 
 > 如果在AppScope、HAP模块或HAR模块的国际化目录中配置了资源，在相同的国际化限定词下，合并的优先级也遵循上述规则。同时，国际化限定词中配置的优先级高于在base中的配置。例如，在AppScope的base中配置了资源字段，在HAR模块的en_US中配置了同样的资源字段，则在en_US的使用场景中，会更优先使用HAR模块中配置的资源字段。
 
-<!-- @[har_package_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
+<!-- @har_package_008 -->
 
 ``` JSON5
 {
@@ -196,13 +196,13 @@ export { nativeAdd } from './src/main/ets/utils/nativeTest';
 
 介绍如何配置HAR依赖，并引用HAR的ArkUI组件、接口、资源。
 
-引用HAR前，需要先配置对HAR的依赖，详见[引用HAR文件和资源](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
+引用HAR前，需要先配置对HAR的依赖，详见引用HAR文件和资源。
 
 ### 引用HAR的ArkUI组件
 
 HAR的依赖配置成功后，可以引用HAR的ArkUI组件。通过`import`引入HAR导出的ArkUI组件，示例如下所示：
 
-<!-- @[har_package_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/IndexSec.ets) -->
+<!-- @har_package_009 -->
 
 ``` TypeScript
 // entry/src/main/ets/pages/IndexSec.ets
@@ -225,7 +225,7 @@ struct IndexSec {
 ### 引用HAR的类和方法
 通过`import`引用HAR导出的类和方法，示例如下所示：
 
-<!-- @[har_package_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
+<!-- @har_package_010 -->
 
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
@@ -269,7 +269,7 @@ struct Index {
 ### 引用HAR的native方法
 通过`import`引用HAR导出的native方法，示例如下所示：
 
-<!-- @[har_package_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
+<!-- @har_package_011 -->
 
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
@@ -311,7 +311,7 @@ struct Index {
 ### 引用HAR的资源
 通过`$r`引用HAR中的资源，例如在HAR模块的`src/main/resources`里添加字符串资源（在string.json中定义，name：hello_har）和图片资源（icon_har.png），然后在Entry模块中引用该字符串和图片资源的示例如下所示：
 
-<!-- @[har_package_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/entry/src/main/ets/pages/Index.ets) -->
+<!-- @har_package_012 -->
 
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
@@ -359,7 +359,7 @@ struct Index {
 
 ## 构建
 
-详情请参见[构建HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har)。
+详情请参见构建HAR。
 
 ### 混淆配置
 
@@ -367,9 +367,9 @@ HAR可以作为二方库和三方库提供给其他应用使用，如果需要�
 
 混淆能力开启后，DevEco Studio在构建HAR时，会对代码进行编译、混淆及压缩处理，保护代码资产。
 
-HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，且编译模块为release时，自动进行简单的代码混淆；**从DevEco Studio 5.0.3.600开始，新建工程默认关闭代码混淆功能**，可以在HAR模块的build-profile.json5文件中的ruleOptions字段下的enable进行开启混淆，详情请见[代码混淆](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation)，配置如下所示：
+HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，且编译模块为release时，自动进行简单的代码混淆；**从DevEco Studio 5.0.3.600开始，新建工程默认关闭代码混淆功能**，可以在HAR模块的build-profile.json5文件中的ruleOptions字段下的enable进行开启混淆，详情请见代码混淆，配置如下所示：
 
-  <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
+  <!-- @har_package_013 -->
   
   ``` JSON5
   {
@@ -407,8 +407,8 @@ HAR模块原先默认开启混淆能力，会对API 10及以上的HAR模块，�
 
 ## 发布
 
-详见[发布HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-publish)。
+详见发布HAR。
 
 ## 相关实例
 
-- [购物示例应用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Shopping/OrangeShopping)
+- 购物示例应用

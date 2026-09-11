@@ -19,7 +19,7 @@
 
 相机应用从后台切换至前台启动恢复的调用流程建议如下：
 
-![Camera Background recovery processing](figures/camera-background-recovery.png)
+Camera Background recovery processing
 
 ## 完整示例
 

@@ -50,7 +50,7 @@ LazyDynamicLayout适用于以下典型场景。
 
 首先创建一个继承自LazyCustomLayoutAlgorithm的类，定义布局所需的参数和数据结构。
 
-<!-- @[lazy_custom_layout_algorithm_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+<!-- @lazy_custom_layout_algorithm_class -->
 
 ``` TypeScript
 /**
@@ -135,7 +135,7 @@ private convertToPx(lengthMetrics: LengthMetrics | undefined, referenceSize?: nu
 
 提供setRowGap方法用于动态修改间距。当布局参数变化时，调用setNeedsLayout方法触发重新布局。
 
-<!-- @[lazy_custom_layout_algorithm_set_row_gap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+<!-- @lazy_custom_layout_algorithm_set_row_gap -->
 
 ``` TypeScript
 setRowGap(value: number): void {
@@ -152,7 +152,7 @@ setRowGap(value: number): void {
 
 onMeasure方法负责测量子组件并计算容器大小。在懒加载模式下，该方法的核心流程如下。
 
-<!-- @[lazy_custom_layout_algorithm_on_measure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+<!-- @lazy_custom_layout_algorithm_on_measure -->
 
 ``` TypeScript
 /**
@@ -225,7 +225,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
         - 正向滚动（FORWARD，从上到下）：锚点是可视区域的第一个子组件（startIndex）。
         - 反向滚动（BACKWARD，从下到上）：锚点是可视区域的最后一个子组件（endIndex）。
 
-        <!-- @[lazy_custom_layout_save_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+        <!-- @lazy_custom_layout_save_anchor -->
         
         ``` TypeScript
         /**
@@ -276,7 +276,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
         通过对比锚点的新旧位置，计算偏移调整量，并通过setAdjustedOffset调整滚动位置。
 
-        <!-- @[lazy_custom_layout_algorithm_adjust_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+        <!-- @lazy_custom_layout_algorithm_adjust_anchor -->
         
         ``` TypeScript
         /**
@@ -328,7 +328,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
         通过getChild方法获取指定索引的子组件FrameNode。必须传入ExpandMode.LAZY_NOT_EXPAND参数，避免全量加载导致懒加载失效。
 
-        <!-- @[lazy_custom_layout_get_child_not_expand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+        <!-- @lazy_custom_layout_get_child_not_expand -->
         
         ``` TypeScript
         let child = self.getChild(currIndex, ExpandMode.LAZY_NOT_EXPAND);
@@ -338,7 +338,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
         根据容器约束和布局需求，为子组件创建测量约束。单列布局中，子组件宽度等于容器宽度减去左右内边距。
 
-        <!-- @[lazy_custom_layout_create_child_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+        <!-- @lazy_custom_layout_create_child_constraint -->
         
         ``` TypeScript
         /**
@@ -377,7 +377,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     以下示例展示了正向测量可视范围内元素的完整流程，包含获取子组件、创建约束、调用measure、获取测量大小、记录位置信息。
 
-    <!-- @[lazy_custom_layout_measure_forward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+    <!-- @lazy_custom_layout_measure_forward -->
     
     ``` TypeScript
     private measureForward(
@@ -421,7 +421,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     对于未测量的子组件区域，使用估算高度计算总高度，避免为了获取总高度而全量测量所有子组件。
 
-    <!-- @[lazy_custom_layout_estimate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+    <!-- @lazy_custom_layout_estimate -->
     
     ``` TypeScript
     private calculateEstimateItemHeight(): void {
@@ -450,7 +450,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     当子组件离开可视区域后，通过setChildrenInactive将其设置为非激活态，释放内存。
 
-    <!-- @[lazy_custom_layout_recycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+    <!-- @lazy_custom_layout_recycle -->
     
     ``` TypeScript
     /**
@@ -502,7 +502,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 onLayout方法负责确定每个子组件的位置。在onLayout方法中，需要遍历可视区域的所有子组件，调用每个子组件的layout方法，传入相对于LazyDynamicLayout组件区域左上角的布局位置。布局子组件时需要考虑内边距：子组件的x坐标为leftPadding，y坐标为itemArr中记录的位置加上topPadding。
 
-<!-- @[lazy_custom_layout_algorithm_on_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
+<!-- @lazy_custom_layout_algorithm_on_layout -->
 
 ``` TypeScript
 onLayout(self: FrameNode): void {
@@ -535,7 +535,7 @@ onLayout(self: FrameNode): void {
 
 使用LazyDynamicLayout组件时，需要先导入组件和布局算法类，然后在构造函数中传入布局算法实例。
 
-<!-- @[lazy_custom_layout_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
+<!-- @lazy_custom_layout_create -->
 
 ``` TypeScript
 @Component
@@ -588,7 +588,7 @@ export struct CustomLazyColumnLayoutSample {
 
 动态调整布局参数，配合\@Watch装饰器监听参数变化。
 
-<!-- @[lazy_custom_layout_dynamic_param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
+<!-- @lazy_custom_layout_dynamic_param -->
 
 ``` TypeScript
 @State @Watch('onRowGapChange') rowGap: number = 5;
@@ -596,7 +596,7 @@ export struct CustomLazyColumnLayoutSample {
 
 布局算法中的尺寸参数使用像素单位，需要通过getUIContext().vp2px方法进行单位转换。
 
-<!-- @[lazy_custom_layout_unit_convert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
+<!-- @lazy_custom_layout_unit_convert -->
 
 ``` TypeScript
 onRowGapChange(): void {
@@ -612,7 +612,7 @@ onRowGapChange(): void {
 
 LazyDynamicLayout组件提供了onVisibleIndexesChange事件，用于监听可视区域内子组件索引值的变化。当LazyDynamicLayout首次布局完成或在其父可滚动组件可视区域内的子组件索引值发生变化时触发回调，返回可视区域内子组件的索引值列表。
 
-<!-- @[lazy_custom_layout_on_visible_indexes_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
+<!-- @lazy_custom_layout_on_visible_indexes_change -->
 
 ``` TypeScript
 LazyDynamicLayout(this.lazyAlgorithm) {
@@ -627,16 +627,16 @@ LazyDynamicLayout(this.lazyAlgorithm) {
 
 以下示例展示了如何使用LazyDynamicLayout配合自定义布局算法LazyColumnLayoutAlgorithm实现懒加载单列列表，支持动态调整行间距并保持滚动位置稳定。
 <!--RP1-->
-完整示例请参考[自定义懒加载单列布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets)。
+完整示例请参考自定义懒加载单列布局示例。
 <!--RP1End-->
 上述示例中，点击底部按钮可以切换行间距。由于布局算法中实现了setAdjustedOffset调整逻辑，切换间距后锚点子组件（正向布局时为可视区域第一个子组件，反向布局时为可视区域最后一个子组件）的位置保持不变，避免了滚动跳动。
 
-![LazyDynamicLayout1.gif](figures/customLazyColumnLayout.gif)
+LazyDynamicLayout1.gif
 
 针对自定义懒加载布局的开发，有以下相关实例可供参考。
 
 <!--RP2-->
-- [自定义懒加载单列布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets)：展示如何使用LazyDynamicLayout配合LazyColumnLayoutAlgorithm实现懒加载单列列表。
-- [自定义懒加载网格布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyGridLayoutSample.ets)：展示如何使用LazyDynamicLayout配合LazyGridLayoutAlgorithm实现懒加载网格布局。
-- [自定义懒加载瀑布流布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyWaterFlowLayoutSample.ets)：展示如何使用LazyDynamicLayout配合LazyWaterFlowLayoutAlgorithm实现懒加载瀑布流布局。
+- 自定义懒加载单列布局示例：展示如何使用LazyDynamicLayout配合LazyColumnLayoutAlgorithm实现懒加载单列列表。
+- 自定义懒加载网格布局示例：展示如何使用LazyDynamicLayout配合LazyGridLayoutAlgorithm实现懒加载网格布局。
+- 自定义懒加载瀑布流布局示例：展示如何使用LazyDynamicLayout配合LazyWaterFlowLayoutAlgorithm实现懒加载瀑布流布局。
 <!--RP2End-->

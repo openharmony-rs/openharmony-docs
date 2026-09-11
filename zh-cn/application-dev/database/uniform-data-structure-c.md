@@ -48,7 +48,7 @@ libudmf.so, libhilog_ndk.z.so
 ```
 
 ## 引用头文件
-<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @import_module -->
 
 ``` C++
 #include <database/udmf/uds.h>
@@ -68,7 +68,7 @@ libudmf.so, libhilog_ndk.z.so
 3. 获取数据。
 4. 使用完成后销毁指针。
 
-<!-- @[use_plaintext_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @use_plaintext_datastructure -->
 
 ``` C++
 // 1.创建PlainText对象指针
@@ -127,7 +127,7 @@ OH_UdsPlainText_Destroy(plainText2);
 4. 获取fileUri数据。
 5. 使用完成后销毁指针。
 
-<!-- @[use_fileUri_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @use_fileUri_datastructure -->
 
 ``` C++
 // 1.创建fileUri类型的数据结构

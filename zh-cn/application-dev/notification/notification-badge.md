@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-当角标设定个数取值小于或等于0时，表示清除角标。取值大于99时，[通知角标](notification-glossary.md#notification-badge通知角标)将显示99+。
+当角标设定个数取值小于或等于0时，表示清除角标。取值大于99时，通知角标将显示99+。
 
 - 增加角标数，支持如下两种方法：
 
@@ -34,7 +34,7 @@
 
 1. 导入NotificationManager模块。
 
-   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
+   <!-- @manage_notification_badges_header -->    
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -51,7 +51,7 @@
    
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
 
-   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+   <!-- @add_badge_count -->
    
    ``` TypeScript
    let badgeNumber: number = 9;
@@ -67,7 +67,7 @@
 
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
-   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+   <!-- @reduce_badge_count -->
    
    ``` TypeScript
    let badgeNumber: number = 8;
@@ -89,7 +89,7 @@
 
     示例如下：
 
-    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+    <!-- @increase_badge_count_seq -->
     
     ``` TypeScript
     let badgeNumber: number = 10;
@@ -114,7 +114,7 @@
 
     示例如下：
 
-    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+    <!-- @update_badge_count_idempotent -->
     
     ``` TypeScript
     let badgeNumber: number = 10;

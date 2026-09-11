@@ -20,7 +20,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   <!-- @import_module -->
 
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -29,7 +29,7 @@
 2. 使用场景。
 - 计算一天的小时数：一整天的小时数在夏令时跳变的当天会发生变化，并非24小时。例如，在大多数国家，夏令时开始的当天，一整天时间为23小时；夏令时结束的当天，一整天时间为25小时。计算夏令时跳变前后挂钟时间之间相差的小时数。示例代码如下：
 
-   <!-- @[handle_dst_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   <!-- @handle_dst_transition -->
    
    ``` TypeScript
    let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans');
@@ -49,7 +49,7 @@
 
    在夏令时内，本地时间显示建议添加夏令时标识。
 
-   ![图片1](figures/图片1.png)
+   图片1
 
 ### 存储和传输时间数据
 

@@ -6,15 +6,15 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-Faultlogger是基于[hidumper](hidumper.md)增强开发的命令行能力，支持查询故障日志文件列表、查看故障日志文件内容、按时间或应用包名筛选故障日志文件等功能。故障日志文件存储在设备的/data/log/faultlog/faultlogger目录下，Faultlogger从该目录中查询和读取故障日志文件。
+Faultlogger是基于hidumper增强开发的命令行能力，支持查询故障日志文件列表、查看故障日志文件内容、按时间或应用包名筛选故障日志文件等功能。故障日志文件存储在设备的/data/log/faultlog/faultlogger目录下，Faultlogger从该目录中查询和读取故障日志文件。
 
 ## 环境准备
 
-根据hidumper工具指导，完成[环境准备](hidumper.md#环境要求)。
+根据hidumper工具指导，完成环境准备。
 
 ## 命令行说明
 
-可通过`hidumper -s 1201 -a "-p Faultlogger [options]"`命令访问Faultlogger模块的故障日志功能，其中-p选项用于指定HiviewService系统能力中的插件模块，1201为HiviewService的系统能力id。hidumper命令的详细用法可参考[获取指定系统服务提供的能力](hidumper.md#获取指定系统服务提供的能力)。
+可通过`hidumper -s 1201 -a "-p Faultlogger [options]"`命令访问Faultlogger模块的故障日志功能，其中-p选项用于指定HiviewService系统能力中的插件模块，1201为HiviewService的系统能力id。hidumper命令的详细用法可参考获取指定系统服务提供的能力。
 
 下表为options的选项参数说明。
 
@@ -191,7 +191,7 @@ hidumper -s 1201 -a '-p Faultlogger -t 20250821100000 -m com.ohos.sceneboard'
 
 ### 查看指定故障日志文件内容
 
-可使用下列命令查看指定故障日志文件的内容。文件名可通过-l或-LogSuffixWithMs参数获取。故障日志的规格可参考：[CppCrash](cppcrash-guidelines.md#日志规格)、[JSCrash](jscrash-guidelines.md#日志规格)、[AppFreeze](appfreeze-guidelines.md#日志规格)、[AppFreeze增强日志](appfreeze-guidelines.md#增强日志规格)。
+可使用下列命令查看指定故障日志文件的内容。文件名可通过-l或-LogSuffixWithMs参数获取。故障日志的规格可参考：CppCrash、JSCrash、AppFreeze、AppFreeze增强日志。
 
 ```shell
 hidumper -s 1201 -a '-p Faultlogger -f cppcrash-com.ohos.sceneboard-20020022-20241106104006'

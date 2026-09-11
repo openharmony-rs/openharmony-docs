@@ -105,7 +105,7 @@ AVSession的接入开发请参考指南应用接入AVSession场景介绍。
 
 2. 创建AVSession后，应用在退至后台前应调用setBackgroundPlayMode接口设置准确的后台播放模式。
 
- <!-- @[setBackgroundPlayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetBackgroundPlayMode.ets) -->
+ <!-- @setBackgroundPlayMode -->
  
  ``` TypeScript
  import { avSession } from '@kit.AVSessionKit';

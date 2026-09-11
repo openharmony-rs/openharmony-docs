@@ -22,7 +22,7 @@
 
 4. 调用OH_CryptoKdf_Derive，指定目标密钥的字节长度，进行密钥派生。
 
-<!-- @[pbkdf2_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/cpp/types/project/pbkdf2_test.cpp) -->
+<!-- @pbkdf2_test_cpp -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"

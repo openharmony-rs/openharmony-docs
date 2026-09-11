@@ -15,7 +15,7 @@
 * 开启混淆开关  
 
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
-    <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->   
+    <!-- @set_openObfuscation1 -->   
     
     ``` JSON5
     "arkOptions": {
@@ -62,11 +62,11 @@
 
     开启混淆后，代码中的方法、属性或路径被混淆。但是在程序运行时，如果访问未混淆的方法、属性或路径，可能导致功能不可用。因此需要根据不同的场景配置保留选项。关于保留选项的排查场景和配置方法，参考ArkGuard混淆保留选项。
 
-    排查场景和配置字段时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，快速识别需要配置的保留选项和白名单字段。
+    排查场景和配置字段时，推荐使用混淆助手配置保留选项，快速识别需要配置的保留选项和白名单字段。
 
 * 指定release编译  
 
-    源码混淆仅支持release编译，不支持debug编译。开启混淆开关后，release编译会进行混淆，debug编译则不会。开发者可参考[指定构建模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)查看和修改构建模式。
+    源码混淆仅支持release编译，不支持debug编译。开启混淆开关后，release编译会进行混淆，debug编译则不会。开发者可参考指定构建模式查看和修改构建模式。
 
     > **注意：**
     >
@@ -91,7 +91,7 @@
     对于HAR和HSP模块，在`build-profile.json5`中额外有一个`arkOptions.obfuscation.consumerFiles`字段，用于指定当本包被依赖时，期望在当前编译流程生效的混淆规则，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
   build-profile.json5配置示例：
-    <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->    
+    <!-- @set_openObfuscation2 -->    
     
     ``` JSON5
     "arkOptions": {
@@ -121,7 +121,7 @@
 1. 开启`-enable-toplevel-obfuscation`选项时，如果代码中使用`globalThis`访问全局变量，可能会导致访问失败。此时，需要使用`-keep-global-name`选项来保留该全局变量的名称。
 2. 待上述选项应用适配成功后，开启`-enable-property-obfuscation`选项。此选项开启后，以下场景需要适配：
     1. 若代码中存在静态定义、动态访问的情况，或动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。
-       <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+       <!-- @example_openObfuscation1 -->   
        
        ``` TypeScript
        // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问
@@ -133,7 +133,7 @@
        console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性
        ```
 
-       <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+       <!-- @example_openObfuscation2 -->   
        
        ``` TypeScript
        // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设开发者知道属性名的结果）
@@ -157,9 +157,9 @@
     4. 验证应用功能以及模块被依赖时的接口调用功能，排查遗漏的场景。若应用出现功能异常，依据混淆后的报错栈从对应的中间产物中找到报错行的代码，排查需要配置的白名单并进行保留。
 4. 待上述选项应用适配成功后，开启`-enable-filename-obfuscation`选项。此选项开启后，以下场景需要适配：
     1. 若代码中有动态import语句，如`const path = './filePath'; import(path)`，会出现文件引用失败的情况，需要使用`-keep-file-name filePath`来保留这个文件名。
-    2. 若应用中有描述路由表信息的[routerMap配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/module-configuration-file#routermap%E6%A0%87%E7%AD%BE)，其中的pageSourceFile字段标记页面在模块的路径，需要使用`-keep-file-name`来保留这个路径。
+    2. 若应用中有描述路由表信息的routerMap配置，其中的pageSourceFile字段标记页面在模块的路径，需要使用`-keep-file-name`来保留这个路径。
     3. 若代码中有传入ohmUrl进行页面跳转，如`router.pushUrl({url: '@bundle:com.example.routerPage/Library/Index'})`，需要使用`-keep-file-name`来保留该路径中的文件名部分（如Library和Index）。
-    4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，且报错栈中的路径为混淆后的路径，可以在模块中的`build/default/[...]/release/obfuscation/nameCache.json`文件中查询到原始路径，进而找到源码文件。另外，[插件hstack](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)支持自动还原混淆后的报错堆栈。在定位到需要保留的路径后，使用`-keep-file-name`来保留此路径。
+    4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，且报错栈中的路径为混淆后的路径，可以在模块中的`build/default/[...]/release/obfuscation/nameCache.json`文件中查询到原始路径，进而找到源码文件。另外，插件hstack支持自动还原混淆后的报错堆栈。在定位到需要保留的路径后，使用`-keep-file-name`来保留此路径。
 
 ### 注意事项
 * 目前不支持在hvigor构建流程中添加自定义混淆插件。
@@ -174,11 +174,11 @@
   * 名称映射表文件：nameCache.json，该文件记录了源码名称混淆的映射关系。
   * 系统API白名单文件：systemApiCache.json，该文件记录了SDK中的接口与属性名称，工程源码中与其重名的元素不会被混淆。
 
-  ![build-product](figures/build-product.png)
+  build-product
 
 ## 报错栈还原
 
-经过混淆的应用程序，代码名称会更改，导致crash时打印的报错栈难以理解。可使用DevEco Studio命令工具Command Line Tools中的[hstack插件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)还原源码堆栈，进而分析问题。
+经过混淆的应用程序，代码名称会更改，导致crash时打印的报错栈难以理解。可使用DevEco Studio命令工具Command Line Tools中的hstack插件还原源码堆栈，进而分析问题。
 
 请备份应用编译过程中生成的`sourceMaps.map`文件和混淆名称映射文件nameCache.json，反混淆工具需要这些文件。
 
@@ -186,4 +186,4 @@
 
 源代码映射信息文件：sourceMaps.map，该文件记录了压缩/转换后的代码到原始源代码之间的映射关系。
 
-![obfuscation-product](figures/obfuscation-product.png)
+obfuscation-product

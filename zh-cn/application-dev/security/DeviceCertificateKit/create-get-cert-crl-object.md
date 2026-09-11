@@ -27,7 +27,7 @@
 
 6. 调用CertCRLCollection.selectCRLs查找所有与X509CRLMatchParameters匹配的证书吊销列表数组，并返回结果。
 
-<!-- @[certificate_collection_and_certificate_revocation_list_collection_object_creation_and_acquisition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateGetCertCrlObject.ets) -->
+<!-- @certificate_collection_and_certificate_revocation_list_collection_object_creation_and_acquisition -->
 
 ``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';

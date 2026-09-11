@@ -22,7 +22,7 @@
 
 > **说明：**
 >
-> 崩溃事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)和原子化服务场景下使用HiAppEvent进行订阅。从API version 22开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用HiAppEvent进行订阅。
+> 崩溃事件支持在应用分身和原子化服务场景下使用HiAppEvent进行订阅。从API version 22开始支持在输入法应用场景下使用HiAppEvent进行订阅。
 
 ## 检测原理
 
@@ -175,7 +175,7 @@ params是AppEventInfo中事件参数对象，包含每个事件参数的参数�
 | time | number | 事件触发时间，单位为ms。 |
 | crash_type | string | 崩溃类型，支持NativeCrash（native代码异常）和JsError（js代码异常）两种类型。检测方法请参见CppCrash（NativeCrash）检测和Js Crash（JsError）检测。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
-| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
+| release_type | string | 应用的版本类型。release表示应用为release版本应用，debug表示应用为debug版本应用。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |

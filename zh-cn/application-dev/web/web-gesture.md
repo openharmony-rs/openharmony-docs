@@ -35,7 +35,7 @@ ArkUI提供了手势绑定，Web组件有独立的手势识别，因此需要区
 > **说明：**
 >
 > 该示例仅用于说明ArkUI手势和ArkWeb手势的区别，不建议使用此方法进行Web组件的缩放。
-<!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) -->
+<!-- @DistinguishTwoGesture -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -75,7 +75,7 @@ struct Index {
   }
 }
 ```
-![web-gesture-pinch.gif](figures/web-gesture-pinch.gif)
+web-gesture-pinch.gif
 
 ## Web组件的手势拦截
 - ArkUI手势
@@ -86,7 +86,7 @@ struct Index {
 
   ArkWeb手势的生成需要Web组件接收触摸事件，有两种拦截方案：
   1. 完全禁止触摸事件发送给Web组件，详见触摸测试。
-  2. 发送TouchCancel触摸事件给Web组件，CAPI接口介绍详见OH_ArkUI_TouchRecognizer_CancelTouch，具体示例请参考<!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->。
+  2. 发送TouchCancel触摸事件给Web组件，CAPI接口介绍详见OH_ArkUI_TouchRecognizer_CancelTouch，具体示例请参考<!--RP1-->NdkGestureSetting<!--RP1End-->。
 
 
 ## 常见问题
@@ -101,7 +101,7 @@ Web组件提供了接口zoomAccess，控制是否可以缩放。网页上有user
 
 **示例代码**
 
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
+<!-- @ReturnLastWebPage -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -138,7 +138,7 @@ struct Index {
 
 网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以使用setCustomUserAgent在Web组件中设置自定义User-Agent，例如：
 
-<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
+<!-- @SetUserAgent -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

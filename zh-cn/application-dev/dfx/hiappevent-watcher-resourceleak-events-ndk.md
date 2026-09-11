@@ -22,7 +22,7 @@
 
 ### 步骤一：新建工程
 
-1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从三方开源库jsoncpp代码仓下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
    在DevEco Studio中新建工程，选择“Native C++”工程。目录结构如下：
 
@@ -243,7 +243,7 @@
 
    此处需要使用hidebug.setAppResourceLimit设置内存限制，造成内存泄漏，同步在“开发者选项”中打开“系统资源泄漏日志”（开关状态变更后需重启设备）。接口示例代码如下：
 
-   <!-- @[PssLeakEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @PssLeakEvent_Button -->
    
    ``` TypeScript
    Button('pss leak')
@@ -267,7 +267,7 @@
    
    - 头文件加入：
 
-   <!-- @[Pss_Leak_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @Pss_Leak_Header -->
    
    ``` C++
    #include <iostream>
@@ -278,7 +278,7 @@
 
    - 定义 pss leak 相关方法：
 
-   <!-- @[Pss_Leak](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @Pss_Leak -->
    
    ``` C++
    // 读 /proc/self/smaps_rollup 中的 PSS 字段，统计当前进程的 PSS (单位 KB)
@@ -406,7 +406,7 @@
 
     - 初始化：
 
-    <!-- @[Pss_Leak_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @Pss_Leak_Init -->
     
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
@@ -424,7 +424,7 @@
 
     - 添加类型声明：
 
-    <!-- @[Pss_Leak_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    <!-- @Pss_Leak_Index.d.ts -->
     
     ``` TypeScript
     export const leakMB: (size: number) => void;

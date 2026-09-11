@@ -21,7 +21,7 @@
 
 单版本是指数据在本地是以单个条目为单位的方式保存，当用户修改时，直接在这个条目上进行修改。在数据端端同步后多个设备全局只保留一份数据，多个设备的相同记录（主码相同）会按时间最新保留一条记录，数据不分设备，设备之间修改相同的key会覆盖。端端同步也以此为基础，按照它在本地被写入或更改的顺序将当前最新一次修改逐条同步至远端设备，常用于联系人、天气等应用存储场景。
 
-![singleKVStore](figures/singleKVStore.jpg)
+singleKVStore
 
 
 ### 多设备协同数据库
@@ -30,7 +30,7 @@
 
 底层按照设备的维度管理这些数据，多设备协同数据库支持以设备的维度查询分布式数据，但是不支持修改远端设备同步过来的数据。需要分开查询各设备数据的可以使用设备协同版本数据库。常用于图库缩略图存储场景。
 
-![deviceKVStore](figures/deviceKVStore.jpg)
+deviceKVStore
 
 
 ## 端端同步方式
@@ -54,7 +54,7 @@
 
 ### 数据跨设备端端同步机制
 
-![kvStore](figures/kvStore.jpg)
+kvStore
 
 如图所示，通过put、delete接口触发自动端端同步，将分布式数据通过通信适配层发送给对端设备，实现分布式数据的自动端端同步。
 
@@ -101,7 +101,7 @@
 
 此处以单版本键值型数据库跨设备数据端端同步的开发为例。以下是具体的开发流程和开发步骤。
 
-![kvStore_development_process](figures/kvStore_development_process.png)
+kvStore_development_process
 
 > **说明：**
 >
@@ -147,7 +147,7 @@
    1. 根据应用上下文创建kvManagerConfig对象。
    2. 创建分布式数据库管理器实例。
 
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store1 -->
    
    ``` TypeScript
    public CreateKvManager = (() => {
@@ -175,7 +175,7 @@
    1. 声明需要创建的分布式数据库ID描述（例如示例代码中的'storeId'）。
    2. 创建分布式数据库，建议关闭自动端端同步功能（autoSync:false），方便后续对端端同步功能进行验证，需要端端同步时主动调用sync接口。
 
-   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store3 -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -235,7 +235,7 @@
 
 5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用off('dataChange')关闭。
 
-   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store12 -->
    
    ``` TypeScript
    public On = (() =>{
@@ -260,7 +260,7 @@
    1. 构造需要写入分布式数据库的Key（键）和Value（值）。
    2. 将键值数据写入分布式数据库。
 
-   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store4 -->
    
    ``` TypeScript
    public Put = (() => {
@@ -292,7 +292,7 @@
    1. 构造需要从单版本分布式数据库中查询的Key（键）。
    2. 从单版本分布式数据库中获取数据。
 
-   <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store5 -->
    
    ``` TypeScript
    public Get = (() => {
@@ -325,7 +325,7 @@
    >
    > 在手动端端同步的方式下，其中的deviceIds通过调用devManager.getAvailableDeviceListSync方法得到。
 
-   <!-- @[kv_store13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store13 -->
    
    ``` TypeScript
    public Sync = (() =>{
@@ -368,18 +368,18 @@
 
 针对键值型数据库开发，有以下相关实例可供参考：
 
-- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
+- 分布式组网认证（ArkTS）（Full SDK）（API10）
 
-- [分布式数据管理（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/Kvstore)
+- 分布式数据管理（ArkTS）（Full SDK）（API9）
 
-- [分布式音乐播放（JS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/JsDistributedMusicPlayer)
+- 分布式音乐播放（JS）（Full SDK）（API10）
 
-- [分布式音乐播放（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedMusicPlayer)
+- 分布式音乐播放（ArkTS）（Full SDK）（API9）
 
-- [分布式计算器（JS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributeCalc)
+- 分布式计算器（JS）（Full SDK）（API10）
 
-- [分布式计算器（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
+- 分布式计算器（ArkTS）（Full SDK）（API9）
 
-- [分布式五子棋（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/DistributedDataGobang)
+- 分布式五子棋（ArkTS）（Full SDK）（API9）
 
-- [分布式手写板（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/codelabs/tree/master/Distributed/DistributeDraw)
+- 分布式手写板（ArkTS）（Full SDK）（API10）

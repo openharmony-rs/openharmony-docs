@@ -38,7 +38,7 @@ HiAppEvent是系统为应用开发者提供的事件订阅和事件打点机制�
 
 应用调用HiAppEvent的addWatcher接口订阅系统事件并创建共享目录。当应用进程发生故障时，DFX系统捕获相关信息，生成事件和日志，并写入到共享目录。HiAppEvent监听到事件后，将事件回调给应用。
 
-![hiappevent-watch-systemevents](figures/hiappevent-watch-systemevents.PNG)
+hiappevent-watch-systemevents
 
 ### 应用事件订阅机制
 
@@ -46,7 +46,7 @@ HiAppEvent是系统为应用开发者提供的事件订阅和事件打点机制�
 
 HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatcher接口设置的回调方式将事件回调给应用。
 
-![hiappevent-watch-appevents](figures/hiappevent-watch-appevents.PNG)
+hiappevent-watch-appevents
 
 > **说明：**
 >

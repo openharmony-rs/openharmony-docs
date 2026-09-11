@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本篇中的所有示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[AnimationNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AnimationNDK)<!--RP1End-->。
+本篇中的所有示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->AnimationNDK<!--RP1End-->。
 
 ## 使用属性动画
 
@@ -20,7 +20,7 @@
 
 1. 在.ets文件中创建NodeContent，把NodeContent作为参数输出到Native方法中。
 
-   <!-- @[get_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/ets/pages/UseFrameAnimation.ets) -->
+   <!-- @get_content -->
    
    ``` TypeScript
    // 初始化NodeContent对象。
@@ -40,7 +40,7 @@
 
 2. 解析NodeContent，转换为C中的ArkUI_NodeContentHandle对象。
 
-   <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @get_context -->
    
    ``` C++
    // 获取NodeContent
@@ -50,7 +50,7 @@
 
 3. 获取ArkUI_NativeAnimateAPI_1对象。
 
-   <!-- @[get_Api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->
+   <!-- @get_Api -->
    
    ``` C
    // 获取ArkUI_NativeAnimateAPI_1接口
@@ -60,7 +60,7 @@
 
 4. 设置ArkUI_AnimateOption参数，通过提供的C方法设置对应的参数。
 
-   <!-- @[set_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   <!-- @set_option -->  
    
    ``` C
    // 设置动画参数
@@ -83,7 +83,7 @@
 
 5. 设置回调参数。
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   <!-- @set_callback -->  
    
    ``` C
    // 设置完成的回调
@@ -133,7 +133,7 @@
    animateApi->animateTo(context, option, update, completeCallback);
    ```
 
-   ![GIF](figures/animateTo.gif)
+   GIF
 
 ## 组件出现/消失转场
 
@@ -141,7 +141,7 @@
 
 1. 创建可交互界面，界面中包含一个Button组件，点击可以控制转场节点的添加和移除。其中ArkUI_NodeContentHandle类型节点的获取与使用可参考接入ArkTS页面。
 
-   <!-- @[main_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+   <!-- @main_view_method -->
    
    ``` C
    constexpr int32_t BUTTON_CLICK_ID = 1;
@@ -209,7 +209,7 @@
 
 2. 创建一个设置了ArkUI_NodeAttributeType中的NODE_ROTATE_TRANSITION，NODE_SCALE_TRANSITION属性的节点，当目标节点上下树时会播放转场动画。
 
-   <!-- @[create_child_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+   <!-- @create_child_node -->
    
    ``` C
    ArkUI_NodeHandle CreateChildNode()
@@ -252,7 +252,7 @@
 
 3. 在Button的监听回调里添加转场节点上下树逻辑，以此控制转场节点的入场和出场。
 
-   <!-- @[button_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+   <!-- @button_show -->
    
    ``` C
    void OnButtonShowClicked(ArkUI_NodeEvent *event)
@@ -279,7 +279,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001903284256](figures/Appearance-Disappearance-Transitions.gif)
+   zh-cn_image_0000001903284256
 
 
 ## 一镜到底转场
@@ -288,7 +288,7 @@
 
 1. 创建一个设置了ArkUI_NodeAttributeType中的NODE_GEOMETRY_TRANSITION属性的image节点，同时设置该节点的宽度、高度和位置，用于区别于另一个image节点，然后将当前image节点挂载到一个父节点，当前示例中父节点为stack。
 
-   <!-- @[imageTransition_view_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+   <!-- @imageTransition_view_method -->
    
    ``` C
    void imageTransitionViewMethod()
@@ -343,7 +343,7 @@
 
 2. 再创建一个设置了ArkUI_NodeAttributeType中的NODE_GEOMETRY_TRANSITION属性的image节点，属性值与第一个image节点相同，同时为该节点设置不同的宽度、高度和位置。
 
-   <!-- @[create_Image_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+   <!-- @create_Image_node -->
    
    ``` C
    ArkUI_NodeHandle CreateImageNode()
@@ -386,7 +386,7 @@
 
 3. 在stack的OnImageTransitionClicked监听回调函数中添加两个节点的上下树逻辑，控制节点的上下树，确保同时只有一个节点存在，同时，当其中一个节点挂载到父节点时需要重置ArkUI_NodeAttributeType中的NODE_GEOMETRY_TRANSITION属性的值，并重新设置为原来的值。
 
-   <!-- @[imageTransition_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUITransition.h) -->
+   <!-- @imageTransition_show -->
    
    ``` C
    void OnImageTransitionClicked(ArkUI_NodeEvent *event)
@@ -436,13 +436,13 @@
    }
    ```
 
-   ![zh-cn_image_one_shot_transition](figures/one-shot-transition.gif)
+   zh-cn_image_one_shot_transition
 
 ## 使用关键帧动画
 
 该示例主要演示如何通过keyframeAnimateTo来设置关键帧动画，NDK接口开发的UI界面挂载到ArkTS主页面的完整流程可参考接入ArkTS页面。
 
-   <!-- @[get_keyframeAnimateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   <!-- @get_keyframeAnimateTo -->  
    
    ``` C
    // ArkUIColumnNode为工程内封装的node类型
@@ -553,13 +553,13 @@
    column->AddChild(button);
    ```
 
-   ![zh-cn_image_0000001903284256](figures/image-keyframeAnimateTo.gif)
+   zh-cn_image_0000001903284256
 
 ## 使用帧动画
 
 该示例主要演示如何通过createAnimator来设置帧动画。
 
-   <!-- @[get_createAnimator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AnimationNDK/entry/src/main/cpp/ArkUIAnimate.h) -->  
+   <!-- @get_createAnimator -->  
    
    ``` C
    std::shared_ptr<ArkUIBaseNode> CreateAnimator()
@@ -773,4 +773,4 @@
    }
    ```
 
-   ![zh-cn_image_animator](figures/Frame-Animations.gif)
+   zh-cn_image_animator

@@ -17,7 +17,7 @@
 
 生成或导入密钥时，在密钥属性集中需指定三个参数：用户认证类型HuksUserAuthType、授权访问类型HuksAuthAccessType、挑战值类型HuksChallengeType。
 
-<!-- @[user_authentication_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
+<!-- @user_authentication_key_generation -->
 
 ## 开发案例
 
@@ -211,7 +211,7 @@ async function step2InitSession(): Promise<void> {
 ```
 
 ### 通过PIN码认证获取授权令牌
-<!-- @[user_authentication_pin_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
+<!-- @user_authentication_pin_verification -->
 
 ``` TypeScript
 /* 步骤3：用户认证模块 - 通过PIN码认证获取授权令牌 */
@@ -268,7 +268,7 @@ function performUserAuthentication(huksChallenge: Uint8Array): void {
 ```
 
 ### 使用认证令牌进行加密操作
-<!-- @[user_authentication_data_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
+<!-- @user_authentication_data_encryption -->
 
 ``` TypeScript
 /* 步骤4：加密操作模块 - 使用认证令牌进行加密操作 */

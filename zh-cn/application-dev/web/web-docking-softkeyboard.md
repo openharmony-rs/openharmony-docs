@@ -129,7 +129,7 @@ struct WebComponent {
 
 （1）设置UIContext的软键盘避让模式。
 
-<!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+<!-- @soft_keyboard_entryability -->
 
 ``` TypeScript
 import { KeyboardAvoidMode } from '@kit.ArkUI';
@@ -166,7 +166,7 @@ onWindowStageCreate(windowStage: window.WindowStage) {
   </body>
 </html>
 ```
-<!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+<!-- @soft_keyboard_index -->
 
 ``` TypeScript
 // Index.ets
@@ -189,11 +189,11 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 **图1**  Web组件网页默认软键盘避让模式
 
-![default-keyboardavoid](figures/default-keyboardavoid.png)
+default-keyboardavoid
 
 **图2**  Web组件网页跟随ArkUI软键盘避让模式
 
-![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
+arkui-keyboardavoid
 
 2.在UIContext的键盘避让模式为Offset模式时，应用可通过WebKeyboardAvoidMode()设置ArkWeb组件的键盘避让模式。Web组件的WebKeyboardAvoidMode()接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
@@ -209,7 +209,7 @@ ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
 在应用代码中设置ArkWeb的软键盘避让模式。
 
-<!-- @[soft_keyboard_setmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/SetSKBMode_one.ets) -->
+<!-- @soft_keyboard_setmode -->
 
 ``` TypeScript
 // Index.ets
@@ -237,7 +237,7 @@ ArkWeb组件根据避让模式进行避让，效果见图3。
 
 **图3**  Web组件网页自身软键盘避让模式
 
-![web-keyboardavoid](figures/web-keyboardavoid.png)
+web-keyboardavoid
 
 3.在软键盘弹出时，为使Web组件不发生避让行为，可通过调用expandSafeArea()设置Web组件扩展安全区域。更多详细示例可参考网页中安全区域计算和避让适配。
 
@@ -447,12 +447,12 @@ ArkWeb自定义键盘的示例效果如图4、图5和图6所示。
 
 **图4**  ArkWeb自定义键盘数字键盘
 
-![web-customkeyboardnumber](figures/web-customkeyboardnumber.png)
+web-customkeyboardnumber
 
 **图5**  ArkWeb自定义键盘字母键盘
 
-![web-customkeyboardletter](figures/web-customkeyboardletter.png)
+web-customkeyboardletter
 
 **图6**  ArkWeb自定义键盘符号键盘
 
-![web-customkeyboardsymbol](figures/web-customkeyboardsymbol.png)
+web-customkeyboardsymbol

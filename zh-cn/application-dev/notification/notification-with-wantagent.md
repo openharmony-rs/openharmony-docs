@@ -10,11 +10,11 @@
 
 携带了actionButtons的通知示意图如下。
 
-![notification_wantagent](figures/notification_actionButtons.png)
+notification_wantagent
 
 ## 运行机制
 
-![notification_wantagent](figures/notification_wantagent.png)
+notification_wantagent
 
 ## 接口说明
 
@@ -27,7 +27,7 @@
 
 1. 导入模块。
 
-   <!-- @[add_behavior_intent_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   <!-- @add_behavior_intent_header -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -43,7 +43,7 @@
 
    场景一：创建拉起UIAbility的WantAgent的WantAgentInfo信息。
 
-   <!-- @[create_launch_uiAbility_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   <!-- @create_launch_uiAbility_agent_info -->
    
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的wantAgent对象，后续使用其完成触发的动作。
@@ -69,7 +69,7 @@
 
    场景二：创建发布公共事件的WantAgent的WantAgentInfo信息。
 
-   <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   <!-- @create_pub_event_agent_info -->
    
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的WantAgent对象，后续使用其完成触发的动作。
@@ -90,7 +90,7 @@
 
 3. 调用getWantAgent()方法进行创建WantAgent。
 
-   <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   <!-- @create_get_agent -->
    
    ``` TypeScript
    // 创建WantAgent
@@ -113,9 +113,9 @@
    >
    > - 如果封装WantAgent至通知消息中，可以点击通知触发WantAgent。当通知消息存在actionButtons时，点击通知会先显示actionButtons，再次点击通知触发WantAgent。
    >
-   > - 如果封装WantAgent至[通知按钮](notification-glossary.md#notification-button通知按钮)中，点击通知后，该通知下方会出现通知按钮，可以点击按钮触发WantAgent。
+   > - 如果封装WantAgent至通知按钮中，点击通知后，该通知下方会出现通知按钮，可以点击按钮触发WantAgent。
 
-   <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
+   <!-- @pub_want_agent_req_notify -->
    
    ``` TypeScript
    // 构造NotificationActionButton对象
@@ -157,5 +157,5 @@
 
 ## 示例代码
 
-  - [自定义通知](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README_zh.md)
+  - 自定义通知
 <!--RP1End-->

@@ -25,7 +25,7 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
 
 1. 初始化一个弹出框内容区，内部包含一个Text组件。
 
-    <!-- @[normal_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+    <!-- @normal_custom_dialog -->
     
     ``` TypeScript
     @Builder
@@ -40,7 +40,7 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
     
 
 2. 初始化另一个弹出框内容区，内部包含一个点击打开普通弹出框的按钮，点击事件中通过调用UIContext中getPromptAction方法获取PromptAction对象，再通过该对象调用openCustomDialog接口，并且设置层级为0的levelOrder参数来创建普通层级弹出框。
-    <!-- @[top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+    <!-- @top_custom_dialog -->
     
     ``` TypeScript
     @Builder
@@ -73,7 +73,7 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
 
 3. 通过调用UIContext中getPromptAction方法获取PromptAction对象，再通过该对象调用openCustomDialog接口，并且设置层级为100000的levelOrder参数来创建最高层级弹出框。
 
-    <!-- @[open_top_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+    <!-- @open_top_custom_dialog -->
     
     ``` TypeScript
     this.getUIContext().getPromptAction().openCustomDialog({
@@ -89,7 +89,7 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
  
 
 ## 完整示例
- <!-- @[dialog_box](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxlayermanagement/DialogBoxLayer.ets) -->
+ <!-- @dialog_box -->
  
  ``` TypeScript
  import { LevelOrder } from '@kit.ArkUI';
@@ -165,4 +165,4 @@ ArkUI的弹出框节点默认直接挂载在根节点上，会根据层级从小
  
  
  
-![dialog-levelorder-demo1](figures/dialog-levelorder-demo1.gif)
+dialog-levelorder-demo1

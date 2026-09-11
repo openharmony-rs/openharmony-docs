@@ -26,7 +26,7 @@
 
 ### 开发示例
 
-<!-- @[components_based_on_uniform_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/ContentForm/entry/src/main/ets/pages/Index.ets) -->
+<!-- @components_based_on_uniform_data_structure -->
 
 ``` TypeScript
 // 1. 导入需要的模块

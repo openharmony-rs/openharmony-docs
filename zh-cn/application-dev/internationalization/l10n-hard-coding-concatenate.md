@@ -13,7 +13,7 @@
 
 例如，下图中将"Rain tomorrow"和"Bring an umbrella"两句直接拼接在一起，造成语句大小写问题。
 
-![information-weather-forecast](figures/information-weather-forecast.png)
+information-weather-forecast
 
 ## 约束与限制
 

@@ -28,7 +28,7 @@
 
 在应用沙箱目录下创建一个测试文件data.txt，并写入测试数据。示例代码如下。
 
-  <!-- @[deflate_and_inflate_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @deflate_and_inflate_001 -->
   
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
@@ -69,7 +69,7 @@
 
 采用接口zlib.compressFile()将文件data.txt压缩并归档到data.zip中，采用接口zlib.decompressFile()将data.zip解压到应用沙箱目录下，示例代码如下。
   
-  <!-- @[deflate_and_inflate_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages1/Index.ets) -->
+  <!-- @deflate_and_inflate_002 -->
   
   ``` TypeScript
   import { BusinessError, zlib } from '@kit.BasicServicesKit';
@@ -115,7 +115,7 @@
 
 针对一个已知大小的缓冲区中的数据，使用接口compress()将其压缩到一个目标缓冲区中，使用接口compressBound()计算压缩目标缓冲区大小的上限值，使用接口uncompress()对存储压缩数据的缓冲区进行解压。由于解压时无法获取解压后原始数据的大小，为了确认解压后目标缓冲区的大小，需要在压缩前获取原始数据的大小并保存，示例代码如下。
 
-  <!-- @[deflate_and_inflate_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages2/Index.ets) -->
+  <!-- @deflate_and_inflate_003 -->
   
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
@@ -204,7 +204,7 @@
 
 针对一个未知大小的缓冲区中的数据，使用接口deflate()将从一个原始输入流中读取的数据进行压缩，使用接口inflate()将从一个压缩输入流中读取的数据进行解压，示例代码如下。
 
-  <!-- @[deflate_and_inflate_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages3/Index.ets)  -->
+  <!-- @deflate_and_inflate_004  -->
   
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
@@ -380,7 +380,7 @@
 
 采用gzip格式，针对一个未知大小的缓冲区中的数据，使用接口deflate()将从一个原始输入流中读取的数据进行压缩，使用接口inflate()将从一个压缩输入流中读取的数据进行解压，示例代码如下。
 
-  <!-- @[deflate_and_inflate_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages4/Index.ets)  -->
+  <!-- @deflate_and_inflate_005  -->
   
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';

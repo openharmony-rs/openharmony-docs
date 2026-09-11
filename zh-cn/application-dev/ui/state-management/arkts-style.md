@@ -35,7 +35,7 @@
 
 定义在组件内的\@Styles可以通过this访问组件的常量和状态变量，并可以在\@Styles里通过事件来改变状态变量的值，示例如下：
 
-<!-- @[inner_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) --> 
+<!-- @inner_style --> 
 
 ``` TypeScript
 @Entry
@@ -63,7 +63,7 @@ struct FancyUse {
   }
 }
 ```
-![](figures/arkts-style-1.gif)
+
 
 ## 限制条件
 
@@ -78,7 +78,7 @@ struct FancyUse {
 
 ```
 
-<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @style_not_parameter -->
 
 ``` TypeScript
 // 正确写法
@@ -101,7 +101,7 @@ struct FancyUse {
 
 ```
 
-<!-- @[style_not_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @style_not_if -->
 
 ``` TypeScript
 // 正确写法
@@ -115,7 +115,7 @@ struct FancyUse {
 
 ### 组件内\@Styles和全局\@Styles的用法
 
-<!-- @[global_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator1.ets) -->
+<!-- @global_style -->
 
 ``` TypeScript
 // 定义在全局的@Styles封装的样式
@@ -157,4 +157,3 @@ struct GlobalFancy {
   }
 }
 ```
-![](figures/arkts-style-2.gif)

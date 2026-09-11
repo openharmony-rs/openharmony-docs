@@ -398,7 +398,7 @@ struct CrossLanguage {
 
 5. 运行程序，在ArkTS侧点击按钮，设置当前attributeSetting为true，在Native侧点击按钮，设置ArkTS侧Scroll组件滚动条的颜色和粗细属性。
 
-![crossLanguageDemo](figures/crossLanguageDemo.gif)
+crossLanguageDemo
 
 ## 支持跨语言设置属性的节点类型
 

@@ -47,7 +47,7 @@
 源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以`@十六进制数字`的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在方舟字节码文件中源代码对应的Class中有一个名为`scopeNames`的field，这个field的值是指向一个LiteralArray的偏移，这个LiteralArray存储的是一个字符串数组。十六进制数字就是代表作用域名称在这个数组中的索引。原函数名不进行索引转换。
 
 例子：
-<!-- @[scope_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ScopeName.ts) -->    
+<!-- @scope_name -->    
 
 ``` TypeScript
 // ScopeName.ts
@@ -61,7 +61,7 @@ function longFuncName() { // longFuncName的函数名为"#*#longFuncName"，其�
 如果源码中相同作用域下出现了同名的实体，同名的名称后会加上重名序号，重名序号以`^十六进制数字`的形式表示。出现重名时，第一个不编号（即重名序号为空），从第二个开始编号，编号从`1`开始。
 
 例子：
-<!-- @[renaming_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @renaming_index --> 
 
 ``` TypeScript
 namespace A {
@@ -75,7 +75,7 @@ namespace A {
 ### 原函数名
 原函数名代表函数在源代码中的名字，匿名函数的名称为空字符串。同样的，如果源码中相同作用域下出现了同名的函数，重名的名称后面会加上重名序号（包括匿名函数）。
 
-<!-- @[original_function_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @original_function_name --> 
 
 ``` TypeScript
 function foo() {}; // 原函数名为"foo"
@@ -87,7 +87,7 @@ function foo() {}; // 原函数名为"foo"
 **特殊情况**
  
 1. 如果匿名函数被赋值给一个变量，该变量名即为函数名。例如：
-   <!-- @[special_function_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @special_function_variable --> 
    
    ``` TypeScript
    let a = () => {} // 原函数名为"a"
@@ -95,7 +95,7 @@ function foo() {}; // 原函数名为"foo"
 
 2. 如果匿名函数在对象字面量中定义并且被赋值给了一个字面量属性：
 * 如果属性名中不包含`\`和`.`，则其原函数名即为该属性名。
-   <!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/DuplicateName.ts) -->  
+   <!-- @special_without_slash_period -->  
    
    ``` TypeScript
    // DuplicateName.ts
@@ -105,7 +105,7 @@ function foo() {}; // 原函数名为"foo"
    ```
 
 * 如果属性名包含`\`或`.`，为防止二义性，其原函数名会按照匿名函数命名。
-   <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/OriginalFuncName.ts) -->  
+   <!-- @special_with_slash_period -->  
 
    ``` TypeScript
    // OriginalFuncName.ts
@@ -117,7 +117,7 @@ function foo() {}; // 原函数名为"foo"
 
 **开发者应尽量避免使用除字母、数字、下划线以外的字符命名函数，以免出现二义性。**
 ## 示例
-<!-- @[avoid_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @avoid_use --> 
 
 ``` TypeScript
 namespace A { // namespace在字节码中的函数名为"#&#A"

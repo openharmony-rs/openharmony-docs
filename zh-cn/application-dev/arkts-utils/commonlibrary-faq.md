@@ -17,7 +17,7 @@
 3. **编写解析代码**：使用libxml2提供的API实现流式解析逻辑。
 4. **XML对象处理**：当XML文件大小超过100MB时，建议在Native侧处理。
 
-关于如何在ArkTS侧引用编译生成的三方so库，请参考文档：[如何在ArkTS侧引用其他三方so库](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-21)。
+关于如何在ArkTS侧引用编译生成的三方so库，请参考文档：如何在ArkTS侧引用其他三方so库。
 
 libxml2库支持的回调函数主要如下所示：
 | 回调函数指针 | 触发时机 | 用途 |

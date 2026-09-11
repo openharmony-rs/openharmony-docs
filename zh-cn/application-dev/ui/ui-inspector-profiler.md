@@ -29,7 +29,7 @@
 
 下面的例子为嵌套两层子组件的典型示例，使用了装饰器\@State和 \@Link。开发者可组合使用上述命令，展示前端组件树、状态变量和其影响的组件等信息。
 
-<!-- @[ui_inspector_profiler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/UIInspectorProfiler.ets) -->
+<!-- @ui_inspector_profiler -->
 
 ``` TypeScript
 @Entry
@@ -216,13 +216,13 @@ DevEco Studio的Profiler工具可抓取状态变量的变化打点。在Profiler
 
 **图1** 录制ArkUI State泳道流程示意图
 
-![UI-StateProfiler1](figures/UI-StateProfiler1.gif)
+UI-StateProfiler1
 
 步骤3：选中状态变量变化的打点，将显示当前状态变量更新触发了哪些组件的刷新，以及对应组件的创建、测量和布局的耗时。
 
 **图2** ArkUI State泳道图示意图
 
-![UI-StateProfiler2](figures/UI-StateProfiler2.png)
+UI-StateProfiler2
 
 <!--RP3-->
 
@@ -243,7 +243,7 @@ DevEco Studio的ArkUI Inspector可以显示当前页面自定义组件内的状�
 
 **图3** ArkUI Inspector显示状态变量相关信息
 
-![UI-StateInspector](figures/UI-StateInspector.png)
+UI-StateInspector
 
 <!--RP4-->
 

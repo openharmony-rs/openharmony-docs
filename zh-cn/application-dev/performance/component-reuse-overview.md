@@ -30,17 +30,17 @@
 
 ### 标准型
 
-![normal](./figures/component_reuse_overview_normal.png)
+normal
 
 这是一个标准的组件复用场景，一个滚动容器内的复用组件布局相同，只有数据不同。这种类型的组件复用可以直接参考资料组件复用实践。
 
 **应用场景案例**
 
-![normal_case](./figures/component_reuse_overview_normal_case.png)
+normal_case
 
 ### 有限变化型
 
-![limited](./figures/component_reuse_overview_limited.png)
+limited
 
 这种类型中复用组件之间存在不同，但是类型有限。如上图所示，容器内的复用组件内部的子组件不一样，但可总结为两种类型，类型 1由三个子组件 A 进行布局拼接而成，类型 2由子组件 B、子组件 C 和子组件 D 进行布局拼接而成。
 
@@ -48,7 +48,7 @@
 
 - **类型1和类型2业务逻辑不同**：建议将两种类型的组件使用两个不同的自定义组件，分别进行复用。此时组件复用池内的状态如下图所示，复用组件 1 和复用组件 2 处于不同的复用 list 中。
 
-![limited_first_method_cache](./figures/component_reuse_overview_limited_first_method_cache.png)
+limited_first_method_cache
 
 实现方式可参考以下示例代码：
 
@@ -153,7 +153,7 @@ struct ReusableComponentTwo {
 
 - **类型1和类型2布局不同，但是很多业务逻辑相同**：在这种情况下，如果将组件分为两个自定义组件进行复用，会存在代码冗余问题。根据系统组件复用原理可知，复用组件是依据 reuseId 来区分复用缓存池的，而自定义组件的名称就是默认的 reuseId。因此，为复用组件显式设置两个 reuseId 与使用两个自定义组件进行复用，对于 ArkUI 而言，复用逻辑完全相同。此时组件复用池内的状态如下图所示。
 
-![limited_second_method_cache](./figures/component_reuse_overview_limited_second_method_cache.png)
+limited_second_method_cache
 
 具体实现方式可以参考以下示例：
 
@@ -243,15 +243,15 @@ struct ReusableComponent {
 
 **应用场景案例**
 
-![limited_case.png](./figures/component_reuse_overview_limited_case.png)
+limited_case.png
 
 ### 组合型
 
-![composition](./figures/component_reuse_overview_composition.png)
+composition
 
 这种类型中复用组件之间存在不同，并且情况非常多，但拥有共同的子组件。如果使用有限变化型的组件复用方式，将所有类型的复用组件写成自定义组件分别复用，那么不同复用组件的复用 list 中相同的子组件之间不能互相复用。对此可以将复用组件转变为 Builder 函数，使复用组件内部共同的子组件的缓存池在父组件上共享。此时组件复用池内的状态如下图所示。
 
-![composition_cache](./figures/component_reuse_overview_composition_cache.png)
+composition_cache
 
 **反例**
 
@@ -492,13 +492,13 @@ struct ChildComponentD {
 
 示例运行效果图如下：
 
-![composition_optimization_before](./figures/component_reuse_overview_composition_optimization_before.gif)
+composition_optimization_before
 
 从上图可以看到，列表滑动到 ListItem 0 消失时，复用组件 ReusableComponentOne 和它的子组件 ChildComponentA 都加入了复用缓存。继续向上滑动时，由于 ListItem 4 与 ListItem 0 的复用组件不在同一个复用 list，因此 ListItem 4 的复用组件 ReusableComponentThree 和它的子组件依然会全部重新创建，不会复用缓存中的子组件 ChildComponentA。
 
 此时 ListItem 4 中的子组件 ChildComponentA 的重新创建耗时 6ms387μs499ns。
 
-![composition_optimization_before_trace](./figures/component_reuse_overview_composition_optimization_before.png)
+composition_optimization_before_trace
 
 **正例**
 
@@ -699,19 +699,19 @@ struct ChildComponentD {
 
 示例运行效果图如下：
 
-![composition_optimization_after](./figures/component_reuse_overview_composition_optimization_after.gif)
+composition_optimization_after
 
 从效果图可以看出，每一个 ListItem 中的子组件 ChildComponentA 之间都可以触发组件复用。此时 ListItem 4 创建时，子组件 ChildComponentA 复用 ListItem 0 中的子组件 ChildComponentA ，复用仅耗时 864μs583ns。
 
-![composition_optimization_after_trace](./figures/component_reuse_overview_composition_optimization_after.png)
+composition_optimization_after_trace
 
 **应用场景案例**
 
-![composition_case.png](./figures/component_reuse_overview_composition_case.png)
+composition_case.png
 
 ### 全局型
 
-![component_reuse_overview_global](./figures/component_reuse_overview_global.png)
+component_reuse_overview_global
 
 一些场景中组件需要在不同的父组件中复用，并且不适合改为Builder。如上图所示，有时候应用在多个tab页之间切换，tab页之间结构类似，需要在tab页之间复用组件，提升页面切换性能。或者有些应用在组合型场景下，由于复用组件内部含有带状态的业务逻辑，不适合改为Builder函数。
 
@@ -721,11 +721,11 @@ struct ChildComponentD {
 
 **应用场景案例**
 
-![global_tab_switching](./figures/component_reuse_overview_global_tab_switching.gif)
+global_tab_switching
 
 ### 嵌套型
 
-![component_reuse_overview_nested](./figures/component_reuse_overview_nested.png)
+component_reuse_overview_nested
 
 复用组件的子组件的子组件之间存在差异。可以运用化归的思想，将复杂的问题转化为已知的、简单的问题。
 

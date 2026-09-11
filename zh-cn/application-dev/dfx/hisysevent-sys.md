@@ -21,7 +21,7 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
 - 使用"hisysevent -r"命令完成对系统事件的订阅。
 
-   ![](figures/hisysevent-r.png)
+   
 
 - 使用"-g"指定事件类型来完成对系统事件更高精确度的订阅。
 
@@ -32,7 +32,7 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
   样例：订阅**FAULT**（错误）类型的系统事件。
 
-  ![](figures/hisysevent-r-g.png)
+  
 
 - 使用"-o"指定事件域，"-n"指定事件名，以及"-c"指定事件域和事件名称的匹配规则，完成系统事件更高精确度的订阅。
 
@@ -43,35 +43,35 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
   样例1：使用全词匹配规则，订阅事件域为"AAFWK"，事件名称为"CONNECT_SERVICE"的系统事件。
 
-  ![](figures/hisysevent-r-o-wholeword.png)
+  
 
   样例2：使用前缀匹配规则，订阅事件域前缀为"AAF"，事件名称前缀为"CONNECT"的系统事件。
 
-  ![](figures/hisysevent-r-o-prefix.png)
+  
 
   样例3：使用正则表达式匹配规则，订阅事件域可以匹配"AA\*"正则表达式，事件名称可以匹配"CONNE\*"正则表达式的系统事件。
 
-  ![](figures/hisysevent-r-o-regular.png)
+  
 
 - 使用"-t"指定事件标签以及"-c"指定事件标签的匹配规则，来完成系统事件更高精确度的订阅。
 
   样例1：使用全词匹配规则，订阅事件标签为"ability"的系统事件。
 
-  ![](figures/hisysevent-r-t-wholeword.png)
+  
 
   样例2：使用前缀匹配规则，订阅事件标签前缀为"abili"的系统事件。
 
-  ![](figures/hisysevent-r-t-prefix.png)
+  
 
   样例3：使用正则表达式匹配规则，订阅事件标签可以匹配"abi\*"正则表达式的系统事件。
 
-  ![](figures/hisysevent-r-t-regular.png)
+  
 
 ## 查询历史事件
 
 - 使用"hisysevent -l"命令完成对已落盘的系统事件的查询。
 
-  ![](figures/hisysevent-l.png)
+  
 
 - 可以使用"-g"指定事件类型来完成对系统事件更高精确度的查询。
 
@@ -82,7 +82,7 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
   样例：查询**SECURITY**（安全）类型的系统事件。
 
-  ![](figures/hisysevent-l-g.png)
+  
 
 - 使用"-s"指定起始原始时间戳、"-e"指定截止原始时间戳，完成对特定时间段内系统事件的查询。
 
@@ -91,7 +91,7 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
   样例：查询起始时间戳是1708604541551，结束时间戳是1708604558551时间段内的所有系统事件。
 
-  ![](figures/hisysevent-l-s-e.png)
+  
 
 - 使用"-S"指定起始格式化时间戳、"-E"指定截止格式化时间戳，完成对特定时间段内系统事件的查询。
 
@@ -100,7 +100,7 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
   样例：查询起始时间戳是"2024-02-22 20:22:21"，结束时间戳是"2024-02-22 20:22:38"时间段内的所有系统事件。
 
-  ![](figures/hisysevent-l-S-E-format.png)
+  
 
 - 使用"-o"指定事件域，"-n"指定事件名，以及"-c"指定事件域和事件名称的匹配规则，来完成系统事件更高精度的查询。
 
@@ -111,16 +111,16 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
   样例：使用全词匹配规则，查询事件域为"AAFWK"，事件名称为"CONNECT_SERVICE"的系统事件。
 
-  ![](figures/hisysevent-l-o-n-c.png)
+  
 
 - 使用"-m"指定查询的最大系统事件条数。
 
   > **说明：**
   > 查询历史事件时，如果开发者不使用"-m"指定查询的最大系统事件条数，hisysevent命令行工具默认最多只查询10000条系统事件。
 
-  ![](figures/hisysevent-l-m.png)
+  
 
-  ![](figures/hisysevent-l-wc-l.png)
+  
 
 ## 合法性检查模式
 
@@ -137,4 +137,4 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
 样例：事件域为"ACE"，事件名称为"INTERACTION_APP_JANK"的<!--RP1-->系统事件配置<!--RP1End-->中不包含"DURITION"、"DISPLAY_ANIMATOR"自定义参数，但是实际落盘的系统事件却包含此字符串类型的键值对，合法性检查模式开启的情况下，此键值对的键被红色高亮标注。
 
-![](figures/hisysevent-v.png)
+

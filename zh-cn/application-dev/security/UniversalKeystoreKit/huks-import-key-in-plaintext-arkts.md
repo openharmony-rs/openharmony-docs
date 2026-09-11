@@ -23,7 +23,7 @@
 
 
 ### 导入AES256密钥
-<!-- @[import_keys_in_plaintext_AES256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/AES256.ets) -->
+<!-- @import_keys_in_plaintext_AES256 -->
 
 ``` TypeScript
 
@@ -86,7 +86,7 @@ async function testImport() {
 <!-- -->
 
 ### 导入RSA2048密钥对
-<!-- @[import_keys_in_plaintext_RSA2048](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/RSA2048.ets) -->
+<!-- @import_keys_in_plaintext_RSA2048 -->
 
 ``` TypeScript
 /* 以下以导入RSA2048密钥的Callback操作使用为例。 */
@@ -192,7 +192,7 @@ async function testImport() {
 <!-- -->
 
 ### 导入X25519密钥公钥
-<!-- @[import_keys_in_plaintext_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/X25519.ets) -->
+<!-- @import_keys_in_plaintext_X25519 -->
 
 ``` TypeScript
 /* 以下以导入X25519密钥的Callback操作使用为例。 */

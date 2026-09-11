@@ -40,7 +40,7 @@
 </div>
 ```
 
-![animate3](figures/animate3.gif)
+animate3
 
 > **说明：** 
 >
@@ -66,7 +66,7 @@
 </div>
 ```
 
-![animateMotion](figures/animateMotion.gif)
+animateMotion
 
 
 ## animateTransform动画
@@ -111,4 +111,4 @@
 }
 ```
 
-![animateTransform](figures/animateTransform.gif)
+animateTransform

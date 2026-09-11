@@ -26,7 +26,7 @@ type_def.h的QoS提供了ffrt_qos_inherit（-1）到ffrt_qos_user_initiated（3�
 ## 场景示例
 下面是一个在高负载情况下，配置了不同QoS等级的两个线程（关键线程）完成相同计算任务所花时间的对比图，从界面的运行结果可以看到在高负载情况下，配置了高优先级的线程执行完计算所花的时间更少一些。
 
-![](./figures/qos-protect-critical-threads.gif)  
+  
 
 具体实现步骤如下：  
 
@@ -184,7 +184,7 @@ static napi_value lowQoSCalculate(napi_env env, napi_callback_info info) {
 
 计算线程（线程id：39260）设置低QoS等级trace图           
 
-![](./figures/qos-low.png)   
+   
 
 如上图所示，计算线程执行完计算任务耗时726.8毫秒。
 
@@ -220,7 +220,7 @@ static napi_value highQoSCalculate(napi_env env, napi_callback_info info) {
 
 计算线程（线程id：39204）设置高QoS等级trace图    
 
-![](./figures/qos-high.png)  
+  
 
 如上图所示，计算线程执行完计算任务耗时323.9毫秒。    
 

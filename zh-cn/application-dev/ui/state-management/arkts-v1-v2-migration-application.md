@@ -33,7 +33,7 @@ V1:
 
 通过windowStage.loadContent和this.getUIContext().getSharedLocalStorage接口实现页面间的状态变量共享。
 
-<!-- @[Internal_@ObservedV2_@Trace_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/EntryAbility.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V1 -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -51,7 +51,7 @@ export default class EntryAbility extends UIAbility {
 
 在下面的示例中，使用\@LocalStorageLink，可以将开发者本地的修改同步回LocalStorage中。
 
-<!-- @[Internal_@ObservedV2_@Trace_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page1.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V1_pag1 -->
 
 ``` TypeScript
 // Page1.ets
@@ -80,7 +80,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[Internal_@ObservedV2_@Trace_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV1/pages/Page2.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V1_pag2 -->
 
 ``` TypeScript
 // Page2.ets
@@ -142,7 +142,7 @@ V2:
 - 声明\@ObservedV2装饰的MyStorage类，并import到需要使用的页面中。
 - 声明被\@Trace的属性作为页面间共享的可观察的数据。
 
-<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) --> 
+<!-- @Internal_@ObservedV2_@Trace_V2 --> 
 
 ``` TypeScript
 // 声明@ObservedV2装饰的MyStorage类
@@ -160,7 +160,7 @@ export class MyStorage {
 }
 ```
 
-<!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page1.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V2_pag1 -->
 
 ``` TypeScript
 // Page1.ets
@@ -190,7 +190,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/Page2.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V2_pag2 -->
 
 ``` TypeScript
 // Page2.ets
@@ -246,7 +246,7 @@ struct Page2 {
 - 点击`push to Page2`按钮，跳转到`Page2`。由于在`Page1`中改变`count`值不会同步到LocalStorage，因此`Page2`中的Text组件仍显示初始值47。
 - 点击`change Storage Count`按钮，调用LocalStorage的setOrCreate，改变`count`对应的值，并通知所有绑定该key的变量。
 
-<!-- @[Internal_@Trace_setOrCreate_V1_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page1.ets) -->
+<!-- @Internal_@Trace_setOrCreate_V1_pag1 -->
 
 ``` TypeScript
 // Page1.ets
@@ -282,7 +282,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[Internal_@Trace_setOrCreate_V1_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV1/Page2.ets) -->
+<!-- @Internal_@Trace_setOrCreate_V1_pag2 -->
 
 ``` TypeScript
 // Page2.ets
@@ -325,7 +325,7 @@ struct Page2 {
 - \@Local装饰的`count`变量为组件本地的值，其改变不会同步回`storage`。
 - \@Monitor监听`storage.count`的变化，当`storage.count`改变时，在\@Monitor的回调里改变本地\@Local的值。
 
-<!-- @[Internal_@ObservedV2_@Trace_V2_pag1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page1.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V2_pag1 -->
 
 ``` TypeScript
 // Page1.ets
@@ -369,7 +369,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[Internal_@ObservedV2_@Trace_V2_pag2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@TracesetOrCreateV2/Page2.ets) -->
+<!-- @Internal_@ObservedV2_@Trace_V2_pag2 -->
 
 ``` TypeScript
 // Page2.ets
@@ -425,7 +425,7 @@ struct Page2 {
 
 V1:
 
-<!-- @[Internal_Trace_customize_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/InternalTraceCustomizeV1.ets) -->
+<!-- @Internal_Trace_customize_V1 -->
 
 ``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
@@ -578,7 +578,7 @@ V2：
 
 声明\@ObservedV2装饰的class代替LocalStorage。其中LocalStorage的key可以用\@Trace装饰的属性代替。
 
-<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) --> 
+<!-- @Internal_Trace_customize_V2 --> 
 
 ``` TypeScript
 // @ObservedV2装饰的class代替LocalStorage
@@ -614,7 +614,7 @@ export class MyStorageC extends MyStorageA {
 
 在PageOneStack、PageTwoStack和PageThreeStack组件内分别创建MyStorageA、MyStorageB、MyStorageC的实例，并通过\@Param传递给其子组件NavigationContentMsgStack，从而实现类似LocalStorage实例在子组件树上共享的能力。
 
-<!-- @[Internal_Trace_Customize_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/Index.ets) -->
+<!-- @Internal_Trace_Customize_Param -->
 
 ``` TypeScript
 // Index.ets
@@ -772,7 +772,7 @@ LocalStorage支持单个UIAbility内的页面间状态共享。对于该场景�
 
 **主页面**
 
-<!-- @[Internal_localStorage_multi_instance_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets) -->
+<!-- @Internal_localStorage_multi_instance_1 -->
 
 ``` TypeScript
 // Index.ets
@@ -823,7 +823,7 @@ V2:
 
 使用\@ObservedV2+\@Trace定义全局可观测单例，通过全局的map对象进行数据关联，这种方式需要开发者自行建立唯一的key和value关系。注意单例单独封装存放。
 
-<!-- @[Internal_localStorage_multi_instance_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/model/PDFData.ets) -->
+<!-- @Internal_localStorage_multi_instance_2 -->
 
 ``` TypeScript
 // model/PDFData.ets
@@ -863,7 +863,7 @@ export default class PDFData {
 ```
 
 
-<!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
+<!-- @Internal_localStorage_multi_instance_3 -->
 
 ``` TypeScript
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -882,7 +882,7 @@ export default class PDFAbility extends UIAbility {
 ```
 
 
-<!-- @[Internal_localStorage_multi_instance_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PDF.ets) -->
+<!-- @Internal_localStorage_multi_instance_4 -->
 
 ``` TypeScript
 // PDF.ets
@@ -924,7 +924,7 @@ AppStorage与应用进程绑定，支持跨Ability数据共享。
 
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
-<!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
+<!-- @Internal_AppStorage_V1_one -->
 
 ``` TypeScript
 // EntryAbility Index.ets
@@ -955,7 +955,7 @@ struct Index {
 }
 ```
 
-<!-- @[Internal_AppStorage_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1two.ets) -->
+<!-- @Internal_AppStorage_V1_two -->
 
 ``` TypeScript
 // EntryAbility1 Index1.ets
@@ -992,7 +992,7 @@ V2:
 
 如下面示例：
 
-<!-- @[Internal_AppStorage_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2one.ets) -->
+<!-- @Internal_AppStorage_V2_one -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -1028,7 +1028,7 @@ struct Index {
 }
 ```
 
-<!-- @[Internal_AppStorage_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV2two.ets) -->
+<!-- @Internal_AppStorage_V2_two -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -1068,7 +1068,7 @@ struct Index1 {
 
 V1：
 
-<!-- @[Internal_StorageProp_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1one.ets) -->
+<!-- @Internal_StorageProp_V1_one -->
 
 ``` TypeScript
 // EntryAbility Index.ets
@@ -1103,7 +1103,7 @@ struct Index {
 }
 ```
 
-<!-- @[Internal_StorageProp_V1_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV1two.ets) -->
+<!-- @Internal_StorageProp_V1_two -->
 
 ``` TypeScript
 // EntryAbility1 Index1.ets
@@ -1142,7 +1142,7 @@ V2:
 
 开发者可以使用\@Monitor和\@Local实现类似效果，示例如下。
 
-<!-- @[Internal_StorageProp_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2one.ets) -->
+<!-- @Internal_StorageProp_V2_one -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -1192,7 +1192,7 @@ struct Index {
 }
 ```
 
-<!-- @[Internal_StorageProp_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalStoragePropV2two.ets) -->
+<!-- @Internal_StorageProp_V2_two -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -1253,7 +1253,7 @@ V1:
 
 以`languageCode`为例。
 
-<!-- @[Internal_Environment_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV1.ets) -->
+<!-- @Internal_Environment_V1 -->
 
 ``` TypeScript
 // 将设备languageCode存入AppStorage中
@@ -1279,7 +1279,7 @@ V2:
 
 封装Env类型来传递多个系统环境变量。
 
-<!-- @[Internal_Environment_V2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/pages/Env.ets) -->
+<!-- @Internal_Environment_V2_one -->
 
 ``` TypeScript
 // Env.ets
@@ -1299,7 +1299,7 @@ export let env: Env = new Env();
 
 在`onCreate`里获取需要的系统环境变量。
 
-<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) --> 
+<!-- @Internal_Environment_V2_two --> 
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1323,7 +1323,7 @@ export default class EntryAbility extends UIAbility {
 
 在页面中获取当前Env的值。
 
-<!-- @[Internal_Environment_V2_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/Index.ets) -->
+<!-- @Internal_Environment_V2_three -->
 
 ``` TypeScript
 // Index.ets
@@ -1363,7 +1363,7 @@ V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更
 
 V1:
 
-<!-- @[Internal_Persistent_Storage_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV1.ets) -->
+<!-- @Internal_Persistent_Storage_V1 -->
 
 ``` TypeScript
 class Data {
@@ -1415,7 +1415,7 @@ V2:
 - 将PersistentStorage的持久化数据迁移到V2的PersistenceV2中。V2对被\@Trace标记的数据可以自动持久化，对于非\@Trace数据，需要手动调用save进行持久化。
 - 示例中的move函数和需要显示的组件放在了一个ets中，开发者可以定义自己的move函数，并放入合适的位置进行统一迁移操作。
 
-<!-- @[Internal_Persistent_Storage_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalPersistentStorageV2.ets) -->
+<!-- @Internal_Persistent_Storage_V2 -->
 
 ``` TypeScript
 // 迁移到globalConnect

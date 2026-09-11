@@ -50,7 +50,7 @@
 
 例如，声明应用关联的域名是www.example.com，则需进行如下配置：
 
-<!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
+<!-- @app_link -->
 
 ``` JSON5
 {
@@ -135,7 +135,7 @@
 
 在应用的Ability(如EntryAbility)的onCreate()或者onNewWant()生命周期回调中添加代码，以处理传入的链接。
 
-<!-- @[applink_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/entryability/AppLinkEntryAbility.ets) -->
+<!-- @applink_ability -->
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -179,7 +179,7 @@ openLink接口提供了两种拉起目标应用的方式，开发者可根据业
 
 本文为了方便验证App Linking的配置是否正确，选择方式一，示例如下。
 
-<!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
+<!-- @applink_index -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';

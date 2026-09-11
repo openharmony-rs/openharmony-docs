@@ -42,7 +42,7 @@
 
 2. 从@kit.NetworkKit中导入connection命名空间。
 
-   <!-- @[NetConnection_manage_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   <!-- @NetConnection_manage_case_module_import -->
    
    ``` TypeScript
    // 引入包名。
@@ -52,7 +52,7 @@
    ```
 3. 调用createNetConnection方法，指定网络能力、网络类型和超时时间(可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成)，创建一个NetConnection对象。
 
-   <!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   <!-- @notification_network_create_NetConnection -->
    
    ``` TypeScript
    let netSpecifier: connection.NetSpecifier = {
@@ -73,7 +73,7 @@
 
 4. 调用该对象的on()方法，传入type和callback，订阅关心的事件。
 
-   <!-- @[notification_network_netAvailable_netUnavailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   <!-- @notification_network_netAvailable_netUnavailable -->
    
    ``` TypeScript
    // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户
@@ -108,7 +108,7 @@
 
 5. 调用该对象的register()方法，订阅指定网络状态变化的通知。当网络可用时，会触发netAvailable事件的回调；当网络从连接到断开时，会触发netLost事件的回调；当网络连接信息变化时（例如linkAddresses增加V6地址），会触发netConnectionPropertiesChange事件回调；当网络能力发生变化时（例如网络的连通性发生变化），会触发netCapabilitiesChange回调。
 
-   <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   <!-- @notification_network_register -->
    
    ``` TypeScript
    // 订阅连接状态变化
@@ -121,7 +121,7 @@
 
 6. 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
 
-   <!-- @[notification_network_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
+   <!-- @notification_network_unregister -->
    
    ``` TypeScript
    // 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
@@ -148,7 +148,7 @@
 本节旨在介绍监控默认网络的变化后，应用报文能够快速迁移到新默认网络上，具体做法如下。
 ### 导入connection命名空间
 
-<!-- @[net_Connection_create_connection_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
+<!-- @net_Connection_create_connection_import -->
 
 ``` TypeScript
 import { connection, socket } from '@kit.NetworkKit';
@@ -157,7 +157,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 ### 监控默认网络变化
 
-<!-- @[monitor_default_network_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
+<!-- @monitor_default_network_change -->
 
 ``` TypeScript
 const netConnection = connection.createNetConnection();
@@ -174,7 +174,7 @@ netConnection.on('netAvailable', (data: connection.NetHandle) => {
 
 **原网络连接使用Socket模块建立连接**
 
-<!-- @[original_network_connection_uses_socket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
+<!-- @original_network_connection_uses_socket -->
 
 ``` TypeScript
 // 创建socket对象。
@@ -255,7 +255,7 @@ function socketTest() {
 
 2. 示例代码
 
-   <!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/GetAllNets.ets) -->
+   <!-- @get_all_registered_networks -->
    
    ``` TypeScript
    // 从@kit.NetworkKit中导入connection命名空间。
@@ -281,7 +281,7 @@ function socketTest() {
    
    通过调用getDefaultNet方法，获取默认的数据网络(NetHandle)；调用getNetCapabilities方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用getConnectionProperties方法，获取该NetHandle对应网络的连接信息。
 
-    <!-- @[get_default_network_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkBtn.ets) -->
+    <!-- @get_default_network_methods -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -356,7 +356,7 @@ function socketTest() {
    
    通过调用getAllNets方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用getNetCapabilities方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用getConnectionProperties方法，获取该NetHandle对应网络的连接信息。
 
-    <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
+    <!-- @get_net_capabilities_and_get_connection_properties -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -401,7 +401,7 @@ function socketTest() {
    
    NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
 
-    <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
+    <!-- @NetConnection_manage_case_default_net_sync -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -447,7 +447,7 @@ function socketTest() {
    
    调用getAddressesByName方法，使用默认网络解析主机名以获取所有IP地址。
 
-    <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkIPBtn.ets) -->
+    <!-- @resolve_the_domain_name_and_get_all_ips -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -466,4 +466,4 @@ function socketTest() {
 
 针对网络连接的开发，有以下相关实例可供参考：
 
-- [NetConnection_Manage_case(网络连接管理)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case)
+- NetConnection_Manage_case(网络连接管理)

@@ -561,9 +561,9 @@ hiTraceMeter.finishTrace("fillText1", 100);
 
 ### hiperf工具使用指导
 
-集成在Smartperf的hiperf工具使用指导，具体可见 [HiPerf的抓取和展示说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md)。
+集成在Smartperf的hiperf工具使用指导，具体可见 HiPerf的抓取和展示说明。
 
-hiperf工具的单独使用指导，具体可见 [hiperf应用性能优化工具](https://gitcode.com/openharmony/developtools_hiperf/blob/master/README_zh.md)。
+hiperf工具的单独使用指导，具体可见 hiperf应用性能优化工具。
 
 ### TS&JS及NAPI层面耗时分析工具
 

@@ -17,13 +17,13 @@ ArkTS在运行期间默认情况下会通过解释器执行字节码。字节码
 
 图1 未启用AOT执行示意图
 
-![](./figures/AOT_1.png)
+
 
 采用AOT编译的方式，首先需要在IDE侧，通过hdc或者IDE直接执行相应指令，生成记录运行时信息的ap文件，然后在安装时将ap文件提供给AOT编译器。开启AOT后，在设备侧运行时会执行AOT编译，对ap文件中保存的执行信息（热点函数，分支语句、运行时变量的类型信息等）进行编译优化，生成高性能的机器码，在程序解释执行时，对于热点函数执行时，将直接执行优化后的机器码，便能够极大提升执行效率。
 
 图2 启用AOT编译示意图
 
-![](./figures/AOT_2.png)
+
 
 ## 使用AOT编译
 
@@ -31,7 +31,7 @@ ArkTS在运行期间默认情况下会通过解释器执行字节码。字节码
 
 轨道计算作为一个计算密集型程序，会大量占用系统资源计算能力的任务，需要长时间运行，这段时间会阻塞线程其它事件的处理，不适宜放在主线程进行。所以，本文案例基于多线程并发机制，以提高CPU利用率，提升应用程序响应速度。针对500万次时间推移的轨道计算，任务不需要长时间（>3分钟）占据后台线程，且是一个个独立的任务时，所以使用TaskPool开启多线程实现。
 
-关于开启AOT编译的方法可以参考[开启AOT编译模式](https://gitcode.com/openharmony/arkcompiler_ets_runtime/blob/master/docs/aot-guide_zh.md)。
+关于开启AOT编译的方法可以参考开启AOT编译模式。
 
 ## 代码实现      
 
@@ -93,11 +93,11 @@ export function computeTask(totalTimeSteps: number): number {
 
 图3 未启用AOT    
 
-![](./figures/AOT_3.png)  
+  
 
 图4 启用AOT    
 
-![](./figures/AOT_4.png)
+
 
    可以看到，该项目核心计算函数advance的计算性能，提升了8倍左右。
 
@@ -105,11 +105,11 @@ export function computeTask(totalTimeSteps: number): number {
 
   图5 未启用AOT    
 
-  ![](./figures/AOT_5.png)  
+    
 
   图6 启用AOT    
 
-  ![](./figures/AOT_6.png)  
+    
 
   可以看到，该项目计算性能，提升了10倍左右。
   > **说明：**
@@ -145,4 +145,4 @@ PGO为了提高程序的执行效率，会对代码进行优化，使得代码�
 
 ## 示例代码
 
-[ArkRuntime_NBody](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/ArkRuntime/NBody)
+ArkRuntime_NBody

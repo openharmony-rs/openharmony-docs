@@ -32,7 +32,7 @@ Navigation路由相关操作均基于导航控制器NavPathStack提供的方法�
 
 首先，开发者需要创建一个Navigation作为导航根容器，并创建一个NavPathStack对象作为构造入参传给Navigation组件，以实现二者的绑定，后续的路由操作均基于该NavPathStack展开。
 
-<!-- @[NavigationCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+<!-- @NavigationCreate -->
 
 ``` TypeScript
 @Entry
@@ -53,7 +53,7 @@ struct Index {
 
 为每个NavDestination声明对外的实例化方法，如代码中的`PageOneBuilder`，执行该方法会创建一个`PageOne`的自定义组件，该组件就是一个Navigation的子页面。
 
-<!-- @[NavDestinationPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
+<!-- @NavDestinationPrepare -->
 
 ``` TypeScript
 @Builder
@@ -103,7 +103,7 @@ Navigation根容器和子页面以及路由表配置完成后，即可通过调�
 
  - 方式一：使用AppStorage存储与获取。
 
-    <!-- @[AppStorageSetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/NavigationPage.ets) -->
+    <!-- @AppStorageSetStack -->
     
     ``` TypeScript
     @Entry
@@ -124,7 +124,7 @@ Navigation根容器和子页面以及路由表配置完成后，即可通过调�
     }
     ```
 
-    <!-- @[AppStorageGetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/BasicNavDestination.ets) -->
+    <!-- @AppStorageGetStack -->
     
     ``` TypeScript
     @Builder
@@ -148,7 +148,7 @@ Navigation根容器和子页面以及路由表配置完成后，即可通过调�
 
  - 方式二：NavDestination.onReady生命周期回调中获取。
 
-    <!-- @[NavDestinationGetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
+    <!-- @NavDestinationGetStack -->
     
     ``` TypeScript
     @Builder
@@ -185,12 +185,12 @@ NavPathStack可以通过Push相关的接口（如pushPath、pushPathByName、pus
 
 1. 普通跳转：通过页面名称跳转，并可以携带参数。
 
-      <!-- @[PushPathParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+      <!-- @PushPathParam -->
       
       ``` TypeScript
       this.pageStack.pushPath({ name: 'pageOne', param: 'PageOne Param' });
       ```
-      <!-- @[PushPathByNameParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) --> 
+      <!-- @PushPathByNameParam --> 
       
       ``` TypeScript
       this.pageStack.pushPathByName('pageTwo', 'PageTwo Param');
@@ -198,7 +198,7 @@ NavPathStack可以通过Push相关的接口（如pushPath、pushPathByName、pus
 
 2. 带返回回调的跳转：跳转时添加onPop回调，能在页面出栈时获取返回信息，并进行处理。
 
-      <!-- @[PushPathByNameOnPop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageOne.ets) -->
+      <!-- @PushPathByNameOnPop -->
       
       ``` TypeScript
       let DOMAIN = 0x0000;
@@ -211,7 +211,7 @@ NavPathStack可以通过Push相关的接口（如pushPath、pushPathByName、pus
 
 3. 带错误码的跳转：跳转结束会触发异步回调，返回错误码信息。
 
-      <!-- @[PushDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @PushDestination -->
       
       ``` TypeScript
       const DOMAIN = 0x0000;
@@ -224,7 +224,7 @@ NavPathStack可以通过Push相关的接口（如pushPath、pushPathByName、pus
       });
       ```
 
-      <!-- @[PushDestinationByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+      <!-- @PushDestinationByName -->
       
       ``` TypeScript
       const DOMAIN = 0x0000;
@@ -240,26 +240,26 @@ NavPathStack可以通过Push相关的接口（如pushPath、pushPathByName、pus
 
 NavPathStack可以通过pop相关接口实现页面返回，参考示例如下。
 
-   <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
+   <!-- @pop -->
 
    ``` TypeScript
    // 返回到上一页
    this.pathStack.pop();
    ```
-   <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
+   <!-- @popToName -->
 
    ``` TypeScript
    // 返回到上一个pageOne页面
    this.pathStack.popToName('temp4-pageOne');
    ```
 
-   <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) --> 
+   <!-- @popToIndex --> 
 
    ``` TypeScript
    // 返回到索引为0的页面
    this.pathStack.popToIndex(0);
    ```
-   <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @clear -->
 
    ``` TypeScript
    // 返回到根首页（清除栈中所有页面）
@@ -270,7 +270,7 @@ NavPathStack可以通过pop相关接口实现页面返回，参考示例如下�
 
 NavPathStack可以通过Replace相关接口（如replacePath、replacePathByName、replaceDestination）实现页面替换，参考示例如下。
 
-   <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @replacePath -->
 
    ``` TypeScript
    // 将栈顶页面替换为pageTwo
@@ -278,7 +278,7 @@ NavPathStack可以通过Replace相关接口（如replacePath、replacePathByName
    this.pageStack.replacePathByName('pageTwo', 'PageTwo Param');
    ```
 
-   <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @replaceDestination -->
 
    ``` TypeScript
    const DOMAIN = 0x0000;
@@ -296,19 +296,19 @@ NavPathStack可以通过Replace相关接口（如replacePath、replacePathByName
 
 NavPathStack可以通过Remove相关接口（如removeByName、removeByIndexes、removeByNavDestinationId）实现删除路由栈中特定页面的功能，参考示例如下。
 
-   <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @removeByName -->
 
    ``` TypeScript
    // 删除栈中name为pageTwo的所有页面
    this.pageStack.removeByName('pageTwo');
    ```
-   <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @removeByIndexes -->
 
    ``` TypeScript
    // 删除指定索引的页面
    this.pageStack.removeByIndexes([1]);
    ```
-   <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @removeByNavDestinationId -->
 
    ``` TypeScript
    // 删除指定id的页面
@@ -319,13 +319,13 @@ NavPathStack可以通过Remove相关接口（如removeByName、removeByIndexes�
 
 NavPathStack可以通过Move相关接口（如moveToTop、moveIndexToTop）实现移动路由栈中特定页面到栈顶的功能，参考示例如下。
 
-   <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @moveToTop -->
 
    ``` TypeScript
    // 移动栈中name为pageTwo的页面到栈顶
    this.pageStack.moveToTop('pageTwo');
    ```
-   <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @moveIndexToTop -->
 
    ``` TypeScript
    // 移动栈中索引为1的页面到栈顶
@@ -347,7 +347,7 @@ NavPathStack可以通过Move相关接口（如moveToTop、moveIndexToTop）实�
 
 NavDestination子页第一次创建时会触发onReady回调，可以获取此页面对应的参数。
 
-   <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
+   <!-- @onReady -->
 
    ``` TypeScript
    @Component
@@ -369,7 +369,7 @@ NavDestination子页第一次创建时会触发onReady回调，可以获取此�
 
 NavDestination组件中可以通过设置onResult接口，接收返回时传递的路由参数。
 
-   <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
+   <!-- @onResult -->  
 
    ``` TypeScript
    class NavParam {
@@ -398,7 +398,7 @@ NavDestination组件中可以通过设置onResult接口，接收返回时传递�
 
 其他业务场景，可以通过主动调用NavPathStack的获取接口（如getAllPathName、getParamByIndex、getParamByName、getIndexByName）获取指定页面的参数。
 
-   <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
+   <!-- @GetParam -->
 
    ``` TypeScript
    // 获取栈中所有页面name集合
@@ -423,7 +423,7 @@ NavPathStack提供了setInterception方法，用于设置Navigation页面跳转�
 
 以willShow为例，在回调中通过修改路由栈实现路由拦截重定向。
 
-   <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
+   <!-- @setInterception -->
 
    ``` TypeScript
    const DOMAIN = 0x0000;
@@ -456,7 +456,7 @@ NavPathStack提供了setInterception方法，用于设置Navigation页面跳转�
 
 3. 在List内的组件添加onClick方法，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
 
-<!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
+<!-- @NavigationDemo -->
 
 ``` TypeScript
 @Entry
@@ -553,7 +553,7 @@ struct NavigationDemo {
 
 3. 在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pop方法，使组件可以在点击之后弹出路由栈栈顶元素实现页面的返回。
 
-<!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->  
+<!-- @NavigationExampleOne -->  
 
 ``` TypeScript
 @Builder
@@ -618,7 +618,7 @@ export struct PageOne {
 
 3. 在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
 
-<!-- @[NavigationExampleTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleTwo.ets) -->
+<!-- @NavigationExampleTwo -->
 
 ``` TypeScript
 @Builder
@@ -761,4 +761,4 @@ export struct PageTwo {
 
 2. 工程配置文件module.json5中配置`{"routerMap": "$profile:router_map"}`。
 
-![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)
+zh-cn_image_0000001588458252

@@ -16,7 +16,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
   **图1** 相对布局示意图  
 
-![relative-layout](figures/relative-layout.png)
+relative-layout
 
 
 子元素并不完全是上图中的依赖关系。比如，Item4可以以Item2为依赖锚点，也可以以RelativeContainer父容器为依赖锚点。
@@ -45,11 +45,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 * 在水平方向上，可以按照起始（left）、居中（middle）或尾端（right）的组件边界与锚点对齐。当设置三个边界时，仅起始（left）和居中（middle）的边界设置生效。
 
-  ![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+  relative-layout-alignrules01
 
 * 在垂直方向上，可以设置组件边界与锚点对齐，具体包括顶部（top）、居中（center）和底部（bottom）。当设置三个边界时，仅顶部（top）和居中（center）生效。
 
-  ![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
+  relative-layout-alignrules02
 
 ### 设置锚点
 
@@ -64,7 +64,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - RelativeContainer父组件为锚点，__container__代表父容器的组件标识（id）。
 
-  <!-- @[RelativeContainerParentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerParentComponentId.ets) -->
+  <!-- @RelativeContainerParentComponentId_start -->
   
   ``` TypeScript
   let alignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -109,11 +109,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
+  relativeContainerParentComponentId
 
 - 以兄弟元素为锚点。
 
-  <!-- @[RelativeContainerSiblingComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerSiblingComponentId.ets) -->
+  <!-- @RelativeContainerSiblingComponentId_start -->
   
   ``` TypeScript
   let alignRus001: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -158,11 +158,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
+  relativeContainerSiblingComponentId
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
-  <!-- @[RelativeContainerChildComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets) -->
+  <!-- @RelativeContainerChildComponentId_start -->
   
   ``` TypeScript
   @Entry
@@ -231,7 +231,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image1.png)
+  Simplify-Component-Layout
 
 ### 设置相对于锚点的对齐位置
 
@@ -239,17 +239,17 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 在水平方向上，对齐位置可以设置为HorizontalAlign.Start、HorizontalAlign.Center、HorizontalAlign.End。
 
-![alignment-relative-anchor-horizontal](figures/alignment-relative-anchor-horizontal.png)
+alignment-relative-anchor-horizontal
 
 在垂直方向上，对齐位置可以设置为VerticalAlign.Top、VerticalAlign.Center、VerticalAlign.Bottom。
 
-![alignment-relative-anchor-vertical](figures/alignment-relative-anchor-vertical.png)
+alignment-relative-anchor-vertical
 
 ### 子组件位置偏移
 
 子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了Bias对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考示例4（设置偏移）。
 
-  <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
+  <!-- @RelativeContainerChildComponentOffset_start -->
   
   ``` TypeScript
   @Entry
@@ -367,13 +367,13 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image2.png)
+  Simplify-Component-Layout
 
 ## 多种组件的对齐布局
 
 Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
 
-  <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
+  <!-- @RelativeContainerDifferentComponentId_start -->
   
   ``` TypeScript
   @Entry
@@ -446,7 +446,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
   }
   ```
 
-  ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image3.png)
+  Simplify-Component-Layout
 
 ## 组件尺寸
 
@@ -456,7 +456,7 @@ Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组
 >
 > * 根据约束条件和子组件自身的size属性无法确定子组件的大小，此时，不绘制该子组件。
 > * 在同一方向上设置两个或更多锚点时，若这些锚点的位置顺序有误，该子组件将被视为大小为0而不予绘制。
-<!-- @[RelativeContainerComponentSize_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentSize.ets) -->
+<!-- @RelativeContainerComponentSize_start -->
 
 ``` TypeScript
 @Entry
@@ -552,7 +552,7 @@ struct RelativeAlignRulesExample {
 }
 ```
 
-  ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image4.png)
+  Simplify-Component-Layout
 
 
 ## 多个组件形成链
@@ -563,7 +563,7 @@ struct RelativeAlignRulesExample {
 
 在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
 
-<!-- @[RelativeContainerMultipleComponentsChainMode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerMultipleComponentsChainMode.ets) -->
+<!-- @RelativeContainerMultipleComponentsChainMode_start -->
 
 ``` TypeScript
 @Entry
@@ -710,7 +710,7 @@ struct RelativeChainModeExample {
 }
 ```
 
-![relative container](figures/relativecontainer6.png)
+relative container
 
 ## 使用辅助线辅助定位子组件
 
@@ -722,7 +722,7 @@ struct RelativeChainModeExample {
 
 在以下示例代码中，定义了一条垂直辅助线guideline1，距离容器左侧50vp，以及另一条水平辅助线guideline2，距离容器顶部50vp。组件row1通过这两条辅助线来定位自身位置，无需设置bias。
 
-<!-- @[RelativeContainerComponentGuideLine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentGuideLine.ets) -->
+<!-- @RelativeContainerComponentGuideLine_start -->
 
 ``` TypeScript
 @Entry
@@ -753,7 +753,7 @@ struct RelativeGuideLineExample {
 }
 ```
 
-![relative container](figures/relativecontainer4.png)
+relative container
 
 ## 多个组件的屏障
 
@@ -765,7 +765,7 @@ struct RelativeGuideLineExample {
 
 在下列示例代码中，item1，item2，item3三个组件可以视为由一个隐形的矩形区域包围着，outer1基于这个“隐形区域”的底部边界进行布局，位于该区域的下方；outer2基于这个“隐形区域”的右侧边界进行布局，位于该区域的右侧。
 
-<!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
+<!-- @testRelativeContainerComponentBarrier_start -->
 
 ``` TypeScript
 @Entry
@@ -883,4 +883,4 @@ struct Index {
 }
 ```
 
-![relative container](figures/relativecontainer10.png)
+relative container

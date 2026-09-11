@@ -65,7 +65,7 @@ WindowLimits表示窗口的最小和最大尺寸限制，包含窗口的最小�
 
 使用示例：
 
-<!-- @[aspectRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
+<!-- @aspectRatio -->
 
 ``` TypeScript
 // Index.ets
@@ -190,7 +190,7 @@ const TAG = 'IndexPage';
 
   使用示例：
 
-  <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @sub_move_resize -->
   
   ``` TypeScript
   // EntryAbility.ets
@@ -275,7 +275,7 @@ const TAG = 'IndexPage';
 
   使用示例：
 
-  <!-- @[startMoving](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/SubWindowPage.ets) -->
+  <!-- @startMoving -->
   
   ``` TypeScript
   import { window } from '@kit.ArkUI';
@@ -416,7 +416,7 @@ const TAG = 'IndexPage';
   > 
   > 拖拽缩放时，窗口尺寸受到WindowLimits的限制。
 
-  <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @enableDrag -->
   
   ``` TypeScript
   // Index.ets

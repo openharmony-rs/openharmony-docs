@@ -12,7 +12,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
 
 1. Native实现各项功能。
 
-   <!-- @[define_customNativeObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @define_customNativeObject --> 
    
    ``` C++
    // napi_init.cpp
@@ -299,7 +299,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
 
 2. 在ArkTS中声明接口。
 
-   <!-- @[declare_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+   <!-- @declare_function -->     
    
    ``` TypeScript
    // Index.d.ts
@@ -320,7 +320,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
 
    在转移模式下，跨线程传递后，原来的ArkTS对象与Native对象解绑，因此不能继续访问。示例如下：
    
-   <!-- @[load_trans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/ets/pages/TransferableCase.ets) -->   
+   <!-- @load_trans -->   
    
    ``` TypeScript
    import testNapi from 'libentry.so';
@@ -416,7 +416,7 @@ Native Transferable对象有两种模式：共享模式和转移模式。本示�
 
    在共享模式下，跨线程传递后，原来的ArkTS对象还可以继续访问Native对象。示例如下：
 
-   <!-- @[load_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseTransferable/entry/src/main/ets/pages/ShareCase.ets) -->  
+   <!-- @load_share -->  
    
    ``` TypeScript
    // Index.ets

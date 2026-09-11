@@ -16,7 +16,7 @@
 
 并发让程序同时处理多个任务，从四个维度带来收益：充分利用计算资源避免阻塞以提升性能，保持响应性避免界面卡顿以改善体验，合理分配系统资源，并支持模块化、解耦的架构设计。
 
-<!-- @[sync_vs_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @sync_vs_async -->
 
 ``` TypeScript
 // 同步执行：阻塞等待
@@ -54,7 +54,7 @@ console.info('立即继续执行其他任务');
 
 并发通过异步I/O交替推进多任务，并行通过多线程同时执行计算。
 
-<!-- @[concurrent_vs_parallel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ConcurrentVsParallel.ets) -->
+<!-- @concurrent_vs_parallel -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -98,7 +98,7 @@ function parallelExample(): void {
 
 ArkTS的异步机制基于事件循环：同步代码先执行，微任务（Promise.then）在当前任务后执行，宏任务（setTimeout）在下一轮执行。
 
-<!-- @[event_loop_mechanism](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @event_loop_mechanism -->
 
 ``` TypeScript
 // 事件循环机制
@@ -131,7 +131,7 @@ async函数自动将返回值包装为Promise，配合await实现同步风格的
 
 在function关键字前添加async即声明异步函数，也可用于箭头函数。
 
-<!-- @[async_function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @async_function_declaration -->
 
 ``` TypeScript
 // 基本异步函数声明
@@ -176,7 +176,7 @@ main();
 
 async函数的返回值自动包装为Promise，return 'Hello'等价于return Promise.resolve('Hello')。
 
-<!-- @[async_function_return_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @async_function_return_value -->
 
 ``` TypeScript
 // 异步函数自动将返回值包装为Promise
@@ -213,7 +213,7 @@ returnPromise().then((data: string) => console.info(data)); // Already a Promise
 
 普通函数同步执行，调用方等待结果返回；async函数异步执行，调用方立即获得Promise，不阻塞后续代码。
 
-<!-- @[sync_vs_async_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @sync_vs_async_function -->
 
 ``` TypeScript
 // 普通函数：同步执行
@@ -249,7 +249,7 @@ asyncFunction().then(result => console.info('Async result:', result));
 
 在async函数中用try-catch包裹await表达式，捕获Promise rejection。
 
-<!-- @[async_function_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AsyncErrorHandling.ets) -->
+<!-- @async_function_error_handling -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -296,7 +296,7 @@ await等待异步操作完成，暂停函数执行直到Promise解决。
 
 `await`关键字用于等待Promise完成并获取其结果，只能在async函数内部使用。
 
-<!-- @[ts_await_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Async.ts) -->
+<!-- @ts_await_usage -->
 
 ``` TypeScript
 async function example(): Promise<void> {
@@ -337,7 +337,7 @@ awaitExample();
 
 await等待Promise完成并取出resolve的值，被reject时抛出异常由try-catch捕获。
 
-<!-- @[await_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AwaitPromise.ets) -->
+<!-- @await_promise -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -373,7 +373,7 @@ awaitPromise();
 
 多个await按顺序执行，前一个完成后才执行下一个，适用于依赖关系的异步任务。
 
-<!-- @[await_serial_execution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @await_serial_execution -->
 
 ``` TypeScript
 async function serialExecution(): Promise<void> {
@@ -417,7 +417,7 @@ serialExecution();
 
 await暂停当前async函数的执行而非阻塞线程，控制权交回事件循环，Promise完成后恢复执行。
 
-<!-- @[await_non_blocking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @await_non_blocking -->
 
 ``` TypeScript
 async function nonBlockingExample(): Promise<void> {
@@ -452,7 +452,7 @@ Promise表示异步操作的结果，支持链式调用和错误处理。
 
 Promise有pending、fulfilled、rejected三种状态，表示异步操作的进行、成功和失败。
 
-<!-- @[promise_states](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @promise_states -->
 
 ``` TypeScript
 // Pending状态
@@ -493,7 +493,7 @@ irreversiblePromise.then((value: string) => console.info(value)); // First resol
 
 Promise通过new Promise((resolve, reject) => {...})创建，也可用Promise.resolve和Promise.reject快捷创建已完成的Promise。
 
-<!-- @[promise_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @promise_creation -->
 
 ``` TypeScript
 // 方式1：使用Promise构造函数
@@ -535,7 +535,7 @@ useDelay();
 
 Promise链式调用通过then方法串联多个异步操作，实现顺序执行。
 
-<!-- @[promise_chaining](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @promise_chaining -->
 
 ``` TypeScript
 // Promise链式调用
@@ -592,7 +592,7 @@ Promise.resolve(1)
 
 Promise提供resolve、reject、all、race等静态方法，用于创建和组合Promise实例。
 
-<!-- @[promise_static_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @promise_static_methods -->
 
 ``` TypeScript
 // Promise.resolve() 和Promise.reject()
@@ -661,7 +661,7 @@ Promise.any([promiseA, promiseB, promiseC])
 
 `Promise.all`是一个并发执行多个Promise的方法，它接受一个Promise数组，返回一个新的Promise。
 
-<!-- @[promise_all_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAllUsage.ets) -->
+<!-- @promise_all_usage -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -715,7 +715,7 @@ async function fetchAllWithErrorHandling(): Promise<void> {
 
 `Promise.race`是一个竞赛执行多个Promise的方法，它返回最先完成（成功或失败）的Promise结果。
 
-<!-- @[promise_race_timeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseRaceTimeout.ets) -->
+<!-- @promise_race_timeout -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -762,7 +762,7 @@ testRace();
 
 `Promise.allSettled`是一个执行多个Promise并收集所有结果的方法，无论成功或失败都会等待所有Promise完成。
 
-<!-- @[promise_allsettled_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAllSettledUsage.ets) -->
+<!-- @promise_allsettled_usage -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -813,7 +813,7 @@ fetchMultipleUrls(urls);
 
 `Promise.any`是一个执行多个Promise并返回第一个成功结果的方法，与Promise.race不同的是它只关心成功结果而忽略拒绝(reject)。
 
-<!-- @[promise_any_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAnyUsage.ets) -->
+<!-- @promise_any_usage -->
 
 ``` TypeScript
 import http from '@ohos.net.http';
@@ -860,7 +860,7 @@ TypeScript的function*生成器在ArkTS中不支持，使用数组和普通函�
 
 **TypeScript对照**
 
-<!-- @[ts_generator_note](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Async.ts) -->
+<!-- @ts_generator_note -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS不支持：
@@ -875,7 +875,7 @@ function* numberGenerator() {
 
 当需要按需生成序列数据时，可用返回数组的普通函数替代生成器，如`createRange(start, end)`返回`number[]`。
 
-<!-- @[create_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @create_range -->
 
 ``` TypeScript
 function createRange(start: number, end: number): number[] {
@@ -896,7 +896,7 @@ for (let value of rangeValues) {
 
 通过`for...of`配合`await`串行处理多个异步数据源，每次等待前一个完成后再处理下一个。
 
-<!-- @[async_data_sources](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @async_data_sources -->
 
 ``` TypeScript
 async function fetchDataSource1(): Promise<string> {
@@ -933,7 +933,7 @@ async function processAsyncSources(): Promise<void> {
 
 `for await...of`用于遍历可迭代对象，自动`await`每个元素。当数据源是`Promise`数组时，`for await...of`会依次等待每个`Promise`完成，适用于需要按顺序处理异步结果的场景。
 
-<!-- @[for_await_of](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @for_await_of -->
 
 ``` TypeScript
 async function processAsyncItems(): Promise<void> {
@@ -953,7 +953,7 @@ processAsyncItems();
 
 也可以使用`for...of`遍历`Promise`数组并手动`await`，效果与`for await...of`等价：
 
-<!-- @[for_of_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @for_of_await -->
 
 ``` TypeScript
 async function processAsyncItemsManually(): Promise<void> {
@@ -980,7 +980,7 @@ processAsyncItemsManually();
 
 并发限制器通过维护一个固定大小的执行池，确保同时运行的异步任务不超过设定阈值，典型实现使用计数器配合Promise队列。
 
-<!-- @[concurrency_limiter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @concurrency_limiter -->
 
 ``` TypeScript
 // 并发限制器
@@ -1058,7 +1058,7 @@ fetchWithLimit(limiterUrls, 5); // 限制最多5个并发请求
 
 任务队列将异步任务排队串行执行，确保前一个完成后再启动下一个。
 
-<!-- @[task_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @task_queue -->
 
 ``` TypeScript
 // 任务队列
@@ -1128,7 +1128,7 @@ taskQueue.addTask(async () => {
 
 信号量通过计数器控制并发资源访问，限制同时执行的任务数量。
 
-<!-- @[semaphore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @semaphore -->
 
 ``` TypeScript
 // 信号量（Semaphore）
@@ -1191,7 +1191,7 @@ for (let i: number = 0; i < 10; i++) {
 
 通过互斥锁或原子操作确保共享状态在并发访问时不被同时修改，防止竞态条件。
 
-<!-- @[race_condition_mutex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Async.ets) -->
+<!-- @race_condition_mutex -->
 
 ``` TypeScript
 interface SharedCounter {

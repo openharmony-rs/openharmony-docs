@@ -56,7 +56,7 @@ AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系�
 
 媒体会话分为本地和分布式两种场景。
 
-![AVSession Interaction Process](figures/avsession-interaction-process.png)
+AVSession Interaction Process
 
 - 本地媒体会话
 

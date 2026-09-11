@@ -14,7 +14,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @import_header -->
    
    ``` C
    #include <cstdint>
@@ -77,7 +77,7 @@
 
 4. 根据传入的SurfaceId，通过OH_CameraManager_GetSupportedCameraOutputCapability()方法获取当前设备支持的预览能力。通过OH_CameraManager_CreatePreviewOutput()方法创建预览输出流，其中，OH_CameraManager_CreatePreviewOutput()方法中的参数分别是cameraManager指针，previewProfiles数组中的第一项，步骤三中获取的surfaceId，以及返回的previewOutput指针。
 
-   <!-- @[create_preview_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
+   <!-- @create_preview_output -->    
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePreviewOutput(void)
@@ -100,7 +100,7 @@
 
 5. 使能。当session完成CommitConfig后通过调用OH_CaptureSession_Start()方法输出预览流，接口调用失败会返回相应错误码，错误码类型参见Camera_ErrorCode。
 
-   <!-- @[session_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @session_start -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::SessionStart(void)
@@ -117,7 +117,7 @@
 
 6. 通过OH_CaptureSession_Stop()方法停止预览流，接口调用失败会返回相应错误码，错误码类型参见Camera_ErrorCode。
 
-   <!-- @[session_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @session_stop -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::SessionStop(void)
@@ -138,7 +138,7 @@
 
 - 通过注册固定的frameStart回调函数获取监听预览启动结果，previewOutput创建成功时即可监听，预览第一次曝光时触发，有该事件返回结果则认为预览流已启动。
 
-  <!-- @[start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @start_callback -->
   
   ``` C++
   void PreviewOutputOnFrameStart(Camera_PreviewOutput *previewOutput)
@@ -149,7 +149,7 @@
 
 - 通过注册固定的frameEnd回调函数获取监听预览结束结果，previewOutput创建成功时即可监听，预览完成最后一帧时触发，有该事件返回结果则认为预览流已结束。
 
-  <!-- @[end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @end_callback -->
   
   ``` C++
   void PreviewOutputOnFrameEnd(Camera_PreviewOutput *previewOutput, int32_t frameCount)
@@ -160,7 +160,7 @@
 
 - 通过注册固定的error回调函数获取监听预览输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见Camera_ErrorCode。
 
-  <!-- @[error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @error_callback -->
   
   ``` C++
   void PreviewOutputOnError(Camera_PreviewOutput *previewOutput, Camera_ErrorCode errorCode)
@@ -169,7 +169,7 @@
   }
   ```
 
-  <!-- @[get_listener_and_register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @get_listener_and_register_callback -->
   
   ``` C++
   PreviewOutput_Callbacks *NDKCamera::GetPreviewOutputListener(void)

@@ -30,7 +30,7 @@
 
    系统提供的media接口可以创建一个录像AVRecorder实例，通过该实例的getInputSurface方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
 
-   <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @camera_video_getVideoSurface -->
    
    ``` TypeScript
    this.avRecorder = await this.createAVRecorder();
@@ -56,7 +56,7 @@
    >
    > 4.录像输出流帧率通过CameraOutputCapability中的videoProfiles属性，选择VideoProfile中frameRateRange满足实际业务需求的录像输出流videoProfile。
 
-   <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   <!-- @camera_video_createAVRecorder -->    
    
    ``` TypeScript
    createVideoOutputFn(cameraManager: camera.CameraManager, videoProfileObj: camera.VideoProfile,
@@ -87,7 +87,7 @@
 
    先通过videoOutput的start方法启动录像输出流，再通过avRecorder的start方法开始录像。
 
-   <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   <!-- @camera_video_start -->    
    
    ``` TypeScript
    async startVideo(): Promise<void> {
@@ -108,7 +108,7 @@
 
    先通过avRecorder的stop方法停止录像，再通过videoOutput的stop方法停止录像输出流。
 
-   <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   <!-- @camera_video_stop -->    
    
    ``` TypeScript
    async stopVideo(): Promise<void> {
@@ -140,7 +140,7 @@
 
 - 通过注册固定的frameStart回调函数获取监听录像开始结果，videoOutput创建成功时即可监听，录像第一次曝光时触发，有该事件返回结果则认为录像开始。
 
-  <!-- @[camera_video_frameStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+  <!-- @camera_video_frameStart -->    
   
   ``` TypeScript
   videoOutput.on('frameStart', (err: BusinessError) => {
@@ -153,7 +153,7 @@
 
 - 通过注册固定的frameEnd回调函数获取监听录像结束结果，videoOutput创建成功时即可监听，录像完成最后一帧时触发，有该事件返回结果则认为录像流已结束。
 
-  <!-- @[camera_video_frameEnd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+  <!-- @camera_video_frameEnd -->    
   
   ``` TypeScript
   videoOutput.on('frameEnd', (err: BusinessError) => {
@@ -166,7 +166,7 @@
 
 - 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回预览输出接口使用错误时对应的错误码，错误码类型参见CameraErrorCode。
 
-  <!-- @[camera_video_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->   
+  <!-- @camera_video_error -->   
   
   ``` TypeScript
   videoOutput.on('error', (error: BusinessError) => {

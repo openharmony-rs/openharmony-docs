@@ -23,7 +23,7 @@
 首先导入媒体查询模块。
 
 
-<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
+<!-- @obtain_mediaquery_import -->
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -32,7 +32,7 @@ import { mediaquery } from '@kit.ArkUI';
 通过matchMediaSync接口设置媒体查询条件，保存返回的条件监听句柄listener。例如监听横屏事件：
 
 
-<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
+<!-- @obtain_mediaquery_listener -->
 
 ``` TypeScript
 listener: mediaquery.MediaQueryListener =
@@ -42,7 +42,7 @@ listener: mediaquery.MediaQueryListener =
 给条件监听句柄listener绑定回调函数onPortrait，当listener检测设备状态变化时执行回调函数。在回调函数内，根据不同设备状态更改页面布局或者实现业务逻辑。
 
 
-<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
+<!-- @obtain_mediaquery_Portrait -->
 
 ``` TypeScript
 onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
@@ -165,7 +165,7 @@ onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
 示例一使用媒体查询，实现屏幕横竖屏切换时，为页面文本应用添加不同的内容和样式。
 
 <!--deprecated_code_no_check-->
-<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) --> 
+<!-- @obtain_mediaquery_all --> 
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -234,15 +234,15 @@ struct MediaQueryExample {
 
   **图1** 竖屏  
 
-![portrait](figures/portrait.jpg)
+portrait
 
   **图2** 横屏  
 
-![landscape](figures/landscape.jpg)
+landscape
 
 示例二使用媒体查询实现屏幕横竖屏切换时Flex组件的不同布局，竖屏时Flex采用垂直方向布局，横屏时采用水平方向布局。
 
-<!-- @[obtain_mediaquery_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryFlex.ets) -->
+<!-- @obtain_mediaquery_flex -->
 
 ``` TypeScript
 import { LengthMetrics, mediaquery, window } from '@kit.ArkUI';
@@ -336,14 +336,14 @@ struct MediaQueryFlex {
 
   **图3** 竖屏  
 
-![portrait](figures/PortraitWidthFlex.png)
+portrait
 
   **图4** 横屏  
 
-![landscape](figures/LandscapeWidthFlex.png)
+landscape
 
 ## 相关实例
 
 针对媒体查询开发，以下相关实例可供参考：
 
-- [横竖屏切换（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/MediaQuery)
+- 横竖屏切换（ArkTS）（API9）

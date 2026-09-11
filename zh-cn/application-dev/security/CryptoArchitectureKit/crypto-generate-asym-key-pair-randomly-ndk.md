@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 3. 调用OH_CryptoPubKey_Encode获取公钥密钥对象的二进制数据。
 
-<!-- @[generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
+<!-- @generate_rsa_keypair -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -80,7 +80,7 @@ OH_Crypto_ErrCode generateRSAKey()
 
 3. 调用OH_CryptoPubKey_Encode获取公钥密钥对象的二进制数据。
 
-<!-- @[generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
+<!-- @generate_sm2_keypair -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

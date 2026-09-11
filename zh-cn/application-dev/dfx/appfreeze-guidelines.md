@@ -45,7 +45,7 @@
 
 **图1**
 
-![thread_block](figures/thread_block.png)
+thread_block
 
 ### APP_INPUT_BLOCK用户输入响应超时
 
@@ -61,7 +61,7 @@
 
 **图2**
 
-![app_input_block](figures/app_input_block.png)
+app_input_block
 
 ### LIFECYCLE_TIMEOUT生命周期切换超时
 
@@ -97,7 +97,7 @@
 
 **图3**
 
-![lifecycle_timeout](figures/lifecycle_timeout.png)
+lifecycle_timeout
 
 ## 日志获取
 
@@ -105,7 +105,7 @@
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障时间分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
+DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障时间分类显示。获取日志的方法参见：DevEco Studio使用指南-FaultLog。
 
 **方式二：通过HiAppEvent接口订阅**
 
@@ -176,7 +176,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 **NOTE信息说明：**
 
 - **从API version 20开始**，系统支持输出提示信息：Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults。当整机资源告警（如整机低内存或热限频）时，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
-- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联Resource Leak（资源泄漏）检测事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
 - **从API版本26.0.0开始**，系统支持输出提示信息：Main thread is blocked by GC, which may be caused by high memory usage or system resource overload。
   - 如果GC垃圾回收类型是Shared GC，系统不会输出此信息。
   - 如果在GC垃圾回收期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
@@ -188,7 +188,7 @@ AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分�
 | 字段 | 说明 |
 | -------- | -------- |
 | DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关。<br>**说明**：从API version 23开始支持。 |
-| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
+| ReleaseType | 应用的版本类型。release表示应用为release版本应用，debug表示应用为debug版本应用。<br>**说明**：从API version 23开始支持。 |
 | CpuAbi | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | IsSystemApp | 应用是否为系统应用。<br>**说明**：从API version 23开始支持。 |
 | Reason | 应用无响应原因，与应用无响应检测能力点对应。 |
@@ -301,7 +301,7 @@ dump信息包含以下字段：
 >
 > EventHandler信息中，开发者只需重点关注EventHandler dump begin curTime，trigger time和completeTime time时间即可。
 >
-> EventHandler信息详细指导可参考：[查看eventHandler信息](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-freeze-way#section190014865618)
+> EventHandler信息详细指导可参考：查看eventHandler信息
 
 ### 堆栈信息
 

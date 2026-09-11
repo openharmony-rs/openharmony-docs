@@ -25,7 +25,7 @@
 
 ## 各类账号间的关系
 
-![account_er](figures/account_er.png)
+account_er
 
 从上图可以看出，账号管理模块是以系统账号为核心，其他类型账号与系统账号存在关联关系。
 
@@ -40,5 +40,5 @@
 
 针对账号管理开发，有以下相关实例可供参考：
 
-- [应用账号管理](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Security/AppAccountManager)
-- [分布式账号管理（仅支持系统应用）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAccount)
+- 应用账号管理
+- 分布式账号管理（仅支持系统应用）

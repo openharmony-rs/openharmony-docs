@@ -53,7 +53,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 
 **图 1** 使用MindSpore Lite进行模型推理的开发流程
 
-![how-to-use-mindspore-lite](figures/01.png)
+how-to-use-mindspore-lite
 
 进入主要流程之前需要先引用相关的头文件，并编写函数生成随机的输入，具体如下：
 
@@ -88,7 +88,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    需要的模型可以直接下载，也可以通过模型转换工具获得。
 
    - 下载模型的格式若为`.ms`，则可以直接使用。本文以mobilenetv2.ms为例。
-   - 如果是第三方框架的模型，比如 TensorFlow、TensorFlow Lite、Caffe、ONNX等，可以使用[模型转换工具](https://www.mindspore.cn/lite/docs/zh-CN/master/use/downloads.html#2-3-0)转换为`.ms`格式的模型文件。
+   - 如果是第三方框架的模型，比如 TensorFlow、TensorFlow Lite、Caffe、ONNX等，可以使用模型转换工具转换为`.ms`格式的模型文件。
 
 2. 创建上下文，设置线程数、设备类型等参数。
 
@@ -117,14 +117,14 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
    ```
 
-   情形2：创建NNRT（Neural Network Runtime）和CPU[异构推理](mindspore-lite-term.md#heterogeneous-inference异构推理)上下文。
+   情形2：创建NNRT（Neural Network Runtime）和CPU异构推理上下文。
 
-   NNRT是面向AI领域的跨芯片推理计算运行时，一般来说，NNRT对接的加速硬件如[NPU](mindspore-lite-term.md#npu)，推理能力较强，但支持的[算子](mindspore-lite-term.md#operator算子)规格少；而通用CPU推理能力较弱，但支持算子规格更全面。MindSpore Lite支持配置NNRT硬件和CPU异构推理：优先将模型算子调度到NNRT推理，若某些算子NNRT不支持，将其调度到CPU进行推理。通过下面的操作即可配置NNRT/CPU异构推理。
+   NNRT是面向AI领域的跨芯片推理计算运行时，一般来说，NNRT对接的加速硬件如NPU，推理能力较强，但支持的算子规格少；而通用CPU推理能力较弱，但支持算子规格更全面。MindSpore Lite支持配置NNRT硬件和CPU异构推理：优先将模型算子调度到NNRT推理，若某些算子NNRT不支持，将其调度到CPU进行推理。通过下面的操作即可配置NNRT/CPU异构推理。
    <!--Del-->
 
    > **说明：**
    >
-   > NNRT/CPU异构推理，需要有实际的NNRT硬件接入，NNRT相关资料请参考：[OpenHarmony/ai_neural_network_runtime](https://gitcode.com/openharmony/ai_neural_network_runtime)。
+   > NNRT/CPU异构推理，需要有实际的NNRT硬件接入，NNRT相关资料请参考：OpenHarmony/ai_neural_network_runtime。
    <!--DelEnd-->
    ```c
    // 创建并配置上下文，设置运行时的线程数量为2，绑核策略为大核优先
@@ -306,4 +306,4 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
 针对MindSpore Lite 的使用，有以下相关实例可供参考：
 
-- [简易MSLite教程](https://gitcode.com/openharmony/third_party_mindspore/tree/OpenHarmony-3.2-Release/mindspore/lite/examples/quick_start_c)
+- 简易MSLite教程

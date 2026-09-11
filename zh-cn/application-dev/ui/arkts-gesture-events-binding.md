@@ -25,7 +25,7 @@ gesture为通用的一种手势绑定方法，可以将手势绑定到对应的�
 例如，可以将点击手势TapGesture通过gesture方法将手势绑定到Text组件上。
 
 
-  <!-- @[regular_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets) -->
+  <!-- @regular_binding -->
   
   ``` TypeScript
   // xxx.ets
@@ -65,7 +65,7 @@ priorityGesture是带优先级的手势绑定方法，可以在组件上绑定�
 
 
 
-  <!-- @[priority_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/PriorityGesture.ets) -->
+  <!-- @priority_binding -->
   
   ``` TypeScript
   // xxx.ets
@@ -107,7 +107,7 @@ parallelGesture是并行的手势绑定方法，可以在父子组件上绑定�
 
 
 
-  <!-- @[parallel_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/ParallelGesture.ets) -->
+  <!-- @parallel_binding -->
   
   ``` TypeScript
   // xxx.ets

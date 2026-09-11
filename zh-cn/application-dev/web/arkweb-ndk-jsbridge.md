@@ -8,19 +8,19 @@
 
 本指导适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择使用ArkWeb Native接口完成业务通信机制（以下简称Native JSBridge）。
 
-针对JSBridge进行性能优化可参考[JSBridge优化解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-web-develop-optimization#section58781855115017)
+针对JSBridge进行性能优化可参考JSBridge优化解决方案
 
 ## 适用的应用架构
 
 应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的ArkWeb_ControllerAPI、ArkWeb_ComponentAPI实现JSBridge功能。
 
-  ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
+  arkweb_jsbridge_arch
 
   上图展示了具有普遍适用性的小程序的通用架构。在这一架构中，逻辑层依赖于应用程序自带的JavaScript运行时，该运行时在一个已有的C++环境中运行。通过Native接口，逻辑层能够直接在C++环境中与视图层（其中ArkWeb充当渲染器）进行通信，无需回退至ArkTS环境使用ArkTS JSBridge接口。
 
   左图是使用ArkTS JSBridge接口构建小程序的方案，如红框所示，应用需要先调用到ArkTS环境，再调用到C++环境。右图是使用Native JSBridge接口构建小程序的方案，不需要ArkTS环境和C++环境的切换，执行效率更高。
 
-  ![arkweb_jsbridge_diff](figures/arkweb_jsbridge_diff.png)
+  arkweb_jsbridge_diff
 
   Native JSBridge方案解决了ArkTS环境的冗余切换，同时允许回调在非UI线程上运行，避免造成UI阻塞。
 
@@ -45,7 +45,7 @@
 
 * ArkTS侧
 
-  <!-- @[customize_a_webtag_and_send_it_to_the_native_side_of_the_application](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/ets/pages/Index.ets) -->    
+  <!-- @customize_a_webtag_and_send_it_to_the_native_side_of_the_application -->    
   
   ``` TypeScript
   // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
@@ -62,7 +62,7 @@
 
 * C++侧
 
-  <!-- @[parse_and_store_webtags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->    
+  <!-- @parse_and_store_webtags-->    
   
   ``` C++
   // 解析存储webTag
@@ -104,7 +104,7 @@
 
 通过ArkWeb_ComponentAPI注册组件生命周期回调，调用接口前，建议通过ARKWEB_MEMBER_MISSING校验该函数结构体中是否存在对应函数指针，以避免SDK与设备ROM不匹配导致crash问题。
 
-  <!-- @[the_native_side_registers_the_callback_of_the_component_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp)-->
+  <!-- @the_native_side_registers_the_callback_of_the_component_lifecycle-->
   
   ``` C++
   if (!ARKWEB_MEMBER_MISSING(component, onControllerAttached)) {
@@ -137,7 +137,7 @@
 
 通过registerJavaScriptProxyEx将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
-  <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp) -->    
+  <!-- @the_front_end_page_calls_application_side_functions -->    
   
   ``` C++
   // 注册对象
@@ -358,7 +358,7 @@
 
 * Node-API侧暴露ArkTS接口
 
-  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->    
+  <!-- @the_arkts_interface_is_exposed_on_the_node_api_side -->    
   
   ``` TypeScript
   // entry4/src/main/cpp/types/libentry4/index.d.ts

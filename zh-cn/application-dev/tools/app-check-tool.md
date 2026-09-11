@@ -16,7 +16,7 @@
 工具扫描结果默认以JSON和HTML两种文件格式输出。<br>
 扫描工具app_check_tool.jar需要从SDK路径下的toolchains目录中获取。
 
-![扫描工具系统架构图](figures/app-check-tool-construct.png)
+扫描工具系统架构图
 
 ## 约束与限制
 - 扫描工具需运行在Java8及其以上环境。

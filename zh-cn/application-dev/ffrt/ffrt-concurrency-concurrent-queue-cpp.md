@@ -26,7 +26,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-<!-- @[concurrent_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.h) -->
+<!-- @concurrent_cpp_header -->
 
 ``` C
 #include <unistd.h>
@@ -37,7 +37,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 #define LOG_TAG "ConcurrentCppTag"
 ```
 
-<!-- @[concurrent_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.cpp) -->
+<!-- @concurrent_cpp -->
 
 ``` C++
 
@@ -119,9 +119,9 @@ int ConcurrentQueueCppExec()
 
 | 名称                                                                                                                          | 描述         |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| class [task_attr](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#task_attr)   | 任务属性类。 |
-| class [queue_attr](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue_attr) | 队列属性类。 |
-| class [queue](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)           | 队列类。     |
+| class task_attr   | 任务属性类。 |
+| class queue_attr | 队列属性类。 |
+| class queue           | 队列类。     |
 
 > **说明：**
 >
