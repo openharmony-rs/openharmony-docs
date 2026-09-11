@@ -4973,7 +4973,7 @@ zh-cn/application-dev/reference/common/js-apis-common-load-native-module.md @yao
 zh-cn/application-dev/reference/common/js-apis-logs.md @wang_zhaoyong @k1ngqaquuu
 zh-cn/application-dev/reference/common/js-apis-syscap.md @chenjinxiang3 @fang-jinxu
 zh-cn/application-dev/reference/common/js-apis-timer.md @wang_zhaoyong @lijin1039 @Malzahar @k1ngqaquuu
-zh-cn/application-dev/reference/common/syscap__ndk_8h.md @chenjinxiang3 @fang-jinxu
+zh-cn/application-dev/reference/common/syscap-ndk-8h.md @chenjinxiang3 @fang-jinxu
 zh-cn/application-dev/reference/native-lib/capi-vulkan-nativewindow.md @andrew1993 @ext4FAT1 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-oh-nativebuffer.md @andrew1993 @ext4FAT1 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-ohbufferhandle.md @andrew1993 @ext4FAT1 @ge-yafang

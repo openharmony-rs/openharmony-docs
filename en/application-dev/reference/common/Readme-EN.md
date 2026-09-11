@@ -30,7 +30,7 @@
 
   - Header Files<!--common-basic-headerfile-->
 
-    - [syscap_ndk.h](syscap__ndk_8h.md)
+    - [syscap_ndk.h](syscap-ndk-8h.md)
 
     - [purgeable_memory.h](capi-purgeable-memory-h.md)
 

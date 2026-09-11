@@ -16,7 +16,7 @@ An OE server application uses the APIs provided by [content_embed_extension.h](.
 
 ## Constraints
 
-Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [canIUse()](../reference/common/syscap__ndk_8h.md#caniuse). In addition, request the `ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION` permission. For details about how to configure the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before using the APIs, check whether the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about how to check system capabilities, see [canIUse()](../reference/common/syscap-ndk-8h.md#caniuse). In addition, request the `ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION` permission. For details about how to configure the permission, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
