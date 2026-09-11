@@ -433,6 +433,36 @@ async function claimInterface() {
 }
 ```
 
+## usbManager.claimInterfaceExclusive
+
+claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback<[InterfaceConflictInfo](#interfaceconflictinfo)>): void
+
+独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
+
+**起始版本：** 26.1.0
+
+**系统能力：**  SystemCapability.USB.USBManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 总线地址和设备地址，通过调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 目标USB接口的索引。可以使用[getDevices](#usbmanagergetdevices)获取设备信息，并根据ID识别USB接口。|
+| force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。可以根据需要设置该值。|
+| onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14400001 | Permission denied. |
+| 14400004 | Service exception. |
+| 14400007 | Resource busy. Possible cause: The interface is claimed by another program or driver. |
+| 14400010 | USB driver error. Possible causes: 1. The device is not connected using [connectDevice](#usbmanagerconnectdevice). 2. The USB device state is abnormal. |
+
 ## usbManager.releaseInterface
 ArkTS-Dyn: releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
@@ -1731,6 +1761,24 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 | alternateSetting | ArkTS-Dyn: number<br> ArkTS-Sta: int                                       | 否 | 否 |接口的替代设置索引号，用于在同一个接口的多个可选描述符中进行切换选择。0表示默认设置，其他值表示特定的替代设置。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
+
+## InterfaceConflictInfo
+
+描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive)独占声明接口后使用。
+
+> **说明：**
+>
+> 此回调在其他进程调用非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时触发。独占持有方可通过此回调获知潜在的访问冲突。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.USB.USBManager
+
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                 |
+| ------------ | ------ | ---- | ---- | --------------------------------------------------------------------------- |
+| busNum       | number | 否 | 否 |USB设备的总线地址。取值限定为整数。              |
+| devAddr      | number | 否 | 否 |USB设备的设备地址。                                           |
+| interfaceId  | number | 否 | 否 |被其他进程声明的USB接口的ID。           |
 
 ## USBConfiguration
 
