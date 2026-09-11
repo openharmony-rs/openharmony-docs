@@ -6,32 +6,32 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 
-- 如何编译full-SDK
-- 如何替换full-SDK
-- 应用模型常见问题
+- [如何编译full-SDK](full-sdk-compile-guide.md)
+- [如何替换full-SDK](full-sdk-switch-guide.md)
+- [应用模型常见问题](faqs-ability.md)
 - ArkUI框架开发常见问题(ArkTS)<!--arkui-faqs-arkts-->
-  - ArkTS语法使用常见问题
-  - ArkUI组件开发常见问题(ArkTS)
-  - ArkUI布局开发常见问题(ArkTS)
-  - ArkUI路由/导航开发常见问题(ArkTS)
-  - ArkUI动画/交互事件开发常见问题(ArkTS)
-- ArkUI框架开发常见问题(JS)
-- ArkTS语言基础类库开发常见问题
-- ArkTS语言模块化加载异常常见问题
-- Web开发常见问题
-- 包管理开发常见问题
-- 资源管理开发常见问题
-- 事件通知开发常见问题
-- 图形图像开发常见问题
-- 窗口管理开发常见问题
-- 媒体开发常见问题
-- 程序访问控制开发常见问题
-- 数据管理开发常见问题
-- 文件管理开发常见问题
-- 网络管理开发常见问题
-- DFX开发常见问题
-- 泛Sensor服务开发常见问题
-- 启动恢复开发常见问题
-- NDK开发常见问题
-- 语言编译运行时常见问题
-- 三四方库使用常见问题
+  - [ArkTS语法使用常见问题](faqs-arkui-arkts.md)
+  - [ArkUI组件开发常见问题(ArkTS)](faqs-arkui-component.md)
+  - [ArkUI布局开发常见问题(ArkTS)](faqs-arkui-layout.md)
+  - [ArkUI路由/导航开发常见问题(ArkTS)](faqs-arkui-route-nav.md)
+  - [ArkUI动画/交互事件开发常见问题(ArkTS)](faqs-arkui-animation-interactive-event.md)
+- [ArkUI框架开发常见问题(JS)](faqs-arkui-js.md)
+- [ArkTS语言基础类库开发常见问题](faqs-arkts-utils.md)
+- [ArkTS语言模块化加载异常常见问题](faqs-arkts-module.md)
+- [Web开发常见问题](faqs-arkui-web.md)
+- [包管理开发常见问题](faqs-bundle-management.md)
+- [资源管理开发常见问题](faqs-globalization.md)
+- [事件通知开发常见问题](faqs-event-notification.md)
+- [图形图像开发常见问题](faqs-graphics.md)
+- [窗口管理开发常见问题](faqs-window-manager.md)
+- [媒体开发常见问题](faqs-multimedia.md)
+- [程序访问控制开发常见问题](faqs-ability-access-control.md)
+- [数据管理开发常见问题](faqs-distributed-data-management.md)
+- [文件管理开发常见问题](faqs-file-management.md)
+- [网络管理开发常见问题](faqs-network-management.md)
+- [DFX开发常见问题](faqs-dfx.md)
+- [泛Sensor服务开发常见问题](faqs-sensor.md)
+- [启动恢复开发常见问题](faqs-startup.md)
+- [NDK开发常见问题](faqs-ndk.md)
+- [语言编译运行时常见问题](faqs-compiler-runtime.md)
+- [三四方库使用常见问题](faqs-third-fourth-party-library.md)

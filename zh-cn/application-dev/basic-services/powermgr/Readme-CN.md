@@ -8,4 +8,4 @@
 <!--Adviser: @fang-jinxu-->
 
 - 运行锁使用指南<!--running-dev-->
-  - 阻止系统闲时进入睡眠开发指南
+  - [阻止系统闲时进入睡眠开发指南](runningLock/runningLock-dev.md)

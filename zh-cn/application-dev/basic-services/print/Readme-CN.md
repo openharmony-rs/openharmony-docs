@@ -7,5 +7,5 @@
 <!--Tester: @guoshengbang-->
 <!--Adviser: @fang-jinxu-->
 
-- 文件打印（C/C++）
-- 打印扩展能力
+- [文件打印（C/C++）](native-print-file.md)
+- [打印扩展能力](printExtensionAbilityGuide.md)

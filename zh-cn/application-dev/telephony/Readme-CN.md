@@ -6,7 +6,7 @@
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
 
-- Telephony Kit简介
-- 拨打电话
-- 短信服务
-- Telephony Kit术语
+- [Telephony Kit简介](telephony-overview.md)
+- [拨打电话](telephony-call.md)
+- [短信服务](telephony-sms.md)
+- [Telephony Kit术语](telephony-glossary.md)

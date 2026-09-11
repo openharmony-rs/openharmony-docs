@@ -5,7 +5,7 @@
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
-- Test Kit简介
+- [Test Kit简介](test-kit-overview.md)
 <!--Del-->
-- 应用测试
+- [应用测试](../test/Readme-CN.md)
 <!--DelEnd-->

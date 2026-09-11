@@ -6,47 +6,47 @@
 <!--Tester: @RayShih-->
 <!--Adviser: @jinqiuheng-->
 
-- SDK命令行工具简介
-- hdc
-- aa工具
-- bm工具
+- [SDK命令行工具简介](command-line-tools-overview.md)
+- [hdc](../dfx/hdc.md)
+- [aa工具](aa-tool.md)
+- [bm工具](bm-tool.md)
 - 打包拆包工具<!--packing-unpacking-->
-  - 打包工具
-  - 拆包工具
-- 扫描工具
-- cem工具
-- anm工具
-- edm工具
-- restool工具
+  - [打包工具](packing-tool.md)
+  - [拆包工具](unpacking-tool.md)
+- [扫描工具](app-check-tool.md)
+- [cem工具](cem-tool.md)
+- [anm工具](anm-tool.md)
+- [edm工具](edm-tool.md)
+- [restool工具](restool.md)
 <!--Del-->
-- LLDB工具（仅对系统应用开放）
+- [LLDB工具（仅对系统应用开放）](lldb-tool-sys.md)
 <!--DelEnd-->
-- param工具
-- power-shell工具
+- [param工具](param-tool.md)
+- [power-shell工具](power-shell.md)
 <!--Del-->
-- OpenHarmony SDK升级助手
+- [OpenHarmony SDK升级助手](openharmony_sdk_upgrade_assistant.md)
 <!--DelEnd-->
-- atm工具
-- network-cfg工具
-- hilog<!--RP2--><!--RP2End-->
+- [atm工具](atm-tool.md)
+- [network-cfg工具](network-cfg.md)
+- [hilog](../dfx/hilog.md)<!--RP2--><!--RP2End-->
 - hidumper<!--hidumper-tool-->
-  - hidumper
-  - PrivacyManagerService
-  - Faultlogger
-- hitrace
-- hiperf
-- hiprofiler
-- uinput
+  - [hidumper](../dfx/hidumper.md)
+  - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
+  - [Faultlogger](../dfx/hidumper-faultlogger.md)
+- [hitrace](../dfx/hitrace.md)
+- [hiperf](../dfx/hiperf.md)
+- [hiprofiler](../dfx/hiprofiler.md)
+- [uinput](../dfx/uinput.md)
 <!--Del-->
-- hisysevent（仅对系统应用开放）
-- acm工具
+- [hisysevent（仅对系统应用开放）](../dfx/hisysevent-sys.md)
+- [acm工具](acm-tool.md)
 <!--DelEnd-->
 - 命令行工具<!--command-line-utilities-->
-  - toybox工具
-  - mediatool工具
-  - devicedebug工具
-  - rawheap-translator工具
-  - js-rawheap-translator工具
-  - SourceMap Splitter工具
+  - [toybox工具](toybox.md)
+  - [mediatool工具](mediatool.md)
+  - [devicedebug工具](devicedebug-tool.md)
+  - [rawheap-translator工具](rawheap-translator.md)
+  - [js-rawheap-translator工具](js-rawheap-translator.md)
+  - [SourceMap Splitter工具](sourcemap-splitter-tool.md)
   <!--RP1--><!--RP1End-->
-- 二进制签名工具
+- [二进制签名工具](binary-sign-tool.md)

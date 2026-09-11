@@ -6,8 +6,8 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
-- 申请访问剪贴板权限
-- 使用剪贴板进行复制粘贴
-- 使用剪贴板进行复制粘贴（C/C++）
-- 使用剪贴板进行延迟复制粘贴
-- 剪贴板术语
+- [申请访问剪贴板权限](get-pastedata-permission-guidelines.md)
+- [使用剪贴板进行复制粘贴](use-pasteboard-to-copy-and-paste.md)
+- [使用剪贴板进行复制粘贴（C/C++）](native-use-pasteboard.md)
+- [使用剪贴板进行延迟复制粘贴](pasteboard-time-lapse-copy-and-paste.md)
+- [剪贴板术语](pasteboard-term.md)
