@@ -1166,7 +1166,7 @@ zh-cn/application-dev/onlyfortest/reference/auto-service-test.md 无
 zh-cn/application-dev/onlyfortest/reference/sample-test.md 无
 zh-cn/application-dev/onlyfortest/reference/api-info-test-kit/api-info-TC-one.md 无
 zh-cn/application-dev/onlyfortest/reference/api-info-test-kit/api-info-TC-two.md 无
-zh-cn/application-dev/performance/animation-practice.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/animation_practice.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/application-performance-analysis.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/application-performance-guide.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/application-performance-optimization-guidance.md @mgy917 @jiangwensai @huipeizi
@@ -1174,36 +1174,36 @@ zh-cn/application-dev/performance/arkts-performance-improvement-recommendation.m
 zh-cn/application-dev/performance/arkUI-inspector.md 无
 zh-cn/application-dev/performance/audio-video-synchronization.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/avoiding-redundant-operations.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/avoid-high-frequency-callback-execute-lengthy-operation.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/avoid-time-consuming-operations-in-mainthread.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/close-cpu-access-window-buffer-data.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/avoid_high_frequency_callback_execute_lengthy_operation.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/avoid_time_consuming_operations_in_mainthread.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/close_CPU_access_window_buffer_data.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/common-trace-using-instructions.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/component-recycle.md 无
 zh-cn/application-dev/performance/component-reuse-overview.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/component-recycle-case.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/component_recycle_case.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/cross-thread-serialization-time-consumption-analysis.md 无
-zh-cn/application-dev/performance/custom-component-freeze.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/delay-related-performance.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/custom_component_freeze.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/delay_related_performance.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/develop-Native-modules-using-NAPI-safely-and-efficiently.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/efficient-concurrent-programming.md 无
 zh-cn/application-dev/performance/flex-development-performance-boost.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/fuzzy-scene-performance-optimization.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/grid-optimization.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/fuzzy_scene_performance_optimization.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/grid_optimization.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/high-performance-programming.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/imperative-dynamic-layouts.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/imperative_dynamic_layouts.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/improve-application-cold-start-speed.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/improve-application-response.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/improve-file-upload-and-download-performance.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/invisible-refresh-performance.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/Lazy-Import-Instructions.md 无
-zh-cn/application-dev/performance/lazyforeach-optimization.md 无
+zh-cn/application-dev/performance/lazyforeach_optimization.md 无
 zh-cn/application-dev/performance/list-perf-improvement.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/long-frame-optimization.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/multi-thread-capability.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/multi_thread_capability.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/native-threads-call-js.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/native-drawing-substitute-canvas.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/node-custom-component-reusable-pool.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/online-video-playback-lags-practice.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/native_drawing_substitute_canvas.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/node_custom_component_reusable_pool.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/online_video_playback_lags_practice.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/performance-camera-shot2see.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/performance-dynamic-import.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/performance-optimization-practical-guidance.md @mgy917 @jiangwensai @huipeizi
@@ -1215,26 +1215,26 @@ zh-cn/application-dev/performance/performance-quick-switch-short-video.md @mgy91
 zh-cn/application-dev/performance/performance-web-import.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/precisely-control-render-scope.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/proper-choice-between-if-and-visibility.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/proper-state-management.md @zany_pink @s10021109 @zhang_yixin13
+zh-cn/application-dev/performance/proper_state_management.md @zany_pink @s10021109 @zhang_yixin13
 zh-cn/application-dev/performance/qos-protect-critical-threads.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/reasonable-running-backgroundTask.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/reasonable-using-animation.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/reasonable-using-renderGroup.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/reasonable-using-cache-improve-performance.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/reasonable-using-system-interfaces.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/reasonable_using_cache_improve_performance.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/reasonable_using_system_interfaces.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/reasonably-dispose-highly-loaded-component-render.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/reduce-package-size.md 无
 zh-cn/application-dev/performance/reduce-redundant-operations-when-render-first-frame.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/reduce-view-nesting-levels.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/resolve-sliding-white-blocks.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/screen-flicker-solution.md 无
+zh-cn/application-dev/performance/resolve_sliding_white_blocks.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/screen_flicker_solution.md 无
 zh-cn/application-dev/performance/state-variable-dfx-practice.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/swiper-optimization.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/thread-data-transfer.md 无
-zh-cn/application-dev/performance/thread-memory-shared.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/swiper_optimization.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/thread_data_transfer.md 无
+zh-cn/application-dev/performance/thread_memory_shared.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/using-animation-insteadof-animator.md 无
-zh-cn/application-dev/performance/utilize-hwc-efficiently.md @mgy917 @jiangwensai @huipeizi
-zh-cn/application-dev/performance/waterflow-optimization.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/utilize_hwc_efficiently.md @mgy917 @jiangwensai @huipeizi
+zh-cn/application-dev/performance/waterflow_optimization.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/web-analyse.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/performance/webview-render-app-components.md @mgy917 @jiangwensai @huipeizi
 zh-cn/application-dev/quick-start/app-clone.md @wanghang904 @hanfeng6 @HelloCrease
@@ -2515,7 +2515,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md @fangzhiyuan1
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiExtensionHost-sys.md @Pakoo007 @stupidb @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-windowAnimationManager-sys.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/errorcode-arkui-compile.md @zhangboren @zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md @zhangboren @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md @seaside_wu1 @shiyu_huang @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-button.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-chart.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
@@ -5284,7 +5284,7 @@ zh-cn/application-dev/tools/js-rawheap-translator.md @sunzibo @fang-jinxu
 zh-cn/application-dev/tools/lldb-tool-sys.md @Maxi_241437 @da_wei_li11 @k1ngqaquuu
 zh-cn/application-dev/tools/mediatool.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/tools/network-cfg.md @wmyao_mm @guo-min_net @zhang_yixin13
-zh-cn/application-dev/tools/openharmony-sdk-upgrade-assistant.md @wmyao_mm @guo-min_net @zhang_yixin13
+zh-cn/application-dev/tools/openharmony_sdk_upgrade_assistant.md @wmyao_mm @guo-min_net @zhang_yixin13
 zh-cn/application-dev/tools/packing-tool.md @jsjzju @HelloCrease
 zh-cn/application-dev/tools/param-tool.md @chenjinxiang3 @liveery @fang-jinxu
 zh-cn/application-dev/tools/power-shell.md 无
