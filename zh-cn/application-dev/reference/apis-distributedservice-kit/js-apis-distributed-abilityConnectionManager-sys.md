@@ -37,7 +37,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -86,7 +86,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -133,7 +133,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -179,7 +179,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -223,7 +223,7 @@ onReceiveImage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -269,7 +269,7 @@ offReceiveImage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): vo
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -312,7 +312,7 @@ onCollaborateEvent(sessionId: int,callback: Callback&lt;CollaborateEventInfo&gt;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -358,7 +358,7 @@ offCollaborateEvent(sessionId: int,callback?: Callback&lt;CollaborateEventInfo&g
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -399,7 +399,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -480,7 +480,7 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -545,7 +545,7 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -596,7 +596,7 @@ getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -650,7 +650,7 @@ updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;v
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -699,7 +699,7 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -739,7 +739,7 @@ startStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -780,7 +780,7 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**系统API**：此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -818,6 +818,8 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**系统接口**：此接口为系统接口。
+
 | 名称       | 类型    | 只读 | 可选 | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | name  | string   | 否    | 否 |   表示流传输的名称（接收端必须与发送端一致）。 |
@@ -834,6 +836,8 @@ Surface配置参数。
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统接口**：此接口为系统接口。
 
 | 名称       | 类型   | 只读 | 可选 | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
@@ -853,6 +857,8 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**系统接口**：此接口为系统接口。
+
 | 名称|  值 | 说明 |
 |-------|-------|-------|
 | HORIZONTAL | 0 | 表示水平翻转。 |
@@ -868,6 +874,8 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**系统接口**：此接口为系统接口。
+
 | 名称|  值 | 说明 |
 |-------|-------|-------|
 | SOURCE  | 0 | 表示流是发送流。 |
@@ -882,6 +890,8 @@ Surface配置参数。
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**系统接口**：此接口为系统接口。
 
 | 名称|  值 | 说明 |
 |-------|-------|-------|
