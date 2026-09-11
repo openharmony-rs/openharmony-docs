@@ -31,21 +31,21 @@
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | MIMEType    | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | 否 | 是   | 可选择的媒体文件类型，若无此参数，则默认为图片和视频类型。<br>**注意：**<br>当配置参数[BaseSelectOptions](#baseselectoptions).mimeTypeFilter、[BaseSelectOptions](#baseselectoptions).combinedMediaTypeFilter、[BaseSelectOptions](#baseselectoptions).photoViewMimeTypeFileSizeFilters或[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| maxSelectNumber      | number | 否   | 是 | 选择媒体文件数量的最大值取值范围[1, 500]，若不设置则默认为50。此参数会限制[BaseSelectOptions](#baseselectoptions).preselectedUris数组长度以及[PhotoSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[PhotoSelectOptions](#photoselectoptions).maxVideoSelectNumber的取值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| maxSelectNumber      | number | 否   | 是 | 选择媒体文件数量的最大值，单位：个。取值范围[1, 500]，若不设置则默认为50。此参数会限制[BaseSelectOptions](#baseselectoptions).preselectedUris数组长度以及[PhotoSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[PhotoSelectOptions](#photoselectoptions).maxVideoSelectNumber的取值。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | isPhotoTakingSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持拍照，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isSearchSupported<sup>11+</sup> | boolean  | 否   | 是 | 是否支持搜索，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | 否   | 是 | 图片推荐相关配置参数。若需要根据图片数据分析结果推荐相应图片，则配置此参数；若不配置，则不会显示推荐图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | 否   | 是 | 预选择图片的URI列表。数组长度不超过[BaseSelectOptions](#baseselectoptions).maxSelectNumber的值，否则超出部分不生效。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | 否   | 是 | 预选择图片的URI列表。数组长度受[BaseSelectOptions](#baseselectoptions).maxSelectNumber、[BaseSelectOptions](#photoselectoptions).maxPhotoSelectNumber和[BaseSelectOptions](#photoselectoptions).maxVideoSelectNumber共同限制，取值范围[0, 500]，默认50，否则超出部分不生效。若不配置，则默认不预选择任何图片。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | 否   | 是 | 单选模式下是否需要进入大图预览，true表示需要，false表示不需要，默认为true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | 否   | 是 | 单选模式类型。默认为大图预览模式（SingleSelectionMode.BROWSER_MODE）。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | mimeTypeFilter<sup>19+</sup> | [MimeTypeFilter](#mimetypefilter19)  | 否   | 是 | 文件类型的过滤配置，支持指定多个类型过滤。<br>配置该参数时，仅显示配置过滤类型对应的媒体文件，建议提示用户界面仅支持选择指定类型的图片/视频。<br>**注意：**<br> 1. 当配置参数[BaseSelectOptions](#baseselectoptions).combinedMediaTypeFilter或[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>2. 当配置此参数时，[BaseSelectOptions](#baseselectoptions).MIMEType的配置自动失效。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | fileSizeFilter<sup>19+</sup> | [FileSizeFilter](#filesizefilter19)  | 否   | 是 | 可选择媒体文件大小的过滤配置。<br>配置该参数时，仅显示配置文件大小范围的媒体文件，建议提示用户界面仅支持选择指定大小的图片/视频。<br>**注意：**<br> 当配置参数[BaseSelectOptions](#baseselectoptions).photoViewMimeTypeFileSizeFilters或[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | videoDurationFilter<sup>19+</sup> | [VideoDurationFilter](#videodurationfilter19)  | 否   | 是 | 可选择媒体文件视频时长的过滤配置。<br>配置该参数时，仅显示配置视频时长范围的媒体文件，建议提示用户仅支持选择指定时长视频。<br>**注意：**<br> 当配置参数[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| combinedMediaTypeFilter<sup>20+</sup> | Array\<string\> | 否 | 是 | 将过滤条件配置为字符串数组，支持多种类型组合。<br>字符串格式如下：`photoType \| photoSubType1,photoSubType2, … \| mimeType1,mimeType2, …`。<br>- 第1段指定1个photoType，固定为image（图片）或video（视频）。<br>- 第2段指定1~N个photoSubType，多个photoSubType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N目前支持最大为1；可选的PhotoSubType包括movingPhoto或“*”（忽略）。<br>- 第3段指定1~N个mimeType，多个mimeType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N最大为10，格式类似于[BaseSelectOptions](#baseselectoptions).mimeTypeFilter。<br>三段过滤的组合取交集处理。<br>支持“非”的逻辑。对于需要排除的类型，进行加括号的方式进行标识；一个string最多可使用1个括号。<br>当应用配置的过滤条件string不满足上述规格时，过滤结果为空。<br>配置该参数时，仅取数组前三个参数进行处理，[BaseSelectOptions](#baseselectoptions).MIMEType、[BaseSelectOptions](#baseselectoptions).mimeTypeFilter参数自动失效。<br>**注意：**<br> 当配置参数[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 20开始支持在原子化服务中使用。 |
-| photoViewMimeTypeFileSizeFilters<sup>20+</sup> | Array\<[PhotoViewMimeTypeFileSizeFilter](#photoviewmimetypefilesizefilter20)\>  | 否   | 是 | 指定媒体文件类型和文件大小进行过滤。<br>配置该参数时，仅取数组前三个参数进行处理，多余的会自动忽略，[BaseSelectOptions](#baseselectoptions).MIMETypes和[BaseSelectOptions](#baseselectoptions).fileSizeFilter自动失效，建议提示用户仅支持选择指定类型和大小的图片/视频。当配置参数[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| combinedMediaTypeFilter<sup>20+</sup> | Array\<string\> | 否 | 是 | 将过滤条件配置为字符串数组，支持多种类型组合。<br>字符串格式如下：`photoType \| photoSubType1,photoSubType2, … \| mimeType1,mimeType2, …`。<br>- 第1段指定1个photoType，固定为image（图片）或video（视频）。<br>- 第2段指定1~N个photoSubType，多个photoSubType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N目前支持最大为1；可选的PhotoSubType包括movingPhoto或“*”（忽略）。<br>- 第3段指定1~N个mimeType，多个mimeType之间使用逗号隔开，之间为“或（OR）”的逻辑取并集；N最大为10，格式类似于[BaseSelectOptions](#baseselectoptions).mimeTypeFilter。<br>三段过滤的组合取交集处理。<br>支持“非”的逻辑。对于需要排除的类型，进行加括号的方式进行标识；一个string最多可使用1个括号。<br>当应用配置的过滤条件string不满足上述规格时，过滤结果为空。<br>配置该参数时，仅取数组前三个元素进行处理，[BaseSelectOptions](#baseselectoptions).MIMEType、[BaseSelectOptions](#baseselectoptions).mimeTypeFilter参数自动失效。<br>**注意：**<br> 当配置参数[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 20开始支持在原子化服务中使用。 |
+| photoViewMimeTypeFileSizeFilters<sup>20+</sup> | Array\<[PhotoViewMimeTypeFileSizeFilter](#photoviewmimetypefilesizefilter20)\>  | 否   | 是 | 指定媒体文件类型和文件大小进行过滤。<br>配置该参数时，仅取数组前三个元素进行处理，多余的会自动忽略，[BaseSelectOptions](#baseselectoptions).MIMETypes和[BaseSelectOptions](#baseselectoptions).fileSizeFilter自动失效，建议提示用户仅支持选择指定类型和大小的图片/视频。当配置参数[BaseSelectOptions](#baseselectoptions).assetFilter时，此参数配置将自动失效。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | isMovingPhotoBadgeShown<sup>22+</sup> | boolean  | 否   | 是 | 是否在大图浏览模式下展示动态照片图标，true表示展示，false表示不展示，默认为false。<br>若设置为true，[PhotoSelectResult](#photoselectresult)返回movingPhotoBadgeStates数组，动态照片默认返回状态为[MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)。<br>**注意：** 当isMovingPhotoBadgeShown设置为true时，通过返回的movingPhotoBadgeStates数组中的MovingPhotoBadgeStateType值判断照片是否是动态照片。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | assetFilter<sup>22+</sup>       | Array\<[OperationItem](#operationitem22)\> | 否   | 是 | 媒体资产过滤器，长度限制为50个，超出取前50个。<br>**注意：**<br> 1. 当使用该过滤器时，其他过滤器会失效。<br>2. 当配置多个条件时，过滤条件前后需要配置英文括号，否则可能和内部过滤项冲突。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。不配置该参数时，使用系统默认播放模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否   | 是 | 设置全局动态照片的效果，当前仅支持[MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)和[MOVING_PHOTO_DISABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)。默认为[MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | 否   | 是 | 图片选择器内的宫格捏合模式。若需要自定义宫格捏合行为，则配置此参数；若不配置，则不支持宫格捏合行为。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | showDateOnScrollbar<sup>24+</sup>       | boolean | 否   | 是 | 是否在拖动滚动条时展示日期分组信息，true表示展示，false表示不展示，默认为false。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
@@ -53,8 +53,6 @@
 | preferredCompatibleMode       | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)  | 否   | 是 | 资产兼容性模式配置。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0  |
 
 ## PhotoSelectOptions
-
-PhotoSelectOptions extends BaseSelectOptions
 
 图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions)。
 
@@ -66,7 +64,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。不配置该参数时，使用系统默认按钮文本。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
-| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 是 | 用于恢复上次退出时图片选择器现场的信息。<br>上次完成选择时图片选择器将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用图片选择器，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |
+| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 是 | 用于恢复上次退出时图片选择器现场的信息。不配置该参数时，不恢复上次退出时的现场。<br>上次完成选择时图片选择器将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用图片选择器，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |
 | isDestroyedWithNavigation<sup>23+</sup>       | boolean | 否   | 是 | 是否支持跟随[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1)销毁，true表示支持，false表示不支持，默认为false。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | maxPhotoSelectNumber<sup>23+</sup> | number  | 否  | 是 |支持设置的图片最大的选择数量，取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。                                     |
 | maxVideoSelectNumber<sup>23+</sup> | number  | 否  | 是 | 支持设置的视频最大的选择数量，取值范围[1, 500]，默认为500。单位：个。<br>受到最大选择总数[BaseSelectOptions](#baseselectoptions).maxSelectNumber的限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
@@ -94,12 +92,14 @@ PhotoSelectOptions extends BaseSelectOptions
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| sceneType      | [SceneType](arkts-apis-photoAccessHelper-e.md#scenetype23) | 否   | 否 | 动态照片播放的场景。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
-| playMode    | [PlayMode](arkts-apis-photoAccessHelper-e.md#playmode23) | 否   | 否 | 是否支持动态照片自动播放。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
+| sceneType      | [SceneType](arkts-apis-photoAccessHelper-e.md#scenetype23) | 否   | 否 | 动态照片播放的场景。     |
+| playMode    | [PlayMode](arkts-apis-photoAccessHelper-e.md#playmode23) | 否   | 否 | 是否支持动态照片自动播放。     |
 
 ## MimeTypeFilter<sup>19+</sup>
 
@@ -145,24 +145,28 @@ PhotoSelectOptions extends BaseSelectOptions
 
 最近图片配置选项。
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                    | 类型                                                                                     | 只读 | 可选  | 说明   |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
-| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                         |
-| photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                               |
+| period                  | number                                                                                  | 否    | 是 | 配置最近图片显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内的图片。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未配置时，默认按最长时间段（1天）显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。|
+| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。                        |
+| photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。             |
 
 ## RecentPhotoInfo<sup>20+</sup>
 
 最近图片相关信息。
 
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称         | 类型     | 只读 | 可选  | 说明                                                        |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | 否    | 是 | 最近图片/视频的拍摄时间（距1970年1月1日的毫秒数值），单位为毫秒（ms）。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。                     |
-| identifier | string | 否    | 是 | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| dateTaken  | number | 否    | 是 | 最近图片/视频的拍摄时间（距1970年1月1日的毫秒数值），单位为毫秒（ms）。                     |
+| identifier | string | 否    | 是 | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。 |
 
 ## PhotoViewMimeTypeFileSizeFilter<sup>20+</sup>
 

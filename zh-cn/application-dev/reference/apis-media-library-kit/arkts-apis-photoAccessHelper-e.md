@@ -322,11 +322,13 @@ async function example() {
 
 配置完成按钮显示内容。
 
+**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
-| TEXT_DONE<sup>14+</sup> |  0 |  显示“完成”。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| TEXT_DONE<sup>14+</sup> |  0 |  显示“完成”。不填写时默认显示此文本。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | TEXT_SEND<sup>14+</sup>    |  1 |  显示“发送”。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | TEXT_ADD<sup>14+</sup> |  2 |  显示“添加”。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。  |
 
@@ -431,8 +433,8 @@ async function example() {
 | LESS_THAN_OR_EQUAL_TO    | 6   | 小于等于，取value数组的第一个元素与谓词匹配。超出长度取第1个。 |
 | AND    | 7   | 逻辑'与'，相当于数据库查询语句的'and'。无需传入field和value。 |
 | OR    | 8  | 逻辑'或'，相当于数据库查询语句的'or'。无需传入field和value。 |
-| IN    | 9   | 匹配在指定范围内的字段，value长度限制10个。 |
-| NOT_IN    | 10   | 匹配不在指定范围内的字段，value长度限制10个。 |
+| IN    | 9   | 匹配在指定范围内的字段，value长度限制10个，超出长度时仅取前10个元素进行匹配。 |
+| NOT_IN    | 10   | 匹配不在指定范围内的字段，value长度限制10个，超出长度时仅取前10个元素进行匹配。 |
 | BEGIN_WRAP    | 11   | 用于向谓词添加英文左括号，相当于数据库查询语句的"("，必须和英文右括号一起使用。无需传入field和value。 |
 | END_WRAP    | 12   | 用于向谓词添加英文右括号，相当于数据库查询语句的")"，必须和英文左括号一起使用。无需传入field和value。 |
 | BETWEEN    | 13   | 匹配指定范围内的字段。<br>包含两端边界值，为左闭右闭区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
@@ -478,7 +480,7 @@ async function example() {
     
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操纵。|
+| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操作。|
 
 ## AvailabilityStatus
 
@@ -526,7 +528,7 @@ async function example() {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  根据系统的资产兼容性配置自动判断是否执行转码。如果当前设备不支持资产的原始格式，则会自动转码为兼容格式。 |
+| DEFAULT |  0 |  根据系统的资产兼容性配置自动判断是否执行转码。如果当前设备不支持资产的原始格式，则会自动转码为兼容格式。不填写时默认采用此模式。 |
 | CURRENT |  1 |  不进行转码。资产将以其原始格式返回。|
 | COMPATIBLE |  2 |  所有资产都被转码为最广泛兼容的格式（如JPEG）。|
 ## PickerColorMode
@@ -543,6 +545,6 @@ async function example() {
  
 | 名称                | 值   | 说明    |
 |-------------------|-----|-------|
-| AUTO | 0   | 颜色跟随系统。 |
+| AUTO | 0   | 颜色跟随系统。不填写时默认采用此模式。 |
 | LIGHT | 1   | 浅色模式。 |
 | DARK | 2   | 深色模式。 |
