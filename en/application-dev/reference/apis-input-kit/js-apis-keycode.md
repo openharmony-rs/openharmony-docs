@@ -33,12 +33,12 @@ Enumerates the key codes.
 | KEYCODE_HOME                     |  1 | Function (Home) key                 |
 | KEYCODE_BACK                     |  2 | Back key                        |
 | KEYCODE_SEARCH<sup>13+</sup> | 9 | Search key|
-| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Meida key: Play/Pause key<br>Difference between this key and **KEYCODE_PLAYPAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| KEYCODE_MEDIA_STOP               |  11 | Meida key: Stop key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_NEXT               |  12 |Meida key:  Next key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
-| KEYCODE_MEDIA_PREVIOUS           |  13 | Meida key: Previous key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
-| KEYCODE_MEDIA_REWIND            |  14 | Meida key: Rewind key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_FAST_FORWARD       |  15 | Meida key: Fast forward key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Media key: Play/Pause key<br>Difference between this key and **KEYCODE_PLAYPAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| KEYCODE_MEDIA_STOP               |  11 | Media key: Stop key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_NEXT               |  12 |Media key:  Next key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
+| KEYCODE_MEDIA_PREVIOUS           |  13 | Media key: Previous key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
+| KEYCODE_MEDIA_REWIND            |  14 | Media key: Rewind key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_FAST_FORWARD       |  15 | Media key: Fast forward key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
 | KEYCODE_VOLUME_UP                |  16 | Volume Up key                      |
 | KEYCODE_VOLUME_DOWN              |  17 | Volume Down key                      |
 | KEYCODE_POWER                    |  18 | Power key                       |
