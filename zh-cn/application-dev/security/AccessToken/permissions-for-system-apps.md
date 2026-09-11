@@ -9222,6 +9222,20 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
+
+允许应用在多模式设备上切换可展示的应用列表。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Tablet | PC/2in1
+
+**起始版本**：26.1.0
+
 ## ohos.permission.MANAGE_SHARE_PHOTO
 
 允许系统应用访问共享相册及相册内文件。
