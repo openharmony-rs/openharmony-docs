@@ -17,7 +17,7 @@
     - [Init](init.md)
     - [JSVM](capi-jsvm.md)
   - 头文件<!--common-basic-headerfile-->
-    - [syscap_ndk.h](syscap__ndk_8h.md)
+    - [syscap_ndk.h](syscap-ndk-8h.md)
     - [jsvm.h](capi-jsvm-h.md)
     - [jsvm_types.h](capi-jsvm-types-h.md)
   - 结构体<!--common-basic-struct-->
