@@ -1661,7 +1661,7 @@ policy
   });
 ```
 
-## policy.on
+## policy
 
 网络策略的句柄。
 
