@@ -89,7 +89,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   ArkTS-Sta示例：
   <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->
-
+  
   ``` TypeScript
   import { $rawfile, Column, Component, Entry, Row, State, Web } from '@kit.ArkUI';
   import { Stack, ThreatType, WebRotateEffect, WebResourceResponse, CopyOptions } from '@kit.ArkUI';
@@ -245,7 +245,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   ArkTS-Sta示例：
   <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
-
+  
   ``` TypeScript
   import { Component, Entry, Row, UIContext, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
