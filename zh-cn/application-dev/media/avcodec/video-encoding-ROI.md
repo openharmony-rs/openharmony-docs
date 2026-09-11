@@ -459,7 +459,7 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    > **说明：**
    >
-   > - ROI配置完成后，还需向输入Buffer填充帧像素数据并通过`OH_VideoEncoder_PushInputBuffer`送入编码器，此处不展开，具体参考[异步模式视频编码中[buffer模式]](video-encoding.md)Buffer模式相关说明。
+   > - ROI配置完成后，还需向输入Buffer填充帧像素数据并通过`OH_VideoEncoder_PushInputBuffer`送入编码器，此处不展开，具体参考异步模式视频编码中[Buffer模式](video-encoding.md#buffer模式)相关说明。
    > - `OH_AVBuffer_GetParameter`返回的是参数副本，必须调用`OH_AVBuffer_SetParameter`写回才能使ROI配置生效，使用后需调用`OH_AVFormat_Destroy`释放。
    > - RoiQueue的PTS同步机制与关闭ROI时的清空处理同[Surface模式：编码输入参数回调](#surface模式编码输入参数回调)的相关说明。
 
