@@ -34481,6 +34481,46 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageFileIO/entry/src/main/ets/pages/ListenForPageDown.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"download_delegate",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageFileIO/entry/src/main/ets/pages/InitiatingADownloadTask.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"init_download_task",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageFileIO/entry/src/main/ets/pages/ResumeDownload.ets",
+				"functions":[
+					{
+						"end_line":109,
+						"name":"recovery_download_task",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets",
+				"functions":[
+					{
+						"end_line":90,
+						"name":"task_info_persistence_util",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
