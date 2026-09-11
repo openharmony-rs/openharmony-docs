@@ -34361,6 +34361,46 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/EnablingAdsBlocking.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"app_select_list_rule_file_for_ad_filter",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_one.ets",
+				"functions":[
+					{
+						"end_line":64,
+						"name":"turn_off_ad_filtering_for_specific_domain_pages",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/DisAdsBlockSpecDomPages_two.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"set_up_page_level_ad_filtering_switch",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/CollectingAdsBlockingInformation.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"collect_information_about_ad_filtering",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
