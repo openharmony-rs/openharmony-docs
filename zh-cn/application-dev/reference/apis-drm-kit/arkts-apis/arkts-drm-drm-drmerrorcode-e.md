@@ -26,7 +26,7 @@ ERROR_UNKNOWN = 24700101
 MAX_SYSTEM_NUM_REACHED = 24700103
 ```
 
-MediaKeySystem实例数量超过上限（64个）。请调用destroy方法销毁不需要的MediaKeySystem实例后重试。
+MediaKeySystem实例数量超过上限（64个）。请调用[destroy](arkts-drm-drm-mediakeysystem-i.md#destroy)方法销毁不需要的MediaKeySystem实例后重试。
 
 **起始版本：** 11
 
@@ -40,7 +40,7 @@ MediaKeySystem实例数量超过上限（64个）。请调用destroy方法销毁
 MAX_SESSION_NUM_REACHED = 24700104
 ```
 
-MediaKeySession实例数量超过上限（64个）。请调用destroy方法销毁不需要的MediaKeySession实例后重试。
+MediaKeySession实例数量超过上限（64个）。请调用[destroy](arkts-drm-drm-mediakeysession-i.md#destroy)方法销毁不需要的MediaKeySession实例后重试。
 
 **起始版本：** 11
 

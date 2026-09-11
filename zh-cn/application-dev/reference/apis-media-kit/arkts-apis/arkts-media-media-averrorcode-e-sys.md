@@ -1,6 +1,6 @@
 # AVErrorCode
 
-Media错误码类型枚举。
+[Media错误码](../errorcode-media.md)类型枚举。
 
 **起始版本：** 9
 

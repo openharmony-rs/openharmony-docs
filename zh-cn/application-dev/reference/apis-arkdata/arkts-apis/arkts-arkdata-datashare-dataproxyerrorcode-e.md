@@ -54,7 +54,7 @@ NO_PERMISSION = 2
 OVER_LIMIT = 3
 ```
 
-API版本26.0.0之前，表示当前应用发布的配置超过32个配置的上限；从API版本26.0.0开始，表示当前应用发布的配置超过64个配置的上限或获取的共享配置项的值超出 DataProxyConfig中maxValueLength字段配置的最大长度限制。
+API版本26.0.0之前，表示当前应用发布的配置超过32个配置的上限；从API版本26.0.0开始，表示当前应用发布的配置超过64个配置的上限或获取的共享配置项的值超出 [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md)中maxValueLength字段配置的最大长度限制。
 
 **起始版本：** 20
 
