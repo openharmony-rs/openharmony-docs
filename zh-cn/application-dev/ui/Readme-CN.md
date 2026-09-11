@@ -195,11 +195,13 @@
      - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - 沉浸光感<!--arkts-immersive-light-sense-->
     - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
-    - [沉浸光感开发指导](arkts-immersive-light-sense-development.md)
+    - 沉浸光感开发指导<!--arkts-immersive-light-sense-development-->
       - [开启沉浸光感](arkts-immersive-light-sense-enable.md)
+      - [组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)
       - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
     - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
-    - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
+    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
+    - [沉浸光感典型场景](arkts-immersive-light-sample.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
@@ -248,7 +250,7 @@
       - [色彩](arkts-color-effect.md)
       - 模糊<!--arkts-blur-->
         - [动态模糊](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
-    - [帧动画（ohos.animator）](arkts-guide-animator.md)<!--RP10--><!--RP10End-->
+    - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)
@@ -413,7 +415,7 @@
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
   - UI开发常见问题<!--ui-development-faq-->
-    - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
+    - [Navigation常见问题](arkts-navigation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [弹窗组件常见问题](arkts-popup-component-faq.md)
@@ -421,7 +423,6 @@
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
     - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
     
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
