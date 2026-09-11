@@ -610,7 +610,7 @@ WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议�
 
 ## WifiCapability
 
-Wi-Fi功能。
+Wi-Fi支持的能力。
 
 **起始版本：** 26.0.0
 
@@ -1728,6 +1728,8 @@ isFeatureSupported(featureId: number): boolean
 getDeviceMacAddress(): string[]
 
 获取设备的MAC地址。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO
 

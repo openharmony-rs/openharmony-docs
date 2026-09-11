@@ -1977,23 +1977,6 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-## WifiCapability
-
-wifi支持的能力。
-
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| WIFI_AUTO_ENABLE | 0 | wifi自动打开能力。 |
-
 
 ## wifiManager.setWifiCapability
 
