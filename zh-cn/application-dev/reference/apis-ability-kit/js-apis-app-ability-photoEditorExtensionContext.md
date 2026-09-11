@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @lusq-->
+<!--Tester: @hid12719688-->
 <!--Adviser: @HelloCrease-->
 
 PhotoEditorExtensionContext是PhotoEditorExtensionAbility的上下文，继承自ExtensionContext，提供PhotoEditorExtensionAbility的配置信息以及保存图片接口。
