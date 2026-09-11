@@ -1685,7 +1685,6 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001    | Internal error.|
 | 100005    | Builder function not registered. |
 | 100006    | NavDestination not found.|
@@ -3921,7 +3920,7 @@ struct PageOne {
         this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.Code}, message: ${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message: ${err.message}`);
       }
     })
   }
@@ -4040,7 +4039,7 @@ struct PageOneComponent {
         this.eventStr += '<onReady>';
         this.stack = ctx.pathStack;
       } catch (err) {
-        console.error(`testTag onReady catch exception.Code:${err.code}, message:${err.message}`);
+        console.error(`testTag onReady catch exception.code:${err.code}, message:${err.message}`);
       }
     })
   }
@@ -4108,7 +4107,7 @@ struct NavigationExample {
           Scroll(this.scrollerForScroll) {
             Column() {
               // $r('app.media.image_1')需要替换为开发者所需的资源文件
-              Image($r('app.media.image_1'))// 设置与标题栏高度一致，以便观察STACK效果
+              Image($r('app.media.image_1')) // 设置与标题栏高度一致，以便观察STACK效果
                 .height(138)
                 .width('100%')
               Button('BarStyle.STANDARD')
