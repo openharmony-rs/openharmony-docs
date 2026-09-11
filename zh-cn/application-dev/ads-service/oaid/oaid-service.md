@@ -35,10 +35,11 @@ OAID会在下述场景中发生变化：
 | <!--Del--><!--DelEnd-->getOAID<!--Del--><!--DelEnd-->(callback:&nbsp;AsyncCallback&lt;string&gt;):&nbsp; void | 获取OAID，通过Callback回调返回值。 |
 
 > **说明：**
+> 
 > 调用getOAID接口需要申请ohos.permission.APP_TRACKING_CONSENT权限并获取用户授权，存在以下三种情况：<br/>
-> 1.如果应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且跨应用关联访问权限为“允许”，则返回OAID。<br/>
-> 2.如果应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且跨应用关联访问权限为“禁止”，则返回00000000-0000-0000-0000-000000000000。<br/>
-> 3.如果应用未配置ohos.permission.APP_TRACKING_CONSENT权限，则返回00000000-0000-0000-0000-000000000000。
+> 1. 如果应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且跨应用关联访问权限为“允许”，则返回OAID。<br/>
+> 2. 如果应用已配置ohos.permission.APP_TRACKING_CONSENT权限，且跨应用关联访问权限为“禁止”，则返回00000000-0000-0000-0000-000000000000。<br/>
+> 3. 如果应用未配置ohos.permission.APP_TRACKING_CONSENT权限，则返回00000000-0000-0000-0000-000000000000。
 
 
 ### 开发步骤

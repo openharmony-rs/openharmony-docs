@@ -40,7 +40,7 @@
 批量删除两条别名分别为demo_alias1和demo_alias2的关键资产。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -54,7 +54,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[batch_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   <!-- @batch_remove -->
    
    ``` TypeScript
    let assetsToBeRemoved: asset.AssetMap[] = [];

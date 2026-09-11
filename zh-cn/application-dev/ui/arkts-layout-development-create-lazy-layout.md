@@ -40,7 +40,7 @@ ArkUI提供了Scroll、List、Grid、WaterFlow四种滚动类组件。其中，S
 | 监听可视区域子组件索引变化（onVisibleIndexesChange） | 从API版本26.0.0开始支持 | 支持 | 支持 |
 | 嵌套懒加载布局容器 | 不支持 | 不支持 | 支持 |
 | 布局模式 | 垂直网格布局 | 垂直瀑布流布局 | 垂直线性布局 |
-| 示例图 | ![lazy-vgrid-layout.png](figures/lazy-vgrid-layout.png) | ![lazy-vwaterflow-layout.png](figures/lazy-vwaterflow-layout.png) | ![lazy-column-layout.png](figures/lazy-column-layout.png) |
+| 示例图 | lazy-vgrid-layout.png | lazy-vwaterflow-layout.png | lazy-column-layout.png |
 
 ## 约束与限制
 
@@ -68,7 +68,7 @@ ArkUI提供了Scroll、List、Grid、WaterFlow四种滚动类组件。其中，S
 
 以下以在Scroll组件中为例，展示了LazyVGridLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
 
-<!-- @[create_lazy_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVGridLayoutSample.ets) -->
+<!-- @create_lazy_grid -->
 
 ``` TypeScript
 Scroll() {
@@ -89,11 +89,11 @@ columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字
 
 **图1** 列数占比示例图
 
-![lazy-vgrid-layout-columns-template](figures/lazy-vgrid-layout-columns-template.png)
+lazy-vgrid-layout-columns-template
 
 如上图所示，构建的是一个三行三列的网格布局，其在水平方向上分为四等份，第一列占一份，第二列占两份，第三列占一份。只要将columnsTemplate设置为'1fr 2fr 1fr'，即可实现上述网格布局。
 
-<!-- @[lazy_grid_columns_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVGridLayoutSample.ets) -->
+<!-- @lazy_grid_columns_template -->
 
 ``` TypeScript
 LazyVGridLayout() {
@@ -123,11 +123,11 @@ columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'rep
 
 **图2** 网格的行列间距示例图
 
-![grid8](figures/grid8.png)
+grid8
 
 LazyVGridLayout组件提供了rowsGap和columnsGap属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
-<!-- @[lazy_grid_gap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVGridLayoutSample.ets) -->
+<!-- @lazy_grid_gap -->
 
 ``` TypeScript
 LazyVGridLayout() {
@@ -149,7 +149,7 @@ LazyVGridLayout() {
 
 以下以在Scroll组件中为例，展示了LazyVWaterFlowLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
 
-<!-- @[create_lazy_water_flow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVWaterFlowLayoutSample.ets) -->
+<!-- @create_lazy_water_flow -->
 
 ``` TypeScript
 Scroll() {
@@ -168,7 +168,7 @@ LazyVWaterFlowLayout组件提供了columnsTemplate属性用于设置当前瀑布
 
 columnsTemplate属性值是一个由多个空格和'数字+fr'间隔拼接的字符串，fr的个数即瀑布流布局的列数，fr前面的数值大小用于计算该列在瀑布流布局宽度上的占比，最终决定该列宽度。不设置时默认1列。设置为'0fr'时，该列的列宽为0，不显示子组件。设置为其他非法值时，子组件显示为固定1列。
 
-<!-- @[lazy_water_flow_columns_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVWaterFlowLayoutSample.ets) -->
+<!-- @lazy_water_flow_columns_template -->
 
 ``` TypeScript
 LazyVWaterFlowLayout() {
@@ -201,7 +201,7 @@ columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'rep
 
 LazyVWaterFlowLayout组件提供了rowsGap和columnsGap属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
-<!-- @[lazy_water_flow_gap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyVWaterFlowLayoutSample.ets) -->
+<!-- @lazy_water_flow_gap -->
 
 ``` TypeScript
 LazyVWaterFlowLayout() {
@@ -223,7 +223,7 @@ LazyVWaterFlowLayout() {
 
 以下以在Scroll组件中为例，展示了LazyColumnLayout的创建方式。创建时，需要确保Scroll的布局方向为ScrollDirection.Vertical。
 
-<!-- @[create_lazy_column](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutSample.ets) -->
+<!-- @create_lazy_column -->
 
 ``` TypeScript
 Scroll() {
@@ -240,7 +240,7 @@ Scroll() {
 
 LazyColumnLayout组件提供了space属性用于设置子组件在垂直方向上的间距。默认值为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 
-<!-- @[lazy_column_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutSample.ets) -->
+<!-- @lazy_column_space -->
 
 ``` TypeScript
 LazyColumnLayout() {
@@ -254,7 +254,7 @@ LazyColumnLayout() {
 
 LazyColumnLayout组件提供了alignItems属性用于设置子组件在水平方向上的对齐方式。未设置时，对齐方式默认值为HorizontalAlign.Center。
 
-<!-- @[lazy_column_align_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutSample.ets) -->
+<!-- @lazy_column_align_items -->
 
 ``` TypeScript
 LazyColumnLayout() {
@@ -269,7 +269,7 @@ LazyColumnLayout() {
 
 LazyColumnLayout支持嵌套使用LazyVGridLayout、LazyVWaterFlowLayout及其自身，以实现更复杂的混合布局。被嵌套的懒加载布局容器会作为LazyColumnLayout的子组件，在进入可视区域时按需加载。
 
-<!-- @[lazy_column_nested](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutNestedLazyLayout.ets) -->
+<!-- @lazy_column_nested -->
 
 ``` TypeScript
 Scroll() {
@@ -305,7 +305,7 @@ Scroll() {
 
 以下示例分别展示了三种懒加载布局容器注册onVisibleIndexesChange事件回调的方式。
 
-<!-- @[lazy_layout_on_visible_indexes_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutNestedLazyLayout.ets) -->
+<!-- @lazy_layout_on_visible_indexes_change -->
 
 ``` TypeScript
 // 区域一：线性列表
@@ -338,7 +338,7 @@ LazyVWaterFlowLayout() {
 
 利用onVisibleIndexesChange回调，可以在即将触底时提前加载更多数据，实现无限滚动。以下示例展示了LazyVWaterFlowLayout配合LazyForEach实现无限滚动：通过在onVisibleIndexesChange回调中判断当前可视区域的终止索引值（end）是否接近数据源的总数量（totalCount），当剩余数据不足时，向数据源中追加新数据，从而在用户滚动到底部前提前完成数据加载，实现无缝滚动体验。
 
-<!-- @[lazy_water_flow_load_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/ListNestedLazyLayout.ets) -->
+<!-- @lazy_water_flow_load_data -->
 
 ``` TypeScript
 List({ space: 10 }) {
@@ -374,7 +374,7 @@ List({ space: 10 }) {
 
 以下示例以List组件作为可滚动父组件为例，在其中同时使用LazyVGridLayout和LazyVWaterFlowLayout，并为每个容器分别配置独立的列数和行列间距，实现了混合布局。
 
-<!-- @[list_nested_lazy_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/ListNestedLazyLayout.ets) -->
+<!-- @list_nested_lazy_layout -->
 
 ``` TypeScript
 import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
@@ -555,7 +555,7 @@ export struct ListNestedLazyLayout {
 
 **图3** List嵌套懒加载布局容器效果示例图
 
-![list-nested-lazy-layout.gif](figures/list-nested-lazy-layout.gif)
+list-nested-lazy-layout.gif
 
 - 通过LazyColumnLayout嵌套组合多种懒加载布局容器
 
@@ -563,7 +563,7 @@ export struct ListNestedLazyLayout {
 
 以下示例以Scroll组件作为可滚动父组件为例，使用LazyColumnLayout作为主布局容器，嵌套LazyColumnLayout（线性列表区域）、LazyVGridLayout（网格区域）和LazyVWaterFlowLayout（瀑布流区域），实现了多种布局方式的混合展示。
 
-<!-- @[lazy_column_nested_lazy_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutNestedLazyLayout.ets) -->
+<!-- @lazy_column_nested_lazy_layout -->
 
 ``` TypeScript
 import {
@@ -787,7 +787,7 @@ export struct LazyColumnLayoutNestedLazyLayout {
 
 **图4** LazyColumnLayout嵌套懒加载布局容器效果示例图
 
-![lazy-column-layout-nested-lazy-layout.gif](figures/lazy-column-layout-nested-lazy-layout.gif)
+lazy-column-layout-nested-lazy-layout.gif
 
 ## 分组展示与粘性标题
 
@@ -797,7 +797,7 @@ export struct LazyColumnLayoutNestedLazyLayout {
 
 可以通过header属性为懒加载布局容器添加头部组件，用于展示分组标题。以下示例使用@Builder构建了一个带参数的分组标题组件，并通过header属性设置到LazyVGridLayout中。
 
-<!-- @[lazy_layout_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
+<!-- @lazy_layout_header -->
 
 ``` TypeScript
 // 内层分组header：显示月份标题，滚动时吸顶
@@ -844,7 +844,7 @@ build() {
 
 可以通过footer属性为懒加载布局容器添加尾部组件，用于提示数据加载完毕。以下示例使用@Builder构建了一个尾部提示组件，并通过footer属性设置到LazyColumnLayout中。
 
-<!-- @[lazy_layout_footer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
+<!-- @lazy_layout_footer -->
 
 ``` TypeScript
 // 外层footer：显示"已经到底了"
@@ -887,13 +887,13 @@ build() {
 
 | StickyStyle.Header | StickyStyle.Footer | StickyStyle.BOTH |
 | :---: | :---: | :---: |
-| ![lazy-layout-sticky-header](figures/lazy-layout-sticky-header.gif) | ![lazy-layout-sticky-footer](figures/lazy-layout-sticky-footer.gif) | ![lazy-layout-sticky-both](figures/lazy-layout-sticky-both.gif) |
+| lazy-layout-sticky-header | lazy-layout-sticky-footer | lazy-layout-sticky-both |
 
 由于浮点数计算精度，设置sticky后，在滚动过程中小概率产生缝隙，可以通过pixelRound指定当前组件向下像素取整解决该问题。
 
 以下示例模拟图库页面，展示了分组展示与粘性标题的效果。外层LazyColumnLayout通过footer显示”已经到底了”，提示数据已全部加载；内层通过LazyForEach动态创建多个LazyVGridLayout展示各月份照片网格，每个LazyVGridLayout设置了header和sticky(StickyStyle.Header)，使月份标题在滚动时吸顶。
 
-<!-- @[lazy_layout_group](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets) -->
+<!-- @lazy_layout_group -->
 
 ``` TypeScript
 import { LengthMetrics, LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
@@ -1102,4 +1102,4 @@ export struct LazyLayoutGroup {
 
 **图6** 分组展示与粘性标题效果示例图
 
-![lazy-layout-group.gif](figures/lazy-layout-group.gif)
+lazy-layout-group.gif

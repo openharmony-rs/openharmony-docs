@@ -32,11 +32,11 @@
 
 图示如下：
 
-![freezeInPage](./figures/freezeInPage.png)
+freezeInPage
 
 页面1：
 
-<!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->     
+<!-- @freeze_template1_Page1_start -->     
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -87,7 +87,7 @@ export struct Page1 {
 
 页面2：
 
-<!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) --> 
+<!-- @freeze_template1_Page2_start --> 
 
 ``` TypeScript
 @Entry
@@ -115,11 +115,11 @@ struct Page2 {
 
 Trace如下：
 
-![Example Image](./figures/freeze1.png)
+Example Image
 
 3.点击`Back`，页面2被销毁，页面1的状态由inactive变为active。状态变量bookTest的更新被观察到，@Monitor中注册的方法onMessageChange被调用，对应的Text显示内容改变。
 
-![freezeV2Page](./figures/freezeV2page.gif)
+freezeV2Page
 
 ### TabContent
 
@@ -129,9 +129,9 @@ Trace如下：
 
 图示如下：
 
-![freezeWithTab](./figures/freezewithTabs.png)
+freezeWithTab
 
-<!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) -->
+<!-- @freeze_template2_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -193,7 +193,7 @@ struct FreezeChild {
 
 3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
 
-![TabContent.gif](figures/TabContent.gif)
+TabContent.gif
 
 
 ### Navigation
@@ -202,7 +202,7 @@ struct FreezeChild {
 
 需要注意：本文档里说的“激活（active）/非激活（inactive）”是指组件冻结的激活/非激活状态，和NavDestination组件中的onActive和onInactive不同。
 
-<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->
+<!-- @freeze_template3_start -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -386,7 +386,7 @@ struct NavigationContentMsgStack {
 
 10.再次点击`Back Page`回到初始页，此时，无任何触发。
 
-![navigation-freeze.gif](figures/navigation-freeze.gif)
+navigation-freeze.gif
 
 ### Repeat
 
@@ -396,7 +396,7 @@ struct NavigationContentMsgStack {
 
 对Repeat缓存池中的自定义组件进行冻结，避免不必要的组件刷新。建议提前阅读Repeat节点更新/复用能力说明。
 
-<!-- @[freeze_template4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/RepeatVirtualScrollFreeze.ets) --> 
+<!-- @freeze_template4_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -476,9 +476,9 @@ struct ChildComponent {
 
 开启组件冻结（freezeWhenInactive: true），只有剩余节点中@Monitor装饰的方法onBgColorChange被触发，如示例中屏上的5个节点会刷新并打印5条日志，缓存池中的节点则不会。
 
-![freeze_repeat_L2.gif](figures/freeze_repeat_L2.gif)
+freeze_repeat_L2.gif
 
-<!-- @[freeze_template4_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/PageB.ets) --> 
+<!-- @freeze_template4_pageB_start --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -509,13 +509,13 @@ struct ChildComponent1 {
 
 不开启组件冻结（freezeWhenInactive: false，当未指定freezeWhenInactive参数时默认不开启组件冻结），剩余节点和缓存池节点中@Monitor装饰的方法onBgColorChange都会被触发，即会有7个节点会刷新并打印7条日志。
 
-![freeze_repeat_L2_unfreeze.gif](figures/freeze_repeat_L2_unfreeze.gif)
+freeze_repeat_L2_unfreeze.gif
 
 ### 仅子组件开启组件冻结
 
 如果开发者只想冻结某个子组件，可以选择只在子组件设置freezeWhenInactive为true。
 
-<!-- @[freeze_template5_PageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageA.ets) --> 
+<!-- @freeze_template5_PageA_start --> 
 
 ``` TypeScript
 // src/main/ets/pages/freeze/template5/PageA.ets
@@ -582,7 +582,7 @@ export struct Child {
 ```
 
 
-<!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) --> 
+<!-- @freeze_template5_PageB_start --> 
 
 ``` TypeScript
 // src/main/ets/pages/freeze/template5/PageB.ets
@@ -642,7 +642,7 @@ struct PageB {
 
 **Navigation和TabContent的混用**
 
-<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->  
+<!-- @freeze_template6_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -838,7 +838,7 @@ struct PageTwoStack2 {
 
 API version 21及之前版本，如下面示例所示，FreezeBuildNode中使用了自定义节点BuilderNode。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。从API version 22开始，可以设置BuilderNode继承冻结能力。
 
-<!-- @[freeze_template7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template7/BuilderNode.ets) --> 
+<!-- @freeze_template7_start --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -973,4 +973,4 @@ struct FreezeBuildNode {
 
 点击`change`，改变message的值，当前正在显示的TabContent组件中@Monitor注册的方法onMessageChange被触发。未显示的TabContent中的BuilderNode节点下组件的@Monitor方法onMessageChange也被触发，并没有被冻结。
 
-![builderNode.gif](figures/builderNode.gif)
+builderNode.gif

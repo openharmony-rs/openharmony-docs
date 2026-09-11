@@ -26,7 +26,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 1. 初始化一个自定义弹出框内容区的入参类，内部包含弹出框控制器。
 
-   <!-- @[dialog_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @dialog_params -->
    
    ``` TypeScript
    class Params {
@@ -42,7 +42,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 2. 初始化一个自定义的弹出框内容区，内部包含一个按钮，该按钮通过该自定义组件自带的弹出框控制器实现关闭功能。
 
-   <!-- @[dialog_my_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
+   <!-- @dialog_my_component --> 
    
    ``` TypeScript
    @Component
@@ -63,7 +63,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
    
 3. 初始化另一自定义弹出框内容区，其中包含一个Text组件和一个按钮，该按钮通过外部传递的弹出框控制器用于关闭弹出框，并且该内容区还包含前一个自定义弹出框内容区。
 
-   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @build_text -->
    
    ``` TypeScript
    @Builder
@@ -87,7 +87,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 4. 初始化一个弹出框控制器，并通过设置控制器参数来初始化一个弹出框内容实体对象。最后，通过调用UIContext中的getPromptAction方法获取PromptAction对象，再通过该对象调用openCustomDialogWithController接口，并且设置初始化的内容实体对象和控制器参数以创建弹出框。
 
-   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
+   <!-- @content_node --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -109,7 +109,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 1. 初始化一个自定义弹出框内容区，内部包含一个Text组件和一个按钮，该按钮通过外部传递的弹出框控制器实现关闭功能。
 
-   <!-- @[dialog_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @dialog_component -->
    
    ``` TypeScript
    @Builder
@@ -133,7 +133,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 2. 初始化一个弹出框控制器，并通过调用UIContext中的getPromptAction方法获取PromptAction对象，再通过该对象调用presentCustomDialog接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
-   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
+   <!-- @dialog_controller_component --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -152,7 +152,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 1. 初始化一个弹出框内容区，内部包含一个Text组件、一个通过外部传递的弹出框ID用于关闭弹出框的按钮和一个通过外部传递的弹出框控制器用于关闭弹出框的按钮。
    
-   <!-- @[dialog_component_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @dialog_component_id -->
    
    ``` TypeScript
    @Builder
@@ -182,7 +182,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 2. 初始化一个弹出框控制器，并通过调用UIContext中的getPromptAction方法获取PromptAction对象，再通过该对象调用presentCustomDialog接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
-   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
+   <!-- @dialog_controller_id --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -201,7 +201,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 1. 初始化一个自定义弹出框内容区，内部包含一个Text组件和一个按钮，该按钮通过弹出框控制器关闭弹出框。
 
-   <!-- @[custom_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @custom_dialog_example -->
    
    ``` TypeScript
    @CustomDialog
@@ -229,7 +229,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 2. 初始化一个自定义弹出框构造器，关联自定义弹出框内容区。
 
-   <!-- @[custom_dialog_example_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @custom_dialog_example_click -->
    
    ``` TypeScript
    let customDialogController: CustomDialogController = new CustomDialogController({
@@ -252,7 +252,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 初始化一个自定义弹出框内容区，内部包含一个Text组件和两个按钮，一个按钮通过调用getState获取当前弹出框状态，另一个按钮通过弹出框控制器关闭弹出框。
 
-<!-- @[dialog_component_get_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+<!-- @dialog_component_get_state -->
 
 ``` TypeScript
 @Builder
@@ -282,7 +282,7 @@ customDialogComponentGetState(dialogController: promptAction.DialogController) {
 
 通过外部传递的弹出框控制器和自定义组件自带的弹出框控制器，在自定义弹出框内容区域内实现关闭功能。
 
-<!-- @[dialog_example_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+<!-- @dialog_example_controller -->
 
 ``` TypeScript
 import { ComponentContent, promptAction } from '@kit.ArkUI';
@@ -507,4 +507,4 @@ export struct DialogController {
   }
 }
 ```
-![dialog-controller-demo1](figures/dialog-controller-demo1.gif)
+dialog-controller-demo1

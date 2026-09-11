@@ -29,7 +29,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 3. 返回值为成功码/错误码，获取成功后，从参数集中读取需要的参数。
 
-<!-- @[obtain_the_key_attributes_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @obtain_the_key_attributes_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

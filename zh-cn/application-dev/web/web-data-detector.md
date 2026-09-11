@@ -1,8 +1,8 @@
 # 使用Web组件的智能分词能力
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 从API version 20开始，ArkWeb提供了H5页面内的文本分词识别功能，支持文本分词高亮、分词长按预览及文本选择菜单扩展等。这些功能需将enableDataDetector设置为true，默认为false。
@@ -24,7 +24,7 @@ Web组件内的H5页面加载完成后，自动识别并高亮标注页面内的
 
 页面中文本实体高亮后，将转变为超链接形式。触摸点击或鼠标左键点击实体，会根据实体类型弹出操作菜单。
 
-<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) --> 
+<!-- @web_DataDetector_Highlighting --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -79,13 +79,13 @@ struct Index {
 ```
 点击实体文本，弹出对应的操作菜单，如下图。
 
-![web-data-detector-menu](figures/web-data-detector-menu.gif)
+web-data-detector-menu
 
 鼠标右键点击、鼠标拖拽将触发超链接的默认行为。
 
 接口dataDetectorConfig未被使用，或其参数TextDataDetectorConfig的enablePreviewMenu设置为false时，长按、拖拽将触发超链接的默认行为，如下图。
 
-![web-data-detector-normal-drag](figures/web-data-detector-normal-drag.gif)
+web-data-detector-normal-drag
 
 页面文本元素的计算样式存在`user-select:none`时，实体菜单中“选择文本”的选项无效，但在copyOptions不为CopyOptions.None时，仍可以复制实体文本。
 
@@ -93,7 +93,7 @@ struct Index {
 使用分词长按预览功能时，需要额外配置dataDetectorConfig：
 
 <!--code_no_check-->
-<!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) -->
+<!-- @web_DataDetector_LongPress -->
 
 ``` TypeScript
 Web({
@@ -109,7 +109,7 @@ controller: this.webController
 
 在copyOptions不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
 
-![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)
+web-data-detector-preview-drag
 
 通过bindSelectionMenu绑定的自定义菜单与分词长按预览菜单互不影响。长按被高亮的分词超链接不会弹出自定义超链接菜单，长按普通超链接也不会弹出分词预览菜单。
 
@@ -123,6 +123,6 @@ controller: this.webController
 - 选中文本中仅包含一个匹配识别类型的实体（可通过dataDetectorConfig配置支持的识别类型）。
 - 不处于“全选”操作状态下的文本。
 
-![web-data-detector-selection-menu](figures/web-data-detector-selection-menu.gif)
+web-data-detector-selection-menu
 
 AI菜单项的出现与是否选中高亮的实体文本无关，只要满足上述条件，AI菜单项就会显示。

@@ -22,7 +22,7 @@
 
  **目录差异**
 
-![bytecode-compilation-code-build](figures/bytecode-compilation-code-build.png) ![bytecode-compilation-build](figures/bytecode-compilation-build.png)
+bytecode-compilation-code-build bytecode-compilation-build
 
 字节码混淆后，obfuscation目录中多了obf、origin文件夹和config.json文件，具体详见混淆效果。
 
@@ -107,7 +107,7 @@ nameCache.json文件：
 
 源码：
 
-<!-- @[export_mainPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @export_mainPage -->
 
 ``` TypeScript
 @Component
@@ -133,7 +133,7 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 
 源码：
 
-<!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->   
+<!-- @import_type -->   
 
 ``` TypeScript
 // Sample.ets
@@ -222,7 +222,7 @@ callargs2 0x2e, v2, v3
 -  混淆后的文件目录：build/default/[...]/release/obfuscation/obf。
 -  混淆名称映射表及系统API白名单目录：build/default/[...]/release/obfuscation。
 
-![bytecode-build-product](figures/bytecode-build-product.png)
+bytecode-build-product
 
 - 名称映射表文件：nameCache.json，该文件记录了字节码名称混淆的映射关系。
 - 系统API白名单文件：systemApiCache.json，该文件记录了SDK中的接口与属性名称，与其重名的源码不会被混淆。
@@ -237,7 +237,7 @@ Error message: ArkTSCompilerError: ArkTS:ERROR Failed to execute ByteCode Obfusc
 
 Error message: [Class]get different name for method:&entry/src/main/ets/pages/XXXX&.#~@0>#setController^1.
 
-<!-- @[export_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleTmsDialog.ets) -->  
+<!-- @export_build -->  
 
 ``` TypeScript
 // 代码1
@@ -267,7 +267,7 @@ struct Index{
 
 **解决方案**：
 
-<!-- @[fix_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleTmsDialog.ets) -->
+<!-- @fix_build -->
 
 ``` TypeScript
 @CustomDialog
@@ -292,7 +292,7 @@ export default struct TmsDialog {
 
 **案例一：报错内容为 Cannot read property 'xxx' of undefined**
 
-<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ImportJson.ets) -->  
+<!-- @import_json -->  
 
 ``` TypeScript
 // 示例JSON文件结构（ImportJson.json）：
@@ -332,7 +332,7 @@ let jsonProp = jsonData.i.j;
 **问题现象**：
 parameters的类型为Record<string, Object>，在开启属性混淆后，parameters对象中的属性linkSource被混淆，进而导致功能异常。示例如下：
 
-<!-- @[import_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
+<!-- @import_want --> 
 
 ``` TypeScript
 // 混淆前
@@ -379,7 +379,7 @@ linkSource
 
 使用@Type和@Trace组合修饰的装饰器属性，可以正常混淆，但混淆后，功能异常。
 
-<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->     
+<!-- @export_decorator -->     
 
 ``` TypeScript
 // SampleChild.ets
@@ -399,7 +399,7 @@ export class Sample {
 }
 ```
 
-<!-- @[call_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/CallDecorator.ets) -->
+<!-- @call_decorator -->
 
 ``` TypeScript
 // Call the API
@@ -449,7 +449,7 @@ p123
 
 并且在MainPage.ets中导入ExportInterface.ts的接口。此时，接口中有属性的类型为对象类型，该对象类型的属性在ExportInterface.ts中被保留，在MainPage.ets中被混淆，从而导致调用时引发功能异常。示例如下：
 
-<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
+<!-- @export_myInfo -->
 
 ``` TypeScript
 // 混淆前
@@ -462,7 +462,7 @@ export interface MyInfo {
 }
 ```
 
-<!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->   
+<!-- @import_myInfo -->   
 
 ``` TypeScript
 // MainPage.ets
@@ -497,7 +497,7 @@ const person: MyInfo = {
 
 **方案一**：使用interface定义该属性的类型，并使用export进行导出，这样该属性会自动被收集到属性白名单中。示例如下：
 
-<!-- @[export_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportCompositeInterface.ts) -->
+<!-- @export_interface -->
 
 ``` TypeScript
 // ExportCompositeInterface.ts
@@ -528,10 +528,10 @@ city1
 
 HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图files字段里。
 
-![bytecode-buildoptionset](figures/bytecode-buildoptionset.png)
+bytecode-buildoptionset
 
 **案例一：动态导入某个类，类定义的地方被混淆，导入类名时却没有混淆，导致报错**
-<!-- @[export_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
+<!-- @export_utils -->
 
 ``` TypeScript
 // 混淆前
@@ -541,7 +541,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
+<!-- @import_utils --> 
 
 ``` TypeScript
 // MainPage.ets
@@ -588,7 +588,7 @@ i();
 
 **案例二：在使用namespace中的方法时，该方法定义的地方被混淆了，但使用的地方却没有被混淆，导致报错**
 
-<!-- @[export_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
+<!-- @export_ns -->
 
 ``` TypeScript
 // 混淆前
@@ -600,7 +600,7 @@ export namespace NS {
 }
 ```
 
-<!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
+<!-- @import_ns --> 
 
 ``` TypeScript
 // MainPage.ets
@@ -631,7 +631,7 @@ namespace中的foo属于export元素，当通过NS.foo调用时被视为属性�
 
 **案例三：使用了declare global，混淆后报语法错误**
 
-<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
+<!-- @declare_global -->
 
 ``` TypeScript
 // ExportInterface.ts
@@ -700,7 +700,7 @@ export function FieldType(...types: Function[]): PropertyDecorator {
 
 ### 未开启-enable-string-property-obfuscation混淆选项，字符串字面量属性名却被混淆，导致字符串字面量属性名的值为undefined
 
-<!-- @[fix_age](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
+<!-- @fix_age -->
 
 ``` TypeScript
 // ExportInterface.ts
@@ -732,7 +732,7 @@ person["m"] = 20;
 
 工程的目录结构如下图所示，模块library1的外层还有目录"directory"，开启文件名混淆后，"directory" 被混淆为f12，导致路径找不到。
 
-![bytecode-directory](figures/bytecode-directory.png)
+bytecode-directory
 
 **解决方案**：
 

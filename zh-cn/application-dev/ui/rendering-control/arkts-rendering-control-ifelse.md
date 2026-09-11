@@ -41,7 +41,7 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 
 ### 使用if进行条件渲染
 
-<!-- @[render_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfRendering.ets) -->
+<!-- @render_if -->
 
 ``` TypeScript
 @Entry
@@ -71,7 +71,7 @@ struct IfExample {
   }
 }
 ```
-![](figures/render_if.gif)
+
 
 if语句的每个分支都包含一个构建函数。此类构建函数必须创建一个或多个子组件。在初始渲染时，if语句会执行构建函数，并将生成的子组件添加到其父组件中。
 
@@ -87,7 +87,7 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 以下示例包含if ... else ...语句与拥有\@State装饰变量的子组件。
 
-<!-- @[render_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfElseRendering.ets) -->
+<!-- @render_if_else -->
 
 ``` TypeScript
 @Component
@@ -131,7 +131,7 @@ struct MainView {
   }
 }
 ```
-![](figures/render_if_else.gif)
+
 
 **初次渲染**：创建CounterView子组件（label为 'CounterView \#positive'），其状态变量counter初始值为0。
 
@@ -147,7 +147,7 @@ struct MainView {
 
 以下示例展示了条件更改时，若需要保留counter值所做的修改。
 
-<!-- @[render_keep_counter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/KeepCounter.ets) -->
+<!-- @render_keep_counter -->
 
 ``` TypeScript
 @Component
@@ -193,7 +193,7 @@ struct KeepMainView {
   }
 }
 ```
-![](figures/render_keep_counter.gif)
+
 
 此处，\@State counter变量归父组件所有。因此，当KeepCounterView组件实例被删除时，该变量不会被销毁。KeepCounterView组件通过\@Link装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
 
@@ -201,7 +201,7 @@ struct KeepMainView {
 
 嵌套条件语句不会影响父组件的相关规则。
 
-<!-- @[render_nested_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/NestedIf.ets) -->
+<!-- @render_nested_if -->
 
 ``` TypeScript
 @Entry
@@ -252,4 +252,4 @@ struct NestedIf {
   }
 }
 ```
-![](figures/render_nested_if.gif)
+

@@ -10,7 +10,7 @@
 
 从API版本26.0.0开始，PC/2in1设备还支持基于AudioDeviceEnhanceManager和native_audio_device_enhance_manager.h的输出设备切换能力，应用可按应用级或音频流级精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。其中，PC/2in1设备输出设备切换的完整示例请参见[ArkTS示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS)和[C/C++示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。其中，PC/2in1设备输出设备切换的完整示例请参见ArkTS示例和C/C++示例。
 
 ## 使用场景
 
@@ -66,7 +66,7 @@
    > - 由于AudioRenderer是流级别，调用本接口设置的默认音频输出设备仅对当前流生效。
    > - 本接口优先级低于AudioSessionManager的setDefaultOutputDevice。如果使用AudioSessionManager的setDefaultOutputDevice设置了默认音频输出设备，本接口的设置将不会生效。
 
-   <!-- @[audioRenderer_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->  
+   <!-- @audioRenderer_setDefaultOutputDevice -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -101,7 +101,7 @@
    >
    > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的setDefaultOutputDevice接口设置的默认音频输出设备信息。
 
-   <!-- @[audioSessionManager_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->  
+   <!-- @audioSessionManager_setDefaultOutputDevice -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -173,7 +173,7 @@
 | SPEAKER | 2 | 扬声器，强制将媒体输出切换到扬声器。 |
 | DEFAULT | 1000 | 系统默认设备，清除强制切换，恢复系统默认路由规则。 |
 
-   <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
+   <!-- @audioSessionManager_setMediaOutputDevice -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -214,7 +214,7 @@ PC/2in1设备经常存在多路输出设备可用（如内置扬声器、外接�
 
 ArkTS示例：
 
-<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+<!-- @isEnhancedRoutingSupported -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -231,7 +231,7 @@ C/C++示例：
 
 使用前需添加头文件：
 
-<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+<!-- @header_file -->
 
 ``` C++
 #include <ohaudio/native_audio_device_enhance_manager.h>
@@ -242,7 +242,7 @@ C/C++示例：
 #include <ohaudio/native_audiostreambuilder.h>
 ```
 
-<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+<!-- @isEnhancedRoutingSupported -->
 
 ``` C++
 napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
@@ -268,7 +268,7 @@ ArkTS示例：
 
 - **应用级：** 通过selectOutputDevice选择指定的输出设备，设置成功后对应用下创建的所有播放流生效。
 
-  <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+  <!-- @select_OutputDevice -->
 
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -288,7 +288,7 @@ ArkTS示例：
 
 - **音频流级：** 通过selectOutputDeviceForAudioRenderer为指定音频播放流选择输出设备，设置成功后仅对该播放流生效。
 
-  <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
+  <!-- @select_OutputDeviceForAudioRenderer -->
 
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -310,7 +310,7 @@ C/C++示例：
 
 - **应用级：** 通过OH_AudioDeviceEnhanceManager_SelectOutputDevice选择指定的输出设备。
 
-  <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+  <!-- @select_OutputDevice -->
 
   ``` C++
   // 获取音频设备增强管理器。
@@ -383,7 +383,7 @@ C/C++示例：
 
 - **音频流级：** 通过OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer为指定音频播放流选择输出设备。
 
-  <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
+  <!-- @select_OutputDeviceForAudioRenderer -->
 
   ``` C++
   // 获取音频设备增强管理器。

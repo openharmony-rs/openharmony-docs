@@ -14,7 +14,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @import_header -->
    
    ``` C
    #include <cstdint>
@@ -85,7 +85,7 @@
    >
    > - 在设置预览输出流的分辨率宽高前，需要先通过OH_AVRecorder_Profile查询视频帧支持可配置的宽高范围。
 
-   <!-- @[create_video_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @create_video_output -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
@@ -110,7 +110,7 @@
 
    通过OH_VideoOutput_Start()方法启动录像输出流。
 
-   <!-- @[video_output_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @video_output_start -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::VideoOutputStart(void)
@@ -130,7 +130,7 @@
 
    通过OH_VideoOutput_Stop()方法停止录像输出流。
 
-   <!-- @[video_output_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @video_output_stop -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::VideoOutputStop(void)
@@ -151,7 +151,7 @@
 
 - 通过注册固定的frameStart回调函数获取监听录像开始结果，videoOutput创建成功时即可监听，录像第一次曝光时触发，当触发该事件回调时表示录像已开始。
 
-  <!-- @[video_callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @video_callback_start -->
   
   ``` C++
   void VideoOutputOnFrameStart(Camera_VideoOutput *videoOutput)
@@ -162,7 +162,7 @@
 
 - 通过注册固定的frameEnd回调函数获取监听录像结束结果，videoOutput创建成功时即可监听，录像完成最后一帧时触发，有该事件返回结果则认为录像流已结束。
 
-  <!-- @[video_callback_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @video_callback_end -->
   
   ``` C++
   void VideoOutputOnFrameEnd(Camera_VideoOutput *videoOutput, int32_t frameCount)
@@ -173,7 +173,7 @@
 
 - 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回录像输出接口使用错误时对应的错误码，错误码类型参见Camera_ErrorCode。
 
-  <!-- @[video_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @video_callback_error -->
   
   ``` C++
   void VideoOutputOnError(Camera_VideoOutput *videoOutput, Camera_ErrorCode errorCode)
@@ -182,7 +182,7 @@
   }
   ```
 
-  <!-- @[get_video_listener_and_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @get_video_listener_and_register -->
   
   ``` C++
   VideoOutput_Callbacks *NDKCamera::GetVideoOutputListener(void)

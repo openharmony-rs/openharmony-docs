@@ -85,7 +85,7 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 示例代码：
 
-<!-- @[v1_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1State.ets) -->
+<!-- @v1_state -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -173,7 +173,7 @@ struct V1State {
 
 示例代码：
 
-<!-- @[v1_track](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Track.ets) -->
+<!-- @v1_track -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -343,7 +343,7 @@ class TestClass {
 
 示例代码：
 
-<!-- @[v2_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Local.ets) -->
+<!-- @v2_local -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -435,7 +435,7 @@ V1组件和V2组件混用的场景中，要使对象能在V1组件和V2组件保
 
 代码示例：
 
-<!-- @[v1_and_v2_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1AndV2Compatibility.ets) -->
+<!-- @v1_and_v2_compatibility -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -564,7 +564,7 @@ export struct V2Child {
 
 在反例中提供了两个修改对象属性的方法，在修改属性前先使用canBeObserved接口判断对象是否可被观察，代码如下：
 
-<!-- @[case_a_b_call_error_increaseVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallError.ets) -->
+<!-- @case_a_b_call_error_increaseVolume -->
 
 ``` TypeScript
 static increaseVolume(balloon: Balloon) {
@@ -574,7 +574,7 @@ static increaseVolume(balloon: Balloon) {
 }
 ```
 
-<!-- @[case_a_b_call_error_reduceVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallError.ets) -->
+<!-- @case_a_b_call_error_reduceVolume -->
 
 ``` TypeScript
 reduceVolume(balloon: Balloon) {
@@ -599,7 +599,7 @@ reduceVolume(balloon: Balloon) {
 
 在正例中修改属性方法前判断对象是否可被观察，代码如下：
 
-<!-- @[case_a_b_call_right_increaseVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallRight.ets) -->
+<!-- @case_a_b_call_right_increaseVolume -->
 
 ``` TypeScript
 static increaseVolume(balloon: Balloon) {
@@ -608,7 +608,7 @@ static increaseVolume(balloon: Balloon) {
   balloon.volume += 2;
 }
 ```
-<!-- @[case_a_b_call_right_reduceVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallRight.ets) -->
+<!-- @case_a_b_call_right_reduceVolume -->
 
 ``` TypeScript
 reduceVolume(balloon: Balloon) {
@@ -643,7 +643,7 @@ reduceVolume(balloon: Balloon) {
 
 在反例中通过`move`按钮修改`this.translateObj`对象的属性，可以在修改属性前先调用canBeObserved接口来获取对象关联的组件信息，代码如下：
 
-<!-- @[control_counter_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseControlCounterError.ets) -->
+<!-- @control_counter_error -->
 
 ``` TypeScript
 Button('move')
@@ -701,7 +701,7 @@ Button('move')
 
 在正例中修改对象的属性前也调用canBeObserved接口获取状态变量关联的组件，代码如下：
 
-<!-- @[control_counter_right](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseControlCounterRight.ets) -->
+<!-- @control_counter_right -->
 
 ``` TypeScript
 Button('move')
@@ -744,7 +744,7 @@ Button('move')
 
 在反例的`onClick`方法中，修改对象属性前先调用canBeObserved接口判断`this.styleList[i]`对象是否可被观察，代码如下：
 
-<!-- @[array_foreach_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayForEachError.ets) -->
+<!-- @array_foreach_error -->
 
 ``` TypeScript
 Text('Font Size List')
@@ -775,7 +775,7 @@ Text('Font Size List')
 
 在正例中同样先判断对象是否可被观察，代码如下：
 
-<!-- @[array_foreach_right](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayForEachRight.ets) -->
+<!-- @array_foreach_right -->
 
 ``` TypeScript
 Text('Font Size List')
@@ -816,7 +816,7 @@ Text('Font Size List')
 
 在反例的`X`按钮修改对象属性前先调用canBeObserved接口判断对象是否可被观察，代码如下：
 
-<!-- @[array_observed_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayObservedError.ets) -->
+<!-- @array_observed_error -->
 
 ``` TypeScript
 Button('X')
@@ -849,7 +849,7 @@ Button('X')
 
 在正例中修改元素属性前判断对象是否可被观察，代码如下：
 
-<!-- @[array_observed_right](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayObservedRight.ets) -->
+<!-- @array_observed_right -->
 
 ``` TypeScript
 Button('X')

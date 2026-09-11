@@ -20,7 +20,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ### 添加头文件
 开发者通过引入头文件<native_audio_converter.h>，使用音频格式转换相关API。
 
-<!-- @[format_conversion_header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+<!-- @format_conversion_header_file -->
 
 ``` C++
 #include <ohaudiosuite/native_audio_converter.h>
@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ### 创建格式转换器
 
-   <!-- @[converter_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   <!-- @converter_create -->
    
    ``` C++
    // 用户需按照实际情况设置输入格式。
@@ -119,7 +119,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    输入数据回调函数。
 
-   <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   <!-- @input_callback -->
    
    ``` C++
    // 设置输出数据指针。
@@ -151,7 +151,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    设置输入数据回调。
 
-   <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   <!-- @set_input_callback -->
    
    ``` C++
    // 设置输入回调。
@@ -175,7 +175,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    >   - 所有输入数据已经结束（回调函数已经返回了`AUDIOCONVERTER_INPUT_DATA_FINISHED`）。
    > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回AUDIOCONVERTER_SUCCESS和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = AUDIOCONVERTER_SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
 
-   <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   <!-- @converter_process -->
    
    ``` C++
    // 分配处理缓冲区。
@@ -215,7 +215,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ### 销毁格式转换器
 
-   <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   <!-- @converter_destroy -->
    
    ``` C++
    OH_AudioConverter_Destroy(converter);
@@ -224,5 +224,5 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 <!--RP1-->
 ## 完整示例代码
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- 音频编创示例代码
 <!--RP1End-->

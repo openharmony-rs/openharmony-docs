@@ -16,7 +16,7 @@ Media Library Kit（媒体文件管理服务）提供了媒体资源的管理能
 
 **示例：**
 
-<!-- @[PickerMediaLibrary_getMediaTypeByMimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+<!-- @PickerMediaLibrary_getMediaTypeByMimeType -->
 
 ``` TypeScript
 function getMediaTypeByMimeType(mimeType: string): string {
@@ -39,7 +39,7 @@ function getMediaTypeByMimeType(mimeType: string): string {
 
 **示例：**
 
-<!-- @[PickerMediaLibrary_getBurstTypeByUri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+<!-- @PickerMediaLibrary_getBurstTypeByUri -->
 
 ``` TypeScript
 function getBurstTypeByUri(uri: string): string {

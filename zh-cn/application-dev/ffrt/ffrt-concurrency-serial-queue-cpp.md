@@ -26,7 +26,7 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 
 用例简化了异常处理和线程安全相关的一些逻辑，实现代码如下所示：
 
-<!-- @[serial_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue_cpp.h) -->
+<!-- @serial_cpp_header -->
 
 ``` C
 #include <chrono>
@@ -35,7 +35,7 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 ```
 
-<!-- @[serial_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue_cpp.cpp) -->
+<!-- @serial_cpp -->
 
 ``` C++
 #undef LOG_TAG
@@ -94,8 +94,8 @@ int SerialQueueCppExec()
 
 | 名称                                                                                                                  | 描述           |
 | --------------------------------------------------------------------------------------------------------------------- | -------------- |
-| class [queue](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)   | 队列类。       |
-| [sleep_for](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#sleep_for) | 延迟一定时间。 |
+| class queue   | 队列类。       |
+| sleep_for | 延迟一定时间。 |
 
 > **说明：**
 >

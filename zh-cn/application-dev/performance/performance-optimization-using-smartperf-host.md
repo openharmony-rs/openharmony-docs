@@ -15,11 +15,11 @@ SmartPerf-Host是一款深入挖掘数据、细粒度展示数据的性能功耗
 
 ## 本地部署
 
-使用SmartPerf-Host进行性能分析前，需要先完成本地部署，本地部署的详细指导请参考[如何编译TraceStreamer](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/trace_streamer/doc/compile_trace_streamer.md)和[SmartPerf-Host编译部署指导](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/README_zh.md)。在本地部署成功后，可通过https://[部署机器ip地址]:9000/application/访问，如下图。
+使用SmartPerf-Host进行性能分析前，需要先完成本地部署，本地部署的详细指导请参考如何编译TraceStreamer和SmartPerf-Host编译部署指导。在本地部署成功后，可通过https://[部署机器ip地址]:9000/application/访问，如下图。
 
 **图1** 本地部署访问页
 
-![](./figures/smartperf-host-using-1.png)
+
 
 ## 性能分析示例
 
@@ -70,13 +70,13 @@ struct Index {
 
 	**图2** FrameTimeline模板配置
 
-	![](./figures/smartperf-host-using-2.png)
+	
 
 2. 自定义配置抓取时间、抓取数据大小和结果文件名称。
 
 	**图3** 抓取配置项
 
-	![](./figures/smartperf-host-using-3.png)
+	
 
 3. 点击右上角Record开始抓取，同时在设备上复现应用掉帧或卡顿的操作过程，抓取完成后页面会自动加载trace数据。
 
@@ -94,17 +94,17 @@ struct Index {
 
 **图4** UI + RenderService总耗时
 
-![](./figures/smartperf-host-using-4.png)
+
 
 
 **图5** UI耗时
 
-![](./figures/smartperf-host-using-5.png)
+
 
 
 **图6** RenderService耗时
 
-![](./figures/smartperf-host-using-6.png)
+
 
 - Expected Timeline是理想帧泳道图，Actual Timeline是真实帧泳道图。
 
@@ -122,7 +122,7 @@ struct Index {
 
 **图7** App卡顿帧
 
-![](./figures/smartperf-host-using-7.png)
+
 
 - Duration表示帧的持续时间。
 
@@ -136,13 +136,13 @@ struct Index {
 
 **图8** 应用布局绘制trace数据
 
-![](./figures/smartperf-host-using-8.png)
+
 
 定位到Grid布局代码段，经过分析，去除了冗余的3层stack容器，并将源数据提前处理为布局中需要的string类型，减少布局消耗。同时给Grid添加cachedCount参数结合LazyForEach进行预加载，cachedCount的值设定为一屏能够渲染的GridItem数量。优化后采用同样的方式抓取数据，得到的FrameTimeline泳道数据如图9，并且滑动过程中无卡顿丢帧现象。
 
 **图9** 优化后FrameTimeline泳道图
 
-![](./figures/smartperf-host-using-9.png)
+
 
 优化后的示例代码如下：
 
@@ -241,25 +241,25 @@ struct Index {
 
 	**图10** AppStartup特性开关
 
-	![](./figures/smartperf-host-using-10.png)
+	
 
 2. 切换到Record template页面，点击Trace template，开启AppStartup。
 
 	**图11** AppStartup模板配置
 
-	![](./figures/smartperf-host-using-11.png)
+	
 
 3. Record setting内设置文件名、大小以及抓取时长。
 
 	**图12** 抓取配置项
 
-	![](./figures/smartperf-host-using-12.png)
+	
 
 4. 点击右上角Record开始抓取，同时在设备上打开目标应用。可提前点击StopRecord完成抓取，或者等待时间自动完成抓取。抓取完成后页面会自动加载trace数据。
 
 	**图13** 停止抓取选项
 
-	![](./figures/smartperf-host-using-13.png)
+	
 
 **分析数据**
 
@@ -267,13 +267,13 @@ struct Index {
 
 **图14** 模板数据筛选
 
-![](./figures/smartperf-host-using-14.png)
+
 
 展开对应应用的泳道，找到应用启动时的时间段。选中AppStartup泳道全部阶段，可以在下方详情内看到具体阶段的耗时情况。
 
 **图15** AppStartup各阶段耗时情况——优化前
 
-![](./figures/smartperf-host-using-15.png)
+
 
 - ProcessTouchEvent：点击事件输入及处理
 
@@ -295,13 +295,13 @@ struct Index {
 
 **图16** UI Ability OnForeground阶段耗时——优化前
 
-![](./figures/smartperf-host-using-16.png)
+
 
 在这个阶段里，通过阶段内下方泳道可以发现生命周期aboutToAppear耗时较长，点击该泳道内容可以看到具体耗时Duration，为268ms，占整个UI Ability OnForeground阶段的82%。
 
 **图17** aboutToAppear耗时——优化前
 
-![](./figures/smartperf-host-using-17.png)
+
 
 查看代码后发现，在aboutToAppear生命周期函数内执行了耗时的计算任务，导致应用冷启动耗时长。
 
@@ -342,25 +342,25 @@ struct Index {
 
 **图18** AppStartup各阶段耗时情况——优化后
 
-![](./figures/smartperf-host-using-18.png) 
+ 
 
 继续聚焦到aboutToAppear生命周期所在的UI Ability OnForeground阶段，目前耗时Duration为81ms。
 
 **图19** UI Ability OnForeground阶段耗时——优化后
 
-![](./figures/smartperf-host-using-19.png)
+
 
 在这个阶段里，通过阶段内下方泳道可以发现需要查看的生命周期aboutToAppear，点击该泳道内容可以看到具体耗时Duration，为2ms，目前只占整个UI Ability OnForeground阶段的2.5%。
 
 **图20** aboutToAppear耗时——优化后
 
-![](./figures/smartperf-host-using-20.png)
+
 
 ### 应用冷启动分析
 
 如果开发者需要对冷启动阶段耗时进行拆解分析，可以使用SmartPerf的AppStartUp能力抓取Trace，通过网站上分段点可以快速的分析冷启动过程中的耗时瓶颈。
 
-![](./figures/application_coldstart_smartperf_guidance.png)
+
 
 1.1、**ProcessTouchEvent**：点击事件处理阶段，对应的trace起点为`H:touchEventDispatch`  
 1.2、**StartUIAbilityBySCB**：拉起应用阶段，对应的trace起点为`H:OHOS::ErrCode OHOS::AAFwk::AbilityManagerClient::StartUIAbilityBySCB`  

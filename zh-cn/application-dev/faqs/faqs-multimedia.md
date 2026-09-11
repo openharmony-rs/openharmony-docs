@@ -254,7 +254,7 @@ OHAudio
 
 **参考资料**
 
-1. [长时任务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)
+1. 长时任务
 2. 应用接入AVSession场景介绍
 
 ## 三方应用为什么无法创建相册？(API 10)

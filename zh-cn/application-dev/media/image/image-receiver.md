@@ -21,7 +21,7 @@ ImageReceiver可以接收相机预览流中的图片，实现双路预览。
 
 1. 导入相关模块包。
 
-   <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+   <!-- @receiver_import -->  
    
    ``` TypeScript
    import { image } from '@kit.ImageKit'
@@ -32,7 +32,7 @@ ImageReceiver可以接收相机预览流中的图片，实现双路预览。
    
 2. 创建ImageReceiver对象，通过ImageReceiver对象可获取预览流SurfaceId。
    
-   <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->    
+   <!-- @init_receiver -->    
    
    ``` TypeScript
    async function initImageReceiver(): Promise<void> {
@@ -48,7 +48,7 @@ ImageReceiver可以接收相机预览流中的图片，实现双路预览。
 
 3. 注册监听处理预览流每帧图像数据：通过ImageReceiver中imageArrival事件监听获取底层返回的图像数据。详细的API说明请参考ImageReceiver。
 
-   <!-- @[On_imageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
+   <!-- @On_imageArrival -->   
    
    ``` TypeScript
    function onImageArrival(receiver: image.ImageReceiver) {
@@ -113,7 +113,7 @@ ImageReceiver可以接收相机预览流中的图片，实现双路预览。
 
 方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
 
-<!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
+<!-- @adjust_bufferSize -->   
 
 ``` TypeScript
 // stride与width不一致。
@@ -131,7 +131,7 @@ let pixelMap = await image.createPixelMap(dstArr.buffer, {
 
 方式二：根据stride * height创建pixelMap，然后调用pixelMap的cropSync方法裁剪掉多余的像素。
 
-<!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
+<!-- @adjust_width -->   
 
 ``` TypeScript
 // 创建pixelMap，width传入行距（stride）的值。

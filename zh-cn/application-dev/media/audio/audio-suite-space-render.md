@@ -26,17 +26,17 @@
 ### 固定摆位模式
 固定摆位模式用于将音频源放置在特定空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用OH_AudioSuiteEngine_SetSpaceRenderPositionParams对空间渲染节点进行参数配置。固定摆位示意图如下：
 
-![audiosuite-space-render-position](figures/audiosuite-space-render-position.png)
+audiosuite-space-render-position
 
 ### 旋转模式
 旋转模式让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染，用户可通过调用OH_AudioSuiteEngine_SetSpaceRenderRotationParams对空间渲染节点进行参数配置。旋转模式示意图如下：
 
-![audiosuite-space-render-rotation](figures/audiosuite-space-render-rotation.png)
+audiosuite-space-render-rotation
 
 ### 扩展模式
 扩展模式将音频源按照半径和角度进行扩展，用户可通过调用OH_AudioSuiteEngine_SetSpaceRenderExtensionParams对空间渲染节点进行参数配置。扩展模式示意图如下：
 
-![audiosuite-space-render-extension](figures/audiosuite-space-render-extension.png)
+audiosuite-space-render-extension
 
 ## 开发基础配置
 
@@ -52,7 +52,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 通过引入头文件使用音频编创相关API。
 
-<!-- @[audioSuite_SpaceRenderEffectInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.h) -->
+<!-- @audioSuite_SpaceRenderEffectInclude -->
 
 ``` C
 #include <ohaudiosuite/native_audio_suite_base.h>
@@ -71,7 +71,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 1. 创建引擎和管线。
 
-   <!-- @[audioSuite_CreateSpaceRenderRotationEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   <!-- @audioSuite_CreateSpaceRenderRotationEngineAndPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -87,7 +87,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
    创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为OH_InputNode_RequestDataCallback()，调用OH_AudioSuiteNodeBuilder_SetRequestDataCallback()接口设置回调函数。
 
-   <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   <!-- @audioSuite_AudioDataInfo -->
    
    ``` C
    struct AudioDataInfo {
@@ -97,7 +97,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
    };
    ```
-   <!-- @[audioSuite_SpaceRenderRotationInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   <!-- @audioSuite_SpaceRenderRotationInputNodeWriteDataCallBack -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -127,7 +127,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @[audioSuite_CreateSpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   <!-- @audioSuite_CreateSpaceRenderRotation -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -207,7 +207,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时预览。
 
-   <!-- @[audioSuite_SpaceRenderRotationAudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   <!-- @audioSuite_SpaceRenderRotationAudioRendererOnWriteData -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -230,7 +230,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
    ```
-   <!-- @[audioSuite_StartSpaceRenderRotationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   <!-- @audioSuite_StartSpaceRenderRotationPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -262,7 +262,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 4. 资源销毁。
 
-   <!-- @[audioSuite_DestroySpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   <!-- @audioSuite_DestroySpaceRenderRotation -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -287,5 +287,5 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 <!--RP1-->
 ## 完整示例代码
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- 音频编创示例代码
 <!--RP1End-->

@@ -12,13 +12,13 @@
 
   **图1** 示例效果图  
 
-![Video_2023-03-06_152548](figures/Video_2023-03-06_152548.gif)
+Video_2023-03-06_152548
 
 本示例中，ArkTS的基本组成如下所示。
 
   **图2** ArkTS的基本组成  
 
-![arkts-basic-grammar](figures/arkts-basic-grammar.png)
+arkts-basic-grammar
 
 > **说明：**
 >

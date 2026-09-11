@@ -9,7 +9,7 @@
 
 子组件中被\@Link装饰的变量与其父组件中对应的数据源建立双向数据绑定。
 
-在阅读\@Link文档前，建议先熟悉\@State的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考状态管理常见问题。
+在阅读\@Link文档前，建议先熟悉\@State的基本用法。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
 
 > **说明：**
 >
@@ -43,7 +43,7 @@
 
  **图1** 初始化规则示意图
 
-![link-initialization](figures/link-initialization.png)
+link-initialization
 
 
 ## 观察变化和行为表现
@@ -144,7 +144,7 @@
 
     【正例】
 
-    <!-- @[link_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage.ets) --> 
+    <!-- @link_usage --> 
     
     ``` TypeScript
     class LinkInfo {
@@ -178,7 +178,7 @@
     }
     ```
 
-    ![arkts-link-0](figures/arkts-link-0.png)
+    arkts-link-0
 
 4. \@Link装饰的变量仅能被状态变量初始化，不能使用常规变量初始化，否则会编译报错。
 
@@ -210,7 +210,7 @@
 
     【正例】
 
-    <!-- @[link_usage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets) --> 
+    <!-- @link_usage_two --> 
     
     ``` TypeScript
     @Component
@@ -236,7 +236,7 @@
     }
     ```
 
-    ![arkts-link-0](figures/arkts-link-0.png)
+    arkts-link-0
 
 5. \@Link不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
@@ -254,7 +254,7 @@
 
   2.当点击父组件ShufflingContainer中的Button时，@State会发生变化，并同步给\@Link，子组件也会进行对应的刷新。
 
-<!-- @[link_class_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithPrimitiveandClassTypes.ets) --> 
+<!-- @link_class_type --> 
 
 ``` TypeScript
 class GreenButtonState {
@@ -341,12 +341,12 @@ struct ShufflingContainer {
 }
 ```
 
-![Video-link-UsageScenario-one](figures/Video-link-UsageScenario-one.gif)
+Video-link-UsageScenario-one
 
 ### 数组类型的\@Link
 
 
-<!-- @[link_array_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithArrayTypes.ets) -->  
+<!-- @link_array_type -->  
 
 ``` TypeScript
 @Component
@@ -402,7 +402,7 @@ struct ArrayTypes {
 ```
 
 
-![Video-link-UsageScenario-two](figures/Video-link-UsageScenario-two.gif)
+Video-link-UsageScenario-two
 
 状态管理框架可以观察到数组元素的添加、删除和替换。在该示例中，\@State和\@Link的类型均为number[]，不支持将\@Link定义成number类型（\@Link item : number），并用\@State数组中的每个数据项在父组件中创建子组件。如需使用这种场景，可以参考\@Prop和\@Observed。
 
@@ -414,7 +414,7 @@ struct ArrayTypes {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
-<!-- @[link_map_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets) -->  
+<!-- @link_map_type -->  
 
 ``` TypeScript
 @Component
@@ -486,7 +486,7 @@ struct MapSample {
 }
 ```
 
-![arkts-link-map](figures/arkts-link-map.gif)
+arkts-link-map
 
 ### 装饰Set类型变量
 
@@ -496,7 +496,7 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[link_set_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesSetType.ets) -->  
+<!-- @link_set_type -->  
 
 ``` TypeScript
 @Component
@@ -559,13 +559,13 @@ struct SetSample {
 }
 ```
 
-![arkts-link-set](figures/arkts-link-set.gif)
+arkts-link-set
 
 ### 装饰Date类型变量
 
 在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 
-<!-- @[link_data_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesDateType.ets) -->  
+<!-- @link_data_type -->  
 
 ``` TypeScript
 @Component
@@ -629,7 +629,7 @@ struct ParentComponent {
 }
 ```
 
-![arkts-link-date](figures/arkts-link-date.gif)
+arkts-link-date
 
 ### 使用双向同步机制更改本地其他变量
 
@@ -637,7 +637,7 @@ struct ParentComponent {
 
 以下示例中，在\@Link的\@Watch里面修改了一个\@State装饰的变量memberMessage，实现父子组件间的变量同步，但是\@State装饰的变量memberMessage在本地修改不会影响到父组件中的变量改变。
 
-<!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) -->  
+<!-- @link_watch -->  
 
 ``` TypeScript
 @Entry
@@ -693,13 +693,13 @@ struct ChangeVariablesChild {
 }
 ```
 
-![arkts-link-watch](figures/arkts-link-watch.gif)
+arkts-link-watch
 
 ### \@Link支持联合类型实例
 
 `@Link`支持联合类型、`undefined`和`null`。在以下示例中，`name`类型为`string | undefined`。点击父组件`UnionTypes`中的按钮可以改变`name`的属性或类型，`UnionChild`组件也会相应刷新。
 
-<!-- @[link_union_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets) -->  
+<!-- @link_union_type -->  
 
 ``` TypeScript
 @Component
@@ -760,6 +760,6 @@ struct UnionTypes {
 }
 ```
 
-![arkts-link-union](figures/arkts-link-union.gif)
+arkts-link-union
 
 <!--no_check-->

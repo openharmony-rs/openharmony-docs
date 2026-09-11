@@ -56,7 +56,7 @@ Repeat通过.each()和.template()属性定义子组件生成规则。每个子�
 
 `.each()`适用于只需要循环渲染一种子组件的场景。下列示例代码使用Repeat组件进行简单的循环渲染。
 
-<!-- @[repeat_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatExample.ets) -->
+<!-- @repeat_example -->
 
 ``` TypeScript
 // 在List容器组件中使用Repeat
@@ -93,7 +93,7 @@ struct RepeatExample {
 
 运行后界面如下图所示：
 
-![Repeat-Example-With-Each](figures/Repeat-Example-With-Each.png) 
+Repeat-Example-With-Each 
 
 **多种类型子组件**
 
@@ -109,7 +109,7 @@ Repeat提供渲染模板（template）能力，可以在同一个数据源中渲
 
 下列示例代码中使用Repeat组件进行循环渲染，并使用了多个渲染模板。
 
-<!-- @[repeat_example_with_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatExample2.ets) -->
+<!-- @repeat_example_with_template -->
 
 ``` TypeScript
 // 在List容器组件中使用Repeat
@@ -159,7 +159,7 @@ struct RepeatExampleWithTemplates {
 
 运行后界面如下图所示：
 
-![Repeat-Example-With-Templates](figures/Repeat-Example-With-Templates.png)
+Repeat-Example-With-Templates
 
 ### 键值生成规则
 
@@ -181,7 +181,7 @@ Repeat的.key()属性为每个子组件生成一个键值。Repeat通过键值�
 
 键值生成示例：
 
-<!-- @[repeat_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatKeyGeneration.ets) -->
+<!-- @repeat_key_generation -->
 
 ``` TypeScript
 @ObservedV2
@@ -232,7 +232,7 @@ Repeat加载子节点具有懒加载和全量加载两种模式。开发者可�
 
 使用Repeat的`.virtualScroll()`属性，即可使能懒加载能力。在懒加载模式下，Repeat根据当前的容器组件显示区域和预加载区域范围，按需加载子组件。如下图所示：
 
-![Repeat-Render](figures/Repeat-Render.png)
+Repeat-Render
 
 > **说明：**
 >
@@ -282,7 +282,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
    首次渲染时列表的节点状态如下图所示（template type在图中简写为ttype）。
 
-   ![Repeat-Reuse-1](figures/repeat-reuse-1.png)
+   Repeat-Reuse-1
 
 2. 滑动场景。
 
@@ -292,7 +292,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
    2）index=0的节点滑出了预加载区域。当UI主线程空闲时，会检查`aa`缓存池是否已满，此时`aa`缓存池未满，将该节点加入到对应的缓存池中。<br/>
    3）其余节点仍在容器显示区域和预加载区域范围，均只更新索引index。如果对应template type的缓存池已满，Repeat会在UI主线程空闲时销毁掉多余的节点。
 
-   ![Repeat-Reuse-2](figures/repeat-reuse-2.png)
+   Repeat-Reuse-2
 
 3. 数据更新场景。
 
@@ -302,7 +302,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
    2）后面的列表节点前移，新进入预加载区域的节点`11`会复用`bb`缓存池中的空闲节点，其他节点均只更新索引index。<br/>
    3）对于节点数据从`07`变为`new`的情况，页面监听到数据源变化将会触发重新渲染。Repeat数据更新触发重新渲染的逻辑是比较当前索引处节点数据item是否变化，以此判断是否进行UI刷新，仅改变键值不改变item的情况不会触发刷新。
 
-   ![Repeat-Reuse-3](figures/repeat-reuse-3.png)
+   Repeat-Reuse-3
 
 **全量加载模式下的节点更新/复用**
 
@@ -318,11 +318,11 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
 最后，如果新数组键值遍历结束后，deletedKeys非空，则销毁集合中的键值所对应的节点。
 
-![Repeat-NonVS-FuncGen](figures/Repeat-NonVS-FuncGen.png)
+Repeat-NonVS-FuncGen
 
 以下图中的数组变化为例，图中的`item_X`表示数据项的键值key。
 
-![Repeat-NonVS-Example](figures/Repeat-NonVS-Example.png)
+Repeat-NonVS-Example
 
 根据上述判断逻辑：`item_0`没有变化，`item_1`和`item_2`只更新了索引，`item_n1`和`item_n2`分别由`item_4`和`item_3`进行节点更新获得，`item_n3`为新创建的节点。
 
@@ -336,7 +336,7 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
 以下示例演示了全量加载模式下的节点更新。
 
-<!-- @[repeat_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NodeUpdateMechanism.ets) -->
+<!-- @repeat_demo -->
 
 ``` TypeScript
 @Entry
@@ -381,15 +381,15 @@ struct ChildItem {
 }
 ```
 
-![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
+ForEach-Non-Initial-Render-Case-Effect
 
 点击红色字体，第三个数据项发生变化（直接使用旧的组件节点，仅刷新数据）。
 
 **节点复用情况查看**
 
-查看节点是否为复用可以使用[DevEco Testing](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/deveco-testing)工具进行查看，进入DevEco Testing工具后，选择实用工具，界面如下：
+查看节点是否为复用可以使用DevEco Testing工具进行查看，进入DevEco Testing工具后，选择实用工具，界面如下：
 
-![DevecoTesting_main](figures/DevecoTesting_main.png)
+DevecoTesting_main
 
 在实用工具中选择UIViewer，该工具可以获取设备快照、控件树信息及控件节点属性，在右侧的控件树中选择Repeat子节点，右下方的节点属性会显示节点ID等信息，可以通过节点ID是否相同，判断组件复用或者新建的情况。
 
@@ -407,7 +407,7 @@ struct ChildItem {
 
 数据源总长度较长，在首次渲染、滑动屏幕、跳转显示区域时，动态加载对应区域内的数据。
 
-<!-- @[repeat_lazy_loading_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading1.ets) -->
+<!-- @repeat_lazy_loading_one -->
 
 ``` TypeScript
 @Entry
@@ -456,13 +456,13 @@ struct RepeatLazyLoadingLongData {
 
 运行效果：
 
-![Repeat-Lazyloading-1](figures/repeat-lazyloading-demo1.gif)
+Repeat-Lazyloading-1
 
 **示例2**
 
 数据加载耗时长，在onLazyLoading方法中，首先为数据项创建占位符，再通过异步任务加载数据。
 
-<!-- @[repeat_lazy_loading_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading2.ets) -->
+<!-- @repeat_lazy_loading_two -->
 
 ``` TypeScript
 @Entry
@@ -506,7 +506,7 @@ struct RepeatLazyLoadingSync {
 
 运行效果：
 
-![Repeat-Lazyloading-2](figures/repeat-lazyloading-demo2.gif)
+Repeat-Lazyloading-2
 
 **示例3**
 
@@ -518,7 +518,7 @@ struct RepeatLazyLoadingSync {
 > - 若与Swiper-Loop模式同时使用，停留在`index = 0`处时，将导致onLazyLoading方法被持续触发，建议避免与Swiper-Loop模式同时使用。
 > - 开发者需要关注内存消耗情况，避免因数据持续加载而导致内存过量消耗。
 
-<!-- @[repeat_lazy_loading_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading3.ets) -->
+<!-- @repeat_lazy_loading_three -->
 
 ``` TypeScript
 @Entry
@@ -566,7 +566,7 @@ struct RepeatLazyLoadingInfinite {
 
 运行效果：
 
-![Repeat-Lazyloading-3](figures/repeat-lazyloading-demo3.gif)
+Repeat-Lazyloading-3
 
 ### 拖拽排序
 
@@ -579,7 +579,7 @@ struct RepeatLazyLoadingInfinite {
 
 示例代码：
 
-<!-- @[repeat_scroll_on_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScrollOnMove.ets) -->
+<!-- @repeat_scroll_on_move -->
 
 ``` TypeScript
 @Entry
@@ -628,7 +628,7 @@ struct RepeatVirtualScrollOnMove {
 
 运行效果：
 
-![Repeat-Drag-Sort](figures/repeat-drag-sort.gif)
+Repeat-Drag-Sort
 
 ### 数据前插保持
 
@@ -638,7 +638,7 @@ struct RepeatVirtualScrollOnMove {
 
 **示例代码**
 
-<!-- @[repeat_pre_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/PreInsert.ets) -->
+<!-- @repeat_pre_insert -->
 
 ``` TypeScript
 @Entry
@@ -702,7 +702,7 @@ struct PreInsertDemo {
 
 运行效果：
 
-![Repeat-pre-insert-preserve](figures/repeat-pre-insert-preserve.gif)
+Repeat-pre-insert-preserve
 
 ### animateTo动效
 
@@ -723,7 +723,7 @@ Repeat子组件过渡动画的判定规则如下：
 
 **示例代码**
 
-<!-- @[repeat_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets) -->
+<!-- @repeat_animation -->
 
 ``` TypeScript
 
@@ -811,7 +811,7 @@ class ItemInfo {
 
 运行效果：
 
-![Repeat-animation](figures/repeat-animation.gif)
+Repeat-animation
 
 ## 常见使用场景
 
@@ -820,7 +820,7 @@ class ItemInfo {
 下面的代码示例展示了Repeat修改数组的常见操作，包括**插入数据、修改数据、删除数据、交换数据**。点击下拉框选择索引index值，点击相应的按钮即可操作数据项，依次点击两个不同的数据项可以进行交换。
 
 
-<!-- @[repeat_scroll_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatVirtualScroll2T.ets) -->
+<!-- @repeat_scroll_two -->
 
 ``` TypeScript
 @ObservedV2
@@ -966,13 +966,13 @@ struct RepeatVirtualScroll {
 
 该示例代码展示了100项自定义类`Repeat006Clazz`的`message`字符串属性，List组件的cachedCount属性设为2，模板'odd'和'even'的空闲节点缓存池大小分别设为3和1。运行后界面如下图所示：
 
-![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
+Repeat-VirtualScroll-2T-Demo
 
 ### Repeat嵌套
 
 Repeat支持嵌套使用，示例代码如下：
 
-<!-- @[repeat_nest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/NestedRepeat.ets) -->
+<!-- @repeat_nest -->
 
 ``` TypeScript
 // Repeat嵌套
@@ -1036,7 +1036,7 @@ struct NestedRepeat {
 
 运行效果：
 
-![Repeat-Nest](figures/Repeat-Nest.png)
+Repeat-Nest
 
 ### 父容器组件应用场景
 
@@ -1046,7 +1046,7 @@ struct NestedRepeat {
 
 在List容器组件中使用Repeat，示例代码如下：
 
-<!-- @[repeat_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoList.ets) -->
+<!-- @repeat_list -->
 
 ``` TypeScript
 class DemoListItemInfo {
@@ -1145,13 +1145,13 @@ struct DemoList {
 
 右滑并点击按钮，或点击底部按钮，可删除视频卡片：
 
-![Repeat-Demo-List](figures/Repeat-Demo-List.gif)
+Repeat-Demo-List
 
 **与Grid组合使用**
 
 在Grid容器组件中使用Repeat，示例如下：
 
-<!-- @[repeat_grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoGrid.ets) -->
+<!-- @repeat_grid -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1279,13 +1279,13 @@ struct DemoGrid {
 
 下拉屏幕，或点击刷新按钮，或点击“先前浏览至此，点击刷新”，可加载新的视频内容：
 
-![Repeat-Demo-Grid](figures/Repeat-Demo-Grid.gif)
+Repeat-Demo-Grid
 
 **与Swiper组合使用**
 
 在Swiper容器组件中使用Repeat，示例如下：
 
-<!-- @[repeat_swiper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/DemoSwiper.ets) -->
+<!-- @repeat_swiper -->
 
 ``` TypeScript
 const remotePictures: string[] = [
@@ -1358,7 +1358,7 @@ struct DemoSwiper {
 
 定时1秒后加载图片，模拟网络延迟：
 
-![Repeat-Demo-Swiper](figures/Repeat-Demo-Swiper.gif)
+Repeat-Demo-Swiper
 
 ## 常见问题
 
@@ -1368,7 +1368,7 @@ struct DemoSwiper {
 
 在List组件中声明Repeat组件，实现key值生成逻辑和each逻辑（如下示例代码），点击按钮“insert”，在屏幕显示的第一个元素前面插入一个元素，列表显示区域数据向下滚动。
 
-<!-- @[repeat_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle.ets) -->
+<!-- @repeat_single -->
 
 ``` TypeScript
 // 定义一个类，标记为可观察的
@@ -1429,7 +1429,7 @@ struct RepeatTemplateSingle {
 
 运行效果：
 
-![repeat-case1-wrong](figures/repeat-case1-wrong.gif)
+repeat-case1-wrong
 
 以下为修正后的示例：
 
@@ -1441,7 +1441,7 @@ struct RepeatTemplateSingle {
 > 
 > Repeat从API version 20开始支持数据前插保持，该功能特性可通过简单配置List组件的属性实现相同的效果。
 
-<!-- @[repeat_single_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatTemplateSingle1.ets) -->
+<!-- @repeat_single_one -->
 
 ``` TypeScript
 // 定义一个类，标记为可观察的
@@ -1511,7 +1511,7 @@ struct RepeatSingle {
 
 运行效果：
 
-![repeat-case1-fixed](figures/repeat-case1-fixed.gif)
+repeat-case1-fixed
 
 ### totalCount值大于数据源长度
 
@@ -1525,7 +1525,7 @@ totalCount > array.length时，在父组件容器滚动过程中，应用需要�
 > 
 > Repeat从API version 19开始支持数据精准懒加载，该功能特性可通过配置onLazyLoading回调函数动态加载对应区域内的数据。
 
-<!-- @[repeat_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/EntryCompSucc.ets) -->
+<!-- @repeat_comp -->
 
 ``` TypeScript
 @ObservedV2
@@ -1612,7 +1612,7 @@ struct EntryCompSucc {
 
 示例代码运行效果：
 
-![repeat-case2-succ](figures/repeat-case2-succ.gif)
+repeat-case2-succ
 
 ### 与@Builder混用时状态变量未刷新
 
@@ -1620,7 +1620,7 @@ struct EntryCompSucc {
 
 示例代码如下：
 
-<!-- @[repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
+<!-- @repeat_builder -->
 
 ``` TypeScript
 import { UIUtils, Binding } from '@kit.ArkUI';
@@ -1689,7 +1689,7 @@ struct RepeatBuilderPage {
 
 @Builder传参方式依次为makeBinding()、地址传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
 
-![Repeat-Builder](figures/Repeat-Builder.png)
+Repeat-Builder
 
 ### expandSafeArea属性失效
 

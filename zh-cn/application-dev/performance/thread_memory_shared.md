@@ -14,7 +14,7 @@
 
 ## 工作原理
 
-可共享对象SharedArrayBuffer，是拥有固定长度的原始二进制数据缓冲区，可以存储任何类型的数据，包括数字、字符串等。它支持在多线程之间传递，传递之后的SharedArrayBuffer对象和原始的SharedArrayBuffer对象可以指向同一块内存，进而达到共享内存的目的。SharedArrayBuffer对象存储的数据在子线程中被修改时，需要通过原子操作保证其同步性，即下个操作开始之前务必需要保证上个操作已经结束。下面将通过示例说明原子操作保证同步性的必要性，详细代码请参考[AtomicsUsage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/memoryShared/src/main/ets/pages/AtomicsUsage.ets)。
+可共享对象SharedArrayBuffer，是拥有固定长度的原始二进制数据缓冲区，可以存储任何类型的数据，包括数字、字符串等。它支持在多线程之间传递，传递之后的SharedArrayBuffer对象和原始的SharedArrayBuffer对象可以指向同一块内存，进而达到共享内存的目的。SharedArrayBuffer对象存储的数据在子线程中被修改时，需要通过原子操作保证其同步性，即下个操作开始之前务必需要保证上个操作已经结束。下面将通过示例说明原子操作保证同步性的必要性，详细代码请参考AtomicsUsage.ets。
 
 ### 非原子操作
 
@@ -322,13 +322,13 @@ async function createWriteTask(baseDir: string, writeText: number, sabInLock: Sh
 
 图1 不使用锁写入的文件
 
-![unusedLock.txt](./figures/not_use_lock.png)
+unusedLock.txt
 
 而usedLock.txt文件，所写行数刚好1000行，且不存在乱码，如图2所示。
 
 图2 使用锁写入的文件
 
-![usedLock.txt](./figures/use_lock.png)
+usedLock.txt
 
 ## 总结
 综上所述，虽然使用了基于消息通信的Actor并发模型，但是ArkTS依旧支持通过共享内存的方式进行线程间通信。同时，在使用SharedArrayBuffer进行共享内存时，也需要通过原子操作或者锁来解决线程间同步与互斥的问题。合理使用多线程共享内存，才能在保证线程安全的前提下，提升应用的性能。

@@ -7,7 +7,7 @@
 <!--Tester: @wwrongs-->
 <!--Adviser: @zengyawen-->
 
-为了保证OpenHarmony应用和调试工具的完整性和来源可靠，需要对应用和调试工具进行签名。经过签名的应用和调试工具才能在真机设备上安装、运行、和调试。[developtools_hapsigner仓](https://gitcode.com/openharmony/developtools_hapsigner)提供了签名工具的源码，包含密钥对生成、CSR文件生成、证书生成、Profile文件签名、应用包签名、调试工具签名等功能。
+为了保证OpenHarmony应用和调试工具的完整性和来源可靠，需要对应用和调试工具进行签名。经过签名的应用和调试工具才能在真机设备上安装、运行、和调试。developtools_hapsigner仓提供了签名工具的源码，包含密钥对生成、CSR文件生成、证书生成、Profile文件签名、应用包签名、调试工具签名等功能。
 
 在支持强制代码签名机制的设备上，该机制可以为应用提供运行时的合法性校验以及完整性保护，杜绝未经审核的恶意代码在端侧任意执行，或应用代码被攻击者恶意篡改。 
 
@@ -15,7 +15,7 @@
 
 > **说明：** 
 >
-> 针对无需通过ACL跨级别申请权限的应用，DevEco Studio为开发者提供了自动化签名方案，可以一键完成应用/服务签名。具体可参考[自动化签名方案](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ohos-auto-configuring-signature-information-0000001271659465)。
+> 针对无需通过ACL跨级别申请权限的应用，DevEco Studio为开发者提供了自动化签名方案，可以一键完成应用/服务签名。具体可参考自动化签名方案。
 
 ## 基本概念
 

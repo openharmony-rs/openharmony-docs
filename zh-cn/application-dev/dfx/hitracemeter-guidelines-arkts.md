@@ -96,14 +96,14 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 2. 编辑工程中的“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”：
    
    导入所需依赖：
-   <!-- @[TestHiTraceMeter_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @TestHiTraceMeter_Import -->
    
    ``` TypeScript
    import { hiTraceMeter, hilog} from '@kit.PerformanceAnalysisKit';
    ```
    
    定义测试方法：
-   <!-- @[TestHiTraceMeter_FUNC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @TestHiTraceMeter_FUNC -->
    
    ``` TypeScript
    function testHiTraceMeterASync() {
@@ -155,7 +155,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
    ```
 
    添加按钮以触发接口调用：
-   <!-- @[TestHiTraceMeter_BUTTON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @TestHiTraceMeter_BUTTON -->
    
    ``` TypeScript
    Button("testHiTraceMeter").backgroundColor('#FFFF00FF')

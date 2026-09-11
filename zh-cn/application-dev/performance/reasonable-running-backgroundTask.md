@@ -21,7 +21,7 @@
 
 ### 场景示例
 
-下面代码在申请短时任务后执行了一个耗时计算任务。源代码可访问[短时任务示例程序](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/backgroundTask/src/main/ets/view/TransientTaskView.ets)获取。
+下面代码在申请短时任务后执行了一个耗时计算任务。源代码可访问短时任务示例程序获取。
 
 ```typescript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -106,7 +106,7 @@ struct Index {
 
 图1 短时任务 Time Profiler 泳道图
 
-![](./figures/reasonable-running-backgroundTask-image1.png)
+
 
 - ArkTS Callstack：基于时间轴展示 CPU 占用率和状态的变化。
 - User Trace：基于时间轴展示当前时段内触发用户自定义打点任务的具体情况。H:computeTask 表示短时任务执行用时。
@@ -118,11 +118,11 @@ struct Index {
 
 图2 任务执行阶段的 CPU 占用率
 
-![](./figures/reasonable-running-backgroundTask-image2.png)
+
 
 图3 任务取消后未被挂起阶段的 CPU 占用率
 
-![](./figures/reasonable-running-backgroundTask-image3.png)
+
 
 可以看到应用主线程在任务执行阶段的平均 CPU 占用率为 12.6%，最高 CPU 占用率为 40.0%，在任务取消后未被挂起阶段的平均 CPU 占用率为 2.2%，最高 CPU 占用率为 28.6%。
 
@@ -154,9 +154,9 @@ struct Index {
 
 ### 场景示例
 
-下面模拟一个后台定位的场景。应用订阅设备位置变化，每隔一秒获取位置信息，为了保证应用在退到后台后仍然可以使用定位服务，申请了定位类型的长时任务。源代码可访问[长时任务示例程序](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/backgroundTask/src/main/ets/view/LongTermTaskView.ets)获取。
+下面模拟一个后台定位的场景。应用订阅设备位置变化，每隔一秒获取位置信息，为了保证应用在退到后台后仍然可以使用定位服务，申请了定位类型的长时任务。源代码可访问长时任务示例程序获取。
 
-首先需要在 [module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/product/phone/entry/src/main/module.json5) 配置文件中为需要使用长时任务的 EntryAbility 声明任务类型。
+首先需要在 module.json5 配置文件中为需要使用长时任务的 EntryAbility 声明任务类型。
 
 ```javascript
 {
@@ -183,7 +183,7 @@ struct Index {
 - ohos.permission.LOCATION
 - ohos.permission.KEEP_BACKGROUND_RUNNING
 
-权限申请方式参考配置文件权限声明，在 [module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/product/phone/entry/src/main/module.json5) 中进行配置。其中部分权限申请以及打开使能通知开关需要用户手动确认。系统为申请的长时任务发布通知栏消息时，应用的使能通知开关必须处于开启状态，否则用户无法感知后台正在运行的长时任务。
+权限申请方式参考配置文件权限声明，在 module.json5 中进行配置。其中部分权限申请以及打开使能通知开关需要用户手动确认。系统为申请的长时任务发布通知栏消息时，应用的使能通知开关必须处于开启状态，否则用户无法感知后台正在运行的长时任务。
 
 后台定位的实现代码如下：
 

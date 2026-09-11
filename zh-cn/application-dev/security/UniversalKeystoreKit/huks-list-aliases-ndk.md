@@ -26,7 +26,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 调用接口OH_Huks_ListAliases，查询密钥别名集。
 
-<!-- @[query_key_alias_set_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/QueryKeyAliasSet/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @query_key_alias_set_cpp -->
 
 ``` C++
 /* 以下查询密钥别名集为例 */

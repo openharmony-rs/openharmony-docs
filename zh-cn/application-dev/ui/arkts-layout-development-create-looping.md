@@ -25,7 +25,7 @@ Swiper作为一个容器组件，如果设置了自身尺寸属性，则在轮�
 
 - loop为true
 
-<!-- @[loop_with_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->   
+<!-- @loop_with_true -->   
 
 ``` TypeScript
 Swiper() {
@@ -54,11 +54,11 @@ Swiper() {
 .loop(true)
 ```
 
-![loop_true](figures/loop_true.gif)
+loop_true
 
 - loop为false
 
-<!-- @[loop_with_false](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperLoop.ets) -->
+<!-- @loop_with_false -->
 
 ``` TypeScript
   Swiper() {
@@ -68,7 +68,7 @@ Swiper() {
   .loop(false)
 ```
 
-![loop_false](figures/loop_false.gif)
+loop_false
 
 
 ## 自动轮播
@@ -77,7 +77,7 @@ Swiper通过设置autoPlay属性，控制是否自动轮播子组件。该属性
 
 autoPlay为true时，会自动切换播放子组件，子组件与子组件之间的播放间隔通过interval属性设置。interval属性默认值为3000，单位毫秒。
 
-<!-- @[autoplay_loop_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAutoPlay.ets) -->
+<!-- @autoplay_loop_true -->
 
 ``` TypeScript
   Swiper() {
@@ -89,7 +89,7 @@ autoPlay为true时，会自动切换播放子组件，子组件与子组件之�
   .interval(1000)
 ```
 
-![autoPlay](figures/autoPlay.gif)
+autoPlay
 
 
 ## 导航点样式
@@ -100,7 +100,7 @@ Swiper提供了默认的导航点样式和导航点箭头样式，导航点默�
 
 - 导航点使用默认样式
 
-<!-- @[default_navigation_point_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
+<!-- @default_navigation_point_style -->
 
 ``` TypeScript
 Swiper() {
@@ -127,13 +127,13 @@ Swiper() {
 }
 ```
 
-![indicator](figures/indicator.PNG)
+indicator
 
 - 自定义导航点样式
 
 选中的导航点，宽度设为30vp且高度设为15vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
 
-<!-- @[customize_navigation_point_styles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
+<!-- @customize_navigation_point_styles -->
 
 ``` TypeScript
   Swiper() {
@@ -152,13 +152,13 @@ Swiper() {
   )
 ```
 
-![ind](figures/ind.PNG)
+ind
 
 Swiper通过设置displayArrow属性，可以控制导航点箭头的大小、位置、颜色，底板的大小及颜色，以及鼠标悬停时是否显示箭头。
 
 - 箭头使用默认样式
 
-<!-- @[default_arrow_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
+<!-- @default_arrow_style -->
 
 ``` TypeScript
   Swiper() {
@@ -168,13 +168,13 @@ Swiper通过设置displayArrow属性，可以控制导航点箭头的大小、�
   .displayArrow(true, false)
 ```
 
-![arrow1](figures/arrow1.gif)
+arrow1
 
 - 自定义箭头样式
 
 箭头显示在组件两侧，大小为18vp，导航点箭头颜色设为蓝色。
 
-<!-- @[customize_the_arrow_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
+<!-- @customize_the_arrow_style -->
 
 ``` TypeScript
   Swiper() {
@@ -191,13 +191,13 @@ Swiper通过设置displayArrow属性，可以控制导航点箭头的大小、�
   }, false)
 ```
 
-![arrow2](figures/arrow2.gif)
+arrow2
 
 ## 页面切换方式
 
 Swiper支持手指滑动、点击导航点和通过控制器三种方式切换页面，以下示例展示通过控制器切换页面的方法。
 
-<!-- @[switch_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperPageSwitchMethod.ets) -->
+<!-- @switch_pages -->
 
 ``` TypeScript
 
@@ -287,7 +287,7 @@ export struct SwiperPageSwitchMethod {
 }
 ```
 
-![control](figures/control.gif)
+control
 
 
 ## 轮播方向
@@ -299,7 +299,7 @@ Swiper支持水平和垂直方向上进行轮播，主要通过vertical属性控
 
 - 设置水平方向上轮播。
 
-<!-- @[rotate_horizontally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDirection.ets) -->
+<!-- @rotate_horizontally -->
 
 ``` TypeScript
 Swiper(
@@ -313,12 +313,12 @@ Swiper(
 ```
 
 
-![截图2](figures/截图2.PNG)
+截图2
 
 
 - 设置垂直方向轮播。
 
-<!-- @[rotate_vertically](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDirection.ets) -->
+<!-- @rotate_vertically -->
 
 ``` TypeScript
 Swiper(
@@ -332,14 +332,14 @@ Swiper(
 ```
 
 
-![截图3](figures/截图3.PNG)
+截图3
 
 
 ## 每页显示多个子页面
 
 Swiper支持在一个页面内同时显示多个子组件，通过displayCount属性设置。
 
-<!-- @[each_page_displays_multiple_subpages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperMultiPage.ets) -->  
+<!-- @each_page_displays_multiple_subpages -->  
 
 ``` TypeScript
 Swiper() {
@@ -373,13 +373,13 @@ Swiper() {
 .displayCount(2)
 ```
 
-![two](figures/two.PNG)
+two
 
 ## 自定义切换动画
 
 Swiper支持通过customContentTransition设置自定义切换动画，可以在回调中对视窗内所有页面逐帧设置透明度、缩放比例、位移、渲染层级等属性实现自定义切换动画。
 
-<!-- @[customize_transition_animations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperCustomAnimation.ets) -->
+<!-- @customize_transition_animations -->
 
 ``` TypeScript
 
@@ -462,13 +462,13 @@ export struct SwiperCustomAnimation {
 }
 ```
 
-![customAnimation](figures/swiper-custom-animation.gif)
+customAnimation
 
 ## Swiper与Tabs联动
 
 从API version 18开始，Swiper选中的元素改变时，会通过onSelected回调事件，将元素的索引值index返回。通过调用tabsController.changeIndex(index)方法来实现Tabs页签的切换。
 
-<!-- @[swiper_tabs_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets) -->
+<!-- @swiper_tabs_linkage -->
 
 ``` TypeScript
 // xxx.ets
@@ -575,13 +575,13 @@ export struct SwiperAndTabsLinkage {
   }
 }
 ```
-![Swiper与Tabs联动](figures/tabs_swiper.gif)
+Swiper与Tabs联动
 
 ## 设置圆点导航点间距
 
 从API version 19开始，针对圆点导航点，可以通过DotIndicator的space属性来设置圆点导航点的间距。
 
-<!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
+<!-- @dot_indicator_space -->
 
 ``` TypeScript
 Swiper(
@@ -601,7 +601,7 @@ Swiper(
 
 - 圆点导航点忽略组件大小。
 
-<!-- @[dot_indicator_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
+<!-- @dot_indicator_bottom -->
 
 ``` TypeScript
 Swiper(
@@ -618,7 +618,7 @@ Swiper(
 
 - 数字导航点忽略组件大小。
 
-<!-- @[digit_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperDigitIndicatorIgnoreComponentSize.ets) -->
+<!-- @digit_indicator -->
 
 ``` TypeScript
 Swiper(
@@ -633,7 +633,7 @@ Swiper(
 
 圆点导航点设置间距及忽略组件大小完整示例代码如下：
 
-<!-- @[dot_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
+<!-- @dot_indicator -->
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -739,7 +739,7 @@ export struct SwiperIgnoreComponentSize {
 }
 ```
 
-![indicator_space](figures/indicator_space.gif)
+indicator_space
 
 ## 保持可见内容位置不变
 
@@ -749,7 +749,7 @@ maintainVisibleContentPosition为true时，显示区域上方或前方插入或�
 
 关于数据LazyForEach：数据懒加载的具体使用，可参考数据懒加载章节中的示例。
 
-<!-- @[visible_content_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperVisibleContentPosition.ets) -->
+<!-- @visible_content_position -->
 
 ``` TypeScript
 // xxx.ets
@@ -844,13 +844,13 @@ export struct SwiperVisibleContentPosition {
 }
 ```
 
-![maintainVisibleContentPosition_true](figures/maintainVisibleContentPosition_true.gif)
+maintainVisibleContentPosition_true
 
 ## 相关实例
 
 针对Swiper组件开发，有以下相关实例可供参考：
 
-- [电子相册（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ElectronicAlbum)
+- 电子相册（ArkTS）（API9）
 
-- [Swiper的使用（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/SwiperArkTS)
+- Swiper的使用（ArkTS）（API9）
 <!--RP1--><!--RP1End-->

@@ -46,7 +46,7 @@ Exif信息的读取与编辑相关的API如下，详细介绍请参考ImageSourc
 
 1. 导入相关模块包。
 
-   <!-- @[editExif_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
+   <!-- @editExif_import -->   
    
    ``` TypeScript
    // 导入相关模块。
@@ -56,7 +56,7 @@ Exif信息的读取与编辑相关的API如下，详细介绍请参考ImageSourc
 
 2. 获取指定属性键的Exif信息。
 
-   <!-- @[get_exif](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
+   <!-- @get_exif -->   
    
    ``` TypeScript
    // 获取指定key的Exif信息接口示例
@@ -87,7 +87,7 @@ Exif信息的读取与编辑相关的API如下，详细介绍请参考ImageSourc
 
 3. 修改指定属性键的Exif信息。
 
-   <!-- @[modify_exif](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ExifUtility.ets) -->   
+   <!-- @modify_exif -->   
    
    ``` TypeScript
    // 修改指定key的Exif信息的接口示例

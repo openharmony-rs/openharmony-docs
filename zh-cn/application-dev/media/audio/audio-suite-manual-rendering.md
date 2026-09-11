@@ -20,7 +20,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ### 添加头文件
 开发者通过引入头文件<native_audio_suite_base.h>和<native_audio_suite_engine.h>，使用音频编创相关API。
 
-<!-- @[audioSuite_ManualRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+<!-- @audioSuite_ManualRenderingInclude -->
 
 ``` C++
 #include <ohaudiosuite/native_audio_suite_base.h>
@@ -47,12 +47,12 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 **图1**：基础离线编辑示意图
 
-![single_in_single_out](figures/audiosuite-eq-edit.png)
+single_in_single_out
 
 
 1. 创建引擎和管线。
    
-   <!-- @[audioSuite_CreateEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateEngineAndPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -70,7 +70,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为OH_InputNode_RequestDataCallback()，调用OH_AudioSuiteNodeBuilder_SetRequestDataCallback()接口设置回调函数。
  
-   <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   <!-- @audioSuite_AudioDataInfo -->
    
    ``` C
    struct AudioDataInfo {
@@ -80,7 +80,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
    };
    ```
-   <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_InputNodeWriteDataCallBack -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -108,7 +108,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @[audioSuite_CreateBaseNodeOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateBaseNodeOne -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -137,7 +137,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    
    设置均衡器效果。
    
-   <!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+   <!-- @audioSuite_SetEqualizerType -->
    
    ``` C
    // 设置为均衡器节点类型。
@@ -149,7 +149,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
    ```
    
-   <!-- @[audioSuite_CreateBaseNodeTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateBaseNodeTwo -->
    
    ``` C++
    // 重置构造器配置并设置为输出节点类型。
@@ -179,7 +179,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    开发者调用OH_AudioSuiteEngine_RenderFrame()接口渲染并获取PCM音频数据。
    
-   <!-- @[audioSuite_StartBasePipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_StartBasePipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -212,7 +212,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 4. 资源销毁。
    
-   <!-- @[audioSuite_DestroyBase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_DestroyBase -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -236,13 +236,13 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 **图2**：音源分离编辑示意图
 
-![single_in_multi_out](figures/audiosuite-audio-separation-edit.png)
+single_in_multi_out
 
 示例代码如下：
 
 1. 创建引擎和管线。
  
-   <!-- @[audioSuite_CreateSeparationEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateSeparationEngineAndPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -260,7 +260,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    创建输入节点需要实现自定义回调函数`InputNodeWriteDataCallBack`，函数类型为OH_InputNode_RequestDataCallback()，调用OH_AudioSuiteNodeBuilder_SetRequestDataCallback()接口设置回调函数。
 
-   <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   <!-- @audioSuite_AudioDataInfo -->
    
    ``` C
    struct AudioDataInfo {
@@ -270,7 +270,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
    };
    ```
-   <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_InputNodeWriteDataCallBack -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -299,7 +299,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    }
    ```
 
-   <!-- @[audioSuite_IsSupportedSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_IsSupportedSeparationNode -->
    
    ``` C++
    // 判断是否支持音源分离节点。
@@ -313,7 +313,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    }
    ```
 
-   <!-- @[audioSuite_CreateSeparationNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateSeparationNode -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -372,7 +372,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    包含音源分离节点的管线使用OH_AudioSuiteEngine_MultiRenderFrame()接口渲染并获取两路PCM音频数据。
 
-   <!-- @[audioSuite_StartSeparationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_StartSeparationPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -420,7 +420,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 4. 资源销毁。
    
-   <!-- @[audioSuite_DestroySeparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_DestroySeparation -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -442,13 +442,13 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 **图3**：级联编辑示意图
 
-![multi_in_single_out](figures/audiosuite-mix-edit.png)
+multi_in_single_out
 
 示例代码如下：
 
 1. 创建引擎和管线。
  
-   <!-- @[audioSuite_CreateMixingEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateMixingEngineAndPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -466,7 +466,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    由于混音功能有多个输入节点，需单独设置回调函数`InputNodeWriteDataCallBack`中的`userData`参数来区分多个输入节点，从而实现多个PCM音频数据的输入。`InputNodeWriteDataCallBack`函数类型为OH_InputNode_RequestDataCallback()。
 
-   <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   <!-- @audioSuite_AudioDataInfo -->
    
    ``` C
    struct AudioDataInfo {
@@ -476,7 +476,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
    };
    ```
-   <!-- @[audioSuite_InputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_InputNodeWriteDataCallBack -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -504,7 +504,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @[audioSuite_CreateMixingNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_CreateMixingNode -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -577,7 +577,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    开发者调用OH_AudioSuiteEngine_RenderFrame()接口渲染并获取PCM音频数据。
    
-   <!-- @[audioSuite_StartMixingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_StartMixingPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -611,7 +611,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 4. 资源销毁。
    
-   <!-- @[audioSuite_DestroyMixing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/manual_rendering.cpp) -->
+   <!-- @audioSuite_DestroyMixing -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -632,5 +632,5 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 <!--RP1-->
 ## 完整示例代码
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- 音频编创示例代码
 <!--RP1End-->

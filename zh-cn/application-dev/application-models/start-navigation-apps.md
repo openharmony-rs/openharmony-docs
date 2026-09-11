@@ -132,7 +132,7 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
     ```
     效果示例图：
 
-    ![效果示例图](./figures/start-navigation-panel.png)
+    效果示例图
 
 ## 目标方开发步骤
 

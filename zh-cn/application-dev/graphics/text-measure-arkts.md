@@ -45,7 +45,7 @@
 
 1. 导入依赖的相关模块。
 
-   <!-- @[ts_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_include -->
    
    ``` TypeScript
    import { text, drawing } from '@kit.ArkGraphics2D';
@@ -53,7 +53,7 @@
 
 2. 创建段落样式，并构造段落生成器ParagraphBuilder实例。
 
-   <!-- @[ts_text_metrics_create_paragraphBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_create_paragraphBuilder -->
    
    ``` TypeScript
    // 设置文本样式
@@ -77,7 +77,7 @@
 
 3. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
-   <!-- @[ts_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_create_paragraph -->
    
    ``` TypeScript
    // 在段落生成器中设置文本样式
@@ -90,7 +90,7 @@
 
 4. 调用测量相关接口，获取指定的测量信息。
 
-   <!-- @[ts_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_get_all_case -->
    
    ``` TypeScript
    // 对段落进行塑形排版，设置排版宽度为1000
@@ -133,7 +133,7 @@
 
    使用layoutWithConstraints()接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
 
-   <!-- @[ts_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_layout_with_constraints -->
 
    ``` TypeScript
    // case6: 在限定宽高区域内排版文本，获取排版结果
@@ -153,7 +153,7 @@
 
    使用getCharacterPositionAtCoordinate()获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
 
-   <!-- @[ts_text_metrics_get_character_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_get_character_position -->
 
    ``` TypeScript
    // case8: 根据坐标获取字符位置（指定编码类型）
@@ -167,7 +167,7 @@
 
    使用getCharacterRangeForGlyphRange()根据字形范围获取对应的字符范围，使用getGlyphRangeForCharacterRange()根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
 
-   <!-- @[ts_text_metrics_glyph_character_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @ts_text_metrics_glyph_character_range -->
 
    ``` TypeScript
    // case9: 根据字形范围获取字符范围

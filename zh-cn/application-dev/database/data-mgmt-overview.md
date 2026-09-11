@@ -27,7 +27,7 @@ ArkData （方舟数据管理）为开发者提供数据存储、数据管理和
 
   **图1** 数据管理架构图  
 
-![dataManagement](figures/dataManagement.jpg)
+dataManagement
 
 
 - 用户首选项（Preferences）：提供了轻量级配置数据的持久化能力，并支持订阅数据变化的通知能力。不支持分布式同步，常用于保存应用配置信息、用户偏好设置等。

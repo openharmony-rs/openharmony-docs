@@ -27,7 +27,7 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 每次调用startAbility()方法时，如果应用进程中该类型的UIAbility实例已经存在，则复用系统中的UIAbility实例。系统中只存在唯一一个该UIAbility实例，即在最近任务列表中只存在一个该类型的UIAbility实例。
 
 **图1** 单实例模式演示效果  
-![uiability-launch-type1](figures/uiability-launch-type1.gif)  
+uiability-launch-type1  
 
 > **说明**：
 >
@@ -35,7 +35,7 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 
 如果需要使用singleton启动模式，在module.json5配置文件中的`launchType`字段配置为`singleton`即可。
 
-<!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
+<!-- @singleton -->
 
 ``` JSON5
 {
@@ -58,11 +58,11 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 multiton启动模式为多实例模式，每次调用startAbility()方法时，都会在应用进程中创建一个新的该类型UIAbility实例。即在最近任务列表中可以看到有多个该类型的UIAbility实例。这种情况下可以将UIAbility配置为multiton（多实例模式）。
 
 **图2** 多实例模式演示效果  
-![uiability-launch-type2](figures/uiability-launch-type2.gif)  
+uiability-launch-type2  
 
 multiton启动模式的开发使用，在module.json5配置文件中的`launchType`字段配置为`multiton`即可。
 
-<!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
+<!-- @multiton -->
 
 ``` JSON5
 {
@@ -85,7 +85,7 @@ multiton启动模式的开发使用，在module.json5配置文件中的`launchTy
 specified启动模式为指定实例模式，针对一些特殊场景使用（例如文档应用中每次新建文档希望都能新建一个文档实例，重复打开一个已保存的文档希望打开的都是同一个文档实例）。
 
 **图3** 指定实例启动模式原理  
-![uiability-launch-type3-principle](figures/uiability-launch-type3-principle.png)  
+uiability-launch-type3-principle  
 
 假设应用有两个UIAbility实例，即EntryAbility和SpecifiedAbility。EntryAbility以specified模式启动SpecifiedAbility。基本原理如下：
 
@@ -96,11 +96,11 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
       * 如果无法匹配对应的UIAbility，则会创建一个新的UIAbility实例，并进入该UIAbility实例的onCreate()生命周期回调和onWindowStageCreate()生命周期回调。
 
 **图4** 指定实例模式演示效果   
-![uiability-launch-type3](figures/uiability-launch-type3.gif)  
+uiability-launch-type3  
 
 1. 在SpecifiedAbility中，需要将module.json5配置文件的`launchType`字段配置为`specified`。
    
-    <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
+    <!-- @specified -->
     
     ``` JSON5
     {
@@ -119,7 +119,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 
 2. 在EntryAbility中，调用startAbility()方法时，可以在want参数中传入了自定义参数`instanceKey`作为唯一标识符，以此来区分不同的UIAbility实例。示例中`instanceKey`的value值设置为字符串'KEY'。
 
-    <!-- @[Page_StartModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/pages/SpecifiedPage.ets) -->  
+    <!-- @Page_StartModel -->  
     
     ``` TypeScript
     // 在启动指定实例模式的UIAbility时，给每一个UIAbility实例配置一个独立的Key标识
@@ -201,7 +201,7 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
    
 3. 开发者根据业务在SpecifiedAbility所对应AbilityStage的onAcceptWant()生命周期回调设置该UIAbility的标识。示例中标识设置为`SpecifiedAbilityInstance_KEY`。
 
-    <!-- @[MyAbilityStage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/abilitystage/MyAbilityStage.ets) -->
+    <!-- @MyAbilityStage -->
 
     ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
@@ -240,6 +240,6 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 
 针对UIAbility组件启动模式，有以下相关实例可供参考：
 
-- [Ability的启动模式（ArkTS）(API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode)
+- Ability的启动模式（ArkTS）(API9)
 <!--RP1-->
 <!--RP1End-->

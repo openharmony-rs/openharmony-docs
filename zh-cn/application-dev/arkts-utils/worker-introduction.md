@@ -13,7 +13,7 @@ Worker的主要作用是为应用程序提供一个多线程的运行环境，�
 
 **图1** Worker运作机制示意图
 
-![Worker](figures/worker.png)
+Worker
 
 创建Worker的线程称为宿主线程（不局限于主线程，Worker线程也支持创建Worker子线程）。Worker子线程（或Actor线程、工作线程）是Worker自身运行的线程。每个Worker子线程和宿主线程拥有独立的实例，包含独立执行环境、对象、代码段等。因此，启动每个Worker存在一定的内存开销，需要限制Worker子线程的数量。Worker子线程和宿主线程通过消息传递机制通信，利用序列化、引用传递或转移所有权的机制完成命令和数据的交互。
 
@@ -24,7 +24,7 @@ Worker线程文件需要放在"{moduleName}/src/main/ets/"目录层级之下，�
 - 手动创建：开发者手动创建相关目录及文件，通常是在ets目录下创建一个workers文件夹，用于存放worker.ets文件，需要配置build-profile.json5的相关字段信息，确保Worker线程文件被打包到应用中。
 
   Stage模型：
-  <!-- @[manual_create_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/build-profile.json5) -->
+  <!-- @manual_create_worker -->
   
   ``` JSON5
   "buildOption": {
@@ -37,7 +37,7 @@ Worker线程文件需要放在"{moduleName}/src/main/ets/"目录层级之下，�
   ```
 
   FA模型：
-  <!-- @[manual_create_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/build-profile.json5) -->
+  <!-- @manual_create_worker -->
   
   ``` JSON5
   "buildOption": {
@@ -56,7 +56,7 @@ Worker线程文件需要放在"{moduleName}/src/main/ets/"目录层级之下，�
 
   使用Worker模块的具体功能时，需先构造Worker实例对象。构造函数与API版本相关，且需传入Worker线程文件的路径（scriptURL）。
 
-<!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/CreateWorker.ets) -->
+<!-- @import_worker -->
 
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
@@ -72,7 +72,7 @@ const worker1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/
 
 路径规则：{moduleName}/ets/{relativePath}。
 
-<!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/StageRulesThreadFile.ets) -->
+<!-- @import_worker -->
 
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
@@ -86,7 +86,7 @@ const workerInstance2: worker.ThreadWorker = new worker.ThreadWorker('testworker
 
 路径规则：@{moduleName}/ets/{relativePath}。
 
-<!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/StageRulesHar.ets) -->
+<!-- @import_worker -->
 
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
@@ -99,7 +99,7 @@ const workerInstance3: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/w
 
 路径规则：../../{relativePath}。
 
-<!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/components/mainpage/MainPage.ets) -->
+<!-- @import_worker -->
 
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
@@ -121,7 +121,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 >
 >* Worker线程文件的路径后缀（.ets/.ts）可以省略。
 >
->* 跨HSP/HAR包的场景下，需在创建Worker的模块包对应的oh-package.json5文件中，配置所需HSP/HAR包的依赖项，详见[引用共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
+>* 跨HSP/HAR包的场景下，需在创建Worker的模块包对应的oh-package.json5文件中，配置所需HSP/HAR包的依赖项，详见引用共享包。
 >
 >* 当feature模块需加载其他模块的Worker线程文件时，应先完成对feature模块的调用。
 >
@@ -143,7 +143,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 
 2. 在HAR中创建Worker线程文件相关内容。
 
-   <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
+   <!-- @create_har_worker -->
    
    ``` TypeScript
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
@@ -158,7 +158,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 
 3. 在entry模块的oh-package.json5文件中配置HAR包的依赖。
 
-   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) --> 
+   <!-- @config_har_dependency --> 
    
    ``` JSON5
    {
@@ -177,7 +177,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 
 4. 在entry模块中加载HAR包中的Worker线程文件。注意：使用DevEco Studio支持一键生成Worker的文件默认是Worker.ets，而当前示例中创建的Worker文件为worker.ets。
 
-   <!-- @[load_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/crosshar.ets) -->
+   <!-- @load_har_worker -->
    
    ``` TypeScript
    import { worker } from '@kit.ArkTS';
@@ -218,7 +218,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 
   构造函数中的scriptURL为：Worker线程文件与"{moduleName}/src/main/ets/MainAbility"的相对路径。
 
-<!-- @[import_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/MainAbility/StageRulesFa.ets) -->
+<!-- @import_worker -->
 
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
@@ -259,7 +259,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
    支持手动创建Worker文件，具体方式和注意事项请参阅创建Worker的注意事项。
 
 2. 导入Worker模块。
-    <!-- @[create_manager_index_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/Index.ets) -->
+    <!-- @create_manager_index_import -->
     
     ``` TypeScript
     // Index.ets
@@ -267,7 +267,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
     ```
 
 3. 在宿主线程中，通过调用ThreadWorker的constructor()方法创建Worker对象，并注册回调函数。
-      <!-- @[create_manager_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/Index.ets) -->
+      <!-- @create_manager_index -->
       
       ``` TypeScript
       // Index.ets
@@ -324,7 +324,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
       ```
 
 4. 在Worker文件中注册回调函数。
-      <!-- @[register_callback_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/worker.ets) -->
+      <!-- @register_callback_function -->
       
       ``` TypeScript
       // worker.ets
@@ -357,7 +357,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 
 
 ### 推荐使用示例
-<!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/recommend.ets) -->
+<!-- @recommended_example -->
 
 ``` TypeScript
 // 在宿主线程中创建Worker线程（父Worker），在Worker线程中再次创建Worker线程（子Worker）
@@ -384,7 +384,7 @@ parentWorker.onAllErrors = (err: ErrorEvent) => {
 // 向父Worker发送启动消息，用于触发其onmessage中的处理逻辑
 parentWorker.postMessage('宿主线程发送消息给父Worker-推荐示例');
 ```
-<!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/ParentWorker.ets) -->
+<!-- @recommended_example -->
 
 ``` TypeScript
 // ParentWorker.ets
@@ -424,7 +424,7 @@ workerPort.onmessage = (e : MessageEvents) => {
 }
 ```
 
-<!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/ChildWorker.ets) -->
+<!-- @recommended_example -->
 
 ``` TypeScript
 // ChildWorker.ets
@@ -448,7 +448,7 @@ workerPort.onmessage = (e: MessageEvents) => {
 反例1：不建议在父Worker销毁后，子Worker继续向父Worker发送消息。因为父Worker已被销毁，消息无法被正确处理。
 
 
-<!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/notrecommendedone.ets) -->
+<!-- @not_recommended_example -->
 
 ``` TypeScript
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
@@ -476,7 +476,7 @@ parentWorker.postMessage('宿主线程发送消息给父Worker');
 ```
 
 
-<!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/testworkers/src/main/ets/workers/ParentWorker.ets) -->
+<!-- @not_recommended_example -->
 
 ``` TypeScript
 // ParentWorker.ets
@@ -515,7 +515,7 @@ workerPort.onmessage = (e : MessageEvents) => {
   workerPort.close();
 }
 ```
-<!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/testworkers/src/main/ets/workers/ChildWorker.ets) -->
+<!-- @not_recommended_example -->
 
 ``` TypeScript
 // ChildWorker.ets
@@ -538,7 +538,7 @@ workerPort.onmessage = (e: MessageEvents) => {
 ```
 
 反例2：不建议在父Worker发起销毁操作的执行阶段创建子Worker。在创建子Worker线程之前，需确保父Worker线程始终处于存活状态，建议在确定父Worker未发起销毁操作的情况下创建子Worker。
-<!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/notrecommendedtwo.ets) -->
+<!-- @not_recommended_example -->
 
 ``` TypeScript
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
@@ -565,7 +565,7 @@ parentWorker.onAllErrors = (err: ErrorEvent) => {
 parentWorker.postMessage('宿主线程发送消息给父Worker');
 ```
 
-<!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ParentWorker.ets) -->
+<!-- @not_recommended_example_two -->
 
 ``` TypeScript
 // ParentWorker.ets
@@ -607,7 +607,7 @@ workerPort.onmessage = (e : MessageEvents) => {
 }
 ```
 
-<!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets) --> 
+<!-- @not_recommended_example_two --> 
 
 ``` TypeScript
 // ChildWorker.ets

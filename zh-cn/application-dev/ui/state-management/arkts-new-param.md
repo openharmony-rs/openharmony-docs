@@ -37,7 +37,7 @@
 ## 状态管理V1版本接受外部传入的装饰器的局限性
 状态管理V1存在多种可接受外部传入的装饰器，常用的有\@State、\@Prop、\@Link、\@ObjectLink。这些装饰器使用有限制且不易区分，不当使用会导致性能问题。
 
-<!-- @[Param_Decorator_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamDecoratorLimitations.ets) -->  
+<!-- @Param_Decorator_Limitations -->  
 
 ``` TypeScript
 @Observed
@@ -108,7 +108,7 @@ struct Child {
 }
 ```
 
-![param-sync-0](figures/param-sync-0.gif)
+param-sync-0
 
 在上面的示例中，\@State仅能在初始化时接收info的引用，改变info之后无法同步。\@Prop虽然能够进行单向同步，但是对于较复杂的类型来说，深拷贝性能较差。\@Link能够接受传入的引用进行双向同步，但它必须要求数据源也是状态变量，因此无法接受info中的成员属性region。\@ObjectLink能够接受类成员属性，但是要求该属性类型必须为\@Observed装饰的类。装饰器的不同限制使得父子组件之间的传值规则复杂、不易使用。因此推出\@Param装饰器，表示组件从外部传入的状态。
 
@@ -135,7 +135,7 @@ struct Child {
 使用\@Param装饰的变量具有被观测变化的能力。当装饰的变量发生变化时，会触发该变量绑定的UI组件刷新。
 
 - 当装饰的变量类型为boolean、string、number类型时，可观察数据源同步变化。
-  <!-- @[Param_Observe_Change_Variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeVariable.ets) --> 
+  <!-- @Param_Observe_Change_Variable --> 
   
   ``` TypeScript
   @Entry
@@ -199,10 +199,10 @@ struct Child {
   }
   ```
 
-  ![param-sync-1](figures/param-sync-1.gif)
+  param-sync-1
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖\@ObservedV2和\@Trace装饰器，也可以使用makeObserved将该对象变为可观察对象。
-  <!-- @[Param_Observe_Change_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeClass.ets) --> 
+  <!-- @Param_Observe_Change_Class --> 
   
   ``` TypeScript
   class RawObject {
@@ -281,10 +281,10 @@ struct Child {
   }
   ```
 
-  ![param-sync-2](figures/param-sync-2.gif)
+  param-sync-2
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
-  <!-- @[Param_Observe_Change_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeArray.ets) -->  
+  <!-- @Param_Observe_Change_Array -->  
   
   ``` TypeScript
   @Entry
@@ -365,10 +365,10 @@ struct Child {
   }
   ```
 
-  ![param-sync-3](figures/param-sync-3.gif)
+  param-sync-3
 
 - 当装饰的变量是嵌套类或对象数组时，\@Param无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
-  <!-- @[Param_Observe_Change_Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets) --> 
+  <!-- @Param_Observe_Change_Nested_Class --> 
   
   ``` TypeScript
   @ObservedV2
@@ -482,7 +482,7 @@ struct Child {
   }
   ```
 
-  ![param-sync-4](figures/param-sync-4.gif)
+  param-sync-4
 
 - 装饰的变量为内置类型时，可观察变量整体赋值和API调用的变化。
 
@@ -597,7 +597,7 @@ struct Child {
 
 \@Param能够接受父组件\@Local或\@Param传递的数据并与之变化同步。
 
-<!-- @[Param_Use_Scene_Parent_To_Child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneParentToChild.ets) --> 
+<!-- @Param_Use_Scene_Parent_To_Child --> 
 
 ``` TypeScript
 @ObservedV2
@@ -685,12 +685,12 @@ struct SubComponent {
 }
 ```
 
-![param-sync-5](figures/param-sync-5.gif)
+param-sync-5
 
 ### 装饰Array类型变量
 \@Param装饰Array类型变量，可以观察到数据源对Array整体的赋值，以及调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`带来的变化。
 
-<!-- @[Param_Use_Scene_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneArray.ets) --> 
+<!-- @Param_Use_Scene_Array --> 
 
 ``` TypeScript
 @ComponentV2
@@ -757,13 +757,13 @@ struct Index {
 }
 ```
 
-![param-sync-6](figures/param-sync-6.gif)
+param-sync-6
 
 ### 装饰Date类型变量
 
 \@Param装饰Date类型变量，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-<!-- @[Param_Use_Scene_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneDate.ets) --> 
+<!-- @Param_Use_Scene_Date --> 
 
 ``` TypeScript
 @ComponentV2
@@ -826,13 +826,13 @@ struct Index {
 }
 ```
 
-![param-sync-7](figures/param-sync-7.gif)
+param-sync-7
 
 ### 装饰Map类型变量
 
 \@Param装饰Map类型变量，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-<!-- @[Param_Use_Scene_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneMap.ets) --> 
+<!-- @Param_Use_Scene_Map --> 
 
 ``` TypeScript
 @ComponentV2
@@ -909,13 +909,13 @@ struct Index {
 }
 ```
 
-![param-sync-8](figures/param-sync-8.gif)
+param-sync-8
 
 ### 装饰Set类型变量
 
 \@Param装饰Set类型变量，可以观察到数据源对Set整体的赋值，以及调用Set的接口`add`, `clear`, `delete`带来的变化。
 
-<!-- @[Param_Use_Scene_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneSet.ets) --> 
+<!-- @Param_Use_Scene_Set --> 
 
 ``` TypeScript
 @ComponentV2
@@ -982,13 +982,13 @@ struct Index {
 }
 ```
 
-![param-sync-9](figures/param-sync-9.gif)
+param-sync-9
 
 ### 联合类型
 
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | undefined，点击改变count的类型时，UI会自动刷新。
 
-<!-- @[Param_Use_Scene_Unite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamUseSceneUnite.ets) --> 
+<!-- @Param_Use_Scene_Unite --> 
 
 ``` TypeScript
 @Entry
@@ -1026,4 +1026,4 @@ struct MyComponent {
 }
 ```
 
-![param-sync-10](figures/param-sync-10.gif)
+param-sync-10

@@ -61,7 +61,7 @@
 > 
 > 下图中的BACKGROUND权限是指`ohos.permission.START_ABILITIES_FROM_BACKGROUND`，CALL权限是指`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`。
 
-![startup-rule](figures/component-startup-inner-stage.png)
+startup-rule
 
 
 ## 分布式跨设备组件启动规则
@@ -78,4 +78,4 @@
 > 
 > 下图中的BACKGROUND权限是指`ohos.permission.START_ABILITIES_FROM_BACKGROUND`，DATASYNC权限是指`ohos.permission.DISTRIBUTED_DATASYNC`。
 
-![component-startup-rules](figures/component-startup-inter-stage.png)
+component-startup-rules

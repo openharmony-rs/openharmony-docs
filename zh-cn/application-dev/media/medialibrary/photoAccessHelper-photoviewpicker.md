@@ -12,7 +12,7 @@
 > Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用AudioViewPicker（音频选择器对象）。
 
 1. 导入选择器模块和文件管理模块。
-   <!-- @[PickerMediaLibrary_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->  
+   <!-- @PickerMediaLibrary_import -->  
    
    ``` TypeScript
    import { fileIo } from '@kit.CoreFileKit';
@@ -21,7 +21,7 @@
 
 2. 创建图片-视频类型文件选择选项实例。
 
-   <!-- @[PickerMediaLibrary_createOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @PickerMediaLibrary_createOptions -->
    
    ``` TypeScript
    const photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -31,7 +31,7 @@
 
    以下示例以图片选择为例，媒体文件类型请参见PhotoViewMIMETypes。
 
-   <!-- @[PickerMediaLibrary_configOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @PickerMediaLibrary_configOptions -->
    
    ``` TypeScript
    photoSelectOptions.maxSelectNumber = 5;
@@ -41,7 +41,7 @@
 
 4. 创建图库选择器实例，调用PhotoViewPicker.select接口拉起图库界面进行文件选择。文件选择成功后，返回PhotoSelectResult结果集。
 
-   <!-- @[PickerMediaLibrary_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @PickerMediaLibrary_select -->  
    
    ``` TypeScript
    const result = await photoViewPicker.select(photoSelectOptions);
@@ -72,7 +72,7 @@
 
 1. 待界面从图库返回后，再通过一个类似按钮的组件去调用其他函数，使用fileIo.openSync接口，通过媒体文件uri打开这个文件得到fd。这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
 
-   <!-- @[PickerMediaLibrary_openFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+   <!-- @PickerMediaLibrary_openFile -->
    
    ``` TypeScript
    try {
@@ -87,7 +87,7 @@
 
 2. 通过fd使用fileIo.readSync接口读取这个文件内的数据，读取完成后关闭fd。
 
-   <!-- @[PickerMediaLibrary_readFileData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+   <!-- @PickerMediaLibrary_readFileData -->
    
    ``` TypeScript
    try {
@@ -107,7 +107,7 @@
 
 1. 定义媒体资源处理器MediaAssetDataHandler，系统在资源准备就绪时向应用回调onDataPrepared。
 
-   <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) --> 
+   <!-- @PickerMediaLibrary_handler --> 
    
    ``` TypeScript
    export class MediaAssetDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
@@ -137,7 +137,7 @@
    > **注意：**
    > 出于对用户隐私安全的保护，对媒体资源EXIF中的地理位置和拍摄参数信息做了去隐私化处理。如果需要获取被去隐私化的EXIF信息，需要申请相册管理模块权限'ohos.permission.MEDIA_LOCATION'。
 
-   <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) --> 
+   <!-- @PickerMediaLibrary_getMediaResource --> 
    
    ``` TypeScript
    static async getMediaResourceByUri(uri: string, context: common.Context, callback?: MediaDataHandlerCallback)

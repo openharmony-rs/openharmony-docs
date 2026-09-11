@@ -300,7 +300,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 ## 如何实现横竖屏切换
 
-需要先获取到主窗实例，然后调用setPreferredOrientation()接口设置窗口方向。更多详细信息请参考[窗口旋转](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/window-rotation)。
+需要先获取到主窗实例，然后调用setPreferredOrientation()接口设置窗口方向。更多详细信息请参考窗口旋转。
 
 示例代码如下所示：
 
@@ -338,7 +338,7 @@ struct OrientationTestView {
 
 更多内容请参考：
 
-- [最佳实践：横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)
+- 最佳实践：横竖屏切换
 
 - Orientation
 
@@ -643,7 +643,7 @@ struct Index {
 
 ## resize、moveWindowTo等接口有什么位置/大小限制
 
-当调用resize()接口调整窗口大小时，窗口尺寸大小范围会受到WindowLimits限制，具体尺寸限制范围可以通过[getWindowLimits](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/arkts-apis-window-window#getwindowlimits11)接口进行查询。
+当调用resize()接口调整窗口大小时，窗口尺寸大小范围会受到WindowLimits限制，具体尺寸限制范围可以通过getWindowLimits接口进行查询。
 
 调用moveWindowTo()接口调整窗口位置对窗口位置无限制。
 

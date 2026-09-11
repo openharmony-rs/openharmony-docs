@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -30,7 +30,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
   ```
 
 - 应用侧代码。
-  <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
+  <!-- @build_response_resources_to_implement_custom_page_response_scenarios -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -77,7 +77,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
 - 被拦截后的页面
 
-  ![输入图片说明](figures/web-resource-interception-request-1.PNG)
+  输入图片说明
 
 为自定义的JavaScript请求响应生成CodeCache：自定义请求响应的资源类型如果是JavaScript脚本，可以在响应头中添加“ResponseDataID”字段，Web内核读取到该字段后会为该JS资源生成CodeCache，加速JS执行，并且ResponseData如果有更新时必须更新该字段。不添加“ResponseDataID”字段的情况下默认不生成CodeCache。
 
@@ -111,7 +111,7 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
   ```
 
 - 应用侧代码。
-  <!-- @[build_response_resource_enable_gen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets) -->
+  <!-- @build_response_resource_enable_gen -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -174,4 +174,4 @@ Web网页上发起资源加载请求，应用层收到资源请求信息。应�
 
 - 被拦截后的页面
 
-  ![输入图片说明](figures/web-resource-interception-request-2.PNG)
+  输入图片说明

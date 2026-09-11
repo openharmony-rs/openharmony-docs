@@ -30,7 +30,7 @@
 
    以下示例代码仅展示创建AVMusicTemplate对象的接口调用，应用在真正使用时，需要参考接口@ohos.backgroundTaskManager (后台任务管理)确保AVMusicTemplate对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
 
-   <!-- @[ability_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @ability_create_template -->
    
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -66,7 +66,7 @@
    }
    ```
    
-   <!-- @[manager_create_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @manager_create_template -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -119,7 +119,7 @@
    - onQueryMainTabs：注册查询主标签事件监听。提供主界面展示的TAB数据集合，并规定“我的主页”的tabId为"minePage"。
    - onQueryMediaTabContent：注册查询媒体标签内容事件监听。根据tabId提供页面展示内容数据。
    
-   <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @template_register_listener -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -234,7 +234,7 @@
 
    例如，扫码登录成功的场景。当用户在音频模板界面扫码登录时，由于登录状态只有媒体应用能感知，所以需要调用接口setUserInfo给音频模板同步数据。
    
-   <!-- @[set_user_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @set_user_info -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -276,7 +276,7 @@
    
 4. 媒体应用启动时注册的事件监听需要在应用退出时注销，以释放资源。注销接口详情请查看AVMusicTemplate。
 
-   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->
+   <!-- @unregister_listener -->
    
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';

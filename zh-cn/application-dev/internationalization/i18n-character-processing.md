@@ -16,7 +16,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -26,7 +26,7 @@
 
 - 字符属性：字符属性用于判断字符类别，如判断字符是否为数字、字母、空格，是否为从右到左语言的字符，是否为表意文字（主要是中文日文韩文）等。使用Unicode类的isDigit等接口可以实现该功能。示例代码如下：
 
-  <!-- @[identify_character_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
+  <!-- @identify_character_type -->
   
   ``` TypeScript
   // 判断字符是否是数字
@@ -48,7 +48,7 @@
   >
   > 本模块支持中文汉字转拼音，但当中文文本中包含多音字时，可能出现部分多音字无法按照正确的发音转换为拼音的问题。
 
-  <!-- @[get_transliteration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
+  <!-- @get_transliteration -->
   
   ``` TypeScript
   // 音译成Latn格式
@@ -67,9 +67,9 @@
   let ids = i18n.Transliterator.getAvailableIDs(); // ids = ['ASCII-Latin', 'Accents-Any', ...]
   ```
 
-- 文本标准化：是指按指定的范式标准化文本。文本标准化的范式包括NFC、NFD、NFKC和NFKD，范式的详细介绍请参考[国际标准](https://www.unicode.org/reports/tr15/#Norm_Forms)。使用Normalizer类的normalize接口可以实现文本标准化。示例代码如下：
+- 文本标准化：是指按指定的范式标准化文本。文本标准化的范式包括NFC、NFD、NFKC和NFKD，范式的详细介绍请参考国际标准。使用Normalizer类的normalize接口可以实现文本标准化。示例代码如下：
 
-  <!-- @[character_normalization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
+  <!-- @character_normalization -->
   
   ``` TypeScript
   // 按照NFC范式对文本进行标准化处理
@@ -79,7 +79,7 @@
 
 - 获取文本的可换行点：使用BreakIterator类的接口可以根据设定的区域获取文本的可换行点。示例代码如下：
 
-  <!-- @[set_text_line_break_settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
+  <!-- @set_text_line_break_settings -->
   
   ``` TypeScript
   // 创建获取文本可换行点的对象，该对象将按照指定区域的规则计算文本中的可换行点的位置
@@ -107,7 +107,7 @@
 
 - 文件路径镜像处理：是指传入镜像语言时，对文件路径字符串进行本地化处理，实现镜像语言下文件路径的镜像显示效果。使用I18NUtil类的getUnicodeWrappedFilePath接口可以实现文件路径镜像处理。示例代码如下：
 
-  <!-- @[get_unicode_wrapped_file_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CharacterProcessing.ets) -->
+  <!-- @get_unicode_wrapped_file_path -->
   
   ``` TypeScript
   let mirrorPath = '';

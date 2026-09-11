@@ -52,7 +52,7 @@
 ### 单窗口截图
 可通过调用snapshot()/snapshotSync()接口对当前窗口进行截图。  
 
-  <!--@[Snapshot_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+  <!--@Snapshot_start -->
   
   ``` TypeScript
   import { display, screenshot, window } from '@kit.ArkUI';
@@ -218,7 +218,7 @@
 ### 多窗口截图
 可通过调用getMainWindowSnapshot()接口，针对一个或多个主窗（通过windowId指定）进行截图。  
 
-  <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+  <!--@SnapshotMore_start -->
   
   ``` TypeScript
   import { display, screenshot, window } from '@kit.ArkUI';
@@ -364,7 +364,7 @@
 
   - 当不需要再对屏幕截图进行监听时，可通过对应off接口（off('screenshot')/off('screenshotAppEvent')）关闭监听。
 
-<!--@[SnapshotScreen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+<!--@SnapshotScreen_start -->
 
 ``` TypeScript
 import { display, screenshot, window } from '@kit.ArkUI';

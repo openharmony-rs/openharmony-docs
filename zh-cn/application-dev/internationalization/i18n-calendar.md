@@ -17,7 +17,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CalendarSetting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -26,7 +26,7 @@
 2. 使用场景。
 - 公历相关用法。
 
-   <!-- @[check_and_set_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CalendarSetting.ets) -->
+   <!-- @check_and_set_date -->
    
    ``` TypeScript
    let calendar: i18n.Calendar = i18n.getCalendar('zh-Hans', 'gregory');
@@ -75,7 +75,7 @@
 
 - 获取公历日期对应的农历日期。
 
-   <!-- @[get_lunar_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/CalendarSetting.ets) -->
+   <!-- @get_lunar_date -->
    
    ``` TypeScript
    let calendarChinese: i18n.Calendar = i18n.getCalendar('zh-Hans', 'chinese');

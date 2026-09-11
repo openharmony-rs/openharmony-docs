@@ -18,7 +18,7 @@ ArkTS模块化运行根据ECMAScript模块规范实现，以后序遍历的方�
 
 以下图为例，每个父节点加载对应子节点，并按import顺序执行同级。模块图文件执行顺序为：D-&gt;F-&gt;G-&gt;E-&gt;B-&gt;I-&gt;H-&gt;C-&gt;A。
 
-![zh-cn_image_0000002043487154](figures/zh-cn_image_0000002043487154.png)
+zh-cn_image_0000002043487154
 
 A文件称为入口文件，即执行起点。一些内置的加载接口，如windowStage.loadContent和路由跳转等页面拉起接口（即不是通过import写法拉起的文件），入参文件都会作为入口文件执行。
 
@@ -71,7 +71,7 @@ JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，�
 
 JSON文件只能使用default方式导入，如下所示：
 
-<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/Index.ets) -->
+<!-- @import_json -->
 
 ``` TypeScript
 import data from './ImportJson.json';
@@ -87,14 +87,14 @@ Native模块（so）的导入导出与加载ets/ts/js语法规格一致。详情
 
 示例：
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+<!-- @export_add -->  
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 
-<!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) --> 
+<!-- @name_import --> 
 
 ``` TypeScript
 // NameImport.ets

@@ -21,7 +21,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 * 验证设备的网络状态，包括是否已连接网络，设备自带的浏览器能否正常访问网页等（在线页面场景）。
 * 确保应用已添加网络权限：ohos.permission.INTERNET（在线页面必需）。
 
-    <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+    <!-- @INTERNET -->
 
     ``` JSON5
     "requestPermissions":[
@@ -40,7 +40,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | onlineImageAccess | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | javaScriptAccess | 设置是否允许执行JavaScript脚本。 | 
 
-    <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
+    <!-- @OpenPermissions -->
 
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -66,7 +66,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
 * 修改UserAgent后再观察页面是否恢复正常。
 
-    <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
+    <!-- @ChangeUserAgent -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -100,7 +100,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
 1. 查阅控制台的错误信息，定位具体的资源加载失败问题。资源加载失败会导致页面元素缺失，布局紊乱，图片和动画效果失效等，严重时可能导致渲染进程崩溃，页面呈现空白。如图所示，依次排查：<br>
   （1）元素是否完整，html元素、结构是否正确。<br> （2）控制台是否有报错。<br>（3）网络里面是否有资源加载时间特别长等。<br>
-   ![web-white-devtools](figures/web-white-devtools.PNG)
+   web-white-devtools
 
 2. 检查控制台，确认是否存在因MixedContent策略或CORS策略导致的异常，或JS错误等。可参考解决Web组件本地资源跨域问题。为了提高安全性，ArkWeb内核禁止file协议和resource协议访问跨域请求。因此，在使用Web组件加载本地离线资源的时候，Web组件会拦截file协议和resource协议的跨域访问。Web组件无法访问本地跨域资源时，DevTools控制台会显示报错信息：
     ```txt
@@ -225,7 +225,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循fileAccess规则，具体示例如下。
 
-    <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
+    <!-- @SetPath -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -399,7 +399,7 @@ Web组件提供了自适应页面布局的能力，详情见 Web组件大小自�
 
 下面说明一下Web组件网络加载过程中的关键日志，正常情况下一个Web组件的加载过程应该包含这些关键节点：
 
-![web-white-page-load](figures/web-white-page-load.PNG)
+web-white-page-load
 
 | 日志关键字   | 说明  |                       
 | ----   | -------------------------------- |

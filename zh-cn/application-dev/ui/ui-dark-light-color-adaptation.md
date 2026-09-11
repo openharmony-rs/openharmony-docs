@@ -24,7 +24,7 @@
 
      图1 resources目录结构示意
 
-     ![colorJsonDir](figures/colorJsonDir.png)
+     colorJsonDir
     
      例如，开发者可在这两个color.json中定义同名配色定义并赋予不同的色值。
     
@@ -83,7 +83,7 @@
 
     自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考BuilderNode系统环境变化更新updateConfiguration。
 
-    <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    <!-- @custom_node -->
     
     ``` TypeScript
     // 记录创建的自定义节点对象
@@ -115,7 +115,7 @@
 
     a. 在 AbilityStage的onCreate()生命周期中获取APP当前的颜色模式并保存到AppStorage。
 
-    <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @create_set_sys -->
     
     ``` TypeScript
     onCreate(): void {
@@ -126,7 +126,7 @@
 
     b. 在AbilityStage的onConfigurationUpdate()生命周期中获取最新更新的颜色模式并刷新到AppStorage。
 
-    <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @update_sys -->
     
     ``` TypeScript
     onConfigurationUpdate(newConfig: Configuration): void {
@@ -137,7 +137,7 @@
 
     c. 在Page中通过@StorageProp + @Watch方式获取当前最新颜色并监听设备深色模式变化。
 
-    <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    <!-- @prop_sys -->
     
     ``` TypeScript
     @StorageProp('currentColorMode') @Watch('onColorModeChange') currentMode: number =
@@ -146,7 +146,7 @@
 
     d. 在aboutToAppear初始化函数中根据当前最新颜色模式刷新状态变量。
 
-    <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    <!-- @color_mode_change_appear -->
     
     ``` TypeScript
     aboutToAppear(): void {
@@ -163,7 +163,7 @@
 
     e. 在 @Watch 回调函数中执行同样的适配逻辑。
 
-    <!-- @[color_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    <!-- @color_mode_change -->
     
     ``` TypeScript
     onColorModeChange(): void {
@@ -191,7 +191,7 @@
 > 
 > 应用未专门适配深色模式，直接跟随系统切换可能遇到深色模式下的显示异常，也可考虑使用该方法将本应用固定为浅色模式。
 
-<!-- @[create_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionApp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @create_app -->
 
 ``` TypeScript
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -215,11 +215,11 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
    - 如果应用工程dark目录下没有任何深色资源，则系统组件在深色模式下仍会保持浅色体验。
 
-     ![darkDir](figures/darkDir.png)
+     darkDir
 
 如果应用全部都是由系统组件/系统颜色开发，且想要跟随系统切换深浅色模式时，请参考以下示例修改代码来保证应用体验。
 
-<!-- @[create_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+<!-- @create_sys -->  
 
 ``` TypeScript
 onCreate(): void {

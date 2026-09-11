@@ -15,7 +15,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 ## 开发步骤
 
 1. 导入模块。
-    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_include_dlpPermission -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -29,7 +29,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     2.3 调用dlpPermission.queryOpenedEnterpriseDlpFiles查询已打开且符合指定选项的企业DLP文件的URI列表。
 
-    <!-- @[dlp_queryOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_queryOpenedEnterpriseDlpFiles -->
     
     ``` TypeScript
     queryOpenedEnterpriseDlpFiles() {
@@ -63,7 +63,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     3.3 调用dlpPermission.closeOpenedEnterpriseDlpFiles关闭当前打开的所有符合指定选项的企业DLP文件。
 
-    <!-- @[dlp_closeOpenedEnterpriseDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_closeOpenedEnterpriseDlpFiles -->
     
     ``` TypeScript
     closeOpenedEnterpriseDlpFiles() {
@@ -95,7 +95,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     4.3 connectServer提供给SA侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA。
 
-    <!-- @[dlp_DlpConnPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_DlpConnPlugin -->
     
     ``` TypeScript
     export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
@@ -116,7 +116,7 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
 
     5.3 registerPlugin将plugin注册到SA侧，待SA调用。
 
-    <!-- @[dlp_registerPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_registerPlugin -->
     
     ``` TypeScript
     registerPlugin() {
@@ -141,6 +141,6 @@ Data Protection Kit为应用提供了根据文件标签查询或关闭某一类D
  
     目前支持的事件类型包括DLP文件的创建、打开、修改（内容）、复制（内容）。具体开发步骤如下：
  
-    6.1 具体开发步骤可以参考[单客户端订阅场景](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicesecurity-audit-subscribe-arkts-suevent)。 
+    6.1 具体开发步骤可以参考单客户端订阅场景。 
 
     6.2. DLP文件事件的eventId为0x00F000006。

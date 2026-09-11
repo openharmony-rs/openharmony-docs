@@ -12,7 +12,7 @@
 
 1. 导入所需的模块。
 
-   <!-- @[taskpool_listen_sensor_data_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   <!-- @taskpool_listen_sensor_data_import -->
    
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
@@ -22,7 +22,7 @@
 
 2. 定义长时任务，内部监听sensor数据，并通过emitter注册销毁通知。
 
-   <!-- @[taskpool_listen_sensor_data_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   <!-- @taskpool_listen_sensor_data_concurrent -->
    
    ``` TypeScript
    @Concurrent
@@ -51,7 +51,7 @@
    - 注册：发起长时任务，并通过emitter接收监听数据。
    - 销毁：发送取消传感器监听的事件，并结束长时任务。
 
-   <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   <!-- @taskpool_listen_sensor_data -->
    
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';

@@ -75,7 +75,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 
 ### AES/CBC/PKCS7
-<!-- @[encrypt_and_decrypt_AESCBCPKCS7_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aescbcpkcs7.cpp) -->
+<!-- @encrypt_and_decrypt_AESCBCPKCS7_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -265,7 +265,7 @@ napi_value TestAesCbc(napi_env env, napi_callback_info info)
 
 ### AES/GCM/NoPadding
 准备加解密密钥材料：
-<!-- @[prepare_AESGCMNoPadding_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aesgcmnopadding.cpp) -->
+<!-- @prepare_AESGCMNoPadding_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -398,7 +398,7 @@ OH_Huks_Result HksAesGcmTestDecrypt(const struct OH_Huks_Blob *keyAlias,
 }
 ```
 执行加解密流程：
-<!-- @[encrypt_and_decrypt_AESGCMNoPadding_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aesgcmnopadding.cpp) -->
+<!-- @encrypt_and_decrypt_AESGCMNoPadding_cpp -->
 
 ``` C++
 napi_value TestAesGcm(napi_env env, napi_callback_info info)
@@ -741,7 +741,7 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
 ```
 
 ### RSA/ECB/PKCS1_V1_5
-<!-- @[encrypt_and_decrypt_RSAECBPKCS1_V1_5_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_rsaecbpkcs1_v1_5.cpp) -->
+<!-- @encrypt_and_decrypt_RSAECBPKCS1_V1_5_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -899,7 +899,7 @@ napi_value TestRsaEcbPkcs(napi_env env, napi_callback_info info)
 <!-- -->
 
 ### RSA/ECB/OAEP/SHA256
-<!-- @[encrypt_and_decrypt_RSAECBOAEPSHA256_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_rsaecboaepsha256.cpp) -->
+<!-- @encrypt_and_decrypt_RSAECBOAEPSHA256_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -1057,7 +1057,7 @@ napi_value TestRsaEcbOaep(napi_env env, napi_callback_info info)
 <!-- -->
 
 ### SM2
-<!-- @[encrypt_and_decrypt_SM2_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_sm2.cpp) -->
+<!-- @encrypt_and_decrypt_SM2_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -1210,7 +1210,7 @@ napi_value TestSm2(napi_env env, napi_callback_info info)
 
 <!--Del-->
 ### DES/CBC/NoPadding
-<!-- @[encrypt_and_decrypt_DESCBCNoPadding_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_descbcnopadding.cpp) -->
+<!-- @encrypt_and_decrypt_DESCBCNoPadding_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

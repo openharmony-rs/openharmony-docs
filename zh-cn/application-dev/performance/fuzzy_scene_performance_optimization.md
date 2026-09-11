@@ -16,7 +16,7 @@
 因此，随着应用的广泛普及，模糊动效的性能优化愈发显得至关重要。鉴于系统为开发者提供的静态模糊和动态模糊两种动效能力，本文将对比静态与动态模糊在“转场结合图片模糊”的应用场景下的性能差异，建议开发者在组件背景和内容无需实时更新的场景中，推荐使用静态模糊，可以减少应用卡顿与丢帧，提升用户体验。
 
 
-![fuzzy_scene_performance_optimization_effect](./figures/fuzzy_scene_performance_optimization_effect.png)
+fuzzy_scene_performance_optimization_effect
 
 ## 使用场景
 
@@ -76,7 +76,7 @@ struct Index {
 }
 ```
 
-![fuzzy_scene_performance_optimization_counter](./figures/fuzzy_scene_performance_optimization_motion.gif)
+fuzzy_scene_performance_optimization_counter
 
 下面是使用静态模糊对图片进行模糊处理的场景示例。主要步骤如下：
 
@@ -167,17 +167,17 @@ struct Index {
 }
 ```
 
-![fuzzy_scene_performance_optimization_static](./figures/fuzzy_scene_performance_optimization_static.gif)
+fuzzy_scene_performance_optimization_static
 
 ## 效果对比
 
 下面使用DevEco Studio内置的Profiler中的帧率分析工具Frame抓取点击按钮触发转场过程的trace来分析静态模糊和动态模糊场景下的性能差异。需要说明，由于场景示例通过点击按钮触发转场，所以可以通过User Events（用户输入事件）的Click标签定位到转场过程的起点为Click标签结束位置。转场过程的终点为连续的RenderFrame（执行GPU绘制）标签不再连续的位置。
 
-![fuzzy_scene_performance_optimization_motion_blur_trace](./figures/fuzzy_scene_performance_optimization_motion_blur_trace.png)
+fuzzy_scene_performance_optimization_motion_blur_trace
 
 如上图所示，通过RenderFrame（执行GPU绘制）标签可以看出，动态模糊转场平均渲染耗时为6.113ms。同时从Present Fence（图形上屏信号）标签可以看出动态模糊转场平均帧率为108.0fps。
 
-![fuzzy_scene_performance_optimization_static_blur_trace](./figures/fuzzy_scene_performance_optimization_static_blur_trace.png)
+fuzzy_scene_performance_optimization_static_blur_trace
 
 如上图所示，通过RenderFrame标签可以看出，静态模糊转场平均渲染耗时为3.357ms。同时从Present Fence标签可以看出静态模糊转场平均帧率为119.9fps。和动态模糊转场相比平均渲染耗时减少了约45%（性能耗时数据因应用场景、设备型号版本而异，以实测为准）。
 

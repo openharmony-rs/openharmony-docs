@@ -15,7 +15,7 @@
 - WebView拥有独立的渲染进程，即图中黄色部分的“Render Process”。
 
   **图1** 进程模型示意图  
-![process-model-fa](figures/process-model-fa.png)
+process-model-fa
 
 
 基于当前的进程模型，针对应用间存在多个进程的情况，系统提供了如下进程间通信机制：

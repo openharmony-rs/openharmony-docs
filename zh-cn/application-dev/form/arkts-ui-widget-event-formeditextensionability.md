@@ -13,7 +13,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 ## 半模态卡片编辑
 下面给出一个示例，介绍半模态卡片编辑的使用步骤。
 ### 实现原理
-![WidgetProject](figures/半模态编辑页操作流程.png)
+WidgetProject
 1. 长按卡片弹出菜单，此时桌面通过formConfigAbility字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。
 2. 点击“编辑”菜单项，桌面通过formConfigAbility中的字段拉起对应的页面，进入一级编辑页。一级编辑页的编辑区域有限，用于比较简单的编辑布局。
     - 预览区：灰色区域为预览区，用于呈现卡片编辑后的效果。预览区的布局是由桌面决定的。
@@ -28,7 +28,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 1. 创建卡片。
 2. 新增EntryFormEditAbility文件，用于实现FormEditExtensionAbility的半模态编辑组件，并在form_config.json文件中配置formConfigAbility字段。
    - 半模态一级编辑页Ability的实现。
-   <!-- @[FormEditDemo_EntryFormEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets) -->
+   <!-- @FormEditDemo_EntryFormEditAbility -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets
@@ -106,7 +106,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 半模态二级编辑页Ability的实现。
-   <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) -->
+   <!-- @FormEditDemo_FormEditSecPageAbility -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets
@@ -212,7 +212,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 3. 实现一级编辑页布局，通过updateForm接口去刷新被编辑卡片的信息和预览卡片信息，通过startSecondPage方法去拉起二级编辑页。
    - 一级编辑页布局实现如下。
-   <!-- @[FormEditDemo_FormEditExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditExtension.ets) --> 
+   <!-- @FormEditDemo_FormEditExtension --> 
    
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditExtension.ets
@@ -337,7 +337,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
 
    - 新增FormEditSecPage.ets文件用来实现二级编辑页布局。
-   <!-- @[FormEditDemo_FormEditSecPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditSecPage.ets) -->
+   <!-- @FormEditDemo_FormEditSecPage -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditSecPage.ets
@@ -380,7 +380,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        ```
 
    - 新增ExtensionEvent文件，封装startSecondPage方法到startFormEditSecondPage中，供业务使用。
-   <!-- @[FormEditDemo_ExtensionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/model/ExtensionEvent.ets) -->
+   <!-- @FormEditDemo_ExtensionEvent -->
    
    ``` TypeScript
    // entry/src/main/ets/model/ExtensionEvent.ets
@@ -413,7 +413,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
 4. 卡片信息持久化。每次进入卡片编辑页，预览卡片都需要与被编辑卡片保持一致，所以需要持久化卡片信息。
    - 新增PreferencesUtil文件，主要是来封装Preferences首选项，供业务做持久化数据使用。
-   <!-- @[FormEditDemo_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/PreferencesUtil.ets) -->
+   <!-- @FormEditDemo_PreferencesUtil -->
    
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
@@ -503,7 +503,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
 
    - 为确保预览卡片和被编辑卡片信息同步，新建卡片时，在onAddForm回调函数中需要判断'ohos.extra.param.key.edit_form_id'字段是否携带了卡片ID。如果携带了卡片ID，则就是预览卡片则需要从数据库获取被编辑卡片的信息。
-     <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+     <!-- @FormEditDemo_EntryFormAbility --> 
      
      ``` TypeScript
      // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -554,7 +554,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      
 
    - 卡片布局文件如下。
-     <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+     <!-- @FormEditDemo_WidgetCard -->
      
      ``` TypeScript
      // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -597,7 +597,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
 
    - 新增CommonData.ets文件，用来定义卡片数据结构。
-   <!-- @[FormEditDemo_CommonData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/CommonData.ets) -->
+   <!-- @FormEditDemo_CommonData -->
    
    ``` TypeScript
    // entry/src/main/ets/common/CommonData.ets
@@ -637,11 +637,11 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
     ```
 
 6. 运行效果如下：<br>
-![WidgetProject](figures/半模态运行结果.gif)
+WidgetProject
 
 ## 全屏卡片编辑
 ### 实现原理
-![WidgetProject](figures/全屏编辑页操作流程.png)
+WidgetProject
 1. 长按卡片弹出菜单。桌面通过formConfigAbility字段判断卡片是否支持卡片编辑能力来决定是否显示编辑按钮。
 2. 点击“编辑”菜单项进入全屏编辑页。桌面通过formConfigAbility字段的信息拉起卡片编辑页。
 3. 点击“切换到：上海”按钮编辑卡片内容。提供方通过updateForm接口去更新编辑卡片的信息。
@@ -650,7 +650,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 1. 创建卡片。
 2. 开发者需要新增EntryEditAbility.ets文件，继承UIAbility组件，实现onCreate和onNewWant回调函数。卡片使用方会通过Want的parameters字段把被编辑的卡片ID带进来。并且需要在form_config.json文件中配置formConfigAbility字段。
    - 实现编辑页面的Ability。
-   <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
+   <!-- @FormEditUIAbility_EntryEditAbility -->
    
    ``` TypeScript
    // entry/src/main/ets/entryability/EntryEditAbility.ets
@@ -728,7 +728,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
    
    - 新增EntryEditAbility需要在module.json5配置，配置如下。
-   <!-- @[FormEditUIAbility_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/module.json5) -->
+   <!-- @FormEditUIAbility_modulejson5 -->
    
    ``` JSON5
    "abilities": [
@@ -774,7 +774,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
 3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过updateForm接口去刷新被编辑卡片的信息。
-   <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) -->
+   <!-- @FormEditUIAbility_FormEditIndex -->
    
    ``` TypeScript
    // entry/src/main/ets/pages/FormEditIndex.ets
@@ -860,7 +860,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
-     <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+     <!-- @FormEditUIAbility_WidgetCard -->
      
      ``` TypeScript
      // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -901,7 +901,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      
 
 4. 新增PreferencesUtil文件，主要是来封装Preferences首选项，供业务做持久化数据使用。
-   <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) -->
+   <!-- @FormEditUIAbility_PreferencesUtil -->
    
    ``` TypeScript
    // entry/src/main/ets/common/PreferencesUtil.ets
@@ -1005,4 +1005,4 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 6. 运行效果如下：<br>
-![WidgetProject](figures/全屏编辑页运行结果.gif)
+WidgetProject

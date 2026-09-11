@@ -65,7 +65,7 @@
 
 在视频起播前的初始化阶段，仅需配置`ADAPTIVE`模式，倍速参数在播放过程中随用户倍速变化动态下发即可。
 
-<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+<!-- @configure_full_baseline -->
 
 ``` C++
 int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
@@ -101,7 +101,7 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
 
 系统支持在运行态下动态切换帧保留模式。开发者可通过调用`OH_VideoDecoder_SetParameter`实时下发配置，参数的生效时机与该接口的标准行为一致。
 
-<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+<!-- @onUserSpeedChanged -->
 
 ``` C++
 int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
@@ -143,7 +143,7 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
 
 **示例（以应对温控告警为例）：**
 
-<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+<!-- @onThermalWarningReceived -->
 
 ``` C++
 int32_t VideoDecoder::OnThermalWarningReceived(double ratio)

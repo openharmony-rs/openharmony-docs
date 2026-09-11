@@ -32,14 +32,14 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考text
 }
 ```
 
-![text-Component](figures/text-Component.png)
+text-Component
 
 
 ## 设置text组件样式和属性
 
 - 添加文本样式
 
-  设置color、font-size、allow-scale、word-spacing、text-align属性分别为文本添加颜色、大小、缩放、文本之间的间距和文本在水平方向的对齐方式。 
+  设置color、font-size、allow-scale、word-spacing、text-align属性分别为文本添加颜色、大小、是否允许缩放、文本之间的间距和文本在水平方向的对齐方式。
 
   ```html
   <!-- xxx.hml -->
@@ -66,13 +66,13 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考text
   }
   ```
 
-  ![Text-Style](figures/Text-Style.png)
+  Text-Style
 
 
 
 - 添加划线
 
-  设置text-decoration和text-decoration-color属性为文本添加划线和划线颜色，text-decoration枚举值请参考    text自有样式。
+  设置text-decoration和text-decoration-color属性为文本添加划线和划线颜色，text-decoration枚举值请参考text自有样式。
 
   ```html
   <!-- xxx.hml -->
@@ -100,7 +100,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考text
   }
   ```
 
-  ![Text-Style-2](figures/Text-Style-2.png)
+  Text-Style-2
 
 
 
@@ -139,7 +139,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考text
   > - max-lines属性设置文本最多可以展示的行数。
 
 
-  ​    ![Text-Style-3](figures/Text-Style-3.png)
+  ​    Text-Style-3
 
 - text组件支持span子组件
 
@@ -158,7 +158,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考text
   </div>
   ```
 
-  ![Text-Style-1](figures/Text-Style-1.png)
+  Text-Style-1
     > **说明：**
     > - 当使用span子组件组成文本段落时，如果span属性样式异常（例如：font-weight设置为1000），将导致文本段落显示异常。
     >
@@ -220,4 +220,4 @@ export default {
 }
 ```
 
-![Example-Scenario-14](figures/Example-Scenario-14.gif)
+Example-Scenario-14

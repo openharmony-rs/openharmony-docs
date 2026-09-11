@@ -49,7 +49,7 @@
 
 简单示例如下：
 
-<!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_point -->
 
 ``` TypeScript
 // 设置画笔
@@ -72,7 +72,7 @@ canvas.detachPen();
 
 效果如下：
 
-![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
+Screenshot_20241129174520171
 
 
 ## 绘制圆弧
@@ -83,7 +83,7 @@ canvas.detachPen();
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
-<!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_arc -->
 
 ``` TypeScript
 // 创建画笔
@@ -106,7 +106,7 @@ const rect: common2D.Rect = {
   right: VALUE_1000,
   bottom: VALUE_600
 };
-// 绘制矩形
+// 绘制圆弧
 canvas.drawArc(rect, 0, 180);
 // 去除描边效果
 canvas.detachPen();
@@ -114,7 +114,7 @@ canvas.detachPen();
 
 效果如下：
 
-![Drawing-an-Arc](figures/Drawing-an-Arc.png)
+Drawing-an-Arc
 
 
 ## 绘制圆
@@ -124,7 +124,7 @@ canvas.detachPen();
 绘制圆需要圆心点的x坐标和y坐标，以及圆半径（radius）。
 
 此处以使用画笔绘制圆为例，简单示例如下：
-<!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_circle -->
 
 ``` TypeScript
 // 创建画笔
@@ -148,7 +148,7 @@ canvas.detachPen();
 
 效果如下：
 
-![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
+Screenshot_20241129172555673
 
 
 ## 绘制路径
@@ -165,7 +165,7 @@ canvas.detachPen();
 
 此处以使用画笔和画刷绘制五角星为例，简单示例如下：
 
-<!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_path -->
 
 ``` TypeScript
 let height_ = VALUE_1800;
@@ -220,7 +220,7 @@ canvas.detachPen();
 
 效果如下：
 
-![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
+Screenshot_20241129164326302
 
 
 ## 绘制区域
@@ -231,7 +231,7 @@ canvas.detachPen();
 
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
-<!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_region -->
 
 ``` TypeScript
 // 创建画刷
@@ -256,7 +256,7 @@ canvas.detachBrush();
 
 效果如下：
 
-![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
+Screenshot_20241206112505234
 
 
 ## 绘制矩形
@@ -265,7 +265,7 @@ canvas.detachBrush();
 
 此处以使用画刷绘制矩形为例，简单示例如下：
 
-<!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_rect -->
 
 ``` TypeScript
 // 创建画刷
@@ -282,7 +282,7 @@ canvas.detachBrush();
 
 效果如下：
 
-![Drawing-a-Rectangle](figures/Drawing-a-Rectangle.png)
+Drawing-a-Rectangle
 
 
 ## 绘制圆角矩形
@@ -299,7 +299,7 @@ canvas.detachBrush();
 
 此处以使用画刷绘制圆角矩形为例，简单示例代码如下：
 
-<!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
+<!-- @arkts_graphics_draw_round_rect -->
 
 ``` TypeScript
 // 创建画刷
@@ -326,12 +326,12 @@ canvas.detachBrush();
 
 效果如下：
 
-![Drawing-a-Rounded-Rectangle](figures/Drawing-a-Rounded-Rectangle.png)
+Drawing-a-Rounded-Rectangle
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
+- ArkTSGraphicsDraw (API20)
 <!--RP1End-->

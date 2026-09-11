@@ -24,7 +24,7 @@ ArkUI在Native侧提供的能力是ArkTS的子集，某些能力不会在Native�
 
 本示例展示EmbeddedComponent组件NDK的基础使用方式，ability相关使用请参考EmbeddedComponent。示例应用的bundleName为"com.example.uiextensionandaccessibility"，同一应用下被拉起的EmbeddedUIExtensionAbility为"ExampleEmbeddedAbility"。本示例仅支持在具有多进程权限的设备上运行，例如PC/2in1。
 
-<!-- @[embeddedComponentCTest_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/cpp/embedded/embedded.cpp) -->
+<!-- @embeddedComponentCTest_start -->
 
 ``` C++
 #include <arkui/native_node.h>

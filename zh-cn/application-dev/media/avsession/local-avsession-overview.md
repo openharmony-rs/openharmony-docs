@@ -1,8 +1,8 @@
 # 本地媒体会话概述
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -10,7 +10,7 @@
 
 本地媒体会话的数据源均在设备本地，交互过程如图所示。
 
-![Local AVSession Interaction Process](figures/local-avsession-interaction-process.png)
+Local AVSession Interaction Process
 
 此过程中涉及两大角色，媒体会话提供方和媒体会话控制方。
 
@@ -38,7 +38,7 @@
 
 实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，而是媒体会话的模块命名域。在实际编程过程中，可以通过如下方式引入：
 
-<!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
+<!-- @avSession_manager_import -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -52,7 +52,7 @@ import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 >
 > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放期间一直存在，避免被系统回收、释放，导致后台播放音频时被系统管控。
  
-<!-- @[avSession_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
+<!-- @avSession_manager -->
 
 ``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';

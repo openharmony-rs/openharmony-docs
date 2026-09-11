@@ -1,7 +1,7 @@
 # 使用Node-API进行class相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -16,7 +16,7 @@
 
 - **类**：类是用于创建对象的模板。它提供了一种封装数据和行为的方式，以便于对数据进行处理和操作。类在ArkTS中是建立在原型（prototype）的基础上的，并且还引入了一些类独有的语法和语义。
 - **实例**：实例是通过类创建具体的对象。类定义了对象的结构和行为，而实例则是类的具体表现。通过实例化类，我们可以访问类中定义的属性和方法，并且每个实例都具有自己的属性值。
-- **原型**：ArkTS也采用Class的概念来实现类型之间的继承，早期EcmaScript规范定义了原型的概念，对象通过原型链的方式来实现继承的。原型的概念可以参考[EcmaScript的社区规范](https://262.ecma-international.org/#sec-terms-and-definitions-prototype)。
+- **原型**：ArkTS也采用Class的概念来实现类型之间的继承，早期EcmaScript规范定义了原型的概念，对象通过原型链的方式来实现继承的。原型的概念可以参考EcmaScript的社区规范。
 
 ## 场景和功能介绍
 
@@ -44,7 +44,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_new_instance -->
 
 ``` C++
 // napi_new_instance
@@ -63,7 +63,7 @@ static napi_value NewInstance(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_new_instance_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_new_instance_api -->
 
 ``` TypeScript
 export const newInstance: (obj: Object, param: string) => Object; // napi_new_instance
@@ -71,7 +71,7 @@ export const newInstance: (obj: Object, param: string) => Object; // napi_new_in
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_new_instance_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_new_instance_class -->
 
 ``` TypeScript
 class Fruit {
@@ -83,7 +83,7 @@ class Fruit {
 }
 ```
 
-<!-- @[ark_napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_new_instance -->
 
 ``` TypeScript
 // napi_new_instance
@@ -136,7 +136,7 @@ Native与ArkTS对象绑定
 
 cpp部分代码
 
-<!-- @[napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_wrap_unwrap_remove_wrap -->
 
 ``` C++
 struct Object {
@@ -220,7 +220,7 @@ static napi_value UnWrap(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_wrap_unwrap_remove_wrap_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_wrap_unwrap_remove_wrap_api -->
 
 ``` TypeScript
 export const wrap: (obj: Object) => Object; // napi_wrap
@@ -232,7 +232,7 @@ export const removeWrap: (obj: Object) => void; // napi_remove_wrap
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_wrap_unwrap_remove_wrap -->
 
 ``` TypeScript
 try {

@@ -46,7 +46,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用OH_CryptoSymKeyGenerator_Destroy、OH_CryptoSymCipher_Destroy、OH_CryptoSymKey_Destroy、OH_Crypto_FreeDataBlob释放申请的内存，销毁对象。
 
-<!-- @[encrypt_decrypt_aes_wrap_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/cpp/project/aes_wrap_encryption_decryption.cpp) -->
+<!-- @encrypt_decrypt_aes_wrap_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

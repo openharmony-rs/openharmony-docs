@@ -26,11 +26,11 @@
 
 windows/linux 使用 SDK 包解压完成效果如下图所示：
 
-![ndk-decomp-structure](figures/ndk-decomp-structure.png)
+ndk-decomp-structure
 
 mac使用 SDK 包解压完成效果如下图所示：
 
-![macos-unzip](figures/macos-unzip.png)
+macos-unzip
 
 <!--RP1End-->
 ### 配置环境变量
@@ -62,11 +62,11 @@ mac使用 SDK 包解压完成效果如下图所示：
 
       右键点击我的电脑，在下拉框中选择【属性】，然后点击【高级系统设置】，进入【环境变量】，找到【Path】并点击【编辑】，接着点击【新建】添加路径，保存后退出。最后打开cmd（若下一步不能够实现，请重启电脑尝试）。
 
-      ![windows-path-log](figures/windows-path-log.PNG)
+      windows-path-log
 
       打开命令框，输入cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
 
-      ![cmake-version-check](figures/cmake-version-check.PNG)
+      cmake-version-check
 
 
 2. 查看CMake默认路径。
@@ -210,11 +210,11 @@ int sum(int a, int b)
 
 在windows下使用cmake进行编译，与linux下不同的是，使用cmake要加入参数 -G 选择使用的生成器，直接回车会列出下面的生成器。
 
-![cmake-windows-G](figures/cmake-windows-G.png)
+cmake-windows-G
 
 这里使用的是cmake .. -G "Ninja" 引号里面跟的参数就是上图查看的环境所支持的生成器，这里ndk中自带的生成器是Ninja。
 
-![cmake-ninja-bin](figures/cmake-ninja-bin.png)
+cmake-ninja-bin
 
 Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入build目录并执行以下指令：
 ```shell
@@ -224,16 +224,16 @@ Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入bu
 >
 > 如需debug调试，增加参数 -D CMAKE_BUILD_TYPE=Debug；cmake路径和编译工具链ohos.toolchain.cmake路径都是下载好的ndk路径。<br>执行结果如下图：
 
-![cmake-config-log](figures/cmake-config-log.png)
+cmake-config-log
 
 这里生成的build.ninja文件就是我们需要的。
 
 Step 2. 让我们用ninja指令来编译生成目标文件，其位置如下图所示：
 
-![build-dir-list](figures/build-dir-list.png)
+build-dir-list
 
 ninja -f build.ninja 或者用 cmake --build .   执行结果如下：
 
-![ninja-build-log](figures/ninja-build-log.png)
+ninja-build-log
 
 编译生成的可执行文件位于创建的build目录下的src目录中。

@@ -12,7 +12,7 @@
 
 **图1** 录制状态变化示意图
 
-![Recording status change](figures/audio-recording-status-change.png)
+Recording status change
 
 状态的详细说明请参考AVRecorderState。
 
@@ -44,7 +44,7 @@
    >
    > 需要在avRecorder完成赋值后，再进行剩余操作。
 
-   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @create_recorder -->
    
    ``` TypeScript
    this.avRecorder = await media.createAVRecorder();
@@ -56,7 +56,7 @@
    | stateChange | 必要事件，监听AVRecorder的state属性改变。 |
    | error | 必要事件，监听AVRecorder的错误信息。 |
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @set_callback -->
    
    ``` TypeScript
    this.avRecorder?.on('stateChange', (state: media.AVRecorderState, reason: media.StateChangeReason) => {
@@ -82,7 +82,7 @@
    > - 录制输出的URL地址（即示例里avRecorderConfig中的url），形式为fd://xx（fd number）。需要基础文件操作接口（Core File Kit的ohos.file.fs）实现应用文件访问能力，获取方式参考应用文件访问与管理。
    > - 示例中配置的audioCodec音频编码格式、fileFormat封装格式请参考AVRecorderProfile。
 
-   <!-- @[prepare_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @prepare_audio_recorder -->
    
    ``` TypeScript
    public async prepareAudioRecorder(context: common.Context): Promise<void> {
@@ -116,7 +116,7 @@
 
 4. 开始录制，调用start接口，此时进入started状态。
 
-   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @start_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.start();
@@ -124,7 +124,7 @@
 
 5. 暂停录制，调用pause接口，此时进入paused状态。
 
-   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @pause_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.pause();
@@ -132,7 +132,7 @@
 
 6. 恢复录制，调用resume接口，此时再次进入started状态。
 
-   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @resume_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.resume();
@@ -140,7 +140,7 @@
 
 7. 停止录制，调用stop接口，此时进入stopped状态。
 
-   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @stop_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.stop();
@@ -149,7 +149,7 @@
 
 8. 重置资源，调用reset接口，重新进入idle状态，允许重新配置录制参数。
 
-   <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @reset_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.reset();
@@ -157,7 +157,7 @@
 
 9. 销毁实例，调用release接口，进入released状态，退出录制。
 
-   <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @release_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.release();
@@ -169,7 +169,7 @@
 
   使用当前示例代码时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：向用户申请授权。
 
-<!-- @[full_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+<!-- @full_audio_recorder -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

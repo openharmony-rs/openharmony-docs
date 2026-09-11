@@ -19,12 +19,12 @@
 效果展示：
 
 <!--RP2-->
-![image-location](figures/image-location-second.png)
+image-location
 <!--RP2End-->
 
 以下示例代码展示了如何再次拉起弹框申请ohos.permission.APPROXIMATELY_LOCATION权限。
 
-<!-- @[second_request_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondpages/Index.ets) -->
+<!-- @second_request_permission -->
 
 ``` TypeScript
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';

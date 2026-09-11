@@ -31,7 +31,7 @@ Navigation导航转场时，新push的页面层级无法超出全模态，其效
 
 详见模态转场章节，了解使用bindContentCover构建全屏模态转场效果。
 
-<!-- @[bindContentCover_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindContentCover/template6/BindContentCoverDemo.ets) -->
+<!-- @bindContentCover_demo -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -244,4 +244,4 @@ struct BindContentCoverDemo {
 }
 ```
 
-![modalTransition](figures/modalTransition.gif)
+modalTransition

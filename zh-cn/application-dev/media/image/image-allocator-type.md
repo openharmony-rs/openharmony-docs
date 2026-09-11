@@ -79,7 +79,7 @@ stride的值可以通过getImageInfo() 接口获取。
 
 2. 从ImageInfo对象中访问stride值：info.stride。
 
-   <!-- @[allocator_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/AllocateMemory.ets) -->   
+   <!-- @allocator_import -->   
    
    ``` TypeScript
    // 导入相关模块。
@@ -87,7 +87,7 @@ stride的值可以通过getImageInfo() 接口获取。
    import { common } from '@kit.AbilityKit';
    ```
 
-   <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @allocator_called -->   
    
    ``` TypeScript
    async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap | undefined> {
@@ -147,7 +147,7 @@ stride的值可以通过getImageInfo() 接口获取。
 
 使用YUV格式解码时，需在DecodingOptions中设置desiredPixelFormat参数，并推荐配合DMA内存分配使用。
 
-<!-- @[allocator_yuv_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+<!-- @allocator_yuv_called -->   
 
 ``` TypeScript
 async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefined> {
@@ -189,7 +189,7 @@ async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefine
 
 ## 解码单张图片的内存限制
 
-为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考[应用被查杀问题检测方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-runtime-appkilled-detection)。
+为了防止内存溢出导致系统崩溃，系统对进程内存做了限制，详细说明请参考应用被查杀问题检测方法。
 
 图片框架对单张图片的解码设置了2GB的内存限制。进程需要主动管理自身内存，建议在不使用PixelMap时及时释放，以避免进程被系统终止。
 

@@ -9,7 +9,7 @@
 
 自定义节点是ArkUI通过接口提供的底层实体节点，具备部分基础能力，能够与系统组件混合显示。自定义节点的挂载与显示依赖于自定义占位节点。当前，自定义节点涵盖三类对象：FrameNode、RenderNode和BuilderNode。FrameNode表示单个自定义组件节点，RenderNode表示为更轻量级的渲染节点，而BuilderNode对象赋予了创建、更新系统组件及其组件树的能力。
 
-![zh-cn_image_user-defined-node](figures/user-defined-node.png)
+zh-cn_image_user-defined-node
 
 ## 基本概念
 

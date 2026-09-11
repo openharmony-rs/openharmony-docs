@@ -37,7 +37,7 @@ export struct DiskFormatDialog {
 
 通过SmartPerf Host工具抓取Trace。启动时ReceiveVsync阶段耗时为3s271ms。
 
-![](figures/reasonable_using_system_interfaces_2.PNG)
+
 
 ### 正例
 
@@ -59,7 +59,7 @@ export struct DiskFormatDialog {
 
 通过SmartPerf Host工具抓取Trace。启动时ReceiveVsync阶段耗时为301ms。
 
-![](figures/reasonable_using_system_interfaces_4.PNG)
+
 
 ### 总结
 

@@ -18,10 +18,10 @@
 | 英文字符数量（个） | 预留的空间比率 | 
 | -------- | -------- |
 | 小于等于10 | 100%～200% | 
-| 大于等于11，小于等于20 | 80%~100% | 
-| 大于等于21，小于等于30 | 60%~80% | 
-| 大于等于31，小于等于50 | 40%~60% | 
-| 大于等于51，小于等于70 | 30%~40% | 
+| 大于等于11，小于等于20 | 80%～100% | 
+| 大于等于21，小于等于30 | 60%～80% | 
+| 大于等于31，小于等于50 | 40%～60% | 
+| 大于等于51，小于等于70 | 30%～40% | 
 | 大于等于71 | 30% | 
 
 ## 界面镜像
@@ -38,20 +38,20 @@
 
 **图1** 一般布局示例（英文）
 
-![edit-phone-contact](figures/edit-phone-contact.png)
+edit-phone-contact
 
 **图2** 镜像布局示例（阿拉伯文）
 
-![edit-phone-contact-01](figures/edit-phone-contact-01.png)
+edit-phone-contact-01
 
 **图3** 一般图标资源
 
-![phone-volume-right](figures/phone-volume-right.png)
+phone-volume-right
 
 **图4** RTL语言系统下提供的图标资源
 
-![phone-volume-left](figures/phone-volume-left.png)
+phone-volume-left
 
 **图5** RTL语言下提供的镜像控件
 
-![internationalization-phone-calendar](figures/internationalization-phone-calendar.png)
+internationalization-phone-calendar

@@ -58,7 +58,7 @@ libohpreferences.so
 
 ## 引用头文件
 
-<!--@[preferences_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@preferences_include-->
 ``` C++
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
@@ -70,7 +70,7 @@ libohpreferences.so
 下列实例展示如何通过Preferences实现对键值数据的修改与持久化。
 1. 创建Preferences配置选项（PreferencesOption）对象并设置配置选项成员（名称、应用组ID、包名、存储模式）。使用完毕后，调用OH_PreferencesOption_Destroy销毁配置选项实例。
 2. 调用OH_Preferences_Open打开一个Preferences实例，该实例使用完后需要调用OH_Preferences_Close关闭。
-   <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@PreferencesOpen-->
    
    ``` C++
    // 1. 创建Preferences配置选项。
@@ -132,7 +132,7 @@ libohpreferences.so
    }
    ```
 3. 订阅回调函数为DataChangeObserverCallback。
-   <!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@DataChangeObserverCallback-->
    
    ``` C++
    // 数据变更回调函数
@@ -171,7 +171,7 @@ libohpreferences.so
    }
    ```
    调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅。
-   <!--@[RegisterDataObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@RegisterDataObserver-->
    
    ``` C++
    // 3. 对key_int、key_bool和key_string注册数据变更订阅。
@@ -194,7 +194,7 @@ libohpreferences.so
    }
    ```
 4. 设置Preferences实例中的键值数据。
-   <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@PreferencesCrud-->
    
    ``` C++
    // 4. 设置Preferences实例中的KV数据。
@@ -236,7 +236,7 @@ libohpreferences.so
    }
    ```
 5. 获取Preferences实例中的键值数据。
-   <!--@[PreferencesCrudGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@PreferencesCrudGet-->
    
    ``` C++
    // 5. 获取Preferences实例中的KV数据。
@@ -296,7 +296,7 @@ libohpreferences.so
    ```
 
 6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
-   <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@PreferencesClose-->
    
    ``` C++
    // 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
@@ -304,7 +304,7 @@ libohpreferences.so
    preference = nullptr;
    ```
 7. 设置和获取OH_PreferencesValue数据。
-   <!--@[PreferencesValueSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   <!--@PreferencesValueSets-->
    
    ``` C++
    const int arg5 = 5;

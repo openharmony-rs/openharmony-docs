@@ -46,7 +46,7 @@ setRestoreEnabled()接口需要在应用初始化阶段调用（onForeground()�
 
 开发者需要在应用模块初始化时启用UIAbility的备份恢复功能。
 
-<!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @onCreate -->
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -68,7 +68,7 @@ export default class EntryAbility extends UIAbility {
 
 开发者主动保存数据，在UIAbility启动时恢复。
 
-<!-- @[onSaveState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityRecover/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @onSaveState -->
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

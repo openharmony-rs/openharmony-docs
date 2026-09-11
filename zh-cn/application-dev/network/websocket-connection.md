@@ -20,14 +20,14 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 > **说明：**
 >
-> websocket支持[心跳检测机制](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2)，在客户端和服务端建立webSocket连接之后，从连接建立或者客户端收到Pong帧开始计时，每间隔pingInterval秒客户端会发送Ping帧给服务器。服务器若支持websocket协议则会在收到Ping帧后自动回复Pong帧，表示连接正常，若服务端异常或服务端不支持websocket协议则不会回复Pong帧；若Ping帧发出去后，pongTimeout秒内没有收到Pong帧，则会主动断开连接。支持开发者关闭心跳检测机制，自定义pingInterval与pongTimeout，详情请参考WebSocketRequestOptions。
+> websocket支持心跳检测机制，在客户端和服务端建立webSocket连接之后，从连接建立或者客户端收到Pong帧开始计时，每间隔pingInterval秒客户端会发送Ping帧给服务器。服务器若支持websocket协议则会在收到Ping帧后自动回复Pong帧，表示连接正常，若服务端异常或服务端不支持websocket协议则不会回复Pong帧；若Ping帧发出去后，pongTimeout秒内没有收到Pong帧，则会主动断开连接。支持开发者关闭心跳检测机制，自定义pingInterval与pongTimeout，详情请参考WebSocketRequestOptions。
 > 服务端从API version 19开始支持。
 
 ## client端开发步骤
 
 1. 导入webSocket以及错误码模块。
 
-   <!-- @[WebSocket_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @WebSocket_case_module_import -->
    
    ``` TypeScript
    import { webSocket } from '@kit.NetworkKit';
@@ -36,7 +36,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
    ```
 2. 创建WebSocket连接，返回一个WebSocket对象。
 
-   <!-- @[WebSocket_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @WebSocket_creat_websocket -->
    
    ``` TypeScript
    let defaultIpAddress = 'wss://echo.websocket.org'; // WebSocket地址
@@ -45,7 +45,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 3. 订阅WebSocket的打开、消息接收、关闭、Error事件（可选），当收到on('open')事件时，可以通过send()方法与服务器进行通信，当收到服务器的`bye`消息时（此消息字段仅为示意，具体字段需要与服务器协商），主动断开连接。
 
-   <!-- @[websocket_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @websocket_open_message_close_error_methods -->
    
    ``` TypeScript
    ws.on('open', (err: BusinessError, value: Object) => {
@@ -84,7 +84,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 4. 根据URL地址，发起WebSocket连接。
 
-   <!-- @[webSocket_case_object_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @webSocket_case_object_connect -->
    
    ``` TypeScript
    ws.connect(defaultIpAddress, (err: BusinessError, value: boolean) => {
@@ -99,7 +99,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 5. 收到on('open')的回调事件后，可通过send()方法向服务器发送数据。
 
-   <!-- @[webSocket_case_send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @webSocket_case_send_message -->
    
    ``` TypeScript
    ws.send('Hello, server!', (err: BusinessError, value: boolean) => {
@@ -117,7 +117,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 1. 导入webSocket以及错误码模块。
 
-   <!-- @[WebSocket_server_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @WebSocket_server_case_module_import -->
    
    ``` TypeScript
    import { webSocket } from '@kit.NetworkKit';
@@ -127,7 +127,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 2. 创建WebSocketServer对象。
 
-   <!-- @[WebSocket_server_creat_websocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @WebSocket_server_creat_websocket -->
    
    ``` TypeScript
    let localServer: webSocket.WebSocketServer;
@@ -136,7 +136,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 3. 订阅WebSocketServer的客户端连接事件、消息接收事件、关闭事件、Error事件（可选），在收到客户端连接事件后，服务端可以通过send()方法与客户端进行通信，当收到客户端的"bye"消息时（此消息字段仅为示意，具体字段需要与客户端协商），主动断开连接。
 
-   <!-- @[websocket_server_open_message_close_error_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @websocket_server_open_message_close_error_methods -->
    
    ``` TypeScript
    localServer.on('connect', async (connection: webSocket.WebSocketConnection) => {
@@ -182,7 +182,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 4. 配置config参数启动server端服务。
 
-   <!-- @[websocket_server_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @websocket_server_config -->
    
    ``` TypeScript
    let config: webSocket.WebSocketServerConfig = {
@@ -204,7 +204,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 5. 服务端监听所有客户端连接状态（可选）。
 
-   <!-- @[WebSocket_server_connections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @WebSocket_server_connections -->
    
    ``` TypeScript
    let connections: webSocket.WebSocketConnection[] = [];
@@ -226,7 +226,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 6. 需要关闭WebSocketServer端服务器时，可以通过stop()停止服务。
 
-   <!-- @[WebSocket_server_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @WebSocket_server_stop -->
    
    ``` TypeScript
    localServer.stop().then((success: boolean) => {
@@ -244,7 +244,7 @@ WebSocket是一种网络通信协议，它允许客户端和服务器之间建�
 
 针对WebSocket连接的开发，有以下相关实例可供参考：
 
-- [WebSocket（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/WebSocket)
+- WebSocket（ArkTS）（API9）
 
-- [WebSocket Client示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_case)
-- [WebSocket Server示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_Server_case)
+- WebSocket Client示例
+- WebSocket Server示例

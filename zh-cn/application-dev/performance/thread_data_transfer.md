@@ -83,7 +83,7 @@ pixelMapProcessByTaskPool(this.pixelMap, this.lastAdjustData, this.currentAdjust
 
 图1 拷贝方式Trace泳道图
 
-![image-20240702184652708](figures/thread_data_transfer_image_01.png)
+image-20240702184652708
 
 图1中可以看到，ArrayBuffer传递到TaskPool时，内存有2.5M的上升，耗时是19ms。
 
@@ -125,7 +125,7 @@ taskpool.execute(taskPoolGroup).then((data: ArrayBuffer[]) => {
 
 图2 转移方式Trace泳道图
 
-![img](figures/thread_data_transfer_image_02.jpg)
+img
 
 在图2中可以看到，ArrayBuffer传递到TaskPool时，内存并没有明显的变化，耗时只有5.2ms。
 
@@ -143,9 +143,9 @@ taskpool.execute(taskPoolGroup).then((data: ArrayBuffer[]) => {
 
 图3 子线程计算耗时泳道图
 
-![img](figures/thread_data_transfer_image_03.jpg)
+img
 
-下面将通过示例代码说明如何进一步优化图片处理的时间。详细代码请参考[ThreadDataTransfer](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/ThreadDataTransfer)。
+下面将通过示例代码说明如何进一步优化图片处理的时间。详细代码请参考ThreadDataTransfer。
 ```typescript
 // code/Performance/PerformanceLibrary/feature/ThreadDataTransfer/src/main/ets/utils/TreadUtil.ets
 ......
@@ -174,7 +174,7 @@ export async function pixelMapProcessByTaskPool(pixelMap: image.PixelMap, lastAd
 
 图4 图片切成3份处理后的泳道图
 
-![image-20240702185135759](figures/thread_data_transfer_image_04.png)
+image-20240702185135759
 
 通过图4可以看到，将原ArrayBuffer切成3段，分别放在3个子线程中处理，图片饱和度调节的操作耗时只有3.4s，计算时间减少了44%。因为有3个线程在同时进行操作，大大减少了计算的耗时。但是，这并不代表可以随意增加Task的数量。由于在TaskPool中，并不是创建了多少个Task，就会有多少个Task在同时执行。随着Task的增多，同时执行的线程也会越多，并发执行的任务就会增多，CPU的占用率就会升高，从而影响到其他需要CPU计算的任务。虽然在硬件配置高的设备上表现不明显，但是对于低配置的设备，影响会较大。下面的表格，列出了示例中不同数量Task时的CPU耗时供开发者参考。
 
@@ -197,4 +197,4 @@ export async function pixelMapProcessByTaskPool(pixelMap: image.PixelMap, lastAd
 
 ## 相关示例
 
-[ArrayBuffer序列化和转移示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/ThreadDataTransfer)
+ArrayBuffer序列化和转移示例代码

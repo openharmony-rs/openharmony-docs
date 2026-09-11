@@ -38,7 +38,7 @@
 
 **1. 创建工程**
 
-![创建C++应用](figures/rawfile1.png)
+创建C++应用
 
 **2. 添加依赖**
 
@@ -52,7 +52,7 @@
 
 2. 打开src/main/cpp/types/libentry/index.d.ts文件，在此文件中声明ArkTS侧接口getFileList、getRawFileContent、getRawFileDescriptor、isRawDir。
 
-    <!-- @[declare_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    <!-- @declare_interface -->
     
     ``` TypeScript
     import { resourceManager } from '@kit.LocalizationKit';
@@ -66,7 +66,7 @@
 
 1. 打开src/main/cpp/hello.cpp文件，在Init方法中添加ArkTS接口与C++接口的映射。ArkTS侧接口getFileList、getRawFileContent、getRawFileDescriptor、isRawDir，映射C++接口分别为GetFileList、GetRawFileContent、GetRawFileDescriptor、IsRawDir。
 
-    <!-- @[module_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @module_registration -->
     
     ``` C++
     EXTERN_C_START
@@ -87,7 +87,7 @@
 
 2. 在src/main/cpp/目录下创建hello.h文件，在hello.h文件中增加对应的四个方法，如下所示：
 
-    <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.h) -->
+    <!-- @header_file -->
     
     ``` C
     #ifndef RAWFILE_HELLO_H
@@ -111,7 +111,7 @@
 3. 在hello.cpp文件中实现上述四个方法。通过env和info获取Js的资源管理对象，并转换为Native的资源管理对象，即可调用Native资源管理对象的接口，示例代码如下：
     
     导入头文件
-    <!-- @[includes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @includes -->
     
     ``` C++
     #include "hello.h"
@@ -122,7 +122,7 @@
     ```
 
     声明hilog日志打印的DOMAIN和TAG常量
-    <!-- @[constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @constants -->
     
     ``` C++
     const int GLOBAL_RESMGR = 0xFF00;
@@ -130,7 +130,7 @@
     ```
 
     示例：
-    <!-- @[example_get_file_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @example_get_file_list -->
     
     ``` C++
     // 示例一：获取rawfile文件列表 GetFileList
@@ -181,7 +181,7 @@
     ```
 
 
-    <!-- @[example_get_rawfile_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @example_get_rawfile_content -->
     
     ``` C++
     // 示例二：获取rawfile文件内容 GetRawFileContent
@@ -245,7 +245,7 @@
     ```
 
 
-    <!-- @[example_get_rawfile_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @example_get_rawfile_descriptor -->
     
     ``` C++
     // 示例三：获取rawfile文件描述符 GetRawFileDescriptor
@@ -325,7 +325,7 @@
     ```
 
 
-    <!-- @[example_is_raw_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/hello.cpp) -->
+    <!-- @example_is_raw_dir -->
     
     ``` C++
     // 示例四：判断路径是否是rawfile下的目录 IsRawDir
@@ -377,7 +377,7 @@
 
    获取本应用包资源resourceManager对象的示例如下：
 
-	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
+	<!-- @native_rawfile_guide_sample -->
     
     ``` TypeScript
     import { util } from '@kit.ArkTS';
@@ -448,4 +448,4 @@
 
 针对资源管理Rawfile开发，有以下相关实例可供参考：
 
-- [获取Rawfile资源（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkRawfile)
+- 获取Rawfile资源（API9）

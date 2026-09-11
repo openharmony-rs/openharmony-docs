@@ -29,7 +29,7 @@
 
 图1 冷启动首页中三种常用的缓存使用流程
 
-![reasonable_using_cache_improve_performance_flow_chart](./figures/reasonable_using_cache_improve_performance_flow_chart.png)
+reasonable_using_cache_improve_performance_flow_chart
 
 图1是三种常用的缓存使用流程。常用流程1的详细过程如下：
 
@@ -58,7 +58,7 @@
 
 图2 使用本地缓存首页数据流程图
 
-![reasonable_using_cache_improve_performance_network_flow_chart](./figures/reasonable_using_cache_improve_performance_network_flow_chart.png)
+reasonable_using_cache_improve_performance_network_flow_chart
 
 图2是使用本地缓存首页数据的流程图。使用本地缓存优先展示冷启动首页数据，可以减少首帧展示完成时延，减少用户可见白屏或白块时间，提升用户的冷启动体验。
 
@@ -194,11 +194,11 @@ struct Index {
 
 图3 优化前未使用本地缓存
 
-![reasonable_using_cache_improve_performance_network_use_api](./figures/reasonable_using_cache_improve_performance_network_use_api.png)
+reasonable_using_cache_improve_performance_network_use_api
 
 图4 优化后使用本地缓存
 
-![reasonable_using_cache_improve_performance_network_use_cache](./figures/reasonable_using_cache_improve_performance_network_use_cache.png)
+reasonable_using_cache_improve_performance_network_use_cache
 
 图3是优化前未使用本地缓存（从网络端获取数据）的耗时，图4是优化后使用本地缓存的耗时，对比数据如下（性能耗时数据因设备版本环境而异，以实测为准）：
 
@@ -354,13 +354,13 @@ struct Index {
 
 图5 优化前未使用本地缓存
 
-![reasonable_using_cache_improve_performance_use_api](./figures/reasonable_using_cache_improve_performance_use_api.png)
+reasonable_using_cache_improve_performance_use_api
 
 优化后使用本地缓存（通过PersistentStorage获取地址数据）的测试步骤：在使用getCurrentLocation获取地址数据后退出应用（本例中在getCurrentLocation获取地址数据后会保存到本地缓存），再使用Launch工具抓取性能数据。
 
 图6 优化后使用本地缓存
 
-![reasonable_using_cache_improve_performance_use_cache](./figures/reasonable_using_cache_improve_performance_use_cache.png)
+reasonable_using_cache_improve_performance_use_cache
 
 图5是优化前未使用本地缓存（从getCurrentLocation获取地址数据）的耗时，图6是优化后使用本地缓存（从PersistentStorage获取地址数据）的耗时，对比数据如下（性能耗时数据因设备版本环境而异，以实测为准）：
 
@@ -381,7 +381,7 @@ struct Index {
 
 图1 Image加载网络图片两种方式对比
 
-![reasonable_using_cache_improve_performance_use_preRequest](./figures/reasonable_using_cache_improve_performance_use_preRequest.png)
+reasonable_using_cache_improve_performance_use_preRequest
 
 为了减少白块的出现，开发者可以采用预下载的方式，可以将网络图片通过应用沙箱的方式进行提前缓存，将图片下载解码提前到组件创建之前执行，当Image组件加载时从应用沙箱中获取缓存数据。非首次请求时会判断应用沙箱里是否存在资源，如存在直接从缓存里获取，不再重复下载，减少Image加载大的网络图片时白屏或白块持续时间较长的问题，提升用户体验。
 
@@ -441,7 +441,7 @@ export struct PageOne {
 
 图2 使用预下载的方式，由开发者灵活地处理网络图片，减少白块持续时间。  
 
-![reasonable_using_cache_improve_performance_use_preRequest2](./figures/reasonable_using_cache_improve_performance_use_preRequest2.png)  
+reasonable_using_cache_improve_performance_use_preRequest2  
 
 以下为关键示例代码：
 
@@ -597,7 +597,7 @@ export struct PageOne {
 
 图3 直接使用Image加载网络数据  
 
-![reasonable_using_cache_improve_performance_use_preRequest3](./figures/reasonable_using_cache_improve_performance_use_preRequest3.png)
+reasonable_using_cache_improve_performance_use_preRequest3
 
 【优化后】
 
@@ -605,7 +605,7 @@ export struct PageOne {
 
 图4 使用预下载的方式
 
-![reasonable_using_cache_improve_performance_use_preRequest4](./figures/reasonable_using_cache_improve_performance_use_preRequest4.png)
+reasonable_using_cache_improve_performance_use_preRequest4
 
 >**说明：**
 >
@@ -615,7 +615,7 @@ export struct PageOne {
 
 |                                                     （优化前）<br/>直接使用Image加载网络数据，未使用预下载                                                      |                                                                （优化后）使用预下载                                                                 |
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
-|  ![reasonable_using_cache_improve_performance_use_preRequest5](./figures/reasonable_using_cache_improve_performance_use_preRequest5.gif)  |  ![reasonable_using_cache_improve_performance_use_preRequest6](./figures/reasonable_using_cache_improve_performance_use_preRequest6.gif)  |
+|  reasonable_using_cache_improve_performance_use_preRequest5  |  reasonable_using_cache_improve_performance_use_preRequest6  |
 
 **性能对比**
 

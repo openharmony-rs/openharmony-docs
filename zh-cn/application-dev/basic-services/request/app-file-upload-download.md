@@ -28,7 +28,7 @@
 
 以下示例代码展示了两种将缓存文件上传至服务器的方法：
 
-<!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+<!-- @request_upload_file-->
 
 ``` TypeScript
 async requestUploadFile(fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -92,7 +92,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 ```
 
 
-<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)--> 
+<!-- @upload_agent_task--> 
 
 ``` TypeScript
 async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
@@ -159,7 +159,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
 
-<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+<!-- @request_download_file-->
 
 ``` TypeScript
 async requestDownloadFile(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -191,7 +191,7 @@ async requestDownloadFile(url: string, fileName: string, callback: (progress: nu
 }
 ```
 
-<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+<!-- @download_agent_task-->
 
 ``` TypeScript
 async requestAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -247,7 +247,7 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 
 开发者可以通过调用DocumentViewPicker的save()接口保存文件并获得用户文件的uri，将此uri作为Config的saveas字段值进行下载。
 
-<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
+<!-- @doc_user_file_download-->
 
 ``` TypeScript
 async docFileAgentTask(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -318,7 +318,7 @@ async docFileAgentTask(url: string, fileName: string, callback: (progress: numbe
 
 开发者可以通过调用AudioViewPicker的save()接口保存文件并获得用户文件的uri，将此uri作为Config的saveas字段值进行下载。
 
-<!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
+<!-- @audio_user_file_download-->
 
 ``` TypeScript
 async audioFileAgentTask(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -387,7 +387,7 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 
 权限ohos.permission.WRITE_IMAGEVIDEO是权限机制中的基本概念中system_basic(系统基础服务)级别的受限开放权限，normal等级的应用需要将自身的APL等级声明为system_basic及以上。授权方式为user_grant，需要向用户申请授权。
 
-<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)--> 
+<!-- @media_user_file_download--> 
 
 ``` TypeScript
 async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -492,7 +492,7 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
 
 以下是对下载任务进行速度限制与超时限制的方式的示例代码演示：
 
-<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)--> 
+<!-- @speed_limit_download--> 
 
 ``` TypeScript
 async speedLimitDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
@@ -569,7 +569,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 ### HTTP拦截
 
-开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration)，了解需要配置的具体参数。
+开发者可以通过设置配置文件实现HTTP拦截功能。上传下载模块在应用配置文件中禁用HTTP后，无法创建明文HTTP传输的上传下载任务。配置文件在APP中的路径是：`src/main/resources/base/profile/network_config.json`。请参考网络管理模块配置文件网络连接安全配置，了解需要配置的具体参数。
 
 参考配置文件如下所示：
 
@@ -611,7 +611,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 
 以下示例代码展示了如何创建一个带有wantAgent功能的下载任务：
 
-<!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets)-->
+<!-- @want_agent_download-->
 
 ``` TypeScript
 async wantAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,

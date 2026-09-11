@@ -43,7 +43,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码
 
-<!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_ispromise -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -97,7 +97,7 @@ OH_JSVM_CreatePromise用于创建一个Promise对象。
 
 cpp部分代码
 
-<!-- @[oh_jsvm_resolvedeferred_and_rejectdeferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/resolvereject/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_resolvedeferred_and_rejectdeferred -->
 
 ``` C++
 #include "napi/native_api.h"

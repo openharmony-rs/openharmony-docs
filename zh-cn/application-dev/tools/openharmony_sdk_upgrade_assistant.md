@@ -1,4 +1,4 @@
-# OpenHarmony SDK 升级助手
+# OpenHarmony SDK升级助手
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
-OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应用SDK升级导致的API不兼容问题。</br>
+OpenHarmony SDK升级助手，用于帮助开发者快速解决OpenHarmony应用SDK升级导致的API不兼容问题。</br>
 由于OpenHarmony SDK Beta版本不承诺API稳定性，在SDK升级后，可能存在API不兼容的问题，应用开发者对现在工程切换API版本后，需要适配API接口及其底层行为的变更，存在一定的升级成本；因此OpenHarmony提供了SDK升级助手，可以帮助开发者快速了解升级适配全貌，并通过工具提示快速适配升级，显著提高SDK升级效率。
 
 ## 约束与限制
@@ -19,7 +19,7 @@ OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应�
 ### 工具安装
 1.在DevEco Studio主菜单栏中点击 "File" > "Settings..."。
 
-![suap-settings](figures/suap-settings.png)
+suap-settings
 
 2.在Settings弹出框界面，选中"Plugins"进入IDE插件模块。
 
@@ -27,7 +27,7 @@ OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应�
 
 4.点击搜索到的插件右方"Install"按钮进行下载安装，安装完成之后点击"Apply"按钮，重启IDE即安装成功（注意：插件安装完成后需要重启IDE）。
 
-![suap-install](figures/suap-install.png)
+suap-install
 
 ### 使用工具
 
@@ -35,19 +35,19 @@ OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应�
 
 工程加载完毕后，点击窗口上方主菜单栏的"UpdateCheck" > "Start"。
 
-![suap-use](figures/suap-use.png)
+suap-use
 
 手动选择旧版本SDK路径，需要选择到“ets”文件夹。新版本SDK路径将通过IDE配置文件及当前应用配置的SDK版本自动获取。路径选择完成后，点击“OK”按钮，开始生成辅助升级报告。
 
-![suap-choose-sdk](figures/suap-choose-sdk.png)
+suap-choose-sdk
 
 报告生成成功后，将弹窗提示，点击“OK”按钮，关闭当前弹窗。
 
-![suap-finish](figures/suap-finish.png)
+suap-finish
 
 根据弹窗提示，打开下方工具栏内UpdateReport按钮，查看升级报告。
 
-![suap-view-report](figures/suap-view-report.png)
+suap-view-report
 
 ### 报告功能点介绍
 
@@ -59,13 +59,13 @@ OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应�
 6. 提示信息列会提供修改建议，供开发者参考修改。
 7. changelog列如果多个版本，单击之后会出现弹出框，将版本号和链接罗列，点击进行跳转。单个版本变更，单击之后，直接跳转到对应的ChangeLog文档中。
 
-![suap-changelog](figures/suap-changelog.png)
+suap-changelog
 
 ## 打包构建
 
-1.[interface仓](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools)中 clone [api_diff](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/api_diff)工具(对比两个版本SDK里的API差异)和[collect_application_api](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/collect_application_api)工具(用于解析并汇总应用中使用到的API)到本地。
+1.interface仓中 clone api_diff工具(对比两个版本SDK里的API差异)和collect_application_api工具(用于解析并汇总应用中使用到的API)到本地。
 
-![suap-warehouse](figures/suap-warehouse.png)
+suap-warehouse
 
 2.在本地api_diff工具和collect_application_api工具目录下进入终端，进行安装和编译。
 
@@ -76,15 +76,15 @@ OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应�
 
 输入命令：npm install，之后进行构建：npm run build。构建成功之后，会在对应的工具文件夹下生成dist=>build=>api-diff.js和dist=>build=>api-collector.js。
 
-![suap-diff](figures/suap-diff.png)
+suap-diff
 
-![suap-collect](figures/suap-collect.png)
+suap-collect
 
 3.在本地磁盘的最后一个盘符，创建名为'updateCheck'文件夹，内部分别创建'api-diff'和'collect_application_api'文件夹。</br>将步骤3中的api-diff.js文件放置'api-diff'文件夹下，collect_application_api文件夹下libs文件夹以及api-collector.js放置在'collect_application_api'文件夹下。
 
-![suap-diff-file](figures/suap-diff-file.png)
+suap-diff-file
 
-![suap-collect-file](figures/suap-collect-file.png)
+suap-collect-file
 
 4.升级辅助工具源码clone下来之后，在idea上打开，需要配置gradle环境，并且在src同级目录下新建'build.gradle.kts'文件，将下面内容粘贴至文件中，刷新gradle，在idea右侧gradle工具栏即可运行项目和打包成插件。
 ```lombok.config

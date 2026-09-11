@@ -33,7 +33,7 @@ HiTraceChain是基于分布式跟踪调用链思想，在端侧业务流程（�
 
 4. **信息记录**：对于启用HiTraceChain的业务流程，其输出的各类信息中（包括HiTraceMeter打点、应用事件、hilog日志等）都会记录该跟踪标识，开发者可以通过HiTraceId将这些信息关联起来，从而实现端到端的调用链跟踪。
 
-   ![hitracechain-principle](figures/hitracechain-principle.png)
+   hitracechain-principle
 
 
 ## 约束与限制

@@ -12,7 +12,7 @@
 
 通过设置Text组件textVerticalAlign属性和设置ImageSpan组件verticalAlign为ImageSpanAlignment.FOLLOW_PARAGRAPH，实现商品价格优惠信息展示的应用场景。
 
-<!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
+<!-- @textImage_component -->
 
 ``` TypeScript
 Text() {
@@ -37,13 +37,13 @@ Text() {
 ```
 
 
-![span_imagespan_composition](figures/span_imagespan_composition.png)
+span_imagespan_composition
 
 ## 使用属性字符串实现图文混排
 
 通过ImageAttachment添加图片，TextStyle设置多种文本样式，实现商品详情信息展示的应用场景。
 
-<!-- @[textImage_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageAttribute.ets) -->
+<!-- @textImage_attribute -->
 
 ``` TypeScript
 // resourceGetString封装工具，从资源中获取字符串
@@ -227,4 +227,4 @@ struct styled_string_demo {
 }
 ```
 
-![styledstring_composition](./figures/styledstring_composition.png)
+styledstring_composition

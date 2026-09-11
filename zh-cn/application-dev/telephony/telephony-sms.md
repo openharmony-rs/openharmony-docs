@@ -89,7 +89,7 @@ sms.sendShortMessage(options, (err: BusinessError) => {
 
 ## 应用内跳转到短信编辑界面
 
-发送短信的接口需要系统权限才可调用，三方应用如果有发送短信需求，需要在应用内实现跳转到短信编辑的功能，并且需要携带编辑内容和收件人号码，可以通过调用元能力startAbility接口指定号码并跳转到发送短信页面的方式实现。开启[混淆](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation)后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称。
+发送短信的接口需要系统权限才可调用，三方应用如果有发送短信需求，需要在应用内实现跳转到短信编辑的功能，并且需要携带编辑内容和收件人号码，可以通过调用元能力startAbility接口指定号码并跳转到发送短信页面的方式实现。开启混淆后，contactsName和telephone可能被混淆，建议在-keep-property-name保留属性名称。
 
 ```ts
 // 示例代码
@@ -224,4 +224,4 @@ struct Index {
 
 针对短信的使用，有以下相关实例可供参考：
 
-- [短信服务（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Telephony/Message)
+- 短信服务（ArkTS）（Full SDK）（API9）

@@ -16,7 +16,7 @@
 
 【反例】
 
-<!-- @[lazy_import_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportNeg.ets) -->
+<!-- @lazy_import_negative -->
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportNeg.ets
@@ -60,7 +60,7 @@ struct Index {
 }
 ```
 
-<!-- @[lazy_import_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerNeg.ets) --> 
+<!-- @lazy_import_worker_negative --> 
 
 ``` TypeScript
 // src/main/ets/workers/LazyImportWorkerNeg.ets
@@ -91,7 +91,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @[lazy_import_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncNeg.ets) --> 
+<!-- @lazy_import_function_negative --> 
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportFuncNeg.ets
@@ -107,7 +107,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @[lazy_import_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedNeg.ets) --> 
+<!-- @lazy_import_observed_negative --> 
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportObservedNeg.ets
@@ -131,7 +131,7 @@ export class Person {
 
 【正例】
 
-<!-- @[lazy_import_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportPos.ets) --> 
+<!-- @lazy_import_positive --> 
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportPos.ets
@@ -175,7 +175,7 @@ struct Index {
 }
 ```
 
-<!-- @[lazy_import_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerPos.ets) -->
+<!-- @lazy_import_worker_positive -->
 
 ``` TypeScript
 // src/main/ets/workers/LazyImportWorkerPos.ets
@@ -206,7 +206,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @[lazy_import_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncPos.ets) -->
+<!-- @lazy_import_function_positive -->
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportFuncPos.ets
@@ -223,7 +223,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @[lazy_import_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedPos.ets) -->
+<!-- @lazy_import_observed_positive -->
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportObservedPos.ets
@@ -249,7 +249,7 @@ export class Person {
 
 【反例】
 
-<!-- @[decorator_use_isolation_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationNeg.ets) -->
+<!-- @decorator_use_isolation_negative -->
 
 ``` TypeScript
 // src/main/ets/pages/DecUseIsolationNeg.ets
@@ -293,7 +293,7 @@ struct Index {
 }
 ```
 
-<!-- @[use_isolation_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerNeg.ets) -->
+<!-- @use_isolation_worker_negative -->
 
 ``` TypeScript
 // src/main/ets/workers/UseIsolationWorkerNeg.ets
@@ -324,7 +324,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @[use_isolation_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncNeg.ets) -->
+<!-- @use_isolation_function_negative -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationFuncNeg.ets
@@ -340,7 +340,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @[use_isolation_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedNeg.ets) -->
+<!-- @use_isolation_observed_negative -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationObservedNeg.ets
@@ -362,7 +362,7 @@ export class Person {
 
 【正例】
 
-<!-- @[decorator_use_isolation_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationPos.ets) -->
+<!-- @decorator_use_isolation_positive -->
 
 ``` TypeScript
 // src/main/ets/pages/DecUseIsolationPos.ets
@@ -406,7 +406,7 @@ struct Index {
 }
 ```
 
-<!-- @[use_isolation_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerPos.ets) -->
+<!-- @use_isolation_worker_positive -->
 
 ``` TypeScript
 // src/main/ets/workers/UseIsolationWorkerPos.ets
@@ -437,7 +437,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @[use_isolation_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncPos.ets) -->
+<!-- @use_isolation_function_positive -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationFuncPos.ets
@@ -453,7 +453,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @[use_isolation_addition_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationAdditionPos.ets) -->
+<!-- @use_isolation_addition_positive -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationAdditionPos.ets
@@ -463,7 +463,7 @@ export function innerTest(): void {
 }
 ```
 
-<!-- @[use_isolation_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedPos.ets) -->
+<!-- @use_isolation_observed_positive -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationObservedPos.ets

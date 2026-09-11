@@ -24,7 +24,7 @@ DLP的核心能力包括文件加密保护和文件权限管控。系统定义�
 
 企业接入DLP文件的层次结构如下图所示。企业安全应用基于系统DLP能力与云服务，实现文件加密和权限管控等数据保护能力。
 
-![](figures/enterprise-integration-into-dlp-solution.png)
+
 
 ### 基本概念
 

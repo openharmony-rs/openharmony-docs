@@ -20,7 +20,7 @@
   
   - 卡片管理服务：用于管理系统中所添加卡片的常驻代理服务，包括卡片对象的管理与使用，以及卡片周期性刷新等。
   
-   ![formHostModule](./figures/widget-host-development-guide-1.png)
+   formHostModule
 
 ## 场景介绍
 
@@ -47,20 +47,26 @@
 
 ### 临时卡片和常态卡片
 
-在卡片组件中的temporary字段可以配置卡片是临时卡片还是常态卡片。true为临时卡片，false为常态卡片。
+通过卡片组件的temporary字段配置卡片类型：`true`为临时卡片，`false`为常态卡片。
 
-- 常态卡片：卡片使用方会持久化的卡片。如添加到桌面的卡片。
+- **常态卡片**：由卡片管理服务持久化保存的卡片。使用方进程退出时保留，卡片管理服务重启后从数据库恢复，如添加到桌面的卡片。
 
-- 临时卡片：卡片使用方不会持久化的卡片。
-  
-由于临时卡片的数据具有非持久化的特殊性，某些场景例如卡片服务框架死亡重启，此时临时卡片数据在卡片管理服务中已经删除，且对应的卡片ID不会通知到提供方，所以卡片提供方需要自己负责清理长时间未删除的临时卡片数据。同时对应的卡片使用方可能会将之前请求的临时卡片转换为常态卡片。如果转换成功，卡片提供方也需要对对应的临时卡片ID进行处理，把卡片提供方记录的临时卡片数据转换为常态卡片数据，防止提供方在清理长时间未删除的临时卡片时，把已经转换为常态卡片的临时卡片信息删除，导致卡片信息丢失。  
+- **临时卡片**：卡片管理服务不持久化保存的卡片。在卡片使用方进程存活期间不会自动销毁，需在卡片不再使用时调用formHost.deleteForm主动删除；仅在卡片使用方进程退出时由卡片管理服务自动清理，若不主动删除将常驻内存。
+
+> **说明：**
+>
+> 卡片管理服务重启后，临时卡片会被删除，且对应卡片ID不会通知到卡片提供方。因此：
+> - **卡片使用方**：若需将临时卡片保留为常态卡片，应在进程退出前调用formHost.castToNormalForm转换。
+> - **卡片提供方**：需自行清理长时间未删除的临时卡片；若使用方已将临时卡片转为常态卡片，提供方需同步更新记录，防止清理时误删已转换的卡片信息。
+>
+> 此外，系统对可添加的卡片数量有一定限制，具体配额上限请参考卡片的约束与限制。
 
 ## formHost接口
 
 formHost提供一系列的卡片使用方接口，来操作卡片的更新、删除等行为，具体的API介绍详见@ohos.app.form.formHost (formHost)(系统接口)。
 
 ## 卡片使用方示例
-<!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
+<!-- @form_host_index -->
 
 ``` TypeScript
 import { HashMap, HashSet } from '@kit.ArkTS';
@@ -512,10 +518,10 @@ struct formHostSample {
 }
 ```
 
-![screenshot](./figures/widget-host-development-guide-2.jpeg)
+screenshot
 
 ## 相关实例
 
 针对卡片使用方开发，有以下实例可供参考：
 
-- [卡片使用方（Stage）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Form/FormHost)
+- 卡片使用方（Stage）（API12）

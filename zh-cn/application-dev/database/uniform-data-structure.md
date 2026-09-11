@@ -33,7 +33,7 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 
 1. 导入对应模块。
 
-    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @import_module -->
     
     ``` TypeScript
     // 1. 导入uniformDataStruct、unifiedDataChannel和uniformTypeDescriptor模块。
@@ -53,7 +53,7 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 
 7. 遍历每条记录，判断该记录的数据类型，转换为子类对象并得到原数据记录。
 
-    <!-- @[unified_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @unified_data_structure -->
     
     ``` TypeScript
     // 2. 创建超链接数据记录。

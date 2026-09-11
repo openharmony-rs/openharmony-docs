@@ -19,7 +19,7 @@
 
 ## 开发步骤
 ### 密钥生成和数据加密
-<!-- @[fingerprint_access_key_generation_and_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+<!-- @fingerprint_access_key_generation_and_encryption -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
@@ -258,7 +258,7 @@ async function step2EncryptData(): Promise<void> {
 ```
 
 ### 用户认证
-<!-- @[fingerprint_access_user_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+<!-- @fingerprint_access_user_authentication -->
 
 ``` TypeScript
 /* 步骤3：用户认证模块 */
@@ -314,7 +314,7 @@ function performUserAuthentication(huksChallenge: Uint8Array): void {
 ```
 
 ### 数据解密和验证
-<!-- @[fingerprint_access_decryption_and_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+<!-- @fingerprint_access_decryption_and_verification -->
 
 ``` TypeScript
 /* 步骤4：解密模块 */

@@ -20,13 +20,13 @@
 
 **数据周期示意图**
 
-![power-saving-data-period](figures/power-saving-data-period.png)
+power-saving-data-period
 
 在数据周期内，快速请求数据写满缓存时，进入休眠状态。当缓存数据消费完后，会触发下一个周期。
 
 **播放进度示意图**
 
-![power-saving-data-progress](figures/power-saving-data-progress.png)
+power-saving-data-progress
 
 在数据周期内，快速请求数据写满缓存时，播放进度按实际播放量计算。当缓存数据消费完（即播放进度到达写入数据量）后，会触发下一个周期。
 
@@ -52,4 +52,4 @@
     > - 获取时间戳接口调用频率建议大于200ms一次，以免影响系统性能。
     > - 应用程序调用接口flush或OH_AudioRenderer_Flush()后，播放的数据量会重置为0。
     > - 播放数据量均会小于写入数据量。由于系统帧长与时延机制，已播放的数据量不等于写入数据量。
-    > - 写完数据后获取时间戳，如果2个周期内时间戳不变，即为播完；或者根据设置的倍速推算剩余播放时长，超过相应时长，即为播完。（如：记总写入数据量p<sub>1</sub>，写完后获取时间戳p<sub>2</sub>，设置倍速α且α>0，音频采样率f<sub>s</sub>且f<sub>s</sub>>0，剩余可播时长t。公式：![formula_not_played_data_length](figures/formula_not_played_data_length.png)）
+    > - 写完数据后获取时间戳，如果2个周期内时间戳不变，即为播完；或者根据设置的倍速推算剩余播放时长，超过相应时长，即为播完。（如：记总写入数据量p<sub>1</sub>，写完后获取时间戳p<sub>2</sub>，设置倍速α且α>0，音频采样率f<sub>s</sub>且f<sub>s</sub>>0，剩余可播时长t。公式：formula_not_played_data_length）

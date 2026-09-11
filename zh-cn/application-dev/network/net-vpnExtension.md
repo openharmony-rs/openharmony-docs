@@ -38,7 +38,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 如果想使您的应用支持VPN能力，首先您需要创建一个继承于VpnExtensionAbility的extensionAbilities。
 
-<!-- @[create_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/module.json5) -->
+<!-- @create_vpn_extension_ability -->
 
 ``` JSON5
 // 举例：在应用的module.json5中定义MyVpnExtAbility。
@@ -58,7 +58,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 接下来您需要在创建的VpnExtensionAbility中实现VPN的配置、启动和停止操作：
 
-- 建立一个VPN的网络隧道，以UDP隧道为例（参考本文下方VPN Demo示例工程文件[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/cpp/napi_init.cpp)的UdpConnect()方法）；
+- 建立一个VPN的网络隧道，以UDP隧道为例（参考本文下方VPN Demo示例工程文件napi_init的UdpConnect()方法）；
 - 通过VpnConnection.protect保护前一步建立的UDP隧道；
 - 构建VPN Config参数，参考VPN Config参数说明；
 - 通过VpnConnection.create建立VPN网络连接；
@@ -68,7 +68,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 当VPN应用启动VPN连接时，需要调用startVpnExtensionAbility接口，携带需要启动的VpnExtensionAbility信息，其中bundleName需要与您的VPN应用bundleName一致，abilityName为您在前面创建的VpnExtensionAbility名。您可参考如下示例：
 
-<!-- @[start_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StartVpn.ets) -->
+<!-- @start_vpn_extension_ability -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -133,7 +133,7 @@ struct StartVpn {
 
 您可参考如下示例：
 
-<!-- @[stop_vpn_extension_ability_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
+<!-- @stop_vpn_extension_ability_import -->    
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -141,7 +141,7 @@ import { vpnExtension } from '@kit.NetworkKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 
-<!-- @[stop_vpn_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
+<!-- @stop_vpn_extension_ability -->    
 
 ``` TypeScript
 const TITLE_FONT_SIZE = 35; // 标题字体大小
@@ -198,7 +198,7 @@ struct StopVpn {
 
 stopVpnExtensionAbility后，您的VPN Extension Ability的onDestroy方法将被调用，您可在此时destroy vpn连接。
 
-<!-- @[stop_vpn_extension_ability_on_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/StopVpn.ets) -->    
+<!-- @stop_vpn_extension_ability_on_destroy -->    
 
 ``` TypeScript
 private context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
@@ -223,7 +223,7 @@ Destroy() {
 
 可参考如下示例：
 
-<!-- @[get_vpn_id_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/GetVpnIdTest.ets) --> 
+<!-- @get_vpn_id_ability --> 
 
 ``` TypeScript
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
@@ -248,7 +248,7 @@ export class VpnTest extends VpnExtensionAbility {
 
 若需断开VPN，可参考如下示例：
 
-<!-- @[destroy_vpn_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/DestroyVpnTest.ets) --> 
+<!-- @destroy_vpn_ability --> 
 
 ``` TypeScript
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
@@ -294,7 +294,7 @@ export class VpnTest extends VpnExtensionAbility {
 
 **示例：**
 
-<!-- @[vpn_config_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
+<!-- @vpn_config_import -->    
 
 ``` TypeScript
 import { vpnExtension } from '@kit.NetworkKit';
@@ -343,7 +343,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
 }
 ```
 
-<!-- @[vpn_config_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/pages/SetupVpn.ets) -->    
+<!-- @vpn_config_parameters -->    
 
 ``` TypeScript
 let context = this.getUIContext().getHostContext() as common.VpnExtensionContext;
@@ -357,7 +357,7 @@ vpnConnection.create(vpnConfig).then((data) => {
 
 ## VPN Demo示例
 
-OpenHarmony开源项目包含一个名为[VPN](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case)的示例应用。此应用展示了如何设置和连接 VPN 服务。
+OpenHarmony开源项目包含一个名为VPN的示例应用。此应用展示了如何设置和连接 VPN 服务。
 
 
 

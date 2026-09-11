@@ -76,7 +76,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 2. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
 3. 调用FetchResult.getFirstObject接口获取第一个用户相册。
 
-<!-- @[get_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getuseralbumability/GetUserAlbumAbility.ets) -->
+<!-- @get_user_album -->
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -138,7 +138,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 4. 调用MediaAlbumChangeRequest.setAlbumName接口设置新的相册名。
 5. 调用PhotoAccessHelper.applyChanges接口将修改的相册属性更新到数据库中完成修改。
 
-<!-- @[rename_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/renameuseralbumability/RenameUserAlbumAbility.ets) -->
+<!-- @rename_user_album -->
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -198,7 +198,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 7. 调用MediaAlbumChangeRequest.addAssets接口往用户相册中添加图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
-<!-- @[add_media_to_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/addmediatouseralbumability/AddMediaToUserAlbumAbility.ets) -->
+<!-- @add_media_to_user_album -->
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -265,7 +265,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 5. 调用Album.getAssets接口获取用户相册中的图片资源。
 6. 调用FetchResult.getFirstObject接口获取第一张图片。
 
-<!-- @[get_media_from_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/getmediafromuseralbumability/GetMediaFromUserAlbumAbility.ets) -->
+<!-- @get_media_from_user_album -->
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -331,7 +331,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 7. 调用MediaAlbumChangeRequest.removeAssets接口从用户相册中移除图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
-<!-- @[remove_media_from_user_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/UserAlbumUsageSample/entry/src/main/ets/removemediafromuseralbumability/RemoveMediaFromUserAlbumAbility.ets) -->
+<!-- @remove_media_from_user_album -->
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

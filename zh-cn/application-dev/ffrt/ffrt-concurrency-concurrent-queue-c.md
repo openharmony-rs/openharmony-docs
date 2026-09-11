@@ -26,7 +26,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-<!-- @[concurrent_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue.h) -->
+<!-- @concurrent_c_header -->
 
 ``` C
 #include <cstdio>
@@ -38,7 +38,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 #define LOG_TAG "ConcurrentTag"
 ```
 
-<!-- @[concurrent_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue.cpp) -->
+<!-- @concurrent_c -->
 
 ``` C++
 

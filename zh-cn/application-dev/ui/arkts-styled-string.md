@@ -19,7 +19,7 @@
   >
   > 从API version 15开始，在aboutToAppear中调用setStyledString方法，页面初始化时可以显示属性字符串。
 
-  <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
+  <!-- @createStyledString_start -->
   
   ``` TypeScript
   @Entry
@@ -54,7 +54,7 @@
   }
   ```
 
-  ![StyledString_Init](figures/span_string_init.png)
+  StyledString_Init
 
 ## 设置文本样式
 
@@ -62,7 +62,7 @@
 
 - 创建及应用文本字体样式对象（TextStyle）
 
-  <!-- @[styledStringTextStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextStyle.ets) -->
+  <!-- @styledStringTextStyle_start -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -114,11 +114,11 @@
   }
   ```
 
-  ![StyledString_TextStyle](figures/StyledString_TextStyle.png)
+  StyledString_TextStyle
 
 - 创建及应用文本阴影对象（TextShadowStyle）
 
-  <!-- @[styledStringTextShadowStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextShadowStyle.ets) -->
+  <!-- @styledStringTextShadowStyle_start -->
   
   ``` TypeScript
   // xxx.ets
@@ -157,11 +157,11 @@
   }
   ```
 
-  ![StyledString_TextShadow](figures/styled_string_text_shadow.png)
+  StyledString_TextShadow
 
 - 创建及应用文本装饰线对象（DecorationStyle）
 
-  <!-- @[styledStringDecorationStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringDecorationStyle.ets) -->
+  <!-- @styledStringDecorationStyle_start -->
   
   ``` TypeScript
   // xxx.ets
@@ -223,11 +223,11 @@
   }
   ```
 
-  ![StyledString_Decoration](figures/styled_string_decoration.jpg)
+  StyledString_Decoration
 
 - 创建及应用文本基线偏移量对象（BaselineOffsetStyle）
 
-  <!-- @[styledStringBaselineOffsetStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringBaselineOffsetStyle.ets) -->
+  <!-- @styledStringBaselineOffsetStyle_start -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -263,11 +263,11 @@
   }
   ```
 
-  ![StyledString_Baseline](figures/styled_string_baselineoffset.png)
+  StyledString_Baseline
 
 - 创建及应用文本行高对象（LineHeightStyle）
 
-  <!-- @[styledStringLineHeightStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLineHeightStyle.ets) -->
+  <!-- @styledStringLineHeightStyle_start -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -304,11 +304,11 @@
   }
   ```
 
-  ![StyledString_lineHeight](figures/styled_string_lineHeight.png)
+  StyledString_lineHeight
 
 - 创建及应用文本字符间距对象（LetterSpacingStyle）
 
-  <!-- @[styledStringLetterSpacingStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLetterSpacingStyle.ets) -->
+  <!-- @styledStringLetterSpacingStyle_start -->
   
   ``` TypeScript
   import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
@@ -343,17 +343,17 @@
   }
   ```
 
-  ![StyledString_letterSpacing](figures/styled_string_letterspacing.png)
+  StyledString_letterSpacing
 
 ## 设置段落样式
 
 可通过ParagraphStyle设置段落样式布局。下图显示了如何分割文本中的段落，段落以换行符 \n 结尾。
 
-![paragraphs](figures/styledstringParagraphs.png)
+paragraphs
 
 以下代码示例展示了如何创建ParagraphStyle并应用。如果将ParagraphStyle附加到段落开头、末尾或之间的任何位置，均会应用样式，非段落区间内则不会应用样式。
 
-  <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
+  <!-- @styledStringParagraphStyleOne_start -->
   
   ``` TypeScript
   import { LengthMetrics} from '@kit.ArkUI';
@@ -419,11 +419,11 @@
   }
   ```
 
-  ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
+  styled_string_paragraph1
   
   除了可以在创建属性字符串时就预设样式，也可以后续通过replaceStyle清空原样式替换新样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
-  <!-- @[styledStringReplaceParagraphStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringReplaceParagraphStyle.ets) -->
+  <!-- @styledStringReplaceParagraphStyle_start -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -509,7 +509,7 @@
   }
   ```
 
-  ![styled_string_paragraph2](figures/styled_string_paragraph2.gif)
+  styled_string_paragraph2
 
 ## 支持将属性字符串转换成Paragraph
 
@@ -517,7 +517,7 @@
 
 - 以下示例展示了通过MeasureUtils的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
 
-  <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
+  <!-- @styledStringConvertedToParagraph_start -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -727,7 +727,7 @@
   }
   ```
 
-  ![StyledString_GetParagraphs](figures/StyledString_GetParagraphs.png)
+  StyledString_GetParagraphs
 
 
 ## 使用图片
@@ -740,7 +740,7 @@
 >
 > 属性字符串的构造函数constructor中，当入参value的类型为ImageAttachment或CustomSpan时，styles参数不生效。需要设置styles时，通过setStyle、insertStyledString等方法实现。
 
-  <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) -->
+  <!-- @styledStringImageAttachment_start -->
   
   ``` TypeScript
   // xxx.ets
@@ -916,7 +916,7 @@
   }
   ```
 
-  ![StyledString_ImageAttachment](figures/StyledStringImageAttachment.png)
+  StyledString_ImageAttachment
 
 ## 设置事件
 
@@ -924,7 +924,7 @@
 
 除了初始化属性字符串对象即初始样式对象，亦可通过setStyle接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
-  <!-- @[styledStringGestureStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets) -->
+  <!-- @styledStringGestureStyle_start -->
   
   ``` TypeScript
   import { drawing } from '@kit.ArkGraphics2D';
@@ -1077,15 +1077,15 @@
   }
   ```
 
-  ![styled_string_event](figures/styled_string_event.gif)
+  styled_string_event
 
 ## 格式转换
 
-可以通过toHtml、fromHtml接口实现属性字符串与HTML格式字符串的相关转换，支持转换的HTML标签部分范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>，完整范围参见fromHtml的接口说明。
+可以通过toHtml、fromHtml接口实现属性字符串与HTML格式字符串的相关转换，支持转换的HTML标签部分范围：\<p>、\<span>、\、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>，完整范围参见fromHtml的接口说明。
 
 - 以下示例展示了如何将属性字符串转换成HTML格式，并展示了如何从HTML格式转换回属性字符串。
 
-<!-- @[styledStringHtml_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtml.ets) -->
+<!-- @styledStringHtml_start -->
 
 ``` TypeScript
 // xxx.ets
@@ -1175,11 +1175,11 @@ struct StyledStringHtml {
 }
 ```
 
-![](figures/styled_string_html.gif)
+
 
 - 将HTML中\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>标签及其style属性中的background-color转换为属性字符串并转回HTML。
  
-  <!-- @[styledStringHtmlOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtmlOne.ets) -->
+  <!-- @styledStringHtmlOne_start -->
   
   ``` TypeScript
   // xxx.ets
@@ -1250,13 +1250,13 @@ struct StyledStringHtml {
   }
   ```
 
-  ![styled_string_html_2](figures/styled_string_html_2.gif)
+  styled_string_html_2
 
 ## 场景示例
 
 该示例通过ParagraphStyle、LineHeightStyle、TextStyle对象展示了会员过期提示的效果。
 
-<!-- @[styledStringSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringSceneExample.ets) -->
+<!-- @styledStringSceneExample_start -->
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1421,4 +1421,4 @@ struct StyledStringSceneExample {
 }
 ```
 
-![StyledString_SceneDemo](figures/styledString_sceneDemo.png)
+StyledString_SceneDemo

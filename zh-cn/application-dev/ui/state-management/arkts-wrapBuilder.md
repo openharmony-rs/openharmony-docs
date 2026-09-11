@@ -79,7 +79,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给变量`globalBuilder`，以解决\@Builder方法赋值给变量后无法使用的问题。
 
- <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->  
+ <!-- @wrapbuilder_page_two -->  
  
  ``` TypeScript
  @Builder
@@ -109,13 +109,13 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
  }
  ```
 
-![arkts-wrapBuilder-0](./figures/arkts-wrapBuilder-0.png)
+arkts-wrapBuilder-0
 
 ## @Builder方法赋值给变量在UI语法中使用
 
 自定义组件`IndexItem`使用ForEach进行不同\@Builder函数的渲染，可以使用`builderArr`声明的wrapBuilder数组来实现不同的\@Builder函数的效果。整体代码会更加整洁。
 
-<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->   
+<!-- @wrapbuilder_page_three -->   
 
 ``` TypeScript
 @Builder
@@ -159,13 +159,13 @@ struct IndexItem {
 }
 ```
 
-![arkts-wrapBuilder-1](./figures/arkts-wrapBuilder-1.png)
+arkts-wrapBuilder-1
 
 ## @Builder方法赋值给类或者接口的属性
 
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给接口`ChildOptions`中的属性，可以以数据的形式传递给其他子组件调用。
 
-<!-- @[wrapbuilder_as_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/WrapBuilderAsField.ets) --> 
+<!-- @wrapbuilder_as_field --> 
 
 ``` TypeScript
 @Builder
@@ -206,13 +206,13 @@ struct Child {
 }
 ```
 
-![arkts-wrapBuilder-2](./figures/arkts-wrapBuilder-2.png)
+arkts-wrapBuilder-2
 
 ## 引用传递
 
 按引用传递参数时，状态变量的改变会引起\@Builder方法内的UI刷新。
 
-<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->  
+<!-- @wrapbuilder_page_four -->  
 
 ``` TypeScript
 class Tmp {
@@ -252,7 +252,7 @@ struct Parent {
 }
 ```
 
-![arkts-wrapBuilder-3](./figures/arkts-wrapBuilder-3.gif)
+arkts-wrapBuilder-3
 
 ## 常见问题
 
@@ -260,7 +260,7 @@ struct Parent {
 
 在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(myBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(myBuilderSecond)`将不会生效。
 
-<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) --> 
+<!-- @wrapbuilder_page_five --> 
 
 ``` TypeScript
 @Builder
@@ -306,4 +306,4 @@ struct TestBuilderIndex {
 }
 ```
 
-![arkts-wrapBuilder-4](./figures/arkts-wrapBuilder-4.png)
+arkts-wrapBuilder-4

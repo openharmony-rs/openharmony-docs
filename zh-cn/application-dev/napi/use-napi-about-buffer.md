@@ -1,7 +1,7 @@
 # 使用Node-API接口进行buffer相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -38,7 +38,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_create_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_buffer -->
 
 ``` C++
 // napi_create_buffer
@@ -62,7 +62,7 @@ static napi_value CreateBuffer(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_buffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_buffer_api -->
 
 ``` TypeScript
 export const createBuffer: () => string; // napi_create_buffer
@@ -70,7 +70,7 @@ export const createBuffer: () => string; // napi_create_buffer
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_buffer_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_buffer_test -->
 
 ``` TypeScript
 // napi_create_buffer
@@ -90,7 +90,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_create_buffer_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_buffer_copy -->
 
 ``` C++
 // napi_create_buffer_copy
@@ -117,7 +117,7 @@ static napi_value CreateBufferCopy(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_buffer_copy_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_buffer_copy_api -->
 
 ``` TypeScript
 export const createBufferCopy: () => string; // napi_create_buffer_copy
@@ -125,7 +125,7 @@ export const createBufferCopy: () => string; // napi_create_buffer_copy
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_buffer_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_buffer_copy -->
 
 ``` TypeScript
 // napi_create_buffer_copy
@@ -145,7 +145,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_create_external_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_external_buffer -->
 
 ``` C++
 // 回调函数，用于释放内存
@@ -186,7 +186,7 @@ static napi_value CreateExternalBuffer(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_external_buffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_external_buffer_api -->
 
 ``` TypeScript
 export const createExternalBuffer: () => string; // napi_create_external_buffer
@@ -194,7 +194,7 @@ export const createExternalBuffer: () => string; // napi_create_external_buffer
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_external_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_external_buffer -->
 
 ``` TypeScript
 // napi_create_external_buffer
@@ -215,7 +215,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_get_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_buffer_info -->
 
 ``` C++
 // napi_get_buffer_info
@@ -251,7 +251,7 @@ static napi_value GetBufferInfo(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_buffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_buffer_info_api -->
 
 ``` TypeScript
 export const getBufferInfo: () => string; // napi_get_buffer_info
@@ -259,7 +259,7 @@ export const getBufferInfo: () => string; // napi_get_buffer_info
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_buffer_info -->
 
 ``` TypeScript
 // napi_get_buffer_info
@@ -279,7 +279,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_is_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_buffer -->
 
 ``` C++
 // napi_is_buffer
@@ -303,7 +303,7 @@ static napi_value IsBuffer(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_is_buffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_is_buffer_api -->
 
 ``` TypeScript
 export const isBuffer: () => boolean; // napi_is_buffer
@@ -311,7 +311,7 @@ export const isBuffer: () => boolean; // napi_is_buffer
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_buffer -->
 
 ``` TypeScript
 // napi_is_buffer
@@ -331,7 +331,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_create_external_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_external_arraybuffer -->
 
 ``` C++
 static constexpr int INT_ARG_5 = 5; // 入参索引
@@ -383,7 +383,7 @@ napi_value CreateExternalArraybuffer(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_external_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_external_arraybuffer_api -->
 
 ``` TypeScript
 export const createExternalArraybuffer: () => ArrayBuffer | undefined; // napi_create_external_arraybuffer
@@ -391,7 +391,7 @@ export const createExternalArraybuffer: () => ArrayBuffer | undefined; // napi_c
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_external_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_external_arraybuffer -->
 
 ``` TypeScript
 // napi_create_external_arraybuffer

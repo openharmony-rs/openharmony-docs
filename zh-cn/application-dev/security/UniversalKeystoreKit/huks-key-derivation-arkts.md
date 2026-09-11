@@ -58,7 +58,7 @@
 
 ### HKDF
 准备HKDF密钥派生材料
-<!-- @[the_key_is_derived_from_hkdf_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
+<!-- @the_key_is_derived_from_hkdf_one -->
 
 ``` TypeScript
 /*
@@ -165,7 +165,7 @@ class ThrowObject {
 }
 ```
 执行密钥派生
-<!-- @[the_key_is_derived_from_hkdf_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
+<!-- @the_key_is_derived_from_hkdf_two -->
 
 ``` TypeScript
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
@@ -379,7 +379,7 @@ async function testDerive() {
 
 ### PBKDF2
 准备PBKDF2密钥派生材料
-<!-- @[the_key_is_derived_from_pbkdf2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
+<!-- @the_key_is_derived_from_pbkdf2_one -->
 
 ``` TypeScript
 /*
@@ -500,7 +500,7 @@ class ThrowObject {
 }
 ```
 执行密钥派生
-<!-- @[the_key_is_derived_from_pbkdf2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
+<!-- @the_key_is_derived_from_pbkdf2_two -->
 
 ``` TypeScript
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {

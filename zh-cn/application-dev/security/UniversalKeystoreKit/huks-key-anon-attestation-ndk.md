@@ -23,7 +23,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 3. 将密钥别名与参数集作为参数传入OH_Huks_AnonAttestKeyItem方法中，即可证明密钥。
 
 ## 开发案例
-<!-- @[anonymized_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @anonymized_key_proof -->
 
 ``` C++
 #include "huks/native_huks_api.h"

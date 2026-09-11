@@ -26,7 +26,7 @@ RenderNode提供了节点的增、删、查、改的能力，能够修改节点�
 >
 > - RenderNode如果要与系统直接结合显示，需通过FrameNode中获取的RenderNode进行挂载上树。
 
-<!-- @[operation_node_tree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets) --> 
+<!-- @operation_node_tree --> 
 
 ``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
@@ -111,7 +111,7 @@ export struct OperationNodeTree {
   }
 }
 ```
-![](figures/operation_node_tree.png)
+
 
 ## 设置和获取渲染相关属性
 
@@ -125,7 +125,7 @@ RenderNode中可以设置渲染相关的属性，包括：backgroundColor，clip
 >
 > - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中具体属性设置是由状态管理实现的，属性更新的时序开发者不可控，BuilderNode和FrameNode中同时设置RenderNode属性可能会导致RenderNode属性设置与预期不相符。
 
-<!-- @[rendering_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets) -->
+<!-- @rendering_properties -->
 
 ``` TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeMask, ShapeClip } from '@kit.ArkUI';
@@ -331,7 +331,7 @@ export struct RenderingProperties {
   }
 }
 ```
-![](figures/rendering_properties.gif)
+
 
 ## 自定义绘制
 
@@ -345,7 +345,7 @@ export struct RenderingProperties {
 
 **ArkTS接口调用示例：**
 
-<!-- @[custom_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDraw.ets) -->
+<!-- @custom_draw -->
 
 ``` TypeScript
 import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
@@ -436,7 +436,7 @@ export struct CustomDraw {
   }
 }
 ```
-![](figures/custom_draw.gif)
+
 
 ## 调整自定义绘制Canvas的变换矩阵
 
@@ -452,7 +452,7 @@ export struct CustomDraw {
 
 **ArkTS接口调用示例：**
 
-<!-- @[custom_draw_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvas.ets) -->
+<!-- @custom_draw_canvas -->
 
 ``` TypeScript
 import { NodeController, UIContext, RenderNode, DrawContext, FrameNode } from '@kit.ArkUI';
@@ -594,13 +594,13 @@ export struct CustomDrawCanvas {
 }
 ```
 
-![RenderNode-canvas](./figures/renderNode-canvas.png)
+RenderNode-canvas
 
 **Node-API调用示例：**
 
 C++侧可通过Node-API来获取Canvas，并进行后续的自定义绘制操作。
 
-<!-- @[native_bridge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/NativeBridge.cpp) -->
+<!-- @native_bridge -->
 
 ``` C++
 // native_bridge.cpp
@@ -709,7 +709,7 @@ target_link_libraries(entry PUBLIC libnative_drawing.so)
 ```
 
 同时在工程中的`src/main/cpp/types/libentry/index.d.ts`文件中，添加自定义绘制函数在ArkTS侧的定义，如：
-<!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @index -->
 
 ``` TypeScript
 import { DrawContext } from '@kit.ArkUI'
@@ -719,7 +719,7 @@ export const nativeOnDraw: (id: number, context: DrawContext, width: number, hei
 
 ArkTS侧代码：
 
-<!-- @[custom_draw_canvas_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CustomDrawCanvasNative.ets) --> 
+<!-- @custom_draw_canvas_native --> 
 
 ``` TypeScript
 import bridge from 'libentry.so'; // 该 so 由 Node-API 编写并生成
@@ -772,13 +772,13 @@ export struct CustomDrawCanvasNative {
 }
 ```
 
-![RenderNode-NodeAPI](./figures/renderNode-NodeAPI.png)
+RenderNode-NodeAPI
 
 ## 设置标签
 
 开发者可利用label接口向RenderNode设置标签信息，有助于在使用inspector检查页面布局时更清晰区分各节点。
 
-<!-- @[set_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/SetLabel.ets) -->
+<!-- @set_label -->
 
 ``` TypeScript
 import { RenderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -828,7 +828,7 @@ export struct SetLabel {
   }
 }
 ```
-![](figures/set_label.png)
+
 
 ## 查询当前RenderNode是否解除引用
 
@@ -836,7 +836,7 @@ export struct SetLabel {
 
 从API version 20开始，使用isDisposed接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
-<!-- @[check_render_node_disposed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/CheckRenderNodeDisposed.ets) -->
+<!-- @check_render_node_disposed -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode } from '@kit.ArkUI';
@@ -908,4 +908,4 @@ export struct CheckRenderNodeDisposed {
 }
 ```
 
-![](figures/check_render_node_disposed.gif)
+

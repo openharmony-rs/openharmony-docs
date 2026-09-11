@@ -40,7 +40,7 @@
 
 使用OHAudio开发请参考：获取音频会话管理器。
 
-<!-- @[get_session_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @get_session_manager --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -111,7 +111,7 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
    应用在激活AudioSession时，需指定音频会话策略。策略中包含参数concurrencyMode，其类型为AudioConcurrencyMode，用于声明音频并发策略。
 
-   <!-- @[activate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @activate_audio_session_v1 -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -137,7 +137,7 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
    应用可以通过isAudioSessionActivated接口检查当前应用的音频会话是否已激活。
 
-   <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @is_audio_session_activated -->
    
    ``` TypeScript
    // 查询音频会话是否已激活。
@@ -154,7 +154,7 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
    应用可以通过off('audioSessionDeactivated')接口取消监听音频会话停用事件。
 
-   <!-- @[on_audio_session_deactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @on_audio_session_deactivated -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -175,7 +175,7 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
    >
    > AudioSession停用后，应用新起的音频流将会按照默认焦点策略起流。
 
-   <!-- @[deactivate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @deactivate_audio_session_v1 -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,7 +196,7 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 下面展示了音频流独立持有焦点的示例代码。
 
-<!-- @[audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @audio_session_v1 -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -308,7 +308,7 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
    > - 激活AudioSession时系统会根据应用选择的音频会话场景申请对应的音频焦点，后续应用通过AudioRenderer启动的播放流不再申请音频焦点。
    > - 如果激活AudioSession时应用已存在启动的音频播放流，系统会释放该音频播放流持有的焦点，并由AudioSession统一管理。
 
-   <!-- @[activate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @activate_audio_session_v2 -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -338,7 +338,7 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
    应用可以通过isAudioSessionActivated接口检查当前应用的音频会话是否已激活。
 
-   <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @is_audio_session_activated -->
    
    ``` TypeScript
    // 查询音频会话是否已激活。
@@ -349,7 +349,7 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
    应用可以通过on('audioSessionStateChanged')来监听AudioSession的焦点和状态变化。
 
-   <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @on_audio_session_state_changed --> 
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -410,7 +410,7 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
    >
    > 停用AudioSession时系统会释放AudioSession申请的焦点，并停用该应用正在播放的所有音频流。
 
-   <!-- @[deactivate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @deactivate_audio_session_v2 -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -430,7 +430,7 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
 下面展示了音频会话统一持有焦点的示例代码。
 
-<!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @audio_session_v2 --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -530,7 +530,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 该接口仅允许在当前音频会话存在运行中的录音流时调用，否则会返回错误码`6800103`。若某条录音流同时调用了流级静音提示接口AudioCapturer.setMuteHint和会话级静音提示接口，流级设置优先级更高，以流级设置值为准。因此，当应用内多条录音流的静音状态一致时，可以使用会话级接口统一上报；当不同录音流静音状态不一致时，建议对具体录音流使用流级接口。若为了调用会话级接口而创建Mic音频源录音流，需要申请麦克风权限`ohos.permission.MICROPHONE`。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示。
 
-<!-- @[set_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @set_capturer_mute_hint -->
 
 ``` TypeScript
 try {
@@ -552,7 +552,7 @@ try {
 
 启用混音播放下静音建议通知，需要先调用接口setAudioSessionScene设置场景参数，并调用enableMuteSuggestionWhenMixWithOthers开启静音建议通知功能，同时订阅音频会话状态更改事件AudioSessionStateChangedEvent，最后调用activateAudioSession接口激活AudioSession。启用静音建议通知的前提是AudioConcurrencyMode模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
-<!-- @[enable_mute_suggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @enable_mute_suggestion -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -588,7 +588,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考setIndependentAudioSessionStrategy。对于录音流，详情请参考setIndependentAudioSessionStrategy。
 
-<!-- @[set_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @set_session_behavior -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';

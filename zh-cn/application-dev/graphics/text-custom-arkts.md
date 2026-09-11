@@ -50,7 +50,7 @@
    ```
 
 2. 创建段落样式，并构造段落生成器ParagraphBuilder实例。
-   <!-- @[arkts_independent_shaping_text_paragraph_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   <!-- @arkts_independent_shaping_text_paragraph_builder -->
    
    ``` TypeScript
    let myTextStyle: text.TextStyle = {
@@ -65,14 +65,14 @@
    ```
 
 3. 添加文本内容。
-   <!-- @[arkts_independent_shaping_text_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   <!-- @arkts_independent_shaping_text_add_text -->
    
    ``` TypeScript
    paragraphBuilder.addText('Hello World');
    ```
 
 4. 创建行对象。获取行中所有文字的塑形结果。使用createLine()方法创建一个单行对象，通过行对象getGlyphRuns()方法获取相同样式的文字单元。
-   <!-- @[arkts_independent_shaping_text_get_glyph_runs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   <!-- @arkts_independent_shaping_text_get_glyph_runs -->
    
    ``` TypeScript
    // 生成行
@@ -84,7 +84,7 @@
    ```
 
 5. 该步骤是文本塑形流程中的自定义绘制环节。通过调用getGlyphs()方法获取文本中每个字符对应的字形序号，再结合getFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。从 API version 20 开始，新增的getAdvances()方法能够返回一个数组，包含范围内每个字形的字形宽度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
-   <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   <!-- @arkts_independent_shaping_text_drawing -->
    
    ``` TypeScript
    let x: number = 0;
@@ -111,4 +111,4 @@
 
 效果展示：
 
-![ts_independent_shaping.png](figures/ts_independent_shaping.png)
+ts_independent_shaping.png

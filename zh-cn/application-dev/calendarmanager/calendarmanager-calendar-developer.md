@@ -33,7 +33,7 @@
 
 1. 导入相关依赖。
 
-    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @calendarData_entryAbilityImport -->
     
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
@@ -47,7 +47,7 @@
 
 3. 根据上下文获取日历管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
-    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @calendarData_entryAbility -->
     
     ``` TypeScript
     const DOMAIN = 0x0000;
@@ -105,7 +105,7 @@
 
 4. 根据日历账户信息，创建一个日历账户Calendar对象。
 
-    <!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_indexImport -->
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -123,7 +123,7 @@
       displayName: 'MyCalendar'
     };
     ```
-    <!-- @[calendarData_createAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_createAccount -->
     
     ``` TypeScript
     // 创建日历账户
@@ -139,7 +139,7 @@
 
 5. 日历账户创建之后，日历账户颜色默认为黑色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
 
-    <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_setConfig -->
     
     ``` TypeScript
     const calendarAccounts: calendarManager.CalendarAccount = {
@@ -172,7 +172,7 @@
 
 6. 可以查询指定日历账户。
 
-    <!-- @[calendarData_getAccountByParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_getAccountByParam -->
     
     ``` TypeScript
     calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
@@ -184,7 +184,7 @@
 
 7. 也可以查询默认日历账户，默认日历账户是日历存储首次运行时创建的，若创建日程时不关注归属哪个账户，则无须单独创建日历账户，可以直接使用默认日历账户。
 
-    <!-- @[calendarData_getDefaultAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_getDefaultAccount -->
     
     ``` TypeScript
     calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
@@ -198,7 +198,7 @@
 
    由于涉及数据隐私安全，进行了权限管控的应用无法获取其他应用创建的账户信息。
    
-    <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_getAllCalendars -->
     
     ``` TypeScript
     calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
@@ -214,7 +214,7 @@
 
 9. 删除指定的日历账户，删除账户后，该账户下的所有日程会全部删除。
 
-    <!-- @[calendarData_deleteCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarData_deleteCalendar -->
     
     ``` TypeScript
     if (!calendar || calendar === null) {

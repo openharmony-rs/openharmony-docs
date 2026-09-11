@@ -21,7 +21,7 @@
 
 4. 使用完毕后，调用OH_CryptoSm2CiphertextSpec_Destroy销毁SM2密文规格对象。
 
-<!-- @[create_asn1_ciphertext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/CreateASN1Ciphertext.cpp) -->
+<!-- @create_asn1_ciphertext -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
@@ -94,7 +94,7 @@ OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 
 3. 使用完毕后，调用OH_CryptoSm2CiphertextSpec_Destroy销毁SM2密文规格对象。
 
-<!-- @[obtain_cipher_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/ObtainCiphertext.cpp) -->
+<!-- @obtain_cipher_text -->
 
 ``` C++
 

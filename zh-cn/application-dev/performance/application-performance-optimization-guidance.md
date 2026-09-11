@@ -1266,7 +1266,7 @@ struct Page {
 
 抓取Trace图如下：    
 
-![](./figures/unnecessarystate.png)  
+  
 
 正例代码：
 
@@ -1296,7 +1296,7 @@ struct Page {
 
 抓取Trace图如下：  
 
-![](./figures/necessarystate.png)
+
 
 由此可见，使用普通变量代替状态变量在For/while循环中读取，可以减少耗时，因此在For/while循环中频繁读取变量时，可使用普通变量代替状态变量。
 ## 第四要素：合理使用系统接口，避免冗余操作

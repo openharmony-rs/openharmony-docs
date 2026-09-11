@@ -12,7 +12,7 @@
 
 **图1** 位图操作示意图
 
-![Bitmap operation](figures/bitmap-operation.png)
+Bitmap operation
 
 ## 开发步骤
 
@@ -22,7 +22,7 @@
 
 2. 从PixelMap位图对象中获取信息。
 
-   <!-- @[pixelmap_get_pixelmap_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @pixelmap_get_pixelmap_info -->
    
    ``` TypeScript
    // 获取图像像素的总字节数。
@@ -42,7 +42,7 @@
    >
    > 建议readPixelsToBuffer和writeBufferToPixels成对使用，readPixels和writePixels成对使用，避免因图像像素格式不一致，造成PixelMap图像出现异常。
 
-   <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @pixelmap_bitmap_operation_all -->
    
    ``` TypeScript
    // 场景一：读取并修改整张图像数据。
@@ -63,7 +63,7 @@
    });
    ```
 
-   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @pixelmap_bitmap_operation -->
    
    ``` TypeScript
    // 场景二：读取并修改指定区域内的图像数据。
@@ -109,7 +109,7 @@
 
 2. 参考以下代码对PixelMap进行深拷贝。
 
-   <!-- @[pixelmap_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @pixelmap_clone -->
    
    ``` TypeScript
    /**
@@ -153,7 +153,7 @@
 
 2. 参考以下代码对两张PixelMap进行拼接。
 
-   <!-- @[pixelmap_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @pixelmap_concatenation -->
    
    ``` TypeScript
    /**

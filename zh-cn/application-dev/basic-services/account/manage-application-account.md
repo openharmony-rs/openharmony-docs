@@ -18,7 +18,7 @@
 
 1. 导入应用账号模块。
 
-   <!-- @[import_the_application_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @import_the_application_account_module -->
 
 ``` TypeScript
 import { appAccount, BusinessError } from '@kit.BasicServicesKit';
@@ -27,7 +27,7 @@ import { appAccount, BusinessError } from '@kit.BasicServicesKit';
 
 2. 获取应用账号的实例对象。
 
-   <!-- @[obtain_the_instance_object_of_the_application_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @obtain_the_instance_object_of_the_application_account -->
 
 ``` TypeScript
 const appAccountManager = appAccount.createAppAccountManager();
@@ -42,7 +42,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 1. 参数准备，指定账号名和可选配置。
 
-    <!-- @[parameter_preparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @parameter_preparation -->
 
 ``` TypeScript
     let name: string = 'ZhangSan';
@@ -56,7 +56,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 2. 调用createAccount接口，根据名称和选项创建应用账号。
 
-   <!-- @[create_an_app_account_based_on_the_name_and_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @create_an_app_account_based_on_the_name_and_options -->
 
 ``` TypeScript
     appAccountManager.createAccount(name, options).then(()=>{
@@ -76,7 +76,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 调用getAllAccounts接口查询账号列表。
 
-   <!-- @[query_the_account_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @query_the_account_list -->
 
 ``` TypeScript
     appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
@@ -95,7 +95,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 1. 准备参数，指定账号名、凭据类型和凭据。
 
-   <!-- @[prepare_parameters_to_specify_the_account_name_credential_type_and_credential](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @prepare_parameters_to_specify_the_account_name_credential_type_and_credential -->
 
 ``` TypeScript
     let name: string = 'ZhangSan';
@@ -106,7 +106,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 2. 调用getCredential接口，获取账号的凭据。
 
-   <!-- @[obtain_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @obtain_the_credentials_for_your_account -->
 
 ``` TypeScript
     appAccountManager.getCredential(name, credentialType).then((data: string) => {
@@ -121,7 +121,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 3. 调用setCredential接口，设置账号的凭据。
 
-   <!-- @[set_the_credentials_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @set_the_credentials_for_your_account -->
 
 ``` TypeScript
     await appAccountManager.setCredential(name, credentialType, credential).then(() => {
@@ -139,7 +139,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 1. 准备参数，指定账号名和自定义键值。
 
-   <!-- @[prepare_parameters_specify_the_account_name_and_custom_key_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @prepare_parameters_specify_the_account_name_and_custom_key_values -->
 
 ``` TypeScript
     let name: string = 'ZhangSan';
@@ -150,7 +150,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 2. 调用setCustomData接口，设置账号的自定义数据。
 
-   <!-- @[set_up_custom_data_for_your_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @set_up_custom_data_for_your_account -->
 
 ``` TypeScript
     await appAccountManager.setCustomData(name, key, value).then(() => {
@@ -164,7 +164,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 3. 调用getCustomData接口，获取账号的自定义数据。
 
-   <!-- @[obtain_the_custom_data_of_the_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @obtain_the_custom_data_of_the_account -->
 
 ``` TypeScript
     appAccountManager.getCustomData(name, key).then((data: string) => {
@@ -183,7 +183,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 1. 准备参数，指定账号名、账号所有者、授权类型和授权令牌。
 
-   <!-- @[prepare_parameters_to_specify_the_account_name_account_owner_authorization_type_and_authorization_token](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @prepare_parameters_to_specify_the_account_name_account_owner_authorization_type_and_authorization_token -->
 
 ``` TypeScript
     let name: string = 'ZhangSan';
@@ -195,7 +195,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 2. 调用setAuthToken接口，设置指定授权类型的授权令牌。
 
-   <!-- @[set_the_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @set_the_authorization_token_for_the_specified_authorization_type -->
 
 ``` TypeScript
     await appAccountManager.setAuthToken(name, authType, token).then(() => {
@@ -209,7 +209,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 3. 调用getAuthToken接口，获取指定授权类型的授权令牌。
 
-   <!-- @[obtain_an_authorization_token_for_the_specified_authorization_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @obtain_an_authorization_token_for_the_specified_authorization_type -->
 
 ``` TypeScript
     await appAccountManager.getAuthToken(name, owner, authType).then((data: string) => {
@@ -230,7 +230,7 @@ const appAccountManager = appAccount.createAppAccountManager();
 
 指定要删除的账号名称，调用removeAccount接口删除账号。
 
-   <!-- @[delete_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManagerApplicationAccount/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @delete_account -->
 
 ``` TypeScript
     let name: string = 'ZhangSan';

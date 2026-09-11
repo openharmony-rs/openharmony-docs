@@ -16,7 +16,7 @@
 
 方法将操作逻辑封装在类中，通过`this`访问实例状态，为外部代码提供操作接口、实现复用并隐藏实现细节。
 
-<!-- @[method_definition_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_definition_basic -->
 
 ``` TypeScript
 class Calculator {
@@ -49,7 +49,7 @@ console.info(`${calc.getValue().toString()}`);  // 0
 
 实例方法通过this访问实例属性，需通过实例调用；静态方法属于类本身，通过类名调用，不依赖实例。
 
-<!-- @[ts_instance_vs_static_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_instance_vs_static_methods -->
 
 ``` TypeScript
 class MathOperations {
@@ -98,7 +98,7 @@ let result = MathOperations.getInstanceValue();  // 编译错误
 
 方法依附于类，可通过`this`访问实例状态和私有成员；独立函数不依附类，无法访问实例状态。方法支持访问修饰符控制可见性。
 
-<!-- @[standalone_function_vs_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @standalone_function_vs_method -->
 
 ``` TypeScript
 // 独立函数：不依附于类
@@ -149,7 +149,7 @@ console.info(`${acc.getTotal().toString()}`);  // 30，有状态管理
 
 实例方法声明定义了方法的名称、参数列表、返回类型和访问修饰符，通过类的实例对象调用。
 
-<!-- @[instance_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @instance_method_declaration -->
 
 ``` TypeScript
 class Student {
@@ -200,7 +200,7 @@ console.info(`${student.greet('Hi')}`); // 'Hi, I'm Alice'
 
 通过`实例.方法名()`调用实例方法，方法体内`this`指向当前实例，可访问实例属性和其他实例方法。
 
-<!-- @[instance_method_on_separate_instances](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @instance_method_on_separate_instances -->
 
 ``` TypeScript
 class Logger {
@@ -246,7 +246,7 @@ console.info(`${logger2.getLogs().join(', ')}`);  // Info from module C
 
 实例方法中的this关键字指向当前对象实例，但在特定场景下可能丢失绑定。
 
-<!-- @[this_binding_and_arrow_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @this_binding_and_arrow_function -->
 
 ``` TypeScript
 class Counter {
@@ -318,7 +318,7 @@ class Button {
 
 通过public、private、protected修饰符限制方法的可访问范围：public方法类内外均可调用，private方法仅类内部可见，protected方法可被子类访问。
 
-<!-- @[ts_method_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_method_access_modifiers -->
 
 ``` TypeScript
 class Service {
@@ -378,7 +378,7 @@ class CustomService extends Service {
 
 静态方法是属于类本身而非实例的方法，通过static关键字声明。
 
-<!-- @[ts_static_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_static_method_declaration -->
 
 ``` TypeScript
 class Utility {
@@ -424,7 +424,7 @@ utility.clamp(5, 0, 10);  // 编译错误
 
 静态方法通过类名直接调用，不需要创建实例对象。
 
-<!-- @[ts_static_method_usage_patterns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_static_method_usage_patterns -->
 
 ``` TypeScript
 class Database {
@@ -475,7 +475,7 @@ db1.connect();  // 编译错误
 
 静态方法具有两个主要特性：无法访问实例this绑定，以及直接与类（而非实例）的生命周期关联。静态初始化块（`static { }`）从API version 12开始支持。
 
-<!-- @[static_properties_and_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @static_properties_and_initialization -->
 
 ``` TypeScript
 class Configuration {
@@ -524,7 +524,7 @@ console.info(`${Configuration.get('apiUrl')}`);     // undefined
 
 静态方法常用于工厂方法、单例模式和工具函数。
 
-<!-- @[static_factory_singleton_utility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @static_factory_singleton_utility -->
 
 ``` TypeScript
 // 1. 工厂方法
@@ -616,7 +616,7 @@ class ArrayUtils {
 
 方法参数通过`: 类型`标注数据类型，通过`= 默认值`提供初始值，ArkTS支持可选参数（`?`）和剩余参数（`...rest`）。
 
-<!-- @[method_parameters_and_defaults](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_parameters_and_defaults -->
 
 ``` TypeScript
 class EmailSender {
@@ -659,7 +659,7 @@ sender.sendWithOptions('test@example.com', 'Important', 'high', 'admin@example.c
 
 剩余参数使用`...`语法将多个同名参数收集为数组，允许方法接收不定数量的参数，常与普通参数混合使用。
 
-<!-- @[rest_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @rest_parameters -->
 
 ``` TypeScript
 class NumberProcessor {
@@ -703,7 +703,7 @@ console.info(`${processor.join('-', 'a', 'b', 'c')}`);  // 'a-b-c'
 
 TypeScript支持在方法参数中直接解构对象（如`move({x, y}: Point, dx: number)`）。ArkTS不支持解构参数，需通过接口类型参数接收后手动提取属性。
 
-<!-- @[object_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @object_parameters -->
 
 ``` TypeScript
 // ArkTS不支持解构参数，需通过接口类型参数接收后手动提取
@@ -746,7 +746,7 @@ console.info(ops.processOptions({ timeout: 5000, retries: 3, verbose: true }));
 
 可选参数使用 ? 修饰符声明，表示参数可以省略不传。
 
-<!-- @[optional_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @optional_parameters -->
 
 ``` TypeScript
 class DocumentGenerator {
@@ -817,7 +817,7 @@ console.info(`${generator.format('Hello', '[', ']')}`);       // '[Hello]'
 
 方法重载通过声明多个同名但参数不同的签名，最后用一个兼容所有签名的实现签名统一处理，调用时按参数类型匹配对应签名。
 
-<!-- @[method_overload_signatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_overload_signatures -->
 
 ``` TypeScript
 class DataParser {
@@ -868,7 +868,7 @@ console.info(`${parser.convert(100)}`);         // '100'
 
 重载的实现签名必须兼容所有重载签名的参数和返回类型，调用时按签名顺序匹配最具体的重载。
 
-<!-- @[method_overload_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_overload_implementation -->
 
 ``` TypeScript
 class ImplementationCalculator {
@@ -913,7 +913,7 @@ console.info(`${implementationCalc.process(10, 2)}`);         // 20
 
 ArkTS中方法重载通过多个签名声明实现，需注意签名与实现的兼容性。
 
-<!-- @[overload_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @overload_rules -->
 
 ``` TypeScript
 class OverloadExample {
@@ -955,7 +955,7 @@ console.info(`${example.handle(5)}`);        // 10
 
 方法重载应控制签名数量，过多时改用可选参数或联合类型。
 
-<!-- @[overload_alternatives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @overload_alternatives -->
 
 ``` TypeScript
 class SafeConverter {
@@ -1009,7 +1009,7 @@ console.info(`${converter.fromNumber(200)}`);      // 200
 
 子类继承父类的实例方法和静态方法：实例方法通过实例对象调用，`this`指向子类实例；静态方法通过子类类名调用，无法访问实例状态。
 
-<!-- @[ts_method_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_method_inheritance -->
 
 ``` TypeScript
 class Parent {
@@ -1062,7 +1062,7 @@ child.getDescription();  // 编译错误
 
 方法重写是子类重新定义父类方法实现的过程，用于修改或扩展父类行为。
 
-<!-- @[method_override](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_override -->
 
 ``` TypeScript
 class Animal {
@@ -1115,7 +1115,7 @@ console.info(`${animal.speak()}`);  // 'Dog barks'（动态绑定）
 
 重写方法不能降低父类方法的访问权限，只能保持或提升权限。
 
-<!-- @[ts_override_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_override_access_modifiers -->
 
 ``` TypeScript
 class Base {
@@ -1169,7 +1169,7 @@ derived.callProtected();       // 'Base protected'
 
 super关键字用于在子类方法中调用父类的同名方法，实现方法扩展和功能复用。
 
-<!-- @[super_keyword_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @super_keyword_usage -->
 
 ``` TypeScript
 class Vehicle {
@@ -1218,7 +1218,7 @@ console.info(`${car.getInfo()}`);  // 'Vehicle info, Car model: Tesla'
 
 子类重写父类方法时，可以通过完全重写或调用`super.方法名()`并添加新逻辑来处理方法冲突。
 
-<!-- @[override_and_extend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @override_and_extend -->
 
 ``` TypeScript
 class ExtendLogger {
@@ -1265,7 +1265,7 @@ logger.log('test');  // [DETAIL] test（调用子类重写方法）
 
 箭头函数方法通过箭头函数语法声明实例方法，自动绑定this到实例对象。
 
-<!-- @[arrow_function_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @arrow_function_methods -->
 
 ``` TypeScript
 class Timer {
@@ -1317,7 +1317,7 @@ handler();           // 'Timer at 2'
 
 方法返回this实现链式调用，常用于Builder模式和字符串拼接。
 
-<!-- @[method_chaining](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_chaining -->
 
 ``` TypeScript
 class StringBuilder {
@@ -1376,7 +1376,7 @@ console.info(`${result2}`);  // 'Start: End'
 
 方法作为参数传递时，需要确保this绑定正确，避免调用时丢失this指向。
 
-<!-- @[method_as_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @method_as_callback -->
 
 ``` TypeScript
 class EventHandler {
@@ -1430,7 +1430,7 @@ mockAddEventListener(callbackHandler.getClickHandler());  // 'Button clicked'
 
 可选链调用使用 ?. 安全地调用可能为null或undefined的对象方法。
 
-<!-- @[optional_chaining_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @optional_chaining_methods -->
 
 ``` TypeScript
 class OptionalService {
@@ -1489,7 +1489,7 @@ chain?.next?.execute();  // 不执行（next未定义）
 
 在方法签名中添加`this`参数，可在编译期强制调用方使用正确的上下文。`this`参数在编译后被擦除，不影响运行时。注意：`this`作为参数名标注是ArkTS支持的，但`this`作为类型（如返回类型`: this`或参数类型`other: this`）不支持。
 
-<!-- @[this_parameter_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @this_parameter_usage -->
 
 ``` TypeScript
 class TpThisCounter {
@@ -1510,7 +1510,7 @@ console.info(`${tpThisCounter.count}`); // 1
 
 **TypeScript对照**
 
-<!-- @[ts_this_type_guard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_this_type_guard -->
 
 ``` TypeScript
 // TypeScript的this is T类型守卫，ArkTS不支持（arkts-no-is）
@@ -1532,7 +1532,7 @@ if (tsFsObj.isFile()) {
 
 ArkTS中使用`instanceof`替代。
 
-<!-- @[this_guard_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Methods.ets) -->
+<!-- @this_guard_alternative -->
 
 ``` TypeScript
 class TgFileSystemObject {
@@ -1585,7 +1585,7 @@ ArkTS对`this`有以下使用限制：
 
 **TypeScript对照**
 
-<!-- @[ts_this_usage_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_this_usage_limitation -->
 
 ``` TypeScript
 class TsThisLimitA {
@@ -1607,7 +1607,7 @@ function foo(arg1: number) {
 
 **TypeScript对照**
 
-<!-- @[ts_special_static_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Methods.ts) -->
+<!-- @ts_special_static_names -->
 
 ``` TypeScript
 class TsSsnConfig {

@@ -16,7 +16,7 @@ API 8及以前的接口基于FA模型提供；从API 9开始，主推Stage模型
 
 **图1** FA模型与Stage模型应用组件共存场景
 
-![coexistence-of-FAandStage](figures/coexistence-of-FAandStage.png)
+coexistence-of-FAandStage
 
 
 FA模型与Stage模型应用组件互通场景及开发者关注点请参考下表。

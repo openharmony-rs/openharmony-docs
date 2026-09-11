@@ -37,7 +37,7 @@
 在设备组网时，可以使用`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果，可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
-![Device-Security-Levels](figures/Device-Security-Levels.png)
+Device-Security-Levels
 <!--DelEnd-->
 
 ## 跨设备同步访问控制机制
@@ -67,7 +67,7 @@
 
 2. 导入头文件。
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
+    <!-- @encryption_include --> 
     
     ``` C++
     #include <cstring>
@@ -79,7 +79,7 @@
 
 3. 调用OH_Rdb_SetSecurityLevel接口设置数据库的安全等级。
 
-    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @SetSecurityLevelForRdbStore -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();

@@ -79,76 +79,76 @@ HiDebug可获取应用占用的显存资源数据。在图形密集型应用中�
 
 hiview进程每10秒获取一次当前CPU的运行数据并缓存，作为CPU使用率计算的基准，主要包括以下数据：
 
-1.系统CPU使用数据：
+1. 系统CPU使用数据：
 
-/proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
+   /proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
 
-``` text
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+   ``` text
+   cat  /proc/stat
+   cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+   ...
+   ```
 
-CPU 指标字段含义：
+   CPU 指标字段含义：
 
-CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
+   CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
 
-- user: 非低优先级进程（nice <= 0）所占用的用户态时间。
+   - user: 非低优先级进程（nice <= 0）所占用的用户态时间。
 
-- nice: 低优先级进程（nice > 0）所占用的用户态时间。
+   - nice: 低优先级进程（nice > 0）所占用的用户态时间。
 
-- system: 内核态时间。
+   - system: 内核态时间。
 
-- idle: 空闲时间（不包含 IO 等待时间）。
+   - idle: 空闲时间（不包含 IO 等待时间）。
 
-- iowait: IO 等待时间。
+   - iowait: IO 等待时间。
 
-- irq: 硬中断时间。
+   - irq: 硬中断时间。
 
-- softirq: 软中断时间。
+   - softirq: 软中断时间。
 
-- steal: 虚拟化环境中，运行在非该虚拟机内进程上的时间。
+   - steal: 虚拟化环境中，运行在非该虚拟机内进程上的时间。
 
-- guest: 操作系统运行虚拟机中非低优先级进程（nice <= 0）的时间（已包含在user字段中）。
+   - guest: 操作系统运行虚拟机中非低优先级进程（nice <= 0）的时间（已包含在user字段中）。
 
-- guest_nice: 操作系统运行虚拟机中低优先级进程（nice > 0）的时间（已包含在nice字段中）。
+   - guest_nice: 操作系统运行虚拟机中低优先级进程（nice > 0）的时间（已包含在nice字段中）。
 
-2.进程CPU使用数据/线程CPU使用数据：
+2. 进程CPU使用数据/线程CPU使用数据：
 
-``` text
-// 内核统计的进程cpu运行数据
-struct ucollection_process_cpu_item {
-    int pid;
-    unsigned int thread_total;
-    unsigned long long min_flt;
-    unsigned long long maj_flt;
-    unsigned long long cpu_usage_utime; // 用户态CPU运行时长
-    unsigned long long cpu_usage_stime;// 内核态CPU运行时长
-    unsigned long long cpu_load_time;
-};
-// 内核统计的线程cpu运行数据
-struct ucollection_thread_cpu_item {
-    int tid;
-    char name[16]; // 16 ：max length of thread name
-    unsigned long long cpu_usage_utime;// 用户态CPU运行时长
-    unsigned long long cpu_usage_stime;// 内核态CPU运行时长
-    unsigned long long cpu_load_time;
-};
-```
+   ``` text
+   // 内核统计的进程cpu运行数据
+   struct ucollection_process_cpu_item {
+       int pid;
+       unsigned int thread_total;
+       unsigned long long min_flt;
+       unsigned long long maj_flt;
+       unsigned long long cpu_usage_utime; // 用户态CPU运行时长
+       unsigned long long cpu_usage_stime;// 内核态CPU运行时长
+       unsigned long long cpu_load_time;
+   };
+   // 内核统计的线程cpu运行数据
+   struct ucollection_thread_cpu_item {
+       int tid;
+       char name[16]; // 16 ：max length of thread name
+       unsigned long long cpu_usage_utime;// 用户态CPU运行时长
+       unsigned long long cpu_usage_stime;// 内核态CPU运行时长
+       unsigned long long cpu_load_time;
+   };
+   ```
 
-调用接口，获取当前数据，计算与基准数据的增量，使用以下公式获取CPU使用率：
+   调用接口，获取当前数据，计算与基准数据的增量，使用以下公式获取CPU使用率：
 
-系统CPU使用率：
+   系统CPU使用率：
 
-``` text
-(systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
-```
+   ``` text
+   (systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
+   ```
 
-进程CPU使用率/线程CPU使用率 ：
+   进程CPU使用率/线程CPU使用率：
 
-``` text
-(cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
-```
+   ``` text
+   (cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
+   ```
 
 ### 接口说明（ArkTS）
 
@@ -178,9 +178,9 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.getAppVMMemoryInfo | 获取VM内存相关信息。 |
 | hidebug.getVMRuntimeStats | 获取系统GC统计信息。 |
 | hidebug.getVMRuntimeStat | 根据参数获取指定的系统GC统计信息。 |
-| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
+| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助JS内存泄漏分析。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
 | hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
-| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
+| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助JS内存泄漏分析。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
 | hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
@@ -226,7 +226,7 @@ HiDebug提供了开启和停止VM虚拟机CpuProfiler采集的接口，帮助开
 ARM64架构函数栈帧的结构如下图所示：
 
 **图1**
-![arm64 stack](figures/arm64_stack.png)
+arm64 stack
 
 FP：栈顶指针，指向一个栈帧的顶部，当函数发生跳转时，会记录当时的栈的起始位置。
 
@@ -317,7 +317,7 @@ JS帧格式如下：
 
 ## 设置资源泄漏检测阈值
 
-HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考资源泄漏检测。
 
 ### 接口说明（ArkTS）
 
@@ -327,7 +327,7 @@ HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据�
 
 ## 管理GWP-ASan
 
-HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection)使能和查询使能天数的能力。
+HiDebug提供了启停GWP-ASan使能和查询使能天数的能力。
 
 ### 接口说明（ArkTS）
 

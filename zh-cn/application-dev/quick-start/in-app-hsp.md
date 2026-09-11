@@ -19,15 +19,15 @@ HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资�
 ## 使用场景
 - 多个HAP/HSP共用的代码和资源放在同一个HSP中，可以提高代码、资源的可重用性和可维护性，同时编译打包时也只保留一份HSP代码和资源，能够控制应用包的大小。
 
-- HSP在运行时[按需加载](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-modular-design#section28312051291)，有助于提升应用性能。
+- HSP在运行时按需加载，有助于提升应用性能。
 
 - 同一个组织内部的多个应用之间，可以使用集成态HSP实现代码和资源的共享。
 
 ## 约束限制
 
 - 可以和依赖该HSP的HAP一起安装/运行。在安装或更新时，多模块之间存在校验，详情参考一致性校验。使用打包工具进行打包时，会进行合法性校验，详情请参考打包工具。
-- 从API version 14开始HSP支持在配置文件中声明UIAbility组件，但不支持具有入口能力的UIAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。配置UIAbility的方法参考[模块中添加UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18658758104318)，HSP中UIAbility的启动方式与应用内启动UIAbility方法相同。API version 13及之前版本，不支持在配置文件中声明UIAbility组件。
-- 从API version 18开始HSP支持在配置文件中声明ExtensionAbility组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HSP中配置ExtensionAbility的方法参考[模块中添加ExtensionAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-add-new-ability#section18891639459)。 API version 17及之前版本，不支持在配置文件中声明ExtensionAbility组件。
+- 从API version 14开始HSP支持在配置文件中声明UIAbility组件，但不支持具有入口能力的UIAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。配置UIAbility的方法参考模块中添加UIAbility，HSP中UIAbility的启动方式与应用内启动UIAbility方法相同。API version 13及之前版本，不支持在配置文件中声明UIAbility组件。
+- 从API version 18开始HSP支持在配置文件中声明ExtensionAbility组件，但不支持具有入口能力的ExtensionAbility（即skill标签配置了entity.system.home和ohos.want.action.home）。HSP中配置ExtensionAbility的方法参考模块中添加ExtensionAbility。 API version 17及之前版本，不支持在配置文件中声明ExtensionAbility组件。
 - HSP可以依赖其他HAR或HSP，也可以被HAP或者HSP依赖集成，但不支持循环依赖，也不支持依赖传递。
 
 > **说明：**
@@ -38,7 +38,7 @@ HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资�
 
 
 ## 创建
-使用DevEco Studio创建一个用于调用C++代码的HSP模块。并在“Configure New Module”页面中启用“Enable native”选项。详见[创建HSP模块](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hsp#section79378499185)，以创建一个名为`library`的HSP模块为例。基本的工程目录结构如下：
+使用DevEco Studio创建一个用于调用C++代码的HSP模块。并在“Configure New Module”页面中启用“Enable native”选项。详见创建HSP模块，以创建一个名为`library`的HSP模块为例。基本的工程目录结构如下：
 ```txt
 MyApplication
 ├── library
@@ -65,7 +65,7 @@ MyApplication
 
 ### 导出ArkUI组件
 ArkUI组件可以通过`export`导出，例如：
-<!-- @[in_app_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/components/MyTitleBar.ets) -->
+<!-- @in_app_hsp_001 -->
 
 ``` TypeScript
 // library/src/main/ets/components/MyTitleBar.ets
@@ -86,7 +86,7 @@ export struct MyTitleBar {
 ```
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
-<!-- @[in_app_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @in_app_hsp_002 -->
 
 ``` TypeScript
 // library/index.ets
@@ -97,7 +97,7 @@ export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
 ### 导出类和方法
 通过`export`导出类和方法，例如：
 
-<!-- @[in_app_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/test.ets) -->
+<!-- @in_app_hsp_003 -->
 
 ``` TypeScript
 // library/src/main/ets/utils/test.ets
@@ -118,7 +118,7 @@ export function minus(a: number, b: number): number {
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
+<!-- @in_app_hsp_004  -->
 
 ``` TypeScript
 // library/index.ets
@@ -128,7 +128,7 @@ export { Log, add, minus } from './src/main/ets/utils/test';
 ### 导出native方法
 在HSP中也可以包含C++编写的`so`。对于`so`中的`native`方法，HSP通过间接的方式导出，以导出`liblibrary.so`的乘法接口`multi`为例：
 
-<!-- @[in_app_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/utils/nativeTest.ets) -->
+<!-- @in_app_hsp_005 -->
 
 ``` TypeScript
 // library/src/main/ets/utils/nativeTest.ets
@@ -143,7 +143,7 @@ export function nativeMulti(a: number, b: number): number {
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
+<!-- @in_app_hsp_006  -->
 
 ``` TypeScript
 // library/index.ets
@@ -159,7 +159,7 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 当要引用上述同一图片资源时，在HSP模块中使用`Image("../../resources/base/media/example.png")`，实际上该`Image`组件访问的是HSP调用方（如`entry`）下的资源`entry/src/main/resources/base/media/example.png`。
 
 
-<!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
+<!-- @in_app_hsp_007 -->
 
 ``` TypeScript
 // library/src/main/ets/pages/Index.ets
@@ -183,7 +183,7 @@ Image("../../resources/base/media/example.png")
 
 将需要对外提供的资源封装为一个资源管理类：   
 
-<!-- @[in_app_hsp_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/ResManager.ets) -->
+<!-- @in_app_hsp_008 -->
 
 ``` TypeScript
 // library/src/main/ets/ResManager.ets
@@ -200,7 +200,7 @@ export class ResManager{
 
 在入口文件 `index.ets` 中声明对外暴露的接口。
 
-<!-- @[in_app_hsp_009](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @in_app_hsp_009 -->
 
 ``` TypeScript
 // library/index.ets
@@ -212,11 +212,11 @@ export { ResManager } from './src/main/ets/ResManager';
 介绍如何引用HSP中的接口，以及如何通过页面路由实现HSP的pages页面跳转与返回。
 
 ### 引用HSP中的接口
-要使用HSP中的接口，首先需要在使用方的 `oh-package.json5` 文件中配置对它的依赖。具体配置方法请参考[引用动态共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
+要使用HSP中的接口，首先需要在使用方的 `oh-package.json5` 文件中配置对它的依赖。具体配置方法请参考引用动态共享包。
 
 依赖配置成功后，就可以像使用HAR一样调用HSP的对外接口了。例如，上面的library已经导出了下面这些接口：
 
-<!-- @[in_app_hsp_010](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @in_app_hsp_010 -->
 
 ``` TypeScript
 // library/index.ets
@@ -234,7 +234,7 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 
 <!--deprecated_code_no_check-->
 
-<!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
+<!-- @in_app_hsp_011 -->
 
 ``` TypeScript
 // entry/src/main/ets/pages/index.ets
@@ -363,7 +363,7 @@ struct Index {
 
 开发者想在entry模块中，添加一个按钮跳转至library模块中的menu页面（路径为：`library/src/main/ets/pages/library_menu.ets`），那么可以在使用方的代码（entry模块下的Index.ets，路径为：`entry/src/main/ets/pages/Index.ets`）里这样使用：
 
-<!-- @[in_app_hsp_012](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/entry/src/main/ets/pages/Index.ets) -->
+<!-- @in_app_hsp_012 -->
 
 ``` TypeScript
 @Entry
@@ -414,7 +414,7 @@ struct Index {
 
 在library下新增page文件（library/src/main/ets/pages/library_menu.ets），其中'back_to_index'的按钮返回上一页。
 
-<!-- @[in_app_hsp_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/ets/pages/library_menu.ets) -->
+<!-- @in_app_hsp_014 -->
 
 ``` TypeScript
 @Builder
@@ -471,7 +471,7 @@ export struct Library_Menu {
 
 在library模块下的配置文件（library/src/main/module.json5）中配置json文件。
 
-<!-- @[in_app_hsp_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/module.json5) -->
+<!-- @in_app_hsp_013 -->
 
 ``` JSON5
 {

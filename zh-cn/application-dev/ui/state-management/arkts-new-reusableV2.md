@@ -36,7 +36,7 @@
 | 可装饰的组件       | \@ComponentV2装饰的自定义组件 |
 | 装饰器作用         | 表明该组件可被复用            |
 
-<!-- @[ReusableV2Component1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/common/ReusableV2Component1.ets) -->  
+<!-- @ReusableV2Component1 -->  
 
 ``` TypeScript
 @ReusableV2 // 装饰ComponentV2的自定义组件
@@ -55,7 +55,7 @@ struct ReusableV2Component {
 
 reuse、ReuseOptions、ReuseIdCallback的接口说明参考API文档：复用选项。
 
-<!-- @[ExamplePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ExamplePage.ets) -->
+<!-- @ExamplePage -->
 
 ``` TypeScript
 @Entry
@@ -84,7 +84,7 @@ struct ReusableV2Component {
 
 - 仅能将\@ReusableV2装饰的自定义组件作为V2自定义组件的子组件使用。如果在V1的自定义组件中使用V2的复用组件将导致编译期报错，编译期无法校验到的复杂场景下将会有运行时报错。
 
-  <!-- @[UsageRestrictionsPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/UsageRestrictionsPage.ets) -->
+  <!-- @UsageRestrictionsPage -->
   
   ``` TypeScript
   @Entry
@@ -136,7 +136,7 @@ struct ReusableV2Component {
 
 - V2的复用组件当前不支持直接用于Repeat的template中，但是可以用在template中的V2自定义组件中。
 
-  <!-- @[RepeatTemplatePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatTemplatePage.ets) -->
+  <!-- @RepeatTemplatePage -->
   
   ``` TypeScript
   @Entry
@@ -197,7 +197,7 @@ struct ReusableV2Component {
 
 以if的使用场景为例：
 
-<!-- @[AboutToRecyclePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/AboutToRecyclePage.ets) -->
+<!-- @AboutToRecyclePage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -288,7 +288,7 @@ struct ReusableV2Component {
 
 倘若该复用组件下有子组件时，会在回收和复用时递归调用子组件的aboutToRecycle和aboutToReuse（与子组件是否被标记复用无关），直到遍历完所有的孩子组件。
 
-![lifecycle](./figures/reusablev2-lifecycle.gif)
+lifecycle
 
 ## 复用阶段的冻结
 
@@ -296,7 +296,7 @@ struct ReusableV2Component {
 
 以if的使用场景为例：
 
-<!-- @[ConditionPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ConditionPage.ets) -->
+<!-- @ConditionPage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -376,7 +376,7 @@ struct ReusableV2Component {
 3. 点击`Change value`按钮，UI无变化，\@Monitor不触发且`onRender`方法不被回调。
 4. 点击`Reuse/Recycle`按钮，此时调用`aboutToReuse`回调并输出`aboutToReuse`的日志，\@Monitor触发并输出日志`info.age change`且`onRender`方法回调输出`info.age onRender`，UI发生变化。
 
-![freeze](./figures/reusablev2-freeze.gif)
+freeze
 
 如果去掉`aboutToReuse`方法中的自增操作，则上述第四步不会触发\@Monitor回调。
 
@@ -404,7 +404,7 @@ struct ReusableV2Component {
 
 下面的例子展示了重置的一些效果：
 
-<!-- @[ComputedPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComputedPage.ets) -->
+<!-- @ComputedPage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -565,13 +565,13 @@ struct ReusableV2Component {
 
 开发者可以尝试点击各个变量，并点击`Recycle/Reuse`按钮查看复用后的重置情况。
 
-![reset](./figures/reusablev2-reset.gif)
+reset
 
 需要注意的是，上面的例子中`noDecoInfo`未被重置，如果存在监听`noDecoInfo.age`的\@Monitor，因为noDecoInfo本身未产生变化，所以该\@Monitor也不会被重置，因此在后续第一次更改`noDecoInfo.age`时，`IMonitorValue`的`before`值将不会被重置，仍是复用前的值。
 
 将上面的例子简化可得下面的例子：
 
-<!-- @[IMonitorValuePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/IMonitorValuePage.ets) -->
+<!-- @IMonitorValuePage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -645,7 +645,7 @@ struct ReusableV2Component {
 2. 点击`Recycle/Reuse`两次，UI刷新为`noDecoInfo.age: 35`，\@Monitor触发并输出日志`age change from 31 to 35`。
 3. 点击`noDecoInfo.age: 35`，UI刷新为`noDecoInfo.age: 36`，\@Monitor触发并输出日志`age change from 35 to 36`。
 
-![resetmonitor](./figures/reusablev2-resetmonitor.gif)
+resetmonitor
 
 由于冻结机制的存在，在aboutToRecycle中赋值不会被\@Monitor观察到。而在经历完变量重置后，变量又会被赋予新的值，因此对于组件内状态变量来说，在aboutToRecycle中赋值不会有明显的效果；而常量（例如上面的`noDecoInfo`）由于冻结机制的存在，在aboutToRecycle中更改`age`也不会被观察到，并且因为不会被重置，所以相关的\@Monitor也不会被重置，即这里的`age`值本身未被重置，也就不会重置与之绑定的\@Monitor。最终表现出来的现象即：第二步回调的\@Monitor中，`monitor.value()?.before`得到的值为31，而非age的初始值30。
 
@@ -657,7 +657,7 @@ struct ReusableV2Component {
 
 通过改变if组件的条件可以控制组件回收/复用。
 
-<!-- @[ComponentIfPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentIfPage.ets) -->
+<!-- @ComponentIfPage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -706,7 +706,7 @@ struct ReusableV2Component {
 }
 ```
 
-![if](./figures/reusablev2-if.gif)
+if
 
 ### 在Repeat组件中使用
 
@@ -716,7 +716,7 @@ Repeat组件懒加载场景中，将会优先使用Repeat组件的缓存池，�
 
 下面的例子中，先点击`Change condition`会让3个节点进入复用池，而后向下滑动List组件时，可以观察到日志输出`ReusableV2Component aboutToReuse`，表明Repeat可以使用自定义组件的复用池填充自己的缓存池。
 
-<!-- @[RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/RepeatPage.ets) -->
+<!-- @RepeatPage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -790,13 +790,13 @@ struct ReusableV2Component {
 }
 ```
 
-![repeat](./figures/reusablev2-repeat.gif)
+repeat
 
 ### 在Repeat组件非懒加载场景的each属性中使用
 
 Repeat组件非懒加载场景中，会在删除/创建子树时触发回收/复用。
 
-<!-- @[ComponentEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentEachPage.ets) --> 
+<!-- @ComponentEachPage --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -876,7 +876,7 @@ struct ReusableV2Component {
 }
 ```
 
-![repeat-nonvirtual](./figures/reusablev2-repeat-nonvirtual.gif)
+repeat-nonvirtual
 
 ### 在ForEach组件中使用
 
@@ -886,7 +886,7 @@ struct ReusableV2Component {
 
 下面的例子中使用了ForEach组件渲染了数个可复用组件，由于每次点击`Click to change`按钮时key值都会发生变化，因此从第二次点击开始都会触发回收与复用（由于ForEach先判断有无可复用节点时复用池仍未初始化，因此第一次点击会创建新的节点，而后初始化复用池同时回收节点）。
 
-<!-- @[ComponentForEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentForEachPage.ets) -->
+<!-- @ComponentForEachPage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -941,7 +941,7 @@ struct ReusableV2Component {
 }
 ```
 
-![foreach](./figures/reusablev2-foreach.gif)
+foreach
 
 ### 在LazyForEach组件中使用
 
@@ -951,7 +951,7 @@ struct ReusableV2Component {
 
 下面的例子中使用了LazyForEach渲染了数个可复用组件，在滑动时可以先观察到组件创建，直到预加载节点全部创建完成之后，再滑动则触发复用和回收。
 
-<!-- @[LazyForEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/LazyForEachPage.ets) -->
+<!-- @LazyForEachPage -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1111,4 +1111,4 @@ struct ChildComponent {
 }
 ```
 
-![lazyforeach](./figures/reusablev2-lazyforeach.gif)
+lazyforeach

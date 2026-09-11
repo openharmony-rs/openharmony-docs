@@ -42,7 +42,7 @@ buddy.getName().length; // 运行时异常：name is undefined
 
 ArkTS要求属性显式初始化，代码应如下所示：
 
-<!-- @[def_person](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @def_person --> 
 
 ``` TypeScript
 class Person {
@@ -65,7 +65,7 @@ class Person {
 
 如果`name`可以是`undefined`，其类型应在代码中精确标注。
 
-<!-- @[def_personFix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @def_personFix -->  
 
 ``` TypeScript
 class Person1 {
@@ -93,7 +93,7 @@ class Person1 {
 
 **Null Safety**
 
-<!-- @[def_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @def_func -->  
 
 ``` TypeScript
 function notify(who: string, what: string) {
@@ -181,7 +181,7 @@ foo(c);
 
     循环依赖示例:
     
-    <!-- @[import_v](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/bar.ets) -->  
+    <!-- @import_v -->  
     
     ``` TypeScript
     // bar.ets
@@ -190,7 +190,7 @@ foo(c);
     console.info(`v: ${v}`);
     ```
 
-    <!-- @[import_u](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/ArkTSMigration/MigrationBackground/entry/src/main/ets/pages/foo.ets) -->  
+    <!-- @import_u -->  
     
     ``` TypeScript
     // foo.ets

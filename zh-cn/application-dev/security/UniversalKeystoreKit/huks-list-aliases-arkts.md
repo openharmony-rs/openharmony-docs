@@ -21,7 +21,7 @@ HUKS提供了接口供应用查询密钥别名集。
 
 2. 调用接口listAliases，查询密钥别名集。
 
-<!-- @[query_key_alias_set_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/QueryKeyAliasSet/entry/src/main/ets/pages/QueryKeyAliasSet.ets) -->
+<!-- @query_key_alias_set_arkts -->
 
 ``` TypeScript
 /*

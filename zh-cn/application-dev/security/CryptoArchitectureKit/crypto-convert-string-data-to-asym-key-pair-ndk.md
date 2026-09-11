@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 3. 调用OH_CryptoPubKey_Encode，将非对称密钥对象中的公钥转换成PKCS #1或X.509格式。
 
 - 以下以生成RSA密钥对为例：
-  <!-- @[specify_pem_string_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSpecifiedPEMAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
+  <!-- @specify_pem_string_convert_rsa_keypair -->
   
   ``` C++
   #include "CryptoArchitectureKit/crypto_common.h"

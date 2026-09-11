@@ -27,7 +27,7 @@ ArkWeb和Network Kit等网络通信相关的服务基于Device Certificate Kit�
 
 证书管理服务在对数字证书凭据的安装和使用时，依赖Universal Keystore Kit的密钥存储和管理能力。
 
-![](figures/device-certificate-kit-framework.png)
+
 
 > **说明：**
 >

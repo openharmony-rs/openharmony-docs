@@ -17,7 +17,7 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 
 菜单需要调用bindMenu接口来实现。bindMenu响应绑定组件的点击事件，绑定组件后手势点击对应组件后即可弹出。
 
-<!-- @[create_default_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets) -->
+<!-- @create_default_menu -->
 
 ``` TypeScript
 Button('click for Menu')
@@ -31,7 +31,7 @@ Button('click for Menu')
   ])
 ```
 
-![zh-cn_image_0000001562940565](figures/Creating-Menu-Default.png)
+zh-cn_image_0000001562940565
 
 ## 创建自定义样式的菜单
 
@@ -39,7 +39,7 @@ Button('click for Menu')
 
 ### 使用@Builder自定义菜单内容
 
-<!-- @[builder_custom_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets) -->
+<!-- @builder_custom_menu -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -127,14 +127,14 @@ export struct BuilderCustomMenuExample {
 
 ### 使用bindMenu属性绑定组件
 
-<!-- @[bind_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets) -->
+<!-- @bind_menu -->
 
 ``` TypeScript
 Button('click for Menu')
   .bindMenu(this.MyMenu)
 ```
 
-![zh-cn_image_0000001511580924](figures/bindMenu-Attribute.png)
+zh-cn_image_0000001511580924
 
 ## 创建支持右键或长按的菜单
 
@@ -143,7 +143,7 @@ Button('click for Menu')
 - 使用@Builder自定义菜单内容，与上文写法相同。
 - 确认菜单的弹出方式，并使用bindContextMenu属性绑定组件。示例中为右键弹出菜单。
 
-  <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
+  <!-- @create_right_click_menu -->
   
   ``` TypeScript
   Button('Right-click for Menu')
@@ -157,7 +157,7 @@ Button('click for Menu')
 - 只有一级菜单可配置弹出时振动效果。
 - 仅当应用具备ohos.permission.VIBRATE权限，且用户启用了触感反馈时才会生效。开启触控反馈时，需要在工程的module.json5中配置声明权限的requestPermissions字段开启振动权限，配置如下：
 
-  <!-- @[menu_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/module.json5) -->
+  <!-- @menu_permissions -->
   
   ``` JSON5
   "requestPermissions": [
@@ -167,7 +167,7 @@ Button('click for Menu')
   ],
   ```
 
-<!-- @[popVibrate_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/PopVibrateMenu.ets) -->
+<!-- @popVibrate_menu -->
 
 ``` TypeScript
 Button('click for Menu')
@@ -183,7 +183,7 @@ Button('click for Menu')
 > - 如果菜单的点击位置在中轴区域，则菜单不会避让。
 > - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
-<!-- @[avoid_central_axis_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets) -->
+<!-- @avoid_central_axis_menu -->
 
 ``` TypeScript
 @Entry
@@ -263,7 +263,7 @@ export struct SupportAvoidCentralAxisMenuExample {
 
 当菜单在子窗口中弹出时，默认情况下，菜单周围的事件会传递至所在窗口。从API version 20开始，开发者可通过ContextMenuOptions的modalMode属性设置子菜单弹出时的模态模式，以控制菜单周围事件是否传递。将modalMode设置为ModalMode.TARGET_WINDOW时，菜单周围的事件将不再传递，菜单下方的控件也不会响应事件。
 
-<!-- @[eventTrans_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/EventTransSubWindowMenu.ets) -->
+<!-- @eventTrans_menu -->
 
 ``` TypeScript
 @Entry
@@ -312,7 +312,7 @@ export struct EventTransSubWindowMenuExample {
 >- 当水平与垂直偏移量均设为负值时，菜单以绑定组件左下角为基准点进行显示。
 >- 当水平或垂直偏移量存在负值时，组件将以绑定组件的左上角为定位基准点，通过叠加偏移量参数实现反向偏移。
 
-<!-- @[bindComponent_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets) -->
+<!-- @bindComponent_menu -->
 
 ``` TypeScript
 @Entry
@@ -357,5 +357,5 @@ export struct BindComponentMenuExample {
 }
 ```
 
-![AnchorPosition](figures/AnchorPosition.gif)
+AnchorPosition
 

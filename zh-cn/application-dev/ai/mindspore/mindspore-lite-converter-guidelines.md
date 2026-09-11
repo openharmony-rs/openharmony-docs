@@ -21,7 +21,7 @@ MindSpore Lite AI模型部署流程是：
 
 | 组件                                                    | 硬件平台 | 操作系统     | 链接                                                         | SHA-256                                                      |
 | ------------------------------------------------------- | -------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 端侧推理和训练benchmark工具、converter工具、cropper工具 | CPU      | Linux-x86_64 | [mindspore-lite-2.7.0-linux-x64.tar.gz](https://ms-release.obs.cn-north-4.myhuaweicloud.com/2.7.0/MindSporeLite/lite/release/linux/x86_64/mindspore-lite-2.7.0-linux-x64.tar.gz) | 8bb1097100c9fec12675670ba2d4264a2cd6da3a9be093eb56631d00fc0c455b |
+| 端侧推理和训练benchmark工具、converter工具、cropper工具 | CPU      | Linux-x86_64 | mindspore-lite-2.7.0-linux-x64.tar.gz | 8bb1097100c9fec12675670ba2d4264a2cd6da3a9be093eb56631d00fc0c455b |
 
 ### 通过源码编译
 
@@ -41,7 +41,7 @@ MindSpore Lite AI模型部署流程是：
      -  CMake >= 3.18.3
      -  Git >= 2.28.0
 
-2. 取[MindSpore Lite源码](https://gitcode.com/openharmony/third_party_mindspore)。MindSpore Lite完整源码位于：`mindspore-src/source/`。
+2. 取MindSpore Lite源码。MindSpore Lite完整源码位于：`mindspore-src/source/`。
 
 3. 执行编译。
 

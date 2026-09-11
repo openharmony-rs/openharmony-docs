@@ -53,11 +53,11 @@ struct ComponentLevelCompatibility {
 
 应用级ENABLE模式下，Select呈现沉浸式系统材质样式：
 
-<div align=center><img src="figures/select-material-on.jpg" width="35%"/></div>
+<div align=center></div>
 
 应用级在非ENABLE模式下，Select按钮背景为白色，呈现默认样式：
 
-<div align=center><img src="figures/select-material-off.jpg" width="35%"/></div>
+<div align=center></div>
 
 ## 组件级开启的兼容性适配方案
 
@@ -103,8 +103,8 @@ struct ComponentLevelCompatibility {
 
 系统软件API版本低于26.0.0时，组件保持原有样式：
 
-<div align=center><img src="figures/component-level-23.jpg" width="35%"/></div>
+<div align=center></div>
 
 系统软件API版本26.0.0及以上时，组件呈现沉浸式系统材质效果：
 
-<div align=center><img src="figures/select-material-on.jpg" width="35%"/></div>
+<div align=center></div>

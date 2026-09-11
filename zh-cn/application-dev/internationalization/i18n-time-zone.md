@@ -39,7 +39,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -49,7 +49,7 @@
 2. 使用场景。
 - 时区接口基本功能：包括获取特定时区、计算固定和实际时区偏移量、遍历时区列表。
 
-   <!-- @[get_current_timezone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   <!-- @get_current_timezone -->
    
    ``` TypeScript
    // 获取巴西时区
@@ -127,7 +127,7 @@
 
 - 双时钟应用：首先选择时区列表中的时区，添加到应用偏好时区列表。然后遍历应用偏好时区列表，获取各时区的时间。
 
-   <!-- @[display_dual_timezones](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
+   <!-- @display_dual_timezones -->
    
    ``` TypeScript
    let pauloTimezone: i18n.TimeZone = i18n.getTimeZone('America/Sao_Paulo');

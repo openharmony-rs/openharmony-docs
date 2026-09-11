@@ -27,7 +27,7 @@ Repeat需要和状态管理V2一起使用，状态管理V2提供了\@ObservedV2�
 - 其余V1装饰器遵循迁移规则，替换成V2相关装饰器。
 - 直接把ForEach的循环结构替换成Repeat结构。
 
-<!-- @[foreach_to_repeat_child_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/ForEachToRepeatChildProperties.ets) -->
+<!-- @foreach_to_repeat_child_properties -->
 
 ``` TypeScript
 @ObservedV2
@@ -143,7 +143,7 @@ LazyForEach根据数据源循环渲染子组件。
 
 **示例1 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_initial_rendering_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInitialRenderingBefore.ets) -->
+<!-- @lazyforeach_to_repeat_initial_rendering_before -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -311,7 +311,7 @@ export struct MyComponent {
 
 **示例1 - 迁移后**
 
-<!-- @[lazyforeach_to_repeat_initial_rendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInitialRendering.ets) -->
+<!-- @lazyforeach_to_repeat_initial_rendering -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -352,7 +352,7 @@ export struct MyComponent {
 运行后界面如下图所示。
 
 
-![LazyForEach-Repeat-Migration-Demo-1](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-1.gif)
+LazyForEach-Repeat-Migration-Demo-1
 
 
 ### 数据更新操作
@@ -365,7 +365,7 @@ export struct MyComponent {
 
 **示例2 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_data_update_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDataUpdateBefore.ets) -->
+<!-- @lazyforeach_to_repeat_data_update_before -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -518,7 +518,7 @@ export struct MyComponent {
 
 **示例2 - 迁移后**
 
-<!-- @[lazyforeach_to_repeat_data_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDataUpdate.ets) -->
+<!-- @lazyforeach_to_repeat_data_update -->
 
 ``` TypeScript
 @Entry
@@ -573,7 +573,7 @@ export struct MyComponent {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-2](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-2.gif)
+LazyForEach-Repeat-Migration-Demo-2
 
 
 ### 修改数据子属性
@@ -586,7 +586,7 @@ LazyForEach可以使用@Observed与@ObjectLink装饰器实现对数据子属性�
 
 **示例3 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_child_properties_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatChildPropertiesBefore.ets) -->
+<!-- @lazyforeach_to_repeat_child_properties_before -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -669,7 +669,7 @@ Repeat需要和状态管理V2一起使用，状态管理V2提供了@ObservedV2�
 
 **示例3 - 迁移后**
 
-<!-- @[lazyforeach_to_repeat_child_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatChildProperties.ets) -->
+<!-- @lazyforeach_to_repeat_child_properties -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -719,7 +719,7 @@ export struct MyComponent {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-3](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-3.gif)
+LazyForEach-Repeat-Migration-Demo-3
 
 ### 状态管理V2观测组件内部状态
 
@@ -731,7 +731,7 @@ export struct MyComponent {
 
 **示例4 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_internal_state_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInternalStateBefore.ets) -->
+<!-- @lazyforeach_to_repeat_internal_state_before -->
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾GenericBasicDataSource示例代码。
@@ -816,7 +816,7 @@ Repeat本身支持与状态管理V2联合使用，将LazyForEach相关代码修�
 
 **示例4 - 迁移后**
 
-<!-- @[lazyforeach_to_repeat_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInternalState.ets) -->
+<!-- @lazyforeach_to_repeat_internal_state -->
 
 ``` TypeScript
 @ObservedV2
@@ -878,7 +878,7 @@ export struct ChildComponent {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-4](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-4.gif)
+LazyForEach-Repeat-Migration-Demo-4
 
 
 ### 状态管理V2观测组件外部输入
@@ -891,7 +891,7 @@ export struct ChildComponent {
 
 **示例5 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_external_input_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatExternalInputBefore.ets) -->
+<!-- @lazyforeach_to_repeat_external_input_before -->
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾GenericBasicDataSource示例代码。
@@ -968,7 +968,7 @@ Repeat本身支持与状态管理V2联合使用，将LazyForEach相关代码修�
 
 **示例5 - 迁移后**
 
-<!-- @[lazyforeach_to_repeat_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatExternalInput.ets) -->
+<!-- @lazyforeach_to_repeat_external_input -->
 
 ``` TypeScript
 @ObservedV2
@@ -1022,7 +1022,7 @@ export struct ChildComponent {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-5](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-5.gif)
+LazyForEach-Repeat-Migration-Demo-5
 
 
 ### 拖拽排序
@@ -1035,7 +1035,7 @@ LazyForEach的onMove属性提供了拖拽排序能力。
 
 **示例6 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_drag_sort_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDragSortBefore.ets) -->
+<!-- @lazyforeach_to_repeat_drag_sort_before -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1111,7 +1111,7 @@ Repeat具有与LazyForEach相同的onMove属性。将LazyForEach相关代码修�
 
 **示例6 - 迁移后**
 
-<!-- @[lazyforeach_to_repeat_drag_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDragSort.ets) -->
+<!-- @lazyforeach_to_repeat_drag_sort -->
 
 ``` TypeScript
 @Entry
@@ -1160,7 +1160,7 @@ export struct Parent {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-6](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-6.gif)
+LazyForEach-Repeat-Migration-Demo-6
 
 ### 组件复用
 
@@ -1172,7 +1172,7 @@ LazyForEach自身并不具备组件复用能力，为实现组件复用，需要
 
 **示例7 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_reuse_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseBefore.ets) -->
+<!-- @lazyforeach_to_repeat_reuse_before -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1273,7 +1273,7 @@ Repeat本身具备复用能力，且默认开启。将LazyForEach相关代码迁
 
 修改后的示例如下。
 
-<!-- @[lazyforeach_to_repeat_reuse_self](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseSelf.ets) -->
+<!-- @lazyforeach_to_repeat_reuse_self -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1322,7 +1322,7 @@ export struct MyComponent {
 
 使用\@ReusableV2装饰器的迁移示例如下所示。
 
-<!-- @[lazyforeach_to_repeat_reuse_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseV2.ets) -->
+<!-- @lazyforeach_to_repeat_reuse_v2 -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1393,7 +1393,7 @@ export struct ChildComponent {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-7](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-7.gif)
+LazyForEach-Repeat-Migration-Demo-7
 
 
 ### 模板渲染
@@ -1406,7 +1406,7 @@ LazyForEach自身并不具备模板渲染能力。为实现模板渲染能力，
 
 **示例8 - 迁移前**
 
-<!-- @[lazyforeach_to_repeat_template_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateBefore.ets) -->
+<!-- @lazyforeach_to_repeat_template_before -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1547,7 +1547,7 @@ Repeat本身具备模板渲染能力，开发者可以通过templateId方法为�
 
 **示例8 - 迁移方案1：使用Repeat自身的模板渲染能力**
 
-<!-- @[lazyforeach_to_repeat_template_self](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateSelf.ets) -->
+<!-- @lazyforeach_to_repeat_template_self -->
 
 ``` TypeScript
 export class StringData {
@@ -1619,7 +1619,7 @@ export struct MyComponent {
 
 **示例8 - 迁移方案2：由开发者实现模板渲染能力**
 
-<!-- @[lazyforeach_to_repeat_template_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateCustom.ets) -->
+<!-- @lazyforeach_to_repeat_template_custom -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1734,14 +1734,14 @@ export struct ChildComponentB {
 
 运行后界面如下图所示。
 
-![LazyForEach-Repeat-Migration-Demo-8](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-8.gif)
+LazyForEach-Repeat-Migration-Demo-8
 
 
 ## BasicDataSource示例代码
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/BasicDataSource.ets) -->
+<!-- @basic_data_source_string -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1828,7 +1828,7 @@ export class BasicDataSource implements IDataSource {
 
 ### GenericBasicDataSource示例代码
 
-<!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/GenericBasicDataSource.ets) -->
+<!-- @generic_basic_data_source -->
 
 ``` TypeScript
 // GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新

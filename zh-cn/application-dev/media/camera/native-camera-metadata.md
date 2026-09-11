@@ -16,7 +16,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 1. 导入NDK接口，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @import_header -->
    
    ``` C
    #include <cstdint>
@@ -75,7 +75,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 3. 调用OH_CameraManager_GetSupportedCameraOutputCapability()方法，获取当前设备支持的元数据类型metaDataObjectType，并通过OH_CameraManager_CreateMetadataOutput()方法创建元数据输出流。
 
-   <!-- @[create_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @create_metadata_output -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreateMetadataOutput(void)
@@ -97,7 +97,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 4. 调用OH_CameraManager_CreateCaptureSession()方法创建一个会话。
 
-   <!-- @[create_capture_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @create_capture_session -->
    
    ``` C++
    ret = OH_CameraManager_CreateCaptureSession(cameraManager_, &captureSession_);
@@ -108,7 +108,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 5. 配置session，完成后通过调用OH_CaptureSession_Start()方法输出metadata数据。接口调用失败会返回相应错误码，错误码类型参见Camera_ErrorCode。
 
-   <!-- @[add_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @add_metadata_output -->
    
    ``` C++
    // 开始配置会话。
@@ -166,7 +166,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 - 通过注册监听获取metadata对象，监听事件固定为metadataObjectsAvailable。检测到有效metadata数据时，callback返回相应的metadata数据信息，metadataOutput创建成功时可监听。
 
-  <!-- @[metadata_callback_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @metadata_callback_available -->
   
   ``` C++
   void OnMetadataObjectAvailable(Camera_MetadataOutput *metadataOutput, Camera_MetadataObject *metadataObject,
@@ -182,7 +182,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
 
 - 通过注册回调函数，获取监听metadata流的错误结果，callback返回metadata输出接口使用错误时返回的错误码，错误码类型参见Camera_ErrorCode。
 
-  <!-- @[metadata_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @metadata_callback_error -->
   
   ``` C++
   void OnMetadataOutputError(Camera_MetadataOutput *metadataOutput, Camera_ErrorCode errorCode)
@@ -191,7 +191,7 @@ Metadata主要是通过一个TAG（Key），去找对应的Data（Value），用
   }
   ```
 
-  <!-- @[get_metadata_listener_and_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @get_metadata_listener_and_register -->
   
   ``` C++
   MetadataOutput_Callbacks *NDKCamera::GetMetadataOutputListener(void)

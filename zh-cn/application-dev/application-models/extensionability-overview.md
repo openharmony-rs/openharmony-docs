@@ -72,7 +72,7 @@ ExtensionAbility组件是一种面向特定场景的应用组件。每一个具�
 
 **图1** 使用InputMethodExtensionAbility组件
 
-![ExtensionAbility-start](figures/ExtensionAbility-start.png)
+ExtensionAbility-start
 
 
 ## 实现指定类型的ExtensionAbility组件
@@ -81,4 +81,4 @@ ExtensionAbility组件是一种面向特定场景的应用组件。每一个具�
 
 卡片FormExtensionAbility实现方不用关心使用方何时去请求添加、删除卡片，FormExtensionAbility实例及其所在的ExtensionAbility进程的整个生命周期，都是由卡片管理系统服务FormManagerService进行调度管理。
 
-![form_extension](figures/form_extension.png)
+form_extension

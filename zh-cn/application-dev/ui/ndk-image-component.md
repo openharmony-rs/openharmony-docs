@@ -53,7 +53,7 @@
 
 4. 添加头文件引用。
 
-    <!-- @[image_headfiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    <!-- @image_headfiles -->
     
     ``` C++
     #include <arkui/native_node.h>
@@ -68,7 +68,7 @@
 
     将图片文件放到`entry/src/main/resources/rawfile/`目录下，在代码中使用相对路径引用。
 
-    <!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    <!-- @image_source_rawfile -->
 
     ``` C++
     // 设置图片源（使用rawfile资源）
@@ -92,7 +92,7 @@
     }
     ```
 
-    <!-- @[network_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    <!-- @network_image -->
     
     ``` C++
     ArkUI_AttributeItem srcItem = {nullptr, 0, "https://xxx.jpg"};
@@ -105,7 +105,7 @@
 
 在使用Image组件之前，需要先获取nativeNodeApi，然后使用createNode接口创建Image组件。
 
-<!-- @[image_getnode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_getnode -->
 
 ``` C++
 ArkUI_NativeNodeAPI_1* nativeNodeApi = nullptr;
@@ -116,7 +116,7 @@ if (nativeNodeApi == nullptr) {
 }
 ```
 
-<!-- @[create_image_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @create_image_component -->
 
 ``` C++
 // 创建Image组件1 - 基础图片
@@ -127,7 +127,7 @@ ArkUI_NodeHandle image1 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
 
 Image组件支持通过字符串路径或DrawableDescriptor对象设置图片源。
 
-<!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_source_rawfile -->
 
 ``` C++
 // 设置图片源（使用rawfile资源）
@@ -174,7 +174,7 @@ Image独有属性如下，具体说明请参考ArkUI_NodeAttributeType中的枚�
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_OBJECT_FIT属性设置图片在容器中的缩放方式。
 
-<!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_zoom -->
 
 ``` C++
 // 设置缩放类型
@@ -187,7 +187,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_INTERPOLATION属性设置图片插值效果。
 
-<!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_interpolation -->
 
 ``` C++
 // 设置插值效果
@@ -200,7 +200,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_OBJECT_REPEAT属性设置图片重复样式。
 
-<!-- @[image_repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_repeat -->
 
 ``` C++
 // 设置重复样式
@@ -213,7 +213,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_FILL_COLOR属性设置SVG图片填充颜色。
 
-<!-- @[image_fillcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_fillcolor -->
 
 ``` C++
 // 设置填充颜色（蓝色）
@@ -226,7 +226,7 @@ nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_ALT属性设置占位图。
 
-<!-- @[image_alt_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_alt_source -->
 
 ``` C++
 // 设置占位图
@@ -238,7 +238,7 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_SOURCE_SIZE属性设置图片解码尺寸。
 
-<!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_decode_size -->
 
 ``` C++
 // 设置解码尺寸
@@ -251,7 +251,7 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_RENDER_MODE属性设置图片渲染模式。
 
-<!-- @[image_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_render -->
 
 ``` C++
 // 设置渲染模式
@@ -264,7 +264,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_RENDER_MODE, &renderModeItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_SYNC_LOAD属性设置图片的同步或异步加载方式。
 
-<!-- @[image_load_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_load_sync -->
 
 ``` C++
 // 设置同步加载
@@ -277,7 +277,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_SYNC_LOAD, &syncLoadItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_COLOR_FILTER属性设置图片颜色滤镜。
 
-<!-- @[image_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_color_filter -->
 
 ``` C++
 // 设置颜色滤镜（5x4矩阵，共20个浮点数）
@@ -313,7 +313,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_COLOR_FILTER, &colorFilterItem);
 
 通过ArkUI_NodeAttributeType中的NODE_IMAGE_ORIENTATION属性设置图片显示方向。
 
-<!-- @[image_orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_orientation -->
 
 ``` C++
 // 设置图片显示方向
@@ -330,7 +330,7 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_ORIENTATION, &orientationItem);
 
 在处理图片事件之前，需要先通过registerNodeEventReceiver接口注册全局事件接收器。
 
-<!-- @[event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @event_receiver -->
 
 ``` C++
 // 全局事件接收器函数
@@ -354,7 +354,7 @@ void GlobalEventReceiver(ArkUI_NodeEvent *event)
 }
 ```
 
-<!-- @[register_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @register_image_receiver -->
 
 ``` C++
 // 注册全局事件接收器
@@ -365,7 +365,7 @@ nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
 
 在图片节点上使用registerNodeEvent接口注册加载NODE_IMAGE_ON_COMPLETE完成事件，当图片加载成功后触发该事件，事件回调中可获取图片尺寸信息。
 
-<!-- @[image_load_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_load_complete -->
 
 ``` C++
 // 图片加载完成事件处理
@@ -391,7 +391,7 @@ void HandleImageComplete(ArkUI_NodeEvent* event)
 }
 ```
 
-<!-- @[register_image_load_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @register_image_load_complete -->
 
 ``` C++
 // 注册图片加载完成事件
@@ -402,7 +402,7 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
 
 在图片节点上使用registerNodeEvent接口注册加载NODE_IMAGE_ON_ERROR失败事件，当图片加载失败时触发该事件，事件回调中可获取错误码信息。
 
-<!-- @[image_load_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_load_error -->
 
 ``` C++
 // 图片加载失败事件处理
@@ -420,7 +420,7 @@ void HandleImageError(ArkUI_NodeEvent* event)
 }
 ```
 
-<!-- @[register_image_load_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @register_image_load_error -->
 
 ``` C++
 // 注册图片加载失败事件
@@ -430,7 +430,7 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_ERROR, 0, nullptr);
 
 在图片节点上使用registerNodeEvent接口注册NODE_IMAGE_ON_SVG_PLAY_FINISH播放完成事件，当SVG动画播放结束时触发该事件。
 
-<!-- @[image_svg_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @image_svg_complete -->
 
 ``` C++
 // SVG播放完成事件处理
@@ -440,7 +440,7 @@ void HandleSvgPlayFinish(ArkUI_NodeEvent* event)
 }
 ```
 
-<!-- @[register_svg_play_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @register_svg_play_component -->
 
 ``` C++
 // 注册SVG播放完成事件
@@ -451,7 +451,7 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_SVG_PLAY_FINISH, 0, nullp
 
 当不再需要监听图片事件时，需要注销在节点上注册的事件以及全局事件接收器。
 
-<!-- @[unregister_node_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+<!-- @unregister_node_event -->
 
 ``` C++
 // 注销事件监听
@@ -466,5 +466,5 @@ nativeNodeApi->unregisterNodeEventReceiver();
 ## 完整示例
 
 <!--RP2-->
-[显示图片（Image）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImageCAPIGuide)
+显示图片（Image）
 <!--RP2End-->

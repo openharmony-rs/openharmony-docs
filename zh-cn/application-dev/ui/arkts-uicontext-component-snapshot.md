@@ -42,7 +42,7 @@
 
 为了能够模拟滚动，以及监听组件滚动的具体offset，需要为List（此处以列表为例）组件添加滚动控制器以及滚动监听。
 
-<!-- @[scroll_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
+<!-- @scroll_snapshot -->
 
 ``` TypeScript
 // src/main/ets/view/ScrollSnapshot.ets
@@ -91,7 +91,7 @@ export struct ScrollSnapshot {
 
 通过实现一个递归方法滚动循环截图，并在滚动过程配合一些动效实现。
 
-<!-- @[scroll_snapand_merge](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
+<!-- @scroll_snapand_merge -->
 
 ``` TypeScript
 /**
@@ -128,7 +128,7 @@ async scrollSnapAndMerge() {
 }
 ```
 
-<!-- @[scroll_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/CommonUtils.ets) -->
+<!-- @scroll_animation -->
 
 ``` TypeScript
 // src/main/ets/common/CommonUtils.ets
@@ -149,7 +149,7 @@ static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: numbe
 
 使用image.createPixelMapSync()方法创建长截图longPixelMap，并遍历之前保存的图像片段数据（this.areaArray），构建image.PositionArea对象area，然后调用longPixelMap.writePixelsSync(area)方法将这些片段逐个写入到正确的位置，从而拼接成一个完整的长截图。
 
-<!-- @[merge_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/ImageUtils.ets) -->
+<!-- @merge_image -->
 
 ``` TypeScript
 static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, listWidth: number,
@@ -197,7 +197,7 @@ static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, li
 
 使用安全控件SaveButton实现截图保存到相册。
 
-<!-- @[save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+<!-- @save_button -->
 
 ``` TypeScript
 // src/main/ets/view/SnapshotPreview.ets
@@ -212,7 +212,7 @@ SaveButton({
   })
 ```
 
-<!-- @[save_snapshot1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+<!-- @save_snapshot1 -->
 
 ``` TypeScript
 async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
@@ -260,7 +260,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
 
 当位图对象不再使用时，应及时将其赋值为空，例如：`this.mergedImage = undefined;`。
 
-<!-- @[close_and_clean_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
+<!-- @close_and_clean_snapshot -->
 
 ``` TypeScript
 closeSnapPopup(): void {
@@ -280,7 +280,7 @@ closeSnapPopup(): void {
 ### 封装全局截图接口
 如前文所述，截图接口必须在UI上下文明确的位置使用。然而，应用有时希望对不同模块封装统一的全局截图方法。例如，在下述示例中，awardBuilder构建的组件是固定结构的。GlobalStaticSnapshot提供了一个getAwardSnapshot全局方法，能够满足不同模块的需求，对同一固定模式的组件进行截图，从而实现全局截图接口的封装。本示例从API version 18开始支持。
 
-<!-- @[global_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/GlobalScreenshot.ets) -->
+<!-- @global_snapshot -->
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -328,7 +328,7 @@ export class GlobalStaticSnapshot {
 
 **完整示例：**
 
-完整示例请参考[长截图](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-long-snapshot-practice#section1566681910427)。
+完整示例请参考长截图。
 
 ## 组件截图最佳实践
 ### 合理控制截图时机

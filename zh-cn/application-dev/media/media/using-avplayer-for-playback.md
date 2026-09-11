@@ -15,7 +15,7 @@
 
 
 **图1** 播放状态变化示意图
-![Playback status change](figures/playback-status-change.png)
+Playback status change
 
 状态的详细说明请参考AVPlayerState。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统大量的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
 
@@ -225,7 +225,7 @@
 
 参考以下示例，完整地播放一首音乐，实现起播后3s暂停，暂停3s重新播放的效果。
 
-1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio)，并将示例工程的以下资源复制到对应目录。
+1. 新建工程，下载示例工程，并将示例工程的以下资源复制到对应目录。
     ```text
     AVPlayerArkTSAudio
     entry/src/main/ets/

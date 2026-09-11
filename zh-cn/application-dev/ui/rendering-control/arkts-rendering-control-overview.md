@@ -24,7 +24,7 @@ ArkUI通过自定义组件的build()函数和@Builder装饰器中的声明式UI�
 
 循环渲染数组数据，通常有以下两种方式：全量加载和懒加载（配合滚动容器组件）。
 
-![full-lazy-load-overview](./figures/full-lazy-load-overview.png)
+full-lazy-load-overview
 
 全量加载场景下，组合（Composition）阶段会一次性将所有子组件节点都挂载到UI树上，后续渲染（Rendering）阶段绘制全部子组件。长列表场景下，加载所有节点会导致页面卡顿、高内存占用，尤其是当列表数据高频刷新时，非常影响页面使用体验。首次加载耗时长，但滑动时性能较好，适合数据较少的场景。
 
@@ -42,5 +42,5 @@ ArkUI框架为鸿蒙应用开发者提供了ForEach组件（全量加载）和La
 
 ## 最佳实践
 
-- [懒加载优化性能-界面渲染性能优化-性能场景优化案例](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization)
-- [长列表加载丢帧优化-界面渲染性能优化-性能场景优化案例](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)
+- 懒加载优化性能-界面渲染性能优化-性能场景优化案例
+- 长列表加载丢帧优化-界面渲染性能优化-性能场景优化案例

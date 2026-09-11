@@ -1,12 +1,12 @@
 # 使用Node-API接口产生的异常日志/崩溃分析
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-以下维测手段多数依赖于ArkTS运行时的多线程检测能力，因此建议在调试前启用此功能。启用方法参考文档[分析CppCrash（进程崩溃）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-multi-thread-check)。
+以下维测手段多数依赖于ArkTS运行时的多线程检测能力，因此建议在调试前启用此功能。启用方法参考文档分析CppCrash（进程崩溃）。
 
 若无特殊说明，本章节描述的维测手段会在启用ArkTS运行时多线程检测开关的情况下，立即中断进程。
 
@@ -609,7 +609,7 @@ LastFatalMessage:[NAPI] Crash occurred on ProcessAll, callback: 385297425128
 59b59b6000-59b59b7000 rw-p 00133000 /data/storage/el1/bundle/libs/arm64/libc++_shared.so
 ```
 
-通过[llvm-addr2line](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1735713501344)工具可以确定0x22E8正是回调函数所在行。由此可以确定问题发生在napi_wrap时传入的回调函数中。
+通过llvm-addr2line工具可以确定0x22E8正是回调函数所在行。由此可以确定问题发生在napi_wrap时传入的回调函数中。
 
 ``` text
 llvm-addr2line -ifCe libentry.so 0x22e8

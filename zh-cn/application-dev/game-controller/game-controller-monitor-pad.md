@@ -19,7 +19,7 @@ Game Controller Kit提供游戏手柄轴事件和按键事件的监听能力。�
 
 Game Controller Kit支持的手柄键位参考图如下：
 
-![gamepad](figures/gamepad.png)
+gamepad
 
 
 ## 接口说明

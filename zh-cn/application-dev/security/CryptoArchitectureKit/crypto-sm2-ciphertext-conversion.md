@@ -19,7 +19,7 @@
 
 3. 生成的密文可直接使用cryptoFramework进行SM2解密。
 
-<!-- @[sm2_create_asn1_ciphertext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/CreateASN.1Ciphertext.ets) -->
+<!-- @sm2_create_asn1_ciphertext -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -48,7 +48,7 @@ function testGenCipherTextBySpec() {
 
 3. 根据业务需要，自行拼接SM2密文参数，形成其他格式的SM2密文。
 
-<!-- @[sm2_obtain_ciphertext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/ObtainCiphertext.ets) -->
+<!-- @sm2_obtain_ciphertext -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

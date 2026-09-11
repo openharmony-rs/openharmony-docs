@@ -22,7 +22,7 @@
 
   该接口用于创建带有父组件的绘制组件，其中value用于设置绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。
 
-  <!-- @[shape_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
+  <!-- @shape_one -->
   
   ``` TypeScript
   Shape() {
@@ -39,14 +39,14 @@
 
     该接口用于在页面绘制圆形，其中width用于设置圆形的宽度，height用于设置圆形的高度，圆形直径由宽高最小值确定。
 
-  <!-- @[shape_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
+  <!-- @shape_two -->
   
   ``` TypeScript
   Circle({ width: 150, height: 150 })
   ```
 
 
-  ![创建2](figures/创建2.jpg)
+  创建2
 
 
 ## 形状视口viewPort
@@ -62,7 +62,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过形状视口对图形进行放大与缩小。
 
-  <!-- @[view_port_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort1.ets) -->
+  <!-- @view_port_one -->
   
   ``` TypeScript
   class Tmp {
@@ -130,11 +130,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![2023032401632](figures/2023032401632.png)
+  2023032401632
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆。
 
-  <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
+  <!-- @view_port_two -->
   
   ``` TypeScript
   class TmpTwo {
@@ -164,11 +164,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![viewport（2）](figures/viewport（2）.jpg)
+  viewport（2）
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆，将viewPort向右方和下方各平移150。
 
-  <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
+  <!-- @view_port_three -->
   
   ``` TypeScript
   class TmpThree {
@@ -198,7 +198,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![viewport（3）](figures/viewport（3）.jpg)
+  viewport（3）
 
 
 ## 自定义样式
@@ -211,7 +211,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过fill可以设置组件填充区域颜色。
 
-  <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
+  <!-- @fill -->
   
   ``` TypeScript
   Path()
@@ -222,11 +222,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeWidth(0)
   ```
 
-  ![2023022792216](figures/2023022792216.jpg)
+  2023022792216
 
 - 通过stroke可以设置组件边框颜色。
 
-  <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
+  <!-- @stroke -->
   
   ``` TypeScript
   Path()
@@ -237,11 +237,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Red)
   ```
 
-  ![stroke](figures/stroke.jpg)
+  stroke
 
 - 通过strokeOpacity可以设置边框透明度。
 
-  <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
+  <!-- @stroke_opacity -->
   
   ``` TypeScript
   Path()
@@ -254,11 +254,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeOpacity(0.2)
   ```
 
-  ![strokeopacity](figures/strokeopacity.jpg)
+  strokeopacity
 
 - 通过strokeLineJoin可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
 
-  <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
+  <!-- @stroke_line_join -->
   
   ``` TypeScript
   Polyline()
@@ -272,7 +272,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeLineJoin(LineJoinStyle.Round)
   ```
 
-  ![strokeLineJoin](figures/strokeLineJoin.jpg)
+  strokeLineJoin
 
 - 通过strokeMiterLimit设置斜接长度与边框宽度比值的极限值。
 
@@ -280,7 +280,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   
   strokeMiterLimit取值需大于等于1，且在strokeLineJoin属性取值LineJoinStyle.Miter时生效。
 
-  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) --> 
+  <!-- @stroke_miter_limit --> 
   
   ``` TypeScript
   Polyline()
@@ -305,11 +305,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeMiterLimit(1.42)
   ```
 
-  ![2023032405917](figures/2023032405917.jpg)
+  2023032405917
 
 - 通过antiAlias设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
-  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
+  <!-- @antialias_open --> 
   
   ``` TypeScript
   // 开启抗锯齿
@@ -321,9 +321,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Black)
   ```
 
-  ![无标题](figures/无标题.png)
+  无标题
 
-  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
+  <!-- @antialias_close --> 
   
   ``` TypeScript
   // 关闭抗锯齿
@@ -336,7 +336,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .antiAlias(false)
   ```
 
-  ![2023032411518](figures/2023032411518.jpg)
+  2023032411518
 
 - 通过mesh设置网格效果，实现图像局部扭曲。
 
@@ -344,7 +344,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 示例通过commands来绘制路径，commands参数说明请参考SVG路径描述规范。
 
-  <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
+  <!-- @mesh -->
   
   ``` TypeScript
   import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
@@ -492,7 +492,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![ShapeMeshDemo](figures/ShapeMeshDemo.png)
+  ShapeMeshDemo
 
 ## 场景示例
 
@@ -504,7 +504,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 示例通过commands来绘制路径，commands参数说明请参考SVG路径描述规范。
 
-  <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
+  <!-- @shape_example -->
   
   ``` TypeScript
   @Entry
@@ -531,7 +531,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![场景1](figures/场景1.png)
+  场景1
 
 ### 绘制圆和圆环
 
@@ -541,7 +541,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考strokeDashArray。  
 
-  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
+  <!-- @circle_example_one --> 
   
   ``` TypeScript
   @Entry
@@ -565,7 +565,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![场景2](figures/场景2.jpg)
+  场景2
 
 ### UI视觉属性作用效果
 
@@ -574,7 +574,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 > backgroundColor、linearGradient等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
-  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
+  <!-- @circle_example_two --> 
   
   ``` TypeScript
   @Entry
@@ -593,4 +593,4 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![场景3](figures/VirtualEffect.jpg)
+  场景3

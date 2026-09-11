@@ -16,7 +16,7 @@
 
    获取拍照输出的数据需要用到系统提供的image、dataSharePredicates、photoAccessHelper接口能力，方法如下。
 
-   <!-- @[import_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+   <!-- @import_interface -->
    
    ``` TypeScript
    import { camera } from '@kit.CameraKit';
@@ -31,7 +31,7 @@
 
    通过getSupportedFullOutputCapability方法，获取当前相机设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。
 
-   <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+   <!-- @get_full_outputCapability -->
    
    ``` TypeScript
      getFullOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice,
@@ -85,7 +85,7 @@
      - 将处理完的pixelMap通过回调回传，做图片显示或通过安全控件写文件保存图片。
      - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     <!-- @set_photo_cb_single -->
      
      ``` TypeScript
      setPhotoOutputCbSingle(photoOutput: camera.PhotoOutput, context: Context) {
@@ -207,7 +207,7 @@
      - 调用capture拍照后，需要及时调用saveCameraPhoto保存图片或discardCameraPhoto取消保存图片，否则会影响后续图片的拍摄。
      - 使用完后解注册分段式拍照回调函数。
 
-     <!-- @[set_photo_cb_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     <!-- @set_photo_cb_double -->
      
      ``` TypeScript
      // 保存图片。
@@ -296,7 +296,7 @@
 
    通过geoLocationManager中的geoLocationManager.getCurrentLocation方法，可以获取图片地理位置信息。使用方法可参考capture示例。
 
-   <!-- @[capture_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+   <!-- @capture_photo -->
    
    ``` TypeScript
    public async capture(isFront: boolean) {
@@ -326,7 +326,7 @@
 
 - 通过注册固定的captureStart回调函数监听拍照开始结果，当photoOutput创建成功时，即可监听。在相机设备准备开始当前拍照时触发，该事件返回此次拍照的captureId。
 
-  <!-- @[set_capture_start_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  <!-- @set_capture_start_cb -->
   
   ``` TypeScript
   onPhotoOutputCaptureStart(photoOutput: camera.PhotoOutput): void {
@@ -341,7 +341,7 @@
 
 - 通过注册固定的captureEnd回调函数监听拍照结束结果，当photoOutput创建成功时，即可监听。该事件返回结果为拍照完全结束后的相关信息CaptureEndInfo。
 
-  <!-- @[set_capture_end_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  <!-- @set_capture_end_cb -->
   
   ``` TypeScript
   onPhotoOutputCaptureEnd(photoOutput: camera.PhotoOutput): void {
@@ -357,7 +357,7 @@
 
 - 通过注册固定的captureReady回调函数获取监听能否继续拍摄下一张的结果，当photoOutput创建成功时，即可监听。当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-  <!-- @[set_capture_ready_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  <!-- @set_capture_ready_cb -->
   
   ``` TypeScript
   captureReadyCallback(err: BusinessError): void {
@@ -381,7 +381,7 @@
 
 - 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见CameraErrorCode。
 
-  <!-- @[set_photo_error_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+  <!-- @set_photo_error_cb -->
   
   ``` TypeScript
   onPhotoOutputError(photoOutput: camera.PhotoOutput): void {

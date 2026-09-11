@@ -40,7 +40,7 @@ toolbar-item{
 }
 ```
 
-![toolbar-Component](figures/toolbar-Component.gif)
+toolbar-Component
 
 
 ## 添加子组件
@@ -77,7 +77,7 @@ toolbar-item{
 }
 ```
 
-![toolbar](figures/toolbar.gif)
+toolbar
 
 
 ## 设置样式
@@ -114,7 +114,7 @@ toolbar-item{
 ```
 
 
-![Setting-Styles-2](figures/Setting-Styles-2.png)
+Setting-Styles-2
 
 
 ## 绑定事件
@@ -168,7 +168,7 @@ export default {
 }
 ```
 
-![Binding-Event-4](figures/Binding-Event-4.gif)
+Binding-Event-4
 
 > **说明：** 
 >
@@ -226,4 +226,4 @@ export default {
 }
 ```
 
-![Example-Scenario-12](figures/Example-Scenario-12.gif)
+Example-Scenario-12

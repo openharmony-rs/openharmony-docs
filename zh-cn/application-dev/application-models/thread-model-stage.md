@@ -26,7 +26,7 @@ Stage模型下的线程主要有如下三类：
 
     TaskPool与Worker的运作机制、通信手段和使用方法可以参考TaskPool和Worker的对比。
 
-    ![thread-model-stage](figures/thread-model-stage.png)
+    thread-model-stage
 
 > **说明：**
 >

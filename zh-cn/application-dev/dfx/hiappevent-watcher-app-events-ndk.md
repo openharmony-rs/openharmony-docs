@@ -34,7 +34,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 1. 将示例工程依赖的jsoncpp库文件复制到新建工程中。
 
-   打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，并点击“下载当前目录”，下载EventSub工程文件。
+   打开链接HiAppEvent示例工程EventSub，并点击“下载当前目录”，下载EventSub工程文件。
    
    新建一个Native C++工程。从解压后的EventSub文件夹中拷贝jsoncpp库文件（entry/libs和entry/src/main/cpp/thirdparty整个目录）到新建的工程中，得到的目录结构如下：
    ```text
@@ -59,7 +59,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
        │   │   └── pages
        │   │       └── Index.ets        // 主页
    ```
-   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6)。
+   该示例工程中jsoncpp库文件对应的源码来自三方开源库jsoncpp。
 
 2. 编辑“CMakeLists.txt”文件，添加所需的源文件和动态库。
 
@@ -82,7 +82,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 3. 编辑“napi_init.cpp”文件，导入依赖的文件并定义LOG_TAG：
 
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @EventSub_napi_Header -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -100,7 +100,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 1. 订阅事件。分别使用OnReceive类型观察者、OnTrigger类型观察者的订阅方式。
    - 订阅崩溃事件（系统事件），采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“napi_init.cpp”文件，定义OnReceive类型观察者相关方法：
 
-    <!-- @[AppEvent_Crash_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @AppEvent_Crash_C++_Add_Watcher -->
     
     ``` C++
     // 定义变量，用来缓存创建的观察者的指针。
@@ -157,7 +157,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
    - 订阅按钮点击事件（应用事件），采用OnTrigger类型观察者的订阅方式。需满足OH_HiAppEvent_SetTriggerCondition()设置的条件，才能触发OnTrigger()回调。编辑 “napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
-    <!-- @[AppEvent_Click_C++_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @AppEvent_Click_C++_Add_Watcher -->
     
     ``` C++
     // 定义变量，用来缓存创建的观察者的指针。
@@ -213,7 +213,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 2. 编辑“napi_init.cpp”文件，添加按钮点击事件的打点接口：
 
-   <!-- @[AppEvent_Click_C++_WriteAppEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @AppEvent_Click_C++_WriteAppEvent -->    
    
    ``` C++
    static napi_value WriteAppEvent(napi_env env, napi_callback_info info)
@@ -229,7 +229,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 3. 编辑“napi_init.cpp”文件，注册RegisterWatcherCrash()(订阅崩溃事件)、RegisterWatcherClick()（订阅按钮点击事件）、WriteAppEvent()(按钮点击事件打点接口)为ArkTS接口：
 
-   <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @AppEvent_C++_Init -->
    
    ``` C++
    static napi_value Init(napi_env env, napi_value exports)
@@ -248,7 +248,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 4. 编辑“index.d.ts”文件，定义ArkTS接口：
 
-   <!-- @[AppEvent_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+   <!-- @AppEvent_C++_Index.d.ts -->    
    
    ``` TypeScript
    export const registerWatcherCrash: () => void;
@@ -258,13 +258,13 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 5. 编辑“EntryAbility.ets”文件，在onCreate()函数中添加接口调用：
 
-   <!-- @[EventSub_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   <!-- @EventSub_Capi_Header -->    
    
    ``` TypeScript
    import testNapi from 'libentry.so';
    ```
    
-   <!-- @[AppEvent_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   <!-- @AppEvent_Call_Capi_Function -->    
    
    ``` TypeScript
    // 在onCreate()函数中添加C API接口调用
@@ -278,13 +278,13 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考hi
 
 编辑“Index.ets”文件，新增“WatchAppCrash ArkTS&C++”按钮以触发崩溃事件；新增“writeEvent C++”按钮，在按钮点击函数中进行事件打点。示例代码如下：
 
-<!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @EventSub_Index_Capi_Header -->    
 
 ``` TypeScript
 import testNapi from 'libentry.so';
 ```
 
-<!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @AppEvent_Crash_Button -->    
 
 ``` TypeScript
 Button('WatchAppCrash ArkTS&C++')
@@ -301,7 +301,7 @@ Button('WatchAppCrash ArkTS&C++')
   })
 ```
 
-<!-- @[AppEvent_CPP_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @AppEvent_CPP_Button -->    
 
 ``` TypeScript
 Button('writeEvent C++')
@@ -346,7 +346,7 @@ Button('writeEvent C++')
 
 4. 移除应用的事件观察者：
 
-   <!-- @[AppEvent_C++_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @AppEvent_C++_RemoveWatcher -->    
    
    ``` C++
    static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
@@ -362,7 +362,7 @@ Button('writeEvent C++')
 
 5. 销毁应用的事件观察者：
 
-   <!-- @[AppEvent_C++_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @AppEvent_C++_DestroyWatcher -->    
    
    ``` C++
    static napi_value DestroyWatcher(napi_env env, napi_callback_info info)

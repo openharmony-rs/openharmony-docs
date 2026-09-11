@@ -14,7 +14,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
 
 
 1. 定义并发函数，内部密集调用I/O能力。
-   <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/write.ets) -->
+   <!-- @define_concurrent_function -->
    
    ``` TypeScript
    import { fileIo } from '@kit.CoreFileKit';
@@ -28,10 +28,10 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
    }
    ```
 
-   <!-- @[define_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) -->
+   <!-- @define_concurrent_function -->
    
    ``` TypeScript
-   import { write } from './write'
+   import { write } from './write';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { taskpool } from '@kit.ArkTS';
    import { common } from '@kit.AbilityKit';
@@ -49,7 +49,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
        const writePromise = write('Hello World!', fileList[i]).then(() => {
          console.info(`Succeeded in writing the file. FileList: ${fileList[i]}`);
        }).catch((err: BusinessError) => {
-         console.error(`Failed to write the file. Code is ${err.code}, message is ${err.message}`)
+         console.error(`Failed to write the file. Code is ${err.code}, message is ${err.message}`);
          return false;
        });
        writePromises.push(writePromise);
@@ -65,7 +65,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
 
 2. 使用TaskPool执行包含密集I/O的并发函数，通过调用execute()方法执行任务，并在回调中处理调度结果。示例中获取filePath1和filePath2的方式请参见获取应用文件路径。在TaskPool中使用context时，需先在并发函数外部准备好，并通过参数传递给并发函数。
 
-   <!-- @[taskpool_execute_concurrent_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/IoIntensiveTaskDevelopment.ets) --> 
+   <!-- @taskpool_execute_concurrent_function --> 
    
    ``` TypeScript
    @Entry
@@ -91,7 +91,7 @@ I/O密集型任务的性能关键在于I/O操作的速度和效率，而非CPU�
                }).catch((e: BusinessError) => {
                  this.message = 'failed';
                  console.error('concurrentTest is failed.');
-               })
+               });
              })
          }
          .width('100%')

@@ -11,7 +11,7 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考示例工程。
 
 当前支持的编码能力，请参考AVCodec支持的格式。
 
@@ -26,7 +26,7 @@
 
 详细的API说明请参考VideoEncoder。
 
-![Invoking relationship of video encode stream](figures/synchronous-video-encode.png)
+Invoking relationship of video encode stream
 
 ### 在CMake脚本中链接动态库
 

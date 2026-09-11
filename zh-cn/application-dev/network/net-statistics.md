@@ -26,7 +26,7 @@
 
 1. 导入statistics、socket以及错误码模块。
 
-   <!-- @[flow_management_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flow_management_case_module_import -->
    
    ``` TypeScript
    import { socket, statistics } from '@kit.NetworkKit';
@@ -37,7 +37,7 @@
 
    分别调用getIfaceRxBytes和getIfaceTxBytes接口传入网卡名获取指定网卡从最近一次开机至今的下行和上行流量数据。
 
-   <!-- @[flow_management_getIfaceRxBytes_and_getIfaceTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flow_management_getIfaceRxBytes_and_getIfaceTxBytes -->
    
    ``` TypeScript
      // wlan0为主WiFi网卡名，获取主WiFi实时下行流量数据。
@@ -65,7 +65,7 @@
 
     分别调用getCellularRxBytes和getCellularTxBytes接口获取从最近一次开机至今的蜂窝下行和上行流量数据。
 
-   <!-- @[flow_management_getCellularRxBytes_and_getCellularTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flow_management_getCellularRxBytes_and_getCellularTxBytes -->
    
    ``` TypeScript
    // 获取蜂窝实时下行流量数据。
@@ -85,7 +85,7 @@
 
     分别调用getAllRxBytes和getAllTxBytes接口获取所有网卡从最近一次开机到现在的下行和上行流量数据。
 
-   <!-- @[flow_management_getAllRxBytes_and_getAllTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flow_management_getAllRxBytes_and_getAllTxBytes -->
    
    ``` TypeScript
    // 获取所有网卡实时下行流量数据。
@@ -108,7 +108,7 @@
    ```ts
     let UID = 20010038;
    ```
-   <!-- @[flow_management_getUidRxBytes_and_getUidTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flow_management_getUidRxBytes_and_getUidTxBytes -->
    
    ``` TypeScript
    // 获取指定应用实时下行流量数据。
@@ -130,7 +130,7 @@
 
     分别调用getSockfdRxBytes和getSockfdTxBytes接口，传入Socket FD获取指定Socket的下行和上行流量数据。
 
-   <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flow_management_getSockfdRxBytes_and_getSockfdTxBytes -->
    
    ``` TypeScript
    // 获取指定socket实时下行流量数据。
@@ -237,4 +237,4 @@
 
 针对流量管理的开发，有以下相关实例可供参考：
 
-- [流量管理](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)
+- 流量管理

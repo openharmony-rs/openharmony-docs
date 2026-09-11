@@ -26,7 +26,7 @@
 
 2. 初始化段落样式，设置文本对齐方式为居中对齐。
 
-   <!-- @[drawing_simple_text_c_create_typographyStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @drawing_simple_text_c_create_typographyStyle -->
    
    ``` C++
    // 创建一个 TypographyStyle 创建 Typography 时需要使用
@@ -37,7 +37,7 @@
 
 3. 初始化文本样式，此处设置字体颜色为纯黑色，字体大小为60，字重为400。
 
-   <!-- @[drawing_simple_text_c_create_textStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @drawing_simple_text_c_create_textStyle -->
    
    ``` C++
    // 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
@@ -49,7 +49,7 @@
 
 4. 初始化段落对象，并添加文本。
 
-   <!-- @[drawing_simple_text_c_create_typography](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @drawing_simple_text_c_create_typography -->
    
    ``` C++
    // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
@@ -68,7 +68,7 @@
 
 5. 排版段落并进行文本绘制。
 
-   <!-- @[drawing_simple_text_c_layout_and_paint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @drawing_simple_text_c_layout_and_paint -->
    
    ``` C++
    // 设置页面最大宽度
@@ -80,7 +80,7 @@
 
 6. 释放内存
 
-   <!-- @[drawing_simple_text_c_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @drawing_simple_text_c_destroy -->
    
    ``` C++
    // 释放内存
@@ -93,4 +93,4 @@
 
 ## 效果展示
 
-![Simple-text-drawing](figures/Simple-text-drawing.png)
+Simple-text-drawing

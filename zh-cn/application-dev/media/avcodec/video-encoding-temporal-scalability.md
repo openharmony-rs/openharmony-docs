@@ -17,13 +17,13 @@
 
 **时域可分层视频编码**，是指能编码出时域分层码流的视频编码，下图展示了通过参考关系构建的4层时域分层码流结构。
 
-![Temporal scalability 4 layers](figures/temporal-scalability-4layers.png)
+Temporal scalability 4 layers
 
 从高到低逐层丢弃部分层级的码流（丢弃顺序L3->L2->L1），能实现不同程度的帧率伸缩，以满足传输和解码能力的变化需求。
 
 如下图所示，这是上述4层时域分层码流结构丢弃L3后组成的新的码流结构，能在解码正常的情况下实现帧率减半的效果。其他层的丢弃同理。
 
-![Temporal scalability 4 layers L3 dropped](figures/temporal-scalability-4layers-L3-dropped.png)
+Temporal scalability 4 layers L3 dropped
 
 ### 时域分层码流结构介绍
 基础码流是由一个或多个独立图像组（Group Of Pictures，简称GOP）组合而成的视频码流。GOP是在编码中一组从I帧开始到I帧结束的连续的可独立解码的图像组。
@@ -99,15 +99,15 @@
 
 使用举例1：TGOP=4时的相邻参考模式。
 
-![Temporal gop 4 adjacent reference](figures/temporal-scalability-tgop4-adjacent.png)
+Temporal gop 4 adjacent reference
 
 使用举例2：TGOP=4时的跨帧参考模式。
 
-![TGOP4 jump reference](figures/temporal-scalability-tgop4-jump.png)
+TGOP4 jump reference
 
 使用举例3：TGOP=4时的均匀分层模式。
 
-![TGOP4 uniformly scaled reference](figures/temporal-scalability-tgop4-uniformly.png)
+TGOP4 uniformly scaled reference
 
 ### 开发指导
 
@@ -250,7 +250,7 @@
     从API版本26.0.0开始，可以通过OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID字段获取时域层级信息，无需根据TGOP参数及出帧信息自行计算所属时域层级信息。时域层号为0时，表示基础层，1及以上时表示增强层。
 
     示例代码如下：
-    <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
+    <!-- @quick_start -->
     
     ``` C++
     static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)

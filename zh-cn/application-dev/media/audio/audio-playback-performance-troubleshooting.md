@@ -52,7 +52,7 @@
 
    可参考下方示例进行音频参数的设置。
 
-   <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+   <!-- @Render_ConfigStream -->
    
    ``` C++
    // 设置音频采样率。

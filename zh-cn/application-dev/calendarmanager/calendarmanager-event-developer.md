@@ -31,7 +31,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 
 1. 导入相关依赖。
 
-    <!-- @[calendarEvent_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @calendarEvent_entryAbilityImport -->
     
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
@@ -45,7 +45,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 
 3. 根据上下文获取日程管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
-    <!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @calendarEvent_entryAbility -->
     
     ``` TypeScript
     
@@ -102,7 +102,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 
 4. 根据日历账户信息创建Calendar对象，用于进行日程管理。设置日历配置信息，可以根据需要打开日程提醒、设置日历账户颜色。
 
-    <!-- @[calendarEvent_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarEvent_indexImport -->
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -125,7 +125,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
       color: '#aabbcc'
     };
     ```
-    <!-- @[calendarEvent_createCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarEvent_createCalendar -->
     
     ``` TypeScript
     // 创建日历账户
@@ -158,13 +158,13 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 
    方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建，`editEvent()`不支持自定义周期性日程创建。
    
-   <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @calendarEvent_eventParam -->
    
    ``` TypeScript
    let eventId : number | undefined = undefined;
    const date = new Date();
    ```
-   <!-- @[calendarEvent_addEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @calendarEvent_addEvent -->
    
    ``` TypeScript
    const event: calendarManager.Event = {
@@ -230,7 +230,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 
 6. 按照日程id进行指定日程的更新，更新日程相关信息。
 
-    <!-- @[calendarEvent_updateEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarEvent_updateEvent -->
     
     ``` TypeScript
     const updateEvent: calendarManager.Event = {
@@ -251,7 +251,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 7. 查询当前日历账户下的所有日程。由于涉及数据隐私安全，进行了权限管控的应用无法获取其他创建的日程信息。根据不同的查询条件和查询字段，返回不同的查询结果。
 
    当没有查询条件和查询字段时，可查询指定日历账户下的所有日程。
-   <!-- @[calendarEvent_getEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @calendarEvent_getEvents -->
    
    ``` TypeScript
    calendar.getEvents().then((data: calendarManager.Event[]) => {
@@ -262,7 +262,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
    ```
 
    还支持根据日程id、日程开始和结束时间、日程标题等查询条件来查询日程。
-   <!-- @[calendarEvent_getEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @calendarEvent_getEvent -->
    
    ``` TypeScript
    // 根据日程id查询
@@ -292,7 +292,7 @@ Calendar Kit中的日程Event归属于某个对应的日历账户Calendar，一�
 
 8. 按照日程id进行指定日程的删除。可以通过`deleteEvent()`接口进行单个日程的删除，也可以通过`deleteEvents()`接口批量删除指定日程，此处以删除单个指定日程为例。
 
-    <!-- @[calendarEvent_deleteEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @calendarEvent_deleteEvent -->
     
     ``` TypeScript
     calendar.deleteEvent(eventId).then(() => {

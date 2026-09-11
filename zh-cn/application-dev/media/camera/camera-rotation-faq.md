@@ -56,7 +56,7 @@
 
 相机窗口发生旋转时，调用getPreviewRotation、setPreviewRotation对预览流进行角度修正。
 
-参考文档：[适配相机旋转角度(ArkTS)](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/camera-rotation-angle-adaptation#%E9%A2%84%E8%A7%88)。
+参考文档：适配相机旋转角度(ArkTS)。
 
 ## 预防措施
 
@@ -64,4 +64,4 @@
 
 应用使用相机时，监听Display对象变化，感知窗口当前状态。如当前相机窗口发生旋转时，需对预览流进行角度修正。推荐在会话配置中完成调用预览旋转接口后，直接创建监听。
 
-参考文档：[适配相机旋转角度(ArkTS)](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/camera-rotation-angle-adaptation#%E9%A2%84%E8%A7%88)。
+参考文档：适配相机旋转角度(ArkTS)。

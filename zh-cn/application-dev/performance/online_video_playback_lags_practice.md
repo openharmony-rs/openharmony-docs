@@ -20,7 +20,7 @@
 缓冲区原理图  
 
 
-![online_video_playback_lags_practice](./figures/online_video_playback_lags_practice.PNG)
+online_video_playback_lags_practice
 
 如上图所示：
 
@@ -88,7 +88,7 @@ player.setMediaSource(mediaSource, playStrategy);
 视频卡顿率折线图  
 
 
-![online_video_playback_lags_practice_chart](./figures/online_video_playback_lags_practice_chart.PNG)
+online_video_playback_lags_practice_chart
 
 从实验数据可以看出：
 

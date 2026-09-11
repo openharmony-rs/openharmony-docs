@@ -10,7 +10,7 @@
 
 ## 场景介绍
 
-以导航场景为例，用户使用地图应用导航时，通常先搜索目的地，然后开始导航。为了提升导航效率和操作便捷性，建议在地图应用中添加常去地点的快捷方式，如公司、家等。添加这些快捷方式后，用户长按应用图标，即可打开快捷方式入口，快速启动导航。详情请参见[桌面快捷方式](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-desktop-shortcuts)。
+以导航场景为例，用户使用地图应用导航时，通常先搜索目的地，然后开始导航。为了提升导航效率和操作便捷性，建议在地图应用中添加常去地点的快捷方式，如公司、家等。添加这些快捷方式后，用户长按应用图标，即可打开快捷方式入口，快速启动导航。详情请参见桌面快捷方式。
 
 <!--RP1--><!--RP1End-->
 
@@ -79,7 +79,7 @@
 3. 在应用的module.json5文件中配置metadata，指向快捷方式的配置文件。
 
 
-    <!-- @[typical_scenario_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/TypicalScenarioConfiguration/entry/src/main/module.json5) -->
+    <!-- @typical_scenario_configuration -->
     
     ``` JSON5
     {
@@ -105,7 +105,7 @@
 
 安装应用后，长按桌面上的应用图标，图标上方会显示开发者配置的快捷方式：“添加收藏”和“分享好友”。点击相应标签，可启动对应的组件。应用配置的静态快捷方式在桌面上的展示效果如下图所示。
 
-<img src="figures/shortcut_display.jpg"/>
+
 
 ## 隐藏快捷方式
 

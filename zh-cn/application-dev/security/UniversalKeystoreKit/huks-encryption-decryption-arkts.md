@@ -70,7 +70,7 @@
 ## 开发案例
 
 ### AES/CBC/PKCS7
-<!-- @[encrypt_and_decrypt_AESCBCPKCS7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/AESCBCPKCS7.ets) -->
+<!-- @encrypt_and_decrypt_AESCBCPKCS7 -->
 
 ``` TypeScript
 /*
@@ -272,7 +272,7 @@ async function deleteKey() {
 <!-- -->
 
 ### AES/GCM/NoPadding
-<!-- @[encrypt_and_decrypt_AESGCMNoPadding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/AESGCMNoPadding.ets) -->
+<!-- @encrypt_and_decrypt_AESGCMNoPadding -->
 
 ``` TypeScript
 /*
@@ -716,7 +716,7 @@ async function TestEncryptDecrypt() {
 ```
 
 ### RSA/ECB/PKCS1_V1_5
-<!-- @[encrypt_and_decrypt_RSAECBPKCS1_V1_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/RSAECBPKCS1_V1_5.ets) -->
+<!-- @encrypt_and_decrypt_RSAECBPKCS1_V1_5 -->
 
 ``` TypeScript
 /*
@@ -915,7 +915,7 @@ async function deleteKey() {
 <!-- -->
 
 ### RSA/ECB/OAEP/SHA256
-<!-- @[encrypt_and_decrypt_RSAECBOAEPSHA256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/RSAECBOAEPSHA256.ets) -->
+<!-- @encrypt_and_decrypt_RSAECBOAEPSHA256 -->
 
 ``` TypeScript
 /*
@@ -1114,7 +1114,7 @@ async function deleteKey() {
 <!-- -->
 
 ### SM2
-<!-- @[encrypt_and_decrypt_SM2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/SM2.ets) -->
+<!-- @encrypt_and_decrypt_SM2 -->
 
 ``` TypeScript
 /*
@@ -1302,7 +1302,7 @@ async function deleteKey() {
 
 <!--Del-->
 ### DES/CBC/NoPadding
-<!-- @[encrypt_and_decrypt_DESCBCNoPadding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/DESCBCNoPadding.ets) -->
+<!-- @encrypt_and_decrypt_DESCBCNoPadding -->
 
 ``` TypeScript
 /*

@@ -64,7 +64,7 @@
 - doAntiAlias表示是否需要抗锯齿处理，如果为true则启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理，如果为false则不开启。
 
 
-<!-- @[arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @arkts_graphics_draw_canvas_clip -->
 
 ``` TypeScript
 // 创建画刷
@@ -86,7 +86,7 @@ canvas.detachBrush();
 
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
-| ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
+| Screenshot_20250120154655737 | Screenshot_20250118152812670 |
 
 
 ## 矩阵变换操作
@@ -121,7 +121,7 @@ canvas.detachBrush();
 简单示例和示意图如下所示：
 
 
-<!-- @[arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @arkts_graphics_draw_canvas_translation -->
 
 ``` TypeScript
 // 创建画刷
@@ -141,7 +141,7 @@ canvas.detachBrush();
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
-| ![Screenshot_20241129145853573](figures/Screenshot_20241129145853573.jpg) | ![Screenshot_20241129145920436](figures/Screenshot_20241129145920436.jpg) |
+| Screenshot_20241129145853573 | Screenshot_20241129145920436 |
 
 
 ### 旋转
@@ -153,7 +153,7 @@ canvas.detachBrush();
 
 
 
-<!-- @[arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @arkts_graphics_draw_canvas_rotation -->
 
 ``` TypeScript
 // 创建画刷
@@ -173,7 +173,7 @@ canvas.detachBrush();
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
-| ![Screenshot_20241129145853573](figures/Screenshot_20241129145853573.jpg) | ![Screenshot_20241129150512529](figures/Screenshot_20241129150512529.jpg) |
+| Screenshot_20241129145853573 | Screenshot_20241129150512529 |
 
 
 ### 缩放
@@ -185,7 +185,7 @@ canvas.detachBrush();
 
 
 
-<!-- @[arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @arkts_graphics_draw_canvas_scale -->
 
 ``` TypeScript
 // 创建画刷
@@ -205,7 +205,7 @@ canvas.detachBrush();
 
 | 原始图 | 缩放后的效果图 |
 | -------- | -------- |
-| ![Screenshot_20241129145853573](figures/Screenshot_20241129145853573.jpg) | ![Screenshot_20241129151044798](figures/Screenshot_20241129151044798.jpg) |
+| Screenshot_20241129145853573 | Screenshot_20241129151044798 |
 
 
 ## 画布状态保存与恢复
@@ -228,7 +228,7 @@ canvas.detachBrush();
 
 
 
-<!-- @[arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+<!-- @arkts_graphics_draw_canvas_state_operation -->
 
 ``` TypeScript
 // 创建画笔
@@ -253,12 +253,12 @@ canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
 canvas.detachPen();
 ```
 
-![Screenshot_20241129152510415](figures/Screenshot_20241129152510415.jpg)
+Screenshot_20241129152510415
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
+- ArkTSGraphicsDraw (API20)
 <!--RP1End-->

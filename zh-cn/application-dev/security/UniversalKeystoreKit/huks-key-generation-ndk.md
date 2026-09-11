@@ -31,7 +31,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 >
 > 如果业务再次使用相同别名调用HUKS生成密钥，HUKS将生成新密钥并直接覆盖历史的密钥文件。
 
-<!-- @[generate_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/GenerateKey/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @generate_key -->
 
 ``` C++
 /* 以下以生成ECC密钥为例 */

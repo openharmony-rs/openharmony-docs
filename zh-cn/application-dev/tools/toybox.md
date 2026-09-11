@@ -213,7 +213,7 @@ toybox的执行方式有两种：
 | ping/ping6    | 检测网络连通性。ping6自带-6选项。<br/>usage: ping/ping6 [OPTIONS] HOST |
 | <!--DelRow-->sntp    | SNTP客户端。<br/>usage: sntp [-saSdDq] [-r SHIFT] [-mM[ADDRESS]] [-p PORT] [SERVER] |
 | telnet  | 连接telnet服务器。<br/>usage: telnet HOST [PORT] |
-| traceroute/traceroute6 | 跟踪报文到HOST的路径。traceroute6自带-6选项。<br/>usage: traceroute [-46FUIldnvr] [-f 1ST_TTL] [-m MAXTTL] [-p PORT] [-q PROBES]<br/>[-s SRC_IP] [-t TOS] [-w WAIT_SEC] [-g GATEWAY] [-i IFACE] [-z PAUSE_MSEC] HOST [BYTES]<br/>usage: traceroute6 [-dnrv] [-m MAXTTL] [-p PORT] [-q PROBES][-s SRC_IP] [-t TOS] [-w WAIT_SEC]<br/>&emsp;[-i IFACE] HOST [BYTES] |
+| traceroute/traceroute6 | 跟踪报文到HOST的路径。traceroute6自带-6选项。<br/>usage: traceroute [-46FUIldnvr] [-f 1ST_TTL] [-m MAXTTL] [-p PORT] [-q PROBES]<br/>[-s SRC_IP] [-t TOS] [-w WAIT_SEC] [-g GATEWAY] [-i IFACE] [-z PAUSE_MSEC] HOST [BYTES]<br/>usage: traceroute6 [-dnrv] [-m MAXTTL] [-p PORT] -q PROBES [-t TOS] [-w WAIT_SEC]<br/>&emsp;[-i IFACE] HOST [BYTES] |
 | wget    | 从网络上下载资源。<br/>usage: wget [OPTIONS]... [URL]<br/>[OPTIONS] = --max-redirect x -d -O filename -p data |
 
 ### 文件操作

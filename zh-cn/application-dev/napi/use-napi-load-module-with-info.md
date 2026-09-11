@@ -1,10 +1,10 @@
 # 使用Node-API接口进行模块加载
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 Node-API中的napi_load_module_with_info接口的功能是进行模块的加载，当模块加载出来之后，可以使用函数napi_get_property获取模块导出的变量，也可以使用napi_get_named_property获取模块导出的函数，该函数可以在新创建的ArkTS基础运行时环境中使用，即napi_create_ark_runtime接口创建的运行时环境。
 
@@ -47,7 +47,7 @@ napi_status napi_load_module_with_info(napi_env env, const char* path, const cha
 ## 异常场景
 1. 在模块加载过程中，若出现包内未找到对应文件或build-profile.json5配置错误等问题，返回错误码`napi_generic_failure`，并打印报错日志。
 
-   ![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+   napi_load_module_with_info
 
 2. 系统侧发生非预期行为导致加载模块无法正常执行，将抛出cppcrash。
 
@@ -92,7 +92,7 @@ export {value, test};
     > 2. 路径需要以packageName开头，packageName指的是模块的oh-package.json5中配置的name字段。
 
 
-    ~~~c++
+    ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info) {
         napi_value result;
         // 1. 使用napi_load_module_with_info加载Test文件中的模块
@@ -115,7 +115,7 @@ export {value, test};
         napi_get_property(env, result, key, &value);
         return result;
     }
-    ~~~
+    ```
 
 - **加载源码HAR模块**
 

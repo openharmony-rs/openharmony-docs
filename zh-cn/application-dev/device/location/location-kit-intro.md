@@ -50,4 +50,4 @@ Location Kit在不同的设备上提供不同的能力，并且部分能力依�
 
 针对Location Kit，有以下相关实例可供参考：
 
-- [`Location`：Location Kit（ArkTS）（API14）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ConnectivityKit/Location)
+- `Location`：Location Kit（ArkTS）（API14）

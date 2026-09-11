@@ -16,7 +16,7 @@
 ## 需要权限
 若涉及网络文档获取，需在module.json5中配置网络访问权限。具体添加方法请参考在配置文件中声明权限。
 
-<!-- @[web_createpdf_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/module.json5) -->
+<!-- @web_createpdf_permissions -->
 
 ``` JSON5
 "requestPermissions": [
@@ -29,7 +29,7 @@
 ## callback方式保存PDF
 通过callback方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
 
-<!-- @[web_createpdf_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfCallback.ets) -->
+<!-- @web_createpdf_callback -->
 
 ``` TypeScript
 import { fileIo } from '@kit.CoreFileKit';
@@ -88,7 +88,7 @@ struct Index {
 ## Promise方式保存PDF
 通过Promise方式调用`createPdf`接口，获取到的result通过`pdfArrayBuffer`接口取得PDF二进制数据流，最后使用`fileIo`方法将二进制数据流保存为PDF文件。
 
-<!-- @[web_createpdf_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebCreatePdf/entry/src/main/ets/pages/WebCreatePdfPromise.ets) -->
+<!-- @web_createpdf_promise -->
 
 ``` TypeScript
 import { fileIo } from '@kit.CoreFileKit';

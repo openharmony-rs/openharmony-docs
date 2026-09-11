@@ -53,7 +53,7 @@ export default {
 >
 > - hml文件中的js表达式不支持ES6语法。
 
-![zh-cn_image_0000001118642003](figures/Data-Binding.png)
+zh-cn_image_0000001118642003
 
 ## 普通事件绑定
 
@@ -132,7 +132,7 @@ export default {
   }
   ```
 
-![zh-cn_image_0000001118642002](figures/Common-Event-Binding.gif)
+zh-cn_image_0000001118642002
 
 ## 冒泡事件绑定<sup>5+</sup>
 
@@ -267,7 +267,7 @@ tid属性主要用来加速for循环的重渲染，旨在列表中的数据有�
 >
 > - tid不支持表达式。
 
-![zh-cn_image_0000001118642001](figures/Loop-Rendering.gif)
+zh-cn_image_0000001118642001
 
 ## 条件渲染
 
@@ -313,7 +313,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001118642004](figures/Conditional-Rendering.gif)
+zh-cn_image_0000001118642004
 
 优化渲染：show方法。当show为true时，节点正常渲染；当为false时，仅仅设置display样式为none。
 
@@ -353,7 +353,7 @@ export default {
 > **说明：**
 > 禁止在同一个元素上同时设置for和if属性。
 
-![zh-cn_image_0000001118642005](figures/Conditional-Rendering01.gif)
+zh-cn_image_0000001118642005
 
 ## 逻辑控制块
 
@@ -387,7 +387,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001118642006](figures/Logic-Control-Block.png)
+zh-cn_image_0000001118642006
 
 ## 模板引用
 

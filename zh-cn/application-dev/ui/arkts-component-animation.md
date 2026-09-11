@@ -24,7 +24,7 @@ ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还
 
 示例代码和效果如下。
 
-<!-- @[component_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template1/Index.ets) -->
+<!-- @component_demo -->
 
 ``` TypeScript
 @Entry
@@ -45,7 +45,7 @@ struct ComponentDemo {
 ```
 
 
-![animation-default](figures/animation-default.gif)
+animation-default
 
 
 ## 打造组件定制化动效
@@ -60,7 +60,7 @@ struct ComponentDemo {
 
 定制Scroll组件滑动动效示例代码和效果如下。
 
-<!-- @[Component_Scroll](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template2/Index.ets) -->
+<!-- @Component_Scroll -->
 
 ``` TypeScript
 import { curves, window, display, mediaquery, UIContext } from '@kit.ArkUI';
@@ -362,11 +362,11 @@ export struct TaskSwitchMainPage {
 }
 ```
 
-![animation-custom](figures/animation-custom.gif)
+animation-custom
 
 通过animateTo可以实现将List中指定的Item替换到首位，List中其余Item依次向下排列。定制List组件动态替换动效的示例代码和效果如下。
 
-<!-- @[Component_List](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/component/template3/Index.ets) -->
+<!-- @Component_List -->
 
 ``` TypeScript
 import { curves, AnimatorResult } from '@kit.ArkUI';
@@ -541,5 +541,5 @@ struct ListAutoSortExample {
 ```
 
 
-![listAnimateDemo](figures/listAnimateDemo.gif)
+listAnimateDemo
 <!--RP1--><!--RP1End-->

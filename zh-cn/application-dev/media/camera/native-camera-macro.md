@@ -14,7 +14,7 @@
 
 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @import_header -->
    
    ``` C
    #include <cstdint>
@@ -73,7 +73,7 @@
 
 3. 通过OH_CaptureSession_IsMacroSupported()方法，检测当前设备是否支持微距能力。
 
-   <!-- @[is_macro_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @is_macro_supported -->
    
    ``` C++
    bool NDKCamera::IsMacroSupported(Camera_CaptureSession* captureSession)
@@ -99,7 +99,7 @@
 
 4. 使用OH_CaptureSession_EnableMacro()方法开启或关闭微距能力。
 
-   <!-- @[enable_macro](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @enable_macro -->
    
    ``` C++
    void NDKCamera::EnableMacro(bool isMacro)
@@ -120,7 +120,7 @@
 
 通过OH_CaptureSession_RegisterMacroStatusChangeCallback()函数注册回调，返回监听结果。
 
-<!-- @[macro_status_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+<!-- @macro_status_callback -->
 
 ``` C++
 void MacroStatusCallback(Camera_CaptureSession *captureSession, bool isMacroDetected)

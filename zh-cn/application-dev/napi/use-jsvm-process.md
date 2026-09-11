@@ -24,7 +24,7 @@
 
 - 在index.d.ts文件中，提供JS侧的接口方法。
 
-  <!-- @[export_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  <!-- @export_native -->
   
   ``` TypeScript
   export const runTest: () => void;
@@ -62,7 +62,7 @@
 
 - 新建entry/src/main/cpp/hello.cpp，实现Native侧的runTest接口。具体代码如下：
 
-  <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
+  <!-- @oh_jsvm_process -->
   
 ``` C++
 #include "napi/native_api.h"
@@ -213,7 +213,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 ```
 ## ArkTS侧调用C/C++方法实现
 
-<!-- @[call_native_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/ets/pages/Index.ets) -->
+<!-- @call_native_cpp -->
 
 ``` TypeScript
 import napitest from 'libentry.so';

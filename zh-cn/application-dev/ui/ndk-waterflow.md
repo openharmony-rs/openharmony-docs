@@ -20,7 +20,7 @@ NDK中提供了NodeAdapter对象替代ArkTS侧的LazyForEach功能，用于按�
 
 使用FlowItemAdapter类管理懒加载适配器。在类的构造函数中创建NodeAdapter对象，并给NodeAdapter对象设置事件监听器，在类的析构函数中，销毁NodeAdapter对象。
 
-<!-- @[flow_item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/FlowItemAdapter.h) -->
+<!-- @flow_item_adapter -->
 
 ``` C
 // FlowItemAdapter.h
@@ -222,7 +222,7 @@ private:
 使用WaterflowSection类管理WaterFlow中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建ArkUI_WaterFlowSectionOption对象，在析构函数中将其销毁。
 
 
-<!-- @[waterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
+<!-- @waterflow_section -->
 
 ``` C
 // WaterflowSection.h
@@ -295,7 +295,7 @@ private:
 ## 创建瀑布流
 使用ArkUIWaterflowNode类管理Waterflow。支持通过SetLazyAdapter为其设置一个FlowItemAdapter，通过SetSection为其设置分段。
 
-<!-- @[waterflow_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/waterflow.h) -->
+<!-- @waterflow_define -->
 
 ``` C
 // waterflow.h
@@ -369,7 +369,7 @@ private:
 ## 使用瀑布流
 创建一个ArkUIWaterflowNode类的实例，设置其宽高，并绑定NodeAdapter和分段。
 
-<!-- @[create_waterflow_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/CreateWaterflowExample.h) -->
+<!-- @create_waterflow_example -->
 
 ``` C
 // CreateWaterflowExample.h
@@ -411,4 +411,4 @@ inline std::shared_ptr<ArkUIWaterflowNode> CreateWaterflowExample(napi_env env)
 ```
 
 
-![image](figures/UIWaterflow.gif)
+image

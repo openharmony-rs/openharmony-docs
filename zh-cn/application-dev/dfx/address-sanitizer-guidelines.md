@@ -8,15 +8,15 @@
 
 ## 简介
 
-地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃（Crash），其故障原因为释放后使用（use after free）、重复释放（double-free）、栈溢出（stack-overflow）、堆溢出（heap-overflow）等。由于应用崩溃日志信息有限且非崩溃第一现场，地址越界问题定位较为困难，一般依赖ASan、HWASan、GWP-ASan等检测工具以获取更多内存操作信息。从API版本13开始推荐[使用HWASan检测工具](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-hwasan-detection)进行地址越界问题的分析。
+地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃（Crash），其故障原因为释放后使用（use after free）、重复释放（double-free）、栈溢出（stack-overflow）、堆溢出（heap-overflow）等。由于应用崩溃日志信息有限且非崩溃第一现场，地址越界问题定位较为困难，一般依赖ASan、HWASan、GWP-ASan等检测工具以获取更多内存操作信息。从API版本13开始推荐使用HWASan检测工具进行地址越界问题的分析。
 
 ## 常见越界类型与影响
 
-常见地址越界类型和影响可参看[地址越界经典问题类型](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-address-sanitizer-catagory)。
+常见地址越界类型和影响可参看地址越界经典问题类型。
 
 ## 地址越界检测原理
 
-检测原理和使用方法可参看[地址越界类问题检测](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ram-detection)。
+检测原理和使用方法可参看地址越界类问题检测。
 
 ## 日志获取方式
 
@@ -24,7 +24,7 @@
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名、故障类型和时间分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
+DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名、故障类型和时间分类显示。获取日志的方法参见：DevEco Studio使用指南-FaultLog。
 
 **方式二：通过HiAppEvent接口订阅**
 
@@ -422,7 +422,7 @@ Use After Free at 0x5b46ddaff0 (0 bytes into a 16-byte allocation at 0x5b46ddaff
 
    - GWP-ASan
 
-     在GWP-ASan日志中，故障类型根据原始日志中包含"at"的行提取。可能的故障类型包括Use After Free、Double Free、Invalid (Wild) Free等，详细类型说明可参考[GWP-ASan异常检测类型](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section73731529454)。
+     在GWP-ASan日志中，故障类型根据原始日志中包含"at"的行提取。可能的故障类型包括Use After Free、Double Free、Invalid (Wild) Free等，详细类型说明可参考GWP-ASan异常检测类型。
 
    - ASan/HWASan/MemDebug
 

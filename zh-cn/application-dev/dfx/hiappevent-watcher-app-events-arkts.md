@@ -47,7 +47,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入所需的依赖模块：
 
-   <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @AppEvent_Crash_Click_ArkTS_Header -->
 
    ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
@@ -57,7 +57,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    订阅崩溃事件，采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“EntryAbility.ets”文件，定义OnReceive类型观察者相关方法：
 
-   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   <!-- @AppEvent_Crash_ArkTS_Add_Watcher -->    
    
    ``` TypeScript
    hiAppEvent.addWatcher({
@@ -91,7 +91,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    订阅按钮点击事件，采用OnTrigger类型观察者的订阅方式。需满足triggerCondition设置的条件，才能触发OnTrigger()回调。编辑“EntryAbility.ets”文件，定义OnTrigger类型观察者相关方法：
 
-   <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   <!-- @AppEvent_Click_ArkTS_Add_Watcher -->    
    
    ``` TypeScript
    hiAppEvent.addWatcher({
@@ -128,7 +128,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，导入依赖模块：
 
-   <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @EventSub_Header -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +139,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    触发崩溃事件。
 
-   <!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @AppEvent_Crash_Button -->    
    
    ``` TypeScript
    Button('WatchAppCrash ArkTS&C++')
@@ -158,7 +158,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    在按钮点击的函数中进行事件打点。
 
-   <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @AppEvent_Click_ArkTS_Button -->    
    
    ``` TypeScript
    Button('writeEvent ArkTS')

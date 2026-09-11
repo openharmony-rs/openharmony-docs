@@ -33,13 +33,13 @@
 
   掩码仅支持取值为整数0和整数1的二维数组输入，数组行数对应窗口高度，列数对应窗口宽度。整数0代表对应像素透明且不可交互，整数1代表对应像素不透明且可交互。
 
-  ![setWindowMask](figures/setWindowMask.png)
+  setWindowMask
 
 - 从API版本26.0.0开始，支持使用setWindowMaskWithAlpha()接口设置异形窗口的掩码。
 
   掩码支持取值在[0, 255]范围的数组输入，数组长度等于窗口宽度乘以窗口高度。整数0代表对应像素透明且不可交互，整数255代表对应像素不透明且可交互，0~255之间代表对应像素部分透明且可交互。此接口性能优于setWindowMask()，推荐使用。
 
-  ![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
+  setWindowMaskWithAlpha
 
 此处以设置子窗的异形窗口为例。此例主要实现以下效果：
 
@@ -51,7 +51,7 @@
      - 子窗的阴影和圆角消失。
      - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
-<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+<!-- @setWindowMaskSample -->
 
 ``` TypeScript
 import { window } from '@kit.ArkUI';
@@ -106,7 +106,7 @@ struct Index {
 }
 ```
 
-![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
+setWindowMaskWithAlphaDemo
 
 ## 窗口阴影
 
@@ -117,7 +117,7 @@ struct Index {
 
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
-  <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
+  <!-- @windowShadowSample --> 
   
   ``` TypeScript
   // Index.ets
@@ -162,14 +162,14 @@ struct Index {
   }
   ```
 
-  ![setShadow](figures/setShadow.png)
+  setShadow
 <!--DelEnd-->
 
 - 可通过setWindowShadowRadius()接口设置窗口边缘阴影的模糊半径，仅支持子窗和全局悬浮窗使用。
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
-  <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  <!-- @window_shadow_radius --> 
   
   ``` TypeScript
   // pages/page1.ets
@@ -192,7 +192,7 @@ struct Index {
   }
   ```
 
-  ![setWindowShadowRadius](figures/setWindowShadowRadius.gif)
+  setWindowShadowRadius
 
 ## 设置窗口圆角<!--Del-->与模糊效果<!--DelEnd-->
 
@@ -200,7 +200,7 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
-  <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  <!-- @window_corner_radius --> 
   
   ``` TypeScript
   // pages/page1.ets
@@ -223,7 +223,7 @@ struct Index {
   }
   ```
 
-  ![setWindowCornerRadius](figures/setWindowCornerRadius.gif)
+  setWindowCornerRadius
 
 <!--Del-->
 - 针对系统应用，可通过setBlur()接口设置窗口内容的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
@@ -232,7 +232,7 @@ struct Index {
 
 此处以全局悬浮窗为例，设置其窗口模糊效果（窗口内容的模糊半径、窗口背景的模糊半径）。
 
-<!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
+<!-- @window_blur_effect --> 
 
 ``` TypeScript
 // pages/page1.ets
@@ -263,7 +263,7 @@ struct SliderDemo {
 }
 ```
 
-![setBlur](figures/setBlur.gif)
+setBlur
 <!--DelEnd-->
 
 ## 窗口背景色
@@ -286,11 +286,11 @@ struct SliderDemo {
 >
 > - 需要在loadContent()或setUIContent()调用生效后才能设置背景色。
 
-![backgroundColor](figures/backgroundColor.gif)
+backgroundColor
 
 示例代码如下：
 
-<!--@[backgroundColor_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/backgroundColor/entry/src/main/ets/pages/Index.ets) -->
+<!--@backgroundColor_start -->
 
 ``` TypeScript
 import { ColorMetrics, window } from '@kit.ArkUI';

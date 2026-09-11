@@ -95,7 +95,7 @@ export default {
 ```
 
 
-![OffscreenCanvasRenderingContext2D](figures/OffscreenCanvasRenderingContext2D.gif)
+OffscreenCanvasRenderingContext2D
 
 
 ## 判断位置
@@ -202,4 +202,4 @@ export default {
 }
 ```
 
-![Determining-Position](figures/Determining-Position.gif)
+Determining-Position

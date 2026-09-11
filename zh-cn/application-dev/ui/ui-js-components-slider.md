@@ -36,7 +36,7 @@ slider为滑动条组件，用来快速调节音量、亮度等。具体用法�
 ```
 
 
-![slider-Component](figures/slider-Component.gif)
+slider-Component
 
 
 ## 设置样式和属性
@@ -69,7 +69,7 @@ slider组件通过color、scrollbar-color、background-color样式分别为滑�
 }
 ```
 
-![Styles-and-Attributes](figures/Styles-and-Attributes.gif)
+Styles-and-Attributes
 
 通过添加min、max、value、step、mode属性分别为滑动条设置最小值、最大值、初始值、滑动步长和滑动条样式。
 
@@ -94,7 +94,7 @@ slider组件通过color、scrollbar-color、background-color样式分别为滑�
 }
 ```
 
-![Styles-and-Attributes-1](figures/Styles-and-Attributes-1.gif)
+Styles-and-Attributes-1
 
 > **说明：** 
 >
@@ -158,7 +158,7 @@ export default {
 }
 ```
 
-![Binding-Events-4](figures/Binding-Events-4.gif)
+Binding-Events-4
 
 
 ## 场景示例
@@ -217,13 +217,13 @@ export default{
 }
 ```
 
-![Example-Scenario-15](figures/Example-Scenario-15.gif)
+Example-Scenario-15
 
 
 ## 相关实例
 
 针对slider开发，有以下相关实例可供参考：
 
-- [slider组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
+- slider组件的使用（JS）（API9）
 
-- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
+- 简易视频播放器（JS）（API9）

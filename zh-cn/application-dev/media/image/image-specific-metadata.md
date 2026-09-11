@@ -38,7 +38,7 @@
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
 
-   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @decodingPixelMap_import -->   
    
    ``` TypeScript
    // 导入相关模块。
@@ -55,7 +55,7 @@
 
    使用readImageMetadata接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
 
-   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @read_imageMetadata -->   
    
    ``` TypeScript
    async readImageMetadata(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -81,7 +81,7 @@
 
    使用readImageMetadataByType接口，通过指定MetadataType枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
 
-   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @read_imageMetadataByType -->   
    
    ``` TypeScript
    async readImageMetadataByType(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -109,7 +109,7 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @release_pixelMapDecoder -->   
    
    ``` TypeScript
    async release() {

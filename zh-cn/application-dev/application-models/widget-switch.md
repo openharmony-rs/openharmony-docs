@@ -27,13 +27,13 @@
 入口配置差异示意图1：
 
 
-![widget-switch1](./figures/widget-switch1.png)
+widget-switch1
 
 
 卡片信息配置差异示意图2：
 
 
-![widget-switch2](./figures/widget-switch2.png)
+widget-switch2
 
 
 | 入口及生命周期 | FA模型 | Stage模型 |
@@ -45,10 +45,10 @@
 入口文件差异示意图3：
 
 
-![widget-switch3](./figures/widget-switch3.png)
+widget-switch3
 
 
 生命周期差异示意图4（ 生命周期回调均一致，不需要调整）：
 
 
-![widget-switch4](./figures/widget-switch4.png)
+widget-switch4

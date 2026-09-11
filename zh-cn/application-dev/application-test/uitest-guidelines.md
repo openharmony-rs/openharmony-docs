@@ -21,7 +21,7 @@ UITest支持采用ArkTS API与命令行两种方式，为界面自动化测试�
 **命令行测试能力：**
 支持通过命令行直接实现多元化测试操作，包括获取当前界面截图、获取控件树、录制界面操作流程、便捷注入UI模拟事件等。
 
-![arkxtest-uitest](figures/UITest.PNG)
+arkxtest-uitest
 
 UITest分为客户端和服务端。
 
@@ -51,7 +51,7 @@ UI测试是在<!--RP14-->单元测试<!--RP14End-->基础上进行UITest接口�
 
 1. 在main > ets > pages文件夹下编写clickToAfter.ets页面代码，作为被测示例demo。
     
-    <!-- @[clickToAfter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/main/ets/pages/ClickToAfter.ets) --> 
+    <!-- @clickToAfter --> 
     
     ``` TypeScript
     @Entry
@@ -86,7 +86,7 @@ UI测试是在<!--RP14-->单元测试<!--RP14End-->基础上进行UITest接口�
     
 2. 在ohosTest > ets > test文件夹下新建测试文件，并编写具体测试代码。
     
-    <!-- @[click_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) --> 
+    <!-- @click_sample --> 
     
     ``` TypeScript
     import { describe, expect, it, Level } from '@ohos/hypium';
@@ -135,7 +135,7 @@ UITest支持<!--RP3-->依据多种属性构造匹配器On<!--RP3End-->进行控�
 
 如下给出控件查找与操作的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->     
+<!-- @findAndOp_sample -->     
 
 ``` TypeScript
 import { describe, it, TestType } from '@ohos/hypium';
@@ -181,7 +181,7 @@ UITest支持模拟包括点击、双击、长按、滑动、拖拽、多指操�
 
 如下给出触摸屏坐标级的手指操作模拟的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[touchScreen_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchScreenEvent.test.ets) --> 
+<!-- @touchScreen_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -228,7 +228,7 @@ export default function abilityTest() {
 
 如下给出页面加载等待的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[waitForComp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WaitForCom.test.ets) --> 
+<!-- @waitForComp_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -263,7 +263,7 @@ UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!
 
 如下给出文本输入的示例，包括基于控件的文本输入和基于坐标的文本输入两种方式。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[inputText_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputText.test.ets) --> 
+<!-- @inputText_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -338,7 +338,7 @@ export default function abilityTest() {
 
 如下给出屏幕截图的示例，指定屏幕id和截取屏幕区域，并将截图保存到指定路径下。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。多屏场景下，期望对指定屏幕做截图操作时，可以调用display模块的接口<!--RP8-->获取Display对象<!--RP8End-->，实现<!--RP9-->屏幕相关属性获取<!--RP9End-->。
 
-<!-- @[screenCap_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCap.test.ets) --> 
+<!-- @screenCap_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -384,7 +384,7 @@ export default function abilityTest() {
 
 如下给出UI界面事件的监听的示例，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->     
+<!-- @eventObserver_sample -->     
 
 ``` TypeScript
 import { describe, it, TestType } from '@ohos/hypium';
@@ -412,7 +412,7 @@ export default function abilityTest() {
 
 如下给出键鼠模拟操作，包括键盘按键、组合键输入操作的示例，包括鼠标点击、移动、拖拽操作和键鼠组合操作等。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[mouseAndKey_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) --> 
+<!-- @mouseAndKey_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -457,7 +457,7 @@ export default function abilityTest() {
 ### 窗口查找与操作
 如下给出窗口查找和操作的示例，根据窗口属性查找窗口，并进行窗口最小化等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->     
+<!-- @findWindowAndOp_sample -->     
 
 ``` TypeScript
 import { describe, expect, it, TestType } from '@ohos/hypium';
@@ -487,7 +487,7 @@ export default function abilityTest() {
 ### 模拟触摸板操作
 如下给出触摸板模拟操作的示例，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->     
+<!-- @touchPadOp_sample -->     
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
@@ -519,7 +519,7 @@ export default function abilityTest() {
 ### 模拟手写笔操作
 如下给出手写笔模拟操作，包括点击、滑动等操作的示例，支持设置操作时的压力值大小。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[penOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PenOp.test.ets) --> 
+<!-- @penOp_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -547,7 +547,7 @@ export default function abilityTest() {
 ### 模拟表冠操作
 如下给出表冠模拟操作的示例，包括表冠的顺/逆时针旋转。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->     
+<!-- @watchOp_sample -->     
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
@@ -579,7 +579,7 @@ export default function abilityTest() {
 ### 屏幕显示操作
 如下给出屏幕显示操作的示例，包括获取屏幕大小、分辨率等属性和屏幕唤醒、屏幕旋转等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[displayOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/DisplayOp.test.ets) --> 
+<!-- @displayOp_sample --> 
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from '@ohos/hypium';
@@ -871,40 +871,40 @@ hdc shell uitest start-daemon
 ## UI测试脚本实例
 
 ### 查找指定控件能力实例
-介绍通过设置控件属性作为查找条件，在应用界面上查找组件对象，具体代码请参考[控件查找示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/findCommentExample.test.ets)。
+介绍通过设置控件属性作为查找条件，在应用界面上查找组件对象，具体代码请参考控件查找示例。
 
 ### 模拟点击操作事件能力实例
-介绍模拟用户在应用界面上进行点击，长按，双击等事件，具体代码请参考[点击事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/clickEvent.test.ets)。
+介绍模拟用户在应用界面上进行点击，长按，双击等事件，具体代码请参考点击事件示例。
 
 ### 模拟鼠标操作能力实例
-介绍模拟鼠标左击、右击、滑轮事件，具体代码请参考[鼠标操作事件示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/MouseEvent.test.ets)。
+介绍模拟鼠标左击、右击、滑轮事件，具体代码请参考鼠标操作事件示例。
 
 ### 模拟文本输入能力实例
-介绍模拟输入中文、英文文本内容，仅支持可输入文本的组件进行操作，例如文本框等，具体代码请参考[文本输入能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/InputEvent.test.ets)。
+介绍模拟输入中文、英文文本内容，仅支持可输入文本的组件进行操作，例如文本框等，具体代码请参考文本输入能力示例。
 
 ### 截图能力实例
-介绍屏幕截图功能，包括指定区域截图能力，具体代码请参考[截图能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScreenCapEvent.test.ets)。
+介绍屏幕截图功能，包括指定区域截图能力，具体代码请参考截图能力示例。
 
 ### 模拟快滑操作能力实例
-介绍模拟快滑操作能力，即在可滑动页面上进行滑动，滑动后手指离开屏幕，具体代码请参考[模拟快滑操作能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/FlingEvent.test.ets)。
+介绍模拟快滑操作能力，即在可滑动页面上进行滑动，滑动后手指离开屏幕，具体代码请参考模拟快滑操作能力示例。
 
 ### 模拟慢滑操作能力实例
-介绍模拟慢滑操作能力，即在可滑动页面上进行滑动，滑动后手指仍停留在屏幕，具体代码请参考[模拟慢滑操作能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/SwipeEvent.test.ets)。
+介绍模拟慢滑操作能力，即在可滑动页面上进行滑动，滑动后手指仍停留在屏幕，具体代码请参考模拟慢滑操作能力示例。
 
 ### 模拟缩放操作能力实例
-介绍模拟缩放能力，即在支持放大缩小的图片上，模拟双指缩放操作的能力，具体代码请参考[模拟缩放操作能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/PinchEvent.test.ets)。
+介绍模拟缩放能力，即在支持放大缩小的图片上，模拟双指缩放操作的能力，具体代码请参考模拟缩放操作能力示例。
 
 ### 模拟滚动到组件顶端或底端能力实例
-介绍模拟针对滑动类组件，可以模拟操作直接滚动到组件顶端或底端，具体代码请参考[模拟滚动到组件顶端或底端示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/ScrollerEvent.test.ets)。
+介绍模拟针对滑动类组件，可以模拟操作直接滚动到组件顶端或底端，具体代码请参考模拟滚动到组件顶端或底端示例。
 
 ### 查找指定窗口能力实例
-介绍通过应用包名查找应用窗口，具体代码请参考[查找指定窗口能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/window/findWindowExample.test.ets)。
+介绍通过应用包名查找应用窗口，具体代码请参考查找指定窗口能力示例。
 
 ### 模拟窗口移动能力实例
-介绍模拟移动窗口到指定位置能力，具体代码请参考[模拟窗口移动示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/MoveToEvent.test.ets)。
+介绍模拟移动窗口到指定位置能力，具体代码请参考模拟窗口移动示例。
 
 ### 模拟调整窗口大小能力实例
-介绍模拟调整窗口大小能力，并可指定调整的具体方向，具体代码请参考[模拟调整窗口大小能力示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/ReSizeWindow.test.ets)。
+介绍模拟调整窗口大小能力，并可指定调整的具体方向，具体代码请参考模拟调整窗口大小能力示例。
 <!--DelEnd-->
 
 ## 常见问题

@@ -10,20 +10,20 @@
 
 > **说明：**
 >
-> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[StyledStringSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StyledStringSample)<!--RP1End-->。
+> - 本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->StyledStringSample<!--RP1End-->。
 >
 
 以下示例代码基于接入ArkTS页面章节，阐述了如何创建StyledString，并利用ArkUI_NodeType为ARKUI_NODE_TEXT的组件进行渲染显示。
 
 下图展示了 `NODE_TEXT_CONTENT_WITH_STYLED_STRING` 接口的主要使用流程。
 
-![ndk_text_style_string_activity](figures/native_styledString_activity.png)
+ndk_text_style_string_activity
 
 ## 创建StyledString对象
 
 使用OH_ArkUI_StyledString_Create接口创建StyledString对象，需要传入段落样式和字体集合。
 
-<!-- @[styledstring_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @styledstring_create -->
 
 ``` C++
 // 创建StyledString对象
@@ -53,7 +53,7 @@ StyledString支持为文本中的不同部分设置不同的样式，包括段�
 
 以下代码示例设置了文字居中，最大行数限制为10。
 
-<!-- @[styledstring_paragraph_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @styledstring_paragraph_style -->
 
 ``` C++
 // 创建字体集合与段落样式，并设置对齐方式和最大行数
@@ -81,7 +81,7 @@ OH_Drawing_SetTypographyTextMaxLines(typographyStyle, NUM_10);
 
 使用OH_Drawing_CreateTextStyle创建文本样式。以下示例设置"Hello"字体大小28px，颜色为0xFF707070，显示为灰色；设置"World!"字体大小为28px，颜色为0xFF2787D9，显示为蓝色。
 
-<!-- @[styledstring_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @styledstring_text_style -->
 
 ``` C++
 // 第一段文本（灰色"Hello"）
@@ -93,7 +93,7 @@ OH_ArkUI_StyledString_AddText(styledString, "Hello");
 OH_ArkUI_StyledString_PopTextStyle(styledString);
 ```
 
-<!-- @[styledstring_world](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @styledstring_world -->
 
 ``` C++
 // 第二段文本（蓝色"World!"）
@@ -104,7 +104,7 @@ OH_ArkUI_StyledString_PushTextStyle(styledString, worldTextStyle);
 OH_ArkUI_StyledString_AddText(styledString, "World!");
 OH_ArkUI_StyledString_PopTextStyle(styledString);
 ```
-![ndk_text_styled_string](figures/ndk_text_styled_string.png)
+ndk_text_styled_string
 
 ## 添加占位符
 
@@ -112,7 +112,7 @@ OH_ArkUI_StyledString_PopTextStyle(styledString);
 
 使用OH_ArkUI_StyledString_AddPlaceholder接口在文本中插入占位符。
 
-<!-- @[styledstring_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @styledstring_placeholder -->
 
 ``` C++
 // 添加占位符
@@ -126,7 +126,7 @@ StyledString在设置到Text组件之前，需要先完成布局计算，然后�
 
 文字样式和内容设置完成后，调用字体引擎接口OH_Drawing_TypographyLayout对文本进行布局，传入最大宽度。超过此宽度的文字会自动换行。
 
-<!-- @[styledstring_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @styledstring_layout -->
 
 ``` C++
 OH_Drawing_Typography *typography = OH_ArkUI_StyledString_CreateTypography(styledString);
@@ -151,7 +151,7 @@ nodeApi->setAttribute(text, NODE_TEXT_CONTENT_WITH_STYLED_STRING, &styledStringI
 
 以下示例展示了如何创建描述符、反序列化字节数据、转换为HTML并进行验证。
 
-<!-- @[serializeAndDeserialize_styledString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StyledStringSample/entry/src/main/cpp/manager.cpp) -->
+<!-- @serializeAndDeserialize_styledString -->
 
 ``` C++
 static void SerializeAndDeserializeStyledString()

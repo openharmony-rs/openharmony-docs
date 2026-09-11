@@ -32,7 +32,7 @@
 
 ### 链接动态库
 
-调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeList.txt文件中新增如下配置：
+调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeLists.txt文件中新增如下配置：
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -54,7 +54,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-<!-- @[key_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @key_event_monitor -->
 
 ``` C++
 struct KeyEvent {
@@ -90,7 +90,7 @@ static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
 
 - **鼠标事件**
 
-<!-- @[mouse_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @mouse_event_monitor -->
 
 ``` C++
 struct MouseEvent {
@@ -134,7 +134,7 @@ static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
 
 - **触摸事件**
 
-<!-- @[touch_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @touch_event_monitor -->
 
 ``` C++
 struct TouchEvent {
@@ -173,7 +173,7 @@ static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
 
 - **轴事件**
 
-<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) --> 
+<!-- @axis_event_monitor --> 
 
 ``` C++
 struct AxisEvent {

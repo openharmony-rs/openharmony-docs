@@ -39,7 +39,7 @@
 
 ### 选择模型
 
-本示例程序中使用的图像分类模型文件为[mobilenetv2.ms](https://download.mindspore.cn/model_zoo/official/lite/mobilenetv2_openimage_lite/1.5/mobilenetv2.ms)，放置在entry/src/main/resources/rawfile工程目录下。
+本示例程序中使用的图像分类模型文件为mobilenetv2.ms，放置在entry/src/main/resources/rawfile工程目录下。
 
 如果开发者有其他图像分类的预训练模型，请参考MindSpore Lite 模型转换介绍，将原始模型转换成.ms格式。
 
@@ -70,7 +70,7 @@
    3. 加载数据。模型执行之前需要先获取输入，再向输入的张量中填充数据。
    4. 执行推理。使用predict接口进行模型推理。
    
-   <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) --> 
+   <!-- @model_image_classification --> 
    
    ``` TypeScript
    import { mindSporeLite } from '@kit.MindSporeLiteKit'
@@ -114,7 +114,7 @@
 
 3. 加载模型文件，调用推理函数，对相册选择的图片进行推理，并对推理结果进行处理。
 
-   <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @index_image_classification --> 
    
    ``` TypeScript
    import modelPredict from './model';
@@ -355,14 +355,14 @@
 
 在设备上，点击photo按钮，选择相册中的一张图片，点击确定。在图片下方显示此图片占比前4的分类信息。
 
-![step1](figures/step1.png)         ![step2](figures/step2.png)  
+step1         step2  
 
-![step3](figures/step3.png)         ![step4](figures/step4.png) 
+step3         step4 
 
 ## 相关实例
 
 针对使用MindSpore Lite进行图像分类应用的开发，有以下相关实例可供参考：
 
-- [基于ArkTS接口的MindSpore Lite应用开发（ArkTS）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo)
+- 基于ArkTS接口的MindSpore Lite应用开发（ArkTS）（API11）
 
 <!--RP1--><!--RP1End-->

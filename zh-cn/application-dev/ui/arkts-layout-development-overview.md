@@ -26,7 +26,7 @@
 
   **图1** 常见页面结构图
 
-![common-page-structure](figures/common-page-structure.png)
+common-page-structure
 
 为实现上述效果，开发者需要在页面中声明对应的元素。其中，Page表示页面的根节点，Column/Row等元素为系统组件。针对不同的页面结构，ArkUI提供了不同的布局组件来帮助开发者实现对应布局的效果，例如Row用于实现线性布局。
 
@@ -37,7 +37,7 @@
 
   **图2** 布局元素组成图
 
-![layout-element-composition](figures/layout-element-omposition.png)
+layout-element-composition
 
 - 组件区域（蓝色方块）：组件区域表示组件的大小，width、height属性用于设置组件区域的大小。
 
@@ -108,8 +108,8 @@ position、offset等属性影响了布局容器相对于自身或其他组件的
 
 针对布局开发，有以下相关实例可供参考：
 
-- [页面布局和连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/DefiningPageLayoutAndConnection)
+- 页面布局和连接（ArkTS）（API9）
 
-- [ArkUI常用布局容器对齐方式（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/OHLayoutAlign)
+- ArkUI常用布局容器对齐方式（ArkTS）（API9）
 
-- [常用组件与布局（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/ArkTSComponents)
+- 常用组件与布局（ArkTS）（API9）

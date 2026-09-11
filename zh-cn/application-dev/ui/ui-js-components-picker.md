@@ -32,7 +32,7 @@ picker是滑动选择器组件，类型支持普通选择器、日期选择器�
 }
 ```
 
-![picker-Component](figures/picker-Component.gif)
+picker-Component
 
 
 ## 设置picker类型
@@ -73,7 +73,7 @@ export default {
 }
 ```
 
-![picker](figures/picker.gif)
+picker
 
 > **说明：**
 >
@@ -109,7 +109,7 @@ picker组件的hours属性用于设置时间显示格式，支持12小时制和2
 }
 ```
 
-![Time-Display-Format](figures/Time-Display-Format.gif)
+Time-Display-Format
 
 > **说明：**
 > - hours属性为12：按照12小时制显示，用上午和下午进行区分。
@@ -167,7 +167,7 @@ export default {
 }
 ```
 
-![Response-Events-1](figures/Response-Events-1.gif)
+Response-Events-1
 
 
 ## 场景示例
@@ -300,4 +300,4 @@ export default {
 ```
 
 
-![picker-1](figures/picker-1.gif)
+picker-1

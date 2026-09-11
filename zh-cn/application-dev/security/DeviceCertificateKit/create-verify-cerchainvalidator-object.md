@@ -11,7 +11,7 @@
 
 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。
 
-![certificate-chain-example](figures/certificate-chain-example.png)
+certificate-chain-example
 
 开发者可以参考示例将已有的多个证书构建出证书链数据。
 
@@ -30,7 +30,7 @@
 
 4. 调用CertChainValidator.validate校验证书链数据。
 
-<!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) -->
+<!-- @certificate_chain_validator_object_creation_and_validation -->
 
 ``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';

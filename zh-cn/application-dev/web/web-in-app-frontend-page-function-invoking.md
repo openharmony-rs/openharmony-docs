@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -47,7 +47,7 @@ runJavaScript()和runJavaScriptExt()在参数类型上有以下差异：runJavaS
 
 - 应用侧代码。
 
-  <!-- @[interact_with_web_pages_through_button_click_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @interact_with_web_pages_through_button_click_events -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -90,4 +90,4 @@ runJavaScript()和runJavaScriptExt()在参数类型上有以下差异：runJavaS
 
 针对Web组件开发，有以下相关实例可供参考：
 
-- [JS注入与执行（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/RunJsInWeb)
+- JS注入与执行（ArkTS）（Full SDK）（API9）

@@ -48,7 +48,7 @@
 
 1. 从@kit.NetworkKit中导入eap命名空间。
 
-   <!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   <!-- @eap_case_module_import -->
    
    ``` TypeScript
    import { eap } from '@kit.NetworkKit';
@@ -66,7 +66,7 @@
 
     以下注册服务器发送给客户端的报文类型（即eapCode=1，eapType=25）为例，若需注册其他类型，修改eapCode值后再调用regCustomEapHandler方法即可。
 
-    <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+    <!-- @eap_case_reply_custom_eapData -->
     
     ``` TypeScript
     let netType = 1;
@@ -103,7 +103,7 @@
     ```
 3. 若需取消定制化，可调用unregCustomEapHandler方法。
 
-   <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
+   <!-- @eap_case_unreg_custom_eapHandler -->
    
    ``` TypeScript
    let netType = 1;
@@ -137,7 +137,7 @@
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入eap命名空间。
 
-   <!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   <!-- @eap_case_eth_module_import -->
    
    ``` TypeScript
    import { eap } from '@kit.NetworkKit';
@@ -146,7 +146,7 @@
 
 3. 当企业管理软件需要进行认证，调用startEthEap方法时，会发起802.1X认证流程。
 
-   <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   <!-- @eap_case_start_eth_eap -->
    
    ``` TypeScript
    const netId: number = 100;
@@ -181,7 +181,7 @@
 
 4. 当企业管理软件需要退出认证状态，调用logOffEthEap方法，即会发起802.1X取消认证流程。
 
-   <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
+   <!-- @eap_case_log_off_eth_eap -->
    
    ``` TypeScript
    const netId: number = 100;

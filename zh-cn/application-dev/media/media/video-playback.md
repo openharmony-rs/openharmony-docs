@@ -18,7 +18,7 @@
 
 **图1** 播放状态变化示意图  
 
-![Playback status change](figures/video-playback-status-change.png)
+Playback status change
 
 状态的详细说明请参考AVPlayerState。当播放处于prepared / playing / paused / completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源释放。
 
@@ -227,7 +227,7 @@
 
 ## 运行完整示例
 
-1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo)，并将示例工程的以下资源复制到对应目录。
+1. 新建工程，下载示例工程，并将示例工程的以下资源复制到对应目录。
     ```text
     AVPlayerArkTSVideo
     entry/src/main/ets/
@@ -251,6 +251,6 @@
 
 针对视频播放，有以下相关实例可供参考：
 
-- [视频播放（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)
+- 视频播放（ArkTS）（API9）
 
-- [视频播放器（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoPlayer)
+- 视频播放器（ArkTS）（API9）

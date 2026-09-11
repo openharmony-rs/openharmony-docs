@@ -39,7 +39,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 1. 添加头文件。
 
-   <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+   <!-- @screenCapture_import -->
    
    ``` C
    #include "hilog/log.h"
@@ -57,7 +57,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 2. 创建AVScreenCapture实例g_avCapture。
 
-   <!-- @[screenCapture_create_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_create_for_file -->
    
    ``` C++
    g_avCapture = OH_AVScreenCapture_Create();
@@ -71,7 +71,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    同时，录屏存文件需要设置状态回调，感知录制状态。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @screenCapture_config -->   
    
    ``` C++
    void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
@@ -139,7 +139,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 4. 调用OH_AVScreenCapture_StartScreenRecording()方法开始进行录屏。
 
-   <!-- @[screenCapture_startScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_startScreenRecording_for_file -->
    
    ``` C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
@@ -147,7 +147,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 5. 调用OH_AVScreenCapture_StopScreenRecording()方法停止录制。
 
-   <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_stopScreenRecording -->
    
    ``` C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
@@ -155,7 +155,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 6. 调用OH_AVScreenCapture_Release()方法销毁实例，释放资源。
 
-   <!-- @[screenCapture_releaseScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_releaseScreenRecording_for_file -->
    
    ``` C++
    result = OH_AVScreenCapture_Release(g_avCapture);
@@ -165,4 +165,4 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 针对使用AVScreenCapture录屏存文件的完整示例代码可参考：
 
-- [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample)
+- ScreenCaptureSample

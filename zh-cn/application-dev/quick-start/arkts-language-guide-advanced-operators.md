@@ -16,7 +16,7 @@ ArkTS的高级运算符包括位运算、可选链（?.）、空值合并（??�
 
 与基础运算符（算术、比较、逻辑、赋值）不同，高级运算符处理位级操作、空值安全访问、集合展开和条件求值等场景，在复杂数据结构和异步编程中广泛使用。
 
-<!-- @[operator_basics_and_advanced](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @operator_basics_and_advanced -->
 
 ``` TypeScript
 // 基础运算符
@@ -43,7 +43,7 @@ let copied: number[] = [...values];
 
 运算符的优先级决定了表达式中运算的执行顺序，结合性决定了相同优先级运算符的计算方向。
 
-<!-- @[operator_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @operator_precedence -->
 
 ``` TypeScript
 // 优先级从高到低示例
@@ -76,7 +76,7 @@ console.info(`${result4}`);  // yes
 
 按位与运算符对两个整数的每一位执行逻辑与操作，仅当对应位都为1时结果为1。
 
-<!-- @[bitwise_and](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @bitwise_and -->
 
 ``` TypeScript
 let a: number = 5;   // 二进制0101
@@ -106,7 +106,7 @@ permission = permission & ~WRITE;  // 清除写入权限
 
 按位或运算符对两个整数的每一位执行逻辑或操作，只要对应位有1则结果为1。
 
-<!-- @[bitwise_or](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @bitwise_or -->
 
 ``` TypeScript
 let bitOrA: number = 5;   // 二进制: 0101
@@ -129,7 +129,7 @@ let fullStyle: number = BOLD | ITALIC | UNDERLINE;  // 0b111
 
 按位异或运算符对两个整数的每一位执行异或操作，对应位不同时结果为1。
 
-<!-- @[bitwise_xor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @bitwise_xor -->
 
 ``` TypeScript
 let bitXorA: number = 5;   // 二进制: 0101
@@ -153,7 +153,7 @@ console.info(`${decrypted === data}`);  // true
 
 按位非运算符对整数的每一位执行取反操作，将0变为1、将1变为0。
 
-<!-- @[bitwise_not](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @bitwise_not -->
 
 ``` TypeScript
 let bitNotA: number = 5;   // 二进制: 0101
@@ -173,7 +173,7 @@ bitNotValue = bitNotValue & ~FLAG;  // 清除第1位: 0b101
 
 左移运算符将整数的二进制位向左移动指定位数，相当于乘以2的幂次。
 
-<!-- @[left_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @left_shift -->
 
 ``` TypeScript
 let lshiftA: number = 5;   // 二进制: 0101
@@ -194,7 +194,7 @@ let quadrupled: number = base << 2;  // 40
 
 右移运算符将整数的二进制位向右移动指定位数，相当于除以2的幂次。
 
-<!-- @[right_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @right_shift -->
 
 ``` TypeScript
 let rshiftA: number = 20;  // 二进制010100
@@ -219,7 +219,7 @@ let quarter: number = total >> 2;  // 25
 
 无符号右移运算符将整数二进制位向右移动，左侧补零。与`>>`的区别：`>>`保留符号位（负数左侧补1），`>>>`无论正负左侧都补零。常见用途是通过`>>> 0`将浮点数转换为32位无符号整数。
 
-<!-- @[unsigned_right_shift](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @unsigned_right_shift -->
 
 ``` TypeScript
 let rshiftA2: number = 20;  // 二进制: 010100
@@ -253,7 +253,7 @@ variable operator= expression
 等价于: variable = variable operator expression
 ```
 
-<!-- @[compound_assignment_basics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @compound_assignment_basics -->
 
 ``` TypeScript
 let compoundA: number = 10;
@@ -271,7 +271,7 @@ console.info(`${compoundA}`);  // 6
 
 位运算复合赋值包括`&=`（按位与赋值）、`|=`（按位或赋值）、`^=`（按位异或赋值）、`<<=`（左移赋值）、`>>=`（右移赋值）、`>>>=`（无符号右移赋值），将位运算结果直接赋值给左操作数。
 
-<!-- @[compound_assignment_bitwise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @compound_assignment_bitwise -->
 
 ``` TypeScript
 let compoundFlags: number = 0b1010;
@@ -300,7 +300,7 @@ compoundValue >>>= 1;  // compoundValue = compoundValue >>> 1 = 5
 
 算术运算复合赋值包括`+=`、`-=`、`*=`、`/=`、`%=`、`**=`，将算术运算结果直接赋值给左操作数。
 
-<!-- @[compound_assignment_arithmetic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @compound_assignment_arithmetic -->
 
 ``` TypeScript
 // 加法赋值
@@ -338,7 +338,7 @@ console.info(`${compoundBase}`);  // 16
 
 复合赋值先计算右侧表达式，再将结果赋值给左侧变量。
 
-<!-- @[compound_assignment_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @compound_assignment_precedence -->
 
 ``` TypeScript
 // 复合赋值是右结合的
@@ -363,7 +363,7 @@ capX += capY += 5;  // 混淆，反例
 
 严格相等（===）比较值和类型，非严格相等（==）会进行类型转换，ArkTS推荐使用严格相等。
 
-<!-- @[ts_strict_equality](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_strict_equality -->
 
 ``` TypeScript
 // 严格相等 (===)：比较值和类型
@@ -396,7 +396,7 @@ function compareValues(x: number | string, y: number | string): boolean {
 
 `===` 比较两个引用是否指向同一对象，不比较内容是否相同。
 
-<!-- @[reference_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @reference_comparison -->
 
 ``` TypeScript
 class Point {
@@ -437,7 +437,7 @@ console.info(`${arr1 === arr3}`);  // true
 
 类型守卫使用typeof、instanceof等运算符在运行时检查类型，缩小类型范围。
 
-<!-- @[type_guards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @type_guards -->
 
 ``` TypeScript
 // typeof类型守卫
@@ -510,7 +510,7 @@ function area(shape: OperatorShape): number {
 
 比较运算符始终返回布尔值，可用于条件表达式和逻辑运算。
 
-<!-- @[ts_comparison_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_comparison_operators -->
 
 ``` TypeScript
 // 比较运算符返回布尔值
@@ -543,7 +543,7 @@ cmpNum > str;  // 编译错误，类型不匹配
 
 逻辑与（&&）在左侧为false时跳过右侧执行，用于条件守卫和避免空引用。
 
-<!-- @[logical_and_short_circuit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @logical_and_short_circuit -->
 
 ``` TypeScript
 // && 短路：左侧为false时，右侧不执行
@@ -586,7 +586,7 @@ function canAccess(user: User | null, requiredRole: string): boolean {
 
 逻辑或（||）在左侧为true时跳过右侧执行，用于提供默认值。
 
-<!-- @[logical_or_short_circuit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @logical_or_short_circuit -->
 
 ``` TypeScript
 // || 短路：左侧为true时，右侧不执行
@@ -624,7 +624,7 @@ function connect(config: Config): void {
 
 逻辑非（!）先将操作数转换为布尔值再取反：0、''、null、undefined转为true，其余转为false。
 
-<!-- @[logical_not](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @logical_not -->
 
 ``` TypeScript
 // 逻辑非将值转换为布尔值后取反
@@ -662,7 +662,7 @@ function processValue(value: string | null): void {
 
 逻辑与（&&）优先级高于逻辑或（||），复杂表达式建议使用括号明确优先级。
 
-<!-- @[logical_operator_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @logical_operator_precedence -->
 
 ``` TypeScript
 // && 优先级高于 ||
@@ -710,7 +710,7 @@ console.info(`${expr3 === expr4}`);  // true
 
 三元运算符根据条件选择两个值中的一个，语法为condition ? value1 : value2。
 
-<!-- @[ts_ternary_operator_basics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_ternary_operator_basics -->
 
 ``` TypeScript
 let age: number = 20;
@@ -741,7 +741,7 @@ let displayName: string = user !== null ? user : getDefaultName();
 
 三元运算符可以嵌套处理多分支选择，但嵌套过深会降低可读性。
 
-<!-- @[nested_ternary](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @nested_ternary -->
 
 ``` TypeScript
 let score: number = 85;
@@ -779,7 +779,7 @@ let status: string =
 
 三元运算符`condition ? a : b`可以改写为if-else语句，适用于简单的条件赋值场景。
 
-<!-- @[ternary_vs_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @ternary_vs_if_else -->
 
 ``` TypeScript
 // 三元运算符
@@ -831,7 +831,7 @@ if (elseValue >= 90) {
 
 复杂的三元表达式应使用辅助函数或if-else替代，提高代码可读性。
 
-<!-- @[ternary_best_practices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @ternary_best_practices -->
 
 ``` TypeScript
 let scoreA: number = 10;
@@ -894,7 +894,7 @@ let compactLicenseStatus: string = applicantAge >= 18 && hasDrivingLicense
 
 数组展开运算符（...）将数组元素展开为独立元素，用于复制、合并和传参。
 
-<!-- @[spread_operator_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @spread_operator_array -->
 
 ``` TypeScript
 // 展开数组元素
@@ -934,7 +934,7 @@ let min: number = Math.min(...spreadArr2);  // 4
 
 TypeScript支持对象展开，例如`{ ...source }`、`{ ...defaults, ...override }`。ArkTS对对象字面量和展开语法更严格，普通业务对象的拷贝与合并优先使用显式构造或赋值。
 
-<!-- @[spread_operator_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @spread_operator_object -->
 
 ``` TypeScript
 interface Person {
@@ -968,7 +968,7 @@ console.info(`${spreadCopied2.name}`);
 
 剩余参数运算符（...）将多个参数收集为数组，用于处理不定数量的参数。
 
-<!-- @[rest_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @rest_parameters -->
 
 ``` TypeScript
 // 函数参数中的剩余参数
@@ -1014,7 +1014,7 @@ restProcess('a', 'b', 'c', 'd', 'e');
 
 ArkTS不支持对象剩余属性解构，需显式复制每个属性。
 
-<!-- @[object_rest_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @object_rest_properties -->
 
 ``` TypeScript
 interface RequestUser {
@@ -1065,7 +1065,7 @@ function request(url: string, options: RequestOptions): void {
 
 展开运算符创建浅拷贝，嵌套对象仍共享引用，深拷贝需手动处理嵌套层级。
 
-<!-- @[shallow_vs_deep_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @shallow_vs_deep_copy -->
 
 ``` TypeScript
 // 浅拷贝
@@ -1125,7 +1125,7 @@ TypeScript和ArkTS均不支持运算符重载，通过命名方法（如add、su
 
 不支持运算符重载，可通过命名方法模拟运算符行为。
 
-<!-- @[ts_operator_overloading_not_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_operator_overloading_not_supported -->
 
 ``` TypeScript
 // 不支持运算符重载
@@ -1149,7 +1149,7 @@ class Vector {
 
 通过命名方法（如add、sub）模拟运算符行为，在Vector类中实现向量运算。
 
-<!-- @[simulated_operator_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @simulated_operator_overloading -->
 
 ``` TypeScript
 class Vector {
@@ -1224,7 +1224,7 @@ console.info(`${simOpIsEqual}`);  // false
 
 通过命名方法（如add、sub）在Complex类中模拟复数的加减运算。
 
-<!-- @[complex_number_operators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @complex_number_operators -->
 
 ``` TypeScript
 class Complex {
@@ -1305,7 +1305,7 @@ console.info(`${JSON.stringify(product)}`);  // {"real":-11,"imag":23}
 
 运算符重载模拟适用于数学计算类，复杂业务逻辑建议使用明确的方法名。
 
-<!-- @[operator_overloading_use_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @operator_overloading_use_cases -->
 
 ``` TypeScript
 // 场景1：数学计算类（推荐）
@@ -1418,7 +1418,7 @@ console.info(`${operationResult}`);
 
 运算符优先级决定表达式中运算的执行顺序。ArkTS中常见运算符优先级从高到低为：括号`()` → 成员访问`.`/`[]` → 一元`!`/`-`/`++`/`--` → 算术`*`/`/`/`%` → 算术`+`/`-` → 位移`<<`/`>>`/`>>>` → 比较`>`/`<`/`>=`/`<=` → 相等`===`/`!==` → 按位`&` → 按位`^` → 按位`|` → 逻辑`&&` → 逻辑`||` → 空值合并`??` → 三元`?:` → 赋值`=`/`+=`等。复杂表达式建议使用括号明确优先级，避免依赖默认规则导致歧义。
 
-<!-- @[parentheses_for_precedence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @parentheses_for_precedence -->
 
 ``` TypeScript
 let precA: number = 5;
@@ -1440,7 +1440,7 @@ ArkTS限制解构赋值和部分动态特性，需使用单独赋值或索引访
 
 ArkTS不支持解构赋值（如`let {a, b} = obj`），需逐个属性显式赋值。
 
-<!-- @[ts_destructuring_not_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_destructuring_not_supported -->
 
 ``` TypeScript
 interface Point {
@@ -1467,7 +1467,7 @@ let destY: number = point.pointY;
 
 ArkTS支持松散相等（`==`和`!=`），但不建议使用，因为会进行隐式类型转换，可能导致难以发现的bug。推荐使用严格相等（`===`和`!==`）。
 
-<!-- @[strict_equality_best_practices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @strict_equality_best_practices -->
 
 ``` TypeScript
 let strictValue: number | null = 5;
@@ -1487,7 +1487,7 @@ ArkTS要求运算符两侧操作数类型必须一致或在编译期可确定地
 
 **错误示例**
 
-<!-- @[ts_type_safe_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_type_safe_operations -->
 
 ``` TypeScript
 let num: number = 5;
@@ -1505,7 +1505,7 @@ let typeSafeResult: boolean = typeSafeA > typeSafeB;  // 编译错误
 
 **TypeScript对照**
 
-<!-- @[ts_as_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_as_const -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中用显式类型标注替代
@@ -1521,7 +1521,7 @@ const tsArgs = [8, 5] as const;
 
 ArkTS中使用显式类型标注替代`as const`。
 
-<!-- @[as_const_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @as_const_alternative -->
 
 ``` TypeScript
 interface AcRequestConfig {
@@ -1541,7 +1541,7 @@ console.info(`${acConfig.method}`);  // GET
 
 **TypeScript对照**
 
-<!-- @[ts_as_const_readonly_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_as_const_readonly_error -->
 
 ``` TypeScript
 // TypeScript对照写法，演示readonly赋值的编译错误
@@ -1558,7 +1558,7 @@ tsReadonlyConfig.method = 'POST';  // 编译错误：Cannot assign to 'method' b
 
 使用枚举`AcHttpMethod`可提供类型安全的字符串字面量集合。
 
-<!-- @[as_const_enum_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @as_const_enum_alternative -->
 
 ``` TypeScript
 // 使用枚举替代字符串字面量
@@ -1577,7 +1577,7 @@ console.info(`${acMethod}`);  // GET
 
 **TypeScript对照**
 
-<!-- @[ts_satisfies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/AdvancedOperators.ts) -->
+<!-- @ts_satisfies -->
 
 ``` TypeScript
 // TypeScript对照写法（TS 4.9+），ArkTS中用显式类型替代
@@ -1592,7 +1592,7 @@ const stRgb = {
 
 ArkTS中使用显式类型标注和接口替代`satisfies`。
 
-<!-- @[satisfies_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/AdvancedOperators.ets) -->
+<!-- @satisfies_alternative -->
 
 ``` TypeScript
 interface SaColorMap {

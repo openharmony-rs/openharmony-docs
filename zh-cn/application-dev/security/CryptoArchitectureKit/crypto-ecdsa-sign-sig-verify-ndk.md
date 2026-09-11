@@ -25,7 +25,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 5. 调用OH_CryptoSign_Destroy等释放内存。
 
-<!-- @[signatures_with_ecdsa_keys_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/ecdsa_signature.cpp) -->
+<!-- @signatures_with_ecdsa_keys_c -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -110,7 +110,7 @@ bool DoTestEcdsaSign()
 
 4. 调用OH_CryptoVerify_Final，对数据进行验签。
 
-<!-- @[verify_signatures_with_ecdsa_keys_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/ecdsa_signature_verification.cpp) -->
+<!-- @verify_signatures_with_ecdsa_keys_c -->
 
 ``` C++
 #include "signing_signature_verification.h"

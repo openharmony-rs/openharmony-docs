@@ -16,7 +16,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 创建多个JS运行时环境并运行JS代码
 
-<!-- @[runtime_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/runtimetask/src/main/cpp/hello.cpp) -->
+<!-- @runtime_task -->
 
 ``` C++
 #include <map>

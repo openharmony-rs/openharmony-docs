@@ -13,7 +13,7 @@
 
 通过合理配置和使用窗口模式，应用可以更好地适配不同设备形态和用户交互场景，提供更优质的多窗口体验。
 
-[智慧多窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)是一个多种窗口模式组合使用的实践范例，它允许用户在同一时间、同一屏幕上以悬浮窗、分屏或全景多窗的方式同时运行多个应用窗口，从而实现多任务处理。
+智慧多窗是一个多种窗口模式组合使用的实践范例，它允许用户在同一时间、同一屏幕上以悬浮窗、分屏或全景多窗的方式同时运行多个应用窗口，从而实现多任务处理。
 
 窗口模式能力支持用户同时使用多个应用窗口，这种能力在自由窗口状态和非自由窗口状态下存在差异：
 
@@ -157,11 +157,11 @@
 
   - 对于应用主窗口：
 
-    - 应用主窗口仅在进入智慧多窗悬浮窗或全景多窗后，窗口处于自由悬浮窗口模式，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
+    - 应用主窗口仅在进入智慧多窗悬浮窗或全景多窗后，窗口处于自由悬浮窗口模式，详见智慧多窗简介。
 
     - 不支持通过resize()、moveWindowTo()等接口自由改变窗口大小和位置。
 
-    - 同一屏幕上存在自由悬浮窗口的最大个数限制，超出限制时，打开新的自由悬浮窗口会替换最久未操作的自由悬浮窗口。最大个数限制在不同产品上存在差异，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)的“悬浮窗”及“全局多窗”章节。
+    - 同一屏幕上存在自由悬浮窗口的最大个数限制，超出限制时，打开新的自由悬浮窗口会替换最久未操作的自由悬浮窗口。最大个数限制在不同产品上存在差异，详见智慧多窗简介的“悬浮窗”及“全局多窗”章节。
 
     - 主窗在自由悬浮窗口模式下固定存在顶部横条，用户可通过拖拽顶部横条移动该窗口、切换窗口模式等。
 
@@ -185,17 +185,17 @@
 
   **触发方式：**
 
-  用户触发：包含通过悬浮窗手势触发、通知消息启动应用、侧边Dock启动应用、顶部横条切换等方式。详细内容可见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)中“悬浮窗的触发及恢复方式”章节。
+  用户触发：包含通过悬浮窗手势触发、通知消息启动应用、侧边Dock启动应用、顶部横条切换等方式。详细内容可见智慧多窗简介中“悬浮窗的触发及恢复方式”章节。
 
   > **说明：**
   > 
-  > 更多关于智慧多窗悬浮窗的信息，请参考[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)和[智慧多窗最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-window-practice)。
+  > 更多关于智慧多窗悬浮窗的信息，请参考智慧多窗简介和智慧多窗最佳实践。
 
 ### SPLIT_SCREEN
 
 分屏模式是指应用窗口占据屏幕的某个部分，与另一个窗口同时显示的状态。当前支持应用内分屏及应用间分屏。
 
-![window-mode-split](figures/window-mode-split.png)
+window-mode-split
 
 **特点：**
 
@@ -248,7 +248,7 @@
 > 
 > - 在自由窗口状态下，supportWindowMode中配置的FULL_SCREEN模式，表示窗口支持windowStatusType.FULL_SCREEN 和windowStatusType.MAXIMIZE两种显示模式。
 > 
-> - 多设备场景下不同窗口模式的开发与实现可以参考[窗口模式最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-mode)。
+> - 多设备场景下不同窗口模式的开发与实现可以参考窗口模式最佳实践。
 
 ### 通过setSupportedWindowModes()接口配置
 

@@ -10,10 +10,10 @@
 ARM Neon是ARM架构的SIMD（Single Instruction Multiple Data）扩展实现，提供一条指令处理多个数据的并行处理能力，广泛用于多媒体编解码、2D/3D图形处理等领域，提高执行性能。
 
 
-Neon扩展从ARMv7开始被采用，目前在Cortex-A7、Cortex-A12、Cortex-A15处理器中被设置为默认选项，但在其余的ARMv7 Cortex-A系列中是可选项。具体技术细节请参考《[Introducing NEON Development Article](https://developer.arm.com/documentation/dht0002/a/Introducing-NEON/What-is-SIMD-/ARM-SIMD-instructions?lang=en)》。
+Neon扩展从ARMv7开始被采用，目前在Cortex-A7、Cortex-A12、Cortex-A15处理器中被设置为默认选项，但在其余的ARMv7 Cortex-A系列中是可选项。具体技术细节请参考《Introducing NEON Development Article》。
 
 
-ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都支持，详细请参考ARM官方文档《[Learn the architecture - Introducing Neon](https://developer.arm.com/documentation/102474/0100/Fundamentals-of-Armv8-Neon-technology)》。
+ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都支持，详细请参考ARM官方文档《Learn the architecture - Introducing Neon》。
 
 
 ## OpenHarmony架构支持情况
@@ -47,13 +47,13 @@ ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都�
 
 使用Neon扩展的主要通过如下几种方式：
 
-- 使用LLVM的Auto-Vectorization特性，由编译器来生成对应指令，默认开启，可以通过-fno-vectorize关闭，具体参考《[Auto-Vectorization in LLVM](https://llvm.org/docs/Vectorizers.html)》。
+- 使用LLVM的Auto-Vectorization特性，由编译器来生成对应指令，默认开启，可以通过-fno-vectorize关闭，具体参考《Auto-Vectorization in LLVM》。
 
 - 使用Neon intrinsics库，方便开发者直接操作低阶Neon指令。
 
 - 手工写Neon汇编指令。
 
-详细可以参考《[Arm Neon架构](https://developer.arm.com/Architectures/Neon)》。
+详细可以参考《Arm Neon架构》。
 
 
 ## 举例说明

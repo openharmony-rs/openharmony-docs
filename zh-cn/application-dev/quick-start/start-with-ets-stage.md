@@ -19,19 +19,19 @@
 >
 > - 4.1Beta1版本及之后，DevEco Studio默认创建的工程为HarmonyOS工程，不再支持直接创建OpenHarmony工程。需要基于创建完成的HarmonyOS工程进行一些字段修改，才能得到OpenHarmony工程。
 >
-> - 为确保运行效果，此处以使用[最新DevEco Studio版本](https://developer.huawei.com/consumer/cn/download/)为例。
+> - 为确保运行效果，此处以使用最新DevEco Studio版本为例。
 
 1. 若首次打开**DevEco Studio**，请点击**Create Project**创建工程。如果已经打开了一个工程，请在菜单栏选择**File > New > Create Project**来创建一个新工程。
 
 2. 选择**Application**应用开发（本文以应用开发为例，**Atomic Service**对应为原子化服务开发），选择模板**Empty Ability**，点击**Next**进行下一步配置。
    
-   若开发者需要进行Native相关工程的开发，请选择Native C++模板，更多模板的使用和说明请见[工程模板介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-template)。
+   若开发者需要进行Native相关工程的开发，请选择Native C++模板，更多模板的使用和说明请见工程模板介绍。
 
-   ![Native-C++-template](figures/Native-C++-template.png)
+   Native-C++-template
 
 3. 进入配置工程界面，**Compatible SDK**表示兼容的最低API Version，此处以选择5.0.0(12)为例，其他参数保持默认设置即可。
 
-   ![compatible-version](figures/compatible-version.png)
+   compatible-version
 
 4. 点击**Finish**，工具会自动生成示例代码和相关资源，等待工程创建完成，此时创建的工程为HarmonyOS工程。
 
@@ -61,7 +61,7 @@
 
 ## ArkTS工程目录结构（Stage模型）
 
-![project](figures/project.png)
+project
 
 - **AppScope&gt; app.json5**：应用的全局配置信息，详见app.json5配置文件。
 
@@ -155,7 +155,7 @@
 
 3. 在编辑窗口右上角的侧边工具栏，点击Previewer，打开预览器。第一个页面效果如下图所示：
 
-   ![Previewer](figures/Previewer.png)
+   Previewer
 
 
 ## 构建第二个页面
@@ -164,7 +164,7 @@
 
    - 新建第二个页面文件。在“**Project**”窗口，打开“**entry&gt; src&gt; main&gt; ets**”，右键点击“**pages**”文件夹，选择“**New&gt; ArkTS File**”，命名为“**Second**”，点击**回车键**。可以看到文件目录结构如下：
 
-      ![secondPage](figures/secondPage.png)
+      secondPage
 
       >  **说明：**
       >
@@ -335,9 +335,9 @@
    }
    ```
 
-3. 打开Index.ets文件，点击预览器中的![refresh](figures/refresh.png)按钮进行刷新。效果如下图所示：
+3. 打开Index.ets文件，点击预览器中的refresh按钮进行刷新。效果如下图所示：
 
-   ![Page-redirection-return](figures/Page-redirection-return.png)
+   Page-redirection-return
 
 
 ## 使用真机运行应用
@@ -346,10 +346,10 @@
 
 2. 点击**File**&gt; **Project Structure...**&gt; **Project**&gt; **SigningConfigs**界面勾选“**Automatically generate signature**”，等待自动签名完成即可，点击“**OK**”。如下图所示：
 
-   ![signConfig](figures/signConfig.png)
+   signConfig
 
-3. 在编辑窗口右上角的工具栏，点击![start](figures/start.png)按钮运行。效果如下图所示：
+3. 在编辑窗口右上角的工具栏，点击start按钮运行。效果如下图所示：
 
-   ![Page-redirection-return](figures/Page-redirection-return.png)
+   Page-redirection-return
 
 恭喜您已经使用ArkTS语言开发（Stage模型）完成了第一个OpenHarmony应用，快来探索更多的OpenHarmony功能吧。

@@ -16,7 +16,7 @@
 
 属性以 `修饰符 名称: 类型 = 初始值` 形式声明，可在声明处或构造函数中初始化，通过 `实例.属性名` 访问；可选属性用 `?`、只读属性用 `readonly` 标记。
 
-<!-- @[property_definition_basics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @property_definition_basics -->
 
 ``` TypeScript
 class Person {
@@ -62,7 +62,7 @@ console.info(`${counter.getCount().toString()}`);  // 1
 
 实例属性和静态属性是类的两种属性类型，它们在访问方式（实例属性需要通过类实例访问，而静态属性直接通过类名访问）和生命周期（实例属性随着实例的创建而存在，静态属性在类加载时就存在）上有明显区别。
 
-<!-- @[instance_vs_static_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @instance_vs_static_properties -->
 
 ``` TypeScript
 class Configuration {
@@ -118,7 +118,7 @@ console.info(`${Configuration.instanceCount}`); // 2
 
 实例存储属性是类中最基础的属性类型，直接存储对象的数据值，需要在声明或构造函数中完成初始化。
 
-<!-- @[property_initialization_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @property_initialization_methods -->
 
 ``` TypeScript
 class User {
@@ -162,7 +162,7 @@ console.info(`${user2.email}`);  // 'alice@example.com'
 
 静态存储属性使用static关键字声明，属于类本身而非实例，所有实例共享同一个静态属性值。
 
-<!-- @[ts_static_storage_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_static_storage_properties -->
 
 ``` TypeScript
 class Constants {
@@ -197,7 +197,7 @@ console.info(`${constants.MAX_VALUE}`);  // 编译错误
 
 只读属性是不可修改的属性，确保属性在创建后保持不变，提高代码安全性。只读属性使用`readonly`修饰符声明，属性只能在声明时或构造函数中赋值，之后不可修改。
 
-<!-- @[ts_readonly_instance_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_readonly_instance_properties -->
 
 ``` TypeScript
 class ImmutablePoint {
@@ -240,7 +240,7 @@ console.info(`${point.x}`);  // 10
 
 将`readonly`与`static`结合，可以定义类级别不可变的常量。
 
-<!-- @[ts_static_readonly_constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_static_readonly_constants -->
 
 ``` TypeScript
 // readonly与static结合
@@ -259,7 +259,7 @@ AppConfig.APP_NAME = 'NewApp';  // 编译错误
 
 存储属性可通过 `public`、`private`、`protected` 修饰符限制可访问范围，三者均可与 `readonly` 组合使用。访问控制的详细说明和示例见属性的访问控制章节。
 
-<!-- @[ts_property_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_property_access_modifiers -->
 
 ``` TypeScript
 class BankAccount {
@@ -342,7 +342,7 @@ getter和setter是计算属性的访问器，用于控制属性的读取和写�
 
 使用`get`关键字定义读取访问器，`set`关键字定义写入访问器，访问时像普通属性一样使用，但底层通过方法动态求值。
 
-<!-- @[getter_setter_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @getter_setter_usage -->
 
 ``` TypeScript
 class Circle {
@@ -394,7 +394,7 @@ console.info(`${circle.radius}`);      // 5（保持原值）
 
 只读计算属性只提供getter方法，没有setter方法，属性只能读取不能写入，提供安全的属性访问。
 
-<!-- @[ts_readonly_computed_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_readonly_computed_properties -->
 
 ``` TypeScript
 class Rectangle {
@@ -433,7 +433,7 @@ console.info(`${rect.area}`);  // 100（自动更新）
 
 存储属性分配字段保存值，计算属性不分配字段，每次访问时通过getter动态求值；计算属性适合派生数据（如全名由姓+名拼接）。
 
-<!-- @[stored_vs_computed_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @stored_vs_computed_properties -->
 
 ``` TypeScript
 class Temperature {
@@ -473,7 +473,7 @@ console.info(`${temp.fahrenheit}`);   // 100
 
 计算属性有多种典型使用场景，例如数据组合、格式转换、验证控制和派生计算。
 
-<!-- @[computed_property_combination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @computed_property_combination -->
 
 ``` TypeScript
 class ComboUser {
@@ -530,7 +530,7 @@ console.info(`${product.priceInCents}`);    // 1999
 
 TypeScript/ArkTS没有原生属性观察器，需通过在getter/setter中比较新旧值并触发监听器来模拟属性变化监听。
 
-<!-- @[property_observer_simulation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @property_observer_simulation -->
 
 ``` TypeScript
 // TypeScript/ArkTS无原生属性观察器
@@ -592,7 +592,7 @@ observable.value = 20;  // 不输出（值相同）
 
 在setter中比较新旧值，仅在值变化时执行自定义逻辑（如日志、通知），实现属性变更的按需检测。
 
-<!-- @[property_change_detection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @property_change_detection -->
 
 ``` TypeScript
 class WatchedProperty {
@@ -648,7 +648,7 @@ class BatchUpdate {
 
 ArkTS的装饰器体系与TypeScript实验性装饰器不同，属性观察不使用装饰器包装`get`/`set`描述符，而是通过手动实现观察者模式：在`set`方法中比较新旧值并触发回调。详见装饰器。
 
-<!-- @[manual_property_observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @manual_property_observation -->
 
 ``` TypeScript
 // 属性观察者：在set方法中比较新旧值并触发回调
@@ -708,7 +708,7 @@ observed.value = 20;  // 输出: Value: 10 -> 20
 
 静态属性通过类名访问，所有实例共享同一份；实例属性通过实例访问，每个实例独立持有。
 
-<!-- @[instance_static_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @instance_static_comparison -->
 
 ``` TypeScript
 class Comparison {
@@ -769,7 +769,7 @@ console.info(`${comp2.getComparison()}`);  // Static: 100, Instance: 20
 
 静态属性通过`类名.属性名`直接访问，无需创建实例，实例对象无法访问静态属性。
 
-<!-- @[ts_static_constants_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_static_constants_class -->
 
 ``` TypeScript
 class MathConstants {
@@ -804,7 +804,7 @@ console.info(`${mathConstants.PI}`);  // 编译错误
 
 实例属性通过`实例对象.属性名`访问，每个实例拥有独立的属性副本，类名无法直接访问实例属性。
 
-<!-- @[ts_instance_property_independence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_instance_property_independence -->
 
 ``` TypeScript
 class Student {
@@ -849,7 +849,7 @@ console.info(`${Student.grade}`);  // 编译错误：实例属性无法通过类
 
 静态属性在类加载时创建，所有实例共享，适合全局状态管理。
 
-<!-- @[application_state_management](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @application_state_management -->
 
 ``` TypeScript
 class ApplicationState {
@@ -903,7 +903,7 @@ console.info(`${ApplicationState.getElapsedTime()}`);  // 运行时间
 
 readonly可与访问修饰符组合使用，如`public readonly`表示外部只读、`private readonly`表示内部只读。
 
-<!-- @[ts_access_modifier_combination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_access_modifier_combination -->
 
 ``` TypeScript
 class SecureData {
@@ -990,7 +990,7 @@ class ExtendedSecure extends SecureData {
 
 子类自动继承父类的 `public` 和 `protected` 属性，`private` 属性不可继承；子类可声明同名属性隐藏父类属性，但无法改变父类成员的访问级别。
 
-<!-- @[ts_property_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_property_inheritance -->
 
 ``` TypeScript
 class Parent {
@@ -1054,7 +1054,7 @@ ArkTS不支持索引签名（`arkts-no-indexed-signatures`）和索引访问字�
 
 **TypeScript对照**
 
-<!-- @[ts_index_signature_in_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Properties.ts) -->
+<!-- @ts_index_signature_in_class -->
 
 ``` TypeScript
 class TsIsStringBooleanMap {
@@ -1075,7 +1075,7 @@ console.info(`${tsIsMap['isDeleted']}`);  // false
 
 ArkTS中使用`Map`替代类上的索引签名。
 
-<!-- @[index_signature_map_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @index_signature_map_alternative -->
 
 ``` TypeScript
 class IsConfigManager {
@@ -1103,7 +1103,7 @@ if (isAppName !== undefined) {
 
 子类中重新声明继承字段的更精确类型时，使用`declare`避免运行时覆盖父类值。若不使用`declare`，子类字段的初始化器会在构造时执行，覆盖父类构造函数已设置的值，可能导致数据丢失或类型不一致。
 
-<!-- @[declare_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
+<!-- @declare_field -->
 
 ``` TypeScript
 interface DclAnimal {

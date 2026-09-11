@@ -13,7 +13,7 @@
 
 Stage模型下，一个UIAbility对应一个WindowStage，一个WindowStage对应一个应用主窗（MainWindow），UIAbility、WindowStage和应用主窗三者之间的关系如下图所示。
 
-![windowRelation](figures/uiability-windowstage-mainwindow.png)
+windowRelation
 
 每个UIAbility实例都会与一个WindowStage实例绑定。WindowStage是应用进程内的窗口管理器，负责管理主窗口的生命周期和显示逻辑。主窗口是ArkUI的绘制区域，可以加载不同的ArkUI页面，为用户提供交互界面。
 
@@ -52,7 +52,7 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 应用主窗口生命周期事件流转关系如下图所示：
 
-![lifecycleEvent](figures/window-lifecycle-event.png)
+lifecycleEvent
 
 
 ### 监听应用主窗的生命周期状态变化

@@ -4,7 +4,7 @@
 
 流程示意图如下：
 
-![](figures/photoEditorExtensionAbility.png)
+
 
 例如：用户在图库App中选择编辑图片时，图库App可以通过startAbilityByType拉起图片编辑类应用扩展面板。用户可以从已实现PhotoEditorExtensionAbility应用中选择一款，并进行图片编辑。
 

@@ -26,15 +26,15 @@
 
 新建一个工程后，结构如下：
 
-![guide_struct_init.png](./figures/guide_struct_init.png)
+guide_struct_init.png
 
 首先，创建一个EnterpriseAdmin类型的ExtensionAbility（也就是EnterpriseAdminExtensionAbility）。
 
-![guide_struct_done.png](./figures/guide_struct_done.png)
+guide_struct_done.png
 
 其次，打开新建的EnterpriseAdminAbility文件，导入EnterpriseAdminExtensionAbility模块，使其继承EnterpriseAdminExtensionAbility并加上需要的应用通知回调方法，如onAdminEnabled()、onAdminDisabled()等回调方法。当设备管理应用激活或者解除激活时，可以在对应回调方法中接收系统发送通知。
 
-<!-- @[enterprise_admin_extension_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/ets/enterpriseadminability/EnterpriseAdminAbility.ets) -->   
+<!-- @enterprise_admin_extension_ability -->   
 
 ``` TypeScript
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
@@ -80,7 +80,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 最后，在工程Module对应的module.json5配置文件中将EnterpriseAdminAbility注册为ExtensionAbility，type标签需要设置为“enterpriseAdmin”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-<!-- @[extension_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility/entry/src/main/module.json5) -->
+<!-- @extension_abilities -->
 
 ``` JSON5
 "extensionAbilities": [
@@ -98,4 +98,4 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 针对EnterpriseAdminExtensionAbility开发，有以下相关示例可供参考：
 
-- [企业设备管理扩展（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/EnterpriseAdminExtensionAbility/EnterpriseAdminExtensionAbility)
+- 企业设备管理扩展（ArkTS）

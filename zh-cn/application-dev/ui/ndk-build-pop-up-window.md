@@ -29,7 +29,7 @@
   ArkUI_NativeDialogHandle表示指向弹窗控制器的指针，可以通过调用ArkUI_NativeDialogAPI_1的create接口创建一个弹窗控制器。
 
   该方法返回ArkUI_NativeDialogHandle类型的数据。
-  <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  <!-- @dialog_create -->
   
   ``` C++
   ArkUI_NativeDialogHandle g_dialogController = nullptr;
@@ -42,7 +42,7 @@
   ```
 
 - 当不再需要弹窗操作时，需要主动调用dispose接口销毁弹窗控制器对象。
-  <!-- @[dialog_dispose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  <!-- @dialog_dispose -->
   
   ``` C++
   ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
@@ -58,7 +58,7 @@
   ArkUI_CustomDialogOptions自定义弹窗的内容对象，可以通过调用OH_ArkUI_CustomDialog_CreateOptions接口创建一个自定义弹窗的内容对象。
 
   该方法返回ArkUI_CustomDialogOptions类型的指针。
-  <!-- @[dialog_createOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  <!-- @dialog_createOption -->
   
   ``` C++
   ArkUI_CustomDialogOptions* g_dialogOptions = nullptr;
@@ -74,7 +74,7 @@
   > ArkUITextNode的声明方式可以查看ArkUINode.h文件中的实现文本组件。
 
 - 当不再需要弹窗操作时，需要主动调用OH_ArkUI_CustomDialog_DisposeOptions接口销毁弹窗内容对象。
-  <!-- @[dialog_disposeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+  <!-- @dialog_disposeOption -->
   
   ``` C++
   OH_ArkUI_CustomDialog_DisposeOptions(g_dialogOptions);
@@ -88,9 +88,9 @@
 
    > **说明：**
    >
-   > 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
+   > 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见resOptions中相关介绍。
 
-   <!-- @[create_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+   <!-- @create_content -->
    
    ``` C++
    ArkUI_NodeHandle CreateDialogContent()
@@ -131,7 +131,7 @@
 
    - 通过controller控制弹窗样式。
 
-     <!-- @[show_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     <!-- @show_dialog -->
      
      ``` C++
      void ShowDialog()
@@ -154,7 +154,7 @@
 
    - 通过dialogOptions控制弹窗样式。
 
-     <!-- @[open_dialogOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     <!-- @open_dialogOption -->
      
      ``` C++
      int32_t g_id = 0;
@@ -184,7 +184,7 @@
 
    - 通过controller关闭弹窗。
 
-     <!-- @[close_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     <!-- @close_controller -->
      
      ``` C++
      void CloseDialog()
@@ -197,7 +197,7 @@
 
    - 通过dialogOptions关闭弹窗。
 
-     <!-- @[close_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     <!-- @close_option -->
      
      ``` C++
      void CloseCustomDialog()
@@ -211,7 +211,7 @@
 可创建交互页面，打开或关闭弹窗。
 
 1. 创建可交互界面，点击Button后弹窗。其中获取与使用ArkUI_NodeContentHandle类型节点可参考接入ArkTS页面。
-   <!-- @[main_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+   <!-- @main_view -->
    
    ``` C++
    constexpr int32_t BUTTON_CLICK_ID = 1;
@@ -255,7 +255,7 @@
 
    - 触发controller弹窗。
 
-     <!-- @[controller_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     <!-- @controller_click -->
      
      ``` C++
      bool g_isShown = false;
@@ -286,7 +286,7 @@
 
    - 触发dialogOptions弹窗。
 
-     <!-- @[option_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+     <!-- @option_click -->
      
      ``` C++
      void OnButtonClicked(ArkUI_NodeEvent *event)
@@ -313,7 +313,7 @@
      }
      ```
 
-![zh-cn_image_0000001902966196](figures/Interacting-Dialog-Box.gif)
+zh-cn_image_0000001902966196
 
 
 ## 弹窗的生命周期
@@ -328,9 +328,9 @@ registerOnWillAppear -> 弹窗显示动画开始 -> 弹窗显示动画结束 -> 
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见resOptions中相关介绍。
  
-<!-- @[dialog_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
+<!-- @dialog_lifecycle -->
 
 ``` C++
 ArkUI_NodeHandle CreateDialogContent()

@@ -40,7 +40,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 **系统弹框示意图：**
 
-<img src="figures/playback-capture-authorization.jpg" width="320" alt="音频内录授权弹框">
+
 
 ### 开发步骤及注意事项(ArkTS)
 
@@ -48,7 +48,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 1. 导入模块。
 
-   <!-- @[PlaybackCaptureImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   <!-- @PlaybackCaptureImport -->
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -71,7 +71,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    >
    > 内录启动时还会进行用户授权检查，部分设备会展示系统授权或隐私提示弹窗，授权结果通过`requestPlaybackCaptureStart()`回调返回。
 
-   <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   <!-- @SetPlaybackCaptureMode -->
    ``` TypeScript
    let audioStreamInfo: audio.AudioStreamInfo = {
      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -100,7 +100,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    回调返回PCM数据，应用可根据业务写入文件、送入编码器或交给自定义音频处理模块。以下示例统计接收到的PCM数据字节数。
 
-   <!-- @[PlaybackCaptureGlobalState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   <!-- @PlaybackCaptureGlobalState -->
    ``` TypeScript
    let audioCapturer: audio.AudioCapturer | undefined = undefined;
    let isPlaybackCaptureStarted: boolean = false;
@@ -109,7 +109,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    let playbackCaptureStartState: audio.PlaybackCaptureStartState | undefined = undefined;
    ```
 
-   <!-- @[PlaybackCaptureReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   <!-- @PlaybackCaptureReadDataCallback -->
    ``` TypeScript
      private readDataCallback: Callback<ArrayBuffer> = (buffer: ArrayBuffer): void => {
        readBytes += buffer.byteLength;
@@ -133,7 +133,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    >
    > 内录采集器不能通过`start()`接口启动。调用`requestPlaybackCaptureStart()`后，只有收到`STATE_SUCCESS`时，应用才应认为内录已启动成功。
 
-   <!-- @[RequestPlaybackCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   <!-- @RequestPlaybackCaptureStart -->
    ``` TypeScript
    if (audioCapturer === undefined) {
      return;
@@ -165,7 +165,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    应用结束内录后，需要停止AudioCapturer并释放资源。释放前应取消`readData`监听，避免对象释放后仍处理回调。
 
-   <!-- @[ReleasePlaybackCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
+   <!-- @ReleasePlaybackCapture -->
    ``` TypeScript
    private async releasePlaybackCapture(): Promise<void> {
      if (audioCapturer === undefined) {
@@ -194,13 +194,13 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    内录启动接口为异步接口，需要在启动函数返回后继续保存`OH_AudioCapturer`实例，确保在启动结果回调中处理失败场景，并在业务结束时停止和释放实例。互斥锁（Mutual Exclusion Lock）用于保护全局采集器指针，避免启动结果回调、重复启动和主动停止同时访问该指针。
 
-   <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @header_file -->
    ``` C++
    #include <ohaudio/native_audiocapturer.h>
    #include <ohaudio/native_audiostreambuilder.h>
    ```
 
-   <!-- @[PlaybackCaptureConstants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @PlaybackCaptureConstants -->
    ``` C++
    constexpr int32_t PLAYBACK_CAPTURE_SAMPLE_RATE = 48000;
    constexpr int32_t PLAYBACK_CAPTURE_CHANNEL_COUNT = 2;
@@ -208,7 +208,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
        AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF;
    ```
 
-   <!-- @[PlaybackCaptureGlobalState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @PlaybackCaptureGlobalState -->
    ``` C++
    std::mutex g_playbackCaptureMutex;
    OH_AudioCapturer* g_playbackCaptureCapturer = nullptr;
@@ -220,7 +220,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    音频数据回调返回内录PCM数据，不建议在回调中执行耗时任务。内录启动失败或用户未授权时，及时释放已创建的采集器。
 
-   <!-- @[PlaybackCaptureReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @PlaybackCaptureReadDataCallback -->
    ``` C++
    void MyOnPlaybackCaptureReadData(
        OH_AudioCapturer* capturer,
@@ -235,7 +235,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    }
    ```
 
-   <!-- @[PlaybackCaptureStartCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @PlaybackCaptureStartCallback -->
    ``` C++
    void MyOnPlaybackCaptureStart(
        OH_AudioCapturer* capturer,
@@ -280,7 +280,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    单独使用排除自身模式时，会录制大部分允许被采集的音频流并排除应用自身播放的音频；与媒体模式组合时，只录制媒体类音频并排除应用自身播放的音频。
 
-   <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @SetPlaybackCaptureMode -->
    ``` C++
    bool ConfigurePlaybackCaptureBuilder(OH_AudioStreamBuilder* builder)
    {
@@ -384,7 +384,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    业务结束后，通过OH_AudioCapturer_Stop()停止采集，并通过OH_AudioCapturer_Release()释放资源。
 
-   <!-- @[StopPlaybackCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+   <!-- @StopPlaybackCapture -->
    ``` C++
    napi_value StopPlaybackCapture(napi_env env, napi_callback_info info)
    {

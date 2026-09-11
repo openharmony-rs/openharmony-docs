@@ -69,7 +69,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ## 开发案例
 
 ### ECC256/SHA256
-<!-- @[key_algorithm_ecc_sha256_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/ecc_sha256_sign_verify.cpp) -->
+<!-- @key_algorithm_ecc_sha256_sign_verify_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -240,7 +240,7 @@ napi_value SignVerifyKeyECC(napi_env env, napi_callback_info info)
 }
 ```
 ### SM2/SM3
-<!-- @[key_algorithm_sm2_sm3_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/sm2_sm3_sign_verify.cpp) -->
+<!-- @key_algorithm_sm2_sm3_sign_verify_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -414,7 +414,7 @@ napi_value SignVerifyKeySM2SM3(napi_env env, napi_callback_info info)
 }
 ```
 ### SM2/NoDigest
-<!-- @[key_algorithm_sm2_nodigest_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/sm2_nodigest_sign_verify.cpp) -->
+<!-- @key_algorithm_sm2_nodigest_sign_verify_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -579,7 +579,7 @@ napi_value SignVerifyKeySM2NoDigest(napi_env env, napi_callback_info info)
 }
 ```
 ### RSA/SHA256/PSS
-<!-- @[key_algorithm_rsa_sha256_pss_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha256_pss_sign_verify.cpp) -->
+<!-- @key_algorithm_rsa_sha256_pss_sign_verify_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -751,7 +751,7 @@ napi_value SignVerifyKeyRsaSha256Pss(napi_env env, napi_callback_info info)
 }
 ```
 ### RSA/SHA256/PKCS1_V1_5
-<!-- @[key_algorithm_rsa_sha256_pkcs1_v1_5_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha256_pkcs1_v1_5_sign_verify.cpp) -->
+<!-- @key_algorithm_rsa_sha256_pkcs1_v1_5_sign_verify_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"
@@ -923,7 +923,7 @@ napi_value SignVerifyKeyRsaSha256Pkcs1V15(napi_env env, napi_callback_info info)
 }
 ```
 ### RSA/SHA384/PSS
-<!-- @[key_algorithm_rsa_sha384_pss_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha384_pss_sign_verify.cpp) -->
+<!-- @key_algorithm_rsa_sha384_pss_sign_verify_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

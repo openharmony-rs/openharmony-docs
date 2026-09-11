@@ -13,7 +13,7 @@
 
 ### 具名导入
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+<!-- @export_add -->  
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
@@ -21,7 +21,7 @@ export const add: (a: number, b: number) => number;
 ```
 
 
-<!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) -->     
+<!-- @name_import -->     
 
 ``` TypeScript
 // NameImport.ets
@@ -31,7 +31,7 @@ add(2, 3);
 
 ### 默认导入
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+<!-- @export_add -->   
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
@@ -39,7 +39,7 @@ export const add: (a: number, b: number) => number;
 ```
 
 
-<!-- @[default_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DefaultImport.ets) -->     
+<!-- @default_import -->     
 
 ``` TypeScript
 // DefaultImport.ets
@@ -49,7 +49,7 @@ entry.add(2, 3);
 
 ### 命名空间导入
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+<!-- @export_add -->   
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
@@ -57,7 +57,7 @@ export const add: (a: number, b: number) => number;
 ```
 
 
-<!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImport.ets) -->    
+<!-- @namespace_import -->    
 
 ``` TypeScript
 // NamespaceImport.ets
@@ -69,7 +69,7 @@ entry.add(2, 3);
 
 ### 转为具名变量导出再导入
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+<!-- @export_add -->   
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
@@ -77,7 +77,7 @@ export const add: (a: number, b: number) => number;
 ```
 
 
-<!-- @[name_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameExport.ets) -->    
+<!-- @name_export -->    
 
 ``` TypeScript
 // NameExport.ets
@@ -86,7 +86,7 @@ import { add } from 'libentry.so';
 export { add };
 ```
 
-<!-- @[nameImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImportFromExport.ets) -->    
+<!-- @nameImport_fromExport -->    
 
 ``` TypeScript
 // NameImportFromExport.ets
@@ -97,7 +97,7 @@ const result = add(2, 3);
 
 ### 转为命名空间导出再导入
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+<!-- @export_add -->   
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
@@ -105,14 +105,14 @@ export const add: (a: number, b: number) => number;
 ```
 
 
-<!-- @[namespace_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceExport.ets) -->    
+<!-- @namespace_export -->    
 
 ``` TypeScript
 // NamespaceExport.ets
 export * from 'libentry.so';
 ```
 
-<!-- @[namespaceImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImportFromExport.ets) -->    
+<!-- @namespaceImport_fromExport -->    
 
 ``` TypeScript
 // NamespaceImportFromExport.ets
@@ -139,7 +139,7 @@ import * as lib from './test1'
 
 ### 直接导入
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+<!-- @export_add -->  
 
 ``` TypeScript
 // libentry.so对应的Index.d.ts
@@ -147,7 +147,7 @@ export const add: (a: number, b: number) => number;
 ```
 
 
-<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImport.ets) -->    
+<!-- @dynamic_import -->    
 
 ``` TypeScript
 // DynamicImport.ets
@@ -156,7 +156,7 @@ import('libentry.so').then((entry:ESObject) => {
 })
 ```
 ### 间接导入
-<!-- @[dynamic_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicExport.ets) -->    
+<!-- @dynamic_export -->    
 
 ``` TypeScript
 // DynamicExport.ets
@@ -164,7 +164,7 @@ import entry from 'libentry.so';
 export { entry }
 ```
 
-<!-- @[dynamicImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImportFromExport.ets) -->  
+<!-- @dynamicImport_fromExport -->  
 
 ``` TypeScript
 // DynamicImportFromExport.ets

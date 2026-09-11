@@ -14,7 +14,7 @@
 
 ## 按键事件数据流
 
-![zh-cn_image_0000001511580944](figures/Key-Event.png)
+zh-cn_image_0000001511580944
 
 
 按键事件由外设键盘等设备触发，经驱动和多模处理转换后发送给当前获焦的窗口，窗口获取到事件后，会尝试分发三次事件。三次分发的优先顺序如下，一旦事件被消费，则跳过后续分发流程。
@@ -43,7 +43,7 @@ onKeyEventDispatch(event: Callback<KeyEvent, boolean>): T
 
 当绑定方法的组件处于获焦状态下，外设键盘的按键事件会触发该方法，回调参数为KeyEvent，可由该参数获得当前按键事件的按键行为（KeyType）、键码（KeyCode）、按键英文名称（keyText）、事件来源设备类型（KeySource）、事件来源设备id（deviceId）、元键按压状态（metaKey）、时间戳（timestamp）、阻止冒泡设置（stopPropagation）。
 
-<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKey.ets) -->
+<!-- @listen_response_key_event -->
 
 ``` TypeScript
 @Entry
@@ -101,7 +101,7 @@ struct KeyEventExample {
 上述示例中给组件Button和其父容器Column绑定onKeyEvent。应用打开页面加载后，组件树上第一个可获焦的非容器组件自动获焦，设置Button为当前页面的默认焦点，由于Button是Column的子节点，Button获焦也同时意味着Column获焦。获焦机制见支持焦点处理。
 
 
-![zh-cn_image_0000001511421324](figures/onKeyEvent.gif)
+zh-cn_image_0000001511421324
 
 
 打开应用后，依次在键盘上按这些按键：空格、回车、左Ctrl、左Shift、字母A、字母Z。
@@ -114,7 +114,7 @@ struct KeyEventExample {
 
 如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：
 
-<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreventBubble.ets) -->
+<!-- @listen_response_key_event -->
 
 ``` TypeScript
 @Entry
@@ -173,11 +173,11 @@ struct KeyEventPreventBubble {
 }
 ```
 
-![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
+zh-cn_image_0000001511900508
 
 使用onKeyPreIme屏蔽在输入框中使用方向左键。
 
-<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
+<!-- @key_event_intercept -->
 
 ``` TypeScript
 import { KeyCode } from '@kit.InputKit';
@@ -209,11 +209,11 @@ struct PreImeEventExample {
 }
 ```
 
-![zh-cn_image_00012427222](figures/onKeyEvent04.gif)
+zh-cn_image_00012427222
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
-<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->   
+<!-- @key_distribute_event -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -266,11 +266,11 @@ struct Index {
 }
 ```
 
-![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
+zh-cn_image_00012427111
 
 使用onKeyPreIme实现回车提交（建议使用物理键盘）。
 
-<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyPreImeCommit.ets) -->
+<!-- @key_event_intercept -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -315,8 +315,8 @@ struct TextAreaDemo {
 }
 ```
 
-![onKeyPreIme1](figures/onKeyPreIme1.png)
+onKeyPreIme1
 
 在输入框中输入内容后回车。
 
-![onKeyPreIme2](figures/onKeyPreIme2.png)
+onKeyPreIme2

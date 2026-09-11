@@ -13,7 +13,7 @@ PageAbility生命周期是PageAbility被调度到INACTIVE、ACTIVE、BACKGROUND�
 
   **图1** PageAbility生命周期流转
 
-![page-ability-lifecycle](figures/page-ability-lifecycle.png)
+page-ability-lifecycle
 
 
   **表1** PageAbility生命周期状态说明
@@ -48,7 +48,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 
   **图2** PageAbility生命周期回调与生命周期状态的关系
 
-![fa-pageAbility-lifecycle](figures/fa-pageAbility-lifecycle.png)
+fa-pageAbility-lifecycle
 
 
 > **说明：**

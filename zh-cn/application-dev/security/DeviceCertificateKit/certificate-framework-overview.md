@@ -36,19 +36,19 @@
 
 ### X.509证书的基本结构
 
-![X509-certificate-structure](figures/X509-certificate-structure.png)
+X509-certificate-structure
 
 样例证书文件：
 
-![sample-certificate-file](figures/sample-certificate-file.png)
+sample-certificate-file
 
 ### X.509证书吊销列表（CRL）基本结构
 
-![certificate-revocation-list-structure](figures/certificate-revocation-list-structure.png)
+certificate-revocation-list-structure
 
 样例CRL文件：
 
-![sample-CRL-file](figures/sample-CRL-file.png)
+sample-CRL-file
 
 ## 约束与限制
 

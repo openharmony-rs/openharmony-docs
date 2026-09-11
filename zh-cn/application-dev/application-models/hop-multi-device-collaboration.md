@@ -24,7 +24,7 @@
 
   **图1** 多端协同流程图  
 
-![hop-multi-device-collaboration](figures/hop-multi-device-collaboration.png)
+hop-multi-device-collaboration
 
 
 ## 约束限制

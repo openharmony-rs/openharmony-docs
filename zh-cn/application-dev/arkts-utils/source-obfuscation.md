@@ -32,7 +32,7 @@ ArkGuard仅支持对ArkTS、TypeScript和JavaScript代码进行混淆，不适�
 
 因此，ArkGuard不支持针对特定类型的精确保留配置。
 
-<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+<!-- @example_limitation -->   
 
 ``` TypeScript
 // 混淆前：
@@ -80,13 +80,13 @@ test(a2);
 
 与其他源码混淆工具类似，混淆只能在一定程度上增加逆向工程的难度，并不能完全阻止逆向工程。
 
-并且，由于ArkGuard混淆工具仅支持基础混淆功能，开发者不应只依赖ArkGuard来保证应用的安全性，对于源码安全有高要求的开发者，应考虑使用[应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)、安全加固等安全措施来保护代码。
+并且，由于ArkGuard混淆工具仅支持基础混淆功能，开发者不应只依赖ArkGuard来保证应用的安全性，对于源码安全有高要求的开发者，应考虑使用应用加密、安全加固等安全措施来保护代码。
 
 ## 混淆机制及流程
 
 下图为应用编译的简要流程图：
 
-![compilation-process](figures/compilation-process.png)
+compilation-process
 
 开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考ArkGuard混淆开启指南，从而在编译打包的过程中自动对源码进行混淆处理。
 

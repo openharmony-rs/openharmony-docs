@@ -412,11 +412,11 @@
 
 在进行如下代码开发前，请参考接入ArkTS页面，创建前置工程。
 
-<!--RP1-->完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。<!--RP1End-->
+<!--RP1-->完整示例请参考native_render_node_sample。<!--RP1End-->
 
 1. NDK初始化组件环境，并创建对应的渲染节点根节点。
 
-   <!-- @[Create_RootNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
+   <!-- @Create_RootNode -->  
    
    ``` C++
    
@@ -485,7 +485,7 @@
 
 2. ArkTS侧创建节点并传递该节点至C-API。
 
-   <!-- @[Create_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets) -->  
+   <!-- @Create_Node -->  
    
    ``` TypeScript
    
@@ -604,7 +604,7 @@
 
 3. C-API侧获取该节点，接纳节点并获取对应的渲染节点。
 
-   <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
+   <!-- @Adopt_Node -->  
    
    ``` C++
    
@@ -627,7 +627,7 @@
 
 4. C-API侧解除已被接纳节点的接纳状态，释放其对应的渲染节点。
 
-   <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->
+   <!-- @Remove_Adopt_Node -->
    
    ``` C++
    

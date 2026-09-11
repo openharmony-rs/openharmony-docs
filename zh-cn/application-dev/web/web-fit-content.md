@@ -23,7 +23,7 @@
 
 | 图一  Web布局跟随系统| 图二 Web布局跟随系统实机效果|
 | --- | --- |
-| ![web-fit-content-sample](figures/arkweb-layoutmode-none.png) | ![web-without-fit-content](figures/web-without-fit-content.gif) |
+| web-fit-content-sample | web-without-fit-content |
 
 **Web组件大小自适应页面内容布局：**
 
@@ -31,7 +31,7 @@
 
 | 图三 Web组件大小自适应页面内容布局| 图四 Web组件大小自适应页面内容布局实机效果|
 | --- | --- |
-| ![web-fit-content-sample](figures/arkweb-layoutmode-fit-content.png) | ![web-fit-content](figures/web-fit-content.gif) |
+| web-fit-content-sample | web-fit-content |
 
 ## 规格与约束
 
@@ -45,7 +45,7 @@
 
 ## 示例代码
 
-<!-- @[a_page_that_contains_a_webview_and_text_in_the_comment_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/FitPageContent.ets) -->
+<!-- @a_page_that_contains_a_webview_and_text_in_the_comment_section -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

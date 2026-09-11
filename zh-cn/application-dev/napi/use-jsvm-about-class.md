@@ -39,7 +39,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码
 
-<!-- @[oh_jsvm_newinstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/newinstance/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_newinstance -->
 
 ``` C++
 #include <string>
@@ -113,7 +113,7 @@ NewInstance:{"name":"apple"}
 
 cpp部分代码
 
-<!-- @[oh_jsvm_defineclass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/defineclass/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_defineclass -->
 
 ``` C++
 #include <string>
@@ -229,7 +229,7 @@ NewInstance:{"name":"lilei"}
 
 cpp部分代码
 
-<!-- @[oh_jsvm_removewrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutClass/removewrap/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_removewrap -->
 
 ``` C++
 #include <string>

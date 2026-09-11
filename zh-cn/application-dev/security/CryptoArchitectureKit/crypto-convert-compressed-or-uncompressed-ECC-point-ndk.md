@@ -16,7 +16,7 @@ ECC的算法规格请查看非对称密钥生成和转换规格：ECC。<br>
 1. 指定uint8_t类型的ECC非压缩点数据，调用OH_CryptoEcPoint_Create，构造OH_CryptoEcPoint对象，用于生成点数据。
 2. 调用OH_CryptoEcPoint_Encode，获取压缩点数据。
 
-<!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/compressedPointData.cpp) -->
+<!-- @convert_ecc_uncompressed_point -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
@@ -52,7 +52,7 @@ OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 1. 指定uint8_t类型的ECC压缩点数据，调用OH_CryptoEcPoint_Create，构造OH_CryptoEcPoint对象，用于生成点数据。
 2. 调用OH_CryptoEcPoint_Encode，获取非压缩点数据。
 
-<!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/getKeyObject.cpp) -->
+<!-- @specify_ecc_uncompressed_point_get_keypair -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"

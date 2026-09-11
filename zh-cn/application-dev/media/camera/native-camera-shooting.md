@@ -21,7 +21,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @import_header -->
    
    ``` C
    #include <cstdint>
@@ -87,7 +87,7 @@
 
    通过OH_CameraManager_CreatePhotoOutputWithoutSurface()方法创建拍照输出流。
 
-   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @create_photo_output -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
@@ -127,7 +127,7 @@
    - 将处理完的buffer通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
    - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     <!-- @photo_available -->
      
      ``` C++
      // 保存NAPI侧注册的buffer处理回调函数。
@@ -294,7 +294,7 @@
 
      NAPI层buffer回调处理参考示例代码：
 
-     <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/main.cpp) -->
+     <!-- @napi_buffer_callback -->
      
      ``` C++
      // NAPI层buffer回调方法。
@@ -355,7 +355,7 @@
 
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
-   <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @settings_configuration -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
@@ -475,7 +475,7 @@
 
    通过OH_PhotoOutput_Capture_WithCaptureSetting()方法，执行拍照任务。
 
-   <!-- @[capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @capture -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
@@ -657,7 +657,7 @@
 
 - 通过注册固定的onFrameStart回调函数获取监听拍照开始结果，photoOutput创建成功时即可监听，拍照第一次曝光时触发。
 
-  <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @photo_output_start_callback -->
   
   ``` C++
   // PhotoOutput Callback
@@ -674,7 +674,7 @@
 
 - 通过注册固定的onFrameEnd回调函数获取监听拍照结束结果，photoOutput创建成功时即可监听。
 
-  <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @photo_output_end_callback -->
   
   ``` C++
   void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
@@ -685,7 +685,7 @@
 
 - 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见Camera_ErrorCode。
 
-  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @photo_output_error_callback -->
   
   ``` C++
   void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
@@ -694,7 +694,7 @@
   }
   ```
 
-  <!-- @[get_photo_output_listener_and_register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @get_photo_output_listener_and_register_callback -->
   
   ``` C++
   PhotoOutput_Callbacks *NDKCamera::GetPhotoOutputListener(void)

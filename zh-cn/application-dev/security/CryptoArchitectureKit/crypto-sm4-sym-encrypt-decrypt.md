@@ -47,7 +47,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考使用SM4-ECB/CBC�
 
 - 异步方法示例：
 
-  <!-- @[async_symmetry_encrypt_decrypt_sm4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_ecb_encryption_decryption/sm4_ecb_encryption_decryption_asynchronous.ets) -->
+  <!-- @async_symmetry_encrypt_decrypt_sm4 -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -95,7 +95,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考使用SM4-ECB/CBC�
 
 - 同步方法示例：
 
-  <!-- @[sync_symmetry_encrypt_decrypt_sm4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_ecb_encryption_decryption/sm4_ecb_encryption_decryption_synchronous.ets) -->
+  <!-- @sync_symmetry_encrypt_decrypt_sm4 -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -177,7 +177,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考使用SM4-ECB/CBC�
 
 - 异步方法示例：
 
-  <!-- @[async_symmetry_encrypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_cbc_encryption_decryption/sm4_cbc_encryption_decryption_asynchronous.ets) -->
+  <!-- @async_symmetry_encrypt_decrypt_sm4_cbc -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -247,7 +247,7 @@ SM4（CBC模式）解密失败返回错误码17630001可参考使用SM4-ECB/CBC�
 
 - 同步方法示例：
 
-  <!-- @[sync_symmetry_encrypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_cbc_encryption_decryption/sm4_cbc_encryption_decryption_synchronous.ets) -->
+  <!-- @sync_symmetry_encrypt_decrypt_sm4_cbc -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -354,7 +354,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考使用SM4-GCM算�
 
 - 异步方法示例：
 
-  <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_encryption_decryption/sm4_gcm_encryption_decryption_asynchronous.ets) -->
+  <!-- @async_symmetry_encrypt_decrypt_sm4_gcm -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -437,7 +437,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考使用SM4-GCM算�
 
 - 同步方法示例：
 
-  <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_encryption_decryption/sm4_gcm_encryption_decryption_synchronous.ets) -->
+  <!-- @sync_symmetry_encrypt_decrypt_sm4_gcm -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -562,7 +562,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考使用SM4-GCM算�
 
 - 异步方法示例：
 
-  <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_asynchronous.ets) -->
+  <!-- @async_symmetry_encrypt_decrypt_sm4_gcm_seg -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -669,7 +669,7 @@ SM4（GCM模式）解密失败返回错误码17630001可参考使用SM4-GCM算�
 
 - 同步方法示例：
 
-  <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_synchronous.ets) -->
+  <!-- @sync_symmetry_encrypt_decrypt_sm4_gcm_seg -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

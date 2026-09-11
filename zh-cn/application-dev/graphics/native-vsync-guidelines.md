@@ -37,7 +37,7 @@ libnative_vsync.so
 ```
 
 1. **首先需要定义一个VSync回调函数**。
-    <!-- @[vsync_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    <!-- @vsync_callback -->
     
     ``` C++
     void RenderEngine::OnVsync(long long timestamp, void *data)
@@ -54,7 +54,7 @@ libnative_vsync.so
     ```
 
 2. **创建OH_NativeVSync实例**。
-    <!-- @[create_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    <!-- @create_vsync -->
     
     ``` C++
     const char* demoName = "NativeImageSample";
@@ -62,7 +62,7 @@ libnative_vsync.so
     ```
 
 3. **通过OH_NativeVSync实例设置VSync回调函数**。
-    <!-- @[request_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    <!-- @request_vsync -->
     
     ``` C++
     wakeUpCond_.wait(lock, [this]() { return wakeUp_ || vSyncCnt_ > 0; });
@@ -76,7 +76,7 @@ libnative_vsync.so
 
 
 4. **销毁OH_NativeVSync实例**。
-    <!-- @[destroy_vsync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
+    <!-- @destroy_vsync -->
     
     ``` C++
     OH_NativeVSync_Destroy(nativeVsync_);
@@ -87,4 +87,4 @@ libnative_vsync.so
 
 针对NativeVSync的开发，有以下相关实例可供参考：
 
-- [基于NdkNativeImage的平滑渐变动画效果（API12）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage)
+- 基于NdkNativeImage的平滑渐变动画效果（API12）

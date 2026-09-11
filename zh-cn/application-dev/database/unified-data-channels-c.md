@@ -75,7 +75,7 @@ libudmf.so, libhilog_ndk.z.so
 
 ## 引用头文件
 
-<!-- @[unified_data_channels_c_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_head_file -->
 
 ``` C++
 #include <cstdio>
@@ -102,7 +102,7 @@ libudmf.so, libhilog_ndk.z.so
 6. 构建数据，将数据写入数据库中，得到返回的key值。
 7. 使用完成后销毁指针。
 
-<!-- @[unified_data_channels_c_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_write_data -->
 
 ``` C++
 int32_t SetHyperlinkData(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
@@ -188,7 +188,7 @@ int32_t CreateDataTest()
 4. 获取数据记录和hyperlink数据。
 5. 销毁指针。
 
-<!-- @[unified_data_channels_c_get_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_get_data -->
 
 ``` C++
 int32_t ProcessHyperlinks(OH_UdmfRecord* record, unsigned int recordTypeIdCount, char** typeIdsFromRecord)
@@ -297,7 +297,7 @@ int32_t GetDataTest()
 6. 更新数据，将数据写入数据库中。
 7. 使用完成后销毁指针。
 
-<!-- @[unified_data_channels_c_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_update_data -->
 
 ``` C++
 int32_t AddHyperlinkToUdmfRecord(OH_UdsHyperlink* hyperlink, OH_UdmfRecord* record, OH_UdmfData* data)
@@ -386,7 +386,7 @@ int32_t UpdateDataTest()
 5. 获取数据记录中的元素。
 6. 销毁指针。
 
-<!-- @[unified_data_channels_c_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_delete_data -->
 
 ``` C++
 int32_t ProcessRecordHyperlinks(OH_UdmfRecord* record, unsigned int recordTypeIdCount, char** typeIdsFromRecord)
@@ -499,7 +499,7 @@ int32_t DeleteDataTest()
 3. 设置hyperlink的URL和描述信息。
 4. 定义OH_UdmfRecordProvider销毁时触发的回调函数。
 
-<!-- @[unified_data_channels_c_define_get_data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_define_get_data_callback -->
 
 ``` C++
 // 为了代码可读性，代码中省略了各个步骤操作结果的校验，实际开发中需要确认每次调用的成功。
@@ -530,7 +530,7 @@ static void ProviderFinalizeCallback(void* context) { OH_LOG_INFO(LOG_APP, "OH_U
 4. 构建数据并写入数据库中，获取返回的Key值。
 5. 使用完成后销毁指针。
 
-<!-- @[unified_data_channels_c_delay_write_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @unified_data_channels_c_delay_write_data -->
 
 ``` C++
 int32_t ProviderSetDataTest()

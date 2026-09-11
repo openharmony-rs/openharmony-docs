@@ -17,7 +17,7 @@
 应用中的UIAbility在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的onWindowStageCreate()生命周期回调中，通过WindowStage对象的loadContent()方法设置启动页面。
 
 
-<!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+<!-- @onWindowStageCreate -->  
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -50,7 +50,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
-  <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @onCreate -->
   
   ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -67,7 +67,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
   
 - 在页面中获取UIAbility实例的上下文信息，包括导入依赖资源context模块和在组件中定义一个context变量两个部分。
 
-  <!-- @[Page_EventHub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/EventHubPage.ets) -->
+  <!-- @Page_EventHub -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -95,7 +95,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
   也可以在导入依赖资源context模块后，在具体使用UIAbilityContext前进行变量定义。
 
   
-  <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
+  <!-- @basicUsage -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -122,7 +122,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
 
 - 当业务完成后，开发者如果想要终止当前UIAbility实例，可以通过调用terminateSelf()方法实现。
 
-  <!-- @[terminateSelf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
+  <!-- @terminateSelf -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -176,7 +176,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
 
 1. 通过点击UIAbilityA中的"拉起UIAbilityB"按钮，拉起UIAbilityB。
 
-    <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/pages/Index.ets) -->  
+    <!-- @Index -->  
     
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
@@ -224,7 +224,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
 
 2. 在UIAbilityB的onCreate()生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
 
-    <!-- @[UIAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/UIAbilityB.ets) -->
+    <!-- @UIAbilityB -->
 
     ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

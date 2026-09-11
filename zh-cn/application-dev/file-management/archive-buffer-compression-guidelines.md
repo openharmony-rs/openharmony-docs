@@ -47,7 +47,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 1. 调用OH_Archive_BufferWriteCompressBound计算输出缓冲区大小。压缩前先调用此接口获取输出缓冲区所需大小，确保输出缓冲区足够容纳压缩后的数据。
 2. 调用OH_Archive_BufferWrite对缓冲区数据进行压缩。调用时需指定输入数据、输出缓冲区、数据长度、压缩算法和压缩级别。压缩后的实际数据大小通过dstSize参数返回。
 
-<!--@[buffer_compress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@buffer_compress_example-->
 
 ``` C++
 static napi_value BufferCompress(napi_env env, napi_callback_info info)
@@ -101,7 +101,7 @@ static napi_value BufferCompress(napi_env env, napi_callback_info info)
 
 准备输出缓冲区并调用OH_Archive_BufferRead解压缩数据。解压缩时需指定压缩数据缓冲区、输出缓冲区、数据长度和压缩算法，解压缩后的实际数据大小通过dstSize参数返回。建议压缩和解压缩使用相同的压缩算法参数。
 
-<!--@[buffer_decompress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@buffer_decompress_example-->
 
 ``` C++
 static napi_value BufferDecompress(napi_env env, napi_callback_info info)

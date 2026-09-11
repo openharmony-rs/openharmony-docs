@@ -35,7 +35,7 @@
 }
 ```
 
-![grid-container-Component](figures/grid-container-Component.png)
+grid-container-Component
 
 > **说明：** 
 >
@@ -104,7 +104,7 @@ export default {
 }
 ```
 
-![Calling-Methods](figures/Calling-Methods.gif)
+Calling-Methods
 
 ## 添加grid-col
 
@@ -161,7 +161,7 @@ text{
 }
 ```
 
-![grid-col](figures/grid-col.png)
+grid-col
 
 > **说明：** 
 >
@@ -237,4 +237,4 @@ export default {
 }
 ```
 
-![Example-Scenario-5](figures/Example-Scenario-5.gif)
+Example-Scenario-5

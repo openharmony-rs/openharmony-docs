@@ -217,11 +217,11 @@ DEFAULT是沉浸式系统材质的默认开启模式，在该模式下，Dialog�
 
 - Checkbox可视区域为40\*40的圆形，材质渲染区域为40\*40的矩形。
 
-  ![materialDrawingInstructions](figures/material-drawing-instruction-1.jpg)
+  materialDrawingInstructions
 
 - Text组件可视区域为文本内容，材质渲染区域为100\*40的矩形。
 
-  ![materialDrawingInstructions](figures/material-drawing-instruction-2.jpg)
+  materialDrawingInstructions
 
 **可能原因**
 
@@ -271,7 +271,7 @@ Row() {
 
 同时给组件设置沉浸式系统材质和背景色，材质效果被遮盖。例如TextArea组件设置背景色后，会遮盖材质效果。
 
-![materialDrawingInstructions](figures/material-drawing-instruction-3.jpg)
+materialDrawingInstructions
 
 **可能原因**
 

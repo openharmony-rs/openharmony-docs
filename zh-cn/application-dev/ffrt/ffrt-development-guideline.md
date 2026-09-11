@@ -32,8 +32,8 @@ FFRT提供开发者队列级和任务级超时维测机制，用来监控用户�
 
 | C++接口                                                                                                                                   | C接口                                                                                | 描述                   |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------- |
-| [queue_attr::timeout](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | ffrt_queue_attr_set_timeout   | 设置队列超时时间。     |
-| [queue_attr::callback](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | ffrt_queue_attr_set_callback | 设置队列超时回调函数。 |
+| queue_attr::timeout   | ffrt_queue_attr_set_timeout   | 设置队列超时时间。     |
+| queue_attr::callback | ffrt_queue_attr_set_callback | 设置队列超时回调函数。 |
 
 ### 长耗时任务监测
 
@@ -168,7 +168,7 @@ FFRT任务的调度和执行过程中，利用了OH系统的Trace打点能力，
 
 2. 图形化工具呈现
 
-    将Trace落盘的文件从设备中取出来，借助图形化工具进行分析，例如：[Perfetto](https://perfetto.dev/)。
+    将Trace落盘的文件从设备中取出来，借助图形化工具进行分析，例如：Perfetto。
 
 **注意事项**
 
@@ -613,9 +613,9 @@ FFRT C API已集成在NDK中，在DevEco Studio中可以直接使用对应的接
 
 FFRT的部署依赖FFRT动态库`libffrt.so`和一组头文件，其中动态库仅导出C接口，C++接口调用C接口，并基于头文件的方式将API中的C++元素编译到用户的动态库中，从而保证了ABI兼容性。
 
-![image](figures/ffrt_figure7.png)
+image
 
-如果要使用FFRT C++ API，需要使用FFRT C++接口三方库[@ppd/ffrt](https://ohpm.openharmony.cn/#/cn/detail/@ppd%2Fffrt)，该三方库是由FFRT官方维护的FFRT C++ API库。
+如果要使用FFRT C++ API，需要使用FFRT C++接口三方库@ppd/ffrt，该三方库是由FFRT官方维护的FFRT C++ API库。
 
 在模块目录下执行三方库安装命令：
 

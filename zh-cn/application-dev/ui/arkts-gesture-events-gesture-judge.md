@@ -19,7 +19,7 @@
 
 **图1** 自定义手势判定流程图
 
-![gesture_judge](figures/gesture_judge.png)
+gesture_judge
 
 自定义手势判定涉及以下接口。
 
@@ -32,11 +32,11 @@
 
 **图2** 示例图
 
-![gesture_judge_image_response_region](figures/gesture_judge_image_response_region.png)
+gesture_judge_image_response_region
 
 1. Image组件设置拖拽。
 
-   <!-- @[component_dragging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+   <!-- @component_dragging -->
    
    ``` TypeScript
    // $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
@@ -52,7 +52,7 @@
 
 2. Stack组件设置手势。
 
-      <!-- @[set_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) --> 
+      <!-- @set_gestures --> 
       
       ``` TypeScript
       Stack() {}
@@ -75,7 +75,7 @@
 
 3. Stack组件设置拦截。
 
-   <!-- @[set_interception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets) -->
+   <!-- @set_interception -->
    
    ``` TypeScript
    .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
@@ -93,7 +93,7 @@
 
 4. 代码完整示例。
 
-   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->
+   <!-- @custom_gestures -->
    
    ``` TypeScript
    import { PromptAction } from '@kit.ArkUI';
@@ -171,7 +171,7 @@
    }
    ```
 
-   ![stack-gesture](figures/stack-gesture.png)
+   stack-gesture
 
 ## 手势并行动态控制
 
@@ -179,7 +179,7 @@
 
 **图3** 手势并行动态控制流程图
 
-![gesture_judge_controller](figures/gesture_judge_controller.png)
+gesture_judge_controller
 
 手势并行动态控制的前提是手势识别成功，如果手势不成功则不会产生手势回调响应。
 
@@ -205,7 +205,7 @@
 
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
-   <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   <!-- @gesture_simultaneously -->
    
    ``` TypeScript
    .shouldBuiltInRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
@@ -223,7 +223,7 @@
 
 2. 使用onGestureRecognizerJudgeBegin接口获取到Scroll组件的PanGesture手势识别器，同时根据内外Scroll组件的边界条件，设置内外手势的开闭状态。
 
-   <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   <!-- @gesture_openingclosing -->
    
    ``` TypeScript
    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
@@ -256,7 +256,7 @@
 
 3. 设置监听手势，监听Scroll组件状态，动态调整手势开闭状态，控制手势回调是否触发，从而控制Scroll是否滚动。
 
-   <!-- @[listening_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureControl.ets) -->
+   <!-- @listening_gestures -->
    
    ``` TypeScript
    .parallelGesture( // 绑定一个Pan手势作为动态控制器
@@ -298,7 +298,7 @@
 
 4. 代码完整示例。
 
-   <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/GestureAndMotionControl/GestureAndMotionControl.ets) -->
+   <!-- @gesture_motioncontrol -->
    
    ``` TypeScript
    // xxx.ets
@@ -454,7 +454,7 @@
 
 1. 使用shouldRecognizerParallelWith接口设置外部Column组件的非内置PanGesture手势与内部Scroll组件的内置PanGesture手势并行。
 
-   <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   <!-- @gesture_simultaneously -->
    
    ``` TypeScript
    .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
@@ -475,7 +475,7 @@
 
 2. 使用onGestureRecognizerJudgeBegin接口获取到Column和Scroll组件的PanGesture手势识别器，同时根据内外组件的边界条件，设置内外手势的开闭状态。
 
-   <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   <!-- @gesture_openingclosing -->
    
    ``` TypeScript
    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
@@ -516,7 +516,7 @@
 
 3. 代码完整示例。
 
-   <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   <!-- @gesture_motioncontrol -->
    
    ``` TypeScript
    @Entry
@@ -647,7 +647,7 @@
 
 根据手势类型进行禁用：
 
-   <!-- @[disable_gesturetype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   <!-- @disable_gesturetype -->
    
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
@@ -665,7 +665,7 @@
 
 组件需要提前通过通用属性id配置组件标识。
 
-   <!-- @[component_disabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   <!-- @component_disabled -->
    
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
@@ -681,7 +681,7 @@
 
 根据是否系统内置手势禁用：
 
-   <!-- @[builtIn_gestureDisable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventIdentification.ets) -->
+   <!-- @builtIn_gestureDisable -->
    
    ``` TypeScript
    .onTouchTestDone((event, recognizers) => {
@@ -718,7 +718,7 @@
 
 以下为完整示例代码：
 
-<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->  
+<!-- @gesture_recognition -->  
 
 ``` TypeScript
 @Entry
@@ -999,7 +999,7 @@ struct Index {
 }
 ```
 
-![prevent-gesture-recognition](figures/prevent-gesture-recognition.gif)
+prevent-gesture-recognition
 
 ## 自定义干预事件和手势的收集结果
 
@@ -1033,7 +1033,7 @@ Button1未绑定点击事件，Button2绑定了点击事件。当用户点击But
 
 1. 在innerColumn组件上绑定`onGestureCollectIntercept`回调，在回调中获取触摸识别器列表。
 
-    <!-- @[gesture_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
+    <!-- @gesture_collection -->
     
     ``` TypeScript
     .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
@@ -1061,7 +1061,7 @@ Button1未绑定点击事件，Button2绑定了点击事件。当用户点击But
 
 2. 代码完整示例。
 
-    <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
+    <!-- @gesture_intercepting -->
     
     ``` TypeScript
     @Entry

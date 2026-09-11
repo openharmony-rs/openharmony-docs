@@ -158,7 +158,7 @@
     >
     > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-   <!-- @[Deep_Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @Deep_Linking --> 
     
     ``` TypeScript
     import { common } from '@kit.AbilityKit'
@@ -199,5 +199,5 @@
 
     **图1** 拉起目标应用演示
 
-    ![obtaining-target-app-url-info](figures/obtaining-target-app-url-info.gif) 
+    obtaining-target-app-url-info 
 

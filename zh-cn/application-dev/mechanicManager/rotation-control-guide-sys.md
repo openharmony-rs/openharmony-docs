@@ -42,7 +42,7 @@
 
 1. 一台支持Mechanic Kit协议的机械体设备。
 2. 若要验证智能跟踪功能，主设备的摄像头驱动需要支持人脸检测功能。
-3. 更新SDK到API 20或以上，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
+3. 更新SDK到API 20或以上，具体操作参见更新指南。
 4. 机械体设备与主设备完成蓝牙连接状态。
 
 ### 管理设备连接状态

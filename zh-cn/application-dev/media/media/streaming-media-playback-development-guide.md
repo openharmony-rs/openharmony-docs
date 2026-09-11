@@ -71,7 +71,7 @@
 
 监听当前bufferingUpdate缓冲状态示例代码：
 
-<!-- @[bufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+<!-- @bufferingUpdate -->
 
 ``` TypeScript
 this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
@@ -85,7 +85,7 @@ this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: n
 
 1. 通过on('availableBitrates')监听当前HLS协议流可用的码率。如果监听的码率列表长度为0，则不支持设置指定码率。
    
-   <!-- @[availableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @availableBitrates -->
    
    ``` TypeScript
    this.avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
@@ -96,7 +96,7 @@ this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: n
 
 2. 通过setBitrate接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听bitrateDone事件确认是否生效。
 
-   <!-- @[setBitrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @setBitrate -->
   
    ``` TypeScript
    // 设置播放码率
@@ -127,7 +127,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 1. 设置selectTrack生效的监听事件trackChange。
    
-   <!-- @[trackChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @trackChange -->
 
    ``` TypeScript
    this.avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
@@ -137,7 +137,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 2. 调用getTrackDescription获取所有音视频轨道列表。开发者可根据实际需求，基于MediaDescription各字段信息，确定目标轨道索引。
 
-   <!-- @[getTrackDescription](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @getTrackDescription -->
    
    ``` TypeScript
    this.avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
@@ -159,7 +159,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 3. 在音视频播放过程中调用selectTrack选择对应的音视频轨道，或者调用deselectTrack取消选择的音视频轨道。
    
-   <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @selectTrack -->
    
    ``` TypeScript
    // 切换至目标视频轨道
@@ -178,7 +178,7 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
 参考以下示例，完整地播放一个流媒体视频。
 
-1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia)，并将示例工程的以下资源复制到对应目录。
+1. 新建工程，下载示例工程，并将示例工程的以下资源复制到对应目录。
     ```txt
     AVPlayerArkTSAudio
     entry/src/main/ets/

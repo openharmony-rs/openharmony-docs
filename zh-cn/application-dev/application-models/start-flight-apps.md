@@ -88,7 +88,7 @@ startAbilityByType接口中type字段为flight，支持按航班号查询、按�
     ```
     效果示例图：
         
-    ![效果示例图](./figures/start-flight-panel.png)
+    效果示例图
 
 ## 目标方开发步骤
 

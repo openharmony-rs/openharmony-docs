@@ -107,7 +107,7 @@ crossAppSharedConfig字段配置说明：
 
 - 通过调用publish接口发布或修改配置项。
 
-  <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @publish_shared_config -->
   
   ``` TypeScript
   function publishSharedConfig() {
@@ -150,7 +150,7 @@ crossAppSharedConfig字段配置说明：
 
 - 通过调用delete接口删除配置项。
 
-  <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @delete_shared_config -->
   
   ``` TypeScript
   function deleteSharedConfig() {
@@ -185,7 +185,7 @@ crossAppSharedConfig字段配置说明：
 
 使用get接口获取配置信息。
 
-<!-- @[get_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+<!-- @get_shared_config -->
 
 ``` TypeScript
 function getSharedConfig() {
@@ -217,7 +217,7 @@ function getSharedConfig() {
 
 使用on接口监听配置变化，使用off接口取消监听配置变化。
 
-<!-- @[watch_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+<!-- @watch_shared_config -->
 
 ``` TypeScript
 function watchConfigChanges() {

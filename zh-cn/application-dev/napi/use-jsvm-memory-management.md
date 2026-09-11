@@ -31,7 +31,7 @@ JSVM-API接口开发流程请参考使用JSVM-API实现JS与C/C++语言交互开
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_adjust_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/adjustexternalmemory/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_adjust_external_memory -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -88,7 +88,7 @@ JSVM Allocate memory size: 1048576
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_memory_pressure_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/memorypressurenotification/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_memory_pressure_notification -->
 
 ``` C++
 #include "napi/native_api.h"

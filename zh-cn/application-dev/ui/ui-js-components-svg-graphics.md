@@ -43,4 +43,4 @@ svg组件可以用来绘制常见图形和线段，如矩形（&lt;rect&gt;）�
 }
 ```
 
-![Graph-Drawing](figures/Graph-Drawing.png)
+Graph-Drawing

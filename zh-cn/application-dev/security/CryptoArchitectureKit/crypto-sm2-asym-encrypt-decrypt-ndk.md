@@ -31,7 +31,7 @@
 
 3. 调用OH_CryptoAsymCipher_Final，传入密文，获取解密后的数据。
 
-<!-- @[encrypt_decrypt_sm2_asymkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/SM2EncryptionDecryption.cpp) -->
+<!-- @encrypt_decrypt_sm2_asymkey -->
 
 ``` C++
 

@@ -51,7 +51,7 @@ libhttp_interceptor.so
 
 1. 在源文件中编写调用该API的代码，实现HTTP全局拦截器的处理函数和相关操作。
 
-   <!-- @[HttpInterceptor_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @HttpInterceptor_build_project -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -515,7 +515,7 @@ libhttp_interceptor.so
 
 2. 初始化并导出通过N-API封装的`napi_value`类型对象，通过外部函数接口将函数提供给JavaScript调用。
 
-   <!-- @[HttpInterceptor_extern_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @HttpInterceptor_extern_c -->
    
    ``` C++
    EXTERN_C_START
@@ -561,7 +561,7 @@ libhttp_interceptor.so
 
 3. 将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到Node.js中。
 
-   <!-- @[HttpInterceptor_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @HttpInterceptor_napi_module -->
    
    ``` C++
    static napi_module demoModule = {
@@ -582,7 +582,7 @@ libhttp_interceptor.so
 
 4. 在工程的Index.d.ts文件中定义函数的类型。
 
-   <!-- @[HttpInterceptor_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @HttpInterceptor_defining_function_types -->
    
    ``` TypeScript
    export const AddReadOnlyResponseInterceptor: () => number;
@@ -604,7 +604,7 @@ libhttp_interceptor.so
 
 5. 在Index.ets文件中对上述封装好的接口进行调用。
 
-   <!-- @[HttpInterceptor_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @HttpInterceptor_C_full_example -->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -820,7 +820,7 @@ libhttp_interceptor.so
 
    注意：如图所示，在`add_library`中的`entry`是工程自动生成的`module name`，若要做修改，需和步骤 3 中`.nm_modname`保持一致。
 
-   ![netmanager-notemod.png](./figures/httpinterceptor-notemod.png)
+   netmanager-notemod.png
 
 7. 调用HTTP全局拦截器C API接口要求应用拥有`ohos.permission.INTERNET`权限，在`module.json5`中的`requestPermissions`项添加该权限。
 
@@ -832,76 +832,76 @@ libhttp_interceptor.so
 
 2. 运行工程，设备上会弹出以下图片所示界面。
 
-![demo初始画面](./figures/httpinterceptor-demo-1.png)
+demo初始画面
 
-![demo初始画面](./figures/httpinterceptor-demo-2.png)
+demo初始画面
 
    - 点击`Add Read Only Response Interceptor`按钮，添加一个HTTP全局只读响应拦截器。
 
-![netmanager-1.png](./figures/httpinterceptor-result1.png)
+netmanager-1.png
 
    - 点击`Start Read Only Response Interceptors`按钮，启用组ID为1的所有只读响应拦截器。
 
-![netmanager-2.png](./figures/httpinterceptor-result2.png)
+netmanager-2.png
 
    - 点击`Add Modify Request Interceptor`按钮，添加一个HTTP全局可修改请求拦截器。
 
-![netmanager-3.png](./figures/httpinterceptor-result3.png)
+netmanager-3.png
 
   - 点击`Start Modify Request Interceptors`按钮，启用组ID为2的所有可修改请求拦截器。  
 
-![netmanager-4.png](./figures/httpinterceptor-result4.png)
+netmanager-4.png
 
   - 点击`Add Modify Response Interceptor`按钮，添加一个HTTP全局可修改响应拦截器。  
 
-![netmanager-5.png](./figures/httpinterceptor-result5.png)
+netmanager-5.png
 
   - 点击`Start Modify Response Interceptors`按钮，启用组ID为3的所有可修改响应拦截器。
 
-![netmanager-6.png](./figures/httpinterceptor-result6.png)
+netmanager-6.png
 
    - 点击`Send HTTP Request`按钮，拦截器会捕获响应并打印相关信息到日志。
 
-![netmanager-7.png](./figures/httpinterceptor-result7.png)
+netmanager-7.png
 
    - 点击`Stop Read Only Response Interceptors`按钮，停用组ID为1的只读响应拦截器。
 
-![netmanager-8.png](./figures/httpinterceptor-result8.png)
+netmanager-8.png
 
    - 点击`Stop Modify Request Interceptors`按钮，停用组ID为2的可修改请求拦截器。
 
-![netmanager-9.png](./figures/httpinterceptor-result9.png)
+netmanager-9.png
 
    - 点击`Stop Modify Response Interceptors`按钮，停用组ID为3的可修改响应拦截器。
 
-![netmanager-10.png](./figures/httpinterceptor-result10.png)
+netmanager-10.png
 
    - 点击`Remove Read Only Response Interceptor`按钮，移除之前添加的只读响应拦截器。
 
-![netmanager-11.png](./figures/httpinterceptor-result11.png)
+netmanager-11.png
 
    - 点击`Remove Modify Request Interceptor`按钮，移除之前添加的可修改请求拦截器。
 
-![netmanager-12.png](./figures/httpinterceptor-result12.png)
+netmanager-12.png
 
    - 点击`Remove Modify Response Interceptor`按钮，移除之前添加的可修改响应拦截器。
 
-![netmanager-13.png](./figures/httpinterceptor-result13.png)
+netmanager-13.png
 
   - 点击`Remove All Read Only Response Interceptors`按钮，移除组ID为1的所有只读响应拦截器。
 
-![netmanager-14.png](./figures/httpinterceptor-result14.png)
+netmanager-14.png
 
   - 点击`Remove All Modify Request Interceptors`按钮，移除组ID为2的所有可修改请求拦截器。
 
-![netmanager-15.png](./figures/httpinterceptor-result15.png)
+netmanager-15.png
 
   - 点击`Remove All Modify Response Interceptors`按钮，移除组ID为3的所有可修改响应拦截器。
 
-![netmanager-16.png](./figures/httpinterceptor-result16.png)
+netmanager-16.png
 
 ## 相关实例
 
 针对HTTP全局拦截器的开发，有以下相关实例可供参考：
 
-- [HTTP全局拦截器（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_C)
+- HTTP全局拦截器（C/C++）

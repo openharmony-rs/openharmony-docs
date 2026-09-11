@@ -27,7 +27,7 @@
 
 AVCodec支持的视频编码格式请参考视频编码。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考示例工程。
 
 ## 状态机调用关系
 
@@ -53,7 +53,7 @@ AVCodec支持的视频编码格式请参考视频编码。
 
 **图1** 状态机调用关系示意图
 
-![Invoking relationship of state](figures/state-invocation.png)
+Invoking relationship of state
 
 ## 开发指导
 
@@ -65,7 +65,7 @@ AVCodec支持的视频编码格式请参考视频编码。
 
 - 实线表示必选。
 
-![Invoking relationship of video encode stream](figures/video-encode.png)
+Invoking relationship of video encode stream
 
 ### 在 CMake 脚本中链接动态库
 
@@ -889,7 +889,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    **图3** NV12图像排布示意图
 
-   ![copy by line](figures/copy-by-line-encoder.png)
+   copy by line
 
    添加头文件。
 
@@ -964,11 +964,11 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    **图4** YUVI420图像排布示意图
 
-   ![copy by line](figures/copy-yuv-encoder.png)
+   copy by line
 
    **图5** RGBA1010102图像排布示意图
 
-   ![copy by line](figures/copy-rgb-encoder.png)
+   copy by line
 
 
 9. 通知编码器结束。

@@ -46,7 +46,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 >
 > - ServiceExtensionAbility该模块仅对系统应用开放，业务使用时需要开发者自行替换当前工程中的SDK为full-SDK。使用full-SDK时需要开发者手动从镜像站点获取，并在DevEco Studio中替换，具体操作可参考替换指南。
 
-  <!-- @[service_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Stub/entry/src/main/ets/ServiceExtAbility/ServiceExtAbility.ets) -->
+  <!-- @service_impl -->
   
   ``` TypeScript
   import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -121,7 +121,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   导入相关依赖，并定义所需的变量；
 
-  <!-- @[front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @front-end_dependencies -->
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -145,7 +145,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   连接服务，获取代理对象，发送信息给服务端，通信结束后断开连接。
 
-  <!-- @[function_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/IPC_sendMessage/IPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @function_implement -->
   
   ``` TypeScript
   // 连接服务
@@ -255,7 +255,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
   导入相关依赖，并定义所需的变量；
 
-  <!-- @[rpc_front-end_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @rpc_front-end_dependencies -->
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -283,7 +283,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 
 获取允许多设备协同的权限，在组网的情况下获取到对端的设备ID（组网场景下对应设备的唯一网络标识符，可以使用distributedDeviceManager获取目标设备的NetworkId）后连接服务，获取代理对象并发送信息给服务端，当代理对象与服务端的通信结束后，进行断连。
 
-  <!-- @[rpc_function_implement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IPC/RPC_sendMessage/RPC_Client/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @rpc_function_implement -->
   
   ``` TypeScript
   // 获取权限
@@ -464,6 +464,6 @@ featureAbility.disconnectAbility(connectId, disconnectCallback);
 
 针对IPC与RPC通信开发，端到端的完整示例，请参考：
 
-- [IPC通信完整示例-使用Parcelable/ArrayBuffer通信](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/IPC/ObjectTransfer)
-- [IPC通信完整示例-传递字符串及死亡监听使用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/IPC_sendMessage)
-- [RPC通信完整示例-传递字符串及死亡监听使用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/IPC/RPC_sendMessage)
+- IPC通信完整示例-使用Parcelable/ArrayBuffer通信
+- IPC通信完整示例-传递字符串及死亡监听使用
+- RPC通信完整示例-传递字符串及死亡监听使用

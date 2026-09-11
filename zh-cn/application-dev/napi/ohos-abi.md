@@ -14,15 +14,15 @@ OpenHarmony系统支持丰富的设备形态，支持多种架构指令集，支
 
 ## 过程调用规范
 
-过程调用规范（Procedure Call Standard）定义了函数调用的参数传递方式，寄存器使用规则，栈操作规则等；不同C++编译器，不同操作系统，不同架构都有可能采用不同的调用规则。详细内容请参考《[不同C++编译器和操作系统的调用规范](https://www.agner.org/optimize/calling_conventions.pdf)》。架构相关的函数调用规范，请参考：
+过程调用规范（Procedure Call Standard）定义了函数调用的参数传递方式，寄存器使用规则，栈操作规则等；不同C++编译器，不同操作系统，不同架构都有可能采用不同的调用规则。详细内容请参考《不同C++编译器和操作系统的调用规范》。架构相关的函数调用规范，请参考：
 
-- ARM相关的调用规范请参考《[ARM32过程调用标准](https://github.com/ARM-software/abi-aa/tree/main/aapcs32)》。
+- ARM相关的调用规范请参考《ARM32过程调用标准》。
 
-- ARM64相关的调用规范请参考《[ARM64过程调用标准](https://github.com/ARM-software/abi-aa/tree/main/aapcs64)》。
+- ARM64相关的调用规范请参考《ARM64过程调用标准》。
 
 ## C++ ABI
 
-OpenHarmony系统采用llvm项目中的libc++作为C++运行时库，在系统侧使用libc++.so库来承载，应用侧使用libc++_shared.so来承载，两侧共用一套代码，采用不同的C++命名空间。C++的符号重整规则请参考《[Itanium C++ ABI](https://itanium-cxx-abi.github.io/cxx-abi/)》。
+OpenHarmony系统采用llvm项目中的libc++作为C++运行时库，在系统侧使用libc++.so库来承载，应用侧使用libc++_shared.so来承载，两侧共用一套代码，采用不同的C++命名空间。C++的符号重整规则请参考《Itanium C++ ABI》。
 
 ## 浮点格式
 
@@ -30,11 +30,11 @@ OpenHarmony系统采用llvm项目中的libc++作为C++运行时库，在系统�
 
 ## 可执行文件格式
 
-OpenHarmony系统采用ELF文件格式作为全系统的二进制文件格式，具体格式详情，请参考《[System V Application Binary Interface](https://refspecs.linuxfoundation.org/elf/gabi4+/contents.html)》。CPU架构相关的格式定义，参考下面对应架构说明。
+OpenHarmony系统采用ELF文件格式作为全系统的二进制文件格式，具体格式详情，请参考《System V Application Binary Interface》。CPU架构相关的格式定义，参考下面对应架构说明。
 
-- arm相关的elf文件格式定义请参考《[arm架构elf文件格式](https://github.com/ARM-software/abi-aa/tree/main/aaelf32)》。
+- arm相关的elf文件格式定义请参考《arm架构elf文件格式》。
 
-- arm64相关elf文件格式定义请参考《[arm64架构elf文件格式](https://github.com/ARM-software/abi-aa/tree/main/aaelf64)》。
+- arm64相关elf文件格式定义请参考《arm64架构elf文件格式》。
 
 ## 支持架构ABI
 
@@ -43,7 +43,7 @@ OpenHarmony系统采用ELF文件格式作为全系统的二进制文件格式，
 
 ### armeabi-v7a
 
-此ABI是以[《ARM架构应用二进制接口》](https://developer.arm.com/Architectures/ABI)为基础制定，适用于32位armv7a架构的cpu，支持的核心包括Cortex-A5，Cortex-A7，Cortex-A8，Cortex-A9，Cortex-A12，Cortex-A15，以及Cortex-A17，支持arm32，thumb-2，VFPv3-D16指令。
+此ABI是以《ARM架构应用二进制接口》为基础制定，适用于32位armv7a架构的cpu，支持的核心包括Cortex-A5，Cortex-A7，Cortex-A8，Cortex-A9，Cortex-A12，Cortex-A15，以及Cortex-A17，支持arm32，thumb-2，VFPv3-D16指令。
 
 此ABI使用-mfloat-cpu=softfp作为强制浮点数调用规则，本身不影响实际指令是否使用硬件浮点指令。Neon指令等其他扩展在此ABI中是可选的，为了更好的兼容性，建议应用开发者采用-mfpu=softvfp来编译native库 。
 

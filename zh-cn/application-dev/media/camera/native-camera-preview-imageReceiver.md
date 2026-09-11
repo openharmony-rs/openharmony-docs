@@ -14,7 +14,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/camera_manager.h) -->    
+   <!-- @import_header -->    
    
    ``` C
    #include <cstdint>
@@ -58,7 +58,7 @@
 
    通过image的OH_ImageReceiverNative_Create方法创建OH_ImageReceiverNative实例，再通过实例的OH_ImageReceiverNative_GetReceivingSurfaceId方法获取SurfaceId。
 
-   <!-- @[init_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @init_image_receiver -->
    
    ``` C++
    void InitImageReceiver(uint64_t &receiverSurfaceID)
@@ -114,7 +114,7 @@
 
 6. 注册ImageReceiver图片接收器的回调，监听获取每帧上报图像内容。
 
-   <!-- @[image_receiver_callback_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @image_receiver_callback_show -->    
    
    ``` C++
    void copyBuffer(OH_NativeBuffer *srcBuffer, size_t srcSize, OHNativeWindowBuffer *dstBuffer)

@@ -33,7 +33,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用await方式一次性传入数据，获取消息认证码计算结果为例：
 
-  <!-- @[message_authentication_code_calculation_cmac_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Async.ets) -->
+  <!-- @message_authentication_code_calculation_cmac_single_time_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -69,7 +69,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用同步方式一次性传入数据，获取消息认证码计算结果为例：
 
-  <!-- @[message_authentication_code_calculation_cmac_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Sync.ets) -->
+  <!-- @message_authentication_code_calculation_cmac_single_time_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -120,7 +120,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用await方式分段传入数据，获取消息认证码计算结果为例。
 
-  <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
+  <!-- @message_authentication_code_calculation_cmac_segmentation_async -->
   
   ``` TypeScript
   
@@ -163,7 +163,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用同步方式分段传入数据，获取消息认证码计算结果为例。
 
-  <!-- @[message_authentication_code_calculation_cmac_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets) -->
+  <!-- @message_authentication_code_calculation_cmac_segmentation_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

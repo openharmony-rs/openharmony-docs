@@ -47,7 +47,7 @@
 
 - 异步方法示例：
 
-  <!-- @[encrypt_decrypt_chacha20_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets) -->
+  <!-- @encrypt_decrypt_chacha20_async -->
   
   ``` TypeScript
   
@@ -118,7 +118,7 @@
 
 - 同步方法示例：
 
-  <!-- @[encrypt_decrypt_chacha20_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionSync.ets) -->
+  <!-- @encrypt_decrypt_chacha20_sync -->
   
   ``` TypeScript
   
@@ -229,7 +229,7 @@ ChaCha20（Poly1305模式）解密失败返回错误码17630001可参考使用Ch
 
 - 异步方法示例：
 
-  <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
+  <!-- @encrypt_decrypt_chacha20_poly1305_async -->
   
   ``` TypeScript
   
@@ -315,7 +315,7 @@ ChaCha20（Poly1305模式）解密失败返回错误码17630001可参考使用Ch
 
 - 同步方法示例：
 
-  <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
+  <!-- @encrypt_decrypt_chacha20_poly1305_sync -->
   
   ``` TypeScript
   

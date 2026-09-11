@@ -16,7 +16,7 @@
 
   一般用于在已有全屏任务运行的基础上，临时处理另一个任务，或短时间多任务并行使用。如浏览网页的同时回复消息。
 
-  相关参考：[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)、[智慧多窗最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-window-practice)。
+  相关参考：智慧多窗简介、智慧多窗最佳实践。
 
 - 全局悬浮窗是指一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
 
@@ -44,7 +44,7 @@
 
 部分Phone设备上，可通过下拉控制中心，点击“自由多窗”按钮开启自由多窗。
 
-![freeWindows](figures/freeWindows.png)
+freeWindows
 
 ### Freeform Window；自由窗口
 
@@ -54,11 +54,11 @@
 
 启动新的自由窗口时，默认以一定间距在上一个窗口的右下方层叠显示。
 
-每个自由窗口默认会在窗口上方显示窗口标题栏，标题栏左侧显示应用图标，右侧显示三键控制按钮（窗口最大化/还原、窗口最小化和关闭窗口），且窗口标题栏支持额外的[沉浸式配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive#section359241062916)。
+每个自由窗口默认会在窗口上方显示窗口标题栏，标题栏左侧显示应用图标，右侧显示三键控制按钮（窗口最大化/还原、窗口最小化和关闭窗口），且窗口标题栏支持额外的沉浸式配置。
 
 自由窗口可以通过拖动窗口边缘调节窗口大小，可以通过拖动标题栏移动窗口位置。
 
-![freeformWindow](figures/freeformWindow.png)
+freeformWindow
 
 当前设备支持情况：
 
@@ -74,7 +74,7 @@
 
 在该坐标系中，所有物理屏幕被映射到同一连续的虚拟坐标空间内，各类窗口操作、坐标转换及窗口矩形变化事件均基于该坐标空间进行计算和回调。
 
-![global-coordinate-system](figures/global-coordinate-system.png)
+global-coordinate-system
 
 使用场景：
 
@@ -121,7 +121,7 @@
 
   桌面模式适用于折叠屏设备半折叠状态下，窗口铺满整个屏幕并在上下半屏之间适配不同布局的场景，例如视频播放、阅读等。
 
-  ![window-desktop-mode](figures/window-desktop-mode.jpg)
+  window-desktop-mode
 
 ### Window Privacy Mode；隐私模式
 

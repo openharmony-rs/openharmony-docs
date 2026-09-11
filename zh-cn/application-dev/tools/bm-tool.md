@@ -73,7 +73,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -w | 可选参数，安装HAP时指定bm工具等待时间，最小的等待时长为180s，最大的等待时长为600s,&nbsp;默认缺省为180s。 |
 | -u | 可选参数，指定用户，默认在当前活跃用户下安装应用。仅支持在当前活跃用户或0用户下安装。<br>**说明：**<br> 如果当前活跃用户是100，使用命令`bm install -p /data/local/tmp/ohos.app.hap -u 102`安装时，只会在当前活跃用户100下安装应用。 |
 | -d | 可选参数，允许应用降级安装，即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。从API version 23开始支持。 |
-| -g | 可选参数，安装签名证书类型为debug的应用时自动授予user_grant和manual_settings权限。<br>仅对[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下的签名证书类型为debug的应用生效。可以通过<!--RP5-->Profile签名文件<!--RP5End-->中的type字段查看签名证书类型。<br>签名证书类型为debug的应用更新为签名证书类型为release的应用时取消已授予的user_grant和manual_settings权限。从API version 24开始支持。 |
+| -g | 可选参数，安装签名证书类型为debug的应用时自动授予user_grant和manual_settings权限。<br>仅对开发者模式下的签名证书类型为debug的应用生效。可以通过<!--RP5-->Profile签名文件<!--RP5End-->中的type字段查看签名证书类型。<br>签名证书类型为debug的应用更新为签名证书类型为release的应用时取消已授予的user_grant和manual_settings权限。从API version 24开始支持。 |
 
 
 示例：
@@ -554,7 +554,7 @@ error: user not exist.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```shell
     hdc file recv /data/log/hilog/
@@ -592,9 +592,9 @@ HAP包签名文件存在异常。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568320 签名文件不存在
 **错误信息**
@@ -611,18 +611,18 @@ HAP/HSP包没有签名。
 
 **处理步骤**
 
-请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考使用场景说明。
 
 > **说明：**
 >
-> 在工程级build-profile.json5文件下的products标签中，signingConfig字段为非必填字段，若该字段缺失，将导致签名失效。详情请参考[products](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619)标签下的字段说明。
+> 在工程级build-profile.json5文件下的products标签中，signingConfig字段为非必填字段，若该字段缺失，将导致签名失效。详情请参考products标签下的字段说明。
 >
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
-方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置[packOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
+方法三. 如果安装APP时报这个错误码，需要在工程级build-profile.json5文件里配置packOptions的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
 
 ### 9568321 签名文件解析失败
 **错误信息**
@@ -639,9 +639,9 @@ HAP包签名文件存在异常。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568323 签名摘要验证未通过
 **错误信息**
@@ -658,9 +658,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568324 签名完整性校验未通过
 **错误信息**
@@ -677,9 +677,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568326 签名公钥存在异常
 **错误信息**
@@ -696,9 +696,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568327 签名获取异常
 **错误信息**
@@ -715,9 +715,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568328 未找到配置文件区块
 **错误信息**
@@ -734,9 +734,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568330 初始化签名源失败
 **错误信息**
@@ -753,9 +753,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 ### 9568257 签名文件Pkcs7校验失败
 
@@ -777,9 +777,9 @@ error: fail to verify pkcs7 file.
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 
 ### 9568344 解析配置文件失败
@@ -787,7 +787,7 @@ error: fail to verify pkcs7 file.
 
 error: install parse profile prop check error.
 
-![示例图](figures/error-message02.png)
+示例图
 
 **错误描述**
 
@@ -812,7 +812,7 @@ error: install parse profile prop check error.
 
            新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
 
-           ![示例图](figures/cer-file-example.png)
+           示例图
 
         * 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
 
@@ -823,7 +823,7 @@ error: install parse profile prop check error.
 
            如下图（仅作为格式示意，内容以实际为准）：
 
-           ![示例图](figures/sha-256-fingerprint.png)
+           示例图
 
            去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
 
@@ -849,7 +849,7 @@ error: install parse profile prop check error.
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
 
-       ![示例图](figures/error-message05.png)
+       示例图
 
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
@@ -881,15 +881,15 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 
 * 方法一：先通过bm install -p命令安装依赖的动态共享包（HSP）模块，再在应用运行配置页勾选Keep Application Data，点击OK保存配置，再运行/调试。
 
-  ![示例图](figures/method1.png)
+  示例图
 
 * 方法二：在运行配置页，选择Deploy Multi Hap标签页，勾选Deploy Multi Hap Packages，选择依赖的模块，点击OK保存配置，再进行运行/调试。
 
-  ![示例图](figures/method2.png)
+  示例图
 
 * 方法三：单击Run > Edit Configurations，在General中，勾选Auto Dependencies。点击OK保存配置，再运行/调试。
 
-  ![示例图](figures/method3.png)
+  示例图
 
 场景二：依赖的HSP与HAP不在同一工程内：
 
@@ -901,7 +901,7 @@ error: Failed to install the HAP or HSP because the dependent module does not ex
 
 DevEco Studio自动安装运行应用时，查看`Run`中的日志，如果存在`remote_hsp`目录，说明依赖集成态HSP，`remote_hsp`目录下的HSP文件就是集成态HSP编译后的包。
 
-![示例图](figures/remote_hsp.png)
+示例图
 
 
 ### 9568259 安装解析配置文件缺少字段
@@ -909,7 +909,7 @@ DevEco Studio自动安装运行应用时，查看`Run`中的日志，如果存�
 
 error: install parse profile missing prop.
 
-![示例图](figures/error-message.png)
+示例图
 
 **错误描述**
 
@@ -939,7 +939,7 @@ error: install parse profile missing prop.
 
 error: install releaseType target not same.
 
-![示例图](figures/error-message03.png)
+示例图
 
 **错误描述**
 
@@ -1124,7 +1124,7 @@ error: install file path invalid.
 
 error: signature verification failed due to not trusted app source.
 
-![示例图](figures/error-message01.png)
+示例图
 
 **错误描述**
 
@@ -1141,7 +1141,7 @@ error: signature verification failed due to not trusted app source.
 
 <!--RP9-->
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--RP9End--><!--Del-->
+1. 使用自动签名。在连接设备后，重新为应用进行签名。<!--RP9End--><!--Del-->
 
 2. 如果使用的是手动签名，对于OpenHarmony应用，请参考OpenHarmony应用手动签名，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
@@ -1200,7 +1200,7 @@ error: install failed due to insufficient disk memory.
 
 **处理步骤**
 
-查看应用安装的设备存储空间并清理，保证满足安装所需空间，再重试安装应用。模拟器上存储空间清理之后仍然失败，请尝试创建新的模拟器设备，并设置更大的存储空间，详情请参考[创建新的模拟器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-create#section1764055173710)。
+查看应用安装的设备存储空间并清理，保证满足安装所需空间，再重试安装应用。模拟器上存储空间清理之后仍然失败，请尝试创建新的模拟器设备，并设置更大的存储空间，详情请参考创建新的模拟器。
 <!--RP4-->
 ```bash
 # 查看磁盘空间使用情况
@@ -1215,7 +1215,7 @@ hdc shell df -h /data
 
 error: install failed due to grant request permissions failed.<br>
 
-![示例图](figures/error-message07.png)
+示例图
 
 **错误描述**
 
@@ -1250,7 +1250,7 @@ error: install failed due to update hap token failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```shell
     hdc file recv /data/log/hilog/
@@ -1311,14 +1311,14 @@ error: install failed due to apptype not same.
 
 * 方案一：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成），再安装新的HAP包。
 * 方案二：保证多HAP/HSP使用同一个证书签名，保证签名的一致性。
-* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
+* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名配置调试签名，再重试安装。<!--DelEnd-->
 
 ### 9568297 由于设备sdk版本较低导致安装失败
 **错误信息**
 
 error: install failed due to older sdk version in the device.
 
-![示例图](figures/error-message04.png)
+示例图
 
 **错误描述**
 
@@ -1380,7 +1380,7 @@ error: moduleName is not unique.
 
 error: install sign info inconsistent.
 
-![示例图](figures/error-message06.png)
+示例图
 
 **错误描述**
 
@@ -1388,8 +1388,8 @@ error: install sign info inconsistent.
 
 **可能原因**
 
-1. 设备上已安装的应用与新安装的应用中签名不一致或者多个包（HAP和HSP）之间的签名存在差异。若两个应用的签名[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)或<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->中至少有一项相同，则认为它们的签名一致。如果在DevEco Studio的“Edit Configurations”中勾选了“Keep Application Data”（即不卸载应用，直接覆盖安装），并且重新进行了签名，将导致该报错。
-2. 如果某个应用被卸载但是保留了数据，那么后面安装相同包名的应用时，需要校验其签名信息的一致性。如果两者签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->都不一致，则会导致该报错。
+1. 设备上已安装的应用与新安装的应用中签名不一致或者多个包（HAP和HSP）之间的签名存在差异。若两个应用的签名密钥或<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->中至少有一项相同，则认为它们的签名一致。如果在DevEco Studio的“Edit Configurations”中勾选了“Keep Application Data”（即不卸载应用，直接覆盖安装），并且重新进行了签名，将导致该报错。
+2. 如果某个应用被卸载但是保留了数据，那么后面安装相同包名的应用时，需要校验其签名信息的一致性。如果两者签名信息中的密钥和<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->都不一致，则会导致该报错。
 
 
 **处理步骤**
@@ -1403,7 +1403,7 @@ error: install sign info inconsistent.
 
 error: verify signature failed.
 
-![示例图](figures/error-message08.png)
+示例图
 
 **错误描述**
 
@@ -1420,7 +1420,7 @@ error: verify signature failed.
 
 * 场景一：HSP只能给同包名的应用使用，只有集成态HSP可以给不同包名的应用使用。需要用户与三方开发者确认，三方开发者应提供集成态HSP、或同包名的HSP给用户使用。
 
-* 场景二：检查签名流程和签名证书，参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+* 场景二：检查签名流程和签名证书，参考配置调试签名。
 
 
 ### 9568266 安装权限拒绝
@@ -1428,7 +1428,7 @@ error: verify signature failed.
 
 error: install permission denied.
 
-![示例图](figures/error-message09.png)
+示例图
 
 **错误描述**
 
@@ -1520,7 +1520,7 @@ error: signature file path is invalid.
 
 **处理步骤**
 
-使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+使用自动签名或者手动签名重新签名后安装调试。
 
 ### 9568325 由于文件过大，签名验证失败
 **错误信息**
@@ -1537,7 +1537,7 @@ error: signature verification failed due to oversize file.
 
 **处理步骤**
 
-使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者重新申请签名证书，在[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+使用自动签名或者重新申请签名证书，在手动签名重新签名后安装调试。
 
 ### 9568336 应用调试类型与已安装应用不一致
 **错误信息**
@@ -1693,7 +1693,7 @@ error: Failed to install the HAP because the installation is forbidden by enterp
 
 **处理步骤**
 
-由于企业管控，暂无解决方案。请<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+由于企业管控，暂无解决方案。请<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
 
 ### 9568304 应用不支持当前设备类型
@@ -1862,7 +1862,7 @@ error: bundle manager service is died.
     ls -ls
     ```
 
-3. 导出crash文件和日志文件<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+3. 导出crash文件和日志文件<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/faultlog/faultlogger/
@@ -1912,7 +1912,7 @@ error: copy file failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/hilog/
@@ -1960,7 +1960,7 @@ error: delivery sign profile failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/hilog/
@@ -1986,7 +1986,7 @@ error: remove sign profile failed.
 
 1. 重启手机后再次尝试卸载应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->）。
 
-2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/hilog/
@@ -2043,7 +2043,7 @@ bm工具进程异常或者权限丢失，导致卸载应用时无权限。
 
 1. 设备重启之后再尝试卸载应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2075,7 +2075,7 @@ error: uninstall bundle mgr service error.
     ls -ls
     ```
 
-3. 导出crash文件和日志文件<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+3. 导出crash文件和日志文件<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/faultlog/faultlogger/
@@ -2133,7 +2133,7 @@ error: unknown.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2377,7 +2377,7 @@ error: installd param error.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2402,7 +2402,7 @@ error: installd create dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2427,7 +2427,7 @@ error: installd remove dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2452,7 +2452,7 @@ error: installd extract files failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2477,7 +2477,7 @@ error: installd rename dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2501,7 +2501,7 @@ error: installd clean dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2526,11 +2526,11 @@ error: installd set selinux label failed.
 
 1. 确认签名文件p7b中apl字段是否有误。
 
-    ![示例图](figures/error-message10.png)
+    示例图
 
 2. 若apl字段有误，修改UnsgnedReleasedProfileTemplate.json文件中apl字段，并重新签名。
 
-    ![示例图](figures/error-message11.png)
+    示例图
 
 
 ### 9568360 安装overlay应用出现错误
@@ -2655,7 +2655,7 @@ HAP包中需要安装的native软件包损坏。
 
 **处理步骤**
 
-1. 检查HAP包中的native软件包，替换正确的native软件包并重新签名打包。参考[Native软件包开发指南](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
+1. 检查HAP包中的native软件包，替换正确的native软件包并重新签名打包。参考Native软件包开发指南。
 
 ### 9568408 卸载应用失败，native软件包卸载失败
 **错误信息**
@@ -2672,7 +2672,7 @@ error: Failed to uninstall the HAP because uninstalling the native package faile
 
 **处理步骤**
 
-1. 检查是否存在进程占用相应的native软件包，若存在则结束进程后重新卸载。参考[Native软件包开发指南](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
+1. 检查是否存在进程占用相应的native软件包，若存在则结束进程后重新卸载。参考Native软件包开发指南。
 
 ### 9568409 安装失败，native软件包提取失败
 **错误信息**
@@ -2689,7 +2689,7 @@ HAP包中native软件包目录下不存在module.json5中配置的native软件�
 
 **处理步骤**
 
-1. 检查HAP包中的native软件包目录，重新打入需要安装的native软件包并完成签名或删除module.json5中缺失的native软件包配置信息。参考[Native软件包开发指南](https://gitcode.com/openharmony/startup_appspawn/blob/master/service/hnp/README_zh.md)。
+1. 检查HAP包中的native软件包目录，重新打入需要安装的native软件包并完成签名或删除module.json5中缺失的native软件包配置信息。参考Native软件包开发指南。
 
 ### 9568410 安装失败，设备受管控
 **错误信息**
@@ -2724,7 +2724,7 @@ error: The uninstall request is rejected by the application.
 
 **处理步骤**
 
-暂无处理方案，可以<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+暂无处理方案，可以<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
 ### 9568413 应用设备类型不支持当前设备
 
@@ -2778,7 +2778,7 @@ error: Encrypted bundle cannot be installed.
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+1. 使用自动签名或者手动签名重新签名后安装调试。
 
 ### 9568417 签名校验失败
 **错误信息**
@@ -2797,7 +2797,7 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 
 方法一：重新签名。
 
-通过重新签名，确保应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->至少有一项与预置应用保持一致。
+通过重新签名，确保应用签名信息中的密钥和<!--RP7-->应用Profile签名文件中的app-identifier<!--RP7End-->至少有一项与预置应用保持一致。
 
 <!--RP11--><!--RP11End-->
 
@@ -2885,7 +2885,7 @@ error: Failed to install the HAP because the device is unauthorized, make sure t
 **处理步骤**
 
 <!--RP6-->
-重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+重新自动签名。
 <!--RP6End-->
 
 
@@ -2998,7 +2998,7 @@ error: Install incompatible signature info.
 
 **处理步骤**
 
-重新签名，使多个HAP包签名信息一致。参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+重新签名，使多个HAP包签名信息一致。参考配置调试签名。
 
 ### 9568334 模块名称重复
 **错误信息**
@@ -3048,7 +3048,7 @@ HAP包没有配置文件，导致安装失败。
 
 **可能原因**
 
-module.json、[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build#section43931054115513)等配置文件缺失。
+module.json、pack.info等配置文件缺失。
 
 **处理步骤**
 
@@ -3065,7 +3065,7 @@ error: Install parse bad profile.
 
 **可能原因**
 
-module.json、[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build#section43931054115513)等配置文件格式异常。
+module.json、pack.info等配置文件格式异常。
 
 **处理步骤**
 使用DevEco Studio重新构建、打包、安装。
@@ -3083,7 +3083,7 @@ error: Install parse profile prop type error.
 
 **可能原因**
 
-module.json、[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build#section43931054115513)等配置文件存在数据类型错误的字段。
+module.json、pack.info等配置文件存在数据类型错误的字段。
 
 **处理步骤**
 
@@ -3101,7 +3101,7 @@ error: too large size of string or array type element in the profile.
 
 **可能原因**
 
-module.json、[pack.info](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build#section43931054115513)等配置文件存在字符串长度或者数组大小过大的字段。
+module.json、pack.info等配置文件存在字符串长度或者数组大小过大的字段。
 
 **处理步骤**
 
@@ -3148,7 +3148,7 @@ error: install parse native so failed.
 
 **处理步骤**
 
-1. 将设备或模拟器与DevEco Studio进行连接，具体指导及要求可查看[使用本地真机运行应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)。
+1. 将设备或模拟器与DevEco Studio进行连接，具体指导及要求可查看使用本地真机运行应用。
 
 2. 在命令行执行如下hdc命令，查询设备支持的Abi列表。
 
@@ -3156,7 +3156,7 @@ error: install parse native so failed.
     hdc shell
     param get const.product.cpu.abilist
     ```
-3. 根据查询返回结果，检查[模块级build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)文件中的“abiFilters”参数中的配置，规则如下：
+3. 根据查询返回结果，检查模块级build-profile.json5文件中的“abiFilters”参数中的配置，规则如下：
 
     <!--Del-->
     * 若返回结果为default，请执行如下命令，查询是否存在lib64文件夹。
@@ -3164,7 +3164,7 @@ error: install parse native so failed.
       cd /system/
       ls
       ```
-      ![示例图](figures/check-lib64.png)
+      示例图
       * 存在lib64文件夹：则“abiFilters”参数中需要包含arm64-v8a类型。
       * 不存在lib64文件夹：则“abiFilters”参数中需要至少包含armeabi/armeabi-v7a中的一个类型。<!--DelEnd-->
 
@@ -3207,7 +3207,7 @@ error: Installd get proxy error.
 **处理步骤**
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提新增Issue获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -3342,7 +3342,7 @@ error: install failed due to U1Enabled can not change.
 
 **处理步骤**
 
-方案一：重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
+方案一：重新签名，签名过程中，请参考自动签名的支持ACL权限、或者手动签名的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
 方案二：先卸载设备上已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再尝试安装待安装应用。
 
 ### 9568442 U1Enable配置不一致
@@ -3360,7 +3360,7 @@ error: Install failed due to the U1Enabled is not same in all haps.
 
 **处理步骤**
 
-重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
+重新签名，签名过程中，请参考自动签名的支持ACL权限、或者手动签名的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
 
 ### 9568445 一次仅支持安装一个APP包
 **错误信息**
@@ -3432,9 +3432,9 @@ APP包签名不正确或没有签名。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用自动签名。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考手动签名。
 
 
 ### 9568449 二进制文件校验失败
@@ -3467,7 +3467,7 @@ error: Failed to install because the bundle must be debug type.
 
 **可能原因**
 
-[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)下使用-g参数授权签名证书类型为非debug的应用。可以通过<!--RP5-->Profile签名文件<!--RP5End-->中的type字段来查看签名证书类型。
+开发者模式下使用-g参数授权签名证书类型为非debug的应用。可以通过<!--RP5-->Profile签名文件<!--RP5End-->中的type字段来查看签名证书类型。
 
 **处理步骤**
 

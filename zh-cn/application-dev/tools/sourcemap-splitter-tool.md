@@ -8,9 +8,9 @@
 
 ## 概述
 
-DevEco Studio编译构建后，会将各模块内所有源文件的SourceMap信息打包进一个聚合SourceMap文件`sourceMaps.map`中。由于该文件未采用标准的[SourceMap v3](https://tc39.es/ecma426/#sec-source-map-format)格式，Chrome DevTools、`source-map`库等标准工具无法直接识别，给开发者还原崩溃堆栈、定位源码带来了困难。
+DevEco Studio编译构建后，会将各模块内所有源文件的SourceMap信息打包进一个聚合SourceMap文件`sourceMaps.map`中。由于该文件未采用标准的SourceMap v3格式，Chrome DevTools、`source-map`库等标准工具无法直接识别，给开发者还原崩溃堆栈、定位源码带来了困难。
 
-SourceMap Splitter是一款专为此场景设计的命令行工具，可将聚合的`sourceMaps.map`快速拆分为独立的、符合SourceMap v3规范的`.map`文件，并自动按源码目录结构导出，便于使用标准工具链定位问题。该工具零外部运行时依赖，从[SourceMap拆分工具](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases)下载单文件`split-sourcemaps.js`后即可直接运行。
+SourceMap Splitter是一款专为此场景设计的命令行工具，可将聚合的`sourceMaps.map`快速拆分为独立的、符合SourceMap v3规范的`.map`文件，并自动按源码目录结构导出，便于使用标准工具链定位问题。该工具零外部运行时依赖，从SourceMap拆分工具下载单文件`split-sourcemaps.js`后即可直接运行。
 
 ## 环境要求
 

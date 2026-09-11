@@ -32,7 +32,7 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 
 - 异步方法示例：
 
-<!-- @[create-cms-sign-object-async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsSignObjectAsync.ets) -->
+<!-- @create-cms-sign-object-async -->
 
 ``` TypeScript
 
@@ -134,7 +134,7 @@ async function testPkcs7SignByPromise() {
 
 - 同步方法示例：
 
-<!-- @[create-cms-sign-object-sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsSignObjectSync.ets) -->
+<!-- @create-cms-sign-object-sync -->
 
 ``` TypeScript
 

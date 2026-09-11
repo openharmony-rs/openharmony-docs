@@ -25,7 +25,7 @@
 
 以下示例展示了自定义组件的基本用法。
 
-<!-- @[HelloComponent_Hello](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->  
+<!-- @HelloComponent_Hello -->  
 
 ``` TypeScript
 @Component
@@ -54,7 +54,7 @@ struct HelloComponent {
 
 可以在其他自定义组件的`build()`函数中多次创建`HelloComponent`，以实现自定义组件的重用。
 
-<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->   
+<!-- @ArkUI_message -->   
 
 ``` TypeScript
 @Entry
@@ -75,7 +75,7 @@ struct ParentComponent {
 }
 ```
 
-![arkts-create-custom-components-0](../figures/arkts-create-custom-components-0.gif)
+arkts-create-custom-components-0
 
 要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
 
@@ -112,7 +112,7 @@ struct ParentComponent {
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->  
+  <!-- @Entry_UI_page -->  
   
   ``` TypeScript
   @Entry
@@ -137,7 +137,7 @@ struct ParentComponent {
   >
   > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的优先级高于storage参数，此时无论loadContent中是否传入LocalStorage实例，都不会使用传入的storage参数。
 
-  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->  
+  <!-- @routeName_myPage -->  
   
   ``` TypeScript
   @Entry({ routeName: 'myPage' })
@@ -159,7 +159,7 @@ struct ParentComponent {
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->   
+  <!-- @Component_data_structure -->   
   
   ``` TypeScript
   @Component
@@ -188,7 +188,7 @@ struct ParentComponent {
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
-    <!-- @[ComponentV2_page_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets) -->  
+    <!-- @ComponentV2_page_componentV2 -->  
     
     ``` TypeScript
     @Entry
@@ -216,7 +216,7 @@ struct ParentComponent {
     }
     ```
 
-    ![arkts-create-custom-components-1](../figures/arkts-create-custom-components-1.gif)
+    arkts-create-custom-components-1
 
 除非特别说明，\@ComponentV2装饰的自定义组件将与\@Component装饰的自定义组件保持相同的行为。
 
@@ -224,7 +224,7 @@ struct ParentComponent {
 
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
-  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->   
+  <!-- @Declarative_UI_description -->   
   
   ``` TypeScript
   @Component
@@ -239,7 +239,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 \@Reusable装饰V1自定义组件，使得该自定义组件具有被复用的能力。详细请参考：\@Reusable装饰器：组件复用。
 
-  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) --> 
+  <!-- @Reusable_MyComponent --> 
   
   ``` TypeScript
   @Reusable
@@ -307,7 +307,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 下面以普通变量为例，展示如何在build方法中初始化自定义组件的参数。其余装饰器的使用示例，可参考各文档。
 
-<!-- @[Parameter_specification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParameterSpecification.ets) -->  
+<!-- @Parameter_specification -->  
 
 ``` TypeScript
 @Component
@@ -341,11 +341,11 @@ struct ParentComponent {
 }
 ```
 
-![arkts-create-custom-components-2](../figures/arkts-create-custom-components-2.png)
+arkts-create-custom-components-2
 
 以下示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
-<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  --> 
+<!-- @Function_passing  --> 
 
 ``` TypeScript
 @Entry
@@ -388,7 +388,7 @@ struct Son {
 }
 ```
 
-![arkts-create-custom-components-3](../figures/arkts-create-custom-components-3.gif)
+arkts-create-custom-components-3
 
 ## build()函数实现规则
 
@@ -396,7 +396,7 @@ struct Son {
 
 - \@Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为容器组件，其中ForEach禁止作为根节点。\@Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。
 
-  <!-- @[build_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentBuild.ets) --> 
+  <!-- @build_function --> 
   
   ``` TypeScript
   @Entry
@@ -465,7 +465,7 @@ struct Son {
     }
   }
   ```
-  <!-- @[Builder_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuilderMethod.ets) -->  
+  <!-- @Builder_decoration -->  
   
   ``` TypeScript
   @Component
@@ -521,7 +521,7 @@ struct Son {
     .width('100%')
   }
   ```
-  <!-- @[switch_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/If.ets) -->  
+  <!-- @switch_syntax -->  
   
   ``` TypeScript
   build() {
@@ -549,7 +549,7 @@ struct Son {
     }
   }
   ```
-  <!-- @[if_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ModuleComponent.ets) -->  
+  <!-- @if_component -->  
   
   ``` TypeScript
   build() {
@@ -594,7 +594,7 @@ struct Son {
   
   在ArkUI状态管理中，状态驱动UI更新。
 
-  ![zh-cn_image_0000001651365257](figures/State-UI-function.png)
+  zh-cn_image_0000001651365257
 
   所以，不能在自定义组件的`build()`或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。``Text(`${this.count++}`)``在全量更新或最小化更新会产生不同的影响：
 
@@ -632,7 +632,7 @@ struct Son {
 
 自定义组件通过“.”链式调用设置通用样式。
 
-<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) -->   
+<!-- @Custom_style -->   
 
 ``` TypeScript
 @Component
@@ -660,7 +660,7 @@ struct MyComponent {
 }
 ```
 
-![arkts-create-custom-components-4](../figures/arkts-create-custom-components-4.png)
+arkts-create-custom-components-4
 
 > **说明：**
 >
@@ -672,7 +672,7 @@ API version 24前，自定义组件不支持跨Ability迁移，自定义组件�
 
 API version 24开始，可在应用工程的module.json5配置文件中配置metadata标签来使能自定义组件支持跨Ability迁移。具体配置方式如下。
 
-<!-- @[EnableCustomComponentCrossAbility_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/module.json5) -->  
+<!-- @EnableCustomComponentCrossAbility_config -->  
 
 ``` JSON5
 "metadata": [
@@ -687,7 +687,7 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
 1. 不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
 2. 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。例如使用OH_ArkUI_GetNodeHandleFromNapiValue获取ArkUI_NodeHandle场景中，如果OH_ArkUI_GetNodeHandleFromNapiValue接收的参数为ComponentContent，获取到的ArkUI_NodeHandle为ComponentContent下子树的第一个FrameNode节点，中间跳过的自定义组件将不会在组件树上，不支持迁移。
 
-<!-- @[EnableCustomComponentCrossAbility_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+<!-- @EnableCustomComponentCrossAbility_EntryAbility -->  
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -723,7 +723,7 @@ export default class EntryAbility extends UIAbility {
 
 下面的示例包含了创建新的Ability流程，具体示例可参考startAbility。
 
-<!-- @[EnableCustomComponentCrossAbility_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @EnableCustomComponentCrossAbility_Index -->  
 
 ``` TypeScript
 import { MyNodeController } from './MyNodeController';
@@ -782,7 +782,7 @@ struct Index {
 }
 ```
 
-<!-- @[EnableCustomComponentCrossAbility_MyNodeController](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/MyNodeController.ets) -->  
+<!-- @EnableCustomComponentCrossAbility_MyNodeController -->  
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -853,7 +853,7 @@ struct ComponentUnderBuilderNode {
 }
 ```
 
-<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) -->   
+<!-- @EnableCustomComponentCrossAbility_ExtraAbility -->   
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -877,7 +877,7 @@ export default class ExtraAbility extends UIAbility {
 }
 ```
 
-<!-- @[EnableCustomComponentCrossAbility_ExtraIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/ExtraIndex.ets) -->  
+<!-- @EnableCustomComponentCrossAbility_ExtraIndex -->  
 
 ``` TypeScript
 import { MyNodeController } from './MyNodeController';
@@ -910,7 +910,7 @@ struct ExtraIndex {
 }
 ```
 
-![customcomponent-cross-ability](./figures/component-cross-ability.gif)
+customcomponent-cross-ability
 
 ## 限制条件
 
@@ -919,7 +919,7 @@ struct ExtraIndex {
 静态代码块用于初始化静态属性。
 - 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。从API version 22开始，添加对静态代码块的校验，编译期告警提示静态代码块不生效。
 
-  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->   
+  <!-- @Static_code_V1 -->   
   
   ``` TypeScript
   @Component
@@ -936,7 +936,7 @@ struct ExtraIndex {
 
 - 在\@ComponentV2装饰的自定义组件中支持使用。
 
-  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) -->   
+  <!-- @Static_code_V2 -->   
   
   ``` TypeScript
   @ComponentV2

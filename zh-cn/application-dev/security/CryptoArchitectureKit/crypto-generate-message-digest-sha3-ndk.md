@@ -36,7 +36,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 以单次传入数据获取摘要计算结果为例：
 
-<!-- @[message_digest_sha3_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha3/singleTime.cpp) -->
+<!-- @message_digest_sha3_single_time -->
 
 ``` C++
 
@@ -88,7 +88,7 @@ OH_Crypto_ErrCode doTestSha3Md()
 
 以下使用分段传入数据，获取摘要计算结果为例：
 
-<!-- @[message_digest_sha3_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha3/segmentation.cpp) -->
+<!-- @message_digest_sha3_segmentation -->
 
 ``` C++
 

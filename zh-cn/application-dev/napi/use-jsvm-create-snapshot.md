@@ -32,7 +32,7 @@ cpp部分代码：
 
 **注意事项**：需要在OH_JSVM_Init的时候，将JSVM对外部的依赖注册到initOptions.externalReferences中。
 
-<!-- @[oh_jsvm_create_snapshot_and_create_env_from_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/createsnapshot/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_snapshot_and_create_env_from_snapshot -->
 
 ``` C++
 #include "napi/native_api.h"

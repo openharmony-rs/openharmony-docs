@@ -55,7 +55,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
-    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @import_module -->
     
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
@@ -65,7 +65,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 2. 创建一个统一数据对象并插入到UDMF的公共数据通路中。
    1. 导入对应数据对象模块。
 
-      <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+      <!-- @import_unifiedData_object_module -->
 
       ``` TypeScript
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -74,7 +74,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
    2. 创建并插入数据。
 
-      <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+      <!-- @unified_data_channels_insert_data -->
       
       ``` TypeScript
       // 准备PlainText文本数据内容
@@ -130,7 +130,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 3. 更新上一步插入的统一数据对象。
 
-    <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @unified_data_channels_update_data -->
     
     ``` TypeScript
     let plainTextUpdate: uniformDataStruct.PlainText = {
@@ -171,7 +171,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 4. 删除存储在UDMF公共数据通路中的统一数据对象。
 
-    <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @unified_data_channels_delete_data -->
     
     ``` TypeScript
     // 指定要删除数据的数据通路枚举类型
@@ -215,7 +215,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
-    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @import_module -->
     
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
@@ -224,7 +224,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 2. 查询存储在UDMF公共数据通路中的全量统一数据对象。
 
-    <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
+    <!-- @unified_data_channels_query_data -->
     
     ``` TypeScript
     // 指定要查询数据的数据通路枚举类型

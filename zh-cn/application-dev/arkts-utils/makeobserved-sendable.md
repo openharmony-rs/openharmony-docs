@@ -13,7 +13,7 @@
 - 从子线程获取数据，通过执行makeObserved变为可观测数据，然后整体替换到UI线程来观测数据变化。
 - 将数据从UI主线程传递回子线程时，只传递不可观测的数据。makeObserved的返回值不能直接传给子线程。
 
-<!-- @[define_sendable_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SendableData.ets) -->
+<!-- @define_sendable_class -->
 
 ``` TypeScript
 @Sendable
@@ -26,7 +26,7 @@ export class SendableData {
 }
 ```
 
-<!-- @[update_arkui_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/MakeobservedSendable.ets) -->
+<!-- @update_arkui_data -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';

@@ -26,7 +26,7 @@
 
 如果工程或模块是Static Library，则该工程或模块是一个HAR。
 
-构建[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)时的混淆行为如下：
+构建字节码HAR时的混淆行为如下：
 
 1.  以Debug模式构建HAR，会直接打包源码，不进行源码混淆。
 2.  以Release模式构建HAR，会编译、混淆并压缩代码。
@@ -41,11 +41,11 @@
 使用Release模式构建HAR的步骤如下：  
 **图 1**  DevEco Studio选择release编译模式  
 
-![](figures/DevEco-Studio选择release编译模式.png)
+
 
 **图 2**  DevEco Studio指定模块编译  
 
-![](figures/DevEco-Studio指定模块编译.png)
+
 
 ## 混淆配置能力
 
@@ -61,13 +61,13 @@
 
 **图 3**  编译配置文件  
 
-![](figures/编译配置文件.png "编译配置文件")
+
 
 新建工程时，每个模块下都有`obfuscation-rules.txt`文件，用于配置混淆。
 
 **图 4**  混淆配置文件  
 
-![](figures/混淆配置文件.png "混淆配置文件")
+
 
 在上图中，`obfuscation-rules.txt`文件中添加了`-enable-property-obfuscation`和`-enable-toplevel-obfuscation`开关，表示已启用属性混淆和顶层作用域名称混淆。
 
@@ -137,7 +137,7 @@ DevEco Studio混淆选项及功能描述如下：
   * 系统API白名单文件：`systemApiCache.json`，记录SDK接口与属性名称。
 
     **图 5**  DevEco Studio编译产物与缓存文件  
-    ![](figures/DevEco-Studio编译产物与缓存文件.png "DevEco-Studio编译产物与缓存文件")
+    
 
 ## 调试
 
@@ -149,7 +149,7 @@ DevEco Studio混淆选项及功能描述如下：
 
 ### 反混淆工具hstack
 
-hstack需要将Node.js配置到环境变量中，详细使用说明请参考[堆栈解析工具（hstack）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)。
+hstack需要将Node.js配置到环境变量中，详细使用说明请参考堆栈解析工具（hstack）。
 
 ### 常见报错案例
 
@@ -175,5 +175,5 @@ hstack需要将Node.js配置到环境变量中，详细使用说明请参考[堆
 
 ## 示例代码
 
--   [应用安全示例代码](https://gitcode.com/HarmonyOS_Samples/BestPracticeSnippets/tree/master/Privacy)
+-   应用安全示例代码
 

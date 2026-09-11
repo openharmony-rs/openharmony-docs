@@ -14,7 +14,7 @@
 
 2. 通过openFormManager方法在应用内添加拉起卡片管理页面入口。
 
-   <!-- @[FormManagerDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormManagerDemo/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @FormManagerDemo --> 
    
    ``` TypeScript
    // entry/src/main/ets/pages/Index.ets
@@ -76,4 +76,4 @@
    ```
 
 3. 用户可在卡片管理页面，点击“添加至桌面”或者“添加至负一屏”，此时在桌面或者负一屏即可看到新添加的卡片。结果示例如下。<br>
-![WidgetPrinciple](figures/应用内加卡.gif)
+WidgetPrinciple

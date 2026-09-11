@@ -16,7 +16,7 @@ ArkUI提供了贝塞尔曲线、阶梯曲线等传统曲线接口，开发者可
 
 
 
-<!-- @[traditional_curve](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/traditionalCurve/template1/CurveDemo.ets) -->
+<!-- @traditional_curve -->
 
 ``` TypeScript
 class TraditionalCurve {
@@ -115,5 +115,5 @@ struct CurveDemo {
 ```
 
 
-![zh-cn_image_0000001641260233](figures/Traditional-Curve.gif)
+zh-cn_image_0000001641260233
 

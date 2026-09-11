@@ -16,7 +16,7 @@
 
 包含顶层`import`或`export`的文件会被视为模块。模块中的变量、函数、类、接口默认只在当前文件可见，只有通过`export`导出的声明才能被其他模块导入。
 
-<!-- @[module_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/User.ets) -->
+<!-- @module_export -->
 
 ``` TypeScript
 // User.ets
@@ -49,7 +49,7 @@ export class UserService {
 
 使用`import { name } from 'path'`语法引入其他模块导出的绑定，在当前文件中使用。
 
-<!-- @[module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleImport.ets) -->
+<!-- @module_import -->
 
 ``` TypeScript
 import { User, UserService, createUser } from '../common/User';
@@ -67,7 +67,7 @@ console.info(`${firstUser ? firstUser.name : ''}`);
 
 TypeScript中，一个没有顶层导入或导出的文件通常按脚本处理。需要显式把文件标记为模块时，可以使用空导出：
 
-<!-- @[empty_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @empty_export -->
 
 ``` TypeScript
 export {}
@@ -82,7 +82,7 @@ ArkTS文件通常按工程模块组织，仍建议通过清晰的导入导出表
 
 可以在声明变量、常量、函数、类、接口或类型别名时直接导出。
 
-<!-- @[named_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @named_export -->
 
 ``` TypeScript
 export const MAX_RETRY_COUNT: number = 3;
@@ -117,7 +117,7 @@ export class RequestTracker {
 
 也可以先声明，再在文件末尾统一导出。统一导出适合让模块的公开API集中可见。
 
-<!-- @[export_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @export_list -->
 
 ``` TypeScript
 const DEFAULT_TIMEOUT: number = 5000;
@@ -141,7 +141,7 @@ export { ApiConfig, DEFAULT_TIMEOUT, createApiConfig };
 
 使用`export { name as newName }`语法在导出时重命名绑定，避免命名冲突或提升API可读性。
 
-<!-- @[export_rename](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @export_rename -->
 
 ``` TypeScript
 class InternalUserService {
@@ -157,7 +157,7 @@ export { InternalUserService as RenamedUserService };
 
 默认导出使用export default导出主要功能，导入时可使用任意名称。
 
-<!-- @[default_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Logger.ets) -->
+<!-- @default_export -->
 
 ``` TypeScript
 // Logger.ets
@@ -170,7 +170,7 @@ export default class Logger {
 
 在另一个文件中，可以通过默认导入使用该类。
 
-<!-- @[default_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/DefaultImport.ets) -->
+<!-- @default_import -->
 
 ``` TypeScript
 import Logger from '../common/Logger';
@@ -184,7 +184,7 @@ logger.info('module loaded');
 
 重新导出常用于模块入口文件，把同一领域下的多个文件聚合成一个稳定入口。
 
-<!-- @[submodule_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Types.ets) -->
+<!-- @submodule_types -->
 
 ``` TypeScript
 export interface User {
@@ -195,7 +195,7 @@ export interface User {
 
 在另一个源文件中定义服务类，对外提供业务方法。
 
-<!-- @[submodule_export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Service.ets) -->
+<!-- @submodule_export_class -->
 
 ``` TypeScript
 export class UserService {
@@ -213,7 +213,7 @@ export class UserService {
 
 随后通过桶文件将这些分散的导出聚合为统一入口。
 
-<!-- @[barrel_file_reexport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @barrel_file_reexport -->
 
 ``` TypeScript
 export { User } from '../common/Types';
@@ -222,7 +222,7 @@ export { UserService } from '../common/Service';
 
 使用方只需从桶文件导入，无需关心各成员的来源文件。
 
-<!-- @[barrel_file_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/BarrelFileImport.ets) -->
+<!-- @barrel_file_import -->
 
 ``` TypeScript
 import { User, UserService } from '../common/User';
@@ -240,7 +240,7 @@ console.info(`${user ? user.name : 'not found'}`);
 
 使用`import { name } from 'path'`按名称导入模块的命名导出，大括号内可列出多个绑定。
 
-<!-- @[named_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/NamedImport.ets) -->
+<!-- @named_import -->
 
 ``` TypeScript
 import { UserService } from '../common/User';
@@ -252,7 +252,7 @@ let service: UserService = new UserService();
 
 当导入名称与当前文件已有名称冲突，或需要提高可读性时，建议重命名。
 
-<!-- @[import_rename](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ImportRename.ets) -->
+<!-- @import_rename -->
 
 ``` TypeScript
 import { UserService as AccountUserService } from '../common/User';
@@ -264,7 +264,7 @@ let service: AccountUserService = new AccountUserService();
 
 使用`import Name from 'path'`导入模块的默认导出，名称无需与导出时一致。
 
-<!-- @[default_import_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/DefaultImport.ets) -->
+<!-- @default_import_usage -->
 
 ``` TypeScript
 import Logger from '../common/Logger';
@@ -276,7 +276,7 @@ let logger: Logger = new Logger();
 
 使用`import defaultName, { namedName } from 'path'`在同一条语句中同时导入默认导出和命名导出。
 
-<!-- @[mixed_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Report.ets) -->
+<!-- @mixed_export -->
 
 ``` TypeScript
 // Report.ets
@@ -293,7 +293,7 @@ export default class ReportBuilder {
 
 在消费端可以同时导入默认导出和命名导出。
 
-<!-- @[mixed_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/MixedImport.ets) -->
+<!-- @mixed_import -->
 
 ``` TypeScript
 import ReportBuilder, { ReportOptions } from '../common/Report';
@@ -310,7 +310,7 @@ console.info(`${title}`);
 
 命名空间导入会把某个模块的全部命名导出放到一个对象上。它不是TypeScript `namespace`声明，只是ES模块导入语法。
 
-<!-- @[export_multiple_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Math.ets) -->
+<!-- @export_multiple_functions -->
 
 ``` TypeScript
 // Math.ets
@@ -325,7 +325,7 @@ export function multiply(left: number, right: number): number {
 
 使用命名空间导入可以将模块的全部命名导出收拢到一个对象上。
 
-<!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/NamespaceImport.ets) -->
+<!-- @namespace_import -->
 
 ``` TypeScript
 import * as MathUtil from '../common/Math';
@@ -339,7 +339,7 @@ console.info(`${sum}, ${product}`);
 
 副作用导入会执行目标模块，但不导入任何绑定。使用时应谨慎，避免隐藏初始化逻辑。
 
-<!-- @[side_effect_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SideEffectImport.ets) -->
+<!-- @side_effect_import -->
 
 ``` TypeScript
 import '../common/Config';
@@ -353,7 +353,7 @@ TypeScript支持`import type`和`export type`语法标记类型专用导入导�
 
 TypeScript支持`import type`和`export type`，用于标记只在类型位置使用的导入导出。
 
-<!-- @[ts_type_import_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_type_import_export -->
 
 ``` TypeScript
 // TypeScript支持import type和export type，ArkTS按工具链支持情况使用
@@ -365,7 +365,7 @@ export type { User };
 
 ArkTS使用普通`import`引入类型声明，不使用`import type`专用语法，类型与值统一通过`import`导入。
 
-<!-- @[type_import_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeImportUsage.ets) -->
+<!-- @type_import_usage -->
 
 ``` TypeScript
 import { User } from '../common/User';
@@ -383,7 +383,7 @@ function printUser(user: User): void {
 
 动态导入用于按需加载模块。它返回`Promise`，因此通常与`async`/`await`搭配使用。
 
-<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @dynamic_import -->
 
 ``` TypeScript
 async function loadFeatureLabel(): Promise<string> {
@@ -394,7 +394,7 @@ async function loadFeatureLabel(): Promise<string> {
 
 被动态加载的模块照常导出成员。
 
-<!-- @[dynamic_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Feature.ets) -->
+<!-- @dynamic_import_module -->
 
 ``` TypeScript
 export function getFeatureLabel(): string {
@@ -406,7 +406,7 @@ export function getFeatureLabel(): string {
 
 动态导入的模块路径应保持可静态分析。涉及打包、分包、跨包加载或运行时权限时，需要遵循HarmonyOS工程和运行时约束。
 
-<!-- @[conditional_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @conditional_dynamic_import -->
 
 ``` TypeScript
 async function loadByName(name: string): Promise<string> {
@@ -432,7 +432,7 @@ async function loadByName(name: string): Promise<string> {
 
 相对路径适合表达当前模块附近的依赖关系。
 
-<!-- @[relative_path_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/RelativePathImport.ets) -->
+<!-- @relative_path_import -->
 
 ``` TypeScript
 import { User } from '../common/User';
@@ -446,7 +446,7 @@ TypeScript支持通过`baseUrl`、`paths`等配置实现路径别名。ArkTS工�
 
 **TypeScript对照**
 
-<!-- @[ts_path_alias_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_path_alias_import -->
 
 ``` TypeScript
 // TypeScript/工程配置对照写法
@@ -461,7 +461,7 @@ import { describe } from '@ohos/hypium';
 
 按领域组织模块将相关功能集中，提高代码的可维护性。
 
-<!-- @[submodule_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Types.ets) -->
+<!-- @submodule_types -->
 
 ``` TypeScript
 export interface User {
@@ -472,7 +472,7 @@ export interface User {
 
 同一目录下的仓储类导入并使用上述类型。
 
-<!-- @[submodule_repository](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Repository.ets) -->
+<!-- @submodule_repository -->
 
 ``` TypeScript
 import { User } from './Types';
@@ -492,7 +492,7 @@ export class UserRepository {
 
 再通过桶文件将各模块的公开API汇总对外暴露。
 
-<!-- @[submodule_barrel_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SubmoduleBarrelFile.ets) -->
+<!-- @submodule_barrel_file -->
 
 ``` TypeScript
 export { User } from '../common/Types';
@@ -503,7 +503,7 @@ export { UserRepository } from '../common/Repository';
 
 循环依赖会让模块初始化顺序变复杂。出现相互导入时，优先把共同类型、常量或接口提取到独立模块。
 
-<!-- @[shared_types_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Types.ets) -->
+<!-- @shared_types_definition -->
 
 ``` TypeScript
 // Types.ets
@@ -514,7 +514,7 @@ export interface UserIdentity {
 
 其他模块导入共享类型后即可使用，无需彼此直接依赖。
 
-<!-- @[shared_types_usage_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SharedTypesUsage.ets) -->
+<!-- @shared_types_usage_profile -->
 
 ``` TypeScript
 import { UserIdentity } from '../common/Types';
@@ -526,7 +526,7 @@ export function getProfileName(identity: UserIdentity): string {
 
 同一共享类型可在多个模块中复用。
 
-<!-- @[shared_types_usage_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SharedTypesUsage.ets) -->
+<!-- @shared_types_usage_permission -->
 
 ``` TypeScript
 export function canRead(identity: UserIdentity): boolean {
@@ -538,7 +538,7 @@ export function canRead(identity: UserIdentity): boolean {
 
 顶层语句是指在模块最外层编写的语句，不被任何函数、类或块级作用域包裹。这些语句包括变量声明、函数声明和表达式。
 
-<!-- @[top_level_statements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @top_level_statements -->
 
 ``` TypeScript
 // 模块顶层语句
@@ -566,7 +566,7 @@ TypeScript的`namespace`是早期组织代码的方式，现代TypeScript和ArkT
 
 **TypeScript对照**
 
-<!-- @[ts_avoid_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_avoid_namespace -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS普通业务代码不使用
@@ -583,7 +583,7 @@ namespace Validation {
 
 **TypeScript对照**
 
-<!-- @[ts_declaration_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDeclaration.ts) -->
+<!-- @ts_declaration_comparison -->
 
 ``` TypeScript
 // TypeScript声明文件对照写法
@@ -602,7 +602,7 @@ ArkTS不支持CommonJS的require，使用ES模块的import代替。
 
 **TypeScript对照**
 
-<!-- @[ts_require_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_require_syntax -->
 
 ``` TypeScript
 // TypeScript支持CommonJS require语法，ArkTS使用ES模块import
@@ -612,7 +612,7 @@ Service.createProduct('Widget');
 
 ArkTS中改用ES模块的import完成同样的导入。
 
-<!-- @[use_esm_not_commonjs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @use_esm_not_commonjs -->
 
 ``` TypeScript
 // 使用ES模块import代替CommonJS require
@@ -623,7 +623,7 @@ import { createProduct } from '../common/Service';
 
 namespace用于类型声明，业务代码应使用模块组织。
 
-<!-- @[use_module_not_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UseModuleNotNamespace.ets) -->
+<!-- @use_module_not_namespace -->
 
 ``` TypeScript
 export class UserService {}
@@ -633,7 +633,7 @@ export class UserService {}
 
 模块之间通过`import`和`export`建立依赖，不把变量隐式挂到全局作用域。
 
-<!-- @[export_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Config.ets) -->
+<!-- @export_constant -->
 
 ``` TypeScript
 // Config.ets
@@ -643,7 +643,7 @@ export const version: string = '1.0';
 
 导入方获取常量后即可在自己的模块中使用。
 
-<!-- @[import_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ImportConstant.ets) -->
+<!-- @import_constant -->
 
 ``` TypeScript
 import { APP_NAME } from '../common/Config';
@@ -657,7 +657,7 @@ TypeScript支持`export =`语法将整个模块导出为单个对象，配合`im
 
 **TypeScript对照**
 
-<!-- @[ts_export_equals_import_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_export_equals_import_equals -->
 
 ``` TypeScript
 // TypeScript/CommonJS对照写法，ArkTS不支持
@@ -676,7 +676,7 @@ export = TsCalculator;
 
 ArkTS替代方式：
 
-<!-- @[export_import_default_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @export_import_default_class -->
 
 ``` TypeScript
 export default class EidcCalculator {
@@ -695,7 +695,7 @@ TypeScript支持三斜线指令（`/// <reference ... />`）在`.d.ts`文件中�
 
 **TypeScript对照**
 
-<!-- @[ts_triple_slash_directives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_triple_slash_directives -->
 
 ``` TypeScript
 // TypeScript声明文件写法，ArkTS不支持
@@ -727,7 +727,7 @@ TypeScript支持`import name = Say.Hello`创建命名空间成员的别名，简
 
 **TypeScript对照**
 
-<!-- @[ts_namespace_alias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @ts_namespace_alias -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS不支持
@@ -743,7 +743,7 @@ console.info(`${ver}`); // 1.0
 
 ArkTS替代：
 
-<!-- @[rename_import_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
+<!-- @rename_import_alternative -->
 
 ``` TypeScript
 import { version as riaVer } from '../common/Config';

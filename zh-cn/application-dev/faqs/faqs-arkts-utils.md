@@ -671,7 +671,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **参考资料**
 
-1. [基于方舟字节码文件的安全扫描接口](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/libark_defect_scan_aux/README.md)
+1. 基于方舟字节码文件的安全扫描接口
 
 ## 目前系统的多线程内存占用大，每个线程需要一个ArkTS引擎，意味着更多的内存占用。如何解决应用需要避免开辟过多线程，并发处理任务数量受限，无法充分发挥设备性能的问题？
 

@@ -19,7 +19,7 @@
 应用可以通过onAlert事件监听网页`alert`方法，并创建合适的弹框。
 
 - 用AlertDialog创建弹框。
-    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
+    <!-- @AchieveAlertDialogPage1 -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -91,7 +91,7 @@
   ```
 
 - 用AlertDialog创建弹框。
-    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
+    <!-- @AchieveAlertDialogPage2 --> 
     
     ``` TypeScript
     import { AlertDialog } from '@kit.ArkUI';
@@ -173,7 +173,7 @@
   </html>
   ```
 
-  ![AlertDialog](./figures/web-alert-dialog.gif)
+  AlertDialog
 
 ## 实现Confirm弹框
 
@@ -186,7 +186,7 @@
 应用可以通过onConfirm事件监听网页`confirm`方法，并创建合适的弹框。
 
 - 用AlertDialog创建弹框。
-    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
+    <!-- @AchieveConfirmDialogPage1 --> 
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -266,7 +266,7 @@
   ```
 
 - 用ConfirmDialog创建弹框。
-    <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
+    <!-- @AchieveConfirmDialogPage2 -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -370,7 +370,7 @@
   </html>
   ```
 
-  ![ConfirmDialog](./figures/web-confirm-dialog.gif)
+  ConfirmDialog
 
 ## 实现Prompt弹框
 
@@ -384,7 +384,7 @@
 应用可以通过onPrompt事件监听网页`prompt`方法，并创建合适的弹框。
 
 - 用CustomContentDialog创建弹框。
-    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) --> 
+    <!-- @AchievePromptDialogPage --> 
     
     ``` TypeScript
     import { CustomContentDialog } from '@kit.ArkUI';
@@ -526,4 +526,4 @@
     ]
   }
   ```
-  ![PromptDialog](./figures/web-prompt-dialog.gif)
+  PromptDialog

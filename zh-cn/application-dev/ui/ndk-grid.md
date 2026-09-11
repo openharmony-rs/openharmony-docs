@@ -21,7 +21,7 @@ ArkUI开发框架从API version 12开始在NDK接口提供了网格组件，使�
 
 参考示例中列表组件的实现方式，将网格组件常用的属性设置封装到自定义的`ArkUIGridNode`类中方便后续使用。
 
-<!-- @[grid_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/ArkUIGridNode.h) -->
+<!-- @grid_define -->
 
 ``` C
 #ifndef MYAPPLICATION_ARKUIGRIDNODE_H
@@ -103,7 +103,7 @@ private:
 
 使用`ArkUIGridNode`创建一个6行4列的网格组件并设置行列间距的代码如下。
 
-<!-- @[grid_columns_and_rows](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
+<!-- @grid_columns_and_rows -->
 
 ```cpp
 auto grid = std::make_shared<ArkUIGridNode>();
@@ -142,13 +142,13 @@ grid->SetColumnsTemplate("repeat(auto-fill, 100vp)");  // 自动填充100vp宽�
 
 如下图在前面创建的6行*4列的网格布局中放置了一些子组件，其中“0”占据2行4列，“1”占据2行2列，“2”占据1行2列，0和1之间有一行空行，模拟页面放置不同大小卡片和图标的场景。
 
-![grid_irregular](figures/grid_irregular.png)
+grid_irregular
 
 通过OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback给网格组件设置用于获取每一个子组件位置的回调函数，开发者可以在该回调中指定每一个子组件所在的起始行号、起始列号、占用行数和占用列数，即ArkUI_GridItemRect。上图布局可以通过如下代码实现。
 
 “0”从网格左上角开始占据2行4列，需要将其对应的`ArkUI_GridItemRect`设置为`{0, 0, 2, 4}`。其他子组件的位置和大小设置以此类推。
 
-<!-- @[grid_get_rect_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridRectByIndexExample.cpp) -->
+<!-- @grid_get_rect_by_index -->
 
 ``` C++
 auto option = std::make_shared<ArkuiGridLayoutOptions>();
@@ -183,11 +183,11 @@ grid->SetLayoutOptions(layoutOptions);
 
 如下图模拟了分组展示图片或文件的场景，其中作为分组名称的子组件占据一整行，其他子组件占据1行1列。
 
-![grid_group](figures/grid_group.gif)
+grid_group
 
 纵向滚动的网格布局，只需要设置列数，无需设置行数。
 
-<!-- @[grid_columns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
+<!-- @grid_columns -->
 
 ``` C++
 grid->SetColumnsTemplate("1fr 1fr 1fr");
@@ -198,7 +198,7 @@ grid->SetScrollBar(ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
 
 分组显示数据，可以通过OH_ArkUI_GridLayoutOptions_SetIrregularIndexes设置分组节点对应的index，这些index对应的子组件将占据一整行，其他子组件将占据1行1列。
 
-<!-- @[grid_group_indexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp) -->
+<!-- @grid_group_indexes -->
 
 ``` C++
 auto layoutOptions = std::make_shared<ArkuiGridLayoutOptions>();
@@ -208,7 +208,7 @@ OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(layoutOptions->GetLayoutOptions()
 grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 ```
 
-网格组件支持使用NodeAdapter按需生成子组件以提升性能。详情请参阅NodeAdapter介绍和<!--RP1-->[分组显示数据完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKGridSample/entry/src/main/cpp/GridIrregularIndexesExample.cpp)。<!--RP1End-->
+网格组件支持使用NodeAdapter按需生成子组件以提升性能。详情请参阅NodeAdapter介绍和<!--RP1-->分组显示数据完整示例。<!--RP1End-->
 
 ## 处理滚动事件
 
@@ -244,5 +244,5 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 ## 完整示例
 
 <!--RP2-->
-[使用网格](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKGridSample)
+使用网格
 <!--RP2End-->

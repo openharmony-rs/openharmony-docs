@@ -54,7 +54,7 @@ Mechanic Kit为开发者提供全面的机械体设备操控能力，核心功�
 
 ## 运作机制
 
-![原理图](figures/guide_mechanic.png)
+原理图
 
 图注：灰色代表暂未支持。
 

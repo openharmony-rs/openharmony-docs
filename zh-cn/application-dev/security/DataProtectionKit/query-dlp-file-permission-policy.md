@@ -14,7 +14,7 @@ Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力�
 
 1. 导入模块。 
 
-    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_include_dlpPermission -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -28,7 +28,7 @@ Data Protection Kit为应用提供了获取DLP文件权限策略信息的能力�
 
     2.3 调用dlpPermission.queryDlpPolicy获取DLP明文策略。
 
-    <!-- @[dlp_queryDlpPolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_queryDlpPolicy -->
     
     ``` TypeScript
     async queryDlpPolicy() {

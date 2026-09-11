@@ -15,7 +15,7 @@ Emitter用于同一进程内相同线程或不同线程间的事件处理，事�
 ## 运作机制
 Emitter通过维护一个内部事件队列，来进行任务分发。应用需要先订阅某个事件并设置好该事件的回调方法，当应用程序发布事件后，就会往队列里面插入一个事件。任务队列会串行执行队列里面的任务，执行任务时会调用该任务订阅者的回调方法进行事件处理。
 
-![emitter](figures/emitter.png)
+emitter
 
 ## 接口说明
 详细请参见@ohos.events.emitter。
@@ -32,7 +32,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 
 1. 导入模块。
 
-   <!-- @[emitter_imp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @emitter_imp --> 
    
    ``` TypeScript
    import { emitter, Callback } from '@kit.BasicServicesKit';
@@ -42,7 +42,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 
    订阅事件使用on（持续订阅）或者once（单次订阅）接口进行订阅，设置要订阅的事件以及接收到事件后的回调函数。
    
-     <!-- @[emitter_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @emitter_on -->
 
      ``` TypeScript
      // 定义一个eventId为1的事件。
@@ -59,7 +59,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
      emitter.on(event, callback);
      ```
 
-   <!-- @[emitter_once](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @emitter_once -->
    
    ``` TypeScript
    // 收到eventId为1的事件后执行回调函数。
@@ -75,7 +75,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > - emit接口支持跨线程传输数据对象，需要遵循数据跨线程传输的规格约束，详见线程间通信对象。目前不支持使用@State装饰器、@Observed装饰器等装饰器修饰的复杂类型数据。
     > - 使用emit接口发布某个事件后，不保证该事件立刻执行，执行时间取决于事件队列里面的事件数量以及各事件的执行效率。
 
-   <!-- @[emitter_emit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @emitter_emit -->
    
    ``` TypeScript
    // 定义一个eventId为1的事件，事件优先级为Low。
@@ -102,7 +102,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
     > - 当不需要订阅某个事件时，需要及时取消订阅避免造成内存泄漏。
     > - 使用off接口取消某个事件订阅后，已通过emit接口发布但尚未被执行的事件将被取消。
 
-   <!-- @[emitter_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/Emitter/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @emitter_off -->
    
    ``` TypeScript
    // 取消eventId为1的事件。

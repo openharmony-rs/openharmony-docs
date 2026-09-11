@@ -31,7 +31,7 @@
 
 ## 开发案例
 构造用于ECDH密钥协商、AES-GCM加密和包装密钥导入的参数集
-<!-- @[prepare_the_import_key_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
+<!-- @prepare_the_import_key_one -->
 
 ``` TypeScript
 
@@ -164,7 +164,7 @@ let importParamsCallerKek: huks.HuksOptions = {
 <!-- -->
 
 构造用于生成ECC解包装密钥、ECDH协商密钥和导入AES-GCM密钥加密密钥的参数集
-<!-- @[prepare_the_import_key_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
+<!-- @prepare_the_import_key_two -->
 
 ``` TypeScript
 let importParamsAgreeKey: huks.HuksOptions = {
@@ -291,7 +291,7 @@ let importWrappedAes192Params: huks.HuksOptions = {
 <!-- -->
 
 生成密钥、导入密钥、删除密钥、导入包装密钥以及会话操作
-<!-- @[encry_the_import_key_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
+<!-- @encry_the_import_key_one -->
 
 ``` TypeScript
 async function publicGenerateItemFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -486,7 +486,7 @@ async function publicFinishSession(handle: number, huksOptions: huks.HuksOptions
 <!-- -->
 
 密钥协商、加密、数据封装等核心功能函数实现
-<!-- @[encry_the_import_key_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
+<!-- @encry_the_import_key_two -->
 
 ``` TypeScript
 async function cipherFunction(keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -617,7 +617,7 @@ async function buildWrappedDataAndImportWrappedKey(plainKey: string) {
 <!-- -->
 
 安全导入密钥的完整流程实现
-<!-- @[encry_the_import_key_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
+<!-- @encry_the_import_key_three -->
 
 ``` TypeScript
 /* 模拟安全导入密钥场景，设备A为远端设备（导入设备），设备B为本端设备（被导入设备） */

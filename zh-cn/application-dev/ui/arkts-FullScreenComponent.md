@@ -8,7 +8,7 @@
 
 FullScreenLaunchComponent允许开发者以全屏方式拉起原子化服务，使得应用能够提供更友好的用户体验。
 
-![embeddable-ui-ability](figures/embeddable-ui-ability.png)
+embeddable-ui-ability
 
 ## 基本概念
 
@@ -31,7 +31,7 @@ FullScreenLaunchComponent提供的一种全屏启动原子化服务的能力。�
 
 跳出式运行原子化服务是指，非组件化的方式拉起EmbeddableUIAbility，交互体验接近独立窗口。
 
-![fullscreenlaunch-component](figures/fullscreenlaunch-component.png)
+fullscreenlaunch-component
 
 
 ## 能力范围

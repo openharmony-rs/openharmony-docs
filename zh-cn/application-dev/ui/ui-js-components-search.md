@@ -35,7 +35,7 @@
 }
 ```
 
-![search-Component](figures/search-Component.png)
+search-Component
 
 
 ## 设置属性
@@ -63,7 +63,7 @@
 }
 ```
 
-![Setting-Attributes-1](figures/Setting-Attributes-1.png)
+Setting-Attributes-1
 
 
 ## 添加样式
@@ -96,7 +96,7 @@ search{
 }
 ```
 
-![Adding-Styles](figures/Adding-Styles.gif)
+Adding-Styles
 
 
 ## 绑定事件
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![Binding-Events-3](figures/Binding-Events-3.gif)
+Binding-Events-3
 
 
 ## 场景示例
@@ -263,4 +263,4 @@ export default {
 }
 ```
 
-![Example-Scenario-11](figures/Example-Scenario-11.gif)
+Example-Scenario-11

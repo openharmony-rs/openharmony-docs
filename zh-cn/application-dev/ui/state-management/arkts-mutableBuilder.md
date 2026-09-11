@@ -170,7 +170,7 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 ## 动态更改全局@Builder实例
 使用\@Builder装饰器装饰的方法`textBuilder`作为mutableBuilder的参数，然后将mutableBuilder的返回值赋值给变量`switchingBuilder`，在Button的点击事件中，使用\@Builder装饰器装饰的方法`buttonBuilder`作为mutableBuilder的参数，将mutableBuilder的返回值再次赋值给变量`switchingBuilder`，可实现`textBuilder` 更新为`buttonBuilder`，以解决wrapBuilder不支持二次赋值的问题。
 
-<!-- @[mutable_builder_dynamic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderDynamic.ets) --> 
+<!-- @mutable_builder_dynamic --> 
 
 ``` TypeScript
 class TextContent {
@@ -213,14 +213,14 @@ struct MyApp {
 ```
 点击Button，可将`textBuilder`动态更改为`buttonBuilder`，如下图所示：
 
-![arkts-mutableBuilder-dynamic-demo1](figures/mutableBuilder-dynamic-demo1.gif)
+arkts-mutableBuilder-dynamic-demo1
 
 
 ## 使用mutableBuilder显示弹出菜单
 
 由于MutableBuilder继承自WrappedBuilder，故mutableBuilder对应的@Builder具有跟WrappedBuilder同等能力，如下示例，mutableBuilder对应的@Builder方法可作为bindMenu入参，支持点击弹出菜单。
 
-<!-- @[mutable_builder_context_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderContextMenu.ets) --> 
+<!-- @mutable_builder_context_menu --> 
 
 ``` TypeScript
 @Builder
@@ -264,7 +264,7 @@ struct Index {
 
  mutableBuilder对应的@Builder函数中可使用MutableBinding进行包裹来观察状态变量的变化，同时可通过@Monitor或addMonitor监听mutableBuilder中@Builder的变化。
 
-<!-- @[mutable_builder_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderBinding.ets) --> 
+<!-- @mutable_builder_binding --> 
 
 ``` TypeScript
 import { UIUtils, MutableBinding } from '@kit.ArkUI';
@@ -319,7 +319,7 @@ struct MyApp {
 ```
 点击`Click to change`按钮，可将`textBuilder`动态切换为`buttonBuilder`，`this.message`将自动加`B`，界面会显示`initB`按钮。点击`initB`按钮，`buttonBuilder`中的`p.value`将自动加`b`，如下图所示：
 
-![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
+arkts-mutableBuilder-dynamic-demo2
 
 点击`Click to change`按钮将`textBuilder`动态切换为`buttonBuilder`时，@Monitor将监听到全局@Builder的变化，并打印日志`Builder changed. is buttonBuilder: true`。
 

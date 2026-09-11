@@ -23,7 +23,7 @@
 
 4. 调用OH_CryptoKdf_Derive，指定目标密钥的字节长度，进行密钥派生。
 
-<!-- @[x963kdf_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/cpp/types/project/x963kdf_test.cpp) -->
+<!-- @x963kdf_test_cpp -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"

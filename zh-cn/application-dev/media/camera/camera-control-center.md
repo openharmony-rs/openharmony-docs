@@ -53,11 +53,11 @@
 
 5. 使能相机控制器后，可以在状态栏看到新增的`视频效果`图标。
 
-    ![camera-control-center-status](figures/camera-control-center-status.png)
+    camera-control-center-status
 
 6. 点击`视频效果`图标，在弹出的二级页面中，用户可调节控制器支持的效果，如图所示为`美颜`和`背景虚化`。
 
-    ![camera-control-center](figures/camera-control-center.png)
+    camera-control-center
 
 
 ## 状态监听

@@ -69,7 +69,7 @@
 更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属属性更新成demo_label_new。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -83,7 +83,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   <!-- @update_asset -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();

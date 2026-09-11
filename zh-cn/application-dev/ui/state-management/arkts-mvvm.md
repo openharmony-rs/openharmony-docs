@@ -30,7 +30,7 @@ ArkUI的UI开发模式就属于MVVM模式，通过对MVVM概念的基本介绍�
 
 ArkUI的UI开发模式即是MVVM模式，而状态变量在MVVM模式中扮演着ViewModel的角色，向上刷新UI，向下更新数据，整体框架如下图：
 
-![MVVM图](./figures/MVVM_架构.png)
+MVVM图
 
 ### 分层说明
 
@@ -87,7 +87,7 @@ Model层是应用的原始数据提供者，代表应用的核心业务逻辑和
 
 * @State装饰器是最常用的装饰器之一，用于定义状态变量。通常，这些状态变量作为父组件的数据源，开发者点击时，触发状态变量的更新，刷新UI。
 
-<!-- @[state_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/StateIndex.ets) -->
+<!-- @state_source_update_refresh -->
 
 ``` TypeScript
 @Entry
@@ -119,7 +119,7 @@ struct StateIndex {
             .width(28)
             .height(28)
         }
-        // 请将$r('app.string.all_learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
+        // 请将$r('app.string.learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
         Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
           .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -142,7 +142,7 @@ struct StateIndex {
 
 效果图：
 
-![state](./figures/MVVM_state.gif)
+state
 
 ### @Prop、@Link的作用
 
@@ -151,7 +151,7 @@ struct StateIndex {
 * \@Prop是父子间单向传递，子组件会深拷贝父组件数据，可从父组件更新，也可自己更新数据，但不会同步回父组件。
 * \@Link是父子间双向传递，父组件改变，会通知所有的\@Link，同时\@Link的更新也会通知父组件的数据源进行刷新。
 
-<!-- @[prop_link_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/PropLinkIndex.ets) -->
+<!-- @prop_link_update_refresh -->
 
 ``` TypeScript
 @Component
@@ -285,14 +285,14 @@ struct PropLinkIndex {
 
 效果图如下：
 
-![Prop&Link](./figures/MVVM_Prop&Link.gif)
+Prop&Link
 
 ### 循环渲染组件
 
 * 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用ForEach循环渲染。
 * ForEach使用之后，冗余代码变得更少，并且代码结构更加清晰。
 
-<!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) --> 
+<!-- @foreach_update_refresh --> 
 
 ``` TypeScript
 @Component
@@ -422,14 +422,14 @@ struct ForEachIndex {
 
 效果图如下：
 
-![ForEach](./figures/MVVM_ForEach.gif)
+ForEach
 
 ### @Builder方法
 
 * Builder方法用于组件内定义方法，可以使得相同代码可以在组件内进行复用。
 * 本示例不仅使用了@Builder方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
 
-<!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) --> 
+<!-- @builder_source_update_refresh --> 
 
 ``` TypeScript
 @Observed
@@ -571,7 +571,7 @@ struct BuilderIndex {
 
  效果图如下：
 
-![builder](./figures/MVVM_builder.gif)
+builder
 
 ### 总结
 
@@ -643,7 +643,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * ThingModel.ets
 
-  <!-- @[thing_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/ThingModel.ets) -->
+  <!-- @thing_model_class -->
   
   ``` TypeScript
   export default class ThingModel {
@@ -654,7 +654,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->   
+  <!-- @to_do_list_model_class -->   
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -689,7 +689,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * Index.ets
 
-  <!-- @[mvvm_model_main_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @mvvm_model_main_index -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -734,7 +734,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * AllChooseComponent.ets
 
-  <!-- @[all_choose_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/AllChooseComponent.ets) -->  
+  <!-- @all_choose_component_view -->  
   
   ``` TypeScript
   import TodoListViewModel from '../viewmodel/TodoListViewModel';
@@ -772,7 +772,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * ThingComponent.ets
 
-  <!-- @[thing_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/ThingComponent.ets) -->
+  <!-- @thing_component_view -->
   
   ``` TypeScript
   import ThingViewModel from '../viewmodel/ThingViewModel';
@@ -824,7 +824,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * TodoComponent.ets
 
-  <!-- @[to_do_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/TodoComponent.ets) -->
+  <!-- @to_do_component_view -->
   
   ``` TypeScript
   @Component
@@ -846,7 +846,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * TodoListComponent.ets
 
-  <!-- @[to_do_list_component_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/views/TodoListComponent.ets) -->
+  <!-- @to_do_list_component_view -->
   
   ``` TypeScript
   import ThingViewModel from '../viewmodel/ThingViewModel';
@@ -877,7 +877,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * ThingViewModel.ets
 
-  <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) -->
+  <!-- @thing_view_model -->
   
   ``` TypeScript
   import ThingModel from '../model/ThingModel';
@@ -907,7 +907,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   * TodoListViewModel.ets
 
-  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->  
+  <!-- @to_do_list_view_model -->  
   
   ``` TypeScript
   import ThingViewModel from './ThingViewModel';
@@ -961,7 +961,7 @@ View层根据需要来组织，但View层需要区分以下三种组件：
 
   效果图如下：
 
-  ![MVVM_index.gif](./figures/MVVM_index.gif)
+  MVVM_index.gif
 
   
 

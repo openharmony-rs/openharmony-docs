@@ -14,7 +14,7 @@
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @import_header -->
    
    ``` C
    #include <cstdint>
@@ -75,7 +75,7 @@
 
    通过OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()方法，获取当前设备支持的所有输出流的能力，包含预览流、拍照流、录像流等。输出流在CameraOutputCapability中的各个profile字段中，其中拍照流支持YUV格式。根据相机设备指定模式Camera_SceneMode的不同，需要添加不同类型的输出流。
 
-   <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @get_full_outputCapability -->
    
    ``` C++
    Camera_OutputCapability* NDKCamera::GetSupportedFullCameraOutputCapability(Camera_Manager* cameraManager,
@@ -102,7 +102,7 @@
 
    可以通过OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()获取相机在指定模式下支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的profile，作为创建拍照输出流的参数photoProfile。
 
-   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @create_photo_output -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
@@ -135,7 +135,7 @@
      - 将处理完的pixelMap通过回调传给ArkTS侧，做图片显示或通过安全控件写文件保存图片。
      - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[set_photo_single_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     <!-- @set_photo_single_cb -->
      
      ``` C++
      // 单段式拍照回调函数。
@@ -234,7 +234,7 @@
      - 调用OH_PhotoOutput_Capture拍照后，需要及时调用OH_MediaAssetChangeRequest_SaveCameraPhoto保存图片或OH_MediaAssetChangeRequest_DiscardCameraPhoto取消保存图片，否则会影响后续图片的拍摄。
      - 使用完后解注册分段式拍照回调函数。
 
-     <!-- @[set_photo_double_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     <!-- @set_photo_double_cb -->
      
      ``` C++
      // 声明快速返图回调。
@@ -326,7 +326,7 @@
 
    通过OH_PhotoOutput_Capture()方法，执行拍照任务。
 
-   <!-- @[take_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @take_picture -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
@@ -357,7 +357,7 @@
 
 - 通过注册固定的onFrameStart回调函数获取监听拍照开始结果，当photoOutput创建成功时，即可监听。拍照第一次曝光时触发。
 
-  <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @photo_output_start_callback -->
   
   ``` C++
   void PhotoOutputOnFrameStart(Camera_PhotoOutput *photoOutput)
@@ -373,7 +373,7 @@
 
 - 通过注册固定的onFrameEnd回调函数监听拍照结束结果，当photoOutput创建成功时，即可监听。
   
-  <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @photo_output_end_callback -->
   
   ``` C++
   void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
@@ -384,7 +384,7 @@
 
 - 通过注册固定的captureReady回调函数监听能否继续拍摄下一张的结果，当photoOutput创建成功时，即可监听。当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
-  <!-- @[capture_ready_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @capture_ready_cb -->
   
   ``` C++
   void CaptureReadyCb(Camera_PhotoOutput* photoOutput)
@@ -402,7 +402,7 @@
 
 - 通过注册固定的onError回调函数获取监听拍照输出流的错误结果。callback返回拍照输出接口使用错误时的对应错误码，错误码类型参见Camera_ErrorCode。
 
-  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  <!-- @photo_output_error_callback -->
   
   ``` C++
   void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)

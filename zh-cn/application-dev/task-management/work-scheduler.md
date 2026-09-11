@@ -16,7 +16,7 @@
 ### 运行原理
 
 **图1** 延迟任务实现原理  
-![WorkScheduler](figures/WorkScheduler.png)
+WorkScheduler
 
 应用调用延迟任务接口添加、删除、查询延迟任务，延迟任务管理模块会根据任务设置的条件（通过WorkInfo参数设置，包括网络类型、充电类型、存储状态等）和系统状态（包括内存、功耗、设备温度、用户使用习惯等）统一决策调度时机。
 
@@ -89,14 +89,14 @@
 
 2. 导入模块，无需配置权限。
 
-   <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
+   <!-- @extension_include -->
    
    ``` TypeScript
    import {workScheduler, WorkSchedulerExtensionAbility} from '@kit.BackgroundTasksKit';
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) --> 
+   <!-- @workSchedulerExtension --> 
    
    ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
@@ -121,7 +121,7 @@
 
    - srcEntry标签设置为当前ExtensionAbility组件所对应的代码路径。
 
-   <!-- @[workScheduler_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5) -->
+   <!-- @workScheduler_configure -->
    
    ``` JSON5
    {
@@ -144,7 +144,7 @@
 
 1. 导入模块。
 
-   <!-- @[workScheduler_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @workScheduler_include -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -152,7 +152,7 @@
    ```
 
 2. 申请延迟任务。
-   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @startWork -->
    
    ``` TypeScript
    let workInfo: workScheduler.WorkInfo = {
@@ -173,7 +173,7 @@
    ```
 
 3. 取消延迟任务。
-   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) --> 
+   <!-- @stopWork --> 
    
    ``` TypeScript
    // 创建workInfo
@@ -216,4 +216,4 @@
 
 针对延迟任务调度的开发，有以下相关示例可供参考：
 
-- [延迟任务调度（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/WorkScheduler)
+- 延迟任务调度（ArkTS）（API9）

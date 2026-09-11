@@ -8,7 +8,7 @@
 
 ## 概述
 
-MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/applinking-introduction)，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。
+MetadataBinding（记忆链接）指由第三方应用提供鸿蒙App Linking链接，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。
 
 详细的接口介绍请参考@ohos.multimodalAwareness.metadataBinding (记忆链接)。
 
@@ -18,7 +18,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
 ## 演示示例
 
-![记忆链接](figures/metadatabinding.gif)
+记忆链接
 
 ## 接口说明
 
@@ -39,7 +39,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
 1. 导入模块。
 
-   <!-- @[import_the_metadata_binding_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @import_the_metadata_binding_module -->
    
    ``` TypeScript
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
@@ -49,16 +49,16 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
 2. 定义记忆服务回调及包名，函数接收回传编码的内容。   
 
-   <!-- @[metadata_binding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @metadata_binding_parameter -->
    
    ``` TypeScript
    let callback : Callback<number> = (event: number) => {};
-   let bundleName: string = '';
+   let bundleName: string = 'com.example.app';
    ```
 
 3. 订阅记忆服务。
 
-   <!-- @[metadata_binding_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @metadata_binding_subscribe --> 
    
    ``` TypeScript
    try {
@@ -74,10 +74,10 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
 4. 提供鸿蒙App Linking链接。
 
-   <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @metadata_binding_submit --> 
    
    ``` TypeScript
-   let metadata: string = '';
+   let metadata: string = 'sample metadata';
    try {
      metadataBinding.submitMetadata(metadata);
      // ...
@@ -90,7 +90,7 @@ MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking�
 
 5. 取消订阅记忆服务。
 
-   <!-- @[metadata_binding_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @metadata_binding_unsubscribe --> 
    
    ``` TypeScript
    try {

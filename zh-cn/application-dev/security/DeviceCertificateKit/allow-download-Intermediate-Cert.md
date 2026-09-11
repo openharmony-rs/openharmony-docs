@@ -27,7 +27,7 @@
 >
 > 本开发指导中提供的示例代码需要在配置网络的前提下执行。需要申请ohos.permission.INTERNET权限，配置方式请参见声明权限。
 
-<!-- @[allow-download-intermediate-cert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/AllowDownloadIntermediateCert.ets) -->
+<!-- @allow-download-intermediate-cert -->
 
 ``` TypeScript
 

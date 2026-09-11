@@ -11,7 +11,7 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的音频解码，即将媒体数据解码为PCM码流。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考示例工程。
 
 支持的解码能力请参考AVCodec支持的格式。
 
@@ -37,7 +37,7 @@
 
 - 实线表示必选。
 
-![Invoking relationship of synchronous audio decode stream](figures/synchronous-audio.png)
+Invoking relationship of synchronous audio decode stream
 
 ### 在 CMake 脚本中链接动态库
 
@@ -139,13 +139,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    配置选项key值说明：
 
    <!--RP1-->
-   ![Audio decoder key configuration](figures/decoder_key.png)
+   Audio decoder key configuration
    <!--RP1End-->
 
    各音频解码类型参数范围说明：
 
    <!--RP2-->
-   ![Audio decoder format range description](figures/decoder_format.png)
+   Audio decoder format range description
    <!--RP2End-->
 
    从API version 20开始，支持通过OH_AVCapability_GetAudioSupportedSampleRateRanges接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：

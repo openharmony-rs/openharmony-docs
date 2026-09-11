@@ -46,17 +46,17 @@ struct ArkUIInspectorExample {
 
 ## 如何使用页面布局检查器
 
-以DevEco Studio 4.0.0.400版本为例，在DevEco Studio菜单栏上单击***\*View\**** > ***\*Tool Windows\**** >***\*ArkUI Inspector\****，或者在DevEco Studio底部工具栏单击![img](./figures/profiler_inspector_button.jpg)
+以DevEco Studio 4.0.0.400版本为例，在DevEco Studio菜单栏上单击***\*View\**** > ***\*Tool Windows\**** >***\*ArkUI Inspector\****，或者在DevEco Studio底部工具栏单击img
 
 打开ArkUI Inspector工具，如下图所示：
 
-![img](./figures/profiler_inspector.jpg)
+img
 
-1. 进程选择栏，选择已经在设备上打开的应用进程。点击右侧![img](./figures/profiler_refresh.jpg)“Refresh”按钮以刷新当前页面快照，请注意，设备需要处于亮屏状态并且应用需要处于前台运行。
+1. 进程选择栏，选择已经在设备上打开的应用进程。点击右侧img“Refresh”按钮以刷新当前页面快照，请注意，设备需要处于亮屏状态并且应用需要处于前台运行。
 
 2. 页面组件树区，用于查看组件嵌套状态，当前显示为Text组件。
 
-3. 页面快照区，点击Text组件后，页面组件列表跳转至选中的Text组件。点击右下角![img](./figures/profiler_pan_screen.jpg)“Pan Screen”按钮以拖移屏幕；点击![img](./figures/profiler_plus.jpg) 、![img](./figures/profiler_minus.jpg) 按钮来缩放页面；点击![img](./figures/profiler_zoom.jpg)“Zoom to Fit Screen”按钮使页面居中并适应屏幕大小。
+3. 页面快照区，点击Text组件后，页面组件列表跳转至选中的Text组件。点击右下角img“Pan Screen”按钮以拖移屏幕；点击img 、img 按钮来缩放页面；点击img“Zoom to Fit Screen”按钮使页面居中并适应屏幕大小。
 
 4. 组件详情区，展示当前选中Text组件的属性信息，包括组件的坐标、布局信息（Spacing）、尺寸信息（Size）、边框信息（Border）、背景信息（Background）、蒙版信息（Effect）、所有其他属性（All Attributes）。如需精准查找单个属性，可通过页面上方搜索栏进行搜索。
 
@@ -64,7 +64,7 @@ struct ArkUIInspectorExample {
 
 从页面布局检查器中可以清晰看出，Text组件外部有3层冗余的Stack容器，属于嵌套过多场景。
 
-![img](./figures/profiler_inspector_analysis.jpg)
+img
 
 ## 代码优化
 
@@ -98,4 +98,4 @@ struct ArkUIInspectorExample {
 
 布局优化后，使用页面布局检查器可以看到页面上的冗余项已经去除。经过测试，页面滑动时刷新一帧的平均时间比优化前减少1ms。
 
-![img](./figures/profiler_inspector_result.jpg)
+img

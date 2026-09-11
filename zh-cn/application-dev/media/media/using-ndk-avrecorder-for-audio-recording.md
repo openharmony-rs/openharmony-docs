@@ -14,7 +14,7 @@ AVRecorder支持开发音频或视频单独录制，集成了音频捕获、音�
 
 **图1** 录制状态变化示意图
 
-![Recording status change](figures/audio-recording-status-change.png)
+Recording status change
 
 状态的详细说明请参考OH_AVRecorder_State。
 
@@ -76,20 +76,20 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 1. 创建AVRecorder实例，实例创建完成进入idle状态。
 
-   <!-- @[include_avrecorder_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @include_avrecorder_h -->
    
    ``` C++
    #include "multimedia/player_framework/avrecorder.h"
    #include "multimedia/player_framework/avrecorder_base.h"
    ```
 
-   <!-- @[declare_avrecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @declare_avrecorder -->
    
    ``` C++
    static OH_AVRecorder *g_recorder = nullptr;
    ```
 
-   <!-- @[create_avrecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @create_avrecorder -->
    
    ``` C++
    g_recorder = OH_AVRecorder_Create();
@@ -101,19 +101,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    | OnStateChange | 监听AVRecorder的状态改变。 |
    | OnError | 监听AVRecorder的错误信息。 |
 
-   <!-- @[set_onstatechange_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @set_onstatechange_callback -->
    
    ``` C++
    OH_AVRecorder_SetStateCallback(g_recorder, OnStateChange, nullptr);
    ```
 
-   <!-- @[set_onerror_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @set_onerror_callback -->
    
    ``` C++
    OH_AVRecorder_SetErrorCallback(g_recorder, OnError, nullptr);
    ```
 
-   <!-- @[define_onstatechange_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @define_onstatechange_callback -->
    
    ``` C++
    static void OnStateChange(OH_AVRecorder *recorder, OH_AVRecorder_State state,
@@ -134,7 +134,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    }
    ```
 
-   <!-- @[define_onerror_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @define_onerror_callback -->
    
    ``` C++
    static void OnError(OH_AVRecorder *recorder, int32_t errorCode, const char *errorMsg, void *userData)
@@ -160,7 +160,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - 录制输出的URL地址（即示例里config中的url），形式为fd://xx（fd number）。需要调用基础文件操作接口实现应用文件访问能力，获取方式参考应用文件访问与管理。
 
-   <!-- @[prepare_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @prepare_audio_recorder -->
    
    ``` C++
    static napi_value PrepareAudioRecorder(napi_env env, napi_callback_info info)
@@ -207,7 +207,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 4. 开始录制，调用OH_AVRecorder_Start()接口，此时AVRecorder进入started状态。
 
-   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @start_recorder -->
    
    ``` C++
    OH_AVErrCode err = OH_AVRecorder_Start(g_recorder);
@@ -215,7 +215,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 5. 暂停录制，调用OH_AVRecorder_Pause()接口，此时AVRecorder进入paused状态，同时暂停输入源输入数据。
 
-   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @pause_recorder -->
    
    ``` C++
    OH_AVErrCode err = OH_AVRecorder_Pause(g_recorder);
@@ -223,7 +223,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 6. 恢复录制，调用OH_AVRecorder_Resume()接口，此时再次进入started状态。
 
-   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @resume_recorder -->
    
    ``` C++
    OH_AVErrCode err = OH_AVRecorder_Resume(g_recorder);
@@ -231,7 +231,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 7. 停止录制，调用OH_AVRecorder_Stop()接口，此时进入stopped状态。
 
-   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @stop_recorder -->
    
    ``` C++
    OH_AVErrCode err = OH_AVRecorder_Stop(g_recorder);
@@ -239,7 +239,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 8. 重置录制状态，调用OH_AVRecorder_Reset()重新进入idle状态，允许重新配置录制参数。
 
-   <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @reset_recorder -->
    
    ``` C++
    OH_AVErrCode err = OH_AVRecorder_Reset(g_recorder);
@@ -247,7 +247,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 9. 释放录制资源，调用OH_AVRecorder_Release()进入released状态，退出录制。
 
-   <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @release_recorder -->
    
    ``` C++
    OH_AVRecorder_Release(g_recorder);
@@ -257,7 +257,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
 参考以下示例，包括“创建AVRecorder实例-准备录制-开始录制-暂停录制-恢复录制-停止录制-重置录制状态-释放录制资源”的完整流程。
 
-   <!-- @[full_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/cpp/avrecorder_ndk.cpp) -->
+   <!-- @full_audio_recorder -->
    
    ``` C++
    #include <cstdio>

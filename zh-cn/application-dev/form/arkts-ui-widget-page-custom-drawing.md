@@ -8,7 +8,7 @@
 
 ArkTS卡片开放了自定义绘制的能力，在卡片上可以通过Canvas组件创建一块画布，然后通过CanvasRenderingContext2D对象在画布上进行自定义图形的绘制，如下示例代码实现了在画布的中心绘制了一个笑脸。
 
-<!-- @[custom_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/customcanvasdrawing/pages/CustomCanvasDrawingCard.ets) -->
+<!-- @custom_drawing -->
 
 ``` TypeScript
 // entry/src/main/ets/customcanvasdrawing/pages/CustomCanvasDrawingCard.ets
@@ -95,4 +95,4 @@ struct CustomCanvasDrawingCard {
 
 运行效果如下图所示。
 
-![WidgetCanvasDemo](figures/WidgetCanvasDemo.jpeg)
+WidgetCanvasDemo

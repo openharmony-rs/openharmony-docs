@@ -207,7 +207,7 @@ respondContent = "{"
 
 ### 升级包制作。
 
-参考[update_packaging_tools仓](https://gitcode.com/openharmony/update_packaging_tools)制作升级包。
+参考update_packaging_tools仓制作升级包。
 
 ### 启动搜包服务器。
 

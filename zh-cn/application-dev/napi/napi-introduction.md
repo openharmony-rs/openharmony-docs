@@ -1,14 +1,14 @@
 # Node-API简介
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
-OpenHarmony Node-API是基于Node.js 18.x LTS的[Node-API](https://nodejs.org/docs/latest-v18.x/api/n-api.html)规范扩展开发的机制，为开发者提供了ArkTS/JS与C/C++模块之间的交互能力。它提供了一组稳定的、跨平台的API，可以在不同的操作系统上使用。
+OpenHarmony Node-API是基于Node.js 18.x LTS的Node-API规范扩展开发的机制，为开发者提供了ArkTS/JS与C/C++模块之间的交互能力。它提供了一组稳定的、跨平台的API，可以在不同的操作系统上使用。
 
 本文中如无特别说明，后续均使用Node-API指代OpenHarmony Node-API能力。
 
@@ -26,7 +26,7 @@ OpenHarmony Node-API是基于Node.js 18.x LTS的[Node-API](https://nodejs.org/do
 
 **图1** Node-API的组成架构
   
-![napi_mechanism](figures/napi_mechanism.png)
+napi_mechanism
 
 - Native Module：开发者使用Node-API开发的模块，用于在ArkTS侧导入使用。
 
@@ -46,10 +46,12 @@ OpenHarmony Node-API是基于Node.js 18.x LTS的[Node-API](https://nodejs.org/do
 
 **图2** Node-API的关键交互流程
   
-![process_napi](figures/process_napi.png)
+process_napi
 
 ArkTS和C++之间的交互流程，主要分为以下两步：
 
 1. **初始化阶段**：当ArkTS侧在import一个Native模块时，ArkTS引擎会调用ModuleManager加载模块对应的so及其依赖。首次加载时会触发模块的注册，将模块定义的方法属性挂载到exports对象上并返回该对象。
 
 2. **调用阶段**：当ArkTS侧通过上述import返回的对象调用方法时，ArkTS引擎会找到并调用对应的C/C++方法。
+
+<!--RP1--><!--RP1End-->

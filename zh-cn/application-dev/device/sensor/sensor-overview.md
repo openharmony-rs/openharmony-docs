@@ -43,7 +43,7 @@
 
   **图1** 传感器
 
-![fad1a124-a90e-460f-84fc-e87d6caebb21](figures/fad1a124-a90e-460f-84fc-e87d6caebb21.png)
+fad1a124-a90e-460f-84fc-e87d6caebb21
 
 - Sensor API：提供传感器的基础API，主要包含查询传感器列表，订阅/取消传感器的数据、执行控制命令等，简化应用开发。
 

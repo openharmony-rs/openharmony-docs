@@ -56,7 +56,7 @@
 
 1. 引用头文件。
    
-   <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @pasteboard_timelapse_Record1 -->    
    
    ``` C++
    #include <cstring>
@@ -71,7 +71,7 @@
 
 2. 定义`OH_UdmfRecordProvider`的数据提供函数和实例注销回调函数。
 
-   <!-- @[pasteboard_timelapse_Record2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @pasteboard_timelapse_Record2 -->
    
    ``` C++
    // 1. 获取数据时触发的提供剪贴板数据的回调函数。
@@ -103,7 +103,7 @@
 
 3. 定义`OH_Pasteboard_SyncDelayedDataAsync`的回调函数。
 
-   <!-- @[pasteboard_timelapse_Record3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @pasteboard_timelapse_Record3 -->
    
    ``` C++
    // 3. 定义应用退出时调用延迟同步接口触发的回调函数。
@@ -116,7 +116,7 @@
 
 4. 在剪贴板中准备延迟复制数据。此步骤完成后纯文本类型数据与HTML类型数据并未真正写入剪贴板服务，只有当数据使用者从`OH_UdmfRecord`中获取`OH_UdsPlainText`或`OH_UdsHtml`时，才会触发上文定义的`GetDataCallback`数据提供函数，从中得到数据。
    
-   <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @pasteboard_timelapse_Record4 -->    
    
    ``` C++
    OH_Pasteboard* CreateAndSetPasteboardData()
@@ -150,7 +150,7 @@
 
 5. 从剪贴板获取延迟复制数据。
    
-   <!-- @[pasteboard_timelapse_Record5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @pasteboard_timelapse_Record5 -->    
    
    ``` C++
    void ProcessRecordType(OH_UdmfRecord* record, const char* recordType)
@@ -220,7 +220,7 @@
 
 6. 应用退出时，如果剪贴板内的数据没有变化，则通知剪贴板获取全量数据，等待回调完成再继续退出，否则可能导致其他应用粘贴获取不到数据。
 
-   <!-- @[pasteboard_timelapse_Record6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @pasteboard_timelapse_Record6 -->    
    
    ``` C++
    // 15. 查询剪贴板内的数据是否变化。
@@ -237,7 +237,7 @@
 
 7. 使用完毕后需要及时释放相关对象的内存。
    
-   <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
+   <!-- @pasteboard_timelapse_Record7 -->    
    
    ``` C++
        OH_UdsPlainText_Destroy(udsText);

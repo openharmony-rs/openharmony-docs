@@ -39,11 +39,11 @@ UTD中定义的标准化数据类型在设计原则上按物理和逻辑分为�
 
 **图1** 物理标准化数据类型示意图
 
-![utd_preset_type](figures/utd_preset_type.png)
+utd_preset_type
 
 **图2** 逻辑标准化数据类型示意图
 
-![utd_type](figures/utd_type.png)
+utd_type
 
 ## 标准化数据类型的定义
 
@@ -188,7 +188,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 1. 导入uniformTypeDescriptor模块。
 
-    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @import_module -->
     
     ``` TypeScript
     // 1.导入模块
@@ -201,7 +201,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 4. 比较上述步骤查询的数据类型，确认类型是否相等。
 5. 根据上述步骤中查询到的标准数据类型“general.mp3”与表示音频数据的已知标准数据类型“general.audio”做比较查询，确认是否存在归属关系。
 
-    <!-- @[uniform_type_descriptor_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @uniform_type_descriptor_test -->
     
     ``` TypeScript
     function uniformTypeDescriptorTest() {
@@ -259,7 +259,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 1. 导入uniformTypeDescriptor模块。
 
-    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @import_module -->
     
     ``` TypeScript
     // 1.导入模块
@@ -270,7 +270,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 2. 针对“.ts”文件后缀，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型。
 3. 针对UTD数据类型，使用getTypeDescriptor()方法查询对应的MIMEType列表。
 
-    <!-- @[get_filename_extensions_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @get_filename_extensions_by_mimeType -->
     
     ``` TypeScript
     try {
@@ -294,7 +294,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 1. 导入uniformTypeDescriptor模块。
 
-    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @import_module -->
     
     ``` TypeScript
     // 1.导入模块
@@ -305,7 +305,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
 2. 针对“text/plain”MIMEType，使用getUniformDataTypesByMIMEType()方法获取对应UTD数据类型。
 3. 根据UTD数据类型，使用getTypeDescriptor()方法查询对应的文件后缀列表。
 
-    <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @get_filename_extension_by_mimeType -->
     
     ``` TypeScript
     try {
@@ -327,4 +327,4 @@ utd.json5文件需要在类型为entry的HAP中配置。
 
 针对标准化数据定义的开发，有以下相关实例可供参考：
 
-- [标准化数据定义与描述（ArkTS）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)
+- 标准化数据定义与描述（ArkTS）（API11）

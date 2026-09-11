@@ -39,7 +39,7 @@
 
 图1 静默数据访问视图
 
-![silent_dataShare](figures/silent_dataShare.jpg)
+silent_dataShare
 
 - 与DataShareExtensionAbility跨应用数据共享方式不同，静默数据访问借助数据管理服务，通过目录映射方式直接读取数据提供方的配置，按规则预处理后访问数据库。
 

@@ -56,7 +56,7 @@ HiDumper命令行工具使用常见问题汇总在常见问题章节。
 
 ## 查询内存信息
 
-HiDumper内存信息查询模块主要用于查看系统整机内存使用情况和单个进程内存使用情况。开发者需要了解相关的[内存基础知识](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-memory-basic-knowledge)。
+HiDumper内存信息查询模块主要用于查看系统整机内存使用情况和单个进程内存使用情况。开发者需要了解相关的内存基础知识。
 
 ### 查询整机内存
 
@@ -374,7 +374,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 "appProvisionType": "debug",
 ```
 
-构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：申请调试证书。
 
 
 ### 查询虚拟机堆内存

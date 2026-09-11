@@ -22,7 +22,7 @@ value用于标识实际的owner tag。
 
  tag构成图示
 
-![](./figures/tag.PNG)
+
 
 
 
@@ -214,7 +214,7 @@ int main()
 ```
 上述代码中的`good_write`函数会打开一个文件并写入一些字符串，而`bad_close`函数中也会打开一个文件同时包含double-close问题，这两个线程同时运行执行情况如下图。
 
-![](./figures/fdsan-error-2.png)
+
 
 由于每次open返回的文件描述符（fd）是顺序分配的，进入主函数后第一个可用的fd是43。在`bad_close` 函数中，第一次open返回的fd也是43。关闭之后，43变成可用的fd。在`good_write`函数中，open返回了第一个可用的fd，即43。然而，由于`bad_close`函数中存在重复关闭问题，错误地关闭了另一个线程中打开的文件，导致写入失败。
 
@@ -494,7 +494,7 @@ void good_write()
 }
 ```
 
-此时运行该程序可以检测到另一个线程的double-close问题，详细信息可以<a href="#日志信息">参考日志</a>。同样也可以设置error_level为fatal，这样可以使fdsan在检测到crash之后主动crash以获取更多信息。
+此时运行该程序可以检测到另一个线程的double-close问题，详细信息可以参考日志。同样也可以设置error_level为fatal，这样可以使fdsan在检测到crash之后主动crash以获取更多信息。
 
 ## 多线程场景下的注意事项
 

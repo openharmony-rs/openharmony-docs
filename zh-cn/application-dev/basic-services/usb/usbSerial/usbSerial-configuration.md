@@ -58,7 +58,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @head -->
    
    ``` TypeScript
    // 导入serialManager模块
@@ -70,7 +70,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 2. 获取设备列表。
 
-   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @getPortList -->
    
    ``` TypeScript
    // 获取连接主设备的USB设备列表
@@ -88,7 +88,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 3. 获取设备操作权限。
 
-   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @requestSerialRight -->
    
    ``` TypeScript
    if (this.portList_ === undefined || this.portList_.length === 0) {
@@ -115,7 +115,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 4. 根据串口打开设备。
 
-   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @openSerialDevice -->
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -131,7 +131,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 5. 获取和修改串口配置。
 
-   <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @getSerialConfig -->
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -151,7 +151,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    }
    ```
 
-   <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @setSerialConfig -->
    
    ``` TypeScript
    let portId: number = this.portId_;

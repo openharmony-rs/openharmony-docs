@@ -17,7 +17,7 @@ EmbeddedUIExtensionAbility需要和EmbeddedComponent一起配合使用，开发�
 
 **图1** EmbeddedUIExtensionAbility示意图
 
-![embeddeduiextension-intro](figures/embeddeduiextensionability-intro.png)
+embeddeduiextension-intro
 
 ## 约束限制
 
@@ -54,7 +54,7 @@ EmbeddedUIExtensionAbility通过UIExtensionContext和UIExtensionContentSession�
 
 3. 打开EmbeddedUIExtAbility.ets文件，导入EmbeddedUIExtensionAbility的依赖包，自定义类继承EmbeddedUIExtensionAbility并实现onCreate、onSessionCreate、onSessionDestroy、onForeground、onBackground和onDestroy生命周期回调。
 
-    <!-- @[embeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/embeddeduiextability/EmbeddedUIExtAbility.ets) -->
+    <!-- @embeddedAbility_start -->
     
     ``` TypeScript
     import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -96,7 +96,7 @@ EmbeddedUIExtensionAbility通过UIExtensionContext和UIExtensionContentSession�
 
 4. EmbeddedUIExtensionAbility的onSessionCreate中加载了入口页面文件pages/extension.ets内容如下：
 
-    <!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/Extension.ets) -->
+    <!-- @extension_start -->
 
     ``` TypeScript
     import { UIExtensionContentSession } from '@kit.AbilityKit';
@@ -128,7 +128,7 @@ EmbeddedUIExtensionAbility通过UIExtensionContext和UIExtensionContentSession�
 
 5. 在工程Module对应的module.json5配置文件中注册EmbeddedUIExtensionAbility，type标签需要设置为“embeddedUI”，srcEntry标签表示当前EmbeddedUIExtensionAbility组件所对应的代码路径。
 
-    <!-- @[embeddedModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/module.json5) -->
+    <!-- @embeddedModule_start -->
 
     ``` JSON5
     {
@@ -160,7 +160,7 @@ ohos.extension.processMode.hostSpecified和ohos.extension.processMode.hostInstan
 
 如在首页文件：pages/Index.ets中添加如下内容：
 
-<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EmbeddedUIExtensionAbility/entry/src/main/ets/pages/BasicClass.ets) -->
+<!-- @embedded_start -->
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';

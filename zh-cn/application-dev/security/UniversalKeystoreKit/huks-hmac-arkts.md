@@ -31,7 +31,7 @@ HMAC是密钥相关的哈希运算消息认证码（Hash-based Message Authentic
 
 4. 调用finishSession结束密钥会话，获取哈希后的数据。
 
-<!-- @[hmac_to](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/HMAC/entry/src/main/ets/pages/HMAC.ets) -->
+<!-- @hmac_to -->
 
 ``` TypeScript
 /*

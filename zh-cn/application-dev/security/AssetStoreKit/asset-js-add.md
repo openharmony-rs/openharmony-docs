@@ -66,7 +66,7 @@
 新增一条密码是demo_pwd，别名是demo_alias，附属信息是demo_label的关键资产，该关键资产在用户首次解锁设备后可被访问。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -80,7 +80,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   <!-- @add_asset -->
    
    ``` TypeScript
    let attr: asset.AssetMap = new Map();

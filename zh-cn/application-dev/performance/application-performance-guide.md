@@ -20,7 +20,7 @@
 
 **图1 应用丢帧处的Trace数据**
 
- ![alt text](figures/application-performance-guide-1.png)
+ alt text
 
 其中，帧率 = Occurrences / Selected range。
 
@@ -47,7 +47,7 @@
 
 **图2 SmartPerf Host平均帧率自动计算**
 
- ![alt text](figures/application-performance-guide-2.png)
+ alt text
 
 ### 完成时延
 
@@ -57,13 +57,13 @@
 
 **图3 页面跳转完成时延**
 
- ![alt text](figures/application-performance-guide-3.png)
+ alt text
 
 在系统侧，如图4所示，用户点击屏幕后，CPU会收到硬件中断；aptouch进程会响应中断，判断哪些像素被点击、是否是手势；如果是手势，多模会收到手势信号，形成点击事件，执行应用注册的事件回调。
 
 **图4 system侧Trace**
 
- ![alt text](figures/application-performance-guide-4.png)
+ alt text
  | 系统侧进程标签 | 含义 |
  | --- | --- |
  | irp | CPU收到硬件中断 |
@@ -74,7 +74,7 @@
 
 **图5 app侧Trace**
 
- ![alt text](figures/application-performance-guide-5.png)
+ alt text
  |APP侧Trace标签示例 | 含义 |
  | --- | --- |
  |DispatchTouchEvent | 应用收到事件，开始运行onClick的回调 |
@@ -84,7 +84,7 @@
 
 **图6 RS侧Trace**
 
- ![alt text](figures/application-performance-guide-6.png)
+ alt text
 
 | RS侧Trace标签示例 | 含义 |
 | --- | --- |
@@ -98,7 +98,7 @@ App侧序列化与RS侧反序列化的Trace示例标签中都有 [7291，51]，�
 
 **图7 测量完成时延**
 
- ![alt text](figures/application-performance-guide-7.png)
+ alt text
 
 如图7所示，该点击事件完成时延约为138.4ms。
 
@@ -132,7 +132,7 @@ HiTrace、HiPerf、cpuProfiler、常规log等各类可观测性数据。
 
    **图8 丢帧处应用主线程状态**
 
-   ![alt text](figures/application-performance-guide-8.png)
+   alt text
 
    **看运行频率**
 
@@ -140,11 +140,11 @@ HiTrace、HiPerf、cpuProfiler、常规log等各类可观测性数据。
 
    **图9 丢帧处应用主线程运行核**
 
-   ![alt text](figures/application-performance-guide-9.png)
+   alt text
 
    **图10 Freq Usage频点信息**
 
-   ![alt text](figures/application-performance-guide-10.png)
+   alt text
 
    出于兼顾高性能、低功耗的需求，多核工程机常采用异构架构设计，根据CPU频率，区分大中小核等。
 
@@ -154,7 +154,7 @@ HiTrace、HiPerf、cpuProfiler、常规log等各类可观测性数据。
 
    **图11 应用主线程与RenderService线程的TimeLine**
 
-   ![alt text](figures/application-performance-guide-11.png)
+   alt text
 
 3. 结合cpuProfiler查看ArkTS函数调用栈信息，或其他日志信息，排查应用代码。
 
@@ -162,7 +162,7 @@ HiTrace、HiPerf、cpuProfiler、常规log等各类可观测性数据。
 
    **图12 Frame工具抓取应用信息图**
 
-   ![alt text](figures/application-performance-guide-12.png)
+   alt text
 
 ### 解决方案
 关于应用的流畅度优化，开发者可以尝试从如下几个方面入手：
@@ -195,7 +195,7 @@ HiTrace、HiPerf、cpuProfiler、常规log等各类可观测性数据。
 分析应用冷启动场景，首先开发者需要简单了解OpenHarmony应用启动流程，如图13所示，大致分为五个阶段：  
 **图13 OpenHarmony应用启动流程**
 
- ![alt text](figures/application-performance-guide-13.png)
+ alt text
 
 1. AbilityManageService请求AppSpawn创建应用进程。
 
@@ -221,7 +221,7 @@ HiTrace、HiPerf、cpuProfiler、常规log等各类可观测性数据。
 
 **图14 AppStartup泳道图展示**
 
- ![alt text](figures/application-performance-guide-14.png)
+ alt text
 
 之后，开发者可以结合应用启动各阶段Trace信息，对比应用前一个版本或竞品表现，找出差异点，大致分析是哪阶段时间增加了。
 

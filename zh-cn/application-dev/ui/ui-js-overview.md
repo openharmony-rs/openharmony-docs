@@ -17,7 +17,7 @@
 
 
 
-![Overall-Architecture](figures/Overall-Architecture.png)
+Overall-Architecture
 
 - **Application**
 

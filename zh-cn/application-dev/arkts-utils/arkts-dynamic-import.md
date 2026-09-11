@@ -21,7 +21,7 @@
 ## 业务扩展场景介绍
 动态import在业务上除了能实现条件延迟加载，还可以实现部分反射功能。实例如下，HAP动态import HAR包harlibrary，并调用类Calc的静态成员函数staticAdd()、成员函数instanceAdd()，以及全局方法addHarLibrary()。
 
-<!-- @[dynamic_call_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/harlibrary/src/main/ets/utils/Calc.ets) -->
+<!-- @dynamic_call_add -->
 
 ``` TypeScript
 // harlibrary's src/main/ets/utils/Calc.ets
@@ -46,14 +46,14 @@ export function addHarLibrary(a: number, b: number): number {
 }
 ```
 
-<!-- @[module_members_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/harlibrary/Index.ets) -->
+<!-- @module_members_export -->
 
 ``` TypeScript
 // harlibrary's Index.ets
 export { Calc, addHarLibrary } from './src/main/ets/utils/Calc'
 ```
 
-<!-- @[dynamic_call_add_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @dynamic_call_add_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -63,7 +63,7 @@ export { Calc, addHarLibrary } from './src/main/ets/utils/Calc'
 }
 ```
 
-<!-- @[dynamic_load_har_module_reflect_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @dynamic_load_har_module_reflect_call -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -107,9 +107,9 @@ import('harlibrary').then((ns: ESObject) => {
 
 >**说明：**
 > 
-> 1.当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
-> 2.本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
-> 3.import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
+> 1. 当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
+> 2. 本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
+> 3. import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
 
 ## 动态import实现中的关键点
 
@@ -120,7 +120,7 @@ import('harlibrary').then((ns: ESObject) => {
 本文示例代码中的路径，如Index.ets，是根据当前DevEco Studio的模块配置设置的。如果后续有变化，请调整文件的位置和相对路径。
 
 - **HAP常量动态import HAR模块名**
-<!-- @[const_dynamic_import_har](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/myHar/Index.ets) -->
+<!-- @const_dynamic_import_har -->
 
 ``` TypeScript
 // HAR's Index.ets
@@ -131,7 +131,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[const_dynamic_import_har_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_dynamic_import_har_name -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -140,7 +140,7 @@ import('myhar').then((ns: ESObject) => {
 })
 ```
 
-<!-- @[await_for_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @await_for_dynamic_import -->
 
 ``` TypeScript
 // 可使用 await 处理动态import (必须在 async 函数内使用)
@@ -150,7 +150,7 @@ async function asyncDynamicImport() {
 }
 ```
 
-<!-- @[const_dynamic_import_har_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_har_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -162,7 +162,7 @@ async function asyncDynamicImport() {
 ```
 
 - **HAP常量动态import HAR模块文件路径**
-<!-- @[const_dynamic_import_har](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/myHar/Index.ets) -->
+<!-- @const_dynamic_import_har -->
 
 ``` TypeScript
 // HAR's Index.ets
@@ -173,7 +173,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[const_dynamic_import_har_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_dynamic_import_har_path -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -182,7 +182,7 @@ import('myhar/Index').then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_har_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_har_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -194,7 +194,7 @@ import('myhar/Index').then((ns: ESObject) => {
 ```
 
 - **HAP常量动态import HSP模块名**
-<!-- @[const_dynamic_import_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/myHsp/Index.ets) -->
+<!-- @const_dynamic_import_hsp -->
 
 ``` TypeScript
 // HSP's Index.ets
@@ -205,7 +205,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[const_dynamic_import_hsp_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_dynamic_import_hsp_name -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -214,7 +214,7 @@ import('myhsp').then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_hsp_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_hsp_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -226,7 +226,7 @@ import('myhsp').then((ns: ESObject) => {
 ```
 
 - **HAP常量动态import HSP模块名文件路径**
-<!-- @[const_dynamic_import_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/myHsp/Index.ets) -->
+<!-- @const_dynamic_import_hsp -->
 
 ``` TypeScript
 // HSP's Index.ets
@@ -237,7 +237,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[const_dynamic_import_hsp_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_dynamic_import_hsp_path -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -246,7 +246,7 @@ import('myhsp/Index').then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_hsp_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_hsp_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -258,7 +258,7 @@ import('myhsp/Index').then((ns: ESObject) => {
 ```
 
 - **HAP常量动态import远程HAR模块名**
-<!-- @[const_dynamic_import_crypto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_dynamic_import_crypto -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -267,7 +267,7 @@ import('@ohos/crypto-js').then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_crypto_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_crypto_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -279,7 +279,7 @@ import('@ohos/crypto-js').then((ns: ESObject) => {
 ```
 
 - **HAP常量动态import ohpm包**
-<!-- @[const_dynamic_import_ohpm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_dynamic_import_ohpm -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -288,7 +288,7 @@ import('@ohos/hypium').then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_ohpm_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_ohpm_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -300,7 +300,7 @@ import('@ohos/hypium').then((ns: ESObject) => {
 ```
 
 - **HAP常量动态import自己的单文件**
-<!-- @[hap_const_dynamic_import_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/Calc.ets) -->
+<!-- @hap_const_dynamic_import_add -->
 
 ``` TypeScript
 // HAP's src/main/ets/Calc.ets
@@ -311,7 +311,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[hap_const_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_const_dynamic_import -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -322,14 +322,14 @@ import('../Calc').then((ns: ESObject) => {
 
 - **HAP常量动态import自己的Native库**
 
-<!-- @[hap_const_dynamic_import_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/cpp/types/libentry/index.d.ts) -->
+<!-- @hap_const_dynamic_import_native -->
 
 ``` TypeScript
 // libentry.so's index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 
-<!-- @[hap_const_dynamic_import_native_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_const_dynamic_import_native_index -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -338,7 +338,7 @@ import('libentry.so').then((ns: ESObject) => {
 });
 ```
 
-<!-- @[hap_const_dynamic_import_native_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @hap_const_dynamic_import_native_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -351,7 +351,7 @@ import('libentry.so').then((ns: ESObject) => {
 
 - **HAP常量动态import加载API**
 
-<!-- @[hap_const_dynamic_import_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_const_dynamic_import_api -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -383,7 +383,7 @@ DevEco Studio中模块间的依赖关系通过oh-package.json5中的dependencies
 
 在HAP/HSP/HAR的build-profile.json5中的buildOption中增加runtimeOnly配置项，仅在通过变量动态import时配置，静态import和常量动态import无需配置；并且，通过变量动态import加载API时也无需配置runtimeOnly。如下实例说明如何配置通过变量动态import其他模块，以及变量动态import本模块自己的单文件：
 
-<!-- @[variable_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @variable_dynamic_import -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -422,7 +422,7 @@ import(filePath).then((ns: ESObject) => {
 
 - **HAP变量动态import HAR模块名**
 
-<!-- @[const_dynamic_import_har](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/myHar/Index.ets) -->
+<!-- @const_dynamic_import_har -->
 
 ``` TypeScript
 // HAR's Index.ets
@@ -433,7 +433,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_har](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_har -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -443,7 +443,7 @@ import(harPackageName).then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_har_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_har_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -454,7 +454,7 @@ import(harPackageName).then((ns: ESObject) => {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_har_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_variable_dynamic_import_har_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -475,7 +475,7 @@ import(harPackageName).then((ns: ESObject) => {
 
 - **HAP变量动态import HSP模块名**
 
-<!-- @[const_dynamic_import_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/myHsp/Index.ets) -->
+<!-- @const_dynamic_import_hsp -->
 
 ``` TypeScript
 // HSP's Index.ets
@@ -486,7 +486,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_hsp -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -496,7 +496,7 @@ import(hspPackageName).then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_hsp_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_hsp_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -507,7 +507,7 @@ import(hspPackageName).then((ns: ESObject) => {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_hsp_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_variable_dynamic_import_hsp_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -529,7 +529,7 @@ import(hspPackageName).then((ns: ESObject) => {
 
 - **HAP变量动态import远程HAR模块名**
 
-<!-- @[hap_variable_dynamic_import_har_crypto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_har_crypto -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -539,7 +539,7 @@ import(remoteHarPackageName).then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_crypto_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_crypto_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -550,7 +550,7 @@ import(remoteHarPackageName).then((ns: ESObject) => {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_har_crypto_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_variable_dynamic_import_har_crypto_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -571,7 +571,7 @@ import(remoteHarPackageName).then((ns: ESObject) => {
 
 - **HAP变量动态import ohpm包**
 
-<!-- @[hap_variable_dynamic_import_ohpm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_ohpm -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -581,7 +581,7 @@ import(ohpmPackageName).then((ns: ESObject) => {
 });
 ```
 
-<!-- @[const_dynamic_import_ohpm_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @const_dynamic_import_ohpm_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -592,7 +592,7 @@ import(ohpmPackageName).then((ns: ESObject) => {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_ohpm_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_variable_dynamic_import_ohpm_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -613,7 +613,7 @@ import(ohpmPackageName).then((ns: ESObject) => {
 
 - **HAP变量动态import自己的单文件**
 
-<!-- @[hap_const_dynamic_import_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/Calc.ets) -->
+<!-- @hap_const_dynamic_import_add -->
 
 ``` TypeScript
 // HAP's src/main/ets/Calc.ets
@@ -624,7 +624,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_calc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_calc -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -634,7 +634,7 @@ import(calcFilePath).then((ns: ESObject) => {
 });
 ```
 
-<!-- @[hap_variable_dynamic_import_calc_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_variable_dynamic_import_calc_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -654,14 +654,14 @@ import(calcFilePath).then((ns: ESObject) => {
 
 - **HAP变量动态import自己的Native库**
 
-<!-- @[hap_const_dynamic_import_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/cpp/types/libentry/index.d.ts) -->
+<!-- @hap_const_dynamic_import_native -->
 
 ``` TypeScript
 // libentry.so's index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 
-<!-- @[hap_variable_dynamic_import_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_native -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -671,7 +671,7 @@ import(soName).then((ns: ESObject) => {
 });
 ```
 
-<!-- @[hap_const_dynamic_import_native_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @hap_const_dynamic_import_native_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -682,7 +682,7 @@ import(soName).then((ns: ESObject) => {
 }
 ```
 
-<!-- @[hap_variable_dynamic_import_native_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_variable_dynamic_import_native_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -703,7 +703,7 @@ import(soName).then((ns: ESObject) => {
 
 - **HAP变量动态import加载API**
 
-<!-- @[hap_variable_dynamic_import_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_api -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -732,11 +732,11 @@ import(packageName).then((ns: ESObject) => {
 ### HAR模块间动态import依赖解耦
 当应用包含多个HAR包，HAR包之间的依赖关系比较复杂。在DevEco Studio中配置依赖关系时，可能会形成循环依赖。这时，如果HAR之间的依赖关系中仅有变量动态import，可以将HAR包之间直接依赖关系转移到HAP/HSP中配置，HAR包之间无需配置依赖关系，从而达到HAR包间依赖解耦的目的。如下示意图：
 
-![变量动态import HAR包形成循环依赖](figures/dynamicimport1.png)
+变量动态import HAR包形成循环依赖
 
 HAR之间的依赖关系转移至HAP/HSP后：
 
-![变量动态import HAR包依赖转移到HAP](figures/dynamicimport2.png)
+变量动态import HAR包依赖转移到HAP
 
 
 **使用限制**
@@ -745,16 +745,16 @@ HAR之间的依赖关系转移至HAP/HSP后：
 - 转移依赖时，需同时转移**dependencies**和**runtimeOnly**依赖配置。
 - HSP不支持转移依赖。即：HAP->HSP1->HSP2->HSP3，这里的HSP2和HSP3不能转移到HAP上面。
 - 转移依赖的整个链路上只能有HAR包，不能跨越HSP转移。即：HAP->HAR1->HAR2->HSP->HAR3->HAR4，HAR1对HAR2的依赖可以转移到HAP上，HAR3对HAR4的依赖可以转移到HSP上。但是，不能将HAR3或HAR4转移到HAP上。
-- 如果引用了其他工程模块、远程包或集成HSP，需确保在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)中的**useNormalizedOHMUrl**配置一致，同时设置为true或false，否则可能导致运行错误：**Cannot find dynamic-import module library**。
+- 如果引用了其他工程模块、远程包或集成HSP，需确保在工程级build-profile.json5文件中的**useNormalizedOHMUrl**配置一致，同时设置为true或false，否则可能导致运行错误：**Cannot find dynamic-import module library**。
 
 
 **使用实例**
 
 下面的实例通过在单向依赖HAP->HAR1->HAR2->HAR3之上增加依赖HAR2->HAR1、HAR3->HAR1，形成了循环依赖。
 
-![变量动态import HAR包形成循环依赖](figures/dynamicimport1.png)
+变量动态import HAR包形成循环依赖
 
-<!-- @[hap_variable_dynamic_import_har1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
+<!-- @hap_variable_dynamic_import_har1 -->
 
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
@@ -764,7 +764,7 @@ import(harName).then((ns: ESObject) => {
 })
 ```
 
-<!-- @[har1_class_calc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har1/src/main/ets/utils/Calc.ets) -->
+<!-- @har1_class_calc -->
 
 ``` TypeScript
 // HAR1's src/main/ets/utils/Calc.ets
@@ -788,14 +788,14 @@ export class ClassHar1 {
 }
 ```
 
-<!-- @[har1_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har1/Index.ets) -->
+<!-- @har1_export -->
 
 ``` TypeScript
 // HAR1's Index.ets
 export { ClassHar1 } from './src/main/ets/utils/Calc';
 ```
 
-<!-- @[har2_class_calc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har2/src/main/ets/utils/Calc.ets) -->
+<!-- @har2_class_calc -->
 
 ``` TypeScript
 // HAR2's src/main/ets/utils/Calc.ets
@@ -828,14 +828,14 @@ export class ClassHar2 {
 }
 ```
 
-<!-- @[har2_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har2/Index.ets) -->
+<!-- @har2_export -->
 
 ``` TypeScript
 // HAR2's Index.ets
 export { ClassHar2 } from './src/main/ets/utils/Calc';
 ```
 
-<!-- @[har3_class_calc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har3/src/main/ets/utils/Calc.ets) -->
+<!-- @har3_class_calc -->
 
 ``` TypeScript
 // HAR3's src/main/ets/utils/Calc.ets
@@ -859,7 +859,7 @@ export class ClassHar3 {
 }
 ```
 
-<!-- @[har3_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har3/Index.ets) -->
+<!-- @har3_export -->
 
 ``` TypeScript
 // HAR3's Index.ets
@@ -945,7 +945,7 @@ The name of an indirect dependency cannot be the same as the module name.
 
 将HAR之间的**dependencies**和**runtimeOnly**配置转移到HAP中，解耦了包间循环依赖，程序能够正确运行。
 
-<!-- @[hap_decoupled_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
+<!-- @hap_decoupled_dependencies -->
 
 ``` JSON5
 // HAP's oh-package.json5
@@ -954,7 +954,7 @@ The name of an indirect dependency cannot be the same as the module name.
 "har3": "file:../har3"
 ```
 
-<!-- @[hap_decoupled_runtimeOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5) -->
+<!-- @hap_decoupled_runtimeOnly -->
 
 ``` JSON5
 // HAP's build-profile.json5
@@ -974,14 +974,14 @@ The name of an indirect dependency cannot be the same as the module name.
 },
 ```
 
-<!-- @[har1_decoupled_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har1/oh-package.json5) -->
+<!-- @har1_decoupled_dependencies -->
 
 ``` JSON5
 // HAR1's oh-package.json5
 "dependencies": {}
 ```
 
-<!-- @[har1_decoupled_buildOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har1/build-profile.json5) -->
+<!-- @har1_decoupled_buildOption -->
 
 ``` JSON5
 // HAR1's build-profile.json5
@@ -989,14 +989,14 @@ The name of an indirect dependency cannot be the same as the module name.
 },
 ```
 
-<!-- @[har2_decoupled_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har2/oh-package.json5) -->
+<!-- @har2_decoupled_dependencies -->
 
 ``` JSON5
 // HAR2's oh-package.json5
 "dependencies": {}
 ```
 
-<!-- @[har2_decoupled_buildOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har2/build-profile.json5) -->
+<!-- @har2_decoupled_buildOption -->
 
 ``` JSON5
 // HAR2's build-profile.json5
@@ -1004,14 +1004,14 @@ The name of an indirect dependency cannot be the same as the module name.
 },
 ```
 
-<!-- @[har3_decoupled_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har3/oh-package.json5) -->
+<!-- @har3_decoupled_dependencies -->
 
 ``` JSON5
 // HAR3's oh-package.json5
 "dependencies": {}
 ```
 
-<!-- @[har3_decoupled_buildOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har3/build-profile.json5) -->
+<!-- @har3_decoupled_buildOption -->
 
 ``` JSON5
 // HAR3's build-profile.json5

@@ -37,7 +37,7 @@
 
 以跳过禁用的生物认证，订阅认证信息为例：
 
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @perceive-adjust-authentication-process -->
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {
@@ -92,4 +92,4 @@ perceiveAndAdjustAuthentication() {
 
 ## 示例代码
 
-  - [感知和调整认证过程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 感知和调整认证过程

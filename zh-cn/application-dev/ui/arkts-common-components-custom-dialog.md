@@ -30,7 +30,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 1. 使用\@CustomDialog装饰器装饰自定义弹出框，可在此装饰器内自定义弹出框内容。CustomDialogController需在@Component内定义。
    
-   <!-- @[create_custom_dialog_new_customDialog_controller_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   <!-- @create_custom_dialog_new_customDialog_controller_default -->
    
    ``` TypeScript
    @CustomDialog
@@ -50,7 +50,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 
 2. 创建构造器，与装饰器相互连接。
-   <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   <!-- @create_custom_dialog_new_customDialog_controller_constructor -->
    
    ``` TypeScript
    @Entry
@@ -66,7 +66,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 3. 点击与onClick事件绑定的组件使弹出框弹出。
    
-   <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   <!-- @create_custom_dialog_new_customDialog_controller_on_click -->
    
    ``` TypeScript
    @Entry
@@ -89,14 +89,14 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    ```
    
    
-   ![custom-dialog-create](figures/custom-dialog-create.png)
+   custom-dialog-create
 
 ## 弹出框的交互
 
 弹出框可用于数据交互，完成用户一系列响应操作。
 
 1. 在\@CustomDialog装饰器内添加按钮和数据函数。
-   <!-- @[dialog_interaction_use_constructor_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
+   <!-- @dialog_interaction_use_constructor_example -->
    
    ``` TypeScript
    @CustomDialog
@@ -135,7 +135,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    
    
 2. 页面内需要在构造器内进行接收，同时创建相应的函数操作。
-   <!-- @[dialog_interaction_use_constructor_user](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
+   <!-- @dialog_interaction_use_constructor_user -->
    
    ``` TypeScript
    @Entry
@@ -169,11 +169,11 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    }
    ```
 
-   ![custom-dialog-interaction](figures/custom-dialog-interaction.png)
+   custom-dialog-interaction
 
 
 3. 可通过弹出框中的按钮实现路由跳转，同时获取跳转页面向当前页传入的参数。
-    <!-- @[dialog_interaction_use_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseButton.ets) -->
+    <!-- @dialog_interaction_use_button -->
     
     ``` TypeScript
     @CustomDialog
@@ -277,7 +277,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
     ```
     
 
-    <!-- @[index_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/IndexNew.ets) -->
+    <!-- @index_new -->
     
     ``` TypeScript
     @Entry
@@ -306,13 +306,13 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
     ```
     
    
-   ![DialogRouter](figures/DialogRouter.gif)
+   DialogRouter
 
 ## 弹出框的动画
 
 弹出框通过定义CustomDialogControllerOptions中的openAnimation属性控制出现动画的持续时间，速度等参数。
 
-<!-- @[dialog_animation_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets) --> 
+<!-- @dialog_animation_new --> 
 
 ``` TypeScript
 @CustomDialog
@@ -373,12 +373,12 @@ export struct DialogAnimationNew {
 ```
 
 
-![openAnimator](figures/openAnimator.gif)
+openAnimator
 
 ## 弹出框的样式
 
 通过定义弹出框的宽度、高度、背景色、阴影等参数，控制其样式。
-<!-- @[dialog_style_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogStyleNew.ets) -->
+<!-- @dialog_style_new -->
 
 ``` TypeScript
 @CustomDialog
@@ -440,12 +440,12 @@ export struct DialogStyleNew {
 ```
 
 
-![custom_style](figures/custom_style.gif)
+custom_style
 
 ## 嵌套自定义弹出框
 
 通过第一个弹出框打开第二个弹出框时，最好将第二个弹出框定义在第一个弹出框的父组件处，通过父组件传给第一个弹出框的回调来打开第二个弹出框。
-<!-- @[nest_dialog_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/NestDialogNew.ets) -->
+<!-- @nest_dialog_new -->
 
 ``` TypeScript
 @CustomDialog
@@ -554,7 +554,7 @@ export struct NestDialogNew {
 ```
 
 
-![nested_dialog](figures/nested_dialog.gif)
+nested_dialog
 
 由于自定义弹出框在状态管理侧有父子关系，如果将第二个弹出框定义在第一个弹出框内，那么当父组件（第一个弹出框）被销毁（关闭）时，子组件（第二个弹出框）内无法再继续创建新的组件。
 
@@ -562,7 +562,7 @@ export struct NestDialogNew {
 
 执行点击遮障层关闭、侧滑（左滑或右滑）、三键Back、键盘ESC关闭等交互操作时，如果注册了CustomDialogControllerOptions中的onWillDismiss回调函数，弹出框不会立即关闭。在回调函数中，通过DismissDialogAction中的reason属性获取阻拦关闭弹出框的操作类型，根据原因决定是否关闭弹出框。
  
-<!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
+<!-- @dialog_with_physical_back -->
 
 ``` TypeScript
 @CustomDialog
@@ -664,7 +664,7 @@ export struct DialogWithPhysicalBack {
 ```
 
 
-![onWillDismiss_dialog](figures/onWillDismiss_dialog.gif)
+onWillDismiss_dialog
 
 ## 设置弹出框避让软键盘的距离
 
@@ -672,7 +672,7 @@ export struct DialogWithPhysicalBack {
 
 设置软键盘间距时，需要将keyboardAvoidMode值设为KeyboardAvoidMode.DEFAULT。
   
-<!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
+<!-- @dialog_avoid_soft_key_board -->
 
 ``` TypeScript
 // xxx.ets
@@ -732,7 +732,7 @@ export struct DialogAvoidSoftKeyboard {
 ```
 
 
- ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
+ UIContextPromptAction
 
 ## 获取弹出框的状态
 
@@ -742,7 +742,7 @@ export struct DialogAvoidSoftKeyboard {
 
 以下示例通过getDialogController和CustomDialogController两种方法，实现了获取弹出框当前状态的功能。
 
-<!-- @[get_dialog_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/GetDialogStatus.ets) -->  
+<!-- @get_dialog_status -->  
 
 ``` TypeScript
 // xxx.ets
@@ -802,12 +802,12 @@ export struct GetDialogStatus {
 }
 ```
 
-![getState1](figures/getState1.gif)
+getState1
 
 ## 相关实例
 
 针对自定义弹出框开发，有以下相关实例可供参考：
 
-- [自定义弹出框（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/CustomDialog)
-- [构建多种样式弹出框（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/MultipleDialog)
-- [目标管理（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
+- 自定义弹出框（ArkTS）（API9）
+- 构建多种样式弹出框（ArkTS）（API9）
+- 目标管理（ArkTS）（API9）

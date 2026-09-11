@@ -89,4 +89,4 @@
 >
 > background-position仅支持背景图片的移动，不支持背景颜色（background-color）。
 
-![backgroundImg](figures/backgroundImg.gif)
+backgroundImg

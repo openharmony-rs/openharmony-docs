@@ -1,8 +1,8 @@
 # Web页面显示内容滚动
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -20,7 +20,7 @@
 
   返回页面顶部。
 
-  <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
+  <!-- @scrollTo_ArkTS_one -->
   
   ``` TypeScript
   this.webController.scrollTo(0, 0);
@@ -116,4 +116,4 @@
   ```
 
 + 效果展示：<br>
-![backToTop](figures/backToTop.gif)
+backToTop

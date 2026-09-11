@@ -30,7 +30,7 @@
 
     确保接收事件的组件获焦，可以通过使用focusable、defaultFocus、focusOnTouch等方法来实现。如需更详细的焦点控制信息，请参考焦点控制文档。
     
-    <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @text -->
     
     ``` TypeScript
     Text(this.message)
@@ -46,7 +46,7 @@
 
     接收表冠事件需要注册表冠事件回调，当触发表冠事件时会执行回调函数。
 
-    <!-- @[onDigitalCrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @onDigitalCrown -->
     
     ``` TypeScript
     .onDigitalCrown((event: CrownEvent) => {
@@ -57,7 +57,7 @@
 
     表冠事件提供了时间戳，旋转角速度，旋转角度和表冠动作。此外表冠事件会触发事件冒泡，可通过stopPropagation阻止事件冒泡。
 
-    <!-- @[stopPropagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @stopPropagation -->
     
     ``` TypeScript
     event.stopPropagation();
@@ -69,7 +69,7 @@
 
 **完整示例：**
 
- <!-- [crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+ <!-- crown_event -->
  
  ``` TypeScript
  // xxx.ets
@@ -109,4 +109,4 @@
  }
  ```
 
-![crown.gif](../reference/apis-arkui/arkui-ts/figures/crown.gif)
+crown.gif

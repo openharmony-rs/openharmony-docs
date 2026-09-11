@@ -30,7 +30,7 @@
 
 **1. 创建工程**
 
-![native](figures/rawfile1.png)
+native
 
 
 **2. 添加依赖**
@@ -45,7 +45,7 @@
 
 2. 打开src/main/cpp/napi_init.cpp文件，添加头文件。
 
-    <!-- @[native-bundle-guidelines_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @native-bundle-guidelines_002 -->
     
     ``` C++
     // napi依赖头文件
@@ -61,7 +61,7 @@
 
 1. 打开src/main/cpp/napi_init.cpp文件，文件Init会对当前方法进行初始化映射，这里定义对外的接口。
 
-    <!-- @[native-bundle-guidelines_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @native-bundle-guidelines_004 -->
     
     ``` C++
     EXTERN_C_START
@@ -96,7 +96,7 @@
 
 2. 在src/main/cpp/napi_init.cpp文件中获取Native的包信息对象，并转为js的包信息对象，即可在js侧获取应用的信息：
 
-    <!-- @[native-bundle-guidelines_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @native-bundle-guidelines_003 -->
     
     ``` C++
     static napi_value GetCurrentApplicationInfo(napi_env env, napi_callback_info info)
@@ -253,7 +253,7 @@
 
 
 
-    <!-- @[native-bundle-guidelines_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @native-bundle-guidelines_006 -->
     
     ``` C++
     static void AddDefaultApp(napi_env env,
@@ -436,7 +436,7 @@
 
 1. 在src/main/cpp/types/libentry/Index.d.ts文件中，声明暴露接口。
 
-    <!-- @[native-bundle-guidelines_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+    <!-- @native-bundle-guidelines_001 -->
     
     ``` TypeScript
     export const add: (a: number, b: number) => number;
@@ -454,7 +454,7 @@
 
 1. 打开src/main/ets/pages/Index.ets，导入"libentry.so"，调用Native接口打印出获取的信息内容。示例如下：
 
-    <!-- @[native-bundle-guidelines_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @native-bundle-guidelines_005 -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';

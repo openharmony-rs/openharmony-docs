@@ -34,7 +34,7 @@
 }
 ```
 
-![qrcode-Component](figures/qrcode-Component.png)
+qrcode-Component
 
 > **说明：** 
 >
@@ -87,7 +87,7 @@ export default {
 }
 ```
 
-![Component-Type](figures/Component-Type.gif)
+Component-Type
 
 
 ## 设置样式
@@ -120,7 +120,7 @@ qrcode{
 }
 ```
 
-![Setting-Styles](figures/Setting-Styles.png)
+Setting-Styles
 
 > **说明：**
 > - width和height不一致时，取二者较小值作为二维码的边长，且最终生成的二维码居中显示。
@@ -172,4 +172,4 @@ export default {
 }
 ```
 
-![Example-Scenarios](figures/Example-Scenarios.gif)
+Example-Scenarios

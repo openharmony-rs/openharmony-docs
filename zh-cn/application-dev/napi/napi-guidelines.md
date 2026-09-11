@@ -1,7 +1,7 @@
 # Node-API开发规范
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -366,11 +366,11 @@ extern "C" __attribute__((constructor)) void RegisterModule()
 ```
 图一
 
-![demoModule](./figures/image.png)
+demoModule
 
 图二
 
-![CMakeLists](./figures/image-1.png)
+CMakeLists
 
 **正确示例**：
 以下代码为模块名为nativerender时的正确示例
@@ -436,7 +436,7 @@ extern "C" void napi_onLoad()
 
 ## 正确地使用napi_create_external系列接口创建的JS Object
 
-**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见[API参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-object#napi_create_external)。
+**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见API参考。
 
 **错误示例**
 
@@ -519,10 +519,10 @@ napi_object_freeze等同于Object.freeze语义，freeze后对象的所有属性�
 
 ## 参考文档
 
-[Native侧子线程与UI主线程通信开发](https://developer.huawei.com/consumer/cn/doc/best-practices-V5/bpta-native-sub-main-comm-V5);
+Native侧子线程与UI主线程通信开发;
 
-[如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-8-V5);
+如何在Native侧C++子线程直接调用ArkTS接口，不用通过ArkTS侧触发回调;
 
-[napi_env、napi_value实例是否可以跨worker线程共享](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-55-V5);
+napi_env、napi_value实例是否可以跨worker线程共享;
 
-[Native如何创建子线程，有什么约束，与主线程如何通信](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-ndk-68-V5).
+Native如何创建子线程，有什么约束，与主线程如何通信.

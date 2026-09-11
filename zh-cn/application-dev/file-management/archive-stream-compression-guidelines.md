@@ -63,7 +63,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 5. 调用OH_Archive_StreamWrite_End结束流式压缩并获取结果信息。
 6. 调用OH_Archive_StreamWrite_Destroy销毁流式压缩写入器，释放资源。
 
-<!--@[stream_compress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@stream_compress_example-->
 
 ``` C++
 
@@ -146,7 +146,7 @@ static napi_value StreamCompress(napi_env env, napi_callback_info info)
 5. 调用OH_Archive_StreamWrite_End结束流式压缩。
 6. 调用OH_Archive_StreamWrite_Destroy销毁流式压缩写入器，释放资源。
 
-<!--@[stream_compress_cancel_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@stream_compress_cancel_example-->
 
 ``` C++
 static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
@@ -219,7 +219,7 @@ static napi_value StreamCompressCancel(napi_env env, napi_callback_info info)
 4. 调用OH_Archive_StreamRead_End结束流式解压缩并获取结果信息。
 5. 调用OH_Archive_StreamRead_Destroy销毁流式解压缩读取器，释放资源。
 
-<!--@[stream_decompress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@stream_decompress_example-->
 
 ``` C++
 static napi_value StreamDecompress(napi_env env, napi_callback_info info)
@@ -284,7 +284,7 @@ static napi_value StreamDecompress(napi_env env, napi_callback_info info)
 5. 调用OH_Archive_StreamRead_End结束流式解压缩。
 6. 调用OH_Archive_StreamRead_Destroy销毁流式解压缩读取器，释放资源。
 
-<!--@[stream_decompress_cancel_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@stream_decompress_cancel_example-->
 
 ``` C++
 static napi_value StreamDecompressCancel(napi_env env, napi_callback_info info)

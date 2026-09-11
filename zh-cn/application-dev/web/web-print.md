@@ -112,7 +112,7 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
 
 - 应用侧代码。
 
-  <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
+  <!-- @w3c_print_html -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -137,7 +137,7 @@ Web组件打印HTML页面时可通过W3C标准协议接口和应用接口两种�
 
 ## 通过调用应用侧接口拉起打印
 应用侧通过调用createWebPrintDocumentAdapter创建打印适配器，通过将适配器传入打印的print接口调起打印。
-<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
+<!-- @create_web_print_document -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

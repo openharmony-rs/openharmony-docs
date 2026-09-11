@@ -31,7 +31,7 @@
 
 1. 只能用在\@ObservedV2装饰的类中，不能用在自定义组件中。
 
-   <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) --> 
+   <!-- @DataModel --> 
    
    ``` TypeScript
    class Sample {
@@ -71,7 +71,7 @@
 
 ### 持久化数据
 
-<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @NewType --> 
 
 ``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
@@ -111,7 +111,7 @@ struct TestCase {
 }
 ```
 
-![type-sync-0](./figures/type-sync-0.gif)
+type-sync-0
 
 ## 常见问题
 

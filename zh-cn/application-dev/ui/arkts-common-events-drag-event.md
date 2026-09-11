@@ -27,7 +27,7 @@
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
-![drag-gesture](figures/drag-gesture.png)
+drag-gesture
 
 ### ​鼠标拖拽
 
@@ -86,7 +86,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
 拖拽背板图当前支持设置透明度、圆角、阴影和模糊，具体用法见拖拽控制。
 
-![pixelMap](figures/pixelMap.png)
+pixelMap
 
 **约束限制：**
 
@@ -103,13 +103,13 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    设置draggable属性为true，并配置onDragStart回调函数。在回调函数中，可通过UDMF（用户数据管理框架）设置拖拽的数据，并返回自定义的拖拽背景图像。
 
-   <!-- @[module_draggable_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @module_draggable_head -->
    
    ``` TypeScript
    import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
    ```
 
-   <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @module_draggable -->
    
    ``` TypeScript
    // 请将$r('app.media.app_icon')替换为实际资源文件
@@ -136,7 +136,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    手势场景触发的拖拽功能依赖于底层绑定的长按手势。如果开发者在可拖拽组件上也绑定了长按手势，这将与底层的长按手势产生冲突，进而导致拖拽操作失败。为解决此类问题，可以采用并行手势的方案，具体如下：
 
-   <!-- @[bind_parallel_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @bind_parallel_gesture -->
    
    ``` TypeScript
    .parallelGesture(LongPressGesture().onAction(() => {
@@ -150,7 +150,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
    
    可以通过在长按50ms时触发的回调中设置onPreDrag回调函数，来提前准备自定义拖拽背板图的pixmap。
    
-   <!-- @[set_custom_drag_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @set_custom_drag_status -->
    
    ``` TypeScript
    .onPreDrag((preDragStatus: PreDragStatus) => {
@@ -162,7 +162,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    pixmap的生成可以调用this.getUIContext().getComponentSnapshot().createFromBuilder()来实现。
 
-   <!-- @[drag_hilog_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @drag_hilog_const -->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -171,7 +171,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
    const TAG = 'DefaultDragError: ';
    ```
 
-   <!-- @[generate_pix_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @generate_pix_map -->
    
    ``` TypeScript
    @Builder
@@ -203,7 +203,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
 3. 若开发者需确保触发onDragLeave事件，应通过调用setDragEventStrictReportingEnabled方法进行设置。
 
-   <!-- @[entryAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @entryAbility_start -->
    
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
@@ -234,7 +234,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    通过设置allowDrop来定义接收的数据类型，这将影响角标显示。当拖拽的数据符合定义的允许落入的数据类型时，角标会显示加号。当拖拽的数据类型不在允许范围内时，可强制设置为显示禁用角标。若未设置allowDrop，则角标不会显示加号。以下代码示例表示仅接收UnifiedData中定义的HYPERLINK和PLAIN\_TEXT类型数据，其他类型数据将被禁止落入。
 
-   <!-- @[drag_allow_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @drag_allow_drop -->
    
    ``` TypeScript
    .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
@@ -243,7 +243,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    在实现onDrop回调的情况下，还可以在onDragMove中设置DragResult为DROP_ENABLED，并将DragBehavior设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
 
-   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
+   <!-- @set_drag_behavior_move --> 
    
    ``` TypeScript
    .onDragMove((event) => {
@@ -256,7 +256,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显式设置拖拽结果。
 
-   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
+   <!-- @set_on_drop_call --> 
    
    ``` TypeScript
    .onDrop((dragEvent?: DragEvent) => {
@@ -276,7 +276,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
    数据的传递是通过UDMF实现的，在数据较大时可能存在时延，因此在首次获取数据失败时建议加1500ms的延迟重试机制。
 
-   <!-- @[data_delayed_retry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @data_delayed_retry -->
    
    ``` TypeScript
    getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
@@ -309,7 +309,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
 6. 拖拽发起方可以通过设置onDragEnd回调感知拖拽结果。
 
-   <!-- @[set_on_drag_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @set_on_drag_end -->
    
    ``` TypeScript
    .onDragEnd((event) => {
@@ -324,7 +324,7 @@ DragEvent支持相关set方法向系统传递信息，这些信息部分会影�
 
 **完整示例：**
 
-<!-- @[default_drag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
+<!-- @default_drag --> 
 
 ``` TypeScript
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -495,7 +495,7 @@ export struct DefaultDrag {
 }
 ```
 
-![commonDrag](figures/commonDrag.gif)
+commonDrag
 
 ### 多选拖拽适配
 
@@ -507,7 +507,7 @@ export struct DefaultDrag {
 
    创建GridItem子组件并绑定onDragStart回调函数。同时设置GridItem组件的状态为可选中。
 
-   <!-- @[grid_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @grid_start -->
    
    ``` TypeScript
    Grid() {
@@ -531,7 +531,7 @@ export struct DefaultDrag {
 
    多选拖拽功能默认处于关闭状态。若要启用此功能，需在dragPreviewOptions接口的options参数中，将isMultiSelectionEnabled设置为true，以表明当前组件支持多选。此外，options还包含defaultAnimationBeforeLifting参数，用于控制组件浮起前的默认效果。将该参数设置为true，组件在浮起前将展示一个默认的缩小动画效果。
 
-   <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @dragPreviewOptions_start -->
    
    ``` TypeScript
    .dragPreviewOptions({ numberBadge: this.numberBadge },
@@ -540,7 +540,7 @@ export struct DefaultDrag {
 
    为了确保选中状态，应将GridItem子组件的selected属性设置为true。例如，可以通过调用onClick来设置特定组件为选中状态。
 
-   <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @grid_isSelected_start -->
    
    ``` TypeScript
    .selected(this.isSelectedGrid[idx])
@@ -555,7 +555,7 @@ export struct DefaultDrag {
 
    在多选拖拽操作中，当多选触发聚拢动画效果时，系统会截取当前屏幕内显示的选中组件图像。如果选中组件数量过多，可能会造成较高的性能消耗。为了优化性能，多选拖拽功能支持从dragPreview中获取截图，用以实现聚拢动画效果，从而有效节省系统资源。
 
-   <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @dragPreview_Start -->
    
    ``` TypeScript
    .dragPreview({
@@ -565,7 +565,7 @@ export struct DefaultDrag {
 
    截图的获取可以在选中组件时通过调用this.getUIContext().getComponentSnapshot().get()方法获取。以下示例通过获取组件对应id的方法进行截图。
 
-   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
+   <!-- @grid_previewData_start --> 
    
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
@@ -615,7 +615,7 @@ export struct DefaultDrag {
 
     通过stateStyles可以设置选中态和非选中态的显示效果，方便区分。
 
-    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
+    <!-- @grid_styles_start --> 
     
     ``` TypeScript
     @Styles
@@ -661,7 +661,7 @@ export struct DefaultDrag {
 
     多选拖拽的数量角标当前需要应用使用dragPreviewOptions中的numberBadge参数设置，开发者需要根据当前选中的节点数量来设置数量角标。
 
-    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
+    <!-- @grid_numberBadge_start --> 
     
     ``` TypeScript
     @State numberBadge: number = 0;
@@ -705,7 +705,7 @@ export struct DefaultDrag {
 
 **完整示例：**
 
-<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) --> 
+<!-- @gridExample_start --> 
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -799,7 +799,7 @@ build() {
 }
 ```
 
-![multiDrag](figures/multiDrag.gif)
+multiDrag
 
 ### 适配自定义落位动效
 
@@ -808,7 +808,7 @@ build() {
 1. 组件拖拽设置。
 
    设置draggable为true，并配置onDragStart、onDragEnd等回调函数。
-   <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   <!-- @drop_image_start -->
    
    ``` TypeScript
    // 请将$r('app.media.app_icon')替换为实际资源文件
@@ -829,7 +829,7 @@ build() {
 
    自定义落位动效通过animateTo接口设置动画相关的参数来实现。例如，可以改变组件的大小。
 
-   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
+   <!-- @drop_customDropAnimation_start --> 
    
    ``` TypeScript
    customDropAnimation =
@@ -847,7 +847,7 @@ build() {
 
    设置onDrop回调函数，接收拖拽数据。拖拽落位动效通过executeDropAnimation函数执行，设置useCustomDropAnimation为true禁用系统默认动效。
 
-   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
+   <!-- @drop_column_start --> 
    
    ``` TypeScript
    Column() {
@@ -873,7 +873,7 @@ build() {
 
 **完整示例：**
 
-<!-- @[dropAnimationExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+<!-- @dropAnimationExample_start -->
 
 ``` TypeScript
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
@@ -962,7 +962,7 @@ export struct DropAnimationExample {
 }
 ```
 
-![executeDropAnimation](figures/executeDropAnimation.gif)
+executeDropAnimation
 
 ### 处理大批量数据
 
@@ -972,7 +972,7 @@ export struct DropAnimationExample {
 
    创建GridItem子组件，并设置其状态为可选中。再设置多选拖拽功能isMultiSelectionEnabled为true，最后设置选中状态用作区分是否选中。
 
-   <!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @gridExample_start -->
    
    ``` TypeScript
    Grid() {
@@ -1003,7 +1003,7 @@ export struct DropAnimationExample {
 
    多选拖拽的数据数量过多可能影响拖拽的体验，推荐多选拖拽最大多选数量为500。
 
-   <!-- @[gridExample_onPageShow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   <!-- @gridExample_onPageShow -->
    
    ``` TypeScript
    onPageShow(): void {
@@ -1020,7 +1020,7 @@ export struct DropAnimationExample {
 
    当数据量较大时，建议在选择数据时通过addRecord添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
-   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
+   <!-- @gridExample_onclick --> 
    
    ``` TypeScript
    .onClick(() => {
@@ -1063,7 +1063,7 @@ export struct DropAnimationExample {
 
    在onPreDrag中可以提前接收到准备发起拖拽的信号。若数据量较大，此时可以事先准备数据。
 
-   <!-- @[gridExample_onPreDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   <!-- @gridExample_onPreDrag -->
    
    ``` TypeScript
    .onPreDrag((status: PreDragStatus) => {
@@ -1077,7 +1077,7 @@ export struct DropAnimationExample {
 
    在发起拖拽时，应判断数据是否已准备完成。若数据未准备完成，则需向系统发出WAITING信号。此时，若手指做出移动手势，背板图将停留在原地，直至应用发出READY信号或超出主动阻塞的最大限制时间（5s）。若数据已准备完成，则可直接将数据设置到dragEvent中。此外，在使用主动阻塞功能时，需保存当前的dragEvent，并在数据准备完成时进行数据设置；在非主动阻塞场景下，不建议保存当前的dragEvent。
 
-   <!-- @[gridExample_onDragStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   <!-- @gridExample_onDragStart -->
    
    ``` TypeScript
    .onDragStart((event: DragEvent) => {
@@ -1094,7 +1094,7 @@ export struct DropAnimationExample {
 
 **完整示例：**
 
-<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
+<!-- @gridExample_start --> 
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -1272,7 +1272,7 @@ struct GridEts {
 }
 ```
 
-![patchDataProcess](figures/patchDataProcess.gif)
+patchDataProcess
 
 
 ## 支持悬停检测
@@ -1287,7 +1287,7 @@ Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的
 
 除了实现视图切换跳转功能，该能力也可用于特定视图的激活。例如，在用户将一段文本拖拽至按钮上停留后，可激活一个文本输入框。用户随后可将所拖拽文本移动至该输入框上方释放，触发搜索结果展示，实现单手高效完成整个操作。
 
-![drag spring loading example](figures/drag_springloading-01.png)
+drag spring loading example
 
 ### 触发原理
 
@@ -1295,7 +1295,7 @@ Spring Loading，即拖拽悬停检测（又叫弹簧加载）是拖拽操作的
 
 Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -> 结束。在结束之前，如果用户重新开始移动，会自动中断Spring Loading，并通知应用取消。如果在悬停检测期间移动，且尚未进入Spring Loading状态，则不会触发取消通知。
 
-![drag spring loading phase](figures/drag_springloading-02.png)
+drag spring loading phase
 
 应用通过回调接收当前的状态，动态改变UI显示，从而达到用户提醒的效果。
 
@@ -1361,7 +1361,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   如果不再需要该组件上响应任何Spring Loading事件，则可以通过传递null给onDragSpringLoading来明确关闭响应。
 
-  <!-- @[springLoading_onDragSpringLoading_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  <!-- @springLoading_onDragSpringLoading_null -->
   
   ``` TypeScript
   .onDragSpringLoading(null)
@@ -1376,7 +1376,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   为了简化示例，准备一个可拖出文字的组件以供用户拖出待搜索的文字，并添加一个按钮控件，用于响应Spring Loading来进一步激活视图。被激活的视图通过bindSheet实现，内部配置有一个输入框控件用于接收拖拽文本，以及一个文本组件用于展示搜索结果。
 
-  <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  <!-- @springLoading_example -->
   
   ``` TypeScript
   build() {
@@ -1410,7 +1410,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   实现半模态弹框的UI界面。
 
-  <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  <!-- @springLoading_builder -->
   
   ``` TypeScript
   @Builder
@@ -1444,7 +1444,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   为了达到提醒效果，为目标组件也增加`onDragEnter`和`onDragLeave`的处理。当用户拖拽文字进入到组件范围时，变化背景色，以提醒用户在此处停留。
 
-  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
+  <!-- @springLoading_onDragEnter --> 
   
   ``` TypeScript
   .onDragEnter(() => {
@@ -1462,7 +1462,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   实现一个Spring Loading的响应函数，处理所有状态，如下：
 
-  <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  <!-- @springLoading_handleSpringLoading -->
   
   ``` TypeScript
   handleSpringLoading(context: SpringLoadingContext) {
@@ -1494,7 +1494,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
 **完整示例：**
 
-<!-- @[SpringLoading_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+<!-- @SpringLoading_start -->
 
 ``` TypeScript
 import { dragController } from '@kit.ArkUI';
@@ -1648,6 +1648,6 @@ export struct SpringLoadingPage {
 ```
 
 
-![drag spring loading sample gif](figures/spring-loading-record.gif)
+drag spring loading sample gif
 
 <!--RP1--><!--RP1End-->

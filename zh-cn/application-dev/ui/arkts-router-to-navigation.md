@@ -25,7 +25,7 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 
 以下为Router页面的示例。
 
-<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->   
+<!-- @router_index -->   
 
 ``` TypeScript
 // Index.ets
@@ -70,7 +70,7 @@ struct Index {
 }
 ```
 
-<!-- @[router_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/PageOne.ets) -->
+<!-- @router_page_one -->
 
 ``` TypeScript
 @Entry
@@ -103,7 +103,7 @@ struct pageOne {
 
 以下为Navigation导航页的示例。
 
-<!-- @[nav_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/Index.ets) -->
+<!-- @nav_index -->
 
 ``` TypeScript
 // Index.ets
@@ -131,7 +131,7 @@ struct Index1 {
 ```
 以下为Navigation子页的示例。
 
-<!-- @[nav_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navigation/PageOne.ets) -->
+<!-- @nav_page_one -->
 
 ``` TypeScript
 @Builder
@@ -187,7 +187,7 @@ export struct PageOne {
 
 Router通过`@ohos.router`模块提供的方法来操作页面，建议使用UIContext中的getRouter获取Router对象。
 
-<!-- @[get_router](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/GetRouter.ets) -->
+<!-- @get_router -->
 
 ``` TypeScript
 // push page
@@ -211,7 +211,7 @@ let pageState = this.getUIContext().getRouter().getState();
 
 Navigation通过导航控制器对象NavPathStack提供的方法来操作页面，需要创建一个栈对象并传入Navigation中。
 
-<!-- @[nav_stack_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/Index.ets) -->
+<!-- @nav_stack_one -->
 
 ``` TypeScript
 @Entry
@@ -229,7 +229,7 @@ struct Index {
   }
 }
 ```
-<!-- @[nav_stack_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/navPathStack/PathStack.ets) -->
+<!-- @nav_stack_two -->
 
 ``` TypeScript
 this.pathStack.pop();
@@ -274,7 +274,7 @@ Router作为全局通用模块，可以在任意页面中调用，Navigation作�
 
 **方式一**：通过`@Provide`和`@Consume`传递给子页面（有耦合，不推荐）。
 
-<!-- @[router_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router1.ets) -->
+<!-- @router_1 -->
 
 ``` TypeScript
 // Navigation根容器
@@ -310,7 +310,7 @@ export struct PageOne {
 
 **方式二**：子页面通过OnReady回调获取。
 
-<!-- @[router_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router2.ets) -->
+<!-- @router_2 -->
 
 ``` TypeScript
 @Entry
@@ -331,7 +331,7 @@ export struct PageOne {
 
 **方式三**： 通过全局的`AppStorage`接口设置获取。
 
-<!-- @[router_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router3.ets) -->
+<!-- @router_3 -->
 
 ``` TypeScript
 @Entry
@@ -369,7 +369,7 @@ export struct PageOne {
 
 **方式四**：通过自定义组件查询接口获取，参考queryNavigationInfo。
 
-<!-- @[router_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Router4.ets) -->
+<!-- @router_4 -->
 
 ``` TypeScript
 // 子页面中的自定义组件
@@ -403,15 +403,15 @@ struct CustomNode {
 >
 > router页面的生命周期和Navigation页面的生命周期关系如下：
 >
-> 1.router页面的跳转会影响其内部Navigation页面的生命周期。
+> 1. router页面的跳转会影响其内部Navigation页面的生命周期。
 >
-> 2.Navigation页面的跳转不会影响其所在router页面的生命周期。
+> 2. Navigation页面的跳转不会影响其所在router页面的生命周期。
 >
-> 3.应用前后台切换会同时触发router页面和Navigation页面的生命周期。
+> 3. 应用前后台切换会同时触发router页面和Navigation页面的生命周期。
 
 Router页面生命周期为`@Entry`页面中的通用方法，主要有如下四个生命周期：
 
-<!-- @[life_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Comm.ets) -->
+<!-- @life_comm -->
 
 ``` TypeScript
 // 页面创建后挂树的回调
@@ -433,13 +433,13 @@ onPageHide(): void {
 
 其生命周期时序如下图所示：
 
-![image](figures/router_page_lifecycle.png)
+image
 
 Navigation作为路由容器，其生命周期承载在NavDestination组件上，以组件事件的形式开放。
 
 具体生命周期描述请参考Navigation页面生命周期。
 
-<!-- @[life_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/lifeCycle/Index.ets) -->
+<!-- @life_index -->
 
 ``` TypeScript
 @Entry
@@ -497,7 +497,7 @@ Router可以通过命名路由的方式实现跨包跳转。
 
 1. 在想要跳转到的共享包HAR或者HSP页面里，给@Entry修饰的自定义组件EntryOptions命名。
 
-   <!-- @[router_hsp11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp11.ets) -->
+   <!-- @router_hsp11 -->
    
    ``` TypeScript
    // library/src/main/ets/pages/Index.ets
@@ -530,7 +530,7 @@ Router可以通过命名路由的方式实现跨包跳转。
 
 3. 配置成功后需要在跳转的页面中引入命名路由的页面并跳转。
 
-   <!-- @[router_hsp12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp12.ets) -->
+   <!-- @router_hsp12 -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -579,7 +579,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件声明为export。
 
-   <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
+   <!-- @router_hsp21 -->
    
    ``` TypeScript
    @Component
@@ -594,7 +594,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 2. 在HSP（HAR）的Index.ets中导出组件。
 
-   <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
+   <!-- @router_hsp22 -->
    
    ``` TypeScript
    export { PageInHSP } from './src/main/ets/pages/PageInHSP';
@@ -611,7 +611,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 4. 配置好HSP（HAR）的项目依赖后，在mainPage中导入自定义组件，并添加到pageMap中，即可正常调用。
 
-   <!-- @[router_hsp23](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp23.ets) -->
+   <!-- @router_hsp23 -->
    
    ``` TypeScript
    // 1.导入跨包的路由页面
@@ -687,7 +687,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 Router可以通过observer实现注册监听，接口定义请参考Router无感监听uiObserver.on('routerPageUpdate')。
 
 
-<!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
+<!-- @observer_comm -->
 
 ``` TypeScript
 import { UIContext, uiObserver } from '@kit.ArkUI';
@@ -710,7 +710,7 @@ uiObserver.on('routerPageUpdate', this.getUIContext(), callbackFunc);
 
 Navigation同样可以通过在observer中实现注册监听。
 
-<!-- @[observer_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Index.ets) -->
+<!-- @observer_index -->
 
 ``` TypeScript
 // EntryAbility.ets
@@ -760,7 +760,7 @@ Router可以通过queryRouterPageInfo接口查询当前自定义组件所在的P
 | state                | RouterPageState             | 是   | routerPage页面的状态。           |
 | pageId<sup>12+</sup> | string                      | 是   | routerPage页面的唯一标识。       |
 
-<!-- @[observer_pageinfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/PageInfo.ets) -->
+<!-- @observer_pageinfo -->
 
 ``` TypeScript
 import { uiObserver } from '@kit.ArkUI';
@@ -789,7 +789,7 @@ Navigation也可以通过queryNavDestinationInfo接口查询当前自定义组�
 | param<sup>12+</sup>            | Object              | 否   | NavDestination组件的参数。                   |
 | navDestinationId<sup>12+</sup> | string              | 是   | NavDestination组件的唯一标识ID。             |
 
-<!-- @[observer_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/QueryNav.ets) -->
+<!-- @observer_query -->
 
 ``` TypeScript
 import { uiObserver } from '@kit.ArkUI';

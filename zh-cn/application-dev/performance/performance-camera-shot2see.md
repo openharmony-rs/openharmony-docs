@@ -19,7 +19,7 @@
 
 **分段式拍照流程示意图**
 
-![camera-subsection-mode-image](figures/camera-subsection-mode-image.png)
+camera-subsection-mode-image
 
 ## 效果展示
 
@@ -27,7 +27,7 @@
 
 | 单段式拍照效果图 | 分段式拍照效果图|
 |-------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| ![camera-single-stage-mode-video](figures/camera-single-stage-mode-video.gif) | ![camera-subsection-mode-video](figures/camera-subsection-mode-video.gif) |
+| camera-single-stage-mode-video | camera-subsection-mode-video |
 
 ## 性能对比分析方式
 
@@ -37,11 +37,11 @@
 
 单段式拍照性能数据如下图所示：
 
-![](../performance/figures/camera-single-stage-mode-performance.png)
+
 
 分段式拍照耗时数据如下图所示：
 
-![](../performance/figures/camera-subsection-mode-performance.png)
+
 
 性能对比分析表：
 
@@ -359,4 +359,4 @@
 
 ## 完整示例
 
-[相机分段式拍照源码](https://gitcode.com/harmonyos-cases/cases/tree/master/test/performance/camera_shot2see)
+相机分段式拍照源码

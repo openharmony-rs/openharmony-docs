@@ -60,7 +60,7 @@ struct PageMaterialReverse {
 }
 ```
 
-<div align=center><img src="figures/colorinvert.gif"/></div>
+<div align=center></div>
 
 ## 为沉浸式系统材质附色
 
@@ -99,7 +99,7 @@ struct MaterialColorExample {
 }
 ```
 
-<div align=center><img src="figures/material-color.jpg" width="40%"/></div>
+<div align=center></div>
 
 ## 设置沉浸式系统材质交互效果
 
@@ -136,7 +136,7 @@ struct InteractiveMaterialExample {
 }
 ```
 
-<div align=center><img src="figures/interactive-light.gif" width="40%"/></div>
+<div align=center></div>
 
 ## 设置沉浸式系统材质阴影效果
 
@@ -144,7 +144,7 @@ struct InteractiveMaterialExample {
 
 沉浸式系统材质自带阴影效果：
 
-<div align=center><img src="figures/shadowOriginal.jpg" width="60%"/></div>
+<div align=center></div>
 
 
 将applyShadow置为false后设置自定义shadow（如粉色阴影）的效果，示例如下：
@@ -180,4 +180,4 @@ struct CustomShadowExample {
 }
 ```
 
-<div align=center><img src="figures/shadowPink.jpg" width="60%"/></div>
+<div align=center></div>

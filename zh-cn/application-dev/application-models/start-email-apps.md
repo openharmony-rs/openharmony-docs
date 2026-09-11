@@ -91,7 +91,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
     ```
     效果示例图：
     
-    ![效果示例图](./figures/start-mail-panel.png)
+    效果示例图
 
 ## 目标方开发步骤
 

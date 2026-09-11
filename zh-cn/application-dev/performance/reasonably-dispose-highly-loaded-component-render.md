@@ -15,7 +15,7 @@
 
 由于业务需求，从当前页面进入一个新页面时，会有转场动画播放，并且在动画首帧中加载新页面所需要的数据。如果数据量较多，那么动画首帧的响应时延就会变长，导致后面的动画帧延迟播放，产生卡顿的情况。
 
-![动画](figures/highly-loaded-component-render-1.gif)
+动画
 
 ### 解决思路
 
@@ -23,7 +23,7 @@
 
 ### 常规代码
 
-在自定义列表组件中一次性加载全部数据，可参考[组件堆叠场景](https://gitcode.com/HarmonyOS-Cases/cases/tree/master/CommonAppDevelopment/feature/componentstack)中的具体实现。
+在自定义列表组件中一次性加载全部数据，可参考组件堆叠场景中的具体实现。
 
 ```typescript
 // CommonAppDevelopment/feature/componentstack/src/main/ets/view/ProductList.ets
@@ -51,7 +51,7 @@ export struct ProductList {
 
 图1 第一帧加载全部数据
 
-![image-20240717183013984](figures/highly_loaded_component_transition_normal.png)
+image-20240717183013984
 
 ### 优化代码
 
@@ -123,13 +123,13 @@ export struct ProductList {
 
 图2 分帧加载数据
 
-![image-20240717183924458](figures/highly_loaded_component_transition_displaysync.png)
+image-20240717183924458
 
 ## 滑动场景
 
 在日历应用中，需要在一个List里面加载每个月的全部天数，包括公历和农历日期，这样在一个Item中就会有最少58条数据加载，也就相当于需要58个组件。当列表滑动的时候，通过组件复用的aboutToReuse()接口设置新的数据，就会导致可能有58个组件一起刷新，可能会引起掉帧卡顿现象。
 
-![image-20240507183126622](figures/highly_loaded_component_render_0.gif)
+image-20240507183126622
 
 ### 解决思路
 
@@ -200,19 +200,19 @@ struct ItemView {
 
 图3 组件复用帧率
 
-![image-20240507183017893](figures/highly_loaded_component_render_1.png)
+image-20240507183017893
 
 通过图中信息可以看到，滑动期间的帧率是113帧，按照手机120帧来计算，滑动期间掉帧率约为5.8%。放大图3后可以看到，应用每次加载新数据时（图4中橙色部分）RenderService层都会有一帧出现异常情况（图4中黄色部分）。此处对于图中颜色区域的解释，可参考SmartPerf Host工具。
 
 图4 绘制耗时
 
-![image-20240507183126622](figures/highly_loaded_component_render_2.png)
+image-20240507183126622
 
 将其中一部分继续放大后可以得到图5。选中Actual Timeline（render_service）标签中的146272后，可以通过箭头看到它所关联到的位置是Actual Timeline（example.display）标签中的209136和209137，即RenderService层出现的异常情况是由应用层中前面两帧里面的操作引起的。结合代码和箭头2的标签可以看到，在209135中调用了aboutToReuse接口，此时系统开始了组件复用的绘制操作。通过代码可以看到，在aboutToReuse接口将一个月的所有数据全部放入了当前被复用的组件中，并更新了所有的用于显示日期的Text组件中的数据（箭头3，diffIndexArray.length：35，表示有35个不同的元素），这就导致209136需要计算35个子组件的尺寸（箭头1），从而引起146272的绘制时间延长。在列表数据量较少时，其实并不会引起掉帧现象，因为每次延长帧的时间都很短，对帧率的影响较小，但是在列表数据较多时，就会因为延长帧过多，发生掉帧现象。
 
 图5 详细耗时
 
-![image-20240507184557969](figures/highly_loaded_component_render_3.png)
+image-20240507184557969
 
 **优化代码**
 
@@ -302,25 +302,25 @@ aboutToReuse(params: Record<string, Object>): void {
 
 图6 优化后帧率
 
-![image-20240507190154885](figures/highly_loaded_component_render_4.png)
+image-20240507190154885
 
 从图6中可以看到，通过代码优化后，帧率是正常的120帧了。然后将图6中的Trace结果放大后可以看到图7，RenderService层出现的延长帧（Actual Timeline（render_service）标签中的黄色部分）明显减少了，已经不是优化前每次加载数据都会出现的情况了。
 
 图7 优化后绘制耗时
 
-![image-20240507190741305](figures/highly_loaded_component_render_5.png)
+image-20240507190741305
 
 下面将图7中的信息继续放大一些，看一下现在每一帧里都做了什么操作，如图8所示。在211618中，开始调用aboutToReuse接口，由于只是将数据放入一个数组中，并没有更新复用组件中的数据，所以这一帧并没有发生延长现象。在211619中开始逐步更新复用组件中的数据，但是由于前一帧（211618）中并没有更新当前复用组件中的数据，所以在211619中并不需要绘制组件，所以此帧耗时依旧很短。结合代码可以看到，在211620中放入了5天的日期数据，由于前一帧（211619）只是设置了2条数据，并且只有1条会更新组件（this.month = this.temp[0].month会更新显示月份的Text），所以这一帧的绘制时间也不会超时。
 
 图8 优化后详细耗时1
 
-![image-20240507195613210](figures/highly_loaded_component_render_6.png)
+image-20240507195613210
 
 继续看后面的Trace信息，如图9所示。和前一帧（211621）一样，此帧中更新了5天的日期数据，并且会重新测量上一帧（211621）中更新数据的5个Text组件尺寸（箭头1），而其余的组件由于数据并没有变动，所以测量被略过了（箭头2）。后面的帧是类似的，每次只会放入5天的数据，并且更新上一帧中设置的数据所关联的Text组件。由于每次更新的组件数量较少，每帧基本上都能在规定的时间内（1秒120帧，即8ms一帧）绘制完成，所以延长帧就会较少。这样不论列表中数据多还是少，都不会引起掉帧现象的发生。
 
 图9 优化后详细耗时2
 
-![image-20240507200236522](figures/highly_loaded_component_render_7.png)
+image-20240507200236522
 
 **不建议锁定最高帧率运行**
 
@@ -362,7 +362,7 @@ sync.setExpectedFrameRateRange({
 
 @ohos.graphics.displaySync (可变帧率)
 
-[示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/HighlyLoadedComponentRender)
+示例代码
 
 ## FAQ
 
@@ -376,7 +376,7 @@ A：并不会，通过示例中的Trace图可以看到，除了正在被复用�
 
 图10 DisplaySync监听耗时
 
-![image-20240507194742115](figures/highly_loaded_component_render_8.png)
+image-20240507194742115
 
 **Q：为什么抓取到的Trace中没有示例中那么多的标签？**
 

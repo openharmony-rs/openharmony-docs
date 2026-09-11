@@ -31,13 +31,13 @@
 > - 回调函数打印日志时，携带输入的requestId，用于关联一次交互过程相关的日志，便于索引查询整个流程，协助问题定位。
 
 ## 基于XComponent的自绘制接入方式
-以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)。对接完成后，在开启无障碍功能时，可使XComponent中的三方框架绘制组件接入，实现无障碍交互。
+以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考AccessibilityCapiSample。对接完成后，在开启无障碍功能时，可使XComponent中的三方框架绘制组件接入，实现无障碍交互。
 
 1. 按照自定义渲染（XComponent）的使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景创建前置工程。
 
 2. 获得无障碍接入Provider并注册回调函数（以多实例场景为例）。
 
-   <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_one_start -->
    
    ``` C++
    #include <arkui/native_interface_accessibility.h>
@@ -101,7 +101,7 @@
   > - 根节点的属性中的enabled须设置为true。如果设置为false，根节点被禁用，无障碍系统会认为整个控件树都不可交互，从而忽略所有子节点的查询和操作。根节点作为整个控件树的入口，必须处于可用状态，才能保证无障碍服务正常工作。
   > - 根节点的属性中的visible须设置为true。无障碍系统只对可见的节点进行遍历和交互。如果设置为false，根节点不可见，整个控件树都会被无障碍服务忽略，导致三方框架的无障碍能力完全失效。确保用户在使用无障碍功能时，能感知到三方框架渲染的所有界面元素。
 
-   <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_two_start -->
    
    ``` C++
    int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanceId, int64_t elementId,
@@ -245,7 +245,7 @@
 
 - 基于指定的节点，查询下一个可聚焦的无障碍节点
 
-   <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_three_start -->
    
    ``` C++
    int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
@@ -307,7 +307,7 @@
 
 - 基于指定的节点，查询满足指定组件文本内容的节点信息
 
-   <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_four_start -->
    
    ``` C++
    int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
@@ -324,7 +324,7 @@
 
 - 基于指定的节点，查询已经聚焦的节点信息
 
-   <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_five_start -->
    
    ``` C++
    int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
@@ -341,7 +341,7 @@
 
 - 基于指定的节点，执行指定的操作
 
-   <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_six_start -->
    
    ``` C++
    void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
@@ -444,7 +444,7 @@
 
 - 清除当前获焦的节点
 
-   <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_seven_start -->
    
    ``` C++
    int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
@@ -458,7 +458,7 @@
 
 - 基于指定的节点，获取当前文本组件的光标位置
 
-   <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   <!-- @abilitycap_eight_start -->
    
    ``` C++
    int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
@@ -481,13 +481,13 @@ provider通过回调函数OH_ArkUI_AccessibilityProviderRegisterCallback或者OH
 >
 > - 基于CustomNode的自定义绘制容器组件，仅支持类型为ARKUI_NODE_CUSTOM且无其他子节点的ArkUI_Node。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
 
-以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCustomCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi)。回调函数实现请参考基于XComponent的自绘制接入方式。完成回调函数实现后，开启无障碍功能，基于CustomNode构建渲染节点树的三方框架即可接入无障碍服务，实现控件树的无障碍交互与信息查询。
+以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考AccessibilityCustomCapi。回调函数实现请参考基于XComponent的自绘制接入方式。完成回调函数实现后，开启无障碍功能，基于CustomNode构建渲染节点树的三方框架即可接入无障碍服务，实现控件树的无障碍交互与信息查询。
 
 1. 按照基于CustomNode构建渲染节点树场景创建前置工程。
 
 2. 获取无障碍接入Provider实例，将回调函数与Provider实例绑定并完成注册。
 
-    <!-- @[abilitycap_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi/entry/src/main/cpp/AccessibilityMaker.cpp) -->
+    <!-- @abilitycap_nine_start -->
     
     ``` C++
     int32_t AccessibilityMaker::GetAccessibilityProvider(ArkUI_NodeHandle* customNode, const char* id)

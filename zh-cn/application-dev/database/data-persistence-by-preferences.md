@@ -20,7 +20,7 @@
 
 **图1** 用户首选项运作机制  
 
-![preferences](figures/preferences.jpg)
+preferences
 
 ## 存储模式说明
 用户首选项默认使用XML格式进行存储，从API version 18开始，可选择GSKV存储模式。
@@ -93,7 +93,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    若接口返回false，则说明当前平台不支持GSKV模式，请使用XML模式进行数据存储。
 
-   <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
+   <!--@isStorageTypeSupported--> 
    
    ``` TypeScript
    let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
@@ -105,7 +105,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
    context的定义如下：
-   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@DefineContext-->
    
    ``` TypeScript
    const context = EntryAbility.getContext();
@@ -114,7 +114,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
    <!--Del-->Stage模型示例：<!--DelEnd-->
-   <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@GetPreferencesSync-->
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -148,7 +148,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
    <!--Del-->Stage模型示例：<!--DelEnd-->
 
-   <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@GetPreferencesSyncGSKV-->
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -192,7 +192,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
    
-   <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@PutSync-->
    
    ``` TypeScript
    if (dataPreferences.hasSync('startup')) {
@@ -213,8 +213,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
 
-   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@GetSync-->
+   <!--@GetSync-->
    
    ``` TypeScript
    let val = dataPreferences.getSync('startup', 'default');
@@ -229,7 +229,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    使用deleteSync()方法删除指定键值对，示例代码如下所示：
 
-   <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@DeleteSync-->
    
    ``` TypeScript
    dataPreferences.deleteSync('startup');
@@ -239,7 +239,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    应用存入数据到Preferences实例后，可以使用flush()方法实现数据持久化。示例代码如下所示：
 
-   <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@Flush-->
    
    ``` TypeScript
    dataPreferences.flush((err: BusinessError) => {
@@ -259,7 +259,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
 
-   <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@XMLOn-->
 
    ``` TypeScript
    let observer = (key: string) => {
@@ -288,7 +288,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    针对GSKV存储模式，订阅的Key值发生变更后（无需调用flush），observer被触发回调。
 
    示例代码如下所示：
-   <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@GSKVOn-->
    
    ``` TypeScript
    let observer = (key: string) => {
@@ -306,7 +306,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    ```
 9. 删除指定文件。
 
-   使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preference存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
+   使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preferences存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
 
    > **说明：**
    >
@@ -317,7 +317,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
    > - 在GSKV模式中，该接口不支持与其他接口并发调用（包括多进程），否则会出现不可预期行为。
 
    context的定义如下：
-   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@DefineContext-->
    
    ``` TypeScript
    const context = EntryAbility.getContext();
@@ -325,7 +325,7 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    示例代码如下所示：
 
-   <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@DeleteXMLPreferences-->
    
    ``` TypeScript
    let options: preferences.Options = { name: 'myStore' };
@@ -342,20 +342,20 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
 针对用户首选项开发，有以下相关实例可供参考：
 
-- [游戏2048（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
+- 游戏2048（ArkTS）（API9）
 
-- [图案密码锁（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/PatternLock)
+- 图案密码锁（ArkTS）（API9）
 
-- [首选项（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences)
+- 首选项（ArkTS）（API9）
 
-- [首选项（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/Preferences)
+- 首选项（ArkTS）（API9）
 
-- [用户首选项（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/PreferenceJS)
+- 用户首选项（JS）（API9）
 
-- [备忘录（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/NotePadOpenHarmony)
+- 备忘录（ArkTS）（API9）
 
-- [应用的首次启动（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/FirstStartDemo)
+- 应用的首次启动（ArkTS）（API9）
 
-- [应用内字体大小调节（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
+- 应用内字体大小调节（ArkTS）（API9）
 
 <!--RP1--><!--RP1End-->

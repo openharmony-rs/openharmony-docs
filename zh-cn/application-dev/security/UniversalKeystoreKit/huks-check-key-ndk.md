@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 3. 调用接口OH_Huks_IsKeyItemExist，查询密钥是否存在。
 
-<!-- @[query_whether_the_key_exists_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @query_whether_the_key_exists_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

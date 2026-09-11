@@ -17,7 +17,7 @@ User Authentication Kit（用户认证服务）提供了基于用户在设备本
 
 用户身份认证可用于各种鉴权场景，如应用内账号登录、支付认证等。
 
-![user-authentication-process](figures/user-authentication-process.png)
+user-authentication-process
 
 ## 亮点/特征
 
@@ -59,7 +59,7 @@ User Authentication Kit（用户认证服务）提供了基于用户在设备本
 
 统一用户认证框架架构如下图所示。
 
-![unified-user-authentication-framework](figures/unified-user-authentication-framework.png)
+unified-user-authentication-framework
 
 用户认证框架主要包括四个部分：
 

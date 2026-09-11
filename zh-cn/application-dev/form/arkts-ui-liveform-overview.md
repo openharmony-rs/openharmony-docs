@@ -14,11 +14,11 @@
 
 ### 趣味交互类型
 
-趣味交互类型互动卡片，提供卡片小游戏功能，当用户点击卡片时，开始体验对应卡片小游戏。当前仅支持基于[快游戏](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-interact-card-0000002045917828)开发。详细请参考趣味交互类型互动卡片开发指导。
+趣味交互类型互动卡片，提供卡片小游戏功能，当用户点击卡片时，开始体验对应卡片小游戏。当前仅支持基于快游戏开发。详细请参考趣味交互类型互动卡片开发指导。
 
 **图1** 趣味交互类型互动卡片样例
 
-![live-form-game-demo.gif](figures/live-form-game-demo.gif)
+live-form-game-demo.gif
 
 ### 场景动效类型
 

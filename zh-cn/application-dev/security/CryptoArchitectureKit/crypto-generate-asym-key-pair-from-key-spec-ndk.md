@@ -30,7 +30,7 @@
 
 6. 分别传入密钥对中的私钥和公钥，调用OH_CryptoPrivKey_GetParam和OH_CryptoPubKey_GetParam，获取RSA算法中私钥和公钥的各种密钥参数。
 
-<!-- @[TestRsa](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
+<!-- @TestRsa -->
 
 ``` C++
 
@@ -192,7 +192,7 @@ OH_Crypto_ErrCode doTestRsaGenKeyPairBySpec()
 
 6. 分别传入密钥对中的私钥和公钥，调用OH_CryptoPrivKey_GetParam和OH_CryptoPubKey_GetParam，获取ECC算法中私钥和公钥的各种密钥参数。
 
-<!-- @[TestEcc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/ecc.cpp) -->
+<!-- @TestEcc -->
 
 ``` C++
 
@@ -488,7 +488,7 @@ OH_Crypto_ErrCode doTestEccGenKeyPairBySpec()
 
 8. 分别传入密钥对中的私钥和公钥，调用OH_CryptoPrivKey_GetParam和OH_CryptoPubKey_GetParam，获取SM2算法中私钥和公钥的各种密钥参数。
 
-<!-- @[TestSm2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
+<!-- @TestSm2 -->
 
 ``` C++
 

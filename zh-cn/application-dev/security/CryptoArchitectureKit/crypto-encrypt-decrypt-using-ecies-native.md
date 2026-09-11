@@ -61,7 +61,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ### 示例代码
 
-<!-- @[use_sample_native_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/cpp/project/native_test.cpp) -->
+<!-- @use_sample_native_test -->
 
 ``` C++
 #include <cstring>

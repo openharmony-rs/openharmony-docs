@@ -23,7 +23,7 @@
 
 以下示例展示了创建Picker组件并设置基本属性的方法。
 
-<!-- @[create_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndexMaker.cpp) -->
+<!-- @create_picker -->
 
 ``` C++
 static ArkUI_NodeHandle CreatePicker(ArkUI_NativeNodeAPI_1 *api)
@@ -59,7 +59,7 @@ static ArkUI_NodeHandle CreatePicker(ArkUI_NativeNodeAPI_1 *api)
 
 参考示例中列表组件的实现方式，可以将Picker组件常用的属性设置封装到自定义的工具类中方便后续使用。
 
-<!-- @[container_picker_can_loop_maker_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerCanLoopMaker.h) -->
+<!-- @container_picker_can_loop_maker_class -->
 
 ``` C
 class ContainerPickerCanLoopMaker : public BaseNode {
@@ -188,7 +188,7 @@ private:
 
 通过设置ArkUI_NodeAttributeType中的`NODE_PICKER_OPTION_SELECTED_INDEX`属性，可以设置Picker组件的默认选中项索引。
 
-<!-- @[selected_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerEventsMaker.h) -->
+<!-- @selected_index -->
 
 ``` C
 ArkUI_NumberValue selectedIndexValue = {.u32 = index};
@@ -203,7 +203,7 @@ nodeApi_->setAttribute(GetHandle(), NODE_PICKER_OPTION_SELECTED_INDEX, &selected
 
 使用ArkUI_NativeNodeAPI_1时可直接调用`setAttribute`。
 
-<!-- @[enable_haptic_feedback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerEventsMaker.h) -->
+<!-- @enable_haptic_feedback -->
 
 ``` C
 ArkUI_NumberValue enableHapticFeedbackValue = {.i32 = enabled ? 1 : 0};
@@ -214,7 +214,7 @@ nodeApi_->setAttribute(GetHandle(), NODE_PICKER_ENABLE_HAPTIC_FEEDBACK, &enableH
 
 若使用上文封装的`ContainerPickerCanLoopMaker`，可调用已封装的接口。
 
-<!-- @[set_haptic_feedback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndicatorMaker.cpp) -->
+<!-- @set_haptic_feedback -->
 
 ``` C++
 picker->SetHapticFeedback(K_HAPTIC_FEEDBACK);
@@ -230,7 +230,7 @@ picker->SetHapticFeedback(K_HAPTIC_FEEDBACK);
 
 使用ArkUI_NativeNodeAPI_1时可直接调用`setAttribute`。
 
-<!-- @[can_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerEventsMaker.h) -->
+<!-- @can_loop -->
 
 ``` C
 ArkUI_NumberValue canLoopValue = {.i32 = canLoop ? 1 : 0};
@@ -240,7 +240,7 @@ nodeApi_->setAttribute(GetHandle(), NODE_PICKER_CAN_LOOP, &canLoopItem);
 
 若使用上文封装的`ContainerPickerCanLoopMaker`，可调用已封装的接口。
 
-<!-- @[set_can_loop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndicatorMaker.cpp) -->
+<!-- @set_can_loop -->
 
 ``` C++
 picker->SetCanLoop(K_CAN_LOOP);
@@ -252,7 +252,7 @@ picker->SetCanLoop(K_CAN_LOOP);
 
 使用ArkUI_NativeNodeAPI_1时可直接调用`setAttribute`。
 
-<!-- @[display_item_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndexMaker.cpp) -->
+<!-- @display_item_count -->
 
 ``` C++
 ArkUI_NumberValue itemCountValue = {.i32 = count};
@@ -260,7 +260,7 @@ ArkUI_AttributeItem itemCountItem = {&itemCountValue, sizeof(itemCountValue) / s
 g_state->api->setAttribute(g_state->pickerNode, NODE_PICKER_DISPLAYED_ITEM_COUNT, &itemCountItem);
 ```
 
-<!-- @[item_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndexMaker.cpp) -->
+<!-- @item_height -->
 
 ``` C++
 ArkUI_NumberValue itemHeightValue = {.f32 = heightVp};
@@ -274,7 +274,7 @@ g_state->api->setAttribute(g_state->pickerNode, NODE_PICKER_ITEM_HEIGHT, &itemHe
 
 选择指示器的背景样式通过ArkUI_PickerIndicatorBackground结构体设置，包括背景颜色和圆角半径。
 
-<!-- @[set_indicator_background](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndicatorMaker.h) -->
+<!-- @set_indicator_background -->
 
 ``` C
 void SetSelectionIndicatorBackground(uint32_t backgroundColor, float cornerRadius = 10.0f)
@@ -300,7 +300,7 @@ void SetSelectionIndicatorBackground(uint32_t backgroundColor, float cornerRadiu
 
 选择指示器的分割线样式通过ArkUI_PickerIndicatorDivider结构体设置，包括线宽、颜色和边距。
 
-<!-- @[set_indicator_divider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerIndicatorMaker.h) -->
+<!-- @set_indicator_divider -->
 
 ``` C
 void SetSelectionIndicatorDivider(uint32_t dividerColor, float strokeWidth = 2.0f, float startMargin = 20.0f,
@@ -328,7 +328,7 @@ void SetSelectionIndicatorDivider(uint32_t dividerColor, float strokeWidth = 2.0
 
 若使用上文封装的`ContainerPickerCanLoopMaker`，可调用已封装的接口。
 
-<!-- @[set_selection_indicator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerMonthMaker.cpp) -->
+<!-- @set_selection_indicator -->
 
 ``` C++
 picker->SetSelectionIndicatorDivider(0xFF0000FF, 2.0f, 20.0f, 20.0f);
@@ -347,7 +347,7 @@ picker->SetSelectionIndicatorDivider(0xFF0000FF, 2.0f, 20.0f, 20.0f);
 
 通过registerNodeEvent注册`NODE_PICKER_EVENT_ON_CHANGE`事件，使用ArkUI_NodeEventItem结构体指定回调函数，可以监听Picker组件的选择变化。事件回调中会返回选中项的索引值。
 
-<!-- @[on_picker_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerEventsMaker.cpp) -->
+<!-- @on_picker_change -->
 
 ``` C++
 api->registerNodeEvent(picker, NODE_PICKER_EVENT_ON_CHANGE, K_ON_CHANGE_EVENT_ID, nullptr);
@@ -357,7 +357,7 @@ api->registerNodeEvent(picker, NODE_PICKER_EVENT_ON_CHANGE, K_ON_CHANGE_EVENT_ID
 
 通过registerNodeEvent注册`NODE_PICKER_EVENT_ON_SCROLL_STOP`事件，使用ArkUI_NodeEventItem结构体指定回调函数，可以监听Picker组件滚动停止时的选择变化。与`NODE_PICKER_EVENT_ON_CHANGE`事件相比，该事件只在滚动停止时触发，适合需要在滚动完成后再处理选择的场景。
 
-<!-- @[on_scroll_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/native_type_sample/entry/src/main/cpp/ContainerPickerEventsMaker.cpp) -->
+<!-- @on_scroll_stop -->
 
 ``` C++
 api->registerNodeEvent(picker, NODE_PICKER_EVENT_ON_SCROLL_STOP, K_ON_SCROLL_STOP_EVENT_ID, nullptr);
@@ -366,4 +366,4 @@ api->registerNodeEvent(picker, NODE_PICKER_EVENT_ON_SCROLL_STOP, K_ON_SCROLL_STO
 ## 完整示例
 
 <!--RP1-->
-[Native_Type_Sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/native_type_sample)<!--RP1End-->
+Native_Type_Sample<!--RP1End-->

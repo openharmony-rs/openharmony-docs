@@ -41,7 +41,7 @@
 
     在entry模块下创建子进程源文件，继承ChildProcess类并实现onStart方法。
 
-    <!-- @[arkts_child_process_noarg_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/process/DemoProcessNoArg.ets) -->
+    <!-- @arkts_child_process_noarg_child -->
     
     ``` TypeScript
     import { ChildProcess } from '@kit.AbilityKit';
@@ -67,7 +67,7 @@
 
     使用Promise异步回调：
 
-    <!-- @[arkts_child_process_noarg_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @arkts_child_process_noarg_one --> 
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
@@ -113,7 +113,7 @@
 
     使用callback异步回调：
 
-    <!-- @[arkts_child_process_noarg_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @arkts_child_process_noarg_two --> 
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
@@ -167,7 +167,7 @@
 
     在模块下创建子进程源文件，继承ChildProcess类并实现onStart方法。onStart方法的参数为ChildProcessArgs，用于接收主进程传递的参数。
 
-    <!-- @[arkts_child_process_arg_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/process/DemoProcessArg.ets) -->
+    <!-- @arkts_child_process_arg_child -->
     
     ``` TypeScript
     import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -191,7 +191,7 @@
 
     启动后可在HiLog中搜索“startArkChildProcess”关键字，查看到“startArkChildProcess success, pid: xxx”日志表示子进程创建成功；再搜索“DemoProcess onStart”关键字，查看到该日志表示子进程入口函数已执行。
 
-    <!-- @[arkts_child_process_arg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ArkTsChildProcess/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @arkts_child_process_arg --> 
     
     ``` TypeScript
     import { childProcessManager } from '@kit.AbilityKit';
@@ -258,7 +258,7 @@
 
     在子进程中，实现参数为NativeChildProcess_Args的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
 
-    <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+    <!-- @child_process_necessary_export_impl -->
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
@@ -316,7 +316,7 @@
 
     启动后可在HiLog中搜索“startNativeChildProcess”关键字，查看到“startNativeChildProcess success, pid: xxx”日志表示子进程创建成功；再搜索“Main started”关键字，查看到该日志表示子进程入口函数已执行。
     
-    <!-- @[child_get_start_params_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @child_get_start_params_index -->
     
     ``` TypeScript
     import { common, ChildProcessArgs, ChildProcessOptions, childProcessManager } from '@kit.AbilityKit';

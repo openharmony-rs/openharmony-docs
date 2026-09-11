@@ -75,7 +75,7 @@
 
 **图1** want参数的action匹配规则
 
-![want-action](figures/want-action.png)
+want-action
 
 
 ### want参数的entities匹配规则
@@ -94,7 +94,7 @@
 
 **图2** want参数的entities匹配规则
 
-![want-entities](figures/want-entities.png)
+want-entities
 
 
 ### want参数的uri和type匹配规则
@@ -125,7 +125,7 @@
 
 **图3** want参数中uri和type皆不为空时的匹配规则
 
-![want-uri-type1](figures/want-uri-type1.png)
+want-uri-type1
 
 为了简化描述：
 
@@ -134,7 +134,7 @@
 
 **图4** want参数中uri和type的具体匹配规则
 
-![want-uri-type2](figures/want-uri-type2.png)
+want-uri-type2
 
 
 ### uri匹配规则
@@ -172,7 +172,7 @@
 
 **图5** want参数中uri的匹配规则示例
 
-![want-uri-case](figures/want-uri-case.png)
+want-uri-case
 
 ### type匹配规则
 
@@ -204,6 +204,6 @@
 
 **图6** want参数中linkFeature具体匹配规则
 
-![want-linkFeature](figures/linkFeature.png)
+want-linkFeature
 
-![want-linkFeature-case](figures/want-linkFeature-case.png)
+want-linkFeature-case

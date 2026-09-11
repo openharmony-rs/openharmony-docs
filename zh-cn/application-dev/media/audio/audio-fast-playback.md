@@ -17,7 +17,7 @@
 
 ## 开发指导
 
-  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
+  以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ### 简介
 
@@ -31,7 +31,7 @@
 
 设置低时延模式开发示例：
 
-<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+<!-- @OH_AudioStreamBuilder_SetLatencyMode -->
 
 ``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
@@ -40,7 +40,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 针对OHAudio开发音频播放，有以下相关实例可供参考：
 
-- [OHAudio录制和播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio)。
+- OHAudio录制和播放。
 
 ## 注意事项
 
@@ -74,7 +74,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 设置数据回调函数示例：
 
-<!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
+<!-- @Render_SetRendererWriteDataCallback -->  
 
 ``` C++
 // 自定义写入数据函数。

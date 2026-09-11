@@ -50,7 +50,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
 
 - 异步方法示例：
 
-  <!-- @[gcm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_encryption_decryption/aes_gcm_encryption_decryption_asynchronous.ets) -->
+  <!-- @gcm_encrypt_decrypt_aes_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -133,7 +133,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
 
 - 同步方法示例：
 
-  <!-- @[gcm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_encryption_decryption/aes_gcm_encryption_decryption_synchronous.ets) -->
+  <!-- @gcm_encrypt_decrypt_aes_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -255,7 +255,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
 AES（CCM模式）解密失败返回错误码17630001可参考使用AES-CCM算法解密时调用doFinal失败
 
 - 异步方法示例：
-  <!-- @[ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_asynchronous.ets) -->
+  <!-- @ccm_encrypt_decrypt_aes_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -325,7 +325,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考使用AES-CCM算�
   ```
 
 - 同步方法示例：
-  <!-- @[ccm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_ccm_encryption_decryption_synchronous.ets) -->
+  <!-- @ccm_encrypt_decrypt_aes_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -434,7 +434,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考使用AES-CCM算�
 AES（CCM模式）解密失败返回错误码17630001可参考使用AES-CCM算法解密时调用doFinal失败
 
 - 异步方法示例：
-  <!-- @[new_ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_new_ccm_encryption_decryption_asynchronous.ets) -->
+  <!-- @new_ccm_encrypt_decrypt_aes_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -502,7 +502,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考使用AES-CCM算�
   ```
 
 - 同步方法示例：
-  <!-- @[new_ccm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_new_ccm_encryption_decryption_synchronous.ets) -->
+  <!-- @new_ccm_encrypt_decrypt_aes_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -594,7 +594,7 @@ AES（CCM模式）解密失败返回错误码17630001可参考使用AES-CCM算�
 AES（CBC模式）解密失败返回错误码17630001可参考使用AES-CBC算法解密时调用doFinal失败
 
 - 异步方法示例：
-  <!-- @[cbc_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_cbc_encryption_decryption/aes_cbc_encryption_decryption_asynchronous.ets) -->
+  <!-- @cbc_encrypt_decrypt_aes_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -662,7 +662,7 @@ AES（CBC模式）解密失败返回错误码17630001可参考使用AES-CBC算�
   ```
 
 - 同步方法示例：
-  <!-- @[cbc_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_cbc_encryption_decryption/aes_cbc_encryption_decryption_synchronous.ets) -->
+  <!-- @cbc_encrypt_decrypt_aes_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -755,7 +755,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考使用AES-ECB算�
 
 - 异步方法示例：
 
-  <!-- @[ecb_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ecb_encryption_decryption/aes_ecb_encryption_decryption_asynchronous.ets) -->
+  <!-- @ecb_encrypt_decrypt_aes_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -807,7 +807,7 @@ AES（ECB模式）解密失败返回错误码17630001可参考使用AES-ECB算�
 
 - 同步方法示例：
 
-  <!-- @[ecb_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ecb_encryption_decryption/aes_ecb_encryption_decryption_synchronous.ets) -->
+  <!-- @ecb_encrypt_decrypt_aes_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -903,7 +903,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
 
 - 异步方法示例：
 
-  <!-- @[gcm_seg_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_seg_encryption_decryption/aes_gcm_seg_encryption_decryption_asynchronous.ets) -->
+  <!-- @gcm_seg_encrypt_decrypt_aes_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1010,7 +1010,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
 
 - 同步方法示例：
 
-  <!-- @[gcm_seg_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_gcm_seg_encryption_decryption/aes_gcm_seg_encryption_decryption_synchronous.ets) -->
+  <!-- @gcm_seg_encrypt_decrypt_aes_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1148,7 +1148,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
 3. 当解密内容长度较短时，可以省略调用update，直接调用Cipher.doFinal，获取解密后的数据。
 
 - 异步方法示例：
-  <!-- @[xts_encrypt_decrypt_aes_symkey_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_xts_encryption_decryption/aes_xts_encryption_decryption_asynchronous.ets) -->
+  <!-- @xts_encrypt_decrypt_aes_symkey_asynchronous -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -1210,7 +1210,7 @@ AES（GCM模式）解密失败返回错误码17630001可参考使用AES-GCM算�
   ```
 
 - 同步方法示例：
-  <!-- @[xts_encrypt_decrypt_aes_symkey_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_xts_encryption_decryption/aes_xts_encryption_decryption_synchronous.ets) -->
+  <!-- @xts_encrypt_decrypt_aes_symkey_synchronous -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

@@ -27,7 +27,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_Other_Migrations_List_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV1.ets) -->
+<!-- @Internal_Other_Migrations_List_V1 -->
 
 ``` TypeScript
 @Entry
@@ -71,7 +71,7 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_Other_Migrations_List_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV2.ets) -->
+<!-- @Internal_Other_Migrations_List_V2 -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -127,7 +127,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) --> 
+<!-- @Internal_Other_Migrations_WaterFlow_V1 --> 
 
 ``` TypeScript
 @Entry
@@ -211,7 +211,7 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_Other_Migrations_WaterFlow_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV2.ets) -->
+<!-- @Internal_Other_Migrations_WaterFlow_V2 -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -305,7 +305,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) --> 
+<!-- @Internal_attribute_Modifier_V1 --> 
 
 ``` TypeScript
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -348,7 +348,7 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_attribute_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV2.ets) -->
+<!-- @Internal_attribute_Modifier_V2 -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -398,7 +398,7 @@ V1：
 
 具体实例如下：
 
-<!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) --> 
+<!-- @Internal_Common_Modifier_V1 --> 
 
 ``` TypeScript
 import { CommonModifier } from '@kit.ArkUI';
@@ -468,7 +468,7 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) -->
+<!-- @Internal_Common_Modifier_V2 -->
 
 ``` TypeScript
 import { UIUtils, CommonModifier } from '@kit.ArkUI';
@@ -544,7 +544,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) -->  
+<!-- @Internal_Module_Modifier_V1 -->  
 
 ``` TypeScript
 import { TextModifier } from '@kit.ArkUI';
@@ -623,7 +623,7 @@ V2：
 
 具体示例如下：
 
-<!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) --> 
+<!-- @Internal_Module_Modifier_V2 --> 
 
 ``` TypeScript
 import { UIUtils, TextModifier } from '@kit.ArkUI';
@@ -705,7 +705,7 @@ V1：
 
 在状态管理V1中，开发者希望通过修改MyButtonModifier的flag来改变绑定在Button上的属性。由于状态管理V1的\@State装饰器支持自身及第一层对象属性的观察能力，因此只需用\@State装饰AttributeUpdater，即可监听其变化并触发属性更新。
 
-<!-- @[Internal_Attribute_Updater_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV1.ets) -->
+<!-- @Internal_Attribute_Updater_V1 -->
 
 ``` TypeScript
 // xxx.ets
@@ -755,7 +755,7 @@ V2：
 
 与状态管理V1不同，状态管理V2的\@Local仅观察自身变化，因此MyButtonModifier需添加\@ObservedV2装饰器，flag需要被\@Trace装饰，并且需要在组件创建过程中读取flag以建立其与Button组件的联系。在AttributeUpdater场景中，需在initializeModifier中读取flag（如示例所示），否则无法建立关联。
 
-<!-- @[Internal_Attribute_Updater_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV2.ets) -->
+<!-- @Internal_Attribute_Updater_V2 -->
 
 ``` TypeScript
 // xxx.ets

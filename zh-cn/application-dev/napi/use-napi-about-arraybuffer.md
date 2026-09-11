@@ -48,7 +48,7 @@ import testNapi from 'libentry.so';
 
 cpp部分代码
 
-<!-- @[napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_arraybuffer -->
 
 ``` C++
 // napi_is_arraybuffer
@@ -76,7 +76,7 @@ static napi_value IsArrayBuffer(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_is_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_is_arraybuffer_api -->
 
 ``` TypeScript
 export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined; // napi_is_arraybuffer
@@ -85,7 +85,7 @@ export const isArrayBuffer: <T>(arrayBuffer: T) => boolean | undefined; // napi_
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_arraybuffer -->
 
 ``` TypeScript
 // test interface napi_is_arraybuffer
@@ -116,7 +116,7 @@ Test Node-API napi_is_arraybuffer: false
 
 cpp部分代码
 
-<!-- @[napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_arraybuffer_info -->
 
 ``` C++
 // napi_get_arraybuffer_info
@@ -161,7 +161,7 @@ static napi_value GetArrayBufferInfo(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_get_arraybuffer_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_arraybuffer_info_api -->
 
 ``` TypeScript
 export class ArrayBufferInfo {
@@ -174,7 +174,7 @@ export const getArrayBufferInfo: (data: ArrayBuffer) => ArrayBufferInfo | undefi
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_arraybuffer_info -->
 
 ``` TypeScript
 // test interface napi_get_arraybuffer_info
@@ -203,7 +203,7 @@ Test Node-API napi_get_arraybuffer_info byteLength: 5 buffer: {"0":1,"1":2,"2":3
 
 cpp部分代码
 
-<!-- @[napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_detach_arraybuffer -->
 
 ``` C++
 // napi_detach_arraybuffer
@@ -241,7 +241,7 @@ static napi_value IsDetachedArrayBuffer(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_detach_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_detach_arraybuffer_api -->
 
 ``` TypeScript
 export const detachedArrayBuffer: (buffer:ArrayBuffer) => ArrayBuffer; // napi_detach_arraybuffer
@@ -251,7 +251,7 @@ export const isDetachedArrayBuffer: (arrayBuffer: ArrayBuffer) => boolean; //nap
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_detach_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_detach_arraybuffer -->
 
 ``` TypeScript
 // test interface napi_detach_arraybuffer and napi_is_detached_arraybuffer
@@ -285,7 +285,7 @@ Test Node-API napi_is_detached_arraybuffer two: true
 
 cpp部分代码
 
-<!-- @[napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_arraybuffer -->
 
 ``` C++
 // napi_create_arraybuffer
@@ -321,7 +321,7 @@ static napi_value CreateArrayBuffer(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_create_arraybuffer_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_arraybuffer_api -->
 
 ``` TypeScript
 export const createArrayBuffer: (size: number) => ArrayBuffer; // napi_create_arraybuffer
@@ -329,7 +329,7 @@ export const createArrayBuffer: (size: number) => ArrayBuffer; // napi_create_ar
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_arraybuffer -->
 
 ``` TypeScript
 // test interface napi_create_arraybuffer

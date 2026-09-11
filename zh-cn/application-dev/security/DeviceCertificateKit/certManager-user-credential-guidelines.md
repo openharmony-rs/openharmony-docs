@@ -11,7 +11,7 @@
 
 用户证书凭据功能提供了用户级别的证书凭据（包含证书链和私钥）的安全存储、授权管理和签名能力。用户证书凭据的公私钥对存储在Universal Keystore Kit。
 
-![](figures/certificate-manager-user-credential-arch.png)
+
 
 用户证书凭据归属于设备的用户，可以由设备的用户通过系统设置应用进行安装和管理，应用也可以通过API拉起证书管理服务的对话框，引导用户完成安装。
 
@@ -90,7 +90,7 @@
 
 ## 样例代码
 
-<!-- @[certificate_management_user_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets) -->
+<!-- @certificate_management_user_cred_guidance -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

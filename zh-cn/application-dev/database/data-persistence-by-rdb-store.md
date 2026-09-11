@@ -30,7 +30,7 @@
 
 **图1** 关系型数据库运作机制
  
-![relationStore_local](figures/relationStore_local.jpg)
+relationStore_local
 
 
 ## 约束限制
@@ -75,7 +75,7 @@
    
    Stage模型示例：
      
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->  
+   <!--@persistence_get_store-->  
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -257,7 +257,7 @@
    > - 错误码的详细介绍请参见通用错误码和关系型数据库错误码。
 
 2. 获取到RdbStore，完成数据表创建后，调用insert()接口插入数据。示例代码如下所示：
-   <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@persistence_insert_data-->
    
    ``` TypeScript
    // 插入数据
@@ -291,7 +291,7 @@
 3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
    调用update()方法修改数据，调用delete()方法删除数据。示例代码如下所示：
-   <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@persistence_update_and_delete_data-->
    
    ``` TypeScript
    // 修改数据、删除数据
@@ -338,7 +338,7 @@
 4. 根据谓词指定的查询条件查找数据。
 
    调用query()方法查找数据，返回一个ResultSet结果集。示例代码如下所示：
-   <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@persistence_query_data-->
    
    ``` TypeScript
    // 查找数据
@@ -373,7 +373,7 @@
    当前RDB还支持进行FTS全文检索，可以根据中文或者英文进行文本检索，针对中文分词器支持ICU分词器。
 
    以中文关键字检索为例：
-   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
+   <!--@persistence_chinese_query_data--> 
    
    ``` TypeScript
    // 中文关键字检索，查找数据
@@ -410,7 +410,7 @@
    支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
    具体信息请参见createTransaction。
-   <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@persistence_transaction_insert_update_and_delete_data-->
    
    ``` TypeScript
    // 使用事务对象执行数据的插入、删除和更新操作
@@ -472,7 +472,7 @@
 6. 在同路径下备份数据库。关系型数据库支持手动备份和自动备份（仅系统应用可用）两种方式，具体可见关系型数据库备份。
 
    此处以手动备份为例：
-   <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@persistence_backup_store-->
    
    ``` TypeScript
    // 在同路径下备份数据库
@@ -491,7 +491,7 @@
 7. 从备份数据库中恢复数据。关系型数据库支持两种方式：恢复手动备份数据和恢复自动备份数据（仅系统应用可用），具体可见关系型数据库数据恢复。
 
    此处以调用restore接口恢复手动备份数据为例：
-   <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@persistence_restore-->
    
    ``` TypeScript
    // 备份数据库中恢复数据
@@ -511,7 +511,7 @@
    调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
 
    Stage模型示例：
-   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
+   <!--@persistence_delete_store--> 
    
    ``` TypeScript
    // 删除数据库
@@ -529,4 +529,4 @@
 
 针对关系型数据库的开发，有以下相关实例可供参考：
 
-- [`Rdb`：关系型数据库（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/Rdb)
+- `Rdb`：关系型数据库（ArkTS）（API9）

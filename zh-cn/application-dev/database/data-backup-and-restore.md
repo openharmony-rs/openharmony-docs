@@ -45,7 +45,7 @@
    export class KvInterface {
    }
    ```
-   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store1 -->
    
    ``` TypeScript
    public CreateKvManager = (() => {
@@ -67,7 +67,7 @@
      }
    })
    ```
-   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store3 -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -127,7 +127,7 @@
 
 2. 使用put()方法插入数据。
 
-   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store4 -->
    
    ``` TypeScript
    public Put = (() => {
@@ -156,7 +156,7 @@
 
 3. 使用backup()方法备份数据。
 
-   <!-- @[kv_store7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store7 -->
    
    ``` TypeScript
    public Backup = (() => {
@@ -183,7 +183,7 @@
 
 4. 使用delete()方法删除数据（模拟意外删除、篡改场景）。
 
-   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store6 -->
    
    ``` TypeScript
    public Delete = (() => {
@@ -210,7 +210,7 @@
 
 5. 使用restore()方法恢复数据。
 
-   <!-- @[kv_store8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store8 -->
    
    ``` TypeScript
    public Restore = (() => {
@@ -237,7 +237,7 @@
 
 6. 当本地设备存储空间有限或需要重新备份时，还可使用deleteBackup()方法删除备份，释放存储空间。
 
-   <!-- @[kv_store9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   <!-- @kv_store9 -->
    
    ``` TypeScript
    public DeleteBackup = (() => {
@@ -273,7 +273,7 @@
 
 手动备份：通过调用backup接口实现数据库手动备份。示例如下：
 
-<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @backuprestore_TS_IncludeSupported -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -286,7 +286,7 @@ import { common } from '@kit.AbilityKit';
 
 
 
-<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @backupManually -->
 
 ``` TypeScript
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
@@ -369,7 +369,7 @@ export default class EntryAbility extends UIAbility {
 
 若数据库异常前未配置StoreConfig中的allowRebuild或allowRebuild配置为false，则需将其配置为true再次进行开库。具体示例如下：
 
-<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @rebuildingRelationalDatabaseAbnormally -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
@@ -407,7 +407,7 @@ try {
 
 1. 抛出数据库异常错误码。
 
-    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @databaseExceptionErrorCodeThrown -->
     
     ``` TypeScript
     let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -443,7 +443,7 @@ try {
 
 2. 关闭所有打开着的结果集。
 
-    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @closeAllOpenResultSets -->
     
     ``` TypeScript
     let resultSets: relationalStore.ResultSet[] = []
@@ -464,7 +464,7 @@ try {
 
 3. 调用restore接口恢复数据。
 
-    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->  
+    <!-- @invokeTheRestoreInterfaceToRestoreData -->  
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;

@@ -31,7 +31,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 1. 添加头文件。
 
-   <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+   <!-- @screenCapture_import -->
    
    ``` C
    #include "hilog/log.h"
@@ -49,7 +49,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 2. 调用OH_AVScreenCapture_Create方法创建AVScreenCapture实例g_avCapture。
 
-   <!-- @[screenCapture_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_create -->
    
    ``` C++
    g_avCapture = OH_AVScreenCapture_Create();
@@ -59,7 +59,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    创建AVScreenCapture实例capture后，可以设置屏幕录屏所需要的参数。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @screenCapture_config -->   
    
    ``` C++
    void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
@@ -127,7 +127,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    方式一（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
 
-   <!-- @[screenCapture_createCaptureStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @screenCapture_createCaptureStrategy --> 
    
    ``` C++
    // 通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
@@ -139,7 +139,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    方式二：需传入期望录制的窗口ID进行录屏。
    
-   <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @screenCapture_withWindow_forID --> 
    
    ``` C++
    // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
@@ -157,7 +157,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 4. 调用OH_AVScreenCapture_StartScreenRecording方法开始进行窗口级录屏。
 
-   <!-- @[screenCapture_startScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_startScreenRecording -->
    
    ``` C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
@@ -165,7 +165,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 5. 调用OH_AVScreenCapture_StopScreenRecording方法停止录屏。
 
-   <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_stopScreenRecording -->
    
    ``` C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
@@ -173,7 +173,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 6. 调用OH_AVScreenCapture_Release方法销毁实例，释放资源。
 
-   <!-- @[screenCapture_releaseScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @screenCapture_releaseScreenRecording -->
    
    ``` C++
    OH_AVScreenCapture_Release(g_avCapture);

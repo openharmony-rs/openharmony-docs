@@ -18,7 +18,7 @@ ArkWeb提供了Web组件，用于在应用程序中显示Web页面内容，为�
 >
 > ArkWeb抛滑丢帧事件仅提供发生卡顿的Web组件对应的web_id，最长丢帧时长及其他相关数据，不提供卡顿日志等信息。开发者可以借助web_id，参考“订阅ArkWeb抛滑丢帧事件（ArkTS）”文件中的示例代码获取到发生丢帧的网页地址，再结合业界成熟的DevTools工具复现并排查根因。
 >
-> 从API version 23开始，ArkWeb抛滑丢帧事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)、原子化服务及[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
+> 从API version 23开始，ArkWeb抛滑丢帧事件支持在应用分身、原子化服务及输入法应用场景下使用 HiAppEvent 进行订阅。
 
 ## 检测原理
 

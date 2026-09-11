@@ -49,7 +49,7 @@
 
    启动组件的具体校验流程如下图：
 
-   ![component-startup-rules-inner-device-sys](figures/component-startup-rules-inner-device-sys.png)
+   component-startup-rules-inner-device-sys
 
 
    通过startAbilityByCall()接口跨应用启动UIAbility组件时，需要具备三个条件：1.申请ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（下文简称CALL）权限；2.目标UIAbility组件的exported为true，若申请INVISIBLE权限，可不受该条规则约束；3.启动方的UIAbility位于前台，否则需要申请BACKGROUND权限。权限的申请方式请参考声明权限。
@@ -63,7 +63,7 @@
 
    启动组件的具体校验流程如下图：
 
-   ![component-startup-rules-inner-device-call-sys](figures/component-startup-rules-inner-device-call-sys.png)
+   component-startup-rules-inner-device-call-sys
 
 ## ExtensionAbility组件启动规则
 
@@ -82,7 +82,7 @@
 
    启动组件的具体校验流程如下图：
 
-   ![component-startup-rules-extension-inner-device-call-sys](figures/component-startup-rules-extension-inner-device-call-sys.png)
+   component-startup-rules-extension-inner-device-call-sys
 
 - DataShareExtensionAbility组件启动规则：
 

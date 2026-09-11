@@ -15,15 +15,15 @@
 
 ### 数字格式化
 
-数字格式化请参考[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)。
+数字格式化请参考Intl.NumberFormat。
 
 ### 数字范围格式化
 
-数字范围格式化请参考[formatRange](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatRange)。
+数字范围格式化请参考formatRange。
 
 ### 货币和单位格式化
 
-货币和单位的格式化基于数字格式化，在创建货币和单位格式化对象时，将数字的显示风格分别设置为“currency(货币)”和“unit(单位)”。同样，对货币和度量衡进行格式化时也支持通过[Intl.NumberFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options)设置不同的格式。
+货币和单位的格式化基于数字格式化，在创建货币和单位格式化对象时，将数字的显示风格分别设置为“currency(货币)”和“unit(单位)”。同样，对货币和度量衡进行格式化时也支持通过Intl.NumberFormatOptions设置不同的格式。
 
 ### 度量衡转换
 
@@ -47,7 +47,7 @@ unitConvert接口可以将原始单位转换为目标单位，并根据区域ID�
 
 1. 导入模块。
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   <!-- @import_module -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -55,7 +55,7 @@ unitConvert接口可以将原始单位转换为目标单位，并根据区域ID�
 
 2. 单位转换。
 
-   <!-- @[measurement_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   <!-- @measurement_conversion -->
    
    ``` TypeScript
    // 设置要转换的单位和目标单位

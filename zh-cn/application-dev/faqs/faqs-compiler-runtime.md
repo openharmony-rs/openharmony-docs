@@ -2,7 +2,7 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -94,7 +94,7 @@ bar()
 
 **解决方案**
 
-开发者可以通过IDE中Code Linter检查工具识别应用代码中的循环依赖并进行代码重构，消除循环依赖影响，工具详情请参考[DevEco Studio代码Code Linter检查](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-code-linter-V5)。操作步骤如下：
+开发者可以通过IDE中Code Linter检查工具识别应用代码中的循环依赖并进行代码重构，消除循环依赖影响，工具详情请参考DevEco Studio代码Code Linter检查。操作步骤如下：
 
 1. 在工程根目录下创建code-linter.json5配置文件，配置如下：
     ```json5
@@ -124,11 +124,11 @@ bar()
 **定位方案**
 
 在windows上，可以打开事件管理器，Windows日志，应用程序，找到对应的时间，如果能找到es2abc.exe的崩溃日志，同时异常代码为 0xc00000fd, 那么表示该编译由于爆栈导致崩溃。<br>
-![事件查看器](figures/WinCrashLog.png)<br>
+事件查看器<br>
 在mac上，可以进入控制台，点击崩溃报告，找到es2abc,双击查看崩溃日志。<br>
-![控制台](figures/MacConsole.png)<br>
+控制台<br>
 如果出现下图中所示，调用栈出现大量反复的调用相同的函数，那么极有可能是出现了大量递归导致爆栈。<br>
-![崩溃日志](figures/CrashLog.png)
+崩溃日志
 
 **解决方案**
 

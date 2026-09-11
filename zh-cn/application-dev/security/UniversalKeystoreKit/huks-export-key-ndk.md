@@ -31,7 +31,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 3. 返回值为成功码/错误码，导出公钥以标准的X.509规范的DER格式封装在参数key中，具体请参考公钥材料格式。
 
-<!-- @[get_persistent_storage_asymmetric_public_keys_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/KeyExport/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @get_persistent_storage_asymmetric_public_keys_cpp -->
 
 ``` C++
 #include "huks/native_huks_api.h"

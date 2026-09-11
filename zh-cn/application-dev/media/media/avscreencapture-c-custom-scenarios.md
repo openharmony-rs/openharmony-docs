@@ -17,7 +17,7 @@ AVScreenCapture支持应用完成场景化的自定义配置，具体配置可�
 
 使用OH_AVScreenCapture_StrategyForKeepCaptureDuringCall设置蜂窝通话时是否保持录屏。
 
-<!-- @[screenCapture_buffer_strategy_keepCaptureDuringCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_strategy_keepCaptureDuringCall -->
 
 ``` C++
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
@@ -32,7 +32,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 使用OH_AVScreenCapture_StrategyForBFramesEncoding设置是否使用B帧编码，用于减小录制文件的大小。
 
-<!-- @[screenCapture_buffer_strategy_BFramesEncoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_strategy_BFramesEncoding -->
 
 ``` C++
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
@@ -49,7 +49,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 使用OH_AVScreenCapture_StrategyForPickerPopUp设置是否弹出屏幕捕获Picker。
 
-<!-- @[screenCapture_buffer_strategy_pickerPopUp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_strategy_pickerPopUp -->
 
 ``` C++
 // 创建CaptureStrategy对象。
@@ -74,7 +74,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 调用此接口完成设置后，无需再调用OH_AVScreenCapture_ResizeCanvas手动修改分辨率。
 
-<!-- @[screenCapture_buffer_strategy_canvasFollowRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_strategy_canvasFollowRotation -->
 
 ``` C++
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
@@ -94,7 +94,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 > - 配置麦克风权限ohos.permission.MICROPHONE，配置方式请参见向用户申请权限。
 > - 申请长时任务，申请方式请参见申请长时任务。
 
-<!-- @[screenCapture_buffer_strategy_setMicrophoneEnabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_strategy_setMicrophoneEnabled -->
 
 ``` C++
 bool isMic = true;
@@ -105,7 +105,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 
 从API version 20开始，支持使用OH_AVScreenCapture_StrategyForPrivacyMaskMode设置录屏隐私窗口屏蔽模式。
 
-<!-- @[screenCapture_buffer_strategy_privacyMaskMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_strategy_privacyMaskMode -->
 
 ``` C++
 // value值设为0，表示全屏屏蔽模式。value值设为1，表示窗口屏蔽模式。默认为全屏屏蔽模式。开发者可根据实际需求选择合适取值。
@@ -118,7 +118,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 在API version 12时，支持使用OH_AVScreenCapture_SkipPrivacyMode设置录屏时的豁免隐私窗口。目前设置豁免隐私窗口需要传入所有隐私子窗口和主窗口ID，传空数组取消豁免隐私窗口。
 
-<!-- @[screenCapture_buffer_skipPrivacyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_skipPrivacyMode -->
 
 ``` C++
 std::vector<int> windowIdsSkipPrivacy = {};
@@ -132,7 +132,7 @@ OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullp
 
 可以根据需要设置区域坐标和大小，使用OH_AVScreenCapture_SetCaptureArea设置想要捕获的区域，如下方创建了一个从（0，0）为起点的宽100px，高100px的矩形区域。此接口在录屏开始前后都可以设置。
 
-<!-- @[screenCapture_buffer_setCaptureArea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+<!-- @screenCapture_buffer_setCaptureArea --> 
 
 ``` C++
 OH_Rect* region = new OH_Rect;
@@ -152,7 +152,7 @@ region = nullptr;
 
 使用OH_AVScreenCapture_ShowCursor设置光标显示开关，开始录屏前后均可调用。
 
-<!-- @[screenCapture_buffer_showCursor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_showCursor -->
 
 ``` C++
 OH_AVScreenCapture_ShowCursor(g_avCapture, false);
@@ -164,7 +164,7 @@ OH_AVScreenCapture_ShowCursor(g_avCapture, false);
 
 使用OH_AVScreenCapture_SetMaxVideoFrameRate设置录屏时的最大帧率，需在录屏启动后被调用。
 
-<!-- @[screenCapture_buffer_setMaxVideoFrameRate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_setMaxVideoFrameRate -->
 
 ``` C++
 OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
@@ -174,7 +174,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
 
 使用OH_AVScreenCapture_ResizeCanvas调整录屏分辨率，需在启动后调用。分辨率有范围限制，视频的宽度和高度最大值不能超过OH_AVCapability_GetVideoWidthRange和OH_AVCapability_GetVideoHeightRange接口中定义的范围。
 
-<!-- @[screenCapture_buffer_resizeCanvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @screenCapture_buffer_resizeCanvas -->
 
 ``` C++
 OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
@@ -188,7 +188,7 @@ OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_
 
 使用OH_AVScreenCapture_ContentFilter_AddWindowContent设置可过滤的窗口，通过窗口ID来指定。
 
-<!-- @[screenCapture_buffer_excludeContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @screenCapture_buffer_excludeContent -->  
 
 ``` C++
 OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
@@ -208,4 +208,4 @@ contentFilter = nullptr;
 
 - API参考：详细的API描述请见native_avscreen_capture.h。
 
-- 示例工程：该示例调用了媒体AVScreenCapture组件提供的接口能力，提供屏幕捕获的功能，详情见[录屏示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample)。
+- 示例工程：该示例调用了媒体AVScreenCapture组件提供的接口能力，提供屏幕捕获的功能，详情见录屏示例工程。

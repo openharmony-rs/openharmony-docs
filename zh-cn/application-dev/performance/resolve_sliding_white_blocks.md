@@ -42,13 +42,13 @@ build() {
 }
 ```
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(5).gif)
+
 
 处理白块问题的常用方案是使用LazyForEach的cachedCount属性来减少白块（设置cachedCount属性，可以支持列表预加载屏幕以外的Item项）。如上图所示，可以看到当用户在滑动列表时，依旧出现了很多白块。
 
 如若使用更大的cachedCount值来解决，设置`cachedCount=40`：
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(40).gif)
+
 
 如上图所示，可以看到在滑动过程中白块确实变少了。但是新的问题出现了：与较小的cachedCount相比，首屏加载需要更长的时间，这同样影响用户使用体验。
 
@@ -80,7 +80,7 @@ LazyForEach懒加载可以通过使用Prefetcher来预取和预渲染数据，�
 
 图1 动态预加载渲染过程示意图
 
-![](./figures/resolve_sliding_white_blocks_sketch_map.png)
+
 
 ## 优化后代码示例
 
@@ -199,7 +199,7 @@ export struct LazyForEachListPage {
 
 | cachedCount = 5                                              | cachedCount = 40                                             | 动态预加载                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
-| ![](./figures/resolve_sliding_white_blocks_cachedCount(5).gif) | ![](./figures/resolve_sliding_white_blocks_cachedCount(40).gif) | ![](./figures/resolve_sliding_white_blocks_prefetch.gif) |
+|  |  |  |
 
 | 数据设置       | 首屏加载   | 滑动过程白块数量                       |
 | -------------- | -------------- | ------------------------------ |
@@ -213,19 +213,19 @@ export struct LazyForEachListPage {
 
 图2 cachedCount=5 CPU占比trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(5)_CPU.png)
+
 
 cachedCount=5的CPU占比为3.96%。
 
 图3 cachedCount=40 CPU占比trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(40)_CPU.png)
+
 
 cachedCount=40的CPU占比为5.04%。
 
 图4 动态预加载CPU占比trace图
 
-![](./figures/resolve_sliding_white_blocks_prefetcher_CPU.png)
+
 
 动态预加载的CPU占比为4.12%。
 
@@ -241,19 +241,19 @@ cachedCount=40的CPU占比为5.04%。
 
 图5 cachedCount=5首屏加载时长trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(5)_time.png)
+
 
 cachedCount=5首屏加载时长为530.4ms
 
 图6 cachedCount=40首屏加载时长trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(40)_time.png)
+
 
 cachedCount=40首屏加载时长为1.8s
 
 图7 动态预加载首屏加载时长trace图
 
-![](./figures/resolve_sliding_white_blocks_prefetcher_time.png)
+
 
 动态预加载首屏加载时长为545.5ms
 

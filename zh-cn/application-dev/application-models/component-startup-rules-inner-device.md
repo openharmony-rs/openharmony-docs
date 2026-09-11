@@ -40,7 +40,7 @@
 
 启动组件的具体校验流程如下图：
 
-![component-startup-rules-inner-device](figures/component-startup-rules-inner-device.png)
+component-startup-rules-inner-device
 
 ## ExtensionAbility组件启动规则
 

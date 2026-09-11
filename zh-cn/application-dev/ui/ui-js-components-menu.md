@@ -44,7 +44,7 @@
 }
 ```
 
-![menu-Component](figures/menu-Component.png)
+menu-Component
 
 > **说明：**
 > - menu仅支持option子组件。
@@ -101,7 +101,7 @@ option{
 }
 ```
 
-![Setting-Styles-1](figures/Setting-Styles-1.png)
+Setting-Styles-1
 
 
 ## 绑定事件
@@ -168,4 +168,4 @@ export default {
 }
 ```
 
-![Binding-Events](figures/Binding-Events.gif)
+Binding-Events

@@ -43,11 +43,11 @@ ArkUI NDK接口能力主要包括：
 
 **图1** NDK接口和ArkTS声明式关系架构图  
 
-![zh-cn_image_0000001923986433](figures/Overall-Architecture.png)
+zh-cn_image_0000001923986433
 
 **图2** 通过NDK接口创建的组件挂载示意图  
 
-![NDK接入](figures/ndk_access.png)
+NDK接入
 
 - ArkTS声明式UI前端和NDK接口都是针对ArkUI底层实现的接口暴露，NDK接口相比于ArkTS声明式UI前端，除了剥离状态管理等声明式UI语法外，还精简了组件能力，将ArkUI组件核心功能通过C接口进行封装暴露。
 

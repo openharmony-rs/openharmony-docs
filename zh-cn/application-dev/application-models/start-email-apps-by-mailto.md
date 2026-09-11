@@ -68,7 +68,7 @@ mailto:someone@example.com?key1=value1&key2=value2
 
 实现效果如下：
 
-![image](figures/mailto-html.gif)
+image
 
 ### 从应用拉起
 
@@ -97,7 +97,7 @@ struct Index {
 
 实现效果如下：
 
-![image](figures/mailto-app.gif)
+image
 
 ## 目标方开发步骤
 

@@ -16,7 +16,7 @@
 
    如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。
 
-   <!-- @[is_execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/IsExecute.ets) -->  
+   <!-- @is_execute -->  
    
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
@@ -98,7 +98,7 @@
 
    1. 如果在执行TaskPool任务过程中发生JS异常，TaskPool会捕获该JS异常并通过taskpool.execute().catch((e:Error)=>{})将异常信息返回，应用需要查看异常信息并修复。
 
-      <!-- @[catch_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Index.ets) -->    
+      <!-- @catch_error -->    
       
       ``` TypeScript
       import { taskpool } from '@kit.ArkTS';
@@ -266,7 +266,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
 3. 应用执行TaskPool任务时，抛出返回结果序列化失败异常，排查代码发现Concurrent函数返回结果是不支持的序列化类型。
 
-   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
+   <!-- @define_printArgs -->     
    
    ``` TypeScript
    // utils.ets
@@ -276,7 +276,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
    }
    ```
 
-   <!-- @[unsupport_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets) -->     
+   <!-- @unsupport_task -->     
    
    ``` TypeScript
    // ExecuteFailedTask.ets
@@ -305,7 +305,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
    **解决方案**：task1在.then中创建执行，Concurrent函数的返回结果设置为可序列化的类型。
 
-   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
+   <!-- @define_printArgs -->     
    
    ``` TypeScript
    // utils.ets
@@ -315,7 +315,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
    }
    ```
 
-   <!-- @[support_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteSupportTask.ets) -->     
+   <!-- @support_task -->     
    
    ``` TypeScript
    // ExecuteSupportTask.ets
@@ -348,7 +348,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
 **代码示例**
 
-<!-- @[test_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstanceof.ets) -->     
+<!-- @test_instanceof -->     
 
 ``` TypeScript
 // pages/TestInstanceof.ets
@@ -374,7 +374,7 @@ function testInstanceof() {
 testInstanceof();
 ```
 
-<!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
+<!-- @define_sendable -->  
 
 ``` TypeScript
 // pages/Sendable.ets
@@ -390,7 +390,7 @@ export class A {
 }
 ```
 
-<!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->    
+<!-- @define_workers -->    
 
 ``` TypeScript
 // workers/Worker.ets
@@ -430,7 +430,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 1. 应用在向子线程传递Sendable类A的实例对象时，抛出类型不一致异常。基于JS栈定位到问题发生在创建类A的实例对象时，排查后发现应用当前模块与其他模块联调时，其他模块未使用Sendable类B封装数据集。   
 **解决方案** ： 应用当前模块将其他模块传递的数据使用Sendable类重新封装。
 
-   <!-- @[define_resolveOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeOne.ets) -->    
+   <!-- @define_resolveOne -->    
    
    ``` TypeScript
    @Sendable
@@ -453,7 +453,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 
 3. 自定义Sendable类继承collections.Array，并重写构造函数。在实例化该类后调用slice函数时，抛出类型不一致异常。原因是调用slice函数时，collections.Array内部会创建新的SendableArray。构造函数的入参是新数组长度，类型为number。由于ans是string类型，而在构造函数中使用number类型的入参对ans赋值，在Sendable类中不允许使用number类型对string类型赋值，因此抛出异常。
 
-   <!-- @[define_resolveTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeTwo.ets) -->     
+   <!-- @define_resolveTwo -->     
    
    ``` TypeScript
    // pages/SolveMismatchTypeTwo.ets
@@ -473,7 +473,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 
    **解决方案**： 对属性的赋值使用独立接口。
 
-   <!-- @[define_resolveThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeThree.ets) -->    
+   <!-- @define_resolveThree -->    
    
    ``` TypeScript
    // pages/SolveMismatchTypeThree.ets
@@ -549,7 +549,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
 
 2. TaskPool任务执行后的结果可以在.then中返回，需要保存的数据如果仅在当前线程使用，可以在.then中将执行结果保存到自定义的数据结构中。
 
-   <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->      
+   <!-- @define_sendableTwo -->      
    
    ``` TypeScript
    // Sendable.ets，与Index.ets在同级目录下
@@ -567,7 +567,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
    }
    ```
 
-   <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->      
+   <!-- @save_result -->      
    
    ``` TypeScript
    // SaveResult.ets
@@ -598,7 +598,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
 
 Sendable装饰器修饰的类与Observed装饰器修饰的类定义在同一个ets文件中，在TaskPool子线程加载Sendable类时捕获到错误信息：SendableItem is not initialized。
 
-<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveItemInitialized.ets) -->     
+<!-- @initialize_item -->     
 
 ``` TypeScript
 // pages/SolveItemInitialized.ets
@@ -644,7 +644,7 @@ Observed装饰器仅支持在UI线程使用，不能在子线程、Worker、Task
 
 将Observed装饰器修饰的类NormalItem剥离到单独的ets文件后，TaskPool子线程再去加载Sendable类SendableItem，应用运行符合预期。
 
-<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveItemInitialized.ets) -->     
+<!-- @initialize_item -->     
 
 ``` TypeScript
 // pages/SolveItemInitialized.ets
@@ -669,7 +669,7 @@ function executeTask() {
 executeTask();
 ```
 
-<!-- @[define_sendableThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->
+<!-- @define_sendableThree -->
 
 ``` TypeScript
 // Sendable.ets
@@ -679,7 +679,7 @@ export class SendableItem {
 }
 ```
 
-<!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
+<!-- @define_normalItem -->
 
 ``` TypeScript
 // ui.ets

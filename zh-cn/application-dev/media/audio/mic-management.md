@@ -14,13 +14,13 @@
 
 ## 开发步骤及注意事项
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考音量API文档AudioVolumeGroupManager。
 
 1. 创建audioVolumeGroupManager对象。
 
-   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
+   <!-- @create_AudioVolumeGroupManager --> 
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -39,7 +39,7 @@
 
    目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例未订阅），因此推荐使用单一AudioManager实例进行开发。
 
-   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
+   <!-- @mac_on --> 
 
    ``` TypeScript
    // 监听麦克风状态变化。
@@ -52,7 +52,7 @@
 
 3. 调用isMicrophoneMute查询麦克风当前静音状态，返回true为静音，false为非静音。
 
-   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
+   <!-- @is_MicrophoneMute -->
 
    ``` TypeScript
    // 查询麦克风是否静音。

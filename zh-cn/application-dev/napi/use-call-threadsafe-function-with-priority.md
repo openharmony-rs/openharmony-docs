@@ -1,7 +1,7 @@
 # 使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -30,7 +30,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - 功能实现
 
-  <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
+  <!-- @napi_call_threadsafe_function_with_priority_cpp -->  
   
   ``` C++
   #include "napi/native_api.h"
@@ -170,7 +170,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - 接口声明
 
-  <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  <!-- @napi_call_threadsafe_function_with_priority_dts -->
   
   ``` TypeScript
   // index.d.ts
@@ -205,7 +205,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - ArkTS代码示例
 
-  <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @napi_call_threadsafe_function_with_priority_ets -->
   
   ``` TypeScript
   // index.ets

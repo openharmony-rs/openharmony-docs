@@ -28,7 +28,7 @@ Environment提供了读取系统环境变量并将其值写入AppStorage的功�
 ## 限制条件
 
 Environment和UIContext相关联，需要在UIContext明确的时候才可以调用Environment的接口，可以通过在runScopedTask里调用明确上下文。如果不是在UIContext明确的地方调用，将导致无法查询到设备环境数据。
-  <!-- @[limiting_condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/entryability/EntryAbilityDemo.ets) -->   
+  <!-- @limiting_condition -->   
   
   ``` TypeScript
   import { UIAbility } from '@kit.AbilityKit';
@@ -55,7 +55,7 @@ Environment和UIContext相关联，需要在UIContext明确的时候才可以调
 
 - 使用Environment.envProp将设备运行的环境变量存入AppStorage中。
 
-  <!-- @[showfirst_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/ShowDetails.ets) --> 
+  <!-- @showfirst_details --> 
   
   ``` TypeScript
   // 将设备的languageCode存入AppStorage，默认值为en
@@ -64,7 +64,7 @@ Environment和UIContext相关联，需要在UIContext明确的时候才可以调
 
 - 在自定义组件中通过@StorageProp获取languageCode的值。
 
-  <!-- @[showsecond_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/ShowDetails.ets) --> 
+  <!-- @showsecond_details --> 
   
   ``` TypeScript
   @StorageProp('languageCode') lang: string = 'en';
@@ -75,7 +75,7 @@ Environment和UIContext相关联，需要在UIContext明确的时候才可以调
 > **说明：**
 >
 > 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，影响其他组件处获取环境变量的结果。
-  <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/UiEnvironment.ets) -->  
+  <!-- @ui_Environment -->  
   
   ``` TypeScript
   // 将设备languageCode存入AppStorage中
@@ -101,10 +101,10 @@ Environment和UIContext相关联，需要在UIContext明确的时候才可以调
   }
   ```
 
-  ![environment-ui](figures/environment-ui.png)
+  environment-ui
 
 ### 应用逻辑使用Environment
-  <!-- @[applied_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/AppliedLogic.ets) --> 
+  <!-- @applied_logic --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';

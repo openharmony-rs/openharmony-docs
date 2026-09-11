@@ -28,7 +28,7 @@
 
 当应用有自定义的信任锚证书时，可以通过trustedCerts参数指定信任的CA证书。
 
-<!-- @[certificate_chain_validation_with_custom_trust_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateCertChainWithCustomTrustAnchor.ets) -->
+<!-- @certificate_chain_validation_with_custom_trust_anchor -->
 
 ``` TypeScript
 
@@ -100,7 +100,7 @@ async function validateCertChainWithCustomTrustAnchor(): Promise<void> {
 
 当应用需要验证互联网公开证书（如HTTPS网站证书）时，可以使用系统预置的CA证书作为信任锚。通过设置trustSystemCa为`true`，校验器会使用系统预置CA证书库构建并验证证书链。
 
-<!-- @[certificate_chain_validation_with_system_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateCertChainWithSystemCa.ets) -->
+<!-- @certificate_chain_validation_with_system_ca -->
 
 ``` TypeScript
 
@@ -170,7 +170,7 @@ async function validateCertChainWithSystemCa(): Promise<void> {
 
 可以通过crls参数指定CRL，用来检查证书是否被吊销。
 
-<!-- @[certificate_chain_validation_with_crl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateCertChainWithCrl.ets) -->
+<!-- @certificate_chain_validation_with_crl -->
 
 ``` TypeScript
 
@@ -273,7 +273,7 @@ async function validateCertChainWithCrl(): Promise<void> {
 
 国密SM2证书链校验，通常需要设置userId参数。
 
-<!-- @[certificate_chain_validation_for_sm2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/ValidateSm2CertChain.ets) -->
+<!-- @certificate_chain_validation_for_sm2 -->
 
 ``` TypeScript
 

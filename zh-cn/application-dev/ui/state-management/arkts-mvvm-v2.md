@@ -26,7 +26,7 @@
 
 **示例1**
 
-<!-- @[Main_Basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BasicPage.ets) -->
+<!-- @Main_Basic -->
 
 ``` TypeScript
 // src/main/ets/pages/BasicPage.ets
@@ -54,7 +54,7 @@ struct TodoList {
 
 **示例2**
 
-<!-- @[Main_Local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/LocalPage.ets) -->
+<!-- @Main_Local -->
 
 ``` TypeScript
 // src/main/ets/pages/LocalPage.ets
@@ -89,7 +89,7 @@ struct TodoList {
 
 **示例3**
 
-<!-- @[Main_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ParamPage.ets) -->
+<!-- @Main_Param -->
 
 ``` TypeScript
 // src/main/ets/pages/ParamPage.ets
@@ -135,7 +135,7 @@ struct TodoList {
 
 **示例4**
 
-<!-- @[Main_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/EventPage.ets) -->
+<!-- @Main_Event -->
 
 ``` TypeScript
 // src/main/ets/pages/EventPage.ets
@@ -213,7 +213,7 @@ Repeat支持两种场景：懒加载场景和非懒加载场景。
 
 **示例5**
 
-<!-- @[Main_Repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/RepeatPage.ets) -->  
+<!-- @Main_Repeat -->  
 
 ``` TypeScript
 // src/main/ets/pages/RepeatPage.ets
@@ -288,7 +288,7 @@ struct TodoList {
 
 **示例6**
 
-<!-- @[Main_ObservedV2Trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ObservedV2TracePage.ets) --> 
+<!-- @Main_ObservedV2Trace --> 
 
 ``` TypeScript
 // src/main/ets/pages/ObservedV2TracePage.ets
@@ -392,7 +392,7 @@ struct TodoList {
 
 **示例7**
 
-<!-- @[Main_MonitorComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/MonitorComputedPage.ets) --> 
+<!-- @Main_MonitorComputed --> 
 
 ``` TypeScript
 // src/main/ets/pages/MonitorComputedPage.ets
@@ -509,7 +509,7 @@ struct TodoList {
 
 **示例8**
 
-<!-- @[Main_AppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2Page.ets) --> 
+<!-- @Main_AppStorageV2 --> 
 
 ``` TypeScript
 // src/main/ets/pages/AppStorageV2Page.ets
@@ -631,7 +631,7 @@ struct TodoList {
   }
 }
 ```
-<!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
+<!-- @Main_SettingPage --> 
 
 ``` TypeScript
 // src/main/ets/pages/SettingPage.ets
@@ -680,7 +680,7 @@ struct SettingPage {
 
 **示例9**
 
-<!-- @[Main_PersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PersistenceV2Page.ets) --> 
+<!-- @Main_PersistenceV2 --> 
 
 ``` TypeScript
 // src/main/ets/pages/PersistenceV2Page.ets
@@ -848,7 +848,7 @@ JSON文件存放在src/main/resources/rawfile/defaultTasks.json路径下。
 
 **示例10**
 
-<!-- @[Main_Builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BuilderPage.ets) --> 
+<!-- @Main_Builder --> 
 
 ``` TypeScript
 // src/main/ets/pages/BuilderPage.ets
@@ -1013,7 +1013,7 @@ struct TodoList {
 ```
 
 ### 效果图展示
-![todolist](./figures/MVVMV2-todolist.gif)
+todolist
 
 ## 重构代码以符合MVVM架构
 
@@ -1049,7 +1049,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
 
 - TaskModel：单个任务的基本数据结构，包含任务名称和完成状态。
 
-  <!-- @[Model_TaskModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskModel.ets) -->
+  <!-- @Model_TaskModel -->
   
   ``` TypeScript
   export default class TaskModel {
@@ -1060,7 +1060,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
-  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->      
+  <!-- @Model_TaskListModel -->      
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -1103,7 +1103,7 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
 
 - TaskViewModel：封装单个任务的数据和状态变更逻辑，通过状态装饰器监控数据的变化。
 
-  <!-- @[ViewModel_TaskViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskViewModel.ets) -->
+  <!-- @ViewModel_TaskViewModel -->
   
   ``` TypeScript
   // src/main/ets/viewmodel/TaskViewModel.ets
@@ -1127,7 +1127,7 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
   
 - TaskListViewModel：封装了任务列表以及管理功能，包括加载任务、批量更新任务状态，以及添加和删除任务。
 
-  <!-- @[ViewModel_TaskListViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskListViewModel.ets) --> 
+  <!-- @ViewModel_TaskListViewModel --> 
   
   ``` TypeScript
   // src/main/ets/viewmodel/TaskListViewModel.ets
@@ -1173,7 +1173,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 - TitleView：负责展示应用的标题和未完成任务的统计信息。
 
-  <!-- @[View_TitleView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/TitleView.ets) -->
+  <!-- @View_TitleView -->
   
   ``` TypeScript
   // src/main/ets/view/TitleView.ets
@@ -1195,7 +1195,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 - ListView：负责展示任务列表，并根据Setting中的设置筛选是否显示已完成的任务。它依赖于TaskListViewModel来获取任务数据，并通过TaskItem组件进行渲染，包括任务的名称、完成状态以及删除按钮。通过TaskViewModel和TaskListViewModel实现用户的交互，如切换任务完成状态和删除任务。
 
-  <!-- @[View_ListView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/ListView.ets) -->  
+  <!-- @View_ListView -->  
   
   ``` TypeScript
   // src/main/ets/view/ListView.ets
@@ -1254,7 +1254,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   
 - BottomView：负责提供与任务操作相关的按钮和输入框，如"全部完成"、"全部未完成"，"设置"三个按钮，以及添加新任务的输入框。点击"全部完成"和"全部未完成"时，通过TaskListViewModel更改所有任务的状态。点击"设置"按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
 
-  <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) --> 
+  <!-- @View_BottomView --> 
   
   ``` TypeScript
   // src/main/ets/view/BottomView.ets
@@ -1318,7 +1318,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 - TodoListPage：todolist的主页面，包含以上的三个View组件（TitleView、ListView、BottomView），用于统一展示待办事项的各个部分，管理任务列表和用户设置。TodoListPage负责从ViewModel中获取数据，并将数据传递给各个子View组件进行渲染，通过PersistenceV2持久化任务数据，确保数据在应用重启后仍能保持一致。
 
-  <!-- @[Main_TodoListPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/TodoListPage.ets) -->
+  <!-- @Main_TodoListPage -->
   
   ``` TypeScript
   // src/main/ets/pages/TodoListPage.ets
@@ -1364,7 +1364,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   
 - SettingPage：设置页面，负责管理是否显示已完成任务的设置。通过AppStorageV2应用全局存储用户的设置，用户通过Toggle开关切换showCompletedTask状态。
 
-  <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
+  <!-- @Main_SettingPage --> 
   
   ``` TypeScript
   // src/main/ets/pages/SettingPage.ets
@@ -1411,5 +1411,5 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 ## 代码示例
 <!--RP1-->
-[完整源码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM)
+完整源码
 <!--RP1End-->

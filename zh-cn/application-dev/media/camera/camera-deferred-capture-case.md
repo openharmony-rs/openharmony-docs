@@ -16,7 +16,7 @@
 
 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
 
-![deferred-capture-development-process](figures/deferred-capture-development-process.png)
+deferred-capture-development-process
 
 ## 完整示例
 

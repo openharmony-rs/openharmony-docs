@@ -19,13 +19,13 @@
 
     当应用的首个进程创建时，意味着应用的启动；当应用的所有进程结束时，则意味着应用退出（具体关联见下图）。
 
-    ![application-process-lifecycle](figures/application-process-lifecycle.png)
+    application-process-lifecycle
 
 - 应用进程生命周期与UIAbility组件的关系
 
     应用进程的生命周期直接制约并影响着UIAbility组件的生命周期（具体关联见下图）。
 
-    ![process-ability-lifecycle](figures/process-ability-lifecycle.png)
+    process-ability-lifecycle
 
     UIAbility组件生命周期的前后台回调与进程的前后台状态密切相关，但二者并非完全等同：
 
@@ -76,7 +76,7 @@
 
 以UIAbilityContext中的使用为例进行说明。
 
-<!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
+<!-- @lifecycle_ability_start -->
 
 > **说明：**
 >

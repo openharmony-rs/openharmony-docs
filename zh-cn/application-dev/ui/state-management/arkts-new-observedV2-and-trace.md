@@ -34,7 +34,7 @@
 
 现有状态管理V1版本无法实现对嵌套类对象属性变化的直接观测。
 
-<!-- @[Observed_Limitations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/Limitations.ets) -->  
+<!-- @Observed_Limitations -->  
 
 ``` TypeScript
 @Observed
@@ -80,11 +80,11 @@ struct Index {
 }
 ```
 
-![observedv2-sync-0](./figures/observedv2-sync-0.png)
+observedv2-sync-0
 
 在上述代码中，点击Text组件增加age的值时，不会触发UI刷新。原因在于现有的状态管理框架无法观测到嵌套类中属性age的值变化。V1版本的解决方案是使用\@ObjectLink装饰器与自定义组件来实现观测。
 
-<!-- @[Realize_Observation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/RealizeObservation.ets) -->  
+<!-- @Realize_Observation -->  
 
 ``` TypeScript
 @Observed
@@ -143,7 +143,7 @@ struct Index {
 }
 ```
 
-![observedv2-sync-1](./figures/observedv2-sync-1.gif)
+observedv2-sync-1
 
 通过这种方式虽然能够实现对嵌套类中属性变化的观测，但是当嵌套层级较深时，代码将会变得十分复杂，易用性差。因此推出类装饰器\@ObservedV2与成员变量装饰器\@Trace，增强对嵌套类中属性变化的观测能力。
 
@@ -165,7 +165,7 @@ struct Index {
 
 - 在嵌套类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-<!-- @[Observe_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/ObserveChanges.ets) --> 
+<!-- @Observe_Changes --> 
 
 ``` TypeScript
 @ObservedV2
@@ -197,11 +197,11 @@ struct Index {
 }
 ```
 
-![observedv2-sync-2](./figures/observedv2-sync-2.gif)
+observedv2-sync-2
 
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-<!-- @[Inherited_Changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/InheritedChanges.ets) --> 
+<!-- @Inherited_Changes --> 
 
 ``` TypeScript
 @ObservedV2
@@ -232,11 +232,11 @@ struct Index {
 }
 ```
 
-![observedv2-sync-3](./figures/observedv2-sync-3.gif)
+observedv2-sync-3
 
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
 
-<!-- @[Static_Attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/overview/StaticAttribute.ets) --> 
+<!-- @Static_Attribute --> 
 
 ``` TypeScript
 @ObservedV2
@@ -262,7 +262,7 @@ struct Index {
 }
 ```
 
-![observedv2-sync-4](./figures/observedv2-sync-4.gif)
+observedv2-sync-4
 
 - \@Trace装饰内置类型时，可以观测各自API导致的变化：
 
@@ -279,7 +279,7 @@ struct Index {
 
 - 非\@Trace装饰的成员属性用在UI上无法触发UI刷新。
 
-<!-- @[UiRefresh_CannotTriggered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UiRefreshCannotTriggered.ets) --> 
+<!-- @UiRefresh_CannotTriggered --> 
 
 ``` TypeScript
 @ObservedV2
@@ -315,7 +315,7 @@ struct Index {
 }
 ```
 
-![observedv2-sync-5](./figures/observedv2-sync-5.gif)
+observedv2-sync-5
 
 - \@ObservedV2仅能装饰class，无法装饰自定义组件。
 
@@ -364,7 +364,7 @@ class Person {
 
 - 使用\@ObservedV2与\@Trace装饰的类不能和\@State等V1的装饰器混合使用，编译时报错。
 
-<!-- @[Use_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/UseMixture.ets) --> 
+<!-- @Use_Mixture --> 
 
 ``` TypeScript
 // 以@State装饰器为例
@@ -415,11 +415,11 @@ struct Index {
 }
 ```
 
-![observedv2-sync-6](./figures/observedv2-sync-6.gif)
+observedv2-sync-6
 
 - 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
 
-<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) --> 
+<!-- @Inheritance_Mixture --> 
 
 ``` TypeScript
 // 以@State装饰器为例
@@ -477,7 +477,7 @@ struct Index {
 ```
 
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
-- \@ObservedV2的类实例无法直接使用JSON.parse反序列化获得（直接使用JSON.parse反序列化获得的对象无法观察属性变化），可搭配三方库[class-transformer](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/class-transformer)实现反序列化后可观察，示例请参考\@ObservedV2装饰对象的序列化与反序列化。
+- \@ObservedV2的类实例无法直接使用JSON.parse反序列化获得（直接使用JSON.parse反序列化获得的对象无法观察属性变化），可搭配三方库class-transformer实现反序列化后可观察，示例请参考\@ObservedV2装饰对象的序列化与反序列化。
 
 ## 使用场景
 
@@ -491,7 +491,7 @@ struct Index {
 * 自定义组件Page中的son是常规变量，因此点击Button('assign Son')并不会观测到变化。
 * 当点击Button('assign Son')后，再点击Button('change length')并不会引起UI刷新。因为此时son的地址改变，其关联的UI组件并没有关联到最新的son。
 
-<!-- @[Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/NestedClass.ets) --> 
+<!-- @Nested_Class --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -553,7 +553,7 @@ struct Page {
 }
 ```
 
-![observedv2-sync-7](./figures/observedv2-sync-7.gif)
+observedv2-sync-7
 
 ### 继承类场景
 
@@ -561,12 +561,12 @@ struct Page {
 
 以下例子中，声明class GrandFather、Father、Uncle、Son、Cousin，继承关系如下图。
 
-![arkts-old-state-management](figures/arkts-new-observed-and-track-extend-sample.png)
+arkts-old-state-management
 
 
 创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
-<!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) -->  
+<!-- @Inheritance_Class -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -652,7 +652,7 @@ struct Index {
 }
 ```
 
-![observedv2-sync-8](./figures/observedv2-sync-8.gif)
+observedv2-sync-8
 
 ### \@Trace装饰基础类型的数组
 
@@ -660,7 +660,7 @@ struct Index {
 
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
-<!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) -->  
+<!-- @Decoration_Foundation -->  
 
 ``` TypeScript
 let nextId: number = 0;
@@ -786,14 +786,14 @@ struct Index {
 }
 ```
 
-![observedv2-sync-9](./figures/observedv2-sync-9.gif)
+observedv2-sync-9
 
 ### \@Trace装饰对象数组
 
 * \@Trace装饰对象数组personList以及Person类中的age属性，因此当personList、age改变时均可以观测到变化。
 * 点击Text组件更改age时，Text组件会刷新。
 
-<!-- @[Decorative_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorativeObject.ets) -->  
+<!-- @Decorative_Object -->  
 
 ``` TypeScript
 let nextId: number = 0;
@@ -866,14 +866,14 @@ struct Index {
 }
 ```
 
-![observedv2-sync-10](./figures/observedv2-sync-10.gif)
+observedv2-sync-10
 
 ### \@Trace装饰Map类型
 
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
-<!-- @[Decoration_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationMap.ets) -->  
+<!-- @Decoration_Map -->  
 
 ``` TypeScript
 @ObservedV2
@@ -937,14 +937,14 @@ struct MapSample {
 }
 ```
 
-![observedv2-sync-11](./figures/observedv2-sync-11.gif)
+observedv2-sync-11
 
 ### \@Trace装饰Set类型
 
 * 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear和delete。
 * 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观测到变化。
 
-<!-- @[Decoration_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationSet.ets) -->  
+<!-- @Decoration_Set -->  
 
 ``` TypeScript
 @ObservedV2
@@ -999,14 +999,14 @@ struct SetSample {
 }
 ```
 
-![observedv2-sync-12](./figures/observedv2-sync-12.gif)
+observedv2-sync-12
 
 ### \@Trace装饰Date类型
 
 * \@Trace装饰的Date类型属性可以观测调用API带来的变化，包括 setFullYear、setMonth、setDate、setHours、setMinutes、setSeconds、setMilliseconds、setTime、setUTCFullYear、setUTCMonth、setUTCDate、setUTCHours、setUTCMinutes、setUTCSeconds、setUTCMilliseconds。
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
-<!-- @[Decorate_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorateDate.ets) -->  
+<!-- @Decorate_Date -->  
 
 ``` TypeScript
 @ObservedV2
@@ -1057,7 +1057,7 @@ struct DateSample {
 }
 ```
 
-![observedv2-sync-13](./figures/observedv2-sync-13.gif)
+observedv2-sync-13
 
 ## 常见问题
 
@@ -1094,7 +1094,7 @@ let isInfoByNew: boolean = realInfo instanceof Info; // true
 let isInfoByParse: boolean = parseInfo instanceof Info; // false
 ```
 
-可以配合三方库[class-transformer](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/class-transformer)实现反序列化后可观察。
+可以配合三方库class-transformer实现反序列化后可观察。
 
 class-transformer可以通过如下命令安装。
 
@@ -1122,7 +1122,7 @@ let isInfoByTransformed: boolean = transformedInfo instanceof Info; // true
 - 去除序列化结果中的`__ob_`前缀，否则内层对象无法被正确转换。
 - 使用class-transformer库中提供的@Type装饰器（为与状态管理V2的@Type装饰器区分，示例中重命名为`TypeFromLibrary`）标记里层对象的类型。
 
-使用三方库的@Type装饰器需要安装[reflect-metadata](https://gitcode.com/CPF-ApplicationTPC/openharmony_tpc_samples/tree/master/reflect-metadata)。
+使用三方库的@Type装饰器需要安装reflect-metadata。
 
 reflect-metadata可以通过如下命令安装。
 
@@ -1156,7 +1156,7 @@ let isInfo: boolean = (wrapperHandled.info) instanceof Info; // true
 
 在UI中使用的完整示例如下。
 
-<!-- @[Serialization_And_Deserialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/SerializationAndDeserialization.ets) --> 
+<!-- @Serialization_And_Deserialization --> 
 
 ``` TypeScript
 import { plainToInstance, Type as TypeFromLibrary } from 'class-transformer'; // 导入三方库
@@ -1259,7 +1259,7 @@ struct SerializationAndDeserialization {
 }
 ```
 
-![observedv2-sync-14](./figures/observedv2-sync-14.gif)
+observedv2-sync-14
 
 ### router传递的@ObservedV2类型显示异常
 
@@ -1338,7 +1338,7 @@ struct Detail {
 
 【正例】
 
-<!-- @[Router_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets) --> 
+<!-- @Router_Index --> 
 
 ``` TypeScript
 @ObservedV2
@@ -1383,7 +1383,7 @@ struct RouterIndex {
 }
 ```
 
-<!-- @[Child_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets) --> 
+<!-- @Child_Page --> 
 
 ``` TypeScript
 import { RouterModel } from './RouterIndex';
@@ -1408,4 +1408,4 @@ struct Detail {
 }
 ```
 
-![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)
+observedv2_router_deserialize.gif

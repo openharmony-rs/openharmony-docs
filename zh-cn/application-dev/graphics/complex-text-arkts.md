@@ -28,7 +28,7 @@
 
 1. 通过context获取到Canvas画布对象。
 
-   <!-- @[arkts_multi_language_text_drawing_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   <!-- @arkts_multi_language_text_drawing_step1 -->
    
    ``` TypeScript
    // 绘制代码逻辑写在这里
@@ -39,7 +39,7 @@
 
 2. 初始化文本样式。
 
-   <!-- @[arkts_multi_language_text_drawing_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   <!-- @arkts_multi_language_text_drawing_step2 -->
    
    ``` TypeScript
    let myTextStyle: text.TextStyle = {
@@ -59,7 +59,7 @@
 
 3. 初始化段落样式。
 
-   <!-- @[arkts_multi_language_text_drawing_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   <!-- @arkts_multi_language_text_drawing_step3 -->
    
    ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
@@ -71,7 +71,7 @@
 
 4. 初始化段落对象，并添加文本。
 
-   <!-- @[arkts_multi_language_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   <!-- @arkts_multi_language_text_drawing_step4 -->
    
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
@@ -86,7 +86,7 @@
 
 5. 排版段落并进行文本绘制。
 
-   <!-- @[arkts_multi_language_text_drawing_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
+   <!-- @arkts_multi_language_text_drawing_step5 -->
    
    ``` TypeScript
    // 生成段落
@@ -103,7 +103,7 @@
 
 ### 效果展示
 
-![Effect](figures/Effect.png)
+Effect
 
 
 ## 多行文本绘制与显示
@@ -120,7 +120,7 @@
 
 1. 通过context获取到Canvas画布对象。
 
-   <!-- @[arkts_multi_line_text_drawing_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   <!-- @arkts_multi_line_text_drawing_step1 -->
    
    ``` TypeScript
    // 绘制代码逻辑写在这里
@@ -131,7 +131,7 @@
 
 2. 初始化文本样式。
 
-   <!-- @[arkts_multi_line_text_drawing_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   <!-- @arkts_multi_line_text_drawing_step2 -->
    
    ``` TypeScript
    let myTextStyle: text.TextStyle = {
@@ -151,7 +151,7 @@
 
 3. 初始化段落样式。
 
-   <!-- @[arkts_multi_line_text_drawing_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   <!-- @arkts_multi_line_text_drawing_step3 -->
    
    ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
@@ -169,7 +169,7 @@
 
 4. 初始化段落对象，并添加文本。
 
-   <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   <!-- @arkts_multi_line_text_drawing_step4 -->
    
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
@@ -186,7 +186,7 @@
 
 5. 排版段落并进行文本绘制。
 
-   <!-- @[arkts_multi_line_text_drawing_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
+   <!-- @arkts_multi_line_text_drawing_step5 -->
    
    ``` TypeScript
    // 生成段落
@@ -205,14 +205,14 @@
 
 | 段落样式设置（断词策略、文本对齐方式、最大行数限制） | 效果示意 | 
 | -------- | -------- |
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png) | 
-| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png) | 
-| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | BREAK-WORD-LEFT | 
+| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | BREAK-WORD-RIGHT | 
+| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | complexArkTsDemoJustify | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | BREAK-ALL-LEFT | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | BREAK-ALL-LEFT-10 | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ts-hyphen-locale-undefined.jpg | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ts-hyphen-local-en-gb.jpg | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ts-hyphen-local-en-us.jpg | 
 
 
 ## 多样式文本绘制与显示
@@ -415,7 +415,7 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 ### 示例一（装饰线、字体特征）
 
-<!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
+<!-- @arkts_complex_style_example1_text -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
@@ -568,13 +568,13 @@ struct Font08 {
 
 | 样式设置（装饰线样式、字体特征） | 示意效果 | 
 | -------- | -------- |
-| 不开启装饰线和字体特征 | ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png) | 
-| 开启装饰线和字体特征 | ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png) | 
+| 不开启装饰线和字体特征 | complexArkTsDemo1-1 | 
+| 开启装饰线和字体特征 | complexArkTsDemo1-2 | 
 
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
 
-<!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
+<!-- @arkts_complex_style_example2_text -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
@@ -743,13 +743,13 @@ struct Font08 {
 
 | 样式设置（可变字体、文本阴影、占位符） | 示意效果 | 
 | -------- | -------- |
-| 不开启可变字体和文本阴影，不使用占位符 | ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png) | 
-| 开启可变字体和文本阴影，使用占位符 | ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png) | 
+| 不开启可变字体和文本阴影，不使用占位符 | complexArkTsDemo2-1 | 
+| 开启可变字体和文本阴影，使用占位符 | complexArkTsDemo2-2 | 
 
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
 
-<!-- @[arkts_complex_style_example3_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets) -->
+<!-- @arkts_complex_style_example3_text -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -883,15 +883,15 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
-| 基线对齐（默认）| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) | 
-| 顶部对齐 | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) | 
-| 居中对齐 | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) | 
-| 底部对齐 | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) | 
+| 基线对齐（默认）| verticalAlignment-baseline | 
+| 顶部对齐 | verticalAlignment-top | 
+| 居中对齐 | verticalAlignment-center | 
+| 底部对齐 | verticalAlignment-bottom | 
 
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
 
-<!-- @[arkts_complex_style_example4_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets) -->
+<!-- @arkts_complex_style_example4_text -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1035,13 +1035,13 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![superscript](figures/superscript.jpg) | 
-| 下标文本 | ![subscript](figures/subscript.jpg) | 
+| 上标文本 | superscript | 
+| 下标文本 | subscript | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
 
-<!-- @[arkts_complex_style_example5_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets) -->
+<!-- @arkts_complex_style_example5_text -->
 
 ``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext} from '@kit.ArkUI'
@@ -1171,13 +1171,13 @@ struct Font08 {
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png) | 
-| 开启高对比度 | ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png) | 
+| 不开启高对比度 | complexArkTsDemo5-1 | 
+| 开启高对比度 | complexArkTsDemo5-2 | 
 
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
 
-  <!-- @[arkts_complex_style_example6_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets) -->
+  <!-- @arkts_complex_style_example6_text -->
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1309,13 +1309,13 @@ struct Font08 {
 
 | 行高上限值 | 行高下限值 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- | -------- |
-| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
-| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
+| 65 | 65 | zh-cn_image_maxMinLineHeight65 |
+| 200 | 200 | zh-cn_image_maxMinLineHeight200 |
 
 ### 示例七（行高调整方式二）
 这里以行高缩放且行高缩放样式FontHeight为例，呈现行高调整后文字的绘制与显示。
 
-  <!-- @[arkts_complex_style_example7_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets) -->
+  <!-- @arkts_complex_style_example7_text -->
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1448,13 +1448,13 @@ struct Font08 {
 
 | 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- |
-| FontSize | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
-| FontHeight | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
+| FontSize | zh-cn_image_lineHeightStyleFontSize |
+| FontHeight | zh-cn_image_lineHeightStyleFontHeight |
 
 ### 示例八（行间距调整）
 这里以关闭段落上升部下降部并设置行间距为例，呈现行间距增加后的文本绘制与显示。
 
-  <!-- @[arkts_complex_style_example8_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets) -->
+  <!-- @arkts_complex_style_example8_text -->
   
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
@@ -1585,13 +1585,13 @@ struct Font08 {
 
 | 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- |
-| DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
-| ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| DISABLE_ALL | zh-cn_image_lineSpacingAndDisableBehavior |
+| ALL | zh-cn_image_lineSpacing |
 
 ### 示例九（省略号样式）
 以下示例展示了开启尾部省略号模式的文本截断效果。
 
-<!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
+<!-- @arkts_ellipsis_example_text -->
 
 ``` TypeScript
 // 设置文本样式，包含省略号字符串和省略号模式
@@ -1620,17 +1620,17 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 | 省略号模式 | 示意效果 |
 | -------- | -------- |
-| 不开启省略号 | ![zh-cn_image_complexArkTsDemo9_1](figures/zh-cn_image_complexArkTsDemo9_1.png) |
-| 开启头部省略号 | ![zh-cn_image_complexArkTsDemo9_2](figures/zh-cn_image_complexArkTsDemo9_2.png) |
-| 开启中部省略号 | ![zh-cn_image_complexArkTsDemo9_3](figures/zh-cn_image_complexArkTsDemo9_3.png) |
-| 开启尾部省略号 | ![zh-cn_image_complexArkTsDemo9_4](figures/zh-cn_image_complexArkTsDemo9_4.png) |
-| 开启多行头部省略号 | ![zh-cn_image_complexArkTsDemo9_5](figures/zh-cn_image_complexArkTsDemo9_5.png) |
-| 开启多行中部省略号 | ![zh-cn_image_complexArkTsDemo9_6](figures/zh-cn_image_complexArkTsDemo9_6.png) |
+| 不开启省略号 | zh-cn_image_complexArkTsDemo9_1 |
+| 开启头部省略号 | zh-cn_image_complexArkTsDemo9_2 |
+| 开启中部省略号 | zh-cn_image_complexArkTsDemo9_3 |
+| 开启尾部省略号 | zh-cn_image_complexArkTsDemo9_4 |
+| 开启多行头部省略号 | zh-cn_image_complexArkTsDemo9_5 |
+| 开启多行中部省略号 | zh-cn_image_complexArkTsDemo9_6 |
 
 ### 示例十（文字换行方式）
 以下示例展示了BALANCED断行策略对文本排版的影响。
 
-<!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
+<!-- @arkts_break_strategy_example_text -->
 
 ``` TypeScript
 // 设置断行策略为均衡策略（BALANCED）
@@ -1645,14 +1645,14 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 | 断行策略 | 示意效果 |
 | -------- | -------- |
-| GREEDY | ![zh-cn_image_complexArkTsDemo10_1](figures/zh-cn_image_complexArkTsDemo10_1.png) |
-| BALANCED | ![zh-cn_image_complexArkTsDemo10_2](figures/zh-cn_image_complexArkTsDemo10_2.png) |
-| HIGH_QUALITY | ![zh-cn_image_complexArkTsDemo10_3](figures/zh-cn_image_complexArkTsDemo10_3.png) |
+| GREEDY | zh-cn_image_complexArkTsDemo10_1 |
+| BALANCED | zh-cn_image_complexArkTsDemo10_2 |
+| HIGH_QUALITY | zh-cn_image_complexArkTsDemo10_3 |
 
 ### 示例十一（行首标点压缩）
 以下示例展示了开启行首标点压缩的排版对比效果。
 
-<!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
+<!-- @arkts_punctuation_compress_example_text -->
 
 ``` TypeScript
 // 开启行首标点压缩
@@ -1666,5 +1666,5 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 | 标点压缩设置 | 示意效果 |
 | -------- | -------- |
-| 未开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_1](figures/zh-cn_image_complexArkTsDemo11_1.png) |
-| 开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_2](figures/zh-cn_image_complexArkTsDemo11_2.png) |
+| 未开启标点压缩 | zh-cn_image_complexArkTsDemo11_1 |
+| 开启标点压缩 | zh-cn_image_complexArkTsDemo11_2 |

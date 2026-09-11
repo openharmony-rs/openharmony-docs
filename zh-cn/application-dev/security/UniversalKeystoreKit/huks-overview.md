@@ -25,7 +25,7 @@ HUKS管理的密钥可以由业务/应用导入或调用HUKS的接口生成。�
   >
   > 对于具备安全环境（如TEE）的系统、设备，HUKS核心层必须运行在安全环境内。<!--Del-->由于安全环境依赖硬件支持，在开源仓中仅为模拟实现，需OEM厂商适配。<!--DelEnd-->
 
-![HUKS-framework](figures/HUKS-framework.png)
+HUKS-framework
 
 ## 核心功能
 

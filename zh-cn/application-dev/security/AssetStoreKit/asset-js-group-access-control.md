@@ -32,7 +32,7 @@
    ```
 
 2. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) -->
+   <!-- @import -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -55,7 +55,7 @@
 
 在群组中新增密码为demo_pwd、别名为demo_alias、附属信息为demo_label的关键资产。
 
-<!-- @[add_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_group.ets) --> 
+<!-- @add_group_asset --> 
 
 ``` TypeScript
 let attr: asset.AssetMap = new Map();
@@ -83,7 +83,7 @@ try {
 
 在群组中删除别名为demo_alias的关键资产。
 
-<!-- @[remove_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove_group.ets) --> 
+<!-- @remove_group_asset --> 
 
 ``` TypeScript
 let query: asset.AssetMap = new Map();
@@ -108,7 +108,7 @@ try {
 
 在群组中更新别名为demo_alias的关键资产，明文更新为demo_pwd_new，附属属性更新为demo_label_new。
 
-<!-- @[update_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update_group.ets) --> 
+<!-- @update_group_asset --> 
 
 ``` TypeScript
 let query: asset.AssetMap = new Map();
@@ -136,7 +136,7 @@ try {
 
 在群组中查询别名为demo_alias的关键资产明文。
 
-<!-- @[query_group_asset_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) --> 
+<!-- @query_group_asset_plaintext --> 
 
 ``` TypeScript
 let query: asset.AssetMap = new Map();
@@ -167,7 +167,7 @@ try {
 
 在群组中查询别名为demo_alias的关键资产属性。
 
-<!-- @[query_group_asset_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_attr.ets) --> 
+<!-- @query_group_asset_attribute --> 
 
 ``` TypeScript
 let query: asset.AssetMap = new Map();

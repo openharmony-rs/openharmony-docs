@@ -53,7 +53,7 @@ MindSpore Lite是一款AI引擎，它提供了面向不同硬件设备AI模型�
 
 **图 1** 使用MindSpore Lite进行模型推理的开发流程
 
-![how-to-use-mindspore-lite](figures/01.png)
+how-to-use-mindspore-lite
 
 进入主要流程之前需要先引用相关的头文件，并编写函数生成随机的输入，具体如下：
 
@@ -88,7 +88,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    需要的模型可以直接下载，也可以通过模型转换工具获得。
 
    - 下载模型的格式若为`.ms`，则可以直接使用。本文以mobilenetv2.ms为例。
-   - 如果是第三方框架的模型，比如 TensorFlow、TensorFlow Lite、Caffe、ONNX等，可以使用[模型转换工具](https://www.mindspore.cn/lite/docs/zh-CN/master/use/downloads.html#2-3-0)转换为`.ms`格式的模型文件。
+   - 如果是第三方框架的模型，比如 TensorFlow、TensorFlow Lite、Caffe、ONNX等，可以使用模型转换工具转换为`.ms`格式的模型文件。
 
 2. 创建上下文，设置线程数、设备类型等参数。
 
@@ -124,7 +124,7 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
    > **说明：**
    >
-   > NNRT/CPU异构推理，需要有实际的NNRT硬件接入，NNRT相关资料请参考：[OpenHarmony/ai_neural_network_runtime](https://gitcode.com/openharmony/ai_neural_network_runtime)。
+   > NNRT/CPU异构推理，需要有实际的NNRT硬件接入，NNRT相关资料请参考：OpenHarmony/ai_neural_network_runtime。
    <!--DelEnd-->
    ```c
    // 创建并配置上下文，设置运行时的线程数量为2，绑核策略为大核优先
@@ -306,4 +306,4 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
 
 针对MindSpore Lite 的使用，有以下相关实例可供参考：
 
-- [简易MSLite教程](https://gitcode.com/openharmony/third_party_mindspore/tree/OpenHarmony-3.2-Release/mindspore/lite/examples/quick_start_c)
+- 简易MSLite教程

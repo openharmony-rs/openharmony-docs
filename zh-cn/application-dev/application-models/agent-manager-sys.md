@@ -19,7 +19,7 @@
 
 客户端与服务端交互流程如下图所示：
 
-<img src="figures/agent-manager-procedure.png" width="600" height="450" alt="演示图">
+
 
 1. 建立连接
 
@@ -51,7 +51,7 @@
 
 - 使用connectAgentExtensionAbility()方法建立与AgentExtensionAbility的连接。
 
-    <!-- @[agent_manager_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @agent_manager_one -->
     
     ``` TypeScript
     import { common, Want, agentManager } from '@kit.AbilityKit';
@@ -111,7 +111,7 @@
 
 - 使用disconnectAgentExtensionAbility()方法断开与AgentExtensionAbility的连接。
 
-    <!-- @[agent_manager_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @agent_manager_two -->
     
     ``` TypeScript
     import { common, Want, agentManager } from '@kit.AbilityKit';
@@ -165,7 +165,7 @@
 
 - 客户端收发数据
 
-    <!-- @[agent_manager_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @agent_manager_three -->
     
     ``` TypeScript
     import { common, Want, agentManager } from '@kit.AbilityKit';
@@ -239,7 +239,7 @@
 
 - 客户端处理和发送安全认证请求
 
-    <!-- @[agent_manager_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @agent_manager_four -->
     
     ``` TypeScript
     import { common, Want, agentManager } from '@kit.AbilityKit';

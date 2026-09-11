@@ -23,7 +23,7 @@ Progress(options: {value: number, total?: number, type?: ProgressType})
 Progress({ value: 24, total: 100, type: ProgressType.Linear }) // 创建一个进度总长为100，当前进度值为24的线性进度条
 ```
 
-![create](figures/create.png)
+create
 
 
 ## 设置进度条样式
@@ -38,18 +38,18 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   > 从API version 9开始，组件高度大于宽度时，自适应垂直显示；组件高度等于宽度时，保持水平显示。
 
 
-  <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @progress_style_1 -->
   
   ``` TypeScript
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(200).height(50)
   Progress({ value: 20, total: 100, type: ProgressType.Linear }).width(50).height(200)
   ```
 
-  ![progress-vertical](figures/progress-vertical.png)
+  progress-vertical
 
 - 环形无刻度样式进度条
 
-  <!-- @[progress_style_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @progress_style_2 -->
   
   ``` TypeScript
   // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为4.0vp
@@ -60,11 +60,11 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
     .style({ strokeWidth: 15})    // 设置strokeWidth进度条宽度为15.0vp
   ```
     
-  ![progress_ring](figures/progress_ring.png)
+  progress_ring
 
 - 环形有刻度样式进度条
 
-  <!-- @[progress_style_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @progress_style_3 -->
   
   ``` TypeScript
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
@@ -78,11 +78,11 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
     .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为3vp
   ```
 
-  ![progress_scalering](figures/progress_scalering.png)
+  progress_scalering
 
 - 圆形样式进度条
 
-  <!-- @[progress_style_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @progress_style_4 -->
   
   ``` TypeScript
   // 从左往右，1号圆形进度条，默认前景色为蓝色
@@ -91,7 +91,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   Progress({ value: 20, total: 150, type: ProgressType.Eclipse }).color(Color.Grey).width(100).height(100)
   ```
 
-  ![progress_circle](figures/progress_circle.png)
+  progress_circle
 
 - 胶囊样式进度条
   >**说明：**
@@ -102,7 +102,7 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
   >-  组件高度大于宽度时，自适应垂直显示。
 
 
-    <!-- @[progress_style_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @progress_style_5 -->
     
     ``` TypeScript
     Progress({ value: 10, total: 150, type: ProgressType.Capsule }).width(100).height(50)
@@ -111,13 +111,13 @@ Progress有5种可选类型，通过ProgressType可以设置进度条样式。Pr
     ```
 
 
-  ![progress_capsule](figures/progress_capsule.png)
+  progress_capsule
 
 ## 场景示例
 
 更新当前进度值，如应用安装进度条，可通过点击Button增加progressValue，value属性将progressValue设置给Progress组件，进度条组件即会触发刷新，更新当前进度。
 
-<!-- @[progress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/ProgressCase1.ets) -->
+<!-- @progress_example -->
 
 ``` TypeScript
 @Entry
@@ -143,10 +143,10 @@ struct ProgressCase1 {
 }
 ```
     
-![progress](figures/progress.gif)
+progress
 
 ## 相关实例
 
 针对进度条开发，有以下相关实例可供参考：
 
-- [进度条](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject)
+- 进度条

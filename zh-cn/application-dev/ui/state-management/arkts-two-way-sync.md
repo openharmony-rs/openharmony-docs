@@ -50,7 +50,7 @@
 ## 使用示例
 
 以TextInput组件的text参数为例：
-<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
+<!-- @sync_state_manager_$$ -->
 
 ``` TypeScript
 @Entry
@@ -78,4 +78,4 @@ struct TextInputExample {
 }
 ```
 
-![TextInputDouble](figures/TextInputDouble.gif)
+TextInputDouble

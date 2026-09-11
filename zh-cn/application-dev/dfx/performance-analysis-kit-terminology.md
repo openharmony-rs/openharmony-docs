@@ -23,11 +23,11 @@ nolog版本是指在系统中关闭了日志记录功能的系统版本。这种
 
 ### debug版本应用
 
-使用[debug模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)构建的应用。
+使用debug模式构建的应用。
 
 ### release版本应用
 
-使用[release模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)构建的应用。
+使用release模式构建的应用。
 
 ## 稳定性
 

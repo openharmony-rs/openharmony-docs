@@ -42,7 +42,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @head -->
    
    ``` TypeScript
    // 导入serialManager模块
@@ -55,7 +55,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 2. 获取设备列表。
 
-   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @getPortList -->
    
    ``` TypeScript
    // 获取连接主设备的USB设备列表
@@ -73,7 +73,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 3. 获取设备操作权限。
 
-   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @requestSerialRight -->
    
    ``` TypeScript
    if (this.portList_ === undefined || this.portList_.length === 0) {
@@ -101,7 +101,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 4. 根据串口打开设备。
 
-   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @openSerialDevice -->
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -118,7 +118,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 5. 通过串口读取数据。
 
-   <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @serialRead -->
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -147,7 +147,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 6. 通过串口写入数据。
 
-   <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @serialWrite -->
    
    ``` TypeScript
    let portId: number = this.portId_;
@@ -176,7 +176,7 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
    
 7. 关闭串口设备。
 
-   <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @closeSerialDevice -->
    
    ``` TypeScript
    let portId: number = this.portId_;

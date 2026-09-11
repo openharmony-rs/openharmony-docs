@@ -25,7 +25,7 @@
 
 双路方案调用流程图建议如下：
 
-![dual-preview-streams-instructions](figures/dual-preview-streams-instructions.png)
+dual-preview-streams-instructions
 
 ## 开发步骤
 
@@ -39,7 +39,7 @@
 
 1. 导入依赖，本篇文档需要用到图片和相机框架等相关依赖包。
 
-   <!-- @[dual_preview_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
+   <!-- @dual_preview_imports -->
    
    ``` TypeScript
    import { image } from '@kit.ImageKit';
@@ -50,7 +50,7 @@
 
 2. 获取第一路预览流SurfaceId：创建ImageReceiver对象，通过ImageReceiver对象可获取其SurfaceId。
 
-   <!-- @[init_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
+   <!-- @init_image_receiver -->
    
    ``` TypeScript
    async init(size: Size, format = image.ImageFormat.JPEG, capacity = 8) {
@@ -88,7 +88,7 @@
    > - 由于不同设备产品差异性，应用开发者在创建相机预览输出流前，必须先通过getSupportedOutputCapability方法获取当前设备支持的预览输出流previewProfile，再根据实际业务需求选择CameraFormat和Size适合的预览输出流previewProfile。
 > - ImageReceiver接收预览流图像数据实际format格式由应用开发者在创建相机预览输出流时，根据实际业务需求选择的previewProfile中format格式参数影响，详细步骤请参考创建预览流获取数据。
 
-   <!-- @[onImageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
+   <!-- @onImageArrival -->
    
    ``` TypeScript
    onImageArrival(receiver: image.ImageReceiver): void {
@@ -123,7 +123,7 @@
 
    方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
 
-   <!-- @[getPixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
+   <!-- @getPixelMap -->
    
    ``` TypeScript
    async getPixelMap(imgComponent: image.Component, width: number, height: number, stride: number) {
@@ -162,7 +162,7 @@
 
 获取第二路预览流SurfaceId：创建XComponent组件用于预览流显示，获取SurfaceId请参考XComponent组件提供的getXComponentSurfaceId方法，而XComponent的能力由UI提供，相关介绍可参考XComponent组件参考。
 
-<!-- @[XComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/entry/src/main/ets/pages/Index.ets) -->
+<!-- @XComponent -->
 
 ``` TypeScript
 XComponent({
@@ -183,7 +183,7 @@ XComponent({
 
 通过两个SurfaceId分别创建两路预览流输出，加入相机会话，启动相机会话，获取预览流数据。
 
-<!-- @[createOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/PreviewManager.ets) -->
+<!-- @createOutput -->
 
 ``` TypeScript
 async createOutput(config: CreateOutputConfig) {
@@ -209,7 +209,7 @@ async createOutput(config: CreateOutputConfig) {
 
 ## 完整示例
 
-<!-- @[dual_preview_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
+<!-- @dual_preview_case -->
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';

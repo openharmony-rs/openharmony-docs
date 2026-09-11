@@ -30,7 +30,7 @@ MDNS管理的典型场景有：
 1. 设备连接Wi-Fi。
 2. 从@kit.NetworkKit里导入mdns、错误码、以及common命名空间。
 
-   <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @MDNS_case_module_import -->
    
    ``` TypeScript
    // 从@kit.NetworkKit中导入mdns命名空间。
@@ -41,7 +41,7 @@ MDNS管理的典型场景有：
    ```
 3. 调用addLocalService方法，添加本地服务。
 
-   <!-- @[MDNS_add_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @MDNS_add_local_service -->
    
    ``` TypeScript
    // 建立LocalService对象。
@@ -66,7 +66,7 @@ MDNS管理的典型场景有：
 
 4. 通过resolveLocalService方法，解析本地网络的IP地址（非必要，根据需求使用）。
    
-   <!-- @[MDNS_resolve_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @MDNS_resolve_local_service -->
    
    ``` TypeScript
    // resolveLocalService解析本地服务对象（非必要，根据需求使用）。
@@ -78,7 +78,7 @@ MDNS管理的典型场景有：
 
 5. 通过removeLocalService方法，移除本地服务。
 
-   <!-- @[MDNS_remove_local_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @MDNS_remove_local_service -->
    
    ``` TypeScript
    // removeLocalService移除本地服务。
@@ -93,7 +93,7 @@ MDNS管理的典型场景有：
 1. 设备连接WiFi。
 2. 从@kit.NetworkKit里导入mdns的命名空间。
 
-   <!-- @[MDNS_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @MDNS_case_module_import -->
    
    ``` TypeScript
    // 从@kit.NetworkKit中导入mdns命名空间。
@@ -104,7 +104,7 @@ MDNS管理的典型场景有：
    ```
 3. 创建DiscoveryService对象，用于发现指定服务类型的MDNS服务。
 
-   <!-- @[create_discovery_service_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @create_discovery_service_object -->
    
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -117,7 +117,7 @@ MDNS管理的典型场景有：
   
 4. 订阅MDNS服务发现相关状态变化。
 
-    <!-- @[discovery_service_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @discovery_service_on_method -->
     
     ``` TypeScript
     // 订阅MDNS服务发现相关状态变化。
@@ -139,7 +139,7 @@ MDNS管理的典型场景有：
 
 5. 启动搜索局域网内的MDNS服务。
 
-   <!-- @[start_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @start_searching_MDNS_method -->
    
    ``` TypeScript
    // 启动搜索局域网内的MDNS服务。
@@ -147,7 +147,7 @@ MDNS管理的典型场景有：
    ```
 6. 停止搜索局域网内的MDNS服务。
 
-   <!-- @[stop_searching_MDNS_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @stop_searching_MDNS_method -->
    
    ``` TypeScript
    // 停止搜索局域网内的MDNS服务。
@@ -155,7 +155,7 @@ MDNS管理的典型场景有：
    ```
 7. 取消订阅的MDNS服务。
 
-   <!-- @[discovery_service_off_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @discovery_service_off_method -->
    
    ``` TypeScript
    // 取消订阅的MDNS服务。
@@ -178,4 +178,4 @@ MDNS管理的典型场景有：
 
 针对MDNS管理，有以下相关实例可供参考：
 
-* [MDNS管理](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/MDNS_case)
+* MDNS管理

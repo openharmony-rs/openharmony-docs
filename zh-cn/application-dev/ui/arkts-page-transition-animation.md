@@ -44,7 +44,7 @@ PageTransitionExit({ type?: RouteType, duration?: number, curve?: Curve | string
 
 type为RouteType.None表示对页面栈的push、pop操作均生效，type的默认值为RouteType.None。
 
-<!-- @[pageTransition_template5_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionSrc3.ets) -->
+<!-- @pageTransition_template5_pageA_start -->
 
 ``` TypeScript
 // page A
@@ -60,7 +60,7 @@ pageTransition() {
 
 <!-- -->
 
-<!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
+<!-- @pageTransition_template5_pageB_start -->
 
 ``` TypeScript
 // page B
@@ -94,7 +94,7 @@ pageTransition() {
 
 type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
 
-<!-- @[pageTransition_template6_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionSrc4.ets) -->
+<!-- @pageTransition_template6_pageA_start -->
 
 ``` TypeScript
 // page A
@@ -116,7 +116,7 @@ pageTransition() {
 
 <!-- -->
 
-<!-- @[pageTransition_template6_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionDst4.ets) -->
+<!-- @pageTransition_template6_pageB_start -->
 
 ``` TypeScript
 // page B
@@ -170,7 +170,7 @@ pageTransition() {
 
 下面介绍了利用pushUrl跳转能力定义了所有的四种页面转场样式的页面转场动画示例。
 
-<!-- @[pageTransition_template3_pageTransitionSrc1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionSrc1.ets) -->
+<!-- @pageTransition_template3_pageTransitionSrc1_start -->
 
 ``` TypeScript
 // PageTransitionSrc1
@@ -223,7 +223,7 @@ struct PageTransitionSrc1 {
 
 <!-- -->
 
-<!-- @[pageTransition_template3_pageTransitionDst1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionDst1.ets) -->
+<!-- @pageTransition_template3_pageTransitionDst1_start -->
 
 ``` TypeScript
 // PageTransitionDst1
@@ -276,12 +276,12 @@ struct PageTransitionDst1 {
 
 
 
-![pageTransition_PushPop](figures/pageTransition_PushPop.gif)
+pageTransition_PushPop
 
 
 下面介绍使用了type为None的页面转场动画示例。 
 
-<!-- @[pageTransition_template4_pageTransitionSrc2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionSrc2.ets) -->
+<!-- @pageTransition_template4_pageTransitionSrc2_start -->
 
 ``` TypeScript
 // PageTransitionSrc2
@@ -329,7 +329,7 @@ struct PageTransitionSrc2 {
 
 <!-- -->
 
-<!-- @[pageTransition_template4_pageTransitionDst2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionDst2.ets) -->
+<!-- @pageTransition_template4_pageTransitionDst2_start -->
 
 ``` TypeScript
 // PageTransitionDst2
@@ -376,4 +376,4 @@ struct PageTransitionDst2 {
 ```
 
 
-![pageTransition_None](figures/pageTransition_None.gif)
+pageTransition_None

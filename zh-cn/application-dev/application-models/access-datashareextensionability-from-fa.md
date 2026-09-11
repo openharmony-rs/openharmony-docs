@@ -33,7 +33,7 @@
 
 ## 约束与限制
 
-1. 由DataAbility切换到DataShareExtensionAbility时，只能修改URI的前缀，不能修改URI的其他部分。![FAvsStage-uri](figures/FAvsStage-uri.png)
+1. 由DataAbility切换到DataShareExtensionAbility时，只能修改URI的前缀，不能修改URI的其他部分。FAvsStage-uri
 
 2. DataShareHelper并没有实现原DataAbilityHelper对外API接口的所有功能，因此有部分接口是无法兼容的，具体如表1所示。
 

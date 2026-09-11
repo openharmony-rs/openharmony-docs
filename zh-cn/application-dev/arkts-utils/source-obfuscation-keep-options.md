@@ -8,7 +8,7 @@
 
 从API version 10开始，开启混淆后代码中的方法、属性或路径将被混淆。但在运行时，通过混淆前的原始名称访问已被混淆的方法、属性或路径，可能会导致功能失效。因此需要根据不同的场景配置相应的保留选项。
 
-排查场景和配置字段时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，快速识别需要配置的保留选项和白名单字段。
+排查场景和配置字段时，推荐使用混淆助手配置保留选项，快速识别需要配置的保留选项和白名单字段。
 
 ## 保留选项汇总
 
@@ -42,7 +42,7 @@ lastName
 
 1. 如果代码中通过字符串拼接、变量访问或使用defineProperty方法定义对象属性，则这些属性名应被保留。
 
-    <!-- @[jsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.js) -->   
+    <!-- @jsOptionExample_keepPropertyName -->   
     
     ``` JavaScript
     // ArkGuardAbility.js
@@ -65,7 +65,7 @@ lastName
 
    对于如下的字符串常量形式的属性调用，可以选择性保留：
 
-    <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+    <!-- @optionExample_keepPropertyName1 -->      
     
     ``` TypeScript
     // 混淆配置：
@@ -83,7 +83,7 @@ lastName
 
   2. 对于间接或直接导出的类或对象的属性名的场景，如果混淆后出现问题，可以使用-keep-property-name来保留这些属性名。
 
-      <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+      <!-- @optionExample_keepPropertyName2 -->    
       
       ``` TypeScript
       // 间接导出MyClass07
@@ -102,14 +102,14 @@ lastName
 
 3. 在ArkTS/TS/JS文件中使用so库的API（如示例中的addNum）时，需手动保留API名称。
 
-    <!-- @[dtsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts) -->         
+    <!-- @dtsOptionExample_keepPropertyName -->         
     
     ``` TypeScript
     // src/main/cpp/types/libentry/Index.d.ts
     export const addNum: (a: number, b: number) => number;
     ```
 
-    <!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->        
+    <!-- @etsOptionExample_keepPropertyName1 -->        
     
     ``` TypeScript
     // ArkGuardAbility.ets
@@ -127,7 +127,7 @@ lastName
     }
     ```
 
-    <!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+    <!-- @optionExample_keepPropertyName3 -->     
     
     ``` TypeScript
     import jsonData from './ImportJson.json';
@@ -145,7 +145,7 @@ lastName
 
 5. 使用到的数据库相关的字段，需要手动保留。例如，数据库键值对类型（ValuesBucket）中的属性：
 
-    <!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+    <!-- @optionExample_keepPropertyName4 -->      
     
     ``` TypeScript
     import { ValuesBucket } from '@kit.ArkData';
@@ -161,7 +161,7 @@ lastName
 6. 源码中自定义装饰器修饰了成员变量、成员方法、参数，同时其源码编译的中间产物为js文件时（如编译release源码HAR或者源码包含@ts-ignore、@ts-nocheck），这些装饰器所在的成员变量/成员方法名称需要被保留。这是由于ts高级语法特性转换为js标准语法时，将上述装饰器所在的成员变量/成员方法名称硬编码为字符串常量。
 
 
-    <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+    <!-- @optionExample_keepPropertyName5 -->      
     
     ``` TypeScript
     function CustomDecorator(target: Object, propertyKey: string) {}
@@ -182,7 +182,7 @@ lastName
 
 7. 使用到的数据请求相关的字段需要手动保留，例如，传递给数据请求方的字段需要手动保留：
 
-    <!-- @[etsOptionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->      
+    <!-- @etsOptionExample_keepPropertyName2 -->      
     
     ``` TypeScript
     // ArkGuardAbility.ets
@@ -204,7 +204,7 @@ lastName
 
 8. 使用到的数字字面量属性需要手动保留。
 
-    <!-- @[optionExample_keepPropertyName6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
+    <!-- @optionExample_keepPropertyName6 -->       
     
     ``` TypeScript
     class MyClass09 {
@@ -229,7 +229,7 @@ printPersonName
 
 `namespace`中导出的名称也可以通过`-keep-global-name`选项保留。
 
-<!-- @[optionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+<!-- @optionExample_keepGlobalName -->      
 
 ``` TypeScript
 // ArkGuardAbility.ts
@@ -248,7 +248,7 @@ export namespace Ns {
 
 当以命名导入的方式导入so库的API时，如果同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
 
-<!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts) -->         
+<!-- @dtsOptionExample_keepGlobalName -->         
 
 ``` TypeScript
 // src/main/cpp/types/libentry/Index.d.ts
@@ -256,7 +256,7 @@ declare function testNapi2(): void;
 declare function testNapi3(): void;
 ```
 
-<!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->        
+<!-- @etsOptionExample_keepGlobalName -->        
 
 ``` TypeScript
 // ArkGuardAbility.ets
@@ -294,7 +294,7 @@ file
 
 1. 在使用`require`引入文件路径时，由于`ArkTS`不支持CommonJS模块语法，因此这种情况下require引入的文件路径应该被保留。
 
-    <!-- @[jsOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.js) -->       
+    <!-- @jsOptionExample_keepFileName -->       
     
     ``` JavaScript
     // ArkGuardAbility.js
@@ -303,14 +303,14 @@ file
 
 2. 对于动态导入的路径名，由于无法识别`import`函数中的参数是否为路径，因此在这种情况下应保留动态导入的路径名。
 
-    <!-- @[testOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/DynamicImportFile.ts) -->        
+    <!-- @testOptionExample_keepFileName -->        
     
     ``` TypeScript
     // DynamicImportFile.ts
     export function foo () {}
     ```
 
-    <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->        
+    <!-- @optionExample_keepFileName -->        
     
     ``` TypeScript
     // ArkGuardAbility.ts
@@ -344,7 +344,7 @@ file
       }
       ```
 
-4. 对于API version 19及之前版本，使用[应用启动框架AppStartup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-startup)时，启动参数配置文件和启动任务文件的路径应保留。这些路径配置在本模块的`resources/base/profile/startup_config.json`文件中，分别对应`configEntry`字段和`startupTasks`对象的`srcEntry`字段。
+4. 对于API version 19及之前版本，使用应用启动框架AppStartup时，启动参数配置文件和启动任务文件的路径应保留。这些路径配置在本模块的`resources/base/profile/startup_config.json`文件中，分别对应`configEntry`字段和`startupTasks`对象的`srcEntry`字段。
 
    对于API version 20及之后版本，不再需要手动配置白名单。
 
@@ -401,7 +401,7 @@ Human
 1. 该选项在开启-remove-comments时生效。
 2. 当编译生成的声明文件中class、function、namespace、enum、struct、interface、module、type及属性的名称被混淆时，该元素上方的JsDoc注释无法通过`-keep-comments`保留。例如，当在`-keep-comments`中配置了exportClass时，如果exportClass类名被混淆，其JsDoc注释无法被保留。
 
-   <!-- @[optionExample_keepComments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->         
+   <!-- @optionExample_keepComments -->         
    
    ``` TypeScript
    /**
@@ -452,7 +452,7 @@ Human
 
 模块级`oh_modules`和工程级`oh_modules`在`DevEco Studio`中的目录结构如下图所示：
 
-![oh_modules](./figures/oh-modules.png)
+oh_modules
 
 **使用该选项时，需要注意以下事项：**
 

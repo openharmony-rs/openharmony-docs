@@ -36,7 +36,7 @@ Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的�
 
 1. 导入相关的联系人模块。
 
-   <!-- @[contacts_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @contacts_indexImport -->
 
    ```ts
    import { contact } from '@kit.ContactsKit';
@@ -45,7 +45,7 @@ Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的�
 
 2. 调用联系人接口，拉起联系人列表，用户点击对应的联系人后返回。
 
-   <!-- @[contacts_selectContactsByPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @contacts_selectContactsByPicker -->
 
    ```ts
    contact.selectContacts({
@@ -80,7 +80,7 @@ Contacts Kit（联系人服务）可以帮助开发者轻松实现联系人的�
 
 3. 执行对应联系人的权限操作。
 
-   <!-- @[contacts_addContactByPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Contacts/ContactsKit/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @contacts_addContactByPermissions -->
 
    ```ts
    // 示例代码

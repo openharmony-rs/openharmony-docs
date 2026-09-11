@@ -17,9 +17,9 @@
 
 如图所示，帧动画在动画过程中即可实时响应，而属性动画按最终状态响应。
 
-![Alt text](figures/ohos.animator.gif)
+Alt text
 
-![Alt text](figures/animation.gif)
+Alt text
 
 ## 使用帧动画实现动画效果
 
@@ -27,7 +27,7 @@
 
 1. 引入相关依赖。
 
-   <!-- @[animator_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   <!-- @animator_import_start -->
    
    ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
@@ -35,7 +35,7 @@
 
 2. 创建执行动画的对象。
 
-   <!-- @[animator_options_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   <!-- @animator_options_start -->
    
    ``` TypeScript
    // 创建动画的初始参数
@@ -61,7 +61,7 @@
 
 3. 播放动画。
 
-   <!-- @[animator_play_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   <!-- @animator_play_start -->
    
    ``` TypeScript
    // 播放动画
@@ -70,7 +70,7 @@
 
 4. 动画执行完成后手动释放AnimatorResult对象。
 
-   <!-- @[animator_result_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/AnimatorPage.ets) -->
+   <!-- @animator_result_start -->
    
    ``` TypeScript
    // 释放动画对象
@@ -82,7 +82,7 @@
 
 1. 引入相关依赖。
 
-   <!-- @[animator_template4_import_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   <!-- @animator_template4_import_start -->
    
    ``` TypeScript
    import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
@@ -90,7 +90,7 @@
 
 2. 定义要做动画的组件。
 
-   <!-- @[animator_template4_button_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   <!-- @animator_template4_button_start -->
    
    ``` TypeScript
    Button()
@@ -101,7 +101,7 @@
 
 3. 在onPageShow中创建AnimatorResult对象。
 
-   <!-- @[animator_template4_show_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   <!-- @animator_template4_show_start -->
    
    ``` TypeScript
    onPageShow(): void {
@@ -133,7 +133,7 @@
 
 4. 定义动画播放，重置，暂停的按钮。
 
-   <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   <!-- @animator_template4_buttons_start -->
    
    ``` TypeScript
    // 请将$r('app.string.play')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
@@ -157,7 +157,7 @@
 
 5. 在页面隐藏或销毁的生命周期中释放动画对象，避免内存泄漏。
 
-   <!-- @[animator_template4_hide_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
+   <!-- @animator_template4_hide_start -->
    
    ``` TypeScript
    onPageHide(): void {
@@ -167,7 +167,7 @@
 
 完整示例如下。  
 
-<!-- @[animator_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets) -->
+<!-- @animator_template3_start -->
 
 ``` TypeScript
 import { AnimatorOptions, AnimatorResult } from '@kit.ArkUI';
@@ -268,4 +268,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001599958466](figures/animatorSimple.gif)
+zh-cn_image_0000001599958466

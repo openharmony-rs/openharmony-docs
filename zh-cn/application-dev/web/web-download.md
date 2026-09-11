@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -16,7 +16,7 @@
 
 默认路径在应用沙箱的web目录内，用户无法查看。如果希望用户能够查看，需要将下载路径修改到有访问权限的目录，比如Download目录，请参考使用Web组件发起一个下载任务。
 
-<!-- @[download_delegate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ListenForPageDown.ets) -->
+<!-- @download_delegate -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -94,7 +94,7 @@ Web组件发起的下载会根据当前显示的url以及Web组件默认的Refer
 
 在下面的示例中，先点击setDownloadDelegate按钮向Web注册一个监听类，然后点击startDownload主动发起了一个下载，该下载任务也会通过设置的DownloadDelegate来通知app下载的进度。
 
-<!-- @[init_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/InitiatingADownloadTask.ets) -->
+<!-- @init_download_task -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -245,7 +245,7 @@ function getDownloadPathFromPicker(): Promise<string> {
 
 在以下示例中，通过“record”按钮将当前下载任务保存至持久化文件中，应用重启后，可借助“recovery”按钮恢复持久化的下载任务。示例代码实现了将当前下载任务持久化保存至文件的功能，若需保存多个下载任务，应用可根据需求调整持久化的时机与方式。
 
-<!-- @[recovery_download_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/ResumeDownload.ets) -->
+<!-- @recovery_download_task -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -341,7 +341,7 @@ struct WebComponent {
 ```
 
 下载任务信息持久化工具类文件。
-<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->    
+<!-- @task_info_persistence_util -->    
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';

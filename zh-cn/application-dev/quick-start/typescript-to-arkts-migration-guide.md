@@ -13,7 +13,7 @@ ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运
 
 包含关键字`var`的原始TypeScript代码：
 
-<!-- @[sample_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
+<!-- @sample_ts -->
 
 ``` TypeScript
 function addTen(x: number): number {
@@ -24,7 +24,7 @@ function addTen(x: number): number {
 
 重构后的代码：
 
-<!-- @[sample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/pages/Index.ets) -->
+<!-- @sample_function -->
 
 ``` TypeScript
 function addTen(x: number): number {
@@ -166,7 +166,7 @@ let s = +'42'; // 编译时错误
 
 假设两个不相关的类`T`和`U`都拥有相同的`public`API：
 
-<!-- @[struct_typing_caseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
+<!-- @struct_typing_caseOne -->
 
 ``` TypeScript
 class T {
@@ -188,7 +188,7 @@ class U {
 
 类型为`T`的值是否能赋给类型为`U`的变量。
 
-<!-- @[struct_typing_caseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
+<!-- @struct_typing_caseTwo -->
 
 ``` TypeScript
 let u: U = new T(); // 是否允许？
@@ -196,7 +196,7 @@ let u: U = new T(); // 是否允许？
 
 类型为`T`的值是否能传递给接收类型为`U`的参数的函数。
 
-<!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
+<!-- @struct_typing_caseThree -->
 
 ``` TypeScript
 function greeter(u: U) {
@@ -235,7 +235,7 @@ greeter(t); // 是否允许？
 
 **TypeScript**
 
-<!-- @[identifier_prop_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/IdentifiersAsPropNames.ts) -->
+<!-- @identifier_prop_ts -->
 
 ``` TypeScript
 var x = { 'name': 'x', 2: '3' };
@@ -246,7 +246,7 @@ console.info(x[2]); // 3
 
 **ArkTS**
 
-<!-- @[identifier_prop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/IdentifiersAsPropNames.ets) -->
+<!-- @identifier_prop -->
 
 ``` TypeScript
 class X {
@@ -289,7 +289,7 @@ let obj: Record<string, number> = {
 
 **TypeScript**
 
-<!-- @[unique_names_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/UniqueNames.ts) -->
+<!-- @unique_names_ts -->
 
 ``` TypeScript
 let X: string
@@ -298,7 +298,7 @@ type X = number[] // 类型的别名与变量同名
 
 **ArkTS**
 
-<!-- @[unique_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/UniqueNames.ets) -->
+<!-- @unique_names -->
 
 ``` TypeScript
 let X: string;
@@ -374,7 +374,7 @@ ArkTS不支持`any`和`unknown`类型。显式指定具体类型。
 
 **TypeScript**
 
-<!-- @[no_any_unknown_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAnyUnknown.ts) -->
+<!-- @no_any_unknown_ts -->
 
 ``` TypeScript
 let value1: any
@@ -388,7 +388,7 @@ value2 = 42;
 
 **ArkTS**
 
-<!-- @[no_any_unknown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAnyUnknown.ets) -->
+<!-- @no_any_unknown -->
 
 ``` TypeScript
 let valueB: boolean = true; // 或者 let valueB = true
@@ -418,7 +418,7 @@ let valueO2: Object = 42;
 
 **TypeScript**
 
-<!-- @[no_untypedCaseOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+<!-- @no_untypedCaseOne_ts -->
 
 ``` TypeScript
 let o1 = { n: 42, s: 'foo' };
@@ -430,7 +430,7 @@ let oo: Object[] = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
 
 **ArkTS**
 
-<!-- @[no_untypedCaseOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+<!-- @no_untypedCaseOne -->
 
 ``` TypeScript
 class C1 {
@@ -449,7 +449,7 @@ let oo: C1[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];
 
 **TypeScript**
 
-<!-- @[no_untypedCaseTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+<!-- @no_untypedCaseTwo_ts -->
 
 ``` TypeScript
 class C2 {
@@ -463,7 +463,7 @@ let o4: C2 = { s: 'foo' };
 
 **ArkTS**
 
-<!-- @[no_untypedCaseTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+<!-- @no_untypedCaseTwo -->
 
 ``` TypeScript
 class C2 {
@@ -479,7 +479,7 @@ let o4 = new C2('foo');
 
 **TypeScript**
 
-<!-- @[no_untypedCaseThree_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+<!-- @no_untypedCaseThree_ts -->
 
 ``` TypeScript
 class C3 {
@@ -491,7 +491,7 @@ let o5: C3 = { n: 42, s: 'foo' };
 
 **ArkTS**
 
-<!-- @[no_untypedCaseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+<!-- @no_untypedCaseThree -->
 
 ``` TypeScript
 class C3 {
@@ -505,7 +505,7 @@ let o5: C3 = {n: 42, s: 'foo'};
 
 **TypeScript**
 
-<!-- @[no_untypedCaseFour_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+<!-- @no_untypedCaseFour_ts -->
 
 ``` TypeScript
 abstract class A { }
@@ -514,7 +514,7 @@ let o6: A = {};
 
 **ArkTS**
 
-<!-- @[no_untypedCaseFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+<!-- @no_untypedCaseFour -->
 
 ``` TypeScript
 abstract class A {}
@@ -526,7 +526,7 @@ let o6: C = {}; // 或 let o6: C = new C()
 
 **TypeScript**
 
-<!-- @[no_untypedCaseFive_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+<!-- @no_untypedCaseFive_ts -->
 
 ``` TypeScript
 class C4 {
@@ -541,7 +541,7 @@ let o7: C4 = { n: 42, s: 'foo', f: () => { } };
 
 **ArkTS**
 
-<!-- @[no_untypedCaseFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+<!-- @no_untypedCaseFive -->
 
 ``` TypeScript
 class C4 {
@@ -560,7 +560,7 @@ o7.s = 'foo';
 
 **TypeScript**
 
-<!-- @[no_untypedCaseSix_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUntypedObjLiterals.ts) -->
+<!-- @no_untypedCaseSix_ts -->
 
 ``` TypeScript
 class Point {
@@ -582,7 +582,7 @@ getPoint({ x: 5, y: 10 });
 
 **ArkTS**
 
-<!-- @[no_untypedCaseSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUntypedObjLiterals.ets) -->
+<!-- @no_untypedCaseSix -->
 
 ``` TypeScript
 class Point {
@@ -617,7 +617,7 @@ ArkTS将数组字面量的类型推断为所有元素的联合类型。如果其
 
 **TypeScript**
 
-<!-- @[no_unInferred_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNoninferrableArrLiterals.ts) -->
+<!-- @no_unInferred_ts -->
 
 ``` TypeScript
 let a = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
@@ -625,7 +625,7 @@ let a = [{ n: 1, s: '1' }, { n: 2, s: '2' }];
 
 **ArkTS**
 
-<!-- @[no_unInferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNoninferrableArrLiterals.ets) -->
+<!-- @no_unInferred -->
 
 ``` TypeScript
 class C {
@@ -649,7 +649,7 @@ ArkTS不支持解构赋值。可使用其他替代方法，例如，使用临时
 
 **TypeScript**
 
-<!-- @[no_destructAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructAssignment.ts) -->
+<!-- @no_destructAssignment_ts -->
 
 ``` TypeScript
 let [one, two] = [1, 2]; // 此处需要分号
@@ -661,7 +661,7 @@ let head, tail;
 
 **ArkTS**
 
-<!-- @[no_destructAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructAssignment.ets) -->
+<!-- @no_destructAssignment -->
 
 ``` TypeScript
 let arr: number[] = [1, 2];
@@ -672,9 +672,9 @@ let tmp = one;
 one = two;
 two = tmp;
 
-let data: Number[] = [1, 2, 3, 4];
+let data: number[] = [1, 2, 3, 4];
 let head = data[0];
-let tail: Number[] = [];
+let tail: number[] = [];
 for (let i = 1; i < data.length; ++i) {
   tail.push(data[i]);
 }
@@ -692,7 +692,7 @@ ArkTS不支持解构变量声明。解构变量声明是一个依赖于结构兼
 
 **TypeScript**
 
-<!-- @[no_destructDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructDecls.ts) -->
+<!-- @no_destructDecls_ts -->
 
 ``` TypeScript
 class Point {
@@ -709,7 +709,7 @@ let { x, y } = returnZeroPoint();
 
 **ArkTS**
 
-<!-- @[no_destructDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructDecls.ets) -->
+<!-- @no_destructDecls -->
 
 ``` TypeScript
 class Point {
@@ -754,7 +754,7 @@ console.info('x = ' + x);
 
 **ArkTS**
 
-<!-- @[no_definiteAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->
+<!-- @no_definiteAssignment -->
 
 ``` TypeScript
 function initialize(): number {
@@ -784,7 +784,7 @@ console.info('x = ' + x);
 
 **TypeScript**
 
-<!-- @[type_check_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/TypeCheck.ts) -->
+<!-- @type_check_ts -->
 
 ``` TypeScript
 // 只有在开启noImplicitReturns选项时会产生编译时错误
@@ -802,7 +802,7 @@ let n: number = null; // 只有在开启strictNullChecks选项时会产生编译
 
 **ArkTS**
 
-<!-- @[type_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/TypeCheck.ets) -->
+<!-- @type_check -->
 
 ``` TypeScript
 function foo(s: string): string {
@@ -824,7 +824,7 @@ let n2: number = 0;
 
 **TypeScript**
 
-<!-- @[no_definiteAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->
+<!-- @no_definiteAssignment_ts -->
 
 ``` TypeScript
 class C {
@@ -837,7 +837,7 @@ let c = new C();
 
 **ArkTS**
 
-<!-- @[no_definiteAssignment_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDefiniteAssignment.ets) -->
+<!-- @no_definiteAssignment_c -->
 
 ``` TypeScript
 class C {
@@ -865,7 +865,7 @@ c.initAge(10);
 
 **TypeScript**
 
-<!-- @[strict_typingRequired_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDefiniteAssignment.ts) -->
+<!-- @strict_typingRequired_ts -->
 
 ``` TypeScript
 // @ts-nocheck
@@ -898,7 +898,7 @@ ArkTS不支持函数表达式，使用箭头函数（=>）。
 
 **TypeScript**
 
-<!-- @[no_funcExpressions_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoFuncExpressions.ts) -->
+<!-- @no_funcExpressions_ts -->
 
 ``` TypeScript
 let f = function (s: string) {
@@ -908,7 +908,7 @@ let f = function (s: string) {
 
 **ArkTS**
 
-<!-- @[no_funcExpressions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncExpressions.ets) -->
+<!-- @no_funcExpressions -->
 
 ``` TypeScript
 let f = (s: string) => {
@@ -928,7 +928,7 @@ ArkTS在部分场景中支持对函数返回类型进行推断。当`return`语�
 
 **TypeScript**
 
-<!-- @[no_implicitReturnTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImplicitReturnTypes.ts) -->
+<!-- @no_implicitReturnTypes_ts -->
 
 ``` TypeScript
 // 只有在开启noImplicitAny选项时会产生编译时错误
@@ -954,7 +954,7 @@ doOperation(2, 3);
 
 **ArkTS**
 
-<!-- @[no_implicitReturnTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImplicitReturnTypes.ets) -->
+<!-- @no_implicitReturnTypes -->
 
 ``` TypeScript
 // 需标注返回类型：
@@ -991,7 +991,7 @@ ArkTS要求实参必须直接传递给函数，且必须指定到形参。
 
 **TypeScript**
 
-<!-- @[no_destructParams_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructParams.ts) -->
+<!-- @no_destructParams_ts -->
 
 ``` TypeScript
 function drawText({ text = '', location: [x, y] = [0, 0], bold = false }) {
@@ -1006,10 +1006,10 @@ drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
 
 **ArkTS**
 
-<!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->
+<!-- @no_destructParams -->
 
 ``` TypeScript
-function drawText(text: String, location: number[], bold: boolean) {
+function drawText(text: string, location: number[], bold: boolean) {
   let x = location[0];
   let y = location[1];
   text;
@@ -1035,7 +1035,7 @@ ArkTS不支持在函数内声明函数，改用lambda函数。
 
 **TypeScript**
 
-<!-- @[no_nestedFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNestedFuncs.ts) -->
+<!-- @no_nestedFuncs_ts -->
 
 ``` TypeScript
 function addNum(a: number, b: number): void {
@@ -1054,7 +1054,7 @@ function addNum(a: number, b: number): void {
 
 **ArkTS**
 
-<!-- @[no_nestedFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNestedFuncs.ets) -->
+<!-- @no_nestedFuncs -->
 
 ``` TypeScript
 function addNum(a: number, b: number): void {
@@ -1081,7 +1081,7 @@ ArkTS中`this`只能在类的实例方法中使用，不支持在函数和类的
 
 **TypeScript**
 
-<!-- @[no_standaloneThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStandaloneThis.ts) -->
+<!-- @no_standaloneThis_ts -->
 
 ``` TypeScript
 function foo(i: string) {
@@ -1101,7 +1101,7 @@ console.info(a.count); // 打印b
 
 **ArkTS**
 
-<!-- @[no_standaloneThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoStandaloneThis.ets) -->
+<!-- @no_standaloneThis -->
 
 ``` TypeScript
 class A {
@@ -1131,7 +1131,7 @@ function main(): void {
 
 **TypeScript**
 
-<!-- @[no_generators_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGenerators.ts) -->
+<!-- @no_generators_ts -->
 
 ``` TypeScript
 function* counter(start: number, end: number) {
@@ -1147,7 +1147,7 @@ for (let num of counter(1, 5)) {
 
 **ArkTS**
 
-<!-- @[no_generators](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGenerators.ets) -->
+<!-- @no_generators -->
 
 ``` TypeScript
 async function complexNumberProcessing(num: number): Promise<number> {
@@ -1207,7 +1207,7 @@ ArkTS不支持使用`#`符号开头声明的私有字段。改用`private`关键
 
 **TypeScript**
 
-<!-- @[no_symbol_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSymbol.ts) -->
+<!-- @no_symbol_ts -->
 
 ``` TypeScript
 class C {
@@ -1217,7 +1217,7 @@ class C {
 
 **ArkTS**
 
-<!-- @[no_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbol.ets) -->
+<!-- @no_symbol -->
 
 ``` TypeScript
 class C {
@@ -1237,7 +1237,7 @@ ArkTS不允许类中存在多个静态块。如果存在多个静态块语句，
 
 **TypeScript**
 
-<!-- @[no_multipleStaticBlocks_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMultipleStaticBlocks.ts) -->
+<!-- @no_multipleStaticBlocks_ts -->
 
 ``` TypeScript
 class C {
@@ -1254,7 +1254,7 @@ class C {
 
 **ArkTS**
 
-<!-- @[no_multipleStaticBlocks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMultipleStaticBlocks.ets) -->
+<!-- @no_multipleStaticBlocks -->
 
 ``` TypeScript
 class C {
@@ -1279,7 +1279,7 @@ ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`�
 
 **TypeScript**
 
-<!-- @[no_ctorPropDecls_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorPropDecls.ts) -->
+<!-- @no_ctorPropDecls_ts -->
 
 ``` TypeScript
 class Person {
@@ -1301,7 +1301,7 @@ class Person {
 
 **ArkTS**
 
-<!-- @[no_ctorPropDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorPropDecls.ets) -->
+<!-- @no_ctorPropDecls -->
 
 ``` TypeScript
 class Person {
@@ -1333,7 +1333,7 @@ ArkTS不支持类表达式，必须显式声明一个类。
 
 **TypeScript**
 
-<!-- @[no_classLiterals_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoClassLiterals.ts) -->
+<!-- @no_classLiterals_ts -->
 
 ``` TypeScript
 const Rectangle = class {
@@ -1351,7 +1351,7 @@ const rectangle = new Rectangle(0.0, 0.0);
 
 **ArkTS**
 
-<!-- @[no_classLiterals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoClassLiterals.ets) -->
+<!-- @no_classLiterals -->
 
 ``` TypeScript
 class TestRectangle {
@@ -1379,7 +1379,7 @@ ArkTS中只有接口可以被`implements`，类不允许被`implements`。
 
 **TypeScript**
 
-<!-- @[impl_onlyIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ImplOnlyIface.ts) -->
+<!-- @impl_onlyIface_ts -->
 
 ``` TypeScript
 class C {
@@ -1393,7 +1393,7 @@ class C1 implements C {
 
 **ArkTS**
 
-<!-- @[impl_onlyIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ImplOnlyIface.ets) -->
+<!-- @impl_onlyIface -->
 
 ``` TypeScript
 interface C {
@@ -1419,7 +1419,7 @@ ArkTS不支持修改对象的方法。在静态语言中，对象布局固定，
 
 **TypeScript**
 
-<!-- @[no_reassignMethod_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMethodreassignment.ts) -->
+<!-- @no_reassignMethod_ts -->
 
 ``` TypeScript
 class C {
@@ -1442,7 +1442,7 @@ c2.foo(); // bar
 
 **ArkTS**
 
-<!-- @[no_reassignMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMethodreassignment.ets) -->
+<!-- @no_reassignMethod -->
 
 ``` TypeScript
 class C {
@@ -1493,7 +1493,7 @@ ArkTS不支持对象类型中包含call signature。
 
 **TypeScript**
 
-<!-- @[no_callSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCallSignatures.ts) -->
+<!-- @no_callSignatures_ts -->
 
 ``` TypeScript
 type DescribableFunction = {
@@ -1508,7 +1508,7 @@ function doSomething(fn: DescribableFunction): void {
 
 **ArkTS**
 
-<!-- @[no_callSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCallSignatures.ets) -->
+<!-- @no_callSignatures -->
 
 ``` TypeScript
 class DescribableFunction {
@@ -1540,7 +1540,7 @@ ArkTS不支持对象类型中的构造签名。改用类。
 
 **TypeScript**
 
-<!-- @[no_ctorSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesType.ts) -->
+<!-- @no_ctorSignatures_ts -->
 
 ``` TypeScript
 class SomeObject { }
@@ -1556,7 +1556,7 @@ function fn(ctor: SomeConstructor) {
 
 **ArkTS**
 
-<!-- @[no_ctorSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesType.ets) -->
+<!-- @no_ctorSignatures -->
 
 ``` TypeScript
 class SomeObject {
@@ -1583,7 +1583,7 @@ ArkTS不允许index signature，改用数组。
 
 **TypeScript**
 
-<!-- @[no_indexedSignatures_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIndexedSignatures.ts) -->
+<!-- @no_indexedSignatures_ts -->
 
 ``` TypeScript
 // 带index signature的接口：
@@ -1601,7 +1601,7 @@ const secondItem = myArray[1];
 
 **ArkTS**
 
-<!-- @[no_indexedSignatures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIndexedSignatures.ets) -->
+<!-- @no_indexedSignatures -->
 
 ``` TypeScript
 class X {
@@ -1628,7 +1628,7 @@ ArkTS支持通过索引访问`TypedArray`（例如`Int32Array`）中的元素。
 
 **TypeScript**
 
-<!-- @[noProps_byIndex_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPropsByIndex.ts) -->
+<!-- @noProps_byIndex_ts -->
 
 ``` TypeScript
 class Point {
@@ -1697,7 +1697,7 @@ ArkTS不支持使用对象字面量声明类型，建议使用类或接口声明
 
 **TypeScript**
 
-<!-- @[no_objLiteralsAsTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoObjLiteralsAsTypes.ts) -->
+<!-- @no_objLiteralsAsTypes_ts -->
 
 ``` TypeScript
 let o: { x: number, y: number } = {
@@ -1710,7 +1710,7 @@ type S = Set<{ x: number, y: number }>
 
 **ArkTS**
 
-<!-- @[no_objLiteralsAsTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoObjLiteralsAsTypes.ets) -->
+<!-- @no_objLiteralsAsTypes -->
 
 ``` TypeScript
 class O {
@@ -1735,7 +1735,7 @@ ArkTS没有原型的概念，因此不支持在原型上赋值。此特性不符
 
 **TypeScript**
 
-<!-- @[no_prototypeAssign_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPrototypeAssignment.ts) -->
+<!-- @no_prototypeAssign_ts -->
 
 ``` TypeScript
 let C = function (p) {
@@ -1755,7 +1755,7 @@ C.prototype.q = function (r: string) {
 
 **ArkTS**
 
-<!-- @[no_prototypeAssign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoPrototypeAssignment.ets) -->
+<!-- @no_prototypeAssign -->
 
 ``` TypeScript
 class C {
@@ -1825,7 +1825,7 @@ let z = greet<string>();
 
 **TypeScript**
 
-<!-- @[no_intersectionTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIntersectionTypes.ts) -->
+<!-- @no_intersectionTypes_ts -->
 
 ``` TypeScript
 interface Identity {
@@ -1843,7 +1843,7 @@ type Employee = Identity & Contact
 
 **ArkTS**
 
-<!-- @[no_intersectionTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIntersectionTypes.ets) -->
+<!-- @no_intersectionTypes -->
 
 ``` TypeScript
 interface Identity {
@@ -1871,7 +1871,7 @@ ArkTS不支持`this`类型，改用显式具体类型。
 
 **TypeScript**
 
-<!-- @[no_typingWithThis_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypingWithThis.ts) -->
+<!-- @no_typingWithThis_ts -->
 
 ``` TypeScript
 interface ListItem {
@@ -1889,7 +1889,7 @@ class C {
 
 **ArkTS**
 
-<!-- @[no_typingWithThis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypingWithThis.ets) -->
+<!-- @no_typingWithThis -->
 
 ``` TypeScript
 interface testListItem {
@@ -1919,7 +1919,7 @@ ArkTS不支持条件类型别名，建议引入带显式约束的新类型，或
 
 **TypeScript**
 
-<!-- @[no_conditionalTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoConditionalTypes.ts) -->
+<!-- @no_conditionalTypes_ts -->
 
 ``` TypeScript
 type X<T> = T extends number ? T : never;
@@ -1928,7 +1928,7 @@ type Y<T> = T extends Array<infer Item> ? Item : never;
 
 **ArkTS**
 
-<!-- @[no_conditionalTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoConditionalTypes.ets) -->
+<!-- @no_conditionalTypes -->
 
 ``` TypeScript
 // 在类型别名中提供显式约束
@@ -1963,7 +1963,7 @@ ArkTS不支持structural typing，编译器无法比较两种类型的`public`AP
 
 **TypeScript**
 
-<!-- @[no_structuralTyping_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoStructuralTyping.ts) -->
+<!-- @no_structuralTyping_ts -->
 
 ``` TypeScript
 interface I1 {
@@ -2079,7 +2079,7 @@ ArkTS不支持映射类型，使用其他语法表示相同语义。
 
 **TypeScript**
 
-<!-- @[no_mappedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMappedTypes.ts) -->
+<!-- @no_mappedTypes_ts -->
 
 ``` TypeScript
 type OptionsFlags<Type> = {
@@ -2089,7 +2089,7 @@ type OptionsFlags<Type> = {
 
 **ArkTS**
 
-<!-- @[no_mappedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoMappedTypes.ets) -->
+<!-- @no_mappedTypes -->
 
 ``` TypeScript
 class C {
@@ -2205,7 +2205,7 @@ ArkTS不支持`as const`断言和字面量类型。在标准TypeScript中，`as 
 
 **TypeScript**
 
-<!-- @[no_asConst_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAsConst.ts) -->
+<!-- @no_asConst_ts -->
 
 ``` TypeScript
 // 'hello'类型
@@ -2220,7 +2220,7 @@ let z = { text: 'hello' } as const;
 
 **ArkTS**
 
-<!-- @[no_asConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAsConst.ets) -->
+<!-- @no_asConst -->
 
 ``` TypeScript
 // 'string'类型
@@ -2253,7 +2253,7 @@ let z: Label = {
 
 **TypeScript**
 
-<!-- @[as_casts_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/AsCasts.ts) -->
+<!-- @as_casts_ts -->
 
 ``` TypeScript
 class testShape { }
@@ -2281,7 +2281,7 @@ let e2 = (new Number(5.0)) instanceof Number; // true
 
 **ArkTS**
 
-<!-- @[as_casts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/AsCasts.ets) -->
+<!-- @as_casts -->
 
 ``` TypeScript
 class TestShape {}     
@@ -2311,7 +2311,7 @@ TypeScript的catch语句中，只能标注`any`或`unknown`类型。ArkTS不支�
 
 **TypeScript**
 
-<!-- @[noTypes_inCatch_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypesInCatch.ts) -->
+<!-- @noTypes_inCatch_ts -->
 
 ``` TypeScript
 try {
@@ -2323,7 +2323,7 @@ try {
 
 **ArkTS**
 
-<!-- @[noTypes_inCatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypesInCatch.ets) -->
+<!-- @noTypes_inCatch -->
 
 ``` TypeScript
 try {
@@ -2345,7 +2345,7 @@ try {
 
 **TypeScript**
 
-<!-- @[no_forIn_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoForIn.ts) -->
+<!-- @no_forIn_ts -->
 
 ``` TypeScript
 let a: string[] = ['1.0', '2.0', '3.0'];
@@ -2356,7 +2356,7 @@ for (let i in a) {
 
 **ArkTS**
 
-<!-- @[no_forIn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoForIn.ets) -->
+<!-- @no_forIn -->
 
 ``` TypeScript
 let a: string[] = ['1.0', '2.0', '3.0'];
@@ -2386,7 +2386,7 @@ with (Math) { // 编译时错误, 但是仍能生成JavaScript代码
 
 **ArkTS**
 
-<!-- @[no_with](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoWith.ets) -->
+<!-- @no_with -->
 
 ``` TypeScript
 let r: number = 42;
@@ -2405,7 +2405,7 @@ ArkTS只支持抛出`Error`类或其派生类的实例。禁止抛出其他类�
 
 **TypeScript**
 
-<!-- @[limited_throw_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/LimitedThrow.ts) -->
+<!-- @limited_throw_ts -->
 
 ``` TypeScript
 throw 4;
@@ -2415,7 +2415,7 @@ throw new Error();
 
 **ArkTS**
 
-<!-- @[limited_throw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/LimitedThrow.ets) -->
+<!-- @limited_throw -->
 
 ``` TypeScript
 throw new Error();
@@ -2436,7 +2436,7 @@ throw new Error();
 
 **TypeScript**
 
-<!-- @[no_commaLoops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCommaOutsideloops.ts) -->
+<!-- @no_commaLoops_ts -->
 
 ``` TypeScript
 for (let i = 0, j = 0; i < 10; ++i, j += 2) {
@@ -2449,7 +2449,7 @@ x = (++x, x++); // 1
 
 **ArkTS**
 
-<!-- @[no_commaLoops](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCommaOutsideloops.ets) -->
+<!-- @no_commaLoops -->
 
 ``` TypeScript
 for (let i = 0, j = 0; i < 10; ++i, j += 2) {
@@ -2480,7 +2480,7 @@ import m = require('mod')
 
 **ArkTS**
 
-<!-- @[no_require](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoRequire.ets) -->
+<!-- @no_require -->
 
 ``` TypeScript
 import * as m from './ExportMod'
@@ -2515,7 +2515,7 @@ let p = Pt.Point.origin;
 
 **ArkTS**
 
-<!-- @[no_exportAssignOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+<!-- @no_exportAssignOne -->
 
 ``` TypeScript
 // ExportMod.ets
@@ -2525,7 +2525,7 @@ export class Point {
 }
 ```
 
-<!-- @[no_exportAssignTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExportAssignment.ets) -->
+<!-- @no_exportAssignTwo -->
 
 ``` TypeScript
 // module2
@@ -2554,7 +2554,7 @@ declare module 'someModule' {
 
 **ArkTS**
 
-<!-- @[no_ambientDecls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAmbientDecls.ets) -->
+<!-- @no_ambientDecls -->
 
 ``` TypeScript
 // 从原始模块中导入需要的内容
@@ -2586,7 +2586,7 @@ import fileContent from 'some.txt!text'
 
 **ArkTS**
 
-<!-- @[declare_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+<!-- @declare_namespace -->
 
 ``` TypeScript
 // 声明
@@ -2595,7 +2595,7 @@ export declare namespace N {
 }
 ```
 
-<!-- @[no_moduleWildCards](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoModuleWildcards.ets) -->
+<!-- @no_moduleWildCards -->
 
 ``` TypeScript
 // 使用代码
@@ -2617,7 +2617,7 @@ ArkTS不支持通用模块定义（UMD）。因为在ArkTS中没有“脚本”�
 
 ```typescript
 // math-lib.d.ts
-export const isPrime(x: number): boolean
+export function isPrime(x: number): boolean
 export as namespace mathLib
 
 // 脚本中
@@ -2629,7 +2629,7 @@ mathLib.isPrime(2)
 ```typescript
 // math-lib.d.ts
 namespace mathLib {
-  export isPrime(x: number): boolean
+  export function isPrime(x: number): boolean
 }
 
 // 程序中
@@ -2649,7 +2649,7 @@ ArkTS不支持导入断言。因为导入是编译时特性，运行时检查导
 
 **TypeScript**
 
-<!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoImportAssertions.ts) -->
+<!-- @no_importAssertions -->
 
 ``` TypeScript
 import { obj } from './Something.json' assert { type: 'json' }
@@ -2657,7 +2657,7 @@ import { obj } from './Something.json' assert { type: 'json' }
 
 **ArkTS**
 
-<!-- @[no_importAssertions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoImportAssertions.ets) -->
+<!-- @no_importAssertions -->
 
 ``` TypeScript
 // 编译时将检查导入T的正确性
@@ -2676,7 +2676,7 @@ import { Something } from './ExportMod'
 
 **TypeScript**
 
-<!-- @[export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExportMod.ts) -->
+<!-- @export_class -->
 
 ``` TypeScript
 // ExportMod.ts
@@ -2685,7 +2685,7 @@ export class C {
 }
 ```
 
-<!-- @[no_tsDeps_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTsDeps.ts) -->
+<!-- @no_tsDeps_ts -->
 
 ``` TypeScript
 // NoTsDeps.ts
@@ -2694,7 +2694,7 @@ import { C } from './ExportMod'
 
 **ArkTS**
 
-<!-- @[export_classC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+<!-- @export_classC -->
 
 ``` TypeScript
 // ExportMod.ets
@@ -2703,7 +2703,7 @@ export class C {
 }
 ```
 
-<!-- @[no_tsDeps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTsDeps.ets) -->
+<!-- @no_tsDeps -->
 
 ``` TypeScript
 // lib2.ets
@@ -2722,7 +2722,7 @@ import { C } from './ExportMod'
 
 **TypeScript**
 
-<!-- @[no_misplaced_imports_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoMisplacedImports.ts) -->
+<!-- @no_misplaced_imports_ts -->
 
 ``` TypeScript
 class C {
@@ -2758,7 +2758,7 @@ ArkTS不支持将命名空间用作对象，可以使用类或模块。
 
 **TypeScript**
 
-<!-- @[no_nsAsObj_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNsAsObj.ts) -->
+<!-- @no_nsAsObj_ts -->
 
 ``` TypeScript
 namespace MyNamespace {
@@ -2771,7 +2771,7 @@ m.x = 2;
 
 **ArkTS**
  
-<!-- @[no_nsAsObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsAsObj.ets) -->
+<!-- @no_nsAsObj -->
 
 ``` TypeScript
 namespace MyNamespace {
@@ -2793,7 +2793,7 @@ MyNamespace.x = 2;
 
 **TypeScript**
 
-<!-- @[no_nsStatements_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNsStatements.ts) -->
+<!-- @no_nsStatements_ts -->
 
 ``` TypeScript
 namespace A {
@@ -2804,7 +2804,7 @@ namespace A {
 
 **ArkTS**
  
-<!-- @[no_nsStatements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsStatements.ets) -->
+<!-- @no_nsStatements -->
 
 ``` TypeScript
 namespace A {
@@ -2831,7 +2831,7 @@ ArkTS语法禁止在接口（interface）中定义构造签名。作为替代方
 
 **TypeScript**
 
-<!-- @[no_ctorSignaturesIface_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesIface.ts) -->
+<!-- @no_ctorSignaturesIface_ts -->
 
 ``` TypeScript
 interface I {
@@ -2845,7 +2845,7 @@ function fn(i: I) {
 
 **ArkTS**
 
-<!-- @[no_ctorSignaturesIface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesIface.ets) -->
+<!-- @no_ctorSignaturesIface -->
 
 ``` TypeScript
 interface I {
@@ -2863,13 +2863,13 @@ function fn(i: I) {
 
 **级别：错误**
 
-**错误码：106050102**
+**错误码：10605102**
 
 在TypeScript中，如果一个接口继承了两个具有相同方法的接口，则必须使用联合类型声明该方法的返回值类型。在ArkTS中，由于接口不能包含两个无法区分的方法（如参数列表相同但返回类型不同），因此不能继承具有相同方法的两个接口。
 
 **TypeScript**
 
-<!-- @[no_extendSameProp_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoExtendSameProp.ts) -->
+<!-- @no_extendSameProp_ts -->
 
 ``` TypeScript
 interface Mover {
@@ -2898,7 +2898,7 @@ class C implements MoverShaker {
 
 **ArkTS**
 
-<!-- @[no_extendSameProp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoExtendSameProp.ets) -->
+<!-- @no_extendSameProp -->
 
 ``` TypeScript
 class MoveStatus {
@@ -2968,7 +2968,7 @@ class C implements Mover, Shaker {
 
 **TypeScript**
 
-<!-- @[extends_onlyClass_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/ExtendsOnlyClass.ts) -->
+<!-- @extends_onlyClass_ts -->
 
 ``` TypeScript
 class Control {
@@ -2982,7 +2982,7 @@ interface SelectableControl extends Control {
 
 **ArkTS**
  
-<!-- @[extends_onlyClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExtendsOnlyClass.ets) -->
+<!-- @extends_onlyClass -->
 
 ``` TypeScript
 interface Control {
@@ -3006,7 +3006,7 @@ ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型
 
 **TypeScript**
 
-<!-- @[no_polymorphicUnops_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoPolymorphicUnops.ts) -->
+<!-- @no_polymorphicUnops_ts -->
 
 ``` TypeScript
 let a = +5;    // 5（number类型）
@@ -3064,7 +3064,7 @@ let y = +returnString(); // 编译时错误
 
 **TypeScript**
 
-<!-- @[no_delete_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDelete.ts) -->
+<!-- @no_delete_ts -->
 
 ``` TypeScript
 class Point {
@@ -3078,7 +3078,7 @@ delete p.y;
 
 **ArkTS**
 
-<!-- @[no_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDelete.ets) -->
+<!-- @no_delete -->
 
 ``` TypeScript
 // 可以声明一个可空类型并使用null作为缺省值
@@ -3103,7 +3103,7 @@ ArkTS仅支持在表达式中使用`typeof`运算符，不允许使用`typeof`�
 
 **TypeScript**
 
-<!-- @[no_typeQuery_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTypeQuery.ts) -->
+<!-- @no_typeQuery_ts -->
 
 ``` TypeScript
 let n1 = 42;
@@ -3116,7 +3116,7 @@ let s2: typeof s1;
 
 **ArkTS**
 
-<!-- @[no_typeQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoTypeQuery.ets) -->
+<!-- @no_typeQuery -->
 
 ``` TypeScript
 let n1 = 42;
@@ -3139,7 +3139,7 @@ TypeScript中，`instanceof`运算符的左操作数类型必须为`any`类型�
 
 **TypeScript**
 
-<!-- @[instanceof_ref_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/InstanceofRefTypes.ts) -->
+<!-- @instanceof_ref_ts -->
 
 ``` TypeScript
 let num: number = 42;
@@ -3166,7 +3166,7 @@ let result = num instanceof Number; // 编译报错
 
 **TypeScript**
 
-<!-- @[no_in_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoIn.ts) -->
+<!-- @no_in_ts -->
 
 ``` TypeScript
 class Person {
@@ -3179,7 +3179,7 @@ let b = 'name' in p; // true
 
 **ArkTS**
 
-<!-- @[no_in](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoIn.ets) -->
+<!-- @no_in -->
 
 ``` TypeScript
 class Person {
@@ -3204,7 +3204,7 @@ ArkTS仅支持使用展开运算符展开数组、`Array`的子类和`TypedArray
 
 **TypeScript**
 
-<!-- @[no_spreadOne_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->
+<!-- @no_spreadOne_ts -->
 
 ``` TypeScript
 function foo(x: number, y: number, z: number) {
@@ -3217,7 +3217,7 @@ foo(...args);
 
 **ArkTS**
 
-<!-- @[no_spreadOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->
+<!-- @no_spreadOne -->
 
 ``` TypeScript
 function logNumbers(x: number, y: number, z: number) {
@@ -3230,7 +3230,7 @@ logNumbers(numbers[0], numbers[1], numbers[2]);
 
 **TypeScript**
 
-<!-- @[no_spreadTwo_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSpread.ts) -->
+<!-- @no_spreadTwo_ts -->
 
 ``` TypeScript
 let point2d = { x: 1, y: 2 };
@@ -3239,7 +3239,7 @@ let point3d = { ...point2d, z: 3 };
 
 **ArkTS**
 
-<!-- @[no_spreadTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSpread.ets) -->
+<!-- @no_spreadTwo -->
 
 ``` TypeScript
 class Point2D {
@@ -3280,7 +3280,7 @@ ArkTS不支持使用运行期间计算的表达式初始化枚举成员。枚举
 
 **TypeScript**
 
-<!-- @[no_enumMixedTypes_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoEnumMixedTypes.ts) -->
+<!-- @no_enumMixedTypes_ts -->
 
 ``` TypeScript
 enum E1 {
@@ -3301,7 +3301,7 @@ enum E2 {
 
 **ArkTS**
  
-<!-- @[no_enumMixedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMixedTypes.ets) -->
+<!-- @no_enumMixedTypes -->
 
 ``` TypeScript
 enum E1 {
@@ -3332,7 +3332,7 @@ ArkTS不支持`enum`声明合并。
 
 **TypeScript**
 
-<!-- @[no_enumMerging_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoEnumMerging.ts) -->
+<!-- @no_enumMerging_ts -->
 
 ``` TypeScript
 enum ColorSet {
@@ -3350,7 +3350,7 @@ enum ColorSet {
 
 **ArkTS**
  
-<!-- @[no_enumMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMerging.ets) -->
+<!-- @no_enumMerging -->
 
 ``` TypeScript
 enum ColorSet {
@@ -3374,7 +3374,7 @@ ArkTS不支持类和接口的声明合并。
 
 **TypeScript**
 
-<!-- @[no_declMerging_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDeclMerging.ts) -->
+<!-- @no_declMerging_ts -->
 
 ``` TypeScript
 interface Document {
@@ -3394,7 +3394,7 @@ interface Document {
 
 **ArkTS**
  
-<!-- @[no_declMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDeclMerging.ets) -->
+<!-- @no_declMerging -->
 
 ``` TypeScript
 interface Document {
@@ -3430,7 +3430,7 @@ ArkTS只支持`Symbol.iterator`。
 
 **TypeScript**
 
-<!-- @[no_globalThisImport_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoGlobalThis.ts) -->
+<!-- @no_globalThisImport_ts -->
 
 ``` TypeScript
 // 全局文件中
@@ -3442,14 +3442,14 @@ let x = globalThis.abc;
 
 **ArkTS**
 
-<!-- @[no_globalThisExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExportMod.ets) -->
+<!-- @no_globalThisExport -->
 
 ``` TypeScript
 // ExportMod.ets
 export let abc: number = 100;
 ```
 
-<!-- @[no_globalThisImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoGlobalThis.ets) -->
+<!-- @no_globalThisImport -->
 
 ``` TypeScript
 // NoGlobalThis.ets
@@ -3576,7 +3576,7 @@ ArkTS不支持构造函数类型，改用lambda函数。
 
 **TypeScript**
 
-<!-- @[no_ctorSignaturesFuncs_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoCtorSignaturesFuncs.ts) -->
+<!-- @no_ctorSignaturesFuncs_ts -->
 
 ``` TypeScript
 class Person {
@@ -3596,7 +3596,7 @@ const person = createPerson(Person, 'John', 30);
 
 **ArkTS**
  
-<!-- @[no_ctorSignaturesFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesFuncs.ets) -->
+<!-- @no_ctorSignaturesFuncs -->
 
 ``` TypeScript
 class Person {

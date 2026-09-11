@@ -48,7 +48,7 @@ JSVM-API接口开发流程可参考使用JSVM-API实现JS与C/C++语言交互开
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_error -->
 
 ``` C++
 // 捕获清除并打印错误，该函数作为公共函数，在本文档后续样例中不再声明和定义
@@ -113,7 +113,7 @@ JSVM error message: HasError, error code: -1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/throwerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_throw_error -->
 
 ``` C++
 // OH_JSVM_ThrowError的样例方法
@@ -164,7 +164,7 @@ JSVM error message: self defined error message, error code: self defined error c
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_throw_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/throwtypeerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_throw_type_error -->
 
 ``` C++
 // OH_JSVM_ThrowTypeError的样例方法
@@ -215,7 +215,7 @@ JSVM error message: self defined error message, error code: self defined error c
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_throw_range_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/throwrangeerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_throw_range_error -->
 
 ``` C++
 // OH_JSVM_ThrowRangeError的样例方法
@@ -261,7 +261,7 @@ JSVM error message: Expected two numbers as arguments, error code: OH_JSVM_Throw
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_throw_syntax_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/throwsyntaxerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_throw_syntax_error -->
 
 ``` C++
 // OH_JSVM_ThrowSyntaxError的样例方法
@@ -311,7 +311,7 @@ JSVM error message: throw syntax error, error code: JsVmThrowSyntaxError
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_is_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/iserror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_error -->
 
 ``` C++
 // OH_JSVM_IsError的样例方法
@@ -358,7 +358,7 @@ JSVM API call OH_JSVM_IsError success, result is 1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createtypeerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_type_error -->
 
 ``` C++
 // OH_JSVM_CreateTypeError的样例方法
@@ -403,7 +403,7 @@ JSVM API Create TypeError SUCCESS
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_range_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createrangeerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_range_error -->
 
 ``` C++
 // OH_JSVM_CreateRangeError的样例方法
@@ -447,7 +447,7 @@ JSVM API CreateRangeError SUCCESS
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_syntax_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createsyntaxerror/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_syntax_error -->
 
 ``` C++
 // OH_JSVM_CreateSyntaxError的样例方法
@@ -492,7 +492,7 @@ JSVM API CreateSyntaxError SUCCESS
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_and_clear_last_exception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/getandclearlastexception/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_and_clear_last_exception -->
 
 ``` C++
 // OH_JSVM_GetAndClearLastException的样例方法
@@ -534,7 +534,7 @@ JSVM API OH_JSVM_GetAndClearLastException SUCCESS
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_is_exception_pending](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/isexceptionpending/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_is_exception_pending -->
 
 ``` C++
 // OH_JSVM_IsExceptionPending的样例方法
@@ -590,7 +590,7 @@ JSVM API OH_JSVM_IsExceptionPending: SUCCESS
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_last_error_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/getlasterrorinfo/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_last_error_info -->
 
 ``` C++
 // OH_JSVM_GetLastErrorInfo的样例方法

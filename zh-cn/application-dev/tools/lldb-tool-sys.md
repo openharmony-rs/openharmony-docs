@@ -10,9 +10,9 @@
 ## 概述
 LLDB（Low Level Debugger）是新一代高性能调试器。具备断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等功能，并支持跨平台和插件扩展。
 
-当前 OpenHarmony 中的 LLDB 工具基于 [llvm15.0.4](https://github.com/llvm/llvm-project/releases/tag/llvmorg-15.0.4) 适配演进，是 HUAWEI DevEco Studio 工具链的默认调试器，支持调试 C 和 C++ 应用程序。
+当前 OpenHarmony 中的 LLDB 工具基于 llvm15.0.4 适配演进，是 HUAWEI DevEco Studio 工具链的默认调试器，支持调试 C 和 C++ 应用程序。
 
-详细说明参考[LLDB官方文档](https://lldb.llvm.org/)。
+详细说明参考LLDB官方文档。
 
 ## 功能特点
 
@@ -22,7 +22,7 @@ LLDB调试器具备以下功能特点：
 - **插件扩展性**：支持插件扩展，方便开发者根据需求进行定制。
 
 ## 工具获取路径
-通过OpenHarmony的SDK获取，获取路径：http://ci.openharmony.cn/workbench/cicd/dailybuild
+通过OpenHarmony的SDK获取，获取路径：每日构建。
 
 lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system可选windows/linux/darwin。
 
@@ -33,7 +33,7 @@ lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system�
 
 ## 功能列表
 
-此处列举LLDB调试器支持的部分功能，更多命令参考：[LLDB工具使用指导](https://gitcode.com/openharmony/third_party_llvm-project/blob/master/lldb/README_zh.md)和[LLDB官网手册](https://lldb.llvm.org/use/map.html#)。Windows、Linux x86_64和Mac平台的LLDB工具有些许差异，以实际应用为准。
+此处列举LLDB调试器支持的部分功能，更多命令参考：LLDB工具使用指导和LLDB官网手册。Windows、Linux x86_64和Mac平台的LLDB工具有些许差异，以实际应用为准。
 
 - 记录日志
 

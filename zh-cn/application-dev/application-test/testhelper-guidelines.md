@@ -17,7 +17,7 @@
 
 testhelper功能架构设计图如下所示：
 
-![testhelper](figures/testhelper.png)
+testhelper
 
 testhelper分为命令行工具层和核心能力层两部分，依赖底层系统服务提供功能支持。
 

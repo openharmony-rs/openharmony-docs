@@ -75,7 +75,7 @@
 
 在UIAbility中重写onBackPressed()方法。
 
-<!-- @[appStop_backPressed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/GuideForAppExit/onBackPressed/src/main/ets/onbackpressedability/OnBackPressedAbility.ets) -->
+<!-- @appStop_backPressed -->
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -126,7 +126,7 @@ export default class OnBackPressedAbility extends UIAbility {
 1. 在UIAbility中获取UIAbilityContext实例。
 2. 调用terminateSelf()接口退出UIAbility。
 
-<!-- @[appStop_terminateSelf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/GuideForAppExit/terminateSelf/src/main/ets/terminateselfability/TerminateSelfAbility.ets) -->
+<!-- @appStop_terminateSelf -->
 
 ``` TypeScript
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';

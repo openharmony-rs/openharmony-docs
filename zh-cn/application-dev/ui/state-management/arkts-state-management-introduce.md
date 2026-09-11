@@ -12,7 +12,7 @@
 
 收集依赖是指建立状态变量与组件之间的数据绑定关系。在UI渲染时，状态管理框架会“观察”哪些状态变量被读取了，并记录下这个“依赖关系”。一个UI界面上可能使用了多个状态变量，在修改状态变量时，仅与该状态变量相关的组件进行UI刷新，其他不相关的组件不会刷新。因此，UI刷新时需要明确哪些组件使用了被修改的状态变量，以能够实现这些组件的精准刷新。
 
-<!-- @[state_management_introduce](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateManagementIntroduce.ets) -->
+<!-- @state_management_introduce -->
 
 ``` TypeScript
 @Entry
@@ -75,7 +75,7 @@ struct Index {
 
 UI渲染的流程主要有以下几个步骤：
 
-![pipeline](./figures/pipeline.png)
+pipeline
 
 1. 事件触发状态变量发生改变，执行状态变量的`set`方法，将自定义组件和系统组件标脏，并请求一个刷新信号。
 2. 刷新脏节点：刷新标脏的自定义组件和系统组件。
@@ -83,7 +83,7 @@ UI渲染的流程主要有以下几个步骤：
 
 同样以上述示例代码为例，使用DevEco Studio的Profiler工具，点击`Button1`，抓取状态变量的变化打点，trace如下图所示：
 
-![statemanagement-trace](./figures/statemanagement-trace.png)
+statemanagement-trace
 
 对上图中的标记点进行逐一介绍：
 
@@ -97,7 +97,7 @@ UI渲染的流程主要有以下几个步骤：
 
 其中，状态管理的基本流程如图所示：
 
-![statemanagement](./figures/statemanagement.png)
+statemanagement
 
 状态管理循环执行两大步骤：收集依赖和触发更新。收集状态变量与组件之间的依赖关系。当状态变量发生变化时，执行标脏，刷新对应的UI，同时更新依赖关系。
 

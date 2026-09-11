@@ -34,7 +34,7 @@ ArkUI（方舟UI框架）为应用的UI开发提供了完整的基础设施，�
 
   **图1** 方舟UI框架示意图  
 
-  ![arkui-framework](figures/arkui-framework.png)
+  arkui-framework
 
 
 ## 不同应用类型支持的开发范式

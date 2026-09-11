@@ -27,7 +27,7 @@ ArkAF提供三种核心能力框架，为开发者提供标准化的能力开放
 
 **图1** ArkAF架构图
 
-![ArkAF架构图](figures/arkaf-architecture.png)
+ArkAF架构图
 
 工作流程分为四个阶段：
 

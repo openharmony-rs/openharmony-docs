@@ -72,7 +72,7 @@ try {
 
 系统弹出对话框并提示应用“想要开启蓝牙”，如下图1。若用户同意授权，将开启蓝牙。
 
-![enable bluetooth dialog](figures/enable-bluetooth-dialog.png)
+enable bluetooth dialog
 
 **图1** 开启蓝牙对话框
 ```ts
@@ -93,7 +93,7 @@ try {
 
 系统弹出对话框并提示应用“想要关闭蓝牙”，如下图2。若用户同意授权，将关闭蓝牙。
 
-![disable bluetooth dialog](figures/disable-bluetooth-dialog.png)
+disable bluetooth dialog
 
 **图2** 关闭蓝牙对话框
 ```ts

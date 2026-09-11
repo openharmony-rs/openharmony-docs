@@ -13,7 +13,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 * 确认设备网络状态：检查设备是否连接网络，验证内置浏览器能否正常访问网页（适用于在线页面场景）。
 * 添加网络权限：确保应用已声明 ohos.permission.INTERNET 权限（在线页面必需）。
 
-    <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+    <!-- @INTERNET -->
     
     ``` JSON5
     "requestPermissions":[
@@ -32,7 +32,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
     | onlineImageAccess | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | javaScriptAccess | 设置是否允许执行JavaScript脚本。 | 
 
-    <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
+    <!-- @OpenPermissions -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -180,7 +180,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循fileAccess规则，具体示例如下。
 
-    <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
+    <!-- @SetPath -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -289,7 +289,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 3. 对比应用的自定义User-Agent和ArkWeb默认User-Agent，查看应用自定义User-Agent是否携带OpenHarmony标识。若加载失败时未携带标识，则设置自定义User-Agent携带OpenHarmony标识查看是否能加载成功；若加载失败时携带了OpenHarmony标识，则设置自定义User-Agent携带Android等其他标识查看是否能加载成功，若加载成功则说明第三方网站未适配OpenHarmony，应推动第三方做适配。 如果需要修改User-Agent，去勾选“使用浏览器默认设置”。 选择自定义User-Agent，输入自己的User-Agent即可。
 4. 修改UserAgent后再观察页面是否恢复正常。
 
- <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
+ <!-- @ChangeUserAgent -->
  
  ``` TypeScript
  import { webview } from '@kit.ArkWeb';

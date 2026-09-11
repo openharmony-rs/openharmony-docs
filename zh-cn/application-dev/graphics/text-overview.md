@@ -11,7 +11,7 @@
 
 **图1** 字体引擎能力结构图
 
-![text](figures/text.png)
+text
 
 当前字体引擎开发框架支持在应用中对文字、emoji表情、placeholder等文本元素进行塑形、排版、测量和绘制显示。
 
@@ -36,4 +36,4 @@
 
 **图2** 文本测量与文本绘制显示的实现流程 
 
-![drawText](figures/drawText.jpg)
+drawText

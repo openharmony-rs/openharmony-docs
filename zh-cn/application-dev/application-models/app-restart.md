@@ -28,7 +28,7 @@
 - 不支持3秒内重复调用重启接口。
 
 示例代码：
-<!-- @[restartapp_withoutWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @restartapp_withoutWindow --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -84,7 +84,7 @@ struct Index {
 示例代码：
 
 1. 指定当前UIAbility，重启后刷新当前窗口至初始状态。
-   <!-- @[restartapp_withOldWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index2.ets) --> 
+   <!-- @restartapp_withOldWindow --> 
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -127,7 +127,7 @@ struct Index {
    ```
 
 2. 指定应用内其他UIAbility，重启后跳转并打开新的Ability窗口。
-   <!-- @[restartapp_withNewWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index3.ets) --> 
+   <!-- @restartapp_withNewWindow --> 
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';

@@ -26,7 +26,7 @@
 
 开发者在实现一个驱动时，需要在DevEco Studio工程中手动新建一个DriverExtensionAbility，具体步骤如下：
 
-1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。（如果在开发带UI界面基础驱动已经创建，则此处不需要创建。）
+1. 创建新工程，请参考创建一个新的工程，创建一个OpenHarmony工程。（如果在开发带UI界面基础驱动已经创建，则此处不需要创建。）
 
 2. 在新创建的工程对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为driverextability。
 
@@ -34,7 +34,7 @@
 
 4. 在文件中导入相关Kit，并定义请求Code。
 
-   <!-- @[driver_service_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
+   <!-- @driver_service_step4 --> 
    
    ``` TypeScript
    import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
@@ -46,7 +46,7 @@
 
 5. 打开DriverExtAbility.ets文件，导入@ohos.rpc (RPC通信)，重载onRemoteMessageRequest()方法，接收应用传递过来的消息，并将处理的结果返回给应用。REQUEST_CODE用于校验应用发送的服务请求码。
 
-   <!-- @[driver_service_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
+   <!-- @driver_service_step5 --> 
    
    ``` TypeScript
    class StubTest extends rpc.RemoteObject {
@@ -68,7 +68,7 @@
 
 6. 在DriverExtAbility.ets文件中，增加导入DriverExtensionAbility的依赖包，该包提供了onInit()、onRelease()、onConnect()和onDisconnect()生命周期回调，自定义类继承DriverExtensionAbility并根据需要重写生命周期回调。
 
-   <!-- @[driver_service_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
+   <!-- @driver_service_step6 --> 
    
    ``` TypeScript
    export default class DriverExtAbility extends DriverExtensionAbility {
@@ -98,7 +98,7 @@
 
 7. 在工程Module对应的module.json5配置文件中注册DriverExtensionAbility，type标签需要设置为“driver”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-   <!-- @[driver_service_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/module.json5) --> 
+   <!-- @driver_service_step7 --> 
    
    ``` JSON5
    {
@@ -184,7 +184,7 @@
    }
    ```
 
-8. 完成客户端和驱动示例代码开发后，请参考[使用本地真机运行应用/元服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)，将Hap导入设备中，并点击hap中的Hello，查看是否会转变为Hello world，即实现ipc通信功能。
+8. 完成客户端和驱动示例代码开发后，请参考使用本地真机运行应用/元服务，将Hap导入设备中，并点击hap中的Hello，查看是否会转变为Hello world，即实现ipc通信功能。
 
 ## 扩展设备能力
 
@@ -222,5 +222,5 @@
       }
       ```
 
-自动签名方法： 请参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+自动签名方法： 请参考配置调试签名。
 <!--RP1End-->

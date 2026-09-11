@@ -18,7 +18,7 @@
 
 1. 创建voice_call类型的AVSession。AVSession在创建方法中支持不同的类型参数，由AVSessionType定义。voice_call表示通话类型，如果不创建，将显示空列表。
 
-   <!-- @[create_voiceCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @create_voiceCall -->    
    
    ``` TypeScript
    import { AVCastPicker, AVCastPickerState, AVInputCastPicker, avSession } from '@kit.AVSessionKit';
@@ -47,7 +47,7 @@
 
 2. 在需要切换设备的通话界面创建AVCastPicker组件。
 
-   <!-- @[create_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchOutputDevice.ets) -->     
+   <!-- @create_castPicker -->     
    
    ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
@@ -83,7 +83,7 @@
 
    或者创建AVCastPickerHelper组件。
 
-   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
+   <!-- @create_castPickerHelper -->   
    
    ``` TypeScript
    import { common } from '@kit.AbilityKit';
@@ -113,7 +113,7 @@
 
 3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考开发音频通话功能。
 
-   <!-- @[start_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->         
+   <!-- @start_render -->         
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -210,7 +210,7 @@
   
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
 
-   <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->       
+   <!-- @device_monitor -->       
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -251,7 +251,7 @@
 
 5. 通话结束后，销毁会话。
 
-   <!-- @[destroy_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->     
+   <!-- @destroy_session -->     
    
    ``` TypeScript
    // 通话结束销毁第一步创建的session。
@@ -274,7 +274,7 @@
 
 1. 创建自定义AVCastPicker，需要新增自定义参数（对应默认样式实现步骤2）。
 
-   <!-- @[self_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
+   <!-- @self_castPicker -->    
    
    ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
@@ -310,7 +310,7 @@
 
 2. 如果应用要根据发声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
 
-   <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
+   <!-- @device_monitor -->    
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -363,7 +363,7 @@
 
 1. 在需要切换设备的通话界面创建AVInputCastPicker组件。
 
-   <!-- @[default_InputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/DefaultAVInputCastPicker.ets) -->   
+   <!-- @default_InputCastPicker -->   
    
    ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
@@ -400,7 +400,7 @@
 
 1. 创建自定义AVInputCastPicker，需要新增自定义参数。
 
-   <!-- @[self_inputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchInputDevice.ets) -->   
+   <!-- @self_inputCastPicker -->   
    
    ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';

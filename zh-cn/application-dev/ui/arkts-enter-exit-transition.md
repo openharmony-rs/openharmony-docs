@@ -28,7 +28,7 @@ transition是基础的组件转场接口，用于实现一个组件出现或者�
 
 1. 创建TransitionEffect。
   
-   <!-- @[transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template6/Index.ets) -->
+   <!-- @transition_animation -->
    
    ``` TypeScript
    // 出现时会是所有出现转场效果的叠加，消失时会是所有消失转场效果的叠加
@@ -80,7 +80,7 @@ transition是基础的组件转场接口，用于实现一个组件出现或者�
 
  完整的示例代码和效果如下，示例中采用直接删除或新增组件的方式触发转场，也可以替换为在animateTo闭包内改变控制变量触发转场。
 
-   <!-- @[transition_effectExample4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template4/Index.ets) -->
+   <!-- @transition_effectExample4 -->
    
    ``` TypeScript
    import { curves } from '@kit.ArkUI';
@@ -147,12 +147,12 @@ transition是基础的组件转场接口，用于实现一个组件出现或者�
 
 
 
-![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition.gif)
+zh-cn_image_0000001599818064
 
 
 对多个组件添加转场效果时，可以在animation动画参数中配置不同的delay值，实现组件渐次出现消失的效果：
 
-   <!-- @[transition_effectExample5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template5/Index.ets) -->
+   <!-- @transition_effectExample5 -->
    
    ``` TypeScript
    const ITEM_COUNTS = 9;
@@ -215,4 +215,4 @@ transition是基础的组件转场接口，用于实现一个组件出现或者�
    }
    ```
 
-![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition01.gif)
+zh-cn_image_0000001599818064

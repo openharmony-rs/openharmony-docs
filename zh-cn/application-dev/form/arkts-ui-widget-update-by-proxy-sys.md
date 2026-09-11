@@ -12,7 +12,7 @@
 
 **图1** 代理刷新运行原理
 
-![UpdateWidgetByProxyPrinciple](figures/UpdateWidgetByProxyPrinciple.png)
+UpdateWidgetByProxyPrinciple
 
 如图1，与ArkTS卡片实现原理图相比，卡片代理刷新原理新增了数据管理服务和数据提供方。
 
@@ -84,7 +84,7 @@
   >
   > key可以是uri也可以是简单字符串，subscriberId默认值为当前formId，实际取值都依赖于数据提供方的定义。
 
-    <!-- @[process_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts) -->
+    <!-- @process_data_form_ability -->
     
     ``` TypeScript
     // entry/src/main/ets/processdataentryability/ProcessDataFormAbility.ts
@@ -119,7 +119,7 @@
   
 - 在卡片页面文件中，通过LocalStorage变量获取订阅到的数据，LocalStorage绑定了一个字符串，以key:value的键值对格式来刷新卡片订阅数据，其中key必须与卡片提供方订阅的key保持一致。示例中，通过'datashareproxy://com.samples.widgetupdatebyproxy/weather'获取订阅的数据，并在Text组件显示。
 
-    <!-- @[widget_process_data_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetprocessdata/pages/WidgetProcessDataCard.ets) -->
+    <!-- @widget_process_data_card -->
     
     ``` TypeScript
     // entry/src/main/ets/widgetprocessdata/pages/WidgetProcessDataCard.ets
@@ -185,7 +185,7 @@
   > - key的取值是uri，依赖于数据提供方定义。
   > - subscriberId可自定义，addTemplate中的subscriberId参数与proxies.subscriberId保持一致即可。
 
-  <!-- @[persistent_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts) --> 
+  <!-- @persistent_data_form_ability --> 
   
   ``` TypeScript
   // entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts
@@ -232,7 +232,7 @@
 
 - 在卡片页面文件中，通过LocalStorage变量获取订阅到的数据，LocalStorage绑定了一个字符串，以key:value的键值对格式来刷新卡片订阅数据，其中key必须与卡片提供方订阅的key保持一致。示例中，通过'list'获取订阅的数据，并把第一个元素的值显示在Text组件上。
 
-    <!-- @[widget_persistent_data_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetpersistentdata/pages/WidgetPersistentDataCard.ets) -->
+    <!-- @widget_persistent_data_card -->
     
     ``` TypeScript
     // entry/src/main/ets/widgetpersistentdata/pages/WidgetPersistentDataCard.ets
@@ -267,5 +267,5 @@
 
 针对卡片代理开发，有以下相关实例可供参考：
 
-- [应用主动添加数据代理卡片到桌面（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Widget/RequestAddForm)
+- 应用主动添加数据代理卡片到桌面（ArkTS）（Full SDK）（API10）
 <!--DelEnd-->

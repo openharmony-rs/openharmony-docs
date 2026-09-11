@@ -15,7 +15,7 @@
 
 保存控件效果如图所示。
 
-![save-control-effect](figures/save-control-effect.png)
+save-control-effect
 
 ## 约束与限制
 
@@ -53,7 +53,7 @@
    
    有关将图片保存到媒体库的详细信息，请参考保存媒体库资源。
 
-   <!-- @[use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->    
+   <!-- @use_save_button -->    
    
    ``` TypeScript
    import { photoAccessHelper } from '@kit.MediaLibraryKit';

@@ -40,7 +40,7 @@
 
   **图1** 流转架构图
 
- ![hop-structure](figures/hop-structure.png)  
+ hop-structure  
 
 - 跨端迁移任务管理：在迁移发起端，接受用户迁移的意图，提供迁移流转入口，迁移结果显示等能力。
 

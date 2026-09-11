@@ -45,7 +45,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @head -->
    
    ``` TypeScript
    // 导入usbManager模块
@@ -56,7 +56,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 2. 获取设备列表。
 
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @getDevices --> 
    
    ``` TypeScript
    // 获取设备列表。
@@ -131,7 +131,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 3. 获取设备操作权限。
 
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @requestRight -->
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -153,7 +153,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 4. 打开设备。
 
-   <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @connectDevice --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -194,7 +194,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 5. 数据传输。当前仅支持批量传输和控制传输。
 
     - 批量传输
-   <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @bulkTransfer -->
    
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
@@ -245,7 +245,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
     - 控制传输
 
-   <!-- @[controlTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @controlTransfer --> 
    
    ``` TypeScript
    if (this.pipe_ === undefined) {
@@ -277,7 +277,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 6. 释放接口，关闭设备。
 
-   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @closePipe --> 
    
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
@@ -305,4 +305,4 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 针对USB管理开发，有以下相关实例可供参考：
 
-- [`DeviceManagementCollection`：设备管理合集（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/DeviceManagementCollection)
+- `DeviceManagementCollection`：设备管理合集（ArkTS）（API9）

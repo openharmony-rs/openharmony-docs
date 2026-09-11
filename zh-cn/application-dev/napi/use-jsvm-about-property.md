@@ -45,7 +45,7 @@
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_property_names -->
 
 ``` C++
 // OH_JSVM_GetPropertyNames的样例方法
@@ -94,7 +94,7 @@ JSVM OH_JSVM_GetPropertyNames success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_set_property -->
 
 ``` C++
 // OH_JSVM_SetProperty的样例方法
@@ -150,7 +150,7 @@ JSVM OH_JSVM_SetProperty success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_property -->
 
 ``` C++
 // OH_JSVM_GetProperty的样例方法
@@ -199,7 +199,7 @@ JSVM OH_JSVM_GetProperty success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_has_property -->
 
 ``` C++
 // OH_JSVM_HasProperty的样例方法
@@ -257,7 +257,7 @@ JSVM OH_JSVM_HasProperty success:0
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/deleteproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_delete_property -->
 
 ``` C++
 // OH_JSVM_DeleteProperty的样例方法
@@ -315,7 +315,7 @@ JSVM OH_JSVM_DeleteProperty success:1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasownproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_has_own_property -->
 
 ``` C++
 // OH_JSVM_HasOwnProperty的样例方法
@@ -386,7 +386,7 @@ JSVM OH_JSVM_HasOwnProperty success:0
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/setnamedproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_set_named_property -->
 
 ``` C++
 // OH_JSVM_SetNamedProperty的样例方法
@@ -446,7 +446,7 @@ JSVM OH_JSVM_SetNamedProperty success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getnamedproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_named_property -->
 
 ``` C++
 // OH_JSVM_GetNamedProperty的样例方法
@@ -500,7 +500,7 @@ JSVM OH_JSVM_GetNamedProperty success
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasnamedproperty/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_has_named_property -->
 
 ``` C++
 // OH_JSVM_HasNamedProperty的样例方法
@@ -557,7 +557,7 @@ JSVM OH_JSVM_HasNamedProperty success:1
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/defineproperties/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_define_properties -->
 
 ``` C++
 // 属性描述符列表中defineMethodPropertiesExample属性的回调函数
@@ -699,7 +699,7 @@ JSVM getterCallback success:Hello world!
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_get_all_property_names -->
 
 ``` C++
 // OH_JSVM_GetAllPropertyNames的样例方法

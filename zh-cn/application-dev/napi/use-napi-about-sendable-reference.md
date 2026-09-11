@@ -323,4 +323,4 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
 2. `napi_sendable_ref`可跨ArkTS线程使用，在多线程操作时，调用者需自己保证释放时机，防止出现释放后使用的问题。
 3. 同一进程内，同时存活的`napi_sendable_ref`最大数量为51200个。
 4. `napi_sendable_ref`与其他引用的类型不同，因此不可将`napi_ref`、`napi_strong_ref`等其他引用强转成`napi_sendable_ref`。`napi_delete_strong_sendable_reference`和`napi_get_strong_sendable_reference_value`接口仅允许接收由`napi_create_strong_sendable_reference`创建的`napi_sendable_ref`。
-5. 在使用`napi_create_strong_sendable_reference`、`napi_get_strong_sendable_reference_value`和`napi_delete_strong_sendable_reference`接口时，调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现[多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。
+5. 在使用`napi_create_strong_sendable_reference`、`napi_get_strong_sendable_reference_value`和`napi_delete_strong_sendable_reference`接口时，调用者需要保证传入的`env`参数是当前调用接口的ArkTS线程环境对象，避免将其他ArkTS线程的`env`作为参数传入导致出现多线程安全问题。

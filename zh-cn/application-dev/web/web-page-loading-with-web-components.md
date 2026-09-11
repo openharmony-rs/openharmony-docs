@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -27,7 +27,7 @@
 
 在下面的示例中，在Web组件加载完“www\.example.com”页面后，开发者可通过loadUrl接口将此Web组件显示页面变更为“www\.example1.com”。
 
-<!-- @[use_load_interface_to_show_web_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets) -->
+<!-- @use_load_interface_to_show_web_changes -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -76,11 +76,11 @@ struct WebComponent {
 
     **图1** 资源文件路径  
 
-    ![resource-path](figures/resource-path.png)
+    resource-path
 
 
 - 应用侧代码。
-  <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets) -->
+  <!-- @after_load_complete_call_to_change_page -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -137,7 +137,7 @@ struct WebComponent {
 加载沙箱路径下的本地页面文件。
 
 1. 通过构造的单例对象GlobalContext获取沙箱路径。需要开启应用中文件系统的访问fileAccess权限。
-   <!-- @[after_load_complete_call_to_change_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/GlobalContext.ets) -->
+   <!-- @after_load_complete_call_to_change_page -->
    
    ``` TypeScript
    export class GlobalContext {
@@ -163,7 +163,7 @@ struct WebComponent {
    ```
    <!-- -->
    
-   <!-- @[load_local_page_file_in_sandbox_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_one.ets) -->
+   <!-- @load_local_page_file_in_sandbox_path -->
    
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
@@ -222,7 +222,7 @@ struct WebComponent {
 ## 加载HTML格式的文本数据
 
 Web组件可以通过loadData()接口实现加载HTML格式的文本数据。当开发者不需要加载整个页面，只需要显示一些页面片段时，可通过此功能来快速加载页面，当加载大量html文件时，需设置第四个参数baseUrl为"data"。
-<!-- @[devs_load_page_fragments_for_quick_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets) -->
+<!-- @devs_load_page_fragments_for_quick_loading -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -256,7 +256,7 @@ struct WebComponent {
 ```
 
 Web组件可以通过data url方式直接加载HTML字符串。
-<!-- @[web_components_load_html_strings_by_data_url](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadLocalPageFileInSandboxPath_two.ets) -->
+<!-- @web_components_load_html_strings_by_data_url -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -280,7 +280,7 @@ struct WebComponent {
 ## resource协议加载本地资源
 
 resource协议允许访问应用资源目录中的文件。
-<!-- @[resource_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/ResourceLoadPage.ets) -->
+<!-- @resource_loading -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -336,4 +336,4 @@ struct ResourceWebComponent {
 
 针对Web组件开发，有以下相关实例可供参考：
 
-- [浏览器（ArkTS）（Full SDK）(API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/Browser)
+- 浏览器（ArkTS）（Full SDK）(API9)

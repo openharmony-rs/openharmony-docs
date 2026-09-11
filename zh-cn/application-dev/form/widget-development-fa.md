@@ -426,7 +426,7 @@ onUpdate(formId: string) {
 
 开发者可以使用类Web范式（HML+CSS+JSON）开发JS卡片页面。生成如下卡片页面，可以这样配置卡片页面文件：
 
-![widget-development-fa](figures/widget-development-fa.png)
+widget-development-fa
 
 > **说明：**
 > FA模型当前仅支持JS扩展的类Web开发范式来实现卡片的UI。

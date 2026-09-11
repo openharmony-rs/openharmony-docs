@@ -15,7 +15,7 @@
 状态的详细说明请参考AVPlayerState。当播放处于prepared/playing/paused/completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，合理利用资源。
 
 **播放状态变化示意图：**
-![Playback status change](figures/playback-status-change-ndk.png)
+Playback status change
 
 ## 开发建议
 
@@ -58,7 +58,7 @@
 
 1. 创建AVPlayer实例：调用OH_AVPlayer_Create()接口，AVPlayer初始化为AVPlayerState.AV_IDLE状态。
 
-   <!-- @[OH_AVPlayer_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_Create -->
    
    ``` C++
    OH_AVPlayer *player = OH_AVPlayer_Create();
@@ -73,7 +73,7 @@
    | OH_AVPlayerOnInfoCallback | 必要事件，监听播放器的过程信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听。如果在调用设置资源接口后再设置监听，会导致无法收到资源设置过程中上报的OH_AVPlayerOnInfoCallback事件。 |
    | OH_AVPlayerOnErrorCallback | 必要事件，监听播放器的错误信息。<br>需要播放器在AV_IDLE状态下、未调用设置资源接口前完成设置监听。如果在调用设置资源接口后再设置监听，会导致无法收到资源设置过程中上报的OH_AVPlayerOnErrorCallback事件。 |
 
-   <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @OH_AVPlayer_SetOnInfoCallback -->  
    
    ``` C++
    // 设置回调，监听信息。
@@ -82,7 +82,7 @@
    LOG("OH_AVPlayer_SetOnInfoCallback ret:%{public}d", ret);
    ```
 
-   <!-- @[OH_AVPlayer_SetOnErrorCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @OH_AVPlayer_SetOnErrorCallback -->  
    
    ``` C++
    LOG("call OH_AVPlayer_SetOnErrorCallback");
@@ -92,7 +92,7 @@
 
 3. 设置资源：调用OH_AVPlayer_SetURLSource()，设置属性URL（支持点播和直播源），AVPlayer进入AVPlayerState.AV_INITIALIZED（初始化）状态。
 
-   <!-- @[OH_AVPlayer_SetURLSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->  
+   <!-- @OH_AVPlayer_SetURLSource -->  
    
    ``` C++
    LOG("player %{public}s >> URL source", url);
@@ -103,7 +103,7 @@
 
 4. （可选）设置智能追帧：直播场景下调用OH_AVPlayer_SetPlaybackStrategy()，设置AVPlayer启用智能追帧。
 
-   <!-- @[OH_AVPlayer_SetPlaybackStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_SetPlaybackStrategy -->
    
    ``` C++
    void OHAVPlayerSetPlaybackStrategy(OH_AVPlayer *player)
@@ -120,7 +120,7 @@
 
 5. （可选）设置音频流类型：调用OH_AVPlayer_SetAudioRendererInfo()，设置AVPlayer音频流类型。
 
-   <!-- @[OH_AVPlayer_SetAudioRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_SetAudioRendererInfo -->
    
    ``` C++
    // 设置音频流类型。
@@ -132,7 +132,7 @@
 
 6. （可选）设置音频打断模式：调用OH_AVPlayer_SetAudioInterruptMode()，设置AVPlayer音频流打断模式。
 
-   <!-- @[OH_AVPlayer_SetAudioInterruptMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_SetAudioInterruptMode -->
    
    ``` C++
    // 设置音频流打断模式。
@@ -144,7 +144,7 @@
 
 7. 设置播放画面窗口：调用OH_AVPlayer_SetVideoSurface()设置播放画面窗口。此函数必须在SetSource之后，Prepare之前调用。
 
-   <!-- @[OH_AVPlayer_SetVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_SetVideoSurface -->
    
    ``` C++
    ret = OH_AVPlayer_SetVideoSurface(player, context->nativeWindow_);
@@ -153,7 +153,7 @@
 
 8. 准备播放：调用OH_AVPlayer_Prepare()，AVPlayer进入AVPlayerState.AV_PREPARED（准备）状态，此时可以获取时长，设置音量。
 
-   <!-- @[OH_AVPlayer_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_Prepare -->
    
    ``` C++
    ret = OH_AVPlayer_Prepare(player); // 设置播放源后触发该状态上报。
@@ -165,7 +165,7 @@
 
 9. （可选）设置音频音效模式：调用OH_AVPlayer_SetAudioEffectMode()，设置AVPlayer音频音效模式。
 
-   <!-- @[OH_AVPlayer_SetAudioEffectMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @OH_AVPlayer_SetAudioEffectMode -->
    
    ``` C++
    LOG("AVPlayerState AV_PREPARED");
@@ -175,7 +175,7 @@
 
 10. 播放控制：包含播放OH_AVPlayer_Play()、暂停OH_AVPlayer_Pause()、跳转OH_AVPlayer_Seek()、停止OH_AVPlayer_Stop()等操作。
 
-    <!-- @[OH_AVPlayer_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @OH_AVPlayer_Play -->
     
     ``` C++
     static napi_value NAPI_Global_Play(napi_env env, napi_callback_info info) {
@@ -193,7 +193,7 @@
     }
     ```
 
-    <!-- @[OH_AVPlayer_Pause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @OH_AVPlayer_Pause -->
     
     ``` C++
     static napi_value NAPI_Global_Pause(napi_env env, napi_callback_info info) {
@@ -211,7 +211,7 @@
     }
     ```
 
-    <!-- @[OH_AVPlayer_Seek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @OH_AVPlayer_Seek -->
     
     ``` C++
     static napi_value NAPI_Global_Seek(napi_env env, napi_callback_info info) {
@@ -253,7 +253,7 @@
     }
     ```
 
-    <!-- @[OH_AVPlayer_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @OH_AVPlayer_Stop -->
     
     ``` C++
     static napi_value NAPI_Global_Stop(napi_env env, napi_callback_info info) {
@@ -273,7 +273,7 @@
 
 11. （可选）更换资源：调用OH_AVPlayer_Reset()重置资源，AVPlayer重新进入AVPlayerState.AV_IDLE（空闲）状态，允许更换资源URL。
 
-    <!-- @[OH_AVPlayer_Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @OH_AVPlayer_Reset -->
     
     ``` C++
     static napi_value NAPI_Global_Reset(napi_env env, napi_callback_info info) {
@@ -293,7 +293,7 @@
 
 12. 退出播放：调用OH_AVPlayer_Release()销毁实例，AVPlayer进入AVPlayerState.AV_RELEASED（释放）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用异常退出等情况。
 
-    <!-- @[OH_AVPlayer_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @OH_AVPlayer_Release -->
     
     ``` C++
     static napi_value NAPI_Global_Release(napi_env env, napi_callback_info info) {
@@ -313,5 +313,5 @@
 
 ## 运行完整示例
 
-1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia)。
+1. 新建工程，下载示例工程。
 2. 编译新建工程并运行。

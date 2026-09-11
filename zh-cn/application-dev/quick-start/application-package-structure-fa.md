@@ -31,4 +31,4 @@ FA模型与Stage模型的内部文件的存放位置不同。FA模型中，所�
 - `pack.info` 是 Bundle 中用于描述每个 HAP 属性的文件，包含应用的 `bundleName` 和 `versionCode` 信息、模块的 `name`、`type` 和 `abilities` 等信息。该文件由 DevEco Studio 工具在构建 Bundle 包时自动生成。
 
 **图1** 应用程序包结构（FA模型）  
-![app-pack-fa](figures/app-pack-fa.png)
+app-pack-fa

@@ -48,7 +48,7 @@ abstract class Content {
 
 ### ArkTS侧代码实现
 
-<!-- @[contentslot_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
+<!-- @contentslot_one -->
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so
@@ -81,7 +81,7 @@ Napi的基础开发知识请查看以下文档：开发导读。
 
 本章节描述实现ContentSlot相关逻辑代码。创建C侧组件的具体步骤，请参阅使用NDK接口构建UI。
 
-<!-- @[contentslot_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+<!-- @contentslot_native -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -150,7 +150,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 - 注册上下树事件，并通过事件获取对应的Content对象。
 
-  <!-- @[contentslot_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+  <!-- @contentslot_register_event -->
 
   ``` C++
   auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
@@ -170,7 +170,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 - 添加子组件。
 
-  <!-- @[contentslot_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+  <!-- @contentslot_add -->
 
   ``` C++
   ArkUI_NodeHandle component;
@@ -182,7 +182,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 - 插入子组件。
 
-  <!-- @[contentslot_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+  <!-- @contentslot_insert -->
 
   ``` C++
   int32_t position = 0;
@@ -193,7 +193,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 - 删除子组件。
 
-  <!-- @[contentslot_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+  <!-- @contentslot_remove -->
 
   ``` C++
   // 在nodeContent中移除对应组件
@@ -202,7 +202,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 - 设置自定义属性。
 
-  <!-- @[contentslot_set_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+  <!-- @contentslot_set_data -->
 
   ``` C++
   // 创建需要定义的自定义数据
@@ -212,7 +212,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 - 获取自定义属性。
 
-  <!-- @[contentslot_get_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
+  <!-- @contentslot_get_data -->
 
   ``` C++
   void *userData = OH_ArkUI_NodeContent_GetUserData(nodeContentHandle_);
@@ -228,7 +228,7 @@ Content与ContentSlot节点具有一对一的绑定关系。同一Content不能�
 
 若需在多个ContentSlot节点下显示相同内容，每个节点需创建单独的Content。示例如下：
 
-<!-- @[contentslot_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @contentslot_two --> 
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so

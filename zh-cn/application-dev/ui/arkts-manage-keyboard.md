@@ -26,7 +26,7 @@
 
 以下示例展示了单击、双击和长按输入框时，软键盘弹出效果。
 
-![click](figures/click.gif)
+click
 
 ### 通过代码请求焦点
 
@@ -57,7 +57,7 @@ struct demo {
 }
 ```
 
-![getFocus](figures/getFocus.gif)
+getFocus
 
 ### 使用外接键盘的按键走焦
 
@@ -85,7 +85,7 @@ struct Index {
   }
 }
 ```
-![keyboard_textInput_tab](figures/keyboard_textInput_tab.gif)
+keyboard_textInput_tab
 
 ## 收起软键盘
 
@@ -131,7 +131,7 @@ struct Index {
 }
 ```
 
-![keyboard_textInput_user_close](figures/keyboard_textInput_user_close.gif)
+keyboard_textInput_user_close
 
 ### 拖拽文本
 
@@ -161,13 +161,13 @@ struct Index {
 }
 ```
 
-![keyboard_textInput_drag_1](figures/keyboard_textInput_drag_1.gif)
+keyboard_textInput_drag_1
 
 ### 接收侧滑手势
 
 下面的动图展示了“用户侧滑时软键盘收起”的场景。
 
-![keyboard_textInput_gesture_return](figures/keyboard_textInput_gesture_return.gif)
+keyboard_textInput_gesture_return
 
 ### 页面发生切换
 
@@ -262,7 +262,7 @@ struct demo_text_1 {
 }
 ```
 
-![keyboard_textInput_navigation_page_change](figures/keyboard_textInput_navigation_page_change.gif)
+keyboard_textInput_navigation_page_change
 
 ### 通过输入框的TextInputController退出编辑态
 
@@ -270,7 +270,7 @@ struct demo_text_1 {
 
 以下示例展示了如何通过TextInputController收起软键盘。
 
-<!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
+<!-- @textInputController_CloseKeyboard --> 
 
 ``` TypeScript
 struct textInputControllerCloseKeyboard {
@@ -294,7 +294,7 @@ struct textInputControllerCloseKeyboard {
   }
 }
 ```
-![stopEditing](figures/stopEditing.gif)
+stopEditing
 
 ### 焦点转移到不需要软键盘的组件
 
@@ -306,7 +306,7 @@ struct textInputControllerCloseKeyboard {
 
 以下示例展示了点击按钮时，调用requestFocus方法，焦点从输入框转移到按钮上，软键盘收起的场景。
 
-<!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
+<!-- @requestFocus_CloseKeyBoard -->
 
 ``` TypeScript
 struct requestFocusCloseKeyBoard {
@@ -331,7 +331,7 @@ struct requestFocusCloseKeyBoard {
 }
 ```
 
-![changeFocus](figures/changeFocus.gif)
+changeFocus
 
 以下示例展示了滚动容器在开始滚动时收起键盘的场景。List开始滚动时，调用clearFocus方法清理焦点，焦点转移到页面根容器节点，页面根容器节点不需要软键盘，从而收起软键盘。
 
@@ -368,7 +368,7 @@ struct Index {
 }
 ```
 
-![keyboard_textInput_onScrollStart](figures/keyboard_textInput_onScrollStart.gif)
+keyboard_textInput_onScrollStart
 
 ## 常见问题
 
@@ -416,7 +416,7 @@ struct demo {
 }
 ```
 
-![keyboard_textInput_customKeyboard](figures/keyboard_textInput_customKeyboard.gif)
+keyboard_textInput_customKeyboard
 
 ### 点击发送按钮后不收起键盘
 
@@ -458,4 +458,4 @@ struct demo {
 }
 ```
 
-![keyboard_textInput_onSubmit](figures/keyboard_textInput_onSubmit.gif)
+keyboard_textInput_onSubmit

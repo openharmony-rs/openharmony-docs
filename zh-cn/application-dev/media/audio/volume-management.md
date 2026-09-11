@@ -35,7 +35,7 @@
 
 OpenHarmony通过系统音量，应用音量和音频流音量协同的方式实现应用对音量的精确控制。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ## 系统音量
 
@@ -43,7 +43,7 @@ OpenHarmony通过系统音量，应用音量和音频流音量协同的方式实
 
 通过AudioVolumeManager只能获取音量信息及监听音量变化，不能主动调节系统音量。如果应用需要调节系统音量，可以使用音量面板调节系统音量。
 
-<!-- @[getVolumeManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
+<!-- @getVolumeManager -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -59,7 +59,7 @@ let audioVolumeManager = audioManager.getVolumeManager();
 
 示例代码如下所示：
 
-<!-- @[getVolumeByStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
+<!-- @getVolumeByStream -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -106,7 +106,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 通过设置监听事件，可以监听系统音量的变化：
 
-<!-- @[onStreamVolumeChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
+<!-- @onStreamVolumeChange -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -145,7 +145,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ### 调节应用音量
 
-<!-- @[setAppVolumePercentage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
+<!-- @setAppVolumePercentage -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -241,7 +241,7 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 示例代码如下所示：
 
-<!-- @[setVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
+<!-- @setVolume -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';

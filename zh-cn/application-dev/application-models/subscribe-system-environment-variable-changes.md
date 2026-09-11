@@ -23,7 +23,7 @@
 
 开发者可以使用getConfigurationSync主动获取当前环境变量，包括深浅色模式、屏幕方向、语言地区、屏幕密度、设备类型等，对应用程序作出相应处理，提供更好的用户体验。
 
-  <!-- @[get_envconf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility0.ets) -->
+  <!-- @get_envconf -->
   
   ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -57,7 +57,7 @@
 
 开发者可以使用setFontSizeScale设置应用字体大小。设置后，应用字体将不跟随系统变化，不再支持订阅系统字体大小变化。
 
-<!-- @[env_setscale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility1.ets) --> 
+<!-- @env_setscale --> 
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -84,7 +84,7 @@ export default class EnvAbility1 extends UIAbility {
 
 - **设置应用的深浅色模式：** 使用ApplicationContext的setColorMode接口，可以设置应用深浅色模式。
 
-    <!-- @[env_appsetcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility2.ets) --> 
+    <!-- @env_appsetcolor --> 
     
     ``` TypeScript
     import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
@@ -107,7 +107,7 @@ export default class EnvAbility1 extends UIAbility {
 
 - **设置UIAbility的深浅色模式：** 使用UIAbilityContext的setColorMode，可以设置UIAbility的深浅色模式。
 
-    <!-- @[env_setabilitycolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility3.ets) --> 
+    <!-- @env_setabilitycolor --> 
     
     ``` TypeScript
     import { UIAbility, ConfigurationConstant } from '@kit.AbilityKit';
@@ -130,7 +130,7 @@ export default class EnvAbility1 extends UIAbility {
 
 - **设置UIExtensionAbility的深浅色模式：** 使用UIExtensionContext的setColorMode，可以设置UIExtensionAbility的深浅色模式。
 
-    <!-- @[env_setcolormode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility4.ets) --> 
+    <!-- @env_setcolormode --> 
     
     ``` TypeScript
     // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
@@ -148,7 +148,7 @@ export default class EnvAbility1 extends UIAbility {
 
 应用语言默认跟随系统语言变化。开发者可以使用setLanguage设置应用语言。设置后，不再支持订阅系统语言变化。
 
-<!-- @[env_setlang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility5.ets) --> 
+<!-- @env_setlang --> 
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -186,7 +186,7 @@ ApplicationContext提供了注册回调函数以订阅环境变量的变化，�
 
 1. 使用on方法，应用程序可以通过在非应用组件模块中订阅环境变量的变化来动态响应这些变化。例如，使用该方法在页面中监测系统语言的变化。
 
-    <!-- @[envconf_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage6.ets) --> 
+    <!-- @envconf_page --> 
     
     ``` TypeScript
     import { common, EnvironmentCallback, Configuration } from '@kit.AbilityKit';
@@ -239,7 +239,7 @@ ApplicationContext提供了注册回调函数以订阅环境变量的变化，�
 
 2. 在资源使用完成之后，可以通过调用off方法释放相关资源。
 
-    <!-- @[envconf_apppage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/pages/EnvAbilityPage7.ets) --> 
+    <!-- @envconf_apppage --> 
     
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
@@ -284,7 +284,7 @@ ApplicationContext提供了注册回调函数以订阅环境变量的变化，�
 
 例如，在AbilityStage.onConfigurationUpdate()回调方法中实现监测系统语言的变化。
 
-<!-- @[envconf_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbilityStage/EnvAbilityStage.ets) --> 
+<!-- @envconf_language --> 
 
 ``` TypeScript
 import { AbilityStage, Configuration } from '@kit.AbilityKit';
@@ -324,7 +324,7 @@ UIAbility组件提供了UIAbility.onConfigurationUpdate()回调方法用于订�
 
 例如，在onConfigurationUpdate()回调方法中实现监测系统语言的变化。
 
-<!-- @[envconf_lang](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvAbility/EnvAbility9.ets) --> 
+<!-- @envconf_lang --> 
 
 ``` TypeScript
 import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
@@ -362,7 +362,7 @@ ExtensionAbility组件提供了onConfigurationUpdate()回调方法用于订阅�
 
 以FormExtensionAbility为例说明。例如，在onConfigurationUpdate()回调方法中实现环境变量的变化。
 
-<!-- @[envconf_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/EnvConfig/entry/src/main/ets/EnvFormExtensionAbility/EnvFormExtensionAbility.ets) --> 
+<!-- @envconf_ability --> 
 
 ``` TypeScript
 import { FormExtensionAbility } from '@kit.FormKit';

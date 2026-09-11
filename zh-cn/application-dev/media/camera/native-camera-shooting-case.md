@@ -14,7 +14,7 @@
 
 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
 
-![Photographing Development Process](figures/photographing-ndk-development-process.png)
+Photographing Development Process
 
 ## 完整示例
 

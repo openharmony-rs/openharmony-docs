@@ -27,7 +27,7 @@
 
 - **UIAbility**
 
-  [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview)描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
+  UIAbility描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
 
 - **字节流**
   
@@ -39,7 +39,7 @@
 
 **图1** 应用跨设备连接运行机制
 
-![how-abilityconnectmanager-works](figures/how-abilityconnectmanager-works.png)
+how-abilityconnectmanager-works
 
 
 ### 约束与限制
@@ -62,12 +62,12 @@
 
 ### 环境要求
 
-可登录华为账号的设备A和设备B，设备间需要组网成功（设备组网通过调用[Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines)的接口实现）。
+可登录华为账号的设备A和设备B，设备间需要组网成功（设备组网通过调用Device Manager的接口实现）。
 
 
 ### 搭建环境
 
-1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
+1. 在PC上安装DevEco Studio，要求版本在4.1及以上。
 2. 将public-SDK更新到API 18或以上<!--Del-->，更新SDK的具体操作可参见更新指南<!--DelEnd-->。
 3. 用USB线缆将任意一台调试设备（设备A或者设备B）连接到PC。
 4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过设备发现和设备绑定建立可信关系以完成组网。
@@ -114,7 +114,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 **导入AbilityConnectionManager模块文件**
 
-<!-- @[import_abilityConnectionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+<!-- @import_abilityConnectionManager -->
 
 ``` TypeScript
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
@@ -134,7 +134,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 应用主动调用createAbilityConnectionSession()接口创建会话，获得sessionId。之后调用connect()方法启动ability会话连接（此时设备B上应用会被拉起）。
 
-<!-- @[source_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+<!-- @source_1 -->
 
 ``` TypeScript
 let dmClass: distributedDeviceManager.DeviceManager;
@@ -171,7 +171,7 @@ function getRemoteDeviceId(): string | undefined {
 }
 ```
 
-<!-- @[source_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+<!-- @source_2 -->
 
 ``` TypeScript
   createSession(): void {
@@ -217,7 +217,7 @@ function getRemoteDeviceId(): string | undefined {
 
 设备A的应用调用connect()后，设备B的应用会通过协同的方式被拉起，拉起时会触发协同生命周期函数onCollaborate()，可在该接口中配置createAbilityConnectionSession()接口以及acceptConnect()接口的调用。
 
-<!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @collab -->
 
 ``` TypeScript
 onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
@@ -263,7 +263,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
 <!--RP1-->
-<!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @abilityconnectionmanager_on -->
 
 ``` TypeScript
 registerSessionEvent(sessionId: number) {
@@ -299,7 +299,7 @@ registerSessionEvent(sessionId: number) {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendMessage()方法给对端应用发送文本信息。
 
-<!-- @[sendmessage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+<!-- @sendmessage -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -315,7 +315,7 @@ registerSessionEvent(sessionId: number) {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据。
 
-<!-- @[senddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+<!-- @senddata -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -336,7 +336,7 @@ registerSessionEvent(sessionId: number) {
 
 业务协同完毕后需及时结束协同状态。若是后续短期内还有协同需要，可调用disconnect()方法断开应用间的连接，保留sessionId，以便下次继续使用该sessionId进行连接。若是短期无需使用协同业务，可直接调用destroyAbilityConnectionSession()接口销毁会话，此时会自动断开连接。
 
-<!-- @[disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+<!-- @disconnect -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';

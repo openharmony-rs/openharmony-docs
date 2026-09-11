@@ -17,7 +17,7 @@
 
 不变的变量推荐使用`const`声明。
 
-<!-- @[const_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @const_variable -->
 
 ``` TypeScript
 const index = 10000; // 该变量在后续过程中未发生改变，建议声明成常量
@@ -27,7 +27,7 @@ const index = 10000; // 该变量在后续过程中未发生改变，建议声�
 
 针对`number`类型，运行时在优化时会区分整型和浮点型数据。建议避免在初始化后改变数据类型。
 
-<!-- @[number_int_float](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @number_int_float -->
 
 ``` TypeScript
 let intNum = 1;
@@ -50,7 +50,7 @@ doubleNum = 1;  // 该变量在声明时为浮点型数据，建议后续不要�
 
 如果常量在循环中不会改变，可以将其提取到循环外部，减少访问次数。
 
-<!-- @[constant_in_loop_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @constant_in_loop_poor -->
 
 ``` TypeScript
 class Time {
@@ -70,7 +70,7 @@ function getNum(num: number): number {
 
 优化后的代码如下，可以将`Time.info[num - Time.start]`提取为常量，这样可以显著减少属性访问次数，提升性能。
 
-<!-- @[constant_in_loop_better](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @constant_in_loop_better -->
 
 ``` TypeScript
 class TimeBetter {
@@ -96,7 +96,7 @@ function getNumBetter(num: number): number {
 
 使用闭包会造成额外的开销。在性能敏感场景中，建议使用参数传递函数外的变量替代。
 
-<!-- @[outside_variable_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @outside_variable_poor -->
 
 ``` TypeScript
 let arr = [0, 1, 2];
@@ -110,7 +110,7 @@ fooWithout();
 
 建议使用参数传递函数外部的变量，以替代使用闭包。
 
-<!-- @[outside_variable_better](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @outside_variable_better -->
 
 ``` TypeScript
 let arr_ = [0, 1, 2];
@@ -126,7 +126,7 @@ fooWithArray(arr_);
 
 函数的可选参数表示参数可能为`undefined`，在函数内部使用该参数时，需要进行非空值的判断，造成额外的开销。
 
-<!-- @[avoid_optional_parameters_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @avoid_optional_parameters_poor -->
 
 ``` TypeScript
 function add(left?: number, right?: number): number | undefined {
@@ -138,7 +138,7 @@ function add(left?: number, right?: number): number | undefined {
 ```
 
 根据业务需求，将函数参数声明为必选参数。考虑使用默认参数。
-<!-- @[avoid_optional_parameters_better](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @avoid_optional_parameters_better --> 
 
 ``` TypeScript
 function addWithParams(left: number = 0, right: number = 0): number {
@@ -154,7 +154,7 @@ function addWithParams(left: number = 0, right: number = 0): number {
 
 优化前的代码示例：
 
-<!-- @[use_typearray_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @use_typearray_poor -->
 
 ``` TypeScript
 const arr1 = new Array<number>(1, 2, 3);
@@ -167,7 +167,7 @@ for (let i = 0; i < 3; i++) {
 
 优化后的代码示例：
 
-<!-- @[use_typearray_better](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @use_typearray_better -->
 
 ``` TypeScript
 const typedArray1 = Int8Array.from([1, 2, 3]);
@@ -182,7 +182,7 @@ for (let i = 0; i < 3; i++) {
 
 运行时在分配超过1024大小的数组或稀疏数组时，会采用hash表来存储元素。在该模式下，访问数组元素速度较慢。代码开发时应避免数组变成稀疏数组。
 
-<!-- @[avoid_sparse_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @avoid_sparse_array -->
 
 ``` TypeScript
 // 直接分配100000大小的数组，运行时会处理成用hash表来存储元素
@@ -198,7 +198,7 @@ result[9999] = 0;
 
 避免使用联合类型数组。避免在数值数组中混合使用整型数据和浮点型数据。
 
-<!-- @[avoid_joint_type_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @avoid_joint_type_poor -->
 
 ``` TypeScript
 let arrNum: number[] = [1, 1.1, 2]; // 数值数组中混合使用整型数据和浮点型数据
@@ -206,7 +206,7 @@ let arrUnion: (number | string)[] = [1, 'hello']; // 联合类型数组
 ```
 
 根据业务需求，将相同类型的数据放在同一数组中。  
-<!-- @[avoid_joint_type_better](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @avoid_joint_type_better -->
 
 ``` TypeScript
 let arrInt: number[] = [1, 2, 3];
@@ -222,7 +222,7 @@ let arrString: string[] = ['hello', 'world'];
 
 优化前的代码示例：
 
-<!-- @[exception_handling_poor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->
+<!-- @exception_handling_poor -->
 
 ``` TypeScript
 function div(a: number, b: number): number {
@@ -247,7 +247,7 @@ function sum(num: number): number {
 
 优化后的代码示例：
 
-<!-- @[exception_handling_better](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/PerformantPractices/entry/src/main/ets/pages/Index.ets) -->     
+<!-- @exception_handling_better -->     
 
 ``` TypeScript
 function divBetter(a: number, b: number): number {

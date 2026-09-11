@@ -64,7 +64,7 @@
 
 - 启动ServiceAbility或DataAbility。
 
-![startup-rule](figures/component-startup-inner-fa.png)
+startup-rule
 
 
 ## 分布式跨设备组件启动规则
@@ -75,4 +75,4 @@
 
 - 启动ServiceAbility。
 
-![component-startup-rules](figures/component-startup-inter-fa.png)
+component-startup-rules

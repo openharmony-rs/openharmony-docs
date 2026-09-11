@@ -9,13 +9,13 @@
 
 从API version 12开始，ArkUI在NDK中提供了常用布局组件Flex、Row、Column、Stack对应的节点类型和属性设置接口。Flex用于弹性布局，Row和Column用于线性布局，Stack用于层叠布局，对应节点类型和属性设置枚举可参考ArkUI_NodeType。
 
-本文以弹性组件Flex为例，提供NDK下布局组件接入和属性设置的开发指导。本示例仅展示核心功能代码，完整示例请参考<!--RP1-->[NDKFlexSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKFlexSample?_fb=blob)<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考接入ArkTS页面。
+本文以弹性组件Flex为例，提供NDK下布局组件接入和属性设置的开发指导。本示例仅展示核心功能代码，完整示例请参考<!--RP1-->NDKFlexSample<!--RP1End-->；实现前需要先接入ArkTS页面，具体接入方式可参考接入ArkTS页面。
 
 ## 封装容器组件
 
 通过调用createNode接口，并传入ArkUI_NodeType中的ARKUI_NODE_FLEX，创建Flex节点。如下示例将该节点封装为ArkUIFlexNode，并通过setAttribute接口，使用NODE_FLEX_OPTION设置主轴方向、换行和对齐方式。ArkUI_NumberValue中的五个参数分别用于控制不同的弹性布局行为，具体可参考FlexOptions对象说明。
 
-<!-- @[flex_flex_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/ArkUIFlexNode.h) -->
+<!-- @flex_flex_node -->
 
 ``` C
 class ArkUIFlexNode : public ArkUINode {
@@ -43,7 +43,7 @@ public:
 
 节点创建完成后，通过预实现的通用属性和上文实现的SetFlexOption，构造了一个预设样式的Flex组件。下面代码展示了如何设置容器按行排列子组件、子组件超出宽度后自动换行、每一行默认从起始位置开始布局。
 
-<!-- @[flex_container_helper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_container_helper -->
 
 ``` C
 inline std::shared_ptr<ArkUIFlexNode> CreateFlexContainer()
@@ -62,7 +62,7 @@ inline std::shared_ptr<ArkUIFlexNode> CreateFlexContainer()
 
 如下示例为弹性容器添加了一组子组件。为展示换行和交叉轴对齐效果，为第三个子组件设置单独的高度和alignSelf。alignSelf是在弹性容器内生效的组件通用属性，将该属性设置封装到自定义接口SetAlignSelf中，通过NODE_ALIGN_SELF设置在指定组件上，可以控制单个子组件在父容器交叉轴的对齐格式，且优先级高于容器的alignItems属性。
 
-<!-- @[flex_align_self_helper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_align_self_helper -->
 
 ``` C
 inline void SetAlignSelf(const std::shared_ptr<ArkUIBaseNode> &node, ArkUI_ItemAlignment align)
@@ -73,7 +73,7 @@ inline void SetAlignSelf(const std::shared_ptr<ArkUIBaseNode> &node, ArkUI_ItemA
 }
 ```
 
-<!-- @[flex_align_self_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_align_self_example -->
 
 ``` C
 inline std::shared_ptr<ArkUITextNode> CreateFlexExampleItem(int32_t index, uint32_t bgColor)
@@ -87,7 +87,7 @@ inline std::shared_ptr<ArkUITextNode> CreateFlexExampleItem(int32_t index, uint3
 
 在此基础上，创建6个子组件，并添加到同一个Flex组件。
 
-<!-- @[flex_container_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_container_example -->
 
 ``` C
 inline std::array<uint32_t, FLEX_ITEM_COUNT> CreateFlexColorSet()
@@ -108,7 +108,7 @@ inline std::shared_ptr<ArkUIFlexNode> CreateFlexWrapExample()
 
 此时，CreateFlexContainer()已将Flex组件的换行行为设置为ARKUI_FLEX_WRAP_WRAP，因此当子组件总宽度超过容器宽度时，布局会自动换行；而第三个子组件调用SetAlignSelf()后，会按照自身的交叉轴对齐规则摆放，而不是使用容器设置的ARKUI_ITEM_ALIGNMENT_CENTER。
 
-![wrap_alignself](figures/layout_container_wrap_alignself.jpg)
+wrap_alignself
 
 如果要将布局方向改为纵向，则可将direction改为ARKUI_FLEX_DIRECTION_COLUMN。此时代码结构保持不变，主轴和交叉轴上的摆放逻辑也保持一致。
 
@@ -116,7 +116,7 @@ inline std::shared_ptr<ArkUIFlexNode> CreateFlexWrapExample()
 
 Flex不仅能够控制子组件排列方向，还能够控制主轴上的剩余空间分配。通过flexBasis、flexGrow和flexShrink三个属性，可以控制子组件在弹性容器下的伸缩行为。
 
-<!-- @[flex_grow_helper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_grow_helper -->
 
 ``` C
 inline void SetFlexGrow(const std::shared_ptr<ArkUIBaseNode> &node, float grow)
@@ -142,7 +142,7 @@ inline void SetFlexBasis(const std::shared_ptr<ArkUIBaseNode> &node, float basis
 }
 ```
 
-<!-- @[flex_grow_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_grow_example -->
 
 ``` C
 inline std::shared_ptr<ArkUITextNode> CreateGrowItem(
@@ -169,13 +169,13 @@ inline std::shared_ptr<ArkUIRowNode> CreateFlexGrowExample()
 
 示例中三个子组件的flexGrow值分别为1、2、1，因此在容器存在剩余空间时，中间子组件会占据更多宽度。
 
-![grow_basis](figures/layout_container_grow_basis.jpg)
+grow_basis
 
 ## 使用layoutWeight按比例分配空间
 
 当父容器主轴尺寸已经确定时，可以通过layoutWeight按权重分配剩余空间。该属性在Row、Column和Flex中生效。子组件设置的layoutWeight值大于0后，会按照权重占比分配主轴剩余空间，不再参与flexGrow和flexShrink的分配。
 
-<!-- @[flex_layout_weight_helper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_layout_weight_helper -->
 
 ``` C
 inline void SetLayoutWeight(const std::shared_ptr<ArkUIBaseNode> &node, uint32_t weight)
@@ -187,7 +187,7 @@ inline void SetLayoutWeight(const std::shared_ptr<ArkUIBaseNode> &node, uint32_t
 }
 ```
 
-<!-- @[flex_layout_weight_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_layout_weight_example -->
 
 ``` C
 inline std::shared_ptr<ArkUITextNode> CreateWeightedItem(const std::string &text, uint32_t bgColor, uint32_t weight)
@@ -209,13 +209,13 @@ inline std::shared_ptr<ArkUIRowNode> CreateLayoutWeightExample()
 
 示例中三个子组件的layoutWeight值分别为1、2、1，因此中间子组件会分得更多主轴空间。
 
-![layout_weight](figures/layout_container_layout_weight.jpg)
+layout_weight
 
 ## 使用displayPriority控制显示优先级
 
 在单行布局场景下，可以通过displayPriority控制子组件的显示优先级。该属性在Row、Column和单行Flex中生效。父容器空间不足时，优先级低的子组件会先被隐藏。
 
-<!-- @[flex_display_priority_helper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_display_priority_helper -->
 
 ``` C
 inline void SetDisplayPriority(const std::shared_ptr<ArkUIBaseNode> &node, uint32_t priority)
@@ -227,7 +227,7 @@ inline void SetDisplayPriority(const std::shared_ptr<ArkUIBaseNode> &node, uint3
 }
 ```
 
-<!-- @[flex_display_priority_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
+<!-- @flex_display_priority_example -->
 
 ``` C
 inline std::shared_ptr<ArkUITextNode> CreatePriorityItem(
@@ -252,4 +252,4 @@ inline std::shared_ptr<ArkUIRowNode> CreateDisplayPriorityExample()
 
 示例先设置了较窄的Row容器宽度，再分别设置3、2、1三个优先级。当空间不足时，优先级最低的第三个子组件会先隐藏。
 
-![display_priority](figures/layout_container_display_priority.jpg)
+display_priority

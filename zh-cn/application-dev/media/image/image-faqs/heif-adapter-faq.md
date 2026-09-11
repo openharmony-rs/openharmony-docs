@@ -222,7 +222,7 @@ static int64_t GetFinalFileSizeByFd(int32_t fd)
 
 示例代码如下：
 
-<!-- @[transcoding_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets) -->         
+<!-- @transcoding_example -->         
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

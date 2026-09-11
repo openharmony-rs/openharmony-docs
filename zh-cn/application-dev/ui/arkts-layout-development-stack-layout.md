@@ -18,17 +18,17 @@
 
   **图1** 层叠布局  
 
-![stack-layout](figures/stack-layout.png)
+stack-layout
 
 > **说明：**
 >
-> 过多的嵌套组件数会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠布局的效果，减少了嵌套组件数进而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
+> 过多的嵌套组件数会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠布局的效果，减少了嵌套组件数进而优化性能。最佳实践请参考组件嵌套优化-优先使用组件属性代替嵌套组件。
 
 ## 开发布局
 
 Stack组件为容器组件，容器内可包含各种子元素。其中子元素默认进行居中堆叠。子元素被约束在Stack下，进行自己的样式定义以及排列。
 
-<!-- @[StackLayoutExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutExample.ets) -->
+<!-- @StackLayoutExample_start -->
 
 ``` TypeScript
 // xxx.ets
@@ -50,7 +50,7 @@ struct StackLayoutExample {
 ```
 
 
-![stack-layout-sample](figures/stack-layout-sample.png)
+stack-layout-sample
 
 
 ## 对齐方式
@@ -59,9 +59,9 @@ Stack组件通过alignContent参数实现位置的相对移动。如图2所示�
 
   **图2** Stack容器内元素的对齐方式  
 
-![stack2](figures/stack2.png)
+stack2
 
-<!-- @[StackLayoutAlignContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutAlignContent.ets) -->
+<!-- @StackLayoutAlignContent_start -->
 
 ``` TypeScript
 // xxx.ets
@@ -84,7 +84,7 @@ Stack容器中兄弟组件显示层级关系可以通过Z序控制的zIndex属�
 
   在层叠布局中，如果后面子元素尺寸大于前面子元素尺寸，则前面子元素完全隐藏。
 
-<!-- @[StackLayoutNozIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutNozIndex.ets) -->
+<!-- @StackLayoutNozIndex_start -->
 
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
@@ -105,12 +105,12 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![stackLayoutNozIndex](figures/stackLayoutNozIndex.png)
+stackLayoutNozIndex
 
 上图中，最后的子元素3的尺寸大于前面的所有子元素，所以，前面两个元素完全隐藏。改变子元素1、子元素2的zIndex属性后，可以将元素展示出来。
 
 
-<!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
+<!-- @StackLayoutzIndex_start -->
 
 ``` TypeScript
 Stack({ alignContent: Alignment.BottomStart }) {
@@ -131,7 +131,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 }.width(350).height(350).backgroundColor(0xe0e0e0)
 ```
 
-![stackLayoutzIndex](figures/stackLayoutzIndex.png)
+stackLayoutzIndex
 
 
 ## 场景示例
@@ -139,7 +139,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 使用层叠布局快速搭建页面。
 
 
-<!-- @[StackLayoutSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutSceneExample.ets) -->
+<!-- @StackLayoutSceneExample_start -->
 
 ``` TypeScript
 @Entry
@@ -181,5 +181,5 @@ struct StackSample {
 ```
 
 
-![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
+stackLayoutSceneExample
 <!--RP1--><!--RP1End-->

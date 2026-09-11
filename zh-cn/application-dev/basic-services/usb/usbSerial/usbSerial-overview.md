@@ -42,7 +42,7 @@ USB串口服务主要包括两个阶段：
  
 **图1** USB串口收发数据流程
 
-![USB-service-comm](../figures/USB-service-comm.png)
+USB-service-comm
 
 ### 约束和限制
 
@@ -56,14 +56,14 @@ USB串口服务主要包括两个阶段：
 
 - 开发工具及配置：
 
-  DevEco Studio作为开发工具，是进行USB串口通信服务开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V14/ide-tools-overview-V14)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V14/ide-create-new-project-V14)进行基本的操作验证，保证DevEco Studio可正常运行。
+  DevEco Studio作为开发工具，是进行USB串口通信服务开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考DevEco Studio使用指南中的创建工程及运行进行基本的操作验证，保证DevEco Studio可正常运行。
 
 - SDK版本配置：
 
-  本模块提供的ArkTs接口，所需SDK版本为API19及以上才可使用。
+  本模块提供的ArkTS接口，所需SDK版本为API19及以上才可使用。
 
 ### 搭建环境
 
-- 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
+- 在PC上安装DevEco Studio，要求版本在4.1及以上。
 - 将public-SDK更新到API 19或以上<!--Del-->，更新SDK的具体操作可参见更新指南<!--DelEnd-->。
 - 准备一根USB转串口线缆，线缆的USB接口连接到OpenHarmony设备USB端口（该端口需支持USB转串口），线缆的串口接口连接到目标设备的串口上。

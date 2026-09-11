@@ -83,4 +83,5 @@
   - [播放无声定位指导](audio-playback-no-sound-troubleshooting.md)
   - [播放卡顿、杂音定位指导](audio-playback-performance-troubleshooting.md)
   - [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)
+  - [音量变化回调类问题定位指导](audio-stream-volume-callback-debugging.md)
 - [Audio Kit术语](audio-glossary.md)

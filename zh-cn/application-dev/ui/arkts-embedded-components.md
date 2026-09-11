@@ -60,7 +60,7 @@ API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedU
 
 加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个完整的加载项首页实现示例：
 
-<!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
+<!-- @embedded_start -->
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -124,7 +124,7 @@ export struct Embedded {
 
 提供方应用是指提供嵌入式UI扩展能力的应用。以下是提供方应用生命周期实现的代码示例：
 
-<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/extensionability/ExampleEmbeddedAbility.ets) -->
+<!-- @exampleEmbeddedAbility_start -->
 
 ``` TypeScript
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
@@ -191,7 +191,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
-<!-- @[extension_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Extension.ets) -->
+<!-- @extension_start -->
 
 ``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
@@ -251,7 +251,7 @@ struct Extension {
 
   在module.json5配置文件的"extensionAbilities"标签下增加ExampleEmbeddedAbility配置，以注册ExampleEmbeddedAbility嵌入式UI扩展能力。
 
-<!-- @[exampleEmbeddedAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/module.json5) -->
+<!-- @exampleEmbeddedAbility_start -->
 
 ``` JSON5
 {
@@ -265,6 +265,6 @@ struct Extension {
 
 1. 在支持EmbeddedUIExtensionAbility的设备上启动应用；
 
-   ![zh-cn_image_0000001502261065](figures/Scenario-Example.jpg)
+   zh-cn_image_0000001502261065
 
 2. 点击terminateSelfWithResult按钮，提供方内容消失，页面显示onTerminated信息。

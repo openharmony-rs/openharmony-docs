@@ -26,7 +26,7 @@
 
 ## 开发准备
 
-以下各步骤示例为片段代码，可通过示例代码链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSnapshot)。
+以下各步骤示例为片段代码，可通过示例代码链接获取完整示例。
 
 ### 导入模块
 
@@ -42,7 +42,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 **添加头文件：**
 
-<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
+<!-- @header_file -->
 
 ``` C++
 #include <ohaudio/native_audio_debugging_manager.h>
@@ -56,7 +56,7 @@ constexpr mode_t FILE_PERMISSION = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH; // 064
 
 开发者使用ArkTS接口获取音频快照时，需导入音频模块。
 
-<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @import_module -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -71,7 +71,7 @@ import { fileIo as fileio } from '@kit.CoreFileKit';
 
 **C/C++接口：**
 
-<!-- @[get_debug_manager_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
+<!-- @get_debug_manager_c -->
 
 ``` C++
 // 获取音频调试管理器。
@@ -85,7 +85,7 @@ if (result != AUDIOCOMMON_RESULT_SUCCESS || debugManager == nullptr) {
 
 **ArkTS接口：**
 
-<!-- @[get_debug_manager_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @get_debug_manager_ts -->
 
 ``` TypeScript
 // 获取音频调试管理器。
@@ -114,7 +114,7 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManag
 
 **C/C++接口：**
 
-<!-- @[print_app_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
+<!-- @print_app_snapshot_c -->
 
 ``` C++
 // 打印应用快照到文件。
@@ -130,7 +130,7 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 
 **ArkTS接口：**
 
-<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @print_app_snapshot_ts -->  
 
 ``` TypeScript
 // 打印应用快照到文件。
@@ -190,7 +190,7 @@ audioApp {
 
 **C/C++接口：**
 
-<!-- @[print_renderer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
+<!-- @print_renderer_snapshot_c -->
 
 ``` C++
 // 打印指定播放实例的快照。
@@ -204,7 +204,7 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @print_renderer_snapshot_ts -->  
 
 ``` TypeScript
 // 打印指定播放实例的快照。
@@ -288,7 +288,7 @@ audioRenderer {
 
 **C/C++接口：**
 
-<!-- @[print_capturer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
+<!-- @print_capturer_snapshot_c -->
 
 ``` C++
 // 打印指定录音实例的快照。
@@ -302,7 +302,7 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @print_capturer_snapshot_ts -->  
 
 ``` TypeScript
 // 打印指定录音实例的快照。
@@ -373,7 +373,7 @@ audioCapturer {
 
 **ArkTS接口：**
 
-<!-- @[print_loopback_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopbackDebugInfo.ets) -->
+<!-- @print_loopback_info -->
 
 ``` TypeScript
 // audioLoopback为已创建的AudioLoopback实例。
@@ -442,7 +442,7 @@ audioLoopback {
 
 **C/C++接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
+<!-- @print_session_info -->  
 
 ``` C++
 #include "ohaudio/native_audio_debugging_manager.h"
@@ -470,7 +470,7 @@ OH_AudioSessionManager *audioSessionManager;
 
 **ArkTS接口：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @print_session_info -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -538,7 +538,7 @@ audioSession {
 
 接口说明请参考OH_AudioSuite_PrintInfo。
 
-<!-- @[audioSuite_PrintInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/print_info_to_file.cpp) -->
+<!-- @audioSuite_PrintInfo -->
 
 ``` C++
 // engine为已创建的OH_AudioSuiteEngine实例，必须确保engine参数有效，否则输出内容为空。

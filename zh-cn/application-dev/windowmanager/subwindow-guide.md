@@ -24,7 +24,7 @@
 
    独立子窗在自由窗口状态下，不跟随主窗前后台的切换，仅跟随主窗一起销毁，独立子窗与主窗可通过点击调整层级。
 
-   <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @create_subWindow --> 
    
    ``` TypeScript
    let windowStage_: window.WindowStage | undefined = undefined;
@@ -51,7 +51,7 @@
            })
    ```
    
-   <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @create_independent_subWindow --> 
    
    ``` TypeScript
    let independentWindowClass: window.Window | undefined = undefined;
@@ -91,7 +91,7 @@
   
    此处以设置独立子窗的属性为例。示例代码如下：
 
-   <!-- @[independent_subWindow_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @independent_subWindow_properties --> 
    
    ``` TypeScript
    // 2.子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
@@ -121,7 +121,7 @@
 
    此处以加载显示独立子窗的具体内容为例。示例代码如下：
 
-   <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @independent_subWindow_uiContent --> 
    
    ``` TypeScript
    // 3.为子窗口加载对应的目标页面。
@@ -151,7 +151,7 @@
 
    此处以销毁独立子窗为例。示例代码如下：
 
-   <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @destroy_independent_subWindow --> 
    
    ``` TypeScript
    // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。

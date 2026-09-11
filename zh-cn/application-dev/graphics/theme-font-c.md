@@ -15,7 +15,7 @@
 
 **图1** 主题字体的切换和使用 
 
-![themeText_native](figures/themeText_native.jpg)
+themeText_native
 
 针对主题字的切换使用，应用方应确保订阅主题字变更事件，当接收字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效；主题字的绘制需要使用OH_Drawing_GetFontCollectionGlobalInstance来获取全局字体集对象，仅该接口返回的对象拥有主题字体信息。
 
@@ -51,7 +51,7 @@
 
    导入头文件。
 
-   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
+   <!-- @theme_font_c_header --> 
    
    ``` C++
    #include <native_drawing/drawing_font_collection.h>
@@ -66,7 +66,7 @@
    >
    > 注册主题字体作用于字体管理集全局对象，故必须使用OH_Drawing_GetFontCollectionGlobalInstance获取全局字体集对象进行绘制。如若使用OH_Drawing_CreateSharedFontCollection或OH_Drawing_CreateFontCollection创建字体集对象，无法使用主题字体。OH_Drawing_GetFontCollectionGlobalInstance获取的全局字体集不允许开发者主动释放，否则会造成字体绘制紊乱的问题。
 
-   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
+   <!-- @theme_font_c_draw_text_step1 --> 
    
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
@@ -75,7 +75,7 @@
 
 5. OH_Drawing_SetTextStyleFontFamilies()接口可以用来指定字体家族名，从而实现使用指定字体。但使用主题字体，不需要使用OH_Drawing_SetTextStyleFontFamilies()接口指定字体，否则行为变更为优先使用指定字体，而不是主题字体。
 
-   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
+   <!-- @theme_font_c_draw_text_step2 --> 
    
    ``` C++
    OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
@@ -84,7 +84,7 @@
 
 6. 设置段落文本内容为"Hello World. \nThis is the theme font."，此时该段落文本将应用主题字体。
 
-   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
+   <!-- @theme_font_c_draw_text_step3 --> 
    
    ``` C++
    // 设置其他文本样式
@@ -114,8 +114,8 @@
 
 **图2** 主题字体1的效果 
 
-![themeFont_native_01](figures/NdkThemeFont.PNG)
+themeFont_native_01
 
 **图3** 主题字体2的效果 
 
-![themeFont_native_02](figures/themeFont_native_02.png)
+themeFont_native_02

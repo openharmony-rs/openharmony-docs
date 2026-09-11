@@ -32,7 +32,7 @@
 3. 当解密内容长度较短时，可以省略调用update，直接调用Cipher.doFinal，获取解密后的数据。
 
 - 异步方法示例：
-  <!-- @[cbc_encrypt_decrypt_rc2_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_asynchronous.ets) -->
+  <!-- @cbc_encrypt_decrypt_rc2_symkey_async -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -100,7 +100,7 @@
   ```
 
 - 同步方法示例：
-  <!-- @[cbc_encrypt_decrypt_rc2_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceArkTs/entry/src/main/ets/pages/rc2_cbc_encryption_decryption/rc2_cbc_encryption_decryption_synchronous.ets) -->
+  <!-- @cbc_encrypt_decrypt_rc2_symkey_sync -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

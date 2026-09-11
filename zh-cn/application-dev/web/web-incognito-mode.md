@@ -13,7 +13,7 @@
 开发者在创建Web组件时，可以将可选参数incognitoMode设置为true，来开启Web组件的隐私模式。
 
 - 创建隐私模式的Web组件。
-  <!-- @[create_a_web_component_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_one.ets) -->
+  <!-- @create_a_web_component_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -32,7 +32,7 @@
   ```
 
 - 通过isIncognitoMode 判断当前Web组件是否是隐私模式。
-  <!-- @[determine_whether_the_current_web_component_is_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/IncognitoMode_two.ets) -->
+  <!-- @determine_whether_the_current_web_component_is_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -64,7 +64,7 @@
 ## 隐私模式下操作地理位置
 
 - 通过allowGeolocation设置隐私模式下的Web组件允许指定来源使用地理位置。
-  <!-- @[setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/AllowGeolocation.ets) -->
+  <!-- @setting_the_web_component_in_privacy_mode_allows_specifying_the_geolocation_of_the_source_used -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -95,7 +95,7 @@
   ```
 
 - 通过deleteGeolocation清除隐私模式下指定来源的地理位置权限状态。
-  <!-- @[clear_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteGeolocation.ets) -->
+  <!-- @clear_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -126,7 +126,7 @@
   ```
 
 - 通过getAccessibleGeolocation以回调方式异步获取隐私模式下指定源的地理位置权限状态。
-  <!-- @[asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GetAccessibleGeolocation.ets) -->
+  <!-- @asynchronously_obtains_the_geolocation_permission_status_of_the_specified_source_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -165,7 +165,7 @@
 ## 隐私模式下清除内存中的Web数据
 
 - 通过deleteAllData清除隐私模式下Web SQL当前使用的所有存储。
-  <!-- @[clear_all_storage_currently_used_by_web_sql_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DeleteAllData.ets) -->
+  <!-- @clear_all_storage_currently_used_by_web_sql_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -242,7 +242,7 @@
 ## 隐私模式下管理Cookie
 
 - 通过fetchCookieSync获取隐私模式下指定url对应cookie的值。
-  <!-- @[obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/FetchCookieSync.ets) -->
+  <!-- @obtain_the_value_of_the_cookie_corresponding_to_the_specified_url_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -273,7 +273,7 @@
   ```
 
 - 通过configCookieSync设置隐私模式下指定url的单个cookie的值。
-  <!-- @[set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ConfigCookieSync.ets) -->
+  <!-- @set_the_value_of_a_single_cookie_for_a_specified_url_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -303,7 +303,7 @@
   ```
 
 - 通过existCookie查询隐私模式下是否存在cookie。
-  <!-- @[check_whether_cookies_exist_in_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ExistCookie.ets) -->
+  <!-- @check_whether_cookies_exist_in_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -328,7 +328,7 @@
   ```
 
 - 通过clearAllCookiesSync清除隐私模式下所有cookie。 
-  <!-- @[clear_all_cookies_in_privacy_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ClearAllCookiesSync.ets) -->
+  <!-- @clear_all_cookies_in_privacy_mode -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';

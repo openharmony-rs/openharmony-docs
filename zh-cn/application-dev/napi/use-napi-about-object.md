@@ -1,7 +1,7 @@
 # 使用Node-API接口进行object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -46,7 +46,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_prototype -->
 
 ``` C++
 // napi_get_prototype
@@ -65,7 +65,7 @@ static napi_value GetPrototype(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_prototype_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_prototype_api -->
 
 ``` TypeScript
 export const getPrototype: (object: Object) => Object; // napi_get_prototype
@@ -73,7 +73,7 @@ export const getPrototype: (object: Object) => Object; // napi_get_prototype
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/napiGetPrototype.ts) -->
+<!-- @ark_napi_get_prototype -->
 
 ``` TypeScript
 class Person {
@@ -108,7 +108,7 @@ if (personPrototype === Person.prototype) {
 
 cpp部分代码
 
-<!-- @[napi_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_object -->
 
 ``` C++
 // napi_create_object
@@ -132,7 +132,7 @@ napi_value NewObject(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_object_api -->
 
 ``` TypeScript
 export const createObject: () => { name: string }; // napi_create_object
@@ -140,7 +140,7 @@ export const createObject: () => { name: string }; // napi_create_object
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_object -->
 
 ``` TypeScript
 // napi_create_object
@@ -162,7 +162,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_object_freeze -->
 
 ``` C++
 // napi_object_freeze
@@ -186,7 +186,7 @@ static napi_value ObjectFreeze(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_object_freeze_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_object_freeze_api -->
 
 ``` TypeScript
 export interface Obj {
@@ -199,7 +199,7 @@ export const objectFreeze: (objFreeze: Object) => Obj; // napi_object_freeze
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_object_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_object_freeze -->
 
 ``` TypeScript
 // napi_object_freeze
@@ -225,7 +225,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_object_seal -->
 
 ``` C++
 // napi_object_seal
@@ -251,7 +251,7 @@ static napi_value ObjectSeal(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_object_seal_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_object_seal_api -->
 
 ``` TypeScript
 export interface Obj1 {
@@ -265,7 +265,7 @@ export const objectSeal: (objSeal: Object) => Obj1; // napi_object_seal
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_object_seal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_object_seal -->
 
 ``` TypeScript
 // napi_object_seal
@@ -308,7 +308,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_typeof -->
 
 ``` C++
 // napi_typeof
@@ -362,7 +362,7 @@ static napi_value NapiTypeOf(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_typeof_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_typeof_api -->
 
 ``` TypeScript
 export const napiTypeOf: <T>(value: T) => string | undefined; // napi_typeof
@@ -370,7 +370,7 @@ export const napiTypeOf: <T>(value: T) => string | undefined; // napi_typeof
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_typeof -->
 
 ``` TypeScript
 // napi_typeof
@@ -418,7 +418,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_instanceof -->
 
 ``` C++
 // napi_instanceof
@@ -445,14 +445,14 @@ static napi_value NapiInstanceOf(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_instanceof_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_instanceof_api -->
 
 ``` TypeScript
 export const napiInstanceOf: (date: Object, construct: Object) => boolean | undefined; // napi_instanceof
 ```
 ArkTS侧示例代码
 
-<!-- @[ark_napi_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_instanceof -->
 
 ``` TypeScript
 // napi_instanceof
@@ -500,7 +500,7 @@ ArkTS版本中，napi_type_tag_object接口没有使用private symbol，导致ty
 
 cpp部分代码
 
-<!-- @[napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_type_tag_object -->
 
 ``` C++
 #define NUMBERINT_FOUR 4
@@ -556,7 +556,7 @@ static napi_value CheckObjectTypeTag(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_type_tag_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_type_tag_object_api -->
 
 ``` TypeScript
 export const setTypeTagToObject: (obj: Object, index: number) => boolean | undefined; // napi_type_tag_object
@@ -564,7 +564,7 @@ export const setTypeTagToObject: (obj: Object, index: number) => boolean | undef
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean; // napi_check_object_type_tag
 ```
 
-<!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @ark_napi_type_tag_object --> 
 
 ``` TypeScript
 // napi_type_tag_object and napi_check_object_type_tag
@@ -591,7 +591,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_check_object_type_tag objB -> 
 
 cpp部分代码
 
-<!-- @[napi_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_external -->
 
 ``` C++
 // 用于释放外部数据的回调函数
@@ -645,7 +645,7 @@ static napi_value CreateExternal(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_create_external_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_external_api -->
 
 ``` TypeScript
 export const createExternal: () => Object; // napi_create_external
@@ -655,7 +655,7 @@ export const getExternalType: (externalData: Object) => boolean; // napi_create_
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_external -->
 
 ``` TypeScript
 // napi_create_external
@@ -670,7 +670,7 @@ napi_create_external可以创建包装自定义的C/C++对象并将其公开给A
 
 cpp部分代码
 
-<!-- @[napi_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_external -->
 
 ``` C++
 // napi_get_value_external
@@ -693,7 +693,7 @@ static napi_value GetValueExternal(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_external_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_value_external_api -->
 
 ``` TypeScript
 export const getValueExternal: () => number; // napi_get_value_external
@@ -701,7 +701,7 @@ export const getValueExternal: () => number; // napi_get_value_external
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_external](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_external -->
 
 ``` TypeScript
 // napi_get_value_external
@@ -714,7 +714,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_external:%{public}d', testNapi.getValu
 
 cpp部分代码
 
-<!-- @[napi_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_symbol -->
 
 ``` C++
 // napi_create_symbol
@@ -739,7 +739,7 @@ static napi_value CreateSymbol(napi_env env, napi_callback_info info)
 }
 ```
 
-<!-- @[napi_create_symbol_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_symbol_api -->
 
 ``` TypeScript
 export const createSymbol: () => symbol; // napi_create_symbol
@@ -747,7 +747,7 @@ export const createSymbol: () => symbol; // napi_create_symbol
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_symbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_symbol -->
 
 ``` TypeScript
 // napi_create_symbol

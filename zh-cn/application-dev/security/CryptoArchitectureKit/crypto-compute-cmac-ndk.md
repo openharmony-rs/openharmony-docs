@@ -31,7 +31,7 @@ CMAC通过使用分组密码（如AES）和一个密钥来生成认证码，确�
 
 7. 调用OH_CryptoMac_GetLength，获取MAC消息认证码的长度，单位为字节。
 
-<!-- @[message_auth_cmac_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/cmac/singleTime.cpp) -->
+<!-- @message_auth_cmac_single_time -->
 
 ``` C++
 
@@ -167,7 +167,7 @@ cleanup:
 
 与一次性传入的步骤基本相同，区别在于多次调用OH_CryptoMac_Update来处理分段数据。
 
-<!-- @[message_auth_cmac_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/cmac/segmentation.cpp) -->
+<!-- @message_auth_cmac_segmentation -->
 
 ``` C++
 

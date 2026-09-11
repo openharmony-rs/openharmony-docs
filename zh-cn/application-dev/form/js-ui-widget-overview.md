@@ -14,7 +14,7 @@ JS卡片实现原理如图1所示。
 
 **图1** JS卡片实现原理
 
-![JSCardPrinciple](figures/JSCardPrinciple.png)
+JSCardPrinciple
 
 卡片使用方包含以下模块：
 

@@ -23,7 +23,7 @@
 
 3. 调用x509CertChain.validate设置校验参数trustSystemCa为true，使用系统预置CA证书校验证书链并返回结果。
 
-<!-- @[verify-certchain-by-systemca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/VerifyCertchainBySystemca.ets) -->
+<!-- @verify-certchain-by-systemca -->
 
 ``` TypeScript
 

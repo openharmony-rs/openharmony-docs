@@ -13,13 +13,13 @@
 
 您的应用可以参考Network Kit配置证书校验内容，利用Device Certificate Kit的系统CA证书、用户CA证书，对HTTPS证书链进行校验。
 
-![](figures/certificate-manager-ca-cert-case1.PNG)
+
 
 场景2：采用底层或自定义的安全协议进行通信。
 
 如果您的应用需要采用底层或自定义的安全协议与应用服务器进行通信，则您的应用可能需要从Device Certificate Kit读取系统CA证书和用户CA证书对服务器的证书链进行校验。
 
-![](figures/certificate-manager-ca-cert-case2.PNG)
+
 
 Device Certificate Kit的CA证书管理功能包含如下能力：
 - 系统CA证书管理：由操作系统预安装的CA证书，包括国密算法（SM算法）和国际算法（RSA和ECC算法）的CA证书。<!--RP1--><!--RP1End-->
@@ -102,7 +102,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 ## 样例代码
 
-<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
+<!-- @certificate_management_user_ca  -->
 
 ``` TypeScript
 import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';

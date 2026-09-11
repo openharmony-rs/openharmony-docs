@@ -64,7 +64,7 @@
 
 ### 均衡器效果节点设置方法
 
-<!-- @[audioSuite_SetEqualizerType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetEqualizerType -->
 
 ``` C
 // 设置为均衡器节点类型。
@@ -86,7 +86,7 @@ OH_AudioSuiteEngine_SetEqualizerFrequencyBandGains(*node, gains);
 
 ### 降噪效果节点设置方法
 
-<!-- @[audioSuite_SetNoiseReductionType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetNoiseReductionType -->
 
 ``` C
 // 设置为降噪节点类型。
@@ -112,7 +112,7 @@ OH_AudioSuiteEngine_CreateNode(pipeline, builder, node);
 
 ### 声场效果节点设置方法
 
-<!-- @[audioSuite_SetSoundFieldType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetSoundFieldType -->
 
 ``` C
 // 设置为声场节点类型。
@@ -153,7 +153,7 @@ OH_AudioSuiteEngine_SetSoundFieldType(*node, static_cast<OH_SoundFieldType>(para
 
 ### 美化效果节点设置方法
 
-<!-- @[audioSuite_SetVoiceBeautifierType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetVoiceBeautifierType -->
 
 ``` C
 // 设置为声音美化节点类型。
@@ -182,7 +182,7 @@ OH_AudioSuiteEngine_SetVoiceBeautifierType(*node,
 
 ### 环境效果节点设置方法
 
-<!-- @[audioSuite_SetEnvironmentType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetEnvironmentType -->
 
 ``` C
 // 设置为环境效果节点类型。
@@ -242,7 +242,7 @@ OH_AudioSuiteEngine_SetEnvironmentType(*node, static_cast<OH_EnvironmentType>(pa
 
 ### 空间渲染效果节点设置方法
 
-<!-- @[audioSuite_SetSpaceRenderParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetSpaceRenderParams -->
 
 ``` C
 // 设置为空间渲染节点类型。
@@ -313,7 +313,7 @@ switch (params.spaceRenderMode) {
 
 ### 传统变声效果节点设置方法
 
-<!-- @[audioSuite_SetPureVoiceChangeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetPureVoiceChangeOption -->
 
 ``` C
 // 设置为传统变声节点类型。
@@ -351,7 +351,7 @@ OH_AudioSuiteEngine_SetPureVoiceChangeOption(*node, option);
 
 ### 通用变声效果节点设置方法
 
-<!-- @[audioSuite_SetGeneralVoiceChangeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetGeneralVoiceChangeType -->
 
 ``` C
 // 设置为通用变声节点类型。
@@ -378,7 +378,7 @@ OH_AudioSuiteEngine_SetGeneralVoiceChangeType(
 
 ### 变速变调效果节点设置方法
 
-<!-- @[audioSuite_SetTempoAndPitch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_effect/audio_effect.h) -->
+<!-- @audioSuite_SetTempoAndPitch -->
 
 ``` C
 // 设置为变速变调节点类型。

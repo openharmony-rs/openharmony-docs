@@ -43,7 +43,7 @@ JSVM，即标准JS引擎，是严格遵守ECMAScript规范的JavaScript代码执
    }]
    ```
 
-2. 为避免debugger过程中的暂停被误报为无响应异常，可以开启DevEco Studio的Debug模式，参考[debug启动调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5)（无需设置断点），或者可以在非主线程的其它线程中运行JSVM。
+2. 为避免debugger过程中的暂停被误报为无响应异常，可以开启DevEco Studio的Debug模式，参考debug启动调试（无需设置断点），或者可以在非主线程的其它线程中运行JSVM。
    ```cpp
    // 在非主线程的其他线程中运行JSVM示例代码
    static napi_value RunTest(napi_env env, napi_callback_info info)
@@ -153,7 +153,7 @@ void TestJSVM() {
    }]
    ```
 
-2. 为避免debugger过程中的暂停被误报为无响应异常，可以[开启DevEco Studio的Debug模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-debug-arkts-debug-V5)（无需设置断点），或者可以在非主线程的其他线程中运行JSVM。
+2. 为避免debugger过程中的暂停被误报为无响应异常，可以开启DevEco Studio的Debug模式（无需设置断点），或者可以在非主线程的其他线程中运行JSVM。
 3. 打开 inspector 端口，连接 devtools 用于调试，其流程如下：在执行JS代码之前，调用OH_JSVM_OpenInspectorWithName在指定的主机和端口上激活inspector，创建socket。例如OH_JSVM_OpenInspectorWithName(env, 123, "test")，创建 tcp socket 及其对应的 unix domain 端口。
 4. 调用OH_JSVM_WaitForDebugger，等待建立socket连接。
 5. 检查端侧端口是否打开成功。hdc shell "cat /proc/net/unix | grep jsvm"。结果出现可用的 unix 端口即可，如：jsvm_devtools_remote_9229_123，其中 9229 为 tcp 端口号，123 为对应的 pid。
@@ -179,26 +179,26 @@ static void EnableInspector(JSVM_Env env) {
 推荐通过Chrome浏览器的 chrome://inspect/#devices 页面进行调试。方法如下：
 1. Chrome浏览器中打开 chrome://inspect/#devices，勾选以下内容：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
+   <div align=left></div>
 2. 执行端口转发命令：hdc fport [开发者个人计算机侧端口号] [端侧端口号]  
 
    例如：hdc fport tcp:9227 tcp:9226
 3. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
+   <div align=left></div>
 4. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
+   <div align=left></div>
 5. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
+   <div align=left></div>
 
 ### 使用 websocket 端口进行调试
 除了使用上述Chrome inspect页面和打开 "devtoolsFrontendUrl" 字段url的方法通过网页端 chrome devtools 调试代码之外，如果读者了解如何使用 CDP 协议代替网页端 devtools 功能，也可以通过连接 inspector 提供的 websocket 端口进行调试。
 
 其中连接 websocket 的方法为，根据前面提供的网页端调试步骤，在做完端口映射之后（如映射到 9229 端口），在 chrome 浏览器地址栏输入 "localhost:9229/json"，回车，获取"webSocketDebuggerUrl" 字段所对应的 url，然后使用标准的 websocket 客户端连接这个 url 即可发送 CDP 调试协议进行调试。需要注意的是，当前版本 inspector 提供的websocket 端口仅支持接收 Text Frame, Ping Frame 和 Connection Close Frame，所有其他类型的帧都会被视为错误帧而导致 websocket 连接中断。
 
-CDP 协议可以参考 chrome 的[官方文档](https://chromedevtools.github.io/devtools-protocol/)
+CDP 协议可以参考 chrome 的官方文档
 
 ## CPU Profiler及Heap Snapshot使用方法
 

@@ -14,7 +14,7 @@
 
 图1 序列化反序列化原理图
 
-![Serialization-and-deserialization-principles](figures/Serialization-and-deserialization-principles.png)
+Serialization-and-deserialization-principles
 
 ArkTS目前主要提供两种并发能力支持线程间通信：TaskPool和Worker。
 

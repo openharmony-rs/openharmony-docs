@@ -14,7 +14,7 @@
 HiProfiler调优组件旨在为开发者提供一系列调优能力，可以用来帮助分析内存、性能等问题。
 
 
-整体架构包括PC端和设备端。主体部分是PC端的数据展示页面和设备端的性能调优服务。PC端和设备端服务采用C/S模型，PC端的调优数据在[DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)和[Smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases)网页中展示。设备端程序运行在系统环境中，包含多个部分，其中hiprofilerd进程负责与DevEco通信，作为调优服务。设备端还包括命令行工具hiprofiler_cmd和数据采集进程hiprofiler_plugins。调优服务控制数据采集进程获取调优数据，数据最终流向DevEco Studio，整个过程可抽象为生产者-消费者模型。目前已完成多个插件，包括nativehook、CPU、ftrace、GPU、hiperf、xpower和memory数据采集，实现了CPU、GPU、内存和能耗等多维度调优。
+整体架构包括PC端和设备端。主体部分是PC端的数据展示页面和设备端的性能调优服务。PC端和设备端服务采用C/S模型，PC端的调优数据在DevEco Studio和Smartperf网页中展示。设备端程序运行在系统环境中，包含多个部分，其中hiprofilerd进程负责与DevEco通信，作为调优服务。设备端还包括命令行工具hiprofiler_cmd和数据采集进程hiprofiler_plugins。调优服务控制数据采集进程获取调优数据，数据最终流向DevEco Studio，整个过程可抽象为生产者-消费者模型。目前已完成多个插件，包括nativehook、CPU、ftrace、GPU、hiperf、xpower和memory数据采集，实现了CPU、GPU、内存和能耗等多维度调优。
 
 
 
@@ -41,7 +41,7 @@ Hiprofiler工具对标业界调优工具，并提供更多能力，比如跨语�
 
 5. PC端解析数据，生成泳道，展示获取到的调优数据。
 
-![hiprofiler-plugins](figures/hiprofiler-plugins.png)
+hiprofiler-plugins
 
 
 ## 命令行说明
@@ -152,7 +152,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 "appProvisionType": "debug",
 ```
 
-构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+构建可调试应用需要使用调试证书进行签名，申请调试证书及签名可参考：申请调试证书。
 
 
 ## 插件参数说明
@@ -164,7 +164,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 > **注意：**
 >
-> [应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)后只能回native栈，不能回JS栈。
+> 应用加密后只能回native栈，不能回JS栈。
 
 **参数介绍**
 
@@ -270,7 +270,7 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
-![hiprofiler-nativehook-fp](figures/hiprofiler-nativehook-fp.png)
+hiprofiler-nativehook-fp
 
 开启dwarf回栈和跨语言回栈（可以展示出native -&gt; js -&gt;native的栈）：
 > **说明：**
@@ -315,7 +315,7 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
-![hiprofiler-nativehook-dwarf](figures/hiprofiler-nativehook-dwarf.png)
+hiprofiler-nativehook-dwarf
 
 开启统计模式，在此模式下，栈数据会周期性展示：
 > **说明：**
@@ -359,7 +359,7 @@ $ hiprofiler_cmd \
 CONFIG
 ```
 
-![hiprofiler-nativehook-statistical](figures/hiprofiler-nativehook-statistical.png)
+hiprofiler-nativehook-statistical
 
 开启非统计模式，在此模式下，栈数据不会周期性展示：
 > **说明：**
@@ -401,7 +401,7 @@ $ hiprofiler_cmd \
  }
 CONFIG
 ```
-![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
+hiprofiler-nativehook-non-statistical
 
 ### ftrace plugin插件
 
@@ -458,7 +458,7 @@ CONFIG
 
 点击binder transaction右边的箭头，可以跳转到binder对端的进程或线程。
 
-![hiprofiler-ftrace-binder](figures/hiprofiler-ftrace-binder.png)
+hiprofiler-ftrace-binder
 
 
 ### memory plugin插件
@@ -563,11 +563,11 @@ CONFIG
 
 此命令读取系统的内存的基本统计信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace命令将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
-![memory_001](figures/memory_001.png)
+memory_001
 
 通过DevEco Studio 的工具获得内存的数据：
 
-![hiprofiler-memory-ide](figures/hiprofiler-memory-ide.png)
+hiprofiler-memory-ide
 
 通过DevEco-&gt;profiler-&gt;Allocation工具，选择Memory泳道，可以使用profiler的memory plugin功能。上图展示了框选时间段的进程smaps内存信息。
 
@@ -582,7 +582,7 @@ CONFIG
 
 **结果分析**
 
-![hiprofiler-xpower-energy](figures/hiprofiler-xpower-energy.png)
+hiprofiler-xpower-energy
 
 通过DevEco-&gt;profiler-&gt;real time monitor工具，可以获取相关进程能耗数据。
 
@@ -649,7 +649,7 @@ CONFIG
 
 此命令读取cpu的基本统计信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace命令将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
-![cpu_001.png](figures/cpu_001.png)
+cpu_001.png
 
 ### diskio plugin插件
 
@@ -701,7 +701,7 @@ CONFIG
 
 此命令读取disk io的基本统计信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
-![diskio_001.png](figures/diskio_001.png)
+diskio_001.png
 
 
 ### hidump plugin插件
@@ -719,7 +719,7 @@ CONFIG
 
 该插件暂时不支持smartperf工具方式的trace数据解析，只支持DevEco Studio模式下的trace数据解析。如下图所示：
 
-![fps_001.png](figures/fps_001.png)
+fps_001.png
 
 
 ### hisysevent plugin插件
@@ -764,7 +764,7 @@ CONFIG
 ```
 此命令示例抓取所有hisystem event订阅事件信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
-![hisysevent_001.png](figures/hisysevent_001.png)
+hisysevent_001.png
 
 
 ### network plugin插件
@@ -823,7 +823,7 @@ CONFIG
 ```
 此命令示例抓取整机网络数据信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
-![network_001.png](figures/network_001.png)
+network_001.png
 
 ### network profiler插件
  
@@ -846,7 +846,7 @@ CONFIG
 
 smartperf工具暂时不支持该插件的trace数据解析，若需分析network数据，请使用DevEco Studio的Profiler工具下的NetWork功能。可参考：
 
-[网络诊断：NetWork分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-profiler-network)
+网络诊断：NetWork分析
 
 ## 常用命令
 
@@ -930,7 +930,7 @@ CONFIG
 
 ### 抓取指定进程GPU图形内存调用栈
 
-抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：[smartperf](https://gitcode.com/openharmony/developtools_smartperf_host/releases))。
+抓取指定进程的GPU图形内存调用栈（需要使用最新smartperf release版本解析文件，下载链接：smartperf)。
 
 ```shell
 $ hiprofiler_cmd \
@@ -1078,7 +1078,7 @@ LocalHandle对象内存录制功能要求被测应用在启动时替换加载维
 >
 > 3. 此种方式抓取到的LocalHandle内存一定是泄漏的。
 >
-> 4. 命令行方式获取的trace文件，可以通过DevEco Profiler[离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)文件功能进行解析。导入的单个文件大小不超过1.5G。
+> 4. 命令行方式获取的trace文件，可以通过DevEco Profiler离线导入文件功能进行解析。导入的单个文件大小不超过1.5G。
 >
 > 5. 从API版本26.0.0开始，统计模式支持采集local/global handle地址信息能力。
 
@@ -1239,7 +1239,7 @@ CONFIG
 
 使用hiprofiler_cmd命令时，显示Service not started。
 
-![hiprofiler-service-exception](figures/hiprofiler-service-exception.png)
+hiprofiler-service-exception
 
 **可能原因&amp;解决方法**
 

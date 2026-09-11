@@ -14,11 +14,11 @@
 
 - 将蒙层背景色设置在页面上：pop页面的时候蒙层没有马上消失，而是等内容下滑退出后才消失。
 
-  ![normal](figures/DialogNavDesAnimation-normal.gif)
+  normal
 
 - 将蒙层背景色设置在内容区域：蒙层一起从上向下退出。
 
-  ![content](figures/DialogNavDesAnimation-content.gif)
+  content
 
 期望退出时蒙层渐隐，同时内容区域向下退出。
 
@@ -26,7 +26,7 @@
 
 在onWillAppear、onWillDisappear生命周期执行背景色动画，示例如下：
 
-<!-- @[DialogNavDesAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/DialogNavDestination.ets) -->
+<!-- @DialogNavDesAnimation -->
 
 ``` TypeScript
 @Builder
@@ -68,7 +68,7 @@ export struct DialogNavDestination {
 }
 ```
 
-  ![modify](figures/DialogNavDesAnimation-modify.gif)
+  modify
 
 ## router、navigation动画冲突
 
@@ -80,7 +80,7 @@ router跳到navigation页面，navigation在aboutToAppear回调里马上push一�
 
 关闭aboutToAppear中push的动画：
 
-<!-- @[NavigationAnimation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/NavigationPage.ets) -->
+<!-- @NavigationAnimation -->
 
 ``` TypeScript
 @Entry
@@ -107,7 +107,7 @@ struct NavigationPage {
 
 先pop栈顶页面，再马上push一个页面，动画效果是栈顶页面pop的动画，并不是PageOne的push动画。
 
-<!-- @[PopAndPush-Normal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/PageTwoNavDes.ets) -->
+<!-- @PopAndPush-Normal -->
 
 ``` TypeScript
 this.stack.pop();
@@ -124,7 +124,7 @@ this.stack.pushPath({ name: 'animation-BasicNavDestination' });
 
 如果想移除页面的同时push另一个页面并且执行push动画，可以将push的页面设置为NEW_INSTANCE，默认执行push动画：
 
-<!-- @[PopAndPush-NEW_INSTANCE](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/animation/PageTwoNavDes.ets) -->
+<!-- @PopAndPush-NEW_INSTANCE -->
 
 ``` TypeScript
 this.stack.pop();

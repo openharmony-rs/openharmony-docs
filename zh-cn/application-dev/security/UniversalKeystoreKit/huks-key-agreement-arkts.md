@@ -52,7 +52,7 @@
 
 ### X25519非对称密钥协商用例
 准备X25519密钥协商材料：
-<!-- @[prepare_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/X25519.ets) -->
+<!-- @prepare_X25519 -->
 
 ``` TypeScript
 
@@ -166,7 +166,7 @@ let finishOptionsSecond: huks.HuksOptions = {
 ```
 <!-- -->
 执行密钥协商：
-<!-- @[key_agreement_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/X25519.ets) -->
+<!-- @key_agreement_X25519 -->
 
 ``` TypeScript
 
@@ -292,7 +292,7 @@ async function testAgree() {
 <!-- -->
 
 ### DH密钥协商用例
-<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->  
+<!-- @key_agreement_dh -->  
 
 ``` TypeScript
 
@@ -564,7 +564,7 @@ async function huksDhAgreeTest() {
 
 ### ECDH密钥协商用例
 准备ECDH密钥协商材料：
-<!-- @[prepare_ECDH](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/ECDH.ets) -->
+<!-- @prepare_ECDH -->
 
 ``` TypeScript
 
@@ -703,7 +703,7 @@ let finishOptionsSecond: huks.HuksOptions = {
 ```
 <!-- -->
 执行密钥协商：
-<!-- @[key_agreement_ECDH](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/ECDH.ets) -->
+<!-- @key_agreement_ECDH -->
 
 ``` TypeScript
 /* 生成密钥 */

@@ -12,7 +12,7 @@
 
 1. 在ets文件夹下新建文件夹Sendable，并准备一个Sendable类CopyEntry，封装克隆任务数据。
 
-   <!-- @[copy_entry_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/Sendable/CopyEntry.ets) -->     
+   <!-- @copy_entry_class -->     
    
    ``` TypeScript
    // CopyEntry.ets
@@ -31,12 +31,12 @@
 
 2. 创建两个Worker文件，DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键&gt; New&gt; Worker，即可自动生成Worker的模板文件及配置信息。本文以创建“ParentWorker”（父Worker）和“ChildWorker”（子Worker）为例。父Worker负责分发克隆任务，子Worker负责接收任务，执行数据克隆操作，并在任务完成后通知父Worker。父Worker在接收到子Worker任务完成的消息后销毁关闭子Worker，等所有子Worker任务全部完成且销毁关闭后，销毁关闭父Worker。
   
-   <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ParentWorker.ets) -->       
+   <!-- @parent_worker -->       
    
    ``` TypeScript
    // ParentWorker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS'
-   import { CopyEntry } from '../Sendable/CopyEntry'
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
@@ -67,7 +67,7 @@
          copyWorker2.postMessageWithSharedSendable(entry);
        }
      }
-   }
+   };
    
    copyWorker1.onmessage = async (e: MessageEvents) => {
      console.info('copyWorker1 onmessage:' + e.data);
@@ -83,7 +83,7 @@
          // 如果所有任务全部完成，则关闭父Worker
          workerPort.close();
        }
-     })
+     });
    }
    
    copyWorker2.onmessage = async (e: MessageEvents) => {
@@ -100,7 +100,7 @@
          // 如果所有任务全部完成，则关闭父Worker
          workerPort.close();
        }
-     })
+     });
    }
    
    workerPort.onmessageerror = (e: MessageEvents) => {
@@ -112,12 +112,12 @@
    }
    ```
    
-   <!-- @[child_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ChildWorker.ets) -->     
+   <!-- @child_worker -->     
    
    ``` TypeScript
    // ChildWorker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS'
-   import { CopyEntry } from '../Sendable/CopyEntry'
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
@@ -126,25 +126,25 @@
      // 中间copy操作省略
      console.info(data.filePath);
      workerPort.postMessageWithSharedSendable('done');
-   }
+   };
    
    workerPort.onmessageerror = (e: MessageEvents) => {
      console.error('onmessageerror:' + e.data);
-   }
+   };
    
    workerPort.onerror = (e: ErrorEvent) => {
      console.error('onerror:' + e.message);
-   }
+   };
    ```
 
 3. 在UI主线程页面，创建父Worker并准备克隆任务所需的数据，准备完成后将数据发送给父Worker。
 
-   <!-- @[multi_worker_high_performance_communication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets) -->   
+   <!-- @multi_worker_high_performance_communication -->   
    
    ``` TypeScript
    // Index.ets
    import { worker, collections } from '@kit.ArkTS';
-   import { CopyEntry } from '../Sendable/CopyEntry'
+   import { CopyEntry } from '../Sendable/CopyEntry';
    
    function promiseCase() {
      let p: Promise<void> = new Promise<void>((resolve: Function, reject: Function) => {
@@ -160,7 +160,7 @@
      let isTerminate = false;
      ss.onexit = () => {
        isTerminate = true;
-     }
+     };
      let array = new collections.Array<CopyEntry>();
      // 准备数据
      for (let i = 0; i < 4; i++) {
@@ -182,6 +182,7 @@
    @Component
    struct Index {
      @State message: string = 'Hello World';
+   
      build() {
        Row() {
          Column() {

@@ -1,9 +1,9 @@
 # 获取并使用公共目录
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 ## 通过 ArkTS 接口获取并访问公共目录
@@ -29,7 +29,7 @@
    import { Environment } from '@kit.CoreFileKit';
    
    ```
-   <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
+   <!--@get_user_dir_example-->    
    
    ``` TypeScript
    function getUserDirExample() {
@@ -59,7 +59,7 @@
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    
    ```
-   <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@read_user_download_dir_example-->      
    
    ``` TypeScript
    function readUserDownloadDirExample(context: common.UIAbilityContext) {
@@ -97,7 +97,7 @@
    import { fileIo } from '@kit.CoreFileKit';
    
    ```
-   <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
+   <!--@write_user_download_dir_example-->      
    
    ``` TypeScript
    function writeUserDownloadDirExample() {
@@ -161,7 +161,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <cstdlib>
    
    ```
-   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@get_user_download_dir_example-->      
    
    ``` C++
    void GetUserDownloadDirExample()
@@ -170,10 +170,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, download path=%{public}s", downloadPath);
-           free(downloadPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
+       free(downloadPath);
    }
    ```
 
@@ -185,7 +185,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <dirent.h>
    
    ```
-   <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@scan_user_download_dir_path_example-->    
    
    ``` C++
    void ScanUserDownloadDirPathExample()
@@ -226,7 +226,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <fstream>
    
    ```
-   <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@write_user_download_dir_path_example-->    
    
    ``` C++
    void WriteUserDownloadDirPathExample()

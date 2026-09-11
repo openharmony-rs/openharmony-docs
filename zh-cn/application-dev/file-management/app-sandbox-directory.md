@@ -18,7 +18,7 @@
 下图展示了应用沙箱下，应用可访问的文件范围和方式。
 
 **图1** 应用沙箱文件访问关系图  
-![Application sandbox file access relationship](figures/application-sandbox-file-access-relationship.png)
+Application sandbox file access relationship
 
 ## 应用沙箱目录与应用沙箱路径
 
@@ -33,7 +33,7 @@
 - 实际物理路径与沙箱路径并非1:1的映射关系，沙箱路径总是少于系统进程视角可见的物理路径。部分调试进程视角下的物理路径在对应的应用沙箱目录下没有对应路径。
 
 **图2** 应用沙箱路径（不同权限与角色的进程下可见的文件路径不同）  
-![Application sandbox path](figures/application-sandbox-path.png)
+Application sandbox path
 
 ## 应用文件目录与应用文件路径
 
@@ -44,7 +44,7 @@
 在此主要介绍应用文件目录，如下图所示。应用文件目录下的文件或目录路径称为应用文件路径。各文件路径具有不同的属性和特征。
 
 **图3** 应用文件目录结构图  
-![Application file directory structure](figures/application-file-directory-structure.png)
+Application file directory structure
 
 > **说明：**
 >

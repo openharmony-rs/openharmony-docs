@@ -24,11 +24,11 @@ ArkTS卡片开放了使用动画效果的能力，支持显式动画、属性动
 ## 组件自身动效
 以下示例代码使用animation接口实现了按钮旋转的动画效果。 
 
-![WidgetAnimation](figures/WidgetAnimation.gif)
+WidgetAnimation
 
 
 
-<!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widget/pages/AnimationCard.ets) -->
+<!-- @animation_card -->
 
 ``` TypeScript
 @Entry
@@ -58,9 +58,9 @@ struct AnimationCard {
 ## 组件转场动效
 以下示例代码使用transition接口实现了在卡片内图片出现与消失的动画效果。
 
-![WidgetAnimation](figures/WidgetTransitionAnimation.gif)
+WidgetAnimation
 
-<!-- @[TransitionEffectExample1_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/ets/widget1/pages/TransitionEffectExample1.ets) -->
+<!-- @TransitionEffectExample1_card -->
 
 ``` TypeScript
 // entry/src/main/ets/widget/pages/TransitionEffectExample1.ets

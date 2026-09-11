@@ -20,18 +20,18 @@ TextInput是单行输入框，TextArea是多行输入框，Search是搜索框。
 
 - 单行输入框。
 
-  <!-- @[create_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  <!-- @create_text_input -->
   
   ``` TypeScript
   TextInput()
   ```
 
-  ![textinput-create](figures/textinput-create.png)
+  textinput-create
 
 
 - 多行输入框，文字超出一行时会自动折行。
 
-  <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  <!-- @create_text_area_example -->
   
   ``` TypeScript
   /* 请将$r('app.string.CreatTextInput_textContent')替换为实际资源文件，在本示例中该资源文件的value值为
@@ -41,11 +41,11 @@ TextInput是单行输入框，TextArea是多行输入框，Search是搜索框。
     .width(300)
   ```
 
-  ![textinput-default](figures/textinput-default.png)
+  textinput-default
 
 - 搜索框。
 
-  <!-- @[create_text_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
+  <!-- @create_text_search -->
   
   ``` TypeScript
   Search()
@@ -53,7 +53,7 @@ TextInput是单行输入框，TextArea是多行输入框，Search是搜索框。
     .searchButton($r('app.string.Creat_TextInput_Content'))
   ```
 
-  ![textinput-search](figures/textinput-search.png)
+  textinput-search
 
 ## 设置输入框类型
 
@@ -63,41 +63,41 @@ TextInput有以下类型可选择：Normal基本输入、Password密码输入、
 
 ### 基本输入模式
 
-<!-- @[set_password_input_type_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
+<!-- @set_password_input_type_1 -->
 
 ``` TypeScript
 TextInput()
   .type(InputType.Normal)
 ```
 
-![textinput-normal](figures/textinput-normal.png)
+textinput-normal
 
 ### 密码模式
 
 包括Password密码输入模式、NUMBER_PASSWORD纯数字密码模式、NEW_PASSWORD新密码输入模式。
 
 以下示例是Password密码输入模式的输入框。
-<!-- @[set_password_input_type_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
+<!-- @set_password_input_type_2 -->
 
 ``` TypeScript
 TextInput()
   .type(InputType.Password)
 ```
 
-![textinput-password](figures/textinput-password.png)
+textinput-password
 
 ### 邮箱地址输入模式
 
 邮箱地址输入模式的输入框，只能存在一个@符号。
 
-<!-- @[set_email_input_type_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
+<!-- @set_email_input_type_3 -->
 
 ``` TypeScript
 TextInput()
   .type(InputType.Email)
 ```
 
-![text_input_type_email](figures/text_input_type_email.PNG)
+text_input_type_email
 
 ## 设置输入框样式
 可以通过style、placeholder、backgroundColor、contentType等属性设置输入框样式。更丰富的样式可以结合通用属性实现。
@@ -109,44 +109,44 @@ TextInput、TextArea支持设置输入框多态样式，通过style属性进行�
 TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.DEFAULT；内联模式，也称内联输入风格，入参是TextContentStyle.INLINE。
 
 - 默认风格的输入框，在编辑态和非编辑态，样式没有区别。
-  <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  <!-- @textArea_style_default -->
   
   ``` TypeScript
   TextArea()
     .style(TextContentStyle.DEFAULT)
   ```
 
-![textArea_style_default](figures/textArea_style_default.gif)
+textArea_style_default
 
 - 内联模式，也称内联输入风格。内联模式的输入框在编辑态和非编辑态样式有明显区分。
-  <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
+  <!-- @textArea_style_inline -->
   
   ``` TypeScript
   TextArea()
     .style(TextContentStyle.INLINE)
   ```
 
-  ![textArea_style_inline](figures/textArea_style_inline.gif)
+  textArea_style_inline
 
 ### 设置无输入时的提示文本
 
 以下示例展示无输入时提示文本的效果。
 
-<!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
+<!-- @custom_text_input_with_place_holder -->
 
 ``` TypeScript
 // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
 TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 ```
 
-![textinput-placeholder](figures/textinput-placeholder.png)
+textinput-placeholder
 
 
 ### 设置输入框当前的文本内容
 
 以下示例展示输入框内当前输入文本效果。
 
-<!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) --> 
+<!-- @custom_text_input_with_place_holder_and_text --> 
 
 ``` TypeScript
 TextInput({
@@ -159,7 +159,7 @@ TextInput({
 
 
 
- ![textinput-border](figures/textinput-border.png)
+ textinput-border
 
 
 
@@ -167,7 +167,7 @@ TextInput({
 
 以下示例展示设置输入框背景颜色效果。
 
-<!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) --> 
+<!-- @custom_text_input_background_color --> 
 
 ``` TypeScript
 TextInput({
@@ -182,13 +182,13 @@ TextInput({
 
 
 
-![textinput-pink-bg](figures/textinput-pink-bg.png)
+textinput-pink-bg
 
 
 ### 设置输入框自动填充类型
 
 输入框可以通过contentType属性设置自动填充类型。支持的类型请参考ContentType。
-<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
+<!-- @auto_fill -->
 
 ``` TypeScript
 // 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
@@ -212,7 +212,7 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
 >
 > onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
 
-<!-- @[TextInputAddEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextInputAddEvent.ets) -->
+<!-- @TextInputAddEvent -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -302,7 +302,7 @@ struct TextInputEventAdd {
 }
 ```
 
-![text_input_event](figures/text_input_event.gif)
+text_input_event
 
 ## 文本菜单管理
 TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、混合内容等多类型Span的场景，因此仅提供系统文本菜单。可通过editMenuOptions接口对系统菜单项进行定制，包括追加自定义菜单项、移除系统菜单项、修改菜单项内容及拦截菜单项点击事件，从而在系统菜单框架内实现菜单选项的自定义。
@@ -313,30 +313,30 @@ TextInput与TextArea组件承载的内容类型为纯文本，不具备图片、
 
 TextInput:
 
-<!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+<!-- @select_textinput -->
 
 ``` TypeScript
 // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
 TextInput({ text: $r('app.string.show_selected_menu') })
 ```
 
-![TextInput_select_menu](figures/TexInput_select_menu.jpg)
+TextInput_select_menu
 
 TextArea:
 
-<!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+<!-- @select_textarea -->
 
 ``` TypeScript
 // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
 TextArea({ text: $r('app.string.show_selected_menu') })
 ```
 
-![TextArea_select_menu](figures/TextArea_select_menu.jpg)
+TextArea_select_menu
 
 ### 系统菜单中自定义菜单项
 从API version 12开始，该示例通过editMenuOptions接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在onPrepareMenu回调中，进行菜单数据的设置。
 
-<!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+<!-- @editMenu_create -->
 
 ``` TypeScript
 onCreateMenu = (menuItems: Array<TextMenuItem>) => {
@@ -396,7 +396,7 @@ onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
 };
 ```
 
-<!-- @[editMenu_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
+<!-- @editMenu_textinput -->
 
 ``` TypeScript
 // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
@@ -407,13 +407,13 @@ TextInput({ text: $r('app.string.show_selected_menu') })
   })
 ```
 
-![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)
+TextInput-edit-menu-options
 
 ### 系统菜单中屏蔽系统菜单项
 
 从API version 20开始，支持使用disableSystemServiceMenuItems方法屏蔽文本选择菜单中的所有系统服务菜单项。更多详见disableSystemServiceMenuItems的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如UIAbility的onCreate和onDestroy。
 
-<!-- @[DisableSystemServiceMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableSystemServiceMenuItems.ets) -->
+<!-- @DisableSystemServiceMenuItems -->
 
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
@@ -457,11 +457,11 @@ struct DisableSystemServiceMenuItem {
 }
 ```
 
-![TextInput_disable_system_service_menu_items](figures/TextInput_disable_system_service_menu_items.gif)
+TextInput_disable_system_service_menu_items
 
 从API version 20开始，支持使用disableMenuItems方法屏蔽文本选择菜单中指定的系统服务菜单项。更多详见disableMenuItems的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如UIAbility的onCreate和onDestroy。
 
-<!-- @[DisableMenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/disablemenu/DisableMenuItems.ets) -->
+<!-- @DisableMenuItems -->
 
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
@@ -505,13 +505,13 @@ struct DisableMenuItem {
 }
 ```
 
-![Text_input_disable_menu_items](figures/Text_input_disable_menu_items.png)
+Text_input_disable_menu_items
 
 ### 在子窗口中显示文本菜单
 
 TextInput组件通过设置TextMenuShowMode控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
-<!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
+<!-- @set_menu_options_with_textmenushowmode -->
 
 ``` TypeScript
 this.getUIContext()
@@ -523,7 +523,7 @@ this.getUIContext()
   );
 ```
 
-<!-- @[textmenushowmode_create_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
+<!-- @textmenushowmode_create_textinput -->
 
 ``` TypeScript
 // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
@@ -536,7 +536,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 
 
 
-![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)
+TextInput-menu-subwindow
 
 ## 设置输入框避让
 
@@ -546,7 +546,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 
 键盘抬起后，具有滚动能力的容器组件在横竖屏切换时，才会生效键盘避让，若希望无滚动能力的容器组件也生效键盘避让，建议在组件外嵌套一层具有滚动能力的容器组件，比如Scroll、List、Grid。
 
-<!-- @[keyboard_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets) -->
+<!-- @keyboard_avoid -->
 
 ``` TypeScript
 @Entry
@@ -571,7 +571,7 @@ struct KeyboardAvoid {
 ```
 
 
-![textinputkeyboardavoid](figures/TextInputKeyboardAvoid.gif)
+textinputkeyboardavoid
 
 ### 光标避让
 
@@ -579,7 +579,7 @@ keyBoardAvoidMode枚举中的OFFSET和RESIZE在键盘抬起后，不支持二次
 
 对于滚动容器更推荐使用RESIZE_WITH_CARET，非滚动容器应该使用OFFSET_WITH_CARET。
 
-<!-- @[cursor_avoid_part1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @cursor_avoid_part1 -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -587,7 +587,7 @@ import { window } from '@kit.ArkUI';
 import { KeyboardAvoidMode } from '@kit.ArkUI';
 ```
 
-<!-- @[cursor_avoid_part2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @cursor_avoid_part2 -->
 
 ``` TypeScript
 // Used in UIAbility
@@ -607,7 +607,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
-<!-- @[cursor_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CursorAvoidance.ets) -->
+<!-- @cursor_avoid -->
 
 ``` TypeScript
 @Entry
@@ -652,6 +652,6 @@ struct CursorAvoid {
 }
 ```
 
-![textinputkeyboardavoid](figures/caretavoid.gif)
+textinputkeyboardavoid
 
 <!--RP1--><!--RP1End-->

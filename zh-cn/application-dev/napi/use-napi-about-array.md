@@ -1,7 +1,7 @@
 # 使用Node-API接口进行array相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -25,20 +25,20 @@
 使用Node-API接口进行数组相关开发时，可以处理各种涉及ArkTS数组的操作和交互场景。以下是几个具体的使用场景介绍：
 | 接口 | 描述 |
 | -------- | -------- |
-| [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | 用于在Node-API模块中向ArkTS层创建一个ArkTS数组对象。 |
-| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | 用于在Node-API模块中向ArkTS层创建指定长度的ArkTS数组对象。 |
-| [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | 用于在Node-API模块中获取ArkTS数组对象的长度。 |
-| [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | 用于在Node-API模块中判断一个napi_value值是否为数组。 |
-| [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | 用于在Node-API模块中对ArkTS数组对象的特定索引处设置一个值。 |
-| [napi_get_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_element) | 用于在Node-API模块中从ArkTS数组对象的特定索引处获取一个值。 |
-| [napi_has_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_has_element) | 用于在Node-API模块中判断ArkTS数组对象请求索引处是否包含元素。 |
-| [napi_delete_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_delete_element) | 用于在Node-API模块中从ArkTS数组对象中删除请求索引对应的元素。 |
-| [napi_create_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_typedarray) | 用于在Node-API模块中创建指定类型的TypedArray，例如Uint8Array、Int32Array等，通常用于将Node-API模块中的数据转换为ArkTS中的TypedArray，以便进行高性能的数据处理操作。 |
-| [napi_is_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_typedarray) | 用于在Node-API模块中判断一个给定的napi_value是否为TypedArray对象。 |
-| [napi_get_typedarray_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_typedarray_info) | 用于在Node-API模块中获得某个TypedArray的各种属性。 |
-| [napi_create_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_dataview) |  用于在Node-API模块中创建一个DataView对象，可以访问和操作二进制数据。 |
-| [napi_is_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_dataview) | 用于在Node-API模块中判断给定的napi_value是否为ArkTS中的DataView对象。 |
-| [napi_get_dataview_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_dataview_info) | 用于在Node-API模块中获得某个DataView的各种属性。 |
+| napi_create_array | 用于在Node-API模块中向ArkTS层创建一个ArkTS数组对象。 |
+| napi_create_array_with_length | 用于在Node-API模块中向ArkTS层创建指定长度的ArkTS数组对象。 |
+| napi_get_array_length | 用于在Node-API模块中获取ArkTS数组对象的长度。 |
+| napi_is_array | 用于在Node-API模块中判断一个napi_value值是否为数组。 |
+| napi_set_element | 用于在Node-API模块中对ArkTS数组对象的特定索引处设置一个值。 |
+| napi_get_element | 用于在Node-API模块中从ArkTS数组对象的特定索引处获取一个值。 |
+| napi_has_element | 用于在Node-API模块中判断ArkTS数组对象请求索引处是否包含元素。 |
+| napi_delete_element | 用于在Node-API模块中从ArkTS数组对象中删除请求索引对应的元素。 |
+| napi_create_typedarray | 用于在Node-API模块中创建指定类型的TypedArray，例如Uint8Array、Int32Array等，通常用于将Node-API模块中的数据转换为ArkTS中的TypedArray，以便进行高性能的数据处理操作。 |
+| napi_is_typedarray | 用于在Node-API模块中判断一个给定的napi_value是否为TypedArray对象。 |
+| napi_get_typedarray_info | 用于在Node-API模块中获得某个TypedArray的各种属性。 |
+| napi_create_dataview |  用于在Node-API模块中创建一个DataView对象，可以访问和操作二进制数据。 |
+| napi_is_dataview | 用于在Node-API模块中判断给定的napi_value是否为ArkTS中的DataView对象。 |
+| napi_get_dataview_info | 用于在Node-API模块中获得某个DataView的各种属性。 |
 
 ## 使用示例
 
@@ -60,7 +60,7 @@ import testNapi from 'libentry.so';
 
 cpp部分代码
 
-<!-- @[napi_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_array -->
 
 ``` C++
 static constexpr int INT_NUM_5 = 5; // 入参索引 数组长度
@@ -87,7 +87,7 @@ static napi_value CreateArray(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_create_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_array_api -->
 
 ``` TypeScript
 export const createArray: () => number[]; // 使用Node-API接口进行array相关开发 napi_create_array
@@ -96,7 +96,7 @@ export const createArray: () => number[]; // 使用Node-API接口进行array相�
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_array -->
 
 ``` TypeScript
 //使用Node-API接口进行array相关开发 napi_create_array
@@ -111,7 +111,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array:%{public}s',
 
 cpp部分代码
 
-<!-- @[napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_array_with_length -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_create_array_with_length
@@ -137,7 +137,7 @@ static napi_value CreateArrayWithLength(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_create_array_with_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_array_with_length_api -->
 
 ``` TypeScript
 export const createArrayWithLength: (length: number) => void[]; // 使用Node-API接口进行array相关开发 napi_create_array_with_length
@@ -146,7 +146,7 @@ export const createArrayWithLength: (length: number) => void[]; // 使用Node-AP
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_array_with_length -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_create_array_with_length
@@ -161,7 +161,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_array_with_length:%{pub
 
 cpp部分代码
 
-<!-- @[napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_array_length -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_get_array_length
@@ -192,7 +192,7 @@ static napi_value GetArrayLength(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_get_array_length_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_array_length_api -->
 
 ``` TypeScript
 export const getArrayLength: (arr: Array<any>) => number | undefined; // 使用Node-API接口进行array相关开发 napi_get_array_length
@@ -201,7 +201,7 @@ export const getArrayLength: (arr: Array<any>) => number | undefined; // 使用N
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_array_length -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_get_array_length
@@ -217,7 +217,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API get_array_length:%{public}d',
 
 cpp部分代码
 
-<!-- @[napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_array -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_is_array
@@ -246,7 +246,7 @@ static napi_value IsArray(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_is_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_is_array_api -->
 
 ``` TypeScript
 export const isArray: <T>(data: Array<T> | T) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_array
@@ -255,7 +255,7 @@ export const isArray: <T>(data: Array<T> | T) => boolean | undefined; // 使用N
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_array -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_is_array
@@ -282,7 +282,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_set_element -->
 
 ``` C++
 static constexpr int INT_ARG_2 = 2; // 入参索引
@@ -320,7 +320,7 @@ static napi_value NapiSetElement(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_set_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_set_element_api -->
 
 ``` TypeScript
 export const napiSetElement: <T>(arr: Array<T>, index: number,
@@ -330,7 +330,7 @@ export const napiSetElement: <T>(arr: Array<T>, index: number,
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_set_element -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_set_element
@@ -363,7 +363,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_element -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_get_element
@@ -389,7 +389,7 @@ static napi_value NapiGetElement(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_get_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_element_api -->
 
 ``` TypeScript
 export const napiGetElement: <T>(arr: Array<T>,
@@ -399,7 +399,7 @@ export const napiGetElement: <T>(arr: Array<T>,
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_element -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_get_element
@@ -434,7 +434,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[5]: %{public}s
 
 cpp部分代码
 
-<!-- @[napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_has_element -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_has_element
@@ -461,7 +461,7 @@ static napi_value NapiHasElement(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_has_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_has_element_api -->
 
 ``` TypeScript
 export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean; // 使用Node-API接口进行array相关开发 napi_has_element
@@ -470,7 +470,7 @@ export const napiHasElement: <T>(arr: Array<T>, index: number) => boolean; // �
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_has_element -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_has_element
@@ -487,7 +487,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_element arr[7]: %{public}s
 
 cpp部分代码
 
-<!-- @[napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_delete_element -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_delete_element
@@ -514,7 +514,7 @@ static napi_value NapiDeleteElement(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_delete_element_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_delete_element_api -->
 
 ``` TypeScript
 export const napiDeleteElement: <T>(arr: Array<T>,
@@ -526,7 +526,7 @@ ArkTS侧示例代码
 
 index.d.ts需要同时导入前文示例代码中的napiHasElement、napiGetElement接口。
 
-<!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_delete_element -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_delete_element
@@ -547,7 +547,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_element arr[0]: %{public}d
 
 cpp部分代码
 
-<!-- @[napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_typed_array -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_create_typedarray
@@ -610,7 +610,7 @@ static napi_value CreateTypedArray(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_create_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_typed_array_api -->
 
 ``` TypeScript
 export const enum TypedArrayTypes {
@@ -633,7 +633,7 @@ export const createTypedArray: <T>(type: TypedArrayTypes) => T; // 使用Node-AP
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_typed_array -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_create_typedarray
@@ -687,7 +687,7 @@ EXTERN_C_END
 
 cpp部分代码
 
-<!-- @[napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_typed_array -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_is_typedarray
@@ -716,7 +716,7 @@ static napi_value IsTypedarray(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_is_typed_array_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_is_typed_array_api -->
 
 ``` TypeScript
 export const isTypedarray: (data: Object) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_typedarray
@@ -725,7 +725,7 @@ export const isTypedarray: (data: Object) => boolean | undefined; // 使用Node-
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_typed_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_typed_array -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_is_typedarray
@@ -749,7 +749,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_typed_array_info -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_get_typedarray_info
@@ -808,7 +808,7 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_get_typed_array_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_typed_array_info_api -->
 
 ``` TypeScript
 export const getTypedarrayInfo: <T>(typeArray: T,
@@ -818,7 +818,7 @@ export const getTypedarrayInfo: <T>(typeArray: T,
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_typed_array_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_typed_array_info -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_get_typedarray_info
@@ -851,7 +851,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_create_data_view -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_create_dataview
@@ -893,7 +893,7 @@ static napi_value CreateDataView(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_create_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_create_data_view_api -->
 
 ``` TypeScript
 export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined; // 使用Node-API接口进行array相关开发 napi_create_dataview
@@ -902,7 +902,7 @@ export const createDataView: (arraybuffer:ArrayBuffer) => DataView | undefined; 
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_create_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_create_data_view -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_create_dataview
@@ -918,7 +918,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API dataView第一个数据：%{public}
 
 cpp部分代码
 
-<!-- @[napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_is_data_view -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_is_dataview
@@ -948,7 +948,7 @@ static napi_value IsDataView(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_is_data_view_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_is_data_view_api --> 
 
 ``` TypeScript
 export const isDataView: (data: DataView | string) => boolean | undefined; // 使用Node-API接口进行array相关开发 napi_is_dataview
@@ -956,7 +956,7 @@ export const isDataView: (data: DataView | string) => boolean | undefined; // �
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_is_data_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_is_data_view -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_is_dataview
@@ -981,7 +981,7 @@ try {
 
 cpp部分代码
 
-<!-- @[napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_data_view_info -->
 
 ``` C++
 // 使用Node-API接口进行array相关开发 napi_get_dataview_info
@@ -1032,7 +1032,7 @@ static napi_value GetDataViewInfo(napi_env env, napi_callback_info info)
 
 index.d.ts
 
-<!-- @[napi_get_data_view_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_get_data_view_info_api -->
 
 ``` TypeScript
 export const getDataViewInfo: (dataView: DataView,
@@ -1042,7 +1042,7 @@ export const getDataViewInfo: (dataView: DataView,
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_data_view_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_data_view_info -->
 
 ``` TypeScript
 // 使用Node-API接口进行array相关开发 napi_get_dataview_info

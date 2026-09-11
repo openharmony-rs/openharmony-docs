@@ -21,7 +21,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 ### 添加头文件
 开发者通过引入头文件<native_audio_suite_base.h>、<native_audio_suite_engine.h>、<native_audiostreambuilder.h>和<native_audiorenderer.h>使用音频编创和音频播放相关API。
 
-<!-- @[audioSuite_RealTimeRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+<!-- @audioSuite_RealTimeRenderingInclude -->
    
 ``` C++
 #include <ohaudiosuite/native_audio_suite_base.h>
@@ -40,13 +40,13 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 **图1**：实时预览示意图
 
-   ![OHAudioSuite realtime play](figures/audiosuite-audio-separation-time.png)
+   OHAudioSuite realtime play
 
 开发者可以通过以下步骤来实现一个简单的均衡器效果节点实时预览功能。此处以均衡器效果为例演示实时预览流程，其他效果节点的详细说明请参考音频效果(C/C++)。
 
 1. 在初始化时，创建OHAudioSuite管线（包括输入节点、均衡器节点、输出节点）。
   
-   <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
+   <!-- @audioSuite_AudioDataInfo -->
    
    ``` C
    struct AudioDataInfo {
@@ -56,7 +56,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
    };
    ```
-   <!-- @[audioSuite_RealTimeRenderingInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   <!-- @audioSuite_RealTimeRenderingInputNodeWriteDataCallBack -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @[audioSuite_CreateRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   <!-- @audioSuite_CreateRealTimeRendering -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -164,7 +164,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时预览。
  
-   <!-- @[audioSuite_AudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   <!-- @audioSuite_AudioRendererOnWriteData -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -187,7 +187,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
    ```
-   <!-- @[audioSuite_StartRealTimeRenderingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   <!-- @audioSuite_StartRealTimeRenderingPipeline -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -221,7 +221,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 4. 资源销毁。
 
-   <!-- @[audioSuite_DestroyRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   <!-- @audioSuite_DestroyRealTimeRendering -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -249,5 +249,5 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 <!--RP1-->
 ## 完整示例代码
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- 音频编创示例代码
 <!--RP1End-->

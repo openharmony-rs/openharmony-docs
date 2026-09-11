@@ -21,13 +21,13 @@ API version 20开始，ArkUI开发框架新增了OH_ArkUI_RunTaskInScope接口�
 本示例展示OH_ArkUI_RunTaskInScope接口的基础使用方式，OH_ArkUI_NodeUtils_GetAttachedNodeHandleById用于获取前置实例页面内的组件，相关使用请参考OH_ArkUI_NodeUtils_GetAttachedNodeHandleById，此处userData传入的数据类型为最终要设置的组件指针，便于设置对应组件属性。
 
 
-<!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @runtaskinscopethree_start -->  
 
 ``` C++
 const uint32_t VALUE_2 = 250;
 ```
 
-<!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @runtaskinscopeone_start -->  
 
 ``` C++
 //page1
@@ -40,7 +40,7 @@ nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
 nodeAPI->addChild(textContainer, button);
 ```
 
-<!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @runtaskinscopetwo_start -->  
 
 ``` C++
 //page2

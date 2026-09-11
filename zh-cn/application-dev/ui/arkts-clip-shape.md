@@ -19,7 +19,7 @@
 ## 裁剪圆形
 
 通过设置CircleShape，将图片裁剪为圆形。
-<!-- @[ClipShapeExampleA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample1.ets) -->
+<!-- @ClipShapeExampleA -->
 
 ``` TypeScript
 // xxx.ets
@@ -48,12 +48,12 @@ struct ClipShapeExample {
 }
 ```
 
-![clip-circle](figures/clip-circle.png)
+clip-circle
 
 ## 裁剪椭圆形
 
 通过设置EllipseShape，将图片裁剪为椭圆形。
-<!-- @[ClipShapeExampleB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample2.ets) -->
+<!-- @ClipShapeExampleB -->
 
 ``` TypeScript
 // xxx.ets
@@ -80,12 +80,12 @@ struct ClipShapeExample {
 }
 ```
 
-![clip-elliptical](figures/clip-elliptical.png)
+clip-elliptical
 
 ## 裁剪矩形
 
 通过设置RectShape，将图片裁剪为矩形。
-<!-- @[ClipShapeExampleC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample3.ets) -->
+<!-- @ClipShapeExampleC -->
 
 ``` TypeScript
 // xxx.ets
@@ -112,12 +112,12 @@ struct ClipShapeExample {
 }
 ```
 
-![clip-rectangle](figures/clip-rectangle.png)
+clip-rectangle
 
 ## 裁剪不规则形状
 
 通过设置PathShape，将图片裁剪为不规则形状。
-<!-- @[ClipShapeExampleD](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample4.ets) -->
+<!-- @ClipShapeExampleD -->
 
 ``` TypeScript
 // xxx.ets
@@ -143,4 +143,4 @@ struct ClipShapeExample {
 }
 ```
 
-![clip-irregular](figures/clip-irregular.png)
+clip-irregular

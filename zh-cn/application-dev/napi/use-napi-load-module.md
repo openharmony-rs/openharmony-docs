@@ -1,7 +1,7 @@
 # 使用Node-API接口在主线程中进行模块加载
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -45,7 +45,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 - **加载系统模块**
 
-    <!-- @[napi_load_module_napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @napi_load_module_napi_init -->
     
     ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info)
@@ -89,7 +89,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
     当加载文件中的模块时，如以下ArkTS代码：
 
-    <!-- @[napi_load_module_napi_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/ets/Test.ets) -->
+    <!-- @napi_load_module_napi_test -->
     
     ``` TypeScript
     let value = 123;
@@ -101,7 +101,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 1. 需要在模块的build-profile.json5文件中进行以下配置：
 
-    <!-- @[napi_load_module_napi_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/build-profile.json5) -->  
+    <!-- @napi_load_module_napi_build -->  
     
     ``` JSON5
     "buildOption": {
@@ -125,7 +125,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 2. 使用napi_load_module加载Test文件，调用函数test以及获取变量value：
 
-    <!-- @[napi_load_module_napi_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/cpp/file.cpp) -->
+    <!-- @napi_load_module_napi_file -->
     
     ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info)

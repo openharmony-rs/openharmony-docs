@@ -31,7 +31,7 @@
 
 通常说的窗口旋转是指应用调用setPreferredOrientation()接口设置旋转策略，来改变应用在屏幕上的显示方向。更准确的说法是，应用通过旋转策略改变了屏幕的显示方向，系统通过屏幕显示方向变化，来改变屏幕上应用和系统组件（桌面、状态栏、下拉控制中心、下拉通知中心等）的显示方向和布局。这里的关键点是应用设置旋转策略后，影响的不仅是应用自身，还会影响屏幕上所有可见元素，也包括后台不可见的元素。这些元素最终通过一个旋转动画，从一个方向过渡到另外一个方向。
 
-系统提供了屏幕属性@ohos.display来获取屏幕的基本信息，其中Orientation即表示当前设备屏幕的显示方向。窗口旋转后屏幕属性对应的Orientation也会相应改变。需要注意，旋转策略的Orientation与屏幕属性的Orientation是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
+系统提供了屏幕属性@ohos.display来获取屏幕的基本信息，其中Orientation即表示当前设备屏幕的显示方向。窗口旋转后屏幕属性对应的Orientation也会相应改变。需要注意，旋转策略的Orientation与屏幕属性的Orientation是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考窗口方向。
 
 应用窗口的宽高比与屏幕属性的Orientation没有直接关系，不建议根据屏幕属性的Orientation来做窗口布局适配。屏幕属性的Orientation仅用于辅助sensor和相机的方向修正。
 
@@ -56,7 +56,7 @@
 
 ## 旋转策略及设备差异性
 
-应用可以通过在module.json5配置文件中配置"orientation"字段或者在运行时调用setPreferredOrientation()接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的orientation字段含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可以通过在module.json5配置文件中配置"orientation"字段或者在运行时调用setPreferredOrientation()接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的orientation字段含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考设置窗口的旋转策略。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
@@ -73,7 +73,7 @@
 
 > **说明：**
 > 
-> 旋转策略的Orientation与屏幕属性的Orientation是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考[窗口方向](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction)。
+> 旋转策略的Orientation与屏幕属性的Orientation是不同的概念，尤其是四个方向代表的名称都一样，代表的含义是有所区别的。区别差异请参考窗口方向。
 
 ### 自动旋转方向类型
 

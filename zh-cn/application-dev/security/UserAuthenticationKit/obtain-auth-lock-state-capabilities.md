@@ -25,7 +25,7 @@
 
 以查询PIN认证类型的认证冻结状态为例：
 
-<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @obtain_auth_lock_state_capabilities -->
 
 ``` TypeScript
 async obtainingAuthLockState() : Promise<string> {
@@ -48,4 +48,4 @@ async obtainingAuthLockState() : Promise<string> {
 
 ## 示例代码
 
-  - [查询指定认证类型的认证冻结状态](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 查询指定认证类型的认证冻结状态

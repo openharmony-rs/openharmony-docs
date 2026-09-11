@@ -29,7 +29,7 @@
 
 典型全屏应用窗口包括系统界面元素和应用界面。其中系统界面元素包含状态栏和导航区域，通常在沉浸式布局下称为避让区域，避让区域之外的区域称为安全区域。
 
-![窗口界面元素构成](figures/window-ui-elements.png)
+窗口界面元素构成
 
 ### 沉浸式布局
 
@@ -41,7 +41,7 @@
 
   可以通过isImmersiveLayout()接口判断当前窗口是否为沉浸式布局。
 
-多设备场景下不同窗口形态的沉浸式开发与实现可以参考[窗口沉浸式](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive)最佳实践。
+多设备场景下不同窗口形态的沉浸式开发与实现可以参考窗口沉浸式最佳实践。
 
 > **说明：**
 > 
@@ -55,7 +55,7 @@
   > 
   > 非自由窗口状态下，除应用子窗外的其他类型窗口在创建时默认为非沉浸式布局，子窗口创建后默认为沉浸式布局。
 
-  <!--@[HideDecorationBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/HideDecorationBar/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!--@HideDecorationBar_start -->
   
   ``` TypeScript
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -87,13 +87,13 @@
 
   | 非自由窗口的非沉浸式布局示意 | 非自由窗口的沉浸式布局示意 |
   | -------- | -------- |
-  | ![非自由窗口的非沉浸式布局](figures/non-freeform-window-non-immersive-layout.png)  | ![非自由窗口的沉浸式布局](figures/non-freeform-window-immersive-layout.png) |
+  | 非自由窗口的非沉浸式布局  | 非自由窗口的沉浸式布局 |
 
 - 自由窗口状态下，可通过setWindowDecorVisible()接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。  
 
   | 自由窗口的非沉浸式布局示意 | 自由窗口的沉浸式布局示意 |
   | -------- | -------- |
-  | ![自由窗口的非沉浸式布局](figures/freeform-window-non-immersive-layout.png) | ![自由窗口的沉浸式布局](figures/freeform-window-immersive-layout.png)  |
+  | 自由窗口的非沉浸式布局 | 自由窗口的沉浸式布局  |
 
 ### 布局避让
 
@@ -130,13 +130,13 @@ interface Rect {
 
 在避让区域的计算中，将窗口按照对角线分为四个三角形区域，当对应系统界面元素的位置（矩形中心点）落于某个方向上的三角形区域时，提供的避让区域将在对应的Rect中。如下图所示整个矩形为窗口区域，以窗口左上角为原点，水平向右为X轴正方向，垂直向下为Y轴正方向，窗口矩形的两条对角线将整个矩形划分为四个方向上的Rect区域，用以表示避让区域相对窗口的几何位置。
 
-![避让区域Rect位置示意](figures/avoid-area-rect-position.png)
+避让区域Rect位置示意
 
 其中每个Rect为(X, Y, Width, Height)构成的四元组，表示以**窗口左上角为原点**的唯一矩形区域。
 
 如下图，挖孔区域表示为 **[topRect, (x1, y1, w1, h1)]** ，底部导航区域表示为 **[bottomRect, (0, H-h2, W, h2)]** 。
 
-![避让区域计算示例](figures/avoid-area-calculation-example.png)
+避让区域计算示例
 
 
 ## 隐藏系统界面元素实现沉浸式效果
@@ -147,14 +147,14 @@ interface Rect {
 > 
 > setSpecificSystemBarEnabled()、setWindowSystemBarEnable()等控制系统界面元素显示的接口仅非自由窗口状态下的主窗口支持调用，在辅助窗口中调用或自由窗口状态下调用不生效。在主窗口非全屏/非最大化模式时调用不会立即生效，应用在进入全屏/最大化模式后配置生效。
 
-![隐藏系统界面元素前后对比](figures/hide-system-bars-immersive-comparison.png)
+隐藏系统界面元素前后对比
 
 1. 调用setWindowLayoutFullScreen()接口设置窗口进入沉浸式布局。  
 
 
 2. 调用setSpecificSystemBarEnabled()隐藏状态栏。  
 
-  <!--@[SystemBarEnabled_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SystemBarEnabled/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+  <!--@SystemBarEnabled_start --> 
   
   ``` TypeScript
   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -201,7 +201,7 @@ interface Rect {
 
      常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 
-     <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
+     <!--@ImmersiveLayout_start -->
      
      ``` TypeScript
      import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -292,7 +292,7 @@ interface Rect {
 
      当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。示例代码如下：
 
-     <!--@[ImmersiveLayoutEnv_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
+     <!--@ImmersiveLayoutEnv_start -->
      
      ``` TypeScript
      import { window } from '@kit.ArkUI';
@@ -328,7 +328,7 @@ interface Rect {
 
    - 避让使用getWindowAvoidArea接口获取到的避让区域的示例代码如下：
 
-      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
+      <!--@ImmersiveLayout_start -->
       
       ``` TypeScript
       import { window } from '@kit.ArkUI';
@@ -443,7 +443,7 @@ interface Rect {
 
     - 避让使用@Env(SystemProperties.WINDOW_AVOID_AREA)获取到的避让区域的示例代码如下：
 
-      <!--@[ImmersiveLayoutEnv3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
+      <!--@ImmersiveLayoutEnv3_start -->
       
       ``` TypeScript
        // ...
@@ -551,4 +551,4 @@ interface Rect {
 
 | 未适配沉浸式布局与避让区 | 适配沉浸式布局与避让区 |
 | -------- | -------- |
-| ![未适配沉浸式布局与避让区](figures/avoid-area-before-adaptation.png) | ![适配沉浸式布局与避让区](figures/avoid-area-after-adaptation.png)|
+| 未适配沉浸式布局与避让区 | 适配沉浸式布局与避让区|

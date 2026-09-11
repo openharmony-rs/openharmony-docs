@@ -24,7 +24,7 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
 
 1. 引入所需的模块。
 
-   <!-- @[xmlChange_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @xmlChange_import -->
    
    ``` TypeScript
    import { convertxml } from '@kit.ArkTS';
@@ -36,7 +36,7 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
    >
    > 请确保传入的XML文本符合标准格式，若包含“&”字符，请使用实体引用“\&amp;”替换。
 
-   <!-- @[xmlChange_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @xmlChange_option -->  
    
    ``` TypeScript
    let xml: string =
@@ -76,7 +76,7 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
 
 3. 调用fastConvertToJSObject函数并打印结果。
 
-   <!-- @[xmlChange_console](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlConversion/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @xmlChange_console -->  
    
    ``` TypeScript
    let conv: convertxml.ConvertXML = new convertxml.ConvertXML();

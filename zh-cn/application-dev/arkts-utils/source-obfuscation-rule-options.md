@@ -47,7 +47,7 @@
 
 配置该选项后，开启属性名称混淆，效果如下：
 
-  <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_enablePropertyObfuscation1 -->
   
   ``` TypeScript
   // 混淆前：
@@ -69,7 +69,7 @@
 
 * 在未开启`-enable-export-obfuscation`选项的情况下，被`import/export`直接导入或导出的类或对象的属性名不会被混淆。例如，下面例子中的属性名`data1`不会被混淆。
 
-  <!-- @[optionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
+  <!-- @optionExample_enablePropertyObfuscation2 -->  
   
   ``` TypeScript
   // ArkGuardAbility.ts
@@ -80,7 +80,7 @@
 
 * ArkUI组件中的属性名不会被混淆。例如，下面例子中的`message`和`data`不会被混淆。
 
-  <!-- @[etsOptionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) --> 
+  <!-- @etsOptionExample_enablePropertyObfuscation1 --> 
   
   ``` TypeScript
   // ArkGuardAbility.ets
@@ -97,7 +97,7 @@
 * SDK API列表中的属性名不会被混淆。SDK API列表是构建时从SDK中自动提取出来的一个名称列表。其缓存文件为systemApiCache.json，路径为工程目录/build/default/cache/{...}/release/obfuscation。
 * 字符串字面量属性名不会被混淆，并且与其同名的属性名也不会被混淆。例如，下面例子中的`exampleName`和`exampleAge`不会被混淆。
 
-  <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+  <!-- @optionExample_enableStringPropertyObfuscation1 -->    
   
   ``` TypeScript
   // 混淆前：
@@ -106,7 +106,7 @@
   person["exampleAge"] = 22;
   ```
   
-  <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_enablePropertyObfuscation3 -->
   
   ``` TypeScript
   let person1 = {exampleName: "aaa"};
@@ -115,7 +115,7 @@
   
 * 注解成员名不会被混淆。例如，下面例子中的`authorName`和`revision`不会被混淆。
 
-  <!-- @[etsOptionExample_enablePropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->
+  <!-- @etsOptionExample_enablePropertyObfuscation2 -->
   
   ``` TypeScript
   @interface MyAnnotation1 {
@@ -135,7 +135,7 @@
 
 根据上述配置，`exampleName`和`exampleAge`的混淆效果如下：
 
-  <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_enableStringPropertyObfuscation1 -->
   
   ``` TypeScript
   // 混淆前：
@@ -157,7 +157,7 @@
 
 2. SDK API的属性白名单中不包含声明文件中使用的字符串常量值，例如示例中的字符串'ohos.want.action.home'未包含在属性白名单中。
 
-   <!-- @[optionExample_enableStringPropertyObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) --> 
+   <!-- @optionExample_enableStringPropertyObfuscation2 --> 
    
    ``` TypeScript
    // SDK API文件@ohos.app.ability.wantConstant片段：
@@ -182,7 +182,7 @@
 
 开启顶层作用域名称混淆，效果如下：
 
-  <!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_enableToplevelObfuscation -->
   
   ``` TypeScript
   // 混淆前：
@@ -205,7 +205,7 @@
 
 开启直接导入或导出的名称混淆，效果如下：
 
-  <!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_enableExportObfuscation -->
   
   ``` TypeScript
   // 混淆前：
@@ -235,14 +235,14 @@
 
 开启文件/文件夹名称混淆，效果如下：
 
-  <!-- @[testOptionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/FilenameObfuscationTest/FilenameObfuscationTest.ts) -->        
+  <!-- @testOptionExample_enableFilenameObfuscation -->        
   
   ``` TypeScript
   // FilenameObfuscationTest/FilenameObfuscationTest.ts
   export function foo () {}
   ```
 
-  <!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+  <!-- @optionExample_enableFilenameObfuscation -->    
   
   ``` TypeScript
   // ArkGuardAbility.ts
@@ -291,7 +291,7 @@
 
 配置该选项后，所有代码会被压缩到一行。效果如下：
 
-  <!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_compact -->
   
   ``` TypeScript
   // 混淆前：
@@ -317,7 +317,7 @@
 删除编译生成的声明文件中的JSDoc注释，效果如下：
 
 混淆前：
-  <!-- @[optionExample_removeComments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_removeComments -->
   
   ``` TypeScript
   /**
@@ -341,7 +341,7 @@
 
 删除对console.*语句的调用，要求console.*语句的返回值未被使用。效果如下：
 
-  <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_removeLog1 -->
   
   ``` TypeScript
   // 混淆前：
@@ -362,14 +362,14 @@
 
 1. 文件顶层的调用。  
 
-   <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+   <!-- @optionExample_removeLog2 -->
    
    ``` TypeScript
    console.info("in tolevel");
    ```
 2. 代码块中的调用。  
 
-   <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+   <!-- @optionExample_removeLog3 -->
    
    ``` TypeScript
    function foo1() {
@@ -378,7 +378,7 @@
    ```
 3. module或namespace中的调用。  
 
-   <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+   <!-- @optionExample_removeLog4 -->    
    
    ``` TypeScript
    // ArkGuardAbility.ts
@@ -388,7 +388,7 @@
    ```
 4. switch语句中的调用。  
 
-   <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+   <!-- @optionExample_removeLog5 -->
    
    ``` TypeScript
    function getDayName(day: number): string {
@@ -468,7 +468,7 @@
 
 1. 在编译HAR模块且开启属性混淆的情况下，'enum'白名单将收集enum中的成员名称。
 
-   <!-- @[optionExample_printKeptNames1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+   <!-- @optionExample_printKeptNames1 -->
    
    ``` TypeScript
    enum Test1 {
@@ -481,7 +481,7 @@
 
 2. 在编译HAP/HSP/字节码HAR模块且开启属性混淆的情况下，当enum的成员被初始化时，'enum'白名单会收集初始化表达式中包含的变量名称。
 
-   <!-- @[optionExample_printKeptNames2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+   <!-- @optionExample_printKeptNames2 -->     
    
    ``` TypeScript
    // ArkGuardAbility.ts
@@ -616,7 +616,7 @@
     - 构造函数
     - 字段和方法
 
-    <!-- @[optionExample_useKeepInSource1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+    <!-- @optionExample_useKeepInSource1 -->    
     
     ``` TypeScript
     // 保留类名和所有成员名
@@ -652,7 +652,7 @@
     - 接口声明
     - 字段和方法
 
-    <!-- @[optionExample_useKeepInSource2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+    <!-- @optionExample_useKeepInSource2 -->    
     
     ``` TypeScript
     // 保留接口名和所有成员名，MyInterface01，name01，foo01不会被混淆
@@ -677,7 +677,7 @@
     - 枚举声明
     - 枚举成员
 
-    <!-- @[optionExample_useKeepInSource3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+    <!-- @optionExample_useKeepInSource3 -->    
     
     ``` TypeScript
     // 保留枚举名和所有成员名，Color01，RED01，BLUE01不会被混淆
@@ -699,7 +699,7 @@
 
     支持对函数名进行标记。
 
-    <!-- @[optionExample_useKeepInSource4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+    <!-- @optionExample_useKeepInSource4 -->    
     
     ``` TypeScript
     // 保留函数名，MyAdd不会被混淆
@@ -713,7 +713,7 @@
 
     支持对命名空间名称进行标记。
 
-    <!-- @[optionExample_useKeepInSource5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+    <!-- @optionExample_useKeepInSource5 -->    
     
     ``` TypeScript
     // 保留命名空间名以及内部直接导出的成员名称，MyNameSpace以及foo不会被混淆
@@ -728,7 +728,7 @@
 
     支持全局变量的标记，不支持局部变量。
 
-    <!-- @[optionExample_useKeepInSource6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+    <!-- @optionExample_useKeepInSource6 -->     
     
     ``` TypeScript
     // 保留被标记的变量名，myVal不会被混淆
@@ -742,7 +742,7 @@
 
     从API version 20开始，支持标记注解声明。
 
-    <!-- @[etsOptionExample_useKeepInSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->    
+    <!-- @etsOptionExample_useKeepInSource -->    
     
     ``` TypeScript
     // 保留被标记的注解声明，MyAnnotation不会被混淆
@@ -767,7 +767,7 @@
 
 * 局部变量名不会被添加到白名单（不会被保留）。
 
-  <!-- @[optionExample_useKeepInSource7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @optionExample_useKeepInSource7 -->
   
   ``` TypeScript
   // @KeepAsConsumer
@@ -782,7 +782,7 @@
 
 不支持字符串属性、数字属性以及计算属性。
 
-<!-- @[optionExample_useKeepInSource8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+<!-- @optionExample_useKeepInSource8 -->    
 
 ``` TypeScript
 // ArkGuardAbility.ts

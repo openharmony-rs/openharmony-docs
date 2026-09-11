@@ -16,7 +16,7 @@
 
 使用class关键字定义类，在花括号内声明属性、构造函数和方法。
 
-<!-- @[class_basic_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @class_basic_definition -->
 
 ``` TypeScript
 // 基本类定义
@@ -56,7 +56,7 @@ processPerson(person);
 
 属性存储状态，构造函数初始化属性，方法封装行为，三者协同构成类的核心结构。
 
-<!-- @[class_properties_methods_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @class_properties_methods_constructor -->
 
 ``` TypeScript
 class User {
@@ -100,7 +100,7 @@ console.info(`${user.getInfo()}`);
 
 存储属性分为实例属性（每个实例独立持有）和静态属性（所有实例共享，通过类名访问）。
 
-<!-- @[static_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @static_properties -->
 
 ``` TypeScript
 class Counter {
@@ -142,7 +142,7 @@ console.info(`${counter2.count.toString()}`);  // 0
 
 public、private、protected控制类成员在类外和子类中的可见性。
 
-<!-- @[ts_access_modifiers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_access_modifiers -->
 
 ``` TypeScript
 class BankAccount {
@@ -198,7 +198,7 @@ console.info(`${account.getBalance()}`);  // 100
 
 readonly关键字声明的属性只能在声明处或构造函数中赋值，此后不可修改。
 
-<!-- @[ts_readonly_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_readonly_properties -->
 
 ``` TypeScript
 class Configuration {
@@ -243,7 +243,7 @@ class Constants {
 
 实例方法通过this访问实例属性，通过对象实例调用。
 
-<!-- @[instance_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @instance_methods -->
 
 ``` TypeScript
 class Calculator {
@@ -313,7 +313,7 @@ console.info(`${result}`);  // 'Hello World'
 
 static关键字声明的方法属于类本身，通过类名调用，无需实例化。
 
-<!-- @[ts_static_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_static_methods -->
 
 ``` TypeScript
 class MathUtils {
@@ -363,7 +363,7 @@ class StaticExample {
 
 方法重载为同一方法名提供多个类型签名，根据传入参数类型分发对应实现。ArkTS的重载采用多个重载签名加一个实现签名的形式：重载签名仅在编译期生效用于类型检查，实现签名对外不可见，调用方只能使用已声明的重载签名；实现签名须兼容所有重载签名，在函数体内通过`typeof`等运行时检查区分不同参数类型的逻辑。
 
-<!-- @[method_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @method_overloading -->
 
 ``` TypeScript
 class DataProcessor {
@@ -405,7 +405,7 @@ console.info(`${processor.format(3.14159, 2)}`);    // '3.14'
 
 ArkTS类只能有一个构造函数实现体，但支持声明多个重载签名（与方法重载同理）。实际开发中常通过可选参数或静态工厂方法提供多种创建方式。
 
-<!-- @[constructor_optional_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @constructor_optional_params -->
 
 ``` TypeScript
 class OptionalCtorPoint {
@@ -429,7 +429,7 @@ let ctorPoint3: OptionalCtorPoint = OptionalCtorPoint.create(5);
 
 除了可选参数，静态工厂方法是另一种提供多种创建方式的常见模式，它通过命名方法表达不同的构造意图。
 
-<!-- @[static_factory_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @static_factory_methods -->
 
 ``` TypeScript
 class ColorValue {
@@ -481,7 +481,7 @@ let cvColor3: ColorValue = ColorValue.fromName('red');
 
 可选属性（?）可能为undefined，使用前需检查或提供默认值。
 
-<!-- @[optional_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @optional_properties -->
 
 ``` TypeScript
 class UserProfile {
@@ -534,7 +534,7 @@ console.info(`${bio}`);  // undefined
 
 public、private、protected、readonly可单独或组合使用，分别控制类内、子类和类外的可见性与可写性。
 
-<!-- @[ts_access_modifiers_summary](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_access_modifiers_summary -->
 
 ``` TypeScript
 class Example {
@@ -593,7 +593,7 @@ example.readonlyProperty = 'new';  // 编译错误
 
 public在类内、子类和类外均可见；private仅在类内可见；protected在类内及子类可见，类外不可见。
 
-<!-- @[ts_access_modifiers_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_access_modifiers_inheritance -->
 
 ``` TypeScript
 class Base {
@@ -632,7 +632,7 @@ console.info(`${derived.publicValue}`);  // 1（public可访问）
 
 属性默认private，通过public的getter/setter控制外部访问。
 
-<!-- @[encapsulation_practice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @encapsulation_practice -->
 
 ``` TypeScript
 // 封装内部状态，公开接口
@@ -716,7 +716,7 @@ class Configuration {
 
 使用extends关键字让子类继承父类的属性和方法。
 
-<!-- @[inheritance_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @inheritance_chain -->
 
 ``` TypeScript
 class Shape {
@@ -775,7 +775,7 @@ chainRect.draw();
 
 子类重新定义父类方法实现多态。`override`关键字标记被重写的方法，使编译器在父类方法被重命名或删除时发出错误提示，避免重写方法与父类方法意外脱钩。ArkTS中`override`为可选关键字，推荐在重写父类方法时显式标注`override`，以便编译器检查父类是否存在同名方法。
 
-<!-- @[method_override](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @method_override -->
 
 ``` TypeScript
 class Base {
@@ -829,7 +829,7 @@ class FileLogger extends Logger {
 
 子类构造函数中`super()`必须是第一条语句，方法中通过`super.method()`调用父类实现。
 
-<!-- @[super_keyword](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @super_keyword -->
 
 ``` TypeScript
 class Parent {
@@ -893,7 +893,7 @@ ArkTS只支持单继承，一个子类只能extends一个父类。
 
 **错误示例**
 
-<!-- @[ts_single_inheritance_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_single_inheritance_limitation -->
 
 ``` TypeScript
 // TypeScript/ArkTS只支持单继承
@@ -910,7 +910,7 @@ class CMulti extends A, B {}  // 编译错误：不支持多继承
 
 虽然不支持多继承，但一个类可以实现多个接口，从而组合多种行为契约。
 
-<!-- @[interface_multi_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @interface_multi_implementation -->
 
 ``` TypeScript
 interface MultiIA {
@@ -929,7 +929,7 @@ class MultiC implements MultiIA, MultiIB {
 
 当需要复用多个类的实现逻辑时，可将它们合并到一个基类中，再通过单继承派生子类。
 
-<!-- @[single_inheritance_combination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @single_inheritance_combination -->
 
 ``` TypeScript
 class CombinedBase {
@@ -962,7 +962,7 @@ siObj.cMethod();
 
 类实例赋值和传参传递的是引用，修改任一变量指向的对象会影响所有引用；深拷贝需手动实现。
 
-<!-- @[object_reference_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @object_reference_copy -->
 
 ``` TypeScript
 class CopyPerson {
@@ -1014,7 +1014,7 @@ let user2: CopyUser = user1.copy();
 
 ===比较两个引用是否指向同一对象，不比较内容是否相同。
 
-<!-- @[object_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @object_comparison -->
 
 ``` TypeScript
 class Point {
@@ -1061,7 +1061,7 @@ console.info(`${pe1.equals(pe2)}`);  // true
 
 类适合封装数据连同其操作行为、且需要复用与继承的场景；接口适合仅描述数据结构形状；对象字面量适合一次性、简单的数据组织。
 
-<!-- @[class_vs_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @class_vs_interface -->
 
 ``` TypeScript
 // 使用类：需要封装数据和行为的场景
@@ -1118,7 +1118,7 @@ prototype对象存放所有实例共享的方法。ArkTS通过`class extends`自
 
 **TypeScript对照**
 
-<!-- @[ts_prototype_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_prototype_methods -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS不支持prototype赋值
@@ -1150,7 +1150,7 @@ console.info(`${protoVehicle.getInfo()}`); // Toyota - 60km/h
 
 访问实例成员时，引擎沿原型链从实例自身逐级向上查找：先在自身定义中匹配，未命中则依次查找父类、祖父类，直至命中为止；子类同名成员会覆盖父类成员。
 
-<!-- @[prototype_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @prototype_chain -->
 
 ``` TypeScript
 class PcGrandParent {
@@ -1200,7 +1200,7 @@ pcChild2.method();
 
 类继承在底层通过原型链实现，`instanceof`检查沿原型链逐级匹配。
 
-<!-- @[prototype_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @prototype_inheritance -->
 
 ``` TypeScript
 // 类继承本质是原型继承
@@ -1240,7 +1240,7 @@ console.info(`${(protoDerived instanceof Object).toString()}`);   // true
 
 将辅助类与主类放在同一模块中并列声明，通过命名体现归属关系。
 
-<!-- @[nested_type_grouping](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @nested_type_grouping -->
 
 ``` TypeScript
 class ProcessorResult {
@@ -1275,7 +1275,7 @@ console.info(`${ntResult.isSuccess()}`); // true
 
 辅助类需要访问外部类的实例数据时，通过构造函数传入引用。
 
-<!-- @[nested_type_external_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @nested_type_external_instance -->
 
 ``` TypeScript
 class GroupSnapshot {
@@ -1312,7 +1312,7 @@ ArkTS支持类装饰器、方法装饰器、访问器装饰器、属性装饰器
 
 类装饰器通过函数修饰类声明，在类创建时执行装饰逻辑。
 
-<!-- @[class_decorator_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @class_decorator_usage -->
 
 ``` TypeScript
 function logged(constructor: Function): void {
@@ -1332,7 +1332,7 @@ let decoService: DecoService = new DecoService();
 
 装饰器工厂返回一个装饰器函数，可接收参数进行配置。
 
-<!-- @[decorator_factory_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @decorator_factory_usage -->
 
 ``` TypeScript
 function format(prefix: string): (constructor: Function) => void {
@@ -1354,7 +1354,7 @@ let decoFactoryService: DecoFactoryService = new DecoFactoryService();
 
 方法装饰器接收`target`、`propertyKey`和`descriptor`三个参数，可读取或修改方法描述符。
 
-<!-- @[method_decorator_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @method_decorator_usage -->
 
 ``` TypeScript
 function logMethod(target: Object, propertyKey: string, descriptor: PropertyDescriptor): void {
@@ -1376,7 +1376,7 @@ console.info(`${decoCalc.add(1, 2)}`); // 3
 
 访问器装饰器用于修饰`get`/`set`访问器，参数与方法装饰器相同。
 
-<!-- @[accessor_decorator_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @accessor_decorator_usage -->
 
 ``` TypeScript
 function logAccessor(target: Object, propertyKey: string, descriptor: PropertyDescriptor): void {
@@ -1405,7 +1405,7 @@ console.info(`${decoCounter.count}`); // 5
 
 属性装饰器接收`target`和`propertyKey`两个参数，常用于标记或注入。
 
-<!-- @[property_decorator_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @property_decorator_usage -->
 
 ``` TypeScript
 function logProperty(target: Object, propertyKey: string): void {
@@ -1425,7 +1425,7 @@ console.info(`${decoConfig.name}`); // default
 
 参数装饰器接收`target`、`propertyKey`和`parameterIndex`三个参数，常用于参数验证标记。
 
-<!-- @[parameter_decorator_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @parameter_decorator_usage -->
 
 ``` TypeScript
 function logParam(target: Object, propertyKey: string, parameterIndex: number): void {
@@ -1446,7 +1446,7 @@ console.info(`${decoProc.process('hello')}`); // HELLO
 
 装饰器之外的另一种选择是通过基类继承（在父类构造函数或方法中注入日志等逻辑）或组合（持有一个功能对象并委托调用）实现横切逻辑。
 
-<!-- @[base_class_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @base_class_pattern -->
 
 ``` TypeScript
 class LoggedBase {
@@ -1481,7 +1481,7 @@ console.info(`${service.getData()}`);
 
 通过get/set访问器实现属性变更监听：将真实字段设为private，在setter中加入校验或副作用逻辑。
 
-<!-- @[observable_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @observable_property -->
 
 ``` TypeScript
 class ObservableCounter {
@@ -1511,7 +1511,7 @@ TypeScript支持`#`前缀的私有字段，提供运行时也私有的成员。�
 
 **TypeScript对照**
 
-<!-- @[ts_private_fields](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_private_fields -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中使用private修饰符替代
@@ -1527,7 +1527,7 @@ class TsDog {
 
 ArkTS中使用`private`修饰符。
 
-<!-- @[private_field_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @private_field_alternative -->
 
 ``` TypeScript
 class PrivateFieldDog {
@@ -1555,7 +1555,7 @@ console.info(`${pfDog.getBarkCount().toString()}`);  // 2
 
 TypeScript中`this`的值取决于函数调用方式。将类方法赋值给变量后调用，`this`可能丢失绑定。
 
-<!-- @[runtime_this_issue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @runtime_this_issue -->
 
 ``` TypeScript
 class ThisExample {
@@ -1577,7 +1577,7 @@ let thisG = thisEx.getName;
 
 **TypeScript对照**
 
-<!-- @[ts_runtime_this_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_runtime_this_error -->
 
 ``` TypeScript
 // TypeScript对照写法，演示this丢失的运行时错误
@@ -1598,7 +1598,7 @@ tsThisG();  // 运行时错误：Cannot read property 'name' of undefined
 
 使用箭头函数属性绑定`this`，在创建时固定`this`指向。
 
-<!-- @[arrow_function_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @arrow_function_this -->
 
 ``` TypeScript
 class ArrowThisHandler {
@@ -1620,7 +1620,7 @@ arrowH();  // handler（this正确绑定）
 
 方法可声明`this`参数，静态强制调用上下文的类型。编译时擦除，不影响运行时。
 
-<!-- @[this_parameter_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @this_parameter_usage -->
 
 ``` TypeScript
 class ThisCounter {
@@ -1641,7 +1641,7 @@ console.info(`${thisCounter.count}`); // 1
 
 **TypeScript对照**
 
-<!-- @[ts_constructor_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_constructor_signature -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中直接使用类名
@@ -1656,7 +1656,7 @@ class TsCtorPoint {
 type TsCtorPointInstance = InstanceType<typeof TsCtorPoint>;
 ```
 
-<!-- @[ctor_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @ctor_signature_alternative -->
 
 ``` TypeScript
 class CtorPoint {
@@ -1682,7 +1682,7 @@ console.info(`${ctorP.x.toString()}`);  // 8
 
 静态块（`static { }`）在类加载时执行一次，适合封装需要错误处理的静态初始化逻辑，可直接访问私有静态字段。
 
-<!-- @[static_block](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @static_block -->
 
 ``` TypeScript
 class TsStaticConfig {
@@ -1701,7 +1701,7 @@ class TsStaticConfig {
 
 也可以使用静态方法实现相同的初始化逻辑，通过显式调用控制初始化时机：
 
-<!-- @[static_block_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @static_block_alternative -->
 
 ``` TypeScript
 class StaticBlockConfig {
@@ -1737,7 +1737,7 @@ TypeScript中类之间的类型兼容性基于结构类型（鸭子类型），�
 
 **TypeScript对照**
 
-<!-- @[ts_structural_typing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_structural_typing -->
 
 ``` TypeScript
 // TypeScript结构类型，ArkTS不支持
@@ -1761,7 +1761,7 @@ console.info(`${tsRelP1.x}`);
 
 **TypeScript对照**
 
-<!-- @[ts_structural_subtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_structural_subtype -->
 
 ``` TypeScript
 // TypeScript结构子类型，ArkTS不支持
@@ -1789,7 +1789,7 @@ ArkTS中需要显式继承才能实现类之间的赋值兼容。空类没有成
 
 **TypeScript对照**
 
-<!-- @[ts_this_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_this_type -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS不支持this作为返回类型
@@ -1813,7 +1813,7 @@ console.info(`${tsResult}`); // Hello, World
 
 ArkTS替代方式：使用显式类名作为返回类型实现链式调用。
 
-<!-- @[string_builder_explicit_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @string_builder_explicit_return -->
 
 ``` TypeScript
 class StringBuilder {
@@ -1842,7 +1842,7 @@ console.info(`${sbResult}`); // Hello, World
 
 TypeScript支持在构造函数参数前添加访问修饰符（`public`、`private`、`protected`、`readonly`），编译器自动声明并赋值对应属性。**ArkTS不支持参数属性语法**。
 
-<!-- @[ts_parameter_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_parameter_properties -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS不支持构造函数参数属性
@@ -1856,7 +1856,7 @@ console.info(`${tsPt.x}, ${tsPt.y}`); // 3, 4
 
 ArkTS替代方式：显式声明属性并在构造函数中赋值。
 
-<!-- @[explicit_property_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @explicit_property_declaration -->
 
 ``` TypeScript
 class ExplicitPoint {
@@ -1879,7 +1879,7 @@ TypeScript支持类表达式，将类赋值给变量，可省略类名，也支�
 
 **TypeScript对照**
 
-<!-- @[ts_class_expression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_class_expression -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS不支持类表达式
@@ -1896,7 +1896,7 @@ console.info(`${tsInstance.content}`); // hello
 
 ArkTS替代：使用类声明。
 
-<!-- @[class_declaration_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @class_declaration_alternative -->
 
 ``` TypeScript
 class DeclaredClass<T> {
@@ -1919,7 +1919,7 @@ Mixin模式通过函数组合多个类的行为，在不支持多继承的语言
 
 **TypeScript对照**
 
-<!-- @[ts_mixins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Classes.ts) -->
+<!-- @ts_mixins -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS不支持Mixin模式
@@ -1942,7 +1942,7 @@ console.info(`${tsWidget.scope}`); // local
 
 通过组合（在一个类中持有其他类的实例）实现类似效果，比继承更灵活。
 
-<!-- @[mixin_composition_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @mixin_composition_alternative -->
 
 ``` TypeScript
 interface MixinLoggable {
@@ -1975,7 +1975,7 @@ mixinService.processData('test'); // [LOG] Processing: test
 
 通过定义接口并让类实现多个接口，组合多种行为。
 
-<!-- @[mixin_interface_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Classes.ets) -->
+<!-- @mixin_interface_alternative -->
 
 ``` TypeScript
 interface MixinDisposable {

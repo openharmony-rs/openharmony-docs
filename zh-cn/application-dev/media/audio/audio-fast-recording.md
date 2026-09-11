@@ -17,7 +17,7 @@
 
 ## 开发指导
 
-  以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC)。
+  以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ### 简介
 
@@ -31,7 +31,7 @@
 
 设置低时延模式开发示例：
 
-<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @latencyMode_Capture -->
 
 ``` C++
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
@@ -40,7 +40,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 针对OHAudio开发音频录制，有以下相关实例可供参考：
 
-- [OHAudio录制和播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio)。
+- OHAudio录制和播放。
 
 ## 注意事项
 
@@ -70,7 +70,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 设置数据回调函数示例：
 
-<!-- @[SetCapturerReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @SetCapturerReadDataCallback -->
 
 ``` C++
 int32_t MyOnReadData_Legacy(

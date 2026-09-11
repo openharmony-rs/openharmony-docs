@@ -13,7 +13,7 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 ## 业务流程
 
-![zh-cn_image_0000002227937601](figures/zh-cn_image_0000002227937601.png)
+zh-cn_image_0000002227937601
 
 1. 玩家启动游戏。
 

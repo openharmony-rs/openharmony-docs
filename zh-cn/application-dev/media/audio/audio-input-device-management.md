@@ -8,13 +8,13 @@
 
 本模块提供音频输入设备管理能力，包括查询输入设备信息、监听设备连接状态变化等。具体API说明可参考文档AudioRoutingManager。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ## 创建AudioRoutingManager实例
 
 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。
 
-<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
+<!-- @getRoutingManager -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -40,7 +40,7 @@ let audioRoutingManager = audioManager.getRoutingManager();
 
 使用getDevices方法可以获取当前所有输入设备的信息。
 
-<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
+<!-- @getDevices -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -61,7 +61,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
 
-<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->  
+<!-- @onDeviceChange -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';

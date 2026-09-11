@@ -27,8 +27,8 @@
 
 | 采集流程 | 触发条件 | 采集日志格式 | 前提条件与限制 |
 | -------- | -------- | -------- | -------- |
-| 堆栈采集 | 150ms &lt; 主线程处理时长 &lt; 450ms | 文件名格式：MAIN_THREAD_JANK_秒级时间_进程PID.txt。<br/>例如：MAIN_THREAD_JANK_20240613211739_40986.txt。| - **应用启动10s内不进行检测。** <br/> - **关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section0736139111917)：应用在一个生命周期内，一天最多触发一次主线程超时事件堆栈采集流程。** <br/> - **启用[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)：应用在一个生命周期内，一小时最多触发一次主线程超时事件采集堆栈采集流程。** |
-| trace采集 | 主线程处理时长 > 450ms | 文件名格式：MAIN_THREAD_JANK_unix时间戳_进程PID.trace。<br/>例如：MAIN_THREAD_JANK_1762064185461_40986.trace。| - 触发trace采集的前提：**开发者使用nolog版本，并且关闭[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)**。<br/> - **应用一天内，最多触发一次主线程超时事件trace采集流程。** |
+| 堆栈采集 | 150ms &lt; 主线程处理时长 &lt; 450ms | 文件名格式：MAIN_THREAD_JANK_秒级时间_进程PID.txt。<br/>例如：MAIN_THREAD_JANK_20240613211739_40986.txt。| - **应用启动10s内不进行检测。** <br/> - **关闭开发者选项：应用在一个生命周期内，一天最多触发一次主线程超时事件堆栈采集流程。** <br/> - **启用开发者选项：应用在一个生命周期内，一小时最多触发一次主线程超时事件采集堆栈采集流程。** |
+| trace采集 | 主线程处理时长 > 450ms | 文件名格式：MAIN_THREAD_JANK_unix时间戳_进程PID.trace。<br/>例如：MAIN_THREAD_JANK_1762064185461_40986.trace。| - 触发trace采集的前提：**开发者使用nolog版本，并且关闭开发者选项**。<br/> - **应用一天内，最多触发一次主线程超时事件trace采集流程。** |
 
 > **注意：**
 >
@@ -42,15 +42,15 @@
 
    （1）第1轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集，每隔150ms采集1次堆栈，共采集10次堆栈，第11轮收集堆栈并上报事件，结束检测。
 
-   ![sample_stack_1](figures/sample_stack_1.png)
+   sample_stack_1
 
    （2）第1轮未检测到主线程处理超时（主线程处理时长 > 150ms），第2轮检测到主线程处理超时（主线程处理时长 > 150ms），开始执行堆栈采集流程，每隔150ms采集1次，共采集10次堆栈，第12轮收集堆栈并上报事件，结束检测。
 
-   ![sample_stack_2](figures/sample_stack_2.png)
+   sample_stack_2
 
    （3）前2轮均未检测到主线程处理超时（主线程处理时长 > 150ms），结束检测。
 
-   ![sample_stack_3](figures/sample_stack_3.png)
+   sample_stack_3
 
 2. trace采集流程
 
@@ -58,11 +58,11 @@
 
    （1）20轮均未检测到主线程处理超时（主线程处理时长 > 150ms），无trace文件生成，结束检测。
 
-   ![dump-trace1](figures/dump-trace1.PNG)
+   dump-trace1
 
    （2）20轮检测至少有一轮检测发生主线程处理超时（主线程处理时长 > 150ms），生成trace文件并上报事件，结束检测。
 
-   ![dump-trace1](figures/dump-trace2.PNG)
+   dump-trace1
 
 ### 日志获取
 
@@ -138,9 +138,9 @@ HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参
 
 3. 主线程超时检测采集trace规格
 
-   trace文件大小约为1-5M左右。trace文件可以通过[HiSmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
+   trace文件大小约为1-5M左右。trace文件可以通过HiSmartPerf工具进行可视化分析。工具下载链接：developtools_smartperf_host官方发行版。
 
-   trace文件说明参考：[web端加载trace说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md)。
+   trace文件说明参考：web端加载trace说明。
 
 ### 日志采集限制说明
 
@@ -185,7 +185,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参
 
 检测原理如下图：
 
-![task-execution-timeout-principle](figures/task-execution-timeout-principle.png)
+task-execution-timeout-principle
 
 ### 日志获取
 

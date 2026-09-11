@@ -48,6 +48,6 @@ Data Protection Kit旨在为企业数据安全场景提供系统级的数据保�
 
 DLP架构分为面向企业安全应用和面向通用办公应用，如下图所示。
 
-![](figures/architecture-overview.png)
+
 
 <!--RP1--><!--RP1End-->

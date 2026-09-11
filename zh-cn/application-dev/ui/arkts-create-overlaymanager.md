@@ -8,7 +8,7 @@
 
 浮层（OverlayManager）用于在页面（Page）之上展示自定义的UI内容，位于Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等组件之下，展示范围为当前窗口的安全区内，适用于常驻悬浮等场景。
 
-![image](figures/overlayManager.png)
+image
 
 可以通过使用UIContext中的getOverlayManager方法获取当前UI上下文关联的OverlayManager对象，再通过该对象调用对应方法。
 
@@ -25,7 +25,7 @@
 
 在OverlayManager上新增指定节点（addComponentContent）、删除指定节点（removeComponentContent）、显示所有节点（showAllComponentContents）和隐藏所有节点（hideAllComponentContents）。
 
-<!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->
+<!-- @OverlayManager_Demo -->
 
 ``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
@@ -141,11 +141,11 @@ export struct OverlayManagerComponent {
   }
 }
 ```
-![overlayManager-demo1](figures/overlaymanager-demo_1.gif)
+overlayManager-demo1
 
 显示一个始终在屏幕左侧的悬浮球，点击可以弹出alertDialog弹窗。
 
-<!-- @[OverlayManager_Demo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerAlertDialog.ets) -->
+<!-- @OverlayManager_Demo2 -->
 
 ``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
@@ -215,11 +215,11 @@ export struct OverlayManagerAlertDialog {
   }
 }
 ```
-![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
+overlayManager-demo2
 
 从API version 18开始，可以利用OverlayManager对象在指定层级上新增指定节点（addComponentContentWithOrder），层次高的浮层会覆盖在层级低的浮层之上。
 
-<!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->
+<!-- @OverlayManager_Demo3 -->
 
 ``` TypeScript
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
@@ -316,11 +316,11 @@ export struct OverlayManagerWithOrder {
   }
 }
 ```
-![overlayManager-demo3](figures/overlaymanager-demo_3.gif)
+overlayManager-demo3
 
 从API版本26.0.0开始，可通过设置OverlayManagerOptions中的onBackPress回调拦截Overlay的侧滑返回事件。当enableBackPressedEvent设置为true并注册onBackPress回调时，侧滑返回事件不会自动关闭Overlay，而是调用该回调由开发者决定是否拦截：返回true表示拦截该事件（事件被消费，不会向下层传递），返回false表示事件向下层组件透传。该回调需在调用getOverlayManager之前通过setOverlayManagerOptions设置。
 
-<!-- @[OverlayManager_Demo4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerOnBackPress.ets) -->
+<!-- @OverlayManager_Demo4 -->
 
 ``` TypeScript
 import { ComponentContent, OverlayManagerOptions } from '@kit.ArkUI'
@@ -490,4 +490,4 @@ export struct OverlayManagerOnBackPress {
   }
 }
 ```
-![overlayManager-demo4](figures/overlaymanager-demo-4.png)
+overlayManager-demo4

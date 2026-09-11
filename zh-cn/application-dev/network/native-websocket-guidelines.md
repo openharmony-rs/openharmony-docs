@@ -53,7 +53,7 @@ libnet_websocket.so
 
 1、在源文件中编写调用该API的代码，接受ArkTS传递过来的url字符串参数，创建WebSocket对象指针后，检查连接到服务器是否成功。
 
-<!-- @[websocket_build_project](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @websocket_build_project -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -199,7 +199,7 @@ ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返
 
 2、将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。
 
-<!-- @[websocket_extern_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @websocket_extern_c -->
 
 ``` C++
 EXTERN_C_START
@@ -218,7 +218,7 @@ EXTERN_C_END
 
 3、将上一步中初始化成功的对象通过`RegisterEntryModule`函数，使用`napi_module_register`函数将模块注册到 Node.js 中。
 
-<!-- @[websocket_napi_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @websocket_napi_module -->
 
 ``` C++
 static napi_module demoModule = {
@@ -236,7 +236,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 
 4、在工程的index.d.ts文件中定义函数的类型。比如，Connect函数接受一个string参数作为入参，并返回boolean值指示WebSocket连接是否能成功建立。
 
-<!-- @[websocket_defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @websocket_defining_function_types -->
 
 ``` TypeScript
 export const Connect: (url: string) => boolean;
@@ -246,7 +246,7 @@ export const Close: () => number;
 
 5、在index.ets文件中对上述封装好的接口进行调用。
 
-<!-- @[WebSocket_C_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets) -->
+<!-- @WebSocket_C_full_example -->
 
 ``` TypeScript
 import testWebsocket from 'libentry.so';
@@ -347,7 +347,7 @@ struct Index {
 
 注意：如图所示，在`add_library`中的`entry`是工程自动生成的`modename`，若要做修改，需和步骤3中`.nm_modname`保持一致。
 
-![netmanager-4.png](./figures/websocket-notemod.png)
+netmanager-4.png
 
 7、调用WebSocket C API接口要求应用拥有`ohos.permission.INTERNET`权限，在`module.json5`中的`requestPermissions`项添加该权限。
 
@@ -359,7 +359,7 @@ struct Index {
 
 2、运行工程，设备上会弹出以下图片所示界面：
 
-![demo初始画面](./figures/websocket-demo-1.jpg)
+demo初始画面
 
 简要说明：
 
@@ -371,12 +371,12 @@ struct Index {
 
 - 点击`Close`按钮，WebSocket连接释放，可以重新输入新的WebSocket URL。
 
-![demo输入界面](./figures/websocket-demo-2.jpg)
+demo输入界面
 
-![demo日志输出](./figures/websocket-demo-log.png)
+demo日志输出
 
 ## 相关实例
 
 针对WebSocket连接的开发，有以下相关实例可供参考：
 
-- [WebSocket连接（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C)
+- WebSocket连接（C/C++）

@@ -51,10 +51,10 @@
 
 图示如下：
 
-![freezeInPage](./figures/freezeInPage.png)
+freezeInPage
 
 页面1：
-<!-- @[arkts_custom_components_freeze1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Page1.ets) -->
+<!-- @arkts_custom_components_freeze1 -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -93,7 +93,7 @@ struct PageOne {
 ```
 
 页面2：
-<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) --> 
+<!-- @arkts_custom_components_freeze2 --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -145,8 +145,8 @@ struct PageTwo {
 
 图示如下：
 
-![freezeWithTab](./figures/freezewithTabs.png)
-<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) --> 
+freezeWithTab
+<!-- @arkts_custom_components_freeze3 --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -209,13 +209,13 @@ struct FreezeChild {
 
 3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
 
-![TabContent.gif](figures/TabContent.gif)
+TabContent.gif
 
 
 ### LazyForEach
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
-<!-- @[arkts_custom_components_freeze4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets) --> 
+<!-- @arkts_custom_components_freeze4 --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -368,14 +368,14 @@ struct FreezeChild {
 
 3.再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
 
-![FrezzeLazyforEach.gif](figures/FrezzeLazyforEach.gif)
+FrezzeLazyforEach.gif
 
 ### Navigation
 
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Watch回调进行刷新。
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
-<!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) --> 
+<!-- @arkts_custom_components_freeze5 --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -589,7 +589,7 @@ struct NavigationContentMsgStack {
 
 10.再次点击`Back Page`回到初始页，此时，无任何触发。
 
-![navigation-freeze.gif](figures/navigation-freeze.gif)
+navigation-freeze.gif
 
 ### 组件复用
 
@@ -598,7 +598,7 @@ struct NavigationContentMsgStack {
 **组件复用、if和组件冻结混用场景**
 
 下面是组件复用、if组件和组件冻结混合使用场景的例子，if组件绑定的状态变量变化成false时，触发子组件`ChildComponent`的下树，由于`ChildComponent`被标记了组件复用，所以不会被销毁，而是进入复用池，这个时候如果同时开启了组件冻结，则可以使在复用池里不再刷新。
-<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) --> 
+<!-- @arkts_custom_components_freeze6 --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -675,7 +675,7 @@ struct Page {
 **LazyForEach、组件复用和组件冻结混用场景**
 
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了reuseId，或者为了保证滑动性能设置了较大的cachedCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
-<!-- @[arkts_custom_components_freeze7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse1.ets) -->
+<!-- @arkts_custom_components_freeze7 -->
 
 ``` TypeScript
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -845,18 +845,18 @@ struct Page {
 
 图示如下：
 
-![freeze](./figures/freezeReusable.png)
+freeze
 
 可通过trace观察，仅触发了15个`ChildComponent`节点的刷新。
 
-![freeze](./figures/traceWithFreeze.png)
+freeze
 
 **LazyForEach、if、组件复用和组件冻结混用场景**
 
 下面的场景中展示了LazyForEach、if、组件复用和组件冻结混用场景。在同一个父自定义组件下，可复用的节点可能通过不同的方式进入复用池，比如：
 - 通过滑动从LazyForEach的缓存区域下树，进入复用池。
 - if条件切换通知子节点下树，进入复用池。
-<!-- @[arkts_custom_components_freeze8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse2.ets) -->
+<!-- @arkts_custom_components_freeze8 -->
 
 ``` TypeScript
 import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -1035,11 +1035,11 @@ struct Page {
 
 开启组件冻结trace：
 
-![traceWithFreezeLazyForeachAndIf](./figures/traceWithFreezeLazyForeachAndIf.png)
+traceWithFreezeLazyForeachAndIf
 
 没有开启组件冻结trace：
 
-![traceWithFreezeLazyForeachAndIf](./figures/traceWithLazyForeachAndIf.png)
+traceWithFreezeLazyForeachAndIf
 
 ### 组件混用
 
@@ -1048,7 +1048,7 @@ struct Page {
 **Navigation和TabContent的混用**
 
 代码示例如下：
-<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) --> 
+<!-- @arkts_custom_components_freeze9 --> 
 
 ``` TypeScript
 // index.ets
@@ -1225,34 +1225,34 @@ struct PageTwoStack {
 
 代码运行结果图如下：
 
-![freeze](figures/freeze_tabcontent.gif)
+freeze
 
 点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，默认在Update标签，开启组件冻结功能，TabContent的标签如果未被选中，状态变量不会刷新，如以下操作。
 
 点击`Incr state`，日志中查询Appmonitor，存在3个打印。
 
-![freeze](figures/freeze_tabcontent_update.png)
+freeze
 
 切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
 
-![freeze](figures/freeze_tabcontent_delayupdate.png)
+freeze
 
 在API version 17及以下：
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在4个打印，页面路由返回时，会解冻TabContent所有的标签。
 
-![freeze](figures/freeze_tabcontent_before_api18.png)
+freeze
 
 在API version 18及以上：
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。
 
-![freeze](figures/freeze_tabcontent_after_api18.png)
+freeze
 
 **页面和LazyForEach**
 
 Navigation和TabContent混用时，之所以会解冻TabContent标签的子节点，是因为回到前一个页面时会从父组件开始递归解冻子组件，与此行为类似的还有页面生命周期：OnPageShow。OnPageShow会将当前Page中的根节点设置为active状态，TabContent作为页面的子节点，也会被设置为active状态。在屏幕灭屏和屏幕亮屏时会分别触发页面的生命周期：OnPageHide和OnPageShow，因此页面中使用LazyForEach时，手动灭屏和亮屏也能实现页面路由一样的效果，如以下示例代码：
-<!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) --> 
+<!-- @arkts_custom_components_freeze10 --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1419,23 +1419,23 @@ struct Page {
 
 在组件复用场景中，已经对LazyForEach的节点进行了详细说明，分为屏上节点和cachedCount节点。
 
-![freeze](figures/freeze_lazyforeach.png)
+freeze
 
 向下滑动LazyForEach，让cachedCount补充节点，点击`add sum`，搜索打印日志：sum: Change，出现了8条打印。
 
-![freeze](figures/freeze_lazyforeach_add.png)
+freeze
 
 在API version 17及以下：
 
 灭屏之后亮屏，触发OnPageShow，点击`add sum`，打印数量为屏上节点与cachedCount数量的总和。
 
-![freeze](figures/freeze_lazyforeach_api15.png)
+freeze
 
 从API version 18开始：
 
 灭屏之后亮屏，触发OnPageShow，点击`add sum`，只会打印屏上节点数量，不会再解冻cachedCount中的节点。
 
-![freeze](figures/freeze_lazyforeach_api16.png)
+freeze
 
 ## 限制条件
 
@@ -1444,7 +1444,7 @@ struct Page {
 在API version 20之前，BuilderNode无法继承父组件冻结。如下面的例子所示，FreezeBuildNode中使用了自定义节点BuilderNode。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。
 
 在API version 20及以后，开发者可以通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。
-<!-- @[arkts_custom_components_freeze11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets) -->
+<!-- @arkts_custom_components_freeze11 -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -1557,7 +1557,7 @@ struct FreezeBuildNode {
 
 点击`change`，改变message的值，当前正在显示的TabContent组件中@Watch注册的方法onMessageUpdated被触发。未显示的TabContent中的BuilderNode节点下组件的@Watch方法onMessageUpdated也被触发，并没有被冻结。
 
-![builderNode.gif](figures/builderNode.gif)
+builderNode.gif
 
 ### 组件冻结与组件复用混用时解冻不会触发Watch
 
@@ -1565,7 +1565,7 @@ struct FreezeBuildNode {
 
 当`if`组件绑定的状态变量`flag`修改为`true`时，子组件`ChildComponent`出复用池并被标记为`active`状态，但不会触发状态变量`count`绑定的`Watch`回调。这是因为组件复用的执行逻辑早于组件解冻的执行逻辑。子组件被复用时会将脏节点刷新（包括在冻结期间需要延迟刷新的变量绑定的系统组件），并清空脏节点列表。在子组件被复用后，重新被标记为`active`状态，此时子组件执行解冻逻辑，由于复用时清空了脏节点列表，所以此时判断冻结期间无变量改变，不会触发`Watch`回调。
 
-<!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 
+<!-- @Freeze_and_Reuse --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

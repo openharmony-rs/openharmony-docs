@@ -81,7 +81,7 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 
 在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用initializeWebEngine初始化Web内核，示例如下：
 
-<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+<!-- @register_init_scheme -->    
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -106,7 +106,7 @@ export default class EntryAbility extends UIAbility {
 
 testNapi.registerCustomSchemes的C++实现：
 
-<!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
+<!-- @register_set_custom_schemes -->
 
 ``` C++
 // 注册“custom“ scheme到Web组件，并指定该scheme需要遵循标准的scheme规则，允许该scheme发出跨域请求。
@@ -315,5 +315,5 @@ ArkTS示例：
 ## 完整示例
 
 <!--RP1-->
-[拦截Web组件发起的网络请求](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)
+拦截Web组件发起的网络请求
 <!--RP1End-->

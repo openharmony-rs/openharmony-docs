@@ -25,7 +25,7 @@ openCustomDialog和CustomDialog支持通过focusable参数来管理弹出框是�
 
 1. 初始化一个弹出框内容区域，内含一个Text组件。
 
-    <!-- @[dialog_focus_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
+    <!-- @dialog_focus_text -->
     
     ``` TypeScript
     @State dialogIdIndex: number = 0;
@@ -66,7 +66,7 @@ openCustomDialog和CustomDialog支持通过focusable参数来管理弹出框是�
 
 2. 创建一个TextInput组件，在onChange事件函数中通过调用UIContext中的getPromptAction方法获取PromptAction对象，再通过该对象调用openCustomDialog接口，并设置focusable参数为false，以创建弹出框。
 
-    <!-- @[dialog_focus_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
+    <!-- @dialog_focus_text_input -->
     
     ``` TypeScript
     TextInput()
@@ -108,7 +108,7 @@ openCustomDialog和CustomDialog支持通过focusable参数来管理弹出框是�
 ## 完整示例
 
 当用户正在文本框中输入内容时，新弹出的弹出框不会关闭软键盘，焦点仍保留在文本框中。
-<!-- @[dialog_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogboxfocuspolicy/DialogFocusStrategy.ets) -->
+<!-- @dialog_focus -->
 
 ``` TypeScript
 @Entry
@@ -190,4 +190,4 @@ export struct Index {
 }
 ```
 
-![dialog-focusable-demo1](figures/dialog-focusable-demo1.gif)
+dialog-focusable-demo1

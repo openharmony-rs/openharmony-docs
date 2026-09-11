@@ -16,7 +16,7 @@
 播放流程包含：创建解封装器、创建播放器、设置回调监听函数、配置播放参数、播放控制（播放/暂停/继续/倍速/音量/停止/重置）、销毁播放器实例。
 
 **图1** 播放状态变化示意图  
-![LPP status change](figures/lpp-status-change-ndk.png)
+LPP status change
 
 播放流程包含：创建（created）、初始化（initialized）、就绪（ready）、解码（decoding）和渲染（rendering）五个阶段。
 
@@ -100,7 +100,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      根据实际情况，应用可使用自研解封装或可通过OH_AVSource_CreateWithDataSource()/OH_AVSource_CreateWithFD()/OH_AVSource_CreateWithURI()来创建OH_AVSource ，通过`OH_AVSource`调用OH_AVDemuxer_CreateWithSource()，创建解封装器，获取视频的元信息。
 
-    <!-- @[OH_AVDemuxer_CreateWithSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/demuxer.cpp) -->
+    <!-- @OH_AVDemuxer_CreateWithSource -->
     
     ``` C++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
@@ -110,13 +110,13 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
 2.  根据视频元信息，调用  OH_LowPowerAudioSink_CreateByMime或OH_LowPowerVideoSink_CreateByMime来创建播放器。
 
-    <!-- @[OH_LowPowerVideoSink_CreateByMime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
+    <!-- @OH_LowPowerVideoSink_CreateByMime -->
     
     ``` C++
     lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(videoCodecMime.c_str());
     ```
 
-    <!-- @[OH_LowPowerAudioSink_CreateByMime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_audio_streamer.cpp) -->
+    <!-- @OH_LowPowerAudioSink_CreateByMime -->
     
     ``` C++
     lppAudioStreamer_ = OH_LowPowerAudioSink_CreateByMime(audioCodecMime.c_str());
@@ -126,7 +126,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      调用OH_LowPowerAudioSinkCallback_Create或OH_LowPowerVideoSinkCallback_Create创建OH_LowPowerAudioSinkCallback或OH_LowPowerVideoSinkCallback的回调函数的整合，通过setListener函数向该结构体添加对应的回调函数，完成registerCallback的一次性注册。
 
-    <!-- @[OH_LowPowerAudioSinkCallback_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_audio_streamer.cpp) -->
+    <!-- @OH_LowPowerAudioSinkCallback_Create -->
     
     ``` C++
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
@@ -141,7 +141,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      根据之前通过解封装获得的元信息，创建并配置OH_AVFormat。通过configure接口 OH_LowPowerAudioSink_Configure / OH_LowPowerVideoSink_Configure进行播放器的配置，详细参数可参考示例代码。视频流需要使用OH_LowPowerVideoSink_SetVideoSurface接口来设置显示窗口。
 
-    <!-- @[OH_LowPowerVideoSink_Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
+    <!-- @OH_LowPowerVideoSink_Configure -->
     
     ``` C++
     OH_AVFormat *format = OH_AVFormat_Create();
@@ -159,19 +159,19 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      准备播放前，需要调用OH_LowPowerVideoSink_SetSyncAudioSink设置音画同步绑定。然后调用prepare方法，OH_LowPowerAudioSink_Prepare或OH_LowPowerVideoSink_Prepare进入'准备'阶段。
 
-    <!-- @[OH_LowPowerVideoSink_SetSyncAudioSink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
+    <!-- @OH_LowPowerVideoSink_SetSyncAudioSink -->
     
     ``` C++
     auto ret = OH_LowPowerVideoSink_SetSyncAudioSink(lppVideoStreamer_, audioStreamer);
     ```
 
-    <!-- @[OH_LowPowerVideoSink_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
+    <!-- @OH_LowPowerVideoSink_Prepare -->
     
     ``` C++
     auto ret = OH_LowPowerVideoSink_Prepare(lppVideoStreamer_);
     ```
 
-    <!-- @[OH_LowPowerAudioSink_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_audio_streamer.cpp) -->
+    <!-- @OH_LowPowerAudioSink_Prepare -->
     
     ``` C++
     auto ret = OH_LowPowerAudioSink_Prepare(lppAudioStreamer_);
@@ -180,13 +180,13 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
      调用OH_LowPowerAudioSink_Start或OH_LowPowerVideoSink_StartRenderer开始渲染。视频流需要在渲染开始前调用OH_LowPowerVideoSink_StartDecoder开始解码或调用 OH_LowPowerVideoSink_RenderFirstFrame开始解码并送显首帧'接口'进入解码。
 
-    <!-- @[OH_LowPowerVideoSink_StartDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
+    <!-- @OH_LowPowerVideoSink_StartDecoder -->
     
     ``` C++
     auto ret = OH_LowPowerVideoSink_StartDecoder(lppVideoStreamer_);
     ```
 
-    <!-- @[OH_LowPowerVideoSink_StartRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
+    <!-- @OH_LowPowerVideoSink_StartRenderer -->
     
     ``` C++
     auto ret = OH_LowPowerVideoSink_StartRenderer(lppVideoStreamer_);

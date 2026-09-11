@@ -38,7 +38,7 @@
 
 5. 调用PhotoAccessHelper.applyChanges接口提交创建资产的变更请求。
 
-<!-- @[Save_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene1.ets) --> 
+<!-- @Save_Button --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -125,7 +125,7 @@ export struct Scene1 {
 2. 调用PhotoAccessHelper.getAssets和FetchResult.getFirstObject接口获取URI对应的PhotoAsset资产。
 3. 调用MediaAssetManager.requestMovingPhoto获取PhotoAsset对应的动态照片对象（MovingPhoto）。
 
-<!-- @[Obtaining_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene2.ets) -->
+<!-- @Obtaining_Moving_Photo_Sample -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -215,7 +215,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 调用MediaAssetManager.loadMovingPhoto加载应用沙箱的动态照片对象（MovingPhoto）。
 
-<!-- @[Reading_Moving_Photo_Sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene3.ets) -->
+<!-- @Reading_Moving_Photo_Sample -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -270,7 +270,7 @@ async function example(context: Context): Promise<string> {
 
 对于一个动态照片对象，应用可以通过MovingPhoto.requestContent导出图片和视频到应用沙箱，或者读取图片或视频的ArrayBuffer内容。
 
-<!-- @[Reading_Moving_Photo_Assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoSample/entry/src/main/ets/pages/Scene4.ets) -->
+<!-- @Reading_Moving_Photo_Assets -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';

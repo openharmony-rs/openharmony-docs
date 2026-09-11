@@ -68,7 +68,7 @@
 
 1. 导入模块。
 
-    <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+    <!-- @reminder_import -->
     
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
@@ -80,7 +80,7 @@
 
    - 定义倒计时实例。
      
-      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) --> 
+      <!-- @timer_reminder --> 
       
       ``` TypeScript
       let timer: reminderAgentManager.ReminderRequestTimer = {
@@ -104,7 +104,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->  
+      <!-- @calendar_reminder -->  
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
@@ -137,7 +137,7 @@
 
    - 定义闹钟实例。
    
-      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) --> 
+      <!-- @alarm_reminder --> 
       
       ``` TypeScript
       let alarm: reminderAgentManager.ReminderRequestAlarm = {
@@ -177,7 +177,7 @@
 
 3. 发布相应的提醒代理。代理发布后，应用即可使用后台代理提醒功能。
    
-   <!-- @[publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @publish_reminder -->
    
    ``` TypeScript
    let reminderId: number = await reminderAgentManager.publishReminder(
@@ -188,7 +188,7 @@
 
 4. 根据需要删除提醒任务。
    
-   <!-- @[cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @cancel_reminder -->
    
    ``` TypeScript
    Logger.info(TAG, `cancel reminder id is ${this.calendarReminders[index].reminderId}`)
@@ -199,6 +199,6 @@
 
 基于代理提醒，有以下相关实例可供参考：
 
-- [后台代理提醒（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager)
+- 后台代理提醒（ArkTS）（API9）
 
-- [翻页时钟（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/FlipClock)
+- 翻页时钟（ArkTS）（API9）

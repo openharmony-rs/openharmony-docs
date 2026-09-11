@@ -30,7 +30,7 @@
 
 1. 导入模块。
    
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) --> 
+   <!-- @ImportModule --> 
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -42,7 +42,7 @@
 
 2. 传入需要发布的事件名称和回调函数，发布事件。
    
-   <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   <!-- @PublicEventNoInformation -->
    
    ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。
@@ -64,7 +64,7 @@
 
 1. 导入模块。
    
-   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   <!-- @ImportModule -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -76,7 +76,7 @@
 
 2. 构建需要发布的公共事件信息。
    
-   <!-- @[PublicEventInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   <!-- @PublicEventInformation -->
    
    ``` TypeScript
    // 公共事件相关信息
@@ -88,7 +88,7 @@
 
 3. 传入需要发布的事件名称、需要发布的指定信息和回调函数，发布事件。
    
-   <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   <!-- @PublicEventCarryingInformation -->
    
    ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。

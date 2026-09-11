@@ -23,7 +23,7 @@ API参数说明见：ForEach API参数说明。
 ArkUI框架对于`ForEach`的键值生成有一套特定的判断规则，这主要与`itemGenerator`函数和`keyGenerator`函数的第二个参数`index`有关。具体的键值生成规则判断逻辑如下图所示。
 
 **图1** ForEach键值生成规则  
-![ForEach-Key-Generation-Rules](figures/ForEach-Key-Generation-Rules.png)
+ForEach-Key-Generation-Rules
 
 > **说明：**
 >
@@ -33,7 +33,7 @@ ArkUI框架对于`ForEach`的键值生成有一套特定的判断规则，这主
 
 键值生成示例:
 
-<!-- @[foreach_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEachKeyGeneration.ets) -->
+<!-- @foreach_key_generation -->
 
 ``` TypeScript
 interface ChildItemType {
@@ -89,7 +89,7 @@ export struct ChildItem {
 
 在ForEach首次渲染时，会根据前述键值生成规则为数据源的每个数组项生成唯一键值，并创建相应的组件。
 
-<!-- @[foreach_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach1.ets) -->
+<!-- @foreach_one -->
 
 ``` TypeScript
 @Entry
@@ -126,13 +126,13 @@ struct ForEachChildItem {
 运行效果如下图所示。
 
 **图2**  ForEach数据项不存在相同键值案例首次渲染运行效果图  
-![ForEach-CaseStudy-1stRender-NoDup](figures/ForEach-CaseStudy-1stRender-NoDup.png)
+ForEach-CaseStudy-1stRender-NoDup
 
 在上述代码中，`keyGenerator`函数的返回值是`item`。在ForEach渲染循环时，为数组项依次生成键值`one`、`two`和`three`，并创建对应的`ForEachChildItem`组件渲染到界面上。
 
 当不同数组项生成的键值相同时，框架的行为是未定义的。例如，在以下代码中，ForEach渲染相同的数据项`two`时，只创建了一个`SameKeyChildItem`组件，而没有创建多个具有相同键值的组件。
 
-<!-- @[foreach_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach2.ets) -->
+<!-- @foreach_two -->
 
 ``` TypeScript
 @Entry
@@ -169,7 +169,7 @@ struct SameKeyChildItem {
 运行效果如下图所示。
 
 **图3**  ForEach数据源存在相同值案例首次渲染运行效果图  
-![ForEach-CaseStudy-1stRender-Dup](figures/ForEach-CaseStudy-1stRender-Dup.png)
+ForEach-CaseStudy-1stRender-Dup
 
 在该示例中，最终键值生成规则为`item`。当ForEach遍历数据源`simpleList`，遍历到索引为1的`two`时，创建键值为`two`的组件并记录。当遍历到索引为2的`two`时，当前项的键值也为`two`，此时不再创建新的组件。
 
@@ -177,7 +177,7 @@ struct SameKeyChildItem {
 
 在ForEach组件进行非首次渲染时，它会检查新生成的键值是否在上次渲染中已经存在。如果键值不存在，则会创建一个新的组件；如果键值存在，则不会创建新的组件，而是直接渲染该键值所对应的组件。例如，在以下的代码示例中，通过点击事件修改了数组的第三项值为"new three"，这将触发ForEach组件进行非首次渲染。
 
-<!-- @[foreach_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach3.ets) -->
+<!-- @foreach_three -->
 
 ``` TypeScript
 @Entry
@@ -223,7 +223,7 @@ struct NotFirstRenderChildItem {
 运行效果如下图所示。
 
 **图4**  ForEach非首次渲染案例运行效果图  
-![ForEach-Non-Initial-Render-Case-Effect](figures/ForEach-Non-Initial-Render-Case-Effect.gif)
+ForEach-Non-Initial-Render-Case-Effect
 
 从本例可以看出\@State能够监听到简单数据类型数组`simpleList`数组项的变化。
 
@@ -239,7 +239,7 @@ ForEach组件在开发过程中的主要应用场景包括：数据源不变、�
 
 在数据源保持不变的场景中，数据源可以直接采用基本数据类型。例如，页面加载状态时，可以使用骨架屏列表进行渲染展示。
 
-<!-- @[article_skeleton_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleSkeletonView.ets) -->
+<!-- @article_skeleton_view -->
 
 ``` TypeScript
 @Entry
@@ -298,7 +298,7 @@ struct ArticleSkeletonView {
 运行效果如下图所示。
 
 **图5** 骨架屏运行效果图  
-![ForEach-SkeletonScreen](figures/ForEach-SkeletonScreen.png)
+ForEach-SkeletonScreen
 
 在本示例中，采用数据项item作为键值生成规则，由于数据源simpleList的数组项各不相同，因此能够保证键值的唯一性。
 
@@ -306,7 +306,7 @@ struct ArticleSkeletonView {
 
 在数据源数组项发生变化的场景下，如数组插入、删除操作或者数组项索引位置交换时，数据源应为对象数组类型，并使用对象的唯一ID作为键值。
 
-<!-- @[article_list_view_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView.ets) -->
+<!-- @article_list_view_one -->
 
 ``` TypeScript
 class ArticleChangeSource {
@@ -407,7 +407,7 @@ struct ArticleCardChangeSource {
 初始运行效果（左图）和手势上滑加载后效果（右图）如下图所示。
 
 **图6**  数据源数组项变化案例运行效果图  
-![ForEach-DataSourceArrayChange](figures/ForEach-DataSourceArrayChange.png)
+ForEach-DataSourceArrayChange
 
 在本示例中，`ArticleCardChangeSource`组件作为`ArticleListViewChangeSource`组件的子组件，通过\@Prop装饰器接收一个`ArticleChangeSource`对象，用于渲染文章卡片。
 
@@ -418,7 +418,7 @@ struct ArticleCardChangeSource {
 
 当数据源的数组项为对象数据类型，并且只修改某个数组项的属性值时，由于数据源为复杂数据类型，ArkUI框架无法监听到`@State`装饰器修饰的数据源数组项的属性变化，从而无法触发`ForEach`的重新渲染。为实现`ForEach`子组件重新渲染，需要结合\@Observed和\@ObjectLink装饰器使用。例如，在文章列表卡片上点击“点赞”按钮，从而修改文章的点赞数量。
 
-<!-- @[article_list_view_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView2.ets) -->
+<!-- @article_list_view_two -->
 
 ``` TypeScript
 @Observed
@@ -522,7 +522,7 @@ struct ArticleCardChangeChild {
 上述代码的初始运行效果（左图）和点击第1个文章卡片上的点赞图标后的运行效果（右图）如下图所示。
 
 **图7** 数据源数组项子属性变化案例运行效果图  
-![ForEach-DataSourceArraySubpropertyChange](figures/ForEach-DataSourceArraySubpropertyChange.png)
+ForEach-DataSourceArraySubpropertyChange
 
 在本示例中，`ArticleChangeChild`类被`@Observed`装饰器修饰。父组件`ArticleListChangeView`传入`ArticleChangeChild`对象实例给子组件`ArticleCardChangeChild`，子组件使用`@ObjectLink`装饰器接收该实例。
 
@@ -532,7 +532,7 @@ struct ArticleCardChangeChild {
 ### 拖拽排序
 在List组件下使用ForEach，并设置onMove事件，每次迭代生成一个ListItem时，可以使能拖拽排序。拖拽排序离手后，如果组件位置发生变化，将触发onMove事件，上报组件移动原始索引号和目标索引号。在onMove事件中，需要根据上报的起始索引号和目标索引号修改数据源。数据源修改前后，要保持每个数据的键值不变，只是顺序发生变化，才能保证落位动画正常执行。
 
-<!-- @[foreach_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEachSort.ets) -->
+<!-- @foreach_sort -->
 
 ``` TypeScript
 @Entry
@@ -583,12 +583,12 @@ struct ForEachSort {
 ```
 
 **图8** ForEach拖拽排序效果图  
-![ForEach-Drag-Sort](figures/ForEach-Drag-Sort.gif)  
+ForEach-Drag-Sort  
 
 注释掉`onMove`事件调用中的两行代码，点击`Add one item`触发渲染后的效果如下图所示。  
 
 **图9** ForEach拖拽排序效果在重新渲染后没有保留  
-![ForEach-Drag-Sort](figures/ForEach-Drag-Sort2.PNG)
+ForEach-Drag-Sort
 
 ## 使用建议
 
@@ -597,7 +597,7 @@ struct ForEachSort {
 - 基本类型数组的数据项没有唯一`ID`属性。如果使用数据项作为键值，必须确保数据项无重复。对于数据源会变化的场景，建议将基本类型数组转换为具有唯一`ID`属性的Object类型数组，再使用唯一`ID`属性作为键值。
 - 对于以上限制规则，`index`参数存在的意义为：index是开发者保证键值唯一性的最终手段；对数据项进行修改时，由于`itemGenerator`中的`item`参数是不可修改的，所以须用index索引值对数据源进行修改，进而触发UI重新渲染。
 - ForEach在滚动容器组件 List、Grid、Swiper以及WaterFlow 内使用的时候，不建议与LazyForEach 同时使用。
-- 在大量子组件的场景下，ForEach可能会导致卡顿。请考虑使用LazyForEach替代。最佳实践请参考[使用懒加载优化性能](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization)。
+- 在大量子组件的场景下，ForEach可能会导致卡顿。请考虑使用LazyForEach替代。最佳实践请参考使用懒加载优化性能。
 - 当数组项为对象类型时，不建议用内容相同的数组项替换旧项。若数组项发生变更但键值未变，会导致数据变化不渲染。
 
 ## 常见问题
@@ -608,7 +608,7 @@ struct ForEachSort {
 
 在本示例中，通过设置`ForEach`的第三个参数`KeyGenerator`函数，自定义键值生成规则为数据源的索引`index`的字符串类型值。当点击父组件`ForEachAbnormal`中“Insert Item After First Item”文本组件后，界面会出现非预期的结果。
 
-<!-- @[foreach_abnormal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/AbnormalExample.ets) -->
+<!-- @foreach_abnormal -->
 
 ``` TypeScript
 @Entry
@@ -650,7 +650,7 @@ struct ForEachAbnormalChildItem {
 上述代码的初始渲染效果和点击“Insert Item After First Item”文本组件后的渲染效果如下图所示。
 
 **图10**  渲染结果非预期运行效果图  
-![ForEach-UnexpectedRenderingResult](figures/ForEach-UnexpectedRenderingResult.gif)
+ForEach-UnexpectedRenderingResult
 
 `ForEach`在首次渲染时，创建的键值依次为"0"、"1"、"2"。
 
@@ -664,7 +664,7 @@ struct ForEachAbnormalChildItem {
 
 在本示例中，`ForEach`的第三个参数`KeyGenerator`函数缺省。根据上述键值生成规则，此例使用框架默认的键值，即最终键值为字符串`index + '__' + JSON.stringify(item)`。点击文本组件“在第1项后插入新项”后，`ForEach`将为第2个数组项及后面的所有数据项重新创建组件。
 
-<!-- @[bad_performance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/BadPerformance.ets) -->
+<!-- @bad_performance -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -715,12 +715,12 @@ struct ReducedChildItem {
 以上代码的初始渲染效果和点击"Insert Item After First Item"文本组件后的渲染效果如下图所示。
 
 **图11**  渲染性能降低案例运行效果图  
-![ForEach-RenderPerformanceDecrease](figures/ForEach-RenderPerformanceDecrease.gif)
+ForEach-RenderPerformanceDecrease
 
 点击“Insert Item After First Item”文本组件后，DevEco Studio的日志打印结果如下所示。
 
 **图12**  渲染性能降低案例日志打印图  
-![ForEach-RenderPerformanceDecreaseLogs](figures/ForEach-RenderPerformanceDecreaseLogs.png)
+ForEach-RenderPerformanceDecreaseLogs
 
 插入新项后，`ForEach`为`new item`、 `two`、 `three`三个数组项创建了对应的`ReducedChildItem`组件，并执行了组件的`aboutToAppear()`生命周期函数。这是因为：
 
@@ -732,7 +732,7 @@ struct ReducedChildItem {
 
 正确渲染并保证效率的`ForEach`写法是：
 
-<!-- @[foreach_true](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ForEach1.ets) -->
+<!-- @foreach_true -->
 
 ``` TypeScript
 ForEach(this.simpleList, (item: string) => {
@@ -745,7 +745,7 @@ ForEach(this.simpleList, (item: string) => {
 ### 数据变化不渲染
 点击按钮`Like/Unlike first article`，第一个组件会切换点赞手势和后面的点赞数量，但是点击按钮`Replace first article`之后再点击按钮`Like/Unlike first article`就不生效了。原因是替换`articleList[0]`之后，`articleList`状态变量发生变化，触发ForEach重新渲染，但是新的`articleList[0]`生成的key没有变，ForEach不会将数据更新同步给子组件，因此第一个组件仍然绑定旧的`articleList[0]`。新`articleList[0]`的属性发生变更，第一个组件感知不到，不会重新渲染。点击点赞手势，会触发渲染。因为变更的是跟组件绑定的数组项的属性，组件会感知并重新渲染。
 
-<!-- @[article_list_view_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/ArticleListView3.ets) -->
+<!-- @article_list_view_three -->
 
 ``` TypeScript
 @Observed
@@ -865,12 +865,12 @@ struct ArticleCardChangeData {
 ```
 
 **图13** 数据变化不渲染  
-![ForEach-StateVarNoRender](figures/ForEach-StateVarNoRender.PNG)
+ForEach-StateVarNoRender
 
 ### 非必要内存消耗
 如果开发者没有定义`keyGenerator`函数，则ArkUI框架会使用默认的键值生成函数，即`(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }`。当`item`是复杂对象时，将其JSON序列化会得到长字符串，占用更多的内存。
 
-<!-- @[non_necessary_mem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/NonNecessaryMem.ets) -->
+<!-- @non_necessary_mem -->
 
 ``` TypeScript
 class MemoryData {
@@ -920,15 +920,15 @@ struct NonNecessaryMemory {
 对比自定义`keyGenerator`函数和使用默认键值生成函数两种情况下的内存占用（通过DevEco->Profiler->Realtime Monitor工具，可以获取相关进程的内存数据）。自定义`keyGenerator`函数，这个示例代码的内存占用降低了约70MB。  
 
 **图14** 使用默认键值生成函数下的内存占用  
-![ForEach-StateVarNoRender](figures/ForEach-default-keyGenerator.PNG)
+ForEach-StateVarNoRender
   
 **图15** 自定义键值生成函数下的内存占用  
-![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator.PNG)
+ForEach-StateVarNoRender
 
 ### 键值生成失败
 如果开发者没有定义`keyGenerator`函数，则ArkUI框架会使用默认的键值生成函数，即`(item: Object, index: number) => { return index + '__' + JSON.stringify(item); }`。然而，`JSON.stringify`序列化在某些数据结构上会失败，导致应用发生jscrash并退出。例如，`bigint`无法被`JSON.stringify`序列化：
 
-<!-- @[crash_normal_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingForeach/CrashNormalExample.ets) -->
+<!-- @crash_normal_example -->
 
 ``` TypeScript
 class KeyData {
@@ -977,7 +977,7 @@ struct GenerationKeyChildItem {
 开发者定义`keyGenerator`函数，应用正常启动：
 
 **图16** 键值生成失败  
-![ForEach-StateVarNoRender](figures/ForEach-defined-keyGenerator2.PNG)  
+ForEach-StateVarNoRender  
 
 使用默认的键值生成函数，应用发生jscrash： 
 ``` js

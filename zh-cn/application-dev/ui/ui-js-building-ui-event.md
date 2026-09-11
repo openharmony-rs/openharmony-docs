@@ -112,4 +112,4 @@ export default {
 }
 ```
 
-![Defining-Gesture-Events](figures/Defining-Gesture-Events.gif)
+Defining-Gesture-Events

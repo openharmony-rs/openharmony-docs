@@ -12,7 +12,7 @@
 >
 > API version 10开始支持@Reusable，支持在ArkTS中使用。
 >
-> 关于组件复用的原理与使用、优化方法、适用场景，请参考[组件复用最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-reuse)。
+> 关于组件复用的原理与使用、优化方法、适用场景，请参考组件复用最佳实践。
 
 ## 概述
 
@@ -35,7 +35,7 @@
 
 \@Reusable不支持跟\@ComponentV2搭配使用，\@ComponentV2组件复用推荐\@ReusableV2装饰器。
 
-<!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
+<!-- @reusable_for_custom_components -->
 
 ``` TypeScript
 import { ComponentContent } from '@kit.ArkUI';
@@ -100,7 +100,7 @@ struct Index {
 
 在子组件的aboutToReuse中，直接修改父组件的状态变量。
 
-<!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
+<!-- @reusable_for_incorrect_sample -->
 
 ``` TypeScript
 class IncorrectBasicDataSource implements IDataSource {
@@ -187,7 +187,7 @@ struct IncorrectReuseComponentChild {
 
 在子组件的aboutToReuse中，使用setTimeout，将修改移出组件复用的作用范围。
 
-<!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
+<!-- @reusable_for_correct_sample -->
 
 ``` TypeScript
 class BasicDataSource implements IDataSource {
@@ -282,7 +282,7 @@ struct ReuseComponentChild {
 组件结构存在差异，但未通过reuseId进行区分。</br>
 以下示例中，先点击“show/hide branch A”按钮，组件被回收，再点击“show/hide branch B”按钮，组件被复用。子组件ReusableChildB在复用过程中被创建，aboutToReuse方法和aboutToAppear方法被依次调用。
 
-<!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
+<!-- @reusable_for_incorrect_reuseid -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -382,7 +382,7 @@ struct ReusableChildB {
 
 组件结构存在差异，通过reuseId进行区分。
 
-<!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
+<!-- @reusable_for_reuseid -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -482,7 +482,7 @@ struct ReusableChildB {
 
 ComponentContent不支持传入\@Reusable装饰器装饰的自定义组件。
 
-<!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
+<!-- @component_content_not_support_reusable_custom_components -->
 
 ``` TypeScript
 import { ComponentContent } from '@kit.ArkUI';
@@ -553,7 +553,7 @@ struct Index {
 
 以下示例中，将Child自定义组件标记为复用组件，通过Button点击更新Child，触发复用。
 
-<!-- @[dynamic_layout_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DynamicLayoutUpdate.ets) -->
+<!-- @dynamic_layout_update -->
 
 ``` TypeScript
 // xxx.ets
@@ -615,7 +615,7 @@ struct Child {
 
 以下示例代码将CardView自定义组件标记为复用组件，List上下滑动，触发CardView复用。
 
-<!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
+<!-- @list_scrolling_with_lazy_for_each -->
 
 ``` TypeScript
 class MyDataSource implements IDataSource {
@@ -697,7 +697,7 @@ export struct CardView {
 
 以下示例代码将OneMoment自定义组件标记为复用组件。当List上下滑动时，会触发OneMoment的复用。设置reuseId可为复用组件分配复用组，相同reuseId的组件将在同一复用组中复用。单个复用组件无需设置reuseId。使用reuseId标识复用组件，可避免重复执行if语句的删除和重新创建逻辑，提高复用效率和性能。
 
-<!-- @[list_scrolling_with_if_statements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithIfStatements.ets) -->
+<!-- @list_scrolling_with_if_statements -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -835,7 +835,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 使用ForEach创建可复用的自定义组件，由于ForEach渲染控制语法的全展开属性，导致复用组件无法复用。示例中点击update，数据刷新成功，但滑动列表时，ListItemView无法复用。点击clear，再次点击update，ListItemView复用成功，因为一帧内重复创建多个已被销毁的自定义组件。
 
-<!-- @[list_scrolling_with_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithForEach.ets) -->
+<!-- @list_scrolling_with_for_each -->
 
 ``` TypeScript
 // xxx.ets
@@ -983,7 +983,7 @@ class ListItemObject {
 
 需要注意的是无需在aboutToReuse中对\@Link、\@StorageLink、\@ObjectLink、\@Consume等自动更新值的状态变量进行更新，可能触发不必要的组件刷新。
 
-<!-- @[reusable_for_grid_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForGridUsageScenario.ets) -->
+<!-- @reusable_for_grid_usage_scenario -->
 
 ``` TypeScript
 // MyDataSource类实现IDataSource接口。
@@ -1076,7 +1076,7 @@ struct ReusableChildComponent {
 
 - 在WaterFlow滑动场景中，FlowItem及其子组件频繁创建和销毁。可以将FlowItem中的组件封装成自定义组件，并使用\@Reusable装饰器修饰，实现组件复用。
 
-  <!-- @[reusable_for_water_flow_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForWaterFlowUsageScenario.ets) -->
+  <!-- @reusable_for_water_flow_usage_scenario -->
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1223,7 +1223,7 @@ struct ReusableChildComponent {
 
 - 在Swiper滑动场景中，条目中的子组件频繁创建和销毁。可以将这些子组件封装成自定义组件，并使用\@Reusable装饰器修饰，以实现组件复用。
 
-  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) --> 
+  <!-- @reusable_for_swiper_usage_scenario --> 
   
   ``` TypeScript
   @Entry
@@ -1368,7 +1368,7 @@ struct ReusableChildComponent {
 
 - 可以视作特殊List滑动场景，将ListItem需要移除重建的子组件封装成自定义组件，并使用\@Reusable装饰器修饰，使其具备组件复用能力。
 
-  <!-- @[reusable_for_list_item_group_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForListItemGroupUsageScenario.ets) -->
+  <!-- @reusable_for_list_item_group_usage_scenario -->
   
   ``` TypeScript
   @Entry
@@ -1567,7 +1567,7 @@ struct ReusableChildComponent {
 
 复用组件间存在差异，但类型有限。例如，可以通过显式设置两个reuseId或使用两个自定义组件来实现复用。
 
-<!-- @[reusable_for_limited_variation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForLimitedVariation.ets) -->
+<!-- @reusable_for_limited_variation -->
 
 ``` TypeScript
 class LimitedMyDataSource implements IDataSource {
@@ -1658,7 +1658,7 @@ struct ReusableComponent {
 
 复用组件间存在多种差异，但通常具备共同的子组件。将三种复用组件以组合型方式转换为Builder函数后，内部的共享子组件将统一置于父组件MyComponent之下。复用这些子组件时，缓存池在父组件层面实现共享，减少组件创建过程中的资源消耗。
 
-<!-- @[reusable_for_composite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForComposite.ets) -->
+<!-- @reusable_for_composite -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

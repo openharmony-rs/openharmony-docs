@@ -25,7 +25,7 @@
 >
 > 由于统一用户认证（UserIAM）只提供ArkTS接口，故本场景只支持使用ArkTS语言开发。
 
- ![](figures/flowchat-auth-required.png)
+ 
 
 1. 业务查询符合条件的关键资产属性，根据查询成功或失败，判断关键资产是否存在。
 

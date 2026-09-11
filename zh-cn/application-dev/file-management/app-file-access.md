@@ -1,9 +1,9 @@
 # 应用文件访问(ArkTS)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 应用需要对应用文件目录下的应用文件进行查看、创建、读写、删除、移动、复制、获取属性等访问操作，下文介绍具体方法。
@@ -62,7 +62,7 @@ import { buffer } from '@kit.ArkTS';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@create_and_read_File-->
 
 ``` TypeScript
 function createFile(context: common.UIAbilityContext): void {
@@ -114,7 +114,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@read_write_file-->
 
 ``` TypeScript
 function readWriteFile(context: common.UIAbilityContext): void {
@@ -184,7 +184,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@read_write_file_with_stream-->
 
 ``` TypeScript
 async function readWriteFileWithStream(context: common.UIAbilityContext): Promise<void> {
@@ -250,7 +250,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@get_list_file-->
 
 ``` TypeScript
 function getListFile(context: common.UIAbilityContext): void {
@@ -290,7 +290,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@copy_file_with_readable-->
 
 ``` TypeScript
 function copyFileWithReadable(context: common.UIAbilityContext): void {
@@ -326,7 +326,7 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
 ```
 
 
-<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@copy_file_with_data-->
 
 ``` TypeScript
 function copyFileWithData(context: common.UIAbilityContext): void {
@@ -380,7 +380,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 
 ```
-<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@hash_file_with_stream-->
 
 ``` TypeScript
 function hashFileWithStream(context: common.UIAbilityContext) {

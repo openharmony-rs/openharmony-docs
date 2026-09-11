@@ -17,7 +17,7 @@
 
 效果图如下。
 <!--RP3-->
-![application-component-configuration-stage-app-module](figures/application-component-configuration-stage-app-module.png)
+application-component-configuration-stage-app-module
 <!--RP3End-->
 
 ## 配置优先级和生成策略
@@ -61,7 +61,7 @@
 
   该配置仅当module.json5配置文件中无UIAbility、或者存在UIAbility但abilities标签中未设置icon和label（可手动删除icon和label配置）时生效。
 
-  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
+  <!-- @layered_image_001 -->
   
   ``` JSON5
   {
@@ -77,7 +77,7 @@
 
   除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
+  <!-- @layered_image_002 -->
   
   ``` JSON5
   {
@@ -129,7 +129,7 @@
       ```
   3. 在app.json5配置文件中引用分层图标资源文件。示例如下：
 
-      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
+      <!-- @layered_image_003 -->
       
       ``` JSON5
       {
@@ -161,7 +161,7 @@
 
   3. 如果需要在桌面显示UIAbility图标，除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
+      <!-- @layered_image_004  -->
       
       ``` JSON5
       {
@@ -215,7 +215,7 @@
 
 1. 在app.json5配置文件中添加alternateIcons标签，声明备用图标列表。
 
-    <!-- @[layered_image_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/AppScope/app.json5) -->
+    <!-- @layered_image_005 -->
     
     ``` JSON5
     {
@@ -237,7 +237,7 @@
 
 2. 使用bundleManager.setAlternateIcon接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
 
-    <!-- @[layered_image_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
+    <!-- @layered_image_006  -->
     
     ``` TypeScript
     import { bundleManager } from '@kit.AbilityKit';
@@ -284,7 +284,7 @@
 
 3. 调用bundleManager.setAlternateIcon接口传入空字符串可恢复默认图标。
 
-    <!-- @[layered_image_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
+    <!-- @layered_image_007  -->
     
     ``` TypeScript
     import { bundleManager } from '@kit.AbilityKit';
@@ -329,7 +329,7 @@
 
 4. 使用bundleManager.getAlternateIcons接口查询备用图标信息。返回的AlternateIconInfo数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
 
-    <!-- @[layered_image_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
+    <!-- @layered_image_008  -->
     
     ``` TypeScript
     import { bundleManager } from '@kit.AbilityKit';

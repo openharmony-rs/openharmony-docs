@@ -16,7 +16,7 @@
 
 应用要使用OHAudio提供的音频会话管理（AudioSessionManager）能力，需要添加对应的头文件。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -29,7 +29,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 应用通过引入native_audio_session_manager.h头文件，使用音频播放相关API。
 
-<!-- @[cimport_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cimport_h -->
 
 ``` C++
 #include "ohaudio/native_audio_session_manager.h"
@@ -39,7 +39,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 创建OH_AudioSessionManager实例。在使用音频会话管理功能前，需要先通过OH_AudioManager_GetAudioSessionManager创建音频会话管理实例。
 
-<!-- @[cget_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cget_sessionmanager -->
 
 ``` C++
 OH_AudioSessionManager *audioSessionManager;
@@ -59,7 +59,7 @@ OH_AudioSessionManager *audioSessionManager;
 
 应用在激活音频会话时，需指定音频会话策略（OH_AudioSession_Strategy），其中包含音频并发模式（OH_AudioSession_ConcurrencyMode）参数，用于声明不同的音频并发策略。
 
-<!-- @[cactive_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cactive_sessionmanager -->
 
 ``` C++
 // CONCURRENCY_MIX_WITH_OTHERS 是示例，实际使用时请根据情况修改。
@@ -73,7 +73,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 应用可以通过OH_AudioSessionManager_IsAudioSessionActivated接口检查当前应用的音频会话是否已激活。
 
-<!-- @[ccheck_isactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @ccheck_isactivated -->
 
 ``` C++
 bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionManager);
@@ -85,7 +85,7 @@ bool isActivated = OH_AudioSessionManager_IsAudioSessionActivated(audioSessionMa
 
 该接口仅允许在当前音频会话存在运行中的录音流时调用，否则会返回`AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE`。若某条录音流同时调用了流级静音提示接口OH_AudioCapturer_SetMuteHint和会话级静音提示接口，流级设置优先级更高，以流级设置值为准。因此，当应用内多条录音流的静音状态一致时，可以使用会话级接口统一上报；当不同录音流静音状态不一致时，建议对具体录音流使用流级接口。若为了调用会话级接口而创建Mic音频源录音流，需要申请麦克风权限`ohos.permission.MICROPHONE`。
 
-<!-- @[cset_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
+<!-- @cset_capturer_mute_hint --> 
 
 ``` C++
 bool mute = true;
@@ -102,7 +102,7 @@ OH_AudioCommon_Result unsetResult = OH_AudioSessionManager_SetCaptureMuteHint(au
 
 应用可以通过OH_AudioSessionManager_DeactivateAudioSession接口停用当前应用的音频会话。
 
-<!-- @[cdeactive_audiosession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cdeactive_audiosession -->
 
 ``` C++
 OH_AudioCommon_Result result;
@@ -120,7 +120,7 @@ result = OH_AudioSessionManager_DeactivateAudioSession(audioSessionManager);
 
 ### 定义回调函数
 
-<!-- @[cint_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cint_deacticatedcallback -->
 
 ``` C++
 int32_t MyAudioSessionDeactivatedCallback(OH_AudioSession_DeactivatedEvent event)
@@ -142,7 +142,7 @@ OH_AudioSessionManager *audioSessionManager;
 
 应用可以通过OH_AudioSessionManager_RegisterSessionDeactivatedCallback接口监听音频会话停用事件。
 
-<!-- @[cregist_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cregist_deacticatedcallback -->
 
 ``` C++
 OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
@@ -153,7 +153,7 @@ OH_AudioCommon_Result resultRegister = OH_AudioSessionManager_RegisterSessionDea
 
 应用可以通过OH_AudioSessionManager_UnregisterSessionDeactivatedCallback接口取消监听音频会话停用事件。
 
-<!-- @[cunregist_deacticatedcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cunregist_deacticatedcallback -->
 
 ``` C++
 OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(
@@ -164,7 +164,7 @@ OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessio
 
 参考以下示例，完成音频会话从创建到激活并监听的过程。
 
-<!-- @[csessionactive_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @csessionactive_process -->
 
 ``` C++
 #include <cstdint>
@@ -211,7 +211,7 @@ OH_AudioSessionManager *audioSessionManager;
 ## 通过设置AudioSession场景参数申请焦点
 应用通过AudioSession申请焦点。首先要调用接口OH_AudioSessionManager_SetScene设置场景参数，然后调用OH_AudioSessionManager_ActivateAudioSession接口激活AudioSession。
 
-<!-- @[cset_audioscene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cset_audioscene -->
 
 ``` C++
 // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
@@ -231,7 +231,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 启用混音播放下静音建议通知，需要先调用接口OH_AudioSessionManager_SetScene设置场景参数，并调用OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers开启功能，同时订阅音频会话状态更改事件OH_AudioSession_StateChangeHint，最后调用OH_AudioSessionManager_ActivateAudioSession接口激活AudioSession。启用静音建议通知的前提是OH_AudioSession_ConcurrencyMode模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
-<!-- @[cenable_muteSuggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cenable_muteSuggestion -->
 
 ``` C++
 // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
@@ -250,7 +250,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 **AudioSession申请焦点以及监听焦点变化事件的完整示例：**
 
-<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
+<!-- @clistencallback_process -->  
 
 ``` C++
 OH_AudioSessionManager *audioSessionManager;
@@ -324,7 +324,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考OH_AudioRenderer_SetIndependentAudioSessionStrategy。对于录音流，详情请参考OH_AudioCapturer_SetIndependentAudioSessionStrategy。
 
-<!-- @[cset_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @cset_session_behavior -->
 
 ``` C++
 // AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。

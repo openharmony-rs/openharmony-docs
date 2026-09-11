@@ -19,7 +19,7 @@ Popup属性可绑定在组件上显示气泡弹窗提示，设置弹窗内容、
 
 在Button组件上绑定Popup属性，每次点击Button按钮时，handlePopup会切换布尔值。当值为true时，触发bindPopup弹出气泡。
 
-<!-- @[text_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/TextPrompts.ets) -->
+<!-- @text_popup -->
 
 ``` TypeScript
 @Entry
@@ -46,13 +46,13 @@ export struct TextPopupExample {
 }
 ```
 
-![zh-cn_image_0000001511740524](figures/Creating-Text-Popup.png)
+zh-cn_image_0000001511740524
 
 ## 添加气泡状态变化的事件
 
 通过PopupOptions中的onStateChange属性为气泡添加状态变化的事件回调，可以判断气泡的当前显示状态。
 
-<!-- @[state_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets) -->
+<!-- @state_popup -->
 
 ``` TypeScript
 @Entry
@@ -84,13 +84,13 @@ export struct StatePopupExample {
 }
 ```
 
-![PopupOnStateChange](figures/PopupOnStateChange.gif)
+PopupOnStateChange
 
 ## 带按钮的提示气泡
 
 通过PopupOptions中的primaryButton、secondaryButton属性为气泡最多设置两个Button按钮，通过此按钮进行简单的交互，开发者可以通过配置action参数来设置想要触发的操作。
 
-<!-- @[button_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets) -->
+<!-- @button_popup -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -136,13 +136,13 @@ export struct ButtonPopupExample {
 }
 ```
 
-![zh-cn_other_0000001500740342](figures/Creating-Popup-with-Buttons.jpeg)
+zh-cn_other_0000001500740342
 
 ## 气泡的动画
 
 通过PopupOptions或CustomPopupOptions中的transition属性，可以控制气泡的进场和出场动画效果。
 
-<!-- @[animation_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets) -->
+<!-- @animation_popup -->
 
 ``` TypeScript
 // xxx.ets
@@ -212,13 +212,13 @@ export struct AnimationPopupExample {
 }
 ```
 
-![popup_transition](figures/popup_transition.gif)
+popup_transition
 
 ## 自定义气泡
 
 开发者可以使用CustomPopupOptions的builder创建自定义气泡，\@Builder中可以放自定义的内容。除此之外，还可以通过popupColor等参数控制气泡样式。
 
-<!-- @[custom_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets) -->
+<!-- @custom_popup -->
 
 ``` TypeScript
 // 请将$r('app.media.xxx')替换为实际资源文件
@@ -266,7 +266,7 @@ export struct CustomPopupExample {
 
 使用者通过配置placement参数将弹出的气泡放到需要提示的位置。弹窗构造器会触发弹出提示信息，来引导使用者完成操作，也让使用者有更好的UI体验。
 
-![zh-cn_other_0000001500900234](figures/Custom-Popup.jpeg)
+zh-cn_other_0000001500900234
 
 ## 气泡样式
 
@@ -282,7 +282,7 @@ export struct CustomPopupExample {
 
 以下示例通过设置PopupOptions中的popupColor（背景颜色）、mask（蒙层样式）、width（气泡宽度）、placement（显示位置）实现气泡的样式。
 
-<!-- @[style_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets) -->
+<!-- @style_popup -->
 
 ``` TypeScript
 // xxx.ets
@@ -317,13 +317,13 @@ export struct StylePopupExample {
 }
 ```
 
-![image](figures/UIpopupStyle.gif)
+image
 
 ## 气泡避让软键盘
 
 当软键盘弹出时，气泡默认不会对其避让，可能导致气泡被软键盘覆盖，从API version 15开始，可以设置CustomPopupOptions中keyboardAvoidMode属性的值为KeyboardAvoidMode.DEFAULT，来使气泡避让键盘。这时如果当前没有位置放下气泡时，气泡会从预设位置平移覆盖宿主组件。
 
-<!-- @[avoidSoftKeyboard_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets) -->
+<!-- @avoidSoftKeyboard_popup -->
 
 ``` TypeScript
 // xxx.ets
@@ -367,14 +367,14 @@ export struct AvoidSoftKeyboardPopupExample {
 }
 ```
 
-![image](figures/avoidKeyboard.gif)
+image
 
 
 ## 设置气泡内的多态效果
 
 目前使用@Builder自定义气泡内容时，默认不支持多态样式，可以使用@Component新建一个组件实现按下气泡中的内容时背景变色。
 
-<!-- @[polymorphicEffect_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets) -->
+<!-- @polymorphicEffect_popup -->
 
 ``` TypeScript
 // 请将$r('app.media.xxx')替换为实际资源文件
@@ -475,7 +475,7 @@ struct PopupItemChild {
 }
 ```
 
-![popupStateStyle](figures/popupStateStyle.gif)
+popupStateStyle
 
 ## 气泡支持避让中轴
 
@@ -485,7 +485,7 @@ struct PopupItemChild {
 > - 如果气泡的点击位置在中轴区域，则气泡不会避让。
 > - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
-<!-- @[supportedAvoidAxis_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupSupportedAvoidAxis.ets) -->
+<!-- @supportedAvoidAxis_popup -->
 
 ``` TypeScript
 @Entry

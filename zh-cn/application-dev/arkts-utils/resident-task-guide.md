@@ -16,7 +16,7 @@
 
 2. 首先导入Worker模块，然后在宿主线程中通过调用ThreadWorker的constructor()方法创建Worker对象，创建Worker对象的线程为宿主线程。 此处的宿主线程为UI主线程，宿主线程发送'start'以开始执行某个长期运行的任务，并接收子线程返回的相关消息。当不需要执行该任务时，发送'stop'以停止该任务的执行。在此示例中，任务将在10秒后结束。
 
-   <!-- @[worker_receive_child_thread_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/ResidentTaskGuide.ets) --> 
+   <!-- @worker_receive_child_thread_message --> 
    
    ``` TypeScript
    import { MessageEvents, worker } from '@kit.ArkTS';
@@ -50,7 +50,7 @@
 
 3. 在Worker线程中，当接收到宿主线程发送的消息为'start'时，开始执行某个长时间不定期运行的任务，并实时向宿主线程返回消息。当接收到的消息为'stop'时，结束该任务的执行并返回相应的消息给宿主线程。
 
-   <!-- @[worker_correspond_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/Worker.ets) -->
+   <!-- @worker_correspond_main_thread -->
    
    ``` TypeScript
    import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';

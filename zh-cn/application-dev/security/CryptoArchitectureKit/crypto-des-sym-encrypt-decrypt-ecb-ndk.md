@@ -63,7 +63,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用OH_CryptoSymKeyGenerator_Destroy、OH_CryptoSymCipher_Destroy、OH_CryptoSymKey_Destroy、OH_Crypto_FreeDataBlob释放申请的内存，销毁对象。
 
-<!-- @[des_crypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceDES/entry/src/main/cpp/types/project/des_ecb_encryption_decryption.cpp) -->
+<!-- @des_crypt_decrypt -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

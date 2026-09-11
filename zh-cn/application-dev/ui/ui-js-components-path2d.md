@@ -82,7 +82,7 @@ export default {
 ```
 
 
-![Line-Segments](figures/Line-Segments.png)
+Line-Segments
 
 
 ## 画图形
@@ -205,4 +205,4 @@ export default {
 }
 ```
 
-![Drawing-Graphs](figures/Drawing-Graphs.gif)
+Drawing-Graphs

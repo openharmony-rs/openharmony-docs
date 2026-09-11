@@ -1,7 +1,7 @@
 # 使用Node-API进行自定义异步操作相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -45,7 +45,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @[napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_async_open_close_callback_scope -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -114,7 +114,7 @@ static napi_value AsynchronousWork(napi_env env, napi_callback_info info)
 接口声明
 
 index.d.ts
-<!-- @[napi_async_open_close_callback_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @napi_async_open_close_callback_scope_api -->
 
 ``` TypeScript
 export const asynchronousWork: (object: Object, obj: Object, fun: Function, num: number) => number | undefined;
@@ -126,7 +126,7 @@ ArkTS侧示例代码
 
 导入模块
 
-<!-- @[ark_napi_async_open_close_callback_scope_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_async_open_close_callback_scope_head -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -136,7 +136,7 @@ import { process } from '@kit.ArkTS';
 
 测试代码
 
-<!-- @[ark_napi_async_open_close_callback_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICustomAsynchronousOperations/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_async_open_close_callback_scope -->
 
 ``` TypeScript
 try {

@@ -30,7 +30,7 @@
 - 同层渲染：通过同层渲染的方式直接渲染到H5页面Embed标签区域上。此方式实现相对复杂，用于原生组件大小位置需要跟随Web页面变化场景。
 
 **图一：同层渲染和非同层渲染区别**  
-![Webview](./figures/webview-render-app-components_1.png)
+Webview
 
 同层渲染的大致开发流程可以参考同层渲染绘制。
 
@@ -39,7 +39,7 @@
 以下分别采用纯H5、非同层渲染和同层渲染的三种方式，加载相同的商城组件到相同的H5页面上，并抓取trace对比三者之间的区别，其中商城页面大致如图二所示：
 
 **图二：商城页面场景**  
-![Webview](./figures/webview-render-app-components_2.jpeg)
+Webview
 
 场景实例源码的核心部分如下：
 
@@ -413,7 +413,7 @@ export struct SearchComponent {
 
 **图三：H5的Trace图**
 
-![alt text](./figures/webview-render-app-components_5.png)  
+alt text  
 
 H5的分析：
 - 在应用侧，情况比较特殊，因为H5页面是在web侧渲染，所以app侧只有开始加载web之前的js处理阶段，在PageEnd后应用侧没有什么处理。
@@ -423,7 +423,7 @@ H5的分析：
 
 **图四：非同层渲染的Trace图**  
 
-![alt text](./figures/webview-render-app-components_4.png)  
+alt text  
 
 非同层渲染的分析：
 - 在应用侧，红蓝线之间为测量和计算布局，图片加载被延后到了蓝线之外。  
@@ -432,7 +432,7 @@ H5的分析：
 
 **图五：非同层渲染情况下的单帧放大图**  
 
-![alt text](./figures/webview-render-app-components_6.png)  
+alt text  
 
 从图五可以明显的看到，其中的RSUniRender::Process耗时比起其他帧大幅增加，说明是应用侧组件层叠导致render_service侧的绘制任务过重。 
 
@@ -440,7 +440,7 @@ H5的分析：
 
 **图六：同层渲染的Trace图**  
 
-![alt text](./figures/webview-render-app-components_3.png)  
+alt text  
 
 同层渲染的分析：
 - 在应用侧，红蓝线之间由于NodeContainer的原因，组件布局的测量和绘制划分成了两部分，同时将图片加载提前到了红蓝线之间。
@@ -470,13 +470,13 @@ H5的分析：
 ### 使用非同层渲染
 
   **图七：非同层渲染滑动时单帧图**  
-  ![alt text](./figures/webview-render-app-components_8.png)
+  alt text
 
 ### 使用同层渲染
 
   **图八：同层渲染滑动时单帧图**  
 
-  ![alt text](./figures/webview-render-app-components_7.png)
+  alt text
 
   上述两张图经过对比也可以发现，render_service每一帧的耗时大幅增加，其中的RSUniRender::Process耗时也大幅增加，结论和上述保持一致，再次验证了同样的结果。
 
@@ -494,4 +494,4 @@ H5的分析：
 
 ## 示例代码
 
-[基于ArkWeb实现系统原生组件渲染至H5页面上](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/ArkWebSameLevelRendering)
+基于ArkWeb实现系统原生组件渲染至H5页面上

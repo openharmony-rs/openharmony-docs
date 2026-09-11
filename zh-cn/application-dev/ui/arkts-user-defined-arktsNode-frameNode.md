@@ -10,11 +10,11 @@
 
 对于拥有自定义前端的第三方框架（如JSON、XML、DOM树等），需将特定的DSL转换为ArkUI的声明式描述。如下图描述了JSON定义的前端框架和ArkUI声明式描述的对应关系。
 
-![zh-cn_image_frame-node01](figures/frame-node01.png)
+zh-cn_image_frame-node01
 
 上述转换过程需要依赖额外的数据驱动，绑定至Builder中，较为复杂且性能欠佳。这类框架通常依赖于ArkUI的布局、事件处理、基础的节点操作和自定义能力。大部分组件通过自定义实现，但需结合使用部分系统组件以实现混合显示，如下图示例既使用了FrameNode的自定义方法进行绘制，又使用了系统组件Column及其子组件Text，通过BuilderNode的方式将其挂载到根节点的FrameNode上混合显示。
 
-![zh-cn_image_frame-node02](figures/frame-node02.png)
+zh-cn_image_frame-node02
 
 FrameNode的设计初衷正是为了解决上述转换问题。FrameNode表示组件树中的实体节点，与自定义占位容器组件NodeContainer相配合，实现在占位容器内构建一棵自定义的节点树。该节点树支持动态操作，如节点的增加、修改和删除。基础的FrameNode具备设置通用属性和事件回调的功能，同时提供完整的自定义能力，涵盖自定义测量、布局和绘制等方面。
 
@@ -60,7 +60,7 @@ FrameNode提供了节点的增、删、查、改的能力，能够修改非代�
 >
 > 使用自定义组件的场景下，可能查询获得自定义组件的新增节点，节点类型为“\_\_Common\_\_”。
 
-<!-- @[frameNodeTree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTree.ets) --> 
+<!-- @frameNodeTree_start --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -379,7 +379,7 @@ struct Index {
 >
 > 当前仅支持根节点为以下类型组件的BuilderNode进行移动操作：Stack、XComponent、EmbeddedComponent。对于其他类型的组件，移动操作不会生效。
 
-<!-- @[frameNodeMoveTo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeMoveTo.ets) --> 
+<!-- @frameNodeMoveTo_start --> 
 
 ``` TypeScript
 import { FrameNode, NodeController, UIContext, typeNode } from '@kit.ArkUI';
@@ -438,7 +438,7 @@ struct Index {
   }
 }
 ``` 
-![moveToDemo](figures/moveToDemo.gif)
+moveToDemo
 
 ## 设置节点通用属性和事件回调
 
@@ -450,7 +450,7 @@ FrameNode提供了commonAttribute和commonEvent两个对象用于设置节点的
 > 
 > - 设置的基础事件与系统组件定义的事件平行，参与事件竞争。设置的基础事件不覆盖系统组件事件。同时设置两个事件回调的时候，优先回调系统组件事件。
 
-<!-- @[frameNodeCommon_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCommon.ets) --> 
+<!-- @frameNodeCommon_start --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -649,7 +649,7 @@ setNeedsLayout可以将当前节点标记，在下一帧触发重新布局。
 > 
 > - 通过onDraw方法进行的自定义绘制，绘制内容大小无法超出组件大小。
 
-<!-- @[frameNodeDraw_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets) --> 
+<!-- @frameNodeDraw_start --> 
 
 ``` TypeScript
 import { DrawContext, FrameNode, NodeController, Position, Size, UIContext, LayoutConstraint } from '@kit.ArkUI';
@@ -831,9 +831,9 @@ FrameNode提供了查询节点相对窗口、父组件以及屏幕位置偏移�
 
 getPositionToWindow，getPositionToParent，getPositionToScreen三个接口获取到的位置信息关系如下图所示：
 
-![FrameNode-Position-Relation](./figures/frameNode-position-relation.png)
+FrameNode-Position-Relation
 
-<!-- @[frameNodePosition_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodePosition.ets) --> 
+<!-- @frameNodePosition_start --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
@@ -961,7 +961,7 @@ struct Index {
 
 通过typeNode创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
 
-<!-- @[frameNodeTypeNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTypeNode.ets) -->   
+<!-- @frameNodeTypeNode_start -->   
 
 ``` TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, typeNode } from '@kit.ArkUI';
@@ -1294,7 +1294,7 @@ struct Index {
 >
 > 通过getUniqueId可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体FrameNode节点。
 
-<!-- @[frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDisposed.ets) --> 
+<!-- @frameNodeDisposed_start --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -1407,7 +1407,7 @@ struct Index {
 
 从API version 20开始，使用isDisposed接口查询当前FrameNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
-<!-- @[frameNodeDisposed_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsDisposed.ets) --> 
+<!-- @frameNodeDisposed_start --> 
 
 ``` TypeScript
 import { NodeController, FrameNode } from '@kit.ArkUI';
@@ -1480,7 +1480,7 @@ struct Index {
 >
 > 入参不能为负数，入参为负数时不做处理。
 
-<!-- @[frameNodeLazyForEach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEach.ets) -->   
+<!-- @frameNodeLazyForEach_start -->   
 
 ``` TypeScript
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
@@ -1706,7 +1706,7 @@ struct Index {
 
 可以使用getFirstChildIndexWithoutExpand和getLastChildIndexWithoutExpand获取当前节点第一个和最后一个在主节点树上的子节点的序列号，其中子节点序列号按所有子节点计算。
 
-<!-- @[frameNodeLazyForEachSelect_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEachSelect.ets) --> 
+<!-- @frameNodeLazyForEachSelect_start --> 
 
 ``` TypeScript
 import { NodeController, FrameNode, UIContext, BuilderNode, ExpandMode, LengthUnit } from '@kit.ArkUI';
@@ -1984,7 +1984,7 @@ struct Index {
 
 **ArkTS接口调用示例：**
 
-<!-- @[frameNodeCanvas_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
+<!-- @frameNodeCanvas_start --> 
 
 ``` TypeScript
 import { NodeController, UIContext, DrawContext, FrameNode } from '@kit.ArkUI';
@@ -2119,13 +2119,13 @@ struct Index {
   }
 }
 ```
-![FrameNode-canvas](./figures/frameNode-canvas.png)
+FrameNode-canvas
 
 ## 更新当前帧节点
 
 从API version 21开始，通过使用frameNode的invalidateAttributes方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
 
-<!-- @[frameNodeInvalidateAttributes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeInvalidateAttributes.ets) --> 
+<!-- @frameNodeInvalidateAttributes_start --> 
 
 ``` TypeScript
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
@@ -2221,13 +2221,13 @@ struct ListNodeTest {
 }
 
 ```
-![invalidateAttributes](./figures/invalidateAttributes.png)
+invalidateAttributes
 
  ## 判断节点是否处于渲染状态
 
 从API version 23开始，通过使用FrameNode的isInRenderState方法，判断FrameNode节点是否处于渲染状态。
 
-<!-- @[frameNodeIsInRenderState_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsInRenderState.ets) -->  
+<!-- @frameNodeIsInRenderState_start -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2293,4 +2293,4 @@ struct Index {
   }
 }
 ```
-![isInRenderState](./figures/isInRenderState.png)
+isInRenderState

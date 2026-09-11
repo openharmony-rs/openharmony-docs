@@ -72,7 +72,7 @@
 
 - **开发工具及配置**：
 
-  DevEco Studio作为开发工具，是进行串口通信开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
+  DevEco Studio作为开发工具，是进行串口通信开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考DevEco Studio使用指南中的创建工程及运行进行基本的操作验证，保证DevEco Studio可正常运行。
 
 - **SDK版本配置**：
 
@@ -80,7 +80,7 @@
 
 ### 搭建环境
 
-- 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在6.1及以上。
+- 在PC上安装DevEco Studio，要求版本在6.1及以上。
 - 将public-SDK更新到API 26.0.0或以上<!--Del-->，更新SDK的具体操作可参见更新指南<!--DelEnd-->。
 - 准备串口连接线缆，将OpenHarmony设备的串口端口与目标设备的串口正确连接。
 
@@ -129,7 +129,7 @@ SerialConfigs配置参数说明：
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @head -->
    
    ``` TypeScript
    import { serial, BusinessError } from '@kit.BasicServicesKit';
@@ -137,7 +137,7 @@ SerialConfigs配置参数说明：
 
 2. 获取串口设备列表。
 
-   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @getSerialPortList -->
    
    ``` TypeScript
    try {
@@ -157,7 +157,7 @@ SerialConfigs配置参数说明：
 
 3. 打开串口设备。
 
-   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @open -->
    
    ``` TypeScript
    try {
@@ -181,7 +181,7 @@ SerialConfigs配置参数说明：
 
 4. 注册数据接收回调，监听串口数据。
 
-   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @onDataRead -->
    
    ``` TypeScript
    try {
@@ -202,7 +202,7 @@ SerialConfigs配置参数说明：
 
 5. 通过串口写入数据。
 
-   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @write -->
    
    ``` TypeScript
    try {
@@ -221,7 +221,7 @@ SerialConfigs配置参数说明：
 
 6. 刷新缓冲区与等待发送完成。
 
-   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @flush -->
    
    ``` TypeScript
    try {
@@ -241,7 +241,7 @@ SerialConfigs配置参数说明：
 
    * 设置RTS信号为高电平。
 
-     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @setRts -->
      
      ``` TypeScript
      try {
@@ -259,7 +259,7 @@ SerialConfigs配置参数说明：
 
    * 获取CTS信号状态。
 
-     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @getCts -->
      
      ``` TypeScript
      try {
@@ -277,7 +277,7 @@ SerialConfigs配置参数说明：
 
    * 发送break信号。
 
-     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @sendBrk -->
      
      ``` TypeScript
      try {
@@ -295,7 +295,7 @@ SerialConfigs配置参数说明：
 
    * 设置DTR信号为高电平。
 
-     <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @setDtr -->
      
      ``` TypeScript
      try {
@@ -313,7 +313,7 @@ SerialConfigs配置参数说明：
 
    * 获取DSR信号状态。
 
-     <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @getDsr -->
      
      ``` TypeScript
      try {
@@ -331,7 +331,7 @@ SerialConfigs配置参数说明：
 
 8. 监听串口断开事件。
 
-   <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @onDisconnect -->
    
    ``` TypeScript
    try {
@@ -352,7 +352,7 @@ SerialConfigs配置参数说明：
 
 9. 注销数据接收回调和关闭串口设备。
 
-   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @close -->
    
    ``` TypeScript
    try {

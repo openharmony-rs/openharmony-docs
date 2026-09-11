@@ -62,7 +62,7 @@
 
    示例Skill运行时需要添加网络权限访问云端音乐列表，在`module`标签下的requestPermissions标签配置。
 
-   <!-- @[module_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/src/main/module.json5) -->
+   <!-- @module_skill -->
    
    ``` JSON5
    {
@@ -95,7 +95,7 @@
 
    入口脚本需要从`@kit.AbilityKit`引入`scriptManager`，同时引入待桥接的应用内业务模块。
 
-   <!-- @[music_skill_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @music_skill_import -->
    
    ``` TypeScript
    
@@ -112,7 +112,7 @@
    - **方法名约定**：必须与SKILL.md中的`functionName`严格一致（本例为`playMusicByName`、`controlPlayback`）。
    - **方法签名约定**：第一个参数类型固定为ArkTSScriptInfo。
 
-   <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @music_skill -->
    
    ``` TypeScript
    export default class MusicSkill {
@@ -136,7 +136,7 @@
 
    每个能力方法的第一项任务是从`argv`中按位置获取参数，对照SKILL.md的`args` Schema完成前置校验。
 
-   <!-- @[music_skill_verify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @music_skill_verify -->
    
    ``` TypeScript
    // 例1：playMusicByName 的两个可选参数，至少一个非空
@@ -164,7 +164,7 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets)  -->
+   <!-- @music_skill_try  -->
    
    ``` TypeScript
    
@@ -184,7 +184,7 @@
 
    业务执行完成后，需将结果封装为ExecuteResult，并通过调用completeArkTSScriptInApp回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
 
-   <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @music_skill_branch -->
    
    ``` TypeScript
    // 成功分支示例
@@ -392,4 +392,4 @@
 
 针对应用Skill开发，可参考以下相关实例：
 
-- [音乐助手Skill示例工程（example-org-music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)
+- 音乐助手Skill示例工程（example-org-music-assistant）

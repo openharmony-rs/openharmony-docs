@@ -52,7 +52,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用OH_CryptoSymCipher_Final，获取解密后的数据。
 
-<!-- @[crypt_decrypt_sm4_ecb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_ecb_encryption_decryption.cpp) -->
+<!-- @crypt_decrypt_sm4_ecb -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -163,7 +163,7 @@ end:
 
 4. 调用OH_CryptoSymCipher_Final，获取解密后的数据。
 
-<!-- @[crypt_decrypt_sm4_cbc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_cbc_encryption_decryption.cpp) -->
+<!-- @crypt_decrypt_sm4_cbc -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -285,7 +285,7 @@ end:
 
 4. 调用OH_CryptoSymCipher_Final，获取解密后的数据。
 
-<!-- @[crypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_encryption_decryption.cpp) -->
+<!-- @crypt_decrypt_sm4_gcm -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -435,7 +435,7 @@ end:
 
 4. 调用OH_CryptoSymCipher_Final，获取解密后的数据。
 
-<!-- @[crypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_seg_encryption_decryption.cpp) -->
+<!-- @crypt_decrypt_sm4_gcm_seg -->
 
 ``` C++
 #include <cstring>

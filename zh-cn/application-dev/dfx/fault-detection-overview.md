@@ -21,4 +21,4 @@
 >
 > 3. 应用卡死后生成AppFreeze日志并被强制终止退出，详见AppFreeze（应用冻屏）检测。
 >
-> 4. 应用进程被系统终止造成其非预期退出，详见[App Killed（应用终止）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/appkilled-guidelines)。
+> 4. 应用进程被系统终止造成其非预期退出，详见App Killed（应用终止）检测。

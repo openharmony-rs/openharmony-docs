@@ -33,7 +33,7 @@
 
 1. 封装函数
 
-   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @encapsulation_function -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -134,7 +134,7 @@
 
 2. 注册函数
 
-   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @registration_function -->
    
    ``` C++
    EXTERN_C_START
@@ -154,7 +154,7 @@
 
 3. 注册模块
 
-   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @registration_module -->
    
    ``` C++
    static napi_module demoModule = {
@@ -175,7 +175,7 @@
 
 ### 在index.d.ts文件中声明函数
 
-   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   <!-- @declaration_function -->
    
    ``` TypeScript
    import backgroundTaskManager from '@kit.BackgroundTasksKit';
@@ -188,7 +188,7 @@
 
 ### 在index.ets文件中调用函数
 
-   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @native_transient_task -->   
    
    ``` TypeScript
    import testTransientTask from 'libentry.so';
@@ -286,7 +286,7 @@
 
 配置`CMakeLists.txt`，本模块需要用到的共享库是`libtransient_task.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
-   <!-- @[dependent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/CMakeLists.txt) -->
+   <!-- @dependent -->
    
    ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so libtransient_task.so)

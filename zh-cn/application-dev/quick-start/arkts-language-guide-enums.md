@@ -30,7 +30,7 @@ enum EnumName {
 
 枚举提供类型安全与可读性：编译期拒绝非法成员值，语义化命名替代魔术数字，相关常量集中定义便于维护，DevEco Studio可提供成员智能提示。
 
-<!-- @[basic_enum_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @basic_enum_declaration -->
 
 ``` TypeScript
 // 基本枚举声明
@@ -85,7 +85,7 @@ let defaultDir: Direction = getDefaultDirection();
 
 枚举成员应使用PascalCase命名，避免缩写，名称需语义化地表达其所代表的含义。
 
-<!-- @[enum_naming_conventions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_naming_conventions -->
 
 ``` TypeScript
 // 枚举名：PascalCase
@@ -136,7 +136,7 @@ updateStatus(PaymentStatus.Completed);
 
 无值枚举的成员不带初始值，从0开始自动递增。
 
-<!-- @[numeric_enum_auto_increment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @numeric_enum_auto_increment -->
 
 ``` TypeScript
 // 无值枚举（默认数值枚举）
@@ -197,7 +197,7 @@ getPriority(Level.High);  // 10
 
 通过枚举名访问成员值，数值枚举支持反向映射（成员名↔值），字符串枚举仅支持正向映射。
 
-<!-- @[ts_string_and_numeric_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_string_and_numeric_enum -->
 
 ``` TypeScript
 // 字符串枚举
@@ -233,7 +233,7 @@ enum Mixed {
 
 原始值的自动赋值是指在数值枚举中，未显式赋值的成员会自动获得递增的数值，从0开始或从上一个显式值继续递增。
 
-<!-- @[enum_auto_increment_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_auto_increment_rules -->
 
 ``` TypeScript
 // 数值枚举自动递增
@@ -265,7 +265,7 @@ enum AutoStringEnum {
 
 原始值与枚举成员的双向映射是指可以通过枚举成员获取原始值，也可以通过原始值获取枚举成员名称。
 
-<!-- @[enum_bidirectional_mapping](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_bidirectional_mapping -->
 
 ``` TypeScript
 // 数值枚举支持双向映射
@@ -311,7 +311,7 @@ console.info(`${getBiRoleName(200)}`);  // Moderator
 
 从外部传入的字符串或数值反查对应枚举成员：通常用switch逐个匹配原始值并返回相应成员，无匹配时返回undefined，实现原始值到枚举的反向初始化。
 
-<!-- @[parse_enum_from_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @parse_enum_from_value -->
 
 ``` TypeScript
 // 从字符串创建枚举值
@@ -379,7 +379,7 @@ TypeScript/ArkTS不支持带关联值的枚举（如Swift的enum）。如需表�
 
 通过接口联合为不同枚举值关联各自的数据结构。
 
-<!-- @[simulated_associated_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @simulated_associated_values -->
 
 ``` TypeScript
 // TypeScript不支持关联值枚举
@@ -432,7 +432,7 @@ let failure: OperationResult = { type: 'failure', error: 'Error' };
 
 为不同状态定义各自的接口，通过联合类型组合。
 
-<!-- @[discriminated_union_message_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @discriminated_union_message_types -->
 
 ``` TypeScript
 // 不同类型的关联值
@@ -497,7 +497,7 @@ handleMessage(imageMessage);
 
 通过判别字段（如success/type/kind）区分不同形态的对象，在switch分支中访问对应字段的数据。
 
-<!-- @[extract_associated_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @extract_associated_values -->
 
 ``` TypeScript
 // TypeScript支持：let { value } = result;
@@ -541,7 +541,7 @@ if (value !== undefined) {
 
 用switch匹配枚举值，在各分支中访问对应的关联数据。
 
-<!-- @[shape_area_calculation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @shape_area_calculation -->
 
 ``` TypeScript
 interface DocCircleShape {
@@ -593,7 +593,7 @@ TypeScript/ArkTS原生枚举不支持迭代，需要手动实现。
 
 原生枚举不可迭代，通过手动维护一个返回全部成员的数组，即可用for...of遍历枚举的全部值或名称。
 
-<!-- @[iterate_enum_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @iterate_enum_values -->
 
 ``` TypeScript
 // 手动创建枚举值数组
@@ -637,7 +637,7 @@ for (let status of getStatusValues()) {
 
 通过手动维护枚举成员数组获取全部成员。
 
-<!-- @[enum_member_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_member_list -->
 
 ``` TypeScript
 enum ListNumberEnum {
@@ -683,7 +683,7 @@ for (let i = 0; i < LIST_COLOR_VALUES.length; i++) {
 
 用一个常量数组列举全部枚举成员，即可在此基础上获取成员数量、校验某值是否为合法枚举值，或判断取值是否落在允许范围内。
 
-<!-- @[enum_value_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_value_validation -->
 
 ``` TypeScript
 // 使用常量数组
@@ -735,7 +735,7 @@ TypeScript不支持直接继承已有枚举，但可以通过命名空间合并�
 
 使用命名空间为枚举添加静态方法，实现枚举扩展。
 
-<!-- @[namespace_extension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @namespace_extension -->
 
 ``` TypeScript
 enum NsColor {
@@ -767,7 +767,7 @@ console.info(`${nsName}`); // 红色
 
 枚举本身不能定义方法，可将相关行为集中到一个静态辅助类中：以枚举成员为入参，用switch分发返回显示名称、颜色码等附加信息，使数据与逻辑分离。
 
-<!-- @[enum_helper_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_helper_class -->
 
 ``` TypeScript
 enum HelperColor {
@@ -813,7 +813,7 @@ let hex: string = ColorHelper.getHex(red);
 
 通过类为枚举值关联额外的属性和方法。
 
-<!-- @[complex_enum_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @complex_enum_values -->
 
 ``` TypeScript
 interface PriorityInfo {
@@ -843,7 +843,7 @@ let allPriorities: PriorityInfo[] = PriorityLevel.getAll();
 
 枚举适合表示状态机的有限状态集和错误码体系，配合switch可实现穷尽性分支处理，确保所有情况都被覆盖。
 
-<!-- @[state_machine_and_error_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @state_machine_and_error_code -->
 
 ``` TypeScript
 enum State {
@@ -927,7 +927,7 @@ let isServer: boolean = ErrorCodeHelper.isServerError(ErrorCode.ServerError);
 
 同一枚举中所有成员的类型必须一致（全部数值或全部字符串）。
 
-<!-- @[ts_enum_member_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_enum_member_types -->
 
 ``` TypeScript
 // 枚举成员是唯一类型
@@ -960,7 +960,7 @@ moveHorizontal(Direction.Up);  // 编译错误：类型不匹配
 
 将枚举类型用作函数参数或返回值类型时，编译器会拒绝任何非该枚举成员的值传入，配合switch可穷尽分支处理；用作对象属性类型时，可对一组相关配置字段做联合约束。
 
-<!-- @[ts_enum_as_type_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_enum_as_type_usage -->
 
 ``` TypeScript
 // 枚举作为参数
@@ -1028,7 +1028,7 @@ let languages: Language[] = [Language.English, Language.Chinese];
 
 使用枚举替代魔术字符串/数值，提升代码可读性和可维护性。
 
-<!-- @[replace_magic_strings_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @replace_magic_strings_numbers -->
 
 ``` TypeScript
 // 反例：使用魔术字符串
@@ -1108,7 +1108,7 @@ enum OrderStatus {
 
 当枚举所有成员都是字面量成员时，枚举成员本身也可作为类型使用，枚举成为其所有成员的联合类型。
 
-<!-- @[union_enum_member_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @union_enum_member_type -->
 
 ``` TypeScript
 enum ShapeKind {
@@ -1134,7 +1134,7 @@ console.info(`${ueCircle.radius.toString()}`);  // 10
 
 **TypeScript对照**
 
-<!-- @[ts_enum_member_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_enum_member_type_error -->
 
 ``` TypeScript
 // TypeScript对照写法，演示枚举成员类型不兼容
@@ -1158,7 +1158,7 @@ let tsUeBad: TsUeCircle = { kind: TsShapeKind.Square, radius: 10 };
 
 `const enum`在编译时内联成员值，不生成运行时枚举对象。ArkTS支持`const enum`。但需注意：在跨项目共享时（通过`.d.ts`文件）存在版本依赖风险——`const enum`的成员值在编译时被内联到消费方的代码中，若`const enum`源定义变更，消费方需重新编译才能获取新值。推荐项目内部使用`const enum`，跨项目共享时使用普通枚举。
 
-<!-- @[const_enum_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @const_enum_usage -->
 
 ``` TypeScript
 const enum CeConstDirection {
@@ -1172,7 +1172,7 @@ console.info(`${cedDir}`); // 0
 
 使用普通枚举替代`const enum`，可避免跨项目陷阱：
 
-<!-- @[const_enum_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @const_enum_alternative -->
 
 ``` TypeScript
 enum CeDirection {
@@ -1190,7 +1190,7 @@ console.info(`${ceD}`);  // 0
 
 **TypeScript对照**
 
-<!-- @[ts_enum_keyof_typeof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_enum_keyof_typeof -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS中手动维护键数组
@@ -1206,7 +1206,7 @@ type TsLogLevelStrings = keyof typeof TsLogLevel;
 
 ArkTS中手动维护枚举键数组。
 
-<!-- @[enum_keyof_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @enum_keyof_alternative -->
 
 ``` TypeScript
 enum EkLogLevel {
@@ -1234,7 +1234,7 @@ ekPrintImportant('ERROR', 'System error');
 
 **TypeScript对照**
 
-<!-- @[ts_object_vs_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_object_vs_enum -->
 
 ``` TypeScript
 // TypeScript对照写法
@@ -1250,7 +1250,7 @@ type TsDirection = typeof TsODirection[keyof typeof TsODirection];
 
 ArkTS中使用枚举或显式常量替代。
 
-<!-- @[object_vs_enum_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @object_vs_enum_alternative -->
 
 ``` TypeScript
 enum OvDirection {
@@ -1275,7 +1275,7 @@ TypeScript支持异构枚举，即数值和字符串混合的枚举。ArkTS不�
 
 **TypeScript对照**
 
-<!-- @[ts_heterogeneous_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_heterogeneous_enum -->
 
 ``` TypeScript
 // TypeScript异构枚举，ArkTS不支持
@@ -1290,7 +1290,7 @@ console.info(`${MixedResult.Yes}`);  // YES
 
 ArkTS推荐做法：按值类型拆分为独立枚举。
 
-<!-- @[split_heterogeneous_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @split_heterogeneous_enum -->
 
 ``` TypeScript
 enum HeNumericResult {
@@ -1315,7 +1315,7 @@ TypeScript枚举成员分为常量成员和计算成员。常量成员在编译�
 - 无初始化值且前一成员为数值常量，值为前一成员`+1`。
 - 用常量枚举表达式（字面量、引用已有常量成员、一元运算符作用于常量、二元运算符）初始化。
 
-<!-- @[constant_enum_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @constant_enum_members -->
 
 ``` TypeScript
 enum ConstExampleEnum {
@@ -1331,7 +1331,7 @@ enum ConstExampleEnum {
 
 **TypeScript对照**
 
-<!-- @[ts_computed_enum_member](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Enums.ts) -->
+<!-- @ts_computed_enum_member -->
 
 ``` TypeScript
 // TypeScript计算成员写法
@@ -1349,7 +1349,7 @@ enum ComputedExample {
 
 `declare enum`声明已存在的枚举（Ambient enum），不生成运行时代码，用于声明文件中描述外部枚举的类型。外部模块的类型声明也可由编译器自动生成。
 
-<!-- @[ambient_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Enums.ets) -->
+<!-- @ambient_enum -->
 
 ``` TypeScript
 declare enum AmbientExternalEnum {

@@ -85,7 +85,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码：
 
-<!-- @[oh_jsvm_create_arraybuffer_from_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutExternalArraybuffer/createarraybufferfromexternalmemory/src/main/cpp/hello.cpp) -->
+<!-- @oh_jsvm_create_arraybuffer_from_external_memory -->
 
 ``` C++
 #define JSVM_EXPERIMENTAL  // 必须在include jsvm.h之前定义，否则无法调用实验接口

@@ -28,7 +28,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libpixelmap.so)
 
 在初始化参数后创建Pixelmap实例，进行图片像素数据的读写，对图片进行缩放、位置变换、反转、旋转、裁剪等操作。
 
-<!-- @[ndk_pixelmap_bitmap_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/NdkPixelMap/entry/src/main/cpp/libimage/pixelmap.cpp) -->
+<!-- @ndk_pixelmap_bitmap_operations -->
 
 ``` C++
 #include <hilog/log.h>

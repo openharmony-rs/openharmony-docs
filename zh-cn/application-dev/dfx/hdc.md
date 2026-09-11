@@ -19,7 +19,7 @@ hdc包含三部分：
 
 如图所示：
 
-![hdc_image_005](figures/hdc_image_005.PNG)
+hdc_image_005
 
 > **说明：**
 >
@@ -31,11 +31,11 @@ hdc包含三部分：
 
 hdc可以选择以下任意一种方式获取：
 
-1.通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
+1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入DevEco Studio中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
 
-2.通过[Command Line Tools](https://developer.huawei.com/consumer/cn/download/)工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
+2. 通过Command Line Tools工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
 
-hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发者选项中开启或关闭调试开关 ，无需重启设备即可生效。如果设备未启用“开发者选项”，可参考[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)进行启用。具体调试连接方式及操作步骤请参考USB连接场景和TCP连接场景。
+hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发者选项中开启或关闭调试开关 ，无需重启设备即可生效。如果设备未启用“开发者选项”，可参考开发者选项进行启用。具体调试连接方式及操作步骤请参考USB连接场景和TCP连接场景。
 
 ### （可选）命令行直接执行hdc程序
 
@@ -412,7 +412,7 @@ $ hdc -t connect-key1 wait # 多设备需使用-t指定连接设备。
 
 远程连接场景指客户端（通常是开发者使用的本地电脑）通过网络与服务器（通常是连接了调试设备的服务器或开发机）建立连接，实现客户端对目标设备的远程调试，控制和管理。
 
-![hdc_image_004](figures/hdc_image_004.PNG)
+hdc_image_004
 
 远程连接使用-s参数来指定服务器的网络参数，包括地址和端口号，该设置只在当前命令执行期间有效，命令格式如下：
 
@@ -597,12 +597,12 @@ hdc shell [-b bundlename] [command]
 
 | 参数 | 说明 |
 | -------- | -------- |
-| -b bundlename | API版本15新增参数。指定可调试应用包名。<br/>- 指定command参数时：在该可调试应用数据目录内以非交互式模式执行命令。[命令行方式访问应用沙箱](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。<br/>自API版本26.0.0起，参数新增以下特性：<br>- 缺省command参数时，支持进入可调试应用数据目录的交互式shell会话，默认工作目录即为可调试应用数据目录根路径。<br/>- 缺省[-b bundlename]参数时，默认执行路径为系统根目录。 |
+| -b bundlename | API版本15新增参数。指定可调试应用包名。<br/>- 指定command参数时：在该可调试应用数据目录内以非交互式模式执行命令。命令行方式访问应用沙箱。<br/>自API版本26.0.0起，参数新增以下特性：<br>- 缺省command参数时，支持进入可调试应用数据目录的交互式shell会话，默认工作目录即为可调试应用数据目录根路径。<br/>- 缺省[-b bundlename]参数时，默认执行路径为系统根目录。 |
 | command | 需要在设备上执行的单次命令，不同类型或版本的系统支持的command命令有所差异，可以通过hdc shell ls /system/bin查阅支持的命令列表。当前大多数命令都是由toybox提供，可通过 hdc shell toybox --help 获取命令帮助。<br/>缺省该参数，hdc将会启动一个交互式的shell会话，开发者可以在命令提示符下输入命令，比如 ls、cd、pwd 等。 |
 
 > **说明：**
 >
-> 使用参数[-b bundlename]指定包名，该包名对应的已安装应用必须满足以下条件：使用调试证书签名，并且已在设备上启动。有关如何申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+> 使用参数[-b bundlename]指定包名，该包名对应的已安装应用必须满足以下条件：使用调试证书签名，并且已在设备上启动。有关如何申请调试证书及签名可参考：申请调试证书。
 >
 > 当设备系统版本和hdc版本均低于API版本26.0.0时，缺省command参数进入的交互式shell会话默认工作目录仍为系统根目录。建议升级设备系统版本并参考hdc版本配套表确认版本兼容性，可通过hdc shell hdcd -v命令查询设备系统版本号。
 
@@ -805,7 +805,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
 | -cwd | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始发送文件为test，所在目录为/data，实际发送文件路径为/data/test；如果使用-cwd "/user/"，实际发送文件路径为/user/test。 |
-| -b | API版本15新增参数（低版本使用会提示[Fail]Unknown file option: -b），用于指定可调试应用包名。<br/>使用方法可参考[通过命令往应用沙箱目录中发送文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
+| -b | API版本15新增参数（低版本使用会提示[Fail]Unknown file option: -b），用于指定可调试应用包名。<br/>使用方法可参考通过命令往应用沙箱目录中发送文件。 |
 | bundlename | 指定可调试应用包名。 |
 
 **返回信息**：
@@ -850,7 +850,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
 | -m | 文件传输时同步文件DAC权限，uid，gid，MAC权限。<br/>DAC（Discretionary Access Control）：自主访问控制，<br/>uid（User identifier）：用户标识符（或用户ID），<br/>gid（Group identifier）：组标识符（或组ID），<br/>MAC（Mandatory Access Control）：强制访问控制（或非自主访问控制）。 |
 | -cwd | 修改工作目录。<br>用于在文件传输时，切换SOURCE到指定path。例如，初始接收文件目录为/data/，如果使用-cwd "/user/"，实际接收文件目录为/user/。 |
-| -b | API版本15新增参数，用于传输指定的可调试应用进程应用数据目录下的文件。<br/>使用方法可参考[从沙箱目录中下载文件到本地计算机](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-device-file-explorer#section48216711204)。 |
+| -b | API版本15新增参数，用于传输指定的可调试应用进程应用数据目录下的文件。<br/>使用方法可参考从沙箱目录中下载文件到本地计算机。 |
 | bundlename | 可调试应用进程的包名。 |
 
 **返回信息**：
@@ -878,7 +878,7 @@ FileTransfer finish, Size:xxx, File...
 
 > **说明：**
 >
-> 使用参数[-b bundlename]指定包名，应满足条件：指定包名的已安装应用为“使用调试证书签名的应用”且在设备上已启动，如何申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+> 使用参数[-b bundlename]指定包名，应满足条件：指定包名的已安装应用为“使用调试证书签名的应用”且在设备上已启动，如何申请调试证书及签名可参考：申请调试证书。
 >
 > **版本更新说明**：从API版本12开始，支持使用中文字符作为文件传输命令参数，便于多语言环境下使用。
 
@@ -1151,7 +1151,7 @@ hdc -m
 | 返回信息 | 说明 |
 | -------- | -------- |
 | Initial failed. | 服务进程初始化失败。 |
-| [I][1970-01-01 00:00:00.000] Program running. Ver: X.X.Xx Pid:XXX.<br/>... | 正常打印对应等级的日志，显示服务器进程活动状态。 |
+| I Program running. Ver: X.X.Xx Pid:XXX.<br/>... | 正常打印对应等级的日志，显示服务器进程活动状态。 |
 
 **使用方法**：
 
@@ -1899,7 +1899,7 @@ Linux和MacOS系统非管理员角色运行hdc后，使用USB方式连接设备�
 
    MacOS运行环境：建议使用MacOS 11及以上版本。
 
-   Windows运行环境：建议使用Windows10或Windows11 64位版本，如低版本缺失WinUSB库或驱动，请使用Zadig工具进行更新。对于需要安装驱动的设备，请使用Zadig工具安装libusb-win32驱动。详情请见：[Zadig链接](https://github.com/pbatard/libwdi/releases)。
+   Windows运行环境：建议使用Windows10或Windows11 64位版本，如低版本缺失WinUSB库或驱动，请使用Zadig工具进行更新。对于需要安装驱动的设备，请使用Zadig工具安装libusb-win32驱动。详情请见：Zadig链接。
 
 2. 运行方式不当：请使用命令行依照正确命令运行hdc工具，而非鼠标双击文件。
 
@@ -1909,7 +1909,7 @@ Linux和MacOS系统非管理员角色运行hdc后，使用USB方式连接设备�
 
 hdc文件传输命令执行出现乱码，如使用file recv从设备端发送带有中文名称的文件到本地，报错提示[Fail]Error opening file: no such file or directory, path:XXXXX，其中path显示中文乱码。
 
-![File transfer garbled text ](figures/file_transfer_garbled_text.png)
+File transfer garbled text 
 
 **可能原因&amp;解决方法**
 
@@ -1923,7 +1923,7 @@ API版本12开始，文件传输命令支持参数路径中包含中文，版本
 
 使用hdc list targets命令查询已连接设备，连接设备标识后显示Unauthorized。
 
-![Device not certified ](figures/device_not_certified.png)
+Device not certified 
 
 **可能原因&amp;解决方法**
 
@@ -2020,7 +2020,7 @@ hdc命令执行后未输出预期内容，可能涉及以下场景。
 
 > **说明：**
 >
-> 更多常见问题处理可见[FAQ](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-performance-analysis-kit)。
+> 更多常见问题处理可见FAQ。
 
 ## hdc错误码
 
@@ -2377,7 +2377,7 @@ Invalid bundle name: bundlename.
       "appProvisionType": "debug",
       ```
 
-   - 要构建可调试应用，需要使用调试证书进行签名。可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
+   - 要构建可调试应用，需要使用调试证书进行签名。可参考：申请调试证书。
 
 3. 场景三：确定命令指定的应用已启动。
   
@@ -2483,9 +2483,9 @@ The parameter is missing, correct your input by referring below: Usage...
 
 **错误描述**
 
-1. 命令hdc file send [-b bundlename][SOURCE][DEST]缺少必要的参数。
+1. 命令hdc file send -b bundlename[DEST]缺少必要的参数。
 
-2. 命令hdc file recv [-b bundlename][DEST][SOURCE]缺少必要的参数。
+2. 命令hdc file recv -b bundlename[SOURCE]缺少必要的参数。
 
 **可能原因**
 
@@ -2547,9 +2547,9 @@ Remote path: xxx is invalid, no such file/directory or it's out of the applicati
 
 **错误描述**
 
-1. 命令hdc file send [-b bundlename][SOURCE][DEST]指定的DEST表示的路径不存在或已超出应用数据目录。
+1. 命令hdc file send -b bundlename[DEST]指定的DEST表示的路径不存在或已超出应用数据目录。
 
-2. 命令hdc file recv [-b bundlename][SOURCE][DEST]指定的DEST表示的路径不存在或已超出应用数据目录。
+2. 命令hdc file recv -b bundlename[DEST]指定的DEST表示的路径不存在或已超出应用数据目录。
 
 **可能原因**
 

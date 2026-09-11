@@ -229,7 +229,7 @@ struct GridExample {
 }
 ```
 
-![grid-use-columnStart](./figures/grid-use-columnStart.png)
+grid-use-columnStart
 
 **正例：**
 
@@ -327,7 +327,7 @@ struct GridExample {
 }
 ```
 
-![grid-use-gridLayoutOptions](./figures/grid-use-gridLayoutOptions.png)
+grid-use-gridLayoutOptions
 
 ### 效果对比
 
@@ -339,24 +339,24 @@ struct GridExample {
 
 图1 使用columnStart，columnEnd的打点信息
 
-![grid-columnStart-trace](./figures/grid-columnStart-trace.png)
+grid-columnStart-trace
 
 如图2所示，在“H:useColumnStartColumnEndGrid”打点标签时间段中存在大量的“H:Builder:BuildLazyItem”标签，可以发现Grid在查找指定的Index：1900是依次遍历Index来查找的。
 
 图2 使用columnStart，columnEnd的放大trace标签信息
 
-![grid-columnStart-enlarge](./figures/grid-columnStart-enlarge.png)
+grid-columnStart-enlarge
 
 如图3所示，使用GridLayoutOptions设置GridItem大小的布局方式，从自定义打点标签“H:useGridLayoutOptions”上可以看出从调用scrollToIndex到查找到指定Index准备构建GridItem节点耗时464ms。
 
 图3 使用GridLayoutOptions的打点信息
 
-![grid-gridLayoutOptions-trace](./figures/grid-gridLayoutOptions-trace.png)
+grid-gridLayoutOptions-trace
 
 如图4所示，在“H:useGridLayoutOptions”打点标签时间段中只存在一个“H:Builder:BuildLazyItem”标签，可以发现Grid在查找指定Index：1900是直接一次查找到指定Index的。
 
 图4 使用GridLayoutOptions的放大trace标签信息
 
-![grid-gridLayoutOptions-enlarge](./figures/grid-gridLayoutOptions-enlarge.png)
+grid-gridLayoutOptions-enlarge
 
 通过上述分析可以发现，在相同布局情况下，使用columnStart，columnEnd设置GridItem大小方式，Grid在使用scrollToIndex查找指定Index时，会依次遍历GridItem节点，查找过程耗时较长。而使用GridLayoutOptions设置GridItem大小方式，是直接一次计算找到指定Index，查找过程耗时较短。所以使用GridLayoutOptions设置GridItem大小方式，在使用scrollToIndex滑动指定Index时，能够有效减少Grid加载时间，提升应用性能。

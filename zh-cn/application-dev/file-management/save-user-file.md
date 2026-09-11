@@ -65,7 +65,7 @@ PhotoViewPicker在后续版本不再演进，建议使用Media Library Kit（媒
 
 3. 创建文件选择器DocumentViewPicker实例。调用save()接口拉起FilePicker界面进行文件保存。
 
-   <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   <!--@save_file_picker-->
 
    ``` TypeScript
    let uris: string[] = [];
@@ -127,7 +127,7 @@ PhotoViewPicker在后续版本不再演进，建议使用Media Library Kit（媒
 
 3. 创建音频选择器AudioViewPicker实例。调用save()接口拉起FilePicker界面进行文件保存。
 
-   <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
+   <!--@audio_save_file-->
 
    ``` TypeScript
    let uris: string[] = [];

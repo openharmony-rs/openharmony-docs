@@ -55,7 +55,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用OH_CryptoSymCipher_Final，获取解密后的数据。
 
-<!-- @[encrypt_decrypt_chacha20_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/cpp/types/project/chacha20_encryption_decryption.cpp) -->
+<!-- @encrypt_decrypt_chacha20_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
@@ -214,7 +214,7 @@ end:
 
 4. 调用OH_CryptoSymCipher_Final，获取解密后的数据。
 
-<!-- @[poly1305_encrypt_decrypt_chacha20_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/cpp/types/project/chacha20_poly1305_encryption_decryption.cpp) -->
+<!-- @poly1305_encrypt_decrypt_chacha20_symkey -->
 
 ``` C++
 #include "CryptoArchitectureKit/crypto_common.h"

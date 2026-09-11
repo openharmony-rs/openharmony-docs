@@ -1,7 +1,7 @@
 # 使用Node-API接口进行primitive类相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -41,7 +41,7 @@ Node-API接口开发流程请参考使用Node-API实现跨语言交互开发流�
 
 cpp部分代码
 
-<!-- @[napi_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_coerce_to_bool -->
 
 ``` C++
 // napi_coerce_to_bool
@@ -61,7 +61,7 @@ static napi_value CoerceToBool(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_coerce_to_bool_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_coerce_to_bool_api --> 
 
 ``` TypeScript
 export const coerceToBool: <T>(data: T) => boolean; // napi_coerce_to_bool
@@ -69,7 +69,7 @@ export const coerceToBool: <T>(data: T) => boolean; // napi_coerce_to_bool
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_coerce_to_bool -->
 
 ``` TypeScript
 // napi_coerce_to_bool
@@ -94,7 +94,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_bool:%{public}s', re
 
 cpp部分代码
 
-<!-- @[napi_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_coerce_to_number -->
 
 ``` C++
 // napi_coerce_to_number
@@ -113,7 +113,7 @@ static napi_value CoerceToNumber(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_coerce_to_number_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_coerce_to_number_api --> 
 
 ``` TypeScript
 export const coerceToNumber: <T>(data: T) => number; // napi_coerce_to_number
@@ -121,7 +121,7 @@ export const coerceToNumber: <T>(data: T) => number; // napi_coerce_to_number
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_coerce_to_number -->
 
 ``` TypeScript
 // napi_coerce_to_number
@@ -141,7 +141,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_number:%{public}d', 
 
 cpp部分代码：
 
-<!-- @[napi_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_coerce_to_object -->
 
 ``` C++
 // napi_coerce_to_object
@@ -160,7 +160,7 @@ static napi_value CoerceToObject(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_coerce_to_object_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
+<!-- @napi_coerce_to_object_api -->  
 
 ``` TypeScript
 export const coerceToObject: <T>(data: T) => Object; // napi_coerce_to_object
@@ -168,7 +168,7 @@ export const coerceToObject: <T>(data: T) => Object; // napi_coerce_to_object
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_coerce_to_object -->
 
 ``` TypeScript
 // napi_coerce_to_object
@@ -188,7 +188,7 @@ if (typeof value === 'object') {
 
 cpp部分代码
 
-<!-- @[napi_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_coerce_to_string -->
 
 ``` C++
 // napi_coerce_to_string
@@ -207,7 +207,7 @@ static napi_value CoerceToString(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_coerce_to_string_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_coerce_to_string_api --> 
 
 ``` TypeScript
 export const coerceToString: <T>(data: T) => string; // napi_coerce_to_string
@@ -215,7 +215,7 @@ export const coerceToString: <T>(data: T) => string; // napi_coerce_to_string
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_coerce_to_string -->
 
 ``` TypeScript
 // napi_coerce_to_string
@@ -234,7 +234,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_coerce_to_string:%{public}s', 
 
 cpp部分代码
 
-<!-- @[napi_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_boolean -->
 
 ``` C++
 // napi_get_boolean
@@ -268,7 +268,7 @@ static napi_value GetBoolean(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_boolean_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_get_boolean_api --> 
 
 ``` TypeScript
 export const getBoolean: <T>(data: T, value: String) => boolean; // napi_get_boolean
@@ -276,7 +276,7 @@ export const getBoolean: <T>(data: T, value: String) => boolean; // napi_get_boo
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_boolean -->
 
 ``` TypeScript
 // napi_get_boolean
@@ -291,7 +291,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_boolean:%{public}s', data)
 
 cpp部分代码
 
-<!-- @[napi_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_value_bool -->
 
 ``` C++
 // napi_get_value_bool
@@ -319,7 +319,7 @@ static napi_value GetValueBool(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_value_bool_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_get_value_bool_api --> 
 
 ``` TypeScript
 export const getValueBool: (value: boolean | string) => boolean | undefined; // napi_get_value_bool
@@ -327,7 +327,7 @@ export const getValueBool: (value: boolean | string) => boolean | undefined; // 
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_value_bool -->
 
 ``` TypeScript
 // napi_get_value_bool
@@ -344,7 +344,7 @@ hilog.info(0x0000, 'Node-API', 'get_value_bool_false %{public}s', testNapi.getVa
 
 cpp部分代码
 
-<!-- @[napi_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_global -->
 
 ``` C++
 // napi_get_global
@@ -359,7 +359,7 @@ static napi_value GetGlobal(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_global_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_get_global_api --> 
 
 ``` TypeScript
 export const getGlobal: () => Object; // napi_get_global
@@ -367,7 +367,7 @@ export const getGlobal: () => Object; // napi_get_global
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_global -->
 
 ``` TypeScript
 // napi_get_global
@@ -383,7 +383,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_global:%{public}s',
 
 cpp部分代码
 
-<!-- @[napi_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_null -->
 
 ``` C++
 // napi_get_null
@@ -397,7 +397,7 @@ static napi_value GetNull(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_null_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_get_null_api --> 
 
 ``` TypeScript
 export const getNull: () => null; // napi_get_null
@@ -405,7 +405,7 @@ export const getNull: () => null; // napi_get_null
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_null -->
 
 ``` TypeScript
 // napi_get_null
@@ -419,7 +419,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_null:%{public}s', value);
 
 cpp部分代码
 
-<!-- @[napi_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @napi_get_undefined -->
 
 ``` C++
 // napi_get_undefined
@@ -445,7 +445,7 @@ static napi_value GetUndefined(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @[napi_get_undefined_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+<!-- @napi_get_undefined_api --> 
 
 ``` TypeScript
 export const getUndefined: (value: undefined) => boolean; // napi_get_undefined
@@ -453,7 +453,7 @@ export const getUndefined: (value: undefined) => boolean; // napi_get_undefined
 
 ArkTS侧示例代码
 
-<!-- @[ark_napi_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPrimitive/entry/src/main/ets/pages/Index.ets) -->
+<!-- @ark_napi_get_undefined -->
 
 ``` TypeScript
 // napi_get_undefined

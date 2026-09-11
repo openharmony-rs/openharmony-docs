@@ -34,7 +34,7 @@ MindSpore Lite提供面向不同硬件设备的AI模型推理能力，使用Mind
 
 **图 1** 使用MindSpore Lite进行模型推理的开发流程
 
-![mindspore workflow](figures/mindspore_workflow.jpg)
+mindspore workflow
 
 MindSpore Lite开发流程分为两个阶段：
 

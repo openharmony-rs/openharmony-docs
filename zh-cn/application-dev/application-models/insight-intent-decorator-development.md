@@ -49,7 +49,7 @@
 
     开发标准意图无需开发者自行定义意图的大语言模型描述、意图参数定义和意图执行结果定义，根据"schema"字段和"intentVersion"字段匹配附录：标准意图接入规范中的标准意图。意图执行器需要从InsightIntentEntryExecutor\<T>类继承，实现onExecute()方法。
 
-    <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
+    <!-- @insight_intent_view_logistics -->
     
     ``` TypeScript
     import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
@@ -111,7 +111,7 @@
 
     开发自定义意图需要开发者定义意图的大语言模型描述、意图搜索关键字、意图参数定义和意图执行结果定义。意图执行器需要从InsightIntentEntryExecutor\<T>类继承，实现onExecute()方法。
 
-    <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
+    <!-- @insight_intent_play_music -->
     
     ``` TypeScript
     // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
@@ -186,7 +186,7 @@
 
     开发者将歌手信息（包括名称、国家、城市）定义为类，并使用@InsightIntentEntity装饰器将该类定义为意图实体。装饰器的parameters属性列出了类的数据成员、数据格式及每个成员的必选性。
 
-    <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets) -->
+    <!-- @insight_intent_artist_information -->
     
     ``` TypeScript
     import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
@@ -228,7 +228,7 @@
 
 2. 使用意图实体。添加@InsightIntentEntry装饰器的意图使用音乐名称和歌手信息（ArtistClassDef意图实体）作为播放音乐的入参。
 
-    <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
+    <!-- @insight_intent_use_intent -->
     
     ``` TypeScript
     import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor, InsightIntentEntity } from '@kit.AbilityKit';
@@ -341,7 +341,7 @@
 
     onQueryEntity接口需要根据传入的查询参数QueryEntityParam返回符合条件的实体列表。推荐在QueryEntityParam中的queryType为ALL时返回意图实体全部信息（例如返回所有歌单列表）；在queryType为BY_PROPERTY时，根据QueryEntityParam中的parameters属性值筛选符合条件的信息（例如同时传入歌单名称和创建者时，返回歌单名称和创建者均匹配的歌单列表）。
 
-    <!-- @[appIntentEntity_AppPlaylistEntity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+    <!-- @appIntentEntity_AppPlaylistEntity -->
     
     ``` TypeScript
     import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
@@ -435,7 +435,7 @@
 
 2. 使用可查询意图实体：添加@InsightIntentEntry装饰器的意图使用音乐名称和歌单信息（AppPlaylistEntity意图实体）作为播放音乐的入参。系统入口在调用意图前，会先根据歌单ID、歌单名称或者创建者查询应用内歌单信息。
 
-    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) --> 
+    <!-- @appIntentEntity_PlayMusicListImpl --> 
     
     ``` TypeScript
     

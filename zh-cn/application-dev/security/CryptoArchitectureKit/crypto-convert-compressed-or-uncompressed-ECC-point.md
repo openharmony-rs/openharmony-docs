@@ -19,7 +19,7 @@ ECC的算法规格请查看非对称密钥生成和转换规格：ECC。
 
 2. 调用ECCKeyUtil.getEncodedPoint，获取压缩点数据。
 
-<!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/CompressedPointData.ets) -->
+<!-- @convert_ecc_uncompressed_point -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -46,7 +46,7 @@ function eccPointUncompressedToCompressed() {
 6. 调用ECCKeyUtil.getEncodedPoint，得到非压缩点数据。
 7. 调用PubKey.getAsyKeySpec，获取ECC算法中公钥pk的x坐标。
 
-<!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/ets/pages/GetKeyObject.ets) -->
+<!-- @specify_ecc_uncompressed_point_get_keypair -->
 
 ``` TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';

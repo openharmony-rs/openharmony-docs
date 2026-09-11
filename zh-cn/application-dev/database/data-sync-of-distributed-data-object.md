@@ -34,7 +34,7 @@
 
 **图1** 分布式数据对象运作机制 
 
-![distributedObject](figures/distributedObject.jpg)
+distributedObject
 
 分布式数据对象生长在分布式内存数据库之上，在分布式内存数据库上进行了JS对象型的封装，能像操作本地变量一样操作分布式数据对象，数据的跨设备同步由系统自动完成。
 
@@ -55,7 +55,7 @@
 
   **图2** 对象的同步关系  
 
-![distributedObject_sync](figures/distributedObject_sync.jpg)
+distributedObject_sync
 
 一个同步关系中，一个设备只能有一个对象加入。比如上图中，设备A的“分布式数据对象1”已经加入了session1的同步关系，所以设备A的“分布式数据对象2”就加入失败了。
 
@@ -83,7 +83,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 **图3** 数据同步视图 
 
 
-![distributedObject_syncView](figures/distributedObject_syncView.jpg)
+distributedObject_syncView
 
 
 ### 对象持久化缓存机制
@@ -189,7 +189,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 >
 > - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见文件管理和文件URI。
 
-<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+<!-- @data_sync_on_distributed_data_object_cross_device_migration-->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -396,7 +396,7 @@ export default class EntryAbility extends UIAbility {
 
  示例代码如下：
 
-<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
+<!-- @data_sync_on_distributed_data_object_cross_device_collaboration-->
 
 ``` TypeScript
 import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
@@ -528,6 +528,6 @@ function getRemoteDeviceId() {
 
 针对分布式数据对象开发，有以下相关实例可供参考：
 
-- [设备管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
+- 设备管理（ArkTS）（Full SDK）（API10）
 
-- [分布式备忘录（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedNote)
+- 分布式备忘录（ArkTS）（Full SDK）（API10）

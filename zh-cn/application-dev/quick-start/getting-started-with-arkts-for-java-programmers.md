@@ -21,7 +21,7 @@
 
 **ArkTS示例：**
 
-<!-- @[variable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @variable_declaration --> 
 
 ``` TypeScript
 // 类型注解（类似Java）
@@ -60,7 +60,7 @@ let version = 5.0;
 
 **ArkTS示例：**
 
-<!-- @[function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @function_declaration --> 
 
 ``` TypeScript
 // 常规函数定义
@@ -108,7 +108,7 @@ ArkTS提供类型声明层面的多态，仅用于类型检查和文档提示，
 
 **ArkTS示例：** ArkTS函数重载
 
-<!-- @[function_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @function_overloading --> 
 
 ``` TypeScript
 function foo(x: number): void;            /* 第一个函数定义 */
@@ -136,7 +136,7 @@ ArkTS采用更为灵活的语言结构，融合了面向对象编程和函数式
 
 **ArkTS示例：**
 
-<!-- @[import_package](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @import_package --> 
 
 ``` TypeScript
 // 引入ArkTS标准库中的ArkTS容器集
@@ -162,7 +162,7 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 
 **ArkTS示例：**
 
-<!-- @[namespace_models](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @namespace_models --> 
 
 ``` TypeScript
 namespace Models {
@@ -211,7 +211,7 @@ ArkTS的this指向取决于函数调用时的上下文。
 
 **ArkTS示例：**
 
-<!-- @[class_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @class_this --> 
 
 ``` TypeScript
 class A {
@@ -255,7 +255,7 @@ ArkTS具有强大的类型推断能力，编译器能够根据上下文自动推
 
 **ArkTS示例：**
 
-<!-- @[type_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @type_interface --> 
 
 ``` TypeScript
 let num = 10; // 编译器自动推断num为number类型
@@ -265,7 +265,7 @@ let num = 10; // 编译器自动推断num为number类型
 
 **ArkTS示例：**
 
-<!-- @[optional_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @optional_type --> 
 
 ``` TypeScript
 interface Person {
@@ -286,7 +286,7 @@ ArkTS支持联合类型（`|`）。联合类型表示一个值可以是多种类
 
 **ArkTS示例：**
 
-<!-- @[unite_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @unite_type --> 
 
 ``` TypeScript
 // 联合类型示例

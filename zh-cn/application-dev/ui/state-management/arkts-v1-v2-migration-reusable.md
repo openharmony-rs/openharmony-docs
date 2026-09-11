@@ -123,7 +123,7 @@ ReusableV2Component().reuse({reuseId: () => 'groupA'})
 
 \@ReusableV2的if使用场景示例代码如下：
 
-<!-- @[reusable_if_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableIfScene.ets) -->
+<!-- @reusable_if_scene -->
 
 ``` TypeScript
 // 数据模型，使用@ObservedV2和@Trace实现深度观察
@@ -188,7 +188,7 @@ struct Child {
   }
 }
 ```
-![](figures/v1_v2_reusable_if.gif)
+
 
 ### 列表滚动-Repeat使用场景
 
@@ -196,7 +196,7 @@ struct Child {
 
 \@ReusableV2的列表滚动-Repeat使用场景示例代码如下：
 
-<!-- @[reusable_repeat_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableRepeatScene.ets) -->
+<!-- @reusable_repeat_scene -->
 
 ``` TypeScript
 @Entry
@@ -270,7 +270,7 @@ export struct CardViewV2 {
   }
 }
 ```
-![](figures/v1_v2_reusable_repeat.gif)
+
 
 ### 列表滚动-if使用场景
 
@@ -278,7 +278,7 @@ export struct CardViewV2 {
 
 \@ReusableV2的列表滚动-if使用场景示例代码如下：
 
-<!-- @[reusable_list_if_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableListIfScene.ets) -->
+<!-- @reusable_list_if_scene -->
 
 ``` TypeScript
 @Entry
@@ -378,7 +378,7 @@ export struct OneMoment {
   }
 }
 ```
-![](figures/v1_v2_reusable_if_two.gif)
+
 
 ### 列表滚动-Repeat全量加载使用场景
 
@@ -388,7 +388,7 @@ export struct OneMoment {
 
 \@ReusableV2的列表滚动-Repeat全量加载使用场景示例代码如下：
 
-<!-- @[reusable_repeat_all_load_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableRepeatAllLoadScene.ets) -->
+<!-- @reusable_repeat_all_load_scene -->
 
 ``` TypeScript
 // xxx.ets
@@ -500,7 +500,7 @@ class ListItemObject {
   @Trace public isExpand: boolean = false;
 }
 ```
-![](figures/v1_v2_reusable_repeat_two.gif)
+
 
 ### Grid使用场景
 
@@ -508,7 +508,7 @@ class ListItemObject {
 
 \@ReusableV2的Grid使用场景示例代码如下：
 
-<!-- @[reusable_grid_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableGridScene.ets) -->
+<!-- @reusable_grid_scene -->
 
 ``` TypeScript
 @Entry
@@ -571,7 +571,7 @@ struct ReusableV2ChildComponent {
   }
 }
 ```
-![](figures/v1_v2_reusable_grid.png)
+
 
 ### WaterFlow使用场景
 
@@ -579,7 +579,7 @@ struct ReusableV2ChildComponent {
 
 \@ReusableV2的WaterFlow使用场景示例代码如下：
 
-<!-- @[reusable_waterflow_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableWaterFlowScene.ets) -->
+<!-- @reusable_waterflow_scene -->
 
 ``` TypeScript
 // 复用组件
@@ -677,7 +677,7 @@ struct ReusableWaterFlowScene {
   }
 }
 ```
-![](figures/v1_v2_reusable_waterflow.gif)
+
 
 ### Swiper使用场景
 
@@ -685,7 +685,7 @@ struct ReusableWaterFlowScene {
 
 \@ReusableV2的Swiper使用场景示例代码如下：
 
-<!-- @[reusable_swiper_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableSwiperScene.ets) -->
+<!-- @reusable_swiper_scene -->
 
 ``` TypeScript
 @Entry
@@ -785,7 +785,7 @@ struct QuestionSwiperItem {
   }
 }
 ```
-![](figures/v1_v2_reusable_swiper.gif)
+
 
 
 ### 列表滚动-ListItemGroup使用场景
@@ -794,7 +794,7 @@ struct QuestionSwiperItem {
 
 \@ReusableV2的列表滚动-ListItemGroup使用场景示例代码如下：
 
-<!-- @[reusable_listitemgroup_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableListItemGroupScene.ets) -->
+<!-- @reusable_listitemgroup_scene -->
 
 ``` TypeScript
 @Entry
@@ -868,7 +868,7 @@ class DataSrc {
   @Trace public dataScr1: string[] = [];
 }
 ```
-![](figures/v1_v2_reusable_listitemgroup.gif)
+
 
 ### 多种条目类型使用场景
 
@@ -884,7 +884,7 @@ class DataSrc {
 
 复用组件间存在差异，但类型有限。例如，可以通过显式设置两个reuse选项或使用两个自定义组件来实现复用。
 
-<!-- @[reusable_limit_type_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableLimitTypeScene.ets) -->
+<!-- @reusable_limit_type_scene -->
 
 ``` TypeScript
 @Entry
@@ -955,13 +955,13 @@ struct ReusableV2Component {
   }
 }
 ```
-![](figures/v1_v2_reusable_limit.png)
+
 
 **组合型**
 
 复用组件间存在多种差异，但通常具备共同的子组件。将三种复用组件以组合型方式转换为@Builder函数后，内部的共享子组件将统一置于父组件MyComponentV2之下。复用这些子组件时，缓存池在父组件层面实现共享，减少组件创建过程中的资源消耗。
 
-<!-- @[reusable_group_type_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableGroupTypeScene.ets) -->
+<!-- @reusable_group_type_scene -->
 
 ``` TypeScript
 @Entry
@@ -1132,4 +1132,4 @@ struct ChildComponentD {
   }
 }
 ```
-![](figures/v1_v2_reusable_group.png)
+

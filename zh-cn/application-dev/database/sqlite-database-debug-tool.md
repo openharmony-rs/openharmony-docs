@@ -15,12 +15,12 @@ SQLite是一款轻量级、嵌入式、无服务器的关系型数据库管理�
 >
 > - 从OpenHarmony 6.0开始，支持使用SQLite调试工具。
 > 
-> - 开发者也可以通过DevEco Studio调试数据库，具体操作方式请参考[访问应用数据库](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-database-inspector)。
+> - 开发者也可以通过DevEco Studio调试数据库，具体操作方式请参考访问应用数据库。
 <!--RP1End-->
 
 ## 环境要求
 
-- 开发者在使用本工具前需开启[开发者模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)，且需要获取[hdc工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hdc)，执行hdc shell。
+- 开发者在使用本工具前需开启开发者模式，且需要获取hdc工具，执行hdc shell。
 - 连接设备。
 
 ## 操作准备
@@ -299,7 +299,7 @@ sqlite> SELECT * FROM COMPANY;
 
 ## 相关参考
 
-[SQLite官方网站](https://SQLite.org/docs.html)提供了丰富的示例代码，包括创建数据库、创建表、插入数据和查询数据等操作，开发者可以进行参考和查看。
+SQLite官方网站提供了丰富的示例代码，包括创建数据库、创建表、插入数据和查询数据等操作，开发者可以进行参考和查看。
 
 ## 常见问题
 

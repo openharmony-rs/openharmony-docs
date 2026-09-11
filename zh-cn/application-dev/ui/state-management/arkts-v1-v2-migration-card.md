@@ -55,7 +55,7 @@ V1与V2在数据接收上的核心差异在于匹配规则：
 
 卡片入口组件使用`@Entry(storage)`传入LocalStorage，并通过`@LocalStorageProp('title')`、`@LocalStorageProp('detail')`接收刷新数据，匹配依据为装饰器入参key值。
 
-<!-- @[CardMigrationV1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCardV1.ets) -->
+<!-- @CardMigrationV1 -->
 
 ``` TypeScript
 // 创建LocalStorage实例，用于在卡片入口组件与卡片提供方之间传递刷新数据
@@ -105,7 +105,7 @@ struct WidgetCardV1 {
 
 入口组件迁移为`@Entry @ComponentV2`，移除LocalStorage实例的创建与传入；\@LocalStorageProp迁移为\@Local，变量名`title`、`detail`分别与updateForm推送数据的key保持一致，系统据此将刷新数据直接通知到对应装饰器。
 
-<!-- @[CardMigrationV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+<!-- @CardMigrationV2 -->
 
 ``` TypeScript
 // V2迁移后入口组件使用@ComponentV2，无需再传入LocalStorage实例
@@ -150,7 +150,7 @@ struct WidgetCard {
 
 卡片提供方FormExtensionAbility的实现无需改动，updateForm推送的数据key与V2卡片中的变量名一致即可生效。
 
-<!-- @[CardMigrationFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+<!-- @CardMigrationFormAbility -->
 
 ``` TypeScript
 // 卡片提供方接收到卡片页面postCardAction触发的message事件后，在此回调中处理刷新逻辑
@@ -174,7 +174,7 @@ onFormEvent(formId: string, message: string) {
 }
 ```
 
-![card_migration](./figures/card_migration.gif)
+card_migration
 
 ## 卡片跨组件数据共享迁移
 
@@ -188,7 +188,7 @@ onFormEvent(formId: string, message: string) {
 
 入口组件与子组件均通过\@LocalStorageProp读取LocalStorage中的同一份数据实现共享。
 
-<!-- @[CardMigrationShareV1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCardV1.ets) -->
+<!-- @CardMigrationShareV1 -->
 
 ``` TypeScript
 // 创建LocalStorage实例，用于在卡片入口组件、子组件与卡片提供方之间传递共享数据
@@ -251,7 +251,7 @@ struct ChildComp1 {
 
 入口组件移除LocalStorage，仅组件内部使用的`title`迁移为\@Local；需要跨组件共享的`detail`迁移为\@Provider，子组件通过\@Consumer同步数据。updateForm推送数据的key为`detail`，与\@Provider的变量名一致，数据更新后通过\@Provider/\@Consumer自动同步给子组件。
 
-<!-- @[CardMigrationShareV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCard.ets) -->
+<!-- @CardMigrationShareV2 -->
 
 ``` TypeScript
 // V2迁移后入口组件使用@ComponentV2，无需再传入LocalStorage实例
@@ -309,4 +309,4 @@ struct ChildComp {
 }
 ```
 
-![card_migration](./figures/card_migration_share.gif)
+card_migration

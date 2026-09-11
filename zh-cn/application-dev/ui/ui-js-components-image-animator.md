@@ -56,7 +56,7 @@ export default {
 };
 ```
 
-![image-animator-Component](figures/image-animator-Component.gif)
+image-animator-Component
 
 
 ## 设置image-animator组件属性
@@ -139,7 +139,7 @@ export default {
 };
 ```
 
-![image-animator-Component-1](figures/image-animator-Component-1.gif)
+image-animator-Component-1
 
 > **说明：**
 > - 如果在images属性中设置了单独的duration属性，在image-animator组件中设置的duration属性无效。
@@ -229,7 +229,7 @@ export default {
 }
 ```
 
-![Binding-Events-1](figures/Binding-Events-1.gif)
+Binding-Events-1
 
 
 ## 场景示例
@@ -338,11 +338,11 @@ export default {
 }
 ```
 
-![Example-Scenario-8](figures/Example-Scenario-8.gif)
+Example-Scenario-8
 
 
 ## 相关实例
 
 针对image-animator开发，有以下相关实例可供参考：
 
-- [image、image-animator组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/ClickableJs)
+- image、image-animator组件的使用（JS）（API9）

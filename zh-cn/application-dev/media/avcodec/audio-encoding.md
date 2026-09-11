@@ -39,7 +39,7 @@
 
 - 实线表示必选。
 
-![Invoking relationship of audio encode stream](figures/audio-codec.png)
+Invoking relationship of audio encode stream
 
 ### 在 CMake 脚本中链接动态库
 
@@ -179,13 +179,13 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    配置选项key值说明：
 
    <!--RP2-->
-   ![Audio encoder key configuration](figures/encoder_key.png)
+   Audio encoder key configuration
    <!--RP2End-->
 
    各音频编码类型参数范围说明：
 
    <!--RP3-->
-   ![Audio encoder format range description](figures/encoder_format.png)
+   Audio encoder format range description
    <!--RP3End-->
 
    例如对一个44100Hz采样率、2声道立体声、SAMPLE_S16LE采样格式的PCM音频，以32000bps的码率进行AAC编码的调用流程如下：
@@ -477,4 +477,4 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 针对音频编码，有以下相关实例可供参考：
 
-- [音频编码](https://gitcode.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_aac_encoder_demo.cpp)
+- 音频编码

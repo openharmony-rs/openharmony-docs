@@ -22,7 +22,7 @@
 自定义组件生命周期流程如下图所示。
 
 
-![custom-component-lifecycle-demo1](figures/custom-component-lifecycle-demo1.png)
+custom-component-lifecycle-demo1
 
 
 根据上面的流程图，接下来从自定义组件的初始创建、重新渲染和删除来详细说明。
@@ -62,7 +62,7 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
+<!-- @nested_custom_components --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -138,7 +138,7 @@ struct Child {
 }
 ```
 
-![page-custom-components-lifecycle-0](figures/page-custom-components-lifecycle-0.gif)
+page-custom-components-lifecycle-0
 
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
 
@@ -178,4 +178,4 @@ Child onDidBuild
 ```
 当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
-![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)
+custom-component-lifecycle-demo2

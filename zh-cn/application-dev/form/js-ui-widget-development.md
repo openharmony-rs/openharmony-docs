@@ -60,7 +60,7 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
 1. 在JsCardFormAbility.ets中，导入相关模块。
 
-   <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+   <!-- @JSForm_JsCardFormAbility_import --> 
    
    ``` TypeScript
    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -74,7 +74,7 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
-   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+   <!-- @JSForm_JsCardFormAbility_FormExtensionAbility --> 
    
    ``` TypeScript
    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -178,7 +178,7 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
    配置示例如下：
 
-   <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
+   <!-- @JSForm_modulejson5 --> 
    
    ``` JSON5
    {
@@ -260,7 +260,7 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
 代码导入请参考创建卡片FormExtensionAbility中的导入模块。
 
-<!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+<!-- @JSForm_JsCardFormAbility_onAddForm --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -314,7 +314,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 且需要适配onRemoveForm卡片删除通知接口，在其中实现卡片实例数据的删除。
 
-<!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+<!-- @JSForm_JsCardFormAbility_onRemoveForm --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -365,7 +365,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 当卡片应用需要更新数据时（如触发了定时更新或定点更新），卡片应用获取最新数据，并调用updateForm()接口主动触发卡片的更新。
 
 代码导入请参考创建卡片FormExtensionAbility中的导入模块。
-<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @JSForm_JsCardFormAbility_onUpdateForm -->
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -398,7 +398,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 开发者可以使用类Web范式（HML+CSS+JSON）开发JS卡片页面。生成如下卡片页面，可以这样配置卡片页面文件：
 
-![WidgetCardPage](figures/WidgetCardPage.png)
+WidgetCardPage
 
 - HML：使用类Web范式的组件描述卡片的页面信息。
 
@@ -633,7 +633,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 - 在UIAbility中接收router事件并获取参数
 
-    <!-- @[JSForm_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+    <!-- @JSForm_EntryAbility --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryability/EntryAbility.ets
@@ -668,7 +668,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 - 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考创建卡片FormExtensionAbility中的导入模块。
 
-    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    <!-- @JSForm_JsCardFormAbility_onFormEvent -->
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -698,9 +698,9 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 针对卡片开发，有以下相关实例可供参考：
 
-- [JS多设备自适应服务卡片（JS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/AdaptiveServiceWidget)
+- JS多设备自适应服务卡片（JS）（API9）
 
-- [电影卡片（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Card/MovieCard)
+- 电影卡片（JS）（API9）
 
-- [计步器卡片（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Card/StepsCardJS)
+- 计步器卡片（JS）（API9）
 <!--DelEnd-->

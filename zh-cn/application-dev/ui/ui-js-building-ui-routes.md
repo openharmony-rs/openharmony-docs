@@ -90,4 +90,4 @@ export default {
 
 运行效果如下图所示：
 
-![Implementing-Redirection](figures/Implementing-Redirection.png)
+Implementing-Redirection

@@ -35,7 +35,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-   <!-- @[parsingXML_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   <!-- @parsingXML_import -->
    
    ``` TypeScript
    import { xml, util } from '@kit.ArkTS'; // 需要使用util模块函数对文本编码
@@ -45,7 +45,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
    可以基于ArrayBuffer创建XmlPullParser对象，也可以基于DataView创建XmlPullParser对象（两种创建方式返回结果无区别）。
 
-   <!-- @[parsingXML_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   <!-- @parsingXML_xmlPullParser -->
    
    ``` TypeScript
    let strXml: string =
@@ -60,7 +60,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
    ```
 
-   <!-- @[parsingXML_xmlPullParser_method_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->   
+   <!-- @parsingXML_xmlPullParser_method_two -->   
    
    ``` TypeScript
    // 方式2：基于DataView构造XmlPullParser对象
@@ -70,7 +70,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
-   <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) --> 
+   <!-- @parsingXML_callback --> 
    
    ``` TypeScript
    function func(name: string, value: string): boolean {
@@ -90,7 +90,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 4. 设置解析选项，调用parseXml函数。
 
-   <!-- @[parsingXML_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
+   <!-- @parsingXML_option -->
    
    ``` TypeScript
    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
@@ -117,7 +117,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-   <!-- @[attribute_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   <!-- @attribute_import -->
    
    ``` TypeScript
    import { xml, util } from '@kit.ArkTS'; // 使用util模块对文本编码
@@ -125,7 +125,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 2. 对XML文本编码后调用XmlPullParser。
 
-   <!-- @[attribute_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   <!-- @attribute_xmlPullParser -->
    
    ``` TypeScript
    let strXml: string =
@@ -142,7 +142,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 3. 自定义回调函数，示例直接打印出属性及属性值。
 
-   <!-- @[attribute_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   <!-- @attribute_callback -->
    
    ``` TypeScript
    let str: string = '';
@@ -154,7 +154,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 4. 设置解析选项，调用parseXml函数。
 
-   <!-- @[attribute_parseXml](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingAttributesAndValues.ets) -->
+   <!-- @attribute_parseXml -->
    
    ``` TypeScript
    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
@@ -172,7 +172,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-   <!-- @[eventTypes_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   <!-- @eventTypes_import -->
    
    ``` TypeScript
    import { xml, util } from '@kit.ArkTS'; // 使用util模块函数对文本编码
@@ -180,7 +180,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 2. 对XML文本编码后调用XmlPullParser。
 
-   <!-- @[eventTypes_xmlPullParser](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   <!-- @eventTypes_xmlPullParser -->
    
    ``` TypeScript
    let strXml: string =
@@ -195,7 +195,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 3. 自定义回调函数，示例直接打印元素事件类型及元素深度。
 
-   <!-- @[eventTypes_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   <!-- @eventTypes_callback -->
    
    ``` TypeScript
    let str: string = '';
@@ -209,7 +209,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 4. 设置解析选项，调用parseXml函数。
 
-   <!-- @[eventTypes_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingEventTypesAndElementInformation.ets) -->
+   <!-- @eventTypes_option -->
    
    ``` TypeScript
    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
@@ -235,7 +235,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 此处以调用所有解析选项为例，提供解析XML标签、属性和事件类型的开发示例。
 
-<!-- @[example_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ExampleScenario.ets) -->
+<!-- @example_scenario -->
 
 ``` TypeScript
 import { xml, util } from '@kit.ArkTS';

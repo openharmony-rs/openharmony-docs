@@ -13,7 +13,7 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 ## 开发步骤
 
 1. 接口所需模块导入。 
-    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_include_dlpPermission -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -27,7 +27,7 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     2.3 调用dlpPermission.generateDlpFileForEnterprise将明文文件加密生成企业账号DLP文件。
 
-    <!-- @[dlp_generateDlpFileForEnterprise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_generateDlpFileForEnterprise -->
     
     ``` TypeScript
     async generateDlpFileForEnterprise() {
@@ -82,7 +82,7 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     3.3 调用dlpPermission.decryptDlpFile将明文文件加密生成企业账号DLP文件。
 
-    <!-- @[dlp_decryptDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @dlp_decryptDlpFile -->
     
     ``` TypeScript
     async decryptDlpFile() {

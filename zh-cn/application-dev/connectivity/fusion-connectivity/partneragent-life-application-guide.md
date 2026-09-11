@@ -195,7 +195,7 @@ if (isBound == true) {
 
     EntryAbility中加载ets/pages/Index.ets绘制的页面，请求用户授予访问蓝牙权限。
 
-    ![请求用户授予访问蓝牙权限示意图](./figures/请求用户授予访问蓝牙权限示意图.jpg)
+    请求用户授予访问蓝牙权限示意图
 
     ``` TypeScript
     import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -252,7 +252,7 @@ if (isBound == true) {
 
     调用注册设备等功能接口。Index.ets中输入要注册的设备蓝牙地址，注册输入的蓝牙设备，去注册输入的蓝牙设备、查询设备的绑定状态，获取本机绑定的设备列表等。
 
-    ![设备管理功能示意图](./figures/设备管理功能示意图.jpg)
+    设备管理功能示意图
 
 
     ``` TypeScript

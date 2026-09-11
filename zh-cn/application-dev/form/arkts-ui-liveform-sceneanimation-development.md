@@ -17,11 +17,11 @@
 
 **图1** 互动卡片状态切换说明
 
-![live-form-status-change.png](figures/live-form-status-change.png)
+live-form-status-change.png
 
 **图2** 互动卡片动效触发流程
 
-![live-form-judge.PNG](figures/live-form-judge.PNG)
+live-form-judge.PNG
 
 ## 实现原理
 
@@ -29,15 +29,15 @@
 
 **图3** 点击触发互动卡片动效时序图
 
-![live-form-click-timeline.png](figures/live-form-click-timeline.png)
+live-form-click-timeline.png
 
 **图4** 定时定点触发互动卡片动效时序图
 
-![live-form-update-timeline.png](figures/live-form-update-timeline.png)
+live-form-update-timeline.png
 
 **图5** 摇一摇触发互动卡片动效时序图
 
-![live-form-shake-timeline.png](figures/live-form-shake-timeline.png)
+live-form-shake-timeline.png
 
 ## 约束和限制
 
@@ -60,7 +60,7 @@
 
 **图6** 互动卡片动效区域申请规则说明
 
-![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
+live-form-overflow-rule.png
 
 例如：某设备上一个2*2卡片宽度为158vp，高度为158vp。对应上图则有：
 
@@ -112,7 +112,7 @@
 
     通过LiveFormExtensionAbility创建互动卡片，创建时加载互动卡片页面。
 
-    <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) -->
+    <!-- @liveform_LiveFormExtensionAbility -->
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
@@ -153,7 +153,7 @@
 
 2. 实现互动卡片页面
 
-   <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
+   <!-- @liveform_MyLiveFormPage --> 
    
    ``` TypeScript
    // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
@@ -295,7 +295,7 @@
 
     在module.json5配置文件中extensionAbilities标签下配置LiveFormExtensionAbility。
 
-    <!-- @[liveform_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) -->
+    <!-- @liveform_modulejson5 -->
     
     ``` JSON5
     // entry/src/main/module.json5
@@ -330,7 +330,7 @@
 
     非激活态卡片页面开发同普通卡片开发流程完全一致，在widgetCard.ets中完成。widgetCard.ets文件在卡片创建时自动生成，卡片创建流程可以参考创建ArkTS卡片。在非激活态卡片页面实现点击卡片时，发起卡片动效请求。
 
-    <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+    <!-- @liveform_WidgetCard --> 
     
     ``` TypeScript
     // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -412,7 +412,7 @@
 
     互动卡片通过调用formProvider.requestOverflow接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考formInfo.OverflowInfo。其中，互动卡片可以通过调用formProvider.getFormRect接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考互动卡片请求参数约束。
 
-    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+    <!-- @liveform_EntryFormAbility -->
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -481,7 +481,7 @@
 
 2. 互动卡片动效工具函数实现
 
-   <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
+   <!-- @liveform_Constants --> 
    
    ``` TypeScript
    // entry/src/main/ets/common/Constants.ets
@@ -522,4 +522,4 @@
 ## 实现效果
 以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 formProvider.cancelOverflow 接口，打断当前破框动效，卡片切换为非激活态。
 
-![live-form-base-demo.gif](figures/live-form-base-demo.gif)
+live-form-base-demo.gif

@@ -30,14 +30,14 @@
    ```
 
 2. 获取系统字体信息。
-   <!-- @[arkts_system_font_info_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @arkts_system_font_info_get -->
    
    ``` TypeScript
    let fontConfig = font.getUIFontConfig();
    ```
 
 3. 在获取系统字体信息之后通过日志打印字体信息。
-   <!-- @[arkts_system_font_info_print](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @arkts_system_font_info_print -->
    
    ``` TypeScript
    console.info('sysFontMfg::font-dir -----------' + String(fontConfig.fontDir.length));
@@ -63,7 +63,7 @@
 
   以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-  ![Obtaining-System-Font](figures/Obtaining-System-Font.png)
+  Obtaining-System-Font
 
 ## 使用或切换系统字体
 
@@ -77,7 +77,7 @@
    ```
 
 2. 创建textStyle1，指定fontFamilies为“HarmonyOS Sans SC”，默认中文字体为“HarmonyOS Sans SC”。
-   <!-- @[arkts_use_and_change_system_font_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @arkts_use_and_change_system_font_step1 -->
    
    ``` TypeScript
    let textStyle1: text.TextStyle = {
@@ -88,7 +88,7 @@
    ```
 
 3. 创建textStyle2，指定fontFamilies为“HarmonyOS Sans TC”（该两种字体易于观察同一文字字型差异）。
-   <!-- @[arkts_use_and_change_system_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @arkts_use_and_change_system_font_step2 -->
    
    ``` TypeScript
    let textStyle2: text.TextStyle = {
@@ -99,7 +99,7 @@
    ```
 
 4. 创建段落生成器。
-   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @arkts_use_and_change_system_font_step3 --> 
    
    ``` TypeScript
    // 创建一个段落样式对象，以设置排版风格
@@ -115,7 +115,7 @@
    ```
 
 5. 先后将textStyle1和textStyle2添加到段落样式中并添加文字。
-   <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @arkts_use_and_change_system_font_step4 -->
    
    ``` TypeScript
    let str: string = '模块描述\n';
@@ -129,7 +129,7 @@
 
 6. 生成段落，用于后续绘制使用。
 
-   <!-- @[arkts_use_and_change_system_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @arkts_use_and_change_system_font_build -->
    
    ``` TypeScript
    let paragraph = paragraphBuilder.build();
@@ -137,4 +137,4 @@
 
 效果展示如下：
 
-![Using-or-Switching-System](figures/Using-or-Switching-System.png)
+Using-or-Switching-System

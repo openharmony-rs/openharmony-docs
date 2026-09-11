@@ -23,7 +23,7 @@
 
 4. 调用x509CertChain.validate使用校验参数校验证书链并返回结果。
 
-<!-- @[certificate_chain_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCertchainObject.ets) -->
+<!-- @certificate_chain_object_creation_and_validation -->
 
 ``` TypeScript
 

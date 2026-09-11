@@ -14,7 +14,7 @@
 
 **图1** 录制状态变化示意图
 
-![Recording status change](figures/video-recording-status-change.png)
+Recording status change
 
 状态的详细说明请参考AVRecorderState。
 
@@ -44,7 +44,7 @@
 
 1. 创建AVRecorder实例，实例创建完成进入idle状态。
 
-   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @create_recorder -->
    
    ``` TypeScript
    this.avRecorder = await media.createAVRecorder();
@@ -56,7 +56,7 @@
    | stateChange | 必要事件，监听录制器的state属性改变。 |
    | error | 必要事件，监听录制器的错误信息。 |
 
-   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @set_callback -->
    
    ``` TypeScript
    this.avRecorder?.on('stateChange', (state: media.AVRecorderState, reason: media.StateChangeReason) => {
@@ -85,7 +85,7 @@
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要调用基础文件操作接口（Core File Kit的ohos.file.fs）实现应用文件访问能力，获取方式参考应用文件访问与管理。
    > - 示例中配置的fileFormat视频文件封装格式、videoCodec视频编码格式请参考AVRecorderProfile。
 
-   <!-- @[prepare_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @prepare_video_recorder -->
    
    ``` TypeScript
    public async prepareVideoRecorder(context: common.Context): Promise<void> {
@@ -127,7 +127,7 @@
 
      输入源模块通过SurfaceID可以获取到Surface，通过Surface可以将视频数据流传递给AVRecorder，由AVRecorder再进行视频数据的处理。
 
-   <!-- @[get_input_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @get_input_surface -->
    
    ``` TypeScript
    let surfaceId: string | undefined = undefined;
@@ -143,7 +143,7 @@
 
 6. 开始录制，启动输入源输入视频数据，例如相机模块调用camera.VideoOutput.start接口启动相机录制。然后调用start接口，此时AVRecorder进入started状态。
 
-   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @start_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.start();
@@ -151,7 +151,7 @@
 
 7. 暂停录制，调用pause接口，此时AVRecorder进入paused状态，同时暂停输入源输入数据。例如相机模块调用camera.VideoOutput.stop停止相机视频数据输入。
 
-   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @pause_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.pause();
@@ -159,7 +159,7 @@
 
 8. 恢复录制，调用resume接口，此时再次进入started状态。
 
-   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @resume_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.resume();
@@ -167,7 +167,7 @@
 
 9. 停止录制，调用stop接口，此时进入stopped状态，同时停止相机录制。
 
-   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+   <!-- @stop_recorder -->
    
    ``` TypeScript
    await this.avRecorder?.stop();
@@ -176,7 +176,7 @@
 
 10. 重置资源，调用reset接口，重新进入idle状态，允许重新配置录制参数。
 
-    <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+    <!-- @reset_recorder -->
     
     ``` TypeScript
     await this.avRecorder?.reset();
@@ -184,7 +184,7 @@
 
 11. 销毁实例，调用release接口，进入released状态，退出录制，释放视频数据输入源相关资源，例如相机资源。
 
-    <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+    <!-- @release_recorder -->
     
     ``` TypeScript
     await this.avRecorder?.release();
@@ -194,7 +194,7 @@
 
 参考以下示例，完成“开始录制-暂停录制-恢复录制-停止录制”的完整流程。
 
-<!-- @[full_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVRecorder/AVRecorder/entry/src/main/ets/services/AVRecorderService.ets) -->
+<!-- @full_video_recorder -->
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

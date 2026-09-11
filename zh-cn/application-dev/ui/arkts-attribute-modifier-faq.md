@@ -15,7 +15,7 @@
 使用AttributeModifier对组件进行动态属性设置，设置某些属性后出现JS Crash。
 
 <!--RP1-->
-![](figures/jscrash_happened.png)
+
 <!--RP1End-->
 
 **解决措施**
@@ -54,4 +54,4 @@ struct attributeDemo {
   }
 }
 ```
-![attributeModifier_error](figures/attributeModifier_error.gif)
+attributeModifier_error

@@ -20,7 +20,7 @@ Button组件用于创建可点击的按钮，支持多种按钮类型和样式�
 
 使用createNode接口创建Button组件，节点类型为ARKUI_NODE_BUTTON。
 
- <!-- @[button_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->   
+ <!-- @button_create -->   
  
  ``` C++
  std::shared_ptr<NativeModule::ArkUIBaseNode> CreateButtonExample()
@@ -51,7 +51,7 @@ Button组件支持通过设置NODE_BUTTON_TYPE属性实现不同的按钮类型�
 
 下述示例将按钮类型设置为ARKUI_BUTTON_TYPE_CIRCLE圆形按钮。
 
-<!-- @[button_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @button_type -->
 
 ``` C++
 auto circleBtn = std::make_shared<NativeModule::ArkUIButtonNode>();
@@ -79,7 +79,7 @@ Slider组件用于创建滑动条，用户可以通过拖动滑块来选择数�
 
 使用createNode接口创建Slider组件，节点类型为ARKUI_NODE_SLIDER。
 
-<!-- @[slider_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @slider_create -->
 
 ``` C++
 std::shared_ptr<NativeModule::ArkUIBaseNode> CreateSliderExample()
@@ -118,7 +118,7 @@ Slider支持两种样式，通过ARKUI_SliderStyle枚举定义：
 
 如下示例代码创建了ARKUI_SLIDER_STYLE_IN_SET样式的Slider组件并设置了滑块和滑轨颜色。
 
-<!-- @[slider_inset_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @slider_inset_style -->
 
 ``` C++
 auto sliderInSet = std::make_shared<NativeModule::ArkUISliderNode>();
@@ -133,7 +133,7 @@ sliderInSet->SetTrackColor(0xFFFFFF00);
 
 Slider支持设置滑动方向（水平或垂直）、是否反向以及是否显示步长刻度。
 
-<!-- @[slider_outset_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @slider_outset_style -->
 
 ``` C++
 auto sliderOutSet = std::make_shared<NativeModule::ArkUISliderNode>();
@@ -172,7 +172,7 @@ Toggle组件用于创建开关，用户可以在开和关两种状态之间切�
 
 使用createNode接口创建Toggle组件，节点类型为ARKUI_NODE_TOGGLE。
 
-<!-- @[toggle_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @toggle_create -->
 
 ``` C++
 std::shared_ptr<NativeModule::ArkUIBaseNode> CreateToggleExample()
@@ -196,7 +196,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateToggleExample()
 
 可以设置Toggle开启状态背景色、关闭状态背景色以及滑块颜色。
 
-<!-- @[toggle_colors](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @toggle_colors -->
 
 ``` C++
 toggle->SetSelectedColor(0xFFFF0000);
@@ -223,7 +223,7 @@ Checkbox组件用于创建多选框，用户可以选中或取消选中。Checkb
 
 使用createNode接口创建Checkbox组件，节点类型为ARKUI_NODE_CHECKBOX。
 
-<!-- @[checkbox_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @checkbox_create -->
 
 ``` C++
 std::shared_ptr<NativeModule::ArkUIBaseNode> CreateCheckboxExample()
@@ -262,7 +262,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateCheckboxExample()
 
 CheckboxGroup用于管理同一组内的多个多选框，节点类型为ARKUI_NODE_CHECKBOX_GROUP。
 
-<!-- @[checkbox_group](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @checkbox_group -->
 
 ``` C++
 auto checkboxGroup = std::make_shared<NativeModule::ArkUICheckboxGroupNode>();
@@ -273,7 +273,7 @@ checkboxGroup->SetCheckboxGroupName("check_group");
 
 可以设置多选框的选中颜色、未选中颜色、形状以及所属组名。
 
-<!-- @[checkbox_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @checkbox_properties -->
 
 ``` C++
 checkbox1->SetCheckboxGroup("check_group");
@@ -322,7 +322,7 @@ Radio组件用于创建单选按钮，同一组内的单选按钮只能选中一
 
 使用createNode接口创建Radio组件，节点类型为ARKUI_NODE_RADIO。
 
-<!-- @[radio_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @radio_create -->
 
 ``` C++
 std::shared_ptr<NativeModule::ArkUIBaseNode> CreateRadioExample()
@@ -353,7 +353,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateRadioExample()
 
 同一组内的Radio组件只能选中一个，通过设置相同的组名实现互斥。
 
-<!-- @[radio_group](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @radio_group -->
 
 ``` C++
 radio1->SetIsOn(true);
@@ -366,7 +366,7 @@ radio3->SetRadioGroup("radio_group");
 
 可以设置单选按钮的样式，包括未选中状态颜色、选中状态内部圆环颜色和选中状态外环颜色。
 
-<!-- @[radio_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample/entry/src/main/cpp/demo/formTest.cpp) -->
+<!-- @radio_style -->
 
 ``` C++
 radio3->SetRadioStyle(0xFFFF0000, 0xFF00FF00, 0xFF00FFFF);

@@ -19,7 +19,7 @@
 
 进程、AbilityStage与UIAbility生命周期的关系如下图所示。
 
-![application-startup-process](figures/application-startup-process.png)
+application-startup-process
 
 | 阶段 | 触发时机 | 主要职责 |
 | :--- | :--- | :--- |

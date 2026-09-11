@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 3. 调用OH_Huks_ImportKeyItem，传入密钥别名和密钥属性集，导入密钥。
 
 ### 导入AES256密钥
-<!-- @[import_keys_in_plaintext_AES256_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/cpp/types/projects/napi_aes256.cpp) -->
+<!-- @import_keys_in_plaintext_AES256_cpp -->
 
 ``` C++
 /* 以下以明文导入AES密钥为例 */
@@ -94,7 +94,7 @@ napi_value ImportAesKey(napi_env env, napi_callback_info info)
 
 
 ### 导入RSA2048密钥对
-<!-- @[import_keys_in_plaintext_RSA2048_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/cpp/types/projects/napi_rsa2048.cpp) -->
+<!-- @import_keys_in_plaintext_RSA2048_cpp -->
 
 ``` C++
 /* 以下以明文导入RSA2048密钥为例 */
@@ -189,7 +189,7 @@ napi_value ImportRsaKey(napi_env env, napi_callback_info info)
 
 
 ### 导入X25519密钥公钥
-<!-- @[import_keys_in_plaintext_X25519_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/cpp/types/projects/napi_x25519.cpp) -->
+<!-- @import_keys_in_plaintext_X25519_cpp -->
 
 ``` C++
 /* 以下以明文导入X25519密钥为例 */

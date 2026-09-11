@@ -26,7 +26,7 @@
 
 在蓝牙服务开发过程中，涉及两种维度的地址类型定义。
 
-![bluetooth address type](figures/bt_address_type.png)
+bluetooth address type
 
 **图1** 蓝牙设备地址类型
 

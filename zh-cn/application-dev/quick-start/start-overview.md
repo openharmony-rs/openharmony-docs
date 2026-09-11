@@ -2,7 +2,7 @@
 
 本文档适用于OpenHarmony应用开发的初学者。通过构建一个简单的具有页面跳转/返回功能的应用（如下图所示），快速了解工程目录的主要文件，熟悉OpenHarmony应用开发流程。
 
-![zh-cn_image_0000001364254729](figures/zh-cn_image_0000001364254729.png)
+zh-cn_image_0000001364254729
 
 在开始之前，您需要了解有关OpenHarmony应用的一些基本概念：UI框架的简单说明、应用模型的基本概念。
 
@@ -40,6 +40,6 @@ FA模型和Stage模型的整体架构和设计思想等更多区别，请见应�
 
 ## 工具准备
 
-请安装[最新版DevEco Studio](https://developer.huawei.com/consumer/cn/download/)。
+请安装最新版DevEco Studio。
 
 完成上述操作及基本概念的理解后，可参照构建第一个ArkTS应用（Stage模型）进行下一步体验和学习。

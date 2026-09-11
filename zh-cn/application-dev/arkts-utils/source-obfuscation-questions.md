@@ -18,7 +18,7 @@
    3. -enable-export-obfuscation为导入/导出名称混淆。一般与`-enable-toplevel-obfuscation`和`-enable-property-obfuscation`选项配合使用。配置白名单的主要场景为模块对外接口不能混淆。需要使用-keep-global-name来保留指定的导出/导入名称。
 
    4. -enable-filename-obfuscation为文件名混淆。配置白名单的主要场景为动态import或运行时直接加载的文件路径。需要使用-keep-file-name来保留这些文件路径及名称。
-3. 排查需要配置的白名单场景时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，可以快速识别需要配置的保留选项和白名单字段。也可以参考以下典型报错案例，若遇到相似场景，可参照对应解决方法快速处理。
+3. 排查需要配置的白名单场景时，推荐使用混淆助手配置保留选项，可以快速识别需要配置的保留选项和白名单字段。也可以参考以下典型报错案例，若遇到相似场景，可参照对应解决方法快速处理。
 4. 若以下报错案例中未找到相似场景，建议依据各项配置功能正向定位（若不需要相应功能，可删除对应配置项）。
 5. 应用运行时崩溃分析方法：
    1. 打开应用运行日志，或点击DevEco Studio中出现的Crash弹窗，找到运行时崩溃栈。
@@ -69,7 +69,7 @@
 
 示例代码如下：
 
-<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
+<!-- @import_json -->
 
 ``` TypeScript
 // 示例JSON文件结构（ImportJson.json）：
@@ -123,7 +123,7 @@ jsonProperty
 
 示例代码如下：
 
-<!-- @[export_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
+<!-- @export_ts -->
 
 ``` TypeScript
 // 混淆前
@@ -133,7 +133,7 @@ export namespace NS {
 }
 ```
 
-<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @ns_import --> 
 
 ``` TypeScript
 // Index.ets
@@ -183,7 +183,7 @@ foo
 
 示例代码如下：
 
-<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
+<!-- @export_add -->
 
 ``` TypeScript
 // 混淆前
@@ -193,7 +193,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @add_call --> 
 
 ``` TypeScript
 // Index.ets
@@ -261,14 +261,14 @@ add
 
 示例代码如下：
 
-<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @export_addNum -->
 
 ``` TypeScript
 // src/main/cpp/types/libentry/Index.d.ts
 export const addNum: (a: number, b: number) => number;
 ```
 
-<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @call_addNum --> 
 
 ``` TypeScript
 // example.ets
@@ -311,7 +311,7 @@ addNum
 ```
 
 示例代码如下：
-<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
+<!-- @export_addNum -->
 
 ``` TypeScript
 // 混淆前
@@ -321,7 +321,7 @@ export function addNum(a: number, b: number) {
 }
 ```
 
-<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @call_hsp --> 
 
 ``` TypeScript
 // entry模块
@@ -379,7 +379,7 @@ addNum
 
 示例代码如下：
 
-<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @call_want --> 
 
 ``` TypeScript
 // 混淆前
@@ -436,7 +436,7 @@ linkSource
 
 示例代码如下：
 
-<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileInside.ts) -->
+<!-- @export_myInfo -->
 
 ``` TypeScript
 // 混淆前
@@ -449,7 +449,7 @@ export interface MyInfo {
 }
 ```
 
-<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @call_myInfo --> 
 
 ``` TypeScript
 // Index.ets
@@ -492,7 +492,7 @@ const person: MyInfo = {
 
 方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。
 
-<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileOutside.ts) -->
+<!-- @export_file -->
 
 ``` TypeScript
 // FileOutside.ts
@@ -550,7 +550,7 @@ person["m"] = 20;
 
 HiLog日志中报错信息为：`table Account has no column named a1 in 'INSERT INTO Account(a1)'`。
 
-<!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+<!-- @optionExample_keepPropertyName4 -->      
 
 ``` TypeScript
 import { ValuesBucket } from '@kit.ArkData';
