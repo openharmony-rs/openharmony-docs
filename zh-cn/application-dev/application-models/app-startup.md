@@ -35,7 +35,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
 - HAP：entry类型的HAP支持以自动和手动模式启动。从API version 20开始，feature类型的HAP支持以自动和手动模式启动。
 
-- HSP/HAR：从API version 18开始，支持在[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)中配置启动任务。HSP和HAR的启动任务、so预加载任务无法主动配置为自动模式，但可以被HAP中自动模式的启动任务、so预加载任务拉起。
+- HSP/HAR：从API version 18开始，支持在[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)中配置启动任务。HSP和HAR的启动任务、so预加载任务只能配置为手动模式，但可以被HAP中自动模式的启动任务、so预加载任务通过`dependencies`依赖关系拉起，将所依赖的HSP/HAR任务一并执行。示例可参考[HSP与HAR中使用启动框架](#hsp与har中使用启动框架)。
 
 - 启动框架从API version 18开始支持配置[应用级so](ability-terminology.md#应用级so)预加载任务，so文件开发可以参考[Node-API](../napi/use-napi-process.md)创建Native C++工程。不支持配置[系统级so](ability-terminology.md#系统级so)预加载任务。
 
@@ -429,7 +429,7 @@ export default class StartupTask_001 extends StartupTask {
 
  ### HSP与HAR中使用启动框架
 
- 通常大型应用会有多个[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)，本节将提供一个应用示例，以展示如何在HSP包和HAR包中使用启动框架。该示例应用包括两个HSP包（hsp1、hsp2）和一个HAR包（har1），并且包含启动任务和so预加载任务。
+ 通常大型应用会有多个[HSP](../quick-start/in-app-hsp.md)和[HAR](../quick-start/har-package.md)，本节将提供一个应用示例，以展示如何在HSP包和HAR包中使用启动框架。该示例应用包括一个HAP模块（entry）、两个HSP模块（hsp1、hsp2）和一个HAR模块（har1），并且包含启动任务和so预加载任务。
 
 假设当前应用存在的启动任务与so预加载任务如下表所示。
 
@@ -437,10 +437,10 @@ export default class StartupTask_001 extends StartupTask {
 
 | 模块  | 启动任务                        | so预加载任务                |
 | ----- | ------------------------------- | --------------------------- |
-| entry | HAP_Task_01                     | libentry_01                 |
-| hsp1  | HSP1_Task_01 <br/> HSP1_Task_02 | libhsp1_01 <br/> libhsp1_02 |
-| hsp2  | HSP2_Task_01                    | libhsp2_01                  |
-| har   | HAR1_Task_01                    | libhar1_01                  |
+| entry | HapTask01                       | libentry_01                 |
+| hsp1  | Hsp1Task01 <br/> Hsp1Task02     | libhsp1_01 <br/> libhsp1_02 |
+| hsp2  | Hsp2Task01                      | libhsp2_01                  |
+| har   | Har1Task01                      | libhar1_01                  |
 
 **图6** 启动任务与so预加载依赖关系图
 
@@ -450,21 +450,21 @@ export default class StartupTask_001 extends StartupTask {
 
  开发步骤如下：
 
-  1. 除[HAP](../quick-start/hap-package.md)外，在HSP包和HAR包的“resources/base/profile”目录下创建启动框架配置文件，不同模块可以使用相同文件名，本文以"startup_config.json"为例。
+  1. 在HAP、HSP和HAR模块的“resources/base/profile”目录下创建启动框架配置文件，不同模块可以使用相同文件名，本文以"startup_config.json"为例。
   
-  2. 分别在各个模块的启动框架配置文件startup_config.json中， 添加对应的配置信息。
+  2. 分别在各个HSP、HAR模块的启动框架配置文件startup_config.json中， 添加对应的配置信息。
      
-        [HAP](../quick-start/hap-package.md)的startup_config.json可参考[定义启动任务配置](#定义启动任务配置)，HSP与HAR的startup_config.json文件无法配置"configEntry"字段，以hsp1包配置文件为例，示例如下：
+        HSP与HAR的startup_config.json文件无法配置"configEntry"字段，以hsp1模块配置文件为例，示例如下：
         
         ```json
         {
           "startupTasks": [
             {
-              "name": "HSP1_Task_01",
-              "srcEntry": "./ets/startup/HSP1_Task_01.ets",
+              "name": "Hsp1Task01",
+              "srcEntry": "./ets/startup/Hsp1Task01.ets",
               "dependencies": [
-                "HSP1_Task_02",
-                "HAR1_Task_01"
+                "Hsp1Task02",
+                "Har1Task01"
               ],
               "runOnThread": "taskPool",
               "waitOnMainThread": false,
@@ -486,11 +486,53 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         
-  3. 分别在各个模块的[module.json5配置文件](../quick-start/module-configuration-file.md)的appStartup标签中，添加启动框架配置文件的索引。
+  3. 在[HAP](../quick-start/hap-package.md)的startup_config.json中，配置自动模式的启动任务和so预加载任务，并通过`dependencies`声明对HSP/HAR中任务的依赖，启动框架调度自动模式任务时会解析依赖链，将所依赖的HSP/HAR任务一并执行。HAP的startup_config.json示例如下：
 
-        hsp1、hsp2以及har1的module.json5示例代码如下。
+        ```json
+        {
+          "startupTasks": [
+            {
+              "name": "HapTask01",
+              "srcEntry": "./ets/startup/HapTask01.ets",
+              "dependencies": [
+                "Hsp1Task01",
+                "Har1Task01"
+              ],
+              "runOnThread": "taskPool",
+              "waitOnMainThread": false
+            }
+          ],
+          "appPreloadHintStartupTasks": [
+            {
+              "name": "libentry_01",
+              "srcEntry": "libentry_01.so",
+              "dependencies": [
+                "libhsp1_01",
+                "libhar1_01"
+              ],
+              "runOnThread": "taskPool"
+            }
+          ],
+          "configEntry": "./ets/startup/StartupConfig.ets"
+        }
+        ```
 
-        <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5) -->
+  4. 分别在各个模块的[module.json5配置文件](../quick-start/module-configuration-file.md)的appStartup标签中，添加启动框架配置文件的索引。
+
+        各个模块的module.json5示例代码如下。
+
+        ``` JSON5
+        {
+          "module": {
+            "name": "entry",
+            "type": "entry",
+            // ···
+            "appStartup": "$profile:startup_config", // 启动框架的配置文件
+            // ···
+          }
+        }
+        ```
+        <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartupModule/hsp1/src/main/module.json5) -->
 
         ``` JSON5
         {
@@ -503,7 +545,7 @@ export default class StartupTask_001 extends StartupTask {
           }
         }
         ```
-        <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5) -->
+        <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartupModule/hsp2/src/main/module.json5) -->
 
         ``` JSON5
         {
@@ -516,7 +558,7 @@ export default class StartupTask_001 extends StartupTask {
           }
         }
         ```
-        <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5) -->
+        <!-- @[startup_harmodule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartupModule/har1/src/main/module.json5) -->
         
         ``` JSON5
         {
