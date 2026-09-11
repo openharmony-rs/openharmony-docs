@@ -399,11 +399,13 @@ async function claimInterface() {
 }
 ```
 
-## usbManager.claimInterfaceExclusive<sup>26.1.0+</sup>
+## usbManager.claimInterfaceExclusive
 
 claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback<[InterfaceConflictInfo](#interfaceconflictinfo26100)>): void
 
 独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
+
+**起始版本：** 26.1.0
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -426,41 +428,6 @@ claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 | 14400004 | Service exception. |
 | 14400007 | Resource busy. Possible cause: The interface is claimed by another program or driver. |
 | 14400010 | USB driver error. Possible causes: 1. The device is not connected using [connectDevice](#usbmanagerconnectdevice). 2. The USB device state is abnormal. |
-
-**示例：**
-
-```ts
-async function claimInterfaceExclusive() {
-  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-  if (!devicesList || devicesList.length == 0) {
-    console.info(`device list is empty`);
-    return;
-  }
-
-  let device: usbManager.USBDevice = devicesList?.[0];
-  let rightResult = await usbManager.requestRight(device.name);
-  if (!rightResult) {
-    console.error(`request right failed`);
-    return;
-  }
-  let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  if (devicePipe == undefined) {
-    console.error(`connect device failed`);
-    return;
-  }
-  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  usbManager.claimInterfaceExclusive(
-    devicePipe,
-    interfaces,
-    false,
-    (conflictInfo: usbManager.InterfaceConflictInfo) => {
-      console.info(`interface conflict detected: busNum=${conflictInfo.busNum}, devAddr=${conflictInfo.devAddr}, interfaceId=${conflictInfo.interfaceId}`);
-    }
-  );
-  console.info(`claimInterfaceExclusive succeeded`);
-  usbManager.closePipe(devicePipe);
-}
-```
 
 ## usbManager.releaseInterface
 
@@ -1678,13 +1645,15 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
 
-## InterfaceConflictInfo<sup>26.1.0+</sup>
+## InterfaceConflictInfo
 
 描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive26100)独占声明接口后使用。
 
 > **说明：**
 >
 > 此回调在其他进程调用非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时触发。独占持有方可通过此回调获知潜在的访问冲突。
+
+**起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.USB.USBManager
 
