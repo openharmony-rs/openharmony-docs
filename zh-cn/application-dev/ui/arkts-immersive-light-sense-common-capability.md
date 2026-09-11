@@ -255,7 +255,7 @@ struct CustomShadowExample {
   build() {
     Column() {
       Navigation() {
-        // $r('app.media.invert')需要替换为开发者所需的图像资源文件
+        // 页面内容
         Image($r('app.media.invert'))
           .width('100%')
           .height('100%')
