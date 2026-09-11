@@ -14,7 +14,10 @@
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[select](./ts-basic-components-select.md)。
 
-## menuSystemMaterial<sup>23+</sup>
+## 属性
+
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+### menuSystemMaterial<sup>23+</sup>
 
 menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
