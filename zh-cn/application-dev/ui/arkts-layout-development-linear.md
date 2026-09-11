@@ -25,7 +25,6 @@
 
 ![arrangement-child-elements-row](figures/arrangement-child-elements-row.png)
 
-
 ## 基本概念
 
 - 布局容器：具有布局能力的容器组件，可以承载其他元素作为其子元素，布局容器会对其子元素进行尺寸计算和布局排列。

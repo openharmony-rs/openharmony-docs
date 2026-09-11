@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现子组件向父组件要求更新\@Param装饰变量的能力，开发者可以使用\@Event装饰器。使用\@Event装饰回调方法是一种规范，表明子组件需要传入更新数据源的回调。
+为了实现子组件向父组件要求更新\@Param装饰变量的能力，开发者可以使用[\@Event](../../reference/apis-arkui/arkui-ts/ts-state-management-event.md#event)装饰器。使用\@Event装饰回调方法是一种规范，表明子组件需要传入更新数据源的回调。
 
 
 \@Event主要配合\@Param实现数据的双向同步。在阅读本文档前，建议提前阅读：\@Param。
@@ -46,12 +46,12 @@
 
   ```ts
   @ComponentV2
-  struct Index {
+  struct ComponentV2Example {
     @Event changeFactory: () => void = () => {}; // 正确用法
     @Event message: string = 'abcd'; // 错误用法，装饰非函数类型变量，@Event无作用
   }
   @Component
-  struct Index {
+  struct ComponentExample {
     @Event changeFactory: () => void = () => {}; // 错误用法，编译时报错
   }
   ```

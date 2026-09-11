@@ -169,7 +169,7 @@
     3. 若在代码中引用so库的API，如`import { napiA } from 'library.so'`；需要使用`-keep-global-name napiA`来保留so接口名称napiA。
     4. 验证应用功能以及模块被依赖时的接口调用功能，排查遗漏的场景。若应用出现功能异常，可依据混淆后的报错栈，在模块的 **`build/default/[...]/release/obfuscation/`** 目录下查阅 **`nameCache.json`**（名称映射表）、**`config.json`**（混淆项与白名单）等产物，按查看混淆效果对照定位源码行；并按需使用`-keep-global-name`、`-keep-property-name`等进行保留。
 4. 待上述选项应用适配成功后，开启`-enable-filename-obfuscation`选项。此选项开启后以下场景需要适配：
-    1. 若代码中有动态import语句，如`const path = './filePath'; import (path)`，会出现文件引用失败的情况，需要使用`-keep-file-name`，filePath来保留这个文件名。
+    1. 若代码中有动态import语句，如`const path = './filePath'; import (path)`，会出现文件引用失败的情况，需要使用`-keep-file-name filePath`来保留这个文件名。
     2. 若应用中有描述路由表信息的[routerMap配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/module-configuration-file#routermap%E6%A0%87%E7%AD%BE)，其中的pageSourceFile字段标记页面在模块的路径，需要使用`-keep-file-name`来保留这个路径。
     3. 若代码中有传入ohmUrl进行页面跳转，如`router.pushUrl({url: '@bundle:com.example.routerPage/Library/Index'})`，使用`-keep-file-name`来保留这个路径。
     4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，且报错栈中的路径为混淆后的路径，可以在模块中的`build/default/[...]/release/obfuscation/nameCache.json`文件中查询到原始路径，进而找到源码文件。另外，[插件hstack](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)支持自动还原混淆后的报错栈。在定位到需要保留的路径后，使用`-keep-file-name`来保留此路径。

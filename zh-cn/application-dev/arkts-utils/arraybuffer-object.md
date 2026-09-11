@@ -22,7 +22,7 @@ ArrayBuffer常用于表示图片等二进制资源，在应用开发中，处理
 
 ## ArrayBuffer拷贝传输方式
 
-在ArkTS中，TaskPool传递ArrayBuffer数据时，默认采用转移方式。通过调用setTransferList()接口，可以指定部分数据的传递方式为转移方式，其他部分数据可以切换为拷贝方式。
+在ArkTS中，TaskPool传递ArrayBuffer数据时，默认采用转移方式。通过调用[setTransferList()](../reference/apis-arkts/js-apis-taskpool.md#settransferlist10)接口，可以指定部分数据的传递方式为转移方式，其他部分数据可以切换为拷贝方式。
 
 首先，实现一个处理ArrayBuffer的接口，该接口在Task中执行。
 

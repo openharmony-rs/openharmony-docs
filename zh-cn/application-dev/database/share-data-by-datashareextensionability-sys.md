@@ -87,7 +87,6 @@ DataShareExtensionAbility提供以下API，根据需要重写对应回调方法�
    export default class DataShareExtAbility extends DataShareExtensionAbility {
      // 重写onCreate接口
      onCreate(want: Want, callback: Function) {
-       result = this.context.cacheDir + '/datashare.txt';
        // 业务实现使用RDB
        relationalStore.getRdbStore(this.context, {
          name: DB_NAME,

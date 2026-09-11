@@ -237,6 +237,25 @@ mute = false;
 OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, mute);
 ```
 
+### 设置录音流静音提示
+
+从API version 24开始，当应用已在业务侧将某条录音流静音时，可以调用[OH_AudioCapturer_SetMuteHint](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setmutehint)接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前录音流进行过静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+
+该接口仅允许在录音流处于运行态时调用，否则会返回`AUDIOSTREAM_ERROR_ILLEGAL_STATE`。如果同一录音流同时设置了流级静音提示和会话级静音提示[OH_AudioSessionManager_SetCaptureMuteHint](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setcapturemutehint)，流级静音提示优先级更高，以流级设置值为准。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。
+
+<!-- @[cset_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) --> 
+
+``` C++
+bool mute = true;
+OH_AudioStream_Result setResult = OH_AudioCapturer_SetMuteHint(audioCapturer, mute);
+if (setResult != AUDIOSTREAM_SUCCESS) {
+    // 根据返回值处理异常，如AUDIOSTREAM_ERROR_ILLEGAL_STATE。
+}
+
+mute = false;
+OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, mute);
+```
+
 ### 回声消除功能
 
 回声消除功能可在支持的设备上有效消除录音过程中的回声干扰，提升音频采集质量。开发者可通过指定特定的音频输入源类型OH_AudioStream_SourceType（AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION、AUDIOSTREAM_SOURCE_TYPE_LIVE）来启用该功能，系统将会自动对采集的音频信号进行回声消除处理。

@@ -117,9 +117,9 @@ int GenerateInputDataWithRandom(OH_AI_TensorHandleArray inputs) {
    OH_AI_ContextAddDeviceInfo(context, cpu_device_info);
    ```
 
-   情形2：创建NNRT（Neural Network Runtime）和CPU异构推理上下文。
+   情形2：创建NNRT（Neural Network Runtime）和CPU[异构推理](mindspore-lite-term.md#heterogeneous-inference异构推理)上下文。
 
-   NNRT是面向AI领域的跨芯片推理计算运行时，一般来说，NNRT对接的加速硬件如NPU，推理能力较强，但支持的算子规格少；而通用CPU推理能力较弱，但支持算子规格更全面。MindSpore Lite支持配置NNRT硬件和CPU异构推理：优先将模型算子调度到NNRT推理，若某些算子NNRT不支持，将其调度到CPU进行推理。通过下面的操作即可配置NNRT/CPU异构推理。
+   NNRT是面向AI领域的跨芯片推理计算运行时，一般来说，NNRT对接的加速硬件如[NPU](mindspore-lite-term.md#npu)，推理能力较强，但支持的[算子](mindspore-lite-term.md#operator算子)规格少；而通用CPU推理能力较弱，但支持算子规格更全面。MindSpore Lite支持配置NNRT硬件和CPU异构推理：优先将模型算子调度到NNRT推理，若某些算子NNRT不支持，将其调度到CPU进行推理。通过下面的操作即可配置NNRT/CPU异构推理。
    <!--Del-->
 
    > **说明：**

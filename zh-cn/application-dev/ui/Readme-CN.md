@@ -273,7 +273,7 @@
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
-    - [设置应用内主题换肤](theme_skinning.md)
+    - [设置应用内主题换肤](theme-skinning.md)
   - UI系统场景化能力<!--arkts-ui-system-scenarization-capability-->
     - [使用UI上下文接口操作界面（UIContext）](arkts-global-interface.md)
     - [使用组件截图（ComponentSnapshot）](arkts-uicontext-component-snapshot.md)<!--RP15--><!--RP15End-->

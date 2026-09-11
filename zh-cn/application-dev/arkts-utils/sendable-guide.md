@@ -66,8 +66,8 @@ struct Index {
           }).catch((e: BusinessError) => {
             // Process error
             this.listenerTask = 'failed';
-          })
-        })
+          });
+        });
       Text(this.dataProcessingTask)
         .id('Data processing task')
         .fontSize(50)
@@ -78,8 +78,8 @@ struct Index {
           }).catch((e: BusinessError) => {
             this.dataProcessingTask = 'failed';
             console.error('taskpool execute failed. Code: ' + e.code + ', message: ' + e.message);
-          })
-        })
+          });
+        });
     }
     .height('100%')
     .width('100%')
@@ -177,7 +177,7 @@ struct Index {
         .onClick(() => {
           await test();
           this.message = 'success';
-        })
+        });
     }
     .height('100%')
     .width('100%')
@@ -189,7 +189,7 @@ struct Index {
 
 ``` TypeScript
 // 定义模拟类Test，模仿开发过程中需传递带方法的class
-import { lang, collections } from '@kit.ArkTS'
+import { lang, collections } from '@kit.ArkTS';
 
 export type ISendable = lang.ISendable;
 
