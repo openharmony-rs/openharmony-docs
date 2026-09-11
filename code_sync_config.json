@@ -34446,6 +34446,26 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"cors_loccross_one",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets",
+				"functions":[
+					{
+						"end_line":50,
+						"name":"cors_loccross_two",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
