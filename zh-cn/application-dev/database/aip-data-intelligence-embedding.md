@@ -81,7 +81,7 @@
    - 针对PC/2in1设备：使用端侧嵌入模型，需配置模型版本、是否使用NPU加速及模型缓存路径。示例代码如下所示：
 
      <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+     
      ``` TypeScript
      let textConfig: intelligence.ModelConfig = {
        version: intelligence.ModelVersion.BASIC_MODEL,
@@ -93,7 +93,7 @@
      ```
 
      <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+     
      ``` TypeScript
      intelligence.getTextEmbeddingModel(textConfig)
        .then((data: intelligence.TextEmbedding) => {
@@ -110,7 +110,7 @@
    - 针对Phone/Tablet设备：使用云侧嵌入模型，需调用getSupportedCloudModel方法获取云侧模型信息并配置下载模型使用的网络策略。示例代码如下所示：
 
      <!-- @[aip_getSupportedCloudModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+     
      ``` TypeScript
      intelligence.getSupportedCloudModel()
        .then((info: Array<intelligence.CloudModelInfo>) => {
@@ -122,7 +122,7 @@
      ```
 
      <!-- @[aip_getCloudTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
-
+     
      ``` TypeScript
      if (modelInfo !== undefined) {
        textConfig.modelInfo = modelInfo;
