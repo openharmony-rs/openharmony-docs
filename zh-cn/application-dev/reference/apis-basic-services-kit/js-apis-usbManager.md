@@ -435,7 +435,7 @@ async function claimInterface() {
 
 ## usbManager.claimInterfaceExclusive
 
-claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback<[InterfaceConflictInfo](#interfaceconflictinfo26100)>): void
+claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback<[InterfaceConflictInfo](#interfaceconflictinfo)>): void
 
 独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
 
@@ -450,7 +450,7 @@ claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 总线地址和设备地址，通过调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 目标USB接口的索引。可以使用[getDevices](#usbmanagergetdevices)获取设备信息，并根据ID识别USB接口。|
 | force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。可以根据需要设置该值。|
-| onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo26100)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。|
+| onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。|
 
 **错误码：**
 
@@ -1764,7 +1764,7 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 
 ## InterfaceConflictInfo
 
-描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive26100)独占声明接口后使用。
+描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive)独占声明接口后使用。
 
 > **说明：**
 >
