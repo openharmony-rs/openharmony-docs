@@ -37,7 +37,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 > **说明：**
 >
-> - 直播和录像场景均使用Surface模式编码，区别仅在于ROI配置方式。推荐使用方式一，实现简单且与编码帧天然对齐。
+> - 直播和录像场景均使用Surface模式编码，区别仅在于ROI配置方式。使用[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)，实现简单且与编码帧天然对齐。
 > - 如果帧处理流程中无法修改编码器输入Buffer的元数据（如相机帧直接送入编码器Surface的场景），可选择编码输入参数回调配置方式。
 
 ## 约束和限制
@@ -83,9 +83,9 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 
 ## 生效机制说明
 
-配置ROI支持两种方式：**方式一：通过NativeBuffer元数据配置（推荐）**和**方式二：通过编码输入回调配置**。方式二包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
-- 方式一：通过NativeBuffer元数据配置（推荐）：从API version 22开始支持使用`OH_NativeBuffer_MetaDataKey`的ROI枚举`OH_REGION_OF_INTEREST_METADATA`，在NativeBuffer的元数据中配置ROI参数。
-- 方式二：通过编码输入回调配置：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置。
+配置ROI支持以下两种方式：
+- [方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)：从API version 22开始支持使用`OH_NativeBuffer_MetaDataKey`的ROI枚举`OH_REGION_OF_INTEREST_METADATA`，在NativeBuffer的元数据中配置ROI参数。
+- [方式二：通过编码输入回调配置](#方式二通过编码输入回调配置)：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置，包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
 
 **通用生效机制：**
 1. ROI参数支持随帧下发并实时生效，开发者无需进行能力查询或配置全局开关。
