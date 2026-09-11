@@ -533,28 +533,28 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
         <!-- @[startup_hsp1module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartupModule/hsp1/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "hsp1",
             "type": "shared",
-            // ···
+            // ...
             "appStartup": "$profile:startup_config", // 启动框架的配置文件
-            // ···
+            // ...
           }
         }
         ```
         <!-- @[startup_hsp2module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppStartupModule/hsp2/src/main/module.json5) -->
-
+        
         ``` JSON5
         {
           "module": {
             "name": "hsp2",
             "type": "shared",
-            // ···
+            // ...
             "appStartup": "$profile:startup_config", // 启动框架的配置文件
-            // ···
+            // ...
           }
         }
         ```
