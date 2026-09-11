@@ -5019,7 +5019,7 @@ keyboardController.hideKeyboard().then(() => {
 
 exitCurrentInputType(callback: AsyncCallback&lt;void&gt;): void
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用callback异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用、或提供系统级输入能力的输入法应用调用。使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5060,7 +5060,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 exitCurrentInputType(): Promise&lt;void&gt;
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用promise异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用、或提供系统级输入能力的输入法应用调用。使用promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
