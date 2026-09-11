@@ -16,6 +16,8 @@
 
 ## 属性
 
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+
 ### menuDistortionMode
 
 menuDistortionMode(mode: DistortionMode)
