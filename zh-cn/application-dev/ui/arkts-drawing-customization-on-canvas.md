@@ -680,7 +680,7 @@ struct Path2d {
 struct CursorMoving {
   // 监听是否按下，刷新光标颜色
   @State @Watch('drawCursor') isTouchDown: boolean = false;
-  // 监听位置变化，刷新光标位置
+  // 监听位置变化，刷新页面
   @State @Watch('drawCursor') cursorPosition: RectPosition = {
     x: 0,
     y: 0,
