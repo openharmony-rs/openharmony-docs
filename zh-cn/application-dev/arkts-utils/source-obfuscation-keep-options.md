@@ -136,7 +136,7 @@ lastName
     
     class JsonTest {
       prop1: string = '';
-      prop2: number = 0
+      prop2: number = 0;
     }
     
     let obj = new JsonTest();
