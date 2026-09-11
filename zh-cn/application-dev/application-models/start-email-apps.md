@@ -101,7 +101,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
     | --------------| ------------------------- |
     | ComposeMail   | 声明应用支持撰写邮件功能     |
 
-    ```json
+    ```json5
     {
       "abilities": [
           {

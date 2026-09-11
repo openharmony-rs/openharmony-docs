@@ -1,4 +1,12 @@
 # 拉起图片编辑类应用（startAbilityByType）
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: AGC-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @hid12719688-->
+<!--Adviser: @HelloCrease-->
+
 ## 使用场景
 当应用自身不具备图片编辑能力、但存在图片编辑的场景时，可以通过startAbilityByType拉起图片编辑类应用扩展面板，由对应的应用完成图片编辑操作。图片编辑类应用可以通过PhotoEditorExtensionAbility实现图片编辑页面，并将该页面注册到图片编辑面板，从而将图片编辑能力开放给其他应用。
 
@@ -181,7 +189,7 @@
 
     type标签需要配置为"photoEditor"，srcEntry需要配置为PhotoEditorExtensionAbility组件所对应的代码路径。
 
-    ```json
+    ```json5
     {
       "module": {
         "extensionAbilities": [
@@ -334,26 +342,26 @@ struct Index {
 
   // 图库中选取图片
   async photoPickerGetUri(): Promise<string> {
-	try {
-		let textInfo: photoAccessHelper.TextContextInfo = {
-			text: 'photo'
-		}
-		let recommendOptions: photoAccessHelper.RecommendationOptions = {
-			textContextInfo: textInfo
-		}
-		let options: photoAccessHelper.PhotoSelectOptions = {
-			MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE,
-			maxSelectNumber: 1,
-			recommendationOptions: recommendOptions
-		}
-		let photoPicker = new photoAccessHelper.PhotoViewPicker();
-		let photoSelectResult: photoAccessHelper.PhotoSelectResult = await photoPicker.select(options);
-		return photoSelectResult.photoUris[0];
-	} catch (error) {
-		let err: BusinessError = error as BusinessError;
-		hilog.error(0x0000, TAG, 'PhotoViewPicker failed with err: ' + JSON.stringify(err));
-	}
-	return "";
+    try {
+      let textInfo: photoAccessHelper.TextContextInfo = {
+        text: 'photo'
+      }
+      let recommendOptions: photoAccessHelper.RecommendationOptions = {
+        textContextInfo: textInfo
+      }
+      let options: photoAccessHelper.PhotoSelectOptions = {
+        MIMEType: photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE,
+        maxSelectNumber: 1,
+        recommendationOptions: recommendOptions
+      }
+      let photoPicker = new photoAccessHelper.PhotoViewPicker();
+      let photoSelectResult: photoAccessHelper.PhotoSelectResult = await photoPicker.select(options);
+      return photoSelectResult.photoUris[0];
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      hilog.error(0x0000, TAG, 'PhotoViewPicker failed with err: ' + JSON.stringify(err));
+    }
+    return "";
   }
 
   build() {
