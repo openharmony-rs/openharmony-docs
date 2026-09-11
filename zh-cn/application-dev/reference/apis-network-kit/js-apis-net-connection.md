@@ -25,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
+创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：ms)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
 >**说明：**
 >
@@ -53,7 +53,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-// 示例1：仅关注默认网络, 无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
+// 示例1：仅关注默认网络，无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
 let netConnection = connection.createNetConnection();
 
 // 示例2：仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
@@ -1981,14 +1981,15 @@ setPacFileUrl(pacFileUrl: string): void
 
 设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
->**注意：**
+>**说明：**
 >
-> 1、本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
-> 2、该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
+> 该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**设备行为差异**：本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。
 
 **参数：**
 
@@ -2450,8 +2451,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
-let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
-let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let local: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
   console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
@@ -2510,8 +2511,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
-let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
-let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let local: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
   console.info(`Succeeded to get uid: ${uid}`);
@@ -2713,7 +2714,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201     | Permission denied.   </br> 适用版本：8-11            |
 | 2100001 | Invalid parameter value. |
 | 2100003 | Internal error. |
 
@@ -4064,7 +4065,7 @@ UDP端口状态信息。
 | -------- | -------- | -------- | -------- | -------- |
 | jumpNo | number | 否 | 否 | 跳数序号。 |
 | address | string | 否 | 否 | 该跳的IP地址。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为(ms)。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
   
 
 ## ProbeResultInfo
@@ -4080,4 +4081,4 @@ UDP端口状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | lossRate | number | 否 | 否 | 丢包率，取值范围\[0, 100\]。例如，100表示100%丢包，50表示50%丢包。 |
-| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为(ms)。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |
