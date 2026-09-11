@@ -25,7 +25,7 @@ The result is returned after the SysCap configuration file is checked.
 
 | Name| Description| 
 | -------- | -------- |
-| [syscap_ndk.h](syscap-ndk-8h.md) | Provides the API for querying whether a SysCap is supported.<br>**File to include**: <syscap_ndk.h><br>**Library**: libdeviceinfo_ndk.z.so| 
+| [syscap_ndk.h](syscap__ndk_8h.md) | Provides the API for querying whether a SysCap is supported.<br>**File to include**: <syscap_ndk.h><br>**Library**: libdeviceinfo_ndk.z.so| 
 
 
 ### Functions
