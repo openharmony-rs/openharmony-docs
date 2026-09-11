@@ -30948,6 +30948,16 @@
 						"end_line":96,
 						"name":"aip_getTextEmbeddingModel_operating",
 						"start_line":81
+					},
+					{
+						"end_line":54,
+						"name":"aip_getSupportedCloudModel_operating",
+						"start_line":46
+					},
+					{
+						"end_line":77,
+						"name":"aip_getCloudTextEmbeddingModel_operating",
+						"start_line":58
 					}
 				]
 			}
