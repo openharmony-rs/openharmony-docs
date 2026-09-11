@@ -1376,7 +1376,7 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
-| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800014     | The target instance is already closed.                            |
 | 14800021     | SQLite: Generic error. |
 | 14800024     | SQLite: The database file is locked.                                    |
 | 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
@@ -1458,7 +1458,7 @@ ArkTS-Sta: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicate
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
-| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800014     | The target instance is already closed.                            |
 | 14800015     | The database does not respond. |
 | 14800021     | SQLite: Generic error. |
 | 14800024     | SQLite: The database file is locked.                                    |
