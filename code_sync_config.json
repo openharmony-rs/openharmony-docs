@@ -25969,33 +25969,15 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/hsp1/src/main/module.json5",
-				"functions":[
-					{
-						"end_line":34,
-						"name":"startup_hsp1module",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/hsp2/src/main/module.json5",
-				"functions":[
-					{
-						"end_line":34,
-						"name":"startup_hsp2module",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/har1/src/main/module.json5",
-				"functions":[
-					{
-						"end_line":29,
-						"name":"startup_harmodule",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartup/entry/src/main/ets/entryability/EntryAbility.ets",
@@ -26013,6 +25995,36 @@
 					{
 						"end_line":49,
 						"name":"startup_index",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartupModule/hsp1/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"startup_hsp1module",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartupModule/hsp2/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"startup_hsp2module",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AppStartupModule/har1/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"startup_harmodule",
 						"start_line":15
 					}
 				]
