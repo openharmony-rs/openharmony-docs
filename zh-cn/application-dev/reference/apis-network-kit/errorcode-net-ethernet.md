@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
 ## 2200001 非法参数值
 
@@ -74,7 +74,7 @@ System internal error.
 
 **错误信息**
 
-The device information does not exist.
+Device information does not exist.
 
 **错误描述**
 
@@ -86,8 +86,8 @@ The device information does not exist.
 
 **处理步骤**
 
-```
-> hdc shell ifconfig
+``` shell
+hdc shell ifconfig
 ```
 查看是否有对应的设备，比如eth0，eth1。
 
@@ -95,7 +95,7 @@ The device information does not exist.
 
 **错误信息**
 
-Device disconnected.
+Ethernet device not connected.
 
 **错误描述**
 
@@ -113,7 +113,7 @@ Device disconnected.
 
 **错误信息**
 
-Failed to write the user configuration.
+Ethernet failed to write user configuration information.
 
 **错误描述**
 

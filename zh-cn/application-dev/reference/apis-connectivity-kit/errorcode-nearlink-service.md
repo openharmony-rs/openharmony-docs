@@ -9,7 +9,7 @@
 
 > **说明：**
 > 
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 
 ## 36100003 星闪关闭
@@ -28,7 +28,7 @@ NearLink disabled.
 
 **处理步骤**
 
-在设备的设置界面打开星闪后重试（通常路径为“设置&gt; 星闪和蓝牙&gt; 星闪”，不同产品或系统版本可能为“设置&gt; 多设备协同&gt; 星闪”），或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+在设备的设置界面打开星闪后重试（通常路径为“设置 &gt; 星闪和蓝牙 &gt; 星闪”，不同产品或系统版本可能为“设置 &gt; 多设备协同 &gt; 星闪”），或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100020 端口重复注册
@@ -47,7 +47,7 @@ The UUID is already registered.
 
 **处理步骤**
 
-调用dataTransfer.destroyPort接口销毁对应UUID的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport)接口销毁对应UUID的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100021 端口注册数量超出上限
@@ -66,7 +66,7 @@ Port exceeds the upper limit.
 
 **处理步骤**
 
-调用dataTransfer.destroyPort接口销毁其他已注册的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
+调用[dataTransfer.destroyPort](js-apis-nearlink-data-transfer-api.md#datatransferdestroyport)接口销毁其他已注册的端口通道，或请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。
 
 
 ## 36100022 端口未注册
@@ -245,7 +245,7 @@ Operation failed.
 
 其他未知错误。
 
-在设备已配对的情况下再调用startPairing发起配对，会返回该错误码。
+在设备已配对的情况下再调用[startPairing](js-apis-nearlink-remote-device.md#startpairing)发起配对，会返回该错误码。
 
 **处理步骤**
 

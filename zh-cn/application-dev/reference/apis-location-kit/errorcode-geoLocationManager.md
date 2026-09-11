@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 3301000 位置服务不可用
 
@@ -22,11 +22,11 @@ The location service is unavailable.
 
 **可能原因**
 
-1.位置服务启动异常，导致应用和位置服务子系统通信失败，导致位置服务不可用。
+1. 位置服务启动异常，导致应用和位置服务子系统通信失败，导致位置服务不可用。
 
-2.GNSS芯片初始化失败导致GNSS定位功能失效。
+2. GNSS芯片初始化失败导致GNSS定位功能失效。
 
-3.网络定位服务异常，导致网络定位功能失效。
+3. 网络定位服务异常，导致网络定位功能失效。
 
 **处理步骤**
 
@@ -52,7 +52,9 @@ The location switch is off.
 
 ## 3301200 定位失败，未获取到定位结果
 
-### 错误原因1. 网络不可用导致定位失败
+### 错误原因
+
+1. 网络不可用导致定位失败
 
 **错误信息**
 
@@ -82,15 +84,15 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 **可能原因**
 
-定位请求参数LocationRequest、CurrentLocationRequest中的精度要求(maxAccuracy)值设定过小。
+定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)值设定过小。
 
 **处理步骤**
 
-请将定位请求参数LocationRequest、CurrentLocationRequest中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
+请将定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
 
-- 当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者priority为ACCURACY时，建议设置maxAccuracy为大于10的值。
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
 
-- 当scenario为DAILY_LIFE_SERVICE/NO_POWER，或者priority为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
 
 ### 错误原因3. 获取缓存位置失败
 
@@ -108,7 +110,7 @@ The system does not have a cache location.
 
 **处理步骤**
 
-系统未提前将位置信息进行缓存的情况下，需使用getCurrentLocation接口获取实时位置信息。</br>
+系统未提前将位置信息进行缓存的情况下，需使用[getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)接口获取实时位置信息。</br>
 
 ### 错误原因4. 获取后处理轨迹失败
 
@@ -126,7 +128,7 @@ Failed to obtain the post processing track because sports type is not supported.
 
 **处理步骤**
 
-请参考getPostProcessingTrack入参说明，使用支持的sports类型。</br>
+请参考[getPostProcessingTrack](./js-apis-geoLocationManager.md#geolocationmanagergetpostprocessingtrack)入参说明，使用支持的sports类型。</br>
 
 ### 错误原因5. 其他原因导致定位失败
 
@@ -163,15 +165,15 @@ Reverse geocoding query failed.
 
 **可能原因**
 
-1.数据网络比较卡顿，导致端侧的请求发送失败或者云端的结果未返回到端侧。
+1. 数据网络比较卡顿，导致端侧的请求发送失败或者云端的结果未返回到端侧。
 
-2.由于X86模拟器不支持逆地理编码功能，导致使用X86模拟器调试时逆地理编码查询失败。
+2. 由于X86模拟器不支持逆地理编码功能，导致使用X86模拟器调试时逆地理编码查询失败。
 
 **处理步骤**
 
-1.网络原因请尝试重试逆地理编码查询功能。
+1. 网络原因请尝试重试逆地理编码查询功能。
 
-2.X86模拟器原因建议在真机进行验证。
+2. X86模拟器原因建议在真机进行验证。
 
 ## 3301400 地理编码查询失败
 
@@ -185,9 +187,9 @@ Geocoding query failed.
 
 **可能原因**
 
-1.请求参数有误，或根据参数无法查到结果。</br>
+1. 请求参数有误，或根据参数无法查到结果。</br>
 
-2.数据网络比较卡顿，导致端侧的请求发送失败或者云端的结果未返回到端侧。
+2. 数据网络比较卡顿，导致端侧的请求发送失败或者云端的结果未返回到端侧。
 
 **处理步骤**
 
@@ -223,15 +225,15 @@ Failed to operate the geofence.
 
 **可能原因**
 
-1.GNSS芯片不支持地理围栏功能。
+1. GNSS芯片不支持地理围栏功能。
 
-2.底层业务逻辑异常导致操作地理围栏失败。
+2. 底层业务逻辑异常导致操作地理围栏失败。
 
 **处理步骤**
 
-1.增加SysCap校验。
+1. 增加SysCap校验。
 
-2.建议增加重试机制。
+2. 建议增加重试机制。
 
 ## 3301601 地理围栏个数超过最大值限制导致添加围栏失败
 
@@ -281,11 +283,11 @@ No response to the request.
 
 **可能原因**
 
-1.用户未点击按钮确认。
+1. 用户未点击按钮确认。
 
-2.GNSS芯片未响应。
+2. GNSS芯片未响应。
 
-3.网络服务器未响应。
+3. 网络服务器未响应。
 
 **处理步骤**
 
@@ -303,11 +305,11 @@ Failed to start Wi-Fi or Bluetooth scanning.
 
 **可能原因**
 
-1.Wi-Fi或蓝牙服务内部错误导致启动扫描失败。
+1. Wi-Fi或蓝牙服务内部错误导致启动扫描失败。
 
-2.低电量场景下，受功耗管控，导致无法发起扫描。
+2. 低电量场景下，受功耗管控，导致无法发起扫描。
 
-3.Wi-Fi或蓝牙开关未开启。
+3. Wi-Fi或蓝牙开关未开启。
 
 **处理步骤**
 
@@ -325,15 +327,15 @@ Failed to obtain the hotspot MAC address because the Wi-Fi is not connected.
 
 **可能原因**
 
-1.Wi-Fi开关未开启。
+1. Wi-Fi开关未开启。
 
-2.开启Wi-Fi开关但未连接热点或路由器。
+2. 开启Wi-Fi开关但未连接热点或路由器。
 
 **处理步骤**
 
-1.请打开Wi-Fi开关。
+1. 请打开Wi-Fi开关。
 
-2.请连接路由器或者热点。
+2. 请连接路由器或者热点。
 
 ## 3501100 由于位置功能开关未打开导致添加beacon围栏失败
 

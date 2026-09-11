@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 13400001 文件操作异常
 
@@ -22,7 +22,7 @@ Invalid file or file system error.
 
 **可能原因**
 
-该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考BusinessError中的错误信息message以及[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。
+该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考[BusinessError](js-apis-base.md#businesserror)中的错误信息message以及[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。
 
 **处理步骤**
 

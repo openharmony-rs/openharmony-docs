@@ -2,13 +2,13 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 ## 35000001 音频模板创建失败
 

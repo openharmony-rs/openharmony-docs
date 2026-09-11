@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 1300001 重复操作
 **错误信息**<br>
@@ -18,8 +18,8 @@ Repeated operation.
 当进行某些重复操作时，系统会报此错误码。
 
 **可能原因**<br>
-1.窗口已经被创建。<br>
-2.窗口已经处于当前状态。
+1. 窗口已经被创建。<br>
+2. 窗口已经处于当前状态。
 
 **处理步骤**<br>
 在创建窗口前，检查该窗口是否已经被创建或者是否已经处于当前状态。
@@ -39,7 +39,7 @@ This window state is abnormal.
 
 ### 窗口销毁时调用getLastWindow崩溃
 **可能原因**<br>
-开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用getLastWindow()接口，导致应用崩溃。
+开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
 
 **典型日志信息**<br>
 故障日志格式：
@@ -59,7 +59,7 @@ Stack trace:
 - 文件名和行号：定位具体代码位置
 
 **处理步骤**<br>
-根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用loadContent()加载页面，销毁流程中错误调用getLastWindow导致崩溃。
+根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用[loadContent()](arkts-apis-window-WindowStage.md#loadcontent9)加载页面，销毁流程中错误调用getLastWindow导致崩溃。
 
 解决要点：
 - getLastWindow()调用位置不在onWindowStageDestroy、aboutToDisappear、onDestroy等销毁回调中
@@ -99,7 +99,7 @@ onWindowStageDestroy() {
 
 ### 子窗口调用setResizeByDragEnabled接口失败
 **可能原因**<br>
-开发者在子窗口上调用setResizeByDragEnabled()接口设置窗口可拖拽缩放时，返回错误码1300002，无法实现拖拽缩放功能。
+开发者在子窗口上调用[setResizeByDragEnabled()](arkts-apis-window-Window.md#setresizebydragenabled14)接口设置窗口可拖拽缩放时，返回错误码1300002，无法实现拖拽缩放功能。
 
 **典型日志信息**<br>
 通过DevEco Studio或hdc查看错误日志：
@@ -155,7 +155,7 @@ windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass
 
 ### 窗口名不存在，调用findWindow查找崩溃
 **可能原因**<br>
-开发者在调用findWindow()查找不存在的窗口时，导致应用崩溃。
+开发者在调用[findWindow()](arkts-apis-window-f.md#windowfindwindow9)查找不存在的窗口时，导致应用崩溃。
 
 **典型日志信息**<br>
 故障日志格式：
@@ -211,7 +211,7 @@ if (currWindow) {
 
 ### 销毁未完成导致createSubWindow创建同名子窗口失败
 **可能原因**<br>
-开发者在createSubWindow()创建窗口对象后，使用destroyWindow()，在窗口还未销毁的情况下，再次调用createSubWindow()，且使用相同名称，导致窗口创建失败，报错1300002。
+开发者在[createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9)创建窗口对象后，使用[destroyWindow()](arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9)，且使用相同名称，导致窗口创建失败，报错1300002。
 
 **典型日志信息**<br>
 故障日志格式：
@@ -279,7 +279,7 @@ let windowClass = await windowStage.createSubWindow(windowName);
 
 ### 窗口销毁时调用off('avoidAreaChange')崩溃
 **可能原因**<br>
-开发者在窗口销毁过程中（如onWindowStageDestroy、onDestroy或页面销毁等）调用off('avoidAreaChange')接口，导致应用崩溃。
+开发者在窗口销毁过程中（如[onWindowStageDestroy](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)、[onDestroy](../apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)或页面销毁等）调用[off('avoidAreaChange')](arkts-apis-window-Window.md#offavoidareachange9)接口，导致应用崩溃。
 
 **典型日志信息**<br>
 ```text
@@ -344,16 +344,16 @@ Unauthorized operation.
 当对无操作权限的对象进行操作时，会报此错误码。
 
 **可能原因**<br>
-1.操作了其它进程的窗口对象。<br>
-2.不支持的窗口类型调用。
+1. 操作了其它进程的窗口对象。<br>
+2. 不支持的窗口类型调用。
 
 **处理步骤**<br>
-1.请检查是否非法操作了其它进程的窗口对象，若存在，请删除相关操作。<br>
-2.请确保相关操作与其支持的窗口类型对应一致。
+1. 请检查是否非法操作了其它进程的窗口对象，若存在，请删除相关操作。<br>
+2. 请确保相关操作与其支持的窗口类型对应一致。
 
 ### 子窗口调用restore失败
 **可能原因**<br>
-开发者对子窗口调用restore()接口，导致操作失败，报错1300004。
+开发者对子窗口调用[restore()](arkts-apis-window-Window.md#restore14)接口，导致操作失败，报错1300004。
 
 **典型日志信息**<br>
 故障日志：
@@ -373,11 +373,11 @@ BusinessError 1300004: Unauthorized operation. Possible cause: Invalid window Ty
 
 2. 在输出中查找目标窗口，根据Type字段判断：
    - 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。
-   - Type不为1的窗口，均不能调用restore()。例如，通过createSubWindow()接口创建的窗口为子窗口，可在创建时指定子窗口名称。
+   - Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](arkts-apis-window-WindowStage.md#createsubwindow9)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
 
 ### 子窗口调用getWindowSystemBarProperties崩溃
 **可能原因**<br>
-开发者在应用子窗口、全局悬浮窗等非应用主窗口上调用getWindowSystemBarProperties()接口，报错1300004。
+开发者在应用子窗口、全局悬浮窗等非应用主窗口上调用[getWindowSystemBarProperties()](arkts-apis-window-Window.md#getwindowsystembarproperties12)接口，报错1300004。
 
 **典型日志信息**<br>
 ```text
@@ -463,23 +463,21 @@ This window context is abnormal.
 **处理步骤**<br>
 在对窗口上下文进行操作前，检查该窗口上下文是否存在，确保其未被销毁，再进行相关操作。
 
-<!--Del-->
-## 1300007 WindowExtension拉起应用失败
+## 1300007 恢复当前窗口的主窗口到前台显示失败
 
 **错误信息**<br>
-Failed to start the ability.
+Restore parent main window failed.
 
 **错误描述**<br>
-WindowExtension拉起应用失败。
+恢复当前窗口的主窗口到前台显示失败。
 
 **可能原因**<br>
-WindowExtension拉起应用的参数异常。
+1. 主窗口处于PAUSED生命周期状态。<br>
+2. 主窗口处于后台。
 
 **处理步骤**<br>
-检查WindowExtension参数是否被异常修改，确保其参数合法，再进行相关操作。
-<!--DelEnd-->
+确保主窗口生命周期状态正常，再进行相关操作。
 
-<!--Del-->
 ## 1300008 显示设备异常
 
 **错误信息**<br>
@@ -495,7 +493,6 @@ The display device is abnormal.
 
 **处理步骤**<br>
 确保显示设备正常，再进行相关开发。
-<!--DelEnd-->
 
 ## 1300009 父窗口无效
 
@@ -560,7 +557,7 @@ The PiP window state is abnormal.
 
 ### 画中画窗口销毁后访问导致崩溃
 **可能原因**<br>
-开发者在画中画窗口销毁后（如用户退出画中画、窗口生命周期结束等）调用画中画窗口stopPiP()接口，触发错误码1300012。
+开发者在画中画窗口销毁后（如用户退出画中画、窗口生命周期结束等）调用画中画窗口[stopPiP()](js-apis-pipWindow.md#stoppip)接口，触发错误码1300012。
 
 **典型日志信息**<br>
 ```text
@@ -606,7 +603,7 @@ async stopPiPSafely(pipController: PiPController) {
 
 ### 画中画窗口重复启动导致崩溃
 **可能原因**<br>
-开发者在画中画窗口处于已经启动或正在启动中的状态时，调用画中画窗口startPiP()接口，触发错误码1300012。
+开发者在画中画窗口处于已经启动或正在启动中的状态时，调用画中画窗口[startPiP()](js-apis-pipWindow.md#startpip)接口，触发错误码1300012。
 
 **典型日志信息**<br>
 ```text
@@ -675,8 +672,8 @@ PiP internal error.
 画中画内部错误。
 
 **可能原因**<br>
-1.画中画依赖的窗口异常，可能窗口为空。<br>
-2.画中画控制器异常。
+1. 画中画依赖的窗口异常，可能窗口为空。<br>
+2. 画中画控制器异常。
 
 **处理步骤**<br>
 无需处理。
@@ -707,11 +704,11 @@ Parameter validation error.
 
 **可能原因**
 
-1.参数的值超出允许的范围。
+1. 参数的值超出允许的范围。
 
-2.参数的长度超出允许的长度。
+2. 参数的长度超出允许的长度。
 
-3.参数的格式不正确。
+3. 参数的格式不正确。
 
 **处理步骤**
 
@@ -735,11 +732,11 @@ API call timed out.
 
 需根据具体业务场景而定，常见的几种处理方式：
 
-1.API接口在有限次数内进行重新调用。
+1. API接口在有限次数内进行重新调用。
 
-2.降级处理，使用缓存或执行其他业务逻辑。
+2. 降级处理，使用缓存或执行其他业务逻辑。
 
-3.中断本次逻辑处理。
+3. 中断本次逻辑处理。
 
 ## 1300019 闪控球参数校验错误
 
@@ -753,25 +750,25 @@ Wrong parameters for operating the floating ball.
 
 **可能原因**
 
-1.参数的值超出允许的范围。
+1. 参数的值超出允许的范围。
 
-2.参数的长度超出允许的长度。
+2. 参数的长度超出允许的长度。
 
-3.参数的格式不正确。
+3. 参数的格式不正确。
 
-4.必传的参数没有传入。
+4. 必传的参数没有传入。
 
 **处理步骤**
 
-1.参数值应处于允许的范围内。
+1. 参数值应处于允许的范围内。
 
-2.参数的长度应处于允许的长度范围内。
+2. 参数的长度应处于允许的长度范围内。
 
-3.参数应使用正确的格式。
+3. 参数应使用正确的格式。
 
-4.检查是否有未传入的必传参数。
+4. 检查是否有未传入的必传参数。
 
-闪控球相关参数具体可见FloatingBallParams。
+闪控球相关参数具体可见[FloatingBallParams](js-apis-floatingBall.md#floatingballparams)。
 
 ## 1300020 创建闪控球窗口失败
 
@@ -785,19 +782,19 @@ Failed to create the floating ball window.
 
 **可能原因**
 
-1.启动闪控球时参数有误。
+1. 启动闪控球时参数有误。
 
-2.在不支持的设备上启动闪控球。
+2. 在不支持的设备上启动闪控球。
 
-3.应用在后台时启动闪控球。
+3. 应用在后台时启动闪控球。
 
 **处理步骤**
 
-1.启动闪控球前，请检查参数。
+1. 启动闪控球前，请检查参数。
 
-2.启动闪控球前，请检查设备环境是否支持。
+2. 启动闪控球前，请检查设备环境是否支持。
 
-3.在拉起闪控球前，判断应用是否处于前台。
+3. 在拉起闪控球前，判断应用是否处于前台。
 
 ## 1300021 启动多个闪控球失败
 
@@ -829,19 +826,19 @@ Repeated floating ball operation.
 
 **可能原因**
 
-1.闪控球在启动状态下再次启动。
+1. 闪控球在启动状态下再次启动。
 
-2.闪控球停止后，再次停止无效。
+2. 闪控球停止后，再次停止无效。
 
-3.重复注册闪控球回调。
+3. 重复注册闪控球回调。
 
 **处理步骤**
 
-1.在启动操作前，检查闪控球是否已启动。
+1. 在启动操作前，检查闪控球是否已启动。
 
-2.在停止操作前，检查闪控球是否已停止。
+2. 在停止操作前，检查闪控球是否已停止。
 
-3.在注册闪控球回调操作前，确保回调未注册。
+3. 在注册闪控球回调操作前，确保回调未注册。
 
 ## 1300023 闪控球内部错误
 
@@ -855,15 +852,15 @@ Floating ball internal error.
 
 **可能原因**
 
-1.闪控球依赖的窗口异常，可能为空。
+1. 闪控球依赖的窗口异常，可能为空。
 
-2.闪控球控制器异常，可能是控制器为空。
+2. 闪控球控制器异常，可能是控制器为空。
 
 **处理步骤**
 
-1.检查闪控球的窗口，确保其非空。
+1. 检查闪控球的窗口，确保其非空。
 
-2.检查闪控球控制器的状态，确保其不为空。
+2. 检查闪控球控制器的状态，确保其不为空。
 
 ## 1300024 闪控球窗口状态异常
 
@@ -895,23 +892,23 @@ The floating ball state does not support this operation.
 
 **可能原因**
 
-1.在闪控球未启动时进行更新操作。
+1. 在闪控球未启动时进行更新操作。
 
-2.闪控球未启动时，查询窗口信息。
+2. 闪控球未启动时，查询窗口信息。
 
-3.闪控球未启动时，拉起应用窗口。
+3. 闪控球未启动时，拉起应用窗口。
 
-4.调用闪控球停止接口，流程未完成时启动闪控球。
+4. 调用闪控球停止接口，流程未完成时启动闪控球。
 
 **处理步骤**
 
-1.进行更新操作前，检查闪控球是否已启动。
+1. 进行更新操作前，检查闪控球是否已启动。
 
-2.进行查询闪控球窗口信息操作时，检查闪控球是否已启动。
+2. 进行查询闪控球窗口信息操作时，检查闪控球是否已启动。
 
-3.进行拉起应用窗口操作时，检查闪控球是否已启动。
+3. 进行拉起应用窗口操作时，检查闪控球是否已启动。
 
-4.等待闪控球回调停止后，再次启动闪控球。
+4. 等待闪控球回调停止后，再次启动闪控球。
 
 ## 1300026 闪控球拉起应用窗口失败
 
@@ -925,19 +922,19 @@ Failed to restore the main window.
 
 **可能原因**
 
-1.传入参数有误。
+1. 传入参数有误。
 
-2.应用未申请`ohos.permission.AUTO_RESTORE_MAIN_WINDOW`权限的情况下，拉起应用窗口前未点击闪控球。
+2. 应用未申请`ohos.permission.AUTO_RESTORE_MAIN_WINDOW`权限的情况下，拉起应用窗口前未点击闪控球。
 
-3.拉起非本应用的窗口。
+3. 拉起非本应用的窗口。
 
 **处理步骤**
 
-1.请检查应用窗口的拉起参数。
+1. 请检查应用窗口的拉起参数。
 
-2.若希望不与用户交互直接拉起应用窗口，请申请`ohos.permission.AUTO_RESTORE_MAIN_WINDOW`权限。否则，请在点击闪控球之后再拉起应用窗口。
+2. 若希望不与用户交互直接拉起应用窗口，请申请`ohos.permission.AUTO_RESTORE_MAIN_WINDOW`权限。否则，请在点击闪控球之后再拉起应用窗口。
 
-3.仅拉起本应用窗口。
+3. 仅拉起本应用窗口。
 
 ## 1300027 更新闪控球时不能改变模板类型
 
@@ -995,9 +992,9 @@ Repeated operations on the float view.
 
 **处理步骤**
 
-1. 建议通过onStateChange获取当前状态变化。启动闪控窗前，检查闪控窗是否处于已启动的状态。
+1. 建议通过[onStateChange](js-apis-floatView.md#onstatechange)获取当前状态变化。启动闪控窗前，检查闪控窗是否处于已启动的状态。
 
-2. 建议通过onStateChange获取当前状态变化。停止闪控窗前，检查闪控窗是否处于已停止的状态。
+2. 建议通过[onStateChange](js-apis-floatView.md#onstatechange)获取当前状态变化。停止闪控窗前，检查闪控窗是否处于已停止的状态。
 
 3. 注册闪控窗回调前，确保回调未注册。
 
@@ -1118,7 +1115,7 @@ This window type is invalid.
 窗口类型无效。
 
 **可能原因**<br>
-使用了无效的窗口类型，有效的窗口类型见WindowType。
+使用了无效的窗口类型，有效的窗口类型见[WindowType](arkts-apis-window-e.md#windowtype7)。
 
 **处理步骤**<br>
 请使用WindowType支持的窗口类型，再进行相关操作。

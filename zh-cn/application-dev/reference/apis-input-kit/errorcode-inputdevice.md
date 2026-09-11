@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> - 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码。
+> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 <!--Del-->
 ## 3900001 指定的设备不存在
@@ -29,7 +29,7 @@ The specified device does not exist.
 
 **处理步骤**
 
-1. 通过inputDevice.getDeviceList查询设备ID，并传入正确的设备ID。
+1. 通过[inputDevice.getDeviceList](js-apis-inputdevice.md#inputdevicegetdevicelist9)查询设备ID，并传入正确的设备ID。
 2. 检查设备的物理连接是否断开。<!--DelEnd-->
 
 ## 3900002 键盘设备没有连接
@@ -81,7 +81,7 @@ The specified display does not exist.
 
 **可能原因**
 
-当前设备上并没有此显示器id。
+当前设备上并没有此显示器ID。
 
 **处理步骤**
 
@@ -105,7 +105,7 @@ Unsupported input device.
 
 **处理步骤**
 
-请重新设置外接的USB或蓝牙外设的id。<!--DelEnd-->
+请重新设置外接的USB或蓝牙外设的ID。<!--DelEnd-->
 
 ## 3800001 多模输入服务内部错误
 

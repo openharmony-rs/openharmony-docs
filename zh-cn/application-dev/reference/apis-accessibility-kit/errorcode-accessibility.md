@@ -2,14 +2,14 @@
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
-<!--Owner: @qiiiiiiian-->
+<!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 9300000 无障碍系统服务工作异常
 

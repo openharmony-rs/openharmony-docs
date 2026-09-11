@@ -1,14 +1,14 @@
 # 媒体会话管理错误码
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 6600101 会话服务端异常
 
@@ -198,7 +198,7 @@ The desktop lyrics feature of this application is not enabled.
 
 **处理步骤**
 
-调用enableDesktopLyric接口启用桌面歌词功能。
+调用[enableDesktopLyric](./arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口启用桌面歌词功能。
 
 ## 6600111 当前设备不支持桌面歌词功能
 
@@ -216,7 +216,7 @@ The desktop lyrics feature is not supported.
 
 **处理步骤**
 
-使用isDesktopLyricSupported接口查询当前设备是否支持桌面歌词功能。
+使用[isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口查询当前设备是否支持桌面歌词功能。
 
 ## 6611000 投播控制器出现未知错误
 

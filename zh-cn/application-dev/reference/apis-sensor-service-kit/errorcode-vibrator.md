@@ -2,13 +2,13 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @LiuChao-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 14600101 操作设备失败
 

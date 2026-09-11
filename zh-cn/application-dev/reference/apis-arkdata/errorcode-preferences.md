@@ -1,14 +1,14 @@
 # 用户首选项错误码
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 15500000 内部错误
 **错误信息**

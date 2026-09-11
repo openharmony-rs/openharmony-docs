@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
 ## 2200001 非法参数值
 
@@ -33,7 +33,7 @@ Invalid parameter value.
 
 **错误信息**
 
-Failed to connect to the service.
+Operation failed. Cannot connect to service.
 
 **错误描述**
 
@@ -159,4 +159,6 @@ VPN系统内部错误。
 
 **处理步骤**
 
-检查VPN系统服务是否正常。
+1. 检查内存空间是否充足，清理内存后重试。
+
+2. 检查VPN系统服务是否正常。如果问题仍然存在，请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。

@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 22700101 内存不足
 
@@ -77,7 +77,7 @@ Failed to commit the enrollment.
 
 **错误描述**
 
-调用注册引擎的确认注册结果接口commit()时，返回失败。
+调用注册引擎的确认注册结果接口[commit()](js-apis-intelligentVoice-sys.md#commit)时，返回失败。
 
 **可能原因**
 
@@ -95,7 +95,7 @@ Start capturer failed.
 
 **错误描述**
 
-启动捕获器startCapturer()时，返回失败。
+启动捕获器[startCapturer()](js-apis-intelligentVoice-sys.md#startcapturer12)时，返回失败。
 
 **可能原因**
 
@@ -113,7 +113,7 @@ Read failed.
 
 **错误描述**
 
-启动捕获器，读取数据read()时，返回失败。
+启动捕获器，读取数据[read()](js-apis-intelligentVoice-sys.md#read12)时，返回失败。
 
 **可能原因**
 

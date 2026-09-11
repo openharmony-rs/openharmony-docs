@@ -2,14 +2,14 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @no86-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 33600001 划词服务调用异常
 

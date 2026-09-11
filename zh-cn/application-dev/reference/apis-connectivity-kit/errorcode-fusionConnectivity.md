@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 34900001 设备未注册
 
@@ -23,11 +23,11 @@ The device is not bound.
 
 **可能原因**
 
-应用未调用bindDevice注册设备。
+应用未调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册设备。
 
 **处理步骤**
 
-应用调用bindDevice注册设备。
+应用调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册设备。
 
 ## 34900003 设备未配对
 
@@ -55,7 +55,7 @@ The device address has already been bound with PartnerAgentExtensionAbility.
 
 **错误描述**
 
-该设备地址已经绑定过PartnerAgentExtensionAbility。
+该设备地址已经绑定过[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)。
 
 **可能原因**
 
@@ -63,7 +63,7 @@ The device address has already been bound with PartnerAgentExtensionAbility.
 
 **处理步骤**
 
-应用调用unbindDevice解注册当前设备，再重新注册bindDevice新的Ability。
+应用调用[unbindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentunbinddevice)解注册当前设备，再重新注册[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)新的Ability。
 
 ## 34900005 蓝牙关闭
 
@@ -95,11 +95,11 @@ The device has not initiated ranging.
 
 **可能原因**
 
-该设备未发起测距，例如：在未调用startRanging的情况下直接调用stopRanging。
+该设备未发起测距，例如：在未调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)的情况下直接调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)。
 
 **处理步骤**
 
-建议先调用startRanging发起测距后再进行后续操作。
+建议先调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)发起测距后再进行后续操作。
 
 ## 34900051 该设备已发起测距
 
@@ -113,11 +113,11 @@ The device has already initiated ranging.
 
 **可能原因**
 
-该设备已发起测距，例如：对同一设备重复调用startRanging而未先调用stopRanging停止之前的测距。
+该设备已发起测距，例如：对同一设备重复调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)而未先调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)停止之前的测距。
 
 **处理步骤**
 
-建议不要在已经发起测距后重复发起，可以先调用stopRanging结束测距后再重新调用startRanging发起测距。
+建议不要在已经发起测距后重复发起，可以先调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)结束测距后再重新调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)发起测距。
 
 ## 34900052 不支持指定类型的测距服务
 
@@ -135,7 +135,7 @@ The specified type of ranging service is not supported.
 
 **处理步骤**
 
-该类型服务并不支持测距，请参考RangingTypes使用有效的测距类型。
+该类型服务并不支持测距，请参考[RangingTypes](js-apis-fusionConnectivity-ranging.md#rangingtypes)使用有效的测距类型。
 
 ## 34900053 测距服务关闭
 
@@ -175,6 +175,9 @@ The parameter value does not meet specifications.
 
 ## 34900099 操作失败
 
+根据实际错误原因的不同，上报不同的错误信息，具体如下。
+
+### 操作失败
 **错误信息**
 
 Operation failed.
@@ -186,6 +189,40 @@ Operation failed.
 **可能原因**
 
 因系统原因导致当前操作失败。
+
+**处理步骤**
+
+请重试该操作。
+
+### extension不是PartnerAgent类型
+**错误信息**
+
+Operation failed. The extension is not partnerAgent type.
+
+**错误描述**
+
+调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册设备时，传入的extension不是PartnerAgent类型。
+
+**可能原因**
+
+传入的extension不是[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)类型。
+
+**处理步骤**
+
+使用[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)类型的extension重新调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)接口。
+
+### SA proxy为空
+**错误信息**
+
+Operation failed. SA proxy is nullptr.
+
+**错误描述**
+
+获取设备代理服务失败，SA proxy为空。
+
+**可能原因**
+
+设备代理服务加载失败。
 
 **处理步骤**
 

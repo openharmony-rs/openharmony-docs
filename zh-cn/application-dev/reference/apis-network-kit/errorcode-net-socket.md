@@ -9,9 +9,9 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
-> Socket错误码映射关系：2301000 + 内核错误码。
-> Socket server错误码映射关系：2303100 + 内核错误码。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
+> Socket错误码映射关系：2301000 + [内核错误码](./errorcode-kernel.md)。
+> Socket server错误码映射关系：2303100 + [内核错误码](./errorcode-kernel.md)。
 
 ## 2301001 操作不允许
 
@@ -362,7 +362,7 @@ Resource temporarily unavailable. Try again.
 
 **错误信息**
 
-Not a socket.
+Socket operation on non-socket.
 
 **错误描述**
 
@@ -416,7 +416,7 @@ Address already in use.
 
 **错误信息**
 
-Address not available.
+Cannot assign requested address.
 
 **错误描述**
 
@@ -478,9 +478,9 @@ SSL对象为空。
 
 **可能原因**
 
-1. TLSSocket.connect方法未调用。
+1. [TLSSocket.connect](./js-apis-socket.md#connect9)方法未调用。
 
-2. TLSSocket.connect方法执行失败。
+2. [TLSSocket.connect](./js-apis-socket.md#connect9)方法执行失败。
 
 3. SSL连接未成功建立。
 
@@ -488,7 +488,7 @@ SSL对象为空。
 
 **处理步骤**
 
-1. 确保在调用其他方法前先成功调用TLSSocket.connect方法。
+1. 确保在调用其他方法前先成功调用[TLSSocket.connect](./js-apis-socket.md#connect9)方法。
 
 2. 检查connect方法的执行结果，确认连接已成功建立。
 
@@ -524,7 +524,7 @@ An error occurred when writing data on the TLS socket.
 
 **可能原因**
 
-发送端缓冲区已满时，底层套接字发送将给出EWOUDLBLOCK错误，这意味着服务器没有读取从客户端发送的消息。
+发送端缓冲区已满时，底层套接字发送将给出EWOULDBLOCK错误，这意味着服务器没有读取从客户端发送的消息。
 
 **处理步骤**
 
@@ -534,7 +534,7 @@ An error occurred when writing data on the TLS socket.
 
 **错误信息**
 
-An error occurred when verifying the x509 certificate.
+An error occurred when verifying the X.509 certificate.
 
 **错误描述**
 
