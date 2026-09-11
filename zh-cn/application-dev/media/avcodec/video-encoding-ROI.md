@@ -369,7 +369,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    
    ``` C++
    int64_t pts = OH_NativeImage_GetTimestamp(nativeImage_);
-   if (roiPathType_ == ROI_PATH_METADATA_CALLBACK && onRoiStrAssembled_) {
+   if ((roiPathType_ == ROI_PATH_METADATA_CALLBACK || roiPathType_ == ROI_PATH_BUFFER_MODE) && onRoiStrAssembled_) {
        onRoiStrAssembled_(pts, assembledRoiStr);
    }
    ```
@@ -428,14 +428,15 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    
    ``` C
    // Buffer模式编码的帧数据项。
-   constexpr uint32_t FRAME_QUEUE_POP_TIMEOUT_MS = 4;
+   constexpr uint32_t FRAME_QUEUE_POP_TIMEOUT_MS = 1000;
    constexpr size_t FRAME_QUEUE_MAX_SIZE = 3;
    
    struct FrameItem {
        std::vector<uint8_t> pixels;
        int32_t width = 0;
        int32_t height = 0;
-       std::string roiStr;
+       int32_t stride = 0;
+       int64_t pts = 0;
    };
    ```
 
@@ -447,37 +448,47 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    
    ``` C++
    // Buffer模式：从相机帧读取像素数据并推入帧队列。
-   BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(InBuffer);
-   if (bufferHandle == nullptr) {
-       return;
-   }
    OH_NativeBuffer *cameraNativeBuffer = nullptr;
-   int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(InBuffer, &cameraNativeBuffer);
-   if (ret != 0 || cameraNativeBuffer == nullptr) {
+   int32_t rawW = 0;
+   int32_t rawH = 0;
+   int32_t srcStride = 0;
+   const uint8_t *raw = MapCameraBuffer(InBuffer, cameraNativeBuffer, rawW, rawH, srcStride);
+   if (raw == nullptr) {
        return;
    }
-   void *virAddr = nullptr;
-   ret = OH_NativeBuffer_Map(cameraNativeBuffer, &virAddr);
-   if (ret != 0 || virAddr == nullptr) {
-       return;
+   // 相机ROI按竖屏检测，需把原始横屏帧旋转成竖屏(匹配ROI坐标 + 编码器竖屏配置)。
+   int32_t rot = cameraRotation_.load();
+   int32_t rotW = rawW;
+   int32_t rotH = rawH;
+   if (rot == CAMERA_ROTATION_CW_90 || rot == CAMERA_ROTATION_CCW_270) {
+       rotW = rawH;
+       rotH = rawW;
    }
-   int32_t frameWidth = bufferHandle->width;
-   int32_t frameHeight = bufferHandle->height;
-   int32_t stride = bufferHandle->stride;
-   int32_t frameSize = stride * frameHeight;
+   int32_t dstStride = rotW;
+   int32_t frameSize = dstStride * rotH * NV12_SIZE_RATIO_NUM / NV12_SIZE_RATIO_DEN;
    FrameItem frameItem;
-   frameItem.width = frameWidth;
-   frameItem.height = frameHeight;
-   frameItem.roiStr = assembledRoiStr;
+   frameItem.width = rotW;
+   frameItem.height = rotH;
+   frameItem.stride = dstStride;
+   frameItem.pts = pts;
    frameItem.pixels.resize(frameSize);
-   std::copy(static_cast<uint8_t *>(virAddr),
-             static_cast<uint8_t *>(virAddr) + frameSize,
-             frameItem.pixels.data());
+   RotateFrameParams params;
+   params.raw = raw;
+   params.dst = frameItem.pixels.data();
+   params.rawW = rawW;
+   params.rawH = rawH;
+   params.srcStride = srcStride;
+   params.dstStride = dstStride;
+   params.rotW = rotW;
+   params.rotH = rotH;
+   RotateFrame(params, rot);
+   
    frameQueue_->Push(frameItem);
    OH_NativeBuffer_Unmap(cameraNativeBuffer);
    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "RenderThread",
-                "Buffer模式: pushed frame to queue, size: %{public}d, ROI: %{public}s",
-                frameSize, assembledRoiStr.c_str());
+                "Buffer模式: pushed frame to queue, rawW:%{public}d rawH:%{public}d rot:%{public}d "
+                "-> rotW:%{public}d rotH:%{public}d",
+                rawW, rawH, rot, rotW, rotH);
    ```
 
    > **说明：**
@@ -499,6 +510,16 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
            return;
        }
        CodecUserData *codecUserData = static_cast<CodecUserData *>(userData);
+       // Buffer模式：从RoiQueue取ROI字符串，设置到输入Buffer参数。
+       if (codecUserData->roiPathType == ROI_PATH_BUFFER_MODE && codecUserData->roiQueue != nullptr) {
+           std::string roiStr = codecUserData->roiQueue->Pop();
+           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+           if (format != nullptr) {
+               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiStr.c_str());
+               OH_AVBuffer_SetParameter(buffer, format);
+               OH_AVFormat_Destroy(format);
+           }
+       }
        std::unique_lock<std::mutex> lock(codecUserData->inputMutex);
        codecUserData->inputBufferInfoQueue.emplace(index, buffer);
        codecUserData->inputCond.notify_all();
@@ -537,29 +558,111 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
    <!-- @[roi_buffer_mode_fill_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
    
    ``` C++
+   void Recorder::GetEncoderStride(int32_t frameHeight, int32_t &encStride, int32_t &encSliceHeight)
+   {
+       OH_AVFormat *desc = OH_VideoEncoder_GetInputDescription(videoEncoder_->GetCodec());
+       if (desc != nullptr) {
+           OH_AVFormat_GetIntValue(desc, "stride", &encStride);
+           OH_AVFormat_GetIntValue(desc, "sliceHeight", &encSliceHeight);
+           OH_AVFormat_Destroy(desc);
+       }
+       // sliceHeight取不到时按16对齐。
+       if (encSliceHeight <= 0) {
+           encSliceHeight = (frameHeight + STRIDE_ALIGN_MASK) & ~STRIDE_ALIGN_MASK;
+       }
+   }
+   
+   void Recorder::CopyYPlane(const PlaneCopyParams &p)
+   {
+       const uint8_t *src = p.src;
+       uint8_t *dst = p.dst;
+       for (int32_t i = 0; i < p.height; i++) {
+           std::copy(src, src + p.width, dst);
+           src += p.srcStride;
+           dst += p.encStride;
+       }
+   }
+   
+   void Recorder::CopyUvPlaneWithSwap(const PlaneCopyParams &p)
+   {
+       const uint8_t *src = p.src;
+       uint8_t *dst = p.dst;
+       for (int32_t i = 0; i < p.height / UV_PLANE_RATIO; i++) {
+           // 相机输出为NV21，编码器期望NV12，逐对交换U/V。
+           for (int32_t j = 0; j < p.width; j += UV_PAIR_SIZE) {
+               dst[j] = src[j + 1];
+               dst[j + 1] = src[j];
+           }
+           src += p.srcStride;
+           dst += p.encStride;
+       }
+   }
+   
+   void Recorder::PushEmptyOrEosBuffer(uint32_t index, OH_AVBuffer *buffer)
+   {
+       if (needEosFrame_) {
+           // 剩余帧消费完，空buffer+EOS通知编码器输入结束。
+           OH_AVCodecBufferAttr attr;
+           attr.size = 0;
+           attr.offset = 0;
+           attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
+           attr.pts = 0;
+           OH_AVBuffer_SetBufferAttr(buffer, &attr);
+           OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
+           needEosFrame_ = false;
+       } else {
+           OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
+       }
+   }
+   
    void Recorder::FillBufferModeInput(uint32_t index, OH_AVBuffer *buffer)
    {
        FrameItem frameItem;
        if (!encContext_->frameQueue->Pop(frameItem, std::chrono::milliseconds(FRAME_QUEUE_POP_TIMEOUT_MS))) {
-           OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
+           PushEmptyOrEosBuffer(index, buffer);
            return;
        }
        uint8_t *bufferAddr = OH_AVBuffer_GetAddr(buffer);
        int32_t bufferCapacity = OH_AVBuffer_GetCapacity(buffer);
-       if (bufferAddr != nullptr && bufferCapacity >= static_cast<int32_t>(frameItem.pixels.size())) {
-           std::copy(frameItem.pixels.data(), frameItem.pixels.data() + frameItem.pixels.size(), bufferAddr);
-           OH_AVCodecBufferAttr attr;
-           attr.size = static_cast<int32_t>(frameItem.pixels.size());
-           attr.offset = 0;
-           attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-           OH_AVBuffer_SetBufferAttr(buffer, &attr);
+       if (bufferAddr == nullptr) {
+           SAMPLE_LOGE("Buffer addr is nullptr, skip this frame");
+           return;
        }
-       if (!frameItem.roiStr.empty()) {
-           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-           if (format != nullptr) {
-               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
-           }
+       int32_t encStride = frameItem.stride;
+       int32_t encSliceHeight = frameItem.height;
+       GetEncoderStride(frameItem.height, encStride, encSliceHeight);
+       int32_t width = frameItem.width;
+       int32_t height = frameItem.height;
+       int32_t srcStride = frameItem.stride;
+       int32_t frameSize = encStride * encSliceHeight * NV12_SIZE_RATIO_NUM / NV12_SIZE_RATIO_DEN;
+       if (bufferCapacity < frameSize) {
+           SAMPLE_LOGE("Buffer capacity %{public}d is less than frame size %{public}d, skip this frame",
+               bufferCapacity, frameSize);
+           return;
        }
+       // Y/UV平面逐行拷贝。UV起点: 编码器 encStride*encSliceHeight，源 srcStride*height(紧跟Y)。
+       PlaneCopyParams yParams;
+       yParams.src = frameItem.pixels.data();
+       yParams.dst = bufferAddr;
+       yParams.width = width;
+       yParams.height = height;
+       yParams.srcStride = srcStride;
+       yParams.encStride = encStride;
+       CopyYPlane(yParams);
+       PlaneCopyParams uvParams = yParams;
+       uvParams.src = frameItem.pixels.data() + static_cast<size_t>(srcStride) * height;
+       uvParams.dst = bufferAddr + static_cast<size_t>(encStride) * encSliceHeight;
+       CopyUvPlaneWithSwap(uvParams);
+       OH_AVCodecBufferAttr attr;
+       attr.size = frameSize;
+       attr.offset = 0;
+       attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
+       if (!firstFramePtsSet_) {
+           firstFramePts_ = frameItem.pts;
+           firstFramePtsSet_ = true;
+       }
+       attr.pts = (frameItem.pts - firstFramePts_) / NS_PER_US; // 相机时间戳(ns)转us，归零首帧
+       OH_AVBuffer_SetBufferAttr(buffer, &attr);
        OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
    }
    ```
