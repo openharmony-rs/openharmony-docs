@@ -309,8 +309,8 @@ Enumerates the key codes.
 | KEYCODE_PRESENTATION = 2705 | Presentation key<br>**Since**: 22|
 | KEYCODE_DATABASE = 2706 | Database key<br>**Since**: 22|
 | KEYCODE_NEWS = 2707 | News key<br>**Since**: 22|
-| KEYCODE_VOICEMAIL = 2708 | Voicemail key.<br/>**Since:** 22 |
-| KEYCODE_ADDRESSBOOK = 2709 | Address book key.<br/>**Since:** 22 |
+| KEYCODE_VOICEMAIL = 2708 | Voicemail key<br/>**Since:** 22 |
+| KEYCODE_ADDRESSBOOK = 2709 | Address book key<br/>**Since:** 22 |
 | KEYCODE_MESSENGER = 2710 | Messenger key<br>**Since**: 22|
 | KEYCODE_BRIGHTNESS_TOGGLE = 2711 | Brightness Toggle key<br>**Since**: 22|
 | KEYCODE_SPELLCHECK = 2712 | Spell Check key<br>**Since**: 22|
