@@ -9258,3 +9258,17 @@ Allows an application to clear background application resources.
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 26.1.0
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+Allows a system application to manage SoftBus resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
+
+**Valid since**: 26.1.0
