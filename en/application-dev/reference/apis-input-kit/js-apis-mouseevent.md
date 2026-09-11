@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=9a1cb1c28d6db83260f62725623fc8e88729c2c6 translatedAt=2026-09-01T01:21:46.196Z pushedAt=2026-09-03T08:36:09.592Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:18:36.787Z pushedAt=2026-09-11T03:25:11.965Z -->
 
 The **mouseEvent** module provides mouse events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -67,6 +67,7 @@ Enumerates mouse axis types.
 | SCROLL_HORIZONTAL | 1 | Horizontal scroll axis of the mouse.|
 | PINCH             | 2 | Pinch axis of the mouse.  |
 
+
 ## AxisValue
 
 Defines the mouse axis type and axis value.
@@ -121,4 +122,3 @@ Defines the mouse event.
 | toolType<sup>11+</sup> | [ToolType](#tooltype11) | No   | No   | Tool type.                    |
 | globalX<sup>20+</sup> | number | No    | Yes    | X coordinate of the mouse event in the global coordinate system with the upper left corner of the primary screen as the origin, in px. When this parameter is used as an input parameter, it is mandatory and supports only integers if [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is set to **true**. If **MouseEventData.useGlobalCoordinate** is set to **false**, this parameter is optional, and the X coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. When this parameter is used as an output parameter, it is reported by the system. |
 | globalY<sup>20+</sup> | number | No    | Yes    | Y coordinate of the mouse event in the global coordinate system with the upper left corner of the primary screen as the origin, in px. When this parameter is used as an input parameter, it is mandatory and supports only integers if [MouseEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#mouseeventdata11) is set to **true**. If **MouseEventData.useGlobalCoordinate** is set to **false**, this parameter is optional, and the Y coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. When this parameter is used as an output parameter, it is reported by the system. |
-<!--no_check-->
