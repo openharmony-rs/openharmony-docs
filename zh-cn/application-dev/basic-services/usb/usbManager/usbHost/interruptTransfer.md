@@ -221,6 +221,11 @@
      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
      return;
    }
+   if (usbInterface === undefined) {
+     console.error(`get usbInterface error`)
+     this.logInfo_ += '\n[ERROR] get usbInterface error';
+     return;
+   }
    ```
 
 
@@ -231,7 +236,7 @@
    ``` TypeScript
    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
    try {
-     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+     let claimInterfaceResult: number = this.claimUsbInterface(devicePipe, usbInterface);
      if (claimInterfaceResult !== 0) {
        console.error(`claimInterface error = ${claimInterfaceResult}`)
        this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);

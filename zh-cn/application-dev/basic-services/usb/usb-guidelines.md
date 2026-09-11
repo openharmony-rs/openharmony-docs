@@ -180,7 +180,12 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
        打开对应接口，在设备信息（deviceList）中选取对应的interface。
        interface1为设备配置中的一个接口。
       */
-     usbManager.claimInterface(pipe, interface1, true);
+     let claimInterfaceResult: number = this.claimUsbInterface(pipe, interface1);
+     if (claimInterfaceResult !== 0) {
+       console.error(`claimInterface error = ${claimInterfaceResult}`);
+       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+       return;
+     }
      this.pipe_ = pipe;
      this.interface_ = interface1;
      console.info('open device success');
