@@ -176,7 +176,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -185,7 +185,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
 
    ``` TypeScript
-   this.cam = await this.rf!.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf!.createCamera({ name: 'Camera1' });
    this.cam!.enabled = true;
    this.cam!.position.z = 5;
    ```
@@ -563,7 +563,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
    <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
-   this.cam = await rf.createCamera({ 'name': 'ClearcoatCam' });
+   this.cam = await rf.createCamera({ name: 'ClearcoatCam' });
    this.cam.enabled = true;
    lookAt(this.cam,{x:0,y:0,z:-3},{x:0,y:0,z:0},{x:0,y:1,z:0});
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -575,7 +575,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
    ``` TypeScript
    // 创建相机
-   this.cam = await rf.createCamera({ 'name': 'ClearcoatCam' });
+   this.cam = await rf.createCamera({ name: 'ClearcoatCam' });
    this.cam!.enabled = true;
    lookAt(this.cam!, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
    this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;

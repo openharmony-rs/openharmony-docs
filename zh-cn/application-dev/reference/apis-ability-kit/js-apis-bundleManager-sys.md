@@ -30,7 +30,6 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                         | 值         | 说明                                                         |
 | -------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY   | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | GET_BUNDLE_INFO_OF_ANY_USER                  | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | GET_BUNDLE_INFO_EXCLUDE_CLONE                | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
@@ -141,6 +140,32 @@ import { bundleManager } from '@kit.AbilityKit';
 | ALWAYS_ASK        | 0   | 每次启动应用时都询问用户选择主应用或分身应用。 |
 | MAIN_APP          | 1   | 默认使用主应用。 |
 | CLONE_APP         | 2   | 默认使用分身应用。 |
+
+## DeviceModeDistributionPolicy
+
+设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| UNSPECIFIED | 0 | 未指定设备模式分发策略。 |
+| MAIN_ONLY | 1 | 应用程序仅在主模式下可用。 |
+| SUB_ONLY | 2 | 应用程序仅在副模式下可用。 |
+| UNIVERSAL_IDENTICAL_PACKAGE | 3 | 应用程序在两种模式下都可用，具有相同的包体。 |
+| UNIVERSAL_DIFFERENT_PACKAGE | 4 | 应用程序在两种模式下都可用，具有不同的包体。 |
+| PARTIAL_COMPATIBLE_IDENTICAL_PACKAGE | 5 | 应用程序在不同模式之间部分兼容，具有相同的包体。 |
+| PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
+| FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
+| FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -8247,6 +8272,71 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', message);
+}
+```
+
+## bundleManager.filterBundleListByDeviceModeDistributionPolicies
+
+filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDistributionPolicy>): Promise\<void>
+
+支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| policies | Array\<[DeviceModeDistributionPolicy](#devicemodedistributionpolicy)> | 是 | DeviceModeDistributionPolicy值的数组。入参不能为空，所有值必须在DeviceModeDistributionPolicy的枚举值范围内，且必须包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700097 | The device does not support the dual mode. |
+| 17700098 | The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]. |
+| 17700099 | The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let policies: Array<bundleManager.DeviceModeDistributionPolicy> = [
+  bundleManager.DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE,
+  bundleManager.DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE,
+  bundleManager.DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE
+];
+
+try {
+  bundleManager.filterBundleListByDeviceModeDistributionPolicies(policies).then(() => {
+    hilog.info(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'filterBundleListByDeviceModeDistributionPolicies failed. Cause: %{public}s', message);
 }
 ```
 

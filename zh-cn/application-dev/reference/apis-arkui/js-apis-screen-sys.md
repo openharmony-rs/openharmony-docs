@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -1711,8 +1711,8 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 主屏幕的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
-| secondaryScreenId | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 扩展屏幕的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| primaryScreenId   | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 主屏幕的端口ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。可通过[Screen](#属性)的rsid属性获取正确屏幕端口ID作为入参。|
+| secondaryScreenId | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 扩展屏幕的端口ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。可通过[Screen](#属性)的rsid属性获取正确屏幕端口ID作为入参。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**

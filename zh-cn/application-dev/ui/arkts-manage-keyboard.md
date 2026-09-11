@@ -34,25 +34,27 @@
 
 以下示例展示了点击按钮时，焦点转移到输入框并弹出软键盘的方法。
 
-```ts
-@Entry
-@Component
-struct demo {
+<!-- @[requestFocus_ShowKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusShowKeyboard.ets) -->
+
+``` TypeScript
+struct requestFocusShowKeyboard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   build() {
-    Column({ space: 20 }) {
-      Button('输入框请求焦点').onClick(() => {
-        this.getUIContext().getFocusController().requestFocus("textInput1")
-      })
-      TextInput({ controller: this.controller, text: this.inputValue })
-        .id("textInput1")
+    NavDestination() {
+      Column({ space: 20 }) {
+        Button('输入框请求焦点').onClick(() => {
+          this.getUIContext().getFocusController().requestFocus('textInput1')
+        })
+        TextInput({ controller: this.controller, text: this.inputValue })
+          .id('textInput1')
+      }
+      .height('100%')
+      .width('80%')
+      .margin('10%')
+      .justifyContent(FlexAlign.Center)
     }
-    .height('100%')
-    .width('80%')
-    .margin('10%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
@@ -65,23 +67,25 @@ struct demo {
 
 以下示例展示了外接键盘时，多次按下Tab键，焦点转移到TextInput并显示物理键盘悬浮栏的场景。当按下Tab键时，焦点在页面中的三个组件之间转移，可以从Text的蓝色边框或者TextInput中闪烁的光标观察到焦点转移。当TextInput获焦时，显示光标，同时显示物理键盘悬浮栏。
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[tabKey_FocusShowKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TabKeyFocusShowKeyboard.ets) -->
+
+``` TypeScript
+struct tabKeyFocusShowKeyboard {
   build() {
-    Column({ space: 20 }) {
-      Text('Text.focusable(true)')
-        .focusable(true)
+    NavDestination() {
+      Column({ space: 20 }) {
+        Text('Text.focusable(true)')
+          .focusable(true)
 
-      TextInput({ placeholder: "TextInput" })
+        TextInput({ placeholder: 'TextInput' })
 
-      TextInput({ placeholder: "TextInput" })
+        TextInput({ placeholder: 'TextInput' })
+      }
+      .height('100%')
+      .width('80%')
+      .margin('10%')
+      .justifyContent(FlexAlign.Center)
     }
-    .height('100%')
-    .width('80%')
-    .margin('10%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
@@ -112,22 +116,24 @@ struct Index {
 
 以下示例展示了用户主动点击软键盘关闭按钮的场景。
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[closeButton_ClickKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/CloseButtonClickKeyboard.ets) -->
+
+``` TypeScript
+struct closeButtonClickKeyboard {
   build() {
-    Column({ space: 20 }) {
-      Blank()
-        .height(350)
-      Flex({ direction: FlexDirection.Row }) {
-        TextInput({ placeholder: 'TextInput' })
+    NavDestination() {
+      Column({ space: 20 }) {
+        Blank()
+          .height(350)
+        Flex({ direction: FlexDirection.Row }) {
+          TextInput({ placeholder: 'TextInput' })
+        }
+        .width(250)
       }
-      .width(250)
+      .height('100%')
+      .width('90%')
+      .padding('5%')
     }
-    .height('100%')
-    .width('90%')
-    .padding('5%')
   }
 }
 ```
@@ -140,24 +146,26 @@ struct Index {
 
 以下示例展示了用户主动拖拽文本时，软键盘被收起的场景。
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[dragText_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/DragTextCloseKeyboard.ets) -->
+
+``` TypeScript
+struct dragTextCloseKeyboard {
   build() {
-    Column({ space: 20 }) {
-      Blank()
-        .height(350)
-      Flex({ direction: FlexDirection.Row }) {
-        TextInput({ text: '用户主动拖拽文本' })
-          .selectAll(true)
-          .defaultFocus(true)
+    NavDestination() {
+      Column({ space: 20 }) {
+        Blank()
+          .height(350)
+        Flex({ direction: FlexDirection.Row }) {
+          TextInput({ text: '用户主动拖拽文本' })
+            .selectAll(true)
+            .defaultFocus(true)
+        }
+        .width(250)
       }
-      .width(250)
+      .height('100%')
+      .width('90%')
+      .padding('5%')
     }
-    .height('100%')
-    .width('90%')
-    .padding('5%')
   }
 }
 ```
@@ -178,44 +186,47 @@ struct Index {
 
 跳转前的页面
 
-```ts
-// Index.ets
-@Entry
-@Component
-struct Index {
+<!-- @[page_ChangeSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeSource.ets) -->
+
+``` TypeScript
+struct pageChangeSource {
   // 创建一个导航控制器对象并传入Navigation
   pathStack: NavPathStack = new NavPathStack()
 
   build() {
-    Navigation(this.pathStack) {
-      Column({ space: 30 }) {
-        Blank().height(150)
-        TextInput({ placeholder: 'TextInput' })
-        Button('跳转到下一个页面')
-          .onClick(() => {
-            this.pathStack.pushPath({ name: 'demo_text_1' })
-          })
+    NavDestination() {
+      Navigation(this.pathStack) {
+        Column({ space: 30 }) {
+          Blank().height(150)
+          TextInput({ placeholder: 'TextInput' })
+          Button('跳转到下一个页面')
+            .onClick(() => {
+              this.pathStack.pushPath({ name: 'pageChangeDestination' })
+            })
+        }
+        .height('100%')
+        .width('80%')
+        .margin('10%')
       }
-      .height('100%')
-      .width('80%')
-      .margin('10%')
+      .title('用Navigation实现页面跳转')
+      .navDestination(pageChangeNavDestination)
     }
-    .title('用Navigation实现页面跳转')
   }
 }
 ```
 
 跳转后的页面
 
-```ts
-// demo_text_1.ets
+<!-- @[page_ChangeDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/PageChangeDestination.ets) -->
+
+``` TypeScript
 @Builder
-export function demo_text_1_Builder() {
-  demo_text_1()
+export function pageChangeDestinationBuilder() {
+  pageChangeDestination()
 }
 
 @Component
-struct demo_text_1 {
+struct pageChangeDestination {
   pathStack: NavPathStack = new NavPathStack()
   // 跳转后的页面
   build() {
@@ -255,9 +266,9 @@ struct demo_text_1 {
 {
   "routerMap": [
     {
-      "name": "demo_text_1",
-      "pageSourceFile": "src/main/ets/pages/demo_text_1.ets",
-      "buildFunction": "demo_text_1_Builder"
+      "name": "pageChangeDestination",
+      "pageSourceFile": "src/main/ets/pages/PageChangeDestination.ets",
+      "buildFunction": "pageChangeDestinationBuilder"
     }
   ]
 }
@@ -409,35 +420,37 @@ export struct requestFocusCloseKeyBoard {
 
 以下示例展示了滚动容器在开始滚动时收起键盘的场景。[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)开始滚动时，调用[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)方法清理焦点，焦点转移到页面根容器节点，页面根容器节点不需要软键盘，从而收起软键盘。
 
-```ts
-@Entry
-@Component
-struct Index {
+<!-- @[listScroll_ClearFocus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/ListScrollClearFocus.ets) -->
+
+``` TypeScript
+struct listScrollClearFocus {
   private arr: number[] = Array.from<number, number>(
     { length: 100 } as ArrayLike<number>,
     (_, i: number) => i + 1
   );
 
   build() {
-    Column() {
-      List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item: number, index?: number) => {
-          ListItem() {
-            Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
-              TextInput({ placeholder: 'TextInput ' + item })
+    NavDestination() {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          ForEach(this.arr, (item: number, index?: number) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
+                TextInput({ placeholder: 'TextInput ' + item })
+              }
             }
-          }
-        }, (item: string) => item)
+          }, (item: string) => item)
+        }
+        .onScrollStart(() => {
+          // List开始滚动时清理焦点，达成收起键盘的目的
+          this.getUIContext().getFocusController().clearFocus()
+        })
+        .width('80%')
+        .height('80%')
+        .margin('10%')
       }
-      .onScrollStart(() => {
-        // List开始滚动时清理焦点，达成收起键盘的目的
-        this.getUIContext().getFocusController().clearFocus()
-      })
-      .width('80%')
-      .height('80%')
-      .margin('10%')
+      .justifyContent(FlexAlign.Center)
     }
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
@@ -463,12 +476,13 @@ struct Index {
 设置自定义键盘后，系统键盘不会弹出。利用此特性，设置一个空的自定义键盘，实现“点击输入框时不显示软键盘”的效果。
 
 示例如下，单击输入框，拉起空的自定义键盘。
-``` ts
-@Entry
-@Component
-struct demo {
+
+<!-- @[empty_CustomKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/EmptyCustomKeyboard.ets) -->
+
+``` TypeScript
+struct emptyCustomKeyboard {
   controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
 
   // 自定义键盘组件
   @Builder
@@ -478,14 +492,16 @@ struct demo {
   }
 
   build() {
-    Column() {
-      TextInput({ placeholder: 'TextInput', controller: this.controller, text: this.inputValue })// 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder())
+    NavDestination() {
+      Column() {
+        TextInput({ placeholder: 'TextInput', controller: this.controller, text: this.inputValue })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder())
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('80%')
+      .margin('10%')
+      .height('100%')
     }
-    .justifyContent(FlexAlign.Center)
-    .width('80%')
-    .margin('10%')
-    .height('100%')
   }
 }
 ```
@@ -508,26 +524,28 @@ struct demo {
 
 示例如下，软键盘的回车键显示为发送样式。按下发送之后，键盘不会收起。
 
-```ts
-@Entry
-@Component
-struct demo {
-  build() {
-    Column({ space: 20 }) {
-      TextArea({ placeholder: '点击发送收起键盘' })
-        .enterKeyType(EnterKeyType.Send)
+<!-- @[keepEditableState_OnSubmit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/KeepEditableStateOnSubmit.ets) -->
 
-      TextArea({ placeholder: 'onSubmit中设置keepEditableState，点击发送不收起键盘' })
-        .enterKeyType(EnterKeyType.Send)
-        .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
-          // 调用keepEditableState方法，输入框保持编辑态
-          event.keepEditableState();
-        })
+``` TypeScript
+struct keepEditableStateOnSubmit {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        TextArea({ placeholder: '点击发送收起键盘' })
+          .enterKeyType(EnterKeyType.Send)
+
+        TextArea({ placeholder: 'onSubmit中设置keepEditableState，点击发送不收起键盘' })
+          .enterKeyType(EnterKeyType.Send)
+          .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
+            // 调用keepEditableState方法，输入框保持编辑态
+            event.keepEditableState();
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .height('100%')
+      .width('80%')
+      .margin('10%')
     }
-    .justifyContent(FlexAlign.Center)
-    .height('100%')
-    .width('80%')
-    .margin('10%')
   }
 }
 ```

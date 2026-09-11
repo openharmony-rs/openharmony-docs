@@ -1620,6 +1620,7 @@ ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySu
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1627,6 +1628,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
   console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}.`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
+  console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}.`);
 })
 ```
@@ -1680,12 +1693,24 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData().then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+hidebug.dumpJsRawHeapData().then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1742,6 +1767,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1749,6 +1775,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1805,6 +1843,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1812,6 +1851,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```

@@ -106,6 +106,25 @@ constructor(data: PixelMap, unit: LengthMetricsUnit)
 | data  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 图片数据源，通过PixelMap对象设置。适用于需要对图片进行解码、处理后再绘制的场景，可提高图片加载性能。 |
 | unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 是 | 用于配置ImageBitmap对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>默认值：LengthMetricsUnit.DEFAULT。<br>异常值undefined、NaN和Infinity按默认值处理。 |
 
+### constructor
+
+constructor(src: Resource | PixelMap | string, unit?: LengthMetricsUnit)
+
+通过Resource、PixelMap或图片数据源创建ImageBitmap对象，支持使用unit配置ImageBitmap对象的单位模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名  | 类型   | 必填  | 说明                                    |
+| ---- | ------ | ---- | ---------------------------------------- |
+| src  | [Resource](ts-types.md#resource)&nbsp;\|&nbsp;&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;&nbsp;string | 是    | 图片的数据源支持资源引用方式、PixelMap对象以及本地图片。 |
+| unit   | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 |  用来配置ImageBitmap对象的单位模式，配置后无法动态更改。 <br/>默认值：LengthMetricsUnit.DEFAULT。 |
+
 ## close
 
 close(): void
@@ -275,3 +294,40 @@ workerPort.onmessage = (e: MessageEvents) => {
 ```
 
   ![imageBitmap](figures/imageBitmap.png)
+
+### 示例4（加载Resource图片）
+
+该示例通过constructor接口创建Resource类型的ImageBitmap对象，用于Canvas绘制。
+
+从API版本26.0.0开始，新增[constructor](#constructor-2)接口。
+
+  ```ts
+  // xxx.ets
+  import { Entry, Component, Canvas, RenderingContextSettings, CanvasRenderingContext2D, ImageBitmap, $r, Flex, FlexDirection, FlexAlign, ItemAlign, LengthMetricsUnit } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct ImageBitmapResourceExample {
+    private settings: RenderingContextSettings = new RenderingContextSettings(true);
+    private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+    // "app.media.example"需要替换为开发者所需的图像资源文件
+    private img: ImageBitmap = new ImageBitmap($r("app.media.example"), LengthMetricsUnit.DEFAULT);
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.context)
+          .width('100%')
+          .height('100%')
+          .backgroundColor('rgb(213, 213, 213)')
+          .onReady(() => {
+            this.context.drawImage(this.img, 0, 0, 500, 500, 0, 0, 400, 200)
+            this.img.close()
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ![imageBitmap4](figures/imageBitmap4.png)

@@ -132,7 +132,7 @@ ArkTS-Dyn: onError(callback: import('../api/@ohos.base').ErrorCallback)
 
 ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError> | undefined)
 
-被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
+被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常，或出现拉起EmbeddedUIExtensionAbility失败、通知提供方切后台/销毁EmbeddedUIExtensionAbility失败、在EmbeddedUIExtensionAbility中嵌套使用EmbeddedComponent等异常情形时，触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
 > **说明：**
 >
@@ -274,7 +274,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
-| code | number                                                     | 否 | 否 | 被拉起的EmbeddedUIExtensionAbility退出时返回的结果码，由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。若通过`terminateSelf`退出，code取默认值0。 |
+| code | number                                                     | 否 | 否 | 被拉起的EmbeddedUIExtensionAbility退出时返回的结果码。若通过`terminateSelfWithResult`退出，code由调用时传入的resultCode决定；若通过`terminateSelf`退出，code取默认值0。 |
 | want | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 否 | 是 | 被拉起的EmbeddedUIExtensionAbility退出时返回的数据。若通过`terminateSelf`退出，则该值为undefined。   |
 
 ## 示例（加载EmbeddedComponent）
@@ -317,8 +317,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
       abilityName: 'ExampleEmbeddedAbility',
     };
     @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
-    @State windowStrategy: EmbeddedWindowModeFollowStrategy =
-    EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
+    @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
     private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params());
     private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params());
 
@@ -500,12 +499,12 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
       │   ├── extensionAbility
       │   │   └── ExampleEmbeddedAbility.ets
       │   └── pages
-      |       ├── extension.ets
-      │       └── Index.ets  
+      │       ├── extension.ets
+      │       └── Index.ets
       ├── resources
-      |   └── base
-      |       └── profile
-      |           └── main_pages.json
+      │   └── base
+      │       └── profile
+      │           └── main_pages.json
       └── module.json5
   ```
 

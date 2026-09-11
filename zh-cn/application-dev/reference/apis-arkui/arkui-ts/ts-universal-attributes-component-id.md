@@ -71,7 +71,7 @@ ArkTS-Sta: key(value: string | undefined): this
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value   | ArkTS-Dyn: string<br>ArkTS-Sta: string&nbsp;\|&nbsp;undefined   | 是 | 组件的唯一标识，唯一性由使用者保证。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。<br>默认值：'' |
+| value   | ArkTS-Dyn: string<br>ArkTS-Sta: string&nbsp;\|&nbsp;undefined   | 是 | 组件的唯一标识，唯一性由使用者保证。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。 |
 
 **返回值：**
 

@@ -98,7 +98,7 @@ applyingCustomAuthentication() {
 ```
 
 ArkTS-Sta示例：
-<!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: int) {
@@ -107,7 +107,6 @@ handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumbe
       onResult: (result: userAuth.UserAuthResult) => {
         // ...
           Logger.info('userAuthInstance callback');
-          // ...
           if (result.result == userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET ||
             result.result == userAuth.UserAuthResultCode.NOT_ENROLLED) {
             // 请开发者自行完成拉起自定义认证界面的实现
@@ -125,7 +124,7 @@ handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumbe
 /*
  * apply-custom-authentication.md
  * 当前示例仅展示如何配置界面、选择切换到自定义认证界面，具体拉起的页面及对应页面的实现，请开发者自行实现
- */
+ * */
 applyingCustomAuthentication() {
   try {
     const randData = getRandData();
@@ -148,7 +147,59 @@ applyingCustomAuthentication() {
     // 订阅认证结果
     this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
   } catch (error) {
-      Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+``` TypeScript
+handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: int) {
+  // ...
+    userAuthInstance.onResult({
+      onResult: (result: userAuth.UserAuthResult) => {
+        // ...
+          Logger.info('userAuthInstance callback');
+          if (result.result == userAuth.UserAuthResultCode.CANCELED_FROM_WIDGET ||
+            result.result == userAuth.UserAuthResultCode.NOT_ENROLLED) {
+            // 请开发者自行完成拉起自定义认证界面的实现
+            // ...
+          }
+          // ...
+      }
+    });
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+    // ...
+}
+
+/*
+ * apply-custom-authentication.md
+ * 当前示例仅展示如何配置界面、选择切换到自定义认证界面，具体拉起的页面及对应页面的实现，请开发者自行实现
+ * */
+applyingCustomAuthentication() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
+    }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.FACE],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // 配置自定义认证，需设置导航键文本
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+      navigationButtonText: resourceToString($r('app.string.navigationButtonText'))
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证结果
+    this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
+  } catch (error) {
+    Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -156,5 +207,5 @@ applyingCustomAuthentication() {
 ## 示例代码
 
   - [切换自定义认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
-  - [切换自定义认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)
+  - [切换自定义认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta)
   

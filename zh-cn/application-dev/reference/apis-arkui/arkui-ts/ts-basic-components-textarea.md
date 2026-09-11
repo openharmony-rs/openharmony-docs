@@ -1016,7 +1016,7 @@ ArkTS-Dyn: selectedBackgroundColor(value: ResourceColor)
 
 ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
-设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1032,7 +1032,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本选中底板颜色，用于自定义文本选中时的背景颜色。如果未设置不透明度，默认为20%不透明度。<br>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本选中高亮颜色。<br>取值为undefined时，按默认值处理。 |
 
 ### caretStyle<sup>12+</sup>
 
@@ -2852,7 +2852,7 @@ struct TextAreaExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextArea({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
+      TextArea({ controller: this.controller, text: this.inputValue }) // 绑定自定义键盘
         .height(100)
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
@@ -3300,7 +3300,7 @@ struct TextAreaExample {
         .maxFontScale(2)
         .enablePreviewText(true)
         .enableHapticFeedback(true)
-        .stopBackPress(false)// 返回键交给其他组件处理
+        .stopBackPress(false) // 返回键交给其他组件处理
         .width(336)
         .height(56)
         .margin(20)
@@ -3414,7 +3414,7 @@ struct TextAreaExample {
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
           text: '通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。'
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
       // 以下按钮只用做字体大小倍数调整，不在示例图中呈现

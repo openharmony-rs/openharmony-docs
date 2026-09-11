@@ -34,7 +34,7 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -133,7 +133,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -231,7 +231,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -241,7 +241,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **错误码**：
 
@@ -315,7 +315,7 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -413,7 +413,7 @@ ArkTS-Sta: getPointerSpeed(): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -503,7 +503,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -513,7 +513,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度，范围1-20。  |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度，取值范围[1, 20]。  |
 
 **错误码**：
 
@@ -585,7 +585,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -681,7 +681,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -775,7 +775,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -865,7 +865,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -953,7 +953,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1048,7 +1048,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1142,7 +1142,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1236,7 +1236,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1324,7 +1324,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1334,7 +1334,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1422,7 +1422,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1432,7 +1432,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 
 **返回值**：
 
@@ -1518,7 +1518,7 @@ ArkTS-Sta: getMouseScrollRows(callback: AsyncCallback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1615,7 +1615,7 @@ ArkTS-Sta: getMouseScrollRows(): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1703,7 +1703,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1799,7 +1799,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1887,13 +1887,13 @@ struct Index {
 
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
-getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴能力开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -1983,7 +1983,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2071,7 +2071,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2167,7 +2167,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2255,13 +2255,13 @@ struct Index {
 
 ## pointer.getTouchpadScrollDirection<sup>10+</sup>
 
-getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollDirection(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴方向，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2351,7 +2351,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2439,7 +2439,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2535,7 +2535,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2623,13 +2623,13 @@ struct Index {
 
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
-getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板轻触能力开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2718,7 +2718,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2808,7 +2808,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): 
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -2906,7 +2906,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3002,7 +3002,7 @@ ArkTS-Sta: getTouchpadPointerSpeed(callback: AsyncCallback\<int>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3099,7 +3099,7 @@ ArkTS-Sta: getTouchpadPointerSpeed(): Promise\<int>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3187,7 +3187,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3283,7 +3283,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3371,13 +3371,13 @@ struct Index {
 
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
-getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板双指捏合功能开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3467,7 +3467,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3555,7 +3555,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3651,7 +3651,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3739,13 +3739,13 @@ struct Index {
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
-getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板多指滑动功能开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3835,7 +3835,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -3923,7 +3923,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4019,7 +4019,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4113,7 +4113,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4207,7 +4207,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4297,7 +4297,7 @@ ArkTS-Sta: setPointerSize(size: int, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4395,7 +4395,7 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4491,7 +4491,7 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4577,7 +4577,7 @@ ArkTS-Sta: getPointerSize(callback: AsyncCallback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4674,7 +4674,7 @@ ArkTS-Sta: getPointerSize(): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4764,7 +4764,7 @@ ArkTS-Sta: getPointerSizeSync(): int
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4852,7 +4852,7 @@ ArkTS-Sta: setPointerColor(color: int, callback: AsyncCallback&lt;void&gt;): voi
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -4954,7 +4954,7 @@ ArkTS-Sta: setPointerColor(color: int): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -5054,7 +5054,7 @@ ArkTS-Sta: setPointerColorSync(color: int): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -5140,7 +5140,7 @@ ArkTS-Sta: getPointerColor(callback: AsyncCallback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -5237,7 +5237,7 @@ ArkTS-Sta: getPointerColor(): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -5327,7 +5327,7 @@ ArkTS-Sta: getPointerColorSync(): int
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：10
 
@@ -5409,7 +5409,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：14
 
@@ -5504,7 +5504,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：14
 
@@ -5598,7 +5598,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：14
 
@@ -5692,7 +5692,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：14
 
@@ -5777,11 +5777,11 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
-**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统API**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -5874,11 +5874,11 @@ getMouseScrollDirection(): Promise\<boolean>
 
 获取鼠标滚轮滚动方向，使用Promise异步回调。
 
-**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统API**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：24
 

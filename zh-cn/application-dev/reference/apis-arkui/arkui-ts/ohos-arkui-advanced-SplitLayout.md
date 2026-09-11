@@ -18,7 +18,7 @@ SplitLayout组件提供了常用的页面布局样式，主要用于展示图片
 >
 > - 该组件仅可在Stage模型下使用。
 >
-> - SplitLayout不支持设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。如果设置，编译工具链会额外生成__Common__节点，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SplitLayout本身，导致设置的属性或事件不生效。
+> - SplitLayout不支持设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)。如果设置，编译工具链会额外生成__Common__节点，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SplitLayout本身，导致设置的属性或事件不生效。
 
 
 ## 导入模块
@@ -26,7 +26,6 @@ SplitLayout组件提供了常用的页面布局样式，主要用于展示图片
 ```ts
 import { SplitLayout } from '@kit.ArkUI';
 ```
-
 
 ## 子组件
 
@@ -57,12 +56,6 @@ SplitLayout({mainImage: ResourceStr, primaryText: ResourceStr, secondaryText?: R
 | secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef  | 副标题内容，无长度限制。当需要在标题下方显示副标题时传入，不传入时不显示副标题。 |
 | tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef | 辅助文本，无长度限制。显示在副标题下方区域，当需要显示辅助文本时传入，不传入时不显示辅助文本。 |
 | container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件，用于在布局下方区域承载自定义组件内容，无返回值。 |
-
-## 事件
-不支持[通用事件](ts-component-general-events.md)。
-
-## 属性
-不支持[通用属性](ts-component-general-attributes.md)。
 
 ## 示例
 该示例通过SplitLayout实现了页面布局，并具备自适应能力。

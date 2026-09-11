@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymCipher OH_CryptoSymCipher
 
 ## 概述
 
-定义对称加解密结构体。
+对称密钥加解密结构体，表示对称密钥加解密上下文。
 
 **起始版本：** 12
 
