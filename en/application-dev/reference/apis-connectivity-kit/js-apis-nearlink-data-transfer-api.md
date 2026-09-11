@@ -1,4 +1,4 @@
-# @ohos.nearlink.dataTransfer (Data Transfer Capability)
+# @ohos.nearlink.dataTransfer (NearLink Data Transfer Capability)
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->

@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1fae70b72575596c0efec66316113d81f9770910 translatedAt=2026-09-04T03:07:50.060Z pushedAt=2026-09-09T09:11:03.690Z -->
 
 ## Overview
 
@@ -46,98 +47,103 @@ Defines the APIs, data structs, and enums for accessing the UDMF. If the paramet
 | [Udmf_ProgressIndicator](#udmf_progressindicator) | Udmf_ProgressIndicator | Enumerates the progress indicator options. You can use the default progress indicator as required.|
 | [Udmf_Visibility](#udmf_visibility) | Udmf_Visibility | Enumerates data visibility level.|
 
+## Macros
+
+| Name | Description |
+| -- | -- |
+| UDMF_KEY_BUFFER_LEN (512)  | Minimum space length of the unique identifier of a unified data object.<br>**Since:** 12 |
+
 ### Functions
 
-| Name| typedef Keyword| Description|
+| Name | typedef Keyword | Description |
 | -- | -- | -- |
-| [UDMF_KEY_BUFFER_LEN (512)](#udmf_key_buffer_len) | - | Defines minimum length of the buffer that holds the key (unique identifier) of a unified data object.|
-| [typedef void (\*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)](#oh_udmf_dataprogresslistener) | OH_Udmf_DataProgressListener | Defines the callback used to return the data retrieval progress information and data obtained.<br>A null pointer is returned if the progress is less than 100%. The data obtained is returned only when the progress reaches 100%.|
-| [OH_UdmfData* OH_UdmfData_Create()](#oh_udmfdata_create) | - | Creates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdmfData_Destroy](capi-udmf-h.md#oh_udmfdata_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfData_Destroy(OH_UdmfData* pThis)](#oh_udmfdata_destroy) | - | Destroys an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)](#oh_udmfdata_addrecord) | - | Adds an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) to an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)](#oh_udmfdata_hastype) | - | Checks whether the specified type exists in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)](#oh_udmfdata_gettypes) | - | Obtains all data types in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)](#oh_udmfdata_getrecords) | - | Obtains all records contained in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [typedef void (\*UdmfData_Finalize)(void* context)](#udmfdata_finalize) | UdmfData_Finalize | Defines a callback function used to release the context. This callback is invoked when the **OH_UdmfRecordProvider** instance is destroyed.|
-| [OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()](#oh_udmfrecordprovider_create) | - | Creates an [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdmfRecordProvider_Destroy](capi-udmf-h.md#oh_udmfrecordprovider_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)](#oh_udmfrecordprovider_destroy) | - | Destroys an [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) instance.|
-| [typedef void* (\*OH_UdmfRecordProvider_GetData)(void* context, const char* type)](#oh_udmfrecordprovider_getdata) | OH_UdmfRecordProvider_GetData | Defines a callback function used to obtain data by type. This callback will be invoked to return the data obtained from **OH_UdmfRecord**.|
-| [int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context, const OH_UdmfRecordProvider_GetData callback, const UdmfData_Finalize finalize)](#oh_udmfrecordprovider_setdata) | - | Sets a callback for an **OH_UdmfRecordProvider** instance to provide data.|
-| [OH_UdmfRecord* OH_UdmfRecord_Create()](#oh_udmfrecord_create) | - | Creates an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdmfRecord_Destroy](capi-udmf-h.md#oh_udmfrecord_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)](#oh_udmfrecord_destroy) | - | Destroys an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char* entry, unsigned int count)](#oh_udmfrecord_addgeneralentry) | - | Adds customized general data to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance. This API cannot be used to add data of UDS types (such as PlainText, Link, and Pixelmap).|
-| [int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_addplaintext) | - | Adds data of the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_addhyperlink) | - | Adds data of the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_addhtml) | - | Adds data of the [OH_UdsHtml](capi-udmf-oh-udshtml.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_addappitem) | - | Adds data of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_addfileuri) | - | Adds data of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_addpixelmap) | - | Adds data of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_addarraybuffer) | - | Adds data of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_addcontentform) | - | Adds data of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) type to an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)](#oh_udmfrecord_gettypes) | - | Obtains all data types in an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)](#oh_udmfrecord_getgeneralentry) | - | Obtains the data of the specified type in an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_getplaintext) | - | Obtains [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_gethyperlink) | - | Obtains [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_gethtml) | - | Obtains [OH_UdsHtml](capi-udmf-oh-udshtml.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_getappitem) | - | Obtains [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)](#oh_udmfrecord_setprovider) | - | Sets the [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) in an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_getfileuri) | - | Obtains [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_getpixelmap) | - | Obtains [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_getarraybuffer) | - | Obtains [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_getcontentform) | - | Obtains [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) data from an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
-| [int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)](#oh_udmfdata_getprimaryplaintext) | - | Obtains the first [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) data from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)](#oh_udmfdata_getprimaryhtml) | - | Obtains the first [OH_UdsHtml](capi-udmf-oh-udshtml.md) data from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [int OH_UdmfData_GetRecordCount(OH_UdmfData* data)](#oh_udmfdata_getrecordcount) | - | Obtains the number of data records contained in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)](#oh_udmfdata_getrecord) | - | Obtains the specified data record from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| [bool OH_UdmfData_IsLocal(OH_UdmfData* data)](#oh_udmfdata_islocal) | - | Checks whether an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance is from the local device.|
-| [OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)](#oh_udmfproperty_create) | - | Creates an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance and a pointer to it. If this pointer is no longer required, use [OH_UdmfProperty_Destroy](capi-udmf-h.md#oh_udmfproperty_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)](#oh_udmfproperty_destroy) | - | Destroys an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)](#oh_udmfproperty_gettag) | - | Obtains the custom tag value from an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)](#oh_udmfproperty_gettimestamp) | - | Obtains the timestamp from an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)](#oh_udmfproperty_getshareoption) | - | Obtains the share option from an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int defaultValue)](#oh_udmfproperty_getextrasintparam) | - | Obtains the customized extra integer parameter from an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const char* key)](#oh_udmfproperty_getextrasstringparam) | - | Obtains the customized extra string parameter from an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)](#oh_udmfproperty_settag) | - | Sets the tag value for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)](#oh_udmfproperty_setshareoption) | - | Sets the [Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption) for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)](#oh_udmfproperty_setextrasintparam) | - | Sets the extra integer parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)](#oh_udmfproperty_setextrasstringparam) | - | Sets the extra string parameter for an [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) instance.|
-| [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | Creates an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. If this pointer is no longer required, use [OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)](#oh_udmfoptions_destroy) | - | Destroys an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)](#oh_udmfoptions_getkey) | - | Obtains the key (unique identifier) from an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)](#oh_udmfoptions_setkey) | - | Sets the key (unique identifier) in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)](#oh_udmfoptions_getintention) | - | Obtains the data channel information from an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)](#oh_udmfoptions_setintention) | - | Sets the data channel content parameter in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)](#oh_udmfoptions_reset) | - | Resets an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance to empty.|
-| [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | Obtains an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF database.|
-| [int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_getunifieddatabyoptions) | - | Obtains an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF database by data channel type.|
-| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.|
-| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.|
-| [int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)](#oh_udmf_updateunifieddata) | - | Updates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.|
-| [int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_deleteunifieddata) | - | Deletes an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance from the UDMF database.|
-| [void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)](#oh_udmf_destroydataarray) | - | Destroys the memory of the data array.|
-| [int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)](#oh_udmfprogressinfo_getprogress) | - | Obtains the progress (in percentage) from an [OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md) instance.|
-| [int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)](#oh_udmfprogressinfo_getstatus) | - | Obtains the status information from an [OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md) instance.|
-| [OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()](#oh_udmfgetdataparams_create) | - | Creates an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance and a pointer to it.<br>If this pointer is no longer required, use [OH_UdmfGetDataParams_Destroy](capi-udmf-h.md#oh_udmfgetdataparams_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)](#oh_udmfgetdataparams_destroy) | - | Destroys an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance.|
-| [void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* destUri)](#oh_udmfgetdataparams_setdesturi) | - | Sets the destination directory in an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance.<br>If the destination directory is set, data of the file type will be copied to the specified directory. The file type data obtained in the callback will be replaced with the URI of the destination directory.<br>If the destination directory is not specified, the file will not be copied. The file type data obtained in the callback is the URI of the source directory.<br>If the application involves complex file processing or files need to be copied to multiple directories, you are advised to leave this parameter unspecified and let the application handle the file copy.|
-| [void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, const Udmf_FileConflictOptions options)](#oh_udmfgetdataparams_setfileconflictoptions) | - | Sets the policy for resolving file conflicts in an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance.|
-| [void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, const Udmf_ProgressIndicator progressIndicator)](#oh_udmfgetdataparams_setprogressindicator) | - | Sets the progress indicator in an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance.|
-| [void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, const OH_Udmf_DataProgressListener dataProgressListener)](#oh_udmfgetdataparams_setdataprogresslistener) | - | Sets the callback used to return the progress obtained in an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance.|
-| [Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)](#oh_udmfoptions_getvisibility) | - | Obtains the data visibility level from an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)](#oh_udmfoptions_setvisibility) | - | Sets the data visibility level in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [typedef OH_UdmfData* (\*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)](#oh_udmf_dataloadhandler) | OH_Udmf_DataLoadHandler | Defines the callback used to load data.|
-| [OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()](#oh_udmfdataloadparams_create) | - | Creates an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance and a pointer to it.<br>If this pointer is no longer required, use [OH_UdmfDataLoadParams_Destroy](#oh_udmfdataloadparams_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)](#oh_udmfdataloadparams_destroy) | - | Destroys an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance.|
-| [void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)](#oh_udmfdataloadparams_setloadhandler) | - | Sets the processing function for data loading in an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance.|
-| [void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadparams_setdataloadinfo) | - | Sets data loading information in an [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance.|
-| [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | Creates an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.<br>If this pointer is no longer required, use [OH_UdmfDataLoadInfo_Destroy](#oh_udmfdataloadinfo_destroy) to destroy it. Otherwise, memory leaks may occur.|
-| [void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_destroy) | - | Destroys an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
-| [char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)](#oh_udmfdataloadinfo_gettypes) | - | Obtains the data types from an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
-| [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | Sets the data type in an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
-| [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | Obtains the number of records in an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
-| [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | Sets the number of records in an [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance.|
-| [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | Obtains the unified data object with the specified index from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) array.|
-| [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | Sets permissions in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), which take effect for [OH_UdmfData](capi-udmf-oh-udmfdata.md).|
+| [typedef void (\*OH_Udmf_DataProgressListener)(OH_Udmf_ProgressInfo* progressInfo, OH_UdmfData* data)](#oh_udmf_dataprogresslistener) | OH_Udmf_DataProgressListener | Defines the callback used to return progress information and data. When using it, check whether a null pointer is returned. Data is returned only when the progress reaches 100%. |
+| [OH_UdmfData* OH_UdmfData_Create()](#oh_udmfdata_create) | - | Creates an [OH_UdmfData](capi-udmf-oh-udmfdata.md) pointer and its instance. When the pointer is no longer needed, use [OH_UdmfData_Destroy](capi-udmf-h.md#oh_udmfdata_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfData_Destroy(OH_UdmfData* pThis)](#oh_udmfdata_destroy) | - | Destroys the instance pointed to by the [OH_UdmfData](capi-udmf-oh-udmfdata.md) pointer. |
+| [int OH_UdmfData_AddRecord(OH_UdmfData* pThis, OH_UdmfRecord* record)](#oh_udmfdata_addrecord) | - | Adds a data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) to an [OH_UdmfData](capi-udmf-oh-udmfdata.md) object. |
+| [bool OH_UdmfData_HasType(OH_UdmfData* pThis, const char* type)](#oh_udmfdata_hastype) | - | Checks whether a specified type exists in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) object. |
+| [char** OH_UdmfData_GetTypes(OH_UdmfData* pThis, unsigned int* count)](#oh_udmfdata_gettypes) | - | Obtains the result set of all types contained in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) object. |
+| [OH_UdmfRecord** OH_UdmfData_GetRecords(OH_UdmfData* pThis, unsigned int* count)](#oh_udmfdata_getrecords) | - | Obtains the result set of all records contained in an [OH_UdmfData](capi-udmf-oh-udmfdata.md) object. |
+| [typedef void (\*UdmfData_Finalize)(void* context)](#udmfdata_finalize) | UdmfData_Finalize | Defines the callback used to release the context. It is triggered when the unified data provider object is destroyed. |
+| [OH_UdmfRecordProvider* OH_UdmfRecordProvider_Create()](#oh_udmfrecordprovider_create) | - | Creates a unified data provider [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) pointer and its instance. When the pointer is no longer needed, use [OH_UdmfRecordProvider_Destroy](capi-udmf-h.md#oh_udmfrecordprovider_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [int OH_UdmfRecordProvider_Destroy(OH_UdmfRecordProvider* provider)](#oh_udmfrecordprovider_destroy) | - | Destroys the instance pointed to by the unified data provider [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) pointer. |
+| [typedef void* (\*OH_UdmfRecordProvider_GetData)(void* context, const char* type)](#oh_udmfrecordprovider_getdata) | OH_UdmfRecordProvider_GetData | Defines the callback used to obtain data by type. This callback is triggered when data is obtained from **OH_UdmfRecord**, and the data obtained is the data returned by this callback. |
+| [int OH_UdmfRecordProvider_SetData(OH_UdmfRecordProvider* provider, void* context, const OH_UdmfRecordProvider_GetData callback, const UdmfData_Finalize finalize)](#oh_udmfrecordprovider_setdata) | - | Sets the data provision callback of the unified data provider. |
+| [OH_UdmfRecord* OH_UdmfRecord_Create()](#oh_udmfrecord_create) | - | Creates a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) pointer and its instance. When the pointer is no longer needed, use [OH_UdmfRecord_Destroy](capi-udmf-h.md#oh_udmfrecord_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfRecord_Destroy(OH_UdmfRecord* pThis)](#oh_udmfrecord_destroy) | - | Destroys the instance pointed to by the unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) pointer. |
+| [int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char* entry, unsigned int count)](#oh_udmfrecord_addgeneralentry) | - | Adds user-defined general data to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). This API cannot be used for defined UDS types (such as **PlainText**, **Link**, and **Pixelmap**). |
+| [int OH_UdmfRecord_AddPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_addplaintext) | - | Adds data of the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_addhyperlink) | - | Adds data of the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_addhtml) | - | Adds data of the [OH_UdsHtml](capi-udmf-oh-udshtml.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_addappitem) | - | Adds data of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_addfileuri) | - | Adds data of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_addpixelmap) | - | Adds data of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_addarraybuffer) | - | Adds data of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_AddContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_addcontentform) | - | Adds data of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) type to a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [char** OH_UdmfRecord_GetTypes(OH_UdmfRecord* pThis, unsigned int* count)](#oh_udmfrecord_gettypes) | - | Obtains the result set of all types in a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsigned char** entry, unsigned int* count)](#oh_udmfrecord_getgeneralentry) | - | Obtains the result set of data of a specified type in a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetPlainText(OH_UdmfRecord* pThis, OH_UdsPlainText* plainText)](#oh_udmfrecord_getplaintext) | - | Obtains data of the [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetHyperlink(OH_UdmfRecord* pThis, OH_UdsHyperlink* hyperlink)](#oh_udmfrecord_gethyperlink) | - | Obtains data of the [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetHtml(OH_UdmfRecord* pThis, OH_UdsHtml* html)](#oh_udmfrecord_gethtml) | - | Obtains data of the [OH_UdsHtml](capi-udmf-oh-udshtml.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetAppItem(OH_UdmfRecord* pThis, OH_UdsAppItem* appItem)](#oh_udmfrecord_getappitem) | - | Obtains data of the [OH_UdsAppItem](capi-udmf-oh-udsappitem.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_SetProvider(OH_UdmfRecord* pThis, const char* const* types, unsigned int count, OH_UdmfRecordProvider* provider)](#oh_udmfrecord_setprovider) | - | Sets the unified data provider [OH_UdmfRecordProvider](capi-udmf-oh-udmfrecordprovider.md) of the specified type in a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetFileUri(OH_UdmfRecord* pThis, OH_UdsFileUri* fileUri)](#oh_udmfrecord_getfileuri) | - | Obtains data of the [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetPixelMap(OH_UdmfRecord* pThis, OH_UdsPixelMap* pixelMap)](#oh_udmfrecord_getpixelmap) | - | Obtains data of the [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetArrayBuffer(OH_UdmfRecord* record, const char* type, OH_UdsArrayBuffer* buffer)](#oh_udmfrecord_getarraybuffer) | - | Obtains data of the [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfRecord_GetContentForm(OH_UdmfRecord* pThis, OH_UdsContentForm* contentForm)](#oh_udmfrecord_getcontentform) | - | Obtains data of the [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) type from a unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md). |
+| [int OH_UdmfData_GetPrimaryPlainText(OH_UdmfData* data, OH_UdsPlainText* plainText)](#oh_udmfdata_getprimaryplaintext) | - | Obtains the first [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md) data from a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
+| [int OH_UdmfData_GetPrimaryHtml(OH_UdmfData* data, OH_UdsHtml* html)](#oh_udmfdata_getprimaryhtml) | - | Obtains the first [OH_UdsHtml](capi-udmf-oh-udshtml.md) data from a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
+| [int OH_UdmfData_GetRecordCount(OH_UdmfData* data)](#oh_udmfdata_getrecordcount) | - | Obtains the number of all records contained in a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
+| [OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)](#oh_udmfdata_getrecord) | - | Obtains the data record at the specified position in a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
+| [bool OH_UdmfData_IsLocal(OH_UdmfData* data)](#oh_udmfdata_islocal) | - | Checks whether a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) contains data from the local device. |
+| [OH_UdmfProperty* OH_UdmfProperty_Create(OH_UdmfData* unifiedData)](#oh_udmfproperty_create) | - | Creates a data record property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) pointer and its instance for a unified data object. When the pointer is no longer needed, use [OH_UdmfProperty_Destroy](capi-udmf-h.md#oh_udmfproperty_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfProperty_Destroy(OH_UdmfProperty* pThis)](#oh_udmfproperty_destroy) | - | Destroys the instance pointed to by the data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md) pointer. |
+| [const char* OH_UdmfProperty_GetTag(OH_UdmfProperty* pThis)](#oh_udmfproperty_gettag) | - | Obtains the user-defined tag value from a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [int64_t OH_UdmfProperty_GetTimestamp(OH_UdmfProperty* pThis)](#oh_udmfproperty_gettimestamp) | - | Obtains the timestamp from a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [Udmf_ShareOption OH_UdmfProperty_GetShareOption(OH_UdmfProperty* pThis)](#oh_udmfproperty_getshareoption) | - | Obtains the share option (the applicable scope within a device) from a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [int OH_UdmfProperty_GetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int defaultValue)](#oh_udmfproperty_getextrasintparam) | - | Obtains the custom extra integer parameter from a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [const char* OH_UdmfProperty_GetExtrasStringParam(OH_UdmfProperty* pThis, const char* key)](#oh_udmfproperty_getextrasstringparam) | - | Obtains the custom extra string parameter from a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [int OH_UdmfProperty_SetTag(OH_UdmfProperty* pThis, const char* tag)](#oh_udmfproperty_settag) | - | Sets the custom tag value for a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)](#oh_udmfproperty_setshareoption) | - | Sets the share option (the applicable scope within a device) [Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption) for a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)](#oh_udmfproperty_setextrasintparam) | - | Sets the extra integer parameter for a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)](#oh_udmfproperty_setextrasstringparam) | - | Sets the extra string parameter for a data property [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md). |
+| [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | Creates a pointer to an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. When the pointer is no longer needed, use [OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)](#oh_udmfoptions_destroy) | - | Destroys the pointer to the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)](#oh_udmfoptions_getkey) | - | Obtains the unique identifier of the data from a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)](#oh_udmfoptions_setkey) | - | Sets the unique identifier content parameter of the data in a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [Udmf_Intention OH_UdmfOptions_GetIntention(OH_UdmfOptions* pThis)](#oh_udmfoptions_getintention) | - | Obtains the data channel information from a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [int OH_UdmfOptions_SetIntention(OH_UdmfOptions* pThis, Udmf_Intention intention)](#oh_udmfoptions_setintention) | - | Sets the data channel content parameter in a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [int OH_UdmfOptions_Reset(OH_UdmfOptions* pThis)](#oh_udmfoptions_reset) | - | Resets a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance to empty. |
+| [int OH_Udmf_GetUnifiedData(const char* key, Udmf_Intention intention, OH_UdmfData* unifiedData)](#oh_udmf_getunifieddata) | - | Obtains a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) from the UDMF database. |
+| [int OH_Udmf_GetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_getunifieddatabyoptions) | - | Obtains a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) from the UDMF database by data channel type. |
+| [int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddata) | - | Writes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) to the UDMF database by specifying the data channel type. |
+| [int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)](#oh_udmf_setunifieddatabyoptions) | - | Writes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) to the UDMF database by specifying the data operation options. |
+| [int OH_Udmf_UpdateUnifiedData(OH_UdmfOptions* options, OH_UdmfData* unifiedData)](#oh_udmf_updateunifieddata) | - | Modifies a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) in the UDMF database. |
+| [int OH_Udmf_DeleteUnifiedData(OH_UdmfOptions* options, OH_UdmfData** dataArray, unsigned int* dataSize)](#oh_udmf_deleteunifieddata) | - | Deletes a unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) from the UDMF database. |
+| [void OH_Udmf_DestroyDataArray(OH_UdmfData** dataArray, unsigned int dataSize)](#oh_udmf_destroydataarray) | - | Destroys the memory of the data array. |
+| [int OH_UdmfProgressInfo_GetProgress(OH_Udmf_ProgressInfo* progressInfo)](#oh_udmfprogressinfo_getprogress) | - | Obtains the progress percentage from a progress information [OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md) object. |
+| [int OH_UdmfProgressInfo_GetStatus(OH_Udmf_ProgressInfo* progressInfo)](#oh_udmfprogressinfo_getstatus) | - | Obtains the status information from a progress information [OH_Udmf_ProgressInfo](capi-udmf-oh-udmf-progressinfo.md) object. |
+| [OH_UdmfGetDataParams* OH_UdmfGetDataParams_Create()](#oh_udmfgetdataparams_create) | - | Creates an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) pointer and its instance for asynchronously obtaining UDMF data. When the pointer is no longer needed, use [OH_UdmfGetDataParams_Destroy](capi-udmf-h.md#oh_udmfgetdataparams_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfGetDataParams_Destroy(OH_UdmfGetDataParams* pThis)](#oh_udmfgetdataparams_destroy) | - | Destroys the instance pointed to by the asynchronous request parameter [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) pointer. |
+| [void OH_UdmfGetDataParams_SetDestUri(OH_UdmfGetDataParams* params, const char* destUri)](#oh_udmfgetdataparams_setdesturi) | - | Sets the destination path in an asynchronous request parameter [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md).<br>If the destination path is set, file-type data is copied to the specified path, and the file-type data obtained in the callback is replaced with the URI of the destination path.<br>If the destination path is not set, no file copy is performed, and the file-type data obtained in the callback is the URI of the source path.<br>If the application involves complex file processing policies or needs to copy files to multiple paths, it is recommended not to set this parameter and let the application handle the file copy. |
+| [void OH_UdmfGetDataParams_SetFileConflictOptions(OH_UdmfGetDataParams* params, const Udmf_FileConflictOptions options)](#oh_udmfgetdataparams_setfileconflictoptions) | - | Sets the file conflict options in an asynchronous request parameter [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md). |
+| [void OH_UdmfGetDataParams_SetProgressIndicator(OH_UdmfGetDataParams* params, const Udmf_ProgressIndicator progressIndicator)](#oh_udmfgetdataparams_setprogressindicator) | - | Sets the progress indicator option in an asynchronous request parameter [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md). |
+| [void OH_UdmfGetDataParams_SetDataProgressListener(OH_UdmfGetDataParams* params, const OH_Udmf_DataProgressListener dataProgressListener)](#oh_udmfgetdataparams_setdataprogresslistener) | - | Sets the listener callback in an asynchronous request parameter [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md). |
+| [Udmf_Visibility OH_UdmfOptions_GetVisibility(OH_UdmfOptions* pThis)](#oh_udmfoptions_getvisibility) | - | Obtains the data visibility level from a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [int OH_UdmfOptions_SetVisibility(OH_UdmfOptions* pThis, Udmf_Visibility visibility)](#oh_udmfoptions_setvisibility) | - | Sets the data visibility level in a data operation option [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance. |
+| [typedef OH_UdmfData* (\*OH_Udmf_DataLoadHandler)(OH_UdmfDataLoadInfo* acceptableInfo)](#oh_udmf_dataloadhandler) | OH_Udmf_DataLoadHandler | Represents the callback used to load data. |
+| [OH_UdmfDataLoadParams* OH_UdmfDataLoadParams_Create()](#oh_udmfdataloadparams_create) | - | Creates a pointer to a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadParams_Destroy](#oh_udmfdataloadparams_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfDataLoadParams_Destroy(OH_UdmfDataLoadParams* pThis)](#oh_udmfdataloadparams_destroy) | - | Destroys the instance pointed to by the data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md) pointer. |
+| [void OH_UdmfDataLoadParams_SetLoadHandler(OH_UdmfDataLoadParams* params, const OH_Udmf_DataLoadHandler dataLoadHandler)](#oh_udmfdataloadparams_setloadhandler) | - | Sets the data load handler in a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md). |
+| [void OH_UdmfDataLoadParams_SetDataLoadInfo(OH_UdmfDataLoadParams* params, OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadparams_setdataloadinfo) | - | Sets the data load information in a data load parameter [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md). |
+| [OH_UdmfDataLoadInfo* OH_UdmfDataLoadInfo_Create()](#oh_udmfdataloadinfo_create) | - | Creates a pointer to a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) instance. When the pointer is no longer needed, use [OH_UdmfDataLoadInfo_Destroy](#oh_udmfdataloadinfo_destroy) to destroy the instance; otherwise, memory leaks may occur. |
+| [void OH_UdmfDataLoadInfo_Destroy(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_destroy) | - | Destroys the instance pointed to by the data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md) pointer. |
+| [char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int* count)](#oh_udmfdataloadinfo_gettypes) | - | Obtains the data type list from a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
+| [void OH_UdmfDataLoadInfo_SetType(OH_UdmfDataLoadInfo* dataLoadInfo, const char* type)](#oh_udmfdataloadinfo_settype) | - | Sets the data type in a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
+| [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | Obtains the number of records in a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
+| [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | Sets the number of records in a data load information [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md). |
+| [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | Obtains the unified data object at the specified index from an [OH_UdmfData](capi-udmf-oh-udmfdata.md) array. |
+| [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | Sets permissions in [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md), which take effect on [OH_UdmfData](capi-udmf-oh-udmfdata.md). |
 
 ## Enum Description
 
@@ -472,7 +478,7 @@ Defines the callback used to load data.
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* (*OH_Udmf_DataLoadHandler) | Data to be loaded.|
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* | Pointer to the data to be loaded. |
 
 ### OH_UdmfOptions_GetVisibility()
 
@@ -522,18 +528,6 @@ Sets the data visibility level in an [OH_UdmfOptions](capi-udmf-oh-udmfoptions.m
 | Type| Description|
 | -- | -- |
 | int | Execution result. For details, see [Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode).<br> Returns **UDMF_E_OK** if the operation is successful.<br> Returns **UDMF_E_INVALID_PARAM** if an invalid parameter is passed in.|
-
-### UDMF_KEY_BUFFER_LEN()
-
-```c
-UDMF_KEY_BUFFER_LEN (512)
-```
-
-**Description**
-
-Defines minimum length of the buffer that holds the key (unique identifier) of a unified data object.
-
-**Since**: 12
 
 ### OH_Udmf_DataProgressListener()
 
@@ -789,7 +783,7 @@ Defines a callback function used to obtain data by type. This callback will be i
 
 | Type| Description|
 | -- | -- |
-| void* | Uniform data obtained.|
+| void* | Pointer to the data of the specified type obtained from the context. |
 
 ### OH_UdmfRecordProvider_SetData()
 
@@ -854,7 +848,7 @@ Destroys an [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.
 
 | Name| Description|
 | -- | -- |
-| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | Pointer to the [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance.|
+| [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | Pointer to the unified data record [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md) instance. |
 
 ### OH_UdmfRecord_AddGeneralEntry()
 
@@ -2016,7 +2010,7 @@ int OH_Udmf_SetUnifiedData(Udmf_Intention intention, OH_UdmfData* unifiedData, c
 
 **Description**
 
-Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
+Writes the unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) into the UDMF database through the specified data channel type.
 
 **Since**: 12
 
@@ -2039,12 +2033,12 @@ Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
 ### OH_Udmf_SetUnifiedDataByOptions()
 
 ```c
-int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData *unifiedData, char *key, unsigned int keyLen)
+int OH_Udmf_SetUnifiedDataByOptions(OH_UdmfOptions* options, OH_UdmfData* unifiedData, char* key, unsigned int keyLen)
 ```
 
 **Description**
 
-Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
+Writes the unified data object [OH_UdmfData](capi-udmf-oh-udmfdata.md) into the UDMF database through the specified data operation options.
 
 **Since**: 20
 
@@ -2054,8 +2048,8 @@ Sets an [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance in the UDMF database.
 | Name| Description|
 | -- | -- |
 | [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)* options | Pointer to the [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md) instance.|
-| [OH_UdmfData](capi-udmf-oh-udmfdata.md) *unifiedData | Pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance.|
-| char *key | Pointer to the key that uniquely identifies the data in the database. The memory size must be greater than [UDMF_KEY_BUFFER_LEN](#udmf_key_buffer_len).|
+| [OH_UdmfData](capi-udmf-oh-udmfdata.md)* unifiedData | Pointer to the [OH_UdmfData](capi-udmf-oh-udmfdata.md) instance of the unified data object. |
+| char* key | Pointer to the unique identifier of the data after the data is successfully set to the database. The memory size is not less than [UDMF_KEY_BUFFER_LEN](#macros). |
 | unsigned int keyLen | Length of the key.|
 
 **Returns**
@@ -2207,7 +2201,7 @@ Creates an [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance an
 
 | Type| Description|
 | -- | -- |
-| [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* | Returns a pointer to the [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance created if the operation is successful; returns **nullptr** otherwise.|
+| [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md)* | Pointer to the [OH_UdmfGetDataParams](capi-udmf-oh-udmfgetdataparams.md) instance object if the operation is successful; **nullptr** otherwise. |
 
 ### OH_UdmfGetDataParams_Destroy()
 

@@ -1207,6 +1207,8 @@ struct Index {
 }
 ```
 
+![](figures/segmentbutton-sample5.png)
+
 ### 示例6（设置自定义圆角）
 
 该示例演示了如何为分段按钮组件设置自定义的边框圆角半径。
@@ -1395,7 +1397,9 @@ struct Index {
 }
 ```
 
-![segmentbutton-sample7](figures/segment_button_material.gif)
+该示例配图为高算力设备强档效果。
+
+![segmentbutton-sample7](figures/segment-button-material.gif)
 
 ### 示例9（监听SegmentButtonOptions内属性的变化）
 

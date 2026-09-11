@@ -1182,3 +1182,62 @@ struct Index {
 ```
 
 ![chipv2-sample4](figures/chipv2-make-observed.gif)
+
+### 示例5（设置系统材质样式）
+
+该示例通过设置[ChipV2Options](#chipv2options)的backgroundSystemMaterial属性，实现了[ChipV2](#chipv2-1)的系统材质样式效果，包括沉浸式材质和自动反色功能。组件需放置在Navigation的标题栏中，沉浸光感效果才会生效。
+
+从API版本26.0.0开始，[ChipV2Options](#chipv2options)新增backgroundSystemMaterial属性。
+
+```ts
+import { ChipV2, ChipV2Options, ChipV2Label, LengthMetrics, ColorMetrics, UIUtils, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local chipV2Options: ChipV2Options = new ChipV2Options({
+    // 设置文本属性。
+    label: new ChipV2Label({ text: '操作块' }),
+    // 使用UIUtils.makeObserved包裹padding，使内部属性start和end可被观测。
+    padding: UIUtils.makeObserved({ start: LengthMetrics.fp(20), end: LengthMetrics.fp(20) }),
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+    // backgroundColor: ColorMetrics.resourceColor($r('sys.color.ohos_id_color_button_normal')),
+    borderRadius: LengthMetrics.resource($r('sys.float.ohos_id_corner_radius_button')),
+    enabled: true,
+  });
+  @Local currentPadding: number = 20;
+
+  @Builder
+  NavigationTitle() {
+    Row({ space: 10 }) {
+      ChipV2({ chipV2Options: this.chipV2Options })
+      ChipV2({ chipV2Options: this.chipV2Options })
+    }
+    .linearGradient({
+      angle: 90, // 渐变角度，90度是从左到右。
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
+      ]
+    })
+    .padding(12)
+    .width('100%')
+  }
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+该示例配图为高算力设备强档效果。
+
+![](figures/chipv2-5.png)

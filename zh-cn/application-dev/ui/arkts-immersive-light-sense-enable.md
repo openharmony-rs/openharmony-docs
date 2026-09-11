@@ -11,7 +11,11 @@
 > **说明：**
 >
 > <!--RP1--><!--RP1End-->
-> - 沉浸光感开启后，弹窗类组件以及Slider、Toggle在页面内全部区域可生效；其余组件的生效区域为：Navigation/NavDestination标题栏，或横向Tab中barPosition为BarPosition.End的底部TabBar中。<br/>弹窗类组件和接口包括：[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)气泡弹窗、Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单。
+> - 沉浸光感开启后：
+>   - 指定弹窗类组件（[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)弹窗、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
+>   - 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)）的沉浸光感效果可在全页面生效。
+>   - [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)的沉浸光感效果可在全页面生效。
+>   - 其他组件仅在Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 > - 沉浸式系统材质反色、材质赋色、交互形变与点光源、阴影开关等个性化配置，具体请参见[沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)。
 
 ## 沉浸光感开启方式对比
@@ -50,7 +54,6 @@
 
 > **说明：**
 >
-> - 应用级开关设置为disable时，会全局禁用沉浸光感，应用级或组件级开启的设置均不生效。
 > - 组件级开启的优先级高于应用级开启，开发者通过组件的沉浸式系统材质接口可以直接覆盖应用级开关开启的组件效果，反之则不会覆盖。
 
 ## 关闭沉浸光感
@@ -59,7 +62,7 @@
 
 1. 组件级关闭：组件级设置[uiMaterial.Material.empty](../reference/apis-arkui/arkts-apis-uimaterial.md#empty)。应用级开启和组件级开启两种接入方式均可通过该操作关闭。
 
-2. 应用级关闭：应用级开关设置为disable，只针对应用级开启的组件。
+2. 应用级关闭：应用级开关设置为disable，会全局禁用沉浸光感，应用级与组件级开启的沉浸光感效果均不生效。
 
 此外，部分组件的沉浸式系统材质由多个独立接口控制。以Select为例，其下拉按钮的沉浸式系统材质通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置，下拉菜单的沉浸式系统材质通过独立的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)接口设置，两者相互独立、可分别开启或关闭。
 

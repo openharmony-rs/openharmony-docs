@@ -1,8 +1,8 @@
 # @ohos.data.dataShareResultSet (数据共享结果集)(系统接口)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 

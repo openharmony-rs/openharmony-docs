@@ -5689,8 +5689,8 @@ zh-cn/application-dev/web/web-sensor.md @zhang-yinglie @handyohos @HelloShuo @gh
 zh-cn/application-dev/web/web-set-back-forward-cache.md @aohui @xuefuzhang @HelloShuo @ghiker
 zh-cn/application-dev/web/web-set-dark-mode.md @ohxianzhi @dzichou @HelloShuo @ghiker
 zh-cn/application-dev/web/web-white-screen.md @pxlstrong @dzichou @HelloShuo @ghiker
-zh-cn/application-dev/web/web_component_process.md @xingyihang @spruceovo @HelloShuo @ghiker
-zh-cn/application-dev/web/web_full_screen.md @zhangyao75477 @gzweioh @HelloShuo @ghiker
+zh-cn/application-dev/web/web-component-process.md @xingyihang @spruceovo @HelloShuo @ghiker
+zh-cn/application-dev/web/web-full-screen.md @zhangyao75477 @gzweioh @HelloShuo @ghiker
 zh-cn/application-dev/webgl/webgl-2d-guidelines.md @samhu1989 @shi-yang-2012 @ge-yafang
 zh-cn/application-dev/windowmanager/application-adaptation-freeform-window.md @hanxuebing1 @chengyiyi @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/application-window-fa.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417

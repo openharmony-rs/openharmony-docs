@@ -779,13 +779,13 @@ Tab页签切换后触发的事件。
 
 满足以下任一条件，即可触发该事件：
 
-1、滑动页面进行页面切换时，组件滑动动画结束后触发。
+1. 滑动页面进行页面切换时，组件滑动动画结束后触发。
 
-2、通过[控制器](#tabscontroller)调用[changeIndex](#changeindex)接口，Tab页签切换后触发。
+2. 通过[控制器](#tabscontroller)调用[changeIndex](#changeindex)接口，Tab页签切换后触发。
 
-3、动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
+3. 动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
 
-4、点击TabBar页签，Tab页签切换后触发。
+4. 点击TabBar页签，Tab页签切换后触发。
 
 >  **说明：**
 >
@@ -919,15 +919,15 @@ onContentWillChange(handler: OnTabsContentWillChangeCallback)
 
 满足以下任一条件，即可触发该事件：
 
-1、滑动TabContent切换新页面时触发。
+1. 滑动TabContent切换新页面时触发。
 
-2、通过TabsController.[changeIndex](#changeindex)接口切换新页面时触发。
+2. 通过TabsController.[changeIndex](#changeindex)接口切换新页面时触发。
 
-3、通过动态修改index属性值切换新页面时触发。
+3. 通过动态修改index属性值切换新页面时触发。
 
-4、通过点击TabBar页签切换新页面时触发。
+4. 通过点击TabBar页签切换新页面时触发。
 
-5、TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
+5. TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
 
 >**说明：**
 >
@@ -3397,6 +3397,8 @@ struct TabsExample {
 ### 示例24（TabBar悬浮样式）
 
 本示例展示了如何通过[barFloatingStyle](#barfloatingstyle)接口设置TabBar的悬浮样式和背板沉浸式材质。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，新增barFloatingStyle接口。
 

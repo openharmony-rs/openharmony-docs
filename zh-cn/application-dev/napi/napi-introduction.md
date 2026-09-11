@@ -53,3 +53,5 @@ ArkTS和C++之间的交互流程，主要分为以下两步：
 1. **初始化阶段**：当ArkTS侧在import一个Native模块时，ArkTS引擎会调用ModuleManager加载模块对应的so及其依赖。首次加载时会触发模块的注册，将模块定义的方法属性挂载到exports对象上并返回该对象。
 
 2. **调用阶段**：当ArkTS侧通过上述import返回的对象调用方法时，ArkTS引擎会找到并调用对应的C/C++方法。
+
+<!--RP1--><!--RP1End-->

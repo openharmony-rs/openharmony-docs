@@ -5,9 +5,9 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T04:01:25.560Z -->
+<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T04:01:25.560Z pushedAt=2026-09-09T03:51:46.697Z -->
 
-A gauge component that displays data in a circular chart. It is suitable for scenarios such as displaying task completion progress, performance metrics, and data proportions. It supports various visual configurations, including custom colors, start and end angles, pointer styles, and shadow effects, to intuitively present data status and improve users' understanding of and interaction with data.
+The **Gauge** component represents a gauge that displays data in a circular format. It is suitable for scenarios such as displaying task completion progress, performance metrics, and data proportions. It supports various visual configurations, including custom colors, start and end angles, pointer styles, and shadow effects, to intuitively present data status and improve users' understanding of and interaction with data.
 
 
 >  **NOTE**
@@ -21,15 +21,15 @@ A gauge component that displays data in a circular chart. It is suitable for sce
 
 ## Child Components
 
-This component can contain only one child component.
+This component can contain one child component.
 
 > **NOTE**
 >
-> - Supported child component types: system components and custom components. Conditional rendering control [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) is supported, while loop rendering controls [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) are not supported.
+> - Supported child component types: built-in and custom components, including [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) but excluding [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md) and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 >
-> - It is recommended to use text components to build the current value text and auxiliary text.
+> - You are advised to use the **Text** component to build the current value and auxiliary text.
 >
-> - If the width and height of a child component are in percentage, the percentage is based on the width and height of the rectangle that inscribes the outer circle.
+> - If the width and height of the child component are in percentage, the reference range is the rectangle that has the outer ring as its inscribed circle.
 
 
 ## APIs
@@ -64,9 +64,9 @@ Provides gauge options.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value<sup>8+</sup> | number | No | No | Current data value of the gauge, that is, the position to which the pointer points. Used to preset the initial value of the gauge when the component is created.<br>Default value: 0<br>**Widget capability:** This API can be used in ArkTS cards since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**NOTE**<br>When value is not within the range of min and max, min is used as the actual value. |
-| min<sup>8+</sup> | number | No | Yes | Minimum value of the current data segment.<br>Default value: 0<br>**Widget capability:** This API can be used in ArkTS cards since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**NOTE**<br>When not passed, the default value is 0.<br>When min is greater than max, min is set to 0 and max is set to 100.<br>Both max and min support negative numbers. |
-| max<sup>8+</sup> | number | No | Yes | Maximum value of the current data segment.<br>Default value: 100<br>**Widget capability:** This API can be used in ArkTS cards since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**NOTE**<br>When not passed, the default value is 100.<br>When min is greater than max, min is set to 0 and max is set to 100.<br>Both max and min support negative numbers. |
+| value<sup>8+</sup> | number | No | No | Current value of the gauge, that is, the position to which the indicator points in the gauge. It is used as the initial value of the gauge when it is created.<br>Default value: **0**<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**NOTE**<br>If the value is not within the range defined by the **min** and **max** parameters, the value of **min** is used. |
+| min<sup>8+</sup> | number | No | Yes | Minimum value of the current data segment.<br>Default value: **0**<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**NOTE**<br>If not passed, the default value is **0**.<br>If the value of **min** is greater than that of **max**, **min** is set to **0** and **max** is set to **100**.<br>Both **max** and **min** support negative numbers. |
+| max<sup>8+</sup> | number | No | Yes | Maximum value of the current data segment.<br>Default value: **100**<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**NOTE**<br>If not passed, the default value is **100**.<br>If the value of **min** is greater than that of **max**, **min** is set to **0** and **max** is set to **100**.<br>Both **max** and **min** support negative numbers. |
 
 ## Attributes
 
@@ -88,13 +88,13 @@ Sets the value of the gauge.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes   | Data value of the gauge, which can be used to dynamically modify the data value of the gauge.<br>**Note:** <br>If value is not within the range of min and max, min is used as the actual value.<br>Default value: 0 |
+| value  | number | Yes   | Value of the gauge. It can be dynamically changed.<br>**NOTE** <br>If the value is not within the range defined by **min** and **max**, the value of **min** is used as the actual value.<br>Default value: **0** |
 
 ### startAngle
 
 startAngle(angle: number)
 
-Sets the start angle position. If the difference between the start angle and the end angle is too small, an abnormal image will be drawn. Use reasonable start and end angles. It is recommended to use a single-color ring to adjust the data value by changing the `value` parameter of Gauge. You can use the timer `setTimeout` to delay the loading of the value.
+Sets the start angle of the gauge. If the difference between the start angle and the end angle is too small, an abnormal image will be drawn. Use proper start and end angles. It is recommended to use a single-color ring to adjust the data value by modifying the `value` parameter of **Gauge**. You can use the timer `setTimeout` to delay the loading of the value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -106,7 +106,7 @@ Sets the start angle position. If the difference between the start angle and the
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | number | Yes   | Start angle position. The 0 o'clock position is 0 degrees. Clockwise is a positive angle, and counterclockwise is a negative angle. An angle greater than 360 degrees is equivalent to the remainder after dividing by 360 degrees.<br>Default value: 0<br>Unit: deg<br>The drawing from the start position to the end position is clockwise only.<br>If the difference between the start angle and the end angle is too small, an abnormal image may be drawn. Use reasonable start and end angles. |
+| angle  | number | Yes   | Start angle of the gauge. The 0 o'clock is defined as 0 degrees. Clockwise rotation represents positive angles, and counterclockwise rotation represents negative angles. Values exceeding 360 degrees are equivalent to the remainder after division by 360 degrees.<br>Default value: **0**<br>Unit: deg<br>Drawing from the start position to the end position is performed only in the clockwise direction.<br>If the difference between the start angle and the end angle is too small, an abnormal image may be drawn. Use proper start and end angles. |
 
 ### endAngle
 
@@ -124,7 +124,7 @@ Sets the end angle of the gauge. Ensure an appropriate difference between the st
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| angle  | number | Yes   | End angle position. 0 degrees is at the 12 o'clock position, with positive angles in the clockwise direction and negative angles in the counterclockwise direction. An angle exceeding 360 degrees is equivalent to the remainder after modulo 360.<br>Default value: 360<br>Unit: deg (degree)<br>Drawing from the start position to the end position is only in the clockwise direction.<br>If the difference between the start angle and end angle is too small, an abnormal image may be drawn. Use reasonable start and end angles. |
+| angle  | number | Yes   | End angle of the gauge. The 0 o'clock is defined as 0 degrees. Clockwise rotation represents positive angles, and counterclockwise rotation represents negative angles. Values exceeding 360 degrees are equivalent to the remainder after division by 360 degrees.<br>Default value: **360**<br>Unit: deg<br>Drawing from the start position to the end position is performed only in the clockwise direction.<br>If the difference between the start angle and end angle is too small, an abnormal image may be drawn. Use proper start and end angles. |
 
 ### colors
 
@@ -138,7 +138,7 @@ If the data type is [ResourceColor](ts-types.md#resourcecolor), the ring is of t
 
 If the data type is [LinearGradient](ts-basic-components-datapanel.md#lineargradient10), the ring is of the gradient type.
 
-If the parameter type is Array, the ring is a segmented gradient ring. The first parameter indicates the color value or gradient object (LinearGradient). If it is set to a non-color type, the color value is set to "0xFFE84026". The second parameter indicates the proportion of the color. If it is set to a negative number or a non-numeric type, the proportion is set to 0.
+If the parameter type is Array, the ring is of the segmented gradient type. The first parameter indicates the color value or gradient object (**LinearGradient**). If it is set to a non-color value, the color of 0xFFE84026 is used. The second parameter indicates the color weight. If it is set to a negative number or a non-numeric value, the color weight is 0.
 
 A ring of the gradient type contains a maximum of nine color segments. If there are more than nine segments, the excess is not displayed.
 
@@ -152,7 +152,7 @@ A ring of the gradient type contains a maximum of nine color segments. If there 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| colors | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; | Yes | Colors of the gauge, which support segmented color settings.<br>Default value since API version 9: Color.Black<br>Default value since API version 11:<br>If no color is passed or the array is empty, the ring type and colors cannot be determined, and the ring is a gradient ring with the colors "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026".<br>If a color is passed but the color value is invalid, the color is "0xFFE84026".<br>If the proportion of a color is 0, the color is not displayed in the ring. If the proportions of all colors are 0, the ring is not displayed.<br>Since API version 10, the Array&lt;ResourceColor, number&gt; type is supported.<br>Since API version 11, the LinearGradient and Array&lt;LinearGradient, number&gt; types are supported. |
+| colors | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\|&nbsp;Array&lt;[[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)&nbsp;\,&nbsp;number]&gt; | Yes | Colors of the gauge. You can set colors for individual segments.<br>Default value since API version 9: **Color.Black**<br>Default value since API version 11:<br>If no color is passed or the array is empty, the ring type and colors cannot be determined, and the ring is a gradient ring with the colors "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026".<br>If a color is passed but the color value is invalid, the color "0xFFE84026" is used.<br>If the weight of a color is 0, the color is not displayed in the ring. If the weights of all colors are 0, the ring is not displayed.<br>Since API version 10, the **Array&lt;ResourceColor, number&gt;** type is supported.<br>Since API version 11, the **LinearGradient** and **Array&lt;LinearGradient, number&gt;** types are supported. |
 
 ### strokeWidth
 
@@ -170,7 +170,7 @@ Sets the stroke width of the gauge.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| length | [Length](ts-types.md#length) | Yes | Thickness of the ring gauge.<br>Default value: 4<br>Unit: vp<br>**Note:** <br>If the value is less than or equal to 0, the default value is used.<br>The maximum thickness is the radius of the ring. If the value exceeds the maximum, the maximum value is used.<br>Percentage is not supported. |
+| length | [Length](ts-types.md#length) | Yes | Stroke width of the gauge.<br>Default value: **4**<br>Unit: vp<br>**NOTE** <br>If the value is less than or equal to 0, the default value is used.<br>The maximum stroke width is the radius of the ring. If the value exceeds the maximum, the maximum value is used.<br>Percentage is not supported. |
 
 ### description<sup>11+</sup>
 
@@ -190,7 +190,7 @@ Sets the description of the gauge.
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Content description.<br>**Note:** <br>The content in @Builder is customized by the developer. Text or images are recommended.<br>If the width and height of the custom part are in percentage, the reference range is a rectangle of 44.4%*25.4% of the ring diameter (28.6%*28.6% for images), 0 vp from the bottom of the ring, centered horizontally.<br>If set to null, no content is displayed.<br>If not set, whether content is displayed depends on whether the maximum and minimum data values are set.<br>If both or only one of the maximum and minimum values are set, the maximum and minimum values are displayed.<br>If neither the maximum nor the minimum value is set, no content is displayed.<br>The maximum and minimum values are displayed at the bottom of the ring and cannot be moved. If the ring opening angle is set improperly, the text may be obscured by the ring. |
+| value  | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Description.<br>**NOTE** <br>You need to customize the content – text or images recommended – in **@Builder**.<br>If the width and height of the custom content are in percentage, the reference range is a rectangle that is 44.4% of the diameter of the ring horizontally and 25.4% vertically (for images, it is 28.6% both horizontally and vertically), positioned 0 vp away from the bottom of the ring and centered horizontally.<br>If this parameter is set to null, no description is displayed.<br>If this parameter is not set, what's displayed is subject to the maximum and minimum value settings.<br>If either or both of the maximum and minimum values are set, they are displayed.<br>If neither maximum nor minimum values are set, no description is displayed.<br>The maximum and minimum values are displayed at the bottom of the ring and cannot be relocated. They may be blocked by the ring if the ring's start and end angles are not set properly. |
 
 ### trackShadow<sup>11+</sup>
 
@@ -210,7 +210,7 @@ Sets the shadow style of the gauge.
 
 | Name| Type                                               | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [GaugeShadowOptions](#gaugeshadowoptions11) | Yes   | Adds a shadow effect. You can specify the blur radius and the offsets along the X-axis and Y-axis.<br>**Note:** <br>The shadow color is the same as the ring color.<br>Set this parameter to null to disable the shadow. |
+| value  | [GaugeShadowOptions](#gaugeshadowoptions11) | Yes   | Shadow effect. You can specify the blur radius and the offsets along the X-axis and Y-axis.<br>**NOTE** <br>The shadow color is the same as the ring color.<br>If this parameter is set to **null**, the shadow effect is disabled. |
 
 ### indicator<sup>11+</sup>
 
@@ -230,7 +230,7 @@ Sets the indicator style of the gauge.
 
 | Name| Type                                                     | Mandatory| Description                                                 |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value | [GaugeIndicatorOptions](#gaugeindicatoroptions11) | Yes | Pointer style.<br>**NOTE**<br>If null is set, the pointer is not displayed. |
+| value | [GaugeIndicatorOptions](#gaugeindicatoroptions11) | Yes | Indicator style.<br>**NOTE**<br>If this parameter is set to **null**, no indicator is displayed. |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -254,7 +254,7 @@ Sets whether to enable privacy mode.
 
 | Name| Type                                                     | Mandatory| Description                                                 |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | Optional\<boolean\> | Yes   | Sets privacy sensitivity. In privacy mode, the Gauge pointer points to the 0 position, the maximum and minimum value texts are masked, and the range is displayed in gray or the background color. The value **true** enables privacy sensitivity, and **false** disables it.<br>**Note:** <br>If this parameter is set to null, the content is not sensitive.<!--Del--><br>To use Gauge in a card, set the [privacy mask](./ts-universal-attributes-obscured.md) attribute through the [FormComponent](./ts-basic-components-formcomponent-sys.md) component. The privacy mask takes effect only when the card is displayed.<!--DelEnd--> |
+| isPrivacySensitiveMode  | Optional\<boolean\> | Yes   | Whether to enable privacy mode. In privacy mode, the gauge indicator points to **0**, the maximum and minimum values are masked, and the scale range is displayed in gray or the background color. The value **true** means to enable privacy mode, and **false** means the opposite.<br>**NOTE** <br>If this parameter is set to **null**, privacy mode is disabled.<!--Del--><br> For widgets, this property must be used with [FormComponent](./ts-basic-components-formcomponent-sys.md) and the [obscured](./ts-universal-attributes-obscured.md) attribute to display privacy masking effects.<!--DelEnd--> |
 
 ### contentModifier<sup>12+</sup>
 
@@ -272,7 +272,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[GaugeConfiguration](#gaugeconfiguration12) | Yes   | Method for customizing the content area on the Gauge component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[GaugeConfiguration](#gaugeconfiguration12)> | Yes   | Content modifier to apply to the **Gauge** component.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API. |
 
 ## GaugeShadowOptions<sup>11+</sup>
 
@@ -300,8 +300,8 @@ Provides gauge indicator options.
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Icon resource path.<br>**Note:** <br>If this parameter is not set, the system default style is used, which is a triangle pointer.<br>Only icons in SVG format are supported. If an icon in another format is used, the default triangle pointer is used. |
-| space | [Dimension](ts-types.md#dimension10) | No | Yes | Spacing between the pointer and the outer edge of the ring.<br>Default value: **8**<br>Unit: vp<br>**Note:** <br>Percentage is not supported.<br>For the default triangle pointer, this is the spacing between the black triangle and the outer edge of the ring.<br>If the value is less than 0, the default value is used.<br>If the value is greater than the ring radius, the default value is used.|
+| icon | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Image path of the icon.<br>**NOTE** <br>If this parameter is not set, the default style of the system is used, which is a triangle indicator.<br>Only icons in SVG format are supported. If an icon in another format is used, the default triangle indicator is used. |
+| space | [Dimension](ts-types.md#dimension10) | No | Yes | Distance between the indicator and the outer edge of the ring.<br>Default value: **8**<br>Unit: vp<br>**NOTE** <br>Percentage is not supported.<br>For the default triangle indicator, the distance is the spacing between the black triangle and the outer edge of the ring.<br>If the value is less than 0, the default value is used.<br>If the value is greater than the ring radius, the default value is used.|
 
 ## GaugeConfiguration<sup>12+</sup>
 
@@ -682,7 +682,7 @@ This example shows how to customize the content area of the gauge using the [con
 
 ```ts
 // xxx.ets
-// This example implements a Gauge component that uses a Builder to customize the content area, and uses a ring chart component, buttons, and text components. When the increase button is clicked, the ring chart pointer moves to the right; conversely, when the decrease button is clicked, the ring chart pointer moves to the left.
+// The example implements the customization of the gauge's content area using a Builder, utilizing a circular chart, buttons, and text boxes. When the increase button is clicked, the indicator will shift to the right; conversely, when the decrease button is clicked, the indicator will shift to the left.
 @Builder
 function buildGauge(config: GaugeConfiguration) {
   Column({ space: 30 }) {
@@ -761,7 +761,7 @@ struct RefreshExample {
 
 ### Example 9: Securing Sensitive Information
 
-This example shows how to call the [privacySensitive](#privacysensitive12) API. The actual privacy hiding effect requires support from the card framework.
+This example shows how to call the [privacySensitive](#privacysensitive12) API. The actual privacy hiding effect requires support from the widget framework.
 
 ```ts
 @Entry
