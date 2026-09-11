@@ -40,7 +40,7 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 ## 示例
 ### 示例1（设置Select和下拉菜单系统材质）
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial23)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口实现select组件系统材质效果。
+该示例通过调用[menuSystemMaterial](#menusystemmaterial23)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect.md#systemmaterial)接口实现select组件系统材质效果。
 
 从API version 23开始，新增menuSystemMaterial接口和systemMaterial接口。
 
