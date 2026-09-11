@@ -309,6 +309,8 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
 以旋转点为中心，对当前矩阵进行左乘旋转运算。常用于图形旋转动画或图片旋转处理等场景。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
