@@ -18,7 +18,7 @@
     - [Memory](capi-memory.md)
     - [JSVM](capi-jsvm.md)
   - Header Files<!--common-basic-headerfile-->
-    - [syscap_ndk.h](syscap__ndk_8h.md)
+    - [syscap_ndk.h](syscap-ndk-8h.md)
     - [purgeable_memory.h](capi-purgeable-memory-h.md)
     - [jsvm.h](capi-jsvm-h.md)
     - [jsvm_types.h](capi-jsvm-types-h.md)
