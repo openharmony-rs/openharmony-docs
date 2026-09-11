@@ -1083,7 +1083,7 @@ struct ShadowOffsetY {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---------- | -------------- | ---------------------------------------- |
-| imageSmoothingEnabled | boolean | 否 | 否 | 绘制图片时是否进行图像平滑度调整。<br/>默认值：true |
+| imageSmoothingEnabled | boolean | 否 | 否 | 绘制图片时是否进行图像平滑度调整。<br/>默认值：true<br/>true：绘制图片时启用图像平滑度调整。<br/>false：绘制图片时不启用图像平滑度调整。 |
 
 **示例：**
 
@@ -1166,11 +1166,11 @@ justifyContent: FlexAlign.Center }) {
           .backgroundColor('#ffff00')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            let offctx = offContext
-            offctx.imageSmoothingEnabled = true
+            let offCtx = offContext
+            offCtx.imageSmoothingEnabled = true
             // 设置imageSmoothingQuality属性
-            offctx.imageSmoothingQuality = 'high'
-            offctx.drawImage(this.img, 0, 0, 400, 200)
+            offCtx.imageSmoothingQuality = 'high'
+            offCtx.drawImage(this.img, 0, 0, 400, 200)
 
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -1330,6 +1330,8 @@ justifyContent: FlexAlign.Center }) {
 
 用于指定绘制文本时字母之间的间距，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1347,7 +1349,7 @@ justifyContent: FlexAlign.Center }) {
 
   @Entry
   @Component
-  struct letterSpacingDemo {
+  struct LetterSpacingDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
