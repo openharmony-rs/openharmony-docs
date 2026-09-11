@@ -29,11 +29,11 @@ Notification Kit支持的能力主要包括：
 
 使用Notification Kit的主要业务流程如下：
 
-1.请求[通知授权](notification-glossary.md#notification-authorization通知授权)。
+1. 请求[通知授权](notification-glossary.md#notification-authorization通知授权)。
 
-2.应用发布通知到通知服务。
+2. 应用发布通知到通知服务。
 
-3.将通知展示到[通知中心](notification-glossary.md#notification-center通知中心)。
+3. 将通知展示到[通知中心](notification-glossary.md#notification-center通知中心)。
 
 
 ## 通知样式
