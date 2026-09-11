@@ -81,6 +81,7 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 
 在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
+ArkTS-Dyn示例：
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
 
 ``` TypeScript
@@ -104,6 +105,23 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+ArkTS-Sta示例：
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    // 注册三方协议的配置。
+    testNapi.registerCustomSchemes();
+    // 初始化Web组件内核，该操作会初始化Browser进程以及创建BrowserContext。
+    webview.WebviewController.initializeWebEngine();
+    // 设置SchemeHandler。
+    testNapi.setSchemeHandler();
+  }
+
+// ...
+};
+```
 testNapi.registerCustomSchemes的C++实现：
 
 <!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
