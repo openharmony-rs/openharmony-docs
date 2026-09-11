@@ -14,7 +14,7 @@
 
 - 崩溃信息如下：  
 ```sh
-Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caus
+Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caused by NULL pointer dereference
 Fault thread info:
 Tid:15894, Name:e.myapplication
 #00 pc 002b8dd4 /system/lib/platformsdk/libark_jsruntime.so
