@@ -34666,6 +34666,16 @@
 						"start_line":22
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"register_init_scheme",
+						"start_line":26
+					}
+				]
 			}
 		]
 	},
