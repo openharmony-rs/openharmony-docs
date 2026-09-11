@@ -51,12 +51,12 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
       ArkTS-Sta示例：
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
-
+      
       ``` TypeScript
       import { Column, Component, Entry, Web } from '@kit.ArkUI';
       import { webview } from '@kit.ArkWeb';
       import { BusinessError } from '@ohos.base';
-
+      
       const DEBUGGING_PORT: Int = 8888;
       
       @Entry
@@ -88,6 +88,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
 
       <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
+      
       ``` JSON5
       "requestPermissions":[
         {
@@ -129,6 +130,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
    ArkTS-Dyn示例：
    <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
+   
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
    
@@ -152,7 +154,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
    ArkTS-Sta示例：
    <!-- @[web_Debugging_USB](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithUSB.ets) -->
-
+   
    ``` TypeScript
    import { Column, Component, Entry, Web } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
@@ -178,6 +180,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 2. 开启调试功能需要在DevEco Studio应用工程hap模块的module.json5文件中增加如下权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
    <!-- @[web_Debugging_Permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/module.json5) -->
+   
    ``` JSON5
    "requestPermissions":[
      {
