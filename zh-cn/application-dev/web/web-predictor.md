@@ -295,6 +295,7 @@ struct WebComponent {
 
 ArkTS-Dyn示例：
 <!-- @[initialize_kernel_in_onCreate_and_pre_fetch_post_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_two.ets) -->
+
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
@@ -445,42 +446,42 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->
-
+   
    ``` TypeScript
    import { Builder, UIContext, Web, BuilderNode, FrameNode, WrappedBuilder, WebviewController, CustomBuilderT } from '@kit.ArkUI';
    import { NodeController, LocalStorage } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
-
+   
    export interface BuilderData {
      url: string;
      controller: WebviewController;
      context: UIContext;
    }
-
+   
    let storage : LocalStorage | undefined = undefined;
-
+   
    export class NodeControllerImpl extends NodeController {
      private rootNode: BuilderNode<BuilderData> | null = null;
      private wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>> | null = null;
-
+   
      constructor(wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>>, context: UIContext) {
        super();
        storage = context.getSharedLocalStorage();
        this.wrappedBuilder = wrappedBuilder;
      }
-
+   
      makeNode(uiContext: UIContext): FrameNode | null {
        if (this.rootNode != null) {
          return this.rootNode!.getFrameNode();
        }
        return null;
      }
-
+   
      initWeb(url: string, controller: WebviewController): void {
        if(this.rootNode != null) {
          return;
        }
-
+   
        const uiContext: UIContext = storage!.get<UIContext>('uiContext') as UIContext;
        if (!uiContext) {
          return;
@@ -489,7 +490,7 @@ struct WebComponent {
        this.rootNode!.build(this.wrappedBuilder!, { url: url, controller: controller, context: uiContext } as BuilderData);
      }
    }
-
+   
    export const createNode: (wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>>, data: BuilderData) => NodeController = (wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>>, data: BuilderData): NodeController => {
      const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
      baseNode.initWeb(data.url, data.controller);
@@ -545,14 +546,14 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
-
+   
    ``` TypeScript
    import { Builder, UIContext, Web, WebviewController, wrapBuilder, WrappedBuilder } from '@kit.ArkUI';
    import { CustomBuilderT } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { Config, configs } from './PrecompileConfig';
    import { BuilderData } from './DynamicComponent';
-
+   
    @Builder
    function webBuilder(data: BuilderData) {
      Web({ src: data.url, controller: data.controller })
@@ -561,13 +562,13 @@ struct WebComponent {
        })
        .fileAccess(true)
    }
-
+   
    export const precompileWebview: WrappedBuilder<CustomBuilderT<BuilderData>> = wrapBuilder<CustomBuilderT<BuilderData>>(webBuilder);
-
+   
    export const precompile: (controller: WebviewController, configs: Array<Config>, context: UIContext) => Promise<void> = async (controller: WebviewController, configs: Array<Config>, context: UIContext): Promise<void> => {
      for (const config of configs) {
        let content = await readRawFile(config.localPath, context);
-
+   
        try {
          controller.precompileJavaScript(config.url, content, config.options)
            .then(errCode => {
@@ -580,7 +581,7 @@ struct WebComponent {
        }
      }
    }
-
+   
    async function readRawFile(path: string, context: UIContext): Promise<Uint8Array> {
      try {
        return await context.getHostContext()!.resourceManager.getRawFileContent(path);
@@ -612,20 +613,20 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->
-
+   
    ``` TypeScript
    import { Builder, CacheMode, Web, wrapBuilder, WrappedBuilder } from '@kit.ArkUI';
    import { CustomBuilderT } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { BuilderData } from './DynamicComponent';
-
+   
    @Builder
    function webBuilder(data: BuilderData) {
      // 此处组件可根据业务需要自行扩展
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.DEFAULT)
    }
-
+   
    export const businessWebview: WrappedBuilder<CustomBuilderT<BuilderData>> = wrapBuilder<CustomBuilderT<BuilderData>>(webBuilder);
    ```
 
@@ -659,16 +660,16 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->
-
+   
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
-
+   
    export interface Config {
      url:  string,
      localPath: string, // 本地资源路径
      options: webview.CacheOptions
    }
-
+   
    export let configs: Config[] = [
      {
        url: 'https://www.example.com/example.js',
@@ -730,29 +731,29 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { Button, Column, Component, Entry, State, NodeContainer, NodeController } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { createNode, BuilderData } from './DynamicComponent';
    import { businessWebview } from './BusinessWebview';
    import { precompileWebview } from './PrecompileWebview';
-
+   
    @Entry
    @Component
    struct Index {
      @State precompileNode: NodeController | undefined = undefined;
      precompileController: webview.WebviewController = new webview.WebviewController(undefined);
-
+   
      @State businessNode: NodeController | undefined = undefined;
      businessController: webview.WebviewController = new webview.WebviewController(undefined);
-
+   
      aboutToAppear(): void {
        // 初始化用于注入本地资源的Web组件
        this.precompileNode = createNode(precompileWebview,
          { url: 'https://www.example.com/empty.html', controller: this.precompileController, context: this.getUIContext()} as BuilderData);
      }
-
+   
      build() {
        Column() {
          // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
@@ -858,43 +859,43 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
-
+   
    ``` TypeScript
    import { Builder, UIContext, Web, WebviewController, wrapBuilder, BuilderNode } from '@kit.ArkUI';
    import { LocalStorage, WrappedBuilder, FrameNode, NodeController } from '@kit.ArkUI';
    import { CustomBuilderT } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
-
+   
    export interface BuilderData {
      url: string;
      controller: WebviewController;
      context: UIContext;
    }
-
+   
    let storage : LocalStorage | undefined = undefined;
-
+   
    export class NodeControllerImpl extends NodeController {
      private rootNode: BuilderNode<BuilderData> | null = null;
      private wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>> | null = null;
-
+   
      constructor(wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>>, context: UIContext) {
        super();
        storage = context.getSharedLocalStorage();
        this.wrappedBuilder = wrappedBuilder;
      }
-
+   
      makeNode(uiContext: UIContext): FrameNode | null {
        if (this.rootNode != null) {
          return this.rootNode!.getFrameNode();
        }
        return null;
      }
-
+   
      initWeb(url: string, controller: WebviewController): void {
        if(this.rootNode != null) {
          return;
        }
-
+   
        const uiContext: UIContext = storage!.get<UIContext>('uiContext') as UIContext;
        if (!uiContext) {
          return;
@@ -903,7 +904,7 @@ struct WebComponent {
        this.rootNode!.build(this.wrappedBuilder!, { url: url, controller: controller, context: uiContext } as BuilderData);
      }
    }
-
+   
    export const createNode: (wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>>, data: BuilderData) => NodeController = (wrappedBuilder: WrappedBuilder<CustomBuilderT<BuilderData>>, data: BuilderData): NodeController => {
      const baseNode = new NodeControllerImpl(wrappedBuilder, data.context);
      baseNode.initWeb(data.url, data.controller);
@@ -968,7 +969,7 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->
-
+   
    ``` TypeScript
    import { Builder, UIContext, Web, wrapBuilder, WrappedBuilder } from '@kit.ArkUI';
    import { NodeController } from '@kit.ArkUI';
@@ -978,7 +979,7 @@ struct WebComponent {
    import { resourceConfigs } from './Resource';
    import { businessWebview } from './BusinessWebview';
    import { BuilderData } from './DynamicComponent';
-
+   
    @Builder
    function webBuilder(data: BuilderData) {
      Web({ src: data.url, controller: data.controller })
@@ -987,7 +988,7 @@ struct WebComponent {
        })
        .fileAccess(true)
    }
-
+   
    async function injectOfflineData(controller: webview.WebviewController, context: UIContext)
      : Promise<void> {
      try {
@@ -996,19 +997,19 @@ struct WebComponent {
        console.error('error: ' + err.code + ', ' + err.message);
      }
    }
-
+   
    export const injectWebview: WrappedBuilder<CustomBuilderT<BuilderData>> = wrapBuilder<CustomBuilderT<BuilderData>>(webBuilder);
-
+   
    export async function getData(context: UIContext): Promise<webview.OfflineResourceMap[]> {
      const resourceMapArr: webview.OfflineResourceMap[] = [];
-
+   
      // 读取配置，从rawfile目录中读取文件内容
      for (let config of resourceConfigs) {
        let buf: Uint8Array = new Uint8Array(0);
        if (config.localPath) {
          buf = await readRawFile(config.localPath, context);
        }
-
+   
        resourceMapArr.push({
          urlList: config.urlList,
          resource: buf,
@@ -1016,10 +1017,10 @@ struct WebComponent {
          type: config.type,
        })
      }
-
+   
      return resourceMapArr;
    }
-
+   
    export async function readRawFile(url: string, context: UIContext): Promise<Uint8Array> {
      try {
        return await context.getHostContext()!.resourceManager.getRawFileContent(url);
@@ -1049,20 +1050,20 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->
-
+   
    ``` TypeScript
    import { Builder, CacheMode, Web, wrapBuilder, WrappedBuilder } from '@kit.ArkUI';
    import { CustomBuilderT } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
    import { BuilderData } from './DynamicComponent';
-
+   
    @Builder
    function webBuilder(data: BuilderData) {
      // 此处组件可根据业务需要自行扩展
      Web({ src: data.url, controller: data.controller })
        .cacheMode(CacheMode.DEFAULT)
    }
-
+   
    export const businessWebview: WrappedBuilder<CustomBuilderT<BuilderData>> = wrapBuilder<CustomBuilderT<BuilderData>>(webBuilder);
    ```
 
@@ -1111,18 +1112,19 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->
-
+   
    ``` TypeScript
+   
    import { webview } from '@kit.ArkWeb';
    import { Builder, UIContext, Web, wrapBuilder } from '@kit.ArkUI';
-
+   
    export interface ResourceConfig {
      urlList: Array<string>,
      type: webview.OfflineResourceType,
      responseHeaders: Array<webview.WebHeader>,
      localPath: string, // 本地资源存放在rawfile目录下的路径
    }
-
+   
    export const resourceConfigs: ResourceConfig[] = [
      {
        localPath: 'example.png',
@@ -1198,7 +1200,7 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    import { Button, Column, Component, Entry, State, NodeContainer, NodeController } from '@kit.ArkUI';
    import { CustomBuilderT } from '@kit.ArkUI';
@@ -1206,22 +1208,22 @@ struct WebComponent {
    import { injectWebview } from './InjectWebview';
    import { businessWebview } from './BusinessWebview';
    import { createNode, BuilderData } from './DynamicComponent';
-
+   
    @Entry
    @Component
    struct Index {
      @State injectNode: NodeController | undefined = undefined;
      injectController: webview.WebviewController = new webview.WebviewController(undefined);
-
+   
      @State businessNode: NodeController | undefined = undefined;
      businessController: webview.WebviewController = new webview.WebviewController(undefined);
-
+   
      aboutToAppear(): void {
        // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
        this.injectNode = createNode(injectWebview,
          { url: 'https://www.example.com/empty.html', controller: this.injectController, context: this.getUIContext()} as BuilderData);
      }
-
+   
      build() {
        Column() {
          // 在适当的时机加载业务用Web组件，本例以Button点击触发为例
