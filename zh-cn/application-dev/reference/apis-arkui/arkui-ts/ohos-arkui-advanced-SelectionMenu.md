@@ -799,6 +799,8 @@ struct Index {
 
 该示例通过设置[SelectionMenuOptions](#selectionmenuoptions)的属性backgroundSystemMaterial，展示了超薄样式的背景板材质。
 
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
 从API版本26.0.0开始，SelectionMenuOptions新增backgroundSystemMaterial属性。
 
 ```ts
@@ -906,5 +908,11 @@ struct Index {
   }
 }
 ```
+
+未设置系统材质时：
+
+![selectionmenu03withoutmaterial](figures/selectionmenu03withoutmaterial.jpg)
+
+设置系统材质时：
 
 ![selectionmenu03](figures/selectionmenu03.jpg)
