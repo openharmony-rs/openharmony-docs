@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 20400001 设置已存在，若要重新配置请删除现有的共享选项
 
@@ -22,11 +22,11 @@ Settings already exist. To reconfigure, remove the existing sharing options.
 
 **可能原因**
 
-调用[setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14)重复设置拖拽通道数据可使用的范围时，系统会产生此错误码。
+调用setAppShareOptions重复设置拖拽通道数据可使用的范围时，系统会产生此错误码。
 
 **处理步骤**
 
-先调用[removeAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelremoveappshareoptions14)清除当前拖拽通道数据可使用的范围，再调用[setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14)重新设置。
+先调用removeAppShareOptions清除当前拖拽通道数据可使用的范围，再调用setAppShareOptions重新设置。
 
 <!--Del-->
 ## 20400002 标准化数据类型描述符格式错误
@@ -41,7 +41,7 @@ The format of one or more typeDescriptors are invalid.
 
 **可能原因**
 
-调用[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors22)时，传入的标准化数据类型描述符列表格式错误，具体可能原因包括：
+调用registerTypeDescriptors时，传入的标准化数据类型描述符列表格式错误，具体可能原因包括：
 
 1. 标准化数据类型描述符列表为空、其中元素个数超过50，或当前应用注册的标准化数据类型描述符数量总计超过200。
 
@@ -73,13 +73,13 @@ The content of one or more type descriptors are invalid.
 
 **可能原因**
 
-[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors22)传入的标准化数据类型描述符内容错误，可能原因有：
+registerTypeDescriptors传入的标准化数据类型描述符内容错误，可能原因有：
 
 1. 任意一个标准化数据类型描述符中，typeId与已注册的类型ID重复。
 
 2. 任意一个标准化数据类型描述符中，typeId不是以当前应用的包名开头。
 
-3. 任意一个标准化数据类型描述符中，belongingToTypes包含不属于[预置数据类型](../../database/uniform-data-type-list.md)或本次注册的其他标准化数据类型的typeId。
+3. 任意一个标准化数据类型描述符中，belongingToTypes包含不属于预置数据类型或本次注册的其他标准化数据类型的typeId。
 
 4. 标准化数据类型之间存在循环依赖关系，belongingToTypes内容错误。
 
@@ -99,7 +99,7 @@ One or more typeIds are invalid or do not exist.
 
 **可能原因**
 
-调用[unregisterTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorunregistertypedescriptors22)时，传入的标准化数据类型ID列表错误，具体可能原因有：
+调用unregisterTypeDescriptors时，传入的标准化数据类型ID列表错误，具体可能原因有：
 
 1. 标准化数据类型ID列表为空、或其中元素个数超过50。
 
@@ -109,7 +109,7 @@ One or more typeIds are invalid or do not exist.
 
     - 标准化数据类型ID不是以当前应用的包名开头。
 
-    - 标准化数据类型ID对应的标准化数据类型未通过接口[registerTypeDescriptors](js-apis-data-uniformTypeDescriptor-sys.md#uniformtypedescriptorregistertypedescriptors22)注册。
+    - 标准化数据类型ID对应的标准化数据类型未通过接口registerTypeDescriptors注册。
 
 **处理步骤**
 

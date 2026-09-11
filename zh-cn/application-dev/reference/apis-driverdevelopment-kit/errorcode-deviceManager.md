@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 22900001 扩展外设驱动服务异常或busType参数错误
 
@@ -29,8 +29,8 @@ ExternalDeviceManager service exception or busType parameter error.
 **处理步骤**
 
 1. 请更换目标产品形态。
-2. 请尝试重启设备，<!--RP1-->如果问题仍然存在，可通过[在线提交issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose)来反馈问题。<!--RP1End-->
-3. 通过[deviceManager.BusType](js-apis-driver-deviceManager.md#bustype)查询支持的枚举值。
+2. 请尝试重启设备，<!--RP1-->如果问题仍然存在，可通过在线提交issue来反馈问题。<!--RP1End-->
+3. 通过deviceManager.BusType查询支持的枚举值。
 
 ## 26300001 扩展外设驱动服务异常
 
@@ -50,7 +50,7 @@ ExternalDeviceManager service exception.
 **处理步骤**
 
 1. 请更换目标产品形态。
-2. 请尝试重启设备，<!--RP1-->如果问题仍然存在，可通过[在线提交issue](https://gitcode.com/openharmony/drivers_external_device_manager/issues/create/choose)来反馈问题。<!--RP1End-->
+2. 请尝试重启设备，<!--RP1-->如果问题仍然存在，可通过在线提交issue来反馈问题。<!--RP1End-->
 
 ## 26300002 驱动服务端不允许驱动客户端绑定
 
@@ -82,8 +82,8 @@ There is no binding relationship.
 
 **可能原因**
 
-在未调用或调用[bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)接口失败的情况下，调用[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口。
+在未调用或调用bindDriverWithDeviceId接口失败的情况下，调用unbindDriverWithDeviceId接口。
 
 **处理步骤**
 
-请按照接口调用顺序，先调用[bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)接口，并确认调用成功的情况下，调用[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口。
+请按照接口调用顺序，先调用bindDriverWithDeviceId接口，并确认调用成功的情况下，调用unbindDriverWithDeviceId接口。

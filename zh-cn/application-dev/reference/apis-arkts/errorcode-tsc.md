@@ -10,7 +10,7 @@ TSC（TypeScript Compiler）的错误码以`105`开头，是TSC编译流程中�
 
 ## 10505001 TSC原生报错
 
-TSC原生报错：以`001`结尾，是TSC检查中已有的原生报错规则。在TSC的编译流程中，常见的TSC原生报错原因包括：关键字或符号的缺失、多个默认导出、赋值类型与接收类型不一致、js文件接口声明缺失等。这些问题通常是未按照[ArkTS语言规范](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/introduction-to-arkts)编写代码导致的，开发者可以根据报错描述修改代码。
+TSC原生报错：以`001`结尾，是TSC检查中已有的原生报错规则。在TSC的编译流程中，常见的TSC原生报错原因包括：关键字或符号的缺失、多个默认导出、赋值类型与接收类型不一致、js文件接口声明缺失等。这些问题通常是未按照ArkTS语言规范编写代码导致的，开发者可以根据报错描述修改代码。
 
 ### 关键字或符号的缺失
 
@@ -127,7 +127,7 @@ Cannot find module ${moduleName} or its corresponding type declarations.
 
 **可能原因**
 
-[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)中包含js文件，而js文件在编译时TSC不会为其生成对应的.d.ts声明文件，因此依赖该模块的外部模块无法解析其类型声明，从而触发导入失败。
+字节码HAR中包含js文件，而js文件在编译时TSC不会为其生成对应的.d.ts声明文件，因此依赖该模块的外部模块无法解析其类型声明，从而触发导入失败。
 
 **处理步骤**
 

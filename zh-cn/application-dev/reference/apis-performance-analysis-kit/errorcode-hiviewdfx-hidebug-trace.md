@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 11400102 重复采集
 
@@ -137,7 +137,7 @@ Resource unavailable.
 
 > **说明**：
 >
-> 开发者模式下[debug版本应用](../../dfx/performance-analysis-kit-terminology.md#debug版本应用)不被管控。
+> 开发者模式下debug版本应用不被管控。
 
 **可能原因**
 

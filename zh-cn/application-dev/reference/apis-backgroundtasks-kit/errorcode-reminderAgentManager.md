@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 1700001 通知使能未开启
 
@@ -28,7 +28,7 @@ Notification is not enabled.
 
 **处理步骤**
 
-1. 申请通知使能权限弹窗[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)。
+1. 申请通知使能权限弹窗notificationManager.requestEnableNotification。
 2. 通知设置里开启应用通知开关。
 
 ## 1700002 提醒数量超出限制

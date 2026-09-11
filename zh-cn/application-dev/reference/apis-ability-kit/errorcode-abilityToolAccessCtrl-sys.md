@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 24010000 入参错误
 
@@ -35,7 +35,7 @@ Invalid Parameter. Error message: messageInfo.
 
 **处理步骤**
 
-检查入参，修正参数值为有效值，有效值请参考各接口参数说明[@ohos.abilityToolAccessCtrl](js-apis-abilityToolAccessCtrl-sys.md)。
+检查入参，修正参数值为有效值，有效值请参考各接口参数说明@ohos.abilityToolAccessCtrl。
 
 ## 24010001 系统服务工作异常
 
@@ -118,7 +118,7 @@ Invalid permission. A permission in permissionInfo does not exist.
 
 **处理步骤**
 
-检查入参，修正权限名为有效值，有效值参考[权限列表](../../security/AccessToken/app-permissions.md)。
+检查入参，修正权限名为有效值，有效值参考权限列表。
 
 ## 24010005 授权失败
 

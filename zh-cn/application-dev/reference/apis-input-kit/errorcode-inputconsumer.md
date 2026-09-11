@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> - 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码。
 
 ## 4200002 快捷键被系统注册
 
@@ -27,7 +27,7 @@ The hotkey has been used by the system.
 
 **处理步骤**
 
-可以通过[getAllSystemHotkeys](js-apis-inputconsumer.md#inputconsumergetallsystemhotkeys)接口查询所有的系统快捷键。
+可以通过getAllSystemHotkeys接口查询所有的系统快捷键。
 
 ## 4200003 快捷键已经被其他应用注册
 

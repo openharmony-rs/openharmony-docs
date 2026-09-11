@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 4900101 连接服务失败
 
@@ -93,7 +93,7 @@ Setting the power mode failed.
 
 **处理步骤**
 
-当前电源模式不可切换至目标电源模式，请使用[getPowerMode](js-apis-power.md#powergetpowermode9)接口查询当前电源模式。
+当前电源模式不可切换至目标电源模式，请使用getPowerMode接口查询当前电源模式。
 
 ## 4900400 接口入参无效
 

@@ -9,9 +9,9 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
-> Socket错误码映射关系：2301000 + [内核错误码](./errorcode-kernel.md)。
-> Socket server错误码映射关系：2303100 + [内核错误码](./errorcode-kernel.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> Socket错误码映射关系：2301000 + 内核错误码。
+> Socket server错误码映射关系：2303100 + 内核错误码。
 
 ## 2301001 操作不允许
 
@@ -478,9 +478,9 @@ SSL对象为空。
 
 **可能原因**
 
-1. [TLSSocket.connect](./js-apis-socket.md#connect9)方法未调用。
+1. TLSSocket.connect方法未调用。
 
-2. [TLSSocket.connect](./js-apis-socket.md#connect9)方法执行失败。
+2. TLSSocket.connect方法执行失败。
 
 3. SSL连接未成功建立。
 
@@ -488,7 +488,7 @@ SSL对象为空。
 
 **处理步骤**
 
-1. 确保在调用其他方法前先成功调用[TLSSocket.connect](./js-apis-socket.md#connect9)方法。
+1. 确保在调用其他方法前先成功调用TLSSocket.connect方法。
 
 2. 检查connect方法的执行结果，确认连接已成功建立。
 

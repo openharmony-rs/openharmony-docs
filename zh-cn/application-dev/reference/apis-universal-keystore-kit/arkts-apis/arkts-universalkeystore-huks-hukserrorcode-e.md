@@ -4,7 +4,7 @@
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[HuksExceptionErrCode&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-huksexceptionerrcode-e.md)替代。
+> 从API version 9开始废弃，建议使用HuksExceptionErrCode&lt;sup&gt;9+&lt;/sup&gt;替代。
 
 **起始版本：** 8
 

@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 2900001 蓝牙服务停止
 
@@ -187,9 +187,9 @@ The operation is busy. The last operation is not complete.
 
 **可能原因**
 
-上一个执行的操作还未完成即执行本次操作，例如[readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue)未结束即进行下一次操作。
+上一个执行的操作还未完成即执行本次操作，例如readCharacteristicValue未结束即进行下一次操作。
 
-其他涉及的接口有[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)、[readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue)、[writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue)、[getRssiValue](js-apis-bluetooth-ble.md#getrssivalue)、[setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification)、[setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication)，如调用未完成均可能阻塞下一次操作。
+其他涉及的接口有writeCharacteristicValue、readDescriptorValue、writeDescriptorValue、getRssiValue、setCharacteristicChangeNotification、setCharacteristicChangeIndication，如调用未完成均可能阻塞下一次操作。
 
 **处理步骤**
 
@@ -314,7 +314,7 @@ Operation failed. GATT character is nullptr.
 
 **错误描述**
 
-基于通用属性协议（Generic Attribute Profile，[GATT](../../connectivity/bluetooth/terminology.md#gatt)）的特征值为空。
+基于通用属性协议（Generic Attribute Profile，GATT）的特征值为空。
 
 **可能原因**
 
@@ -669,9 +669,9 @@ Operation failed. Bas request busy.
 
 ### 调用setCharacteristicChangeNotification失败-server端未创建描述符写入监听
 
-调用[setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification)返回错误码`2900099`时，根据以下场景进行排查。
+调用setCharacteristicChangeNotification返回错误码`2900099`时，根据以下场景进行排查。
 
-server端未创建[on('descriptorWrite')](js-apis-bluetooth-ble.md#ondescriptorwrite)监听，client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
+server端未创建on('descriptorWrite')监听，client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
 
 **可能原因**
 
@@ -679,11 +679,11 @@ server端未创建on('descriptorWrite')监听，无法接收到client端发来�
 
 **处理步骤**
 
-server端创建[on('descriptorWrite')](js-apis-bluetooth-ble.md#ondescriptorwrite)监听。
+server端创建on('descriptorWrite')监听。
 
 ### 调用setCharacteristicChangeNotification失败-server端未及时应答
 
-server端接收到client端发来的描述符请求后，未及时调用[sendResponse](js-apis-bluetooth-ble.md#sendresponse)接口应答（检查日志是否返回OnSetNotifyCharacteristic关键字），client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
+server端接收到client端发来的描述符请求后，未及时调用sendResponse接口应答（检查日志是否返回OnSetNotifyCharacteristic关键字），client端setCharacteristicChangeNotification接口处于持续请求的阻塞状态。
 
 **典型日志信息**
 
@@ -697,20 +697,20 @@ server端在接收到client端发来的描述符请求后，没有及时调用se
 
 **处理步骤**
 
-server端在接收到client端发来的描述符请求后，及时调用[sendResponse](js-apis-bluetooth-ble.md#sendresponse)接口向client返回数据。
+server端在接收到client端发来的描述符请求后，及时调用sendResponse接口向client返回数据。
 
 ### 调用setCharacteristicChangeNotification失败-前序异步接口调用未完成
 
 调用setCharacteristicChangeNotification接口时，有其它异步接口调用未完成，导致setCharacteristicChangeNotification接口调用被阻塞。排查方式如下：
 
 - 在接口回调中设置日志打印，查看接口调用的完整顺序流程。从创建对象实例到数据传输，BLE蓝牙client端接口调用顺序参考如下：
-  - 调用[createGattClientDevice](js-apis-bluetooth-ble.md#blecreategattclientdevice)接口创建client实例。
+  - 调用createGattClientDevice接口创建client实例。
   - 创建BLE蓝牙连接状态监听、MTU变化监听、特征值变化监听等接口。
-  - 调用[connect](js-apis-bluetooth-ble.md#connect)接口连接BLE蓝牙。
-  - 调用[setBLEMtuSize](js-apis-bluetooth-ble.md#setblemtusize)接口协商MTU。
-  - 调用[getServices](js-apis-bluetooth-ble.md#getservices)接口获取server端支持的所有服务能力。
+  - 调用connect接口连接BLE蓝牙。
+  - 调用setBLEMtuSize接口协商MTU。
+  - 调用getServices接口获取server端支持的所有服务能力。
   - 调用setCharacteristicChangeNotification接口设置server端特征值内容变更通知的能力。
-  - 调用[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口向server端写入特征值数据。
+  - 调用writeCharacteristicValue接口向server端写入特征值数据。
 - 排查系统日志输出。可在问题复现后生成hilog日志，查看日志中各接口调用开始/完成时，系统日志输出的时间点，从而判断是否出现了接口调用阻塞情况。如：setCharacteristicChangeNotification接口调用开始时，系统日志中会打印出关键字setCharacteristicChangeNotification；接口调用完成时，可通过setCharacteristicChangeNotification接口Callback回调中自定义的日志进行判断。
 
 **可能原因**
@@ -719,7 +719,7 @@ server端在接收到client端发来的描述符请求后，及时调用[sendRes
 
 **处理步骤**
 
-在setBLEMtuSize和getServices接口依次调用成功后，再调用setCharacteristicChangeNotification接口，设置接收server端特征值内容变更通知的能力。完整调用顺序请参考[连接和传输数据](../../connectivity/bluetooth/gatt-development-guide.md)开发指导。
+在setBLEMtuSize和getServices接口依次调用成功后，再调用setCharacteristicChangeNotification接口，设置接收server端特征值内容变更通知的能力。完整调用顺序请参考连接和传输数据开发指导。
 
 ### 调用writeCharacteristicValue失败-前序接口调用未完成
 
@@ -731,11 +731,11 @@ server端在接收到client端发来的描述符请求后，及时调用[sendRes
 
 **处理步骤**
 
-保证在其它非监听类BLE接口回调触发完成后，再调用[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口写入数据。
+保证在其它非监听类BLE接口回调触发完成后，再调用writeCharacteristicValue接口写入数据。
 
 ### GATT设备重连后接口调用失败-gattClient对象未及时销毁
 
-每次重连GATT设备时都会重新创建新的gattClient对象，建立一路新的GATT连接。每次连接关闭后未及时调用[close](js-apis-bluetooth-ble.md#close)接口销毁gattClient对象实例。
+每次重连GATT设备时都会重新创建新的gattClient对象，建立一路新的GATT连接。每次连接关闭后未及时调用close接口销毁gattClient对象实例。
 
 **可能原因**
 
@@ -743,7 +743,7 @@ gattClient对象实例未及时销毁，导致每次重连时重复多次调用s
 
 **处理步骤**
 
-每次连接关闭后，及时调用[close](js-apis-bluetooth-ble.md#close)接口销毁gattClient对象。
+每次连接关闭后，及时调用close接口销毁gattClient对象。
 
 ## 2900100 IPC传输失败
 
@@ -811,7 +811,7 @@ GATT未连接。
 
 **可能原因**
 
-GATT处于未连接的状态下执行操作，例如调用[getServices](js-apis-bluetooth-ble.md#getservices)和[readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue)。
+GATT处于未连接的状态下执行操作，例如调用getServices和readCharacteristicValue。
 
 **处理步骤**
 
@@ -829,7 +829,7 @@ GATT处于拥塞状态。
 
 **可能原因**
 
-读写特征值或描述符过于频繁，导致底层数据传输拥塞，例如入参[GattWriteType](js-apis-bluetooth-ble.md#gattwritetype)为WRITE_NO_RESPONSE的[writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue)接口调用过于频繁可能导致拥塞。
+读写特征值或描述符过于频繁，导致底层数据传输拥塞，例如入参GattWriteType为WRITE_NO_RESPONSE的writeCharacteristicValue接口调用过于频繁可能导致拥塞。
 
 **处理步骤**
 
@@ -905,7 +905,7 @@ GATT服务尚未被添加。
 
 **处理步骤**
 
-先调用[addService](js-apis-bluetooth-ble.md#addservice)添加该服务。
+先调用addService添加该服务。
 
 ## 2901054 IO传输失败
 
@@ -973,11 +973,11 @@ Invalid advertising id.
 
 **可能原因**
 
-传入的广播标识符应为[startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11)接口返回的值，无效的广播标识符默认为0xFF。
+传入的广播标识符应为startAdvertising接口返回的值，无效的广播标识符默认为0xFF。
 
 **处理步骤**
 
-检查传入的广播标识符是否为[startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising11)接口返回的有效标识符。
+检查传入的广播标识符是否为startAdvertising接口返回的有效标识符。
 
 ## 2903050 HID不在前台
 

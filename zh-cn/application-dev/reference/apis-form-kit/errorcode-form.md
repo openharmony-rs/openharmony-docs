@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 16500050 进程间通信失败
 
@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
+检查当前卡片对应互动卡片配置项sceneAnimationParams是否正确。
 
 ## 16501012 卡片尺寸错误
 
@@ -248,7 +248,7 @@ The form host uses an incorrect dimension.
 
 **处理步骤**
 
-检查入参卡片尺寸是否在[FormDimension](js-apis-app-form-formInfo.md#formdimension)和[supportDimensions](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)配置列表。
+检查入参卡片尺寸是否在FormDimension和supportDimensions配置列表。
 
 ## 16501013 系统不支持当前操作
 
@@ -284,7 +284,7 @@ The form edit page is not in the foreground. The current operation is not suppor
 
 **处理步骤**
 
-检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability.md#半模态卡片编辑)是否已打开。
+检查半模态卡片编辑页是否已打开。
 
 ## 16501015 不能关闭其他应用的半模态卡片编辑页
 
@@ -320,7 +320,7 @@ The location of the widget is invalid.
 
 **处理步骤**
 
-检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
+检查入参卡片位置是否在FormLocation配置列表。
 
 ## 16501017 无空间发布卡片
 
@@ -357,7 +357,7 @@ This form does not support publishing.
 
 **处理步骤**
 
-检查卡片配置是否符合当前场景，详细参考[配置文件](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)renderingMode字段说明和[supportdimensions字段与设备支持关系表](../../form/arkts-ui-widget-configuration.md#supportdimensions字段与设备支持关系表)。
+检查卡片配置是否符合当前场景，详细参考配置文件renderingMode字段说明和supportdimensions字段与设备支持关系表。
 
 ## 16501019 无法注销非本应用注册的卡片服务
  
@@ -432,7 +432,7 @@ Some internal server error occurs.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293766 包管理获取请求的应用包名不存在
 
@@ -451,7 +451,7 @@ The requested bundle name does not exist.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293767 无效参数
 
@@ -470,7 +470,7 @@ Invalid params received on operating form.
 3. 参数数量错误。
 4. 空参数错误，比如传入空字符串（''）。
 5. 参数格式错误。
-6. 参数值错误。输入参数需要与[app.json5](../../quick-start/app-configuration-file.md)和[配置ArkTS卡片的配置文件](../../form/arkts-ui-widget-configuration.md)中对应的配置保持一致。
+6. 参数值错误。输入参数需要与app.json5和配置ArkTS卡片的配置文件中对应的配置保持一致。
 
 **处理步骤**
 
@@ -493,7 +493,7 @@ Get bms rpc failed.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293798 获取卡片管理服务失败
 
@@ -512,7 +512,7 @@ Get fms rpc failed.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293802 获取系统能力管理服务失败
 
@@ -531,4 +531,4 @@ Get system manager service failed.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。

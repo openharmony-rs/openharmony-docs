@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 10905301 @Watch装饰器回调函数未定义
 **错误信息**<br>
@@ -1445,7 +1445,7 @@ reuseId属性不能用于@ReusableV2装饰的@ComponentV2自定义组件。
 The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 
 **错误描述**<br>
-ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management//arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management//arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
+ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：\@State, \@Prop, \@Link, \@Provide, \@Consume, \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, \@ObjectLink。
 
 **可能原因**<br>
 开发者在Function类型或者() => void类型的变量上使用了V1装饰器。
@@ -1458,7 +1458,7 @@ ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的�
 The \'@Extend\' function cannot have the same name as the built-in style attribute \'xxx\' of the component \'yyy\'.
 
 **错误描述**<br>
-[\@Extend](../../../application-dev/ui/state-management/arkts-extend.md)函数名不可以与对应组件的内置属性名相同。
+\@Extend函数名不可以与对应组件的内置属性名相同。
 
 **可能原因**<br>
 开发者将组件的\@Extend函数命名为组件内置属性同名函数名。
@@ -1471,7 +1471,7 @@ The \'@Extend\' function cannot have the same name as the built-in style attribu
 The \'@Env\' property cannot be specified a default value.
 
 **错误描述**<br>
-[\@Env](../../../application-dev/ui/state-management/arkts-environment.md)装饰的变量不可以赋初始值。
+\@Env装饰的变量不可以赋初始值。
 
 **可能原因**<br>
 开发者给\@Env装饰的变量赋初始值。
@@ -1549,7 +1549,7 @@ The type of the parent component's state variable initializing the \'@Link\' var
 Only constant expressions are supported as parameters in \'@SyncMonitor\'. Variables are not allowed.
 
 **错误描述**<br>
-[\@SyncMonitor](../../../application-dev/ui/state-management/arkts-new-syncmonitor.md)装饰器仅接受常量字符串作为参数，不允许传入变量。
+\@SyncMonitor装饰器仅接受常量字符串作为参数，不允许传入变量。
 
 **可能原因**<br>
 开发者传入变量、常量或者函数返回值等类型作为\@SyncMonitor装饰器的参数。
@@ -1627,7 +1627,7 @@ Methods decorated with \'@ComponentReuse\' in \'@ComponentV2\' cannot have input
 Methods decorated with \'xxx\' cannot have input parameters.
 
 **错误描述**<br>
-特定生命周期装饰器（比如[\@ComponentRecycle](../../../application-dev/ui/state-management/arkts-custom-components-new-lifecycle.md)）装饰的方法不能有入参。
+特定生命周期装饰器（比如\@ComponentRecycle）装饰的方法不能有入参。
 
 **可能原因**<br>
 开发者在特定生命周期装饰器装饰的方法中定义了形参。

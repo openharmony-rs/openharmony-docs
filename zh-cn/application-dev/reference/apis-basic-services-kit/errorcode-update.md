@@ -13,7 +13,7 @@
 >
 > 适用场景：系统升级、固件更新、应用版本管理等，帮助开发者集成升级能力、监控升级状态、处理升级错误，提升系统的可维护性和用户体验。
 >
-> 本文仅介绍升级模块相关的错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 本文仅介绍升级模块相关的错误码，通用错误码请参考通用错误码说明文档。
 
 ## 错误码列表
 
@@ -46,4 +46,4 @@
 - `verifyUpgradePackage`
 - `applyNewVersion`
 
-详细信息可参考[@ohos.update (升级)(系统接口)](../apis-basic-services-kit/js-apis-update-sys.md)。
+详细信息可参考@ohos.update (升级)(系统接口)。

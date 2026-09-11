@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
 
 ## 12100001 入参错误
 
@@ -31,7 +31,7 @@ Invalid Parameter. Error message: messageInfo.
 - 请求的权限不属于同一个权限组。
 - 请求的权限中存在应用未声明的权限。
 - 请求的全局开关类型非法。
-- 指定的权限名不是[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。
+- 指定的权限名不是user_grant权限。
 - 指定的数组成员个数超过1024或成员均为无效值。
 - 请求查看权限使用记录的起始结束时间不合法。
 - 指定的权限名未在应用中声明。
@@ -41,7 +41,7 @@ Invalid Parameter. Error message: messageInfo.
 
 **处理步骤**
 
-检查入参，修正参数值为有效值，有效值请参考[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)中对应接口的参数说明。
+检查入参，修正参数值为有效值，有效值请参考@ohos.abilityAccessCtrl (程序访问控制管理)中对应接口的参数说明。
 
 <!--Del-->
 ## 12100002 tokenId不存在
@@ -82,7 +82,7 @@ Permission does not exist.
 
 **处理步骤**
 
-检查入参，修正参数值为有效值，有效值请参考[权限列表](../../security/AccessToken/app-permissions.md)。
+检查入参，修正参数值为有效值，有效值请参考权限列表。
 <!--DelEnd-->
 
 ## 12100004 接口未配套使用
@@ -117,17 +117,17 @@ The API is not used in pair with others.
 
 相关方法：
 <!--Del-->
-- 开始使用权限：[privacyManager.startUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstartusingpermission)
-- 停止使用权限：[privacyManager.stopUsingPermission](js-apis-privacyManager-sys.md#privacymanagerstopusingpermission)
-- 设置当前用户权限使用记录开关状态：[privacyManager.setPermissionUsedRecordToggleStatus](js-apis-privacyManager-sys.md#privacymanagersetpermissionusedrecordtogglestatus18)
-- 查询当前用户权限使用记录开关状态：[privacyManager.getPermissionUsedRecordToggleStatus](js-apis-privacyManager-sys.md#privacymanagergetpermissionusedrecordtogglestatus18)
-- 设置当前用户权限弹窗开关状态：[setPermissionRequestToggleStatus](js-apis-abilityAccessCtrl-sys.md#setpermissionrequesttogglestatus12)
-- 查询当前用户权限弹窗开关状态：[getPermissionRequestToggleStatus](js-apis-abilityAccessCtrl-sys.md#getpermissionrequesttogglestatus12)
-- 订阅权限使用状态变更事件：[privacyManager.on](js-apis-privacyManager-sys.md#privacymanageron)
-- 取消订阅权限使用状态变更事件：[privacyManager.off](js-apis-privacyManager-sys.md#privacymanageroff)
+- 开始使用权限：privacyManager.startUsingPermission
+- 停止使用权限：privacyManager.stopUsingPermission
+- 设置当前用户权限使用记录开关状态：privacyManager.setPermissionUsedRecordToggleStatus
+- 查询当前用户权限使用记录开关状态：privacyManager.getPermissionUsedRecordToggleStatus
+- 设置当前用户权限弹窗开关状态：setPermissionRequestToggleStatus
+- 查询当前用户权限弹窗开关状态：getPermissionRequestToggleStatus
+- 订阅权限使用状态变更事件：privacyManager.on
+- 取消订阅权限使用状态变更事件：privacyManager.off
 <!--DelEnd-->
-- 订阅自身权限状态变更事件：[on](js-apis-abilityAccessCtrl.md#on18)
-- 取消订阅自身权限状态变更事件：[off](js-apis-abilityAccessCtrl.md#off18)
+- 订阅自身权限状态变更事件：on
+- 取消订阅自身权限状态变更事件：off
 
 
 ## 12100005 监听器数量超过限制
@@ -327,9 +327,9 @@ Unexpected permission.
 
 **可能原因**
 
-1. 调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
+1. 调用requestPermissionOnSetting再次弹出权限设置弹窗时，传入了manual_settings授权方式的权限。
 2. 授权或取消授权时，传入了非user_grant和manual_settings授权方式的权限。
-3. 调用[openPermissionOnSetting](js-apis-abilityAccessCtrl.md#openpermissiononsetting22)拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
+3. 调用openPermissionOnSetting拉起跳转设置页弹窗时，传入了非manual_settings授权方式的权限。
 
 **处理步骤**
 
@@ -353,5 +353,5 @@ The queried data exceeds the upper limit.
 
 **处理步骤**
 
-请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考[queryStatusByPermission](js-apis-abilityAccessCtrl-sys.md#querystatusbypermission)和[queryStatusByTokenID](js-apis-abilityAccessCtrl-sys.md#querystatusbytokenid)接口的参数说明。
+请减少单次查询的权限或应用数量，分批进行查询。具体上限请参考queryStatusByPermission和queryStatusByTokenID接口的参数说明。
 <!--DelEnd-->

@@ -10,7 +10,7 @@
 
 **起始版本：** 22
 
-**相关模块：** [i18n](capi-i18n.md)
+**相关模块：** i18n
 
 ## 汇总
 
@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [I18n_ErrorCode](#i18n_errorcode) | I18n_ErrorCode | i18n错误码 |
+| I18n_ErrorCode | I18n_ErrorCode | i18n错误码 |
 
 ## 枚举类型说明
 
