@@ -555,7 +555,7 @@ setMaxSelected(maxSelected: MaxSelected): void
 
 setPhotoBrowserItem(uri: string, photoBrowserRange?: PhotoBrowserRange): void
 
-应用可通过该接口,切换图片选择器组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
+应用可通过该接口，切换图片选择器组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
 
 > **说明：**
 >
