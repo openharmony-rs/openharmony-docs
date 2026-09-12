@@ -5,14 +5,15 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-03T12:40:53.749Z -->
 
-The **TextClock** component displays the current system time in text format for different time zones. The time is accurate to seconds.
+The TextClock component displays the current system time on the device in text form. It supports time display in different time zones and custom time formats, with a precision of up to seconds. It is suitable for scenarios where the system time needs to be displayed in real time on the application UI and multiple time zones need to be supported. It helps developers quickly implement time text display without manually calculating and updating the time.
 
 When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange). If the visible threshold **ratios** is greater than 0, the component is visible.
 
 >**NOTE**
 >
->This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 
 ## Child Components
@@ -33,7 +34,7 @@ TextClock(options?: TextClockOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [TextClockOptions](#textclockoptions18)| No| Options of the text clock.|
+| options | [TextClockOptions](#textclockoptions18) | No | Component parameter for displaying the current system time as text. If not passed, the default configuration is used. For the default value of each attribute, see TextClockOptions. |
 
 ## TextClockOptions<sup>18+</sup>
 
@@ -41,7 +42,7 @@ Options used to build the **TextClock** component.
 
 > **NOTE**
 >
-> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect API usability.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -53,12 +54,12 @@ Options used to build the **TextClock** component.
 
 | Name           | Type     | Read-Only  | Optional | Description                                                    |
 | -------------- | -------- | ------ | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| timeZoneOffset<sup>8+</sup> | number   | No   | Yes   | Time zone offset.<br>The value range is [-14, 12], indicating UTC+12 to UTC-12. A negative value indicates Eastern Standard Time, and a positive value indicates Western Standard Time. For example, **-8** indicates UTC+8. If the value is a floating point number within the value range, it is rounded off, with the decimal portion discarded.<br>For countries or regions crossing the International Date Line, use -13 (UTC+13) and -14 (UTC+14) to ensure time consistency across the country or region. If the set value is not within the valid range, the time zone offset of the current system will be used.<br>Default value: time zone offset of the current system<br>The value is not rounded when it is a floating point number in the { 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 } set.<br>**Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| controller<sup>8+</sup>     | [TextClockController](#textclockcontroller) | No    | Yes    | Controller to control the status of the **<TextClock\>** component.<br>**Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| timeZoneOffset<sup>8+</sup> | number   | No    | Yes    | Sets the time zone offset, in hours.<br>The value ranges from -14 to 12, indicating the range from UTC+12 to UTC-12, where a negative value indicates an east time zone and a positive value indicates a west time zone. For example, UTC+8 is -8. When the value is a floating-point number within this range, it is rounded to an integer, with the decimal part discarded.<br>For countries or regions that span the International Date Line, use -13 (UTC+13) and -14 (UTC+14) to ensure that the entire country or region is in the same time zone. When the value is outside the range, the time zone offset of the current system is used.<br>Default value: the time zone offset of the current system <br>When the value is a floating-point number in the set { 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 }, it is not rounded.<br>**Card capability:** Since API version 11, this API is supported in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.|
+| controller<sup>8+</sup>     | [TextClockController](#textclockcontroller) | No     | Yes     | Binds a controller to control the state of the text clock. Pass this parameter when the start and stop of the clock need to be controlled by code. If it is not passed, the clock still runs and displays normally, but its start and stop cannot be controlled by code.<br>**Card capability:** Since API version 11, this API is supported in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.|
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](./ts-component-general-attributes.md), the following attributes are supported:
 
 ### format
 
@@ -66,7 +67,7 @@ format(value: ResourceStr)
 
 Sets the time format, for example, **yyyy/MM/dd** or **yyyy-MM-dd**.
 
-**y**: year (**yyyy** indicates the complete year, and **yy** indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>**H**: hour (24-hour format); **h**: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>**SS**: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)<br>**SSS**: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
+y: year (yyyy indicates the full year, and yy indicates the last two digits of the year)<br>M: month (use MM to display the month as 01)<br>d: day (use dd to display the day as 01)<br>E: day of the week (use EEEE to display Saturday, and use E, EE, or EEE to display Sat)<br>H: hour (24-hour format)<br>h: hour (12-hour format)<br>m: minute<br>s: second<br>SS: centisecond (if the number of S in the format is less than 3, all are processed as centiseconds)<br>SSS: millisecond (if the number of S in the format is greater than or equal to 3, all are processed as milliseconds)<br>a: AM/PM (this parameter does not take effect when the hour format is set to H)
 
 Date separators: year, month, day, slash (/), hyphen (-), and period (.) (Custom separator styles are allowed. Letters cannot be used as separators, while Chinese characters can be treated as separators.)
 
@@ -76,7 +77,7 @@ When an invalid letter is set, the letter is ignored. If all letters in **format
 
 If **format** is an empty string ("") or **undefined**, the default value is used.
 
-Default value outside of widgets: 12-hour format: aa hh:mm:ss; 24-hour format: HH:mm:ss.<br>Default value in widgets: 12-hour format: hh:mm, 24-hour format: HH:mm.<br>When used in widgets, the minimum time unit is minute. In this case, if the format contains seconds or centiseconds, the default value will be used.
+Default value in non-widget scenarios: 12-hour format: aa hh:mm:ss; 24-hour format: HH:mm:ss.<br>Default value in widgets: 12-hour format: hh:mm; 24-hour format: HH:mm.<br>When used in a widget, the minimum time unit is minute. If the set format contains seconds or centiseconds, the default value is used.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -88,7 +89,7 @@ Default value outside of widgets: 12-hour format: aa hh:mm:ss; 24-hour format: H
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Time format to set.<br>The Resource type is supported since API version 20.|
+| value  | [ResourceStr](./ts-types.md#resourcestr) | Yes   | Time format to display.  <br>Since API version 20, the Resource type is supported.|
 
 The following table shows how different settings of **format** work out.
 
@@ -140,7 +141,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: **'#c5ffffff'**; default value for other devices: **'e6182431'**|
+| value  | [ResourceColor](./ts-types.md#resourcecolor) | Yes   | Font Color.<br>Default value on Wearable devices: '#c5ffffff'; default value on other devices: '#e6182431' |
 
 ### fontSize
 
@@ -158,7 +159,7 @@ Sets the font size.
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. The value cannot be a percentage.|
+| value  | [Length](./ts-types.md#length) | Yes  | Font size. When fontSize is of the number type, the unit fp is used.<br>The default font size is 16fp. Percentage strings are not supported. If a percentage string is passed in, the default value is used. |
 
 ### fontStyle
 
@@ -176,7 +177,7 @@ Sets the font style.
 
 | Name| Type                                       | Mandatory| Description                                   |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: **FontStyle.Normal**, indicating the standard font style (non-italic)|
+| value  | [FontStyle](./ts-appendix-enums.md#fontstyle) | Yes   | Font style.<br>Default value: FontStyle.Normal, which indicates the standard font style (not italic). |
 
 ### fontWeight
 
@@ -194,7 +195,7 @@ Sets the font weight of the text. If the value is too large, the text in differe
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font width of the text. The value range of the number type is [100,&nbsp;900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is **400**. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
+| value  | number \| [FontWeight](./ts-appendix-enums.md#fontweight) \| string | Yes   | Font weight of the text. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font. The default value is 400 for values outside the range of the number type. For the string type, the following values are supported: the string form of a number type value (for example, 400), and the enum values 'lighter' (corresponding to 300), 'regular' (corresponding to 400), 'medium' (corresponding to 500), 'bold' (corresponding to 700), and 'bolder' (corresponding to 900), which correspond to the respective enum values in FontWeight.<br>Default value: FontWeight.Normal |
 
 ### fontFamily
 
@@ -212,13 +213,13 @@ Sets the font family.
 
 | Name| Type                                  | Mandatory| Description                                                        |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>The **'HarmonyOS Sans'** font and [registered custom fonts](../js-apis-font.md) are supported for applications.<br>Only the **'HarmonyOS Sans'** font is supported for widgets.|
+| value  | [ResourceStr](./ts-types.md#resourcestr) | Yes   | Font list. The default font is 'HarmonyOS Sans'.<br>The application currently supports the 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md).<br>The card currently supports only the 'HarmonyOS Sans' font. |
 
 ### textShadow<sup>11+</sup>
 
 textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
-Sets the text shadow. It supports input parameters in an array to implement multiple text shadows. This API does not work with the **fill** attribute or coloring strategy.
+Sets the text shadow effect. This API supports passing an array as the input parameter to implement multiple text shadows. The fill field and the smart color mode are not supported.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -232,7 +233,7 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow.|
+| value  | [ShadowOptions](./ts-universal-attributes-image-effect.md#shadowoptions )&nbsp;\|&nbsp;Array&lt;[ShadowOptions](./ts-universal-attributes-image-effect.md#shadowoptions)&gt; | Yes   | Text shadow effect. Supports a single shadow object or an array of shadow objects to achieve multiple shadow effects. The ShadowOptions object contains attributes such as radius (blur radius), color (shadow color), offsetX (X-axis offset), and offsetY (Y-axis offset).<br>The fill field and the smart color picking mode are not supported. For details about the attributes, see [ShadowOptions](./ts-universal-attributes-image-effect.md#shadowoptions). |
 
 ### fontFeature<sup>11+</sup>
 
@@ -260,7 +261,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| value  | string | Yes  | Font feature.|
+| value  | string | Yes  | Text feature effect, used to set the OpenType features of the text. Format: normal \| \<feature-tag-value\>, where the \<feature-tag-value\> format is: \<string\> [ \<integer\> \| on \| off ]. Multiple features can be set, separated by ','. For example, the format for using monospaced clock digits is: '"ss01" on'. |
 
 ### contentModifier<sup>12+</sup>
 
@@ -278,7 +279,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12)>| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12) | Yes   | Method for customizing the content area on the TextClock component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier API. |
 
 ### dateTimeOptions<sup>12+</sup>
 
@@ -298,11 +299,11 @@ Sets whether to display a leading zero for the hour.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| dateTimeOptions  | Optional<[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated)> | Yes  | Whether to display leading zeros in the hour. It only supports setting the **hour** parameter. When the parameter value is **{hour: "2-digit"}**, a leading zero is displayed. When the parameter value is **{hour: "numeric"}**, no leading zero is displayed.<br>Default value: **undefined**. By default, leading zeros are displayed in 24-hour format, but not displayed in 12-hour format.|
+| dateTimeOptions  | Optional<[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated)> | Yes   | Sets whether to display a leading zero for the hour. Only the hour parameter is supported. The value {hour: "2-digit"} indicates that a leading zero is displayed, and the value {hour: "numeric"} indicates that no leading zero is displayed.<br>Default value: undefined. By default, a leading zero is displayed in the 24-hour format and not displayed in the 12-hour format.|
 
 ## Events
 
-In addition to the [universal events](ts-component-general-events.md), the following events are supported.
+In addition to the [universal events](./ts-component-general-events.md), the following events are supported:
 
 ### onDateChange
 
@@ -360,7 +361,7 @@ A constructor used to create a **TextClockController** instance.
 
 start()
 
-Starts the **<TextClock\>** component.
+Starts the text clock. Before using this API, bind the TextClockController to the TextClock component.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -372,7 +373,7 @@ Starts the **<TextClock\>** component.
 
 stop()
 
-Stops the **<TextClock\>** component.
+Stops the text clock. Before using this API, bind the TextClockController to the TextClock component.
 
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
@@ -392,7 +393,7 @@ You need a custom class to implement the **ContentModifier** API.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| timeZoneOffset | number | No| No| Time zone offset of the text clock.<br>The value range is [-14, 12], indicating UTC+12 to UTC-12. A negative value indicates Eastern Standard Time, and a positive value indicates Western Standard Time. For example, **-8** indicates UTC+8. If the value is a floating point number within the value range, it is rounded off, with the decimal portion discarded.|
+| timeZoneOffset | number | No | No | Time zone offset of the current text clock.<br>The value range is [-14, 12], indicating from UTC+12 to UTC-12, where a negative value indicates an east time zone and a positive value indicates a west time zone. For example, UTC+8 is -8. When the set value is a floating-point number within this range, it is rounded by discarding the decimal part. However, no rounding is performed when the set value is a floating-point number in the set { 9.5, 3.5, -3.5, -4.5, -5.5, -5.75, -6.5, -9.5, -10.5, -12.75 }. When the set value is outside the value range, the time zone offset of the current system is used.|
 | started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is stopped.<br>Default value: **true**|
 | timeValue | number | No| No| Time zone offset of the text clock in seconds from UTC.|
 
@@ -410,7 +411,7 @@ This example uses the [onDateChange](#ondatechange) callback to update **accumul
 @Component
 struct Second {
   @State accumulateTime: number = 0;
-  // Objects to import
+  // Create the controller object.
   controller: TextClockController = new TextClockController();
 
   build() {
@@ -446,7 +447,7 @@ struct Second {
 
 ### Example 2: Setting the Text Shadow Style
 
-This example shows how to set the text shadow style for the text clock using the [textShadow](#textshadow11) attribute.
+This example sets the shadow style of the clock text through [textShadow](#textshadow11).
 
 ``` ts
 @Entry
@@ -513,6 +514,9 @@ function buildTextClock(config: TextClockConfiguration) {
         .fontSize(20)
         .margin(20)
       TimePicker({
+        // Calculate the local time based on the UTC seconds and time zone offset: config.timeValue is the UTC seconds, which needs to be multiplied by 1000 to convert to milliseconds;
+        // currentTimeZoneOffset is the current system time zone offset, and timeZoneOffset is the target time zone offset,
+        // The difference between the two, multiplied by 3600000, gives the time zone adjustment in milliseconds.
         selected: (new Date(config.timeValue * 1000 +
           ((config.contentModifier as MyTextClockStyle).currentTimeZoneOffset - config.timeZoneOffset) * 60 * 60 *
             1000)),

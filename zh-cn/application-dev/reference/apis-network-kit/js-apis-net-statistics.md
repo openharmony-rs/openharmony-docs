@@ -16,7 +16,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -37,11 +37,11 @@ getIfaceRxBytes(nic: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | nic      | string                 | 是   | 指定查询的网卡名。                                                                                                      |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -84,11 +84,11 @@ getIfaceRxBytes(nic: string): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回指定网卡从最近一次开机开始到现在的下行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回指定网卡从最近一次开机至接口调用时刻的下行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -125,11 +125,11 @@ getIfaceTxBytes(nic: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | nic      | string                 | 是   | 指定查询的网卡名。                                                                                                      |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -172,11 +172,11 @@ getIfaceTxBytes(nic: string): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -216,11 +216,11 @@ getCellularRxBytes(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -260,11 +260,11 @@ getCellularRxBytes(): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回指定网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回指定网卡从最近一次开机开始至接口调用时刻的下行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -302,11 +302,11 @@ getCellularTxBytes(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -346,11 +346,11 @@ getCellularTxBytes(): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回从最近一次开机开始到现在，蜂窝上所消耗的上行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回从最近一次开机开始到现在，蜂窝上所消耗的上行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -386,11 +386,11 @@ getAllRxBytes(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                          |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -427,11 +427,11 @@ getAllRxBytes(): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回所有网卡从最近一次开机开始到现在的下行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回所有网卡从最近一次开机开始到现在的下行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -466,11 +466,11 @@ getAllTxBytes(callback: AsyncCallback\<number>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                          |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -507,11 +507,11 @@ getAllTxBytes(): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以Promise 形式返回获取结果。返回所有网卡实时上行流量（单位：字节）。 |
+| Promise\<number> | Promise对象，返回所有网卡实时上行流量（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -542,8 +542,8 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 
 **需要权限：**
 
-- API版本26.0.0之前：N/A
 - API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
+- API版本26.0.0之前：N/A
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -552,15 +552,15 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | uid      | number                 | 是   | 指定查询的应用 uid。                                                                                                    |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，error为undefined，否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取到流量数据时，err为undefined，否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
-| 201       | Permission denied. <br>  适用版本：26.0.0+    |
+| 201       | Permission denied. <br>适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -593,12 +593,12 @@ getUidRxBytes(uid: number): Promise\<number>
 >
 > 若重启后该应用未产生流量消耗，则会抛出2103005错误码。<br>
 
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
 **需要权限：**
 
-- API版本26.0.0之前：N/A
 - API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
+- API版本26.0.0之前：N/A
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
 
@@ -609,15 +609,15 @@ getUidRxBytes(uid: number): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回指定应用从最近一次开机开始到现在的下行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回指定应用从最近一次开机开始到现在的下行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
-| 201       | Permission denied. <br>  适用版本：26.0.0+    |
+| 201       | Permission denied. <br>适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -645,27 +645,27 @@ getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 >
 > 若重启后该应用未产生流量消耗，则会抛出2103005错误码。<br>
 
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
 **需要权限：**
 
-- API版本26.0.0之前：N/A
 - API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
+- API版本26.0.0之前：N/A
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                    |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | uid      | number                 | 是   | 指定查询的应用 uid。                                                                                                    |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取应用实时上行流量时，error为undefined，stats为获取到的应用上行流量（单位：字节）；否则为错误对象。    |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取应用实时上行流量时，err为undefined，stats为获取到的应用上行流量（单位：字节）；否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
-| 201       | Permission denied. <br>  适用版本：26.0.0+    |
+| 201       | Permission denied. <br>适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -698,12 +698,12 @@ getUidTxBytes(uid: number): Promise\<number>
 >
 > 若重启后该应用未产生流量消耗，则会抛出2103005错误码。<br>
 
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
 **需要权限：**
 
-- API版本26.0.0之前：N/A
 - API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
+- API版本26.0.0之前：N/A
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
 
@@ -714,15 +714,15 @@ getUidTxBytes(uid: number): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象。返回指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。 |
+| Promise\<number> | Promise对象，返回指定应用从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
-| 201       | Permission denied. <br>  适用版本：26.0.0+    |
+| 201       | Permission denied. <br>适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -758,11 +758,11 @@ getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | sockfd   | number                 | 是   | 指定查询的Socket的FD(file description)。                     |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的下行流量时，error为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的下行流量时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -809,11 +809,11 @@ getSockfdRxBytes(sockfd: number): Promise\<number\>
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise对象。返回该Socket的下行流量（单位：字节）。 |
+| Promise\<number> | Promise对象，返回该Socket的下行流量（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -853,11 +853,11 @@ getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | sockfd   | number                 | 是   | 指定查询的Socket的FD(file description)。                     |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的上行流量时，error为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的上行流量时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -904,11 +904,11 @@ getSockfdTxBytes(sockfd: number): Promise\<number\>
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise对象。返回该Socket的上行流量（单位：字节）。 |
+| Promise\<number> | Promise对象，返回该Socket的上行流量（单位：字节）。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
@@ -959,7 +959,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |

@@ -31,7 +31,7 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 > **说明：**
 >
-> 链式动效生效的前提是List处于单列模式并且边缘效果为EdgeEffect.Spring类型。链式动效启用后，List的分割线不显示。如果不设置space参数并且启用了链式动效，该间距默认为20vp。更多说明可参见[chainAnimation](ts-container-list.md#chainanimation)。
+> 链式动效生效的前提是List处于单列模式并且边缘效果为EdgeEffect.Spring类型。链式动效启用后，List的分隔线不显示。如果不设置space参数并且启用了链式动效，该间距默认为20vp。更多说明可参见[chainAnimation](ts-container-list.md#chainanimation)。
 
 **参数：**
 
@@ -72,5 +72,5 @@ chainAnimationOptions(value: ChainAnimationOptions)
 | intensity    | number                                   | 否    | 是 | 设置链式联动动效效果强度，控制列表项在链式联动中的位移幅度。取值范围[0,1]，数值越大，列表项在链式联动中的位移幅度越大；超出范围时使用默认值。<br/>默认值：0.3 |
 | edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10枚举说明) | 否    | 是 | 设置链式联动动效边缘效果，控制列表滚动到边缘后的间距变化方式。DEFAULT呈现方向性拉伸、回弹反馈，STRETCH呈现所有列表项同步拉伸反馈。<br/>默认值：ChainEdgeEffect.DEFAULT |
 | stiffness    | number                                   | 否    | 是 | 设置链式联动动效效果刚度，控制回弹速度和动画硬度。<br/>取值范围：(0, +∞)，数值越大，回弹速度越快，动画表现越硬；数值越小，动画越柔和。设置为小于或等于0的值时，保持当前值不变；未设置过时使用默认值。<br/>默认值：228 |
-| damping      | number                                   | 否    | 是 | 设置链式联动动效效果阻尼，控制振荡衰减速度。<br/>取值范围：(0, +∞)，数值越大，动效衰减越快，震荡次数越少；数值越小，动效越容易产生震荡。设置为小于或等于0的值时，保持当前值不变；未设置过时使用默认值。<br/>默认值：30 |
+| damping      | number                                   | 否    | 是 | 设置链式联动动效效果阻尼，控制振荡衰减速度。<br/>取值范围：(0, +∞)，数值越大，动效衰减越快，振荡次数越少；数值越小，动效越容易产生振荡。设置为小于或等于0的值时，保持当前值不变；未设置过时使用默认值。<br/>默认值：30 |
 

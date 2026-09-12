@@ -6,20 +6,15 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=279f58a08395cb7d60f140e1aaa1ae4b3733282e translatedAt=2026-06-11T08:19:38.418Z pushedAt=2026-06-15T12:10:43.297Z -->
-
-## Module Overview
+<!-- md-trans-meta sourceCommit=f1bf3f5dd9b5a4d5a0d5ce5cf5307f91bd21addc translatedAt=2026-09-03T12:29:10.523Z pushedAt=2026-09-05T10:47:30.941Z -->
 
 This module primarily provides privacy management APIs such as permission usage records, supporting system applications in recording, querying, listening to, and controlling the usage of sensitive permissions. A permission usage record describes when a sensitive permission was used, how it was used, whether it is currently in use, and whether these usage records are allowed to be recorded or queried.
 
 This module is mainly used in the following scenarios:
 
 - Adding/querying the sensitive permission access records of a specified application.
-
 - Subscribing to permission usage status change events, sensing changes in permission usage from unused to foreground use and background use, and linking with business logic.
-
 - Controlling the permission access record toggle for the current user.
-
 - Querying whether a certain permission is currently being used.
 
 > **NOTE**
@@ -32,51 +27,32 @@ This module is mainly used in the following scenarios:
 ### Core Enum Types
 
 - **[PermissionUsageFlag](#permissionusageflag):** Enum for querying permission usage records, used to specify querying summary data or detailed data.
-
 - **[PermissionActiveStatus](#permissionactivestatus):** Enum for permission usage status change types, used to indicate unused, foreground use, or background use status.
-
 - **[PermissionUsedType](#permissionusedtype12):** Enum for sensitive permission usage types, used to indicate the use of sensitive permissions through normal authorization, Picker, or security components.
 
 ### Core Interface Types
 
 - **[PermissionUsedRequest](#permissionusedrequest):** Permission usage record query request object, used to specify the query application, permission, time range, and query method.
-
 - **[PermissionUsedResponse](#permissionusedresponse):** Permission usage record query response object, used to return the query time range and a collection of application-level records.
-
 - **[BundleUsedRecord](#bundleusedrecord):** Application or device-level permission usage record object, used to return the permission access records of a specific application or remote device.
-
 - **[PermissionUsedRecord](#permissionusedrecord):** Access record object for a single permission, used to return the number of accesses, number of denials, last access time, and detailed records.
-
 - **[UsedRecordDetail](#usedrecorddetail):** Single access record detail object, used to return information such as access status, timestamp, access duration, and usage type.
-
 - **[ActiveChangeResponse](#activechangeresponse):** Permission usage status change event object, used to return details of permission active status changes.
-
 - **[PermissionUsedTypeInfo](#permissionusedtypeinfo12):** Permission usage type information object, used to return the usage type when an application accesses a sensitive permission.
-
 - **[AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12):** Optional parameter object for adding a permission usage record, used to specify the sensitive permission usage type and extension identity.
-
 - **[PermissionUsingOptions](#permissionusingoptions):** Optional parameter object for permission usage, used to specify the extension identity.
 
 ### Core Function Types
 
 - **[addPermissionUsedRecord](#privacymanageraddpermissionusedrecord):** Adds a permission usage record.
-
 - **[getPermissionUsedRecord](#privacymanagergetpermissionusedrecord):** Queries permission usage records.
-
 - **[setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18):** Sets the permission usage record toggle status.
-
 - **[getPermissionUsedRecordToggleStatus](#privacymanagergetpermissionusedrecordtogglestatus18):** Queries the permission usage record toggle status.
-
 - **[startUsingPermission](#privacymanagerstartusingpermission):** Marks the start of using a sensitive permission.
-
 - **[stopUsingPermission](#privacymanagerstopusingpermission):** Marks the stop of using a sensitive permission.
-
 - **[checkPermissionInUse](#privacymanagercheckpermissioninuse):** Checks whether a specified permission is currently being used.
-
 - **[on](#privacymanageron):** Subscribes to permission usage status change events.
-
 - **[off](#privacymanageroff):** Unsubscribes from permission usage status change events.
-
 - **[getPermissionUsedTypeInfos](#privacymanagergetpermissionusedtypeinfos12):** Queries sensitive permission access type information.
 
 ### Core Class
@@ -90,9 +66,7 @@ This module is mainly used in the following scenarios:
 Scenario 1: Maintaining permission usage records.
 
 Scenario Description:
-
 - When a system application accesses a sensitive permission, it needs to call [startUsingPermission](#privacymanagerstartusingpermission) at the start of use and [stopUsingPermission](#privacymanagerstopusingpermission) at the end of use, so that the system can sense the corresponding permission usage status change;
-
 - After a system application accesses a sensitive permission, it can call [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) so that the system records the corresponding sensitive permission access event.
 
 The typical usage flow is as follows:
@@ -222,7 +196,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the count value is invalid, usedType in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) is invalid, or the enhancedIdentity in [AddPermissionUsedRecordOptions](#addpermissionusedrecordoptions12) exceeds 48 characters. |
 | 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 | 12100009 | Common inner error. A database error occurs. |
 
@@ -289,7 +263,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the count value is invalid. |
 | 12100002 | The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 | 12100009 | Common inner error. A database error occurs. |
 
@@ -344,7 +318,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -400,7 +374,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The value of flag, begin, or end in request is invalid. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -464,8 +438,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_RECORD_TOGGLE". |
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 12100007 | The service is abnormal. |
-| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>Applicable version: 26.1.0+ |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query all applications under the user. |
 
 **Example**
 
@@ -475,6 +450,63 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set permission usage record switch status
 privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
+  console.info('setPermissionUsedRecordToggleStatus success');
+}).catch((err: BusinessError): void => {
+  console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.setPermissionUsedRecordToggleStatus
+
+setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: number): Promise&lt;void&gt;
+
+Sets whether to record the permission usage of a specified sub-profile. This API applies to the scenario where a system application needs to independently control the permission usage record of a sub-profile. After the call succeeds, the system updates the switch status of the sub-profile based on `status`. When `status` is set to `false`, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) does not generate a permission usage record for the sub-profile and deletes its historical permission usage records. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.PERMISSION_RECORD_TOGGLE
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| status | boolean | Yes | Switch status of the permission usage record for the specified sub-profile. The value `true` means to enable the switch, and [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) can add usage records normally. The value `false` means to disable the switch and delete the historical permission usage records of the sub-profile. |
+| subProfileId | number | Yes | Identifier of the sub-profile to be set. It can be obtained from the `id` field of the [OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile) object. The value must be an integer greater than 0 and must belong to the current user. If a nonexistent identifier is passed in, error code 12100001 is returned. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise object that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID | Error Message |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_RECORD_TOGGLE". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The specified subProfileId does not exist for the current user. |
+| 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18). |
+| 12100007 | Service exception. |
+| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // Replace with the valid ID of the current user's sub-profile.
+privacyManager.setPermissionUsedRecordToggleStatus(true, subProfileId).then(() => {
   console.info('setPermissionUsedRecordToggleStatus success');
 }).catch((err: BusinessError): void => {
   console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
@@ -507,7 +539,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
 | 202 | Not system app. Interface caller is not a system app. |
-| 12100007 | The service is abnormal. |
+| 12100004 | This API must be used together with [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18).<br>Applicable version: 26.1.0+ |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -523,6 +556,60 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((status) => {
   } else {
     console.info('get status is FALSE');
   }
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## privacyManager.getPermissionUsedRecordToggleStatus
+
+getPermissionUsedRecordToggleStatus(subProfileId: number): Promise&lt;boolean&gt;
+
+Obtains the permission usage record toggle status of the specified sub-profile. This API is applicable to scenarios where a system application displays or verifies the permission usage record toggle configuration by sub-profile. After the call succeeds, the Promise returns the current toggle status of the sub-profile: `true` indicates that recording is enabled, and `false` indicates that recording is disabled. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.1.0
+
+**System API**: This is a system API.
+
+**Required permissions:** ohos.permission.PERMISSION_USED_STATS
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| subProfileId | number | Yes | Identifier of the sub-profile to query. It can be obtained from the `id` field of the [OsAccountSubProfile](../apis-basic-services-kit/js-apis-osAccount-sys.md#osaccountsubprofile) object. The value must be an integer greater than 0 and must belong to the current user. If a nonexistent identifier is passed in, error code 12100001 is returned. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise object that returns the permission usage record toggle status of the specified sub-profile. The value `true` indicates that the toggle is enabled, allowing [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) to add permission usage records; the value `false` indicates that the toggle is disabled. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Access Control Error Codes](errorcode-access-token.md).
+
+| ID | Error Message |
+| --- | --- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
+| 202 | Not system app. Interface caller is not a system app. |
+| 801 | Capability not supported. |
+| 12100001 | Invalid parameter. The specified subProfileId does not exist for the current user. |
+| 12100007 | Service exception. |
+
+**Example**
+
+```ts
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // Replace with the valid ID of the current user's sub-profile.
+privacyManager.getPermissionUsedRecordToggleStatus(subProfileId).then((status: boolean) => {
+  console.info(`getPermissionUsedRecordToggleStatus success, status: ${status}`);
 }).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
@@ -568,7 +655,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -627,7 +714,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or usedType is invalid. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -714,7 +801,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, usedType is invalid, or the enhancedIdentity in PermissionUsingOptions exceeds 48 characters. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -795,7 +882,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100002 | (Deprecated in 12) The specified tokenID does not exist or refer to an application process. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is used repeatedly with the same input. It means the application specified by the tokenID has been using the specified permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -854,7 +941,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -892,7 +979,7 @@ The pid must be the same as the pid passed into [startUsingPermission](#privacym
 | -------------- | ------ | ---- | ------------------------------------ |
 | tokenID        | number | Yes   | Identity identifier of the target application. It can be obtained through the accessTokenId field of [ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) in the application's [BundleInfo](js-apis-bundleManager-bundleInfo.md). This parameter must be an integer greater than 0. Passing in 0 returns error code 12100001.|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | Yes   | Name of the permission to stop using. The permission name length cannot exceed 256 characters. Passing an invalid value returns error code 12100001.|
-| pid            | number | No   | Must be the same as the pid passed to [startUsingPermission](#privacymanagerstartusingpermission18). A mismatch may cause the API call to fail (error code 12100004).<br>Default value: -1, indicating no response based on process lifecycle.|
+| pid            | number | No   | Same as the pid passed in [startUsingPermission](#privacymanagerstartusingpermission18). Failure to meet the matching relationship may cause the API call to fail (error code 12100004).<br>Default value: -1, indicating that the process lifecycle is not responded to. |
 
 **Return value**
 
@@ -912,7 +999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -984,7 +1071,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, the type of the specified tokenID is not of the application type, or the enhancedIdentity in PermissionUsingOptions exceeds 48 characters. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -1053,7 +1140,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters, or the type of the specified tokenID is not of the application type. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
 | 12100004 | The API is not used in pair with 'startUsingPermission'. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -1108,10 +1195,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. Interface caller does not have permission "ohos.permission.PERMISSION_USED_STATS". |
-| 202 | Not system application. Interface caller is not a system application. |
+| 202 | Not system app. Interface caller is not a system application. |
 | 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
 | 12100003 | The specified permission does not exist or is not a user_grant permission. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 
 **Example**
 
@@ -1167,7 +1254,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 12100001 | Invalid parameter. The permissionList exceeds the size limit, or the permissionNames in the list are all invalid. |
 | 12100004 | The API is used repeatedly with the same input. |
 | 12100005 | The registration time has exceeded the limit. |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**
@@ -1223,7 +1310,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionList is not in the listening list. |
 | 12100004 | The API is not used in pair with "on". |
-| 12100007 | The service is abnormal. |
+| 12100007 | Service exception. |
 | 12100008 | Out of memory. |
 
 **Example**

@@ -68,7 +68,7 @@ createData(mimeType: string, value: ValueType): PasteData
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                     |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。建议根据实际场景选择合适的数据类型，使用过大的数据对象会影响应用复制粘贴性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
 
 **返回值：**
@@ -115,7 +115,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-类型)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
+| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-类型)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
 
 **返回值：**
 
@@ -171,7 +171,7 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明                |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
 | value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。建议根据实际场景选择合适的数据类型，避免使用过大的数据对象以免影响剪贴板性能和内存占用。对于ArrayBuffer类型，建议合理设置数据大小；对于PixelMap类型，建议及时释放不再使用的对象。 |
 
 **返回值：**
@@ -243,7 +243,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | INAPP                              | 0   | 表示仅允许同应用内粘贴。                                                              |
 | LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End-->  |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。 |
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。 |
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
@@ -687,7 +687,7 @@ console.info(`Succeeded in converting to text. Text: ${text}`);
 
 addEntry(type: string, value: ValueType): void
 
-往一个PasteDataRecord中额外添加一种样式的自定义数据。此方式添加的MIME类型都不是Record的默认类型，粘贴时只能使用[getData](#getdata14)接口读取对应数据。
+往一个PasteDataRecord中额外添加一种样式的数据。此方式添加的MIME类型都不是Record的默认类型，粘贴时只能使用[getData](#getdata14)接口读取对应数据。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -695,7 +695,7 @@ addEntry(type: string, value: ValueType): void
 
 | 参数名   | 类型 | 必填 | 说明                |
 |-------| -------- | -------- |-------------------|
-| type  | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
+| type  | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。 |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。          |
 
 **错误码：**
@@ -1055,7 +1055,7 @@ image.createPixelMap(buffer, opt).then((pixelMap: image.PixelMap) => {
 
 addRecord(record: PasteDataRecord): void
 
-向当前剪贴板内容中添加一条条目，同时也会将条目类型添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加操作无效。
+向当前剪贴板内容中添加一条条目，同时也会将条目类型添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1104,7 +1104,7 @@ addRecord(mimeType: string, value: ValueType): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 12900002 | The number of records exceeds the upper limit, <br>**适用版本：** 9 - 9 |
+| 12900002 | The number of records exceeds the upper limit. <br>**适用版本：** 9 - 9 |
 
 **示例：**
 
@@ -1354,7 +1354,7 @@ hasType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括：HTML类型、WANT类型、纯文本类型、URI类型、PIXELMAP类型；也可以是自定义的MIME类型，数据类型的字符串长度不能超过1024字节。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型；也可以是自定义的MIME类型，数据类型的字符串长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -1476,7 +1476,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 pasteComplete(): void
 
-通知剪贴板服务数据使用已完成，可释放跨设备通道等资源。应在pasteStart之后、完成数据处理后调用，避免资源浪费。未调用可能导致跨设备通道长时间占用，影响后续跨设备粘贴操作。
+通知剪贴板服务数据使用已完成，可释放跨设备通道等资源。应在调用pasteStart之后、完成数据处理后调用，避免资源浪费。未调用可能导致跨设备通道长时间占用，影响后续跨设备粘贴操作。
 
 pasteComplete与其他接口的使用步骤可参考：
 1. getData()获取剪贴板数据
@@ -1663,7 +1663,7 @@ hasMimeType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括：HTML类型、WANT类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括：HTML类型、Want类型、纯文本类型、URI类型、PixelMap类型，也可以是自定义的MIME类型，长度不能超过1024字节。 |
 
 **返回值：**
 
@@ -2012,7 +2012,9 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
 读取系统剪贴板内容，使用callback异步回调。将剪贴板数据封装为PasteData对象返回。 调用此方法后，系统将从剪贴板服务读取当前内容，通过callback返回PasteData对象。读取成功后，应用可以通过PasteData对象的方法获取具体的数据内容（如文本、HTML、URI等）。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。与[getDataSync](#getdatasync11)相比，getData不会阻塞UI线程，适合处理大量数据或远端数据。
 
-**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2058,7 +2060,9 @@ getData(): Promise&lt;PasteData&gt;
 
 读取系统剪贴板内容，将剪贴板数据封装为PasteData对象返回，使用Promise异步回调。适用于需要异步读取剪贴板内容的场景，如UI响应优先、避免阻塞主线程。适用于应用需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)读取剪贴板数据的场景。
 
-**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2629,7 +2633,9 @@ getDataSync(): PasteData
 
 读取系统剪贴板内容，此接口为同步接口。适用于应用需要在关键业务流程中同步获取剪贴板数据，或需要立即处理剪贴板内容的场景。避免在UI线程调用此接口，以免阻塞界面；处理大量数据或远端数据时，建议使用异步接口[getData](#getdata9)。
 
-**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2742,7 +2748,9 @@ getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 
 读取系统剪贴板内容，使用Promise异步回调。适用于需要使用标准化数据结构[UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata)进行跨应用数据交换的场景。当应用需要与其他支持UnifiedData的应用进行数据共享，或需要处理复杂的多类型数据时，使用本接口。与[getData](#getdata9)相比，getUnifiedData提供了更标准化的数据格式。
 
-**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2789,7 +2797,9 @@ getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
 读取系统剪贴板内容，此接口为同步接口。适用于需要同步使用标准化数据结构UnifiedData进行跨应用数据交换的场景。当应用需要在关键业务流程中立即获取剪贴板数据，且需要与其他支持UnifiedData的应用进行数据共享时使用。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
-**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3113,7 +3123,9 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。对于大文件拷贝操作，建议设置进度监听以跟踪拷贝进度，避免在UI线程长时间等待；建议合理设置目标路径以确保有足够的存储空间。适用于大文件粘贴场景。在此场景下，可通过此回调显示拷贝进度，或监听拷贝过程以便在必要时取消操作。
 
-**需要权限：** ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 

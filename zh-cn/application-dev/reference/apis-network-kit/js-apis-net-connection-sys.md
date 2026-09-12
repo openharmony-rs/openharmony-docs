@@ -25,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-获取网络的全局代理配置信息，使用callback异步回调。
+获取网络的全局代理配置信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -38,6 +38,8 @@ getGlobalHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 | callback | AsyncCallback\<[HttpProxy](js-apis-net-connection.md#httpproxy10)> | 是   | 回调函数。当成功获取网络的全局代理配置信息时，error为undefined，data为网络的全局代理配置信息；否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -60,9 +62,9 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 
 ## connection.getGlobalHttpProxy<sup>10+</sup>
 
-getGlobalHttpProxy(): Promise\<HttpProxy>;
+getGlobalHttpProxy(): Promise\<HttpProxy>
 
-获取网络的全局代理配置信息，使用Promise异步回调。
+获取网络的全局代理配置信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -72,9 +74,11 @@ getGlobalHttpProxy(): Promise\<HttpProxy>;
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[HttpProxy](js-apis-net-connection.md#httpproxy10)> | 以Promise形式返回网络的全局代理配置信息。 |
+| Promise\<[HttpProxy](js-apis-net-connection.md#httpproxy10)> | Promise对象，返回网络的全局代理配置信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -99,7 +103,7 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 
-设置网络全局Http代理配置信息，使用callback异步回调。
+设置网络全局Http代理配置信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -115,6 +119,8 @@ setGlobalHttpProxy(httpProxy: HttpProxy, callback: AsyncCallback\<void>): void
 | callback  | AsyncCallback\<void>    | 是   | 回调函数。当成功设置网络全局Http代理配置信息时，error为undefined，否则为错误对象。|
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -149,9 +155,9 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
 
 ## connection.setGlobalHttpProxy<sup>10+</sup>
 
-setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
+setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>
 
-设置网络全局Http代理配置信息，使用Promise异步回调。
+设置网络全局Http代理配置信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -169,9 +175,11 @@ setGlobalHttpProxy(httpProxy: HttpProxy): Promise\<void>;
 
 | 类型                                        | 说明                          |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void> | 无返回值的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -206,7 +214,7 @@ connection.setGlobalHttpProxy({
 
 enableAirplaneMode(callback: AsyncCallback\<void>): void
 
-开启飞行模式，使用callback异步回调。
+开启飞行模式。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -218,9 +226,11 @@ enableAirplaneMode(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                              | 必填 | 说明               |
 | -------- | ------------------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<void> | 是   | 回调函数。         |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当开启飞行模式成功，error为undefined，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -245,7 +255,7 @@ connection.enableAirplaneMode((error: BusinessError) => {
 
 enableAirplaneMode(): Promise\<void>
 
-开启飞行模式，使用Promise异步回调。
+开启飞行模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -257,9 +267,11 @@ enableAirplaneMode(): Promise\<void>
 
 | 类型                                        | 说明                          |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void> | 无返回值的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -282,7 +294,7 @@ connection.enableAirplaneMode().then((error: void) => {
 
 disableAirplaneMode(callback: AsyncCallback\<void>): void
 
-关闭飞行模式，使用callback异步回调。
+关闭飞行模式。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -297,6 +309,8 @@ disableAirplaneMode(callback: AsyncCallback\<void>): void
 | callback | AsyncCallback\<void> | 是   | 回调函数。当关闭飞行模式成功，error为undefined，否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -321,7 +335,7 @@ connection.disableAirplaneMode((error: BusinessError) => {
 
 disableAirplaneMode(): Promise\<void>
 
-关闭飞行模式，使用Promise异步回调。
+关闭飞行模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -333,9 +347,11 @@ disableAirplaneMode(): Promise\<void>
 
 | 类型                                        | 说明                          |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void> | 无返回值的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
@@ -359,7 +375,7 @@ connection.disableAirplaneMode().then((error: void) => {
 
 factoryReset(): Promise\<void\>
 
-出厂重置网络设置，使用Promise异步回调。
+出厂重置网络设置。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -371,9 +387,11 @@ factoryReset(): Promise\<void\>
 
 | 类型                   | 说明                    |
 | ---------------------- | ----------------------- |
-| Promise\<void\>        | 无返回值的Promise对象。  |
+| Promise\<void\>        | Promise对象，无返回结果。  |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | ------- | ------------------------------------------  |
@@ -397,7 +415,7 @@ connection.factoryReset().then(() => {
 
 ## ProxyMode<sup>20+</sup>
 
-表示代理模式的枚举。使用Promise异步回调。
+表示代理模式的枚举。
 
 **系统接口**：此接口为系统接口。
 
@@ -476,6 +494,8 @@ getProxyMode(): Promise\<ProxyMode\>
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                        |
 | ------- | -----------------------------  |
 | 201     | Permission denied.             |
@@ -539,7 +559,7 @@ createVlanInterface(ifName: string, vlanId: number): Promise\<void\>
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";
@@ -596,7 +616,7 @@ destroyVlanInterface(ifName: string, vlanId: number): Promise\<void\>
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";
@@ -654,7 +674,7 @@ addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";
@@ -722,7 +742,7 @@ deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<voi
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let ifName = "eth0";

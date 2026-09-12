@@ -1,12 +1,11 @@
 # @ohos.distributedSoftBus.conversation (Cross-Device Wakeup and Message Transfer) (System API)
-
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=f44fb7f8070e1cb97778b3fca79dffbcf4e0c7e9 translatedAt=2026-08-07T09:45:52.568Z pushedAt=2026-08-07T11:30:45.925Z -->
+<!-- md-trans-meta sourceCommit=13c8a436d2c729ca494c1251c49f536b24653eac translatedAt=2026-09-08T07:22:37.432Z pushedAt=2026-09-08T09:24:30.329Z -->
 
 The DSoftBus module **conversation** provides APIs for cross-device interaction of apps, including obtaining the trusted device list, and sending and receiving session data. With this module, your app can obtain trusted devices under the same account, register a listener to receive cross-device data, and send data to a specified device through a session channel. This module is applicable to scenarios that require cross-device collaboration and multi-device data transfer, simplifying the development of cross-device interaction.
 
@@ -18,7 +17,7 @@ The DSoftBus module **conversation** provides APIs for cross-device interaction 
 
 ## Modules to Import
 
-```js
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 ```
 
@@ -204,10 +203,6 @@ Unregisters the listener with the specified bundle name and ability name. This A
 **System API:** This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
-
-**ArkTS-Dyn start version:** 26.1.0
-
-**ArkTS-Sta start version:** 26.1.0
 
 **Parameters**
 

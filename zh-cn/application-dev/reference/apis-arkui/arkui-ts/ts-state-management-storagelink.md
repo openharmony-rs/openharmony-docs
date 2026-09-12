@@ -53,7 +53,7 @@ struct StorageLinkComponent {
 
   build() {
     Column() {
-      Text('@StorageLink接口初始化，@StorageLink取值')
+      Text('@StorageLink装饰器初始化，@StorageLink取值')
       Text(`${this.linkA}`)
         .fontSize(20)
         .onClick(() => {

@@ -3782,7 +3782,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 
 | 类型                    | 说明                |
 | ----------------------- | ------------------- |
-| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 返回SQL执行后的结果 |
+| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -5057,7 +5057,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | 是   | 指定同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | 是   | 约束同步数据和设备。                                         |
-| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
+| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 回调函数。当同步成功，err为undefined，data为设备同步结果数组（string：设备ID；number：每个设备同步状态，0表示成功，1表示失败）；否则为错误对象。 |
 
 **错误码：**
 
@@ -6260,6 +6260,8 @@ off(event: 'statistics', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 | 14800000  | Inner error.  |
 | 14800014  | The target instance is already closed.     |
 
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6338,6 +6340,8 @@ off(event: 'perfStat', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 |-----------|--------|
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.     |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

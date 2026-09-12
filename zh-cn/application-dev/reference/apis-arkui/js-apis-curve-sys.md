@@ -23,7 +23,7 @@ import { curves } from '@kit.ArkUI';
 
 ## TrailOptimization
 
-弹簧动画尾迹优化配置。
+弹簧动画拖尾优化配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -34,15 +34,15 @@ import { curves } from '@kit.ArkUI';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| progressThreshold | number | 否 | 是 | 动画进度阈值。<br/>取值范围：[0, 1]<br/>默认值：1 |
-| responseDecayFactor | number | 否 | 是 | 自然振动周期衰减因子。<br/>取值范围：(0, 1]<br/>默认值：1 |
+| progressThreshold | number | 否 | 是 | 动画进度阈值。设置动画加速播放的起始点，动画进度超过该阈值时开始加速播放。responseDecayFactor小于1时，progressThreshold的值越小动画越早开始加速播放。<br/>取值范围：[0, 1]，小于0时取值为0，大于1时取值为1。<br/>默认值：1 |
+| responseDecayFactor | number | 否 | 是 | 自然振动周期衰减因子。动画播放进度超过动画进度阈值后，每帧的response将乘以该衰减系数，达到动画加速的效果。progressThreshold小于1时，responseDecayFactor的值越小动画越早结束。<br/>取值范围：[0, 1]，小于0时取值为0，大于1时取值为1。<br/>默认值：1 |
 
 
 ## curves.trailOptimizedSpringMotion
 
 trailOptimizedSpringMotion(response?: number, dampingFraction?: number, overlapDuration?: number, trail?: TrailOptimization): ICurve
 
-在[springMotion](js-apis-curve.md#curvesspringmotion9)基础上新增尾迹优化参数，构造带尾迹优化的弹性动画曲线对象。如果对同一对象的同一属性进行多个弹性动画，每个动画会替换掉前一个动画，并继承之前的速度。
+在[springMotion](js-apis-curve.md#curvesspringmotion9)基础上新增拖尾优化参数，构造带拖尾优化的弹性动画曲线对象。如果对同一对象的同一属性进行多个弹性动画，每个动画会替换掉前一个动画，并继承之前的速度。
 
 **系统接口：** 此接口为系统接口。
 
@@ -58,7 +58,7 @@ trailOptimizedSpringMotion(response?: number, dampingFraction?: number, overlapD
 | response | number | 否 | 弹簧自然振动周期，决定弹簧复位的速度。<br/>默认值：0.55<br/>单位：秒<br/>取值范围：(0, +∞)<br/>**说明：** <br/>设置小于等于0的值时，按默认值0.55处理。 |
 | dampingFraction | number | 否 | 阻尼系数。<br/>0表示无阻尼，一直处于震荡状态；<br/>大于0小于1的值为欠阻尼，运动过程中会超出目标值；<br/>等于1为临界阻尼；<br/>大于1为过阻尼，运动过程中逐渐趋于目标值。<br/>默认值：0.825<br/>取值范围：[0, +∞)<br/>**说明：** <br/>设置小于0的值时，按默认值0.825处理。 |
 | overlapDuration | number | 否 | 弹性动画衔接时长。发生动画继承时，如果前后两个弹性动画response不一致，response参数会在overlapDuration时间内平滑过渡。<br/>默认值：0<br/>单位：秒<br/>取值范围：[0, +∞)<br/>**说明：** <br/>设置小于0的值时，按默认值0处理。<br/>弹性动画曲线为物理曲线，[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于trailOptimizedSpringMotion动画曲线参数和之前的速度。时间不能归一，故不能通过该曲线的interpolate函数获得插值。 |
-| trail | [TrailOptimization](#trailoptimization) | 否 | 尾迹优化配置。 |
+| trail | [TrailOptimization](#trailoptimization) | 否 | 拖尾优化配置。不设置时，progressThreshold和responseDecayFactor取[TrailOptimization](#trailoptimization)的默认值。<br/>**说明：** <br/>当动画进度达到progressThreshold后，若当前仍处于overlapDuration区间内，overlapDuration的剩余时长将不再依据前后两段弹性动画的response参数进行插值过渡，而是直接采用responseDecayFactor所决定的速率进行衰减。 |
 
 **返回值：**
 
@@ -71,7 +71,7 @@ trailOptimizedSpringMotion(response?: number, dampingFraction?: number, overlapD
 
 trailOptimizedResponsiveSpringMotion(response?: number, dampingFraction?: number, overlapDuration?: number, trail?: TrailOptimization): ICurve
 
-在[responsiveSpringMotion](js-apis-curve.md#curvesresponsivespringmotion9)基础上新增尾迹优化参数，构造带尾迹优化的弹性跟手动画曲线对象。
+在[responsiveSpringMotion](js-apis-curve.md#curvesresponsivespringmotion9)基础上新增拖尾优化参数，构造带拖尾优化的弹性跟手动画曲线对象。
 
 **系统接口：** 此接口为系统接口。
 
@@ -87,7 +87,7 @@ trailOptimizedResponsiveSpringMotion(response?: number, dampingFraction?: number
 | response | number | 否 | 解释同springMotion中的response。<br/>默认值：0.15<br/>单位：秒<br/>取值范围：(0, +∞)<br/>**说明：** <br/>设置小于等于0的值时，按默认值0.15处理。 |
 | dampingFraction | number | 否 | 解释同springMotion中的dampingFraction。<br/>默认值：0.86<br/>取值范围：[0, +∞)<br/>**说明：** <br/>设置小于0的值时，按默认值0.86处理。 |
 | overlapDuration | number | 否 | 解释同springMotion中的overlapDuration。<br/>默认值：0.25<br/>单位：秒<br/>取值范围：[0, +∞)<br/>**说明：** <br/>设置小于0的值时，按默认值0.25处理。<br/>弹性跟手动画曲线为springMotion的一种特例，仅默认值不同。如果使用自定义参数的弹性曲线，推荐使用springMotion构造曲线。如果使用跟手动画，推荐使用默认参数的弹性跟手动画曲线。<br/>[animation](arkui-ts/ts-animatorproperty.md)、[animateTo](arkui-ts/ts-explicit-animation.md)、[pageTransition](arkui-ts/ts-page-transition-animation.md)中的duration参数不生效，动画持续时间取决于trailOptimizedResponsiveSpringMotion动画曲线参数和之前的速度，也不能通过该曲线的interpolate函数获得插值。 |
-| trail | [TrailOptimization](#trailoptimization) | 否 | 尾迹优化配置。 |
+| trail | [TrailOptimization](#trailoptimization) | 否 | 拖尾优化配置。不设置时，progressThreshold和responseDecayFactor取[TrailOptimization](#trailoptimization)的默认值。<br/>**说明：** <br/>当动画进度达到progressThreshold后，若当前仍处于overlapDuration区间内，overlapDuration的剩余时长将不再依据前后两段弹性动画的response参数进行插值过渡，而是直接采用responseDecayFactor所决定的速率进行衰减。 |
 
 **返回值：**
 
@@ -100,7 +100,7 @@ trailOptimizedResponsiveSpringMotion(response?: number, dampingFraction?: number
 
 trailOptimizedInterpolatingSpring(velocity: number, mass: number, stiffness: number, damping: number, trail?: TrailOptimization): ICurve
 
-在[interpolatingSpring](js-apis-curve.md#curvesinterpolatingspring10)基础上新增尾迹优化参数，构造带尾迹优化的插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受动画参数中的时长参数控制。
+在[interpolatingSpring](js-apis-curve.md#curvesinterpolatingspring10)基础上新增拖尾优化参数，构造带拖尾优化的插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受动画参数中的时长参数控制。
 
 **系统接口：** 此接口为系统接口。
 
@@ -117,7 +117,7 @@ trailOptimizedInterpolatingSpring(velocity: number, mass: number, stiffness: num
 | mass | number | 是 | 质量。弹性系统的受力对象，会对弹性系统产生惯性影响。质量越大，震荡的幅度越大，恢复到平衡位置的速度越慢。<br/>取值范围：(0, +∞)<br/>**说明：** <br/>设置的值小于等于0时，按1处理。 |
 | stiffness | number | 是 | 刚度。表示物体抵抗施加的力而形变的程度。刚度越大，抵抗变形的能力越强，恢复到平衡位置的速度越快。<br/>取值范围：(0, +∞)<br/>**说明：** <br/>设置的值小于等于0时，按1处理。 |
 | damping | number | 是 | 阻尼。用于描述系统在受到扰动后震荡及衰减的情形。阻尼越大，弹性运动的震荡次数越少、震荡幅度越小。<br/>取值范围：(0, +∞)<br/>**说明：** <br/>设置的值小于等于0时，按1处理。 |
-| trail | [TrailOptimization](#trailoptimization) | 否 | 尾迹优化配置。 |
+| trail | [TrailOptimization](#trailoptimization) | 否 | 拖尾优化配置。不设置时，progressThreshold和responseDecayFactor取[TrailOptimization](#trailoptimization)的默认值。 |
 
 **返回值：**
 
@@ -127,9 +127,9 @@ trailOptimizedInterpolatingSpring(velocity: number, mass: number, stiffness: num
 
 ## 示例
 
-### 示例1（带尾迹优化的弹簧曲线）
+### 示例1（trailOptimizedSpringMotion拖尾优化效果）
 
-该示例通过对比[interpolatingSpring](js-apis-curve.md#curvesinterpolatingspring10)和[trailOptimizedInterpolatingSpring](#curvestrailoptimizedinterpolatingspring)的动画执行时长，展示尾迹优化对弹簧动画的加速效果。
+该示例通过对比[springMotion](js-apis-curve.md#curvesspringmotion9)和[trailOptimizedSpringMotion](#curvestrailoptimizedspringmotion)的动画执行时长，展示拖尾优化对弹性动画的加速效果。
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -161,6 +161,7 @@ struct Index {
             })
           // 每次动画执行时长实际会有波动
           Text('原始执行时长：' + this.myAnimateTimeOrigin)
+            .margin({ top: 25, bottom: 25 })
         }
         .width('50%')
 
@@ -177,13 +178,218 @@ struct Index {
               angle: this.myAngleOptimized
             })
           // 每次动画执行时长实际会有波动
-          Text('尾迹优化执行时长：' + this.myAnimateTimeOptimized)
+          Text('拖尾优化执行时长：' + this.myAnimateTimeOptimized)
+            .margin({ top: 25, bottom: 25 })
         }
         .width('50%')
       }
       .justifyContent(FlexAlign.Center)
 
-      Button('Play animate')
+      Button('播放')
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .margin(5)
+        .onClick(() => {
+          const startTime = Date.now();
+
+          this.getUIContext()?.animateTo({
+            duration: 2000,
+            curve: curves.springMotion(0.55, 0.825, 0),
+            iterations: 1,
+            playMode: PlayMode.Normal,
+            onFinish: () => {
+              const endTime = Date.now();
+              this.myAnimateTimeOrigin = endTime - startTime;
+            }
+          }, () => {
+            this.myAngleOrigin = 360;
+          })
+
+          this.getUIContext()?.animateTo({
+            duration: 2000,
+            curve: curves.trailOptimizedSpringMotion(0.55, 0.825, 0,
+              { progressThreshold: 0.98, responseDecayFactor: 0.9 }),
+            iterations: 1,
+            playMode: PlayMode.Normal,
+            onFinish: () => {
+              const endTime = Date.now();
+              this.myAnimateTimeOptimized = endTime - startTime;
+            }
+          }, () => {
+            this.myAngleOptimized = 360;
+          })
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![trailOptimizedSpringMotion](figures/trailOptimizedSpringMotion.gif)
+
+### 示例2（trailOptimizedResponsiveSpringMotion拖尾优化效果）
+
+该示例通过对比[responsiveSpringMotion](js-apis-curve.md#curvesresponsivespringmotion9)和[trailOptimizedResponsiveSpringMotion](#curvestrailoptimizedresponsivespringmotion)的动画执行时长，展示拖尾优化对弹性跟手动画的加速效果。
+
+```ts
+import { curves } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State widthSize: number = 150;
+  @State heightSize: number = 50;
+  @State myAnimateTimeOrigin: number = 0;
+  @State myAnimateTimeOptimized: number = 0;
+  @State myAngleOrigin: number = 0;
+  @State myAngleOptimized: number = 0;
+
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Column()
+            .height(100)
+            .width(100)
+            .borderRadius(10)
+            .backgroundColor(Color.Blue)
+            .rotate({
+              x: 0,
+              y: 0,
+              z: 1,
+              angle: this.myAngleOrigin
+            })
+          // 每次动画执行时长实际会有波动
+          Text('原始执行时长：' + this.myAnimateTimeOrigin)
+            .margin({ top: 25, bottom: 25 })
+        }
+        .width('50%')
+
+        Column() {
+          Column()
+            .height(100)
+            .width(100)
+            .borderRadius(10)
+            .backgroundColor(Color.Red)
+            .rotate({
+              x: 0,
+              y: 0,
+              z: 1,
+              angle: this.myAngleOptimized
+            })
+          // 每次动画执行时长实际会有波动
+          Text('拖尾优化执行时长：' + this.myAnimateTimeOptimized)
+            .margin({ top: 25, bottom: 25 })
+        }
+        .width('50%')
+      }
+      .justifyContent(FlexAlign.Center)
+
+      Button('播放')
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .margin(5)
+        .onClick(() => {
+          const startTime = Date.now();
+
+          this.getUIContext()?.animateTo({
+            duration: 2000,
+            curve: curves.responsiveSpringMotion(0.15, 5, 0.25),
+            iterations: 1,
+            playMode: PlayMode.Normal,
+            onFinish: () => {
+              const endTime = Date.now();
+              this.myAnimateTimeOrigin = endTime - startTime;
+            }
+          }, () => {
+            this.myAngleOrigin = 360;
+          })
+
+          this.getUIContext()?.animateTo({
+            duration: 2000,
+            curve: curves.trailOptimizedResponsiveSpringMotion(0.15, 5, 0.25,
+              { progressThreshold: 0.98, responseDecayFactor: 0.9 }),
+            iterations: 1,
+            playMode: PlayMode.Normal,
+            onFinish: () => {
+              const endTime = Date.now();
+              this.myAnimateTimeOptimized = endTime - startTime;
+            }
+          }, () => {
+            this.myAngleOptimized = 360;
+          })
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![trailOptimizedResponsiveSpringMotion](figures/trailOptimizedResponsiveSpringMotion.gif)
+
+### 示例3（trailOptimizedInterpolatingSpring拖尾优化效果）
+
+该示例通过对比[interpolatingSpring](js-apis-curve.md#curvesinterpolatingspring10)和[trailOptimizedInterpolatingSpring](#curvestrailoptimizedinterpolatingspring)的动画执行时长，展示拖尾优化对插值器弹簧动画的加速效果。
+
+```ts
+import { curves } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State widthSize: number = 150;
+  @State heightSize: number = 50;
+  @State myAnimateTimeOrigin: number = 0;
+  @State myAnimateTimeOptimized: number = 0;
+  @State myAngleOrigin: number = 0;
+  @State myAngleOptimized: number = 0;
+
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Column()
+            .height(100)
+            .width(100)
+            .borderRadius(10)
+            .backgroundColor(Color.Blue)
+            .rotate({
+              x: 0,
+              y: 0,
+              z: 1,
+              angle: this.myAngleOrigin
+            })
+          // 每次动画执行时长实际会有波动
+          Text('原始执行时长：' + this.myAnimateTimeOrigin)
+            .margin({ top: 25, bottom: 25 })
+        }
+        .width('50%')
+
+        Column() {
+          Column()
+            .height(100)
+            .width(100)
+            .borderRadius(10)
+            .backgroundColor(Color.Red)
+            .rotate({
+              x: 0,
+              y: 0,
+              z: 1,
+              angle: this.myAngleOptimized
+            })
+          // 每次动画执行时长实际会有波动
+          Text('拖尾优化执行时长：' + this.myAnimateTimeOptimized)
+            .margin({ top: 25, bottom: 25 })
+        }
+        .width('50%')
+      }
+      .justifyContent(FlexAlign.Center)
+
+      Button('播放')
         .width(this.widthSize)
         .height(this.heightSize)
         .margin(5)
@@ -225,4 +431,5 @@ struct Index {
 }
 ```
 
-![curveTrailOptimizedGif](figures/curveTrailOptimizedGif.gif)
+![trailOptimizedInterpolatingSpring](figures/trailOptimizedInterpolatingSpring.gif)
+

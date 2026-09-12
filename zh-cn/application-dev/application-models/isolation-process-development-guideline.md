@@ -115,7 +115,7 @@
 
 2. 实现AbilityStage的onNewProcessRequest回调方法。
 
-    在srcEntry指定的AbilityStage源文件中，实现[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态的指定UIAbility实例所运行的独立进程。
+    在srcEntry指定的AbilityStage源文件中，实现[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调方法。系统在启动配置isolationProcess为true的UIAbility实例时会触发该回调方法，然后根据该方法返回的字符串来动态地指定UIAbility实例所运行的独立进程。
 
     <!-- @[dynamic_isolation_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/DynamicIsolationProcess/entry/src/main/ets/MyAbilityStage/MyAbilityStage.ets) --> 
     

@@ -22,7 +22,7 @@
 
 > **注意：**
 >
-> 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
+> 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)的步骤，完成手动签名。
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
 

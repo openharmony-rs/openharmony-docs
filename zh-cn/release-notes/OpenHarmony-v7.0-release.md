@@ -624,7 +624,7 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 | P7885标准系统解决方案（二进制）XTS包        | 7.0 Release    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu600_standard_arm32_xts_20260829.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/dayu600_standard_arm32_xts_20260829.tar.gz.sha256) | 5.0 GB |
 | 标准系统Public SDK包（Mac）             | 26.0.0.38 | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-mac-public_20260829.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-mac-public_20260829.tar.gz.sha256) | 1.3 GB |
 | 标准系统Public SDK包（Mac-M1）             | 26.0.0.38  | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/L2-SDK-MAC-M1-PUBLIC_20260829.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/L2-SDK-MAC-M1-PUBLIC_20260829.tar.gz.sha256) | 1.3 GB |
-| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.38   | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public_20260829.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public_20260829.tar.gz.sha256) | 3.4 GB |
+| 标准系统Public SDK包（Windows/Linux/ohos）   | 26.0.0.38   | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public_20260829.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public_20260829.tar.gz.sha256) | 3.4 GB |
 
 ## 修复缺陷列表
 

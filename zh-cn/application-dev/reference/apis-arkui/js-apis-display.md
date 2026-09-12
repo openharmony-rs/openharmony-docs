@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -751,7 +751,7 @@ getFoldDisplayMode(): FoldDisplayMode
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持多种显示模式的设备中可正常调用，在其他设备中返回FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN。
+**设备行为差异：** 该接口在支持多种显示模式（[getAllDisplayPhysicalResolution](#displaygetalldisplayphysicalresolution12)接口返回值中包含设备支持的所有显示模式）的设备中可正常调用，在其他设备中返回FoldDisplayMode.FOLD_DISPLAY_MODE_UNKNOWN。
 
 **返回值：**
 
@@ -2087,5 +2087,45 @@ try {
   console.info(`Succeeded in getting the live crease region. Data: ${JSON.stringify(data)}`);
 } catch (exception) {
   console.error(`Failed to get the live crease region. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+### getDisplayCapability<sup>18+</sup>
+getDisplayCapability(): string
+
+获取当前设备屏幕的折叠状态、显示模式、旋转角度和显示方向信息。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+**返回值：**
+
+| 类型   | 说明                                               |
+| ------ | -------------------------------------------------- |
+| string | JSON字符串，包含以下字段：<br>- capability：设备支持的各折叠状态foldStatus（取值及含义可见[FoldStatus](#foldstatus10)）与显示模式foldDisplayMode（取值及含义可见[FoldDisplayMode](#folddisplaymode10)）组合，以及各组合下支持的旋转角度rotation（取值及含义可见[Display属性](#属性)中的rotation属性）和显示方向orientation（取值及含义可见[Orientation](#orientation10)）。<br>- foldScreenType：设备折叠产品类型。例如“6,1,0,0”，其中第一位参数表示：1：大折叠（内折），2：小折叠，3：大折叠（外折），4：阔折叠，5：折叠PC，6：双折轴设备；第二位参数表示存在几块物理屏幕；第三、四位参数暂未使用，返回默认值0。<br>- buildin_screen：设备是否存在内置屏幕。值为“0”时表示无内置屏幕，值为“1”时表示有内置屏幕。<br>- allCreaseRegion：各显示模式foldDisplayMode（取值及含义可见[FoldDisplayMode](#folddisplaymode10)）下不同显示方向displayOrientation（取值及含义可见[Orientation](#orientation10)）对应的折痕区域creaseRects（取值及含义可见[FoldCreaseRegion](#foldcreaseregion10)）。该字段仅在可折叠设备上返回。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | --------------------------------------------- |
+| 801      | Capability not supported. |
+| 1400001  | Invalid display or screen. |
+| 1400003  | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  let data: string = displayClass.getDisplayCapability();
+  console.info(`Succeeded in getting the display capability. Data: ${data}`);
+} catch (exception) {
+  console.error(`Failed to get the display capability. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```

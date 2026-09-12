@@ -6,8 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=50713b5507bc1dd76af41b33f945afecf178d99e translatedAt=2026-09-01T11:45:09.827Z -->
 
 This set of system APIs provides universal attributes for security components. It is used to set unique identifiers for security components during testing and debugging, enabling precise positioning and validation of their attribute configurations and interactive behaviors.
 

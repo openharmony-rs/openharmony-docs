@@ -38,8 +38,8 @@
 | [PASTEBOARD_MIMETYPE_TEXT_PLAIN](#pasteboard_mimetype_text_plain)  "text/plain" | 纯文本类型。 |
 | [PASTEBOARD_MIMETYPE_TEXT_URI](#pasteboard_mimetype_text_uri)  "text/uri" | URI类型。 |
 | [PASTEBOARD_MIMETYPE_TEXT_HTML](#pasteboard_mimetype_text_html)  "text/html" | HTML类型。 |
-| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | pixelMap类型。 |
-| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | want类型。 |
+| [PASTEBOARD_MIMETYPE_PIXELMAP](#pasteboard_mimetype_pixelmap)  "pixelMap" | PixelMap类型。 |
+| [PASTEBOARD_MIMETYPE_TEXT_WANT](#pasteboard_mimetype_text_want)  "text/want" | Want类型。 |
 
 ### 枚举
 
@@ -130,7 +130,7 @@ HTML类型。
 
 **描述**
 
-pixelMap类型。
+PixelMap类型。
 
 **起始版本：** 22
 
@@ -142,7 +142,7 @@ pixelMap类型。
 
 **描述**
 
-want类型。
+Want类型。
 
 **起始版本：** 22
 
@@ -561,13 +561,15 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 获取剪贴板中的数据。调用此函数后，系统会读取剪贴板中的内容，返回统一数据对象[OH_UdmfData](../apis-arkdata/capi-udmf-oh-udmfdata.md)实例的指针。开发者可以通过OH_UdmfData相关接口解析数据内容。获取到的数据对象需要开发者手动释放。由于获取剪贴板中数据的时延受数据量大小与网络环境的影响，调用此接口可能耗时较长，建议开发者在非UI线程调用。
 
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
 - 如果剪贴板为空或数据格式不支持，会返回nullptr。
 - 返回的OH_UdmfData对象需要开发者调用[OH_UdmfData_Destroy](../apis-arkdata/capi-udmf-h.md#oh_udmfdata_destroy)释放。
 - 粘贴的数据量大时，建议使用[OH_Pasteboard_GetDataWithProgress](#oh_pasteboard_getdatawithprogress)接口以获取进度信息。
 
 **起始版本：** 13
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **参数：**
 
@@ -835,9 +837,11 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。调用此函数后，系统开始从系统剪贴板获取数据。如果剪贴板数据来自远端设备或包含大量文件，会通过[OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener)回调函数上报进度。数据传输完成后，返回统一数据对象指针。整个过程可能耗时较长，建议在非UI线程调用。
 
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
 **起始版本：** 15
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **参数：**
 

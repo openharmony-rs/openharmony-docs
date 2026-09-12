@@ -1,12 +1,13 @@
 # Shared Element Transition (sharedTransition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-01T11:55:59.926Z -->
 
-A shared element transition is a transition animation applied to a component that is present on two pages. This component is called the shared element and can be set in the **sharedTransition** attribute, , which is effective only during [page routing](../js-apis-router.md) transitions.
+The shared element transition (sharedTransition) is used to implement smooth transition animations of the position, size, and other attributes of a shared element during page redirection, so that the same element maintains visual continuity across different pages, improving user experience and transition smoothness. You can mark an element as a shared element and set the corresponding shared element transition animation by setting the **sharedTransition** attribute of the component. The sharedTransition takes effect only during redirection through [@ohos.router (Page Routing)](../js-apis-router.md).
 
 > **NOTE**
 >
@@ -16,7 +17,13 @@ A shared element transition is a transition animation applied to a component tha
 
 sharedTransition(id: string, options?: sharedTransitionOptions): T
 
-Sets the shared transition animation.
+Sets the shared element transition animation. This transition takes effect only during page redirection through @ohos.router.
+
+> **NOTE**
+>
+> - sharedTransition must be used together with [PageTransitionEnter](./ts-page-transition-animation.md#pagetransitionenter) and [PageTransitionExit](./ts-page-transition-animation.md#pagetransitionexit) to jointly control the page transition animation effect.
+> - When **type** of PageTransitionEnter/PageTransitionExit is set to **RouteType.None** and **duration** is set to 0, the page has no transition animation as a whole, and only the shared element transition animation is displayed.
+> - When PageTransition is not configured, the default page transition animation and the shared element transition animation are played simultaneously, which may result in a visual overlay effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -26,14 +33,14 @@ Sets the shared transition animation.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-|      id          |  string         | Yes                                        |    Transition of the shared element. If the same **id** value is configured for a component on the two pages, this component is considered as a shared element of the pages. If the **id** value is an empty string, no transition will be applied to the component.|
-|     options          |  [sharedTransitionOptions](#sharedtransitionoptions)       | No    |  Parameters of the shared element transition animation.|
+| id | string | Yes | Components with the same non-empty id value on two pages are shared elements, and the shared element transition animation is displayed during page transition. An empty string does not trigger the shared element transition animation. |
+|     options          |  [sharedTransitionOptions](#sharedtransitionoptions)       | No     |  Parameters of the shared element transition animation. If not set, the default transition animation parameters are used. For the default value of each parameter, see [sharedTransitionOptions](#sharedtransitionoptions). |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T | Current component, used for chained calls. |
 
 ## sharedTransitionOptions
 
@@ -41,9 +48,9 @@ Parameters of the shared element transition animation.
 
 > **NOTE**
 >
-> **motionPath** is effective only when **type** is set to **SharedTransitionEffectType.Exchange**.
+> **motionPath** takes effect only when **type** is set to **SharedTransitionEffectType.Exchange**.
 >
-> When **type** is set to **SharedTransitionEffectType.Exchange**, the effect focuses on smooth transition of the position and size of matching shared elements, which can be visually observed through the component's border. The transition, however, does not involve content properties, which will abruptly change to the target page's values at the end of the animation. For example, if a **Text** component has different **fontSize** values on two pages, the font size will snap to the target page's value once the shared transition animation completes.
+> When **type** is set to **SharedTransitionEffectType.Exchange**, the effect produces a transition of the position and size of the matched shared element (which can be observed by configuring the **border** of the component), and does not support the transition effect of the component's drawn content (the transition range of the position and size changes can be observed by configuring the **border** attribute of the shared element component). For example, if a **Text** component uses different **fontSize** attribute values on the two pages, that is, the drawn content differs in size, the **fontSize** effect of the **Text** component will abruptly change to that of the target page in the last frame after the sharedTransition animation ends.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -51,17 +58,17 @@ Parameters of the shared element transition animation.
 
 | Name             | Type     | Read-Only|  Optional    | Description                                                    |
 | ----------------- | -------------|------- | ------- | --------------------------------------------------------------|
-| duration          |     number   |  No |    Yes         | Animation duration.<br>Default value: **1000**<br>Unit: ms<br>Value range: [0, +∞)|
-| curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | No| Yes| Animation curve.<br>You are advised to specify the curve using the **Curve** or **ICurve** type.<br>For the string type, this parameter indicates an animation interpolation curve. For available values, see the **curve** parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: **Curve.Linear**|
-| delay          |     number   |  No |  Yes        | Delay of animation playback.<br>Default value: **0**<br>Unit: ms|
-| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md)  |  No  |  Yes       | Motion path.|
-| zIndex          |     number   |  No  |   Yes          | Z-axis.<br>Value range: (-∞, +∞)<br>Default value: **0**|
-| type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  No |  Yes| Animation type.<br>Default value: **SharedTransitionEffectType.Exchange**|
+| duration          |     number   |  No  |    Yes          | Duration of the shared element transition animation.<br>Default value: 1000<br>Unit: ms<br>Value range: [0, +∞) |
+| curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | No | Yes | Animation curve.<br>It is recommended to specify the curve in the form of Curve or ICurve.<br>When the type is string, the value is an animation interpolation curve. For details, see the curve parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: Curve.Linear |
+| delay          |     number   |  No  |  Yes         | Delay of the animation playback.<br>Value range: [0, +∞)<br>Default value: 0<br>Unit: ms |
+| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md#motionpathoptions)  |  No   |  Yes        | Motion path information, which defines the motion trajectory of the shared element transition. If this parameter is not set, the motion path effect is not enabled. This parameter takes effect only when type is SharedTransitionEffectType.Exchange. |
+| zIndex          |     number   |  No   |    Yes           | Z-order of the shared element during the transition animation.<br>Value range: (-∞, +∞)<br>Default value: 0<br>The larger the value, the more frontward (higher in the layer) the shared element is during the transition, and the less likely it is to be obscured by other shared elements. This zIndex takes effect only during the shared element transition animation. It controls the Z-order of the shared element relative to other shared elements that participate in the transition at the same time, and does not participate in the static layout hierarchy control of common components on the page. (The static layout hierarchy of components on the page is controlled by the universal attribute [zIndex](ts-universal-attributes-z-order.md#zindex).) |
+| type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  No  |  Yes | Animation type, which determines the transition mode of the shared element transition. The Exchange type produces transition animations of position and size (content transition effects are not supported). For details about other types, see [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype).<br>Default value: SharedTransitionEffectType.Exchange |
 
 
 ## Example
 
-  This example implements the custom transition of a shared image during redirection from one page to another, which is triggered by a click on the image.
+The sample code implements the custom transition animation of a shared element image when a click on the image area triggers page redirection.
 
 ```ts
 // xxx.ets
@@ -76,7 +83,7 @@ struct SharedTransitionExample {
         .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 }) 
     }.width('100%').height('100%').alignItems(HorizontalAlign.Start)
     .onClick(() => {
-      this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' })
+      this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' });
     })
   }
 
@@ -108,3 +115,4 @@ struct PageBExample {
 ```
 
 ![shared](figures/shared.gif)
+

@@ -1,12 +1,11 @@
 # @ohos.router (Page Routing) (Not Recommended)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c768e3fc6988c5096dd7e62bbcfa6f2fac61b7f5 translatedAt=2026-07-29T09:18:42.632Z pushedAt=2026-08-04T03:45:47.464Z -->
+<!-- md-trans-meta sourceCommit=6e65e5ab1f4f5d9b7a30f0ce59276e478113d638 translatedAt=2026-09-01T03:27:14.780Z pushedAt=2026-09-02T03:13:46.070Z -->
 
 This module provides page routing capabilities, including supporting page navigation and replacement via URLs or named routes, returning to the previous page or a specified page, managing the page stack, obtaining page states and navigation parameters, and setting page return confirm dialog boxes. It is applicable to scenarios where page navigation and flow are required within an application.
 
@@ -178,7 +177,6 @@ router.pushUrl({
   console.info('pushUrl success');
 });
 ```
-
 ## router.pushUrl<sup>(deprecated)</sup>
 
 pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
@@ -484,6 +482,7 @@ Replaces the current page with another one in the application and destroys the c
 | options | [RouterOptions](#routeroptions) | Yes   | Description of the new page. |
 | mode    | [RouterMode](#routermode9)      | Yes   | Mode for page replacement.|
 
+
 **Return value**
 
 | Type               | Description       |
@@ -748,7 +747,6 @@ router.pushNamedRoute({
   console.info('pushNamedRoute success');
 })
 ```
-
 ## router.pushNamedRoute<sup>(deprecated)</sup>
 
 pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&gt;
@@ -1064,6 +1062,7 @@ Replaces the current page with the specified named route page and destroys the c
 | options | [NamedRouterOptions](#namedrouteroptions10) | Yes   | Description of the new page. |
 | mode    | [RouterMode](#routermode9)      | Yes   | Mode for page replacement.|
 
+
 **Return value**
 
 | Type               | Description       |
@@ -1232,7 +1231,6 @@ Returns to a specified page, and removes all pages between the current page and 
 ```ts
 this.getUIContext().getRouter().back(1);
 ```
-
 ```ts
 this.getUIContext().getRouter().back(1, { info: 'From Home' }); // Returning with parameters.
 ```
@@ -1362,7 +1360,6 @@ if (options != undefined) {
   console.info(`params = ${JSON.stringify(options.params)}`);
 }
 ```
-
 ## router.getStateByUrl<sup>(deprecated)</sup>
 
 getStateByUrl(url: string): Array&lt;RouterState&gt;
@@ -1464,7 +1461,6 @@ try {
   console.error(`showAlertBeforeBackPage failed. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
 }
 ```
-
 ## EnableAlertOptions
 
 Describes the confirm dialog box.
@@ -1538,7 +1534,7 @@ Describes the page routing options.
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | url    | string | No   | No   | URL of the target page, which can be in either of the following formats:<br/>-&nbsp;Absolute page path, provided by the **pages** list in the configuration file, for example:<br/>&nbsp;&nbsp;-&nbsp;pages/index/index<br/>&nbsp;&nbsp;-&nbsp;pages/detail/detail<br/>-&nbsp;Special value. If the value of **url** is **"/"**, the home page is redirected to. The home page defaults to the first data item in the **src** array of the page navigation configuration.<br/>If a nonexistent or invalid URL path is passed in, the navigation fails. For details about the error codes, see the error code description of each API.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| params | Object | No   | Yes   | Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. After navigation to the target page, use **router.getParams()** to obtain the passed parameters. In addition, in the web-like paradigm, parameters can also be used directly on the page, for example, **this.keyValue** (where **keyValue** is the value of a key in the **params** parameter during navigation). If the target page already has this parameter, its value will be overwritten by the passed parameter value.<br/>**NOTE**<br/>The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). Passing non-serializable parameters may cause parameter transfer failure or application running exceptions. You are advised to extract the basic-type attributes that need to be passed from the objects returned by system APIs, and construct an object-type object for passing.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| params | Object | No | Yes | Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. After navigation to the target page, use **router.getParams()** to obtain the passed parameters. In addition, in the web-like paradigm, parameters can also be used directly on the page, for example, **this.keyValue** (where **keyValue** is the value of a key in the **params** parameter during navigation). If the target page already has this parameter, its value will be overwritten by the passed parameter value.<br/>**NOTE**<br/>The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). Passing non-serializable parameters may cause parameter transfer failure or application running exceptions. You are advised to extract the basic-type attributes that need to be passed from the objects returned by system APIs, and construct an object-type object for passing.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | recoverable<sup>14+</sup> | boolean | No  | Yes  | Whether the corresponding page is recoverable.<br>Default value: **true**. <br>**true**: The corresponding page is recoverable.<br>**false**: The corresponding page is not recoverable.<br>**NOTE**<br> If an application is switched to the background and is later closed by the system due to resource constraints or other reasons, a page marked as recoverable can be restored by the system when the application is brought back to the foreground. For more details, see [UIAbility Backup and Restore](../../application-models/ability-recover-guideline.md).|
 
   > **NOTE**
@@ -1564,7 +1560,7 @@ Describes the named route options.
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | name   | string | No  | No  | Name of the target named route page, which must be a registered named route name. <br/>**Atomic service API:** This API can be used in atomic services since API version 11. <br/>**Model restriction:** This API can be used only in the stage model.<br/>**System capability:** SystemCapability.ArkUI.ArkUI.Full|
-| params | Object | No  | Yes  | Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. After navigating to the target page, use **router.getParams()** to obtain the passed parameters. In addition, in the web-like paradigm, parameters can also be used directly on the page, for example, **this.keyValue** (where **keyValue** is the value of a key in the **params** parameter during navigation). If the target page already has this parameter, its value will be overwritten by the passed parameter value. <br/>**NOTE**<br/>The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). Passing non-serializable parameters may cause parameter transfer failure or application running exceptions. You are advised to extract the basic-type attributes that need to be passed from objects returned by system APIs, and construct an object-type object for passing.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.<br/>**Model restriction:** This API can be used only in the stage model.<br/>**System capability:** SystemCapability.ArkUI.ArkUI.Full  |
+| params | Object | No | Yes | Data that needs to be passed to the target page during redirection. The received data becomes invalid when the page is switched to another page. After navigating to the target page, use **router.getParams()** to obtain the passed parameters. In addition, in the web-like paradigm, parameters can also be used directly on the page, for example, **this.keyValue** (where **keyValue** is the value of a key in the **params** parameter during navigation). If the target page already has this parameter, its value will be overwritten by the passed parameter value. <br/>**NOTE**<br/>The **params** parameter can only pass serializable parameters. It cannot pass methods or objects returned by system APIs (for example, the **PixelMap** object defined and returned by media APIs). Passing non-serializable parameters may cause parameter transfer failure or application running exceptions. You are advised to extract the basic-type attributes that need to be passed from objects returned by system APIs, and construct an object-type object for passing.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.<br/>**Model restriction:** This API can be used only in the stage model.<br/>**System capability:** SystemCapability.ArkUI.ArkUI.Full |
 | recoverable<sup>14+</sup> | boolean | No  | Yes  | Whether the corresponding page is recoverable.<br>Default value: **true**. <br>**true**: The corresponding page is recoverable.<br>**false**: The corresponding page is not recoverable.<br>**NOTE**<br> If an application is switched to the background and is later closed by the system due to resource constraints or other reasons, a page marked as recoverable can be restored by the system when the application is brought back to the foreground. For more details, see [UIAbility Backup and Restore](../../application-models/ability-recover-guideline.md).<br>**System capability**: SystemCapability.ArkUI.ArkUI.Lite|
 
 ## Examples
@@ -1589,7 +1585,6 @@ export default {
   }
 }
 ```
-
 <!--deprecated_code_no_check-->
 <!--code_no_check-->
 
@@ -1711,7 +1706,7 @@ struct Second {
       Text(this.text)
         .fontSize(30)
         .onClick(() => {
-          this.secondData = (this.data['array'][1]).toString();
+          this.secondData = (this.data.array[1]).toString();
         })
         .margin({ top: 20 })
       Text(`This is the data passed from the first page: ${this.secondData}`)
@@ -1742,6 +1737,7 @@ Navigates to a specified page in the application.
 | Name    | Type                             | Mandatory  | Description       |
 | ------- | ------------------------------- | ---- | --------- |
 | options | [RouterOptions](#routeroptions) | Yes   | Page routing parameters.|
+
 
 **Example**
 
@@ -1862,7 +1858,6 @@ router.disableAlertBeforeBackPage();
 This example shows the redirection features of the router.[replace](#routerreplacedeprecated) and router.[replaceUrl](#routerreplaceurldeprecated) APIs in the web-like paradigm.
 
 The following describes the tree structure:
-
 ```text
 pages
 ├─ index
@@ -1876,7 +1871,6 @@ pages
 ```
 
 <!--code_no_check-->
-
 ```css
 /* index.css */
 .page {
@@ -1935,7 +1929,6 @@ pages
 ```
 
 <!--code_no_check-->
-
 ```html
 <!--index.hml-->
 <div class="page">
@@ -1949,7 +1942,6 @@ pages
 
 <!--deprecated_code_no_check-->
 <!--code_no_check-->
-
 ```js
 // index.js
 import { router } from '@kit.ArkUI';
@@ -1980,7 +1972,6 @@ export default {
 ```
 
 <!--code_no_check-->
-
 ```css
 /* routerPage.css */
 .page {
@@ -2039,7 +2030,6 @@ export default {
 ```
 
 <!--code_no_check-->
-
 ```html
 <!--routerPage.hml-->
 <div class="page">
@@ -2053,7 +2043,6 @@ export default {
 
 <!--deprecated_code_no_check-->
 <!--code_no_check-->
-
 ```js
 // routerPage.js
 import { router } from '@kit.ArkUI';

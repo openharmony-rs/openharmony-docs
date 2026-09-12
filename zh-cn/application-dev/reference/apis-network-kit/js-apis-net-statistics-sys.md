@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.net.statistics (流量管理)](js-apis-net-statistics.md)。
 
 ## 导入模块
@@ -19,7 +19,6 @@
 ```js
 import { statistics } from '@kit.NetworkKit';
 ```
-
 
 ## statistics.on('netStatsChange')
 
@@ -42,9 +41,9 @@ on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -87,9 +86,9 @@ off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -132,13 +131,13 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 | 参数名    | 类型                                            | 必填 | 说明                                                                                    |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。                                     |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。当成功获取指定网卡历史流量信息时，err为undefined，data为获取到的网卡历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -193,20 +192,23 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**参数：**
+
 | 参数名    | 类型                      | 必填 | 说明                                                |
 | --------- | ------------------------- | ---- | --------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo) | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。 |
 
 **返回值：**
+
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | 以Promise形式返回获取结果，返回网卡历史流量信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise对象，返回网卡历史流量信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -261,13 +263,13 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。当成功获取指定应用历史流量信息时，err为undefined，data为获取到的应用历史流量信息；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -341,13 +343,13 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 | 类型                                      | 说明                                               |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | 以Promise形式返回获取结果，返回应用历史流量信息。 |
+| Promise\<[NetStatsInfo](#netstatsinfo)> | Promise对象，返回应用历史流量信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -401,13 +403,13 @@ getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
 | 类型                                              | 说明                               |
 |-------------------------------------------------|----------------------------------|
-| Promise\<[UidNetStatsInfo](#uidnetstatsinfo12)> | 以Promise形式返回获取结果。返回所有应用历史流量信息。 |
+| Promise\<[UidNetStatsInfo](#uidnetstatsinfo12)> | Promise对象，返回所有应用历史流量信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -417,7 +419,7 @@ getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 | 2100003   | System internal error.                       |
 | 2103017   | Failed to read the database.                 |
 
-**示例**
+**示例：**
 
 ```js
 import { connection, statistics } from '@kit.NetworkKit';
@@ -460,13 +462,13 @@ getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<Net
 
 | 类型                                                        | 说明                               |
 |-----------------------------------------------------------|----------------------------------|
-| Promise\<[NetStatsInfoSequence](#netstatsinfosequence12)> | 以Promise形式返回获取结果。返回应用历史流量统计信息。 |
+| Promise\<[NetStatsInfoSequence](#netstatsinfosequence12)> | Promise对象，返回应用历史流量统计信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -476,7 +478,7 @@ getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<Net
 | 2100003   | System internal error.                       |
 | 2103017   | Failed to read the database.                 |
 
-**示例**
+**示例：**
 
 ```js
 import { connection, statistics } from '@kit.NetworkKit';
@@ -498,11 +500,13 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
 
 ## statistics.setCalibrationTraffic
 
-setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
+setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>
 
 设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据，接口会将simId对应的剩余流量（remainTraffic）与套餐总流量（totalTraffic）写入系统流量统计数据库并用于后续流量统计与校准计算，校准结果对后续查询接口返回的数据生效。使用Promise异步回调。
 
 **起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -528,18 +532,18 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[流量管理错误码](errorcode-net-statistics.md)。
+以下错误码的详细介绍请参见[流量管理错误码](errorcode-net-statistics.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 202       | Non-system applications use system APIs.     |
+| 202       | Nonsystem applications use system APIs.    |
 | 801       | Capability not supported.                             |
 | 2100001   | Invalid parameter value, such as simId error.                     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error, such as nullptr.                       |
 
-**示例**
+**示例：**
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';

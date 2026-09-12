@@ -23,7 +23,7 @@ import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 触屏输入事件类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称     | 值   | 说明   |
 | ------ | ------ | ---- |
@@ -39,7 +39,7 @@ import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 操作触屏的工具类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称       | 值   | 说明   |
 | -------- | ------ | ---- |
@@ -56,7 +56,7 @@ import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 触屏来源的设备类型，当前支持触屏、手写笔、触控板类型上报。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称           | 值  | 说明   |
 | ------------ | ------ | ---- |
@@ -68,7 +68,7 @@ import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 触屏点信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
@@ -97,7 +97,7 @@ import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 触屏输入事件。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称         | 类型       | 只读   | 可选   | 说明        |
 | ---------- | ---------- | ---- | ---- | --------- |

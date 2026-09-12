@@ -13,7 +13,7 @@ typedef struct OH_CryptoSign OH_CryptoSign
 
 ## 概述
 
-定义签名结构体。
+签名结构体，表示签名上下文。
 
 **起始版本：** 20
 

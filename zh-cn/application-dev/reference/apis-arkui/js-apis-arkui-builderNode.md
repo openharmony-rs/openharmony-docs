@@ -1714,7 +1714,7 @@ class TextNodeController extends NodeController {
   }
 
   aboutToDisappear() {
-    this.rootNode?.dispose();
+    this.textNode?.dispose();
   }
 }
 
@@ -3413,7 +3413,7 @@ import { FrameNode, NodeController, ReactiveBuilderNode } from '@kit.ArkUI';
 struct TestComponent {
   build() {
     Column() {
-      Text('This is a BuilderNode.')
+      Text('This is a ReactiveBuilderNode.')
         .fontSize(25)
         .fontWeight(FontWeight.Bold)
     }

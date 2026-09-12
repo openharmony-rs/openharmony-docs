@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy; @xuzhihao666-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=39c91f6014aebaf032e76cba1dba0db7318cd7f0 translatedAt=2026-09-03T09:50:58.970Z pushedAt=2026-09-05T10:47:30.207Z -->
 
 The lifecycle of a [UIAbility](js-apis-app-ability-uiAbility.md) dynamically changes from creation to destruction. The AbilityLifecycleCallback module provides the capability to listen for these lifecycle changes, which can be used for scenarios such as tracking the runtime duration of each UIAbility and performing data loading decoupled from the service logic of UIAbility.
 

@@ -36,6 +36,6 @@ typedef struct OH_TrafficFilter_ConnectionInfo {...} OH_TrafficFilter_Connection
 | uint16_t srcPort | 源端口。0表示任意源端口。 |
 | [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) dstIp | 目的IP地址，支持IPv4和IPv6，需要与源IP地址的地址族相同。 |
 | uint16_t dstPort | 目的端口。0表示任意目的端口。 |
-| uint8_t protocol | 协议类型。支持的取值：- OH_TRAFFICFILTER_PROTO_TCP (6) - OH_TRAFFICFILTER_PROTO_UDP (17) |
+| uint8_t protocol | 协议类型。支持的取值：<br>- OH_TRAFFICFILTER_PROTO_TCP (6) <br>- OH_TRAFFICFILTER_PROTO_UDP (17) |
 
 

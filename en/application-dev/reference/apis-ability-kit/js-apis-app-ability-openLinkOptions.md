@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9b45198dbdb6f53f8bf0896d62425626f2442690 translatedAt=2026-09-03T10:27:08.315Z pushedAt=2026-09-05T10:47:30.416Z -->
 
-**OpenLinkOptions** can be used as an input parameter of [openLink()](js-apis-inner-application-uiAbilityContext.md#openlink12) to indicate whether to enable only App Linking and pass in optional parameters in the form of key-value pairs.
+OpenLinkOptions is used as an input parameter of [openLink()](js-apis-inner-application-uiAbilityContext.md#openlink12) to control the application launch mode. It supports configuring whether to launch the application only through AppLinking, passing custom key-value pair parameters, controlling the display of failure prompts, and handling the launch result callback. It is applicable to scenarios where the application launch behavior needs to be controlled and the launch result needs to be obtained.
 
 > **NOTE**
 >
@@ -30,9 +31,9 @@ import { OpenLinkOptions } from '@kit.AbilityKit';
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | appLinkingOnly | boolean | No| Yes| Whether the UIAbility must be started using <!--RP1-->[App Linking](../../application-models/app-linking-startup.md)<!--RP1End-->.<br>- If this parameter is set to **true** and no UIAbility matches the URL in App Linking, the result is returned directly.<br>- If this parameter is set to **false** and no UIAbility matches the URL in App Linking, App Linking falls back to [Deep Linking](../../application-models/deep-linking-startup.md). The default value is **false**.<br>When the aa command is used to implicitly start an ability, you can set **--pb appLinkingOnly true** or **--pb appLinkingOnly false** to start the ability in App Linking mode.|
-| parameters | Record\<string, Object> | No| Yes| List of parameters in Want.<br>Note: For details about the usage rules, see **parameters** in [want](./js-apis-app-ability-want.md).|
+| parameters | Record\<string, Object> | No | Yes | WantParams parameters used to pass additional data in key-value pairs to the launched UIAbility. The key is of the string type, and the value is an object of any type.<br/>**Note:** For details about the usage rules, see the parameters attribute in [want](./js-apis-app-ability-want.md). |
 | hideFailureTipDialog<sup>21+</sup> | boolean | No| Yes| Whether to display a "No app available" dialog box when a suitable application is not found using [Deep Linking](../../application-models/deep-linking-startup.md).<br>- **true**: The "No app available" dialog box is not displayed.<br>- **false**: The "No app available" dialog box is displayed. The default value is **false**.<br>Note: If **appLinkingOnly** is set to **true**, the Deep Linking process is not triggered, and this field does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| completionHandler<sup>21+</sup> | [CompletionHandler](js-apis-app-ability-completionHandler.md#completionhandler) | No| Yes| Operation class used to handle the result of an application launch request.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| completionHandler<sup>21+</sup> | [CompletionHandler](js-apis-app-ability-completionHandler.md#completionhandler) | No | Yes | Operation class for the result of launching an application, used to process the result of launching the application. If this parameter is not passed, the launch result is not processed. This class contains two callback methods, [onRequestSuccess](js-apis-app-ability-completionHandler.md#onrequestsuccess) and [onRequestFailure](js-apis-app-ability-completionHandler.md#onrequestfailure), which are used to receive the callback for a successful or failed application launch.<br/>**Atomic service API:** Since API version 21, this API is supported in atomic services. |
 
 **Example**
 
@@ -60,6 +61,7 @@ import { OpenLinkOptions } from '@kit.AbilityKit';
             .height('5%')
             .margin({ bottom: '12vp' })
             .onClick(() => {
+              // Obtain the UIAbilityContext.
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
               let link: string = 'https://www.example.com';
               let completionHandler: CompletionHandler = {
@@ -86,21 +88,27 @@ import { OpenLinkOptions } from '@kit.AbilityKit';
                 completionHandler: completionHandler
               };
               try {
+                // Launch the target application using the openLink API.
                 context.openLink(
                   link,
                   openLinkOptions,
+                  // Result callback: err is the error information, and result contains the return code resultCode and the want parameter.
                   (err, result) => {
-                    hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err)}`);
+                    if (err) {
+                      hilog.error(DOMAIN, TAG, `openLink callback error.code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`); 
+                      return;
+                    }
                     hilog.info(DOMAIN, TAG, `openLink callback result: ${JSON.stringify(result.resultCode)}`);
                     hilog.info(DOMAIN, TAG, `openLink callback result data: ${JSON.stringify(result.want)}`);
                   }
+                // Print a log if the call succeeds, and catch the error if the call fails.
                 ).then(() => {
                   hilog.info(DOMAIN, TAG, `open link success.`);
-                }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}`);
+                }).catch ((err: BusinessError) => {
+                  hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
                 });
               } catch (e) {
-                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}`);
+                hilog.error(DOMAIN, TAG, `open link failed, errCode: ${JSON.stringify(e.code)}, message: ${JSON.stringify(e.message)}`);
               }
             })
         }

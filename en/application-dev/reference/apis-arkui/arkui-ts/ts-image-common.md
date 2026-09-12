@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=07d05947a90cbd4c215e5174f7648fcf076bc9eb translatedAt=2026-08-28T01:38:00.737Z pushedAt=2026-09-01T03:22:26.145Z -->
 
 >**NOTE**
 >
@@ -13,7 +14,7 @@
 
 ## PixelMap
 
-type PixelMap = PixelMap
+type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap
 
 Represents an image pixel map for reading or writing image data and accessing image information.
 
@@ -23,25 +24,29 @@ Represents an image pixel map for reading or writing image data and accessing im
 
 | Type                                                        | Description                                      |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Image pixel map class for reading or writing image data and accessing image information.|
+| import('../api/@ohos.multimedia.image').default.[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Image pixel class, used to read or write image data and obtain image information. |
 
 ## ImageAnalyzerConfig<sup>12+</sup>
 
-Provides AI image analyzer configuration.
+Provides image AI analyzer configuration.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Type               | Read-Only| Optional| Description                  |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
-| types | [ImageAnalyzerType[]](#imageanalyzertype12) | No| No| AI image analysis types.|
+| types | [ImageAnalyzerType](#imageanalyzertype12)[] | No | No | Image AI analysis type. |
 
 ## ImageAnalyzerType<sup>12+</sup>
 
-Defines the AI image analysis type. If it is not set, subject recognition and text recognition are enabled by default.
+Defines the image AI analysis type. If it is not set, subject recognition and text recognition are enabled by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,16 +58,18 @@ Defines the AI image analysis type. If it is not set, subject recognition and te
 
 ## ImageAIOptions<sup>12+</sup>
 
-Provides the AI image analysis options.
+Provides the image AI analysis options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Type               | Read-Only| Optional| Description                  |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
-| types | [ImageAnalyzerType[]](#imageanalyzertype12) | No| Yes| AI image analysis types.|
-| aiController | [ImageAnalyzerController](#imageanalyzercontroller12) | No| Yes| AI image analysis controller.|
+| types | [ImageAnalyzerType](#imageanalyzertype12)[] | No | Yes | Image AI analysis type. |
+| aiController | [ImageAnalyzerController](#imageanalyzercontroller12) | No| Yes| Image AI analysis controller.|
 
 > **NOTE**
 >
@@ -72,9 +79,11 @@ Provides the AI image analysis options.
 
 ## ImageAnalyzerController<sup>12+</sup>
 
-Implements an AI image analysis controller, which provides control for image analysis features when bound to supported components.
+Defines the image AI analysis controller. You can bind this object to a supported component and call the methods it provides through the controller.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,15 +95,19 @@ A constructor used to create an **ImageAnalyzerController** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### getImageAnalyzerSupportTypes<sup>12+</sup>
 
 getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
-Obtains the analysis types supported by the corresponding component.
+Obtains the image AI analysis types supported by the component to which this controller is bound. Before calling this method, bind the controller to a component through the **aiController** attribute of components such as **Image** and **ImageAnimator**. Otherwise, an empty array is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,7 +115,7 @@ Obtains the analysis types supported by the corresponding component.
 
 | Type    | Description                     |
 | ------ | ----------------------- |
-| [ImageAnalyzerType[]](#imageanalyzertype12) | Analysis type supported by the corresponding component.|
+| [ImageAnalyzerType](#imageanalyzertype12)[] | AI analysis type supported by the corresponding component. |
 
 ## ContentTransitionEffect<sup>21+</sup>
 
@@ -111,6 +124,8 @@ Defines the content transition effect.
 ### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -2569,7 +2569,7 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | uiStates    | number | 是   | 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                                       |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | 是   | 状态变化时的回调函数。                                           |
-| excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。<br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
+| excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。<br> true表示禁止内部默认状态样式处理，false表示不禁止内部默认状态样式处理。 |
 
 **示例：**
 
@@ -5367,7 +5367,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>适用版本：15-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be thrown above API version 24. <br>适用版本：15-24 |
 
 **示例：**
 
@@ -6242,7 +6242,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>适用版本：20-24 |
 
 **示例：**
 
@@ -6947,7 +6947,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -7562,7 +7562,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -10226,7 +10226,7 @@ struct Index {
     Column() {
       Button('add CommonEvent to Text')
         .onClick(() => {
-          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
         })
       Text('this is a Text')
         .fontSize(16)

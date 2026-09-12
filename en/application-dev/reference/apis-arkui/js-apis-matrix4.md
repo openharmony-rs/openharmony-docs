@@ -1,22 +1,23 @@
 # @ohos.matrix4 (Matrix Transformation)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4074739ec104663f417d9981273bcd01b284c4ca translatedAt=2026-07-29T09:29:52.607Z pushedAt=2026-08-04T01:46:34.728Z -->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-01T03:19:50.874Z pushedAt=2026-09-02T01:18:17.284Z -->
 
 Provides matrix transformation capabilities for components, including translation, rotation, and scaling. For details, see [Transformation](arkui-ts/ts-universal-attributes-transformation.md).
 
 **Matrix4** can be used in the following scenarios:
 
-In [Transformation](arkui-ts/ts-universal-attributes-transformation.md), the [transform](arkui-ts/ts-universal-attributes-transformation.md#transform18) API uses the **Matrix4** object to display the matrix transformation in two-dimensional transformation, and the [transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
+In [Transformation](arkui-ts/ts-universal-attributes-transformation.md), the [transform](arkui-ts/ts-universal-attributes-transformation.md#transform18) API uses the **Matrix4** object to set the two-dimensional transformation matrix for a component, and the [transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
+
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
@@ -24,11 +25,12 @@ In [Transformation](arkui-ts/ts-universal-attributes-transformation.md), the [tr
 import { matrix4 } from '@kit.ArkUI';
 ```
 
+
 ## matrix4.init
 
 init(options: [number,number,number,number,number,number,number,number,number,number,number,number,number,number,number,number]): Matrix4Transit
 
-Matrix constructor, which is used to create a 4 x 4 matrix with the input parameters. Column-major order is used.
+Constructor of **Matrix4**. It is used to create a 4 x 4 matrix based on the input parameters. The matrix is column-major, that is, the 16 values in the input array are filled into the matrix column by column: array[0] to array[3] form the first column, array[4] to array[7] form the second column, array[8] to array[11] form the third column, and array[12] to array[15] form the fourth column. When only an identity matrix is required, you are advised to use **matrix4.identity()**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -38,7 +40,7 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number,<br/>number,number,number,number] | Yes   | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br/>Value range of each number: (-∞, +∞)<br/>Default value:<br/>[1,&nbsp;0,&nbsp;0,&nbsp;0,<br/>0,&nbsp;1,&nbsp;0,&nbsp;0,<br/>0,&nbsp;0,&nbsp;1,&nbsp;0,<br/>0,&nbsp;0,&nbsp;0,&nbsp;1] |
+| options | [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | Yes | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞)<br>Default value:<br>[1,&nbsp;0,&nbsp;0,&nbsp;0,<br>0,&nbsp;1,&nbsp;0,&nbsp;0,<br>0,&nbsp;0,&nbsp;1,&nbsp;0,<br>0,&nbsp;0,&nbsp;0,&nbsp;1] |
 
 **Return value**
 
@@ -51,17 +53,17 @@ Matrix constructor, which is used to create a 4 x 4 matrix with the input parame
 | Name | Type    | Mandatory  | Description                  |
 | ---- | ------ | ---- | -------------------- |
 | m00  | number | Yes   | Scaling value of the x-axis. The default value is **1** for the identity matrix.     |
-| m01  | number | Yes   | The second value, which is affected by the rotation or tilt of the x, y, and z axes.  |
-| m02  | number | Yes   | The third value, which is affected by the rotation of the x, y, and z axes.  |
-| m03  | number | Yes   | The fourth value, which is affected by perspective projection.              |
-| m10  | number | Yes   | The fifth value, which is affected by the rotation or tilt of the x, y, and z axes.  |
+| m01  | number | Yes    | The second matrix element, which is affected by the rotation or tilt of the x, y, and z axes.   |
+| m02  | number | Yes    | The third matrix element, which is affected by the rotation of the x, y, and z axes.   |
+| m03  | number | Yes    | The fourth matrix element, which is affected by perspective projection.               |
+| m10  | number | Yes    | The fifth matrix element, which is affected by the rotation or tilt of the x, y, and z axes.   |
 | m11  | number | Yes   | Scaling value of the y-axis. The default value is **1** for the identity matrix.     |
-| m12  | number | Yes   | The seventh value, which is affected by the rotation of the x, y, and z axes.  |
-| m13  | number | Yes   | The eighth value, which is affected by perspective projection.              |
-| m20  | number | Yes   | The ninth value, which is affected by the rotation of the x, y, and z axes.  |
-| m21  | number | Yes   | The tenth value, which is affected by the rotation of the x, y, and z axes. |
+| m12  | number | Yes    | The seventh matrix element, which is affected by the rotation of the x, y, and z axes.   |
+| m13  | number | Yes    | The eighth matrix element, which is affected by perspective projection.               |
+| m20  | number | Yes    | The ninth matrix element, which is affected by the rotation of the x, y, and z axes.   |
+| m21  | number | Yes    | The tenth matrix element, which is affected by the rotation of the x, y, and z axes.  |
 | m22  | number | Yes   | Scaling value of the z-axis. The default value is **1** for the identity matrix.     |
-| m23  | number | Yes   | The 12th value, which is affected by perspective projection.              |
+| m23  | number | Yes    | The 12th matrix element, which is affected by perspective projection.               |
 | m30  | number | Yes    | Translation value of the x-axis, in px. The default value is **0** for the identity matrix. |
 | m31  | number | Yes    | Translation value of the y-axis, in px. The default value is **0** for the identity matrix. |
 | m32  | number | Yes    | Translation value of the z-axis, in px. The default value is **0** for the identity matrix. |
@@ -93,6 +95,7 @@ struct Tests {
   }
 }
 ```
+
 
 ## matrix4.identity
 
@@ -146,7 +149,13 @@ struct Tests {
 
 ## Matrix4Transit
 
-Implements a **Matrix4Transit** object.
+Implements a matrix object. It supports combining multiple transformation effects by chained calls of the **translate**, **scale**, **rotate**, and **skew** APIs.
+
+> **NOTE**
+>
+> When multiple transformation APIs are called in chain mode, the order of transformations affects the final result. For example, translating first and then scaling produces a different transformation effect from scaling first and then translating. Select the correct call order based on the expected effect.
+>
+> The **translate**, **scale**, **rotate**, **skew**, **combine**, and **invert** APIs modify the original matrix on which they are called. To keep the original matrix unchanged, call **copy()** before performing the transformation, for example, **matrix.copy().translate({x:100})**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -168,17 +177,19 @@ Copies this matrix object.
 | --------------------------------- | -------------------- |
 | [Matrix4Transit](#matrix4transit) | Copy object of the current matrix.|
 
+
 **Example**
 
 ```ts
 // xxx.ets
 import { matrix4 } from '@kit.ArkUI';
 
+let matrix1 = matrix4.identity().scale({ x: 1.5 });
+let matrix2 = matrix1.copy().translate({ x: 200 });
+
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().scale({ x: 1.5 });
-  private matrix2 = this.matrix1.copy().translate({ x: 200 });
   imageSize: Length = '300px';
 
   build() {
@@ -191,12 +202,12 @@ struct Test {
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
-        .transform(this.matrix1)
+        .transform(matrix1)
       // Replace $r("app.media.testImage") with the image resource file you use.
       Image($r("app.media.testImage"))
         .width(this.imageSize)
         .height(this.imageSize)
-        .transform(this.matrix2)
+        .transform(matrix2)
     }.alignItems(HorizontalAlign.Center)
     .height('100%').width('100%')
     .justifyContent(FlexAlign.Center)
@@ -220,7 +231,7 @@ Combines the effects of two matrices to generate a new matrix object. The matrix
 
 | Name| Type                             | Mandatory| Description              |
 | ------ | --------------------------------- | ---- | ------------------ |
-| options | [Matrix4Transit](#matrix4transit) | Yes  | Matrix object to be combined.|
+| options | [Matrix4Transit](#matrix4transit) | Yes | Matrix object to be combined. Its transformation effect is combined on the current matrix (matrix multiplication) to generate a new transformation matrix. |
 
 **Return value**
 
@@ -262,11 +273,12 @@ struct Test {
 
 ![en-us_image_0000001118642902](figures/Matrix4-combine.png)
 
+
 ### invert
 
 invert(): Matrix4Transit
 
-Inverts this matrix object. The matrix that calls this API will be changed.
+Inverts this matrix object. The matrix that calls this API will be changed and transformed into its inverse matrix, which is then returned. The product of the inverse matrix and the original matrix is the identity matrix.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -308,6 +320,7 @@ struct Tests {
   }
 }
 ```
+
 
 ### translate
 
@@ -354,6 +367,7 @@ struct Test {
 ```
 
 ![Matrix4-translate](figures/Matrix4-translate.png)
+
 
 ### scale
 
@@ -408,6 +422,7 @@ struct Test {
 
 ![Matrix4-scale](figures/Matrix4-scale.png)
 
+
 ### skew<sup>12+</sup>
 
 skew(x: number, y: number): Matrix4Transit
@@ -424,8 +439,8 @@ Skews this matrix object along the x and y axes. The matrix that calls this API 
 
 | Name| Type                       | Mandatory| Description          |
 | ------ | --------------------------- | ---- | -------------- |
-| x | number | Yes | Amount of skewing on the x-axis.<br/>The value **0** indicates no skew, while positive and negative values correspond to skew effects in different directions. |
-| y | number | Yes | Amount of skewing on the y-axis.<br/>The value **0** indicates no skew, while positive and negative values correspond to skew effects in different directions. |
+| x | number | Yes | Skew on the x-axis. The value is the shear factor (that is, the tan value).<br>The value **0** indicates no skew, a positive value indicates the skew along the positive direction of the x-axis, and a negative value indicates the skew along the negative direction of the x-axis. |
+| y | number | Yes | Skew on the y-axis. The value is the shear factor (that is, the tan value).<br>The value **0** indicates no skew, a positive value indicates the skew along the positive direction of the y-axis, and a negative value indicates the skew along the negative direction of the y-axis. |
 
 **Return value**
 
@@ -460,6 +475,7 @@ struct Test {
 ```
 
 ![Matrix4-skew](figures/Matrix4-skew.jpeg)
+
 
 ### rotate
 
@@ -513,6 +529,7 @@ struct Test {
 
 ![Matrix4-rotate](figures/Matrix4-rotate.png)
 
+
 ### transformPoint
 
 transformPoint(options: [number, number]): [number, number]
@@ -527,7 +544,7 @@ Applies the current transformation effect to a coordinate point.
 
 | Name | Type            | Mandatory| Description              |
 | ------- | ---------------- | ---- | ------------------ |
-| options | [number, number] | Yes  | Point to be transformed.|
+| options | [number, number] | Yes | Coordinate point to be transformed, in the format of [x, y], where **x** is the horizontal coordinate and **y** is the vertical coordinate, in px. |
 
 **Return value**
 
@@ -545,9 +562,9 @@ import { matrix4 } from '@kit.ArkUI';
 @Component
 struct Test {
   private originPoint: number[] = [50, 50];
-  private matrix_1 = matrix4.identity().translate({ x: 150, y: -50 });
-  private transformPoint = this.matrix_1.transformPoint([this.originPoint[0], this.originPoint[1]]);
-  private matrix_2 = matrix4.identity().translate({ x: this.transformPoint[0], y: this.transformPoint[1] });
+  private matrix1 = matrix4.identity().translate({ x: 150, y: -50 });
+  private transformPoint = this.matrix1.transformPoint([this.originPoint[0], this.originPoint[1]]);
+  private matrix2 = matrix4.identity().translate({ x: this.transformPoint[0], y: this.transformPoint[1] });
 
   build() {
     Column() {
@@ -566,7 +583,7 @@ struct Test {
         .width('600px')
         .height('300px')
         .margin({ top: 50 })
-        .transform(this.matrix_2)
+        .transform(this.matrix2)
     }.width('100%').padding(50)
   }
 }
@@ -599,7 +616,8 @@ Maps the vertex coordinates of a polygon to those of another polygon. This API i
 | [Matrix4Transit](#matrix4transit) | Matrix object after the mapping.|
 
 > **NOTE**
-> This API must be used with **scale({centerX:0,centerY:0,x:1})** to ensure that the transformation is centered in the upper left corner of the component.
+>
+> This API must be used with the component's **scale({centerX:0,centerY:0,x:1})** API to set the transformation center to the upper left corner of the component. By default, the transformation center is the center of the component. If this API is not used together with **scale()**, the mapping effect of **setPolyToPoly** will be based on the center of the component, which may cause the transformation result to be different from what is expected. Here, **scale()** should be called on the component (for example, **Image.scale()**) and used together with **transform()**, rather than being a transformation method of the matrix object.
 
 **Example**
 
@@ -642,9 +660,9 @@ Describes the translation parameters.
 
 | Name| Type  | Read-Only| Optional| Description                                                       |
 | ---- | ------ | ---- | ---------- | ------------------------------------------------- |
-| x    | number | No| Yes  | Translation distance along the x-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
-| y    | number | No| Yes  | Translation distance along the y-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
-| z    | number | No| Yes  | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞)|
+| x    | number | No | Yes   | Translation distance along the x-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞) |
+| y    | number | No | Yes   | Translation distance along the y-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞) |
+| z    | number | No | Yes   | Translation distance along the z-axis.<br>Unit: px<br>Default value: **0**<br>Value range: (-∞, +∞) |
 
 ## ScaleOption
 
@@ -656,11 +674,11 @@ Describes the scale parameters.
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---------- | -------------------------------------------------- |
-| x       | number | No| Yes | Scaling multiple along the x-axis. x > 1: The image is scaled up along the x-axis.<br>0 < x < 1: The image is scaled down along the x-axis.<br>x < 0: The image is scaled in the reverse direction along the x-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| y       | number | No| Yes | Scaling multiple along the y-axis. y > 1: The image is scaled up along the y-axis.<br>0 < y < 1: The image is scaled down along the y-axis.<br>y < 0: The image is scaled in the reverse direction along the y-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| z       | number | No| Yes | Scaling multiple along the z-axis. z > 1: The image is scaled up along the z-axis.<br>0 < z < 1: The image is scaled down along the z-axis.<br>z < 0: The image is scaled in the reverse direction along the z-axis.<br>Default value: **1**<br>Value range: (-∞, +∞)|
-| centerX | number | No| Yes | X-coordinate of the center point.<br>Unit: px<br>Default value: X-coordinate of the component center<br>Value range: (-∞, +∞)   |
-| centerY | number | No| Yes | Y-coordinate of the center point.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)   |
+| x       | number | No | Yes  | Scaling multiple along the x-axis. x = 1: No scaling is applied, and the original size is retained.<br>x > 1: The image is scaled up along the x-axis.<br>0 < x < 1: The image is scaled down along the x-axis.<br>x < 0: The image is scaled in the reverse direction along the x-axis.<br>Default value: **1**<br>Value range: (-∞, +∞) |
+| y       | number | No | Yes  | Scaling multiple along the y-axis. y > 1: The image is scaled up along the y-axis.<br>0 < y < 1: The image is scaled down along the y-axis.<br>y < 0: The image is scaled in the reverse direction along the y-axis.<br>Default value: **1**<br>Value range: (-∞, +∞) |
+| z       | number | No | Yes  | Scaling multiple along the z-axis. z = 1: No scaling is applied, and the original size is retained.<br>z > 1: The image is scaled up along the z-axis.<br>0 < z < 1: The image is scaled down along the z-axis.<br>z < 0: The image is scaled in the reverse direction along the z-axis.<br>Default value: **1**<br>Value range: (-∞, +∞) |
+| centerX | number | No | Yes  | X-coordinate of the transformation center.<br>Unit: px<br>Default value: X-coordinate of the component center<br>Value range: (-∞, +∞)    |
+| centerY | number | No | Yes  | Y-coordinate of the transformation center.<br>Unit: px<br>Default value: Y-coordinate of the component center<br>Value range: (-∞, +∞)    |
 
 ## RotateOption
 
@@ -672,12 +690,12 @@ Describes the rotation parameters.
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---------- | -------------------------------------------------- |
-| x       | number | No | Yes   | X-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the x direction. Pass this parameter when rotating around an axis with an x component. If not passed, the x component of the rotation axis defaults to **0**.<br/>Default value: **0**<br/>Value range: (-∞, +∞) |
-| y       | number | No | Yes  | Y-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the y direction. Pass this parameter when rotating around an axis with a y component. If not passed, the y component of the rotation axis defaults to **0**.<br/>Default value: **0**<br/>Value range: (-∞, +∞) |
-| z       | number | No| Yes | Z-coordinate of the rotation axis vector.<br>Default value: **0**<br>Value range: (-∞, +∞)<br>**NOTE**<br>The rotation axis vector is valid only when at least one of **x**, **y**, and **z** is not 0.|
-| angle   | number | No | Yes  | Rotation angle, which is used to set the rotation amount of the component around the rotation axis. Pass this parameter when the component needs to be rotated. If not passed, the component is not rotated.<br/>Default value: **0** |
-| centerX | number | No | Yes  | Additional x-axis offset of the center point of a single matrix transformation operation relative to the component transform center point (anchor point).<br/>Unit: px<br/>Default value: **0**<br/>**Note:** <br/>When the value is **0**, the matrix transformation center in the x direction is exactly the component anchor point in the x direction. The value indicates the additional offset relative to the component anchor point in the x direction. For details about implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point). |
-| centerY | number | No| Yes | Additional y-axis offset of the center point of a single matrix transformation operation relative to the component transform center point (anchor point).<br>Unit: px<br>Default value: **0**<br>**NOTE**<br>When the value is **0**, the matrix transformation center in the y direction is exactly the component anchor point in the y direction. The value indicates the additional offset relative to the component anchor point in the y direction. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point).|
+| x       | number | No | Yes  | X-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the x direction. Pass this parameter when rotating around an axis with an x component. If not passed, the x component of the rotation axis defaults to **0**.<br>**Note:** The rotation vector is meaningful only when at least one of x, y, and z is not 0.<br>Default value: **0**<br>Value range: (-∞, +∞) |
+| y       | number | No | Yes  | Y-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the y direction. Pass this parameter when rotating around an axis with a y component. If not passed, the y component of the rotation axis defaults to **0**.<br>**Note:** The rotation vector is meaningful only when at least one of x, y, and z is not 0.<br>Default value: **0**<br>Value range: (-∞, +∞) |
+| z       | number | No | Yes  | Z-coordinate of the rotation axis vector, which specifies the component of the rotation axis in the z direction. Pass this parameter when rotating around an axis with a z component. If not passed, the z component of the rotation axis defaults to **0**.<br>Default value: **0**<br>Value range: (-∞, +∞).<br>**Note:** The rotation vector is meaningful only when at least one of x, y, and z is not 0; otherwise, no rotation effect is produced. |
+| angle   | number | No | Yes  | Rotation angle, which is used to set the rotation amount of the component around the rotation axis. Pass this parameter when the component needs to be rotated. If not passed, the component is not rotated.<br>Unit: degree (°)<br>Default value: **0** |
+| centerX | number | No | Yes  | Additional x-axis offset of the center point of a single matrix transformation operation relative to the component transform center point (anchor point).<br>Unit: px<br>Default value: **0**<br>**Note**<br>When the value is **0**, the matrix transformation center in the x direction is exactly the component anchor point in the x direction. The value indicates the additional offset relative to the component anchor point in the x direction. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point). |
+| centerY | number | No | Yes  | Additional y-axis offset of the center point of a single matrix transformation operation relative to the component transform center point (anchor point).<br>Unit: px<br>Default value: **0**<br>**Note**<br>When the value is **0**, the matrix transformation center in the y direction is exactly the component anchor point in the y direction. The value indicates the additional offset relative to the component anchor point in the y direction. For details about the implementation, see [Example 3: Implementing Rotation Around a Center Point](arkui-ts/ts-universal-attributes-transformation.md#example-3-implementing-rotation-around-a-center-point). |
 
 ## PolyToPolyOptions<sup>12+</sup>
 
@@ -692,10 +710,10 @@ Describes the configuration options for polygon-to-polygon transformation mappin
 | Name| Type  | Read-Only| Optional| Description                                                       |
 | ---- | ------ | ---- | ---- | ----------------------------------------------------------- |
 | src    |  Array<[Point](#point12)> | No   | No   | Vertex coordinates of the source polygon, used to define the start shape of the transformation mapping. |
-| srcIndex    | number | No   | Yes   | Start index of the source point coordinates, used to specify the position in the **src** array from which point obtaining starts. This parameter is passed when the source point needs to be obtained from a specific position in the **src** array. If not passed, the point is obtained from index 0.<br/>Default value: 0<br/>Value range: [0, +∞) |
+| srcIndex    | number | No   | Yes   | Start index of the source point coordinates, used to specify the position in the **src** array from which point obtaining starts. This parameter is passed when the source point needs to be obtained from a specific position in the **src** array. If not passed, the point is obtained from index 0.<br>Default value: **0**<br>Value range: [0, +∞) |
 | dst    |  Array<[Point](#point12)>  | No   | No   | Vertex coordinates of the target polygon, used to define the target shape of the transformation mapping. |
-| dstIndex    | number | No  | Yes  |  Start index of the destination point coordinates.<br>Default value: **src.length/2**.<br> Value range: [0, +∞).|
-| pointCount    | number | No  | Yes  | Number of used points. **0**: returns an identity matrix. **1**: returns a translation matrix before the two points change. 2-4: returns a transformation matrix.<br>Default value: **0**.<br> Value range: [0, +∞).|
+| dstIndex    | number | No   | Yes   | Start index of the destination point coordinates, used to specify the position in the **dst** array from which destination point obtaining starts.<br>Default value: **src.length/2**<br>Value range: [0, +∞) |
+| pointCount    | number | No   | Yes   | Number of used points. Prerequisite: The number of points in the **src** and **dst** arrays must be no less than the value of **pointCount**. If the number of used points is 0, the identity matrix is returned. If the number is 1, one source point and one destination point are used, and a translation matrix that translates the source point to the destination point is returned. If the number is 2, an affine transformation matrix (including rotation, scaling, and translation) is returned. If the number is 3, an affine transformation matrix (including rotation, scaling, translation, and shearing) is returned. If the number is 4, a perspective transformation matrix is returned. The value does not take effect when it is out of range.<br>Default value: **0**<br>Value range: [0, +∞) |
 
 ## Point<sup>12+</sup>
 
@@ -709,18 +727,20 @@ Defines the data structure of a coordinate point.
 
 | Name| Type  | Read-Only| Optional| Description                                                       |
 | ---- | ------ | ---- | -------- | --------------------------------------------------- |
-| x    |  number | No | No   | X-axis coordinate.<br/>Unit: px<br/>Value range: (-∞, +∞) |
-| y    | number | No | No   | Y-axis coordinate.<br/>Unit: px<br/>Value range: (-∞, +∞) |
+| x    |  number | No | No   | X-axis coordinate.<br>Unit: px<br>Value range: (-∞, +∞) |
+| y    | number | No | No   | Y-axis coordinate.<br>Unit: px<br>Value range: (-∞, +∞) |
 
 ## matrix4.copy<sup>(deprecated)</sup>
 
 copy(): Matrix4Transit
+
 
 Copies this matrix object.
 
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.copy](#copy) instead.
+
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -736,12 +756,13 @@ Copies this matrix object.
 // xxx.ets
 import { matrix4 } from '@kit.ArkUI';
 
+let matrix1 = matrix4.identity().translate({ x: 100 });
+// Perform a scale operation on the copy of matrix1 without affecting matrix1.
+let matrix2 = matrix1.copy().scale({ x: 2 });
+
 @Entry
 @Component
 struct Test {
-  private matrix1 = matrix4.identity().translate({ x: 100 });
-  // Perform the scale operation on the copy matrix of matrix1, which does not affect matrix1.
-  private matrix2 = this.matrix1.copy().scale({ x: 2 });
 
   build() {
     Column() {
@@ -749,13 +770,13 @@ struct Test {
       Image($r("app.media.bg1"))
         .width('40%')
         .height(100)
-        .transform(this.matrix1)
+        .transform(matrix1)
       // Replace $r("app.media.bg2") with the image resource file you use.
       Image($r("app.media.bg2"))
         .width("40%")
         .height(100)
         .margin({ top: 50 })
-        .transform(this.matrix2)
+        .transform(matrix2)
     }
   }
 }
@@ -767,7 +788,7 @@ struct Test {
 
 invert(): Matrix4Transit
 
-Inverts this matrix object.
+Inverts this matrix object. The matrix that calls this API will be changed.
 
 > **NOTE**
 >
@@ -785,7 +806,11 @@ Inverts this matrix object.
 
 combine(options: Matrix4Transit): Matrix4Transit
 
-Combines the effects of two matrices to generate a new matrix object.
+Combines the effects of two matrices to generate a new matrix object. The matrix that calls this API will be changed.
+
+> **NOTE**
+>
+> The transformation results of **matrixA.combine(matrixB)** and **matrixB.combine(matrixA)** are different. The call order of **combine()** determines the order in which the transformations are combined. For example, translating first and then scaling produces a different transformation effect from scaling first and then translating. Select the correct call order based on the expected transformation effect. To keep the original matrix unchanged, call **copy()** before calling **combine()**, for example, **matrixA.copy().combine(matrixB)**.
 
 > **NOTE**
 >
@@ -809,7 +834,7 @@ Combines the effects of two matrices to generate a new matrix object.
 
 translate(options: TranslateOption): Matrix4Transit
 
-Translates this matrix object along the x, y, and z axes.
+Translates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed.
 
 > **NOTE**
 >
@@ -833,7 +858,7 @@ Translates this matrix object along the x, y, and z axes.
 
 scale(options: ScaleOption): Matrix4Transit
 
-Scales this matrix object along the x, y, and z axes.
+Scales this matrix object along the x, y, and z axes. The matrix that calls this API will be changed.
 
 > **NOTE**
 >
@@ -857,7 +882,7 @@ Scales this matrix object along the x, y, and z axes.
 
 rotate(options: RotateOption): Matrix4Transit
 
-Rotates this matrix object along the x, y, and z axes.
+Rotates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed.
 
 > **NOTE**
 >

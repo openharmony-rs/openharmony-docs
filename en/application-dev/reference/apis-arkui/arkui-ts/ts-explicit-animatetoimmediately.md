@@ -1,30 +1,33 @@
 # Immediate Delivery of Explicit Animation (animateToImmediately)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-28T01:27:10.443Z pushedAt=2026-08-31T08:28:35.685Z -->
 
-The **animateToImmediately** API implements immediate delivery for [explicit animations](ts-explicit-animation.md). When multiple property animations are loaded at once, you can call this API to immediately execute the transition animation for state changes caused by the specified closure function.
+The **animateToImmediately** API implements immediate delivery for [explicit animations](ts-explicit-animation.md). Typical application scenarios include prioritizing key transition effects during page switching and refreshing the visible UI in advance while the main thread is occupied by time-consuming operations. When multiple property animations are loaded at once, you can call this API to immediately execute the transition effects caused by state changes in the closure code.
 
-Unlike [animateTo](../arkts-apis-uicontext-uicontext.md#animateto), which waits for the VSync signal, **animateToImmediately** instantly sends animation commands to the rendering layer for execution. This is particularly useful in scenarios where you need to prioritize certain animations or update part of the UI in advance, especially when your application's main thread is occupied with time-consuming operations. Note that **animateToImmediately** is limited to property animations on the rendering layer, and cannot be used for frame-by-frame animations on the UI side.
+Unlike [animateTo](../arkts-apis-uicontext-uicontext.md#animateto), which waits for the VSync signal before delivering animation commands, **animateToImmediately** instantly sends the generated animation commands to the rendering layer for execution without waiting for the VSync signal, thereby prioritizing the presentation of the animation properties involved in the closure. When the main thread of an app is occupied by time-consuming operations and the UI involved in the closure needs to be updated in advance, this API can effectively reduce the app's response latency. Note that **animateToImmediately** only supports the early execution of property animations on the rendering layer and cannot be used for frame-by-frame animations on the UI side.
 
-In addition, this API captures the current state at the time of the call and sends it alongside the newly generated animation to the rendering layer. This means that the rendering output will reflect the state at the time of the call. Ensure that the state is complete when the API is called. Otherwise, rendering exceptions may occur in the first few frames.
+In addition, this API sends the UI state before the call to **animateToImmediately** together with the newly generated animation to the rendering layer. Therefore, the rendering result may be based on the UI state at the time of the call. Make sure that all property values involved in the animation are correctly set before the call; otherwise, rendering exceptions may occur in the first few frames of the animation.
 
-Therefore, you are advised to use [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) to prevent interference with the display timing of the framework and avoid potential display errors caused by incomplete state settings at the start of the animation.
+Therefore, you are advised to use [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) preferentially and use **animateToImmediately** only when the main thread of an app is occupied by time-consuming operations and part of the UI needs to be updated in advance, so as to prevent interference with the display timing of the framework and avoid display errors caused by incomplete state settings when the animation starts.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## APIs
 
 ## animateToImmediately
 
-animateToImmediately(value: AnimateParam , event: () => void): void
+animateToImmediately(value: AnimateParam, event: () => void): void
 
-Delivers an explicit animation immediately.
+Provides the immediate delivery of explicit animations. This API only supports the early execution of property animations on the rendering layer and cannot be used for frame-by-frame animations on the UI side. You are advised to use [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) preferentially to prevent interference with the display timing of the framework and avoid display errors caused by incomplete state settings when the animation starts. Make sure that all property values involved in the animation are correctly set before the call; otherwise, rendering exceptions may occur in the first few frames of the animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -34,12 +37,12 @@ Delivers an explicit animation immediately.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| value  | [AnimateParam](ts-explicit-animation.md#animateparam) | Yes      | Animation settings.                                      |
-| event  | () => void                                                   | Yes      | Closure function that displays the animation. The system automatically inserts a transition animation for state changes caused by the closure function.|
+| value  | [AnimateParam](ts-explicit-animation.md#animateparam) | Yes       | Parameters related to the animation effect. The animation parameters apply to the transition effect generated by state changes in the **event** closure function. For details about the value range and meaning of each attribute, see [AnimateParam](ts-explicit-animation.md#animateparam). The use of each **AnimateParam** attribute by the **animateToImmediately** API is the same as that by [animateTo](../arkts-apis-uicontext-uicontext.md#animateto), but only attribute animations on the rendering layer are supported, and it cannot be used for frame-by-frame animation on the UI side. |
+| event  | () => void                                                   | Yes       | Closure function of the explicit animation. The closure supports only state changes related to attribute animations on the rendering layer, and it cannot be used for frame-by-frame animation on the UI side. The system automatically inserts transition animations for the state changes caused in the closure function, and the animation effect is controlled by the **value** parameter. Ensure that all attribute values involved in the animation are correctly set before the call; otherwise, rendering exceptions may occur in the first few frames of the animation. |
 
 ## Example
 
-This example demonstrates how to use the [animateToImmediately](#animatetoimmediately) API to deliver an explicit animation immediately.
+This example demonstrates how to use [animateToImmediately](#animatetoimmediately) to implement the immediate delivery of explicit animations.
 
 ```ts
 // xxx.ets
@@ -61,6 +64,8 @@ struct AnimateToImmediatelyExample {
       Button('change size')
         .margin(30)
         .onClick(() => {
+          // Compare and demonstrate, through if/else branches, the difference in effect between the immediate delivery of animation by animateToImmediately and the delayed delivery of animation by animateTo.
+          // Demonstrate the flag switching scenario: when true, opacity is delivered immediately and size is delivered with delay; when false, size is delivered immediately and opacity is delivered with delay.
           if (this.flag) {
             animateToImmediately({
               delay: 0,

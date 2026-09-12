@@ -470,8 +470,8 @@ isJpegProgressive(): Promise\<boolean>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Bad source.|
-| 7600202      | Unsupported MIME type.|
+| 7700101    | Bad source.|
+| 7700102    | Unsupported MIME type.|
 
 **示例：**
 ```ts

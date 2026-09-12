@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=17e4b320c8985512791b8b37fea849963e9ff387 translatedAt=2026-09-04T02:51:25.897Z pushedAt=2026-09-09T09:11:03.648Z -->
 
 ## Overview
 
@@ -124,7 +125,7 @@ Creates an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.
 
 | Type                                            | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) | Returns a pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance if the operation is successful; returns **nullptr** otherwise. Use [OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam) to release the memory in time.|
+| [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) * | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance on success.<br>Otherwise, **nullptr** is returned. After use, the memory must be released through the [OH_Rdb_DestroyCryptoParam](capi-oh-rdb-crypto-param-h.md#oh_rdb_destroycryptoparam) API. |
 
 ### OH_Rdb_DestroyCryptoParam()
 
@@ -149,7 +150,7 @@ Destroys an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Crypto_SetEncryptionKey()
 
@@ -169,14 +170,14 @@ Sets the key data of an [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) ins
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.|
-| const uint8_t *key                                      | Pointer to the array data.                                    |
+| const uint8_t *key                                      | Pointer to the key data.                                     |
 | int32_t length                                          | Size of the key array.                                        |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Crypto_SetIteration()
 
@@ -202,7 +203,7 @@ Sets the number of iterations of the KDF algorithm used when opening an encrypte
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Crypto_SetEncryptionAlgo()
 
@@ -222,13 +223,13 @@ Sets the encryption algorithm used when opening an encrypted database.
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.|
-| int32_t algo                                            | Encryption algorithm.                                              |
+| int32_t algo                                            | Encryption algorithm. The value must be one of the enum values of [Rdb_EncryptionAlgo](#rdb_encryptionalgo). |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Crypto_SetHmacAlgo()
 
@@ -248,13 +249,13 @@ Sets the HMAC algorithm used when opening an encrypted database.
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.|
-| int32_t algo                                            | HMAC algorithm.                                              |
+| int32_t algo                                            | HMAC algorithm. The value must be one of the enum values of [Rdb_HmacAlgo](#rdb_hmacalgo). |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Crypto_SetKdfAlgo()
 
@@ -274,13 +275,13 @@ Sets the KDF algorithm used when opening an encrypted database.
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.|
-| int32_t algo                                            | KDF algorithm.                                               |
+| int32_t algo                                            | KDF algorithm. The value must be one of the enum values of [Rdb_KdfAlgo](#rdb_kdfalgo). |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### OH_Crypto_SetCryptoPageSize()
 
@@ -300,10 +301,11 @@ Sets the page size used when opening an encrypted database.
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) *param | Pointer to the [OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md) instance.|
-| int64_t size                                            | Page size, in bytes. The value must be a power of 2 and ranges from 1024 to 65536.|
+| int64_t size                                            | Page size, in bytes. The value must be a power of 2, with a minimum value of 1024 and a maximum value of 65536. |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the execution is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int  | Result code.<br>**RDB_OK** indicates success.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters. For detailed information, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+

@@ -1,13 +1,16 @@
 # native_fence.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=138b9da99fa1494d3d8b18ca10cbbcd2abcda6ea translatedAt=2026-08-24T09:11:22.331Z pushedAt=2026-08-31T11:47:32.051Z -->
+
 ## Overview
 
-This file declares the functions for obtaining and using **NativeFence**.
+Defines the functions for obtaining and using NativeFence. NativeFence is used for synchronization control in the graphics system. It supports operations such as checking fence validity, blocking and waiting for fence signals, and closing fences. It is applicable to scenarios where graphics resource access needs to be synchronized between multiple threads or processes.
 
 **Header file**: <native_fence/native_fence.h>
 
@@ -26,7 +29,7 @@ This file declares the functions for obtaining and using **NativeFence**.
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [bool OH_NativeFence_IsValid(int fenceFd)](#oh_nativefence_isvalid) | Checks whether **fenceFd** is valid.                                       |
-| [bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)](#oh_nativefence_wait) | Blocks the input **fenceFd**. The maximum blocking time is determined by the timeout parameter. The input **fenceFd** needs to be closed by yourself.|
+| [bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)](#oh_nativefence_wait) | Blocks the fenceFd passed in. The maximum blocking time is determined by the timeout parameter, in ms. The fenceFd passed in must be closed by the user. |
 | [bool OH_NativeFence_WaitForever(int fenceFd)](#oh_nativefence_waitforever) | Permanently blocks the input **fenceFd**. The input **fenceFd** needs to be closed by yourself.      |
 | [void OH_NativeFence_Close(int fenceFd)](#oh_nativefence_close) | Closes **fenceFd**.                                               |
 
@@ -44,12 +47,11 @@ Checks whether **fenceFd** is valid.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name     | Description                              |
 | ----------- | ---------------------------------- |
-| int fenceFd | File descriptor for periodic sync.|
+| int fenceFd | File descriptor used for synchronization control. |
 
 **Returns**
 
@@ -65,18 +67,16 @@ bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 
 **Description**
 
-Blocks the input **fenceFd**. The maximum blocking time is determined by the timeout parameter. The input **fenceFd** needs to be closed by yourself.
-
+Blocks the passed-in fenceFd. The maximum blocking time is determined by the timeout parameter, in ms. The passed-in fenceFd needs to be closed by the user.
 
 **Since**: 20
-
 
 **Parameters**
 
 | Name          | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| int fenceFd      | File descriptor for periodic sync.                          |
-| uint32_t timeout | Wait time. The unit is millisecond. The value **-1** indicates that the API waits permanently, and the value **0** indicates that the API returns a response immediately.|
+| int fenceFd      | File descriptor used for synchronization control. |
+| uint32_t timeout | Waiting time, in ms. A value greater than 0 indicates the specific waiting duration (applicable to scenarios where the waiting time needs to be limited; it is recommended to set a reasonable timeout value based on actual service requirements); 0 indicates that the API returns immediately (applicable to scenarios where only the fenceFd status is checked without blocking); to wait indefinitely, use [OH_NativeFence_WaitForever](#oh_nativefence_waitforever). |
 
 **Returns**
 
@@ -96,7 +96,6 @@ Permanently blocks the input **fenceFd**. The input **fenceFd** needs to be clos
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name     | Description                              |
@@ -107,7 +106,7 @@ Permanently blocks the input **fenceFd**. The input **fenceFd** needs to be clos
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| bool | Returns **true** if the corresponding **fenceFd** has a signal triggered.<br>Returns **false** in the following cases:<br>1. The input **fenceFd** is a negative integer.<br>2. No signal is triggered within the specified timeout period, and the API waits permanently.<br>3. The file descriptor fails to be copied in the API.|
+| bool | true indicates that the corresponding fenceFd is signaled;<br>false is returned in the following cases:<br>1. The passed-in fenceFd is a negative integer.<br>2. No signal is triggered, and the wait is permanent.<br>3. The API fails to copy the file descriptor. |
 
 ### OH_NativeFence_Close()
 
@@ -120,7 +119,6 @@ void OH_NativeFence_Close(int fenceFd)
 Closes **fenceFd**.
 
 **Since**: 20
-
 
 **Parameters**
 

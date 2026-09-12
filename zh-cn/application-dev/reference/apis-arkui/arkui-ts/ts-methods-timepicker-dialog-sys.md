@@ -20,6 +20,8 @@
 
 时间选择器弹窗选项。
 
+继承自[TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions对象说明)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |

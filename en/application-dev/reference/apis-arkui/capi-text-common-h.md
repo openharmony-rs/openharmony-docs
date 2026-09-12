@@ -1,12 +1,11 @@
 # text_common.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-10T03:42:33.263Z pushedAt=2026-08-11T02:19:20.333Z -->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-08-29T09:16:03.004Z pushedAt=2026-08-31T01:27:22.713Z -->
 
 ## Overview
 
@@ -43,7 +42,7 @@ Defines common text enumerations and APIs, covering text alignment, decoration l
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_TextAlignment](#arkui_textalignment) | ArkUI_TextAlignment | Enumerates text horizontal alignment styles.|
+| [ArkUI_TextAlignment](#arkui_textalignment) | ArkUI_TextAlignment | Enumerates text horizontal alignment styles. |
 | [ArkUI_TextVerticalAlignment](#arkui_textverticalalignment) | ArkUI_TextVerticalAlignment | Enumerates text vertical alignment styles.|
 | [ArkUI_TextContentAlign](#arkui_textcontentalign) | ArkUI_TextContentAlign | Enumerates vertical alignment styles in the text content area.|
 | [ArkUI_TextDirection](#arkui_textdirection) | ArkUI_TextDirection | Enumerates text layout directions.|
@@ -432,6 +431,7 @@ Enumerates the response types of a custom text selection menu.
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.|
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when the operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button.|
 
+
 ## Function Description
 
 ### ArkUI_TextCreateMenuCallback()
@@ -791,6 +791,7 @@ Deletes the character before the cursor in editing state; deletes the last chara
 | -- | -- |
 | [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)* controller | Pointer to the text content base controller object. It must be created through **OH_ArkUI_TextContentBaseController_Create()** before use. |
 
+
 ### OH_ArkUI_TextContentBaseController_ScrollToVisible()
 
 ```c
@@ -846,3 +847,5 @@ Destroys the decoration style object created by [OH_ArkUI_DecorationStyleOptions
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | Pointer to the option object to be destroyed.|
+
+

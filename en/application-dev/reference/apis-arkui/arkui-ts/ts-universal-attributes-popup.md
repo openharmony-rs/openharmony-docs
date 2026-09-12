@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=21fb9e079b1023fcdd94644c9006a9dfa64d9f96 translatedAt=2026-09-02T11:57:24.485Z -->
 
 Binds a popup to a component and sets the popup content, interaction logic, and display status.
 
@@ -780,7 +781,9 @@ struct PopupExample {
 
 ### Example 9: Setting the System Material Effect of a Popup
 
-This example demonstrates how to implement the system material effect of a popup by setting the **systemMaterial** attribute in [PopupOptions](#popupoptions).
+This example implements the immersive light-sensing visual effect of a popup by using the **systemMaterial** attribute in [PopupOptions](#popupoptions) to set the system material of the component.
+
+The immersive light-sensing effect of the component is automatically adjusted based on the device computing power and the immersive light-sensing effect set by the user in the system, so developers do not need to perform additional adaptation.
 
 The **systemMaterial** attribute is added to **PopupOptions** as of API version 26.0.0.
 
@@ -809,7 +812,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
-          // Control whether to set the system material.
+          // Control whether to set the system material interface.
           systemMaterial: new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THIN
           })
@@ -824,11 +827,11 @@ struct PopupExample {
 ```
 Menu without system material
 
-![](figures/popupWithoutNewMaterial.png)
+![](figures/popupWithoutNewMaterial.gif)
 
 Menu with system material
 
-![](figures/popupNewMaterial.png)
+![](figures/popupNewMaterial.gif)
 
 ### Example 10: Customizing the Background Effect of a Popup
 

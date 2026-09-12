@@ -40,7 +40,7 @@ fetch(options:{
 
 通过网络获取数据。
 
-**系统能力：** SystemCapability.Communication.NetStack 
+**系统能力**：SystemCapability.Communication.NetStack 
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -65,7 +65,7 @@ fetch(options:{
 
 ## FetchResponse<sup>3+</sup>
 
-**系统能力：** SystemCapability.Communication.NetStack 
+**系统能力**：SystemCapability.Communication.NetStack 
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -93,7 +93,7 @@ fetch.fetch({
     console.info(JSON.stringify(response));
   },
   fail: (data: Object, code) => {
-    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: =' + code);
+    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: ' + code);
   }
 });
 ```

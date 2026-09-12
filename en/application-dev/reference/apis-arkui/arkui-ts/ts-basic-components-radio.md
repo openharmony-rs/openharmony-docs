@@ -5,14 +5,17 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0f4c8eaf8a84b06aa836773a61b889cfa832cf61 translatedAt=2026-09-03T11:50:39.714Z -->
 
-The **Radio** component allows users to select from a set of mutually exclusive options.
+A radio button that provides a single-selection user interaction option.
 
 >  **NOTE**
 >
->  Since API version 12, the default indicator type for the **Radio** component changes from **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
+> - Since API version 12, the default selected style of **Radio** changes from **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Newly added content in later versions is marked with a superscript to indicate the initial version of the content.
+>
+> - This component has a default [margin](ts-universal-attributes-size.md#margin), with the default value of {&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&nbsp;left: '14px' }.
 
 
 ## Child Components
@@ -47,9 +50,9 @@ Radio button information.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | value | string | No| No| Current value of the radio button.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| group | string | No| No| Name of the group to which the radio button belongs. Only one radio button in a given group can be selected at a time.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12) | No| Yes| Indicator type of the radio button. If no value is specified, the value of **RadioIndicatorType.TICK** is used.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Custom component to indicate that the radio button is selected. This custom component is center aligned with the radio button. If this parameter is set to **undefined**, the value of **RadioIndicatorType.TICK** is used as the indicator type.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| group | string | No | No | Name of the group to which the current radio button belongs. Only one radio button in the same group can be selected. The group scope is the page where the component is located.<br/>**Widget capability:** Since API version 9, this API is supported in ArkTS cards.<br/>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12) | No | Yes | Configures the selected style of the radio button. If not set, RadioIndicatorType.TICK is used for display.<br/>**Widget capability:** Since API version 12, this API is supported in ArkTS cards.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model constraint:** This API can be used only in the stage model. |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No | Yes | Configures the selected style of the radio button as a custom component. The custom component is displayed aligned with the center of the Radio component. If indicatorBuilder is set to undefined, RadioIndicatorType.TICK is used for display.<br/>**Widget capability:** Since API version 12, this API is supported in ArkTS cards.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model constraint:** This API can be used only in the stage model. |
 
 ## RadioIndicatorType<sup>12+</sup>
 
@@ -58,6 +61,8 @@ Radio button style.
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,13 +110,15 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the radio button is selected.<br>If **isChecked** is set to **undefined**, the default value **false** is used.<br>**true**: The radio button is selected. **false**: The radio button is not selected.|
+| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Selected state of the radio button.<br/>When the value of isChecked is undefined, the default value false is used.<br/>When the value is true, the radio button is selected. When the value is false, the radio button is not selected. |
 
 ### radioStyle<sup>10+</sup>
 
@@ -123,13 +130,15 @@ Since API version 10, this API is supported in ArkTS widgets.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                               | Mandatory| Description                              |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
-| value  | [RadioStyle](#radiostyle10) | No  | Style of the radio button in selected or deselected state.|
+| value  | [RadioStyle](#radiostyle10) | No   | Style of the radio button in the selected and unselected states. <br/> If this parameter is not set, the default value of each parameter in RadioStyle is used. |
 
 ### contentModifier<sup>12+</sup>
 
@@ -139,13 +148,15 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<RadioConfiguration>](#radioconfiguration12) | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | ContentModifier\<[RadioConfiguration](#radioconfiguration12)\> | Yes   | Method for customizing the content area on the Radio component.<br/>modifier: content modifier. Developers need to customize a class to implement the ContentModifier API. |
 
 ### contentModifier<sup>18+</sup>
 
@@ -155,13 +166,15 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier12)<
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12)> | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.<br>If **modifier** is set to **undefined**, no content modifier is used.|
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<ContentModifier\<[RadioConfiguration](#radioconfiguration12)\>\> | Yes | Method for customizing the content area on the Radio component.<br/>modifier: content modifier. Developers need to define a custom class to implement the ContentModifier API.<br/>When the value of modifier is undefined, the content modifier is not used. |
 
 ## Events
 
@@ -195,13 +208,15 @@ Triggered when the selected state of the radio button changes. Compared with [on
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |
+| Name   | Type                                                         | Mandatory | Description                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnRadioChangeCallback](#onradiochangecallback18)> | Yes  | Callback for radio button selection state changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRadioChangeCallback](#onradiochangecallback18)> | Yes   | Callback invoked when the selected state of the radio button changes.<br/>If the value of callback is undefined, the callback is not used. |
 
 ## OnRadioChangeCallback<sup>18+</sup>
 
@@ -211,19 +226,23 @@ Defines the callback type for radio button selected state changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type   | Mandatory| Description                                                        |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| isChecked | boolean | Yes  | Selected state of the radio button.<br>The value **true** means that the radio button changes from unselected to selected, and **false** means that the radio button changes from selected to unselected.|
+| isChecked | boolean | Yes | New selected state of the radio button after the state changes.<br/>The value `true` means that the radio button changes from unselected to selected, and `false` means that it changes from selected to unselected. |
 
 ## RadioStyle<sup>10+</sup>
 
-Radio button color.
+Style of the radio button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,18 +258,20 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type   | Read-Only| Optional |  Description             |
 | ------ | ------ |-------------------------------- |-------------------------------- |-------------------------------- |
 | value | string | No| No|Current value of the radio button.|
 | checked | boolean| No| No| Whether the radio button is selected.<br>Default value: **false**<br>**true**: The radio button is selected. **false**: The radio button is not selected.|
-| triggerChange |Callback\<boolean>|No|No|Changes the selected state of the radio button.<br>The value **true** means that the radio button changes from unselected to selected, and **false** means that the radio button changes from selected to unselected.|
+| triggerChange |Callback\<boolean>| No|No|Callback used to trigger the change of the selected state of the radio button.<br/>When called with **true**, the radio button is set to the selected state; when called with **false**, it is set to the unselected state. |
 
 
 ## Example
 ### Example 1: Setting the Background Color
-This example demonstrates how to set **checkedBackgroundColor** to customize the background color of a radio button.
+This example customizes the background color of the radio button by configuring checkedBackgroundColor.
 ```ts
 // xxx.ets
 @Entry
@@ -300,7 +321,7 @@ struct RadioExample {
 ```
 ![radio](figures/radio.gif)
 ### Example 2: Setting the Indicator Type
-This example shows how to customize the appearance of a radio button when it is selected by configuring **indicatorType** and **indicatorBuilder**.
+This example customizes the selected style by configuring indicatorType and indicatorBuilder.
 ```ts
 // xxx.ets
 @Entry
@@ -309,7 +330,7 @@ struct RadioExample {
   @Builder 
   indicatorBuilder() {
     // Replace $r('app.media.star') with the image resource file you use.
-    Image($r("app.media.star"))
+    Image($r('app.media.star'))
   }
   build() {
     Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -381,9 +402,9 @@ function buildRadio(config: RadioConfiguration) {
       .backgroundColor('#2787D9')
       .onClick(() => {
         if (config.checked) {
-          config.triggerChange(false);
+          config.triggerChange(false); // Trigger the radio button selected state change and set it to unselected.
         } else {
-          config.triggerChange(true);
+          config.triggerChange(true); // Trigger the radio button selected state change and set it to selected.
         }
       })
   }
@@ -391,7 +412,7 @@ function buildRadio(config: RadioConfiguration) {
 
 @Entry
 @Component
-struct refreshExample {
+struct RadioExample {
   build() {
     Column({ space: 50 }) {
       Row() {

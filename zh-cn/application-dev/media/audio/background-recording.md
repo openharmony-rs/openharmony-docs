@@ -24,7 +24,7 @@
 
 ## 开发步骤
 
-应用实现录音功能的具体内容请参考[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)或[使用AVRecorder录制音频(ArkTS)](../media/using-avrecorder-for-recording.md)。当应用需要退至后台持续录音时，还需要申请录音类型的[长时任务(ArkTS)](../../task-management/continuous-task.md)。
+应用实现录音功能的具体内容请参考[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)或[使用AVRecorder录制音频(ArkTS)](../media/using-avrecorder-for-recording.md)。当应用需要退至后台持续录音时，还需要申请录音类型的[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 1. 声明后台录音模式。
 
@@ -59,7 +59,7 @@
    当录音需要退至后台持续运行时，应用需要申请`AUDIO_RECORDING`类型长时任务，使系统识别该后台任务与录音业务匹配。
 
    <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
-   
+
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { backgroundTaskManager } from '@kit.BackgroundTasksKit'

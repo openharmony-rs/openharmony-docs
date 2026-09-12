@@ -24,7 +24,7 @@ import { ethernet } from '@kit.NetworkKit';
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration, callback: AsyncCallback\<void>): void
 
-设置网络接口配置信息，使用callback异步回调。
+设置网络接口配置信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -83,7 +83,7 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 
 setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 
-设置网络接口配置信息，使用Promise异步回调。
+设置网络接口配置信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -102,7 +102,7 @@ setIfaceConfig(iface: string, ic: InterfaceConfiguration): Promise\<void>
 
 | 类型                | 说明                                                        |
 | ------------------- | ----------------------------------------------------------- |
-| Promise\<void>       | 以Promise形式返回执行结果。成功无返回，失败返回对应错误码。 |
+| Promise\<void>       | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -147,7 +147,7 @@ setConfigPromise.then(() => {
 
 getIfaceConfig(iface: string, callback: AsyncCallback\<InterfaceConfiguration>): void
 
-获取指定网络接口信息，使用callback异步回调。
+获取指定网络接口信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -198,7 +198,7 @@ ethernet.getIfaceConfig("eth0", (error: BusinessError, value: ethernet.Interface
 
 getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
-获取指定网络接口信息，使用Promise异步回调。
+获取指定网络接口信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -216,7 +216,7 @@ getIfaceConfig(iface: string): Promise\<InterfaceConfiguration>
 
 | 类型                              | 说明                               |
 | --------------------------------- | ---------------------------------- |
-| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | 以Promise形式返回接口信息。        |
+| Promise\<[InterfaceConfiguration](#interfaceconfiguration)>   | Promise对象，返回接口信息。        |
 
 **错误码：**
 
@@ -252,7 +252,7 @@ ethernet.getIfaceConfig("eth0").then((data: ethernet.InterfaceConfiguration) => 
 
 isIfaceActive(iface: string, callback: AsyncCallback\<number>): void
 
-判断接口是否已激活，使用callback异步回调。
+判断接口是否已激活。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -265,7 +265,7 @@ isIfaceActive(iface: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                        | 必填 | 说明                                               |
 | -------- | --------------------------- | ---- | -------------------------------------------------- |
 | iface    | string                      | 是   | 接口名。为空时代表查询是否存在激活接口。             |
-| callback | AsyncCallback\<number>       | 是   | 回调函数。已激活：1，未激活：0，其他为获取失败错误码。 |
+| callback | AsyncCallback\<number>       | 是   | 回调函数。 <br>- 1：已激活<br>- 0：未激活<br>- 其他值:表示获取失败的错误码。 |
 
 **错误码：**
 
@@ -298,7 +298,7 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 
 isIfaceActive(iface: string): Promise\<number>
 
-判断接口是否已激活，使用Promise异步回调。
+判断接口是否已激活。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -316,7 +316,7 @@ isIfaceActive(iface: string): Promise\<number>
 
 | 类型            | 说明                                                               |
 | ----------------| ------------------------------------------------------------------ |
-| Promise\<number> | 以Promise形式返回获取结果。已激活：1，未激活：0，其他为获取失败错误码。|
+| Promise\<number> | Promise对象，返回获取结果。已激活：1，未激活：0，其他为获取失败错误码。|
 
 **错误码：**
 
@@ -347,7 +347,7 @@ ethernet.isIfaceActive("eth0").then((data: number) => {
 
 getAllActiveIfaces(callback: AsyncCallback\<Array\<string>>): void
 
-获取活动的网络接口，使用callback异步回调。
+获取活动的网络接口。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -392,7 +392,7 @@ ethernet.getAllActiveIfaces((error: BusinessError, value: string[]) => {
 
 getAllActiveIfaces(): Promise\<Array\<string>>
 
-获取活动的网络接口，使用Promise异步回调。
+获取活动的网络接口。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -404,7 +404,7 @@ getAllActiveIfaces(): Promise\<Array\<string>>
 
 | 类型                           | 说明                                            |
 | ------------------------------ | ----------------------------------------------- |
-| Promise\<Array\<string>>         | 以Promise形式返回获取结果。返回值为对应接口名。 |
+| Promise\<Array\<string>>         | Promise对象，返回获取结果。返回值为对应接口名。 |
 
 **错误码：**
 
@@ -435,7 +435,7 @@ ethernet.getAllActiveIfaces().then((data: string[]) => {
 
 on(type: 'interfaceStateChange', callback: Callback\<InterfaceStateInfo>): void
 
-注册网卡热插拔事件，使用callback异步回调。
+注册网卡热插拔事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -448,7 +448,7 @@ on(type: 'interfaceStateChange', callback: Callback\<InterfaceStateInfo>): void
 | 参数名   | 类型                                    | 必填 | 说明       |
 | -------- | --------------------------------------- | ---- | ---------- |
 | type     | string                  | 是   | 订阅的事件类型，'interfaceStateChange'。 |
-| callback | AsyncCallback\<[InterfaceStateInfo](#interfacestateinfo11)> | 是   | 回调函数。返回以太网卡状态信息。 |
+| callback | Callback\<[InterfaceStateInfo](#interfacestateinfo11)> | 是   | 回调函数，返回以太网卡状态信息。 |
 
 **错误码：**
 
@@ -472,7 +472,7 @@ ethernet.on('interfaceStateChange', (data: object) => {
 
 off(type: 'interfaceStateChange', callback?: Callback\<InterfaceStateInfo\>): void
 
-注销网卡热插拔事件，使用callback异步回调。
+注销网卡热插拔事件。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -485,7 +485,7 @@ off(type: 'interfaceStateChange', callback?: Callback\<InterfaceStateInfo\>): vo
 | 参数名   | 类型                                    | 必填 | 说明       |
 | -------- | --------------------------------------- | ---- | ---------- |
 | type     | string                  | 是   | 订阅的事件类型，'interfaceStateChange'。 |
-| callback | AsyncCallback\<[InterfaceStateInfo](#interfacestateinfo11)> | 否   | 回调函数。返回以太网卡状态信息。 |
+| callback | Callback\<[InterfaceStateInfo](#interfacestateinfo11)> | 否   | 回调函数，返回以太网卡状态信息。 |
 
 **错误码：**
 
@@ -508,7 +508,7 @@ ethernet.off('interfaceStateChange');
 
 getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
-获取本机以太网卡的设备信息（如供应商名称、产品名称、最大连接速率等）使用Promise异步回调。
+获取本机以太网卡的设备信息（如供应商名称、产品名称、最大连接速率等）。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

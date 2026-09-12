@@ -260,7 +260,7 @@ struct CanvasComponentTextBorder {
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          // 文本的水平对齐方式为'top'
+          // 文本的垂直基线对齐方式为'top'
           this.context.textBaseline = 'top';
           // 文本字号为30px，字体系列为monospace
           this.context.font = '30px monospace';
@@ -815,7 +815,7 @@ struct CursorMoving {
     this.canvasContext.strokeStyle = this.isTouchDown ? '#ff1a5cae' : '#ff9ba59b';
     this.canvasContext.fillStyle = this.isTouchDown ? '#ff1a5cae' : '#ff9ba59b';
     this.canvasContext.arc(this.cursorPosition.x + this.cursorPosition.width / 2,
-      this.cursorPosition.y + this.cursorPosition.width / 2, this.arcRadius, 0, 2 * Math.PI);
+      this.cursorPosition.y + this.cursorPosition.height / 2, this.arcRadius, 0, 2 * Math.PI);
     this.canvasContext.fill();
     this.canvasContext.stroke();
 

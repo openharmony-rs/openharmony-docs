@@ -6,6 +6,7 @@
 <!--Designer: @ccllee1-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3ecfd1cf7466bc372980fbb3c6c86641e91b524e translatedAt=2026-09-03T10:35:33.722Z pushedAt=2026-09-05T10:47:30.448Z -->
 
 UIAbility is an application component that has the UI. It inherits from [Ability](js-apis-app-ability-ability.md) and provides [lifecycle](#uiability-lifecycle-states) callbacks such as component creation, destruction, and foreground/background switching. It also provides the [background communication capability](#background-communication-capability).
 
@@ -114,7 +115,7 @@ Called when a [WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) inst
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | Yes| WindowStage instance.|
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | Yes | WindowStage instance object. Developers can use this object to call loadContent() to load the application page, or register window event listeners to manage the window lifecycle and interactions. |
 
 **Example**
 
@@ -143,6 +144,8 @@ export default class MyUIAbility extends UIAbility {
 onWindowStageWillDestroy(windowStage: window.WindowStage): void
 
 Called when the WindowStage instance is about to be destroyed. You can cancel the listening of WindowStage events in this lifecycle.
+
+This callback is triggered only when the UIAbility exits normally. It is not triggered in abnormal exit scenarios, for example, when the process is terminated due to low memory.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -422,7 +425,7 @@ export default class MyUIAbility extends UIAbility {
       "int_data": 100,
       "str_data": "strValue",
     };
-    // Record the application fault information.
+    // Write the tracing application fault information.
     hiAppEvent.write({
       domain: "test_domain",
       name: "test_event",
@@ -493,7 +496,7 @@ export default class MyUIAbility extends UIAbility {
   // ...
   onForeground(): void {
     let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate, in Hz.
       channels: audio.AudioChannel.CHANNEL_2, // Channel.
       sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
@@ -565,9 +568,9 @@ Called when a UIAbility is to be migrated across devices. You can save service d
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
   export default class MyUIAbility extends UIAbility {
-    onContinue(wantParams: Record<string, Object>) {
+    onContinue(wantParam: Record<string, Object>) {
       console.info('onContinue');
-      wantParams['myData'] = 'my1234567';
+      wantParam['myData'] = 'my1234567'; // Save the business data to be migrated.
       return AbilityConstant.OnContinueResult.AGREE;
     }
   }
@@ -589,6 +592,7 @@ Called when a UIAbility is to be migrated across devices. You can save service d
   
     async onContinue(wantParams: Record<string, Object>) {
       console.info('onContinue');
+      // Save the data to be migrated asynchronously.
       return this.setWant(wantParams).then(() => {
         return AbilityConstant.OnContinueResult.AGREE;
       });
@@ -700,7 +704,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyUIAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     console.info('onSaveState');
-    wantParam['myData'] = 'my1234567';
+    wantParam['myData'] = 'my1234567'; // Save the state data of the UIAbility for fault recovery.
     return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
   }
 }
@@ -735,7 +739,7 @@ This API must be used with [appRecovery](js-apis-app-ability-appRecovery.md). Wh
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
-  async onSaveStateAsync(reason: AbilityConstant.StateType,
+  async onSaveStateAsync(stateType: AbilityConstant.StateType,
     wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // Execute the operation after 1 second.
@@ -811,22 +815,22 @@ export default class EntryAbility extends UIAbility {
     // Define a pre-termination operation,
     // for example, starting another UIAbility and performing asynchronous termination based on the startup result.
     let want: Want = {
-      bundleName: "com.example.myapplication",
-      moduleName: "entry",
-      abilityName: "SecondAbility"
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'SecondAbility'
     }
     this.context.startAbilityForResult(want)
       .then((result) => {
         // Obtain the startup result and terminate the current UIAbility when resultCode in the return value is 0.
         console.info('startAbilityForResult success, resultCode is ' + result.resultCode);
-        if (result.resultCode === 0) {
-          this.context.terminateSelf();
+        if (result && result.resultCode === 0) {
+          this.context.terminateSelf(); // Close the current UIAbility.
         }
       }).catch((err: BusinessError) => {
       // Exception handling.
       console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
       this.context.terminateSelf();
-    })
+    });
 
     return true; // The pre-termination operation is defined. The value true means that the UIAbility termination process is canceled.
   }
@@ -1030,6 +1034,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       let msg = new MyMessageAble('msg', 'world'); // See the definition of Parcelable.
+      // Send a message to the Callee.
       caller.call(method, msg)
         .then(() => {
           console.info('Caller call() called');
@@ -1085,7 +1090,7 @@ import { window } from '@kit.ArkUI';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyMessageAble implements rpc.Parcelable {
+class MyMessageable implements rpc.Parcelable {
   name: string
   str: string
   num: number = 1
@@ -1122,11 +1127,12 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       caller = obj;
       let msg = new MyMessageAble('msg', 'world');
+      // Send a message to the Callee and obtain the return result.
       caller.callWithResult(method, msg)
         .then((data) => {
           console.info('Caller callWithResult() called');
           let retMsg = new MyMessageAble('msg', 'world');
-          data.readParcelable(retMsg);
+          data.readParcelable(retMsg); // Read the Parcelable data returned by the Callee.
         })
         .catch((callErr: BusinessError) => {
           console.error(`Caller.callWithResult catch error, error.code: ${callErr.code}, error.message: ${callErr.message}`);
@@ -1174,6 +1180,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       caller = obj;
       try {
+        // Release the connection between Caller and Callee.
         caller.release();
       } catch (releaseErr) {
         console.error(`Caller.release catch error, error.code: ${releaseErr.code}, error.message: ${releaseErr.message}`);
@@ -1224,6 +1231,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // Register the listener for disconnection from the Callee UIAbility.
         caller.onRelease((str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         });
@@ -1277,14 +1285,17 @@ export default class MainAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // Register the listener for cross-device component state changes in collaboration scenarios.
         caller.onRemoteStateChange((str) => {
           console.info('Remote state changed ' + str);
         });
       } catch (error) {
-        console.error(`Caller.onRemoteStateChange catch error, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
+        let code = (error as BusinessError).code;
+        let msg = (error as BusinessError).message; 
+        console.error(`Caller.onRemoteStateChange catch error, error.code: ${code}, error.message: ${msg}.`);
       }
     }).catch((err: BusinessError) => {
-      console.error(`Caller GetCaller error, error.code: ${JSON.stringify(err.code)}, error.message: ${JSON.stringify(err.message)}`);
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
 }
@@ -1331,6 +1342,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // Register the release event listener.
         caller.on('release', (str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         });
@@ -1383,11 +1395,12 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // Define the callback for the disconnect event.
         let onReleaseCallBack: OnReleaseCallback = (str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         };
-        caller.on('release', onReleaseCallBack);
-        caller.off('release', onReleaseCallBack);
+        caller.on('release', onReleaseCallBack); // Register the listener for the disconnect event.
+        caller.off('release', onReleaseCallBack); // Unregister the listener for the disconnect event.
       } catch (error) {
         console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
       }
@@ -1442,7 +1455,7 @@ export default class MainUIAbility extends UIAbility {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         };
         caller.on('release', onReleaseCallBack);
-        caller.off('release');
+        caller.off('release'); // Unregister all disconnection listeners.
       } catch (error) {
         console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
       }
@@ -1470,7 +1483,7 @@ Registers a caller notification callback, which is invoked when the target UIAbi
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | method | string | Yes| Method name agreed upon by the Caller UIAbility and Callee UIAbility, used by the Callee UIAbility to identify the type of message.|
-| callback | [CalleeCallback](#calleecallback) | Yes| JS notification synchronization callback of the [rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9) type. The callback must return at least one empty [rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9) object. Otherwise, the function execution fails.|
+| callback | [CalleeCallback](#calleecallback) | Yes | A synchronous callback function used for JS notification, with an input parameter of the [rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9) type. The callback function must return at least one empty [rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9) data object;&nbsp;otherwise, it is considered a function execution error. |
 
 **Error codes**
 
@@ -1515,9 +1528,11 @@ class MyMessageAble implements rpc.Parcelable {
 
 let method = 'call_Function';
 
+// Define the message processing callback function on the Callee side.
 function funcCallBack(pdata: rpc.MessageSequence) {
   let msg = new MyMessageAble('test', '');
   pdata.readParcelable(msg);
+  // Return the processing result to the Caller.
   return new MyMessageAble('test1', 'Callee test');
 }
 
@@ -1525,6 +1540,7 @@ export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');
     try {
+      // Register a message listener. The callback is triggered when the Caller sends the specified method name.
       this.callee.on(method, funcCallBack);
     } catch (error) {
       console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
@@ -1568,6 +1584,7 @@ export default class MainUIAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info('Callee onCreate is called');
     try {
+      // Unregister the message listener.
       this.callee.off(method);
     } catch (error) {
       console.error(`Callee.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
@@ -1606,7 +1623,7 @@ Defines the callback that is invoked when the remote UIAbility state changes in 
 
 | Name| Type| Mandatory| Description|
 | --- | ----- | --- | -------- |
-| msg | string | Yes| Message used for disconnection.|
+| msg | string | Yes | Used to pass the component state change message. |
 
 ## CalleeCallback
 

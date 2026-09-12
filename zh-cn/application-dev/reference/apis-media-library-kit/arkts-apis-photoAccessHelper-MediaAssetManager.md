@@ -523,3 +523,91 @@ async function example(context: Context) {
   });
 }
 ```
+
+## requestCompositeAuxiliaryImageData
+
+static requestCompositeAuxiliaryImageData(context: Context, asset: PhotoAsset, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
+
+请求复合图中的辅助图的数据。
+
+AI增强会额外产生一张图片，该图片与原始图组成复合图。复合图中额外产生的图片默认用于显示，另一张原始图称为辅助图。
+
+**起始版本：** 26.1.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名            | 类型                                                                                                        | 必填 | 说明                      |
+|----------------|-----------------------------------------------------------------------------------------------------------| ---- | ------------------------- |
+| context        | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)                                                           | 是   | 传入Ability实例的上下文。 |
+| asset         | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                                                                | 是   | 待请求的资产。 |
+| dataHandler    | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;ArrayBuffer&gt; | 是   | 回调函数，ArrayBuffer包含复合图中的辅助图的完整数据。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise\<string> | Promise对象，返回请求ID，可用于[cancelRequest](#cancelrequest12)取消请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201      | Permission denied. The application does not have the required permission ohos.permission.READ_IMAGEVIDEO.         |
+| 202      | Called by non-system application.         |
+| 23800151      | Scene parameters validate failed, possible causes: 1. The asset is not a cloud-enhanced composite photo asset.        |
+| 23800301      | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. The database is corrupted;<br>2. The file system is abnormal;<br>3. The IPC request timed out.         |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+  onDataPrepared(data: ArrayBuffer) {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    console.info('Succeeded in preparing composite auxiliary image data');
+  }
+}
+
+async function example(context: Context) {
+  console.info('requestCompositeAuxiliaryImageData');
+  // 构造查询条件，获取媒体库中的复合图（云增强）照片资产。
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOptions: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  // 创建数据处理器，用于接收复合图中的辅助图的数据。
+  const handler = new MediaHandler();
+  let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+  phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in getting assets');
+    // 获取查询结果中的第一个资产。
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    try {
+      // 请求复合图中的辅助图的数据，返回的requestId可用于cancelRequest接口取消该请求。
+      let requestId: string = await photoAccessHelper.MediaAssetManager.requestCompositeAuxiliaryImageData(context, photoAsset, handler);
+      console.info('Succeeded in requesting composite auxiliary image data, requestId: ' + requestId);
+    } catch (err) {
+      console.error(`failed to requestCompositeAuxiliaryImageData, error code is ${err.code}, message is ${err.message}`);
+    }
+  });
+}
+```

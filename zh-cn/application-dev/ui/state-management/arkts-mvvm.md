@@ -119,7 +119,7 @@ struct StateIndex {
             .width(28)
             .height(28)
         }
-        // 请将$r('app.string.all_learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
+        // 请将$r('app.string.learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
         Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
           .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })

@@ -592,9 +592,9 @@ HAP包签名文件存在异常。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568320 签名文件不存在
 **错误信息**
@@ -611,16 +611,16 @@ HAP/HSP包没有签名。
 
 **处理步骤**
 
-请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
 
 > **说明：**
 >
 > 在工程级build-profile.json5文件下的products标签中，signingConfig字段为非必填字段，若该字段缺失，将导致签名失效。详情请参考[products](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619)标签下的字段说明。
 >
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 方法三. 如果安装APP时报这个错误码，需要在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)里配置[packOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215)的appWithSignedPkg属性为true，保证APP里的HAP/HSP有签名。
 
@@ -639,9 +639,9 @@ HAP包签名文件存在异常。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568323 签名摘要验证未通过
 **错误信息**
@@ -658,9 +658,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568324 签名完整性校验未通过
 **错误信息**
@@ -677,9 +677,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568326 签名公钥存在异常
 **错误信息**
@@ -696,9 +696,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568327 签名获取异常
 **错误信息**
@@ -715,9 +715,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568328 未找到配置文件区块
 **错误信息**
@@ -734,9 +734,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568330 初始化签名源失败
 **错误信息**
@@ -753,9 +753,9 @@ HAP包签名不正确。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 ### 9568257 签名文件Pkcs7校验失败
 
@@ -777,9 +777,9 @@ error: fail to verify pkcs7 file.
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 
 ### 9568344 解析配置文件失败
@@ -1141,7 +1141,7 @@ error: signature verification failed due to not trusted app source.
 
 <!--RP9-->
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--RP9End--><!--Del-->
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。<!--RP9End--><!--Del-->
 
 2. 如果使用的是手动签名，对于OpenHarmony应用，请参考[OpenHarmony应用手动签名](../security/hapsigntool-guidelines.md)，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
@@ -1388,8 +1388,8 @@ error: install sign info inconsistent.
 
 **可能原因**
 
-1. 设备上已安装的应用与新安装的应用中签名不一致或者多个包（HAP和HSP）之间的签名存在差异。若两个应用的签名[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)或<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->中至少有一项相同，则认为它们的签名一致。如果在DevEco Studio的“Edit Configurations”中勾选了“Keep Application Data”（即不卸载应用，直接覆盖安装），并且重新进行了签名，将导致该报错。
-2. 如果某个应用被卸载但是保留了数据，那么后面安装相同包名的应用时，需要校验其签名信息的一致性。如果两者签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->都不一致，则会导致该报错。
+1. 设备上已安装的应用与新安装的应用中签名不一致或者多个包（HAP和HSP）之间的签名存在差异。若两个应用的签名[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual#section1245916381106)或<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->中至少有一项相同，则认为它们的签名一致。如果在DevEco Studio的“Edit Configurations”中勾选了“Keep Application Data”（即不卸载应用，直接覆盖安装），并且重新进行了签名，将导致该报错。
+2. 如果某个应用被卸载但是保留了数据，那么后面安装相同包名的应用时，需要校验其签名信息的一致性。如果两者签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual#section1245916381106)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->都不一致，则会导致该报错。
 
 
 **处理步骤**
@@ -1520,7 +1520,7 @@ error: signature file path is invalid.
 
 **处理步骤**
 
-使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)重新签名后安装调试。
 
 ### 9568325 由于文件过大，签名验证失败
 **错误信息**
@@ -1537,7 +1537,7 @@ error: signature verification failed due to oversize file.
 
 **处理步骤**
 
-使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者重新申请签名证书，在[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)或者重新申请签名证书，在[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)重新签名后安装调试。
 
 ### 9568336 应用调试类型与已安装应用不一致
 **错误信息**
@@ -2778,7 +2778,7 @@ error: Encrypted bundle cannot be installed.
 
 **处理步骤**
 
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)重新签名后安装调试。
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)重新签名后安装调试。
 
 ### 9568417 签名校验失败
 **错误信息**
@@ -2797,7 +2797,7 @@ error: bundle cannot be installed because the appId is not same with preinstalle
 
 方法一：重新签名。
 
-通过重新签名，确保应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->至少有一项与预置应用保持一致。
+通过重新签名，确保应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual#section1245916381106)和<!--RP7-->应用[Profile签名文件](../security/app-provision-structure.md)中的app-identifier<!--RP7End-->至少有一项与预置应用保持一致。
 
 <!--RP11--><!--RP11End-->
 
@@ -2885,7 +2885,7 @@ error: Failed to install the HAP because the device is unauthorized, make sure t
 **处理步骤**
 
 <!--RP6-->
-重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+重新[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。
 <!--RP6End-->
 
 
@@ -3342,7 +3342,7 @@ error: install failed due to U1Enabled can not change.
 
 **处理步骤**
 
-方案一：重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
+方案一：重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)的使用ACL的签名配置指导进行配置，确保待安装应用与已安装应用配置一致。<br>
 方案二：先卸载设备上已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再尝试安装待安装应用。
 
 ### 9568442 U1Enable配置不一致
@@ -3360,7 +3360,7 @@ error: Install failed due to the U1Enabled is not same in all haps.
 
 **处理步骤**
 
-重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
+重新签名，签名过程中，请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)的支持ACL权限、或者[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)的使用ACL的签名配置指导进行配置，使多个HAP包签名信息中allowed-acls的U1Enabled信息一致。
 
 ### 9568445 一次仅支持安装一个APP包
 **错误信息**
@@ -3432,9 +3432,9 @@ APP包签名不正确或没有签名。
 
 **处理步骤**
 
-方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
+方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-auto)。在连接设备后，重新为应用进行签名。
 
-方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
+方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing-manual)。
 
 
 ### 9568449 二进制文件校验失败

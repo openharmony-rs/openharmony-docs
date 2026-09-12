@@ -61,13 +61,13 @@
 const custom = CustomEnvKey.create<string>();
 // 错误用法，编译报错
 class CustomEnvKey {
-  @CustomEnv(custom) customVarName: string = 'hello world'; 
+  @CustomEnv(custom) customVarName: string = 'hello world';
 }
 // 正确用法
 @Entry
 @Component
 struct Index {
-  @CustomEnv(custom) customVarName: string = 'hello world'; 
+  @CustomEnv(custom) customVarName: string = 'hello world';
 
   build() {
     Column() {
@@ -176,7 +176,7 @@ struct Child {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -293,8 +293,8 @@ struct DefaultChild {
 
   build() {
     Column() {
-     // 此时Text中的内容显示为: Child: default content 
-      Text(`Child: ${this.customMessage}`);
+      // 此时Text中的内容显示为: Child: default content
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -341,7 +341,7 @@ struct NearChild {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -388,7 +388,7 @@ struct UpdateChild {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -436,13 +436,13 @@ struct WatchChild {
 
   // Watch回调
   onParentValChanged() {
-    hilog.info(0x0000, 'testTag','@Watch message update');
+    hilog.info(0x0000, 'testTag', '@Watch message update');
   }
 
   build() {
     Column() {
       Text('parentVal is: ' + this.parentVal)
-        .fontSize(22);
+        .fontSize(22)
     }
     .height('100%')
     .width('100%')
@@ -464,8 +464,9 @@ struct WatchChild {
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportDeepWatchPage.ets) -->
 ```ts
 import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const customDeepWatch = CustomEnvKey.create<number[][]>()
+const customDeepWatch = CustomEnvKey.create<number[][]>();
 
 @Entry
 @Component
@@ -474,8 +475,8 @@ struct BuildIn_Watch {
 
   build() {
     Column() {
-      Button('ss').onClick(() => {
-        this.message[0][0]++
+      Button('change message').onClick(() => {
+        this.message[0][0]++;
       })
       WithEnv() {
         Child()
@@ -488,15 +489,15 @@ struct BuildIn_Watch {
 
 @Component
 struct Child {
-  @Watch('update') @CustomEnv(customDeepWatch) msg: number[][] = [[3, 4]]
+  @CustomEnv(customDeepWatch) @Watch('update') msg: number[][] = [[3, 4]];
 
   update() {
-    console.info(`TabContent message callback func ${this.msg}`)
+    hilog.info(0x0000, 'testTag', `DeepWatch message callback func ${this.msg}`);
   }
 
   build() {
     Column() {
-      Text(this.msg[0][0] + '')
+      Text(`message: ${this.msg[0][0]}`)
     }
   }
 }
@@ -504,7 +505,7 @@ struct Child {
 
 在上面的示例中：
 
-点击'ss'更改message的值，将会触发\@Watch装饰器的回调并输出对应日志。
+点击'change message'更改message的值，将会触发\@Watch装饰器的回调并输出对应日志。
 
 运行效果图如下。
 
@@ -889,7 +890,7 @@ struct SetSample {
 
 ### \@CustomEnv的V1/V2混用
 
-\@CustomEnv可以在\@Component和\@ComponentV2中使用，其遵循[V1V2混用的基本规则](./state-management/arkts-v1-v2-mixusage.md)。\@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能和[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰的class的规则。\@CustomEnv装饰的变量传递给V2时，遵循V2只有[\@Param](./state-management/arkts-new-param.md)可以接收外部变量的规则。
+\@CustomEnv可以在\@Component和\@ComponentV2中使用，其遵循[V1V2混用的基本规则](./state-management/arkts-v1-v2-mixusage.md)。\@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能接收[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰的class的规则。\@CustomEnv装饰的变量传递给V2时，遵循V2只有[\@Param](./state-management/arkts-new-param.md)可以接收外部变量的规则。
 
 
 
@@ -899,18 +900,18 @@ struct SetSample {
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvObservedV2MixV2ToV1Page.ets) -->
 ```ts
 @ObservedV2
-class CustomDefaultvalue {
+class CustomDefaultValue {
   @Trace public defaultVal: string = 'hello';
 }
 
 const customOne = CustomEnvKey.create<string>();
-const customTwo = CustomEnvKey.create<CustomDefaultvalue>();
+const customTwo = CustomEnvKey.create<CustomDefaultValue>();
 
 @Entry
 @ComponentV2
 struct PageTwo {
   @CustomEnv(customOne) defaultMessage: string = 'parent Value';
-  @CustomEnv(customTwo) defaultMessage1: CustomDefaultvalue = new CustomDefaultvalue();
+  @CustomEnv(customTwo) defaultMessage1: CustomDefaultValue = new CustomDefaultValue();
 
   build() {
     Column() {
@@ -926,7 +927,7 @@ struct PageTwo {
 @Component
 struct PageTwoChild {
   @Require @Prop message: string;
-  // @Prop customMessage: CustomValue; //  错误用法，V1状态变量装饰器装饰的类型不能是ObservedV2装饰的class。
+  // @Prop customMessage: CustomDefaultValue; //  错误用法，V1状态变量装饰器装饰的类型不能是ObservedV2装饰的class。
 
   build() {
     Column() {

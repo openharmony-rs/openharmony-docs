@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:18.955Z pushedAt=2026-06-12T08:24:27.880Z -->
+<!-- md-trans-meta sourceCommit=0b8116f3d07d6bc6355383279731c43671d374ff translatedAt=2026-09-01T01:21:27.905Z pushedAt=2026-09-03T08:37:43.257Z -->
 
 The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
@@ -203,7 +203,7 @@ Enumerates the key codes.
 | KEYCODE_STOP                     |  2616 | Stop key                        |
 | KEYCODE_AGAIN                    |  2617 | Again key                        |
 | KEYCODE_PROPS                    |  2618 | Props key                        |
-| KEYCODE_UNDO                     |  2619 | Undo key                        |
+| KEYCODE_UNDO                     |  2619 | Undo key                         |
 | KEYCODE_COPY                     |  2620 | Copy key                        |
 | KEYCODE_OPEN                     |  2621 | Open key                        |
 | KEYCODE_PASTE                    |  2622 | Paste key                        |

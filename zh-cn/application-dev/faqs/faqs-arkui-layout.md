@@ -4,7 +4,7 @@
 <!--Owner: @fenglinbailu; @yangcan18; @guozejun-->
 <!--Designer: @fenglinbailu; @yangcan18; @guozejun-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 使用position之后height不生效(API 9)
@@ -21,7 +21,7 @@
 
 ## List组件与其他组件并列使用时，若未设置List滚动方向上的尺寸，无法拖动到底部(API 9)
 
-给List加上layoutWeight属性，设置列表自适应占满剩余高度。原理：List属于可滚动容器组件，默认高度是占满全屏幕高度，当出现其他固定高度的组件占领了屏幕的部分高度时，需要开发人员显式的指定List组件占满剩余高度，而不是全屏幕高度。
+给List加上layoutWeight属性，设置列表自适应占满剩余高度。原理：List属于可滚动容器组件，默认高度是占满全屏幕高度，当出现其他固定高度的组件占领了屏幕的部分高度时，需要开发人员显式地指定List组件占满剩余高度，而不是全屏幕高度。
 
 
 ## Tabs组件在点击Tab项时是否支持禁止切换(API 9)
@@ -60,9 +60,9 @@
 
 **解决措施**
 
-1、如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Column下嵌套Text&Image组件，推荐前者；
+1. 如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Column下嵌套Text&Image组件，推荐前者；
 
-2、如果要进行编辑，可使用RichEditor控件。
+2. 如果要进行编辑，可使用RichEditor控件。
 
 **参考链接**
 

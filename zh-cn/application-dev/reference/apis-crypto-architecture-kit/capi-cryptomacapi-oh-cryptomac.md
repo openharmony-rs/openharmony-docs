@@ -13,7 +13,7 @@ typedef struct OH_CryptoMac OH_CryptoMac
 
 ## 概述
 
-定义MAC结构。
+MAC结构体，表示MAC上下文。
 
 **起始版本：** 20
 

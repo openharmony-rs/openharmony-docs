@@ -933,7 +933,7 @@ while (!iteratorResult.done) {
 // value: 4
 ```
 
-### ArrayListComparatorFn&lt;T&gt;<sup>23+</sup>
+## ArrayListComparatorFn&lt;T&gt;<sup>23+</sup>
 
 type ArrayListComparatorFn&lt;T&gt; = (firstValue: T, secondValue: T) => number
 

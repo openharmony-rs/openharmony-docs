@@ -1,12 +1,11 @@
 # @ohos.bundle.skillManager (skillManager Module)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:58:03.626Z pushedAt=2026-06-25T06:33:59.463Z -->
+<!-- md-trans-meta sourceCommit=e6364d607d18f1c61b2cfd4dc8932804ec0f18aa translatedAt=2026-09-03T12:32:00.495Z pushedAt=2026-09-05T10:47:30.938Z -->
 
 This module provides the capability to query skill information, supporting queries for an app's own skill information, the skill information of a specified app, and the skill information of all apps. When planning tasks, the AI agent framework can use this module to query the available skills of all apps on the device and select the appropriate skills to fulfill user requests. Through skill information queries, intelligent task scheduling and capability matching optimization can be achieved, improving the task execution efficiency of AI agents and reducing the complexity of skill integration for developers.
 
@@ -37,6 +36,7 @@ Enumerates the skill information flags, which indicate the content of the skill 
 | GET_SKILL_INFO_WITH_SRC_ENTRIES                            | 0x00000002   | Used to obtain skill information that includes srcEntries. |
 | GET_SKILL_INFO_WITH_PERMISSIONS                            | 0x00000004   | Used to obtain skill information that includes permissions. |
 | GET_SKILL_INFO_WITH_REQUEST_PERMISSIONS                     | 0x00000008   | Used to obtain skill information that includes requestPermissions. |
+
 
 ## skillManager.getSkillInfoForSelf
 
@@ -123,6 +123,15 @@ Obtains all skill information of the current app. This API uses a promise to ret
 | Type | Description |
 | ----------------------------------------------------------- | ------------------------------------- |
 | Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\> | Promise used to return an array of all skill information of the caller's app. |
+
+
+**Error codes**
+
+For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md).
+
+| ID | Error Message                              |
+| -------- | ------------------------------------- |
+| 17700101 | Bundle manager service is exception. Possible causes: 1. Failed to connect to the system service. 2. IPC data transmission failed. 3. Failed to obtain the object constructor. |
 
 **Example**
 
@@ -363,6 +372,7 @@ Skill configuration information, used to define the skill capabilities of an AI 
 | Type                                                         | Description           |
 | ------------------------------------------------------------ | --------------------- |
 | [_SkillInfo](js-apis-bundleManager-SkillInfo.md#skillinfo-1) | App skill information. |
+
 
 ## SkillType
 

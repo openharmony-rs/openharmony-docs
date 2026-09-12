@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityProviderCallbacksWithInstance
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyinhua-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityProviderCallbacksWithInstance {...} ArkUI_Acce
 
 ## 概述
 
-适配多实例场景第三方操作[provider](capi-arkui-accessibility-arkui-accessibilityprovider.md)回调函数结构定义，包含节点信息查询、焦点查找与清除、操作执行、光标位置获取等无障碍相关回调函数。该结构需由第三方平台实现，并通过[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册到系统侧，以支持第三方平台接入系统无障碍服务。
+适配多实例场景第三方操作[provider](capi-arkui-accessibility-arkui-accessibilityprovider.md)回调函数结构定义，包含节点信息查询、焦点查找与清除、操作执行、光标位置获取等无障碍相关回调函数。该结构需由第三方平台实现，并通过[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册到系统侧，以支持第三方平台接入系统无障碍服务。所有的回调函数执行线程为IPC线程，非UI线程。
 
 **起始版本：** 15
 

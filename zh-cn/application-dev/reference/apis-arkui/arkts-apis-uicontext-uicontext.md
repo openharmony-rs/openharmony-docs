@@ -3232,7 +3232,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -4158,7 +4158,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 ```ts
 // xxx.ets
-import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+import { CustomKeyboardContinueFeature } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -4243,7 +4243,7 @@ struct Index {
           placeholder: 'TextInput1 bind CustomKeyboardBuilder',
           controller: this.controller,
           text: this.inputValue
-        })// 绑定自定义键盘
+        }) // 绑定自定义键盘
           .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
           .margin(10)
           .border({ width: 1 })
@@ -4251,7 +4251,7 @@ struct Index {
           placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
           controller: this.controller2,
           text: this.inputValue2
-        })// 绑定自定义键盘
+        }) // 绑定自定义键盘
           .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
           .margin(10)
           .border({ width: 1 })

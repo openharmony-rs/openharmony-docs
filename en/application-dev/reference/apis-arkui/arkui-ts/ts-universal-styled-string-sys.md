@@ -5,14 +5,17 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-02T12:35:22.932Z -->
 
-Styled strings are string objects that facilitate the flexible use of text styles. They can be bound to the **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API in **TextController**, and to the **RichEditor** component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in **RichEditorStyledStringController**.
+A styled string is an object used to flexibly apply and manage text styles. It supports serialization storage of text styles, cross-process transfer, and custom style extension. This object can be bound to the **Text** component through [setStyledString](ts-basic-components-text.md#setstyledstring12) in TextController, or to the **RichEditor** component through [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) in RichEditorStyledStringController. It is suitable for scenarios where complex text styles need to be persisted in an application or shared across components.
 
 >  **NOTE**
 >
->  This component is supported since API version 13. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 13. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  This topic describes only system APIs provided by the module. For details about its public APIs, see [Styled String](ts-universal-styled-string.md).
+> - The APIs of this module can be used only in the stage model.
+>
+> - This page contains only the system APIs of this module. For details about other public APIs, see [Styled String](ts-universal-styled-string.md).
 
 ## StyledString
 
@@ -20,7 +23,7 @@ Styled strings are string objects that facilitate the flexible use of text style
 
 static marshalling(styledString: StyledString): ArrayBuffer
 
-Marshals a styled string.
+Marshals a styled string. This API is used when a styled string needs to be persisted or transferred across processes or components.
 
 **System API**: This is a system API.
 
@@ -30,13 +33,13 @@ Marshals a styled string.
 
 | Name| Type| Mandatory| Description|
 | ----- | ----- | ---- | ---- |
-| styledString | [StyledString](ts-universal-styled-string.md) | Yes | Styled string to marshal.|
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | Yes | Styled string object to serialize, including text content and style information. |
 
 **Return value**
 
 | Type             |Description      |
-| ------- | --------------------------------- | 
-| ArrayBuffer | Buffer information after marshalling.<br>**NOTE**<br>Currently, text and images are supported.|
+| ------- | --------------------------------- |
+| ArrayBuffer | Buffer information after serialization.<br>**Note:** <br>Currently, text and images are supported. |
 
 ### marshalling<sup>19+</sup>
 
@@ -44,6 +47,8 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 
 Marshals a styled string by defining a callback to marshal [StyledStringMarshallingValue](#styledstringmarshallingvalue19).
 
+Use this method when a styled string contains custom styles such as UserDataSpan and custom serialization logic is required. If no custom styles are included, use the basic marshalling method instead.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -52,20 +57,22 @@ Marshals a styled string by defining a callback to marshal [StyledStringMarshall
 
 | Name| Type| Mandatory| Description|
 | ----- | ----- | ---- | ---- |
-| styledString | [StyledString](ts-universal-styled-string.md) | Yes | Styled string to marshal.|
-| callback | [StyledStringMarshallCallback](#styledstringmarshallcallback19) | Yes| Callback defining how to marshal [StyledStringMarshallingValue](#styledstringmarshallingvalue19).|
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | Yes | Styled String object to be serialized, including text content and style information. |
+| callback | [StyledStringMarshallCallback](#styledstringmarshallcallback19) | Yes | Callback function used to serialize [StyledStringMarshallingValue](#styledstringmarshallingvalue19). Callback function signature: (marshallableVal: StyledStringMarshallingValue) => ArrayBuffer, where marshallableVal is the object to be serialized, and the return value is the serialized ArrayBuffer data. |
 
 **Return value**
 
 | Type             |Description      |
-| ------- | --------------------------------- | 
-| ArrayBuffer | Buffer information after marshalling.<br>**NOTE**<br>Currently, text and images are supported.|
+| ------- | --------------------------------- |
+| ArrayBuffer | Buffer information after serialization.<br>**Note:** <br>Currently, text and images are supported. |
 
 ### unmarshalling
 
 static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 
 Unmarshals a buffer to obtain a styled string.
+
+This API is used to restore a styled string from serialized data, for example, restoring a styled string after reading it from local storage or receiving data transferred across processes.
 
 **System API**: This is a system API.
 
@@ -81,7 +88,7 @@ Unmarshals a buffer to obtain a styled string.
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise used to return the result.|
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise object that returns the styled string on success and an error code on failure. For details about the error codes, see the error code section.<br>**Note:** <br>Currently, only text and images are supported. |
 
 **Error codes**
 
@@ -98,6 +105,8 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 
 Unmarshals a styled string by defining a callback to [StyledStringMarshallingValue](#styledstringmarshallingvalue19).
 
+Use this method when restoring a styled string that contains custom styles such as UserDataSpan from serialized data. To restore a styled string without custom styles, use the basic unmarshalling method instead.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -107,13 +116,13 @@ Unmarshals a styled string by defining a callback to [StyledStringMarshallingVal
 | Name| Type| Mandatory| Description|
 | ----- | ----- | ---- | ---- |
 | buffer | ArrayBuffer | Yes | Data marshaled from a styled string.|
-| callback | [StyledStringUnmarshallCallback](#styledstringunmarshallcallback19) | Yes| Callback defining how to marshal **ArrayBuffer**.|
+| callback | [StyledStringUnmarshallCallback](#styledstringunmarshallcallback19) | Yes | Callback used to deserialize the ArrayBuffer. Callback signature: (buf: ArrayBuffer) => StyledStringMarshallingValue, where buf is the serialized data and the return value is the StyledStringMarshallingValue object obtained after deserialization. |
 
 **Return value**
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md)> |Promise used to return the result.|
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise object, which returns the styled string on success and an error code on failure. For details about the error codes, see the error code section.<br>**Note:** <br>Currently, text and images are supported. |
 
 **Error codes**
 
@@ -136,7 +145,7 @@ Defines a custom marshalling object for styled strings, which you need to define
 
 | Type | Description  |
 | ------ | ---------- |
-| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | User data span style.|
+| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | Custom data span of UserDataSpan. |
 
 ## StyledStringMarshallCallback<sup>19+</sup>
 
@@ -152,7 +161,7 @@ Defines a callback for marshalling [StyledStringMarshallingValue](#styledstringm
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| marshallableVal | [StyledStringMarshallingValue](#styledstringmarshallingvalue19)| Yes| Object to be marshaled.|
+| marshallableVal | [StyledStringMarshallingValue](#styledstringmarshallingvalue19)| Yes | UserDataSpan object in the styled string that requires custom serialization. In the callback function, the developer selects the corresponding serialization API based on the type of this parameter to convert it into an ArrayBuffer. |
 
 **Return value**
 
@@ -180,13 +189,13 @@ Defines a callback for unmarshalling an ArrayBuffer to obtain [StyledStringMarsh
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| [StyledStringMarshallingValue](#styledstringmarshallingvalue19) | [StyledStringMarshallingValue](#styledstringmarshallingvalue19) obtained after unmarshalling.|
+| [StyledStringMarshallingValue](#styledstringmarshallingvalue19) | Custom data fragment object obtained through deserialization, used to restore user-defined style data. |
 
-## Example
+## Examples
 
 ### Example 1: Marshalling and Unmarshalling Styled Strings
 
-This example demonstrates the marshalling and unmarshalling of styled strings using the **marshalling** and **unmarshalling** APIs.
+This example implements the serialization and deserialization of a styled string through the marshalling and unmarshalling methods.
 
 ```ts
 // xxx.ets
@@ -195,9 +204,9 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  @State textTitle: string = "Marshalling and unmarshalling APIs";
-  @State textResult: string = "Hello world";
-  @State serializeStr: string = "Marshalling";
+  @State textTitle: string = 'Marshalling and unmarshalling APIs';
+  @State textResult: string = 'Hello world';
+  @State serializeStr: string = 'Marshalling';
   @State flag: boolean = false;
   private textAreaController: TextAreaController = new TextAreaController();
   private buff: Uint8Array = new Uint8Array();
@@ -209,7 +218,7 @@ struct Index {
     fontStyle: FontStyle.Normal
   });
   // Create a styled string object.
-  styledString: StyledString = new StyledString("Hello world",
+  styledString: StyledString = new StyledString('Hello world',
     [{
       start: 0,
       length: 11,
@@ -230,38 +239,40 @@ struct Index {
         .onClick(async () => {
           this.flag = !this.flag;
           if (!this.flag) {
-            console.info("Debug: Unmarshalling");
+            console.info('Debug: Unmarshalling');
+            // Deserialize the ArrayBuffer to restore the styled string object.
             let styles: StyledString = await StyledString.unmarshalling(this.buff.buffer);
-            this.textTitle = "After decodeTlv is called, the result of unmarshalling is: ";
+            this.textTitle = 'After decodeTlv is called, the result of unmarshalling is: ';
             if (styles == undefined) {
-              console.error("Debug: Failed to obtain the styled string.");
+              console.error('Debug: Failed to obtain the styled string.');
               return;
             }
             this.textResult = styles.getString();
-            console.info("Debug: this.textResult = " + this.textResult);
+            console.info('Debug: this.textResult = ' + this.textResult);
             let stylesArr = styles.getStyles(0, this.textResult.length, StyledStringKey.FONT);
-            console.info("Debug: stylesArr.length = " + stylesArr.length);
+            console.info('Debug: stylesArr.length = ' + stylesArr.length);
             for (let i = 0; i < stylesArr.length; ++i) {
-              console.info("Debug: style.start = " + stylesArr[i].start);
-              console.info("Debug: style.length = " + stylesArr[i].length);
-              console.info("Debug: style.styledKey = " + stylesArr[i].styledKey);
+              console.info('Debug: style.start = ' + stylesArr[i].start);
+              console.info('Debug: style.length = ' + stylesArr[i].length);
+              console.info('Debug: style.styledKey = ' + stylesArr[i].styledKey);
               let font = stylesArr[i].styledValue as TextStyle;
-              console.info("Debug: style.fontColor = " + font.fontColor);
-              console.info("Debug: style.fontSize = " + font.fontSize);
-              console.info("Debug: style.fontFamily = " + font.fontFamily);
-              console.info("Debug: style.fontStyle = " + font.fontStyle);
+              console.info('Debug: style.fontColor = ' + font.fontColor);
+              console.info('Debug: style.fontSize = ' + font.fontSize);
+              console.info('Debug: style.fontFamily = ' + font.fontFamily);
+              console.info('Debug: style.fontStyle = ' + font.fontStyle);
             }
             let subStr = styles.subStyledString(0, 2);
-            console.info("Debug: subStr = " + subStr.getString());
-            this.serializeStr = "Marshalling";
+            console.info('Debug: subStr = ' + subStr.getString());
+            this.serializeStr = 'Marshalling';
           } else {
-            console.info("Debug: Marshalling");
+            console.info('Debug: Marshalling');
+            // Serialize the styled string to return an ArrayBuffer for storage or transfer.
             let resultBuffer = StyledString.marshalling(this.styledString);
             this.buff = new Uint8Array(resultBuffer);
-            this.textTitle = "After encodeTlv is called, the result of marshalling is: ";
+            this.textTitle = 'After encodeTlv is called, the result of marshalling is: ';
             this.textResult = this.buff.toString();
-            console.info("Debug: buff = " + this.buff.toString());
-            this.serializeStr = "Unmarshalling";
+            console.info('Debug: buff = ' + this.buff.toString());
+            this.serializeStr = 'Unmarshalling';
           }
         })
     }.margin(10)
@@ -295,39 +306,39 @@ class MyUserData extends UserDataSpan {
   }
 
   marshalling() {
-    console.info("MyUserData marshalling...");
-    const text = "MyUserData1";
+    console.info('MyUserData marshalling...');
+    const text = 'MyUserData1';
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
     // Write the type.
     uint8View[0] = MyUserDataType.TYPE1;
-    for (let i = 1; i < text.length; i++) {
-      uint8View[i] = text.charCodeAt(i);
+    for (let i = 0; i < text.length; i++) {
+      uint8View[i + 1] = text.charCodeAt(i);
     }
     return uint8View.buffer;
   }
 
   unmarshalling() {
-    console.info("MyUserData unmarshalling...");
+    console.info('MyUserData unmarshalling...');
     return new MyUserData();
   }
 }
 
 class MyUserData2 extends UserDataSpan {
   marshalling() {
-    console.info("MyUserData2 marshalling...");
-    const text = "MyUserData2";
+    console.info('MyUserData2 marshalling...');
+    const text = 'MyUserData2';
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
     uint8View[0] = MyUserDataType.TYPE2;
-    for (let i = 1; i < text.length; i++) {
-      uint8View[i] = text.charCodeAt(i);
+    for (let i = 0; i < text.length; i++) {
+      uint8View[i + 1] = text.charCodeAt(i);
     }
     return uint8View.buffer;
   }
 
   unmarshalling() {
-    console.info("MyUserData2 unmarshalling...");
+    console.info('MyUserData2 unmarshalling...');
     return new MyUserData2();
   }
 }
@@ -340,11 +351,11 @@ struct MarshallExample1 {
   build() {
     Column() {
       Text(undefined, { controller: this.controller })
-      Button("Marshall&UnMarshall")
+      Button('Marshall&UnMarshall')
         .onClick(async () => {
           let myData = new MyUserData();
           let myData2 = new MyUserData2();
-          let myStyledString = new MutableStyledString("12345", [{
+          let myStyledString = new MutableStyledString('12345', [{
             start: 0,
             length: 3,
             styledKey: StyledStringKey.USER_DATA,
@@ -357,37 +368,38 @@ struct MarshallExample1 {
           }]);
 
           let buffer = StyledString.marshalling(myStyledString, (marshallingValue: StyledStringMarshallingValue) => {
-            // Perform marshalling based on the type.
+            // Call the corresponding serialization method based on the specific type of UserDataSpan.
             if (marshallingValue instanceof MyUserData) {
-              console.info("StyledString.marshalling MyUserData");
-              let value = marshallingValue as MyUserData;
-              return value.marshalling();
+              console.info('StyledString.marshalling MyUserData');
+              return marshallingValue.marshalling();
             } else if (marshallingValue instanceof MyUserData2) {
-              console.info("StyledString.marshalling MyUserData2");
-              let value = marshallingValue as MyUserData2;
-              return value.marshalling();
+              console.info('StyledString.marshalling MyUserData2');
+              return marshallingValue.marshalling();
             }
-            console.info("StyledString.marshalling default");
+            console.info('StyledString.marshalling default');
             return new ArrayBuffer(10);
           });
 
           let newStyledString = await StyledString.unmarshalling(buffer, (value: ArrayBuffer) => {
-            // 1. Read the type from the buffer.
-            // 2. Based on the type, choose the appropriate API to parse the buffer.
+            // Read the type identifier from the buffer, and call the corresponding deserialization method based on the type.
             const uint8View = new Uint8Array(value);
             let type = uint8View[0];
-            console.info("unmarshalling length:" + uint8View.length);
+            console.info('unmarshalling length:' + uint8View.length);
             if (type == MyUserDataType.TYPE1) {
-              console.info("unmarshalling type1:" + type);
+              console.info('unmarshalling type1:' + type);
               let myUserData = new MyUserData();
               return myUserData.unmarshalling();
             } else if (type == MyUserDataType.TYPE2) {
-              console.info("unmarshalling type2:" + type);
+              console.info('unmarshalling type2:' + type);
               let myUserData = new MyUserData2();
               return myUserData.unmarshalling();
             }
-            return new ArrayBuffer(0);
+            return new MyUserData();
           });
+          if (newStyledString == undefined) {
+            console.error('Failed to obtain newStyledString.');
+            return;
+          }
           this.controller.setStyledString(newStyledString);
         })
         .fontSize(20)

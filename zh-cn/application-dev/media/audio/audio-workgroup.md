@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-音频工作组是一套通过标记来帮助系统识别应用内音频关键线程的接口，系统通过应用提供的关键音频线程以及工作组运行信息可以提升音频线程的运行的稳定性。
+音频工作组是一套通过标记来帮助系统识别应用内音频关键线程的接口，系统通过应用提供的关键音频线程以及工作组运行信息可以提升音频线程运行的稳定性。
 
 以下各步骤示例为代码片段，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleC)。
 

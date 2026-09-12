@@ -115,7 +115,7 @@ AtomicServiceSearch中“搜索区”的可选属性。
 | decoration               | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) | 否 | 是 |  文本装饰线对象。默认值：`{type: TextDecorationType.None, color: Color.Black, style: TextDecorationStyle.SOLID}`。   |
 | letterSpacing            | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本字符间距。正数拉开字符距离，负数则拉近字符距离。浮点数默认值为0.0，单位为物理像素px。若输入类型非number且无法解析为数字，则使用默认值。  |
 | fontFeature              | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。<br>格式为：normal \| \<feature-tag-value\><br>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br>例如，使用等宽数字的输入格式为："ss01" on。默认值为`undefined`。   |
-| selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本选中底板颜色。默认值：系统默认底板颜色，20%不透明度。 |
+| selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 文本选中高亮颜色。默认值：系统默认高亮颜色，20%不透明度。 |
 | inputFilter              | [InputFilterParams](#inputfilterparams) | 否 | 是 | 通过正则表达式设置输入过滤器。匹配表达式的输入允许显示，不匹配的输入将被过滤。仅支持单个字符匹配，不支持字符串匹配。默认值为`undefined`。<br> -value: 正则表达式。 <br> -error: 正则匹配失败时，返回被过滤的内容。 |
 | textIndent               | [Dimension](ts-types.md#dimension10) | 否 | 是 | 首行文本缩进。默认值：`0`。单位：vp。   |
 | minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | 设置文本最小显示字号。需要配合maxFontSize以及布局大小限制使用，单独设置不生效。默认值为`undefined`。取值为number类型时，单位：fp。   |

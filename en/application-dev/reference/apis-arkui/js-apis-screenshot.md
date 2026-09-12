@@ -1,10 +1,11 @@
 # @ohos.screenshot (Screenshot)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6cdd905d6b7ce4c352f929e5cee241a6049b1f5a translatedAt=2026-09-01T03:30:42.385Z pushedAt=2026-09-02T05:57:46.172Z -->
 
 This module provides screenshot capabilities, supporting both regional and full-screen screenshot capture modes, to help you obtain the screen content.
 
@@ -28,21 +29,21 @@ Describes the region of the screen to capture.
 
 | Name| Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ----  | ------------------------------------------------------------ |
-| left   | number | No  | No   | Left boundary of the screen region to capture, in px. The value must be an integer.|
-| top    | number | No  | No   | Top boundary of the screen region to capture, in px. The value must be an integer.|
-| width  | number | No  | No   | Width of the screen region to capture, in px. The value must be an integer.|
-| height | number | No  | No   | Height of the screen region to capture, in px. The value must be an integer.|
+| left   | number | No   | No    | Left boundary of the screen region to capture, in px. The value must be a non-negative integer. |
+| top    | number | No   | No    | Top boundary of the screen region to capture, in px. The value must be a non-negative integer. |
+| width  | number | No   | No    | Width of the screen region to capture, in px. The value must be a positive integer. |
+| height | number | No   | No    | Height of the screen region to capture, in px. The value must be a positive integer. |
 
 ## CaptureOption<sup>14+</sup>
 
-Describes the capture options.
+Describes the capture option.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 | Name| Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| displayId | number |  No  | Yes| ID of the [display](js-apis-display.md#display) to capture. The default value is **0**. The value must be an integer greater than or equal to 0. If a non-integer is passed, a parameter error is reported.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| blackWindowIds<sup>21+</sup> | Array\<number>        | No | Yes| List of window IDs that are not displayed during screen capture. By default, this list is empty. Valid window IDs must be positive integers. Currently, this parameter applies only to [floating ball windows](js-apis-floatingBall.md). If a window ID does not correspond to a floating ball window, is not a positive integer, or does not exist, error code 401 is reported. You are advised to call [getFloatingBallWindowInfo()](js-apis-floatingBall.md#getfloatingballwindowinfo) to obtain the window ID of a floating ball window.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| displayId | number | No | Yes | ID of the [display](js-apis-display.md#display) to capture. The default value is **0**. The value must be an integer greater than or equal to 0. If a non-integer is passed, error code [401](../errorcode-universal.md#401-parameter-check-failed) is reported.<br>**Atomic service API**: This API is supported in atomic services since API version 14. |
+| blackWindowIds<sup>21+</sup> | Array\<number> | No | Yes | List of window IDs that are not displayed during screen capture. By default, this list is empty. Valid window IDs must be integers greater than 0. Currently, this parameter applies only to [floating ball windows](js-apis-floatingBall.md). If a window ID does not correspond to a floating ball window, is not an integer, is less than or equal to 0, or does not exist, error code [401](../errorcode-universal.md#401-parameter-check-failed) is reported. You are advised to call [getFloatingBallWindowInfo()](js-apis-floatingBall.md#getfloatingballwindowinfo) to obtain the floating ball window ID attribute.<br>**Atomic service API**: This API is supported in atomic services since API version 21. |
 
 ## PickInfo
 
@@ -87,7 +88,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ----------------------- |
-| 801 | Capability not supported on this device. |
+| 801 | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -124,7 +125,7 @@ The returned **PixelMap** object must be manually released. After using the obje
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Since API version 21, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Since API version 21, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Required permissions**:
 - API versions 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
@@ -150,7 +151,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
-| 801 | Capability not supported on this device. |
+| 801 | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
@@ -161,7 +162,7 @@ import { image } from '@kit.ImageKit';
 
 // Set screenshot parameters and specify the screen whose displayId is 0.
 let captureOption: screenshot.CaptureOption = {
-  "displayId": 0
+  displayId: 0
 };
 try {
   // Call the capture API to obtain a full-screen screenshot.

@@ -13,7 +13,7 @@ VPN管理模块，支持VPN的启动和停止功能。
 
 > **说明：**
 >
-> 本模块首批接口从 API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块为系统接口。
 
 ## 导入模块
@@ -46,16 +46,16 @@ createVpnConnection(context: AbilityContext): VpnConnection
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息         |
+| 错误码ID | 错误信息         |
 | --------- | ---------------- |
 | 202       | Non-system applications use system APIs.         |
 | 401       | Parameter error.                                 |
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -86,7 +86,7 @@ VPN连接对象。在调用VpnConnection的方法前，需要先通过[vpn.creat
 
 setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 
-使用config创建一个VPN网络，使用callback方式作为异步方法。
+使用config创建一个VPN网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -99,13 +99,13 @@ setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 | 参数名   | 类型                    | 必填 | 说明                                                                                               |
 | -------- | ----------------------- | ---- | -------------------------------------------------------------------------------------------------- |
 | config   | [VpnConfig](#vpnconfig) | 是   | 指定 VPN 网络的配置信息。                                                                          |
-| callback | AsyncCallback\<number\> | 是   | 回调函数，当成功启动VPN网络时，返回虚拟网卡的文件描述符fd，error为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<number\> | 是   | 回调函数。当成功启动VPN网络时，返回虚拟网卡的文件描述符fd，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                         |
+| 错误码ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
 | 201       | Permission denied.                               |
 | 202       | Non-system applications use system APIs.         |
@@ -118,11 +118,11 @@ setUp(config: VpnConfig, callback: AsyncCallback\<number\>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-```js
+```ts
 import { vpn } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -157,7 +157,7 @@ struct Index {
 
 setUp(config: VpnConfig): Promise\<number\>
 
-使用config创建一个VPN网络，使用Promise方式作为异步方法。
+使用config创建一个VPN网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -175,13 +175,13 @@ setUp(config: VpnConfig): Promise\<number\>
 
 | 类型              | 说明                                                           |
 | ----------------- | -------------------------------------------------------------- |
-| Promise\<number\> | 以 Promise 形式返回获取结果，返回指定虚拟网卡的文件描述符 fd。 |
+| Promise\<number\> | Promise对象，返回指定虚拟网卡的文件描述符 fd。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                         |
+| 错误码ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
 | 201       | Permission denied.                               |
 | 202       | Non-system applications use system APIs.         |
@@ -194,11 +194,11 @@ setUp(config: VpnConfig): Promise\<number\>
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-```js
+```ts
 import { vpn } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -234,7 +234,7 @@ struct Index {
 
 protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
-保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发，使用callback方式作为异步方法。
+保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -246,14 +246,14 @@ protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                  | 必填 | 说明                                                                                      |
 | -------- | --------------------- | ---- | ----------------------------------------------------------------------------------------- |
-| socketFd | number                | 是   | 指定保护的 socketfd, 该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10)获取。 |
-| callback | AsyncCallback\<void\> | 是   | 回调函数，成功时，error 为 undefined，失败返回错误码错误信息。                            |
+| socketFd | number                | 是   | 指定保护的 socketfd，该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10)获取。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。成功时，error 为 undefined，失败返回错误码错误信息。                            |
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -265,11 +265,11 @@ protect(socketFd: number, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-```js
+```ts
 import { socket, vpn } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -310,7 +310,7 @@ struct Index {
 
 protect(socketFd: number): Promise\<void\>
 
-保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发, 使用Promise方式作为异步方法。
+保护套接字不受VPN连接影响，通过该套接字发送的数据将直接基于物理网络收发，因此其流量不会通过VPN转发。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -322,19 +322,19 @@ protect(socketFd: number): Promise\<void\>
 
 | 参数名   | 类型   | 必填 | 说明                                                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------------------------------------- |
-| socketFd | number | 是   | 指定保护的 socketfd, 该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10-1)获取。 |
+| socketFd | number | 是   | 指定保护的 socketfd，该文件描述符通过[getSocketFd](js-apis-socket.md#getsocketfd10-1)获取。 |
 
 **返回值：**
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。失败返回错误码错误信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -346,11 +346,11 @@ protect(socketFd: number): Promise\<void\>
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-```js
+```ts
 import { socket, vpn } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -393,7 +393,7 @@ struct Index {
 
 destroy(callback: AsyncCallback\<void\>): void
 
-销毁启动的VPN网络，使用callback方式作为异步方法。
+销毁启动的VPN网络。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -405,13 +405,13 @@ destroy(callback: AsyncCallback\<void\>): void
 
 | 参数名   | 类型                  | 必填 | 说明                                                           |
 | -------- | --------------------- | ---- | -------------------------------------------------------------- |
-| callback | AsyncCallback\<void\> | 是   | 回调函数，成功时，error 为 undefined，失败返回错误码错误信息。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。成功时，error 为 undefined，失败返回错误码错误信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -421,11 +421,11 @@ destroy(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-```js
+```ts
 import { vpn } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -448,7 +448,7 @@ struct Index {
 
 destroy(): Promise\<void\>
 
-销毁启动的VPN网络，使用Promise方式作为异步方法。
+销毁启动的VPN网络。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -460,27 +460,27 @@ destroy(): Promise\<void\>
 
 | 类型            | 说明                                                  |
 | --------------- | ----------------------------------------------------- |
-| Promise\<void\> | 以 Promise 形式返回设定结果，失败返回错误码错误信息。 |
+| Promise\<void\> | Promise对象，无返回结果。失败返回错误码错误信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍参见[VPN错误码](errorcode-net-vpn.md)。
+以下错误码的详细介绍请参见[VPN错误码](errorcode-net-vpn.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码 ID | 错误信息                                     |
+| 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
-| 401       | Parameter error.                                 |
 | 202       | Non-system applications use system APIs.     |
+| 401       | Parameter error.                                 |
 | 2200002   | Operation failed. Cannot connect to service. |
 | 2200003   | System internal error.                       |
 
 **示例：**
 
->**说明：** 
+> **说明：** 
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-```js
+```ts
 import { vpn } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -516,7 +516,7 @@ VPN配置参数。
 | routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>     | 否   |是 | VPN虚拟网卡的路由信息。            |
 | dnsAddresses        | Array\<string\>                                                | 否   |是 | DNS服务器地址信息。                |
 | searchDomains       | Array\<string\>                                                | 否   | 是| DNS 的搜索域列表。                  |
-| mtu                 | number                                                         | 否   |是 |最大传输单元MTU值(单位:字节)。     |
+| mtu                 | number                                                         | 否   |是 |最大传输单元MTU值(单位：字节)。     |
 | isIPv4Accepted      | boolean                                                        | 否   | 是| 是否支持IPv4。true表示支持IPv4，false表示不支持IPv4。默认值为true。      |
 | isIPv6Accepted      | boolean                                                        | 否   |是 |是否支持IPv6。true表示支持IPv6，false表示不支持IPv6。默认值为false。     |
 | isLegacy            | boolean                                                        | 否   |是 |是否支持内置VPN。true表示支持内置VPN，false表示不支持内置VPN。默认值为false。   |

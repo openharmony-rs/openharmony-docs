@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:34:07.014Z pushedAt=2026-06-29T02:15:43.540Z -->
+<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:42:07.387Z pushedAt=2026-09-09T09:11:03.632Z -->
 
 ## Overview
 
@@ -57,7 +57,7 @@ Creates an **OH_Data_VBuckets** instance.
 
 | Type                                        | Description                                                        |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) | Returns a pointer to the [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) instance if the operation is successful; returns **nullptr** otherwise.<br>Use [OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy) to release the memory in time.|
+| [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) * | Pointer to the [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) instance if the operation is successful; **nullptr** otherwise.<br>After use, you must call [OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy) to release the memory. |
 
 ### OH_VBuckets_Destroy()
 
@@ -161,3 +161,4 @@ Obtains the number of **OH_VBucket**s in an **OH_Data_VBuckets** instance.
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
 | int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+

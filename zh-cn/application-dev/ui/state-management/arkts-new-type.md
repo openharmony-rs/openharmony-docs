@@ -25,7 +25,7 @@
 | \@Type装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数 | type：类型。 |
-| 可装饰的类型 | Object class以及Array、Date、Map、Set等内嵌类型。 |
+| 可装饰的类型 | Object class以及Array、Date、Map、Set等内置类型。 |
 
 ## 使用限制
 
@@ -63,7 +63,7 @@
 
 3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer等Native类型，以及[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等ArkTS容器类型。
 
-4. 不支持简单类型。如string、number、boolean等。
+4. 不支持基本类型。如string、number、boolean等。
 
 5. 不支持构造函数含参的类。
 

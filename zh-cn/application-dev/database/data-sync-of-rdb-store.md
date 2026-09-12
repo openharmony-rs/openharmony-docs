@@ -701,7 +701,7 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 
 - 单版本表模式下，表中所有UNIQUE列必须同步。
   
-  错误示例："AGE"为UNIQUE列，但是未指定该字段同步
+  错误示例："AGE"为UNIQUE列，但是未指定该字段同步。
     - 建表语句：'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER UNIQUE, SALARY REAL, CODES BLOB)'。
     - schema：<!--RP9-->
       ``` Json

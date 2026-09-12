@@ -23,6 +23,7 @@ import { networkSecurity } from '@kit.NetworkKit';
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -53,7 +54,7 @@ networkSecurity.certVerification(cert, caCert)
 
 证书编码类型。
 
-**系统能力**: SystemCapability.Communication.NetStack
+**系统能力**：SystemCapability.Communication.NetStack
 
 | 名称          | 值    |      说明     |
 | ------------- | ----- | ------------- |
@@ -65,11 +66,11 @@ networkSecurity.certVerification(cert, caCert)
 
 证书数据。 
 
-**系统能力**: SystemCapability.Communication.NetStack
+**系统能力**：SystemCapability.Communication.NetStack
 
 | 名称  | 类型                   | 只读      |可选| 说明           |
 | ----- | --------------------- | --------- | ----|---------- |
-| type  | CertType              | 否    |否 |证书编码类型。  |
+| type  | [CertType](#certtype) | 否    |否 |证书编码类型。  |
 | data  | string \| ArrayBuffer | 否    | 否|证书内容。      |
 
 
@@ -79,20 +80,20 @@ certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
 系统将使用证书管理中的预置CA证书和用户安装的CA证书来校验应用传入的证书。使用Promise异步回调。
 
-**系统能力**: SystemCapability.Communication.NetStack
+**系统能力**：SystemCapability.Communication.NetStack
 
-**参数**
+**参数**：
 
 | 参数名 | 类型     | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| cert   | CertBlob | 是   | 被校验的证书。       |
-| caCert | CertBlob | 否   | 传入自定义的CA证书。 |
+| cert   | [CertBlob](#certblob) | 是   | 被校验的证书。       |
+| caCert | [CertBlob](#certblob) | 否   | 传入自定义的CA证书。 |
 
 **返回值：**
 
 | 类型            | 说明                                                         |
 | --------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以promise形式返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
+| Promise\<number\> | Promise对象，返回一个数字，表示证书验证的结果。如果证书验证成功，则返回0；否则验证失败。 |
 
 **错误码：**
 
@@ -127,6 +128,7 @@ certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert:networkSecurity.CertBlob = {
@@ -166,14 +168,14 @@ certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 | 参数名 | 类型     | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| cert   | CertBlob | 是  | 被校验的证书。       |
-| caCert | CertBlob | 否   | 传入自定义的CA证书。 |
+| cert   | [CertBlob](#certblob) | 是  | 被校验的证书。       |
+| caCert | [CertBlob](#certblob) | 否   | 传入自定义的CA证书。 |
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 表示证书验证的结果。如果证书验证成功，则返回0； 否则验证失败。 |
+| number | 表示证书验证的结果。如果证书验证成功，则返回0；否则验证失败。 |
 
 **错误码：**
 
@@ -208,6 +210,7 @@ certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -242,13 +245,13 @@ console.info('Synchronous Verification Result:', resultSync);
 
 verifyCertChain(cert: CertBlob\[\], caCert?: CertBlob, hostname?: string): Promise\<CertBlob\[\]\>
 
-传入证书链数组，进行证书链校验并构建排序后的证书链。系统将使用证书管理中的预置CA证书和用户安装的CA证书来配合校验传入的证书。使用promise异步回调。
+传入证书链数组，进行证书链校验并构建排序后的证书链。系统将使用证书管理中的预置CA证书和用户安装的CA证书来配合校验传入的证书。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -262,7 +265,7 @@ verifyCertChain(cert: CertBlob\[\], caCert?: CertBlob, hostname?: string): Promi
 
 | 类型            | 说明                                                         |
 | --------------- | ------------------------------------------------------------ |
-| Promise\<[CertBlob](#certblob)\[\]\> | 以promise形式返回排序后的证书链数组，顺序为从叶子节点到根节点。 |
+| Promise\<[CertBlob](#certblob)\[\]\> | Promise对象，返回排序后的证书链数组，顺序为从叶子节点到根节点。 |
 
 **错误码：**
 

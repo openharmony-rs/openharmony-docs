@@ -61,7 +61,9 @@ try {
   } else {
     await document.exitPictureInPicture();
   }
-}
+} catch (err) {
+    console.error("Picture-in-Picture mode failed:", err);
+  }
 // ...
 ```
 

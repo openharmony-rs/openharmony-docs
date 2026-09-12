@@ -1,9 +1,9 @@
 # @ohos.file.fs (文件管理)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 本模块是Core File Kit的核心模块，提供基础文件操作API，用于对应用沙箱内的文件和目录进行创建、打开、读写、拷贝、移动、删除、查询属性等操作。
@@ -28,21 +28,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
-
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径pathDir，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
@@ -3726,7 +3712,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void>)
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | number | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | number | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当移动目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -3767,7 +3753,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | number | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | number | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 回调函数。当移动目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -3801,7 +3787,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
 移动源目录及其内容至目标路径下。使用callback异步回调。
 
-移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
+移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的非空目录，则抛出异常。
 
 > **说明：**
 >
@@ -3843,7 +3829,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 移动源目录及其内容至目标路径下。使用callback异步回调。
 
-移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
+移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的非空目录，则抛出异常。
 
 > **说明：**
 >
@@ -3902,7 +3888,7 @@ moveDirSync(src: string, dest: string, mode?: number): void
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | number | 否 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | number | 否 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 
 **错误码：**
 
@@ -5078,7 +5064,7 @@ try {
 
 delete(): void
 
-删除AtomicFile类，会删除原始文件和临时文件。
+删除AtomicFile对应的原始文件和临时文件。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5170,7 +5156,7 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 (event: WatchEvent): void
 
-事件监听类，当监听的文件或目录发生变动事件时触发回调。
+事件监听接口，当监听的文件或目录发生变动事件时触发回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5182,7 +5168,7 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 ## WatchEvent<sup>10+</sup>
 
-事件类
+事件接口。
 
 ### 属性
 
@@ -5348,7 +5334,7 @@ type ProgressListener = (progress: Progress) => void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | ino | bigint | 是 | 否 | 标识该文件。通常同设备上的不同文件的INO不同。 |
-| mode | number | 是 | 否 | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| mode | number | 是 | 否 | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | uid | number | 是 | 否 | 文件所有者的ID。 |
 | gid | number | 是 | 否 | 文件所有组的ID。 |
 | size | number | 是 | 否 | 文件的大小，单位为Byte。仅对普通文件有效。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -7760,6 +7746,8 @@ filter(name: string): boolean
 
 文件可读流，需要先通过[fileIo.createReadStream](#fileiocreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
 
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -7770,7 +7758,6 @@ filter(name: string): boolean
 ### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number
-
 
 调整可读流偏移指针位置。
 
@@ -7899,7 +7886,7 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| start | number | 否 | 是 | 表示文件的起始偏移位置，单位为Byte。可选，默认从当前位置开始读。 |
+| start | number | 否 | 是 | 表示文件的起始偏移位置，单位为Byte。可选，默认当前位置。 |
 | end | number | 否 | 是 | 表示文件的结束偏移位置，单位为Byte。可选，默认文件末尾。 |
 
 ## ReadStreamOptions<sup>12+</sup>

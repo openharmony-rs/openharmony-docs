@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3710d9e6218f1ff30d75ca1e496a60e0f8529dc7 translatedAt=2026-09-03T10:29:05.288Z pushedAt=2026-09-07T07:00:02.804Z -->
 
 The sendableContextManager module provides APIs for converting between Context and [SendableContext](js-apis-inner-application-sendableContext.md) objects.
 
@@ -22,10 +23,10 @@ When the main thread transfers sendable data (data that complies with the [Senda
 - Conversion from Context to SendableContext for the main thread to transfer sendable data to the child thread.
 - Conversion from SendableContext to Context for the child thread to use the sendable data.
 
-The Context here is different from that created by [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12). The differences are as follows:
+The Context here differs from the Context created by the [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext) method. The differences are as follows:
 - Context involved in the conversion: ArkTS concurrent instances hold different application-side Context instances that correspond to the same underlying Context object. When the Context properties and methods in an instance are modified, the Context properties and methods in the related instances are modified accordingly. The eventHub attribute in the Context instance is special. The eventHub objects in different instances are independent of each other and cannot be used across ArkTS instances. If you want to use [EventHub](./js-apis-inner-application-eventHub.md) to transfer data across instances, call [setEventHubMultithreadingEnabled](#sendablecontextmanagerseteventhubmultithreadingenabled20) to enable the cross-thread data transfer feature.
 
-- Context created using [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12): ArkTS concurrent instances hold different application-side Context objects that correspond to different underlying Context objects.
+- Context created by [createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext): ArkTS concurrent instances hold different application-side Context instances that correspond to different underlying Context objects.
 
 ## Constraints
 
@@ -114,7 +115,7 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -183,7 +184,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -218,7 +220,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // Obtain the sandbox path after obtaining the Context object.
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertToContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -297,7 +300,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -332,7 +336,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // Obtain the sandbox path after obtaining the Context object.
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToApplicationContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToApplicationContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -380,7 +385,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 Context passed by the main thread:
 ```ts
-import { UIAbility, sendableContextManager } from '@kit.AbilityKit';
+import { AbilityStage, sendableContextManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { worker } from '@kit.ArkTS';
 
@@ -395,7 +400,7 @@ export class SendableObject {
   contextName: string;
 }
 
-export default class EntryAbility extends UIAbility {
+export default class MyAbilityStage extends AbilityStage {
   worker: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
 
   onCreate(): void {
@@ -409,7 +414,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -444,17 +450,18 @@ workerPort.onmessage = (e: MessageEvents) => {
       // Obtain the sandbox path after obtaining the Context object.
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToAbilityStageContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToAbilityStageContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
 
 workerPort.onmessageerror = (e: MessageEvents) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onmessageerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onmessageerror');
 }
 
 workerPort.onerror = (e: ErrorEvent) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
 
@@ -521,7 +528,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -556,20 +564,21 @@ workerPort.onmessage = (e: MessageEvents) => {
       // Obtain the sandbox path after obtaining the Context object.
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToUIAbilityContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToUIAbilityContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
 
 workerPort.onmessageerror = (e: MessageEvents) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onmessageerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onmessageerror');
 }
 
 workerPort.onerror = (e: ErrorEvent) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
-## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+<sup>
+## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+</sup>
 
 setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 
@@ -587,7 +596,7 @@ Enables the cross-thread data transfer feature of [EventHub](./js-apis-inner-app
 
 | Name | Type          | Mandatory| Description                                                        |
 | ------- | -------------- | ---- | ------------------------------------------------------------ |
-| context | [common.Context](js-apis-inner-application-context.md) | Yes  | Context object. For details about the serialization data types supported by Eventhub, see [Sequenceable Data Types](../apis-arkts/js-apis-taskpool.md#sequenceable-data-types). The data size cannot exceed 16 MB.|
+| context | [common.Context](js-apis-inner-application-context.md) | Yes | Context object. For the serializable data types supported by EventHub, see [Serialization Supported Types](../apis-arkts/js-apis-taskpool.md#sequenceable-data-types), and the data size cannot exceed 16 MB. |
 | enabled  | boolean        | Yes  | Whether to enable the cross-thread data transfer feature.<br>- **true**: The cross-thread data transfer feature is enabled, and data is passed by reference.<br>- **false**: The cross-thread data transfer feature is disabled. Data is passed through serialization, which means that the data of the sender thread is independent of that of the receiver thread.|
 
 **Example**

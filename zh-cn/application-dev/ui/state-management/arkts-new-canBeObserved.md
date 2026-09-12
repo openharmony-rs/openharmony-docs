@@ -12,7 +12,7 @@
 
 >**说明：**
 >
->从API version 23开始，开发者可以使用UIUtils中的canBeObserved接口判断数据对象是否为可观察对象。
+>从API version 23开始，开发者可以使用UIUtils中的canBeObserved接口判断数据对象是否为可被观察对象。
 
 ## 概述
 
@@ -740,7 +740,7 @@ Button('move')
 
 ### ForEach和对象数组结合使用导致UI不刷新案例分析
 
-在[ForEach和对象数组结合使用导致UI不刷新](./arkts-state-management-faq-inner-component.md#foreach和对象数组结合使用导致ui不刷新)案例中，使用canBeObserved接口获取判断对象是否是可被观察的。
+在[ForEach和对象数组结合使用导致UI不刷新](./arkts-state-management-faq-inner-component.md#foreach和对象数组结合使用导致ui不刷新)案例中，使用canBeObserved接口判断对象是否是可被观察的。
 
 在反例的`onClick`方法中，修改对象属性前先调用canBeObserved接口判断`this.styleList[i]`对象是否可被观察，代码如下：
 
@@ -810,9 +810,9 @@ Text('Font Size List')
 }
 ```
 
-### 数据重置导致UI不刷新使用场景
+### 数据重置导致UI不刷新案例分析
 
-在[数据重置导致UI不刷新使用场景](./arkts-state-management-faq-inner-class.md#数据重置导致ui不刷新)案例中，使用canBeObserved接口定位UI不刷新原因。
+在[数据重置导致UI不刷新](./arkts-state-management-faq-inner-class.md#数据重置导致ui不刷新)案例中，使用canBeObserved接口定位UI不刷新原因。
 
 在反例的`X`按钮修改对象属性前先调用canBeObserved接口判断对象是否可被观察，代码如下：
 

@@ -120,7 +120,7 @@ pluginComponentManager.request方法接收到的回调结果。
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
 | componentTemplate | [PluginComponentTemplate](#plugincomponenttemplate) | 否 | 否    | 组件模板。 |
 | data              | [KVObject](#kvobject)                    | 否 | 否    | 组件数据，以键值对形式存储，键和值类型由业务定义。 |
-| extraData         | [KVObject](#kvobject)                    | 否 | 否    | 附加数据。该字段为可选字段，不提供时默认不包含在返回结果中。 |
+| extraData         | [KVObject](#kvobject)                    | 否 | 否    | 附加数据。 |
 
 ### RequestEventResult
 

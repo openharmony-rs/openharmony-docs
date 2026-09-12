@@ -38,7 +38,7 @@ mutableBuilder&lt;Args extends Object[]&gt;(builder: BuilderCallback): MutableBu
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [MutableBuilder&lt;Args&gt;](#mutablebuilder-1) | `MutableBuilder&lt;Args&gt;`的实例，用于封装全局`@Builder`函数，并支持在运行时动态切换构建逻辑。该实例持有对全局`@Builder`函数的引用，可通过其`builder`属性调用被封装的构建函数，或通过重新赋值`mutableBuilder`函数返回的新实例动态切换构建逻辑。其`builder`属性方法只能在自定义组件内部使用。 |
+| [MutableBuilder&lt;Args&gt;](#mutablebuilder-1) | `MutableBuilder&lt;Args&gt;`的实例，用于封装全局`@Builder`函数，并支持在运行时动态切换构建逻辑。该实例持有对全局`@Builder`函数的引用，可通过其`builder`属性调用被封装的构建函数，或通过重新赋值`mutableBuilder`函数返回的新实例动态切换构建逻辑。其`builder`属性方法只能在自定义组件的`build`函数或`@Builder`装饰的函数内部被调用。 |
 
 **示例：**
 

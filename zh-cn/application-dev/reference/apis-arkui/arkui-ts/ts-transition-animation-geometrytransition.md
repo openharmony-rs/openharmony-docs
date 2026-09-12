@@ -75,6 +75,10 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 
 ## 示例
 
+### 示例1（if else范式下的共享元素实现）
+
+该示例主要演示if else范式下的共享元素效果集成。
+
 ```ts
 // xxx.ets
 @Entry
@@ -92,7 +96,7 @@ struct Index {
           .width(300)
           .height(400)
           .offset({ y: 100 })
-          .geometryTransition('picture', { follow: false })
+          .geometryTransition('picture')
           .transition(TransitionEffect.OPACITY)
       } else {
         // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
@@ -125,3 +129,89 @@ struct Index {
 ```
 
 ![geometrytransition](figures/geometrytransition.gif)
+
+### 示例2（if范式下使用follow实现跟随效果）
+
+该示例主要演示if范式下使用follow参数实现不下树的组件的跟随效果。
+
+```ts
+// xxx.ets
+const FOLLOW_TRUE_ID: string = 'follow_true_id';
+const FOLLOW_FALSE_ID: string = 'follow_false_id';
+
+@Entry
+@Component
+struct Index {
+  @State isFollow: boolean = false;
+  @State isShow: boolean = false;
+  @State geometryId: string = '';
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor('#ff663399')
+        .size({ width: 100, height: 100 })
+        .position({ x: 200, y: 500 })
+        .borderRadius(25)
+        .clip(true)
+        .geometryTransition(this.geometryId)
+        .transition(TransitionEffect.OPACITY)
+    }
+    .size({ width: '100%', height: '100%' })
+    .backgroundColor("#33000000")
+    .transition(TransitionEffect.OPACITY)
+  }
+
+  build() {
+    Stack() {
+      if (this.isFollow) {
+        Column()
+          .backgroundColor('#ff103460')
+          .size({ width: 100, height: 100 })
+          .position({ x: 30, y: 30 })
+          .borderRadius(50)
+          // follow为true时，一镜到底转场期间该组件会下树做跟随效果
+          .geometryTransition(FOLLOW_TRUE_ID, { follow: true })
+          .transition(TransitionEffect.OPACITY)
+      } else {
+        Column()
+          .backgroundColor('#ff103460')
+          .size({ width: 100, height: 100 })
+          .position({ x: 30, y: 30 })
+          .borderRadius(50)
+          // follow为false时，一镜到底转场期间该组件会留在原地不做跟随
+          .geometryTransition(FOLLOW_FALSE_ID, { follow: false })
+          .transition(TransitionEffect.OPACITY)
+      }
+
+      Button('follow: ' + (this.isFollow ? 'true' : 'false'))
+        .onClick(() => {
+          this.isFollow = !this.isFollow;
+          this.geometryId = this.isFollow ? FOLLOW_TRUE_ID : FOLLOW_FALSE_ID;
+        })
+        .size({ width: 200, height: 50 })
+        .backgroundColor('#ff6b879b')
+    }
+    .size({ width: '100%', height: '100%' })
+    .bindContentCover(this.isShow, this.myBuilder(), {
+      // 模态页面实现一镜到底动效时，需要设置modalTransition为ModalTransition.NONE
+      modalTransition: ModalTransition.NONE,
+      onWillDismiss: () => {
+        // 侧滑关闭模态页面时，通过animateTo创造动画环境实现一镜到底动效
+        this.getUIContext().animateTo({ duration: 350 }, () => {
+          this.isShow = !this.isShow;
+        });
+      }
+    })
+    .onClick(() => {
+      // 点击弹出模态页
+      this.getUIContext().animateTo({ duration: 350 }, () => {
+        this.isShow = !this.isShow;
+      });
+    })
+  }
+}
+```
+
+![geometrytransition_follow](figures/geometrytransition_follow.gif)

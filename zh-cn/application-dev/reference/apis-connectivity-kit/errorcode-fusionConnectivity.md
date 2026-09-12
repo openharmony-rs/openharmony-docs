@@ -175,6 +175,9 @@ The parameter value does not meet specifications.
 
 ## 34900099 操作失败
 
+根据实际错误原因的不同，上报不同的错误信息，具体如下。
+
+### 操作失败
 **错误信息**
 
 Operation failed.
@@ -186,6 +189,40 @@ Operation failed.
 **可能原因**
 
 因系统原因导致当前操作失败。
+
+**处理步骤**
+
+请重试该操作。
+
+### extension不是PartnerAgent类型
+**错误信息**
+
+Operation failed. The extension is not partnerAgent type.
+
+**错误描述**
+
+调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)注册设备时，传入的extension不是PartnerAgent类型。
+
+**可能原因**
+
+传入的extension不是[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)类型。
+
+**处理步骤**
+
+使用[PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)类型的extension重新调用[bindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice)接口。
+
+### SA proxy为空
+**错误信息**
+
+Operation failed. SA proxy is nullptr.
+
+**错误描述**
+
+获取设备代理服务失败，SA proxy为空。
+
+**可能原因**
+
+设备代理服务加载失败。
 
 **处理步骤**
 

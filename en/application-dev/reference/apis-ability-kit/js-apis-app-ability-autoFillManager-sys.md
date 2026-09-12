@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1e2bfcc9b4f85d9126c23f626a7a73b4bb891227 translatedAt=2026-09-03T10:01:30.542Z pushedAt=2026-09-05T10:47:30.239Z -->
 
-The autoFillManager module provides APIs for saving accounts and passwords.
+The autoFillManager module provides features such as auto-fill and account/password saving.
 
 Unlike the system's auto-save feature that triggers during page transitions, this feature requires manual activation by the user. For example, the user must input their account and password on a website and click the **Save** button to initiate the saving process.
 
@@ -15,79 +16,13 @@ Unlike the system's auto-save feature that triggers during page transitions, thi
 > 
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module can be used only in the stage model.
->
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.ability.autoFillManager (autoFillManager)](js-apis-app-ability-autoFillManager.md).
+> This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.app.ability.autoFillManager (auto-fill framework)](js-apis-app-ability-autoFillManager.md).
 
 ## Modules to Import
 
 ```ts
 import { autoFillManager } from '@kit.AbilityKit';
 ```
-
-## ViewData
-
-type ViewData = _ViewData.default
-
-Defines the view data used for auto-fill.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Type| Description|
-| --- | --- |
-| [_ViewData.default](js-apis-inner-application-viewData-sys.md) | View data used for auto-fill.|
-
-## PageNodeInfo
-
-type PageNodeInfo = _PageNodeInfo.default
-
-Defines the page node information used for auto-fill.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Type| Description|
-| --- | --- |
-| [_PageNodeInfo.default](js-apis-inner-application-pageNodeInfo-sys.md) | Page node information used for auto-fill.|
-
-## FillRequest
-
-type FillRequest = _AutoFillRequest.FillRequest
-
-Defines the information about an auto-fill request.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Type| Description|
-| --- | --- |
-| [_AutoFillRequest.FillRequest](js-apis-inner-application-autoFillRequest-sys.md#fillrequest) | Information about an auto-fill request.|
-
-## SaveRequest
-
-type SaveRequest = _AutoFillRequest.SaveRequest
-
-Defines the information about an auto-save request.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Type| Description|
-| --- | --- |
-| [_AutoFillRequest.SaveRequest](js-apis-inner-application-autoFillRequest-sys.md#saverequest) | Information about an auto-save request.|
 
 ## UpdateRequest<sup>12+</sup>
 
@@ -103,7 +38,7 @@ Defines the information about an auto-update request.
 
 | Type| Description|
 | --- | --- |
-| [_AutoFillRequest.UpdateRequest](js-apis-inner-application-autoFillRequest-sys.md#updaterequest12) | Information about an auto-update request.|
+| [_AutoFillRequest.UpdateRequest](js-apis-inner-application-autoFillRequest-sys.md#updaterequest12) | Represents the update information for auto-fill, used to pass the auto-fill data content to be updated. |
 
 ## FillResponse
 
@@ -125,7 +60,7 @@ Defines the information about the response to an auto-fill request.
 
 type FillRequestCallback = _AutoFillRequest.FillRequestCallback
 
-Defines the callback for an auto-fill request, which is used to automatically fill in or generate a password. The callback can be used to notify the client of the success or failure of the request.
+Callback object used for auto-fill or password generation, which notifies the client of success or failure.
 
 **System API**: This is a system API.
 
@@ -141,7 +76,7 @@ Defines the callback for an auto-fill request, which is used to automatically fi
 
 type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback
 
-Defines the callback for an automatic or a manual saving request.
+Callback object for an auto-save or manual save request. It is used to notify the application of the save result after the save operation is complete, including the status information indicating whether the save succeeded or failed.
 
 **System API**: This is a system API.
 
@@ -167,23 +102,7 @@ Defines the custom data.
 
 | Type| Description|
 | --- | --- |
-| [_CustomData.default](js-apis-inner-application-customData-sys.md) | Custom data.|
-
-## AutoFillRect<sup>12+</sup>
-
-type AutoFillRect = _AutoFillRect.default
-
-Defines the rectangle used for auto-fill.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Type| Description|
-| --- | --- |
-| [_AutoFillRect.default](js-apis-inner-application-autoFillRect-sys.md) | Rectangle used for auto-fill.|
+| [_CustomData](js-apis-inner-application-customData-sys.md#customdata).default | Custom data. |
 
 ## AutoFillPopupConfig<sup>12+</sup>
 
@@ -199,7 +118,7 @@ Defines the size and position information of an auto-fill pop-up.
 
 | Type| Description|
 | --- | --- |
-| [_AutoFillPopupConfig.default](js-apis-inner-application-autoFillPopupConfig-sys.md) | Size and position information of the auto-fill pop-up.|
+| [_AutoFillPopupConfig](js-apis-inner-application-autoFillPopupConfig-sys.md#autofillpopupconfig).default | Represents the size and position information of the auto-fill popup. |
 
 ## PopupSize<sup>12+</sup>
 

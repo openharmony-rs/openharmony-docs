@@ -25,11 +25,11 @@ import { inputEventClient } from '@kit.InputKit';
 
 injectEvent({KeyEvent: KeyEvent}): void
 
-按键(包括单个按键和组合键)注入。
+按键（包括单个按键和组合键）注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -91,11 +91,11 @@ struct Index {
 
 injectKeyEvent(keyEvent: KeyEventData): void
 
-按键(包括单个按键和组合键)事件注入。
+按键（包括单个按键和组合键）事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -170,9 +170,9 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 鼠标/触控板事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -193,8 +193,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputEventClient, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -285,9 +284,9 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 触屏输入事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -308,8 +307,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { Touch, TouchEvent } from '@kit.InputKit';
+import { inputEventClient, Touch, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -391,9 +389,9 @@ permitInjection(result: boolean): void
 
 允许事件注入权限。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -441,7 +439,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -454,7 +452,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -464,7 +462,7 @@ struct Index {
 
 鼠标注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -475,7 +473,7 @@ struct Index {
 
 触屏注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -486,7 +484,7 @@ struct Index {
 
 定义用户注入的按键事件信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |

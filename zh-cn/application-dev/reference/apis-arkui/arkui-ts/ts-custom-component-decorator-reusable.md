@@ -1,4 +1,4 @@
-# \@Reusable：组件复用
+# @Reusable：组件复用
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

@@ -639,7 +639,7 @@ struct Index {
 
 ## inputDevice.supportKeys<sup>9+</sup>
 
-supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
+supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void
 
 查询指定输入设备是否支持指定按键，使用callback异步回调。
 
@@ -1197,7 +1197,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 输入设备的轴信息。
 
-**系统能力**： SystemCapability.MultimodalInput.Input.InputDevice
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |

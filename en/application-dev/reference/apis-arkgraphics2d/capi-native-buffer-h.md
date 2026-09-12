@@ -1,13 +1,16 @@
 # native_buffer.h
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=094ced2c1714888f81b48ee277d1e52615f35dc2 translatedAt=2026-08-24T09:09:49.199Z pushedAt=2026-08-31T11:46:42.143Z -->
+
 ## Overview
 
-This file declares the functions for obtaining and using **NativeBuffer**.
+Defines the functions for obtaining and using NativeBuffer. It provides capabilities such as creating and allocating NativeBuffer, managing reference counts, mapping ION memory, querying and configuring properties, setting color space and metadata, and serializing data for cross-process transfer. It applies to scenarios such as graphics rendering, image processing, and cross-process buffer sharing, helping developers efficiently manage graphics data and avoid memory leaks.
 
 **File to include**: <native_buffer/native_buffer.h>
 
@@ -42,25 +45,24 @@ This file declares the functions for obtaining and using **NativeBuffer**.
 
 | Name| Description|
 | -- | -- |
-| [OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)](#oh_nativebuffer_alloc) | Creates an **OH_NativeBuffer** instance based on an **OH_NativeBuffer_Config** struct. A new **OH_NativeBuffer** instance is created each time this function is called.<br>This API must be used in pair with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, memory leak occurs.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)](#oh_nativebuffer_reference) | Increases the reference count of an **OH_NativeBuffer** instance by 1.<br>This API must be used in pair with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, memory leak occurs.<br>This function is not thread-safe.|
+| [OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)](#oh_nativebuffer_alloc) | Creates an OH_NativeBuffer instance through OH_NativeBuffer_Config. Each call creates a new OH_NativeBuffer instance.<br>This API must be used together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference); otherwise, a memory leak occurs.<br>This API is not thread-safe. |
+| [int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)](#oh_nativebuffer_reference) | Increments the reference count of the OH_NativeBuffer object by 1.<br>This API must be used together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference); otherwise, a memory leak occurs.<br>This API is not thread-safe. |
 | [int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)](#oh_nativebuffer_unreference) | Decreases the reference count of an **OH_NativeBuffer** instance by 1 and, when the reference count reaches 0, destroys the instance.<br>This function is not thread-safe.|
 | [void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* config)](#oh_nativebuffer_getconfig) | Obtains the properties of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)](#oh_nativebuffer_map) | Maps the ION memory allocated to an **OH_NativeBuffer** instance to the process address space.<br>This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This function is not thread-safe.|
+| [int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)](#oh_nativebuffer_map) | Maps the ION memory corresponding to the OH_NativeBuffer to the process space.<br>Note that the usage of the OH_NativeBuffer on which this API is called must have the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute; otherwise, stability issues may occur.<br>For an OH_NativeBuffer allocated through [OH_NativeBuffer_Alloc](#oh_nativebuffer_alloc), ensure that config.usage has NATIVEBUFFER_USAGE_CPU_READ.<br>For an OH_NativeBuffer converted from [OH_NativeBuffer_FromNativeWindowBuffer](#oh_nativebuffer_fromnativewindowbuffer), ensure that the USAGE set through [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) before the original OH_NativeWindowBuffer is allocated has NATIVEBUFFER_USAGE_CPU_READ.<br>This API must be used together with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This API is not thread-safe. |
 | [int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)](#oh_nativebuffer_unmap) | Unmaps the ION memory allocated to an **OH_NativeBuffer** instance from the process address space.<br>This function is not thread-safe.|
 | [uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)](#oh_nativebuffer_getseqnum) | Obtains the sequence number of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace colorSpace)](#oh_nativebuffer_setcolorspace) | Sets the color space for an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)](#oh_nativebuffer_mapplanes) | Maps the multi-channel ION memory corresponding to an **OH_NativeBuffer** instance to the process address space.<br>This function is not thread-safe.|
+| [int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)](#oh_nativebuffer_mapplanes) | Maps the multi-plane ION memory corresponding to the OH_NativeBuffer to the process space.<br>Note that the usage of the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) on which this API is called must have the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute; otherwise, stability issues may occur.<br>This API is not thread-safe. |
 | [int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindowBuffer, OH_NativeBuffer **buffer)](#oh_nativebuffer_fromnativewindowbuffer) | Converts an **OHNativeWindowBuffer** instance to an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | Obtains the color space of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | Maps the ION memory corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space, and permanently blocks the input **fenceFd**.<br>If **OK** is returned, the system closes **fenceFd**. For other return values, you need to close **fenceFd** by yourself.<br> This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This function is not thread-safe.|
+| [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | Maps the ION memory corresponding to the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space and permanently blocks the passed-in fenceFd.<br>If the API returns OK, the system closes fenceFd and the user does not need to close it; otherwise, the user must close fenceFd.<br>This API must be used together with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>Note that the usage of the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) on which this API is called must have the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute; otherwise, stability issues may occur.<br>This API is not thread-safe. |
 | [int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)](#oh_nativebuffer_writetoparcel) | Writes an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object to an IPC serialization object.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | Reads an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object from an IPC serialization object.<br>Creates an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object. When it is no longer used, you need to use this API together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, a memory leak may occur.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSupported)](#oh_nativebuffer_issupported) | Checks whether the system supports the input [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) configuration information.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)](#oh_nativebuffer_mapandgetconfig) | Maps the multi-channel ION memory corresponding to the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space and obtains the [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md).<br>This function is not thread-safe.|
-
+| [int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)](#oh_nativebuffer_mapandgetconfig) | Maps the multi-plane ION memory corresponding to the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space and obtains the [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) corresponding to the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md).<br>Note that the usage of the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) on which this API is called must have the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute; otherwise, stability issues may occur.<br>This API is not thread-safe. |
 
 ## Enum Description
 
@@ -117,7 +119,6 @@ Defines an enum for the color gamuts of an **OH_NativeBuffer** instance.
 | NATIVEBUFFER_COLOR_GAMUT_BT2100_HLG = 9 | BT.2100 HLG color gamut format|
 | NATIVEBUFFER_COLOR_GAMUT_DISPLAY_BT2020 = 10 | Display BT.2020 color gamut.|
 
-
 ## Function Description
 
 ### OH_NativeBuffer_Alloc()
@@ -128,18 +129,17 @@ OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 
 **Description**
 
-Creates an **OH_NativeBuffer** instance based on an **OH_NativeBuffer_Config** struct. A new **OH_NativeBuffer** instance is created each time this function is called.<br>This API must be used in pair with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, memory leak occurs.<br>This function is not thread-safe.
+Creates an OH_NativeBuffer instance through OH_NativeBuffer_Config. Each call creates a new OH_NativeBuffer instance.<br>This API must be used in pair with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, a memory leak occurs.<br>This API is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | Pointer to an **OH_NativeBuffer_Config** instance.|
+| const [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | Pointer to an OH_NativeBuffer_Config structure, used to set the properties of OH_NativeBuffer, including configuration information such as width, height, format, and usage. |
 
 **Returns**
 
@@ -155,12 +155,11 @@ int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 
 **Description**
 
-Increases the reference count of an **OH_NativeBuffer** instance by 1.<br>This API must be used in pair with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, memory leak occurs.<br>This function is not thread-safe.
+Increments the reference count of the OH_NativeBuffer object by 1.<br>This API must be used in pair with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, a memory leak occurs.<br>This API is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -188,7 +187,6 @@ Decreases the reference count of an **OH_NativeBuffer** instance by 1 and, when 
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -215,13 +213,12 @@ Obtains the properties of an **OH_NativeBuffer** instance.<br>This function is n
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
-| [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | Pointer to an **OH_NativeBuffer_Config** instance, which is used to receive the properties of **OH_NativeBuffer**.|
+| [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | Pointer to OH_NativeBuffer_Config, used to receive the properties of OH_NativeBuffer, including configuration information such as width, height, format, and usage. |
 
 ### OH_NativeBuffer_Map()
 
@@ -231,12 +228,11 @@ int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 
 **Description**
 
-Maps the ION memory allocated to an **OH_NativeBuffer** instance to the process address space.<br>This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This function is not thread-safe.
+Maps the ION memory corresponding to the OH_NativeBuffer to the process space.<br>Note that the usage of the OH_NativeBuffer on which this API is called must carry the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute. Otherwise, stability issues may occur.<br>For an OH_NativeBuffer allocated through [OH_NativeBuffer_Alloc](#oh_nativebuffer_alloc), ensure that the config.usage parameter carries NATIVEBUFFER_USAGE_CPU_READ.<br>For an OH_NativeBuffer converted through [OH_NativeBuffer_FromNativeWindowBuffer](#oh_nativebuffer_fromnativewindowbuffer), ensure that before the original OH_NativeWindowBuffer is allocated, the USAGE set through [OH_NativeWindow_NativeWindowHandleOpt](capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) carries NATIVEBUFFER_USAGE_CPU_READ.<br>This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This API is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -265,7 +261,6 @@ Unmaps the ION memory allocated to an **OH_NativeBuffer** instance from the proc
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -291,7 +286,6 @@ Obtains the sequence number of an **OH_NativeBuffer** instance.<br>This function
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -319,7 +313,6 @@ Sets the color space for an **OH_NativeBuffer** instance.<br>This function is no
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -341,12 +334,11 @@ int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_Na
 
 **Description**
 
-Maps the multi-channel ION memory corresponding to an **OH_NativeBuffer** instance to the process address space.<br>This function is not thread-safe.
+Maps the multi-channel ION memory corresponding to the OH_NativeBuffer to the process space.<br>Note that the usage of the OH_NativeBuffer on which this API is called must carry the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute. Otherwise, stability issues may occur.<br>This API is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -376,13 +368,12 @@ Converts an **OHNativeWindowBuffer** instance to an **OH_NativeBuffer** instance
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *nativeWindowBuffer | Pointer to an [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) instance.|
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) **buffer | Pointer to an **OH_NativeBuffer** instance.|
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) **buffer | Double pointer to an OH_NativeBuffer instance. |
 
 **Returns**
 
@@ -404,7 +395,6 @@ Obtains the color space of an **OH_NativeBuffer** instance.<br>This function is 
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -421,7 +411,7 @@ Obtains the color space of an **OH_NativeBuffer** instance.<br>This function is 
 ### OH_NativeBuffer_SetMetadataValue()
 
 ```c
-int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)
+int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t size, uint8_t *metadata)
 ```
 
 **Description**
@@ -432,7 +422,6 @@ Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is n
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -440,7 +429,7 @@ Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is n
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Metadata type of [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md). For details about the available options, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
 | int32_t size | Size of the uint8_t vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| uint8_t *metadata |  Pointer to the uint8_t vector.|
+| uint8_t *metadata |  Pointer to a uint8_t vector, used to store the metadata content to be set. The size of the vector is specified by the size parameter, and the format of the vector content depends on the metadata type specified by the metadataKey parameter. |
 
 **Returns**
 
@@ -451,7 +440,7 @@ Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is n
 ### OH_NativeBuffer_GetMetadataValue()
 
 ```c
-int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)
+int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t *size, uint8_t **metadata)
 ```
 
 **Description**
@@ -469,7 +458,7 @@ Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function 
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Metadata type of [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md). For details about the available options, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
 | int32_t *size | Size of the uint8_t vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| uint8_t **metadata |  Double pointer to the uint8_t vector.|
+| uint8_t **metadata | Double pointer to a uint8_t vector, used as an output parameter to receive the obtained metadata content. The size of the vector is returned through the size parameter, and the format of the vector content depends on the metadata type specified by the metadataKey parameter. |
 
 **Returns**
 
@@ -491,6 +480,8 @@ If **OK** is returned, the system closes **fenceFd**. For other return values, y
 
 This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).
 
+Note that the usage of the OH_NativeBuffer on which this API is called must carry the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute. Otherwise, stability issues may occur.
+
 This function is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
@@ -502,14 +493,14 @@ This function is not thread-safe.
 | Name| Description|
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) instance.|
-| int32_t fenceFd | File descriptor handle, which is used for concurrent synchronization control.|
+| int32_t fenceFd | File descriptor handle used for concurrent synchronization control. |
 | void **virAddr | Double pointer to the address of the virtual memory.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **buffer** or **virAddr** is a null pointer, or **fenceFd** is less than 0.<br>Returns **NATIVE_ERROR_UNKNOWN** if the mapping fails.|
+| int32_t | Returns NATIVE_ERROR_OK if the execution succeeds.<br>Returns NATIVE_ERROR_INVALID_ARGUMENTS if buffer or virAddr is a null pointer, or fenceFd is less than 0.<br>Returns NATIVE_ERROR_UNKNOWN if the mapping fails.<br>For other return values, see [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode). |
 
 ### OH_NativeBuffer_WriteToParcel()
 
@@ -538,7 +529,7 @@ This function is not thread-safe.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **buffer** or **parcel** is a null pointer.<br>Returns **NATIVE_ERROR_BINDER_ERROR** if IPC sending fails.|
+| int32_t | Returns NATIVE_ERROR_OK if the execution is successful.<br>Returns NATIVE_ERROR_INVALID_ARGUMENTS if buffer or parcel is a null pointer.<br>Returns NATIVE_ERROR_BINDER_ERROR if IPC sending fails.<br>For other return values, see [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode). |
 
 ### OH_NativeBuffer_ReadFromParcel()
 
@@ -569,7 +560,7 @@ This function is not thread-safe.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **parcel** or **buffer** is a null pointer.<br>Returns **NATIVE_ERROR_UNKNOWN** if the parcel fails to be deserialized.|
+| int32_t | Returns NATIVE_ERROR_OK if the execution is successful.<br>Returns NATIVE_ERROR_INVALID_ARGUMENTS if parcel or buffer is a null pointer.<br>Returns NATIVE_ERROR_UNKNOWN if parcel deserialization fails.<br>For other return values, see [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode). |
 
 ### OH_NativeBuffer_IsSupported()
 
@@ -591,14 +582,14 @@ This function is not thread-safe.
 
 | Name| Description|
 | -- | -- |
-| [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) config | [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) struct instance.|
+| [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) config | [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) structure instance, including configuration information such as width, height, format, and usage. |
 | bool* isSupported | If the value is **true**, the system supports the input [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) configuration information. If the value is **false**, the system does not support the input **OH_NativeBuffer_Config** configuration information. This parameter is used as an output parameter.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **isSupported** is a null pointer.|
+| int32_t | Returns NATIVE_ERROR_OK on execution success.<br>Returns NATIVE_ERROR_INVALID_ARGUMENTS if isSupported is a null pointer.<br>For other return values, see [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode). |
 
 ### OH_NativeBuffer_MapAndGetConfig()
 
@@ -610,6 +601,8 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 
 Maps the multi-channel ION memory corresponding to the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space and obtains the [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md).
 
+Note that the usage of the OH_NativeBuffer on which this API is called must carry the [NATIVEBUFFER_USAGE_CPU_READ](capi-native-buffer-h.md#oh_nativebuffer_usage) attribute. Otherwise, stability issues may occur.
+
 This function is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
@@ -620,7 +613,7 @@ This function is not thread-safe.
 
 | Name| Description|
 | -- | -- |
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | Level-2 pointer to an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) struct instance.|
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | Pointer to an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) structure instance. |
 | void** virAddr | Level-2 pointer to the address of the virtual memory mapped to the current process, which is used as the output parameter.|
 | [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | Pointer to an [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) struct instance, which is used as the output parameter.|
 
@@ -628,4 +621,4 @@ This function is not thread-safe.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **buffer**, **virAddr**, or **config** is a null pointer.<br>Returns **NATIVE_ERROR_UNKNOWN** if the mapping fails.|
+| int32_t | Returns NATIVE_ERROR_OK if the execution is successful.<br>Returns NATIVE_ERROR_INVALID_ARGUMENTS if buffer, virAddr, or config is a null pointer.<br>Returns NATIVE_ERROR_UNKNOWN if the mapping fails.<br>For other return values, see [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode). |

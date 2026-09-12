@@ -52,6 +52,8 @@ int32_t OH_TrafficFilter_CreateRedirector(uint32_t group_id, uint32_t priority, 
 
 创建流量重定向实例，用于将TCP流量重定向到代理服务器。资源管理：必须调用[OH_TrafficFilter_DestroyRedirector](capi-net-trafficfilter-h.md#oh_trafficfilter_destroyredirector)释放资源。如果该函数失败，不会返回有效的重定向器。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
 **起始版本：** 26.0.0
@@ -68,7 +70,7 @@ int32_t OH_TrafficFilter_CreateRedirector(uint32_t group_id, uint32_t priority, 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - 成功。<br>     [OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - 缺少权限。<br>     [OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - group_id已存在。<br>     [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - 参数错误。 |
+| int32_t | [OH_TRAFFICFILTER_OK](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - 成功。<br>     [OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - 缺少权限。<br>     [OH_TRAFFICFILTER_ERROR_GROUP_ID_IN_USE](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - group_id已存在。<br>     [OH_TRAFFICFILTER_ERROR_INVALID_PARAM](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - 参数错误。<br>     [OH_TRAFFICFILTER_ERROR_NFQUEUE_ERROR](capi-net-trafficfilter-type-h.md#oh_trafficfilter_errcode) - NFQueue初始化失败。 |
 
 ### OH_TrafficFilter_DestroyRedirector()
 
@@ -79,6 +81,8 @@ int32_t OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirect
 **描述**
 
 销毁重定向实例并释放相关资源（包括规则），调用后句柄将失效。
+
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -105,6 +109,8 @@ int32_t OH_TrafficFilter_AddRedirectRule(OH_TrafficFilter_Redirector* redirector
 **描述**
 
 添加TCP流量重定向规则，将匹配的流量重定向到指定的代理服务器。如需清除重定向规则，需要调用[OH_TrafficFilter_ClearRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearredirectrule)。
+
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -133,6 +139,8 @@ int32_t OH_TrafficFilter_ClearRedirectRule(OH_TrafficFilter_Redirector* redirect
 
 清除所有重定向规则。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
 **起始版本：** 26.0.0
@@ -158,6 +166,8 @@ int32_t OH_TrafficFilter_QueryProcess(const OH_TrafficFilter_ConnectionInfo* con
 **描述**
 
 根据网络连接信息查询对应的进程信息。通过源IP、目的IP、源端口、目的端口和协议类型组成的五元组连接信息，查询发起该连接的进程信息。
+
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -191,6 +201,8 @@ int32_t OH_TrafficFilter_CreatePacketController(
 
 创建报文控制器实例。用于拦截和过滤网络报文。资源管理：该实例占用系统资源，必须调用[OH_TrafficFilter_DestroyPacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller)释放资源。如果该函数失败，不会返回有效的控制器。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
 **起始版本：** 26.1.0
@@ -219,6 +231,8 @@ int32_t OH_TrafficFilter_DestroyPacketController(OH_TrafficFilter_PacketControll
 **描述**
 
 销毁报文控制器实例。销毁控制器实例并释放相关资源（包括规则），调用后句柄将失效。
+
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -250,6 +264,8 @@ int32_t OH_TrafficFilter_RegisterPacketCallback(
 
 注册报文回调函数。注册一个回调函数用于处理拦截到的报文，当报文匹配到过滤规则时，将触发该回调。如需释放回调，需调用OH_TrafficFilter_UnregisterPacketCallback。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
 **起始版本：** 26.1.0
@@ -277,6 +293,8 @@ int32_t OH_TrafficFilter_UnregisterPacketCallback(OH_TrafficFilter_PacketControl
 **描述**
 
 注销报文回调函数。
+
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -307,6 +325,8 @@ int32_t OH_TrafficFilter_AddPacketRule(
 
 添加报文过滤规则。单个[OH_TrafficFilter_FilterRule](capi-trafficfilter-oh-trafficfilter-filterrule.md)结构内的条件为逻辑与关系。添加到同一[OH_TrafficFilter_PacketController](capi-trafficfilter-oh-trafficfilter-packetcontroller.md)的多个规则为逻辑或关系。如需清除过滤规则，需调用[OH_TrafficFilter_ClearPacketRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearpacketrule)。
 
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
+
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 
 **起始版本：** 26.1.0
@@ -333,6 +353,8 @@ int32_t OH_TrafficFilter_ClearPacketRule(OH_TrafficFilter_PacketController* cont
 **描述**
 
 清除报文过滤规则（清除controller句柄上添加的所有报文过滤规则）。
+
+**系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
 **需要权限：** ohos.permission.kernel.TRAFFIC_FILTER
 

@@ -1,12 +1,11 @@
 # @ohos.bundle.installer (installer Module) (System API)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=0204cb477050612384e22af1de117191721fc715 translatedAt=2026-08-13T02:44:57.824Z pushedAt=2026-08-13T03:43:05.552Z -->
+<!-- md-trans-meta sourceCommit=4ed65a1f272fc46dcb7e8ce0faf8d5df1c93af54 translatedAt=2026-09-03T12:25:40.072Z pushedAt=2026-09-05T10:47:30.924Z -->
 
 The module provides APIs for you to install, uninstall, and recover bundles on devices.
 
@@ -78,7 +77,6 @@ Obtains a BundleInstaller object. This API uses a promise to return the result.
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Return value**
-
 | Type                                                        | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | Promise\<BundleInstaller> | Promise used to return the BundleInstaller object obtained.|
@@ -113,14 +111,13 @@ try {
 
 getBundleInstallerSync(): BundleInstaller
 
-Obtains a BundleInstaller object. This API is a synchronous API.
+Obtains and returns a BundleInstaller object. The API may return null when the call fails, so verify the return value before use.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Return value**
-
 | Type                                                        | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | BundleInstaller | BundleInstaller object.|
@@ -149,7 +146,6 @@ try {
 ```
 
 ## BundleInstaller.install
-
 install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback: AsyncCallback&lt;void&gt;): void
 
 Installs a specified app. This API uses an asynchronous callback to return the result. Since API version 26.0.0, installing an APP package is supported.
@@ -160,15 +156,10 @@ Installs a specified app. This API uses an asynchronous callback to return the r
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE, or a combination of ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE
-
 - Starting from API version 9, installing a common application requires the ohos.permission.INSTALL_BUNDLE permission.
-
 - Starting from API version 10, installing an enterprise internal application requires the ohos.permission.INSTALL_ENTERPRISE_BUNDLE permission.
-
 - Starting from API version 10, installing a common enterprise application requires the ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
-
 - Starting from API version 10, installing an enterprise MDM application requires the ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
-
 - Starting from API version 23, installing an application in downgrade mode requires the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions. Downgrade installation is supported only for third-party applications with a signing certificate distribution type of **app_gallery** or a signing certificate type of **debug**. For details, please refer to the description of **parameters** in [InstallParam](#installparam).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
@@ -206,15 +197,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification is failed. |
-| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
-| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
-| 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
-| 17700058 | Failed to install the HAP because the device has been controlled. |
-| 17700066 | Failed to install the HAP because installing the native package failed. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
-| 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed. |
-| 17700077 | Failed to install the HAP and restore to preinstalled bundle. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed.<br>Applicable version: 10+ |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device.<br>Applicable version: 10+ |
+| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode.<br>Applicable version: 11+ |
+| 17700054 | Failed to install the HAP because the HAP requests wrong permissions.<br>Applicable version: 11+ |
+| 17700058 | Failed to install the HAP because the device has been controlled.<br>Applicable version: 12+ |
+| 17700066 | Failed to install the HAP because installing the native package failed.<br>Applicable version: 12+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Applicable version: 13+ |
+| 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>Applicable version: 18+ |
+| 17700077 | Failed to install the HAP and restore to preinstalled bundle.<br>Applicable version: 17+ |
 
 **Example**
 
@@ -246,9 +237,7 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
-
 ## BundleInstaller.install
-
 install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 Installs a specified app. This API uses an asynchronous callback to return the result. Since API version 26.0.0, installing an APP package is supported.
@@ -259,15 +248,10 @@ Installs a specified app. This API uses an asynchronous callback to return the r
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE, or a combination of ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE
-
 - Starting from API version 9, installing a common application requires the ohos.permission.INSTALL_BUNDLE permission.
-
 - Starting from API version 10, installing an enterprise internal application requires the ohos.permission.INSTALL_ENTERPRISE_BUNDLE permission.
-
 - Starting from API version 10, installing a common enterprise application requires the ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
-
 - Starting from API version 10, installing an enterprise MDM application requires the ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
-
 - Starting from API version 23, installing an application in downgrade mode requires the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions. Downgrade installation is supported only for third-party applications with a signing certificate distribution type of **app_gallery** or a signing certificate type of **debug**. For details, please refer to the description of **parameters** in [InstallParam](#installparam).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
@@ -303,15 +287,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification is failed. |
-| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
-| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
-| 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
-| 17700058 | Failed to install the HAP because the device has been controlled. |
-| 17700066 | Failed to install the HAP because installing the native package failed. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
-| 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed. |
-| 17700077 | Failed to install the HAP and restore to preinstalled bundle. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed.<br>Applicable version: 10+ |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device.<br>Applicable version: 10+ |
+| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode.<br>Applicable version: 11+ |
+| 17700054 | Failed to install the HAP because the HAP requests wrong permissions.<br>Applicable version: 11+|
+| 17700058 | Failed to install the HAP because the device has been controlled.<br>Applicable version: 12+ |
+| 17700066 | Failed to install the HAP because installing the native package failed.<br>Applicable version: 12+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Applicable version: 13+ |
+| 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>Applicable version: 18+ |
+| 17700077 | Failed to install the HAP and restore to preinstalled bundle.<br>Applicable version: 17+ |
 
 **Example**
 
@@ -351,15 +335,10 @@ Installs a specified app. This API uses a promise to return the result. Since AP
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.INSTALL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE, ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE, or a combination of ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE
-
 - Starting from API version 9, installing a common application requires the ohos.permission.INSTALL_BUNDLE permission.
-
 - Starting from API version 10, installing an enterprise internal application requires the ohos.permission.INSTALL_ENTERPRISE_BUNDLE permission.
-
 - Starting from API version 10, installing a common enterprise application requires the ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
-
 - Starting from API version 10, installing an enterprise MDM application requires the ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE permission.
-
 - Starting from API version 23, installing an application in downgrade mode requires the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions. Downgrade installation is supported only for third-party applications with a signing certificate distribution type of **app_gallery** or a signing certificate type of **debug**. For details, please refer to the description of **parameters** in [InstallParam](#installparam).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
@@ -402,15 +381,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700043 | Failed to install the HAP because of low APL in the non-system data proxy (required APL: system_basic or system_core). |
 | 17700044 | Failed to install the HAP because the isolationMode configured is not supported. |
 | 17700047 | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-| 17700048 | Failed to install the HAP because the code signature verification is failed. |
-| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
-| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode. |
-| 17700054 | Failed to install the HAP because the HAP requests wrong permissions.|
-| 17700058 | Failed to install the HAP because the device has been controlled. |
-| 17700066 | Failed to install the HAP because installing the native package failed. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
-| 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed. |
-| 17700077 | Failed to install the HAP and restore to preinstalled bundle. |
+| 17700048 | Failed to install the HAP because the code signature verification is failed.<br>Applicable version: 10+ |
+| 17700050 | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device.<br>Applicable version: 10+ |
+| 17700052 | Failed to install the HAP because debug bundle cannot be installed under non-developer mode.<br>Applicable version: 11+ |
+| 17700054 | Failed to install the HAP because the HAP requests wrong permissions.<br>Applicable version: 11+|
+| 17700058 | Failed to install the HAP because the device has been controlled.<br>Applicable version: 12+ |
+| 17700066 | Failed to install the HAP because installing the native package failed.<br>Applicable version: 12+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Applicable version: 13+ |
+| 17700076 | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>Applicable version: 18+ |
+| 17700077 | Failed to install the HAP and restore to preinstalled bundle.<br>Applicable version: 17+ |
 
 **Example**
 
@@ -459,7 +438,7 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | Name     | Type                                                | Mandatory| Description                                          |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | Yes  | Name of the target bundle.                                          |
-| installParam      | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                      |
+| installParam      | [InstallParam](#installparam)                        | Yes   | Specifies other parameters required for uninstallation.                       |
 | callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the app is uninstalled successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes**
@@ -476,9 +455,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
 | 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
-| 17700060 | The specified application cannot be uninstalled. |
-| 17700062 | Failed to uninstall the app because the app is locked. |
-| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
+| 17700060 | The specified application cannot be uninstalled.<br>Applicable version: 13+ |
+| 17700062 | Failed to uninstall the app because the app is locked.<br>Applicable version: 15+ |
+| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -543,8 +522,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
 | 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
-| 17700060 | The specified application cannot be uninstalled. |
-| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
+| 17700060 | The specified application cannot be uninstalled.<br>Applicable version: 13+ |
+| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -571,7 +550,6 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
-
 ## BundleInstaller.uninstall
 
 uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
@@ -589,7 +567,7 @@ Uninstalls an application. This API uses a promise to return the result.
 | Name      | Type                         | Mandatory| Description                                                        |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | bundleName | string                          | Yes  | Name of the target bundle.                                          |
-| installParam | [InstallParam](#installparam) | No  | Parameters required for the installation. For details about their default values, see [InstallParam](#installparam).                                    |
+| installParam | [InstallParam](#installparam) | No   | Specifies other parameters required for uninstallation. Default value: refer to the default values of [InstallParam](#installparam).                                     |
 
 **Return value**
 
@@ -611,9 +589,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700020 | The specified bundle is a pre-installed bundle and cannot be uninstalled. |
 | 17700040 | The specified bundle is a shared bundle and cannot be uninstalled. |
 | 17700045 | Failed to uninstall the HAP because uninstall is not allowed by the enterprise device management. |
-| 17700060 | The specified application cannot be uninstalled. |
-| 17700062 | Failed to uninstall the app because the app is locked. |
-| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
+| 17700060 | The specified application cannot be uninstalled.<br>Applicable version: 13+ |
+| 17700062 | Failed to uninstall the app because the app is locked.<br>Applicable version: 15+ |
+| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed.<br>Applicable version: 12+ |
 
 **Example**
 
@@ -662,7 +640,7 @@ Rolls back an application to the initial installation state. This API uses an as
 | Name     | Type                                                | Mandatory| Description                                          |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | bundleName | string                                               | Yes  | Name of the target bundle.                                          |
-| installParam      | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                      |
+| installParam      | [InstallParam](#installparam)                        | Yes   | Other parameters required for recovery.                       |
 | callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) invoked to return the result. If the app rollback is successful, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
@@ -676,8 +654,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
 | 17700004 | The specified user ID is not found. |
-| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
+| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>Applicable version: 14+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Applicable version: 13+ |
 
 **Example**
 
@@ -710,6 +688,7 @@ try {
 }
 ```
 
+
 ## BundleInstaller.recover
 
 recover(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
@@ -739,8 +718,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
-| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
+| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>Supported since: 14+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Supported since: 13+ |
 
 **Example**
 
@@ -784,8 +763,8 @@ Rolls back an application to the initial installation state. This API uses a pro
 
 | Name      | Type                         | Mandatory| Description                                                        |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| bundleName | string                          | Yes  | Name of the target bundle.                                          |
-| installParam | [InstallParam](#installparam) | No  | Parameters required for the installation. For details about their default values, see [InstallParam](#installparam).                                    |
+| bundleName | string                          | Yes   | Bundle name of the application to be recovered.                                           |
+| installParam | [InstallParam](#installparam) | No   | Specifies other parameters required for recovery. Default value: refer to the default value of [InstallParam](#installparam).                                     |
 
 **Return value**
 
@@ -804,11 +783,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700001 | The specified bundle name is not found. |
 | 17700004 | The specified user ID is not found. |
-| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
+| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>Applicable version: 14+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Applicable version: 13+ |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -978,7 +956,7 @@ Adds extended resources based on the specified bundle name and HSP file path. Th
 
 | Name        | Type                               | Mandatory| Description                        |
 | -------------- | ----------------------------------- | ---- | ---------------------------- |
-| bundleName | string | Yes  | Bundle name of the application to which extended resources are to be added.|
+| bundleName | string | Yes   | Bundle name of the application to which extension resources are added. |
 | filePaths | Array\<string> | Yes  | Path of the extended resources to be added.|
 
 **Return value**
@@ -1039,7 +1017,7 @@ Removes extended resources based on the specified bundle name and module names. 
 
 | Name        | Type                               | Mandatory| Description                        |
 | -------------- | ----------------------------------- | ---- | ---------------------------- |
-| bundleName | string | Yes  | Bundle name of the application for which extended resources are to be removed.|
+| bundleName | string | Yes | Bundle name of the application whose extended resources are to be deleted. |
 | moduleNames | Array\<string> | Yes  | Names of the modules whose extended resources are to be removed.|
 
 **Return value**
@@ -1101,8 +1079,8 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name          | Type                                                | Mandatory| Description                                                        |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
-| installParam           | [InstallParam](#installparam)                        | Yes  | Parameters required for the installation.                                    |
-| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the app is installed successfully, **err** is undefined; otherwise, **err** is an error object. |
+| installParam           | [InstallParam](#installparam)                        | Yes   | Other parameters required for the update.                                     |
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), invoked when the application is updated successfully, in which case err is undefined; otherwise, an error object is returned. |
 
 **Error codes**
 
@@ -1180,7 +1158,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name          | Type                                                | Mandatory| Description                                                        |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
-| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), used to return the result. If the app is installed successfully, **err** is undefined; otherwise, **err** is an error object. |
+| callback | AsyncCallback&lt;void&gt; | Yes | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback), invoked to return the result. If the application is updated successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -1252,7 +1230,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name          | Type                                                | Mandatory| Description                                                        |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | hapFilePaths | Array&lt;string&gt;                                  | Yes  | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature.|
-| installParam | [InstallParam](#installparam) | No  | Parameters required for the installation. For details about their default values, see [InstallParam](#installparam).                                    |
+| installParam | [InstallParam](#installparam) | No | Other parameters required for the update. Default value: refer to the default values of [InstallParam](#installparam). |
 
 **Return value**
 
@@ -1355,9 +1333,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700001 | The specified bundle name is not found. |
 | 17700045 | Failed to uninstall because enterprise device management disallow uninstall. |
 | 17700057 | Failed to uninstall updates because the HAP is not pre-installed. |
-| 17700060 | The specified application cannot be uninstalled. |
-| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed. |
-| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device. |
+| 17700060 | The specified application cannot be uninstalled.<br>Applicable version: 13+ |
+| 17700067 | Failed to uninstall the HAP because uninstalling the native package failed.<br>Applicable version: 13+ |
+| 17700073 | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>Applicable version: 13+ |
 
 **Example**
 
@@ -1405,7 +1383,7 @@ Creates an application clone. This API uses a promise to return the result.
 | Name       | Type                         | Mandatory| Description                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | bundleName   | string                        | Yes  | Bundle name of the application for which a clone is to be created.                                        |
-| createAppCloneParam  | [createAppCloneParam](#createappcloneparam12)   | No  | Other parameters required for creating the clone. For details about the default values of these parameters, see [createAppCloneParam](#createappcloneparam12).  |
+| createAppCloneParam  | [CreateAppCloneParam](#createappcloneparam12)   | No   | Specifies other parameters required for creating an app clone. Default value: refer to the default value of [CreateAppCloneParam](#createappcloneparam12).   |
 
 **Return value**
 
@@ -1428,7 +1406,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700069 | The app does not support the creation of an appClone instance. |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1496,7 +1473,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700061 | AppIndex not in valid range. |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1563,7 +1539,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700062 | Failed to uninstall the app because the app is locked. |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1637,10 +1612,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700001 | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | 17700004 | The userId is invalid. |
 | 17700071 | It is not allowed to install the enterprise bundle. |
-| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users. |
+| 17700058 | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>Applicable version: 14+ |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1717,7 +1691,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700091 | Failed to install the plugin because the plugin name is same as host bundle name. |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1784,7 +1757,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 17700092 | Failed to uninstall the plugin because the specified plugin is not found. |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1848,7 +1820,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 
 **Example**
-
 ```ts
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1895,7 +1866,7 @@ Defines the parameters that need to be specified for bundle installation, uninst
 
 | Name                        | Type                           |  Read-Only  |  Optional  | Description               |
 | ------------------------------ | ------------------------------ | ------------------| ------------------ | ------------------ |
-| userId                         | number                         | No                       | Yes  | User ID. Default value: the user of the caller. Value range: greater than or equal to 0. You can use [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user of the current process. When installing, uninstalling, or recovering a driver app, this parameter is ignored and the operation is performed for all users. |
+| userId                         | number                         | No                       | Yes  | User ID. Default value: the user where the caller is located. Value range: greater than or equal to 0. You can use [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user where the current process is located. When installing, uninstalling, or recovering a driver application, this parameter is ignored and the operation is executed for all users. |
 | installFlag                    | number                         | No                       | Yes | Installation flag. Enumerated values: 0x00: initial installation of the app, 0x01: overwrite installation of the app, 0x10: free installation of the app. Default value: initial installation of the app. |
 | isKeepData                     | boolean                        | No                       | Yes| Whether to retain the data directory during uninstall. Default value: false. The value **true** indicates that the data directory is retained during uninstall, and **false** indicates that the data directory is not retained during uninstall. |
 | hashParams        | Array<[HashParam](#hashparam)> | No | Yes| Hash parameters. Default value: empty. The maximum length of the list is 1000.         |
@@ -1905,8 +1876,7 @@ Defines the parameters that need to be specified for bundle installation, uninst
 | additionalInfo<sup>10+</sup> | string | No | Yes|Additional information during app installation. Default value: empty. The maximum length is 3000 bytes. This field is usually specified by the app market of the OS operator when installing an enterprise app, and is used to store additional information about the app. |
 | verifyCodeParams<sup>(deprecated)<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | No | Yes| Code signing file parameters. Default value: empty. The maximum length of the list is 500.<br/>**NOTE**<br/> Supported since API version 10 and deprecated since API version 11. The code signing file of an app will be integrated into the installation package, and it is no longer necessary to specify the code signing file of the installation package through this API.  |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | No | Yes| PGO profile parameters. Default value: empty. The maximum length of the list is 500.         |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No | Yes| Extended parameters, which are an array of the Parameters type. Default value: empty. The maximum length of the list is 1000. The supported values of Parameters.key are as follows:</br> - "ohos.bms.param.renameInstall": If the corresponding value is "true", the shared directory is used to move the installation package from the app sandbox to the installation directory during installation. Otherwise, the regular directory is used to copy the installation package from the app sandbox to the installation directory.</br> - "ohos.bms.param.enterpriseForAllUser": If the corresponding value is "true", the enterprise app is installed for all users. This parameter takes effect only for apps whose [appDistributionType](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is enterprise_mdm or enterprise_normal.</br> - "ohos.bms.param.verifyUninstallRule": If the corresponding value is "true", the uninstall handling rule is set to intercept app uninstall.</br> - "ohos.bms.param.enterpriseManifest": The value is the sandbox path of a JSON file. The JSON file is used to store the description file of the app, including the app bundle name. This field is used in the enterprise app clone scenario. During cloning, if the JSON file exists, the app installation package on the old device is copied to the new device for installation.</br> - "ohos.bms.param.installBundleName": The value is the bundle name of the app. This field is used in the app installation scenario (supported since API version 23). If this field is passed in during installation, the [getBundleInstallStatus](./js-apis-bundleManager.md#bundlemanagergetbundleinstallstatus) API can be called during app installation to query the installing status of the app.</br> - "ohos.bms.param.installAllowDowngrade": If the corresponding value is "true", this field indicates that app downgrade installation is supported (supported since API version 23). That is, if a higher-version app is already installed on the device, a lower-version app can still be installed to overwrite it. Downgrade installation is supported only for third-party apps whose signature certificate distribution type is app_gallery or whose certificate type is debug. To use the downgrade installation capability, you need to apply for both ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE.</br> - "ohos.bms.param.originalInstallSource": Used to specify the original installation source of the app to be installed. The corresponding value range is the value of the installSource field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). For an app installed with this parameter, its installation source installSource is set to the specified value. Conditions for the parameter to take effect: the app to be installed must not be installed on the device; when the value is specified as an app bundle name, the specified app must be installed and be a system app. Supported since API version 23.|
-
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | No | Yes| Extended parameter, which is an array of the [Parameters](#parameters15) type. The default value is empty, and the maximum list length is 1000. The supported values of Parameters.key are as follows:</br> - "ohos.bms.param.renameInstall": If the corresponding value is "true", the shared directory is used to move the installation package from the application sandbox to the installation directory during installation. Otherwise, the regular directory is used to copy the installation package from the application sandbox to the installation directory.</br> - "ohos.bms.param.enterpriseForAllUser": If the corresponding value is "true", the enterprise application is installed for all users. This parameter takes effect only for applications whose [appDistributionType](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) is enterprise_mdm or enterprise_normal.</br> - "ohos.bms.param.verifyUninstallRule": If the corresponding value is "true", the uninstall disposal rule is set to intercept application uninstallation.</br> - "ohos.bms.param.enterpriseManifest": The value is the sandbox path of a JSON file. The JSON file stores the description file of the application, including the application bundle name. This field is used in the enterprise application clone scenario. During cloning, if this JSON file exists, the installation package of the application on the old device is copied to the new device for installation.</br> - "ohos.bms.param.installBundleName": The value is the bundle name of the application. This field is used in the application installation scenario (supported since API version 23). If this field is passed during installation, the [getBundleInstallStatus](./js-apis-bundleManager.md#bundlemanagergetbundleinstallstatus) API can be called during the application installation to query the installing status of the application.</br> - "ohos.bms.param.installAllowDowngrade": If the corresponding value is "true", this field indicates that the application supports downgrade installation (supported since API version 23). That is, if a higher version of the application is already installed on the device, a lower version can still be installed to overwrite it. Downgrade installation is supported only for third-party applications whose signing certificate distribution type is app_gallery or whose signing certificate type is debug. To use the downgrade installation capability, the application needs to apply for both the ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE permissions.</br> - "ohos.bms.param.originalInstallSource": Specifies the original installation source of the application to be installed. The corresponding value range is the value of the installSource field in [ApplicationInfo](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). For an application installed with this parameter, its installation source installSource is set to the specified value. Conditions for the parameter to take effect: the application to be installed must not be installed on the device; when the value specifies an application bundle name, the specified application must be installed and be a system application. Supported since API version 23.</br> - "ohos.bms.param.deviceModeDistributionPolicy": The value is a decimal string (for example, "4") of a [DeviceModeDistributionPolicy](./js-apis-bundleManager-sys.md#devicemodedistributionpolicy) enum value. It specifies the device mode distribution policy of the application being installed. If this key is not passed, the policy defaults to UNSPECIFIED (0). If the value is invalid (not a decimal integer string or out of the range [0, 8]), this key is ignored and the policy defaults to UNSPECIFIED. Supported since API version 26.1.0.|
 ## UninstallParam<sup>10+</sup>
 
 Defines the parameters required for the uninstall of a shared bundle.
@@ -1999,4 +1969,3 @@ Defines the parameters for installing or uninstalling a plugin.
 | ----------- | ------ | ---- |---- | ------------------------------------------------------------ |
 | userId      | number | No  | Yes  | User ID of the user for installing or uninstalling the plug-in program. It can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). Default value: the user that invokes the API.            |
 | parameters  | Array<[Parameters](#parameters15)> | No| Yes  | Extension parameters for installing or uninstalling the plugin. The default value is empty.           |
-<!--no_check-->

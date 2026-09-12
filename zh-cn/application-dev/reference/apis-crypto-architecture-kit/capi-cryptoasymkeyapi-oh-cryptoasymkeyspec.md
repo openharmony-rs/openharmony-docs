@@ -13,7 +13,7 @@ typedef struct OH_CryptoAsymKeySpec OH_CryptoAsymKeySpec
 
 ## 概述
 
-定义非对称密钥规格结构体。
+非对称密钥规格结构体，表示非对称密钥规格。
 
 **起始版本：** 20
 

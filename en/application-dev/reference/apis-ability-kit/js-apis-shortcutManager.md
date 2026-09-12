@@ -1,12 +1,11 @@
 # @ohos.bundle.shortcutManager (shortcutManager Module)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:57:27.090Z pushedAt=2026-06-25T06:31:35.533Z -->
+<!-- md-trans-meta sourceCommit=e6364d607d18f1c61b2cfd4dc8932804ec0f18aa translatedAt=2026-09-03T12:31:42.247Z pushedAt=2026-09-05T10:47:30.936Z -->
 
 This module provides the application's management capabilities for [shortcuts](../../quick-start/typical-scenario-configuration.md), including setting whether a shortcut is displayed. Through shortcuts, users can quickly launch specific features of an app from the home screen, improving the app's ease of use and user retention. Typical usage scenarios include: providing users with quick access to frequently used features, dynamically adjusting the display of shortcuts based on user habits, etc.
 
@@ -47,7 +46,7 @@ For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md)
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
-| 17700070 | The specified shortcut id is illegal. |
+| 17700070 | The specified shortcut id is not exist. |
 
 **Example**
 

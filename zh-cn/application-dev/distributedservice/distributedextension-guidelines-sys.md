@@ -141,11 +141,10 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
    
      onCollaborate(wantParam: Record<string, Object>) {
        console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-       let sessionId = -1;
-       const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-       if (collaborationValues == undefined) {
-         return sessionId;
-       }
+        const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
+        if (collaborationValues == undefined) {
+          return AbilityConstant.CollaborateResult.REJECT;
+        }
    
        console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
        return AbilityConstant.CollaborateResult.ACCEPT;

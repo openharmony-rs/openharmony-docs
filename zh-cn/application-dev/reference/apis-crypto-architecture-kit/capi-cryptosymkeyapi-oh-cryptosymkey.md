@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymKey OH_CryptoSymKey
 
 ## 概述
 
-定义对称密钥结构体。
+对称密钥结构体，表示对称密钥。
 
 **起始版本：** 12
 

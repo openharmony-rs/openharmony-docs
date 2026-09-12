@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=c49afcad24e17dfc569dc40411ff4a704ede3209 translatedAt=2026-09-03T08:28:39.015Z pushedAt=2026-09-05T10:47:30.049Z -->
 
 ## Overview
 
@@ -51,6 +52,9 @@ Enumerates the error codes of the AbilityRuntime module.
 | ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED = 801 |  The device type is not supported.<br>**Since**: 15|
 | ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY = 16000001 |  The specified ability name does not exist.<br>**Since**: 15|
 | ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE = 16000002 |  The ability type is incorrect.<br>**Since**: 15|
+| ABILITY_RUNTIME_ERROR_CODE_VISIBILITY_VERIFICATION_FAILED = 16000004 |  Failed to start an invisible component.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_STATIC_CFG_PERMISSION = 16000005 |  The specified process does not have the required permission.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_CROSS_USER_OPERATION = 16000006 |  Cross-user operations are not allowed.<br>**Since:** 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED = 16000008 |  The crowdtesting application expires.<br>**Since**: 15|
 | ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE = 16000009 |  An ability cannot be started or stopped in Wukong mode.<br>**Since**: 15|
 | ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST = 16000011 | The context does not exist.|
@@ -68,3 +72,15 @@ Enumerates the error codes of the AbilityRuntime module.
 | ABILITY_RUNTIME_ERROR_CODE_GET_APPLICATION_INFO_FAILED = 16000081 |  Failed to obtain the application information.<br>**Since**: 21|
 | ABILITY_RUNTIME_ERROR_CODE_START_TIMEOUT = 16000133 |  Starting the UIAbility times out.<br>**Since**: 21|
 | ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED = 16000134 |  The function cannot be called on the main thread of the application.<br>**Since**: 21|
+| ABILITY_RUNTIME_ERROR_CODE_NO_RUNNING_ABILITIES_WITH_UI = 16000170 |  The target application has no running ability with a UI.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_UPPER_RATE_LIMIT = 16000171 |  The API call frequency is too high and exceeds the rate limit threshold.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_UPPER_CONNECTION_NUMBER_LIMIT = 16000172 |  The number of connections exceeds the upper limit.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_PROPERTY_NOT_FOUND = 16000173 |  The requested interface, method, enum, struct member, or element member of a container (array, vector, set, or map) is not found.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_TYPE_MISMATCH = 16000174 |  The runtime value type does not match the expected metadata type.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_SEND_REQUEST_FAILED = 16000175 |  Failed to send an IPC request to the remote service.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS = 16000176 |  In [OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) mode, the caller and the target ability are not in the same application.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID = 16000177 |  The NativeAbility data information is invalid or incomplete.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_METADATA_INVALID = 16000178 |  The type library metadata is invalid.<br>**Since:** 26.0.0 |
+| ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL = 16000179 |  The buffer is too small.<br>**Since:** 26.1.0 |
+
+

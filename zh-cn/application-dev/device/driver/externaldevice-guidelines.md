@@ -23,8 +23,8 @@
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | 查询扩展外设列表。                                           |
-| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | 绑定设备的Promise形式，API19开始支持。                       |
-| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API19开始支持。                       |
+| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | 绑定设备的Promise形式，API version 19开始支持。                       |
+| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API version 19开始支持。                       |
 
 <!--Del-->
 扩展外设管理系统接口如下，具体请查阅[@ohos.driver.deviceManager](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md)。

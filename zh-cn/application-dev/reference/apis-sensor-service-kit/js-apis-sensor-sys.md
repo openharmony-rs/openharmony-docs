@@ -2,7 +2,7 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @LiuChao-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -30,11 +30,9 @@ import { sensor } from '@kit.SensorServiceKit';
 
 on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Options): void
 
-订阅颜色传感器数据变化。通过回调函数异步上报颜色传感器数据，数据格式为ColorResponse对象，包含lightIntensity（光照强度）和colorTemperature（色温）两个number类型字段。
+订阅颜色传感器数据变化。使用callback异步回调。通过回调函数异步上报颜色传感器数据，数据格式为ColorResponse对象，包含lightIntensity（光照强度）和colorTemperature（色温）两个number类型字段。
 
 当开发者需要获取环境光照强度和色温信息以实现屏幕自动亮度调节、拍照色温补偿、环境光线监测等功能时，使用此接口。
-
-该接口为异步回调方式，传感器数据变化时通过callback回调上报，无Promise返回值。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -54,7 +52,7 @@ on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Opti
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
@@ -82,11 +80,9 @@ try{
 
 on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options): void
 
-订阅吸收比率传感器数据变化。通过回调函数异步上报SAR传感器数据，数据格式为SarResponse对象，包含absorptionRatio（吸收率）一个number类型字段。
+订阅吸收比率传感器数据变化。使用callback异步回调。通过回调函数异步上报SAR传感器数据，数据格式为SarResponse对象，包含absorptionRatio（吸收率）一个number类型字段。
 
 当开发者需要监测设备电磁波吸收率以实现通信安全监测、辐射检测等功能时，使用此接口。
-
-该接口为异步回调方式，传感器数据变化时通过callback回调上报，无Promise返回值。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -106,7 +102,7 @@ on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
 
@@ -156,7 +152,7 @@ off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 **示例**：
@@ -302,7 +298,7 @@ off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
+| 202      | Permission check failed. A non-system application uses the system API. <br>适用版本：11+ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 **示例**：
@@ -425,7 +421,7 @@ function sensorUnsubscribe(): Ret {
 
 表示当前支持订阅或取消订阅的传感器类型。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **系统接口**：此接口为系统接口
 
@@ -438,7 +434,7 @@ function sensorUnsubscribe(): Ret {
 
 颜色传感器数据，继承于[Response](js-apis-sensor.md#response)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **系统接口**：此接口为系统接口
 
@@ -452,7 +448,7 @@ function sensorUnsubscribe(): Ret {
 
 吸收比率传感器数据，继承于[Response](js-apis-sensor.md#response)。用于表示吸收比率传感器上报的响应数据，包含电磁波吸收率信息。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.Sensors.Sensor
 
 **系统接口**：此接口为系统接口
 

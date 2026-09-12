@@ -1,4 +1,4 @@
-# wrapBuilder
+# wrapBuilder: 封装全局@Builder
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->

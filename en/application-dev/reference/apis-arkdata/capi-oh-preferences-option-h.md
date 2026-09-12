@@ -1,10 +1,11 @@
 # oh_preferences_option.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=56ed0768936d754cf596777e5bea964ac3d6187b translatedAt=2026-09-04T02:48:20.727Z pushedAt=2026-09-09T09:11:03.645Z -->
 
 ## Overview
 
@@ -62,8 +63,7 @@ Enumerates the preferences storage types.
 | Enum                     | Description                                                        |
 | --------------------------- | ------------------------------------------------------------ |
 | PREFERENCES_STORAGE_XML = 0 | XML. In this type is used, data operations are performed in the memory and data is persisted after [OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close) is called. This type does not multi-processes operations.|
-| PREFERENCES_STORAGE_GSKV    | CLKV. If this type is used, data operations are flushed on a real-time basis. This type supports multi-process operations.            |
-
+| PREFERENCES_STORAGE_GSKV    | GSKV storage mode, where data operations are persisted to disk in real time and multi-process is supported.             |
 
 ## Function Description
 
@@ -75,7 +75,7 @@ OH_PreferencesOption *OH_PreferencesOption_Create(void)
 
 **Description**
 
-Creates a [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance and a pointer to it.<br>If this pointer is no longer required, use [OH_PreferencesOption_Destroy](capi-oh-preferences-option-h.md#oh_preferencesoption_destroy) to destroy it. Otherwise, memory leaks may occur.
+Creates an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance and a pointer to it.<br>If this pointer is no longer required, use [OH_PreferencesOption_Destroy](capi-oh-preferences-option-h.md#oh_preferencesoption_destroy) to destroy it. Otherwise, memory leaks may occur.
 
 **Since**: 13
 
@@ -83,7 +83,7 @@ Creates a [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) insta
 
 | Type                                                | Description                                                        |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) | Returns a pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance created if the operation is successful; returns a null pointer otherwise.|
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) * | Pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance object of the Preferences configuration option if the operation is successful; a null pointer otherwise. |
 
 ### OH_PreferencesOption_SetFileName()
 
@@ -103,7 +103,7 @@ Sets the file name for an [OH_PreferencesOption](capi-preferences-oh-preferences
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | Pointer to the [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) instance.|
-| const char *fileName                                         | Pointer to the file name to set.                                        |
+| const char *fileName                                         | Name of the file to set. The file name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'.                                         |
 
 **Returns**
 
@@ -215,4 +215,7 @@ Destroys an [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) ins
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Operation status code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.|
+| int  | Result code.<br>Returns **PREFERENCES_OK** if the operation is successful.<br>Returns **PREFERENCES_ERROR_INVALID_PARAM** if the parameter is invalid. |
+
+
+

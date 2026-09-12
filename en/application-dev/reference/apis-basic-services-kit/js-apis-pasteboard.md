@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @@zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -58,11 +58,7 @@ Enumerates the value types.
 
 createData(mimeType: string, value: ValueType): PasteData
 
-Creates a **PasteData** object of the specified type and creates a **PasteData** instance based on the input MIME type and data content. After this API is called, the system verifies the MIME type, encapsulates the data content, and returns a **PasteData** object that can be used in subsequent pasteboard operations. The value of **mimeType** can contain a maximum of 1024 bytes, and the value type must match the MIME type.
-
-**Use scenarios**: Use this method when you need to save date of a single type (such as plain text, HTML, or images) to the pasteboard.
-
-**Parameter selection suggestions**: Use the defined constant types (for example, **MIMETYPE_TEXT_PLAIN**) for **mimeType**. If you need to pass data in a custom format, you can use a custom MIME type.
+Creates a **PasteData** object of the specified type and creates a **PasteData** instance based on the input MIME type and data content. After this API is called, the system verifies the MIME type, encapsulates the data content, and returns a **PasteData** object that can be used in subsequent pasteboard operations. The value of **mimeType** can contain a maximum of 1024 bytes, and the value type must match the MIME type. Use this method when you need to save data of a single type (such as plain text, HTML, or images) to the pasteboard. Use the defined constant types (for example, **MIMETYPE_TEXT_PLAIN**) for **mimeType**. If you need to pass data in a custom format, you can use a custom MIME type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -72,14 +68,8 @@ Creates a **PasteData** object of the specified type and creates a **PasteData**
 
 | Name| Type| Mandatory| Description                                                                                                    |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | Yes| MIME type corresponding to the pasteboard data. Details are described below.|
+| mimeType | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, Want, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.|
 | value | [ValueType](#valuetype9) | Yes| Content of custom data. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the app's copy and paste performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
-
-**mimeType description**
-
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types, which cannot be the same as those defined in constants.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
 
 **Return value**
 
@@ -117,9 +107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 createData(data: Record&lt;string, ValueType&gt;): PasteData
 
-Creates a **PasteData** object that contains multiple types of data. Multiple MIME data records can be created at a time. After this API is called, the system parses multiple key-value pairs in the record and creates multiple **PasteDataRecord** records. The first MIME type is used as the default type. Data of non-default types is read using [getData](#getdata14).
-
-**Use scenarios**: When an application needs to copy multiple types of data (such as text, URI, and HTML) to the pasteboard at the same time, this API can be used to create a **PasteData** object that contains data of multiple MIME types.
+Creates a **PasteData** object that contains multiple types of data. Multiple MIME data records can be created at a time. After this API is called, the system parses multiple key-value pairs in the record and creates multiple **PasteDataRecord** records. The first MIME type is used as the default type. Data of non-default types is read using [getData](#getdata14). When an application needs to copy multiple types of data (such as text, URI, and HTML) to the pasteboard at the same time, this API can be used to create a **PasteData** object that contains data of multiple MIME types.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -127,17 +115,7 @@ Creates a **PasteData** object that contains multiple types of data. Multiple MI
 
 | Name| Type| Mandatory| Description |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#object-literal)&lt;string, [ValueType](#valuetype9)&gt;| Yes| **Record** object. The key is the MIME type, and the value is the corresponding data. Details are described below.|
-
-**data description**
-
-- **Key of Record**: MIME type corresponding to the pasteboard data.
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
-- **Value of Record**: Data of the MIME type specified in the key.
-- **Default MIME type**: The MIME type specified by the first key-value pair in **Record** is used as the default MIME type of the first **PasteDataRecord** entry in the **PasteData** object.
-- **Data reading for non-default types**: Data of non-default types can be read only using [getData](#getdata14).
+| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-type) &lt;string, [ValueType](#valuetype9)&gt;| Yes| The key of **Record** can be the MIME type corresponding to the pasteboard data, including HTML, Want, plain text, URI, and pixel map defined in [Constants](#constants). Alternatively, the key could be a custom MIME type, whose parameter, the length of **mimeType**, cannot exceed 1024 bytes.<br>The value of **Record** is the data corresponding to the MIME type specified in the key.<br>The first MIME type specified by the key-value in **Record** is used as the default MIME type of the first **PasteDataRecord** in the **PasteData** object. Data of non-default types can be read only by using the [getData](#getdata14) API.|
 
 **Return value**
 
@@ -182,8 +160,6 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 Creates a data record of the specified type and encapsulates the data record into a **PasteDataRecord** object. After this API is called, the system encapsulates data of the specified MIME type and returns records that can be added to the **PasteData** object. The value of **mimeType** contains a maximum of 1024 bytes. The value type must match the MIME type. For example, if the MIME type is **MIMETYPE_TEXT_PLAIN**, the value must be of the string type. The parameter cannot be empty.
 
-**API called in pairs**
-
 - The created record takes effect only after being added to the [PasteData](#pastedata) object using [addRecord](#addrecord7).
 - The typical process is as follows: Use [createData](#pasteboardcreatedata9) to create a **PasteData** object, use **createRecord** to create a record, and then use **addRecord** to add the record.
 
@@ -195,14 +171,8 @@ Creates a data record of the specified type and encapsulates the data record int
 
 | Name| Type| Mandatory| Description               |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | Yes| MIME type corresponding to the pasteboard data. Details are described below. |
+| mimeType | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, Want, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes. |
 | value | [ValueType](#valuetype9) | Yes| Data content of the specified type. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the pasteboard performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
-
-**mimeType description**
-
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
 
 **Return value**
 
@@ -242,9 +212,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 getSystemPasteboard(): SystemPasteboard
 
-Obtains a **SystemPasteboard** object and returns a singleton instance of the pasteboard service. After this API is called, the **SystemPasteboard** object can be used to access the read, write, and listening functions of the pasteboard. The same instance is returned each time this API is called. Before calling this API, ensure that the pasteboard service is running properly.
-
-**Use scenarios**: Before performing any read or write operation on the pasteboard, you need to call this API to obtain the **SystemPasteboard** object.
+Obtains a **SystemPasteboard** object and returns a singleton instance of the pasteboard service. After this API is called, the **SystemPasteboard** object can be used to access the read, write, and listening functions of the pasteboard. The same instance is returned each time this API is called. Before calling this API, ensure that the pasteboard service is running properly. Before performing any read or write operation on the pasteboard, you need to call this API to obtain the **SystemPasteboard** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -275,7 +243,7 @@ Enumerates the pasteable ranges of pasteboard data.
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | INAPP                              | 0   | Only intra-application pasting is allowed.                                                             |
 | LOCALDEVICE                        | 1   | Paste is allowed in any application.<!--RP1--><!--RP1End-->  |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | Paste is allowed in any application across devices.<br>This API is deprecated since API version 12 without any alternative API or method. <!--RP2--><!--RP2End-->|
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | Paste is allowed in any application.<br>This API is deprecated since API version 12 without any alternative API or method. <!--RP2--><!--RP2End-->|
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
@@ -543,7 +511,7 @@ Defines the properties of all data records on the pasteboard, including the time
 
 ## FileConflictOptions<sup>15+</sup>
 
-Defines options for file copy conflicts.
+Enumerates the options used to resolve file copy conflicts.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -645,7 +613,7 @@ struct PasteboardTest {
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
                 console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
-                console.error('Failed to get PasteData. Cause: ' + err.message);
+                console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
               })
           })
         }
@@ -665,29 +633,15 @@ Obtains parameters when an application uses the file copy capability provided by
 
 | Name               | Type                                         | Read-Only| Optional| Description                                                        |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | No| Yes| Destination URI for copying files. The value must comply with the URI format. Details are described below.|
+| destUri             | string                                        | No| Yes| URI of the destination directory for the file copied. If file processing is not supported, this parameter is not required. If the application involves complex file processing policies or needs to distinguish file multipathing storage, you are advised not to set this parameter but let the application copy files by itself. This parameter is left empty by default.|
 | fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | No| Yes| Options used to resolve file copy conflicts. Set this parameter to **OVERWRITE** when the latest file content must be used in the destination URI. Set this parameter to **SKIP** when the original file in the destination URI needs to be retained to prevent accidental overwriting. The default value is **OVERWRITE**.|
 | progressIndicator   | [ProgressIndicator](#progressindicator15)     | No| No| Progress indicator options. You can use the default progress indicator as required. If this parameter is set to **DEFAULT**, the default system progress indicator is used. If this parameter is set to **NONE**, the app progress indicator is used. Only in the second case, the **progressListener** and **progressSignal** parameters are valid.|
 | progressListener    | [ProgressListener](#progresslistener15)       | No| Yes| Listener for progress data changes, which is used to obtain the pasting progress. This parameter is valid only when **progressIndicator** is set to **NONE**. When **progressIndicator** is set to **DEFAULT**, this parameter is invalid. By default, this parameter is left empty (the progress is not listened to).|
-| progressSignal      | [ProgressSignal](#progresssignal15)           | No| Yes| Function for canceling the progress indicator. Details are described below.|
-
-**destUri description**
-
-- **Usage**: Set the destination URI for copying files.
-- **Use scenarios**:
-- If file processing is not supported, you do not need to set this parameter.
-- If complex file processing policies are involved or multipathing file storage is required, you are advised to leave this parameter unspecified and let the app handle file copying.
-- **Default value**: empty.
-
-**progressSignal description**
-
-- **Usage**: Define a function for canceling the progress indicator. The task can be canceled during pasting.
-- **Usage conditions**: This parameter is valid only when [ProgressIndicator](#progressindicator15) is set to **NONE**.
-- **Default value**: empty.
+| progressSignal      | [ProgressSignal](#progresssignal15)           | No| Yes| Function for canceling the paste task. This parameter is valid only when [ProgressIndicator](#progressindicator15) is set to **NONE**. This parameter is left empty by default.|
 
 ## PasteDataRecord<sup>7+</sup>
 
-Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definition of the content on the pasteboard. The pasteboard content consists of one or more plain text, HTML, URI, or Want records.
+Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definition of the content on the pasteboard. The pasteboard content consists of one or more plain text, HTML, URI, or Want records. The default data type of a **PasteDataRecord** cannot be changed after the record is created. You must specify the correct default data type when creating a **PasteDataRecord**. To update the attributes of a **PasteDataRecord**, use [addEntry](#addentry14).
 
 ### Attributes
 
@@ -697,13 +651,13 @@ Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definiti
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText| string | Yes| No| HTML text. The value must comply with the standard HTML format.|
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| No| Want content.|
-| mimeType | string | Yes| No| Default data type.|
-| plainText | string | Yes| No| Plain text.|
-| uri | string | Yes| No| URI text. The value must comply with the standard URI format.|
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| No| Pixel map.|
-| data<sup>9+</sup> | Record<string, ArrayBuffer> | Yes| No| Content of custom data.|
+| htmlText| string | No| No| HTML text. The value must comply with the standard HTML format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Want content. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| mimeType | string | No| No| Default data type. Modifications to this attribute are invalid.|
+| plainText | string | No| No| Plain text. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| uri | string | No| No| URI text. The value must comply with the standard URI format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| No| Pixel map. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | No| No| Content of custom data. Modifications to this attribute are invalid.|
 
 ### toPlainText<sup>9+</sup>
 
@@ -733,7 +687,7 @@ console.info(`Succeeded in converting to text. Text: ${text}`);
 
 addEntry(type: string, value: ValueType): void
 
-Adds custom data of an extra type to **PasteDataRecord**. The MIME type added using this method is not the default type of **Record**. You can only use the [getData](#getdata14) API to read the corresponding data.
+Adds data of an extra type to **PasteDataRecord**. The MIME type added using this method is not the default type of **Record**. You can only use the [getData](#getdata14) API to read the corresponding data.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -741,14 +695,8 @@ Adds custom data of an extra type to **PasteDataRecord**. The MIME type added us
 
 | Name  | Type| Mandatory| Description               |
 |-------| -------- | -------- |-------------------|
-| type  | string | Yes| MIME type corresponding to the pasteboard data. Details are described below. |
+| type  | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, Want, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.|
 | value | [ValueType](#valuetype9) | Yes| Content of custom data.         |
-
-**mimeType description**
-
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
 
 **Error codes**
 
@@ -775,9 +723,7 @@ record.addEntry(pasteboard.MIMETYPE_TEXT_HTML, html);
 
 getValidTypes(types: Array&lt;string&gt;): Array&lt;string&gt;
 
-Obtains the intersection of the input MIME type and the MIME type of the pasteboard data.
-
-**Use scenarios**: Before pasting, check whether the pasteboard data formats include the formats supported by the app. For example, if the app supports only plain text and HTML, you can call this API to check whether the pasteboard data formats include these formats and determine whether to perform the paste operation based on the returned result.
+Obtains the intersection of the input MIME type and the MIME type of the pasteboard data. Before pasting, check whether the pasteboard data formats include the formats supported by the app. For example, if the app supports only plain text and HTML, you can call this API to check whether the pasteboard data formats include these formats and determine whether to perform the paste operation based on the returned result.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -858,13 +804,13 @@ record.getData(pasteboard.MIMETYPE_TEXT_PLAIN).then((value: pasteboard.ValueType
     let textPlainContent = value as string;
     console.info('Success to get text/plain value. value is: ' + textPlainContent);
 }).catch((err: BusinessError) => {
-    console.error('Failed to get text/plain value. Cause: ' + err.message);
+    console.error(`Failed to get text/plain value. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 record.getData(pasteboard.MIMETYPE_TEXT_URI).then((value: pasteboard.ValueType) => {
     let uri = value as string;
     console.info('Success to get text/uri value. value is: ' + uri);
 }).catch((err: BusinessError) => {
-    console.error('Failed to get text/uri value. Cause: ' + err.message);
+    console.error(`Failed to get text/uri value. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -901,7 +847,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability:///com.example.myapplication1/user.txt');
 record.convertToText((err: BusinessError, data: string) => {
     if (err) {
-        console.error(`Failed to convert to text. Cause: ${err.message}`);
+        console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info(`Succeeded in converting to text. Data: ${data}`);
@@ -934,7 +880,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 record.convertToText().then((data: string) => {
     console.info(`Succeeded in converting to text. Data: ${data}`);
 }).catch((err: BusinessError) => {
-    console.error(`Failed to convert to text. Cause: ${err.message}`);
+    console.error(`Failed to convert to text. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -975,7 +921,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
     let text: string = pasteData.getPrimaryText();
 }).catch((err: BusinessError) => {
     // Handle the failure of obtaining the content.
-    console.error('Failed to get PasteData. Cause: ' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -1004,7 +950,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
     let htmlText: string = pasteData.getPrimaryHtml();
 }).catch((err: BusinessError) => {
-    console.error('Failed to get PasteData. Cause: ' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -1034,7 +980,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
     let want: Want = pasteData.getPrimaryWant();
 }).catch((err: BusinessError) => {
-    console.error('Failed to get PasteData. Cause: ' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -1063,7 +1009,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
     let uri: string = pasteData.getPrimaryUri();
 }).catch((err: BusinessError) => {
-    console.error('Failed to get PasteData. Cause: ' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -1109,7 +1055,7 @@ image.createPixelMap(buffer, opt).then((pixelMap: image.PixelMap) => {
 
 addRecord(record: PasteDataRecord): void
 
-Adds a data record to this pasteboard, and adds its type to **mimeTypes** in [PasteDataProperty](#pastedataproperty7). The parameters cannot be empty. Otherwise, the operation is invalid.
+Adds a data record to this pasteboard, and adds its type to **mimeTypes** in [PasteDataProperty](#pastedataproperty7). The parameters cannot be empty. Otherwise, the operation fails.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1138,9 +1084,7 @@ pasteData.addRecord(htmlRecord);
 
 addRecord(mimeType: string, value: ValueType): void
 
-Adds a data record to this pasteboard, and adds its type to **mimeTypes** in [PasteDataProperty](#pastedataproperty7). The parameters cannot be empty. Otherwise, the operation fails.
-
-**Use scenarios**: Use this method to add additional data records to an existing **PasteData** object when the pasteboard needs to contain multiple types of data, for example, plain text and HTML.
+Adds a data record to this pasteboard, and adds its type to **mimeTypes** in [PasteDataProperty](#pastedataproperty7). The parameters cannot be empty. Otherwise, the operation fails. Use this method to add additional data records to an existing **PasteData** object when the pasteboard needs to contain multiple types of data, for example, plain text and HTML.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1160,7 +1104,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 12900002 | The number of records exceeds the upper limit, <br>**Applicable versions**: 9|
+| 12900002 | The number of records exceeds the upper limit. <br>**Applicable versions**: 9|
 
 **Example**
 
@@ -1410,7 +1354,7 @@ Checks whether the pasteboard contains data of the specified MIME type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The length cannot exceed 1024 bytes.|
+| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, Want, plain text, URI, and pixel map, or a custom MIME type. The length of the data type string cannot exceed 1024 bytes.|
 
 **Return value**
 
@@ -1503,11 +1447,7 @@ pasteData.replaceRecord(0, record);
 
 pasteStart(): void
 
-Notifies the pasteboard service to retain the cross-device channel before reading data from the pasteboard. Notifies the pasteboard service to retain the cross-device link before accessing cross-device data in the pasteboard. The cross-device link is used to connect to the peer device and transfer files from the peer device to the local device. If this API is not called, the cross-device link will be automatically disconnected 30 seconds later. It is applicable to the cross-device pasting scenario.
-
-**Use scenarios**: This API is used when you need to ensure that the cross-device channel for pasteboard data transfer remains connected for subsequent reading of the pasteboard data from the peer device.
-
-**API called in pairs**
+Notifies the pasteboard service to retain the cross-device channel before reading data from the pasteboard. Notifies the pasteboard service to retain the cross-device link before accessing cross-device data in the pasteboard. The cross-device link is used to connect to the peer device and transfer files from the peer device to the local device. If this API is not called, the cross-device link will be automatically disconnected 30 seconds later. It is applicable to the cross-device pasting scenario. This API is used when you need to ensure that the cross-device channel for pasteboard data transfer remains connected for subsequent reading of the pasteboard data from the peer device.
 
 - This API must be used with [pasteComplete](#pastecomplete12) in pairs.
 - Calling sequence: Call **pasteStart()** to notify the system to reserve the channel. After data processing is complete, call **pasteComplete()** to notify the system that the processing is complete.
@@ -1523,7 +1463,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) => {
     if (err) {
-        console.error('Failed to get PasteData. Cause: ' + err.message);
+        console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     pasteData.pasteStart();
@@ -1538,8 +1478,7 @@ pasteComplete(): void
 
 Notifies the pasteboard service that the paste is complete, and resources such as the cross-device channel can be released. This API should be called after **pasteStart()** is called and data processing is complete to prevent resource waste. If this API is not called, the cross-device channel may be occupied for a long time, affecting subsequent cross-device paste operations.
 
-**Process**
-
+For details about how to use **pasteComplete()** and other APIs, see the following:
 1. Obtain the pasteboard data by calling **getData()**.
 2. Reserve the cross-device channel by calling **pasteStart()**.
 3. Use the pasteboard data.
@@ -1555,7 +1494,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) => {
     if (err) {
-        console.error('Failed to get PasteData. Cause: ' + err.message);
+        console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     pasteData.pasteStart();
@@ -1724,7 +1663,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The length cannot exceed 1024 bytes.|
+| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, Want, plain text, URI, and pixel map, or a custom MIME type. The length cannot exceed 1024 bytes.|
 
 **Return value**
 
@@ -1830,11 +1769,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 
 on(type: 'update', callback: () =&gt;void): void
 
-Subscribes to the content change event of the system pasteboard. After this method is called, the system registers a listener in the pasteboard service. The callback is triggered when content is written, cleared, or modified in the pasteboard. Multiple listeners can be registered. You need to call **off('update')** to unsubscribe from the content change event at a proper time to release resources.
-
-**Use scenarios**: This API is called when an app needs to respond to pasteboard content changes in real time, for example, to automatically detect data in a specific format or to implement intelligent paste suggestions.
-
-**API called in pairs**
+Subscribes to the content change event of the system pasteboard. After this method is called, the system registers a listener in the pasteboard service. The callback is triggered when content is written, cleared, or modified in the pasteboard. Multiple listeners can be registered. You need to call **off('update')** to unsubscribe from the content change event at a proper time to release resources. This API is called when an app needs to respond to pasteboard content changes in real time, for example, to automatically detect data in a specific format or to implement intelligent paste suggestions.
 
 - Call [off('update')](#offupdate7) to unsubscribe from the content change event of the system pasteboard when it is no longer needed.
 - If the event is not unsubscribed from, the callback function will continuously listen for pasteboard changes, which may cause memory leaks or the callback being triggered from multiple times.
@@ -1876,8 +1811,6 @@ off(type: 'update', callback?: () =&gt;void): void
 
 Unsubscribes from the system pasteboard content change event.
 
-**API called in pairs**
-
 - This API is used to unsubscribe from the event subscribed to by **on('update')**.
 - This API can be called only after an event has been subscribed to.
 - If the **callback** parameter is not specified, listening will be disabled for all callbacks registered by the current application.
@@ -1908,7 +1841,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 let listener = () => {
     console.info('The system pasteboard has changed.');
 };
-// Subscribe to the pasteboard content change event.
+// Unsubscribe from the pasteboard content change event.
 systemPasteboard.off('update', listener);
 ```
 
@@ -1916,9 +1849,7 @@ systemPasteboard.off('update', listener);
 
 clearData(callback: AsyncCallback&lt;void&gt;): void
 
-Clears the system pasteboard. This API uses an asynchronous callback to return the result. After this API is called, the system deletes all data from the pasteboard and triggers the registered listener callback **'update'**. After the pasteboard is cleared, it will contain no data, and **false** will be returned for **hasData**.
-
-**Use scenarios**: This API can be used to clear the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [clearDataSync](#cleardatasync11), this API does not block the UI thread and is more suitable for UI interactions.
+Clears the system pasteboard. This API uses an asynchronous callback to return the result. After this API is called, the system deletes all data from the pasteboard and triggers the registered listener callback **'update'**. After the pasteboard is cleared, it will contain no data, and **false** will be returned for **hasData**. This API can be used to clear the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [clearDataSync](#cleardatasync11), this API does not block the UI thread and is more suitable for UI interactions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1946,7 +1877,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 // Clear the system pasteboard content.
 systemPasteboard.clearData((err, data) => {
     if (err) {
-        console.error(`Failed to clear the pasteboard. Cause: ${err.message}`);
+        console.error(`Failed to clear the pasteboard. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info('Succeeded in clearing the pasteboard.');
@@ -1978,7 +1909,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.clearData().then((data: void) => {
     console.info('Succeeded in clearing the pasteboard.');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to clear the pasteboard. Cause: ${err.message}`);
+    console.error(`Failed to clear the pasteboard. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -1986,15 +1917,7 @@ systemPasteboard.clearData().then((data: void) => {
 
 setData(data: PasteData, callback: AsyncCallback&lt;void&gt;): void
 
-Writes a **PasteData** object to the pasteboard. This API uses an asynchronous callback to return the result. After this API is called, the system writes the data of the **PasteData** object to the pasteboard. After the data is written successfully, other apps can read the data from the pasteboard. The written data will replace the existing data in the pasteboard.
-
-**Constraints**
-
-- If another copy or paste operation is in progress, error code 27787277 is returned.
-- If the copy operation is prohibited, error code 27787278 is returned.
-- The **PasteData** object cannot be empty.
-
-**Use scenarios**: This API can be used to write data to the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Unlike [setDataSync](#setdatasync11), **setData** does not block the UI thread.
+Writes a **PasteData** object to the pasteboard. This API uses an asynchronous callback to return the result. After this API is called, the system writes the data of the **PasteData** object to the pasteboard. After the data is written successfully, other apps can read the data from the pasteboard. The written data will replace the existing data in the pasteboard. This API can be used to write data to the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Unlike [setDataSync](#setdatasync11), **setData** does not block the UI thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2027,7 +1950,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 // Write data to the system pasteboard.
 systemPasteboard.setData(pasteData, (err, data) => {
     if (err) {
-        console.error('Failed to set PasteData. Cause: ' + err.message);
+        console.error(`Failed to set PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info('Succeeded in setting PasteData.');
@@ -2038,9 +1961,7 @@ systemPasteboard.setData(pasteData, (err, data) => {
 
 setData(data: PasteData): Promise&lt;void&gt;
 
-Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result.
-
-**Use scenarios**: This API can be used to write date to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setDataSync](#setdatasync11), this API does not block the UI thread and is more suitable for UI interactions.
+Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result. This API can be used to write data to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setDataSync](#setdatasync11), this API does not block the UI thread and is more suitable for UI interactions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2081,7 +2002,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.setData(pasteData).then((data: void) => {
     console.info('Succeeded in setting PasteData.');
 }).catch((err: BusinessError) => {
-    console.error('Failed to set PasteData. Cause: ' + err.message);
+    console.error(`Failed to set PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2089,11 +2010,11 @@ systemPasteboard.setData(pasteData).then((data: void) => {
 
 getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
-Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses an asynchronous callback to return the result. After this API is called, the system reads the current content from the pasteboard service and returns a **PasteData** object using a callback. After the data is read successfully, the app can obtain the specific data content (such as text, HTML, and URI) using the **PasteData** object.
+Obtains a **PasteData** object from the pasteboard. This API uses an asynchronous callback to return the result. This API uses an asynchronous callback to return the result. After this API is called, the system reads the current content from the pasteboard service and returns a **PasteData** object using a callback. After the data is read successfully, the app can obtain the specific data content (such as text, HTML, and URI) using the **PasteData** object. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Compared with [getDataSync](#getdatasync11), **getData** does not block the UI thread and is suitable for processing a large amount of data or remote data.
 
-**Use scenarios**: This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Compared with **getDataSync**, **getData** does not block the UI thread and is suitable for processing a large amount of data or remote data.
+To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
+**Required permissions**: ohos.permission.READ_PASTEBOARD
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2125,7 +2046,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 // Read the system clipboard content.
 systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) => {
     if (err) {
-        console.error('Failed to get PasteData. Cause: ' + err.message);
+        console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     // Obtain the plain text content from the pasteboard.
@@ -2137,11 +2058,11 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 
 getData(): Promise&lt;PasteData&gt;
 
-Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked.
+Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses a promise to return the result. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. This API can be used when an app needs to read data from the pasteboard using [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata).
 
-**Use scenarios**: This API can be used when an app needs to read data from the pasteboard using [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata).
+To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
+**Required permissions**: ohos.permission.READ_PASTEBOARD
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2174,7 +2095,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
     // Obtain the plain text content from the pasteboard.
     let text: string = pasteData.getPrimaryText();
 }).catch((err: BusinessError) => {
-    console.error('Failed to get PasteData. Cause: ' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2208,9 +2129,7 @@ console.info(`Succeeded in checking the remote data. Result: ${result}`);
 
 hasData(callback:  AsyncCallback&lt;boolean&gt;): void
 
-Checks whether the system pasteboard contains data. This API uses an asynchronous callback to return the result.
-
-**Use scenarios**: This API can be used to check whether the pasteboard contains data. asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [hasDataSync](#hasdatasync11), this API does not block the UI thread and is more suitable for UI interactions.
+Checks whether the system pasteboard contains data. This API uses an asynchronous callback to return the result. This API can be used to check whether the pasteboard contains data asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [hasDataSync](#hasdatasync11), this API does not block the UI thread and is more suitable for UI interactions.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2238,7 +2157,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.hasData((err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`Failed to check the PasteData. Cause: ${err.message}`);
+        console.error(`Failed to check the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info(`Succeeded in checking the PasteData. Data: ${data}`);
@@ -2270,7 +2189,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.hasData().then((data: boolean) => {
     console.info(`Succeeded in checking the PasteData. Data: ${data}`);
 }).catch((err: BusinessError) => {
-    console.error(`Failed to check the PasteData. Cause: ${err.message}`);
+    console.error(`Failed to check the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2305,7 +2224,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.clear((err, data) => {
     if (err) {
-        console.error(`Failed to clear the PasteData. Cause: ${err.message}`);
+        console.error(`Failed to clear the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info('Succeeded in clearing the PasteData.');
@@ -2338,7 +2257,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.clear().then((data) => {
     console.info('Succeeded in clearing the PasteData.');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to clear the PasteData. Cause: ${err.message}`);
+    console.error(`Failed to clear the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2377,7 +2296,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 // Read the system clipboard content.
 systemPasteboard.getPasteData((err: BusinessError, pasteData: pasteboard.PasteData) => {
     if (err) {
-        console.error('Failed to get PasteData. Cause: ' + err.message);
+        console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     // Obtain the plain text content from the pasteboard.
@@ -2414,7 +2333,7 @@ systemPasteboard.getPasteData().then((pasteData: pasteboard.PasteData) => {
     // Obtain the plain text content from the pasteboard.
     let text: string = pasteData.getPrimaryText();
 }).catch((err: BusinessError) => {
-    console.error('Failed to get PasteData. Cause: ' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2451,7 +2370,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.hasPasteData((err: BusinessError, data: boolean) => {
     if (err) {
-        console.error(`Failed to check the PasteData. Cause: ${err.message}`);
+        console.error(`Failed to check the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info(`Succeeded in checking the PasteData. Data: ${data}`);
@@ -2484,7 +2403,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.hasPasteData().then((data: boolean) => {
     console.info(`Succeeded in checking the PasteData. Data: ${data}`);
 }).catch((err: BusinessError) => {
-    console.error(`Failed to check the PasteData. Cause: ${err.message}`);
+    console.error(`Failed to check the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2521,7 +2440,7 @@ let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('content');
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.setPasteData(pasteData, (err, data) => {
     if (err) {
-        console.error('Failed to set PasteData. Cause: ' + err.message);
+        console.error(`Failed to set PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
         return;
     }
     console.info('Succeeded in setting PasteData.');
@@ -2560,7 +2479,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.setPasteData(pasteData).then((data: void) => {
     console.info('Succeeded in setting PasteData.');
 }).catch((err: BusinessError) => {
-    console.error('Failed to set PasteData. Cause: ' + err.message);
+    console.error(`Failed to set PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 ### isRemoteData<sup>11+</sup>
@@ -2595,7 +2514,7 @@ try {
     let result: boolean = systemPasteboard.isRemoteData();
     console.info(`Succeeded in checking the RemoteData. Result: ${result}`);
 } catch (err) {
-    console.error('Failed to check the RemoteData. Cause: ' + err.message);
+    console.error(`Failed to check the RemoteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };
 ```
 
@@ -2603,9 +2522,7 @@ try {
 
 getDataSource(): string
 
-Obtains the name of the application that provides data.
-
-**Use scenarios**: This API is used to identify the source app of pasteboard data. It is applicable to security audit, data tracking, and notifying users of the data source.
+Obtains the name of the app that provides the pasteboard data. This method is applicable to scenarios such as security audit, data tracking, and notifying users of the data source.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2633,7 +2550,7 @@ try {
     let result: string = systemPasteboard.getDataSource();
     console.info(`Succeeded in getting DataSource. Result: ${result}`);
 } catch (err) { 
-    console.error('Failed to get DataSource. Cause: ' + err.message);
+    console.error(`Failed to get DataSource. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };
 ```
 
@@ -2676,7 +2593,7 @@ try {
     let result: boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_TEXT_PLAIN);
     console.info(`Succeeded in checking the DataType. Result: ${result}`);
 } catch (err) {
-    console.error('Failed to check the DataType. Cause: ' + err.message);
+    console.error(`Failed to check the DataType. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };
 ```
 
@@ -2684,9 +2601,7 @@ try {
 
 clearDataSync(): void
 
-Clears data in the system pasteboard. This API returns the result synchronously.
-
-**Use scenarios**: This API is used to clear the pasteboard data synchronously in a key service process or confirm the clearing result immediately.
+Clears data in the system pasteboard. This API returns the result synchronously. This API is used to clear the pasteboard data synchronously in a key service process or confirm the clearing result immediately.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2708,7 +2623,7 @@ try {
     systemPasteboard.clearDataSync();
     console.info('Succeeded in clearing the pasteboard.');
 } catch (err) {
-    console.error('Failed to clear the pasteboard. Cause: ' + err.message);
+    console.error(`Failed to clear the pasteboard. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };
 ```
 
@@ -2716,13 +2631,11 @@ try {
 
 getDataSync(): PasteData
 
-Reads data in the system pasteboard. This API returns the result synchronously.
+Reads data in the system pasteboard. This API returns the result synchronously. This API is used to obtain pasteboard data synchronously in key service processes or process pasteboard data immediately. Do not call this API on the UI thread to prevent blocking the UI. Use the asynchronous API [getData](#getdata9) to process a large amount of data or remote data.
 
-**Use scenarios**: This API is used to obtain pasteboard data synchronously in key service processes or process pasteboard data immediately.
+To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
-**Development suggestions**: Do not call this API on the UI thread to prevent blocking the UI. Use the asynchronous API **getData** to process a large amount of data or remote data.
-
-**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
+**Required permissions**: ohos.permission.READ_PASTEBOARD
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2751,7 +2664,7 @@ try {
     let result: pasteboard.PasteData = systemPasteboard.getDataSync();
     console.info('Succeeded in getting PasteData.');
 } catch (err) {
-    console.error('Failed to get PasteData. Cause:' + err.message);
+    console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };   
 ```
 
@@ -2759,9 +2672,7 @@ try {
 
 setDataSync(data: PasteData): void
 
-Writes data to the system pasteboard. This API returns the result synchronously.
-
-**Use scenarios**: This API can be used to write data to the pasteboard synchronously in key service processes or confirm the write result immediately.
+Writes data to the system pasteboard. This API returns the result synchronously. This API can be used to write data to the pasteboard synchronously in key service processes or confirm the write result immediately.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2791,7 +2702,7 @@ try {
     systemPasteboard.setDataSync(pasteData);
     console.info('Succeeded in setting PasteData.');
 } catch (err) {
-    console.error('Failed to set PasteData. Cause:' + err.message);
+    console.error(`Failed to set PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };  
 ```
 
@@ -2827,7 +2738,7 @@ try {
     let result: boolean = systemPasteboard.hasDataSync();
     console.info(`Succeeded in checking the PasteData. Result: ${result}`);
 } catch (err) {
-    console.error('Failed to check the PasteData. Cause: ' + err.message);
+    console.error(`Failed to check the PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };    
 ```
 
@@ -2835,11 +2746,11 @@ try {
 
 getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 
-Obtains a **PasteData** object from the pasteboard. This API uses a promise to return the result.
+Obtains a **PasteData** object from the pasteboard. This API uses a promise to return the result. This API is used for cross-app data exchange using [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata). This API can be used to share data with other apps that support **UnifiedData** or process complex data of multiple types. Compared with [getData](#getdata9), **getUnifiedData** provides more standard data formats.
 
-**Use scenarios**: This API is used for cross-app data exchange using [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata). This API can be used to share data with other apps that support **UnifiedData** or process complex data of multiple types. Compared with [getData](#getdata14), **getUnifiedData** provides more standard data formats.
+To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
+**Required permissions**: ohos.permission.READ_PASTEBOARD
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2876,7 +2787,7 @@ systemPasteboard.getUnifiedData().then((data) => {
         }
     }
 }).catch((err: BusinessError) => {
-    console.error('Failed to get UnifiedData. Cause: ' + err.message);
+    console.error(`Failed to get UnifiedData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2884,11 +2795,11 @@ systemPasteboard.getUnifiedData().then((data) => {
 
 getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
-Reads data in the system pasteboard. This API returns the result synchronously.
+Reads data in the system pasteboard. This API returns the result synchronously. This API is used for cross-app data exchange using **UnifiedData**. This API can be used to immediately obtain data from the pasteboard in key service processes and share the data with other apps that support **UnifiedData**. The delay in obtaining data from the pasteboard is affected by the data volume and network environment. Therefore, calling this API may take a long time. You are advised to call this API in non-UI threads.
 
-**Use scenarios**: This API is used for cross-app data exchange using **UnifiedData**. This API can be used to immediately obtain data from the pasteboard in key service processes and share the data with other apps that support **UnifiedData**. The delay in obtaining data from the pasteboard is affected by the data volume and network environment. Therefore, calling this API may take a long time. You are advised to call this API in non-UI threads.
+To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
+**Required permissions**: ohos.permission.READ_PASTEBOARD
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2919,7 +2830,7 @@ try {
     let result: unifiedDataChannel.UnifiedData = systemPasteboard.getUnifiedDataSync();
     console.info('Succeeded in getting UnifiedData.');
 } catch (err) {
-    console.error('Failed to get UnifiedData. Cause:' + err.message);
+    console.error(`Failed to get UnifiedData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };   
 ```
 
@@ -2927,9 +2838,7 @@ try {
 
 setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
-Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result.
-
-**Use scenarios**: This API can be used to write date to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setUnifiedDataSync](#setunifieddatasync12), this API does not block the UI thread and is more suitable for UI interactions.
+Writes a **PasteData** object to the pasteboard. This API uses a promise to return the result. This API can be used to write data to the pasteboard asynchronously without blocking the main thread, such as the interaction process that requires the UI response. Unlike the synchronous API [setUnifiedDataSync](#setunifieddatasync12), this API does not block the UI thread and is more suitable for UI interactions.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -2980,7 +2889,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.setUnifiedData(data).then((data: void) => {
     console.info('Succeeded in setting UnifiedData.');
 }).catch((err: BusinessError) => {
-    console.error('Failed to setUnifiedData. Cause: ' + err.message);
+    console.error(`Failed to setUnifiedData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -2988,9 +2897,7 @@ systemPasteboard.setUnifiedData(data).then((data: void) => {
 
 setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
-Writes data to the system pasteboard. This API returns the result synchronously.
-
-**Use scenarios**: This API is used for cross-app data exchange using **UnifiedData**. This API can be used to immediately write data to the pasteboard in key service processes and share the data with other apps that support [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata).
+Writes data to the system pasteboard. This API returns the result synchronously. This API is used for cross-app data exchange using **UnifiedData**. This API can be used to immediately write data to the pasteboard in key service processes and share the data with other apps that support [UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata).
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -3037,7 +2944,7 @@ try {
     systemPasteboard.setUnifiedDataSync(plainTextData);
     console.info('Succeeded in setting UnifiedData.');
 } catch (err) {
-    console.error('Failed to set UnifiedData. Cause:' + err.message);
+    console.error(`Failed to set UnifiedData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };
 ```
 
@@ -3045,11 +2952,7 @@ try {
 
 setAppShareOptions(shareOptions: ShareOption): void
 
-Sets pasteable range of pasteboard data for applications.
-
-**Use scenarios**: This API can be used to globally restrict the pasteable scope of pasteboard data generated by the app. For example, a financial app needs to protect sensitive user information.
-
-**API called in pairs**
+Sets pasteable range of pasteboard data for applications. This API can be used to globally restrict the pasteable scope of pasteboard data generated by the app. For example, a financial app needs to protect sensitive user information.
 
 - This API is used together with **removeAppShareOptions()**.
 - To delete the configured sharing scope, call **removeAppShareOptions()**.
@@ -3091,11 +2994,7 @@ try {
 
 removeAppShareOptions(): void
 
-Deletes the global pasteable range of the application.
-
-**Use scenarios**: This API can be used to delete the previously set pasteable scope and restore the default pasteable scope for pasteboard data.
-
-**API called in pairs**
+Deletes the global pasteable range of the application. This API can be used to delete the previously set pasteable scope and restore the default pasteable scope for pasteboard data.
 
 - This API must be used together with **setAppShareOptions()**.
 - The sharing scope set by **setAppShareOptions()** is deleted.
@@ -3135,16 +3034,14 @@ Describes the modes supported by the pasteboard.
 | URL                              | 0   | URL.                                                             |
 | NUMBER                        | 1   | Number.                                                   |
 | EMAIL_ADDRESS | 2   | Email address.|
-| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model constraint**: This API can be used only in the stage model.|
-| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model constraint**: This API can be used only in the stage model.|
+| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model restriction**: This API can be used only in the stage model.|
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ### detectPatterns<sup>13+</sup>
 
 detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&gt;
 
-Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise to return the result. The local pasteboard data refers to the pasteboard data on the current device, excluding the pasteboard data transferred across devices.
-
-**Use scenarios**: This API can be used to check whether the pasteboard contains specific types of data (such as URLs, email addresses, and phone numbers) before pasting, so that the app can perform corresponding processing or provide intelligent prompts.
+Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise to return the result. The local pasteboard data refers to the pasteboard data on the current device, excluding the pasteboard data transferred across devices. This API can be used to check whether the pasteboard contains specific types of data (such as URLs, email addresses, and phone numbers) before pasting, so that the app can perform corresponding processing or provide intelligent prompts.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
@@ -3177,13 +3074,13 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 let patterns: Array<pasteboard.Pattern> = [pasteboard.Pattern.URL, pasteboard.Pattern.EMAIL_ADDRESS];
 
 systemPasteboard.detectPatterns(patterns).then((data: Array<pasteboard.Pattern>) => {
-    if (patterns.sort().join('')==data.sort().join('')) {
+    if (patterns.sort().join('') == data.sort().join('')) {
       console.info('All needed patterns detected, next get data');
       try {
         let result: pasteboard.PasteData = systemPasteboard.getDataSync();
         console.info('Succeeded in getting PasteData.');
       } catch (err) {
-        console.error('Failed to get PasteData. Cause:' + err.message);
+        console.error(`Failed to get PasteData. errorCode: ${err.code}, errorMessage: ${err.message}.`);
       };
     } else {
       console.info("Not all needed patterns detected, no need to get data.");
@@ -3216,7 +3113,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 systemPasteboard.getMimeTypes().then((data: Array<string>) => {
     console.info('Succeeded in getting mimeTypes. mimeTypes: ' + data.sort().join(','));
 }).catch((err: BusinessError) => {
-    console.error('Failed to get mimeTypes. Cause: ' + err.message);
+    console.error(`Failed to get mimeTypes. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 });
 ```
 
@@ -3224,11 +3121,11 @@ systemPasteboard.getMimeTypes().then((data: Array<string>) => {
 
 getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
-Obtains the pasteboard data and progress. This API uses a promise to return the result. Folders cannot be copied. For the copy operation of large files, you are advised to register a listener to track the copy progress and prevent long waiting time on the UI thread. You are also advised to set a proper destination path to ensure sufficient storage space.
+Obtains the pasteboard data and progress. This API uses a promise to return the result. Folders cannot be copied. For the copy operation of large files, you are advised to register a listener to track the copy progress and prevent long waiting time on the UI thread. You are also advised to set a proper destination path to ensure sufficient storage space. This method is applicable to the large file pasting scenario. In this scenario, you can use this callback to display the copy progress or monitor the copy process to cancel the operation when necessary.
 
-**Use scenarios**: This API can be used display the copy progress or listen for the copy process to cancel the operation if necessary during pasting of large files.
+To use the custom control to access the pasteboard content, you must [request the permission to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md). Those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
+**Required permissions**: ohos.permission.READ_PASTEBOARD
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -3279,7 +3176,7 @@ struct PasteboardTest {
               let systemPasteboard = pasteboard.getSystemPasteboard();
               await systemPasteboard.setData(pasteData);
               let progressListenerInfo = (progress: pasteboard.ProgressInfo) => {
-                console.info('progressListener success, progress:' + progress.progress);
+                console.info(`progressListener success, progress: ${progress.progress}`);
               };
               let destPath: string = '/data/storage/el2/base/files/';
               let destUri : string = fileUri.getUriFromPath(destPath);
@@ -3292,7 +3189,7 @@ struct PasteboardTest {
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
                 console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
-                console.error('Failed to get PasteData. Cause: ' + err.message);
+                console.error(`Failed to get PasteData. CerrorCode: ${err.code}, errorMessage: ${err.message}.`);
               })
           })
         }
@@ -3334,7 +3231,7 @@ try {
     let result : number = systemPasteboard.getChangeCount();
     console.info(`Succeeded in getting the ChangeCount. Result: ${result}`);
 } catch (err) {
-    console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
+    console.error(`Failed to get the ChangeCount. errorCode: ${err.code}, errorMessage: ${err.message}.`);
 };
 ```
 ### UpdateCallback<sup>22+</sup>
@@ -3350,8 +3247,6 @@ Callback to be invoked when the pasteboard content changes.
 onRemoteUpdate(callback: UpdateCallback): void
 
 Subscribes to the content change events of the pasteboard on a remote device. This callback is triggered when the pasteboard content on the remote device changes.
-
-**API called in pairs**
 
 - Call [offRemoteUpdate](#offremoteupdatecallback-updatecallback22) to unsubscribe from the content change event of the pasteboard when it is no longer needed.
 - If the event is not unsubscribed from, the callback function will continuously listen for remote changes, which may cause memory leaks.
@@ -3381,8 +3276,6 @@ offRemoteUpdate(callback?: UpdateCallback): void
 
 Unsubscribes from the content change events of the pasteboard on a remote device.
 
-**API called in pairs**
-
 - This API is used to unsubscribe from the event subscribed to by **onRemoteUpdate()**.
 - This API can be called only after an event has been subscribed to.
 - If the **callback** parameter is not specified, remote listening will be disabled for all callbacks registered by the current application.
@@ -3404,3 +3297,4 @@ let listener = () => {
 };
 systemPasteboard.offRemoteUpdate(listener);
 ```
+<!--no_check-->

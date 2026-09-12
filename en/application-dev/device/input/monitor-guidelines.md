@@ -33,7 +33,7 @@ The following table lists the APIs for creating and deleting event listening. Fo
 
 ### Linking Dynamic Libraries
 
-Before calling listener-related APIs, you need to link the related dynamic libraries. To link dynamic libraries, add the following configuration to the **CMakeList.txt** file:
+Before calling listener-related APIs, you need to link the related dynamic libraries. To link dynamic libraries, add the following configuration to the **CMakeLists.txt** file:
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)

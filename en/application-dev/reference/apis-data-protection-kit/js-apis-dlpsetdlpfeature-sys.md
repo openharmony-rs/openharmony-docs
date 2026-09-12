@@ -69,6 +69,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported because car not support DLP feature. <br>Applicable version: 26.1.0+|
 | 19100001 | Invalid parameter value. |
 | 19100011 | The system ability works abnormally. |
 

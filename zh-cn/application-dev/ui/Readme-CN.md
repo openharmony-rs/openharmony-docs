@@ -200,7 +200,6 @@
       - [组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)
       - [沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)
     - [沉浸光感功耗优化](arkts-immersive-light-sense-constraints.md)
-    - [沉浸光感兼容性适配](arkts-immersive-light-sense-compatibility.md)
     - [沉浸光感常见问题](arkts-immersive-light-sense-faq.md)
     - [沉浸光感典型场景](arkts-immersive-light-sample.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
@@ -276,7 +275,7 @@
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
-    - [设置应用内主题换肤](theme_skinning.md)
+    - [设置应用内主题换肤](theme-skinning.md)
   - UI系统场景化能力<!--arkts-ui-system-scenarization-capability-->
     - [使用UI上下文接口操作界面（UIContext）](arkts-global-interface.md)
     - [使用组件截图（ComponentSnapshot）](arkts-uicontext-component-snapshot.md)<!--RP15--><!--RP15End-->
@@ -416,7 +415,7 @@
   - [UI调优](ui-inspector-profiler.md)
   - [UI高性能开发](ui-performance-overview.md)
   - UI开发常见问题<!--ui-development-faq-->
-    - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
+    - [Navigation常见问题](arkts-navigation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [弹窗组件常见问题](arkts-popup-component-faq.md)

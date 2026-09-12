@@ -1,12 +1,11 @@
 # @ohos.bundle (Bundle Module) (System API)
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7eb6f57046c125c4e13d8acd776d3cbaf09f5103 translatedAt=2026-06-22T06:57:25.785Z pushedAt=2026-06-25T06:21:21.391Z -->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:08:30.055Z pushedAt=2026-09-05T10:47:30.546Z -->
 
 This module provides the capability to query app information, including [BundleInfo](js-apis-bundle-BundleInfo.md), [ApplicationInfo](js-apis-bundle-ApplicationInfo.md), [AbilityInfo](js-apis-bundle-AbilityInfo.md), and other information, as well as querying and setting the disabled status of apps.
 
@@ -118,7 +117,6 @@ bundle.getBundleInstaller((err, data) => {
   }
 });
 ```
-
 ## bundle.cleanBundleCacheFiles<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -395,7 +393,6 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
   console.error('getAbilityInfo failed. Cause: ' + JSON.stringify(error));
 });
 ```
-
 ## bundle.getPermissionDef<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -448,7 +445,7 @@ bundle.getPermissionDef(permission, (err, data) => {
 
 getPermissionDef(permissionName: string): Promise&lt;PermissionDef&gt;
 
-Obtains the permission details by permission name. This API uses a promise to return the result.
+Obtains the detailed information of a permission by permission name. This API uses a promise to return the result.
 
 **Required permissions**
 
@@ -618,7 +615,7 @@ bundle.getBundleInfos(bundleFlag, userId, (err, data) => {
 
 getApplicationInfos(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
 
-Obtains information about all installed apps for a specified user. This API uses a promise to return the result.
+Obtains the information about all installed applications under the specified user. This API uses a promise to return the result.
 
 > **NOTE**
 >

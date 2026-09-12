@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:34:36.044Z pushedAt=2026-06-29T02:15:43.548Z -->
+<!-- md-trans-meta sourceCommit=1a10f2e882133e3dde32de5f81cde43a3d4de71a translatedAt=2026-09-04T03:00:50.879Z pushedAt=2026-09-09T09:11:03.669Z -->
 
 ```c
 typedef struct {...} OH_Cursor
@@ -68,8 +68,8 @@ Pointer to the function used to obtain the number of columns in the result set.
 
 | Name           | Description                                        |
 | ----------------- | -------------------------------------------- |
-| OH_Cursor *cursor | Pointer to the **OH_Cursor** instance.                 |
-| int *count        | Pointer to the number of columns in the result set obtained.|
+| OH_Cursor *cursor | Pointer to an **OH_Cursor** instance. |
+| int *count        | This parameter is an output parameter. The number of columns in the result set is written to the variable. |
 
 **Returns**
 
@@ -88,7 +88,6 @@ int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *colu
 Pointer to the function used to obtain the column type based on the specified column index.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -176,8 +175,8 @@ Pointer to the function used to obtain the number of rows in the result set.
 
 | Name           | Description                                        |
 | ----------------- | -------------------------------------------- |
-| OH_Cursor *cursor | Pointer to the **OH_Cursor** instance.                 |
-| int *count        | Pointer to the number of columns in the result set obtained.|
+| OH_Cursor *cursor | Pointer to an **OH_Cursor** instance. |
+| int *count        | This parameter is an output parameter. The number of rows in the result set is written to the variable. |
 
 **Returns**
 
@@ -254,8 +253,8 @@ Pointer to the function used to obtain the value of the string type based on the
 
 | Name             | Description                                                        |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | Pointer to the **OH_Cursor** instance.                                 |
-| int32_t columnIndex | Index of the column, which starts from **0**.                 |
+| OH_Cursor *cursor   | Pointer to an **OH_Cursor** instance.                                  |
+| int32_t columnIndex | Index of the specified column in the result set, starting from 0.                  |
 | char *value         | Pointer to the value of the string type obtained.|
 | int length          | Length of **value**, obtained by using **getSize**.  |
 
