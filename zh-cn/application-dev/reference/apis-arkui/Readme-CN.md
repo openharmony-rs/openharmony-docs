@@ -16,7 +16,7 @@
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (内容预取)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
