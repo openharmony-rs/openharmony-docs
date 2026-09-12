@@ -70,10 +70,7 @@
     
   ```ts
   function onDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
-    depthDataOutput.on('depthDataAvailable', (err: BusinessError, depthData: camera.DepthData) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
+    depthDataOutput.on('depthDataAvailable', (depthData: camera.DepthData) => {
       console.info(`Depth data available: ${depthData}`);
     });
   }
