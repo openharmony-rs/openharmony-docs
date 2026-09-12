@@ -89,17 +89,17 @@
     **示例：**
 
     <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
-
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { picker } from '@kit.CoreFileKit';
     import { fileShare } from '@kit.CoreFileKit';
-
+    
     // ...
     export async function revokePermissionExample() {
       try {
         let uri = 'file://docs/storage/Users/username/tmp.txt';
-        // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+        // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。 
         // 注意：只能对已获取到的持久化权限进行取消持久化授权操作，否则会报错。
         let policyInfo: fileShare.PolicyInfo = {
           uri: uri,
