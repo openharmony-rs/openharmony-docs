@@ -300,7 +300,7 @@ export async function getLocalCapabilities(): Promise<void> {
     let fileDat = await backup.getLocalCapabilities();
     await gSessionRestore.appendBundles(fileDat.fd, restoreApps);
     console.info('appendBundles success');
-    // 添加需要恢复的应用成功后，请根据需要恢复的应用名称，调用getFileHandle接口获取待恢复应用数文件的文件句柄
+    // 添加需要恢复的应用成功后，请根据需要恢复的应用名称，调用getFileHandle接口获取待恢复应用数据文件的文件句柄
     // 应用待恢复数据文件数请依据实际备份文件个数为准，此处仅为请求示例
     let handle: backup.FileMeta = {
       bundleName: restoreApps[0],
