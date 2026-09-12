@@ -67162,5 +67162,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/usb/usbManager/usbHost/deviceManager-CApi.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerCApiSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":216,
+						"name":"CApiGetUsbDeviceList",
+						"start_line":208
+					},
+					{
+						"end_line":253,
+						"name":"CApiFreeUsbDeviceList",
+						"start_line":238
+					},
+					{
+						"end_line":297,
+						"name":"CApiHasPermission",
+						"start_line":286
+					},
+					{
+						"end_line":357,
+						"name":"CApiRequestPermission",
+						"start_line":347
+					},
+					{
+						"end_line":437,
+						"name":"CApiConnectDevice",
+						"start_line":422
+					},
+					{
+						"end_line":469,
+						"name":"CApiGetFileDescriptor",
+						"start_line":452
+					},
+					{
+						"end_line":493,
+						"name":"CApiClosePipe",
+						"start_line":477
+					}
+				]
+			}
+		]
 	}
 ]
