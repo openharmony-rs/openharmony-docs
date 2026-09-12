@@ -585,7 +585,7 @@ containsValue(value: V): boolean
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 10200011 | The containsValue method cannot be bound. |
-| 10200201 | Concurrent modification error.                |
+| 10200201 | Concurrent modification exception                |
 
 **示例：**
 
@@ -639,7 +639,7 @@ put(key: K, value: V): V | undefined
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 10200011 | The put method cannot be bound. |
-| 10200201 | Concurrent modification error.                |
+| 10200201 | Concurrent modification exception                |
 
 **示例：**
 
@@ -685,7 +685,7 @@ putAll(from: Map\<K, V>): void
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 10200011 | The putAll method cannot be bound. |
-| 10200201 | Concurrent modification error.                |
+| 10200201 | Concurrent modification exception                |
 
 **示例：**
 
@@ -738,7 +738,7 @@ putAll(from: BuiltinMap\<K, V>): void
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 10200011 | The putAll method cannot be bound. |
-| 10200201 | Concurrent modification error.                |
+| 10200201 | Concurrent modification exception                |
 
 **示例：**
 
@@ -796,7 +796,7 @@ remove(key: K): V | undefined
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
 | 10200011 | The remove method cannot be bound. |
-| 10200201 | Concurrent modification error.                |
+| 10200201 | Concurrent modification exception                |
 
 **示例：**
 
