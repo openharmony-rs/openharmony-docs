@@ -57,6 +57,12 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 Ability启动原因，该类型为枚举，可配合UIAbility的[onCreate(want, launchParam)](js-apis-app-ability-uiAbility.md#oncreate)方法根据launchParam.launchReason的不同类型执行相应操作。
 
+> **说明：**
+>
+> - 如果应用在Ability创建之前退出，则无法获取记录信息。
+>
+> - 获取应用异常退出信息的方式可参见[App Killed](../../dfx/appkilled-guidelines.md)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                          | 值   | 说明                                                         |
