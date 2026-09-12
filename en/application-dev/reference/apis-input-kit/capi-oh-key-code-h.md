@@ -215,7 +215,7 @@ Enumerates the key codes.
 | KEYCODE_MACRO = 2610 | Macro key<br>**Since**: 22|
 | KEYCODE_NUMPAD_PLUSMINUS = 2611 | Plus/Minus key on the numeric keypad<br>**Since**: 22|
 | KEYCODE_SCALE = 2612 | Scale key<br>**Since**: 22|
-| KEYCODE_HANGUEL = 2613 | Hanguel key<br/>**Since:** 22 |
+| KEYCODE_HANGUEL = 2613 | Hangul key<br/>**Since:** 22 |
 | KEYCODE_HANJA = 2614 | Hanja key<br/>**Since:** 22 |
 | KEYCODE_YEN = 2615 | Yen key<br>**Since**: 22|
 | KEYCODE_STOP = 2616 | Stop key<br>**Since**: 22|
