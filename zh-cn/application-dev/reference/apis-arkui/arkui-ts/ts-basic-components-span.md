@@ -395,6 +395,8 @@ baselineOffset(value: LengthMetrics): T
 
 ## TextBackgroundStyle<sup>11+</sup>对象说明
 
+定义Span的背景样式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
