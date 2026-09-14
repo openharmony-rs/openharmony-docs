@@ -129,9 +129,9 @@ AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
 | primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 警告弹出框标题。<br/>默认不显示。<br/>**说明：** 标题超过两行会显示“...”。  |
 | secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 警告弹出框辅助文本。<br/>默认不显示。<br/>**说明：** 辅助文本超过两行会显示“...”。       |
-| content         | [ResourceStr](ts-types.md#resourcestr)            | 是  | @Param<br/>@Require | 确认弹出框内容。       |
-| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 确认弹出框左侧按钮。<br/>默认不显示。 |
-| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 确认弹出框右侧按钮。<br/>默认不显示。 |
+| content         | [ResourceStr](ts-types.md#resourcestr)            | 是  | @Param<br/>@Require | 警告弹出框内容。       |
+| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 警告弹出框左侧按钮。<br/>默认不显示。 |
+| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 警告弹出框右侧按钮。<br/>默认不显示。 |
 
 ## LoadingDialogV2
 
