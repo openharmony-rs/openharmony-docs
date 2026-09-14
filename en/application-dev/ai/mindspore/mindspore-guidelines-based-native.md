@@ -1,4 +1,4 @@
-# Image Classification Using MindSpore Lite (C/C++)
+# Using MindSpore Lite for Image Classification (C/C++)
 
 <!--Kit: MindSpore Lite Kit-->
 <!--Subsystem: AI-->
@@ -6,7 +6,7 @@
 <!--Designer: @zhuguodong8; @jjfeing-->
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=518c8b810d69255a99c2e8a6ce8baeba3987a7c3 translatedAt=2026-09-14T01:41:39.960Z pushedAt=2026-09-14T01:53:13.196Z -->
+<!-- md-trans-meta sourceCommit=518c8b810d69255a99c2e8a6ce8baeba3987a7c3 translatedAt=2026-09-14T01:41:39.960Z pushedAt=2026-09-14T02:08:13.003Z -->
 
 ## When to Use
 
