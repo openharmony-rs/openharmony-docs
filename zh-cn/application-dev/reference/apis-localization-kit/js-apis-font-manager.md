@@ -15,7 +15,7 @@
 
 >  **说明：**
 >
->  - 本模块首批接口从API version 26.0.0开始支持。
+>  - 本模块首批接口从API version 26.0.1开始支持。
 >
 >  - 应用级字体在应用退出、字体服务退出、账号退出或设备重启时自动清理。会话级字体在账号退出或设备重启时清理。
 
@@ -31,6 +31,10 @@ import { fontManager } from '@kit.LocalizationKit';
 
 表示字体作用范围的枚举。
 
+**系统能力：** SystemCapability.Global.FontManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **起始版本：** 26.0.1
 
 | 名称 | 值 | 说明 |
@@ -40,7 +44,11 @@ import { fontManager } from '@kit.LocalizationKit';
 
 ## FontClientObserver
 
-字体服务状态监听器，用于接收字体服务异常退出通知。
+字体服务状态监听器，当字体服务意外终止时，将调用[onServiceDied](#onServiceDied)回调通知。
+
+**系统能力：** SystemCapability.Global.FontManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **起始版本：** 26.0.1
 
@@ -50,9 +58,11 @@ onServiceDied(): void
 
 字体服务异常退出时的回调函数。当字体服务意外终止时调用此方法，应用可在此回调中执行资源清理或重新注册等操作。
 
-**起始版本：** 26.0.1
-
 **系统能力：** SystemCapability.Global.FontManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.1
 
 **示例：**
 
@@ -71,11 +81,11 @@ const observer: fontManager.FontClientObserver = {
 installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 
 安装指定路径下的字体文件为应用级或会话级字体。使用Promise异步回调。
->**说明**
+> **说明：**
 >
->安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
+> - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
 >
->支持安装的字体文件个数最大数量为200.从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
+> - 支持安装的字体文件个数最大数量为200.从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
 
 
 **起始版本：** 26.0.1
@@ -83,6 +93,8 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
 **系统能力：** SystemCapability.Global.FontManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -95,7 +107,7 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。调用成功时resolve，失败时reject并抛出BusinessError。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -104,7 +116,6 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100101 | The font does not exist. |
 | 31100102 | The font is not supported. |
 | 31100103 | Failed to copy the font file. |
@@ -140,6 +151,8 @@ uninstallScopeFont(url: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Global.FontManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -150,7 +163,7 @@ uninstallScopeFont(url: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。调用成功时resolve，失败时reject并抛出BusinessError。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -159,7 +172,6 @@ uninstallScopeFont(url: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100108 | Failed to delete the font file. |
 | 31100110 | Call failed due to system error. |
 | 31100112 | The scope font is not found. |
@@ -191,6 +203,8 @@ getFontScope(url: string): Promise&lt;FontScope&gt;
 
 **系统能力：** SystemCapability.Global.FontManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -210,7 +224,6 @@ getFontScope(url: string): Promise&lt;FontScope&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100112 | The scope font is not found. |
 
 **示例：**
@@ -234,15 +247,17 @@ onFontObserver(observer: FontClientObserver): void
 
 注册字体服务死亡监听器。当字体服务异常退出时，通过监听器回调通知应用。注销监听器请使用[offFontObserver](#offfontobserver)。
 
->**说明**
+> **说明：**
 >
->每个应用最多可注册一个监听器，重复注册将返回错误。同一设备上最多支持5个不同应用同时注册监听器。
+> 每个应用最多可注册一个监听器，重复注册将返回错误。同一设备上最多支持5个不同应用同时注册监听器。
 
 **起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
 **系统能力：** SystemCapability.Global.FontManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -257,7 +272,6 @@ onFontObserver(observer: FontClientObserver): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 31100113 | The font observer is already registered. |
 | 31100114 | The maximum number of font observers has been reached. |
 
@@ -291,6 +305,8 @@ offFontObserver(): void
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
 **系统能力：** SystemCapability.Global.FontManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **错误码：**
 
