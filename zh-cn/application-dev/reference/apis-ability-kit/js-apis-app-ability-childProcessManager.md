@@ -138,105 +138,16 @@ import { childProcessManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import DemoProcess from '../process/DemoProcess';
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Button('拉起ArkTS-Dyn类型子进程')
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .onClick(() => {
-            try {
-              DemoProcess.toString(); // 这里要调用下DemoProcess类的任意方法，防止没有引用到而被构建工具优化掉
-              childProcessManager.startChildProcess('./ets/process/DemoProcess.ets',
-                childProcessManager.StartMode.SELF_FORK)
-                .then((data) => {
-                  console.info(`startChildProcess success, pid: ${data}`);
-                })
-                .catch((err: BusinessError) => {
-                  console.error(`startChildProcess error, errorCode: ${err.code}`);
-                })
-            } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-            }
-          });
-
-        Button('拉起ArkTS-Sta类型子进程')
-        .onClick(() => {
-            try {
-              //拉起ArkTS-Sta类型的子进程示例
-              childProcessManager.startChildProcess('entry/src/main/ets/process/StaticDemoProcess',
-                childProcessManager.StartMode.SELF_FORK)
-                .then((data) => {
-                  console.info(`startChildProcess success, pid: ${data}`);
-                })
-                .catch((err: BusinessError) => {
-                  console.error(`startChildProcess error, errorCode: ${err.code}`);
-                })
-            } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-            }
-        })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-ArkTS-Sta示例：
-<!--code_no_check-->
-```ts
-'use static'
-// 使用childProcessManager.startChildProcess方法启动子进程:
-// entry/src/main/ets/pages/Index.ets
-import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
-import { childProcessManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import DemoProcess from '../process/DemoProcess';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button('拉起ArkTS-Dyn类型子进程')
-        .onClick(() => {
-          try {
-            childProcessManager.startChildProcess('./ets/process/DemoProcess.ets',
-              childProcessManager.StartMode.SELF_FORK)
-              .then((data) => {
-                console.info(`startChildProcess success, pid: ${data}`);
-              })
-              .catch((err: BusinessError) => {
-                console.error(`startChildProcess error, errorCode: ${err.code}`);
-              })
-          } catch (err: BusinessError) {
-            console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-          }
-        });
-
-      Button('拉起ArkTS-Sta类型子进程')
-      .onClick(() => {
-          try {
-            //拉起ArkTS-Sta类型的子进程示例
-            childProcessManager.startChildProcess('entry/src/main/ets/process/StaticDemoProcess',
-              childProcessManager.StartMode.SELF_FORK)
-              .then((data) => {
-                console.info(`startChildProcess success, pid: ${data}`);
-              })
-              .catch((err: BusinessError) => {
-                console.error(`startChildProcess error, errorCode: ${err.code}`);
-              })
-          } catch (err: BusinessError) {
-            console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-          }
-      })
-    }
-    .width('100%')
-  }
+try {
+  DemoProcess.toString(); // 这里要调用下DemoProcess类的任意方法，防止没有引用到而被构建工具优化掉
+  childProcessManager.startChildProcess("./ets/process/DemoProcess.ets", childProcessManager.StartMode.SELF_FORK)
+    .then((data) => {
+      console.info(`startChildProcess success, pid: ${data}`);
+    }, (err: BusinessError) => {
+      console.error(`startChildProcess error, errorCode: ${err.code}`);
+    })
+} catch (err) {
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
 
@@ -342,7 +253,7 @@ struct Index {
                   }
                   console.info(`startChildProcess success, pid: ${data}`);
               });
-            } catch (err: BusinessError) {
+            } catch (err) {
               console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
             }
           });
@@ -359,68 +270,16 @@ struct Index {
                   }
                   console.info(`startChildProcess success, pid: ${data}`);
               });
-            } catch (err: BusinessError) {
+            } catch (err) {
               console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
             }
         })
       }
       .width('100%')
     }
-    .height('100%')
-  }
-}
-```
-ArkTS-Sta示例：
-<!--code_no_check-->
-```ts
-'use static'
-// 使用childProcessManager.startChildProcess方法启动子进程:
-// entry/src/main/ets/pages/Index.ets
-import { Entry, Text, Column, Component, Button} from '@ohos.arkui.component';
-import { childProcessManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import DemoProcess from '../process/DemoProcess';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button('拉起ArkTS-Dyn类型子进程')
-        .onClick(() => {
-          try {
-            childProcessManager.startChildProcess('./ets/process/DemoProcess.ets',
-              childProcessManager.StartMode.SELF_FORK,
-              (err, data) => {
-                if (err?.code != 0) {
-                  console.error(`startChildProcess error, errorCode: ${err?.code}`);
-                }
-                console.info(`startChildProcess success, pid: ${data}`);
-            });
-          } catch (err: BusinessError) {
-            console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-          }
-        });
-
-      Button('拉起ArkTS-Sta类型子进程')
-      .onClick(() => {
-          try {
-            //拉起ArkTS-Sta类型的子进程示例
-            childProcessManager.startChildProcess('entry/src/main/ets/process/StaticDemoProcess',
-              childProcessManager.StartMode.SELF_FORK,
-              (err, data) => {
-                if (err?.code != 0) {
-                  console.error(`startChildProcess error, errorCode: ${err?.code}`);
-                }
-                console.info(`startChildProcess success, pid: ${data}`);
-            });
-          } catch (err: BusinessError) {
-            console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
-          }
-      })
-    }
-    .width('100%')
-  }
+  });
+} catch (err) {
+  console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
 }
 ```
 
@@ -544,10 +403,10 @@ struct Index {
                   console.info(`startArkChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startArkChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startArkChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
           });
 
@@ -573,8 +432,8 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
         })
       }
@@ -617,7 +476,7 @@ struct Index {
               .catch((err: BusinessError) => {
                 console.error(`startChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
               })
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
           }
         });
@@ -638,7 +497,7 @@ struct Index {
               .catch((err: BusinessError) => {
                 console.error(`startChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
               })
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
           }
       })
@@ -766,10 +625,10 @@ struct Index {
                   console.info(`startNativeChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startNativeChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startNativeChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startNativeChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startNativeChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
           });
       }
@@ -821,8 +680,8 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isArkChildProcessSupported();
               console.info(`isArkChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
@@ -854,8 +713,8 @@ struct Index {
             try {
               const isSupport: boolean = childProcessManager.isArkChildProcessSupported();
               console.info(`isArkChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
@@ -907,8 +766,8 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
               console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
@@ -939,8 +798,8 @@ struct Index {
             try {
               const isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
               console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
