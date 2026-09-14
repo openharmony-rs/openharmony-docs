@@ -2079,7 +2079,7 @@ Since API version 26.0.0, this API returns only the dialog authorization status.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the function For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br> INPUT_SUCCESS = 0: The query succeeds.<br> INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br> INPUT_SERVICE_EXCEPTION = 3800001: Service exception. |
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the function. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br> INPUT_SUCCESS = 0: The query succeeds.<br> INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br> INPUT_SERVICE_EXCEPTION = 3800001: Service exception. |
 
 ### OH_Input_CreateAxisEvent()
 
