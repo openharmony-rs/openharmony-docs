@@ -1250,6 +1250,8 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 
 **设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
 
+**参数：**
+
 | 参数名 | 类型                                              | 必填 | 说明           |
 | ------ | ------------------------------------------------- | ---- | -------------- |
 | result | [UserRecognitionResult](#userrecognitionresult) | 是   | 用户识别结果。 |
