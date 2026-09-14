@@ -516,7 +516,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
   * 请确保设备端的domain socket还存在。
   * 请确保domain socket名称里的进程号与被调试的应用的进程号相同。
   * 请删除hdc里其他不必要的转发任务。
-  * 转发成功后，请用电脑端的Chrome浏览器打开网址 http://localhost:9222/json ，URL里的9222需要改为自己实际配置的TCP端口。
+  * 转发成功后，请用电脑端的Chrome浏览器打开网址`http://localhost:9222/json`，URL里的9222需要改为自己实际配置的TCP端口。
 
     - 如果网页有内容， 说明端口转发成功，请在Chrome的调试页面[等待被调试页面的出现](#等待发现被调试页面)。<br/>
     ![chrome_localhost](figures/devtools_resources_chrome_localhost.jpg)
@@ -524,7 +524,7 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
     - 如果展示的是错误网页， 说明端口转发失败， 请参阅[端口转发不成功](#端口转发不成功)中的解决方法。<br/>
     ![chrome_localhost_refused](figures/devtools_resources_chrome_localhost_refused.jpg)
 
-  * 电脑端Chrome浏览器打开 http://localhost:9222/json 页面有内容，但是Chrome的调试工具界面还是无法发现调试目标。
+  * 电脑端Chrome浏览器打开`http://localhost:9222/json`页面有内容，但是Chrome的调试工具界面还是无法发现调试目标。
     - 请确保Chrome调试工具界面的 "Configure" 中配置的端口号，与端口转发指定的TCP端口号一致。
     - 在本文档中，默认使用的TCP端口号为9222。<br/>
       如果开发者使用了其他的TCP端口号（比如9223），请同时修改[端口转发](#端口转发)中的TCP端口号和[Chrome调试工具界面"Configure"配置](#在chrome浏览器上打开调试工具页面)中的端口号。
@@ -569,4 +569,4 @@ Chrome浏览器无法直接访问到设备上的domain socket， 因此需要将
 * 方案一，将电脑端Chrome升级到最新版本。
 * 方案二，如果不希望升级浏览器，可以手动拼接调试URL。完整的URL链接为：“devtools://devtools/bundled/inspector.html?ws=localhost:9222/devtools/page/xxx”。
   - 该链接由两部分组成：“devtools://devtools/bundled/inspector.html”前半段固定不变。“?ws=localhost:9222/devtools/page/xxx”后半段需要根据实际配置修改。
-  - 端口转发成功后，使用Chrome浏览器打开 http://localhost:9222/json 页面。请注意，URL中的9222应替换为实际配置的TCP端口。然后取“devtoolsFrontendUrl”后的value值“?ws”及其后部分。
+  - 端口转发成功后，使用Chrome浏览器打开`http://localhost:9222/json`页面。请注意，URL中的9222应替换为实际配置的TCP端口。然后取“devtoolsFrontendUrl”后的value值“?ws”及其后部分。
