@@ -24,7 +24,7 @@ Typical use cases include:
 
 ## Constraints
 
-Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/syscap-ndk-8h.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/syscap__ndk_8h.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 

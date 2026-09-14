@@ -41,7 +41,7 @@ isNfcAvailable(): boolean
 Checks whether the device supports NFC.
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. For versions earlier than API version 26, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) and **nfcController.isNfcAvailable** to determine whether the device supports NFC. For API version 26 and later, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) and [nfcController.isNfcSupported](#nfccontrollerisnfcsupported) instead.
+> This API is supported since API version 7 and deprecated since API version 9. For versions earlier than API version 26, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) and **nfcController.isNfcAvailable** to determine whether the device supports NFC. For API version 26 and later, you are advised to use [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) and [nfcController.isNfcSupported](#nfccontrollerisnfcsupported) instead.
 
 **System capability**: SystemCapability.Communication.NFC.Core
 
