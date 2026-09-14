@@ -366,6 +366,8 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 > **说明：**
 >
 > 在ArkTS-Dyn中该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
+>
+> 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统接口**：该接口为系统接口。
 

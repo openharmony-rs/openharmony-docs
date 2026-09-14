@@ -1191,7 +1191,11 @@ appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountC
 
 killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>): void
 
-通过Bundle名称终止进程。使用callback异步回调。
+通过Bundle名称终止主应用的进程。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持终止应用分身的进程。
 
 **需要权限**：
 
@@ -1253,7 +1257,11 @@ try {
 
 killProcessesByBundleName(bundleName: string): Promise\<void>
 
-通过Bundle名称终止进程。使用Promise异步回调。
+通过Bundle名称终止主应用的进程。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持终止应用分身的进程。
 
 **需要权限**：
 
@@ -1582,7 +1590,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName获取有关运行进程的信息。使用callback异步回调。
+根据bundleName获取当前用户下主应用及分身应用的运行进程信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1639,7 +1647,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessInformation>>
 
-通过bundleName获取有关运行进程的信息。使用Promise异步回调。
+根据bundleName获取当前用户下主应用及分身应用的运行进程信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1699,7 +1707,7 @@ ArkTS-Dyn: getRunningProcessInfoByBundleName(bundleName: string, userId: number,
 
 ArkTS-Sta: getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName和userId获取有关运行进程的信息。使用callback异步回调。
+通过bundleName和userId获取对应主应用和分身应用的运行进程信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1758,7 +1766,7 @@ ArkTS-Dyn: getRunningProcessInfoByBundleName(bundleName: string, userId: number)
 
 ArkTS-Sta: getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise\<Array\<ProcessInformation>>
 
-通过bundleName和userId获取有关运行进程的信息。使用Promise异步回调。
+通过bundleName和userId获取对应主应用和分身应用的运行进程信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1818,7 +1826,11 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-查询所有用户下指定包名的应用是否正在运行。使用Promise异步回调。
+查询所有用户下指定包名的主应用是否正在运行。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持查询应用分身是否在运行。
 
 **系统接口**：此接口为系统接口。
 
@@ -1873,7 +1885,11 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-查询所有用户下指定包名的应用是否正在运行。使用callback异步回调。
+查询所有用户下指定包名的主应用是否正在运行。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持查询应用分身是否在运行。
 
 **系统接口**：此接口为系统接口。
 
@@ -2425,6 +2441,7 @@ ArkTS-Sta: setKeepAliveForBundle(bundleName: string, userId: int, enable: boolea
 >- 应用如果需要支持保活，其[module.json5配置文件](../../quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当mainElement启动后，系统才会执行应用保活操作。
 >- 在PC/2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
 >- 当被保活的应用进程退出时，系统将尝试重启该进程，连续3次重启失败后将不再继续重启。
+>- 该接口不支持设置或取消分身应用（指定用户和包名）的保活状态。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 

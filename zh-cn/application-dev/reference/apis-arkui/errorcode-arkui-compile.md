@@ -18,7 +18,7 @@
 @Watch回调函数未定义。
 
 **可能原因**<br>
-在struct内定义了@Watch装饰器装饰的变量,但没有定义对应的@Watch回调函数。
+在struct内定义了@Watch装饰器装饰的变量，但没有定义对应的@Watch回调函数。
 
 **处理步骤**<br>
 在struct内定义对应名称的监听函数即可。
@@ -73,7 +73,7 @@ The \'xxx\' property cannot be specified a default value.
 定义有@Consume、@Link、@ObjectLink等装饰器装饰的变量时进行初始化导致报错。
 
 **处理步骤**<br>
-在@Consume、@Link、@ObjectLink等装饰器装饰的变量定义时不要初始化,参照装饰器正确赋值规则。
+在@Consume、@Link、@ObjectLink等装饰器装饰的变量定义时不要初始化，参照装饰器正确赋值规则。
 
 ## 10905305 变量类型校验异常
 **错误信息**<br>

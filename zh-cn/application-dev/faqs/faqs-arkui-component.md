@@ -805,9 +805,9 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **解决措施**
 
-1.使用LazyForEach做瀑布流子节点。
+1. 使用LazyForEach做瀑布流子节点。
 
-2.参考WaterFlow高性能开发指导在FlowItem的onAppear中判断是否即将触底，提前在LazyForEach数据源尾部新增数据；或在onScrollIndex11+事件中根据当前index进行判断。
+2. 参考WaterFlow高性能开发指导在FlowItem的onAppear中判断是否即将触底，提前在LazyForEach数据源尾部新增数据；或在onScrollIndex11+事件中根据当前index进行判断。
 
 **参考链接**
 
@@ -827,9 +827,9 @@ List组件设置layoutWeight(1)属性，将剩余空间全部分配给List组件
 
 **解决措施**
 
-1.进展：ArkUI-X当前已经开源，首版本已于2023-12-15正式发布，当前支持Android、iOS跨平台；另外，也在探索和试验桌面平台与Web平台的支持。
+1. 进展：ArkUI-X当前已经开源，首版本已于2023-12-15正式发布，当前支持Android、iOS跨平台；另外，也在探索和试验桌面平台与Web平台的支持。
 
-2.[路线图](https://gitcode.com/arkui-x/docs/blob/master/zh-cn/roadmap/ArkUI-X-roadmap-2023.md)。
+2. [路线图](https://gitcode.com/arkui-x/docs/blob/master/zh-cn/roadmap/ArkUI-X-roadmap-2023.md)。
 
 **参考链接**
 

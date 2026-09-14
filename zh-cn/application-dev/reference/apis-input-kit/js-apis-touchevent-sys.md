@@ -29,7 +29,7 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Core
 
-**系统API**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -44,9 +44,9 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 触屏点信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
-**系统API**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
@@ -58,9 +58,9 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 触屏输入事件。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
-**系统API**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
