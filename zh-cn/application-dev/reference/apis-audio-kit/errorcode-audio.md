@@ -315,5 +315,5 @@ AudioCapturer创建成功，但调用start返回错误码`6800301`时，根据�
 **处理步骤**
 
 <!--RP1-->
-尝试重试或[提单](https://gitcode.com/openharmony/docs/issues/create/choose)处理。
+尝试重试或提单处理。
 <!--RP1End-->

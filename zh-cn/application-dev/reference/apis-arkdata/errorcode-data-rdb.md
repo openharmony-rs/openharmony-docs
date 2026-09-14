@@ -355,7 +355,7 @@ SQLite：通用错误。
    - 是：不要重复添加表中已存在的字段。
    - 否：转下一步。
 4. 确认问题时间点附近，是否可正则搜索到关键日志：`too many SQL variables|string or blob too big|too many columns|expression tree too deep|too many terms in compound SELECT|too many attached databases`。
-   - 是：确保SQL执行时不违反SQLite系统限制，可参考官方文档：[SQLite系统限制](https://sqlite.org/limits.html)。
+   - 是：确保SQL执行时不违反SQLite系统限制，可参考官方文档：SQLite系统限制。
    - 否：转下一步。
 5. 确认问题时间点附近，是否可正则搜索到关键日志：`Error.*unsupported file format|Error.*database corruption|Error.*check hmac error`。
    - 是：解决业务进程踩内存或误关fd的问题；接入备份恢复；删除重建数据库。

@@ -172,7 +172,8 @@ Failed to install the HAP because the HAP fails to be parsed.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的install接口时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的install接口时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -182,7 +183,8 @@ Failed to install the HAP because the HAP fails to be parsed.
 4. HAP中配置了可执行二进制文件（即module.json5中配置了executableBinaryPaths标签），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
 5. 传入的安装路径中或目录下存在多个APP。
 6. APP中不包含适合在当前设备类型上安装的HAP。
-7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
+7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。<!--Del-->
+8. 在双模式设备上安装应用时，不同包体类别（InstallParam中ohos.bms.param.deviceModeDistributionPolicy值为4、6、8）仅支持系统应用配置，非系统应用配置将无法安装；同时，新安装应用必须与设备上已存在的同包名应用保持包体类别属性大类一致，“不同包体类别”与“相同包体类别”（值为0、1、2、3、5、7）不能混合覆盖安装。<!--DelEnd-->
 
 **处理步骤**
 
@@ -192,7 +194,8 @@ Failed to install the HAP because the HAP fails to be parsed.
 4. 配置应用为解压模式，即在应用的module.json5配置文件中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
 5. 检查传入的路径下是否包含多个APP。
 6. 确认APP内是否存在支持当前设备类型的HAP。
-7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
+7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。<!--Del-->
+8. 确认应用为系统应用后再配置不同包体类别；确认新安装的应用与已存在应用的InstallParam中ohos.bms.param.deviceModeDistributionPolicy配置是否属于同一包体类别（均为不同包体或均为相同包体），避免不同包体类别与相同包体类别之间互转更新。<!--DelEnd-->
 
 ## 17700011 签名校验失败导致应用安装失败
 
@@ -202,7 +205,8 @@ Failed to install the HAP because the HAP signature fails to be verified.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的install接口时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的install接口时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -227,7 +231,8 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 
 **错误描述**
 
-<!--Del-->调用installer模块中的install接口时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的install接口时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -249,7 +254,8 @@ Failed to install the HAPs because they have different configuration information
 
 **错误描述**
 
-<!--Del-->调用installer模块中的install接口时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的install接口时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -257,7 +263,7 @@ Failed to install the HAPs because they have different configuration information
 
 **处理步骤**
 
-确认多个HAP中配置文件app下面的字段是否一致或者检查工程的[signingConfigs](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224)配置是否一样。
+确认多个HAP中配置文件app下面的字段是否一致或者检查工程的signingConfigs配置是否一样。
 
 ## 17700016 系统磁盘空间不足导致应用安装失败
 
@@ -267,7 +273,8 @@ Failed to install the HAP because of insufficient system disk space.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的install接口时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的install接口时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -285,7 +292,8 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 **错误描述**
 
-<!--Del-->调用installer模块中的install接口时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+<!--Del-->
+调用installer模块中的install接口时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->BundleInstaller.install抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -303,7 +311,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
 2. 新安装的应用查看版本，HAP或者HSP用DevEco Studio打开，查看里面module.json文件中的versionCode字段配置。
 
-    ![示例图](figures/hap_versionCode.PNG)<!--Del-->
+    示例图<!--Del-->
 
 3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考InstallParam中parameters描述。
 
@@ -903,7 +911,7 @@ Failed to install the HAP because the distribution type of the caller applicatio
 
 **错误描述**
 
-企业mdm应用自升级时，调用方[签名证书profile文件](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-releaseprofile-0000001914714796)中的类型不是企业mdm。
+企业mdm应用自升级时，调用方签名证书profile文件中的类型不是企业mdm。
 
 **可能原因**
 
@@ -1316,7 +1324,7 @@ Failed to install the HAP or HSP because the app distribution type is not allowe
 
 **可能原因**
 
-该[签名证书profile文件](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-releaseprofile-0000001914714796)中的类型被限制，禁止安装到当前设备中。
+该签名证书profile文件中的类型被限制，禁止安装到当前设备中。
 
 **处理步骤**
 
@@ -1666,6 +1674,65 @@ The specified bundle not found app clone preference.
 
 1. 确认应用是否需要分身偏好。
 2. 使用bundleManager.setAppClonePreference设置分身偏好后重试。
+
+## 17700097 设备不支持双模式
+
+**错误信息**
+
+The device does not support the dual mode.
+
+**错误描述**
+
+当前设备不支持双模式（即设备不支持在主模式和副模式之间切换）。
+
+**可能原因**
+
+当前设备为非双模设备，系统参数const.sceneboard.mainmode或persist.sceneboard.ispcmode缺失或值非法。
+
+**处理步骤**
+
+1. 确认设备是否为双模设备，可以在开发者模式下查看设备是否存在系统参数const.sceneboard.mainmode和persist.sceneboard.ispcmode。
+2. 若设备不支持双模式，该接口不适用，无需调用。
+
+## 17700098 入参无效
+
+**错误信息**
+
+The input parameter is invalid. It is either outside the range of valid enum values or does not include the following required enum values: [DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE].
+
+**错误描述**
+
+调用filterBundleListByDeviceModeDistributionPolicies接口时，传入的参数无效。
+
+**可能原因**
+
+1. 传入的枚举值超出DeviceModeDistributionPolicy枚举值范围。
+2. 传入的枚举数组未包含所有不同包体的策略（UNIVERSAL_DIFFERENT_PACKAGE、PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE和FULL_COMPATIBLE_DIFFERENT_PACKAGE）。
+
+**处理步骤**
+
+1. 需要检查传入的枚举值，是否有超过DeviceModeDistributionPolicy枚举值。
+2. 需要检查传入的枚举数组是否包含了[DeviceModeDistributionPolicy.UNIVERSAL_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE, DeviceModeDistributionPolicy.FULL_COMPATIBLE_DIFFERENT_PACKAGE]，这三个在切换时必须传入。
+
+## 17700099 设备正在安装卸载应用或双模切换正在处理中
+
+**错误信息**
+
+The device is installing or uninstalling an application, or a previous API call is still being processed. Please try again.
+
+**错误描述**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中，请重试。
+
+**可能原因**
+
+设备正在安装或卸载应用，或者上一次双模切换调用正在处理中。
+
+**处理步骤**
+
+1. 检查下设备是否正在安装、卸载应用。
+2. 检查下是否已经调用该接口且双模切换正在处理中。
+3. 等待上述操作完成后重新调用该接口。
 <!--DelEnd-->
 
 ## 17700101 包管理服务异常
@@ -1699,7 +1766,7 @@ Bundle manager service exception.
     ls -ls
     ```
 
-3. 导出crash文件和日志文件<!--RP1-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP1End-->
+3. 导出crash文件和日志文件<!--RP1-->提新增Issue获取帮助。<!--RP1End-->
 
     ```shell
     hdc file recv /data/log/faultlog/faultlogger/
@@ -1952,6 +2019,23 @@ Invalid fileTypes.
 **处理步骤**
 
 请检查文件类型数组是否错误，阅读参数规格约束，按照可能原因进行排查。
+
+## 18000001 设置默认浏览器时应用缺少默认浏览器权限
+**错误信息**
+
+The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.
+
+**错误描述**
+
+通过defaultAppManager设置默认浏览器时，指定的应用未被授予ohos.permission.DEFAULT_WEB_BROWSER权限。
+
+**可能原因**
+
+目标应用被设置为默认浏览器，但该应用未持有ohos.permission.DEFAULT_WEB_BROWSER权限。
+
+**处理步骤**
+
+设置默认浏览器时选择被授予ohos.permission.DEFAULT_WEB_BROWSER权限的应用。
 
 ## 18100001 ShortcutInfo列表中bundleName和appIndex不一一对应
 **错误信息**

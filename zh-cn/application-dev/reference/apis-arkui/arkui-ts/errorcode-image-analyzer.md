@@ -1,0 +1,68 @@
+# 图像AI分析错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
+
+> **说明：**
+>
+> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+
+## 110001 AI图像分析功能不支持
+
+**错误信息**
+
+Image analysis feature is unsupported.
+
+**错误描述**
+
+当开发者调用startImageAnalyzer()接口时，若当前不支持AI图像分析功能，会抛出此错误码。
+
+**可能原因**
+
+调用了当前设备不支持的AI图像分析接口（startImageAnalyzer()）。
+
+**处理步骤**
+
+1. AI图像分析功能依赖设备能力，目前无主动查询接口，可在调用startImageAnalyzer()时通过捕获错误码110001判断设备是否支持。
+2. 若设备不支持，则不调用startImageAnalyzer()接口，或引导用户更换支持的设备。
+
+## 110002 AI图像分析正在进行中
+
+**错误信息**
+
+Image analysis is currently being executed.
+
+**错误描述**
+
+当开发者调用startImageAnalyzer()接口时，若上一次的分析还没有结束，会抛出此错误码。
+
+**可能原因**
+
+在AI图像分析未结束时（上一次分析未返回结果）再次调用了startImageAnalyzer()接口。
+
+**处理步骤**
+
+1. 请等待上一次startImageAnalyzer()接口的分析完成（通过Promise或回调返回结果）后，再发起新一次的startImageAnalyzer()调用。
+2. 避免在分析进行中重复调用同一接口。
+
+## 110003 AI图像分析已停止
+
+**错误信息**
+
+Image analysis is stopped.
+
+**错误描述**
+
+当开发者调用stopImageAnalyzer()接口时，若当前存在正在进行的AI图像分析（startImageAnalyzer的Promise尚未返回），会停止当前分析并向该Promise抛出110003，表示分析已被停止。
+
+**可能原因**
+
+在AI图像分析进行中（startImageAnalyzer的Promise尚未返回）时调用了stopImageAnalyzer()接口，导致当前分析被停止并向startImageAnalyzer的Promise抛出110003。
+
+**处理步骤**
+
+1. 请确认在调用stopImageAnalyzer()接口前，startImageAnalyzer()接口已返回结果（即上一次分析已通过Promise回调返回结果，无论成功或失败）。
+2. 检查接口调用顺序，避免在分析未完成时调用停止接口。

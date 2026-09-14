@@ -359,6 +359,61 @@ This form does not support publishing.
 
 检查卡片配置是否符合当前场景，详细参考配置文件renderingMode字段说明和supportdimensions字段与设备支持关系表。
 
+## 16501019 无法注销非本应用注册的卡片服务
+ 
+**错误信息**
+ 
+A form service not owned by you cannot be unregistered.
+ 
+**错误描述**
+ 
+注销卡片使用方服务时，所操作的卡片服务并非由当前应用注册。
+ 
+**可能原因**
+ 
+当前应用尝试注销非自身注册的卡片使用方服务。
+ 
+**处理步骤**
+ 
+仅注销当前应用自身注册的卡片使用方服务。
+ 
+## 16501020 远端卡片服务不可用
+ 
+**错误信息**
+ 
+Remote form service is unavailable.
+ 
+**错误描述**
+ 
+跨设备发布卡片时，远端卡片服务不可用。
+ 
+**可能原因**
+ 
+远端设备未启动卡片服务，或卡片服务异常。
+ 
+**处理步骤**
+ 
+检查远端设备卡片服务状态，确认远端卡片服务可用后重新发起跨设备发布卡片请求。
+ 
+## 16501021 远端卡片应用未安装或版本过低
+ 
+**错误信息**
+ 
+The peer form application is not installed or the version is too old.
+ 
+**错误描述**
+ 
+跨设备发布卡片时，远端设备上的目标卡片应用未安装或版本过低。
+ 
+**可能原因**
+ 
+1. 远端设备未安装目标卡片应用。
+2. 远端设备的目标卡片应用版本过低，不支持跨设备发布卡片。
+ 
+**处理步骤**
+ 
+确认远端设备已安装目标卡片应用，且应用版本支持跨设备发布后，重新发起跨设备发布卡片请求。
+
 ## 2293761 内部服务错误
 
 **错误信息**
@@ -377,7 +432,7 @@ Some internal server error occurs.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293766 包管理获取请求的应用包名不存在
 
@@ -396,7 +451,7 @@ The requested bundle name does not exist.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293767 无效参数
 
@@ -438,7 +493,7 @@ Get bms rpc failed.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293798 获取卡片管理服务失败
 
@@ -457,7 +512,7 @@ Get fms rpc failed.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。
 
 ## 2293802 获取系统能力管理服务失败
 
@@ -476,4 +531,4 @@ Get system manager service failed.
 **处理步骤**
 
 1. 重启系统后重试。
-2. 重启后仍旧失败，请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#)获取帮助。
+2. 重启后仍旧失败，请提在线工单获取帮助。

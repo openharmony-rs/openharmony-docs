@@ -656,7 +656,7 @@ It is not allowed to access this domain.
 
 **处理步骤**
 
-可参考配置[服务器域名文档](https://developer.huawei.com/consumer/cn/doc/atomic-guides/agc-help-harmonyos-server-domain)完成服务器域名相关配置。服务器域名配置后一般需要等待一天以上才会生效。
+可参考配置服务器域名文档完成服务器域名相关配置。服务器域名配置后一般需要等待一天以上才会生效。
 
 ## 2300999 内部错误
 
@@ -687,7 +687,7 @@ HTTP模块内部错误，通常由底层网络库返回的未映射错误或其�
 
 1. **针对底层网络库错误**：
    - 查看完整日志获取底层CURL错误码。
-   - 参考[CURL错误码文档](https://curl.se/libcurl/c/libcurl-errors.html)了解具体错误含义。
+   - 参考CURL错误码文档了解具体错误含义。
    - 根据错误类型采取相应措施（网络连接、SSL证书、超时等）。
 
 2. **针对HTTP3协议问题**：
