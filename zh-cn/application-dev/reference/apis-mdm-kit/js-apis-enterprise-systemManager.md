@@ -1909,7 +1909,7 @@ try {
 }
 ```
 
-## systemManager.removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;)<sup>26.1+</sup>
+## systemManager.removeAllowedPrinterIPAddressesForDevice<sup>26.1+</sup>
 
 removeAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
