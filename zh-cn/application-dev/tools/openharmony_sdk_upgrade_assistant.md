@@ -17,17 +17,17 @@ OpenHarmony SDK升级助手，用于帮助开发者快速解决OpenHarmony应用
 ## 使用教程
 
 ### 工具安装
-1.在DevEco Studio主菜单栏中点击 "File" > "Settings..."。
+1. 在DevEco Studio主菜单栏中点击 "File" > "Settings..."。
 
-![suap-settings](figures/suap-settings.png)
+   ![suap-settings](figures/suap-settings.png)
 
-2.在Settings弹出框界面，选中"Plugins"进入IDE插件模块。
+2. 在Settings弹出框界面，选中"Plugins"进入IDE插件模块。
 
-3.点击"Marketplace"选项，在下方搜索框中输入"OpenHarmony SDK Upgrade Assistant"。
+3. 点击"Marketplace"选项，在下方搜索框中输入"OpenHarmony SDK Upgrade Assistant"。
 
-4.点击搜索到的插件右方"Install"按钮进行下载安装，安装完成之后点击"Apply"按钮，重启IDE即安装成功（注意：插件安装完成后需要重启IDE）。
+4. 点击搜索到的插件右方"Install"按钮进行下载安装，安装完成之后点击"Apply"按钮，重启IDE即安装成功（注意：插件安装完成后需要重启IDE）。
 
-![suap-install](figures/suap-install.png)
+   ![suap-install](figures/suap-install.png)
 
 ### 使用工具
 
@@ -63,82 +63,82 @@ OpenHarmony SDK升级助手，用于帮助开发者快速解决OpenHarmony应用
 
 ## 打包构建
 
-1.[interface仓](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools)中 clone [api_diff](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/api_diff)工具(对比两个版本SDK里的API差异)和[collect_application_api](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/collect_application_api)工具(用于解析并汇总应用中使用到的API)到本地。
+1. [interface仓](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools)中 clone [api_diff](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/api_diff)工具(对比两个版本SDK里的API差异)和[collect_application_api](https://gitcode.com/openharmony/interface_sdk-js/tree/master/build-tools/collect_application_api)工具(用于解析并汇总应用中使用到的API)到本地。
 
-![suap-warehouse](figures/suap-warehouse.png)
+    ![suap-warehouse](figures/suap-warehouse.png)
 
-2.在本地api_diff工具和collect_application_api工具目录下进入终端，进行安装和编译。
+2. 在本地api_diff工具和collect_application_api工具目录下进入终端，进行安装和编译。
 
-> **说明：**
->
-> 需保证node.js版本为14.
->
+    > **说明：**
+    >
+    > 需保证node.js版本为14.
+    >
 
-输入命令：npm install，之后进行构建：npm run build。构建成功之后，会在对应的工具文件夹下生成dist=>build=>api-diff.js和dist=>build=>api-collector.js。
+    输入命令：npm install，之后进行构建：npm run build。构建成功之后，会在对应的工具文件夹下生成dist=>build=>api-diff.js和dist=>build=>api-collector.js。
 
-![suap-diff](figures/suap-diff.png)
+    ![suap-diff](figures/suap-diff.png)
 
-![suap-collect](figures/suap-collect.png)
+    ![suap-collect](figures/suap-collect.png)
 
-3.在本地磁盘的最后一个盘符，创建名为'updateCheck'文件夹，内部分别创建'api-diff'和'collect_application_api'文件夹。</br>将步骤3中的api-diff.js文件放置'api-diff'文件夹下，collect_application_api文件夹下libs文件夹以及api-collector.js放置在'collect_application_api'文件夹下。
+3. 在本地磁盘的最后一个盘符，创建名为'updateCheck'文件夹，内部分别创建'api-diff'和'collect_application_api'文件夹。</br>将步骤3中的api-diff.js文件放置'api-diff'文件夹下，collect_application_api文件夹下libs文件夹以及api-collector.js放置在'collect_application_api'文件夹下。
 
-![suap-diff-file](figures/suap-diff-file.png)
+    ![suap-diff-file](figures/suap-diff-file.png)
 
-![suap-collect-file](figures/suap-collect-file.png)
+    ![suap-collect-file](figures/suap-collect-file.png)
 
-4.升级辅助工具源码clone下来之后，在idea上打开，需要配置gradle环境，并且在src同级目录下新建'build.gradle.kts'文件，将下面内容粘贴至文件中，刷新gradle，在idea右侧gradle工具栏即可运行项目和打包成插件。
-```lombok.config
-plugins {
-    id("java")
-    id("org.jetbrains.intellij") version "1.5.2"
-}
-
-group = "com.example"
-version = "1.0-SNAPSHOT"
-
-repositories {
-    maven {
-        setUrl("https://mirrors.huaweicloud.com/repository/maven")
-    }
-}
-
-dependencies{
-    implementation("org.springframework:spring-web:5.2.12.RELEASE")
-    implementation("org.apache.commons:commons-compress:1.21")
-    implementation("com.alibaba:fastjson:1.2.28")
-    implementation("org.apache.logging.log4j:log4j-core:2.19.0")
-    implementation("commons-httpclient:commons-httpclient:3.1")
-}
-
-intellij {
-    version.set("2021.2")
-    type.set("IC") // Target IDE Platform
-
-    plugins.set(listOf(/* Plugin Dependencies */))
-}
-
-tasks {
-    // Set the JVM compatibility versions
-    withType<JavaCompile> {
-        sourceCompatibility = "11"
-        targetCompatibility = "11"
+4. 升级辅助工具源码clone下来之后，在idea上打开，需要配置gradle环境，并且在src同级目录下新建'build.gradle.kts'文件，将下面内容粘贴至文件中，刷新gradle，在idea右侧gradle工具栏即可运行项目和打包成插件。
+    ```lombok.config
+    plugins {
+        id("java")
+        id("org.jetbrains.intellij") version "1.5.2"
     }
 
-    patchPluginXml {
-        sinceBuild.set("212")
-        untilBuild.set("522.*")
+    group = "com.example"
+    version = "1.0-SNAPSHOT"
+
+    repositories {
+        maven {
+            setUrl("https://mirrors.huaweicloud.com/repository/maven")
+        }
     }
 
-    signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
-        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+    dependencies{
+        implementation("org.springframework:spring-web:5.2.12.RELEASE")
+        implementation("org.apache.commons:commons-compress:1.21")
+        implementation("com.alibaba:fastjson:1.2.28")
+        implementation("org.apache.logging.log4j:log4j-core:2.19.0")
+        implementation("commons-httpclient:commons-httpclient:3.1")
     }
 
-    publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
+    intellij {
+        version.set("2021.2")
+        type.set("IC") // Target IDE Platform
+
+        plugins.set(listOf(/* Plugin Dependencies */))
     }
-}
+
+    tasks {
+        // Set the JVM compatibility versions
+        withType<JavaCompile> {
+            sourceCompatibility = "11"
+            targetCompatibility = "11"
+        }
+
+        patchPluginXml {
+            sinceBuild.set("212")
+            untilBuild.set("522.*")
+        }
+
+        signPlugin {
+            certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
+            privateKey.set(System.getenv("PRIVATE_KEY"))
+            password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+        }
+
+        publishPlugin {
+            token.set(System.getenv("PUBLISH_TOKEN"))
+        }
+    }
 
 
-```
+    ```

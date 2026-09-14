@@ -502,7 +502,7 @@ ChipV2SuffixSymbolIcon定义后缀Symbol图标类。
 | ---- | ---- | ---- | ---- | ---- |
 | normalAccessibility | [ChipV2Accessibility](#chipv2accessibility) | 否 | 是 | 非激活态无障碍朗读功能属性。<br>默认值：undefined，无朗读内容。<br>**装饰器类型：** @Trace |
 | activatedAccessibility | [ChipV2Accessibility](#chipv2accessibility) | 否 | 是 | 激活态无障碍朗读功能属性。<br>默认值：undefined，无朗读内容。<br>**装饰器类型：** @Trace |
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。点击后缀图标时调用此回调函数。<br>默认值：不设定后缀图标事件。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。当需要为后缀图标绑定点击事件并执行自定义操作时传入此回调函数（如触发特定功能、打开弹窗等）。点击后缀图标时调用此回调函数。<br>默认值：undefined，不设定后缀图标事件。不传入或传入undefined时，点击后缀图标无自定义响应。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -721,7 +721,7 @@ ChipV2SuffixImageIcon定义后缀图标类。
 | accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。<br>支持的值为：<br>"auto"：当前组件会转换为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发人员可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。点击后缀图标时调用此回调函数。<br>默认值：不设定后缀图标事件。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 是 | 后缀图标点击事件回调函数。当需要为后缀图标绑定点击事件并执行自定义操作时传入此回调函数（如触发特定功能、打开弹窗等）。点击后缀图标时调用此回调函数。<br>默认值：undefined，不设定后缀图标事件。不传入或传入undefined时，点击后缀图标无自定义响应。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -1182,3 +1182,62 @@ struct Index {
 ```
 
 ![chipv2-sample4](figures/chipv2-make-observed.gif)
+
+### 示例5（设置系统材质样式）
+
+该示例通过设置[ChipV2Options](#chipv2options)的backgroundSystemMaterial属性，实现了[ChipV2](#chipv2-1)的系统材质样式效果，包括沉浸式材质和自动反色功能。组件需放置在Navigation的标题栏中，沉浸光感效果才会生效。
+
+从API版本26.0.0开始，[ChipV2Options](#chipv2options)新增backgroundSystemMaterial属性。
+
+```ts
+import { ChipV2, ChipV2Options, ChipV2Label, LengthMetrics, ColorMetrics, UIUtils, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local chipV2Options: ChipV2Options = new ChipV2Options({
+    // 设置文本属性。
+    label: new ChipV2Label({ text: '操作块' }),
+    // 使用UIUtils.makeObserved包裹padding，使内部属性start和end可被观测。
+    padding: UIUtils.makeObserved({ start: LengthMetrics.fp(20), end: LengthMetrics.fp(20) }),
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+    // backgroundColor: ColorMetrics.resourceColor($r('sys.color.ohos_id_color_button_normal')),
+    borderRadius: LengthMetrics.resource($r('sys.float.ohos_id_corner_radius_button')),
+    enabled: true,
+  });
+  @Local currentPadding: number = 20;
+
+  @Builder
+  NavigationTitle() {
+    Row({ space: 10 }) {
+      ChipV2({ chipV2Options: this.chipV2Options })
+      ChipV2({ chipV2Options: this.chipV2Options })
+    }
+    .linearGradient({
+      angle: 90, // 渐变角度，90度是从左到右。
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
+      ]
+    })
+    .padding(12)
+    .width('100%')
+  }
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+该示例配图为高算力设备强档效果。
+
+![](figures/chipv2-5.png)

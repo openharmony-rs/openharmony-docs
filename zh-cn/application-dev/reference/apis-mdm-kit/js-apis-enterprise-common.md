@@ -1,4 +1,4 @@
-# @ohos.enterprise.common（Enterprise公共模块）
+# @ohos.enterprise.common (Enterprise公共模块)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->

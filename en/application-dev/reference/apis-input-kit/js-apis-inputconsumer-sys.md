@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (System API)
+# @ohos.multimodalInput.inputConsumer (Global Hotkeys) (System API)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=0ef6d7cd8e5d921a68eb0a763cb21bfc9319a3b1 translatedAt=2026-09-01T01:20:43.900Z pushedAt=2026-09-04T00:03:56.730Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:52:56.702Z pushedAt=2026-09-11T06:01:03.911Z -->
 
 The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys. 
 
@@ -16,7 +16,8 @@ The **inputConsumer** module provides APIs for subscribing to and unsubscribing 
 >
 > - The APIs provided by this module are system APIs.
 >
-> - The APIs provided by this module apply only to system shortcut keys, which are global shortcut keys defined by the system.
+> - The APIs provided by this module apply only to system hotkeys, which are global hotkeys defined by the system.
+
 
 ## Modules to Import
 
@@ -34,7 +35,7 @@ Subscribes to system hotkeys. This API uses an asynchronous callback to return t
 > - Only the key down event, or both the key down and key up events, can be subscribed to.
 > - If only the key up event needs to be subscribed to, there is a risk that the down event is consumed by the focused window, leaving the up event unpaired. The design and implementation should be reviewed to determine whether this is reasonable.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+**System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Parameters**
 
@@ -89,13 +90,14 @@ struct Index {
 }
 ```
 
+
 ## inputConsumer.off('key')
 
 off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
 
-Disables listening for system hotkey change events. This API uses an asynchronous callback to return the result.
+Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+**System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Parameters**
 
@@ -148,7 +150,6 @@ struct Index {
   }
 }
 ```
-
 ```js
 import { inputConsumer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -189,11 +190,8 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 Subscribes to key combinations (key command mode). You can specify different trigger modes through triggerType. When a key combination input event that meets the conditions occurs, this API uses an asynchronous callback to return the result.
 
 Differences from the existing API [inputConsumer.on('key')](#inputconsumeronkey):
-
 - The keyOptions of this API supports the triggerType parameter, which allows selecting modes such as triggering on key down, triggering on key repeat, or triggering on key repeat and key up.
-
 - The callback parameter of this API is of the KeyCommandCallback type, which receives both the KeyOptions and KeyEvent objects.
-
 - This API uses an event consumption mechanism, which can prevent key events from being passed backward through event consumption.
 
 **Since**: 26.0.0
@@ -372,7 +370,7 @@ try {
 
 type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
-Defines the key command callback function type, which is triggered when the shortcut key registration conditions are met.
+Defines the key command callback function type, which is triggered when the hotkey registration conditions are met.
 
 **Since**: 26.0.0
 
@@ -380,7 +378,7 @@ Defines the key command callback function type, which is triggered when the shor
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
@@ -393,16 +391,16 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 Sets the system hotkey shield status.
 
-**Required permissions**: ohos.permission.INPUT_CONTROL_DISPATCHING
+**Required permissions:** ohos.permission.INPUT_CONTROL_DISPATCHING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+**System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Parameters**
 
 | Name        | Type                        | Mandatory  | Description                                      |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | shieldMode       | [ShieldMode](#shieldmode11)                     | Yes   | System hotkey shield mode. Currently, only **FACTORY_MODE** is supported, which means to shield all system hotkeys.                      |
-| isShield | boolean  | Yes   | Whether to enable shortcut key shielding. The value **true** means to enable shortcut key shielding, and the value **false** indicates the opposite.             |
+| isShield | boolean  | Yes   | Whether to enable hotkey shielding. The value **true** means to enable hotkey shielding, and the value **false** indicates the opposite.             |
 
 **Error codes**
 
@@ -429,7 +427,7 @@ struct Index {
         .onClick(() => {
           let FACTORY_MODE = 0;
           try {
-            // Set the blocking status.
+            // Set the shield status.
             inputConsumer.setShieldStatus(FACTORY_MODE, true);
             console.info(`Succeeded in setting shield status.`);
           } catch (error) {
@@ -447,9 +445,9 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 Obtains the system hotkey shield status.
 
-**Required permissions**: ohos.permission.INPUT_CONTROL_DISPATCHING
+**Required permissions:** ohos.permission.INPUT_CONTROL_DISPATCHING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+**System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Parameters**
 
@@ -461,7 +459,7 @@ Obtains the system hotkey shield status.
 
 | Type        |  Description                                      |
 | ---------- |  ---------------------------------------- |
-| boolean                    | Whether to enable shortcut key shielding. The value **true** means to enable shortcut key shielding, and the value **false** indicates the opposite.                      |
+| boolean                    | Whether to enable hotkey shielding. The value **true** means to enable hotkey shielding, and the value **false** indicates the opposite.                      |
 
 **Error codes**
 
@@ -501,9 +499,9 @@ struct Index {
 
 ## KeyOptions
 
-Represents combination key options.
+Represents key combination options.
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+**System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
@@ -530,11 +528,11 @@ Enumerates the key command trigger types, which are used to specify the trigger 
 
 **Since**: 26.0.0
 
-**System capability:** SystemCapability.MultimodalInput.Input.InputConsumer
+**System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 | Name | Value | Description |
 | --- | --- | --- |

@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c27e0e5f22d6b3cf08575f1a30584cd1902be584 translatedAt=2026-09-01T01:22:01.225Z pushedAt=2026-09-03T08:40:30.385Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:06:42.870Z pushedAt=2026-09-11T06:51:44.599Z -->
 
 The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, and touchpad.
 
@@ -54,8 +54,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -110,8 +109,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -167,8 +165,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { display } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -247,8 +244,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -279,8 +275,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -340,8 +335,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -372,8 +366,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -508,8 +501,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -540,8 +532,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -656,8 +647,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -688,8 +678,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -804,8 +793,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -836,8 +824,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -898,8 +885,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -955,8 +941,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -987,8 +972,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1049,8 +1033,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1106,8 +1089,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1138,8 +1120,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1254,8 +1235,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1286,8 +1266,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1332,7 +1311,7 @@ Enables listening for touchscreen swipe events. This API uses an asynchronous ca
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenSwipe**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the swipe. The value range is [3, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the swipe gesture. Value range: [3, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Mandatory | Callback used to return the touchscreen swipe event. |
 
 **Error codes**
@@ -1348,8 +1327,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1389,7 +1367,7 @@ Disables listening for touchscreen swipe events. This API uses an asynchronous c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenSwipe**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the swipe. The value range is [3, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the swipe gesture. Value range: [3, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1405,8 +1383,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1436,8 +1413,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1480,7 +1456,7 @@ Enables listening for touchscreen pinch events. This API uses an asynchronous ca
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenPinch**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the pinch. The value range is [4, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the pinch gesture. Value range: [4, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Mandatory | Callback used to return the touchscreen pinch event. |
 
 **Error codes**
@@ -1496,8 +1472,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1537,7 +1512,7 @@ Disables listening for touchscreen pinch events. This API uses an asynchronous c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenPinch**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the pinch. The value range is [4, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the pinch gesture. Value range: [4, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1553,8 +1528,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1584,8 +1558,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1772,13 +1745,13 @@ Queries recent touchscreen input events. A maximum of 100 events can be queried.
 
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | number                                                    | Yes   | Number of touchscreen input events to query. The value range is an integer in [0, 100]. If the value is less than 0, it is set to 0; if greater than 100, it is set to 100. Since API version 26.0.0, if the value is greater than 60, it is set to 60. If there are only 30 actual touchscreen input events but this parameter is set to 50, only 30 touchscreen input events can be queried. |
+| count     | number                                                    | Yes   | Number of touch input events to query, which is an integer in the value range [0, 100]. If the value is less than 0, it is set to 0; if it is greater than 100, it is set to 100. Since API version 26.0.0, if the value is greater than 60, it is set to 60. If there are only 30 actual touch input events but this parameter is set to 50, only 30 touch input events can be queried. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise used to return the queried touchscreen input events. It contains the following valid information; all other information is invalid:<br/>- **actionTime**: Time when the touchscreen input event occurred, in microseconds (μs) since system startup.<br/>- [SourceType](js-apis-touchevent.md#sourcetype): Device type of the touch source.<br/>- [isInject](js-apis-touchevent-sys.md#touchevent): Whether the touchscreen input event is an injected event.<br/>- **pressure**: Pressure value, with a value range of [0.0, 1.0], where **0.0** indicates not supported.<br/>- **tiltX**: Angle relative to the YZ plane, with a value range of [-90, 90], where a positive value indicates tilting to the right.<br/>- **tiltY**: Angle relative to the XZ plane, with a value range of [-90, 90], where a positive value indicates tilting downward.<br/>Since API version 23, the following additional valid information can be obtained:<br/>- [Action](js-apis-touchevent.md#action): Touchscreen input event type.<br/>- **screenX**: X-axis coordinate relative to the upper left corner of the screen, in pixels, with a value range of [0, screen width], increasing to the right. It is available only for specified applications.<br/>- **screenY**: Y-axis coordinate relative to the upper left corner of the screen, in pixels, with a value range of [0, screen height], increasing downward. It is available only for specified applications.<br/>Since API version 26.0.0, a maximum of 60 events can be queried, and events of the MOVE and PULL_MOVE types will not be returned. **screenX** and **screenY** are no longer restricted to specified applications and can be obtained by all system applications. Additionally, the following valid information can be obtained:<br/>- **screenId**: Target screen ID. |
+| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise used to return the queried touch input events. It contains the following valid information; all other information is invalid:<br/>- **actionTime**: Time when the touchscreen input event occurred, in microseconds (μs) since system startup.<br/>- [SourceType](js-apis-touchevent.md#sourcetype): Device type of the touch source.<br/>- [isInject](js-apis-touchevent-sys.md#touchevent): Whether the touchscreen input event is an injected event.<br/>- **pressure**: Pressure value, with a value range of [0.0, 1.0], where **0.0** indicates not supported.<br/>- **tiltX**: Angle relative to the YZ plane, with a value range of [-90, 90], where a positive value indicates tilting to the right.<br/>- **tiltY**: Angle relative to the XZ plane, with a value range of [-90, 90], where a positive value indicates tilting downward.<br/>Since API version 23, the following additional valid information can be obtained:<br/>- [Action](js-apis-touchevent.md#action): Touchscreen input event type.<br/>- **screenX**: X-axis coordinate relative to the upper left corner of the screen, in pixels, with a value range of [0, screen width], increasing to the right. It is available only for specified applications.<br/>- **screenY**: Y-axis coordinate relative to the upper left corner of the screen, in pixels, with a value range of [0, screen height], increasing downward. It is available only for specified applications.<br/>Since API version 26.0.0, a maximum of 60 events can be queried, and events of the MOVE and PULL_MOVE types will not be returned. **screenX** and **screenY** are no longer restricted to specified applications and can be obtained by all system applications. Additionally, the following valid information can be obtained:<br/>- **screenId**: Target screen ID. |
 
 **Error codes**
 
@@ -1819,7 +1792,7 @@ Listens for inward swipe events. This API uses an asynchronous callback to retur
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1874,13 +1847,13 @@ Cancels listening for inward swipe events. This API uses an asynchronous callbac
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Input event type. The value is fixed at **SwipeInward**.                   |
+| type     | string                                                       | Yes  | Input event type. The value is fixed at **swipeInward**.                   |
 | receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1965,7 +1938,7 @@ Enables listening for fingerprint gesture input events. This API uses an asynchr
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -2020,7 +1993,7 @@ Disables listening for fingerprint gesture input events. This API uses an asynch
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -2042,8 +2015,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -2074,8 +2046,7 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry

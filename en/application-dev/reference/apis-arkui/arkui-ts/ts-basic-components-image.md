@@ -5,27 +5,26 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45ce9cea9e051e69546d963b096c229fa7f5090e translatedAt=2026-09-03T04:11:19.166Z -->
 
 The **Image** component is usually used to display images in applications. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, HEIF, and TIFF. Note that the APNG and SVGA formats are not supported.
 
 > **NOTE**
 >
-> - This component is supported since API version 7. Newly added content in later versions is marked with a superscript to indicate the initial version of the content.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - Since API version 23, the tiff format is supported for images.
+> - This component supports the TIFF image format since API version 23.
 >
 > - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
 >
-> - When copying the **Image** component using a shortcut key combination, the **Image** component must be in the focused state. For details about how to obtain focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). By default, the **Image** component does not obtain focus. Set the [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true** to switch focus to the component using the Tab key, and then set the [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9) attribute to **true** to obtain focus by tapping.
+> - When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused state. For instructions on how to set focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). By default, the **Image** component is not focusable. To enable it to gain focus, set both the [focusable](ts-universal-attributes-focus.md#focusable) and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9) attributes to **true**.
 >
-> - The image format supports SVG image sources. For details about SVG tags, see [SVG Tags](./ts-basic-svg.md).
+> - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](./ts-basic-svg.md).
 >
-> - The playback of animated images depends on the visibility change of the **Image** node, and the default behavior is not to play. When the node is visible, the animation is started through a callback; when the node is invisible, the animation is stopped. The visibility state is determined by the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event. When the visibility threshold ratios is greater than 0, the **Image** is in the visible state.
+> - For animated images, animation playback is disabled by default and depends on the visibility of the **Image** component. When the component is visible, the animation is started through the callback. When the component is invisible, the animation is stopped. The visibility status of the **Image** component can be identified through the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event. If the value of **ratios** is greater than 0, the component is visible.
 >
-> - When the **Image** component plays a GIF animation, the frame duration is obtained from the delay time field of each frame in the GIF file. When the duration of a frame is less than or equal to 0, the system corrects it to 100 ms. When the duration of a frame is greater than 0, the system uses the original value directly without applying a minimum frame duration limit.
+> - When the **Image** component plays a GIF image, the frame duration is obtained from the delay time field of each frame in the GIF file. If the duration of a frame is less than or equal to 0, the system corrects the duration to 100 ms. If the duration of a frame is greater than 0, the system directly uses the original value without limiting the minimum frame duration.
 >
-> - If a white block appears during the image loading process, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). If the image loading takes too long, see [Optimizing Preset Image Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance#section91526132216).
+> - For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). For details about how to address slow image loading, see [Optimizing Preset Image Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance#section91526132216).
 
 ## Required Permissions
 
@@ -51,21 +50,21 @@ By default, the **Image** component crops images to keep their center. For examp
 
 If the **Image** component does not have its width and height set, its size adapts to that of its parent component once the image is successfully loaded.
 
-> **NOTE**
+>**NOTE**
 >
-> - Passing a URL directly to **Image** may cause potential performance issues. For example: (1) When loading a large image, it cannot be downloaded in advance, resulting in a long white block display time. (2) When synchronous loading is set for a small image, the UI thread may be blocked in a weak network environment, causing screen freeze. (3) In a fast-scrolling waterfall flow, images to be displayed cannot be downloaded in advance, resulting in many white blocks during scrolling. Performance issues vary in different scenarios. It is recommended to separate the network download from the display of **Image**, and download in advance or asynchronously. If a white block appears during the image loading process, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). If the image loading takes too long, see [Optimizing Image Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance).
+> - Passing a URL directly to an **Image** component may lead to potential performance issues, such as: (1) Large images cannot be downloaded in advance during loading, resulting in a long display time of white blocks; (2) Small images set to load synchronously may block the UI thread in a weak network environment, causing screen freezes; (3) In a rapidly scrolling waterfall flow, images that are about to be displayed cannot be downloaded in advance, resulting in many white blocks during scrolling. Performance issues may manifest differently in different scenarios. To minimize these issues, separate the network download part from the display of the **Image** component, and download in advance or asynchronously. For details about how to resolve white block issues during image loading, see [Solution to White Image Blocks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-image-white-lump-solution). For details about how to address slow image loading, see [Optimizing Preset Image Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-texture-compression-improve-performance).
 >
-> - When src is switched from a valid value (an image resource that can be parsed and loaded normally) to an invalid value (an image path that cannot be parsed or loaded), the component keeps displaying the previously loaded image content without clearing or resetting it.
+> - When **src** is switched from a valid value (an image resource that can be parsed and loaded correctly) to an invalid value (an image path that cannot be parsed or loaded), the component retains the previously successfully loaded image content without clearing or resetting it.
 >
-> - When the input parameter of the **Image** component is of the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type, the **Image** component can detect data changes only when the PixelMap object changes (that is, points to a new PixelMap instance). Modifying only the content of the PixelMap object (such as pixel values) without changing the object reference does not trigger the detection of data changes.
+> - If the input parameter is of the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) type, the **Image** component can detect data changes only when the **PixelMap** object is updated to point to a new instance. If modifications are made to the content of the **PixelMap** object, such as pixel values, but the reference to the object remains the same, the **Image** component will not recognize these modifications as a data change.
 >
-> - When the input parameter of the **Image** component is a Base64 string, the general format of the Base64 string is `data:image/subtype;base64,Base64EncodedData`, where subtype is the type declaration, Base64EncodedData is the base64 encoding of the data, and the rest are fixed strings. For example, the input parameter for a png image is `data:image/png;base64,iVBORw0KGgo...`.
+> - If the input parameter of the **Image** component is a Base64 string, the standard format of the Base64 string is **data:image/subtype;base64,Base64EncodedData**. In this format, **subtype** indicates the type declaration, **Base64EncodedData** indicates the Base64-encoded data, and other values are fixed strings. For example, the input parameter of a PNG image is **data:image/png;base64,iVBORw0KGgo...**.
 >
->   1. image/subType is used to declare the type of the data content. Since API version 26.0.0, the **Image** component accepts Base64 strings in any `data:image/xxx;base64,Base64EncodedData` format. The specific image type is identified by the system multimedia capability based on the actual data content, without the need to enumerate all supported MIME types. For versions earlier than API version 26.0.0, the **Image** component does not strictly verify whether the declared type is completely consistent with the actual image format after Base64 decoding. In some scenarios, the image may still be displayed normally even if the declared type is inconsistent with the actual format. To avoid future behavior changes or unknown issues, it is recommended to always keep the type consistent with the actual image format.
+>   1. **image/subType** declares the data type. Since API version 26.0.0, the **Image** component accepts any Base64 string in the format of `data:image/xxx;base64,Base64EncodedData`. The specific image type is identified by the system's multimedia capabilities based on the actual data content, eliminating the need to enumerate all supported MIME types. For versions earlier than API version 26.0.0, the **Image** component does not forcibly verify whether the declared type matches the actual image format after Base64 decoding. In some scenarios, the image may still display correctly even if the declared type does not match the actual format. To prevent future behavior changes or unknown issues, it is recommended that the declared type always match the actual image format.
 >
->   2. Since API version 26.0.0, the **Image** component supports the wildcard notation `data:image/*;base64,Base64EncodedData`. For versions earlier than API version 26.0.0, the **Image** component does not support the wildcard notation `data:image/*;base64,Base64EncodedData`, and subType must explicitly declare the specific image type.
+>   2. The **Image** component supports the wildcard format `data:image/*;base64,Base64EncodedData` since API version 26.0.0. For versions earlier than API version 26.0.0, the **Image** component does not support this wildcard format, and **subType** must explicitly declare the specific image type.
 >
->   3. Since API version 26.0.0, the **Image** component supports loading SVG images through Base64. For versions earlier than API version 26.0.0, the **Image** component does not support loading SVG images in the form of Base64 strings.
+>   3. The **Image** component can load SVG images using Base64 since API version 26.0.0. In versions earlier than API version 26.0.0, the **Image** component cannot load SVG images using Base64 strings.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -78,7 +77,7 @@ If the **Image** component does not have its width and height set, its size adap
 <!--Table: 10%; 20%; 10%; 60%-->
 | Name | Type                                    | Mandatory  | Description                                    |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | Yes    | Image data source. Supports local images and network images. For the reference method, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>1. PixelMap is a pixel map format, commonly used in image editing scenarios.<br>2. ResourceStr includes the Resource and string formats.<br>The string format can be used to load network images and local images. When [using a relative path to display an image](#example-25-displaying-an-image-using-a-relative-path), cross-package/cross-module invocation of this Image component is not supported. It is recommended to use the Resource format to manage image resources that need to be used globally.<br>Since DevEco Studio 6.0.0 Beta2, when creating a project or module, the module created by default does not package resources outside the resource directory. You need to enable the related switch: set buildOption > resOptions > copyCodeResource > enable to true in the module's build-profile.json5. For details, see the related introduction in [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).<br>- Supports `Base64` strings.<br>- When the passed-in string is an HTTPS network image address, see [Example 2: Downloading and Displaying Static Online Images](#example-2-downloading-and-displaying-static-online-images).<br>- Supports strings with the file:// path prefix, that is, application sandbox URIs: file://\<bundleName>/\<sandboxPath>. For the construction of the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). For the sandbox path, you need to use the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) method to convert the path to an application sandbox URI, and then pass it in for display. In addition, ensure that files under the directory package path have read permission.<br>The Resource format can access resource files across packages/modules and is the recommended way to access local images. For a specific example, see [Cross-HAP/HSP Resources](../../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).<br/>3. When the passed-in resource ID or name refers to a common image, a DrawableDescriptor object is generated. Passing in the [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) type can play PixelMap array animations.<br>**Note:**<br/>- On ArkTS cards, GIF image format animations are supported, but they play only once when displayed.<br/>- On ArkTS cards, strings with network-related path prefixes such as http:/\/ and the file:/\/ path prefix are not supported. |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>1. **PixelMap**: a pixel map storing graphical information, commonly used for image editing scenarios.<br>2. **ResourceStr**: a string or a Resource object.<br>The string type can be used to load network images and local images. When you [use a relative path to display an image](#example-25-displaying-an-image-using-a-relative-path), the **Image** component cannot be called across bundles or modules. If an image needs to be used globally, you are advised to use the Resource format.<br>Since DevEco Studio 6.0.0 Beta2, resources in non-**resource** directories are not packaged by default for new projects or modules. To enable packaging, go to **buildOption** > **resOptions** > **copyCodeResource** to set **enable** to **true** in the module's **build-profile.json5** file. For details, see [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348).<br>- Base64 strings are supported.<br>- When providing an HTTPS network image URL, refer to [Example 2: Downloading and Displaying Static Online Images](#example-2-downloading-and-displaying-static-online-images) for implementation guidance.<br>- Strings prefixed with the **file://** path are supported (application sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.<br>The Resource format supports cross-package or cross-module access to resource files and is the recommended way to access local images. For details, see [Cross-HAP/HSP Resources](../../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).<br>3. **DrawableDescriptor**: an object created when the passed resource ID or name belongs to a common image. The [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) type can be passed to play animations from a **PixelMap** array.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
 
 ### Image<sup>12+</sup>
 
@@ -104,7 +103,7 @@ Obtains an image. The [ImageContent](#imagecontent12) type allows you to specify
 
 Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIOptions)
 
-The **Image** component adds the [ImageAIOptions](ts-image-common.md#imageaioptions12) parameter to set AI analysis options for the component.
+Obtains an image. The [ImageAIOptions](ts-image-common.md#imageaioptions12) parameter allows you to set AI image analysis options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -123,11 +122,11 @@ The **Image** component adds the [ImageAIOptions](ts-image-common.md#imageaiopti
 
 Image(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent, reloadKey?: string)
 
-Obtains the image and supports triggering image reloading through the reloadKey parameter. When the value of reloadKey changes, the image is reloaded without using the cache.
+Obtains an image. You can use the **reloadKey** parameter to trigger image reloading. When the value of **reloadKey** changes, the image will be reloaded without using the cache.
 
 **Since**: 26.0.0
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -137,16 +136,16 @@ Obtains the image and supports triggering image reloading through the reloadKey 
 
 **Parameters**
 
-| Name  | Type                                     | Mandatory   | Description                                |
+| Name | Type                                    | Mandatory  | Description                               |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10)\|&nbsp;[ImageContent](#imagecontent12) | Yes    | Image data source, which supports local images and network images. For the reference method, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use PixelMap, ResourceStr, and DrawableDescriptor, see the description of the src parameter in [Image](#image-1).<br> Pass in the [ImageContent](#imagecontent12) type to specify the image content.<br>**NOTE**<br/>- On ArkTS cards, GIF image animation is supported, but it is played only once when displayed.<br/>- On ArkTS cards, strings with network-related path prefixes such as http:/\/ and the file:/\/ path prefix are not supported. |
-| reloadKey  | string | No   | Identifier for image reloading. When the value of reloadKey changes, the image is reloaded without using the cache. This applies to scenarios where the image source address remains unchanged but the image content has been updated (for example, the local image content has been overwritten).<br/>Default value: empty string. |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10)\|&nbsp;[ImageContent](#imagecontent12) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use **PixelMap**, **ResourceStr**, and **DrawableDescriptor**, see the **src** parameter description of [Image](#image-1).<br> [ImageContent](#imagecontent12): image content.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
+| reloadKey  | string | No  | Image reloading key. When the value of **reloadKey** changes, the image will be reloaded without using the cache. This is applicable to scenarios where the image source address remains unchanged but the image content has been updated (for example, the local image content is rewritten).<br>The default value is an empty string.|
 
 ### Image
 
 Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions?: ImageAIOptions, reloadKey?: string)
 
-Obtains the image. You can set AI analysis options through the [ImageAIOptions](ts-image-common.md#imageaioptions12) parameter. When the value of reloadKey changes, the image is reloaded without using the cache.
+Obtains an image. The [ImageAIOptions](ts-image-common.md#imageaioptions12) parameter allows you to set AI image analysis options. When the value of **reloadKey** changes, the image will be reloaded without using the cache.
 
 **Since**: 26.0.0
 
@@ -158,11 +157,11 @@ Obtains the image. You can set AI analysis options through the [ImageAIOptions](
 
 **Parameters**
 
-| Name  | Type                                  | Mandatory   | Description                                      |
+| Name | Type                                 | Mandatory  | Description                                     |
 | ----    | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | Yes    | Image data source, which supports local images and network images. For the reference method, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use PixelMap, ResourceStr, and DrawableDescriptor, see the description of the src parameter in [Image](#image-1).<br>**Note:**<br/>- On ArkTS cards, the GIF image format animation is supported, but it is played only once when displayed.<br/>- On ArkTS cards, strings with network-related path prefixes such as http:/\/ and the file:/\/ path prefix are not supported. |
-| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No   | Sets an AI analysis option for the component. Through this option, you can configure the analysis type or bind an analysis controller. |
-| reloadKey  | string | No   | Identifier for reloading the image. When the value of reloadKey changes, the image is reloaded without using the cache. This applies to scenarios where the image source address remains unchanged but the image content has been updated (for example, the local image content is overwritten).<br/>Default value: empty string. |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use **PixelMap**, **ResourceStr**, and **DrawableDescriptor**, see the **src** parameter description of [Image](#image-1).<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
+| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
+| reloadKey  | string | No  | Image reloading key. When the value of **reloadKey** changes, the image will be reloaded without using the cache. This is applicable to scenarios where the image source address remains unchanged but the image content has been updated (for example, the local image content is rewritten).<br>The default value is an empty string.|
 
 ## Attributes
 
@@ -270,7 +269,7 @@ Sets how the image is repeated. When set to repeat, the image is repeated from t
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
-When a valid [resizable](#resizable11) is set, this attribute does not take effect.
+This attribute does not take effect when [resizable](#resizable11) is set to a valid value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -364,7 +363,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type   | Mandatory| Description                                        |
 | ------ | ------- | ---- | -------------------------------------------- |
-| value  | boolean | Yes  | Whether the image follows the system language direction, displaying a mirrored effect in an RTL language environment.<br>Default value: **false**<br>The value **true** means that the image follows the system language direction, displaying a mirrored effect in an RTL language environment, and **false** means the opposite.|
+| value  | boolean | Yes  | Whether the image follows the system language direction, displaying a mirrored effect in an RTL language environment.<br>Default value: **false**. The value **true** means that the image follows the system language direction, displaying a mirrored effect in an RTL language environment, and **false** means the opposite.|
 
 ### fitOriginalSize
 
@@ -426,13 +425,13 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                      | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | Yes   | Sets the fill color of the image. <br/>**Note:**<br/> By default, the component is not filled. When an invalid value is passed in, the system uses the default theme color: black in light mode and white in dark mode. <br/>Since API version 21, when [supportSvg2](#supportsvg221) is set to true, fillColor depends on the parameter configuration of the fill attribute in the SVG image source. When the fill attribute in the SVG image source is 'none', fillColor does not take effect. When supportSvg2 is set to false, fillColor takes effect and replaces the fill color of all drawable elements in the SVG image.|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to **true**, **fillColor** depends on the **fill** attribute configuration in the SVG image source. If the **fill** attribute in the SVG image source is set to **'none'**, **fillColor** does not take effect. When **supportSvg2** is set to **false**, **fillColor** takes effect and replaces the fill colors of all drawable elements in the SVG image.|
 
 ### fillColor<sup>20+</sup>
 
 fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
-Sets the fill color. This attribute takes effect only on SVG image sources. After it is set, the fill color of all drawable elements in the SVG image is replaced. To modify the color of a PNG image, use [colorFilter](#colorfilter9). To reset the fill color, pass in the [ColorContent](#colorcontent15) type. You can pass in the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type to set a P3 color gamut color value<!--Del--> or set a BT2020 color gamut color value since API version 24<!--DelEnd-->, which can provide richer color performance on devices that support a wide color gamut.
+Fill color to be superimposed on the image. This attribute applies only to SVG images. Once set, the fill color will replace the fill colors of all drawable elements within the SVG image. To set the fill color for a PNG image, use [colorFilter](#colorfilter9). To reset the fill color, pass a value of the [ColorContent](#colorcontent15) type. You can set P3 color gamut values by passing the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type. <!--Del-->Since API version 24, BT.2020 color gamut values are also supported. <!--DelEnd-->This allows for richer color reproduction on devices that support wide color gamut.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
@@ -446,7 +445,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                      | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes   | Sets the fill color. <br/>**Note:**<br/> By default, the component is not filled. When an invalid value is passed in, the system uses the default theme color: black in light mode and white in dark mode. <br/>Since API version 21, when [supportSvg2](#supportsvg221) is set to true, fillColor depends on the parameter configuration of the fill attribute in the SVG image source. When the fill attribute in the SVG image source is 'none', fillColor does not take effect. When supportSvg2 is set to false, fillColor takes effect and replaces the fill color of all drawable elements in the SVG image.|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to **true**, **fillColor** depends on the **fill** attribute configuration in the SVG image source. If the **fill** attribute in the SVG image source is set to **'none'**, **fillColor** does not take effect. When **supportSvg2** is set to **false**, **fillColor** takes effect and replaces the fill colors of all drawable elements in the SVG image.|
 
 ### autoResize
 
@@ -472,17 +471,17 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to resize the image source based on the size of the display area during image decoding. This resizing can help reduce the memory usage. For example, if the original image size is 800 x 1200 and the display area size is 200 x 200, the image will be decoded to 200 x 300 at a downsampled resolution (the actual result may vary depending on the scaling and fill type configurations used in the calculation), greatly reducing the memory occupied by the image.<br>Default value: **false**<br>**true**: Enable resizing.<br>**false**: Disable resizing.|
+| value  | boolean | Yes  | Whether to resize the image source based on the size of the display area during image decoding. This resizing can help reduce the memory usage. For example, if the original image size is 800 x 1200 and the display area size is 200 x 200, the image will be decoded to 200 x 300 at a downsampled resolution (the actual result may vary depending on the scaling and fill type configurations used in the calculation), greatly reducing the memory occupied by the image.<br>The default value is **false**.<br>Since API version 26.0.0, if the product of the width and height of a decoded image exceeds 50 million pixels, the default value is **true**, meaning that downsampled decoding is enabled by default during image decoding. This determination is related only to the image pixel dimensions and is irrelevant to the image file size or image format.<br>**true** to resize the image source; **false** otherwise.|
 
 ### syncLoad<sup>8+</sup>
 
 syncLoad(value: boolean)
 
-Sets whether to load the image synchronously. It is recommended that syncLoad be set to true when loading a small local image, because the loading takes a short time and can be performed on the main thread. Synchronous loading is not recommended for network images. Asynchronous loading should be used instead, or the network download should be separated from the display of Image to avoid blocking the UI thread and causing AppFreeze.
+Specifies whether to load the image synchronously. When loading a small local image, you are advised to set **syncLoad** to **true** so that the image loading can be quickly completed on the main thread. You are advised not to use synchronous loading for network images. Instead, use asynchronous loading or separate the network download from the image display to prevent the UI thread from being blocked and causing app freezing.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
-The [alt](#alt) placeholder image is always loaded asynchronously, and syncLoad does not take effect on it.
+The [alt](#alt) placeholder image is always loaded asynchronously, and **syncLoad** does not take effect on it.
 
 If image flickering occurs during loading, set **syncLoad** to **true**. For details, see [Optimizing Concurrent Tasks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-click-to-click-response-optimization#section715115119192).
 
@@ -496,7 +495,7 @@ If image flickering occurs during loading, set **syncLoad** to **true**. For det
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**<br>**true**: Load the image synchronously.<br>**false**: Load the image asynchronously.<br>If the main thread is blocked for more than 6s, AppFreeze will occur. For details, see [Application Freeze Detection](../../../dfx/appfreeze-guidelines.md).|
+| value  | boolean | Yes  | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**. **true**: Load the image synchronously. **false**: Load the image asynchronously.<br>If the main thread is blocked for more than 6s, AppFreeze will occur. For details, see [Application Freeze Detection](../../../dfx/appfreeze-guidelines.md).|
 
 ### copyOption<sup>9+</sup>
 
@@ -528,7 +527,7 @@ When this attribute is set, [renderMode](#rendermode) is not effective.
 
 > **NOTE**
 >
-> In API version 11 and earlier, this attribute is not supported for SVG image sources. Since API version 12, for SVG image sources, this attribute takes effect only when the stroke attribute is set (regardless of whether it has a value).
+> This parameter is not available for SVG images in API version 11 and earlier versions. Since API version 12, the SVG image source takes effect only when the **stroke** attribute is set (regardless of whether the **stroke** attribute has a value).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -540,7 +539,7 @@ When this attribute is set, [renderMode](#rendermode) is not effective.
 
 | Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | Yes  | 1. Sets a color filter effect for the image. The input parameter is a 4x5 RGBA conversion matrix.<br/>2. Since API version 12, the ColorFilter type of @ohos.graphics.drawing is supported as the input parameter.<br/>**NOTE**<br/>In API version 11 and earlier, SVG image sources do not support this attribute.<br/>Since API version 12, the DrawingColorFilter type in this API supports use in atomic services. For SVG image sources, this attribute takes effect only when the stroke attribute is set (regardless of whether it has a value).<br/>Since API version 21, when the [supportSvg2](#supportsvg221) attribute is set to true, the colorFilter attribute applies to the entire SVG image source.|
+| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | Yes  | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>2. The ColorFilter type of **@ohos.graphics.drawing** can be used as an input parameter since API version 12.<br>**NOTE**<br>This parameter is not available for SVG images in API version 11 and earlier versions.<br>The **DrawingColorFilter** type can be used in atomic services since API version 12. For SVG sources, the effect only applies when the **stroke** property is set (regardless of the value).<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to **true**, **colorFilter** takes effect on the entire SVG image source.|
 
 The color filter is applied to the image using a 4 x 5 matrix. The first row of the matrix represents the vector values for the R (red) channel, the second row represents the vector values for the G (green) channel, the third row represents the vector values for the B (blue) channel, and the fourth row represents the vector values for the A (alpha) channel. Each of the four rows corresponds to the vector values of a distinct RGBA channel.<br>When the values on the matrix diagonal are **1** and all other values are **0**, the original colors of the image are preserved.<br> **Calculation rule:**<br>The following example shows the input filter matrix.<br>![image-matrix-1](figures/image_matrix_1.png) <br>The pixel is represented as [R, G, B, A], with color values in the [0, 255] range.<br>The filtered color will be [R', G', B', A'].<br>![image-matrix-2](figures/image_matrix_2.png)<br>For details about how to use this attribute, see [Example 9](#example-9-setting-a-color-filter-for-an-image).
 
@@ -548,15 +547,15 @@ The color filter is applied to the image using a 4 x 5 matrix. The first row of 
 
 colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor)
 
-Sets the color filter effect for the image.
+Sets the color filter for the image.
 
-When this attribute is set, the [renderMode](#rendermode) attribute does not take effect.
+When this attribute is set, [renderMode](#rendermode) is not effective.
 
-When the value is of the [ResourceColor](ts-types.md#resourcecolor) type, it is converted to a [DrawingColorFilter](#drawingcolorfilter12) with a blend mode.
+If the value is of the [ResourceColor](ts-types.md#resourcecolor) type, it will be converted to the [DrawingColorFilter](#drawingcolorfilter12) type with a blending mode.
 
 **Since**: 26.0.0
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -566,9 +565,9 @@ When the value is of the [ResourceColor](ts-types.md#resourcecolor) type, it is 
 
 **Parameters**
 
-| Name | Type                                    | Mandatory | Description                                                         |
+| Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) | Yes   | Filter value of the image color.<br/>For details about the [ColorFilter](ts-types.md#colorfilter9) and [DrawingColorFilter](#drawingcolorfilter12) types and SVG image sources, see the API description of [colorFilter](#colorfilter9). For an input color value of the [ResourceColor](ts-types.md#resourcecolor) type, the image is drawn in the SRC_ATOP mode of [DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter) by default (in this mode, the filter color is overlaid on the target image, with the filter covering the target). |
+| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) | Yes  | Filter value of the image color.<br>For details about the [ColorFilter](ts-types.md#colorfilter9) and [DrawingColorFilter](#drawingcolorfilter12) types and SVG image sources, see the [colorFilter](#colorfilter9) API description. For an input color value of the [ResourceColor](ts-types.md#resourcecolor) type, the **SRC_ATOP** mode of [DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter) is used by default. In this mode, the filter color is overlaid on the target image, with the filter covering the target.|
 
 ### draggable<sup>9+</sup>
 
@@ -594,7 +593,7 @@ Sets whether to enable the AI image analyzer, which supports subject recognition
 
 This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the [CustomBuilder](ts-types.md#custombuilder8) attribute in **overlay** has no effect. This feature also depends on device capabilities.
 
-The image to be analyzed must be a static non-vector image. SVG, GIF, and other image types are not supported for analysis. You can pass in a [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) for analysis. Currently, only the [RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7) type is supported. For details about how to use it, see [Example 5: Enabling the AI Image Analyzer](#example-5-enabling-the-ai-image-analyzer).
+Images to be analyzed must be static, non-vector images. That is, SVG and GIF images cannot be analyzed. [Pixel maps](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7) format can be passed in for analysis. For details, see [Example 5: Enabling the AI Image Analyzer](#example-5-enabling-the-ai-image-analyzer).
 
 The [alt](#alt) placeholder image does not support analysis. The [objectRepeat](#objectrepeat) attribute supports analysis only when it is set to **ImageRepeat.NoRepeat**. Analysis is not supported when the [obscured](ts-universal-attributes-obscured.md#obscured) attribute is enabled.
 
@@ -630,7 +629,7 @@ When a valid [ResizableOptions](#resizableoptions11) is set, the **objectRepeat*
 
 When the sum of the values of **top** and **bottom** is greater than the source image height, or the sum of the values of **left** and **right** is greater than the source image width, the [ResizableOptions](#resizableoptions11) attribute does not take effect.
 
-When the component parameter type is an animated image, [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12), or SVG, setting this attribute does not take effect.
+This attribute does not take effect when the parameter type of the component is animated image, [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12), or SVG.
 
 >**NOTE**
 >
@@ -674,9 +673,9 @@ dynamicRangeMode(value: DynamicRangeMode)
 
 Sets the dynamic range of the image to be displayed. This attribute is not applicable to SVG images.
 
-When this attribute is set together with the [hdrBrightness](#hdrbrightness19) attribute, this attribute does not take effect.
+When both this attribute and the [hdrBrightness](#hdrbrightness19) attribute are set, this attribute does not take effect.
 
-**Device behavior differences**: This API takes effect properly on phones, PCs/2-in-1 devices, and tablets, but has no effect on other device types.
+**Device behavior differences**: This API takes effect on phones, PCs/2-in-1 devices, and tablets, but not on other device types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -698,7 +697,7 @@ Sets the display orientation of the image content.
 
 This attribute does not apply to placeholder images specified by [alt](#alt).
 
-When a valid [resizable](#resizable11) is set, this attribute does not take effect.
+This attribute does not take effect when [resizable](#resizable11) is set to a valid value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
@@ -734,7 +733,7 @@ If this attribute and the [dynamicRangeMode](#dynamicrangemode12) attribute are 
 
 | Name  | Type   | Mandatory| Description                  |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | Yes | Used to adjust the brightness of HDR images displayed by the component. This API takes effect only for HDR image sources.<br/>Default value: 1.0<br/>Value range: [0.0, 1.0]. If the value is less than 0 or greater than 1.0, 1.0 is used. 0 indicates that the image is displayed at SDR brightness, and 1.0 indicates that the image is displayed at the highest HDR brightness currently allowed. |
+| brightness | number | Yes  | Brightness of HDR images displayed by the component. This API only takes effect for HDR image sources.<br>Default value: **1.0**<br>Value range: [0.0, 1.0]. Values less than 0 or greater than 1.0 are clamped to **1.0**. **0**: The image is displayed at SDR brightness.<br>**1.0**: The image is displayed at the highest allowed HDR brightness. |
 
 ### supportSvg2<sup>21+</sup>
 
@@ -939,8 +938,8 @@ Provides the image decoding size.
 
 | Name| Type      | Read-Only| Optional| Description          |
 | ------ | --------- | ---- | ------------- | ------------- |
-| width<sup>7+</sup>  | number | No  | No  | Width of the image decoding size.<br/>Unit: vp<br/>**Value range:** (0, +∞); when the value is less than or equal to 0, this parameter does not take effect, and the image is decoded at its original size.<br/>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| height<sup>7+</sup>  | number | No  | No | Height of the image decoding size.<br/>Unit: vp<br/>**Value range:** (0, +∞); when the value is less than or equal to 0, this parameter does not take effect, and the image is decoded at its original size.<br/>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| width<sup>7+</sup>  | number | No | No | Width of the decoded image.<br>Unit: vp.<br>Value range: (0, +∞). If the value is less than or equal to 0, this parameter does not take effect and the image is decoded based on the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup>  | number | No | No| Height of the decoded image.<br>Unit: vp.<br>Value range: (0, +∞). If the value is less than or equal to 0, this parameter does not take effect and the image is decoded based on the original size.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## DrawableDescriptor<sup>10+</sup>
 
@@ -956,7 +955,7 @@ Represents a parameter object for the **Image** component.
 
 | Type    | Description      |
 | ------ | ---------- |
-| import ('../api/@ohos.arkui.drawableDescriptor').[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | Returns a DrawableDescriptor object. |
+| import ('../api/@ohos.arkui.drawableDescriptor').[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | **DrawableDescriptor** object.|
 
 ## DrawingColorFilter<sup>12+</sup>
 
@@ -972,9 +971,9 @@ Represents a color filter object.
 
 | Type    | Description      |
 | ------ | ---------- |
-| import('../api/@ohos.graphics.drawing').default.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)  | Returns a color filter. |
+| import('../api/@ohos.graphics.drawing').default.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)  | Color filter created.|
 
-## DrawingLattice<sup>12+<sup>
+## DrawingLattice<sup>12+</sup>
 
 type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice
 
@@ -988,7 +987,7 @@ Represents a matrix grid object that divides an image into a rectangular grid.
 
 | Type    | Description      |
 | ------ | ---------- |
-| import('../api/@ohos.graphics.drawing').default.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | Returns a matrix grid object. |
+| import('../api/@ohos.graphics.drawing').default.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | Matrix grid object used to divide the image into a rectangular grid.|
 
 ## ImageMatrix<sup>15+</sup>
 
@@ -1047,10 +1046,10 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 | componentWidth               | number | Yes  | Width of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                                   |
 | componentHeight              | number | Yes  | Height of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                                   |
 | loadingStatus                | number | Yes  | Loading status of the image.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| contentWidth<sup>10+</sup>   | number | Yes   | Width of the image actually drawn.<br/>Unit: px<br>**NOTE**<br/>Valid only when loadingStatus returns 1.<br/>**Widget capability:** Since API version 10, this interface supports use in ArkTS cards.<br/>**Model restriction:** This interface can be used only in the stage model. |
-| contentHeight<sup>10+</sup>  | number | Yes   | Height of the image actually drawn.<br/>Unit: px<br/>**NOTE**<br/>Valid only when loadingStatus returns 1.<br/>**Widget capability:** Since API version 10, this interface supports use in ArkTS cards.<br/>**Model restriction:** This interface can be used only in the stage model. |
-| contentOffsetX<sup>10+</sup> | number | Yes   | Offset of the actually drawn content relative to the component itself along the x-axis.<br/>Unit: px<br/>**NOTE**<br/>Valid only when loadingStatus returns 1.<br/>**Widget capability:** Since API version 10, this interface supports use in ArkTS cards.<br/>**Model restriction:** This interface can be used only in the stage model. |
-| contentOffsetY<sup>10+</sup> | number | Yes   | Offset of the actually drawn content relative to the component itself along the y-axis.<br/>Unit: px<br/>**NOTE**<br/>Valid only when loadingStatus returns 1.<br/>**Widget capability:** Since API version 10, this interface supports use in ArkTS cards.<br/>**Model restriction:** This interface can be used only in the stage model. |
+| contentWidth<sup>10+</sup>   | number | Yes  | Actual rendered width of the image.<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Model restriction:** This API can be used only in the stage model.|
+| contentHeight<sup>10+</sup>  | number | Yes  | Actual rendered height of the image.<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Model restriction:** This API can be used only in the stage model.|
+| contentOffsetX<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the x-axis.<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Model restriction:** This API can be used only in the stage model.|
+| contentOffsetY<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the y-axis<br>Unit: px<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ### onError<sup>9+</sup>
 
@@ -1070,7 +1069,7 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 | Name  | Type                                      | Mandatory| Description                      |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | [ImageErrorCallback](#imageerrorcallback9) | Yes | Callback invoked when the image fails to load.<br>**NOTE**<br>It is recommended that developers use this callback to quickly identify the specific cause of an image loading failure. For details about the error information, see [ImageError](#imageerror9). For specification details such as network-related timeout reporting and the number of retries, see [CacheDownloadOptions](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoptions). |
+| callback | [ImageErrorCallback](#imageerrorcallback9) | Yes  | Callback triggered when an error occurs during image loading.<br>**NOTE**<br>You are advised to use this callback to quickly identify the cause of image loading failures. For details, see [ImageError](#imageerror9). For details about network-related specifications such as timeout reporting and retry times, see [CacheDownloadOptions](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#cachedownloadoptions).|
 
 ### onFinish
 
@@ -1124,9 +1123,9 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 | --------------- | ------ | ---- | ------------------------- | ------------------------- |
 | componentWidth  | number | No | No | Width of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | componentHeight | number | No | No | Height of the component.<br>Unit: px<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| message<sup>10+</sup>         | string | No  | No  | Error message.<br/>**Widget capability:** Since API version 10, this API supports use in ArkTS widgets.<br/>**Atomic service API:** Since API version 11, this API supports use in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
-| error<sup>20+</sup>         | [BusinessError](#businesserror20)\<void> | No  | Yes  | Error message returned when image loading fails, where **code** is the error code and **message** is the error message. For details about the error message, see the detailed description of the error information below.<br/>Default value: { code : -1, message : "" }<br/>**Widget capability:** Since API version 20, this API supports use in ArkTS widgets.<br/>**Atomic service API:** Since API version 20, this API supports use in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
-| downloadInfo<sup>23+</sup> | [RequestDownloadInfo](#requestdownloadinfo23) | No | Yes | Detailed information about network image download, including the download resource, network, and performance information. This field is carried when the image source is a network image and the download fails.<br/>Default value: null<br/>**Widget capability:** Since API version 23, this API supports use in ArkTS widgets.<br/>**Atomic service API:** Since API version 23, this API supports use in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
+| message<sup>10+</sup>         | string | No | No | Error information.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction:** This API can be used only in the stage model.|
+| error<sup>20+</sup>         | [BusinessError](#businesserror20)\<void> | No | Yes | Error information returned when an error occurs during image loading, where **code** represents the error code and **message** indicates the error message. For details, see the error code reference below.<br>Default value: **{ code : -1, message : "" }**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction:** This API can be used only in the stage model.|
+| downloadInfo<sup>23+</sup> | [RequestDownloadInfo](#requestdownloadinfo23) | No| Yes| Detailed information about online image download, including download resources, network, and performance. This field is carried when the image source is an online image and the download fails.<br>Default value: **null**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 23.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## BusinessError<sup>20+</sup>
 
@@ -1144,35 +1143,35 @@ Represents the error information returned when an error occurs during image load
 
 | Type | Description  |
 | ---- | ------ |
-| import('../api/@ohos.base').[BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | Error information returned when image loading fails. |
+| import('../api/@ohos.base').[BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | Error information returned when an error occurs during image loading.|
 
 The table below describes the **ImageError** error codes. The **error** property of **ImageError** contains error details with **code** and **message** fields, representing the error code and error message, respectively.
 
-| ID  | Error Message                       | Stage | Image Loading Type | Possible Cause | Handling |
+| ID | Error Message                      | Stage of Occurrence| Image Type| Possible Cause| Solution|
 | --------  | ----------------------------   | --------- | ------- | ------- | ------- |
-| 101000    | unknown source type.           | Data loading | Unknown type | The type of the image source passed in cannot be recognized, possibly due to an incorrect URI format or an unsupported data type. | Check the src parameter of the Image component and ensure that a supported type is passed in ([PixelMap](ts-image-common.md#pixelmap), [ResourceStr](ts-types.md#resourcestr), [DrawableDescriptor](#drawabledescriptor10), or a valid URI string). |
-| 102010    | sync http task of uri cancelled. | Data loading | Network file | The synchronous network request is canceled, for example, the component is destroyed or the network is interrupted during loading. | Ensure that the network is available and avoid frequently switching components during loading. It is recommended to use asynchronous loading instead. |
-| 102011    | sync http task of uri failed.  | Data loading | Network file | Failed to load a network image synchronously, commonly due to a network exception, an unreachable address, or failure to apply for the ohos.permission.INTERNET permission. | Check the network connection and the image address, and confirm that the ohos.permission.INTERNET permission has been applied for. It is recommended to use asynchronous loading or pre-downloading instead. |
-| 102012    | async http task of uri cancelled. | Data loading | Network file | The asynchronous network request is canceled, for example, the component is destroyed or the loading task is actively canceled. | Ensure that the network is stable and retry loading if necessary. |
-| 102013    | async http task of uri failed. | Data loading | Network file | Failed to load a network image asynchronously, commonly due to a network exception, an unreachable address, or failure to apply for the ohos.permission.INTERNET permission. | Check the network connection and the image address, and confirm that the ohos.permission.INTERNET permission has been applied for. |
-| 102030    | wrong code format.             | Data loading | Base64 string file | The format of the Base64 string passed in is incorrect, missing a prefix or containing invalid encoded content. | Check whether the Base64 string conforms to the `data:image/subtype;base64,Base64EncodedData` format. |
-| 102031    | decode base64 image failed.    | Data loading | Base64 string file | Failed to decode the Base64 string, possibly because the data is corrupted or the encoded content is not a valid image. | Verify whether the Base64-encoded data is complete and whether it corresponds to a real image format. |
-| 102050    | path is too long.              | Data loading | Sandbox file | The length of the application sandbox file path exceeds the limit. | Shorten the file path and use a relative or shorter application sandbox path. |
-| 102051    | read data failed.              | Data loading | Sandbox file | Failed to read the sandbox file, possibly because the file does not exist or there is no read permission. | Confirm that the file exists and ensure that the file under the directory package path has read permission. |
-| 102070    | get image data by name failed. | Data loading | Resource file | Failed to obtain image data by resource name, possibly because the resource name does not exist or is not configured correctly. | Confirm that the resource name is spelled correctly and has been packaged into the resources directory. |
-| 102071    | get image data by id failed.   | Data loading | Resource file | Failed to obtain image data by resource ID, possibly because the resource ID does not exist or the module is not packaged. | Confirm that the resource ID is correct and that the corresponding module/resource has been packaged correctly. |
-| 102072    | uri is invalid.                | Data loading | Resource file | The resource URI passed in is invalid or has an incorrect format. | Check the resource URI format and ensure that it is a valid resource reference. |
-| 102090    | uri is invalid.                | Data loading | In-package file | The URI of the in-package file passed in is invalid or has an incorrect format. | Check the URI format of the in-package file and confirm that the file exists in the corresponding HAP/HSP package. |
-| 102091    | get asset failed.              | Data loading | In-package file | Failed to obtain the in-package resource, possibly because the resource is missing or the package is not installed correctly. | Confirm that the in-package resource exists and that the corresponding package has been installed correctly. |
-| 102110    | open file failed.              | Data loading | Media library file | Failed to open the media library file, possibly because the file does not exist, is occupied, or lacks permission. | Confirm that the file exists and that the required media library read permission has been applied for. |
-| 102111    | get file stat failed.          | Data loading | Media library file | Failed to obtain the [stat](../../apis-core-file-kit/js-apis-file-fs.md#fileiostat) information (metadata such as file size, modification time, and access permission) of the media library file, possibly because the file is inaccessible or corrupted. | Confirm that the file can be accessed normally and reselect the file if necessary. |
-| 102112    | read file failed.              | Data loading | Media library file | Failed to read the data of the media library file, possibly due to an I/O exception or file corruption. | Confirm that the file is complete and readable, and re-obtain or copy the file if necessary. |
-| 102130    | decoded data is empty.         | Data loading | Media library thumbnail file | The image data obtained after decoding is empty, possibly because the thumbnail does not exist or failed to be generated. | Confirm that the original file can generate a thumbnail normally, and change the image source if necessary. |
-| 102131    | load shared memory image data timeout. | Data loading | Shared memory file | Timed out loading image data from shared memory, possibly because the data was not written in time or the consumer processed it too slowly. | Confirm that the write and read pace of the shared memory data matches, and increase the timeout or check the data flow if necessary. |
-| 103100    | make svg dom failed.           | Data loading | Vector image file | Failed to construct the SVG DOM, possibly because the SVG file format is invalid or contains unsupported tags. | Check whether the SVG file conforms to the specification. For details, see [SVG Tags](./ts-basic-svg.md). |
-| 103200    | image data size is invalid.    | Data loading | Bitmap file | The image data size is invalid, possibly because the width or height is 0 or exceeds the decoding limit. | Confirm that the image size is within the valid range and adjust the image resolution if necessary. |
-| 111000    | image source create failed.    | Data decoding | Bitmap file | Failed to create the image source, possibly because the data format is unsupported or the data is corrupted. | Confirm that the image format is supported (png, jpg, bmp, svg, gif, heif, webp, tiff, etc.) and verify the data integrity. |
-| 111001    | pixelmap create failed.        | Data decoding | Bitmap file | Failed to create the PixelMap, possibly due to insufficient memory or invalid decoding parameters. | Confirm that the device has sufficient memory and check whether the decoding parameters (such as size and format) are valid. |
+| 101000    | unknown source type.           | Data loading| Unknown| The input image source type cannot be identified, because the URI format may be incorrect or the data type may not be supported.| Check the **src** parameter of the **Image** component and ensure that the input type is supported ([PixelMap](ts-image-common.md#pixelmap), [ResourceStr](ts-types.md#resourcestr), [DrawableDescriptor](#drawabledescriptor10), or valid URI string).|
+| 102010    | sync http task of uri cancelled. | Data loading| Network file| The synchronous network request is canceled. For example, the component is destroyed or the network is disconnected during loading.| Ensure that the network is available and avoid frequently switching components during loading. Asynchronous loading is recommended.|
+| 102011    | sync http task of uri failed.  | Data loading| Network file| The network image failed to be synchronously loaded. This is usually caused by a network exception, unreachable address, or lack of the **ohos.permission.INTERNET** permission.| Check the network connection and image address, and ensure that the **ohos.permission.INTERNET** permission has been obtained. Asynchronous loading or pre-downloading is recommended.|
+| 102012    | async http task of uri cancelled. | Data loading| Network file| The asynchronous network request is canceled. For example, the component is destroyed or the loading task is canceled.| Ensure that the network connection is stable. Retry loading if necessary.|
+| 102013    | async http task of uri failed. | Data loading| Network file| The network image failed to be asynchronously loaded. This is usually caused by a network exception, unreachable address, or lack of the **ohos.permission.INTERNET** permission.| Check the network connection and image address, and ensure that you have obtained the **ohos.permission.INTERNET** permission.|
+| 102030    | wrong code format.             | Data loading| Base64 string file| The format of the input Base64 string is incorrect. The prefix is missing or the encoded content is invalid.| Check whether the Base64 string is in the format of `data:image/subtype;base64,Base64EncodedData`.|
+| 102031    | decode base64 image failed.    | Data loading| Base64 string file| The Base64 string fails to be decoded, because the data may be damaged or the encoded content is not a valid image.| Check whether the Base64-encoded data is complete and whether it corresponds to the actual image format.|
+| 102050    | path is too long.              | Data loading| Sandbox file| The length of the application sandbox file path exceeds the upper limit.| Shorten the file path and use a relative or shorter application sandbox path.|
+| 102051    | read data failed.              | Data loading| Sandbox file| The sandbox file fails to be read. The possible cause is that the file does not exist or you do not have the read permission.| Ensure that the file exists and that you have the read permission to the files in the specified path.|
+| 102070    | get image data by name failed. | Data loading| Resource file| The image data fails to be obtained by resource name. The possible cause is that the resource name does not exist or is incorrectly set.| Ensure that the resource name is spelled correctly and the resource has been packaged into the **resources** directory.|
+| 102071    | get image data by id failed.   | Data loading| Resource file| The image data fails to be obtained by resource ID. The possible cause is that the resource ID does not exist or the module has not been packaged.| Ensure that the resource ID is correct and the corresponding module or resource has been correctly packaged.|
+| 102072    | uri is invalid.                | Data loading| Resource file| The input resource URI is invalid or in an incorrect format.| Check the resource URI format and ensure that the resource reference is valid.|
+| 102090    | uri is invalid.                | Data loading| In-package file| The input in-package file URI is invalid or in an incorrect format.| Check the in-package file URI format and ensure that the file exists in the corresponding HAP/HSP package.|
+| 102091    | get asset failed.              | Data loading| In-package file| The in-package resource fails to be obtained. The possible cause is that the resource is missing or the package is not correctly installed.| Ensure that the in-package resource exists and the corresponding package has been correctly installed.|
+| 102110    | open file failed.              | Data loading| Media library file| The media library file fails to be opened. The possible cause is that the file does not exist, is occupied, or you do not have the permission.| Ensure that the file exists and that you have obtained the required media library read permission.|
+| 102111    | get file stat failed.          | Data loading| Media library file| The [stat](../../apis-core-file-kit/js-apis-file-fs.md#fileiostat) information (such as the file size, modification time, and access permission) of the media library file fails to be obtained. The possible cause is that the file is inaccessible or damaged.| Ensure that the file can be accessed. If necessary, select another file.|
+| 102112    | read file failed.              | Data loading| Media library file| The media library file data fails to be read. The possible cause is that an I/O exception occurs or the file is damaged.| Ensure that the file is complete and readable. If necessary, obtain or copy the file again.|
+| 102130    | decoded data is empty.         | Data loading| Media library thumbnail| The image data obtained after decoding is empty. The possible cause is that the thumbnail does not exist or fails to be generated.| Ensure that the thumbnail can be generated from the original file. If necessary, replace the image source.|
+| 102131    | load shared memory image data timeout. | Data loading| Shared memory file| Loading image data from the shared memory times out. The possible cause is that the data is not written in a timely manner or the consumer processes data too slowly.| Ensure that the data write and read pace of the shared memory matches. If necessary, increase the timeout interval or check the data flow.|
+| 103100    | make svg dom failed.           | Data loading| Vector graphics file| The SVG DOM fails to be constructed. The possible cause is that the SVG file format is invalid or unsupported tags exist.| Check whether the SVG file complies with the specifications. For details, see [SVG Tags](./ts-basic-svg.md).|
+| 103200    | image data size is invalid.    | Data loading| Pixel map file| The image size is invalid. The possible cause is that the width or height is 0 or exceeds the decoding limit.| Ensure that the image size is within the valid range. Adjust the image resolution if necessary.|
+| 111000    | image source create failed.    | Data decoding| Pixel map file| The image source fails to be created. The possible cause is that the data format is not supported or the data is damaged.| Ensure that the image format is supported (such as PNG, JPG, BMP, SVG, GIF, HEIF, WebP, and TIFF) and verify the data integrity.|
+| 111001    | pixelmap create failed.        | Data decoding| Pixel map file| The pixel map fails to be created. The possible cause is that the memory is insufficient or the decoding parameters are invalid.| Ensure that the device memory is sufficient and check whether the decoding parameters (such as the size and format) are valid.|
 
 ## RequestDownloadInfo<sup>23+</sup>
 
@@ -1190,7 +1189,7 @@ Describes the download information when an online image fails to load or encount
 
 | Type | Description  |
 | ---- | ------ |
-| import('../api/@ohos.request.cacheDownload').default.[DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | Download information returned when a network resource fails to load, including resource information, network request information, and performance statistics. |
+| import('../api/@ohos.request.cacheDownload').default.[DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | Download information returned when a network resource fails to load, including resource information, network request information, and performance statistics.|
 
 ## Examples
 
@@ -1578,7 +1577,7 @@ struct ImageExample {
         Image(this.animated)
           .width('500px').height('500px')
           .onFinish(() => {
-            // When the image source of the Image component is an AnimatedDrawableDescriptor object, the onFinish callback is not invoked.
+            // When the image source of the Image component is an AnimatedDrawableDescriptor object, the onFinish callback will not be executed.
             console.info('finish');
           })
       }.height('50%')
@@ -1965,7 +1964,7 @@ struct Test {
 
 ### Example 15: Setting the Image Decoding Size Using sourceSize
 
-This example customizes the decoding size of the image through the [sourceSize](#sourcesize) API.
+This example uses the [sourceSize](#sourcesize) API to customize the image decoding size.
 
 ```ts
 @Entry
@@ -1998,7 +1997,7 @@ struct Index {
 
 ### Example 16: Setting the Image Rendering Mode Using renderMode
 
-This example sets the image rendering mode to black-and-white through the [renderMode](#rendermode) API.
+This example uses the [renderMode](#rendermode) API to set the image rendering mode to monochrome.
 
 ```ts
 @Entry
@@ -2024,7 +2023,7 @@ struct Index {
 
 ### Example 17: Setting the Image Repeat Pattern Using objectRepeat
 
-This example repeatedly draws the image along the vertical axis through the [objectRepeat](#objectrepeat) API.
+This example uses the [objectRepeat](#objectrepeat) API to repeat the image along the vertical axis.
 
 ```ts
 @Entry
@@ -2589,9 +2588,9 @@ struct ImageExample {
 ```
 ![sandBox](figures/trans.gif)
 
-### Example 28 (Using the alt Attribute to Set Placeholder Images During Loading and on Loading Failure)
+### Example 28: Using the alt Attribute to Set the Placeholder Images Displayed During Image Loading and When Image Loading Fails
 
-This example demonstrates how to set the [alt](#alt22) attribute to display a specified image during the image loading process and when image loading fails.
+This example demonstrates how to display specified images during image loading and when image loading fails by setting the [alt](#alt22) attribute.
 
 ```ts
 @Entry
@@ -2698,5 +2697,3 @@ struct ImageExample {
 ```
 
 ![antialiased](figures/antialiased.PNG)
-
-<!--no_check-->

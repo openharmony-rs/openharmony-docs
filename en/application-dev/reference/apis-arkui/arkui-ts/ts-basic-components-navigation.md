@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4e262b0cf5d2db1530f56b5b4a73ee6cf2edf084 translatedAt=2026-09-03T04:17:34.106Z -->
+<!-- md-trans-meta sourceCommit=4e262b0cf5d2db1530f56b5b4a73ee6cf2edf084 translatedAt=2026-09-03T04:17:34.106Z pushedAt=2026-09-09T10:56:40.416Z -->
 
 The **Navigation** component is the root view container for navigation. It typically functions as the root container of a page and includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of **Navigation**) and non-home page content (child components of [NavDestination](ts-basic-components-navdestination.md)) through routing.
 

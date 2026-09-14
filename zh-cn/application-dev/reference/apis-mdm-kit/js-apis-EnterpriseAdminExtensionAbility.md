@@ -1,4 +1,4 @@
-# @ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）
+# @ohos.enterprise.EnterpriseAdminExtensionAbility (企业设备管理扩展能力)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->

@@ -21,7 +21,7 @@
 
 ### 沉浸式系统材质
 
-沉浸式系统材质为组件赋予轻盈通透的质感：材质滤镜、折射、高光、阴影等多层效果叠加，让底层内容透过材质层自然渗透，带来远超纯色背景的高端视觉表现。开发者只需[开启沉浸光感](arkts-immersive-light-sense-enable.md)，组件的背景、边框、阴影等视觉效果即由沉浸式系统材质统一接管，随深浅色模式与设备算力自动适配。
+沉浸式系统材质为组件赋予轻盈通透的质感：材质滤镜、折射、高光、阴影等多层效果叠加，让底层内容透过材质层自然透出，带来远超纯色背景的高端视觉表现。开发者只需[开启沉浸光感](arkts-immersive-light-sense-enable.md)，组件的背景、边框、阴影等视觉效果即由沉浸式系统材质统一接管，随深浅色模式与设备算力自动适配。
 
 沉浸式系统材质提供从超薄到超厚的五种样式<!--RP2--><!--RP2End-->。开启沉浸光感后不同组件的默认样式存在差异，具体请参考[组件适配沉浸光感](./arkts-immersive-light-sense-component-adaptation.md)。
 
@@ -44,7 +44,7 @@
 | 边缘流光 | 流光塑造视觉焦点与层级秩序，依靠光流走向引导用户的视线流转。 | AlertDialog，具体示例请参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗的沉浸光感效果)。<br/>CustomDialog，具体示例请参考[示例14（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例14设置弹窗的沉浸光感效果)。<br/>ActionSheet，具体示例请参考[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例9设置弹窗的沉浸光感效果)。<br/>菜单控制，具体示例请参考[示例24（设置菜单的沉浸光感）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#示例24设置菜单的沉浸光感)。 |
 | 粒子动画 | 粒子承载信息具象表达，以粒子光点传递信息变化。 | Slider，具体示例请参考[示例10（设置滑动条的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#示例10设置滑动条的沉浸光感效果)。 |
 
-### 约束与限制
+## 约束与限制
 沉浸光感生效范围请参考[开启沉浸光感](arkts-immersive-light-sense-enable.md)。<br/>
 沉浸光感开启后，
 - 指定弹窗类组件（[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)、[DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md)、[TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md)、[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)弹窗、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单）的沉浸光感效果可在全页面生效。
