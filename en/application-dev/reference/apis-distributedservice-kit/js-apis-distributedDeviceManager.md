@@ -210,7 +210,7 @@ Obtains all online trusted devices. Before calling this method, you must use **c
 
   | Name      | Type                                    | Mandatory  | Description                   |
   | -------- | ---------------------------------------- | ---- | --------------------- |
-  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Yes   | Callback used to return the result. If the the list of trusted devices is successfully obtained, **err** is **undefined** and **data** is the list of trusted devices obtained; otherwise, **err** is an error object.|
+  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Yes   | Callback used to return the result. If the list of trusted devices is successfully obtained, **err** is **undefined** and **data** is the list of trusted devices obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
