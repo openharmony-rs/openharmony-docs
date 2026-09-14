@@ -46,7 +46,7 @@ import { fontManager } from '@kit.LocalizationKit';
 
 字体服务状态监听器，当字体服务意外终止时，将调用[onServiceDied](#onServiceDied)回调通知。
 
-**系统能力：** SystemCapability.Global.FontManager
+
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
