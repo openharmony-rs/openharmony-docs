@@ -356,6 +356,16 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 1. 编辑“test_async_context.h”文件，声明异步上下文调用链入口函数：
 
    <!-- @[TestHidebugNdk_AsyncContextHeader](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_async_context.h) -->
+   
+   ``` C
+   #ifndef MYAPPLICATION_TESTASYNCCONTEXT_H
+   #define MYAPPLICATION_TESTASYNCCONTEXT_H
+   
+   // 测试异步上下文管理接口，构造A->B最小三方异步调用。
+   void TestAsyncContextChain();
+   
+   #endif // MYAPPLICATION_TESTASYNCCONTEXT_H
+   ```
 
 2. 编辑“test_async_context.cpp”文件，构造A->B单层异步调用链，演示四个接口的调用时序（A：Acquire/Release；B：Push/Pop）：
 
