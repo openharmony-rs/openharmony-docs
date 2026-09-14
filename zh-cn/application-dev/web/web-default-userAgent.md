@@ -85,8 +85,6 @@ ArkTS-Sta示例：
 <!-- @[get_the_current_default_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
 
 ``` TypeScript
-'use static'
-
 import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -156,8 +154,6 @@ ArkTS-Sta示例：
 <!-- @[set_up_a_custom_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
 
 ``` TypeScript
-'use static'
-
 import { State, Web, Column, Entry, Component } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -233,8 +229,6 @@ ArkTS-Sta示例：
 <!-- @[set_app_custom_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
 ``` TypeScript
-'use static'
-
 import { Web, Column, Entry, Component } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
@@ -307,8 +301,6 @@ ArkTS-Sta示例：
 <!-- @[get_a_custom_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
 ``` TypeScript
-'use static'
-
 import { State, Web, Column, Button, Entry, Component } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@ohos.base';
