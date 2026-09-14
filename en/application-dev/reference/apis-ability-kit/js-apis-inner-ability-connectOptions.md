@@ -1,12 +1,13 @@
 # ConnectOptions
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e7bd4b9be9a9e20b7a13185fe75e55f283c09e67 translatedAt=2026-09-03T11:24:10.822Z pushedAt=2026-09-05T10:47:30.616Z -->
 
-**ConnectOptions** can be used as an input parameter to receive status changes during the connection to a background service. For example, it is used as an input parameter of [connectServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to a ServiceExtensionAbility.
+Used as an input parameter when connecting to a specified background service to receive status changes such as successful connection, connection interruption, and connection failure. It contains three callbacks: onConnect, onDisconnect, and onFailed. For example, when used as an input parameter of [connectServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), it connects to the specified ServiceExtensionAbility.
 
 > **NOTE**
 > 
@@ -20,11 +21,13 @@ import { common } from '@kit.AbilityKit';
 
 ## ConnectOptions
 
+Used as an input parameter when connecting to a specified background service to receive status changes during the connection. For example, when used as an input parameter of [connectServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability), it connects to the specified ServiceExtensionAbility.
+
 ### onConnect
 
 onConnect(elementName: ElementName, remote: rpc.IRemoteObject): void
 
-Called when a connection is set up.
+Callback invoked when a connection is set up. The IRemoteObject instance obtained through the remote parameter can be used for cross-process IPC communication with the target Ability.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

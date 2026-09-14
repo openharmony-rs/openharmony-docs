@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4ff4b1a586822a28b0a8974a90632e60f35ea2fc translatedAt=2026-09-02T11:26:50.267Z pushedAt=2026-09-03T02:38:25.417Z -->
 
-**@Type** is used in state management V2 to ensure that the complex types of properties are not lost during class serialization. When persistence capabilities such as PersistenceV2 are used to serialize and deserialize complex class objects, the property type information of the classes may be lost. By using **@Type** to mark the original type of a property, you can ensure that the complex type information of the property is correctly retained and restored during serialization. This is applicable to scenarios where complex objects need to be persisted or serialized, such as persistent storage of application states and cross-component complex data transfer.
+**\@Type** is used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) to ensure that the complex types of properties are not lost during class serialization. When persistence capabilities such as [PersistenceV2](../js-apis-stateManagement.md#persistencev2) are used to serialize and deserialize complex class objects, the property type information of the classes may be lost. By using **\@Type** to mark the original type of a property, you can ensure that the complex type information of the property is correctly retained and restored during serialization. This is applicable to scenarios where complex objects need to be persisted or serialized, such as persistent storage of application states and cross-component complex data transfer.
 
 For details, see [@Type Decorator: Marking the Types of the Class Property](../../../ui/state-management/arkts-new-type.md).
 
@@ -31,7 +32,7 @@ Marks the original type of a property, ensuring that the complex type informatio
 
 | Name| Type              | Mandatory| Description              |
 | ------ | ------------------ | ---- | ------------------ |
-| type   | [TypeConstructor\<T\>](../js-apis-stateManagement.md#typeconstructort) | Yes  | Type of the class property to be marked. The value is the constructor of the corresponding class and must be the same as the type of the decorated property.|
+| type   | [TypeConstructor\<T\>](../js-apis-stateManagement.md#typeconstructort) | Yes   | Original type of the class property to be marked. The value is the constructor of the corresponding class and must be the same as the type of the decorated property. |
 
 **Example:**
 
@@ -71,3 +72,4 @@ struct Index {
   }
 }
 ```
+

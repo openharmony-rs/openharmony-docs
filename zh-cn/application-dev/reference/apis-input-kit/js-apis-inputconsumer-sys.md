@@ -34,7 +34,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 > - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。
 > - 若需要仅订阅按键的up事件，会存在down事件被焦点窗口消费，而无up事件闭环的风险，需要排查设计实现是否合理。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **参数：** 
 
@@ -96,7 +96,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 取消订阅系统快捷键。使用callback异步回调。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **参数：** 
 
@@ -195,9 +195,9 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -295,9 +295,9 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -373,11 +373,11 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
@@ -390,9 +390,9 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 设置系统快捷键屏蔽类型。
 
-**需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
+**需要权限**：ohos.permission.INPUT_CONTROL_DISPATCHING
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **参数：** 
 
@@ -444,9 +444,9 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 获取系统快捷键屏蔽类型。
 
-**需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
+**需要权限**：ohos.permission.INPUT_CONTROL_DISPATCHING
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 **参数：** 
 
@@ -500,7 +500,7 @@ struct Index {
 
 组合键选项。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -515,7 +515,7 @@ struct Index {
 
 系统快捷键屏蔽类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |
@@ -527,11 +527,11 @@ struct Index {
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |

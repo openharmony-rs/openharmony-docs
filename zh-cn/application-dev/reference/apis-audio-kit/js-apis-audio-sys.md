@@ -5087,7 +5087,7 @@ try {
 
 on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 
-监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
+监听头动跟踪开关状态变化事件（当头动跟踪开关状态发生变化时触发）。使用callback异步回调。
 
 > **说明：**
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12)替代。
@@ -5100,7 +5100,7 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
-| type     | string | 是   | 事件回调类型，支持的事件为'headTrackingEnabledChange'，当动跟踪开关状态发生变化时，触发该事件。 |
+| type     | string | 是   | 事件回调类型，支持的事件为'headTrackingEnabledChange'，当头动跟踪开关状态发生变化时，触发该事件。 |
 | callback | Callback<boolean\> | 是   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
 
 **错误码：**
@@ -5127,7 +5127,7 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
 
 on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void
 
-监听头动跟踪开关状态变化事件（当动跟踪开关状态发生变化时触发）。使用callback异步回调。
+监听头动跟踪开关状态变化事件（当头动跟踪开关状态发生变化时触发）。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5137,7 +5137,7 @@ on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatia
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
-| type     | string | 是   | 事件回调类型，支持的事件为'headTrackingEnabledChangeForAnyDevice'，当动跟踪开关状态发生变化时，触发该事件。 |
+| type     | string | 是   | 事件回调类型，支持的事件为'headTrackingEnabledChangeForAnyDevice'，当头动跟踪开关状态发生变化时，触发该事件。 |
 | callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 是   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
 
 **错误码：**

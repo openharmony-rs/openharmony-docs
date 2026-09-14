@@ -5,6 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=d2d180bb8a8dbb27c5a12f721bbaa8fe745c322c translatedAt=2026-09-01T03:16:11.829Z pushedAt=2026-09-02T01:10:29.490Z -->
 
 To obtain the current Ability's Context within a page, call the **getContext** API to obtain the [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) associated with the current page.
 
@@ -107,7 +108,7 @@ In the **Index.ets** file, you can use the **getContext** API to obtain the cont
 
 <!--deprecated_code_no_check-->
 ```ts
-//pages/Index.ets
+// pages/Index.ets
 @Entry
 @Component
 struct Index {

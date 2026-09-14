@@ -1681,6 +1681,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
 > 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
+>
+> **网络切换说明：** 当设备从Wi-Fi网络切换至蜂窝数据网络时，配置过自定义DNS规则的应用可能出现无法访问目标系统或服务的情况。此时可开启后关闭飞行模式，或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)清除当前应用程序的自定义DNS规则后重试。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2394,9 +2396,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
-    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data[0].ipAddress)}`);
-    console.info(`Succeeded to get iface: ${JSON.stringify(data[0].iface)}`);
-    console.info(`Succeeded to get macAddress: ${JSON.stringify(data[0].macAddress)}`);
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
   }
 }).catch((error: BusinessError) => {
   console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
@@ -3252,7 +3254,7 @@ interface Data {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: BusinessError) => {
+              family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
         console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
@@ -3346,7 +3348,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (socketType == "TCPSocket") {
     tcp.bind({address:"192.168.xxx.xxx",
               port:8080,
-              family:1} as socket.NetAddress, (error: BusinessError) => {
+              family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
         console.error('Failed to bind');
         return;
@@ -3704,10 +3706,10 @@ TCP状态。
 | TCP_SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
 | TCP_SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
 | TCP_FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
-| TCP_FIN_WAIT2   | 5  | 主动端接收自身FIN的ACK，等待对方发送FIN。 |
+| TCP_FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
 | TCP_TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
 | TCP_CLOSE       | 7  | 初始/关闭状态，无连接。 |
-| TCP_CLOSE_WAIT  | 8  | 被动端接收对方FIN并发送ACK，等待本地应用程序关闭连接。 |
+| TCP_CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
 | TCP_LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
 | TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
 | TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |

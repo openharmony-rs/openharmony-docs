@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1bb0311809b40924f1432c65c6069791d690baf7 translatedAt=2026-08-27T04:10:42.423Z pushedAt=2026-08-28T12:15:21.564Z -->
+<!-- md-trans-meta sourceCommit=52508bfb2562117e9336eb10ee746725610b3638 translatedAt=2026-09-09T09:01:26.789Z pushedAt=2026-09-09T11:28:16.397Z -->
 
 - ArkTS APIs<!--connectivity-arkts-->
   - [@ohos.bluetooth.a2dp (Bluetooth A2DP Module)](js-apis-bluetooth-a2dp.md)
@@ -64,7 +64,7 @@
   - [@ohos.nearlink.manager (Basic NearLink Management Capability) (System API)](js-apis-nearlink-manager-sys.md)
   - [@ohos.nearlink.scan (NearLink Scanning Capability) (System API)](js-apis-nearlink-scan-sys.md)
   - [@ohos.nearlink.ssap (NearLink SSAP Connection Capability) (System API)](js-apis-nearlink-ssap-sys.md)
-  - [@ohos.nearlink.constant (NearLink Common Constant Definitions) (System API)](js-apis-nearlink-constant-sys.md)
+  - [@ohos.nearlink.constant (NearLink Common Constants) (System API)](js-apis-nearlink-constant-sys.md)
   - [@ohos.nearlink.remoteDevice (NearLink Remote Device Connection Capability) (System API)](js-apis-nearlink-remote-device-sys.md)
   <!--DelEnd-->
   - tag<!--connectivity-nfc-tag-arkts-->
@@ -77,6 +77,8 @@
   - Header Files<!--connectivity-headerfile-->
     - [oh_bluetooth.h](capi-oh-bluetooth-h.md)
     - [oh_wifi.h](capi-oh-wifi-h.md)
+  - Structs<!--connectivity-struct-->
+       - [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md)
 - Error Codes<!--connectivity-arkts-errcode-->
   - [Bluetooth Error Codes](errorcode-bluetoothManager.md)
   - [Wi-Fi Error Codes](errorcode-wifi.md)

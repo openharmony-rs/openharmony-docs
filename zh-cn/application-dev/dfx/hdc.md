@@ -31,9 +31,9 @@ hdc包含三部分：
 
 hdc可以选择以下任意一种方式获取：
 
-1.通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
+1. 通过OpenHarmony SDK获取hdc工具。OpenHarmony SDK已嵌入[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)中，无需额外下载配置。hdc默认安装在DevEco Studio/sdk/default/openharmony/toolchains路径下，MacOS系统的sdk位于DevEco Studio/Contents目录下。
 
-2.通过[Command Line Tools](https://developer.huawei.com/consumer/cn/download/)工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
+2. 通过[Command Line Tools](https://developer.huawei.com/consumer/cn/download/)工具中的sdk目录获取相关工具。hdc程序默认安装在Command Line Tools/sdk/default/openharmony/toolchains路径下。
 
 hdc支持USB和无线两种连接调试方式。在设备的设置>系统>开发者选项中开启或关闭调试开关 ，无需重启设备即可生效。如果设备未启用“开发者选项”，可参考[开发者选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-developer-mode#section530763213432)进行启用。具体调试连接方式及操作步骤请参考[USB连接场景](#usb连接场景)和[TCP连接场景](#tcp连接场景)。
 
@@ -799,7 +799,7 @@ hdc file send [-a|-sync|-z|-m|-cwd path|-b bundlename] SOURCE DEST
 | 参数名 | 说明 |
 | -------- | -------- |
 | SOURCE | 本地待传输的文件路径。 |
-| DEST | 远程目标文件路径。<br>从API版本21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>通过hdc对媒体库操作指导参见[mediatool](../tools/mediatool.md#hdc命令)。|
+| DEST | 远程目标文件路径。<br>从API版本21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>通过hdc对媒体库操作指导参见[mediatool](../tools/mediatool.md)。|
 | -a | 保留文件修改时间戳。 |
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |
@@ -844,7 +844,7 @@ hdc file recv [-a|-sync|-z|-m|-cwd path|-b bundlename] DEST SOURCE
 | 参数名 | 说明 |
 | -------- | -------- |
 | SOURCE | 本地待接收的文件路径。 |
-| DEST | 远程待传输的文件路径。 <br>从API版本21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>媒体库操作更多信息参见[mediatool](../tools/mediatool.md#hdc命令)。|
+| DEST | 远程待传输的文件路径。 <br>从API版本21开始，媒体库文件支持通过hdc进行部分操作（低版本使用会提示[Fail]Error opening file: ...）。<br>媒体库文件路径：/mnt/data/\<uid\>/media_fuse/Photo/目录及其子目录，\<uid\>为当前用户的id。<br>媒体库操作更多信息参见[mediatool](../tools/mediatool.md)。|
 | -a | 保留文件修改时间戳。 |
 | -sync | 只传输文件mtime有更新的文件。<br/>mtime（modified timestamp）：修改后的时间戳。 |
 | -z | 通过LZ4格式压缩传输，此功能未开放，请勿使用。 |

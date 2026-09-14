@@ -5,6 +5,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=2f57c44f874f7f6ad1d88fbf54d2f95ef8e915f7 translatedAt=2026-09-01T03:39:03.246Z pushedAt=2026-09-02T06:40:02.761Z -->
 
 The Window module provides basic window management capabilities, such as creating and destroying the current window, setting properties for the current window, and managing and scheduling windows.
 
@@ -293,7 +294,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br>Applicable versions: 12+|
 | 1300003 | This window manager service works abnormally. |
 
@@ -354,7 +354,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br>Applicable versions: 12+|
 | 1300003 | This window manager service works abnormally. |
 
@@ -386,6 +385,8 @@ Minimizes all main windows on a display while keeping one window open. This API 
 
 **System API**: This is a system API.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Device behavior differences**: This API can be properly called on phones. If it is called on other device types, error code 801 is returned.
@@ -409,7 +410,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A nonsystem application calls a system API. |
 | 1300002 | This window state is abnormal. Possible cause: 1.Window is nullptr; 2. Failed to find specified window by id. |
 | 1300003 | This window manager service works abnormally. |
 
@@ -1015,7 +1016,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
@@ -1375,12 +1376,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not found or has been destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300008 | The display device is abnormal.           |
+| 1300004 | Unauthorized operation. Possible cause: The window is not a main window. |
+| 1300008 | Invalid display. Possible cause: 1. DisplayId is a negative number or not exists.           |
 | 1300016 | Parameter error. Possible cause: 1. The userId is not exist.           |
 
 **Example**
@@ -1791,7 +1792,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Invalid window type. Only main windows are supported. |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -1861,7 +1862,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Invalid window type. Only main windows are supported.|
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -1949,7 +1950,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally.|
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
-| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in floating mode.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is not in the floating mode.|
 
 **Example**
 
@@ -2099,7 +2100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2187,7 +2188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2268,7 +2269,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2344,7 +2345,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3276,7 +3277,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported, and target must not be modal or topmost. |
-| 1300016 | Parameter error. Possible cause: 1. Invalid Parameter range. 2. Invalid parameter length. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **Example**
 
@@ -3854,7 +3855,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
@@ -4111,7 +4112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Function setRotationLocked can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
@@ -4155,7 +4156,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | ------------------------------ |
-| 202     | Permission verification failed, non-system application uses system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 801 | Capability not supported. Function getRotationLocked can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
@@ -4672,7 +4673,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 

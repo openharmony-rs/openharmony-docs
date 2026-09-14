@@ -11,11 +11,13 @@
     - [@ohos.account.appAccount (应用账号管理)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (分布式账号管理)](js-apis-distributed-account.md)
     - [@ohos.account.osAccount (系统账号管理)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount.authorization (系统账号授权管理)](js-apis-osAccount-authorization.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (分布式账号管理)(系统接口)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (系统账号管理)(系统接口)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
     - [系统账号约束列表](appendix-osAccount-constraints.md)
+    - [系统账号特权列表](appendix-osAccount-authorization-privileges.md)
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
@@ -123,6 +125,7 @@
     - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
+    - [UsbManager](capi-usbmanager.md)
   - 头文件<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
@@ -135,6 +138,7 @@
     - [ohprint.h](capi-ohprint-h.md)
     - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
+    - [ohusb_manager.h](capi-ohusb-manager-h.md)
   - 结构体<!--basic-services-struct-->
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
@@ -159,6 +163,11 @@
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
     - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
+    - [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)
+    - [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)
+    - [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md)
+    - [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)
+    - [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
   - [串口管理错误码](errorcode-busmanager-serial.md)

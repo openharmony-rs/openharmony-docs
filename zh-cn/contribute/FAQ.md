@@ -88,24 +88,20 @@ OS\(操作系统\)开发时，经常会遇到多个代码仓的修改具有编�
 
 ## 门禁检测问题处理
 
-| 门禁检查项  |  常见报错信息 |
-| ------------ | ------------ |
-| [API参考链接跳转锚点准确](./markdown-check/API-reference-link-check.md)  | 1. 链接名称在标题及标题下表格均不存在 <br>2. 链接名称不准确 <br>3. 检测到链接名称与目标页面标题不一致 |
-| [有序列表格式](./markdown-check/md-style-check.md#有序列表格式)  | 序列号格式异常 |
-| [代码块格式](./markdown-check/md-style-check.md#代码块格式)  | 代码块格式错误  |
-| [代码块缩进格式](./markdown-check/md-style-check.md#代码块缩进格式)  | 代码块缩进异常  |
-| [代码块未指定语言提示](./markdown-check/md-style-check.md#代码块未指定语言提示)  | 代码块未指定语言  |
-| [表格格式](./markdown-check/md-style-check.md#表格格式)  | 1. 存在制表符<br>2. 表格至少需要三行（标题行、分隔符行和数据行）<br>3. 标题行格式不正确，存在空列<br>4. 标题行格式不正确<br>5. 缺少标题行<br>6. 缺少分隔符行、或分隔符行格式不正确<br>7. 标题行和分隔符行的列数不一致<br>8. 数据行格式不正确，存在空列<br>9. 数据行格式不正确<br>10. 数据行的列数与标题行不一致  |
-| ["说明"，"注意"格式规范](./markdown-check/md-style-check.md#说明注意格式规范)  | 1. 表格中错误：第xxx行表格总说明或注意格式不符合写作规范<br>2. 正文中错误：第xxx行提示语错误；错误信息：  |
-| [HTML标签规范](./markdown-check/md-style-check.md#html标签规范)  |  1. 第xxx行br错误<br>2. 第xxx行sup错误 |
-| [@link异常检测](./markdown-check/md-style-check.md#link异常检测)  | 第xxx行链接错误；错误信息  |
-| [链接（图片链接）格式错误](./markdown-check/md-style-check.md#链接图片链接格式错误)  | 链接格式错误  |
-| [标题存在序号](./markdown-check/md-style-check.md#标题存在序号)  | 标题中有序号  |
-| [示例代码中不可使用console.log](./markdown-check/md-style-check.md#示例代码中不可使用consolelog)  | 日志打印方式错误；不可使用console.log进行日志打印。 |
-| [代码注释符](./markdown-check/md-style-check.md#代码注释符)  | 代码注释格式异常 |
-| [JSON/JSON5代码格式检查](./markdown-check/md-style-check.md#jsonjson5代码格式检查)  | json代码块中格式存在异常，请将代码块放置在IDE中进行确认处理。 |
-| [段落格式](./markdown-check/md-style-check.md#段落格式)  |  段落之间需要存在空行  |
-| [urlpath检查](./markdown-check/md-style-check.md#readme中urlpath检查)  |  urlpath格式检查  |
+
+| 检查项 | 报错中的 error_type | 适用文档范围 |
+| --- | --- | --- |
+| [责任田标签检查](./markdown-check/md-style-check.md#责任田标签检查) | `owner_lost` | `zh-cn/application-dev/` 下文档（master 分支） |
+| [图片引用检查](./markdown-check/md-style-check.md#图片引用检查) | `figure_lost`、`figure_check` | 全部 Markdown 文档 |
+| [相对链接检查](./markdown-check/md-style-check.md#相对链接检查) | `link_error`、`链接不规范`、`链接标题中存在br标签`、`不可链接到一级标题`、`面向第三方应用的文档，链接到了系统应用的文档`、`相对链接不可链接到readme/website` | 全部 Markdown 文档 |
+| [API 链接准确性检查](./markdown-check/API-reference-link-check.md) | `链接名称不准确`、`链接名称在标题及标题下表格均不存在`、`检测到链接名称与目标页面标题不一致` | `application-dev/` 下中文文档 |
+| [文件名检查](./markdown-check/md-style-check.md#文件名检查) | `file_name`、`en_file_check` | 全部文件 |
+| [Markdown 格式检查](./markdown-check/md-style-check.md#markdown-格式检查) | `md_style_error`、`code_style_error`、`table_scan`、`notice_explanation`、`text_link_error`、`scan_html_error`、`scan_title`、`tag_error`、`mdLinkStyleError`、`md_LinkStyle_Error`、`Urlpath_Error` | 除 `en/` 路径外的全部 Markdown 文档 |
+| [HTTP 链接检查](./markdown-check/md-style-check.md#http-链接检查) | `http_link_error`、`http_error` | 全部 Markdown 文档 |
+| [英文文档中文字符检查](./markdown-check/md-style-check.md#英文文档中文字符检查) | `Chinese_in_English` | `en/` 下文档 |
+| [文档标题检查](./markdown-check/md-style-check.md#文档标题检查) | `文档为空`、`文档一级标题错误`、`文档标题层级大于3`、`title_error` | 空文档检查覆盖全部文档；标题细则仅 `application-dev/` 下文档 |
+| [尖括号与合并冲突检查](./markdown-check/md-style-check.md#尖括号与合并冲突检查) | `尖括号未转义` | 全部 Markdown 文档 |
+
 
 
 <!--no_check-->

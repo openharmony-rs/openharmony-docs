@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f0ca4679538114d37c428618ebeb98dcc5067c5b translatedAt=2026-09-03T11:45:09.809Z pushedAt=2026-09-05T10:47:30.702Z -->
 
 ApplicationContext inherits from [Context](js-apis-inner-application-context.md) and provides application-level management capabilities, such as application lifecycle listening, process management, and application environment setting.
 
@@ -62,7 +63,7 @@ let lifecycleId: number;
 export default class EntryAbility extends UIAbility {
   onCreate() {
     console.info('MyAbility onCreate');
-    let AbilityLifecycleCallback: AbilityLifecycleCallback = {
+    let abilityLifecycleCallback: AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
         console.info(`AbilityLifecycleCallback onAbilityCreate ability: ${ability}`);
       },
@@ -95,15 +96,35 @@ export default class EntryAbility extends UIAbility {
         console.info(`AbilityLifecycleCallback onAbilityContinue ability: ${ability}`);
       }
     }
-    // 1. Obtain applicationContext through the context property.
+
+    // Obtain applicationContext through the context property.
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2. Register a listener for application lifecycle changes through applicationContext.
-      lifecycleId = applicationContext.on('abilityLifecycle', AbilityLifecycleCallback);
+      // Register a listener for the in-application lifecycle through applicationContext.
+      lifecycleId = applicationContext.on('abilityLifecycle', abilityLifecycleCallback);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
     console.info(`registerAbilityLifecycleCallback lifecycleId: ${lifecycleId}`);
+  }
+
+  // Unregister the listener for the in-application UIAbility lifecycle when it is no longer needed or when the application exits.
+  onDestroy() {
+    // Obtain applicationContext through the context property.
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -124,7 +145,7 @@ Unregisters a listener for the lifecycle of a UIAbility within the application. 
 | ------------- | -------- | ---- | -------------------------- |
 | type | string | Yes  | Lifecycle of the UIAbility within the application. The value is fixed at **'abilityLifecycle'**.|
 | callbackId    | number   | Yes  | ID returned when the [ApplicationContext.on('abilityLifecycle')](#applicationcontextonabilitylifecycle) API is called to register a listener for the lifecycle of a UIAbility within the application.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the deregistration is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| callback | AsyncCallback\<void> | Yes | Callback for the lifecycle event of the in-application UIAbility. When the listener for the lifecycle of the in-application UIAbility is unregistered successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -144,18 +165,20 @@ let lifecycleId: number;
 
 export default class EntryAbility extends UIAbility {
   onDestroy() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     console.info(`stage applicationContext: ${applicationContext}`);
     try {
+      // Unregister the listener for the in-application UIAbility lifecycle.
       applicationContext.off('abilityLifecycle', lifecycleId, (error, data) => {
         if (error) {
-          console.error(`unregisterAbilityLifecycleCallback fail, err: ${JSON.stringify(error)}`);
+          console.error(`Failed to unregister abilityLifecycle callback. Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`unregisterAbilityLifecycleCallback success, data: ${JSON.stringify(data)}`);
         }
       });
     } catch (paramError) {
-      console.error(`error code: ${(paramError as BusinessError).code}, error code: ${(paramError as BusinessError).message}`);
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
   }
 }
@@ -202,9 +225,11 @@ let lifecycleId: number;
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     console.info(`stage applicationContext: ${applicationContext}`);
     try {
+      // Unregister the listener for the in-application UIAbility lifecycle.
       applicationContext.off('abilityLifecycle', lifecycleId);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
@@ -259,7 +284,7 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.info('MyAbility onCreate')
+    console.info('MyAbility onCreate');
     let environmentCallback: EnvironmentCallback = {
       onConfigurationUpdated(config) {
         console.info(`onConfigurationUpdated config: ${JSON.stringify(config)}`);
@@ -268,15 +293,34 @@ export default class EntryAbility extends UIAbility {
         console.info(`onMemoryLevel level: ${level}`);
       }
     };
-    // 1. Obtain an applicationContext object.
+    // Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2. Register a listener for system environment changes through applicationContext.
+      // Register a listener for system environment changes through applicationContext.
       callbackId = applicationContext.on('environment', environmentCallback);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
     console.info(`registerEnvironmentCallback callbackId: ${callbackId}`);
+  }
+
+  // Unregister the listener for system environment changes when it is no longer needed or when the application exits.
+  onDestroy() {
+    // Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('environment', callbackId, (error, data) => {
+        if (error) {
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
+        } else {
+          console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (paramError) {
+      console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -317,11 +361,13 @@ let callbackId: number;
 
 export default class EntryAbility extends UIAbility {
   onDestroy() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
+      // Unregister the listener for system environment changes.
       applicationContext.off('environment', callbackId, (error, data) => {
         if (error) {
-          console.error(`unregisterEnvironmentCallback fail, err: ${JSON.stringify(error)}`);
+          console.error(`Failed to unregister environment callback. Code: ${error.code}, message: ${error.message}`);
         } else {
           console.info(`unregisterEnvironmentCallback success, data: ${JSON.stringify(data)}`);
         }
@@ -374,8 +420,10 @@ let callbackId: number;
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
+      // Unregister the listener for system environment changes.
       applicationContext.off('environment', callbackId);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
@@ -399,7 +447,7 @@ Registers a listener for application process state changes. This API uses an asy
 | Name  | Type                                                        | Mandatory| Description            |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
 | type     | string                                   | Yes  | Application process state change. The value is fixed at **'applicationStateChange'**.|
-| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | Yes  | Callback triggered when the application process state is changed.|
+| callback | [ApplicationStateChangeCallback](js-apis-app-ability-applicationStateChangeCallback.md) | Yes | Callback invoked when the current application process state changes. |
 
 **Error codes**
 
@@ -415,27 +463,40 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let applicationStateChangeCallback: ApplicationStateChangeCallback = {
+  onApplicationForeground() {
+    console.info('applicationStateChangeCallback onApplicationForeground');
+  },
+  onApplicationBackground() {
+    console.info('applicationStateChangeCallback onApplicationBackground');
+  }
+}
+
 export default class MyAbility extends UIAbility {
   onCreate() {
     console.info('MyAbility onCreate');
-    let applicationStateChangeCallback: ApplicationStateChangeCallback = {
-      onApplicationForeground() {
-        console.info('applicationStateChangeCallback onApplicationForeground');
-      },
-      onApplicationBackground() {
-        console.info('applicationStateChangeCallback onApplicationBackground');
-      }
-    }
-
-    // 1. Obtain an applicationContext object.
+    // Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
-      // 2. Register a listener for application process state changes through applicationContext.
+      // Register the current application process state listener through applicationContext.
       applicationContext.on('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
       console.error(`error code: ${(paramError as BusinessError).code}, error msg: ${(paramError as BusinessError).message}`);
     }
     console.info('Register applicationStateChangeCallback');
+  }
+
+  // Unregister all registered listeners of this event type when they are no longer needed or when the application exits.
+  onDestroy() {
+    // Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      applicationContext.off('applicationStateChange', applicationStateChangeCallback);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
   }
 }
 ```
@@ -484,14 +545,167 @@ let applicationStateChangeCallback: ApplicationStateChangeCallback = {
 
 export default class MyAbility extends UIAbility {
   onDestroy() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
-      // In this example, the callback field is set to applicationStateChangeCallback.
+      // In this example, the callback parameter is ApplicationStateChangeCallback. Replace it with the actual value.
       // If no value is passed in, all the listeners for the corresponding event are unregistered.
       applicationContext.off('applicationStateChange', applicationStateChangeCallback);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
+  }
+}
+```
+
+## ApplicationContext.onSystemConfigurationUpdated<sup>24+</sup>
+
+onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): void
+
+Registers a listener for changes in the system environment [Configuration](js-apis-app-ability-configuration.md#configuration). This API uses an asynchronous callback to return the result. This API can be called only on the main thread.
+
+> **NOTE**
+>
+> Custom settings of the application do not affect the triggering of the callback function. For example, if the application has customized the dark/light color mode, the registered callback function is still triggered when the system dark/light color mode changes.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name                   | Type     | Mandatory | Description                           |
+| ------------------------ | -------- | ---- | ------------------------------ |
+| callback | [systemConfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | Yes   | Callback invoked when the system environment changes. |
+
+**Example**
+
+```ts
+import { UIAbility, systemConfiguration, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callBack: systemConfiguration.UpdatedCallback = {
+  onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+    console.info(`system configuration updated colormode:` + colorMode);
+  },
+  onFontSizeScaleUpdated(fontSizeScale: number) {
+    console.info(`system configuration updated ability:` + fontSizeScale);
+  },
+  onFontWeightScaleUpdated(fontWeightScale: number) {
+    console.info(`system configuration updated ability:` + fontWeightScale);
+  },
+  onLanguageUpdated(language: string) {
+    console.info(`system configuration updated ability:` + language);
+  },
+  onFontIdUpdated(fontId: string) {
+    console.info(`system configuration updated ability:` + fontId);
+  },
+  onMCCUpdated(mcc: string) {
+    console.info(`system configuration updated ability:` + mcc);
+  },
+  onMNCUpdated(mnc: string) {
+    console.info(`system configuration updated ability:` + mnc);
+  },
+  onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+    console.info(`system configuration updated ability:` + hasPointerDevice);
+  },
+  onLocaleUpdated(locale: string) {
+    console.info(`system configuration updated ability:` + locale);
+  }
+}
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // Register the listener through applicationContext.
+      applicationContext.onSystemConfigurationUpdated(callBack);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+    console.info(`onSystemConfigurationUpdated finish`);
+  }
+
+  // Unregister the listener when it is no longer needed or when the application exits.
+  onDestroy() {
+    // Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // Unregister the listener through applicationContext.
+      applicationContext.offSystemConfigurationUpdated(callBack);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
+## ApplicationContext.offSystemConfigurationUpdated<sup>24+</sup>
+
+offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): void
+
+Unregisters the listener for changes to the system environment [Configuration](js-apis-app-ability-configuration.md#configuration). This API can be called only on the main thread.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name                   | Type     | Mandatory | Description                           |
+| ------------------------ | -------- | ---- | ------------------------------ |
+| callback | [systemConfiguration.UpdatedCallback](js-apis-app-ability-systemConfiguration.md#updatedcallback) | No   | Callback for the system environment change event. The value can be the callback registered by [ApplicationContext.onSystemConfigurationUpdated](#applicationcontextonsystemconfigurationupdated24), or it can be empty.<br/>-&nbsp;If a defined callback is passed in, the listener corresponding to this callback is unregistered. <br/>-&nbsp;If no parameter is passed in, all registered listeners are unregistered.|
+
+**Example**
+
+```ts
+import { UIAbility, systemConfiguration, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let callBack: systemConfiguration.UpdatedCallback = {
+      onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+        console.info(`system configuration updated colormode:` + colorMode);
+      },
+      onFontSizeScaleUpdated(fontSizeScale: number) {
+        console.info(`system configuration updated ability:` + fontSizeScale);
+      },
+      onFontWeightScaleUpdated(fontWeightScale: number) {
+        console.info(`system configuration updated ability:` + fontWeightScale);
+      },
+      onMCCUpdated(mcc: string) {
+        console.info(`system configuration updated ability:` + mcc);
+      },
+      onMNCUpdated(mnc: string) {
+        console.info(`system configuration updated ability:` + mnc);
+      },
+      onLanguageUpdated(language: string) {
+        console.info(`system configuration updated ability:` + language);
+      },
+      onFontIdUpdated(fontId: string) {
+        console.info(`system configuration updated ability:` + fontId);
+      },
+      onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+        console.info(`system configuration updated ability:` + hasPointerDevice);
+      },
+      onLocaleUpdated(locale: string) {
+        console.info(`system configuration updated ability:` + locale);
+      }
+    }
+    // 1. Obtain the applicationContext through the context attribute.
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 2. Unregister the listener through applicationContext.
+      applicationContext.offSystemConfigurationUpdated(callBack);
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+    console.info(`offSystemConfigurationUpdated finish`);
   }
 }
 ```
@@ -530,7 +744,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbility extends UIAbility {
   onForeground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Obtain the information about running processes.
     applicationContext.getRunningProcessInformation().then((data) => {
       console.info(`The process running information is: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
@@ -554,7 +770,7 @@ Obtains the information about running processes. This API uses an asynchronous c
 
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| callback    | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>>   | Yes  | Callback used to return the information about the running processes.|
+| callback    | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>>   | Yes   | Callback used to obtain the running process information. |
 
 **Error codes**
 
@@ -573,14 +789,68 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onForeground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Obtain the running process information.
     applicationContext.getRunningProcessInformation((err, data) => {
       if (err) {
-        console.error(`getRunningProcessInformation failed, err: ${JSON.stringify(err)}`);
+        console.error(`Failed to get running process information. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info(`The process running information is: ${JSON.stringify(data)}`);
       }
-    })
+    });
+  }
+}
+```
+
+## ApplicationContext.getUIAbilityChildProcessInfos
+
+getUIAbilityChildProcessInfos(): Promise\<Array\<ChildProcessInformation>>
+
+Obtains the UIAbility child process information of the current application. This API uses a promise to return the result asynchronously.
+
+Returns the processes started through the [startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess) API, as well as the child processes started through the [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2) API with [processMode](js-apis-app-ability-contextConstant.md#processmode12) in the [StartOptions](js-apis-app-ability-startOptions.md) parameter set to NEW_PROCESS_ATTACH_TO_PARENT. An empty array is returned when there is no child process.
+
+**Since**: 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<Array\<[ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)>> | Promise object that returns the UIAbility child process information of the current application. An empty array is returned when there is no child process. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    // Obtain the UIAbility child process information.
+    applicationContext.getUIAbilityChildProcessInfos().then((data) => {
+      console.info(`getUIAbilityChildProcessInfos success, count: ${data.length}`);
+      for (let info of data) {
+        console.info(`pid: ${info.pid}, parentPid: ${info.parentPid}, processName: ${info.processName}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`getUIAbilityChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
+    });
   }
 }
 ```
@@ -621,7 +891,9 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Terminate all processes of the application.
     applicationContext.killAllProcesses();
   }
 }
@@ -671,7 +943,9 @@ let isClearPageStack = false;
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Terminate all processes of the application and clear the page stack.
     applicationContext.killAllProcesses(isClearPageStack);
   }
 }
@@ -695,7 +969,7 @@ Kills all processes of this application. The application will not execute the no
 
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| callback    | AsyncCallback\<void\>   | Yes  | Callback used to return the result. If all the processes are killed, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback    | AsyncCallback\<void\>   | Yes   | Callback function. When all processes of the application are terminated successfully, err is undefined; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -713,10 +987,12 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Terminate all processes of the application.
     applicationContext.killAllProcesses(error => {
       if (error) {
-        console.error(`killAllProcesses fail, error: ${JSON.stringify(error)}`);
+        console.error(`Failed to kill all processes. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -740,7 +1016,7 @@ Sets the dark/light color mode for the application. This API can be called only 
 
 | Name| Type         | Mandatory| Description                |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | Yes  | Dark/light color mode, which can be dark mode, light mode, or follow-system mode (default).|
+| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | Yes | Dark or light color mode, including dark mode, light mode, and unset color mode (default). |
 
 **Error codes**
 
@@ -766,7 +1042,9 @@ export default class MyAbility extends UIAbility {
         return;
       }
       console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+      // Obtain the application context.
       let applicationContext = this.context.getApplicationContext();
+      // Set the application to dark mode.
       applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
     });
   }
@@ -817,7 +1095,9 @@ export default class MyAbility extends UIAbility {
       }
       console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
     });
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Set the application language to Chinese.
     applicationContext.setLanguage('zh-cn');
   }
 }
@@ -860,7 +1140,9 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Clear all data under the application file path of the current application.
     applicationContext.clearUpApplicationData();
   }
 }
@@ -884,7 +1166,7 @@ Clears up all data in the application file path and revokes the permissions that
 **Parameters**
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the application data is cleared up, **error** is **undefined**; otherwise, **error** is an error object. |
+| callback | AsyncCallback\<void> | Yes | Callback invoked when all data in the application file path of the current application is cleared and the permissions requested by the application from the user are revoked successfully. In this case, error is undefined; otherwise, an error object is returned. |
 
 **Error codes**
 
@@ -903,10 +1185,12 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
+    // Clear all data under the application file path of the current application.
     applicationContext.clearUpApplicationData(error => {
       if (error) {
-        console.error(`clearUpApplicationData fail, error: ${JSON.stringify(error)}`);
+        console.error(`Failed to clear up application data. Code: ${error.code}, message: ${error.message}`);
       }
     });
   }
@@ -935,7 +1219,7 @@ Restarts the application and starts the specified UIAbility. This API can be cal
 **Parameters**
 | Name       | Type    | Mandatory| Description                      |
 | ------------- | -------- | ---- | -------------------------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the UIAbility to start. The ability name is verified, but the bundle name is not.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want parameter, which carries the information about the UIAbility to start. The system only verifies the validity of the abilityName field, and does not verify the bundleName field. |
 
 **Error codes**
 
@@ -978,12 +1262,13 @@ struct Index {
           };
           if (this.context) {
             try {
+              // Restart the application and start the specified UIAbility.
               this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
             }
           } else {
-            hilog.error(0x0000, 'testTag', "%{public}s", 'AppContext is null');
+            hilog.error(0x0000, 'testTag', '%{public}s', 'AppContext is null');
           }
         })
     }
@@ -1025,11 +1310,13 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class MyAbility extends UIAbility {
   onBackground() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
+      // Obtain the clone index of the current application.
       let appCloneIndex = applicationContext.getCurrentAppCloneIndex();
     } catch (error) {
-      console.error(`getCurrentAppCloneIndex fail, error: ${JSON.stringify(error)}`);
+      console.error(`Failed to get current app clone index. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -1080,6 +1367,7 @@ struct Index {
       familySrc: $rawfile('font/medium.ttf')  // 'font/medium.ttf' is used only as an example. Replace it with the actual font resource file.
     });
 
+    // Set the application to use the registered custom font.
     this.context.getApplicationContext().setFont('fontName');
   }
 
@@ -1140,8 +1428,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
+      // Set the current application process to support caching of process resources.
       applicationContext.setSupportedProcessCache(true);
     } catch (error) {
       let code = (error as BusinessError).code;
@@ -1181,7 +1471,9 @@ export default class MyAbility extends UIAbility {
       if (err.code) {
         return;
       }
+      // Obtain the application context.
       let applicationContext = this.context.getApplicationContext();
+      // Set the font size scale of the application.
       applicationContext.setFontSizeScale(2);
     });
   }
@@ -1222,9 +1514,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     let currentInstanceKey = '';
     try {
+      // Obtain the unique instance identifier of the current application's multiple instances.
       currentInstanceKey = applicationContext.getCurrentInstanceKey();
     } catch (error) {
       let code = (error as BusinessError).code;
@@ -1243,6 +1537,8 @@ getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 Obtains the unique instance IDs of all multi-instances of this application. This API uses a promise to return the result. It can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior difference**: This API can be called normally only on PC/2-in-1 devices.
 
 **Return value**
 
@@ -1268,8 +1564,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
+      // Obtain the unique instance identifiers of all multi-instance instances of the application.
       applicationContext.getAllRunningInstanceKeys();
     } catch (error) {
       let code = (error as BusinessError).code;
@@ -1307,8 +1605,10 @@ import { window } from '@kit.ArkUI';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate() {
+    // Obtain the application context.
     let applicationContext = this.context.getApplicationContext();
     try {
+      // Obtain all WindowStage objects in the current process of the application.
       applicationContext.getAllWindowStages().then((data: window.WindowStage[]) => {
         let windowStage: window.WindowStage[] = data;
         console.info(`WindowStages size ${windowStage.length}`);
@@ -1319,6 +1619,256 @@ export default class MyAbilityStage extends AbilityStage {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
       console.error(`getAllWindowStages fail, code: ${code}, msg: ${message}`);
+    }
+  }
+}
+```
+
+## ApplicationContext.enableDelayedProcessExit
+
+enableDelayedProcessExit(): Promise\<void>
+
+Enables delayed exit of the current process. This API uses a Promise asynchronous callback. It can be called only on the main thread.
+
+Normally, after the last UIAbility in an application process exits, the process exits. After this API is called, the process exits 10 seconds after the last UIAbility exits. If a new UIAbility of the process is started within the 10 seconds, the process will not exit.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type           | Description                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise object. No return result. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000150 | The current process has no UIAbility, and this API cannot be called. |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Enable the delayed exit feature of the current process.
+      this.context.getApplicationContext().enableDelayedProcessExit().then(() => {
+        console.info('enableDelayedProcessExit succeed');
+      }).catch((error: BusinessError) => {
+        console.error(`enableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+      });
+    } catch(error) {
+      console.error('enableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+    }
+  }
+}
+```
+
+## ApplicationContext.disableDelayedProcessExit
+
+disableDelayedProcessExit(): Promise\<void>
+
+Disables the delayed process exit feature for the current process. This API uses an asynchronous callback to return the result. It can be called only from the main thread.
+
+Calling this API cancels the effect of [ApplicationContext.enableDelayedProcessExit](#applicationcontextenabledelayedprocessexit).
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type           | Description                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise object. No return result. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000150 | The current process has no UIAbility, and this API cannot be called. |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      // Disable the delayed exit feature of the current process.
+      this.context.getApplicationContext().disableDelayedProcessExit().then(() => {
+        console.info('disableDelayedProcessExit succeed');
+      }).catch((error: BusinessError) => {
+        console.error(`disableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+      });
+    } catch(error) {
+      console.error('disableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+    }
+  }
+}
+```
+
+## ApplicationContext.startSelfUIAbility
+
+startSelfUIAbility(want: Want): Promise\<void>
+
+During the delayed exit of the current process, starts a UIAbility of the current process. After the UIAbility is started successfully, the current process no longer exits. This API can be called only on the main thread.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name | Type                                | Mandatory | Description                                        |
+| ---- | ----------------------------------- | --------- | ------------------------------------------- |
+| want   | [Want](js-apis-app-ability-want.md) | Yes   | Want parameter, which carries the information about the UIAbility to start. |
+
+**Return value**
+
+| Type           | Description                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise object that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000001 | The specified ability does not exist.                        |
+| 16000008 | The crowdtesting application expires.                        |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported.                           |
+| 16000124 | Starting a remote UIAbility is not supported.                |
+| 16000125 | Starting a plugin UIAbility is not supported.                |
+| 16000130 | The UIAbility does not belong to the caller.                 |
+| 16000161 | Delayed process exit is not pending in the current process, and this API cannot be called. |
+| 16000162 | The current process still has another UIAbility, and this API cannot be called. |
+
+**Example**
+
+```ts
+import { common, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Delayed startup';
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Button(this.message)
+      .fontSize(50)
+      .align(Alignment.Center)
+      .onClick(() => {
+        try {
+          const newWant: Want = {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility',
+            parameters: {
+              'pageName': 'IndexNew'  // Mark the main page to be started.
+            }
+          };
+          // Obtain the application context.
+          let applicationContext = this.context.getApplicationContext();
+          // Start the main UI during delayed exit.
+          this.context.terminateSelf().then(() => {
+            // Set a delay of 2000 ms to ensure that the main application exits completely before calling the startSelfUIAbility API.
+            setTimeout(() => {
+              applicationContext.getApplicationContext().startSelfUIAbility(newWant).then(() => {
+                hilog.info(0x0000, 'testTag', 'Main UI started successfully.');
+              }).catch((error: BusinessError) => {
+                hilog.error(0x0000, 'testTag', `Failed to start the main UI, code: ${error.code}, error msg: ${error.message}`);
+              });
+            }, 2000);
+          });
+        } catch (error) {
+          hilog.error(0x0000, 'testTag', `Failed to start the main UI, code: ${error.code}, error msg: ${error.message}`);
+        }
+      });
+  }
+}
+```
+
+## ApplicationContext.getUIAbilityByInstanceId
+
+getUIAbilityByInstanceId(instanceId: string): UIAbility
+
+Obtains a specific UIAbility instance by instance ID in a multi-instance scenario. This API can be called only from the main thread.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| instanceId | string | Yes | Instance ID of the UIAbility. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| [UIAbility](js-apis-app-ability-uiAbility.md) | UIAbility instance corresponding to instanceId. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 16000003 | The id does not exist. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. System service failed to communicate with dependency module. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    // Obtain the application context.
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      let instanceId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+      // Obtain the UIAbility instance based on the instance ID.
+      let uiAbility = applicationContext.getUIAbilityByInstanceId(instanceId);
+      console.info(`getUIAbilityByInstanceId succeed, ability: ${uiAbility}`);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`getUIAbilityByInstanceId fail, code: ${code}, message: ${message}`);
     }
   }
 }

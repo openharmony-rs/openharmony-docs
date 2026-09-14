@@ -3,16 +3,17 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:05:54.370Z pushedAt=2026-09-05T10:47:30.530Z -->
 
 The HapModuleInfo module provides information about an HAP module. Unless otherwise specified, the information is obtained through [bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated).
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with the superscript to indicate their earliest API version.
 > 
-> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) instead.
+> This module is no longer maintained since API version 9. You are advised to use [bundleManager-HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) instead.
 
 ## HapModuleInfo<sup>(deprecated)</sup>
 
@@ -39,3 +40,4 @@ The HapModuleInfo module provides information about an HAP module. Unless otherw
 | moduleName                        | string                                                       | Yes  | No  | Module name.              |
 | mainAbilityName                   | string                                                       | Yes  | No  | Name of the main ability.     |
 | installationFree                  | boolean                                                      | Yes  | No  | Whether installation-free is supported. **true** if supported, **false** otherwise.      |
+
