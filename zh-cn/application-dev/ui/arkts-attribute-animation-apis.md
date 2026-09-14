@@ -36,7 +36,7 @@ animateTo(value: AnimateParam, event: () => void): void
 import { curves } from '@kit.ArkUI';
 @Entry
 @Component
-struct attrAnimateToDemo2 {
+struct AttrAnimateToDemo2 {
   @State animate: boolean = false;
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
@@ -100,7 +100,7 @@ struct attrAnimateToDemo2 {
 import { curves } from '@kit.ArkUI';
 @Entry
 @Component
-struct attrAnimationDemo3 {
+struct AttrAnimationDemo3 {
   @State animate: boolean = false;
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
