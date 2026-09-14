@@ -400,7 +400,7 @@ A：网站会针对不同UA展示不同样式页面。需要移动设备UA设置
 
 **Q：部分网页打不开或显示“不支持的浏览器”**
 
-A：网页未适配OpenHarmony UA，需要网页对"OpenHarmony"标识作兼容处理。
+A：网页未适配OpenHarmony UA，需要网页对"OpenHarmony"标识作兼容处理。在网页适配前，可通过[setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在默认UA中追加其他兼容性字段进行临时过渡适配。
 
 **Q：页面循环跳转**
 
