@@ -1876,6 +1876,8 @@ try {
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
 | 名称      | 值 | 说明                               |
 | --------- | -- | ---------------------------------- |
 | UNCERTAIN | 0  | 不确定机主。                       |
@@ -1888,7 +1890,13 @@ try {
 
 **起始版本：** 26.1.0
 
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
 
 | 名称           | 类型                                    | 只读 | 可选 | 说明                                                     |
 | -------------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
@@ -1910,6 +1918,8 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
 
 | 参数名 | 类型                                              | 必填 | 说明           |
 | ------ | ------------------------------------------------- | ---- | -------------- |
@@ -1942,6 +1952,8 @@ getUserRecognitionResult(): Promise\<UserRecognitionResult\>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
 
 **返回值：**
 
@@ -1991,6 +2003,8 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
@@ -2034,6 +2048,8 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**设备行为差异：** 该接口仅在Car设备中可正常调用，在其他设备类型中返回null。
 
 **参数：**
 
