@@ -509,6 +509,12 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 6. 编辑“index.d.ts”文件，声明ArkTS接口testAsyncContext：
 
    <!-- @[TestHidebugNdk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
+   export const testGetThreadCpuUsage: () => void;
+   export const testBackTrace: () => void;
+   export const testAsyncContext: () => void;
+   ```
 
 7. 编辑“Index.ets”文件，定义测试方法：
 
