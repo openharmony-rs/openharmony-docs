@@ -148,7 +148,7 @@ setResponseData(data: string \| number \| Resource \| ArrayBuffer): void
 
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源（该接口不支持根据 Resource 对象获取 HSP 资源）。ArrayBuffer表示资源的原始二进制数据。 |
+| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源（该接口不支持根据Resource对象获取HSP资源）。ArrayBuffer表示资源的原始二进制数据。 |
 
 ## setResponseBody
 
@@ -156,7 +156,7 @@ setResponseBody(data: string | number | Resource | ArrayBuffer): void
 
 设置资源响应数据。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -166,7 +166,7 @@ setResponseBody(data: string | number | Resource | ArrayBuffer): void
 
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer<sup>11+</sup> | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源（该接口支持根据 Resource 对象获取 HSP 资源）。ArrayBuffer表示资源的原始二进制数据。 |
+| data | string \| number \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) \| ArrayBuffer | 是    | 要设置的资源响应数据。string表示HTML格式的字符串。number表示文件句柄，此句柄由系统的Web组件负责关闭。Resource表示应用rawfile目录下文件资源（该接口支持根据Resource对象获取HSP资源）。ArrayBuffer表示资源的原始二进制数据。 |
 
 **示例：**
 
