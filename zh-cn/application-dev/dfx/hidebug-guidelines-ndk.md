@@ -544,6 +544,41 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 8. 编辑“Index.ets”文件，添加按钮以触发接口调用：
 
    <!-- @[TestHidebugNdk_Buttons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   Button('testGetThreadCpuUsage')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // 添加点击事件
+     .onClick(testGetThreadCpuUsage);
+   
+   Button('testHiDebugBackTrace')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // 添加点击事件
+     .onClick(testBackTrace);
+   
+   Button('testAsyncContext')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('60%')
+     .height('5%')
+     // 添加点击事件
+     .onClick(testAsyncContext);
+   ```
 
 ### 步骤二：运行工程
 
