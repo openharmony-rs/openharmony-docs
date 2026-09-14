@@ -207,7 +207,11 @@ struct formHostSample {
     // 删除所有卡片。
     this.formIds.forEach((id) => {
       hilog.info(DOMAIN_NUMBER, TAG, 'delete all form');
-      formHost.deleteForm(id);
+      formHost.deleteForm(id).then(() => {
+        console.info(`formHost deleteForm success, formid: ${id}`);
+      }).catch((error: BusinessError) => {
+        console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
+      });
     });
     // 注销监听应用的安装。
     try {
