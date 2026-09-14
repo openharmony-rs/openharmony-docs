@@ -103,6 +103,7 @@
     - [ArkTS-Sta互操作场景](arkts-interop-more.md)
     - [ArkTS-Sta互操作特性规范](arkts-interop-spec.md)
     - [ArkTS动静态类型易用互操作规格指南](arkts-sta-interop-spec.md)
+    - [interop-config.json5配置文件](arkts-sta-interop-configuration.md)
     - [ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](arkts-sta-declgen-spec.md)
     - [ArkTS动静态类型互操作显式接口使用指南](./arkts-sta-interop-interface.md)
     - [ArkTS-Sta与ArkTS-Dyn互操作迁移规则](arkts-dyn-to-sta-interop-rules.md)
