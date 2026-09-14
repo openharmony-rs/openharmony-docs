@@ -76,7 +76,7 @@
       - [JSVM-API Development Specifications](jsvm-guidelines.md)
       - [JSVM-API FAQs](jsvm-frequently-questions.md)
     - JSVM-API Guides<!--jsvm-use-->
-      - [Working with Tasks Using JSVM-API](use-jsvm-execute_tasks.md)
+      - [Working with Tasks Using JSVM-API](use-jsvm-execute-tasks.md)
       - [Working with VM Snapshots Using JSVM-API](use-jsvm-create-snapshot.md)
       - [Working with Wasm Using JSVM-API](use-jsvm-about-wasm.md)
       - [Creating and Calling JS Functions Using JSVM-API](use-jsvm-function-call.md)
