@@ -519,6 +519,27 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 7. 编辑“Index.ets”文件，定义测试方法：
 
    <!-- @[TestHidebugNdk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   function testBackTraceJsFrame(i : number) : void {
+     if (i > 0) {
+       return testBackTraceJsFrame(i-1);
+     }
+     return testNapi.testBackTrace();
+   }
+   
+   function testBackTrace() : void {
+     testBackTraceJsFrame(3);
+   }
+   
+   function testGetThreadCpuUsage() : void {
+     testNapi.testGetThreadCpuUsage();
+   }
+   
+   function testAsyncContext() : void {
+     testNapi.testAsyncContext();
+   }
+   ```
 
 8. 编辑“Index.ets”文件，添加按钮以触发接口调用：
 
