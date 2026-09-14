@@ -1668,3 +1668,175 @@ struct Index {
   }
 }
 ```
+
+## pointer.getTouchpadScrollDirection
+
+getTouchpadScrollDirection(callback: AsyncCallback&lt;boolean&gt;): void
+
+获取触控板滚轴方向，使用callback异步回调。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**参数**：
+
+| 参数名       | 类型                          | 必填   | 说明             |
+| -------- | --------------------------- | ---- | -------------- |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当获取触控板滚轴方向成功，err为undefined，state为true表示与手指滑动的方向一致；否则为错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触控板滚轴方向
+            pointer.getTouchpadScrollDirection((error: BusinessError, state: boolean) => {
+              if (error) {
+                console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触控板滚轴方向
+            pointer.getTouchpadScrollDirection((error: BusinessError | null, state: boolean | undefined) => {
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## pointer.getTouchpadScrollDirection
+
+getTouchpadScrollDirection(): Promise&lt;boolean&gt;
+
+获取触控板滚轴方向，使用Promise异步回调。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**返回值**：
+
+| 类型                    | 说明                  |
+| --------------------- | ------------------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触控板滚轴方向
+            pointer.getTouchpadScrollDirection().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取触控板滚轴方向
+            pointer.getTouchpadScrollDirection().then((state: boolean) => {
+              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
