@@ -2552,7 +2552,7 @@ async function test(){
 
 setVolume(volume: number): void
 
-设置媒体播放音量，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。
+调节当前播放的视频的音量，不对系统其他音量生效，如需修改其他音量请参考[播放音量管理](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/volume-management)，只能在prepared/playing/paused/completed状态调用，可以通过[on('volumeChange')](#onvolumechange9)事件确认是否生效。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
