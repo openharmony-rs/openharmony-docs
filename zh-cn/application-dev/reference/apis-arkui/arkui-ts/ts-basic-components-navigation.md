@@ -2175,6 +2175,43 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 |pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| 是 | 设置当前路由栈中的路由页面信息数组。<br/>**说明：**<br/>数组长度无限制。|
 |animated| boolean | 否 | 是否开启转场动画。<br/>true：开启转场动画；false：不开启转场动画。<br /> 默认值：true|
 
+### preloadPath
+ 	 
+preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
+
+预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当后续调用[pushPath](#pushpath10)时，若参数匹配，将使用预加载的页面实例进行快速显示。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明                     |
+| ---- | ---- | --- | ---|
+|info| [NavPathInfo](#navpathinfo10)| 是 | 预加载的NavDestination页面信息。|
+|options| [PreloadOptions](#preloadoptions)| 否 | 预加载页面选项。|
+
+**返回值：**
+
+| 类型                | 说明        |
+| ------------------- | --------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
+
+| 错误码ID   | 错误信息 |
+| --------- | ------- |
+| 100001    | Internal error.|
+| 100005    | Builder function not registered. |
+| 100006    | NavDestination not found.|
+
 ## NavPathInfo<sup>10+</sup>
 
 路由页面信息。
@@ -2980,6 +3017,22 @@ Navigation分割线颜色及上下边距。
 | ------ | ------------- | ---- | ---- | --------------- |
 | launchMode | [LaunchMode](#launchmode12枚举说明)  | 否    | 是    | 路由栈的操作模式。<br/>默认值：LaunchMode.STANDARD |
 | animated   | boolean  | 否    | 是    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true|
+
+## PreloadOptions
+
+预加载页面选项。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onDestroy | Callback\<void\> | 否 | 是 | 预加载页面被系统销毁时的回调。 |
 
 ## NavigationConfiguration
 
