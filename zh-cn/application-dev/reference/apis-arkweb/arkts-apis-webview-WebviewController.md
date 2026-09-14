@@ -1330,6 +1330,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScript时，脚本按调用顺序依次执行，但回调结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1421,11 +1422,12 @@ runJavaScript(script: string): Promise\<string>
 
 > **说明：**
 >
-> - 跨导航操作（如loadUrl）时，JavaScript状态 将不再保留，例如，调用loadUrl前定义的全局变量和函数在加载的页面中将不存在。
+> - 跨导航操作（如loadUrl）时，JavaScript状态将不再保留，例如，调用loadUrl前定义的全局变量和函数在加载的页面中将不存在。
 > - 建议应用程序使用registerJavaScriptProxy来确保JavaScript状态能够在页面导航间保持。
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScript时，脚本按调用顺序依次执行，但Promise结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1517,6 +1519,7 @@ runJavaScriptExt(script: string | ArrayBuffer, callback : AsyncCallback\<JsMessa
 > **说明：**
 >
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScriptExt时，脚本按调用顺序依次执行，但回调结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1742,6 +1745,7 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 > **说明：**
 >
 > - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
+> - 多次调用runJavaScriptExt时，脚本按调用顺序依次执行，但Promise结果的返回顺序不保证与调用顺序一致。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
