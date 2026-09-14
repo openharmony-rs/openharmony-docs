@@ -167,11 +167,11 @@ struct Index {
           select: Array<GridObjectSortComponentItem>,
           unselect: Array<GridObjectSortComponentItem>
         ) => {
-          // 在此实现保存数据的逻辑
+          // 实现保存数据的逻辑
         },
         // 取消保存数据的回调。
         onCancel: () =>{
-          // 在此实现取消编辑的逻辑
+          // 实现取消编辑的逻辑
         }
       })
     }
