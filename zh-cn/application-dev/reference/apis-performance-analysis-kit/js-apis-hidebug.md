@@ -1275,9 +1275,9 @@ VM内存信息。
 
 | 名称               | 类型    | 只读 | 可选 | 说明                                |
 | -------------------| ------- |----|----| ----------------------------------- |
-| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
-| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
-| threadName           | string  | 否  | 是  | 线程名。<br/>**ArkTS-Dyn起始版本**：26.1.0<br/>**ArkTS-Sta起始版本**：26.1.0 |
+| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23      |
+| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**ArkTS-Dyn起始版本**：26.1.0<br>**ArkTS-Sta起始版本**：26.1.0 |
 
 ## tags<sup>12+</sup>
 
