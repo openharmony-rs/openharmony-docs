@@ -2176,7 +2176,7 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 |animated| boolean | 否 | 是否开启转场动画。<br/>true：开启转场动画；false：不开启转场动画。<br /> 默认值：true|
 
 ### preloadPath
- 	 
+
 preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当后续调用[pushPath](#pushpath10)时，若参数匹配，将使用预加载的页面实例进行快速显示。使用Promise异步回调。
