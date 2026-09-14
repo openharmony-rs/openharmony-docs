@@ -458,7 +458,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 <!--code_no_check-->
 ```ts
-import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, StickyStyle } from '@kit.ArkUI';
+import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
 // MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
