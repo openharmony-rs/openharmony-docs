@@ -1269,10 +1269,6 @@ VM内存信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
 | 名称               | 类型    | 只读 | 可选 | 说明                                |
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23      |
