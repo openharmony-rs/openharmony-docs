@@ -222,8 +222,8 @@ The scope font is not found.
 
 **可能原因**
 
-1. 该scope字体尚未安装。
-2. URL不匹配任何已安装的scope字体。
+1. 尚未安装scope字体。
+2. URL与已安装的scope字体不匹配。
 3. 调用方bundleName与字体所有者不匹配。
  
 **处理步骤**
