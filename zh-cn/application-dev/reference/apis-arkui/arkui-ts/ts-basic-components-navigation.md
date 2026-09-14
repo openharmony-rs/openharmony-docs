@@ -2181,13 +2181,15 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当后续调用[pushPath](#pushpath10)时，若参数匹配，将使用预加载的页面实例进行快速显示。使用Promise异步回调。
 
-**起始版本：** 26.1.0
-
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **参数：**
 
