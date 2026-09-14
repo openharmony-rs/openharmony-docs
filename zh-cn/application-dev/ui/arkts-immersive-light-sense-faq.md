@@ -345,6 +345,10 @@ Column() {
 
   ![materialDrawingInstructions](figures/material-drawing-instruction-2.jpg)
 
+- Progress组件可视区域为胶囊形，材质渲染区域为100\*40的矩形。
+
+  ![materialDrawingInstructions](figures/material-drawing-instruction-4.jpg)
+
 **可能原因**
 
 材质渲染区域由组件布局区域决定，而组件可视区域为实际呈现内容的区域，可能不等于布局区域，导致两者不一致。
@@ -380,6 +384,32 @@ Row() {
   Text("hello")
     .width(100)
     .height(40)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+
+Row() {
+  Text('Progress组件：')
+    .fontColor(Color.Black)
+  Progress({value: 40, type: ProgressType.Capsule})
+    .width(100)
+    .height(40)
+    .systemMaterial(new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      interactive: true
+    }))
+}
+
+// 材质渲染区域与组件可视区域一致示例
+Row() {
+  Text('Progress组件：')
+    .fontColor(Color.Black)
+  Progress({value: 40, type: ProgressType.Capsule})
+    .width(100)
+    .height(40)
+    .borderRadius(20) // 设置borderRadius属性使材质渲染区域与组件可视区域一致
     .systemMaterial(new uiMaterial.ImmersiveMaterial({
       style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
       interactive: true
