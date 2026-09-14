@@ -312,7 +312,7 @@ C/C++示例：
 - **音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备。
 
   <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
-
+  
   ``` C++
   // 获取音频设备增强管理器。
   static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
@@ -384,7 +384,7 @@ C/C++示例：
   }
   
   // ...
-  // 为指定音频播放流设置首选输入设备。
+  // 为指定音频录制流设置首选输入设备。
   napi_value SelectInputDeviceForAudioCapturer(napi_env env, napi_callback_info info)
   {
       int32_t deviceId = 0;
