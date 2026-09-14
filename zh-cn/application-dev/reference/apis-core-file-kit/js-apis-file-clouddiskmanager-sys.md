@@ -6,7 +6,9 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-本模块为系统文件管理应用提供获取三方云盘注册的同步根信息（包括路径、包名、状态等）的能力，适用于展示和管理三方云盘同步根目录的场景。同步根是指三方云盘应用在系统中注册的本地同步目录的根路径，系统文件管理应用可通过该信息识别和管理不同云盘的同步状态。此外，本模块还支持对三方云盘占位符文件执行水合（将云端内容下载到本地）与脱水（将文件回退为占位符以释放本地存储空间），并支持订阅水合进度，适用于文件管理应用在线打开云盘文件、优化本地存储空间等场景。
+本模块为系统文件管理应用提供获取三方云盘注册的同步根信息（包括路径、包名、状态等）的能力，适用于展示和管理三方云盘同步根目录的场景。同步根是指三方云盘应用在系统中注册的本地同步目录的根路径，系统文件管理应用可通过该信息识别和管理不同云盘的同步状态。
+
+本模块还支持系统文件管理应用对三方云盘占位符文件执行水合与脱水，并订阅水合进度，适用于在线打开云盘文件、优化本地存储空间等场景。占位符文件是三方云盘应用在同步根内创建的文件，本地仅保留文件元数据与占位数据，文件内容保存在云端；水合指将云端内容下载到本地使文件可正常访问，脱水指将已完全水合的文件回退为占位符，在保留文件逻辑大小的同时释放本地存储空间。
 
 
 > **说明：**
@@ -137,38 +139,9 @@ try {
 }
 ```
 
-## SyncFolder
+## CloudDiskSystemAccessor<sup>26+</sup>
 
-表示同步根信息，包含同步根的路径、包名、状态以及显示别名等详细信息，用于系统文件管理应用识别和管理不同云盘的同步根。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
-
-| 名称      | 类型   | 只读 | 可选 | 说明      |
-| --------- | ------ | ---- | ---- | ---------------------------- |
-| path | string | 否   | 否   | 同步根对应的本地绝对路径，表示三方云盘应用在系统中注册的本地同步目录的根路径。     |
-| bundleName   | string | 否   | 否   | 注册该同步根的三方云盘应用的包名。   |
-| state   | [SyncFolderState](#syncfolderstate) | 否   | 否   | 同步根的同步状态，取值为INACTIVE（未激活）或ACTIVE（激活），详见SyncFolderState。   |
-| displayNameResId   | number | 否   | 是   | 资源ID，用于映射文件管理应用列表中显示的别名。当三方云盘应用通过资源ID指定显示别名时，此字段包含对应的资源ID；未指定时默认值为undefined，表示不使用资源ID指定的别名。与customAlias均可用于设置显示别名，两者同时存在时以系统实现为准。   |
-| customAlias   | string | 否   | 是   | 在文件管理应用列表显示的自定义别名。当三方云盘应用直接指定自定义别名时，此字段包含对应的别名内容；未指定时默认值为undefined。与displayNameResId均可用于设置显示别名，两者同时存在时以系统实现为准。   |
-
-## SyncFolderState
-
-枚举，三方云盘同步根的状态。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
-
-| 名称      | 值  | 说明      |
-| --------- | -----| ------------------------|
-| INACTIVE  |  0   | 表示同步根处于未激活状态。|
-| ACTIVE    |  1   | 表示同步根处于激活状态。  |
-
-## CloudDiskSystemAccessor
-
-云盘系统访问器，为系统文件管理应用提供对三方云盘占位符文件执行水合（hydrate）与脱水（dehydrate）的能力，并支持订阅水合进度。水合指将占位符文件的云端内容下载到本地，使其可正常访问；脱水指将已完全水合的占位符文件回退为未水合状态，在保留文件逻辑大小的同时释放本地存储空间。在使用前，需要先创建CloudDiskSystemAccessor实例。
+云盘系统访问器，为系统文件管理应用提供对三方云盘占位符文件执行水合与脱水的能力，并支持订阅水合进度。在使用前，需要先创建CloudDiskSystemAccessor实例。
 
 **起始版本：** 26.1.0
 
@@ -176,7 +149,7 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
-### constructor
+### constructor<sup>26+</sup>
 
 constructor()
 
@@ -203,11 +176,11 @@ try {
 }
 ```
 
-### on('hydrateProgress')
+### on('hydrateProgress')<sup>26+</sup>
 
-on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress)&gt;): void
+on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress)中的filePath字段区分不同文件。同一实例可注册多个回调，重复注册已注册的回调不生效。可通过[off('hydrateProgress')](#offhydrateprogress)取消订阅。
+订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。同一实例可注册多个回调，重复注册已注册的回调不生效。可通过[off('hydrateProgress')](#offhydrateprogress26)取消订阅。
 
 **起始版本：** 26.1.0
 
@@ -222,7 +195,7 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'hydrateProgress' | 是 | 订阅的事件类型，取值为'hydrateProgress'（水合进度事件）。 |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | 是 | 回调函数。水合任务进度变化时触发，返回水合进度信息。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 是 | 回调函数。水合任务进度变化时触发，返回水合进度信息。 |
 
 **错误码：**
 
@@ -259,9 +232,9 @@ try {
 }
 ```
 
-### off('hydrateProgress')
+### off('hydrateProgress')<sup>26+</sup>
 
-off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress)&gt;): void
+off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
 取消订阅水合进度事件。传入callback时仅取消指定的回调；不传入callback时取消当前实例已注册的所有'hydrateProgress'回调。
 
@@ -278,7 +251,7 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'hydrateProgress' | 是 | 取消订阅的事件类型，取值为'hydrateProgress'（水合进度事件）。 |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | 否 | 待取消的回调函数。缺省时取消当前实例已注册的所有'hydrateProgress'回调。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress26)&gt; | 否 | 待取消的回调函数。缺省时取消当前实例已注册的所有'hydrateProgress'回调。 |
 
 **错误码：**
 
@@ -317,15 +290,15 @@ try {
 }
 ```
 
-### hydratePlaceholder
+### hydratePlaceholder<sup>26+</sup>
 
-hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype), priority: [HydratePriority](#hydratepriority)): Promise&lt;void&gt;
+hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype26), priority: [HydratePriority](#hydratepriority26)): Promise&lt;void&gt;
 
 对占位符文件发起水合或取消水合，适用于文件管理应用在线打开三方云盘占位文件的场景。使用Promise异步回调。
 
 > **说明：**
 >
-> - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。实际进度需通过[on('hydrateProgress')](#onhydrateprogress)订阅获取，文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
+> - callbackType取FETCH_DATA时发起水合：任务创建成功后Promise立即兑现，仅表示水合任务已创建并入队，不代表文件已开始下载或水合完成。实际进度需通过[on('hydrateProgress')](#onhydrateprogress26)订阅获取，文件水合状态依次经过PENDING、IN_PROGRESS，最终为COMPLETED或CANCELLED。
 > - callbackType取CANCEL_FETCH_DATA时取消水合：目标文件存在进行中的水合任务时将其取消（进度回调最终收到CANCELLED状态）；不存在进行中的水合任务时Promise被拒绝并返回34400032错误码。
 > - 水合任务数量存在上限（单个云盘应用5个、全局10个），达到上限时Promise被拒绝并返回34400034错误码，可等待部分任务完成或取消后再重试。
 
@@ -342,8 +315,8 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | filePath | string | 是 | 占位符文件的路径，须为"/storage/Users/currentUser/"前缀的绝对路径，且位于三方云盘应用已注册的同步根目录范围内。 |
-| callbackType | [CallbackType](#callbacktype) | 是 | 回调类型。取FETCH_DATA时发起水合，取CANCEL_FETCH_DATA时取消水合。 |
-| priority | [HydratePriority](#hydratepriority) | 是 | 水合任务的优先级，仅callbackType为FETCH_DATA时生效。 |
+| callbackType | [CallbackType](#callbacktype26) | 是 | 回调类型。取FETCH_DATA时发起水合，取CANCEL_FETCH_DATA时取消水合。 |
+| priority | [HydratePriority](#hydratepriority26) | 是 | 水合任务的优先级，仅callbackType为FETCH_DATA时生效。 |
 
 **返回值：**
 
@@ -392,7 +365,7 @@ accessor.hydratePlaceholder(filePath, cloudDiskManager.CallbackType.FETCH_DATA,
 });
 ```
 
-### dehydrateFile
+### dehydrateFile<sup>26+</sup>
 
 dehydrateFile(filePath: string): Promise&lt;void&gt;
 
@@ -458,11 +431,25 @@ accessor.dehydrateFile(filePath).then(() => {
 });
 ```
 
-## CallbackType
+## SyncFolder
 
-枚举，云盘文件数据获取的回调类型。
+表示同步根信息，包含同步根的路径、包名、状态以及显示别名等详细信息，用于系统文件管理应用识别和管理不同云盘的同步根。
 
-**起始版本：** 26.1.0
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+
+| 名称      | 类型   | 只读 | 可选 | 说明      |
+| --------- | ------ | ---- | ---- | ---------------------------- |
+| path | string | 否   | 否   | 同步根对应的本地绝对路径，表示三方云盘应用在系统中注册的本地同步目录的根路径。     |
+| bundleName   | string | 否   | 否   | 注册该同步根的三方云盘应用的包名。   |
+| state   | [SyncFolderState](#syncfolderstate) | 否   | 否   | 同步根的同步状态，取值为INACTIVE（未激活）或ACTIVE（激活），详见SyncFolderState。   |
+| displayNameResId   | number | 否   | 是   | 资源ID，用于映射文件管理应用列表中显示的别名。当三方云盘应用通过资源ID指定显示别名时，此字段包含对应的资源ID；未指定时默认值为undefined，表示不使用资源ID指定的别名。与customAlias均可用于设置显示别名，两者同时存在时以系统实现为准。   |
+| customAlias   | string | 否   | 是   | 在文件管理应用列表显示的自定义别名。当三方云盘应用直接指定自定义别名时，此字段包含对应的别名内容；未指定时默认值为undefined。与displayNameResId均可用于设置显示别名，两者同时存在时以系统实现为准。   |
+
+## SyncFolderState
+
+枚举，三方云盘同步根的状态。
 
 **系统接口**：此接口为系统接口。
 
@@ -470,13 +457,12 @@ accessor.dehydrateFile(filePath).then(() => {
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
-| FETCH_DATA  |  0   | 获取云文件数据（发起水合）。|
-| CANCEL_FETCH_DATA    |  1   | 取消获取云文件数据（取消水合）。  |
-| DEHYDRATE    |  2   | 脱水授权。  |
+| INACTIVE  |  0   | 表示同步根处于未激活状态。|
+| ACTIVE    |  1   | 表示同步根处于激活状态。  |
 
-## HydratePriority
+## HydrateProgress<sup>26+</sup>
 
-枚举，水合任务的优先级。
+描述水合任务的进度信息，通过[on('hydrateProgress')](#onhydrateprogress26)订阅的回调获取。
 
 **起始版本：** 26.1.0
 
@@ -484,13 +470,14 @@ accessor.dehydrateFile(filePath).then(() => {
 
 **系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
-| 名称      | 值  | 说明      |
-| --------- | -----| ------------------------|
-| LOW  |  0   | 低优先级。|
-| NORMAL    |  1   | 普通优先级。  |
-| HIGH    |  2   | 高优先级。  |
+| 名称      | 类型   | 只读 | 可选 | 说明      |
+| --------- | ------ | ---- | ---- | ---------------------------- |
+| filePath | string | 否   | 否   | 文件路径，与调用[hydratePlaceholder](#hydrateplaceholder26)时传入的文件路径一致。     |
+| state   | [HydrateProgressState](#hydrateprogressstate26) | 否   | 否   | 水合进度状态。   |
+| processedSize   | number | 否   | 否   | 已水合的字节数，仅state为IN_PROGRESS时有效。   |
+| totalSize   | number | 否   | 否   | 正在水合的文件总大小，单位为字节。   |
 
-## HydrateProgressState
+## HydrateProgressState<sup>26+</sup>
 
 枚举，水合任务的水合进度状态。
 
@@ -507,9 +494,9 @@ accessor.dehydrateFile(filePath).then(() => {
 | COMPLETED    |  2   | 水合完成。  |
 | CANCELLED    |  3   | 水合已取消，取消来源包括用户取消、云盘应用放弃任务、任务超时或系统内部终止。  |
 
-## HydrateProgress
+## CallbackType<sup>26+</sup>
 
-描述水合任务的进度信息，通过[on('hydrateProgress')](#onhydrateprogress)订阅的回调获取。
+枚举，云盘文件数据获取的回调类型。
 
 **起始版本：** 26.1.0
 
@@ -517,9 +504,24 @@ accessor.dehydrateFile(filePath).then(() => {
 
 **系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
-| 名称      | 类型   | 只读 | 可选 | 说明      |
-| --------- | ------ | ---- | ---- | ---------------------------- |
-| filePath | string | 否   | 否   | 文件路径，与调用[hydratePlaceholder](#hydrateplaceholder)时传入的文件路径一致。     |
-| state   | [HydrateProgressState](#hydrateprogressstate) | 否   | 否   | 水合进度状态。   |
-| processedSize   | number | 否   | 否   | 已水合的字节数，仅state为IN_PROGRESS时有效。   |
-| totalSize   | number | 否   | 否   | 正在水合的文件总大小，单位为字节。   |
+| 名称      | 值  | 说明      |
+| --------- | -----| ------------------------|
+| FETCH_DATA  |  0   | 获取云文件数据（发起水合）。|
+| CANCEL_FETCH_DATA    |  1   | 取消获取云文件数据（取消水合）。  |
+| DEHYDRATE    |  2   | 脱水授权。  |
+
+## HydratePriority<sup>26+</sup>
+
+枚举，水合任务的优先级。
+
+**起始版本：** 26.1.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+
+| 名称      | 值  | 说明      |
+| --------- | -----| ------------------------|
+| LOW  |  0   | 低优先级。|
+| NORMAL    |  1   | 普通优先级。  |
+| HIGH    |  2   | 高优先级。  |
