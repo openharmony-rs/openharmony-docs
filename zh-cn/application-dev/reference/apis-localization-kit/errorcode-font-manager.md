@@ -282,4 +282,4 @@ The font observer is not registered.
 
 **处理步骤**
 
-请先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器后再执行安装应用级字体或注销操作。
+请先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器后再执行[installScopeFont](js-apis-font-manager.md#installScopeFont)安装应用级字体或[offFontObserver](js-apis-font-manager.md#offfontobserver)注销操作。
