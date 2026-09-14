@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-This module enables the File Manager to obtain the sync root information registered by third-party cloud disks.
+This module enables the File Manager to obtain the sync root information registered by third-party cloud disks. In addition, this module enables the File Manager to hydrate placeholder files of third-party cloud disks (downloading cloud content to the local device) and dehydrate such files (reverting files to placeholders to release local storage space), and subscribe to hydration progress. It is applicable to scenarios such as opening cloud files online and optimizing local storage space.
 
 > **NOTE**
 >
@@ -162,3 +162,361 @@ Enumerates the states of the sync root.
 | --------- | -----| ------------------------|
 | INACTIVE  |  0   | The sync root is inactive.|
 | ACTIVE    |  1   | The sync root is active. |
+
+## CloudDiskSystemAccessor
+
+Cloud disk system accessor that enables the File Manager to hydrate and dehydrate placeholder files of third-party cloud disks, and subscribe to hydration progress. Hydration downloads the cloud content of a placeholder file to the local device so that the file can be accessed as usual. Dehydration reverts a fully hydrated placeholder file to the unhydrated state, releasing local storage space while retaining the logical size of the file. Before use, you must create a **CloudDiskSystemAccessor** instance.
+
+**Since**: 26.1.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+### constructor
+
+constructor()
+
+A constructor used to create a **CloudDiskSystemAccessor** instance.
+
+**Since**: 26.1.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+**Example**
+
+```ts
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+  console.info('CloudDiskSystemAccessor created successfully');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`CloudDiskSystemAccessor constructor failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### on('hydrateProgress')
+
+on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress)&gt;): void
+
+Subscribes to hydration progress events. This API is applicable to the scenario where the File Manager displays the hydration progress of files. After the subscription, progress notifications of all hydration tasks of the current user (including those initiated by third-party cloud disk applications through the CAPI) are received, and files are distinguished by **filePath** in [HydrateProgress](#hydrateprogress). Multiple callbacks can be registered on the same instance, and registering the same callback repeatedly takes no effect. To cancel the subscription, use [off('hydrateProgress')](#offhydrateprogress).
+
+**Since**: 26.1.0
+
+**Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| type | 'hydrateProgress' | Yes| Type of the event to subscribe to. The value is 'hydrateProgress' (hydration progress event).|
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | Yes| Callback invoked when the hydration progress of a task changes.|
+
+**Error codes**
+
+For details about the error codes, see [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 801 | Device not supported. |
+| 34400001 | Invalid argument. |
+| 34400003 | IPC communication failed. |
+| 34400014 | Temporary failure. Retry is recommended. |
+
+**Example**
+
+```ts
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+
+let callback = (progress: cloudDiskManager.HydrateProgress) => {
+  console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
+  console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+};
+
+try {
+  accessor.on('hydrateProgress', callback);
+  console.info('subscribe hydrateProgress successfully');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`on hydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### off('hydrateProgress')
+
+off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress)&gt;): void
+
+Unsubscribes from hydration progress events. If **callback** is specified, only the specified callback is unsubscribed. If **callback** is not specified, all 'hydrateProgress' callbacks registered on the current instance are unsubscribed.
+
+**Since**: 26.1.0
+
+**Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| type | 'hydrateProgress' | Yes| Type of the event to unsubscribe from. The value is 'hydrateProgress' (hydration progress event).|
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | No| Callback to be unregistered. If this parameter is not specified, all 'hydrateProgress' callbacks registered on the current instance are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 801 | Device not supported. |
+| 34400001 | Invalid argument. |
+| 34400003 | IPC communication failed. |
+| 34400014 | Temporary failure. Retry is recommended. |
+
+**Example**
+
+```ts
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+
+let callback = (progress: cloudDiskManager.HydrateProgress) => {
+  console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
+};
+
+accessor.on('hydrateProgress', callback);
+
+try {
+  accessor.off('hydrateProgress', callback); // Unsubscribe from the specified callback.
+  accessor.off('hydrateProgress'); // Unsubscribe from all callbacks.
+  console.info('unsubscribe hydrateProgress successfully');
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`off hydrateProgress failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### hydratePlaceholder
+
+hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype), priority: [HydratePriority](#hydratepriority)): Promise&lt;void&gt;
+
+Starts or cancels hydration of a placeholder file. This API is applicable to the scenario where the File Manager opens a placeholder file of a third-party cloud disk online. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - If **callbackType** is **FETCH_DATA**, hydration starts. The promise is fulfilled once the hydration task is created and queued. This only indicates that the task has been created, not that the file has started downloading or the hydration is complete. To obtain the actual progress, subscribe to [on('hydrateProgress')](#onhydrateprogress). The file hydration state changes from PENDING and IN_PROGRESS to the final state COMPLETED or CANCELLED.
+> - If **callbackType** is **CANCEL_FETCH_DATA**, hydration is cancelled. If an in-progress hydration task exists for the target file, the task is cancelled (the progress callback finally receives the CANCELLED state). If no in-progress hydration task exists, the promise is rejected with error code 34400032.
+> - The number of hydration tasks is limited (five for a single cloud disk application and ten globally). When the limit is reached, the promise is rejected with error code 34400034. In this case, wait for some tasks to complete or be cancelled, and then try again.
+
+**Since**: 26.1.0
+
+**Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| filePath | string | Yes| Path of the placeholder file. The value must be an absolute path prefixed with "/storage/Users/currentUser/" and within the registered sync root directory of a third-party cloud disk application.|
+| callbackType | [CallbackType](#callbacktype) | Yes| Callback type. The value **FETCH_DATA** starts hydration, and the value **CANCEL_FETCH_DATA** cancels hydration.|
+| priority | [HydratePriority](#hydratepriority) | Yes| Priority of the hydration task. This parameter takes effect only when **callbackType** is **FETCH_DATA**.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise that returns no value. When hydration starts, the promise is fulfilled after the hydration task is created. When hydration is cancelled, the promise is fulfilled after the cancellation request is accepted.|
+
+**Error codes**
+
+For details about the error codes, see [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 801 | Device not supported. |
+| 34400001 | Invalid argument. |
+| 34400003 | IPC communication failed. |
+| 34400014 | Temporary failure. Retry is recommended. |
+| 34400017 | The target path is not a placeholder file. |
+| 34400019 | Hydration in progress. |
+| 34400021 | The callback table is not registered. |
+| 34400031 | The placeholder file is already fully hydrated. |
+| 34400032 | No hydration task is in progress for the target file. |
+| 34400034 | The number of active placeholder hydration tasks has reached the limit. |
+
+**Example**
+
+```ts
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+let filePath: string = '/storage/Users/currentUser/Docs/cloud/photo.jpg';
+
+accessor.on('hydrateProgress', (progress: cloudDiskManager.HydrateProgress) => {
+  console.info(`hydrate progress - filePath: ${progress.filePath}, state: ${progress.state}`);
+  console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
+});
+
+accessor.hydratePlaceholder(filePath, cloudDiskManager.CallbackType.FETCH_DATA,
+  cloudDiskManager.HydratePriority.HIGH).then(() => {
+  console.info('hydrate task created successfully');
+}).catch((err: BusinessError) => {
+  console.error(`hydratePlaceholder failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+### dehydrateFile
+
+dehydrateFile(filePath: string): Promise&lt;void&gt;
+
+Dehydrates a fully hydrated placeholder file, reverting it to an unhydrated placeholder to release local storage space. This API is applicable to the storage space optimization scenario of the File Manager. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Before dehydration, the system sends a dehydration authorization request to the third-party cloud disk application. If the application denies the authorization, the promise is rejected with error code 34400029, and the file remains unchanged.
+> - Calling this API on a file that is already unhydrated is an idempotent operation, and the promise is fulfilled.
+> - Dehydration is not allowed when an in-progress hydration task exists for the file. In this case, the promise is rejected with error code 34400019.
+
+**Since**: 26.1.0
+
+**Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| filePath | string | Yes| Path of the placeholder file to dehydrate. The value must be an absolute path prefixed with "/storage/Users/currentUser/" and within the registered sync root directory of a third-party cloud disk application.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 801 | Device not supported. |
+| 34400001 | Invalid argument. |
+| 34400003 | IPC communication failed. |
+| 34400014 | Temporary failure. Retry is recommended. |
+| 34400017 | The target path is not a placeholder file. |
+| 34400019 | Hydration in progress. |
+| 34400021 | The callback table is not registered. |
+| 34400028 | The placeholder file is not fully hydrated. |
+| 34400029 | The application denied placeholder dehydration. |
+
+**Example**
+
+```ts
+import { cloudDiskManager } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accessor: cloudDiskManager.CloudDiskSystemAccessor = new cloudDiskManager.CloudDiskSystemAccessor();
+let filePath: string = '/storage/Users/currentUser/Docs/cloud/photo.jpg';
+
+accessor.dehydrateFile(filePath).then(() => {
+  console.info('dehydrate file successfully');
+}).catch((err: BusinessError) => {
+  console.error(`dehydrateFile failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+## CallbackType
+
+Enumerates the callback types of cloud file data fetching.
+
+**Since**: 26.1.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+| Name     | Value | Description     |
+| --------- | -----| ------------------------|
+| FETCH_DATA  |  0   | Fetches cloud file data (starts hydration).|
+| CANCEL_FETCH_DATA    |  1   | Cancels fetching cloud file data (cancels hydration).  |
+| DEHYDRATE    |  2   | Authorization for dehydration.  |
+
+## HydratePriority
+
+Enumerates the priorities of hydration tasks.
+
+**Since**: 26.1.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+| Name     | Value | Description     |
+| --------- | -----| ------------------------|
+| LOW  |  0   | Low priority.|
+| NORMAL    |  1   | Normal priority.  |
+| HIGH    |  2   | High priority.  |
+
+## HydrateProgressState
+
+Enumerates the states of the hydration progress.
+
+**Since**: 26.1.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+| Name     | Value | Description     |
+| --------- | -----| ------------------------|
+| PENDING  |  0   | The hydration task has been created but has not started.|
+| IN_PROGRESS    |  1   | The hydration is in progress.  |
+| COMPLETED    |  2   | The hydration is complete.  |
+| CANCELLED    |  3   | The hydration is cancelled due to user cancellation, the cloud disk application giving up the task, task timeout, or internal system termination.  |
+
+## HydrateProgress
+
+Describes the progress of a hydration task, which is reported by the callback subscribed via [on('hydrateProgress')](#onhydrateprogress).
+
+**Since**: 26.1.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.CloudDiskManager
+
+| Name     | Type  | Read-Only| Optional| Description     |
+| --------- | ------ | ---- | ---- | ---------------------------- |
+| filePath | string | No  | No  | File path, which is the same as that passed in to [hydratePlaceholder](#hydrateplaceholder).    |
+| state   | [HydrateProgressState](#hydrateprogressstate) | No  | No  | Hydration progress state.  |
+| processedSize   | number | No  | No  | Number of bytes hydrated. This field is valid only when **state** is IN_PROGRESS.  |
+| totalSize   | number | No  | No  | Total size of the file being hydrated, in bytes.  |
