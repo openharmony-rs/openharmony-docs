@@ -16,7 +16,7 @@
 
 ## 开发说明
 
-备份恢复API的使用指导请参见[API参考](../reference/apis-core-file-kit/js-apis-file-backup-sys.md)。
+备份恢复API的使用指导请参见[@ohos.file.backup (备份恢复)(系统接口)](../reference/apis-core-file-kit/js-apis-file-backup-sys.md)。
 
 在使用备份恢复接口之前，需要：
 
