@@ -214,7 +214,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
+| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
 | 24700101                |  All unknown errors.                  |
 | 24700201                |  Fatal service error, for example, service died.                  |
 
