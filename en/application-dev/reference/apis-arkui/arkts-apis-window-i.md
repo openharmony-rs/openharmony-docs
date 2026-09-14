@@ -360,7 +360,7 @@ Describes the focus state change information of the window.
 
 | Name  | Type  | Read-Only| Optional| Description  |
 | ------ | ------ | ---- | ---- | ---------- |
-| focused | boolean | No  | No  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise.|
+| isFocused | boolean | No  | No  | Whether the window gains focus. **true** if the window gains focus, **false** otherwise.|
 | focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | No  | No  | Reason for the focus state change.|
 | nextFocusedWindowId | number | No  | Yes | ID of the next focused window. This field is valid only when the window is unfocused and the next focused window is in the same process as this window.|
 | prevFocusedWindowId | number | No  | Yes | ID of the previous focused window. This field is valid only when the window is focused and the previous focused window is in the same process as this window.|

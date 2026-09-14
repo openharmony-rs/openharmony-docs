@@ -5732,7 +5732,7 @@ on(type: 'windowFocusStateChange', callback: Callback&lt;[WindowFocusState](arkt
 ```ts
 try {
   windowClass.on('windowFocusStateChange', (data: window.WindowFocusState) => {
-    console.info(`Window focus state changed. focused: ${data.focused}, focusChangeReason: ${data.focusChangeReason}`);
+    console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
   });
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
