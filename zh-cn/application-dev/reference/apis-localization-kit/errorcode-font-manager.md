@@ -222,13 +222,13 @@ The scope font is not found.
 
 **可能原因**
 
-1. 尚未安装scope字体。
+1. 尚未安装scope字体或调用方bundleName与字体所有者不匹配。
 2. URL与已安装的scope字体不匹配。
-3. 调用方bundleName与字体所有者不匹配。
  
 **处理步骤**
 
-请检查URL是否正确，或者查询、卸载前先调用[installScopeFont](js-apis-font-manager.md#installscopefont)安装字体。
+1. 请确认应用是否安装此scope字体，查询、卸载前需先调用[installScopeFont](js-apis-font-manager.md#installscopefont)安装字体。
+2. 请检查URL是否正确。
 
 ## 31100113 字体服务状态监听器已注册
 
@@ -278,8 +278,8 @@ The font observer is not registered.
 
 **可能原因**
 
-应用未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器，或已注销。
+应用未先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器，或字体服务状态监听器已注销。
 
 **处理步骤**
 
-请先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器后再执行[installScopeFont](js-apis-font-manager.md#installScopeFont)安装应用级字体或[offFontObserver](js-apis-font-manager.md#offfontobserver)注销操作。
+请先调用[onFontObserver](js-apis-font-manager.md#onfontobserver)注册字体服务状态监听器后再执行[installScopeFont](js-apis-font-manager.md#installScopeFont)安装应用级字体或[offFontObserver](js-apis-font-manager.md#offfontobserver)注销字体服务状态监听器。
