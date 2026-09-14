@@ -497,6 +497,14 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
 5. 注册“testAsyncContext”为ArkTS接口：
 
    <!-- @[TestHidebugNdk_Define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   napi_property_descriptor desc[] = {
+       { "testGetThreadCpuUsage", nullptr, TestGetThreadCpuUsage, nullptr, nullptr, nullptr, napi_default, nullptr },
+       { "testBackTrace", nullptr, TestBackTrace, nullptr, nullptr, nullptr, napi_default, nullptr },
+       { "testAsyncContext", nullptr, TestAsyncContext, nullptr, nullptr, nullptr, napi_default, nullptr },
+   };
+   ```
 
 6. 编辑“index.d.ts”文件，声明ArkTS接口testAsyncContext：
 
