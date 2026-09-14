@@ -342,3 +342,81 @@ HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具�
    10-22 15:46:13.354   19261-19261   A0FF00/com.sam...gtool/testTag  com.sampl...ebugtool  I     js stack frame info for pc: ************ is relativePc: ****** line: 25 column: 16 mapName: /data/storage/el1/bundle/entry.hap functionName: testBackTraceJsFrame url: entry|entry|1.0.0|src/main/ets/pages/Index.ts packageName: ....
    ...
    ```
+
+## 管理异步上下文
+
+从API版本26.0.0开始提供管理异步上下文功能。下文展示如何在应用内使用HiDebug C/C++异步上下文管理接口，构造A->B单层异步调用链，在异步任务提交和完成时分别压入和弹出异步上下文，建立和解除异步调用链关系。
+
+> **注意：**
+>
+> 该功能仅支持ARM64架构，且仅可在debug版本应用中使用，需配合[hiprofiler](hiprofiler.md#async_type参数介绍)调优组件追踪完整的异步调用栈。
+
+### 步骤一：新增异步上下文管理接口示例代码
+
+1. 编辑“test_async_context.h”文件，声明异步上下文调用链入口函数：
+
+   <!-- @[TestHidebugNdk_AsyncContextHeader](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_async_context.h) -->
+
+2. 编辑“test_async_context.cpp”文件，构造A->B单层异步调用链，演示四个接口的调用时序（A：Acquire/Release；B：Push/Pop）：
+
+   <!-- @[TestHidebugNdk_AsyncContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_async_context.cpp) -->
+
+3. 编辑“CMakeLists.txt”文件，将新增源文件test_async_context.cpp加入add_library编译目标。
+
+4. 编辑“napi_init.cpp”文件，导入“test_async_context.h”并新增napi包装方法TestAsyncContext：
+
+   <!-- @[TestHidebugNdk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/napi_init.cpp) -->
+
+5. 注册“testAsyncContext”为ArkTS接口：
+
+   <!-- @[TestHidebugNdk_Define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/napi_init.cpp) -->
+
+6. 编辑“index.d.ts”文件，声明ArkTS接口testAsyncContext：
+
+   <!-- @[TestHidebugNdk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+7. 编辑“Index.ets”文件，定义测试方法：
+
+   <!-- @[TestHidebugNdk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+
+8. 编辑“Index.ets”文件，添加按钮以触发接口调用：
+
+   <!-- @[TestHidebugNdk_Buttons](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
+
+### 步骤二：运行工程
+
+1. 启动hiprofiler采集任务，使能异步上下文追踪。
+
+   ```shell
+   hdc shell
+   hiprofiler_cmd -c - -o /data/local/tmp/hiprofiler_data.htrace -t 60 -s -k <<CONFIG
+   request_id: 1
+   session_config {
+     buffers {
+       pages: 16384
+     }
+   }
+   plugin_configs {
+     plugin_name: "nativehook"
+     sample_interval: 5000
+     config_data {
+       save_file: false
+       smb_pages: 16384
+       max_stack_depth: 20
+       process_name: "com.samples.hidebugtool"
+       fp_unwind: true
+       blocked: true
+       callframe_compress: true
+       record_accurately: true
+       offline_symbolization: true
+       startup_mode: false
+       async_stack_enable: true
+       async_type: CUSTOMIZE
+     }
+   }
+   CONFIG
+   ```
+
+2. 点击DevEco Studio界面中的运行按钮，然后单击应用界面上的“testAsyncContext”按钮。
+
+3. 在DevEco Studio底部切换到“Log”窗口，设置日志过滤条件为“testTag”，即可查看异步调用链日志。
