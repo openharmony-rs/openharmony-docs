@@ -104,11 +104,11 @@ full-SDK需要手动下载。请参考[版本说明书](../../release-notes/Open
 
 我们可以操作以下步骤来处理此问题：
 
-1.打开Terminal终端应用
+1. 打开Terminal终端应用
 
-2.在终端中输入命令:sudo spctl -- master - disable
+2. 在终端中输入命令:sudo spctl -- master - disable
 
-3.进入系统偏好设置中的[安全与隐私]面板中，打开"任何来源"选项
+3. 进入系统偏好设置中的[安全与隐私]面板中，打开"任何来源"选项
 
 ![alarmHand](figures/alarmHand.png)
 
