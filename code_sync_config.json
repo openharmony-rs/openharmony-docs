@@ -2029,7 +2029,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":183,
+						"end_line":194,
 						"name":"pasteboard_permission",
 						"start_line":17
 					}
@@ -2044,14 +2044,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":55,
 						"name":"pasteboard_usedata",
-						"start_line":17
+						"start_line":16
 					},
 					{
-						"end_line":96,
+						"end_line":94,
 						"name":"pasteboard_useudc",
-						"start_line":18
+						"start_line":17
 					}
 				]
 			}
@@ -28182,9 +28182,9 @@
 						"start_line":20
 					},
 					{
-						"end_line":266,
+						"end_line":300,
 						"name":"pasteboard_timelapse_Record5",
-						"start_line":203
+						"start_line":237
 					}
 				]
 			},
@@ -29196,9 +29196,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":141,
+						"end_line":175,
 						"name":"pasteboard_native6",
-						"start_line":98
+						"start_line":101
 					},
 					{
 						"end_line":26,
@@ -29211,7 +29211,7 @@
 						"start_line":44
 					},
 					{
-						"end_line":97,
+						"end_line":100,
 						"name":"pasteboard_native5",
 						"start_line":57
 					}
