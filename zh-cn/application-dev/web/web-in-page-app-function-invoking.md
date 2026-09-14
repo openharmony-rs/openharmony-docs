@@ -207,7 +207,7 @@ struct WebComponent {
  
   ArkTS-Sta示例：
   <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
-
+  
   ``` TypeScript
   import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
@@ -338,7 +338,7 @@ struct WebComponent {
 
    ArkTS-Sta示例：
    <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
-
+   
    ``` TypeScript
    import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
    import { webview } from '@kit.ArkWeb';
