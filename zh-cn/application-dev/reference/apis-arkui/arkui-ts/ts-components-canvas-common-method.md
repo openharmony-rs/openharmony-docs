@@ -2650,7 +2650,7 @@ setLineDash(segments: number[]): void
   ```
   ![Dotted-circle](figures/Dotted-circle.png)
 
-### transferFromImageBitmap
+## transferFromImageBitmap
 
 transferFromImageBitmap(bitmap: ImageBitmap): void
 
