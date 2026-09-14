@@ -18,7 +18,7 @@ As the base class for extending capabilities in multi-device collaboration scena
 
 The following figure shows the core class structure of the collaboration extension and its relationship with the context and custom subclass.
 
- 
+![DistributedExtensionAbility_flowchart](../figures/DistributedExtensionAbility_flowchart.png)
 
 As shown in the preceding figure:
 - **Inheritance relationship**:** DistributedExtensionContext** inherits from **ExtensionContext**, and the custom subclass is inherited from **DistributedExtensionAbility**.

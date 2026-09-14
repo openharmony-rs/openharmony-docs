@@ -10,7 +10,7 @@ The **abilityConnectionManager** module provides APIs for cross-device connectio
 
 The following figure shows the logical layered architecture of multi-device collaboration.
 
- 
+![abilityConnectionManager_sequenceDiagram](../figures/abilityConnectionManager_sequenceDiagram.png)
 
 The key principles of the logical layered architecture are as follows:
 
