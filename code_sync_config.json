@@ -34546,6 +34546,36 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"Register_before_loaded",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets",
+				"functions":[
+					{
+						"end_line":80,
+						"name":"Register_after_loaded",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
