@@ -108,7 +108,7 @@ struct Index {
 ```
 ## PhotoEditorExtensionContext.saveEditedContentWithImage
 
-saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
+saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
 传入编辑过的图片的PixelMap对象以保存编辑后的图片。使用Promise异步回调。适用于立即保存PixelMap对象的场景。此接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
@@ -119,7 +119,7 @@ saveEditedContentWithImage(pixelMap: image.PixelMap, option: image.PackingOption
 **参数：**
 | 参数名  | 类型  | 必填  | 说明  |
 | ------------ | ------------ | ------------ | ------------ |
-| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是  | 编辑过的图片image.PixelMap。  |
+| pixeMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是  | 编辑过的图片image.PixelMap。  |
 | option  | [image.PackingOption](../apis-image-kit/arkts-apis-image-i.md#packingoption)  |  是 | 设置图片打包参数，包含format（图片格式）和quality（图片质量）等配置项。  |
 
 **返回值：**
