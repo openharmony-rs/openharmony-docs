@@ -8285,7 +8285,7 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
