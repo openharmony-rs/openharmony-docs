@@ -75,8 +75,8 @@ async function query(context: Context): Promise<Array<relationalStore.ValuesBuck
   let resultSet = await store.query(predicates); // 查询所有数据
   console.info(`Query data successfully! row count:${resultSet.rowCount}`);
   let index = 0;
-  let result = new Array<relationalStore.ValuesBucket>(resultSet.rowCount)
-  resultSet.goToFirstRow()
+  let result = new Array<relationalStore.ValuesBucket>(resultSet.rowCount);
+  resultSet.goToFirstRow();
   do {
     result[index++] = resultSet.getRow();
   } while (resultSet.goToNextRow());
@@ -115,7 +115,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
 
           // 数据准备
-          const count = 5
+          const count = 5;
           let valueBucketArray = new Array<relationalStore.ValuesBucket>(count);
           for (let i = 0; i < count; i++) {
             let v: relationalStore.ValuesBucket = {
@@ -282,7 +282,7 @@ struct Index {
              let context: Context = this.getUIContext().getHostContext() as Context;
    
              // 数据准备
-             const count = 5
+             const count = 5;
              let valueBucketArray = collections.Array.create<SharedValuesBucket | undefined>(count, undefined);
              for (let i = 0; i < count; i++) {
                let v: IValueBucket = {

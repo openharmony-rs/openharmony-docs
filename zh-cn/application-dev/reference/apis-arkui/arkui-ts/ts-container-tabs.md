@@ -2898,9 +2898,11 @@ class MyDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // 实现IDataSource接口须实现此接口
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // 实现IDataSource接口须实现此接口
   unregisterDataChangeListener() {
   }
 }

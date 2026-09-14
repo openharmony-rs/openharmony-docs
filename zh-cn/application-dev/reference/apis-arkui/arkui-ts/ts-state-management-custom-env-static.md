@@ -1,4 +1,4 @@
-# \@CustomEnv：自定义环境变量 (ArkTS-Sta)
+# @CustomEnv：自定义环境变量 (ArkTS-Sta)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->

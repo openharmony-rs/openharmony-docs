@@ -22,6 +22,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   以下结合示例说明如何使用http或者https等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js置于工程中的rawfile目录下。当使用resource协议访问index.html时，js/script.js将因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原本的resource协议，同时利用onInterceptRequest接口替换资源，使得js/script.js可以成功加载，从而解决了跨域拦截的问题。
 
+  ArkTS-Dyn示例：
   <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->    
   
   ``` TypeScript
@@ -85,6 +86,72 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
     }
   }
   ```
+
+  ArkTS-Sta示例：
+  <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->
+
+  ``` TypeScript
+  import { $rawfile, Column, Component, Entry, Row, State, Web } from '@kit.ArkUI';
+  import { Stack, ThreatType, WebRotateEffect, WebResourceResponse, CopyOptions } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'Hello World';
+    webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+    // 构造域名和本地文件的映射表
+    schemeMap: Map<string, string> = new Map<string, string>([
+      ['https://www.example.com/index.html', 'index.html'],
+      ['https://www.example.com/js/script.js', 'js/script.js'],
+    ]);
+    // 构造本地文件和构造返回的格式mimeType
+    mimeTypeMap: Map<string, string> = new Map<string, string>([
+      ['index.html', 'text/html'],
+      ['js/script.js', 'text/javascript']
+    ]);
+  
+    build() {
+      Row() {
+        Column() {
+          // 针对本地index.html,使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
+          // 本例中构造www.example.com为例。
+          Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
+            .javaScriptAccess(true)
+            .fileAccess(true)
+            .domStorageAccess(true)
+            .geolocationAccess(true)
+            .width('100%')
+            .height('100%')
+            .onInterceptRequest((event) => {
+              if (!event) {
+                return null;
+              }
+              // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
+              if (this.schemeMap.has(event.request.getRequestUrl())) {
+                let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
+                let mimeType: string = this.mimeTypeMap.get(rawfileName)!;
+                if (typeof mimeType === 'string') {
+                  let response = new WebResourceResponse();
+                  // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
+                  response.setResponseData($rawfile(rawfileName));
+                  response.setResponseEncoding('utf-8');
+                  response.setResponseMimeType(mimeType);
+                  response.setResponseCode(200);
+                  response.setReasonMessage('OK');
+                  response.setResponseIsReady(true);
+                  return response;
+                }
+              }
+              return null;
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+  ```
   <!---->
 
   ```html
@@ -115,29 +182,30 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   
   setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
-  1.应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  1. 应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el2/base/files/example
-  * /data/storage/el2/base/haps/entry/files/example
+     * /data/storage/el2/base/files/example
+     * /data/storage/el2/base/haps/entry/files/example
 
-  2.应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  2. 应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el1/bundle/entry/resources/resfile
-  * /data/storage/el1/bundle/entry/resources/resfile/example
+     * /data/storage/el1/bundle/entry/resources/resfile
+     * /data/storage/el1/bundle/entry/resources/resfile/example
 
-  3.从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  3. 从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el2/base/cache
-  * /data/storage/el2/base/haps/entry/cache/example
-  * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
+     * /data/storage/el2/base/cache
+     * /data/storage/el2/base/haps/entry/cache/example
+     * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
 
-  4.从API version 21开始，还包括了应用临时目录通过[Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  4. 从API version 21开始，还包括了应用临时目录通过[Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el2/base/temp
-  * /data/storage/el2/base/haps/entry/temp/example
+     * /data/storage/el2/base/temp
+     * /data/storage/el2/base/haps/entry/temp/example
 
   当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
+  ArkTS-Dyn示例：
   <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
   
   ``` TypeScript
@@ -149,6 +217,44 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   @Component
   struct WebComponent {
     controller: WebviewController = new webview.WebviewController();
+    uiContext: UIContext = this.getUIContext();
+  
+    build() {
+      Row() {
+        Web({ src: '', controller: this.controller })
+          .onControllerAttached(() => {
+            try {
+              // 设置允许可以跨域访问的路径列表
+              this.controller.setPathAllowingUniversalAccess([
+                this.uiContext.getHostContext()!.resourceDir,
+                this.uiContext.getHostContext()!.filesDir + '/example'
+                ]);
+              this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html');
+            } catch (error) {
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as   BusinessError).message}`);
+            }
+          })
+          .javaScriptAccess(true)
+          .fileAccess(true)
+          .domStorageAccess(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
+
+  ``` TypeScript
+  import { Component, Entry, Row, UIContext, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
     uiContext: UIContext = this.getUIContext();
   
     build() {
