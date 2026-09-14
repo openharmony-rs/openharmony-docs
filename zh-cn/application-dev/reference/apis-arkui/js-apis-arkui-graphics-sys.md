@@ -32,6 +32,8 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
@@ -60,6 +62,8 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace, r
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -90,6 +94,8 @@ static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
@@ -118,6 +124,8 @@ getColorSpace(): ColorSpace
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **返回值：**
 
 | 类型          | 说明             |
@@ -136,6 +144,8 @@ isHDR(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **返回值：**
 
 | 类型          | 说明             |
@@ -146,7 +156,7 @@ isHDR(): boolean
 
 getRedValue(): number
 
-获取ColorMetrics颜色的R分量（红色）。
+获取ColorMetrics颜色的R分量，以浮点数形式返回红色通道值。
 
 **起始版本：** 26.0.0
 
@@ -154,17 +164,19 @@ getRedValue(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的R分量（红色），值是大于等于0的浮点数。 |
+| number | 颜色的R分量（红色）。<br>取值范围：<br>对于SDR颜色，取值范围为[0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
 
 ### getGreenValue
 
 getGreenValue(): number
 
-获取ColorMetrics颜色的G分量（绿色）。
+获取ColorMetrics颜色的G分量，以浮点数形式返回绿色通道值。
 
 **起始版本：** 26.0.0
 
@@ -172,17 +184,19 @@ getGreenValue(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的G分量（绿色），值是大于等于0的浮点数。 |
+| number | 颜色的G分量（绿色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
 
 ### getBlueValue
 
 getBlueValue(): number
 
-获取ColorMetrics颜色的B分量（蓝色）。
+获取ColorMetrics颜色的B分量，以浮点数形式返回蓝色通道值。
 
 **起始版本：** 26.0.0
 
@@ -190,8 +204,10 @@ getBlueValue(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| number | 颜色的B分量（蓝色），值是大于等于0的浮点数。 |
+| number | 颜色的B分量（蓝色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |
