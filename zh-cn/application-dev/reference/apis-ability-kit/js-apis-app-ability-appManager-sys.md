@@ -2791,66 +2791,6 @@ try {
 }
 ```
 
-## ProcessInformation<sup>9+</sup>
-
-type ProcessInformation = _ProcessInformation
-
-进程信息，可以通过appManager的[getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)来获取运行进程信息。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-| 类型 | 说明 |
-| --- | --- |
-| [ProcessInformation](js-apis-inner-application-processInformation.md) | 进程信息，可以通过appManager的[getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)来获取运行进程信息。 |
-
-## AbilityStateData<sup>14+</sup>
-
-type AbilityStateData = _AbilityStateData.default
-
-Ability状态信息的数据结构。使用[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册生命周期变化监听后，可以通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onAbilityStateChanged回调的入参获取该数据结构。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-| 类型 | 说明 |
-| --- | --- |
-| [_AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Ability状态信息的数据结构。 |
-
-## AppStateData<sup>14+</sup>
-
-type AppStateData = _AppStateData.default
-
-应用状态信息的数据结构。使用[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册应用状态变化监听后，当应用状态变化时，系统通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onForegroundApplicationChanged等方法回调给开发者。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-| 类型 | 说明 |
-| --- | --- |
-| [_AppStateData](js-apis-inner-application-appStateData.md).default | 应用状态信息的数据结构。 |
-
-## ApplicationStateObserver<sup>14+</sup>
-
-type ApplicationStateObserver = _ApplicationStateObserver.default
-
-应用状态监听器，可以作为入参传入[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)方法，监听应用的生命周期变化。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-| 类型 | 说明 |
-| --- | --- |
-| [_ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).default | 应用状态监听器，可以作为入参传入on('applicationState')方法，监听应用的生命周期变化。 |
-
-## ProcessData<sup>14+</sup>
-
-type ProcessData = _ProcessData.default
-
-进程数据的对象定义。使用[on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册生命周期变化监听后，当应用或组件的生命周期变化时，系统通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onProcessCreated等方法将ProcessData回调给开发者。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-| 类型 | 说明 |
-| --- | --- |
-| [_ProcessData](js-apis-inner-application-processData.md).default | 进程数据的对象定义。 |
-
 ## AppForegroundStateObserver<sup>11+</sup>
 
 type AppForegroundStateObserver = _AppForegroundStateObserver.default
