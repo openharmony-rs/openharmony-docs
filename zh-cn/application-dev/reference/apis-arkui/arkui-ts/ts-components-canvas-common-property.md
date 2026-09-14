@@ -1219,16 +1219,16 @@ justifyContent: FlexAlign.Center }) {
           .backgroundColor('#ffff00')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            let offctx = offContext
-            offctx.font = '48px serif';
-            offctx.textAlign = 'start'
-            offctx.fillText("Hi ltr!", 200, 50);
+            let offCtx = offContext
+            offCtx.font = '48px serif';
+            offCtx.textAlign = 'start'
+            offCtx.fillText("Hi ltr!", 200, 50);
 
             // 设置direction属性
-            offctx.direction = "rtl";
-            offctx.fillText("Hi rtl!", 200, 100);
+            offCtx.direction = "rtl";
+            offCtx.fillText("Hi rtl!", 200, 100);
 
-            let image = offctx.transferToImageBitmap()
+            let image = offCtx.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
       }
@@ -1333,6 +1333,8 @@ justifyContent: FlexAlign.Center }) {
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
