@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=87ecd313da7eaf9820ea21ed983e70c5f013ee1a translatedAt=2026-09-02T11:45:35.859Z pushedAt=2026-09-09T03:54:41.359Z -->
+<!-- md-trans-meta sourceCommit=f1d7385618998c5cb53d56ab6d321e8bb5099250 translatedAt=2026-09-14T08:09:11.486Z pushedAt=2026-09-14T08:35:13.014Z -->
 
 The **inputMethod** module is oriented to common foreground applications (system applications such as Notes, Messaging, and Settings). It provides input method control and management capabilities, including displaying or hiding the soft keyboard, switching between input methods, and obtaining the list of all input methods.
 
@@ -485,38 +485,30 @@ try {
 }
 ```
 
-## InputMethodController
+### enableInputMethod
 
-A control class that encapsulates APIs for input method management, which can only be invoked after an **InputMethodController** instance is obtained via [getController](./js-apis-inputmethod.md#inputmethodgetcontroller9).
+enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
 
-### showSoftKeyboard<sup>23+</sup>
+Modifies the enabled state of the input method for a specified user.
 
-showSoftKeyboard(displayId: number): Promise&lt;void&gt;
+**Since**: 26.0.0
 
-Shows the soft keyboard on a specified screen. This API uses a promise to return the result.
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY
 
-Paired calls:
-- This method is used together with **hideSoftKeyboard** to control the showing and hiding of the soft keyboard.
-- Generally, after calling **showSoftKeyboard** to display the soft keyboard, you can call **hideSoftKeyboard** to hide the soft keyboard when needed.
-- This API can be called only when the edit box is attached to the input method.
-
-> **NOTE**
->
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to show the soft keyboard only when the edit box is focused.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
 
 **System API**: This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
 | Name  | Type | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| displayId | number | Yes  | Display ID.|
+| bundleName | string | Yes | Bundle name of the input method. |
+| extensionName | string | Yes | Extension name of the input method. |
+| enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | Yes | Enabled state to be modified. |
+| userId | number | No | User ID. The value range is the IDs of valid users. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the user ID of the caller.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
 
 **Return value**
 
@@ -532,381 +524,6 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 | -------- | -------------------------------------- |
 | 201      | permissions check fails.  |
 | 202      | not system application.  |
-| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayId: number = 20;
-inputMethod.getController().showSoftKeyboard(displayId).then(() => {
-  console.info('Succeeded in showing softKeyboard.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-### hideSoftKeyboard<sup>23+</sup>
-
-hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
-
-Hides the soft keyboard on a specified screen. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to hide the soft keyboard only when the edit box is focused.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API**: This is a system API.
-
-**Parameters**
-
-| Name  | Type | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| displayId | number | Yes  | Display ID.|
-
-**Return value**
-
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                            |
-| -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
-| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayId: number = 30;
-inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
-  console.info('Succeeded in hiding softKeyboard.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## inputMethod.getDefaultInputMethod
-
-getDefaultInputMethod(userId?: number): InputMethodProperty
-
-Obtains the default input method of a specified user.
-
-**Since:** 26.0.0
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, the value defaults to the caller's user ID.<br>- If the caller is an application of user 0, the value defaults to the foreground user ID of the home screen. |
-
-**Return value**
-
-| Type                                         | Description                     |
-| -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | Returns the default input method property object. |
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
-  console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## inputMethod.getSystemInputMethodConfigAbility
-
-getSystemInputMethodConfigAbility(userId?: number): ElementName
-
-Obtains ability information for the system input method settings UI of a specified user. Used to launch the system input method configuration page.
-
-**Since:** 26.0.0
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| userId | number | No | User ID. The value is the ID of a valid user. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
-
-**Return value**
-
-| Type                                         | Description                     |
-| -------------------------------------------- | ------------------------ |
-| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | **ElementName** of the ability for the system input method settings UI. |
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**Example**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
-  console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## inputMethod.switchInputMethodWithUserId
-
-switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
-
-Switches the input method. This API uses a promise to return the result.
-
-**Since:** 26.0.0
-
-**Required permissions:** ohos.permission.CONNECT_IME_ABILITY
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | Yes | Bundle name of the target input method. |
-| subtypeId | string | No | ID of the input method subtype. If this parameter is not set, the system switches to the target input method that uses the default subtype. |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
-
-**Return value**
-
-| Type                                      | Description                         |
-| ----------------------------------------- | ---------------------------- |
-| Promise&lt;void&gt;  | Promise that returns no value. |
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                             |
-| -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
-| 12800005 | configuration persistence error. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 100).then(() => {
-  console.info('Succeeded in switching input method.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## inputMethod.getCurrentInputMethod
-
-getCurrentInputMethod(userId?: number): InputMethodProperty
-
-Obtains the current input method of a specified user.
-
-**Since:** 26.0.0
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| userId | number | No | User ID. The value is the ID of a valid user. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
-
-**Return value**
-
-| Type                                         | Description                     |
-| -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | Returns the property object of the current input method. |
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
-  console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## inputMethod.getCurrentInputMethodSubtype
-
-getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
-
-Obtains the current input method subtype of a specified user.
-
-**Since:** 26.0.0
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
-
-**Return value**
-
-| Type                                         | Description                     |
-| -------------------------------------------- | ------------------------ |
-| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | Returns the current input method subtype object. |
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**Example**
-
-```ts
-import { InputMethodSubtype } from '@kit.IMEKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
-  console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-### enableInputMethod
-
-enableInputMethod(bundleName: string, extensionName: string, enabledState: EnabledState, userId?: number): Promise&lt;void&gt;
-
-Modifies the enabled state of the input method for a specified user.
-
-**Since:** 26.0.0
-
-**Required permissions:** ohos.permission.CONNECT_IME_ABILITY
-
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Parameters**
-
-| Name | Type | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | Yes | Bundle name of the input method. |
-| extensionName | string | Yes | Extension name of the input method. |
-| enabledState | [EnabledState](js-apis-inputmethod.md#enabledstate15) | Yes | Enabled state to be modified. |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
-
-**Return value**
-
-| Type | Description |
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value. |
-
-**Error codes**
-
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID | Error Message                             |
-| -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -932,33 +549,33 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
 Obtains the list of all input method applications of a specified user. This is a synchronous API.
 
-**Since:** 26.0.0
+**Since**: 26.0.0
 
-**System capability**: SystemCapability.MiscServices.InputMethodFramework
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-**System API:** This is a system API.
+**System API**: This is a system API.
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
-| ------ | ------- | ---- | ----------------------- |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+| Name  | Type | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| userId | number | No | User ID. The value range is the IDs of valid users. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the user ID of the caller.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
 
 **Return value**
 
-| Type | Description |
-| ---------------------------------------------------- | ------------------ |
+| Type               | Description                     |
+| ------------------- | ------------------------- |
 | Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | Returns the list of all input methods. |
 
 **Error codes**
 
 For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message                             |
+| ID| Error Message                            |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202      | not system application.  |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -998,12 +615,12 @@ Obtains the list of input method subtypes for a specified user. This is a synchr
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes | Bundle name of the specified input method. |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, the value defaults to the caller's user ID.<br>- If the caller is an application of user 0, the value defaults to the foreground user ID of the home screen. |
 
 **Return value**
 
-| Type                                                        | Description                   |
-| ----------------------------------------------------------- | ---------------------- |
+| Type                                         | Description                     |
+| -------------------------------------------- | ------------------------ |
 | Array<[InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype)> | Returns the list of specified input method subtypes. |
 
 **Error codes**
@@ -1034,7 +651,6 @@ try {
   console.error(`Failed to getInputMethodSubtypes. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
 ### getInputMethodsSync
 
 getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
@@ -1057,16 +673,16 @@ Obtains the list of activated/deactivated input method applications for a specif
 
 **Parameters**
 
-| Name | Type    | Mandatory | Description                    |
-| ------ | ------- | ---- | ----------------------- |
-| enable | boolean | Yes   |Whether to activate the input method list:<br>- **true** indicates returning the activated input method list.<br>- **false** indicates returning the deactivated input method list. |
-| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| enable | boolean | Yes | Whether to activate the input method list:<br>- **true** indicates returning the activated input method list.<br>- **false** indicates returning the deactivated input method list. |
+| userId | number | No | User ID. The value is the ID of a valid user. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
 
 **Return value**
 
-| Type                                                 | Description                          |
-| ---------------------------------------------------- | ----------------------------- |
-| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | Returns the activated/deactivated input method list. |
+| Type                                         | Description                     |
+| -------------------------------------------- | ------------------------ |
+| Array\<[InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8)> | List of activated or deactivated input methods. |
 
 **Error codes**
 
@@ -1116,9 +732,9 @@ Paired calls:
 
 **Parameters**
 
-| Name   | Type                            | Mandatory | Description                                                         |
-| -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | Yes | Callback, returning the input method property object, subtype object, and user ID. |
+| Name     | Type                            | Mandatory | Description                                                         |
+| -------- | ------------------------------- | --------- | ------------------------------------------------------------ |
+| callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | Yes | Callback function, which returns the input method property object, subtype object, and user ID. |
 
 **Error codes**
 
@@ -1126,7 +742,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202 | not system application. |
 
 **Example**
 
@@ -1155,7 +771,7 @@ Unsubscribes from the input method and subtype change listener events, carrying 
 
 **Parameters**
 
-| Name     | Type                            | Mandatory | Description                                                         |
+| Name   | Type                            | Mandatory | Description                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | [ImeChangeWithUserIdCallback](#imechangewithuseridcallback)  | No | Callback that returns the unsubscribed input method property object, subtype object, and user ID.<br>When the parameter is not specified, all callback events are unsubscribed. |
 
@@ -1165,12 +781,395 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202 | not system application. |
 
 **Example**
 
 ```ts
 inputMethod.getSetting().offImeChangeWithUserId();
+```
+
+## InputMethodController
+
+A control class that encapsulates APIs for input method management, which can only be invoked after an **InputMethodController** instance is obtained via [getController](./js-apis-inputmethod.md#inputmethodgetcontroller9).
+
+### showSoftKeyboard<sup>23+</sup>
+
+showSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+Shows the soft keyboard on a specified screen. This API uses a promise to return the result.
+
+Paired calls:
+- This method is used together with **hideSoftKeyboard** to control the showing and hiding of the soft keyboard.
+- Generally, after calling **showSoftKeyboard** to show the soft keyboard, you can call **hideSoftKeyboard** to hide the soft keyboard when needed.
+- This API can be called only when the edit box is attached to the input method.
+
+> **NOTE**
+>
+> This API can be called only when the text box is bound to the input method. That is, it can be called to show the soft keyboard of the current input method only when the text box is focused.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| displayId | number | Yes   | Screen ID.|
+
+**Return value**
+
+| Type                                         | Description                     |
+| -------------------------------------------- | ------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 201      | permissions check fails.  |
+| 202 | not system application. |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 20;
+inputMethod.getController().showSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in showing softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### hideSoftKeyboard<sup>23+</sup>
+
+hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+Hides the soft keyboard on a specified screen. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to hide the soft keyboard of the current input method only when the edit control is clicked.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY (for system applications only)
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| displayId | number | Yes   | Screen ID.|
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 201 | permissions check fails. |
+| 202 | not system application. |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 30;
+inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in hiding softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.getDefaultInputMethod
+
+getDefaultInputMethod(userId?: number): InputMethodProperty
+
+Obtains the default input method of a specified user.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------- | ---- | ----------------------- |
+| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+
+**Return value**
+
+| Type | Description |
+| ---------------------------------------------------- | ------------------ |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | Default input method property object. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
+  console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## inputMethod.getSystemInputMethodConfigAbility
+
+getSystemInputMethodConfigAbility(userId?: number): ElementName
+
+Obtains ability information for the system input method configuration page of a specified user. Used to launch the system input method configuration page.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+
+**Return value**
+
+| Type                                                        | Description                   |
+| ----------------------------------------------------------- | ---------------------- |
+| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Element name of the input method configuration page ability. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 202 | not system application. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
+  console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## inputMethod.switchInputMethodWithUserId
+
+switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
+
+Switches the input method. This API uses a promise to return the result.
+
+**Since:** 26.0.0
+
+**Required permissions**: ohos.permission.CONNECT_IME_ABILITY
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description                    |
+| ------ | ------- | ---- | ----------------------- |
+| bundleName | string | Yes | Bundle name of the target input method. |
+| subtypeId | string | No | ID of the input method subtype. If this parameter is not set, the system switches to the target input method that uses the default subtype. |
+| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided:<br>- If the caller is not an application of user 0, this value defaults to the caller's user ID.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+
+**Return value**
+
+| Type                                                 | Description                          |
+| ---------------------------------------------------- | ----------------------------- |
+| Promise&lt;void&gt;  | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 201 | permissions check fails. |
+| 202 | not system application. |
+| 12800005 | configuration persistence error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 100).then(() => {
+  console.info('Succeeded in switching input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.getCurrentInputMethod
+
+getCurrentInputMethod(userId?: number): InputMethodProperty
+
+Obtains the current input method of a specified user.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| userId | number | No | User ID. The value range is the IDs of valid users. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the user ID of the caller.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+
+**Return value**
+
+| Type                                         | Description                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | Input method property object. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 202      | not system application.  |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
+  console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## inputMethod.getCurrentInputMethodSubtype
+
+getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
+
+Obtains the current input method subtype of a specified user.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| userId | number | No | User ID. The value range is the IDs of valid users. If not provided:<br>- If the caller is not an application of user 0, this value defaults to the user ID of the caller.<br>- If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
+
+**Return value**
+
+| Type                                         | Description                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | Current input method subtype. |
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                             |
+| -------- | -------------------------------------- |
+| 202      | not system application.  |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**Example**
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
+  console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## ImeChangeWithUserIdCallback

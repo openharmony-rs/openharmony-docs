@@ -5,7 +5,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=87ecd313da7eaf9820ea21ed983e70c5f013ee1a translatedAt=2026-09-02T11:49:01.282Z pushedAt=2026-09-09T10:21:57.293Z -->
+<!-- md-trans-meta sourceCommit=227a0a8979a1051337daa021add1bd5e3b397b7b translatedAt=2026-09-14T08:08:46.683Z pushedAt=2026-09-14T08:26:45.715Z -->
 
 The **@ohos.inputMethod** module is the input method client module for common foreground applications (such as Notes, Messaging, and Settings). It provides input method control and management capabilities.
 
@@ -26,7 +26,7 @@ This module is the client control module in IME Kit. It works together with othe
 
 The typical call sequence for a client application (such as Notes or Settings) to interact with the input method is as follows:
 1. Obtain the client controller instance `InputMethodController` through `inputMethod.getController()`.
-2. Attach to the input method through `InputMethodController.attach()` (for self-drawn control scenarios), or rely on the system native edit box to attach automatically.
+2. Attach to the input method through `InputMethodController.attach()` (for self-drawn component scenarios), or rely on the system native edit box to attach automatically.
 3. Bring up the soft keyboard through `InputMethodController.showTextInput()` to enter the text editing state.
 4. During editing, synchronize the edit box state to the input method through APIs such as `updateCursor`, `changeSelection`, and `updateAttribute`.
 5. Hide the soft keyboard through `InputMethodController.hideTextInput()` to exit the editing state.
@@ -948,7 +948,7 @@ Describes the attributes of the edit box, including the text input type and Ente
 | enterKeyType  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key.|
 | placeholder<sup>20+</sup> | string | No| Yes| Placeholder information set for the edit box.<br>- When placeholder information is set for the edit box, the length cannot exceed 255 characters (a placeholder longer than 255 characters will be automatically truncated to 255 characters). It is used to prompt or guide users to enter temporary text or symbols. (For example, the placeholder indicates whether the input item is mandatory.)<br>- If no placeholder is set for the edit box, the value is an empty string by default.<br>- This field is provided for the input method application when [attach](#attach10) is called.|
 | abilityName<sup>20+</sup> | string | No| Yes| Ability name set for the edit box.<br>- If the ability name is set for the edit box, the length cannot exceed 127 characters. (A name longer than 127 characters will be automatically truncated to 127 characters.)<br>- If the ability name is not set for the edit box, the value is an empty string by default.<br>- This field is provided for the input method application when [attach](#attach10) is called.|
-| consumeKeyEvents | boolean | No | Yes | Whether the edit box has the full capability to handle keys such as letters, characters, and function keys. The default value is **false**.<br/>- The value **true** means the edit box has this capability.<br/>- The value **false** means the edit box does not have this capability.<br/>- This field is provided to the input method application when [attach](#attach10) / [InputAttribute](#inputattribute10) is called.  <br/>**Since:** 26.0.0<br/>**Model restriction:** This parameter can be used only in the stage model. |
+| consumeKeyEvents | boolean | No | Yes | Whether the edit box has full capability to handle keys such as letters, characters, and function keys. The default value is **false**.<br/>- The value **true** means that the edit box has this capability.<br/>- The value **false** means that the edit box does not have this capability.<br/>- This field is provided for the input method application when [attach](#attach10)/[updateAttribute](#updateattribute10) is called.<br/>**Since:** 26.0.0<br/>**Model restriction:** This parameter can be used only in the stage model. |
 
 ## TextConfig<sup>10+</sup>
 
@@ -1183,18 +1183,18 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback&lt
 
 Attaches a self-drawn component to the input method. This API uses an asynchronous callback to return the result.
 
-Meaning/Function: Establishes attachment between a self-drawn control and the input method application. This is the prerequisite for a self-drawn control to use input method features.
+Meaning/Function: Establishes attachment between a self-drawn component and the input method application. This is the prerequisite for a self-drawn component to use input method features.
 
-Usage scenarios: When a self-drawn control (not a system native edit box) needs to interact with the input method, this API must be called first to establish attachment. When a native edit box gains focus, the system performs attachment automatically, and there is no need to call this API.
+Usage scenarios: When a self-drawn component (not a system native edit box) needs to interact with the input method, this API must be called first to establish attachment. When a native edit box gains focus, the system performs attachment automatically, and there is no need to call this API.
 
-Use effect: After the attachment succeeds, the self-drawn control can call **showTextInput**/**hideTextInput** to control the keyboard visibility, and call **updateCursor**/**changeSelection** to synchronize the edit box state, subscribe to input method events, and implement more features.
+Use effect: After the attachment succeeds, the self-drawn component can call **showTextInput**/**hideTextInput** to control the keyboard visibility, and call **updateCursor**/**changeSelection** to synchronize the edit box state, subscribe to input method events, and implement more features.
 
-Preconditions: The window where the self-drawn control resides must be in the focused state; otherwise, the attachment fails.
+Preconditions: The window where the self-drawn component resides must be in the focused state; otherwise, the attachment fails.
 
 Usage with related APIs: **attach** must be used in pairs with **detach**. Only after **attach** is called can APIs such as **showTextInput**, **hideTextInput**, and **updateCursor** be called.
 
 Differences between similar APIs and selection principles:
-- **attach**: does not require passing in a UIContext, and is applicable to self-drawn control attachment scenarios of API version 10+.
+- **attach**: does not require passing in a UIContext, and is applicable to self-drawn component attachment scenarios of API version 10+.
 - **attachWithUIContext**: requires passing in a UIContext, and is applicable to stage model scenarios of API version 23+, supporting more attachment options.
 - Selection principle: For stage model applications of API version 23+, use **attachWithUIContext** first to obtain more complete attachment option support.
 
@@ -1459,7 +1459,7 @@ Enters the text editing mode. This API uses an asynchronous callback to return t
 
 Meaning/Function: Pulls up the soft keyboard and puts the edit box into the text editing state.
 
-Usage scenarios: Called when a self-drawn control needs to display the soft keyboard to start text input after being attached to the input method.
+Usage scenarios: Called when a self-drawn component needs to display the soft keyboard to start text input after being attached to the input method.
 
 Use effect: The soft keyboard is displayed, and the edit box enters the editable text input state.
 
@@ -1468,9 +1468,9 @@ Preconditions: Call [attach](#attach10) to complete the attachment first. Otherw
 Usage with related APIs: **showTextInput** and **hideTextInput** must be used in pairs. After **hideTextInput** is called to exit the editing state, **showTextInput** must be called again to re-enter the editing state.
 
 Differences between similar APIs and selection principles:
-- **showTextInput**: For self-drawn controls. It must be called after **attach** completes the binding. It applies to self-drawn control scenarios and is the standard way to display the keyboard.
+- **showTextInput**: For self-drawn components. It must be called after **attach** completes the binding. It applies to self-drawn component scenarios and is the standard way to display the keyboard.
 - **showSoftKeyboard**: For system applications. It requires the **ohos.permission.CONNECT_IME_ABILITY** permission. It applies to scenarios where a system application needs to forcibly display the keyboard.
-- Selection principle: For self-drawn controls, use **showTextInput** preferentially. Use **showSoftKeyboard** only for system applications with special requirements.
+- Selection principle: For self-drawn components, use **showTextInput** preferentially. Use **showSoftKeyboard** only for system applications with special requirements.
 
 > **NOTE**
 >
@@ -1604,7 +1604,7 @@ Exits the text editing mode. This API uses an asynchronous callback to return th
 
 Meaning/Function: Hides the soft keyboard and makes the edit box exit the text editing state.
 
-Usage scenarios: Called when a self-drawn control no longer needs input, for example, when the user taps an area outside the edit box or switches to another page.
+Usage scenarios: Called when a self-drawn component no longer needs input, for example, when the user taps an area outside the edit box or switches to another page.
 
 Use effect: The soft keyboard is hidden, and the edit box exits the editing state. Calling this API does not unbind the input method. Calling **showTextInput** again can re-enter the editing state.
 
@@ -1613,9 +1613,9 @@ Preconditions: Call [attach](#attach10) to complete the attachment first, and ca
 Usage with related APIs: **hideTextInput** and **showTextInput** must be used in pairs. If input is needed again after **hideTextInput** is called, you must call **showTextInput** first to re-enter the editing state; other editing operations cannot be called directly.
 
 Differences between similar APIs and selection principles:
-- **hideTextInput**: For self-drawn controls, exits the editing state without detachment, and can re-enter via **showTextInput**. It is suitable for scenarios where a self-drawn control needs to temporarily hide the keyboard.
+- **hideTextInput**: For self-drawn components, exits the editing state without detachment, and can re-enter via **showTextInput**. It is suitable for scenarios where a self-drawn component needs to temporarily hide the keyboard.
 - **hideSoftKeyboard**: For system applications, requires the **ohos.permission.CONNECT_IME_ABILITY** permission. It only hides the keyboard without changing the editing state.
-- Selection principle: Self-drawn controls should preferentially use **hideTextInput**; system applications with special requirements should use **hideSoftKeyboard**.
+- Selection principle: self-drawn components should preferentially use **hideTextInput**; system applications with special requirements should use **hideSoftKeyboard**.
 
 > **NOTE**
 >
@@ -1703,9 +1703,9 @@ detach(callback: AsyncCallback&lt;void&gt;): void
 
 Detaches the self-drawn component from the input method. This API uses an asynchronous callback to return the result.
 
-Meaning/Function: Detaches the self-drawn control from the input method application and releases related resources.
+Meaning/Function: Detaches the self-drawn component from the input method application and releases related resources.
 
-Usage scenarios: Called when the self-drawn control no longer needs to interact with the input method (for example, page switching, edit box destruction, etc.).
+Usage scenarios: Called when the self-drawn component no longer needs to interact with the input method (for example, page switching, edit box destruction, etc.).
 
 Use effect: After detachment, APIs that require the attached state, such as **showTextInput**, **hideTextInput**, and **updateCursor**, can no longer be called. The input method soft keyboard will be hidden.
 
@@ -1748,9 +1748,9 @@ detach(): Promise&lt;void&gt;
 
 Detaches the self-drawn component from the input method. This API uses a promise to return the result.
 
-Meaning/Function: Detaches the self-drawn control from the input method application and releases related resources.
+Meaning/Function: Detaches the self-drawn component from the input method application and releases related resources.
 
-Usage scenarios: Called when the self-drawn control no longer needs to interact with the input method.
+Usage scenarios: Called when the self-drawn component no longer needs to interact with the input method.
 
 Use effect: After detachment, APIs that require the attached state can no longer be called. The input method soft keyboard will be hidden.
 
@@ -2182,7 +2182,7 @@ Use effect: The soft keyboard is hidden and the input session ends.
 
 Preconditions: This API can be called only when the edit box is attached to the input method, that is, after the edit control is tapped.
 
-Usage with related APIs: **stopInputSession** hides the soft keyboard and ends the input session. If the **attach**/**showTextInput**/**hideTextInput**/**detach** flow of a self-drawn control is used, it is recommended that you use **hideTextInput** instead of **stopInputSession**.
+Usage with related APIs: **stopInputSession** hides the soft keyboard and ends the input session. If the **attach**/**showTextInput**/**hideTextInput**/**detach** flow of a self-drawn component is used, it is recommended that you use **hideTextInput** instead of **stopInputSession**.
 
 > **NOTE**
 >
@@ -2282,8 +2282,8 @@ Preconditions: This API can be called only when the edit box is attached to the 
 
 Differences between similar APIs and selection principles:
 - **showSoftKeyboard**: for system applications, requires the **ohos.permission.CONNECT_IME_ABILITY** permission, and only displays the keyboard without changing the editing state.
-- **showTextInput**: for self-drawn controls, requires attachment first, and pulls up the keyboard and enters the editing state.
-- Selection principle: use **showTextInput** for self-drawn controls; use **showSoftKeyboard** for system applications with the required permission.
+- **showTextInput**: for self-drawn components, requires attachment first, and pulls up the keyboard and enters the editing state.
+- Selection principle: use **showTextInput** for self-drawn components; use **showSoftKeyboard** for system applications with the required permission.
 
 > **NOTE**
 >
@@ -2381,8 +2381,8 @@ Preconditions: This API can be called only when the edit box is attached to the 
 
 Differences between similar APIs and selection principles:
 - **hideSoftKeyboard**: for system applications, requires the **ohos.permission.CONNECT_IME_ABILITY** permission, and only hides the keyboard without exiting the editing state.
-- **hideTextInput**: for self-drawn controls, hides the keyboard and exits the editing state, and can re-enter the editing state by calling **showTextInput** again.
-- Selection principle: self-drawn controls use **hideTextInput**; system applications with the required permission use **hideSoftKeyboard**.
+- **hideTextInput**: for self-drawn components, hides the keyboard and exits the editing state, and can re-enter the editing state by calling **showTextInput** again.
+- Selection principle: self-drawn components use **hideTextInput**; system applications with the required permission use **hideSoftKeyboard**.
 
 > **NOTE**
 >
