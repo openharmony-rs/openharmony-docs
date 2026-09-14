@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=aee2f7468d1b3b04e493c7068f7ee7eaa8e0ca32 translatedAt=2026-09-03T11:54:06.147Z pushedAt=2026-09-05T10:47:30.713Z -->
 
 The Context module provides context for abilities or applications. It allows access to application-specific resources.
 
@@ -31,9 +32,9 @@ Creates the context based on the bundle name.
 
 > **NOTE**
 >
-> If there are multiple modules in the stage model, resource ID conflicts may occur. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
+> In the multi-module scenario of the stage model, resource ID conflicts may occur. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext) instead.
 >
-> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12) instead.
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext) instead.
 
 **System API**: This is a system API.
 
@@ -51,7 +52,7 @@ Creates the context based on the bundle name.
 
 | Type| Description|
 | -------- | -------- |
-| Context | Context created.|
+| Context | Context of an application package. |
 
 **Error codes**
 
@@ -90,7 +91,7 @@ Creates the context based on the bundle name and module name.
 
 > **NOTE**
 >
-> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext) instead.
 
 **System API**: This is a system API.
 
@@ -194,7 +195,7 @@ export default class EntryAbility extends UIAbility {
 
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 
-Creates a [resource manager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager) for an OEM-preset [system-level HSP](../../quick-start/application-package-glossary.md#system-level-hsp).
+This API is used by OEM vendors to create their own [resmgr.ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager) for a preinstalled [system-level HSP](../../quick-start/application-package-glossary.md#system-level-hsp).
 
 **System API**: This is a system API.
 
@@ -204,7 +205,7 @@ Creates a [resource manager](../apis-localization-kit/js-apis-resource-manager.m
 
 | Name      | Type    | Mandatory  | Description  |
 | -------- |--------| ---- |------|
-| bundleName | string | Yes   | Bundle name. |
+| bundleName | string | Yes | Bundle name. |
 | moduleName | string | Yes   | Module name.|
 
 **Error codes**

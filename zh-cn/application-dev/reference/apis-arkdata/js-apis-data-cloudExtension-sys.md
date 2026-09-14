@@ -104,6 +104,8 @@ import { cloudExtension } from '@kit.ArkData';
 
 ## CloudType
 
+type CloudType = null | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
+
 表示云数据字段可使用的类型。各接口参数的实际类型视其功能而定。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server

@@ -6,7 +6,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6bfe926d91c2859ec4b7fd46834145eff6963a0c translatedAt=2026-09-03T04:09:45.719Z -->
+<!-- md-trans-meta sourceCommit=6bfe926d91c2859ec4b7fd46834145eff6963a0c translatedAt=2026-09-03T04:09:45.719Z pushedAt=2026-09-09T07:19:36.858Z -->
 
 The **ImageAnimator** component enables images to be played a frame-by-frame basis. The list of images to be played as well as the duration of each image can be configured.
 
@@ -38,7 +38,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 images(value: Array&lt;ImageFrameInfo&gt;)
 
-Sets the image frame information set. Dynamic update is not supported; otherwise, issues such as display disorder, abnormal frame switching, or memory increase may occur. (This attribute is designed for non-dynamic update, and modifications at runtime are not guaranteed to take effect.)
+Sets image frame information. Dynamic update is not supported; otherwise, issues such as display disorder, abnormal frame switching, or memory increase may occur. (This attribute is designed for non-dynamic update, and modifications at runtime are not guaranteed to take effect.)
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -68,7 +68,7 @@ Sets the playback state of the animation.
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | Yes   | Used to control the playback state.<br/>Default Value: AnimationStatus.Initial |
+| value  | [AnimationStatus](ts-appendix-enums.md#animationstatus) | Yes   | Playback state.<br/>Default value: **AnimationStatus.Initial** |
 
 ### duration
 
@@ -86,7 +86,7 @@ Sets the playback duration. When any frame in [images](#images) has its own dura
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes   | Playback duration.<br/>When value is 0, images are not played.<br/>If the average playback duration allocated to each image is less than one frame, playback may be abnormal.<br/>If set to a negative number, the default value 1000 milliseconds is used.<br/>Changes to value take effect only at the start of the next loop.<br/>Unit: millisecond<br/>Default value: 1000 |
+| value  | number | Yes   | Playback duration.<br/>If the value is 0, no image is played.<br/>If the display duration allocated per image is shorter than a single frame interval, playback anomalies may occur.<br/>If it is set to a negative value, the default value **1000** is used.<br/>The value change takes effect only at the start of the next cycle.<br/>Unit: ms<br/>Default value: **1000** |
 
 ### reverse
 
@@ -104,7 +104,7 @@ Sets the playback direction.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Playback direction.<br/>The value **false** means playing from the first image to the last image, and **true** means playing from the last image to the first image.<br/>Which frame is retained after the animation ends is also related to the [fillMode](#fillmode) attribute. For details, see the description of fillMode.<br/>Default value: **false** |
+| value  | boolean | Yes  | Playback direction.<br/>The value **false** indicates that images are played from the first one to the last one, and **true** indicates that images are played from the last one to the first one.<br/>Which frame is retained after the animation ends is also related to the [fillMode](#fillmode) attribute. For details, see the description of **fillMode**.<br/>Default value: **false** |
 
 ### fixedSize
 
@@ -140,7 +140,7 @@ Sets the number of images to be pre-decoded.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes   | Number of pre-decoded images. For example, when set to 2, the next two images are loaded into the cache in advance while the current frame is being played, to improve performance.<br/>Default value: 0 |
+| value  | number | Yes   | Number of images to be pre-decoded. For example, the value **2** indicates that two images following the currently playing one are pre-decoded, to improve performance.<br/>Default value: **0** |
 
 ### fillMode
 
@@ -174,7 +174,7 @@ Sets the number of times that the animation is played.
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | Yes   | Plays once by default. -1 indicates infinite playback. Negative values less than -1 use the default value 1. Floating-point numbers are rounded down.<br/>Default value: 1 |
+| value  | number | Yes   | Number of times that the animation is played. By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than **-1** are treated as the default value. When the value is a floating-point number, it is rounded down.<br/>Default value: **1** |
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -194,7 +194,7 @@ Sets whether the component should automatically pause or resume based on its vis
 
 | Name | Type   | Mandatory | Description                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | boolean | Yes | When set to **true**, the component controls pause and playback based on the visibility determination of the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange). When the component's running state is [AnimationStatus](ts-appendix-enums.md#animationstatus).Running, playback is automatically paused if the component is determined to be invisible, and automatically resumed if it is determined to be visible. When set to **false**, the pause and playback of the component are not affected by onVisibleAreaChange.<br/>Default value: **false** <br/> **Note:** <br/>When this attribute is dynamically changed from **true** to **false**, the component is processed based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus) state.<br/> For example, if the current state is Running and playback is paused due to the invisible callback of [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange), after the attribute is changed from **true** to **false**, the component resumes playback from the position where it was last paused.<br/>The invisible pause and visible playback operations caused by this attribute do not change the [state](./ts-basic-components-imageanimator.md#state) value set by the user.|
+| monitorInvisibleArea  | boolean | Yes | Whether the component should automatically pause or resume based on its visibility, using the system's **onVisibleAreaChange**. When this parameter is set to **true**, the component controls pause and playback based on the visibility determination of the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange). When the component's running state is [AnimationStatus](ts-appendix-enums.md#animationstatus).Running, playback is automatically paused if the component is determined to be invisible, and automatically resumed if it is determined to be visible. When this parameter is set to **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br/>Default value: **false** <br/> **NOTE** <br/>When the value of this parameter is dynamically changed from **true** to **false**, the component is processed based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus) state.<br/> For example, if the current state is **Running** and playback is paused due to the invisible callback of [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange), after the value is changed from **true** to **false**, the component resumes playback from the position where it was last paused.<br/>The pause and playback operations caused by this parameter do not change the [state](./ts-basic-components-imageanimator.md#state) value set by the user.|
 
 ## ImageFrameInfo
 
@@ -206,12 +206,12 @@ Image frame information set.
 
 | Name   | Type   | Read-Only | Optional | Description |
 | -------- | -------------- | -------- | -------- | -------- |
-| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No  | No   | Image path. The supported image formats are jpg, jpeg, svg, png, bmp, webp, ico, and heif. The [Resource](ts-types.md#resource) type path is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br/>**String format description:**<br/>- Supports loading local image paths and network image addresses. When a relative path is used to reference a local image, cross-package or cross-module invocation is not supported. Files in the resources directory cannot be accessed through relative paths. Use the [Resource](ts-types.md#resource) type (such as \$r or $rawfile) to reference them. For details about how to reference images, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br/>- Supports `http` and `https` network image addresses. When using a network image, the `ohos.permission.INTERNET` permission must be requested.<br/>- Supports strings with the `file://` path prefix. The application sandbox URI is `file://\<bundleName>/\<sandboxPath>`. For the sandbox path, use the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) method to convert the path into an application sandbox URI, and then pass it for display. At the same time, ensure that the files under the directory package path have read permission.<br/>- Supports `Base64` strings. <br/>**Widget capability:** Since API version 10, this API supports use in ArkTS widgets.|
-| width    | number&nbsp;\|&nbsp;string | No | Yes | Image width. The string type supports the string form of a number type value, which can include a unit, for example, "2" or "2px".<br/>Default value: 0<br/>Unit: vp   <br/>**Widget capability:** Since API version 10, this API supports use in ArkTS widgets       |
-| height   | number&nbsp;\|&nbsp;string | No | Yes | Image height. The string type supports the string form of a number type value, which can include a unit, for example, "2" or "2px".<br/>Default value: 0<br/>Unit: vp     <br/>**Widget capability:** Since API version 10, this API supports use in ArkTS widgets        |
-| top      | number&nbsp;\|&nbsp;string | No | Yes | Vertical coordinate of the image relative to the upper left corner of the component. The string type supports the string form of a number type value, which can include a unit, for example, "2" or "2px".<br/>Default value: 0<br/>Unit: vp  <br/>**Widget capability:** Since API version 10, this API supports use in ArkTS widgets  |
-| left     | number&nbsp;\|&nbsp;string | No | Yes | Horizontal coordinate of the image relative to the upper left corner of the component. The string type supports the string form of a number type value, which can include a unit, for example, "2" or "2px".<br/>Default value: 0<br/>Unit: vp <br/>**Widget capability:** Since API version 10, this API supports use in ArkTS widgets   |
-| duration | number          | No    | Yes    | Playback duration of each frame, in milliseconds.<br/>Default value: 0<br/>Negative values are not supported. Setting a negative value causes the image to stay on the current frame for a long time, affecting normal playback.         |
+| src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No  | No   | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br/>**String format description:**<br/>- Supports loading local image paths and network image addresses. When a relative path is used to reference a local image, cross-package or cross-module invocation is not supported. Files in the **resources** directory cannot be accessed through relative paths. You need to use the [Resource](ts-types.md#resource) type (such as **\$r** or **$rawfile**) to reference them. For details about how to reference images, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br/>- Supports `http` and `https` network image addresses. When using a network image, you must apply for the `ohos.permission.INTERNET` permission.<br/>- Supports strings with the `file://` path prefix. The application sandbox URI is `file://\<bundleName>/\<sandboxPath>`. For the sandbox path, you need to use [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) to convert the path into an application sandbox URI, and then pass it for display. At the same time, ensure that the files under the directory package path have read permission.<br/>- Supports `Base64` strings. <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 10.|
+| width    | number&nbsp;\|&nbsp;string | No | Yes | Image width. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br/>Default value: **0**<br/>Unit: vp   <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 10.       |
+| height   | number&nbsp;\|&nbsp;string | No | Yes | Image height. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br/>Default value: **0**<br/>Unit: vp     <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 10.        |
+| top      | number&nbsp;\|&nbsp;string | No | Yes | Vertical coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br/>Default value: **0**<br/>Unit: vp  <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 10.  |
+| left     | number&nbsp;\|&nbsp;string | No | Yes | Horizontal coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br/>Default value: **0**<br/>Unit: vp <br/>**Widget capability:** This API can be used in ArkTS widgets since API version 10.   |
+| duration | number          | No    | Yes    | Playback duration of each image frame, in milliseconds.<br/>Default value: **0**<br/>Negative values are not supported. Setting a negative value causes the image to stay on the current frame for a long time, affecting normal playback.         |
 
 ## Events
 
@@ -273,7 +273,7 @@ Triggered when the animation playback is repeated.
 
 onCancel(event: () => void)
 
-State callback, triggered when the animation is canceled. It is triggered when state is set to [AnimationStatus.Initial](ts-appendix-enums.md#animationstatus). After triggering, the image display returns to the first frame (forward playback) or the last frame (reverse playback). The difference from [onFinish](#onfinish) is that onCancel corresponds to returning to the Initial state, while onFinish corresponds to the state where the animation ends naturally or stops (Stopped).
+Triggered when the animation is canceled (that is, **state** is set to [AnimationStatus.Initial](ts-appendix-enums.md#animationstatus)). After triggering, the image display returns to the first frame (forward playback) or the last frame (reverse playback). The difference from [onFinish](#onfinish) is that **onCancel** returns to the **Initial** state, while **onFinish** corresponds to the state where the animation ends naturally or stops (**Stopped**).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -285,13 +285,13 @@ State callback, triggered when the animation is canceled. It is triggered when s
 
 | Name   | Type                                       | Mandatory | Description                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | Yes    | State callback, triggered when the animation is canceled. It is triggered when state is set to AnimationStatus.Initial. After triggering, the image display returns to the first frame (forward playback) or the last frame (reverse playback). |
+| event | () => void                               | Yes    | Callback triggered when the animation is canceled (that is, **state** is set to **AnimationStatus.Initial**). After triggering, the image display returns to the first frame (forward playback) or the last frame (reverse playback). |
 
 ### onFinish
 
 onFinish(event: () => void)
 
-State callback, triggered when the animation playback completes (all iterations set by iterations are played and the animation ends naturally) or stops (state is switched to [AnimationStatus.Stopped](ts-appendix-enums.md#animationstatus)). When the animation is in the [AnimationStatus.Initial](ts-appendix-enums.md#animationstatus) state, returning to the initial state does not trigger this event; instead, onCancel is triggered.
+Triggered when the animation playback completes (all iterations set by **iterations** are played and the animation ends naturally) or stops (**state** is switched to [AnimationStatus.Stopped](ts-appendix-enums.md#animationstatus)). When the animation is in the [AnimationStatus.Initial](ts-appendix-enums.md#animationstatus) state, returning to the initial state does not trigger this event; instead, **onCancel** is triggered.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -303,7 +303,7 @@ State callback, triggered when the animation playback completes (all iterations 
 
 | Name   | Type                                       | Mandatory | Description                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | Yes    | State callback, triggered when the animation playback completes (all iterations are played and the animation ends naturally) or stops (state is switched to AnimationStatus.Stopped). |
+| event | () => void                               | Yes    | Callback triggered when the animation playback completes (all iterations set by **iterations** are played and the animation ends naturally) or stops (**state** is switched to **AnimationStatus.Stopped**). |
 
 ## Example
 
@@ -413,13 +413,13 @@ struct ImageAnimatorExample {
   @State images: Array<ImageFrameInfo> = [];
 
   async aboutToAppear() {
-    // Replace $r('app.media.1') with the image resource file required by the developer.
+    // Replace $r('app.media.1') with the image resource file you use.
     this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.1')));
-    // Replace $r('app.media.2') with the image resource file required by the developer.
+    // Replace $r('app.media.2') with the image resource file you use.
     this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.2')));
-    // Replace $r('app.media.3') with the image resource file required by the developer.
+    // Replace $r('app.media.3') with the image resource file you use.
     this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.3')));
-    // Replace $r('app.media.4') with the image resource file required by the developer.
+    // Replace $r('app.media.4') with the image resource file you use.
     this.imagePixelMap.push(await this.getPixmapFromMedia($r('app.media.4')));
     this.images.push({ src: this.imagePixelMap[0] });
     this.images.push({ src: this.imagePixelMap[1] });
@@ -475,7 +475,7 @@ struct ImageAnimatorExample {
           this.iterations = 1;
         }).margin(5)
         Button('infinite').width(100).padding(5).onClick(() => {
-          this.iterations = -1; // Play in an infinite loop.
+          this.iterations = -1; // Play the animation in an infinite loop.
         }).margin(5)
       }
     }.width('100%').height('100%')
@@ -524,19 +524,19 @@ struct ImageAnimatorAutoPauseTest {
           ImageAnimator()
             .images([
               {
-                // Replace $r('app.media.Clouds') with the image resource file required by the developer.
+                // Replace $r('app.media.Clouds') with the image resource file you use.
                 src: $r('app.media.Clouds')
               },
               {
-                // Replace $r('app.media.landscape') with the image resource file required by the developer.
+                // Replace $r('app.media.landscape') with the image resource file you use.
                 src: $r('app.media.landscape')
               },
               {
-                // Replace $r('app.media.sky') with the image resource file required by the developer.
+                // Replace $r('app.media.sky') with the image resource file you use.
                 src: $r('app.media.sky')
               },
               {
-                // Replace $r('app.media.mountain') with the image resource file required by the developer.
+                // Replace $r('app.media.mountain') with the image resource file you use.
                 src: $r('app.media.mountain')
               }
             ])
@@ -580,10 +580,10 @@ struct ImageAnimatorAutoPauseTest {
           }, (item: number) => item.toString())
         }.width('100%')
       }
-      .scrollable(ScrollDirection.Vertical) // Scroll direction: vertical.
-      .scrollBar(BarState.On) // Keep the scroll bar always displayed.
-      .scrollBarColor(Color.Gray) // Scroll bar color.
-      .scrollBarWidth(10) // Scroll bar width.
+      .scrollable(ScrollDirection.Vertical) // The scrollbar scrolls in the vertical direction.
+      .scrollBar(BarState.On) // The scrollbar is always displayed.
+      .scrollBarColor(Color.Gray) // The scrollbar color is gray.
+      .scrollBarWidth(10) // The scrollbar width is 10.
       .friction(0.6)
       .edgeEffect(EdgeEffect.None)
       .onWillScroll((xOffset: number, yOffset: number, scrollState: ScrollState) => {

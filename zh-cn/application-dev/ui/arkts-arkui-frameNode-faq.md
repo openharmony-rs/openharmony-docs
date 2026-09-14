@@ -52,7 +52,7 @@ struct FrameNodeTypeTest {
   }
 }
 ```
-![attributeModifier_error](figures/frameNode_error.png)
+![frameNode_error](figures/frameNode_error.png)
 
 ## Native侧创建的ArkUI_NodeHandle执行disposeNode后出现cppcrash
 

@@ -341,9 +341,11 @@ Allows a system application to obtain theme skinning resources in the skin direc
 
 **Certificate-based authorization**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 20
+
+**Changelog**: Since API version 26.0.1, this permission is also available on cars.
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
@@ -9189,6 +9191,20 @@ Allows a system application to access sensitive data provided by the navigation 
 
 **Valid since**: 26.1.0
 
+## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
+
+Allows an application to switch the list of displayable applications on multi‑mode devices.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: tablets | PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.MANAGE_SHARE_PHOTO
 
 Allows a system application to access shared albums and files within the albums.
@@ -9256,5 +9272,19 @@ Allows an application to clear background application resources.
 **Certificate-based authorization**: true
 
 **Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.1.0
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+Allows a system application to manage SoftBus resources.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
 **Valid since**: 26.1.0

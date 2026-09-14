@@ -1837,7 +1837,7 @@ Represents the DLP sandbox information.
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | No| No| Index of the DLP sandbox application.|
 | tokenID | number | No| No| Token ID of the DLP sandbox application.|
-| bindAppIndex<sup>24+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound. This parameter is not returned by default. It is returned only when the file is previewed in the sandbox application.<br>**Model restriction**: This API can be used only in the stage model.|
+| bindAppIndex<sup>24+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound. This parameter is not returned by default. It is returned only when the sandbox application is Preview.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## DLPSandboxState
 
