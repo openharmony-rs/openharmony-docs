@@ -210,7 +210,7 @@ struct formHostSample {
       formHost.deleteForm(id).then(() => {
         console.info(`formHost deleteForm success, formid: ${id}`);
       }).catch((error: BusinessError) => {
-        console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
+        console.error(`formHost deleteForm failed, errCode: ${error.code}, message: ${error.message}`);
       });
     });
     // 注销监听应用的安装。
