@@ -1699,6 +1699,8 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏幕显示。
 
+针对无内置屏的设备，最多可同时存在2个扩展屏幕；针对有内置屏的设备，仅能同时存在1个扩展屏幕，且有线扩展屏幕优先级高于无线扩展屏幕。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -1706,6 +1708,8 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)中可正常调用，在其他设备和其他模式中调用返回1400003。
 
 **参数：**
 
