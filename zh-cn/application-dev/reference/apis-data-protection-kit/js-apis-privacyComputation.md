@@ -218,7 +218,6 @@ async function genTarget() {
   console.info('privacyTarget length: ' + privacyTarget.length);
 }
 ```
-<!--no_check-->
 
 ## privacyComputation.privacySearch
 
@@ -286,7 +285,6 @@ async function search(privacyTarget: Uint8Array) {
   console.info('valueCipherText count: ' + (result.valueCipherText?.length ?? 0));
 }
 ```
-<!--no_check-->
 
 ## privacyComputation.getSearchResult
 
@@ -345,7 +343,6 @@ async function getResult(searchResult: privacyComputation.PrivacySearchResult) {
   }
 }
 ```
-<!--no_check-->
 
 ## ErrorCode
 
@@ -416,4 +413,3 @@ async function psiPirDemo() {
   }
 }
 ```
-<!--no_check-->
