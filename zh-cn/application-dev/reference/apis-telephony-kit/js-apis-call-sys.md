@@ -381,7 +381,7 @@ call.answerCall(1).then(() => {
 
 answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\<void\>
 
-接听rtt来电。使用Promise异步回调。
+接听RTT来电。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -395,7 +395,7 @@ answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | videoState | [VideoStateType](#videostatetype7) | 是   | 表示以视频或语音接听呼叫。|
 | callId | number | 是   | 表示待接听的callId。|
-| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(rtt)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
+| isRtt | boolean | 是   | 表示该呼叫是否为实时传输(RTT)。<br>true:该呼叫是实时传输<br>false:该呼叫不是实时传输 |
 
 **返回值：**
 
