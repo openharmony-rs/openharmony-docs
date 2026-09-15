@@ -132,13 +132,13 @@ struct Page2 {
 
 在上面的示例中：
 
-1.在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，[@Watch](../state-management/arkts-watch.md)注册的方法first会被调用。
+1. 在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，[@Watch](../state-management/arkts-watch.md)注册的方法first会被调用。
 
-2.在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
+2. 在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
 
-3.在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
+3. 在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
 
-4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
+4. 在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 
 
 ## TabContent
@@ -216,11 +216,11 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
+1. 点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
+2. 点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
-3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
+3. 再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
 
 ## LazyForEach
 
@@ -371,11 +371,11 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
+1. 点击`change message`更改message的值，当前正在显示的[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
 
-2.[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
+2. [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
-3.再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
+3. 再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
 
 ## Navigation
 
@@ -582,25 +582,25 @@ struct NavigationContentMsgStack {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的MyNavigationTestStack组件中的@Watch注册的方法info被触发。
+1. 点击`change message`更改message的值，当前正在显示的MyNavigationTestStack组件中的@Watch注册的方法info被触发。
 
-2.点击`Next Page`切换到PageOne，创建PageOneStack节点。
+2. 点击`Next Page`切换到PageOne，创建PageOneStack节点。
 
-3.再次点击`change message`更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+3. 再次点击`change message`更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-4.再次点击`Next Page`切换到PageTwo，创建PageTwoStack节点。
+4. 再次点击`Next Page`切换到PageTwo，创建PageTwoStack节点。
 
-5.再次点击`change message`更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+5. 再次点击`change message`更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-6.再次点击`Next Page`切换到PageThree，创建PageThreeStack节点。
+6. 再次点击`Next Page`切换到PageThree，创建PageThreeStack节点。
 
-7.再次点击`change message`更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+7. 再次点击`change message`更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-8.点击`Back Page`回到PageTwo，此时，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+8. 点击`Back Page`回到PageTwo，此时，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-9.再次点击`Back Page`回到PageOne，此时，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+9. 再次点击`Back Page`回到PageOne，此时，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-10.再次点击`Back Page`回到初始页，此时，无任何触发。
+10. 再次点击`Back Page`回到初始页，此时，无任何触发。
 
 ## 组件复用
 
