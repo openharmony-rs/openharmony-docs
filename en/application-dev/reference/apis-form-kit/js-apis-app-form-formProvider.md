@@ -5,8 +5,9 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=37d639b1fd701402e23a0dda5aa6090d613d1923 translatedAt=2026-09-15T01:53:02.220Z pushedAt=2026-09-15T08:28:34.685Z -->
 
-This module provides capabilities such as retrieving widget information, updating widgets, and setting widget refresh intervals. This module acts as a bridge between the widget provider and the widget management service, communicating with **FormExtension** through the IPC mechanism to perform operations like widget updates and information retrieval. It is suitable for scenarios where the widget provider needs to proactively update widget content, manage the widget lifecycle, and obtain widget running status, helping you implement dynamic widget updates and state management.
+The formProvider module provides capabilities such as obtaining widget information, updating widgets, and setting the widget refresh time. As a bridge between the widget provider and the widget management service, this module communicates with FormExtension through the IPC mechanism to update widgets and obtain information. It applies to scenarios where the widget provider needs to proactively update widget content, manage the widget lifecycle, and obtain the widget running status, helping you implement dynamic widget updates and status management.
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ import { formProvider } from '@kit.FormKit';
 
 setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the next refresh time for a widget. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where precise control over widget refresh timing is required, such as in scheduled tasks.
+Sets the next refresh time of the specified widget. This API uses an asynchronous callback to return the result. It applies to scenarios where the widget refresh timing needs to be precisely controlled, such as scheduled tasks.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -33,12 +34,12 @@ Sets the next refresh time for a widget. This API uses an asynchronous callback 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | Yes  | Widget ID.                              |
-| minute | number | Yes  | Interval after which the widget is refreshed, in minutes. The value range is greater than or equal to 5. |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **undefined**.|
+| minute | number | Yes | Interval after which the specified widget is refreshed. The value must be greater than or equal to 5, in minutes. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, error is undefined. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -75,7 +76,7 @@ try {
 
 setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
-Sets the next refresh time for a widget. This API uses a promise to return the result. This API is applicable to scenarios where precise control over widget refresh timing is required, such as in scheduled tasks.
+Sets the next refresh time of the specified widget. This API uses a promise to return the result. It applies to scenarios where the widget refresh timing needs to be precisely controlled, such as scheduled tasks.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -86,7 +87,7 @@ Sets the next refresh time for a widget. This API uses a promise to return the r
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | Yes  | Widget ID.                              |
-| minute | number | Yes  | Interval after which the widget is refreshed, in minutes. The value range is greater than or equal to 5.|
+| minute | number | Yes | Time interval after which the specified widget is refreshed. Value range: greater than or equal to 5, in minutes. |
 
 **Return value**
 
@@ -96,7 +97,7 @@ Sets the next refresh time for a widget. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -131,10 +132,10 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
-Updates a widget. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where widget content needs to be proactively updated when data changes, such as weather data changes, stock price updates, or task progress updates.
+Updates the specified widget. This API uses an asynchronous callback to return the result. It applies to scenarios where the widget content is proactively updated when widget data changes, such as weather data changes, stock price updates, and task progress updates.
 > **NOTE**
 >
-> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
+> Since API version 20, if the widget update data is updated through shared memory, the total size of the update data must not exceed 10 MB, and the number of images to update must not exceed 20. In API version 19 and earlier, the maximum number of image files is 5, each limited to 2 MB of memory. Images exceeding the limit may be displayed abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -145,12 +146,12 @@ Updates a widget. This API uses an asynchronous callback to return the result. T
 | Name| Type                                                                   | Mandatory| Description            |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes  | Data to be used for the update. For details about the restrictions, see the preceding note.   |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **undefined**.|
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. For details about the restrictions, see the description above. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the update result. If the operation is successful, error is undefined. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -191,10 +192,10 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
-Updates a widget. This API uses a promise to return the result. This API is applicable to scenarios where widget content needs to be proactively updated when data changes, such as weather data changes, stock price updates, or task progress updates.
+Updates the specified widget. This API uses a promise to return the result. It applies to scenarios where the widget content is proactively updated when widget data changes, such as weather data changes, stock price updates, and task progress updates.
 > **NOTE**
 >
-> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
+> Since API version 20, if the widget update data is updated through shared memory, the total size of the update data must not exceed 10 MB, and the number of images to update must not exceed 20. In API version 19 and earlier, the maximum number of image files is 5, each limited to 2 MB of memory. Images exceeding the limit may be displayed abnormally.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -205,7 +206,7 @@ Updates a widget. This API uses a promise to return the result. This API is appl
 | Name| Type                                                                   | Mandatory| Description            |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes  | Data to be used for the update. For details about the restrictions, see the preceding note.   |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. For details about the restrictions, see the description above. |
 
 **Return value**
 
@@ -215,7 +216,7 @@ Updates a widget. This API uses a promise to return the result. This API is appl
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -254,7 +255,7 @@ try {
 
 getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
-Obtains the application's widget information on the device. This API uses an asynchronous callback to return the result. This API is applicable to scenarios such as widget management, debugging, and statistics collection. For example, you can use this API to view the configuration information of all widgets of an application or collect statistics on the number of widgets.
+Obtains the widget information of the current application on the device. This API uses an asynchronous callback to return the result. It applies to scenarios such as widget management, debugging, and statistics, for example, viewing the configuration information of all widgets of an application and counting the number of widgets.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -264,11 +265,11 @@ Obtains the application's widget information on the device. This API uses an asy
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes| Callback used to return the information obtained.|
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-app-formInfo.md#forminfo)&gt;&gt; | Yes | Callback used to return the obtained widget information. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -314,7 +315,7 @@ Obtains the application's widget information that meets a filter criterion on th
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -330,7 +331,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // Obtain the widget information of the specified module.
+  // Obtain widget information of the specified module.
   moduleName: 'entry'
 };
 try {
@@ -360,7 +361,7 @@ Obtains information about widgets that meet the criteria of the current applicat
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| filter | [formInfo.FormInfoFilter](js-apis-app-form-formInfo.md#forminfofilter) | No| Widget information filter, which is used to filter widget information based on specified conditions. Pass this parameter when you need to obtain widgets from a specific module or with a specific name. If you need to obtain all widget information, you can omit this parameter. When omitted, it defaults to empty and information about all widgets is returned.|
+| filter | [formInfo.FormInfoFilter](js-apis-app-form-formInfo.md#forminfofilter) | No | Filter used to filter widget information that meets specified conditions. Pass this parameter to filter widgets of a specific module or a specific name. You can omit this parameter to obtain all widget information. If this parameter is not passed, it is empty by default and all widget information is returned. |
 
 **Return value**
 
@@ -370,7 +371,7 @@ Obtains information about widgets that meet the criteria of the current applicat
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -386,7 +387,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // Obtain the widget information of the specified module.
+  // Obtain widget information of the specified module.
   moduleName: 'entry'
 };
 try {
@@ -404,7 +405,7 @@ try {
 
 openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): void
 
-Opens the widget editing page. This API is applicable to scenarios where users need to configure widget parameters, such as setting the content to be displayed, selecting data sources, and configuring the update frequency.
+Opens the widget editing page. It applies to scenarios where users need to configure widget parameters, for example, setting the widget display content, selecting a data source, and configuring the update frequency.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -414,15 +415,15 @@ Opens the widget editing page. This API is applicable to scenarios where users n
 | ------ | ------ |----|----------------------------------------------------|
 | abilityName | string | Yes | Ability name on the editing page.                                    |
 | formId | string | Yes | Widget ID.                                             |
-| isMainPage | boolean | No | Whether the page is the main editing page.<br>- **true**: It is the main editing page, suitable for scenarios where the user is configuring the basic widget information for the first time.<br>- **false**: It is not the main editing page, suitable for scenarios where the user is making detailed adjustments or advanced configurations.<br>Default value: **true** (typically sufficient for the first-time widget editing).|
+| isMainPage | boolean | No  | Whether this is the main editing page.<br>-&nbsp;true: indicates that this is the main editing page, suitable for configuring the basic information of a widget for the first time.<br>-&nbsp;false: indicates that this is not the main editing page, suitable for adjusting widget details or performing advanced configuration.<br>Default value: true (the default value is usually sufficient when editing a widget for the first time). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID   | Error Message|
 |----------| -------- |
-| 801      | Capability not supported.function openFormEditAbility can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function openFormEditAbility cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -470,7 +471,7 @@ struct Page {
 
 closeFormEditAbility(isMainPage?: boolean): void
 
-Closes the widget editing page. This API is applicable to scenarios where widget editing is complete or canceled. For example, a user closes the editing page after completing parameter configuration or cancels the editing operation.
+Closes the widget editing page. It applies to scenarios where widget editing is completed or canceled, for example, closing the editing page after the user completes parameter configuration or canceling the editing operation.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -480,11 +481,11 @@ Closes the widget editing page. This API is applicable to scenarios where widget
 
 | Name| Type   | Mandatory| Description                                                |
 | ------ | ------ |----|----------------------------------------------------|
-| isMainPage | boolean | No | Whether to close the main editing page.<br>- **true**: Closes the main editing page, suitable for scenarios where the main editing page needs to be closed after configuration is completed.<br>- **false**: Closes a non-main editing page, suitable for scenarios with multi-level editing pages where the current non-main editing page needs to be closed.<br>Default value: **true** (typically sufficient when closing the current editing page).|
+| isMainPage | boolean | No  | Whether to close the main editing page.<br>-&nbsp;true: closes the main editing page, suitable for the scenario where the main editing page is closed after configuration is complete.<br>-&nbsp;false: closes a non-main editing page, suitable for the scenario where the current non-main editing page is closed in a multi-level editing page scenario.<br>Default value: true (the default value is usually used when closing the current editing page). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID   | Error Message|
 |----------| -------- |
@@ -538,13 +539,13 @@ struct Page {
 
 openFormManager(want: Want): void
 
-Opens the Widget Manager page of the current application. This API is applicable to widget management scenarios, for example, previewing all widgets that can be added to the home screen, and adding widgets to Assistant·TODAY or the home screen.
+Opens the widget management page of the current application. It applies to widget management scenarios, for example, previewing all widgets of the current application that can be added to the home screen, and adding widgets to the Assistant·TODAY screen or the home screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Ability.Form
 
-**Device behavior differences**: This API returns error code [16501000](./errorcode-form.md#16501000-internal-function-error) if called on wearables.
+**Device behavior difference:** When this API is called on a wearable, error code [16501000](./errorcode-form.md#16501000-internal-function-error) is returned.
 
 **Parameters**
 
@@ -553,11 +554,11 @@ Opens the Widget Manager page of the current application. This API is applicable
 | want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Parameter that must contain the following fields:<br>**bundleName**: bundle name of widget.<br>**abilityName**: ability name of the widget.<br>**parameters**:<br>- **ohos.extra.param.key.form_dimension**: [Widget dimension](js-apis-app-form-formInfo.md#formdimension).<br>- **ohos.extra.param.key.form_name**: Widget name.<br>- **ohos.extra.param.key.module_name**: module name of the widget.|
 > **NOTE**
 >
-> If **parameters** is not set or the specified widget does not exist, the default widget configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#widget-configuration) is displayed by default.
+> If the parameter is not set or the specified widget does not exist, the default widget configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#widget-configuration) is displayed by default.
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -592,7 +593,7 @@ try {
 
 getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 
-Obtains the information of a specified widget that has been added to the home screen by the current application on the device. This API uses a promise to return the result.
+Obtains the information of the specified widget that has been added to the home screen by the current application on the device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -616,7 +617,7 @@ Obtains the information of a specified widget that has been added to the home sc
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -646,7 +647,7 @@ try {
 
 getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
-Obtains the information of all widgets that has been added to the home screen by the current application on the device. This API uses a promise to return the result.
+Obtains the information of all widgets that have been added to the home screen by the current application on the device. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -664,7 +665,7 @@ Obtains the information of all widgets that has been added to the home screen by
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -693,19 +694,19 @@ try {
 
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
-Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
+Requests a scene-based widget animation effect by the widget provider. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
 
-**Related methods**
-- [cancelOverflow()](#formprovidercanceloverflow20): cancels an interactive widget animation request. It is used to cancel an already initiated animation.
+**Related APIs:**
+- [cancelOverflow()](#formprovidercanceloverflow20): Cancels the scene-based widget animation request to cancel an animation that has been initiated.
 
 > **NOTE**
 >
-> 1. This API is unavailable in the power-saving mode and will return the error code 16501000.
-> 2. If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+> 1. This API cannot be used in power saving mode. If it is used, error code 16501000 is reported.
+> 2. When the device thermal level enters the HOT state and no click event occurs, this API reports error code 16501000. When the thermal level enters OVERHEATED, error code 16501000 is reported in any case. For details about the thermal level, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**Device behavior differences:** This API is supported only on certain phone models. On unsupported devices, this API returns error code [801](../errorcode-universal.md#801-api-not-supported).
+**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -713,7 +714,7 @@ Requests an animation. This API takes effect only for [scene-based widgets](../.
 
 | Name| Type                                                                | Mandatory| Description       |
 | ------ |--------------------------------------------------------------------| ---- |-----------|
-| formId | string                                                             | Yes| Widget ID.|
+| formId | string                                                             | Yes | Widget ID. |
 | overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | Yes| Animation request parameter information.|
 
 **Return value**
@@ -724,18 +725,18 @@ Requests an animation. This API takes effect only for [scene-based widgets](../.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 801 |   Capability not supported.function requestOverflow can not work correctly due to limited device capabilities. |
+| 801 |   Capability not supported. Function requestOverflow can not work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **Example**
 
@@ -774,12 +775,12 @@ Cancels an animation. This API takes effect only for [scene-based widgets](../..
 
 > **NOTE**
 >
-> 1. This API is unavailable in the power-saving mode and will return the error code 16501000.
-> 2. If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+> 1. This API cannot be used in power saving mode. If it is used, error code 16501000 is reported.
+> 2. When the device thermal level enters the HOT state and no click event occurs, this API reports error code 16501000. When the thermal level enters OVERHEATED, error code 16501000 is reported in any case. For details about the thermal level, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**Device behavior differences:** This API is supported only on certain phone models. On unsupported devices, this API returns error code [801](../errorcode-universal.md#801-api-not-supported).
+**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -787,7 +788,7 @@ Cancels an animation. This API takes effect only for [scene-based widgets](../..
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| formId | string | Yes| Widget ID.|
+| formId | string | Yes | Widget ID. |
 
 **Return value**
 
@@ -797,18 +798,18 @@ Cancels an animation. This API takes effect only for [scene-based widgets](../..
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported.function cancelOverflow can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported. Function cancelOverflow can not work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **Example**
 
@@ -833,7 +834,7 @@ try {
 
 getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
-Obtains the position and dimension of a widget. This API uses a promise to return the result. This API is applicable to scenarios where you need to obtain the position and dimensions of a widget on the screen, for example, for widget animation, position calibration, and layout calculation.
+Queries the position and dimensions of a widget. This API uses a promise to return the result. It applies to scenarios where the position and dimensions of a widget on the screen are required, such as widget animation effects, position calibration, and layout calculation.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -843,21 +844,21 @@ Obtains the position and dimension of a widget. This API uses a promise to retur
 
 | Name| Type        | Mandatory| Description       |
 | ------ |-------------| ---- |-----------|
-| formId | string      | Yes| Widget ID.|
+| formId | string      | Yes | Widget ID. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the widget position relative to the upper-left corner of the screen and the widget dimensions.|
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the position and dimension of the widget relative to the upper-left corner of the screen, in vp.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 801 |   Capability not supported.function getFormRect can not work correctly due to limited device capabilities. |
+| 801 |   Capability not supported. Function getFormRect cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -888,7 +889,7 @@ try {
 
 getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
-Obtains the information of a specified widget that has been added to the home screen by the current application. This API uses a promise to return the result. This API is applicable to scenarios such as widget management and debugging, such as viewing the position and dimensions of a specified widget.
+Obtains the information of the specified widget added to the home screen of the current application. This API uses a promise to return the result. It is applicable to scenarios such as widget management and debugging, for example, viewing the position and dimension information of a specified widget.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -908,7 +909,7 @@ Obtains the information of a specified widget that has been added to the home sc
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -941,7 +942,7 @@ try {
 
 getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
-Obtains information about all widgets that have been added to the home screen. This API uses a promise to return the result. This API is applicable to scenarios such as widget management, batch operations, and statistics collection, such as viewing information about all widgets that have been added to the home screen by an application, and updating the widget status in batches.
+Obtains the information of all widgets added to the home screen. This API uses a promise to return the result. It is applicable to scenarios such as widget management, batch operations, and statistics, for example, viewing the information of all widgets added to the home screen of the application and updating the widget status in batches.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -955,7 +956,7 @@ Obtains information about all widgets that have been added to the home screen. T
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -984,7 +985,7 @@ try {
 
 reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
 
-For widgets with the same **moduleName**, **abilityName**, and **formName** in the current application, different widget IDs are allocated each time the widgets are added to the home screen. The widget provider can use this API to update these widgets in batches. Compared with the **reloadAllForms** API, this API can be used to update widgets with specific configurations, and is applicable to scenarios where only specific widgets need to be updated. The **reloadAllForms** API updates all widgets that have been added to the home screen by the current application, and is applicable to global refresh scenarios. This API is called in the main process of the application to notify the **FormExtension** process to perform batch updates, and can only be used within a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md). This API uses a promise to return the result.
+For widgets with the same moduleName, abilityName, and formName in the current application, a different widget ID is assigned each time the widget is added to the home screen. The widget provider can use this API to update these widgets in batches. Compared with reloadAllForms, this API can precisely specify the widgets with a specific configuration to update, and is suitable for scenarios where only specific widgets need to be updated. reloadAllForms updates all widgets added to the home screen of the current application, and is suitable for global update scenarios. This API is called in the main process of the application to notify the FormExtension process to perform batch updates. It can be used only in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md), and uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -996,9 +997,9 @@ For widgets with the same **moduleName**, **abilityName**, and **formName** in t
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) context, which is used for app identity verification.    |
-| moduleName | string | Yes  | Module name of the specified widget, which must be consistent with the module name configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file). This parameter must be used together with **abilityName** and **formName**. The widget can be located only when all the three parameters match.  |
-| abilityName | string | Yes| Ability name of the specified widget, which must be consistent with the ability name configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file). |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes | Context of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md), used to verify the application identity. |
+| moduleName | string | Yes | Module name of the specified widget, which must be consistent with the module name configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file). It must be used together with abilityName and formName; all three must match to locate the corresponding widget. |
+| abilityName | string | Yes | Ability name of the specified widget, which must be consistent with the ability name configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file). |
 | formName | string | Yes| Name of the widget configured in [form_config.json](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file).|
 
 **Return value**
@@ -1009,7 +1010,7 @@ For widgets with the same **moduleName**, **abilityName**, and **formName** in t
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -1043,7 +1044,7 @@ try {
 
 reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 
-Called in the main process of an application to notify the **FormExtension** process to perform a batch update of all widgets added to the home screen by the application. It can only be called within a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) and uses a promise to return the result.
+Notifies the FormExtension process, in the current application's main process, to batch update all widgets of the application that have been added to the home screen. It can be called only in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md), and uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1055,7 +1056,7 @@ Called in the main process of an application to notify the **FormExtension** pro
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) context, which is used for app identity verification.    |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes   | Context of [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md), used to verify the application identity.     |
 
 **Return value**
 
@@ -1065,7 +1066,7 @@ Called in the main process of an application to notify the **FormExtension** pro
 
 **Error codes**
 
-For details about the error codes, see [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
