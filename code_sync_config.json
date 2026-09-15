@@ -32766,7 +32766,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/GenerateKey/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":68,
 						"name":"generate_key",
 						"start_line":16
 					}
@@ -32811,7 +32811,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/ets/pages/RSASHA256PSS.ets",
 				"functions":[
 					{
-						"end_line":191,
+						"end_line":188,
 						"name":"key_algorithm_RSASHA256PSS",
 						"start_line":16
 					}
@@ -32991,7 +32991,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/KeyExport/entry/src/main/ets/pages/KeyExport.ets",
 				"functions":[
 					{
-						"end_line":103,
+						"end_line":98,
 						"name":"fetch_persistent_security_public_keys_ets",
 						"start_line":16
 					}
@@ -33150,7 +33150,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/AES256.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":70,
 						"name":"import_keys_in_plaintext_AES256",
 						"start_line":16
 					}
@@ -33160,7 +33160,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/RSA2048.ets",
 				"functions":[
 					{
-						"end_line":117,
+						"end_line":113,
 						"name":"import_keys_in_plaintext_RSA2048",
 						"start_line":16
 					}
@@ -33170,7 +33170,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/X25519.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":74,
 						"name":"import_keys_in_plaintext_X25519",
 						"start_line":15
 					}
@@ -33290,19 +33290,19 @@
 						"start_line":144
 					},
 					{
-						"end_line":456,
+						"end_line":420,
 						"name":"encry_the_import_key_one",
 						"start_line":267
 					},
 					{
-						"end_line":583,
+						"end_line":547,
 						"name":"encry_the_import_key_two",
-						"start_line":458
+						"start_line":422
 					},
 					{
-						"end_line":668,
+						"end_line":632,
 						"name":"encry_the_import_key_three",
-						"start_line":585
+						"start_line":549
 					}
 				]
 			}
@@ -33380,7 +33380,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/ets/pages/NonAnonymousKeyProof.ets",
 				"functions":[
 					{
-						"end_line":187,
+						"end_line":178,
 						"name":"non_anonymized_key_proof",
 						"start_line":15
 					}
