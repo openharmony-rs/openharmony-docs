@@ -1868,7 +1868,9 @@ try {
 
 用户识别状态枚举。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -1888,7 +1890,9 @@ try {
 
 用户识别结果。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -1911,7 +1915,9 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 
 用户识别结果回调类型。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -1935,7 +1941,9 @@ type UserRecognitionResultCallback = (result: UserRecognitionResult) => void
 >
 > 每次调用getUserRecognitionMgr返回新的UserRecognitionMgr实例。on和off需使用同一实例。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -1947,7 +1955,9 @@ getUserRecognitionResult(): Promise\<UserRecognitionResult\>
 
 获取最新的用户识别结果。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -1997,7 +2007,9 @@ onUserRecognitionChange(callback: UserRecognitionResultCallback): void
 
 订阅用户识别结果变化事件。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2043,7 +2055,9 @@ offUserRecognitionChange(callback?: UserRecognitionResultCallback): void
 
 取消订阅用户识别结果变化事件。
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2095,7 +2109,9 @@ getUserRecognitionMgr(): UserRecognitionMgr | null
 
 **需要权限：** ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
-**起始版本：** 26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
