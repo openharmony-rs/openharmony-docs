@@ -1581,10 +1581,8 @@ struct Index {
 ArkTS-Dyn示例：
 ```ts
 import {
-  SelectionMenu, EditorEventInfo, SelectionMenuOptions
+  SelectionMenu, EditorEventInfo, SelectionMenuOptions, uiMaterial
 } from '@kit.ArkUI';
-
-import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1690,10 +1688,9 @@ ArkTS-Sta示例：
 // xxx.ets
 import { Builder, Component, Entry, State, Button, ClickEvent, Color, Column, Text, $r, RichEditor,
   RichEditorController, RichEditorOptions, RichEditorResponseType, RichEditorSpanType, RichEditorTextStyle,
-  RichEditorTextSpanResult, RichEditorImageSpanResult, RichEditorSelection } from '@kit.ArkUI';
+  RichEditorTextSpanResult, RichEditorImageSpanResult, RichEditorSelection, uiMaterial } from '@kit.ArkUI';
 import { EditorMenuOptions, ExpandedMenuOptions, EditorEventInfo, SelectionMenu, SelectionMenuOptions } from '@ohos.arkui.advanced.SelectionMenu';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
