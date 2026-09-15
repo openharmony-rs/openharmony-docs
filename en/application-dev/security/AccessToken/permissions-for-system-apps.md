@@ -9302,3 +9302,17 @@ Allows an application to install freely distributable applications.
 **Supported devices**: PCs/2-in-1
 
 **Valid since**: 26.1.0
+
+## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
+ 
+Allows an application to skip enterprise re-signing certificate verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.2.0

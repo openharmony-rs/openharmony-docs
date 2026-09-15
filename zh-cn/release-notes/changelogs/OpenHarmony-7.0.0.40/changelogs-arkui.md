@@ -24,9 +24,9 @@
   - 指定弹窗类组件：AlertDialog、ActionSheet、CustomDialog、CalendarPickerDialog、DatePickerDialog、TimePickerDialog、TextPickerDialog、SelectionMenu、AlphabetIndexer弹窗、Text设置copyOption后长按或双击触发的文本菜单
   - 指定弹窗类接口：PromptAction、ArkUI_NativeDialog、@ohos.promptAction (弹窗)、Popup控制、Tips控制、菜单控制、半模态转场
   - Slider、Toggle、Select
-- 其他组件仅在Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
+- 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 
-以下示例展示了，其他组件（如Column）不在Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中设置沉浸光感，在变更前后的效果变化：
+以下示例展示了，其他组件（如Column）不在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中设置沉浸光感，在变更前后的效果变化：
 
 ```ts
 import { uiMaterial } from '@kit.ArkUI';
@@ -94,7 +94,7 @@ struct MaterialScopeExample {
 
 **适配指导**
 
-变更后，如果组件需要沉浸光感效果，需要将该组件放置于Navigation/NavDestination标题栏或横向Tab中barPosition为BarPosition.End的底部TabBar中。
+变更后，如果组件需要沉浸光感效果，需要将该组件放置于Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中。
 
 下面提供三个示例，分别介绍如何将组件放置于Navigation标题栏、横向Tabs中barPosition为BarPosition.End的底部TabBar中，开启沉浸光感效果，以及弹窗类组件开启沉浸光感的使用示例。
 
