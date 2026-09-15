@@ -161,6 +161,15 @@ CloudDiskSystemAccessor的构造函数，用于创建CloudDiskSystemAccessor类�
 
 **系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
+**错误码：**
+
+以下错误码的详细介绍请参见[云盘管理错误码](errorcode-clouddiskmanager-sys.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 34400014 | Temporary failure. Retry is recommended. |
+
 **示例：**
 
 ```ts
@@ -180,7 +189,7 @@ try {
 
 on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。同一实例可注册多个回调，重复注册已注册的回调不生效。可通过[off('hydrateProgress')](#offhydrateprogress26)取消订阅。
+订阅水合进度事件，适用于文件管理应用展示文件水合进度的场景。订阅后可接收当前用户下所有水合任务（包括三方云盘应用通过CAPI发起的）的进度通知，通过[HydrateProgress](#hydrateprogress26)中的filePath字段区分不同文件。同一实例仅可注册一个回调，未取消订阅前再次调用本接口将抛出34400022错误码。可通过[off('hydrateProgress')](#offhydrateprogress26)取消订阅。
 
 **起始版本：** 26.1.0
 
@@ -205,10 +214,12 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
-| 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
+| 34400022 | The callback table has been registered. |
 
 **示例：**
 
@@ -236,7 +247,7 @@ try {
 
 off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-取消订阅水合进度事件。传入callback时仅取消指定的回调；不传入callback时取消当前实例已注册的所有'hydrateProgress'回调。
+取消订阅水合进度事件。传入callback时仅取消指定的回调；不传入callback时取消当前实例已注册的所有'hydrateProgress'回调。当前实例尚未订阅时调用本接口将抛出34400021错误码。
 
 **起始版本：** 26.1.0
 
@@ -261,10 +272,12 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
-| 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
+| 34400021 | The callback table is not registered. |
 
 **示例：**
 
@@ -332,15 +345,22 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
+| 34400010 | The sync root path does not exist. |
 | 34400014 | Temporary failure. Retry is recommended. |
 | 34400017 | The target path is not a placeholder file. |
 | 34400019 | Hydration in progress. |
 | 34400021 | The callback table is not registered. |
+| 34400023 | The parent directory of the target path is not a directory. |
+| 34400024 | The target path does not exist. |
+| 34400025 | The file name or path is too long. |
 | 34400031 | The placeholder file is already fully hydrated. |
 | 34400032 | No hydration task is in progress for the target file. |
+| 34400033 | The stored placeholder state is invalid. |
 | 34400034 | The number of active placeholder hydration tasks has reached the limit. |
 
 **示例：**
@@ -405,15 +425,23 @@ dehydrateFile(filePath: string): Promise&lt;void&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
+| 34400010 | The sync root path does not exist. |
 | 34400014 | Temporary failure. Retry is recommended. |
 | 34400017 | The target path is not a placeholder file. |
 | 34400019 | Hydration in progress. |
+| 34400020 | The available disk space is insufficient. |
 | 34400021 | The callback table is not registered. |
+| 34400023 | The parent directory of the target path is not a directory. |
+| 34400024 | The target path does not exist. |
+| 34400025 | The file name or path is too long. |
 | 34400028 | The placeholder file is not fully hydrated. |
 | 34400029 | The application denied placeholder dehydration. |
+| 34400033 | The stored placeholder state is invalid. |
 
 **示例：**
 
