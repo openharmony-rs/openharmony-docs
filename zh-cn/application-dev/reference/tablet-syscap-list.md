@@ -61,6 +61,7 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.MultimodalInput.Input.InputSimulator
 - SystemCapability.MultimodalInput.Input.Pointer
 - SystemCapability.MultimodalInput.Input.ShortKey
+- SystemCapability.MultimodalInput.Input.InfraredEmitter
 - SystemCapability.PowerManager.DisplayPowerManager
 - SystemCapability.PowerManager.ThermalManager
 - SystemCapability.PowerManager.PowerManager.Core
