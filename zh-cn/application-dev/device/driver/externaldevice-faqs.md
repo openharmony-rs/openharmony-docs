@@ -49,6 +49,16 @@
 
 根据应用调试中[安装HAP时提示“code:9568347 error: install parse native so failed”错误，或者运行时候提示“TypeError：Cannot read property xxx of undefined”错误](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5)提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。
 
+## 已申请ohos.permission.ACCESS_DDK_DRIVERS权限，安装HAP时报错9568289
+
+### 问题现象
+
+已经申请到了ACL权限`ohos.permission.ACCESS_DDK_DRIVERS`并随工程打包到HAP应用包中，但安装HAP的时候报错“9568289 grant request permissions failed”。
+
+### 解决措施
+
+目前，`ohos.permission.ACCESS_DDK_DRIVERS`权限在应用市场的申请和运营流程正在维护中，涉及工程中使用了[bindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)、[unbindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口的，可以替换为[bindDeviceDriver](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddevicedriverdeprecated-1)、[unbindDevice](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddevicedeprecated-1)接口，接口的业务功能完全一致。
+
 ## 使用基于缓冲区发送数据的DDK接口时，未按照指定的offset和bufferLength发送
 
 ### 问题现象
