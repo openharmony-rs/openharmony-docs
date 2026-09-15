@@ -1656,7 +1656,7 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 
 preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
-预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当未加载页面的页面参数与页面名称与预加载info相同时，将使用预加载的页面实例进行快速显示。
+预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当未加载页面的页面参数和页面名称，与预加载info相同时，将使用预加载的页面实例进行快速显示。
 
 > **说明：**
 >
