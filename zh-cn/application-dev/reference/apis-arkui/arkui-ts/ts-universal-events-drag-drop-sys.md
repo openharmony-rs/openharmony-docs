@@ -67,7 +67,7 @@ ArkTS-Dyn: executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<vo
 
 ArkTS-Sta: executeFollowHandMorphDropAnimation(onAnimationFinished: VoidCallback, animationOption?: string): void
 
-设置一个跟手变形落位动效执行完成后的回调，该回调由系统在拖拽框架动效结束后触发。使用callback异步回调。
+执行跟手变形落位动效，动效执行完成后触发回调，该回调由系统在拖拽框架动效结束后触发。使用callback异步回调。
 
 > **说明：**
 >

@@ -21,7 +21,7 @@ ArkTS-Dyn示例：
 <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
-import { UIAbility } from '@kit.AbilityKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 // ···
 
@@ -69,7 +69,7 @@ export default class EntryAbility extends UIAbility {
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)类拥有自身的上下文信息，该信息为[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类的实例，[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类拥有abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，以及可以获取操作UIAbility实例的方法（如[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)等）。
 
-如果需要在页面中获得当前Ability的Context，需要通过调用组件的[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)对象，再调用UIContext对象的[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法获取当前页面关联的UIAbilityContext或[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+如果需要在页面中获得当前Ability的Context，需要通过调用组件的[getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)对象，再调用UIContext对象的[getHostContext()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法获取当前页面关联的UIAbilityContext或[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
@@ -317,7 +317,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 获取UIAbility拉起方的信息
 
-拉起方（UIAbilityA）通过startAbility启动目标方（UIAbilityB）时，UIAbilityB可以通过parameters[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数获取UIAbilityA的Pid、BundleName和AbilityName等信息。
+拉起方（UIAbilityA）通过startAbility启动目标方（UIAbilityB）时，UIAbilityB可以通过[@ohos.app.ability.Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中parameters参数获取UIAbilityA的Pid、BundleName和AbilityName等信息。
 
 
 1. 通过点击UIAbilityA中的"拉起UIAbilityB"按钮，拉起UIAbilityB。
@@ -418,7 +418,7 @@ export default class EntryAbility extends UIAbility {
     }
     ```
 
-2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
+2. 在UIAbilityB的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
 
     ArkTS-Dyn示例：
     <!-- @[UIAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/UIAbilityB.ets) -->

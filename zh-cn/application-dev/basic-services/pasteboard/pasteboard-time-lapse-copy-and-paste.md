@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -16,7 +16,7 @@
 
 ## 约束限制
 
-- 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为128MB~2GB。
+- 剪贴板内容包含剪贴板系统服务元数据和应用设置的数据，总大小上限默认为128MB，PC/2in1设备可通过系统配置修改上限，有效范围为1MB~2GB。
 
 - NDK接口仅支持Record级别的延迟复制粘贴。
 

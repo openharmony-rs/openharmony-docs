@@ -1,9 +1,9 @@
 # FormComponent (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 提供卡片组件，实现卡片的显示功能。
@@ -53,6 +53,10 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 ## FormInfo<sup>12+</sup>
 
 卡片信息。
+
+> **说明：**
+>
+> - temporary参数标识卡片是否为临时卡片，临时卡片与常态卡片的对比详见[临时卡片和常态卡片](../../../form/widget-host-development-guide-sys.md#临时卡片和常态卡片)。
 
 **系统接口：** 此接口为系统接口。
 

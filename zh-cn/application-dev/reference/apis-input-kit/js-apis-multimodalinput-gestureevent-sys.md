@@ -9,7 +9,7 @@
 
 设备上报的手势事件。
 
->  **说明：**
+> **说明：**
 >
 >- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
@@ -20,7 +20,7 @@
 ## 导入模块
 
 ```js
-import { Touch , SwipeInward } from '@kit.InputKit';
+import { Touch, SwipeInward } from '@kit.InputKit';
 ```
 
 ## TouchGestureEvent<sup>18+</sup>

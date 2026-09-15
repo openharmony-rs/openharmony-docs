@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供ArkTS-Sta标准库中的通用异常类型。这些类型均继承自`Error`，用于表达参数、状态、运行时和不支持操作等错误场景。
 

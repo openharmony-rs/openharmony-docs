@@ -90,7 +90,7 @@
    - 通过mediaAsset直接落盘图片或者通过mediaAsset配置策略模式请求图像资源，业务处理后通过buffer保存图片，或显示图片(参考[拍照(C/C++)](./native-camera-shooting.md)步骤5)。
    - 使用完后解注册分段式拍照回调函数。
 
-   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->    
    
    ``` C++
    // 分段式拍照回调函数。
@@ -160,35 +160,35 @@
        return MEDIA_LIBRARY_OK;
    }
    
-   void OnRequsetImageDataPreparedWithDetails(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId,
+   void OnRequestImageDataPreparedWithDetails(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId,
        MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative *imageSourceNative)
    {
        auto cb = (void (*)(char *))(g_requestImageCallback);
        auto qCb = (void (*)(char *))(g_requestImageQualityCallback);
-       DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails start!");
+       DRAWING_LOGD("OnRequestImageDataPreparedWithDetails start!");
        if (mediaQuality == MediaLibrary_MediaQuality::MEDIA_LIBRARY_QUALITY_FAST) {
-           DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails into fast quality mode!");
+           DRAWING_LOGD("OnRequestImageDataPreparedWithDetails into fast quality mode!");
            g_mediaQualityCb = "fast";
            qCb(g_mediaQualityCb);
        } else {
-           DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails into high quality mode!");
+           DRAWING_LOGD("OnRequestImageDataPreparedWithDetails into high quality mode!");
            g_mediaQualityCb = "high";
            qCb(g_mediaQualityCb);
        }
-       DRAWING_LOGD("OnRequsetImageDataPreparedWithDetails GetUri uri_ = %{public}s", URI);
+       DRAWING_LOGD("OnRequestImageDataPreparedWithDetails GetUri uri_ = %{public}s", URI);
        cb(const_cast<char *>(URI));
        NDKCamera::ChangeRequestAddResourceWithBuffer(imageSourceNative);
        return;
    }
    
-   // 请求图片数据：deliveryMode/quality等通过requestOptions控制，完成后进回调OnRequsetImageDataPreparedWithDetails。
+   // 请求图片数据：deliveryMode/quality等通过requestOptions控制，完成后进回调OnRequestImageDataPreparedWithDetails。
    MediaLibrary_ErrorCode NDKCamera::MediaAssetManagerRequestImage(OH_MediaAsset *mediaAsset)
    {
        DRAWING_LOGD("NDKCamera::MediaAssetManagerRequestImage start! g_deliveryMode = %{public}d",
            g_deliveryMode);
        requestOptions.deliveryMode = g_deliveryMode;
        result = OH_MediaAssetManager_RequestImage(mediaAssetManager, mediaAsset, requestOptions, &g_requestId,
-           OnRequsetImageDataPreparedWithDetails);
+           OnRequestImageDataPreparedWithDetails);
        if (result != MEDIA_LIBRARY_OK) {
            DRAWING_LOGD("NDKCamera::MediaAssetManagerRequestImage failed.");
        }

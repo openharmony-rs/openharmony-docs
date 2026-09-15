@@ -202,7 +202,7 @@ struct DirectionKey {
 
 ## 处理操纵杆输入
 
-游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定[onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md#onfocusaxisevent)接口回调，处理相应的事件逻辑。示例如下：
+游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定[onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md#onfocusaxisevent)接口回调，处理相应的事件逻辑。示例如下：
 
 ArkTS-Dyn示例：
 

@@ -4,8 +4,8 @@
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @shilei123-->
 <!--Designer: @shilei123;@yao_dashuai-->
-<!--Tester: @kir175; @zsw_zhushiwei-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 ##  ArkTS 应用运行时出现模块化加载相关的异常报错提示，可能的报错原因以及解决方法
@@ -43,7 +43,7 @@ module.json5部分参数示例如下:
   "module": {
     "name": "entry",
     "type": "entry",
-    ...
+    // ...
     "abilities": [
       {
         "name": "EntryAbility", // 模块名称
@@ -76,7 +76,7 @@ module.json5部分参数示例如下:
 
 **报错原因:**
 
-ets在模块化静态编译阶段，会预解析模块间的依赖关系。ets文件内的导入变量名书写错误时，ide编译器与应用编译阶段均会报错提示。但目前对于应用内native C++模块的依赖关系检测会在运行阶段。
+ets在模块化静态编译阶段，会预解析模块间的依赖关系。ets文件内的导入变量名书写错误时，IDE编辑器与应用编译阶段均会报错提示。但目前对于应用内native C++模块的依赖关系检测会在应用运行阶段进行。
 
 **定位方法:**
 
@@ -85,11 +85,34 @@ ets在模块化静态编译阶段，会预解析模块间的依赖关系。ets�
 
 ## ArkTS/Ts/Js加载so失败，表现行为是怎么样的
 
-加载so失败后，不显式抛出加载失败的js异常。开发者可以通过导出对象是否为undefined判断so的加载状态。
+加载so失败后，不显式抛出加载失败的js异常。开发者可以通过导出对象是否为undefined判断so的加载状态；错误原因通过`NativeModuleErrorInfo`字段输出到JS Crash faultlog和hilog。
+
+**so加载失败的错误信息（NativeModuleErrorInfo）说明**
+
+`loadNativeModule`、`import()`等接口加载.so失败时，系统会将精确的错误原因写入`NativeModuleErrorInfo`字段，并通过JS Crash faultlog和hilog输出。开发者可在faultlog或`hilog | grep NativeModuleManager`中搜索下列错误信息字符串进行定位。
+
+**错误场景与错误信息对照表**
+
+| 错误信息（NativeModuleErrorInfo） | 触发场景 | 可能原因 | 处理步骤 |
+| -------- | -------- | -------- | -------- |
+| `moduleName is nullptr` | 调用加载接口时`moduleName`入参为空 | 代码传入了空字符串或未初始化变量 | 检查`loadNativeModule(moduleName)`的入参，确保`moduleName`非空 |
+| `relativePath is nullptr` | `relativePath`参数为空 | 未传入相对路径或传入了null | 检查`relativePath`参数取值 |
+| `invalid relativePath` | `relativePath`包含`..`路径穿越符 | 相对路径试图跳出允许的目录范围 | 修正`relativePath`，去掉`..`，仅使用模块内相对路径 |
+| `module {moduleName} is in blocklist` | 目标模块在系统黑名单中 | 该.so被系统安全策略禁止加载 | 联系系统团队确认黑名单策略；普通应用不应依赖被列入黑名单的模块 |
+| `module not found` | 模块文件未找到 | 模块未打包进HAP/HSP，或`oh-package.json5`的dependencies配置缺失 | 检查`oh-package.json5`的dependencies是否声明该模块；检查`build-profile.json5`的`runtimeOnly`配置；确认HAP包内存在对应.so文件 |
+| `app lib path not registered in namespace '{path}'` | 应用lib路径未在namespace中注册 | 应用沙箱内namespace配置缺失或路径错误 | 检查应用`module.json5`与打包配置；确认应用的lib路径在namespace允许列表中 |
+| `dlopen failed: {dlerror}` | `dlopen`系统调用失败 | .so文件损坏、架构不匹配（例如arm64的.so运行在arm32设备）、依赖的其他.so缺失、符号找不到 | 根据`{dlerror}`具体提示定位：`symbol not found`（缺符号）、`cannot open shared object file`（依赖缺失）、`wrong ELF class`（架构不匹配）、`file too short`（文件损坏） |
+| `internal error: module create failed` | NativeModule对象创建失败 | 内存不足（OOM）、内部符号解析失败、NativeModule初始化异常 | 查看hilog中相关`NativeModuleManager`日志定位初始化失败原因；排查设备内存状态 |
+
+>**说明**
+>
+>  - 成功加载.so时不会写入`NativeModuleErrorInfo`，对正常加载流程无影响。
+>  - `NativeModuleErrorInfo`仅在faultlog和内部日志中可见，不会通过JS异常直接抛出；开发者仍需按上述"加载失败具体表现"通过`undefined`判断等方式检测加载状态。
+>  - 如需开启更详细的模块加载日志，可执行`hdc shell param set persist.ark.properties 0x80105C`并重启设备。
 
 **加载失败具体表现**  
 
-| 加载类型 | ts/js模块 | 系统库so或应用so |
+| 加载类型 | ts/js模块 | 系统库so或应用so（JS层面） |
 | -------- | -------- | -------- |
 | 静态加载 | 虚拟机自动抛出异常，进程退出 | 无异常抛出，加载到的对象为undefined |
 | 动态加载 | 不主动抛出异常，走到reject分支，开发者可以调用catch方法来捕获这个错误 | 不主动抛出异常，依然进入resolve分支，开发者可以在resolve分支中检查模块导出变量是否为undefined |
@@ -131,9 +154,11 @@ import('libentry.so')
 load libentry.so failed.
 ```
 
-**so加载失败可能的原因、定位方式以及解决方法**  
+**参考文档**
 
-参考([Node-API常见问题](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/napi/use-napi-faqs.md))文档
+- [Node-API常见问题](../napi/use-napi-faqs.md)
+- [loadNativeModule](../reference/common/js-apis-common-load-native-module.md)
+- [语言基础类库错误码10200301](../reference/apis-arkts/errorcode-utils.md)
 
 
 ## 模块间循环依赖导致运行时未初始化异常问题定位
@@ -152,7 +177,7 @@ load libentry.so failed.
 
 根据ECMA规范，模块的执行顺序是深度遍历加载。
 
-假设应用存在加载链路A->B->C，那么ArkTs模块化会先执行C文件，再执行B文件，最后执行A文件，执行顺序为C->B->A。  
+假设应用存在加载链路A->B->C，那么ArkTS模块化会先执行C文件，再执行B文件，最后执行A文件，执行顺序为C->B->A。  
 2. 循环依赖：
 
 如果应用存在加载链路A->B->A，根据深度遍历执行顺序，执行流程会先标记A的状态为加载中，然后去加载B，标记B的状态为加载中，然后去加载A，由于A文件已经标记加载中，根据规范定义，识别到加载中模块会直接返回，就会先执行B文件。  

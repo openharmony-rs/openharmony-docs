@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -74,12 +74,10 @@ getCalendarManager(context: Context): CalendarManager
 // 文档后续示例代码都需要配置此文件才能正常运行
 import {
   abilityAccessCtrl,
-  AbilityConstant, 
   common, 
   PermissionRequestResult, 
   Permissions, 
-  UIAbility, 
-  Want
+  UIAbility
 } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
@@ -88,17 +86,8 @@ import { window } from '@kit.ArkUI';
 export let calendarMgr: calendarManager.CalendarManager | null = null;
 export let mContext: common.UIAbilityContext | null = null;
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    console.info('Ability onCreate');
-  }
-
-  onDestroy(): void {
-    console.info('Ability onDestroy');
-  }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 主窗口已创建，请为此Ability设置主页
-    console.info('Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -118,20 +107,6 @@ export default class EntryAbility extends UIAbility {
     })
   }
 
-  onWindowStageDestroy(): void {
-    // 主窗口已销毁，释放 UI 相关资源
-    console.info('Ability onWindowStageDestroy');
-  }
-
-  onForeground(): void {
-    // Ability 进入前台
-    console.info('Ability onForeground');
-  }
-
-  onBackground(): void {
-    // Ability 进入后台
-    console.info('Ability onBackground');
-  }
 }
 ```
 
@@ -146,11 +121,12 @@ export default class EntryAbility extends UIAbility {
 
 createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>): void
 
-根据日历账户信息，创建一个Calendar对象，使用callback异步回调。
+根据日历账户信息，创建一个Calendar对象，若创建的账户已存在（与CalendarAccount的name和type相同的账户已被创建），则返回之前的Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -170,7 +146,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 | 201      | Permission denied.                                                                                                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                 |
 | 801      | Capability not supported.                                                                                                     |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -204,9 +180,10 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -231,7 +208,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. <br>适用版本：23+|
 
 **示例**：
 
@@ -260,9 +237,10 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 删除指定Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR权限
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -282,7 +260,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. <br>适用版本：23+|
 
 **示例**：
 
@@ -325,9 +303,10 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 删除指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**： 
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -352,7 +331,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -392,9 +371,10 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 
 获取默认Calendar对象，默认Calendar是日历存储首次运行时创建的，若创建Event时不关注其Calendar归属，则无须通过[createCalendar()](#createcalendar)创建Calendar，直接使用默认Calendar，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -415,7 +395,7 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -441,9 +421,10 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 
 获取指定Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -465,8 +446,8 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900003 | The specified account was not found.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900003 | The specified account was not found.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -502,10 +483,10 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
 获取默认Calendar对象或者指定Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
-
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -532,8 +513,8 @@ getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900003 | The specified account was not found. |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900003 | The specified account was not found.<br>适用版本：23+ |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -557,10 +538,10 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
-
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR 
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -579,7 +560,7 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -608,9 +589,10 @@ getAllCalendars(): Promise\<Calendar[]>
 
 获取当前应用所有创建的Calendar对象以及默认Calendar对象，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -629,7 +611,7 @@ getAllCalendars(): Promise\<Calendar[]>
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
 | 801      | Capability not supported.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -719,9 +701,10 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -738,8 +721,8 @@ addEvent(event: Event, callback: AsyncCallback\<number>): void
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -781,9 +764,10 @@ addEvent(event: Event): Promise\<number>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -805,8 +789,8 @@ addEvent(event: Event): Promise\<number>
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -846,9 +830,10 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 批量创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -865,8 +850,8 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -915,9 +900,10 @@ addEvents(events: Event[]): Promise\<void>
 
 批量创建日程，入参[Event](#event)不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.WRITE_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.WRITE_CALENDAR或ohos.permission.WRITE_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.WRITE_CALENDAR 或 ohos.permission.WRITE_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.WRITE_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -939,8 +925,8 @@ addEvents(events: Event[]): Promise\<void>
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -975,7 +961,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
       console.info('Succeeded in adding events');
     }).catch((err: BusinessError) => {
       // 检查权限是否已成功申请或者参数是否正确。
-      console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to add events. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1249,7 +1235,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 updateEvent(event: Event, callback: AsyncCallback\<void>): void
 
-更新日程，入参[Event](#event)需要填写被修改日程的id，使用callback异步回调。
+更新日程，入参[Event](#event)需要填写被修改日程的id，否则无法修改日程，使用callback异步回调。
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1374,9 +1360,10 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 API version 20之前，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime。从API version 20开始，默认查询字段包括id、type、title、startTime、endTime、isAllDay、description、timeZone、location、service、attendee、reminderTime、identifier。若查询字段为空，则不返回该字段。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1392,8 +1379,8 @@ API version 20之前，默认查询字段包括id、type、title、startTime、e
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied. <br>适用版本：23+ |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -1428,9 +1415,10 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 获取Calendar下符合查询条件的Event，使用callback异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1448,8 +1436,8 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -1481,13 +1469,15 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     calendar = data;
     await calendar.addEvent(event1).then((data: number) => {
-      console.info(`Succeeded in adding event, id -> ${data}`);
+      console.info(`Succeeded in adding event, id1 -> ${data}`);
+      id1 = data;
     }).catch((err: BusinessError) => {
       // 检查权限是否已成功申请或者参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
-      console.info(`Succeeded in adding event, id -> ${data}`);
+      console.info(`Succeeded in adding event, id2 -> ${data}`);
+      id2 =data;
     }).catch((err: BusinessError) => {
       // 检查参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
@@ -1515,9 +1505,10 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 
 当没有入参时，可查询指定日历账户下的所有日程。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本10-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1540,8 +1531,8 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -1641,7 +1632,7 @@ setConfig(config: CalendarConfig, callback: AsyncCallback\<void>): void
 
 | 错误码ID    | 错误信息                   |
 |----------|------------------------|
-| 23900001 | Parameter value error. |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -1701,7 +1692,7 @@ setConfig(config: CalendarConfig): Promise\<void>
 
 | 错误码ID    | 错误信息                   |
 |----------|------------------------|
-| 23900001 | Parameter value error. |
+| 23900001 | Parameter value error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -1775,9 +1766,10 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 获取Calendar下符合查询条件的日程实例，使用Promise异步回调。
 
-**需要权限**： API version 21之前，使用此接口需申请ohos.permission.READ_CALENDAR权限；
+**需要权限**：
 
-从API version 21开始，使用此接口需申请ohos.permission.READ_CALENDAR或ohos.permission.READ_WHOLE_CALENDAR。
+- API版本21+：ohos.permission.READ_CALENDAR 或 ohos.permission.READ_WHOLE_CALENDAR
+- API版本18-20：ohos.permission.READ_CALENDAR
 
 **系统能力**： SystemCapability.Applications.CalendarData
 
@@ -1787,8 +1779,8 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 | 参数名      | 类型                        | 必填   | 说明         |
 | ----------- | --------------------------- |------|------------|
-| start  | number | 是    | 日程开始时间，类型为13位时间戳。    |
-| end    | number | 是    | 日程结束时间，类型为13位时间戳。    |
+| start  | number | 是    | 查询日程开始时间，类型为13位时间戳。    |
+| end    | number | 是    | 查询日程结束时间，类型为13位时间戳。    |
 | ids    | number[] | 否    | 需要查询的日程id数组，可为空数组或undefined。    |
 | eventKey    | (keyof [Event](#event))[]   | 否    | 所有查询日程的字段。不填时，默认查询字段为：id、title、startTime、endTime、instanceStartTime、instanceEndTime、isAllDay、description、timeZone、location、service。若查询字段为空，则不返回该字段。|
 
@@ -1804,8 +1796,8 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 | 错误码ID    | 错误信息                        |
 |----------| ------------------------------ |
-| 201      | Permission denied.  |
-| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
+| 201      | Permission denied.<br>适用版本：23+  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error.<br>适用版本：23+ |
 
 **示例**：
 
@@ -1958,7 +1950,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 | 名称           | 类型     | 只读    | 可选 | 说明                                                         |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | 否     | 是  | 是否打开Calendar下所有Event提醒能力。当取值为true时，该Calendar下所有Event具备提醒能力；当取值为false时，不具备提醒能力，默认具备提醒能力。 |
-| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000001至0xFFFFFF或0x00000001至0xFFFFFFFF，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFF'。不设置时默认值为0xFF0A59F7，输入undefined或错误值时抛异常。 |
+| color          | number \| string | 否   | 是  | 设置Calendar颜色。值为number时取值范围为0x000001至0xFFFFFF或0x00000001至0xFFFFFFFF，超出取值范围会导致颜色值与颜色不匹配，值为string时长度为7或9，如'#FFFFFF'，'#FFFFFFFF'。不设置时默认值为0xFF0A59F7，输入0或'#000000'时显示日历主题颜色朱彤色，输入undefined或错误值时抛异常。 |
 
 ## Event
 
@@ -1968,23 +1960,23 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                                                                                                                                                                                                                          |
 | -------------- | --------------------------------- | ---- |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，id为数据库自增字段，没有默认值，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
-| type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                |
+| id             | number                            | 否   | 是  | 日程id。<br>当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，id为数据库自增字段，没有默认值，不填写此参数。<br>当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id需为整数，传入其他非法入参会报错。<br>当调用[getEvents()](#getevents-2)查询日程时，默认查询到此字段。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
+| type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。当调用[getEvents()](#getevents-2)查询日程时，默认查询到此字段。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                |
 | title          | string                            | 否   | 是  | 日程标题。长度建议为[0,5000]字符，不填时，默认为空字符串。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                   |
 | location       | [Location](#location)             | 否   | 是  | 日程地点。不填时，默认为undefined。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                               |
-| startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。全天日程时，该字段转换为传入日期00:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
-| endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
+| startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。全天日程时，该字段转换为传入日期00:00对应的时间戳。当调用[getEvents()](#getevents-2)查询日程时，默认查询到此字段。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
+| endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。当调用[getEvents()](#getevents-2)查询日程时，默认查询到此字段。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
 | isAllDay       | boolean                           | 否   | 是  | 是否为全天日程。当取值为true时，说明为全天日程；当取值为false时，说明不是全天日程，默认为非全天日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                               |
-| attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为null。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                  |
+| attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为undefined。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                  |
 | timeZone       | string                            | 否   | 是  | 日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示上午9:00前x分钟提醒，可取负值，负值表示上午9:00后多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                              |
+| reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示上午9:00前x分钟提醒，可取负值，负值表示上午9:00后多长时间提醒。若日程在创建时已过了提醒时间，但未超过结束时间，日程创建成功后会立即提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                              |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程，默认值为undefined。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
 | description    | string                            | 否   | 是  | 日程描述。长度建议为[0,5000]字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
 | service        | [EventService](#eventservice)     | 否   | 是  | <!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
-| identifier<sup>12+</sup>     | string                            | 否   | 是  | 写入方可指定日程唯一标识。长度建议为[0,5000]字符，不填时，默认为null。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                            |
+| identifier<sup>12+</sup>     | string                            | 否   | 是  | 写入方可指定日程唯一标识。长度建议为[0,5000]字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                            |
 | isLunar<sup>12+</sup>     | boolean                            | 否   | 是  | 是否为农历日程。当取值为true时，说明为农历日程；当取值为false时，说明不是农历日程，默认为非农历日程。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                               |
-| instanceStartTime<sup>18+</sup> | number                            | 否   | 是  | 日程实例开始时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数，默认值为undefined。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                    |
-| instanceEndTime<sup>18+</sup>   | number                            | 否   | 是  | 日程实例结束时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数，默认值为undefined。  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                   |
+| instanceStartTime<sup>18+</sup> | number                            | 否   | 是  | 日程实例开始时间，需要13位时间戳，默认值为undefined。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程或[getEvents()](#getevents-2)查询日程时，不填写此参数。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                    |
+| instanceEndTime<sup>18+</sup>   | number                            | 否   | 是  | 日程实例结束时间，需要13位时间戳，默认值为undefined。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程或[getEvents()](#getevents-2)查询日程时，不填写此参数。  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                   |
 
 ## CalendarType
 
@@ -2252,7 +2244,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | expire              | number                                      | 否   | 是  | 重复周期截止日。格式为13位时间戳，不填时则日程无截止日期。   <br/> 当expire与count和interval同时设置时，以先到达的限制条件及效果为准。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                           |
 | count<sup>12+</sup>               | number                                      | 否   | 是  | 重复日程的重复次数，取值为非负整数，浮点数输入将向下取整，不填时默认为0，表示不会限定重复次数，会一直重复。取值为负时，效果等同于取值为0。<br/> 当count与interval和expire同时设置时，以先到达的限制条件及效果为准。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | interval<sup>12+</sup>            | number                                      | 否   | 是  | 重复日程的重复周期，取值为非负整数，浮点数输入将向下取整。<br/> 不填时默认为0，当取值为0、1或负值时，表示日程每天/周/月/年重复一次。<br/> 当interval与count和expire同时设置时，以先到达的限制条件及效果为准。 <br/>此属性与recurrenceFrequency重复规则相关，不同的重复规则下，表示的重复周期不同，以interval取2为例，分为以下几种情况：<br/>每天重复时：表示日程每两天重复一次。<br/>每周重复时：表示日程每两周重复一次。<br/>每月重复时：表示日程每两月重复一次。<br/>每年重复时：表示日程每两年重复一次。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| excludedDates<sup>12+</sup>       | number[]                                    | 否   | 是  | 重复日程的排除日期，参数取值为时间戳格式，且时间戳必须精确匹配日程的开始时间（时分秒一致），否则会不生效，不填时，默认为空，表示没有排除的日期，0或负数为无效值，与空值效果相同。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                 |
+| excludedDates<sup>12+</sup>       | number[]                                    | 否   | 是  | 重复日程的排除日期，参数取值为时间戳格式，且时间戳必须精确匹配日程的开始时间（时分秒一致），否则会不生效，不填时，默认为空，表示没有排除的日期。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                 |
 | daysOfWeek<sup>12+</sup>       | number[]                                    | 否   | 是  | 按照一周第几天重复。不填时，默认为空，表示没有一周第几天重复的规则。范围为[1, 7]，对应周一到周日，其他值为无效值，与空值效果相同。该字段数组与其相关字段数组为一一对应关系，如weeksOfMonth为[1, 2, 3]，daysOfWeek为[1, 2, 3]，则表示按照每月的第一周的周一，第二周的周二，第三周的周三进行重复。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                         |
 | daysOfMonth<sup>12+</sup>       | number[]                                    | 否   | 是  | 按照一个月第几天重复。不填时，默认为空，表示没有一个月第几天重复的规则。范围为[1, 31]，[1, 31]对应1到31号，其他值为无效值，与空值效果相同。若当月没有29号、30号或31号，则29、30、31也为无效值。该字段数组与其相关字段数组为一一对应关系，如monthsOfYear为[1, 2, 3]，daysOfMonth为[1, 2, 3]，则表示按照一月一号，二月二号，三月三号进行重复。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
 | daysOfYear<sup>12+</sup>       | number[]                                    | 否   | 是  | 按照一年第几天重复。不填时，默认为空，表示没有一年第几天重复的规则。范围为[1, 366]，[1, 366]表示一年的1到366天，其他值为无效值，与空值效果相同。若当年没有366天，366也为无效值。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                            |
@@ -2290,7 +2282,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 ## EventService
 
-日程服务。
+日程服务，<!--RP2--><!--RP2End-->非一键服务日程可不填。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

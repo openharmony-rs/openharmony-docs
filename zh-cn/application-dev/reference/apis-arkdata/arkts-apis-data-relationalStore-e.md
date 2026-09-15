@@ -13,11 +13,11 @@
 
 ## SecurityLevel
 
-数据库的安全级别枚举。请使用枚举名称而非枚举值。数据库的安全等级仅支持由低向高设置，不支持由高向低设置。
+数据库的安全级别枚举。请使用枚举名称而非枚举值。数据库的安全级别仅支持由低向高设置，不支持由高向低设置。
 
 > **说明：**
 >
-> 若需要进行同步操作，数据库安全等级应不高于对端设备安全等级，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
+> 若需要进行同步操作，数据库安全级别应不高于对端设备安全级别，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -102,7 +102,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -118,7 +118,7 @@ class EntryAbility extends UIAbility {
       console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
 
-    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize=icu zh_CN)";
+    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize='icu zh_CN')";
     if (store != undefined) {
       (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
@@ -140,7 +140,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -201,10 +201,10 @@ export default class EntryAbility extends UIAbility {
       console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
 
-    const sqlCreateTable =
+    const SQL_CREATE_TABLE =
       "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer cut_mode short_words')";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(sqlCreateTable, (err) => {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
           console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
@@ -287,8 +287,8 @@ export default class EntryAbility extends UIAbility {
 | 名称                  | 值   | 说明               |
 | --------------------- | ---- | ------------------ |
 | SUBSCRIBE_TYPE_REMOTE | 0    | 订阅远程数据更改。<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| SUBSCRIBE_TYPE_CLOUD<sup>10+</sup> | 1  | 订阅云端数据更改。<br>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
-| SUBSCRIBE_TYPE_CLOUD_DETAILS<sup>10+</sup> | 2  | 订阅云端数据更改详情。<br>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| SUBSCRIBE_TYPE_CLOUD<sup>10+</sup> | 1  | 订阅云端数据更改。<br>**需要权限：**<br>- API版本12+：N/A<br>- API版本10-11：ohos.permission.DISTRIBUTED_DATASYNC<br>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| SUBSCRIBE_TYPE_CLOUD_DETAILS<sup>10+</sup> | 2  | 订阅云端数据更改详情。<br>**需要权限：**<br>- API版本12+：N/A<br>- API版本10-11：ohos.permission.DISTRIBUTED_DATASYNC<br>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 | SUBSCRIBE_TYPE_LOCAL_DETAILS<sup>12+</sup> | 3  | 订阅本地数据更改详情。<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## RebuildType<sup>12+</sup>
@@ -319,8 +319,8 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                         | 值   | 说明                         |
 | -------------------------- | --- | -------------------------- |
-| DATA_CHANGE  | 0   | 表示是数据发生变更。   |
-| ASSET_CHANGE | 1   | 表示是资产附件发生了变更。 |
+| DATA_CHANGE  | 0   | 表示是数据发生变更。<br>**需要权限：**<br>- API版本12+：N/A<br>- API版本10-11：ohos.permission.DISTRIBUTED_DATASYNC   |
+| ASSET_CHANGE | 1   | 表示是资产附件发生了变更。<br>**需要权限：**<br>- API版本12+：N/A<br>- API版本10-11：ohos.permission.DISTRIBUTED_DATASYNC |
 
 ## DistributedType<sup>10+</sup>
 
@@ -333,7 +333,7 @@ export default class EntryAbility extends UIAbility {
 | 名称                | 值   | 说明                                                                                                 |
 | ------------------ | --- | -------------------------------------------------------------------------------------------------- |
 | DISTRIBUTED_DEVICE | 0  | 表示在不同设备之间分布式的数据库表。<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core               |
-| DISTRIBUTED_CLOUD  | 1   | 表示在设备和云端之间分布式的数据库表。<br>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client |
+| DISTRIBUTED_CLOUD  | 1   | 表示在设备和云端之间分布式的数据库表。<br>**需要权限：**<br>- API版本12+：N/A<br>- API版本10-11：ohos.permission.DISTRIBUTED_DATASYNC<br>**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client |
 
 ## ConflictResolution<sup>10+</sup>
 
@@ -390,7 +390,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ProgressCode<sup>10+</sup>
 
-表示端云同步过程的状态。请使用枚举名称而非枚举值。
+表示端云同步过程的状态码。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -471,7 +471,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 值   | 说明                                    |
 | ------------------ | --- | ---------------------------------------- |

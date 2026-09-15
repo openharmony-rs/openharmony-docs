@@ -1,7 +1,7 @@
 # Component3D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
@@ -239,7 +239,7 @@ class EngineTime {
 let engineTime = new EngineTime();
 let frameCount: number = 0;
 
-function TickFrame() {
+function tickFrame() {
   if (frameCount == 10) {
     engineTime.totalTimeUs += 1.0;
     engineTime.deltaTimeUs += 1.0;
@@ -270,7 +270,7 @@ struct Index {
       console.info('backAnimator onfinish');
     }
     this.backAnimator.onFrame = (value: number) => {
-      TickFrame();
+      tickFrame();
       this.timeDelta[0] = engineTime.deltaTimeUs;
     }
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityElementInfo ArkUI_AccessibilityElementInfo
 
 ## 概述
 
-无障碍节点信息，用于向无障碍服务、无障碍辅助应用传递节点信息。
+无障碍元素信息，用于向无障碍服务、辅助应用（屏幕朗读等）传递元素的属性、操作、位置、文本等信息，适用于无障碍服务获取和操作界面元素的辅助场景。
 
 **起始版本：** 13
 

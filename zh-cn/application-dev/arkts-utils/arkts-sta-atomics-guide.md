@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 原子类型用于在线程间安全读写单个共享值或对象引用。ArkTS-Sta支持AtomicInt、AtomicLong、AtomicBoolean和AtomicReference等[Atomics (实例化原子类型接口)](../reference/apis-arkts/arkts-sta-atomics.md)，适合计数器、状态标志或一次性状态迁移等场景。
 

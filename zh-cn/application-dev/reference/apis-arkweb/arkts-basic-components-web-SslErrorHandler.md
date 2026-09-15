@@ -2,17 +2,19 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的SSL错误通知事件的处理对象。示例代码参考[onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)事件。
+SslErrorHandler是Web组件中处理SSL证书验证错误的类。当加载安全页面时遇到SSL证书错误（如证书过期、主机名不匹配、不受信任的CA），应用可通过onSslErrorEvent回调获取SslErrorHandler实例，并决定是否继续加载或取消导航。示例代码参考[onSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)事件。
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 本Class首批接口从API version 9开始支持。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本Class从API version 9开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -24,21 +26,33 @@ SslErrorHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## handleCancel<sup>9+</sup>
 
 handleCancel(): void
 
-通知Web组件取消此请求。
+通知Web组件取消此请求，并停止当前SSL证书验证流程。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ## handleConfirm<sup>9+</sup>
 
 handleConfirm(): void
 
-通知Web组件继续使用SSL证书。
+忽略SSL证书验证错误，继续加载页面。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ## handleCancel<sup>20+</sup>
 
@@ -48,8 +62,12 @@ handleCancel(abortLoading: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型 | 必填  | 说明             |
 | --------------- | -------- | ----  |------- |
-| abortLoading    | boolean  | 是    | 是否在取消请求后停止加载页面。<br>true表示停止加载页面，false表示继续加载页面。 |
+| abortLoading    | boolean  | 是    | SSL错误页场景，拒绝错误证书后是否终止页面加载；abortLoading为false时表示不终止，为true时表示终止。 |

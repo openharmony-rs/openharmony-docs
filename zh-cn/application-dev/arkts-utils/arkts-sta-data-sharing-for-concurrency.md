@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta采用共享内存模型，线程间可以直接共享对象数据。与ArkTS-Dyn不同，ArkTS-Sta跨线程传递普通对象时不需要Structured Clone，也不需要使用Sendable对象表达共享语义。
 

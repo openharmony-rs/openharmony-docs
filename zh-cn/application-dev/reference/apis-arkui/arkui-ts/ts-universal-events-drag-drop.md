@@ -27,7 +27,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 > **说明：**
 >
-> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice。
+> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice。
 
 ## onDragStart
 
@@ -943,7 +943,7 @@ ArkTS-Sta: getGlobalDisplayX(): double
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：(-∞, +∞)|
 
 ### getGlobalDisplayY<sup>20+</sup>
 
@@ -967,7 +967,7 @@ ArkTS-Sta: getGlobalDisplayY(): double
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
 
 ## DragResult<sup>10+</sup>枚举说明
 
@@ -1022,7 +1022,7 @@ ArkTS-Sta: getGlobalDisplayY(): double
 | PREVIEW_LANDING_STARTED | 4 | 拖拽落回动效发起阶段。(落回动效发起时触发)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | PREVIEW_LANDING_FINISHED | 5 | 拖拽落回动效结束阶段。(落回动效结束时触发) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | ACTION_CANCELED_BEFORE_DRAG | 6 | 拖拽浮起落位动效中断。(已满足READY_TO_TRIGGER_DRAG_ACTION状态后，未达到动效阶段，手指抬手时触发) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| PREPARING_FOR_DRAG_DETECTION<sup>18+</sup>  | 7 | 拖拽准备完成，可发起拖拽阶段。(按下350ms时触发) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
+| PREPARING_FOR_DRAG_DETECTION<sup>18+</sup>  | 7 | 拖拽准备完成，可发起拖拽阶段。（按下350ms时触发） <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
 
 ## UnifiedData<sup>10+</sup>
 

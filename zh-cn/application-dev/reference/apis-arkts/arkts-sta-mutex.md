@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 Mutex（互斥锁）的作用是为应用程序提供线程同步机制，确保在多线程环境下对共享资源的独占访问。Mutex允许一个线程在任意时刻独占访问临界区，其他线程需要等待该线程释放锁后才能获取访问权。
 

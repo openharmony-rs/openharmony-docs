@@ -541,7 +541,7 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
 
   ![symbolGlyph_symbolEffect_isActive](figures/symbolGlyph_symbolEffect_isActive.gif)
 
-- 通过设置SymbolEffect属性，可以同时指定SymbolGlyph的动画效果策略及其播放触发条件。 
+- 通过设置SymbolEffect属性，可以同时指定SymbolGlyph的动画效果策略及其播放触发条件。
 
   ArkTS-Dyn示例：
 
@@ -729,7 +729,7 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
 
 ## 设置阴影和渐变色
 
-- 从API version 20开始，支持通过[symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口实现了symbolGlyph组件显示阴影效果。
+- 从API version 20开始，支持通过[symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口为SymbolGlyph组件设置阴影效果。
 
   ArkTS-Dyn示例：
 
@@ -802,7 +802,7 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
 
   ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
-- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20)接口实现了symbolGlyph组件显示渐变色效果。 
+- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20)接口为SymbolGlyph组件设置渐变色效果。
 
   ArkTS-Dyn示例：
 
@@ -945,14 +945,11 @@ struct SymbolMusicDemo {
   @State symbolSourcesIndex: number = 0;
   @State symbolText: string[] = [
     // 请将$r('app.string.play_in_order')替换为实际资源文件，在本示例中该资源文件的value值为"顺序播放"
-    this.getUIContext()
-      .getHostContext()!.resourceManager.getStringSync($r('app.string.play_in_order').id),
+    resourceGetString.resourceToString($r('app.string.play_in_order')),
     // 请将$r('app.string.play_in_single_repeat')替换为实际资源文件，在本示例中该资源文件的value值为"单曲循环"
-    this.getUIContext()
-      .getHostContext()!.resourceManager.getStringSync($r('app.string.play_in_single_repeat').id),
+    resourceGetString.resourceToString($r('app.string.play_in_single_repeat')),
     // 请将$r('app.string.shuffle_play')替换为实际资源文件，在本示例中该资源文件的value值为"随机播放"
-    this.getUIContext()
-      .getHostContext()!.resourceManager.getStringSync($r('app.string.shuffle_play').id),
+    resourceGetString.resourceToString($r('app.string.shuffle_play')),
   ];
   @State symbolTextIndex: number = 0;
   @State fontColorValue: ResourceColor = Color.Grey;
@@ -963,8 +960,7 @@ struct SymbolMusicDemo {
       Row() {
         Text() {
           // 请将$r('app.string.current_playlist')替换为实际资源文件，在本示例中该资源文件的value值为"当前播放列表"
-          Span(this.getUIContext()
-            .getHostContext()!.resourceManager.getStringSync($r('app.string.current_playlist').id))
+          Span(resourceGetString.resourceToString($r('app.string.current_playlist')))
             .fontSize(20)
             .fontWeight(FontWeight.Bolder)
           Span('（101）')
@@ -1016,7 +1012,7 @@ struct SymbolMusicDemo {
         .width('25%')
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲一"
@@ -1033,7 +1029,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song_again')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲二"
@@ -1050,7 +1046,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.again_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲三"
@@ -1067,7 +1063,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song_repeat')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲四"
@@ -1084,7 +1080,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.repeat_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲五"
@@ -1101,7 +1097,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song_play')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲六"
@@ -1118,7 +1114,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.play_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲七"

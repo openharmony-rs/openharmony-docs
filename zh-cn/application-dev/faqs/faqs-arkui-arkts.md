@@ -1,10 +1,10 @@
 # ArkTS语法使用常见问题
 
-<!--Kit: ArkUI--> 
-<!--Subsystem: ArkUI--> 
-<!--Owner: @zzq212050299;@zhangboren;@maorh-->  
-<!--Designer: @s10021109;@keerecles-->  
-<!--Tester: @TerryTsao--> 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhushilin0206;@maorh-->
+<!--Designer: @s10021109;@keerecles;@zhangboren-->
+<!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 <!--deprecated_code_no_check-->
 
@@ -64,7 +64,7 @@ ForEach(this.nums,(item) => {
 
 **问题现象**
 
-数组内存储对象示例，需要对对象的属性变化进行监听。
+数组内存储对象实例，需要对对象的属性变化进行监听。
 
 **解决措施**
 
@@ -116,13 +116,13 @@ ForEach(this.nums,(item) => {
 
 **解决措施**
 
-子组件使用\@Link接受父组件的值时，需要使用'$'建立变量之间的引用关系，才能实现同步。
+子组件使用\@Link接收父组件的值时，需要使用'\$'建立变量之间的引用关系，才能实现同步。
 
 **代码示例**
 
-\@Link语义是从'$'操作符引出，即$isPlaying是this.isPlaying内部状态的双向数据绑定。当单击子组件PlayButton中的按钮时，\@Link变量更改，PlayButton与父组件中的Text和Button将同时进行刷新，同样地，当点击父组件中的Button修改this.isPlaying时，子组件PlayButton与父组件中的Text和Button也将同时刷新。
+\@Link语义是从'\$'操作符引出，即\$isPlaying是this.isPlaying内部状态的双向数据绑定。当单击子组件PlayButton中的按钮时，\@Link变量更改，PlayButton与父组件中的Text和Button将同时进行刷新，同样地，当点击父组件中的Button修改this.isPlaying时，子组件PlayButton与父组件中的Text和Button也将同时刷新。
 
-1. 在父组件使用\@State装饰器，传递数据使用$符创建引用。
+1. 在父组件使用\@State装饰器，传递数据使用\$符创建引用。
 
    ```ts
    @Entry
@@ -144,7 +144,7 @@ ForEach(this.nums,(item) => {
    
    ```
 
-2. 在子组件使用\@Link接受数据。
+2. 在子组件使用\@Link接收数据。
 
    ```ts
    @Component
@@ -178,12 +178,12 @@ ForEach(this.nums,(item) => {
 
 **代码示例一**
 
-1. 父组件中使用子组件，通过Provide提供reviewVote参数，供跨级传递给孙子组件。
+1. 父组件中使用子组件，通过\@Provide提供reviewVote参数，供跨级传递给孙子组件。
 
    ```ts
    @Entry
    @Component
-   struct Father{
+   struct Father {
      @Provide("reviewVote") reviewVotes: number = 0;
    
      build() {
@@ -200,7 +200,7 @@ ForEach(this.nums,(item) => {
 
    ```ts
    @Component
-   struct Son{
+   struct Son {
      build() {
        Column() {
          GrandSon()
@@ -209,11 +209,11 @@ ForEach(this.nums,(item) => {
    }
    ```
 
-3. 孙子组件中使用Consume来接受reviewVote的参数。
+3. 孙子组件中使用\@Consume来接收reviewVote的参数。
 
    ```ts
    @Component
-   struct GrandSon{
+   struct GrandSon {
      @Consume("reviewVote") reviewVotes: number
    
      build() {
@@ -237,7 +237,7 @@ ForEach(this.nums,(item) => {
    
      build() {
        Column() {
-         Son({reviewVotes:$reviewVotes})
+         Son({ reviewVotes: this.reviewVotes })
          Button(`Father: ${this.reviewVotes}`)
            ...
        }
@@ -245,26 +245,26 @@ ForEach(this.nums,(item) => {
    }
    ```
 
-2. 子组件Son中使用\@Link接受由父组件Father传递的参数reviewVote。
+2. 子组件Son中使用\@Link接收由父组件Father传递的参数reviewVote。
 
    ```ts
    @Component
-   struct Son{
+   struct Son {
      @Link reviewVotes: number;
      build() {
        Column() {
-         Grandson({reviewVotes:$reviewVotes})
+         Grandson({ reviewVotes: this.reviewVotes })
        }
      }
    }
    
    ```
 
-3. 孙子组件GrandSon使用\@Link接受由Son组件传递的参数reviewVote。
+3. 孙子组件GrandSon使用\@Link接收由Son组件传递的参数reviewVote。
 
    ```ts
    @Component
-   struct Grandson{
+   struct Grandson {
      @Link reviewVotes: number;
    
      build() {
@@ -333,7 +333,7 @@ const obj = {
 
 **解决措施**
 
-在声明周期函数aboutToAppear中使用异步接口获取页面数据，数据变量使用\@State修饰，数据获取完成后根据变量自动刷新页面。
+在生命周期函数aboutToAppear中使用异步接口获取页面数据，数据变量使用\@State修饰，数据获取完成后根据变量自动刷新页面。
 
 **代码示例**
 
@@ -343,11 +343,11 @@ const obj = {
 struct Test6Page {
   // 数据获取成功，会自动刷新页面
   @State message: string = 'loading.....'
-  aboutToAppear(){
+  aboutToAppear() {
     // 模拟异步接口获取数据
-    setTimeout(()=>{
+    setTimeout(() => {
       this.message = 'new msg'
-    },3000)
+    }, 3000)
   }
   build() {
     Row() {
@@ -379,7 +379,7 @@ struct Test6Page {
 
 ```ts
 import mediaquery from '@ohos.mediaquery'
-let listener = mediaquery.matchMediaSync('(orientation: landscape)'); //监听横屏事件
+let listener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 function onPortrait(mediaQueryResult) {
   if (mediaQueryResult.matches) {
    // do something here
@@ -478,7 +478,7 @@ function stringToArray(testString : string): number[] {
 
 通过export和import导入导出
 
-- namespace导数据库出
+- namespace导出
 
   ```ts
   namespace Util{
@@ -506,7 +506,7 @@ function stringToArray(testString : string): number[] {
 
 **解决措施**
 
-- 方式一：使用$r或者$rawfile访问。适合静态访问，程序运行时不改变资源路径。
+- 方式一：使用\$r或者\$rawfile访问。适合静态访问，程序运行时不改变资源路径。
 
 - 方式二：使用ResourceManage访问。适合动态访问，程序运行时可动态改变资源路径。
 
@@ -573,9 +573,9 @@ struct Faq_4_31 {
             // 解码为utf-8的字符串
             let textDecoder = util.TextDecoder.create("utf-8",{ignoreBOM: true})
             let src_str = textDecoder.decodeWithStream(src_uint8Array)
-            //替换encoding字段
+            // 替换encoding字段
             src_str = src_str.replace("GBK","utf-8")
-            console.log('Test src_str: ' + JSON.stringify(src_str));
+            console.info('Test src_str: ' + JSON.stringify(src_str));
             // 转换 xml-> json
             let conv = new convertxml.ConvertXML();
             let options = {trim : false, declarationKey:"_declaration",
@@ -584,7 +584,7 @@ struct Faq_4_31 {
               commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
               nameKey : "_name", elementsKey : "_elements"}
             let src_json = JSON.stringify(conv.convertToJSObject(src_str, options));
-            console.log('Test json: ' + JSON.stringify(src_json));
+            console.info('Test json: ' + JSON.stringify(src_json));
           })
       }
       .width('100%')
@@ -601,7 +601,7 @@ struct Faq_4_31 {
 
 TS语言的使用在生成器函数中存在以下限制：
 
-- 表达式仅允许在字符串(${expression})、if条件、ForEach的参数和组件的参数中使用。
+- 表达式仅允许在字符串(\${expression})、if条件、ForEach的参数和组件的参数中使用。
 
 - 这些表达式中的任何一个都不能导致任何应用程序状态变量（\@State、\@Link、\@Prop）的改变，否则会导致未定义和潜在不稳定的框架行为。
 
@@ -761,7 +761,7 @@ Text组件不用设置lineHeight属性，默认就是居中的。绘制文本是
 
 ```ts
 let a = encodeURI(" ")
-console.log(a) // %20
+console.info(a) // %20
 ```
 
 
@@ -773,7 +773,7 @@ console.log(a) // %20
 
 **参考链接**
 
-[转换xml](../reference/apis-arkts/js-apis-convertxml.md)
+[xml转换JavaScript](../reference/apis-arkts/js-apis-convertxml.md)
 
 
 ## 使用Styles装饰器，编译报错.stateStyles doesn't conform standard(API 9)
@@ -787,11 +787,11 @@ Styles装饰器内部只支持通用属性，使用了非通用属性作为Style
 去掉非通用属性，或者使用Builder来提取公共组件。
 
 
-## Radio组件$$双向绑定(API 9)
+## Radio组件\$\$双向绑定(API 9)
 
 **解决措施**
 
-Radio组件使用$$绑定的变量变更时，仅渲染当前组件，提高渲染速度。
+Radio组件使用\$\$绑定的变量变更时，仅渲染当前组件，提高渲染速度。
 
 当Radio组件的状态发生改变时，不会自动修改绑定的变量。
 
@@ -822,7 +822,8 @@ module.json5添加"metadata"配置项：
       {
         "name": "ArkTSPartialUpdate",
         "value": "true"
-      } ]
+      }
+    ]
   }
 }
 ```
@@ -846,7 +847,8 @@ AppStorage是UI相关的数据，需要运行在UI线程，无法将对象共享
 **解决措施**
 
 在工程中存放开发者自定义字体资源文件，代码中通过registerFont接口进行自定义字体注册，便可以在文本组件中使用fontFamily属性使用。
-推荐使用$rawfile方式引用自定义字体资源，资源可放在resources/rawfile目录下。
+
+推荐使用\$rawfile方式引用自定义字体资源，资源可放在resources/rawfile目录下。
 
 **参考链接**
 
@@ -878,10 +880,13 @@ struct text {
 **解决措施**
 
 ArkUI还提供了一种更轻量的UI元素复用机制@Builder，@Builder所装饰的函数遵循build()函数语法规则，开发者可以将重复使用的UI元素抽象成一个方法，在build方法里调用；
+
 另外，ArkUI引入了@BuilderParam装饰器，@BuilderParam用来装饰指向@Builder方法的变量，开发者可在初始化自定义组件时对此属性进行赋值，为自定义组件增加特定的功能。该装饰器用于声明任意UI描述的一个元素，类似slot占位符。
+
 参考@Builder 和@BuilderParam。
 
 **参考链接**
 
 1. [@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
+
 2. [@BuilderParam装饰器：引用@Builder函数](../ui/state-management/arkts-builderparam.md)

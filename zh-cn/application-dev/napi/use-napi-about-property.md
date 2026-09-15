@@ -1,10 +1,10 @@
 # 使用Node-API接口设置ArkTS对象的属性
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -29,7 +29,7 @@
 | napi_get_property | 在调用Node-API模块的函数或方法时，可能需要将ArkTS对象的属性值作为参数传递。此接口可以获取属性值，并将其传递给其他函数。 |
 | napi_has_property | 在进行属性访问之前，通常需要先检查对象中是否存在指定的属性。此接口可以检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。 |
 | napi_delete_property | 此函数用于删除ArkTS对象上的属性。 |
-| napi_has_own_property | 此函数用于检查ArkTS对象是否直接拥有（而不是从其原型链上继承）某个属性。 |
+| napi_has_own_property | 与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。 |
 | napi_set_named_property | 此函数用于将值赋给ArkTS对象的命名属性。 |
 | napi_get_named_property | 此函数用于获取ArkTS对象的命名属性值。 |
 | napi_has_named_property | 此函数用于检查ArkTS对象是否包含某个命名属性。 |
@@ -180,7 +180,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // 传入的第一个参数为要检测的object，第二个对象为要检测的属性，通过调用napi_get_property接口获取对应的值
+    // 传入的第一个参数为要检测的object，第二个参数为要检测的属性，通过调用napi_get_property接口获取对应的值
     napi_value result;
     napi_status status = napi_get_property(env, args[0], args[1], &result);
     if (status != napi_ok) {
@@ -363,7 +363,7 @@ export function napiDeleteProperty() {
 
 ### napi_has_own_property
 
-用于检查传入的Object是否包含自己的命名属性，不包括从原型链上继承的属性。
+与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。
 
 cpp部分代码
 
@@ -430,6 +430,76 @@ export function napiHasOwnProperty() {
     testNapi.napiHasOwnProperty(myObj, 'myProperty'));
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_own_property inherited: %{public}s',
     testNapi.napiHasOwnProperty(myObj, 'inheritedProperty'));
+}
+```
+
+当前`napi_has_own_property`的行为与`napi_has_property`一致（会遍历原型链），若需要只检查自有属性而不遍历原型链，可通过调用Node-API接口等价实现`Object.prototype.hasOwnProperty.call(obj, key)`的功能，cpp示例代码如下：
+
+``` C++
+// 等价实现napi_has_own_property功能（只检查自有属性）
+static napi_value HasOwnPropertyEquivalent(napi_env env, napi_callback_info info)
+{
+    // 接收两个ArkTS传来的参数
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // 检查第一个参数是否为对象
+    napi_valuetype valueTypeObj;
+    napi_typeof(env, args[0], &valueTypeObj);
+    if (valueTypeObj != napi_object) {
+        napi_throw_error(env, nullptr, "First argument must be an object.");
+        return nullptr;
+    }
+    // 检查第二个参数是否为string
+    valueTypeObj = napi_undefined;
+    napi_typeof(env, args[1], &valueTypeObj);
+    if (valueTypeObj != napi_string) {
+        napi_throw_error(env, nullptr, "Second argument must be a string.");
+        return nullptr;
+    }
+    // 获取全局对象
+    napi_value global = nullptr;
+    napi_status status = napi_get_global(env, &global);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_global failed");
+        return nullptr;
+    }
+    // 获取Object构造器
+    napi_value objectCtor = nullptr;
+    status = napi_get_named_property(env, global, "Object", &objectCtor);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get Object failed");
+        return nullptr;
+    }
+    // 获取Object.prototype
+    napi_value prototype = nullptr;
+    status = napi_get_named_property(env, objectCtor, "prototype", &prototype);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get Object.prototype failed");
+        return nullptr;
+    }
+    // 获取Object.prototype.hasOwnProperty函数
+    napi_value hasOwnProperty = nullptr;
+    status = napi_get_named_property(env, prototype, "hasOwnProperty", &hasOwnProperty);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get hasOwnProperty failed");
+        return nullptr;
+    }
+    // 以args[0]作为this、args[1]作为入参调用hasOwnProperty，
+    // 等价于Object.prototype.hasOwnProperty.call(obj, key)，只判断自有属性而不遍历原型链
+    napi_value argv[1] = { args[1] };
+    napi_value callResult = nullptr;
+    status = napi_call_function(env, args[0], hasOwnProperty, 1, argv, &callResult);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_call_function failed");
+        return nullptr;
+    }
+    // 将结果转为bool返回
+    bool hasProperty = false;
+    napi_get_value_bool(env, callResult, &hasProperty);
+    napi_value result;
+    napi_get_boolean(env, hasProperty, &result);
+    return result;
 }
 ```
 

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 应用分身能在一个设备上安装多个相同的应用，实现多个账号同时登录并独立运行。主要应用场景有社交账号双开、游戏大小号双开等，无需账号切换，从而省去频繁登录的繁琐。

@@ -46,10 +46,10 @@ export default {
   data: {
     frames: [
       {
-        src: "/common/landscape1.jpg",
+        src: 'common/landscape1.jpg',
       },
       {
-        src: "/common/landscape2.jpg",
+        src: 'common/landscape2.jpg',
       }
     ],
   },
@@ -146,7 +146,7 @@ export default {
 >
 > - 如果fixedsize属性值设置为true，图片的width 、height 、top 和left属性无效。
 >
-> - 如果reverse属性值设置为false，表示从第1张图片播放到最后1张图片。 如果reverse属性值设置为true，表示从最后1张图片播放到第1张图片。
+> - 如果reverse属性值设置为false，表示从第1张图片播放到最后1张图片。如果reverse属性值设置为true，表示从最后1张图片播放到第1张图片。
 
 
 ## 绑定事件

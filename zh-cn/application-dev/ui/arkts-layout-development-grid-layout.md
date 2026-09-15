@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -17,7 +17,7 @@
 
 3. 灵活的间距调整方法：栅格布局可以提供一种灵活的间距调整方法，满足特殊场景布局调整的需求。通过调整列与列之间和行与行之间的间距，可以控制整个页面的排版效果。
 
-4. 自动换行和自适应：栅格布局可以完成一对多布局的自动换行和自适应。当页面元素的数量超出了一行或一列的容量时，他们会自动换到下一行或下一列，并且在不同的设备上自适应排版，使得页面布局更加灵活和适应性强。
+4. 自动换行和自适应：栅格布局可以完成一对多布局的自动换行和自适应。当页面元素的数量超出了一行或一列的容量时，它们会自动换到下一行或下一列，并且在不同的设备上自适应排版，使得页面布局更加灵活和适应性强。
 
 [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md)为栅格容器组件，需与栅格子组件[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)在栅格布局场景中联合使用。
 
@@ -75,13 +75,13 @@
 
   ArkTS-Dyn示例：
 
-  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
+  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets)  -->
   
   ``` TypeScript
   @Entry
   @Component
   struct WindowRefGridLayout {
-    @State currentBp: string = "unknown"
+    @State currentBp: string = 'unknown'
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -124,12 +124,14 @@
 
   ArkTS-Sta示例：
 
-  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
+  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets)  -->
   
   ``` TypeScript
   import {
     Entry,
     Component,
+    Column,
+    ColumnOptions,
     Row,
     RowOptions,
     Text,
@@ -145,31 +147,41 @@
   @Entry
   @Component
   struct WindowRefGridLayout {
+    @State currentBp: string = 'unknown'
     @State bgColors: string[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
   
     build() {
-      GridRow({
-        columns: {
-          xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
-          sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
-          md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
-          lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
-          xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
-          xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
-        },
-        breakpoints: {
-          value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
-          reference: BreakpointsReference.WindowSize
+      Column({ space: 6 } as ColumnOptions) {
+        Text(this.currentBp)
+  
+        GridRow({
+          columns: {
+            xs: 2, // 窗口宽度落入xs断点上，栅格容器分为2列。
+            sm: 4, // 窗口宽度落入sm断点上，栅格容器分为4列。
+            md: 8, // 窗口宽度落入md断点上，栅格容器分为8列。
+            lg: 12, // 窗口宽度落入lg断点上，栅格容器分为12列。
+            xl: 12, // 窗口宽度落入xl断点上，栅格容器分为12列。
+            xxl: 12 // 窗口宽度落入xxl断点上，栅格容器分为12列。
+          },
+          breakpoints: {
+            value: ['320vp', '600vp', '840vp', '1440vp', '1600vp'], // 表示在保留默认断点['320vp', '600vp', '840vp']的同时自定义增加'1440vp', '1600vp'的断点，实际开发中需要根据实际使用场景，合理设置断点值实现一次开发多端适配。
+            reference: BreakpointsReference.WindowSize
+          }
+        }) {
+          ForEach(this.bgColors, (color: string, index?: int | undefined) => {
+            GridCol({ span: 1 }) { // 所有子组件占一列。
+              Row() {
+                Text(`${index}`)
+              }.width('100%').height('50vp')
+            }.backgroundColor(color)
+          })
         }
-      }) {
-        ForEach(this.bgColors, (color: string, index: Int) => {
-          GridCol({ span: 1 }) { // 所有子组件占一列。
-            Row() {
-              Text(index.toString())
-            }.width('100%').height('50vp')
-          }.backgroundColor(color)
+        .height(200)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .onBreakpointChange((breakPoint) => {
+          this.currentBp = breakPoint
         })
       }
     }
@@ -266,7 +278,7 @@ GridRow中通过columns设置栅格布局的总列数。
     ![columns4](figures/columns4.png)
 
 
-columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型, 可按两种方式设置栅格布局的总列数。
+columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型，可按两种方式设置栅格布局的总列数。
 - 当columns类型为number时，栅格布局在任何尺寸设备下都被分为同一列数。下面分别设置栅格布局列数为4和8，子元素占一列，效果如下：
 
   ArkTS-Dyn示例：
@@ -314,6 +326,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
   import {
     Entry,
     Component,
+    Column,
+    ColumnOptions,
     Row,
     RowOptions,
     Text,
@@ -321,7 +335,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     GridRowOptions,
     GridCol,
     GridColOptions,
-    ForEach
+    ForEach,
+    ItemAlign
   } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   
@@ -332,23 +347,27 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: string[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+
     build() {
-      Row() {
-        GridRow({ columns: 4 }) {
-          ForEach(this.bgColors, (item: string, index: Int) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(index.toString())
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 } as ColumnOptions) {
+        Text('columns：4').alignSelf(ItemAlign.Start)
+
+        Row() {
+          GridRow({ columns: 4 }) {
+            ForEach(this.bgColors, (item: string, index?: int | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
@@ -356,7 +375,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
   ArkTS-Dyn示例：
 
-  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets) -->
+  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets)  -->
   
   ``` TypeScript
   // xxx.ets
@@ -366,11 +385,11 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: ResourceColor[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+  
     build() {
       Column({ space: 6 }) {
         Text('columns：8').alignSelf(ItemAlign.Start)
-
+  
         Row() {
           GridRow({ columns: 8 }) {
             ForEach(this.bgColors, (item: ResourceColor, index?: number | undefined) => {
@@ -393,12 +412,14 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
   ArkTS-Sta示例：
 
-  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets) -->
+  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets)  -->
   
   ``` TypeScript
   import {
     Entry,
     Component,
+    Column,
+    ColumnOptions,
     Row,
     RowOptions,
     Text,
@@ -406,7 +427,8 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     GridRowOptions,
     GridCol,
     GridColOptions,
-    ForEach
+    ForEach,
+    ItemAlign
   } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   
@@ -417,23 +439,27 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
     @State bgColors: string[] =
       ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
         'rgb(255,192,0)', 'rgb(170,10,33)'];
-    @State currentBp: string = 'unknown';
+  
     build() {
-      Row() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (item: string, index: Int) => {
-            GridCol({ span: 1 }) {
-              Row() {
-                Text(index.toString())
-              }.width('100%').height('50')
-            }.backgroundColor(item)
-          })
+      Column({ space: 6 } as ColumnOptions) {
+        Text('columns：8').alignSelf(ItemAlign.Start)
+  
+        Row() {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (item: string, index?: int | undefined) => {
+              GridCol({ span: 1 }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50')
+              }.backgroundColor(item)
+            })
+          }
+          .width('100%').height('100%')
         }
-        .width('100%').height('100%')
+        .height(160)
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .width('90%')
       }
-      .height(160)
-      .border({ color: 'rgb(39,135,217)', width: 2 })
-      .width('90%')
     }
   }
   ```
@@ -530,7 +556,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
     API version 20及以后布局显示（xs设备继承sm设备栅格列数）：
 
-    ![gridLayoutColumnOption2](figures/gridLayoutColumnOption2.gif)
+    ![gridLayoutColumnOption2-w800](figures/gridLayoutColumnOption2.gif)
 
   仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)）取默认值。
 
@@ -769,7 +795,7 @@ GridRow中通过[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.m
 
 子组件占栅格布局的列数，决定了子组件的宽度。默认值为1。
 
-span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)两种类型, 可按两种方式设置栅格子组件占栅格容器的列数。
+span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)两种类型，可按两种方式设置栅格子组件占栅格容器的列数。
 - 当span类型为number时，子组件在所有尺寸设备下占用的列数相同。
 
 
@@ -841,6 +867,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
             .backgroundColor(color)
           })
         }
+        .border({ color: 'rgb(39,135,217)', width: 2 })
+        .height('150vp')
       }
     }
     ```
@@ -859,7 +887,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct SpanColumnOptionExample {
-      @State currentBp: string = "unknown"
+      @State currentBp: string = 'unknown'
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
@@ -903,6 +931,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     import {
       Entry,
       Component,
+      Column,
+      ColumnOptions,
       Row,
       RowOptions,
       Text,
@@ -917,20 +947,37 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     @Entry
     @Component
     struct SpanColumnOptionExample {
+      @State currentBp: string = 'unknown'
       @State bgColors: string[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
     
       build() {
-        GridRow({ columns: 8 }) {
-          ForEach(this.bgColors, (color: string, index: Int) => {
-            GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
-              Row() {
-                Text(index.toString())
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
+        Column({ space: 6 } as ColumnOptions) {
+          GridRow({ columns: 8 }) {
+            ForEach(this.bgColors, (color: string, index?: int | undefined) => {
+              GridCol({
+                span: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                }
+              }) {
+                Row() {
+                  Text(`${index}`)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+          .border({ color: 'rgb(39,135,217)', width: 2 })
+          .height('150vp')
+          .onBreakpointChange((breakPoint) => {
+            this.currentBp = breakPoint
           })
+
+          Text(this.currentBp)
         }
       }
     }
@@ -986,6 +1033,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
     import {
       Entry,
       Component,
+      Column,
+      ColumnOptions,
       Row,
       RowOptions,
       Text,
@@ -993,7 +1042,8 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       GridRowOptions,
       GridCol,
       GridColOptions,
-      ForEach
+      ForEach,
+      Blank
     } from '@ohos.arkui.component';
     import { State } from '@ohos.arkui.stateManagement';
     
@@ -1003,18 +1053,22 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       @State bgColors: string[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
-        GridRow() {
-          ForEach(this.bgColors, (color: string, index: Int) => {
-            GridCol({ offset: 2, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
-          })
-        }
+        Column() {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: string, index?: int | undefined) => {
+              GridCol({ offset: 2, span: 1 }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+
+          Blank().width('100%').height(150)
+        }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
     }
     ```
@@ -1029,17 +1083,17 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
     ArkTS-Dyn示例：
 
-    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets) -->
+    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets)  -->
     
     ``` TypeScript
     @Entry
     @Component
     struct OffsetColumnOptionExample {
-      @State currentBp: string = "unknown"
+      @State currentBp: string = 'unknown';
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-
+        
       build() {
         Column({ space: 6 }) {
           GridRow({ columns: 12 }) {
@@ -1065,7 +1119,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           .onBreakpointChange((breakPoint) => {
             this.currentBp = breakPoint
           })
-
+    
           Text(this.currentBp)
         }
       }
@@ -1074,7 +1128,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
     ArkTS-Sta示例：
 
-    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets) -->
+    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets)  -->
     
     ``` TypeScript
     import {
@@ -1121,7 +1175,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
 ### order
 
-栅格子组件的序号，决定子组件排列次序。当子组件不设置order或者设置相同的order, 子组件按照代码顺序展示。当子组件设置不同的order时，order较小的组件在前，较大的在后。
+栅格子组件的序号，决定子组件排列次序。当子组件不设置order或者设置相同的order，子组件按照代码顺序展示。当子组件设置不同的order时，order较小的组件在前，较大的在后。
 
 当子组件部分设置order，部分不设置order时，未设置order的子组件依次排序靠前，设置了order的子组件按照数值从小到大排列。
 
@@ -1189,7 +1243,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
           Text('4')
         }.width('100%').height('50vp')
       }.backgroundColor('rgb(39,135,217)')
-    }
+    }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp')
     ```
 
     ![gridColOrderToNumber](figures/gridColOrderToNumber.png)

@@ -494,7 +494,7 @@ perfTest.destroy();
             await driver.delayMs(3000);
             finish(true);
           };
-          let resetCode = async (finish: Callback<boolean>) => { // 复位环境，将列表划至顶部
+          let resetCode = async (finish: Callback<boolean>) => { // 复位环境，将列表滑至顶部
             await scroll.scrollToTop(40000);
             await driver.delayMs(1000);
             finish(true);
@@ -598,5 +598,5 @@ perfTest.destroy();
     ```
 
 <!--Del-->
-PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest)。
+PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/perftest)。
 <!--DelEnd-->

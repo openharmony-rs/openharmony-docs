@@ -324,95 +324,95 @@ NODE_CLIP_SHAPE = 24
 
 **参数：**
 
-1.rect类型：<br>
+1. rect类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
-| .value[1].f32 | 矩形宽度，单位为vp。 |
-| .value[2].f32 | 矩形高度，单位为vp。 |
-| .value[3].f32 | 矩形圆角宽度，单位为vp。 |
-| .value[4].f32 | 矩形圆角高度，单位为vp。 |
-| .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
-| .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
-| .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
-| .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，矩形形状的坐标偏移量，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
+   | .value[1].f32 | 矩形宽度，单位为vp。 |
+   | .value[2].f32 | 矩形高度，单位为vp。 |
+   | .value[3].f32 | 矩形圆角宽度，单位为vp。 |
+   | .value[4].f32 | 矩形圆角高度，单位为vp。 |
+   | .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
+   | .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
+   | .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
+   | .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，矩形形状的坐标偏移量，在仅传入.object参数时生效。 |
 
-2.circle类型：<br>
+2. circle类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
-| .value[1].f32 | 圆形宽度，单位为vp。 |
-| .value[2].f32 | 圆形高度，单位为vp。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，圆形坐标偏移量，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
+   | .value[1].f32 | 圆形宽度，单位为vp。 |
+   | .value[2].f32 | 圆形高度，单位为vp。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，圆形坐标偏移量，在仅传入.object参数时生效。 |
 
-3.ellipse类型：<br>
+3. ellipse类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
-| .value[1].f32 | 椭圆形宽度，单位为vp。 |
-| .value[2].f32 | 椭圆形高度，单位为vp。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，椭圆形坐标偏移量，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
+   | .value[1].f32 | 椭圆形宽度，单位为vp。 |
+   | .value[2].f32 | 椭圆形高度，单位为vp。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，椭圆形坐标偏移量，在仅传入.object参数时生效。 |
 
-4.path类型：<br>
+4. path类型：<br>
 
-| 参数项 | 描述 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
-| .value[1].f32 | 路径宽度，单位为vp。 |
-| .value[2].f32 | 路径高度，单位为vp。 |
-| .string | 路径绘制的命令字符串。 |
-| .object | 参数类型为ArkUI_RenderNodeClipOption，路径绘制的命令，在仅传入.object参数时生效。 |
+   | 参数项 | 描述 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
+   | .value[1].f32 | 路径宽度，单位为vp。 |
+   | .value[2].f32 | 路径高度，单位为vp。 |
+   | .string | 路径绘制的命令字符串。 |
+   | .object | 参数类型为ArkUI_RenderNodeClipOption，路径绘制的命令，在仅传入.object参数时生效。 |
 
 **返回：**
 
-1.rect类型：<br>
+1. rect类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
-| .value[1].f32 | 矩形宽度，单位为vp。 |
-| .value[2].f32 | 矩形高度，单位为vp。 |
-| .value[3].f32 | 矩形圆角宽度，单位为vp。 |
-| .value[4].f32 | 矩形圆角高度，单位为vp。 |
-| .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
-| .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
-| .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
-| .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
-| .value[9]?.f32 | 矩形形状的横坐标偏移，单位为vp。 |
-| .value[10]?.f32 | 矩形形状的纵坐标偏移，单位为vp。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_RECTANGLE。 |
+   | .value[1].f32 | 矩形宽度，单位为vp。 |
+   | .value[2].f32 | 矩形高度，单位为vp。 |
+   | .value[3].f32 | 矩形圆角宽度，单位为vp。 |
+   | .value[4].f32 | 矩形圆角高度，单位为vp。 |
+   | .value[5]?.f32 | 矩形形状的左上圆角半径，单位为vp。 |
+   | .value[6]?.f32 | 矩形形状的左下圆角半径，单位为vp。 |
+   | .value[7]?.f32 | 矩形形状的右上圆角半径，单位为vp。 |
+   | .value[8]?.f32 | 矩形形状的右下圆角半径，单位为vp。 |
+   | .value[9]?.f32 | 矩形形状的横坐标偏移，单位为vp。 |
+   | .value[10]?.f32 | 矩形形状的纵坐标偏移，单位为vp。 |
 
-2.circle类型：<br>
+2. circle类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
-| .value[1].f32 | 圆形宽度，单位为vp。 |
-| .value[2].f32 | 圆形高度，单位为vp。 |
-| .value[3]?.f32 | 圆形横坐标偏移，单位为vp。 |
-| .value[4]?.f32 | 圆形纵坐标偏移，单位为vp。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_CIRCLE。 |
+   | .value[1].f32 | 圆形宽度，单位为vp。 |
+   | .value[2].f32 | 圆形高度，单位为vp。 |
+   | .value[3]?.f32 | 圆形横坐标偏移，单位为vp。 |
+   | .value[4]?.f32 | 圆形纵坐标偏移，单位为vp。 |
 
-3.ellipse类型：<br>
+3. ellipse类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
-| .value[1].f32 | 椭圆形宽度，单位为vp。 |
-| .value[2].f32 | 椭圆形高度，单位为vp。 |
-| .value[3]?.f32 | 椭圆形横坐标偏移，单位为vp。 |
-| .value[4]?.f32 | 椭圆形纵坐标偏移，单位为vp。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_ELLIPSE。 |
+   | .value[1].f32 | 椭圆形宽度，单位为vp。 |
+   | .value[2].f32 | 椭圆形高度，单位为vp。 |
+   | .value[3]?.f32 | 椭圆形横坐标偏移，单位为vp。 |
+   | .value[4]?.f32 | 椭圆形纵坐标偏移，单位为vp。 |
 
-4.path类型：<br>
+4. path类型：<br>
 
-| 类型 | 说明 |
-| -- | -- |
-| .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
-| .value[1].f32 | 路径宽度，单位为vp。 |
-| .value[2].f32 | 路径高度，单位为vp。 |
-| .string | 路径绘制的命令字符串。 |
+   | 类型 | 说明 |
+   | -- | -- |
+   | .value[0].i32 | 裁剪类型，参数类型ArkUI_ClipType，ARKUI_CLIP_TYPE_PATH。 |
+   | .value[1].f32 | 路径宽度，单位为vp。 |
+   | .value[2].f32 | 路径高度，单位为vp。 |
+   | .string | 路径绘制的命令字符串。 |
 
 
 ## NODE_TRANSFORM
@@ -480,12 +480,12 @@ NODE_CUSTOM_SHADOW = 29
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0]?.f32 | 阴影模糊半径，单位为px。 |
-| .value[1]?.i32 | 是否开启智能取色，0代表不开启，1代表开启，默认不开启。 |
-| .value[2]?.f32 | 阴影X轴偏移量，单位为px。 |
-| .value[3]?.f32 | 阴影Y轴偏移量，单位为px。 |
-| .value[4]?.i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
-| .value[5]?.u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0]?.f32 | 阴影模糊半径，取值范围[0, +∞)，传入负值时返回参数校验失败。单位为px，默认值0.0。 |
+| .value[1]?.i32 | 是否开启智能取色，0代表不开启（使用固定颜色），1代表开启（自动从组件周围取色适配背景），默认不开启。当需要阴影颜色自动适配周围背景时传入1。 |
+| .value[2]?.f32 | 阴影X轴偏移量，单位为px，默认值0.0。 |
+| .value[3]?.f32 | 阴影Y轴偏移量，单位为px，默认值0.0。 |
+| .value[4]?.i32 | 阴影类型，参数类型为[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
+| .value[5]?.u32 | 智能取色关闭（.value[1]为0）时表示阴影颜色，0xARGB格式，形如0xFFFF0000表示红色，不传入时默认值为0xFF000000（黑色）；智能取色开启（.value[1]为1）时表示颜色策略，取[ArkUI_ColorStrategy](capi-native-type-h.md#arkui_colorstrategy)枚举值。 |
 | .value[6]?.u32 | 阴影是否内部填充，0表示不填充，1表示填充。 |
 
 **返回：**
@@ -496,8 +496,8 @@ NODE_CUSTOM_SHADOW = 29
 | .value[1].i32 | 是否开启智能取色。 |
 | .value[2].f32 | 阴影X轴偏移量，单位为px。 |
 | .value[3].f32 | 阴影Y轴偏移量，单位为px。 |
-| .value[4].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
-| .value[5].u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[4].i32 | 阴影类型，参数类型为[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。枚举值包括：ARKUI_SHADOW_TYPE_COLOR（颜色阴影）、ARKUI_SHADOW_TYPE_BLUR（模糊阴影）。 |
+| .value[5].u32 | 阴影颜色，0xARGB格式，形如0xFFFF0000表示红色。 |
 | .value[6].u32 | 阴影是否内部填充，0表示不填充，1表示填充。 |
 
 ## NODE_BACKGROUND_BLUR_STYLE
@@ -1253,9 +1253,9 @@ NODE_BACKDROP_BLUR = 99
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 表示背景模糊半径，取值范围[0,+∞)。单位px，默认值0.0。 |
-| .value[1]?.f32 | 表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。 |
-| .value[2]?.f32 | 表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。 |
+| .value[0].f32 | 表示背景模糊半径，取值范围[0,+∞)，超出范围时返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。单位px，默认值0.0。 |
+| .value[1]?.f32 | 表示灰阶模糊参数，对黑色的提亮程度，取值范围为[0,127]。不传入时默认值为0，当需要精细调整模糊效果中黑色区域的提亮程度时传入此参数。 |
+| .value[2]?.f32 | 表示灰阶模糊参数，对白色的压暗程度，取值范围为[0,127]。不传入时默认值为0，当需要精细调整模糊效果中白色区域的压暗程度时传入此参数。 |
 
 **返回：**
 
@@ -1373,7 +1373,7 @@ NODE_PIXEL_ROUND = 109
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。 |
+| .object | 设置组件的像素取整策略；参数类型为[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)。 |
 
 **返回：**
 

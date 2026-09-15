@@ -12,7 +12,7 @@ typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
 
 ## 概述
 
-同步操作中失败的文件列表信息。该结构包含文件路径信息以及失败的具体错误原因。
+同步操作中失败的文件列表信息。该结构体包含文件路径信息以及失败的具体错误原因，适用于同步操作失败后定位失败文件和处理失败原因。
 
 **起始版本：** 21
 
@@ -27,6 +27,6 @@ typedef struct CloudDisk_FailedList {...} CloudDisk_FailedList
 | 名称 | 描述 |
 | -- | -- |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | 失败文件的绝对路径信息。 |
-| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步失败的原因。 |
+| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步失败的原因，具体错误类型及含义参见[CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason)。 |
 
 

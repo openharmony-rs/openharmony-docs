@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ANI场景下的多线程协作通常有两种方式：自行创建native线程并附加到ArkTS虚拟机，或在ArkTS侧使用语言层并发API（如`taskpool`）调度native调用。选择哪种方式取决于线程模型由谁管理：已有C++线程、系统回调或长期后台任务更适合第一种；只是希望把耗时native计算放到后台执行时，优先使用第二种。
 
@@ -24,19 +24,26 @@ native侧自行创建线程时，线程默认不具备可用的ANI调用上下�
 void StartWorker(ani_env *env)
 {
     ani_vm *vm = nullptr;
-    env->GetVM(&vm);
+    ani_status status = env->GetVM(&vm);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
 
     std::thread([vm]() {
         ani_env *threadEnv = nullptr;
         ani_options args {0, nullptr};
-        if (vm->AttachCurrentThread(&args, ANI_VERSION_1, &threadEnv) != ANI_OK) {
-            return;
+        ani_status status = vm->AttachCurrentThread(&args, ANI_VERSION_1, &threadEnv);
+        if (status != ANI_OK) {
+            // handle error and return
         }
 
         // 在该线程中只能使用threadEnv调用ANI接口。
         // 不要使用创建线程时所在调用栈中的env。
 
-        vm->DetachCurrentThread();
+        status = vm->DetachCurrentThread();
+        if (status != ANI_OK) {
+            // handle error and return
+        }
     }).detach();
 }
 ```

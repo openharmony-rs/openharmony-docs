@@ -28,8 +28,8 @@ typedef struct Http_RequestOptions {...} Http_RequestOptions
 | const char *method | HTTP请求方法。 |
 | uint32_t priority | HTTP请求优先级。 |
 | [Http_Headers](capi-netstack-http-headers.md) *headers | HTTP请求头，指向Http_Headers的指针，参考[Http_Headers](capi-netstack-http-headers.md)。 |
-| uint32_t readTimeout | 读取超时时间。 |
-| uint32_t connectTimeout | 连接超时时间。 |
+| uint32_t readTimeout | 读取超时时间。单位：ms。 |
+| uint32_t connectTimeout | 连接超时时间。单位：ms。 |
 | [Http_HttpProtocol](capi-net-http-type-h.md#http_httpprotocol) httpProtocol | 使用的协议，参考[Http_HttpProtocol](capi-net-http-type-h.md#http_httpprotocol)。 |
 | [Http_Proxy](capi-netstack-http-proxy.md) *httpProxy | 代理配置信息，表示是否使用代理，默认不使用代理，参考[Http_Proxy](capi-netstack-http-proxy.md)。 |
 | const char *caPath | 证书路径，如果设置了此参数，系统将使用用户指定路径的CA证书（开发者需保证该路径下CA证书的可访问性），否则将使用系统预设CA证书。 |

@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 - [Taihe是什么](taihe-introduction.md)
 - [Taihe基本使用文档](taihe-quick-start.md)

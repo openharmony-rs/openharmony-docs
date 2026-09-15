@@ -32,7 +32,7 @@ import { StartOptions } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| windowFocused<sup>12+</sup> | boolean | 否 | 是 | 窗口是否获焦。默认是true，表示窗口获焦。<br>**约束：**<br>1.该功能仅在2in1和Tablet设备上生效。<br>2.仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| windowFocused<sup>12+</sup> | boolean | 否 | 是 | 窗口是否获焦。默认是true，表示窗口获焦；false表示窗口不获焦。<br>**约束：**<br>1.该功能仅在2in1和Tablet设备上生效。<br>2.仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
@@ -52,6 +52,7 @@ import { StartOptions } from '@kit.AbilityKit';
       };
 
       try {
+        // 启动指定的Ability，传入Want和StartOptions参数
         this.context.startAbility(want, options, (err: BusinessError | null) => {
           if (err) {
             // 处理业务逻辑错误

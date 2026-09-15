@@ -2,14 +2,14 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-HiChecker可以作为应用开发阶段使用的检测能力，用于检测代码运行过程中部分易忽略的问题，如应用线程出现耗时调用、应用进程中元能力资源泄露等问题。开发者可以通过日志记录或进程crash等形式查看具体问题并进行修改，提升应用的使用体验。
+HiChecker可以作为应用开发阶段使用的检测能力，用于检测代码运行过程中部分易忽略的问题，如应用线程出现耗时调用、应用进程中元能力资源泄漏等问题。开发者可以通过日志记录或进程crash等形式查看具体问题并进行修改，提升应用的使用体验。
 
 ## 基本概念
 
@@ -19,7 +19,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 
 1. 应用程序通过HiChecker函数接口控制规则的增删查改。
 
-2. 子系统有耗时调用或者Ability资源泄露时通过HiChecker通知有对应规则的事件发生，HiChecker检测条件满足时做对应的操作。
+2. 子系统有耗时调用或者Ability资源泄漏时通过HiChecker通知有对应规则的事件发生，HiChecker检测条件满足时做对应的操作。
 
 ## 约束与限制
 
@@ -100,7 +100,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
    };
    ```
 
-2. 安装hap后运行，通过DevEco Studio Log插件过滤 HICHECKER 关键字日志或者通过 hdc shell "hilog | grep HICHECKER" 命令查询，有如下调用栈信息说明检测成功（调用栈为触发检测规则时的调用栈）。
+2. 安装hap后运行，通过DevEco Studio Log插件过滤 HICHECKER 关键字日志或者通过 hdc shell "hilog | grep HICHECKER" 命令查询，有如下调用栈信息说明检测成功（调用栈为触发检测时的调用栈）。
 
    ```shell
    08-05 23:11:07.206  1799  1799 I C02d0b/HICHECKER: StackTrace:

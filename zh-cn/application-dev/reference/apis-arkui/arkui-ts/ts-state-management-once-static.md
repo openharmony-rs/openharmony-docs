@@ -12,7 +12,7 @@
 
 @Once作为辅助装饰器，用于状态管理V2中，需要搭配@Param一起使用，适用于仅从外部初始化一次且不接受后续同步变化的场景。
 
-在ArkTS-Sta中使用时，开发指南参考：[@Once：初始化同步一次（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-once.md)。
+在ArkTS-Sta中使用时，开发指南参考：[\@Once装饰器：初始化同步一次（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-once.md)。
 
 ## @Once
 

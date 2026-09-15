@@ -258,7 +258,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
-| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br/>适用版本：12+ |
 
 > **说明：**
 > 
@@ -376,7 +376,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | ------ | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
-| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled.<br/>适用版本：12+ |
 
 > **说明：**
 > 
@@ -486,7 +486,7 @@ ArkTS-Sta: getSync(id: string, options?: SnapshotOptions): image.PixelMap | null
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. <br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。  |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
 
 > **说明：**
 > 
@@ -552,8 +552,8 @@ struct SnapshotExample {
 
 | 名称        | 类型     | 只读 | 可选 | 说明                   |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
-| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：(0, +∞)。异常值为-1，表示查询组件截图尺寸限制失败。<br>单位：px |
+| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：(0, +∞)。异常值为-1，表示查询组件截图尺寸限制失败。<br>单位：px |
 
 ## SnapshotOptions<sup>12+</sup>
 

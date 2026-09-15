@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @yangcan18-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 

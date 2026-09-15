@@ -31,7 +31,7 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 | 类型       | 说明     |
 |------------|--------|
 | 'status'   | 状态栏。   |
-| 'navigation'   | <!--RP13--><!--RP13End-->三键导航栏。   |
+| 'navigation'   | 三键导航栏<!--RP13-->或工具栏。当前工具栏仅Car设备支持。<!--RP13End-->   |
 | 'navigationIndicator'   | 底部导航。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> |
 
 ## WindowAnimationCurveParam<sup>20+</sup>
@@ -86,7 +86,7 @@ ArkTS-Sta: type WindowAnimationCurveParam = Array&lt;double&gt;
 
 ## RotationChangeCallback<sup>19+</sup>
 
-type RotationChangeCallback<T, U> = (info: T) => U
+type RotationChangeCallback&lt;T, U&gt; = (info: T) => U
 
 旋转事件通知通用回调函数。
 
@@ -104,13 +104,13 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | -------------------------- |
-| info | T    | 是   | 回调函数调用时系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数。 |
+| info | T    | 是   | 旋转事件信息，系统传入[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)类型的参数，用于通知开发者旋转变化时的窗口信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------------------------------- | ------------------------------------ |
-| U | <br>ArkTS-Dyn: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值。<br>ArkTS-Sta: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined类型的返回值。 |
+| U | <br>ArkTS-Dyn: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void类型的返回值，应用指定旋转后的窗口位置。<br>ArkTS-Sta: 回调函数需要返回[RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| undefined类型的返回值，应用指定旋转后的窗口位置；当返回void时，系统不更改窗口位置。 |
 
 ## WindowEventListener
 

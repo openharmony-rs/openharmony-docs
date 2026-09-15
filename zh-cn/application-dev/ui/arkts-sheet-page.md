@@ -1,4 +1,4 @@
-# 绑定半模态页面（bindSheet）
+# 绑定半模态页面 (bindSheet)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
@@ -52,6 +52,19 @@
 
 如果开发者希望在面板内容的builder中定义滚动容器，如[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)，并结合半模态的上述交互能力，那么需要在垂直方向上为滚动容器设置嵌套滚动属性。
 
+ArkTS-Dyn示例：
+
+```ts
+.nestedScroll({
+    // 可滚动组件往末尾端滚动时的嵌套滚动选项，手势向上
+    scrollForward: NestedScrollMode.PARENT_FIRST,
+    // 可滚动组件往起始端滚动时的嵌套滚动选项，手势向下
+    scrollBackward: NestedScrollMode.SELF_FIRST,
+})
+```
+
+ArkTS-Sta示例：
+
 ```ts
 .nestedScroll({
     // 可滚动组件往末尾端滚动时的嵌套滚动选项，手势向上
@@ -62,10 +75,12 @@
 ```
 
 完整示例代码如下：
+
+ArkTS-Dyn示例：
+
 <!-- @[Nested_scrolling_Sheet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets) -->
 
 ``` TypeScript
-
 @Entry
 @Component
 struct SheetDemo {
@@ -121,6 +136,90 @@ struct SheetDemo {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[Nested_scrolling_Sheet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BindSheetStatic/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Builder,
+  Text,
+  List,
+  ListItem,
+  FontWeight,
+  Margin,
+  NestedScrollMode,
+  ClickEvent,
+  SheetSize,
+  SheetType,
+  Button,
+  FlexAlign,
+  Column,
+  Color,
+  TextAlign,
+  Alignment,
+  ForEach,
+  ListItemAlign,
+  SheetOptions,
+  TripleLengthDetents,
+  $$,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetDemo {
+  @State isShowSheet: boolean = false;
+  @State items: Array<string> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+  @Builder
+  SheetBuilder() {
+    Column() {
+      // 第一步：自定义滚动容器
+      List({ space: '10vp' }) {
+        ForEach(this.items, (item: string) => {
+          ListItem() {
+            Text(String(item)).fontSize(16).fontWeight(FontWeight.Bold)
+          }.width('90%').height('80vp').backgroundColor('#ff53ecd9').borderRadius(10)
+        }, (item: string):string => item)
+      }
+      .alignListItem(ListItemAlign.Center)
+      .margin({ top: '10vp' } as Margin)
+      .width('100%')
+      .height('900px')
+      // 第二步：设置滚动组件的嵌套滚动属性
+      .nestedScroll({
+        scrollForward: NestedScrollMode.PARENT_FIRST,
+        scrollBackward: NestedScrollMode.SELF_FIRST,
+      })
+
+      Text("非滚动区域")
+        .width('100%')
+        .backgroundColor(Color.Gray)
+        .layoutWeight(1)
+        .textAlign(TextAlign.Center)
+        .align(Alignment.Top)
+    }.width('100%').height('100%')
+  }
+
+  build() {
+    Column() {
+      Button('Open Sheet').width('90%').height('80vp')
+        .onClick((e: ClickEvent) => {
+          this.isShowSheet = !this.isShowSheet;
+        })
+        .bindSheet($$(this.isShowSheet), this.SheetBuilder, {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, "600"] as TripleLengthDetents,
+          preferType: SheetType.BOTTOM,
+          title: { title: '嵌套滚动场景' },
+        } as SheetOptions)
+    }.width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ![sheetTwo](figures/sheetTwo.PNG)
 
@@ -131,7 +230,10 @@ struct SheetDemo {
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
-<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->
+
+ArkTS-Dyn示例：
+
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -143,7 +245,7 @@ const BUNDLE = 'SupportingAgingFriendly_';
 @Entry
 @Component
 struct OnWillDismiss_Dismiss {
-  @State isShow: Boolean = false;
+  @State isShow: boolean = false;
 
   @Builder
   myBuilder() {
@@ -167,11 +269,11 @@ struct OnWillDismiss_Dismiss {
         title: { title: 'title', subtitle: 'subtitle' },
         enableOutsideInteractive: false,
         onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
-          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
+          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否选择关闭半模态"
           this.getUIContext().showAlertDialog(
             {
-              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"示例2（自定义转场动画）"
-              message: $r('app.string.bindContentCover_label2'),
+              // 请将$r('app.string.bindSheetCmd_label12')替换为实际资源文件，在本示例中该资源文件的value值为"是否选择关闭半模态"
+              message: $r('app.string.bindSheetCmd_label12'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,
               gridCount: 4,
@@ -205,6 +307,97 @@ struct OnWillDismiss_Dismiss {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BindSheetStatic/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
+
+``` TypeScript
+import hilog from '@ohos.hilog';
+import {
+  $r,
+  Entry,
+  Component,
+  Builder,
+  Column,
+  Button,
+  SheetSize,
+  BlurStyle,
+  DismissSheetAction,
+  DialogAlignment,
+  DialogButtonStyle,
+  AlertDialogParamWithButtons,
+  $$,
+  State
+} from '@kit.ArkUI';
+
+const TAG = '[Sample_SupportingAgingFriendly]';
+const DOMAIN: int = 0xF811;
+const BUNDLE = 'SupportingAgingFriendly_';
+
+@Entry
+@Component
+struct OnWillDismiss_Dismiss {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder(): void {
+    Column() {
+      Button('Button')
+    }
+  }
+
+  build() {
+    Button('OpenBindSheet')
+      .onClick(() => {
+        this.isShow = true
+      })
+      .margin(120)
+      // 第一步：创建半模态页面
+      .bindSheet($$(this.isShow), this.myBuilder, {
+        height: SheetSize.MEDIUM,
+        blurStyle: BlurStyle.Thick,
+        dragBar: true,
+        detents: [SheetSize.MEDIUM, SheetSize.LARGE],
+        title: { title: 'title', subtitle: 'subtitle' },
+        enableOutsideInteractive: false,
+        onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
+          // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否选择关闭半模态"
+          this.getUIContext().showAlertDialog(
+            {
+              // 请将$r('app.string.bindSheetCmd_label12')替换为实际资源文件，在本示例中该资源文件的value值为"是否选择关闭半模态"
+              message: $r('app.string.bindSheetCmd_label12'),
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              gridCount: 4,
+              offset: { dx: 0, dy: -20 },
+              primaryButton: {
+                value: 'cancel',
+                action: () => {
+                  hilog.info(DOMAIN, TAG, 'Callback when the cancel button is clicked');
+                }
+              },
+              secondaryButton: {
+                enabled: true,
+                defaultFocus: true,
+                style: DialogButtonStyle.HIGHLIGHT,
+                value: 'ok',
+                // 第三步：确认关闭半模态逻辑所在，此处为AlertDialog的Button回调
+                action: () => {
+                  // 第四步：上述第三步逻辑触发的时候，调用dismiss()关闭半模态
+                  dismissSheetAction.dismiss();
+                  hilog.info(DOMAIN, TAG, 'Callback when the ok button is clicked');
+                }
+              },
+              cancel: () => {
+                hilog.info(DOMAIN, TAG, BUNDLE + 'onWillDismiss_Dismiss:' + 'AlertDialog Closed callbacks');
+              }
+            } as AlertDialogParamWithButtons
+          )
+        })
+      })
+  }
+}
+```
 
 ![onWillDismiss](figures/onWillDismiss.png)
 
@@ -213,6 +406,18 @@ struct OnWillDismiss_Dismiss {
 由于声明了onWillDismiss接口，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
 
 下述示例显示半模态页面只在下滑的时候关闭。
+
+ArkTS-Dyn示例：
+
+```ts
+onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
+  if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
+    DismissSheetAction.dismiss();// 注册dismiss行为
+  }
+}),
+```
+
+ArkTS-Sta示例：
 
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
@@ -227,6 +432,22 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 类比`onWillDismiss`，在声明了`onWillSpringBackWhenDismiss`后，半模态下滑时的回弹操作需要使用 `SpringBackAction.springBack()`处理，无此逻辑则不会回弹。
 
 具体代码如下，在半模态下滑的时候无需回弹。
+
+ArkTS-Dyn示例：
+
+```ts
+onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
+  if (DismissSheetAction.reason === DismissReason.SLIDE_DOWN) {
+    DismissSheetAction.dismiss();// 注册dismiss行为
+  }
+}),
+
+onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
+// 没有注册springBack，下拉半模态页面无回弹行为
+}),
+```
+
+ArkTS-Sta示例：
 
 ```ts
 onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
@@ -248,10 +469,12 @@ onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
 - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
 完整示例代码如下：
+
+ArkTS-Dyn示例：
+
 <!-- @[SheetTransitionExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets) -->
 
 ``` TypeScript
-
 @Entry
 @Component
 struct SheetTransitionExample {
@@ -314,5 +537,88 @@ struct SheetTransitionExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[SheetTransitionExample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BindSheetStatic/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets) -->
+
+``` TypeScript
+import {
+  $r,
+  Entry,
+  Component,
+  Builder,
+  ClickEvent,
+  SheetType,
+  HoverModeAreaType,
+  Button,
+  FlexAlign,
+  Column,
+  Color,
+  SheetOptions,
+  $$,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+  @State enableHoverMode: boolean = true;
+  @State hoverModeArea: HoverModeAreaType = HoverModeAreaType.TOP_SCREEN;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      // 请将$r('app.string.bindSheetCmd_label10')替换为实际资源文件，在本示例中该资源文件的value值为"enableHoverMode切换"
+      Button($r('app.string.bindSheetCmd_label10'))
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.enableHoverMode = !this.enableHoverMode;
+        })
+
+      // 请将$r('app.string.bindSheetCmd_label11')替换为实际资源文件，在本示例中该资源文件的value值为"hoverModeArea切换"
+      Button($r('app.string.bindSheetCmd_label11'))
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.hoverModeArea = this.hoverModeArea === HoverModeAreaType.TOP_SCREEN ?
+            HoverModeAreaType.BOTTOM_SCREEN : HoverModeAreaType.TOP_SCREEN;
+        })
+
+      Button('close modal')
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.isShow = false;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Column() {
+      // 请将$r('app.string.bindSheetCmd_label9')替换为实际资源文件，在本示例中该资源文件的value值为"拉起半模态"
+      Button($r('app.string.bindSheetCmd_label9'))
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$(this.isShow), this.myBuilder, {
+          height: 300,
+          backgroundColor: Color.Green,
+          preferType: SheetType.CENTER,
+          enableHoverMode: this.enableHoverMode,
+          hoverModeArea: this.hoverModeArea
+        } as SheetOptions)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ![sheetOne](figures/sheetOne.PNG)

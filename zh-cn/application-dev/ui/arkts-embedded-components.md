@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-EmbeddedComponent组件允许当前页面嵌入同一应用内其他EmbeddedUIExtensionAbility供给的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
+EmbeddedComponent组件允许当前页面嵌入同一应用内或满足跨应用嵌入权限条件的其他EmbeddedUIExtensionAbility提供的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
 
 EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面集成，其核心目标是通过模块化设计提升应用的灵活性和用户体验。
 
@@ -16,11 +16,11 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)组件
 
-  EmbeddedComponent组件用于在当前页面嵌入本应用内其他EmbeddedUIExtensionAbility提供的UI。它允许开发者将应用的某些功能或界面嵌入另一个界面中，实现更灵活的用户界面设计，适用于需要进程隔离的模块化开发场景。
+  EmbeddedComponent组件用于在当前页面嵌入本应用内或满足跨应用嵌入权限条件的其他应用的EmbeddedUIExtensionAbility提供的UI。它允许开发者将应用的某些功能或界面嵌入另一个界面中，实现更灵活的用户界面设计，适用于需要进程隔离的模块化开发场景。
 
 - [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
 
-  提供方应用中定义使用，用于实现跨进程界面嵌入功能，仅能被同应用的UIAbility拉起，并需在多进程权限的场景下使用。
+  提供方应用中定义使用，用于实现跨进程界面嵌入功能，默认仅能被同应用的UIAbility拉起（从API版本26.0.0开始，满足特定权限条件时支持跨应用拉起，详见使用约束-应用范围），并需在多进程权限的场景下使用。
 
 ## 使用约束
 
@@ -52,7 +52,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 **加载项首页**
 
-加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个完整的加载项首页实现示例：
+加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个加载项首页的实现示例：
 
 ArkTS-Dyn示例：
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
@@ -91,8 +91,7 @@ export struct Embedded {
               this.message = `Error: code = ${error.code}`;
             })
             .onDrawReady(() => {
-              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
-              this.message = 'onDrawReady';
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调
             })
         }
         .width('100%')
@@ -156,13 +155,13 @@ struct Embedded {
 }
 ```
 
-在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionAbility目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionAbility/目录中。
+在ArkTS项目中，EmbeddedUIExtensionAbility的实现代码通常位于项目的ets/extensionability目录下。例如，ExampleEmbeddedAbility.ets文件位于./ets/extensionability/目录中。
 
 在实现加载项首页时，开发者需要注意以下几点：
 
-- 多进程模型检测
+- 多进程权限检测
 
-  在应用启动时，建议检测设备是否已开启多进程模型。如果未开启，应提供明确的错误提示或引导用户开启。
+  在应用启动时，建议检测当前设备是否具备多进程权限（设备范围及约束说明参见[使用约束](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#使用约束)）。如果不具备，应提供明确的错误提示。
 
 - 异常处理
 
@@ -272,11 +271,11 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
 - 生命周期阶段
 
-  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：组件初始化到可见的完整流程；
+  [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#oncreate) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：EmbeddedUIExtensionAbility初始化到可见的完整流程；
 
-  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → onForeground：前后台切换时的状态迁移；
+  [onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onbackground) → [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onforeground)：前后台切换时的状态迁移；
 
-  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：组件被宿主主动销毁时的资源回收点。
+  [onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#ondestroy)：EmbeddedUIExtensionAbility被销毁时的资源回收点。
 
 - 会话管理
 
@@ -288,9 +287,9 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
 
   通过[LocalStorage](../ui/state-management/arkts-localstorage.md)实现[UIExtensionContentSession](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md)的跨组件传递；
 
-  使用[loadContent](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法绑定ArkTS页面与扩展能力上下文。
+  使用[loadContent](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)方法绑定ArkTS页面与扩展能力上下文。
 
-**入口页面** 
+**入口页面**
 
 以下提供方应用的入口组件实现，展示了如何使用UIExtensionContentSession会话以及如何通过按钮点击事件退出嵌入式页面并返回结果，该代码文件需要在main_pages.json配置文件中声明使用。
 
@@ -372,11 +371,11 @@ struct Extension {
 
 2. 结果返回
 
-   通过terminateSelfWithResult方法向宿主应用返回结果时，需要指定：
+   通过terminateSelfWithResult方法向宿主应用返回结果时，需要指定必选参数resultCode；want为可选参数（表示返回给宿主应用的结果数据，不传入时默认为undefined）：
 
    - resultCode：结果代码；
 
-   - want：目标意图，指定结果的接收方。
+   - want：返回给宿主应用的结果数据。
 
 3. 页面生命周期
 
@@ -399,7 +398,7 @@ struct Extension {
   "name": "ExampleEmbeddedAbility",
   "srcEntry": "./ets/extensionability/ExampleEmbeddedAbility.ets",
   "type": "embeddedUI"
-},
+}
 ```
 
 **预期效果**

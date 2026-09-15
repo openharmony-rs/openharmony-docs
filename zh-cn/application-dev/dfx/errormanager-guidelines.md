@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -12,10 +12,6 @@
 当应用的代码存在规范问题或错误时，会在运行中产生异常和错误，如应用未捕获异常等。在错误产生后，应用会异常退出。错误日志通常会保存在用户本地存储设备中，不方便开发者定位问题。所以，应用开发者可以使用错误管理的接口，在应用退出前，及时将相关错误及日志上报到开发者的服务平台来定位问题。
 
 使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用[HiAppEvent订阅事件](hiappevent-intro.md)。
-
-> **说明：**
->
-> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
 
 ## 接口说明
 
@@ -28,10 +24,10 @@
 | on(type: "error", observer: ErrorObserver): number | 注册错误监听接口，当系统监测到应用异常时会回调该监听。该接口为同步接口，返回值为注册的监听对象对应的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
 | off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | 以callback的形式解除注册监听，传入的number为之前注册监听时返回的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
 | off(type: "error", observerId: number): Promise&lt;void> | 以Promise的形式解除注册监听，传入的number为之前注册监听时返回的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
-| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。（**推荐使用**）<br/>**说明**：从API version 18开始，仅ArkTS-Dyn支持该接口。 |
-| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。（**推荐使用**）<br/>**说明**：从API version 18开始，仅ArkTS-Dyn支持该接口。 |
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。（**推荐使用**）<br/>**说明**：从API version 18开始，仅ArkTS-Dyn支持该接口。 |
-| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。（**推荐使用**）<br/>**说明**：从API version 18开始，仅ArkTS-Dyn支持该接口。 |
+| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 18开始，支持该接口。 |
+| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>说明：从API version 18开始，支持该接口。 |
+| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
 | on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | 注册主线程消息处理耗时监听器，当系统监测到应用主线程事件处理超时时会回调该监听。<br/>只能在主线程调用，多次注册后，后一次的注册会覆盖前一次的。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
 | off(type: 'loopObserver', observer?: LoopObserver): void | 以LoopObserver的形式解除应用主线程消息处理耗时监听。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
 | on(type: 'freeze', observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
@@ -53,7 +49,7 @@
 | 接口名称 | 说明 |
 | -------- | -------- |
 | onUnhandledException(errMsg: string): void | 系统回调接口，应用注册后，当应用产生未捕获的异常时的回调。 |
-| onException?(errObject: Error): void | 系统回调接口，应用注册后，当应用产生异常上报js层时的回调。 |
+| onException?(errObject: Error): void | 系统回调接口，应用注册后，当应用产生异常上报JS层时的回调。 |
 
 **应用主线程监听(LoopObserver)接口功能介绍**：
 
@@ -461,11 +457,12 @@ export function setFirstErrorHandler() {
 ```
 
  定义第二个错误处理器及注册方法，形成链式调用。
-<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
+<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let secondHandler: errorManager.ErrorHandler;
 const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
@@ -480,7 +477,13 @@ const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setSecondErrorHandler() {
-    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    try {
+        secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setSecondErrorHandler',`error: ${code}, ${message}`);
+    }
     console.info('Registered Second Error Handler');
 }
 ```

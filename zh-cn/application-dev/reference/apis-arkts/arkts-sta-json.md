@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供JSON基础操作。开发者可以使用本模块的功能，将对象转换成JSON格式的字符串或者将JSON格式的字符串转换成对象。
 

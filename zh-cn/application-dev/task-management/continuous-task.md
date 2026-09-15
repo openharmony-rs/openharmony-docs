@@ -19,7 +19,7 @@
 
 ### 使用场景
 
-下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务。可以参考下表中的场景举例，选择合适的长时任务类型。
+下表给出了当前长时任务支持的类型，包含数据传输、音视频播放、录制、定位导航、蓝牙相关业务、多设备互联、<!--Del-->WLAN相关业务、<!--DelEnd-->音视频通话和计算任务等类型。可以参考下表中的场景举例，选择合适的长时任务类型。
 
 **表1** 长时任务类型
 | 参数名 | 描述 | 配置项 | 场景举例 |
@@ -32,9 +32,9 @@
 | MULTI_DEVICE_CONNECTION | 多设备互联。<br> **说明：** 从API version 12开始，支持在原子化服务中使用。 | multiDeviceConnection | 分布式业务连接、投播。|
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
 | VOIP | 音视频通话。<br/>**说明：** 从API version 13开始支持。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
-| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
+| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放；对PC/2in1设备，应用不需要申请ACL权限。API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
 | MODE_AV_PLAYBACK_AND_RECORD | 多媒体相关业务。<br/>**说明：** 从API version 22开始支持。<br>从API版本26.0.0开始，支持在原子化服务中使用。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
-| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
+| MODE_SPECIAL_SCENARIO_PROCESSING | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>**说明：** 从API version 22开始支持。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播，应用在后台有室内运动场景。|
 | MODE_NEARLINK | 星闪业务。<br/>**起始版本：** 26.0.0 | nearlink | 通过星闪传输文件时退后台。 |
 
 关于DATA_TRANSFER（数据传输）说明：
@@ -42,6 +42,8 @@
 - 在数据传输时，若应用使用[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统，即使申请DATA_TRANSFER的后台任务，应用退后台时还是会被挂起。
 
 - 在数据传输时，应用需要更新进度，如果进度长时间（首次更新超过10分钟）未更新，数据传输的长时任务会被取消。更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12)中的示例。
+
+- 从API版本26.1.0开始，可使用[updateDataTransferProgress()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress)接口更新包含数据传输类型的长时任务通知。可选择通知是否带进度环，以及进度环为100时是否响铃。
 
 关于AUDIO_PLAYBACK（音视频播放）说明：
 
@@ -51,11 +53,11 @@
 
 - 除了上述播放类型，针对用户可感知的其他播放任务，如果应用需要在后台长时间运行该任务，必须申请AUDIO_PLAYBACK类型长时任务，无需接入AVSession。
 
-- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
+- 如果应用不满足上述接入规范，退至后台播放时会被系统静音并挂起，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
-- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统冻结。
+- 应用申请AUDIO_PLAYBACK类型长时任务，退至后台时，如果设备没有有效音频播放，应用可能被系统挂起。
 
 关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
 
@@ -64,25 +66,25 @@
 1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
 2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
 3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
-4. 从API版本26.0.0开始，[BR](../connectivity/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange)接口感知ACL连接状态变化，实现重新保活。
+4. 从API版本26.0.0开始，[BR](../connectivity/bluetooth/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange)接口感知ACL连接状态变化，实现重新保活。
 
 关于MODE_NEARLINK（星闪业务）说明： 
 
 如果应用仅申请了星闪长时任务，因设备远离等原因导致星闪断连，系统将取消应用的星闪长时任务。为确保星闪接续使用体验，在断连后的1-10分钟内（具体时长受系统负载影响），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。 
 
 1. 主动注册长时任务暂停监听的事件以避免星闪断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在星闪断连时系统不会立即取消长时任务，而是将其标记为暂停态。 
-2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后订阅星闪扫描结果，断连之后，本端设备主动发起星闪扫描，对端设备发送星闪广播。 
-3. 本端设备成功扫描到对端设备之后，需要向对端设备发起连接。如无其他业务扫描需求，本端设备可停止星闪扫描。
+2. 为保证在星闪断连之后能及时恢复连接，本端设备应用在星闪连接之后通过[onDeviceFound](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅星闪扫描结果，断连之后，本端设备通过[startScan](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanstartscan)主动发起星闪扫描，对端设备则通过[startAdvertising](../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md#advertisingstartadvertising)发送星闪广播。 
+3. 本端设备成功扫描到对端设备之后，需要通过[connect](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#connect)向对端设备发起连接。如无其他业务扫描需求，本端设备可使用[stopScan](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanstopscan)停止星闪扫描。
 
 ### 约束与限制
 
-**申请限制**：Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
+**申请限制：** Stage模型中，长时任务仅支持UIAbility申请；FA模型中，长时任务仅支持ServiceAbility申请。长时任务支持设备当前应用申请，也支持跨设备或跨应用申请，跨设备或跨应用仅对系统应用开放。
 
-**数量限制**：
+**数量限制：**
 - 从API version 21开始，支持一个UIAbility同一时刻申请多个长时任务，最多可申请10个，具体实现可参考[startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning21)。对于API version 20及之前版本，一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持申请一个长时任务，即在一个长时任务结束后才能继续申请。如果一个应用同时需要申请多个长时任务，需要创建多个UIAbility。
 - 如果一个应用创建了多个UIAbility，一个UIAbility申请长时任务后，整个应用下的所有进程均不会被挂起。
 
-**运行限制**：
+**运行限制：**
 
 - 申请长时任务后，应用未执行相应的业务，系统会对应用进行管控，即应用退至后台会被挂起。如系统检测到应用申请了AUDIO_PLAYBACK（音视频播放），但实际未播放音乐。
 
@@ -99,6 +101,8 @@
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
 > 后台播放音频的应用，在停止长时任务的同时，需要暂停或停止音频流，否则应用会被系统强制终止。
+>
+> 若应用后台录音被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用[setWillMuteWhenInterrupted](../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#setwillmutewheninterrupted20)接口，设置当前录制音频流启用静音打断模式。
 
 ## 接口说明
 

@@ -47,7 +47,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 是 | - | 内容卡片数据。 |
 | formType | [FormType](#formtype) | 是 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 内容卡片类型，影响内容卡片的大小。 |
 | formWidth | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。单位为vp。 |
-| formHeight | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。单位为vp。 |
+| formHeight | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认高度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认高度的0.4 ~ 1.2倍之间。单位为vp。 |
 | handleOnClick | Function | 否 | - | 点击事件回调函数。 |
 
 ## FormType
@@ -64,7 +64,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 |-------------|---|-------------------|
 | TYPE_BIG | 0 | 表示 4 x 4 的尺寸。默认卡片宽度为200，默认高度为200。 |
 | TYPE_MID | 1 | 表示 4 x 2 的尺寸。默认卡片宽度为200，默认高度为100。 |
-| TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137， 默认高度为83。 |
+| TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137，默认高度为83。 |
 
 ## 示例
 
@@ -96,14 +96,14 @@ struct Index {
       let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       };
     } catch (err) {
-      console.error("Init data error");
+      console.error(`Init data error`);
     }
   }
 
@@ -120,7 +120,7 @@ struct Index {
           formWidth: 110,
           formHeight: 50,
           handleOnClick: () => {
-            console.info("Clicked card");
+            console.info(`Clicked card`);
           }
         })
       }

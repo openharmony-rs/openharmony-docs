@@ -27,15 +27,15 @@ import { inputEventClient } from '@kit.InputKit';
 
 injectEvent({KeyEvent: KeyEvent}): void
 
-按键(包括单个按键和组合键)注入。
+按键（包括单个按键和组合键）注入。
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#inputeventclientinjectevent23)。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 **ArkTS-Dyn起始版本**：8
 
@@ -74,7 +74,7 @@ struct Index {
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            }
+            };
             // 注入事件
             inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
@@ -166,11 +166,11 @@ struct Index {
 
 injectKeyEvent(keyEvent: KeyEventData): void
 
-按键(包括单个按键和组合键)事件注入。
+按键（包括单个按键和组合键）事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS-Dyn起始版本**：11
 
@@ -287,9 +287,9 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 鼠标/触控板事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS-Dyn起始版本**：11
 
@@ -316,8 +316,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 ArkTS-Dyn示例：
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputEventClient, MouseEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -354,10 +353,10 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
-            }
+            };
             // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
@@ -387,15 +386,13 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
             // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonDown);
-          }
-
-          catch (error) {
+          } catch (error) {
             console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
@@ -499,9 +496,9 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 触屏输入事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS-Dyn起始版本**：11
 
@@ -528,8 +525,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 ArkTS-Dyn示例：
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { Touch, TouchEvent } from '@kit.InputKit';
+import { inputEventClient, Touch, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -559,7 +555,7 @@ struct Index {
               rawX: 0,
               rawY: 0,
               toolType: 0,
-            }
+            };
 
             let touchEventUpData: TouchEvent = {
               action: 3,
@@ -571,11 +567,11 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
-            }
+            };
             // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventUp);
 
@@ -589,7 +585,7 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
@@ -692,9 +688,9 @@ permitInjection(result: boolean): void
 
 允许事件注入权限。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **ArkTS-Dyn起始版本**：12
 
@@ -736,7 +732,7 @@ struct Index {
             // 授权事件注入
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error(`Failed to get inject permission, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to permit injection, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -776,7 +772,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 **ArkTS-Dyn起始版本**: 8
 
@@ -793,7 +789,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 **ArkTS-Dyn起始版本**: 11
 
@@ -807,7 +803,7 @@ struct Index {
 
 鼠标注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 **ArkTS-Dyn起始版本**: 11
 
@@ -822,7 +818,7 @@ struct Index {
 
 触屏注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 **ArkTS-Dyn起始版本**: 11
 
@@ -837,7 +833,7 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 **ArkTS-Dyn起始版本**：23
 

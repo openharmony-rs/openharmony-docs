@@ -1,4 +1,4 @@
-#  @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
+# @ohos.multimodalInput.shortKey (系统预置全局快捷键)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -18,13 +18,13 @@
 > - 本模块接口为系统接口。
 
 
-##  导入模块
+## 导入模块
 
 ```js
-import { shortKey } from '@kit.InputKit';
+import { shortKey, FingerprintEvent } from '@kit.InputKit';
 ```
 
-##  shortKey.setKeyDownDuration
+## shortKey.setKeyDownDuration
 
 ArkTS-Dyn： setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -72,7 +72,7 @@ struct Index {
         .onClick(() => {
           try {
             // 设置延迟拉起时间500ms
-            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
+            shortKey.setKeyDownDuration('businessId', 500, (error: BusinessError) => {
               if (error) {
                 console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -82,7 +82,7 @@ struct Index {
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
-        })
+        });
     }
   }
 }
@@ -173,10 +173,10 @@ struct Index {
         .onClick(() => {
           try {
             // 设置延迟拉起时间500ms
-            shortKey.setKeyDownDuration("businessId", 500).then(() => {
+            shortKey.setKeyDownDuration('businessId', 500).then(() => {
               console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
             console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -221,7 +221,7 @@ struct Index {
 
 指纹手势事件类型的枚举。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：12
 
@@ -239,7 +239,7 @@ struct Index {
 
 指纹手势事件的类型和相对侧边指纹器件的偏移位置。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 **ArkTS-Dyn起始版本**：12
 

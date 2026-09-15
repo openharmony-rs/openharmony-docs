@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
-状态管理V2互操作@Builder按引用传递参数适用于ArkTS-Sta互操作中使用UI的场景，遵循语言互操作的基本规范。
+状态管理V2互操作@Builder按引用传递参数适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用UI的场景，遵循[语言互操作](../quick-start/arkts-interop-overview.md)的基本规范。
 
 状态管理V2互操作@Builder按引用传递参数适用于以下场景：
 - ArkTS-Sta使用ArkTS-Dyn状态管理V2互操作全局自定义构建函数[@Builder](./state-management/arkts-builder.md)按引用传递参数时，传递的参数可为状态变量，且状态变量的改变会引起@Builder函数内的UI刷新。

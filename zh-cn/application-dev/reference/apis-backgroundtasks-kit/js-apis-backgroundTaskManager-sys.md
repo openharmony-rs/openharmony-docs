@@ -19,7 +19,7 @@
 
 >  **说明：**
 >
-> - 从API Version 9 开始，该接口不再维护，推荐使用新接口[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](js-apis-resourceschedule-backgroundTaskManager-sys.md)。
+> - 从API version 9 开始，该接口不再维护，推荐使用新接口[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)](js-apis-resourceschedule-backgroundTaskManager-sys.md)。
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -34,7 +34,7 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 ## BackgroundMode<sup>8+</sup>
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |

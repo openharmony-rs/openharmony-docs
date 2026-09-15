@@ -112,7 +112,7 @@ ArkTS-Dyn: onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 ArkTS-Sta: onKeyEventDispatch(event: Callback\<KeyEvent, boolean> | undefined): this
 
-对应组件收到按键事件时，会触发该回调，该按键事件不会分发给其子组件。不支持构造KeyEvent进行分发，只支持分发已有的按键事件。
+对应组件收到按键事件时，会触发该回调，该按键事件不会分发给其子组件。从API version 23开始，支持构造KeyEvent进行分发。API version 22及之前版本，不支持构造KeyEvent进行分发，只支持分发已有的按键事件。
 
 该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理。
 
@@ -166,7 +166,7 @@ ArkTS-Sta: onKeyEventDispatch(event: Callback\<KeyEvent, boolean> | undefined): 
 
 getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
-获取功能键按压状态。
+获取修饰键按压状态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -182,13 +182,13 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| keys | Array&lt;string&gt; | 是   | 功能键列表。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys | Array&lt;string&gt; | 是   | 修饰键列表。支持修饰键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
 
 **返回值：** 
 
 | 类型    | 说明                                                  |
 | ------- | ----------------------------------------------------- |
-| boolean | 功能键是否被按下。true表示被按下，false表示未被按下。 |
+| boolean | 修饰键是否被按下。true表示被按下，false表示未被按下。 |
 
 **错误码**：
 
@@ -324,10 +324,6 @@ import { KeyCode } from '@kit.InputKit';
 @Entry
 @Component
 struct PreImeEventExample {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
 
   build() {
     Column() {

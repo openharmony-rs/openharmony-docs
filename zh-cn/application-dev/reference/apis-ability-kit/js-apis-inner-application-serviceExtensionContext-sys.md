@@ -1,14 +1,14 @@
 # ServiceExtensionContext (系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ServiceExtensionContext模块是ServiceExtensionAbility的上下文环境，继承自ExtensionContext。
+ServiceExtensionContext模块是ServiceExtensionAbility（服务扩展能力）的上下文环境，继承自ExtensionContext。
 
-ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、停止、绑定、解绑Ability。
+ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、终止、连接和断开连接Ability（应用组件）。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ import { common } from '@kit.AbilityKit';
 
 ## 使用说明
 
-在使用ServiceExtensionContext的功能前，需要通过ServiceExtensionAbility子类实例获取。
+使用ServiceExtensionContext功能前，通过ServiceExtensionAbility子类实例获取ServiceExtensionContext。
 
 **示例：**
 
@@ -71,6 +71,10 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 启动Ability。仅支持在主线程调用。使用callback异步回调。
 
+> **说明：**
+>
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -83,7 +87,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -157,6 +161,10 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 启动Ability。仅支持在主线程调用。使用Promise异步回调。
 
+> **说明：**
+>
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -169,14 +177,14 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称、Bundle名称等。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -251,6 +259,10 @@ class EntryAbility extends ServiceExtensionAbility {
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
 启动Ability。仅支持在主线程调用。使用callback异步回调。
+
+> **说明：**
+>
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -347,7 +359,8 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCa
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -364,7 +377,7 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -385,8 +398,8 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCa
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -444,7 +457,8 @@ ArkTS-Sta:startAbilityWithAccount(want: Want, accountId: int, options: StartOpti
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -461,7 +475,7 @@ ArkTS-Sta:startAbilityWithAccount(want: Want, accountId: int, options: StartOpti
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
@@ -512,6 +526,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
     let options: StartOptions = {
       windowMode: 0
@@ -545,7 +560,8 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -562,14 +578,14 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -589,8 +605,8 @@ ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOp
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -618,6 +634,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
     let options: StartOptions = {
       windowMode: 0
@@ -646,7 +663,11 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-启动一个新的ServiceExtensionAbility。使用callback异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用callback异步回调。
+
+> **说明：**
+>
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -721,7 +742,11 @@ class EntryAbility extends ServiceExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用Promise异步回调。
+
+> **说明：**
+>
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -741,7 +766,7 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -803,12 +828,13 @@ ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number
 
 ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
-启动一个新的ServiceExtensionAbility。使用callback异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用callback异步回调。
 
 > **说明：**
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -825,7 +851,7 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, c
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当启动一个新的ServiceExtensionAbility成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -863,6 +889,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
 
     try {
@@ -889,12 +916,13 @@ ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number
 
 ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
-启动一个新的ServiceExtensionAbility。使用Promise异步回调。
+启动一个新的ServiceExtensionAbility。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -911,13 +939,13 @@ ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -954,6 +982,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
 
     try {
@@ -983,7 +1012,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1018,8 +1048,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1066,7 +1096,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持启动分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1100,8 +1131,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1152,7 +1183,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1167,13 +1198,13 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1193,8 +1224,8 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled.  |
+| 16000013 | The application is controlled by EDM.  |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1243,7 +1274,11 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
+停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1314,7 +1349,11 @@ class EntryAbility extends ServiceExtensionAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
+停止指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1334,7 +1373,7 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1392,11 +1431,12 @@ ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number,
 
 ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
-停止指定账号下指定的ServiceExtensionAbility后台服务。使用callback异步回调。
+停止指定账号下指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用callback异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1413,7 +1453,7 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, ca
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当使用账户停止同一应用程序内的服务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1447,6 +1487,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
 
     try {
@@ -1473,11 +1514,12 @@ ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number)
 
 ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
-停止指定账号下指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
+停止指定账号下指定的ServiceExtensionAbility后台服务。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1494,13 +1536,13 @@ ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): P
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1533,6 +1575,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
 
     try {
@@ -1627,7 +1670,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1671,7 +1714,8 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1685,8 +1729,8 @@ ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、断开或连接失败后的信息。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要连接的Ability的信息，如Ability名称、Bundle名称等。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项对象，包含服务连接成功、断开或失败时的回调函数。 |
 
 **返回值：**
 
@@ -1812,8 +1856,9 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1831,15 +1876,15 @@ ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 远端对象实例。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 连接Ability的Want信息。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 连接选项对象，包含服务连接成功、断开或失败时的回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回Ability连接的结果code。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回连接标识符，用于后续断开连接。 |
 
 **错误码：**
 
@@ -1881,6 +1926,7 @@ class EntryAbility extends ServiceExtensionAbility {
       bundleName: 'com.example.myapplication',
       abilityName: 'EntryAbility'
     };
+    // accountId为系统账号ID，可通过getOsAccountLocalId接口获取，此处以100为例
     let accountId = 100;
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
@@ -1960,7 +2006,7 @@ ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number, callback: Async
 
 ArkTS-Sta: disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback&lt;void&gt;): void
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
+将一个Ability与连接的服务类型的Ability断开连接，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2062,7 +2108,7 @@ ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number): Promise&lt;voi
 
 ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise&lt;void&gt;
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
+将一个Ability与连接的服务类型的Ability断开连接。断开连接后，将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2082,7 +2128,7 @@ ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise&lt;void&
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2176,7 +2222,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 使用规则：
  - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
  - 跨应用场景下，目标Ability的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。
- - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+ - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **需要权限**：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
 
@@ -2198,7 +2244,7 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Caller&gt; | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;Caller&gt; | Promise对象，返回要通信的caller对象。 |
 
 **错误码：**
 
@@ -2381,7 +2427,7 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2472,7 +2518,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2565,7 +2611,8 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 该接口不支持启动分身应用的UIServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2580,7 +2627,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的Want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。需要指定窗口模式、显示设备等启动参数时传入。 |
 
 **返回值：**
 
@@ -2670,7 +2717,7 @@ ArkTS-Sta: startAbilityByCallWithAccount(want: Want, accountId: int): Promise&lt
  - 跨用户场景下，Call调用目标Ability时，调用方应用需同时申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`与`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。
  - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
  - 跨应用场景下，目标Ability的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。
- - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+ - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **需要权限**：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION, ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -2687,13 +2734,13 @@ ArkTS-Sta: startAbilityByCallWithAccount(want: Want, accountId: int): Promise&lt
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 传入需要启动的Ability的信息，包含abilityName、moduleName、bundleName、deviceId(可选)、parameters(可选)，其中deviceId缺省或为空表示启动本地Ability，parameters缺省或为空表示后台启动Ability。 |
-| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，-1表示当前活动用户。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Caller&gt; | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;Caller&gt; | Promise对象，返回要通信的caller对象。 |
 
 **错误码：**
 
@@ -2806,13 +2853,13 @@ class EntryAbility extends ServiceExtensionAbility {
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
-请求在指定的获焦应用上拉起对应类型的UIExtensionAbility。其中，获焦应用通过want.parameters中bundleName来指定，如果未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility；被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需要通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型。仅支持在主线程调用。使用promise形式异步回调。
+请求在指定的获焦应用上拉起对应类型的UIExtensionAbility。其中，获焦应用通过want.parameters中bundleName来指定，如果未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility；被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需要通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型。仅支持在主线程调用。使用Promise形式异步回调。
 
 在获焦应用上拉起UIExtensionAbility之前，必须确保该应用已完成页面初始化，否则将导致拉起失败。应用可通过监听页面加载状态来判断拉起UIExtensionAbility的时机。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。 
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2826,13 +2873,13 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息，需确保目标应用已完成页面初始化后再调用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2941,7 +2988,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3069,7 +3116,7 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3084,13 +3131,13 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | link | string | 是 | 指示要打开的标准格式URL。 |
-| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数。 |
+| options | [OpenLinkOptions](js-apis-app-ability-openLinkOptions.md) | 否 | 打开URL的选项参数，可用于设置是否仅启用App Linking。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3108,7 +3155,7 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation flag is forbidden.        |
+| 16000010 | The call with the continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
@@ -3189,7 +3236,7 @@ preStartMission(bundleName: string, moduleName: string, abilityName: string, sta
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3260,11 +3307,11 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-启动一个新的[UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md)。使用Promise异步回调。
+启动一个新的[UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md)。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3284,7 +3331,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3333,11 +3380,11 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
 ## ServiceExtensionContext.openAtomicService<sup>18+</sup>
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;void&gt;
 
-通过应用ID，拉起原子化服务。使用Promise异步回调。
+通过应用ID，拉起原子化服务。仅支持在主线程调用。使用Promise异步回调。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3358,7 +3405,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;voi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3415,7 +3462,7 @@ startUIAbilities(wantList: Array\<Want\>): Promise\<void\>
 > **说明：**
 >
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统接口**：此接口为系统接口。
 
@@ -3519,15 +3566,15 @@ ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int):
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本**：26.0.0
+**ArkTS-Dyn起始版本：**26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本：**26.0.0
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。其中获焦应用通过want.parameters中bundleName指定，被拉起的UIExtensionAbility通过Want中bundleName、abilityName、moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置UIExtensionAbility的类型；需确保获焦应用已完成页面初始化后再调用。 |
 | accountId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
 
 **返回值：**
@@ -3544,7 +3591,7 @@ ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int):
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
 | 202 | The application is not system-app, can not use system-api. |
-| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.The logical screen corresponding to the specified accountId is not in the foreground.|
 
 ArkTS-Dyn示例：
 

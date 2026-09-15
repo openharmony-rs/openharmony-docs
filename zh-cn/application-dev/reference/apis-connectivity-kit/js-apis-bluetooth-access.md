@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -46,7 +46,7 @@ enableBluetooth(): void
 |2900001   | Service stopped.   |
 |2900099   | Operation failed.  |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,7 +73,7 @@ enableBluetoothAsync(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**返回值**：
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
@@ -92,7 +92,7 @@ enableBluetoothAsync(): Promise&lt;void&gt;
 | 2900014  | User refuse the action.    |
 | 2900099  | Operation failed.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -134,7 +134,7 @@ disableBluetooth(): void
 |2900001   | Service stopped.   |
 |2900099   | Operation failed.  |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -161,7 +161,7 @@ disableBluetoothAsync(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**返回值**：
 
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
@@ -180,7 +180,7 @@ disableBluetoothAsync(): Promise&lt;void&gt;
 | 2900014  | User refuse the action.    |
 | 2900099  | Operation failed.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -202,11 +202,14 @@ getState(): BluetoothState
 
 获取蓝牙开关状态。
 
+**需要权限**：
+- API版本10-12：ohos.permission.ACCESS_BLUETOOTH
+
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**返回值**：
 
 | 类型                              | 说明              |
 | --------------------------------- | ---------------- |
@@ -218,11 +221,12 @@ getState(): BluetoothState
 
 |错误码ID   | 错误信息           |
 | -------- | ------------------ |
+|201 | Permission denied.<br>适用版本：10-12 |
 |801 | Capability not supported.          |
 |2900001   | Service stopped.   |
 |2900099   | Operation failed.  |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -240,11 +244,14 @@ on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
 订阅本端蓝牙开关状态变化事件。使用Callback异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
+**需要权限**：
+- API版本10-17：ohos.permission.ACCESS_BLUETOOTH
+
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名   | 类型                                               | 必填  | 说明                                                       |
 | -------- | ------------------------------------------------- | ----- | ---------------------------------------------------------- |
@@ -257,11 +264,12 @@ on(type: 'stateChange', callback: Callback&lt;BluetoothState&gt;): void
 
 |错误码ID   | 错误信息           |
 | -------- | ------------------ |
+|201 | Permission denied.<br>适用版本：10-17 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900099   | Operation failed.  |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -282,11 +290,14 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 取消订阅本端蓝牙开关状态变化事件。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
+**需要权限**：
+- API版本10-17：ohos.permission.ACCESS_BLUETOOTH
+
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -299,11 +310,12 @@ off(type: 'stateChange', callback?: Callback&lt;BluetoothState&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|201 | Permission denied.<br>适用版本：10-17 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -326,7 +338,7 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 持久化存储蓝牙设备的虚拟MAC地址。使用Promise异步回调。
 - 应用通过蓝牙相关接口，如扫描等途径获取到的设备地址（虚拟MAC地址）和实际的设备MAC地址不同。蓝牙子系统会保存一个虚拟MAC地址和实际设备MAC地址的映射关系。若应用想长期对该蓝牙设备进行操作使用，建议用此接口持久化存储该设备的虚拟MAC地址，后续可直接使用，该地址映射关系不会再改变。
 - 指定持久化存储的虚拟MAC地址需是有效的（可使用[access.isValidRandomDeviceId](#accessisvalidrandomdeviceid16)判断）。
-- 使用该接口时，开发者应确保该虚拟MAC地址对应的对端蓝牙设备实际地址是保持不变的，若对端设备实际地址发生变化，持久化存储的地址信息将失效，无法继续使用。
+- 使用该接口时，开发者应确保该虚拟MAC地址对应的对端蓝牙设备实际地址是保持不变的，若对端设备实际地址发生变化，持久化存储的地址信息将失效，无法继续使用；若应用卸载重装过，持久化将失效，该应用需重新添加。
 - 可调用[access.deletePersistentDeviceId](#accessdeletepersistentdeviceid16)删除已持久化存储的虚拟MAC地址。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
@@ -335,13 +347,13 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。<br>该地址一般来源于蓝牙扫描结果，如：可通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。  |
 
-**返回值：**
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -360,7 +372,7 @@ addPersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 |2900010 | The number of supported device addresses has reached the upper limit. |
 |2900099 | Add persistent device address failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -386,13 +398,13 @@ deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"，<br>该地址一般来源于蓝牙扫描结果，如：通过调用[startScan](js-apis-bluetooth-ble.md#startscan15)或[connection.startBluetoothDiscovery](js-apis-bluetooth-connection.md#connectionstartbluetoothdiscovery)扫描得到。           |
 
-**返回值：**
+**返回值**：
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
@@ -410,7 +422,7 @@ deletePersistentDeviceId(deviceId: string): Promise&lt;void&gt;
 |2900003 | Bluetooth disabled. |
 |2900099 | delete persistent device address failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -435,7 +447,7 @@ getPersistentDeviceIds(): string[];
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**返回值**：
 
 | 类型                              | 说明              |
 | --------------------------------- | ---------------- |
@@ -452,7 +464,7 @@ getPersistentDeviceIds(): string[];
 |2900003 | Bluetooth disabled. |
 |2900099 | Get persistent device address failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -477,13 +489,13 @@ isValidRandomDeviceId(deviceId: string): boolean;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | deviceId     | string                                   | 是    | 对端设备的虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"。           |
 
-**返回值：**
+**返回值**：
 
 | 类型                              | 说明              |
 | --------------------------------- | ---------------- |
@@ -501,7 +513,7 @@ isValidRandomDeviceId(deviceId: string): boolean;
 |2900003 | Bluetooth disabled. |
 |2900099 | Check persistent device address failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -530,19 +542,19 @@ convertUuid(uuid: string): string
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | uuid     | string                                   | 是    | 16bit、32bit、128bit的UUID。           |
 
-**返回值：**
+**返回值**：
 
 | 类型                              | 说明              |
 | --------------------------------- | ---------------- |
 | string | 转换后的128bit的UUID。|
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -568,7 +580,7 @@ isBluetoothSupported(): boolean
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
+**返回值**：
 
 | 类型                              | 说明              |
 | --------------------------------- | ---------------- |
@@ -582,7 +594,7 @@ isBluetoothSupported(): boolean
 | -------- | ---------------------------- |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 try {

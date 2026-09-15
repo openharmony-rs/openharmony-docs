@@ -1,8 +1,8 @@
 # 实现属性动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,8 +14,8 @@
 
 | 动画接口 | 作用域 | 原理 | 使用场景 |
 | -------- | -------- | -------- | -------- |
-| animateTo | 闭包内改变属性引起的界面变化。 | 通用函数，对闭包前界面和闭包中的状态变量引起的界面之间的差异做动画。<br/>支持多次调用，支持嵌套。 | 适用对多个可动画属性配置相同动画参数的动画。<br/>需要嵌套使用动画的场景。<br/>如果需要实现多段动画循环的效果，建议通过设置[AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的playMode和iterations属性实现，或使用keyframeAnimateTo实现。 |
-| animation | 组件通过属性接口绑定的属性变化引起的界面变化。 | 识别组件的可动画属性变化，自动添加动画。<br/>组件的接口调用是从下往上执行，animation只会作用于在其之上的属性调用。<br/>组件可以根据调用顺序对多个属性设置不同的animation。 | 适用于对多个可动画属性配置不同参数动画的场景。 |
+| animateTo | 闭包内改变属性引起的界面变化。 | 通用函数，对闭包前界面和闭包中的状态变量引起的界面之间的差异做动画。<br/>支持多次调用，支持嵌套。 | 适用于多个可动画属性配置相同动画参数的场景，或命令式显式触发动画的场景。<br/>需要嵌套使用动画的场景。<br/>如果需要实现多段动画循环的效果，建议通过设置[AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)的playMode和iterations属性实现，或使用keyframeAnimateTo实现。 |
+| animation | 组件通过属性接口绑定的属性变化引起的界面变化。 | 声明式属性动画，识别组件的可动画属性变化并自动添加动画。<br/>组件接口调用从下往上执行，animation仅作用于在其之上调用的属性。<br/>组件可根据调用顺序对多个属性设置不同的animation参数。 | 适用于对不同可动画属性配置不同动画参数的场景，以及希望属性改变时隐式触发动画的声明式写法。 |
 | keyframeAnimateTo | 多个闭包内改变属性引起的分段属性动画。 | 通用函数，每一段闭包中的状态变量与前一次的差异做动画。<br/>支持多次调用，不推荐嵌套。 | 适用于同一属性需要做连续多个动画的场景。 |
 
 ## 使用animateTo产生属性动画
@@ -30,6 +30,9 @@ animateTo(value: AnimateParam, event: () => void): void
 > **说明：**
 >
 > 直接使用animateTo可能导致[UI上下文不明确](./arkts-global-interface.md)的问题，建议使用[getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)调用绑定实例的animateTo。
+
+ArkTS-Dyn示例：
+
 <!-- @[attrAnimateToDemo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template2/Index.ets) -->
 
 ``` TypeScript
@@ -87,14 +90,76 @@ struct attrAnimateToDemo2 {
 }
 ```
 
-![zh-cn_image_0000001599958466](figures/animateTo-01.gif)
+ArkTS-Sta示例：
 
+<!-- @[attrAnimateToDemo2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/animation/template2/Index.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Row, Text, ClickEvent, FlexAlign, RotateOptions, State } from '@kit.ArkUI';
+import curves from '@ohos.curves';
+
+@Entry
+@Component
+struct attrAnimateToDemo2 {
+  @State animate: boolean = false;
+  // 第一步: 声明相关状态变量
+  @State rotateValue: double = 0; // 组件一旋转角度
+  @State translateX: double = 0; // 组件二偏移量
+  @State opacityValue: double = 1; // 组件二透明度
+
+  // 第二步：将状态变量设置到相关可动画属性接口
+  build() {
+    Row() {
+      // 组件一
+      Column() {
+      }
+      .rotate({ angle: this.rotateValue } as RotateOptions)
+      .backgroundColor('#317AF7')
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .borderRadius(30)
+      .onClick((e: ClickEvent) => {
+        this.getUIContext()?.animateTo({}, () => {
+          this.animate = !this.animate;
+          // 第三步：闭包内通过状态变量改变UI界面
+          // 这里可以写任何能改变UI的逻辑比如数组添加，显隐控制，系统会检测改变后的UI界面与之前的UI界面的差异，对有差异的部分添加动画
+          // 组件一的rotate属性发生变化，所以会给组件一添加rotate旋转动画
+          this.rotateValue = this.animate ? 90 : 0;
+          // 组件二的透明度发生变化，所以会给组件二添加透明度的动画
+          this.opacityValue = this.animate ? 0.6 : 1;
+          // 组件二的translate属性发生变化，所以会给组件二添加translate偏移动画
+          this.translateX = this.animate ? 50 : 0;
+        })
+      })
+
+      // 组件二
+      Column() {
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#D94838')
+      .borderRadius(30)
+      .opacity(this.opacityValue)
+      .translate({ x: this.translateX })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![zh-cn_image_0000001599958466](figures/animateTo-01.gif)
 
 ## 使用animation产生属性动画
 
 相比于animateTo接口需要将属性修改封装在闭包中执行，[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口无需使用闭包，只需将其加在要做动画的可动画属性后即可。animation只要检测到其绑定的可动画属性发生变化，就会自动添加属性动画，animateTo则必须在动画闭包内改变可动画属性的值从而生成动画。
 
-<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template3/Index.ets) -->  
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -105,7 +170,7 @@ struct attrAnimationDemo3 {
   // 第一步: 声明相关状态变量
   @State rotateValue: number = 0; // 组件一旋转角度
   @State translateX: number = 0; // 组件二偏移量
-  @State opacityValue: number = 1; // 组件二透明度
+  @State opacityValue: number = 1; // 组件一、组件二透明度
 
   // 第二步：将状态变量设置到相关可动画属性接口
   build() {
@@ -130,7 +195,7 @@ struct attrAnimationDemo3 {
         this.rotateValue = this.animate ? 90 : 0;
         // 组件二的translate属性发生变化，所以会给组件二添加translate偏移动画
         this.translateX = this.animate ? 50 : 0;
-        // 父组件column的opacity属性有变化，会导致其子节点的透明度也变化，所以这里会给column和其子节点的透明度属性都添加动画
+        // 组件一、组件二的opacity属性发生变化，所以会给组件一、组件二添加透明度动画
         this.opacityValue = this.animate ? 0.6 : 1;
       })
 
@@ -153,6 +218,68 @@ struct attrAnimationDemo3 {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[attrAnimationDemo3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/animation/template3/Index.ets) -->  
+
+``` TypeScript
+import { Entry, Component, Column, Row, Text, ClickEvent, FlexAlign, RotateOptions, State } from '@kit.ArkUI';
+import curves from '@ohos.curves';
+
+@Entry
+@Component
+struct attrAnimationDemo3 {
+  @State animate: boolean = false;
+  // 第一步: 声明相关状态变量
+  @State rotateValue: double = 0; // 组件一旋转角度
+  @State translateX: double = 0; // 组件二偏移量
+  @State opacityValue: double = 1; // 组件一、组件二透明度
+
+  // 第二步：将状态变量设置到相关可动画属性接口
+  build() {
+    Row() {
+      // 组件一
+      Column() {
+      }
+      .opacity(this.opacityValue)
+      .rotate({ angle: this.rotateValue } as RotateOptions)
+      // 第三步：通过属性动画接口开启属性动画
+      .animation({})
+      .backgroundColor('#317AF7')
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .borderRadius(30)
+      .onClick((e: ClickEvent) => {
+        this.animate = !this.animate;
+        // 第四步：闭包内通过状态变量改变UI界面
+        // 这里可以写任何能改变UI的逻辑比如数组添加，显隐控制，系统会检测改变后的UI界面与之前的UI界面的差异，对有差异的部分添加动画
+        // 组件一的rotate属性发生变化，所以会给组件一添加rotate旋转动画
+        this.rotateValue = this.animate ? 90 : 0;
+        // 组件二的translate属性发生变化，所以会给组件二添加translate偏移动画
+        this.translateX = this.animate ? 50 : 0;
+        // 组件一、组件二的opacity属性发生变化，所以会给组件一、组件二添加透明度动画
+        this.opacityValue = this.animate ? 0.6 : 1;
+      })
+
+      // 组件二
+      Column() {
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#D94838')
+      .borderRadius(30)
+      .opacity(this.opacityValue)
+      .translate({ x: this.translateX })
+      .animation({})
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
 ![zh-cn_image_0000001649279705](figures/animation-01.gif)
 
@@ -167,6 +294,8 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>):
 在同一属性存在多段动画过程的场景，可通过在结束回调中再创建新动画实现，但写法更复杂，且每次创建新动画需要耗时，会有衔接卡顿现象。此场景更适宜用关键帧动画实现。
 
 以下示例主要演示如何通过keyframeAnimateTo来设置关键帧动画。
+
+ArkTS-Dyn示例：
 
 <!-- @[KeyframeAnimateToDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animation/template4/Index.ets) -->
 
@@ -191,6 +320,75 @@ struct KeyframeAnimateToDemo {
       .height(100)
       .borderRadius(30)
       .onClick(() => {
+        // 第三步：调用keyframeAnimateTo接口
+        this.getUIContext()?.keyframeAnimateTo({
+          iterations: 1
+        }, [
+          {
+            // 第一段关键帧动画时长为800ms，组件一顺时针旋转90度，组件二的透明度从1变为0.6，组件二的translate从0位移到50
+            duration: 800,
+            event: () => {
+              this.rotateValue = 90;
+              this.opacityValue = 0.6;
+              this.translateX = 50;
+            }
+          },
+          {
+            // 第二段关键帧动画时长为500ms，组件一逆时针旋转90度恢复至0度，组件二的透明度从0.6变为1，组件二的translate从50位移到0
+            duration: 500,
+            event: () => {
+              this.rotateValue = 0;
+              this.opacityValue = 1;
+              this.translateX = 0;
+            }
+          }
+        ]);
+      })
+      // 组件二
+      Column() {
+      }
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .backgroundColor('#D94838')
+      .borderRadius(30)
+      .opacity(this.opacityValue)
+      .translate({ x: this.translateX })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[KeyframeAnimateToDemo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/animation/template4/Index.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Row, Text, ClickEvent, FlexAlign, RotateOptions, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyframeAnimateToDemo {
+  // 第一步: 声明相关状态变量
+  @State rotateValue: double = 0; // 组件一旋转角度
+  @State translateX: double = 0; // 组件二偏移量
+  @State opacityValue: double = 1; // 组件二透明度
+  // 第二步：将状态变量设置到相关可动画属性接口
+  build() {
+    Row() {
+      // 组件一
+      Column() {
+      }
+      .rotate({ angle: this.rotateValue } as RotateOptions)
+      .backgroundColor('#317AF7')
+      .justifyContent(FlexAlign.Center)
+      .width(100)
+      .height(100)
+      .borderRadius(30)
+      .onClick((e: ClickEvent) => {
         // 第三步：调用keyframeAnimateTo接口
         this.getUIContext()?.keyframeAnimateTo({
           iterations: 1

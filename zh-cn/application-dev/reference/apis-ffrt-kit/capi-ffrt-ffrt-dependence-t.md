@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct {...} ffrt_dependence_t
 
 ## 概述
 
-依赖数据结构。
+依赖数据项结构，用于描述任务间的单个依赖关系。
 
 **起始版本：** 10
 
@@ -27,7 +27,7 @@ typedef struct {...} ffrt_dependence_t
 
 | 名称 | 描述 |
 | -- | -- |
-| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | 依赖类型 |
-| const void* ptr | 依赖数据地址 |
+| [ffrt_dependence_type_t](capi-type-def-h.md#ffrt_dependence_type_t) type | 依赖类型。 |
+| const void* ptr | 依赖指针。数据依赖时指向数据，任务依赖时指向任务句柄。 |
 
 

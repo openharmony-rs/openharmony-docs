@@ -41,7 +41,7 @@
 >
 > - L/l = lineto   参数x和y表示一个点的x轴和y轴坐标，L命令将会在当前位置和新位置（L前面画笔所在的点）之间画一条线段。
 >
-> - H/h = horizontal lineto    绘制平行线。
+> - H/h = horizontal lineto    绘制水平线。
 >
 > - V/v = vertical lineto   绘制垂直线。
 >
@@ -53,6 +53,6 @@
 >
 > - T/t = smooth quadratic Bezier curveto  二次贝塞尔曲线命令  设置参数： x y。
 >
-> - A/a = elliptical Arc  弧形命令  设置参数： rx ry x-axis-rotation（旋转角度）large-arc-flag（角度大小） sweep-flag（弧线方向） x y。large-arc-flag决定弧线是大于还是小于180度，0表示小角度弧，1表示大角度弧。sweep-flag表示弧线的方向，0表示从起点到终点沿逆时针画弧，1表示从起点到终点沿顺时针画弧。
+> - A/a = elliptical Arc  弧形命令  设置参数： rx ry x-axis-rotation（旋转角度）large-arc-flag（大角度弧标志） sweep-flag（弧线方向） x y。large-arc-flag决定弧线是大于还是小于180度，0表示小角度弧，1表示大角度弧。sweep-flag表示弧线的方向，0表示从起点到终点沿逆时针画弧，1表示从起点到终点沿顺时针画弧。
 >
 > - Z/z = closepath   从当前点画一条直线到路径的起点。

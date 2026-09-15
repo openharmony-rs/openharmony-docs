@@ -116,7 +116,7 @@ type Optional\<T> = T | undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| T | 表示该类型声明的对象是自定义类型。 |
+| T | 表示泛型T所指定的类型。 |
 | undefined | 表示该类型声明的对象是undefined。 |
 
 ## 示例
@@ -204,6 +204,7 @@ function columnChildren() {
 struct CustomLayout {
   @Builder
   doNothingBuilder() {
+    // 空函数，仅演示使用方法。
   };
 
   @BuilderParam builder: () => void = this.doNothingBuilder;

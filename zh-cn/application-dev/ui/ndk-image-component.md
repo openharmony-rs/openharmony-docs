@@ -83,6 +83,8 @@
 
     ArkTS-Dyn示例：
 
+    <!-- @[image_headfiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    
     ``` C++
     #include <arkui/native_node.h>
     #include <arkui/native_type.h>
@@ -109,10 +111,12 @@
 
     ArkTS-Dyn示例：
 
+    <!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
     ``` C++
-    // 设置图片源
-    ArkUI_AttributeItem srcItem = {nullptr, 0, "entry/resources/rawfile/startIcon.png"};
-    nativeNodeApi->setAttribute(image, NODE_IMAGE_SRC, &srcItem);
+    // 设置图片源（使用rawfile资源）
+    ArkUI_AttributeItem srcItem = {nullptr, 0, "resource://RAWFILE/clouds.jpg"};
+    nativeNodeApi->setAttribute(image1, NODE_IMAGE_SRC, &srcItem);
     ```
 
     ArkTS-Sta示例：
@@ -143,9 +147,11 @@
     }
     ```
 
+    <!-- @[network_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+    
     ``` C++
     ArkUI_AttributeItem srcItem = {nullptr, 0, "https://xxx.jpg"};
-    nativeNodeApi->setAttribute(image, NODE_IMAGE_SRC, &srcItem);
+    nativeNodeApi->setAttribute(image0, NODE_IMAGE_SRC, &srcItem);
     ```
 
     ArkTS-Sta示例：
@@ -179,23 +185,22 @@
 
 ArkTS-Dyn示例：
 
+<!-- @[image_getnode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 获取ArkUI nativeNodeApi
 ArkUI_NativeNodeAPI_1* nativeNodeApi = nullptr;
 OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nativeNodeApi);
 if (nativeNodeApi == nullptr) {
     OH_LOG_ERROR(LOG_APP, "Get native node API failed");
-    return;
+    return nullptr;
 }
 ```
 
+<!-- @[create_image_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 创建Image组件
-ArkUI_NodeHandle image = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
-if (image == nullptr) {
-    OH_LOG_ERROR(LOG_APP, "Create Image failed");
-    return;
-}
+// 创建Image组件1 - 基础图片
+ArkUI_NodeHandle image1 = nativeNodeApi->createNode(ARKUI_NODE_IMAGE);
 ```
 
 ArkTS-Sta示例：
@@ -224,16 +229,12 @@ Image组件支持通过字符串路径或[DrawableDescriptor](../reference/apis-
 
 ArkTS-Dyn示例：
 
-``` C++
-// 方式一：通过字符串路径设置图片源
-// 支持本地路径、网络地址、资源路径等
-ArkUI_AttributeItem srcItem = {nullptr, 0, "/data/storage/el2/base/haps/entry/files/example.png"};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_SRC, &srcItem);
+<!-- @[image_source_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
-// 方式二：通过DrawableDescriptor对象设置图片源
-// 需要先创建ArkUI_DrawableDescriptor对象
-// ArkUI_AttributeItem srcItem = {.object = drawableDescriptor};
-// nativeNodeApi->setAttribute(image, NODE_IMAGE_SRC, &srcItem);
+``` C++
+// 设置图片源（使用rawfile资源）
+ArkUI_AttributeItem srcItem = {nullptr, 0, "resource://RAWFILE/clouds.jpg"};
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_SRC, &srcItem);
 ```
 
 ArkTS-Sta示例：
@@ -287,11 +288,13 @@ Image独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 
 ArkTS-Dyn示例：
 
+<!-- @[image_zoom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片缩放类型
-ArkUI_NumberValue objectFitValue[] = {{.i32 = ARKUI_OBJECT_FIT_CONTAIN}};
-ArkUI_AttributeItem objectFitItem = {objectFitValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_FIT, &objectFitItem);
+// 设置缩放类型
+ArkUI_NumberValue fitValue[] = {{.i32 = ARKUI_OBJECT_FIT_COVER}};
+ArkUI_AttributeItem fitItem = {fitValue, 1};
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 ```
 
 ArkTS-Sta示例：
@@ -311,11 +314,13 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_FIT, &fitItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片插值效果
+// 设置插值效果
 ArkUI_NumberValue interpolationValue[] = {{.i32 = ARKUI_IMAGE_INTERPOLATION_HIGH}};
 ArkUI_AttributeItem interpolationItem = {interpolationValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_INTERPOLATION, &interpolationItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem);
 ```
 
 ArkTS-Sta示例：
@@ -335,11 +340,13 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_INTERPOLATION, &interpolationItem
 
 ArkTS-Dyn示例：
 
+<!-- @[image_repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片重复样式
+// 设置重复样式
 ArkUI_NumberValue repeatValue[] = {{.i32 = ARKUI_IMAGE_REPEAT_NONE}};
 ArkUI_AttributeItem repeatItem = {repeatValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 ```
 
 ArkTS-Sta示例：
@@ -359,12 +366,13 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_fillcolor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片填充颜色（0xARGB格式）
-// 例如：0xFFFF0000表示红色
+// 设置填充颜色（蓝色）
 ArkUI_NumberValue fillColorValue[] = {{.u32 = 0xFF007DFF}};
 ArkUI_AttributeItem fillColorItem = {fillColorValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_FILL_COLOR, &fillColorItem);
+nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 ```
 
 ArkTS-Sta示例：
@@ -384,10 +392,12 @@ nativeNodeApi->setAttribute(image2, NODE_IMAGE_FILL_COLOR, &fillColorItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_alt_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置加载失败时的占位图
+// 设置占位图
 ArkUI_AttributeItem altItem = {nullptr, 0, "/data/storage/el2/base/haps/entry/files/placeholder.png"};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_ALT, &altItem);
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 ```
 
 ArkTS-Sta示例：
@@ -406,11 +416,13 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_ALT, &altItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_decode_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片解码尺寸（单位：px）
-ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 200}, {.i32 = 200}};
+// 设置解码尺寸
+ArkUI_NumberValue sourceSizeValue[] = {{.i32 = 150}, {.i32 = 150}};
 ArkUI_AttributeItem sourceSizeItem = {sourceSizeValue, 2};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
+nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
 ```
 
 ArkTS-Sta示例：
@@ -430,11 +442,13 @@ nativeNodeApi->setAttribute(image3, NODE_IMAGE_SOURCE_SIZE, &sourceSizeItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
-// 设置图片渲染模式
+// 设置渲染模式
 ArkUI_NumberValue renderModeValue[] = {{.i32 = ARKUI_IMAGE_RENDER_MODE_ORIGINAL}};
 ArkUI_AttributeItem renderModeItem = {renderModeValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_RENDER_MODE, &renderModeItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_RENDER_MODE, &renderModeItem);
 ```
 
 ArkTS-Sta示例：
@@ -454,11 +468,13 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_RENDER_MODE, &renderModeItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_load_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 设置同步加载
 ArkUI_NumberValue syncLoadValue[] = {{.i32 = 1}};
 ArkUI_AttributeItem syncLoadItem = {syncLoadValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_SYNC_LOAD, &syncLoadItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_SYNC_LOAD, &syncLoadItem);
 ```
 
 ArkTS-Sta示例：
@@ -476,6 +492,8 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_SYNC_LOAD, &syncLoadItem);
 通过[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_COLOR_FILTER属性设置图片颜色滤镜。
 
 ArkTS-Dyn示例：
+
+<!-- @[image_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
 // 设置颜色滤镜（5x4矩阵，共20个浮点数）
@@ -504,7 +522,7 @@ ArkUI_NumberValue colorFilterValue[20] = {
     {.f32 = colorFilterMatrix[18]}, {.f32 = colorFilterMatrix[19]}
 };
 ArkUI_AttributeItem colorFilterItem = {colorFilterValue, 20};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_COLOR_FILTER, &colorFilterItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_COLOR_FILTER, &colorFilterItem);
 ```
 
 ArkTS-Sta示例：
@@ -547,11 +565,13 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_COLOR_FILTER, &colorFilterItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_orientation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 设置图片显示方向
 ArkUI_NumberValue orientationValue[] = {{.i32 = ARKUI_ORIENTATION_UP}};
 ArkUI_AttributeItem orientationItem = {orientationValue, 1};
-nativeNodeApi->setAttribute(image, NODE_IMAGE_ORIENTATION, &orientationItem);
+nativeNodeApi->setAttribute(image1, NODE_IMAGE_ORIENTATION, &orientationItem);
 ```
 
 ArkTS-Sta示例：
@@ -575,28 +595,35 @@ nativeNodeApi->setAttribute(image1, NODE_IMAGE_ORIENTATION, &orientationItem);
 
 ArkTS-Dyn示例：
 
+<!-- @[event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 全局事件接收器函数
-void GlobalEventReceiver(ArkUI_NodeEvent* event)
+void GlobalEventReceiver(ArkUI_NodeEvent *event)
 {
     auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-    auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-
-    // 根据事件类型处理
-    switch (eventType) {
-        case NODE_IMAGE_ON_COMPLETE:
-            // 处理图片加载完成事件
-            break;
-        case NODE_IMAGE_ON_ERROR:
-            // 处理图片加载失败事件
-            break;
-        case NODE_IMAGE_ON_SVG_PLAY_FINISH:
-            // 处理SVG播放完成事件
-            break;
-        default:
-            break;
+    if (eventType == NODE_IMAGE_ON_COMPLETE) {
+        ArkUI_NodeComponentEvent *componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_INFO(LOG_APP, "Image loaded: %.0fx%.0f",
+                        componentEvent->data[0].f32, componentEvent->data[1].f32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_ERROR) {
+        ArkUI_NodeComponentEvent *componentEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (componentEvent != nullptr) {
+            OH_LOG_ERROR(LOG_APP, "Image load failed, error: %d", componentEvent->data[0].i32);
+        }
+    } else if (eventType == NODE_IMAGE_ON_SVG_PLAY_FINISH) {
+        OH_LOG_INFO(LOG_APP, "SVG animation play finished");
     }
 }
+```
+
+<!-- @[register_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
+``` C++
+// 注册全局事件接收器
+nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
 ```
 
 ArkTS-Sta示例：
@@ -625,15 +652,6 @@ void GlobalEventReceiver(ArkUI_NodeEvent *event)
 }
 ```
 
-ArkTS-Dyn示例：
-
-``` C++
-// 注册全局事件接收器
-nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
-```
-
-ArkTS-Sta示例：
-
 <!-- @[register_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ImageCAPIGuild/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
@@ -646,6 +664,8 @@ nativeNodeApi->registerNodeEventReceiver(GlobalEventReceiver);
 在图片节点上使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)接口注册加载NODE_IMAGE_ON_COMPLETE完成事件，当图片加载成功后触发该事件，事件回调中可获取图片尺寸信息。
 
 ArkTS-Dyn示例：
+
+<!-- @[image_load_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
 
 ``` C++
 // 图片加载完成事件处理
@@ -671,9 +691,11 @@ void HandleImageComplete(ArkUI_NodeEvent* event)
 }
 ```
 
+<!-- @[register_image_load_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 注册图片加载完成事件
-nativeNodeApi->registerNodeEvent(image, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
+nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
 ```
 
 ArkTS-Sta示例：
@@ -717,6 +739,8 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_COMPLETE, 0, nullptr);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_load_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 图片加载失败事件处理
 void HandleImageError(ArkUI_NodeEvent* event)
@@ -733,9 +757,11 @@ void HandleImageError(ArkUI_NodeEvent* event)
 }
 ```
 
+<!-- @[register_image_load_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 注册图片加载失败事件
-nativeNodeApi->registerNodeEvent(image, NODE_IMAGE_ON_ERROR, 0, nullptr);
+nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_ERROR, 0, nullptr);
 ```
 
 ArkTS-Sta示例：
@@ -771,6 +797,8 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_ERROR, 0, nullptr);
 
 ArkTS-Dyn示例：
 
+<!-- @[image_svg_complete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // SVG播放完成事件处理
 void HandleSvgPlayFinish(ArkUI_NodeEvent* event)
@@ -779,9 +807,11 @@ void HandleSvgPlayFinish(ArkUI_NodeEvent* event)
 }
 ```
 
+<!-- @[register_svg_play_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 注册SVG播放完成事件
-nativeNodeApi->registerNodeEvent(image, NODE_IMAGE_ON_SVG_PLAY_FINISH, 0, nullptr);
+nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_SVG_PLAY_FINISH, 0, nullptr);
 ```
 
 ArkTS-Sta示例：
@@ -809,11 +839,13 @@ nativeNodeApi->registerNodeEvent(image1, NODE_IMAGE_ON_SVG_PLAY_FINISH, 0, nullp
 
 ArkTS-Dyn示例：
 
+<!-- @[unregister_node_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageCAPIGuide/entry/src/main/cpp/ImageExample.cpp) -->
+
 ``` C++
 // 注销事件监听
-nativeNodeApi->unregisterNodeEvent(image, NODE_IMAGE_ON_COMPLETE);
-nativeNodeApi->unregisterNodeEvent(image, NODE_IMAGE_ON_ERROR);
-nativeNodeApi->unregisterNodeEvent(image, NODE_IMAGE_ON_SVG_PLAY_FINISH);
+nativeNodeApi->unregisterNodeEvent(image1, NODE_IMAGE_ON_COMPLETE);
+nativeNodeApi->unregisterNodeEvent(image1, NODE_IMAGE_ON_ERROR);
+nativeNodeApi->unregisterNodeEvent(image1, NODE_IMAGE_ON_SVG_PLAY_FINISH);
 
 // 注销全局事件接收器
 nativeNodeApi->unregisterNodeEventReceiver();
@@ -838,11 +870,11 @@ nativeNodeApi->unregisterNodeEventReceiver();
 ArkTS-Dyn示例：
 
 <!--RP2-->
-[ImageCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImageCAPIGuide)
+[显示图片（Image）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImageCAPIGuide)
 <!--RP2End-->
 
 ArkTS-Sta示例：
 
 <!--RP3-->
-[ImageCapi](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ImageCAPIGuild)
+[显示图片（Image）](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ImageCAPIGuild)
 <!--RP3End-->

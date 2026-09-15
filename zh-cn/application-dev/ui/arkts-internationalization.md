@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -47,7 +47,7 @@ ArkUI 如下能力已默认适配镜像：
 
 1. 界面布局、边框设置：关于方向类的通用属性，如果需要支持镜像能力，使用泛化的方向指示词 start/end入参类型替换 left/right、x/y等绝对方向指示词的入参类型，来表示自适应镜像能力。
 
-2. [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只有限支持文本绘制的镜像能力。
+2. [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)组件只支持文本绘制的镜像能力。
 
 3. [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件不支持组件镜像能力。
 
@@ -170,13 +170,13 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
               this.drawText();
             })
           } else {
-            console.error(`MayTest Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }
   
     drawText(): void {
-      console.error('MayTest drawText')
+      console.error('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'
@@ -247,13 +247,13 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
                 this.drawText();
               })
           } else {
-            console.error(`MayTest Need create subscriber`);
+            console.error(`Need create subscriber`);
           }
         })
     }
   
     drawText(): void {
-      console.error('MayTest drawText')
+      console.error('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'

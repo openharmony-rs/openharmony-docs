@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -127,7 +127,7 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
      build() {
        Navigation(this.pageStack){
        }.onAppear(() => {
-         this.pageStack.pushPathByName('PageOne', null, false);
+         this.pageStack.pushPathByName('PageOne', undefined, false);
        })
        .hideNavBar(true)
      }

@@ -16,7 +16,7 @@
     - [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)
 - C API<!--driver-development-c-->
   - 模块<!--driver-development-module-->
-    - [BaseDdk](capi-baseddk.md)
+    - [Ddk](capi-baseddk.md)
     - [HidDdk](capi-hidddk.md)
     - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
     - [UsbDdk](capi-usbddk.md)

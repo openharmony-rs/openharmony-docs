@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 `ArrayBuffer`适合承载二进制缓冲区、图片/音频数据、协议报文等需要按字节访问的数据。native侧既可以创建`ArrayBuffer`，也可以读取ArkTS传入的`ArrayBuffer`底层数据。
 
@@ -20,34 +20,39 @@ ani_status ArrayBuffer_GetInfo(ani_env *env, ani_arraybuffer arraybuffer, void *
 
 **示例：**
 
-```ts
-loadLibrary("libraryName");
+ArkTS侧声明native函数，构造`ArrayBuffer`并写入数据：
 
+```ts
 native function handleData(buffer: ArrayBuffer): void
 
 function main() {
     const buffer = new ArrayBuffer(4);
     const uint8View = new Uint8Array(buffer);
 
-    uint8View[0] = 1;
-    uint8View[1] = 2;
+    uint8View[0] = 1; // 1*1
+    uint8View[1] = 2; // 2*256
     uint8View[2] = 0;
 
+    // 读取数据
     console.info(uint8View);
-    handleData(buffer); // Outputs: 1 + 2*256 = 513
+    handleData(buffer); // 1*1 + 2*256 = 513
     console.info("1*1 + 2*256 = 513");
 }
 ```
 
+native侧实现`handleData`，通过`ArrayBuffer_GetInfo`读取底层数据：
+
 ```cpp
 // 不是ani_array
-static void HandleDataImpl(ani_env *env, ani_arraybuffer arraybuffer) {
-    void *resultData;
+static void HandleDataImpl(ani_env *env, ani_arraybuffer arraybuffer)
+{
+    void* resultData;
     size_t resultSize;
-    env->ArrayBuffer_GetInfo(arraybuffer, &resultData, &resultSize);
+    ani_status status = env->ArrayBuffer_GetInfo(arraybuffer, &resultData, &resultSize);
+    if (status != ANI_OK) {
+        // handle error and return
+    }
     std::cout << *static_cast<uint32_t*>(resultData) << std::endl;
 }
 ```
-
-完整示例：[ani_arraybuffer.cpp](https://gitee.com/LeechyLiang/ani_cookbook/blob/master/ani_arraybuffer/ani_arraybuffer.cpp)
 

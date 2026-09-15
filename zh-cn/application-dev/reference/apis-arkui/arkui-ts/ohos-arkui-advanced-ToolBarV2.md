@@ -6,7 +6,7 @@
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
-工具栏用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。<br />
+工具栏用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。适用于需要对当前页面内容进行快捷操作的场景，可帮助用户快速访问常用功能，提升操作效率。<br />
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制工具栏的数据和状态，实现更高效的用户界面刷新。<br>
 
 > **说明：**
@@ -55,9 +55,9 @@ ArkTS-Sta: ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: int, divid
 | 名称                   | 类型                                                               | 必填 | 装饰器类型               | 说明                                                           |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
 | toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | 是  | @Param<br/>@Require | 工具栏列表。                                                       |
-| activatedIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
-| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br />默认不生效。                         |
-| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br />默认不生效。 |
+| activatedIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 否  | @Param              | 被激活的子项索引。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
+| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。设置后在工具栏顶部显示指定样式的分割线。<br />默认不生效。                         |
+| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。设置后工具栏将按指定样式自定义外观。<br />默认不生效。 |
 
 ## ToolBarV2Item
 
@@ -85,7 +85,7 @@ ArkTS-Sta: ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: int, divid
 | state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | 否  | 是 | 工具栏子项的状态。<br />默认为ToolBarV2ItemState.ENABLE。<br />装饰器类型：@Trace                                                                                                                                                                           |
 | accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是 | 工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br ></div>默认值为当前项content属性内容。<br />装饰器类型：@Trace                                           |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是 |  工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br />默认值：“单指双击即可执行”。<br />装饰器类型：@Trace                        |
-| accessibilityLevel  | string                                          | 否  | 是 | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br ></div>支持的值为：<br />"auto"：当前组件会转换"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br />装饰器类型：@Trace |
+| accessibilityLevel  | string                                          | 否  | 是 | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br ></div>支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br />装饰器类型：@Trace |
 
 ### constructor
 
@@ -131,7 +131,7 @@ ToolBarV2Item的构造函数。
 | state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | 否  | 是  | 工具栏子项的状态。<br />默认为ToolBarV2ItemState.ENABLE。<br />                                                                                                                                                                  |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br />默认值为当前项content属性内容。<br />                                          |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br />默认值为“单指双击即可执行”。                        |
-| accessibilityLevel       | string                                          | 否  | 是  | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br ></div>支持的值为：<br />"auto"：当前组件会转换"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br /> |
+| accessibilityLevel       | string                                          | 否  | 是  | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br ></div>支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto"<br /> |
 
 ## ToolBarV2ItemAction
 
@@ -155,7 +155,7 @@ ArkTS-Sta: type ToolBarV2ItemAction = (index: int) => void
 
 | 参数名   | 类型     | 必填 | 说明 |
 |:------|:-------|:---|----|
-| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
+| index | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 触发点击事件的工具栏子项索引。 |
 
 ## ToolBarV2ItemText
 
@@ -312,7 +312,7 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 
 ## ToolBarV2Modifier
 
-ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor)、左右内边距（padding，仅在item小于5个时生效）、是否显示按压态（stateEffect）的方法。
+ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor)、左右内边距（padding，仅在子项数量小于5个时生效）、是否显示按压态（stateEffect）的方法。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -328,7 +328,7 @@ ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor
 
 backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
-自定义绘制工具栏背景色的接口，若重载该方法则可进行工具栏背景色的自定义绘制。
+设置工具栏背景色的接口，调用该方法可自定义绘制。
 
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -351,13 +351,13 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 | 类型                                      | 说明                                      |
 |-----------------------------------------|-----------------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | 设置backgroundColor后的ToolBarV2Modifier对象。 |
+| [ToolBarV2Modifier](#toolbarv2modifier) | 设置背景色后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 
 ### padding
 
 padding(padding: LengthMetrics): ToolBarV2Modifier
 
-自定义绘制工具栏左右内边距的接口，若重载该方法则可进行工具栏左右内边距的自定义绘制。
+设置工具栏左右内边距的接口，调用该方法可自定义绘制。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -373,18 +373,18 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 | 参数名     | 类型                                                            | 必填 | 说明                                                                  |
 | ------- |---------------------------------------------------------------| -- | ------------------------------------------------------------------- |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效。<br ></div>当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0。 |
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是  | 工具栏左右内边距，仅在子项数量小于5个时生效，超过则设置值无效。<br ></div>当子项数量少于5个时，工具栏默认左右内边距为24vp；当子项数量达到或超过5个时，工具栏默认左右内边距为0。 |
 
 **返回值：**
 
 | 类型                                      | 说明                              |
 |-----------------------------------------|---------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | 设置padding后的ToolBarV2Modifier对象。 |
+| [ToolBarV2Modifier](#toolbarv2modifier) | 设置内边距后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 ### height
 
 height(height: LengthMetrics): ToolBarV2Modifier
 
-自定义绘制工具栏高度的接口，若重载该方法则可进行工具栏高度的自定义绘制，此高度不包含分割线高度。
+设置工具栏高度的接口，调用该方法可自定义绘制，此高度不包含分割线高度。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -406,7 +406,7 @@ height(height: LengthMetrics): ToolBarV2Modifier
 
 | 类型                                      | 说明                             |
 |-----------------------------------------|--------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | 设置height后的ToolBarV2Modifier对象。 |
+| [ToolBarV2Modifier](#toolbarv2modifier) | 设置高度后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 
 ### stateEffect
 
@@ -434,7 +434,7 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 | 类型                                      | 说明                                  |
 |-----------------------------------------|-------------------------------------|
-| [ToolBarV2Modifier](#toolbarv2modifier) | 设置stateEffect后的ToolBarV2Modifier对象。 |
+| [ToolBarV2Modifier](#toolbarv2modifier) | 设置按压态效果后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 
 ## ToolBarV2ItemState
 
@@ -503,7 +503,7 @@ ToolBarV2SymbolGlyph的构造函数。
 
 ## ToolBarV2SymbolGlyphOptions
 
-ToolBarV2SymbolGlyphOptions定义图标的属性。
+ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

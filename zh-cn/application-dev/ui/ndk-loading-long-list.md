@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -497,8 +497,8 @@ private:
        void ScrollTo(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}, {.f32 = 0}};
-           ArkUI_AttributeItem Item = {.value = value, .size = 3};
-           nativeModule_->setAttribute(handle_, NODE_SCROLL_OFFSET, &Item);
+           ArkUI_AttributeItem item = {.value = value, .size = 3};
+           nativeModule_->setAttribute(handle_, NODE_SCROLL_OFFSET, &item);
        }
        // ...
    };
@@ -516,8 +516,8 @@ private:
        void ScrollToIndex(int32_t index)
        {
            ArkUI_NumberValue value[] = {{.i32 = index}};
-           ArkUI_AttributeItem Item = {.value = value, .size = 1};
-           nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &Item);
+           ArkUI_AttributeItem item = {.value = value, .size = 1};
+           nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &item);
        }
        // ...
    };
@@ -536,13 +536,13 @@ private:
        void ScrollBy(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}};
-           ArkUI_AttributeItem Item = {.value = value, .size = 2};
-           nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &Item);
+           ArkUI_AttributeItem item = {.value = value, .size = 2};
+           nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &item);
        }
        // ...
    };
    ```
-## ListItem横划删除 
+## ListItem横滑删除
 
 1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_item_swipe_action)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象作为属性参数传入。
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
@@ -593,7 +593,7 @@ private:
    } // namespace NativeModule
    #endif // MYAPPLICATION_ARKUILISTITEMNODE_H
    ```
-2. 设置创建ListItem和复用ListItem的回调函数。当创建[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，创建ListItem的划出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新划出组件的绑定事件。
+2. 设置创建ListItem和复用ListItem的回调函数。当创建[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)时，创建ListItem的滑出组件，并绑定点击事件，在点击事件中执行删除数据源操作。ListItem复用时，更新滑出组件的绑定事件。
     <!-- @[SetCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/LazyTextListExample1.h) -->
 
    ``` C
@@ -693,7 +693,7 @@ private:
    #endif // MYAPPLICATION_LAZYTEXTLISTEXAMPLE1_H
    ```
 
-3. 添加新的ListItem时，优先复用已缓存的[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)实例，并更新其内容；若无可用缓存，则创建新的ListItem。当回调返回空时，创建一个默认的ListItem作为兜底方案。最后，将生成的节点句柄回填至[OH_ArkUI_NodeAdapterEvent_SetItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapterevent_setitem)事件中，完成绑定。
+3. 添加新的ListItem时，优先复用已缓存的[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)实例，并更新其内容；若无可用缓存，则创建新的ListItem。当回调返回空时，创建一个默认的ListItem作为兜底方案。最后，通过[OH_ArkUI_NodeAdapterEvent_SetItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapterevent_setitem)接口将生成的节点句柄回填至事件中，完成绑定。
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C

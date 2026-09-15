@@ -44,7 +44,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 > **说明：**
 >
->  - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-1)。
+>  - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startAbility](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-1)。
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
@@ -62,7 +62,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
@@ -113,7 +113,7 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 > **说明：**
 >
->  - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-2)。
+>  - 从API version 9开始支持，从API version 21开始废弃，推荐使用[UIExtensionContext.startAbility](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-2)。
 
 **系统能力**：SystemCapability.WindowManager.WindowManager.Core
 
@@ -121,7 +121,7 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
 | options | [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
 
 **返回值：**
@@ -136,7 +136,7 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**

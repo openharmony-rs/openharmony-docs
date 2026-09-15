@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供监听指定[AbilityStage](js-apis-app-ability-abilityStage.md)对象的能力。开发者可以将AbilityStageMonitor作为[abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9)的入参来注册监听。
+本模块提供监听指定[AbilityStage](js-apis-app-ability-abilityStage.md)对象的能力。开发者可以将AbilityStageMonitor作为[abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor)的入参来注册监听。
 
 > **说明：**
 >
@@ -43,12 +43,12 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 let monitor: abilityDelegatorRegistry.AbilityStageMonitor = {
   moduleName: 'feature_as1',
   srcEntrance: './ets/Application/MyAbilityStage.ts',
-}
+};
 
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityStageMonitor(monitor, (error, data) => {
   if (error) {
-    console.error(`waitAbilityStageMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`waitAbilityStageMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
     console.info(`waitAbilityStageMonitor success, data: ${JSON.stringify(data)}`);
   }

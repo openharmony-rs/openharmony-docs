@@ -282,6 +282,10 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
+> **说明：**
+>
+> 应用使用[PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)查询媒体库中的图片，并通过返回的PhotoAsset获取图片数据。在使用本接口读取[PropertyKey](arkts-apis-image-e.md#propertykey7)中的GPS_LATITUDE、GPS_LONGITUDE、GPS_ALTITUDE、GPS_TIME_STAMP和GPS_DATE_STAMP等GPS相关字段前，应先声明并向用户申请[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限。如果上述字段返回全为0或为空，请先检查该权限是否已获授权，并确认原始图片是否包含GPS信息。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 11
@@ -360,6 +364,10 @@ ArkTS-Sta: getImageProperties(key: Array\<PropertyKey>): Promise<Record<string, 
 
 该接口仅支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
+> **说明：**
+>
+> 应用使用[PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)查询媒体库中的图片，并通过返回的PhotoAsset获取图片数据。在使用本接口读取[PropertyKey](arkts-apis-image-e.md#propertykey7)中的GPS_LATITUDE、GPS_LONGITUDE、GPS_ALTITUDE、GPS_TIME_STAMP和GPS_DATE_STAMP等GPS相关字段前，应先声明并向用户申请[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限。如果上述字段返回全为0或为空，请先检查该权限是否已获授权，并确认原始图片是否包含GPS信息。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 12
@@ -400,8 +408,14 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
+  }).catch((err: BusinessError | BusinessError[]) => {
+    if (Array.isArray(err)) {
+      (err as BusinessError[]).forEach(e => {
+        console.error(`Failed to get the properties, error.code ${e.code}, error.message ${e.message}`);
+      });
+    } else {
+      console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
+    }
   });
 }
 ```
@@ -433,7 +447,9 @@ ArkTS-Sta: getImagePropertySync(key: PropertyKey): string | undefined
 >
 > - Exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
 >
->- 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 应用使用[PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)查询媒体库中的图片，并通过返回的PhotoAsset获取图片数据。在使用本接口读取[PropertyKey](arkts-apis-image-e.md#propertykey7)中的GPS_LATITUDE、GPS_LONGITUDE、GPS_ALTITUDE、GPS_TIME_STAMP和GPS_DATE_STAMP等GPS相关字段前，应先声明并向用户申请[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限。如果上述字段返回全为0或为空，请先检查该权限是否已获授权，并确认原始图片是否包含GPS信息。
+>
+> - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -748,22 +764,23 @@ ArkTS-Sta: readImageMetadata(propertyKeys?: string[], index?: int): Promise\<Ima
 
 > **说明：**
 >
-> 读取DNG格式图片时，该接口对部分propertyKeys有特殊处理。以下字段的字符串取值请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)中的值：
-> - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
-> - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
-> - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
-> - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
-> - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
-> - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
-> - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
-> - 从API version 24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
-> - 从API version 24开始，支持读取HEIFS元数据。要查询的属性的具体信息请参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
-> - 从API版本26.0.0开始，支持读取PNG元数据。要查询的属性的具体信息请参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
-> - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
-> - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
-> - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
-> - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
-> - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
+> - 应用使用[PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)查询媒体库中的图片，并通过返回的PhotoAsset获取图片数据。使用本接口时，propertyKeys应传入GPSLatitude、GPSLongitude、GPSAltitude、GPSTimeStamp和GPSDateStamp等GPS相关Exif标签字符串。在读取这些字段前，应先声明并向用户申请[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限。如果上述字段返回全为0或为空，请先检查该权限是否已获授权，并确认原始图片是否包含GPS信息。
+> - 读取DNG格式图片时，该接口对部分propertyKeys有特殊处理。以下字段的字符串取值请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)中的值：
+>   - NewSubfileType、ImageWidth、ImageLength、DefaultCropSize、Orientation、Compression、PhotometricInterpretation、PlanarConfiguration、RowsPerStrip、StripOffsets、StripByteCounts、SamplesPerPixel、BitsPerSample、YCbCrCoefficients、YCbCrSubSampling、YCbCrPositioning、ReferenceBlackWhite、XResolution、YResolution、ResolutionUnit字段：返回主图相关的字段值。
+>   - ImageUniqueID字段：根据规范进行校验，不符合规范时会返回空字符串。
+>   - ExifVersion、FlashpixVersion、ColorSpace字段：当图片中不存在该标签时，返回错误码。
+>   - DNGVersion字段：当版本号小于1.0.0.0时，统一返回1.0.0.0。
+>   - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
+>   - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
+>   - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+>   - 从API version 24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+>   - 从API version 24开始，支持读取HEIFS元数据。要查询的属性的具体信息请参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
+>   - 从API版本26.0.0开始，支持读取PNG元数据。要查询的属性的具体信息请参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
+>   - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
+>   - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
+>   - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+>   - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
+>   - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1107,8 +1124,8 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 | ---------- | ----------- | ---- | ------------ |
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
-| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 当前buffer的长度。单位：字节（byte）。            |
+| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节（Byte）。             |
+| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 当前buffer的长度。单位：字节（Byte）。            |
 
 **返回值：**
 
@@ -1164,8 +1181,8 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 | ---------- | ------------------- | ---- | -------------------- |
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
-| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 当前buffer的长度。单位：字节（byte）。            |
+| offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节（Byte）。             |
+| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 当前buffer的长度。单位：字节（Byte）。            |
 | callback   | AsyncCallback\<void> | 是   |  回调函数，当更新增量数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1242,7 +1259,7 @@ ArkTS-Sta: createPicture(options?: DecodingOptionsForPicture): Promise\<Picture 
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.  |
 | 7700203  | Unsupported options, For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. <br>适用版本：24+  |
 | 7700301  | Decode failed. |
 
@@ -1999,6 +2016,7 @@ ArkTS-Sta: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 当调用方所在进程启用沙箱隔离，且指定AllocatorType.DMA或由AllocatorType.AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2096,7 +2114,8 @@ ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocator
 
 > **说明：**
 >
-> 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
+> - 当调用方所在进程启用沙箱隔离，且指定AllocatorType.DMA或由AllocatorType.AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2860,7 +2879,7 @@ async function ReleaseFunc(imageSource: image.ImageSource): Promise<void> {
 
 getImageProperty(key: string, options?: GetImagePropertyOptions): Promise\<string>
 
-获取图片中给定索引处图像的指定属性键的值。用Promise异步回调。
+获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
 该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 

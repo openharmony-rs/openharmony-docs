@@ -140,12 +140,25 @@ dump(filePath: string): Array&lt;string&gt;
 | Array&lt;string&gt; | 导出结果。分别为文件名后缀为.jsleaklist的泄漏列表和文件名后缀为.heapsnapshot虚拟机内存快照文件。<br>**说明**：dump成功，返回泄漏列表文件路径和虚拟机内存快照路径；dump失败，返回空数组。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```js
 let context = this.getUIContext().getHostContext();
 let files: Array<string> = jsLeakWatcher.dump(context?.filesDir);
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```js
+let context = this.getUIContext().getHostContext();
+let filesDir = context?.filesDir;
+if (filesDir !== undefined) {
+    let files: Array<string> = jsLeakWatcher.dump(filesDir);
+} else {
+    console.info('filesDir is undefined');
+}
+```
 
 ## jsLeakWatcher.enableLeakWatcher<sup>20+</sup>
 
@@ -210,7 +223,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 > **注意：**
 >
-> 当前JSLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大检测间隔时间，减少卡顿频率。
+> 当前jsLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大检测间隔时间，减少卡顿频率。
 
 使用场景：
 - 对性能要求较高的应用，需要通过配置检测间隔、阈值等参数来平衡检测精度和性能开销。
@@ -230,7 +243,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。<br>true：开启ArkTS内存泄漏检测功能。<br>false：关闭ArkTS内存泄漏检测功能。|
-| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是| LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
+| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是|  LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：<br>对象中参数类型传入空值或假值代表该属性设置为默认值。<br>ArkTS-Dyn：可通过'\|'操作符赋值多个组件类型。<br>ArkTS-Sta：只能赋值单个组件类型。|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收泄漏检测的导出文件路径。回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
@@ -246,6 +259,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 **示例：**
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 ```ts
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
@@ -266,6 +280,26 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath : Array<string>) => {
 });
 ```
 
+ArkTS-Sta示例：
+<!--code_no_check-->
+```ts
+// 监测ArkTS对象CustomComponent和Window的内存泄漏
+// 对象中类型传入空值或假值代表该属性设置为默认值
+let config: jsLeakWatcher.LeakWatcherConfig = {
+    monitorObjectTypes: jsLeakWatcher.MonitorObjectType.CUSTOM_COMPONENT,
+    objectUniqueIDs: [],
+    checkInterval: 10000,
+    fgLeakCountThreshold: 5,
+    bgLeakCountThreshold: 3,
+    maxStoredHeapDumps: 5,
+    dumpHeapWaitTimeMs: 5000,
+    exclusionList: []
+};
+jsLeakWatcher.enableLeakWatcher(true, config, (filePath : Array<string>) => {
+    console.info('JsLeakWatcher leaklistFileName:' + filePath[0]);
+    console.info('JsLeakWatcher heapDumpFileName:' + filePath[1]);
+});
+```
 
 ## LeakWatcherConfig<sup>24+</sup>
 
@@ -281,7 +315,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 | ------- | ------- | ------- | ------- | ------- | 
 | monitorObjectTypes | [MonitorObjectType](#monitorobjecttype24) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
 | objectUniqueIDs | Array&lt;number&gt; | 否   | 是   | 被监测泄漏对象ID列表。<br>只作用于自定义组件，不会影响其他组件类型的监测。<br>例如：白名单中设置的对象类名ID与自定义ID列表存在相同值时，生效自定义ID列表参数。<br>默认为空数组。 |
-| checkInterval | number | 否 | 是 | 每轮泄漏检测间隔时间，单位：ms，取值范围为[90000, +∞)。<br>默认为90000ms。<br>如果应用输入的自定义检测间隔时间小于默认值，JSLeakWatcher强制将间隔设置为默认值。<br>当前JSLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大该参数，减少卡顿频率。<br>传入不在取值范围内的值时将使用默认值。 |
+| checkInterval | number | 否 | 是 | 每轮泄漏检测间隔时间，单位：ms，取值范围为[90000, +∞)。<br>默认为90000ms。<br>如果应用输入的自定义检测间隔时间小于默认值，jsLeakWatcher强制将间隔设置为默认值。<br>当前jsLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大该参数，减少卡顿频率。<br>传入不在取值范围内的值时将使用默认值。 |
 | fgLeakCountThreshold | number | 否 | 是 | 应用在前台泄漏个数达到设定值触发dump，取值范围为[0, +∞)。<br>GC/Dump阶段，大于等于5时触发Dump。<br>阈值默认为5。<br>传入不在取值范围内的值时将使用默认值。 |
 | bgLeakCountThreshold | number | 否 | 是 | 应用在后台泄漏个数达到设定值触发dump，取值范围为[0, +∞)。<br>GC/Dump阶段，大于等于1时触发Dump。<br>阈值默认为1。<br>传入不在取值范围内的值时将使用默认值。 |
 | maxStoredHeapDumps | number | 否 | 是 | 最大dump保存个数，取值范围为(0, 10]，避免磁盘空间占满，超过则删除时间戳最小的rawheap、jsleaklist文件。<br>默认保存10个rawheap、10个jsleaklist文件。<br>传入不在取值范围内的值时将使用默认值。 |

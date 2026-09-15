@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 <!--RP1-->
@@ -39,7 +39,9 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 >
 > - 当前默认User-Agent的ArkWeb字段前有两个空格。
 >
-> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显性设置[metaViewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性为true来覆盖关闭状态。
+> - 依据[RFC 7230 Section 3.2](https://www.rfc-editor.org/info/rfc7230/#section-3.2)规范，自定义User-Agent字符串严禁包含空字符(\0)、回车符(\r)和换行符(\n)，否则会导致应用崩溃。
+>
+> - 当前通过User-Agent中是否含有"Mobile"字段来判断是否开启前端HTML页面中meta标签的viewport属性。当User-Agent中不含有"Mobile"字段时，meta标签中viewport属性默认关闭，此时可通过显式设置[metaViewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性为true来覆盖关闭状态。
 >
 > - 建议通过OpenHarmony关键字识别是否是OpenHarmony设备，同时可以通过DeviceType识别设备类型用于不同设备上的页面显示（ArkWeb关键字表示设备使用的web内核，OpenHarmony关键字表示设备使用的操作系统，因此推荐通过OpenHarmony关键字识别是否是OpenHarmony设备）。
 >
@@ -48,6 +50,8 @@ User-Agent（简称UA）是一个特殊的字符串，包含设备类型、操�
 ## 自定义User-Agent结构
 
 在下面的示例中，通过调用[getUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getuseragent)接口获取当前默认的用户代理（User-Agent）字符串。这一接口提供的默认User-Agent信息为开发者提供了基础，使开发者能够基于这个默认信息进行定制或扩展。
+
+ArkTS-Dyn示例：
 <!-- @[get_the_current_default_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
 
 ``` TypeScript
@@ -77,11 +81,46 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[get_the_current_default_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_one.ets) -->
+
+``` TypeScript
+'use static'
+
+import { Web, Column, Button, Entry, Component } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getUserAgent')
+        .onClick(() => {
+          try {
+            let userAgent = this.controller.getUserAgent();
+            console.info('userAgent: ' + userAgent);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 以下示例通过[setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)接口设置自定义用户代理，但请注意，此操作会覆盖系统的用户代理。因此，我们建议将扩展字段追加在默认用户代理的末尾，比如三方应用程序的开发场景，可以在系统默认用户代理字符串的末尾追加特定的APP标识，这样既能保留原有用户代理信息，又能增加自定义的应用识别信息。
 
 当Web组件src设置了url时，建议在[onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10)回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在[onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)回调事件中，会概率性出现设置失败。若未在onControllerAttached回调事件中设置User-Agent，后续调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
 
 当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
+
+ArkTS-Dyn示例：
 <!-- @[set_up_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
 
 ``` TypeScript
@@ -113,9 +152,46 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[set_up_a_custom_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_two.ets) -->
+
+``` TypeScript
+'use static'
+
+import { State, Web, Column, Entry, Component } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  // 三方应用相关信息标识
+  @State customUserAgent: string = ' DemoApp';
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          console.info('onControllerAttached');
+          try {
+            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+            this.controller.setCustomUserAgent(userAgent);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
 从API version 20开始，可通过[setAppCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setappcustomuseragent20)接口设置应用级自定义用户代理，或者通过[setUserAgentForHosts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setuseragentforhosts20)对特定网站设置应用级自定义用户代理，覆盖系统的用户代理，应用内所有Web组件生效。
 
 建议在Web组件创建前先调用静态接口[getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14)获取默认的用户代理（User-Agent）字符串，然后调用setAppCustomUserAgent，setUserAgentForHosts方法设置User-Agent，再创建指定src的Web组件或通过loadUrl加载具体页面。
+
+ArkTS-Dyn示例：
 <!-- @[set_app_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
 
 ``` TypeScript
@@ -153,7 +229,50 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[set_app_custom_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets) -->
+
+``` TypeScript
+'use static'
+
+import { Web, Column, Entry, Component } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  aboutToAppear(): void {
+    try {
+      webview.WebviewController.initializeWebEngine();
+      let defaultUserAgent = webview.WebviewController.getDefaultUserAgent();
+      let appUA = defaultUserAgent + ' appUA';
+      webview.WebviewController.setAppCustomUserAgent(appUA);
+      webview.WebviewController.setUserAgentForHosts(
+        appUA,
+        [
+          'www.example.com',
+          'www.baidu.com'
+        ]
+      );
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 在下面的示例中，通过[getCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getcustomuseragent10)接口获取自定义用户代理。
+
+ArkTS-Dyn示例：
 <!-- @[get_a_custom_user_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
 
 ``` TypeScript
@@ -164,6 +283,40 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
+  @State userAgent: string = '';
+
+  build() {
+    Column() {
+      Button('getCustomUserAgent')
+        .onClick(() => {
+          try {
+            this.userAgent = this.controller.getCustomUserAgent();
+            console.info('userAgent: ' + this.userAgent);
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[get_a_custom_user_agent_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_three.ets) -->
+
+``` TypeScript
+'use static'
+
+import { State, Web, Column, Button, Entry, Component } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State userAgent: string = '';
 
   build() {
@@ -247,7 +400,7 @@ A：网站会针对不同UA展示不同样式页面。需要移动设备UA设置
 
 **Q：部分网页打不开或显示“不支持的浏览器”**
 
-A：网页未适配OpenHarmony UA，需要网页对"OpenHarmony"标识作兼容处理。
+A：网页未适配OpenHarmony UA，需要网页对"OpenHarmony"标识作兼容处理。在网页适配前，可通过[setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在默认UA中追加其他兼容性字段进行临时过渡适配。
 
 **Q：页面循环跳转**
 

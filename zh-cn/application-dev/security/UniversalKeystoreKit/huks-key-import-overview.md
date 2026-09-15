@@ -35,7 +35,7 @@
 
 下图为安全导入密钥开发时序图。
 
-![安全导入密钥开发顺序图](figures/ImportWrappedKey-SequenceDiagram.PNG)
+![安全导入密钥开发时序图](figures/ImportWrappedKey-SequenceDiagram.PNG)
 
 根据开发流程，在安全导入密钥过程中，需要依次调用HUKS的能力包括：  
 * 生成非对称密钥对并导出公钥，用于设备间密钥协商。 

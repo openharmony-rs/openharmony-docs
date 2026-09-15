@@ -1,7 +1,7 @@
 # OH_NativeXComponent_KeyEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
 
 ## 概述
 
-提供封装按键事件信息的OH_NativeXComponent_KeyEvent实例。
+OH_NativeXComponent_KeyEvent用于封装XComponent按键事件的信息，提供按键的键值、动作类型、事件时间戳等关键数据。适用于Native侧接收和处理ArkUI XComponent按键事件的场景。
 
 **起始版本：** 10
 

@@ -24,7 +24,7 @@
 - [param工具](param-tool.md)
 - [power-shell工具](power-shell.md)
 <!--Del-->
-- [OpenHarmony SDK升级助手](openharmony_sdk_upgrade_assistant.md)
+- [OpenHarmony SDK升级助手](openharmony-sdk-upgrade-assistant.md)
 <!--DelEnd-->
 - [atm工具](atm-tool.md)
 - [network-cfg工具](network-cfg.md)
@@ -32,6 +32,7 @@
 - hidumper<!--hidumper-tool-->
   - [hidumper](../dfx/hidumper.md)
   - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
+  - [Faultlogger](../dfx/hidumper-faultlogger.md)
 - [hitrace](../dfx/hitrace.md)
 - [hiperf](../dfx/hiperf.md)
 - [hiprofiler](../dfx/hiprofiler.md)
@@ -45,5 +46,6 @@
   - [mediatool工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
+  - [SourceMap Splitter工具](sourcemap-splitter-tool.md)
   <!--RP1--><!--RP1End-->
 - [二进制签名工具](binary-sign-tool.md)

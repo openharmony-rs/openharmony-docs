@@ -1,4 +1,4 @@
-# applyStyles：定义组件重用样式（ArkTS-ST）
+# applyStyles：定义组件重用样式（ArkTS-Sta）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->

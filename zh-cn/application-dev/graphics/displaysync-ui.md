@@ -190,7 +190,7 @@
 
    > **说明：**
    >
-   > 创建的DisplaySync实例在start使能后需要aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
+   > 创建的DisplaySync实例在start使能后需要在aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
 
    ArkTS-Dyn示例：
    <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->

@@ -7,11 +7,11 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等。
+串口管理采用系统级权限控制机制，由系统统一管理和验证串口设备访问权限，应用需要通过系统接口获取访问权限后方可对串口设备进行读写操作，解决了安全访问控制和设备隔离问题。
 
 > **说明：**
 >
-> 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.usbManager.serial (串口管理)](js-apis-serialManager.md)。
 
@@ -27,9 +27,11 @@ ArkTS-Dyn: addSerialRight(tokenId: number, portId: number): void
 
 ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 
-为应用程序添加访问串口设备权限。
+为应用添加访问串口设备权限。使用前需先通过[getPortList](js-apis-serialManager.md#serialmanagergetportlist)获取串口列表，从中获得有效的portId。调用成功后，应用获得对指定串口设备的访问权限，可进行打开、读写等操作；调用失败则抛出相应错误码，应用无法访问该串口设备。
 
-serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRight不会触发弹窗，而是直接添加应用程序访问设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
+**使用场景**：
+- 系统应用在静默授权且无需用户确认的场景下使用，静默授权指系统应用在无需用户交互的情况下，直接通过系统接口获取串口设备访问权限的方式，如系统内部组件间通信、后台服务自动连接串口设备。系统通过检查应用权限（ohos.permission.MANAGE_USB_CONFIG）来识别是否允许静默授权，跳过用户确认环节直接授予权限。
+- 与requestSerialRight的区别：[serialManager.requestSerialRight](js-apis-serialManager.md#serialmanagerrequestserialright)会触发弹窗请求用户授权，适用于需要用户明确授权的场景；addSerialRight不触发弹窗，而是直接添加应用访问设备的权限，适用于系统应用自动化管理的场景。应用退出后，系统会自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
 
 **系统接口：** 此接口为系统接口
 
@@ -45,8 +47,14 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 | 参数名     | 类型     | 必填 | 说明                                  |
 |---------|--------|----|-------------------------------------|
-| tokenId | ArkTS-Dyn: number<br> ArkTS-Sta: int| 是  | 需要访问权限的tokenId。|
-| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。|
+| tokenId | ArkTS-Dyn: number<br> ArkTS-Sta: int| 是  | 应用访问令牌ID，标识需要访问串口设备权限的应用。可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。|
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 串口设备的端口号，用于唯一标识串口设备，可通过[serialManager.getPortList](js-apis-serialManager.md#serialmanagergetportlist)获取有效的端口号。需确保端口号存在否则会返回31400003错误。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| void | 无返回值 |
 
 
 **错误码：**
@@ -65,7 +73,6 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 **示例：**
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 import serialManager from '@ohos.usbManager.serial';
 
@@ -80,7 +87,7 @@ function addSerialRight() {
 
   let portId: int = portList[0].portId;
   // 串口增加权限
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
     console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(bundleInfo));
     let tokenId = bundleInfo.appInfo.accessTokenId;
@@ -90,8 +97,8 @@ function addSerialRight() {
     } catch (error) {
       console.error('addSerialRight error, ' + JSON.stringify(error));
     }
-  }).catch((err : BusinessError) => {
-    console.error('getBundleInfoForSelf failed');
+  }).catch((error) => {
+    console.error('getBundleInfoForSelf failed, error = ' + JSON.stringify(error));
   });
 }
 ```

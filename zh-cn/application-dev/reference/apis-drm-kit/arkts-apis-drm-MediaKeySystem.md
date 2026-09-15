@@ -1,10 +1,12 @@
 # Interface (MediaKeySystem)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)创建一个MediaKeySystem实例。
 
 > **说明：**
@@ -23,7 +25,7 @@ setConfigurationString(configName: string, value: string): void
 
 设置字符串类型的配置信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -40,17 +42,17 @@ setConfigurationString(configName: string, value: string): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-mediaKeySystem.setConfigurationString("stringConfigName", "stringConfigValue"); // 确保stringConfigName是可配置的。
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+mediaKeySystem.setConfigurationString('stringConfigName', 'stringConfigValue'); // 确保stringConfigName是可配置的。
 ```
 
 ## getConfigurationString
@@ -59,7 +61,7 @@ getConfigurationString(configName: string): string
 
 获取字符串类型的配置属性值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -81,17 +83,17 @@ getConfigurationString(configName: string): string
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed, the param's length is zero or too big(exceeds 4096 Bytes).                              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. Parameter verification failed, the param's length is zero or too big (exceeds 4096 Bytes). |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-let configValue: string = mediaKeySystem.getConfigurationString("vendor");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let configValue: string = mediaKeySystem.getConfigurationString('vendor');
 ```
 
 ## setConfigurationByteArray
@@ -100,7 +102,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 设置数组类型的配置信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -126,11 +128,11 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // 按实际需求填写configValue属性值，请按实际值传入。
 let configValue: Uint8Array = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 // 需确认当前DRM解决方案的byteArrayConfigName属性是可配置的。
-mediaKeySystem.setConfigurationByteArray("byteArrayConfigName", configValue);
+mediaKeySystem.setConfigurationByteArray('byteArrayConfigName', configValue);
 ```
 
 ## getConfigurationByteArray
@@ -139,7 +141,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 获取数组类型的配置信息。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -162,16 +164,16 @@ getConfigurationByteArray(configName: string): Uint8Array
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
-let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray("deviceUniqueId"); // 确保deviceUniqueId属性是存在的。
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
+let configValue: Uint8Array = mediaKeySystem.getConfigurationByteArray('deviceUniqueId'); // 确保deviceUniqueId属性是存在的。
 ```
 
 ## getStatistics
@@ -180,7 +182,7 @@ getStatistics(): StatisticKeyValue[]
 
 获取性能度量记录。其中包括当前会话数、插件版本信息、每个会话最大三次解密耗时、解密次数和解密失败次数。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -196,15 +198,15 @@ getStatistics(): StatisticKeyValue[]
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let statisticKeyValue: drm.StatisticKeyValue[] = mediaKeySystem.getStatistics();
 ```
 
@@ -214,7 +216,7 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 获取当前DRM解决方案支持的最大内容保护级别。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -230,15 +232,15 @@ getMaxContentProtectionLevel(): ContentProtectionLevel
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let maxLevel: drm.ContentProtectionLevel = mediaKeySystem.getMaxContentProtectionLevel();
 ```
 
@@ -250,7 +252,7 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 如果设备上已存在设备证书，调用此接口会返回失败。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -266,15 +268,15 @@ generateKeySystemRequest(): Promise<ProvisionRequest\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // 设备上已有设备证书的情况下不需要调用。
 mediaKeySystem.generateKeySystemRequest().then((provisionRequest: drm.ProvisionRequest) => {
   // provisionRequest为接口返回的设备证书请求对象，包含请求数据和默认URL。
@@ -290,7 +292,7 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 如果设备上已存在设备证书，调用此接口会返回失败。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -313,15 +315,15 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入。
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
@@ -331,11 +333,11 @@ mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
 
 ## getCertificateStatus
 
-getCertificateStatus():CertificateStatus
+getCertificateStatus(): CertificateStatus
 
 获取设备证书状态值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -351,15 +353,15 @@ getCertificateStatus():CertificateStatus
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let certificateStatus: drm.CertificateStatus = mediaKeySystem.getCertificateStatus();
 ```
 
@@ -369,7 +371,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 监听设备证书请求事件，获取事件信息。使用callback异步回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -378,7 +380,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 | 参数名      | 类型                  | 必填 | 说明                                  |
 | -------- | -------------------- | ---- | ------------------------------------- |
 | type     | string               | 是   | 事件类型，通过[createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem)成功创建MediaKeySystem实例后可监听，需要设备证书时触发该事件。 |
-| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，返回事件信息。只要有该事件返回就证明需请求设备证书。                 |
+| callback | (eventInfo: [EventInfo](arkts-apis-drm-i.md#eventinfo)) => void  | 是   | 回调函数，返回事件信息。当收到该事件时，表示需要请求设备证书。                 |
 
 **错误码：**
 
@@ -387,14 +389,14 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.on('keySystemRequired', (eventInfo: drm.EventInfo) => {
   console.info('keySystemRequired ' + 'extra: ' + eventInfo.extraInfo + 'data: ' + eventInfo.info);
 });
@@ -406,7 +408,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 注销设备证书请求事件的监听。使用callback异步回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -424,13 +426,14 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.               |
-| 24700101                |  All unknown errors                  |
+| 24700101                |  All unknown errors.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.off('keySystemRequired');
 ```
 
@@ -440,7 +443,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 创建指定内容保护级别的MediaKeySession实例。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -462,17 +465,17 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.The param level exceeds reasonable range, please use value in ContentProtectionLevel.          |
-| 24700101                 |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 401 | The parameter check failed. Possibly because: 1. Mandatory parameters are left unspecified. 2. The param level exceeds reasonable range, please use value in ContentProtectionLevel. |
+| 24700101                 |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 ```
 
@@ -482,7 +485,7 @@ createMediaKeySession(): MediaKeySession
 
 创建DRM解决方案默认内容保护级别的MediaKeySession实例。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -498,16 +501,16 @@ createMediaKeySession(): MediaKeySession
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700104                 |  Meet max MediaKeySession num limit                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700104                 |  Meet max MediaKeySession num limit.                  |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession();
 ```
 
@@ -517,7 +520,7 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 获取离线媒体密钥标识列表。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -533,15 +536,15 @@ getOfflineMediaKeyIds(): Uint8Array[]
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 let offlineMediaKeyIds: Uint8Array[] = mediaKeySystem.getOfflineMediaKeyIds();
 ```
 
@@ -551,7 +554,7 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 
 获取指定离线媒体密钥标识的媒体密钥的状态值。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -574,15 +577,15 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际值传入。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 let configValue: drm.OfflineMediaKeyStatus = mediaKeySystem.getOfflineMediaKeyStatus(mediaKeyId);
@@ -594,7 +597,7 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 删除指定媒体密钥标识的离线媒体密钥。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -611,15 +614,15 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.           |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 // mediaKeyId是processMediaKeyResponse或getOfflineMediaKeyIds接口返回的媒体密钥标识，请按实际值传入。
 let mediaKeyId = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.clearOfflineMediaKeys(mediaKeyId);
@@ -631,7 +634,7 @@ destroy(): void
 
 销毁MediaKeySystem实例。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Drm.Core
 
@@ -641,14 +644,14 @@ destroy(): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                |  All unknown errors.                 |
+| 24700201                |  Fatal service error, for example, service died.                 |
 
 **示例：**
 
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
+let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem('com.clearplay.drm');
 mediaKeySystem.destroy();
 ```

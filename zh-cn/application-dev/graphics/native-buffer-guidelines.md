@@ -9,21 +9,21 @@
 
 NativeBuffer模块提供**共享内存**功能，支持内存的申请、使用、查询和释放等操作。
 
-NativeBuffer的常见开发场景：通过Native API申请OH_NativeBuffer实例，获取内存属性，将ION内存映射到进程空间。
+NativeBuffer的常见应用场景包括：图像数据处理、视频编解码、跨进程内存共享等。开发流程通常包括：申请OH_NativeBuffer实例、获取内存属性和将ION内存映射到进程空间。
 
 ## 接口说明
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| OH_NativeBuffer_Alloc (const OH_NativeBuffer_Config \*config) | 通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。本接口需要与OH_NativeBuffer_Unreference接口配合使用，否则会存在内存泄露。 |
+| OH_NativeBuffer_Alloc (const OH_NativeBuffer_Config \*config) | 通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。本接口需要与OH_NativeBuffer_Unreference接口配合使用，否则会存在内存泄漏。 |
 | OH_NativeBuffer_Reference (OH_NativeBuffer \*buffer) | 将OH_NativeBuffer对象的引用计数增加1。 | 
 | OH_NativeBuffer_Unreference (OH_NativeBuffer \*buffer) | 将OH_NativeBuffer对象的引用计数减1，当引用计数为0的时候，该NativeBuffer对象会被析构掉。 | 
 | OH_NativeBuffer_GetConfig (OH_NativeBuffer \*buffer, OH_NativeBuffer_Config \*config) | 用于获取OH_NativeBuffer的属性。 | 
 | OH_NativeBuffer_Map (OH_NativeBuffer \*buffer, void \*\*virAddr) | 将OH_NativeBuffer对应的ION内存映射到进程空间。 | 
-| OH_NativeBuffer_Unmap (OH_NativeBuffer \*buffer) | 将OH_NativeBuffer对应的ION内存从进程空间移除。 | 
+| OH_NativeBuffer_Unmap (OH_NativeBuffer \*buffer) | 将OH_NativeBuffer对应的ION内存从进程空间解除映射。 | 
 | OH_NativeBuffer_GetSeqNum (OH_NativeBuffer \*buffer) | 获取OH_NativeBuffer的序列号。 | 
 
-详细的接口说明请参考[native_buffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md)。
+详细的接口说明请参考[OH_NativeBuffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md)。
 
 ## 开发步骤
 
@@ -99,4 +99,4 @@ libnative_buffer.so
 
 针对NativeBuffer的开发，有以下相关实例可供参考：
 
-- [Native Window（API12）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)
+- [Native Window（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)

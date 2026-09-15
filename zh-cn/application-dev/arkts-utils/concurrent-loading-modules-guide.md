@@ -4,13 +4,13 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 在应用启动时，多个业务模块需要加载，例如地图应用中的定位、打车、导航等模块。如果全部在UI主线程初始化，会严重影响应用冷启动时间。此时，应在不同子线程中并行加载这些模块，以降低启动耗时。
 
 通过使用ArkTS提供的TaskPool能力，可以将不同的业务初始化任务移到子线程中。业务模块可通过下沉C++实现为[NativeBinding对象](transferabled-object.md)或在ArkTS层定义为[Sendable对象](arkts-sendable.md)，从而将初始化的模块返回给UI主线程调用，实现如下。
 
-1. 各业务功能（SDK）模块定义（这里以使用Sendable对象为例）。
+1. 在ets文件夹下新建文件夹sdk，存放各业务功能模块定义（这里以使用Sendable对象为例）。
 
    计算器业务模块定义如下：
 
@@ -155,7 +155,7 @@
                center: { anchor: '__container__', align: VerticalAlign.Center },
                middle: { anchor: '__container__', align: HorizontalAlign.Center }
              })
-             .onClick(async () => {
+             .onClick(() => {
                let result = this.calc?.add(1, 2)
                console.info(`Result is ${result}`)
                this.calculateAdd = 'success';
@@ -168,7 +168,7 @@
                center: { anchor: '__container__', align: VerticalAlign.Center },
                middle: { anchor: '__container__', align: HorizontalAlign.Center }
              })
-             .onClick(async () => {
+             .onClick(() => {
                this.calc?.showHistory();
                this.showHistory = 'success';
              })

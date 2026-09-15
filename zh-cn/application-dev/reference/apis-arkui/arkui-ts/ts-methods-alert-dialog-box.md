@@ -27,19 +27,19 @@
 | title                             | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是  | 弹窗标题。<br/>API version 20之前，弹窗标题的对齐方式为左对齐。<br/>API version 20及之后，弹窗标题的对齐方式为居中对齐。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23   |
 | subtitle<sup>10+</sup>            | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是  | 弹窗副标题。<br/>API version 20之前，弹窗副标题的对齐方式为左对齐。<br/>API version 20及之后，弹窗副标题的对齐方式为居中对齐。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23                                                 |
 | message                           | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否  | 弹窗内容。<br/>API version 20之前，弹窗内容的对齐方式为左对齐。<br/>API version 20及之后，弹窗内容的对齐方式为居中对齐。  <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23                                                 |
-| autoCancel                        | boolean                                                      | 否   | 是  | 点击遮障层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。<br/>默认值：true<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
-| cancel                            | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是  | 点击遮障层关闭dialog时的回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23                               |
+| autoCancel                        | boolean                                                      | 否   | 是  | 点击遮罩层时，是否关闭弹窗，true表示关闭弹窗。false表示不关闭弹窗。<br/>默认值：true<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| cancel                            | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是  | 点击遮罩层关闭弹窗时的回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23                               |
 | alignment                         | [DialogAlignment](#dialogalignment枚举说明)                  | 否   | 是  | 弹窗在竖直方向上的对齐方式。<br/>默认值：DialogAlignment.Default <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>若在[UIExtension](../js-apis-arkui-uiExtension.md)中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
 | offset                            | [Offset](ts-types.md#offset)                                 | 否   | 是  | 弹窗相对alignment所在位置的偏移量。<br/>默认值：{&nbsp;dx:&nbsp;0&nbsp;,&nbsp;dy:&nbsp;0&nbsp;}<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
 | gridCount                         | ArkTS-Dyn: number <br> ArkTS-Sta: int                        | 否   | 是  | 弹窗容器宽度所占用栅格数。<br/>默认值：4 <br>取值范围：大于等于0的整数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
-| maskRect<sup>10+</sup>            | [Rectangle](#rectangle8类型说明)                             | 否   | 是  | 弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| showInSubWindow<sup>11+</sup>     | boolean                                                      | 否   | 是  | 某弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br/>默认值：false，弹窗显示在应用内，而非独立子窗口。<br/>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| isModal<sup>11+</sup>             | boolean                                                      | 否   | 是  | 弹窗是否为模态窗口，模态窗口有蒙层，非模态窗口无蒙层。值为false时，弹窗为非模态窗口，无蒙层。<br/>默认值：true，此时弹窗有蒙层。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| maskRect<sup>10+</sup>            | [Rectangle](#rectangle8类型说明)                             | 否   | 是  | 弹窗遮罩层区域，在遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。<br/>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } <br/>**说明：**<br/>showInSubWindow为true时，maskRect不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| showInSubWindow<sup>11+</sup>     | boolean                                                      | 否   | 是  | 弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true表示在子窗口显示弹窗。<br/>默认值：false，弹窗显示在应用内，而非独立子窗口。<br/>**说明**：showInSubWindow为true的弹窗无法触发显示另一个showInSubWindow为true的弹窗。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
+| isModal<sup>11+</sup>             | boolean                                                      | 否   | 是  | 弹窗是否为模态窗口，模态窗口有遮罩层，非模态窗口无遮罩层。值为false时，弹窗为非模态窗口，无遮罩层。<br/>默认值：true，此时弹窗有遮罩层。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | backgroundColor<sup>11+</sup>     | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是  | 弹窗背板颜色。<br/>默认值：Color.Transparent<br/>**说明：** <br/>backgroundColor会与模糊属性backgroundBlurStyle叠加产生效果，如果不符合预期，可将backgroundBlurStyle设置为BlurStyle.NONE，即可取消模糊。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否   | 是  | 弹窗背板模糊材质。<br/>默认值：从API版本26.0.0开始，为BlurStyle.NONE，API版本26.0.0之前，为BlurStyle.COMPONENT_ULTRA_THICK。<br/>**说明：** <br/>设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| onWillDismiss<sup>12+</sup>       | [Callback](./ts-types.md#callback12)<[DismissDialogAction](#dismissdialogaction12)> | 否   | 是  | 交互式关闭回调函数。<br/>**说明：**<br/>1.当用户执行点击遮障层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。<br/>2.在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 弹窗背板模糊效果选项。默认值请参考BackgroundBlurStyleOptions类型说明。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 弹窗背板效果参数。默认值请参考BackgroundEffectOptions类型说明。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| onWillDismiss<sup>12+</sup>       | [Callback](./ts-types.md#callback12)<[DismissDialogAction](#dismissdialogaction12)> | 否   | 是  | 交互式关闭回调函数。<br/>**说明：**<br/>1.当用户执行单击遮罩层关闭、侧滑（左滑/右滑）、三键back、键盘ESC关闭交互操作时，如果注册该回调函数，则不会立刻关闭弹窗。在回调函数中可以通过reason得到阻拦关闭弹窗的操作类型，从而根据原因选择是否能关闭弹窗。当前组件返回的reason中，暂不支持CLOSE_BUTTON的枚举值。<br/>2.在onWillDismiss回调中，不能再做onWillDismiss拦截。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | cornerRadius<sup>12+</sup>        | &nbsp;[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否   | 是  | 设置背板的圆角半径。<br />可分别设置4个圆角的半径。<br />默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br /> 圆角大小受组件尺寸限制，最大值为组件宽或高的一半，若值为负，则按照默认值处理。 <br /> 百分比参数方式：以父元素弹窗宽和高的百分比来设置弹窗的圆角。<br/>**说明：**<br/>当cornerRadius属性类型为LocalizedBorderRadiuses时，支持随语言习惯改变布局顺序。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | transition<sup>12+</sup>          | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是  | 设置弹窗显示和退出的过渡效果。<br/>**说明：**<br/> 1.如果不设置，则使用默认的显示/退出动效。<br/> 2.显示动效中按back键，打断显示动效，执行退出动效，动画效果为显示动效与退出动效的曲线叠加后的效果。<br/> 3.退出动效中按back键，不会打断退出动效，退出动效继续执行，继续按back键退出应用。                               <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | width<sup>12+</sup>               | [Dimension](ts-types.md#dimension10) | 否   | 是 | 设置弹窗背板的宽度。<br />**说明：**<br>- 弹窗宽度默认最大值：400vp。<br />- 百分比参数方式：弹窗参考宽度为所在窗口的宽度，在此基础上调小或调大。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
@@ -55,9 +55,9 @@
 | onDidAppear<sup>19+</sup> | [Callback](./ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 弹窗弹出后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br />2.在onDidAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br />3.快速点击弹出，关闭弹窗时，onWillDisappear在onDidAppear前生效。<br/>4.弹窗入场动效未完成时彻底关闭弹窗，动效打断，onDidAppear不会触发。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
 | onWillDisappear<sup>19+</sup> | [Callback](./ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br /> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
 | onDidDisappear<sup>19+</sup> | [Callback](./ts-types.md#callback12)&lt;void&gt; | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />正常时序依次为：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| levelMode<sup>15+</sup>       | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY。<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
+| levelMode<sup>15+</sup>       | [LevelMode](../js-apis-promptAction.md#levelmode15) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY。<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
 | levelUniqueId<sup>15+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是  | 设置页面级弹窗需要显示的层级下的[getUniqueId](../js-apis-arkui-frameNode.md#getuniqueid12)。仅在levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>取值范围：大于等于0的数字。传入小于0的数字本项配置不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
-| immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
+| immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 15 <br/> **ArkTS-Sta起始版本：** 23 |
 | levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
 | systemMaterial  | SystemUiMaterial | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：ImmersiveOptions的style为ImmersiveStyle.ULTRA_THICK的ImmersiveMaterial对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
@@ -95,7 +95,7 @@ type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 | 名称       | 类型     | 只读   | 可选   | 说明         |
 | ---------- | ---------------- | ---------- | ------------------------------- | ------------------------------- |
-| confirm    | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否   | 是  | 确认Button的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键。多重弹窗情况下，可自动获焦并连续响应。默认响应Enter键能力在defaultFocus为true时不生效。 |
+| confirm    | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否   | 是  | 确认按钮的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键。多重弹窗情况下，可自动获焦并连续响应。默认响应Enter键能力在defaultFocus为true时不生效。 |
 
 confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
@@ -129,8 +129,8 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 | 名称             | 类型                | 只读   | 可选   | 说明                     |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
-| primaryButton   | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 主要Button的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键，且多重弹窗可自动获焦连续响应。默认响应Enter键能力在defaultFocus为true时不生效。 具体使用方式请参考[示例7](#示例7自定义背景模糊效果参数) 。|
-| secondaryButton | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 次要Button的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。 |
+| primaryButton   | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 主要按钮的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。在弹窗获焦且未进行tab键走焦时，该按钮默认响应Enter键，且多重弹窗可自动获焦连续响应。默认响应Enter键能力在defaultFocus为true时不生效。 具体使用方式请参考[示例7](#示例7自定义背景模糊效果参数) 。|
+| secondaryButton | [AlertDialogButtonBaseOptions](#alertdialogbuttonbaseoptions18对象说明) | 否 | 否 | 次要按钮的使能状态、默认焦点、按钮风格、文本内容、文本色、按钮背景色和点击回调。 |
 
 ## AlertDialogParamWithOptions<sup>10+</sup>对象说明
 
@@ -165,7 +165,7 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 | 名称                  | 类型    | 只读 | 可选 | 说明                                                         |
 | --------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| primary<sup>12+</sup> | boolean | 否   | 是   | 在弹窗获焦且未进行tab键走焦时，按钮是否默认响应Enter键。多个Button时，只允许一个Button的该字段配置为true，否则所有Button均不响应。多重弹窗可自动获焦连续响应。在defaultFocus为true时不生效。值为true表示按钮默认响应Enter键，值为false时，按钮不默认响应Enter键。<br/>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| primary<sup>12+</sup> | boolean | 否   | 是   | 在弹窗获焦且未进行tab键走焦时，按钮是否默认响应Enter键。多个按钮时，只允许一个按钮的该字段配置为true，否则所有按钮均不响应。多重弹窗可自动获焦连续响应。在defaultFocus为true时不生效。值为true表示按钮默认响应Enter键，值为false时，按钮不默认响应Enter键。<br/>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## AlertDialogButtonBaseOptions<sup>18+</sup>对象说明
 
@@ -187,17 +187,17 @@ confirm参数优先级：fontColor、backgroundColor  > style > defaultFocus
 
 | 名称             | 类型                | 只读   | 可选   | 说明                    |
 | ------------------| ---------------------- | ------------ | --------------------- | --------------------- |
-| enabled<sup>10+</sup> | boolean | 否     | 是    | 点击Button是否响应，默认值true。<br/>值为true时，Button可以响应。值为false时，Button不可以响应。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| defaultFocus<sup>10+</sup> | boolean | 否     | 是    | 设置Button是否是默认焦点，默认值false。值为true表示Button为默认焦点，值为false表示Button不为默认焦点。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| style<sup>10+</sup> | [DialogButtonStyle](ts-appendix-enums.md#dialogbuttonstyle10) | 否     | 是    | 设置Button的风格样式，默认值DialogButtonStyle.DEFAULT。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| value<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否    | 否    | Button的文本内容，若值为null，则该按钮不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| fontColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否     | 是    | Button的文本颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| backgroundColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否     | 是    | Button背景颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
-| action<sup>10+</sup> | [VoidCallback](ts-types.md#voidcallback12) | 否    | 否    | Button选中时的回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| enabled<sup>10+</sup> | boolean | 否     | 是    | 点击按钮是否响应，默认值true。<br/>值为true时，按钮可以响应。值为false时，按钮不可以响应。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| defaultFocus<sup>10+</sup> | boolean | 否     | 是    | 设置按钮是否是默认焦点，默认值false。值为true表示按钮为默认焦点，值为false表示按钮不为默认焦点。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| style<sup>10+</sup> | [DialogButtonStyle](ts-appendix-enums.md#dialogbuttonstyle10) | 否     | 是    | 设置按钮的风格样式，默认值DialogButtonStyle.DEFAULT。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| value<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否    | 否    | 按钮的文本内容，若值为null，则该按钮不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| fontColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否     | 是    | 按钮的文本颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| backgroundColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否     | 是    | 按钮背景颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| action<sup>10+</sup> | [VoidCallback](ts-types.md#voidcallback12) | 否    | 否    | 按钮选中时的回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## DialogButtonDirection<sup>10+</sup>枚举说明
 
-警告弹窗中按钮的对齐方式。
+警告弹窗中按钮的排布方向。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -252,14 +252,14 @@ Rectangle是各种Dialog中maskRect参数的类型。
 
 | 名称     | 类型                           | 只读 | 可选 | 说明                               |
 |--------|------------------------------|----|-----------------------------------|-----------------------------------|
-| x      | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮蔽层区域相对于窗口左上角的x轴坐标。<br/>默认值：0vp |
-| y      | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮蔽层区域相对于窗口左上角的y轴坐标。<br/>默认值：0vp |
-| width  | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮蔽层区域的宽度。<br/>默认值：'100%'        |
-| height | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮蔽层区域的高度。<br/>默认值：'100%'        |
+| x      | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮罩层区域相对于窗口左上角的x轴坐标。<br/>默认值：0vp |
+| y      | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮罩层区域相对于窗口左上角的y轴坐标。<br/>默认值：0vp |
+| width  | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮罩层区域的宽度。<br/>默认值：'100%'        |
+| height | [Length](ts-types.md#length) | 否  | 是 | 弹窗遮罩层区域的高度。<br/>默认值：'100%'        |
 
 >  **说明：**
 >
->  x和y可以设置正负值百分比。当x设置为'100%'时表示遮蔽层区域往右偏移窗口本身宽度大小，当x设置为'-100%'时表示遮蔽层区域往左偏移窗口本身宽度大小。当y设置为'100%'时表示遮蔽层区域往下偏移窗口本身高度大小，当y设置为'-100%'时表示遮蔽层区域往上偏移窗口本身高度大小。
+>  x和y可以设置正负值百分比。当x设置为'100%'时表示遮罩层区域往右偏移窗口本身宽度大小，当x设置为'-100%'时表示遮罩层区域往左偏移窗口本身宽度大小。当y设置为'100%'时表示遮罩层区域往下偏移窗口本身高度大小，当y设置为'-100%'时表示遮罩层区域往上偏移窗口本身高度大小。
 >
 >  width和height只能设置正值，支持百分比，如果设置为负值，那么该值将被重置为默认值。
 >
@@ -291,8 +291,8 @@ Dialog关闭的信息。
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| dismiss | [Callback](./ts-types.md#callback12)&lt;void&gt;                                         | 否   | 否   | Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
-| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 否   | Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog是否需要关闭。 |
+| dismiss | [Callback](./ts-types.md#callback12)&lt;void&gt;                                         | 否   | 否   | 弹窗关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。 |
+| reason  | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否   | 是   | 关闭原因，返回本次拦截弹窗关闭的事件原因。开发者可根据不同操作选择是否关闭弹窗。 |
 
 ## TextStyle<sup>12+</sup>对象说明
 
@@ -301,8 +301,6 @@ Dialog关闭的信息。
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -362,46 +360,55 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 > **说明：**
 > 
-> 直接使用AlertDialog可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)调用绑定实例的AlertDialog.show()。
+> 直接使用AlertDialog可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用[getUIContext](./ts-custom-component-api.md#getuicontext)获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[showAlertDialog](../arkts-apis-uicontext-uicontext.md#showalertdialog)调用绑定实例的AlertDialog.show()。
 
 ### 示例1（弹出多个按钮的弹窗）
 
 该示例通过[AlertDialogParamWithConfirm](#alertdialogparamwithconfirm对象说明)、[AlertDialogParamWithButtons](#alertdialogparamwithbuttons对象说明)和[AlertDialogParamWithOptions](#alertdialogparamwithoptions10对象说明)实现了分别弹出一、二、三个按钮的弹窗。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例1：弹出多个按钮的弹窗
+ * 本示例展示如何创建包含1个、2个、3个按钮的警告弹窗
+ * 演示AlertDialogParamWithConfirm、AlertDialogParamWithButtons、AlertDialogParamWithOptions三种参数类型的使用
+ */
 @Entry
 @Component
 struct AlertDialogExample {
   build() {
     Column({ space: 5 }) {
+      // 按钮1：单个确认按钮的弹窗
       Button('one button dialog')
         .onClick(() => {
           this.getUIContext().showAlertDialog(
             {
-              title: 'title',
-              message: 'text',
-              autoCancel: true,
-              alignment: DialogAlignment.Bottom,
-              offset: { dx: 0, dy: -20 },
-              gridCount: 3,
-              confirm: {
-                value: 'button',
-                action: () => {
+              title: 'title',                                    // 弹窗标题
+              message: 'text',                                   // 弹窗消息内容
+              autoCancel: true,                                  // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Bottom,                 // 弹窗垂直对齐方式：底部对齐
+              offset: { dx: 0, dy: -20 },                        // 弹窗偏移量：向上偏移20vp
+              gridCount: 3,                                      // 弹窗宽度占用栅格数
+              confirm: {                                         // 确认按钮配置
+                value: 'button',                                 // 按钮文本
+                action: () => {                                  // 按钮点击回调
                   console.info('Button-clicking callback');
                 }
               },
-              cancel: () => {
+              cancel: () => {                                    // 点击遮罩层关闭时的回调
                 console.info('Closed callbacks');
               },
               onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
                 console.info(`reason= ${dismissDialogAction.reason}`);
                 console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
                 if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
+                  dismissDialogAction.dismiss();                  // 按返回键时关闭
                 }
                 if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
+                  dismissDialogAction.dismiss();                  // 点击遮罩层时关闭
                 }
               }
             }
@@ -506,20 +513,52 @@ struct AlertDialogExample {
 }
 ```
 
-![image-alert](figures/image-alert.gif)
-
-### 示例2（可在主窗外弹出的弹窗）
-
-在2in1设备上设置[AlertDialogParam](#alertdialogparam对象说明)中showInSubWindow属性的值为true时，可以弹出在主窗外显示的弹窗。
+ArkTS-Sta示例：
 
 ```ts
-// xxx.ets
+import { Entry, Component, Column, Button, Margin, DialogAlignment, DialogButtonDirection,
+  DialogButtonStyle, DismissDialogAction, DismissReason, ColumnOptions, AlertDialogParamWithConfirm,
+  AlertDialogParamWithButtons, AlertDialogParamWithOptions } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct AlertDialogExample {
   build() {
-    Column({ space: 5 }) {
+    Column({ space: 5 } as ColumnOptions) {
       Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+      Button('two button dialog')
         .onClick(() => {
           this.getUIContext().showAlertDialog(
             {
@@ -527,10 +566,50 @@ struct AlertDialogExample {
               subtitle: 'subtitle',
               message: 'text',
               autoCancel: true,
-              alignment: DialogAlignment.Center,
+              alignment: DialogAlignment.Bottom,
               gridCount: 4,
-              showInSubWindow: true,
-              isModal: true,
+              offset: { dx: 0, dy: -20 },
+              primaryButton: {
+                value: 'cancel',
+                action: () => {
+                  console.info('Callback when the first button is clicked');
+                }
+              },
+              secondaryButton: {
+                enabled: true,
+                defaultFocus: true,
+                style: DialogButtonStyle.HIGHLIGHT,
+                value: 'ok',
+                action: () => {
+                  console.info('Callback when the second button is clicked');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithButtons
+          )
+        }).backgroundColor(0x317aff)
+      Button('three button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              subtitle: 'subtitle',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              gridCount: 4,
               offset: { dx: 0, dy: -20 },
               buttonDirection: DialogButtonDirection.HORIZONTAL,
               buttons: [
@@ -569,9 +648,164 @@ struct AlertDialogExample {
                   dismissDialogAction.dismiss();
                 }
               }
+            } as AlertDialogParamWithOptions
+          )
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert](figures/image-alert.gif)
+
+### 示例2（可在主窗外弹出的弹窗）
+
+在2in1设备上设置[AlertDialogParam](#alertdialogparam对象说明)中showInSubWindow属性的值为true时，可以弹出在主窗外显示的弹窗。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+/**
+ * 示例2：可在主窗外弹出的弹窗
+ * 本示例展示如何在2in1设备上设置弹窗在主窗口外显示
+ * 主要属性：showInSubWindow - 是否在子窗口显示弹窗
+ *           isModal - 是否为模态窗口（有蒙层）
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 }) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',                                // 弹窗标题
+              subtitle: 'subtitle',                          // 弹窗副标题
+              message: 'text',                               // 弹窗消息内容
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Center,             // 弹窗垂直对齐方式：居中对齐
+              gridCount: 4,                                  // 弹窗宽度占用栅格数
+              showInSubWindow: true,                         // 在子窗口显示弹窗，实现在主窗口外弹出
+              isModal: true,                                 // 设置为模态窗口，有蒙层效果
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              buttonDirection: DialogButtonDirection.HORIZONTAL, // 按钮水平排列
+              buttons: [
+                {
+                  value: '按钮',
+                  action: () => {                            // 按钮1点击回调
+                    console.info('Callback when button1 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  action: () => {                            // 按钮2点击回调
+                    console.info('Callback when button2 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  enabled: true,                             // 按钮是否可响应
+                  defaultFocus: true,                        // 按钮是否为默认焦点
+                  style: DialogButtonStyle.HIGHLIGHT,        // 按钮高亮样式
+                  action: () => {                            // 按钮3点击回调
+                    console.info('Callback when button3 is clicked');
+                  }
+                },
+              ],
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();              // 按返回键时关闭
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();              // 点击遮罩层时关闭
+                }
+              }
             })
         })
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, DialogButtonDirection,
+  DialogButtonStyle, DismissDialogAction, DismissReason, ColumnOptions, AlertDialogParamWithOptions } from '@kit.ArkUI';
+
+/**
+ * 示例2：可在主窗外弹出的弹窗
+ * 本示例展示如何在2in1设备上设置弹窗在主窗口外显示
+ * 主要属性：showInSubWindow - 是否在子窗口显示弹窗
+ *           isModal - 是否为模态窗口（有蒙层）
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',                                // 弹窗标题
+              subtitle: 'subtitle',                          // 弹窗副标题
+              message: 'text',                               // 弹窗消息内容
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Center,             // 弹窗垂直对齐方式：居中对齐
+              gridCount: 4,                                  // 弹窗宽度占用栅格数
+              showInSubWindow: true,                         // 在子窗口显示弹窗，实现在主窗口外弹出
+              isModal: true,                                 // 设置为模态窗口，有蒙层效果
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              buttonDirection: DialogButtonDirection.HORIZONTAL, // 按钮水平排列
+              buttons: [
+                {
+                  value: '按钮',
+                  action: () => {                            // 按钮1点击回调
+                    console.info('Callback when button1 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  action: () => {                            // 按钮2点击回调
+                    console.info('Callback when button2 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  enabled: true,                             // 按钮是否可响应
+                  defaultFocus: true,                        // 按钮是否为默认焦点
+                  style: DialogButtonStyle.HIGHLIGHT,        // 按钮高亮样式
+                  action: () => {                            // 按钮3点击回调
+                    console.info('Callback when button3 is clicked');
+                  }
+                },
+              ],
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();              // 按返回键时关闭
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();              // 点击遮罩层时关闭
+                }
+              }
+            } as AlertDialogParamWithOptions)
+        })
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
@@ -582,8 +816,16 @@ struct AlertDialogExample {
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的transition属性来实现弹窗的显示和消失动画。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例3：设置弹窗的动画
+ * 本示例展示如何通过transition属性配置弹窗的显示和消失动画
+ * 主要属性：transition - 使用TransitionEffect设置过渡动画效果
+ *           TransitionEffect.asymmetric - 设置显示和退出使用不同的动画效果
+ */
 @Entry
 @Component
 struct AlertDialogExample {
@@ -595,10 +837,13 @@ struct AlertDialogExample {
             {
               title: 'AlertDialog 1',
               message: 'Set Animation Duration open 3 second, close 100ms',
-              autoCancel: true,
-              alignment: DialogAlignment.Top,
-              offset: { dx: 0, dy: -20 },
-              gridCount: 3,
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Top,                // 弹窗垂直对齐方式：顶部对齐
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              gridCount: 3,                                  // 弹窗宽度占用栅格数
+              // transition属性：设置弹窗显示和退出的过渡效果
+              // 显示动画：透明度+缩放，持续3000ms，使用Sharp曲线
+              // 退出动画：透明度+缩放，持续100ms，使用Smooth曲线
               transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
                 .animation({ duration: 3000, curve: Curve.Sharp })
                 .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
@@ -606,12 +851,12 @@ struct AlertDialogExample {
                   .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
                     .animation({ duration: 100, curve: Curve.Smooth }))),
               confirm: {
-                value: 'button',
-                action: () => {
+                value: 'button',                             // 确认按钮文本
+                action: () => {                              // 按钮点击回调
                   console.info('Button-clicking callback');
                 }
               },
-              cancel: () => {
+              cancel: () => {                                // 点击遮罩层关闭时的回调
                 console.info('Closed callbacks');
               }
             }
@@ -623,14 +868,80 @@ struct AlertDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, TransitionEffect, Curve, ColumnOptions,
+  AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+/**
+ * 示例3：设置弹窗的动画
+ * 本示例展示如何通过transition属性配置弹窗的显示和消失动画
+ * 主要属性：transition - 使用TransitionEffect设置过渡动画效果
+ *           TransitionEffect.asymmetric - 设置显示和退出使用不同的动画效果
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('AlertDialog Set Duration')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'AlertDialog 1',
+              message: 'Set Animation Duration open 3 second, close 100ms',
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Top,                // 弹窗垂直对齐方式：顶部对齐
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              gridCount: 3,                                  // 弹窗宽度占用栅格数
+              // transition属性：设置弹窗显示和退出的过渡效果
+              // 显示动画：透明度+缩放，持续3000ms，使用Sharp曲线
+              // 退出动画：透明度+缩放，持续100ms，使用Smooth曲线
+              transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                .animation({ duration: 3000, curve: Curve.Sharp })
+                .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
+                TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                  .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                    .animation({ duration: 100, curve: Curve.Smooth }))),
+              confirm: {
+                value: 'button',                             // 确认按钮文本
+                action: () => {                              // 按钮点击回调
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff).height('88px')
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![image-alert-animation](figures/image-alert-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
 示例定义了AlertDialog的样式，包括宽度、高度、背景色、阴影等。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例4：设置弹窗的样式
+ * 本示例展示如何自定义弹窗的外观样式
+ * 主要属性：width/height - 弹窗尺寸
+ *           cornerRadius - 圆角半径
+ *           borderWidth/borderStyle/borderColor - 边框样式
+ *           backgroundColor - 背景颜色
+ *           shadow - 阴影效果
+ *           textStyle - 文本样式
+ */
 @Entry
 @Component
 struct AlertDialogExample {
@@ -640,43 +951,44 @@ struct AlertDialogExample {
         .onClick(() => {
           this.getUIContext().showAlertDialog(
             {
-              title: 'title',
-              message: 'text',
-              autoCancel: true,
-              alignment: DialogAlignment.Center,
-              offset: { dx: 0, dy: -20 },
-              gridCount: 3,
-              width: 300,
-              height: 200,
-              cornerRadius: 20,
-              borderWidth: 1,
-              borderStyle: BorderStyle.Dashed, // 使用borderStyle属性，需要和borderWidth属性一起使用
-              borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
-              backgroundColor: Color.White,
-              shadow: ({
-                radius: 20,
-                color: Color.Grey,
-                offsetX: 50,
-                offsetY: 0
+              title: 'title',                                // 弹窗标题
+              message: 'text',                               // 弹窗消息内容
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Center,             // 弹窗垂直对齐方式：居中对齐
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              gridCount: 3,                                  // 弹窗宽度占用栅格数
+              width: 300,                                    // 弹窗宽度：300vp
+              height: 200,                                   // 弹窗高度：200vp
+              cornerRadius: 20,                              // 圆角半径：20vp
+              borderWidth: 1,                                // 边框宽度：1vp
+              borderStyle: BorderStyle.Dashed,               // 边框样式：虚线（需配合borderWidth使用）
+              borderColor: Color.Blue,                       // 边框颜色：蓝色（需配合borderWidth使用）
+              backgroundColor: Color.White,                  // 背景颜色：白色
+              shadow: ({                                     // 阴影效果配置
+                radius: 20,                                  // 阴影模糊半径
+                color: Color.Grey,                           // 阴影颜色
+                offsetX: 50,                                 // 阴影X轴偏移
+                offsetY: 0                                   // 阴影Y轴偏移
               }),
-              textStyle: { wordBreak: WordBreak.BREAK_ALL },
+              textStyle: { wordBreak: WordBreak.BREAK_ALL }, // 文本截断方式
               confirm: {
-                value: 'button',
-                action: () => {
+                value: 'button',                             // 确认按钮文本
+                action: () => {                              // 按钮点击回调
                   console.info('Button-clicking callback');
                 }
               },
-              cancel: () => {
+              cancel: () => {                                // 点击遮罩层关闭时的回调
                 console.info('Closed callbacks');
               },
               onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
                 console.info(`reason= ${dismissDialogAction.reason}`);
                 console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
                 if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
+                  dismissDialogAction.dismiss();              // 按返回键时关闭
                 }
                 if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
+                  dismissDialogAction.dismiss();              // 点击遮罩层时关闭
                 }
               }
             }
@@ -684,6 +996,80 @@ struct AlertDialogExample {
         })
         .backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, BorderStyle, Color,
+  WordBreak, DismissDialogAction, DismissReason, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+/**
+ * 示例4：设置弹窗的样式
+ * 本示例展示如何自定义弹窗的外观样式
+ * 主要属性：width/height - 弹窗尺寸
+ *           cornerRadius - 圆角半径
+ *           borderWidth/borderStyle/borderColor - 边框样式
+ *           backgroundColor - 背景颜色
+ *           shadow - 阴影效果
+ *           textStyle - 文本样式
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',                                // 弹窗标题
+              message: 'text',                               // 弹窗消息内容
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Center,             // 弹窗垂直对齐方式：居中对齐
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              gridCount: 3,                                  // 弹窗宽度占用栅格数
+              width: 300,                                    // 弹窗宽度：300vp
+              height: 200,                                   // 弹窗高度：200vp
+              cornerRadius: 20,                              // 圆角半径：20vp
+              borderWidth: 1,                                // 边框宽度：1vp
+              borderStyle: BorderStyle.Dashed,               // 边框样式：虚线（需配合borderWidth使用）
+              borderColor: Color.Blue,                       // 边框颜色：蓝色（需配合borderWidth使用）
+              backgroundColor: Color.White,                  // 背景颜色：白色
+              shadow: ({                                     // 阴影效果配置
+                radius: 20,                                  // 阴影模糊半径
+                color: Color.Grey,                           // 阴影颜色
+                offsetX: 50,                                 // 阴影X轴偏移
+                offsetY: 0                                   // 阴影Y轴偏移
+              }),
+              textStyle: { wordBreak: WordBreak.BREAK_ALL }, // 文本截断方式
+              confirm: {
+                value: 'button',                             // 确认按钮文本
+                action: () => {                              // 按钮点击回调
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();              // 按返回键时关闭
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();              // 点击遮罩层时关闭
+                }
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
@@ -694,8 +1080,16 @@ struct AlertDialogExample {
 
 <!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例5：悬停态弹窗
+ * 本示例展示在悬停态下设置弹窗布局区域的效果
+ * 主要属性：enableHoverMode - 是否响应悬停态
+ *           hoverModeArea - 悬停态下弹窗默认展示区域（TOP_SCREEN/BOTTOM_SCREEN）
+ */
 @Entry
 @Component
 struct AlertDialogExample {
@@ -705,37 +1099,95 @@ struct AlertDialogExample {
         .onClick(() => {
           this.getUIContext().showAlertDialog(
             {
-              title: 'title',
-              message: 'text',
-              autoCancel: true,
-              alignment: DialogAlignment.Bottom,
-              gridCount: 3,
+              title: 'title',                                // 弹窗标题
+              message: 'text',                               // 弹窗消息内容
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Bottom,             // 弹窗垂直对齐方式：底部对齐
+              gridCount: 3,                                  // 弹窗宽度占用栅格数
               confirm: {
-                value: 'button',
-                action: () => {
+                value: 'button',                             // 确认按钮文本
+                action: () => {                              // 按钮点击回调
                   console.info('Button-clicking callback');
                 }
               },
-              cancel: () => {
+              cancel: () => {                                // 点击遮罩层关闭时的回调
                 console.info('Closed callbacks');
               },
               onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
                 console.info(`reason= ${dismissDialogAction.reason}`);
                 console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
                 if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
+                  dismissDialogAction.dismiss();              // 按返回键时关闭
                 }
                 if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
+                  dismissDialogAction.dismiss();              // 点击遮罩层时关闭
                 }
               },
-              enableHoverMode: true,
-              hoverModeArea: HoverModeAreaType.TOP_SCREEN
+              enableHoverMode: true,                         // 启用悬停态响应
+              hoverModeArea: HoverModeAreaType.TOP_SCREEN    // 悬停态下弹窗显示在上半屏
             }
           )
         })
         .backgroundColor(0x317aff)
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, DismissDialogAction,
+  DismissReason, HoverModeAreaType, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+/**
+ * 示例5：悬停态弹窗
+ * 本示例展示在悬停态下设置弹窗布局区域的效果
+ * 主要属性：enableHoverMode - 是否响应悬停态
+ *           hoverModeArea - 悬停态下弹窗默认展示区域（TOP_SCREEN/BOTTOM_SCREEN）
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',                                // 弹窗标题
+              message: 'text',                               // 弹窗消息内容
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Bottom,             // 弹窗垂直对齐方式：底部对齐
+              gridCount: 3,                                  // 弹窗宽度占用栅格数
+              confirm: {
+                value: 'button',                             // 确认按钮文本
+                action: () => {                              // 按钮点击回调
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                // 根据关闭原因决定是否关闭弹窗
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();              // 按返回键时关闭
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();              // 点击遮罩层时关闭
+                }
+              },
+              enableHoverMode: true,                         // 启用悬停态响应
+              hoverModeArea: HoverModeAreaType.TOP_SCREEN    // 悬停态下弹窗显示在上半屏
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
@@ -746,8 +1198,19 @@ struct AlertDialogExample {
 
 该示例展示了弹窗生命周期的相关接口的使用方法。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
+/**
+ * 示例6：弹窗生命周期
+ * 本示例展示弹窗生命周期相关回调的使用方法
+ * 回调时序：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear
+ * 主要回调：onWillAppear - 弹窗显示动效前触发
+ *           onDidAppear - 弹窗弹出后触发
+ *           onWillDisappear - 弹窗退出动效前触发
+ *           onDidDisappear - 弹窗消失后触发
+ */
 @Entry
 @Component
 struct Example2 {
@@ -758,33 +1221,33 @@ struct Example2 {
       Button('AlertDialog')
         .onClick(() => {
           this.getUIContext().showAlertDialog({
-            title: 'AlertDialog',
-            message: 'message',
-            autoCancel: true,
-            alignment: DialogAlignment.Bottom,
-            offset: { dx: 0, dy: -20 },
+            title: 'AlertDialog',                           // 弹窗标题
+            message: 'message',                             // 弹窗消息内容
+            autoCancel: true,                               // 点击遮罩层是否关闭弹窗
+            alignment: DialogAlignment.Bottom,              // 弹窗垂直对齐方式：底部对齐
+            offset: { dx: 0, dy: -20 },                     // 弹窗偏移量：向上偏移20vp
             confirm: {
-              value: 'button',
-              action: () => {
+              value: 'button',                              // 确认按钮文本
+              action: () => {                               // 按钮点击回调
                 console.info('AlertDialog Button-clicking callback');
               }
             },
-            cancel: () => {
+            cancel: () => {                                 // 点击遮罩层关闭时的回调
               console.info('Closed callbacks');
             },
-            onDidAppear: () => {
+            onDidAppear: () => {                            // 弹窗弹出后的回调
               this.log += '# onDidAppear';
               console.info('AlertDialog,is onDidAppear!');
             },
-            onDidDisappear: () => {
+            onDidDisappear: () => {                         // 弹窗消失后的回调
               this.log += '# onDidDisappear';
               console.info('AlertDialog,is onDidDisappear!');
             },
-            onWillAppear: () => {
+            onWillAppear: () => {                           // 弹窗显示动效前的回调
               this.log = 'Log information:onWillAppear';
               console.info('AlertDialog,is onWillAppear!');
             },
-            onWillDisappear: () => {
+            onWillDisappear: () => {                        // 弹窗退出动效前的回调
               this.log += '# onWillDisappear';
               console.info('AlertDialog,is onWillDisappear!');
             }
@@ -792,6 +1255,69 @@ struct Example2 {
         })
       Text(this.log).fontSize(30).margin({ top: 200 })
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, State, Margin, DialogAlignment, ColumnOptions,
+  AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+/**
+ * 示例6：弹窗生命周期
+ * 本示例展示弹窗生命周期相关回调的使用方法
+ * 回调时序：onWillAppear >> onDidAppear >> onWillDisappear >> onDidDisappear
+ * 主要回调：onWillAppear - 弹窗显示动效前触发
+ *           onDidAppear - 弹窗弹出后触发
+ *           onWillDisappear - 弹窗退出动效前触发
+ *           onDidDisappear - 弹窗消失后触发
+ */
+@Entry
+@Component
+struct Example2 {
+  @State log: string = 'Log information:';
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('AlertDialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog({
+            title: 'AlertDialog',                           // 弹窗标题
+            message: 'message',                             // 弹窗消息内容
+            autoCancel: true,                               // 点击遮罩层是否关闭弹窗
+            alignment: DialogAlignment.Bottom,              // 弹窗垂直对齐方式：底部对齐
+            offset: { dx: 0, dy: -20 },                     // 弹窗偏移量：向上偏移20vp
+            confirm: {
+              value: 'button',                              // 确认按钮文本
+              action: () => {                               // 按钮点击回调
+                console.info('AlertDialog Button-clicking callback');
+              }
+            },
+            cancel: () => {                                 // 点击遮罩层关闭时的回调
+              console.info('Closed callbacks');
+            },
+            onDidAppear: () => {                            // 弹窗弹出后的回调
+              this.log += '# onDidAppear';
+              console.info('AlertDialog,is onDidAppear!');
+            },
+            onDidDisappear: () => {                         // 弹窗消失后的回调
+              this.log += '# onDidDisappear';
+              console.info('AlertDialog,is onDidDisappear!');
+            },
+            onWillAppear: () => {                           // 弹窗显示动效前的回调
+              this.log = 'Log information:onWillAppear';
+              console.info('AlertDialog,is onWillAppear!');
+            },
+            onWillDisappear: () => {                        // 弹窗退出动效前的回调
+              this.log += '# onWillDisappear';
+              console.info('AlertDialog,is onWillDisappear!');
+            }
+          } as AlertDialogParamWithConfirm)
+        })
+      Text(this.log).fontSize(30).margin({ top: 200 } as Margin)
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
@@ -804,7 +1330,19 @@ struct Example2 {
 
 从API version 19开始，在AlertDialogParam中新增了backgroundBlurStyleOptions属性。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例7：自定义背景模糊效果参数
+ * 本示例展示如何通过backgroundBlurStyleOptions属性自定义背景模糊效果
+ * 主要属性：backgroundBlurStyle - 背景模糊样式（如BlurStyle.Thin）
+ *           backgroundBlurStyleOptions - 背景模糊效果详细配置
+ *             - colorMode: 颜色模式（LIGHT/DARK）
+ *             - adaptiveColor: 自适应颜色模式
+ *             - scale: 缩放比例
+ *             - blurOptions: 模糊选项（如灰度配置）
+ */
 @Entry
 @Component
 struct AlertDialogExample {
@@ -817,29 +1355,87 @@ struct AlertDialogExample {
           .margin(20)
           .onClick(() => {
             this.getUIContext().showAlertDialog({
-              title: 'AlertDialog Title',
-              message: 'AlertDialog Text',
+              title: 'AlertDialog Title',                   // 弹窗标题
+              message: 'AlertDialog Text',                  // 弹窗消息内容
               primaryButton: {
-                value: '确定',
-                action: () => {
+                value: '确定',                              // 主要按钮文本
+                action: () => {                             // 主要按钮点击回调
                   console.info('primaryButton');
                 }
               },
               secondaryButton: {
-                value: '取消',
-                action: () => {
+                value: '取消',                              // 次要按钮文本
+                action: () => {                             // 次要按钮点击回调
                   console.info('secondaryButton');
                 }
               },
-              backgroundColor: undefined,
-              backgroundBlurStyle: BlurStyle.Thin,
-              backgroundBlurStyleOptions: {
-                colorMode: ThemeColorMode.LIGHT,
-                adaptiveColor: AdaptiveColor.AVERAGE,
-                scale: 1,
-                blurOptions: { grayscale: [20, 20] },
+              backgroundColor: undefined,                   // 背景颜色：使用默认值
+              backgroundBlurStyle: BlurStyle.Thin,          // 背景模糊样式：轻薄样式
+              backgroundBlurStyleOptions: {                 // 背景模糊效果详细配置
+                colorMode: ThemeColorMode.LIGHT,            // 颜色模式：浅色主题
+                adaptiveColor: AdaptiveColor.AVERAGE,       // 自适应颜色：取平均色
+                scale: 1,                                   // 缩放比例：1倍
+                blurOptions: { grayscale: [20, 20] },       // 模糊选项：灰度配置
               },
             });
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, BlurStyle,
+  ThemeColorMode, AdaptiveColor, AlertDialogParamWithButtons, BackgroundBlurStyleOptions } from '@kit.ArkUI';
+
+/**
+ * 示例7：自定义背景模糊效果参数
+ * 本示例展示如何通过backgroundBlurStyleOptions属性自定义背景模糊效果
+ * 主要属性：backgroundBlurStyle - 背景模糊样式（如BlurStyle.Thin）
+ *           backgroundBlurStyleOptions - 背景模糊效果详细配置
+ *             - colorMode: 颜色模式（LIGHT/DARK）
+ *             - adaptiveColor: 自适应颜色模式
+ *             - scale: 缩放比例
+ *             - blurOptions: 模糊选项（如灰度配置）
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Button("AlertDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: 'AlertDialog Title',                   // 弹窗标题
+              message: 'AlertDialog Text',                  // 弹窗消息内容
+              primaryButton: {
+                value: '确定',                              // 主要按钮文本
+                action: () => {                             // 主要按钮点击回调
+                  console.info('primaryButton');
+                }
+              },
+              secondaryButton: {
+                value: '取消',                              // 次要按钮文本
+                action: () => {                             // 次要按钮点击回调
+                  console.info('secondaryButton');
+                }
+              },
+              backgroundColor: undefined,                   // 背景颜色：使用默认值
+              backgroundBlurStyle: BlurStyle.Thin,          // 背景模糊样式：轻薄样式
+              backgroundBlurStyleOptions: {                 // 背景模糊效果详细配置
+                colorMode: ThemeColorMode.LIGHT,            // 颜色模式：浅色主题
+                adaptiveColor: AdaptiveColor.AVERAGE,       // 自适应颜色：取平均色
+                scale: 1,                                   // 缩放比例：1倍
+                blurOptions: { grayscale: [20, 20] },       // 模糊选项：灰度配置
+              } as BackgroundBlurStyleOptions,
+            } as AlertDialogParamWithButtons);
           })
       }.width('100%')
     }
@@ -855,7 +1451,19 @@ struct AlertDialogExample {
 
 从API version 19开始，在AlertDialogParam中新增了backgroundEffect属性。
 
+ArkTS-Dyn示例：
+
 ```ts
+/**
+ * 示例8：自定义背景效果参数
+ * 本示例展示如何通过backgroundEffect属性自定义背景效果
+ * 主要属性：backgroundEffect - 背景效果详细参数
+ *             - radius: 模糊半径
+ *             - saturation: 饱和度
+ *             - brightness: 亮度
+ *             - color: 颜色
+ *             - blurOptions: 模糊选项（如灰度配置）
+ */
 @Entry
 @Component
 struct AlertDialogExample {
@@ -868,28 +1476,28 @@ struct AlertDialogExample {
           .margin(20)
           .onClick(() => {
             this.getUIContext().showAlertDialog({
-              title: 'AlertDialog Title',
-              message: 'AlertDialog Text',
+              title: 'AlertDialog Title',                   // 弹窗标题
+              message: 'AlertDialog Text',                  // 弹窗消息内容
               primaryButton: {
-                value: '确定',
-                action: () => {
+                value: '确定',                              // 主要按钮文本
+                action: () => {                             // 主要按钮点击回调
                   console.info('primaryButton');
                 }
               },
               secondaryButton: {
-                value: '取消',
-                action: () => {
+                value: '取消',                              // 次要按钮文本
+                action: () => {                             // 次要按钮点击回调
                   console.info('secondaryButton');
                 }
               },
-              backgroundColor: undefined,
-              backgroundBlurStyle: BlurStyle.Thin,
-              backgroundEffect: {
-                radius: 60,
-                saturation: 0,
-                brightness: 1,
-                color: Color.White,
-                blurOptions: { grayscale: [20, 20] }
+              backgroundColor: undefined,                   // 背景颜色：使用默认值
+              backgroundBlurStyle: BlurStyle.Thin,          // 背景模糊样式：轻薄样式
+              backgroundEffect: {                           // 背景效果详细参数
+                radius: 60,                                 // 模糊半径：60
+                saturation: 0,                              // 饱和度：0（无饱和）
+                brightness: 1,                              // 亮度：1
+                color: Color.White,                         // 颜色：白色
+                blurOptions: { grayscale: [20, 20] }        // 模糊选项：灰度配置
               },
             });
           })
@@ -899,4 +1507,198 @@ struct AlertDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, BlurStyle, Color,
+  AlertDialogParamWithButtons } from '@kit.ArkUI';
+
+/**
+ * 示例8：自定义背景效果参数
+ * 本示例展示如何通过backgroundEffect属性自定义背景效果
+ * 主要属性：backgroundEffect - 背景效果详细参数
+ *             - radius: 模糊半径
+ *             - saturation: 饱和度
+ *             - brightness: 亮度
+ *             - color: 颜色
+ *             - blurOptions: 模糊选项（如灰度配置）
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Button("AlertDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: 'AlertDialog Title',                   // 弹窗标题
+              message: 'AlertDialog Text',                  // 弹窗消息内容
+              primaryButton: {
+                value: '确定',                              // 主要按钮文本
+                action: () => {                             // 主要按钮点击回调
+                  console.info('primaryButton');
+                }
+              },
+              secondaryButton: {
+                value: '取消',                              // 次要按钮文本
+                action: () => {                             // 次要按钮点击回调
+                  console.info('secondaryButton');
+                }
+              },
+              backgroundColor: undefined,                   // 背景颜色：使用默认值
+              backgroundBlurStyle: BlurStyle.Thin,          // 背景模糊样式：轻薄样式
+              backgroundEffect: {                           // 背景效果详细参数
+                radius: 60,                                 // 模糊半径：60
+                saturation: 0,                              // 饱和度：0（无饱和）
+                brightness: 1,                              // 亮度：1
+                color: Color.White,                         // 颜色：白色
+                blurOptions: { grayscale: [20, 20] }        // 模糊选项：灰度配置
+              },
+            } as AlertDialogParamWithButtons);
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
+
+### 示例9（设置弹窗的显示层级与顺序）
+
+该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的levelMode、levelUniqueId、immersiveMode和levelOrder属性，实现页面内嵌入式弹窗的层级、蒙层效果及显示顺序控制。
+
+从API version 15开始，在AlertDialogParam中新增了levelMode、levelUniqueId和immersiveMode属性。从API version 18开始，在AlertDialogParam中新增了levelOrder属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+/**
+ * 示例9：设置弹窗的显示层级与顺序
+ * 本示例展示如何控制弹窗的显示层级、蒙层效果及显示顺序
+ * 主要属性：levelMode - 弹窗显示层级（OVERLAY/EMBEDDED）
+ *           levelUniqueId - 指定弹窗挂载的页面层级
+ *           immersiveMode - 弹窗蒙层效果
+ *           levelOrder - 弹窗显示顺序（数值越大越靠前）
+ */
+import { LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 }) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 })
+      Button('显示embedded类型的dialog')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'Embedded AlertDialog',
+              message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Center,             // 弹窗垂直对齐方式：居中对齐
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              gridCount: 4,                                  // 弹窗宽度占用栅格数
+              // showInSubWindow为false时levelMode属性才生效
+              showInSubWindow: false,
+              // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+              levelMode: LevelMode.EMBEDDED,
+              // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+              levelUniqueId: node?.getUniqueId(),
+              // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+              immersiveMode: ImmersiveMode.DEFAULT,
+              // 设置弹窗显示顺序，数值越大显示越靠前
+              levelOrder: LevelOrder.clamp(1),
+              confirm: {
+                value: '确认',                               // 确认按钮文本
+                action: () => {                              // 按钮点击回调
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              }
+            }
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, Margin, DialogAlignment,
+  LevelOrder, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+import { LevelMode, ImmersiveMode } from '@ohos.promptAction';
+
+/**
+ * 示例9：设置弹窗的显示层级与顺序
+ * 本示例展示如何控制弹窗的显示层级、蒙层效果及显示顺序
+ * 主要属性：levelMode - 弹窗显示层级（OVERLAY/EMBEDDED）
+ *           levelUniqueId - 指定弹窗挂载的页面层级
+ *           immersiveMode - 弹窗蒙层效果
+ *           levelOrder - 弹窗显示顺序（数值越大越靠前）
+ */
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('页面级Dialog')
+        .id('target_text')
+        .fontSize(20)
+        .margin({ top: 100 } as Margin)
+      Button('显示embedded类型的dialog')
+        .onClick(() => {
+          // 获取页面内目标节点的UniqueId，用于指定弹窗挂载的页面层级
+          const node = this.getUIContext().getFrameNodeById('target_text');
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'Embedded AlertDialog',
+              message: '该弹窗为页面内嵌入式弹窗，随页面路由切换而隐藏。',
+              autoCancel: true,                              // 点击遮罩层是否关闭弹窗
+              alignment: DialogAlignment.Center,             // 弹窗垂直对齐方式：居中对齐
+              offset: { dx: 0, dy: -20 },                    // 弹窗偏移量：向上偏移20vp
+              gridCount: 4,                                  // 弹窗宽度占用栅格数
+              // showInSubWindow为false时levelMode属性才生效
+              showInSubWindow: false,
+              // 设置弹窗为页面内嵌入式层级，随路由导航切换而隐藏
+              levelMode: LevelMode.EMBEDDED,
+              // 指定弹窗挂载到目标节点所在的页面层级，仅在levelMode为EMBEDDED时生效
+              levelUniqueId: node?.getUniqueId(),
+              // 设置弹窗蒙层效果，遵循父节点布局约束进行显示
+              immersiveMode: ImmersiveMode.DEFAULT,
+              // 设置弹窗显示顺序，数值越大显示越靠前
+              levelOrder: LevelOrder.clamp(1),
+              confirm: {
+                value: '确认',                               // 确认按钮文本
+                action: () => {                              // 按钮点击回调
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {                                // 点击遮罩层关闭时的回调
+                console.info('Closed callbacks');
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-levelmode](figures/image-alert-levelmode.png)

@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 应用配置的图标和名称信息，可以通过[getBundleResourceInfo](js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo)获取。
@@ -12,7 +12,7 @@
 >
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 

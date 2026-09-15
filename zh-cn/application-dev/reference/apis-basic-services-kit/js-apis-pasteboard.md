@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -73,7 +73,7 @@ createData(mimeType: string, value: ValueType): PasteData
 
 | 参数名 | 类型 | 必填 | 说明                                                                                                     |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值, mimeType长度不能超过1024字节。 |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值, mimeType长度不能超过1024字节。 |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。                                                                                               |
 
 **返回值：**
@@ -120,7 +120,7 @@ createData(data: Record&lt;string, ValueType&gt;): PasteData
 
 | 参数名 | 类型 | 必填 | 说明  |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#对象字面量)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
+| data | [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-类型)&lt;string, [ValueType](#valuetype9)&gt; | 是 | Record的key为剪贴板数据对应的MIME类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型。也可以是自定义的MIME类型，可自定义此参数值，mimeType长度不能超过1024字节。<br/>Record的value为key中指定MIME类型对应的数据。<br/>Record中的首个key-value指定的MIME类型，会作为剪贴板内容对象中首个PasteDataRecord的默认MIME类型，非默认类型的数据在粘贴时只能使用[getData](#getdata14)接口读取。 |
 
 **返回值：**
 
@@ -172,7 +172,7 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明                |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
+| mimeType | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
 | value | [ValueType](#valuetype9) | 是 | 指定类型对应的数据内容。          |
 
 **返回值：**
@@ -246,7 +246,7 @@ const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteb
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | INAPP                              | 0   | 表示仅允许同应用内粘贴。 |
 | LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End--> |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> **ArkTS模式** ：该接口仅适用于ArkTS-Dyn。 |
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> **ArkTS模式** ：该接口仅适用于ArkTS-Dyn。 |
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
@@ -537,7 +537,7 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/introduction-to-arkts.md#对象字面量)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
+| additions | ArkTS-Dyn: Record<string, object> </br> ArkTS-Sta: [Record](../../quick-start/arkts-language-guide-collection-types.md#recordkv-类型)<string, RecordData> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | tag | string | 否 | 否 | 用户自定义标签， 默认为空。**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | timestamp | ArkTS-Dyn: number </br> ArkTS-Sta: long | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
@@ -741,7 +741,7 @@ struct PasteboardTest {
 
 | 名称                | 类型                                          | 只读 | 可选 | 说明                                                         |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件copy处理，默认为空。 |
+| destUri             | string                                        | 否 | 是 | 拷贝文件时目标路径。若不支持文件处理，则不需要设置此参数；若应用涉及复杂文件处理策略或需要区分文件多路径存储，建议不设置此参数，由应用自行完成文件复制处理，默认为空。 |
 | fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | 否 | 是 | 定义文件拷贝冲突时的选项，默认为OVERWRITE。                  |
 | progressIndicator   | [ProgressIndicator](#progressindicator15)     | 否 | 否 | 定义进度条指示选项，可选择是否采用系统默认进度显示。         |
 | progressListener    | [ProgressListener](#progresslistener15)       | 否 | 是 | 定义进度数据变化的订阅函数，当选择不使用系统默认进度显示时，可设置该项获取粘贴过程的进度，默认为空。 |
@@ -749,7 +749,7 @@ struct PasteboardTest {
 
 ## PasteDataRecord<sup>7+</sup>
 
-对于剪贴板中内容记录的抽象定义，称之为条目。剪贴板内容部分由一个或者多个条目构成，例如一条文本内容、一份HTML、一个URI或者一个Want。
+对于剪贴板中内容记录的抽象定义，称之为条目。剪贴板内容部分由一个或者多个条目构成，例如一条文本内容、一份HTML、一个URI或者一个Want。不支持在创建PasteDataRecord之后，修改PasteDataRecord的默认数据类型的值，应在创建PasteDataRecord时指定正确的默认数据类型的值。如需刷新PasteDataRecord的属性值，请使用[addEntry](#addentry14)。
 
 ### 属性
 
@@ -759,13 +759,13 @@ struct PasteboardTest {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText | string | 是 | 否 | HTML内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| mimeType | string | 是 | 否 | 默认数据类型。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| plainText | string | 是 | 否 | 纯文本内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| uri | string | 是 | 否 | URI内容。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
-| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
+| htmlText | string | 是 | 否 | HTML内容，需符合标准HTML格式。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 否 | Want内容。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| mimeType | string | 是 | 否 | 默认数据类型。对此属性的修改无效。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| plainText | string | 是 | 否 | 纯文本内容。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| uri | string | 是 | 否 | URI内容，需符合标准URI格式。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23|
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。对此属性的修改无效，如需刷新属性值，请使用[addEntry](#addentry14)。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。对此属性的修改无效。</br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
 
 ### toPlainText<sup>9+</sup>
 
@@ -799,7 +799,7 @@ console.info(`Succeeded in converting to text. Text: ${text}`);
 
 addEntry(type: string, value: ValueType): void
 
-往一个PasteDataRecord中额外添加一种样式的自定义数据。此方式添加的MIME类型都不是Record的默认类型，粘贴时只能使用[getData](#getdata14)接口读取对应数据。
+往一个PasteDataRecord中额外添加一种样式的数据。此方式添加的MIME类型都不是Record的默认类型，粘贴时只能使用[getData](#getdata14)接口读取对应数据。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -811,12 +811,12 @@ addEntry(type: string, value: ValueType): void
 
 | 参数名   | 类型 | 必填 | 说明                |
 |-------| -------- | -------- |-------------------|
-| type  | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
+| type  | string | 是 | 剪贴板数据对应的MIME类型，可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型，开发者可自定义此参数值，mimeType长度不能超过1024字节。  |
 | value | [ValueType](#valuetype9) | 是 | 自定义数据内容。          |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[剪贴板错误码](errorcode-pasteboard.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[剪贴板错误码](errorcode-pasteboard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -857,7 +857,7 @@ getValidTypes(types: Array&lt;string&gt;): Array&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[剪贴板错误码](errorcode-pasteboard.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[剪贴板错误码](errorcode-pasteboard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -905,7 +905,7 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[剪贴板错误码](errorcode-pasteboard.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[剪贴板错误码](errorcode-pasteboard.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1302,7 +1302,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 12900002 | The number of records exceeds the upper limit, <br>**适用版本：** 9 - 9 |
+| 12900002 | The number of records exceeds the upper limit. <br>**适用版本：** 9 - 9 |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1599,7 +1599,7 @@ hasType(mimeType: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，WANT类型，纯文本类型，URI类型，PIXELMAP类型；也可以是自定义的MIME类型。 |
+| mimeType | string | 是 | 待查询的数据类型。可以是[常量](#常量)中已定义的类型，包括HTML类型，Want类型，纯文本类型，URI类型，PixelMap类型；也可以是自定义的MIME类型。 |
 
 **返回值：**
 
@@ -2409,7 +2409,9 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
 读取系统剪贴板内容，使用callback异步回调。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2456,7 +2458,9 @@ getData(): Promise&lt;PasteData&gt;
 
 读取系统剪贴板内容，使用Promise异步回调。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3096,7 +3100,9 @@ getDataSync(): PasteData
 
 读取系统剪贴板内容, 此接口为同步接口。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3237,7 +3243,9 @@ getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 
 读取系统剪贴板内容，使用Promise异步回调。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3310,7 +3318,9 @@ getUnifiedDataSync(): unifiedDataChannel.UnifiedData
 
 读取系统剪贴板内容, 此接口为同步接口。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3717,7 +3727,9 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 获取剪贴板的内容和进度，使用Promise异步回调，不支持对文件夹的拷贝。
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+应用使用自定义控件访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。应用[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容，无需申请权限。
+
+**需要权限：** ohos.permission.READ_PASTEBOARD
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 

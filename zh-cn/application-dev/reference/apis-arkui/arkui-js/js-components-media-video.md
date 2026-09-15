@@ -1,7 +1,7 @@
 # video
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Lichtschein-->
+<!--Owner: @zhangwentao96-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -113,7 +113,7 @@ export default {
         duration: '',
     },
     preparedCallback: function (e) {
-        this.event = '视频连接成功';
+        this.event = '视频准备完成';
         this.duration = e.duration;
     },
     startCallback: function () {

@@ -143,7 +143,7 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 
 getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutputCapability
 
-查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
+查询指定相机在指定模式下支持的完整输出能力，包括未压缩图像（YUV）、HEIF和HDR等能力。
 
 > **说明：**
 >
@@ -1372,9 +1372,9 @@ function isTorchLevelControlSupported(cameraManager: camera.CameraManager): bool
 }
 ```
 
-## SetTorchModeOnWithLevel
+## setTorchModeOnWithLevel
 
-SetTorchModeOnWithLevel(torchLevel: number): void
+setTorchModeOnWithLevel(torchLevel: number): void
 
 手电筒设置指定亮度级别。
 
@@ -1382,7 +1382,7 @@ SetTorchModeOnWithLevel(torchLevel: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

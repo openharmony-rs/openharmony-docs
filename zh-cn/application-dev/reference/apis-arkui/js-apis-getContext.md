@@ -113,7 +113,7 @@ export default class EntryAbility extends UIAbility {
 
 <!--deprecated_code_no_check-->
 ```ts
-//pages/Index.ets
+// pages/Index.ets
 @Entry
 @Component
 struct Index {

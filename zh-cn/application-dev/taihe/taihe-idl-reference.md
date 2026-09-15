@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文档旨在描述Taihe IDL的语法规范和语义规则。
 

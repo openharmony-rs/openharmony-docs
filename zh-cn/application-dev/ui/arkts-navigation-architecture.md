@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @huangxiaolinabc-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -57,7 +57,7 @@ Navigation是路由导航的根视图容器，通常作为页面（@Entry修饰�
 
 Navigation组件本身可不作为显示容器，只用于承载路由的相关功能，如绑定导航控制器对象、路由切换、分栏显示、自定义转场动画控制等。
 
-Navigation组件主要包含导航栏（NavBar）和子页（NavDestination），子页通过栈结构管理，存在NavPathStack中。导航栏又称Navbar，作为Navigation的子组件，直接挂载到Navigation上，可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)属性进行隐藏（单栏应用推荐隐藏导航页），导航栏不存在页面栈中。
+Navigation组件主要包含导航栏（NavBar）和子页（NavDestination），子页通过栈结构管理，存在NavPathStack中。导航栏又称NavBar，作为Navigation的子组件，直接挂载到Navigation上，可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)属性进行隐藏（单栏应用推荐隐藏导航页），导航栏不存在页面栈中。
 
 子页面是一个以NavDestination为根节点的子树，通过[@Builder](./state-management/arkts-builder.md)构造出来，再通过NavPathStack提供的栈操作方法挂载到Navigation上显示，详见[Navigation子页面](./arkts-navigation-navdestination.md)。
 
@@ -71,7 +71,7 @@ NavDestination作为页面根容器，除了支持普通组件的通用属性外
 
 Navigation中直接加载的孩子节点称为导航栏（NavBar），单栏显示时它是整个导航的首页，分栏显示时它是固定的导航栏。分栏显示时默认显示在左边，也可以通过[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)属性控制。
 
-开发者可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)控制导航栏的显隐，也可以通过[navBarWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)属性控制双栏显示下的Navbar宽度，NavBar本身不属于页面栈中的页面，不具备页面的生命周期等，不能通过NavPathStack的方法控制。 开发者可以通过[onNavBarStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavbarstatechange9)去感知导航栏的显隐，通过[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性控制单双栏切换，也可以通过[onNavigationModeChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavigationmodechange11)去感知单双栏的切换。
+开发者可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)控制导航栏的显隐，也可以通过[navBarWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)属性控制双栏显示下的NavBar宽度，NavBar本身不属于页面栈中的页面，不具备页面的生命周期等，不能通过NavPathStack的方法控制。 开发者可以通过[onNavBarStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavbarstatechange9)去感知导航栏的显隐，通过[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性控制单双栏切换，也可以通过[onNavigationModeChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavigationmodechange11)去感知单双栏的切换。
 
 NavBar的内容区可以通过两种方式指定：
 
@@ -143,9 +143,9 @@ NavBar的内容区可以通过两种方式指定：
               }
               .width('100%')
               .onClick(() => {
-                // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“详情页面参数”
+                // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“详情页面参数”
                 this.navPathStack.pushPathByName(`${item}`,
-                  // 将name指定的NaviDestination页面信息入栈,传递的参数为param
+                  // 将name指定的NavDestination页面信息入栈，传递的参数为param
                   this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
               })
             }, (item: string): string => item)
@@ -158,7 +158,7 @@ NavBar的内容区可以通过两种方式指定：
         }
         .width('100%')
         .mode(NavigationMode.Auto)
-        // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+        // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
         .title($r('app.string.settings')) // 设置标题文字
       }
       .size({ width: '100%', height: '100%' })

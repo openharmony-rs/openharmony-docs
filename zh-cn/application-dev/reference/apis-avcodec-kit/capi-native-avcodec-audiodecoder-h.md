@@ -380,7 +380,7 @@ OH_AVFormat *OH_AudioDecoder_GetOutputDescription(OH_AVCodec *codec)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat](capi-core-oh-avformat.md) * | 返回OH_AVFormat句柄指针，生命周期将使用下一个GetOutputDescription刷新，或使用OH_AVCodec销毁。 |
+| [OH_AVFormat](capi-core-oh-avformat.md) * | 返回OH_AVFormat句柄指针。 |
 
 ### OH_AudioDecoder_SetParameter()
 

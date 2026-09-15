@@ -1,8 +1,8 @@
 # @ohos.screenshot (屏幕截图)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -32,12 +32,12 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ---------------------- | ------------- | ---- | ---- | ------------------------------------------------------------ |
-| screenRect             | [Rect](js-apis-screenshot.md#rect) | 否  | 是 | 表示截取图像的区域，不传值默认返回displayId所在逻辑屏的区域。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23      |
-| imageSize              | [Size](#size) | 否 | 是  | 表示截取图像的大小，不传值默认为displayId所在逻辑屏的大小。若screenRect小于imageSize，图像会拉伸至imageSize，反之则压缩至imageSize的大小。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23        |
-| rotation               | ArkTs-Dyn: number <br> ArkTs-Sta: int        | 否  | 是 | 表示截取图像后要旋转的角度，当前仅支持0，默认值为0。传入其他值时将使用默认值。 <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23 |
-| displayId<sup>8+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 否 | 是  | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 <br/> **ArkTS-Dyn起始版本：** 8   <br/>  **ArkTS-Sta起始版本：** 23|
-| isNotificationNeeded<sup>14+</sup>| boolean        | 否  | 是 | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。  <br/> **ArkTS-Dyn起始版本：** 14   <br/>  **ArkTS-Sta起始版本：** 23 |
-| isCaptureFullOfScreen<sup>20+</sup> | boolean        | 否  | 是 | 表示是否截取当前Screen上的所有display。对于一个Screen上有多个display的场景，为true表示截取整个Screen，false则只截取displayId所在逻辑屏的区域，默认值为false。 <br/> **ArkTS-Dyn起始版本：** 20   <br/>  **ArkTS-Sta起始版本：** 23|
+| screenRect             | [Rect](js-apis-screenshot.md#rect) | 否  | 是 | 表示截取图像的区域，不传值默认返回displayId所在逻辑屏的区域。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23      |
+| imageSize              | [Size](#size) | 否 | 是  | 表示截取图像的大小，不传值默认为displayId所在逻辑屏的大小。若screenRect小于imageSize，图像会拉伸至imageSize，反之则压缩至imageSize的大小。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23        |
+| rotation               | ArkTs-Dyn: number <br> ArkTs-Sta: int        | 否  | 是 | 表示截取图像后要旋转的角度，单位为度，当前仅支持0，默认值为0。传入其他值时将使用默认值。 <br> **ArkTS-Dyn起始版本：** 7   <br>  **ArkTS-Sta起始版本：** 23 |
+| displayId<sup>8+</sup> | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 否 | 是  | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 <br> **ArkTS-Dyn起始版本：** 8   <br>  **ArkTS-Sta起始版本：** 23|
+| isNotificationNeeded<sup>14+</sup>| boolean        | 否  | 是 | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。  <br> **ArkTS-Dyn起始版本：** 14   <br>  **ArkTS-Sta起始版本：** 23 |
+| isCaptureFullOfScreen<sup>20+</sup> | boolean        | 否  | 是 | 表示是否截取当前Screen上的所有display。对于一个Screen上有多个display的场景，为true表示截取整个Screen，false则只截取displayId所在逻辑屏的区域，默认值为false。 <br> **ArkTS-Dyn起始版本：** 20   <br>  **ArkTS-Sta起始版本：** 23|
 
 ## HdrScreenshotOptions<sup>20+</sup>
 
@@ -71,6 +71,8 @@ import { screenshot } from '@kit.ArkUI';
 
 **ArkTS-Sta起始版本：** 26.0.0
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CANONICAL | 0 | 表示指定截图以标准HDR显示属性进行渲染，以优化截图在不同HDR显示器上的显示效果。|
@@ -90,14 +92,16 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称                 | 类型          |  只读 |  可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为整数。 |
-| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为整数。 |
+| width  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的宽度，单位为px，该参数应为正整数。 |
+| height | ArkTs-Dyn: number <br> ArkTs-Sta: long | 否   | 否   | 表示截取图像的高度，单位为px，该参数应为正整数。 |
 
 ## screenshot.save
 
 save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 获取屏幕截图，使用callback异步回调。
+
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **系统接口：** 此接口为系统接口。
 
@@ -108,10 +112,9 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
 
@@ -127,8 +130,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 1400001 | Invalid display or screen. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：11+ |
+| 1400001 | Invalid display or screen.<br>适用版本：11+ |
 
 **示例：**
 
@@ -200,6 +203,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 获取屏幕截图，使用callback异步回调。
 
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -209,10 +214,9 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
 
@@ -274,6 +278,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 获取屏幕截图，使用Promise异步回调。
 
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -283,10 +289,9 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **ArkTS-Sta起始版本：** 23
 
 **需要权限：**
-- API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+- API版本26.0.0+：ohos.permission.CUSTOM_SCREEN_CAPTURE 或 ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本22-24：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
+- API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
 
@@ -336,8 +341,8 @@ let screenshotOptions: screenshot.ScreenshotOptions = {
 try {
   let promise = screenshot.save(screenshotOptions);
   promise.then((pixelMap: image.PixelMap) => {
-    let pixelNumber = pixelMap.getPixelBytesNumber();
-    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelNumber}`);
+    let pixelBytesNumber = pixelMap.getPixelBytesNumber();
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelBytesNumber}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
@@ -389,7 +394,8 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。
 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。
 - 当物理屏不存在HDR资源时，与[save](#screenshotsave)接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](#screenshotsave)接口的裁剪、拉伸、旋转功能。
-<br><br>
+
+返回的PixelMap对象数组中的每个PixelMap对象都需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **系统接口：** 此接口为系统接口。
 
@@ -401,9 +407,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象数组中的每个PixelMap对象都需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+- API版本20-21：ohos.permission.CAPTURE_SCREEN。
 
 **参数：**
 
@@ -425,7 +429,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -449,7 +453,7 @@ try {
   promise.then((pixelMapArray: Array<image.PixelMap>) => {
     for (let i = 0; i < pixelMapArray.length; i++) {
       const pixelMap = pixelMapArray[i];
-      console.info(`succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
+      console.info(`Succeeded in saving screenshot ${i}. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
       pixelMap.release();
     }
   }).catch((err: BusinessError) => {

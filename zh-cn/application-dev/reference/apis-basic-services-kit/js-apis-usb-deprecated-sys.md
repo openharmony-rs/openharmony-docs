@@ -44,7 +44,7 @@ usbFunctionsFromString(funcs: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 功能列表对应的数字掩码。 |
+| number | 转化后的功能列表对应的数字掩码。 |
 
 **示例：**
 

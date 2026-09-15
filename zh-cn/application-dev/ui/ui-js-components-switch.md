@@ -36,7 +36,7 @@ switch为开关选择器，切换开启或关闭状态。具体用法请参考[s
 
 ## 添加属性和方法
 
-  switch组件通过textoff和showtext属性设置文本选中和未选中时的状态。设置checked属性值为true（组件为打开状态）。添加change事件，当组件状态改变时触发，触发后执行switchChange函数获取组件当前状态（关闭/打开）。
+  switch组件通过texton、textoff和showtext属性设置文本选中和未选中时的状态。设置checked属性值为true（组件为打开状态）。添加change事件，当组件状态改变时触发，触发后执行switchChange函数获取组件当前状态（关闭/打开）。
 
 ```html
 <!-- xxx.hml -->
@@ -67,15 +67,14 @@ switch {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   switchChange(e){
     if(e.checked){
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: "open"
       });
     }else{
-      promptAction.showToast({
+      this.getUIContext().getPromptAction().showToast({
         message: "close"
       });
     }
@@ -111,7 +110,7 @@ export default {
   <div class="myAddress" style="display: {{addressDisplay}};">
     <text style="font-size: 30px;margin-bottom: 50px;">Choose an address:</text>
     <text class="addressText" style="background-color: {{item == address?'#0fabe7':''}};color: {{item == address?'white':'black'}};" 
-    for="item in addressList"@click="changeAddress({{$idx}}})">{{item}}</text>
+    for="item in addressList"@click="changeAddress({{$idx}})">{{item}}</text>
   </div>
 </div>
 ```

@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 ## 概述
@@ -28,7 +28,7 @@
 
 ## 开发步骤
 
-下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中，通过代码开发和封装，实现按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）的能力。
+下文以“音乐助手Skill（`example-org-music-assistant`）”为示例，演示如何在自有应用中，通过代码开发和封装，实现按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）的能力。
 
 1. 创建文件和目录。
 
@@ -41,7 +41,7 @@
    │   └── resources/
    └── entry/
        ├── skills/                            <- 【固定值】当前模块所有Skill的根目录
-       │   └── music-assistant/               <- Skill名，需与SKILL.md的name一致
+       │   └── example-org-music-assistant/   <- Skill名，需与SKILL.md的name一致，为防止命名冲突，推荐使用公司或组织名作为前缀
        │       ├── scripts/                   <- 【固定值】ETS脚本目录
        │       │   └── MusicSkill.ets         <- Skill入口脚本
        │       └── SKILL.md                   <- 【固定值】Skill描述文件
@@ -70,11 +70,12 @@
        // ...
        "skillProfiles": [
          {
-           "name": "music-assistant", // Skill名，需与SKILL.md的name一致
-           "abilityName": "EntryAbility", // 与该Skill关联的组件名称
-           "srcEntries": [  // 实现Skill的代码文件路径列表
-             "../../skills/music-assistant/scripts/MusicSkill.ets"
-           ]
+           "name": "example-org-music-assistant",  // Skill名，需与SKILL.md的name一致
+           "abilityName": "EntryAbility",          // 与该Skill关联的组件名称
+           "srcEntries": [                         // 实现Skill的代码文件路径列表
+             "../../skills/example-org-music-assistant/scripts/MusicSkill.ets"
+           ],
+           "version": "1.0.0"
          }
        ],
    
@@ -94,7 +95,7 @@
 
    入口脚本需要从`@kit.AbilityKit`引入`scriptManager`，同时引入待桥接的应用内业务模块。
 
-   <!-- @[music_skill_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    
@@ -106,12 +107,12 @@
 
    3.2 定义入口类骨架。
 
-   入口脚本以`export default`方式导出一个类，类内每个`public async`方法对应SKILL.md声明的一项能力，须满足以下约定：
+   入口脚本以`export default`方式导出一个类，类中每个方法**均可直接被Agent访问**，需对应SKILL.md声明的一项能力，上述能力需满足以下约定：
 
    - **方法名约定**：必须与SKILL.md中的`functionName`严格一致（本例为`playMusicByName`、`controlPlayback`）。
    - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
 
-   <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    export default class MusicSkill {
@@ -135,7 +136,7 @@
 
    每个能力方法的第一项任务是从`argv`中按位置获取参数，对照SKILL.md的`args` Schema完成前置校验。
 
-   <!-- @[music_skill_verify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_verify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    // 例1：playMusicByName 的两个可选参数，至少一个非空
@@ -163,13 +164,27 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets)  -->
+   
+   ``` TypeScript
+   
+   try {
+     // 直接调用应用内已有业务API
+     const playResult: PlayResult | null = MusicPlayer.searchAndPlay(songName, singer);
+     // 业务返回值 → 映射到"成功"或"未命中"分支（见 3.5）
+         // ...
+   } catch (e) {
+     // 业务异常 → 统一映射到 ERR_INTERNAL 分支（见 3.5）
+     const err = e as BusinessError;
+   // ...
+   }
+   ```
 
    3.5 按契约构造ExecuteResult并回传。
 
    业务执行完成后，需将结果封装为[ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult)，并通过调用[completeArkTSScriptInApp](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp)回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
 
-   <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    // 成功分支示例
@@ -226,7 +241,7 @@
 
    ```text
    ---
-   name: music-assistant
+   name: example-org-music-assistant
    description: 提供音乐搜索播放与播控能力，响应“放首歌”、“切歌”、“暂停”等播放控制类指令
    ---
    ```
@@ -260,7 +275,7 @@
    调用示例包含四个核心字段：`command`固定为`ohos-arkTSScript`；`skillName`需与SKILL.md中的`name`保持一致；`scriptPath`为相对于Skill目录的入口脚本路径；`functionName`必须与MusicSkill.ets中public方法名严格对应。
 
    ```bash
-   exec-cli(command: ohos-arkTSScript --skillName 'music-assistant' --scriptPath 'scripts/MusicSkill.ets' --functionName 'playMusicByName' --args '{
+   exec-cli(command: ohos-arkTSScript --skillName 'example-org-music-assistant' --scriptPath 'scripts/MusicSkill.ets' --functionName 'playMusicByName' --args '{
        "arg1": "SongA",
        "arg2": "SingerA"
    }'
@@ -309,7 +324,9 @@
            "matchedCount": 1
        }
    }
+   ```
 
+   ```json5
    // 2. 入参非法
    {
        "type": "result",
@@ -318,7 +335,9 @@
        "errMsg": "songName and singer are both empty",
        "suggestion": "我没听清，你想听哪首歌？"
    }
+   ```
 
+   ```json5
    // 3. 未命中
    {
        "type": "result",
@@ -329,7 +348,9 @@
        },
        "suggestion": "没有找到SingerA的《SongA》"
    }
+   ```
 
+   ```json5
    // 4. 内部错误
    {
        "type": "result",
@@ -366,8 +387,9 @@
    }
    ```
 
+<!--RP1--><!--RP1End-->
 ## 相关实例
 
 针对应用Skill开发，可参考以下相关实例：
 
-- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)
+- [音乐助手Skill示例工程（example-org-music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)

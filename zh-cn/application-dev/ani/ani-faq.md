@@ -4,7 +4,7 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @LeechyLiang; @zengmanyi; @jcj525-->
 <!--Tester: @wuhan544-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 - **BusinessError无法创建或行为异常**：检查是否存在`BusinessError$partial`。系统可能包含内置的`BusinessError`，这会在ABC文件中引发冲突。请联系前端和标准库的维护人员。
 - **`Object_New`后程序崩溃**：通常是由于参数类型不匹配。在查找构造函数时，绝不要使用`nullptr`作为签名。

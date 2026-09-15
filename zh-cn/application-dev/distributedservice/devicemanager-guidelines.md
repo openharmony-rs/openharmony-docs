@@ -15,7 +15,7 @@
 分布式设备管理提供如下四大功能：
 
 - **发现**<br/>
-  发现周围终端设备并上报。周围设备需要连接同局域网或者同时打开蓝牙，可以根据设备类型、距离、设备是否可信等进行筛选。
+  发现周围终端设备并上报。周围设备需要连接同局域网或者同时打开蓝牙。
 
 - **绑定**<br/>
   不同设备协同合作完成分布式业务的前提是设备间可信，对于周边发现的不可信设备，可通过绑定使彼此建立可信关系，提供PIN码、碰、扫、靠等设备认证框架，支持对接各种认证交互接口。
@@ -142,7 +142,7 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
      logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
      try {
        let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager');
-       this.deviceManager = dmInstance;
+       this.deviceManager = dmInstance
        // ...
        logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
        value= ${JSON.stringify(this.deviceManager)}`);
@@ -250,22 +250,22 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
    ArkTS-Dyn示例：
 
-   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
+   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   
    ``` TypeScript
    stopDeviceDiscovery(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
-
+     logger.info('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery');
      try {
        this.deviceManager.stopDiscovering();
        this.deviceManager.off('discoverSuccess');
        this.deviceManager.off('discoverFailure');
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     } catch (e) {
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + e.toString());
      }
    }
    ```
@@ -463,7 +463,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
        this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
        // ...
      } catch (error) {
-       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
+       logger.error(`[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}`);
        this.showErrMsg('getTrustedDeviceList failed');
      }
    }

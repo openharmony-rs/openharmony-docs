@@ -44,7 +44,7 @@ import { sendableContextManager } from '@kit.AbilityKit';
 
 type SendableContext = _SendableContext
 
-Sendable上下文，符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)。
+Sendable上下文，符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -477,11 +477,11 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 
 workerPort.onmessageerror = (e: MessageEvents) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onmessageerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onmessageerror');
 }
 
 workerPort.onerror = (e: ErrorEvent) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
 
@@ -595,11 +595,11 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 
 workerPort.onmessageerror = (e: MessageEvents) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onmessageerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onmessageerror');
 }
 
 workerPort.onerror = (e: ErrorEvent) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
 ## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+</sup>

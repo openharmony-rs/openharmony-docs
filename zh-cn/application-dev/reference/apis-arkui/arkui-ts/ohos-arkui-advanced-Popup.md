@@ -40,8 +40,6 @@ Popup(options: PopupOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
@@ -52,15 +50,13 @@ Popup(options: PopupOptions): void
 
 | 参数名  | 类型                          | 必填 | 说明                  |
 | ------- | ----------------------------- | ---- | --------------------- |
-| options | [PopupOptions](#popupoptions) | 是   | 定义Popup组件的类型。 |
+| options | [PopupOptions](#popupoptions) | 是   | 定义Popup组件的样式参数。 |
 
 ## PopupOptions
 
 PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,8 +80,6 @@ PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型                                                         | 只读 | 可选 | 说明         |
@@ -103,8 +97,6 @@ PopupButtonOptions定义按钮的相关属性和事件。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -124,8 +116,6 @@ PopupIconOptions定义图标的属性。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -434,14 +424,13 @@ import { Popup, PopupTextOptions, PopupButtonOptions, PopupIconOptions } from '@
 @Entry
 @Component
 struct PopupPage {
-  @State currentDirection: Direction = Direction.Rtl;
 
   build() {
     Row() {
       // popup 自定义高级组件
       Popup({
         // 设置自定义宽度
-        maxWidth: '50%',
+        maxWidth: '70%',
         // PopupIconOptions 类型设置图标内容
         icon: {
           // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
@@ -506,7 +495,7 @@ struct PopupPage {
       // popup 自定义高级组件
       Popup({
         // 设置自定义宽度
-        maxWidth: '50%',
+        maxWidth: '70%',
         // PopupIconOptions 类型设置图标内容
         icon: {
           image: $r('app.media.startIcon'),

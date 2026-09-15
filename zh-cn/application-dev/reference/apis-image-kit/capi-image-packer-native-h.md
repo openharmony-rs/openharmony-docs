@@ -48,6 +48,10 @@
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | 设置编码质量。 |
 | [ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options, bool *needsPackProperties)](#oh_packingoptions_getneedspackproperties) | 获取OH_PackingOptions结构体的needsPackProperties参数。 |
 | [Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options, bool needsPackProperties)](#oh_packingoptions_setneedspackproperties) | 设置OH_PackingOptions结构体的needsPackProperties参数。 |
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)](#oh_packingoptions_getneedspackdfxdata) | 获取OH_PackingOptions结构体中的needsPackDfxData参数。 |
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)](#oh_packingoptions_setneedspackdfxdata) | 设置OH_PackingOptions结构体中的needsPackDfxData参数。 |
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)](#oh_packingoptions_setc2padatasize) | 设置编码输出中为C2PA（Coalition for Content Provenance and Authenticity）数据预留的空间大小。 |
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)](#oh_packingoptions_getc2padatasize) | 获取编码输出中为C2PA数据预留的空间大小，单位为字节（Byte）。 |
 | [Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *options, int32_t* desiredDynamicRange)](#oh_packingoptions_getdesireddynamicrange) | 获取编码时期望的图片动态范围。 |
 | [Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *options, int32_t desiredDynamicRange)](#oh_packingoptions_setdesireddynamicrange) | 设置编码时期望的图片动态范围。 |
 | [Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)](#oh_packingoptions_release) | 释放OH_PackingOptions指针。 |
@@ -58,7 +62,7 @@
 | [Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsForSequence *options, int32_t *delayTimeList, size_t delayTimeListLength)](#oh_packingoptionsforsequence_getdelaytimelist) | 获取编码时图片的延迟时间数组。 |
 | [Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsForSequence *options, uint32_t *disposalTypes, size_t disposalTypesLength)](#oh_packingoptionsforsequence_setdisposaltypes) | 设定编码时图片的过渡帧模式数组。 |
 | [Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsForSequence *options, uint32_t *disposalTypes, size_t disposalTypesLength)](#oh_packingoptionsforsequence_getdisposaltypes) | 获取编码时图片的过渡帧模式数组。 |
-| [Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSequence *options, uint32_t loopCount)](#oh_packingoptionsforsequence_setloopcount) | 设定编码时图片循环播放次数，取值范围为[0，65535]，0表示无限循环；若无此字段，则表示不循环播放。 |
+| [Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSequence *options, uint32_t loopCount)](#oh_packingoptionsforsequence_setloopcount) | 设定编码时图片循环播放次数，取值范围为[0, 65535]，0表示无限循环；若无此字段，则表示不循环播放。 |
 | [Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSequence *options, uint32_t *loopCount)](#oh_packingoptionsforsequence_getloopcount) | 获取编码时图片循环播放次数。 |
 | [Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequence *options)](#oh_packingoptionsforsequence_release) | 释放OH_PackingOptionsForSequence指针。 |
 | [Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)](#oh_imagepackernative_create) | 创建OH_ImagePackerNative指针。 |
@@ -331,7 +335,120 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
+<!--Del-->
+### OH_PackingOptions_GetNeedsPackDfxData()
 
+```c
+Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)
+```
+
+**描述**
+
+获取OH_PackingOptions结构体中的needsPackDfxData参数。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向OH_PackingOptions结构体的指针。 |
+| bool *needsPackDfxData | 图像DFX数据是否需要编码。true表示图像DFX数据需要编码，false表示图像DFX数据不需要编码。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_PACKER_INVALID_PARAMETER：options或needsPackDfxData为空指针。</li><br>         </ul> |
+
+### OH_PackingOptions_SetNeedsPackDfxData()
+
+```c
+Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)
+```
+
+**描述**
+
+设置OH_PackingOptions结构体中的needsPackDfxData参数。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向OH_PackingOptions结构体的指针。 |
+| bool needsPackDfxData | 图像DFX数据是否需要编码。true表示图像DFX数据需要编码，false表示图像DFX数据不需要编码。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_PACKER_INVALID_PARAMETER：options为空指针。</li><br>         </ul> |
+### OH_PackingOptions_SetC2paDataSize()
+
+```c
+Image_ErrorCode OH_PackingOptions_SetC2paDataSize(OH_PackingOptions *options, uint32_t c2paDataSize)
+```
+
+**描述**
+
+设置编码输出中为C2PA（Coalition for Content Provenance and Authenticity）数据预留的空间大小。
+
+> **说明：**<br/>
+>
+> - C2PA是一项用于记录和验证数字内容来源及编辑历史的技术规范。编码时按照C2PA 2.4嵌入规范预留C2PA数据空间，单位为字节（Byte），取值范围为[0, 4194304]，默认值为0，表示不预留空间。
+> - 该参数仅对JPEG和HEIF生效。其中，JPEG遵循ISO/IEC 18477-3（JPEG XT）及ISO/IEC 19566-5:2023，使用以`JP`和`c2pa`标识的连续APP11段预留并以0填充；HEIF遵循ISO/IEC 14496-12（ISO BMFF），使用Extended UUID为`D8FEC3D6-1B0E-483C-9297-5828877EC481`的顶层`uuid` box预留并以0填充。当设置非零值但无法完成预留时，编码失败。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向OH_PackingOptions结构体的指针，不能为NULL。 |
+| uint32_t c2paDataSize | C2PA数据预留空间大小，单位为字节（Byte），取值范围为[0, 4194304]。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>202：非系统应用程序调用该接口。<br>IMAGE_PACKER_INVALID_PARAMETER：options为NULL，或c2paDataSize不在[0, 4194304]范围内。 |
+
+### OH_PackingOptions_GetC2paDataSize()
+
+```c
+Image_ErrorCode OH_PackingOptions_GetC2paDataSize(const OH_PackingOptions *options, uint32_t *c2paDataSize)
+```
+
+**描述**
+
+获取编码输出中为C2PA数据预留的空间大小，单位为字节（Byte）。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向OH_PackingOptions结构体的指针，不能为NULL。 |
+| uint32_t *c2paDataSize | 指向C2PA数据预留空间大小的指针，单位为字节（Byte），不能为NULL。如果函数执行失败，c2paDataSize指向的内容保持不变。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>202：非系统应用程序调用该接口。<br>IMAGE_PACKER_INVALID_PARAMETER：options或c2paDataSize为NULL。 |
+
+<!--DelEnd-->
 ### OH_PackingOptions_GetDesiredDynamicRange()
 
 ```c
@@ -630,7 +747,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSe
 
 **描述**
 
-设定编码时图片循环播放次数，取值范围为[0，65535]，0表示无限循环；若无此字段，则表示不循环播放。
+设定编码时图片循环播放次数，取值范围为[0, 65535]，0表示无限循环；若无此字段，则表示不循环播放。
 
 使用约束：options不能为空指针。本接口仅保存传入的loopCount。当loopCount大于65535时，本接口仍会返回成功，但后续调用[OH_ImagePackerNative_PackToDataFromPixelmapSequence](#oh_imagepackernative_packtodatafrompixelmapsequence)或[OH_ImagePackerNative_PackToFileFromPixelmapSequence](#oh_imagepackernative_packtofilefrompixelmapsequence)编码时会返回参数错误。
 
@@ -1070,5 +1187,4 @@ Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
-
 

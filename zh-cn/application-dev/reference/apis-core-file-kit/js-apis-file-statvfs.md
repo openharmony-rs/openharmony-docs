@@ -1,9 +1,9 @@
 # @ohos.file.statvfs (文件系统空间统计)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向应用程序提供获取文件系统总字节数、空闲字节数的ArkTS接口。通过该模块，开发者可以实时掌握文件系统存储状况，避免因存储空间不足导致的应用崩溃，提升用户体验和系统稳定性。
@@ -70,7 +70,7 @@ getFreeSize(path: string): Promise&lt;number&gt;
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getFreeSize(path).then((number: freeSize) => {
+  statfs.getFreeSize(path).then((freeSize: number) => {
     console.info("Succeeded in getting free size: " + freeSize);
   }).catch((err: BusinessError) => {
     console.error("Failed to get free size. Code: " + err.code + ", message: " + err.message);
@@ -122,7 +122,7 @@ getFreeSize(path: string, callback:AsyncCallback&lt;number&gt;): void
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getFreeSize(path, (err: BusinessError, number: freeSize) => {
+  statfs.getFreeSize(path, (err: BusinessError, freeSize: number) => {
     if (err) {
       console.error("Failed to get free size. Code: " + err.code + ", message: " + err.message);
     } else {
@@ -234,7 +234,7 @@ getTotalSize(path: string): Promise&lt;number&gt;
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getTotalSize(path).then((number: totalSize) => {
+  statfs.getTotalSize(path).then((totalSize: number) => {
     console.info("Succeeded in getting total size: " + totalSize);
   }).catch((err: BusinessError) => {
     console.error("Failed to get total size. Code: " + err.code + ", message: " + err.message);
@@ -286,7 +286,7 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
-  statfs.getTotalSize(path, (err: BusinessError, number: totalSize) => {
+  statfs.getTotalSize(path, (err: BusinessError, totalSize: number) => {
     if (err) {
       console.error("Failed to get total size. Code: " + err.code + ", message: " + err.message);
     } else {

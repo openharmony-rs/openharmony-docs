@@ -6,15 +6,15 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是形状、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
+使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是形状、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓冲区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
 
 >  **说明：**
 >
->  从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  * 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+>  * OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 >
->  [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
+>  * [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 
 ## 接口
 
@@ -58,8 +58,8 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
 | width    | number                                   | 是    | 离屏画布的宽度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
 | height   | number                                   | 是    | 离屏画布的高度，默认单位：vp<br>异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
-| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
+| settings | [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) | 否    | 用来配置OffscreenCanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，见RenderingContextSettings接口描述。<br>异常值undefined按[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)的默认值处理。<br>默认值：null |
+| unit | [LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，DEFAULT（默认vp单位，适合大多数场景）、PX（px像素单位，适合需要精确像素控制的场景）。配置后无法动态更改，配置方法同[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT|
 
 ## 属性            
 
@@ -1203,11 +1203,11 @@ justifyContent: FlexAlign.Center }) {
           .backgroundColor('#ffff00')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            let offctx = offContext
-            offctx.imageSmoothingEnabled = true
+            let offCtx = offContext
+            offCtx.imageSmoothingEnabled = true
             // 设置imageSmoothingQuality属性
-            offctx.imageSmoothingQuality = 'high'
-            offctx.drawImage(this.img, 0, 0, 400, 200)
+            offCtx.imageSmoothingQuality = 'high'
+            offCtx.drawImage(this.img, 0, 0, 400, 200)
 
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -1254,16 +1254,16 @@ justifyContent: FlexAlign.Center }) {
           .backgroundColor('#ffff00')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            let offctx = offContext
-            offctx.font = '48px serif';
-            offctx.textAlign = 'start'
-            offctx.fillText("Hi ltr!", 200, 50);
+            let offCtx = offContext
+            offCtx.font = '48px serif';
+            offCtx.textAlign = 'start'
+            offCtx.fillText("Hi ltr!", 200, 50);
 
             // 设置direction属性
-            offctx.direction = "rtl";
-            offctx.fillText("Hi rtl!", 200, 100);
+            offCtx.direction = "rtl";
+            offCtx.fillText("Hi rtl!", 200, 100);
 
-            let image = offctx.transferToImageBitmap()
+            let image = offCtx.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
       }
@@ -4183,12 +4183,11 @@ getLineDash(): number[]
 ![Dotted-circle-01](figures/Dotted-circle-01.png) 
 
 
-
 ### toDataURL
 
 toDataURL(type?: string, quality?: any): string
 
-生成一个包含图片展示的URL，该接口存在内存拷贝行为，高耗时，应避免频繁使用。
+生成一个包含图片展示的Data URL，该接口存在内存拷贝行为，高耗时，应避免频繁使用。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -4200,8 +4199,8 @@ toDataURL(type?: string, quality?: any): string
 
 | 参数名     | 类型   | 必填   | 说明                                       |
 | ------- | ------ | ---- | ---------------------------------------- |
-| type    | string | 否  | 用于指定图像格式。<br/>可选参数为："image/png"，"image/jpeg"，"image/webp"。<br>异常值undefined或null按默认值处理。<br>默认值：image/png |
-| quality | any | 否  | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量。如果超出取值范围，将会使用默认值0.92。<br>异常值undefined、null、NaN和Infinity按默认值处理。<br>默认值：0.92 |
+| type    | string | 否  | 用于指定图像格式。<br>可选参数为："image/png"，"image/jpeg"，"image/webp"。<br>异常值undefined或null按默认值处理。<br>默认值：image/png |
+| quality | any | 否  | 在指定图片格式为image/jpeg或image/webp的情况下，可以从0到1的区间内选择图片的质量，取值范围[0, 1]。如果超出取值范围，将会使用默认值0.92。<br>异常值undefined、null、NaN和Infinity按默认值处理。<br>默认值：0.92 |
 
 **返回值：** 
 

@@ -35,7 +35,7 @@
 
 ## 约束限制
 
-- 系统默认日志方式是[WAL](data-terminology.md#wal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full模式)。
+- 系统默认日志方式是[WAL](data-terminology.md#wal-mode-write-ahead-logwal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full-modefull模式)。
 
 - 数据库中常驻有4个读连接和1个写连接。读连接会动态扩充，无可用读连接时，会创建新的读连接执行读操作。写连接不会动态扩充，无可用写连接时，会等待连接释放后执行写操作。
 
@@ -77,7 +77,7 @@
 
    ArkTS-Dyn示例：
       
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->     
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->  
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -593,7 +593,7 @@
    以中文关键字检索为例：
 
    ArkTS-Dyn示例：
-   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->    
+   <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    // 中文关键字检索，查找数据
@@ -863,7 +863,7 @@
    Stage模型示例：
 
    ArkTS-Dyn示例：
-   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->    
+   <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    // 删除数据库

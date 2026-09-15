@@ -1,8 +1,8 @@
 # @ohos.mediaquery (媒体查询)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -157,7 +157,7 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 ```ts
 import { mediaquery } from '@kit.ArkUI';
 
-let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+let listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件
 function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   if (mediaQueryResult.matches) {
     // do something here

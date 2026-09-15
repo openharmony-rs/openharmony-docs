@@ -100,7 +100,7 @@ Tabs() {
     Text($r('app.string.mine_content'))
       .fontSize(30)
   }
-  // app.string.mine_content资源文件中的value值为“我的”
+  // app.string.mine资源文件中的value值为“我的”
   .tabBar($r('app.string.mine'))
 }
 ```
@@ -1143,7 +1143,7 @@ export struct AgeFriendlyTabs {
 
 ## 控制页面缓存数
 
-从API version 19开始，开发者可以通过[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)接口，设置子组件的最大缓存个数和缓存模式。默认情况下Tabs创建时会一次性预加载所有TabContent，而且已加载的页面不会释放，可能会带来性能内存问题。此时可以设置[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)属性控制缓存的页面数量，设置此属性后不会进行页面预加载，使用懒加载机制(仅切换到页面时才加载)，当切换页面时根据所设置的[TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19枚举说明)决定保留缓存或者释放页面。
+从API version 19开始，开发者可以通过[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)接口，设置子组件的最大缓存个数和缓存模式。默认情况下Tabs创建时会一次性预加载所有TabContent，而且已加载的页面不会释放，可能会带来性能内存问题。此时可以设置[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)属性控制缓存的页面数量，设置此属性后不会进行页面预加载，使用懒加载机制（仅切换到页面时才加载），当切换页面时根据所设置的[TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19枚举说明)决定保留缓存或者释放页面。
 
 >  **说明：** 
 >
@@ -1193,7 +1193,7 @@ export struct NumberOfCachesTabBar {
           .width(360)
           .height(296)
           .backgroundColor('#F1F3F5')
-          .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+          .cachedMaxCount(2, TabsCacheMode.CACHE_BOTH_SIDE)
           // ...
   }
 }

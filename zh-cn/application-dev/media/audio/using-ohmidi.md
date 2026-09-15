@@ -26,7 +26,7 @@ OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++
 
 ## 系统能力检查
 
-使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/init.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
+使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/syscap__ndk_8h.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
 
 ## 接口说明
 
@@ -93,7 +93,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
 系统已定义[OH_MIDICallbacks](../../reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md)结构体，开发者需要实现其中的回调函数：
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
-- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑,如重新创建客户端。
+- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑，如重新创建客户端。
 
 通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
 
@@ -624,13 +624,14 @@ static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity
 | 71 | Resonance | 共振 |
 | 74 | Filter Cutoff | 滤波器截止 |
 
-**发送系统专有消息(SysEx)**
+**发送系统独占消息(SysEx)**
 
-系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
+系统独占消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
 
 ``` C++
 // 发送大型SysEx消息。
-void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex){
+void SendSysExExample(OH_MIDIDevice *device, uint32_t outputPortIndex)
+{
     // 构造SysEx数据。
     std::vector<uint8_t> sysexData;
     sysexData.push_back(0xF0);  // SysEx开始标志。

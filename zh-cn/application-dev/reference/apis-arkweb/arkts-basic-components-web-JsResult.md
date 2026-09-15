@@ -1,8 +1,8 @@
 # Class (JsResult)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -14,9 +14,9 @@ JsResult是Web组件在处理JavaScript弹窗事件时返回的结果处理对�
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 8开始支持。
+> - 本Class从API version 8开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -24,7 +24,7 @@ JsResult是Web组件在处理JavaScript弹窗事件时返回的结果处理对�
 
 constructor()
 
-JsResult的构造函数。
+JsResult的构造函数。用于处理JavaScript弹窗事件。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -60,7 +60,7 @@ handleConfirm(): void
 
 handlePromptConfirm(result: string): void
 
-通知Web组件用户确认弹窗操作及对话框内容。
+通知Web组件用户确认弹窗操作并传递对话框内容。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

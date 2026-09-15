@@ -69,16 +69,25 @@ class Point {
 
    ```cpp
    ani_class cls {};
-   env->FindClass("example.Point", &cls);
+   ani_status status = env->FindClass("example.Point", &cls);
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ```
 
 2. Class_FindMethod：
 
    ```cpp
    ani_method ctor1 {};
-   env->Class_FindMethod(cls, "<ctor>", "ii:", &ctor1);
+   ani_status status = env->Class_FindMethod(cls, "<ctor>", "ii:", &ctor1);
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ani_method ctor2 {};
-   env->Class_FindMethod(cls, "<ctor>", "dd:", &ctor2);
+   status = env->Class_FindMethod(cls, "<ctor>", "dd:", &ctor2);
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ```
 
    - mangling `ii:`与`constructor(x: int, y: int)`匹配；
@@ -90,9 +99,15 @@ class Point {
 
    ```cpp
    ani_object obj1 {};
-   env->Object_New(cls, ctor1, &obj1, static_cast<ani_int>(1), static_cast<ani_int>(2));
+   ani_status status = env->Object_New(cls, ctor1, &obj1, static_cast<ani_int>(1), static_cast<ani_int>(2));
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ani_object obj2 {};
-   env->Object_New(cls, ctor2, &obj2, static_cast<ani_double>(1), static_cast<ani_double>(2));
+   status = env->Object_New(cls, ctor2, &obj2, static_cast<ani_double>(1), static_cast<ani_double>(2));
+   if (status != ANI_OK) {
+       // handle error and return
+   }
    ```
 
    在这里：
@@ -110,5 +125,5 @@ class Point {
 > - 接口类型
 > - 抽象类
 > - 字符串（`ani_string`）—— 必须使用专门的ANI创建函数
-> - `FixedArray<T>`类型 —— 必须使用专门的ANI数组创建函数
+> - `ValueArray<T>`和`FixedArray<T>`类型 —— 必须使用专门的ANI数组创建函数
 

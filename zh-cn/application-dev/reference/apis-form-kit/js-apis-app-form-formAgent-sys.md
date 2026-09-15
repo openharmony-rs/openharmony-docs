@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请求发布卡片。
+FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请求发布卡片。适用于系统应用需要将卡片发布到使用方（如桌面）的场景，能够帮助系统应用便捷地请求发布卡片，简化卡片发布流程。
 
 > **说明：**
 >
@@ -22,11 +22,11 @@ FormAgent模块提供了卡片代理相关接口的能力，目前仅包括请�
 import { formAgent } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
-请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。
+请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。
 
 **需要权限：** ohos.permission.AGENT_REQUIRE_FORM
 
@@ -42,8 +42,8 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片bundleName<br>abilityName: 目标卡片ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName|
-| callback | AsyncCallback&lt;string&gt;         | 是   |  回调函数，返回卡片标识。 |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName<br>abilityName: 目标卡片所属应用的Ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格，取值原则：1-2x2、2-2x4、3-4x4等，具体规格见卡片配置<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName|
+| callback | AsyncCallback&lt;string&gt;         | 是 | 回调函数，用于异步返回卡片标识。回调参数：error为错误对象（成功时为null），data为卡片标识（string类型）。 |
 
 **错误码：**
 
@@ -56,7 +56,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+ |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -79,13 +82,13 @@ let want: Want = {
 try {
   formAgent.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formAgent requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -115,7 +118,7 @@ try {
   formAgent.requestPublishForm(want, (error: BusinessError | null, data: string | undefined) => {
     if (error?.code !== 0) {
       hilog.error(DOMAIN, TAG,
-        `formAgent requestPublishForm callback error, code: ${error?.code}, message: ${error?.message})`);
+        `formAgent requestPublishForm callback error, code: ${error?.code}, message: ${error?.message}`);
       return;
     }
     console.info('testTag', `formAgent requestPublishForm callback success`);
@@ -123,15 +126,15 @@ try {
 } catch (e) {
   let code = e.code;
   let message = e.message;
-  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm callback error, code: ${code}, message: ${message})`);
+  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm callback error, code: ${code}, message: ${message}`);
 }
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want): Promise&lt;string&gt;
 
-请求发布一张卡片到使用方，使用Promise异步回调。使用方通常为桌面。
+请求发布一张卡片到使用方，使用Promise异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。
 
 **需要权限：** ohos.permission.AGENT_REQUIRE_FORM
 
@@ -147,7 +150,7 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 
 | 参数名          | 类型                                                         | 必填 | 说明                                                         |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片bundleName<br>abilityName: 目标卡片ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName<br>abilityName: 目标卡片所属应用的Ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName |
 
 **返回值：**
 
@@ -166,7 +169,10 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+|
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+ |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -190,10 +196,10 @@ try {
   formAgent.requestPublishForm(want).then((data: string) => {
     console.info(`formAgent requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -225,11 +231,311 @@ try {
   }).catch((e) => {
     let code = e.code;
     let message = e.message;
-    hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise error, code: ${code}, message: ${message})`);
+    hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise error, code: ${code}, message: ${message}`);
   });
 } catch (e) {
   let code = e.code;
   let message = e.message;
-  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise catch error, code: ${code}, message: ${message})`);
+  hilog.error(DOMAIN, TAG, `formAgent requestPublishForm promise catch error, code: ${code}, message: ${message}`);
+}
+```
+
+## formAgent.updateFormCrossBundle
+
+updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
+
+跨应用更新卡片，使用Promise异步回调。
+
+**需要权限：** ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明        |
+| ------ |--------| ---- |-----------|
+| formId | string | 是   | 卡片标识。      |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的卡片数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | Possible cause IPC connection error. Such as the remote object does not exist. |
+| 16500060 | Possible cause Service State error. Such as the form is recovering. |
+| 16501000 | Possible cause internal functional error. Such as virtualization failed. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501003 | The form to be operated has been deleted already. |
+| 16501007 | The form to be operated is not trusted. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formBindingData, formAgent } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // 卡片的formId，请替换为实际的formId。
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  };
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formAgent.updateFormCrossBundle(formId, obj).then(() => {
+    console.info('formAgent updateFormCrossBundle success');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, formAgent } from '@kit.FormKit';
+
+let formId: string = '123456789'; // 卡片的formId，请替换为实际的formId。
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  };
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formAgent.updateFormCrossBundle(formId, obj).then(() => {
+    console.info('formAgent updateFormCrossBundle success');
+  }).catch((error) => {
+    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
+## formAgent.getAvailableFormHostServices
+
+getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostServiceInfo&gt;&gt;
+
+获取可用的卡片使用方服务信息列表。使用Promise异步回调。
+
+**需要权限：** ohos.permission.AGENT_REQUIRE_FORM
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型                                                                                                                          | 说明                          |
+|----------------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| Promise&lt;Array&lt;[formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo)&gt;&gt; | Promise对象，返回可用的卡片使用方服务信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formAgent.getAvailableFormHostServices().then((data: formInfo.PeerFormHostServiceInfo[]) => {
+    console.info(`formAgent getAvailableFormHostServices success, service count: ${data.length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formAgent, formInfo } from '@kit.FormKit';
+
+try {
+  formAgent.getAvailableFormHostServices().then((data: formInfo.PeerFormHostServiceInfo[]) => {
+    console.info(`formAgent getAvailableFormHostServices success, service count: ${data.length}`);
+  }).catch((error) => {
+    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
+## formAgent.requestPublishFormCrossDevice
+
+requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;formInfo.PublishFormCrossDeviceResult&gt;
+
+请求将卡片发布到远端设备的卡片使用方服务。使用Promise异步回调。
+
+**需要权限：** ohos.permission.AGENT_REQUIRE_FORM
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------|
+| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端设备的卡片使用方服务信息。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。 |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 用于更新的卡片数据。 |
+
+**返回值：**
+
+| 类型                                                                                                                  | 说明                          |
+|--------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| Promise&lt;[formInfo.PublishFormCrossDeviceResult](js-apis-app-form-formInfo-sys.md#publishformcrossdeviceresult)&gt; | Promise对象，返回跨设备发布卡片的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501020 | Remote form service is unavailable. |
+| 16501021 | The peer form application is not installed or the version is too old. |
+| 16501002 | The number of forms exceeds the maximum allowed. |
+| 16501017 | There is no space to publish the form. |
+| 16501018 | This form does not support publishing. |
+| 16501000 | An internal functional error occurred. |
+| 16501008 | Waiting for the form addition to the desktop timed out. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formBindingData, formAgent, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.ohos.exampledemo',
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+let peerServiceInfo: formInfo.PeerFormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0',
+  deviceId: 'deviceId',
+  networkId: 'networkId',
+  serviceId: 'serviceId'
+};
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+};
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
+    console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, formAgent, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.ohos.exampledemo',
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  } as Record<string, RecordData>
+};
+let peerServiceInfo: formInfo.PeerFormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0',
+  deviceId: 'deviceId',
+  networkId: 'networkId',
+  serviceId: 'serviceId'
+};
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+};
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
+    console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error) => {
+    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
 }
 ```

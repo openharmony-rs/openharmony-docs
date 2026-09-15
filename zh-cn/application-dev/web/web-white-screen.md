@@ -33,8 +33,8 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 * 开启相关权限：
     | 名称   | 说明  |                       
     | ----   | -------------------------------- |
-    | [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) | DOM Storage API权限，若不开启，无法使用localStorage存储数据，任何调用localStorage的代码都将失效，依赖本地存储的功能会异常。 |
-    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | ‌若不开启，文件读写功能完全被阻断，依赖文件的模块会崩溃。 | 
+    | [domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess) | 设置是否开启文档对象模型存储接口（DOM Storage API）权限。若不开启，无法使用localStorage存储数据，任何调用localStorage的代码都将失效，依赖本地存储的功能会异常。 |
+    | [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) | 设置是否开启应用中文件系统的访问。‌若不开启，文件读写功能完全被阻断，依赖文件读写的模块会遇到访问被拒绝的错误。 | 
     | [imageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#imageaccess) | 设置是否允许自动加载图片资源。 | 
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
@@ -501,7 +501,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 - 关闭滚动效果：`webSetting({overScrollMode: OverScrollMode.NEVER})`。
 - 此模式下不支持动态调整组件高度，确保页面高度固定。
 - 避免在FIT_CONTENT模式下启用键盘避让属性RESIZE_CONTENT，以免导致布局失效。
-- css样式`height：<number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height：<number> vh`是否是由body节点而内的第一个高度css样式。如以下结构，id为2的dom节点高度将为0，导致白屏。
+- CSS样式`height: <number> vh`和Web组件大小自适应页面布局存在计算冲突，请检查`height: <number> vh`是否是由body节点以内的第一个高度CSS样式。如以下结构，id为2的dom节点高度将为0，导致白屏。
 
   ```html
   <body>
@@ -535,12 +535,14 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 兼容性问题处理不当也会导致页面白屏。
 * 特殊协议拦截。
 * 若H5页面调用tel:、mailto:等协议导致白屏，需通过onInterceptRequest拦截并调用系统拨号能力：
-   ```c
+   ```ts
    .onInterceptRequest((event) => {
-       if (event.request.url.startsWith('tel:')) {
+       if (event.request.getRequestUrl().startsWith('tel:')) {
            // 调用系统拨号能力
-           call.makeCall({ phoneNumber: '123456' });
-           return { responseCode: 404 }; // 阻止默认行为
+           call.makeCall('123456');
+           let response = new WebResourceResponse();
+           response.setResponseCode(404);
+           return response; // 阻止默认行为
        }
        return null;  
    })
@@ -583,7 +585,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 
 **问题：**
 
-用WebView加载H5在Phone上表现正常，但是在Table/PC/2in1上白屏。
+用WebView加载H5在Phone上表现正常，但是在Tablet/PC/2in1上白屏。
 
 **原因：**
 

@@ -1,10 +1,10 @@
 # 自定义Native Sendable对象的多线程操作场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并发实例间高效的通信能力，即引用传递，适用于开发者自定义大对象需要线程间通信的场景，例如子线程读取数据库数据并返回给宿主线程。
 
@@ -49,6 +49,19 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
     add_library(entry SHARED napi_init.cpp)
     target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
     ```
+
+   修改与Index.d.ets同目录下的配置文件oh-package.json5，配置如下：
+
+   <!-- @[define_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5) -->    
+   
+   ``` JSON5
+   {
+     "name": "libentry.so",
+     "types": "./Index.d.ets",
+     "version": "1.0.0",
+     "description": "Please describe the basic information."
+   }
+   ```
 
 3. Native实现各项接口功能，例如取值、设置值或者给Native对象的值加1等功能。
 
@@ -200,7 +213,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
        // 定义一个Sendable class MyObject
        napi_define_sendable_class(env, "MyObject", NAPI_AUTO_LENGTH, New, nullptr,
                                   sizeof(properties) / sizeof(properties[0]), properties, nullptr, &cons);
-   
+       // &g_ref与模块同生命周期
        napi_create_reference(env, cons, 1, &g_ref);
        // 在exports对象上挂载MyObject类
        napi_set_named_property(env, exports, "MyObject", cons);
@@ -233,7 +246,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 4. ArkTS侧在UI主线程中定义Sendable实例对象并传递给TaskPool子线程，子线程处理完数据后返回UI主线程，UI主线程可以继续访问该Sendable实例对象。
 
-   <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Index.ets
@@ -259,8 +272,8 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
            Button(this.message)
              .fontSize($r('app.float.page_text_font_size'))
              .fontWeight(FontWeight.Bold)
-             .onClick( async () => {
-               let object : MyObject = new MyObject(0);
+             .onClick(async () => {
+               let object: MyObject = new MyObject(0);
                object.value = 1023;
                let num = object.plusOne();
                console.info('host thread num1 is ' + num); // 日志输出：host thread num1 is 1024
@@ -277,17 +290,3 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
      }
    }
    ```
-
-5. 修改与Index.d.ets同目录下的配置文件oh-package.json5，配置如下：
-
-   <!-- @[define_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5) -->    
-   
-   ``` JSON5
-   {
-     "name": "libentry.so",
-     "types": "./Index.d.ets",
-     "version": "1.0.0",
-     "description": "Please describe the basic information."
-   }
-   ```
-

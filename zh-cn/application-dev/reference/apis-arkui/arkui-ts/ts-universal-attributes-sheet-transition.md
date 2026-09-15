@@ -24,7 +24,7 @@ ArkTS-Dyn: bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOpt
 
 ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: SheetOptions): this
 
-给组件绑定半模态页面，点击后显示模态页面。
+给组件绑定半模态页面，点击后显示半模态页面。
 
 > **说明：**
 >
@@ -114,7 +114,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | showInSubWindow<sup>19+</sup> | boolean                                  | 否 | 是    | 半模态是否在独立子窗中显示。<br>默认值：false<br>**说明：** <br>1. 若属性值为true，半模态可以在独立子窗口中展示，并且可以超过应用窗口范围。<br>2. 若属性值为false，半模态只能在应用窗口范围内展示。<br>3. 不建议在showInSubWindow为true的弹窗嵌套显示另一个showInSubWindow为true的弹窗，半模态可能会影响其他组件行为。<br>4. 不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog等picker组件，半模态会影响上述组件行为。<br>5. 半模态显示期间该属性不支持动态切换。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 19<br/> **ArkTS-Sta起始版本：** 23 |
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20<br/> **ArkTS-Sta起始版本：** 23 |
-| radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 23<br/> **ArkTS-Sta起始版本：** 23 |
+| radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部和底部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 23<br/> **ArkTS-Sta起始版本：** 23 |
 
 ## SheetSize枚举说明
 
@@ -224,7 +224,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | --------------- |  --------------- |
 | height          | 高度只支持全屏高度。 |
 | detents | 无挡位能力。| 
-| dragBar         | 不支持DragBar。  |
+| dragBar         | 不支持控制条。  |
 | onDetentsDidChange | 无挡位能力。|
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
@@ -263,9 +263,9 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | height          | 高度只支持全屏高度。 |
 | width           | 宽度只支持全屏宽度。 |
 | detents | 无挡位能力。|
-| dragBar         | 不支持拖动条。  |
+| dragBar         | 不支持控制条。  |
 | onDetentsDidChange | 无挡位能力。|
-| showClose          | 不支持显示关闭按钮。 |
+| showClose          | 不支持显示关闭图标。 |
 | title          | 不支持显示标题栏。 |
 | uiContext | 不支持指定显示层级。|
 | mode | 不支持指定显示层级。 |
@@ -283,7 +283,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | maskColor      | 不支持蒙层颜色。  |
 | enableOutsideInteractive | 不支持设置是否允许交互。  |
 | effectEdge     | 不支持边缘回弹效果。  |
-| enableFloatingDragBar | 不支持浮动拖动条。  |
+| enableFloatingDragBar | 不支持悬浮控制条。  |
 | onWillSpringBackWhenDismiss | 无回弹效果。  |
 
 ## SheetDismiss<sup>11+</sup>
@@ -743,7 +743,7 @@ struct bindSheetExample {
             }
           }),
 
-          onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
+          onWillSpringBackWhenDismiss: ((springBackAction: SpringBackAction) => {
           // 没有注册springBack，下拉半模态页面无回弹行为
           // SpringBackAction.springBack();
           }),
@@ -1017,7 +1017,7 @@ struct SheetSideExample {
       TextInput()
         .margin({ top: 5 })
       Text('改变半模态交互模式')
-        .fontSize(22).fontColor(0xFFFFFF).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
+        .fontSize(22).fontColor(Color.White).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
         .width('100%').height(50).backgroundColor('#2ebd82')
       Button("change enableOutsideInteractive = " + this.enableOutsideInteractive)
         .margin({ top: 5 })

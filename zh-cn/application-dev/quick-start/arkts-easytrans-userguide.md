@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## EasyTrans简介
 ArkTS-Sta版本引入了静态类型系统、增强的协程并发能力及声明式UI的语法等特性，同时与ArkTS-Dyn版本存在语法和语义上的差异，这些差异可能导致存量应用或模块在升级后出现不兼容问题。为此，设计并开发了迁移工具EasyTrans，帮助开发者将应用从ArkTS-Dyn版本迁移到ArkTS-Sta版本，提高迁移效率，识别大部分不兼容变更并提供修复建议，同时支持对高频语法变更的自动修复。

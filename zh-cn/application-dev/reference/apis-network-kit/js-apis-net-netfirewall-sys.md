@@ -24,7 +24,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getInterceptedRecords(userId: number, requestParam: RequestParam): Promise\<InterceptedRecordPage\>
 
-按userId获取截获的记录，需要指定分页查询参数。使用Promise异步回调。
+按userId获取拦截记录，需要指定分页查询参数。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -87,7 +87,7 @@ netFirewall.getInterceptedRecords(100, interceptRecordParam).then((result: netFi
 
 | 名称       | 类型   | 只读 |可选| 说明                |
 |------------| -------|------|---|-------------------- |
-| time       | number | 否   |否| 时间戳。            |
+| time       | number | 否   |否| 时间戳。单位：s。            |
 | localIp    | string | 否   |是 |本地IP。            |
 | remoteIp   | string | 否   |是| 远端IP。            |
 | localPort  | number | 否   |是 |本地端口，默认值为0。          |

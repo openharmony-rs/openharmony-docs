@@ -14,9 +14,9 @@ JsGeolocation适用于Web组件中网页主动请求地理位置权限的场景�
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 8开始支持。
+> - 本Class从API version 8开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -24,7 +24,7 @@ JsGeolocation适用于Web组件中网页主动请求地理位置权限的场景�
 
 constructor()
 
-JsGeolocation的构造函数。
+JsGeolocation的构造函数。构造函数本身不直接被应用调用，通常通过[onGeolocationShow事件](./arkts-basic-components-web-events.md#ongeolocationshow)回调获取JsGeolocation实例。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -36,7 +36,7 @@ JsGeolocation的构造函数。
 
 invoke(origin: string, allow: boolean, retain: boolean): void
 
-设置网页地理位置权限状态。
+设置网页地理位置权限状态。该方法需在[onGeolocationShow事件](./arkts-basic-components-web-events.md#ongeolocationshow)回调中调用，用于对发起地理位置权限请求的网页进行授权响应。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -48,6 +48,6 @@ invoke(origin: string, allow: boolean, retain: boolean): void
 
 | 参数名    | 类型    | 必填  | 说明                                     |
 | ------ | ------- | ---- | ---------------------------------------- |
-| origin | string  | 是   | 指定源的字符串。                               |
+| origin | string  | 是   | 发起地理位置权限请求的网页源，用于标识特定网站的地理位置请求来源。<br>origin格式必须遵循RFC 6454中定义的格式。 |
 | allow  | boolean | 是   | 设置的地理位置权限状态。<br>true表示开启地理位置权限，false表示不开启地理位置权限。                             |
-| retain | boolean | 是   | 是否允许将地理位置权限状态保存到系统中。可通过[GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)接口管理保存到系统的地理位置权限。<br>true表示允许将地理位置权限状态保存到系统中，false表示不允许将地理位置权限状态保存到系统中。 |
+| retain | boolean | 是   | 是否允许将地理位置权限状态保存到系统中。可通过[GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)接口管理保存到系统的地理位置权限。<br>true表示保存地理位置权限状态到系统，false表示不保存到系统。 |

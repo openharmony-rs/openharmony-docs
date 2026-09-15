@@ -1,7 +1,7 @@
 # search开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -256,7 +256,7 @@ export default {
   },
   change(e) {
     promptAction.showToast({
-      message: '内容:' + e.text,
+      message: '内容:' + e.value,
       duration: 2000
     })
   }

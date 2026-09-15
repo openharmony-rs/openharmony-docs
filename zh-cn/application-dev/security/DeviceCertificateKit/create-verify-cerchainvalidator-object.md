@@ -89,7 +89,13 @@ function certChainValidatorSample(): void {
   let algorithm = 'PKIX';
 
   // 创建一个证书链校验器实例。
-  let validator = cert.createCertChainValidator(algorithm);
+  let validator: cert.CertChainValidator;
+  try {
+    validator = cert.createCertChainValidator(algorithm);
+  } catch (err) {
+    console.error(`createCertChainValidator failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
 
   // CA证书数据。
   let uint8ArrayOfCaCertData = textEncoder.encodeInto(caCertData);

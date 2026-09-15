@@ -1,8 +1,8 @@
 # 页面生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangdayuan-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 

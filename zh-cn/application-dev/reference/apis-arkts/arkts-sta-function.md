@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供ArkTS-Sta函数对象接口和固定参数个数的函数/Lambda类型。运行时使用这些接口统一表示普通函数、闭包以及可变参数调用。
 

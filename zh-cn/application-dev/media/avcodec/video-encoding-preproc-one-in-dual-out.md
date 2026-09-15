@@ -1,8 +1,8 @@
-# 编码支持一入二出
+# 一入二出视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->

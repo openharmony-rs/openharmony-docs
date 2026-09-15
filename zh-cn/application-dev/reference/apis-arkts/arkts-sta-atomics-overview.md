@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 Atomics用于解决多线程并发编程中的竞态条件问题，确保对共享数据的并发操作安全。
 

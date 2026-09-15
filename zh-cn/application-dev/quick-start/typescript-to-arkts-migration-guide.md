@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运行时开销的特性。本文罗列了ArkTS中限制的TS特性，并提供重构代码的建议。ArkTS保留了TS大部分语法特性，未在本文中约束的TS特性，ArkTS完全支持。例如，ArkTS支持自定义装饰器，语法与TS一致。按本文约束进行代码重构后，代码仍为合法有效的TS代码。
 
@@ -194,7 +194,7 @@ class U {
 let u: U = new T(); // 是否允许？
 ```
 
-类型为`T`的值是否能传递给接受类型为`U`的参数的函数。
+类型为`T`的值是否能传递给接收类型为`U`的参数的函数。
 
 <!-- @[struct_typing_caseThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/Sample.ts) -->
 
@@ -672,9 +672,9 @@ let tmp = one;
 one = two;
 two = tmp;
 
-let data: Number[] = [1, 2, 3, 4];
+let data: number[] = [1, 2, 3, 4];
 let head = data[0];
-let tail: Number[] = [];
+let tail: number[] = [];
 for (let i = 1; i < data.length; ++i) {
   tail.push(data[i]);
 }
@@ -1009,7 +1009,7 @@ drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
 <!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->
 
 ``` TypeScript
-function drawText(text: String, location: number[], bold: boolean) {
+function drawText(text: string, location: number[], bold: boolean) {
   let x = location[0];
   let y = location[1];
   text;
@@ -2235,7 +2235,7 @@ class Label {
 
 // 'Label'类型
 let z: Label = {
-  public text: 'hello',
+  text: 'hello'
 }
 ```
 
@@ -2617,7 +2617,7 @@ ArkTS不支持通用模块定义（UMD）。因为在ArkTS中没有“脚本”�
 
 ```typescript
 // math-lib.d.ts
-export const isPrime(x: number): boolean
+export function isPrime(x: number): boolean
 export as namespace mathLib
 
 // 脚本中
@@ -2629,7 +2629,7 @@ mathLib.isPrime(2)
 ```typescript
 // math-lib.d.ts
 namespace mathLib {
-  export isPrime(x: number): boolean
+  export function isPrime(x: number): boolean
 }
 
 // 程序中
@@ -2863,7 +2863,7 @@ function fn(i: I) {
 
 **级别：错误**
 
-**错误码：106050102**
+**错误码：10605102**
 
 在TypeScript中，如果一个接口继承了两个具有相同方法的接口，则必须使用联合类型声明该方法的返回值类型。在ArkTS中，由于接口不能包含两个无法区分的方法（如参数列表相同但返回类型不同），因此不能继承具有相同方法的两个接口。
 

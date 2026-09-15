@@ -4,7 +4,7 @@
 <!--Owner: @NingQiCheng-->
 <!--Designer: @wanzixuan330-->
 <!--Tester: @haoyabo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 在应用开发中，开发者会将静态ArkTS源码编译为方舟字节码文件（\*.abc），再打包为HAP进行分发。方舟字节码具备平台无关、分发灵活的优势，但应用运行时仍需通过解释执行或AOT（Ahead Of Time）预先编译等方式转换为目标设备可执行的机器码。对于冷启动、首次进入核心页面等关键路径，若热点代码只能在运行时解释执行，可能带来额外性能开销，影响用户体验。
 

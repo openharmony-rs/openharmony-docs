@@ -1,9 +1,9 @@
 # Core File Kit简介
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 Core File Kit（文件基础服务）为开发者提供一套访问和管理应用文件和用户文件的能力。帮助用户更高效地管理、查找和备份各类文件，使用户能够轻松应对各种文件管理的需求。
@@ -30,6 +30,14 @@ Core File Kit（文件基础服务）为开发者提供一套访问和管理应�
 
 ![File classification model](figures/file-classification-model.png)
 
+在Core File Kit套件中提供高性能的[压缩解压缩能力](archive-overview.md)，按照使用场景的不同分为以下类型：
+
+- 文件归档类压缩：支持文件和目录级别的归档压缩和解压。
+
+- 流式压缩：支持流式数据压缩和解压。
+
+- 缓冲区压缩：支持缓冲区数据压缩和解压。
+
 ## Kit使用场景
 
 Core File Kit常见的使用场景：
@@ -37,6 +45,7 @@ Core File Kit常见的使用场景：
 - 应用文件访问和文件分享。
 - 应用数据备份恢复。
 - 选择与保存用户文件。
+- 文件压缩解压缩。
 - 跨设备的文件访问和分享能力。
 
 ## 能力范围
@@ -50,6 +59,7 @@ Core File Kit常见的使用场景：
 <!--DelEnd-->
 - 提供[用户文件访问框架](#用户文件访问框架)，用于开发者访问和管理用户文件。例如选择与保存用户文件<!--Del-->和开发用户文件管理器（仅对系统应用开放）<!--DelEnd-->。
 - 支持跨设备的文件访问和拷贝能力。
+- 支持文件和目录的归档压缩和解压，支持流式和缓冲区数据的压缩和解压。
 <!--RP3--><!--RP3End-->
 
 ## 亮点/特征
