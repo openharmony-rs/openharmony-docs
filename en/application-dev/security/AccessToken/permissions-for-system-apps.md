@@ -9288,3 +9288,17 @@ Allows a system application to manage SoftBus resources.
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
 **Valid since**: 26.1.0
+
+## ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
+
+Allows an application to install freely distributable applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1
+
+**Valid since**: 26.1.0
