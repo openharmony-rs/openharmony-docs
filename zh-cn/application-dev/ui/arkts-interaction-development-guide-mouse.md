@@ -512,7 +512,9 @@ struct MouseWheel {
 ![easy_go](figures/easy_go.png)
 
 #### 生效设备类型配置
-easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置鼠标事件转换生效的设备类型；第二层配置对应设备类型下[鼠标左键或轴事件转触摸配置](#鼠标左键或轴事件转触摸配置)和[鼠标右键转长按配置](#鼠标右键转长按)
+easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置鼠标事件转换生效的设备类型；第二层配置对应设备类型下[鼠标左键或轴事件转触摸](#鼠标左键或轴事件转触摸配置)和[鼠标右键转长按](#鼠标右键转长按)
+
+**1. 配置示例**
 
 ``` json
 { 
@@ -532,19 +534,25 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 #### 鼠标左键或轴事件转触摸配置
 
-**1. 说明**
+通过配置easy_go.json第二层multiModalInputOptions字段，可以将对应设备类型下的鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上点击和触摸的效果。
 
-默认将鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上的操作体验。
+**1. 配置示例**
 
-**2. 增加事件转换配置**
+在PC/2in1设备上，配置鼠标事件全部都转换成触摸事件，示例如下：
 
-在easy_go.json配置文件中，配置鼠标左键或轴事件转触摸的相关属性。
+``` json
+{
+  "2in1": {
+    "multiModalInputOptions": {
+      "mouse2TouchEventMode": "all"
+    }
+  }
+}
+```
 
+**2. 配置字段说明**
 
-
-**2. 多模态输入选项**
-
-第二层配置multiModalInputOptions字段，设置事件输入选项。内部字段说明如下：
+第一层的2in1表示在2in1类型的设备上鼠标左键或轴事件可转换成触摸事件。第二层的multiModalInputOptions字段，用来设置事件输入选项。内部字段说明如下：
 
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
@@ -558,66 +566,29 @@ mouse2TouchEventMode可配置字段说明：
 | xcomponentAndWebOnly | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
 | disabled             | 表示鼠标事件全部都不转换成触摸事件。                    |
 
-**3. 配置示例**
 
-在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下：
+
+#### 鼠标右键转长按配置
+
+通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
+
+**1. 配置示例**
+
+在PC/2in1设备上，配置所有ArkUI组件的鼠标右键事件转换成长按事件，示例如下：
 
 ``` json
 {
-  "common": {},
   "2in1": {
-    "multiModalInputOptions": {
-      "mouse2TouchEventMode": "disabled"
+    "contextMenuOptions": {
+      "rightMouse2LongPress": true,
+      "needTransferComponent": ["All"]
     }
   }
 }
 ```
+**2. 配置字段说明**
 
-### 鼠标右键转长按
-
-#### 说明
-
-默认将鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上的操作体验。
-
-#### 开发步骤
-
-**1. 增加配置文件**
-
-在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
-
-![easy_go](figures/easy_go.png)
-
-**2. 增加事件转换配置**
-
-在easy_go.json配置文件中，配置鼠标右键转长按的相关属性。
-
-#### 配置内容说明
-
-easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置设备类型；第二层配置对应设备类型下的鼠标右键转长按模式。
-
-**1. 设备类型**
-
-第一层配置，设置鼠标事件转换在不同设备类型下的表现。鼠标右键转长按只支持在2in1和tablet配置，common和phone不支持。若在common或phone中配置contextMenuOptions，编译阶段会报错。
-
-``` json
-{ 
-  "common": {},
-  "phone": {},
-  "2in1": {},
-  "tablet": {}
-}
-```
-
-| 枚举值 | 说明                                                         | 可选 |
-| ------ | ------------------------------------------------------------ | ---- |
-| common |右键转换只支持在2in1和tablet配置，不能在common配置。  | 否   |
-| phone  | 右键转换只支持在2in1和tablet配置，不能在phone配置。        | 否   |
-| 2in1   | PC/2in1类型设备上生效的配置。                                                | 是   |
-| tablet | Tablet类型设备上生效的配置。                                                   | 是   |
-
-**2. 鼠标右键转长按输入选项**
-
-第二层配置contextMenuOptions字段，设置右键事件转换输入选项，包括是否启用右键转长按策略以及指定生效的组件列表。内部字段说明如下：
+第一层的2in1表示在2in1类型的设备上鼠标右键可转换成长按事件。第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。因为只有2in1设备和tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说明如下：
 
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
@@ -636,29 +607,4 @@ needTransferComponent数组中可选枚举类型说明：
 | XComponent        | 自绘制组件     |
 | Image             | 图片           |
 | RelativeContainer | 相对布局容器   |
-| All               | 所有ArkUI组件  |
-
-needTransferComponent字段额外说明：
-| 规则               | 说明                                                         |
-| ------------------ | ------------------------------------------------------------ |
-| 全部生效           | 设置 `"needTransferComponent": ["All"]` 表示所有 ArkUI 组件均生效 |
-| 大小写敏感         | 组件名称区分大小写，必须严格按照上述列表填写                 |
-| 不允许重复         | 组件列表中不允许出现重复的组件名                             |
-| All 与其他组件共存 | 当列表中同时包含具体组件名和 "All" 时，具体组件名将被忽略，等价于仅配置 "All"。建议仅使用 "All" 以简化配置。  |
-| 合法值             | 列表中的值只能是上述 9 种组件名 + "All"（共 10 种），填写其他值会报错  |
-
-
-**3. 配置示例**
-
-在PC/2in1设备上，配置所有ArkUI组件的鼠标右键事件转换成长按事件，示例如下：
-
-``` json
-{
-  "2in1": {
-    "contextMenuOptions": {
-      "rightMouse2LongPress": true,
-      "needTransferComponent": ["All"]
-    }
-  }
-}
-```
+| All               | 表示所有 ArkUI 组件均生效。当列表中同时包含具体组件名和 "All" 时，等价于仅配置 "All"，建议仅使用 "All" 以简化配置。  |
