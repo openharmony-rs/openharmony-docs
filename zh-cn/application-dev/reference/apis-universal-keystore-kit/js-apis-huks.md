@@ -2494,7 +2494,7 @@ huks.hasKeyItem(keyAlias, emptyOptions).then((data) => {
   if (data) {
     console.info(`keyAlias:${keyAlias} is existed!`);
   } else {
-    console.info(`find key failed!`);
+    console.error(`find key failed!`);
   }
 });
 ```
