@@ -25,6 +25,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 系统事件类型枚举。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **ArkTS-Dyn起始版本：** 9
@@ -41,6 +43,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ## SysEventInfo
 
 系统事件信息对象接口。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -60,7 +64,9 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用callback方式作为异步回调。适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。使用callback方式作为异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -153,7 +159,9 @@ try {
 
 write(info: SysEventInfo): Promise&lt;void&gt;
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用promise方式作为异步回调。适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。使用promise方式作为异步回调。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -267,6 +275,8 @@ try {
 
 匹配规则类型枚举。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **ArkTS-Dyn起始版本：** 9
@@ -282,6 +292,8 @@ try {
 ## WatchRule
 
 系统事件订阅规则对象接口。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -299,6 +311,8 @@ try {
 ## Watcher
 
 系统事件订阅者对象接口。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -319,6 +333,8 @@ addWatcher(watcher: Watcher): void
 订阅系统事件，接收[Watcher](#watcher)类型的对象作为事件参数。适用于需要实时监控系统事件的场景。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -381,6 +397,8 @@ removeWatcher(watcher: Watcher): void
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **ArkTS-Dyn起始版本：** 9
@@ -438,6 +456,8 @@ try {
 
 系统事件查询参数对象接口。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -452,6 +472,8 @@ try {
 
 系统事件查询规则对象接口。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -463,6 +485,8 @@ try {
 ## Querier
 
 系统事件查询者对象接口。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -482,6 +506,8 @@ query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 查询系统事件。支持按时间范围、事件领域、事件名称等多种查询条件进行匹配查询，查询结果通过回调函数异步返回。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -618,6 +644,8 @@ ArkTS-Sta: exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): long
 批量导出系统事件，以文件格式写入应用沙箱固定目录(/data/storage/el2/base/cache/hiview/event/)。调用成功后，返回接口调用时间戳，可用于定位导出的事件文件。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -771,6 +799,8 @@ ArkTS-Sta: subscribe(rules: QueryRule[]): long
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
+**系统接口**：此接口为系统接口。
+
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
 **ArkTS-Dyn起始版本：** 10
@@ -910,6 +940,8 @@ unsubscribe(): void
 取消订阅所有的实时系统事件。取消订阅成功后，将不再接收实时事件。适用于当不再需要订阅实时事件时调用的场景，能够释放订阅资源，减少资源占用。
 
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
+
+**系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
