@@ -224,6 +224,7 @@ getFontScope(url: string): Promise&lt;FontScope&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 31100110 | Call failed due to system error. |
 | 31100112 | The scope font is not found. |
 
 **示例：**
@@ -272,6 +273,7 @@ onFontObserver(observer: FontClientObserver): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 31100110 | Call failed due to system error. |
 | 31100113 | The font observer is already registered. |
 | 31100114 | The maximum number of font observers has been reached. |
 
@@ -315,6 +317,7 @@ offFontObserver(): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 31100110 | Call failed due to system error. |
 | 31100115 | The font observer is not registered. |
 
 **示例：**
