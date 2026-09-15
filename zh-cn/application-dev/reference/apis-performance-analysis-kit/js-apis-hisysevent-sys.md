@@ -207,7 +207,7 @@ try {
 
 系统事件订阅规则对象接口。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -370,7 +370,7 @@ try {
 
 系统事件查询规则对象接口。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
