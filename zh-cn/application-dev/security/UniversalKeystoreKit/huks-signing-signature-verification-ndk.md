@@ -814,7 +814,7 @@ static OH_Huks_Result GenerateKey(const struct OH_Huks_Blob *keyAlias, const str
     return OH_Huks_GenerateKeyItem(keyAlias, genParamSet, nullptr);
 }
 
-/* 2. 验签 */
+/* 2. 签名 */
 static OH_Huks_Result SignData(const struct OH_Huks_Blob *keyAlias,
                                const struct OH_Huks_ParamSet *signParamSet,
                                const struct OH_Huks_Blob *inData,

@@ -220,7 +220,7 @@ napi_value TestAesCbc(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "AES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
@@ -855,7 +855,7 @@ napi_value TestRsaEcbPkcs(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "RSA_ECB_OAEP_IN";
+        char tmpInData[] = "RSA_ECB_PKCS1_IN";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[RSA_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {RSA_COMMON_SIZE, cipher};
@@ -1165,7 +1165,7 @@ napi_value TestSm2(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "SM2_INDATA_1";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[SM2_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {SM2_SIZE, cipher};
@@ -1355,7 +1355,7 @@ napi_value TestDesCbc(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_DES_INDATA_1";
+        char tmpInData[] = "DES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[DES_CBC_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {DES_CBC_SIZE, cipher};

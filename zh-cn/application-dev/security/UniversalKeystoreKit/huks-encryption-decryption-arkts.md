@@ -1104,7 +1104,7 @@ async function deleteKey() {
    * 1. 调用deleteKeyItem删除密钥
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: BusinessError) => {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
