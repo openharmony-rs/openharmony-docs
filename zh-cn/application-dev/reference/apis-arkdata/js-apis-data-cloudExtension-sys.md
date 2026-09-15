@@ -65,6 +65,8 @@ import { cloudExtension } from '@kit.ArkData';
 
 ## CloudAssets
 
+type CloudAssets = Array\<CloudAsset>
+
 表示[CloudAsset](#cloudasset)类型的数组。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
