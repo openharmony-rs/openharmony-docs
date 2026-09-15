@@ -434,32 +434,9 @@ Buffer模式下，视频帧通过`OH_VideoEncoder_PushInputBuffer`送入编码�
 
    <!-- @[roi_buffer_input_callback_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
 
-   ``` C++
-   void CodecCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
-   {
-       if (userData == nullptr) {
-           return;
-       }
-       CodecUserData *codecUserData = static_cast<CodecUserData *>(userData);
-       // Buffer模式：从RoiQueue取ROI字符串，设置到输入Buffer参数。
-       if (codecUserData->roiPathType == ROI_PATH_BUFFER_MODE && codecUserData->roiQueue != nullptr) {
-           std::string roiStr = codecUserData->roiQueue->Pop();
-           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-           if (format != nullptr) {
-               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiStr.c_str());
-               OH_AVBuffer_SetParameter(buffer, format);
-               OH_AVFormat_Destroy(format);
-           }
-       }
-       std::unique_lock<std::mutex> lock(codecUserData->inputMutex);
-       codecUserData->inputBufferInfoQueue.emplace(index, buffer);
-       codecUserData->inputCond.notify_all();
-   }
-   ```
 
    > **说明：**
    >
    > - ROI配置完成后，还需向输入Buffer填充帧像素数据并通过`OH_VideoEncoder_PushInputBuffer`送入编码器，此处不展开，具体参考异步模式视频编码中[Buffer模式](video-encoding.md#buffer模式)相关说明。
    > - `OH_AVBuffer_GetParameter`返回的是参数副本，必须调用`OH_AVBuffer_SetParameter`写回才能使ROI配置生效，使用后需调用`OH_AVFormat_Destroy`释放。
    > - RoiQueue的PTS同步机制与关闭ROI时的清空处理同[Surface模式：编码输入参数回调](#surface模式编码输入参数回调)的相关说明。
-
