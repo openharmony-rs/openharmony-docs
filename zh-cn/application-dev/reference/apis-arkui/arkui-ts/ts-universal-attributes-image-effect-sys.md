@@ -45,13 +45,11 @@ advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
 标识如何将指定的混合模式应用于视图的内容。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 值   | 说明                                                             |
 | ---------------| ------ | ---------------------------------------------------------------- |
-| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |创建离屏画布时，先拷贝一份背景初始化画布，再将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 <br> **系统接口：** 此接口为系统接口。<br>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。|
+| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |创建离屏画布时，先拷贝一份背景初始化画布，再将此组件和子组件内容绘制到离屏画布上，然后整体进行混合。 <br> **系统接口：** 此接口为系统接口。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。|
 
 ## excludeFromRenderGroup<sup>22+</sup>
 

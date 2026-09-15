@@ -191,7 +191,7 @@ ArkTS-Sta: getRedValue(): double
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的R分量（红色）。<br>取值范围：<br>对于SDR颜色，取值范围为[0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
+| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的R分量（红色）。<br>取值范围：<br>对于SDR颜色，取值范围为[0.0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
 
 ### getGreenValue
 
@@ -215,7 +215,7 @@ ArkTS-Sta: getGreenValue(): double
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的G分量（绿色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
+| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的G分量（绿色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0.0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
 
 ### getBlueValue
 
@@ -239,4 +239,4 @@ ArkTS-Sta: getBlueValue(): double
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的B分量（蓝色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |
+| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的B分量（蓝色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0.0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |
