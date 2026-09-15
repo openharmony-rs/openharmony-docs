@@ -2899,7 +2899,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -2909,7 +2909,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -2978,7 +2978,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -2988,7 +2988,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
@@ -3171,7 +3171,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let entries: distributedKVStore.Entry[] = [];
   let keys: string[] = [];
-  for (let i = 0; i < 5; i++) {
+  Array.from({ length: 5 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3182,7 +3182,7 @@ try {
     }
     entries.push(entry);
     keys.push(key + i);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -3250,7 +3250,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let entries: distributedKVStore.Entry[] = [];
   let keys: string[] = [];
-  for (let i = 0; i < 5; i++) {
+  Array.from({ length: 5 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3261,7 +3261,7 @@ try {
     }
     entries.push(entry);
     keys.push(key + i);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
@@ -3559,7 +3559,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3569,7 +3569,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -3633,7 +3633,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3643,7 +3643,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
@@ -3697,7 +3697,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let arr = new Uint8Array([21, 31]);
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_bool_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3707,7 +3707,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -3773,7 +3773,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let arr = new Uint8Array([21, 31]);
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_bool_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3783,7 +3783,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
@@ -3841,7 +3841,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3851,7 +3851,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -3923,7 +3923,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -3933,7 +3933,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore!.putBatch(entries).then(() => {
     console.info('Succeeded in putting batch');
     kvStore!.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
@@ -3992,7 +3992,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -4002,7 +4002,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -4065,7 +4065,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -4075,7 +4075,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
     kvStore!.putBatch(entries).then(() => {
     console.info('Succeeded in putting batch');
     const query = new distributedKVStore.Query();
@@ -4236,7 +4236,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -4246,7 +4246,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -4309,7 +4309,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -4319,7 +4319,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
@@ -4792,7 +4792,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function putBatchString(len: number, prefix: string) {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < len; i++) {
+  Array.from({ length: len }).forEach((_, i) => {
     let entry: distributedKVStore.Entry = {
       key: prefix + i,
       value: {
@@ -4801,7 +4801,7 @@ function putBatchString(len: number, prefix: string) {
       }
     }
     entries.push(entry);
-  }
+  });
   return entries;
 } // 自定义函数，放置在作用域最外侧，防止语法检查报错
 
@@ -5370,9 +5370,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {
@@ -5456,9 +5456,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {
@@ -6102,7 +6102,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6112,7 +6112,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -6175,7 +6175,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6185,7 +6185,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
@@ -6243,7 +6243,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6253,7 +6253,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries : ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -6322,7 +6322,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6332,7 +6332,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
@@ -6389,7 +6389,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let arr = new Uint8Array([21, 31]);
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_bool_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6399,7 +6399,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, (err: BusinessError) => {
     if (err) {
@@ -6465,7 +6465,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let arr = new Uint8Array([21, 31]);
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_bool_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6475,7 +6475,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting Batch');
@@ -6536,7 +6536,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let arr = new Uint8Array([21, 31]);
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_bool_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6546,7 +6546,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
@@ -6620,7 +6620,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let arr = new Uint8Array([21, 31]);
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_bool_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6630,7 +6630,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   console.info(`entries: ${entries}`);
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
@@ -6688,7 +6688,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6698,7 +6698,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -6770,7 +6770,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6780,7 +6780,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
     kvStore.getResultSet('batch_test_string_key').then((result: distributedKVStore.KVStoreResultSet) => {
@@ -6968,7 +6968,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -6978,7 +6978,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -7058,7 +7058,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7068,7 +7068,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
@@ -7139,7 +7139,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7149,7 +7149,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
@@ -7204,7 +7204,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7214,7 +7214,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, async (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -7282,7 +7282,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7292,7 +7292,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -7355,7 +7355,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7365,7 +7365,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
@@ -7422,7 +7422,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7432,7 +7432,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
@@ -7500,7 +7500,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let entries: distributedKVStore.Entry[] = [];
-  for (let i = 0; i < 10; i++) {
+  Array.from({ length: 10 }).forEach((_, i) => {
     let key = 'batch_test_string_key';
     let entry: distributedKVStore.Entry = {
       key: key + i,
@@ -7510,7 +7510,7 @@ try {
       }
     }
     entries.push(entry);
-  }
+  });
   kvStore.putBatch(entries).then(async () => {
     console.info('Succeeded in putting batch');
   }).catch((err: BusinessError) => {
