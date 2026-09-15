@@ -5728,6 +5728,20 @@ Allows an agent application to stop specific applications using CLI commands.
 
 **Since**: 26.0.0
 
+## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
+
+Allows an application to switch the list of displayable applications on multi‑mode devices.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: tablets | PCs/2-in-1 devices
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.CAMERA_SHARED
 
 Allows a system application to access the camera together with other applications.

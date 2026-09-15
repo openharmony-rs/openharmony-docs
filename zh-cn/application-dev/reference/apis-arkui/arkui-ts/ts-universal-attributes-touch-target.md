@@ -39,7 +39,7 @@ ArkTS-Sta: responseRegion(value: Array&lt;Rectangle&gt; | Rectangle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明)<br/> ArkTS-Sta: Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) \| undefined | 是   | 触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>}<br/> |
+| value  | ArkTS-Dyn: Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明)<br/> ArkTS-Sta: Array&lt;[Rectangle](#rectangle对象说明)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle对象说明) \| undefined | 是   | 触摸热区，包括位置和大小。<br/>默认触摸热区为整个组件，默认值：<br/>{<br/>x：0,<br/>y：0,<br/>width：'100%',<br/>height：'100%'<br/>}<br/>异常值：参数为undefined或null时，按默认值处理。 |
 
 **返回值：**
 
@@ -101,7 +101,7 @@ ArkTS-Sta: responseRegionList(regions: Array&lt;ResponseRegion&gt; | undefined):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| regions  | ArkTS-Dyn: Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp;<br/>ArkTS-Sta: Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp;\| undefined | 是   | 组件的触摸热区数组。<br/>每个触摸热区均包括输入工具类型、位置和大小。<br/>默认值：<br/>[{<br/>tool：ResponseRegionSupportedTool.ALL,<br/>x：LengthMetrics.vp(0),<br/>y：LengthMetrics.vp(0),<br/>width：LengthMetrics.percent(1),<br/>height：LengthMetrics.percent(1)<br/>}] |
+| regions  | ArkTS-Dyn: Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp;<br/>ArkTS-Sta: Array&lt;[ResponseRegion](#responseregion22对象说明)&gt;&nbsp;\| undefined | 是   | 组件的触摸热区数组。<br/>每个触摸热区均包括输入工具类型、位置和大小。<br/>默认值：<br/>[{<br/>tool：ResponseRegionSupportedTool.ALL,<br/>x：LengthMetrics.vp(0),<br/>y：LengthMetrics.vp(0),<br/>width：LengthMetrics.percent(1),<br/>height：LengthMetrics.percent(1)<br/>}]<br>异常值：参数为undefined或null时，按默认值处理。 |
 
 **返回值：**
 

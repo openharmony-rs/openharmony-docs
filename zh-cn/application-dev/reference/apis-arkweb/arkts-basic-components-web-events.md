@@ -2093,7 +2093,13 @@ ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebRes
 
 ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse | null> | undefined)
 
-当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
+当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。
+
+> **说明：**
+>
+> - 使用`onInterceptRequest`返回自定义响应时，必须通过[setResponseMimeType](./arkts-basic-components-web-WebResourceResponse.md#setresponsemimetype9)设置MIME类型。如果不希望设置MIME类型，可使用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)代替。
+>
+> - `onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

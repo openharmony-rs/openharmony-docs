@@ -1,4 +1,4 @@
-# \@Require装饰器：校验构造传参
+# @Require装饰器：校验构造传参
 
 \@Require是校验[\@Prop](../../../ui/state-management/arkts-prop.md)、[\@State](../../../ui/state-management/arkts-state.md)、[\@Provide](../../../ui/state-management/arkts-provide-and-consume.md)、[\@BuilderParam](../../../ui/state-management/arkts-builderparam.md)、[\@Param](../../../ui/state-management/arkts-new-param.md)和普通变量(无状态装饰器修饰的变量)是否需要构造传参的一个装饰器。开发指南见[\@Require装饰器：校验构造传参](../../../ui/state-management/arkts-require.md)。
 

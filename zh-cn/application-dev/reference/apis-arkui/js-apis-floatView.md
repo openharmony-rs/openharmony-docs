@@ -105,7 +105,8 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   private floatViewController: floatView.FloatViewController | undefined = undefined;
-  aboutToAppear(): void {
+
+  createFloatView(): void {
     // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
     let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let config: floatView.FloatViewConfiguration = {
@@ -121,6 +122,14 @@ struct Index {
       });
     } catch(e) {
       console.error(`Failed to create float view controller. Cause:${e.code}, message:${e.message}`);
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      Button('create fv').onClick(() => {
+        this.createFloatView();
+      })
     }
   }
 }

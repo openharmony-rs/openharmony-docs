@@ -190,15 +190,15 @@ Not the preconfigured default input method.
 
 **错误描述**
 
-调用者应用不是系统配置的默认输入法。
+调用者应用不是系统配置的默认输入法，也不是提供系统级输入能力的输入法应用。
 
 **可能原因**
 
-其他应用调用了仅支持系统配置的默认输入法应用调用的接口。
+其他应用调用了仅支持系统配置的默认输入法应用、或提供系统级输入能力的输入法应用调用的接口。
 
 **处理步骤**
 
-开发者可以通过接口[getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11)查询系统配置默认输入法，判断当前应用是否为默认输入法，若不是，则不支持调用此接口。
+开发者可以通过接口[getDefaultInputMethod](js-apis-inputmethod.md#inputmethodgetdefaultinputmethod11)查询系统配置默认输入法，判断当前应用是否为默认输入法；若不是，再判断当前应用是否提供系统级输入能力，若两者均不满足，则不支持调用此接口。
 
 ## 12800011 当前输入框不支持预上屏
 
