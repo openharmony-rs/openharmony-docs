@@ -194,7 +194,7 @@ struct BuilderDemo {
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
-- 按引用传递时，在@Builder函数中不能修改参数的属性，但使用`UIUtils.makeBinding`并传入写回调时，我们可以在@Builder函数内修改属性，并同步到调用@Builder的组件中。
+- 按引用传递时，在@Builder函数中不能修改参数的属性，但使用`UIUtils.makeBinding`并传入写回调时，开发者可以在@Builder函数内修改属性，并同步到调用@Builder的组件中。
 
 ### 按回调传递参数
 
