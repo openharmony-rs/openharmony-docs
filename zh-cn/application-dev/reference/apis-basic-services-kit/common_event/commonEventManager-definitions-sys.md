@@ -20,17 +20,17 @@
 ## Ability Kit
 
 ### COMMON_EVENT_BOOT_COMPLETED
- 
+
 表示用户已完成引导并加载系统。
- 
+
 在设备上指定用户已完成引导并加载系统，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
- 
+
 **系统接口：** 此接口为系统接口。
- 
+
 **系统能力：** SystemCapability.Notification.CommonEvent
- 
+
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
- 
+
 **取值：** "usual.event.BOOT_COMPLETED"
 
 
@@ -110,30 +110,30 @@
 
 
 ### COMMON_EVENT_KIOSK_MODE_ON<sup>20+</sup>
- 
+
 进入Kiosk模式时，事件通知服务将触发并发布系统公共事件。此事件仅由系统发送。
- 
+
 **系统接口：** 此接口为系统接口。
- 
+
 **系统能力：** SystemCapability.Notification.CommonEvent
- 
+
 **订阅者所需权限：** 无
- 
+
 **取值：** "usual.event.KIOSK_MODE_ON"
- 
- 
+
+
 ### COMMON_EVENT_KIOSK_MODE_OFF<sup>20+</sup>
- 
+
 退出Kiosk模式时，事件通知服务将触发并发布系统公共事件。
- 
+
 **系统接口：** 此接口为系统接口。
- 
+
 **系统能力：** SystemCapability.Notification.CommonEvent
- 
+
 **订阅者所需权限：** 无
- 
+
 **取值：** "usual.event.KIOSK_MODE_OFF"
- 
+
 
 ### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
 
