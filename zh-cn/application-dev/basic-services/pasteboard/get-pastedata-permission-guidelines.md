@@ -158,6 +158,7 @@ struct Index {
               // 授权成功。
             } catch (err) {
               hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user.');
+              return;
             }
             // 用户授权，使用get操作读取剪贴板内容。
             // [StartExclude pasteboard_permission]
@@ -174,28 +175,18 @@ struct Index {
             } catch (err) {
               hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to clear the pasteboard. Cause: ${err.message}`);
             }
-            let needFlush: boolean = false;
-            let currentChangeCount: number = 0;
             try {
               // 获取当前 ChangeCount
-              currentChangeCount = systemPasteboard.getChangeCount();
+              let currentChangeCount: number = systemPasteboard.getChangeCount();
               hilog.info(0xFF00, '[Sample_pasteboard]', `Current ChangeCount: ${currentChangeCount}`);
               // 更新 Preferences 中的 ChangeCount
               if (dataPreferences) {
                 dataPreferences.putSync('pasteboardChangeCount', currentChangeCount);
-                needFlush = true;
+                dataPreferences.flushSync(); // 确保数据写入持久化存储
+                hilog.info(0xFF00, '[Sample_pasteboard]', `ChangeCount has been updated to: ${currentChangeCount}`);
               }
             } catch (err) {
               hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to update ChangeCount. Cause: ${err.message}`);
-            } finally {
-              if (needFlush && dataPreferences) {
-                try {
-                  dataPreferences.flushSync(); // 确保数据写入持久化存储
-                  hilog.info(0xFF00, '[Sample_pasteboard]', `ChangeCount has been updated to: ${currentChangeCount}`);
-                } catch (err) {
-                  hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to flush ChangeCount. Cause: ${err.message}`);
-                }
-              }
             }
           })
         // ...
