@@ -45953,5 +45953,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/network/native-websocket-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":153,
+						"name":"websocket_build_project",
+						"start_line":16
+					},
+					{
+						"end_line":168,
+						"name":"websocket_extern_c",
+						"start_line":155
+					},
+					{
+						"end_line":182,
+						"name":"websocket_napi_module",
+						"start_line":170
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"websocket_defining_function_types",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/WebSocket_C/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":147,
+						"name":"WebSocket_C_full_example",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
