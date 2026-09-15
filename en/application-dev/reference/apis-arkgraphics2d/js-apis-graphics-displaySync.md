@@ -24,6 +24,8 @@ create(): DisplaySync
 
 Creates a **DisplaySync** object, through which you can set the frame rate of the custom UI content.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -40,6 +42,8 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 ## IntervalInfo
 
 You can obtain the timestamp information from the event callback, including the timestamp when the current frame arrives and the timestamp when the next frame is expected to arrive.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,6 +63,8 @@ You can obtain the timestamp information from the event callback, including the 
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange) : void
 
 Sets the expected frame rate range.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,6 +101,8 @@ on(type: 'frame', callback: Callback\<IntervalInfo\>): void
 
 Subscribes to change events of each frame.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -121,6 +129,8 @@ backDisplaySync?.on("frame", callback)
 off(type: 'frame', callback\?: Callback\<IntervalInfo\>): void
 
 Unsubscribes from change events of each frame.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,6 +160,8 @@ backDisplaySync?.off("frame", callback)
 start(): void
 
 Starts callback for each frame.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,6 +226,8 @@ stop(): void
 
 Stops callback for each frame.
 
+
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
