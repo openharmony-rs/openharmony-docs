@@ -35,7 +35,7 @@ import { curves } from '@kit.ArkUI';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | progressThreshold | number | 否 | 是 | 动画进度阈值。设置动画加速播放的起始点，动画进度超过该阈值时开始加速播放。responseDecayFactor小于1时，progressThreshold的值越小动画越早开始加速播放。<br/>取值范围：[0, 1]，小于0时取值为0，大于1时取值为1。<br/>默认值：1 |
-| responseDecayFactor | number | 否 | 是 | 自然振动周期衰减因子。动画播放进度超过动画进度阈值后，每帧的response将乘以该衰减系数，达到动画加速的效果。progressThreshold小于1时，responseDecayFactor的值越小动画越早结束。<br/>取值范围：[0, 1]，小于0时取值为0，大于1时取值为1。<br/>默认值：1 |
+| responseDecayFactor | number | 否 | 是 | 自然振动周期衰减因子。动画播放进度超过动画进度阈值后，每帧的response将乘以该衰减系数，达到动画加速的效果。progressThreshold小于1时，responseDecayFactor的值越小动画越早结束。<br/>取值范围：(0, 1]，小于等于0时取值为1e-8，大于1时取值为1。<br/>默认值：1 |
 
 
 ## curves.trailOptimizedSpringMotion
