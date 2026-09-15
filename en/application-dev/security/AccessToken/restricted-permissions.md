@@ -1460,7 +1460,7 @@ With this permission, the application can utilize the APIs provided by the game 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.0.0
 
