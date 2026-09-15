@@ -133,7 +133,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。当前仅支持在中国大陆获取POI信息。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 
 ## SingleLocationRequest<sup>12+</sup>
