@@ -647,7 +647,7 @@ struct Index {
 
 off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。使用callback异步回调。取消监听需要与注册监听在同一线程执行。。
+取消监听输入设备的热插拔事件。使用callback异步回调。取消监听需要与注册监听在同一线程执行。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
