@@ -6,11 +6,11 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e543ca261b0af7b91138762898e609a1232aeef3 translatedAt=2026-09-14T01:43:07.712Z pushedAt=2026-09-14T11:27:42.656Z -->
+<!-- md-trans-meta sourceCommit=e543ca261b0af7b91138762898e609a1232aeef3 translatedAt=2026-09-14T01:43:07.712Z pushedAt=2026-09-15T01:15:53.996Z -->
 
 This module uses the NearLink technology to provide the device ranging function for apps. It is applicable to scenarios where the accurate distance between devices needs to be obtained, such as smart anti-loss, near-field object finding, and digital keys. This feature provides the following functions:
 
-- Supports NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#hadm) ranging, enabling high-precision distance measurement.
+- Supports NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#high-accuracy-distance-measurement-hadm) ranging, enabling high-precision distance measurement.
 - Supports the active ranging mode, in which the distance, angle, and signal strength of the target device can be obtained.
 - Supports the passive ranging mode, in which the device can be discovered and measured by other devices as a ranging beacon.
 - Supports subscription to ranging state change events, enabling listening for state changes such as ranging start and stop in real time.
@@ -126,7 +126,7 @@ After ranging is successfully started, the result will be frequently reported th
 > **NOTE**
 >
 > - Before using this API, call [getRangingCapability](#ranginggetrangingcapability) to check whether the device supports the corresponding ranging type.
-> - When using the NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#hadm) to perform ranging, the local device cannot use the passive ranging mode after initiating active ranging. To use passive ranging, call [stopRanging](#rangingstopranging) to stop active ranging first.
+> - When using the NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#high-accuracy-distance-measurement-hadm) to perform ranging, the local device cannot use the passive ranging mode after initiating active ranging. To use passive ranging, call [stopRanging](#rangingstopranging) to stop active ranging first.
 > - If [startRanging](#rangingstartranging) is repeatedly called for the same device, a message will be displayed indicating that the device has initiated ranging, and error code 34900051 will be returned. To initiate ranging for the same device again, call [stopRanging](#rangingstopranging) to stop the previous ranging first and then call this API again.
 > - If the ranging service of the corresponding type has been taken offline when ranging is started, error code 34900053 will be returned when this API is called.
 > - The input parameters of this API must be set as required. If the input parameters do not meet the requirements, the API will return the corresponding error code. For details, see the parameter definition.
@@ -262,7 +262,7 @@ Starts the passive ranging mode. The local device broadcasts ranging data packet
 > **NOTE**
 >
 > - Before using the ranging API, call [getRangingCapability](#ranginggetrangingcapability) to check whether the device supports the corresponding ranging type.
-> - When using the NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#hadm) to perform ranging, the local device cannot use the active ranging mode after initiating passive ranging. To use active ranging, call [stopPassiveRanging](#rangingstoppassiveranging) to stop passive ranging first.
+> - When using the NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#high-accuracy-distance-measurement-hadm) to perform ranging, the local device cannot use the active ranging mode after initiating passive ranging. To use active ranging, call [stopPassiveRanging](#rangingstoppassiveranging) to stop passive ranging first.
 > - The [startPassiveRanging](#rangingstartpassiveranging) API can be called only once for the same ranging capability. After the call is successful, the returned handle corresponds to an independent broadcast session.
 > - To call [startPassiveRanging](#rangingstartpassiveranging) again for the same ranging capability, you need to call [stopPassiveRanging](#rangingstoppassiveranging) to stop the current passive ranging first. If you call [startPassiveRanging](#rangingstartpassiveranging) again without stopping the current passive ranging, the API will return error code 34900099.
 > - If the ranging service of the corresponding type has been taken offline when ranging is started, error code 34900053 will be returned when this API is called.
@@ -343,7 +343,7 @@ Stops the passive ranging mode. This API is used to stop the passive ranging bro
 
 | Name         | Type                         | Mandatory | Description         |
 | ------------ | -------------------------- | ---- | ---------- |
-| handle       | number                     | Yes   | Ranging monitoring handle, which must be a valid handle returned by [startPassiveRanging](#rangingstartpassiveranging). Otherwise, error [34900054](errorcode-fusionConnectivity.md#34900054-parameter-out-of-specification) is thrown. After stopping, this handle is no longer valid and cannot be reused.   |
+| handle       | number                     | Yes   | Ranging monitoring handle, which must be a valid handle returned by [startPassiveRanging](#rangingstartpassiveranging). Otherwise, error [34900054](errorcode-fusionConnectivity.md#34900054-invalid-parameters) is thrown. After stopping, this handle is no longer valid and cannot be reused.   |
 | capabilityType | [RangingTypes](#rangingtypes) | Yes   | Ranging capability type, which must be the same as **capabilityType** passed by the [startPassiveRanging](#rangingstartpassiveranging) API.   |
 
 **Error codes**
@@ -569,7 +569,7 @@ Describes the ranging types supported by the device.
 
 | Name         | Type     | Read-only | Optional | Description                      |
 | ---------- | ------ | ---- | ---- | ----------------------- |
-| nearlinkHadm | boolean | No   | No   | Whether the NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#hadm) ranging type is supported. If the value is **true**, you can call [startRanging](#rangingstartranging) or [startPassiveRanging](#rangingstartpassiveranging) to start ranging. |
+| nearlinkHadm | boolean | No   | No   | Whether the NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#high-accuracy-distance-measurement-hadm) ranging type is supported. If the value is **true**, you can call [startRanging](#rangingstartranging) or [startPassiveRanging](#rangingstartpassiveranging) to start ranging. |
 
 ## RangingMeasurement
 
@@ -598,7 +598,7 @@ Enumerates the ranging capability types.
 
 | Name           | Value   | Description                                        |
 | ------------ | ---- | ----------------------------------------- |
-| NEARLINK_HADM | 1    | NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#hadm) ranging type.  |
+| NEARLINK_HADM | 1    | NearLink [HADM](../../connectivity/fusion-connectivity/fusion-connectivity-terminology.md#high-accuracy-distance-measurement-hadm) ranging type.  |
 
 ## RangingState
 
