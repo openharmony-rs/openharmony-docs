@@ -84,7 +84,7 @@ struct Index {
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
-查询设备支持的红外信号的频率范围。调用此接口前，建议先调用[hasIrEmitter](#infraredemitterhasiremitter23)接口确认设备是否具备红外发射器。
+查询设备支持的红外信号的频率范围。调用此接口前，需要先调用[hasIrEmitter](#infraredemitterhasiremitter23)接口确认设备具备红外发射器。
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
