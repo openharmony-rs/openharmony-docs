@@ -64768,7 +64768,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableSwiperScene.ets",
 				"functions":[
 					{
-						"end_line":113,
+						"end_line":112,
 						"name":"reusable_swiper_scene",
 						"start_line":15
 					}
