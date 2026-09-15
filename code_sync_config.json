@@ -327,9 +327,9 @@
 						"start_line":98
 					},
 					{
-						"end_line":199,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":160
+						"start_line":126
 					},
 					{
 						"end_line":196,
@@ -367,9 +367,9 @@
 						"start_line":98
 					},
 					{
-						"end_line":199,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":160
+						"start_line":126
 					},
 					{
 						"end_line":238,
@@ -407,9 +407,9 @@
 						"start_line":98
 					},
 					{
-						"end_line":199,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":160
+						"start_line":126
 					},
 					{
 						"end_line":503,
@@ -447,9 +447,9 @@
 						"start_line":282
 					},
 					{
-						"end_line":354,
+						"end_line":347,
 						"name":"interruptTransfer_claimInterface",
-						"start_line":339
+						"start_line":319
 					},
 					{
 						"end_line":304,
@@ -492,9 +492,9 @@
 						"start_line":400
 					},
 					{
-						"end_line":487,
+						"end_line":493,
 						"name":"isochronousTransfer_claimInterface",
-						"start_line":457
+						"start_line":450
 					},
 					{
 						"end_line":406,
@@ -64518,9 +64518,9 @@
 						"start_line":105
 					},
 					{
-						"end_line":199,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":160
+						"start_line":126
 					},
 					{
 						"end_line":208,
