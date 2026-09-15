@@ -236,11 +236,24 @@
     ``` TypeScript
     // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
     try {
-      let claimInterfaceResult: number = this.claimUsbInterface(devicePipe, usbInterface);
-      if (claimInterfaceResult !== 0) {
-        console.error(`claimInterface error = ${claimInterfaceResult}`)
-        this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
-        return;
+      if (this.isExclusiveClaim_) {
+        usbManager.claimInterfaceExclusive(devicePipe, usbInterface, true,
+          (conflict: usbManager.InterfaceConflictInfo) => {
+          // 其他应用claim同一接口时的异步冲突通知
+          const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+            `interfaceId = ${conflict.interfaceId}`;
+          console.info(`interface conflict: ${conflictMsg}`);
+          this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+        });
+        console.info('claimInterfaceExclusive success');
+        this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+      } else {
+        let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+        if (claimInterfaceResult !== 0) {
+          console.error(`claimInterface error = ${claimInterfaceResult}`)
+          this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+          return;
+        }
       }
     } catch (error) {
       console.error(`USB claimInterface failed: ${error}`);
