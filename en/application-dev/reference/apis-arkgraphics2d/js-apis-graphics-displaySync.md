@@ -26,8 +26,6 @@ create(): DisplaySync
 
 Creates a **DisplaySync** object, through which you can set the frame rate of the custom UI content.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -47,8 +45,6 @@ let backDisplaySync: displaySync.DisplaySync = displaySync.create();
 
 Developers can obtain the timestamp information of frame drawing from the callback function, including the timestamp when the current frame arrives and the targetTimestamp when the next frame is expected to arrive.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name            | Type                                     | Read-only| Optional| Description                                      |
@@ -65,8 +61,6 @@ An instance for setting the expected frame rate and callback function. It is use
 setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
 Sets the expected frame rate range. The expected frame rate range is used as a reference for system scheduling, and the system tries to adjust the drawing frame rate within this range. If this API is not called or ExpectedFrameRateRange(0, 0, 0) is passed in, the current frame rate of the application is followed. It is recommended to set the range before calling [start](#start) so that it takes effect immediately. Setting the range after calling [start](#start) also takes effect, but there may be a delay.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,8 +101,6 @@ on(type: 'frame', callback: Callback\<IntervalInfo\>): void
 
 Subscribes to change events of each frame. After the callback function is registered, you must call [start](#start) to start the DisplaySync object; only then will the system trigger the callback on each frame. This API is used together with [off('frame')](#offframe) to unregister the callback function. The callback function is executed on the UI main thread. The callback frequency is affected by the frame rate range set by [setExpectedFrameRateRange](#setexpectedframeraterange). If the callback takes too long to execute, frame freezing may occur. It is recommended that only lightweight business logic be performed in the callback.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -139,8 +131,6 @@ off(type: 'frame', callback\?: Callback\<IntervalInfo\>): void
 
 Unsubscribes from change events of each frame. This API is used together with [on('frame')](#onframe). After the unsubscription succeeds, the callback function will no longer be triggered.
 
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -170,8 +160,6 @@ backDisplaySync?.off("frame", callback)
 start(): void
 
 Makes the expected frame rate range set by [setExpectedFrameRateRange](#setexpectedframeraterange) take effect. If a callback function is registered through [on('frame')](#onframe), this API starts requesting VSync signals and triggers the registered callback once per frame. This API is used together with [stop](#stop).
-
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,8 +226,6 @@ struct Index {
 stop(): void
 
 Closes the expected frame rate range and stops the callback for each frame. This method must be called after [start](#start). After it is stopped, the DisplaySync configurations (such as the expected frame rate range and callback function) are retained and can be restarted at any time through [start](#start). The [stop](#stop) method disassociates DisplaySync from the UI context and window, and usually no specific UI context is required.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
