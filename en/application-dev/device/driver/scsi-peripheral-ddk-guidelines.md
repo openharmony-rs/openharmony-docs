@@ -1,12 +1,11 @@
 # SCSI Peripheral DDK Development
-
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=4e2e44136e02c57f70e721649f26e12ec63e7374 translatedAt=2026-08-15T01:44:20.622Z pushedAt=2026-08-15T06:45:02.069Z -->
+<!-- md-trans-meta sourceCommit=8e38721f5add5e1ae2a39d2b4d8821fa12c236b4 translatedAt=2026-09-14T08:44:38.695Z pushedAt=2026-09-15T10:33:57.345Z -->
 
 ## Overview
 
@@ -32,7 +31,7 @@ Before you get started, understand the following concepts:
 
 - **DDK**
 
-    The Driver Development Kit (DDK) is a tool package provided by OpenHarmony for developing drivers for non-standard SCSI peripherals based on the peripheral framework.
+    DDK is a tool package provided by OpenHarmony for developing drivers for non-standard USB devices based on the extended peripheral framework.
 
 - **Non-standard peripherals**
 
@@ -101,13 +100,11 @@ The following describes how to use the ScsiPeripheralDDK to develop non-standard
 **Adding Dynamic Link Libraries**
 
 Add the following libraries to **CMakeLists.txt**.
-
 ```txt
 libscsi.z.so
 ```
 
 **Including Header Files**
-
 ```c++
 #include <scsi_peripheral/scsi_peripheral_api.h>
 #include <scsi_peripheral/scsi_peripheral_types.h>
@@ -265,14 +262,12 @@ libscsi.z.so
     ret = OH_ScsiPeripheral_Release();
     ```
 
+
 ### Debugging and Verification
 
 Upon completion of driver application development, you can install the application on the OpenHarmony device. The test procedure is as follows:
 
 1. Click the driver application on the device. The application is started on the device.
-
 2. Check whether the application can read the basic information about the SCSI device.
-
 3. Select a SCSI command, enter parameters, and click the **Send** button.
-
 4. (Optional) Set the direction, CDB data, and CDB length, and click the **Send** button to run the corresponding SCSI command.

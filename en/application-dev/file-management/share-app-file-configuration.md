@@ -1,12 +1,11 @@
 # Configuring the Application Shared Directory
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @renzehua-->
 <!--Designer: @renzehua; @huangjieliang; @zhanganxiang-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=eea7130fde34aad89d99ea1779662114cbb1a92c translatedAt=2026-08-01T07:29:31.152Z pushedAt=2026-08-01T11:21:39.191Z -->
+<!-- md-trans-meta sourceCommit=3bab2b5b5264b2a320ce362e13ec1f6589bae7b3 translatedAt=2026-09-14T09:21:26.595Z pushedAt=2026-09-15T13:12:15.406Z -->
 
 From API version 23, the system supports shared directory configuration. In the [app file sharing](share-app-file.md) scenario, you can [configure the shared directory](#configuring-the-shared-directory). After configuration, only files in the shared directory can be shared by users with other apps for viewing, preventing sensitive app data from being leaked. This configuration takes effect only on phones and tablets.
 
@@ -60,32 +59,24 @@ Take the interaction experience on file manager as an example. After the app con
 
 ### Path Restrictions
 
-1. Path depth restrictions:
-
+1. Path depth restriction:
    - A single path must be configured with at least 2 levels, for example, `/el2/base`.
-
    - A single path can be configured with up to 10 levels, for example, `/el2/base/files/level4/level5/level6/level7/level8/level9/level10`.
 
-2. Path quantity restrictions:
-
+2. Path quantity restriction:
    - Configured paths must not be duplicated, and a maximum of 20 paths can be configured.
 
-3. Path format restrictions:
-
+3. Path format restriction:
    - The path must start with `/`. The characters `.`, `..`, and `\0` are not allowed, and the path must not end with `/`.
 
-4. Parent-child directory restrictions:
-
+4. Parent-child directory restriction:
    - When a parent directory is configured, child directories must not be configured.
-
    - For example, if `/el2/base/parentsA` is configured, `/el2/base/parentsA/childrenA` must not be configured, but `/el2/base/parentsB/childrenB` is allowed.
 
 5. Verification method and locating:
-
    - To maintain compatibility with earlier system versions, if any path configuration of an app does not comply with the path restrictions, all configured paths of the app are automatically cleared. You can search the system log for related errors using the keyword: "TransAndSetToMapInner failed for bundle".
 
 ### Configuring the Donated Sandbox Directory
-
    When an app needs to donate a sandbox directory to the operating system, fill in the three fields `sharingOSPath`, `sharingOSSubpath`, and `sharingOSPermission` in the configuration file `share_files.json`.
 
    | Name | Description | Type |

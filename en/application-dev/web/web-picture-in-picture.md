@@ -1,12 +1,11 @@
 # Enabling Picture-in-Picture
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @gzweioh-->
 <!--Designer: @zhangyao75477-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4ac10367d8e4dd9081bfcad4a5715a3db45fc0ba translatedAt=2026-08-14T03:48:56.272Z pushedAt=2026-08-14T09:29:59.039Z -->
+<!-- md-trans-meta sourceCommit=89e4124647cb5d2cee88552a08c43126655620ec translatedAt=2026-09-14T10:17:38.327Z pushedAt=2026-09-15T13:41:44.888Z -->
 
 The web component supports the picture-in-picture (PiP) feature. An application can use the Picture-in-Picture API of the W3C standard to create a floating window on a web page to play videos. In this way, users can continue to watch videos in the PiP window when browsing other web pages or interacting with other applications. 
 
@@ -23,9 +22,7 @@ To use online video resources, you need to set the network permission in the con
 ```
 
 ## Constraints
-
 1. H.264/H.265/HLS videos can be played in the PiP window. 
-
 2. The size of the PiP window is adjusted based on the system capability. For details, see the system features and capabilities in the design guide.
 
 ## Entering Picture-in-Picture
@@ -66,7 +63,9 @@ try {
   } else {
     await document.exitPictureInPicture();
   }
-}
+} catch (err) {
+    console.error("Picture-in-Picture mode failed:", err);
+  }
 // ...
 ```
 
@@ -77,6 +76,7 @@ When you enter the picture-in-picture mode to play a video, a floating window is
 When **HTMLVideoElement** successfully enters the PiP mode, the **enterpictureinpicture** event is triggered. When **HTMLVideoElement** successfully exits the PiP mode, the **leavepictureinpicture** event is triggered.
 
 You can handle these events by listening for them.
+
 
 ```js
 videoElement.addEventListener('enterpictureinpicture', function (event) {
@@ -91,17 +91,16 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 ## Interacting with the Picture-in-Picture Window
 
 * PiP window control:<br>
-
   Allows users to double-click a PiP window to zoom in or zoom out the window.<br>
   Allows users to drag the PiP window to any position on the screen.<br> 
   Allows users to click the PiP window to display or hide UI components at the PiP control layer.<br> 
 
 * UI components at the PiP control layer:<br> 
-
   The picture-in-picture window control layer contains **Close** (closes the picture-in-picture window) and **Restore** (restores the original app UI from the picture-in-picture window).<br/>  
   Playback controls include **Pause**, **Play**, and **Forward/Backward** (the Forward/Backward UI controls are displayed by default; if the original video does not support forward/backward, a single tap has no effect).<br/>
 
   ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
+
 
 ## Example
 

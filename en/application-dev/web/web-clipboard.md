@@ -1,12 +1,11 @@
 # Processing Web Page Content by Interacting with the System Clipboard
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d866e238748ac7aac315cd2cec8b8c1b4d92d6a3 translatedAt=2026-08-14T03:42:14.585Z pushedAt=2026-08-14T07:18:12.843Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:06:44.225Z pushedAt=2026-09-15T13:41:10.863Z -->
 
 You can interact with the system clipboard through the Web component to copy and paste various types of data. You can cut, copy, and paste web content through the [menu](web-menu.md), keyboard shortcuts, and the [W3C Clipboard APIs](https://www.w3.org/TR/clipboard-apis/).
 
@@ -79,6 +78,7 @@ struct WebComponent {
   }
 }
 ```
+
 
 Loaded HTML:
 
@@ -200,6 +200,7 @@ Configure permissions for the **module.json5** file.
 }
 ```
 
+
 ![clipboard_api](./figures/web-clipboard_api.gif)
 
 ## Using the W3C Clipboard Event API
@@ -223,6 +224,7 @@ struct WebComponent {
   }
 }
 ```
+
 
 Loaded HTML:
 
@@ -310,6 +312,7 @@ struct WebComponent {
   }
 }
 ```
+
 
 Loaded HTML:
 

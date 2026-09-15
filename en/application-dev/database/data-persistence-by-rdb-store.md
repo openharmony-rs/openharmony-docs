@@ -1,25 +1,21 @@
 # Persisting RDB Store Data (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b370e209c091d2372f3f4630d52668e908547bd5 translatedAt=2026-07-27T08:15:27.115Z pushedAt=2026-07-27T08:42:28.112Z -->
+<!-- md-trans-meta sourceCommit=6879538b2b1a4844febd6a46491da3f73fa2dd07 translatedAt=2026-09-14T08:30:50.321Z pushedAt=2026-09-15T07:55:51.150Z -->
+
 
 ## When to Use
 
 A relational database (RDB) store is used to store data in complex relational models, such as the student information including names, student IDs, and scores of each subject, or employee information including names, employee IDs, and positions, based on SQLite. The data is more complex than key-value (KV) pairs due to strict mappings. You can use **RelationalStore** to implement persistence of this type of data.
 
 Querying data from a large amount of data may take time or even cause application suspension. In this case, you can perform batch operations. For details, see [Batch Database Operations](../arkts-utils/batch-database-operations-guide.md). Moreover, observe the following:
-
 - The maximum number of data records to query at a time is 5000.
-
 - Use [TaskPool](../reference/apis-arkts/js-apis-taskpool.md) if there is a large amount of data needs to be queried.
-
 - Keep concatenated SQL statements as concise as possible.
-
 - Query data in batches.
 
 ## Basic Concepts
@@ -27,6 +23,7 @@ Querying data from a large amount of data may take time or even cause applicatio
 - **Predicates**: a representation of the property or feature of a data entity, or the relationship between data entities, used to define operation conditions.
 
 - **ResultSet**: a set of query results, which allows access to the required data in flexible modes.
+
 
 ## Working Principles
 
@@ -36,9 +33,10 @@ Querying data from a large amount of data may take time or even cause applicatio
 
 ![relationStore_local](figures/relationStore_local.jpg)
 
+
 ## Constraints
 
-- The default log mode is Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)), and the default flush mode is [FULL](data-terminology.md#full).
+- The system uses the [WAL](data-terminology.md#write-ahead-log-wal) (Write Ahead Log) mode for logging by default, and the [FULL mode](data-terminology.md#full-mode) for data persistence by default.
 
 - The RDB store supports four read connections and one write connection. Read connections can be dynamically expanded. If no read connection is available, a read connection is created to execute the read operation. Write connections cannot be dynamically expanded. If no write connection is available, the write operation is executed after the connection is released.
 
@@ -68,7 +66,6 @@ The following are the APIs related to the RDB store persistence feature. For mor
 | isTokenizerSupported(tokenizer: Tokenizer): boolean | Checks whether the specified tokenizer is supported. (Tokenizer is a tool for breaking down text into smaller units, which can be words, subwords, characters, or other language fragments.)|
 
 ## How to Develop
-
 Due to the differences between the stage model and the FA model, some sample code provides corresponding examples for both models. If the sample code does not distinguish between models or has no corresponding comments, it is applicable to both models by default.
 
 If error 14800011 is thrown, you need to rebuild the database and restore data to ensure normal application development. For details, see [Rebuilding an RDB Store](data-backup-and-restore.md#rebuilding-an-rdb-store).
@@ -261,7 +258,6 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    > - For details about the error codes, see [Universal Error Codes](../reference/errorcode-universal.md) and [RDB Store Error Codes](../reference/apis-arkdata/errorcode-data-rdb.md).
 
 2. After obtaining the RDB store and creating the data table, call **insert()** to insert data. <br>Example:
-
    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
 
    ``` TypeScript
@@ -296,7 +292,6 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 3. Modify or delete data based on the specified **Predicates** instance.
 
 Call **update()** to modify data, and call **delete()** to delete data. The sample code is as follows:
-
    <!--@[persistence_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
 
    ``` TypeScript
@@ -344,7 +339,6 @@ Call **update()** to modify data, and call **delete()** to delete data. The samp
 4. Query data based on the conditions specified by **Predicates**.
 
 Call **query()** to query data, which returns a **ResultSet**. The sample code is as follows:
-
    <!--@[persistence_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
 
    ``` TypeScript
@@ -380,7 +374,6 @@ Call **query()** to query data, which returns a **ResultSet**. The sample code i
    The RDB store also supports full-text search (FTS) in Chinese or English. The ICU tokenizer is supported.
 
 The following example demonstrates how to perform FTS with Chinese keywords:
-
    <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
 
    ``` TypeScript
@@ -418,7 +411,6 @@ The following example demonstrates how to perform FTS with Chinese keywords:
    The supported transaction types are **DEFERRED** (default), **IMMEDIATE**, and **EXCLUSIVE**.
 
    For details, see [createTransaction](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#createtransaction14).
-
    <!--@[persistence_transaction_insert_update_and_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
 
    ``` TypeScript
@@ -481,7 +473,6 @@ The following example demonstrates how to perform FTS with Chinese keywords:
 6. Back up the database in the same directory. <br>Two backup modes are available: manual backup and automatic backup (available only for system applications). For details, see [Backing Up an RDB Store](data-backup-and-restore.md#backing-up-an-rdb-store).
 
    Example: Perform manual backup of an RDB store.
-
    <!--@[persistence_backup_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
 
    ``` TypeScript
@@ -501,7 +492,6 @@ The following example demonstrates how to perform FTS with Chinese keywords:
 7. Restore data from the database backup. <br>You can restore an RDB store from the manual backup data or automatic backup data (available only for system applications). For details, see [Restoring RDB Store Data](data-backup-and-restore.md#restoring-rdb-store-data).
 
    Example: Call [restore](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#restore) to restore an RDB store from the data that is manually backed up.
-
    <!--@[persistence_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
 
    ``` TypeScript
@@ -522,7 +512,6 @@ The following example demonstrates how to perform FTS with Chinese keywords:
    Call **deleteRdbStore()** to delete the store and relevant files. The sample code is as follows:
 
    Stage model:
-
    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
 
    ``` TypeScript

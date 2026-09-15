@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @LiuChao-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d6ee2f8e5e4a35a47ab1c536d1d3a668f575f4ef translatedAt=2026-08-15T01:44:54.144Z pushedAt=2026-08-15T06:50:35.632Z -->
+<!-- md-trans-meta sourceCommit=2d7b4266499e3556fe42ddb8c4180af3db492816 translatedAt=2026-09-14T08:50:38.619Z pushedAt=2026-09-15T10:37:15.416Z -->
 
 ## C
 

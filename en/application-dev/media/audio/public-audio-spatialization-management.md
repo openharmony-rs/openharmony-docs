@@ -1,12 +1,11 @@
 # Spatial Audio Capability Query and Status Subscription
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @tom_guo-->
 <!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=233316920aae5dc32b6b09f705ac05617f921672 translatedAt=2026-08-06T01:53:02.139Z pushedAt=2026-08-06T08:55:21.299Z -->
+<!-- md-trans-meta sourceCommit=4f1c8255a01ee78f4e251fb96f1c97a4f8bd7361 translatedAt=2026-09-14T09:43:19.374Z pushedAt=2026-09-15T13:37:03.852Z -->
 
 Starting from API version 18, you can query the spatial audio capabilities and subscribe to their status changes.
 
@@ -22,7 +21,7 @@ The following examples are code snippets. For the [complete sample](https://gitc
 
 For audio playback apps, you can check whether the device supports spatial audio and the current spatial audio toggle state of the device.
 
-### Obtaining a Spatial Audio Example
+### Obtaining a Spatial Audio Instance
 
 Before using any APIs of AudioSpatializationManager, you must call [getSpatializationManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getspatializationmanager18) to obtain an AudioSpatializationManager instance.
 
@@ -56,7 +55,6 @@ let audioRoutingManager = audioManager.getRoutingManager();
 Call [isSpatializationEnabledForCurrentDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSpatializationManager.md#isspatializationenabledforcurrentdevice18) to check whether spatial audio rendering is enabled for the current device.
 
 - If **true** is returned, spatial audio rendering is enabled for the current device. If **false** is returned, it is disabled.
-
 - Spatial audio rendering takes effect only when the current device supports spatial audio rendering.
 
 <!-- @[check_isspacesoundon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->

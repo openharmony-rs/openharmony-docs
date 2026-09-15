@@ -1,17 +1,15 @@
 # About This Kit
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=214dbbb9f70f3bd6331e1162daebb110a88ce31d translatedAt=2026-08-14T03:44:05.235Z pushedAt=2026-08-14T07:22:32.974Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:07:33.205Z pushedAt=2026-09-15T13:41:14.751Z -->
 
 ## When to Use
 
 ArkWeb provides **Web** components to display web page content in apps. You can use the components in the following scenarios:
-
 - Web page integration: Apps can use **Web** components to embed web page content to reduce development costs and improve development and O&M efficiency.
 
 - Web browsing: Browser apps can use **Web** components to open third-party web pages, browse web pages in traceless mode, and set advertisement blocking.
@@ -63,11 +61,9 @@ To access online web pages through the **Web** component, you must add the netwo
   | OpenHarmony 6.0 | M132 (default, recommended; see [M114->M132 Migration Guide](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md))<br>M114 (optional; if your app needs to switch to this kernel, see [M114 Kernel Adaptation Guide on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)) |
   | OpenHarmony 6.1 | M132 |
   | OpenHarmony 7.0 | M144 (default, recommended; see [M132->M144 Migration Guide](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md))<br>M132 (optional; if your app needs to switch to this kernel, see [M132 Kernel Adaptation Guide on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)) |
-
 <!--RP3--><!--RP3End-->
 
 <!--RP4--><!--RP4End-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to develop **Web** components:

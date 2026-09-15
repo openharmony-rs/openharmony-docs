@@ -6,6 +6,7 @@
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=794b6743937ba8e73afda64d9d8cea1a536cda7c translatedAt=2026-09-14T10:03:01.057Z pushedAt=2026-09-15T13:39:44.562Z -->
 
 ArkTS restricts the features of TypeScript (TS) that undermine development correctness or increase runtime overhead. This topic lists the TypeScript features restricted by ArkTS and provides recipes on code refactoring. ArkTS retains most syntax features of TypeScript. TypeScript features that are not mentioned in this topic are fully supported by ArkTS. For example, the custom decorators supported by ArkTS have the same syntax as those supported by TypeScript. After code refactoring based on the recipes in this topic, the code is still valid TypeScript code.
 
@@ -672,9 +673,9 @@ let tmp = one;
 one = two;
 two = tmp;
 
-let data: Number[] = [1, 2, 3, 4];
+let data: number[] = [1, 2, 3, 4];
 let head = data[0];
-let tail: Number[] = [];
+let tail: number[] = [];
 for (let i = 1; i < data.length; ++i) {
   tail.push(data[i]);
 }
@@ -1009,7 +1010,7 @@ drawText({ text: 'Hello, world!', location: [100, 50], bold: true });
 <!-- @[no_destructParams](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructParams.ets) -->   
 
 ``` TypeScript
-function drawText(text: String, location: number[], bold: boolean) {
+function drawText(text: string, location: number[], bold: boolean) {
   let x = location[0];
   let y = location[1];
   text;
@@ -1193,6 +1194,7 @@ ArkTS does not support **Function.apply** or **Function.call** because these API
 **Error code: 10605140**
 
 ArkTS does not support **Function.bind**. These APIs are needed in the standard library to explicitly set the parameter **this** for the called function. In ArkTS, the semantics of **this** is restricted to the conventional OOP style, and the usage of **this** in function body is prohibited.
+
 
 ### Private # Identifiers Are Not Supported
 
@@ -2616,7 +2618,7 @@ ArkTS does not support universal module definitions (UMD), because it does not h
 
 ```typescript
 // math-lib.d.ts
-export const isPrime(x: number): boolean
+export function isPrime(x: number): boolean
 export as namespace mathLib
 
 // In script
@@ -2628,7 +2630,7 @@ mathLib.isPrime(2)
 ```typescript
 // math-lib.d.ts
 namespace mathLib {
-  export isPrime(x: number): boolean
+  export function isPrime(x: number): boolean
 }
 
 // In program
@@ -2769,7 +2771,7 @@ m.x = 2;
 ```
 
 **ArkTS**
- 
+
 <!-- @[no_nsAsObj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsAsObj.ets) -->    
 
 ``` TypeScript
@@ -2802,7 +2804,7 @@ namespace A {
 ```
 
 **ArkTS**
- 
+
 <!-- @[no_nsStatements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNsStatements.ets) -->  
 
 ``` TypeScript
@@ -2862,7 +2864,7 @@ function fn(i: I) {
 
 **Severity: error**
 
-**Error code: 106050102**
+**Error code: 10605102**
 
 In TypeScript, an interface that extends two other interfaces with the same method must declare that method with a combined return type. It is not allowed in ArkTS because ArkTS does not allow an interface to contain two methods with signatures that are not distinguishable, for example, two methods that have the same parameter lists but different return types.
 
@@ -2980,7 +2982,7 @@ interface SelectableControl extends Control {
 ```
 
 **ArkTS**
- 
+
 <!-- @[extends_onlyClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/ExtendsOnlyClass.ets) -->    
 
 ``` TypeScript
@@ -3299,7 +3301,7 @@ enum E2 {
 ```
 
 **ArkTS**
- 
+
 <!-- @[no_enumMixedTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMixedTypes.ets) -->  
 
 ``` TypeScript
@@ -3348,7 +3350,7 @@ enum ColorSet {
 ```
 
 **ArkTS**
- 
+
 <!-- @[no_enumMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoEnumMerging.ets) -->    
 
 ``` TypeScript
@@ -3392,7 +3394,7 @@ interface Document {
 ```
 
 **ArkTS**
- 
+
 <!-- @[no_declMerging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDeclMerging.ets) -->    
 
 ``` TypeScript
@@ -3594,7 +3596,7 @@ const person = createPerson(Person, 'John', 30);
 ```
 
 **ArkTS**
- 
+
 <!-- @[no_ctorSignaturesFuncs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoCtorSignaturesFuncs.ets) -->    
 
 ``` TypeScript

@@ -1,12 +1,11 @@
 # Displaying Web Page Dialog Boxes
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=ab86c56855dec43181de214ca3d38ce556791f96 translatedAt=2026-08-14T03:44:40.287Z pushedAt=2026-08-14T07:57:24.483Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:10:56.100Z pushedAt=2026-09-15T13:41:22.364Z -->
 
 In HTML, JavaScript can be used to create the following types of dialog boxes: **window.alert(message)**, **window.confirm(message)**, and **window.prompt(message, defaultValue)**. These dialog boxes can be used to convey information, confirm operations, or request input from users.
 
@@ -15,15 +14,12 @@ Currently, ArkWeb does not provide default dialog boxes. To ensure that the dial
 ## Implementing the Alert Dialog Box
 
 You can use **window.alert()** to display a dialog box that contains optional information. The alert dialog box is used to ensure that users can obtain certain information. When the alert dialog box is displayed, the user needs to click **OK** to continue the operation.
-
 - The optional parameter **message** is a string to be displayed in the alert dialog box. If other types of values are passed, the values will be converted to strings.
-
 - This method does not return any value.
 
 An application can listen for the **alert** method of a web page through the [onAlert](../reference/apis-arkweb/arkts-basic-components-web-events.md#onalert) event and create a dialog box.
 
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
-
     <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
 
     ``` TypeScript
@@ -66,7 +62,6 @@ An application can listen for the **alert** method of a web page through the [on
     ```
 
   HTML to load.
-
   ```html
   <!-- test.html -->
   <!DOCTYPE html>
@@ -97,7 +92,6 @@ An application can listen for the **alert** method of a web page through the [on
   ```
 
 - Use [AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog) to create a dialog.
-
     <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
 
     ``` TypeScript
@@ -151,7 +145,6 @@ An application can listen for the **alert** method of a web page through the [on
     ```
 
   Loaded HTML:
-
   ```html
   <!-- alert.html -->
   <!DOCTYPE html>
@@ -186,9 +179,7 @@ An application can listen for the **alert** method of a web page through the [on
 ## Implementing the Confirm Dialog Box
 
 You can use **window.confirm()** to display a dialog box that contains optional messages and waits for the user to confirm or cancel it.
-
 - The optional parameter **message** is a string to be displayed in the dialog box. If other types of values are passed, the values will be converted to strings.
-
 - This method returns a Boolean value, indicating whether OK (**true**) or Cancel (**false**) is selected. If the application ignores the dialog box on the page, the return value is always **false**.
 
 The confirm dialog box is used to check whether the user accepts an operation such as leaving a web page to prevent data loss.
@@ -196,7 +187,6 @@ The confirm dialog box is used to check whether the user accepts an operation su
 An application can listen for the **confirm** method of a web page through the [onConfirm](../reference/apis-arkweb/arkts-basic-components-web-events.md#onconfirm) event and create a dialog box.
 
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
-
     <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
 
     ``` TypeScript
@@ -244,7 +234,6 @@ An application can listen for the **confirm** method of a web page through the [
     ```
 
   Loaded HTML:
-
   ```html
   <!-- test.html -->
   <!DOCTYPE html>
@@ -278,7 +267,6 @@ An application can listen for the **confirm** method of a web page through the [
   ```
 
 - Use [ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog) to create a dialog.
-
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
 
     ``` TypeScript
@@ -351,7 +339,6 @@ An application can listen for the **confirm** method of a web page through the [
     ```
 
   Loaded HTML:
-
   ```html
   <!-- confirm.html -->
   <!DOCTYPE html>
@@ -389,11 +376,8 @@ An application can listen for the **confirm** method of a web page through the [
 ## Implementing the Prompt Dialog Box
 
 You can use **window.prompt()** to display a dialog box and wait for the user to submit text or cancel the dialog box. The user needs to input a value and then click **OK **or **Cancel**. If **OK** is clicked, the input value is returned. If **Cancel** is clicked, **null** is returned.
-
 - The optional parameter `message` is a string of text to display to the user. It can be omitted if there is nothing to display in the prompt window.
-
 - The optional parameter **defaultValue** is a string that contains the default value displayed in the text input field.
-
 - The return value is a string of the text input by the user or **null**.
 
 The prompt box is used to prompt users to input a value, which is usually used in scenarios where users need to input a temporary password or verification code.
@@ -401,7 +385,6 @@ The prompt box is used to prompt users to input a value, which is usually used i
 An application can listen for the **prompt** method of a web page through the [onPrompt](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprompt9) event and create a dialog box.
 
 - Use [CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12) to create a dialog.
-
     <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) --> 
 
     ``` TypeScript
@@ -482,7 +465,6 @@ An application can listen for the **prompt** method of a web page through the [o
     ```
 
   Loaded HTML:
-
   ```html
   <!-- prompt.html -->
   <!DOCTYPE html>
@@ -545,5 +527,4 @@ Required resource file **string.json**:
     ]
   }
   ```
-
   ![PromptDialog](./figures/web-prompt-dialog.gif)
