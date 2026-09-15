@@ -120,6 +120,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_NEW_PASSWORD<sup>20+</sup> | number | 11 | 新密码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_NUMBER_DECIMAL<sup>20+</sup> | number | 12 | 带小数点的数字编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | 验证码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| PATTERN_ONE_TIME_CODE_NUMBER | number | 15 | 数字验证码编辑框。<br/>**起始版本：** 26.1.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | OPTION_ASCII | number | 20 | 允许输入ASCII值。 |
 | OPTION_NONE | number | 0 | 不指定编辑框输入属性。 |
 | OPTION_AUTO_CAP_CHARACTERS | number | 2 | 允许输入字符。 |
