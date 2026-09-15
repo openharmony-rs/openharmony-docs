@@ -40,6 +40,54 @@
 ArkTS-Dyn示例：
 <!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+perceiveAndAdjustAuthentication() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
+    }
+    // 设置认证参数
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      skipLockedBiometricAuth: true
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证过程中的提示信息。
+    userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
+      try {
+        Logger.info('userAuthInstance callback.');
+        this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        Logger.error(`onAuthTip failed, code: ${err?.code}, Message: ${err?.message}`);
+      }
+    });
+    // 开始认证
+    userAuthInstance.start();
+    // ...
+      // 取消订阅认证过程中的提示信息。
+      userAuthInstance.off('authTip');
+      Logger.info('off authTip successfully.');
+      // 取消认证
+      userAuthInstance.cancel();
+      Logger.info('auth cancel successfully.');
+      // ...
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code as number}, message is ${err?.message}`);
+  }
+}
+```
+
 ArkTS-Sta示例：
 <!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication_Sta/entry/src/main/ets/pages/Index.ets) -->
 
