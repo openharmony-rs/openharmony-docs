@@ -158,6 +158,15 @@ A constructor used to create a **CloudDiskSystemAccessor** instance.
 
 **System capability**: SystemCapability.FileManagement.CloudDiskManager
 
+**Error codes**
+
+For details about the error codes, see [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 34400014 | Temporary failure. Retry is recommended. |
+
 **Example**
 
 ```ts
@@ -177,7 +186,7 @@ try {
 
 on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-Subscribes to hydration progress events. This API is applicable to the scenario where the File Manager displays the hydration progress of files. After the subscription, progress notifications of all hydration tasks of the current user (including those initiated by third-party cloud disk applications through the CAPI) are received, and files are distinguished by **filePath** in [HydrateProgress](#hydrateprogress26). Multiple callbacks can be registered on the same instance, and registering the same callback repeatedly takes no effect. To cancel the subscription, use [off('hydrateProgress')](#offhydrateprogress26).
+Subscribes to hydration progress events. This API is applicable to the scenario where the File Manager displays the hydration progress of files. After the subscription, progress notifications of all hydration tasks of the current user (including those initiated by third-party cloud disk applications through the CAPI) are received, and files are distinguished by **filePath** in [HydrateProgress](#hydrateprogress26). Only one callback can be registered on the same instance. Calling this API again before the subscription is cancelled throws error code 34400022. To cancel the subscription, use [off('hydrateProgress')](#offhydrateprogress26).
 
 **Since**: 26.1.0
 
@@ -202,10 +211,12 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
-| 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
+| 34400022 | The callback table has been registered. |
 
 **Example**
 
@@ -233,7 +244,7 @@ try {
 
 off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydrateprogress26)&gt;): void
 
-Unsubscribes from hydration progress events. If **callback** is specified, only the specified callback is unsubscribed. If **callback** is not specified, all 'hydrateProgress' callbacks registered on the current instance are unsubscribed.
+Unsubscribes from hydration progress events. If **callback** is specified, only the specified callback is unsubscribed. If **callback** is not specified, all 'hydrateProgress' callbacks registered on the current instance are unsubscribed. If the current instance has not subscribed to the event, calling this API throws error code 34400021.
 
 **Since**: 26.1.0
 
@@ -258,10 +269,12 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
-| 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
 | 34400014 | Temporary failure. Retry is recommended. |
+| 34400021 | The callback table is not registered. |
 
 **Example**
 
@@ -329,15 +342,22 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
+| 34400010 | The sync root path does not exist. |
 | 34400014 | Temporary failure. Retry is recommended. |
 | 34400017 | The target path is not a placeholder file. |
 | 34400019 | Hydration in progress. |
 | 34400021 | The callback table is not registered. |
+| 34400023 | The parent directory of the target path is not a directory. |
+| 34400024 | The target path does not exist. |
+| 34400025 | The file name or path is too long. |
 | 34400031 | The placeholder file is already fully hydrated. |
 | 34400032 | No hydration task is in progress for the target file. |
+| 34400033 | The stored placeholder state is invalid. |
 | 34400034 | The number of active placeholder hydration tasks has reached the limit. |
 
 **Example**
@@ -402,15 +422,23 @@ For details about the error codes, see [Cloud Disk Management Error Codes](error
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Device not supported. |
 | 34400001 | Invalid argument. |
 | 34400003 | IPC communication failed. |
+| 34400008 | The sync root path is not registered. |
+| 34400010 | The sync root path does not exist. |
 | 34400014 | Temporary failure. Retry is recommended. |
 | 34400017 | The target path is not a placeholder file. |
 | 34400019 | Hydration in progress. |
+| 34400020 | The available disk space is insufficient. |
 | 34400021 | The callback table is not registered. |
+| 34400023 | The parent directory of the target path is not a directory. |
+| 34400024 | The target path does not exist. |
+| 34400025 | The file name or path is too long. |
 | 34400028 | The placeholder file is not fully hydrated. |
 | 34400029 | The application denied placeholder dehydration. |
+| 34400033 | The stored placeholder state is invalid. |
 
 **Example**
 
