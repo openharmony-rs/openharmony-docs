@@ -664,7 +664,6 @@ on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStat
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.|
 
 **示例：**
@@ -1095,7 +1094,7 @@ ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int, clearPageS
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | If the input parameter is not valid parameter. |
 | 16000050 | Internal error. |
 
 **示例：**

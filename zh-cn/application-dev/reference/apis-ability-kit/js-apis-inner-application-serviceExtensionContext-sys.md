@@ -289,13 +289,13 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 | 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. <br>适用版本：9-11 |
+| 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9-11 |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled. <br>适用版本：10+ |
 | 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
@@ -2552,6 +2552,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
