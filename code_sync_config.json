@@ -9089,6 +9089,11 @@
 						"end_line":202,
 						"name":"audioSessionManager_setDefaultOutputDevice",
 						"start_line":21
+					},
+					{
+						"end_line":286,
+						"name":"audioSessionManager_setMediaOutputDevice",
+						"start_line":22
 					}
 				]
 			},
