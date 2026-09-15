@@ -538,13 +538,13 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 **1. 配置示例**
 
-在PC/2in1设备上，配置鼠标事件全部都转换成触摸事件，示例如下：
+在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下：
 
 ``` json
 {
   "2in1": {
     "multiModalInputOptions": {
-      "mouse2TouchEventMode": "all"
+      "mouse2TouchEventMode": "disabled"
     }
   }
 }
