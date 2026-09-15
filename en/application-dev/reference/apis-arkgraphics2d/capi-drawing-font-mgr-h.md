@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b84f0b94577bf7daf346ad188f46cd786c6f1ba2 translatedAt=2026-07-25T02:01:05.176Z pushedAt=2026-07-25T03:03:14.503Z -->
+<!-- md-trans-meta sourceCommit=8b7b1366d6f03a3e02a38c8e9340a907bd3600a3 translatedAt=2026-08-24T08:28:42.098Z pushedAt=2026-08-31T07:27:57.988Z -->
 
 ## Overview
 
@@ -16,7 +16,7 @@ Declares functions related to system font management, used to match and obtain f
 
 **Library**: libnative_drawing.so
 
-**System capability:** SystemCapability.Graphic.Graphic2D.NativeDrawing
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -28,8 +28,8 @@ Declares functions related to system font management, used to match and obtain f
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)](#oh_drawing_fontmgrcreate) | Creates a font management object, which can be used only to manage system fonts.|
-| [void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)](#oh_drawing_fontmgrdestroy) | Destroys a font management object and reclaims the memory occupied by the object.|
+| [OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)](#oh_drawing_fontmgrcreate) | Creates an **OH_Drawing_FontMgr** object, which can be used only to manage system fonts.|
+| [void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)](#oh_drawing_fontmgrdestroy) | Destroys an **OH_Drawing_FontMgr** object and reclaims the memory occupied by the object.|
 | [int OH_Drawing_FontMgrGetFamilyCount(OH_Drawing_FontMgr* drawingFontMgr)](#oh_drawing_fontmgrgetfamilycount) | Obtains the number of font families.|
 | [char* OH_Drawing_FontMgrGetFamilyName(OH_Drawing_FontMgr* drawingFontMgr, int index)](#oh_drawing_fontmgrgetfamilyname) | Obtains the font family name by index. When the returned name is no longer needed, use [OH_Drawing_FontMgrDestroyFamilyName](capi-drawing-font-mgr-h.md#oh_drawing_fontmgrdestroyfamilyname) to release the memory occupied by the name. |
 | [void OH_Drawing_FontMgrDestroyFamilyName(char* familyName)](#oh_drawing_fontmgrdestroyfamilyname) | Reclaims the memory occupied by a font family name.|
@@ -236,7 +236,7 @@ Obtains a font style set object based on a specified font family name. When the 
 ### OH_Drawing_FontMgrMatchFamilyStyle()
 
 ```c
-OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* drawingFontMgr,const char* familyName, OH_Drawing_FontStyleStruct fontStyle)
+OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* drawingFontMgr, const char* familyName, OH_Drawing_FontStyleStruct fontStyle)
 ```
 
 **Description**
@@ -284,7 +284,7 @@ Obtains a typeface for the specified character. A null pointer is returned only 
 | [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) fontStyle | Font style, including the font weight, width, and slant.|
 | const char* bcp47 | Array of BCP47 language codes, which is a combination of ISO 639, 15924, and 3166-1 language codes. |
 | int bcp47Count | Size of the bcp47 array, which must match the actual number of elements in the bcp47 array. |
-| int32_t character | UTF8 character used for matching.|
+| int32_t character | UTF-8 character value used for matching. |
 
 **Return value**
 
@@ -322,7 +322,7 @@ Gets a typeface for the specified index. When the object is no longer needed, us
 ### OH_Drawing_FontStyleSetGetStyle()
 
 ```c
-OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleSet* fontStyleSet, int32_t index,char** styleName)
+OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleSet* fontStyleSet, int32_t index, char** styleName)
 ```
 
 **Description**
@@ -370,7 +370,7 @@ Frees the memory occupied by a font style.
 ### OH_Drawing_FontStyleSetMatchStyle()
 
 ```c
-OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* fontStyleSet,OH_Drawing_FontStyleStruct fontStyleStruct)
+OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* fontStyleSet, OH_Drawing_FontStyleStruct fontStyleStruct)
 ```
 
 **Description**

@@ -341,9 +341,11 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet | Car
 
 **起始版本**：20
+
+**变更信息**：从API版本26.0.1开始，增加支持在设备类型Car上申请。
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
@@ -4532,7 +4534,7 @@
 
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
-允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
+允许系统应用设置云侧公钥以及工作密钥密文，并协商代码保护密钥信息。
 
 **权限级别**：system_core
 
@@ -7468,7 +7470,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：24
 
@@ -7754,6 +7756,108 @@
 
 **起始版本**：26.1.0
 
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_PRIVACY_CONSENT
+
+允许应用签署整车隐私相关协议或政策。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_DRIVER_SEAT_PRIVACY
+
+允许应用设置主驾隐私模式的状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_CLEAR_TRACE
+
+允许应用设置车辆的一键除痕和更新除痕状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SENSORTYPE_STATE
+
+允许应用设置敏感权限的有效期。
+
+获取该权限后，应用可以设置麦克风、车内摄像头、定位服务等涉及用户敏感数据的权限的有效期。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_REMOTELOCATION
+
+允许应用设置远程位置控制的开关状态。
+
+获取该权限后，应用可以开启或关闭远程查看车辆位置的开关。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_ANONYMIZE_VOICE
+
+允许应用使用声纹脱敏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.CAR_SECURITY_PRIVACY_SET_SUPER_PRIVACY
+
+允许应用设置车内隐私保护状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
@@ -7888,7 +7992,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：true
+**是否支持证书授权**：true
 
 **支持设备**：PC/2in1
 
@@ -8948,6 +9052,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+允许系统应用管理多屏亮灭状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.vehicle.DEVICE_AUTH
 
 允许车辆后排扶手屏应用连接车机，进行设备认证。
@@ -8961,3 +9079,257 @@
 **支持设备**：Car
 
 **起始版本**：26.1.0
+
+## ohos.permission.vehicle.AutoWiredProjection
+
+允许应用使用有线投屏服务，以查询DP设备信息、投屏状态等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.ACCESS_EXTERNAL_DVR_DATA
+
+允许应用访问行车记录仪的外置存储卡数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.2.0
+
+## ohos.permission.AUTH_MODEL_DOWNLOAD
+
+允许系统应用将下载模型的授权结果发送给模型管理服务。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_FILE_MONITOR_DIR
+
+允许应用通过沙箱模式获取文件管理数据。
+
+获取权限后，应用可在客户端进程中通过沙箱模式查询数据库，减少查询时间。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Phone | Tablet | TV | Smartlock | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.VEHICLE_OEMCERTSIGN
+
+允许应用使用OEM证书对数据进行签名。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS
+
+允许应用使用受限网络，如内部网络、特定的车载网络等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SOFTBUS_SYS_HAP
+
+允许系统应用与近场设备建立连接并完成数据收发。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Car | Phone | Wearable | Tablet | TV
+
+**起始版本**：26.1.0
+
+## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
+
+允许系统应用修改指定应用的延迟任务参数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2-in-1 | Car | Phone | Tablet | TV | Wearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.vehicle.FACTORYRESET_WRITE_CONFIG
+
+允许应用将车辆恢复出厂设置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.ACCESS_SERVICE_NAVIGATION_PRIVATE_DATA
+
+允许系统应用获取使用导航信息服务的敏感数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
+
+允许应用在多模式设备上切换可展示的应用列表。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Tablet | PC/2in1
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_SHARE_PHOTO
+
+允许系统应用访问共享相册及相册内文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | PC/2in1 | Car | TV | Wearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_LOH
+
+允许应用调用Linux子系统虚拟化能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY
+
+允许应用通过伪终端（Pseudo-Terminal，PTY）将具备普通权限的Linux命令传递到容器中执行。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.MANAGE_LOH_PTY_ROOT
+
+允许应用通过伪终端（Pseudo-Terminal，PTY）将具有root权限的Linux命令传递到容器中执行。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.CLEAR_BACKGROUND_APPS
+
+允许应用清理后台应用资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.SOFTBUS_MANAGER_RESOURCE
+
+允许系统应用处理软总线资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Car | Phone | Tablet | TV | Wearable
+
+**起始版本**：26.1.0
+
+## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
+ 
+允许应用跳过企业重签名证书校验。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Phone | PC/2in1 | Tablet
+ 
+**起始版本**：26.2.0

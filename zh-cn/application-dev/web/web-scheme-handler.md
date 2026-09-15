@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -84,6 +84,12 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
 
 ``` TypeScript
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import testNapi from 'libentry.so';
+import { webview } from '@kit.ArkWeb';
+
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 注册三方协议的配置。
@@ -285,6 +291,8 @@ ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../referenc
     return true;
    })
    ```
+
+网络拦截支持流式请求，可以通过多次调用[didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12)或者[OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata)，分块构造返回响应体。最后一次返回响应体时，再调用[didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12)或者[OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish)通知Web组件被拦截的请求已经完成。
 
 当希望通过[OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror)或者[didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12)结束当前请求时，需要在调用该接口之前通过[OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头，否则无法结束请求。
 

@@ -244,7 +244,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .lineHeight(20)
   ```
 
-  ![radio-default](figures/radio-default.png)
+  ![text-line-height](figures/text-line-height.png)
 
 - 通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration)属性设置文本装饰线样式、颜色及其粗细。
 
@@ -490,7 +490,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
             .borderWidth(1)
             .fontSize(40)
             .contentTransition(this.numberTransition)
-          Button('chang number')
+          Button('change number')
             .onClick(() => {
               this.number++
             })
@@ -805,7 +805,7 @@ Text() {
 
 AI菜单是基于AI文本分析动态识别实体后出现的智能操作菜单，菜单项包括电话号码、网址、邮箱地址等（AI识别出对应实体才显示，未检测到则不显示），与系统菜单的关键区别是菜单内容由AI检测结果决定，不是固定的，适用于含实体信息的文本内容。
 
-自定义菜单是由开发者完全自定义菜单内容，需要主动调API配置，适用于有特殊业务需求的文本交互。
+自定义菜单是由开发者完全自定义菜单内容，需要主动调用API配置，适用于有特殊业务需求的文本交互。
 
 ### 使用系统菜单
 设置Text被选中时，会弹出包含复制、翻译、搜索的菜单。

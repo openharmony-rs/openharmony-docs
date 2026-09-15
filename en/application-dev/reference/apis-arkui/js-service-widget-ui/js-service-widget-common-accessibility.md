@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-07-31T01:15:22.630Z pushedAt=2026-07-31T12:04:26.613Z -->
+<!-- md-trans-meta sourceCommit=09eef3e0299192143afd37f4d1adb4b82c5dc737 translatedAt=2026-08-20T09:32:44.429Z pushedAt=2026-08-21T02:05:25.914Z -->
 
 You can set accessibility attributes and events for components, such as the accessibility group, accessibility text, accessibility description, and accessibility importance. In addition, events dispatched by the accessibility service can be received, enabling custom accessibility interactions. This is suitable for scenarios where screen reader and other accessibility features need to be provided for service widgets, helping visually impaired users and other special groups clearly understand the currently selected component and the consequences of operations, and improving the accessibility and reachability of the app.
 

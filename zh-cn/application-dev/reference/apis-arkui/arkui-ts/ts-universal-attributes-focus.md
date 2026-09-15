@@ -244,7 +244,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-### FocusPriority<sup>12+</sup>
+## FocusPriority<sup>12+</sup>
 
 设置组件获焦优先级。
 
@@ -260,7 +260,7 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 | PRIOR | 2000|容器首次获焦时优先获焦的优先级。优先级高于AUTO。 |
 | PREVIOUS | 3000|上一次容器整体失焦时获焦节点的优先级。优先级高于PRIOR。 |
 
-### KeyProcessingMode<sup>15+</sup>
+## KeyProcessingMode<sup>15+</sup>
 
 设置按键事件处理的模式。
 
@@ -546,7 +546,7 @@ struct FocusableExample {
 
 ![groupDefaultFocus1](figures/groupDefaultFocus1.png)
 
-第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走到其内部的groupDefaultFocus绑定的组件上：
+第二次按Tab键，焦点切换到tabIndex(2)的容器上，且自动走焦到其内部的groupDefaultFocus绑定的组件上：
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 

@@ -1,4 +1,4 @@
-# @ohos.enterprise.securityManager（安全管理）
+# @ohos.enterprise.securityManager (安全管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -142,7 +142,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
       console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 }).catch((err: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${err.message}`);
   return;
@@ -332,13 +332,15 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 设置设备锁屏口令策略。策略设置后，当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。适用于企业安全合规场景，如强制要求员工使用强密码、定期更换密码等，降低企业数据泄露风险。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -375,21 +377,23 @@ let policy: securityManager.PasswordPolicy = {
   complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z\\d!@#$%^&*]{8,}$',
   validityPeriod: 1,
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
-  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4,
+  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4
 };
 try {
   securityManager.setPasswordPolicy(wantTemp, policy);
   console.info(`Succeeded in setting password policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getPasswordPolicy
 
-getPasswordPolicy(admin: Want | null): PasswordPolicy
+getPasswordPolicy(admin: Want): PasswordPolicy
 
 获取设备锁屏口令策略。企业可通过此接口查询当前配置的口令策略，用于策略审计、合规性检查等场景，确保设备口令策略符合企业安全规范。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[securityManager.getPasswordPolicy](#securitymanagergetpasswordpolicy-1)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -401,7 +405,7 @@ getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -435,11 +439,62 @@ let wantTemp: Want = {
 try {
   let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
   console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
+
+## securityManager.getPasswordPolicy
+
+getPasswordPolicy(admin: Want | null): PasswordPolicy
+
+获取设备锁屏口令策略。企业可通过此接口查询当前配置的口令策略，用于策略审计、合规性检查等场景，确保设备口令策略符合企业安全规范。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型                   | 说明                      |
+| --------------------- | ------------------------- |
+| [PasswordPolicy](#passwordpolicy) | 设备锁屏口令策略。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(null);
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## securityManager.setScreenLockDisabledForAccount
 
 setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
@@ -448,13 +503,15 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 
 > **说明：**
 >
-> 1.该接口能力仅在设备无锁屏密码时生效。
+> 1. 该接口能力仅在设备无锁屏密码时生效。
 > 
-> 2.设备默认属于启用滑动解锁的状态。
+> 2. 设备默认属于启用滑动解锁的状态。
 >
-> 3.设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
+> 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
 > 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+>
+> 5.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -465,8 +522,6 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -501,7 +556,7 @@ let wantTemp: Want = {
 try {
   securityManager.setScreenLockDisabledForAccount(wantTemp, true);
   console.info(`Succeeded in setting screen lock disabled for account.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -559,7 +614,7 @@ let wantTemp: Want = {
 try {
   let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
   console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -570,13 +625,15 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 
 设置设备剪贴板策略。策略设置后，应用将按照设置的策略限制剪贴板的使用范围。适用于企业数据防泄露场景，如限制敏感应用（如企业邮箱、财务系统）的剪贴板使用范围，防止敏感数据被复制到非授权应用，降低数据泄露风险。企业可通过此接口控制应用的剪贴板使用权限，防止敏感数据通过剪贴板泄露到未授权应用，增强企业数据安全防护能力。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -613,16 +670,18 @@ let tokenId: number = 586874394;
 try {
   securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
   console.info(`Succeeded in setting clipboard policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getAppClipboardPolicy
 
-getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
+getAppClipboardPolicy(admin: Want, tokenId?: number): string
 
 获取设备剪贴板策略。企业可通过此接口查询当前配置的剪贴板策略，用于策略审计和合规性检查，确保剪贴板管控策略符合企业安全要求。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[securityManager.getAppClipboardPolicy](#securitymanagergetappclipboardpolicy-1)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -634,7 +693,7 @@ getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 | tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。 |
 
 **返回值：**
@@ -670,16 +729,19 @@ let tokenId: number = 586874394;
 try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
   console.info(`Succeeded in getting clipboard policy, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-## securityManager.setAppClipboardPolicy<sup>18+</sup>
 
-setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
+## securityManager.getAppClipboardPolicy
 
-设置指定用户下指定应用的设备剪贴板策略。策略设置后，指定应用的剪贴板将按照策略限制使用范围。企业可为不同用户的不同应用配置差异化的剪贴板使用权限，实现精细化的数据访问控制，满足多用户多应用场景下的安全管控需求。
+getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
+
+获取设备剪贴板策略。企业可通过此接口查询当前配置的剪贴板策略，用于策略审计和合规性检查，确保剪贴板管控策略符合企业安全要求。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -687,7 +749,60 @@ setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+| tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。 |
+
+**返回值：**
+
+| 类型                   | 说明                      |
+| --------------------- | ------------------------- |
+| string | 返回JSON字符串形式的设备剪贴板策略。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let tokenId: number = 586874394;
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = securityManager.getAppClipboardPolicy(null, tokenId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+## securityManager.setAppClipboardPolicy<sup>18+</sup>
+
+setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
+
+设置指定用户下指定应用的设备剪贴板策略。策略设置后，指定应用的剪贴板将按照策略限制使用范围。企业可为不同用户的不同应用配置差异化的剪贴板使用权限，实现精细化的数据访问控制，满足多用户多应用场景下的安全管控需求。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -725,16 +840,18 @@ let accountId: number = 100;
 try {
   securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
   console.info(`Succeeded in setting clipboard policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getAppClipboardPolicy<sup>18+</sup>
 
-getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string
+getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): string
 
 获取指定用户下指定应用的设备剪贴板策略。企业可通过此接口查询特定应用的剪贴板使用权限配置，用于策略审计和合规性检查。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[securityManager.getAppClipboardPolicy](#securitymanagergetappclipboardpolicy-2)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -746,7 +863,7 @@ getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number)
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 | bundleName | string                                                  | 是   | 被设置剪贴板策略的应用包名。                                                                                                                            |
 | accountId  | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -783,21 +900,19 @@ let accountId: number = 100;
 try {
   let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
   console.info(`Succeeded in getting clipboard policy, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-## securityManager.setWatermarkImage<sup>14+</sup>
 
-setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelMap, accountId: number): void
+## securityManager.getAppClipboardPolicy
 
-为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
-> **说明：**
->
-> 1.本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
->
-> 2.水印图片会以平铺方式重复覆盖整个应用界面。
+getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string
+
+获取指定用户下指定应用的设备剪贴板策略。企业可通过此接口查询特定应用的剪贴板使用权限配置，用于策略审计和合规性检查。
+
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -805,7 +920,64 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占), 同一个用户下的同一个应用的水印独占。不同用户、不同应用的水印[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+| bundleName | string                                                  | 是   | 被设置剪贴板策略的应用包名。                                                                                                                            |
+| accountId  | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型                                  | 说明       |
+| ----------------------------------- | -------- |
+| string | 返回JSON字符串形式的设备剪贴板策略。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let bundleName: string = 'com.example.myapplication';
+let accountId: number = 100;
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = securityManager.getAppClipboardPolicy(null, bundleName, accountId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get clipboard policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+## securityManager.setWatermarkImage<sup>14+</sup>
+
+setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelMap, accountId: number): void
+
+为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
+> **说明：**
+>
+> 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+>
+> 2.水印图片会以平铺方式重复覆盖整个应用界面。
+>
+> 3.在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -845,7 +1017,7 @@ let accountId: number = 100;
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -898,7 +1070,7 @@ let accountId: number = 100;
 try {
   securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
   console.info(`Succeeded in cancelling watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -909,13 +1081,15 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 
 设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** 同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -957,9 +1131,10 @@ let appInstanceTemp: securityManager.ApplicationInstance = {
 };
 let permissionsTemp: Array<string> = ['ohos.permission.CAMERA', 'ohos.permission.LOCATION'];
 try {
-  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
+  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp,
+    securityManager.PermissionManagedState.GRANTED);
   console.info('Succeeded in setting permission managed state.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1020,9 +1195,10 @@ let appInstanceTemp: securityManager.ApplicationInstance = {
 };
 let permissionTemp: string = 'ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION';
 try {
-  let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
+  let result: securityManager.PermissionManagedState =
+    securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
   console.info(`Succeeded in getting permission managed state, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1045,6 +1221,10 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 
   强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1052,8 +1232,6 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 
@@ -1089,16 +1267,18 @@ let wantTemp: Want = {
 try {
   securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
   console.info(`Succeeded in setting managed policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
 ## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
 
-getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy
+getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
 
 获取外部来源扩展程序的管控策略。
+
+本接口通过传入Want查询对应企业设备管理应用设置的策略，如需查询实际生效的策略，请使用[securityManager.getExternalSourceExtensionsPolicy](#securitymanagergetexternalsourceextensionspolicy)接口。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1112,7 +1292,7 @@ getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 
 **返回值：**
 
@@ -1146,11 +1326,64 @@ let wantTemp: Want = {
 try {
   let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
   console.info(`Succeeded in getting managed policy, result : ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
+
+## securityManager.getExternalSourceExtensionsPolicy
+
+getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy
+
+获取外部来源扩展程序的管控策略。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，传入Want时查询对应企业设备管理应用设置的策略，传入null时查询实际生效的策略。|
+
+**返回值：**
+
+| 类型                                  | 说明       |
+| ----------------------------------- | -------- |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy) | 返回ManagedPolicy枚举类型的管控策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+
+try {
+  // 参数需根据实际情况进行替换
+  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(null);
+  console.info(`Succeeded in getting managed policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
 ## securityManager.installEnterpriseReSignatureCertificate<sup>24+</sup>
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
@@ -1167,13 +1400,15 @@ installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, f
 
 规格约束：<br>1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；<br>2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；<br>3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1202,7 +1437,7 @@ installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, f
 ```ts
 import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -1214,13 +1449,13 @@ let wantTemp: Want = {
 const filePath = '/test.cer';
 // 需根据实际情况进行替换
 let certificateAlias: string = 'test.cer';
-let fd: number = fs.openSync(filePath, fs.OpenMode.READ_ONLY).fd;
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
 // 需根据实际情况进行替换
 let accountId: number = 100;
 try {
   securityManager.installEnterpriseReSignatureCertificate(
     wantTemp, certificateAlias, fd, accountId);
-  console.info('Success to install enterprise re signature certificate.');
+  console.info('Success in installing enterprise re signature certificate.');
 } catch (err) {
   console.error(`Failed to install enterprise re signature certificate.
     Code: ${err.code}, message: ${err.message}`);
@@ -1283,7 +1518,7 @@ let accountId: number = 100;
 try {
   securityManager.uninstallEnterpriseReSignatureCertificate(
     wantTemp, certificateAlias, accountId);
-  console.info('Success to uninstall enterprise re signature certificate.');
+  console.info('Success in uninstalling enterprise re signature certificate.');
 } catch (err) {
   console.error(`Failed to uninstall enterprise re signature certificate.
     Code: ${err.code}, message: ${err.message}`);
@@ -1298,19 +1533,19 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 
 > **说明：**
 >
-> 1.屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
+> 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
 > 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+>
+> 3.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1353,7 +1588,7 @@ imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
   try {
     securityManager.setScreenWatermarkImage(wantTemp, pixelMap);
     console.info(`Succeeded in setting screen watermark image.`);
-  } catch(err) {
+  } catch (err) {
     console.error(`Failed to set screen watermark image. Code: ${err.code}, message: ${err.message}`);
   }
 }).catch((err: Error) => {
@@ -1367,7 +1602,7 @@ cancelScreenWatermarkImage(admin: Want): void
 
 取消屏幕水印策略，对所有用户生效。取消成功后，设备屏幕上的水印消失。当设备不再需要屏幕水印保护时，企业可调用此接口取消水印策略。只有设置屏幕水印的用户才能取消该水印，例如用户100设置的屏幕水印，用户101无法取消。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1405,7 +1640,7 @@ let wantTemp: Want = {
 try {
     securityManager.cancelScreenWatermarkImage(wantTemp);
     console.info(`Succeeded in canceling screen watermark image.`);
-} catch(err) {
+} catch (err) {
     console.error(`Failed to cancel screen watermark image. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1418,11 +1653,13 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 
 > **说明：**
 >
-> 1.只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
+> 1. 只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
 >
-> 2.单个用户下最多可以禁用200个权限。
+> 2. 单个用户下最多可以禁用200个权限。
 >
 > 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
+>
+> 4.在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **起始版本：** 26.0.0
 
@@ -1431,8 +1668,6 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** 针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1473,7 +1708,7 @@ let accountId: number = 100;
 try {
   securityManager.setDisallowedPermission(wantTemp, permission, disallow, accountId);
   console.info(`Succeeded in setting disallowed permission.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set disallowed permission. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1532,7 +1767,7 @@ let accountId: number = 100;
 try {
   let result: Array<string> = securityManager.getDisallowedPermissions(wantTemp, accountId);
   console.info(`Succeeded in getting disallowed permissions, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get disallowed permissions. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1545,15 +1780,17 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 
 > **说明：**
 >
-> 1.必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
+> 1. 必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
 >
-> 2.应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
+> 2. 应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
 >
-> 3.当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
+> 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
 > 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
 > 5.系统应用和普通应用都可以添加。
+>
+> 6.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -1562,8 +1799,6 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1613,7 +1848,7 @@ try {
   // 设置指定应用可以继续使用ohos.permission.CAMERA权限
   securityManager.addAllowedPermissionBundle(wantTemp, permission, appInstance);
   console.info(`Succeeded in adding allowed permission bundle.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add allowed permission bundle. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1627,6 +1862,8 @@ removeAllowedPermissionBundle(admin: Want, permission: string, applicationInstan
 > **说明：**
 >
 > 必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能从权限使用例外名单移除应用，否则返回错误码9201044。
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -1635,8 +1872,6 @@ removeAllowedPermissionBundle(admin: Want, permission: string, applicationInstan
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1679,7 +1914,7 @@ let appInstance: common.ApplicationInstance = {
 try {
   securityManager.removeAllowedPermissionBundle(wantTemp, permission, appInstance);
   console.info(`Succeeded in removing allowed permission bundle.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove allowed permission bundle. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1738,9 +1973,10 @@ let wantTemp: Want = {
 let permission: string = 'ohos.permission.CAMERA';
 let accountId: number = 100;
 try {
-  let result: Array<common.ApplicationInstance> = securityManager.getAllowedPermissionBundles(wantTemp, permission, accountId);
+  let result: Array<common.ApplicationInstance> =
+    securityManager.getAllowedPermissionBundles(wantTemp, permission, accountId);
   console.info(`Succeeded in getting allowed permission bundles, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get allowed permission bundles. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1758,6 +1994,8 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 > 当水印属性[properties](#watermarkproperties)行列参数的取值范围是[1, 255]内的整数。若传入小于1或大于255的值，接口会返回错误码9200012。
 >
 > 当水印属性行数和列数都为1时，居中显示单个水印图片。当水印属性行数为m，列数为n时，按m行n列的网格布局排列显示m\*n个水印图片。当水印属性行列参数过大，导致网格布局无法适应窗口大小时，水印会以窗口左上角为原点，以平铺方式重复覆盖整个应用窗口界面，水印图片超出界面右侧、下侧的部分会被裁剪（例如屏幕宽高是1260\*2720，水印图片宽高是100\*100，若设置的行数超过27，或设置的列数超过12，水印会以平铺方式重复覆盖整个应用窗口界面）。
+>
+> 在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -1766,8 +2004,6 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，同一个用户下的同一个应用的水印独占。不同用户、不同应用的水印[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1809,11 +2045,11 @@ let accountId: number = 100;
 let properties: securityManager.WatermarkProperties = {
   intervalsRow: 1,
   intervalsCol: 1
-}
+};
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId, properties);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1835,11 +2071,11 @@ let accountId: number = 100;
 let properties: securityManager.WatermarkProperties = {
   intervalsRow: 27,
   intervalsCol: 12
-}
+};
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId, properties);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1861,11 +2097,11 @@ let accountId: number = 100;
 let properties: securityManager.WatermarkProperties = {
   intervalsRow: 28,
   intervalsCol: 12
-}
+};
 try {
   securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId, properties);
   console.info(`Succeeded in setting watermarkImage policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1924,7 +2160,7 @@ let accountId: number = 100;
 try {
   let result: Array<string> = securityManager.getWatermarkImageApps(wantTemp, accountId);
   console.info(`Succeeded in getting watermark image apps, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get watermark image apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1934,6 +2170,8 @@ try {
 证书信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称   | 类型       | 只读 | 可选 | 说明               |
 | ------ | ---------- | ---- | ---- | ------------------ |
@@ -1945,6 +2183,8 @@ try {
 设备锁屏口令策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | ---- | --------------------------- |
@@ -1958,6 +2198,8 @@ try {
 设备剪贴板策略。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。
+通过bindSheet属性为组件绑定半模态弹窗，在组件插入时可通过设置自定义高度或默认的内置高度确定半模态大小。
 
 >  **说明：**
 >
@@ -26,9 +26,11 @@
 
 | 名称              | 类型                                       | 只读 | 可选   | 说明              |
 | --------------- | ------------------------------- | --------- | ---- | --------------- |
-| offset<sup>14+</sup>       | [Position](ts-types.md#position) | 否 | 否    | 设置半模态弹窗偏移量。当半模态为底部弹窗时，支持设置底部间距。不支持设置半模态的[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的detents属性。y轴设置为负数的时候不生效。<br/> 默认值：x轴为0vp，y轴坐标为0vp。<br/>**系统接口：** 此接口为系统接口。|
-| edgeLightMode | [EdgeLightMode](ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置半模态弹窗边缘光效动画模式。对于半模态弹窗的边缘光效动画，EDGELIGHT_AUTO：在所有算力设备都关闭；EDGELIGHT_ENABLED：开启边缘光效动画；EDGELIGHT_DISABLED：关闭边缘光效动画。<br/>默认值：EdgeLightMode.EDGELIGHT_DISABLED<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统接口：** 此接口为系统接口。|
-| blurSnapshot | [BlurSnapshotOptions](#blursnapshotoptions) | 否 | 是 | 半模态模糊快照优化选项，用于降低模糊渲染的计算开销。当使用blurStyle或systemMaterial设置模糊或材质效果时发现功耗过高，可开启模糊优化。该属性在半模态展示后不支持和undefined之间的动态切换。<br/>默认值：undefined<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统接口：** 此接口为系统接口。|
+| offset<sup>14+</sup>       | [Position](ts-types.md#position) | 否 | 否    | 设置半模态弹窗偏移量。仅当半模态为底部弹窗时，支持设置底部间距。不支持设置半模态的[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的detents属性。y轴设置为正数时不生效，将回退至默认值0vp。<br> 默认值：x轴坐标为0vp，y轴坐标为0vp。<br>**系统接口：** 此接口为系统接口。|
+| edgeLightMode | [EdgeLightMode](ts-appendix-enums-sys.md#edgelightmode) | 否 | 是 | 设置半模态弹窗边缘光效动画模式。边缘流光动画仅在[SheetType](ts-universal-attributes-sheet-transition.md#sheettype11枚举说明)为BOTTOM样式时生效。未设置该属性时，边缘光效动画默认关闭。对于半模态弹窗的边缘光效动画，EDGELIGHT_AUTO：在所有算力设备都关闭；EDGELIGHT_ENABLED：开启边缘光效动画；EDGELIGHT_DISABLED：关闭边缘光效动画。<br>默认值：EdgeLightMode.EDGELIGHT_DISABLED<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+| blurSnapshot | [BlurSnapshotOptions](#blursnapshotoptions) | 否 | 是 | 半模态模糊快照优化选项，用于降低模糊渲染的计算开销。当使用blurStyle或systemMaterial设置模糊或材质效果时发现功耗明显增加时，可开启模糊优化。开启后，若半模态配置了blurStyle或systemMaterial，其模糊效果将使用快照渲染以降低计算开销；若未设置blurStyle或systemMaterial，则开启enableBlurSnapshot不产生模糊优化效果。该属性在半模态展示后不支持和undefined之间的动态切换，若在展示后尝试切换则设置不生效。半模态的POPUP类型不支持模糊优化，若在POPUP类型上设置enableBlurSnapshot=true则该设置不生效。<br>默认值：undefined，关闭模糊优化<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+| titleBarBackgroundBlur | [SheetTitleBarBackgroundBlurOptions](#sheettitlebarbackgroundbluroptions) | 否 | 是 | 标题栏背景模糊效果，支持自定义模糊参数。仅当标题栏存在时生效。<br>默认值：undefined，表示不设置标题栏背景模糊效果。<br>**说明：**<br>全屏模态样式（CONTENT_COVER）下不支持标题栏背景模糊，该属性设置无效。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+| closeButtonMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 关闭按钮的系统材质效果。<br>默认值：undefined，表示不设置系统材质。<br>从API版本26.1.0开始，当该属性未设置时，使用半模态的[systemMaterial](ts-universal-attributes-sheet-transition.md#sheetoptions)接口设置材质会赋予关闭按钮一种系统内置的材质效果。<br>通过该接口设置的材质效果会覆盖由半模态的systemMaterial接口带来的关闭按钮的内置材质效果。<br>**说明：**<br>全屏模态样式（CONTENT_COVER）下不支持关闭按钮系统材质，该属性设置无效。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
 
 ## BlurSnapshotOptions
 
@@ -44,7 +46,26 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| enableFreeze | boolean | 否 | 是 | 设置模糊快照是否开启冻结优化。开启后，在模糊快照时应用冻结优化以降低渲染开销。<br>拉起半模态后支持动态切换该参数值。<br/>默认值：false<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统接口：** 此接口为系统接口。|
+| enableFreeze | boolean | 否 | 是 | 设置模糊快照是否开启冻结优化。开启后，在模糊快照时应用冻结优化以降低渲染开销；未设置或设置为false时，冻结优化关闭，采用常规渲染方式。<br>拉起半模态后支持动态切换该参数值。<br>默认值：false<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。|
+
+## SheetTitleBarBackgroundBlurOptions
+
+标题栏背景模糊效果层的自定义参数，所有子属性均为可选，未设置的属性使用系统默认值。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称              | 类型                                       | 只读   | 可选   | 说明            |
+| --------------- | ---------------------------------------- | ---- | ---- | ------------- |
+| blurStyle | [SheetTitleBarBackgroundBlur](ts-universal-attributes-sheet-transition.md#sheettitlebarbackgroundblur) | 否    | 是    | 模糊效果层的模糊样式，设置为GRADIENT启用渐变模糊效果。<br>默认值：SheetTitleBarBackgroundBlur.NONE。 |
+| maskExtraHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果层的额外高度，以标题栏高度为基础的额外效果高度。<br>默认值：32vp。<br>当取值为0vp时，模糊效果层下边沿与标题栏等高。<br>**起始版本：** 26.2.0 |
+| maskColor | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是    | 模糊效果层的渐变基色，作为渐变顶部的最大颜色值，系统应用内置透明度曲线从顶部到底部逐渐将其淡化。<br>未设置时：浅色模式使用半透明白色效果，深色模式使用半透明黑色效果。<br>**起始版本：** 26.2.0 |
+| effectiveDistance | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否    | 是    | 模糊效果从完全隐藏到完全可见所需的滑动距离。<br>取值范围：大于等于0，小于0的值按0处理。<br>默认值：8vp。<br>**起始版本：** 26.2.0 |
 
 ## 示例
 
@@ -52,7 +73,7 @@
 
 以下示例通过设置edgeLightMode属性开启边缘光效动画，同时使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口实现了半透明材质效果。
 
-从API版本26.0.0开始，[SheetOptions](ts-universal-attributes-sheet-transition-sys.md#sheetoptions)新增edgeLightMode属性。
+从API版本26.0.0开始，[SheetOptions](#sheetoptions)新增edgeLightMode属性。
 
 ```ts
 // xxx.ets
@@ -63,14 +84,14 @@ import { uiMaterial } from '@kit.ArkUI';
 struct SheetMaterialExample {
   @State isShow: boolean = false;
   @State sheetHeight: number = 300;
-  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: 0,
+  @State sheetMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
   });
 
   @Builder
-  myBuilder() {
+  sheetBuilder() {
     Column({ space: 10 }) {
-      Text("Text")
+      Text('Text')
         .fontSize(20)
         .margin(10)
     }
@@ -83,17 +104,17 @@ struct SheetMaterialExample {
       // 请开发者替换为实际资源文件
       Image($r('app.media.startIcon'))
       Column() {
-        Button("open Sheet")
+        Button('open Sheet')
           .onClick(() => {
             this.isShow = true;
           })
           .fontSize(20)
           .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
+          .bindSheet($$this.isShow, this.sheetBuilder(), {
             height: this.sheetHeight,
             backgroundColor: Color.Transparent,
             edgeLightMode: EdgeLightMode.EDGELIGHT_ENABLED,
-            systemMaterial: this.myMaterial
+            systemMaterial: this.sheetMaterial
           })
       }
       .justifyContent(FlexAlign.Center)
@@ -108,9 +129,9 @@ struct SheetMaterialExample {
 
 ### 示例2（半模态设置模糊优化）
 
-以下示例通过设置blurSnapshot属性开启模糊优化。当使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口设置材质效果或使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的blurStyle接口设置模糊时发现功耗过高，可以尝试开启模糊优化。
+以下示例通过设置blurSnapshot属性开启模糊优化。当使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial接口设置材质效果或使用[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions)中的blurStyle接口设置模糊时发现功耗明显增加时，可以尝试开启模糊优化。
 
-从API版本26.0.0开始，[SheetOptions](ts-universal-attributes-sheet-transition-sys.md#sheetoptions)新增blurSnapshot属性。
+从API版本26.0.0开始，[SheetOptions](#sheetoptions)新增blurSnapshot属性。
 
 ```ts
 // xxx.ets
@@ -121,13 +142,13 @@ import { uiMaterial } from '@kit.ArkUI';
 struct SheetTransitionExample {
   @State isShow: boolean = false;
   @State rotateAngle: number = 0;
-  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+  @State sheetMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
     style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
   });
 
   @Builder
-  myBuilder() {
-    Text("Context")
+  sheetBuilder() {
+    Text('Context')
   }
 
   build() {
@@ -156,19 +177,19 @@ struct SheetTransitionExample {
           })
         })
       Column() {
-        Button("Open BindSheet")
+        Button('Open BindSheet')
           .onClick(() => {
             this.isShow = true;
           })
           .fontSize(20)
           .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
+          .bindSheet($$this.isShow, this.sheetBuilder(), {
             height: 400,
             showClose: true,
             backgroundColor: Color.Transparent,
-            // 若在设置blurStyle或者systemMaterial时发现功耗过高，可以尝试开启模糊优化
+            // 若在设置blurStyle或者systemMaterial时发现功耗明显增加时，可以尝试开启模糊优化
             blurStyle: BlurStyle.Thin,
-            // systemMaterial: this.myMaterial,
+            // systemMaterial: this.sheetMaterial,
             blurSnapshot: { enableFreeze: true },
           })
       }
@@ -182,3 +203,169 @@ struct SheetTransitionExample {
 ```
 
 ![zh-cn_sheet](figures/sheet-material-freeze.gif)
+
+### 示例3（半模态自定义按钮材质）
+
+该示例通过closeButtonMaterial属性自定义半模态关闭按钮的材质效果，对比未设置（使用systemMaterial内置材质）、关闭材质、自定义材质三种状态。
+
+从API版本26.1.0开始，[SheetOptions](#sheetoptions)新增closeButtonMaterial属性。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State myMaterial: SystemUiMaterial | undefined = undefined;
+  @State myCloseIconMaterial: SystemUiMaterial | undefined = undefined;
+
+  @Builder
+  myBuilder() {
+    Column({ space: 10 }) {
+      Text('Content')
+        .fontSize(30)
+    }
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('按钮带有默认材质')
+          .onClick(() => {
+            this.myMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+            });
+            this.myCloseIconMaterial = undefined;
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            systemMaterial: this.myMaterial,
+            closeButtonMaterial: this.myCloseIconMaterial,
+          })
+        Button('按钮关闭材质')
+          .onClick(() => {
+            this.myMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+            });
+            this.myCloseIconMaterial = uiMaterial.Material.empty;
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+        Button('按钮设置自定义材质')
+          .onClick(() => {
+            this.myMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+            });
+            this.myCloseIconMaterial = new uiMaterial.ImmersiveMaterial({
+              style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            });
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+未设置closeButtonMaterial时，关闭按钮使用systemMaterial带来的内置材质效果。
+
+![zh-cn_sheet](figures/sheet11-close-undefined.gif)
+
+设置closeButtonMaterial为uiMaterial.Material.empty时，关闭按钮无材质效果。
+
+![zh-cn_sheet](figures/sheet11-close-empty.gif)
+
+设置closeButtonMaterial为自定义材质时，关闭按钮使用自定义材质效果。
+
+![zh-cn_sheet](figures/sheet11-close-thick.gif)
+
+
+### 示例4（半模态设置标题栏背景模糊）
+
+该示例通过titleBarBackgroundBlur属性自定义半模态标题栏背景模糊效果。同时配合titleBarHoverMode设置为STACK堆叠模式，使标题栏悬浮于内容区上方时模糊效果可见。
+
+从API版本26.1.0开始，[SheetOptions](#sheetoptions)新增titleBarBackgroundBlur属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetTitleBarBlurExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+    }
+    .width('100%')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('拉起半模态')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: '标题' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+            titleBarBackgroundBlur: {
+              blurStyle: SheetTitleBarBackgroundBlur.GRADIENT,
+              maskExtraHeight: LengthMetrics.vp(50),
+              effectiveDistance: LengthMetrics.vp(50),
+              maskColor: '#330000FF',
+            },
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheet12-blur.gif)

@@ -57,7 +57,7 @@ key(value: string): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。<br>默认值：'' |
+| value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。 |
 
 **返回值：**
 
@@ -360,6 +360,8 @@ struct IdExample {
               windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
               displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
               displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+              screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+              screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
             };
             sendTouchEvent(touchPoint); // 发送触摸事件
             touchPoint.type = TouchType.Up;
@@ -384,6 +386,8 @@ struct IdExample {
             windowY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
             displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
             displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+            screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
+            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标
             stopPropagation: () => {
             },
             timestamp: 1,

@@ -100,7 +100,7 @@ layoutOptions: GridLayoutOptions = {
   regularSize: [1, 1],
   onGetRectByIndex: (index: number) => {
   // ···
-    if (index = = key1) { // key1 is the index of the 0 key.
+    if (index == key1) { // key1 is the index of the 0 key.
       return [6, 0, 1, 2];
     } else if (index == key2) { // key2 is the index of the = key.
       return [5, 3, 2, 1];
@@ -466,13 +466,13 @@ Grid() {
 >A greater **cachedCount** value may result in higher CPU and memory overhead of the UI. Adjust the value by taking into account both the comprehensive performance and user experience.
 
 <!--RP1-->
-<!--Del-->##  
+<!--Del-->## Samples
 
  
 
 -  
 
 -  
-<!--RP1End--><!--DelEnd-->
+<!--DelEnd--><!--RP1End-->
 
 <!--no_check-->

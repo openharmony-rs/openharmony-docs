@@ -7,7 +7,7 @@
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
-该模块提供打印扩展能力的调用接口。PrintExtensionAbility基于生命周期回调机制运行，系统在打印扩展连接、发现打印机、连接/断开打印机、查询打印机能力、启动/取消打印任务等场景下依次调用相应回调方法，开发者需在各回调中实现对应的打印扩展逻辑。
+该模块提供打印扩展能力的调用接口。PrintExtensionAbility基于生命周期回调机制运行，系统在打印扩展连接、发现打印机、连接/断开打印机、查询打印机能力、启动/取消打印任务等场景下分别调用相应回调方法，开发者需在各回调中实现对应的打印扩展逻辑。
 
 > **说明：**
 > 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -35,8 +35,7 @@ onCreate(want: Want): void
 
 系统首次连接打印扩展能力时调用。开发者可在此回调中完成打印扩展能力的初始化工作，如初始化必要的资源、状态等。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -66,8 +65,7 @@ onStartDiscoverPrinter(): void
 
 开始发现打印机时调用。开发者可在此回调中实现自己的打印机发现逻辑，可通过 [addPrinterToDiscovery](js-apis-print.md#printaddprintertodiscovery14) 将发现的打印机信息上报给系统。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -90,8 +88,7 @@ onStopDiscoverPrinter(): void
 
 停止发现打印机时调用。开发者应在此回调中停止打印机发现流程并释放相关资源。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -114,8 +111,7 @@ onConnectPrinter(printerId: number): void
 
 连接到特定打印机时调用。开发者应在此回调中实现与指定打印机（通过printerId标识）的连接逻辑。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -123,7 +119,7 @@ onConnectPrinter(printerId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID，取值于打印机发现流程上报的有效打印机标识。 |
+| printerId | number | 是 | 表示打印机ID，应为已发现的打印机，取值于打印机发现流程上报的有效打印机标识。 |
 
 **示例：**
 
@@ -144,8 +140,7 @@ onDisconnectPrinter(printerId: number): void
 
 断开与特定打印机的连接时调用。开发者应在此回调中实现断开打印机连接的逻辑并释放相关资源。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -174,8 +169,7 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 
 开始打印任务时调用。开发者应在此回调中根据jobInfo中的任务信息处理打印操作，如解析打印任务参数并执行相应的打印流程。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -183,7 +177,7 @@ onStartPrintJob(jobInfo: print.PrintJob): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | 是 | 表示打印任务的信息，包含任务ID、打印机ID、文档信息等详细配置和状态，需在打印机已连接后调用，用于指定要开始的打印任务。 |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | 是 | 表示打印任务的信息，包含任务ID、打印机ID、文档信息等详细配置和状态，用于指定要开始的打印任务。 |
 
 **示例：**
 
@@ -204,8 +198,7 @@ onCancelPrintJob(jobInfo: print.PrintJob): void
 
 取消已开始的打印任务时调用。开发者应在此回调中实现取消打印任务的逻辑，停止正在进行的打印操作并清理相关资源。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -234,8 +227,7 @@ onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
 请求打印机支持的能力特性（如色彩模式、双面打印模式、纸张尺寸等）时调用，例如在打印设置界面中用户选择打印机后，系统需要获取该打印机支持的能力信息时触发此回调。开发者应在此回调中根据printerId查询并返回对应打印机的能力信息（print.PrinterCapability）。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -243,7 +235,7 @@ onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | number | 是 | 表示打印机ID，应为已连接的打印机，取值于打印机发现流程上报的有效打印机标识。 |
+| printerId | number | 是 | 表示打印机ID，取值于打印机发现流程上报的有效打印机标识。 |
 
 **返回值：**
 | **类型** | **说明** |
@@ -260,9 +252,9 @@ export default class CustomPrintExtension extends PrintExtensionAbility {
         console.info('onRequestPrinterCapability enter');
         // ...
         const printerCapability: print.PrinterCapability = {
-            colorMode : 1,
-            duplexMode : 1,
-            pageSize : []
+            colorMode: 1,
+            duplexMode: 1,
+            pageSize: []
         };
         return printerCapability;
     }
@@ -275,8 +267,7 @@ onDestroy(): void
 
 结束打印扩展能力时调用。开发者应在此回调中释放相关资源并完成必要的清理工作。
 
-> **说明：**
-> 本接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

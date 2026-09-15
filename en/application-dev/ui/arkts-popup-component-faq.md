@@ -14,7 +14,7 @@ This document introduces common issues with the popup component and provides ref
 
 **Symptom**
 
-After setting the [placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#placement) attribute via [popup control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md), the popup does not appear at the expected position.
+After setting the [placement](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupoptions) attribute via [popup control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md), the popup does not appear at the expected position.
 
 **Possible Causes**
 
@@ -35,5 +35,3 @@ The popup bubble preferentially displays at the placement position. When space i
 **Reference Links**
 
 - [Popup Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
-
-<!--no_check-->

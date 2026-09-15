@@ -64,7 +64,7 @@ struct UIInspectorExample {
   }
 
   uiInspector: UIInspector = this.getUIContext().getUIInspector();
-  listener:inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
+  listener: inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -77,7 +77,7 @@ struct UIInspectorExample {
     this.listener.on('layout', onLayoutComplete);
     this.listener.on('draw', onDrawComplete);
 
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // 通过句柄取消注册对应组件的监听回调，由开发者自行决定在何时调用。
     // this.listener.off('layout', onLayoutComplete)
     // this.listener.off('draw', onDrawComplete)
   }
@@ -134,7 +134,7 @@ struct UIInspectorExample {
   }
 
   uiInspector: UIInspector = this.getUIContext().getUIInspector();
-  listener:inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
+  listener: inspector.ComponentObserver = this.uiInspector.createComponentObserver('TEXT_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -153,9 +153,10 @@ struct UIInspectorExample {
     let listenerForThis = this.getUIContext().getUIInspector().createComponentObserver(this.getUniqueId());
     listenerForThis.onLayoutChildren(onLayoutChildrenComplete);
 
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // 通过句柄取消注册对应组件的监听回调，由开发者自行决定在何时调用。
     // this.listener.off('layout', onLayoutComplete)
     // this.listener.off('draw', onDrawComplete)
+    // listenerForThis.offLayoutChildren(onLayoutChildrenComplete)
   }
 }
 ```

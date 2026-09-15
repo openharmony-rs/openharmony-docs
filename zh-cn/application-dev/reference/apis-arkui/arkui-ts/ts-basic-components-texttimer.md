@@ -301,7 +301,7 @@ ContentModifier接口使用的TextTimer配置。
 | isCountDown | boolean| 否 | 否 | 是否倒计时。<br>true：计时器开启倒计时，例如从30秒~0秒；false：计时器开始计时，例如从0秒~30秒。<br> 默认值：false <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | started | boolean | 否 | 否 | 是否已经开始了计时。<br>true：开始计时；false：未开始计时。<br>默认值：false <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | elapsedTime | number | 否 | 否 |计时器经过的时间，单位为设置格式的最小单位。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| startTime | number | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br>取值范围：无上限，支持负数。<br>默认值：0 <br>单位：毫秒 <br>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| startTime | number | 否 | 是 | 计时器正向计时模式下的初始时间，仅当isCountDown为false时该参数设置生效。<br>取值范围：[-2147483648, 2147483647]，支持负数。<br>默认值：0 <br>单位：毫秒 <br>当值为负数时，计时器将从负值开始计时，经过0后继续向正数计时。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## 示例
 ### 示例1（支持手动启停的文本计时器）
@@ -511,6 +511,7 @@ struct TextTimerStart {
 @Entry
 @Component
 struct TextTimerDemo {
+  // textTimerController用于控制计时器启停，本示例主要展示样式配置
   textTimerController: TextTimerController = new TextTimerController();
   @State countValue: number = 5025678;
 

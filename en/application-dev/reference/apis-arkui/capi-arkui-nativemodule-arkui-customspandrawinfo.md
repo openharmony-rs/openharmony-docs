@@ -6,7 +6,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:51:52.038Z pushedAt=2026-07-17T06:12:01.054Z -->
+<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-19T04:17:18.618Z pushedAt=2026-08-19T07:11:29.390Z -->
 
 ```c
 typedef struct ArkUI_CustomSpanDrawInfo ArkUI_CustomSpanDrawInfo

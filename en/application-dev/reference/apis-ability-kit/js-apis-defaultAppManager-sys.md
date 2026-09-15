@@ -5,6 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e5b78af6b5bbb1a9a38bb4bd5c5ed13eb9c1e2bf translatedAt=2026-09-03T11:20:00.605Z pushedAt=2026-09-05T10:47:30.604Z -->
 
 The module provides APIs to query, set, and reset the default application of a specific type and check whether the current application is the default application.
 
@@ -109,7 +110,7 @@ Obtains the default application based on a system-defined application type, a fi
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](js-apis-defaultAppManager.md#applicationtype), a file type that complies with the media type format, or a value defined by [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).      |
 | userId  | number | Yes   | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                          |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is the application information. Otherwise, **err** is an error object.                   |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is the application information. Otherwise, **err** is an error object.                   |
 
 **Error codes**
 
@@ -175,7 +176,7 @@ Obtains the default application based on a system-defined application type, a fi
 | Name        | Type    | Mandatory  | Description                                     |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](js-apis-defaultAppManager.md#applicationtype), a file type that complies with the media type format, or a value defined by [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).      |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the information is successfully obtained, **err** is **null** and **data** is the application information. Otherwise, **err** is an error object.                   |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined** and **data** is the application information. Otherwise, **err** is an error object.                   |
 
 **Error codes**
 
@@ -397,7 +398,7 @@ Sets the default application for a user based on a system-defined application ty
 | type  | string | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](js-apis-defaultAppManager.md#applicationtype), a file type that complies with the media type format, or a value defined by [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).      |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | Yes   | Information about the element to be set as the default application.                          |
 | userId  | number | Yes   | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                          |
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<void> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -476,7 +477,7 @@ Sets the default application based on a system-defined application type, a file 
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](js-apis-defaultAppManager.md#applicationtype), a file type that complies with the media type format, or a value defined by [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).      |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | Yes   | Information about the element to be set as the default application.                          |
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object.                   |
+| callback    | AsyncCallback\<void> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object.                   |
 
 **Error codes**
 
@@ -710,7 +711,7 @@ Resets the default application for a user based on a system-defined application 
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](js-apis-defaultAppManager.md#applicationtype), a file type that complies with the media type format, or a value defined by [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).      |
 | userId  | number | Yes   | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).                         |
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<void> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -777,7 +778,7 @@ Resets the default application based on a system-defined application type, a fil
 | Name        | Type    | Mandatory  | Description                                     |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](js-apis-defaultAppManager.md#applicationtype), a file type that complies with the media type format, or a value defined by [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).      |
-| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<void> | Yes   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -905,7 +906,7 @@ Sets an application clone as the default application of the specified type. This
 | type        | string | Yes  | Type of the application. The value can be a value of [ApplicationType](js-apis-defaultAppManager.md#applicationtype), [MIMEType](../../database/uniform-data-type-list.md#generic-utds), or [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
 | elementName | [ElementName](js-apis-bundleManager-elementName.md#elementname-1) | Yes| Element information of the application. Only **bundleName**, **abilityName**, and **moduleName** are used, and the three properties must be set.                          |
 | appIndex    | number | Yes  | Index of the application clone.<br>The options include 1, 2, 3, 4, and 5.|
-| userId      | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).<br>The default value is the user ID of the caller.                           |
+| userId      | number | No   | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).<br>Default value: the ID of the user that calls the API.                           |
 
 **Error codes**
 

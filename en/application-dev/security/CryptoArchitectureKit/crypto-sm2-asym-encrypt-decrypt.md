@@ -6,14 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:33:30.129Z pushedAt=2026-08-10T09:52:51.695Z -->
 
-For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-decrypt-spec.md#sm2).
+For the corresponding algorithm specifications, see [Asymmetric Encryption and Decryption Algorithm Specifications: SM2](crypto-encryption-decryption.md#sm2).
 
 **Encryption**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to create an asymmetric key pair (**KeyPair**) with the SM2 key type **SM2_256**. The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
-   In addition to the example in this topic, [SM2](crypto-asym-key-generation-conversion-spec.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an SM2 asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   For how to generate an SM2 asymmetric key pair, you can refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM2_256|SM3'** to create a **Cipher** instance. The key type is **SM2_256**, and the MD algorithm is **SM3**.
 
@@ -36,7 +37,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
 - Example (using asynchronous APIs):
 
   <!-- @[sm2_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -96,11 +97,10 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[sm2_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionSync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -159,3 +159,5 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
     }
   }
   ```
+
+  <!--no_check-->

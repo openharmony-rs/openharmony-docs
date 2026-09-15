@@ -38,7 +38,7 @@
 
 - **能力注册**：开发者在[agent_config.json](./agent-extension-configuration.md)中配置[AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)，描述智能体的名称、描述、技能列表、输入输出模式等信息。Agent管理服务负责管理这些注册信息。
 
-- **连接建立**：系统应用（Agent客户端）<!--Del-->通过Agent管理服务的[connectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法，<!--DelEnd-->连接目标智能体（Agent服务端）的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，建立通信通道。
+- **连接建立**：系统应用（Agent客户端）<!--Del-->通过Agent管理服务的[connectAgentExtensionAbility()](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)方法，<!--DelEnd-->连接目标智能体（Agent服务端）的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，建立通信通道。
 
 - **A2A通信**：连接建立后，客户端和服务端通过标准化的接口进行双向数据通信。客户端<!--Del-->通过[AgentProxy](../reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)<!--DelEnd-->发送请求，服务端在[onData()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#ondata)回调中接收并处理数据，然后通过[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[sendData()](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#senddata)方法将数据发送给客户端。
 
@@ -46,7 +46,7 @@
 
 - **结果渲染**（可选）：服务端可以通过[AgentUIExtensionAbility](../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)在客户端应用中展示智能体的UI界面，实现富交互体验。
 
-- **断开连接**：任务完成后，客户端<!--Del-->调用[disconnectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)<!--DelEnd-->断开与服务端的连接。
+- **断开连接**：任务完成后，客户端<!--Del-->调用[disconnectAgentExtensionAbility()](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)<!--DelEnd-->断开与服务端的连接。
 
 **图1** 智能体架构示意图
 

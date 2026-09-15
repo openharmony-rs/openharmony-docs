@@ -33,10 +33,10 @@ import { abilityManager } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | extension | [ElementName](js-apis-bundleManager-elementName.md) | 否 | 否 | Extension信息。 |
 | pid | number | 否 | 否 | 进程ID。 |
-| uid | number | 否 | 否 | 应用程序的uid。 |
+| uid | number | 否 | 否 | Extension所属应用程序的用户ID。 |
 | processName | string | 否 | 否 | 进程名称。 |
 | startTime | number | 否 | 否 | Extension被启动时的时间戳。 |
-| clientPackage | Array&lt;string&gt; | 否 | 否 | 表示当前进程下的所有包名。 |
+| clientPackage | Array&lt;string&gt; | 否 | 否 | 表示连接到该Extension的客户端应用包名列表。 |
 | type | [bundle.ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 否 | 否 | Extension类型。 |
 
 **示例：**

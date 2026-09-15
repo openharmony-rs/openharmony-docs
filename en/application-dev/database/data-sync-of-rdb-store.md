@@ -6,7 +6,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d17c75a4467ea87569ffbb162d30e9f04cd530ac translatedAt=2026-07-28T06:46:10.470Z pushedAt=2026-07-28T07:57:25.154Z -->
+<!-- md-trans-meta sourceCommit=01c246489959708261de4e73af33f55175299111 translatedAt=2026-08-20T06:22:15.991Z pushedAt=2026-08-20T12:06:57.156Z -->
 
 ## When to Use
 
@@ -364,7 +364,7 @@ When using the single-version table mode to perform data sync, you need to confi
 
 ### Requirements for Schema File Name and Path
 
-The schema file name and path cannot be customized. Otherwise, the corresponding file will not be read when the single-version table mode is used to perform data sync, and the distributed table setup will also fail.
+The schema file name and path cannot be customized. Otherwise, the corresponding file will not be read when the single-version table mode is used to perform data sync, and the distributed table setup will also fail. 
 
 -  File name: **sync_schema.json**
 
@@ -380,13 +380,13 @@ The schema file is in JSON format. You can configure multiple databases in the *
 
   - **bundleName**: application bundle name, which is of the string type and mandatory.
 
-  - **dbName**: database name, which is of the string type and mandatory. For example, the database name in the schema sample is **RdbTest.db**, so this parameter is set to **RdbTest** here.
+  - **dbName**: database name, which is of the string type and mandatory. For example, the database name in the schema sample is **RdbTest.db**, so this parameter is set to **RdbTest** here.<!--RP21--><!--RP21End-->
 
   - **tables**: table information in the database, array[table].
 
     - **tableName**: table name, which is of the string type and mandatory.
 
-    - **deviceSyncFields**: columns for device-to-device sync, array[string]. This field must be in the **fields** array and the database table; otherwise, data sync will not be performed. This field is mandatory—omitting it will result in distributed table setup failure.<!--RP1--><!--RP1End-->
+    - **deviceSyncFields**: columns for device-to-device sync, array[string], mandatory. This field must be in the **fields** array and the database table; otherwise, data sync will not be performed. If this field is not specified, distributed table setup will fail.<!--RP1--><!--RP1End-->
 
     - **fields**: detailed information about the database table fields, array[field].
 
@@ -394,7 +394,7 @@ The schema file is in JSON format. You can configure multiple databases in the *
 
       - **type**: column type, which is of the string type and mandatory. The value can be ["Text", "Integer", "Long", "Float", "Double", "Blob"].
 
-      - **primaryKey**: indicates whether the column is a conflict resolution column, which is irrelevant to the primary key in the table. The value is of the Boolean type. This field is mandatory for an auto-increment table. The value **true** means that the column is a conflict resolution column, and **false** means the opposite. The default value is **false**.
+      - **primaryKey**: indicates whether the field is a specified conflict resolution column, which is unrelated to whether it is a primary key in the table. The value is of the Boolean type. If no conflict resolution column is configured for the table, the primary key defaults to the conflict resolution column for a table with a primary key, and rowid defaults to the conflict resolution column for a table without a primary key. For a table with an auto-increment primary key, this field is mandatory. Among them: true indicates a conflict resolution column, and false indicates a non-conflict-resolution column, which defaults to false.
 
       - **autoIncrement**: indicates whether the column is auto-increment, which must be consistent with the corresponding table structure. The value is of the Boolean type. Cross-device data sync for RDB store does not support the sync of auto-increment primary keys. The value **true** means it is an auto-increment primary key, and **false** means the opposite. The default value is **false**.
 

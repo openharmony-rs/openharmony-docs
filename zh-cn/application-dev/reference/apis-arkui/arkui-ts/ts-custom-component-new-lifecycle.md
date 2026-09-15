@@ -68,7 +68,7 @@ ComponentBuilt: MethodDecorator
 
 ComponentDisappear: MethodDecorator
 
-@ComponentDisappear装饰的函数在自定义组件销毁前执行，即向CustomComponentLifecycleState.DISAPPEARED状态转变时触发。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
+\@ComponentDisappear装饰的函数在自定义组件销毁前执行，即向CustomComponentLifecycleState.DISAPPEARED状态转变时触发。不建议在此函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -501,7 +501,7 @@ struct Child {
   @State label: string = 'HelloWorld';
   @ComponentInit
   myInit() {
-    // 自定义组件创建完毕后，触发myInit方法
+    // 自定义组件初始化即将完成时，触发myInit方法
     hilog.info(0x0000, 'testTag', 'Child myInit');
   }
   @ComponentAppear

@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d51dfdf8c1c2eeb1bd1e359bc85351b94a81f5f2 translatedAt=2026-07-28T06:47:01.601Z pushedAt=2026-07-28T09:03:40.742Z -->
+<!-- md-trans-meta sourceCommit=d8985113333b8c3c0dd4e2a9924806e724527539 translatedAt=2026-08-20T06:24:26.179Z pushedAt=2026-08-20T12:54:55.353Z -->
 
 ## When to Use
 
@@ -68,7 +68,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
    }
    ```
 
-6. In the **DriverExtAbility.ets** file, add the import dependency for [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md). This package provides the **onInit()**, **onRelease()**, **onConnect()**, and **onDisconnect()** lifecycle callbacks. Define a custom class that inherits from [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md) and override the lifecycle callbacks as needed.
+6. In the **DriverExtAbility.ets** file, import the dependency package for [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md). This package provides the **onInit()**, **onRelease()**, **onConnect()**, and **onDisconnect()** lifecycle callbacks. Define a custom class that inherits from [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md) and override the lifecycle callbacks as needed.
 
    <!-- @[driver_service_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
 

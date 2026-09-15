@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu; @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-29T03:02:24.994Z pushedAt=2026-08-04T02:46:54.356Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-28T01:32:22.106Z pushedAt=2026-08-28T06:01:38.723Z -->
 
 The **FoldSplitContainer** component implements split-screen layout, providing region control for two-panel and three-panel layouts on foldable screens in the expanded state (device fully unfolded), hover state (device half-folded), and folded state (device fully folded). It is suitable for responsive layout adaptation scenarios in foldable screen apps, helping developers implement intelligent split-panel layouts across multiple screen states and improving user experience. For details about fold status, see [display.FoldStatus](../js-apis-display.md#foldstatus10).
 

@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:32:00.887Z pushedAt=2026-09-11T02:53:33.705Z -->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -16,7 +17,7 @@ The **touchEvent** module provides touch events reported by a device. It is inhe
 ## Modules to Import
 
 ```js
-import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
+import { KeyAction,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 ```
 
 ## Action
@@ -52,9 +53,9 @@ Enumerates touch tool types.
 | MOUSE    | 6 | Mouse.  |
 | LENS     | 7 | Lens.  |
 
-## SourceType 
+## SourceType
 
-Enumerates touch sources. Currently, only the touchscreen and touchpad are supported.
+Device type of the touch input source. Currently the touchscreen, stylus, and touchpad are supported.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 

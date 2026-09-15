@@ -14,6 +14,8 @@ AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAb
 > **说明：**
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)。
+>
+> 本模块接口不支持在分身应用中实现和使用。
 
 ## 导入模块
 
@@ -41,7 +43,7 @@ onAgentInvoked(agentId: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| agentId | string | 是 | 低代码类型的Agent的ID。 |
+| agentId | string | 是 | [LOW_CODE](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的Agent的ID。 |
 
 **示例：**
 

@@ -148,6 +148,20 @@ type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
 
 ## FrameNode
 
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
+
+> **说明：**
+>
+> - 当前不支持在预览器中使用FrameNode节点。
+>
+> - FrameNode节点暂不支持拖拽。
+>
+> - FrameNode对象不支持使用JSON序列化。
+>
+> - 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode-1)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
+>
+> - FrameNode的接口中，仅[Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt)类型的必选参数支持传入null或undefined。
+
 ### constructor
 
 constructor(uiContext: UIContext)
@@ -2555,7 +2569,7 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | uiStates    | number | 是   | 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                                       |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | 是   | 状态变化时的回调函数。                                           |
-| excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。<br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
+| excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。<br> true表示禁止内部默认状态样式处理，false表示不禁止内部默认状态样式处理。 |
 
 **示例：**
 
@@ -3135,7 +3149,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.error(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -3158,29 +3172,29 @@ class MyNodeController extends NodeController {
     if (this.rootNode!.getFirstChild() === this.frameNode) {
       console.info(`${TEST_TAG} getFirstChild result: success. The first child of the rootNode is equals to frameNode.`);
     } else {
-      console.info(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
+      console.error(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
       console.info(`${TEST_TAG} getNextSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getNextSibling result: fail.`);
+      console.error(`${TEST_TAG} getNextSibling result: fail.`);
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
       console.info(`${TEST_TAG} getPreviousSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getPreviousSibling result: fail.`);
+      console.error(`${TEST_TAG} getPreviousSibling result: fail.`);
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
       console.info(`${TEST_TAG} getParent result: success.`);
     } else {
-      console.info(`${TEST_TAG} getParent result: fail.`);
+      console.error(`${TEST_TAG} getParent result: fail.`);
     }
     if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
     } else {
-      console.info(`${TEST_TAG} get ArkTsNode fail.`);
+      console.error(`${TEST_TAG} get ArkTsNode fail.`);
     }
   }
 
@@ -3191,7 +3205,7 @@ class MyNodeController extends NodeController {
       if (this.rootNode!.getChild(0) === currentNode) {
         console.info(`${TEST_TAG} moveTo result: success.`);
       } else {
-        console.info(`${TEST_TAG} moveTo result: fail.`);
+        console.error(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
       console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
@@ -5353,7 +5367,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>适用版本：15-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be thrown above API version 24. <br>适用版本：15-24 |
 
 **示例：**
 
@@ -6228,7 +6242,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>适用版本：20-24 |
 
 **示例：**
 
@@ -6933,7 +6947,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -7548,7 +7562,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be thrown above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -7786,7 +7800,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // 创建marquee
     let marquee = typeNode.createNode(uiContext, 'Marquee');
-    marquee.initialize({ start: true, src: 'Marquee, if need display, src shall be long' });
+    marquee.initialize({ start: true, src: 'Marquee, if need display, src shall be long' })
       .width(100);
     col.appendChild(marquee);
     return node;
@@ -9414,7 +9428,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.error(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -9440,29 +9454,29 @@ class MyNodeController extends NodeController {
     if (this.rootNode!.getFirstChild() === this.frameNode) {
       console.info(`${TEST_TAG} getFirstChild result: success. The first child of the rootNode is equals to frameNode.`);
     } else {
-      console.info(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
+      console.error(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
       console.info(`${TEST_TAG} getNextSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getNextSibling result: fail.`);
+      console.error(`${TEST_TAG} getNextSibling result: fail.`);
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
       console.info(`${TEST_TAG} getPreviousSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getPreviousSibling result: fail.`);
+      console.error(`${TEST_TAG} getPreviousSibling result: fail.`);
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
       console.info(`${TEST_TAG} getParent result: success.`);
     } else {
-      console.info(`${TEST_TAG} getParent result: fail.`);
+      console.error(`${TEST_TAG} getParent result: fail.`);
     }
     if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
     } else {
-      console.info(`${TEST_TAG} get ArkTsNode fail.`);
+      console.error(`${TEST_TAG} get ArkTsNode fail.`);
     }
   }
 
@@ -9474,7 +9488,7 @@ class MyNodeController extends NodeController {
       if (this.rootNode!.getChild(0) === currentNode) {
         console.info(`${TEST_TAG} moveTo result: success.`);
       } else {
-        console.info(`${TEST_TAG} moveTo result: fail.`);
+        console.error(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
       console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
@@ -10049,7 +10063,7 @@ class MyNodeController extends NodeController {
     if (childNode!.getId() === 'N9') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
     }
   }
 
@@ -10059,7 +10073,7 @@ class MyNodeController extends NodeController {
     if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
     }
   }
 
@@ -10069,7 +10083,7 @@ class MyNodeController extends NodeController {
     if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
     }
   }
 }
@@ -10212,7 +10226,7 @@ struct Index {
     Column() {
       Button('add CommonEvent to Text')
         .onClick(() => {
-          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
         })
       Text('this is a Text')
         .fontSize(16)
@@ -10427,6 +10441,7 @@ export struct TrackNode {
   trackShadow: TrackShadow = new TrackShadow()
 
   @Builder defaultBuilder() {
+    // 空函数，仅演示使用方法。
   }
 
   build() {
@@ -10496,6 +10511,7 @@ export class Track {
   private trackId: number = 0
 
   constructor() {
+    // 空函数，仅演示使用方法。
   }
 
   tag(newTag: string): Track {

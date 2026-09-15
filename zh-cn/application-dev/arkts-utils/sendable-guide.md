@@ -26,7 +26,7 @@ import { BusinessError, emitter } from '@kit.BasicServicesKit';
 // 在并发函数中模拟数据处理
 @Concurrent
 async function taskFunc(obj: Test) {
-  console.info('test task res1 is: ' + obj.data1.name + ' res2 is: ' + obj.data2.name);
+  console.info(`test task res1 is: ${obj.data1.name} res2 is: ${obj.data2.name}`);
 }
 
 async function test() {
@@ -59,18 +59,15 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
           let sensorTask = new taskpool.LongTask(sensorListener);
-          emitter.on({ eventId: 0 }, (data) => {
-            // Do something here
-            console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
-          });
+          // ...
           taskpool.execute(sensorTask).then(() => {
             this.listenerTask = 'success';
             console.info('Add listener of ACCELEROMETER success');
           }).catch((e: BusinessError) => {
             // Process error
             this.listenerTask = 'failed';
-          })
-        })
+          });
+        });
       Text(this.dataProcessingTask)
         .id('Data processing task')
         .fontSize(50)
@@ -81,8 +78,8 @@ struct Index {
           }).catch((e: BusinessError) => {
             this.dataProcessingTask = 'failed';
             console.error('taskpool execute failed. Code: ' + e.code + ', message: ' + e.message);
-          })
-        })
+          });
+        });
     }
     .height('100%')
     .width('100%')
@@ -138,22 +135,21 @@ import { SendableTestClass, ISendable } from './sendable';
 // 在并发函数中模拟数据处理
 @Concurrent
 async function taskFunc(sendableObj: SendableTestClass) {
-  console.info('SendableTestClass: name is: ' + sendableObj.printName() + ', age is: ' + sendableObj.printAge() +
-    ', sex is: ' + sendableObj.printSex());
+  console.info(`SendableTestClass: name is: ${sendableObj.printName()}, age is: ${sendableObj.printAge()}, sex is: ${sendableObj.printSex()}`);
   sendableObj.setAge(28);
-  console.info('SendableTestClass: age is: ' + sendableObj.printAge());
+  console.info(`SendableTestClass: age is: ${sendableObj.printAge()}`);
 
   // 解析sendableObj.arr数据生成JSON字符串
   let str = ArkTSUtils.ASON.stringify(sendableObj.arr);
-  console.info('SendableTestClass: str is: ' + str);
+  console.info(`SendableTestClass: str is: ${str}`);
 
   // 解析该数据并生成ISendable数据
   let jsonStr = '{"name": "Alexa", "age": 23, "sex": "female"}';
   let obj = ArkTSUtils.ASON.parse(jsonStr) as ISendable;
-  console.info('SendableTestClass: type is: ' + typeof obj);
-  console.info('SendableTestClass: name is: ' + (obj as object)?.['name']); // 输出: 'Alexa'
-  console.info('SendableTestClass: age is: ' + (obj as object)?.['age']); // 输出: 23
-  console.info('SendableTestClass: sex is: ' + (obj as object)?.['sex']); // 输出: 'female'
+  console.info(`SendableTestClass: type is: ${typeof obj}`);
+  console.info(`SendableTestClass: name is: ${(obj as object)?.['name']}`); // 输出: 'Alexa'
+  console.info(`SendableTestClass: age is: ${(obj as object)?.['age']}`); // 输出: 23
+  console.info(`SendableTestClass: sex is: ${(obj as object)?.['sex']}`); // 输出: 'female'
 }
 
 async function test() {
@@ -178,10 +174,10 @@ struct Index {
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
-        .onClick(() => {
-          test();
+        .onClick(async () => {
+          await test();
           this.message = 'success';
-        })
+        });
     }
     .height('100%')
     .width('100%')
@@ -193,7 +189,7 @@ struct Index {
 
 ``` TypeScript
 // 定义模拟类Test，模仿开发过程中需传递带方法的class
-import { lang, collections } from '@kit.ArkTS'
+import { lang, collections } from '@kit.ArkTS';
 
 export type ISendable = lang.ISendable;
 

@@ -12,7 +12,7 @@ typedef struct {...} OH_IPC_MessageOption
 
 ## 概述
 
-IPC消息选项定义，用于配置IPC通信过程中的请求参数。该结构体主要包含以下配置项：
+IPC消息选项定义，用于配置IPC通信过程中的请求参数。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 

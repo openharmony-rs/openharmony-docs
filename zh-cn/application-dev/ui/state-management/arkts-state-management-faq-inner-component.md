@@ -97,8 +97,6 @@ struct Index {
 <!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
 ``` TypeScript
-import { common } from '@kit.AbilityKit';
-
 class Model {
   private callback: (() => void) | undefined = () => {
   };
@@ -133,8 +131,7 @@ struct Test {
 
   build() {
     Column() {
-      // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
-      Text(resource.resourceToString($r('app.string.state_countvalue_text1')) + `${this.count}`)
+      Text(`count: ${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();
@@ -887,7 +884,7 @@ struct Index {
 
 【总结】
 
-| **计算方式**     | **耗时(局限不同设备和场景，数据仅供参考)** | **说明**                                          |
+| **计算方式**     | **耗时（因不同设备和场景而异，数据仅供参考）** | **说明**                                          |
 | ---------------- | ------------------------------------------ | ------------------------------------------------- |
 | 直接操作状态变量 | 1.01ms                                     | 增加了ArkUI不必要的查询和渲染行为，导致性能劣化。 |
 | 使用临时变量计算 | 0.63ms                                     | 减少了ArkUI不必要的行为，优化性能。               |
@@ -1196,7 +1193,7 @@ struct ChildComponent {
 
 可以观察到UI能够正常刷新，图片没有“闪烁”，且没有输出日志信息，说明没有对Text组件和Image组件进行重建。
 
-这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用[@Track装饰器](arkts-track.md)分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的Text组件。
+这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用[@Track装饰器](arkts-track.md)分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的组件。
 
 ## ForEach和对象数组结合使用导致UI不刷新
 

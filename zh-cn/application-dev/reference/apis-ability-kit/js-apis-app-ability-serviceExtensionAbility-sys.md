@@ -15,6 +15,8 @@ ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台
 > 本模块接口仅可在Stage模型下使用。
 >
 > 本模块为系统接口。
+>
+> 本模块接口不支持在分身应用中实现和使用。
 
 ## 导入模块
 
@@ -106,7 +108,7 @@ Extension生命周期回调，如果是[startServiceExtensionAbility](js-apis-in
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
-| startId | number | 是 | 返回拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
+| startId | number | 是 | 表示拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
 
 **示例：**
 

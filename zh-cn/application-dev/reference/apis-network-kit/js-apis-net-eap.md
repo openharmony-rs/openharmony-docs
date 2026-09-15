@@ -3,7 +3,7 @@
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @foredward-->
-<!--Designer: @h00918518-->
+<!--Designer: @gcw_3Lx1FoMT-->
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -35,7 +35,7 @@ regCustomEapHandler(netType: number, eapCode: number, eapType: number, callback:
 
 | 参数名                              | 类型|必填|说明|
 | ----------------------------- | ---------- |---------- |---------- |
-| netType| number|是|网络类型，取值为1或2。<br>netType=1表示WLAN，netType=2表示以太网。|
+| netType| number|是|网络类型，取值为1或2。<br>netType=1表示WLAN（WLAN仅支持PC/2in1），netType=2表示以太网。|
 | eapCode|number |是|需要进行定制的EAP code，取值为1、2、3、4 。<br>code=1 Request、 code=2 Response、 code=3 Success、 code=4 Failure。|
 | eapType| number |是|需要进行定制处理的EAP method类型，取值范围[0, 255]。<br>常用取值包括：eapType=1 Identity，eapType=2 Notification，eapType=3 NAK，eapType=4 MD5-Challenge，eapType=5 OTP（One-Time Password），eapType=6 GTC（Generic Token Card），eapType=13 EAP-TLS，eapType=21 EAP-TTLS，eapType=25 EAP-PEAP，eapType=254 Expanded Types，eapType=255 Experimental use。|
 | callback| Callback\<[EapData](#eapdata)\> |是|回调函数，返回指定的eapCode+eapType的报文。|
@@ -82,7 +82,7 @@ unregCustomEapHandler(netType:number, eapCode: number, eapType: number, callback
 
 | 参数名                            | 类型|必填|说明|
 | ----------------------------- | ---------- |---------- |---------- |
-| netType| number|是|网络类型，取值为1或2。<br>netType=1表示WLAN，netType=2表示以太网。|
+| netType| number|是|网络类型，取值为1或2。<br>netType=1表示WLAN（WLAN仅支持PC/2in1），netType=2表示以太网。|
 | eapCode|number |是|需要进行定制的EAP code，取值为1、2、3、4 。<br>code=1 Request、 code=2 Response、 code=3 Success、 code=4 Failure。|
 | eapType| number |是|需要进行定制处理的EAP method类型，取值范围[0, 255]。<br>常用取值包括：eapType=1 Identity，eapType=2 Notification，eapType=3 NAK，eapType=4 MD5-Challenge，eapType=5 OTP（One-Time Password），eapType=6 GTC（Generic Token Card），eapType=13 EAP-TLS，eapType=21 EAP-TTLS，eapType=25 EAP-PEAP，eapType=254 Expanded Types，eapType=255 Experimental use。|
 | callback| Callback\<[EapData](#eapdata)\> |是|回调函数，返回指定的eapCode+eapType的报文。|
@@ -121,7 +121,7 @@ replyCustomEapData(result: CustomResult, data: EapData): void
 
 该接口用于通知系统已完成该步定制化处理。
 
- > **说明**:
+ > **说明：**
  >
  >- 若用于处理收EAP数据包(rx)时的callback，传给系统的EAP数据需要剥离服务器添加的定制部分。
  >- 若用于处理发EAP数据包(tx)时的callback，传给系统的EAP数据为经过添加定制部分后的EAP数据。
@@ -148,6 +148,8 @@ replyCustomEapData(result: CustomResult, data: EapData): void
 |33200005 | Invalid size of eap data.          |
 |33200009 | netmanager stop.          |
 |33200099 | internal error.          |
+
+**示例：**
 
 ```js
 import {eap} from '@kit.NetworkKit';
@@ -273,7 +275,7 @@ try{
 
 EAP信息。
 
-​**系统能力**​：SystemCapability.Communication.NetManager.Eap
+​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
@@ -285,7 +287,7 @@ EAP信息。
 
 表示EAP认证处理结果的枚举。
 
-​**系统能力**​：SystemCapability.Communication.NetManager.Eap
+​**系统能力​**：SystemCapability.Communication.NetManager.Eap
 
 | **名称** | **值** | **说明** |
 | -------- | -------- | -------- |
@@ -297,7 +299,7 @@ EAP信息。
 
 表示EAP认证方式的枚举。
 
-**系统能力：** SystemCapability.Communication.NetManager.Eap
+**系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -315,7 +317,7 @@ EAP信息。
 
 表示第二阶段认证方式的枚举。
 
-**系统能力：** SystemCapability.Communication.NetManager.Eap
+**系统能力**：SystemCapability.Communication.NetManager.Eap
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |

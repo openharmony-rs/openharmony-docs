@@ -1,18 +1,18 @@
 # Sensor Development (ArkTS)
+
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
 <!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:27.165Z pushedAt=2026-06-30T02:13:09.346Z -->
+<!-- md-trans-meta sourceCommit=aafa18cca50e669e3fd5470a9d1248e0885402aa translatedAt=2026-08-20T06:26:37.153Z pushedAt=2026-08-20T13:21:29.194Z -->
 
 ## When to Use
 
 With the sensor module, a device can obtain sensor data. For example, the device can subscribe to data of the orientation sensor to detect its own orientation, and data of the pedometer sensor to learn the number of steps the user walks every day.
 
 For details about the APIs, see [@ohos.sensor (Sensor)](../../reference/apis-sensor-service-kit/js-apis-sensor.md).
-
 
 ## Available APIs
 
@@ -25,7 +25,6 @@ For details about the APIs, see [@ohos.sensor (Sensor)](../../reference/apis-sen
 | sensor.off(sensorId, sensorInfoParam?: SensorInfoParam, callback?:AsyncCallback&lt;void&gt;): void | Disables listening for data changes of the specified type of sensor based on the given sensor parameters.            |
 | sensor.off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void | Disables listening for sensor status changes.             |
 | sensor.getSensorList(callback: AsyncCallback\<Array\<Sensor>>): void| Obtains information about all sensors on the device.                 |
-
 
 ## How to Develop
 

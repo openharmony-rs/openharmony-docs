@@ -11,7 +11,7 @@
 
 > **说明**：
 >
-> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
 ## 导入模块
@@ -20,7 +20,7 @@
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-## infraredEmitter.transmitInfrared
+## infraredEmitter.transmitInfrared<sup>15+</sup>
 
 transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
@@ -35,7 +35,7 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | infraredFrequency | number             | 是    | 红外频率，单位：Hz。 |
-| pattern | Array&lt;number&gt; | 是    | 红外电平信号，单位为微秒（μs）。电平信号的数量取值范围为[0,1024]，取值为0时，接口调用不生效。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100μs为高电平信号、200μs为低电平信号、300μs为高电平信号、400μs为低电平信号。 |
+| pattern | Array&lt;number&gt; | 是    | 红外电平信号，单位为微秒（μs）。电平信号的数量取值范围为[0, 1024]，取值为0时，接口调用不生效。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100μs为高电平信号、200μs为低电平信号、300μs为高电平信号、400μs为低电平信号。 |
 
 **错误码：**
 
@@ -71,7 +71,7 @@ struct Index {
 }
 ```
 
-## infraredEmitter.getInfraredFrequencies
+## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
@@ -87,7 +87,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
@@ -122,7 +122,7 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency
+## InfraredFrequency<sup>15+</sup>
 
 红外信号的频率范围。
 

@@ -96,7 +96,7 @@
 
 状态管理V1有两种场景会给对象增加代理：
 
-【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该过程发生在new对象的过程中，以下示例中，没有被\@Observed装饰的类是不被代理的。
+【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该行为发生在new对象的过程中，以下示例中，没有被\@Observed装饰的类是不被代理的。
 <!-- @[nonObservedClass_outOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) --> 
 
 ``` TypeScript
@@ -111,7 +111,7 @@ let observedClass: ObservedClass = new ObservedClass(); // 被代理
 let nonObservedClass: NonObservedClass = new NonObservedClass(); // 不被代理
 ```
 
-【2】状态变量装饰器装饰的复杂类型对象。使用\@State、[\@Prop](./arkts-prop.md)等状态变量装饰器装饰Class、Map、Set、Date、Array时，会添加代理。若该对象已经是代理对象，则不会重复创建代理。
+【2】状态变量装饰器装饰的复杂类型对象。使用\@State、[\@Prop](./arkts-prop.md)等状态变量装饰器装饰class、Map、Set、Date、Array时，会添加代理。若该对象已经是代理对象，则不会重复创建代理。
 <!-- @[nonObservedObject_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetNoChange.ets) --> 
 
 ``` TypeScript

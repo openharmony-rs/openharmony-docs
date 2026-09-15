@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f8ecdb82f3ec053eb7dde21e27a6f047d194898a translatedAt=2026-07-17T09:23:56.093Z pushedAt=2026-07-17T10:46:15.083Z -->
+<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-19T08:23:27.822Z pushedAt=2026-08-19T09:04:59.021Z -->
 
 ```c
 typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
@@ -14,7 +14,7 @@ typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
 
 ## Overview
 
-Defines the object of gesture interruption information object, which is used to represent information related to interruption processing in gesture interruption scenarios. For related APIs on gesture interruption information, see [native_gesture.h](capi-native-gesture-h.md).
+Defines gesture interruption event information. This struct is used to pass information such as the gesture recognizer, response chain gesture recognizer, and touch recognizer to the gesture interruption callback. The callback can return a continue or reject result based on this information. For details about the gesture interruption mechanism and APIs, see the gesture interruption API description in [native_gesture.h](capi-native-gesture-h.md).
 
 **Since**: 12
 

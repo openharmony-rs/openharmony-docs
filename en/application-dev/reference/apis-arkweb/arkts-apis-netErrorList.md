@@ -1,14 +1,14 @@
-# @ohos.web.netErrorList(The List of ArkWeb Network Protocol Stack Errors)
+# @ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-03T09:56:06.433Z pushedAt=2026-08-04T12:26:05.827Z -->
 
-Provides a list of ArkWeb network protocol stack errors.
-
-The error codes of the ArkWeb network protocol stack are mapped to the Chromium error codes in <!--RP1-->net_error_list.h<!--RP1End-->.
+Error list of the ArkWeb network protocol stack. The error codes are directly mapped to the Chromium error codes in <!--RP1-->net_error_list.h<!--RP1End-->, allowing you to quickly locate issues based on standardized error codes when network requests encounter exceptions, implement unified error handling, and improve troubleshooting efficiency.
 
 > **NOTE**
 > 
@@ -30,19 +30,19 @@ Provides a list of ArkWeb network protocol stack errors.
 | ------------- | -- |----------------------------------------- |
 |NET_OK | 0 |  The access is normal. |
 |ERR_IO_PENDING | -1 | The asynchronous I/O operation is pending.|
-|ERR_FAILED | -2 | A common error occurs.|
+|ERR_FAILED | -2 | General error. If a web page fails to load, see [Locating Web Page Loading Issues](../../web/web-page-loading.md). |
 |ERR_ABORTED | -3 | The operation is aborted.|
 |ERR_INVALID_ARGUMENT | -4 | The parameter is invalid.|
 |ERR_INVALID_HANDLE | -5 | The handle of the file descriptor is invalid.|
 |ERR_FILE_NOT_FOUND | -6 | The file is not found.|
 |ERR_TIMED_OUT | -7 | The operation times out.|
 |ERR_FILE_TOO_LARGE | -8 | The file is too large.|
-|ERR_UNEXPECTED | -9 | The problem is not expected or specifically handled.|
+|ERR_UNEXPECTED | -9 | An unexpected or unhandled issue was encountered. |
 |ERR_ACCESS_DENIED | -10 | The access to resources other than the network is denied.|
 |ERR_NOT_IMPLEMENTED | -11 | The operation fails because the function is not implemented.|
 |ERR_INSUFFICIENT_RESOURCES | -12 | The resources required for system or program execution are insufficient.|
 |ERR_OUT_OF_MEMORY | -13 | A memory overflow occurs.|
-|ERR_UPLOAD_FILE_CHANGED | -14 | The file cannot be uploaded because the file modification time is not as expected.|
+|ERR_UPLOAD_FILE_CHANGED | -14 | Upload failed because the file modification time did not match the expected value. |
 |ERR_SOCKET_NOT_CONNECTED | -15 | The socket is disconnected.|
 |ERR_FILE_EXISTS | -16 | The file already exists.|
 |ERR_FILE_PATH_TOO_LONG | -17 | The file path or file name is too long.|
@@ -51,13 +51,13 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_BLOCKED_BY_CLIENT | -20 | The request is blocked by the client.|
 |ERR_NETWORK_CHANGED | -21 | The network is changed.|
 |ERR_BLOCKED_BY_ADMINISTRATOR | -22 | The request is blocked by the administrator.|
-|ERR_SOCKET_CONNECTED | -23 | The socket is already connected.|
-|ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED | -25 | The stream rewinding is not supported.|
+|ERR_SOCKET_CONNECTED | -23 | The socket is already connected. |
+|ERR_UPLOAD_STREAM_REWIND_NOT_SUPPORTED | -25 | Upload failed because the upload stream needed to be re-read due to a retry or redirect, but the stream does not support rewinding. |
 |ERR_CONTEXT_SHUT_DOWN | -26 | The request fails because the context is closed.|
 |ERR_BLOCKED_BY_RESPONSE | -27 | The request is blocked by response from headers such as X-Frame-Options, Content Security Policy, and Cross Origin Resource Policy.|
 |ERR_CLEARTEXT_NOT_PERMITTED | -29 | The request fails because cleartext is not permitted by the system policy.|
 |ERR_BLOCKED_BY_CSP | -30 | The request is blocked by the Content Security Policy.|
-|ERR_H2_OR_QUIC_REQUIRED | -31 |  The request is blocked because there is no H/2 or QUIC session.|
+|ERR_H2_OR_QUIC_REQUIRED | -31 | The request was blocked because no HTTP/2 or QUIC session is available. |
 |ERR_BLOCKED_BY_ORB | -32 | The request is blocked by CORB or ORB.|
 |ERR_CONNECTION_CLOSED | -100 |  The connection has been closed.|
 |ERR_CONNECTION_RESET | -101 |  The connection is reset.|
@@ -84,7 +84,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_SSL_NO_RENEGOTIATION | -123 | The server sends an **SSL no_renegotiation** alert message.|
 |ERR_WINSOCK_UNEXPECTED_WRITTEN_BYTES | -124 | Winsock sometimes reports that more data is written than is passed. This may be caused by LSP damage.|
 |ERR_SSL_DECOMPRESSION_FAILURE_ALERT | -125 | The SSL peer sent a decompression failure alert to the local end. This usually occurs when the peer mistakenly believes that it supports DEFLATE compression.|
-|ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | The SSL peer sent a **bad_record_mac** alert to the local end. This may occur on a server that is not support DELEGATE.|
+|ERR_SSL_BAD_RECORD_MAC_ALERT | -126 | The SSL peer sent a fatal bad_record_mac alert. This may occur with a server that has issues with DEFLATE support. |
 |ERR_PROXY_AUTH_REQUESTED | -127 | The proxy requests authentication for tunnel establishment.|
 |ERR_PROXY_CONNECTION_FAILED | -130 | The connection to the proxy server cannot be established. This is because an error occurs when resolving the domain name or connecting to the socket. Note that this does not include failures during the HTTP CONNECT.|
 |ERR_MANDATORY_PROXY_CONFIGURATION_FAILED | -131 |  The forcible proxy configuration cannot be used. Currently, this means that a mandatory PAC script cannot be obtained, parsed, or executed.|
@@ -98,7 +98,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT | -140 |  The request for creating an SSL tunnel connection through the HTTPS proxy receives 302. (The response may contain the description of the request failure cause.)|
 |ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED | -141 | The private key of the client certificate cannot be used to sign the CertificateVerify data in SSL handshake process.|
 |ERR_MSG_TOO_BIG | -142 | The message is too large to be transmitted. (For example, UDP messages exceed the size threshold).|
-|ERR_WS_PROTOCOL_ERROR | -145 | The WebSocket protocol is incorrect. This error indicates that the connection is being terminated due to a frame format error or a conflict with other protocols.|
+|ERR_WS_PROTOCOL_ERROR | -145 | WebSocket Protocol Error. Indicates that the connection is being terminated due to a frame format error or other protocol violation. |
 |ERR_ADDRESS_IN_USE | -147 | The address is already in use.|
 |ERR_SSL_HANDSHAKE_NOT_COMPLETED | -148 | The operation failed because the SSL handshake is not complete.|
 |ERR_SSL_BAD_PEER_PUBLIC_KEY | -149 | The SSL public key is incorrect.|
@@ -115,7 +115,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_SSL_CLIENT_AUTH_CERT_BAD_FORMAT | -164 | The client certificate cannot be imported into the SSL library from the platform store.|
 |ERR_ICANN_NAME_COLLISION | -166 | The host name is resolved to an IP address list containing the IPv4 address 127.0.53.53. This is a special IP address recommended by ICANN. It is used to indicate that there is a name conflict and remind administrators of potential problems.|
 |ERR_SSL_SERVER_CERT_BAD_FORMAT | -167 | The SSL server provides a certificate that cannot be decoded. This is not a certificate error code because no X509Certificate object is available. This error is fatal.|
-|ERR_CT_STH_PARSING_FAILED | -168 | The Certificate Transparency failed to parse the signed tree head.|
+|ERR_CT_STH_PARSING_FAILED | -168 | Certificate Transparency: Failed to parse the signed tree head. |
 |ERR_CT_STH_INCOMPLETE | -169 | The Certificate Transparency parsed signed tree head successfully, but some information is missing.|
 |ERR_UNABLE_TO_REUSE_CONNECTION_FOR_PROXY_AUTH | -170 | The attempt to re-send proxy authentication credentials failed because the AuthController has not generated the credentials yet. The caller should reconnect the AuthController.|
 |ERR_CT_CONSISTENCY_PROOF_PARSING_FAILED | -171 | The Certificate Transparency failed to parse the consistency proof.|
@@ -133,19 +133,19 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_ECH_FALLBACK_CERTIFICATE_INVALID | -184 | ECH is enabled, the server cannot decrypt ClientHello message, and no certificate valid for the public name is provided.|
 |ERR_CERT_COMMON_NAME_INVALID | -200 | The public name of the certificate used by the server in response does not match the host name. This may mean: 1. The attacker has redirected local traffic to their server and provided a certificate with a private key. 2. The server is incorrectly configured and uses an incorrect certificate to respond. 3. The user is on the wireless network and is redirected to the login page of the network. 4. The operating system uses the DNS search suffix, and the server does not have a certificate with such abbreviated name in the address box.|
 |ERR_CERT_DATE_INVALID | -201 | The certificate has expired. This may mean: 1. The attacker provides an old certificate that they have obtained the private key. 2. The server is incorrectly configured and no valid certificate is provided. 3. The clock of the device is incorrect.|
-|ERR_CERT_AUTHORITY_INVALID | -202 | The CA is not trusted. This may mean: 1. The attacker replaces a real certificate with a certificate that contains its public key and is signed by its cousin. 2. The server operator has a valid certificate from a CA that the local end does not know but should trust. 3. The server provides a self-signed certificate that cannot defend against active attackers.|
+|ERR_CERT_AUTHORITY_INVALID | -202 | The server responded with a certificate that is signed by an untrusted certificate authority. This may mean that: 1) an attacker has replaced the real certificate with one containing their public key and signed by their accomplice, 2) the server operator has a legitimate certificate from a CA that the local end does not know about but should trust, or 3) the server is presenting a self-signed certificate, which cannot defend against active attackers. |
 |ERR_CERT_CONTAINS_ERRORS | -203 | The certificate contains errors.|
 |ERR_CERT_NO_REVOCATION_MECHANISM | -204 |There is no revocation mechanism for this certificate.|
 |ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | Revocation information for this website's security certificate is not available. This may mean that: 1. The attacker compromises the private key in the certificate and prevents the local end from discovering that the certificate has been revoked. 2. The certificate is not revoked, but the revocation server is busy or unavailable.|
 |ERR_CERT_REVOKED | -206 | The certificate is revoked. The local end can ignore this error, but it should not do this.|
-|ERR_CERT_INVALID | -207 |  The certificate is invalid. |
-|ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responds with a certificate signed with a weak signing algorithm.|
+|ERR_CERT_INVALID | -207 | The certificate is invalid. |
+|ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | The server responded with a certificate signed using a weak signature algorithm. |
 |ERR_CERT_NON_UNIQUE_NAME | -210 |  The domain name specified in the certificate is not unique.|
 |ERR_CERT_WEAK_KEY | -211 | The server responds with a certificate that contains a weak key (for example, a small RSA key).|
 |ERR_CERT_NAME_CONSTRAINT_VIOLATION | -212 | The certificate name constraint is violated.|
 |ERR_CERT_VALIDITY_TOO_LONG | -213 | The certificate validity period is too long.|
-|ERR_CERTIFICATE_TRANSPARENCY_REQUIRED | -214 |  The server does not provide Certificate Transparency information required for this connection.|
-|ERR_CERT_SYMANTEC_LEGACY | -215 | The certificate is linked to the old Symantec directory that is no longer trusted.|
+|ERR_CERTIFICATE_TRANSPARENCY_REQUIRED | -214 | Certificate Transparency is required for this connection, but the server did not provide CT information that complies with the policy. |
+|ERR_CERT_SYMANTEC_LEGACY | -215 | The certificate is chained to a legacy Symantec root that is no longer trusted. |
 |ERR_CERT_KNOWN_INTERCEPTION_BLOCKED | -217 | The certificate is used for interception by an entity other than the device owner.|
 |ERR_SSL_OBSOLETE_VERSION_OR_CIPHER | -218 | The connection uses an outdated version of SSL/TLS or password.|
 |ERR_CERT_END | -219 | This error follows the previous error code.|
@@ -161,8 +161,8 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_METHOD_UNSUPPORTED | -322 | The method is not supported.|
 |ERR_UNEXPECTED_PROXY_AUTH | -323 | The proxy authentication is unexpected.|
 |ERR_EMPTY_RESPONSE | -324 | The response is empty.|
-|ERR_RESPONSE_HEADERS_TOO_BIG | -325 | The value of response headers is too large.|
-|ERR_PAC_SCRIPT_FAILED | -327 | The pac script is incorrect.|
+|ERR_RESPONSE_HEADERS_TOO_BIG | -325 | The HTTP response headers are too large. |
+|ERR_PAC_SCRIPT_FAILED | -327 | The PAC script failed. |
 |ERR_REQUEST_RANGE_NOT_SATISFIABLE | -328 | The request range cannot be met.|
 |ERR_MALFORMED_IDENTITY | -329 | The identity used for authentication is invalid.|
 |ERR_CONTENT_DECODING_FAILED | -330 | The response content failed to be decoded.|
@@ -178,15 +178,15 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | The authentication credentials are missing.|
 |ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | The security library status is unexpected.|
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | The authentication environment is incorrectly configured.|
-|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | The security library status is undocumented.|
+|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | An undocumented SSPI or GSSAPI status code. |
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | The response body is too big.|
-|ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH | -346 | The response has multiple Content-Length headers. |
-|ERR_INCOMPLETE_HTTP2_HEADERS | -347 | The HTTP/2 headers are incomplete.|
-|ERR_PAC_NOT_IN_DHCP | -348 | The PAC is not in DHCP.|
+|ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH | -346 | The HTTP response contains multiple distinct Content-Length headers. |
+|ERR_INCOMPLETE_HTTP2_HEADERS | -347 | Incomplete HTTP/2 headers. |
+|ERR_PAC_NOT_IN_DHCP | -348 | PAC not in DHCP. |
 |ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION | -349 | The response has multiple Content-Disposition headers.|
 |ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION | -350 | The response headers are in multiple locations.|
 |ERR_HTTP2_SERVER_REFUSED_STREAM | -351 | The HTTP/2 server refuses the stream.|
-|ERR_HTTP2_PING_FAILED | -352 |  The HTTP/2 ping failed.|
+|ERR_HTTP2_PING_FAILED | -352 | The HTTP/2 ping failed. |
 |ERR_CONTENT_LENGTH_MISMATCH | -354 | When the connection is closed, the number of bytes transmitted in the HTTP response body is less than the number of bytes advertised in the Content-Length header.|
 |ERR_INCOMPLETE_CHUNKED_ENCODING | -355 | The HTTP response body is transmitted using chunked encoding, but the zero-length chunk is not sent to terminate the encoding when the connection is closed.|
 |ERR_QUIC_PROTOCOL_ERROR | -356 | A QUIC protocol error occurs.|
@@ -200,7 +200,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_HTTP_1_1_REQUIRED | -365 | The HTTP/2 session receives an **HTTP_1_1_REQUIRED** error code.|
 |ERR_PROXY_HTTP_1_1_REQUIRED | -366 | The **HTTP_1_1_REQUIRED** error code is received when the HTTP/2 session proxy is used.|
 |ERR_PAC_SCRIPT_TERMINATED | -367 | The PAC script has been terminated and must be reloaded.|
-|ERR_INVALID_HTTP_RESPONSE | -370 | The server should return an **HTTP/1.x** response. But it returns an **HTTP/0.9** response.|
+|ERR_INVALID_HTTP_RESPONSE | -370 | The server should return an **HTTP/1.x** response but does not. This error is returned when the response is incorrectly interpreted as HTTP/0.9.|
 |ERR_CONTENT_DECODING_INIT_FAILED | -371 | The content decoding failed to be initialized.|
 |ERR_HTTP2_RST_STREAM_NO_ERROR_RECEIVED | -372 | An **HTTP/2 RST_STREAM** frame with **NO_ERROR** is received. This error should be handled internally by HTTP/2 and should not exceed the SpdyStream layer.|
 |ERR_HTTP2_PUSHED_STREAM_NOT_AVAILABLE | -373 | The pushed stream claimed by the request is not available.|
@@ -209,7 +209,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_HTTP2_STREAM_CLOSED | -376 | An HTTP/2 frame is received on the closed stream.|
 |ERR_HTTP2_CLIENT_REFUSED_STREAM | -377 | The client refuses an HTTP/2 stream.|
 |ERR_HTTP2_PUSHED_RESPONSE_DOES_NOT_MATCH | -378 | Based on the matched URL and request header, an HTTP/2 push stream is received by the request, but the pushed response header does not match the request.|
-|ERR_HTTP_RESPONSE_CODE_FAILURE | -379 | The server returns a **non-2xx** HTTP response code.|
+|ERR_HTTP_RESPONSE_CODE_FAILURE | -379 | The server returned an HTTP response code that is non-2xx. |
 |ERR_QUIC_UNKNOWN_CERT_ROOT | -380 | The certificate displayed on the QUIC connection is not linked to a known root certificate, and the connected original server is not in the list of domain names that allow unknown root certificates.|
 |ERR_QUIC_GOAWAY_REQUEST_CAN_BE_RETRIED | -381 | A **GOAWAY** frame has been received, indicating that the request has not been processed and therefore can be safely retried on a different connection.|
 |ERR_TOO_MANY_ACCEPT_CH_RESTARTS | -382 | The **ACCEPT_CH_RESTARTS** has been triggered too many times.|
@@ -265,6 +265,7 @@ Provides a list of ArkWeb network protocol stack errors.
 |ERR_DNS_SEARCH_EMPTY | -805 | The suffix search list rule prevents the resolution of a given host name.|
 |ERR_DNS_SORT_ERROR | -806 | Addresses are not sorted according to RFC 3484.|
 |ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED | -808 | The host name of the DNS-over-HTTPS server cannot be resolved.|
-|ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS has identified that the request is prohibited due to insecure connections (HTTP/WS). The application should handle this error like HTTP redirection, redirecting the connection to secure HTTPS or WSS.|
+|ERR_DNS_NAME_HTTPS_ONLY | -809 | DNS has identified that the request was blocked due to an insecure connection (HTTP/WS). The app should handle this error like an HTTP redirect, redirecting the connection to secure HTTPS or WSS.|
 |ERR_DNS_REQUEST_CANCELED | -810 | All DNS requests related to this task are canceled.|
-|ERR_DNS_NO_MATCHING_SUPPORTED_ALPN | -811 | The host name resolution of the HTTPS record is not resolved using the ALPN value of the supported protocol.|
+|ERR_DNS_NO_MATCHING_SUPPORTED_ALPN | -811 | The hostname resolution of the HTTPS record failed to resolve using ALPN values of supported protocols.|
+<!--no_check-->

@@ -6,7 +6,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:25:36.268Z pushedAt=2026-07-02T09:00:21.752Z -->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-21T02:22:45.743Z pushedAt=2026-08-21T07:29:42.264Z -->
 
 The **EffectComponent** component defines combined special effects for child components to optimize the special effect drawing performance.
 
@@ -42,7 +42,7 @@ Creates an **EffectComponent** component.
 
 EffectComponent(options?: EffectComponentOptions)
 
-Creates an effect drawing and combination component. If no parameter is passed or the parameter is EffectLayer.None, the background blur effect of child components is combined. If a parameter is specified, the current rendering layer is placed on a special layer.
+Creates an effect rendering merging component. When no parameter is passed or the parameter is **EffectLayer.NONE**, it is used to merge the rendering of the background blur effect of child components. When an explicit parameter is passed, it indicates that the current rendering layer is placed on a special layer.
 
 **System API**: This is a system API.
 
@@ -72,7 +72,7 @@ Sets the construction parameters of the current EffectComponent, including the r
 
 | Name        | Type                                    | Read-only| Optional| Description                                                    |
 | ----------- | --------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| effectLayer | [EffectLayer](#effectlayer20)| No   | No   | Rendering layer of the **EffectComponent**.<br/>Default value: **EffectLayer.NONE** |
+| effectLayer | [EffectLayer](#effectlayer20) |  No   |   Yes   | Rendering layer of EffectComponent.<br/>Default value: EffectLayer.NONE |
 
 ## EffectLayer<sup>20+</sup>
 

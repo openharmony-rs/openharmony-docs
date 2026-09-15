@@ -1,14 +1,19 @@
 # Interfaces (Others)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
 <!--Designer: @piggyguy; @liyi0903; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4cffd417ce4153840a6f1321b4778e89f34ef96c translatedAt=2026-08-05T03:09:16.081Z pushedAt=2026-08-06T01:03:36.547Z -->
+
+This section summarizes other ArkUI UIContext-related interfaces, which are used to describe component target nodes, page information, OverlayManager initialization parameters, gesture trigger information, Swiper content area information, and more.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs of this module can only be used in the stage model.
 
 ## TargetInfo<sup>18+</sup>
 
@@ -22,8 +27,8 @@ Specifies the target node for component binding.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| id | string&nbsp;\|&nbsp;number | No| No| Target node for binding popups or menus.<br>**NOTE**<br>1. When **id** is a number, it corresponds to the component's **UniqueID**, whose uniqueness is guaranteed by the system.<br>2. When **id** is a string, it corresponds to the component specified by the universal attribute [id](arkui-ts/ts-universal-attributes-component-id.md#id). You must ensure the uniqueness of this ID, although there may be multiple instances.|
-| componentId | number | No| Yes| Unique ID of the custom component where the target node is located. When the above **id** is specified as a string, this property can be used to narrow down the scope, helping you ensure the uniqueness of **id: string** within a certain range.|
+| id | string&nbsp;\|&nbsp;number | No | No | Specifies the target node bound to the popup or menu.<br>**Note:** <br>1. When **id** is of the number type, it corresponds to **UniqueID** of the component instance, and the uniqueness of this ID is guaranteed by the system.<br/>2. When **id** is of the string type, it corresponds to the component specified by the [universal attribute id](arkui-ts/ts-universal-attributes-component-id.md#id), and the uniqueness of this ID must be ensured by the you. However, there may be multiple components with the same ID in practice. |
+| componentId | number | No | Yes | **UniqueID** of the custom component where the target node is located. When the above **id** is specified as the string type and the target node needs to be found within a specified custom component scope, this property can be used to define the scope, making it easier for you to ensure the uniqueness of **id: string** within a certain range. By default, no custom component scope is specified. |
 
 ## PageInfo<sup>12+</sup>
 
@@ -46,8 +51,9 @@ Provides the parameters used for initializing [OverlayManager](arkts-apis-uicont
 
 | Name            | Type               | Read-Only| Optional  | Description                    |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
-| renderRootOverlay   | boolean | No| Yes| Whether to render the overlay root node. The value **true** means to render the overlay root node, and **false** means the opposite. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| enableBackPressedEvent<sup>19+</sup>   | boolean | No| Yes| Whether to enable the swipe-to-dismiss gesture for **ComponentContent** under **OverlayManager**. The value **true** means to enable the swipe-to-dismiss gesture, and **false** means the opposite. Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| renderRootOverlay   | boolean | No  | Yes | Whether to render the overlay root node. The value **true** indicates that the overlay root node is rendered, and **false** indicates the opposite. The default value is **true**. By setting this parameter to **false**, you can resolve the issue where [PhotoPickerComponent](../apis-media-library-kit/ohos-file-PhotoPickerComponent.md) cannot select photos when [OverlayManager](arkts-apis-uicontext-overlaymanager.md) is displayed on top of it.<br>**Atomic service API:** This API can be used in atomic services since API version 15.|
+| enableBackPressedEvent<sup>19+</sup>   | boolean | No  | Yes | Whether to support closing the ComponentContent under OverlayManager through a swipe gesture. The value **true** indicates yes, and **false** indicates no. The default value is **false**. <br>**Atomic service API:** This API can be used in atomic services since API version 19.|
+| onBackPress   | [OnOverlayBackPressCallback](arkts-apis-uicontext-t.md#onoverlaybackpresscallback) | No  | Yes | Callback for intercepting the overlay swipe-back event.<br/>**NOTE**<br/>1. When this callback is registered and **enableBackPressedEvent** is set to **true**, the swipe-back event does not automatically close the overlay. Instead, this callback is invoked to determine whether the event is passed to lower-level components.<br/>2. The value **true** indicates that the event is intercepted (consumed and not passed to lower-level components), and **false** indicates that the event is not intercepted and will be passed through to lower-level components.<br/>**Since:** 26.0.0<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
 
 ## GestureTriggerInfo<sup>20+</sup>
 
@@ -66,7 +72,7 @@ Defines the information provided when a specific gesture callback is triggered.
 
 ## GestureObserverConfigs<sup>20+</sup>
 
-Specifies the gesture callback phases to listen for (passing an empty array will be ineffective). Notifications are sent only when the gesture triggers the specified phases.
+Specifies the gesture callback phases to listen for (passing an empty array means no gesture callback stage is listened for). Notifications are sent only when the gesture triggers the specified phases.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -74,7 +80,7 @@ Specifies the gesture callback phases to listen for (passing an empty array will
 
 | Name  | Type  | Read-Only |  Optional      |Description      |
 | ------ | ---- | ---------- |---------- |---------- |
-|  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |No |  No      |Gesture event object.|
+| actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\> | No | No | Gesture callback phases to listen for. An empty array is invalid. Notifications are sent only when the gesture triggers the specified phases. |
 
 ## SwiperContentInfo<sup>22+</sup>
 

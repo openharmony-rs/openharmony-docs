@@ -35,10 +35,10 @@
   <!--DelEnd-->
 - C API<!--network-c-->
   - 模块<!--network-module-->
-    - [TrafficFilter](capi-trafficfilter.md)
     - [NetConnection](capi-netconnection.md)
     - [Netstack](capi-netstack.md)
     - [NetEthernet](capi-netethernet.md)
+    - [TrafficFilter](capi-trafficfilter.md)
   - 头文件<!--network-headerfile-->
     - [net_connection.h](capi-net-connection-h.md)
     - [net_connection_type.h](capi-net-connection-type-h.md)
@@ -99,9 +99,19 @@
     - [OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md)
     - [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md)
     - [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)
+    - [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md)
+    - [OH_TrafficFilter_ConntrackMatch](capi-trafficfilter-oh-trafficfilter-conntrackmatch.md)
+    - [OH_TrafficFilter_FilterRule](capi-trafficfilter-oh-trafficfilter-filterrule.md)
+    - [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md)
+    - [OH_TrafficFilter_PacketCallback](capi-trafficfilter-oh-trafficfilter-packetcallback.md)
+    - [OH_TrafficFilter_PacketController](capi-trafficfilter-oh-trafficfilter-packetcontroller.md)
+    - [OH_TrafficFilter_PacketCopyMode](capi-trafficfilter-oh-trafficfilter-packetcopymode.md)
+    - [OH_TrafficFilter_PacketDecision](capi-trafficfilter-oh-trafficfilter-packetdecision.md)
+    - [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md)
     - [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md)
     - [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md)
     - [OH_TrafficFilter_Redirector](capi-trafficfilter-oh-trafficfilter-redirector.md)
+    - [OH_TrafficFilter_TCPFlagsMatch](capi-trafficfilter-oh-trafficfilter-tcpflagsmatch.md)
     - [OH_Http_Interceptor_Headers](capi-netstack-http-interceptor-headers.md)
     - [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md)
     - [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md)
@@ -117,7 +127,7 @@
 - 错误码<!--network-arkts-errcode-->
   - [HTTP错误码](errorcode-net-http.md)
   - [Socket错误码](errorcode-net-socket.md)
-  - [webSocket错误码](errorcode-net-webSocket.md)
+  - [WebSocket错误码](errorcode-net-webSocket.md)
   - [网络连接管理错误码](errorcode-net-connection.md)
   - [以太网连接错误码](errorcode-net-ethernet.md)
   - [扩展认证错误码](errorcode-net-eap.md)

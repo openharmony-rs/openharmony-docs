@@ -1,10 +1,13 @@
 # Cross-Device Wakeup and Message Transfer Error Codes
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
 <!--Designer: @yangyang2-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=f44fb7f8070e1cb97778b3fca79dffbcf4e0c7e9 translatedAt=2026-08-07T09:45:20.823Z pushedAt=2026-08-07T11:30:43.562Z -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -17,57 +20,57 @@ Internal error.
 
 **Description**
 
-An internal error occurs in the API.
-
-**Possible Causes**
-
 An internal error occurs.
 
+**Possible Causes**
+
+A DSoftBus error occurs, such as failure to start the peer ability or memory allocation failure.
+
 **Solution**
 
-Restart the device and try again.
+Verify whether the peer device has the ability installed, and whether the DSoftBus is running properly.
 
-## 2004001 Unsupported Peer Version
+## 2004001 Peer Device System Version Outdated
 
 **Error Message**
 
-Remote not supported.
+Remote system version is too low.
 
 **Description**
 
-The peer version is not supported.
+The peer device system version is outdated.
 
 **Possible Causes**
 
-This function is not supported because the peer version is outdated.
+The peer device system version is outdated.
 
 **Solution**
 
-Update the peer version and try again.
+Update the peer device system version.
 
-## 2004002 Duplicate Calls
+## 2004002 Failed to Start the Peer Ability
 
 **Error Message**
 
-Duplicate calls, previous call still in progress.
+Failed to start ability on the remote side.
 
 **Description**
 
-The API is called when the previous request is still being processed. Wait until the previous call is complete and try again.
+The peer ability fails to be started.
 
 **Possible Causes**
 
-The previous request has not been processed yet.
+The passed **abilityName** is incorrect, or the peer device does not have the ability.
 
 **Solution**
 
-Wait until the previous call is complete and try again.
+Verify whether the **abilityName** value is correct.
 
 ## 2004003 Failure to Send Data
 
 **Error Message**
 
-Send data failed.
+Failed to send data.
 
 **Description**
 
@@ -75,26 +78,26 @@ This error code is reported if data fails to be sent.
 
 **Possible Causes**
 
-The network is not connected, or the network connection is poor.
+Data fails to be sent.
 
 **Solution**
 
-Connect to the network or connect to another network and try again.
+Ensure that the same account is used on the peer device, the **deviceId** of the peer device is correct, and the local network status is normal.
 
-## 2004004 Request Timeout
+## 2004004 Peer Confirmation Timeout
 
 **Error Message**
 
-Wait remote ack timeout.
+Timeout while waiting for acknowledgement from the remote side.
 
 **Description**
 
-Waiting for a response from the peer end times out.
+Peer confirmation times out.
 
 **Possible Causes**
 
-The Bluetooth and Wi-Fi functions are not enabled on the peer end, the peer end is powered off, or the peer end is not nearby.
+Peer confirmation times out, or the peer device is powered off.
 
 **Solution**
 
-Ensure that the constraints and restrictions are met and try again.
+Ensure that the peer network is normal.

@@ -1,10 +1,12 @@
 # Interfaces (Others)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9884c11e07b730764c848043431a12325c5de509 translatedAt=2026-08-20T09:34:57.905Z pushedAt=2026-08-21T02:05:01.858Z -->
 
 > **NOTE**
 >
@@ -26,15 +28,16 @@ Describes the camera device information.
 | hostDeviceName<sup>15+</sup>    | string                              | Yes  | No | Remote device name. If no remote device is available, an empty value is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | Yes  | No | Remote device type.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | Yes| Yes| Equivalent focal length of the camera lens.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| isLogicalCamera<sup>24+</sup> | boolean | Yes| Yes| Whether a camera is a logical camera (consisting of multiple physical cameras). **true** if the camera is a logical camera, **false** otherwise.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | Yes| Yes| List of physical cameras that form the logical camera.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| lensFocalLength<sup>24+</sup> | number | Yes| Yes| Actual focal length of the lens.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| minimumFocusDistance<sup>24+</sup> | number | Yes| Yes| Minimum focus distance of the camera.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| lensDistortion<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens distortion parameters.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens intrinsic calibration parameters.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | Yes| Yes| Physical dimensions (width and height) of the sensor.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | Yes| Yes| Pixel array dimensions (width and height, in pixels) of the sensor.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | Yes| Yes| Arrangement mode of the sensor color filter.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| isLogicalCamera<sup>24+</sup> | boolean | Yes| Yes| Whether a camera is a logical camera (consisting of multiple physical cameras). **true** if the camera is a logical camera, **false** otherwise.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | Yes| Yes| List of physical cameras that form the logical camera.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensFocalLength<sup>24+</sup> | number | Yes| Yes| Actual focal length of the lens.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| minimumFocusDistance<sup>24+</sup> | number | Yes| Yes| Minimum focus distance of the camera.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensDistortion<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens distortion parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | Yes| Yes| Array of lens intrinsic calibration parameters.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | Yes| Yes| Physical dimensions (width and height) of the sensor.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | Yes| Yes| Pixel array dimensions (width and height, in pixels) of the sensor.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | Yes| Yes| Arrangement mode of the sensor color filter.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| automotiveCameraPosition | [AutomotiveCameraPosition](arkts-apis-camera-e.md#automotivecameraposition) | Yes | Yes | Camera position on a car.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 
 ## CameraStatusInfo
 
@@ -192,12 +195,13 @@ Describes the settings for taking an image.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name     | Type                           | Read-only| Optional| Description                                                                  |
+| Name      | Type                            | Read-Only | Optional | Description                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
-| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | No  | Yes  | Image quality (medium by default).                                                          |
-| rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | No  | Yes  | Rotation angle of the image. The default value is **0**, indicating clockwise rotation.                                                 |
-| location | [Location](#location)           | No  | Yes  | Geolocation information of the image (depending on the device hardware information by default).                                              |
-| mirror   | boolean                         | No  | Yes  | Whether mirror photography is enabled (disabled by default). Before using this enumerated value, call [isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported) to check whether mirror photography is supported. **true** if enabled, **false** otherwise.|
+| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | No   | Yes   | Image quality.<br>If **quality** is not specified, the value of **compressionQuality** is used for image quality by default. If both **quality** and **compressionQuality** are specified, the value of **compressionQuality** is used for image quality. If neither **quality** nor **compressionQuality** is specified, the image quality is high by default.                                                           |
+| rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | No   | Yes   | Rotation angle of the image. The default value is **0**, indicating clockwise rotation.                                                  |
+| location | [Location](#location)           | No   | Yes   | Geolocation information of the image (depending on the device hardware information by default).                                               |
+| mirror   | boolean                         | No   | Yes   | Whether mirror photography is enabled (disabled by default). Before using this enumerated value, call [isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported) to check whether mirror photography is supported. **true** if enabled, and **false** otherwise. |
+| compressionQuality   | number                         | No   | Yes   | Compression quality of the image. The value range is (1, 100).<br>If **compressionQuality** is not specified, the value of **quality** is used for the compression quality of the image. If both **quality** and **compressionQuality** are specified, the value of **compressionQuality** is used for the compression quality. If neither **quality** nor **compressionQuality** is specified, the compression quality is high by default.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.   |
 
 ## FrameShutterInfo
 
@@ -265,7 +269,7 @@ Describes the information about the automatic camera switch status.
 
 ## Rect
 
-Describes a rectangle. The coordinate system for the returned detection points is based on the landscape device orientation, with the charging port on the right. In this coordinate system, the top-left corner is (0, 0), and the bottom-right corner is (1, 1). Here, **topLeftX** and **topLeftY** represent the coordinates of the top-left corner of the rectangle, whereas **width** and **height** represent the width and height of the rectangle, respectively. When cropping or selecting a face region based on specific requirements, the x and y coordinates of the rectangle must be multiplied by the width and height of the actual camera preview output stream to obtain the cropped face region.
+Defines a camera rectangle. This method is used to draw rectangles for various detection objects. The coordinate system for the returned detection points is based on the landscape device orientation, with the charging port on the right. In this coordinate system, the top-left corner is (0, 0), and the bottom-right corner is (1, 1). Here, **topLeftX** and **topLeftY** represent the coordinates of the top-left corner of the rectangle, whereas **width** and **height** represent the width and height of the rectangle, respectively. When cropping or selecting a face region based on specific requirements, the x and y coordinates of the rectangle must be multiplied by the width and height of the actual camera preview output stream to obtain the cropped face region.
 
 The width and height of the actual preview stream refer to the resolution of the camera output stream. For details, see **size** in [profile](arkts-apis-camera-i.md#profile).
 
@@ -295,6 +299,7 @@ Describes the camera metadata, which is the data source of [CameraInput](arkts-a
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  Yes |  No | Metadata object type.   |
 | timestamp   | number                                      |  Yes |  No | Timestamp, in ns.|
 | boundingBox | [Rect](#rect)                               |  Yes |  No | Metadata rectangle. |
+| isLockFocusTracked | boolean                              |  Yes  |  Yes  | Whether focus tracking is locked. The value **true** indicates that it is locked, and the value **false** indicates that it is not locked.<br>**Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.  |
 
 ## MetadataBasicFaceObject
 

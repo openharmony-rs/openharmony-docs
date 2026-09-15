@@ -35,15 +35,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备连接通道。
 
-```mermaid
-graph LR
-    A[开始] --> B[调用getDevices获取设备列表]
-    B --> C[调用requestRight获取权限]
-    C --> D[调用connectDevice获取USBDevicePipe]
-    D --> E[调用相关接口进行操作]
-    E --> F[调用closePipe关闭通道]
-    F --> G[结束]
-```
+![usbManager](../figures/usbManager.png)
 
 ## usbManager.getDevices
 
@@ -69,7 +61,7 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported. [since 18] |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -159,8 +151,8 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 
 **示例：**
 
@@ -217,12 +209,12 @@ hasRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
 ```ts
-async function hasRight(): boolean {
+async function hasRight(): Promise<boolean> {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -241,7 +233,7 @@ async function hasRight(): boolean {
 
 requestRight(deviceName: string): Promise&lt;boolean&gt;
 
-请求应用的临时权限以访问设备。使用Promise异步回调。系统应用默认拥有访问设备权限，无需调用此接口申请。
+请求应用访问设备的临时权限。使用Promise异步回调返回结果。系统应用默认拥有访问设备权限，无需调用此接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -264,7 +256,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+  |
 
 **示例：**
 
@@ -313,7 +305,7 @@ removeRight(deviceName: string): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+  |
 
 **示例：**
 
@@ -355,7 +347,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。如果接口已被其他程序占用，使用true可强制获取但可能导致该程序功能异常；如果接口未被占用，建议使用false以避免不必要的强制操作。用户按需选择。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取，如果无内核驱动占用该接口，则获取成功，否则获取失败；设置为true时，将强制释放内核驱动对该接口的控制权并交由用户空间程序控制。|
 
 **返回值：**
 
@@ -370,7 +362,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -407,6 +399,36 @@ async function claimInterface() {
 }
 ```
 
+## usbManager.claimInterfaceExclusive
+
+claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback<[InterfaceConflictInfo](#interfaceconflictinfo)>): void
+
+独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
+
+**起始版本：** 26.1.0
+
+**系统能力：**  SystemCapability.USB.USBManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 总线地址和设备地址，通过调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 目标USB接口的索引。可以使用[getDevices](#usbmanagergetdevices)获取设备信息，并根据ID识别USB接口。|
+| force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。可以根据需要设置该值。|
+| onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 14400001 | Permission denied. |
+| 14400004 | Service exception. |
+| 14400007 | Resource busy. Possible cause: The interface is claimed by another program or driver. |
+| 14400010 | USB driver error. Possible causes: 1. The device is not connected using [connectDevice](#usbmanagerconnectdevice). 2. The USB device state is abnormal. |
+
 ## usbManager.releaseInterface
 
 releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
@@ -439,7 +461,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -481,6 +503,10 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 设置设备配置。适用于多功能USB设备需要切换工作模式的场景，如打印机+扫描仪组合设备切换为打印模式或扫描模式、设备从低功耗配置切换到高功耗配置以启用全部功能等。调用成功后设备的配置将被切换为指定的配置，后续的数据传输和设备操作将基于新配置进行。
 
+> **说明：**
+>
+> 在调用该接口前需要调用[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+
 **系统能力：**  SystemCapability.USB.USBManager
 
 **参数：**
@@ -503,7 +529,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -567,7 +593,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -632,7 +658,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported. <br>适用版本：18+   |
 
 **示例：**
 
@@ -686,7 +712,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -729,7 +755,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -744,7 +770,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -814,7 +840,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端点，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区，数组长度即为缓冲区大小。用于批量传输时写入或读取数据。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -829,19 +855,19 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
 > **说明：** 
 >
-> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice；当usbManager.connectDevice接口成功返回之后；
-// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后,再调用该接口。
+// 才可以调用第三个接口usbManager.claimInterface。当usbManager.claimInterface 调用成功以后，再调用该接口。
 async function bulkTransfer() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
@@ -912,7 +938,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400007 | Resource busy. Possible causes: 1. The transfer has already been submitted. 2. The interface is claimed by another program or driver.|
 | 14400008 | No such device (it may have been disconnected). |
 | 14400009 | Insufficient memory. Possible causes: 1. Memory allocation failed. |
@@ -922,7 +948,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbSubmitTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -972,7 +998,7 @@ async function usbSubmitTransfer() {
   };
   try {
     transferParams.endpoint = endpoint?.address as number;
-    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback)=>{
+    transferParams.callback = (err, callbackData: usbManager.SubmitTransferCallback) => {
       let relIntfRet: number = usbManager.releaseInterface(devicePipe, interfaces);
       console.info(`releaseInterface = ${relIntfRet}`);
       usbManager.closePipe(devicePipe);
@@ -1016,7 +1042,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1. Unrecognized discard error code. |
 | 14400011 | The transfer is not in progress, or is already complete or cancelled.|
@@ -1025,7 +1051,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 > **说明：** 
 >
-> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码需要放入具体的方法中执行，只是调用usbCancelTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 <!--code_no_check-->
 ```ts
@@ -1051,8 +1077,8 @@ async function usbCancelTransfer() {
   }
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
-    return value.direction === 0 && value.type === 2
-  })
+    return value.direction === 0 && value.type === 2;
+  });
   if (endpoint === undefined) {
     console.info(`invalid endpoint`);
     return;
@@ -1109,7 +1135,7 @@ closePipe(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备连接通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
@@ -1124,7 +1150,7 @@ closePipe(pipe: USBDevicePipe): number
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 
 **示例：**
 
@@ -1180,10 +1206,10 @@ hasAccessoryRight(accessory: USBAccessory): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1226,10 +1252,10 @@ requestAccessoryRight(accessory: USBAccessory): Promise&lt;boolean&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1268,10 +1294,10 @@ cancelAccessoryRight(accessory: USBAccessory): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14400005 | Database operation exception. Possible causes: 1. Database file is corrupted. 2. Database is locked by another process. 3. Insufficient storage space. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
+| 14400005 | Database operation exception. |
+| 14401001 | The target USBAccessory not matched. |
 
 **示例：**
 
@@ -1312,7 +1338,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1355,11 +1381,11 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
+| 801      | Capability not supported.  <br>适用版本：18+ |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
-| 14401001 | The target USBAccessory not matched. Possible causes: 1. The accessory has been disconnected. 2. The accessory information does not match the cached data. |
-| 14401002 | Failed to open the native accessory node. Possible causes: 1. The device node does not exist. 2. The device node is already opened by another process. |
+| 14401001 | The target USBAccessory not matched. |
+| 14401002 | Failed to open the native accessory node. |
 | 14401003 | Cannot reopen the accessory.                                 |
 
 **示例：**
@@ -1409,7 +1435,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801      | Capability not supported. [since 18]                                    |
+| 801      | Capability not supported.  <br>适用版本：18+ |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 
 **示例：**
@@ -1436,7 +1462,7 @@ async function closeAccessory() {
 
 resetUsbDevice(pipe: USBDevicePipe): boolean
 
-重置USB设备。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
+重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
 
 > **说明：**
 >
@@ -1467,8 +1493,8 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
-| 14400001 | Access right denied. Call requestRight or requestAccessoryRight to get the right first. |
-| 14400004 | Service exception. Possible causes: 1. No device is plugged in. |
+| 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
 | 14400008 | No such device (it may have been disconnected). |
 | 14400010 | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
 | 14400013 | The USBDevicePipe validity check failed. Possible causes:<br>1. The input parameters fail the validation check.<br>2. The call chain used to obtain the input parameters is not reasonable. |
@@ -1522,7 +1548,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | USB设备连接通道对象，用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，包含request、target、reqType、value、index、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。|
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。传入负数时抛出参数错误异常。用户按需选择。 |
 
 **返回值：**
 
@@ -1588,25 +1614,14 @@ USB端点，用于主机与设备之间数据传输的通信端点。通过[USBI
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
 
-```mermaid
-graph LR
-    A[端点类型] --> B[批量端点 bulk]
-    A --> C[中断端点 interrupt]
-    A --> D[实时端点 isochronous]
-    B --> B1[带宽共享调度]
-    B1 --> B2[适合大量数据非实时传输]
-    C --> C1[固定轮询调度]
-    C1 --> C2[适合小数据量实时传输]
-    D --> D1[带宽预留调度]
-    D1 --> D2[适合音视频等实时数据流]
-```
+![USBEndpoint](../figures/USBEndpoint.png)
 
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称            | 类型                                        | 只读  | 可选  |说明            |
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | 否   | 否 |端点地址。         |
-| attributes    | number                                      | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时、控制）和同步类型等。取值遵循USB端点描述符规范。 |
+| attributes    | number                                      | 否   | 否 |端点属性，表示端点的传输特性，包括传输类型（批量、中断、实时）和同步类型等。取值遵循USB端点描述符规范。 |
 | interval      | number                                      | 否   | 否 |端点间隔。中断端点和实时端点为时间间隔（单位：毫秒）；批量端点不使用此字段。 |
 | maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小，（单位：字节）。    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
@@ -1629,6 +1644,24 @@ graph LR
 | alternateSetting | number                                   | 否 | 否 |接口的替代设置索引号，用于在同一个接口的多个可选描述符中进行切换选择。0表示默认设置，其他值表示特定的替代设置。 |
 | name             | string                                   | 否 | 否 |接口名称。                 |
 | endpoints        | Array&lt;[USBEndpoint](#usbendpoint)&gt; | 否 | 否 |当前接口所包含的端点。           |
+
+## InterfaceConflictInfo
+
+描述当已独占声明的USB接口被其他进程以非独占方式声明时的冲突信息，通过调用[usbManager.claimInterfaceExclusive](#usbmanagerclaiminterfaceexclusive)独占声明接口后使用。
+
+> **说明：**
+>
+> 此回调在其他进程调用非互斥的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时触发。独占持有方可通过此回调获知潜在的访问冲突。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.USB.USBManager
+
+| 名称         | 类型   | 只读 | 可选 | 说明                                                                 |
+| ------------ | ------ | ---- | ---- | --------------------------------------------------------------------------- |
+| busNum       | number | 否 | 否 |USB设备的总线地址。取值限定为整数。              |
+| devAddr      | number | 否 | 否 |USB设备的设备地址。                                           |
+| interfaceId  | number | 否 | 否 |被其他进程声明的USB接口的ID。           |
 
 ## USBConfiguration
 
@@ -1766,7 +1799,7 @@ USB数据传输参数对象，包含USB数据传输所需的所有参数，用�
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。 |
 | endpoint | number | 否 | 否 | 端点地址，取值范围为[1, 255]的正整数。需要调用[getDevices](#usbmanagergetdevices)获取设备信息，通过endpoint的address属性确定端点信息，通过direction属性确定端点方向。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型，指定USB传输的方式。可选值包括：0x1（实时传输，适合音视频等实时数据流）、0x2（批量传输，适合大量数据非实时传输）、0x3（中断传输，适合小数据量实时传输）。 |
-| timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。取值范围为[0, +∞)，设置为0时无限等待直到传输完成。 |
+| timeout | number | 否 | 否 | 超时时间（单位：毫秒），指定时间内等待传输完成，若在指定时间内传输完成则正常返回否则返回超时。设置为0时无限等待直到传输完成。传入负数时抛出参数错误异常。 |
 | length | number | 否 |否 | 数据缓冲区的长度，取值范围为[0, INT_MAX]的非负数（期望长度），（单位：字节）。 |
 | callback | [AsyncCallback](js-apis-base.md#asynccallback)<[SubmitTransferCallback](#submittransfercallback18)> | 否 |否 | 传输完成时的回调函数，签名：(err: Error, data: SubmitTransferCallback) => void。err为错误对象（成功时为null），data包含传输状态、实际长度等信息。|
 | userData | Uint8Array | 否 | 否 | 用户上下文数据，用于在回调函数中传递自定义的上下文信息。大小和格式由用户定义，在传输请求中指定，回调中原样返回。 |

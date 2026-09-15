@@ -1,7 +1,7 @@
 # 使用Node-API接口进行函数创建和调用
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -141,7 +141,10 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 
 在C/C++侧对ArkTS函数进行调用。
 
-注意事项：napi_call_function传入的argv长度需不少于argc；argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+注意事项：
+- napi_call_function传入的argv长度需不少于argc。
+- argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+- napi_call_function执行后会触发微任务执行。
 
 cpp部分代码
 
@@ -149,6 +152,7 @@ cpp部分代码
 
 ``` C++
 // napi_call_function
+constexpr int ARG_NUM = 10;
 static napi_value CallFunction(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -158,10 +162,13 @@ static napi_value CallFunction(napi_env env, napi_callback_info info)
     // 获取全局对象，这里用global是因为napi_call_function的第二个参数是JS函数的this入参。
     napi_value global = nullptr;
     napi_get_global(env, &global);
+    // 创建数字入参
+    napi_value args[1] = {nullptr};
+    napi_create_int32(env, ARG_NUM, &args[0]);
     // 调用ArkTS方法
     napi_value result = nullptr;
-    // 调用napi_call_function时传入的argv的长度必须大于等于argc声明的数量，且被初始化成nullptr
-    napi_call_function(env, global, argv[0], argc, argv, &result);
+    // 调用napi_call_function时传入的argv的长度必须大于等于argc声明的数量
+    napi_call_function(env, global, argv[0], 1, args, &result);
     return result;
 }
 
@@ -174,8 +181,8 @@ static napi_value ObjCallFunction(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // 调用ArkTS方法
     napi_value result = nullptr;
-    // 调用napi_call_function时传入的argv的长度必须大于等于argc声明的数量，且被初始化成nullptr
-    napi_call_function(env, argv[0], argv[1], argc, argv, &result);
+    // age方法无入参，napi_call_function的argc传0、argv传nullptr
+    napi_call_function(env, argv[0], argv[1], 0, nullptr, &result);
     return result;
 }
 ```
@@ -195,8 +202,8 @@ ArkTS 侧示例代码
 <!-- @[ark_napi_call_function_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-function returnNumber() {
-  return 10;
+function returnNumber(num: number) {
+  return num;
 }
 
 class Person {

@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=23c78283c2fbf556eb3d88353a7151aeb7aecf0d translatedAt=2026-09-01T13:09:11.483Z pushedAt=2026-09-07T10:27:30.322Z -->
 
 ```c
 typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
@@ -26,5 +27,7 @@ The struct describes the information related to the playback position.
 
 | Name| Description|
 | -- | -- |
-| int64_t elapsedTime | Elapsed time, in ms.|
-| int64_t updateTime | Updated time, in ms.|
+| int64_t elapsedTime | Elapsed time, in milliseconds. |
+| int64_t updateTime | Updated time, in milliseconds. |
+
+

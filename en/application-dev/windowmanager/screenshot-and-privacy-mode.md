@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=58ff40ad92758153f7b55166a9e6e0a0e9be5d28 translatedAt=2026-07-10T07:16:00.414Z pushedAt=2026-07-13T07:34:02.885Z -->
+<!-- md-trans-meta sourceCommit=279d7d8e7f77f1675b7e5fea89cc7d4dfef86da1 translatedAt=2026-08-11T10:11:03.098Z pushedAt=2026-08-11T11:19:36.715Z -->
 
 ## How to Use
 
@@ -359,11 +359,11 @@ The usage and examples of screen capture APIs are as follows:
 
 - Listening for screen capture: After registering a screen capture listener, the registered callback function is triggered whenever a screenshot occurs.
 
-  - [on('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshot9) can only listen for the screenshot action and cannot distinguish the specific screenshot event type. It takes effect for screenshots from Control Panel, hdc command-triggered screenshots, and full-screen capture APIs.
+  - The [on('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshot9) API can only listen for the screenshot action and cannot distinguish the specific screenshot event type. It takes effect for screenshots from Control Panel, hdc command-triggered screenshots, and screenshots from the **screenshot.capture()** API.
 
   - The [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20) API can listen for screenshot actions and return the triggered screenshot event type [ScreenshotEventType](../reference/apis-arkui/arkts-apis-window-e.md#screenshoteventtype20). For example, system screenshot success or cancellation, scrolling screenshot start or end.
 
-  - When you no longer need to listen for screen capture events, you can disable listening through the corresponding off APIs ([off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshotappevent20)).
+  - When you no longer need to listen for screen capture events, you can disable listening through the corresponding off the ([off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshotappevent20)) APIs.
 
 <!--@[SnapshotScreen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
 

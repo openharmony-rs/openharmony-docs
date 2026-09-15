@@ -39,7 +39,7 @@ try {
     }).catch((err: BusinessError) => {
       console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     });
-} catch (err) {
+} catch (err: BusinessError) {
   console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
 }
 ```

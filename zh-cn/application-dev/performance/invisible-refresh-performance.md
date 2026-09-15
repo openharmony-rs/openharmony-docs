@@ -35,7 +35,7 @@
 ## 解决思路
 
 ### 接入可见接口法
-下方展示了使用[ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)实现的动画组件，通过设置duration实现多个Pixelmap的循环播放。例如，当组件放置在Scroll容器中时，为避免组件划出屏幕导致的不可见空跑问题，可以通过监听组件移出屏幕的事件，修改动画播放状态，从而控制空跑。以下提供了几种接入可见性接口的实现方式，开发者可根据需要选择一种：
+下方展示了使用[ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)实现的动画组件，通过设置duration实现多个PixelMap的循环播放。例如，当组件放置在Scroll容器中时，为避免组件划出屏幕导致的不可见空跑问题，可以通过监听组件移出屏幕的事件，修改动画播放状态，从而控制空跑。以下提供了几种接入可见性接口的实现方式，开发者可根据需要选择一种：
 
 [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)：可直接绑定到组件，当组件可见时每帧进行一次可见性计算，达到阈值时触发回调。
 
@@ -74,7 +74,7 @@ struct ImageAnimatorTest {
           { src: $r('app.media.background') },
           { src: $r('app.media.foreground') }
         ])
-        .id(`ImageAnimator${this.index}}`)
+        .id(`ImageAnimator${this.index}`)
         .width('100%')
         .height('30%')
         .duration(3000)

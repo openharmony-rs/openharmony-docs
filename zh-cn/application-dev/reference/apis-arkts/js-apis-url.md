@@ -485,7 +485,7 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 | port | string | 否 | 否 | 获取和设置URL的端口部分。当port为当前protocol的默认端口时，port将被解析为空字符串。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | protocol | string | 否 | 否 | 获取和设置URL的协议部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | search | string | 否 | 否 | 获取和设置URL的序列化查询部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。<br>- **说明：** 此属性从API version 7开始支持，从API version 9开始废弃。建议使用[URLParams](#urlparams9)替代。 |
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。<br>- **说明：** 此属性从API version 7开始支持，从API version 9开始废弃。建议使用params<sup>9+</sup>替代。 |
 | params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams对象，用于访问URL查询参数。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | username | string | 否 | 否 | 获取和设置URL的用户名部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
@@ -493,14 +493,12 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 >
 > 在解析URL字符串时，如果入参中的port内容是当前protocol的默认端口，那么port将被解析为空字符串。默认端口为：
 >
-> | 协议 | 默认端口 |
-> | -------- | -------- |
-> | http: | 80 |
-> | https: | 443 |
-> | ftp: | 21 |
-> | gopher: | 70 |
-> | ws: | 80 |
-> | wss: | 443 |
+> - http:  80
+> - https:  443
+> - ftp:  21
+> - gopher:  70
+> - ws:  80
+> - wss:  443
 
 **示例：**
 
@@ -527,13 +525,13 @@ console.info("toString " + urlObj.toString()); // toString http://testhost/direc
 
 ### constructor<sup>(deprecated)</sup>
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[parseURL<sup>9+</sup>](#parseurl9)替代。
-
 constructor(url: string, base?: string | URL)
 
 URL的构造函数。与[parseURL](#parseurl9)方法功能相同，但parseURL为静态工厂方法，推荐使用parseURL来创建URL对象。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[parseURL<sup>9+</sup>](#parseurl9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 

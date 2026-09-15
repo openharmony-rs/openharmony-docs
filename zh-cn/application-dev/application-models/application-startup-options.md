@@ -412,7 +412,7 @@ struct SetWindowPosition {
 **开发步骤如下：**
 1. 在启动UIAbility之前，需要先导入相关的模块。
 2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
-3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。可以通过[getWindowLimitsVP](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)获取当前窗口的尺寸限制。
+3. 配置StartOptions的minWindowWidth、minWindowHeight、maxWindowWidth、maxWindowHeight属性，设置窗口尺寸限制。相关属性的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。可以通过[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)获取当前窗口的尺寸限制。
 4. 调用startAbility接口，启动目标UIAbility。
 
 <!-- @[startOptions_windowSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetWindowSizeConstraints/src/main/ets/pages/Index.ets) --> 

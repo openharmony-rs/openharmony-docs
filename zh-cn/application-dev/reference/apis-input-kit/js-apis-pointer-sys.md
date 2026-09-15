@@ -30,7 +30,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -88,7 +88,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -149,13 +149,13 @@ setPointerSpeedSync(speed: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed | number | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed | number | 是    | 鼠标移动速度，取值范围[1, 20]，默认为10。 |
 
 **错误码**：
 
@@ -199,7 +199,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -256,7 +256,7 @@ getPointerSpeed(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -309,13 +309,13 @@ getPointerSpeedSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度，范围1-20。  |
+| number | 返回鼠标移动速度，取值范围[1, 20]。  |
 
 **错误码**：
 
@@ -359,7 +359,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -416,7 +416,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -476,7 +476,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -532,7 +532,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -586,7 +586,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -643,7 +643,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -703,7 +703,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -759,7 +759,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -813,13 +813,13 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     | number                    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     | number                    | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置鼠标滚动行数成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -870,13 +870,13 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  | number | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  | number | 是    | 鼠标滚动行数，取值范围[1, 100]，默认为3。 |
 
 **返回值**：
 
@@ -930,7 +930,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -986,7 +986,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1040,7 +1040,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1097,7 +1097,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1151,13 +1151,13 @@ struct Index {
 
 ## pointer.getTouchpadScrollSwitch<sup>10+</sup>
 
-getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadScrollSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板滚轴能力开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1213,7 +1213,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1267,7 +1267,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1324,7 +1324,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1376,116 +1376,6 @@ struct Index {
 }
 ```
 
-## pointer.getTouchpadScrollDirection<sup>10+</sup>
-
-getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
-
-获取触控板滚轴方向，使用callback异步回调。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**系统接口**: 此接口为系统接口。
-
-**参数**：
-
-| 参数名       | 类型                          | 必填   | 说明             |
-| -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数。当获取触控板滚轴方向成功，err为undefined，state是true与手指滑动的方向一致；否则为错误对象。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**：
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取触控板滚动方向
-            pointer.getTouchpadScrollDirection((error: BusinessError, state: boolean) => {
-              if (error) {
-                console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-                return;
-              }
-              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            });
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
-## pointer.getTouchpadScrollDirection<sup>10+</sup>
-
-getTouchpadScrollDirection(): Promise\<boolean>
-
-获取触控板滚轴方向，使用Promise异步回调。
-
-**系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**系统接口**: 此接口为系统接口。
-
-**返回值**：
-
-| 类型                    | 说明                  |
-| --------------------- | ------------------- |
-| Promise\<boolean> | Promise对象。返回true表示触控板滚轴方向与手指滑动的方向一致；返回false表示触控板滚轴方向与手指滑动的方向相反。默认为true。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息             |
-| ---- | --------------------- |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**：
-
-```js
-import { pointer } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            // 获取触摸板滚动方向
-            pointer.getTouchpadScrollDirection().then((state: boolean) => {
-              console.info(`Succeeded in getting touchpad scroll direction, state: ${JSON.stringify(state)}.`);
-            }).catch((error: BusinessError) => {
-              console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-            })
-          } catch (error) {
-            console.error(`Failed to get touchpad scroll direction, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
-        })
-    }
-  }
-}
-```
-
 ## pointer.setTouchpadTapSwitch<sup>10+</sup>
 
 setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
@@ -1494,7 +1384,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1551,7 +1441,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1605,13 +1495,13 @@ struct Index {
 
 ## pointer.getTouchpadTapSwitch<sup>10+</sup>
 
-getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadTapSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板轻触能力开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1666,7 +1556,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -1720,13 +1610,13 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
+| speed | number                    | 是    |speed代表光标移动速度。speed取值范围[1, 11]，默认6。  |
 | callback | AsyncCallback\<void> | 是    | 回调函数。当设置触控板光标移动速度成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -1777,13 +1667,13 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| number | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
+| speed| number | 是    | speed代表光标移动速度。speed取值范围[1, 11]，默认6。    |
 
 **返回值**：
 
@@ -1837,7 +1727,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -1893,13 +1783,13 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
+| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1, 11]。 |
 
 **错误码**：
 
@@ -1947,7 +1837,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2004,7 +1894,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2058,13 +1948,13 @@ struct Index {
 
 ## pointer.getTouchpadPinchSwitch<sup>10+</sup>
 
-getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadPinchSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板双指捏合功能开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2120,7 +2010,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2174,7 +2064,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2231,7 +2121,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2285,13 +2175,13 @@ struct Index {
 
 ## pointer.getTouchpadSwipeSwitch<sup>10+</sup>
 
-getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
+getTouchpadSwipeSwitch(callback: AsyncCallback\<boolean>): void
 
 获取触控板多指滑动功能开启状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2347,7 +2237,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2401,7 +2291,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2458,7 +2348,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2518,7 +2408,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2574,7 +2464,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2628,7 +2518,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2685,7 +2575,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2745,7 +2635,7 @@ setPointerSizeSync(size: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2796,7 +2686,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -2852,7 +2742,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2906,7 +2796,7 @@ getPointerSizeSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -2960,7 +2850,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3021,7 +2911,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3085,7 +2975,7 @@ setPointerColorSync(color: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3136,7 +3026,7 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3192,7 +3082,7 @@ getPointerColor(): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3246,7 +3136,7 @@ getPointerColorSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3296,7 +3186,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3353,7 +3243,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3413,7 +3303,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3469,7 +3359,7 @@ getTouchpadDoubleTapAndDragState(): Promise\<boolean>
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 
@@ -3520,11 +3410,11 @@ setMouseScrollDirection(inverted: boolean): Promise\<void>
 
 设置鼠标滚轮滚动的方向，使用Promise异步回调。
 
-**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **参数**：
 
@@ -3583,11 +3473,11 @@ getMouseScrollDirection(): Promise\<boolean>
 
 获取鼠标滚轮滚动方向，使用Promise异步回调。
 
-**需要权限**: ohos.permission.INPUT_DEVICE_CONTROLLER
+**需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**系统接口**: 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **返回值**：
 

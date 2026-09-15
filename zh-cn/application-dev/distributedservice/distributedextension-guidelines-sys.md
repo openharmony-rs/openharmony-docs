@@ -63,7 +63,7 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 20或以上，更新SDK的具体操作可参见[更新指南](../tools/openharmony_sdk_upgrade_assistant.md)。
+2. 将public-SDK更新到API 20或以上，更新SDK的具体操作可参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 打开设备A和设备B的蓝牙，互相识别，实现组网。
 
 ### 检验环境是否搭建成功
@@ -88,8 +88,8 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
 | onCreate(want: Want): void;                                          | 分布式协同触发创建。       |
-| onDestroy(): void;                                                   | 分布式协同销毁 。          |
-| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | 分布式协同有请求时时回调。 |
+| onDestroy(): void;                                                   | 分布式协同销毁。          |
+| onCollaborate(wantParam: Record): AbilityConstant.CollaborateResult; | 分布式协同有请求时回调。 |
 
 ### 开发步骤
 
@@ -99,21 +99,24 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
    
    DistributedExtensionAbility配置文件示例：
    
-   ```json
-   "extensionAbilities": [
-     {
-       "name": "EntrydistributedAbility",
-       "srcEntry": "./ets/entrybackupability/EntryDistributedAbility.ets",
-       "type": "distributed",
-       "exported": false,
-       "metadata": [
-         {
-           "name": "ohos.extension.DistributedExtension",
-         }
-       ],
-       "srcEntry": "./ets/common/MDSExtension.ts",
+   ```json5
+   {
+     "module": {
+       "extensionAbilities": [
+        {
+          "name": "EntrydistributedAbility",
+          "type": "distributed",
+          "exported": false,
+          "metadata": [
+            {
+              "name": "ohos.extension.DistributedExtension"
+            }
+          ],
+          "srcEntry": "./ets/common/MDSExtension.ts"
+        }
+       ]
      }
-   ]
+   }
    ```
 2. 导入开发所需模块。
    
@@ -138,11 +141,10 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
    
      onCollaborate(wantParam: Record<string, Object>) {
        console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-       let sessionId = -1;
-       const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-       if (collaborationValues == undefined) {
-         return sessionId;
-       }
+        const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
+        if (collaborationValues == undefined) {
+          return AbilityConstant.CollaborateResult.REJECT;
+        }
    
        console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
        return AbilityConstant.CollaborateResult.ACCEPT;

@@ -25,7 +25,7 @@ typedef struct {...} OH_VBucket
 | 名称                | 描述                           |
 | ------------------- | ------------------------------ |
 | int64_t id          | OH_VBucket结构体的唯一标识符。 |
-| uint16_t capability | 表示结构体的存储键值对的数量。 |
+| uint16_t capability | 表示结构体的存储键值对的容量。 |
 
 
 ### 成员函数
@@ -41,7 +41,7 @@ typedef struct {...} OH_VBucket
 | [int (*destroy)(OH_VBucket *bucket)](#destroy)               | 销毁OH_VBucket对象，并回收该对象占用的内存。        |
 
 
-### 成员函数说明
+## 成员函数说明
 
 ### putText()
 
@@ -86,7 +86,7 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名，不能为空。               |
+| const char *field  | 数据库表中的列名，不能为空指针。               |
 | int64_t value      | 数据库表中指定列名对应的值。   |
 
 **返回：**
@@ -112,7 +112,7 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名，不能为空。               |
+| const char *field  | 数据库表中的列名，不能为空指针。               |
 | double value       | 数据库表中指定列名对应的值。   |
 
 **返回：**
@@ -138,9 +138,9 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名，不能为空。               |
+| const char *field  | 数据库表中的列名，不能为空指针。               |
 | const uint8_t *value | 数据库表中指定列名对应的值。 |
-| uint32_t size      | 表示value的长度。              |
+| uint32_t size      | 表示value的字节长度。              |
 
 **返回：**
 
@@ -165,7 +165,7 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名，不能为空。               |
+| const char *field  | 数据库表中的列名，不能为空指针。               |
 
 **返回：**
 
@@ -181,7 +181,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **描述**
 
-清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。
+清空OH_VBucket对象。
 
 **起始版本：** 10
 
@@ -205,7 +205,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **描述**
 
-销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。
+销毁OH_VBucket对象，并回收该对象占用的内存。
 
 **起始版本：** 10
 

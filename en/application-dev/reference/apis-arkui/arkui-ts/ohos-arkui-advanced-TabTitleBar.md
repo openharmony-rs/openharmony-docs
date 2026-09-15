@@ -16,7 +16,7 @@
 >
 > - This component can only be used in the stage model.
 >
-> - When setting [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) of **TabTitleBar**, the compilation toolchain mounts them on the __Common__ node instead of directly applying them to the component itself, which may cause the settings to not take effect or not work as expected. Therefore, setting them is not recommended.
+> - When setting [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) of **TabTitleBar**, the compilation toolchain mounts them on the \_\_Common\_\_ node instead of directly applying them to the component itself, which may cause the settings to not take effect or not work as expected. Therefore, setting them is not recommended.
 
 ## Modules to Import
 

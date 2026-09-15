@@ -5,6 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4b1c0990e7305766fe10024f567b18e463a94205 translatedAt=2026-09-04T02:37:43.090Z pushedAt=2026-09-09T09:11:03.634Z -->
 
 Provides APIs for managing data in an RDB store.
 
@@ -468,7 +469,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
 
-Inserts a row of data into a table. This API returns the result synchronously.
+Inserts a row of data into a table.
 
 Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
 
@@ -751,7 +752,7 @@ Inserts data into a table in batches. This API uses a promise to return the resu
 
 This API returns either an error or **-1** if the data fails to be inserted.
 
-Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
+Data is written in batches of up to 32,766 parameters, each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
 
 Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
 
@@ -862,7 +863,7 @@ Vector store:
 
 ```ts
 let createSql = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
-await store!.execute(createSql, 0, undefined);  // Create a relational table. The second parameter 0 indicates that explicit transactions are not enabled, and the third parameter undefined indicates that the SQL statement does not use parameter binding.
+await store!.execute(createSql, 0, undefined); // Create a relational table. The second parameter 0 means not enabling an explicit transaction, and the third parameter undefined means the SQL does not use bound parameterization.
 let floatVector = Float32Array.from([1.2, 2.3]);
 let valueBucketArray = new Array<relationalStore.ValuesBucket>();
 for (let i = 0; i < 100; i++) { // Construct a BucketArray for writing.
@@ -883,7 +884,7 @@ Inserts data into a table with conflict resolutions in batches. This API returns
 
 This API returns either an error or **-1** if the data fails to be inserted.
 
-Data is written in batches of up to 32,766 parameters each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
+Data is written in batches of up to 32,766 parameters, each with the [ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10) policy. The total number of parameters is calculated as the number of inserted data records multiplied by the size of the union set of all fields in the inserted data. If the operation fails, an error is returned.
 
 Due to the limit of the shared memory, the size of a single data record cannot exceed 2 MB.
 
@@ -5055,7 +5056,7 @@ Synchronizes data across devices. This API uses an asynchronous callback to retu
 
 | Name    | Type                                              | Mandatory| Description                                                        |
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | Yes  | Data sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**.                              |
+| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | Yes   | Sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**.                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | Yes  | **RdbPredicates** object that specifies the data and devices to sync.                                        |
 | callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | Yes  | Callback used to send the sync result to the caller. **string** indicates the device ID. **number** indicates the sync status of that device. The value **0** indicates a successful sync; **1** indicates a sync failure.|
 
@@ -5121,7 +5122,7 @@ Synchronizes data across devices. This API uses a promise to return the result.
 
 | Name    | Type                                | Mandatory| Description                          |
 | ---------- | ------------------------------------ | ---- | ------------------------------ |
-| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | Yes  | Data sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**.|
+| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | Yes   | Sync mode. The value can be **relationalStore.SyncMode.SYNC_MODE_PUSH** or **relationalStore.SyncMode.SYNC_MODE_PULL**. |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes  | **RdbPredicates** object that specifies the data and devices to sync.          |
 
 **Return value**
@@ -5570,7 +5571,7 @@ Subscribes to data changes of this RDB store. The registered callback will be ca
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | event    | string                                                       | Yes  | Event type. The value is **'dataChange'**, which indicates data changes.                          |
 | type     | [SubscribeType](arkts-apis-data-relationalStore-e.md#subscribetype)                              | Yes  | Type of data change to observe.                                                  |
-| observer | Callback&lt;Array&lt;string&gt;&gt;                          | Yes  | Callback used to return the data change. **Array\<string>** holds the IDs of the peer devices whose data is changed.|
+| observer | Callback&lt;Array&lt;string&gt;&gt; | Yes | Observer for the data change event in the distributed database. Array&lt;string&gt; is the ID of the peer device whose data in the database changes. |
 
 **Error codes**
 
@@ -6012,7 +6013,7 @@ Unsubscribes from process events.
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | event    | string                                                       | Yes  | Event type. The value is **'dataChange'**, which indicates data changes.                          |
 | type     | [SubscribeType](arkts-apis-data-relationalStore-e.md#subscribetype) | Yes  | Type of data change to observe.                                                  |
-| observer | Callback&lt;Array&lt;string&gt;&gt;                          | Yes  | Callback to unregister. **Array\<string>** holds the IDs of the peer devices whose data is changed.|
+| observer | Callback&lt;Array&lt;string&gt;&gt;                          | Yes   | Registered data change observer. Array&lt;string&gt; is the peer device ID whose data changes in the database. |
 
 **Error codes**
 
@@ -6191,7 +6192,7 @@ Unsubscribes from the auto sync progress.
 | Name      | Type                             | Mandatory| Description                                                              |
 | ------------ |---------------------------------| ---- |------------------------------------------------------------------|
 | event        | string                          | Yes  | Event type. The value is **'autoSyncProgress'**, which indicates the auto sync progress.                               |
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | No  | Callback to unregister. If this parameter is **null** or **undefined** or not specified, this API unregisters all callbacks for the auto sync progress.|
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | No   | Registered automatic sync progress observer. If this parameter is present, the subscription to the specified callback is canceled. If this parameter is **null**, **undefined**, or absent, subscriptions to all callbacks are canceled. |
 
 **Error codes**
 

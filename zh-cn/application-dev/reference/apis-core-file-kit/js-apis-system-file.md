@@ -1,9 +1,9 @@
 # @system.file (文件存储)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 > **说明：**
@@ -12,6 +12,10 @@
 >   - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
 >   - 对于支持该模块的其他设备类型，该模块从API Version 10开始不再维护，推荐使用新接口[@ohos.file.fs](js-apis-file-fs.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
+以下ArkTS示例URI说明：
+  1. URI只能是internal://app/xxx格式。
+  2. `internal://app/`为固定前缀，表示应用根目录，`xxx`为开发者自行创建的目录或文件名。
 
 ## 导入模块
 

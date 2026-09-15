@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=adc4fccab9ce2d6d069c4d6bc57fbeca9e96cecb translatedAt=2026-07-30T02:52:29.029Z pushedAt=2026-07-30T06:15:05.974Z -->
+<!-- md-trans-meta sourceCommit=b1cebd3e52b147006adf492647d8b8e3c5a664e2 translatedAt=2026-08-21T03:19:08.955Z pushedAt=2026-08-21T09:04:11.428Z -->
 
 ## Overview
 
@@ -42,7 +42,7 @@ The following describes how to subscribe to the crash event triggered by a butto
 
 2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project, and set the [custom crash event parameters](hiappevent-watcher-crash-events.md#customizing-crash-event-parameters) and crash log [custom specification settings](hiappevent-watcher-crash-events.md#customizing-crash-log-specifications) in the `onCreate` function. The sample code is as follows:
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
     ``` TypeScript
     // Build custom parameters for the crash event.
@@ -71,11 +71,11 @@ The following describes how to subscribe to the crash event triggered by a butto
       });
     }
     
-    if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24 and later supports setting the page switch log.
+    if (deviceInfo.sdkApiVersion >= 24) {
       let crashEventPolicy : hiAppEvent.EventPolicy = {
         "appCrashPolicy": { // Crash event configuration policy.
-          "pageSwitchLogEnable": true, // Enable the page switch log.
-          "collectMinidump": true // In native crash scenarios, enable minidump.
+          "pageSwitchLogEnable": true, // Starting from API version 24, page switch logging is supported.
+          "collectMinidump": true // Starting from API version 26.0.0, minidump is supported.
         }
       };
       // You can set the crash event configuration policy.

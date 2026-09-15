@@ -22,7 +22,7 @@ ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 | ---- | ------------------------------------------------------------ |
 | px   | 屏幕物理像素单位。                                           |
 | vp   | 屏幕密度相关像素，根据屏幕像素密度转换为屏幕物理像素，当数值不带单位时，默认单位vp。<br/> **说明：** <br/>vp与px的比例与屏幕像素密度有关。 |
-| fp   | 字体像素，与vp类似适用屏幕密度变化，随系统字体大小设置变化。 |
+| fp   | 字体像素，与vp类似，适用屏幕像素密度变化，随系统字体大小设置变化。 |
 | lpx  | 视窗逻辑像素单位，lpx单位为实际屏幕宽度与逻辑宽度（通过[designWidth](../../../quick-start/module-configuration-file.md#pages标签)配置）的比值，designWidth默认值为720。当designWidth为720时，在实际宽度为1440物理像素的屏幕上，1lpx为2px大小。 |
 
 ## vp2px<sup>(deprecated)</sup>
@@ -53,7 +53,7 @@ vp2px(value: number): number
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值，单位：px。<br/>取值范围：(-∞, +∞) |
 
 ## px2vp<sup>(deprecated)</sup>
 
@@ -83,7 +83,7 @@ px2vp(value: number): number
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值，单位：vp。<br/>取值范围：(-∞, +∞) |
 
 ## fp2px<sup>(deprecated)</sup>
 
@@ -105,13 +105,13 @@ fp2px(value: number): number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。fp受屏幕像素密度和系统字体大小设置共同影响，转换时结合当前屏幕的虚拟像素比与字体缩放系数进行计算。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值，单位：px。<br/>取值范围：(-∞, +∞) |
 
 ## px2fp<sup>(deprecated)</sup>
 
@@ -133,13 +133,13 @@ px2fp(value: number): number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。fp受屏幕像素密度和系统字体大小设置共同影响，转换时结合当前屏幕的虚拟像素比与字体缩放系数进行计算。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值，单位：fp。<br/>取值范围：(-∞, +∞) |
 
 ## lpx2px<sup>(deprecated)</sup>
 
@@ -161,13 +161,13 @@ lpx2px(value: number): number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。lpx与px的转换比例取决于实际屏幕宽度与逻辑宽度（通过designWidth配置）的比值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值，单位：px。<br/>取值范围：(-∞, +∞) |
 
 ## px2lpx<sup>(deprecated)</sup>
 
@@ -189,13 +189,13 @@ px2lpx(value: number): number
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。lpx与px的转换比例取决于实际屏幕宽度与逻辑宽度（通过designWidth配置）的比值。<br/>取值范围：(-∞, +∞) |
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+| number | 转换后的数值，单位：lpx。<br/>取值范围：(-∞, +∞) |
 
 ## 示例
 
@@ -208,7 +208,7 @@ struct Example {
     Column() {
       Flex({ wrap: FlexWrap.Wrap }) {
         Column() {
-          Text("width(220)")
+          Text('width(220)')
             .width(220)
             .height(40)
             .backgroundColor(0xF9CF93)
@@ -247,7 +247,7 @@ struct Example {
         }.margin(5)
 
         Column() {
-          Text("width(vp2px(220) + 'px')")
+          Text("width(getUIContext().vp2px(220) + 'px')")
             .width(this.getUIContext().vp2px(220) + 'px')
             .height(40)
             .backgroundColor(0xF9CF93)
@@ -267,7 +267,7 @@ struct Example {
         }.margin(5)
 
         Column() {
-          Text("width(px2vp(220))")
+          Text('width(px2vp(220))')
             .width(this.getUIContext().px2vp(220))
             .height(40)
             .backgroundColor(0xF9CF93)

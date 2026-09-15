@@ -24,6 +24,8 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 
 WebNativeMessagingExtensionContext是Web原生消息扩展的上下文，包含所需交互能力。
 
+**系统能力:** SystemCapability.Web.Webview.Core
+
 ### startAbility
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
@@ -95,8 +97,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
       context.startAbility(abilityWant).then(() => {
         console.info('Ability started successfully');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-          Message: ${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+          Message: ${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
@@ -186,8 +188,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
           console.info(`Result data: ${JSON.stringify(result.want)}`);
         }
       }).catch((err: BusinessError) => {
-        console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
-        Message:${(err as BusinessError).message}`);
+        console.error(`Failed to start ability. Code: ${err.code},
+        Message:${err.message}`);
       });
     } catch (err) {
       console.error(`Failed to start ability. Code: ${(err as BusinessError).code},
@@ -235,8 +237,8 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
         context.terminateSelf().then(() => {
           console.info('Extension terminated successfully');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to terminate extension. Code: ${(err as BusinessError).code},
-          Message: ${(err as BusinessError).message}`);
+          console.error(`Failed to terminate extension. Code: ${err.code},
+          Message: ${err.message}`);
         });       
     } catch (err) {
         console.error(`Failed to terminate extension. Code: ${(err as BusinessError).code},

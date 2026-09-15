@@ -685,7 +685,7 @@ Obtains the minimum volume level of a stream. This API uses a promise to return 
 
 ```ts
 audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
-  console.info(`Promised returned to indicate that the minimum volume is obtained. ${value}`);
+  console.info(`Promise returned to indicate that the minimum volume is obtained. ${value}`);
 });
 ```
 
@@ -748,7 +748,7 @@ Obtains the maximum volume level of a stream. This API uses a promise to return 
 
 ```ts
 audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
-  console.info('Promised returned to indicate that the maximum volume is obtained.');
+  console.info('Promise returned to indicate that the maximum volume is obtained.');
 });
 ```
 
@@ -1557,4 +1557,3 @@ audioManager.on('interrupt', interAudioInterrupt, interruptCallback);
 
 audioManager.off('interrupt', interAudioInterrupt, interruptCallback);
 ```
-<!--no_check-->

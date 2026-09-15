@@ -13,7 +13,7 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 
 > **说明：**
 >
-> 该列表枚举当前版本Wearable设备类型支持的最小系统能力集，开发者可以在sdk中通过wearable.json文件查询。
+> 该列表枚举当前版本Wearable设备类型支持的最小系统能力集，开发者可以在SDK中通过wearable.json文件查询。
 > 开发者使用该列表中的系统能力集对应的API开发当前版本Wearable应用时，可直接调用，无需在使用前进行canIUse()隔离判断。
 
 - SystemCapability.Ability.AbilityBase

@@ -30,7 +30,7 @@
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md) | OH_VideoProcessing | 定义视频处理对象。<br>定义一个OH_VideoProcessing空指针，用于调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建视频处理实例。用户可以对不同的处理类型创建不同的视频处理实例。 |
 | [NativeWindow](capi-videoprocessing-nativewindow.md) | OHNativeWindow | 定义NativeWindow对象。 |
 | [OH_AVFormat](capi-videoprocessing-oh-avformat.md) | OH_AVFormat | 定义OH_AVFormat对象。 |
-| [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md) | VideoProcessing_Callback | 视频处理回调对象类型。<br>定义一个VideoProcessing_Callback空指针，调用[OH_VideoProcessingCallback_Create](capi-video-processing-h.md#oh_videoprocessingcallback_create)来创建一个回调对象。创建之前该指针必须为空。通过调用[OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)来向视频处理实例注册回调对象。 |
+| [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md) | VideoProcessing_Callback | 视频处理回调对象类型。定义视频处理回调对象类型。使用[OH_VideoProcessingCallback_Create](capi-video-processing-h.md#oh_videoprocessingcallback_create)创建回调对象前，需要将该类型的指针初始化为空指针。创建成功后，可通过调用[OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)，将回调对象注册到视频处理实例中。 |
 
 ### 枚举
 
@@ -58,6 +58,9 @@
 | const int32_t VIDEO_PROCESSING_TYPE_DETAIL_ENHANCER | 表示创建细节增强视频处理实例。<br>调用[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)创建细节增强视频处理实例，如果不支持该能力返回[VideoProcessing_ErrorCode](#videoprocessing_errorcode).VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING。<br>**起始版本：** 12 |
 | const char* VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL | 指定视频细节增强的质量等级，参考[VideoDetailEnhancer_QualityLevel](#videodetailenhancer_qualitylevel)查看具体取值。<br>调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置质量等级。<br>调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前质量等级。<br>**起始版本：** 12 |
 | const char * VIDEO_METADATA_GENERATOR_STYLE_CONTROL | 指定视频元数据生成的风格模式。具体取值请参考[VideoMetadataGeneratorStyleControl](#videometadatageneratorstylecontrol)。调用[OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue)设置视频元数据生成的风格模式到AVFormat参数。调用[OH_VideoProcessing_SetParameter](capi-video-processing-h.md#oh_videoprocessing_setparameter)设置当前视频元数据生成的风格模式。调用[OH_VideoProcessing_GetParameter](capi-video-processing-h.md#oh_videoprocessing_getparameter)获取当前视频元数据生成的风格模式。<br>**起始版本：** 22 |
+| const int32_t VIDEO_PROCESSING_TYPE_AUTOEFFECT_AISR | 表示在XComponent中使用的视频AISR（Artificial Intelligence Super Resolution）自动增强效果类型。AISR称作AI超分，是AutoEffect中的一种。<br>调用[OH_VideoProcessing_IsAutoEffectSupported](capi-video-processing-h.md#oh_videoprocessing_isautoeffectsupported)查询是否支持AISR自动增强效果。<br>**起始版本：** 26.1.0 |
+| const char *VIDEO_AUTOEFFECT_ENABLE | 设置启用或禁用自动增强效果的关键字。<br>调用[OH_AVFormat_SetIntValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setintvalue)将启用值（0为false表示禁用，1为true表示启用）设置到AVFormat参数中。调用[OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam)将参数设置到视频处理实例中。<br>**起始版本：** 26.1.0 |
+| const char *VIDEO_AUTOEFFECT_AISR_STRENGTH | 设置AISR强度。<br>调用[OH_AVFormat_SetFloatValue](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_setfloatvalue)将强度值设置到AVFormat参数中。当取值在[0.0, 1.0]范围内时，值越大图像质量越好；如果设置为小于0的值，则图像质量增强为自适应模式。调用[OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam)将参数设置到视频处理实例中。<br>**起始版本：** 26.1.0 |
 
 ## 枚举类型说明
 

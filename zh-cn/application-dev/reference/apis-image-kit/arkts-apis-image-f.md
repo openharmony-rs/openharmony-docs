@@ -42,7 +42,7 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -92,7 +92,7 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -502,11 +502,11 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -523,6 +523,10 @@ function createPixelMapSync() {
   };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
   } catch (e) {
     const err = e as BusinessError;
@@ -558,11 +562,11 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -573,6 +577,10 @@ function createPixelMapSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_1010102, size: { height: 4, width: 6 } };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
   } catch (e) {
     const err = e as BusinessError;
@@ -691,6 +699,10 @@ function createPixelMapUsingAllocatorSync() {
   };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.DMA);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
   } catch (e) {
     const err = e as BusinessError;
@@ -743,6 +755,10 @@ function createPixelMapUsingAllocatorSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.BGRA_8888, size: { height: 4, width: 6 } };
   try {
     let pixelMap: image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.DMA);
+    if (pixelMap == undefined) {
+      console.error(`Failed to create the PixelMap.`);
+      return;
+    }
     console.info('Succeeded in creating the PixelMap.');
   } catch (e) {
     const err = e as BusinessError;
@@ -858,7 +874,7 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
 > **说明：**
 >
-> - 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值（如旋转90°或270°时互换宽与高）。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
+> - 当设备为折叠屏，切换折叠状态时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值，如旋转90°或270°时互换宽与高。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -909,7 +925,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 > **说明：**
 >
-> - 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值（如旋转90°或270°时互换宽与高）。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
+> - 当设备为折叠屏，切换折叠状态时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值，如旋转90°或270°时互换宽与高。如果需要截取整个Surface的区域，推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -929,7 +945,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -962,7 +978,7 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 > **说明：**
 >
-> - 若Surface携带旋转或翻转的变换信息且需要处理，请使用[image.createPixelMapFromSurfaceWithTransformation](#imagecreatepixelmapfromsurfacewithtransformation23)。
+> - 如果Surface携带旋转或翻转的变换信息且需要校正方向，请使用[image.createPixelMapFromSurfaceWithTransformation](#imagecreatepixelmapfromsurfacewithtransformation23)。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -981,13 +997,13 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-| 62980105 | Failed to get the data |
-| 62980178 | Failed to create the PixelMap |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 62980105 | Failed to get the data. |
+| 62980178 | Failed to create the PixelMap. |
 
 **示例：**
 
@@ -1011,7 +1027,7 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 > **说明：**
 >
-> - 若Surface携带旋转或翻转的变换信息且需要处理，请使用[image.createPixelMapFromSurfaceWithTransformationSync](#imagecreatepixelmapfromsurfacewithtransformationsync23)。
+> - 如果Surface携带旋转或翻转的变换信息且需要校正方向，请使用[image.createPixelMapFromSurfaceWithTransformationSync](#imagecreatepixelmapfromsurfacewithtransformationsync23)。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1030,13 +1046,13 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed |
-| 62980105 | Failed to get the data |
-| 62980178 | Failed to create the PixelMap |
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 62980105 | Failed to get the data. |
+| 62980178 | Failed to create the PixelMap. |
 
 **示例：**
 
@@ -1062,7 +1078,8 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 > **说明：**
 >
-> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 在API版本23之前，如果要获取无变换效果的PixelMap，可使用[@ohos.arkui.componentSnapshot (组件截图)](../apis-arkui/js-apis-arkui-componentSnapshot.md)能力，或者使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)截取后再调用[rotate](./arkts-apis-image-PixelMap.md#rotate9)/[flip](./arkts-apis-image-PixelMap.md#flip9)手动校正方向。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1073,7 +1090,7 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 | 参数名                 | 类型           | 必填 | 说明                                     |
 | ---------------------- | ------------- | ---- | ---------------------------------------- |
 | surfaceId              | string        | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
-| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。若Surface未携带变换信息，本参数不生效。<br>true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
+| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果，即是否进行方向校正。如果Surface未携带变换信息，则本参数不生效。<br>true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
 
 **返回值：**
 
@@ -1114,7 +1131,8 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 
 > **说明：**
 >
-> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 在API版本23之前，如果要获取无变换效果的PixelMap，可使用[@ohos.arkui.componentSnapshot (组件截图)](../apis-arkui/js-apis-arkui-componentSnapshot.md)能力，或者使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)截取后再调用[rotateSync](./arkts-apis-image-PixelMap.md#rotatesync12)/[flipSync](./arkts-apis-image-PixelMap.md#flipsync12)手动校正方向。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1125,7 +1143,7 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 | 参数名                 | 类型           | 必填 | 说明                                     |
 | ---------------------- | ------------- | ---- | ---------------------------------------- |
 | surfaceId              | string        | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
-| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。若Surface未携带变换信息，本参数不生效。<br>true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
+| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果，即是否进行方向校正。如果Surface未携带变换信息，则本参数不生效。<br>true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
 
 **返回值：**
 
@@ -1183,14 +1201,14 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-|  62980103     | The image data is not supported |
-|  62980246     | Failed to read the pixelMap |
-|  62980248     | Pixelmap not allow modify |
+|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  62980103     | The image data is not supported. |
+|  62980246     | Failed to read the pixelMap. |
+|  62980248     | Pixelmap not allow modify. |
 
 **示例：**
 
@@ -1248,14 +1266,14 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-|  62980103     | The image data is not supported |
-|  62980246     | Failed to read the pixelMap |
-|  62980248     | Pixelmap not allow modify |
+|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  62980103     | The image data is not supported. |
+|  62980246     | Failed to read the pixelMap. |
+|  62980248     | Pixelmap not allow modify. |
 
 **示例：**
 
@@ -1306,14 +1324,14 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-|  62980103     | The image data is not supported |
-|  62980246     | Failed to read the pixelMap |
-|  62980248     | Pixelmap not allow modify |
+|  401          | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+|  62980103     | The image data is not supported. |
+|  62980246     | Failed to read the pixelMap. |
+|  62980248     | Pixelmap not allow modify. |
 
 **示例：**
 
@@ -1371,7 +1389,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1559,7 +1577,7 @@ async function CreateImageSource(context : Context) {
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -1594,7 +1612,7 @@ async function CreateImageSource() {
 
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
-通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -1880,7 +1898,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1989,7 +2007,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -2074,7 +2092,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|

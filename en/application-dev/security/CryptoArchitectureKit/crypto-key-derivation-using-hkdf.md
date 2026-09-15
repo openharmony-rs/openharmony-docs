@@ -6,24 +6,29 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=272d68dd445034a125b33915dfa7d6e1b2c27f73 translatedAt=2026-08-07T03:31:03.324Z pushedAt=2026-08-10T09:27:57.957Z -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
 
 ## How to Develop
+
 1. Create a [HKDFSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#hkdfspec12) object and use it as a parameter for key derivation.
 
    **HKDFSpec** is a child class of [KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11). You need to specify the following:
 
    - **algName**: algorithm to use, which is **'HKDF'**.
+
    - **key**: original key material.
 
       If **key** is of the string type, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
-  
+
    - **salt**: salt value.
-   - **info**: optional context and application information used to extend the short key. This parameter can be empty.
+
+   - **info**: optional context and app-related information, which can be empty and is used to expand short keys.
+
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
-2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter **'HKDF|SHA256|EXTRACT_AND_EXPAND'** to create a key derivation function object (**Kdf**). The key derivation algorithm is **HKDF**, HMAC algorithm is **SHA256**, and mode is **EXTRACT_AND_EXPAND**.
+2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter `'HKDF|SHA256|EXTRACT_AND_EXPAND'` to create a key derivation function object (Kdf). The key derivation algorithm is HKDF, the HMAC digest algorithm is SHA256, and the mode is extract and expand.
 
 3. Call [Kdf.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11) with the **HKDFSpec** object to generate a derived key.
 
@@ -38,7 +43,7 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
 - Return the result using **await**:
 
   <!-- @[use_hkdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Await.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -61,10 +66,10 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
   }
   ```
 
-
 - Return the result using a promise:
+
   <!-- @[use_hkdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -92,11 +97,10 @@ For details about the corresponding algorithm specifications, see [HKDF](crypto-
   }
   ```
 
-
 - Return the result synchronously:
 
   <!-- @[use_hkdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

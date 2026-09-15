@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=2f6bfaafe8e95aacaaa8d9bafbe155d8f668caa5 translatedAt=2026-07-29T04:49:00.820Z pushedAt=2026-07-29T08:08:43.272Z -->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:23:37.958Z pushedAt=2026-08-07T07:45:08.862Z -->
 
 Crypto Architecture Kit provides cryptographic functionalities, such as encryption and decryption, signing and signature verification, message authentication code (MAC) generation, hash computation, random number generation, and key derivation.
 
@@ -24,9 +24,9 @@ By calling the cryptographic algorithm framework service, you can ignore the dif
 
 Crypto Architecture Kit provides the following functionalities, with algorithm specifications and development guides for your reference.
 
-- [Key Generation and Conversion](crypto-key-generation-conversion-overview.md)
+- [Key Generation and Conversion](crypto-key-generation-conversion.md)
 
-- [Encryption and Decryption](crypto-encryption-decryption-overview.md)
+- [Encryption and Decryption](crypto-encryption-decryption.md)
 
 - [Signing and Signature Verification](crypto-sign-sig-verify-overview.md)
 
@@ -63,3 +63,5 @@ Before you get started, be sure to understand the following basic concepts:
 Crypto Architecture Kit provides cryptographic operations, but not key management. Therefore, applications must manage their own keys. This kit is applicable to scenarios where keys are used only in memory, such as temporary session keys, or where keys are securely stored by applications.
 
 If key management (such as key storage) is required, use [Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md).
+
+<!--no_check-->

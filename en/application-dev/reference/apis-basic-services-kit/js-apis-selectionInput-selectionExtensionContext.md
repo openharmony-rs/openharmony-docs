@@ -10,7 +10,7 @@
 
 **SelectionExtensionContext** is the context of [SelectionExtensionAbility](./js-apis-selectionInput-selectionExtensionAbility.md), which inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
-When a **SelectionExtensionAbility** component is instantiated, the system automatically creates the corresponding **SelectionExtensionContext**. You can call the [startAbility] (#startability) API in SelectionExtensionContext to start other abilities in the same app. This is applicable when you need to redirect to another ability in the same app in word selection extension, helping users quickly obtain the functions or information associated with the selected word.
+When a **SelectionExtensionAbility** component is instantiated, the system automatically creates the corresponding **SelectionExtensionContext**. You can call the [startAbility](#startability) API in **SelectionExtensionContext** to start other abilities in the same app. This is applicable when you need to redirect to another ability in the same app in word selection extension, helping users quickly obtain the functions or information associated with the selected word.
 
 > **NOTE**
 >

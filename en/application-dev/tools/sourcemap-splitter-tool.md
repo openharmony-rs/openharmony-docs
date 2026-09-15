@@ -5,16 +5,26 @@
 <!--Owner: @jokerxd-liu-->
 <!--Designer: @huyunhui1; @k1ngqaquuu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:06.319Z pushedAt=2026-07-21T07:50:09.994Z -->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=a3060ae52da1175934620117ac290fde01050c23 translatedAt=2026-08-13T03:17:15.815Z pushedAt=2026-08-13T06:48:23.729Z -->
 
 ## Overview
 
-After DevEco Studio completes compilation and building, it packages the SourceMap information of all source files within a module into an aggregated file named `sourceMaps.map`. Since this file does not follow the standard [SourceMap v3](https://tc39.es/ecma426/#sec-source-map-format) format, standard tools such as Chrome DevTools and the `source-map` library cannot directly parse it, making it difficult for developers to reconstruct crash stacks and locate source code.
+After DevEco Studio completes compilation and building, it packages the SourceMap information of all source files within each module into an aggregated SourceMap file named `sourceMaps.map`. Since this file does not follow the standard [SourceMap v3](https://tc39.es/ecma426/#sec-source-map-format) format, standard tools such as Chrome DevTools and the `source-map` library cannot directly parse it, making it difficult for developers to reconstruct crash stacks and locate source code.
 
-SourceMap Splitter is a command-line tool designed specifically for this scenario. It can quickly split the aggregated `sourceMaps.map` into independent `.map` files that conform to the SourceMap v3 specification, and automatically export them following the source code directory structure, making it easy to pinpoint issues using the standard toolchain. The tool has zero external runtime dependencies; its build artifact is a single JS file and requires Node.js 20 or later to run.
+SourceMap Splitter is a command-line tool designed specifically for this scenario. It can quickly split the aggregated `sourceMaps.map` into independent `.map` files that conform to the SourceMap v3 specification, and automatically export them according to the source directory structure, making it easy to locate issues using the standard toolchain. This tool has zero external runtime dependencies. After downloading the single-file artifact `split-sourcemaps.js` from [SourceMap Splitter](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases), you can run it directly.
 
-This tool supports all platforms. After downloading the single-file artifact `split-sourcemaps.js` from [SourceMap Splitter](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases), you can run it directly.
+## Environment Setup
+
+Before using this tool, ensure that the runtime environment meets the following requirements:
+
+- Operating system: supports all platforms, including Windows, macOS, and Linux.
+
+- Runtime environment: Node.js 20 or later.
+
+- Dependencies: zero external runtime dependencies; no third-party packages need to be installed.
+
+- Tool file: a single JS file `split-sourcemaps.js`. After downloading it, you can run it directly without additional configuration.
 
 ## Tool Specifications
 
@@ -51,7 +61,9 @@ To prevent accidental deletion of user data, the tool follows these rules when w
 
 - If the output directory does not exist, it is automatically created.
 
-- If the output directory exists and is empty, or was created by this tool (indicated by the presence of a `.split-sourcemaps-manifest` marker file in the directory), the directory is cleared before writing to ensure consistent results across repeated runs.
+- If the output directory exists and is empty, the tool writes to it directly.
+
+- If the output directory was created by this tool (indicated by the presence of a `.split-sourcemaps-manifest` marker file in the directory), the directory is cleared before writing to ensure consistent results across repeated runs.
 
 - If the output directory already exists, is not empty, and was not created by this tool, the tool refuses to clear it and exits with an error. In this case, manually delete the directory or specify a different directory using `--output`.
 
@@ -62,13 +74,13 @@ After the tool finishes execution, it returns an exit code that reflects the res
 | Exit Code | Description |
 | --------- | ----------------- |
 | 0 | Split successful. |
-| 1 | An error occurred, for example, invalid arguments, the project directory or aggregate file does not exist, JSON parsing failed, or the output directory is non-empty and was not created by this tool. |
+| 1 | An error occurred, for example, invalid arguments, the project directory or aggregate SourceMap file does not exist, JSON parsing failed, or the output directory is non-empty and was not created by this tool. |
 
 ## Usage Examples
 
 ### Basic Usage
 
-Splits the aggregated SourceMap of the `entry` module, using the default output directory `.split-sourcemaps`.
+Splits the aggregated SourceMap file of the `entry` module, using the default output directory `.split-sourcemaps`.
 
 ```bash
 node split-sourcemaps.js --project /path/to/project --module entry
@@ -76,10 +88,10 @@ node split-sourcemaps.js --project /path/to/project --module entry
 
 ### Specifying the Output Directory
 
-Outputs the split result to the specified directory through `--output`.
+Uses `--output` to output the split result to a custom directory instead of the default `.split-sourcemaps`. This parameter supports both absolute and relative paths.
 
 ```bash
-node split-sourcemaps.js --project /path/to/project --module entry --output .split-sourcemaps
+node split-sourcemaps.js --project /path/to/project --module entry --output ./sourcemap-output
 ```
 
 ### Running Directly in the Project Root Directory
@@ -95,11 +107,14 @@ node split-sourcemaps.js
 Specify multiple modules by separating them with commas or repeating `--module`. The two approaches are equivalent, and the split results are merged into the same output directory.
 
 ```bash
+# The following two approaches are equivalent. Choose either one.
+# Approach 1: comma-separated
 node split-sourcemaps.js --project /path/to/project --module entry,feature,library
+# Approach 2: pass --module repeatedly
 node split-sourcemaps.js --project /path/to/project --module entry --module feature
 ```
 
-Since the aggregated SourceMap of modules such as `entry` typically contains source mappings of their dependent modules, duplicate entries pointing to the same source file may appear across different modules. The tool automatically performs deduplication in the order in which the modules are specified: the first occurrence of an entry is written, and subsequent entries pointing to the same output path are skipped. If a later module contains an entry with the same path but different content, the tool prints `WARNING: potential version conflict ...` to standard error as a hint, but does not interrupt the process and still uses the first occurrence as the final result.
+Since the aggregated SourceMap file of modules such as `entry` typically contains source mappings of their dependent modules, duplicate entries pointing to the same source file may appear across different modules. The tool automatically performs deduplication in the order in which the modules are specified: the first occurrence of an entry is written, and subsequent entries pointing to the same output path are skipped. If a later module contains an entry with the same path but different content, the tool prints `WARNING: potential version conflict ...` to standard error as a hint, but does not interrupt the process and still uses the first occurrence as the final result.
 
 In addition, if any specified module is missing its build artifacts, the tool lists all missing modules at once and exits with an error before writing any files, without corrupting the existing output directory.
 
@@ -111,7 +126,7 @@ Upon a successful split, the standard output prints the number of split entries 
 Split 5/5 sourcemap entries to .split-sourcemaps
 ```
 
-Here, `5/5` indicates that the aggregate file contains five entries in total, and all of them are split successfully. If the path of some entries cannot be resolved or duplicates exist, the tool skips those entries and outputs a prompt to standard error, in which case the number of successful splits will be less than the total.
+Here, `5/5` indicates that the aggregated SourceMap file contains five entries in total, and all of them are split successfully. If the path of some entries cannot be resolved or duplicates exist, the tool skips those entries and outputs a prompt to standard error, in which case the number of successful splits will be less than the total.
 
 When splitting multiple modules at once, the standard output additionally prints the list of modules involved in the split. If cross-module deduplication occurs, the number of deduplicated entries is also printed:
 
@@ -123,7 +138,7 @@ Deduplicated 2 cross-module path(s) (first module wins).
 
 ### Output Structure Example
 
-Assume the input aggregated file `sourceMaps.map` contains the following five entries:
+Assume that the input aggregated SourceMap file `sourceMaps.map` contains the following five entries:
 
 ```text
 sourceMaps.map
@@ -139,13 +154,15 @@ After splitting, independent `.map` files are generated based on the module and 
 ```text
 .split-sourcemaps/
 ├── entry/
-│   ├── src/main/ets/pages/Index.ets.map
-│   ├── src/main/ets/entryability/EntryAbility.ets.map
+│   ├── src/main/ets/pages/Index.ts.map
+│   ├── src/main/ets/entryability/EntryAbility.ts.map
 │   ├── generated/ets/routerMap.ts.map
-│   └── src/main/ets/utils/Helper.no-sources.ets.map
+│   └── src/main/ets/utils/Helper.no-sources.ts.map
 └── library/
-    └── src/main/ets/components/MainPage.ets.map
+    └── src/main/ets/components/MainPage.ts.map
 ```
+
+> **Output file naming rule**: For each entry, the output file appends `.map` after the original extension of the source file name. For example, the source file `Index.ts` corresponds to `Index.ts.map`, and `Helper.no-sources.ts` corresponds to `Helper.no-sources.ts.map`. In other words, the original extension is preserved, and `.map` is appended at the end.
 
 ## FAQs
 
@@ -170,11 +187,11 @@ Verify that the `--project` argument points to a valid project root directory.
 ### Invalid Module Name
 
 **Symptom**<br>
-The tool reports an error `Invalid module name: ...` during running.<br>
-**Possible Causes**<br>
-The `--module` parameter is `.`, contains `..`, contains path separators (`/`, `\`), or is an absolute path.<br>
-**Solution**<br>
-Change `--module` to a valid module name without path separators, for example, `entry`.
+The tool reports `Invalid module name: ...` during execution.<br>
+**Possible cause**<br>
+The `--module` parameter is `.`, contains `..`, contains a path separator (`/` or `\`), or is an absolute path. Invalid examples: `.`, `..`, `my/module`, `/entry`, `C:\entry`.<br>
+**Resolution**<br>
+Change `--module` to a valid module name that does not contain a path separator, for example, `entry`.
 
 ### Output Directory Is Not Empty and Was Not Created by This Tool
 
@@ -185,7 +202,7 @@ To prevent accidental deletion of user data, the tool refuses to clear directori
 **Solution**<br>
 Manually delete the directory, or use `--output` to specify an empty directory or a directory dedicated to storing output.
 
-### Aggregated File Parsing Failure
+### Failed to Parse the Aggregated SourceMap File
 
 **Symptom**<br>
 The tool reports an error: `Failed to parse aggregated sourcemap: ...` or `Aggregated sourcemap must be a JSON object ...`.<br>
