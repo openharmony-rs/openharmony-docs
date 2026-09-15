@@ -207,7 +207,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenRecording(struct OH_AV
 
 启动录屏，调用此接口，可保存录屏文件。与OH_AVScreenCapture_StopScreenRecording配合使用。
 
-录屏存文件场景需要再初始化时配置合法的视频编码参数、音频编码参数等，详见[OH_AVScreenCapture_Init](#oh_avscreencapture_init)。
+录屏存文件场景需要在初始化时配置合法的视频编码参数、音频编码参数等，详见[OH_AVScreenCapture_Init](#oh_avscreencapture_init)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
