@@ -360,3 +360,5 @@ For preferences development, the following samples are available:
 - [SetAppFontSize (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
 
 <!--RP1--><!--RP1End-->
+
+<!--no_check-->
