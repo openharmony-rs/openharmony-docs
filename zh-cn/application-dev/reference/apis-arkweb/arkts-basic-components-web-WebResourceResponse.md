@@ -384,7 +384,7 @@ setResponseIsReady(IsReady: boolean): void
 
 > **说明：**
 >
-> - 在资源请求拦截场景中，应先调用setResponseData()、setResponseEncoding()、setResponseMimeType()、setResponseHeader()、setResponseCode()、setReasonMessage()等方法设置响应的各个属性。最后调用setResponseIsReady(true)来触发资源返回。
+> - 在资源请求拦截场景中，应先调用setResponseData()、setResponseBody()、setResponseEncoding()、setResponseMimeType()、setResponseHeader()、setResponseCode()、setReasonMessage()等方法设置响应的各个属性。最后调用setResponseIsReady(true)来触发资源返回。
 > - 异步数据场景：需先调用setResponseIsReady(false)，待数据准备好后调用setResponseData()等设置方法，最后调用setResponseIsReady(true)来触发资源返回。
 > - 如果不正确设置调用顺序，可能导致XMLHttpRequest同步请求阻塞。
 
