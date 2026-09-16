@@ -4023,3 +4023,5 @@ struct Utf16GlyphHighlightPage {
 The display effect may vary depending on the device sizes and is for reference only.
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
+
+<!--no_check-->
