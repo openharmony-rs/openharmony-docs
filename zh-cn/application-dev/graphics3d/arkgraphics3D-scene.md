@@ -89,7 +89,7 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    // Create a Camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // Set proper camera parameters.
    this.cam.enabled = true;
    this.cam.position.z = 5;
@@ -102,7 +102,7 @@ glTF模型中引用的纹理图片支持以下格式：
 
    ``` TypeScript
    // 创建相机
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // 设置相机参数
    this.cam!.enabled = true;
    this.cam!.position.z = 5;
@@ -411,7 +411,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.scene = globalScene;
      this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
      this.rf = this.scene.getResourceFactory();
-     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+     this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
      // Initialize color value
@@ -430,7 +430,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.scene = globalScene;
      this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
      this.rf = this.scene!.getResourceFactory();
-     this.cam = await this.rf!.createCamera({ 'name': 'Camera1' });
+     this.cam = await this.rf!.createCamera({ name: 'Camera1' });
      this.cam!.enabled = true;
      this.cam!.position.z = 5;
      // 初始化颜色值

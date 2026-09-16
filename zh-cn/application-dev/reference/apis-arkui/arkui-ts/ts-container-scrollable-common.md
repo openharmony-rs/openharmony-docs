@@ -586,7 +586,7 @@ ArkTS-Sta: onReachStart(event: (() => void) | undefined)
 
 滚动组件到达起始位置时触发。
 
-滚动组件初始化时会触发一次，滚动到起始位置时触发一次。边缘效果为弹簧效果时，划动经过起始位置时触发一次，回弹回起始位置时再触发一次。
+滚动组件初始化时会触发一次，滚动到起始位置时触发一次。边缘效果为弹簧效果时，滑动经过起始位置时触发一次，回弹回起始位置时再触发一次。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -612,7 +612,7 @@ ArkTS-Sta: onReachEnd(event: (() => void) | undefined)
 
 滚动组件到达末尾位置时触发。
 
-滚动组件初始化时，若已处于末尾位置则会触发一次。边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
+滚动组件初始化时，若已处于末尾位置则会触发一次。边缘效果为弹簧效果时，滑动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -824,7 +824,7 @@ ArkTS-Dyn: onWillStopDragging(handler: OnWillStopDraggingCallback)
 
 ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined)
 
-滚动组件划动离手时触发，使用鼠标滚轮划动时不会触发。
+滚动组件滑动离手时触发，使用鼠标滚轮滑动时不会触发。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -842,7 +842,7 @@ ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined)
 
 | 参数名  | 类型                                                        | 必填 | 说明                         |
 | ------- | ----------------------------------------------------------- | ---- | ---------------------------- |
-| handler | ArkTS-Dyn: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)<br/>ArkTS-Sta: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)&nbsp;\|&nbsp;undefined | 是   | 滚动组件划动离手时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
+| handler | ArkTS-Dyn: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)<br/>ArkTS-Sta: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)&nbsp;\|&nbsp;undefined | 是   | 滚动组件滑动离手时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
 
 ### onDidStopDragging<sup>21+</sup>
 
@@ -1493,7 +1493,7 @@ ArkTS-Dyn: type OnWillStopDraggingCallback = (velocity: number) => void
 
 ArkTS-Sta: type OnWillStopDraggingCallback = (velocity: double) => void
 
-滚动组件划动离手时触发的回调。
+滚动组件滑动离手时触发的回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -1511,7 +1511,7 @@ ArkTS-Sta: type OnWillStopDraggingCallback = (velocity: double) => void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
+| velocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 滑动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
 
 ## OnDidStopDraggingCallback<sup>21+</sup>
 

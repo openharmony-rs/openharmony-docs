@@ -29,7 +29,7 @@
 - 被\@Param装饰的变量能够在初始化自定义组件时从外部传入，当数据源也是状态变量时，数据源的修改会同步给\@Param。
 - \@Param可以接受任意类型的数据源，包括普通变量、状态变量、常量、函数返回值等。
 - \@Param装饰的变量变化时，会刷新该变量关联的组件。
-- \@Param支持对基本类型（如number、boolean、string、Object、class）、内嵌类型（如[Array](#装饰array类型变量)、[Set](#装饰set类型变量)、[Map](#装饰map类型变量)、[Date](#装饰date类型变量)），以及null、undefined和[联合类型](#联合类型)进行观测。
+- \@Param支持对基本类型（如number、boolean、string、Object、class）、内置类型（如[Array](#装饰array类型变量)、[Set](#装饰set类型变量)、[Map](#装饰map类型变量)、[Date](#装饰date类型变量)），以及null、undefined和[联合类型](#联合类型)进行观测。
 - 对于复杂类型如类对象，\@Param会接受数据源的引用。在组件内可以修改类对象中的属性，该修改会同步到数据源。
 - \@Param的观测能力仅限于被装饰的变量本身。详见[观察变化](#观察变化)。
 
@@ -119,7 +119,7 @@ struct Child {
 | 装饰器参数         | 无。                                                         |
 | 能否本地修改       | 否。若需要修改值，可使用\@Param搭配[\@Once](./arkts-new-once.md)修改子组件的本地值。或通过[\@Event](./arkts-new-event.md)装饰器，修改\@Param数据源的值。|
 | 同步类型           | 由父到子单向同步。                                           |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum等基本类型以及Array、Date、Map、Set等内置类型。支持null、undefined以及联合类型。 |
 | 被装饰变量的初始值 | 允许本地初始化，若不在本地初始化，则需要和[\@Require](./arkts-require.md)装饰器一起使用，要求必须从外部传入初始化。 |
 
 ## 变量传递

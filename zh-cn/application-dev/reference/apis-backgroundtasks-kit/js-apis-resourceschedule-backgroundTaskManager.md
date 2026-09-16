@@ -2654,6 +2654,7 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE    | 12   | 申请DATA_TRANSFER类型长时任务，但是进度长时间（首次更新超过10分钟）未更新。  |
 | SYSTEM_CANCEL_VOIP_NOT_RUNNING            | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。  |
 | SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | 申请特殊场景类型长时任务，但是用户未授权。  |
+| SYSTEM_CANCEL_NOT_USE_NEARLINK            | 15   | 申请NEARLINK类型长时任务，但是未使用星闪相关业务。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0 |
 
 ## BackgroundSubMode<sup>16+</sup>
 

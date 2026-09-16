@@ -330,7 +330,7 @@
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
-    - [设置应用内主题换肤](theme_skinning.md)
+    - [设置应用内主题换肤](theme-skinning.md)
   - UI系统场景化能力<!--arkts-ui-system-scenarization-capability-->
     - [使用UI上下文接口操作界面（UIContext）](arkts-global-interface.md)
     - [使用组件截图（ComponentSnapshot）](arkts-uicontext-component-snapshot.md)<!--RP15--><!--RP15End-->
@@ -522,7 +522,7 @@
     - [UI并行化创建组件树（ArkTS-Sta）](ui-parallel-components.md)
     - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui-parallel-buildernode.md)
   - UI开发常见问题<!--ui-development-faq-->
-    - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
+    - [Navigation常见问题](arkts-navigation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [弹窗组件常见问题](arkts-popup-component-faq.md)

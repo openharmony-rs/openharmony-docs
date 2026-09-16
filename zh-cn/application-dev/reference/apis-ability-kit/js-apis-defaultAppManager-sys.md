@@ -422,6 +422,8 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用Promise异步回调。
 
+将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。
+
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -459,6 +461,7 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -568,6 +571,8 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId:
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
+将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。
+
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -600,6 +605,7 @@ ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId:
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -699,6 +705,8 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
+将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。
+
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -729,6 +737,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 | 801 | Capability not supported. |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -828,6 +837,8 @@ ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, use
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。
 
+将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。
+
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
@@ -859,6 +870,7 @@ ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, use
 | 17700004 | The specified user ID is not found.            |
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability does not match the type. |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -1308,6 +1320,8 @@ ArkTS-Sta: setDefaultApplicationForAppClone(type: string, elementName: ElementNa
 
 以同步方法将分身应用设置为打开相应type类型的默认应用。
 
+将应用设置为默认浏览器时，目标应用必须已被授予ohos.permission.DEFAULT_WEB_BROWSER权限，否则返回错误码18000001。
+
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION 或 (ohos.permission.SET_DEFAULT_APPLICATION 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 - 当userId为当前用户时，需要申请ohos.permission.SET_DEFAULT_APPLICATION。
 - 当userId不是当前用户时，需要同时申请ohos.permission.SET_DEFAULT_APPLICATION 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
@@ -1342,6 +1356,7 @@ ArkTS-Sta: setDefaultApplicationForAppClone(type: string, elementName: ElementNa
 | 17700025 | The specified type is invalid.                 |
 | 17700028 | The specified ability and type do not match. |
 | 17700061 | The specified app index is invalid. |
+| 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br/>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -1398,4 +1413,95 @@ try {
 } catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
+```
+
+## defaultAppManager.getDefaultApplicationCandidates
+
+ArkTS-Dyn: getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: number, userId?: number): Promise\<Array\<AbilityInfo>>
+
+ArkTS-Sta: getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int, userId?: int): Promise\<Array\<AbilityInfo>>
+
+查询可被设置为指定类型默认应用的应用列表。
+
+当前仅支持`BROWSER`类型的查询。未被授予ohos.permission.DEFAULT_WEB_BROWSER权限的应用将从结果中排除。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+- 当userId为当前用户时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+- 当userId不是当前用户时，需要同时申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名         | 类型     | 必填   | 说明                                      |
+| ----------- | ------ | ---- | --------------------------------------- |
+| type  | [ApplicationType](js-apis-defaultAppManager.md#applicationtype) | 是    | 目标应用类型。当前仅支持`BROWSER`类型的查询，传入其它值时返回错误码17700025。|
+| abilityFlags  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | [AbilityFlag](js-apis-bundleManager.md#abilityflag20)，表示要获取的Ability信息。|
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户的用户ID。 |
+
+**返回值：**
+
+| 类型           | 说明                               |
+| -------------- | ---------------------------------- |
+| Promise\<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | Promise对象，返回符合要求的全部应用的Ability信息。未被授予ohos.permission.DEFAULT_WEB_BROWSER权限的应用将从结果中排除。若没有符合要求的应用，返回空数组。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                       |
+| -------- | ---------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 17700004 | The specified user ID is not found.            |
+| 17700025 | The specified type is invalid.                 |
+
+**示例：**
+
+ArkTS-Dyn示例:
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+defaultAppManager.getDefaultApplicationCandidates(defaultAppManager.ApplicationType.BROWSER, 0).then((data) => {
+  console.info('Operation successful. Data: ' + JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
+
+let userId = 100;
+defaultAppManager.getDefaultApplicationCandidates(defaultAppManager.ApplicationType.BROWSER, 0, userId).then((data) => {
+  console.info('Operation successful. Data: ' + JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+defaultAppManager.getDefaultApplicationCandidates(defaultAppManager.ApplicationType.BROWSER, 0).then((data) => {
+  console.info('Operation successful. Data: ' + JSON.stringify(data));
+}).catch((error: Error) => {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
+
+let userId = 100;
+defaultAppManager.getDefaultApplicationCandidates(defaultAppManager.ApplicationType.BROWSER, 0, userId).then((data) => {
+  console.info('Operation successful. Data: ' + JSON.stringify(data));
+}).catch((error: Error) => {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
 ```
