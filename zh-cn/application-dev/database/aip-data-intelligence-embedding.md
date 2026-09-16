@@ -128,6 +128,7 @@
      cachePath: "/data"
    }
    let textEmbedding: intelligence.TextEmbedding;
+   let modelInfo: intelligence.CloudModelInfo;
    ```
    
 
