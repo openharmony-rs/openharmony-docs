@@ -6,41 +6,35 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-15T01:40:37.013Z pushedAt=2026-08-15T03:27:16.965Z -->
+<!-- md-trans-meta sourceCommit=e8043e6c44c57237a940088dce9d7197b7cc7999 translatedAt=2026-09-14T08:22:16.656Z pushedAt=2026-09-14T10:41:43.724Z -->
 
 ## Introduction
-
 This document provides guidance on how to develop profile capabilities for actively pairing and connecting devices.
 
 ## How to Develop
 
 ### Applying for the Required Permission
-
 Apply for the **ohos.permission.ACCESS_BLUETOOTH** permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
 ### Importing Required Modules
-
 Import the **connection**, **a2dp**, **hfp**, **hid**, **baseProfile**, **constant**, and error code modules.
-
 ```ts
 import { connection, a2dp, hfp, hid, baseProfile, constant, common } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
-### Subscribing to Pairing Status Change Events
-
+### Subscribing to Pairing State Change Events
 By subscribing to pairing state change events, an app can obtain the pairing state in real time. The pairing process involves transitions between multiple states, among which [BOND_STATE_BONDED](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate) indicates that the devices are paired.
 
 Whether the app initiates pairing with another device or another device initiates pairing with the local device, the app can obtain the pairing state through this event.
-
 ```ts
-// Define the callback for pairing status changes.
+// Define the callback for pairing state changes.
 function onReceiveEvent(data: connection.BondStateParam) {
     console.info('pair result: '+ JSON.stringify(data));
 }
 
 try {
-  // Subscribe to pairing status changes.
+  // Subscribe to pairing state changes.
   connection.on('bondStateChange', onReceiveEvent);
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -48,8 +42,7 @@ try {
 ```
 
 ### Initiating Pairing
-
-If the pairing status of the target device is [BOND_STATE_INVALID](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate), the current device can proactively pair with the target device.
+If the pairing state of the target device is [BOND_STATE_INVALID](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#bondstate), the current device can proactively pair with the target device.
 
 - You can obtain the target device through the device discovery process. For details, see [Bluetooth Discovery](br-discovery-development-guide.md) or [BLE Device Discovery](ble-development-guide.md).
 
@@ -104,13 +97,10 @@ try {
 ```
 
 ### Connecting to the Profile of a Paired Device
-
-After successful pairing, an application can call [connectAllowedProfiles](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionconnectallowedprofiles16) to connect to the profile supported by the target device. The profile can only be A2DP, HFP, or HID. If you need to use the SPP connection, see [SPP-based Connection and Data Transmission](spp-development-guide.md).
+After successful pairing, an application can call [connectAllowedProfiles](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectionconnectallowedprofiles16) to connect to the profiles supported by the target device, including A2DP, HFP, HID, and PAN. If you need to use the SPP connection, see [SPP-based Connection and Data Transmission](spp-development-guide.md).
 
 - The Bluetooth subsystem queries and saves all profiles supported by the target device during pairing.
-
 - After the pairing is complete, the application can call [getRemoteProfileUuids](../../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. If an applicable profile exists, the application can initiate a connection to the profile within 30 seconds after successful pairing.
-
 ```ts
 // Device address of the paired device
 let device = 'XX:XX:XX:XX:XX:XX';
@@ -120,24 +110,24 @@ let a2dpSrc = a2dp.createA2dpSrcProfile();
 let hfpAg = hfp.createHfpAgProfile();
 let hidHost = hid.createHidHostProfile();
 
-// Define the callback for A2DP connection status change events.
+// Define the callback for A2DP connection state change events.
 function onA2dpConnectStateChange(data: baseProfile.StateChangeParam) {
   console.info(`A2DP State: ${JSON.stringify(data)}`);
 }
 
-// Define the callback for HFP connection status change events.
+// Define the callback for HFP connection state change events.
 function onHfpConnectStateChange(data: baseProfile.StateChangeParam) {
   console.info(`HFP State: ${JSON.stringify(data)}`);
 }
 
-// Define the callback for HID connection status change events.
+// Define the callback for HID connection state change events.
 function onHidConnectStateChange(data: baseProfile.StateChangeParam) {
   console.info(`HID State: ${JSON.stringify(data)}`);
 }
 
 try {
     // Check whether the target device supports the A2DP, HFP, and HID profiles.
-    // Subscribe to connection status change events depending on the supported profile.
+    // Subscribe to connection state change events depending on the supported profile.
     a2dpSrc.on('connectionStateChange', onA2dpConnectStateChange);
     hfpAg.on('connectionStateChange', onHfpConnectStateChange);
     hidHost.on('connectionStateChange', onHidConnectStateChange);
@@ -154,7 +144,6 @@ try {
 ```
 
 ## Sample Code
-
 ```ts
 import { connection, a2dp, hfp, hid, baseProfile, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -166,11 +155,11 @@ export class PairDeviceManager {
   hfpAg = hfp.createHfpAgProfile();
   hidHost = hid.createHidHostProfile();
 
-  // Define the callback for pairing status change events.
+  // Define the callback for pairing state change events.
   onBondStateEvent = (data: connection.BondStateParam) => {
     console.info('pair result: '+ JSON.stringify(data));
     if (data && data.deviceId == this.device) {
-      this.pairState = data.state; // Save the pairing status of the target device.
+      this.pairState = data.state; // Save the pairing state of the target device.
     }
   };
 
@@ -178,7 +167,7 @@ export class PairDeviceManager {
   public startPair(device: string) {
     this.device = device;
     try {
-      // Subscribe to pairing status change events.
+      // Subscribe to pairing state change events.
       connection.on('bondStateChange', this.onBondStateEvent);
     } catch (err) {
       console.error('bondStateChange errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -196,17 +185,17 @@ export class PairDeviceManager {
     }
   }
 
-  // Define the callback for A2DP connection status change events.
+  // Define the callback for A2DP connection state change events.
   onA2dpConnectStateChange = (data: baseProfile.StateChangeParam) => {
     console.info(`A2DP State: ${JSON.stringify(data)}`);
   };
 
-  // Define the callback for HFP connection status change events.
+  // Define the callback for HFP connection state change events.
   onHfpConnectStateChange = (data: baseProfile.StateChangeParam) => {
     console.info(`HFP State: ${JSON.stringify(data)}`);
   };
 
-  // Define the callback for HID connection status change events.
+  // Define the callback for HID connection state change events.
   onHidConnectStateChange = (data: baseProfile.StateChangeParam) => {
     console.info(`HID State: ${JSON.stringify(data)}`);
   };
@@ -217,7 +206,7 @@ export class PairDeviceManager {
       let uuids = await connection.getRemoteProfileUuids(device);
       console.info('device: ' + device + ' remoteUuids: '+ JSON.stringify(uuids));
       let allowedProfiles = 0;
-      // If an applicable profile exists, enable listening for connection status changes of the profile.
+      // If an applicable profile exists, enable listening for connection state changes of the profile.
       if (uuids.some(uuid => uuid == constant.ProfileUuids.PROFILE_UUID_A2DP_SINK.toLowerCase())) {
         console.info('device supports a2dp');
         allowedProfiles++;

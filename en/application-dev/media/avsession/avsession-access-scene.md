@@ -1,12 +1,11 @@
 # Accessing AVSession
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=cbc788541d3c92f56dce788e128dfa81de46aa31 translatedAt=2026-08-22T02:02:57.532Z pushedAt=2026-08-22T06:29:02.198Z -->
+<!-- md-trans-meta sourceCommit=369710cff3973caa44641c0ce96a5dee83aa0d0f translatedAt=2026-09-14T09:46:32.731Z pushedAt=2026-09-15T13:37:55.024Z -->
 
 In addition to implementing audio and video features, audio and video applications need to access AVSession provided by AVSession Kit. This topic uses typical cases to describe display and control scenarios for accessing AVSession, providing adaptation references for developers.
 
@@ -25,15 +24,10 @@ To implement background playback, the application must also use [Background Task
 The process for implementing AVSession access is as follows:
 
 1. Determine the type of AVSession to be created for the application, and then [create one](#creating-avsession). The AVSession type determines the style of the control template displayed in the controller.
-
 2. [Create a background task](#creating-a-background-task).
-
 3. [Set necessary metadata](#setting-metadata-information) to display corresponding information in the controller. The metadata includes but is not limited to the IDs of the current media asset (**assetId**), previous media asset (**previousAssetId**), and next media asset (**nextAssetId**), title, author, album, writer, and duration.
-
 4. [Set playback state information](#setting-playback-state). The information includes but is not limited to the playback state (**state**), position (**position**), speed (**speed**), buffered time (**bufferedTime**), loop mode (**loopMode**), whether the media asset is favorited (**isFavorite**), media ID being played (**activeItemId**), and custom media data (**extras**).
-
 5. [Register control commands](#control-command-processing) as required, including but not limited to play/pause, previous/next, fast-forward/rewind, favorite, loop mode, and progress bar.
-
 6. Destroy AVSession when the application exits or stops providing service.
 
 ## Creating AVSession
@@ -91,6 +85,7 @@ struct Index {
 To implement background playback, the application must also use [Background Tasks Kit](../../task-management/background-task-overview.md) to request a continuous task to avoid being suspended.
 
 Media playback applications must request a continuous task of the [AUDIO_PLAYBACK](../../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundmode) background mode.
+
 
 ## Setting Metadata Information
 
@@ -304,9 +299,7 @@ Certain special processing is required when setting the progress bar.
 3. Special contents such as ads
 
     For media assets with pre-roll or post-roll ads, you are advised to:
-
    - Set the ad duration separately.
-
    - Set a new duration for the actual content, to distinguish it from the ad.
 
 <!--RP1--><!--RP1End-->
@@ -740,14 +733,13 @@ struct Index {
 
 When an application correctly accesses AVSession according to the preceding process, sets metadata information and correct playback state information, and registers control commands, the system notification and lock screen display information about the playing application when the application enters the playing state.
 
+
 ## Adapting to Bluetooth and Wired Key Events
 
 After an application correctly accesses AVSession, it can listen for Bluetooth and wired headset key events by registering control commands. AVSession provides the following two implementation methods:
-
 - Method 1 (recommended)
 
   You can register the required control commands as needed by referring to [Control Command Processing](#control-command-processing). The AVSession control commands that can be converted are as follows:
-
   | Control Command| Description  |
   | ------  | -------------------------|
   | play    | Plays the media.|
@@ -758,52 +750,62 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
   | fastForward    | Fast-forwards.|
   | rewind    | Rewinds.|
 
-  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
+  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->  
 
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  // ...
+  
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello world';
-
+    // ...
+  
     build() {
       Column() {
+        // ...
         Text(this.message)
           .onClick(async () => {
             try {
               let context = this.getUIContext().getHostContext() as Context;
               let type: AVSessionManager.AVSessionType = 'audio';
               let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-              // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
+              // ...
+              // Set the necessary media information. This must be set; otherwise, control events cannot be received.
               let metadata: AVSessionManager.AVMetadata = {
-                assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+                assetId: '0', // Specified by the application to identify the media in the application's media library.
                 title: 'TITLE',
                 mediaImage: 'IMAGE',
                 artist: 'ARTIST'
               };
               session.setAVMetadata(metadata).then(() => {
                 console.info(`SetAVMetadata successfully`);
+                // ...
               }).catch((err: BusinessError) => {
                 console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+                // ...
               });
-              // Generally, logic processing on the player is implemented in the listener.
-              // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
+              // Generally, corresponding logic processing is performed on the player in the listener.
+              // After processing, synchronize the playback-related information through the set API. Refer to the use case above.
               session.on('play', () => {
                 console.info(`on play , do play task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
+                // ...
+                // If this command is not supported yet, do not register it; or if it is registered but not used temporarily, cancel the listening through session.off('play').
+                // After processing, use setAVPlaybackState to report the playback state.
               });
               session.on('pause', () => {
                 console.info(`on pause , do pause task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
+                // ...
+                // If this command is not supported yet, do not register it; or if it is registered but not used temporarily, cancel the listening through session.off('pause').
+                // After processing, use setAVPlaybackState to report the playback state.
               });
+              // ...
             } catch (err) {
               if (err) {
                 console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+                // ...
               }
             }
           })

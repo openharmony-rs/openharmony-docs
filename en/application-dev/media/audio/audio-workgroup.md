@@ -1,12 +1,11 @@
 # Audio Workgroup Management
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ff9e9cd1ebb6561090ad32be99073f8301559bf translatedAt=2026-08-06T10:45:53.123Z pushedAt=2026-08-06T10:56:30.077Z -->
+<!-- md-trans-meta sourceCommit=fe6cafc35b7c2ea1e5b32d816e822fcfb388d90d translatedAt=2026-09-14T09:41:58.542Z pushedAt=2026-09-15T13:36:53.283Z -->
 
 The audio workgroup is a set of APIs that help the system identify critical audio threads within an app through tagging. By providing critical audio threads and workgroup runtime information, the system can improve the stability of audio thread execution.
 

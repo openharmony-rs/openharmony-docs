@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=49af153dde96ff6b259ec74f9fcf048768f049e8 translatedAt=2026-08-14T03:44:46.408Z pushedAt=2026-08-14T07:05:13.361Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:04:18.611Z pushedAt=2026-09-15T13:39:47.093Z -->
 
 ## A
 

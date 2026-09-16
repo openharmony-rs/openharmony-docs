@@ -1,12 +1,11 @@
 # Using Secure Shield Mode
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4216569c26016267071c2019e832c7c6779d2d7e translatedAt=2026-08-14T03:51:04.044Z pushedAt=2026-08-14T09:44:00.220Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:18:55.522Z pushedAt=2026-09-15T13:41:49.580Z -->
 
 The Secure Shield mode is a system-level security mode provided for users with high security requirements. This mode restricts basic device capabilities to enhance security and effectively defend against targeted attacks through the remote attack surface.
 

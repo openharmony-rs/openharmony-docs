@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=3c0f182e290317c757cc612ad36a9c4956922152 translatedAt=2026-08-22T07:45:03.285Z pushedAt=2026-08-22T10:49:36.295Z -->
+<!-- md-trans-meta sourceCommit=d9644ac53de2ba4e110100631e42acd24fe6adf3 translatedAt=2026-09-14T09:57:53.130Z pushedAt=2026-09-15T13:38:44.019Z -->
 
 DRM plugins provide implementations of the DRM HDI APIs. The DRM framework of DRM Kit loads DRM plugins through the HDI APIs.
 
@@ -455,9 +455,7 @@ clearplay :: host {
     }
 }
 ```
-
 The `/etc/drm/drm_plugin_lazyloading.cfg` file on the device is the lazy loading list configuration file of the DRM framework. The file is in the format of key-value pairs, where the DRM solution name is the key and the DRM service name is the value.
-
 ```json
 {
     "plugin_services": {
@@ -472,7 +470,9 @@ The `/etc/drm/drm_plugin_lazyloading.cfg` file on the device is the lazy loading
 
 SELinux is used to restrict resources that can be accessed by service processes. The following provides the basic SELinux configuration. Add required rules based on service requirements.
 
-In the following example, **clearplay_host** indicates the value of **hostName** in hcs, and **clearplay_service** indicates the service name.
+> **NOTE**
+>
+> In the following example, **clearplay_host** indicates the value of **hostName** in hcs, and **clearplay_service** indicates the service name.
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/adapter/public/hdf_service_contexts
 
@@ -487,7 +487,6 @@ In the following example, **clearplay_host** indicates the value of **hostName**
 `allow init clearplay_host:process { rlimitinh siginh transition };`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/clearplay/vendor/hdf_devmgr.te
-
 ```txt
 allow hdf_devmgr clearplay_host:binder { call transfer };
 allow hdf_devmgr clearplay_host:dir { search };
@@ -500,7 +499,6 @@ allow hdf_devmgr clearplay_host:process { getattr };
 `type clearplay_host, hdfdomain, domain;`
 
 //base/security/selinux_adapter/sepolicy/ohos_policy/drivers/peripheral/clearplay/vendor/clearplay_host.te (Create this directory.)
-
 ```txt
 allow clearplay_host chip_prod_file:dir { search };
 allow clearplay_host dev_console_file:chr_file { read write };

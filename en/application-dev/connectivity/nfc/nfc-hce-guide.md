@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=67487829468179127107f74c0916ca5ae8660edf translatedAt=2026-09-01T02:08:47.186Z pushedAt=2026-09-01T10:59:43.567Z -->
+<!-- md-trans-meta sourceCommit=4df20884379aac255f1543b2903732709a7e9dcf translatedAt=2026-09-14T08:24:52.209Z pushedAt=2026-09-14T11:08:57.046Z -->
 
 ## Introduction
 Near Field Communication (NFC) is a short-range, high-frequency radio technology that operates at a frequency of 13.56 MHz, with a typical communication range of within 10 centimeters. Host Card Emulation (HCE) provides card emulation that does not depend on a secure element. It allows an application to emulate a card and communicate with an NFC card reader to complete NFC card swiping. Off Host Card Emulation (OFFHOST) is supported since API version 22. It simulates a card using a separate chip (called the secure element or SE) on the device. Some SIM cards of wireless carriers contain SEs.
@@ -369,3 +369,13 @@ export default class HceUIAbility extends UIAbility {
       }
     ]
 ```
+
+## FAQs
+
+### What Constraints Does HCE Card Emulation Impose on the Type of Emulated Cards?
+
+There are no constraints. HCE can emulate any type of card.
+
+### Why Does the Default Payment App Switch?
+
+When using HCE for card payment, you need to go to system settings and set the default payment app to that HCE app. Some apps (such as HUAWEI Wallet), when switched to the foreground, detect whether the current default payment app is this app. If not, a dialog will pop up asking the user whether to switch the default payment app to this app. After the user confirms the switch, the app calls the system interface to complete the switch of the default payment app.

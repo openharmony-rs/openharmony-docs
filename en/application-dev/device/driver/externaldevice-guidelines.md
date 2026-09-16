@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=b7d40f87aa2d142e8bb56c8840a8683306b0404d translatedAt=2026-09-01T02:12:49.585Z pushedAt=2026-09-01T12:03:22.435Z -->
+<!-- md-trans-meta sourceCommit=8e92ad7d2c5176006885e7473a8759d4a32dfa84 translatedAt=2026-09-14T08:43:26.222Z pushedAt=2026-09-15T10:32:46.136Z -->
 
 ## When to Use
 
@@ -23,9 +23,9 @@ The following table describes the basic peripheral management capabilities. For 
 
 | Name                                                      | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | Queries the peripheral list.                                          |
-| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | Binds a device. This API is supported since API 19.                       |
-| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | Unbinds a device. This API is supported since API 19.                       |
+| queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | Queries the extended peripheral list.                                          |
+| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | Binds a device in Promise form. Supported since API version 19.                       |
+| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | Unbinds a device in Promise form. Supported since API version 19.                       |
 
 <!--Del-->
 The following table describes the system APIs for peripheral management. For details, see [@ohos.driver.deviceManager (Peripheral Management) (System API)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md).

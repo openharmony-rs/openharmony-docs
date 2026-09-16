@@ -1,21 +1,18 @@
 # Common Stability Issues with Graphics Buffers (C/C++)
-
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1f370dd3425411b659f906071e53860b94f0e2f1 translatedAt=2026-08-15T01:51:09.858Z pushedAt=2026-08-15T08:26:08.224Z -->
+<!-- md-trans-meta sourceCommit=785c32d126015caf031922be5199e36d3c3ed9fb translatedAt=2026-09-14T09:31:35.020Z pushedAt=2026-09-15T13:21:04.311Z -->
 
 This section describes common issues that may arise during development with **NativeWindow**, **NativeBuffer**, and **NativeImage**, helping you avoid or locate these issues in a timely manner and improve app stability.
 
 ## OHNativeWindow and NativeWindowBuffer
-
 **OHNativeWindow** and **NativeWindowBuffer** are passed between multiple system modules and apps, implementing a pseudo-smart pointer through NDK APIs that increment and decrement the reference count. Each module maintains its own reference count. Over 90% of issues are caused by mismatched reference count increment and decrement API calls.
 
 APIs for incrementing the **NativeWindow** reference count:
-
 ```text
 int32_t OH_NativeWindow_NativeObjectReference(void *obj)
 
@@ -27,7 +24,6 @@ int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **win
 ```
 
 APIs for decrementing the **NativeWindow** reference count:
-
 ```text
 int32_t OH_NativeWindow_NativeObjectUnreference(void *obj)
 
@@ -37,7 +33,6 @@ void OH_NativeImage_Destroy(OH_NativeImage** image)
 ```
 
 APIs for incrementing the **NativeWindowBuffer** reference count:
-
 ```text
 int32_t OH_NativeWindow_NativeObjectReference(void *obj)
 
@@ -49,7 +44,6 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image,OHNativeW
 ```
 
 APIs for decrementing the **NativeWindowBuffer** reference count:
-
 ```text
 int32_t OH_NativeWindow_NativeObjectUnreference(void *obj)
 
@@ -101,6 +95,7 @@ OH_NativeWindow_DestroyNativeWindow(nativewindow_);
 **OH_NativeImage_Destroy** reduces the **OHNativeWindow** reference count, so there is no need to call **OH_NativeWindow_DestroyNativeWindow**.
 
 Solution: Delete **OH_NativeWindow_DestroyNativeWindow(nativewindow_)**, and set **image_** and **nativewindow_** to null immediately after **OH_NativeImage_Destroy** to prevent subsequent use of wild pointers.
+
 
 ```c++
 OH_NativeImage *image_ = OH_NativeImage_Create(textureId, GL_TEXTURE_2D);
@@ -229,7 +224,6 @@ Same as the typical error codes and solutions for **NativeWindow** lifecycle iss
 ### Typical Freeze Log and Causes
 
 A typical freeze log is as follows:
-
 ```text
 /system/lib64/chipset-sdk-sp/libsurface.z.so(RequestBufferLocked())
 ```
@@ -239,7 +233,6 @@ Possible causes are as follows:
 The app requested a buffer but did not return it, resulting in no available buffer for subsequent use and causing a freeze when requesting a buffer again.
 
 **Typical Error Code**
-
 ```c++
 auto ret = OH_NativeWindow_NativeWindowRequestBuffer(nativewindow_, &buffer, &fence);
 if (ret != NATIVE_ERROR_OK) {
@@ -284,7 +277,6 @@ A memory leak can occur when an API that increments the reference count is calle
 ### Typical Error Codes and Solutions
 
 **Typical Error Code 1**
-
 ```c++
 auto ret = OH_NativeWindow_NativeWindowRequestBuffer(nativewindow_, &buffer, &fence);
 if (ret != NATIVE_ERROR_OK) {
@@ -333,7 +325,6 @@ OH_NativeWindow_NativeObjectUnreference(buffer);
 ```
 
 **Typical Error Code 2**
-
 ```c++
 auto ret = OH_NativeImage_AcquireNativeWindowBuffer(nativeimage, &buffer, &fence);
 if (ret != NATIVE_ERROR_OK) {

@@ -1,12 +1,11 @@
 # AVSession Controller
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8e770cbadeb30048762cabf5d8eefee15902d89d translatedAt=2026-08-10T03:49:01.404Z pushedAt=2026-08-10T08:28:01.685Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:52:31.708Z pushedAt=2026-09-15T13:38:18.140Z -->
 
 Starting from API version 23, apps can use AVSession Kit to obtain playback information of AVSessions and control playback actions such as play and pause, enabling unified playback control over audio and video apps in the system. This document describes the API capabilities and basic development process of the AVSession controller, including obtaining metadata and playback state information from AVSession providers, as well as sending commands and events to AVSession providers to control their playback, pause, and other actions.
 
@@ -25,7 +24,6 @@ Starting from API version 23, apps can use AVSession Kit to obtain playback info
 The key APIs used by the controller are classified into the following types:
 
 1. Obtain AVSession descriptors and AVSession controllers, and listen for AVSession creation and destruction: called through AVSessionManager, for example, the API `AVSessionManager.createController(sessionId)`.
-
 2. Obtain AVSession metadata and playback state information, and listen for changes to AVSession metadata and playback state: called through the AVSessionController object, for example, the API `controller.getAVPlaybackState()`.
 
 Asynchronous JavaScript APIs use either a callback or promise to return the result. The two forms differ only in the return method and provide the same functionality.

@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=6dec6b14cb206fe02a5ddd5033caa3930c0dd80f translatedAt=2026-08-18T11:02:50.545Z pushedAt=2026-08-18T11:38:47.753Z -->
+<!-- md-trans-meta sourceCommit=c6f2b2e74f200e8e7bb7851988f1cba26ee5e2a2 translatedAt=2026-09-14T09:55:18.437Z pushedAt=2026-09-15T13:38:29.061Z -->
 
 ## When to Use
 
@@ -22,7 +22,6 @@ Currently, the following decryption capabilities are supported:
 |----------|:------------|
 | ts       | AVC(H.264)  |
 | mp4      | AVC(H.264)  |
-
 <!--RP1--><!--RP1End-->
 
 **Usage Scenario**
@@ -62,6 +61,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 2. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));

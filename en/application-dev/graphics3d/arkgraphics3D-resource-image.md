@@ -1,19 +1,17 @@
 # Creating and Using Image Resources
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=160b5b2beee4bcc311002f3e8a787da3e22aeee3 translatedAt=2026-08-04T08:00:02.820Z pushedAt=2026-08-04T08:08:24.793Z -->
+<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:33:07.466Z pushedAt=2026-09-15T13:19:25.676Z -->
 
 Image is essentially a two-dimensional buffer for storing information required for 3D rendering calculation, such as basic colors and normals.
 
 ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, and KTX formats and customizing image resources.
 
 ## How to Develop
-
 1. Import the required modules.
 
    Import the core types provided by ArkGraphics 3D in the page script to create objects like scenes, cameras, materials, and images.
@@ -56,7 +54,7 @@ ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, 
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
 
    ``` TypeScript
-   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam = await this.rf.createCamera({ name: 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
@@ -146,11 +144,8 @@ ArkGraphics 3D provides the capability of creating image resources in PNG, JPG, 
    ```
 
 <!--RP1-->
-
 ## Samples
 
 The following sample is provided to help you better understand how to efficiently use 3D resources:
-
 - [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
-
 <!--RP1End-->

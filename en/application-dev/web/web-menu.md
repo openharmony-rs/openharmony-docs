@@ -1,29 +1,22 @@
 # Using Web Component Menus to Process Web Content
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=de6c5587afdcf50b930b84ee7fea72915daa554b translatedAt=2026-08-14T03:47:47.046Z pushedAt=2026-08-14T10:20:38.406Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:16:24.263Z pushedAt=2026-09-15T13:41:36.586Z -->
 
 As a key component of user interaction, menus build a clear navigation system and present function entries through a structured layout, allowing users to quickly find target content or perform operations. As an important hub of human-machine interaction, menus significantly improve the accessibility and user experience of the Web component and are an indispensable part of app design. The Web component menu types include the [text selection menu](./web-menu.md#text-selection-menu), [context menu](./web-menu.md#context-menu), and [custom menu](./web-menu.md#custom-menu). You can flexibly select a menu type based on your specific requirements.
-
 |Menu Type|Target Element|Response Type|Customizable|
 |----|----|----|----|
 |[Text selection menu](./web-menu.md#text-selection-menu)|Text|Long press gesture|Menu items can be added or removed, but the menu style cannot be customized.|
 |[Context menu](./web-menu.md#context-menu)|Hyperlink, image, text|Long press gesture, right-click|Customizable through the menu component.|
 |[Custom menu](./web-menu.md#custom-menu)|Image|Long press gesture|Customizable through the menu component.|
-
 ## Text Selection Menu
-
 The text selection menu of the Web component is a context interaction component implemented through custom elements. It is dynamically displayed when the user selects text, providing semantic operations such as copy, share, and annotate. With standardized functions and good extensibility, it is one of the core features of text operations on mobile devices. The text selection menu pops up when the user long-presses to select text or when a single handle appears after a long press in editing state, with menu items arranged horizontally. The system provides a default menu implementation. An app can customize the text selection menu through the [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12) API.
-
 1. Customize menu items through the onCreateMenu method. By operating the Array<[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12)> array, you can add or remove displayed menu items. Define the menu item name, icon, ID, and other content in [TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12).
-
 2. Handle menu item click events through the onMenuItemClick method. When it returns false, the system default logic is executed.
-
 3. Create an [EditMenuOptions](../reference/apis-arkui/arkui-ts/ts-text-common.md#editmenuoptions) object that contains the onCreateMenu and onMenuItemClick methods, and bind it to the Web component through the [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12) API of the Web component.
 
 <!-- @[web_textMenuItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets) --> 
@@ -113,17 +106,12 @@ struct WebComponent {
     </body>
   </html>
   ```
-
   ![editMenuOption](./figures/editMenuOption.gif)
-
 ## Context Menu
-
 A context menu is a shortcut menu triggered by a specific user action (such as right-clicking or long-pressing rich text). It provides function options related to the current operation object or UI element. Menu items are arranged vertically. The system does not provide a default implementation. If the app does not implement one, no context menu is displayed. You need to create a [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) component and bind it to the Web component. When the menu pops up, you can obtain detailed context menu information through the [onContextMenuShow](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontextmenushow9) callback of the Web component, including the HTML element information of the clicked position and the click position information.
 
 1. The [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) component serves as the popup menu and contains the behavior and style of all menu items.
-
 2. Use the bindPopup method to bind the Menu component to the Web component. When the context menu pops up, the created Menu component is displayed.
-
 3. Obtain the context menu event information [onContextMenuShowEvent](../reference/apis-arkweb/arkts-basic-components-web-i.md#oncontextmenushowevent12) in the onContextMenuShow callback. In it, param is of the [WebContextMenuParam](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuParam.md) type, which contains the HTML element information and position information corresponding to the clicked position, and result is of the [WebContextMenuResult](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md) type, which provides common menu capabilities.
 
 <!-- @[web_ContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets) --> 
@@ -267,17 +255,12 @@ struct WebComponent {
 </body>
 </html>
 ```
-
 ![onContextMenuShow](./figures/onContextMenuShow.gif)
-
 ## Custom Menu
-
 The custom menu gives developers the flexibility to control when the menu is triggered and how it is presented. It allows the app to dynamically match function entries based on user operation scenarios, significantly simplifying UI adaptation during development while making the interaction experience more intuitive.
 
 You can implement the custom menu feature through the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API. Currently, it additionally supports triggering the custom menu and custom text menu by long pressing images, links, and text.
-
 1. Create a [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) component as the menu popup.
-
 2. Bind the MenuBuilder menu popup through the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) method of the Web component. Set [WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13) to `WebElementType.IMAGE` and [responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13) to `WebResponseType.LONG_PRESS` to indicate that the menu pops up when an image is long pressed. In [options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13), define the menu display callback `onAppear`, the menu disappearance callback `onDisappear`, the preview window `preview`, and the menu type `menuType`.
 
 <!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
@@ -379,7 +362,6 @@ struct WebComponent {
   </body>
 </html>
 ```
-
 ![bindSelectionMenu](./figures/bindSelectionMenu.gif)
 
 Since API version 20, binding a long press gesture menu for hyperlinks is supported. You can bind different custom menus for images and links.
@@ -561,7 +543,6 @@ struct SelectionMenuLongPress {
 <!---->
 
 HTML example
-
 ```html
 <html lang="zh-CN"><head>
     <meta charset="UTF-8">
@@ -583,15 +564,11 @@ HTML example
 </body>
 </html>
 ```
-
 ![bindSelectionMenu_link](./figures/web-menu-bindselectionmenu-link.gif)
 
 ## Saving Images from the Web Menu
-
 1. Create a MenuBuilder component as the menu popup, use the [SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md) component to save images, and bind the MenuBuilder to Web through bindContextMenu.
-
 2. Obtain the image URL in onContextMenuShow, and save the image to the app sandbox through copyLocalPicToDir or copyUrlPicToDir.
-
 3. Save the image in the app sandbox to the gallery through photoAccessHelper.
 
 <!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
@@ -741,15 +718,11 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ![emptyEditMenuOption](./figures/web-menu-savePic.gif)
 
 ## Obtaining Selected Text Through the Web Menu
-
 The [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12) API of the Web component does not provide a way to obtain the selected text. You can obtain the selected text from JavaScript through [javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy) to implement the custom menu logic.
-
 1. Create a `SelectClass` class, and register the `SelectClass` object with the Web component through [javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy).
-
 2. Register a selection change listener on the HTML side, and pass the selection to the ArkTS side through the `SelectClass` object when the selection changes.
 
 <!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
@@ -843,16 +816,13 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ![web-menu-get-select](./figures/web-menu-get-select.gif)
 
 <!--RP1-->
 <!--RP1End-->
 
 ## FAQs
-
 ### How to Disable the Menu Popup on Long Press Selection
-
 You can use the [editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12) API to filter out all default system menu items. When no menu item remains, the menu is not displayed.
 
 <!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
@@ -903,15 +873,12 @@ struct WebComponent {
     </body>
   </html>
   ```
-
 ![emptyEditMenuOption](./figures/emptyEditMenuOption.gif)
 
 ### Handle Menu Not Displayed When a Selection Exists
-
 Check whether the selection has been manipulated through the JavaScript [selection API](https://www.w3.org/TR/selection-api/). Currently, changing the selection in this way causes the text selection menu not to be displayed.
 
 ### How to Customize the Style of the Text Selection Menu
-
 From API version 21, your app can implement a custom text selection menu through the [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) API.
 
 **Sample code**
@@ -1058,5 +1025,4 @@ struct WebComponent {
 </body>
 </html>
 ```
-
 ![bindselectionmen-text](./figures/web-menu-bindselectionmen-text.gif)

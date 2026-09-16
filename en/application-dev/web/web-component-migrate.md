@@ -1,12 +1,11 @@
 # Migrating Web Components Between Different Windows
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4216569c26016267071c2019e832c7c6779d2d7e translatedAt=2026-08-14T03:42:33.135Z pushedAt=2026-08-14T07:20:22.097Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:07:08.283Z pushedAt=2026-09-15T13:41:12.640Z -->
 
 The **Web** component can be attached to and detached from the component trees in different windows, which enables the same **Web** component to be migrated between different windows. For example, you can drag a tab page to an independent window or drag it to another window.
 
@@ -190,3 +189,4 @@ struct Index {
   }
 }
 ```
+

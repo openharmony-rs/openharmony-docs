@@ -1,18 +1,19 @@
 # Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=881a74b96c3e76923a911f57fd29f2c40dfda958 translatedAt=2026-07-27T08:17:03.704Z pushedAt=2026-07-27T09:58:18.234Z -->
+<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:39:41.512Z pushedAt=2026-09-15T08:12:53.932Z -->
+
 
 ## When to Use
 
 If complex services are involved in cross-application data access, you can use **DataShareExtensionAbility** to start the application of the data provider to implement data access.
 
 You need to implement flexible service logics via callbacks of the service provider to achieve data sharing in complex service scenarios across applications.
+
 
 ## Working Principles
 
@@ -36,10 +37,11 @@ There are two roles in **DataShare**:
 ## Constraints
 
 - The upper limit of shared data result sets depends on the data provider (for example, a maximum of 32 shared data result sets are actually allowed for concurrent use). It is recommended that the data provider specify the upper limit to control resource usage. Query requests that exceed the limit set by the data provider must be processed with retry logic.
-
 - After using the shared data result set returned by a query, call the [close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close) API promptly to release its resources.
 
+
 ## How to Implement
+
 
 ### Data Provider Application Development (Only for System Applications)
 
@@ -86,7 +88,6 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    export default class DataShareExtAbility extends DataShareExtensionAbility {
      // Override onCreate().
      onCreate(want: Want, callback: Function) {
-       result = this.context.cacheDir + '/datashare.txt';
        // Create an RDB store.
        relationalStore.getRdbStore(this.context, {
          name: DB_NAME,
@@ -257,6 +258,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
        ]
    }
    ```
+
 
 ### Data Consumer Application Development
 

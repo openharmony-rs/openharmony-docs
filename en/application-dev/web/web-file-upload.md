@@ -1,18 +1,18 @@
 # Uploading Files
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f0524ade16836279b29e1c928b6b7514bb1a1dfd translatedAt=2026-08-14T03:46:08.894Z pushedAt=2026-08-14T08:26:13.828Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:13:01.054Z pushedAt=2026-09-15T13:41:30.416Z -->
 
 The **Web** component supports file upload from the frontend page. You can use the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API to handle the file upload request from the frontend page. If you do not handle it, ArkWeb provides a default behavior to process the file upload request from the frontend page. You can also customize the Picker to be invoked based on the obtained frontend data.
 
 ## Starting File Manager Using onShowFileSelector
 
 In the following example, when a user clicks the **Upload** button on the frontend page, the application receives a file upload request through [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9), which carries the path of the local file to be uploaded.
+
 
 - Application code:
 
@@ -69,12 +69,12 @@ struct WebComponent {
   </body>
   </html>
   ```
-
 ![web-app-document](./figures/web-app-document.gif)
 
 ## Starting Gallery Using onShowFileSelector
 
 In the following example, when a user clicks the **Upload** button on the frontend page, the application receives a file upload request through [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9), which carries the path of the local image to be uploaded.
+
 
 - Application code:
 
@@ -114,6 +114,7 @@ In the following example, when a user clicks the **Upload** button on the fronte
   }
   ```
 
+
 - Code of the **local.html** page:
 
   ```html
@@ -131,7 +132,6 @@ In the following example, when a user clicks the **Upload** button on the fronte
   </body>
   </html>
   ```
-
 ![web-app-photo](./figures/web-app-photo.gif)
 
 ## Starting Camera Using onShowFileSelector
@@ -191,7 +191,6 @@ struct Index {
 ```
 
 HTML page code:
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -229,7 +228,6 @@ HTML page code:
 </body>
 </html>
 ```
-
 ![web-app-camera](./figures/web-app-camera.gif)
 
 ## Processing File Upload Requests Using the Default ArkWeb Mode
@@ -264,7 +262,6 @@ The sample page includes multiple file selectors, each with different **accept**
 > By default, ArkWeb invokes only the rear camera. The value `'user'` is not processed as invoking the front camera. If needed, handle it separately on the application side through the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API.
 
 HTML page code:
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -304,7 +301,6 @@ HTML page code:
 ```
 
 Code on the application side:
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -323,7 +319,6 @@ struct Index {
   }
 }
 ```
-
 ![web-default-camera](./figures/web-default-camera.gif)
 
 ## Custom Processing of File Requests Invoked by JS APIs
@@ -345,7 +340,6 @@ Since API version 23, the following members of **option** are added:
 **types**: corresponds to the [getAcceptableFileTypes](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getacceptablefiletypes23) API.
 
 Code of the **index.html** page:
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -390,7 +384,6 @@ Code of the **index.html** page:
 ```
 
 Application code:
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -475,7 +468,6 @@ struct WebComponent {
   }
 }
 ```
-
 ![web-custom-mode-file-picker.gif](./figures/web-custom-mode-file-picker.gif)
 
 The sample uses `showSaveFilePicker()` in HTML together with the `documentViewPicker.save()` method in ArkTS as an example.
@@ -483,7 +475,6 @@ The sample uses `showSaveFilePicker()` in HTML together with the `documentViewPi
 **NOTE**
 
 1. The input parameter **option** of **showOpenFilePicker** and **showDirectoryPicker** in HTML has different members from that of **showSaveFilePicker**.
-
 2. In ETS, when calling the [`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select) method, pass parameters to the Picker with the [`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions) object instead of the [`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions) object. For details, see [@ohos.file.picker (Picker)](../reference/apis-core-file-kit/js-apis-file-picker.md).
 
 ## FAQs
@@ -505,7 +496,5 @@ The **Images** option invokes the gallery. Depending on the value of the `accept
 ### How to use handleFileList?
 
 This function submits the selected file path to ArkWeb. The input parameters are of two types.
-
 1. File protocol paths. Currently, only public paths prefixed with `file://media/` and `file://docs/` and application package name paths in the form of `file://<packageName>/` are supported. Other file protocol paths have no permission.
-
 2. Sandbox directory. For details, see [Application Sandbox](../file-management/app-sandbox-directory.md).

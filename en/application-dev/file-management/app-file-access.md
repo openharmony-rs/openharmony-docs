@@ -1,12 +1,11 @@
 # Accessing Application Files (ArkTS)
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=96b6842378a3034d6245f6b77a19ff25d0ceba9c translatedAt=2026-08-01T07:24:00.361Z pushedAt=2026-08-01T07:40:07.846Z -->
+<!-- md-trans-meta sourceCommit=0c20469e58610438940464085fdd62df82c5b560 translatedAt=2026-09-14T09:17:36.559Z pushedAt=2026-09-15T13:11:48.176Z -->
 
 This topic describes how to enable an application to view, create, read, write, delete, move, or copy an application file and obtain file information.
 
@@ -64,7 +63,6 @@ import { buffer } from '@kit.ArkTS';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-
 <!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
@@ -103,6 +101,7 @@ function createFile(context: common.UIAbilityContext): void {
 }
 ```
 
+
 ### Copying Data to Another File
 
 The following example demonstrates how to read data from a file and copy it to another file.
@@ -116,7 +115,6 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-
 <!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
@@ -169,6 +167,7 @@ function readWriteFile(context: common.UIAbilityContext): void {
 }
 ```
 
+
 > **NOTE**
 >
 > When using **read()** or **write()**, pay attention to the optional parameter **offset**. For a file that has been read or written, **offset** points to the end position of the last read or write operation by default.
@@ -186,7 +185,6 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-
 <!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
@@ -235,6 +233,8 @@ async function readWriteFileWithStream(context: common.UIAbilityContext): Promis
 }
 ```
 
+
+
 > **NOTE**
 >
 > Close the stream once it is not required. <br>Comply with the programming specifications for **Stream** APIs in asynchronous mode and avoid mixed use of the APIs in synchronous mode and asynchronous mode. <br>The **Stream** APIs do not support concurrent read and write operations.
@@ -251,7 +251,6 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-
 <!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
@@ -278,6 +277,7 @@ function getListFile(context: common.UIAbilityContext): void {
 }
 ```
 
+
 ### Using File Streams
 
 The following example demonstrates how to use readable and writable streams.
@@ -291,7 +291,6 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-
 <!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
@@ -326,6 +325,7 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
   }
 }
 ```
+
 
 <!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
@@ -365,6 +365,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
 }
 ```
 
+
 ### Using File Hash Streams
 
 A hash stream is a data transmission and storage technology that can convert data of any length into a hash value of a fixed length to verify data integrity and consistency. The following code shows how to use the file hash processing API [ohos.file.hash](../reference/apis-core-file-kit/js-apis-file-hash.md) to process file hash streams.
@@ -380,7 +381,6 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 
 ```
-
 <!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript

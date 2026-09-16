@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=67487829468179127107f74c0916ca5ae8660edf translatedAt=2026-09-01T02:08:33.795Z pushedAt=2026-09-01T11:06:31.227Z -->
+<!-- md-trans-meta sourceCommit=4df20884379aac255f1543b2903732709a7e9dcf translatedAt=2026-09-14T08:26:36.211Z pushedAt=2026-09-14T11:09:56.909Z -->
 
 ## Introduction
 An electronic device may have one or more secure elements (SEs), such as the embedded SE (eSE) and SIM card. Access control for SEs is implemented in accordance with the Global Platform Access Control (GPAC) specification.
@@ -69,19 +69,25 @@ export default class EntryAbility extends UIAbility {
   }
 
   private async omaTest() {
-    // Create an SEService instance for SE access.
-    await omapi.createService().then((data) => {
-      if (data == undefined || !data.isConnected()) {
-        hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+    try {
+      // Create an SE service to access the SE.
+      await omapi.createService().then((data) => {
+        if (data == undefined || !data.isConnected()) {
+          hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+          return;
+        }
+        seService = data;
+        hilog.info(0x0000, 'testTag', 'secure element service connected.');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
+        return;
+      });
+    } catch (error) {
+      if (error as BusinessError) {
+        hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         return;
       }
-      seService = data;
-      hilog.info(0x0000, 'testTag', 'secure element service connected.');
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
-      return;
-    });
-
+    }
     // Obtain all supported readers on the device, that is, the list of all SEs.
     try {
       seReaders = seService.getReaders();
@@ -133,6 +139,7 @@ export default class EntryAbility extends UIAbility {
 
     if (seChannel == undefined) {
       hilog.error(0x0000, 'testTag', 'seChannel invalid.');
+      seSession.close();
       seService.shutdown();
       return;
     }
@@ -152,7 +159,8 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       hilog.error(0x0000, 'testTag', 'seChannel.close() exception = %{public}s.', JSON.stringify(exception));
     }
-
+    // Close the seSession, which also closes all channels opened by this session.
+    seSession.close();
     // Close the service, and disable the binding relationship between the application and the SE service.
     seService.shutdown();
   }

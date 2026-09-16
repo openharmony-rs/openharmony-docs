@@ -6,7 +6,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
-<!-- md-trans-meta sourceCommit=6dec6b14cb206fe02a5ddd5033caa3930c0dd80f translatedAt=2026-08-18T11:03:07.467Z pushedAt=2026-08-18T11:38:52.629Z -->
+<!-- md-trans-meta sourceCommit=804e49693463f2a26dff2f7a605cb4a15d07f377 translatedAt=2026-09-14T09:56:58.507Z pushedAt=2026-09-15T13:38:38.729Z -->
 
 ## When to Use
 
@@ -36,6 +36,7 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 3. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
