@@ -10,15 +10,15 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ## compatibility_info
  - 类型：object
- - 说明：用于向引擎声明shader版本兼容性信息。统一使用如下字段：
+ - 说明：用于向引擎声明Shader版本兼容性信息。统一使用如下字段：
    ```json
    "compatibility_info": { "version": "22.00", "type": "shader" }
    ```
-   表示这是引擎22.00版本下的shader描述文件。
+   表示这是引擎22.00版本下的Shader描述文件。
 
 ## vert
  - 类型：string
- - 说明：指定使用该shader的DrawCall中使用的vertex shader文件。
+ - 说明：指定使用该Shader的DrawCall中使用的vertex shader文件。
  - 默认值：
    ```json
    "vert": "3dshaders://shader/core3d_dm_fw.vert.spv"
@@ -27,11 +27,11 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
    ```json
    "vert": "appshaders://yourDir/yourShader.vert.spv"
    ```
-   其中yourDir/yourShader.vert.spv是用户使用的shader文件在文件沙箱中的路径。
+   其中yourDir/yourShader.vert.spv是用户使用的Shader文件在文件沙箱中的路径。
 
 ## frag
  - 类型：string
- - 说明：指定使用该shader的DrawCall中使用的fragment shader文件。
+ - 说明：指定使用该Shader的DrawCall中使用的fragment Shader文件。
  - 默认值：
    ```json
    "frag": "3dshaders://shader/core3d_dm_fw.frag.spv"
@@ -40,7 +40,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
    ```json
    "frag": "appshaders://yourDir/yourShader.frag.spv"
    ```
-   其中yourDir/yourShader.frag.spv是用户使用的shader文件在文件沙箱中的路径。
+   其中yourDir/yourShader.frag.spv是用户使用的Shader文件在文件沙箱中的路径。
 
 ## vertexInputDeclaration
  - 类型：string
@@ -100,7 +100,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
       | "always" | 总是通过深度测试，像素总是被绘制。 |
 
 ### colorBlendState
-用于指定本次渲染中渲染源与渲染目标的混合状态属性。包括colorAttachments，用于指定本次渲染中颜色附件的混合状态属性。colorAttachments具体包括如下几项：
+用于指定本次渲染中渲染源与渲染目标的混合状态属性，通过colorAttachments指定颜色附件的混合方式，colorAttachments具体包括如下几项：
    - enableBlend：渲染源与渲染目标的混合是否开启，true表示开启混合，false表示关闭混合。若开启则渲染源与渲染目标以指定方式混合，若不开启则不进行混合。
    - colorWriteMask：指定渲染颜色附件中通道掩码，若指定了通道掩码则该通道将被计算混合，若不指定则不计算混合，可取值有r_bit、g_bit、b_bit、a_bit，各个通道可以用|符号取并集，可取值及含义见下表。
      | 可取值 | 说明 |
@@ -229,7 +229,7 @@ ArkGraphics 3D中支持的.shader文件基于JSON格式，书写.shader文件时
 
 ### customProperties
 用于指定渲染中传入的自定义属性。包括data数组，用于指定渲染中传入的自定义数据。data数组中的对象包含以下属性：
-   - name：用于指定渲染中传入的自定义数据名称与自定义渲染中的数据名对应。
+   - name：用于指定自定义数据的名称，该名称需与自定义着色器中引用的数据名保持一致。
    - displayName：用于指定3D编辑器中显示的名称。
    - type：用于指定数据类型，可取值及含义见下表。
      | 可取值 | 说明 |

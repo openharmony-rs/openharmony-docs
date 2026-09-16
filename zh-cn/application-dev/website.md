@@ -1948,13 +1948,13 @@
       - [图形开发术语](graphics/graphic-term.md)
     - ArkGraphics 3D（方舟3D图形）<!--arkgraphics-3d-->
       - [ArkGraphics 3D简介](graphics3d/arkgraphics3D-overview.md)
-      - [ArkGraphics 3D场景搭建以及管理](graphics3d/arkgraphics3D-scene.md)
-      - ArkGraphics 3D资源创建以及使用<!--arkgraphics3d-resource-->
+      - [场景搭建与管理](graphics3d/arkgraphics3D-scene.md)
+      - 资源创建与使用<!--arkgraphics3d-resource-->
         - [创建并使用材质资源](graphics3d/arkgraphics3D-resource-material.md)
         - [创建并使用图片资源](graphics3d/arkgraphics3D-resource-image.md)
         - [创建并使用环境资源](graphics3d/arkgraphics3D-resource-environment.md)
         - [.shader资源文件格式要求](graphics3d/arkgraphics3D-shader-resource.md)
-      - [ArkGraphics 3D场景动画控制以及管理](graphics3d/arkgraphics3D-animation.md)
+      - [场景动画控制与管理](graphics3d/arkgraphics3D-animation.md)
   - 应用服务<!--gapp-service-->
     <!--Del-->
     - Ads Kit（广告服务）<!--ads-kit-->

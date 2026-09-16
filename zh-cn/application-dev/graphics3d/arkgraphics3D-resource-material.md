@@ -86,7 +86,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
 - emissive：自发光颜色及纹理，表达材质自发光的效果。
 
-  适用场景：灯光、屏幕、发光标志、荧光材料等需要表现光源或自发光效果的材质。
+  适用场景：屏幕、发光标志或荧光材料等需要表现光源或自发光效果的材质。
 
 - clearCoat：清漆层强度，模拟车漆等具有透明反光层的材质。
 
@@ -200,7 +200,7 @@ ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphi
 
 6. 创建Shader资源。
 
-   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的shader资源可在后续步骤中绑定到Shader材质上，实现自定义渲染逻辑。
+   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的Shader资源可在后续步骤中绑定到Shader材质上，实现自定义渲染逻辑。
 
    <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
