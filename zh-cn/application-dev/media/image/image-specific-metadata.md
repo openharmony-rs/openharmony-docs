@@ -6,7 +6,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，支持使用ImageSource获取GIF、HEIFS、DNG、WebP、PNG、JFIF、TIFF、AVIS多种图像格式的专有元数据。
+从API version 23开始，ImageSource陆续支持获取GIF、HEIFS、DNG、WebP、PNG、JFIF、TIFF、AVIS多种图像格式的专有元数据。
+各格式支持的起始API版本如下表所示：
 
 ## 支持的元数据类别
 
