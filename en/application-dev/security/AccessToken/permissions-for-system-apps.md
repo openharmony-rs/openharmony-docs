@@ -9301,7 +9301,7 @@ Allows an application to skip enterprise re-signing certificate verification.
  
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
  
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.DEVICE_INFO_WRITE
 
