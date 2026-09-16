@@ -542,6 +542,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 ``` json
 {
+  "common": {},
   "2in1": {
     "multiModalInputOptions": {
       "mouse2TouchEventMode": "disabled"
@@ -552,7 +553,7 @@ easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层�
 
 **2. 配置字段说明**
 
-第一层的2in1表示在PC/2in1类型的设备上鼠标左键或轴事件可转换成触摸事件。第二层的multiModalInputOptions字段，用来设置事件输入选项。内部字段说明如下：
+第一层的2in1表示在PC/2in1类型的设备上鼠标左键或轴事件可转换成触摸事件。2in1第二层的multiModalInputOptions字段，用来设置事件输入选项。内部字段说明如下：
 
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
@@ -566,8 +567,6 @@ mouse2TouchEventMode可配置字段说明：
 | xcomponentAndWebOnly | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
 | disabled             | 表示鼠标事件全部都不转换成触摸事件。                    |
 
-
-
 #### 鼠标右键转长按配置
 
 通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
@@ -578,6 +577,7 @@ mouse2TouchEventMode可配置字段说明：
 
 ``` json
 {
+  "common": {},
   "2in1": {
     "contextMenuOptions": {
       "rightMouse2LongPress": true,
@@ -586,9 +586,10 @@ mouse2TouchEventMode可配置字段说明：
   }
 }
 ```
+
 **2. 配置字段说明**
 
-第一层的2in1表示在PC/2in1类型的设备上鼠标右键可转换成长按事件。第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。因为只有PC/2in1设备和Tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说明如下：
+第一层的2in1表示在PC/2in1类型的设备上鼠标右键可转换成长按事件。2in1第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。因为只有PC/2in1设备和Tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说明如下：
 
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
@@ -607,4 +608,23 @@ needTransferComponent数组中可选枚举类型说明：
 | XComponent        | 自绘制组件     |
 | Image             | 图片           |
 | RelativeContainer | 相对布局容器   |
-| All               | 表示所有 ArkUI 组件均生效。当列表中同时包含具体组件名和 "All" 时，等价于仅配置 "All"，建议仅使用 "All" 以简化配置。  |
+| All               | 所有ArkUI组件   |
+
+ needTransferComponent字段额外说明： 
+ | 规则               | 说明                                                         | 
+ | ------------------ | ------------------------------------------------------------ | 
+ | 全部生效           | 设置 `"needTransferComponent": ["All"]` 表示所有 ArkUI 组件均生效 | 
+ | 大小写敏感         | 组件名称区分大小写，必须严格按照上述列表填写                 | 
+ | 不允许重复         | 组件列表中不允许出现重复的组件名                             | 
+ | All 与其他组件共存 | 当列表中同时包含具体组件名和 "All" 时，具体组件名将被忽略，等价于仅配置 "All"。建议仅使用 "All" 以简化配置。  | 
+ | 合法值             | 列表中的值只能是上述 9 种组件名 + "All"（共 10 种），填写其他值会报错  |
+ 
+ **3. 常见异常配置示例说明**
+
+第一层配置中缺少common必须字段，导致编译报错
+
+为common/phone的第二层添加contextMenuOptions相关配置，导致编译报错
+ 
+needTransferComponent数组中枚举值大小写错用，导致编译报错
+
+needTransferComponent数组中枚举值存在重复
