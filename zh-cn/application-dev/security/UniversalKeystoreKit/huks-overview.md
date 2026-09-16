@@ -63,6 +63,14 @@ HUKS为开发者提供了密钥全生命周期的管理能力，其核心功能�
 
 <!--RP1--><!--RP1End-->
 
+<!--RP2-->
+## 约束与限制
+
+- 支持的国家/地区
+
+请参见版本说明中[支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
+<!--RP2End-->
+
 ## 与相关Kit的关系
 
 [基于用户身份认证的密钥访问控制](huks-identity-authentication-overview.md)，依赖于[User Authentication Kit（用户身份认证）](../UserAuthenticationKit/user-authentication-overview.md)。
