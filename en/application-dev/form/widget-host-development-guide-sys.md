@@ -526,3 +526,5 @@ struct formHostSample {
 The following sample is provided for widget host development:
 
 - [Widget Host (Stage) (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Form/FormHost)
+
+<!--no_check-->
