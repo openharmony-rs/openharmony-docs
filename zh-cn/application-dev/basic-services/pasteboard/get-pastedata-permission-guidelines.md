@@ -161,13 +161,7 @@ struct Index {
               return;
             }
             // 用户授权，使用get操作读取剪贴板内容。
-            // [StartExclude pasteboard_permission]
-            try {
-              this.text = await TestJs.getPlainData(pasteboard.MIMETYPE_TEXT_PLAIN)
-            } catch (err) {
-              this.printLog('get failed.');
-            }
-            // [EndExclude pasteboard_permission]
+            // ...
             // 执行判断口令逻辑，如果是本应用口令，建议获取完数据后使用cleardata清除剪贴板口令内容
             try {
               await systemPasteboard.clearData();
