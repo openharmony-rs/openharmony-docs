@@ -69,7 +69,7 @@ For details about the code of lifecycle management, see:
 
 For the code examples of typical incorrect usage, see the following link:
 
-[Typical Error Scenarios](napi-faq-about-stability.md#typical-error-scenarios-in-lifecycle-development-using-napi_open_handle_scope-and-napi_close_handle_scope)
+[Typical Error Scenarios](napi-faq-about-stability.md#what-are-the-typical-error-scenarios-of-lifecycle-related-development-between-napi_open_handle_scope-and-napi_close_handle_scope)
 
 CPP code:
 
