@@ -84,6 +84,6 @@
 - Error Codes<!--core-file-arkts-errcode-->
   - [File Management Error Codes](errorcode-filemanagement.md)
   <!--Del-->
-  - [Cloud Disk Management Error Codes (System API)](errorcode-clouddiskmanager-sys.md)
+  - [Cloud Disk Management Error Codes](errorcode-clouddiskmanager-sys.md)
   <!--DelEnd-->
   
