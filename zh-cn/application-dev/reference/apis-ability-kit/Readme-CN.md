@@ -262,6 +262,7 @@
       - [RecoverableApplicationInfo (系统接口)](js-apis-recoverableApplicationInfo-sys.md)
       - [RemoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
+      - [ShortcutInfo (系统接口)](js-apis-bundleManager-shortcutInfo-sys.md)
       <!--DelEnd-->
     - security<!--ability-security-->
       - [PermissionRequestResult](js-apis-permissionrequestresult.md)
