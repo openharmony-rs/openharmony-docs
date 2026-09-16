@@ -96,7 +96,7 @@
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) --> 
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {

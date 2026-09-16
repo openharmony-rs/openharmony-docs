@@ -306,8 +306,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 const callback = (error: BusinessError, data: void) => {
@@ -402,8 +401,7 @@ startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: Want
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
@@ -492,10 +490,9 @@ startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
@@ -624,9 +621,8 @@ startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promis
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
@@ -974,9 +970,8 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
@@ -1069,8 +1064,7 @@ updateDataTransferProgress(context: Context, progressInfo: DataTransferProgress)
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   continuousTaskId : number = -1; // 保存长时任务Id
@@ -1106,7 +1100,7 @@ export default class EntryAbility extends UIAbility {
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
             console.info('Operation startBackgroundRunning succeeded');
             // 对于数据传输类的长时任务，应用可以使用res中返回的continuousTaskId来更新通知，比如发送带进度条的模板通知
-            this.continuousTaskId = res.continuousTaskId;
+            this.continuousTaskId = res.continuousTaskId ?? -1;
             try {
               let progressInfo: backgroundTaskManager.DataTransferProgress = {
                 continuousTaskId: this.continuousTaskId,
