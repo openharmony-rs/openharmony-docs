@@ -4107,6 +4107,26 @@
 						"start_line":76
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_async_context.h",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"TestHidebugNdk_AsyncContextHeader",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/cpp/test_async_context.cpp",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"TestHidebugNdk_AsyncContext",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
