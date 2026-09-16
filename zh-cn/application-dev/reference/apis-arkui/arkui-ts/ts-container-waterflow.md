@@ -346,6 +346,8 @@ columnsTemplate(value: string)
 
 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见[示例2](#示例2自动计算列数)。
 
+普通模板串（非repeat形式）中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)形式。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -402,6 +404,8 @@ ArkTS-Sta: rowsTemplate(value: string | undefined)
 例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。
 
 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。
+
+普通模板串（非repeat形式）中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp。需要按固定vp尺寸自动计算行数时，应使用repeat(auto-fill, track-size)形式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
