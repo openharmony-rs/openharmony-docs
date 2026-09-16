@@ -158,7 +158,7 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startChildProcess error, errorCode: ${err.code}`);
                 })
-            } catch (err: BusinessError) {
+            } catch (err) {
               console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
             }
           });
@@ -175,7 +175,7 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startChildProcess error, errorCode: ${err.code}`);
                 })
-            } catch (err: BusinessError) {
+            } catch (err) {
               console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
             }
         })
@@ -213,7 +213,7 @@ struct Index {
               .catch((err: BusinessError) => {
                 console.error(`startChildProcess error, errorCode: ${err.code}`);
               })
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
           }
         });
@@ -230,7 +230,7 @@ struct Index {
               .catch((err: BusinessError) => {
                 console.error(`startChildProcess error, errorCode: ${err.code}`);
               })
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
           }
       })
@@ -342,7 +342,7 @@ struct Index {
                   }
                   console.info(`startChildProcess success, pid: ${data}`);
               });
-            } catch (err: BusinessError) {
+            } catch (err) {
               console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
             }
           });
@@ -359,7 +359,7 @@ struct Index {
                   }
                   console.info(`startChildProcess success, pid: ${data}`);
               });
-            } catch (err: BusinessError) {
+            } catch (err) {
               console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
             }
         })
@@ -397,7 +397,7 @@ struct Index {
                 }
                 console.info(`startChildProcess success, pid: ${data}`);
             });
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
           }
         });
@@ -414,7 +414,7 @@ struct Index {
                 }
                 console.info(`startChildProcess success, pid: ${data}`);
             });
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}.`);
           }
       })
@@ -546,8 +546,8 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startArkChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
           });
 
@@ -573,8 +573,8 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
         })
       }
@@ -617,7 +617,7 @@ struct Index {
               .catch((err: BusinessError) => {
                 console.error(`startChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
               })
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
           }
         });
@@ -638,7 +638,7 @@ struct Index {
               .catch((err: BusinessError) => {
                 console.error(`startChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
               })
-          } catch (err: BusinessError) {
+          } catch (err) {
             console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
           }
       })
@@ -768,8 +768,8 @@ struct Index {
                 .catch((err: BusinessError) => {
                   console.error(`startNativeChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startNativeChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startNativeChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
           });
       }
@@ -821,8 +821,8 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isArkChildProcessSupported();
               console.info(`isArkChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
@@ -854,8 +854,8 @@ struct Index {
             try {
               const isSupport: boolean = childProcessManager.isArkChildProcessSupported();
               console.info(`isArkChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
@@ -907,8 +907,8 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
               console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }
@@ -939,8 +939,8 @@ struct Index {
             try {
               const isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
               console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }

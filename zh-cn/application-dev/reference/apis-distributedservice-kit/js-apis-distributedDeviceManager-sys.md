@@ -219,8 +219,6 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 用于分布式设备识别的结构体。
 
-**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID
-
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
@@ -236,7 +234,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 | 名称       | 类型  | 只读 | 可选              | 说明          |
 |----------| ---- | ------ | --------- |-------------|
 | deviceId | string  | 否 | 否   | 应用获取的匿名化设备ID。 |
-| udid     | string  | 否 | 否   | 设备唯一标识。     |
+| udid     | string  | 否 | 否   | 设备唯一标识。**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID。     |
 
 ## DeviceManager
 

@@ -316,7 +316,7 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 ## OnRenderExitedEvent<sup>12+</sup>
 
-定义渲染过程退出时触发。适用于需要监控渲染进程异常的场景，提升渲染稳定性和故障排查效率。
+定义渲染进程退出时触发。适用于需要监控渲染进程异常的场景，提升渲染稳定性和故障排查效率。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -953,7 +953,7 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 | 名称                     | 类型   | 只读 | 可选 | 说明                                   |
 | ------------------------ | ------ | ---- | ---- | -------------------------------------- |
-| navigationStartTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是  | 导航条加载时间，单位以微秒表示。       |
+| navigationStartTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是  | 导航开始时间，单位以微秒表示。       |
 | firstMeaningfulPaintTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 绘制页面主要内容时间，单位以毫秒表示。 |
 
 ## LargestContentfulPaint<sup>12+</sup>
@@ -968,7 +968,7 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 
 | 名称                      | 类型   | 只读 | 可选 | 说明                                     |
 | ------------------------- | ------ | ---- | ---- | ---------------------------------------- |
-| navigationStartTime       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 导航条加载时间，单位以微秒表示。         |
+| navigationStartTime       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 导航开始时间，单位以微秒表示。         |
 | largestImagePaintTime     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大图片加载的时间，单位是以毫秒表示。   |
 | largestTextPaintTime      | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大文本加载时间，单位是以毫秒表示。     |
 | largestImageLoadStartTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是   | 最大图片开始加载时间，单位是以毫秒表示。 |

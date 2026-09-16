@@ -1992,11 +1992,11 @@ struct buildNodeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+1. 点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
 
-2.点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
+2. 点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
 
-3.点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
+3. 点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
 
 **Navigation**
 
@@ -2200,11 +2200,11 @@ struct TextBuilder {
 
 在上面的示例中：
 
-1.进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
+1. 进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
 
-2.点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
+2. 点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
 
-3.点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
+3. 点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
 
 **Repeat**
 
@@ -2492,11 +2492,11 @@ struct FreezeBuildNode {
 
 在上面的示例中：
 
-1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
+1. 点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
+2. 点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
+3. 再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 

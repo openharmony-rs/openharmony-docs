@@ -245,9 +245,9 @@ ArkTS-Sta: dataDetectorConfig(config: TextDataDetectorConfig | undefined)
 
 当有两个实体A、B重叠时，按以下规则保留实体：
 
-1.&nbsp;若A&nbsp;⊂&nbsp;B，则保留B，反之则保留A。
+1. &nbsp;若A&nbsp;⊂&nbsp;B，则保留B，反之则保留A。
 
-2.&nbsp;当A&nbsp;⊄&nbsp;B且B&nbsp;⊄&nbsp;A时，若A.start&nbsp;<&nbsp;B.start，则保留A，反之则保留B。
+2. &nbsp;当A&nbsp;⊄&nbsp;B且B&nbsp;⊄&nbsp;A时，若A.start&nbsp;<&nbsp;B.start，则保留A，反之则保留B。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1345,7 +1345,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | --------------------- | ---------------------------------------- | ---- | -----|-------------- |
 | offset                | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                   | 否 | 否    | 删除内容的偏移位置。          |
 | direction             | [RichEditorDeleteDirection](#richeditordeletedirection) | 否 | 否    | 删除操作的方向。            |
-| length                | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                   | 否 | 否    | 删除内容长度。             |
+| length                | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                   | 否 | 否    | 删除内容长度，删除范围为[offset, offset + length)，结束位置对应的内容不包含在内。             |
 | richEditorDeleteSpans | Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> | 否 | 否    | 删除的文本或图片Span的信息。 |
 
 
@@ -1379,7 +1379,7 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 | spanPosition                  | [RichEditorSpanPosition](#richeditorspanposition) | 否 | 否    | Span位置。                <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | value                         | string                                    | 否 | 否    | 文本Span内容或Symbol的id。              <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | textStyle                     | [RichEditorTextStyleResult](#richeditortextstyleresult)  | 否 | 否   | 文本Span样式信息。            <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
-| offsetInSpan                  | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int]                          | 否 | 否    | 文本Span内容里有效内容的起始和结束位置。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
+| offsetInSpan                  | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int]                          | 否 | 否    | 文本Span内容里有效内容的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10  <br/>**ArkTS-Sta起始版本：** 23|
 | valueResource<sup>11+</sup>   | [Resource](ts-types.md#resource)          | 否 | 是    | SymbolSpan资源内容。<br>默认值：undefined。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11  <br>**ArkTS-Sta起始版本：** 23        |
 | symbolSpanStyle<sup>11+</sup> | [RichEditorSymbolSpanStyle](#richeditorsymbolspanstyle11)  | 否 | 是    | 组件SymbolSpan样式信息。      <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11  <br/>**ArkTS-Sta起始版本：** 23|
 | paragraphStyle<sup>12+</sup>  | [RichEditorParagraphStyle](#richeditorparagraphstyle11)   | 否 | 是   | 段落样式。<br>省略时，使用系统默认段落样式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12  <br>**ArkTS-Sta起始版本：** 23|
@@ -1402,7 +1402,7 @@ Span位置信息。
 | 名称        | 类型           | 只读 | 可选   | 说明                          |
 | --------- | ---------------- |----| ---- | --------------------------- |
 | spanIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 否 | 否    | Span索引值。                    |
-| spanRange | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int] | 否 | 否    | Span内容在RichEditor内的起始和结束位置。 |
+| spanRange | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int] | 否 | 否    | Span内容在RichEditor内的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的Span不包含在内。 |
 
 ## RichEditorSpanType
 
@@ -1537,7 +1537,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | valuePixelMap    | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)                    | 否 | 是   | 图片内容。|
 | valueResourceStr | [ResourceStr](ts-types.md#resourcestr)                            | 否 | 是   | 图片资源id。|
 | imageStyle       | [RichEditorImageSpanStyleResult](#richeditorimagespanstyleresult) | 否 | 否 | 图片样式。|
-| offsetInSpan     | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int] | 否 | 否 | Span里图片的起始和结束位置。|
+| offsetInSpan     | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [int, int] | 否 | 否 | Span里图片的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。|
 
 ## RichEditorImageSpanStyleResult
 
@@ -1793,7 +1793,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 | 参数名            | 类型   | 必填   | 说明    |
 | -------------- | ------ | ---- | ------- |
 | selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中开始位置。 |
-| selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中结束位置。 |
+| selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中结束位置，选中范围为[selectionStart, selectionEnd)，结束位置对应的内容不包含在内。 |
 | options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置，用于控制选中操作时的菜单弹出策略。<br>当需要自定义菜单弹出行为（如强制显示或隐藏菜单）时传入此参数；<br>省略时默认使用MenuPolicy.DEFAULT，遵循系统默认菜单弹出策略。<br>各MenuPolicy取值的适用场景请参考SelectionOptions对象说明。 |
 
 ### isEditing<sup>12+</sup>
@@ -2438,7 +2438,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 | 名称        | 类型                                        | 只读 | 可选   | 说明      |
 | --------- | ---------------------------------------- | ---- | ---|---- |
-| selection | ArkTS-Dyn: [number, number]<br/> ArkTS-Sta: [int, int]                        | 否 | 否    | 选中范围。   |
+| selection | ArkTS-Dyn: [number, number]<br/> ArkTS-Sta: [int, int]                        | 否 | 否    | 选中范围，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。   |
 | spans     | Array<[RichEditorTextSpanResult](#richeditortextspanresult) \| [RichEditorImageSpanResult](#richeditorimagespanresult)> | 否 | 否    | span信息。 |
 
 ## RichEditorRange
@@ -2456,7 +2456,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 | 名称  | 类型      | 只读 | 可选 | 说明                                                         |
 | ----- | ------ | ---- | ---------|--------------------------------------------------- |
 | start | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 是   | 文本的起始位置，省略或者设置负值时表示从0开始。  |
-| end   | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 是   | 文本的结束位置，省略或者超出文本范围时表示无穷大。 |
+| end   | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否 | 是   | 文本的结束位置，与start共同表示选中文本的范围[start, end)，结束位置对应的内容不包含在内，省略或者超出文本范围时表示无穷大。 |
 
 
 ## RichEditorSpanStyleOptions
@@ -2593,7 +2593,7 @@ SymbolSpan样式选项。
 | 名称    | 类型                                        | 只读 | 可选   | 说明      |
 | ----- | ---------------------------------------- | ---- | ---|---- |
 | style | [RichEditorParagraphStyle](#richeditorparagraphstyle11) |否| 否    | 段落样式。   |
-| range | ArkTS-Dyn: \[number, number\]<br/> ArkTS-Sta: \[int, int\]                      |否 | 否    | 段落起始和结束位置。 |
+| range | ArkTS-Dyn: \[number, number\]<br/> ArkTS-Sta: \[int, int\]                      |否 | 否    | 段落起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。 |
 
 ## RichEditorTextSpanOptions
 
@@ -2628,7 +2628,7 @@ SymbolSpan样式选项。
 | textShadow<sup>11+</sup> | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 否 | 是    | 设置文字阴影效果。<br>默认值：undefined，不设置文字阴影效果。<br>该接口支持以数组形式入参，实现多重文字阴影。<br>**说明：**<br>仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
 | lineHeight<sup>12+</sup>    | ArkTS-Dyn: number \| string \| [Resource](ts-types.md#resource)<br> ArkTS-Sta: double \| string \| [Resource](ts-types.md#resource) | 否 | 是     |设置文本的文本行高。<br>默认值：不设置时自适应字体大小。<br>number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](#fallbacklinespacing23)属性将生效。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | letterSpacing<sup>12+</sup> | ArkTS-Dyn: number \| string<br/> ArkTS-Sta: double \| string             | 否 | 是     | 设置文本字符间距，当取值为负值时，文字会发生压缩，负值过小时会将组件内容区大小压缩为0，导致无内容显示，number类型时单位为fp，不支持设置百分比字符串。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| fontFeature<sup>12+</sup> | string | 否 | 是 | 设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。<br/>格式为：normal \| \<feature-tag-value\><br/>\<feature-tag-value\>的格式为：\<string\> \[ \<integer\> \| on \| off ]<br/>\<feature-tag-value\>的个数可以有多个，中间用','隔开。<br/>例如，使用等宽时钟数字的输入格式为："ss01" on。<br/>Font Feature当前支持的属性见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。<br/>设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。<br/>更多Font Feature能力介绍可参考[font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType Features](https://sparanoid.com/lab/opentype-features/)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | halfLeading<sup>18+</sup> | boolean |否 | 是    | 文本是否将行间距平分至行的顶部与底部。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br>默认值：0。<br>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br>取值范围：(-∞, +∞)<br>与[shaderStyle](#richeditorparagraphstyle11)同时设置时，shaderStyle不生效。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
@@ -2971,7 +2971,7 @@ ArkTS-Sta: type MenuOnAppearCallback = (start: int, end: int) => void
 | 参数名  | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 选中内容的起始位置。 |
-| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 选中内容的终止位置。         |
+| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 选中内容的终止位置，选中范围为[start, end)，结束位置对应的内容不包含在内。         |
 
 ## MenuCallback<sup>15+</sup>
 
@@ -2994,7 +2994,7 @@ ArkTS-Sta: type MenuCallback = (start: int, end: int) => void
 | 参数名  | 类型                                             | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
 | start | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 选中内容的起始位置。 |
-| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 选中内容的终止位置。         |
+| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 选中内容的终止位置，选中范围为[start, end)，结束位置对应的内容不包含在内。         |
 
 ## PasteEventCallback<sup>12+</sup>
 

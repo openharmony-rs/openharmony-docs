@@ -175,7 +175,7 @@ ArkTS-Dyn: getRedValue(): number
 
 ArkTS-Sta: getRedValue(): double
 
-获取ColorMetrics颜色的R分量（红色）。
+获取ColorMetrics颜色的R分量，以浮点数形式返回红色通道值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,7 +191,7 @@ ArkTS-Sta: getRedValue(): double
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的R分量（红色），值是大于等于0的浮点数。 |
+| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的R分量（红色）。<br>取值范围：<br>对于SDR颜色，取值范围为[0.0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
 
 ### getGreenValue
 
@@ -199,7 +199,7 @@ ArkTS-Dyn: getGreenValue(): number
 
 ArkTS-Sta: getGreenValue(): double
 
-获取ColorMetrics颜色的G分量（绿色）。
+获取ColorMetrics颜色的G分量，以浮点数形式返回绿色通道值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,7 +215,7 @@ ArkTS-Sta: getGreenValue(): double
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的G分量（绿色），值是大于等于0的浮点数。 |
+| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的G分量（绿色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0.0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。|
 
 ### getBlueValue
 
@@ -223,7 +223,7 @@ ArkTS-Dyn: getBlueValue(): number
 
 ArkTS-Sta: getBlueValue(): double
 
-获取ColorMetrics颜色的B分量（蓝色）。
+获取ColorMetrics颜色的B分量，以浮点数形式返回蓝色通道值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,4 +239,4 @@ ArkTS-Sta: getBlueValue(): double
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的B分量（蓝色），值是大于等于0的浮点数。 |
+| ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的B分量（蓝色）。<br>取值范围：<br>对于SDR颜色，取值范围是[0.0, 1.0]。<br>对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |

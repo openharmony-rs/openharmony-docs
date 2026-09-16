@@ -47,13 +47,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let bundleName: string = 'ohos.samples.etsclock';
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
-    hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
-  }).catch((error: Error) => {
-    let err = error as BusinessError;
-    hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
-  })
-} catch (error: BusinessError) {
-  let err = error as BusinessError;
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+      hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
+    }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
+    })
+} catch (err) {
+  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```

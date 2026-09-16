@@ -1182,7 +1182,7 @@ Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md
 
 设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
 
-更多Font Feature能力介绍可参考https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop和https://sparanoid.com/lab/opentype-features/。
+更多Font Feature能力介绍可参考[font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType Features](https://sparanoid.com/lab/opentype-features/)。
 
 >  **说明：**
 >
@@ -3325,7 +3325,7 @@ struct TextInputExample {
             console.info('selection change: ', selectionStart, selectionEnd);
             this.lastCaretPosition = selectionStart;
             this.lastCaretPositionEnd = selectionEnd;
-          })// 从API version 10开始支持
+          }) // 从API version 10开始支持
       }
     }
     .width('100%')
@@ -3358,7 +3358,7 @@ struct TextInputExample {
         })
           .margin(10)
           .fontSize(16)
-          .style(TextInputStyle.Inline)// Inline模式
+          .style(TextInputStyle.Inline) // Inline模式
           .wordBreak(WordBreak.NORMAL) // 非Inline模式该属性无效
 
         Text('TextInput为inline模式，英文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xCCCCCC)
@@ -3532,7 +3532,7 @@ struct TextInputExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextInput({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
+      TextInput({ controller: this.controller, text: this.inputValue }) // 绑定自定义键盘
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
         .border({ width: 1 })
@@ -3924,7 +3924,7 @@ struct TextInputExample {
           .onEditChange((status: boolean) => {
             this.editStatus = status;
           })
-          .defaultFocus(true)// 设置TextInput默认获焦
+          .defaultFocus(true) // 设置TextInput默认获焦
           .enableKeyboardOnFocus(false)
           .selectAll(false)
 
@@ -4080,7 +4080,7 @@ struct TextInputExample {
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
           text: '通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。'
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
       // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
