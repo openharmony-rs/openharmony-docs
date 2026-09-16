@@ -59,12 +59,12 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
 本文档提供接口示例代码，如需要了解工程项目创建方式，可参考[工程创建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-project)。
 1. 引入[dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md)模块。
 
-    <!-- @[dlp_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
-    import { identifySensitiveContent } from '@kit.DataProtectionKit';
     ```
+    
 
 2. 打开加密文件，系统会自动安装应用的DLP沙箱分身应用。以下代码应在应用页Ability中使用。  
 
@@ -74,10 +74,10 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     
     ``` TypeScript
     openDlpFile(dlpUri: string, fileName: string, fd: number) {
-      let want:Want = {
+      let want: Want = {
         'action': 'ohos.want.action.viewData',
         'uri': dlpUri,
-        'parameters' : {
+        'parameters': {
           'fileName': {
             'name': fileName
           },
@@ -87,9 +87,9 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
           }
         }
       }
-    
+
       let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
-    
+
       try {
         console.info('openDLPFile:' + JSON.stringify(want));
         console.info('openDLPFile: delegator:' + JSON.stringify(context));
@@ -103,14 +103,14 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
         return;
       }
     }
-    
+
     prepareForOpenDlpFile() {
       let file = this.openFile(this.uri);
       if (!file) {
         return;
       }
       this.openDlpFile(this.uri, this.fileName, file.fd);
-        
+
     }
     ```
 
