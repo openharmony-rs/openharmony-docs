@@ -67242,5 +67242,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-depth-components-sys.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_2D.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"depth_component_2d",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_3D.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"depth_component_3d",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_Depth.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"depth_component_depth",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_NDC.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"depth_component_ndc",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_Crop.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"depth_component_crop",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
