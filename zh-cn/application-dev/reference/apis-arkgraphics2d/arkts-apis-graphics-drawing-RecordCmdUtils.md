@@ -43,8 +43,8 @@ ArkTS-Sta: beginRecording(width: int, height: int): Canvas \| undefined
 
 | 参数名 | 类型   | 必填 | 说明                                                           |
 | ------ | ------ | ---- | -------------------------------------------------------------- |
-| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。 |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的高度。单位为物理像素px，取值范围为大于0的整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta:录制画布的高度。单位为物理像素px，取值范围为大于0的整数。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的宽度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta: 录制画布的宽度。单位为物理像素px，取值范围为大于0的整数。 |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkTS-Dyn: 录制画布的高度。单位为物理像素px，取值范围为int范围内的正整数。输入浮点数，按照向下取整处理。<br>ArkTS-Sta:录制画布的高度。单位为物理像素px，取值范围为大于0的整数。 |
 
 **返回值：**
 
