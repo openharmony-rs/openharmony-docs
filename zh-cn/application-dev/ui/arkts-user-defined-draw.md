@@ -102,6 +102,9 @@
    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x4A, 0x4F));
    OH_Drawing_CanvasAttachPen(canvas, pen);
    OH_Drawing_CanvasDrawPath(canvas, path);
+   // 释放资源。
+   OH_Drawing_PenDestroy(pen);
+   OH_Drawing_PathDestroy(path);
    ```
 
 ### 多层级绘制示例
@@ -116,7 +119,7 @@
 
 2. 创建自定义绘制组件封装对象。
 
-   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) --> 
+   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
@@ -137,7 +140,7 @@
        {
            // 注册自定义事件监听器。
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 声明自定义事件并转递自身作为自定义数据。
+           // 声明自定义事件并传递自身作为自定义数据。
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -266,7 +269,7 @@
 
 3. 使用自定义绘制组件和自定义容器创建示例界面。
 
-    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) --> 
+    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->  
     
     ``` C++
     #include <arkui/native_node_napi.h>
@@ -411,7 +414,7 @@
 
 2. 创建消息蒙层组件封装对象。
 
-   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) --> 
+   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
@@ -444,7 +447,7 @@
        {
            // 注册自定义事件监听器
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 声明自定义事件并转递自身作为自定义数据
+           // 声明自定义事件并传递自身作为自定义数据
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -637,42 +640,73 @@
        // 绘制消息文本
        void DrawMessageText(OH_Drawing_Canvas* canvas, float x, float y, float maxWidth)
        {
+           // 局部资源对象离开作用域时，析构函数会自动释放已经成功创建的资源
+           struct DrawingTextResources {
+               OH_Drawing_FontCollection* fontCollection = nullptr;
+               OH_Drawing_TypographyStyle* typographyStyle = nullptr;
+               OH_Drawing_TypographyCreate* typographyHandler = nullptr;
+               OH_Drawing_TextStyle* textStyle = nullptr;
+               OH_Drawing_Brush* textBrush = nullptr;
+               OH_Drawing_Typography* typography = nullptr;
+   
+               ~DrawingTextResources()
+               {
+                   OH_Drawing_DestroyTypography(typography);
+                   OH_Drawing_DestroyTextStyle(textStyle);
+                   OH_Drawing_BrushDestroy(textBrush);
+                   OH_Drawing_DestroyTypographyHandler(typographyHandler);
+                   OH_Drawing_DestroyTypographyStyle(typographyStyle);
+                   OH_Drawing_DestroyFontCollection(fontCollection);
+               }
+           } resources;
+   
            // 创建字体集合
-           auto* fontCollection = OH_Drawing_CreateFontCollection();
+           resources.fontCollection = OH_Drawing_CreateFontCollection();
+           if (resources.fontCollection == nullptr) {
+               return;
+           }
    
            // 创建排版样式
-           auto* typographyStyle = OH_Drawing_CreateTypographyStyle();
-           OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT);
+           resources.typographyStyle = OH_Drawing_CreateTypographyStyle();
+           if (resources.typographyStyle == nullptr) {
+               return;
+           }
+           OH_Drawing_SetTypographyTextAlign(resources.typographyStyle, TEXT_ALIGN_LEFT);
    
            // 创建排版处理器
-           auto* typographyHandler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+           resources.typographyHandler =
+               OH_Drawing_CreateTypographyHandler(resources.typographyStyle, resources.fontCollection);
+           if (resources.typographyHandler == nullptr) {
+               return;
+           }
    
            // 创建文本样式
-           auto* textStyle = OH_Drawing_CreateTextStyle();
-           OH_Drawing_SetTextStyleColor(textStyle, 0xFF000000); // 纯黑
-           OH_Drawing_SetTextStyleFontSize(textStyle, messageTextFontSize);
-           OH_Drawing_SetTextStyleFontWeight(textStyle, FONT_WEIGHT_400);
-           auto textBrush = OH_Drawing_BrushCreate();
-           OH_Drawing_BrushSetColor(textBrush, 0xFF000000);
-           OH_Drawing_SetTextStyleForegroundBrush(textStyle, textBrush);
+           resources.textStyle = OH_Drawing_CreateTextStyle();
+           if (resources.textStyle == nullptr) {
+               return;
+           }
+           OH_Drawing_SetTextStyleColor(resources.textStyle, 0xFF000000); // 纯黑
+           OH_Drawing_SetTextStyleFontSize(resources.textStyle, messageTextFontSize);
+           OH_Drawing_SetTextStyleFontWeight(resources.textStyle, FONT_WEIGHT_400);
+           resources.textBrush = OH_Drawing_BrushCreate();
+           if (resources.textBrush == nullptr) {
+               return;
+           }
+           OH_Drawing_BrushSetColor(resources.textBrush, 0xFF000000);
+           OH_Drawing_SetTextStyleForegroundBrush(resources.textStyle, resources.textBrush);
    
            // 添加文本
-           OH_Drawing_TypographyHandlerPushTextStyle(typographyHandler, textStyle);
-           OH_Drawing_TypographyHandlerAddText(typographyHandler, message_.c_str());
-           OH_Drawing_TypographyHandlerPopTextStyle(typographyHandler);
+           OH_Drawing_TypographyHandlerPushTextStyle(resources.typographyHandler, resources.textStyle);
+           OH_Drawing_TypographyHandlerAddText(resources.typographyHandler, message_.c_str());
+           OH_Drawing_TypographyHandlerPopTextStyle(resources.typographyHandler);
    
            // 创建排版对象并绘制
-           auto* typography = OH_Drawing_CreateTypography(typographyHandler);
-           OH_Drawing_TypographyLayout(typography, maxWidth);
-           OH_Drawing_TypographyPaint(typography, canvas, x, y);
-   
-           // 释放资源
-           OH_Drawing_DestroyTextStyle(textStyle);
-           OH_Drawing_DestroyTypography(typography);
-           OH_Drawing_DestroyTypographyHandler(typographyHandler);
-           OH_Drawing_DestroyTypographyStyle(typographyStyle);
-           OH_Drawing_DestroyFontCollection(fontCollection);
-           OH_Drawing_BrushDestroy(textBrush);
+           resources.typography = OH_Drawing_CreateTypography(resources.typographyHandler);
+           if (resources.typography == nullptr) {
+               return;
+           }
+           OH_Drawing_TypographyLayout(resources.typography, maxWidth);
+           OH_Drawing_TypographyPaint(resources.typography, canvas, x, y);
        }
    
        std::string message_ = "这是一条消息提示";

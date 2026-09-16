@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
 对于以XML作为载体传递的数据，实际使用中需要对相关的元素进行解析，一般包括[解析XML标签和标签值](#解析xml标签和标签值)、[解析XML属性和属性值](#解析xml属性和属性值)、[解析XML事件类型和元素信息](#解析xml事件类型和元素信息)三类操作。如在Web服务中，XML是SOAP（Simple Object Access Protocol）协议的基础，SOAP消息通常以XML格式封装，包含请求和响应参数，通过解析这些XML消息，Web服务可以处理来自客户端的请求并生成相应的响应。
@@ -224,7 +224,7 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
    2 2 // 2：<title>对应事件类型START_TAG值为2  2：深度为2
    4 2 // 4：Play对应事件类型TEXT值为4  2：深度为2
    3 2 // 3：</title>对应事件类型END_TAG值为3  2：深度为2
-   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note对应>）
+   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note>对应）
    1 0 // 1：对应事件类型END_DOCUMENT值为1  0：深度为0
    ```
 

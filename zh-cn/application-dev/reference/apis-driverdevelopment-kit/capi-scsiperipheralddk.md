@@ -16,5 +16,5 @@ SCSI Peripheral DDK是为开发者提供专门用于开发SCSI设备驱动程序
 
 | 名称 | 描述 |
 | -- | -- |
-| [scsi_peripheral_api.h](capi-scsi-peripheral-api-h.md) | 声明用于主机侧访问SCSI设备的SCSI Peripheral DDK接口。 |
+| [scsi_peripheral_api.h](capi-scsi-peripheral-api-h.md) | 声明用于主机侧访问SCSI设备的SCSI Peripheral DDK接口。该模块基于SCSI协议标准，通过DDK驱动服务提供SCSI设备访问能力。 |
 | [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md) | 提供在SCSI Peripheral DDK（驱动开发工具包）API中使用的枚举变量、结构体和宏。 |

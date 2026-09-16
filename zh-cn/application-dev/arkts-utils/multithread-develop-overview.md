@@ -4,9 +4,9 @@
 <!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-在ArkTS应用开发中，不同业务场景需要不同的并发能力和任务类型。
+在ArkTS应用开发中，不同业务场景需要使用不同的并发能力和任务类型。
 
 常见的业务场景分为三种并发任务：
 

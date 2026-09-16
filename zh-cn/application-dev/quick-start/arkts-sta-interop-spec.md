@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 背景
 
@@ -207,6 +207,10 @@ let module = ESValue.load('dynHar/src/main/ets/pages/dynModule2'); // 使用ESVa
 
 - 实现应提供对应的`.d.ts`文件级别类型信息，详见[ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](./arkts-sta-declgen-spec.md)。
 
+> **说明：**
+>
+> 当ArkTS-Sta侧导入ArkTS-Dyn中使用`let`关键字定义的变量时，ArkTS-Sta侧仅支持读取该变量的值，无法对其进行修改。
+
 ## 类型系统映射规范
 
 ### 基本类型
@@ -260,6 +264,10 @@ ArkTS-Dyn映射到ArkTS-Sta时分为两层语义：
 | undefined | undefined |
 | enum string | enum string |
 | enum int | enum int |
+
+> **说明：**
+>
+> 当ArkTS-Dyn侧向ArkTS-Sta侧传递数值时，若该数值超出ArkTS-Dyn中`Number`的安全整数范围（即[-2<sup>53</sup>+1, 2<sup>53</sup>-1]），由于ArkTS-Dyn侧`Number`类型本身的精度限制，会导致进入ArkTS-Sta侧时出现精度损失或数值错误。
 
 ### 工具类型
 
@@ -521,6 +529,10 @@ ArkTS-Sta类/对象暴露到ArkTS-Dyn分为两种：
 | 接口字段 | 接口字段 | 
 | 接口方法 | 接口方法 | 
 
+> **说明：**
+>
+> ArkTS-Sta侧定义类时，不应声明名为`name`和`length`的静态属性。由于ArkTS-Dyn侧的类底层已内置对应的静态属性，ArkTS-Sta类中若定义同名的静态属性，在ArkTS-Dyn侧访问该类时会因属性冲突而产生运行崩溃。
+
 **ArkTS-Dyn接口和类在ArkTS-Sta上下文中的映射**
 
 | ArkTS-Dyn类/接口 | ArkTS-Sta类/接口 | 
@@ -697,7 +709,7 @@ ArkTS-Sta映射到ArkTS-Dyn上下文以及ArkTS-Dyn映射到ArkTS-Sta上下文�
 > **说明：**
 > 
 > - 此处重载分析的对象包含普通函数、构造函数、静态方法以及实例方法。
-> - ArkTS-Sta重载映射到ArkTS-Dyn上下文时，对于入参为`null`或`undefined`，会优先匹配入参为object类型的方法，此时建议使用`undefined`进行传参（`null`无法正确赋值）或尽可能避免使用`null`和`undefined`进行传参。
+> - ArkTS-Sta重载映射到ArkTS-Dyn上下文时，对于入参为`undefined`的类型，会匹配入参为object类型的方法。
 > - 使用ArkTS-Sta的类型重载方法映射到ArkTS-Dyn上下文时相较于无重载场景存在参数匹配分发的**额外耗时开销**，建议开发者在非必要场景可以采取无重载策略。
 
 **ArkTS-Dyn重载映射到ArkTS-Sta上下文**
@@ -960,7 +972,7 @@ worker2.join().Await();
 > **说明：**
 >
 > - ArkTS-Sta的`BigInt`或`long`类型值经类型映射进入ArkTS-Dyn上下文后，若其数值超出ArkTS-Dyn中`Number`的安全整数范围（即[-2<sup>53</sup>+1, 2<sup>53</sup>-1]），使用ArkTS-Dyn内置`JSON.stringify`序列化时该值将转换为字符串形式输出，以保证数值精度不被丢失。
-> - ArkTS-Sta的`char`类型值经类型映射进入ArkTS-Dyn上下文后，若该字符为Unicode控制字符（U+0000至U+001F），使用ArkTS-Dyn内置`JSON.stringify`序列化时将按JSON规范对其添加`\`进行转义处理，序列化结果为对应的转义编码形式（如`\\u0000`）。
+> - ArkTS-Sta的`char`类型值经类型映射进入ArkTS-Dyn上下文后，其序列化结果与`string`类型值的序列化结果一致。若该字符为Unicode控制字符（U+0000至U+001F），使用ArkTS-Dyn内置`JSON.stringify`序列化时将按JSON规范对其添加`\`进行转义处理，序列化结果为对应的转义编码形式（如`\\u0000`）。此外，对于控制字符中的`\u0008`、`\u0009`、`\u000A`、`\u000C`、`\u000D`这些拥有单字母简写的字符，会优先输出其对应的短转义字符：`\\b`、`\\t`、`\\n`、`\\f`、`\\r`。
 > - ArkTS-Dyn上下文中若需获取ArkTS-Sta对象的JSON字符串，也可通过STValue显式调用ArkTS-Sta侧的`JSON.stringify`方法，具体方式参见[如何通过STValue调用ArkTS-Sta内的JSON.stringify()方法](./arkts-sta-interop-interface.md#常见问题)。
 
 示例：在ArkTS-Dyn上下文直接序列化ArkTS-Sta对象。
@@ -969,19 +981,22 @@ worker2.join().Await();
 // ArkTS-Sta
 export let staCla: StaClass = new StaClass();
 export class StaClass {
-    public big: BigInt = 12345678901234567890n; // 超出序列化范围的bigint类型会转换成字符串类型 
+    public big: BigInt = 12345678901234567890n; // 超出序列化范围的bigint类型会转换成字符串类型
     public safe: BigInt = 1234567890n;
-    public value: char = c'\u0000';  // Unicode控制字符会添加'\'进行转义，序列化结果为"\\u0000"
+    public value1: char = c'\u0000';  // Unicode控制字符会添加'\'进行转义，序列化结果为"\\u0000"
+    public value2: char = c'\u0008'; // 序列化结果为"\\b"
     public small: int = 42;
     public name: string = "hello";
+    public space: char = c'\t'; // 序列化结果为"\\t"
 }
 
 // ArkTS-Dyn
 import { staCla } from "./static"; // 导入ArkTS-Sta对象
 
-function test(): void {
+export function test(): void {
     let json = JSON.stringify(staCla);
-    console.info(json); // {"big":"12345678901234567890","safe":1234567890,"value":"\\u0000","small":42,"name":"hello"}
+    console.info(json); // {"big":"12345678901234567890","safe":1234567890,"value1":"\u0000","value2":"\b","small":42,"name":"hello","space":"\t"}
+    console.info(`${json == '{"big":"12345678901234567890","safe":1234567890,"value1":"\\u0000","value2":"\\b","small":42,"name":"hello","space":"\\t"}'}`); // true
 }
 ```
 
@@ -1156,6 +1171,67 @@ async function modifyAll(): Promise<void> {
     taskpool.execute(safeModifyInDyn); // 在动态子线程修改静态对象
     safeModifyInStaEAWorker(); // 在静态子线程修改静态对象
 }
+```
+
+### 非线程安全容器的并发访问
+
+ArkTS-Sta标准库中的容器类并非是线程安全的，在多线程环境下，多个Worker线程可能通过共享引用同时访问同一个容器对象，导致数据竞争甚至运行时崩溃。本小节描述哪些容器存在此问题，以及开发者应如何正确处理。
+
+**非线程安全容器**
+
+以下ArkTS-Sta标准库容器在并发访问时存在数据竞争风险：
+
+| 容器类型 | 风险原因 |
+|---------|---------|
+| `std.core.Array` | 扩容时内部缓冲区被替换，并发读写可能导致悬空指针访问（SIGSEGV）或数据损坏。 |
+| `std.core.Map` | 扩容和清空时内部存储结构被替换，并发读写可能导致悬空指针或数据损坏。 |
+| `std.core.Set` | 扩容和清空时内部存储结构被替换，并发读写可能导致悬空指针或数据损坏。 |
+
+> **说明：**
+>
+> 上述容器在并发场景下的典型风险表现为：当线程A正在读取容器内部缓冲区时，线程B触发了扩容操作替换了内部缓冲区，线程A继续通过旧缓冲区指针进行读写，导致访问已释放内存（SIGSEGV）或写入错误位置（数据损坏）。
+
+**Interop场景下的并发访问风险**
+
+| 场景 | 是否需要加锁 | 说明 |
+|------|-------------|------|
+| ArkTS-Dyn跨上下文使用ArkTS-Sta对象 | **需要** | 多个Dyn Worker通过共享引用访问同一Sta对象，Sta对象在共享堆上，Worker间对象通过引用共享。 |
+| ArkTS-Sta跨上下文使用ArkTS-Dyn对象 | **不需要** | Dyn对象在各自隔离的JS引擎中，Worker间对象通过拷贝传递，不存在共享引用。 |
+
+**开发者加锁指南**
+
+对于非线程安全容器，开发者应在多线程访问时确保外部同步。推荐做法如下：
+
+1. **使用`AsyncLock`进行外部同步**：在跨上下文场景中，按照[跨上下文共享修改](#跨上下文共享修改)章节的指导，在持有共享资源的一侧编写加锁逻辑，另一侧通过跨上下文函数调用来间接触发。
+2. **避免在临界区内进行跨上下文调用**：锁内的临界区代码应保持轻量，严禁在临界区内反向同步等待另一侧的信号，以防触发跨运行时死锁。
+
+示例：在ArkTS-Dyn侧通过TaskPool多线程安全访问ArkTS-Sta的`Array`。
+
+```ts
+// ArkTS-Sta
+const staLock = AsyncLock.request('sta_array_lock');
+export let sharedArray: Array<number> = [1, 2, 3, 4, 5];
+
+export async function safeSplice(start: int, deleteCount?: int, ...items: number[]): Promise<Array<number>> {
+    return await staLock.lockAsync(() => {
+        if (deleteCount !== undefined) {
+            return sharedArray.splice(start, deleteCount, ...items);
+        }
+        return sharedArray.splice(start);
+    });
+}
+
+// ArkTS-Dyn
+import { safeSplice } from "./static";
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+async function workerTask(): Promise<void> {
+    await safeSplice(1, 1, 10);
+}
+
+taskpool.execute(workerTask);
+taskpool.execute(workerTask);
 ```
 
 ## 附录 

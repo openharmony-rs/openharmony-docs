@@ -5,7 +5,7 @@
 <!--Owner: @fanglou-->
 <!--Designer: @fanglou-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本教程将指导开发者了解静态ArkTS的核心功能、语法和最佳实践，助力开发者使用ArkTS高效构建高性能的移动应用。
 

@@ -39,6 +39,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [IMAGE_DYNAMIC_RANGE](#image_dynamic_range) | IMAGE_DYNAMIC_RANGE | 解码指定期望动态范围。 |
+| <!--DelRow--> [OH_ImageSource_SVGResourceLimitLevel](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | SVG资源限制级别的枚举。级别越高，解析和渲染SVG图片时允许使用的资源越少。无论指定哪个级别，系统资源限制都会生效。 |
 | [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) | IMAGE_ALLOCATOR_TYPE | 用于分配PixelMap内存的分配器类型。 |
 | [Image_CropAndScaleStrategy](#image_cropandscalestrategy) | Image_CropAndScaleStrategy | 在同时指定desiredSize和desiredRegion时执行裁剪和缩放的策略。 |
 
@@ -77,8 +78,10 @@
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | 通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | 由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的生命周期内，数据缓存需要保持可用。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | 通过图像资源文件的RawFileDescriptor创建OH_ImageSourceNative指针。 |
+| <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)](#oh_imagesourcenative_setsvgresourcelimitlevel) | 设置图像源的SVG资源限制级别。此函数仅对SVG格式图片生效。必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，设置的资源限制会在DOM解析和渲染阶段生效。 |
+| <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)](#oh_imagesourcenative_getsvgresourcelimitlevel) | 获取图像源的SVG资源限制级别。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | 通过图片解码参数创建OH_PixelmapNative指针。 |
-| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | 根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。 |
+| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | 根据解码参数创建PixelMap，通过allocator指定内存类型。传入IMAGE_ALLOCATOR_TYPE_AUTO时，由系统自动选择共享内存或DMA内存；需要指定内存类型时，传入IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。在处理此接口返回的PixelMap时，应考虑步幅（stride）的影响。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)](#oh_imagesourcenative_createpixelmaplist) | 通过图片解码参数创建OH_PixelmapNative数组。<br> 注意，此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options, OH_PictureNative **picture)](#oh_imagesourcenative_createpicture) | 通过图片解码创建OH_PictureNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | 通过指定序号的图片解码创建OH_PictureNative指针。 |
@@ -140,6 +143,29 @@ enum IMAGE_DYNAMIC_RANGE
 | IMAGE_DYNAMIC_RANGE_SDR = 1 | 标准动态范围。 |
 | IMAGE_DYNAMIC_RANGE_HDR = 2 | 高动态范围。 |
 
+<!--Del-->
+### OH_ImageSource_SVGResourceLimitLevel
+
+```c
+enum OH_ImageSource_SVGResourceLimitLevel
+```
+
+**描述**
+
+SVG资源限制级别的枚举。级别越高，解析和渲染SVG图片时允许使用的资源越少。无论指定哪个级别，系统资源限制都会生效。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | 使用默认的SVG资源限制。该级别不会禁用SVG资源保护。 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | 使用低级别限制，允许更多SVG资源预算用于复杂的SVG图片。 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | 使用中级别限制，允许适中的SVG资源预算，在SVG图片兼容性和资源消耗之间取得平衡，适用于大多数SVG图片。 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | 使用高级别限制，允许较少的SVG资源预算，适用于简单的SVG图片，例如图标和基础UI资源。 |
+
+<!--DelEnd-->
 ### IMAGE_ALLOCATOR_TYPE
 
 ```c
@@ -166,7 +192,7 @@ enum Image_CropAndScaleStrategy
 
 **描述**
 
-在同时指定desiredSize和desiredRegion时执行裁剪和缩放的策略。<br> 如果在配置解码选项[OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md)时，未填入参数Image_CropAndScaleStrategy，并且同时设置了desiredRegion和desiredSize，由于系统对于不同图片格式采用的解码算法不同，最终解码效果将略有差异。<br> 例如原始图片大小200x200，传入desiredSize:{width: 150, height: 150}，desiredRegion:{x: 0, y: 0, width: 100, height: 100}，即预期解码原图左上角1/4区域，最终将pixelMap大小缩放至150x150返回。<br> 对于jpeg、webp图片（部分dng图片解码时会优先解码图片中的jpeg预览图，在此场景下也会被视为jpeg图片格式）会先进行下采样，例如按照7/8下采样，再基于175x175的图片大小进行区域裁剪，因此最终的区域内容稍大于原图的左上角1/4区域。<br> 对于svg图片，由于是矢量图，可以任意缩放不损失清晰度，在解码时会根据desiredSize与原图Size的比例选择缩放比例，在基于缩放后的图片大小进行区域裁剪，因此最终返回的解码区域会有所差异。<br> 针对该场景，建议在解码选项同时设置了desiredRegion与desiredSize时，参数Image_CropAndScaleStrategy应传入CROP_FIRST参数保证效果一致。
+在同时指定desiredSize和desiredRegion时执行裁剪和缩放的策略。<br> 如果在配置解码选项[OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md)时，未填入参数Image_CropAndScaleStrategy，并且同时设置了desiredRegion和desiredSize，由于系统对于不同图片格式采用的解码算法不同，最终解码效果将略有差异。<br> 例如原始图片大小200x200，传入desiredSize:{width: 150, height: 150}，desiredRegion:{x: 0, y: 0, width: 100, height: 100}，即预期解码原图左上角1/4区域，最终将pixelMap大小缩放至150x150返回。<br> 对于jpeg、webp图片（部分dng图片解码时会优先解码图片中的jpeg预览图，在此场景下也会被视为jpeg图片格式）会先进行下采样，例如按照7/8下采样，再基于175x175的图片大小进行区域裁剪，因此最终的区域内容稍大于原图的左上角1/4区域。<br> 对于svg图片，由于是矢量图，可以任意缩放不损失清晰度，在解码时会根据desiredSize与原图Size的比例选择缩放比例，再基于缩放后的图片大小进行区域裁剪，因此最终返回的解码区域会有所差异。<br> 针对该场景，建议在解码选项同时设置了desiredRegion与desiredSize时，参数Image_CropAndScaleStrategy应传入CROP_FIRST参数保证效果一致。
 
 **起始版本：** 18
 
@@ -990,6 +1016,62 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFil
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_BAD_PARAMETER：参数错误。 |
 
+<!--Del-->
+### OH_ImageSourceNative_SetSvgResourceLimitLevel()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)
+```
+
+**描述**
+
+设置图像源的SVG资源限制级别。此函数仅对SVG格式图片生效。必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，设置的资源限制会在DOM解析和渲染阶段生效。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) level | SVG资源限制级别。详见OH_ImageSource_SVGResourceLimitLevel。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION：非系统应用调用此系统接口。<br>IMAGE_SOURCE_INVALID_PARAMETER：source为空指针。 |
+
+### OH_ImageSourceNative_GetSvgResourceLimitLevel()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)
+```
+
+**描述**
+
+获取图像源的SVG资源限制级别。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) *level | 用于接收SVG资源限制级别的指针。详见OH_ImageSource_SVGResourceLimitLevel。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION：非系统应用调用此系统接口。<br>IMAGE_SOURCE_INVALID_PARAMETER：source或level为空指针。 |
+
+<!--DelEnd-->
 ### OH_ImageSourceNative_CreatePixelmap()
 
 ```c
@@ -999,6 +1081,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 **描述**
 
 通过图片解码参数创建OH_PixelmapNative指针。
+
+系统自动选择共享内存或DMA内存。从API version 15开始，需要指定内存类型时，应调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。相关说明请参见[系统默认的内存分配方式](../../media/image/image-allocator-type-c.md#系统默认的内存分配方式)。
 
 使用场景：适用于将JPEG、PNG、WebP、GIF单帧等编码图片解码为可读取、处理或再编码的PixelMap。解码前可通过OH_DecodingOptions设置帧序号、目标像素格式、目标尺寸、裁剪区域、期望动态范围等参数。
 
@@ -1031,11 +1115,11 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 **描述**
 
-根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。
+根据解码参数创建PixelMap，通过allocator指定内存类型。传入IMAGE_ALLOCATOR_TYPE_AUTO时，由系统自动选择共享内存或DMA内存；需要指定内存类型时，传入IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。在处理此接口返回的PixelMap时，应考虑步幅（stride）的影响。
 
 使用场景：适用于调用方需要明确指定PixelMap内存类型的场景。例如，后续图像处理链路要求DMA内存时，可指定IMAGE_ALLOCATOR_TYPE_DMA。
 
-使用约束：source、options和pixelmap均不能为空指针。allocator需为[IMAGE_ALLOCATOR_TYPE](#image_allocator_type)中定义的有效枚举值。指定的内存类型可能受图片类型、图片大小、系统版本和设备能力限制，接口可能返回IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE。
+使用约束：source、options和pixelmap均不能为空指针。allocator需为[IMAGE_ALLOCATOR_TYPE](#image_allocator_type)中定义的有效枚举值。指定的内存类型可能受图片类型、图片大小、系统版本和设备能力限制，接口可能返回IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE。当调用方进程启用沙箱隔离，且指定IMAGE_ALLOCATOR_TYPE_DMA或由IMAGE_ALLOCATOR_TYPE_AUTO选择DMA内存时，需为该沙箱进程配置访问DMA内存相关资源的SELinux权限；否则可能因SELinux策略拦截导致接口调用阻塞或失败。
 
 资源管理：成功创建的PixelMap需要调用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。读取或写入像素数据时，不能假设每行字节数等于宽度乘以每像素字节数，应通过[OH_PixelmapImageInfo_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride)获取行跨距。
 
@@ -1048,7 +1132,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 解码参数。 |
-| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | 指示返回的PixelMap将使用哪种内存类型。 |
+| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | PixelMap的内存类型。传入IMAGE_ALLOCATOR_TYPE_AUTO时由系统自动选择共享内存或DMA内存；需要指定内存类型时，传入IMAGE_ALLOCATOR_TYPE_DMA或IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 指向c++本地层创建的OH_PixelmapNative对象的指针。 |
 
 **返回：**
@@ -1397,7 +1481,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyString(OH_ImageSourceNative
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| char *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 字符串长度。 |
 
 **返回：**
@@ -1435,7 +1519,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyIntArray(OH_ImageSourceNati
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| int32_t *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 字符串长度。 |
 
 **返回：**
@@ -1473,7 +1557,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDoubleArray(OH_ImageSourceN
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| double *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 数组长度。 |
 
 **返回：**
@@ -1511,7 +1595,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyBlob(OH_ImageSourceNative *
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被查询属性的ImageSource。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 被查询的属性。 |
-| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存应用程序并释放。 |
+| void *value | 被查询属性的查询结果。输出参数。调用者需要管理内存并释放。 |
 | size_t size | 数组长度。 |
 
 **返回：**
@@ -2238,5 +2322,4 @@ Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawDat
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_SOURCE_INVALID_PARAMETER：rawData对象无效。 |
-
 

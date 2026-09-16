@@ -5,7 +5,7 @@
 <!--Owner: @fanglou-->
 <!--Designer: @fanglou-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 随着ArkTS语言的使用与开发，对于语言可靠性和性能诉求逐步提高。与此同时，原有ArkTS并发模型存在以下痛点：
 

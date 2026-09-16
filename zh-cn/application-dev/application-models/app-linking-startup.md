@@ -156,7 +156,7 @@ export default class AppLinkEntryAbility extends UIAbility {
       let action = urlObject.params.get('action');
       // 例如，当action为showall时，展示所有的节目。
       if (action === 'showall') {
-        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'AppLinkEntryAbility onCreate');
+        // ...
       }
     }
   }
@@ -214,7 +214,7 @@ struct Index {
 ```
 
 
-在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应的App Linking配置正确。
+在拉起方应用中执行上述代码，如果能够成功拉起目标应用，表明目标应用的App Linking配置正确。
 
 ## FAQ
 

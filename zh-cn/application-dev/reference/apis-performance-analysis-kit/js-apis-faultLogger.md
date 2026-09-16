@@ -14,7 +14,7 @@
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口从API version 18开始废弃使用, 该接口不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)订阅APP_CRASH，APP_FREEZE事件。
+> 本模块接口从API version 18开始废弃使用，该接口不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)订阅APP_CRASH，APP_FREEZE事件。
 >
 > 查阅[从Faultlogger接口迁移崩溃事件](../../dfx/hiappevent-watcher-crash-events-arkts.md#从faultlogger接口迁移崩溃事件)，了解使用hiAppEvent订阅APP_CRASH的具体信息。
 >
@@ -73,12 +73,12 @@ query(faultType: FaultType, callback: AsyncCallback&lt;Array&lt;FaultLogInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[faultLogger错误码](errorcode-faultlogger.md)。
+以下错误码的详细介绍参见[Faultlogger 错误码](errorcode-faultlogger.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
+| 801 | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **示例：**
@@ -135,12 +135,12 @@ query(faultType: FaultType) : Promise&lt;Array&lt;FaultLogInfo&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍参见[faultLogger错误码](errorcode-faultlogger.md)。
+以下错误码的详细介绍参见[Faultlogger 错误码](errorcode-faultlogger.md)。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 401 | The parameter check failed, Parameter type error. |
-| 801 | The specified SystemCapability name was not found. |
+| 801 | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
 | 10600001 | The service is not started or is faulty. |
 
 **示例：**

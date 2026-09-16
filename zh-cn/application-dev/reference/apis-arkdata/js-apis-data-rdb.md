@@ -1,4 +1,4 @@
-# @ohos.data.rdb（关系型数据库）
+# @ohos.data.rdb (关系型数据库)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
@@ -570,7 +570,7 @@ predicates.equalTo("NAME", "Lisa")
 
 contains(field: string, value: string): RdbPredicates
 
-配置谓词以匹配数据字段为string且value包含指定值的字段。该方法等同于SQL语句中的"LIKE '%xxx%'"。
+配置谓词以匹配数据字段为string且值包含指定值的字段。该方法等同于SQL语句中的"LIKE '%xxx%'"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -743,7 +743,7 @@ predicates.like("NAME", "%os%")
 
 glob(field: string, value: string): RdbPredicates
 
-配置RdbPredicates匹配数据字段为string且值符合指定通配符模式的字段，其中*匹配任意多个字符，?匹配单个字符。该方法等同于SQL语句中的"GLOB"
+配置RdbPredicates匹配数据字段为string且值符合指定通配符模式的字段，其中*匹配任意多个字符，?匹配单个字符。该方法等同于SQL语句中的"GLOB"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -752,7 +752,7 @@ glob(field: string, value: string): RdbPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节<br>支持通配符，*表示0个、1个或多个数字或字符，?表示1个数字或字符。 |
+| value | string | 是 | 指示要与谓词匹配的值，长度不超过1024字节。<br>支持通配符，*表示0个、1个或多个数字或字符，?表示1个数字或字符。 |
 
 **返回值：**
 
@@ -771,7 +771,7 @@ predicates.glob("NAME", "?h*g")
 
 between(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-将谓词配置为匹配数据字段为ValueType且value在给定范围内的指定字段。该方法等同于SQL语句中的"BETWEEN"。
+将谓词配置为匹配数据字段为ValueType且值在给定范围内的指定字段。该方法等同于SQL语句中的"BETWEEN"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -800,7 +800,7 @@ predicates.between("AGE", 10, 50)
 
 notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 
-配置RdbPredicates以匹配数据字段为ValueType且value超出给定范围的指定字段。该方法等同于SQL语句中的"NOT BETWEEN"。
+配置RdbPredicates以匹配数据字段为ValueType且值超出给定范围的指定字段。该方法等同于SQL语句中的"NOT BETWEEN"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -857,7 +857,7 @@ predicates.greaterThan("AGE", 18)
 
 lessThan(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据字段为valueType且value小于指定值的字段。该方法等同于SQL语句中的"<"。
+配置谓词以匹配数据字段为ValueType且值小于指定值的字段。该方法等同于SQL语句中的"<"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -885,7 +885,7 @@ predicates.lessThan("AGE", 20)
 
 greaterThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据字段为ValueType且value大于或等于指定值的字段。该方法等同于SQL语句中的">="。
+配置谓词以匹配数据字段为ValueType且值大于或等于指定值的字段。该方法等同于SQL语句中的">="。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -913,7 +913,7 @@ predicates.greaterThanOrEqualTo("AGE", 18)
 
 lessThanOrEqualTo(field: string, value: ValueType): RdbPredicates
 
-配置谓词以匹配数据字段为ValueType且value小于或等于指定值的字段。该方法等同于SQL语句中的"<="。
+配置谓词以匹配数据字段为ValueType且值小于或等于指定值的字段。该方法等同于SQL语句中的"<="。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

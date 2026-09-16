@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @xuxinao-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -35,8 +35,9 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | time     | number | 事件触发时间，单位为ms。 |
 | reason  | string | 终止原因，原因范围详见[reason字段说明](#reason字段说明)。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| app_running_unique_id | string | 应用运行时唯一关联的id。<br/>**说明**：从API version 24开始支持该参数。 |
-| bundle_version | string | 应用版本信息。<br/>**说明**：从API version 24开始支持该参数。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
+| bundle_version | string | 应用版本信息。<br>**说明**：从API version 24开始支持该参数。 |
+| last_exit_detail_info | string | 应用退出前的详细信息，详见[last_exit_detail_info字段说明](#last_exit_detail_info字段说明)。<br>**说明**：从API版本26.0.0开始支持该参数。 |
 
 ### reason字段说明
 
@@ -58,9 +59,9 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | IllegalAudioRendererBySuspend | 应用的音频播放未申请合理的后台任务，其退至后台后仍有大量音频播放。       |
 | PowerSaveClean                | 整机切换到省电模式或应急模式。                 |
 | VrsKill                       | 三方应用检测到恶意进程后，调用PC端病毒检测处置服务接口终止进程。                |
-| RssThresholdKiller            | 应用的RSS（Resident Size Set）占用超标。  |
+| RssThresholdKiller            | 应用的RSS（Resident Set Size）占用超标。  |
 | OomKiller                     | 整机低内存，触发内核管控，按一定策略终止应用。                  |
-| CpaKiller                     | DRM（Digital Right Management）业务申请内存但是内存不足时，按一定策略终止进程以回收内存。        |
+| CpaKiller                     | DRM（Digital Rights Management）业务申请内存但是内存不足时，按一定策略终止进程以回收内存。        |
 | KillApplication               | 应用主动退出。                         |
 | OnRemoteDied                  | 远程服务死亡。                          |
 | Restart                       | 应用重启。                           |
@@ -97,3 +98,17 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | DmaKiller                     | 整机低内存，单进程Dma占用达到阈值。                      |
 | ThreadKiller                  | 单进程线程超限。                           |
 | UninstallStorage              | 卸载存储卡。                          |
+
+### last_exit_detail_info字段说明
+
+| 名称 | 类型 | 说明 |
+| -------- | -------- | -------- |
+| exit_msg | string | 应用退出信息。 |
+| kill_reason | string | 应用退出理由。 |
+| pid | string | 应用的进程ID。 |
+| process_name | string | 应用的进程名称。 |
+| process_state | string | 应用的进程状态。 |
+| pss | string | 进程实际使用的物理内存大小，单位KB。 |
+| rss | string | 进程实际占用内存大小，单位为KB。 |
+| timestamp | string | 故障发生时间戳。 |
+| uid | string | 应用的用户ID。 |

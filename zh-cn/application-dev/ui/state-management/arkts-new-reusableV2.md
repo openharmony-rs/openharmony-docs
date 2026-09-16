@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@ReusableV2装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用[\@ReusableV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusablev2.md#reusablev2)装饰[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件，达成组件复用的效果。
 
 在阅读本文前，建议提前阅读：[\@Reusable装饰器：V1组件复用](./arkts-reusable.md)。
 
@@ -922,15 +922,15 @@ struct ReusableV2Component {
   @Require @Param num: number;
 
   aboutToAppear() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToAppear', this.num); // 创建时触发
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToAppear ${this.num}`); // 创建时触发
   }
 
   aboutToRecycle() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToRecycle', this.num); // 回收时触发
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToRecycle ${this.num}`); // 回收时触发
   }
 
   aboutToReuse() {
-    hilog.info(DOMAIN, TAG, 'ReusableV2Component aboutToReuse', this.num); // 复用时触发
+    hilog.info(DOMAIN, TAG, `ReusableV2Component aboutToReuse ${this.num}`); // 复用时触发
   }
 
   build() {
@@ -1088,19 +1088,19 @@ struct ChildComponent {
   @Require @Param data: string;
 
   aboutToAppear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToAppear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToAppear ${this.data}`);
   }
 
   aboutToDisappear(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToDisappear', this.data);
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToDisappear ${this.data}`);
   }
 
   aboutToReuse(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToReuse', this.data); // 复用时触发
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToReuse ${this.data}`); // 复用时触发
   }
 
   aboutToRecycle(): void {
-    hilog.info(DOMAIN, TAG, 'ChildComponent aboutToRecycle', this.data); // 回收时触发
+    hilog.info(DOMAIN, TAG, `ChildComponent aboutToRecycle ${this.data}`); // 回收时触发
   }
 
   build() {

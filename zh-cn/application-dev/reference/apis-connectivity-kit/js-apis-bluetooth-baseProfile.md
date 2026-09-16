@@ -3,11 +3,11 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供不同的蓝牙技术协议的基础公共方法。
+本模块提供不同的蓝牙技术协议的基础公共方法，为[A2DP](../../connectivity/bluetooth/terminology.md#a2dp)、[HFP](../../connectivity/bluetooth/terminology.md#hfp)、[PAN](../../connectivity/bluetooth/terminology.md#pan)等蓝牙[Profile](../../connectivity/bluetooth/terminology.md#profile)提供连接状态查询、连接状态订阅与取消订阅等公共能力，适用于需要在应用中统一管理多种蓝牙Profile连接状态的场景。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@ import { baseProfile } from '@kit.ConnectivityKit';
 ```
 ## BaseProfile
 
-基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](js-apis-bluetooth-a2dp.md#a2dpsourceprofile)、[HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile)等[Profile](../../connectivity/terminology.md#profile)类型都继承于该类。
+基础Profile接口定义，提供订阅和获取连接状态等公共能力。如：[A2dpSourceProfile](js-apis-bluetooth-a2dp.md#a2dpsourceprofile)、[HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile)等Profile类型都继承于该类。
 
 ## ProfileConnectionState
 
@@ -29,6 +29,8 @@ type ProfileConnectionState = constant.ProfileConnectionState
 本端和对端蓝牙设备间的Profile连接状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -40,17 +42,22 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称     | 类型                           | 只读 | 可选 | 说明                            |
 | -------- | ----------------------------- | ---- | ---- | ------------------------------- |
 | deviceId | string                        | 否   | 否   | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。   |
 | state    | [ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate)        | 否   | 否   | Profile连接状态。 |
 | cause<sup>12+</sup>| [DisconnectCause](#disconnectcause12) | 否 | 否 | Profile断开连接的原因。|
+| role| [PanRole](#panrole) | 否 | 是 | 当前对端设备对应的[PAN](../../connectivity/bluetooth/terminology.md#pan)角色。仅PAN Profile连接状态发生变化时返回该字段，非PAN场景下该字段不存在。<br> **起始版本**：26.0.0|
 
 ## DisconnectCause<sup>12+</sup>
 
 枚举，Profile断开连接的原因。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
@@ -61,17 +68,37 @@ type ProfileConnectionState = constant.ProfileConnectionState
 | TOO_MANY_CONNECTED_DEVICES | 4    | 当前连接数量超过上限。|
 | CONNECT_FAIL_INTERNAL      | 5    | 内部错误。|
 
+## PanRole
+
+枚举，PAN的不同角色。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称                 | 值  | 说明     |
+| ------------------ | ---- | ------ |
+| ROLE_PANNAP            | 0    |[NAP](../../connectivity/bluetooth/terminology.md#nap)角色。 |
+| ROLE_PANU      | 1    |[PANU](../../connectivity/bluetooth/terminology.md#panu)角色。 |
+
+
 ## BaseProfile.getConnectedDevices
 
 getConnectedDevices(): Array&lt;string&gt;
 
-获取和本端设备间已连接Profile的对端设备列表。
+获取和本端设备间已连接Profile的对端设备列表。例如，在蓝牙音频播放应用中，可通过该方法获取当前已连接的A2DP音频设备列表以进行设备展示或管理。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**返回值：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
@@ -90,7 +117,7 @@ getConnectedDevices(): Array&lt;string&gt;
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -108,7 +135,7 @@ try {
 
 getConnectionState(deviceId: string): ProfileConnectionState
 
-获取和对端设备间Profile的连接状态。
+获取和对端设备间Profile的连接状态。例如，在蓝牙应用中判断设备是否已连接，以决定是否可以发起数据传输或更新设备连接状态显示。
 
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取Profile连接状态。
 
@@ -116,13 +143,15 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                                              | 说明                    |
 | ------------------------------------------------- | ----------------------- |
@@ -142,7 +171,7 @@ getConnectionState(deviceId: string): ProfileConnectionState
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -160,13 +189,17 @@ try {
 
 on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): void
 
-订阅Profile的连接状态变化事件。使用Callback异步回调。
+订阅Profile的连接状态变化事件。使用Callback异步回调。例如，在蓝牙音频应用中，当耳机连接或断开时实时更新播放界面状态或提示用户。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：
+- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
@@ -180,10 +213,10 @@ on(type: 'connectionStateChange', callback: Callback&lt;StateChangeParam&gt;): v
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：10-24                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -210,12 +243,14 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'connectionStateChange'，表示Profile连接状态变化事件。 |
-| callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[BaseProfile.on('connectionStateChange')](#baseprofileonconnectionstatechange)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。                               |
+| callback | Callback&lt;[StateChangeParam](#statechangeparam)&gt; | 否    | 指定取消订阅的回调函数。<br>若传参，则需与[BaseProfile.on('connectionStateChange')](#baseprofileonconnectionstatechange)中的回调函数一致，此时取消订阅该回调函数；若传入的回调与已订阅的回调不一致，则无法取消对应订阅；若无传参，则取消订阅该type对应的所有回调函数。                               |
 
 **错误码**：
 
@@ -227,7 +262,7 @@ off(type: 'connectionStateChange', callback?: Callback&lt;[StateChangeParam](#st
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 
-**示例：**
+**示例**：
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';

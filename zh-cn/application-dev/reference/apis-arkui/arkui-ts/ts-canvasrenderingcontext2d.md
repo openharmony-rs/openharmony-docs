@@ -19,6 +19,8 @@ CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上�
 > * [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对CanvasRenderingContext2D中的路径生效，无法对[OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 >
 > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降，此时推荐使用[自定义渲染节点 (RenderNode)](../../../ui/arkts-user-defined-arktsNode-renderNode.md)。
+>
+> * 图形变换接口([rotate](#rotate)、[scale](#scale)、[transform](#transform)、[setTransform](#settransform)、[translate](#translate))与[getPixelMap](#getpixelmap)/[getImageData](#getimagedata)/[toDataURL](#todataurl)接口在不同帧执行时，后者创建出来的内容没有图形变换效果。
 
 ## 接口
 
@@ -1383,6 +1385,8 @@ struct FilterDemo {
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 25%; 10%; 10%; 55%-->
@@ -1396,7 +1400,7 @@ struct FilterDemo {
 
   @Entry
   @Component
-  struct letterSpacingDemo {
+  struct LetterSpacingDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
 
@@ -4448,8 +4452,8 @@ on(type: 'onAttach', callback: Callback\<void>): void
 > 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调，表示可以获取到[canvas](#canvas13)。</br>
 > 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经'[onReady](ts-components-canvas-canvas.md#onready)'再进行绘制。</br>
 > 触发'onAttach'回调的一般场景：</br>
-> 1、Canvas组件创建时绑定CanvasRenderingContext2D对象;</br>
-> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。</br>
+> 1. Canvas组件创建时绑定CanvasRenderingContext2D对象；</br>
+> 2. CanvasRenderingContext2D对象新绑定一个Canvas组件时。</br>
   
 
 ### on('onDetach')<sup>13+</sup>
@@ -4483,8 +4487,8 @@ on(type: 'onDetach', callback: Callback\<void>): void
 >
 > 当CanvasRenderingContext2D对象和Canvas组件解除绑定时，会触发'onDetach'回调，表示应停止绘制行为。</br>
 > 触发'onDetach'回调的一般场景：</br>
-> 1、Canvas组件销毁时解除绑定CanvasRenderingContext2D对象;</br>
-> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。</br>
+> 1. Canvas组件销毁时解除绑定CanvasRenderingContext2D对象；</br>
+> 2. CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。</br>
 
 ### off('onAttach')<sup>13+</sup>
 

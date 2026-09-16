@@ -10,13 +10,13 @@
 
 ## 预构建库使用约束
 
-1.确保引入的SO动态库是通过[OpenHarmony NDK 编译工具链](build-with-ndk-overview.md)编译生成，如何通过[OpenHarmony NDK 编译工具链](build-with-ndk-overview.md)编译预构建库，请参考[CMake构建三方库适配流程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/toolchain-cmake-build-project#cmake构建三方库适配流程)。
+1. 确保引入的SO动态库是通过[OpenHarmony NDK 编译工具链](build-with-ndk-overview.md)编译生成，如何通过[OpenHarmony NDK 编译工具链](build-with-ndk-overview.md)编译预构建库，请参考[CMake构建三方库适配流程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/toolchain-cmake-build-project#cmake构建三方库适配流程)。
 
-2.确保引入的SO动态库的依赖库也导入到工程中且通过[OpenHarmony NDK 编译工具链](build-with-ndk-overview.md)编译生成。
+2. 确保引入的SO动态库的依赖库也导入到工程中且通过[OpenHarmony NDK 编译工具链](build-with-ndk-overview.md)编译生成。
 
 ## 直接引入预构建库
 
-可以通过直接将预构建的库文件复制到项目文件中, 来使用预构建库。例如在项目中需要使用预构建库`libavcodec_ffmpeg.so`，其开发态存放路径如下图所示：
+可以通过直接将预构建的库文件复制到项目文件中，来使用预构建库。例如在项目中需要使用预构建库`libavcodec_ffmpeg.so`，其开发态存放路径如下图所示：
 
 ![Snipaste_2023-10-30_14-39-27](figures/Snipaste_2023-10-30_14-39-27.png)
 

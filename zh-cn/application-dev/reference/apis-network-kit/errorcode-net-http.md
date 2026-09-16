@@ -19,7 +19,7 @@ Unsupported protocol.
 
 **错误描述**
 
-协议版本服务器不支持。
+协议不支持。
 
 **可能原因**
 
@@ -329,6 +329,8 @@ Operation timeout.
 
 4. 服务器负载过高，处理速度缓慢。
 
+5. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，导致域名解析到过期或错误的IP地址，连接无法建立。
+
 **处理步骤**
 
 1. 检查网络连接状态，确认网络稳定。
@@ -337,7 +339,9 @@ Operation timeout.
 
 3. 排查服务器负载情况。
 
-4. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试。
+
+5. 可查看日志关键词"HttpClient CURLcode result 28"定位该错误。
 
 ## 2300047 重定向次数达到最大值
 
@@ -411,6 +415,8 @@ Failed to receive data from the peer.
 
 3. 对端发送数据过程中出现异常。
 
+4. 调用[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，但规则中IP地址已失效，导致向错误的地址发送请求后无法接收响应。
+
 **处理步骤**
 
 1. 检查网络连接状态。
@@ -419,7 +425,9 @@ Failed to receive data from the peer.
 
 3. 重新发起请求尝试。
 
-4. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
+4. 检查是否通过[connection.addCustomDnsRule](js-apis-net-connection.md#connectionaddcustomdnsrule11)设置了自定义DNS规则，若设置的IP地址已过期或错误，调用[removeCustomDnsRule](js-apis-net-connection.md#connectionremovecustomdnsrule11)或[clearCustomDnsRules](js-apis-net-connection.md#connectionclearcustomdnsrules11)清除规则后重试，确保域名解析到正确的IP地址。
+
+5. 可查看日志关键词"HttpClient CURLcode result 56"定位该错误。
 
 ## 2300058 本地SSL证书错误
 
@@ -439,7 +447,7 @@ SSL证书格式有错误。
 
 检查SSL证书格式。
 
-## 2300059 无法使用指定的密码
+## 2300059 无法使用指定的加密算法
 
 **错误信息**
 
@@ -447,7 +455,7 @@ The specified SSL cipher cannot be used.
 
 **错误描述**
 
-无法使用指定的密码。
+无法使用指定的加密算法。
 
 **可能原因**
 
@@ -667,18 +675,18 @@ HTTP模块内部错误，通常由底层网络库返回的未映射错误或其�
 
 **可能原因**
 
-1. **底层网络库未映射错误**：
+1. **底层网络库未映射错误**:
    - HTTP错误码映射规则为2300000 + CURL错误码。当CURL返回的错误码未在映射表中定义时，统一返回2300999。
    - 例如：CURL错误码1映射为2300001，CURL错误码28映射为2300028。若CURL返回的错误码没有对应映射，则返回2300999。
-   - **日志关键词**：`CURLcode result`（日志中会打印具体的CURL错误码数值）
+   - **日志关键词**:`CURLcode result`（日志中会打印具体的CURL错误码数值）
 
 2. **HTTP3协议问题**：
    - 使用HTTP3协议时，请求启动前存在其他配置错误。
-   - **日志关键词**：`error_.GetErrorCode()=`，且请求协议为HTTP3
+   - **日志关键词**:`error_.GetErrorCode()=`，且请求协议为HTTP3
 
 3. **全局拦截器校验失败**：
    - 全局请求拦截器校验未通过。
-   - **日志关键词**：`GlobalRequestInterceptorCheck fail`、`GlobalRequestInterceptorCheck failed`
+   - **日志关键词**:`GlobalRequestInterceptorCheck fail`、`GlobalRequestInterceptorCheck failed`
 
 **处理步骤**
 

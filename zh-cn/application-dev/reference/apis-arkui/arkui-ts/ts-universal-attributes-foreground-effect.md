@@ -20,7 +20,7 @@
 
 foregroundEffect(options: ForegroundEffectOptions): T
 
-设置组件的前景属性。
+设置组件的前景效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -28,7 +28,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[foregroundEffect<sup>23+</sup>](#foregroundeffect23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[foregroundEffect](#foregroundeffect)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -36,7 +36,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景属性包括：模糊半径。 |
+| options | [ForegroundEffectOptions](#foregroundeffectoptions) | 是   | 设置组件前景效果，包括：模糊半径。效果仅在组件范围内生效，与backgroundEffect、blur等接口连用时超出组件范围的效果无法生效。 |
 
 **返回值：**
 
@@ -44,7 +44,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## foregroundEffect<sup>23+</sup>
+## ForegroundEffectOptions
 
 foregroundEffect(options: ForegroundEffectOptions | undefined)
 

@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 独立耗时任务是指任务执行过程不依赖宿主线程上下文，任务完成后只需要将最终结果返回给宿主线程。ArkTS-Sta中可以使用[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)执行这类任务，任务函数在TaskPool工作线程中运行，执行结果通过Promise返回。
 

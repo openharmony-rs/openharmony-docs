@@ -28,12 +28,14 @@
 
 1. 创建TransitionEffect。
   
+   ArkTS-Dyn示例：
+  
    <!-- @[transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template6/Index.ets) -->
    
    ``` TypeScript
    // 出现时会是所有出现转场效果的叠加，消失时会是所有消失转场效果的叠加
    // 说明各个effect跟随的动画参数
-   private effect: object =
+   private effect: TransitionEffect =
      TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数
        // 通过combine方法，添加缩放转场效果，并指定了springMotion(0.6, 1.2)曲线
        .combine(TransitionEffect.scale({ x: 0, y: 0 }).animation({ curve: curves.springMotion(0.6, 1.2) }))
@@ -50,7 +52,40 @@
        }), TransitionEffect.rotate({ angle: 90 })));
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/compTransition/template6/Index.ets) -->
+   
+   ``` TypeScript
+   // 出现时会是所有出现转场效果的叠加，消失时会是所有消失转场效果的叠加
+   // 说明各个effect跟随的动画参数
+   private effect: TransitionEffect =
+     TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数
+       // 通过combine方法，添加缩放转场效果，并指定了springMotion(0.6, 1.2)曲线
+       .combine(TransitionEffect.scale({ x: 0, y: 0 }).animation({ curve: curves.springMotion(0.6, 1.2) }))
+       // 添加旋转转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 1.2)
+       .combine(TransitionEffect.rotate({ angle: 90 }))
+       // 添加平移转场效果，动画参数会跟随其之上带animation的TransitionEffect，也就是springMotion(0.6, 1.2)
+       .combine(TransitionEffect.translate({ x: 150, y: 150 }))
+       // 添加move转场效果，并指定了springMotion曲线
+       .combine(TransitionEffect.move(TransitionEdge.END)).animation({ curve: curves.springMotion() })
+       // 添加非对称的转场效果，由于这里没有设置animation，会跟随上面的TransitionEffect的animation效果，也就是springMotion
+       .combine(TransitionEffect.asymmetric(TransitionEffect.scale({
+         x: 0,
+         y: 0
+       }), TransitionEffect.rotate({ angle: 90 })));
+   ```
+
 2. 将转场效果通过[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口设置到组件。
+  
+   ArkTS-Dyn示例：
+  
+   ```ts
+   Text('test')
+     .transition(this.effect)
+   ```
+
+   ArkTS-Sta示例：
   
    ```ts
    Text('test')
@@ -58,6 +93,8 @@
    ```
 
 3. 新增或者删除组件触发转场。
+  
+   ArkTS-Dyn示例：
   
    ```ts
    @State isPresent: boolean = true;
@@ -77,142 +114,325 @@
    this.isPresent = false;
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   @State isPresent: boolean = true;
+   // ...
+   if (this.isPresent) {
+     Text('test')
+       .transition(this.effect)
+   }
+   // ...
+   // 控制新增或者删除组件
+   // 方式一：将控制变量放到animateTo闭包内，未通过animation接口定义动画参数的TransitionEffect将跟随animateTo的动画参数
+   this.getUIContext()?.animateTo({ curve: curves.springMotion() }, () => {
+     this.isPresent = false;
+   })
+   
+   // 方式二：直接控制删除或者新增组件，动画参数由TransitionEffect的animation接口配置
+   this.isPresent = false;
+   ```
 
  完整的示例代码和效果如下，示例中采用直接删除或新增组件的方式触发转场，也可以替换为在[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)闭包内改变控制变量触发转场。
 
-   <!-- @[transition_effectExample4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template4/Index.ets) -->
-   
-   ``` TypeScript
-   import { curves } from '@kit.ArkUI';
-   
-   @Entry
-   @Component
-   struct TransitionEffectDemo {
-     @State isPresent: boolean = false;
-     // 第一步：创建TransitionEffect
-     private effect: TransitionEffect =
-       // 创建默认透明度转场效果，并指定了springMotion(0.6, 0.8)曲线
-       TransitionEffect.OPACITY.animation({
-         curve: curves.springMotion(0.6, 0.8)
-       })// 通过combine方法，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 0.8)
-         .combine(TransitionEffect.scale({
-           x: 0,
-           y: 0
-         }))// 添加旋转转场效果，这里的动画参数会跟随上面带animation的TransitionEffect，也就是springMotion(0.6, 0.8)
-         .combine(TransitionEffect.rotate({ angle: 90 }))// 添加平移转场效果，这里的动画参数使用指定的springMotion()
-         .combine(TransitionEffect.translate({ y: 150 })
-           .animation({ curve: curves.springMotion() }))// 添加move转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion()
-         .combine(TransitionEffect.move(TransitionEdge.END));
-   
-     build() {
-       Stack() {
-         if (this.isPresent) {
-           Column() {
-             Text('ArkUI')
-               .fontWeight(FontWeight.Bold)
-               .fontSize(20)
-               .fontColor(Color.White)
-           }
-           .justifyContent(FlexAlign.Center)
-           .width(150)
-           .height(150)
-           .borderRadius(10)
-           .backgroundColor(0xf56c6c)
-           // 第二步：将转场效果通过transition接口设置到组件
-           .transition(this.effect)
-         }
-   
-         // 边框
-         Column()
-           .width(155)
-           .height(155)
-           .border({
-             width: 5,
-             radius: 10,
-             color: Color.Black
-           })
-   
-         // 第三步：新增或者删除组件触发转场，控制新增或者删除组件
-         Button('Click')
-           .margin({ top: 320 })
-           .onClick(() => {
-             this.isPresent = !this.isPresent;
-           })
-       }
-       .width('100%')
-       .height('60%')
-     }
-   }
-   ```
+ArkTS-Dyn示例：
 
+<!-- @[transition_effectExample4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template4/Index.ets) -->
 
+``` TypeScript
+import { curves } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TransitionEffectDemo {
+  @State isPresent: boolean = false;
+  // 第一步：创建TransitionEffect
+  private effect: TransitionEffect =
+    // 创建默认透明度转场效果，并指定了springMotion(0.6, 0.8)曲线
+    TransitionEffect.OPACITY.animation({
+      curve: curves.springMotion(0.6, 0.8)
+    })// 通过combine方法，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 0.8)
+      .combine(TransitionEffect.scale({
+        x: 0,
+        y: 0
+      }))// 添加旋转转场效果，这里的动画参数会跟随上面带animation的TransitionEffect，也就是springMotion(0.6, 0.8)
+      .combine(TransitionEffect.rotate({ angle: 90 }))// 添加平移转场效果，这里的动画参数使用指定的springMotion()
+      .combine(TransitionEffect.translate({ y: 150 })
+        .animation({ curve: curves.springMotion() }))// 添加move转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion()
+      .combine(TransitionEffect.move(TransitionEdge.END));
+
+  build() {
+    Stack() {
+      if (this.isPresent) {
+        Column() {
+          Text('ArkUI')
+            .fontWeight(FontWeight.Bold)
+            .fontSize(20)
+            .fontColor(Color.White)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(150)
+        .height(150)
+        .borderRadius(10)
+        .backgroundColor(0xf56c6c)
+        // 第二步：将转场效果通过transition接口设置到组件
+        .transition(this.effect)
+      }
+
+      // 边框
+      Column()
+        .width(155)
+        .height(155)
+        .border({
+          width: 5,
+          radius: 10,
+          color: Color.Black
+        })
+
+      // 第三步：新增或者删除组件触发转场，控制新增或者删除组件
+      Button('Click')
+        .margin({ top: 320 })
+        .onClick(() => {
+          this.isPresent = !this.isPresent;
+        })
+    }
+    .width('100%')
+    .height('60%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[transition_effectExample4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/compTransition/template4/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  State,
+  Stack,
+  Column,
+  Text,
+  Button,
+  TransitionEffect,
+  TransitionEdge,
+  FontWeight,
+  FlexAlign,
+  Color,
+  Margin,
+  BorderOptions
+} from '@kit.ArkUI';
+import curves from '@ohos.curves';
+
+@Entry
+@Component
+struct TransitionEffectDemo {
+  @State isPresent: boolean = false;
+  // 第一步：创建TransitionEffect
+  private effect: TransitionEffect =
+    // 创建默认透明度转场效果，并指定了springMotion(0.6, 0.8)曲线
+    TransitionEffect.OPACITY.animation({
+      curve: curves.springMotion(0.6, 0.8)
+    })// 通过combine方法，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion(0.6, 0.8)
+      .combine(TransitionEffect.scale({
+        x: 0,
+        y: 0
+      }))// 添加旋转转场效果，这里的动画参数会跟随上面带animation的TransitionEffect，也就是springMotion(0.6, 0.8)
+      .combine(TransitionEffect.rotate({ angle: 90 }))// 添加平移转场效果，这里的动画参数使用指定的springMotion()
+      .combine(TransitionEffect.translate({ y: 150 })
+        .animation({ curve: curves.springMotion() }))// 添加move转场效果，这里的动画参数会跟随上面的TransitionEffect，也就是springMotion()
+      .combine(TransitionEffect.move(TransitionEdge.END));
+
+  build(): void {
+    Stack() {
+      if (this.isPresent) {
+        Column() {
+          Text('ArkUI')
+            .fontWeight(FontWeight.Bold)
+            .fontSize(20)
+            .fontColor(Color.White)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(150)
+        .height(150)
+        .borderRadius(10)
+        .backgroundColor(0xf56c6c)
+        // 第二步：将转场效果通过transition接口设置到组件
+        .transition(this.effect)
+      }
+
+      // 边框
+      Column()
+        .width(155)
+        .height(155)
+        .border({
+          width: 5,
+          radius: 10,
+          color: Color.Black
+        } as BorderOptions)
+
+      // 第三步：新增或者删除组件触发转场，控制新增或者删除组件
+      Button('Click')
+        .margin({ top: 320 } as Margin)
+        .onClick(() => {
+          this.isPresent = !this.isPresent;
+        })
+    }
+    .width('100%')
+    .height('60%')
+  }
+}
+```
 
 ![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition.gif)
 
-
 对多个组件添加转场效果时，可以在[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)动画参数中配置不同的delay值，实现组件渐次出现消失的效果：
 
-   <!-- @[transition_effectExample5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template5/Index.ets) -->
-   
-   ``` TypeScript
-   const ITEM_COUNTS = 9;
-   const ITEM_COLOR = '#ED6F21';
-   const INTERVAL = 30;
-   const DURATION = 300;
-   
-   @Entry
-   @Component
-   struct Index1 {
-     @State isGridShow: boolean = false;
-     private dataArray: number[] = new Array(ITEM_COUNTS);
-   
-     aboutToAppear(): void {
-       for (let i = 0; i < ITEM_COUNTS; i++) {
-         this.dataArray[i] = i;
-       }
-     }
-   
-     build() {
-       Stack() {
-         if (this.isGridShow) {
-           Grid() {
-             ForEach(this.dataArray, (item: number, index: number) => {
-               GridItem() {
-                 Stack() {
-                   Text((item + 1).toString())
-                 }
-                 .size({ width: 50, height: 50 })
-                 .backgroundColor(ITEM_COLOR)
-                 .transition(TransitionEffect.OPACITY
-                   .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }))// 对每个方格的转场添加delay，实现组件的渐次出现消失效果
-                   .animation({ duration: DURATION, curve: Curve.Friction, delay: INTERVAL * index }))
-                 .borderRadius(10)
-               }
-               // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
-               // 此处让方格的父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
-               .transition(TransitionEffect.opacity(0.99))
-             }, (item: number) => item.toString())
-           }
-           .columnsTemplate('1fr 1fr 1fr')
-           .rowsGap(15)
-           .columnsGap(15)
-           .size({ width: 180, height: 180 })
-           // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
-           // 此处让父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
-           .transition(TransitionEffect.opacity(0.99))
-         }
-       }
-       .size({ width: '100%', height: '100%' })
-       .onClick(() => {
-         this.getUIContext()?.animateTo({
-           duration: DURATION + INTERVAL * (ITEM_COUNTS - 1),
-           curve: Curve.Friction
-         }, () => {
-           this.isGridShow = !this.isGridShow;
-         })
-       })
-     }
-   }
-   ```
+ArkTS-Dyn示例：
+
+<!-- @[transition_effectExample5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template5/Index.ets) -->
+
+``` TypeScript
+const ITEM_COUNTS = 9;
+const ITEM_COLOR = '#ED6F21';
+const INTERVAL = 30;
+const DURATION = 300;
+
+@Entry
+@Component
+struct Index1 {
+  @State isGridShow: boolean = false;
+  private dataArray: number[] = new Array(ITEM_COUNTS);
+
+  aboutToAppear(): void {
+    for (let i = 0; i < ITEM_COUNTS; i++) {
+      this.dataArray[i] = i;
+    }
+  }
+
+  build() {
+    Stack() {
+      if (this.isGridShow) {
+        Grid() {
+          ForEach(this.dataArray, (item: number, index: number) => {
+            GridItem() {
+              Stack() {
+                Text((item + 1).toString())
+              }
+              .size({ width: 50, height: 50 })
+              .backgroundColor(ITEM_COLOR)
+              .transition(TransitionEffect.OPACITY
+                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }))// 对每个方格的转场添加delay，实现组件的渐次出现消失效果
+                .animation({ duration: DURATION, curve: Curve.Friction, delay: INTERVAL * index }))
+              .borderRadius(10)
+            }
+            // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
+            // 此处让方格的父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
+            .transition(TransitionEffect.opacity(0.99))
+          }, (item: number) => item.toString())
+        }
+        .columnsTemplate('1fr 1fr 1fr')
+        .rowsGap(15)
+        .columnsGap(15)
+        .size({ width: 180, height: 180 })
+        // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
+        // 此处让父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
+        .transition(TransitionEffect.opacity(0.99))
+      }
+    }
+    .size({ width: '100%', height: '100%' })
+    .onClick(() => {
+      this.getUIContext()?.animateTo({
+        duration: DURATION + INTERVAL * (ITEM_COUNTS - 1),
+        curve: Curve.Friction
+      }, () => {
+        this.isGridShow = !this.isGridShow;
+      })
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[transition_effectExample5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AnimationStatic/entry/src/main/ets/pages/compTransition/template5/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  State,
+  Stack,
+  Text,
+  Grid,
+  GridItem,
+  ForEach,
+  TransitionEffect,
+  Curve,
+  AnimateParam,
+  SizeOptions
+} from '@kit.ArkUI';
+
+const ITEM_COUNTS: int = 9;
+const ITEM_COLOR: string = '#ED6F21';
+const INTERVAL: int = 30;
+const DURATION: int = 300;
+
+@Entry
+@Component
+struct Index1 {
+  @State isGridShow: boolean = false;
+  private dataArray: int[] = [];
+
+  aboutToAppear(): void {
+    for (let i: int = 0; i < ITEM_COUNTS; i++) {
+      this.dataArray.push(i);
+    }
+  }
+
+  build(): void {
+    Stack() {
+      if (this.isGridShow) {
+        Grid() {
+          ForEach(this.dataArray, (item: int, index: int) => {
+            GridItem() {
+              Stack() {
+                Text((item + 1).toString())
+              }
+              .size({ width: 50, height: 50 } as SizeOptions)
+              .backgroundColor(ITEM_COLOR)
+              .transition(TransitionEffect.OPACITY
+                .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 }))// 对每个方格的转场添加delay，实现组件的渐次出现消失效果
+                .animation({ duration: DURATION, curve: Curve.Friction, delay: INTERVAL * index } as AnimateParam))
+              .borderRadius(10)
+            }
+            // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
+            // 此处让方格的父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
+            .transition(TransitionEffect.opacity(0.99))
+          }, (item: int) => item.toString())
+        }
+        .columnsTemplate('1fr 1fr 1fr')
+        .rowsGap(15)
+        .columnsGap(15)
+        .size({ width: 180, height: 180 } as SizeOptions)
+        // 消失时，如果不对方格的所有父控件添加转场效果，则方格的消失转场不会生效
+        // 此处让父控件在出现消失转场时一直以0.99的透明度显示，使得方格的转场效果不受影响
+        .transition(TransitionEffect.opacity(0.99))
+      }
+    }
+    .size({ width: '100%', height: '100%' } as SizeOptions)
+    .onClick(() => {
+      this.getUIContext()?.animateTo({
+        duration: DURATION + INTERVAL * (ITEM_COUNTS - 1),
+        curve: Curve.Friction
+      } as AnimateParam, () => {
+        this.isGridShow = !this.isGridShow;
+      })
+    })
+  }
+}
+```
 
 ![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition01.gif)

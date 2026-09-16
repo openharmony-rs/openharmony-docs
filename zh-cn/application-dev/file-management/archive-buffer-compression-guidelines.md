@@ -52,6 +52,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 ``` C++
 static napi_value BufferCompress(napi_env env, napi_callback_info info)
 {
+    // 获取输入文件路径和输出文件路径
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -63,7 +64,8 @@ static napi_value BufferCompress(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, argv[0], inPathBuf, sizeof(inPathBuf), &inPathSize);
     napi_get_value_string_utf8(env, argv[1], outPathBuf, sizeof(outPathBuf), &outPathSize);
 
-    CreateRandomFile(inPathBuf, 1024 * 1024); // 1024K大小文件
+    CreateRandomFile(inPathBuf, 1024 * 1024); // 创建1024K大小的测试文件
+    // 读取文件数据到内存缓冲区
     char *source = nullptr;
     uint64_t sourceLen;
     ReadFileData(inPathBuf, &source, &sourceLen);
@@ -71,6 +73,7 @@ static napi_value BufferCompress(napi_env env, napi_callback_info info)
     uint64_t destLen = 0;
     uint8_t *dest = nullptr;
 
+    // 计算压缩后数据所需的最大输出缓冲区大小
     uint64_t bound = OH_Archive_BufferWriteCompressBound(OH_ARCHIVE_COMPRESS_DEFLATE, sourceLen);
     if (bound > MALLOC_THRESHOLD) {
         return nullptr;
@@ -82,6 +85,7 @@ static napi_value BufferCompress(napi_env env, napi_callback_info info)
     }
     destLen = bound;
 
+    // 对缓冲区数据进行压缩，使用DEFLATE算法，压缩级别为0
     OH_Archive_ErrCode ret = OH_Archive_BufferWrite(dest, &destLen, reinterpret_cast<uint8_t *>(source), sourceLen,
                                                     OH_ARCHIVE_COMPRESS_DEFLATE, 0);
 
@@ -106,6 +110,7 @@ static napi_value BufferDecompress(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, nullptr, nullptr, nullptr);
 
     int ret;
+    // 生成随机测试数据
     uint64_t dataSize = 1024 * 1024;
     uint8_t *srcBuffer = (uint8_t *)malloc(dataSize);
     if (srcBuffer == nullptr) {
@@ -116,6 +121,7 @@ static napi_value BufferDecompress(napi_env env, napi_callback_info info)
         srcBuffer[i] = static_cast<uint8_t>(TestRandomInt(0, 256)); // 小于256, byte范围内
     }
 
+    // 先压缩数据，用于后续解压缩验证
     uint64_t bound = OH_Archive_BufferWriteCompressBound(OH_ARCHIVE_COMPRESS_DEFLATE, dataSize);
     uint64_t compressedSize = bound;
     uint8_t *compressedBuffer = (uint8_t *)malloc(compressedSize);
@@ -124,6 +130,7 @@ static napi_value BufferDecompress(napi_env env, napi_callback_info info)
     }
     ret = OH_Archive_BufferWrite(compressedBuffer, &compressedSize, srcBuffer, dataSize, OH_ARCHIVE_COMPRESS_DEFLATE,
                                  int32_t(6)); // 压缩等级为6
+    // 分配解压缩输出缓冲区并执行解压缩
     uint8_t *decompressedBuffer = (uint8_t *)malloc(dataSize);
     if (decompressedBuffer == nullptr) {
         return nullptr;
@@ -131,6 +138,7 @@ static napi_value BufferDecompress(napi_env env, napi_callback_info info)
     uint64_t decompressedSize = dataSize;
     ret = OH_Archive_BufferRead(decompressedBuffer, &decompressedSize, compressedBuffer, compressedSize,
                                 OH_ARCHIVE_COMPRESS_DEFLATE);
+    // 校验解压缩后的数据与原始数据是否一致
     bool isEqual = std::memcmp(decompressedBuffer, srcBuffer, dataSize) == 0;
     free(srcBuffer);
     free(compressedBuffer);

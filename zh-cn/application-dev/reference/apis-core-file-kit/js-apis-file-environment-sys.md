@@ -1,9 +1,9 @@
 # @ohos.file.environment (目录环境能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供目录环境能力：获取内存存储根目录、公共文件根目录、外卡根目录、当前用户下应用沙箱路径的内卡目录的ArkTS接口。
@@ -178,8 +178,8 @@ getExternalStorageDir(): string
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **设备行为差异**：
-- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
-- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
+- 在API版本26.0.0及之后：该接口在PC/2in1和Tablet中可正常调用，在其他设备类型中返回801错误码。
+- 在API版本26.0.0之前：该接口在PC/2in1可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
 
@@ -224,8 +224,8 @@ getUserHomeDir(): string
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **设备行为差异**：
-- API版本26.0.0+：该接口在2in1和tablet中可正常调用，在其他设备类型中返回801错误码。
-- API版本11-24：该接口在2in1可正常调用，在其他设备类型中返回801错误码。
+- 在API版本26.0.0及之后：该接口在PC/2in1和Tablet中可正常调用，在其他设备类型中返回801错误码。
+- 在API版本26.0.0之前：该接口在PC/2in1可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
 

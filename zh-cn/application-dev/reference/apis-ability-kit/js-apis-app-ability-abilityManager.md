@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-AbilityManager模块提供获取Ability相关信息和运行状态信息的能力。
+AbilityManager模块提供Ability信息管理功能，包括获取Ability运行状态、重启原子化服务、判断设备能力支持等。
 
 > **说明：**
 >
@@ -33,19 +33,19 @@ Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](js-apis-in
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| INITIAL | 0 | 表示ability为初始化状态。|
-| FOCUS | 2 | 表示ability为获焦状态。 |
-| FOREGROUND | 9 | 表示ability为前台状态。  |
-| BACKGROUND | 10 | 表示ability为后台状态。  |
-| FOREGROUNDING | 11 | 表示ability为前台调度中状态。  |
-| BACKGROUNDING | 12 | 表示ability为后台调度中状态。  |
+| INITIAL | 0 | 表示Ability为初始化状态。|
+| FOCUS | 2 | 表示Ability为获焦状态。 |
+| FOREGROUND | 9 | 表示Ability为前台状态。  |
+| BACKGROUND | 10 | 表示Ability为后台状态。  |
+| FOREGROUNDING | 11 | 表示Ability为前台调度中状态。  |
+| BACKGROUNDING | 12 | 表示Ability为后台调度中状态。  |
 
 
 ## abilityManager.getAbilityRunningInfos<sup>14+</sup>
 
 getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
-获取UIAbility运行时的相关信息。使用Promise异步回调。
+获取UIAbility运行时的相关信息，包括进程ID、Ability名称、状态等信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -63,7 +63,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise对象，返回UIAbility运行时的相关信息。开发者可在此进行错误处理或对返回的数据进行自定义处理。 |
 
 **错误码**：
 
@@ -80,6 +80,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 获取UIAbility运行时相关信息
   abilityManager.getAbilityRunningInfos()
     .then((data: abilityManager.AbilityRunningInfo[]) => {
       console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
@@ -122,7 +123,7 @@ restartSelfAtomicService(context: Context): void
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context    | [Context](./js-apis-inner-application-context.md)   | 是    | 当前Ability的上下文。<br>**说明**：当前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| context    | [Context](./js-apis-inner-application-context.md)   | 是    | 当前Ability的上下文，用于提供重启原子化服务所需的执行环境信息<br>**说明**：当前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
 
 **错误码**：
 
@@ -145,6 +146,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends EmbeddableUIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     try {
+      // 重启当前原子化服务
       abilityManager.restartSelfAtomicService(this.context);
     } catch (e) {
       let error=e as BusinessError;
@@ -179,6 +181,7 @@ import { abilityManager, UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 判断当前设备是否支持EmbeddedUIExtensionAbility
     let isSupported: boolean = abilityManager.isEmbeddedUIExtensionSupported();
     console.info(`isEmbeddedUIExtensionSupported is ${isSupported}`);
   }

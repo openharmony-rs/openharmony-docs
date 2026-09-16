@@ -1,4 +1,4 @@
-# @ohos.data.sendableRelationalStore（共享关系型数据库）
+# @ohos.data.sendableRelationalStore (共享关系型数据库)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
@@ -319,7 +319,7 @@ const values = sendableRelationalStore.toSendableValues(array);
 
 ## Asset
 
-记录资产附件（文件、图片、视频等类型文件）的相关信息。用于支持资产数据跨线程传递，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)。资产类型的相关接口暂不支持Datashare。使用[sendableRelationalStore.toSendableAsset](#sendablerelationalstoretosendableasset)方法创建。
+记录资产附件（文件、图片、视频等类型文件）的相关信息。用于支持资产数据跨线程传递，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)。资产类型的相关接口暂不支持Datashare。使用[sendableRelationalStore.toSendableAsset](#sendablerelationalstoretosendableasset)方法创建。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -457,6 +457,7 @@ async function queryByName(context: Context, name: string) {
     securityLevel: relationalStore.SecurityLevel.S3,
   };
 
+  let result: sendableRelationalStore.ValuesBucket | undefined;
   let store = await relationalStore.getRdbStore(context, CONFIG);
   console.info(`Get store successfully!`);
 
@@ -466,10 +467,11 @@ async function queryByName(context: Context, name: string) {
   const resultSet = await store.query(predicates);
   if (resultSet.rowCount > 0 && resultSet.goToFirstRow()) {
     // 获取可用于跨线程传递的ValuesBucket返回查询结果
-    return resultSet.getSendableRow();
+    result = resultSet.getSendableRow();
   }
   resultSet.close();
   await store.close();
+  return result;
 }
 
 

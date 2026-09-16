@@ -65,9 +65,9 @@ Tabs组件参数，设置Tabs的页签位置，当前显示页签的索引，Tab
 | 名称         | 类型                              | 只读 | 可选   | 说明                                     |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
 | barPosition<sup>7+</sup> | [BarPosition](#barposition枚举说明)| 否 | 是    | 设置Tabs的页签位置。页签的具体位置受vertical属性影响：vertical为true时Start位于左侧、End位于右侧；vertical为false时Start位于顶部、End位于底部。<br/>默认值：BarPosition.Start。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23    |
-| index<sup>7+</sup>       | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| Bindable&lt;int&gt;                             | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| index<sup>7+</sup>       | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| Bindable&lt;int&gt;                             | 否 | 是   | 设置当前显示页签的索引。<br/>默认值：0<br/>**说明：** <br/>设置为小于0的值时按默认值显示。<br/>可选值为[0, TabContent子节点数量-1]。<br/>直接修改index跳页时，切换动效不生效。 使用TabsController的[changeIndex](#changeindex)时，默认生效切换动效，可以设置[animationDuration](#animationduration)为0关闭动画。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>Tabs重建、系统资源切换（如系统字体切换、系统深浅色切换）或者组件属性变化时，会跳转到index对应的页面。若需要在上述情况下不跳转，建议使用双向绑定。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | controller<sup>7+</sup>  | [TabsController](#tabscontroller) | 否 | 是    | 设置Tabs控制器。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23         |
-| barModifier<sup>15+</sup>  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
+| barModifier  | [CommonModifier](#commonmodifier15) | 否 | 是    | 设置TabBar的[通用属性](ts-component-general-attributes.md)，用于通过CommonModifier统一管理TabBar的样式、布局等通用属性。当需要动态修改TabBar的通用属性或实现属性的状态管理时传入此参数，不传入时TabBar使用默认样式和布局，无额外通用属性设置。<br/>**说明：** <br/>动态置为undefined时会保持当前状态不变，不会重置各通用属性。 <br/>由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。<br/>Tabs的[barWidth](#barwidth)、[barHeight](#barheight)、[barBackgroundColor](#barbackgroundcolor10)、[barBackgroundBlurStyle](#barbackgroundblurstyle18)、[barBackgroundEffect](#barbackgroundeffect18)属性会覆盖CommonModifier的[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)、[backgroundColor](ts-universal-attributes-background.md#backgroundcolor18)、[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18)属性。<br/>[align](ts-universal-attributes-location.md#align)属性仅在[BarMode.Scrollable](#barmode10-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](#scrollablebarmodeoptions10对象说明)未设置或设置为异常值时才能生效。<br/>[TabContent](ts-container-tabcontent.md)组件的[tabBar](ts-container-tabcontent.md#tabbar18)属性为底部页签样式时不支持拖拽功能。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
 
 ## BarPosition枚举说明
 
@@ -929,13 +929,13 @@ Tab页签切换后触发的事件。
 
 满足以下任一条件，即可触发该事件：
 
-1、滑动页面进行页面切换时，组件滑动动画结束后触发。
+1. 滑动页面进行页面切换时，组件滑动动画结束后触发。
 
-2、通过[控制器](#tabscontroller)调用[changeIndex](#changeindex)接口，Tab页签切换后触发。
+2. 通过[控制器](#tabscontroller)调用[changeIndex](#changeindex)接口，Tab页签切换后触发。
 
-3、动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
+3. 动态修改[状态变量](../../../ui/state-management/arkts-state.md)构造的index属性值，Tab页签切换后触发。
 
-4、点击TabBar页签，Tab页签切换后触发。
+4. 点击TabBar页签，Tab页签切换后触发。
 
 >  **说明：**
 >
@@ -1101,15 +1101,15 @@ ArkTS-Sta: onContentWillChange(handler: OnTabsContentWillChangeCallback | undefi
 
 满足以下任一条件，即可触发该事件：
 
-1、滑动TabContent切换新页面时触发。
+1. 滑动TabContent切换新页面时触发。
 
-2、通过TabsController.[changeIndex](#changeindex)接口切换新页面时触发。
+2. 通过TabsController.[changeIndex](#changeindex)接口切换新页面时触发。
 
-3、通过动态修改index属性值切换新页面时触发。
+3. 通过动态修改index属性值切换新页面时触发。
 
-4、通过点击TabBar页签切换新页面时触发。
+4. 通过点击TabBar页签切换新页面时触发。
 
-5、TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
+5. TabBar页签获焦后，通过键盘左右方向键等切换新页面时触发。
 
 >**说明：**
 >
@@ -2898,9 +2898,11 @@ class MyDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // 实现IDataSource接口须实现此接口
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // 实现IDataSource接口须实现此接口
   unregisterDataChangeListener() {
   }
 }
@@ -3391,7 +3393,7 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabsBar页签栏的背景模糊样式和效果。
+该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabBar页签栏的背景模糊样式和效果。
 
 从API version 18开始，新增了barBackgroundBlurStyle和barBackgroundEffect接口。
 

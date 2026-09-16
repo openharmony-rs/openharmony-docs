@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类型、图片元数据、缩放模式、动态范围、内存分配等，用于在图片编解码、处理和显示场景中指定各类配置参数。
+Image Kit提供的枚举类型集合，涵盖图片像素格式、图片格式、透明度类型、图片元数据、图片属性信息（Exif及各格式图片属性）、辅助图类型、缩放模式、裁剪与缩放策略、动态范围、HDR元数据、内存分配、插值算法、图片方向、焦点模式、颜色模式、XMP标签类型等，用于在图片编解码、处理和显示场景中指定各类配置参数。
 
 > **说明：**
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -14,27 +14,28 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类�
 
 ## PixelMapFormat<sup>7+</sup>
 
-表示图片像素格式的枚举。
+表示图片像素格式的枚举，包含像素数据的颜色通道排列和位深信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称                   |   值   | 说明              |
 | ---------------------- | ------ | ----------------- |
 | UNKNOWN                | 0      | 未知格式。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 7</br>**ArkTS-Sta起始版本：** 23        |
-| ARGB_8888<sup>18+</sup> | 1 | 颜色信息由透明度（Alpha）与R（Red）、G（Green）、B（Blue）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。该格式当前仅支持PixelMap的接口。</br>**ArkTS-Dyn起始版本：** 18</br>**ArkTS-Sta起始版本：** 23|
-| RGB_565                | 2      | 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位，按照从高位到低位的顺序储存。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 7</br>**ArkTS-Sta起始版本：** 23     |
-| RGBA_8888              | 3      | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 7</br>**ArkTS-Sta起始版本：** 23 |
-| BGRA_8888<sup>9+</sup> | 4      | 颜色信息由B（Blue）、G（Green）、R（Red）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23 |
-| RGB_888<sup>9+</sup>   | 5      | 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，每个部分占8位，总共占24位，按照从高位到低位的顺序储存。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23   |
-| ALPHA_8<sup>9+</sup>   | 6      | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。一个或多个像素组成一行像素，每行像素数据按4字节对齐，如果一行像素所占的字节数不是4的整数倍，则在行末填充空白字节以满足对齐要求。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23   |
-| RGBA_F16<sup>9+</sup>  | 7      | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占16位，总共占64位，按照从高位到低位的顺序以FP16半精度浮点数的形式储存。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23  |
-| NV21<sup>9+</sup>      | 8      | YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23      |
-| NV12<sup>9+</sup>      | 9      | YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交错排列的色度分量U和V组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23      |
-| RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位，按照从高位到低位的顺序储存。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23 |
-| YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23  |
-| YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23  |
-| Y8 | 14 | 仅包含Y平面（亮度）的单通道灰度格式，每个像素占8位，按照从高位到低位的顺序储存。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
-| ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0|
+| ARGB_8888<sup>18+</sup> | 1 | 颜色信息由透明度（Alpha）与R（Red）、G（Green）、B（Blue）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序存储。该格式当前仅支持PixelMap的接口。</br>**ArkTS-Dyn起始版本：** 18</br>**ArkTS-Sta起始版本：** 23|
+| RGB_565                | 2      | 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位，按照从高位到低位的顺序存储。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 7</br>**ArkTS-Sta起始版本：** 23     |
+| RGBA_8888              | 3      | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序存储。对应[相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 7</br>**ArkTS-Sta起始版本：** 23 |
+| BGRA_8888<sup>9+</sup> | 4      | 颜色信息由B（Blue）、G（Green）、R（Red）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序存储。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23 |
+| RGB_888<sup>9+</sup>   | 5      | 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，每个部分占8位，总共占24位，按照从高位到低位的顺序存储。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23   |
+| ALPHA_8<sup>9+</sup>   | 6      | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序存储。一个或多个像素组成一行像素，每行像素数据按4字节对齐，如果一行像素所占的字节数不是4的整数倍，则在行末填充空白字节以满足对齐要求。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23   |
+| RGBA_F16<sup>9+</sup>  | 7      | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占16位，总共占64位，按照从高位到低位的顺序以FP16半精度浮点数的形式存储。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23  |
+| NV21<sup>9+</sup>      | 8      | YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序存储。对应[相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。<br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 </br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23      |
+| NV12<sup>9+</sup>      | 9      | YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交错排列的色度分量U和V组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序存储。 <br>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23      |
+| RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位，按照从高位到低位的顺序存储。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23 |
+| YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序存储。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23  |
+| YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序存储。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23  |
+| Y8 | 14 | 仅包含Y平面（亮度）的单通道灰度格式，每个像素占8位，按照从高位到低位的顺序存储。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序存储。所有像素紧密排列，不进行对齐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0|
+| ALPHA_F16 | 16 | 颜色信息仅包含透明度（Alpha），每个像素占16位，按照从高位到低位的顺序以FP16半精度浮点数的形式存储。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。</br>**ArkTS-Dyn起始版本：** 18</br>**ArkTS-Sta起始版本：** 23  |
 
 ## AlphaType<sup>9+</sup>
@@ -117,8 +118,8 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类�
 
 | 名称            |   值   | 说明                                               |
 | --------------- | ------ | -------------------------------------------------- |
-| CENTER_CROP     | 1      | 缩放图像以填充目标图像区域并居中裁剪区域外的效果。 |
-| FIT_TARGET_SIZE | 0      | 图像适合目标尺寸的效果。                           |
+| CENTER_CROP     | 1      | 中心裁剪模式。表示将图像等比缩放至刚好铺满目标区域的尺寸（短边对齐），然后居中裁剪超出区域的部分。 |
+| FIT_TARGET_SIZE | 0      | 适配目标尺寸模式。表示将图像等比缩放至完全容纳于目标区域的尺寸内（长边对齐），不足的区域留黑边或透明。 |
 
 ## PropertyKey<sup>7+</sup>
 
@@ -128,6 +129,10 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类�
 
 - 格式示例中的key为：image.PropertyKey.XXX（XXX为枚举的名称，如：image.PropertyKey.NEW_SUBFILE_TYPE） 。
 - 格式示例仅用于说明修改传值和读取结果的格式。具体接口使用方法请参考：[modifyImageProperty](arkts-apis-image-ImageSource.md#modifyimageproperty11)（修改单个Exif字段）、[modifyImageProperties](arkts-apis-image-ImageSource.md#modifyimageproperties12)（修改多个Exif字段）、[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)（读取单个Exif字段）、[getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12)（读取多个Exif字段）。
+
+> **说明：**
+>
+> 应用通过[PhotoAccessHelper](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)查询媒体库图片，读取GPS相关字段（如GPS_LATITUDE、GPS_LONGITUDE、GPS_ALTITUDE、GPS_TIME_STAMP和GPS_DATE_STAMP）前，应先声明并向用户申请[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限。如果上述字段返回全为0或为空，请先检查该权限是否已获授权，并确认原始图片是否包含GPS信息。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -179,7 +184,7 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类�
 | GPS_ALTITUDE<sup>12+</sup>               | "GPSAltitude"               | 基于GPSAltitudeRef的高度。<br/>**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'123.45');`<br />**读取结果示例：** "123.45" |
 | GPS_TIME_STAMP<sup>10+</sup>              | "GPSTimeStamp"              | GPS时间戳。<br/>**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 10</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：** 格式为"HH:mm:ss.ddd"。<br />**修改示例：**`imageSource.modifyImageProperty(key,'12:30:30.123');`<br />**读取结果示例：** "12:30:30.123" |
 | GPS_SATELLITES<sup>12+</sup>             | "GPSSatellites"             | 用于测量的GPS卫星。<br/>**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'GPS Satellites');`<br />**读取结果示例：** "GPSSatellites" |
-| GPS_STATUS<sup>12+</sup>                 | "GPSStatus"                 | 录制图像时GPS接收器的状态。<br/>  'A'："Measurement in progress"，GPS有效，已成功锁定卫星信号，位置数据可信；<br />'V'："Measurement interrupted，GPS无效，当前未能定位，位置数据可能为空或不准。<br />**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：**  修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'A');`<br />或`imageSource.modifyImageProperty(key,'Measurement in progress');`<br />**读取结果示例：** "A" |
+| GPS_STATUS<sup>12+</sup>                 | "GPSStatus"                 | 录制图像时GPS接收器的状态。<br/>  'A'："Measurement in progress"，GPS有效，已成功锁定卫星信号，位置数据可信；<br />'V'："Measurement interrupted"，GPS无效，当前未能定位，位置数据可能为空或不准。<br />**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：**  修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'A');`<br />或`imageSource.modifyImageProperty(key,'Measurement in progress');`<br />**读取结果示例：** "A" |
 | GPS_MEASURE_MODE<sup>12+</sup>           | "GPSMeasureMode"            | GPS测量模式。用于表示图像拍摄时GPS定位使用的测量模式，即是使用2D（平面）定位还是3D（含高度）定位。<br/>2："2-dimensional measurement"，2D测量（纬度+经度）。<br/>3："3-dimensional measurement"，3D测量（纬度+经度+高度）。<br />**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'2');`<br />或`imageSource.modifyImageProperty(key,'2-dimensional measurement');`<br />**读取结果示例：** "2" |
 | GPS_DOP<sup>12+</sup>                    | "GPSDOP"                    | GPS DOP（数据精度等级），用于表示拍摄时GPS测量结果的定位精度水平。<br/>**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1.5');`<br />**读取结果示例：** "1.5" |
 | GPS_SPEED_REF<sup>12+</sup>              | "GPSSpeedRef"               | 用来表示GPS接收器移动速度的单位。<br/>'K'："km/h"。<br />'M'："mph"。<br />'N'："knots"。<br />**读写能力：** 可读写。<br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23 | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'K');`<br />或`imageSource.modifyImageProperty(key,'km/h');`<br />**读取结果示例：** "K" |
@@ -709,7 +714,7 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类�
 | HDR_METADATA_TYPE    | 0    | [PixelMap](arkts-apis-image-PixelMap.md)使用的元数据类型。  |
 | HDR_STATIC_METADATA  | 1    | 静态元数据。   |
 | HDR_DYNAMIC_METADATA | 2    | 动态元数据。   |
-| HDR_GAINMAP_METADATA | 3    | Gainmap使用的元数据。   |
+| HDR_GAINMAP_METADATA | 3    | 增益图使用的元数据。   |
 
 ## HdrMetadataType<sup>12+</sup>
 
@@ -721,12 +726,12 @@ Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类�
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称          | 值       | 说明         |
-| ------------- | ----------| ------------ |
-| NONE     | 0    | 无元数据内容。  |
-| BASE     | 1    | 表示用于基础图的元数据。   |
-| GAINMAP  | 2    | 表示用于Gainmap图的元数据。   |
-| ALTERNATE| 3    | 表示用于合成后HDR图的元数据。   |
+| 名称          | 值  | 说明         |
+| ------------- | --- | ------------ |
+| NONE          | 0   | 无元数据内容。  |
+| BASE          | 1   | 表示用于基础图的元数据。   |
+| GAINMAP       | 2   | 表示用于增益图的元数据。   |
+| ALTERNATE     | 3   | 表示用于合成后HDR图的元数据。   |
 
 ## AntiAliasingLevel<sup>12+</sup>
 

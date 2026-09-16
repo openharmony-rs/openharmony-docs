@@ -298,7 +298,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
-let exclusionStr = "192.168,baidu.com";
+// 将exclusionStr以逗号分隔为数组。
+let exclusionStr = "192.168,test.com";
+// exclusionArray将exclusionStr以逗号分隔为数组。
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
   host: "192.168.xx.xxx",
@@ -312,13 +314,13 @@ let options: http.HttpRequestOptions = {
 // 发起一个HTTP请求。
 httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
-   console.info(`Result: ${data.result}`);
-   console.info(`code: ${data.responseCode}`);
-   console.info(`type: ${JSON.stringify(data.resultType)}`);
-   console.info(`header: ${JSON.stringify(data.header)}`);
-   console.info(`cookies: ${data.cookies}`); // 从API version 8开始支持cookie。
+   console.info('Succeeded to get result: ' + JSON.stringify(data.result));
+   console.info('Succeeded to get code: ' + JSON.stringify(data.responseCode));
+   console.info('Succeeded to get type: ' + JSON.stringify(data.resultType));
+   console.info('Succeeded to get header: ' + JSON.stringify(data.header));
+   console.info('Succeeded to get cookies: ' + JSON.stringify(data.cookies)); // 从API version 8开始支持cookie。
   } else {
-   console.error(`error: ${JSON.stringify(err)}`);
+   console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
   }
 });
 ```
@@ -381,7 +383,7 @@ connection.getDefaultHttpProxy((error: BusinessError|null, data: connection.Http
     console.error(`Failed to get default http proxy. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);+
 });
 ```
 
@@ -425,9 +427,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -437,10 +439,10 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.info(JSON.stringify(businessError));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -537,9 +539,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -549,10 +551,10 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.info(JSON.stringify(businessError));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -690,7 +692,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
   }
 });
 ```
@@ -746,7 +748,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("Succeeded to setAppNet");
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -779,6 +781,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 ArkTS-Dyn示例：
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -793,7 +796,7 @@ let netCon = connection.createNetConnection({
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -805,7 +808,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
   // 网络丢失时，需要主动解除指定网络的绑定关系
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -814,7 +817,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   }
 });
 
@@ -833,7 +836,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
 
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: Error) => {
     let businessError = error as BusinessError;
     console.error(`Failed to setAppNet. Code:${businessError.code}, message:${businessError.message}`);
@@ -1267,10 +1270,10 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get net capabilities. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+    console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1293,7 +1296,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   })
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1353,7 +1356,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1372,7 +1375,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   })
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1496,8 +1499,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1507,8 +1510,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError|null, data: boolean|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1548,7 +1551,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.info(`isDefaultNetMetered success: ${data}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1629,8 +1632,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1640,8 +1643,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError|null, data: boolean|undefined) => {
-  console.error(JSON.stringify(error));
-  console.info(`data: ${data}`);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1681,7 +1684,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.info(`data: ${data}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1770,7 +1773,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -1782,7 +1785,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError|null) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -1831,7 +1834,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1885,7 +1888,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("report success");
+    console.info("Succeeded to report");
   });
 });
 ```
@@ -1934,7 +1937,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -2083,7 +2086,7 @@ let option: connection.QueryOptions = {
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  console.error(`Failed to get msg. Code:${err.code}, message:${err.message}`)
 });
 ```
 
@@ -2128,6 +2131,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
 > 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
+>
+> **网络切换说明：** 当设备从Wi-Fi网络切换至蜂窝数据网络时，配置过自定义DNS规则的应用可能出现无法访问目标系统或服务的情况。此时可开启后关闭飞行模式，或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)清除当前应用程序的自定义DNS规则后重试。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2244,7 +2249,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2257,7 +2262,7 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
   console.info("success");
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2385,7 +2390,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.removeCustomDnsRule("xxxx").then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2398,7 +2403,7 @@ connection.removeCustomDnsRule("xxxx").then(() => {
   console.info("success");
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2514,7 +2519,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.clearCustomDnsRules().then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2527,7 +2532,7 @@ connection.clearCustomDnsRules().then(() => {
   console.info("success");
 }).catch((error: Error) => {
   let businessError = error as BusinessError;
-  console.error(JSON.stringify(businessError));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -2539,8 +2544,8 @@ setPacFileUrl(pacFileUrl: string): void
 
 >**注意：**
 >
-> 1、本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
-> 2、该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
+> 1. 本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
+> 2. 该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
@@ -2605,7 +2610,7 @@ getPacFileUrl(): string
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
-console.info(pacFileUrl);
+console.info("Succeeded to get pacFileUrl");
 ```
 
 ## connection.findProxyForUrl<sup>20+</sup>
@@ -2616,9 +2621,9 @@ findProxyForUrl(url: string): string
 
 > **说明：**
 >
-> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
-> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。<br>
-> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
+> 1. 可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2. 如果调用本接口前未设置PAC脚本，则返回空字符串。<br>
+> 3. 由于[setPacFileUrl](#connectionsetpacfileurl20)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2779,9 +2784,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let netExtAttribute: string = "xxx";
   connection.setNetExtAttribute(netHandle, netExtAttribute).then(() => {
-    console.info("setNetExtAttribute success");
+    console.info("Succeeded to setNetExtAttribute");
   }).catch((error: BusinessError) => {
-    console.error(`setNetExtAttribute failed, err: ${error.code}`);
+    console.error("setNetExtAttribute failed, err: " + error.code);
   })
 });
 ```
@@ -2879,9 +2884,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetExtAttribute(netHandle).then((netExtAttribute: string) => {
-    console.info(`getNetExtAttribute: ${netExtAttribute}`);
+    console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
   }).catch((error: BusinessError) => {
-    console.error(`getNetExtAttribute failed, err: ${error.code}`);
+    console.error("getNetExtAttribute failed, err: " + error.code);
   })
 });
 ```
@@ -2931,7 +2936,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netHandle = connection.getDefaultNetSync();
 if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
-  console.info(`getNetExtAttribute: ${netExtAttribute}`);
+  console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
 }
 ```
 
@@ -2980,12 +2985,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
-    console.info(`ipAddress:${data[0].ipAddress}`);
-    console.info(`ifaceName:${data[0].iface}`);
-    console.info(`macAddress:${data[0].macAddress}`);
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
   }
 }).catch((error: BusinessError) => {
-  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3047,9 +3052,9 @@ let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
 let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
-  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 });
 ```
 
@@ -3114,10 +3119,10 @@ let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
 }
 ```
 
@@ -3169,9 +3174,9 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.xn--fsq092h.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
@@ -3215,9 +3220,9 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.示例.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getSystemNetPortStates<sup>24+</sup>
@@ -3342,9 +3347,9 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.info(JSON.stringify(data));
+    console.info('Succeeded to getDefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
 });
 ```
 
@@ -3402,9 +3407,9 @@ let dest: string = "www.example.com";
 let duration: number = 10;
 
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
-    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to getRTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
 });
 ```
 
@@ -3463,13 +3468,13 @@ connection.refreshGlobalHttpProxy().then((data: connection.HttpProxy) => {
 
 > **说明：**
 >
->（1）设备从无网络状态转变为有网络状态时，将触发netAvailable事件、netCapabilitiesChange事件和netConnectionPropertiesChange事件；
+>（1）设备从无网络状态转变为有网络状态时，将触发[on('netAvailable')](#onnetavailable)事件、[on('netCapabilitiesChange')](#onnetcapabilitieschange)事件和[on('netConnectionPropertiesChange')](#onnetconnectionpropertieschange)事件；
 >
->（2）接收到netAvailable事件后，若设备从有网络状态转变为无网络状态，将触发netLost事件；
+>（2）接收到[on('netAvailable')](#onnetavailable)事件后，若设备从有网络状态转变为无网络状态，将触发[on('netLost')](#onnetlost)事件；
 >
->（3）若未接收到netAvailable事件，则将直接接收到netUnavailable事件；
+>（3）若未接收到[on('netAvailable')](#onnetavailable)事件，则将直接接收到[on('netUnavailable')](#onnetunavailable)事件；
 >
->（4）设备从WiFi网络切换至蜂窝网络时，将先触发netLost事件（WiFi丢失），随后触发netAvailable事件（蜂窝可用）。
+>（4）设备从WiFi网络切换至蜂窝网络时，将先触发[on('netLost')](#onnetlost)事件（WiFi丢失），随后触发[on('netAvailable')](#onnetavailable)事件（蜂窝可用）。
 
 ### register
 
@@ -3479,7 +3484,7 @@ register(callback: AsyncCallback\<void>): void
 
 >**注意：**
 >
->使用完register接口后需要及时调用unregister取消注册。
+>使用完register接口后需要及时调用[unregister](#unregister)取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -3519,7 +3524,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3530,7 +3535,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError | null) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3574,7 +3579,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3585,7 +3590,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3593,7 +3598,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 on(type: 'netAvailable', callback: Callback\<NetHandle\>): void
 
-订阅网络可用事件。此接口需在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+订阅网络可用事件。此接口需在调用[register](#register)接口之前调用。若无需接收网络状态变化的回调通知，应使用[unregister](#unregister)取消订阅默认的网络状态变化通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3625,12 +3630,12 @@ netCon.on('netAvailable', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 
 ```
@@ -3672,12 +3677,12 @@ netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络阻塞状态事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 ```
@@ -3732,7 +3737,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
-订阅网络能力变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络能力变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3765,12 +3770,12 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3778,7 +3783,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
 
-订阅网络连接信息变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络连接信息变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3809,12 +3814,12 @@ netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionProper
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 ```
@@ -3823,7 +3828,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
 
-订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络丢失事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3894,19 +3899,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 创建NetConnection对象。
 let netCon: connection.NetConnection = connection.createNetConnection();
 
-// 先使用on接口订阅网络丢失事件
-netCon.onNetLost((value) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+// 先使用on接口订阅网络丢失事件。
+netCon.on('netLost', (data: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3915,7 +3920,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 on(type: 'netUnavailable', callback: Callback\<void>): void
 
-订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3947,12 +3952,12 @@ netCon.on('netUnavailable', () => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get unregister.Code:${error.code}, message:${error.message}`);
 });
 
 ```
@@ -3961,7 +3966,7 @@ netCon.unregister((error: BusinessError) => {
 
 onNetUnavailable(callback: Callback\<void\>): void
 
-订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -3987,18 +3992,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netCon: connection.NetConnection = connection.createNetConnection();
 
 // 先使用on接口订阅网络不可用事件。
-netCon.onNetUnavailable((value) => {
+netCon.on('netUnavailable', () => {
   console.info("Succeeded to get unavailable net event");
 });
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.register((error: BusinessError) => {
+  console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
+netCon.unregister((error: BusinessError) => {
+  console.error(`Failed to get unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 ## NetHandle
@@ -4070,7 +4075,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -4078,13 +4083,13 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info(`on message, message: ${JSON.stringify(value.message)}, remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
+      console.info("Succeeded to get message, message:" + value.message + ", Succeeded to get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -4094,14 +4099,14 @@ interface Data {
         return;
       }
       udp.on('message', (data: Data) => {
-        console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+        console.info("Succeeded to get data: " + JSON.stringify(data));
       });
       netHandle.bindSocket(udp, (error: BusinessError, data: void) => {
         if (error) {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
         }
       });
     });
@@ -4166,11 +4171,11 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error('Failed to bind');
         return;
       }
       netHandle.bindSocket(tcp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -4190,7 +4195,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
         console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
       });
       netHandle.bindSocket(udp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -4383,7 +4388,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+    console.error(`Failed to get addresses by name. Code:${err.code}, message:${err.message}`);
   });
 });
 ```
@@ -4734,7 +4739,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(JSON.stringify(error));
+   console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
  });
 });
 ```
@@ -4759,7 +4764,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
     bearerPrivateIdentifier: `${networkId}`
   });
   netConnectionWlan.register((error: BusinessError|null) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get register.Code:${error.code}, message:${error.message}`);
   });
 });
 ```

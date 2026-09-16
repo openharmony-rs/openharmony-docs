@@ -25,7 +25,9 @@ import { TestRunner } from '@kit.TestKit';
 
 ## TestRunner
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+TestRunner是单元测试框架的模板，开发者可通过继承这个类并覆盖它的所有方法，实现自定义的单元测试框架能力。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -59,7 +61,7 @@ export default class UserTestRunner implements TestRunner {
 
 onPrepare(): void
 
-为运行测试用例准备单元测试环境。
+为运行测试用例准备单元测试环境。需要在继承TestRunner类时覆盖此方法。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

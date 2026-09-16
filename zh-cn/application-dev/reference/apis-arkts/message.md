@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 Message表示消息队列中的一个消息，消息可以携带数据和回调函数。构造消息时需要指定[MessageHandler](./message_handler.md)来指定消息处理的逻辑。
 

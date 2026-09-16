@@ -200,7 +200,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 待创建的文件类型，IMAGE或者VIDEO类型。              |
-| extension  | string        | 是   | 文件扩展名，例如：'jpg'。              |
+| extension  | string        | 是   | 文件扩展名。必须为合法的图片或视频扩展名，如jpg、png、gif、mp4、mov等。 |
 | options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，例如：{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ]|
 
 **返回值：**
@@ -378,7 +378,7 @@ getAsset(): PhotoAsset
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | 返回当前资产变更请求中的资产。 |
+| [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) | 返回当前资产变更请求中的资产。对于创建资产的变更请求，在调用接口applyChanges的提交生效之前，该接口会返回null。 |
 
 **错误码：**
 
@@ -495,7 +495,7 @@ getWriteCacheHandler(): Promise&lt;number&gt;
 | -------- | ---------------------------------------- |
 | 201   | Permission denied.        |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail.        |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.        |
 | 14000016 |  Operation Not Support.     |
 
 **示例：**
@@ -511,6 +511,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.VIDEO;
     let extension: string = 'mp4';
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
+    // 获取临时文件写句柄，用于写入数据。
     let fd: number = await assetChangeRequest.getWriteCacheHandler();
     console.info('getWriteCacheHandler successfully');
     // write data into fd..
@@ -632,7 +633,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 saveCameraPhoto(): void
 
-保存相机拍摄的照片。
+拍照场景下，使用该接口保存相机拍摄的照片资源。
+
+> **说明：**
+>
+> - 非YUV拍摄模式下，照片资源保存的编码格式与[CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)保持一致。
+> - YUV拍摄模式下，该接口无法指定编码格式，图片资源保存为默认的jpg格式。从API version 13开始，如需指定编码格式，请使用[saveCameraPhoto](#savecameraphoto13)接口。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -667,7 +673,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 saveCameraPhoto(imageFileType: ImageFileType): void
 
-保存相机拍摄的照片。需要指定保存的类型。
+拍照场景下，使用该接口保存相机拍摄的照片资源。
+
+> **说明：**
+> 
+> - 非YUV拍摄模式下，照片资源保存的编码格式与[CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)保持一致。
+> - YUV拍摄模式下，该接口根据[ImageFileType](arkts-apis-photoAccessHelper-e.md#imagefiletype13)将YUV对象编码为指定格式。
+> - 当该接口与[addResource](#addresource11-1)组合使用时，照片资源保存的编码格式与[addResource](#addresource11-1)添加资源的编码格式保持一致。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -692,7 +704,6 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { image } from '@kit.ImageKit';
 
 async function example(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info('saveCameraPhotoDemo');
@@ -747,7 +758,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 setOrientation(orientation: number): void
 
-修改图片的旋转角度。
+设置图片的显示旋转角度。本接口通过修改exif元数据实现对图片旋转角度的调整。
+
+> **说明：**
+> 
+> - bmp、gif、ico、svg图片本身不包含exif元数据信息，因此无法通过本接口调整旋转角度。
+> - dng图片的exif元数据不支持编辑，因此无法通过本接口调整旋转角度。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -755,7 +771,7 @@ setOrientation(orientation: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| orientation | number | 是   | 待修改的图片旋转角度，且只能为0、90、180、270。 |
+| orientation | number | 是   | 待修改的图片旋转角度，单位：度（°），且只能为0°、90°、180°、270°。 |
 
 **错误码：**
 
@@ -784,11 +800,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
   let asset = await fetchResult.getFirstObject();
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // 修改图片的旋转角度为90°（参数只能为0°、90°、180°、270°）。
   assetChangeRequest.setOrientation(90);
   phAccessHelper.applyChanges(assetChangeRequest).then(() => {
     console.info('apply setOrientation successfully');
   }).catch((err: BusinessError) => {
     console.error(`apply setOrientation failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
+## setFavorite
+
+setFavorite(favoriteState: boolean): void
+
+将文件设置为收藏文件。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| favoriteState | boolean | 是    | 是否设置为收藏文件，true表示收藏；false表示取消收藏。      |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 14000011       | System inner fail.         |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setFavoriteDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+  // 将文件设置为收藏文件（入参为true表示收藏，false表示取消收藏）。
+  assetChangeRequest.setFavorite(true);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setFavorite successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setFavorite failed with error: ${err.code}, ${err.message}`);
   });
 }
 ```

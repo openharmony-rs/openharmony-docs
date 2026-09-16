@@ -51,7 +51,7 @@ The operation failed. Possible cause: 1.Image upload exception. 2. Decoding proc
 
 请检查图片并按指示操作重新解码。
 
-## 62980097 pixelmap序列化传输失败
+## 62980097 Pixelmap序列化传输失败
 
 **错误信息**
 
@@ -59,7 +59,7 @@ IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception
 
 **错误描述**
 
-pixelmap序列化传输失败。
+Pixelmap序列化传输失败。
 
 **可能原因**
 
@@ -193,7 +193,7 @@ The image data is not supported.
 
 **错误信息**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty Pixelmap.
 
 **错误描述**
 
@@ -492,7 +492,7 @@ Failed to encode the image.
 
 **错误信息**
 
-Add pixelmap out of range.
+Add Pixelmap out of range.
 
 **错误描述**
 
@@ -949,7 +949,7 @@ PixelMap设置内存标识符失败。
 
 **处理步骤**
 
-检查是否已释放pixelmap实例。检查内存类型是否匹配。
+检查是否已释放Pixelmap实例。检查内存类型是否匹配。
 
 ## 62980302 内存拷贝失败
 
@@ -1092,11 +1092,16 @@ DMA内存不存在。
 
 **可能原因**
 
-没有使用DMA内存解码HDR图片。
+当前操作要求PixelMap使用DMA内存，但传入的PixelMap未使用DMA内存。例如，对共享内存的PixelMap读写HDR元数据，或获取其底层NativeBuffer。
 
 **处理步骤**
 
-使用正确的内存分配类型。
+重新创建使用DMA内存的PixelMap，并使用新对象调用原接口。根据输入数据选择创建方式：
+
+- 解码图片：从API版本15开始，可调用[createPixelMapUsingAllocator](arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA。
+- 从像素数据创建：从API版本20开始，可调用[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_PixelmapNative_CreatePixelmapUsingAllocator()](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_MODE_DMA。
+
+关于DMA内存的更多说明，请参见[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)和[图片解码内存优化(C/C++)](../../media/image/image-allocator-type-c.md)。
 
 ## 7600174 DMA操作失败
 
@@ -1488,7 +1493,7 @@ Unsupported metadata.
 
 **错误信息**
 
-Unsupported options, e.g, cannot convert image into desired pixel format.
+Unsupported options, e.g., cannot convert image into desired pixel format.
 
 **错误描述**
 

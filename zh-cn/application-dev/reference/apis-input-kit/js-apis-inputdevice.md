@@ -485,7 +485,7 @@ struct Index {
 
 on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。建议在应用主线程执行此操作，且需要在此线程退出前取消监听。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
@@ -647,7 +647,7 @@ struct Index {
 
 off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
+取消监听输入设备的热插拔事件。使用callback异步回调。取消监听需要与注册监听在同一线程执行。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
@@ -973,9 +973,9 @@ struct Index {
 
 ## inputDevice.supportKeys<sup>9+</sup>
 
-ArkTS-Dyn: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
+ArkTS-Dyn: supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void
 
-ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
+ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void
 
 查询指定输入设备是否支持指定按键，使用callback异步回调。
 
@@ -1854,6 +1854,7 @@ struct Index {
 | uniq<sup>9+</sup>    | string                                 | 否 | 否 | 输入设备的唯一标识。                                         |
 | isVirtual<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为虚拟设备。<br>true表示是虚拟设备，false表示是非虚拟设备。当该字段不存在时，默认值为false。                                      |
 | isLocal<sup>23+</sup>    | boolean                                 | 否 | 是 | 输入设备是否为本地设备。<br>true表示是本地设备，false表示是非本地设备。当该字段不存在时，默认值为false。                                       |
+| displayId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 是 | 绑定的目标显示器ID。当系统中有绑定关系时存在该字段，未绑定时不存在该字段。<br>**起始版本**：26.1.0|
 
 ## AxisType<sup>9+</sup>
 
@@ -1883,7 +1884,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 输入设备的轴信息。
 
-**系统能力**： SystemCapability.MultimodalInput.Input.InputDevice
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 **ArkTS-Dyn起始版本**：8
 

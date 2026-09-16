@@ -16,7 +16,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 目前支持通过外接鼠标、手写笔以及触控板触发。
+> - Tips控制依赖设备可以触发[悬浮事件](./ts-universal-events-hover.md)，对于无法触发[悬浮事件](./ts-universal-events-hover.md)的硬件设备无法使用Tips控制。
 
 ## bindTips
 
@@ -28,7 +28,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 > **说明：**
 >
-> 当绑定bindTips的组件设置通用属性[enable](ts-universal-attributes-enable.md#enabled)为false时，仍支持弹出悬浮气泡。
+> 当绑定bindTips的组件设置通用属性[enabled](ts-universal-attributes-enable.md#enabled)为false时，仍支持弹出悬浮气泡。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -44,7 +44,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 弹窗信息内容。设置为undefined时，默认不显示信息内容。 |
+| message|  ArkTS-Dyn: [TipsMessageType](#tipsmessagetype)<br/>ArkTS-Sta: [TipsMessageType](#tipsmessagetype) \| undefined                                                     | 是   | 悬浮气泡信息内容。设置为undefined时，默认不显示信息内容。 |
 | options  | [TipsOptions](#tipsoptions类型说明) | 否   | 配置悬浮气泡的参数。<br/>默认值：<br/>{<br/>appearingTime: 700,<br/>disappearingTime: 300,<br/>appearingTimeWithContinuousOperation: 300,<br/>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br/>arrowPointPosition: ArrowPointPosition.CENTER,<br/>arrowWidth: 16,arrowHeight: 8,<br/>showAtAnchor: TipsAnchorType.TARGET<br/>} |
 
 **返回值：**
@@ -75,7 +75,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 type TipsMessageType = ResourceStr | StyledString
 
-悬浮气泡弹窗信息。
+悬浮气泡信息类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -100,6 +100,20 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+/**
+ * 示例用途：演示bindTips方法的基本用法，为按钮组件绑定悬浮气泡
+ * 功能说明：当鼠标悬停在按钮上时显示Tips气泡，离开时自动隐藏
+ * 
+ * 关键参数说明：
+ * - message: "Tips" - 悬浮气泡显示的文本内容
+ * - appearingTime: 700 - 悬浮气泡显示延迟时间（毫秒）
+ * - disappearingTime: 300 - 悬浮气泡隐藏延迟时间（毫秒）
+ * - appearingTimeWithContinuousOperation: 300 - 连续操作时气泡显示延迟时间（毫秒）
+ * - disappearingTimeWithContinuousOperation: 0 - 连续操作时气泡隐藏延迟时间（毫秒）
+ * - enableArrow: true - 是否显示气泡箭头
+ * 
+ * 回调函数：无回调函数，通过鼠标悬停事件自动触发显示和隐藏
+ */
 @Entry
 @Component
 struct TipsExample {
@@ -125,8 +139,26 @@ ArkTS-Sta示例：
 'use static'
 // xxx.ets
 
+/**
+ * 示例用途：演示bindTips方法在ArkTS-Sta中的基本用法，为按钮组件绑定悬浮气泡
+ * 功能说明：当鼠标悬停在按钮上时显示Tips气泡，离开时自动隐藏
+ * 
+ * 关键参数说明：
+ * - message: "Tips" - 悬浮气泡显示的文本内容
+ * - appearingTime: 700 - 悬浮气泡显示延迟时间（毫秒）
+ * - disappearingTime: 300 - 悬浮气泡隐藏延迟时间（毫秒）
+ * - appearingTimeWithContinuousOperation: 300 - 连续操作时气泡显示延迟时间（毫秒）
+ * - disappearingTimeWithContinuousOperation: 0 - 连续操作时气泡隐藏延迟时间（毫秒）
+ * - enableArrow: true - 是否显示气泡箭头
+ * 
+ * 类型约束说明：
+ * - position参数需要明确类型为Position
+ * - padding参数需要明确类型为Padding
+ * 
+ * 回调函数：无回调函数，通过鼠标悬停事件自动触发显示和隐藏
+ */
 import { Entry, Component, Flex, FlexDirection, Button,
-  Position, Padding } from '@ohos.arkui.component';
+  Position, Padding } from '@kit.ArkUI';
 @Entry
 @Component
 struct TipsExample {
@@ -156,6 +188,25 @@ ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 
+/**
+ * 示例用途：演示多个组件绑定bindTips的连续显示和隐藏效果
+ * 功能说明：当鼠标在不同按钮间移动时，悬浮气泡按照配置的时延依次显示和隐藏
+ * 
+ * 关键参数说明：
+ * - appearingTime: 700 - 悬浮气泡显示延迟时间（毫秒）
+ * - disappearingTime: 300 - 悬浮气泡隐藏延迟时间（毫秒）
+ * - appearingTimeWithContinuousOperation: 300 - 连续操作时气泡显示延迟时间（毫秒）
+ *   当从一个按钮移动到另一个按钮时，新气泡的显示延迟时间
+ * - disappearingTimeWithContinuousOperation: 0 - 连续操作时气泡隐藏延迟时间（毫秒）
+ *   当从一个按钮移动到另一个按钮时，原气泡的隐藏延迟时间
+ * - enableArrow: true - 是否显示气泡箭头
+ * 
+ * 连续操作场景说明：
+ * - appearingTimeWithContinuousOperation 和 disappearingTimeWithContinuousOperation
+ *   用于控制多个组件间的气泡切换行为，实现更流畅的用户体验
+ * 
+ * 回调函数：无回调函数，通过鼠标悬停事件自动触发显示和隐藏
+ */
 @Entry
 @Component
 struct TipsExample {
@@ -193,8 +244,31 @@ ArkTS-Sta示例：
 'use static'
 // xxx.ets
 
+/**
+ * 示例用途：演示多个组件绑定bindTips在ArkTS-Sta中的连续显示和隐藏效果
+ * 功能说明：当鼠标在不同按钮间移动时，悬浮气泡按照配置的时延依次显示和隐藏
+ * 
+ * 关键参数说明：
+ * - appearingTime: 700 - 悬浮气泡显示延迟时间（毫秒）
+ * - disappearingTime: 300 - 悬浮气泡隐藏延迟时间（毫秒）
+ * - appearingTimeWithContinuousOperation: 300 - 连续操作时气泡显示延迟时间（毫秒）
+ *   当从一个按钮移动到另一个按钮时，新气泡的显示延迟时间
+ * - disappearingTimeWithContinuousOperation: 0 - 连续操作时气泡隐藏延迟时间（毫秒）
+ *   当从一个按钮移动到另一个按钮时，原气泡的隐藏延迟时间
+ * - enableArrow: true - 是否显示气泡箭头
+ * 
+ * 连续操作场景说明：
+ * - appearingTimeWithContinuousOperation 和 disappearingTimeWithContinuousOperation
+ *   用于控制多个组件间的气泡切换行为，实现更流畅的用户体验
+ * 
+ * 类型约束说明：
+ * - position参数需要明确类型为Position
+ * - padding参数需要明确类型为Padding
+ * 
+ * 回调函数：无回调函数，通过鼠标悬停事件自动触发显示和隐藏
+ */
 import { Entry, Component, Flex, FlexDirection, Button,
-  Position, Padding } from '@ohos.arkui.component';
+  Position, Padding } from '@kit.ArkUI';
 
 @Entry
 @Component

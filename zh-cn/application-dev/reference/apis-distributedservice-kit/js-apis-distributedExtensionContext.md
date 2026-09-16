@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-DistributedExtensionContext模块是DistributedExtensionAbility的上下文环境，继承自ExtensionContext。
+DistributedExtensionContext模块是DistributedExtensionAbility（分布式扩展能力）的上下文环境，继承自ExtensionContext（扩展上下文）。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@ DistributedExtensionContext模块是DistributedExtensionAbility的上下文环�
 
 ## 使用说明
 
-在使用DistributedExtensionContext的功能前，需要通过DistributedExtensionAbility子类实例获取。
+通过DistributedExtensionAbility子类实例获取DistributedExtensionContext。
 
 <!--code_no_check-->
 ```ts
@@ -35,7 +35,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
-连接远端ServiceExtensionAbility。
+将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility，建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备限定协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#distributedextensioncontextdisconnectserviceextensionability)断开连接并释放资源。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -49,14 +49,14 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | Want类型参数，传入需要连接的远端ServiceExtensionAbility的信息，如ability名称、bundle名称、deviceId等。 |
-| options | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | 是   | ConnectOptions类型的回调函数，返回服务连接成功、断开或连接失败后的信息。 |
+| want    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 传入需要连接的远端ServiceExtensionAbility（服务扩展能力）的Want信息。系统将基于这些信息建立到远端设备的连接。 |
+| options | [ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md) | 是   | ConnectOptions类型的配置对象，包含服务连接状态回调。连接成功时触发onConnect，连接断开时触发onDisconnect，连接失败时触发onFailed。 |
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| long | 返回连接ID，后续通过该ID断开连接。该ID由connectServiceExtensionAbility返回时分配，为递增数字。 |
+| long | 返回连接ID，后续通过该ID断开连接。 |
 
 **错误码：**
 
@@ -85,28 +85,38 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'DistributedExtAbility';
+const DOMAIN = 0xFF00;
 
 export default class DistributedExtAbility extends DistributedExtension {
 
   context:DistributedExtensionContext = new DistributedExtensionContext;
 
   onCreate (want:Want) {
+    hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
   onDestroy () {
+    hilog.info(DOMAIN, TAG, 'onDestroy');
     this.testDisconnectServiceExtensionAbility();
   }
   
   connectId:long = -1;
   
   private testConnectServiceExtensionAbility() {
+    hilog.info(DOMAIN, TAG, 'testConnectServiceExtensionAbility');
     let deviceId1: string = '';
     try {
       let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
       deviceId1 = dmInstance.getLocalDeviceId();
+      const message: string = 'local device id: ' + deviceId1;
+      hilog.info(DOMAIN, TAG, message);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
+      console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
     }
     const targetWant:Want = {
       deviceId: deviceId1,
@@ -115,16 +125,26 @@ export default class DistributedExtAbility extends DistributedExtension {
     }
     const options: ConnectOptions = {
       onConnect: (name: ElementName, remote: rpc.IRemoteObject): void => {
+        const message: string = 'onConnect: ' + name;
+        hilog.info(DOMAIN, TAG, message);
       },
       onDisconnect: (name: ElementName): void => {
+        const message: string = 'onDisconnect: ' + name;
+        hilog.info(DOMAIN, TAG, message);
       },
       onFailed: (code: int): void => {
+        const message: string = 'onFailed: code=' + code;
+        hilog.info(DOMAIN, TAG, message);
       }
     };
     try {
       const id = this.context.connectServiceExtensionAbility(targetWant, options);
       this.connectId = id;
+      const message: string = 'connect called, id=' + id;
+      hilog.info(DOMAIN, TAG, message);
     } catch (err) {
+      const message: string = 'connect error: ' + err;
+      hilog.info(DOMAIN, TAG, message);
     }
   }
 ```
@@ -135,7 +155,7 @@ export default class DistributedExtAbility extends DistributedExtension {
 
 disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
-断开与远端ServiceExtensionAbility的连接。使用Promise异步回调。
+断开与远端ServiceExtensionAbility的连接，与[connectServiceExtensionAbility](#distributedextensioncontextconnectserviceextensionability)配对使用。调用connectServiceExtensionAbility后，必须在使用完毕后调用此方法释放连接资源，需要使用connectServiceExtensionAbility返回的连接ID调用此方法。断开连接之后开发者需要将连接成功时onConnect回调中返回的remote对象置空，以避免后续误用已失效的代理对象。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -149,13 +169,13 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 | 参数名     | 类型   | 必填 | 说明                                                     |
 | ---------- | ------ | ---- | -------------------------------------------------------- |
-| connection | long | 是   | 连接ID，即connectServiceExtensionAbility返回的long值。 |
+| connection | long | 是   | 连接ID，必须使用connectServiceExtensionAbility返回的连接ID值。 |
 
 **返回值：**
 
 | 类型            | 说明                               |
 | --------------- | ---------------------------------- |
-| Promise\<void\> | Promise对象，无返回结果的Promise。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -174,22 +194,29 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 import { Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = 'DistributedExtAbility';
+const DOMAIN = 0xFF00;
 
 export default class DistributedExtAbility extends DistributedExtension {
 
   context:DistributedExtensionContext = new DistributedExtensionContext;
 
   onCreate (want:Want) {
+    hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
   onDestroy () {
+    hilog.info(DOMAIN, TAG, 'onDestroy');
     this.testDisconnectServiceExtensionAbility();
   }
   
   connectId:long = -1;
   
   private testDisconnectServiceExtensionAbility() {
+    hilog.info(DOMAIN, TAG, 'testDisconnectServiceExtensionAbility');
     this.context.disconnectServiceExtensionAbility(this.connectId);
   }
 }

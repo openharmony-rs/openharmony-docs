@@ -18,11 +18,11 @@
 - `-stateVariable`：打印状态变量及关联的组件和同步对象的信息。ArkTS-Dyn当前命令不支持`-r`递归dump，ArkTS-Sta支持`-r`递归dump状态变量。
 - `-registeredElementIds`：打印当前自定义组件拥有的elementId。
 - `-inactiveComponents`：[组件冻结](./state-management/arkts-custom-components-freeze.md)场景下非激活的组件列表。
-- `-dumpAll`：打印自定义组件树、状态变量和自定义组件的子组件和脏节点列表。ArkTS-Sta不打印脏节点列表。
+- `-dumpAll`：打印自定义组件树、状态变量、自定义组件build()方法中创建的子组件及脏节点列表。ArkTS-Sta不打印脏节点列表。
 - `-h`：打印帮助信息。
 
 除上述命令外，开发者可以额外输入以下命令选择递归打印或指定打印某一个组件id的信息，如果没有指定，则默认打印页面的根节点的信息。
-- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
+- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认打印根节点信息。
 - `-viewId`：打印指定viewId的自定义组件的信息。
 
 ArkTS-Dyn和ArkTS-Sta两种模式的dump输出存在差异，下面分别介绍。
@@ -32,7 +32,9 @@ ArkTS-Dyn和ArkTS-Sta两种模式的dump输出存在差异，下面分别介绍�
 该示例为嵌套两层子组件的典型ArkTS-Dyn示例，使用了装饰器[\@State](./state-management/arkts-state.md)和 [\@Link](./state-management/arkts-link.md)。开发者可组合使用上述命令，展示前端组件树、状态变量和其影响的组件等信息。
 
 
-```ts
+<!-- @[ui_inspector_profiler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/UIInspectorProfiler.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Page {
@@ -90,7 +92,7 @@ hdc shell hidumper -s WindowManagerService -a '-a'
    - `View Hierarchy`：前端自定义组件树结构信息。
    - `State variables`：根节点状态变量。从下面的信息可以看到`Page`下有状态变量`@State 'message'[0]`的具体信息：
      - `[0]`代表状态变量id。
-     - `Owned by @Component 'Page'[4]`：当前状态变量属于组件`'Page'[4]`,`[4]`为自定义组件id。
+     - `Owned by @Component 'Page'[4]`：当前状态变量属于组件`'Page'[4]`，`[4]`为自定义组件id。
      - `Sync peers`：当前状态变量的同步对象，即`@State message`改变会通知`@Link 'message'[-1] <@Component 'Child'[7]>`刷新。
      - `dependencies`：
        - `variable assignment affects elmtIds`：状态变量改变会触发的组件的刷新。例如，`@State message`的改变会触发`Text[6]`的刷新。

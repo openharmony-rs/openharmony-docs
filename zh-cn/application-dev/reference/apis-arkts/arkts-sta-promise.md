@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供Promise异步操作相关的类型和接口说明。Promise是一种用于处理异步操作的对象，可以将异步操作转换为类似于同步操作的风格，以方便代码编写和维护。Promise表示一个异步操作的最终完成（或失败）情况及其结果值，提供了优雅的方式处理异步操作，避免传统回调函数的层层嵌套。
 

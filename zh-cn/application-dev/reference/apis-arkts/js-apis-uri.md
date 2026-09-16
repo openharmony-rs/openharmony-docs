@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供URI字符串解析功能，支持URI各组成部分（协议、主机、端口、路径、查询参数和片段等）的提取与设置，以及URI编码/解码、比较判断、路径规范化和查询参数操作等能力。
 
@@ -67,7 +67,7 @@ import { uri } from '@kit.ArkTS';
         - userinfo: 用户信息，与host通过@进行分隔，根据需要填写。
         - host: 服务器的主机名部分，当authority存在时，此项必填。
         - port: 服务器端口，默认值为-1。根据需要填写。
-    - path: 路径信息，位于host与query之间以 / 进行分隔，根据需要填写。
+    - path: 路径信息，位于authority之后或host之后（authority不存在时），以/开头，在query之前，根据需要填写。
     - query: 查询部分，位于path和fragment之间，以 ? 开头的键值对格式，以&分隔键值对，以=分隔键值，根据需要填写。
 - fragment: 片段部分，以#与scheme-specific-part进行分隔，根据需要填写。
 
@@ -113,7 +113,7 @@ console.info(uriObj4.query); // foo=1&bar=2
 const uriObj5 = new uri.URI('dataability:///com.example.DataAbility');
 console.info(uriObj5.host); // null
 console.info(uriObj5.fragment); // null
-console.info(uriObj5.path); // /com.example.DataAbility:
+console.info(uriObj5.path); // /com.example.DataAbility
 console.info(uriObj5.scheme); // dataability
 console.info(uriObj5.userInfo); // null
 console.info(uriObj5.port); // -1
@@ -279,9 +279,9 @@ normalize(): URI
 >
 > 如果此URI是不透明的，或者其路径已经是规范形式，则返回该URI。否则将构造一个新的URI，该URI与当前URI相同，唯一的区别是其路径通过规范化当前URI的路径来计算，具体规则如下：
 >
->  1.移除所有的 .（点）段。
+>  1. 移除所有的 .（点）段。
 >
->  2.如果 ..（双点）段前面有一个非 .. 段，则将这两个段一起移除。重复此步骤，直到不再适用为止。
+>  2. 如果 ..（双点）段前面有一个非 .. 段，则将这两个段一起移除。重复此步骤，直到不再适用为止。
 >
 >如果路径规范化后以 ..（双点）段开头，这表明之前没有足够的非 .. 段可以移除，因此路径将以 .. 段开始。
 
@@ -734,7 +734,7 @@ console.info(uriInstance.getSegment().toString()); // path,to,image.jpg
 
 ### createFromParts<sup>12+</sup>
 
-createFromParts(scheme: string, ssp: string, fragment: string): URI
+static createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 根据提供的方案（scheme）、方案特定部分（ssp）以及片段（fragment）创建一个新的URI对象。
 

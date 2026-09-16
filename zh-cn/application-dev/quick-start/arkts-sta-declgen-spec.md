@@ -1,10 +1,10 @@
 # ArkTS动静态类型互操作声明文件生成工具Declgen规格指南
 <!--Kit: ArkTS-->
 <!--Subsystem: RuntimeCore-->
-<!--Owner: @lijin1039-->
-<!--Designer: @lijin1039-->
+<!--Owner: @jiangkaiwen678217-->
+<!--Designer: @luchenxu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 Declgen是互操作场景下，在ArkTS-Dyn与ArkTS-Sta之间进行声明文件双向转换的工具，支持以下两个方向：
 
@@ -15,6 +15,48 @@ Declgen是互操作场景下，在ArkTS-Dyn与ArkTS-Sta之间进行声明文件�
 > **说明：**
 >
 > ArkTS动静态类型互操作主体规范详见[ArkTS动静态类型易用互操作规格指南](arkts-sta-interop-spec.md)，本指南为工具实现参考，如两者冲突，以主体规范为准。
+
+## 互操作声明文件生成范围
+
+当某文件被另一动静态类别的文件引用（如ArkTS-Sta源码引用ArkTS-Dyn源码）时，该文件即为互操作入口，须在`interop-config.json5`中显式配置。**互操作闭包**指从互操作入口出发，沿依赖解析图可达的同类别依赖（含入口自身）的集合。Declgen根据[interop-config.json5配置文件](arkts-sta-interop-configuration.md)中配置的互操作入口生成互操作声明文件，生成范围为互操作入口的互操作闭包。
+
+例如，某模块中的文件及其依赖关系如下：
+
+- ArkTS-Sta源码`A.ets`引用了ArkTS-Dyn源码`D.ets`。
+- `A.ets`依赖ArkTS-Sta源码`B.ets`和`C.ets`。
+- `D.ets`依赖ArkTS-Dyn源码`F.ets`。
+- ArkTS-Dyn源码`G.ets`未被上述任何文件依赖。
+
+其中，`A.ets`对`D.ets`的引用跨越了动静态类别边界，使`D.ets`成为互操作入口，需在`interop-config.json5`中配置为动态互操作入口。从`D.ets`出发，沿依赖解析图可达的同类别依赖仅有`F.ets`，因此互操作闭包为`D.ets`和`F.ets`，Declgen会为闭包内的每个文件生成对应的互操作声明文件。`B.ets`和`C.ets`为ArkTS-Sta源码，与动态互操作入口`D.ets`类别不同，且从入口不可达；`G.ets`虽为ArkTS-Dyn源码，但从入口不可达，均不在闭包内。
+
+反之，当ArkTS-Dyn源码引用ArkTS-Sta源码时，被引用的ArkTS-Sta源码成为静态互操作入口，其闭包的计算方式相同。
+
+**图1** 互操作闭包示意图
+
+```mermaid
+graph LR
+    subgraph closure ["互操作闭包（生成范围）"]
+        D["D.ets<br/>ArkTS-Dyn源码（互操作入口）"]
+        F["F.ets<br/>ArkTS-Dyn源码"]
+        D --> F
+    end
+    A["A.ets<br/>ArkTS-Sta源码（引用方）"] -.->|引用| D
+    A --> B["B.ets<br/>ArkTS-Sta源码"]
+    A --> C["C.ets<br/>ArkTS-Sta源码"]
+    G["G.ets<br/>ArkTS-Dyn源码（不可达）"]
+
+    classDef inClosure fill:#dbeafe,stroke:#337ecc,stroke-width:2px
+    classDef outClosure fill:#f2f2f2,stroke:#999999,stroke-dasharray:5 5,color:#666666
+    class D,F inClosure
+    class A,B,C,G outClosure
+    linkStyle 0 stroke:#337ecc
+    linkStyle 1 stroke:#999999
+    linkStyle 2 stroke:#999999
+    linkStyle 3 stroke:#999999
+    style closure fill:#f0f7ff,stroke:#337ecc,stroke-width:2px
+```
+
+上图中，虚线箭头表示跨动静态类别的引用关系，被引用的文件即互操作入口；实线箭头表示依赖方向。蓝色实线框内的文件构成互操作闭包，Declgen会为其生成互操作声明文件；灰色虚线节点均不在闭包内。
 
 ## Ambient Declaration规格
 

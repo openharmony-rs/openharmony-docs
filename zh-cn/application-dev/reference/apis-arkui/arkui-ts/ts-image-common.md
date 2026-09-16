@@ -142,7 +142,7 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值:**
+**返回值：**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |

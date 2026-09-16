@@ -880,7 +880,7 @@ int32_t OH_ArkUI_DragEvent_StartDataLoading(ArkUI_DragEvent* event, OH_UdmfGetDa
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | ArkUI_DragEvent事件指针。 |
 | [OH_UdmfGetDataParams](../apis-arkdata/capi-udmf-oh-udmfgetdataparams.md)* options | OH_UdmfGetDataParams参数指针。 |
-| char* key | 返回数据设置成功之后的key值，字符串长度不小于[UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#udmf_key_buffer_len)。 |
+| char* key | 返回数据设置成功之后的key值，字符串长度不小于[UDMF_KEY_BUFFER_LEN](../apis-arkdata/capi-udmf-h.md#宏定义)。 |
 | unsigned int keyLen | 表示key字符串的长度。 |
 
 **返回：**
@@ -1641,7 +1641,7 @@ int32_t OH_ArkUI_DragAction_RegisterStatusListener(ArkUI_DragAction* dragAction,
 | -- | -- |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)* dragAction | 拖拽行为对象。 |
 | void* userData | 应用自定义数据。 |
-| listener | 状态监听回调，回调触发时，系统会返回一个拖拽状态对象指针，该指针会在回调执行完成后被销毁，应用不应再持有。 |
+| void(\*listener)(ArkUI_DragAndDropInfo\* dragAndDropInfo, void\* userData) | 状态监听回调。dragAndDropInfo为系统返回的拖拽状态对象指针，该指针会在回调执行完成后被销毁，应用不应再持有；userData为注册时传入的应用自定义数据。 |
 
 **返回：**
 
@@ -1799,7 +1799,7 @@ int32_t OH_ArkUI_DragEvent_RequestDragEndPending(ArkUI_DragEvent* event, int32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode)  当前阶段不允许该操作。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode)  当前拖放事件处理阶段不允许执行请求的操作。 |
 
 ### OH_ArkUI_NotifyDragResult()
 
@@ -1826,7 +1826,7 @@ int32_t OH_ArkUI_NotifyDragResult(int32_t requestIdentify, ArkUI_DragResult resu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode)  当前阶段不允许该操作。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode)  当前拖放事件处理阶段不允许执行请求的操作。 |
 
 ### OH_ArkUI_NotifySuggestedDropOperation()
 
@@ -1846,7 +1846,7 @@ int32_t OH_ArkUI_NotifySuggestedDropOperation(int32_t requestIdentity, ArkUI_Dro
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t requestIdentify | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
+| int32_t requestIdentity | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
 | [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) operation | 落入行为类型[ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)。 |
 
 **返回：**
@@ -1873,7 +1873,7 @@ int32_t OH_ArkUI_NotifyDisableDefaultDropAnimation(int32_t requestIdentity, bool
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t requestIdentify | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
+| int32_t requestIdentity | 由[OH_ArkUI_DragEvent_RequestDragEndPending](capi-drag-and-drop-h.md#oh_arkui_dragevent_requestdragendpending)返回的标识符，用来标识本次拖拽事件。 |
 | bool disable | 通知是否禁用系统默认落入动画。true表示禁用系统默认落入动画，false表示使用系统默认落入动画。 |
 
 **返回：**
@@ -1906,7 +1906,7 @@ int32_t OH_ArkUI_NotifyDragEndPendingDone(int32_t requestIdentify)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode)  当前阶段不允许该操作。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)  成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         [ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED](capi-native-type-h.md#arkui_errorcode)  当前拖放事件处理阶段不允许执行请求的操作。 |
 
 ### OH_ArkUI_EnableDropDisallowedBadge()
 
@@ -2041,5 +2041,4 @@ ArkUI_ErrorCode OH_ArkUI_DragEvent_IsRemote(ArkUI_DragEvent* event, bool* isRemo
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
-
 

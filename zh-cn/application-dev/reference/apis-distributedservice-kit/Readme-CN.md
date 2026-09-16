@@ -11,6 +11,7 @@
   - [@ohos.distributedDeviceManager (设备管理)](js-apis-distributedDeviceManager.md)
   - [@ohos.distributedsched.abilityConnectionManager (应用多端协同管理)](js-apis-distributed-abilityConnectionManager.md)
   - [@ohos.application.DistributedExtensionAbility (协同Extension)](js-apis-distributedExtensionAbility.md)
+  - [@ohos.application.DistributedExtensionContext (协同Extension上下文)](js-apis-distributedExtensionContext.md)
   - [@ohos.distributedsched.linkEnhance (增强连接)](js-apis-link-enhance.md)
   - [@ohos.distributedsched.proxyChannelManager (代理通道管理)](js-apis-proxyChannelManager.md)
   
@@ -20,7 +21,7 @@
   - [@ohos.distributedDeviceManager (设备管理)(系统接口)](js-apis-distributedDeviceManager-sys.md)
   - [@ohos.distributedsched.abilityConnectionManager (应用多端协同管理)(系统接口)](js-apis-distributed-abilityConnectionManager-sys.md)
   - [@ohos.cooperate (键鼠穿越)（系统接口）](js-apis-devicestatus-cooperate-sys.md)
-  - [@ohos.distributedSoftbus.conversation (跨设备唤醒与消息传输)(系统接口)](js-apis-conversation-sys.md)
+  - [@ohos.distributedSoftBus.conversation (跨设备唤醒与消息传输)(系统接口)](js-apis-conversation-sys.md)
   - 已停止维护的接口<!--distributed-service-dep-->
     - [@ohos.distributedHardware.deviceManager (设备管理)(系统接口)](js-apis-device-manager-sys.md)
   

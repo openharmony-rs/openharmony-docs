@@ -1,4 +1,4 @@
-# \@Once：初始化同步一次
+# \@Once装饰器：初始化同步一次
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-想要实现仅从外部初始化一次且不接受后续同步变化的能力，可以使用\@Once装饰器搭配\@Param装饰器。
+想要实现仅从外部初始化一次且不接受后续同步变化的能力，可以使用[\@Once](../../reference/apis-arkui/arkui-ts/ts-state-management-once.md#once)装饰器搭配\@Param装饰器。
 
 阅读本文档前，请先阅读[\@Param](./arkts-new-param.md)。
 

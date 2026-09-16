@@ -5,7 +5,7 @@
 <!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文介绍字节码文件的二进制布局与各结构字段含义，帮助开发者分析、校验与修改 `*.abc` 编译产物。
 

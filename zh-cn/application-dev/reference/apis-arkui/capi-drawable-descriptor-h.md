@@ -427,7 +427,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| uint32_t autoPlay | 是否自动播放。<br/>1表示自动播放，0表示不自动播放。<br/>默认值为1。 |
+| uint32_t autoPlay | 控制动图是否自动播放。<br/>1表示自动播放，0表示不自动播放。<br/>默认值为1。 |
 
 **返回：**
 
@@ -501,7 +501,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDes
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
+| const [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
 | [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)* mode | 动图停止模式。 <br/>取值含义请参考[DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)。|
 
 **返回：**

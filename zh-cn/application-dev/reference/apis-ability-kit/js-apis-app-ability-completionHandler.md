@@ -38,7 +38,7 @@ import { CompletionHandler } from '@kit.AbilityKit';
 
 ## CompletionHandler
 
-CompletionHandler提供了[onRequestSuccess](#onrequestsuccess)和[onRequestFailure](#onrequestfailure)两个回调函数，分别用来处理拉起应用成功和失败时的结果。
+CompletionHandler提供了[onRequestSuccess](#onrequestsuccess)和[onRequestFailure](#onrequestfailure)两个回调函数，分别处理拉起应用成功和失败时的结果。
 
 ### 属性
 
@@ -57,7 +57,7 @@ CompletionHandler提供了[onRequestSuccess](#onrequestsuccess)和[onRequestFail
 
 onRequestSuccess(elementName: ElementName, message: string): void
 
-拉起应用成功时的回调函数。
+拉起应用成功时的回调函数，用于接收并处理拉起应用成功后的结果信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -82,7 +82,7 @@ onRequestSuccess(elementName: ElementName, message: string): void
 
 onRequestFailure(elementName: ElementName, message: string): void
 
-拉起应用失败时的回调函数。
+拉起应用失败时的回调函数，用于接收并处理拉起应用失败后的错误信息。
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -107,12 +107,14 @@ onRequestFailure(elementName: ElementName, message: string): void
 
   export default class EntryAbility extends UIAbility {
     onForeground() {
+      // 定义拉起应用的Want参数
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.myapplication',
         abilityName: 'EntryAbility'
       };
 
+      // 定义CompletionHandler对象，处理拉起应用成功和失败的回调
       let completionHandler: CompletionHandler = {
         onRequestSuccess: (elementName: bundleManager.ElementName, message: string): void => {
           console.info(`${elementName.bundleName}-${elementName.moduleName}-${elementName.abilityName} start succeeded: ${message}`);
@@ -127,6 +129,7 @@ onRequestFailure(elementName: ElementName, message: string): void
       };
 
       try {
+        // 拉起目标应用，options中的completionHandler会回调拉起结果
         this.context.startAbility(want, options).then(() => {
           console.info('startAbility succeed');
         }).catch((err: Error) => {

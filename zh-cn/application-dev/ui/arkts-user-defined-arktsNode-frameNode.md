@@ -172,7 +172,7 @@ class MyNodeController extends NodeController {
           frameNode?.clearChildren();
           hilog.info(0x0000, `${TEST_TAG} clearChildren success `, 'success');
         } catch (err) {
-          hilog.error(0x0000, `${TEST_TAG} clearChildren fail: (err as BusinessError).code:
+          hilog.error(0x0000, `${TEST_TAG} clearChildren fail: ${(err as BusinessError).code}:
           ${(err as BusinessError).message}`, 'clearChildren error');
         }
       }, 4000)
@@ -952,7 +952,7 @@ struct Index {
         Button('modify ArkTS-FrameNode')
           .onClick(() => {
             // 获取到的是当前页面中的开发者创建的FrameNode对象，该节点可修改。即节点大小与位置。
-            hilog.info(0x0000, `Check the weather the node can be modified ${this.myNodeController?.frameNode
+            hilog.info(0x0000, `Check the whether the node can be modified ${this.myNodeController?.frameNode
             ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.frameNode, { width: 150, height: 100 }, {
               x: 100,
@@ -962,7 +962,7 @@ struct Index {
         Button('modify FrameNode get by BuilderNode')
           .onClick(() => {
             // 获取到的是当前页面中的BuilderNode的根节点，该节点不可修改。即节点大小与位置未发生改变。
-            hilog.info(0x0000, `Check the weather the node can be modified
+            hilog.info(0x0000, `Check the whether the node can be modified
             ${this.myNodeController?.buttonNode?.getFrameNode()
             ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.buttonNode?.getFrameNode(), {
@@ -974,7 +974,7 @@ struct Index {
           .onClick(() => {
             // rootNode调用getParent()获取到的是当前页面中的NodeContainer节点，该节点不可修改。即节点大小与位置未发生改变。
             hilog.info(0x0000,
-              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              `Check the whether the node can be modified ${this.myNodeController?.rootNode?.getParent()
               ?.isModifiable()}`, 'isClicked');
             this.myNodeController.modifyNode(this.myNodeController?.rootNode?.getParent(), {
               width: 500,
@@ -998,9 +998,9 @@ struct Index {
         Button('add click event to ArkTS-FrameNode')
           .onClick(() => {
             // 获取到的是当前页面中的开发者创建的FrameNode对象，该节点可增加点击事件。
-            // 增加的点击事件参与事件竞争，即点击事件会在该节点被消费且不不再向父组件冒泡。
+            // 增加的点击事件参与事件竞争，即点击事件会在该节点被消费且不再向父组件冒泡。
             hilog.info(0x0000,
-              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              `Check the whether the node can be modified ${this.myNodeController?.rootNode?.getParent()
               ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.frameNode);
           })
@@ -1008,7 +1008,7 @@ struct Index {
           .onClick(() => {
             // 获取到的是当前页面中的BuilderNode的根节点，该类节点可增加点击事件。
             // 点击的时候优先回调通过系统组件接口设置的click事件回调，然后回调通过commonEvent增加的click监听。
-            hilog.info(0x0000, `Check the weather the node can be modified
+            hilog.info(0x0000, `Check the whether the node can be modified
             ${this.myNodeController?.buttonNode?.getFrameNode()
             ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.buttonNode?.getFrameNode());
@@ -1017,7 +1017,7 @@ struct Index {
           .onClick(() => {
             // rootNode调用getParent()获取到的是当前页面中的NodeContainer节点，该类节点可增加点击事件。
             hilog.info(0x0000,
-              `Check the weather the node can be modified ${this.myNodeController?.rootNode?.getParent()
+              `Check the whether the node can be modified ${this.myNodeController?.rootNode?.getParent()
               ?.isModifiable()}`, 'isClicked');
             this.myNodeController.addClickEvent(this.myNodeController?.rootNode?.getParent());
           })
@@ -1646,15 +1646,15 @@ FrameNode提供了查询接口用于返回实体节点的基础信息。具体�
 
 > **说明：**
 >
-> 1、当前接口提供的可查询的信息包括：
+> 1. 当前接口提供的可查询的信息包括：
 >
-> - 节点大小：[getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)，[getUserConfigSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigsize12)
+>    - 节点大小：[getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)，[getUserConfigSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigsize12)
 > 
-> - 布局信息：[getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12)，[getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12)，[getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12)，[getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12)，[getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12)，[getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12)
+>    - 布局信息：[getPositionToWindow](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontowindow12)，[getPositionToParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getpositiontoparent12)，[getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12)，[getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12)，[getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12)，[getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12)
 > 
-> - 节点信息：[getId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getid12)，[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)，[getNodeType](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnodetype12)，[getOpacity](../reference/apis-arkui/js-apis-arkui-frameNode.md#getopacity12)，[isVisible](../reference/apis-arkui/js-apis-arkui-frameNode.md#isvisible12)，[isClipToFrame](../reference/apis-arkui/js-apis-arkui-frameNode.md#iscliptoframe12)，[isAttached](../reference/apis-arkui/js-apis-arkui-frameNode.md#isattached12)，[getInspectorInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinspectorinfo12)，[getCustomProperty](../reference/apis-arkui/js-apis-arkui-frameNode.md#getcustomproperty12)
+>    - 节点信息：[getId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getid12)，[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)，[getNodeType](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnodetype12)，[getOpacity](../reference/apis-arkui/js-apis-arkui-frameNode.md#getopacity12)，[isVisible](../reference/apis-arkui/js-apis-arkui-frameNode.md#isvisible12)，[isClipToFrame](../reference/apis-arkui/js-apis-arkui-frameNode.md#iscliptoframe12)，[isAttached](../reference/apis-arkui/js-apis-arkui-frameNode.md#isattached12)，[getInspectorInfo](../reference/apis-arkui/js-apis-arkui-frameNode.md#getinspectorinfo12)，[getCustomProperty](../reference/apis-arkui/js-apis-arkui-frameNode.md#getcustomproperty12)
 >
-> 2、无法获取UINode类型节点，例如：JsView节点、[Span](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-span.md)、[ContainerSpan](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md)、[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)、[ForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)、[LazyForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)、if/else组件等。
+> 2. 无法获取UINode类型节点，例如：JsView节点、[Span](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-span.md)、[ContainerSpan](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md)、[ContentSlot](../../application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md)、[ForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)、[LazyForEach](../../application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)、if/else组件等。
 
 ## 获取节点位置偏移信息
 
@@ -3057,7 +3057,7 @@ class MyNodeAdapter extends NodeAdapter {
   // 刷新数据
   refreshData(): void {
     let items = this.getAllAvailableItems()
-    hilog.info(0x0000, `TEST_TAG ' get All items:' + ${items.length}`, 'isCLicked');
+    hilog.info(0x0000, `${TEST_TAG} get All items: ${items.length}`, 'isClicked');
     this.totalNodeCount -= 1;
     this.reloadAllItems();
   }
@@ -3127,7 +3127,7 @@ class MyNodeAdapter extends NodeAdapter {
   }
 
   onCreateChild(index: number): FrameNode {
-    hilog.info(0x0000, `TEST_TAG + ' onCreateChild:' + ${index}`, 'onCreateChild');
+    hilog.info(0x0000, `${TEST_TAG} onCreateChild: ${index}`, 'onCreateChild');
     // 缓存池有可用节点时，优先复用
     if (this.cachePool.length > 0) {
       let cacheNode = this.cachePool.pop();
@@ -3680,7 +3680,7 @@ class MyNodeController extends NodeController {
 
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
-    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): childNode!.getId()`, 'getId');
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND): ${childNode!.getId()}`, 'getId');
     if (childNode!.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.EXPAND)  result: success.`, 'success');
     } else {
@@ -3690,7 +3690,7 @@ class MyNodeController extends NodeController {
 
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
-    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): childNode!.getId()`, 'getId');
+    hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): ${childNode!.getId()}`, 'getId');
     if (childNode!.getId() === 'N3') {
       hilog.info(0x0000, `${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`, 'success');
     } else {
@@ -4369,7 +4369,7 @@ struct Index {
 
 ## 更新当前帧节点
 
-从API version 21开始，通过使用frameNode的[invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21)方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
+从API version 21开始，通过使用FrameNode的[invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21)方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
 
 ArkTS-Dyn示例：
 
@@ -4620,7 +4620,7 @@ struct Index {
     if (isOnRenderTree) {
       hilog.info(1, 'frameNode', 'is on render tree');
     } else {
-      hilog.info(1, 'frameNode', 'is not no render tree');
+      hilog.info(1, 'frameNode', 'is not on render tree');
     }
   }
 
@@ -4654,7 +4654,7 @@ struct Index {
         let textNode1 = this.getUIContext().getFrameNodeById('hello1');
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : this.message = 'is not on render tree';
+          this.message = isOnRenderTree ? 'is on render tree' : 'is not on render tree';
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })

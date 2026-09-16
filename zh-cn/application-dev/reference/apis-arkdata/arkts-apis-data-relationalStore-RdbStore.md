@@ -1085,7 +1085,7 @@ if (store != undefined) {
 
 ```ts
 let createSql = "CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 floatvector(2));";
-await store!.execute(createSql, 0, undefined);  // 创建关系表，第二个参数0表示不开启显式事务，第三个参数undefined表示sql未使用绑定参数化
+await store!.execute(createSql, 0, undefined); // 创建关系表，第二个参数0表示不开启显式事务，第三个参数undefined表示sql未使用绑定参数化
 let floatVector = Float32Array.from([1.2, 2.3]);
 let valueBucketArray = new Array<relationalStore.ValuesBucket>();
 for (let i = 0; i < 100; i++) { // 构造一个BucketArray用于写入
@@ -1739,6 +1739,7 @@ async function batchInsertWithReturningExample(rdbStore: relationalStore.RdbStor
       const row = results.resultSet.getRow();
       console.info(`batchInsertWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`batchInsertWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -1847,6 +1848,7 @@ function batchInsertWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`batchInsertWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`batchInsertWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2593,6 +2595,7 @@ async function updateWithReturningExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`updateWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`updateWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2697,6 +2700,7 @@ function updateWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`updateWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`updateWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -2994,6 +2998,7 @@ async function deleteWithReturningExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`deleteWithReturningExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`deleteWithReturningExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -3086,6 +3091,7 @@ function deleteWithReturningSyncExample(rdbStore: relationalStore.RdbStore)
       const row = results.resultSet.getRow();
       console.info(`deleteWithReturningSyncExample, name is ${row['NAME']}, age is ${row['AGE']}`);
     }
+    results.resultSet.close();
   } catch (e) {
     console.error(`deleteWithReturningSyncExample failed. code is ${e.code}, message is ${e.message}`);
   }
@@ -3172,7 +3178,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -3238,7 +3244,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -3304,7 +3310,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: Error) => {
@@ -3371,7 +3377,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet) {
       resultSet.close();
     }
@@ -3437,7 +3443,7 @@ async function queryWithoutRowCountEmployee(store : relationalStore.RdbStore) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       if (resultSet != undefined) {
         resultSet.close();
       }
@@ -3503,7 +3509,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet != undefined) {
       resultSet.close();
     }
@@ -3568,7 +3574,7 @@ async function querySqlWithoutRowCountEmployee(store: relationalStore.RdbStore) 
     } catch (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       if (resultSet != undefined) {
         resultSet.close();
       }
@@ -3633,7 +3639,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet != undefined) {
       resultSet.close();
     }
@@ -3723,57 +3729,7 @@ if (store != undefined && deviceId != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
-      resultSet.close();
-    }
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let dmInstance: distributedDeviceManager.DeviceManager;
-let deviceId: string | undefined = undefined;
-
-try {
-  dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
-  let devices = dmInstance.getAvailableDeviceListSync();
-  if (!devices || devices.length === 0) {
-    console.error("No available devices found");
-  } else {
-    deviceId = devices[0].networkId;
-  }
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error("createDeviceManager errCode:" + code + ",errMessage:" + message);
-}
-
-let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
-predicates.greaterThan("id", 0 as long);
-if (store != undefined && deviceId != undefined) {
-  (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], async (err, resultSet) => {
-    if (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
-      return;
-    }
-    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    try {
-      while (resultSet.goToNextRow()) {
-        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-      }
-    } catch (err) {
-      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
-    } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -3863,7 +3819,7 @@ if (store != undefined && deviceId != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: BusinessError) => {
@@ -3911,7 +3867,7 @@ if (store != undefined && deviceId != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err) => {
@@ -4066,7 +4022,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   });
@@ -4135,7 +4091,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: Error) => {
@@ -4222,7 +4178,7 @@ if (store != undefined) {
   } catch (err) {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   } finally {
-    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+    // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
     if (resultSet) {
       resultSet.close();
     }
@@ -4287,7 +4243,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起文件描述符泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: Error) => {
@@ -4354,7 +4310,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起文件描述符泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: Error) => {
@@ -4597,13 +4553,13 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与SQL参数语句中的占位符相对应。当SQL参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回sql执行后的结果。 |
+| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -4742,7 +4698,7 @@ ArkTS-Sta: execute(sql: string, txId: long, args?: Array&lt;ValueType&gt;): Prom
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回sql执行后的结果。 |
+| Promise&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | Promise对象，返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -4845,13 +4801,13 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql    | string                               | 是   | 指定要执行的SQL语句，不能为空字符串。                                        |
-| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整，默认值为空数组。 |
+| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与SQL参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是SQL参数语句完整，默认值为空数组。 |
 
 **返回值：**
 
 | 类型                    | 说明                |
 | ----------------------- | ------------------- |
-| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 返回sql执行后的结果 |
+| [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 返回SQL执行后的结果。 |
 
 **错误码：**
 
@@ -5331,6 +5287,7 @@ if (store != undefined) {
       console.error(`execute sql failed, code is ${e.code},message is ${e.message}`);
     });
   }).catch((err: BusinessError) => {
+    (store as relationalStore.RdbStore).close();
     console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   });
 }
@@ -6420,9 +6377,9 @@ ArkTS-Sta: sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallba
 
 | 参数名     | 类型                                               | 必填 | 说明                                                         |
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | 是   | 指同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。                               |
+| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | 是   | 指定同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | 是   | 约束同步数据和设备。                                         |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;<br/>ArkTS-Sta: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 回调函数，用于向调用者发送同步结果。string：设备ID；number或int：每个设备同步状态，0表示成功，1表示失败。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;<br/>ArkTS-Sta: AsyncCallback&lt;Array&lt;[string, int]&gt;&gt; | 是   | 回调函数。当同步成功，err为undefined，data为设备同步结果数组（string：设备ID；number或int：每个设备同步状态，0表示成功，1表示失败）；否则为错误对象。 |
 
 **错误码：**
 
@@ -6496,7 +6453,7 @@ ArkTS-Sta: sync(mode: SyncMode, predicates: RdbPredicates): Promise&lt;Array&lt;
 
 | 参数名     | 类型                                 | 必填 | 说明                           |
 | ---------- | ------------------------------------ | ---- | ------------------------------ |
-| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | 是   | 指同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。 |
+| mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)               | 是   | 指定同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。 |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 约束同步数据和设备。           |
 
 **返回值：**
@@ -7014,7 +6971,7 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | event    | string                                                       | 是   | 取值为'dataChange'，表示数据更改。                           |
 | type     | [SubscribeType](arkts-apis-data-relationalStore-e.md#subscribetype)                              | 是   | 订阅类型。                                                   |
-| observer | Callback&lt;Array&lt;string&gt;&gt;                          | 是   | 指分布式数据库中数据更改事件的观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | Callback&lt;Array&lt;string&gt;&gt;                          | 是   | 指定分布式数据库中数据更改事件的观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
 
 **错误码：**
 
@@ -7829,7 +7786,7 @@ off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | event    | string                                                       | 是   | 取值为'dataChange'，表示数据更改。                           |
 | type     | [SubscribeType](arkts-apis-data-relationalStore-e.md#subscribetype) | 是   | 订阅类型。                                                   |
-| observer | Callback&lt;Array&lt;string&gt;&gt;                          | 是   | 指已注册的数据更改观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
+| observer | Callback&lt;Array&lt;string&gt;&gt;                          | 是   | 指定已注册的数据更改观察者。Array&lt;string&gt;为数据库中的数据发生改变的对端设备ID。 |
 
 **错误码：**
 
@@ -8073,7 +8030,7 @@ off(event: 'autoSyncProgress', progress?: Callback&lt;ProgressDetails&gt;): void
 | 参数名       | 类型                              | 必填 | 说明                                                               |
 | ------------ |---------------------------------| ---- |------------------------------------------------------------------|
 | event        | string                          | 是   | 取值为'autoSyncProgress'，表示自动同步进度通知。                                |
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 否   | 指已注册的自动同步进度观察者。该参数存在，则取消订阅指定回调，该参数为null或undefined或不存在，则取消订阅所有回调。 |
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 否   | 指定已注册的自动同步进度观察者。该参数存在，则取消订阅指定回调，该参数为null或undefined或不存在，则取消订阅所有回调。 |
 
 **错误码：**
 
@@ -8129,7 +8086,7 @@ offAutoSyncProgress(progress?: Callback&lt;ProgressDetails&gt;): void
 
 | 参数名       | 类型                              | 必填 | 说明                                                               |
 | ------------ |---------------------------------| ---- |------------------------------------------------------------------|
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 否   | 指已注册的自动同步进度观察者。该参数存在，则取消订阅指定回调，该参数为null或undefined或不存在，则取消订阅所有回调。 |
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 否   | 指定已注册的自动同步进度观察者。该参数存在，则取消订阅指定回调，该参数为null或undefined或不存在，则取消订阅所有回调。 |
 
 **错误码：**
 
@@ -8198,6 +8155,8 @@ off(event: 'statistics', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 | 801       | Capability not supported.  |
 | 14800000  | Inner error.  |
 | 14800014  | The target instance is already closed.     |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -8374,6 +8333,8 @@ off(event: 'perfStat', observer?: Callback&lt;SqlExecutionInfo&gt;): void
 |-----------|--------|
 | 801       | Capability not supported.  |
 | 14800014  | The target instance is already closed.     |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9183,7 +9144,7 @@ if (store != undefined) {
     } catch (err) {
       console.error(`Query failed, code is ${err.code},message is ${err.message}`);
     } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏
+      // 释放数据集的内存，若不释放可能会引起fd泄漏与内存泄漏。
       resultSet.close();
     }
   }).catch((err: Error) => {

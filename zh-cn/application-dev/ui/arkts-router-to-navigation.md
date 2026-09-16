@@ -974,11 +974,11 @@ struct CustomNode {
 >
 > router页面的生命周期和Navigation页面的生命周期关系如下：
 >
-> 1.router页面的跳转会影响其内部Navigation页面的生命周期。
+> 1. router页面的跳转会影响其内部Navigation页面的生命周期。
 >
-> 2.Navigation页面的跳转不会影响其所在router页面的生命周期。
+> 2. Navigation页面的跳转不会影响其所在router页面的生命周期。
 >
-> 3.应用前后台切换会同时触发router页面和Navigation页面的生命周期。
+> 3. 应用前后台切换会同时触发router页面和Navigation页面的生命周期。
 
 Router页面[生命周期](arkts-routing.md#生命周期)为`@Entry`页面中的通用方法，主要有如下四个生命周期：
 
@@ -1363,7 +1363,7 @@ Router可以通过命名路由的方式实现跨包跳转。
 
 Navigation作为路由组件，默认支持跨包跳转。
 
-1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件申明为export。
+1. 从HSP（HAR）中完成自定义组件（需要跳转的目标页面）开发，将自定义组件声明为export。
 
    ArkTS-Dyn示例：
 
@@ -1526,7 +1526,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 **动态路由的优势：**
 
-1. 路由定义除了跳转的URL以外，可以丰富的配置任意扩展信息，如横竖屏默认模式，是否需要鉴权等等，做路由跳转时的统一处理。
+1. 路由定义除了跳转的URL以外，可以丰富地配置任意扩展信息，如横竖屏默认模式，是否需要鉴权等等，做路由跳转时的统一处理。
 2. 给每个路由设置一个名字，按照名称进行跳转而不是ets文件路径。
 3. 页面的加载可以使用动态Import（按需加载），防止首个页面加载大量代码导致卡顿。
 
@@ -1557,7 +1557,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 ## 生命周期监听
 
-Router可以通过observer实现注册监听，接口定义请参考Router无感监听[uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
+Router可以通过observer实现注册监听，接口定义请参考Router无感监听[uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate)。
 
 ArkTS-Dyn示例：
 

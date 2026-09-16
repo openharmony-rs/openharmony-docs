@@ -4,7 +4,7 @@
 <!--Owner: @MofengMa-->
 <!--Designer: @MofengMa-->
 <!--Tester: @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 线程间通信指的是多个并发线程之间的数据交换、任务通知和状态同步。ArkTS-Sta采用共享内存模型，函数、对象或ArrayBuffer等数据默认可以跨线程共享，不再以ArkTS-Dyn中的Actor内存隔离、Structured Clone、Sendable对象或SharedArrayBuffer作为主要通信方式。
 

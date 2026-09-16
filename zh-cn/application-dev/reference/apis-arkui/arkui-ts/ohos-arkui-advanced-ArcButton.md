@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-弧形按钮组件提供强调、普通、警告等样式按钮，推荐用于圆形屏幕的设备。
+弧形按钮组件提供强调、常规、自定义等样式按钮，推荐用于圆形屏幕的设备。
 
 > **说明：**
 >
@@ -71,7 +71,7 @@ ArcButton({ options: ArcButtonOptions })
 
 | 名称             | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| position         | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 否   | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| position         | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 否   | 弧形按钮位置属性，表示按钮位于圆形屏幕的上方或底部。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | styleMode        | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否   | 否   | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | status           | [ArcButtonStatus](#arcbuttonstatus)                          | 否   | 否   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | label     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否   | 弧形按钮显示文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -117,7 +117,7 @@ ArcButton的默认样式或自定义样式参数。
 
 | 名称                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| position            | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 是  | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| position            | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 是  | 弧形按钮位置属性，表示按钮位于圆形屏幕的上方或底部。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | styleMode           | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否   | 是  | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 | status              | [ArcButtonStatus](#arcbuttonstatus)                          | 否   | 是   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
 | label               | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是 | 弧形按钮显示文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                           |
@@ -153,7 +153,7 @@ ArcButton内进度条的参数配置。
 
 ## ArcButtonPosition
 
-定义ArcButton可设置的弧形按钮的类型。
+定义ArcButton可设置的弧形按钮的位置。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -259,9 +259,9 @@ ArkTS-Dyn示例：
 
 该示例展示了ArcButton的基本用法。从API version 18开始，新增ArcButton。示例配置如下：
 
-1.topOptions定义了上弧形按钮，按钮文本为ButtonTop，字体大小为15fp，按钮状态为正常状态，按钮样式为亮色强调，启用阴影。
+1. topOptions定义了上弧形按钮，按钮文本为ButtonTop，字体大小为15fp，按钮状态为正常状态，按钮样式为亮色强调，启用阴影。
 
-2.bottomOptions定义了底部弧形按钮，按钮文本为ButtonBottom，字体大小为15fp，按钮样式为亮色强调，启用阴影，设置了按钮的点击事件。
+2. bottomOptions定义了底部弧形按钮，按钮文本为ButtonBottom，字体大小为15fp，按钮样式为亮色强调，启用阴影，设置了按钮的点击事件。
 
 该示例推荐在Wearable设备下运行以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，需在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
 
@@ -349,9 +349,9 @@ struct Index {
 
 该示例展示了ArcButton组件进度条样式的基本用法。从API version 23开始，新增[ArcButtonOptions](#arcbuttonoptions)的progressConfig接口。示例配置如下：
 
-1.topOptions定义了上弧形按钮。按钮文本为Add，字体大小为15fp，按钮状态为正常状态，按钮样式为亮色强调，启用阴影。按钮设置了点击事件，点击按钮将增加进度条的进度。
+1. topOptions定义了上弧形按钮。按钮文本为Add，字体大小为15fp，按钮状态为正常状态，按钮样式为亮色强调，启用阴影。按钮设置了点击事件，点击按钮将增加进度条的进度。
 
-2.bottomOptions定义了底部弧形按钮，按钮文本为进度条百分比，字体大小为15fp，按钮状态为进度条状态，按钮样式为默认样式，启用阴影。
+2. bottomOptions定义了底部弧形按钮，按钮文本为进度条百分比，字体大小为15fp，按钮状态为进度条状态，按钮样式为默认样式，启用阴影。
 
 该示例推荐在Wearable设备下运行以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，需在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
 

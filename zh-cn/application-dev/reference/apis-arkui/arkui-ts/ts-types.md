@@ -167,7 +167,7 @@ type ResourceStr = string | Resource
 
 ## Padding
 
-type Padding = { top: Length; right: Length; bottom: Length; left: Length; }
+type Padding = { top?: Length; right?: Length; bottom?: Length; left?: Length; }
 
 内边距类型，用于描述组件不同方向的内边距。
 
@@ -245,7 +245,7 @@ type LocalizedMargin = LocalizedPadding
 
 ## EdgeWidths<sup>9+</sup>
 
-type EdgeWidths = { top: Length; right: Length; bottom: Length; left: Length; }
+type EdgeWidths = { top?: Length; right?: Length; bottom?: Length; left?: Length; }
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
 
@@ -313,7 +313,7 @@ type EdgeWidth = EdgeWidths
 
 ## BorderRadiuses<sup>9+</sup>
 
-type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; bottomRight: Length; }
+type BorderRadiuses = { topLeft?: Length; topRight?: Length; bottomLeft?: Length; bottomRight?: Length; }
 
 圆角类型，用于描述组件边框圆角半径。
 
@@ -363,7 +363,7 @@ type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; b
 
 ## EdgeColors<sup>9+</sup>
 
-type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceColor; left: ResourceColor; }
+type EdgeColors = { top?: ResourceColor; right?: ResourceColor; bottom?: ResourceColor; left?: ResourceColor; }
 
 边框颜色，用于描述组件边框四条边的颜色。
 
@@ -413,7 +413,7 @@ type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceCo
 
 ## EdgeStyles<sup>9+</sup>
 
-type EdgeStyles = { top: BorderStyle; right: BorderStyle; bottom: BorderStyle; left: BorderStyle; }
+type EdgeStyles = { top?: BorderStyle; right?: BorderStyle; bottom?: BorderStyle; left?: BorderStyle; }
 
 边框样式，用于描述组件边框四条边的样式。
 
@@ -667,9 +667,23 @@ type LengthConstrain = { minLength: Length; maxLength: Length; }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型       | 必填   | 描述                                       |
-| ----------- | -------- | ---- | ---------------------------------------- |
-| constructor | number[] | 是    | 创建具有4\*5矩阵的颜色过滤器，入参为[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
+### constructor<sup>9+</sup>
+
+constructor(value: number[])
+
+ColorFilter的构造函数，创建具有4\*5矩阵的颜色过滤器。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ---- | ---- | ---- | ---- |
+| value | number[] | 是   | 4\*5颜色矩阵的值，[m\*n]位于m行和n列中矩阵值，矩阵是行优先的。 |
 
 
 ## CustomBuilder<sup>8+</sup>
@@ -739,11 +753,11 @@ Navigation路由的构造方式类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                                       | 只读  |  可选 | 默认值      | 描述                                                         |
-| ----------- | ------------------------------------------ | ---- | -------- | ----------- | ------------------------------------------------------------ |
-| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否  |  是  | Color.White | 内部图标颜色。                                               |
-| size        | [Length](ts-types.md#length)               | 否  |  是  | -           | 内部图标大小，单位vp。默认大小与多选框组件宽度相同。<br />不支持百分比形式设置。设置为非法值时，按照默认大小处理。默认大小与多选框组件宽度相同。 |
-| strokeWidth | [Length](ts-types.md#length)               | 否  |  是  | 2           | 内部图标粗细，单位vp。不支持设置百分比。设置为非法值时，按照默认值处理。 |
+| 名称        | 类型                                       | 只读  |  可选 | 说明                                                         |
+| ----------- | ------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
+| strokeColor | [ResourceColor](ts-types.md#resourcecolor) | 否  |  是  | 内部图标颜色。默认值：Color.White                                               |
+| size        | [Length](ts-types.md#length)               | 否  |  是  | 内部图标大小，单位vp。默认大小与多选框组件宽度相同。<br />不支持百分比形式设置。设置为非法值时，按照默认大小处理。默认大小与多选框组件宽度相同。 |
+| strokeWidth | [Length](ts-types.md#length)               | 否  |  是  | 内部图标粗细，单位vp。不支持设置百分比。设置为非法值时，按照默认值处理。默认值：2 |
 
 ## ModalTransition<sup>10+</sup>
 
@@ -777,10 +791,10 @@ Navigation路由的构造方式类型。
 
 | 名称   | 类型                   | 只读   |   可选                             | 说明                                                         |
 | ------ | ----------------------|----------------- | --------------------- | ------------------------------------------------------------ |
-| width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
-| color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
-| radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11对象说明)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
+| width  | [EdgeOutlineWidths](#edgeoutlinewidths11对象说明)&nbsp;\|&nbsp;[Dimension](#dimension10)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
+| color  | [EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
+| radius | [OutlineRadiuses](#outlineradiuses11对象说明)&nbsp;\|&nbsp;[Dimension](#dimension10)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
+| style  | [EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)&nbsp;\|&nbsp;[OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
 
 ## EdgeOutlineWidths<sup>11+</sup>对象说明
 
@@ -946,7 +960,11 @@ ArkTS-Sta: type LPX = string
 
 ## Percentage<sup>10+</sup>
 
+type Percentage = { number }%
+
 长度类型，用于描述以百分比单位为单位的长度。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -956,13 +974,13 @@ ArkTS-Sta: type LPX = string
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}%               | 需要指定以百分比单位，如'10%'。 |
+| { number }%               | 需要指定以百分比单位，如'10%'。 |
 
 ## Degree<sup>10+</sup>
 
 type Degree = `${number}deg`
 
-角度类型，用于描述以deg像素单位为单位的长度。
+角度类型，用于描述以deg为单位的角度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -972,7 +990,7 @@ type Degree = `${number}deg`
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}deg               | 需要指定以deg像素单位，如'10deg'。 |
+| { number }deg               | 需要指定以deg为单位，如'10deg'。 |
 
 ## TouchPoint<sup>11+</sup>
 
@@ -1043,7 +1061,7 @@ type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
 
 ## DividerStyleOptions<sup>12+</sup>
 
-分割线样式属性集合, 用于描述分割线相关信息。
+分割线样式属性集合，用于描述分割线相关信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1053,11 +1071,11 @@ type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
 
 | 名称     | 类型                                      | 只读 | 可选 | 说明              |
 | ------ | --------------------------------------- |---| -------- |-----------------|
-| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>  | 否 | 是 | 分割线的线宽。         |
+| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 分割线的线宽。         |
 | color  | [ResourceColor](#resourcecolor) | 否  | 是 | 分割线的颜色。         |
-| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
-| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup>| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
-| mode  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)<sup>19+</sup>| 否  | 是 | 设置分割线模式。 |
+| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否  | 是 | 分割线与菜单侧边起始端的距离。 |
+| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| 否  | 是 | 分割线与菜单侧边结束端的距离。 |
+| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19枚举说明)| 否  | 是 | 设置分割线模式。 |
 
 ## ChainWeightOptions<sup>14+</sup>对象说明
 

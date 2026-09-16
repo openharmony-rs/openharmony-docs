@@ -504,9 +504,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 请在组件内获取context。
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    contact.updateContact(context, {
+    contact.updateContact({
       id: data[0].id, // 选择联系人的id。
       name: {
         fullName: 'xxx'
@@ -540,7 +538,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
-| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                         |
+| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。                         |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当更新联系人成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -606,7 +604,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 | 参数名   | 类型                                    | 必填 | 说明                                 |
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
-| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                   |
+| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。                   |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当更新联系人成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -654,7 +652,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                                 |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
 
 **返回值：**
 
@@ -721,7 +719,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
 | contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。       |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则更新联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
@@ -2733,7 +2731,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                  |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                          |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、phoneNumbers属性。                                          |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
@@ -2788,7 +2786,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、phoneNumbers属性。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
@@ -2825,7 +2823,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则默认使用系统联系人应用查询。                                        |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、phoneNumbers属性。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
@@ -2885,7 +2883,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则默认使用系统联系人应用查询。                                        |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果该参数为空，则查询联系人的所有属性字段。                                           |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、phoneNumbers属性。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
@@ -2926,7 +2924,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 | context     | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
 | holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。       |
-| attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。               |
+| attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的id、key、phoneNumbers属性。               |
 
 **返回值：**
 
@@ -2987,7 +2985,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 | ----------- | --------------------------------------- | ---- | ---------------------- |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。     |
 | holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。 |
-| attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
+| attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的id、key、phoneNumbers属性。     |
 
 **返回值：**
 
@@ -3208,7 +3206,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、Emails属性。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
@@ -3263,7 +3261,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、Emails属性。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
@@ -3300,7 +3298,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                        |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、Emails属性。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **错误码：**
@@ -3360,7 +3358,7 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则默认使用系统联系人应用查询。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的id、key、Emails属性。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。当查询联系人成功，err为undefined，data为查询到的联系人对象数组；否则为错误对象。 |
 
 **示例：**
@@ -3401,7 +3399,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email   | string                                  | 是   | 联系人的邮箱地址。                                           |
 | holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。                                       |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                                           |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的id、key、Emails属性。                                           |
 
 **返回值：**
 
@@ -3461,7 +3459,7 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 | ------ | --------------------------------------- | ---- | ---------------------- |
 | email  | string                                  | 是   | 联系人的邮箱地址。     |
 | holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则默认使用系统联系人应用查询。 |
-| attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
+| attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的id、key、Emails属性。     |
 
 **返回值：**
 
@@ -3563,7 +3561,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
       console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`Succeeded in querying Groups.. data->${JSON.stringify(data)}`);
+    console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
   });
   ```
 
@@ -4250,7 +4248,7 @@ promise.then((data) => {
 
 addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 
-调用新建联系人接口，打开新建联系人UI界面，新建完成。使用Promise异步回调。
+调用新建联系人接口，打开新建联系人UI界面。使用Promise异步回调。
 
 **原子化服务API**: 从API version 15 开始，该接口支持在原子化服务中使用。
 
@@ -4556,7 +4554,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。同步三方应用自身联系人至本机。调用方必须处于前台。
+批量同步多个联系人至联系人数据库。每次最多可批量同步400个联系人。调用方必须处于前台。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -4634,18 +4632,17 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
         };
       contacts.push(contactData);
     }
-    const progress: ContactSyncProgress = {
+    const progress: contact.ContactSyncProgress = {
       syncId: syncId,
       currentBatch: batch,
       totalBatches: totalBatches
     };
-    console.info(`同步批次 ${batch}/${totalBatches}, 联系人数量: ${currentBatchSize}`);
     let result = await contact.syncContacts(context, mode, progress, contacts);
-    console.info(`批次 ${batch} 同步成功，result: `  + JSON.stringify(result));
+    console.info(`Succeeded in syncContacts. result->${JSON.stringify(result)}`);
   }
   catch (err) {
     const e = err as BusinessError;
-    console.error(`syncContacts 失败: code=${e.code}, message=${e.message}`);
+    console.error(`Failed to syncContacts. Code: ${e.code}, message: ${e.message}`);
   }
 }
 ```
@@ -4654,7 +4651,7 @@ for (let batch: number = 1; batch <= totalBatches; batch++) {
 
 queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
 
-查询当前应用的联系人信息同步状态。返回空值表示应用未发起同步或同步已完成。
+查询当前应用的联系人信息同步状态。如果返回的联系人同步信息为空，则调用方不进行联系人同步或联系人同步已完成。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -4699,7 +4696,7 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-const syncInfoList: ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as ContactSyncInfo[];
+const syncInfoList: contact.ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as contact.ContactSyncInfo[];
 console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
 ```
 
@@ -4707,7 +4704,7 @@ console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList
 
 importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-通过UI交互批量导入多个联系人。每次最多可导入100个联系人。不支持导入联系人的头像。
+通过UI交互批量导入多个联系人。每次最多可导入100个联系人。不支持导入联系人的头像。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -4837,7 +4834,7 @@ promise.then((data) => {
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | filterCondition         | [FilterCondition](#filtercondition15) | 否    |   否   | 过滤条件。     |
-| value        | string \| ValueType[] |  否    |   是   | 过滤值，默认为undefined。     |
+| value        | string \| [ValueType](../apis-arkdata/js-apis-data-valuesBucket.md#valuetype) [] |  否    |   是   | 过滤值，默认为undefined。     |
 
 ## FilterCondition<sup>15+</sup>
 
@@ -4900,7 +4897,7 @@ promise.then((data) => {
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
 | events            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
-| groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。                     |
+| groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。<br> **说明**： 添加或更新联系人时，仅支持关联到已有群组，不支持创建新群组。                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | 否   | 是   | 联系人的即时消息地址列表。             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | 否   | 是   | 联系人的电话号码列表。                 |
 | portrait          | [Portrait](#portrait)                   | 否   | 是   | 联系人的头像。                         |
@@ -5585,4 +5582,4 @@ let website: contact.Website = {
 | syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
 | completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
-| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
+| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳，单位为毫秒(ms)。|

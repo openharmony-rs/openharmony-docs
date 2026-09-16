@@ -76,7 +76,7 @@
   @Builder
   export function buildText(params: Params) {
     Popup({
-      // 类型设置图标内容。
+      // 设置图标内容。
       icon: {
         // 请将$r('app.media.app_icon')替换为实际资源文件
         image: $r('app.media.app_icon'),

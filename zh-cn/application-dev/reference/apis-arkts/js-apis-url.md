@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 URL是统一资源定位符，本模块提供了常用的工具函数，实现了解析URL字符串、构造URL对象以及对URL查询参数的解析和操作等功能。<br>
 
@@ -14,7 +14,7 @@ URL是统一资源定位符，本模块提供了常用的工具函数，实现�
 
 - [URLParams](#urlparams9)：用于操作URL查询参数。 <br>
 
-- [URLSearchParams](#urlsearchparamsdeprecated)：从API version 9开始废弃，建议使用[URLParams](#urlparams9)替代。 <br>
+- [URLSearchParams](#urlsearchparamsdeprecated)：从API version 9开始废弃，建议使用[URL.params](#params9)替代。 <br>
 
 > **说明：**
 >
@@ -37,7 +37,7 @@ ArkTS-Dyn: constructor(init?: string[][] | Record&lt;string, string&gt; | string
 
 ArkTS-Sta: constructor(init?: [string, string][] | Record&lt;string, string&gt; | string | URLParams)
 
-URLParams的构造函数。
+URLParams的构造函数，用于创建URL参数对象，适用于需要解析、构造或操作URL查询参数的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -189,7 +189,7 @@ let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
 let params = new url.URLParams(urlObject.search.slice(1));
 params.append('fod', '3'); // 追加第二个fod参数值
 // 获取指定名称fod的所有值
-console.info(params.getAll('fod').toString()); // Output ["1","3"].
+console.info(params.getAll('fod').toString()); // Output ["1","3"]
 ```
 
 ### entries<sup>9+</sup>
@@ -667,22 +667,33 @@ type UrlCbFn = (value: string, key: string, searchParams: URLParams) => void
 | port | string | 否 | 否 | 获取和设置URL的端口部分。当port为当前protocol的默认端口时，port将被解析为空字符串。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | protocol | string | 否 | 否 | 获取和设置URL的协议部分。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
 | search | string | 否 | 否 | 获取和设置URL的序列化查询部分。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
-| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/> **说明：** 此属性从API version 7开始支持，从API version 9开始被废弃。建议使用[URLParams](#urlparams9)替代。 <br> **ArkTS-Dyn起始版本：** 7 |
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。 <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/> **说明：** 此属性从API version 7开始支持，从API version 9开始被废弃。建议使用[URL.params](#params9)替代。 <br> **ArkTS-Dyn起始版本：** 7 |
 | params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams对象，用于访问URL查询参数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | username | string | 否 | 否 | 获取和设置URL的用户名部分。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 7 <br> **ArkTS-Sta起始版本：** 23 |
+| hash | string | 否 | 否 | 获取和设置URL的片段部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| host | string | 否 | 否 | 获取和设置URL的主机部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| hostname | string | 否 | 否 | 获取和设置URL的主机名部分，不带端口。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| href | string | 否 | 否 | 获取和设置序列化的URL。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| origin | string | 是 | 否 | 获取URL源的只读序列化。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| password | string | 否 | 否 | 获取和设置URL的密码部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| pathname | string | 否 | 否 | 获取和设置URL的路径部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| port | string | 否 | 否 | 获取和设置URL的端口部分。当port为当前protocol的默认端口时，port将被解析为空字符串。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| protocol | string | 否 | 否 | 获取和设置URL的协议部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| search | string | 否 | 否 | 获取和设置URL的序列化查询部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。<br>- **说明：** 此属性从API version 7开始支持，从API version 9开始废弃。建议使用params<sup>9+</sup>替代。 |
+| params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams对象，用于访问URL查询参数。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| username | string | 否 | 否 | 获取和设置URL的用户名部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 >
 > 在解析URL字符串时，如果入参中的port内容是当前protocol的默认端口，那么port将被解析为空字符串。默认端口为：
 >
-> | 协议 | 默认端口 |
-> | -------- | -------- |
-> | http: | 80 |
-> | https: | 443 |
-> | ftp: | 21 |
-> | gopher: | 70 |
-> | ws: | 80 |
-> | wss: | 443 |
+> - http:  80
+> - https:  443
+> - ftp:  21
+> - gopher:  70
+> - ws:  80
+> - wss:  443
 
 **示例：**
 
@@ -709,15 +720,15 @@ console.info("toString " + urlObj.toString()); // toString http://testhost/direc
 
 ### constructor<sup>(deprecated)</sup>
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[parseURL<sup>9+</sup>](#parseurl9)替代。
-
 constructor(url: string, base?: string | URL)
 
 URL的构造函数。与[parseURL](#parseurl9)方法功能相同，但parseURL为静态工厂方法，推荐使用parseURL来创建URL对象。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[parseURL<sup>9+</sup>](#parseurl9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -736,7 +747,7 @@ URL的构造函数。与[parseURL](#parseurl9)方法功能相同，但parseURL�
 let baseUrl = 'https://username:password@host:8080';
 let rootPathUrl = new url.URL("/", baseUrl); // Output 'https://username:password@host:8080/';
 let absoluteUrl = new url.URL(baseUrl); // Output 'https://username:password@host:8080/';
-new url.URL('path/path1', b); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('path/path1', absoluteUrl); // Output 'https://username:password@host:8080/path/path1';
 let relativePathUrl = new url.URL('/path/path1', absoluteUrl);  // Output 'https://username:password@host:8080/path/path1'; 
 new url.URL('/path/path1', relativePathUrl); // Output 'https://username:password@host:8080/path/path1';
 new url.URL('/path/path1', rootPathUrl); // Output 'https://username:password@host:8080/path/path1';
@@ -884,7 +895,7 @@ URLSearchParams接口定义了一些处理URL查询字符串的实用方法。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[URLParams](#urlparams9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[URL.params](#params9)替代。
 
 ### constructor<sup>(deprecated)</sup>
 

@@ -10,7 +10,7 @@
 从API version 20开始，ArkUI开发框架针对NDK接口，提供了直接构建渲染节点的能力，包括节点树操作、属性设置及含动画的自定义绘制。开发者通过调用渲染节点相关能力，可以绕过[registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent)的测量布局过程，直接对节点进行绘制并调整其大小和位置。
 
 
-- **渲染节点树操作相关的能力** ，例如[OH_ArkUI_RenderNodeUtils_AddRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addrendernode)、[OH_ArkUI_RenderNodeUtils_AddChild](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchild)等接口用于编辑渲染节点树的结构。仅类型为ARKUI_NODE_CUSTOM且无其他子节点的自定义节点（加超链接到nativeNode）能够挂载渲染节点，且最多挂载一个渲染节点。即渲染节点以子树形式挂载在类型为ARKUI_NODE_CUSTOM的叶子自定义节点上。
+- **渲染节点树操作相关的能力** ，例如[OH_ArkUI_RenderNodeUtils_AddRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addrendernode)、[OH_ArkUI_RenderNodeUtils_AddChild](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchild)等接口用于编辑渲染节点树的结构。仅类型为ARKUI_NODE_CUSTOM且无其他子节点的自定义节点能够挂载渲染节点，且最多挂载一个渲染节点。即渲染节点以子树形式挂载在类型为ARKUI_NODE_CUSTOM的叶子自定义节点上。
 
 - **渲染节点属性设置的能力** ，详情请参考[函数](../reference/apis-arkui/capi-native-render-h.md#函数)，查看当前渲染节点支持的属性能力。
 
@@ -64,7 +64,7 @@
        ArkUI_NodeHandle Custom = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
        valueWidth[0].f32 = 400;
        nodeAPI->setAttribute(Custom, NODE_WIDTH, &itemWidth);
-       nodeAPI->setAttribute(Custom, NODE_HEIGHT, &itemWidth);
+       nodeAPI->setAttribute(Custom, NODE_HEIGHT, &itemHeight);
        nodeAPI->addChild(column, Custom);
    
        // 节点操作类接口 创建 - 挂载 - 构建树。
@@ -141,8 +141,8 @@
 
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+       ArkUI_NodeHandle testNode = nullptr;
        if (nodeAPI != nullptr) {
-            ArkUI_NodeHandle testNode;
             testNode = testRenderNode(nodeAPI);
        }
    
@@ -177,6 +177,40 @@
    #include <native_drawing/drawing_color.h>
    #include <native_drawing/drawing_path.h>
    #include <native_drawing/drawing_pen.h>
+
+   // 该对象被销毁时，析构函数会自动释放已经成功创建的渲染资源。
+   struct RenderNodeResources {
+       ArkUI_RenderNodeHandle renderNode = nullptr;
+       ArkUI_RenderContentModifierHandle modifier = nullptr;
+       ArkUI_FloatAnimatablePropertyHandle width = nullptr;
+       ArkUI_FloatAnimatablePropertyHandle height = nullptr;
+       ArkUI_Vector2AnimatablePropertyHandle v2 = nullptr;
+       ArkUI_ColorAnimatablePropertyHandle color = nullptr;
+
+       ~RenderNodeResources()
+       {
+           if (width != nullptr) {
+               OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(width);
+           }
+           if (height != nullptr) {
+               OH_ArkUI_RenderNodeUtils_DisposeFloatAnimatableProperty(height);
+           }
+           if (v2 != nullptr) {
+               OH_ArkUI_RenderNodeUtils_DisposeVector2AnimatableProperty(v2);
+           }
+           if (color != nullptr) {
+               OH_ArkUI_RenderNodeUtils_DisposeColorAnimatableProperty(color);
+           }
+           if (modifier != nullptr) {
+               OH_ArkUI_RenderNodeUtils_DisposeContentModifier(modifier);
+           }
+           if (renderNode != nullptr) {
+               OH_ArkUI_RenderNodeUtils_DisposeNode(renderNode);
+           }
+       }
+   };
+
+   static RenderNodeResources *g_renderNodeResources = nullptr;
    
    ArkUI_NodeHandle testRenderNode2(ArkUI_NativeNodeAPI_1 *nodeAPI, ArkUI_ContextHandle context) {
    
@@ -197,42 +231,32 @@
        nodeAPI->setAttribute(text, NODE_TEXT_CONTENT, &content);
    
        ArkUI_NodeHandle Custom = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
-       auto renderNode = OH_ArkUI_RenderNodeUtils_CreateNode();
-       OH_ArkUI_RenderNodeUtils_AddRenderNode(Custom, renderNode);
-       OH_ArkUI_RenderNodeUtils_SetSize(renderNode, 1000, 1000);
-   
+       RenderNodeResources *resources = new RenderNodeResources;
+       g_renderNodeResources = resources;
+       resources->renderNode = OH_ArkUI_RenderNodeUtils_CreateNode();
+       OH_ArkUI_RenderNodeUtils_AddRenderNode(Custom, resources->renderNode);
+       OH_ArkUI_RenderNodeUtils_SetSize(resources->renderNode, 1000, 1000);
+
        // Property的作用是触发set更新，同步更新modifier的Draw方法。
-       struct AnimatableUserData {
-           ArkUI_FloatAnimatablePropertyHandle width;
-           ArkUI_FloatAnimatablePropertyHandle height;
-           ArkUI_Vector2AnimatablePropertyHandle v2;
-           ArkUI_ColorAnimatablePropertyHandle color;
-       };
-   
        // 设置基础值。
-       AnimatableUserData *userData1 = new AnimatableUserData;
-       auto widthAnimProperty = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
-       userData1->width = widthAnimProperty;
-       auto heightAnimProperty = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
-       userData1->height = heightAnimProperty;
-       auto vectorAnimP = OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(1000, 1000);
-       userData1->v2 = vectorAnimP;
-       auto colorAnimP = OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(0xFFFF11FF);
-       userData1->color = colorAnimP;
+       resources->width = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
+       resources->height = OH_ArkUI_RenderNodeUtils_CreateFloatAnimatableProperty(1000);
+       resources->v2 = OH_ArkUI_RenderNodeUtils_CreateVector2AnimatableProperty(1000, 1000);
+       resources->color = OH_ArkUI_RenderNodeUtils_CreateColorAnimatableProperty(0xFFFF11FF);
    
        // 关联组件和多个modifier。
-       auto animModifier = OH_ArkUI_RenderNodeUtils_CreateContentModifier();
-       OH_ArkUI_RenderNodeUtils_AttachContentModifier(renderNode, animModifier);
+       resources->modifier = OH_ArkUI_RenderNodeUtils_CreateContentModifier();
+       OH_ArkUI_RenderNodeUtils_AttachContentModifier(resources->renderNode, resources->modifier);
        // 关联modifier和property。
-       OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(animModifier, widthAnimProperty);
-       OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(animModifier, heightAnimProperty);
-       OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(animModifier, vectorAnimP);
-       OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(animModifier, colorAnimP);
+       OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(resources->modifier, resources->width);
+       OH_ArkUI_RenderNodeUtils_AttachFloatAnimatableProperty(resources->modifier, resources->height);
+       OH_ArkUI_RenderNodeUtils_AttachVector2AnimatableProperty(resources->modifier, resources->v2);
+       OH_ArkUI_RenderNodeUtils_AttachColorAnimatableProperty(resources->modifier, resources->color);
    
        // 设置自定义绘制内容。
        OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw(
-           animModifier, userData1, [](ArkUI_DrawContext *context, void *userData) {
-               AnimatableUserData *data = (AnimatableUserData *)userData;
+           resources->modifier, resources, [](ArkUI_DrawContext *context, void *userData) {
+               RenderNodeResources *data = (RenderNodeResources *)userData;
                float width = 0;
                float height = 0;
                uint32_t color = 0;
@@ -257,13 +281,16 @@
                OH_Drawing_PenSetColor(pen, color);
                OH_Drawing_CanvasAttachPen(canvas, pen);
                OH_Drawing_CanvasDrawPath(canvas, path);
+               OH_Drawing_CanvasDetachPen(canvas);
+               OH_Drawing_PenDestroy(pen);
+               OH_Drawing_PathDestroy(path);
            });
    
        // 用户自定义参数。
-       ArkUI_ContextCallback *update = new ArkUI_ContextCallback;
-       update->userData = userData1;
-       update->callback = [](void *user) {
-           AnimatableUserData *data = (AnimatableUserData *)user;
+       ArkUI_ContextCallback update = {};
+       update.userData = resources;
+       update.callback = [](void *user) {
+           RenderNodeResources *data = (RenderNodeResources *)user;
            OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(data->width, 100);
            OH_ArkUI_RenderNodeUtils_SetFloatAnimatablePropertyValue(data->height, 100);
            OH_ArkUI_RenderNodeUtils_SetVector2AnimatablePropertyValue(data->v2, 100, 100);
@@ -273,26 +300,29 @@
        ArkUI_NativeAnimateAPI_1 *animateApi = nullptr;
        OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_ANIMATE, ArkUI_NativeAnimateAPI_1, animateApi);
    
-       ArkUI_AnimateCompleteCallback *completeCallback = new ArkUI_AnimateCompleteCallback;
-       completeCallback->userData = userData1;
-       completeCallback->type = ARKUI_FINISH_CALLBACK_REMOVED;
-       completeCallback->callback = [](void *userData) {
-           AnimatableUserData *data = (AnimatableUserData *)userData;
-       };
-   
-       ArkUI_AnimateOption *option = OH_ArkUI_AnimateOption_Create();
+       // 局部资源对象离开作用域时，析构函数会自动释放动画参数。
+       struct AnimateOptionResource {
+           ArkUI_AnimateOption *option = nullptr;
+
+           ~AnimateOptionResource()
+           {
+               if (option != nullptr) {
+                   OH_ArkUI_AnimateOption_Dispose(option);
+               }
+           }
+       } optionResource;
+
+       optionResource.option = OH_ArkUI_AnimateOption_Create();
+       ArkUI_AnimateOption *option = optionResource.option;
        OH_ArkUI_AnimateOption_SetDuration(option, 2000);
        OH_ArkUI_AnimateOption_SetTempo(option, 1.1);
        OH_ArkUI_AnimateOption_SetCurve(option, ARKUI_CURVE_EASE);
        OH_ArkUI_AnimateOption_SetDelay(option, 20);
        OH_ArkUI_AnimateOption_SetIterations(option, 1);
        OH_ArkUI_AnimateOption_SetPlayMode(option, ARKUI_ANIMATION_PLAY_MODE_REVERSE);
-       ArkUI_ExpectedFrameRateRange *range = new ArkUI_ExpectedFrameRateRange;
-       range->min = 10;
-       range->max = 120;
-       range->expected = 60;
-       OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(option, range);
-           animateApi->animateTo(context, option, update, completeCallback);
+       ArkUI_ExpectedFrameRateRange range = {10, 120, 60};
+       OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(option, &range);
+       animateApi->animateTo(context, option, &update, nullptr);
    
    
        nodeAPI->setAttribute(Custom, NODE_WIDTH, &itemWidth);
@@ -312,16 +342,28 @@
 
        auto *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+       ArkUI_NodeHandle testNode = nullptr;
        if (nodeAPI != nullptr) {
-            ArkUI_NodeHandle testNode;
             // 获取ets侧传入的context。
             ArkUI_ContextHandle context = nullptr;
             // 通过code判断是否获取成功。
             auto code = OH_ArkUI_GetContextFromNapiValue(env, args[1], &context);
+            if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+                return nullptr;
+            }
             testNode = testRenderNode2(nodeAPI, context);
        }
    
        NativeEntry::GetInstance()->SetRootNode(testNode);
+       return nullptr;
+   }
+
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info) {
+       // 先卸载并销毁Native节点，确保绘制回调不再执行。
+       NativeEntry::GetInstance()->DisposeRootNode();
+       // 删除资源管理对象时，其析构函数会自动释放渲染资源。
+       delete g_renderNodeResources;
+       g_renderNodeResources = nullptr;
        return nullptr;
    }
       
@@ -336,11 +378,11 @@
 ### 接纳子节点为附属节点
 
 满足以下条件的节点，可以作为[OH_ArkUI_NativeModule_AdoptChild](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_adoptchild)接口中的父节点接纳其他节点：
-1. 父节点是CAPI侧创建的命令式节点。
+1. 父节点是C-API侧创建的命令式节点。
 2. 父节点是ArkTS侧创建的命令式节点。
 
 满足以下条件的节点，可以作为OH_ArkUI_NativeModule_AdoptChild接口中的子节点被其他父节点接纳：
-1. 子节点是CAPI侧创建的命令式节点。
+1. 子节点是C-API侧创建的命令式节点。
 2. 子节点是ArkTS侧创建的命令式节点。
 3. 子节点是BuilderNode下的根节点。
 
@@ -407,7 +449,6 @@
        auto renderNode = std::make_shared<ArkUIRenderNode>();
        Custom->AddRenderNode(renderNode);
        renderNode->SetSize(g_num300, g_num300);
-       Custom->AddRenderNode(renderNode);
        render_ = renderNode;
    
        scroll->AddChild(column);
@@ -442,7 +483,7 @@
    }
    ```
 
-2. ArkTS侧创建节点并传递该节点至CAPI。
+2. ArkTS侧创建节点并传递该节点至C-API。
 
    <!-- @[Create_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets) -->  
    

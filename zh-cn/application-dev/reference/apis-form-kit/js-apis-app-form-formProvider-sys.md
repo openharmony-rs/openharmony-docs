@@ -23,7 +23,7 @@ import { formProvider } from '@kit.FormKit';
 ```
 
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
@@ -56,6 +56,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -129,7 +133,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -161,6 +165,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -224,7 +232,7 @@ try {
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;string&gt;
 
@@ -262,6 +270,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.1.0 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.1.0 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.1.0 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.1.0 |
 
 **示例：**
 
@@ -319,11 +331,11 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询是否可以添加卡片到卡片使用方，使用callback异步回调。
+查询是否可以发布卡片到卡片使用方，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -337,7 +349,7 @@ isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -437,11 +449,11 @@ try {
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
-查询是否可以添加卡片到卡片使用方，使用Promise异步回调。
+查询是否可以发布卡片到卡片使用方，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -455,7 +467,7 @@ isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回是否可以添加卡片到卡片使用方的结果。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| Promise&lt;boolean&gt; | Promise对象。返回是否可以发布卡片到卡片使用方的结果。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -543,7 +555,7 @@ try {
 }
 ```
 
-## activateSceneAnimation<sup>20+</sup>
+## formProvider.activateSceneAnimation<sup>20+</sup>
 
 activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -629,7 +641,7 @@ try {
 }
 ```
 
-## deactivateSceneAnimation<sup>20+</sup>
+## formProvider.deactivateSceneAnimation<sup>20+</sup>
 
 deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -715,7 +727,7 @@ try {
 }
 ```
 
-## updateTemplateFormDetailInfo<sup>23+</sup>
+## formProvider.updateTemplateFormDetailInfo<sup>23+</sup>
 
 updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
 
@@ -810,11 +822,11 @@ try {
 }
 ```
 
-## onPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.onPublishFormCrossBundleControl<sup>23+</sup>
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
-订阅跨应用加桌管控，使用callback异步回调。
+订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -832,7 +844,7 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 跨应用加桌管控的回调函数。|
 
 **错误码：**
 
@@ -879,7 +891,7 @@ try {
 }
 ```
 
-## openFormManagerCrossBundle<sup>20+</sup>
+## formProvider.openFormManagerCrossBundle<sup>20+</sup>
 
 openFormManagerCrossBundle(want: Want): void
 
@@ -961,11 +973,11 @@ try {
 ```
 
 
-## offPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 
-取消订阅跨应用加桌管控，使用callback异步回调。
+取消订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -983,7 +995,7 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 跨应用加桌管控的回调函数，不传则取消所有已订阅的回调。|
 
 **错误码：**
 

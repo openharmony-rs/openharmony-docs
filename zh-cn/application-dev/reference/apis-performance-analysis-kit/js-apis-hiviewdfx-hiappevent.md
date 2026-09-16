@@ -413,7 +413,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
-- MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
+- MAIN_THREAD_JANK（参数配置详见[setEventConfig接口参数设置说明](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
 - APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#自定义规格设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
 
@@ -841,7 +841,7 @@ let eventPkg: hiAppEvent.AppEventPackage | null = holder4.takeNext();
 
 write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行订阅。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -855,7 +855,7 @@ write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明           |
 | -------- | ------------------------------ | ---- | -------------- |
-| info     | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其内部定义的事件名称建议避免与[Event](#hiappeventevent)中定义的系统事件名称常量产生冲突。 |
+| info     | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其内部定义的事件名称建议避免与[Event](#event)中定义的系统事件名称常量产生冲突。 |
 | callback | AsyncCallback&lt;void&gt;      | 是   | 打点回调函数。 |
 
 **错误码：**
@@ -935,7 +935,7 @@ hiAppEvent.write({
 
 write(info: AppEventInfo): Promise&lt;void&gt;
 
-应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#hiappeventevent)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
+应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](#event)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](#hiappeventaddwatcher)）进行处理。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -949,7 +949,7 @@ write(info: AppEventInfo): Promise&lt;void&gt;
 
 | 参数名 | 类型                           | 必填 | 说明           |
 | ------ | ------------------------------ | ---- | -------------- |
-| info   | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其中的事件名称建议避免与[Event](#hiappeventevent)中定义的系统事件名称常量冲突混淆。 |
+| info   | [AppEventInfo](#appeventinfo) | 是   | 应用事件对象。其中的事件名称建议避免与[Event](#event)中定义的系统事件名称常量冲突混淆。 |
 
 **返回值：**
 
@@ -1544,7 +1544,7 @@ hiAppEvent.configure(config2);
 | 名称       | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | 否 | 是   | 打点功能开关，默认值为false。true：关闭打点功能，false：开启打点功能。 |
-| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10MB”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
+| maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10MB”。建议配额大小不超过10MB，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
 
 
 ## EventPolicy<sup>22+</sup>
@@ -1622,7 +1622,7 @@ hiAppEvent.configure(config2);
 | extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-| collectMinidump    | boolean | 否 | 是   | 是否使能minidump，默认值为false。<br/>true：在Native Crash场景同时生成minidump。<br/>false：在Native Crash场景不生成minidump。<br/>生成minidump日志文件以.dmp结尾，跟随APP_CRASH事件一起返回，保存在external_log字段中。<br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| collectMinidump    | boolean | 否 | 是   | 是否使能[minidump](../../dfx/performance-analysis-kit-terminology.md#minidump)，默认值为false。<!--RP5--><br/>true：[params字段说明](../../dfx/hiappevent-watcher-crash-events.md#params字段说明)中log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限调整为35MB。<br/>false：log_over_limit字段判断生成的与已存在的故障日志文件的大小总和上限恢复为5MB。<!--RP5End--><br/>**说明**：该配置项为持久化配置，应用未重新设置前，值不变。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1755,7 +1755,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | BEHAVIOR  | 4    | 行为类型事件。 |
 
 
-## hiAppEvent.domain<sup>11+</sup>
+## domain<sup>11+</sup>
 
 ### 常量
 
@@ -1774,7 +1774,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | OS   | string | 是 | 系统领域。 |
 
 
-## hiAppEvent.event
+## event
 
 ### 常量
 
@@ -1801,7 +1801,7 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23 |
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
-## hiAppEvent.param
+## param
 
 ### 常量
 

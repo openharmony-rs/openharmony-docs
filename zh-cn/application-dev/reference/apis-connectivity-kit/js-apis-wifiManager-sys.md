@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供Wi-Fi基础功能、P2P（peer-to-peer）功能和Wi-Fi消息通知的相应服务，让应用可以通过Wi-Fi和其他设备互联互通。
 
 > **说明：**
 > 
@@ -26,7 +26,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 enableSemiWifi(): void
 
-使能WLAN半关闭（STA关闭、其他P2p、Hml可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
+使能Wi-Fi半关闭（STA关闭，P2P、HML等功能可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
 
 **系统接口：** 此接口为系统接口。
 
@@ -40,7 +40,7 @@ enableSemiWifi(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -68,8 +68,8 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 设置是否始终允许扫描。
 
-- 该接口控制设备是否可以在WLAN开关关闭时支持热点扫描功能。
-- 启用后即使WLAN开关关闭，系统仍可以扫描附近的WLAN热点。
+- 该接口控制设备是否可以在Wi-Fi开关关闭时支持热点扫描功能。
+- 启用后即使Wi-Fi开关关闭，系统仍可以扫描附近的Wi-Fi热点。
 - 主要用于支持网络发现和位置定位等场景。
 
 **系统接口：** 此接口为系统接口。
@@ -90,7 +90,7 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -131,11 +131,11 @@ getScanAlwaysAllowed(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean| 是否始终允许扫描。 true 表示允许触发扫描，false表示在禁用wifi时不允许触发扫描。|
+| boolean| 是否始终允许扫描。true表示允许触发扫描，false表示在禁用Wi-Fi时不允许触发扫描。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -159,7 +159,7 @@ getScanAlwaysAllowed(): boolean
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -173,8 +173,8 @@ WLAN配置信息。
 | staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | configStatus<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
-| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true：允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 23|
-| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全WiFi检测。false:不是安全Wifi，true：是安全WiFi。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
+| isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 17<br />**ArkTS-Sta起始版本：** 23|
+| isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false: 不是安全Wi-Fi，true: 是安全Wi-Fi。<br /> **系统接口：** 此接口为系统接口。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
 ## IpType
 
 表示IP类型的枚举。
@@ -229,7 +229,7 @@ Wifi 代理配置。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| proxyMethod | ProxyMethod | 否 | 是 | 代理方法。 |
+| proxyMethod | [ProxyMethod](#proxymethod10) | 否 | 是 | 代理方法。 |
 | pacWebAddress | string | 否 | 是 | 自动配置代理的PAC web 地址。 |
 | serverHostName | string | 否 | 是 | 手动配置代理的服务器主机名。 |
 | serverPort | number | 否 | 是 | 手动配置代理的服务器端口。 |
@@ -287,7 +287,7 @@ ArkTS-Sta: getDeviceConfig(netId: int): WifiDeviceConfig
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -313,7 +313,7 @@ ArkTS-Sta: getDeviceConfig(netId: int): WifiDeviceConfig
 
 connectToDevice(config: WifiDeviceConfig): void
 
-连接到指定网络（如果当前已经连接到热点，请先使用disconnect（）接口断开连接）。
+连接到指定网络（如果当前已经连接到热点，请先断开连接）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -329,11 +329,11 @@ connectToDevice(config: WifiDeviceConfig): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -363,15 +363,15 @@ connectToDevice(config: WifiDeviceConfig): void
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网络配置ID。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载约高。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| chload | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 连接负载，值越大表示负载越高。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| snr | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 信噪比，单位：dB。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | isHiLinkProNetwork | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 23|
 | wifiTxRxValid | boolean | 否 | 是 | 用于指示 Wi-Fi 的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br /> **系统接口：** 此接口为系统接口。 <br />**ArkTS-Dyn起始版本：** 26.0.0<br />**ArkTS-Sta起始版本：** 26.0.0|
@@ -434,9 +434,9 @@ getSupportedFeatures(): number
 | 0x0001 | 基础结构模式特性。 |
 | 0x0002 | 5&nbsp;GHz带宽特性。 |
 | 0x0004 | GAS/ANQP特性。 |
-| 0x0008 | Wifi-Direct特性。 |
+| 0x0008 | WiFi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。|
@@ -444,7 +444,7 @@ getSupportedFeatures(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -491,7 +491,7 @@ getWifiDetailState(): WifiDetailState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -554,7 +554,7 @@ reassociate(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -593,7 +593,7 @@ reconnect(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -636,7 +636,7 @@ ArkTS-Sta: updateNetwork(config: WifiDeviceConfig): int
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -646,7 +646,7 @@ ArkTS-Sta: updateNetwork(config: WifiDeviceConfig): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -680,7 +680,7 @@ ArkTS-Dyn: disableNetwork(netId: number): void
 
 ArkTS-Sta: disableNetwork(netId: int): void
 
-去使能网络配置。
+关闭网络配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -700,7 +700,7 @@ ArkTS-Sta: disableNetwork(netId: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -750,7 +750,7 @@ ArkTS-Sta: disableNetwork(netId: number, blockDuration: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -791,7 +791,7 @@ removeAllNetwork(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -838,7 +838,7 @@ ArkTS-Sta: get5GChannelList(): Array&lt;int&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -870,13 +870,12 @@ getDisconnectedReason(): DisconnectedReason
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -904,7 +903,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-表示WLAN断开原因的枚举，用于诊断网络连接问题和优化连接策略。
+表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **系统接口：** 此接口为系统接口。
 
@@ -924,7 +923,7 @@ try {
 
 startPortalCertification(): void
 
-启动Portal认证流程，用于处理需要Web页面认证的公共WLAN网络（如酒店、机场、咖啡厅等场所的网络）。
+启动Portal认证流程，用于处理需要Web页面认证的公共Wi-Fi网络（如酒店、机场、咖啡厅等场所的网络）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -938,7 +937,7 @@ startPortalCertification(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -978,7 +977,7 @@ startWifiDetection(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |错误信息 |
 | -------- | -------- |
@@ -1020,12 +1019,12 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能，&nbsp;false:去使能。 |
-| bssid | string | 是 | 热点的mac地址，例如：00:11:22:33:44:55。 |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| bssid | string | 是 | 热点的MAC地址，例如：00:11:22:33:44:55。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1074,7 +1073,7 @@ factoryReset(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1098,7 +1097,7 @@ try {
 
 enableHotspot(): void
 
-使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
+开启热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1112,7 +1111,7 @@ enableHotspot(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1136,7 +1135,7 @@ try {
 
 disableHotspot(): void
 
-去使能热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
+关闭热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1150,7 +1149,7 @@ disableHotspot(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1194,7 +1193,7 @@ isHotspotDualBandSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1219,7 +1218,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-检查在某些情况下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
+检查在某些情况下是否能够操作Wi-Fi热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1239,7 +1238,7 @@ isOpenSoftApAllowed(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1264,7 +1263,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+设置Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1284,7 +1283,7 @@ setHotspotConfig(config: HotspotConfig): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1340,7 +1339,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+获取Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1360,7 +1359,7 @@ getHotspotConfig(): HotspotConfig
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1409,7 +1408,7 @@ API 10起：ohos.permission.GET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_HOTSPO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1432,7 +1431,7 @@ try {
 
 ## StationInfo
 
-接入的设备信息。包含连接到WLAN网络的设备详细信息。
+接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1473,7 +1472,7 @@ addHotspotBlockList(stationInfo: StationInfo): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1525,7 +1524,7 @@ delHotspotBlockList(stationInfo: StationInfo): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1556,7 +1555,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-获取当前WLAN热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
+获取当前Wi-Fi热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1576,7 +1575,7 @@ getHotspotBlockList(): Array&lt;StationInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1603,7 +1602,7 @@ try {
 
 ArkTS-Dyn: deletePersistentGroup(netId: number): void
 
-删除指定网络ID的永久WLAN组配置。该接口用于清除已保存的WLAN网络配置信息，使其不再自动连接。
+删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。
 
 - 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
@@ -1626,7 +1625,7 @@ ArkTS-Dyn: deletePersistentGroup(netId: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1677,7 +1676,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1734,7 +1733,7 @@ API 10起：ohos.permission.GET_WIFI_INFO
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1768,7 +1767,7 @@ setDeviceName(devName: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1796,7 +1795,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1813,11 +1812,11 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"streamChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0:无，1：向下，2：向上，3：双向。 |
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数，返回0: 无，1: 向下，2: 向上，3: 双向。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -1831,7 +1830,7 @@ on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
 onStreamChange(callback: Callback&lt;int&gt;): void
 
-注册WIFI流变更事件，在业务退出时，要调用offStreamChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。使用callback异步回调。
+注册Wi-Fi流变更事件，在业务退出时，要调用offStreamChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1847,11 +1846,11 @@ onStreamChange(callback: Callback&lt;int&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数，返回0:无，1：下行流，2：上行流，3：双向流。 |
+| callback | Callback&lt;int&gt; | 是 | 状态改变回调函数，返回0: 无，1: 下行流，2: 上行流，3: 双向流。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1886,7 +1885,7 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1936,7 +1935,7 @@ offStreamChange(callback: Callback&lt;int&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1949,7 +1948,7 @@ offStreamChange(callback: Callback&lt;int&gt;): void
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1970,7 +1969,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1984,7 +1983,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 onDeviceConfigChange(callback: Callback&lt;number&gt;): void
 
-注册WIFI设备配置更改事件。在业务退出时，要调用offDeviceConfigChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。使用callback异步回调。
+注册Wi-Fi设备配置更改事件。在业务退出时，要调用offDeviceConfigChange(callback?: Callback&lt;int&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2004,7 +2003,7 @@ onDeviceConfigChange(callback: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2017,7 +2016,7 @@ onDeviceConfigChange(callback: Callback&lt;number&gt;): void
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN设备配置更改事件。使用callback异步回调。
+取消注册Wi-Fi设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2038,7 +2037,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2068,7 +2067,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 offDeviceConfigChange(callback?: Callback&lt;int&gt;): void
 
-取消注册WIFI设备配置更改事件。使用callback异步回调。
+取消注册Wi-Fi设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2088,7 +2087,7 @@ offDeviceConfigChange(callback?: Callback&lt;int&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2101,7 +2100,7 @@ offDeviceConfigChange(callback?: Callback&lt;int&gt;): void
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2122,7 +2121,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2136,7 +2135,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 onHotspotStaJoin(callback: Callback&lt;StationInfo&gt;): void
 
-注册WIFI热点STA加入事件。在业务退出时，要调用offHotspotStaJoin(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口取消之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA加入事件。在业务退出时，要调用offHotspotStaJoin(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2156,7 +2155,7 @@ onHotspotStaJoin(callback: Callback&lt;StationInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -2169,7 +2168,7 @@ onHotspotStaJoin(callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点的STA加入事件。使用callback异步回调。
+取消注册Wi-Fi热点的STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2186,11 +2185,11 @@ off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"hotspotStaJoin"字符串。 |
-| callback | Callback&lt;StationInfo&gt; | 否 | 状态改变回调函数。 |
+| callback | Callback&lt;[StationInfo](#stationinfo)&gt; | 否 | 状态改变回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2220,7 +2219,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WIFI热点STA加入事件。使用callback异步回调。
+取消注册Wi-Fi热点STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2240,7 +2239,7 @@ offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -2253,7 +2252,7 @@ offHotspotStaJoin(callback?: Callback&lt;StationInfo&gt;): void
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2274,7 +2273,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2288,7 +2287,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 onHotspotStaLeave(callback: Callback&lt;StationInfo&gt;): void
 
-注册WIFI热点STA离开事件。在业务退出时，要调用offHotspotStaLeave(callback?: Callback&lt;StationInfo&gt;)接口取消之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA离开事件。在业务退出时，要调用offHotspotStaLeave(callback?: Callback&lt;StationInfo&gt;)接口取消之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2308,7 +2307,7 @@ onHotspotStaLeave(callback: Callback&lt;StationInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2321,7 +2320,7 @@ onHotspotStaLeave(callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点STA离开事件。使用callback异步回调。
+取消注册Wi-Fi热点STA离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2342,7 +2341,7 @@ off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2370,7 +2369,7 @@ wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ## WifiScanInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi扫描的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -2402,7 +2401,7 @@ isRandomMacDisabled(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -2446,7 +2445,7 @@ wifi支持的能力。
 
 setWifiCapability(capability: WifiCapability, enable: boolean): void
 
-设置wifi能力。
+设置Wi-Fi能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2465,11 +2464,11 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | capability | [WifiCapability](#wificapability) | 是 | wifi能力枚举。 |
-| enable | boolean | 是 | 是否使能wifi能力，true表示使能，false表示不使能。 |
+| enable | boolean | 是 | 是否开启Wi-Fi能力，true表示开启，false表示关闭。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2491,7 +2490,7 @@ wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true)
 
 getWifiCapability(capability: WifiCapability): boolean
 
-获取wifi支持的能力。
+获取Wi-Fi支持的能力。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2519,7 +2518,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

@@ -205,7 +205,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
       } else if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW) {
           // ContentSlot下树时需要触发的逻辑
           // ···
-      };
+      }
   };
   // 将该事件注册到nodeContent上
   OH_ArkUI_NodeContent_RegisterCallback(nodeContentHandle_, nodeContentEvent);
@@ -228,7 +228,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
   <!-- @[contentslot_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
 
   ``` C++
-  size_t position = 0;
+  int32_t position = 0;
   ArkUI_NodeHandle component1 = CreateNodeHandle();
   // 将组件插入nodeContent管理器对应位置
   OH_ArkUI_NodeContent_InsertNode(nodeContentHandle_, component1, position);
@@ -271,7 +271,7 @@ Content与ContentSlot节点具有一对一的绑定关系。同一Content不能�
 
 若需在多个ContentSlot节点下显示相同内容，每个节点需创建单独的Content。示例如下：
 
-<!-- @[contentslot_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[contentslot_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // 开发者自己实现的so
@@ -280,12 +280,12 @@ import { NodeContent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Parent {
-  // ···
+  // ...
   private nodeContent_1: Content = new NodeContent();
   private nodeContent_2: Content = new NodeContent();
 
   aboutToAppear() {
-    // ···
+    // ...
     // 通过C-API创建节点，并添加到管理器nodeContent_1和nodeContent_2上
     nativeNode.createNativeNode(this.nodeContent_1);
     nativeNode.createNativeNode(this.nodeContent_2);
@@ -293,8 +293,8 @@ struct Parent {
 
   build() {
     Column() {
-      // ···
-      ContentSlot(this.nodeContent_1);// nodeContent_1将被挂载到下一个Contentslot节点，此处无法显示
+      // ...
+      ContentSlot(this.nodeContent_1);// nodeContent_1将被挂载到下一个ContentSlot节点，此处无法显示
       ContentSlot(this.nodeContent_1); // 正常显示
       ContentSlot(this.nodeContent_2); // 正常显示
     }

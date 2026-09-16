@@ -6,13 +6,13 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-计数器组件，提供相应的增加或者减少的计数操作。
+计数器组件，提供增加或减少的计数操作。适用于商品数量选择、参数调整等需要频繁修改数值的场景，帮助用户快速直观地调整数值。
 
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 > 
@@ -58,7 +58,7 @@ attributeModifier(modifier: AttributeModifier\<CounterAttribute> | AttributeModi
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CounterAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Counter组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。|
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CounterAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Counter组件的属性。<br>取值为undefined时，按当前组件的属性方法默认值处理。|
 
 ### enableInc<sup>10+</sup>
 
@@ -82,7 +82,7 @@ ArkTS-Sta: enableInc(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | “增加”按钮禁用或使能。<br/>默认值：true，true表示使能“增加”按钮，false表示禁用“增加”按钮。<br/>设置undefined时恢复默认值。 |
+| value  | ArkTS-Dyn: boolean <br>ArkTS-Sta: boolean  \| undefined | 是   | “增加”按钮禁用或使能。<br>默认值：true，true表示使能“增加”按钮，false表示禁用“增加”按钮。<br>设置undefined时恢复默认值。 |
 
 ### enableDec<sup>10+</sup>
 
@@ -106,7 +106,7 @@ ArkTS-Sta: enableDec(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean  \| undefined | 是   | “减少”按钮禁用或使能。<br/>默认值：true，true表示使能“减少”按钮，false表示禁用“减少”按钮。<br/>设置undefined时恢复默认值。 |
+| value  | ArkTS-Dyn: boolean <br>ArkTS-Sta: boolean  \| undefined | 是   | “减少”按钮禁用或使能。<br>默认值：true，true表示使能“减少”按钮，false表示禁用“减少”按钮。<br>设置undefined时恢复默认值。 |
 
 ## 事件
 
@@ -134,7 +134,7 @@ ArkTS-Sta: onInc(event:&nbsp;VoidCallback | undefined)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined    | 是   | Counter数值增加的回调函数。 |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined    | 是   | Counter数值增加的回调函数。 |
 
 ### onDec
 
@@ -158,40 +158,40 @@ ArkTS-Sta: onDec(event:&nbsp;VoidCallback | undefined)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined | 是   | Counter数值减少的回调函数。<br/>设置为undefined时不会执行回调。|
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined | 是   | Counter数值减少的回调函数。<br>设置为undefined时不会执行回调。|
 
 ## 示例
 
-该示例展示了Counter组件的基本使用方法。点击+、-按钮可以修改value值。
+该示例展示了Counter组件的基本使用方法。点击+、-按钮可以修改计数器的数值。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct CounterExample {
-  @State value1: number = 0;
-  @State value2: number = 0;
+  @State counterValue1: number = 0;
+  @State counterValue2: number = 0;
 
   build() {
     Column({ space: 50 }) {
       Counter() {
-        Text(this.value1.toString())
+        Text(this.counterValue1.toString())
       }
       .onInc(() => {
-        this.value1++;
+        this.counterValue1++;
       })
       .onDec(() => {
-        this.value1--;
+        this.counterValue1--;
       })
 
       Counter() {
-        Text(this.value2.toString())
+        Text(this.counterValue2.toString())
       }
       .onInc(() => {
-        this.value2++;
+        this.counterValue2++;
       })
       .onDec(() => {
-        this.value2--;
+        this.counterValue2--;
       })
       .enableInc(true)
       .enableDec(false)

@@ -4,9 +4,9 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
-Worker是与宿线程并行的独立线程。创建Worker的线程称为宿主线程，Worker自身的线程称为Worker线程。创建Worker传入的URL文件在Worker线程中执行，可以处理耗时操作但不可以直接操作UI。
+Worker是与宿主线程并行的独立线程。创建Worker的线程称为宿主线程，Worker自身的线程称为Worker线程。创建Worker传入的URL文件在Worker线程中执行，可以处理耗时操作但不可以直接操作UI。
 
 Worker的主要作用是为应用程序提供多线程运行环境，使应用程序在执行过程中与宿主线程分离，在后台线程中运行脚本处理耗时操作，避免计算密集型或高延迟任务阻塞宿主线程。由于Worker一旦创建不会主动销毁，若不处于任务状态会一直运行，造成资源浪费，应及时销毁空闲的Worker。
 
@@ -47,7 +47,7 @@ RestrictedWorker构造函数。使用其他方法前，均需先构造Restricted
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | 是   | Worker线程文件的路径，路径规则详细参考[文件路径注意事项](../../arkts-utils/worker-introduction.md#文件路径注意事项)。 |
-| options   | [WorkerOptions](js-apis-worker.md#workeroptions) | 否   | 构造RestrictedWorker时的选项。                                           |
+| options   | [WorkerOptions](js-apis-worker.md#workeroptions) | 否   | 构造RestrictedWorker时的选项。type默认值为'classic'，name默认'undefined'，shared默认'undefined'，priority默认'MEDIUM'。|
 
 **错误码：**
 

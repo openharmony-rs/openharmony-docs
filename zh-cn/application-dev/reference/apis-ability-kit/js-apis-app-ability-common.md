@@ -80,7 +80,6 @@ type AbilityStageContext = _AbilityStageContext.default
 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | AbilityStage组件上下文。 |
 
 ## AbilityStageContext<sup>23+</sup>
-
 type AbilityStageContext = _AbilityStageContext
 
 AbilityStageContext二级模块。
@@ -97,9 +96,6 @@ AbilityStageContext二级模块。
 | ------------------------------------------------------------ | ----------------------------- |
 | [_AbilityStageContext](js-apis-inner-application-abilityStageContext.md) | AbilityStageContext二级模块。 |
 
-## ApplicationContext
-
-type ApplicationContext = _ApplicationContext.default
 
 应用上下文，继承自Context。
 
@@ -353,6 +349,9 @@ type PacMap = _PacMap
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -475,6 +474,7 @@ type EmbeddableUIAbilityContext = _EmbeddableUIAbilityContext.default
 | --- | --- |
 | [EmbeddableUIAbilityContext](js-apis-inner-application-EmbeddableUIAbilityContext.md) | EmbeddableUIAbility组件上下文。 |
 
+
 ## PhotoEditorExtensionContext<sup>12+</sup>
 
 type PhotoEditorExtensionContext = _PhotoEditorExtensionContext.default
@@ -510,6 +510,7 @@ PhotoEditorExtensionContext二级模块。
 | 类型                                                         | 说明                                  |
 | ------------------------------------------------------------ | ------------------------------------- |
 | [_PhotoEditorExtensionContext](js-apis-app-ability-photoEditorExtensionContext.md) | PhotoEditorExtensionContext二级模块。 |
+
 
 ## UIServiceProxy<sup>14+</sup>
 

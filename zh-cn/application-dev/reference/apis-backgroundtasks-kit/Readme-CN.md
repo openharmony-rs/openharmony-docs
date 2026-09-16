@@ -13,12 +13,14 @@
   - [@ohos.resourceschedule.workScheduler (延迟任务调度)](js-apis-resourceschedule-workScheduler.md)
   - [@ohos.WorkSchedulerExtensionAbility (延迟任务调度回调)](js-apis-WorkSchedulerExtensionAbility.md)
   - [@ohos.resourceschedule.backgroundProcessManager (后台子进程管控)](js-apis-backgroundProcessManager.md)
+  - [@ohos.resourceschedule.backgroundLoader (后台加载任务)](js-apis-resourceschedule-backgroundLoader.md)
   <!--Del-->
   - [@ohos.reminderAgentManager (后台代理提醒)(系统接口)](js-apis-reminderAgentManager-sys.md)
   - [@ohos.resourceschedule.backgroundTaskManager (后台任务管理)(系统接口)](js-apis-resourceschedule-backgroundTaskManager-sys.md)
   - [@ohos.resourceschedule.deviceStandby (设备待机模块)(系统接口)](js-apis-resourceschedule-deviceStandby-sys.md)
   - [@ohos.resourceschedule.usageStatistics (设备使用信息统计)(系统接口)](js-apis-resourceschedule-deviceUsageStatistics-sys.md)
   - [@ohos.resourceschedule.workScheduler (延迟任务调度)(系统接口)](js-apis-resourceschedule-workScheduler-sys.md)
+  - [@ohos.resourceschedule.backgroundProcessManager (后台子进程管控)(系统接口)](js-apis-backgroundProcessManager-sys.md)
   <!--DelEnd-->
   - application<!--background-tasks-arkts-application-->
     - [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)

@@ -21,7 +21,7 @@
 
 ## 查询当前设备是否支持OpenGL
 
-从API version 22开始，支持使用OH_Graphics_QueryGL接口判断设备是否支持使用OpenGL功能以及是否需要回退使用OpenGL ES 。
+从API version 22开始，支持使用OH_Graphics_QueryGL接口判断设备是否支持使用OpenGL功能以及是否需要回退使用OpenGL ES。
 
 **设备行为差异：** OH_Graphics_QueryGL接口在PC、Tablet设备上可正常调用，在其他设备上返回为空。
 
@@ -92,7 +92,7 @@ libEGL.so
 
 **修改app.json5配置文件**
 
-```json
+```json5
 "appEnvironments": [
  {
    "name":"NEED_OPENGL",
@@ -103,7 +103,7 @@ libEGL.so
 
 ## 相关参考
 
-针对OpenGL的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考:
+针对OpenGL的使用和相关开发，需要同步了解NDK的开发过程，以及XComponent组件等的使用。具体可参考：
 
 - [NDK开发参考](../../napi/ndk-development-overview.md)
 

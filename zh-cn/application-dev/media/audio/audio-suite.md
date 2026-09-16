@@ -18,7 +18,7 @@
 
 [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)中的引擎是一个统一管理音频管线、控制[离线编辑(C/C++)](audio-suite-manual-rendering.md)和[实时预览(C/C++)](audio-suite-real-time-rendering.md)的对象，开发者可以根据自身的需求搭建音频处理链。调用方式如上图所示，由应用发起，先调用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)的接口依次创建引擎、管线、节点，再把创建的节点在管线内连接起来，用于传输PCM（Pulse Code Modulation）音频数据，使对应的效果节点实现音效处理能力。当管线停止时，开发者可以有限制地（具体规则请参考[管线的使用规则](#管线的使用规则)）连接、断开和移除节点，通过调节节点编排实现复杂的音效处理。
 
-引擎最多支持创建10条管线，其中实时预览管线最多创建1条。
+引擎最多支持创建10条管线。在API版本26.0.0之前，实时预览管线最多创建1条；在API版本26.0.0及以后，不再对实时预览管线的数量做单独限制，但管线的总数仍不得超过10条。
 
 ## 节点
 
@@ -30,9 +30,9 @@
 
 |节点类型   | 说明    |
 |----------|----------|
-| INPUT_NODE  | 输入节点，支持开发者输入各种格式的PCM音频数据。  |
-| EFFECT_NODE | 效果节点，添加音频效果，支持单输入单输出和多输入单输出。 |
-| OUTPUT_NODE | 输出节点，支持设置输出的PCM音频格式。  |
+| 输入节点 | 支持输入各种格式的PCM音频数据。 |
+| 效果节点 | 提供音频效果处理功能。<br>当前支持的效果节点及详细说明请参考[音频效果(C/C++)](audio-suite-effects.md)。 |
+| 输出节点 | 支持设置输出音频的PCM格式。 |
 
   节点完整类型详见[OH_AudioNode_Type](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_type)。
 
@@ -44,7 +44,7 @@
 
 - [离线编辑(C/C++)](audio-suite-manual-rendering.md)场景支持均衡器、音源分离、声场效果、降噪、声音美化、环境效果、混音等音效节点。
     
-- [实时预览(C/C++)](audio-suite-real-time-rendering.md)场景支持均衡器音效节点。
+- [实时预览(C/C++)](audio-suite-real-time-rendering.md)场景在API版本23之前，仅支持均衡器效果节点；在API版本23及以后，支持所有效果节点。
 
 - 均衡器、音源分离、声场效果、降噪等音效节点支持对应的音效处理功能和多音频混音操作，最终输出的PCM音频数据支持格式设置（如[OH_Audio_SampleFormat(位深度)](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[OH_Audio_SampleRate(采样率)](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)和[OH_AudioChannelLayout(声道数)](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)等）。
 

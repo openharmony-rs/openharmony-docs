@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lyj_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -27,6 +27,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -44,6 +46,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -60,9 +64,11 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用callback方式作为异步回调。适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。使用callback方式作为异步回调。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -73,7 +79,7 @@ write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | info | [SysEventInfo](#syseventinfo) | 是 | 系统事件信息对象，包含事件领域、事件名称、事件类型和事件参数等信息。 |
-| callback  | AsyncCallback&lt;void&gt; | 是 | 回调函数，可以在回调函数中处理接口返回值。<br/>- 0表示事件校验成功，事件正常异步写入事件文件；<br/>- 正值表示事件打点存在异常，但可以正常写入；<br/>- 负值表示事件打点失败。 |
+| callback  | AsyncCallback&lt;void&gt; | 是 | 回调函数，可以在回调函数中处理接口返回值。<br>- 0表示事件校验成功，事件正常异步写入事件文件；<br>- 正值表示事件打点存在异常，但可以正常写入；<br>- 负值表示事件打点失败。 |
 
 **错误码：**
 
@@ -153,9 +159,11 @@ try {
 
 write(info: SysEventInfo): Promise&lt;void&gt;
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用promise方式作为异步回调。适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。使用promise方式作为异步回调。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -269,6 +277,8 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -284,6 +294,8 @@ try {
 系统事件订阅规则对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -301,6 +313,8 @@ try {
 系统事件订阅者对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -321,6 +335,8 @@ addWatcher(watcher: Watcher): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -383,6 +399,8 @@ removeWatcher(watcher: Watcher): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
@@ -440,6 +458,8 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | beginTime |  ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否 | 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数）。使用-1表示不限制起始时间。与endTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
@@ -454,6 +474,8 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | domain | string | 否 | 否 | 查询包含的事件领域。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23 |
@@ -465,6 +487,8 @@ try {
 系统事件查询者对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -484,6 +508,8 @@ query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -620,6 +646,8 @@ ArkTS-Sta: exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): long
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -773,6 +801,8 @@ ArkTS-Sta: subscribe(rules: QueryRule[]): long
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -912,6 +942,8 @@ unsubscribe(): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 

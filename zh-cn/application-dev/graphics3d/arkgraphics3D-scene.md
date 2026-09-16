@@ -20,6 +20,13 @@
 
 一个glTF模型可以包含光源、相机、模型等3D场景关键要素，如果一个glTF模型中包含相机，使用ArkGraphics 3D提供的接口加载glTF就可以直接完成该相机视角下3D场景的渲染。如果不包含相机，也可以利用ArkGraphics 3D创建一个相机完成渲染。由于3D模型往往数据量很大，通常采用异步方式进行加载，加载成功后将返回一个scene对象，通过该对象可对整个3D场景进行编辑。
 
+glTF模型中引用的纹理图片支持以下格式：
+
+| 格式 | 支持情况 |
+|------|----------|
+| JPEG（.jpg/.jpeg） | 支持识别头部携带JFIF、Exif、ICC Profile标记的JPEG文件；<br>搭载OpenHarmony 7.0.0及以上版本的设备，新增支持识别头部包含DQT、XMP、MPF、Adobe标记的JPEG文件。 |
+| PNG（.png） | 支持标准PNG文件。 |
+
 1. 导入相关模块。
 
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和管理3D场景与相机。
@@ -82,7 +89,7 @@
    
    ``` TypeScript
    // Create a Camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // Set proper camera parameters.
    this.cam.enabled = true;
    this.cam.position.z = 5;
@@ -95,7 +102,7 @@
 
    ``` TypeScript
    // 创建相机
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // 设置相机参数
    this.cam!.enabled = true;
    this.cam!.position.z = 5;
@@ -359,7 +366,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
 
 3. 创建灯光并配置灯光参数。
 
-   调用 SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。灯光类型决定了光线的方向，位置决定了光线的位置，颜色决定了光线的颜色。
+   调用SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。
 
    ArkTS-Dyn示例：
    <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
@@ -404,7 +411,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.scene = globalScene;
      this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
      this.rf = this.scene.getResourceFactory();
-     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+     this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
      // Initialize color value
@@ -423,7 +430,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.scene = globalScene;
      this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
      this.rf = this.scene!.getResourceFactory();
-     this.cam = await this.rf!.createCamera({ 'name': 'Camera1' });
+     this.cam = await this.rf!.createCamera({ name: 'Camera1' });
      this.cam!.enabled = true;
      this.cam!.position.z = 5;
      // 初始化颜色值

@@ -1,9 +1,9 @@
 # @ohos.file.fs (文件管理)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 本模块是Core File Kit的核心模块，提供基础文件操作API，用于对应用沙箱内的文件和目录进行创建、打开、读写、拷贝、移动、删除、查询属性等操作。
@@ -29,33 +29,7 @@ import { fileIo } from '@kit.CoreFileKit';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
-
-ArkTS-Dyn示例：
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let context = this.context;
-    let pathDir = context.filesDir;
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let pathDir = context.filesDir;
-```
-
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径pathDir，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
@@ -456,7 +430,7 @@ try {
   } else {
     console.info(`Succeeded in checking file, file does not exist.`);
   }
-} catch(error) {
+} catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
 }
@@ -505,7 +479,7 @@ try {
   } else {
     console.info(`Succeeded in checking file, file does not exist.`);
   }
-} catch(error) {
+} catch (error) {
   let err: BusinessError = error as BusinessError;
   console.error(`Failed to accessSync. Code: ${err.code}, message: ${err.message}`);
 }
@@ -726,7 +700,7 @@ try {
   }).catch((err: BusinessError)=>{
     console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
   })
-} catch(err) {
+} catch (err) {
   console.error(`Failed to copy.Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -811,7 +785,7 @@ try {
     }
     console.info("Succeeded in copying.");
   })
-} catch(err) {
+} catch (err) {
   console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -898,7 +872,7 @@ try {
     }
     console.info("Succeeded in copying.");
   })
-} catch(err) {
+} catch (err) {
   console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -3963,10 +3937,10 @@ fileIo.readLines(filePath, options).then((readerIterator:fileIo.ReaderIterator) 
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| done | boolean | 迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。 |
-| value | string | 逐行读取的文件文本内容。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| done | boolean | 否 | 否 | 迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。 |
+| value | string | 否 | 否 | 逐行读取的文件文本内容。 |
 
 ## fileIo.readText
 
@@ -4224,7 +4198,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -4281,7 +4255,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 | callback | AsyncCallback&lt;[Stat](#stat)&gt; | 是 | 回调函数，返回Stat对象。 |
 
 **错误码：**
@@ -4336,7 +4310,7 @@ lstatSync(path: string): Stat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| path | string | 是 | 文件的应用沙箱路径path或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
+| path | string | 是 | 文件的应用沙箱路径或URI。<br>**说明**：从API version 22开始，支持传入URI。 |
 
 **返回值：**
 
@@ -5320,13 +5294,6 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
-| 错误码ID | 错误信息 |
-| ---- | ---- |
-| 13900002 | No such file or directory. |
-| 13900011 | Out of memory. |
-| 13900018 | Not a directory. |
-| 13900020 | Invalid argument. |
-
 **示例：**
 
 ```ts
@@ -5386,13 +5353,6 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 **错误码：**
 
 接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
-
-| 错误码ID | 错误信息 |
-| ---- | ---- |
-| 13900002 | No such file or directory. |
-| 13900011 | Out of memory. |
-| 13900018 | Not a directory. |
-| 13900020 | Invalid argument. |
 
 **示例：**
 
@@ -5553,7 +5513,7 @@ ArkTS-Sta: moveDir(src: string, dest: string, mode: int, callback: AsyncCallback
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当移动目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -5618,7 +5578,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | number | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | number | 是 | 移动模式。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下未冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 回调函数。当移动目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -5671,7 +5631,7 @@ moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | int | 是 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | int | 是 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 | callback | AsyncCallback&lt;void, Array&lt;[ConflictFiles](#conflictfiles10)&gt;&gt; | 是 | 异步移动目录之后的回调。 |
 
 **错误码：**
@@ -5707,7 +5667,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void>): void
 
 移动源目录及其内容至目标路径下。使用callback异步回调。
 
-移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
+移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的非空目录，则抛出异常。
 
 > **说明：**
 >
@@ -5771,7 +5731,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 移动源目录及其内容至目标路径下。使用callback异步回调。
 
-移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的目录，则抛出异常。
+移动模式为目录级别抛异常。当目标目录下存在与源目录名冲突的非空目录，则抛出异常。
 
 > **说明：**
 >
@@ -5898,7 +5858,7 @@ ArkTS-Sta: moveDirSync(src: string, dest: string, mode?: int): void
 | ---- | ---- | ---- | ---- |
 | src | string | 是 | 源目录的应用沙箱路径。 |
 | dest | string | 是 | 目标目录的应用沙箱路径。 |
-| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
+| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 移动模式，默认值为0。<br/>-&nbsp;mode为0，目录级别抛异常。若目标目录下存在与源目录名冲突的非空目录，则抛出异常。<br/>-&nbsp;mode为1，文件级别抛异常。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则抛出异常。源目录下未冲突的文件全部移动至目标目录下，目标目录下冲突文件将继续保留，且冲突文件信息将在抛出异常的data属性中以Array\<[ConflictFiles](#conflictfiles10)>形式提供。<br/>-&nbsp; mode为2，文件级别强制覆盖。目标目录下存在与源目录名冲突的目录，若冲突目录下存在同名文件，则强制覆盖冲突目录下所有同名文件，未冲突文件将继续保留。<br/>-&nbsp; mode为3，目录级别强制覆盖。移动源目录至目标目录下，目标目录下移动的目录内容与源目录完全一致。若目标目录下存在与源目录名冲突的目录，该目录下所有原始文件将被删除。 |
 
 **错误码：**
 
@@ -6438,7 +6398,7 @@ ArkTS-Dyn: utimes(path: string, mtime: number): void
 
 ArkTS-Sta: utimes(path: string, mtime: double): void
 
-更改文件上次修改该文件的时间。
+更改文件的上次修改时间。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -6465,74 +6425,6 @@ let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.RE
 fileIo.writeSync(file.fd, 'test data');
 fileIo.closeSync(file);
 fileIo.utimes(filePath, new Date().getTime());
-```
-
-## fileIo.createRandomAccessFile<sup>10+</sup>
-
-ArkTS-Dyn: createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAccessFile&gt;
-
-ArkTS-Sta: createRandomAccessFile(file: string | File, mode?: int): Promise&lt;RandomAccessFile&gt;
-
-基于文件路径或文件对象创建RandomAccessFile对象，使用Promise异步回调。
-
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| file | string \| [File](#file) | 是 | 文件的应用沙箱路径或已打开的File对象。 |
-| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path未指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise对象，返回RandomAccessFile对象的结果。 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
-
-**示例：**
-
-ArkTS-Dyn示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-fileIo.createRandomAccessFile(file).then((randomAccessFile: fileIo.RandomAccessFile) => {
-  console.info(`Succeeded in creating randomaccessfile, fd: ${randomAccessFile.fd}`);
-  randomAccessFile.close();
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create randomaccessfile. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  fileIo.closeSync(file);
-});
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath,fileIo.OpenMode.CREATE |fileIo.OpenMode.READ_WRITE);
-fileIo.createRandomAccessFile(file).then((randomAccessFile:fileIo.RandomAccessFile) => {
-  console.info(`Succeeded in creating randomaccessfile, fd: ${randomAccessFile.fd}`);
-  randomAccessFile.close();
-}).catch((error: Error) => {
-  let err: BusinessError = error as BusinessError;
-  console.error(`Failed to create randomaccessfile. Code: ${err.code}, message: ${err.message}`);
-}).finally(() => {
-  fileIo.closeSync(file);
-});
 ```
 
 ## fileIo.createRandomAccessFile<sup>10+</sup>
@@ -6660,7 +6552,7 @@ fileIo.createRandomAccessFile(file,fileIo.OpenMode.READ_ONLY, (err: BusinessErro
 });
 ```
 
-## fileIo.createRandomAccessFile<sup>12+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 ArkTS-Dyn: createRandomAccessFile(file: string | File, mode?: number, options?: RandomAccessFileOptions): Promise&lt;RandomAccessFile&gt;
 
@@ -6680,7 +6572,7 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode?: int, options?: Ran
 | ---- | ---- | ---- | ---- |
 | file | string \| [File](#file) | 是 | 文件的应用沙箱路径或已打开的File对象。 |
 | mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-| options | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>- start，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。<br>ArkTS-Sta：<br/>- start，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。 |
+| options<sup>12+</sup> | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>- start，number类型，表示文件的起始偏移位置，单位为Byte。可选，默认文件当前位置。<br/>- end，number类型，表示文件的结束偏移位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。<br>ArkTS-Sta：<br/>- start，long类型，表示文件的起始偏移位置，单位为Byte。可选，默认文件当前位置。<br/>- end，long类型，表示文件的结束偏移位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。 |
 
 **返回值：**
 
@@ -6729,46 +6621,6 @@ fileIo.createRandomAccessFile(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode
 
 ## fileIo.createRandomAccessFileSync<sup>10+</sup>
 
-ArkTS-Dyn: createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
-
-ArkTS-Sta: createRandomAccessFileSync(file: string | File, mode?: int): RandomAccessFile
-
-基于文件路径或文件对象创建RandomAccessFile对象。
-
-**系统能力**：SystemCapability.FileManagement.File.FileIO
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| file | string \| [File](#file) | 是 | 文件的应用沙箱路径或已打开的File对象。 |
-| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| [RandomAccessFile](#randomaccessfile10) | 返回RandomAccessFile对象。 |
-
-**错误码：**
-
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
-
-**示例：**
-
-```ts
-let filePath = pathDir + "/test.txt";
-let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-let randomAccessFile = fileIo.createRandomAccessFileSync(file);
-randomAccessFile.close();
-```
-
-## fileIo.createRandomAccessFileSync<sup>12+</sup>
-
 ArkTS-Dyn: createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
 ArkTS-Sta: createRandomAccessFileSync(file: string | File, mode?: int, options?: RandomAccessFileOptions): RandomAccessFile
@@ -6787,7 +6639,7 @@ ArkTS-Sta: createRandomAccessFileSync(file: string | File, mode?: int, options?:
 | ---- | ---- | ---- | ---- |
 | file | string \| [File](#file) | 是 | 文件的应用沙箱路径或已打开的File对象。 |
 | mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-| options | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>- start，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。<br>ArkTS-Sta：<br/>- start，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。 |
+| options<sup>12+</sup> | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否 | 支持如下选项：<br>ArkTS-Dyn：<br/>- start，number类型，表示文件的起始偏移位置，单位为Byte。可选，默认文件当前位置。<br/>- end，number类型，表示文件的结束偏移位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。<br>ArkTS-Sta：<br/>- start，long类型，表示文件的起始偏移位置，单位为Byte。可选，默认文件当前位置。<br/>- end，long类型，表示文件的结束偏移位置，单位为Byte。可选，默认文件末尾。<br/>此选项仅对[getreadstream](#getreadstream12)及[getwritestream](#getwritestream12)获取的文件流对象生效。 |
 
 **返回值：**
 
@@ -7320,7 +7172,7 @@ AtomicFile是一个用于对文件进行原子读写等操作的类。
 
 constructor(path: string)
 
-对于给定路径的文件创建一个AtomicFile类。
+对于给定路径的文件创建一个AtomicFile实例。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7755,7 +7607,7 @@ try {
 
 delete(): void
 
-删除AtomicFile类，会删除原始文件和临时文件。
+删除AtomicFile对应的原始文件和临时文件。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7871,9 +7723,9 @@ let filePath = pathDir + "/test.txt";
 let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
 let watcher = fileIo.createWatcher(filePath, 0x2 | 0x10, (watchEvent: WatchEvent) => {
   if (watchEvent.event == 0x2) {
-    console.info(watchEvent.fileName + 'was modified');
+    console.info(watchEvent.fileName + ' was modified');
   } else if (watchEvent.event == 0x10) {
-    console.info(watchEvent.fileName + 'was closed');
+    console.info(watchEvent.fileName + ' was closed');
   }
 });
 watcher.start();
@@ -7886,7 +7738,7 @@ watcher.stop();
 
 (event: WatchEvent): void
 
-事件监听类，当监听的文件或目录发生变动事件时触发回调。
+事件监听接口，当监听的文件或目录发生变动事件时触发回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7902,7 +7754,7 @@ watcher.stop();
 
 ## WatchEvent<sup>10+</sup>
 
-事件类
+事件接口。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -8098,6 +7950,8 @@ copySignal.onCancel();
 
 ## ProgressListener<sup>11+</sup>
 
+type ProgressListener = (progress: Progress) => void
+
 拷贝进度监听。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
@@ -8106,10 +7960,11 @@ copySignal.onCancel();
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
 
-| 类型 | 说明 |
-| ---- | ---- |
-| (progress:[Progress](#progress11)) => void | 拷贝进度监听 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| progress | [Progress](#progress11) | 是 | 拷贝进度监听 |
 
 **示例：**
 
@@ -8143,7 +7998,7 @@ let copyOption: fileIo.CopyOptions = {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | ino | bigint | 是 | 否 | 标识该文件。通常同设备上的不同文件的INO不同。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
-| mode | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| mode | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | uid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 文件所有者的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | gid | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 文件所有组的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 否 | 文件的大小，单位为Byte。仅对普通文件有效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
@@ -11296,10 +11151,10 @@ filter(name: string): boolean
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| srcFile | string | 源冲突文件路径。 |
-| destFile | string | 目标冲突文件路径。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| srcFile | string | 否 | 否 | 源冲突文件路径。 |
+| destFile | string | 否 | 否 | 目标冲突文件路径。 |
 
 ## Options<sup>11+</sup>
 
@@ -11311,9 +11166,9 @@ filter(name: string): boolean
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-| encoding | string | 文件编码方式。可选项。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| encoding | string | 否 | 是 | 文件编码方式。可选项。 |
 
 ## WhenceType<sup>11+</sup>
 
@@ -11343,8 +11198,8 @@ filter(name: string): boolean
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| LOCAL | 1 | 文件在本地存在。 |
-| CLOUD | 2 | 文件在云端存在。 |
+| LOCAL | 1 << 0 | 文件在本地存在。 |
+| CLOUD | 1 << 1 | 文件在云端存在。 |
 
 ## AccessModeType<sup>12+</sup>
 
@@ -11393,12 +11248,12 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取文件位置，单位为Byte。可选，默认从当前位置开始读。 |
 | length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 ## ReadTextOptions<sup>11+</sup>
 
-可选项类型，支持readText接口使用，ReadTextOptions继承至[ReadOptions](#readoptions11)。
+可选项类型，支持readText接口使用，ReadTextOptions继承自[ReadOptions](#readoptions11)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11408,13 +11263,11 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。 |
-| length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望读取数据的长度，单位为Byte。可选，默认文件长度。 |
 | encoding | string | 否 | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## WriteOptions<sup>11+</sup>
 
-可选项类型，支持write接口使用，WriteOptions继承至[Options](#options11)。
+可选项类型，支持write接口使用，WriteOptions继承自[Options](#options11)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -11425,9 +11278,8 @@ filter(name: string): boolean
 
 | 名称 | 类型 | 必选 | 说明 |
 | ---- | ---- | ---- | ---- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望写入文件位置，单位为Byte。可选，默认从当前位置开始写。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| encoding | string | 否 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 
 ## ListFileExtOptions
 
@@ -11469,6 +11321,8 @@ filter(name: string): boolean
 ## ReadStream<sup>12+</sup>
 
 文件可读流，需要先通过[fileIo.createReadStream](#fileiocreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
 
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
@@ -11645,8 +11499,8 @@ ws.close();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
-| end | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示文件的起始偏移位置，单位为Byte。可选，默认当前位置。 |
+| end | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示文件的结束偏移位置，单位为Byte。可选，默认文件末尾。 |
 
 ## ReadStreamOptions<sup>12+</sup>
 

@@ -57,6 +57,12 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 Ability启动原因，该类型为枚举，可配合UIAbility的[onCreate(want, launchParam)](js-apis-app-ability-uiAbility.md#oncreate)方法根据launchParam.launchReason的不同类型执行相应操作。
 
+> **说明：**
+>
+> - 如果应用在Ability创建之前退出，则无法获取记录信息。
+>
+> - 获取应用异常退出信息的方式可参见[App Killed](../../dfx/appkilled-guidelines.md)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                          | 值   | 说明                                                         |
@@ -95,7 +101,7 @@ Ability上次退出原因，该类型为枚举，可配合UIAbility的[onCreate(
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
 | UNKNOWN          | 0    | 未知原因。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability组件未响应。<br>**说明:** 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
+| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability组件未响应。<br>**说明**：从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 9 |
 | NORMAL | 2    | 用户主动关闭应用，应用程序正常退出。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：当开发者直接调用[process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated)、内核kill命令等非Ability Kit提供的能力强制退出应用进程时，也会返回NORMAL。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | CPP_CRASH<sup>10+</sup>  | 3    | [进程崩溃](../../dfx/cppcrash-guidelines.md)导致的应用程序退出。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 | JS_ERROR<sup>10+</sup>  | 4    | 当应用存在JS语法错误并未被开发者捕获时，触发JS_ERROR故障，导致应用程序退出。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
@@ -147,30 +153,40 @@ export default class MyAbility extends UIAbility {
 > 建议通过[App Killed](../../dfx/appkilled-guidelines.md)检测来获取应用异常退出的信息，不再建议使用exitSubReason获取。
 >
 > exitSubReason取值的含义如下：
-> - 100：进入户外模式查杀。
-> - 101：退出户外模式查杀或未申请合理的后台任务，但是后台有大量音频播放，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
-> - 102：户外模式中查杀或应用未申请合理的后台任务，但是后台有录音，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
-> - 103：应用后台CPU高负载。
-> - 105：应用IO超限。
-> - 106：ION内存泄漏管控或恶意使用后台任务查杀，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
-> - 107：后台应用内存占用超过检测阈值两倍，其中PSS内存占比最高。
-> - 108：后台应用内存占用超过特定阈值，其中PSS内存占比最高。
-> - 110：GPU内存泄漏管控。
-> - 111：VMA内存泄漏管控。
-> - 112：句柄泄漏管控。
-> - 113：线程泄漏管控。
-> - 114：ASHMEM内存泄漏管控。
-> - 117：页表泄漏管控。
-> - 301：GPU内存超限或热清理。
-> - 3000：冻结异常管控，后台存在不合理订阅导致的回调唤醒。
-> - 3001：冻结异常管控，后台存在不合理订阅导致应用处理回调卡死。
-> - 3002：GNSS工作异常清理。
-> - 3003：蓝牙工作异常清理。
-> - 3004：RunningLock持锁异常清理。
-> - 3005：Kernel锁异常清理。
-> - 3006：省电模式清理。
-> - 3007：模块高耗电异常清理。
-> - 3030：应急模式、超级省电模式或睡眠模式的清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+>
+> - [LastExitReason](#lastexitreason)为NORMAL时：
+>   - 9：内核强制终止，终止信号SIGKILL。
+>   - 15：内核强制终止，终止信号SIGTERM。
+>
+> - [LastExitReason](#lastexitreason)为PERFORMANCE_CONTROL时：
+>   - 100：进入户外模式查杀。
+>   - 101：退出户外模式查杀。
+>   - 102：户外模式中查杀。
+>   - 3000：冻结异常管控，后台存在不合理订阅导致的回调唤醒。
+>   - 3001：冻结异常管控，后台存在不合理订阅导致应用处理回调卡死。
+>   - 3002：GNSS工作异常清理。
+>   - 3003：蓝牙工作异常清理。
+>   - 3004：RunningLock持锁异常清理。
+>   - 3005：Kernel锁异常清理。
+>   - 3006：省电模式清理。
+>   - 3007：模块高耗电异常清理。
+>   - 3042：应急模式或超级省电模式清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+>
+> - [LastExitReason](#lastexitreason)为RESOURCE_CONTROL时：
+>   - 101：未申请合理的后台任务，但是后台有大量音频播放。
+>   - 102：应用未申请合理的后台任务，但是后台有录音。
+>   - 103：应用后台CPU高负载。
+>   - 105：应用IO超限。
+>   - 106：ION内存泄漏管控或恶意使用后台任务查杀，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+>   - 107：后台应用内存占用超过检测阈值两倍，其中PSS内存占比最高。
+>   - 108：后台应用内存占用超过特定阈值，其中PSS内存占比最高。
+>   - 110：GPU内存泄漏管控。
+>   - 111：VMA内存泄漏管控。
+>   - 112：句柄泄漏管控。
+>   - 113：线程泄漏管控。
+>   - 114：ASHMEM内存泄漏管控。
+>   - 117：页表泄漏管控。
+>   - 301：GPU内存超限或热清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
 
 **示例**:
 
@@ -284,7 +300,7 @@ export default class MyAbility extends UIAbility {
 | WINDOW_MODE_FULLSCREEN      | 1   | 全屏模式。仅在2in1和Tablet设备上生效。  |
 | WINDOW_MODE_SPLIT_PRIMARY   | 100 | 支持应用内拉起Ability时设置为分屏，左侧分屏。仅在Tablet设备、PC/2in1设备，以及支持横屏桌面且处于展开状态的折叠屏设备上生效。   |
 | WINDOW_MODE_SPLIT_SECONDARY | 101 | 支持应用内拉起Ability时设置为分屏，右侧分屏。仅在Tablet设备、PC/2in1设备，以及支持横屏桌面且处于展开状态的折叠屏设备上生效。   |
-| WINDOW_MODE_SPLIT | 105 | 支持应用内拉起Ability时设置为分屏，新增窗口默认显示在焦点窗口右侧。仅在折叠屏和Tablet设备上生效。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
+| WINDOW_MODE_SPLIT | 105 | 支持应用内拉起Ability时设置为分屏，新增窗口默认显示在焦点窗口右侧。仅在折叠屏和Tablet设备上生效。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0   |
 
 **示例：**
 
@@ -453,7 +469,7 @@ export default class MyAbility extends UIAbility {
 
 | 名称 | 值 | 说明 |
 | ------------- | --------- | ----------- |
-| TERMINATE_IMMEDIATELY | 0 | 表示立即执行结束动作，默认值。|
+| TERMINATE_IMMEDIATELY | 0 | 表示立即执行结束动作。|
 | CANCEL | 1 | 表示取消结束动作。|
 
 **示例：**

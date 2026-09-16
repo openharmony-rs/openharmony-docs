@@ -2,9 +2,9 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @bitbegin-->
-<!--Designer: @guofan912-->
-<!--Tester: @wuqingyang1-->
+<!--Owner: @yh1719-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块提供有源标签的使用，包括初始化有源标签芯片、读取有源标签内容、写入内容到有源标签等。
@@ -98,9 +98,9 @@ uninitialize(): void
 
 卸载有源标签芯片资源。
 
-**需要权限:** ohos.permission.NFC_TAG
+**需要权限：** ohos.permission.NFC_TAG
 
-**系统能力:** SystemCapability.Communication.ConnectedTag
+**系统能力：** SystemCapability.Communication.ConnectedTag
 
 **错误码：**
 
@@ -289,7 +289,7 @@ writeNdefTag(data: string): Promise&lt;void&gt;
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | string | 是 | 有源标签内容, 最大长度为1024个字节。 |
+| data | string | 是 | 有源标签内容，最大长度为1024个字节。 |
 
 **返回值：**
 
@@ -325,7 +325,7 @@ write(data: number[]): Promise&lt;void&gt;
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | number[] | 是 | 有源标签内容, 由十六进制数字组成。范围：0x00至0xFF。 |
+| data | number[] | 是 | 有源标签内容，由十六进制数字组成。范围：0x00至0xFF。 |
 
 **返回值：**
 
@@ -376,7 +376,7 @@ writeNdefTag(data: string, callback: AsyncCallback&lt;void&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | string | 是 | 有源标签内容, 最大长度为1024个字节。 |
+| data | string | 是 | 有源标签内容，最大长度为1024个字节。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当写入标签成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -408,7 +408,7 @@ write(data: number[], callback: AsyncCallback&lt;void&gt;): void
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
-| data | number[] | 是 | 有源标签内容, 由十六进制数字组成。范围：0x00至0xFF。 |
+| data | number[] | 是 | 有源标签内容，由十六进制数字组成。范围：0x00至0xFF。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当写入标签成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -480,7 +480,7 @@ function nfcStatusCb(rfState: connectedTag.NfcRfType) {
     console.info("connectedTag on Callback rfState: ", rfState);
 }
 
-// 有源nfc标签的使用流程
+// 有源NFC标签的使用流程
 async function nfcTagTestOn(): Promise<void> {
     try {
         console.info("connectedTag initialize");

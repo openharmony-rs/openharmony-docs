@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 SparseArray模块提供稀疏数组操作的基本方法。稀疏数组使用Map作为底层存储，这使其在处理包含许多空槽的数组时（如图、矩阵等）具有内存高效性。当数组某个位置没有元素时，则代表空洞。
 

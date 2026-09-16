@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 多个任务同时执行时，由于任务复杂度不同，执行时间和返回数据的时间也会不同。如果宿主线程需要所有任务执行完毕的数据，可以通过[TaskGroup](../reference/apis-arkts/js-apis-taskpool.md#taskgroup10)的方式实现。
 
@@ -68,11 +68,12 @@
    taskGroup.addTask(new taskpool.Task(loadPicture, 20));
    taskGroup.addTask(new taskpool.Task(loadPicture, 10));
    taskpool.execute(taskGroup).then((ret: object) => {
-     let tmpLength = (ret as IconItemSource[][]).length
+     let retA = ret as IconItemSource[][];
+     let tmpLength = (retA).length
      for (let i = 0; i < tmpLength; i++) {
-       for (let j = 0; j < ret[i].length; j++) {
-         if (ret[i][j]) {
-           iconItemSourceList.push(ret[i][j]);
+       for (let j = 0; j < retA[i].length; j++) {
+         if (retA[i][j]) {
+           iconItemSourceList.push(retA[i][j]);
          }
        }
      }

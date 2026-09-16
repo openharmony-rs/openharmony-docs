@@ -32,7 +32,7 @@
 
     // 设定字幕。
     let fileDescriptorSub = await this.context?.resourceManager.getRawFd('xxx.srt');
-    this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
+    this.avPlayer.addSubtitleFromFd(fileDescriptorSub?.fd, fileDescriptorSub?.offset, fileDescriptorSub?.length);
    ```
    
    ArkTS-Sta:
@@ -118,7 +118,7 @@
    });
    ```
 
-3. (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
+3. （可选）当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
 
    ArkTS-Dyn:
    ```ts

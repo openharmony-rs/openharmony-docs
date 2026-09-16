@@ -68,9 +68,9 @@ Stack() {
 
 响应优先级遵循以下条件：
 
-1.当父子组件均绑定同一类手势时，子组件优先于父组件触发。
+1. 当父子组件均绑定同一类手势时，子组件优先于父组件触发。
 
-2.当一个组件绑定多个手势时，先达到手势触发条件的手势优先触发。
+2. 当一个组件绑定多个手势时，先达到手势触发条件的手势优先触发。
 
 <!-- @[priorityfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
 

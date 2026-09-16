@@ -35,7 +35,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
 1. 在应用配置文件`module.json5`中注册`extensionAbilities`相关配置
 
-   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.  extension. backup"`的条目。
+   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.extension.backup"`的条目。
 
    BackupExtensionAbility配置文件示例：
 
@@ -208,7 +208,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 1. **有关fullBackupOnly字段的说明**
 
    - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
-   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
+   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在onRestore/onRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
 
    开发者可根据自身的业务场景，选择对应的恢复数据方式。
 

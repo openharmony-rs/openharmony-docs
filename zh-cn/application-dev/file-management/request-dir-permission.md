@@ -1,9 +1,9 @@
 # 获取并使用公共目录
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 ## 通过 ArkTS 接口获取并访问公共目录
@@ -18,16 +18,7 @@
        return;
    }
    ```
- - 公共目录获取接口仅用于获取公共目录路径，不对公共目录访问权限进行校验。若需访问公共目录需申请对应的公共目录访问权限。三方应用需要访问公共目录时，需通过弹窗授权向用户申请授予 Download 目录权限、Documents 目录权限或 Desktop 目录权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
-   <!--RP1-->
-   ```json
-   "requestPermissions" : [
-       "ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY",
-       "ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY",
-       "ohos.permission.READ_WRITE_DESKTOP_DIRECTORY",
-   ]
-   ```
-   <!--RP1End-->
+ - 公共目录获取接口仅用于获取公共目录路径，不对公共目录访问权限进行校验。若需访问公共目录需申请对应的公共目录访问权限。三方应用需要访问公共目录时，需向用户申请授予[Download目录权限](../security/AccessToken/permissions-for-all-user.md#ohospermissionread_write_download_directory)、[Documents目录权限](../security/AccessToken/permissions-for-all-user.md#ohospermissionread_write_documents_directory)或[Desktop目录权限](../security/AccessToken/restricted-permissions.md#ohospermissionread_write_desktop_directory)，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 ### 示例
 
@@ -170,7 +161,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    #include <cstdlib>
    
    ```
-   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
+   <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDownloadDirExample()
@@ -179,10 +170,10 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
        if (ret == 0) {
            OH_LOG_INFO(LOG_APP, "Succeeded in getting user download directory, download path=%{public}s", downloadPath);
-           free(downloadPath);
        } else {
            OH_LOG_ERROR(LOG_APP, "Failed to get download path, error code is %{public}d", ret);
        }
+       free(downloadPath);
    }
    ```
 

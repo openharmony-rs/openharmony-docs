@@ -482,7 +482,7 @@ ArkTS-Dyn: mode(value: NavigationMode)
 
 ArkTS-Sta: mode(value: NavigationMode | undefined)
 
-设置导航页的显示模式，支持单栏（Stack）、分栏（Split）和自适应（Auto）。
+设置导航页的显示模式，支持单栏（Stack）、分栏（Split）、自适应（Auto）和自适应宽高比(AUTO_WITH_ASPECT_RATIO)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -703,7 +703,7 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 >   
 > - 若组件扩展到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
 >
-> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](ts-basic-components-navigation.md#barstyle12枚举说明)模式。
+> - 组件想要扩展到非安全区域内，需隐藏或者设置标题栏和工具栏为[STACK](#barstyle12枚举说明)模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1148,14 +1148,14 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 
 > **说明：**
 >
-> 1.连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
+> 1. 连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
 > 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以设置[NavigationOption](#navigationoptions12)中的launchMode属性值为LaunchMode.NEW_INSTANCE模式。
 >
-> 2.不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
+> 2. 不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
 >
-> 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
+> 3. 在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
-### constructor
+### constructor<sup>10+</sup>
 
 constructor()
 
@@ -2078,7 +2078,7 @@ disableAnimation(value: boolean): void
 
 | 参数名    | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | ---------------------- |
-| value | boolean | 是   | 是否关闭转场动画，<br/>默认值：false<br/>true：关闭转场动画。<br/>false：不关闭转场动画。 |
+| value | boolean | 是   | 是否关闭转场动画，<br/>默认值：false<br/>true：关闭转场动画。<br/>false：显示转场动画。 |
 
 ### getParent<sup>11+</sup>
 
@@ -2175,11 +2175,54 @@ setPathStack(pathStack: Array\<NavPathInfo\>, animated?: boolean): void
 |pathStack| Array\<[NavPathInfo](#navpathinfo10)\>| 是 | 设置当前路由栈中的路由页面信息数组。<br/>**说明：**<br/>数组长度无限制。|
 |animated| boolean | 否 | 是否开启转场动画。<br/>true：开启转场动画；false：不开启转场动画。<br /> 默认值：true|
 
+### preloadPath
+
+preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
+
+预加载info指定的NavDestination页面。预加载页面不会立即显示，而是被缓存。当未加载页面的页面参数和页面名称，与预加载info相同时，将使用预加载的页面实例进行快速显示。
+
+> **说明：**
+>
+> 使用该接口会立刻创建目标navDestination节点，并触发其所在自定义节点的[aboutToAppear](ts-custom-component-lifecycle.md#abouttoappear)与[onDidBuild](ts-custom-component-lifecycle.md#ondidbuild12)生命周期。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名    | 类型     | 必填   | 说明 |
+| ---- | ---- | ---- | ---- |
+| info | [NavPathInfo](#navpathinfo10)| 是 | 预加载的NavDestination页面信息。|
+| options | [PreloadOptions](#preloadoptions) | 否 | 预加载页面选项。|
+
+**返回值：**
+
+| 类型                | 说明        |
+| ------------------- | --------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[页面路由错误码](../errorcode-router.md)和[接口调用异常错误码](../errorcode-internal.md)。
+
+| 错误码ID   | 错误信息 |
+| --------- | ------- |
+| 100001    | Internal error.|
+| 100005    | Builder function not registered. |
+| 100006    | NavDestination not found.|
+
 ## NavPathInfo<sup>10+</sup>
 
 路由页面信息。
 
-### constructor
+### constructor<sup>10+</sup>
 
 ArkTS-Dyn: constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Callback\<PopInfo>, isEntry?: boolean)
 
@@ -2629,9 +2672,9 @@ Navigation页面跳转前的拦截回调。
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| from | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | 是 |  退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
-| to | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) \|[NavBar](#navbar12) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
-| pathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 是 | 页面栈。 |
+| from | [NavPathInfo](#navpathinfo10) \|[NavBar](#navbar12) | 是 |  退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
+| to | [NavPathInfo](#navpathinfo10) \|[NavBar](#navbar12) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
+| pathStack | [NavPathStack](#navpathstack10) | 是 | 页面栈。 |
 | operation | [NavigationOperation](#navigationoperation11枚举说明) | 是 | 当前页面跳转类型。 |
 | isAnimated | boolean | 是 | 页面跳转是否有动画。<br/>true：页面跳转有动画；false：页面跳转没有动画。 |
 
@@ -2686,7 +2729,7 @@ Navigation首页名字。
 | ------ | ------------- | ---- | ---- | --------------- |
 | value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 否    | API version 9：显示菜单栏单个选项的文本。<br> 从API version 10开始，不显示菜单栏单个选项的文本。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 是否使能菜单项。<br>true：使能菜单项；false：未使能菜单项。默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | action | () =&gt; void | 否    | 是    | 当前选项被选中的事件回调。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -2981,6 +3024,24 @@ Navigation分割线颜色及上下边距。
 | launchMode | [LaunchMode](#launchmode12枚举说明)  | 否    | 是    | 路由栈的操作模式。<br/>默认值：LaunchMode.STANDARD |
 | animated   | boolean  | 否    | 是    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true|
 
+## PreloadOptions
+
+预加载页面选项。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onDestroy | ArkTS-Dyn: Callback\<void\><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) | 否 | 是 | 预加载页面被系统销毁时的回调。 |
+
 ## NavigationConfiguration
 
 Navigation配置项。
@@ -3145,19 +3206,19 @@ struct NavigationExample {
       .titleMode(NavigationTitleMode.Full)
       .toolbarConfiguration([
         {
-          // $r("app.string.navigation_toolbar_add")和$r("app.media.ic_public_highlights_ed")需要替换为开发者所需的资源文件
-          value: $r("app.string.navigation_toolbar_add"),
-          icon: $r("app.media.ic_public_highlights_ed")
+          // $r('app.string.navigation_toolbar_add')和$r('app.media.ic_public_highlights_ed')需要替换为开发者所需的资源文件
+          value: $r('app.string.navigation_toolbar_add'),
+          icon: $r('app.media.ic_public_highlights_ed')
         },
         {
-          // $r("app.string.navigation_toolbar_app")和$r("app.media.ic_public_highlights")需要替换为开发者所需的资源文件
-          value: $r("app.string.navigation_toolbar_app"),
-          icon: $r("app.media.ic_public_highlights")
+          // $r('app.string.navigation_toolbar_app')和$r('app.media.ic_public_highlights')需要替换为开发者所需的资源文件
+          value: $r('app.string.navigation_toolbar_app'),
+          icon: $r('app.media.ic_public_highlights')
         },
         {
-          // $r("app.string.navigation_toolbar_collect")和$r("app.media.ic_public_highlights")需要替换为开发者所需的资源文件
-          value: $r("app.string.navigation_toolbar_collect"),
-          icon: $r("app.media.ic_public_highlights")
+          // $r('app.string.navigation_toolbar_collect')和$r('app.media.ic_public_highlights')需要替换为开发者所需的资源文件
+          value: $r('app.string.navigation_toolbar_collect'),
+          icon: $r('app.media.ic_public_highlights')
         }
       ])
       .hideTitleBar(false)
@@ -3189,13 +3250,13 @@ struct NavigationExample {
   registerInterception() {
     this.pageInfos.setInterception({
       // 页面跳转前拦截，允许操作栈，在当前跳转中生效。
-      willShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
+      willShow: (from: NavDestinationContext | 'navBar', to: NavDestinationContext | 'navBar',
         operation: NavigationOperation, animated: boolean) => {
         if (!this.isUseInterception) {
           return;
         }
-        if (typeof to === "string") {
-          console.info("target page is navigation home");
+        if (typeof to === 'string') {
+          console.info('target page is navigation home');
           return;
         }
         // 重定向目标页面，更改为pageTwo页面到pageOne页面。
@@ -3206,18 +3267,18 @@ struct NavigationExample {
         }
       },
       // 页面跳转后回调，在该回调中操作栈在下一次跳转中刷新。
-      didShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
+      didShow: (from: NavDestinationContext | 'navBar', to: NavDestinationContext | 'navBar',
         operation: NavigationOperation, isAnimated: boolean) => {
         if (!this.isUseInterception) {
           return;
         }
-        if (typeof from === "string") {
-          console.info("current transition is from navigation home");
+        if (typeof from === 'string') {
+          console.info('current transition is from navigation home');
         } else {
           console.info(`current transition is from  ${(from as NavDestinationContext).pathInfo.name}`);
         }
-        if (typeof to === "string") {
-          console.info("current transition to is navBar");
+        if (typeof to === 'string') {
+          console.info('current transition to is navBar');
         } else {
           console.info(`current transition is to ${(to as NavDestinationContext).pathInfo.name}`);
         }
@@ -3262,7 +3323,7 @@ struct NavigationExample {
 
 ```ts
 // PageOne.ets
-class TmpClass {
+class PageParam {
   count: number = 10;
 }
 
@@ -3283,8 +3344,8 @@ export struct PageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            let tmp = new TmpClass();
-            this.pageInfos.pushPathByName('pageTwo', tmp); // 将name指定的NavDestination页面信息入栈，传递的数据为param
+            let pageParam = new PageParam();
+            this.pageInfos.pushPathByName('pageTwo', pageParam); // 将name指定的NavDestination页面信息入栈，传递的数据为param
           })
         Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -3373,18 +3434,18 @@ export struct PageTwo {
   private menuItems: Array<NavigationMenuItem> = [
     {
       // 'resources/base/media/undo.svg'需要替换为开发者所需的资源文件
-      value: "1",
+      value: '1',
       icon: 'resources/base/media/undo.svg',
     },
     {
       // 'resources/base/media/redo.svg'需要替换为开发者所需的资源文件
-      value: "2",
+      value: '2',
       icon: 'resources/base/media/redo.svg',
       isEnabled: false,
     },
     {
       // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
-      value: "3",
+      value: '3',
       icon: 'resources/base/media/ic_public_ok.svg',
       isEnabled: true,
     }
@@ -3479,7 +3540,7 @@ struct NavigationExample {
       if (CustomTransition.getInstance().interactive) {
         let customAnimation: NavigationAnimatedTransition = {
           onTransitionEnd: (isSuccess: boolean) => {
-            console.info("===== current transition is " + isSuccess);
+            console.info(`===== current transition is ${isSuccess}`);
             CustomTransition.getInstance().recoverState();
             CustomTransition.getInstance().proxy = undefined;
           },
@@ -3701,7 +3762,7 @@ export struct PageTwo {
         this.translateX = '0';
         this.getUIContext()?.animateTo({
           duration: 500, onFinish: () => {
-            this.translateX = "0";
+            this.translateX = '0';
           }
         }, () => {
           this.translateX = '100%';
@@ -3956,7 +4017,7 @@ struct NavigationExample {
 // PageOne.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class TmpClass {
+class PageParam {
   count: number = 10;
 }
 
@@ -4001,8 +4062,8 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let tmp = new TmpClass();
-            this.pageInfo.pushPathByName('pageTwo', tmp, (popInfo) => {
+            let pageParam = new PageParam();
+            this.pageInfo.pushPathByName('pageTwo', pageParam, (popInfo) => {
               this.message =
                 `[pushPathByName]last page is: ${popInfo.info.name}, result: ${JSON.stringify(popInfo.result)}`;
             }); // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
@@ -4013,7 +4074,7 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let tmp = new TmpClass();
+            let pageParam = new PageParam();
             // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
             this.pageInfo.pushDestination({
               name: 'pageTwo', param: new ParamWithOp(), onPop: (popInfo: PopInfo) => {
@@ -4032,9 +4093,9 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let tmp = new TmpClass();
+            let pageParam = new pageParam();
             // 将name指定的NavDestination页面信息入栈，传递的数据为param，添加接收处理结果的onPop回调。
-            this.pageInfo.pushDestinationByName('pageTwo', tmp, (popInfo) => {
+            this.pageInfo.pushDestinationByName('pageTwo', pageParam, (popInfo) => {
               this.message = 
                 `[pushDestinationByName]last page is: ${popInfo.info.name}, result: ${JSON.stringify(popInfo.result)}`;
             }).catch((error: BusinessError) => {
@@ -4057,8 +4118,8 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let tmp = new TmpClass();
-            this.pageInfo.pushPathByName('pageTwo', tmp); // 将name指定的NavDestination页面信息入栈，传递的数据为param。
+            let pageParam = new PageParam();
+            this.pageInfo.pushPathByName('pageTwo', pageParam); // 将name指定的NavDestination页面信息入栈，传递的数据为param。
           })
 
         Button('pushDestinationWithoutOnPop', { stateEffect: true, type: ButtonType.Capsule })
@@ -4066,7 +4127,7 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let tmp = new TmpClass();
+            let pageParam = new PageParam();
             // 将name指定的NavDestination页面信息入栈，传递的数据为param。
             this.pageInfo.pushDestination({ name: 'pageTwo', param: new ParamWithOp() })
               .catch((error: BusinessError) => {
@@ -4081,9 +4142,9 @@ export struct PageOne {
           .height(40)
           .margin(10)
           .onClick(() => {
-            let tmp = new TmpClass();
+            let pageParam = new PageParam();
             // 将name指定的NavDestination页面信息入栈，传递的数据为param。
-            this.pageInfo.pushDestinationByName('pageTwo', tmp)
+            this.pageInfo.pushDestinationByName('pageTwo', pageParam)
               .catch((error: BusinessError) => {
                 console.error(`[pushDestinationByNameWithoutOnPop]failed, error code = ${error.code}, error.message = ${error.message}.`);
               }).then(() => {
@@ -4247,7 +4308,7 @@ struct Index {
           .height('100%')
         Column() {
           Stack({ alignContent: Alignment.Center }) {
-            Button("switch color")
+            Button('switch color')
               .onClick(() => {
                 this.useColor1 = !this.useColor1;
               })
@@ -4256,7 +4317,7 @@ struct Index {
           .layoutWeight(1)
 
           Stack({ alignContent: Alignment.Center }) {
-            Button("switch blur")
+            Button('switch blur')
               .onClick(() => {
                 this.useBlur1 = !this.useBlur1;
               })
@@ -4265,7 +4326,7 @@ struct Index {
           .layoutWeight(1)
 
           Stack({ alignContent: Alignment.Center }) {
-            Button("switch blurOption")
+            Button('switch blurOption')
               .onClick(() => {
                 this.useBlurOption1 = !this.useBlurOption1;
               })
@@ -4274,7 +4335,7 @@ struct Index {
           .layoutWeight(1)
 
           Stack({ alignContent: Alignment.Center }) {
-            Button("push page")
+            Button('push page')
               .onClick(() => {
                 this.navPathStack.pushPathByName('NavigationMenu', null);
               })
@@ -4290,7 +4351,7 @@ struct Index {
     .width('100%')
     .height('100%')
     // 开发者可以设置标题栏的背景颜色和背景模糊效果
-    .title("NavTitle", {
+    .title('NavTitle', {
       backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
       backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
       barStyle: BarStyle.STACK,
@@ -4298,10 +4359,10 @@ struct Index {
     })
     // 开发者可以设置菜单的背景颜色和背景模糊效果
     .menus([
-      { value: "A" },
-      { value: "B" },
-      { value: "C" },
-      { value: "D" },
+      { value: 'A' },
+      { value: 'B' },
+      { value: 'C' },
+      { value: 'D' },
     ], {
       moreButtonOptions: {
         backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
@@ -4310,12 +4371,12 @@ struct Index {
     })
     // 开发者可以设置工具栏的背景颜色和背景模糊效果
     .toolbarConfiguration([
-      { value: "A" },
-      { value: "B" },
-      { value: "C" },
-      { value: "D" },
-      { value: "E" },
-      { value: "F" }
+      { value: 'A' },
+      { value: 'B' },
+      { value: 'C' },
+      { value: 'D' },
+      { value: 'E' },
+      { value: 'F' }
     ], {
       backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
       backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
@@ -4335,19 +4396,19 @@ export struct BackComponent {
       Column() {
       }
       .height('100%')
-      .backgroundColor("#3D9DB4")
+      .backgroundColor('#3D9DB4')
       .layoutWeight(9)
 
       Column() {
       }
       .height('100%')
-      .backgroundColor("#17A98D")
+      .backgroundColor('#17A98D')
       .layoutWeight(9)
 
       Column() {
       }
       .height('100%')
-      .backgroundColor("#FFC000")
+      .backgroundColor('#FFC000')
       .layoutWeight(9)
     }
     .height('100%')
@@ -4387,7 +4448,7 @@ struct ColorAndBlur {
           .height('100%')
         Column() {
           Stack({ alignContent: Alignment.Center }) {
-            Button("switch color")
+            Button('switch color')
               .onClick(() => {
                 this.useColor1 = !this.useColor1;
               })
@@ -4396,7 +4457,7 @@ struct ColorAndBlur {
           .layoutWeight(1)
 
           Stack({ alignContent: Alignment.Center }) {
-            Button("switch blur")
+            Button('switch blur')
               .onClick(() => {
                 this.useBlur1 = !this.useBlur1;
               })
@@ -4405,7 +4466,7 @@ struct ColorAndBlur {
           .layoutWeight(1)
 
           Stack({ alignContent: Alignment.Center }) {
-            Button("switch effect")
+            Button('switch effect')
               .onClick(() => {
                 this.useEffect1 = !this.useEffect1;
               })
@@ -4421,7 +4482,7 @@ struct ColorAndBlur {
     .width('100%')
     .height('100%')
     // 开发者可以设置标题栏的背景颜色和背景模糊效果
-    .title("Destination Title", {
+    .title('Destination Title', {
       backgroundColor: this.useColor1 ? COLOR1 : COLOR2,
       backgroundBlurStyle: this.useBlur1 ? BLUR_STYLE_1 : BLUR_STYLE_2,
       barStyle: BarStyle.STACK,
@@ -4429,10 +4490,10 @@ struct ColorAndBlur {
     })
     // 开发者可以设置菜单的背景颜色和背景模糊效果
     .menus([
-      { value: "A" },
-      { value: "B" },
-      { value: "C" },
-      { value: "D" },
+      { value: 'A' },
+      { value: 'B' },
+      { value: 'C' },
+      { value: 'D' },
     ], {
       moreButtonOptions: {
         backgroundEffect: this.useEffect1 ? EFFECT_OPTION_1 : EFFECT_OPTION_2,
@@ -4440,12 +4501,12 @@ struct ColorAndBlur {
     })
     // 开发者可以设置工具栏的背景颜色和背景模糊效果
     .toolbarConfiguration([
-      { value: "A" },
-      { value: "B" },
-      { value: "C" },
-      { value: "D" },
-      { value: "E" },
-      { value: "F" }
+      { value: 'A' },
+      { value: 'B' },
+      { value: 'C' },
+      { value: 'D' },
+      { value: 'E' },
+      { value: 'F' }
     ], {
       backgroundEffect: this.useEffect1 ? EFFECT_OPTION_1 : EFFECT_OPTION_2,
       // 开发者可以设置工具栏的菜单的背景颜色和背景模糊效果
@@ -4459,8 +4520,8 @@ struct ColorAndBlur {
 
 ```ts
 // Utils.ets
-export const COLOR1: string = "#80004AAF";
-export const COLOR2: string = "#802787D9";
+export const COLOR1: string = '#80004AAF';
+export const COLOR2: string = '#802787D9';
 export const BLUR_STYLE_1: BlurStyle = BlurStyle.BACKGROUND_THIN;
 export const BLUR_STYLE_2: BlurStyle = BlurStyle.BACKGROUND_THICK;
 export const BLUR_STYLE_OPTION_1: BackgroundBlurStyleOptions = {
@@ -4517,6 +4578,8 @@ export const EFFECT_OPTION_2: BackgroundEffectOptions = {
 
 该示例主要演示在嵌套Navigation场景下，如何获取父[NavPathStack](#navpathstack10)。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -4534,7 +4597,7 @@ struct NavigationExample1 {
             .onClick(() => {
               // 可以获取父NavPathStack
               let parentStack = this.childNavStack.getParent();
-              parentStack?.pushPath({ name: "pageOne" });
+              parentStack?.pushPath({ name: 'pageOne' });
             })
         }
         .clip(true)
@@ -4559,9 +4622,119 @@ struct NavigationExample1 {
 @Builder
 export function PageOneBuilder(name: string) {
   NavDestination() {
-    Text("this is " + name)
+    Text(`this is ${name}`)
   }
   .title(name)
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  Alignment,
+  Color,
+  BarMode,
+  Row,
+  Tabs,
+  TabContent,
+  ButtonOptions,
+  SubTabBarStyle,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TabsExample {
+  @State text: string = '文本';
+  @State barMode: BarMode = BarMode.Fixed;
+
+  build() {
+    Column(undefined) {
+      Row(undefined) {
+        Button('文本增加 ')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text += '文本增加';
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('文本重置')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.text = '文本';
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Row() {
+        Button('BarMode.Fixed')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Fixed;
+          })
+          .margin({ right: '6%', bottom: '12vp' })
+
+        Button('BarMode.Scrollable')
+          .width('47%')
+          .height(50)
+          .onClick((event?: ClickEvent) => {
+            this.barMode = BarMode.Scrollable;
+          })
+          .margin({ bottom: '12vp' })
+      }
+
+      Tabs() {
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar(SubTabBarStyle.of(this.text))
+
+        TabContent() {
+          Column(undefined).width('100%').height('100%').backgroundColor(Color.Blue)
+        }.tabBar(SubTabBarStyle.of(this.text))
+      }
+      .height('60%')
+      .backgroundColor(0xf1f3f5)
+      .barMode(this.barMode)
+    }
+    .width('100%')
+    .height(500)
+    .padding('24vp')
+  }
+}
+```
+
+```ts
+// PageOne.ets
+import { NavDestination, Text, Builder, ComponentV2, Param } from '@kit.ArkUI';
+
+@Builder
+export function PageOneBuilder(name: string): void {
+  PageOne({ name: name })
+}
+
+@ComponentV2
+struct PageOne {
+  @Param name: string = '';
+
+  build() {
+    NavDestination() {
+      Text("this is " + this.name)
+    }
+    .title(this.name)
+  }
 }
 ```
 
@@ -4592,6 +4765,8 @@ export function PageOneBuilder(name: string) {
 
 2. [NavDestination](ts-basic-components-navdestination.md)通过[onReady](ts-basic-components-navdestination.md#onready11)事件能够拿到对应的[NavPathInfo](#navpathinfo10)和所属的[NavPathStack](#navpathstack10)。
 
+ArkTS-Dyn示例：
+
 ```ts
 class PageParam {
   constructor(num_: number) {
@@ -4609,24 +4784,134 @@ export function PageOneBuilder(name: string, param: Object) {
 @Component
 struct PageOne {
   private stack: NavPathStack | null = null;
-  private name: string = "";
+  private name: string = '';
   private paramNum: number = 0;
 
   build() {
     NavDestination() {
       Column() {
-        Text("NavPathInfo: name: " + this.name + ", paramNum: " + this.paramNum)
+        Text('NavPathInfo: name: ' + this.name + ', paramNum: ' + this.paramNum)
         Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
             if (this.stack) {
-              let p = new PageParam(this.paramNum + 1);
-              this.stack.pushPath({ name: "pageOne", param: p });
+              let pageParam = new PageParam(this.paramNum + 1);
+              this.stack.pushPath({ name: 'pageOne', param: pageParam });
             }
           })
         Button('pop', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack?.pop();
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
+    .onReady((ctx: NavDestinationContext) => {
+      // 在NavDestination中能够拿到传来的NavPathInfo和当前所处的NavPathStack
+      try {
+        this.name = ctx?.pathInfo?.name;
+        this.paramNum = (ctx?.pathInfo?.param as PageParam)?.num;
+        this.stack = ctx.pathStack;
+      } catch (err) {
+        console.error(`testTag onReady catch exception.code:${err.code}, message: ${err.message}`);
+      }
+    })
+  }
+}
+
+@Entry
+@Component
+struct NavigationExample2 {
+  private stack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.stack) {
+      Stack({ alignContent: Alignment.Center }) {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            let pageParam = new PageParam(1);
+            this.stack.pushPath({ name: 'pageOne', param: pageParam });
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('Navigation')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog'
+
+class PageParam {
+  constructor(num_: number) {
+    this.num = num_;
+  }
+
+  num: number = 0;
+}
+
+@Builder
+export function PageOneBuilder(name: string, param: Object): void {
+  PageOne();
+}
+
+@Component
+struct PageOne {
+  private stack: NavPathStack | null = null;
+  private name: string = "";
+  private paramNum: number = 0;
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Text("NavPathInfo: name: " + this.name + ", paramNum: " + this.paramNum)
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            if (this.stack) {
+              let p = new PageParam(this.paramNum + 1);
+              this.stack?.pushPath(new NavPathInfo("pageOne", p));
+            }
+          })
+        Button('pop', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
           .width('80%')
           .height(40)
           .margin(20)
@@ -4658,14 +4943,14 @@ struct NavigationExample2 {
 
   build() {
     Navigation(this.stack) {
-      Stack({ alignContent: Alignment.Center }) {
-        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+      Stack({ alignContent: Alignment.Center } as StackOptions) {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
             let p = new PageParam(1);
-            this.stack.pushPath({ name: "pageOne", param: p });
+            this.stack.pushPath(new NavPathInfo("pageOne", p));
           })
       }
       .width('100%')
@@ -4701,9 +4986,133 @@ struct NavigationExample2 {
 
 该示例演示[NavDestination](ts-basic-components-navdestination.md)的[onAppear](ts-universal-events-show-hide.md#onappear)，[onDisAppear](ts-universal-events-show-hide.md#ondisappear)，[onShown](ts-basic-components-navdestination.md#onshown10)，[onHidden](ts-basic-components-navdestination.md#onhidden10)，[onWillAppear](ts-basic-components-navdestination.md#onwillappear12)，[onWillDisappear](ts-basic-components-navdestination.md#onwilldisappear12)，[onWillShow](ts-basic-components-navdestination.md#onwillshow12)，[onWillHide](ts-basic-components-navdestination.md#onwillhide12)接口的生命周期时序。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Builder
 export function PageOneBuilder(name: string, param: Object) {
+  PageOneComponent();
+}
+
+@Component
+struct PageOneComponent {
+  private stack: NavPathStack | null = null;
+  @State eventStr: string = '';
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text('event: ' + this.eventStr)
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            if (this.stack) {
+              this.stack.pushPath({ name: 'pageOne' });
+            }
+          })
+        Button('pop', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack?.pop();
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
+    .onAppear(() => {
+      this.eventStr += '<onAppear>';
+    })
+    .onDisAppear(() => {
+      this.eventStr += '<onDisAppear>';
+    })
+    .onShown(() => {
+      this.eventStr += '<onShown>';
+    })
+    .onHidden(() => {
+      this.eventStr += '<onHidden>';
+    })
+    .onWillAppear(() => {
+      this.eventStr += '<onWillAppear>';
+    })
+    .onWillDisappear(() => {
+      this.eventStr += '<onWillDisappear>';
+    })
+    .onWillShow(() => {
+      this.eventStr += '<onWillShow>';
+    })
+    .onWillHide(() => {
+      this.eventStr += '<onWillHide>';
+    })
+    // onReady会在onAppear之前调用
+    .onReady((ctx: NavDestinationContext) => {
+      try {
+        this.eventStr += '<onReady>';
+        this.stack = ctx.pathStack;
+      } catch (err) {
+        console.error(`testTag onReady catch exception.code:${err.code}, message:${err.message}`);
+      }
+    })
+  }
+}
+
+@Entry
+@Component
+struct NavigationExample3 {
+  private stack: NavPathStack = new NavPathStack();
+
+  build() {
+    Navigation(this.stack) {
+      Stack({ alignContent: Alignment.Center }) {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack.pushPath({ name: 'pageOne' });
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+    .title('Navigation')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Builder
+export function PageOneBuilder(name: string, param: Object): void {
   PageOneComponent();
 }
 
@@ -4714,18 +5123,18 @@ struct PageOneComponent {
 
   build() {
     NavDestination() {
-      Column() {
+      Column(undefined) {
         Text("event: " + this.eventStr)
-        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
             if (this.stack) {
-              this.stack.pushPath({ name: "pageOne" });
+              this.stack?.pushPath(new NavPathInfo("pageOne", undefined));
             }
           })
-        Button('pop', { stateEffect: true, type: ButtonType.Capsule })
+        Button('pop', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
           .width('80%')
           .height(40)
           .margin(20)
@@ -4780,13 +5189,13 @@ struct NavigationExample3 {
 
   build() {
     Navigation(this.stack) {
-      Stack({ alignContent: Alignment.Center }) {
-        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule })
+      Stack({ alignContent: Alignment.Center } as StackOptions) {
+        Button('pushPath', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.stack.pushPath({ name: "pageOne" });
+            this.stack.pushPath(new NavPathInfo("pageOne", undefined));
           })
       }
       .width('100%')
@@ -4840,7 +5249,7 @@ struct NavigationExample {
           Scroll(this.scrollerForScroll) {
             Column() {
               // $r('app.media.image_1')需要替换为开发者所需的资源文件
-              Image($r('app.media.image_1'))// 设置与标题栏高度一致，以便观察STACK效果
+              Image($r('app.media.image_1')) // 设置与标题栏高度一致，以便观察STACK效果
                 .height(138)
                 .width('100%')
               Button('BarStyle.STANDARD')
@@ -4988,6 +5397,8 @@ struct NavigationExample {
 
 该示例主要演示如何定义[NavPathStack](#navpathstack10)的派生类和派生类在Navigation中的基本用法。
 
+ArkTS-Dyn示例：
+
 ```ts
 // Index.ets
 import { DerivedNavPathStack, NewParam } from './Utils';
@@ -5027,7 +5438,7 @@ export function pageMap(name: string) {
 @Component
 struct PageOne {
   derivedStack: DerivedNavPathStack = new DerivedNavPathStack();
-  curStringifyParam: string = "NA";
+  curStringifyParam: string = 'NA';
 
   build() {
     NavDestination() {
@@ -5071,7 +5482,7 @@ struct PageOne {
 // Utils.ets
 export class DerivedNavPathStack extends NavPathStack {
   // 用户定义的属性'id'
-  id: string = "__default__";
+  id: string = '__default__';
 
   // 派生类中的新功能
   setId(id: string) {
@@ -5080,7 +5491,7 @@ export class DerivedNavPathStack extends NavPathStack {
 
   // 派生类中的新功能
   getInfo(): string {
-    return "this page used Derived NavPathStack, id: " + this.id;
+    return `this page used Derived NavPathStack, id: ${this.id}`;
   }
 
   // 重载NavPathStack的功能
@@ -5099,6 +5510,174 @@ export class DerivedNavPathStack extends NavPathStack {
   pop(animated?: boolean | undefined): NavPathInfo | undefined
   pop(result: Object, animated?: boolean | undefined): NavPathInfo | undefined
   pop(result?: Object, animated?: boolean | undefined): NavPathInfo | undefined {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pop');
+    return super.pop(result, animated);
+  }
+
+  // 基类的其他功能...
+}
+
+export class NewParam {
+  info: string = '__default_param__';
+
+  constructor(info: string) {
+    this.info = info;
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// Index.ets
+import { DerivedNavPathStack, NewParam } from './Utils';
+import { Entry, Component, Button, NavPathStack, Navigation, NavPathInfo } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct Index {
+  derivedStack: DerivedNavPathStack = new DerivedNavPathStack();
+
+  aboutToAppear(): void {
+    this.derivedStack.setId('origin stack');
+  }
+
+  build() {
+    Navigation(this.derivedStack) {
+      Button('to Page One').margin(20).onClick(() => {
+        this.derivedStack.pushPath(new NavPathInfo(
+          'pageOne',
+          new NewParam('push pageOne in homePage when stack size: ' + this.derivedStack.size())
+        ));
+      })
+    }
+    .title('Home Page')
+  }
+}
+```
+
+```ts
+// PageOne.ets
+
+import { DerivedNavPathStack, NewParam } from './Utils';
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  FontWeight,
+  TextAlign,
+  State
+} from '@kit.ArkUI';
+
+
+@Builder
+export function pageMap(name: string): void {
+  PageOne();
+}
+
+@Component
+struct PageOne {
+  derivedStack: DerivedNavPathStack = new DerivedNavPathStack();
+  curStringifyParam: string = "NA";
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Text(this.derivedStack.getInfo())
+          .margin(10)
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Start)
+        Text('current page param info:')
+          .margin(10)
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+          .textAlign(TextAlign.Start)
+        Text(this.curStringifyParam)
+          .margin(20)
+          .fontSize(20)
+          .textAlign(TextAlign.Start)
+      }.backgroundColor(Color.Pink)
+
+      Button('to Page One').margin(20).onClick(() => {
+        this.derivedStack.pushPath(new NavPathInfo(
+          'pageOne',
+          new NewParam('push pageOne in pageOne when stack size: ' + this.derivedStack.size())
+        ));
+      })
+    }.title('Page One')
+    .onReady((context: NavDestinationContext) => {
+      console.info('[derive-test] reached PageOne\'s onReady');
+      // 从navdestinationContext获取派生堆栈
+      this.derivedStack = context.pathStack as DerivedNavPathStack;
+      console.info('[derive-test] -- got derivedStack: ' + this.derivedStack.id);
+      this.curStringifyParam = JSON.stringify(context.pathInfo.param);
+      console.info('[derive-test] -- got param: ' + this.curStringifyParam);
+    })
+  }
+}
+```
+
+```ts
+// Utils.ets
+
+import { NavPathStack, NavPathInfo, NavigationOptions } from '@kit.ArkUI';
+
+export class DerivedNavPathStack extends NavPathStack {
+  // 用户定义的属性'id'
+  id: string = "__default__";
+
+  // 派生类中的新功能
+  setId(id: string): void {
+    this.id = id;
+  }
+
+  // 派生类中的新功能
+  getInfo(): string {
+    return "this page used Derived NavPathStack, id: " + this.id;
+  }
+
+  // 重载NavPathStack的功能
+  pushPath(info: NavPathInfo, animated?: boolean): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    super.pushPath(info, animated);
+  }
+
+  pushPath(info: NavPathInfo, options?: NavigationOptions): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    super.pushPath(info, options);
+  }
+
+  pushPath(info: NavPathInfo, secArg?: boolean | NavigationOptions): void {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pushPath');
+    if (typeof secArg === 'boolean') {
+      super.pushPath(info, secArg as boolean);
+    } else {
+      super.pushPath(info, secArg as NavigationOptions | undefined);
+    }
+  }
+
+  // 重写和重载NavPathStack的函数
+  pop(animated?: boolean | undefined): NavPathInfo | undefined {
+    console.info('[derive-test] reached DerivedNavPathStack\'s pop');
+    return super.pop(animated);
+  }
+
+  pop(result: Object, animated?: boolean | undefined): NavPathInfo | undefined {
     console.info('[derive-test] reached DerivedNavPathStack\'s pop');
     return super.pop(result, animated);
   }
@@ -5137,6 +5716,8 @@ export class NewParam {
 ### 示例11（使用Symbol组件）
 
 该示例主要演示Navigation和[NavDestination](ts-basic-components-navdestination.md)如何使用Symbol组件。
+
+ArkTS-Dyn示例：
 
 ```ts
 // Index.ets
@@ -5266,6 +5847,175 @@ export struct NavigationMenu {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// Index.ets
+
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  Navigation,
+  Color,
+  $r,
+  NavigationTitleMode,
+  SymbolGlyphModifier,
+  NavigationMenuItem,
+  ToolbarItem,
+  ToolbarItemStatus,
+  SymbolRenderingStrategy,
+  NavPathStack,
+  State,
+  Provide
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationExample {
+  @Provide({ alias: 'navPathStack' }) navPathStack: NavPathStack = new NavPathStack();
+  @State menuItems: Array<NavigationMenuItem> = [
+    {
+      // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'menuItem1',
+      icon: 'resources/base/media/ic_public_ok.svg' // 图标资源路径
+    } as NavigationMenuItem,
+    {
+      // resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'menuItem2',
+      icon: 'resources/base/media/ic_public_ok.svg', // 图标资源路径
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red, Color.Green])
+        .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR),
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+    } as NavigationMenuItem,
+  ];
+  @State toolItems: Array<ToolbarItem> = [
+    {
+      // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'toolItem1',
+      icon: 'resources/base/media/ic_public_ok.svg', // 图标资源路径
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+      status: ToolbarItemStatus.ACTIVE,
+      activeSymbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red,
+        Color.Green]).renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR),
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      // 'resources/base/media/ic_public_more.svg'需要替换为开发者所需的资源文件
+      value: 'toolItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
+      status: ToolbarItemStatus.ACTIVE,
+      activeIcon: 'resources/base/media/ic_public_more.svg', // 图标资源路径
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      value: 'toolItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
+      status: ToolbarItemStatus.ACTIVE,
+      activeSymbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+      action: () => {
+      }
+    } as ToolbarItem
+  ];
+
+  build() {
+    Navigation(this.navPathStack) {
+      Column(undefined) {
+        Button('跳转').onClick(() => {
+          this.navPathStack.pushPathByName('NavigationMenu', null);
+        })
+      }
+    }
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')))
+    .titleMode(NavigationTitleMode.Mini)
+    .menus(this.menuItems)
+    .toolbarConfiguration(this.toolItems)
+    .title('一级页面')
+  }
+}
+```
+
+```ts
+// PageOne.ets
+
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  Navigation,
+  Color,
+  Text,
+  $r,
+  NavigationTitleMode,
+  SymbolGlyphModifier,
+  NavigationMenuItem,
+  ToolbarItem,
+  ToolbarItemStatus,
+  SymbolRenderingStrategy,
+  NavDestination,
+  NavPathStack,
+  Row,
+  State,
+  Consume
+} from '@kit.ArkUI';
+
+@Builder
+export function myRouter(name: string, param?: Object): void {
+  NavigationMenu();
+}
+
+@Component
+export struct NavigationMenu {
+  @Consume('navPathStack') navPathStack: NavPathStack;
+  @State menuItems: Array<NavigationMenuItem> = [
+    {
+      // 'resources/base/media/ic_public_ok.svg'需要替换为开发者所需的资源文件
+      value: 'menuItem1',
+      icon: 'resources/base/media/ic_public_ok.svg', // 图标资源路径
+      action: () => {
+      }
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus')).fontColor([Color.Red, Color.Green])
+        .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR),
+      action: () => {
+      }
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.repeat_1')),
+      action: () => {
+      }
+    } as NavigationMenuItem,
+  ];
+
+  build(): void {
+    NavDestination() {
+      Row(undefined) {
+        Column(undefined) {
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+    .hideTitleBar(false)
+    .title('NavDestination title')
+    .backgroundColor($r('sys.color.ohos_id_color_titlebar_sub_bg'))
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+      .fontColor([Color.Blue]))
+    .menus(this.menuItems)
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
 
 ```json
@@ -5360,7 +6110,7 @@ struct NavigationExample {
     }
     .titleMode(NavigationTitleMode.Full)
     .title(
-      { main: "Title", sub: "subTitle" },
+      { main: 'Title', sub: 'subTitle' },
       this.applyModifier ?
         {
           paddingStart: this.paddingStart,
@@ -5449,7 +6199,7 @@ export struct NavDestinationExample {
     }
     .hideTitleBar(false)
     .title(
-      { main: "Title", sub: "subTitle" },
+      { main: 'Title', sub: 'subTitle' },
       this.applyModifier ?
         {
           paddingStart: this.paddingStart,
@@ -5538,6 +6288,8 @@ export class SubTitleTextModifier extends TextModifier {
 
 该示例主要实现Navigation简单的自定义转场动画。
 
+ArkTS-Dyn示例：
+
 <!--code_no_check-->
 ```ts
 // Index.ets
@@ -5624,13 +6376,13 @@ struct NavigationCustomTransitionExample {
 // PageOne
 @Builder
 export function PageOneBuilder() {
-  PageContainer({ title: "PageOne" });
+  PageContainer({ title: 'PageOne' });
 }
 
 // PageTwo
 @Builder
 export function PageTwoBuilder() {
-  PageContainer({ title: "PageTwo" });
+  PageContainer({ title: 'PageTwo' });
 }
 
 @Component
@@ -5684,7 +6436,7 @@ export struct PageContainer {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.pushPath({ name: this.title == 'PageOne' ? "PageTwo" : "PageOne" });
+            this.pageInfos.pushPath({ name: this.title == 'PageOne' ? 'PageTwo' : 'PageOne' });
           })
       }
       .size({ width: '100%', height: '100%' })
@@ -5758,6 +6510,251 @@ export class CustomTransition {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// Index.ets
+import { AnimateCallback, CustomTransition } from './CustomTransitionUtils';
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  NavContentInfo,
+  NavigationOperation,
+  NavigationAnimatedTransition,
+  NavigationTransitionProxy,
+  Curve,
+  NavDestinationContext,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationCustomTransitionExample {
+  pageInfos: NavPathStack = new NavPathStack();
+
+  aboutToAppear() {
+    this.pageInfos.pushPath(new NavPathInfo("PageOne", undefined), false);
+  }
+
+  build() {
+    Navigation(this.pageInfos) {
+    }
+    .hideNavBar(true)
+    .customNavContentTransition((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => {
+      // 首页不进行自定义动画
+      if (from.index === -1 || to.index === -1) {
+        return undefined;
+      }
+
+      let customAnimation: NavigationAnimatedTransition = {
+        timeout: 2000,
+        // 转场开始时系统调用该方法，并传入转场上下文代理对象
+        transition: (transitionProxy: NavigationTransitionProxy) => {
+          if (!from.navDestinationId || !to.navDestinationId) {
+            return;
+          }
+          // 从封装类CustomTransition中根据子页面的序列获取对应的转场动画回调
+          let fromParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(from.navDestinationId!);
+          let toParam: AnimateCallback = CustomTransition.getInstance().getAnimateParam(to.navDestinationId!);
+          // Push动画
+          if (operation == NavigationOperation.PUSH) {
+            if (fromParam.start && toParam.start) {
+              // 设置Push转场的两个页面的动画起点
+              fromParam.start!(true, true);
+              toParam.start!(true, false);
+            }
+            this.getUIContext()?.animateTo({
+              duration: 500, curve: Curve.Friction, onFinish: () => {
+                // 动画结束后需要手动调用finishTransition，否则在timeout时间后由系统调用
+                transitionProxy.finishTransition();
+              }
+            }, () => {
+              if (fromParam.finish && toParam.finish) {
+                // 设置Push转场的两个页面的动画终点
+                fromParam.finish!(true, true);
+                toParam.finish!(true, false);
+              }
+
+            })
+          } else if (operation == NavigationOperation.POP) {
+            // Pop动画
+            if (fromParam.start && toParam.start) {
+              // 设置Pop转场的两个页面的动画起点
+              fromParam.start!(false, true);
+              toParam.start!(false, false);
+            }
+            this.getUIContext()?.animateTo({
+              duration: 500, curve: Curve.Friction, onFinish: () => {
+                // 动画结束后需要手动调用finishTransition，否则在timeout时间后由系统调用
+                transitionProxy.finishTransition();
+              }
+            }, () => {
+              if (fromParam.finish && toParam.finish) {
+                // 设置Pop转场的两个页面的动画终点
+                fromParam.finish!(false, true);
+                toParam.finish!(false, false);
+              }
+            })
+          } else {
+            // Replace不做动画
+          }
+        }
+      };
+      return customAnimation;
+    })
+  }
+}
+
+// PageOne
+@Builder
+export function PageOneBuilder(): void {
+  PageContainer({ title: "PageOne" });
+}
+
+// PageTwo
+@Builder
+export function PageTwoBuilder(): void {
+  PageContainer({ title: "PageTwo" });
+}
+
+@Component
+export struct PageContainer {
+  pageInfos: NavPathStack = new NavPathStack();
+  @State translateY: string = '0';
+  pageId: string = '';
+  title: string = ''
+
+  registerCallback(): void {
+    CustomTransition.getInstance().registerNavParam(this.pageId,
+      // 设置转场动画起点，根据不同的转场类型分别设置
+      (isPush: boolean, isExit: boolean) => {
+        if (isPush) {
+          if (isExit) {
+            this.translateY = '0';
+          } else {
+            this.translateY = '100%';
+          }
+        } else {
+          if (isExit) {
+            this.translateY = '0';
+          } else {
+            this.translateY = '0';
+          }
+        }
+      },
+      // 设置转场动画终点，根据不同的转场类型分别设置
+      (isPush: boolean, isExit: boolean) => {
+        if (isPush) {
+          if (isExit) {
+            this.translateY = '0';
+          } else {
+            this.translateY = '0';
+          }
+        } else {
+          if (isExit) {
+            this.translateY = '100%';
+          } else {
+            this.translateY = '0';
+          }
+        }
+      });
+  }
+
+  build(): void {
+    NavDestination() {
+      Column(undefined) {
+        Button('push next page', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.pageInfos.pushPath(new NavPathInfo(this.title == 'PageOne' ? "PageTwo" : "PageOne", undefined));
+          })
+      }
+      .size({ width: '100%', height: '100%' })
+    }
+    .title(this.title)
+    .onDisAppear(() => {
+      // 页面销毁时解注册自定义转场动画参数
+      CustomTransition.getInstance().unRegisterNavParam(this.pageId);
+    })
+    .onReady((context: NavDestinationContext) => {
+      this.pageInfos = context.pathStack;
+      if (context.navDestinationId) {
+        this.pageId = context.navDestinationId!;
+        // 页面创建时注册自定义转场动画参数
+        this.registerCallback();
+      }
+    })
+    .translate({ y: this.translateY })
+    .backgroundColor(this.title == 'PageOne' ? '#F1F3F5' : '#ff11dee5')
+  }
+}
+```
+
+```ts
+// CustomTransitionUtils.ets 
+export interface AnimateCallback {
+  start: ((isPush: boolean, isExit: boolean) => void | undefined) | undefined;
+  finish: ((isPush: boolean, isExit: boolean) => void | undefined) | undefined;
+}
+
+const customTransitionMap: Map<string, AnimateCallback> = new Map<string, AnimateCallback>();
+
+export class CustomTransition {
+  static delegate: CustomTransition = new CustomTransition();
+
+  static getInstance(): CustomTransition {
+    return CustomTransition.delegate;
+  }
+
+  // 注册某个页面的动画回调
+  // name: 注册页面的唯一id
+  // startCallback：用来设置动画开始时页面的状态
+  // endCallback：用来设置动画结束时页面的状态
+  registerNavParam(name: string, startCallback: (isPush: boolean, isExit: boolean) => void,
+    endCallback: (isPush: boolean, isExit: boolean) => void): void {
+    if (customTransitionMap.has(name)) {
+      let param = customTransitionMap.get(name);
+      if (param != undefined) {
+        param.start = startCallback;
+        param.finish = endCallback;
+        return;
+      }
+    }
+    let params: AnimateCallback = { start: startCallback, finish: endCallback };
+    customTransitionMap.set(name, params);
+  }
+
+  unRegisterNavParam(name: string): void {
+    customTransitionMap.delete(name);
+  }
+
+  getAnimateParam(name: string): AnimateCallback {
+    let result: AnimateCallback = {
+      start: customTransitionMap.get(name)?.start,
+      finish: customTransitionMap.get(name)?.finish
+    };
+    return result;
+  }
+}
+```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
 
 ```json
@@ -5797,12 +6794,12 @@ import { ComponentContent } from '@kit.ArkUI';
 
 @Builder function PlaceholderPage() {
   Column() {
-    Text("分栏模式占位页")
+    Text('分栏模式占位页')
       .fontSize(28)
       .fontWeight(700)
       .margin({ top: 200 })
-  }.width("100%")
-  .height("100%")
+  }.width('100%')
+  .height('100%')
 }
 
 @Entry
@@ -5885,19 +6882,19 @@ struct NavigationExample {
       .titleMode(NavigationTitleMode.Full)
       .toolbarConfiguration([
         {
-          // $r("app.string.navigation_toolbar_add")和$r("app.media.startIcon")需要替换为开发者所需的图像资源文件
-          value: $r("app.string.navigation_toolbar_add"),
-          icon: $r("app.media.startIcon")
+          // $r('app.string.navigation_toolbar_add')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.navigation_toolbar_add'),
+          icon: $r('app.media.startIcon')
         },
         {
-          // $r("app.string.navigation_toolbar_app")和$r("app.media.startIcon")需要替换为开发者所需的图像资源文件
-          value: $r("app.string.navigation_toolbar_app"),
-          icon: $r("app.media.startIcon")
+          // $r('app.string.navigation_toolbar_app')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.navigation_toolbar_app'),
+          icon: $r('app.media.startIcon')
         },
         {
-          // $r("app.string.navigation_toolbar_collect")和$r("app.media.startIcon")需要替换为开发者所需的图像资源文件
-          value: $r("app.string.navigation_toolbar_collect"),
-          icon: $r("app.media.startIcon")
+          // $r('app.string.navigation_toolbar_collect')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.navigation_toolbar_collect'),
+          icon: $r('app.media.startIcon')
         }
       ])
       .mode(NavigationMode.Split) // 设置Navigation模式为Split
@@ -6138,7 +7135,7 @@ struct NavigationExample {
         Button('启用/关闭自适应').onClick(()=> {
           this.enable = !this.enable;
         })
-        Text("启用自适应能力：" + this.enable)
+        Text(`启用自适应能力：${this.enable}`)
       }
     }
     .mode(NavigationMode.Stack)
@@ -6346,12 +7343,12 @@ struct NavigationExample {
   registerInterception() {
     this.pageInfos.setInterception({
       // 页面创建前拦截，允许操作栈，在当前跳转中生效。
-      interception: (from: NavPathInfo | "navBar", to: NavPathInfo | NavBar, navStack: NavPathStack,
+      interception: (from: NavPathInfo | 'navBar', to: NavPathInfo | NavBar, navStack: NavPathStack,
         operation: NavigationOperation, animated: boolean) => {
         if (!this.isUseInterception) {
           return;
         }
-        if (typeof to === "string") {
+        if (typeof to === 'string') {
           return;
         }
         // 重定向目标页面，更改为pageTwo页面到pageOne页面。
@@ -6363,19 +7360,19 @@ struct NavigationExample {
         }
       },
       // 页面跳转后回调，在该回调中操作栈在下一次跳转中刷新。
-      didShow: (from: NavDestinationContext | "navBar", to: NavDestinationContext | "navBar",
+      didShow: (from: NavDestinationContext | 'navBar', to: NavDestinationContext | 'navBar',
         operation: NavigationOperation, isAnimated: boolean) => {
         if (!this.isUseInterception) {
           return;
         }
-        if (typeof from === "string") {
-          console.info("current transition is from navigation home");
+        if (typeof from === 'string') {
+          console.info('current transition is from navigation home');
         } else {
           console.info(`current transition is from  ${(from as NavDestinationContext).pathInfo.name}`);
           console.info(`current transition mode is to ${(to as NavDestinationContext).mode?.toString()}`);
         }
-        if (typeof to === "string") {
-          console.info("current transition to is navBar");
+        if (typeof to === 'string') {
+          console.info('current transition to is navBar');
         } else {
           console.info(`current transition is to ${(to as NavDestinationContext).pathInfo.name}`);
           console.info(`current transition mode is to ${(to as NavDestinationContext).mode?.toString()}`);
@@ -6421,7 +7418,7 @@ struct NavigationExample {
 
 ```ts
 // PageOne.ets
-class TmpClass {
+class PageParam {
   count: number = 10;
 }
 
@@ -6442,8 +7439,8 @@ export struct PageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            let tmp = new TmpClass();
-            this.pageInfos.pushPathByName('pageTwo', tmp); // 将name指定的NavDestination页面信息入栈，传递的数据为param。
+            let pageParam = new PageParam();
+            this.pageInfos.pushPathByName('pageTwo', pageParam); // 将name指定的NavDestination页面信息入栈，传递的数据为param。
           })
         Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -6534,16 +7531,16 @@ export struct PageTwo {
   pathStack: NavPathStack = new NavPathStack();
   private menuItems: Array<NavigationMenuItem> = [
     {
-      value: "1",
+      value: '1',
       icon: 'resources/base/media/undo.svg',
     },
     {
-      value: "2",
+      value: '2',
       icon: 'resources/base/media/redo.svg',
       isEnabled: false,
     },
     {
-      value: "3",
+      value: '3',
       icon: 'resources/base/media/ic_public_ok.svg',
       isEnabled: true,
     }
@@ -6568,7 +7565,7 @@ export struct PageTwo {
     })
     .onReady((context: NavDestinationContext) => {
       this.pathStack = context.pathStack;
-      console.info("current page config info is " + JSON.stringify(context.getConfigInRouteMap()));
+      console.info('current page config info is ' + JSON.stringify(context.getConfigInRouteMap()));
     })
   }
 }
@@ -6762,7 +7759,7 @@ export struct NavigationMenu {
 >
 > 1. 工程运行成功后点击跳转按钮。
 >
-> 2. 应用上划回退到后台，开启命令行窗口。
+> 2. 应用上滑回退到后台，开启命令行窗口。
 >
 > 3. 输入"hdc shell"，回车后输入"pidof 工程包名"，查询pid值。
 >

@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于播放视频文件并控制其播放状态的组件。 
+Video组件用于播放视频文件并控制其播放状态，支持播放、暂停、进度控制、倍速播放、全屏切换等功能。
 
 >  **说明：**
 >
@@ -14,7 +14,7 @@
 >
 >  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
 >  - Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
->  - Video组件在使用expandSafeArea扩展安全区域时，组件视频显示内容区域不支持扩展。
+>  - Video组件在使用[expandSafeArea](./ts-universal-attributes-expand-safe-area.md#expandsafearea)扩展安全区域时，组件视频显示内容区域不支持扩展。
 
 ## 权限列表
 
@@ -160,7 +160,7 @@ ArkTS-Sta: controls(value: boolean | undefined)
 
 > **说明：**
 >
-> Video组件自带的控制器无法自定义。若有其他需求，可隐藏自带控制器并自定义控制器的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)<!--RP1End-->。
+> Video组件自带的控制栏样式无法自定义。如需自定义控制栏，可将controls属性设置为false并自行实现控制栏的样式或功能。参考<!--RP1-->[视频播放](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)<!--RP1End-->。
 
 ### objectFit
 
@@ -216,9 +216,9 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-使能后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。
+启用后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。
 
-不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md#overlay)中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。
+不支持与[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md#overlay)中[CustomBuilder](ts-types.md#custombuilder8)属性会失效。
 
 >**说明：**
 >
@@ -238,7 +238,7 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用AI分析功能。<br/>true：开启AI分析功能；false：关闭AI分析功能。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用AI分析功能。<br/>true：开启AI分析功能；false：关闭AI分析功能。<br/>默认值：false<br/>取值为undefined时，按默认值处理。<br>**说明：**<br>不支持与[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md#overlay)中[CustomBuilder](ts-types.md#custombuilder8)属性会失效。 |
 
 > **说明：**
 >
@@ -706,7 +706,7 @@ ArkTS-Sta: stop(): void
 
 reset(): void
 
-Video组件重置AVPlayer。显示当前帧，再次播放时从头开始播放。
+重置视频播放器。显示当前帧，再次播放时从头开始播放。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -792,6 +792,10 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 指定视频播放的进度位置，并指定跳转模式。
 
+> **说明：**
+>
+> 如需从视频内的某一时间点开始播放，应关闭自动播放，在视频准备完成后先跳转再播放。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -807,7 +811,28 @@ setCurrentTime(value: number, seekMode: SeekMode)
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | -------- | ---- | -------------- |
 | value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒 |
-| seekMode | [SeekMode](#seekmode8枚举说明) | 是    | 跳转模式。          |
+| seekMode | [SeekMode](#seekmode8枚举说明) | 是    | 跳转模式。<br>异常值undefined、null、NaN和Infinity按PreviousKeyframe处理。 |
+
+### setCurrentTime<sup>23+</sup>
+
+setCurrentTime(value: double, seekMode?: SeekMode): void
+
+指定视频播放的进度位置，并指定跳转模式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[setCurrentTime](#setcurrenttime)和[setCurrentTime](#setcurrenttime8)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明           |
+| -------- | -------- | ---- | -------------- |
+| value    | double   | 是    | 视频播放进度位置，单位：秒。 |
+| seekMode | [SeekMode](#seekmode8枚举说明) | 否    | 跳转模式。<br>异常值undefined按PreviousKeyframe处理。<br>默认值：PreviousKeyframe |
 
 ## VideoControllerAsync
 
@@ -815,7 +840,7 @@ VideoControllerAsync是VideoController的异步版本，可以通过Promise获�
 
 > **说明：**
 >
->  VideoControllerAsync向开发者暴露了命令的执行结果，与VideoController相比，VideoControllerAsync中的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)播放控制命令为异步执行，请求后可立即返回而不阻塞当前线程；并且可基于Promise的then和catch方法，对命令成功或失败的结果进行后续处理。
+>  VideoControllerAsync提供命令执行结果。与VideoController相比，[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)等播放控制命令为异步执行，请求后立即返回不阻塞当前线程，可通过Promise的then和catch方法处理命令执行结果。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -923,7 +948,7 @@ stop(): Promise\<void\>
 
 reset(): Promise\<void\>
 
-Video组件重置AVPlayer。显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
+重置视频播放器。显示当前帧，再次播放时从头开始播放。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1004,7 +1029,7 @@ setCurrentTime(value: number, seekMode?: SeekMode)
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | -------- | ---- | -------------- |
 | value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒 |
-| seekMode | [SeekMode](#seekmode8枚举说明) | 否    | 跳转模式。          |
+| seekMode | [SeekMode](#seekmode8枚举说明) | 否    | 跳转模式。<br>ArkTS-Dyn: 异常值undefined、null、NaN和Infinity按PreviousKeyframe处理。<br>ArkTS-Sta: 异常值undefined按PreviousKeyframe处理。<br>默认值：PreviousKeyframe |
 
 ## SeekMode<sup>8+</sup>枚举说明
 
@@ -1018,39 +1043,18 @@ setCurrentTime(value: number, seekMode?: SeekMode)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 说明                         |
-| ---------------- | ---------------------------- |
-| PreviousKeyframe | 跳转到前一个最近的关键帧。   |
-| NextKeyframe     | 跳转到后一个最近的关键帧。   |
-| ClosestKeyframe  | 跳转到最近的关键帧。         |
-| Accurate         | 精准跳转，不论是否为关键帧。 |
-
-### setCurrentTime<sup>23+</sup>
-
-setCurrentTime(value: double, seekMode?: SeekMode): void
-
-指定视频播放的进度位置，并指定跳转模式。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[setCurrentTime](#setcurrenttime)和[setCurrentTime](#setcurrenttime8)
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名      | 类型     | 必填   | 说明           |
-| -------- | -------- | ---- | -------------- |
-| value    | double   | 是    | 视频播放进度位置，单位：秒。 |
-| seekMode | [SeekMode](#seekmode8枚举说明) | 否    | 跳转模式。          |
+| 名称             |值|  说明                         |
+| ---------------- |--|  ---------------------------- |
+| PreviousKeyframe |0|  跳转到当前播放位置之前最近的关键帧。 |
+| NextKeyframe     |1|  跳转到当前播放位置之后最近的关键帧。 |
+| ClosestKeyframe  |2|  跳转到距离当前播放位置最近的关键帧。 |
+| Accurate         |3|  精准跳转到指定时间点，不论是否为关键帧。精度高但可能需要解码更多帧。 |
 
 ## 示例
 
 ### 示例1（视频播放基础用法）
 
-基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置AVPlayer、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
+基础用法包括：控制栏、预览图、自动播放、播放速度、响应快捷键（从API version 15开始，支持通过[enableShortcutKey](#enableshortcutkey15)设置组件开启快捷键响应）、控制器（开始播放、暂停播放、停止播放、重置视频播放器、跳转等）、首帧送显（从API version 18开始，支持通过[posterOptions](#posteroptions18对象说明)设置视频播放的首帧送显选项。从API version 21开始，posterOptions支持通过[PosterOptions](#posteroptions18对象说明)的contentTransitionEffect参数来设置当前视频的预览图内容变化时的转场动效。）以及一些状态回调方法。
 
 ArkTS-Dyn示例：
 
@@ -1151,7 +1155,7 @@ struct VideoCreateComponent {
           this.controller.stop(); // 结束播放。
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset(); // 重置AVPlayer。
+          this.controller.reset(); // 重置视频播放器。
         }).margin(2)
         Button('setTime').onClick(() => {
           this.controller.setCurrentTime(10, SeekMode.Accurate); // 精准跳转到视频的10s位置。
@@ -1806,7 +1810,7 @@ struct VideoModifierDemo {
           this.controller.stop(); // 结束播放
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset(); // 重置AVPlayer
+          this.controller.reset(); // 重置视频播放器
         }).margin(2)
       }
 
@@ -1947,7 +1951,7 @@ struct VideoModifierDemo {
 
 ### 示例7（VideoControllerAsync用法）
 
-该示例通过提供VideoControllerAsync的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口，获取命令结果。
+本示例展示VideoControllerAsync的[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口用法，通过Promise异步回调获取命令执行状态。
 
 从API版本26.0.0开始，新增VideoControllerAsync控制器及[start](#start-1)、[pause](#pause-1)、[stop](#stop-1)、[reset](#reset)接口。
 
@@ -1959,7 +1963,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct VideoControllerAsyncExample {
-  @State videoSrc: Resource = $rawfile('video1.mp4');// 替换为开发者所需的视频资源文件。
+  @State videoSrc: Resource = $rawfile('video1.mp4'); // 替换为开发者所需的视频资源文件。
   controller: VideoControllerAsync = new VideoControllerAsync();
 
   build() {
@@ -2018,7 +2022,7 @@ struct VideoControllerAsyncExample {
               console.info('start success')
             })
             .catch((err: BusinessError) => {
-              console.info(`start failed: ${err.message}`)
+              console.error(`start failed: ${err.message}`)
             })
         }).margin(2)
         Button('pause').onClick(() => {
@@ -2027,7 +2031,7 @@ struct VideoControllerAsyncExample {
               console.info('pause success')
             })
             .catch((err: BusinessError) => { // catch处理执行失败的场景。
-              console.info(`pause failed: ${err.message}`)
+              console.error(`pause failed: ${err.message}`)
             })
         }).margin(2)
         Button('stop').onClick(() => {
@@ -2036,16 +2040,16 @@ struct VideoControllerAsyncExample {
               console.info('stop success')
             })
             .catch((err: BusinessError) => {
-              console.info(`stop failed: ${err.message}`)
+              console.error(`stop failed: ${err.message}`)
             })
         }).margin(2)
         Button('reset').onClick(() => {
-          this.controller.reset() // 重置AVPlayer。
+          this.controller.reset() // 重置视频播放器。
             .then(() => {
               console.info('reset success')
             })
             .catch((err: BusinessError) => {
-              console.info(`reset failed: ${err.message}`)
+              console.error(`reset failed: ${err.message}`)
             })
         }).margin(2)
       }
@@ -2134,7 +2138,7 @@ struct VideoControllerAsyncExample {
               console.info('pause success')
             })
             .catch((err: BusinessError) => {
-              console.info(`pause failed: ${err.message}`)
+              console.error(`pause failed: ${err.message}`)
             })
         }).margin(2)
         Button('stop').onClick(() => {

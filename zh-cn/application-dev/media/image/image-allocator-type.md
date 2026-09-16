@@ -8,7 +8,7 @@
 
 应用在进行图片解码操作时，需要申请对应内存。内存占用的大小与内存分配类型和像素格式密切相关。当前指导将介绍不同的内存类型、像素格式，以及如何组合使用以达到最优的解码性能。
 
-应用侧通过解码API接口获取PixelMap，并将其传递给[Image组件](../../../application-dev/reference/apis-arkui/arkui-js/js-components-basic-image.md)以进行显示。
+应用侧通过解码API接口获取PixelMap，并将其传递给[Image](../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件以进行显示。
 
 当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。此外，通过设置合适的像素格式（如YUV格式），可进一步降低内存占用。
 
@@ -176,16 +176,9 @@ async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefine
 
 ## 系统默认的内存分配方式
 
-在使用[createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)接口进行解码时，不同场景下会采取不同的内存分配类型。
+使用[createPixelMap](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)或[createPixelMapSync](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapsync12)解码时，系统自动选择共享内存或DMA内存。
 
-以下场景将使用DMA_ALLOC。
-
-- 解码HDR图片。
-- 解码HEIF格式图片。
-- 解码JPEG格式图片，当原图的宽和高均在1024像素至8192像素之间，[desiredPixelFormat](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)为RGBA_8888或NV21，同时硬件不繁忙（并发数为3）。
-- 解码其他格式图片。要求[desiredSize](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)大于等于512像素 * 512像素（未设置desiredSize时按原图尺寸考虑），并且宽度为64的倍数。
-
-除上述场景外，其余情况均使用SHARE_MEMORY。
+需要指定内存类型时，应调用[createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)或[createPixelMapUsingAllocatorSync](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapusingallocatorsync15)，将allocatorType设置为image.AllocatorType.DMA或image.AllocatorType.SHARE_MEMORY。
 
 ## 解码单张图片的内存限制
 

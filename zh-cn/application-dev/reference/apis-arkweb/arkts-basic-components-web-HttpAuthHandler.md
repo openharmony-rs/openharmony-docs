@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -10,9 +10,11 @@ HttpAuthHandler是Web组件用于处理HTTP认证请求的处理类。当服务�
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 本Class首批接口从API version 9开始支持。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本Class从API version 9开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -24,6 +26,10 @@ HttpAuthHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
@@ -31,6 +37,10 @@ cancel(): void
 通知Web组件用户取消HTTP认证操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ## confirm<sup>9+</sup>
 
@@ -40,29 +50,37 @@ confirm(userName: string, password: string): boolean
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填  | 说明       |
 | -------- | ------ | ---- | ---------- |
-| userName | string | 是   | HTTP认证用户名。 |
-| password      | string | 是   | HTTP认证密码。  |
+| userName | string | 是   | HTTP认证用户名，建议传入非空字符串。 |
+| password      | string | 是   | HTTP认证密码，建议传入非空字符串。  |
 
 **返回值：**
 
 | 类型      | 说明                    |
 | ------- | --------------------- |
-| boolean | 认证成功返回true，失败返回false。 |
+| boolean | 返回值仅表示接口调用状态，不代表认证结果。true表示调用成功，false表示调用失败。 |
 
 ## isHttpAuthInfoSaved<sup>9+</sup>
 
 isHttpAuthInfoSaved(): boolean
 
-确定当前主机存储的凭据是否适合使用，如果凭据在当前请求中曾被服务器拒绝过，则不适用。
+检查当前主机存储的凭据是否适用，如果凭据在当前请求中曾被服务器拒绝过，则不适用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型      | 说明                        |
 | ------- | ------------------------- |
-| boolean | 存储的凭据适用返回true，其他返回false。 |
+| boolean | 存储的凭据适用时返回true，其他返回false。 |

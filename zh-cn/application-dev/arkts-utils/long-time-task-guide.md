@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 此处提供使用TaskPool进行长时任务的开发指导，以定期采集传感器数据为例。
 
@@ -38,7 +38,7 @@
    }
    ```
 
-3. 给sensor添加ohos.permission.ACCELEROMETER权限，在module.json5中添加如下代码。
+3. 给应用添加ohos.permission.ACCELEROMETER权限，在module.json5中的"module"字段中添加如下代码示例的"requestPermissions"字段，配置相关权限。
 
    ```json
    "requestPermissions": [

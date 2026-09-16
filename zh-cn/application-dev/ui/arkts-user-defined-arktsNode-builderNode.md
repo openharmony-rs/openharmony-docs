@@ -37,7 +37,7 @@ BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议通
 > 
 > - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的[selfIdealSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)显式指定布局约束大小，才能正常显示。
 > 
-> - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建的时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
+> - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
 
 ## 创建BuilderNode对象
 
@@ -53,7 +53,7 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 >
 > build方法中对应的@Builder支持一个参数作为入参。
 >
-> build中对于@Builder嵌套@Builder进行使用的场景，需要保证嵌套的参数与build的中提供的入参一致。
+> build中对于@Builder嵌套@Builder进行使用的场景，需要保证嵌套的参数与build中提供的入参一致。
 > 
 > 对于@Builder嵌套@Builder进行使用的场景，如果入参类型不一致，则要求增加[BuildOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)字段作为[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12)的入参。
 > 
@@ -204,8 +204,6 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[Render
 ![ArkTSNode-BuilderNode02](figures/ArkTSNode-BuilderNode02.jpg)
 
 ## 更新组件树
-
-通过BuilderNode对象的build创建组件树。依照传入的WrappedBuilder对象创建组件树，并持有组件树的根节点。
 
 自定义组件的更新遵循[状态管理](../ui/state-management/arkts-state-management-overview.md)的更新机制。WrappedBuilder中直接使用的自定义组件其父组件为BuilderNode对象。因此，更新子组件即WrappedBuilder中定义的自定义组件，需要遵循状态管理的定义将相关的状态变量定义为[\@Prop](../ui/state-management/arkts-prop.md)或者[\@ObjectLink](../ui/state-management/arkts-observed-and-objectlink.md)。装饰器的选择请参照状态管理的装饰器规格结合应用开发需求进行选择。
 
@@ -1045,7 +1043,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
 
     makeNode(context: UIContext): FrameNode | null {
-      return this.textNode?.getFrameNode() ? this.textNode?.getFrameNode() : null;
+      return this.textNode?.getFrameNode() ?? null;
     }
 
     createNode(context: UIContext) {
@@ -1527,7 +1525,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 | 类 | 接口 |
 | -------- | -------- |
 | [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#appendchild12)、[insertChildAfter](../reference/apis-arkui/js-apis-arkui-frameNode.md#insertchildafter12)、[removeChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#removechild12)、[clearChildren](../reference/apis-arkui/js-apis-arkui-frameNode.md#clearchildren12)、[addComponentContent](../reference/apis-arkui/js-apis-arkui-frameNode.md#addcomponentcontent12) |
-| [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) | [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12)、[removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12) |
+| [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) | [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode)、[removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode) |
 | [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) | [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) |
 | [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)、[insertChildAfter](../reference/apis-arkui/js-apis-arkui-renderNode.md#insertchildafter)、[removeChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#removechild)、[clearChildren](../reference/apis-arkui/js-apis-arkui-renderNode.md#clearchildren) |
 | [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | 节点通过[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)方式上下树时 |
@@ -1753,13 +1751,17 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 
 页面1示例代码如下：
 
-```ts
+<!-- @[Main_inheritFreezeRouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/inheritFreezeRouterPage1.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const BOOK_INITIAL_NAME = '100';
 
 @ObservedV2
 export class Book {
-  @Trace name: string = '100';
-
+  @Trace public name: string = BOOK_INITIAL_NAME;
   constructor(name: string) {
     this.name = name;
   }
@@ -1773,10 +1775,10 @@ function buildText(book: Book) {
 }
 
 class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  private textNode: BuilderNode<[Book]> | null = null;
-  index: number = 0;
-  name: string = '100';
+  public rootNode: FrameNode | null = null;
+  public textNode: BuilderNode<[Book]> | null = null;
+  public index: number = 0;
+  public name: string = BOOK_INITIAL_NAME;
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
@@ -1808,35 +1810,34 @@ struct BuildNodeChild {
 
   @Monitor('bookTest.name')
   onMessageChange(monitor: IMonitor) {
-    console.info(`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`The book name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
     Column() {
       Text(`Book name is  ${this.bookTest.name}`).fontSize(30)
-      Button('change')
-        .width('60%')
-        .height(40)
-        .fontSize(30)
+      Button('change').width('60%').height(40).fontSize(30)
         .onClick(() => {
           this.bookTest.name = 'The Old Man and the Sea';
         })
         .margin(5)
       Button('next').width('60%').height(40).fontSize(30)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/routing' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/inheritFreezeRouterPage2' });
           setTimeout(() => {
-            this.bookTest = new Book('Jane Austen's Pride and Prejudice');
-          }, 1000)
+            this.bookTest = new Book(`Jane Austen's Pride and Prejudice`);
+          }, 1000);
         })
     }
   }
 }
 ```
 
-页面2-Routing2（即页面1的下一页）示例代码如下：
+页面2-inheritFreezeRouterPage2（即页面1的下一页）示例代码如下：
 
-```ts
+<!-- @[Main_inheritFreezeRouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/inheritFreezeRouterPage2.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Page2 {
@@ -1870,11 +1871,14 @@ struct Page2 {
 
 ![freezeWithTab](state-management/figures/freezewithTabs.png)
 
-```ts
+<!-- @[Main_TabContentPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/TabContentPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class Params {
-  message: number = 0;
+  public message: number = 0;
 
   constructor( message: number) {
     this.message = message;
@@ -1933,7 +1937,8 @@ struct TabContentTest {
           TabContent() {
             Column() {
               FreezeBuildNode({ message: this.message })
-              Text('Tabs遍历后BuilderNode处于冻结')
+              // 请将$r('app.string.text3')替换为实际资源文件，在本示例中该资源文件的value值为"Tabs遍历后BuilderNode处于冻结："
+              Text($r('app.string.text3'))
                 .fontWeight(FontWeight.Bold)
                 .margin({ top: 48, bottom: 48 })
                 .fontSize(30)
@@ -1957,7 +1962,7 @@ struct FreezeBuildNode {
   @Param message: number = 0;
   @Param index: number = 0;
   @Monitor('message') onMessageUpdated(mon: IMonitor) {
-    console.info(`FreezeBuildNode message callback func ${this.message}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode message callback func ${this.message}`);
   }
   build() {
     if (this.index === 0) {
@@ -1972,7 +1977,7 @@ struct buildNodeChild {
   @Param index: number = 0;
 
   @Monitor('message') onMessageUpdated(mon: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
   }
 
   build() {
@@ -1987,21 +1992,28 @@ struct buildNodeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+1. 点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
 
-2.点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
+2. 点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
 
-3.点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
+3. 点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
 
 **Navigation**
 
 Navigation组件的BuilderNode冻结功能（通过配置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true）是组件冻结机制在导航场景下的延伸，核心作用是优化包含BuilderNode的Navigation组件在页面切换或状态更新时的性能，避免非活跃状态下的冗余计算和渲染。当BuilderNode所在的Navigation页面处于非活跃状态（如被切换到后台、隐藏在Tab页/侧边栏后等），系统会将其标记为 “冻结”。冻结状态下，该BuilderNode的子组件会暂停状态更新、事件响应和渲染刷新（如@State、@Prop等状态变化不会触发重新渲染，生命周期回调暂时失效）。通过配置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true，BuilderNode会继承父组件（如Navigation）的冻结状态，确保其下的整个子组件树同步进入冻结状态，避免局部未冻结导致的性能浪费。
 
-```ts
+<!-- @[Main_NavigationPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/NavigationPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common } from '@kit.AbilityKit';
+
+const PAGE_ONE_INDEX = 1;
+const PAGE_TWO_INDEX = 2;
 
 class Params {
-  count: number = 0;
+  public count: number = 0;
 
   constructor(count: number) {
     this.count = count;
@@ -2084,7 +2096,7 @@ struct MyNavigationTestStack {
 @ComponentV2
 struct PageOneStack {
   @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
-  @Local index: number = 1;
+  @Local index: number = PAGE_ONE_INDEX;
   @Param @Require  message: number;
   @Param @Require logNumber: number;
 
@@ -2118,15 +2130,17 @@ struct PageOneStack {
 @ComponentV2
 struct PageTwoStack {
   @Consumer('pageInfo') pageInfo: NavPathStack=new NavPathStack();
-  @Local index: number = 2;
+  @Local index: number = PAGE_TWO_INDEX;
   @Param @Require message: number;
   @Param @Require logNumber: number;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     NavDestination() {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-        Text('BuilderNode处于冻结')
+        // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"。
+        Text($r('app.string.text1'))
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
@@ -2162,16 +2176,18 @@ struct NavigationContentMsgStack {
 
 @ComponentV2({ freezeWhenInactive: true }) // 设置冻结策略为不活跃冻结。
 struct TextBuilder {
-  @Param  message: number = 0;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @Param message: number = 0;
 
   @Monitor('message')
   info() {
-    console.info(` freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结。
+    hilog.info(0xF811, 'testTag', '%{public}s',` freeze-test TextBuilder message callback ${this.message}`); // 根据message内容变化来打印日志来判断是否冻结。
   }
   build() {
     Row() {
       Column() {
-        Text(`文本更新次数： ${this.message}`)
+        // 请在resources\base\element\string.json文件中配置name为'text2'的资源，在本示例中该资源的value值为"文本更新次数："。
+        Text(this.context.resourceManager.getStringByNameSync('text2') + `${this.message}`)
           .fontWeight(FontWeight.Bold)
           .margin({ top: 48, bottom: 48 })
       }
@@ -2184,24 +2200,27 @@ struct TextBuilder {
 
 在上面的示例中：
 
-1.进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
+1. 进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
 
-2.点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
+2. 点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
 
-3.点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
+3. 点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
 
 **Repeat**
 
 Repeat组件（用于循环生成子组件）的BuilderNode冻结功能（通过设置BuilderNode的[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true启用），是组件冻结机制在循环列表场景下的具体应用，核心目的是优化列表中重复生成的子组件在非活跃状态下的性能，减少不必要的资源消耗。当BuilderNode生成的子组件处于非活跃状态（如列表项被滚动出屏幕、父组件进入冻结状态、或整个列表不可见时），系统会将该BuilderNode及其子组件树标记为“冻结”。冻结状态下，该BuilderNode对应的列表项会暂停状态更新（如@Local、@Param等状态变化不会触发重新渲染）、事件响应（如点击、滑动等事件暂时失效）和生命周期回调，避免后台无效计算。通过[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true，BuilderNode会继承Repeat父组件的冻结状态，确保循环生成的每个子组件都能同步遵循冻结规则，避免局部未冻结导致的性能浪费。
 
-```ts
+<!-- @[Main_RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RepeatPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 定义一个Params类，用于传递参数。
 @ObservedV2
 class Params {
   // 单例模式，确保只有一个Params实例。
-  static singleton_: Params;
+  public static singleton_: Params;
 
   // 获取Params实例的方法。
   static instance() {
@@ -2212,12 +2231,12 @@ class Params {
   }
 
   // 使用@Trace装饰器装饰message、bgColor属性，以便跟踪其变化。
-  @Trace message: string = '';
-  @Trace bgColor: Color = Color.Pink;
-  index: number = 0;
+  @Trace public message: string = '';
+  @Trace public bgColor: Color = Color.Pink;
+  public index: number = 0;
 
   constructor( message: string) {
-    this. message = message;
+    this.message = message;
   }
 }
 
@@ -2295,12 +2314,12 @@ export struct RepeatVirtualScrollFreeze {
 @ComponentV2({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   storage: Params = Params.instance();
-  @Param @Require message: string ;
+  @Param @Require message: string;
   @Param @Require bgColor: Color;
   @Monitor('storage.bgColor')
   onBgColorChange(monitor: IMonitor) {
     // bgColor改变时，缓存池中组件不刷新，不会打印日志。
-    console.info(`repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`repeat---bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
   build() {
     NodeContainer(new TextNodeController(this.message))
@@ -2313,10 +2332,10 @@ struct BuildNodeChild {
   storage: Params = Params.instance();
   @Param message: string = '';
 
-  // 使用@Monitor装饰器监听storage.message的变化。
+  // 使用@Monitor装饰器监听storage.bgColor的变化。
   @Monitor('storage.bgColor')
-  onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+  onBgColorChange(monitor: IMonitor) {
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode buildNodeChild bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -2326,7 +2345,6 @@ struct BuildNodeChild {
       .margin(2)
   }
 }
-
 ```
 
   ![inheritFreezeOptions](figures/20251015-191040.gif)
@@ -2341,14 +2359,17 @@ struct BuildNodeChild {
 
 BuilderNode节点开启冻结功能（即通过设置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true）后，支持与Repeat、TabContent等不同组件混合使用，示例如下：
 
-```ts
+<!-- @[Main_RepeatTabPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RepeatTabPage.ets) -->
+
+``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 定义一个Params类，用于传递参数。
 @ObservedV2
 class Params {
   // 单例模式，确保只有一个Params实例。
-  static singleton_: Params;
+  public static singleton_: Params;
 
   // 获取Params实例的方法。
   static instance() {
@@ -2359,8 +2380,8 @@ class Params {
   }
 
   // 使用@Trace装饰器装饰message属性，以便跟踪其变化。
-  @Trace message: string = 'Hello';
-  index: number = 0;
+  @Trace public message: string = 'Hello';
+  public index: number = 0;
 
   constructor(index: number) {
     this.index = index;
@@ -2377,7 +2398,7 @@ struct buildNodeChild {
   // 使用@Monitor装饰器监听storage.message的变化。
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode buildNodeChild message callback func ${this.storage.message}, index:${this.index}`);
   }
 
   build() {
@@ -2456,7 +2477,7 @@ struct FreezeBuildNode {
   // 使用@Monitor装饰器监听storage.message的变化。
   @Monitor('storage.message')
   onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode message callback func ${this.storage.message}, index: ${this.index}`);
   }
 
   build() {
@@ -2471,11 +2492,11 @@ struct FreezeBuildNode {
 
 在上面的示例中：
 
-1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+1. 点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+2. 点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
+3. 再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 
@@ -2532,12 +2553,11 @@ struct FreezeBuildNode {
 
 2. 创建NodeContainer和对应的NodeController，渲染后台Web组件。
 
-    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) --> 
+    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->   
     
     ``` TypeScript
-    import { UIContext } from '@kit.ArkUI';
+    import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
-    import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
     // @Builder中为动态组件的具体组件内容。
@@ -2577,7 +2597,7 @@ struct FreezeBuildNode {
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
     
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
+      // 必须要重写的方法，用于构建节点树、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811, 'testTag', '%{public}s', ' uicontext is undefined :' + (uiContext === undefined));

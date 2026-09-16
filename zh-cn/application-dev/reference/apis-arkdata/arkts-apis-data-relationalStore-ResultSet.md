@@ -240,7 +240,7 @@ ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | ArkTS-Dyn: number \| string  <br>ArkTS-Sta: int \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。名称必须是属性columnNames内的名称。 |
+| columnIdentifier | ArkTS-Dyn: number \| string  <br>ArkTS-Sta: int \| string | 是   | 表示结果集中指定列的索引或列名。索引必须是非负整数，且必须小于属性columnNames的长度。列名必须是属性columnNames内的名称。 |
 
 **返回值：**
 
@@ -1219,7 +1219,7 @@ ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回值会不符合预期，建议使用[getRowsData](#getrowsdata23)接口获取。|
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise对象，返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回值会不符合预期，建议使用[getRowsData](#getrowsdata23)接口获取。|
 
 **错误码：**
 
@@ -1353,7 +1353,7 @@ ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise\<RowsData>
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-| Promise<[RowsData](arkts-apis-data-relationalStore-t.md#rowsdata23)> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。支持获取包含重名列的值。|
+| Promise<[RowsData](arkts-apis-data-relationalStore-t.md#rowsdata23)> | Promise对象，返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。支持获取包含重名列的值。|
 
 **错误码：**
 
@@ -1466,11 +1466,9 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 ```ts
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
-import { UIAbility } from '@kit.AbilityKit';
-import { relationalStore } from '@kit.ArkData';
+import { UIAbility, common } from '@kit.AbilityKit';
+import { relationalStore, sendableRelationalStore } from '@kit.ArkData';
 import { taskpool } from '@kit.ArkTS';
-import { common } from '@kit.AbilityKit';
-import { sendableRelationalStore } from '@kit.ArkData';
 
 @Concurrent
 async function getDataByName(name: string, context: common.UIAbilityContext) {

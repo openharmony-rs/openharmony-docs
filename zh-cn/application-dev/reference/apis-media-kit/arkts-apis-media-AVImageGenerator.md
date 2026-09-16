@@ -91,13 +91,13 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
     generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
       if (error) {
-        console.error(`Failed to fetch FrameByTime, err = ${JSON.stringify(error)}`);
+        console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
         return;
       }
       pixel_map = pixelMap;
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -169,10 +169,10 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -240,10 +240,10 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch ScaledFrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch ScaledFrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -289,13 +289,13 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release((error: BusinessError) => {
       if (error) {
-        console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+        console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
         return;
       }
       console.info(`Succeeded in releasing`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -316,7 +316,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<void> | 异步方式释放资源release方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -342,10 +342,10 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
     avImageGenerator.release().then(() => {
       console.info(`Succeeded in releasing.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to release, error message:${error.message}`);
+      console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```

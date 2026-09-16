@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 本文汇总ArkTS-Sta运行时的常见问题及解决措施，这些问题多源于ArkTS-Sta的静态类型系统与ArkTS-Dyn的动态类型系统之间的本质差异，理解这些差异有助于在开发中正确使用ArkTS-Sta特性并规避常见陷阱。
 

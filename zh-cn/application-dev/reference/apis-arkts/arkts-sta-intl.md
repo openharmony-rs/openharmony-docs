@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 本模块提供国际化相关类型和格式化类，包括区域匹配、日期时间格式化、数字格式化、复数规则、相对时间格式化和分词能力。
 

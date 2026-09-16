@@ -992,7 +992,7 @@ struct MonitorWildcardSet {
 
 ## 限制条件
 
-- \@Monitor的参数需要为监听属性名的字符串，enum枚举值和const常量，仅可以使用字符串字面量作为参数。不支持使用变量作为参数。 
+- \@Monitor的参数需要为监听属性名的字符串，仅可以使用字符串字面量和enum枚举值作为参数。不支持使用变量或const常量作为参数。
 
    ```ts
    'use static'
@@ -1018,7 +1018,7 @@ struct MonitorWildcardSet {
      onT2Change(monitor: IMonitor): void {
        console.info(`t2 change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
      }
-     @Monitor([t3]) // const常量，成功编译
+     @Monitor([t3]) // const常量，编译失败
      onT3Change(monitor: IMonitor): void {
        console.info(`t3 change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
      }

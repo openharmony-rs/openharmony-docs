@@ -1,8 +1,8 @@
-# 媒体会话控制方(仅对系统应用开放)
+# 媒体会话控制方（仅对系统应用开放）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -245,7 +245,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
     });
     // 注册会话自定义播放标题变更监听。
     controller.on('queueTitleChange', (title) => {
-      console.info(`Caught queue title change, title is ${title}`);
+      console.info(`Caught queue title change, queue title is ${title}`);
     });
    }
    ```
@@ -255,10 +255,15 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
    ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    async function getInfoFromSessionByController() {
-     // 假设已经有了一个对应session的controller，如何创建controller可以参考之前的案例。
-     let controller = await AVSessionManager.createController("");
-     // 获取sessionId。
-     let sessionId = controller.sessionId;
+     // 获取当前系统中所有session的描述符。
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // 取目标session的sessionId创建controller。
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      console.info(`get sessionId by controller : isActive : ${sessionId}`);
      // 获取session激活状态。
      let isActive = await controller.isActive();
@@ -300,9 +305,16 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   async function  sendCommandToSessionByController() {
-     // 假设我们已经有了一个对应session的controller，如何创建controller可以参考之前的案例。
-     let controller = await AVSessionManager.createController("");
+   async function sendCommandToSessionByController() {
+     // 获取当前系统中所有session的描述符。
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // 取目标session的sessionId创建controller。
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      // 获取这个session支持的命令种类。
      let validCommandTypeArray = await controller.getValidCommands();
      console.info(`get validCommandArray by controller : length : ${validCommandTypeArray.length}`);
@@ -310,22 +322,22 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
      // 如果可用命令包含播放，则下发播放命令，正常session都应该提供并实现播放功能。
      if (validCommandTypeArray.indexOf('play') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'play'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发暂停命令。
      if (validCommandTypeArray.indexOf('pause') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'pause'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发上一首命令。
      if (validCommandTypeArray.indexOf('playPrevious') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'playPrevious'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发下一首命令。
      if (validCommandTypeArray.indexOf('playNext') >= 0) {
        let avCommand: AVSessionManager.AVControlCommand = {command:'playNext'};
-       controller.sendControlCommand(avCommand);
+       await controller.sendControlCommand(avCommand);
      }
      // 下发自定义控制命令。
      let commandName = 'custom command';
@@ -351,8 +363,15 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
    import { BusinessError } from '@kit.BasicServicesKit';
 
    async function destroyController() {
-     // 假设我们已经有了一个对应session的controller，如何创建controller可以参考之前的案例。
-     let controller = await AVSessionManager.createController("");
+     // 获取当前系统中所有session的描述符。
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // 取目标session的sessionId创建controller。
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      
      // 销毁当前的controller，销毁后这个controller将不再可用。
      controller.destroy((err: BusinessError) => {

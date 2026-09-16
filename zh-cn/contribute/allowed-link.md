@@ -22,3 +22,8 @@
 | docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
 | docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-06-04 |
+| docs/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md | [_ErrorObserver.default](js-apis-inner-application-errorObserver.md) | Ability Kit | Ability | 是 | 2026-07-07 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-env-property.md            | [CustomEnvKey\<T\>](#customenvkeys) | ArkUI Kit | ArkUI | 是 | 2026-07-15 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md            | [SubscribedAbstractProperty&lt;S&gt;](#subscribedabstractpropertyt9) | ArkUI Kit | ArkUI | 是 | 2026-08-14 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-08-20 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcTag.md.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap__ndk_8h.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-08-20 |

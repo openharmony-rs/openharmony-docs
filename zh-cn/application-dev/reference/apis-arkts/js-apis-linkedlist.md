@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 LinkedList底层通过双向链表实现，每个节点都包含对前一个元素和后一个元素的引用。查询元素时，可以从头或从尾部遍历，插入和删除效率高，查询效率低。LinkedList允许元素为null。
 
@@ -1311,7 +1311,7 @@ getFirst(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回对应元素，如果元素为undefined则返回undefined，为null则返回null。 |
+| T | 返回对应元素，若元素为空则返回undefined。 |
 
 **错误码：**
 

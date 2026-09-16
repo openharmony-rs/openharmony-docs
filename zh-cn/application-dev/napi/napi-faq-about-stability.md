@@ -1,10 +1,10 @@
 # 稳定性相关问题汇总
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 应用运行过程中出现高概率闪退怎么进行定位解决
 
@@ -14,7 +14,7 @@
 
 - 崩溃信息如下：  
 ```sh
-Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caus
+Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caused by NULL pointer dereference
 Fault thread info:
 Tid:15894, Name:e.myapplication
 #00 pc 002b8dd4 /system/lib/platformsdk/libark_jsruntime.so

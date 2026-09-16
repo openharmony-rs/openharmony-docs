@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ```c
@@ -13,7 +13,7 @@ typedef struct {...} ffrt_deps_t
 
 ## 概述
 
-依赖结构定义。
+依赖结构体，用于保存任务的依赖列表。
 
 **起始版本：** 10
 
@@ -27,7 +27,7 @@ typedef struct {...} ffrt_deps_t
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t len | 依赖数量 |
-| const [ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | 依赖数据 |
+| uint32_t len | 依赖数量。 |
+| const [ffrt_dependence_t*](capi-ffrt-ffrt-dependence-t.md) items | 依赖数据数组。 |
 
 

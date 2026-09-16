@@ -18,6 +18,8 @@
 >
 > - 该接口为[UIContext](../arkts-apis-uicontext-uicontext.md)类的成员函数，需要通过UIContext实例对象调用。
 
+## keyframeAnimateTo
+
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState&gt;): void
 
 设置关键帧动画。
@@ -53,7 +55,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 
 ## KeyframeState对象说明
 
-设置关键帧选项。
+关键帧状态设置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,7 +99,7 @@ struct KeyframeDemo {
         .scale({ x: this.myScale, y: this.myScale })
         .onClick(() => {
           if (!this.uiContext) {
-            console.info("no uiContext, keyframe failed");
+            console.error("no uiContext, keyframe failed");
             return;
           }
           this.myScale = 1;

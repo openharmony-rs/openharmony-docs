@@ -1,4 +1,4 @@
-# 系统公共事件定义 (已废弃)
+# 系统公共事件定义
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
@@ -209,7 +209,7 @@
   - 值：usual.event.MY_PACKAGE_REPLACED
   - 订阅者所需权限：无
 
-* COMMON_EVENT_PACKAGE_REMOVED<sup>(deprecated)</sup> 提示已安装的应用程序已从设备卸载，但应用程序数据得到保留的。
+* COMMON_EVENT_PACKAGE_REMOVED<sup>(deprecated)</sup> 提示已安装的应用程序已从设备卸载，但应用程序数据得到保留。
 
   > **说明：**
   >
@@ -289,7 +289,7 @@
   - 订阅者所需权限：无
 
 
-* COMMON_EVENT_MY_PACKAGE_SUSPENDED<sup>(deprecated)</sup> 提示应用HAP包被挂起的。
+* COMMON_EVENT_MY_PACKAGE_SUSPENDED<sup>(deprecated)</sup> 提示应用HAP包被挂起。
 
   > **说明：**
   >

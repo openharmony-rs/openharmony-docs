@@ -368,7 +368,7 @@ struct Index {
 
 当装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
-<!-- @[LocalDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalDateVariable.ets) -->
+<!-- @[LocalDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalDateVariable.ets) -->  
 
 ``` TypeScript
 import { Button, Column, ComponentV2, DatePicker, Entry, Local, Row } from '@kit.ArkUI';
@@ -378,7 +378,7 @@ import { Button, Column, ComponentV2, DatePicker, Entry, Local, Row } from '@kit
 struct DatePickerExample {
   @Local selectedDate: Date = new Date('2021-08-08'); // 使用@Local装饰Date类型变量
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         // 通过给selectedDate重新赋值新的Date实例，触发UI刷新

@@ -24,7 +24,7 @@
 - [param工具](param-tool.md)
 - [power-shell工具](power-shell.md)
 <!--Del-->
-- [OpenHarmony SDK升级助手](openharmony_sdk_upgrade_assistant.md)
+- [OpenHarmony SDK升级助手](openharmony-sdk-upgrade-assistant.md)
 <!--DelEnd-->
 - [atm工具](atm-tool.md)
 - [network-cfg工具](network-cfg.md)
@@ -32,6 +32,7 @@
 - hidumper<!--hidumper-tool-->
   - [hidumper](../dfx/hidumper.md)
   - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
+  - [Faultlogger](../dfx/hidumper-faultlogger.md)
 - [hitrace](../dfx/hitrace.md)
 - [hiperf](../dfx/hiperf.md)
 - [hiprofiler](../dfx/hiprofiler.md)

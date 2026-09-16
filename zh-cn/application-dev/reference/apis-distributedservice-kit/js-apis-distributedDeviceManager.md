@@ -14,7 +14,7 @@
 - 发现周边设备。
 - 认证和取消认证设备。
 - 查询可信设备列表。
-- 查询本地设备信息，包括设备名称，设备类型和设备标识等。
+- 查询本地设备信息，包括设备名称、设备类型和设备标识等。
 
 > **说明：**
 >
@@ -33,8 +33,6 @@ createDeviceManager(bundleName: string): DeviceManager
 创建一个设备管理实例，是分布式设备管理方法的调用入口。该实例用于获取可信设备列表以及本地设备的名称、类型、标识和网络标识等信息。当设备管理实例不再使用时，应调用releaseDeviceManager释放该实例，避免资源泄漏。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
-
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -83,8 +81,6 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
-
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -125,7 +121,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 分布式设备基本信息。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
@@ -144,7 +140,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 表示设备状态。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
@@ -721,7 +717,7 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | number                    | <!--RP2-->返回指定设备类型。<!--RP2End--> |
+  | number                    | <!--RP2-->返回指定设备类型，表示指定设备的类别信息。<!--RP2End--> |
 
 **错误码：**
 
@@ -866,7 +862,7 @@ stopDiscovering(): void
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}&gt;): void
 
-认证设备，将发现的不可信设备通过认证流程绑定为可信设备。认证过程中，系统会根据bindParam中指定的认证类型发起认证请求，认证成功后设备将加入可信设备列表，可通过getAvailableDeviceListSync查询。当不再需要与目标设备进行分布式业务时，可调用unbindTarget解除绑定。使用callback异步回调。
+认证设备，将发现的不可信设备通过认证流程绑定为可信设备<!--RP3--><!--RP3End-->。认证过程中，系统会根据bindParam中指定的认证类型发起认证请求，认证成功后设备将加入可信设备列表，可通过getAvailableDeviceListSync查询。当不再需要与目标设备进行分布式业务时，可调用unbindTarget解除绑定。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -934,7 +930,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 unbindTarget(deviceId: string): void
 
-解除认证设备，用于在不再需要与目标设备进行分布式业务时，解除与该设备的认证关系。与bindTarget方法配合使用，仅能解除已通过bindTarget认证绑定的可信设备。解除后设备将从可信设备列表中移除，可通过getAvailableDeviceListSync或getAvailableDeviceList查询确认。
+解除认证设备，用于在不再需要与目标设备进行分布式业务时，解除与该设备的认证关系<!--RP4--><!--RP4End-->。与bindTarget方法配合使用，仅能解除已通过bindTarget认证绑定的可信设备。解除后设备将从可信设备列表中移除，可通过getAvailableDeviceListSync或getAvailableDeviceList查询确认。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1777,7 +1773,7 @@ offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
 
 ### on('serviceDie')
 
-on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
+on(type: 'serviceDie', callback: Callback&lt;{}&gt;): void
 
 注册设备管理服务死亡回调，以便在服务死亡时通知应用。使用callback异步回调。
 
@@ -1792,7 +1788,7 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
   | type     | string                  | 是    | 注册设备管理服务死亡回调，以便在DeviceManager服务异常终止时通知应用，固定为serviceDie。 |
-  | callback | Callback&lt;{}&gt; | 否    | 注册serviceDie的回调方法，当设备管理服务异常终止时触发该回调通知应用。如果不传入callback参数，则不会注册回调。                       |
+  | callback | Callback&lt;{}&gt; | 是    | 注册serviceDie的回调方法，当设备管理服务异常终止时触发该回调通知应用。                       |
 
 **错误码：**
 

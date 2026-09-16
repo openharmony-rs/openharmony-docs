@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz-->
-<!--Designer: @hehongyang3; @lanshouren-->
+<!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -216,7 +216,7 @@ NODE_VISIBLE_AREA_CHANGE_RATIO = 93
 定义控制组件触发可视区域面积变更事件的可视区域面积占组件本身面积的比例阈值。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 22
+**起始版本：** 12
 
 **参数：**
 
@@ -427,11 +427,15 @@ NODE_ON_CLICK_EVENT_DISTANCE_THRESHOLD = 115
 
 **起始版本：** 23
 
+> **说明：**
+>
+> 如果手指移动超出预设的距离限制，点击事件的识别会失败。
+
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 点击事件移动阈值。取值范围(0, +∞)。默认值为+∞，单位vp。 |
+| .value[0].f32 | 点击事件移动阈值。当设置的值小于等于0时，会被转化为默认值。取值范围(0, +∞)。默认值为+∞，单位vp。 |
 
 **返回：**
 

@@ -4,7 +4,7 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
 
 ## 功能介绍
 
@@ -17,7 +17,7 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 1. 玩家启动游戏。
 
-2. 游戏调用OH_GameDevice_RegisterDeviceMonitor接口注册设备状态变化事件监听。
+2. 游戏调用[OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)接口注册设备状态变化事件监听。
 
 3. 玩家插拔设备。
 
@@ -25,11 +25,11 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 5. Game Controller Kit向游戏反馈设备状态变化。
 
-6. 游戏调用OH_GameDevice_GetAllDeviceInfos接口向Game Controller Kit查询所有在线的游戏设备信息。
+6. 游戏调用[OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos)接口向Game Controller Kit查询所有在线的游戏设备信息。
 
 7. Game Controller Kit从终端系统获取所有在线的游戏设备信息。
 
-8. 如果不再需要订阅，游戏可以调用OH_GameDevice_UnregisterDeviceMonitor接口取消设备状态变化事件监听。
+8. 如果不再需要订阅，游戏可以调用[OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor)接口取消设备状态变化事件监听。
 
 
 ## 接口说明
@@ -38,9 +38,9 @@ Game Controller Kit提供设备上下线事件监听和查询在线设备信息�
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceMonitorCallback deviceMonitorCallback) | 注册设备状态变化事件的监听回调。 | 
-| GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void) | 取消注册设备状态变化事件的监听回调。 | 
-| GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | 获取所有在线设备的信息。 | 
+| GameController_ErrorCode [OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor) (GameDevice_DeviceMonitorCallback deviceMonitorCallback) | 注册设备状态变化事件的监听回调。 | 
+| GameController_ErrorCode [OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor) (void) | 取消注册设备状态变化事件的监听回调。 | 
+| GameController_ErrorCode [OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos) (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | 获取所有在线设备的信息。 | 
 
 
 ## 开发步骤
@@ -62,7 +62,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 ### 注册设备上下线监听
 
-调用OH_GameDevice_RegisterDeviceMonitor接口注册设备状态变化监听，获取设备上下线的回调通知。
+调用[OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)接口注册设备状态变化监听，获取设备上下线的回调通知。
 
 ```c
 napi_value DeviceApi::RegisterDeviceMonitor(napi_env env, napi_callback_info info) {
@@ -93,7 +93,7 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 
 ### 取消注册设备上下线监听
 
-如果不再需要订阅，可以调用OH_GameDevice_UnregisterDeviceMonitor接口取消设备状态变化事件的监听。
+如果不再需要订阅，可以调用[OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor)接口取消设备状态变化事件的监听。
 
 ```c
 napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info info) {
@@ -113,7 +113,7 @@ napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info i
 
 ### 查询所有在线设备
 
-调用OH_GameDevice_GetAllDeviceInfos接口，查询所有在线游戏设备的信息。
+调用[OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos)接口，查询所有在线游戏设备的信息。
 
 ```c
 GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {

@@ -31,7 +31,7 @@ sendData(data: Record\<string, Object>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[设备内组件启动规则](../../application-models/component-startup-rules-inner-device.md)。
 >
 
 **原子化服务API（仅ArkTS-Dyn）**：从 API version 14开始，该接口支持在原子化服务中使用。
@@ -116,7 +116,7 @@ struct UIServiceExtensionAbility {
       // 连接UIServiceExtension
       context.connectUIServiceExtensionAbility(startWant, this.dataCallBack)
         .then((proxy: common.UIServiceProxy) => {
-          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           let formData: Record<string, string> = {
             'PATH': '/tmp/aaa.jpg'

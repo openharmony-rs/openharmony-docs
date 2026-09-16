@@ -1,4 +1,4 @@
-# 设备内组件启动规则（Stage模型）（仅对系统应用开放）
+# 设备内组件启动规则（仅对系统应用开放）
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-为了保障系统安全与用户体验，系统限制了应用在后台状态时任意弹窗、相互唤醒以及前台应用任意跳转的行为，相关行为表现请参考[设备内组件启动规则（Stage模型）](./component-startup-rules-inner-device.md)。本文主要介绍系统应用在设备内启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)和[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)的约束规则。
+为了保障系统安全与用户体验，系统限制了应用在后台状态时任意弹窗、相互唤醒以及前台应用任意跳转的行为，相关行为表现请参考[设备内组件启动规则](./component-startup-rules-inner-device.md)。本文主要介绍系统应用在设备内启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)和[ExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)的约束规则。
 
 > **说明：**
 > 
@@ -27,8 +27,8 @@
    > **说明：**
    >
    > - 对于2in1和Tablet设备：
-   >   - 从API version 18开始，如果应用已创建在前台显示的悬浮窗，可不受该条规则约束。
-   >   - 从API version 21开始，如果应用自身已经添加到状态栏，可不受该条规则约束。
+   > - 从API version 18开始，如果应用已创建在前台显示的悬浮窗，可不受该条规则约束。
+   > - 从API version 21开始，如果应用自身已经添加到状态栏，可不受该条规则约束。
 
 ### 跨应用启动UIAbility组件的规则
 
@@ -71,7 +71,7 @@
 
 - [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)组件启动规则：
 
-   通过[startServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextstartserviceextensionability)跨应用启动或使用[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextconnectserviceextensionability)跨应用连接ServiceExtensionAbility组件时，只允许拉起exported为true的目标组件。若申请INVISIBLE权限，可不受该条规则约束。
+   通过[startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextstartserviceextensionability)跨应用启动或使用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextconnectserviceextensionability)跨应用连接ServiceExtensionAbility组件时，只允许拉起exported为true的目标组件。若申请INVISIBLE权限，可不受该条规则约束。
 
    | 应用状态 | 组件可见性     | 权限要求                       |
    | -------- | -------------- | ----------------------------- |
@@ -86,7 +86,7 @@
 
 - [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)组件启动规则：
 
-   通过[createDataShareHelper](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#datasharecreatedatasharehelper)接口可以启动DataShareExtensionAbility组件，具体操作和限制请参考[通过DataShareExtensionAbility实现数据共享](../database/share-data-by-datashareextensionability-sys.md)。
+   通过[createDataShareHelper()](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#datasharecreatedatasharehelper)接口可以启动DataShareExtensionAbility组件，具体操作和限制请参考[通过DataShareExtensionAbility实现数据共享](../database/share-data-by-datashareextensionability-sys.md)。
 
 - 其他ExtensionAbility组件启动规则：
    

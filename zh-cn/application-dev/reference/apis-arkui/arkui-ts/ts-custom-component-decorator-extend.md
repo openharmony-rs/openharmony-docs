@@ -6,7 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-用于扩展组件样式。开发指南参考：[\@Extend装饰器：定义扩展组件样式（ArkTS-Dyn）](../../../ui/state-management/arkts-extend.md)。
+\@Extend装饰器用于扩展指定组件的样式，支持在装饰的函数中统一定义多个样式属性，并可通过参数传递实现样式的灵活复用，适用于需要将相同样式应用到多个组件、减少样式代码重复的场景。
+
+在ArkTS-Dyn中使用时，开发指南参考：[\@Extend装饰器：定义扩展组件样式（ArkTS-Dyn）](../../../ui/state-management/arkts-extend.md)。
 
 > **说明：**
 >
@@ -28,7 +30,13 @@ const Extend: MethodDecorator & ((value: any) => MethodDecorator)
 
 | 名称                  | 类型    | 必填  | 说明                                                         |
 | --------------------- | ------ | ---- | ------------------------------------------------------------ |
-| value                 | any | 是 | 任意UI组件，如Text、Column。 |
+| value                 | any | 是 | 指定要扩展样式的目标内置UI组件类型（如Text、Column），传入组件的类型而非组件实例，不支持自定义组件。@Extend装饰器内定义的样式属性将绑定到该组件类型，使其可在该组件上以链式方式调用。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| MethodDecorator | 方法装饰器，开发者无需关注该返回值。 |
 
 **示例：**
 

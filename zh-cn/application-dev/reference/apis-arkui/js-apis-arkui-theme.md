@@ -83,10 +83,10 @@ import { Theme, ThemeControl, CustomColors, Colors, CustomTheme, CustomDarkColor
 | backgroundTertiary            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 三级背景颜色（实色，不透明）。</br>**影响组件：** 暂无组件使用。  |
 | backgroundFourth              | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 四级背景颜色（实色，不透明）。</br>**影响组件：** 暂无组件使用。  |
 | backgroundEmphasize           | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 高亮背景颜色（实色，不透明）。</br>**影响组件：** [Progress](./arkui-ts/ts-basic-components-progress.md)、[Button](./arkui-ts/ts-basic-components-button.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)  |
-| compForegroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 前景色。</br>**影响组件：** [QRCode](./arkui-ts/ts-basic-components-qrcode.md)            |
+| compForegroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 前背景。</br>**影响组件：** [QRCode](./arkui-ts/ts-basic-components-qrcode.md)            |
 | compBackgroundPrimary         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 白色背景。</br>**影响组件：** 暂无组件使用。            |
 | compBackgroundPrimaryTran     | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 白色透明背景。</br>**影响组件：** 暂无组件使用。         |
-| compBackgroundPrimaryContrary | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 反转背景。</br>**影响组件：** [Toggle](./arkui-ts/ts-basic-components-toggle.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)           |
+| compBackgroundPrimaryContrary | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 常亮背景。</br>**影响组件：** [Toggle](./arkui-ts/ts-basic-components-toggle.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)           |
 | compBackgroundGray            | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 灰色背景。</br>**影响组件：** 暂无组件使用。            |
 | compBackgroundSecondary       | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 二级背景。</br>**影响组件：** [Swiper](./arkui-ts/ts-container-swiper.md)、[Slider](./arkui-ts/ts-basic-components-slider.md)            |
 | compBackgroundTertiary        | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 否   | 否   | 三级背景。</br>**影响组件：** [EditableTitleBar](./arkui-ts/ohos-arkui-advanced-EditableTitleBar.md)、[Progress](./arkui-ts/ts-basic-components-progress.md)、[AlphabetIndexer](./arkui-ts/ts-container-alphabet-indexer.md)、</br>[Button](./arkui-ts/ts-basic-components-button.md)、[Select](./arkui-ts/ts-basic-components-select.md)、[Toggle](./arkui-ts/ts-basic-components-toggle.md)、</br>[Chip](./arkui-ts/ohos-arkui-advanced-Chip.md)、[TextInput](./arkui-ts/ts-basic-components-textinput.md)、[Search](./arkui-ts/ts-basic-components-search.md)。从API版本26.0.0开始，新增[UIPickerComponent](./arkui-ts/ts-container-ui-picker-component.md)、[TextPicker](./arkui-ts/ts-basic-components-textpicker.md)。            |
@@ -174,7 +174,7 @@ ArkTS-Sta: setDefaultTheme(theme: CustomTheme | undefined): void
 
 将用户自定义Theme设置应用级默认主题，以实现应用风格跟随Theme切换。
 
-ArkTS-Dyn：需确保在页面build前执行。若在UIAbility中调用该接口设置应用级默认主题，建议在onWindowStageCreate阶段里windowStage.loadContent的完成时回调中使用，详细代码可参考[设置应用内组件自定义主题色](../../ui/theme_skinning.md#设置应用内组件自定义主题色)。
+ArkTS-Dyn：需确保在页面build前执行。若在UIAbility中调用该接口设置应用级默认主题，建议在onWindowStageCreate阶段里windowStage.loadContent的完成时回调中使用，详细代码可参考[设置应用内组件自定义主题色](../../ui/theme-skinning.md#设置应用内组件自定义主题色)。
 
 ArkTS-Sta：需确保在页面build前执行。因运行于静态类型上下文中的ArkTS不存在全局作用域，因此需要在入口组件的static闭包或aboutToAppear生命周期函数中调用该接口。
 

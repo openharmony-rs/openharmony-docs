@@ -18,6 +18,8 @@ AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAb
 > 本模块接口仅可在Stage模型下使用。
 >
 > 本模块接口不支持在[har](../../quick-start/har-package.md)包中使用。
+>
+> 本模块接口不支持在分身应用中实现和使用。
 
 ## 导入模块
 
@@ -160,7 +162,7 @@ export default class AgentExt extends AgentExtensionAbility {
 
 onData(proxy: AgentHostProxy, data: string): void
 
-当AgentExtensionAbility接收到客户端发送的数据时，系统会触发该回调。服务端可以在此回调中通过[AgentHostProxy.senddata](js-apis-inner-application-agentHostProxy.md#senddata)向客户端发送数据。
+当AgentExtensionAbility接收到客户端发送的数据时，系统会触发该回调。服务端可以在此回调中通过[AgentHostProxy.sendData](js-apis-inner-application-agentHostProxy.md#senddata)向客户端发送数据。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 

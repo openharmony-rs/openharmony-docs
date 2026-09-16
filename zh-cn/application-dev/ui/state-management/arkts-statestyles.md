@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-[\@Styles](arkts-style.md)仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是我们本章要介绍的内容stateStyles（又称为：多态样式）。
+[\@Styles](arkts-style.md)仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是本章要介绍的内容stateStyles（又称为：多态样式）。
 
 > **说明**：
 >
@@ -15,7 +15,7 @@
 
 ## 概述
 
-stateStyles是属性方法，可以根据UI内部状态来设置样式，类似于css伪类，但语法不同。ArkUI提供以下六种状态：
+stateStyles是属性方法，可以根据UI内部状态来设置样式，类似于css伪类，但语法不同。ArkUI提供以下七种状态：
 
 - focused：获焦态。
 
@@ -28,6 +28,8 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 - clicked：点击态。
 
 - selected<sup>10+</sup>：选中态。
+
+- hovered：悬浮态。**起始版本：** 26.0.0
 
 > **说明**：
 >

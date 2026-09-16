@@ -178,7 +178,7 @@ int32_t MyOnError_Legacy(
 
 ### 设置播放回调函数
 
-<!-- @[SetRendererCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+<!-- @[SetRendererCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->  
 
 ``` C++
 int32_t MyOnWriteData(
@@ -187,7 +187,7 @@ int32_t MyOnWriteData(
     void* buffer,
     int32_t length)
 {
-    // 从公共缓冲区BUFFER中读取数据，并按length长度写入buffer。
+    // 从公共缓冲区buffer中读取数据，并按length长度写入buffer。
     return 0;
 }
 int32_t MyOnStreamEvent_Renderer(
