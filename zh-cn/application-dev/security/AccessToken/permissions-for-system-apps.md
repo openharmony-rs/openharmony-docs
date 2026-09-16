@@ -9332,7 +9332,7 @@
  
 **支持设备**：Phone | PC/2in1 | Tablet
  
-**起始版本**：26.2.0
+**起始版本**：26.1.0
 
 ## ohos.permission.vehicle.DEVICE_INFO_WRITE
 
