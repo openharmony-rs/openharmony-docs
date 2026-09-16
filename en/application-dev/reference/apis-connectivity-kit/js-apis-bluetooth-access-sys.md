@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=90e08fc8bb940789fc5019b4b1d65f1578078e07 translatedAt=2026-09-15T02:16:39.813Z pushedAt=2026-09-15T03:47:09.811Z -->
+<!-- md-trans-meta sourceCommit=90e08fc8bb940789fc5019b4b1d65f1578078e07 translatedAt=2026-09-15T02:16:39.813Z pushedAt=2026-09-16T11:14:38.449Z -->
 
 The **access** module provides APIs for enabling and disabling Bluetooth, as well as obtaining the Bluetooth status. It can be used to control the Bluetooth status, query Bluetooth connection information, and perform system-level Bluetooth configuration management.
 
@@ -160,7 +160,7 @@ try {
 
 restrictBluetooth(): Promise&lt;void&gt;
 
-Restricts the BR/EDR capability of this Bluetooth devic, after which, the classic Bluetooth function of the device is restricted. This method applies to scenarios where only BLE is required. This API uses a promise to return the result.
+Restricts the BR/EDR capability of this Bluetooth device, after which, the classic Bluetooth function of the device is restricted. This method applies to scenarios where only BLE is required. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
