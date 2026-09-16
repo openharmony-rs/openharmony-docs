@@ -45996,5 +45996,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-message-digest-md5-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/md5/segmentation.cpp",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"message_digest_md5_segmentation",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
