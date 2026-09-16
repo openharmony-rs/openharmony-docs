@@ -8,6 +8,8 @@
 
 本模块提供管理和组织脚本信息的能力，支持应用的ArkTS脚本执行结果上报。
 
+**起始版本：** 26.0.0
+
 > **说明：**
 >
 > - 应用的ArkTS脚本需要绑定一个Ability，在[module.json5](../../quick-start/module-configuration-file.md)的[skillProfiles标签](../../quick-start/module-configuration-file.md#skillprofiles标签)中配置对应的Ability。
@@ -18,8 +20,6 @@
 ```ts
 import { scriptManager } from '@kit.AbilityKit';
 ```
-
-**起始版本：** 26.0.0
 
 ## ExecuteResult
 
