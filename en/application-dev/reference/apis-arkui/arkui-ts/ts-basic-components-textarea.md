@@ -458,7 +458,7 @@ Sets the maximum number of lines that can be displayed in the text. You can set 
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Maximum number of lines that can be displayed with the inline style in the editing state.<br>If **textOverflow** is set, the excess tra text is truncated. If **textOverflow** is not set, the text can be scrolled in inline mode when the component is focused, and this setting does not take effect when the component is not focused. In non-inline mode, the text is truncated by line.<br>Value range: (0, UINT32_MAX]. If the value is 0 or a negative number, the default value is used.|
+| value  | number | Yes  | Maximum number of lines that can be displayed with the inline style in the editing state.<br>If **textOverflow** is set, the excess text is truncated. If **textOverflow** is not set, the text can be scrolled in inline mode when the component is focused, and this setting does not take effect when the component is not focused. In non-inline mode, the text is truncated by line.<br>Value range: (0, UINT32_MAX]. If the value is 0 or a negative number, the default value is used.|
 
 ### maxLines<sup>20+</sup>
 
@@ -3338,7 +3338,7 @@ struct PunctuationDemo {
 ```
 ![textAreaPunctuation](figures/textAreaPunctuation.gif)
 
-### Example 28: Setting Adaptative Spacing
+### Example 28: Setting Adaptive Spacing
 
 This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 

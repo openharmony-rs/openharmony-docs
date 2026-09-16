@@ -2824,7 +2824,7 @@ struct Index {
 ```
 ![searchCompressLeadingPunctuation](figures/searchCompressLeadingPunctuation.gif)
 
-### Example 26: Setting Adaptative Spacing
+### Example 26: Setting Adaptive Spacing
 
 This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 
