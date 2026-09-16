@@ -35,6 +35,7 @@
 | [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) | CloudDisk_DisplayNameInfo | 定义同步根路径的显示名称信息。 |
 | [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) | CloudDisk_SyncFolder | 同步根路径属性信息。 |
 | [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) | OH_CloudDisk_PlaceholderInfo | 占位符相关操作使用的文件元数据信息。 |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-clouddisk-syncfolderex.md) | OH_CloudDisk_SyncFolderEx | 带占位符的同步根路径属性信息。 |
 
 ### 枚举
 
@@ -64,6 +65,8 @@
 | [CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, bool *isPlaceholder)](#oh_clouddisk_isplaceholderfile) | 判断已注册的同步根路径下的文件是否为占位符文件。 |
 | [CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo)](#oh_clouddisk_convertplaceholdertofile) | 将已注册的同步根路径下的占位符文件转换为0字节的普通文件。 |
 | [CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo)](#oh_clouddisk_updateplaceholder) | 更新文件元数据，支持占位符文件和普通文件。 |
+| [CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFolderEx *syncFolder)](#oh_clouddisk_registersyncfolderex) | 应用注册带占位符的同步根。 |
+| [CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **syncFolders, size_t *count)](#oh_clouddisk_getsyncfoldersex) | 应用获取所有带占位符的同步根。 |
 
 ## 枚举类型说明
 
@@ -306,6 +309,30 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *
 | -- | -- |
 | [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
 
+### OH_CloudDisk_RegisterSyncFolderEx()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFolderEx *syncFolder)
+```
+
+**描述**
+
+应用注册带占位符的同步根，适用于需要将本地目录设置为云盘同步目录,并标识该目录是否会支持占位符
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_CloudDisk_SyncFolderEx](capi-clouddisk-clouddisk-syncfolderex.md) *syncFolder | 待注册的带占位符的同步根路径，参考：[OH_CloudDisk_SyncFolderEx](capi-clouddisk-clouddisk-syncfolderex.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
+
 ### OH_CloudDisk_UnregisterSyncFolder()
 
 ```c
@@ -396,6 +423,31 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 | -- | -- |
 | [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md) **syncFolders | 输出参数。返回同步根路径数组[CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)。 |
 | size_t *count | 输出参数。当前应用注册的同步根数量。当没有同步根时为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，返回[CLOUD_DISK_OK](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)；否则返回云盘管理模块的错误码[CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode)。 |
+
+### OH_CloudDisk_GetSyncFoldersEx()
+
+```c
+CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolder **syncFolders, size_t *count)
+```
+
+**描述**
+
+应用获取所有带占位符的同步根，适用于查询当前已注册的带占位符的同步目录、展示同步目录列表或恢复同步状态的场景。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-clouddisk-syncfolderex.md) **syncFolders | 输出参数。返回带占位符同步根路径数组[OH_CloudDisk_SyncFolderEx](capi-clouddisk-clouddisk-syncfolderex.md)。 |
+| size_t *count | 输出参数。当前应用注册的带占位符同步根数量。当没有同步根时为0。 |
 
 **返回：**
 
