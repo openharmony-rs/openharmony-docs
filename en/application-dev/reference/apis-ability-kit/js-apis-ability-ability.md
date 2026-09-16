@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=aa0fb9ac9cb84f1c8f057e9ad47e9d44face8fc4 translatedAt=2026-09-03T09:26:01.043Z pushedAt=2026-09-05T10:47:30.167Z -->
 
 The module provides all level-2 module APIs for developers to export.
 
@@ -42,9 +43,12 @@ Defines the level-2 module PacMap.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.FAModel
 
+**Model restriction**:
+API version 11+: This API can be used under the Stage model and FA model.
+
 | Type| Description|
 | --- | --- |
-| [_PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap) | Level-2 module DataAbilityHelper.|
+| [_PacMap](js-apis-inner-ability-dataAbilityHelper.md#pacmap) | PacMap type, used to store key-value pair data. |
 
 
 ## DataAbilityOperation

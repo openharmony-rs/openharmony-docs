@@ -448,7 +448,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该[系统�
 
 分布式账号信息变更、系统账号头像信息变更、系统账号名称变更将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](../js-apis-osAccount.md)、[分布式账号接口文档](../js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto，这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](../js-apis-osAccount.md)、[分布式账号接口文档](../js-apis-distributed-account.md)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1197,6 +1197,67 @@ Wi-Fi状态变化。
 
 **取值：** "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
 
+## Core File Kit
+
+### COMMON_EVENT_VOLUME_REMOVED
+
+表示外部存储设备正常移除的公共事件。
+
+当外部存储设备处于卸载状态，移除该设备时，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_REMOVED"
+
+### COMMON_EVENT_VOLUME_UNMOUNTED
+
+表示外部存储设备状态变更为卸载的公共事件。
+
+当外部存储设备处于挂载状态时，用户选择通过调用unmount接口或者直接移除设备的方法弹出该设备，并且已将外部存储设备卸载成功后，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_UNMOUNTED"
+
+### COMMON_EVENT_VOLUME_MOUNTED
+
+表示外部存储设备状态变更为挂载的公共事件。
+
+当用户插入外部存储设备自动挂载成功或者将处于卸载状态的外部存储设备调用mount接口进行挂载成功后，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_MOUNTED"
+
+### COMMON_EVENT_VOLUME_BAD_REMOVAL
+
+表示外部存储设备异常移除的公共事件。
+
+当外部存储设备处于挂载状态时，用户直接移除该外部存储设备，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_BAD_REMOVAL"
+
+### COMMON_EVENT_VOLUME_EJECT
+
+表示外部存储设备即将被弹出的公共事件。
+
+当外部存储设备处于挂载状态时，用户选择通过调用unmount接口或者直接移除设备的方法弹出该设备时，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_EJECT"
 
 ## MDM Kit
 

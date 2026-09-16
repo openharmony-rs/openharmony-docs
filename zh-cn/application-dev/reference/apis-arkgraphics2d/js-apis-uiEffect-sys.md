@@ -174,7 +174,7 @@ createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlenderParam, 
 
 创建[ColorfulBrightnessBlender](#colorfulbrightnessblender)实例，用于给组件添加基于保持色相的提亮压暗效果。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -213,7 +213,8 @@ let blender : uiEffect.ColorfulBrightnessBlender =
     darkenWeight: 0.6,
     vibrancyStrength: 0.5,
     lumaDiff: 0.4,
-    hdrEnabled: true})
+    hdrEnabled: true,
+    tintedColorPercent: 1.0})
 
 @Entry
 @Component
@@ -1658,7 +1659,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
 | [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
-| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.1.0 |
+| [ColorfulBrightnessBlender](#colorfulbrightnessblender) | 具有提亮压暗效果的混合器（保持色相）。<br> **起始版本：** 26.2.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1706,9 +1707,9 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender | Col
 
 ## ColorfulBrightnessBlender
 
-基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度（可读性）。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
+基于保持色相的提亮压暗混合器，用于将该提亮压暗效果添加到指定的组件上。该效果在对前景提亮或压暗时通过逐通道重建保持色相、并可增强饱和度，避免普通提亮压暗的去色问题；同时依据亮度差阈值保证前景与背景的对比度。在调用ColorfulBrightnessBlender前，需要先通过[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)创建一个ColorfulBrightnessBlender实例。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2025,7 +2026,7 @@ struct Index {
 ```
 
 ### createRadialGradientMask<sup>20+</sup>
-static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
+static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, gradients: Array<[number, number]>): Mask
 
 通过输入椭圆中心点的位置、长短轴和形状参数创建椭圆遮罩效果[Mask](#mask20)实例。
 
@@ -2039,7 +2040,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 | center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
 | radiusX | number  | 是 | 设置椭圆的X方向的半径，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
 | radiusY | number  | 是 | 设置椭圆的Y方向的半径，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值需严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+| gradients | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值需严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 
@@ -2517,9 +2518,9 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 ## ColorfulBrightnessBlenderOptions
 
-基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，进一步控制提亮或压暗方向、色彩增强强度、与背景的对比度（可读性）以及HDR开关；当需要对前景的明暗方向、色彩鲜艳度、可读性对比或HDR行为做精细调整时使用，不传时各项采用默认值。
+基于保持色相的提亮压暗混合器的可选增强配置项，作为[createColorfulBrightnessBlender](#uieffectcreatecolorfulbrightnessblender)的options参数传入。它在常规参数[BrightnessBlenderParam](#brightnessblenderparam)之外，可进一步针对提亮或压暗方向、色彩增强强度、输入色彩影响度、与背景的对比度以及HDR开关进行精细调整，不传时各项采用默认值。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2529,10 +2530,11 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景（前景倾向亮于背景以保证可读性）；取1时压暗前景（前景倾向暗于背景）；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| darkenWeight        | number                     | 否   | 是   | 前景压暗权重，控制提亮压暗的方向与强度。取0时提亮前景，前景倾向亮于背景以保证可读性；取1时压暗前景，前景倾向暗于背景；0到1之间为提亮与压暗的过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
 | vibrancyStrength    | number                     | 否   | 是   | 色彩增强强度，控制对前景饱和度的增强程度。取0时不额外增强饱和度，前景保持原始饱和度；值越大饱和度增强越明显，取1时增强到最大、色彩最鲜艳。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
-| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差（可读性约束最弱）；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
-| hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（大于1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为true。 |
+| lumaDiff            | number                     | 否   | 是   | 保证可读性的亮度差阈值，用于约束前景与背景之间的亮度差以保持足够对比度。取0时不强制额外亮度差，可读性约束最弱；值越大强制的亮度差越大、对比度越强；取1时强制最大亮度差。<br>默认值为0。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
+| hdrEnabled          | boolean                    | 否   | 是   | 是否主动开启HDR。取true时主动开启HDR，结果亮度可超出SDR范围（>1.0），在HDR设备上呈现更高亮度，适合HDR内容；取false时不主动开启HDR，结果限制在SDR范围（≤1.0），但当前景或背景本身为HDR时仍可能被动触发HDR。<br>默认值为false。 |
+| tintedColorPercent  | number                     | 否   | 是   | 输入色彩影响度，控制输入色参与提亮压暗计算的程度。取1时输入色完全参与计算，输出结果保留输入色的色彩倾向；取0时输入色不参与计算，输出结果不受输入色的影响，直接基于背景颜色做提亮压暗；0到1之间为两者的插值过渡。<br>默认值为1。取值范围为[0, 1]，超出边界会在实现时自动截断。 |
 
 ## HeatDistortionEffectParam
 

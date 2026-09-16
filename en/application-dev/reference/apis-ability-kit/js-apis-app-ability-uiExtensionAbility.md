@@ -4,13 +4,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c; @xuzhihao666-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=8bf852b2046babdde40e5fda6e0beeb685c8696d translatedAt=2026-09-03T10:34:14.387Z pushedAt=2026-09-05T10:47:30.435Z -->
 
 
 UIExtensionAbility is an ExtensionAbility component with a User Interface (UI). It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md) and provides basic lifecycle capabilities such as component creation, destruction, and foreground/background switching. Unlike the UIAbility, the UIExtensionAbility does not appear as a separate mission in the mission view. The foreground/background state and visibility of the UIExtensionAbility follow those of its host window.
 
-You cannot directly inherit from the UIExtensionAbility. However, you can choose other components that inherit from UIExtensionAbility based on specific service scenarios. For example, when handling data shared from other applications, you can use the [ShareExtensionAbility](./js-apis-app-ability-shareExtensionAbility.md); when providing widget editing functionality, you can use the [FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md).
+Developers cannot directly inherit the UIExtensionAbility component, but can choose to use other components that inherit from UIExtensionAbility based on the actual service scenario. For example, when processing data shared by other applications, developers can use [@ohos.app.ability.ShareExtensionAbility (ExtensionAbility component that supports access to the share details page)](./js-apis-app-ability-shareExtensionAbility.md); when providing the card editing capability, developers can use [@ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md).
 
 For details about the inheritance relationship of each ability, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
 

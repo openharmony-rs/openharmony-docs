@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a25f23f63f302873dc43f20e41915285e52f064b translatedAt=2026-09-03T11:56:02.159Z pushedAt=2026-09-05T10:47:30.782Z -->
 
 EmbeddableUIAbilityContext provides the context environment for the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md). It inherits from [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).
 
@@ -24,7 +25,7 @@ When an EmbeddableUIAbility component is instantiated, the system automatically 
 import { common } from '@kit.AbilityKit';
 ```
 
-## EmbeddableUIAbilityContext 
+## EmbeddableUIAbilityContext
 Through the EmbeddableUIAbilityContext, you can obtain the EmbeddableUIAbility-related configuration and APIs for operating EmbeddableUIAbility and ServiceExtensionAbility components. For example, you can use the APIs to start an EmbeddableUIAbility, terminate an EmbeddableUIAbility to which the EmbeddableUIAbilityContext belongs, and start, terminate, connect to, or disconnect from a ServiceExtensionAbility.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core

@@ -39,6 +39,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [IMAGE_DYNAMIC_RANGE](#image_dynamic_range) | IMAGE_DYNAMIC_RANGE | 解码指定期望动态范围。 |
+| <!--DelRow--> [OH_ImageSource_SVGResourceLimitLevel](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | SVG资源限制级别的枚举。级别越高，解析和渲染SVG图片时允许使用的资源越少。无论指定哪个级别，系统资源限制都会生效。 |
 | [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) | IMAGE_ALLOCATOR_TYPE | 用于分配PixelMap内存的分配器类型。 |
 | [Image_CropAndScaleStrategy](#image_cropandscalestrategy) | Image_CropAndScaleStrategy | 在同时指定desiredSize和desiredRegion时执行裁剪和缩放的策略。 |
 
@@ -77,6 +78,8 @@
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | 通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | 由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的生命周期内，数据缓存需要保持可用。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | 通过图像资源文件的RawFileDescriptor创建OH_ImageSourceNative指针。 |
+| <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)](#oh_imagesourcenative_setsvgresourcelimitlevel) | 设置图像源的SVG资源限制级别。此函数仅对SVG格式图片生效。必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，设置的资源限制会在DOM解析和渲染阶段生效。 |
+| <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)](#oh_imagesourcenative_getsvgresourcelimitlevel) | 获取图像源的SVG资源限制级别。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | 通过图片解码参数创建OH_PixelmapNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | 根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)](#oh_imagesourcenative_createpixelmaplist) | 通过图片解码参数创建OH_PixelmapNative数组。<br> 注意，此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。 |
@@ -140,6 +143,29 @@ enum IMAGE_DYNAMIC_RANGE
 | IMAGE_DYNAMIC_RANGE_SDR = 1 | 标准动态范围。 |
 | IMAGE_DYNAMIC_RANGE_HDR = 2 | 高动态范围。 |
 
+<!--Del-->
+### OH_ImageSource_SVGResourceLimitLevel
+
+```c
+enum OH_ImageSource_SVGResourceLimitLevel
+```
+
+**描述**
+
+SVG资源限制级别的枚举。级别越高，解析和渲染SVG图片时允许使用的资源越少。无论指定哪个级别，系统资源限制都会生效。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | 使用默认的SVG资源限制。该级别不会禁用SVG资源保护。 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | 使用低级别限制，允许更多SVG资源预算用于复杂的SVG图片。 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | 使用中级别限制，允许适中的SVG资源预算，在SVG图片兼容性和资源消耗之间取得平衡，适用于大多数SVG图片。 |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | 使用高级别限制，允许较少的SVG资源预算，适用于简单的SVG图片，例如图标和基础UI资源。 |
+
+<!--DelEnd-->
 ### IMAGE_ALLOCATOR_TYPE
 
 ```c
@@ -990,6 +1016,62 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFil
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_BAD_PARAMETER：参数错误。 |
 
+<!--Del-->
+### OH_ImageSourceNative_SetSvgResourceLimitLevel()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)
+```
+
+**描述**
+
+设置图像源的SVG资源限制级别。此函数仅对SVG格式图片生效。必须在[OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)之前调用，设置的资源限制会在DOM解析和渲染阶段生效。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) level | SVG资源限制级别。详见OH_ImageSource_SVGResourceLimitLevel。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION：非系统应用调用此系统接口。<br>IMAGE_SOURCE_INVALID_PARAMETER：source为空指针。 |
+
+### OH_ImageSourceNative_GetSvgResourceLimitLevel()
+
+```c
+Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)
+```
+
+**描述**
+
+获取图像源的SVG资源限制级别。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 指向图像源的指针。 |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) *level | 用于接收SVG资源限制级别的指针。详见OH_ImageSource_SVGResourceLimitLevel。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION：非系统应用调用此系统接口。<br>IMAGE_SOURCE_INVALID_PARAMETER：source或level为空指针。 |
+
+<!--DelEnd-->
 ### OH_ImageSourceNative_CreatePixelmap()
 
 ```c

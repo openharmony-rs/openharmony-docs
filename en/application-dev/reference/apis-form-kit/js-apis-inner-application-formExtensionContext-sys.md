@@ -1,12 +1,11 @@
 # FormExtensionContext (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6b0733adc9a538f18ea8143587feeecb737929d9 translatedAt=2026-07-31T08:25:57.089Z pushedAt=2026-08-01T00:12:11.473Z -->
+<!-- md-trans-meta sourceCommit=1aad096882786044bed77c51eb3f6e2ec78d5ef2 translatedAt=2026-09-15T01:56:50.509Z pushedAt=2026-09-15T06:33:29.238Z -->
 
 The **FormExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides the context environment for the [FormExtensionAbility](js-apis-app-form-formExtensionAbility.md).
 
@@ -245,7 +244,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
-Disconnects this ability from a **ServiceExtensionAbility** and after the successful disconnection, sets the **remote** object returned upon the connection to void. This API uses an asynchronous callback to return the result.
+Disconnects this ability from a ServiceExtensionAbility, and sets the remote object returned upon the connection to null after a successful disconnection. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -309,7 +308,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to null. This API uses a promise to return the result. 
+Disconnects this ability from a ServiceExtensionAbility, and sets the remote object returned upon the connection to null after a successful disconnection. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 

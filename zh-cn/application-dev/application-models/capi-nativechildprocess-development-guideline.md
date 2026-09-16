@@ -52,7 +52,7 @@
 
 2. 在子进程中实现必要的导出方法。
 
-    在子进程中，实现必要的两个函数**NativeChildProcess_OnConnect**及**NativeChildProcess_MainProc**并导出（假设代码所在的文件名为ChildProcessSample.cpp）。其中NativeChildProcess_OnConnect方法返回的OHIPCRemoteStub对象负责与主进程进行IPC通信，具体实现方法请参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述。
+    在子进程中，实现必要的两个函数**NativeChildProcess_OnConnect**及**NativeChildProcess_MainProc**并导出（假设代码所在的文件名为ChildProcessSample.cpp）。其中NativeChildProcess_OnConnect方法返回的OHIPCRemoteStub对象负责与主进程进行IPC通信，具体实现方法请参考[IPC通信开发指导（C/C++）](../ipc/ipc-capi-development-guideline.md)，本文不再赘述。
 
     子进程启动后会先调用NativeChildProcess_OnConnect获取IPC Stub对象，之后再调用NativeChildProcess_MainProc移交主线程控制权，该函数返回后子进程随即退出。
     
@@ -162,11 +162,11 @@
     }
     ```
 
-    回调函数传递的第二个参数OHIPCRemoteProxy对象，会与子进程实现的**NativeChildProcess_OnConnect**方法返回的OHIPCRemoteStub对象间建立IPC通道，具体使用方法参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述；OHIPCRemoteProxy对象使用完毕后，需要调用[OH_IPCRemoteProxy_Destroy](../reference/apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)函数释放。
+    回调函数传递的第二个参数OHIPCRemoteProxy对象，会与子进程实现的**NativeChildProcess_OnConnect**方法返回的OHIPCRemoteStub对象间建立IPC通道，具体使用方法参考[IPC通信开发指导（C/C++）](../ipc/ipc-capi-development-guideline.md)，本文不再赘述；OHIPCRemoteProxy对象使用完毕后，需要调用[OH_IPCRemoteProxy_Destroy](../reference/apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)函数释放。
 
 5. 在主进程中启动Native子进程。
 
-    调用[OH_Ability_CreateNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)接口启动Native子进程，可通过[OH_Ability_CreateChildProcessConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createchildprocessconfigs)创建子进程配置信息对象，并按需设置进程名、隔离模式和uid隔离等。需注意返回值为NCP_NO_ERROR仅代表成功调用native子进程启动逻辑，实际的启动结果通过回调函数异步通知。需注意**仅允许在主进程中创建子进程**。
+    调用[OH_Ability_CreateNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createnativechildprocesswithconfigs)接口启动Native子进程，可通过[OH_Ability_CreateChildProcessConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createchildprocessconfigs)创建子进程配置信息对象，并按需设置进程名、隔离模式和uid隔离等。需注意返回值为NCP_NO_ERROR仅代表成功调用Native子进程启动逻辑，实际的启动结果通过回调函数异步通知。需注意**仅允许在主进程中创建子进程**。
 
     <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
     
@@ -305,7 +305,7 @@
 
 4. 在主进程中启动Native子进程。
 
-    调用[OH_Ability_StartNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)接口启动Native子进程，可通过[OH_Ability_CreateChildProcessConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createchildprocessconfigs)创建子进程配置信息对象，并按需设置进程名、隔离模式和uid隔离等。返回值为NCP_NO_ERROR代表成功启动native子进程。
+    调用[OH_Ability_StartNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs)接口启动Native子进程，可通过[OH_Ability_CreateChildProcessConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_createchildprocessconfigs)创建子进程配置信息对象，并按需设置进程名、隔离模式和uid隔离等。返回值为NCP_NO_ERROR代表成功启动Native子进程。
 
     <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
     

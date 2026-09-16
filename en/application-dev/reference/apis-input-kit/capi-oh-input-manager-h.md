@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:23:13.274Z pushedAt=2026-06-12T03:32:47.641Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:22:55.976Z pushedAt=2026-09-11T09:04:41.104Z -->
 
 ## Overview
 
@@ -31,17 +31,17 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) | Input_InterceptorEventCallback | Defines the structure of interceptor callback events, including mouse events, touch events, and axis events.|
 | [Input_DeviceListener](capi-input-input-devicelistener.md) | Input_DeviceListener | Defines a listener for device hot swap events.|
 | [OH_PixelmapNative](capi-input-oh-pixelmapnative.md) | OH_PixelmapNative | Pixel map.|
-| [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | Defines key information, which identifies a key pressing behavior. For example, the Ctrl key information contains the key value and key type.|
+| [Input_KeyState](capi-input-input-keystate.md) | Input_KeyState | Defines key information to identify key behavior. For example, the "Ctrl" key information includes the key value and key state. |
 | [Input_KeyEvent](capi-input-input-keyevent.md) | Input_KeyEvent | Key event object.|
 | [Input_MouseEvent](capi-input-input-mouseevent.md) | Input_MouseEvent | Mouse event object.|
-| [Input_TouchEvent](capi-input-input-touchevent.md) | Input_TouchEvent | **TouchEvent** object.|
+| [Input_TouchEvent](capi-input-input-touchevent.md) | Input_TouchEvent | Touch event object.|
 | [Input_AxisEvent](capi-input-input-axisevent.md) | Input_AxisEvent | Axis event object.|
 | [Input_Hotkey](capi-input-input-hotkey.md) | Input_Hotkey | Defines the hotkey structure.|
 | [Input_DeviceInfo](capi-input-input-deviceinfo.md) | Input_DeviceInfo | Defines the input device information.|
 | [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) | Input_InterceptorOptions | Defines event interception options.|
-| [Input_CustomCursor](capi-input-input-customcursor.md) | Input_CustomCursor | Defines the pixel map resource of the custom mouse pointer object.|
-| [Input_CursorConfig](capi-input-input-cursorconfig.md) | Input_CursorConfig | Defines the custom mouse pointer configuration.|
-| [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | Defines the mouse pointer information, including the pointer display status, style, size level, and color.|
+| [Input_CustomCursor](capi-input-input-customcursor.md) | Input_CustomCursor | Defines the pixel map resource of the custom cursor object.|
+| [Input_CursorConfig](capi-input-input-cursorconfig.md) | Input_CursorConfig | Defines the custom cursor configuration.|
+| [Input_CursorInfo](capi-input-input-cursorinfo.md) | Input_CursorInfo | Defines the cursor information, including the cursor display state, style, size level, and color.|
 
 ### Enums
 
@@ -71,15 +71,15 @@ Provides functions such as input event injection, key state query, device hot sw
 | [typedef void (\*Input_DeviceAddedCallback)(int32_t deviceId)](#input_deviceaddedcallback) | Input_DeviceAddedCallback | Defines the callback used to receive input device hot-plug events.|
 | [typedef void (\*Input_DeviceRemovedCallback)(int32_t deviceId)](#input_deviceremovedcallback) | Input_DeviceRemovedCallback | Defines the callback used to receive input device hot-unplug events.|
 | [typedef void (\*Input_InjectAuthorizeCallback)(Input_InjectionStatus authorizedStatus)](#input_injectauthorizecallback) | Input_InjectAuthorizeCallback | Defines the callback used to receive the injection permission authorization status.|
-| [Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)](#oh_input_getkeystate) | - | Queries a key status enum object.|
-| [struct Input_KeyState* OH_Input_CreateKeyState()](#oh_input_createkeystate) | - | Creates a key status enum object. You can call [OH_Input_DestroyKeyState()](#oh_input_destroykeystate) to destroy a key status enum object.|
-| [void OH_Input_DestroyKeyState(struct Input_KeyState** keyState)](#oh_input_destroykeystate) | - | Destroys a key status enum object.|
-| [void OH_Input_SetKeyCode(struct Input_KeyState* keyState, int32_t keyCode)](#oh_input_setkeycode) | - | Sets the key value of a key status enum object.|
-| [int32_t OH_Input_GetKeyCode(const struct Input_KeyState* keyState)](#oh_input_getkeycode) | - | Obtains the key value of a key status enum object.|
-| [void OH_Input_SetKeyPressed(struct Input_KeyState* keyState, int32_t keyAction)](#oh_input_setkeypressed) | - | Sets whether the key specific to a key status enum object is pressed.|
-| [int32_t OH_Input_GetKeyPressed(const struct Input_KeyState* keyState)](#oh_input_getkeypressed) | - | Checks whether the key specific to a key status enum object is pressed.|
-| [void OH_Input_SetKeySwitch(struct Input_KeyState* keyState, int32_t keySwitch)](#oh_input_setkeyswitch) | - | Sets the key switch of the key status enum object.|
-| [int32_t OH_Input_GetKeySwitch(const struct Input_KeyState* keyState)](#oh_input_getkeyswitch) | - | Obtains the key switch of the key status enum object.|
+| [Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)](#oh_input_getkeystate) | - | Queries the key state struct object. |
+| [struct Input_KeyState* OH_Input_CreateKeyState()](#oh_input_createkeystate) | - | Creates a key state struct object. You can call [OH_Input_DestroyKeyState()](#oh_input_destroykeystate) to destroy the key state struct object. |
+| [void OH_Input_DestroyKeyState(struct Input_KeyState** keyState)](#oh_input_destroykeystate) | - | Destroys a key state struct object. |
+| [void OH_Input_SetKeyCode(struct Input_KeyState* keyState, int32_t keyCode)](#oh_input_setkeycode) | - | Sets the key value of a key state object.|
+| [int32_t OH_Input_GetKeyCode(const struct Input_KeyState* keyState)](#oh_input_getkeycode) | - | Obtains the key value of a key state object.|
+| [void OH_Input_SetKeyPressed(struct Input_KeyState* keyState, int32_t keyAction)](#oh_input_setkeypressed) | - | Sets whether the key specific to a key state object is pressed.|
+| [int32_t OH_Input_GetKeyPressed(const struct Input_KeyState* keyState)](#oh_input_getkeypressed) | - | Checks whether the key specific to a key state object is pressed.|
+| [void OH_Input_SetKeySwitch(struct Input_KeyState* keyState, int32_t keySwitch)](#oh_input_setkeyswitch) | - | Sets the key switch of the key state object.|
+| [int32_t OH_Input_GetKeySwitch(const struct Input_KeyState* keyState)](#oh_input_getkeyswitch) | - | Obtains the key switch of the key state object.|
 | [int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)](#oh_input_injectkeyevent) | - | Injects a key event.|
 | [struct Input_KeyEvent* OH_Input_CreateKeyEvent()](#oh_input_createkeyevent) | - | Creates a key event object. You can call [OH_Input_DestroyKeyEvent()](#oh_input_destroykeyevent) to destroy a key event object.|
 | [void OH_Input_DestroyKeyEvent(struct Input_KeyEvent** keyEvent)](#oh_input_destroykeyevent) | - | Destroys a key event object.|
@@ -162,7 +162,7 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitorforall) | - | Removes the listener for all types of axis events.|
 | [Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback)](#oh_input_removeaxiseventmonitor) | - | Removes the listener for the specified type of axis events, which are defined in [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype).|
 | [Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option)](#oh_input_addkeyeventinterceptor) | - | Adds a key event interceptor. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](#input_result). Key events are intercepted only when the application gains focus.|
-| [Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback,Input_InterceptorOptions *option)](#oh_input_addinputeventinterceptor) | - | Adds an interceptor for input events, including mouse, touch, and axis events. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](#input_result). Key events are intercepted only when the application window is hit.|
+| [Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback,Input_InterceptorOptions *option)](#oh_input_addinputeventinterceptor) | - | Adds an interceptor for input events, including mouse, touch, and axis events. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](#input_result). Input events are intercepted only when the application window is hit.|
 | [Input_Result OH_Input_RemoveKeyEventInterceptor(void)](#oh_input_removekeyeventinterceptor) | - | Removes the interceptor for key events.|
 | [Input_Result OH_Input_RemoveInputEventInterceptor(void)](#oh_input_removeinputeventinterceptor) | - | Removes the interceptor for input events, including mouse, touch, and axis events.|
 | [Input_Result OH_Input_GetIntervalSinceLastInput(int64_t *timeInterval)](#oh_input_getintervalsincelastinput) | - | Obtains the interval since the last system input event.|
@@ -181,7 +181,7 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_RemoveHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyCallback callback)](#oh_input_removehotkeymonitor) | - | Unsubscribes from hotkey events.|
 | [Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)](#oh_input_registerdevicelistener) | - | Registers a listener for device hot swap events.|
 | [Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)](#oh_input_unregisterdevicelistener) | - | Unregisters the listener for device hot swap events.|
-| [Input_Result OH_Input_UnregisterDeviceListeners()](#oh_input_unregisterdevicelisteners) | - | Unregisters the listener for all device hot swap events.|
+| [Input_Result OH_Input_UnregisterDeviceListeners()](#oh_input_unregisterdevicelisteners) | - | Unregisters all listeners for device hot swap events.|
 | [Input_Result OH_Input_GetDeviceIds(int32_t *deviceIds, int32_t inSize, int32_t *outSize)](#oh_input_getdeviceids) | - | Obtains the IDs of all input devices.|
 | [Input_Result OH_Input_GetDevice(int32_t deviceId, Input_DeviceInfo **deviceInfo)](#oh_input_getdevice) | - | Obtains information about the input device.|
 | [Input_DeviceInfo* OH_Input_CreateDeviceInfo(void)](#oh_input_createdeviceinfo) | - | Creates a **deviceInfo** object. You can call [OH_Input_DestroyDeviceInfo()](#oh_input_destroydeviceinfo) to destroy an input device information object.|
@@ -221,8 +221,8 @@ Provides functions such as input event injection, key state query, device hot sw
 | [Input_Result OH_Input_SetPointerVisible(bool visible)](#oh_input_setpointervisible) | - | Sets the visible status of the mouse pointer in the current window.|
 | [Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)](#oh_input_getpointerstyle) | - | Obtains the mouse pointer style of the specified window.|
 | [Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)](#oh_input_setpointerstyle) | - | Sets the mouse pointer style of the specified window.|
-| [Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)](#oh_input_customcursor_create) | - | Creates a custom mouse pointer object. You can call [OH_Input_CustomCursor_Destroy()](#oh_input_customcursor_destroy) to destroy a custom mouse pointer resource object.|
-| [void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)](#oh_input_customcursor_destroy) | - | Destroys a custom mouse pointer object.|
+| [Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, int32_t anchorX, int32_t anchorY)](#oh_input_customcursor_create) | - | Creates a custom mouse pointer resource object. You can call [OH_Input_CustomCursor_Destroy()](#oh_input_customcursor_destroy) to destroy a custom mouse pointer resource object.|
+| [void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)](#oh_input_customcursor_destroy) | - | Destroys a custom mouse pointer resource object.|
 | [Input_Result OH_Input_CustomCursor_GetPixelMap(Input_CustomCursor* customCursor, OH_PixelmapNative** pixelMap)](#oh_input_customcursor_getpixelmap) | - | Obtains the pixel map of a custom mouse pointer object.|
 | [Input_Result OH_Input_CustomCursor_GetAnchor(Input_CustomCursor* customCursor, int32_t* anchorX, int32_t* anchorY)](#oh_input_customcursor_getanchor) | - | Obtains the focus coordinates of a custom mouse pointer object.|
 | [Input_CursorConfig* OH_Input_CursorConfig_Create(bool followSystem)](#oh_input_cursorconfig_create) | - | Creates a custom mouse pointer configuration object. You can call [OH_Input_CursorConfig_Destroy()](#oh_input_cursorconfig_destroy) to destroy a custom mouse pointer configuration object.|
@@ -233,8 +233,8 @@ Provides functions such as input event injection, key state query, device hot sw
 | [void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)](#oh_input_cursorinfo_destroy) | - | Destroys the mouse pointer information object.|
 | [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | Obtains the pointer visible status of the specified mouse pointer information object.|
 | [Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)](#oh_input_cursorinfo_getstyle) | - |Obtains the pointer style of the specified mouse pointer information object.|
-| [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | Obtains the pointer size level of the specified mouse pointer information object.|
-| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | Gets the cursor color corresponding to the specified mouse cursor info object, represented as a 32-bit ARGB integer.|
+| [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | Obtains the cursor size level of the specified mouse pointer information object.|
+| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | Obtains the cursor color corresponding to the specified mouse cursor info object, represented as a 32-bit ARGB integer.|
 | [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.|
 | [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.|
 | [Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)](#oh_input_settoucheventpressure) | - | Sets the pressure for a touchscreen input event.|
@@ -285,7 +285,7 @@ Provides the enum values of the key event type.
 
 | Enum| Description|
 | -- | -- |
-| KEY_ACTION_CANCEL = 0 | Button action canceled.|
+| KEY_ACTION_CANCEL = 0 | Key action canceled.|
 | KEY_ACTION_DOWN = 1 | Key press.|
 | KEY_ACTION_UP = 2 | Key release.|
 
@@ -418,8 +418,8 @@ Provides the enum values of keyboard types of the input device.
 
 | Enum| Description|
 | -- | -- |
-| KEYBOARD_TYPE_NONE = 0 | Keyboard without keys.|
-| KEYBOARD_TYPE_UNKNOWN = 1 | Keyboard with unknown keys.|
+| KEYBOARD_TYPE_NONE = 0 | No keyboard.|
+| KEYBOARD_TYPE_UNKNOWN = 1 | Unknown keyboard.|
 | KEYBOARD_TYPE_ALPHABETIC = 2 | Full keyboard.|
 | KEYBOARD_TYPE_DIGITAL = 3 | Numeric keypad.|
 | KEYBOARD_TYPE_STYLUS = 4 | Stylus.|
@@ -446,16 +446,16 @@ Provides return value enumerations.
 | INPUT_DEVICE_NOT_SUPPORTED = 801 | Function not supported.|
 | INPUT_SERVICE_EXCEPTION = 3800001 | Service error.|
 | INPUT_REPEAT_INTERCEPTOR = 4200001 | Interceptor repeatedly created.|
-| INPUT_OCCUPIED_BY_SYSTEM = 4200002 | Input device occupied by a system application.<br>**Since**: 14|
-| INPUT_OCCUPIED_BY_OTHER = 4200003 | Input device occupied by another application.<br>**Since**: 14|
-| INPUT_KEYBOARD_DEVICE_NOT_EXIST = 3900002 |  Keyboard not connected.<br>**Since**: 15|
-| INPUT_INJECTION_AUTHORIZING = 3900005 |  Authorization in progress.<br>**Since**: 20|
-| INPUT_INJECTION_OPERATION_FREQUENT = 3900006 |  Repeated request.<br>**Since**: 20|
-| INPUT_INJECTION_AUTHORIZED = 3900007 |  Permission granted to the current application.<br>**Since**: 20|
-| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 |  Permission granted to other applications.<br>**Since**: 20|
-| INPUT_APP_NOT_FOCUSED = 3900009 |  Application not in focus.<br>**Since**: 20|
-| INPUT_DEVICE_NO_POINTER = 3900010 |  No mouse device.<br>**Since**: 20|
-| INPUT_INVALID_WINDOWID = 26500001 |  Invalid window ID.<br>**Since**: 22|
+| INPUT_OCCUPIED_BY_SYSTEM = 4200002 | Occupied by a system app.<br>**Since:** 14 |
+| INPUT_OCCUPIED_BY_OTHER = 4200003 | Occupied by another app.<br>**Since:** 14 |
+| INPUT_KEYBOARD_DEVICE_NOT_EXIST = 3900002 | No keyboard device is connected.<br>**Since:** 15 |
+| INPUT_INJECTION_AUTHORIZING = 3900005 | Authorization is in progress.<br>**Since:** 20 |
+| INPUT_INJECTION_OPERATION_FREQUENT = 3900006 | Repeated request.<br>**Since:** 20 |
+| INPUT_INJECTION_AUTHORIZED = 3900007 | The current app has been authorized.<br>**Since:** 20 |
+| INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008 | Other apps have been authorized.<br>**Since:** 20 |
+| INPUT_APP_NOT_FOCUSED = 3900009 | The current app is not the focused app.<br>**Since:** 20 |
+| INPUT_DEVICE_NO_POINTER = 3900010 | No mouse-type input peripheral is available.<br>**Since:** 20 |
+| INPUT_INVALID_WINDOWID = 26500001 | Invalid window ID.<br>**Since:** 22 |
 
 ### Input_TouchEventToolType
 
@@ -473,12 +473,12 @@ Enumerates touch tool types of an input device.
 | -- | -- |
 | TOOL_TYPE_FINGER = 0 | Finger.|
 | TOOL_TYPE_PEN = 1 | Stylus.|
-| TOOL_TYPE_RUBBER = 2 | Eraser device.|
-| TOOL_TYPE_BRUSH = 3 | Pen device.|
+| TOOL_TYPE_RUBBER = 2 | Eraser-type device. |
+| TOOL_TYPE_BRUSH = 3 | Brush device.|
 | TOOL_TYPE_PENCIL = 4 | Pencil device.|
-| TOOL_TYPE_AIRBRUSH = 5 | Airbrush device|
+| TOOL_TYPE_AIRBRUSH = 5 | Airbrush device.|
 | TOOL_TYPE_MOUSE = 6 | Mouse device.|
-| TOOL_TYPE_LENS = 7 | Lens device|
+| TOOL_TYPE_LENS = 7 | Lens device.|
 
 ## Function Description
 
@@ -493,6 +493,7 @@ typedef void (*Input_HotkeyCallback)(Input_Hotkey* hotkey)
 Defines the callback used to return hotkey events.
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -512,6 +513,7 @@ Defines a lifecycle callback for **keyEvent**. If the callback is triggered, **k
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -526,9 +528,10 @@ typedef void (*Input_MouseEventCallback)(const Input_MouseEvent* mouseEvent)
 
 **Description**
 
-Defines a lifecycle callback for **mouseEvent**. If the callback is triggered, **mouseEvent** will be destroyed.
+Defines a lifecycle callback for **mouseEvent**. The lifecycle of the mouseEvent is limited to the callback function.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -544,9 +547,10 @@ typedef void (*Input_TouchEventCallback)(const Input_TouchEvent* touchEvent)
 
 **Description**
 
-Defines the lifecycle callback for **TouchEvent**. If the callback is triggered, **TouchEvent** will be destroyed.
+Defines the lifecycle callback for **TouchEvent**. The lifecycle of the touchEvent is limited to the callback function.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -562,9 +566,10 @@ typedef void (*Input_AxisEventCallback)(const Input_AxisEvent* axisEvent)
 
 **Description**
 
-Defines a lifecycle callback for **axisEvent**. If the callback is triggered, **axisEvent** will be destroyed.
+Defines a lifecycle callback for **axisEvent**. The lifecycle of the axisEvent is limited to the callback function.
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -584,6 +589,7 @@ Callback used to receive input device hot-plug events.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -601,6 +607,7 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 Callback used to receive input device hot-unplug events.
 
 **Since**: 13
+
 
 **Parameters**
 
@@ -620,6 +627,7 @@ Defines a callback used to receive the injection permission authorization status
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -634,17 +642,18 @@ Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)
 
 **Description**
 
-Queries a key status enum object.
+Queries the key state struct object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key state struct object. For details, see [Input_KeyStateAction](#input_keystateaction). |
 
 **Return value**
 
@@ -660,7 +669,7 @@ struct Input_KeyState* OH_Input_CreateKeyState()
 
 **Description**
 
-Creates a key status enum object. You can call [OH_Input_DestroyKeyState()](#oh_input_destroykeystate) to destroy a key status enum object.
+Creates a key state struct object. You can call [OH_Input_DestroyKeyState](#oh_input_destroykeystate) to destroy a key state struct object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -670,7 +679,7 @@ Creates a key status enum object. You can call [OH_Input_DestroyKeyState()](#oh_
 
 | Type| Description|
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)* | If the operations is successful, [Input_KeyState](capi-input-input-keystate.md) is returned. Otherwise, a null pointer is returned.|
+| struct [Input_KeyState](capi-input-input-keystate.md)* | If the operation is successful, [Input_KeyState](capi-input-input-keystate.md) is returned. Otherwise, a null pointer is returned.|
 
 ### OH_Input_DestroyKeyState()
 
@@ -680,17 +689,18 @@ void OH_Input_DestroyKeyState(struct Input_KeyState** keyState)
 
 **Description**
 
-Destroys a key status enum object.
+Destroys a key state struct object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)** keyState | Key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| struct [Input_KeyState](capi-input-input-keystate.md)** keyState | Key state struct object. For details, see [Input_KeyStateAction](#input_keystateaction). |
 
 ### OH_Input_SetKeyCode()
 
@@ -700,18 +710,19 @@ void OH_Input_SetKeyCode(struct Input_KeyState* keyState, int32_t keyCode)
 
 **Description**
 
-Sets the key value of a key status enum object.
+Sets the key value of a key state object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
-| int32_t keyCode | Key code. For details, see [KeyCode](js-apis-keycode.md#keycode). |
+| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Pointer to the key state struct object. For details, see [Input_KeyStateAction](#input_keystateaction). |
+| int32_t keyCode | Key code. For details, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). |
 
 ### OH_Input_GetKeyCode()
 
@@ -721,23 +732,24 @@ int32_t OH_Input_GetKeyCode(const struct Input_KeyState* keyState)
 
 **Description**
 
-Obtains the key value of a key status enum object.
+Obtains the key value of a key state object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction).|
+| const struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key state struct object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction). |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Key value of the key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| int32_t | Key value of the key state object. For details, see [Input_KeyStateAction](#input_keystateaction).|
 
 ### OH_Input_SetKeyPressed()
 
@@ -747,17 +759,18 @@ void OH_Input_SetKeyPressed(struct Input_KeyState* keyState, int32_t keyAction)
 
 **Description**
 
-Sets whether the key specific to a key status enum object is pressed.
+Sets whether the key specific to a key state object is pressed.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key state struct object. For details, see [Input_KeyStateAction](#input_keystateaction). |
 | int32_t keyAction | Whether a key is pressed. For details, see [Input_KeyEventAction](#input_keyeventaction).|
 
 ### OH_Input_GetKeyPressed()
@@ -768,23 +781,24 @@ int32_t OH_Input_GetKeyPressed(const struct Input_KeyState* keyState)
 
 **Description**
 
-Checks whether the key specific to a key status enum object is pressed.
+Checks whether the key specific to a key state object is pressed.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction).|
+| const struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Pointer to the key state struct object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction). |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Key pressing status of the key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| int32_t | Key pressing status of the key state object. For details, see [Input_KeyStateAction](#input_keystateaction).|
 
 ### OH_Input_SetKeySwitch()
 
@@ -794,17 +808,18 @@ void OH_Input_SetKeySwitch(struct Input_KeyState* keyState, int32_t keySwitch)
 
 **Description**
 
-Sets the key switch of the key status enum object.
+Sets the key switch of the key state object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key state struct object. For details, see [Input_KeyStateAction](#input_keystateaction). |
 | int32_t keySwitch | Key switch.|
 
 ### OH_Input_GetKeySwitch()
@@ -815,23 +830,24 @@ int32_t OH_Input_GetKeySwitch(const struct Input_KeyState* keyState)
 
 **Description**
 
-Obtains the key switch of the key status enum object.
+Obtains the key switch of the key state object.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| const struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Key status enum object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction).|
+| const struct [Input_KeyState](capi-input-input-keystate.md)* keyState | Pointer to the key state struct object. For details, see [Input_KeyStateAction](capi-oh-input-manager-h.md#input_keystateaction). |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Key switch of the key status enum object. For details, see [Input_KeyStateAction](#input_keystateaction).|
+| int32_t | Key switch of the key state object. For details, see [Input_KeyStateAction](#input_keystateaction).|
 
 ### OH_Input_InjectKeyEvent()
 
@@ -849,9 +865,12 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices and does not work on other devices.
+
 **Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -863,7 +882,7 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 | Type| Description|
 | -- | -- |
-| int32_t | Return value of the **OH_Input_InjectKeyEvent** function.<br>         - [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) if the operation is successful;<br>         - [INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) if the required permission is missing;<br>         - [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) if the input parameter is incorrect.|
+| int32_t | Return value of the OH_Input_InjectKeyEvent function.<br> Returns [INPUT_SUCCESS](capi-oh-input-manager-h.md#input_result) if the injection is successful;<br> Returns [INPUT_PERMISSION_DENIED](capi-oh-input-manager-h.md#input_result) if the permission is missing;<br> Returns [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) if the parameter is invalid. |
 
 ### OH_Input_CreateKeyEvent()
 
@@ -899,6 +918,7 @@ Destroys a key event object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -918,6 +938,7 @@ Sets the key event type.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -939,6 +960,7 @@ Obtains the key event action.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -966,12 +988,13 @@ Sets the key code value for a key event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent()](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent()](#oh_input_destroykeyevent).|
-| int32_t keyCode | Key value. For details, see [KeyCode](js-apis-keycode.md#keycode). |
+| int32_t keyCode | Key value. For details, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). |
 
 ### OH_Input_GetKeyEventKeyCode()
 
@@ -986,6 +1009,7 @@ Obtains the key code value of a key event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1013,6 +1037,7 @@ Sets the time when a key event occurs.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1033,6 +1058,7 @@ Obtains the time when a key event occurs.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1060,6 +1086,7 @@ Sets the window ID of a key event.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1080,6 +1107,7 @@ Obtains the window ID of a key event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1107,6 +1135,7 @@ Obtains the screen ID of a key event.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1132,6 +1161,7 @@ Sets the screen ID of a key event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1174,6 +1204,7 @@ Destroys a mouse event object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1193,6 +1224,7 @@ Sets the action for a mouse event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1215,6 +1247,7 @@ Obtains the action of a mouse event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1225,7 +1258,7 @@ Obtains the action of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse action. Returns **-1** if **mouseEvent** is NULL. For details, see [Input_MouseEventAction](#input_mouseeventaction).|
+| int32_t | Mouse action. For details, see [Input_MouseEventAction](#input_mouseeventaction).|
 
 ### OH_Input_SetMouseEventDisplayX()
 
@@ -1241,12 +1274,13 @@ Sets the X coordinate of the mouse event in the relative coordinate system with 
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse event object. You can call [OH_Input_CreateMouseEvent()](#oh_input_createmouseevent) to create a mouse event object.<br>If the mouse event object is no longer needed, destroy it by calling [OH_Input_DestroyMouseEvent()](#oh_input_destroymouseevent).|
-| int32_t displayX | X-coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t displayX | X-coordinate in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_GetMouseEventDisplayX()
 
@@ -1262,6 +1296,7 @@ Obtains the X coordinate of the mouse event in the relative coordinate system wi
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1272,7 +1307,7 @@ Obtains the X coordinate of the mouse event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | The X coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). Returns **-1** if **mouseEvent** is NULL. |
+| int32_t | The X coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_SetMouseEventDisplayY()
 
@@ -1288,12 +1323,13 @@ Sets the Y coordinate of the mouse event in the relative coordinate system with 
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse event object. You can call [OH_Input_CreateMouseEvent()](#oh_input_createmouseevent) to create a mouse event object.<br>If the mouse event object is no longer needed, destroy it by calling [OH_Input_DestroyMouseEvent()](#oh_input_destroymouseevent).|
-| int32_t displayY | Y coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t displayY | Y coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_GetMouseEventDisplayY()
 
@@ -1309,6 +1345,7 @@ Obtains the Y coordinate of the mouse event in the relative coordinate system wi
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1319,7 +1356,7 @@ Obtains the Y coordinate of the mouse event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | Y-coordinate of the mouse event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). Returns **-1** if **mouseEvent** is NULL. |
+| int32_t | Y-coordinate of the mouse event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_SetMouseEventButton()
 
@@ -1334,6 +1371,7 @@ Sets the button for a mouse event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1356,6 +1394,7 @@ Obtains the button of a mouse event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1366,7 +1405,7 @@ Obtains the button of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Mouse button. Returns **-1** if **mouseEvent** is NULL.<br>For details, see [Input_MouseEventButton](#input_mouseeventbutton).|
+| int32_t | Mouse button. <br>For details, see [Input_MouseEventButton](#input_mouseeventbutton).|
 
 ### OH_Input_SetMouseEventAxisType()
 
@@ -1381,6 +1420,7 @@ Sets the axis type for a mouse event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1403,6 +1443,7 @@ Obtains the axis type of a mouse event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1413,7 +1454,7 @@ Obtains the axis type of a mouse event.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Enumerates mouse axis types. Returns **-1** if **mouseEvent** is NULL.<br>For details, see [InputEvent_MouseAxis](#inputevent_mouseaxis).|
+| int32_t | Enumerates mouse axis types. <br>For details, see [InputEvent_MouseAxis](#inputevent_mouseaxis).|
 
 ### OH_Input_SetMouseEventAxisValue()
 
@@ -1429,12 +1470,13 @@ Sets the axis value for a mouse axis event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse event object. You can call [OH_Input_CreateMouseEvent()](#oh_input_createmouseevent) to create a mouse event object.<br>If the mouse event object is no longer needed, destroy it by calling [OH_Input_DestroyMouseEvent()](#oh_input_destroymouseevent).|
-| float axisValue | Axis event value. A positive number means scrolling forward (for example, 1.0 equals one unit forward), and a negative number means scrolling backward (for example, -1.0 equals one unit backward).|
+| float axisValue | Value of the axis event. A positive value indicates scrolling forward (for example, 1.0 indicates scrolling forward by one unit), a negative value indicates scrolling backward (for example, -1.0 indicates scrolling backward by one unit), and zero indicates no scrolling. |
 
 ### OH_Input_GetMouseEventAxisValue()
 
@@ -1450,6 +1492,7 @@ Obtains the axis value of a mouse axis event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1460,7 +1503,7 @@ Obtains the axis value of a mouse axis event.
 
 | Type| Description|
 | -- | -- |
-| float | Axis event value. Returns **-1** if **mouseEvent** is NULL.|
+| float | Axis event value.|
 
 ### OH_Input_SetMouseEventActionTime()
 
@@ -1475,6 +1518,7 @@ Sets the time when a mouse event occurs.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1496,6 +1540,7 @@ Obtains the time when a mouse event occurs.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1523,6 +1568,7 @@ Sets the window ID of a mouse event.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1543,6 +1589,7 @@ Obtains the window ID of a mouse event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1569,6 +1616,7 @@ Sets the screen ID of a mouse event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1611,6 +1659,7 @@ Destroys a **TouchEvent** object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1630,6 +1679,7 @@ Sets the action of a touch event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1651,6 +1701,7 @@ Obtains the action of a touch event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1678,6 +1729,7 @@ Sets the finger ID of a touch event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1698,6 +1750,7 @@ Obtains the finger ID of a touch event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1725,12 +1778,13 @@ Sets the X coordinate of the touch event in the relative coordinate system with 
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | **TouchEvent** object, which can be created through [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent).<br>If the **TouchEvent** object is no longer needed, destroy it by calling [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent).|
-| int32_t displayX | X coordinate of the touch screen input event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t displayX | X coordinate of the touch screen input event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_GetTouchEventDisplayX()
 
@@ -1746,6 +1800,7 @@ Obtains the X coordinate of the touch event in the relative coordinate system wi
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1756,7 +1811,7 @@ Obtains the X coordinate of the touch event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | The X coordinate of the touch screen input event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t | The X coordinate of the touch screen input event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_SetTouchEventDisplayY()
 
@@ -1772,12 +1827,13 @@ Sets the Y coordinate of the touch event in the relative coordinate system with 
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | **TouchEvent** object, which can be created through [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent).<br>If the **TouchEvent** object is no longer needed, destroy it by calling [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent).|
-| int32_t displayY | Y-coordinate of the touch screen input event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t displayY | Y-coordinate of the touch screen input event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_GetTouchEventDisplayY()
 
@@ -1793,6 +1849,7 @@ Obtains the Y coordinate of the touch event in the relative coordinate system wi
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1803,7 +1860,7 @@ Obtains the Y coordinate of the touch event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | The Y coordinate of the touch screen input event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| int32_t | The Y coordinate of the touch screen input event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 ### OH_Input_SetTouchEventActionTime()
 
@@ -1818,6 +1875,7 @@ Sets the time when the touch event occurs.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -1840,6 +1898,7 @@ Obtains the time when the touch event occurs.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1850,7 +1909,7 @@ Obtains the time when the touch event occurs.
 
 | Type| Description|
 | -- | -- |
-| int64_t | Time when a touch event occurs.|
+| int64_t | Time when the touchscreen input event occurs, indicating the number of microseconds elapsed since system startup, in microseconds (μs). |
 
 ### OH_Input_SetTouchEventWindowId()
 
@@ -1865,6 +1924,7 @@ Sets the window ID of a touch event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1886,6 +1946,7 @@ Obtains the window ID of a touch event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1913,6 +1974,7 @@ Sets the screen ID of a touch event.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1933,6 +1995,7 @@ Obtains the screen ID of a touch event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -1978,6 +2041,7 @@ Since API version 26.0.0, if the ohos.permission.CONTROL_DEVICE permission has b
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -1988,7 +2052,7 @@ Since API version 26.0.0, if the ohos.permission.CONTROL_DEVICE permission has b
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success. The application waits for the user authorization result and returns the authorization status through a callback.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The callback parameter is empty.<br>      INPUT_DEVICE_NOT_SUPPORTED = 801: Function not supported.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Service error.<br>      INPUT_INJECTION_AUTHORIZING = 3900005: Permission being granted.<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Repeated request. The application continuously requests permission authorization at an interval of no more than 3 seconds.<br>      INPUT_INJECTION_AUTHORIZED = 3900007: Permission granted.<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Permission granted to other applications.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the function. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br> INPUT_SUCCESS = 0: The authorization request succeeds, and the system waits for the user's authorization result and invokes the callback to return the authorization state.<br> INPUT_PARAMETER_ERROR = 401: The parameter is invalid, for example, the callback parameter is null.<br> INPUT_DEVICE_NOT_SUPPORTED = 801: The function is not supported.<br> INPUT_SERVICE_EXCEPTION = 3800001: The service is abnormal.<br> INPUT_INJECTION_AUTHORIZING = 3900005: Authorization is in progress.<br> INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Duplicate request (the current application requests the authorization dialog box consecutively and successfully, with an interval of no longer than 3 seconds).<br> INPUT_INJECTION_AUTHORIZED = 3900007: The current application has been authorized.<br> INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Another application has been authorized. |
 
 ### OH_Input_QueryAuthorizedStatus()
 
@@ -2004,6 +2068,7 @@ Since API version 26.0.0, this API returns only the dialog authorization status.
 
 **Since**: 20
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2014,7 +2079,7 @@ Since API version 26.0.0, this API returns only the dialog authorization status.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Service error.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the function. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br> INPUT_SUCCESS = 0: The query succeeds.<br> INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br> INPUT_SERVICE_EXCEPTION = 3800001: Service exception. |
 
 ### OH_Input_CreateAxisEvent()
 
@@ -2050,6 +2115,7 @@ Destroys an axis event object.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2060,7 +2126,7 @@ Destroys an axis event object.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** is null.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the destruction is successful; returns [INPUT_PARAMETER_ERROR](#input_result) if axisEvent is NULL. |
 
 ### OH_Input_SetAxisEventAction()
 
@@ -2075,6 +2141,7 @@ Sets the action for an axis event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2103,12 +2170,13 @@ Obtains the action of an axis event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction) *action | Axis event action. For details, see [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction).|
+| [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction) *action | Output parameter, which returns the axis event action. For details, see [InputEvent_AxisAction](capi-oh-axis-type-h.md#inputevent_axisaction). |
 
 **Return value**
 
@@ -2130,12 +2198,13 @@ Sets the X coordinate of the axis event in the relative coordinate system with t
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| float displayX | X coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| float displayX | X coordinate in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 **Return value**
 
@@ -2157,12 +2226,13 @@ Obtains the X coordinate of the axis event in the relative coordinate system wit
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| float* displayX | Output parameter, returns the X coordinate of the axis event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| float* displayX | Output parameter, returns the X coordinate of the axis event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 **Return value**
 
@@ -2184,12 +2254,13 @@ Sets the Y coordinate of the axis event in the relative coordinate system with t
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| float displayY | Y coordinate in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| float displayY | Y coordinate in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 **Return value**
 
@@ -2211,12 +2282,13 @@ Obtains the Y coordinate of the axis event in the relative coordinate system wit
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| float* displayY | Output parameter, returns the Y coordinate of the axis event in the relative coordinate system with the upper left corner of the specified screen as the origin, in pixels (px). |
+| float* displayY | Output parameter, returns the Y coordinate of the axis event in the relative coordinate system with the upper-left corner of the specified screen as the origin, in px. |
 
 **Return value**
 
@@ -2237,6 +2309,7 @@ Sets the axis value of the axis type specified by the axis event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2266,13 +2339,14 @@ Obtains the axis value for the specified axis type of the axis event.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
 | [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype) axisType | Axis type. For details, see [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype).|
-| double* axisValue | Axis event value. A positive number means scrolling forward (for example, 1.0 equals one unit forward), and a negative number means scrolling backward (for example, -1.0 equals one unit backward).|
+| double* axisValue | Output parameter, which returns the value of the axis event. A positive value indicates scrolling forward (for example, 1.0 indicates scrolling forward by one unit), a negative value indicates scrolling backward (for example, -1.0 indicates scrolling backward by one unit), and zero indicates no scrolling. |
 
 **Return value**
 
@@ -2293,6 +2367,7 @@ Sets the time when an axis event occurs.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2321,6 +2396,7 @@ Obtains the time when an axis event occurs.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2347,6 +2423,7 @@ Sets the axis event type.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2375,6 +2452,7 @@ Obtains the axis event type.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2401,6 +2479,7 @@ Sets the axis event source type.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2429,6 +2508,7 @@ Obtains the axis event source type.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2455,6 +2535,7 @@ Sets the window ID of an axis event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -2483,12 +2564,13 @@ Obtains the window ID of an axis event.
 
 **Since**: 15
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| int32_t* windowId | Window ID of the axis event.|
+| int32_t* windowId | Window ID of the axis event. This is an output parameter.|
 
 **Return value**
 
@@ -2509,6 +2591,7 @@ Sets the screen ID of an axis event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -2536,6 +2619,7 @@ Obtains the screen ID of an axis event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -2568,6 +2652,7 @@ Adds a listener for key events. Only the initial addition takes effect. Subseque
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2578,7 +2663,7 @@ Adds a listener for key events. Only the initial addition takes effect. Subseque
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the key event listener is added successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_AddMouseEventMonitor()
 
@@ -2590,7 +2675,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 Adds a listener for mouse events, including mouse click and movement events, but not scroll wheel events. Scroll wheel events are axis events.
 
-This API can be called only when the screen recording scenario is in use. Otherwise, the call does not take effect.
+This API can be called only when the application is in a screen recording scenario. Otherwise, the call does not take effect.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -2599,6 +2684,7 @@ This API can be called only when the screen recording scenario is in use. Otherw
 <!--RP2--><!--RP2End-->
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2610,7 +2696,7 @@ This API can be called only when the screen recording scenario is in use. Otherw
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the mouse event listener is added successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_AddTouchEventMonitor()
 
@@ -2630,6 +2716,7 @@ Adds a listener for touch input events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2640,7 +2727,7 @@ Adds a listener for touch input events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the touch event listener is added successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_AddAxisEventMonitorForAll()
 
@@ -2660,6 +2747,7 @@ Adds a listener for all types of axis events, which are defined in [InputEvent_A
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2670,7 +2758,7 @@ Adds a listener for all types of axis events, which are defined in [InputEvent_A
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the axis event listener is added successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_AddAxisEventMonitor()
 
@@ -2690,6 +2778,7 @@ Adds a listener for the specified type of axis events, which are defined in [Inp
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2701,7 +2790,7 @@ Adds a listener for the specified type of axis events, which are defined in [Inp
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the axis event listener is added successfully; <br> returns [INPUT_PERMISSION_DENIED](#input_result) if the permission check fails; <br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; <br> returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_RemoveKeyEventMonitor()
 
@@ -2721,6 +2810,7 @@ Removes the listener for key events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2731,7 +2821,7 @@ Removes the listener for key events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the key event listener is removed successfully; <br> returns [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails; <br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null or no listener has been added; returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_RemoveMouseEventMonitor()
 
@@ -2751,6 +2841,7 @@ Removes the listener for mouse events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2761,7 +2852,7 @@ Removes the listener for mouse events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | If the mouse event listener is removed successfully, [INPUT_SUCCESS](#input_result) is returned.<br> If the permission verification fails, [INPUT_PERMISSION_DENIED](#input_result) is returned.<br> If callback is null or no listener has been added, [INPUT_PARAMETER_ERROR](#input_result) is returned.<br> If the service is abnormal, [INPUT_SERVICE_EXCEPTION](#input_result) is returned. |
 
 ### OH_Input_RemoveTouchEventMonitor()
 
@@ -2781,6 +2872,7 @@ Removes the listener for touch events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2791,7 +2883,7 @@ Removes the listener for touch events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the touch event listener is removed successfully; <br> returns [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails; <br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null or no listener has been added; <br> returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_RemoveAxisEventMonitorForAll()
 
@@ -2811,6 +2903,7 @@ Removes the listener for all types of axis events.
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2821,7 +2914,7 @@ Removes the listener for all types of axis events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the axis event listener is removed successfully; <br> returns [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails; <br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null or no listener has been added; returns [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs. |
 
 ### OH_Input_RemoveAxisEventMonitor()
 
@@ -2841,6 +2934,7 @@ Removes the listener for the specified type of axis events, which are defined in
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2852,7 +2946,7 @@ Removes the listener for the specified type of axis events, which are defined in
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the axis event listener is removed successfully; <br> returns [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails; <br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null or no listener has been added; returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_AddKeyEventInterceptor()
 
@@ -2872,6 +2966,7 @@ Adds a key event interceptor. Only the first addition takes effect. Subsequent r
 
 **Since**: 12
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -2883,7 +2978,7 @@ Adds a key event interceptor. Only the first addition takes effect. Subsequent r
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_REPEAT_INTERCEPTOR](#input_result) if an interceptor is repeatedly added;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the key event interception is added successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; returns [INPUT_REPEAT_INTERCEPTOR](#input_result) if the interceptor is added repeatedly;<br> returns [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs. |
 
 ### OH_Input_AddInputEventInterceptor()
 
@@ -2893,7 +2988,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 
 **Description**
 
-Adds an interceptor for input events, including mouse, touch, and axis events. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](#input_result). Key events are intercepted only when the application window is hit.
+Adds an interceptor for input events, including mouse, touch, and axis events. Only the first addition takes effect. Subsequent requests will return error code [INPUT_REPEAT_INTERCEPTOR](#input_result). Input events are intercepted only when the application window is hit.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -2902,6 +2997,7 @@ Adds an interceptor for input events, including mouse, touch, and axis events. O
 <!--RP2--><!--RP2End-->
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -2914,7 +3010,7 @@ Adds an interceptor for input events, including mouse, touch, and axis events. O
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the callback is empty or no listener is added; [INPUT_REPEAT_INTERCEPTOR](#input_result) if an interceptor is repeatedly added;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the input event interception is added successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if the permission check fails;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if callback is null; returns [INPUT_REPEAT_INTERCEPTOR](#input_result) if the interceptor is added repeatedly;<br> returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_RemoveKeyEventInterceptor()
 
@@ -2938,7 +3034,7 @@ Removes the interceptor for key events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the key event interception is removed successfully; <br> returns [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails; <br> returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_RemoveInputEventInterceptor()
 
@@ -2962,7 +3058,7 @@ Removes the interceptor for input events, including mouse, touch, and axis event
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PERMISSION_DENIED](#input_result) if permission verification fails;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Returns [INPUT_SUCCESS](#input_result) if the input event interception is removed successfully; returns [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails;<br> returns [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_GetIntervalSinceLastInput()
 
@@ -2977,6 +3073,7 @@ Obtains the interval since the last system input event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -3008,7 +3105,7 @@ Creates a hotkey object. You can call [OH_Input_DestroyHotkey()](#oh_input_destr
 
 | Type| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) | If the operation is successful, a pointer to an [Input_Hotkey](capi-input-input-hotkey.md) object is returned. Otherwise, a null pointer is returned, possibly due to memory allocation failure. |
+| [Input_Hotkey](capi-input-input-hotkey.md)* | Pointer to the [Input_Hotkey](capi-input-input-hotkey.md) object if the operation is successful. Otherwise, a null pointer is returned, possibly because memory allocation fails. |
 
 ### OH_Input_DestroyHotkey()
 
@@ -3023,6 +3120,7 @@ Destroys a hotkey object.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -3044,13 +3142,14 @@ Sets the modifier keys.
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | Hotkey object.|
 | int32_t *preKeys | List of modifier keys.|
-| int32_t size | Number of modifier keys. One or two modifier keys are supported.|
+| int32_t size | Number of modifier keys. The value ranges from 1 to 2. |
 
 ### OH_Input_GetPreKeys()
 
@@ -3066,6 +3165,7 @@ Obtains the modifier key.
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3078,7 +3178,7 @@ Obtains the modifier key.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetPreKeys** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PARAMETER_ERROR](#input_result) otherwise.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetPreKeys function.<br> If the operation is successful, [INPUT_SUCCESS](#input_result) is returned; if the operation fails, [INPUT_PARAMETER_ERROR](#input_result) is returned. |
 
 ### OH_Input_SetFinalKey()
 
@@ -3093,6 +3193,7 @@ Sets the modified key.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -3115,6 +3216,7 @@ Obtains the modified key.
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3126,7 +3228,7 @@ Obtains the modified key.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetFinalKey** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) otherwise.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetFinalKey function.<br> If obtained successfully, returns [INPUT_SUCCESS](#input_result).<br> If failed, returns [INPUT_PARAMETER_ERROR](#input_result). |
 
 ### OH_Input_CreateAllSystemHotkeys()
 
@@ -3144,6 +3246,7 @@ Creates an [Input_Hotkey](capi-input-input-hotkey.md) array. You can call [OH_In
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3154,7 +3257,7 @@ Creates an [Input_Hotkey](capi-input-input-hotkey.md) array. You can call [OH_In
 
 | Type| Description|
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) | Return value of the **OH_Input_CreateAllSystemHotkeys** function.<br>         which is [INPUT_SUCCESS](#input_result) if the operation is successful.|
+| [Input_Hotkey](capi-input-input-hotkey.md)** | Pointer to the array of [Input_Hotkey](capi-input-input-hotkey.md) instances if the operation is successful. If the operation fails, a null pointer is returned, possibly due to memory allocation failure. |
 
 ### OH_Input_DestroyAllSystemHotkeys()
 
@@ -3169,6 +3272,7 @@ Destroys an [Input_Hotkey](capi-input-input-hotkey.md) array and reclaims the me
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -3193,6 +3297,7 @@ Obtains all configured hotkeys.
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3204,7 +3309,7 @@ Obtains all configured hotkeys.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetAllSystemHotkeys** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) otherwise.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetAllSystemHotkeys function.<br> Returns [INPUT_SUCCESS](#input_result) if obtained successfully;<br> returns [INPUT_PARAMETER_ERROR](#input_result) if the obtaining fails. |
 
 ### OH_Input_SetRepeat()
 
@@ -3219,6 +3324,7 @@ Specifies whether to report repeated key events.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -3241,6 +3347,7 @@ Checks whether to report repeated key events.
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3252,7 +3359,7 @@ Checks whether to report repeated key events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetRepeat** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) otherwise.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetRepeat function.<br> If obtained successfully, [INPUT_SUCCESS](#input_result) is returned;<br> if obtaining fails, [INPUT_PARAMETER_ERROR](#input_result) is returned. |
 
 ### OH_Input_AddHotkeyMonitor()
 
@@ -3268,13 +3375,14 @@ Subscribes to hotkey events.
 >
 > When subscribing to hotkey events, pay attention to the following restrictions on **preKeys** and **finalKey**:
 > 1. **preKeys**: Modifier key set (including Ctrl, Shift, and Alt) containing 1-4 keys. There is no requirement on the key order. For example, in **Ctrl+Shift+Esc**, **Ctrl** and **Shift** are modifier keys.
-> 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.
+> 2. **finalKey**: Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [Input_KeyCode](capi-oh-key-code-h.md#input_keycode). For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Since**: 14
+
 
 **Parameters**
 
@@ -3287,7 +3395,7 @@ Subscribes to hotkey events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_AddHotkeyMonitor** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if parameter verification fails;<br>         [INPUT_OCCUPIED_BY_SYSTEM](#input_result) if the hotkey has been occupied by the system (you can use [OH_Input_GetAllSystemHotkeys()](#oh_input_getallsystemhotkeys) to query allsystem hotkeys);<br>         [INPUT_OCCUPIED_BY_OTHER](#input_result) if the hotkey has been occupied by another application;<br>         [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported.|
+| [Input_Result](#input_result) | Return value of the OH_Input_AddHotkeyMonitor function.<br> [INPUT_SUCCESS](#input_result) indicates that the hotkey subscription is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed.<br> [INPUT_OCCUPIED_BY_SYSTEM](#input_result) indicates that the hotkey is occupied by the system. You can query all system hotkeys through the API [OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys).<br> [INPUT_OCCUPIED_BY_OTHER](#input_result) indicates that the subscription has been preempted.<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result) indicates that the feature is not supported. |
 
 ### OH_Input_RemoveHotkeyMonitor()
 
@@ -3303,6 +3411,7 @@ Unsubscribes from hotkey events.
 
 **Since**: 14
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3314,7 +3423,7 @@ Unsubscribes from hotkey events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_RemoveHotkeyMonitor** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful; [INPUT_PARAMETER_ERROR](#input_result) if parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_RemoveHotkeyMonitor function.<br> [INPUT_SUCCESS](#input_result) indicates that the hotkey is unsubscribed successfully.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter check failure. |
 
 ### OH_Input_RegisterDeviceListener()
 
@@ -3330,6 +3439,7 @@ Registers a listener for device hot swap events.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3340,7 +3450,7 @@ Registers a listener for device hot swap events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_RegisterDeviceListener** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the listener is null;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of OH_Input_RegisterDeviceListener.<br> [INPUT_SUCCESS](#input_result) indicates successful registration.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that listener is NULL. |
 
 ### OH_Input_UnregisterDeviceListener()
 
@@ -3356,17 +3466,18 @@ Unregisters the listener for device hot swap events.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| [Input_DeviceListener](capi-input-input-devicelistener.md)* listener | Pointer to the [Input_DeviceListener](capi-input-input-devicelistener.md) object.|
+| [Input_DeviceListener](capi-input-input-devicelistener.md)* listener | Pointer to the [Input_DeviceListener](capi-input-input-devicelistener.md) listener.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_UnregisterDeviceListener** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **listener** is null or the listener is not registered;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_UnregisterDeviceListener function.<br> [INPUT_SUCCESS](#input_result) indicates that the unregistration is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that listener is NULL or listener is not registered.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates that the call fails due to a service exception. |
 
 ### OH_Input_UnregisterDeviceListeners()
 
@@ -3376,7 +3487,7 @@ Input_Result OH_Input_UnregisterDeviceListeners()
 
 **Description**
 
-Unregisters the listener for all device hot swap events.
+Unregisters all listeners for device hot swap events.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -3386,7 +3497,7 @@ Unregisters the listener for all device hot swap events.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_UnregisterDeviceListener** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_UnregisterDeviceListeners function.<br> [INPUT_SUCCESS](#input_result) indicates that the call is successful.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates that the call fails due to a service exception. |
 
 ### OH_Input_GetDeviceIds()
 
@@ -3402,6 +3513,7 @@ Obtains the IDs of all input devices.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3414,7 +3526,7 @@ Obtains the IDs of all input devices.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceIds** or **outSize** is a null pointer or **inSize** is less than **0**.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceIds or outSize is a null pointer or inSize is less than 0. |
 
 ### OH_Input_GetDevice()
 
@@ -3430,18 +3542,19 @@ Obtains information about the input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
+| int32_t deviceId | Unique identifier of the input device. The device ID may change when the same physical device is repeatedly plugged in and out or restarted. You can query the device IDs supported by the system through the [OH_Input_GetDeviceIds](#oh_input_getdeviceids) API. |
 | [Input_DeviceInfo](capi-input-input-deviceinfo.md) **deviceInfo | Pointer to the [Input_DeviceInfo](capi-input-input-deviceinfo.md) object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** is a null pointer or **deviceId** is invalid.<br> You can use [OH_Input_GetDeviceIds()](#oh_input_getdeviceids) to query the device IDs supported by the system.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo is a null pointer or deviceId is invalid. |
 
 ### OH_Input_CreateDeviceInfo()
 
@@ -3477,6 +3590,7 @@ Destroys a **deviceInfo** object.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3497,18 +3611,19 @@ Obtains the keyboard type of the input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
 | int32_t deviceId | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.|
-| int32_t *keyboardType | Pointer to the keyboard type of the input device.|
+| int32_t *keyboardType | Pointer to the keyboard type of the input device. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the device ID is invalid or **keyboardType** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) The operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) The device ID is invalid or keyboardType is a null pointer. |
 
 ### OH_Input_GetDeviceId()
 
@@ -3524,6 +3639,7 @@ Obtains the ID of an input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3535,7 +3651,7 @@ Obtains the ID of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **ID** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or ID is a null pointer. |
 
 ### OH_Input_GetDeviceName()
 
@@ -3551,6 +3667,7 @@ Obtains the name of an input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3562,7 +3679,7 @@ Obtains the name of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **name** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or name is a null pointer. |
 
 ### OH_Input_GetCapabilities()
 
@@ -3578,6 +3695,7 @@ Obtains the capabilities of an input device, for example, a touchscreen, touchpa
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3589,7 +3707,7 @@ Obtains the capabilities of an input device, for example, a touchscreen, touchpa
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **capabilities** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or capabilities is a null pointer. |
 
 ### OH_Input_GetDeviceVersion()
 
@@ -3605,6 +3723,7 @@ Obtains the version information of an input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3616,7 +3735,7 @@ Obtains the version information of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **version** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or version is a null pointer. |
 
 ### OH_Input_GetDeviceProduct()
 
@@ -3632,6 +3751,7 @@ Obtains the product information of an input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3643,7 +3763,7 @@ Obtains the product information of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **product** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or product is a null pointer. |
 
 ### OH_Input_GetDeviceVendor()
 
@@ -3659,6 +3779,7 @@ Obtains the vendor information of an input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3670,7 +3791,7 @@ Obtains the vendor information of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **vendor** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or vendor is a null pointer. |
 
 ### OH_Input_GetDeviceAddress()
 
@@ -3686,6 +3807,7 @@ Obtains the physical address of an input device.
 
 **Since**: 13
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -3697,7 +3819,7 @@ Obtains the physical address of an input device.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **deviceInfo** or **address** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that deviceInfo or address is a null pointer. |
 
 ### OH_Input_GetFunctionKeyState()
 
@@ -3709,7 +3831,10 @@ Input_Result OH_Input_GetFunctionKeyState(int32_t keyCode, int32_t *state)
 
 Obtains the function key status.
 
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
 **Since**: 15
+
 
 **Parameters**
 
@@ -3722,7 +3847,7 @@ Obtains the function key status.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetFunctionKeyState** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>  [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) if the keyboard device does not exist.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetFunctionKeyState function.<br> [INPUT_SUCCESS](#input_result) indicates that the state is obtained successfully.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter error.<br> [INPUT_KEYBOARD_DEVICE_NOT_EXIST](#input_result) indicates that the keyboard device does not exist. |
 
 ### OH_Input_InjectTouchEvent()
 
@@ -3738,11 +3863,14 @@ This API does not take effect if the user has not granted authorization and the 
 
 Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus()](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Since API version 26.0.0, callers that have the ohos.permission.CONTROL_DEVICE permission can use this API directly.
 
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices, but has no effect on other devices.
 
 **Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -3754,7 +3882,7 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 | Type| Description|
 | -- | -- |
-| int32_t | Return value of the OH_Input_InjectTouchEvent function.<br>         [INPUT_SUCCESS](#input_result) indicates successful injection.<br>         [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter error. |
+| int32_t | Return value of the OH_Input_InjectTouchEvent function.<br> [INPUT_SUCCESS](#input_result) indicates that the injection is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter error. |
 
 ### OH_Input_InjectMouseEvent()
 
@@ -3772,9 +3900,12 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
+**Device behavior differences**: This API can be called normally only on PCs/2-in-1 devices. On other devices, error code 201 is returned.
+
 **Required permissions**: ohos.permission.CONTROL_DEVICE
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -3786,7 +3917,7 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 | Type| Description|
 | -- | -- |
-| int32_t | Return value of the **OH_Input_InjectMouseEvent** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
+| int32_t | Return value of OH_Input_InjectMouseEvent.<br> [INPUT_SUCCESS](#input_result) indicates successful injection.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter error.<br> [INPUT_PERMISSION_DENIED](#input_result) indicates permission missing. |
 
 ### OH_Input_GetMouseEventDisplayId()
 
@@ -3801,6 +3932,7 @@ Obtains the screen ID of a mouse event.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 15
+
 
 **Parameters**
 
@@ -3830,7 +3962,7 @@ Queries the maximum number of touch points supported by the device.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *count | Maximum number of touch points supported by the device. The value range is [0, 10]. The value **-1** indicates that the number of touch points is unknown.|
+| int32_t *count | Maximum number of touch points supported by the device. The value ranges from 0 to 10, and -1 indicates unknown. |
 
 **Return value**
 
@@ -3839,7 +3971,6 @@ Queries the maximum number of touch points supported by the device.
 | [Input_Result](capi-oh-input-manager-h.md#input_result) | Return value of the **OH_Input_QueryMaxTouchPoints** function.<br>[INPUT_SUCCESS](#input_result) if the operation is successful;<br> [INPUT_PARAMETER_ERROR](capi-oh-input-manager-h.md#input_result) if the parameter verification fails.|
 
 ### OH_Input_InjectMouseEventGlobal()
-
 ```c
 int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEvent)
 ```
@@ -3854,6 +3985,8 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 **Required permissions**: ohos.permission.CONTROL_DEVICE
 
+**Device behavior differences**: This API can be called normally only on PCs/2-in-1 devices. On other devices, error code 201 is returned.
+
 **Since**: 20
 
 **Parameters**
@@ -3866,10 +3999,9 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 | Type| Description|
 | -- | -- |
-| int32_t | Return value of the **OH_Input_InjectMouseEventGlobal** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
+| int32_t | Return value of OH_Input_InjectMouseEventGlobal.<br> [INPUT_SUCCESS](#input_result) indicates successful injection.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter error.<br> [INPUT_PERMISSION_DENIED](#input_result) indicates permission missing. |
 
 ### OH_Input_SetMouseEventGlobalX()
-
 ```c
 void OH_Input_SetMouseEventGlobalX(struct Input_MouseEvent* mouseEvent, int32_t globalX)
 ```
@@ -3885,7 +4017,7 @@ Sets the X coordinate of the mouse event in the global coordinate system with th
 | Parameter| Description|
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse Event object, which can be created through the [OH_Input_CreateMouseEvent()](#oh_input_createmouseevent) API.<br>After use, the Mouse Event object must be destroyed through the [OH_Input_DestroyMouseEvent()](#oh_input_destroymouseevent) API. |
-| int32_t globalX | X coordinate of the Mouse Event in the global coordinate system with the origin at the upper left corner of the primary screen, in pixels (px). |
+| int32_t globalX | X coordinate of the Mouse Event in the global coordinate system with the origin at the upper left corner of the primary screen, in px. |
 
 ### OH_Input_GetMouseEventGlobalX()
 
@@ -3909,7 +4041,7 @@ Obtains the X coordinate of the mouse event in the global coordinate system with
 
 | Type| Description|
 | -- | -- |
-| int32_t | X-coordinate in the global coordinate system with the origin at the upper left corner of the primary screen, in pixels (px).|
+| int32_t | X-coordinate in the global coordinate system with the origin at the upper left corner of the primary screen, in px.|
 
 ### OH_Input_SetMouseEventGlobalY()
 
@@ -3928,7 +4060,7 @@ Sets the Y coordinate of the mouse event in the global coordinate system with th
 | Parameter| Description|
 | -- | -- |
 | struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse Event object, which can be created through the [OH_Input_CreateMouseEvent()](#oh_input_createmouseevent) API.<br>After use, the Mouse Event object must be destroyed through the [OH_Input_DestroyMouseEvent()](#oh_input_destroymouseevent) API. |
-| int32_t globalY | Y-coordinate of the mouse event in the global coordinate system with the origin at the upper left corner of the primary screen, in pixels (px).|
+| int32_t globalY | Y-coordinate of the mouse event in the global coordinate system with the origin at the upper left corner of the primary screen, in px.|
 
 ### OH_Input_GetMouseEventGlobalY()
 
@@ -3952,7 +4084,7 @@ Obtains the Y coordinate of the mouse event in the global coordinate system with
 
 | Type| Description|
 | -- | -- |
-| int32_t | The Y coordinate of the mouse event in the global coordinate system with the origin at the upper left corner of the primary screen, in pixels (px).|
+| int32_t | The Y coordinate of the mouse event in the global coordinate system with the origin at the upper left corner of the primary screen, in px.|
 
 ### OH_Input_InjectTouchEventGlobal()
 
@@ -3964,11 +4096,13 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 Injects a touch event by using coordinates in the global coordinate system with the upper-left corner of the primary screen as the origin.
 
-This API does not take effect if the event injection authorization is not granted and the caller does not have the ohos.permission.CONTROL_DEVICE permission.
+This API does not take effect if the user has not granted authorization and the caller does not have the ohos.permission.CONTROL_DEVICE permission.
 
 Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_input_requestinjection) to request the required permission before calling this API. If the status returned by [OH_Input_QueryAuthorizedStatus()](#oh_input_queryauthorizedstatus) is [AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus), then you can call this API.<br>Since API version 26.0.0, callers that have the ohos.permission.CONTROL_DEVICE permission can use this API directly.
 
 **Required permissions**: ohos.permission.CONTROL_DEVICE
+
+**Device behavior differences**: This API can be called normally only on PCs/2-in-1 devices. On other devices, error code 201 is returned.
 
 **Since**: 20
 
@@ -3982,7 +4116,7 @@ Since API version 20, you are advised to use [OH_Input_RequestInjection()](#oh_i
 
 | Type| Description|
 | -- | -- |
-| int32_t | Return value of the **OH_Input_InjectTouchEventGlobal** function.<br>         [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>         [INPUT_PERMISSION_DENIED](#input_result) if the permission is denied.|
+| int32_t | Result code of the OH_Input_InjectTouchEventGlobal function.<br> Returns [INPUT_SUCCESS](#input_result) if the injection is successful.<br> Returns [INPUT_PARAMETER_ERROR](#input_result) if the parameter is invalid.<br> Returns [INPUT_PERMISSION_DENIED](#input_result) if the permission is missing. |
 
 ### OH_Input_SetTouchEventGlobalX()
 
@@ -4000,8 +4134,8 @@ Sets the X coordinate of the touch event in the global coordinate system with th
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | Touch screen input event object, which can be created through the [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent) interface.<br>After use, the touch screen input event object must be destroyed using the [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent) interface. |
-| int32_t globalX | X coordinate of the touch screen input event in the global coordinate system with the upper left corner of the primary screen as the origin, in pixels (px).|
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | Touch screen input event object, which can be created through the [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent) API.<br>After use, the touch screen input event object must be destroyed using the [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent) API. |
+| int32_t globalX | X coordinate of the touch screen input event in the global coordinate system with the upper left corner of the primary screen as the origin, in px.|
 
 ### OH_Input_GetTouchEventGlobalX()
 
@@ -4025,7 +4159,7 @@ Obtains the X coordinate of the touch event in the global coordinate system with
 
 | Type| Description|
 | -- | -- |
-| int32_t | The X coordinate in the global coordinate system with the upper left corner of the primary screen as the origin, in pixels (px).|
+| int32_t | The X coordinate in the global coordinate system with the upper left corner of the primary screen as the origin, in px.|
 
 ### OH_Input_SetTouchEventGlobalY()
 
@@ -4043,8 +4177,8 @@ Sets the Y coordinate of the touch event in the global coordinate system with th
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | Touch screen input event object, which can be created through the [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent) interface.<br>After use, the touch screen input event object must be destroyed using the [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent) interface. |
-| int32_t globalY | Y coordinate of the touch screen input event in the global coordinate system with the upper left corner of the primary screen as the origin, in pixels (px).|
+| struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | Touch screen input event object, which can be created through the [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent) API.<br>After use, the touch screen input event object must be destroyed using the [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent) API. |
+| int32_t globalY | Y coordinate of the touch screen input event in the global coordinate system with the upper left corner of the primary screen as the origin, in px.|
 
 ### OH_Input_GetTouchEventGlobalY()
 
@@ -4068,7 +4202,7 @@ Obtains the Y coordinate of the touch event in the global coordinate system with
 
 | Type| Description|
 | -- | -- |
-| int32_t | The Y coordinate in the global coordinate system with the upper left corner of the primary screen as the origin for the touch screen input event, in pixels (px).|
+| int32_t | The Y coordinate in the global coordinate system with the upper left corner of the primary screen as the origin for the touch screen input event, in px.|
 
 ### OH_Input_SetAxisEventGlobalX()
 
@@ -4087,13 +4221,13 @@ Sets the X coordinate of the axis event in the global coordinate system with the
 | Parameter| Description|
 | -- | -- |
 | struct [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object, which can be created through the [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) API.<br>After use, the axis event object must be destroyed through the [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent) API. |
-| int32_t globalX | X coordinate of the axis event in the global coordinate system with the upper left corner of the primary screen as the origin, in pixels (px).|
+| int32_t globalX | X coordinate of the axis event in the global coordinate system with the upper left corner of the primary screen as the origin, in px.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that axisEvent is a null pointer. |
 
 ### OH_Input_GetAxisEventGlobalX()
 
@@ -4112,13 +4246,13 @@ Obtains the X coordinate of the axis event in the global coordinate system with 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| int32_t* globalX | X-coordinate of the axis event in the global coordinate system with the upper left corner of the primary screen as the origin, in pixels (px).|
+| int32_t* globalX | X-coordinate of the axis event in the global coordinate system with the upper left corner of the primary screen as the origin, in px.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** or **globalX** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that axisEvent or globalX is a null pointer. |
 
 ### OH_Input_SetAxisEventGlobalY()
 
@@ -4136,14 +4270,14 @@ Sets the Y coordinate of the axis event in the global coordinate system with the
 
 | Parameter| Description|
 | -- | -- |
-| struct [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object, which can be created using the [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) interface.<br>After use, the axis event object must be destroyed using the [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent) interface. |
-| int32_t globalY | Y-coordinate of the axis event in the global coordinate system with the origin at the upper left corner of the primary screen, in pixels (px).|
+| struct [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object, which can be created using the [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) API.<br>After use, the axis event object must be destroyed using the [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent) API. |
+| int32_t globalY | Y-coordinate of the axis event in the global coordinate system with the origin at the upper left corner of the primary screen, in px.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that axisEvent is a null pointer. |
 
 ### OH_Input_GetAxisEventGlobalY()
 
@@ -4162,13 +4296,13 @@ Obtains the Y coordinate of the axis event in the global coordinate system with 
 | Parameter| Description|
 | -- | -- |
 | const [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | Axis event object. You can call [OH_Input_CreateAxisEvent()](#oh_input_createaxisevent) to create an axis event object.<br>If the axis event object is no longer needed, destroy it by calling [OH_Input_DestroyAxisEvent()](#oh_input_destroyaxisevent).|
-| int32_t* globalY | Y-coordinate of the axis event in the global coordinate system with the upper left corner of the primary screen as the origin, in pixels (px).|
+| int32_t* globalY | Y-coordinate of the axis event in the global coordinate system with the upper left corner of the primary screen as the origin, in px.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) if the operation is successful;<br>         [INPUT_PARAMETER_ERROR](#input_result) if **axisEvent** or **globalY** is a null pointer.|
+| [Input_Result](#input_result) | [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that axisEvent or globalY is a null pointer. |
 
 ### OH_Input_GetPointerLocation()
 
@@ -4191,14 +4325,15 @@ Since API version 26.0.0, non-focused applications that have the ohos.permission
 | Parameter| Description|
 | -- | -- |
 | int32_t *displayId | Screen ID of the current screen.|
-| double *displayX | X coordinate of the mouse on the current screen, in pixels (px).|
-| double *displayY | Y coordinate of the mouse on the current screen, in pixels (px).|
+| double *displayX | X coordinate of the mouse on the current screen, in px.|
+| double *displayY | Y coordinate of the mouse on the current screen, in px.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **GetPointerLocation** function.<br>      [INPUT_SUCCESS](#input_result) if the operation is successful;<br>      [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect;<br>      [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs;<br>      [INPUT_APP_NOT_FOCUSED](#input_result) if the current application is not in focus;<br>      [INPUT_DEVICE_NO_POINTER](#input_result) if no mouse device is available.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetPointerLocation function:<br> [INPUT_SUCCESS](#input_result) indicates that the query is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter error.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates a service exception.<br> [INPUT_APP_NOT_FOCUSED](#input_result) indicates that the current application is not the focused application.<br> [INPUT_DEVICE_NO_POINTER](#input_result) indicates that no mouse-type input peripheral is available. |
+
 
 ### OH_Input_GetKeyEventId()
 
@@ -4216,7 +4351,7 @@ Obtains the ID of a key event.
 
 | Parameter| Description|
 | -- | -- |
-| [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | **KeyEvent** object, which can be created through [OH_Input_CreateKeyEvent()](#oh_input_createkeyevent).<br>If the key event object is no longer needed, destroy it by calling [OH_Input_DestroyKeyEvent()](#oh_input_destroykeyevent).|
+| const struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | Key event object. You can create a key event object by calling [OH_Input_CreateKeyEvent](#oh_input_createkeyevent).<br>After using it, destroy the key event object by calling [OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent). |
 | int32_t* eventId | ID of the key event.|
 
 **Return value**
@@ -4224,6 +4359,7 @@ Obtains the ID of a key event.
 | Type| Description|
 | -- | -- |
 | [Input_Result](#input_result) | Return value of the **OH_Input_GetKeyEventId** function.<br> [INPUT_SUCCESS](#input_result) if the operation is successful;<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+
 
 ### OH_Input_AddKeyEventHook()
 
@@ -4255,7 +4391,8 @@ You can call [OH_Input_RemoveKeyEventHook()](#oh_input_removekeyeventhook) to re
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_AddKeyEventHook** function.<br> [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported.<br>  [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails;<br>  [INPUT_REPEAT_INTERCEPTOR](#input_result) if the hook function is set repeatedly (only one hook function can be set for a process);<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the **OH_Input_AddKeyEventHook** function.<br> [INPUT_SUCCESS](#input_result) if the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the function is not supported. <br> [INPUT_PERMISSION_DENIED](#input_result) if the permission verification fails.<br> [INPUT_REPEAT_INTERCEPTOR](#input_result) if the hook function is set repeatedly (only one hook function can be set for a process).<br> [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
+
 
 ### OH_Input_RemoveKeyEventHook()
 
@@ -4281,7 +4418,8 @@ This API is usually used together with [OH_Input_AddKeyEventHook()](#oh_input_ad
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_RemoveKeyEventHook** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful; (if a hook is not added, a success message is also returned when the hook is removed);<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_RemoveKeyEventHook function:<br> Returns [INPUT_SUCCESS](#input_result) if the operation is successful. If no corresponding hook was added before, success is also returned upon removal.<br> Returns [INPUT_PARAMETER_ERROR](#input_result) if the parameter check fails.<br> Returns [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs. Retry. |
+
 
 ### OH_Input_DispatchToNextHandler()
 
@@ -4313,7 +4451,8 @@ If the redispatched event is not intercepted by the hook function, the API call 
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_DispatchToNextHandler** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails; (you can call [OH_Input_GetKeyEventId()](#oh_input_getkeyeventid) to check whether the input eventId is correct);<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of OH_Input_DispatchToNextHandler:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter check failure. You can use [OH_Input_GetKeyEventId](#oh_input_getkeyeventid) to check whether the passed eventId is accurate.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates a service exception. Try again. |
+
 
 ### OH_Input_SetPointerVisible()
 
@@ -4339,7 +4478,8 @@ Sets the visible status of the mouse pointer in the current window.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_SetPointerVisible** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of OH_Input_SetPointerVisible:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result) indicates that the device is not supported.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates a service exception. Try again. |
+
 
 ### OH_Input_GetPointerStyle()
 
@@ -4349,7 +4489,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 **Description**
 
-Gets the mouse cursor style of a specified window. This API only supports getting the mouse cursor style of windows within the current application process.
+Obtains the mouse cursor style of a specified window. This API only supports getting the mouse cursor style of windows within the current application process.
 
 **Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
 
@@ -4366,7 +4506,8 @@ Gets the mouse cursor style of a specified window. This API only supports gettin
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetPointerStyle** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetPointerStyle function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter check failure.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates a service exception. Retry. |
+
 
 ### OH_Input_SetPointerStyle()
 
@@ -4393,7 +4534,8 @@ Sets the mouse cursor style for a specified window. This API only supports setti
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_SetPointerStyle** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_SetPointerStyle function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed.<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates a service exception. Try again. |
+
 
 ### OH_Input_CustomCursor_Create()
 
@@ -4403,7 +4545,7 @@ Input_CustomCursor* OH_Input_CustomCursor_Create(OH_PixelmapNative* pixelMap, in
 
 **Description**
 
-Creates a custom mouse pointer object. You can call [OH_Input_CustomCursor_Destroy()](#oh_input_customcursor_destroy) to destroy a custom mouse pointer resource object.
+Creates a custom mouse pointer resource object. You can call [OH_Input_CustomCursor_Destroy()](#oh_input_customcursor_destroy) to destroy a custom mouse pointer resource object.
 
 **Since**: 22
 
@@ -4412,14 +4554,14 @@ Creates a custom mouse pointer object. You can call [OH_Input_CustomCursor_Destr
 | Parameter| Description|
 | -- | -- |
 | OH_PixelmapNative* pixelMap | Pixel map of the custom mouse pointer object. For details, see [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md). The minimum value is the minimum size of the resource image. The maximum value is 256 x 256 px.|
-| int32_t anchorX | Horizontal coordinate of the custom mouse cursor focus. This coordinate is limited by the size of the custom mouse cursor. The minimum value is 0, and the maximum value is the maximum width of the resource image, in pixels (px). |
-| int32_t anchorY | Vertical coordinate of the custom mouse cursor focus. This coordinate is limited by the size of the custom mouse cursor. The minimum value is 0, and the maximum value is the maximum height of the resource image, in pixels (px). |
+| int32_t anchorX | Horizontal coordinate of the custom mouse cursor focus. This coordinate is limited by the size of the custom mouse cursor. The minimum value is 0, and the maximum value is the maximum width of the resource image, in px. |
+| int32_t anchorY | Vertical coordinate of the custom mouse cursor focus. This coordinate is limited by the size of the custom mouse cursor. The minimum value is 0, and the maximum value is the maximum height of the resource image, in px. |
 
 **Return value**
-
 | Type| Description|
 | -- | -- |
 | Input_CustomCursor* | [Input_CustomCursor](./capi-input-input-customcursor.md) object. The pointer to the custom mouse pointer object is returned if the operation is successful, and a null pointer is returned if an exception occurs.|
+
 
 ### OH_Input_CustomCursor_Destroy()
 
@@ -4429,7 +4571,7 @@ void OH_Input_CustomCursor_Destroy(Input_CustomCursor** customCursor)
 
 **Description**
 
-Destroys a custom mouse pointer object.
+Destroys a custom mouse pointer resource object.
 
 **Since**: 22
 
@@ -4438,6 +4580,7 @@ Destroys a custom mouse pointer object.
 | Parameter| Description|
 | -- | -- |
 | Input_CustomCursor** customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
+
 
 ### OH_Input_CustomCursor_GetPixelMap()
 
@@ -4462,7 +4605,8 @@ Obtains the pixel map of a custom mouse pointer object.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CustomCursor_GetPixelMap** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CustomCursor_GetPixelMap function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed. |
+
 
 ### OH_Input_CustomCursor_GetAnchor()
 
@@ -4481,14 +4625,15 @@ Obtains the focus coordinates of a custom mouse pointer object.
 | Parameter| Description|
 | -- | -- |
 | Input_CustomCursor* customCursor | Custom mouse pointer object. For details, see [Input_CustomCursor](./capi-input-input-customcursor.md).|
-| int32_t* anchorX | Horizontal coordinate of the focus point of the custom mouse cursor resource, in pixels (px).|
-| int32_t* anchorY | Vertical coordinate of the focus point of the custom mouse cursor resource, in pixels (px).|
+| int32_t* anchorX | Horizontal coordinate of the focus point of the custom mouse cursor resource, in px.|
+| int32_t* anchorY | Vertical coordinate of the focus point of the custom mouse cursor resource, in px.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CustomCursor_GetAnchor** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CustomCursor_GetAnchor function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed. |
+
 
 ### OH_Input_CursorConfig_Create()
 
@@ -4506,13 +4651,14 @@ Creates a custom mouse pointer configuration object. You can call [OH_Input_Curs
 
 | Parameter| Description|
 | -- | -- |
-| bool followSystem | Whether to adjust the mouse cursor size based on system settings. false means using the custom mouse cursor style size, true means adjusting the mouse cursor size based on system settings. The adjustable range is: [cursor resource image size, 256×256], in pixels (px).|
+| bool followSystem | Whether to adjust the mouse cursor size based on system settings. The value **false** indicates that the custom mouse cursor style size is used, and **true** indicates that the mouse cursor size is adjusted based on system settings. The adjustable range is [cursor resource image size, 256 × 256], in pixels. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
 | Input_CursorConfig* | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
+
 
 ### OH_Input_CursorConfig_Destroy()
 
@@ -4531,6 +4677,7 @@ Destroys a custom mouse pointer configuration object.
 | Parameter| Description|
 | -- | -- |
 | Input_CursorConfig** cursorConfig | Custom mouse pointer configuration object. For details, see [Input_CursorConfig](./capi-input-input-cursorconfig.md).|
+
 
 ### OH_Input_CursorConfig_IsFollowSystem()
 
@@ -4555,7 +4702,8 @@ Queries whether the custom mouse pointer configuration follows the system settin
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CursorConfig_IsFollowSystem** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CursorConfig_IsFollowSystem function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check fails. |
+
 
 ### OH_Input_SetCustomCursor()
 
@@ -4583,7 +4731,7 @@ The cursor may revert to the system style in the following scenarios: applicatio
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_SetCustomCursor** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_SetCustomCursor function.<br> [INPUT_SUCCESS](#input_result) if the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid.<br> [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported.<br> [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal. |
 
 ### OH_Input_CursorInfo_Create()
 
@@ -4644,7 +4792,7 @@ Obtains the pointer visible status of the specified mouse pointer information ob
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CursorInfo_IsVisible** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CursorInfo_IsVisible function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed. |
 
 ### OH_Input_CursorInfo_GetStyle()
 
@@ -4663,13 +4811,13 @@ Obtains the pointer style of the specified mouse pointer information object.
 | Parameter| Description|
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo()](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo()](#oh_input_getcursorinfo) to query the current mouse pointer information.|
-| [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle) | Enum value for the cursor style of mouse cursor info. For details, see [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle).|
+| [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle)* style | Cursor style enum of the mouse cursor information. For details, see [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle). |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CursorInfo_GetStyle** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails or the pointer is invisible.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CursorInfo_GetStyle function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates a parameter check failure or that the cursor is invisible.|
 
 ### OH_Input_CursorInfo_GetSizeLevel()
 
@@ -4679,7 +4827,7 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 
 **Description**
 
-Obtains the pointer size level of the specified mouse pointer information object.
+Obtains the cursor size level of the specified mouse pointer information object.
 
 **Since**: 22
 
@@ -4688,13 +4836,13 @@ Obtains the pointer size level of the specified mouse pointer information object
 | Parameter| Description|
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_GetMouseEventCursorInfo()](#oh_input_getmouseeventcursorinfo) to query the mouse pointer information of a specified mouse event, or call [OH_Input_GetCursorInfo()](#oh_input_getcursorinfo) to query the current mouse pointer information.|
-| int32_t* sizeLevel | Pointer size level of the mouse pointer information object. The value is an integer ranging from 1 to 7. A larger value indicates a higher pointer size level. The size of the custom pointer [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle) is subject to the actual bitmap size.|
+| int32_t* sizeLevel | Cursor size level of the mouse cursor information. The value ranges from 1 to 7, and a larger value indicates a larger cursor. For an app custom cursor [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the actual bitmap size prevails. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CursorInfo_GetSizeLevel** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails or the pointer is invisible.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CursorInfo_GetSizeLevel function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check fails or the cursor is invisible.|
 
 ### OH_Input_CursorInfo_GetColor()
 
@@ -4704,7 +4852,7 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 **Description**
 
-Gets the cursor color corresponding to a specified mouse cursor info object, represented as a 32-bit ARGB integer.
+Obtains the cursor color corresponding to a specified mouse cursor info object, represented as a 32-bit ARGB integer.
 
 **Since**: 22
 
@@ -4719,7 +4867,7 @@ Gets the cursor color corresponding to a specified mouse cursor info object, rep
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_CursorInfo_GetColor** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails or the pointer is invisible.|
+| [Input_Result](#input_result) | Return value of the OH_Input_CursorInfo_GetColor function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check fails or the cursor is invisible. |
 
 ### OH_Input_GetMouseEventCursorInfo()
 
@@ -4729,7 +4877,7 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 
 **Description**
 
-Obtains the mouse pointer information of the mouse event, including the pointer visible status, pointer style, pointer size level, and pointer color.
+Obtains the mouse cursor information of the mouse event, including the cursor visible status, cursor style, cursor size level, and cursor color.
 
 **Since**: 22
 
@@ -4737,14 +4885,14 @@ Obtains the mouse pointer information of the mouse event, including the pointer 
 
 | Parameter| Description|
 | -- | -- |
-| const [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Mouse event object. You can obtain the mouse event object from the callback of [OH_Input_AddMouseEventMonitor()](#oh_input_addmouseeventmonitor) or [OH_Input_AddInputEventInterceptor()](#oh_input_addinputeventinterceptor).|
+| const struct [Input_MouseEvent](capi-input-input-mouseevent.md)* mouseEvent | Pointer to the mouse event object. The mouse event object can be obtained from the callback function of the [OH_Input_AddMouseEventMonitor](#oh_input_addmouseeventmonitor) or [OH_Input_AddInputEventInterceptor](#oh_input_addinputeventinterceptor) API. |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | Mouse pointer information object. You can call [OH_Input_CursorInfo_Create()](#oh_input_cursorinfo_create) to create a mouse pointer information object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetMouseEventCursorInfo** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetMouseEventCursorInfo function:<br> [INPUT_SUCCESS](#input_result): The operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result): Parameter check failed. |
 
 ### OH_Input_GetCursorInfo()
 
@@ -4754,7 +4902,7 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 
 **Description**
 
-Obtains the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color. If the **pixelmap** parameter is not empty and the pointer style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the pointer is returned.
+Obtains the mouse cursor information, including the cursor visible status, cursor style, cursor size level, and cursor color. If the **pixelmap** parameter is not empty and the cursor style is [DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle), the **PixelMap** object of the cursor is returned.
 
 **Device behavior differences**: This API has no effect on wearables, but can be properly called on other devices.
 
@@ -4771,7 +4919,7 @@ Obtains the mouse pointer information, including the pointer visible status, poi
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_GetCursorInfo** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br>  [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
+| [Input_Result](#input_result) | Return value of the OH_Input_GetCursorInfo function:<br> [INPUT_SUCCESS](#input_result): The operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result): Parameter check failed.<br> [INPUT_SERVICE_EXCEPTION](#input_result): Service exception. Try again. |
 
 ### OH_Input_SetTouchEventPressure()
 
@@ -4781,7 +4929,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 
 **Description**
 
-Sets the pressure for a touchscreen input event. If the pressure value is not set or is not within the valid range, the default value **0.0** is used.
+Sets the pressure of a touchscreen input event. If the pressure is not set, or the set value is not within [0.0, 1.0], the default value is **0.0**.
 
 **Since:** 24
 
@@ -4796,7 +4944,7 @@ Sets the pressure for a touchscreen input event. If the pressure value is not se
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_SetTouchEventPressure** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_SetTouchEventPressure function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed. |
 
 ### OH_Input_GetTouchEventPressure()
 
@@ -4820,7 +4968,7 @@ Obtains the pressure of a touchscreen input event.
 
 | Type| Description|
 | -- | -- |
-| double | Pressure value, without a unit. When **touchEvent** is NULL, the default pressure **0.0** is returned.|
+| double | Pressure value, without a unit.|
 
 ### OH_Input_SetTouchEventWindowX()
 
@@ -4839,7 +4987,7 @@ Sets the X coordinate of the touch event in the relative coordinate system with 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | **TouchEvent** object, which can be created through [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent).<br>If the **TouchEvent** object is no longer needed, destroy it by calling [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent).|
-| int32_t windowX | X-coordinate in the relative coordinate system with the origin at the upper left corner of the specified window, in pixels (px). |
+| int32_t windowX | X-coordinate in the relative coordinate system with the origin at the upper left corner of the specified window, in px. |
 
 ### OH_Input_GetTouchEventWindowX()
 
@@ -4863,7 +5011,7 @@ Obtains the X coordinate of the touch event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | X coordinate in the relative coordinate system with the upper left corner of the specified window as the origin, in pixels (px). When **touchEvent** is NULL, the default value **0** is returned. |
+| int32_t | X coordinate in the relative coordinate system with the upper left corner of the specified window as the origin, in px.|
 
 ### OH_Input_SetTouchEventWindowY()
 
@@ -4882,7 +5030,7 @@ Sets the Y coordinate of the touch event in the relative coordinate system with 
 | Parameter| Description|
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | **TouchEvent** object, which can be created through [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent).<br>If the **TouchEvent** object is no longer needed, destroy it by calling [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent).|
-| int32_t windowY | Y-coordinate in the relative coordinate system with the origin at the upper left corner of the window, in pixels (px). |
+| int32_t windowY | Y-coordinate in the relative coordinate system with the origin at the upper left corner of the window, in px. |
 
 ### OH_Input_GetTouchEventWindowY()
 
@@ -4906,7 +5054,7 @@ Obtains the Y coordinate of the touch event in the relative coordinate system wi
 
 | Type| Description|
 | -- | -- |
-| int32_t | Y-coordinate in the relative coordinate system with the origin at the upper left corner of the window, in pixels (px). When **touchEvent** is NULL, the default value **0** is returned. |
+| int32_t | Y-coordinate in the relative coordinate system with the origin at the upper left corner of the window, in px. |
 
 ### OH_Input_SetTouchEventDownTime()
 
@@ -4925,7 +5073,7 @@ Sets the time when the most recent down event occurred for the finger or other t
 | Parameter| Description|
 | -- | -- |
 | struct [Input_TouchEvent](capi-input-input-touchevent.md)* touchEvent | **TouchEvent** object, which can be created through [OH_Input_CreateTouchEvent()](#oh_input_createtouchevent).<br>If the **TouchEvent** object is no longer needed, destroy it by calling [OH_Input_DestroyTouchEvent()](#oh_input_destroytouchevent).|
-| int64_t downTime | The time when the most recent press event of the finger or other touch screen peripheral corresponding to the current touch screen event occurred, representing the number of microseconds elapsed since system startup, in microseconds (μs). |
+| int64_t downTime | The time when the most recent press event of the finger or other touch screen peripheral corresponding to the current touch event occurred, representing the number of microseconds elapsed since system startup, in microseconds (μs). |
 
 ### OH_Input_GetTouchEventDownTime()
 
@@ -4949,7 +5097,7 @@ Obtains the time when the most recent down event occurred for the finger or othe
 
 | Type| Description|
 | -- | -- |
-| int64_t | The time when the most recent press event of the finger or other touch peripherals corresponding to the current touch screen input occurred, representing the number of microseconds elapsed since system startup, in microseconds (μs). When **touchEvent** is NULL, **0** is returned. |
+| int64_t | The time when the most recent press event of the finger or other touch peripherals corresponding to the current touch screen input occurred, representing the number of microseconds elapsed since system startup, in microseconds (μs). |
 
 ### OH_Input_SetTouchEventToolType()
 
@@ -4974,7 +5122,7 @@ Sets the tool type for a touchscreen input event. If **toolType** is not set, th
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return value of the **OH_Input_SetTouchEventToolType** function.<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails.|
+| [Input_Result](#input_result) | Return value of the OH_Input_SetTouchEventToolType function:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check failed. |
 
 ### OH_Input_GetTouchEventToolType()
 
@@ -4998,7 +5146,7 @@ Obtains the tool type of a touchscreen input event.
 
 | Type| Description|
 | -- | -- |
-| [Input_TouchEventToolType](#input_toucheventtooltype) | Tool type. When **touchEvent** is NULL, the default tool type [TOOL_TYPE_FINGER](#input_toucheventtooltype) is returned.|
+| [Input_TouchEventToolType](#input_toucheventtooltype) | Tool type.|
 
 ### OH_Input_BindInputDeviceToDisplay()
 
@@ -5016,6 +5164,7 @@ Binds a specified input device to a specified screen.
 
 **Since**: 26.0.0
 
+
 **Parameters**
 
 | Parameter| Description|
@@ -5027,4 +5176,4 @@ Binds a specified input device to a specified screen.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Return values of the OH_Input_BindInputDeviceToDisplay function:<br>  [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br>  [INPUT_PERMISSION_DENIED](#input_result) indicates that the permission verification fails.<br>  [INPUT_PARAMETER_ERROR](#input_result) indicates that the parameter check fails (the input device does not exist, the display device does not exist, or the input device is not a stylus device).<br>  [INPUT_SERVICE_EXCEPTION](#input_result) indicates that the service is abnormal. Try again. |
+| [Input_Result](#input_result) | Return value of OH_Input_BindInputDeviceToDisplay:<br> [INPUT_SUCCESS](#input_result) indicates that the operation is successful.<br> [INPUT_PERMISSION_DENIED](#input_result) indicates that permission verification failed.<br> [INPUT_PARAMETER_ERROR](#input_result) indicates that parameter check failed (the input device does not exist, the display device does not exist, or the input device is not a stylus device).<br> [INPUT_SERVICE_EXCEPTION](#input_result) indicates a service exception. Try again. |

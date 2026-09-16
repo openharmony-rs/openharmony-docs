@@ -44,6 +44,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Not System App. Interface caller is not a system app. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -150,6 +151,7 @@ getWant(agent: WantAgent): Promise\<Want\>
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Not System App. Interface caller is not a system app. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|

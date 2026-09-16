@@ -43,11 +43,11 @@ API version 12及之后，系统为提升用户隐私安全保护能力，剪贴
 
     权限申请步骤：
     <!--RP1-->
-    1.通过[ACL方式](../../security/AccessToken/declare-permissions-in-acl.md)，申请高级别权限。
+    1. 通过[ACL方式](../../security/AccessToken/declare-permissions-in-acl.md)，申请高级别权限。
     
-    2.在module.json5配置文件中[声明权限](../../security/AccessToken/declare-permissions.md)。
+    2. 在module.json5配置文件中[声明权限](../../security/AccessToken/declare-permissions.md)。
     
-    3.通过弹窗[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+    3. 通过弹窗[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
     <!--RP1End-->
 
 ## 剪贴板弹窗适配优化

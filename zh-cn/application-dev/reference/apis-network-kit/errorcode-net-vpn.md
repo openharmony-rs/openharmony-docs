@@ -159,4 +159,6 @@ VPN系统内部错误。
 
 **处理步骤**
 
-检查VPN系统服务是否正常。
+1. 检查内存空间是否充足，清理内存后重试。
+
+2. 检查VPN系统服务是否正常。如果问题仍然存在，请通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/)提交问题。

@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=74c5c403cb641e8351820634af05f0bfefb8e44a translatedAt=2026-09-01T12:47:06.947Z pushedAt=2026-09-07T07:06:30.562Z -->
 
 > **NOTE**
 >
@@ -24,7 +25,7 @@ Creates an AVSession. This API uses a promise to return the result. An applicati
 
 > **NOTE**
 > 
-> - During service execution, the AVSession object must be kept alive to prevent issues such as background control muting, device selection exceptions, and abnormal display of notification, lock screen, or capsule playback control widgets.
+> During service execution, the AVSession object must be kept alive to prevent issues such as background control muting, device selection exceptions, and abnormal display of notification, lock screen, or capsule playback control widgets.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -93,7 +94,7 @@ Creates an AVSession. This API uses an asynchronous callback to return the resul
 
 > **NOTE**
 > 
-> - During service execution, the AVSession object must be kept alive to prevent issues such as background control muting, device selection exceptions, and abnormal display of notification, lock screen, or capsule playback control widgets.
+> During service execution, the AVSession object must be kept alive to prevent issues such as background control muting, device selection exceptions, and abnormal display of notification, lock screen, or capsule playback control widgets.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -136,6 +137,10 @@ struct Index {
           let sessionId: string;  // Used as an input parameter of subsequent functions.
 
           avSession.createAVSession(context, tag, "audio", async (err:BusinessError, data: avSession.AVSession) => {
+              if (err) {
+                console.error(`Failed to create AV session, error code: ${err.code}, error message: ${err.message}`);
+                return;
+              }
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
@@ -170,7 +175,7 @@ This API returns an existing AVSession object that was previously created in the
 
 | Type                             | Description                                                        |
 | --------------------------------- | ------------------------------------------------------------ |
-| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events.|
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise used to return the AVSession obtained, which can be used to obtain the session ID, set the metadata and playback state information, and send key events. |
 
 **Error codes**
 
@@ -229,7 +234,7 @@ A system application can apply for either **ohos.permission.MANAGE_MEDIA_RESOURC
 
 | Type                                                        | Description                                         |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise used to return an array of AVSessionDescriptor objects, each of which is read only.|
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise used to return an array of **AVSessionDescriptor** objects, each of which is read only. |
 
 **Error codes**
 
@@ -347,7 +352,7 @@ Subscribes to session creation events. This API uses an asynchronous callback to
 
 | Name   | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | Yes  | Callback used to report the session descriptor.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | Yes | Callback used to report the session descriptor. |
 
 **Error codes**
 
@@ -400,7 +405,7 @@ Subscribes to the session destroy events. This API uses an asynchronous callback
 
 | Name  | Type           | Mandatory| Description                                                        |
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | Yes  | Callback used to report the session descriptor.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | Yes | Callback used to report the session descriptor. |
 
 **Error codes**
 
@@ -449,7 +454,7 @@ Subscribes to the top session change events. This API uses an asynchronous callb
 
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | Yes  | Callback used to report the session descriptor.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | Yes | Callback used to report the session descriptor. |
 
 **Error codes**
 
@@ -500,7 +505,7 @@ Unsubscribes from session creation events. After unsubscription, the event will 
 
 | Name  | Type      | Mandatory| Description      |
 | -------- | ----------| ---- | ----------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.                              |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | No | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled. |
 
 **Error codes**
 
@@ -549,7 +554,7 @@ Unsubscribes from session destroy events. After unsubscription, the event will n
 
 | Name  | Type       | Mandatory| Description                     |
 | -------- | -----------| ---- | -------------------------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | No | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled. |
 
 **Error codes**
 
@@ -598,7 +603,7 @@ Unsubscribes from the top session change events. After unsubscription, the event
 
 | Name  | Type             | Mandatory| Description                       |
 | -------- | -----------------| ---- | ---------------------------- |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, events of all related sessions are unsubscribed.|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | No | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled. |
 
 **Error codes**
 
