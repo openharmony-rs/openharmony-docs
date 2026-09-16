@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:46:19.938Z pushedAt=2026-09-16T03:48:18.711Z -->
 
-The **hid** module provides APIs for using the Bluetooth Human Interface Device Profile (HID).
+The **hid** module provides methods for accessing Bluetooth [human interface device (HID)](../../connectivity/bluetooth/terminology.md#hid) functions. It allows you to connect to and disconnect from the HIDHost profile, making it suitable for managing connections to human interface devices such as Bluetooth keyboards and mouse devices.
 
 > **NOTE**
 >
@@ -23,13 +24,13 @@ import { hid } from '@kit.ConnectivityKit';
 
 ## HidHostProfile
 
-Before using the **HidHostProfile** APIs, you need to create an instance of this class by using [createHidHostProfile()](./js-apis-bluetooth-hid.md#hidcreatehidhostprofile).
+The **HidHostProfile** class provides functions such as connecting to and disconnecting from Bluetooth HID devices. It is applicable to scenarios where the system app manages Bluetooth HID devices. Before using the **HidHostProfile** APIs, you need to create an instance of this class by using [createHidHostProfile()](./js-apis-bluetooth-hid.md#hidcreatehidhostprofile).
 
 ### connect
 
 connect(deviceId: string): void
 
-Connects to the HidHost service of a device.
+Connects to the HidHost service of a device. Use scenarios: When an app needs to connect to HID peripherals such as Bluetooth keyboards, mouse devices, and game handle controls for input interaction, this API is called to initiate an HID connection to the host.
 
 **System API**: This is a system API.
 
@@ -75,7 +76,7 @@ try {
 
 disconnect(deviceId: string): void
 
-Disconnects from the HidHost service of a device.
+Disconnects from the HidHost service of a device. Use scenarios: When the HID device is no longer used, another HID device needs to be switched, or the Bluetooth HID connection resources need to be released, call this API to terminate the HID connection to the host.
 
 **System API**: This is a system API.
 
