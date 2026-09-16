@@ -351,7 +351,7 @@
          }
        },
        () => {
-         // 截图向翻转动效。
+         // 截图向外翻转动效。
          if (this.curPosition === 1) {
            this.shotImgRotation = { y: BlurAnimateUtil.ROTATE_AXIS, angle: BlurAnimateUtil.IMG_FLIP_ANGLE_90 };
          } else {
