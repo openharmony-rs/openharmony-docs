@@ -219,7 +219,7 @@ struct Index {
 ## FAQ
 
 
-1. 应用的Modules.json5文件skills设置不正确。
+1. 应用的modules.json5文件skills设置不正确。
 
    检查"host"字段中是否是应用所对应的域名。
 
