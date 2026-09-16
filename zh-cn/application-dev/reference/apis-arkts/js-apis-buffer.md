@@ -942,7 +942,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回比较结果。-1：当前排列在目标前，0：当前与目标相同，1：当前排列在目标后。 |
+| -1&nbsp;\|&nbsp;0&nbsp;\|&nbsp;1 | 返回比较结果。-1：当前排列在目标前，0：当前与目标相同，1：当前排列在目标后。 |
 
 **错误码：**
 
