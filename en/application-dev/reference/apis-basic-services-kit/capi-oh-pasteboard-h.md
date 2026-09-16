@@ -317,12 +317,7 @@ Destroys the [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) i
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).|
-
-**Description**
-
-- **ERR_OK**: The operation is successful.
-- **ERR_INVALID_PARAMETER**: A parameter is invalid.
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_PasteboardObserver_SetData()
 
@@ -937,13 +932,7 @@ Obtains the number of pasteboard content changes. Typical use scenarios include 
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Returns the number of pasteboard content changes if this API is called successfully; otherwise, returns **0**.|
-
-**Return value**
-
-- When the pasteboard data expires due to device restart, pasteboard service restart, or the end of lifecycle, or the pasteboard is empty because **OH_Pasteboard_ClearData** or another API is called, the number of pasteboard content changes remains unchanged.
-- When the system is restarted, or the pasteboard service is restarted due to an exception, the number of pasteboard data changes counts from 0.
-- In addition, copying the same data repeatedly is considered to change the data for multiple times. Therefore, each time the data is copied, the number of data changes increases.
+| uint32_t | Returns the number of pasteboard content changes if this API is called successfully; otherwise, returns **0**.<br> Even though the pasteboard data expires, or the data becomes empty because of the called **OH_Pasteboard_ClearData** API, the number of data changes remains.<br> When the system is restarted, or the pasteboard service is restarted due to an exception, the number of pasteboard data changes counts from 0. In addition, copying the same data repeatedly is considered to change the data for multiple times. Therefore, each time the data is copied, the number of data changes increases.|
 
 ### OH_Pasteboard_SyncDelayedDataAsync()
 
