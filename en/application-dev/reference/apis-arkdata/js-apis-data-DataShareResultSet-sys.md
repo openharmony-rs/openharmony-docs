@@ -1,10 +1,11 @@
 # @ohos.data.dataShareResultSet (DataShare Result Set) (System API)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-15T12:51:03.359Z pushedAt=2026-09-16T07:50:15.735Z -->
 
 The **DataShareResultSet** module provides APIs for accessing the result set obtained from the database. You can access the values in the specified rows or the value of the specified data type.
 
@@ -38,21 +39,21 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
-        console.error("createDataShareHelper fail, error message : " + err);
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
       }
       let columns = ["*"];
-      let da = new dataSharePredicates.DataSharePredicates();
+      let predicates = new dataSharePredicates.DataSharePredicates();
       let resultSet: DataShareResultSet | undefined = undefined;
-      da.equalTo("name0", "ZhangSan");
+      predicates.equalTo("name0", "ZhangSan");
       if (dataShareHelper != undefined) {
-        (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
+        (dataShareHelper as dataShare.DataShareHelper).query(uri, predicates, columns).then((data: DataShareResultSet) => {
           console.info("query end, data : " + data);
           resultSet = data;
         }).catch((err: BusinessError) => {
-          console.error("query fail, error message : " + err);
+          console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
         });
       }
     });
@@ -211,7 +212,7 @@ Moves to the specified row in the result set.
 
 | **Name**| **Type**| **Mandatory**| Description                                   |
 | ---------- | -------- | -------- | --------------------------------------- |
-| position   | number   | Yes      | Position to move to, starting from 0.|
+| position   | number   | Yes       | Target position to move to, starting from 0, in the range [0, rowCount-1]. |
 
 **Return value**
 
@@ -243,7 +244,7 @@ If the specified column or key is empty or the value is not of the Blob type, yo
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number   | Yes       | Specified column index, starting from 0, with a value range of [0, columnCount-1]. |
 
 **Return value**
 
@@ -280,7 +281,7 @@ If the specified column or key is empty or the value is not of the string type, 
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number | Yes | Specified column index, starting from 0, with a value range of [0, columnCount-1]. |
 
 **Return value**
 
@@ -294,8 +295,12 @@ If the specified column or key is empty or the value is not of the string type, 
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getString = (resultSet as DataShareResultSet).getString(columnIndex);
-  console.info('resultSet.getString: ' + getString);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getString = (resultSet as DataShareResultSet).getString(columnIndex);
+    console.info('resultSet.getString: ' + getString);
+  }
 }
 ```
 
@@ -313,7 +318,7 @@ If the specified column or key is empty or the value is not of the long type, yo
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number   | Yes       | Specified column index, starting from 0, with a value range of [0, columnCount-1]. |
 
 **Return value**
 
@@ -327,8 +332,12 @@ If the specified column or key is empty or the value is not of the long type, yo
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getLong = (resultSet as DataShareResultSet).getLong(columnIndex);
-  console.info('resultSet.getLong: ' + getLong);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getLong = (resultSet as DataShareResultSet).getLong(columnIndex);
+    console.info('resultSet.getLong: ' + getLong);
+  }
 }
 ```
 
@@ -346,7 +355,7 @@ If the specified column or key is empty or the value is not of the double type, 
 
 | **Name** | **Type**| **Mandatory**| Description                   |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | Yes      | Index of the target column, starting from 0.|
+| columnIndex | number   | Yes       | Specified column index, starting from 0, with a value range of [0, columnCount-1]. |
 
 **Return value**
 
@@ -360,8 +369,12 @@ If the specified column or key is empty or the value is not of the double type, 
 let columnIndex = 1;
 if (resultSet != undefined) {
   let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
-  let getDouble = (resultSet as DataShareResultSet).getDouble(columnIndex);
-  console.info('resultSet.getDouble: ' + getDouble);
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getDouble = (resultSet as DataShareResultSet).getDouble(columnIndex);
+    console.info('resultSet.getDouble: ' + getDouble);
+  }
 }
 ```
 
@@ -408,9 +421,9 @@ The column name is passed in as an input parameter.
 **Example**
 
 ```ts
-let ColumnName = "name";
+let columnName = "name";
 if (resultSet != undefined) {
-  let getColumnIndex = (resultSet as DataShareResultSet).getColumnIndex(ColumnName);
+  let getColumnIndex = (resultSet as DataShareResultSet).getColumnIndex(columnName);
   console.info('resultSet.getColumnIndex: ' + getColumnIndex);
 }
 ```
@@ -429,7 +442,7 @@ The column index is passed in as an input parameter.
 
 | **Name** | **Type**| **Mandatory**| Description                      |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | Yes      | Column index.|
+| columnIndex | number   | Yes       | Index of the specified column in the result set, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value**
 
@@ -461,7 +474,7 @@ If the specified column or key is empty or the value is not of the DataType type
 
 | **Name** | **Type**| **Mandatory**| Description                      |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | Yes      | Column index.|
+| columnIndex | number   | Required       | Index of the specified column in the result set, starting from 0, in the range [0, columnCount-1]. |
 
 **Return value**
 
@@ -474,8 +487,13 @@ If the specified column or key is empty or the value is not of the DataType type
 ```ts
 let columnIndex = 1;
 if (resultSet != undefined) {
-  let getDataType = (resultSet as DataShareResultSet).getDataType(columnIndex);
-  console.info('resultSet.getDataType: ' + getDataType);
+  let goToFirstRow = (resultSet as DataShareResultSet).goToFirstRow();
+  if (!goToFirstRow) {
+    console.error("failed to go to first row");
+  } else {
+    let getDataType = (resultSet as DataShareResultSet).getDataType(columnIndex);
+    console.info('resultSet.getDataType: ' + getDataType);
+  }
 }
 ```
 
