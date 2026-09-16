@@ -748,7 +748,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | string | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| <feature-tag-value>。 |
+| value  | string | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| \<feature-tag-value\>。 |
 
 Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。
 
