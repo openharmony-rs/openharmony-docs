@@ -1063,7 +1063,7 @@ on(type: 'callingDisplayDidChange', callback: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1948,7 +1948,7 @@ onCallingDisplayDidChange(callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -3441,8 +3441,8 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. 适用版本：18+<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>|
-| 801 | capability not supported.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。<br/>|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：18+<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。<br/>|
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -4385,7 +4385,7 @@ setPrivacyMode(isPrivacyMode: boolean): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 201      | permissions check fails.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
@@ -4487,7 +4487,7 @@ setImmersiveEffect(effect: ImmersiveEffect): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801  |capability not supported.                          |
+| 801  |Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.                          |
 | 12800002   |input method engine error. Possible causes:1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013   |window manager service error.                          |
 | 12800020   |invalid immersive effect. 1.The gradient mode and the fluid light mode can only be used when the immersive mode is enabled. 2.The fluid light mode can only be used when the gradient mode is enabled. 3.When the gradient mode is not enabled, the gradient height can only be 0. |
@@ -7538,7 +7538,7 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported.<br>适用版本：19-19。<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>适用版本：19-19。<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 
 > **注意：**
 >
@@ -7578,7 +7578,7 @@ on(type: 'attachOptionsDidChange', callback: Callback&lt;AttachOptions&gt;): voi
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. 适用版本：19-19。 |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19-19。 |
 
 > **注意：**
 >

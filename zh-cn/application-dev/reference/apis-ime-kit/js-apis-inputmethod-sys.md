@@ -50,8 +50,8 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -131,7 +131,7 @@ on(type: 'imeShow', callback: (info: Array&lt;InputWindowInfo&gt;) => void): voi
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -169,7 +169,7 @@ onImeShow(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -213,7 +213,7 @@ on(type: 'imeHide', callback: (info: Array&lt;InputWindowInfo&gt;) => void): voi
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 
 **示例：**
@@ -252,7 +252,7 @@ onImeHide(callback: Callback&lt;Array&lt;InputWindowInfo&gt;&gt;):void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -404,7 +404,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -463,7 +463,7 @@ ArkTS-Sta: isPanelShown(panelInfo: PanelInfo, displayId: long): boolean
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -530,8 +530,8 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails. |
-| 202      | not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -601,7 +601,7 @@ ArkTS-Sta: getCursorInfo(userId?: int): CursorInfo
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
 | 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -650,7 +650,7 @@ getDefaultInputMethodAbility(): InputMethodProperty
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -708,8 +708,8 @@ ArkTS-Sta: enableInputMethod(bundleName: string, extensionName: string, enabledS
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -779,7 +779,7 @@ ArkTS-Sta: getAllInputMethodsSync(userId?: int): Array&lt;InputMethodProperty&gt
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -837,7 +837,7 @@ ArkTS-Sta: getInputMethodSubtypes(bundleName: string, userId?: int): Array&lt;In
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -903,7 +903,7 @@ ArkTS-Sta: getInputMethodsSync(enable: boolean, userId?: int): Array&lt;InputMet
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -957,7 +957,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1012,7 +1012,7 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1071,8 +1071,8 @@ ArkTS-Sta: showSoftKeyboard(displayId: long): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -1146,8 +1146,8 @@ ArkTS-Sta: hideSoftKeyboard(displayId: long): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons.|
 | 12800008 | input method manager service error. Possible cause:a system error, such as null pointer, IPC exception. |
 
@@ -1215,7 +1215,7 @@ ArkTS-Sta: getDefaultInputMethod(userId?: int): InputMethodProperty
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1271,7 +1271,7 @@ ArkTS-Sta: getSystemInputMethodConfigAbility(userId?: int): ElementName
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1332,8 +1332,8 @@ ArkTS-Sta: switchInputMethodWithUserId(bundleName: string, subtypeId?: string, u
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -1402,7 +1402,7 @@ ArkTS-Sta: getCurrentInputMethod(userId?: int): InputMethodProperty
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
@@ -1458,7 +1458,7 @@ ArkTS-Sta: getCurrentInputMethodSubtype(userId?: int): InputMethodSubtype
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
 | 12800024 | the specified user is not in the foreground. |
