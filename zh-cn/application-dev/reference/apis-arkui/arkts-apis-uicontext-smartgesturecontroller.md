@@ -87,7 +87,7 @@ struct SmartGestureControllerExample {
 
 registerMonitor(monitorCallback: Callback\<BaseGestureHandlingProposal, GestureHandlingResolution\>): void
 
-注册智慧手势监听回调。在系统处理当前智慧手势前，应用可接收当前手势的默认动作处理并进行自定义干预。使用callback异步回调。
+注册智慧手势监听回调。在系统处理当前智慧手势前，应用可通过callback接收当前手势的默认动作处理并进行自定义干预，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。
 
 > **说明：**
 >
@@ -317,7 +317,7 @@ requestSelected(id: string): void
 > **说明：**
 >
 > - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，组件在屏幕内可见，且组件绑定了[onClick](./arkui-ts/ts-universal-events-click.md#onclick)或绑定了单击手势[TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#接口)。
-> - 组件能否响应智慧手势由[smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)中的enabled决定。
+> - 组件能否响应智慧手势由[smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)中的enabled决定；组件能否被智慧手势选中由其中的selectable决定。
 
 **起始版本：** 26.0.0
 
@@ -468,7 +468,8 @@ import {
   NoneActionProposal,
   PageSwitchActionProposal,
   ScrollActionProposal,
-  SelectActionProposal
+  SelectActionProposal,
+  SmartGestureAction
 } from '@kit.ArkUI';
 
 @Entry
@@ -593,6 +594,10 @@ struct SmartGestureControllerExample {
     .onAppear(() => {
       this.controller.enableSmartTapAndSlideGestures(true);
       this.controller.registerMonitor(this.callback);
+    })
+    .onDisappear(() => {
+      this.controller.unregisterMonitor(this.callback);
+      this.controller.enableSmartTapAndSlideGestures(false);
     })
     .width('100%')
     .height('100%')
