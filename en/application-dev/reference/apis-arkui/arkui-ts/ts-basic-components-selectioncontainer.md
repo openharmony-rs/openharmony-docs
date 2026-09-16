@@ -25,7 +25,7 @@ The **SelectionContainer** component provides cross-node text selection, copying
 
 Supported
 
-## Interfaces
+## APIs
 
 SelectionContainer(value?: SelectionContainerOptions)
 

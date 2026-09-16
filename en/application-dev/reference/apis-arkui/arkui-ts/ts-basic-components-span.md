@@ -193,9 +193,9 @@ Font weight of the text. If this API is not used, the default font weight is **F
 >
 > If both this attribute and **fontVariations** are set, **fontVariations** takes precedence.
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 24.
+**Widget capability**: This API can be used in ArkTS widgets since API version 24.
 
-**Atomic service API:** This API can be used in atomic services since API version 24.
+**Atomic service API**: This API can be used in atomic services since API version 24.
 
 **Model restriction**: This API can be used only in the stage model.
 

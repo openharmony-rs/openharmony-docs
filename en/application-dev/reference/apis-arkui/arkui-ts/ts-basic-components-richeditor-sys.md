@@ -139,3 +139,5 @@ struct RichEditorDragConfigExample {
 }
 ```
 ![builderspan_drag_config](figures/builderspan_drag_config.gif)
+
+<!--no_check-->

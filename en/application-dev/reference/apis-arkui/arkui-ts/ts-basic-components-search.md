@@ -165,7 +165,7 @@ Sets the text alignment mode in the search text box. Currently, the following al
 
 textDirection(direction: TextDirection | undefined)
 
-Specifies the text layout direction. If this attribute is not set, the default text layout direction follows the component layout direction.
+Specifies the text layout direction. If this API is not used, the default text layout direction follows the component layout direction.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
