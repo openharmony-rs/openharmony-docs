@@ -1,12 +1,11 @@
 # Working with Buffer Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:37:59.121Z pushedAt=2026-08-12T11:05:47.596Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:27:44.354Z pushedAt=2026-09-16T08:20:56.055Z -->
 
 ## Introduction
 
@@ -15,15 +14,12 @@ In ArkTS, **Buffer** is a data type used to represent binary data.
 ## Basic Concepts
 
 Node-API provides APIs for handling binary data with ArkTS via the **Buffer** object. You can use these APIs to create and operate **Buffer** objects, processing binary data in I/O and network transmission.
-
 - **Buffer** object: an object used to represent binary data.
-
 - External buffer: a buffer created in the Node-API module to associate with existing data without copying the data.
 
 ## Available APIs
 
 The following table lists the APIs for processing the binary data in the ArkTS layer, such as file I/O and network transmission.
-
 | API| Description|
 | -------- | -------- |
 | napi_create_buffer | Creates an ArkTS **Buffer** instance of the specified size.|

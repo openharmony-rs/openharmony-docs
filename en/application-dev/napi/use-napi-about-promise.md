@@ -1,12 +1,11 @@
 # Implementing Asynchronous Operations Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:40:58.754Z pushedAt=2026-08-12T11:14:42.615Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:36:30.990Z pushedAt=2026-09-16T08:25:57.247Z -->
 
 ## Introduction
 
@@ -17,15 +16,10 @@ Node-API provides APIs for implementing asynchronous operations for time-consumi
 **Promise** is an object used to handle asynchronous operations in ArkTS. It has three states: **pending**, **fulfilled**, and **rejected**. The initial state is **pending**, which can be changed to **fulfilled** by **resolve()** and to rejected by **reject()**. Once the state is **fulfilled** or **rejected**, the promise state cannot be changed. The basic concepts are as follows:
 
 - Synchronous: Code is executed line by line in sequence. Each line of code is executed after the previous line of code is executed. If an operation takes a long time, the entire application will be blocked.
-
 - Asynchronous: Tasks can be executed concurrently without waiting for the end of the previous task. Common asynchronous operations apply for timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
-
 - **Promise**: an ArkTS object used to handle asynchronous operations. It is customized by using **then()**, **catch()**, and **finally()**.
-
 - **deferred**: an object used to control the state of a Promise. It allows you to mark the Promise state as **fulfilled** or **rejected** at a future moment.
-
 - **resolve**: a function used to change the promise state from **pending** to **fulfilled**. The parameters passed to **resolve()** can be obtained from **then()** of the **Promise** object.
-
 - **reject**: a function used to change the promise state from **pending** to **rejected**. The parameters passed to **reject()** can be obtained from **catch()** of the **Promise** object.
 
 **Promise** allows multiple callbacks to be called in a chain, providing better code readability and a better way to deal with asynchronous operations. The APIs provided by the Node-API module help you flexibly process ArkTS asynchronous operations in C/C++.
@@ -103,7 +97,6 @@ Call **napi_create_promise** to create a **Promise** object.
 When using this API, observe to the following:
 
 1. If **napi_create_promise** is called when there is an exception not handled, **napi_pending_exception** will be returned.
-
 2. After calling **napi_create_promise**, always check whether the return value is **napi_ok**. If **deferred** and **promise** are used, the application will crash.
 
 ```c++

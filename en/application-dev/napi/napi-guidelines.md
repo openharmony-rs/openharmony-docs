@@ -1,12 +1,11 @@
 # Node-API Development Specifications
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:28:17.522Z pushedAt=2026-08-12T09:54:26.090Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:07:29.425Z pushedAt=2026-09-16T08:19:10.226Z -->
 
 ## Obtaining Arguments Passed by JS
 
@@ -301,9 +300,7 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 **Recommendation**: Minimize data conversion operations and avoid unnecessary copying.
 
 - Frequent data conversion affects performance. You are advised to use batch data processing or optimize the data structs to improve performance.
-
 - During data conversion, use Node-API to access the original data instead of creating a copy.
-
 - For the data that may be used in multiple conversions, store it in a buffer to avoid repeated data conversions. In this way, unnecessary calculations can be reduced, leading to better performance.
 
 ## Module Registration and Naming
@@ -368,7 +365,6 @@ extern "C" __attribute__((constructor)) void RegisterModule()
     napi_module_register(&otherModule);
 }
 ```
-
 Figure 1
 
 ![demoModule](./figures/image.png)

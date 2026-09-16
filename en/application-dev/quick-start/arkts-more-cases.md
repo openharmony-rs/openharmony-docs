@@ -6,7 +6,7 @@
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e25164b4c5d2db315865d228475dc21473dba5fb translatedAt=2026-08-13T09:03:36.267Z pushedAt=2026-08-13T13:45:41.513Z -->
+<!-- md-trans-meta sourceCommit=e5a8b53118a7829ca524ea0f0985d43bf735b6de translatedAt=2026-09-16T03:48:35.203Z pushedAt=2026-09-16T08:42:28.106Z -->
 
 In this topic, specific use cases are presented to provide suggestions on adapting TS code to ArkTS for compliance with ArkTS syntax rules. Each chapter is named after an ArkTS syntax rule. Each use case provides the TS code before adaptation and the ArkTS code after adaptation.
 
@@ -1503,6 +1503,7 @@ ArkTS does not support **globalThis** for two reasons:<br> - A static type canno
 > 
 > 2. If necessary, you can construct a singleton object to implement the function of a global object. (Do not define the singleton in a HAR as it will be duplicated into different HAPs during packaging, breaking the singleton guarantee.)
 
+
 Construct a singleton object.
 
 <!-- @[construct_a_singleton_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/GlobalContext.ets) -->  
@@ -1861,42 +1862,41 @@ In a class, if a property is not initialized and is not assigned a value in the 
 
 **After adaptation**
 
-1. Whenever possible, initialize properties during declaration based on service logic or assign values to the properties in constructors. Example:
+1. Whenever possible, initialize properties during declaration **based on business logic** or assign values to the properties in constructors. Example:
 
-```typescript
-// code with error
-class Test {
-  value: number
-  flag: boolean
-}
+    ```typescript
+    // code with error
+    class Test {
+      value: number
+      flag: boolean
+    }
 
-// Method 1: Initialize properties during declaration.
-class Test {
-  value: number = 0
-  flag: boolean = false
-}
+    // Approach 1: initialize at declaration.
+    class Test {
+      value: number = 0
+      flag: boolean = false
+    }
 
-// Method 2: Assign values to properties in the constructor.
-class Test {
-  value: number
-  flag: boolean
-  constructor(value: number, flag: boolean) {
-    this.value = value;
-    this.flag = flag;
-  }
-}
-```
+    // Approach 2: assign a value in the constructor.
+    class Test {
+      value: number
+      flag: boolean
+      constructor(value: number, flag: boolean) {
+        this.value = value;
+        this.flag = flag;
+      }
+    }
+    ```
 
-2. For object type (including function type) **A**, if you are not sure how to initialize it, you are advised to initialize it in one of the following ways:
+2. For object type (including function type) `A`, if you are not sure how to initialize it, you are advised to initialize it in one of the following ways:
 
-​ Mode (i): **prop: A | null = null**
+  ​ Mode (i): **prop: A | null = null**
 
-​ Mode (ii): **prop?:A**
+  ​ Mode (ii): **prop?:A**
 
-Mode (iii): `prop: A | undefined = undefined`
+   Mode (iii): `prop: A | undefined = undefined`
 
 - From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
-
 - From the perspective of code readability and conciseness, `prop?:A` is syntactic sugar for `prop: A | undefined = undefined`. **The optional property syntax is recommended.**
 
 ### Strict Function Type Check
@@ -2254,6 +2254,7 @@ Use the regular **import { ... } from '...'** syntax to import types.
 ```typescript
 import type {A, B, C, D } from '***'
 ```
+
 
 **After adaptation**
 

@@ -1,12 +1,11 @@
 # Working with Other Node-API Utilities
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:40:31.428Z pushedAt=2026-08-12T11:14:28.158Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:35:39.777Z pushedAt=2026-09-16T08:25:52.644Z -->
 
 ## Introduction
 
@@ -15,13 +14,9 @@ Node-API also provides some useful APIs to improve development experience.
 ## Basic Concepts
 
 - Module loading: A module is an ArkTS file that contains specific functionalities. You can import a module to the shared library. Understanding the loading mechanism and dependencies between Node-API modules is helpful for using **node_api_get_module_file_name** correctly.
-
 - File path and URL: The return value of **node_api_get_module_file_name** is the absolute path of the module to be loaded.
-
 - Strict equality check: The strict equality check is used to check whether two ArkTS values are equal in type and value. When type conversion is considered, if the values being compared are of different types, **false** will be returned even if the values are the same.
-
 - Asynchronous operation processing: libuv can be used to implement asynchronous operations to avoid blocking the main thread.
-
 - Event loop: The Node-API module leverages libuv to implement the event-driven programming model. libuv provides an event loop mechanism to process events, trigger callbacks, and manage event queues.
 
 ## Available APIs

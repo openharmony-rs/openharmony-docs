@@ -1,12 +1,11 @@
 # Wrapping a Native Object in an ArkTS Object
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:13:55.776Z pushedAt=2026-08-22T06:57:21.135Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:45:07.944Z pushedAt=2026-09-16T08:26:42.978Z -->
 
 ## When to Use
 

@@ -1,11 +1,11 @@
 # Associating Data with a Running Environment to Tie Their Lifecycle Using Node-API
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=91bde58d6c780494fae7f2754471f66b0a70a3f3 translatedAt=2026-09-01T02:46:14.915Z pushedAt=2026-09-02T07:00:31.794Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:32:52.594Z pushedAt=2026-09-16T08:21:26.592Z -->
 
 ## Introduction
 

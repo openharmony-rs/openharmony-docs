@@ -5,7 +5,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:07:33.205Z pushedAt=2026-09-15T13:41:14.751Z -->
+<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:51:15.085Z pushedAt=2026-09-16T08:44:41.280Z -->
 
 ## When to Use
 
@@ -50,7 +50,7 @@ To access online web pages through the **Web** component, you must add the netwo
 
 ## Constraints
 
-- You can obtain the support for W3C standards based on the ArkWeb kernel version at related websites. For example, https://developer.mozilla.org/en-US/ and https://webassembly.org/features/.
+- You can obtain the support for W3C standards based on the ArkWeb kernel version at related websites. For example, `https://developer.mozilla.org/en-US/` and `https://webassembly.org/features/`.
 
 - Web kernel version: ArkWeb is developed based on the Google Chromium kernel. The following table lists the mapping between the system version and the Chromium version.
 

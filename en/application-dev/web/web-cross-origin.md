@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:51:39.717Z pushedAt=2026-09-02T07:26:19.167Z -->
+<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:54:10.780Z pushedAt=2026-09-16T08:45:13.261Z -->
 
 ## Background
 
@@ -116,26 +116,26 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   Removing the cross-origin access restriction on directories through setPathAllowingUniversalAccess is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and the paths in the path list must conform to one of the following path formats:
 
-  1. The application file directory is retrieved via [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), and example subdirectories are as follows:
+  1. The app file directory is obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
 
-  * /data/storage/el2/base/files/example
-  * /data/storage/el2/base/haps/entry/files/example
+     * /data/storage/el2/base/files/example
+     * /data/storage/el2/base/haps/entry/files/example
 
-  2. The application resource directory is retrieved via [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), and example subdirectories are as follows:
+  2. The app resource directory is obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
 
-  * /data/storage/el1/bundle/entry/resources/resfile
-  * /data/storage/el1/bundle/entry/resources/resfile/example
+     * /data/storage/el1/bundle/entry/resources/resfile
+     * /data/storage/el1/bundle/entry/resources/resfile/example
 
-  3. Since API version 21, the application cache directory is retrieved via [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties), and example subdirectories are as follows:
+  3. Starting from API version 21, the app cache directory is also included, which is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Its subdirectories are as follows:
 
-  * /data/storage/el2/base/cache
-  * /data/storage/el2/base/haps/entry/cache/example
-  * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
+     * /data/storage/el2/base/cache
+     * /data/storage/el2/base/haps/entry/cache/example
+     * The configured directory path must not contain cache/web; otherwise, exception code 401 is thrown. If the configured directory path is cache, cache/web is also inaccessible.
 
-  4. Since API version 21, the application temporary directory is retrieved via [Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties), and example subdirectories are as follows:
+  4. Starting from API version 21, the app temporary directory obtained through [Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties) is also included. Examples of its subdirectories are as follows:
 
-  * /data/storage/el2/base/temp
-  * /data/storage/el2/base/haps/entry/temp/example
+     * /data/storage/el2/base/temp
+     * /data/storage/el2/base/haps/entry/temp/example
 
   If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 

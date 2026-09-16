@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d7c829597b38db7cea6d0e709303701f1b66b6b0 translatedAt=2026-09-14T08:41:32.350Z pushedAt=2026-09-15T10:29:05.407Z -->
+<!-- md-trans-meta sourceCommit=212c062cf9929960ddfc3ef82147fe9a963da757 translatedAt=2026-09-16T02:32:21.539Z pushedAt=2026-09-16T03:24:46.865Z -->
 
 Driver Development Kit (DDK) provides peripheral driver developers with efficient, secure, and feature-rich extended peripheral driver development solutions — ArkTS APIs and C APIs — enabling a seamless plug-and-play experience for end users.
 

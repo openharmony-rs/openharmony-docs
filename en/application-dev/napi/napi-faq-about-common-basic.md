@@ -1,19 +1,17 @@
 # FAQs About Basic Functionalities
-
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T07:43:53.494Z pushedAt=2026-08-22T07:49:06.065Z -->
+<!-- md-trans-meta sourceCommit=4ca878ceb382eef6024acebc16b707981782bb76 translatedAt=2026-09-16T03:04:22.105Z pushedAt=2026-09-16T08:19:01.755Z -->
 
 ## What should I do if the module fails to be loaded and the error message "Error message: is not callable" is displayed?
 
 - Question:
 
 When the **libxxx.so** file provided by the following module registration code is used to call the API of the dynamic library in some projects, **Error message: is not callable** is displayed.
-
 ```cpp
 static napi_module demoModule = {
     .nm_version = 1,
@@ -32,7 +30,6 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 ```
 
 - Answer: 
-
 1. You can locate and resolve the issue based on the following topics:    
 
    [What should I do if an error message "undefined" is displayed on the ArkTS side](napi-faq-about-common-basic.md#what-should-i-do-if-an-error-message-undefined-is-displayed-on-the-arkts-side) 
@@ -48,7 +45,6 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 ## How to ensure the order of asynchronous tasks in scenarios where a large number of ArkTS methods need to be called for communication
 
 - Question: In a scenario where a large number of ArkTS methods need to be called through C++ for communication, how to ensure the order of asynchronous tasks?
-
 - Answer:
 
 You can use **napi_call_threadsafe_function** to ensure the execution sequence of asynchronous tasks. Note that these asynchronous tasks are delivered to the ArkTS thread and executed in sequence. If they are delivered to the main thread, the application may freeze and exit if they run for a long time. Therefore, you are not advised to deliver long-running tasks to the main thread through thread-safe functions.
@@ -68,6 +64,7 @@ In addition, the differences between the common task throwing methods in Node-AP
    **napi_call_threadsafe_function_with_priority** is executed according to the specified queueing mode.
 
    [Passing a Task with the Specified Priority to an ArkTS Thread from an Asynchronous Thread Using Node-API](use-call-threadsafe-function-with-priority.md)
+
 
 ## Is there a convenient way to call back ArkTS
 
@@ -90,7 +87,6 @@ References
 ## How to ensure the correct mapping of data types and the security of memory management
 
 - Question: While complying with the single return value constraint of Node-API, how to securely and efficiently pass multiple return values (including structured data and pointer information) to the ArkTS runtime environment and ensure correct data type mapping and memory management security?
-
 - Answer:
 
 Although the **napi_value** API supports only a single return value, you can use the return value to encapsulate all required information.
@@ -98,7 +94,6 @@ Although the **napi_value** API supports only a single return value, you can use
 For example, you can use **napi_create_object** to create an ArkTS object and use it to carry all returned information. **number** and **string** can be set to this object through the API set by properties such as **napi_set_property** or **napi_set_named_property**. You can also use **napi_wrap** to bind a native object to an ArkTS object, and then use **napi_unwrap** to retrieve the native object.  
 
 In addition, you can use an ArkTS array to carry data, which is flexible.   
-
 - References  
 
 [Working with Objects Using Node-API](use-napi-about-object.md) 
@@ -110,9 +105,7 @@ In addition, you can use an ArkTS array to carry data, which is flexible.
 Additional parameter verification is added to prevent use of invalid **napi_env** in **napi_get_uv_event_loop**. The return value indicates the verification result. The return values of this API are as follows:
 
 1. If **env** and/or **loop** are **nullptr**, **napi_invalid_arg** is returned.
-
 2. If **env** is a valid **napi_env** and **loop** is a valid pointer, **napi_ok** is returned.
-
 3. If **env** is not a valid **napi_env** (for example, a released **env**), **napi_generic_failure** is returned.
 
 - Example:
@@ -160,17 +153,13 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 ## Must a function be passed to the native layer when the native layer calls the object method of the ArkTS layer
 
 - Question: When the native layer of Node-API calls an object method from the ArkTS layer, must a function be passed to the native layer?
-
 - Answer: 
 
 To call an object method of the ArkTS layer at the native layer, the native layer needs to obtain the ArkTS function object. 
 
 You can obtain the ArkTS function object in any of the following ways: 
-
 1. Pass the function from the ArkTS layer to the native layer.  
-
 2. Bind the ArkTS function to an object that can be accessed by the native layer by setting attributes. In this way, the native layer can obtain and call the function through the object.  
-
 3. Node-API provides **napi_create_function** to create an ArkTS function object in the native layer. In this way, the native layer can obtain the ArkTS function object.  
 
 ## Can I call an ArkTS method and obtain the result
@@ -182,11 +171,9 @@ Possible causes:
 If the thread is created directly in C++, it does not have the ArkTS running environment, specifically the corresponding **napi_env**. Calling ArkTS methods on the thread directly causes multi-thread security issues, which is an undefined behavior. 
 
 - Answer: 
-
 1. Use the Node-API of **napi_threadsafe_function** to throw tasks from the C++ thread to the ArkTS thread for executing the ArkTS method. 
 
    [Thread Safety Development Using Node-API](use-napi-thread-safety.md) 
-
 2. Create an ArkTS running environment in the C++ thread. 
 
    [Creating an ArkTS Runtime Environment Using Node-API](use-napi-ark-runtime.md)  
@@ -194,7 +181,6 @@ If the thread is created directly in C++, it does not have the ArkTS running env
 ## Whether there is a napi_get_value_string_utf8 API or capability that does not need the copy operation
 
 - Question: The **napi_get_value_string_utf8** API of Node-API needs a copy operation each time it is called. Is there a **napi_get_value_string_utf8** API or capability that does not need the copy operation? 
-
 - Answer:
 
 No, **napi_get_value_string_utf8** always needs a copy operation.
@@ -216,12 +202,12 @@ What are the precautions for using **napi_env** in multi-thread mode? Is there a
 2. When using **env** to call Node-APIs, note that most Node-APIs can only be called on the ArkTS thread to which **env** belongs. Otherwise, thread-safety issues may arise.
 
    <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)<!--DelEnd-->
-
 3. Do not cache napi_env. Otherwise, thread-safety issues and **use-after-free** issues may occur.
 
    <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)<!--DelEnd-->
 
 4. [Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73)
+
 
 ## What should I do if the napi_call_threadsafe_function execution sequence does not meet the expectation
 
@@ -240,15 +226,14 @@ posttask(c);
 Actual: b -> a -> c  
 
 - Answer: 
-
 1. Check whether the same **napi_threadsafe_function** instance is used. If not, the execution sequence may be different.  
 
    Note: For the same **napi_threadsafe_function**, the execution sequence of **napi_call_threadsafe_function** is guaranteed. The first function called is executed first. 
 
 2. Check whether the actual call sequence of **napi_threadsafe_function** is a -> b -> c.  
 
-## What should I do if an error message "undefined" is displayed on the ArkTS side
 
+## What should I do if an error message "undefined" is displayed on the ArkTS side
 Question:
 
 What should I do when "undefined/not callable" or specific error message is reported for xxx after "import xxx from libxxx.so" is executed on ArkTS?
@@ -264,6 +249,7 @@ What should I do when "undefined/not callable" or specific error message is repo
 3. Check whether the dependency .so files are successfully loaded.
 
    Check that all the dependency .so files are packaged into the application and the application has the permission to open them.  
+
 
    | **Error Log**| **Fault Analysis & Solution**|
    | -------- | -------- |
@@ -306,7 +292,7 @@ Answer:
 
 ## How do I locate the fault if the return value of a Node-API is not "napi_ok"
 
-When a Node-API is successfully executed, **napi_ok** is returned. If the return value is not **napi_ok**, see [Node-API Status Codes](napi_status_introduction.md).
+When a Node-API is successfully executed, **napi_ok** is returned. If the return value is not **napi_ok**, see [Node-API Status Codes](napi-status-introduction.md).
 
 Locate the fault as follows:
 
@@ -334,7 +320,6 @@ Locate the fault as follows:
 - Determine the status value returned, and analyze the situation in which the status value is returned.
 
 ## How do I ensure that objects wrapped by napi_wrap are destructed in the expected order
-
 Question: When using **napi_wrap** to bind two C++ objects to two JavaScript objects, I need to ensure that the first C++ object is destroyed before the second, since the first depends on the second. However, the JavaScript garbage collection (GC) time is uncertain. If the C++ objects are destroyed directly in the **finalize_cb** callback of **napi_wrap**, the destruction sequence cannot meet the requirements. How do I ensure the destruction sequence of two C++ objects?
 
 Answer: 
@@ -352,7 +337,6 @@ Mark **cppObjB** as to-be-destroyed (not released immediately) in **finalize_cb*
 When **jsObjA** and **jsObjB** are to be destroyed, destroy **cppObjA** and **cppObjB** in sequence.
 
 The sample code is as follows: 
-
 ```cpp
 struct ObjectPair {
     CppObjA* objA;
@@ -383,12 +367,11 @@ void FinalizeB(napi_env env, void* data, void* hint) {
     }
 }
 ```
-
 ## What should I do if the napi_call_threadsafe_function callback task is not executed
 
 Answer: 
 
-Cause 1: The return value of **napi_call_threadsafe_function** is not **napi_ok**. Check whether all the return values of the **napi_call_threadsafe_function** calls are **napi_ok**. If not, locate the cause by referring to [Node-API Status Codes](napi_status_introduction.md). 
+Cause 1: The return value of `napi_call_threadsafe_function` is not `napi_ok`. Check whether all the return values of the `napi_call_threadsafe_function` calls are `napi_ok`. If not, locate the cause of the return value not being `napi_ok` by referring to [Node-API Status Codes](napi-status-introduction.md).
 
 Cause 2: The ArkTS thread to which **env** belongs is blocked. The callback of **napi_call_threadsafe_function** is executed on the ArkTS thread to which **env** belongs. If the ArkTS thread is blocked, the thread-safe function callback will not be executed.
 
