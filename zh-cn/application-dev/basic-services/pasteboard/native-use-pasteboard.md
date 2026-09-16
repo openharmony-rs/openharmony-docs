@@ -125,12 +125,12 @@
     
         // 1. 创建一个剪贴板实例
         OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-            if (pasteboard == nullptr) {
-                OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
-                napi_value result;
-                napi_get_undefined(env, &result);
-                return result;
-            };
+        if (pasteboard == nullptr) {
+            OH_LOG_INFO(LOG_APP, "Failed to create pasteboard instance.");
+            napi_value result;
+            napi_get_undefined(env, &result);
+            return result;
+        };
         // 2. 创建OH_UdmfRecord对象，并向OH_UdmfRecord中添加文本类型数据
         OH_UdsPlainText* udsPlainText = OH_UdsPlainText_Create();
         OH_UdsPlainText_SetContent(udsPlainText, text);
