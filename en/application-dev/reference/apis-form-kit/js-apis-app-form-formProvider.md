@@ -265,7 +265,7 @@ Obtains the widget information of the current application on the device. This AP
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-app-formInfo.md#forminfo)&gt;&gt; | Yes | Callback used to return the obtained widget information. |
+| callback | AsyncCallback&lt;Array&lt;[formInfo.FormInfo](js-apis-app-form-formInfo.md#forminfo)&gt;&gt; | Yes | Callback used to return the obtained widget information. |
 
 **Error codes**
 
