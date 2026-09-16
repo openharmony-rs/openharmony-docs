@@ -28,10 +28,10 @@ function getInsightIntentInfoByIntentName(bundleName: string, moduleName: string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 应用包名称。   **说明：**若包名不存在，则返回空对象。 |
-| moduleName | string | 是 | 模块名称。   **说明：**若模块名不存在，则返回空对象。 |
-| intentName | string | 是 | 意图名称。   **说明：**若意图名不存在，则返回空对象。 |
-| intentFlags | number | 是 | 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于表示查询全量意图信息或者简要意 图信息，参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md)。 |
+| bundleName | string | 是 | 应用包名称。<br>**说明：** <br> 若包名不存在，则返回空对象。 |
+| moduleName | string | 是 | 模块名称。<br>**说明：** <br> 若模块名不存在，则返回空对象。 |
+| intentName | string | 是 | 意图名称。<br>**说明：** <br> 若意图名不存在，则返回空对象。 |
+| intentFlags | number | 是 | 意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于表示查询全量意图信息或者简要意图信息，参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md)。 |
 
 **返回值：**
 

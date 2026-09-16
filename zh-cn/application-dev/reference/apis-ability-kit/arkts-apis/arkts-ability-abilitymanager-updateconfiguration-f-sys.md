@@ -38,36 +38,6 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-**示例**
-
-```TypeScript
-import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const config: Configuration = {
-  language: 'Zh-Hans',                 // 简体中文
-  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // 浅色模式
-  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // 垂直方向
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // 屏幕像素密度为'sdpi'
-  displayId: 1,                        // 应用在Id为1的物理屏上显示
-  hasPointerDevice: true,              // 指针类型设备已连接
-};
-
-try {
-  abilityManager.updateConfiguration(config, (err: BusinessError) => {
-    if (err) {
-      console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
-    } else {
-      console.info('updateConfiguration success.');
-    }
-  });
-} catch (paramError) {
-  let code: number = (paramError as BusinessError).code;
-  let message: string = (paramError as BusinessError).message;
-  console.error(`error.code: ${code}, error.message: ${message}`);
-}
-```
-
 
 ## updateConfiguration
 
@@ -95,7 +65,7 @@ function updateConfiguration(config: Configuration): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -105,31 +75,3 @@ function updateConfiguration(config: Configuration): Promise<void>
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
-```TypeScript
-import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const config: Configuration = {
-  language: 'Zh-Hans',                 // 简体中文
-  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // 浅色模式
-  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // 垂直方向
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // 屏幕像素密度为'sdpi'
-  displayId: 1,                        // 应用在Id为1的物理屏上显示
-  hasPointerDevice: true,              // 指针类型设备已连接
-};
-
-try {
-  abilityManager.updateConfiguration(config).then(() => {
-    console.info('updateConfiguration success.');
-  }).catch((err: BusinessError) => {
-    console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
-  });
-} catch (paramError) {
-  let code: number = (paramError as BusinessError).code;
-  let message: string = (paramError as BusinessError).message;
-  console.error(`error.code: ${code}, error.message: ${message}`);
-}
-```

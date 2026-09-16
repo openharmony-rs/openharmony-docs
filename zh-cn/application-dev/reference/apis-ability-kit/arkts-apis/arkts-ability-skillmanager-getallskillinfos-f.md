@@ -20,7 +20,7 @@ function getAllSkillInfos(flags: number, userId?: number): Promise<Array<SkillIn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -28,14 +28,14 @@ function getAllSkillInfos(flags: number, userId?: number): Promise<Array<SkillIn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| flags | number | 是 | { |
+| flags | number | 是 | [SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md) - 指定返回的SkillInfo所包含的信息。详情请参考SkillInfoFlag。 |
 | userId | number | 否 | 指定查询的用户ID，可以通过getOsAccountLocalId获取。默认值：调用方所在用户。取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;SkillInfo&gt;&gt; | Promise对象，返回所有应用的技能信息数组。 |
+| Promise&lt;Array&lt;[SkillInfo](arkts-ability-skillmanager-skillinfo-t.md)&gt;&gt; | Promise对象，返回所有应用的技能信息数组。 |
 
 **错误码：**
 

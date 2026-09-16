@@ -1,10 +1,10 @@
 # UIExtensionContext
 
-UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的上下文环境，继承自 [ExtensionContext](arkts-ability-extensioncontext-c.md)，提供UIExtensionAbility的相关配置信息以及操作UIAbility的方法，如 启动UIAbility等。
+UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)，提供UIExtensionAbility的相关配置信息以及操作UIAbility的方法，如启动UIAbility等。
 
-**继承/实现关系：** UIExtensionContext extends ExtensionContext
+**继承/实现关系：** UIExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
-**起始版本：** 10
+**起始版本：** 12
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -14,9 +14,9 @@ UIExtensionContext是[UIExtensionAbility](arkts-ability-app-ability-uiextensiona
 connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): number
 ```
 
-将当前UIExtensionAbility连接到一个 [ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md#onconnect)，通过返回的远 程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传 递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在 [onCreate()](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md#oncreate)或 [onConnect()](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md#onconnect)方法中，通过Want参数的 [UI_EXTENSION_ROOT_TOKEN](arkts-ability-wantconstant-params-e.md)获取该Token。
+将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md#onconnect)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md#oncreate)或[onConnect()](arkts-ability-app-ability-serviceextensionability-serviceextensionability-c-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](arkts-ability-wantconstant-params-e.md)获取该Token。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
@@ -39,7 +39,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回连接标识ID，客户端可以通过 [disconnectServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#disconnectserviceextensionability) 传入该连接标识ID来断开连接。 |
+| number | 返回连接标识ID，客户端可以通过[disconnectServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#disconnectserviceextensionability)传入该连接标识ID来断开连接。 |
 
 **错误码：**
 
@@ -67,7 +67,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 是否允许[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)拉起的页面被使用方的页面覆盖。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -86,7 +86,7 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isForbidden | boolean | 是 | 是否允许[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md) 拉起的页面被使用方的页面覆盖。true表示不允许，false表示允许。 |
+| isForbidden | boolean | 是 | 设置是否禁止[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)拉起的页面被使用方的页面覆盖。true表示禁止，false表示允许。 |
 
 **错误码：**
 
@@ -101,16 +101,16 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<AbilityResult>
 ```
 
-使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的 caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用Promise异步回调。  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。  
-- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
+使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用Promise异步回调。
 
-> **说明：**
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息，异常信息中resultCode为-1。
+
+> **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../../application-models/component-startup-rules-inner-device-sys.md)
+> 和[跨设备组件启动规则（仅对系统应用开放）](../../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **起始版本：** 12
 
@@ -160,7 +160,7 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise<Abili
 startServiceExtensionAbility(want: Want): Promise<void>
 ```
 
-启动一个ServiceExtensionAbility。使用Promise异步回调。
+启动一个ServiceExtensionAbility，用于提供后台服务能力。使用Promise异步回调。
 
 **起始版本：** 18
 
@@ -180,7 +180,7 @@ startServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -208,11 +208,12 @@ startServiceExtensionAbility(want: Want): Promise<void>
 startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<void>
 ```
 
-启动一个指定系统账号下的ServiceExtensionAbility。使用Promise异步回调。
+启动一个指定系统账号下的ServiceExtensionAbility，用于提供后台服务能力。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../../application-models/component-startup-rules-inner-device-sys.md)
+> 和[跨设备组件启动规则（仅对系统应用开放）](../../../application-models/component-startup-rules-cross-device-sys.md)。
 > 
 > 当accountId为当前用户时，无需进行权限校验。
 
@@ -231,13 +232,13 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-| accountId | number | 是 | 系统账号的ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 接口获取。 |
+| accountId | number | 是 | 系统账号的ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)接口获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -265,9 +266,9 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise<
 startUIAbilities(wantList: Array<Want>): Promise<void>
 ```
 
-同时启动多个UIAbility。使用Promise异步回调。 开发者可以传入多个UIAbility对应的Want信息，这些UIAbility可以指向一个或多个应用。当所有的UIAbility都能启动成功时，系统会通过多个窗口同时展示这些UIAbility。根据窗口的处理，不同设备上可能会有不 同的展示效果（包括窗口形态、数量和排版布局）。 该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+同时启动多个UIAbility。使用Promise异步回调。开发者可以传入多个UIAbility对应的Want信息，这些UIAbility可以指向一个或多个应用。当所有的UIAbility都能启动成功时，系统会通过多个窗口同时展示这些UIAbility。根据窗口的处理，不同设备上可能会有不同的展示效果（包括窗口形态、数量和排版布局）。该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
@@ -283,13 +284,13 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| wantList | Array&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | 是 | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认 启动主应用。 |
+| wantList | Array&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | 是 | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -324,9 +325,9 @@ startUIAbilities(wantList: Array<Want>): Promise<void>
 startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise<void>
 ```
 
-当第一个UIAbility实例被创建后，启动第二个UIAbility，并以分屏模式进行显示。使用Promise异步回调。 该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
+当第一个UIAbility实例被创建后，启动第二个UIAbility，并以分屏模式进行显示。使用Promise异步回调。该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > 如果第一个UIAbility实例被销毁，那么第二个UIAbility将以全屏模式启动。
 > 
@@ -350,14 +351,14 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| primaryWindowId | number | 是 | 启动第一个UIAbility的主窗的窗口ID。窗口ID是 [WindowProperties](../../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)的属性，WindowProperties可通过 [getWindowProperties()](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
+| primaryWindowId | number | 是 | 启动第一个UIAbility的主窗的窗口ID。窗口ID是[WindowProperties](../../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)的属性，WindowProperties可通过[getWindowProperties()](../../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
 | secondaryWant | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动第二个UIAbility所需的Want信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

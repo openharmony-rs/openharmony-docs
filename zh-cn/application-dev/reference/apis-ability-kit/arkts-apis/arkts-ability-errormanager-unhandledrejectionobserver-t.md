@@ -8,7 +8,7 @@ export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -16,5 +16,5 @@ export type UnhandledRejectionObserver = (reason: Error | any, promise: Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| reason | Error \| any | 是 | 通常是`Error`类型，表示被拒绝的理由。 |
-| promise | Promise &lt;any&gt; | 是 | 被拒绝的promise。 |
+| reason | Error &#124; any | 是 | 通常是`Error`类型，表示被拒绝的理由。 |
+| promise | Promise&lt;any&gt; | 是 | 被拒绝的promise。 |

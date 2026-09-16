@@ -1,14 +1,16 @@
 # AbilityDelegator
 
-AbilityDelegator模块可以通过[AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例来监听和管理 [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)生命周期的变化。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入 某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。 AbilityDelegator可以通过 [getAbilityDelegator](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md)方 法获取。
+AbilityDelegator模块可以通过[AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例来监听和管理[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)生命周期的变化。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。AbilityDelegator可以通过[getAbilityDelegator](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-getabilitydelegator-f.md)方法获取。
 
-> **说明：**
+> **说明：** 
 > 
 > 本模块接口仅可在[单元测试框架](../../../application-test/unittest-guidelines.md)中使用。
 
 **起始版本：** 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## addAbilityMonitor
 
@@ -20,7 +22,7 @@ addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -67,41 +69,6 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-## addAbilityMonitor
-
-```TypeScript
-addAbilityMonitor(monitor: AbilityMonitor): Promise<void>
-```
-
-添加AbilityMonitor实例。使用Promise异步回调。不支持多线程并发调用。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitor failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -121,6 +88,43 @@ abilityDelegator.addAbilityMonitor(monitor).then(() => {
 });
 ```
 
+## addAbilityMonitor
+
+```TypeScript
+addAbilityMonitor(monitor: AbilityMonitor): Promise<void>
+```
+
+添加AbilityMonitor实例。使用Promise异步回调。不支持多线程并发调用。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityMonitor failed. |
+
+**示例**
+
+参见 [addAbilityMonitor](#addabilitymonitor)
+
 ## addAbilityMonitorSync
 
 ```TypeScript
@@ -131,7 +135,7 @@ addAbilityMonitorSync(monitor: AbilityMonitor): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -179,7 +183,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<voi
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -188,7 +192,7 @@ addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当添加一个用于监视指定AbilityStage的生命周期状态更改的AbilityStageMonitor对象成功，err为undefined，否则 为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当添加一个用于监视指定AbilityStage的生命周期状态更改的AbilityStageMonitor对象成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -218,41 +222,6 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-## addAbilityStageMonitor
-
-```TypeScript
-addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
-```
-
-添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用Promise异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitor failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
@@ -267,6 +236,43 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
+## addAbilityStageMonitor
+
+```TypeScript
+addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
+```
+
+添加一个AbilityStageMonitor对象，用于监视指定AbilityStage的生命周期状态更改。使用Promise异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling AddAbilityStageMonitor failed. |
+
+**示例**
+
+参见 [addAbilityStageMonitor](#addabilitystagemonitor)
+
 ## addAbilityStageMonitorSync
 
 ```TypeScript
@@ -277,7 +283,7 @@ addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -320,7 +326,7 @@ addInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -346,7 +352,7 @@ doAbilityBackground(ability: UIAbility, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -392,41 +398,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-## doAbilityBackground
-
-```TypeScript
-doAbilityBackground(ability: UIAbility): Promise<void>
-```
-
-调度指定Ability生命周期状态到Background状态。使用Promise异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 指定Ability对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityBackground failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -449,6 +420,43 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
+## doAbilityBackground
+
+```TypeScript
+doAbilityBackground(ability: UIAbility): Promise<void>
+```
+
+调度指定Ability生命周期状态到Background状态。使用Promise异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 指定Ability对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityBackground failed. |
+
+**示例**
+
+参见 [doAbilityBackground](#doabilitybackground)
+
 ## doAbilityForeground
 
 ```TypeScript
@@ -459,7 +467,7 @@ doAbilityForeground(ability: UIAbility, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -505,41 +513,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-## doAbilityForeground
-
-```TypeScript
-doAbilityForeground(ability: UIAbility): Promise<void>
-```
-
-调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 指定Ability对象。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityForeground failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -562,17 +535,54 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
+## doAbilityForeground
+
+```TypeScript
+doAbilityForeground(ability: UIAbility): Promise<void>
+```
+
+调度指定Ability生命周期状态到Foreground状态。使用Promise异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| ability | [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) | 是 | 指定Ability对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling DoAbilityForeground failed. |
+
+**示例**
+
+参见 [doAbilityForeground](#doabilityforeground)
+
 ## executeShellCommand
 
 ```TypeScript
 executeShellCommand(cmd: string, callback: AsyncCallback<ShellCmdResult>): void
 ```
 
-执行指定的shell命令。使用callback异步回调。 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
+执行指定的shell命令。使用callback异步回调。仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -605,30 +615,6 @@ abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: ab
 });
 ```
 
-## executeShellCommand
-
-```TypeScript
-executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback<ShellCmdResult>): void
-```
-
-指定超时时间，并执行指定的shell命令。使用callback异步回调。 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| cmd | string | 是 | shell命令字符串。 |
-| timeoutSecs | number | 是 | 设定命令超时时间，单位秒（s）。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | 是 | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。 |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -647,17 +633,56 @@ abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError,
 });
 ```
 
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let shellCommand = 'cmd';
+let timeout = 100;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
+  console.info('executeShellCommand promise');
+});
+```
+
+## executeShellCommand
+
+```TypeScript
+executeShellCommand(cmd: string, timeoutSecs: number, callback: AsyncCallback<ShellCmdResult>): void
+```
+
+指定超时时间，并执行指定的shell命令。使用callback异步回调。仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| cmd | string | 是 | shell命令字符串。 |
+| timeoutSecs | number | 是 | 设定命令超时时间，单位秒（s）。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | 是 | 回调函数。当执行指定的shell命令成功，err为undefined，data为获取到的执行结果；否则为错误对象。 |
+
+**示例**
+
+参见 [executeShellCommand](#executeshellcommand)
+
 ## executeShellCommand
 
 ```TypeScript
 executeShellCommand(cmd: string, timeoutSecs?: number): Promise<ShellCmdResult>
 ```
 
-指定超时时间，并执行指定的shell命令。使用Promise异步回调。 仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
+指定超时时间，并执行指定的shell命令。使用Promise异步回调。仅支持如下shell命令：aa, bm, cp, mkdir, rm, uinput, hilog, ppwd, echo, uitest, acm, hidumper, wukong, pkill, ps, pidof
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -672,22 +697,11 @@ executeShellCommand(cmd: string, timeoutSecs?: number): Promise<ShellCmdResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | Promise对象，返回Shell命令执行结果 [ShellCmdResult]{ |
+| Promise&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | Promise对象，返回Shell命令执行结果[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)对象。 |
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let shellCommand = 'cmd';
-let timeout = 100;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
-  console.info('executeShellCommand promise');
-});
-```
+参见 [executeShellCommand](#executeshellcommand)
 
 ## finishTest
 
@@ -699,7 +713,7 @@ finishTest(msg: string, code: number, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -737,6 +751,18 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let msg = 'msg';
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.finishTest(msg, 0).then(() => {
+  console.info('finishTest promise');
+});
+```
+
 ## finishTest
 
 ```TypeScript
@@ -747,7 +773,7 @@ finishTest(msg: string, code: number): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -762,7 +788,7 @@ finishTest(msg: string, code: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -773,17 +799,7 @@ finishTest(msg: string, code: number): Promise<void>
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let msg = 'msg';
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.finishTest(msg, 0).then(() => {
-  console.info('finishTest promise');
-});
-```
+参见 [finishTest](#finishtest)
 
 ## getAbilityState
 
@@ -795,7 +811,7 @@ getAbilityState(ability: UIAbility): number
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -809,7 +825,7 @@ getAbilityState(ability: UIAbility): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 指定ability的生命周期状态。状态枚举值使用 [AbilityLifecycleState]{ |
+| number | 指定ability的生命周期状态。状态枚举值使用[AbilityLifecycleState](../../apis-test-kit/arkts-apis/arkts-test-abilitydelegatorregistry-abilitylifecyclestate-e.md)。 |
 
 **错误码：**
 
@@ -850,7 +866,7 @@ getAppContext(): Context
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -858,7 +874,7 @@ getAppContext(): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| [Context](arkts-ability-context-c.md) | 应用[Context]{ |
+| [Context](arkts-ability-context-c.md) | 应用Context。 |
 
 **示例**
 
@@ -882,7 +898,7 @@ getCurrentTopAbility(callback: AsyncCallback<UIAbility>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -920,6 +936,20 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let ability: UIAbility;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
+  console.info('getCurrentTopAbility promise');
+  ability = data;
+});
+```
+
 ## getCurrentTopAbility
 
 ```TypeScript
@@ -930,7 +960,7 @@ getCurrentTopAbility(): Promise<UIAbility>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -948,19 +978,7 @@ getCurrentTopAbility(): Promise<UIAbility>
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let ability: UIAbility;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
-  console.info('getCurrentTopAbility promise');
-  ability = data;
-});
-```
+参见 [getCurrentTopAbility](#getcurrenttopability)
 
 ## print
 
@@ -972,7 +990,7 @@ print(msg: string, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1002,6 +1020,18 @@ abilityDelegator.print(msg, (err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let msg = 'msg';
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.print(msg).then(() => {
+  console.info('print promise');
+});
+```
+
 ## print
 
 ```TypeScript
@@ -1012,7 +1042,7 @@ print(msg: string): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1026,21 +1056,11 @@ print(msg: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let msg = 'msg';
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.print(msg).then(() => {
-  console.info('print promise');
-});
-```
+参见 [print](#print)
 
 ## printSync
 
@@ -1052,7 +1072,7 @@ printSync(msg: string): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1090,7 +1110,7 @@ removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): vo
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1134,41 +1154,6 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-## removeAbilityMonitor
-
-```TypeScript
-removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>
-```
-
-删除已经添加的AbilityMonitor实例。使用Promise异步回调。不支持多线程并发调用。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitor failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -1190,6 +1175,43 @@ abilityDelegator.removeAbilityMonitor(monitor).then(() => {
 });
 ```
 
+## removeAbilityMonitor
+
+```TypeScript
+removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>
+```
+
+删除已经添加的AbilityMonitor实例。使用Promise异步回调。不支持多线程并发调用。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityMonitor failed. |
+
+**示例**
+
+参见 [removeAbilityMonitor](#removeabilitymonitor)
+
 ## removeAbilityMonitorSync
 
 ```TypeScript
@@ -1200,7 +1222,7 @@ removeAbilityMonitorSync(monitor: AbilityMonitor): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1248,7 +1270,7 @@ removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1287,41 +1309,6 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-## removeAbilityStageMonitor
-
-```TypeScript
-removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
-```
-
-从应用程序内存中删除指定的AbilityStageMonitor对象。使用Promise异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitor failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
@@ -1336,6 +1323,43 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
+## removeAbilityStageMonitor
+
+```TypeScript
+removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>
+```
+
+从应用程序内存中删除指定的AbilityStageMonitor对象。使用Promise异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling RemoveAbilityStageMonitor failed. |
+
+**示例**
+
+参见 [removeAbilityStageMonitor](#removeabilitystagemonitor)
+
 ## removeAbilityStageMonitorSync
 
 ```TypeScript
@@ -1346,7 +1370,7 @@ removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1389,7 +1413,7 @@ removeInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1415,7 +1439,7 @@ setMockList(mockList: Record<string, string>): void
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1423,7 +1447,7 @@ setMockList(mockList: Record<string, string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mockList | Record &lt;string, string&gt; | 是 | 模块mock替换关系的键值对象，其中key为待替换的目标路径，value为用于替换的mock实现文件的路径。 |
+| mockList | Record&lt;string, string&gt; | 是 | 模块mock替换关系的键值对象，其中key为待替换的目标路径，value为用于替换的mock实现文件的路径。 |
 
 **错误码：**
 
@@ -1460,7 +1484,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1519,6 +1543,22 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { Want } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+let want: Want = {
+  bundleName: 'bundleName',
+  abilityName: 'abilityName'
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.startAbility(want).then((data: void) => {
+  console.info('startAbility promise');
+});
+```
+
 ## startAbility
 
 ```TypeScript
@@ -1529,7 +1569,7 @@ startAbility(want: Want): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1543,7 +1583,7 @@ startAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1568,21 +1608,7 @@ startAbility(want: Want): Promise<void>
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { Want } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let want: Want = {
-  bundleName: 'bundleName',
-  abilityName: 'abilityName'
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.startAbility(want).then((data: void) => {
-  console.info('startAbility promise');
-});
-```
+参见 [startAbility](#startability)
 
 ## waitAbilityMonitor
 
@@ -1594,7 +1620,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>):
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1603,7 +1629,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&gt; | 是 | 回调函数。当等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期成功，err为undefined，data为获取 到的Ability实例，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&gt; | 是 | 回调函数。当等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期成功，err为undefined，data为获取到的Ability实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -1640,37 +1666,6 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
 });
 ```
 
-## waitAbilityMonitor
-
-```TypeScript
-waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback<UIAbility>): void
-```
-
-设置等待时间，等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用callback异步回调。不支持多线程并发调用。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
-| timeout | number | 是 | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&gt; | 是 | 表示指定的回调方法。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
-
-**示例**
-
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -1702,6 +1697,60 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 });
 ```
 
+```TypeScript
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+let onAbilityCreateCallback = (data: UIAbility) => {
+  console.info('onAbilityCreateCallback');
+};
+
+let monitor: abilityDelegatorRegistry.AbilityMonitor = {
+  abilityName: 'abilityName',
+  onAbilityCreate: onAbilityCreateCallback
+};
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
+  console.info('waitAbilityMonitor promise');
+});
+```
+
+## waitAbilityMonitor
+
+```TypeScript
+waitAbilityMonitor(monitor: AbilityMonitor, timeout: number, callback: AsyncCallback<UIAbility>): void
+```
+
+设置等待时间，等待与AbilityMonitor实例匹配的Ability到达OnCreate生命周期，并返回Ability实例。使用callback异步回调。不支持多线程并发调用。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityMonitor](arkts-ability-abilitymonitor-i.md) | 是 | [AbilityMonitor](arkts-ability-abilitymonitor-i.md)实例。 |
+| timeout | number | 是 | 最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)&gt; | 是 | 表示指定的回调方法。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityMonitor failed. |
+
+**示例**
+
+参见 [waitAbilityMonitor](#waitabilitymonitor)
+
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1712,7 +1761,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1738,26 +1787,7 @@ waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { UIAbility } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-let onAbilityCreateCallback = (data: UIAbility) => {
-  console.info('onAbilityCreateCallback');
-};
-
-let monitor: abilityDelegatorRegistry.AbilityMonitor = {
-  abilityName: 'abilityName',
-  onAbilityCreate: onAbilityCreateCallback
-};
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
-  console.info('waitAbilityMonitor promise');
-});
-```
+参见 [waitAbilityMonitor](#waitabilitymonitor)
 
 ## waitAbilityStageMonitor
 
@@ -1769,7 +1799,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<Ab
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1778,7 +1808,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<Ab
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)&gt; | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为 undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)&gt; | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -1809,36 +1839,20 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-## waitAbilityStageMonitor
-
 ```TypeScript
-waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback<AbilityStage>): void
+import { abilityDelegatorRegistry } from '@kit.TestKit';
+import { AbilityStage } from '@kit.AbilityKit';
+
+let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+
+abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+abilityDelegator.waitAbilityStageMonitor({
+  moduleName: 'moduleName',
+  srcEntrance: 'srcEntrance',
+}).then((data: AbilityStage) => {
+  console.info('waitAbilityStageMonitor promise');
+});
 ```
-
-在指定的超时最大等待时间内，返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
-| timeout | number | 是 | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)&gt; | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为 undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
-
-**示例**
 
 ```TypeScript
 import { abilityDelegatorRegistry } from '@kit.TestKit';
@@ -1864,6 +1878,39 @@ abilityDelegator.waitAbilityStageMonitor({
 ## waitAbilityStageMonitor
 
 ```TypeScript
+waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: number, callback: AsyncCallback<AbilityStage>): void
+```
+
+在指定的超时最大等待时间内，返回与AbilityStageMonitor中设置条件相匹配的AbilityStage对象。使用callback异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) | 是 | [AbilityStageMonitor](arkts-ability-abilitystagemonitor-i.md) 实例。 |
+| timeout | number | 是 | 超时最大等待时间，单位毫秒（ms），默认值为5000毫秒。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)&gt; | 是 | 回调函数。当等待并返回与给定AbilityStageMonitor中设置的条件匹配的AbilityStage对象的操作成功，err为undefined，data为获取到的[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象；否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| [16000100](../errorcode-ability.md#16000100-监听ability生命周期变化的abilitymonitor方法执行失败) | Calling WaitAbilityStageMonitor failed. |
+
+**示例**
+
+参见 [waitAbilityStageMonitor](#waitabilitystagemonitor)
+
+## waitAbilityStageMonitor
+
+```TypeScript
 waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise<AbilityStage>
 ```
 
@@ -1871,7 +1918,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1886,7 +1933,7 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)&gt; | Promise对象，返回 [AbilityStage]{ |
+| Promise&lt;[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)&gt; | Promise对象，返回[AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)对象。 |
 
 **错误码：**
 
@@ -1897,17 +1944,4 @@ waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise
 
 **示例**
 
-```TypeScript
-import { abilityDelegatorRegistry } from '@kit.TestKit';
-import { AbilityStage } from '@kit.AbilityKit';
-
-let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-
-abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.waitAbilityStageMonitor({
-  moduleName: 'moduleName',
-  srcEntrance: 'srcEntrance',
-}).then((data: AbilityStage) => {
-  console.info('waitAbilityStageMonitor promise');
-});
-```
+参见 [waitAbilityStageMonitor](#waitabilitystagemonitor)

@@ -27,13 +27,13 @@ function disconnectServiceExtensionAbility(context: AgentExtensionContext, conne
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | context | [AgentExtensionContext](arkts-ability-agentextensioncontext-c.md) | 是 | 当前Agent扩展能力的上下文，包含AgentCard信息。 |
-| connectId | number | 是 | [connectServiceExtensionAbility](arkts-ability-agentmanager-connectserviceextensionability-f-sys.md)返回的连 接ID，用于标识要断开的目标连接。 |
+| connectId | number | 是 | [connectServiceExtensionAbility](arkts-ability-agentmanager-connectserviceextensionability-f-sys.md)返回的连接ID，用于标识要断开的目标连接。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

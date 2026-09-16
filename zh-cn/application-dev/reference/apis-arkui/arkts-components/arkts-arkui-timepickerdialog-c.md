@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## show
 
 ```TypeScript
@@ -19,7 +14,7 @@ static show(options?: TimePickerDialogOptions)
 
 定义时间滑动选择器弹窗并弹出。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md)中的
 > [showTimePickerDialog](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#showtimepickerdialog)来明确UI的执行上下文。
@@ -30,7 +25,7 @@ static show(options?: TimePickerDialogOptions)
 
 **替代接口：** [showTimePickerDialog](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#showtimepickerdialog)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

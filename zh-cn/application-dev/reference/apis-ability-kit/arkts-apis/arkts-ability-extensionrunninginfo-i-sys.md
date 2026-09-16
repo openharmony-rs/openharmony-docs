@@ -1,6 +1,6 @@
 # ExtensionRunningInfo（系统接口）
 
-ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过 [getExtensionRunningInfos接口](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md) 获取。
+ExtensionRunningInfo模块封装了Extension运行的相关信息，可以通过[getExtensionRunningInfos接口](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md)获取。
 
 **起始版本：** 9
 
@@ -106,7 +106,7 @@ type: bundle.ExtensionAbilityType
 
 Extension类型。
 
-**类型：** bundle.ExtensionAbilityType
+**类型：** [bundle.ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md)
 
 **默认值：** Enumerates types of the extension info
 

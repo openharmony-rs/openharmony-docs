@@ -16,7 +16,7 @@ function getBundleInfoForSelf(bundleFlags: number): Promise<BundleInfo>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -30,7 +30,7 @@ function getBundleInfoForSelf(bundleFlags: number): Promise<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;BundleInfo&gt; | Promise对象，返回当前应用的BundleInfo。 |
+| Promise&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | Promise对象，返回当前应用的BundleInfo。 |
 
 **错误码：**
 
@@ -61,36 +61,6 @@ try {
 }
 ```
 
-
-## getBundleInfoForSelf
-
-```TypeScript
-function getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback<BundleInfo>): void
-```
-
-根据给定的bundleFlags获取当前应用的BundleInfo。使用callback异步回调。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundleInfo&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为 undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
-**示例**
-
 ```TypeScript
 // 获取bundleInfo，包含permissions信息的abilitiesInfo信息
 import { bundleManager } from '@kit.AbilityKit';
@@ -114,3 +84,35 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed: %{public}s', message);
 }
 ```
+
+
+## getBundleInfoForSelf
+
+```TypeScript
+function getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback<BundleInfo>): void
+```
+
+根据给定的bundleFlags获取当前应用的BundleInfo。使用callback异步回调。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例**
+
+参见 [getBundleInfoForSelf](#getbundleinfoforself)

@@ -12,7 +12,7 @@ import { window } from '@kit.ArkUI';
 function getTopNavDestinationName(windowId: number): Promise<string>
 ```
 
-获取指定的前台窗口当前栈顶Navigation中的 NavDestination名称，使用Promise异步回调。
+获取指定的前台窗口当前栈顶Navigation中的NavDestination名称，使用Promise异步回调。
 
 **起始版本：** 20
 
@@ -30,7 +30,7 @@ function getTopNavDestinationName(windowId: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象。返回获取到的[NavDestination]{ |
+| Promise&lt;string&gt; | Promise对象。返回获取到的NavDestination名称。<br>对于Navigation嵌套以及当前页面存在多个Navigation的场景，查询的是后创建的Navigation的信息。<br>如果页面没有Navigation或者Navigation中没有NavDestination，返回空字符串。 |
 
 **错误码：**
 

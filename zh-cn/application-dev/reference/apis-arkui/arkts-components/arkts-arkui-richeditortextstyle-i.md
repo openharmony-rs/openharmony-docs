@@ -6,18 +6,21 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## decoration
 
 ```TypeScript
 decoration?: DecorationStyleInterface
 ```
 
-设置文本装饰线的样式、颜色和粗细。type默认值：TextDecorationType.None color默认值：跟随字体颜色。style默认值：TextDecorationStyle.SOLID thicknessScale默认值：1.0
+设置文本装饰线的样式、颜色和粗细。
+
+type默认值：TextDecorationType.None
+
+color默认值：跟随字体颜色。
+
+style默认值：TextDecorationStyle.SOLID
+
+thicknessScale默认值：1.0
 
 **类型：** [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md)
 
@@ -25,7 +28,7 @@ decoration?: DecorationStyleInterface
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +38,9 @@ decoration?: DecorationStyleInterface
 fontColor?: ResourceColor
 ```
 
-文本颜色。默认值：\$r('sys.color.font_primary')。当[shaderStyle](arkts-arkui-richeditorparagraphstyle-i.md)同时设置时，shaderStyle优先级高于fontColor。
+文本颜色。
+
+默认值：&#36;r('sys.color.font_primary')。当[shaderStyle](arkts-arkui-richeditorparagraphstyle-i.md)同时设置时，shaderStyle优先级高于fontColor。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -43,7 +48,7 @@ fontColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +58,7 @@ fontColor?: ResourceColor
 fontFamily?: ResourceStr
 ```
 
-设置字体列表，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-font.md)。默认字体:'HarmonyOS Sans'。
+设置字体列表，当前支持'HarmonyOS Sans'字体和[注册自定义字体](../arkts-apis/arkts-arkui-font.md)。默认字体:'HarmonyOS Sans'。
 
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -61,7 +66,7 @@ fontFamily?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +76,21 @@ fontFamily?: ResourceStr
 fontFeature?: string
 ```
 
-设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。格式为：normal | &lt;feature-tag-value&gt;&lt;feature-tag-value&gt;的格式为：&lt;string&gt; [ &lt;integer&gt; | on | off ]&lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。例如，使用等宽时钟数字的输入格式为："ss01" on。Font Feature当前支持的属性见fontFeature属性列表。设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/ opentype-features/
+设置文字特性效果，比如数字等宽的特性。如果未设置，默认为变宽数字。设置无效字符保持默认。
+
+格式为：normal | &lt;feature-tag-value&gt;
+
+&lt;feature-tag-value&gt;的格式为：&lt;string&gt; [ &lt;integer&gt; | on | off ]
+
+&lt;feature-tag-value&gt;的个数可以有多个，中间用','隔开。
+
+例如，使用等宽时钟数字的输入格式为："ss01" on。
+
+Font Feature当前支持的属性见fontFeature属性列表。
+
+设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
+
+更多 Font Feature 能力介绍可参考[font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[OpenType Features](https://sparanoid.com/lab/opentype-features/)。
 
 **类型：** string
 
@@ -79,7 +98,7 @@ fontFeature?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,13 +110,13 @@ fontSize?: Length | number
 
 设置字体大小，Length为number类型时，使用fp单位。number类型取值范围：(0, +∞)。设置为0或负值时，按默认值处理。字体默认大小为16fp。不支持设置百分比字符串。
 
-**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md) \| number
+**类型：** [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; number
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,15 +126,17 @@ fontSize?: Length | number
 fontStyle?: FontStyle
 ```
 
-字体样式。默认值：FontStyle.Normal。
+字体样式。
 
-**类型：** FontStyle
+默认值：FontStyle.Normal。
+
+**类型：** [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,15 +146,21 @@ fontStyle?: FontStyle
 fontWeight?: number | FontWeight | string
 ```
 
-字体粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。超出范围时按默认值400生效。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"分别对应FontWeight中相应的枚举值。默认值：FontWeight.Normal。
+字体粗细。
 
-**类型：** number \| FontWeight \| string
+number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。超出范围时按默认值400生效。
+
+string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"分别对应FontWeight中相应的枚举值。
+
+默认值：FontWeight.Normal。
+
+**类型：** number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,7 +170,11 @@ fontWeight?: number | FontWeight | string
 halfLeading?: boolean
 ```
 
-文本是否将行间距平分至行的顶部与底部。true表示将行间距平分至行的顶部与底部，false则不平分。默认值：false。
+文本是否将行间距平分至行的顶部与底部。
+
+true表示将行间距平分至行的顶部与底部，false则不平分。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -151,7 +182,7 @@ halfLeading?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,13 +194,13 @@ letterSpacing?: number | string
 
 设置文本字符间距，默认单位为fp。默认值：0。当取值为负值时，文字会发生压缩。
 
-**类型：** number \| string
+**类型：** number &#124; string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,15 +210,19 @@ letterSpacing?: number | string
 lineHeight?: number | string | Resource
 ```
 
-设置文本的文本行高。默认值：不设置时自适应字体大小。number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时， [fallbackLineSpacing](arkts-arkui-richeditor-attribute.md#fallbacklinespacing)属性将生效。
+设置文本的文本行高。
 
-**类型：** number \| string \| Resource
+默认值：不设置时自适应字体大小。
+
+number类型取值范围：(0, +∞)，设置值不大于0时，不限制文本行高，自适应字体大小。number类型时单位为fp，不支持设置百分比字符串。当lineHeight设置值小于当前字号下文本渲染出的实际高度时，[fallbackLineSpacing](arkts-arkui-richeditor-comp-attribute.md#fallbacklinespacing)属性将生效。
+
+**类型：** number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -197,7 +232,11 @@ lineHeight?: number | string | Resource
 strokeColor?: ResourceColor
 ```
 
-文本描边颜色。默认值：跟随字体颜色。设置异常值时跟随字体颜色。
+文本描边颜色。
+
+默认值：跟随字体颜色。
+
+设置异常值时跟随字体颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -205,7 +244,7 @@ strokeColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,7 +254,9 @@ strokeColor?: ResourceColor
 strokeJoinStyle?: StrokeJoinStyle
 ```
 
-文本描边拐角样式。默认值：StrokeJoinStyle.MITER_JOIN。
+文本描边拐角样式。
+
+默认值：StrokeJoinStyle.MITER_JOIN。
 
 **类型：** [StrokeJoinStyle](../arkts-apis/arkts-arkui-strokejoinstyle-e.md)
 
@@ -223,7 +264,7 @@ strokeJoinStyle?: StrokeJoinStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,15 +274,25 @@ strokeJoinStyle?: StrokeJoinStyle
 strokeWidth?: LengthMetrics | number
 ```
 
-文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../arkts-apis/arkts-arkui-graphics-lengthunit-e.md)，当前设置不生效，作为0处理。值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。默认值：0。单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。取值范围：(-∞, +∞)与[shaderStyle](arkts-arkui-richeditorparagraphstyle-i.md)同时设置时，shaderStyle不生效。
+文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../arkts-apis/arkts-arkui-graphics-lengthunit-e.md)，当前设置不生效，作为0处理。
 
-**类型：** LengthMetrics \| number
+值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。
+
+默认值：0。
+
+单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。
+
+取值范围：(-∞, +∞)
+
+与[shaderStyle](arkts-arkui-richeditorparagraphstyle-i.md)同时设置时，shaderStyle不生效。
+
+**类型：** [LengthMetrics](../arkts-apis/arkts-arkui-lengthmetrics-t.md) &#124; number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,7 +302,11 @@ strokeWidth?: LengthMetrics | number
 textBackgroundStyle?: TextBackgroundStyle
 ```
 
-文本背景样式。默认值：{color: Color.Transparent, radius: 0}
+文本背景样式。
+
+默认值：
+
+{color: Color.Transparent, radius: 0}
 
 **类型：** [TextBackgroundStyle](arkts-arkui-textbackgroundstyle-i.md)
 
@@ -259,7 +314,7 @@ textBackgroundStyle?: TextBackgroundStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,15 +324,22 @@ textBackgroundStyle?: TextBackgroundStyle
 textShadow?: ShadowOptions | Array<ShadowOptions>
 ```
 
-设置文字阴影效果。默认值：undefined，不设置文字阴影效果。该接口支持以数组形式入参，实现多重文字阴影。  
-**说明：**仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。
+设置文字阴影效果。
 
-**类型：** [ShadowOptions](arkts-arkui-shadowoptions-i.md) \| Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt;
+默认值：undefined，不设置文字阴影效果。
+
+该接口支持以数组形式入参，实现多重文字阴影。
+
+**说明：** 
+
+仅支持设置阴影模糊半径、颜色和偏移量，不支持智能取色。
+
+**类型：** [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; Array&lt;[ShadowOptions](arkts-arkui-shadowoptions-i.md)&gt;
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

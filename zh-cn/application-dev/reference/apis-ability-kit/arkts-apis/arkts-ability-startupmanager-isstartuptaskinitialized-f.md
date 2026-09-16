@@ -30,7 +30,7 @@ function isStartupTaskInitialized(startupTask: string): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回布尔值，true表示该启动任务或so预加载任务已执行完成，false表示该启动任务或so预加载任务尚未执行完成。 |
+| boolean | 返回布尔值，true表示该启动任务或so预加载任务已初始化完成，false表示尚未初始化完成。 |
 
 **错误码：**
 

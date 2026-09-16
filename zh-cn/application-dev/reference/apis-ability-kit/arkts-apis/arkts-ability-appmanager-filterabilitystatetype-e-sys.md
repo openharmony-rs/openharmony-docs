@@ -14,7 +14,7 @@
 CREATE = 1 << 0
 ```
 
-Ability正在创建中，对应 [Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的 ABILITY_STATE_CREATE。
+Ability正在创建中，对应[Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_CREATE。
 
 **起始版本：** 21
 
@@ -28,7 +28,7 @@ Ability正在创建中，对应 [Ability状态](../../../reference/apis-ability-
 FOREGROUND = 1 << 1
 ```
 
-Ability处于前台，对应 [Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的 ABILITY_STATE_FOREGROUND。
+Ability处于前台，对应[Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_FOREGROUND。
 
 **起始版本：** 21
 
@@ -42,7 +42,7 @@ Ability处于前台，对应 [Ability状态](../../../reference/apis-ability-kit
 BACKGROUND = 1 << 2
 ```
 
-Ability处于后台，对应 [Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的 ABILITY_STATE_BACKGROUND。
+Ability处于后台，对应[Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_BACKGROUND。
 
 **起始版本：** 21
 
@@ -56,7 +56,7 @@ Ability处于后台，对应 [Ability状态](../../../reference/apis-ability-kit
 DESTROY = 1 << 3
 ```
 
-Ability已经销毁，对应 [Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的 ABILITY_STATE_TERMINATED。
+Ability已经销毁，对应[Ability状态](../../../reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_TERMINATED。
 
 **起始版本：** 21
 

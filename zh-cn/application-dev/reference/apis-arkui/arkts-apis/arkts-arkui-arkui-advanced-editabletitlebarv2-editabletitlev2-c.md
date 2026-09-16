@@ -4,6 +4,8 @@
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -24,7 +26,7 @@ EditableTitleV2的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +42,9 @@ EditableTitleV2的构造函数。
 public mainTitle: ResourceStr
 ```
 
-主标题内容。默认值：''，表示标题内容为空。
+主标题内容。
+
+默认值：''，表示标题内容为空。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -48,9 +52,11 @@ public mainTitle: ResourceStr
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,8 +72,10 @@ public subTitle?: ResourceStr
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

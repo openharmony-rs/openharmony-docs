@@ -20,9 +20,11 @@ import { uiMaterial } from '@kit.ArkUI';
 type?: MaterialType
 ```
 
-材质类型。默认值：MaterialType.NONE
+材质类型。当不需要材质效果时选择MaterialType.NONE，当需要半透明背景效果时选择MaterialType.SEMI_TRANSPARENT。
 
-**类型：** MaterialType
+默认值：MaterialType.NONE
+
+**类型：** [MaterialType](arkts-arkui-uimaterial-materialtype-e.md)
 
 **默认值：** uiMaterial.MaterialType.NONE
 

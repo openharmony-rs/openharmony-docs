@@ -12,4 +12,4 @@ export type BundlePackInfo = _PackInfo.BundlePackInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.BundlePackInfo
+**类型：** [_PackInfo.BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md)

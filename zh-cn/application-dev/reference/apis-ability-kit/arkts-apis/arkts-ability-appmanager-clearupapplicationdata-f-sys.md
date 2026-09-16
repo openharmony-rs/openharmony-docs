@@ -32,7 +32,7 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| Promise&lt;void&gt; | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -44,6 +44,29 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'bundleName';
+
+function clearUpApplicationDataCallback(err: BusinessError) {
+  if (err) {
+    console.error(`clearUpApplicationDataCallback fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info('clearUpApplicationDataCallback success.');
+  }
+}
+
+try {
+  appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';
@@ -99,25 +122,4 @@ function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void
 
 **示例**
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-
-function clearUpApplicationDataCallback(err: BusinessError) {
-  if (err) {
-    console.error(`clearUpApplicationDataCallback fail, err: ${JSON.stringify(err)}`);
-  } else {
-    console.info('clearUpApplicationDataCallback success.');
-  }
-}
-
-try {
-  appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
+参见 [clearUpApplicationData](#clearupapplicationdata)

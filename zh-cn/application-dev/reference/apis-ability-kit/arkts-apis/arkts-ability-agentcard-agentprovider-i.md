@@ -2,6 +2,8 @@
 
 表示Agent的服务提供商。
 
+@typedef AgentProvider
+
 **起始版本：** 24
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -20,7 +22,7 @@ Agent提供商的组织名称。标识该Agent的开发或提供方（公司、�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -38,6 +40,6 @@ Agent提供商的网站或相关文档的URL。提供指向提供商官方网站
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core

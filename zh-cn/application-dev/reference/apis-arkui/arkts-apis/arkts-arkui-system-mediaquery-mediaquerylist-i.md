@@ -22,7 +22,7 @@ addListener(callback: (event: MediaQueryEvent) => void): void
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,11 +52,11 @@ mMediaQueryList.addListener(maxWidthMatch);
 onchange?: (matches: boolean) => void
 ```
 
-匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。 该参数为只读。
+匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。该参数为只读。
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +76,7 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,13 +106,13 @@ mMediaQueryList.removeListener(maxWidthMatch);
 matches?: boolean
 ```
 
-匹配结果。 true表示满足查询条件，false表示不满足查询条件。 该参数为只读。
+匹配结果。 true表示满足查询条件，false表示不满足查询条件。该参数为只读。
 
 **类型：** boolean
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,12 +122,12 @@ matches?: boolean
 media?: string
 ```
 
-序列化媒体查询条件。 该参数为只读。
+序列化媒体查询条件。该参数为只读。
 
 **类型：** string
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

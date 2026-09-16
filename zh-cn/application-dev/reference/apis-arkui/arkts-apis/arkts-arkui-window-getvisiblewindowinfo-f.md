@@ -18,6 +18,7 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 
 **需要权限：** 
 - API版本18+：ohos.permission.VISIBLE_WINDOW_INFO
+- API版本12-17：N/A
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -25,7 +26,7 @@ function getVisibleWindowInfo(): Promise<Array<WindowInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;WindowInfo&gt;&gt; | Promise对象，返回当前可见窗口的相关信息。 |
+| Promise&lt;Array&lt;[WindowInfo](arkts-arkui-window-windowinfo-i.md)&gt;&gt; | Promise对象，返回当前可见窗口的相关信息。 |
 
 **错误码：**
 

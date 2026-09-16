@@ -12,4 +12,4 @@ extensionAbilities的配置信息。
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.ExtensionAbility
+**类型：** [_PackInfo.ExtensionAbility](arkts-ability-bundlepackinfo-extensionability-i-sys.md)

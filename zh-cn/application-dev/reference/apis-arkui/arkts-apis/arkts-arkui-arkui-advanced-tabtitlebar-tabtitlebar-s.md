@@ -2,14 +2,23 @@
 
 TabTitleBar是页签型标题栏组件，支持页签列表与关联内容的联动切换，并可配置右侧菜单项。适用于需要通过页签切换页面内容的场景，如顶部导航栏等。该组件通过页签和菜单项的灵活配置，可满足不同的交互需求。仅支持一级页面的页签切换。
 
-> **说明：**
+> **说明：** 
 > 
 > - 该组件仅可在Stage模型下使用。
 > 
-> - 设置TabTitleBar的通用属性或通用事件时，编译工具
-> 链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
+> - 设置TabTitleBar的通用属性或通用事件时，编译工具链会在__Common__节点上挂载而非直接应用到组件本身，可能导致设置不生效或不符合预期，因此不建议设置。
+
+## 子组件
+
+无
+
+## TabTitleBarAttribute
+
+不支持通用事件。
 
 **起始版本：** 10
+
+**装饰器类型：** @Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -29,9 +38,11 @@ swiperContent: () => void
 
 **起始版本：** 10
 
+**装饰器类型：** @BuilderParam
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,7 +60,7 @@ menuItems?: Array<TabTitleBarMenuItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,6 +78,6 @@ tabItems: Array<TabTitleBarTabItem>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

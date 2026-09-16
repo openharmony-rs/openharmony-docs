@@ -6,18 +6,17 @@ TabBar栅格化方式设置的对象，包括栅格模式下的column边距和�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## gutter
 
 ```TypeScript
 gutter?: Dimension
 ```
 
-栅格模式下的column间隔。不支持百分比设置，取值范围：[0, +∞)。默认值：24.0单位：vp
+栅格模式下的column间隔。不支持百分比设置，取值范围：[0, +∞)。
+
+默认值：24.0
+
+单位：vp
 
 **类型：** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -25,7 +24,7 @@ gutter?: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +34,9 @@ gutter?: Dimension
 lg?: number
 ```
 
-大屏下，页签占用的columns数量，非负偶数或-1（-1表示页签占用TabBar全部宽度）。大屏为大于等于840vp但小于1024vp。默认值为-1，代表页签占用TabBar全部宽度。
+大屏下，页签占用的columns数量，非负偶数或-1（-1表示页签占用TabBar全部宽度）。大屏为大于等于840vp但小于1024vp。
+
+默认值为-1，代表页签占用TabBar全部宽度。
 
 **类型：** number
 
@@ -43,7 +44,7 @@ lg?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +54,11 @@ lg?: number
 margin?: Dimension
 ```
 
-栅格模式下的column边距。不支持百分比设置，取值范围：[0, +∞)。默认值：24.0单位：vp
+栅格模式下的column边距。不支持百分比设置，取值范围：[0, +∞)。
+
+默认值：24.0
+
+单位：vp
 
 **类型：** [Dimension](../arkts-apis/arkts-arkui-dimension-t.md)
 
@@ -61,7 +66,7 @@ margin?: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +76,9 @@ margin?: Dimension
 md?: number
 ```
 
-中屏下，页签占用的columns数量，非负偶数或-1（-1表示页签占用TabBar全部宽度）。中屏为大于等于600vp但小于800vp。默认值为-1，代表页签占用TabBar全部宽度。
+中屏下，页签占用的columns数量，非负偶数或-1（-1表示页签占用TabBar全部宽度）。中屏为大于等于600vp但小于800vp。
+
+默认值为-1，代表页签占用TabBar全部宽度。
 
 **类型：** number
 
@@ -79,7 +86,7 @@ md?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +96,9 @@ md?: number
 sm?: number
 ```
 
-小屏下，页签占用的columns数量。非负偶数或-1（-1表示页签占用TabBar全部宽度）。小屏为大于等于320vp但小于600vp。默认值为-1，代表页签占用TabBar全部宽度。
+小屏下，页签占用的columns数量。非负偶数或-1（-1表示页签占用TabBar全部宽度）。小屏为大于等于320vp但小于600vp。
+
+默认值为-1，代表页签占用TabBar全部宽度。
 
 **类型：** number
 
@@ -97,6 +106,6 @@ sm?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

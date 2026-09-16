@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## baseline
 
 ```TypeScript
 baseline: number
 ```
 
-自定义绘制Span的所在行的基线偏移量。单位：[px](arkts-arkui-length-t.md)
+自定义绘制Span的所在行的基线偏移量。
+
+单位：[px](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -25,7 +22,7 @@ baseline: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,9 @@ baseline: number
 lineBottom: number
 ```
 
-自定义绘制Span相对于Text组件的下边距。单位：[px](arkts-arkui-length-t.md)
+自定义绘制Span相对于Text组件的下边距。
+
+单位：[px](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -43,7 +42,7 @@ lineBottom: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +52,9 @@ lineBottom: number
 lineTop: number
 ```
 
-自定义绘制Span相对于Text组件的上边距。单位：[px](arkts-arkui-length-t.md)
+自定义绘制Span相对于Text组件的上边距。
+
+单位：[px](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -61,7 +62,7 @@ lineTop: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +72,9 @@ lineTop: number
 x: number
 ```
 
-自定义绘制Span相对于挂载组件的偏移。单位：[px](arkts-arkui-length-t.md)
+自定义绘制Span相对于挂载组件的偏移。
+
+单位：[px](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -79,6 +82,6 @@ x: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

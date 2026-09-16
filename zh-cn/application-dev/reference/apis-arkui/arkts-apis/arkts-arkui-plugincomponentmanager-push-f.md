@@ -12,11 +12,11 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 function push(param: PushParameters, callback: AsyncCallback<void>): void
 ```
 
-组件提供方向组件使用方主动发送组件和数据。适用于提供方数据更新后需主动通知使用方刷新显示的场景。
+组件提供方向组件使用方主动发送组件与数据。适用于需要主动推送插件组件模板的场景，例如跨应用内容分享、应用内嵌入的外部插件组件内容动态更新等。push 由组件提供方主动发起推送，request 由组件使用方主动发起请求；注意两者参数结构相近但 owner/target 含义相反，请勿混用。组件使用方需通过onPush事件监听接收数据，事件监听接口请参见@ohos.pluginComponent (PluginComponentManager)。
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +24,7 @@ function push(param: PushParameters, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md) | 是 | 推送组件的详细参数。 |
+| param | [PushParameters](arkts-arkui-plugincomponentmanager-pushparameters-i.md) | 是 | 组件提供方要发送的参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 此次接口调用的异步回调。 |
 
 **示例**

@@ -1,6 +1,6 @@
 # AbilityFirstFrameStateData（系统接口）
 
-定义了首帧绘制完成事件回调上报的数据结构。通过 [on](arkts-ability-appmanager-on-f-sys.md#onabilityfirstframestate) 注册监听Ability首帧绘制完成事件后，可使用 [AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md)的 [onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onabilityfirstframedrawn) 回调获取上报的数据结构。
+定义了首帧绘制完成事件回调上报的数据结构。通过[on](arkts-ability-appmanager-on-f-sys.md#onabilityfirstframestate)注册监听Ability首帧绘制完成事件后，可使用[AbilityFirstFrameStateObserver](arkts-ability-abilityfirstframestateobserver-i-sys.md)的[onAbilityFirstFrameDrawn](arkts-ability-abilityfirstframestateobserver-i-sys.md#onabilityfirstframedrawn)回调获取上报的数据结构。
 
 **起始版本：** 12
 
@@ -30,7 +30,7 @@ Ability名称。
 appIndex: number
 ```
 
-DLP沙盒的索引。
+DLP（数据防泄露）沙盒的索引。
 
 **类型：** number
 

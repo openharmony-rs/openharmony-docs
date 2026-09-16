@@ -10,7 +10,7 @@ declare type OnChangeCallback = (value: boolean) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,4 +18,4 @@ declare type OnChangeCallback = (value: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。  value为true时，表示从未选中变为选中。  value为false时，表示从选中变为未选中。 |
+| value | boolean | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时的回调函数。<br>value为true时，表示从未选中变为选中。<br>value为false时，表示从选中变为未选中。 |

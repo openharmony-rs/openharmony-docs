@@ -22,7 +22,7 @@ import { prompt } from '@kit.ArkUI';
 buttons?: [Button, Button?, Button?]
 ```
 
-对话框中按钮的数组，结构为：{text:'button', color: '#666666'}，支持1-3个按钮。其中第一个为positiveButton，第二个为negativeButton，第三个为 neutralButton。
+对话框中按钮的数组，结构为：{text:'button', color: '#666666'}，支持1-3个按钮。其中第一个为positiveButton，第二个为negativeButton，第三个为neutralButton。
 
 **类型：** [Button, Button?, Button?]
 

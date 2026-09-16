@@ -27,7 +27,7 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名。 |
-| extensionAbilityType | bundleManager.ExtensionAbilityType | 是 | 应用的扩展组件类型，仅支持ExtensionAbilityType.INPUT_METHOD 、ExtensionAbilityType.SHARE、ExtensionAbilityType.ACTION。 |
+| extensionAbilityType | [bundleManager.ExtensionAbilityType](arkts-ability-bundlemanager-extensionabilitytype-e.md) | 是 | 应用的扩展组件类型，仅支持ExtensionAbilityType.INPUT_METHOD、ExtensionAbilityType.SHARE、ExtensionAbilityType.ACTION。 |
 | resourceFlags | number | 是 | 资源信息标志，指示需要获取的资源信息的内容。 |
 | appIndex | number | 否 | 应用分身的ID，默认值是0。取值范围0~5，取值为0表示主应用。 |
 
@@ -35,7 +35,7 @@ function getExtensionAbilityResourceInfo(bundleName: string, extensionAbilityTyp
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;LauncherAbilityResourceInfo&gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
+| Array&lt;[LauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-launcherabilityresourceinfo-t-sys.md)&gt; | 返回指定应用的扩展组件资源，包含图标和名称等信息。 |
 
 **错误码：**
 

@@ -33,7 +33,7 @@ function getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): Bun
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleInfo | 返回BundleInfo对象。 |
+| [BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md) | 返回BundleInfo对象。 |
 
 **错误码：**
 

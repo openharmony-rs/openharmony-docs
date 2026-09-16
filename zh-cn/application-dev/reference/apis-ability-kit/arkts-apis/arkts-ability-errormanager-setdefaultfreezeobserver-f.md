@@ -12,9 +12,9 @@ import { errorManager } from '@kit.AbilityKit';
 function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver
 ```
 
-发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。 如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
+发生APP_FREEZE时，支持链式回调，返回上一次注册的处理器，仅限主线程调用。如果传入非法参数或在子线程调用，将抛出错误码并返回undefined，因此建议使用try-catch逻辑进行处理。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口请勿与
 > [on('freeze')](arkts-ability-errormanager-on-f.md#onfreeze)
@@ -26,7 +26,7 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

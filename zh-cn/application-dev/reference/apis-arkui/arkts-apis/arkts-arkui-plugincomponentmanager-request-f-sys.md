@@ -12,7 +12,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 function request(param: RequestParameterForStage, callback: AsyncCallback<RequestCallbackParameters>): void
 ```
 
-组件使用方向组件提供方主动请求组件。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息。
+组件使用方向组件提供方主动请求组件。适用于使用方需要按需动态获取插件组件模板的场景，例如动态加载其他应用提供的插件内容、按需展示跨应用组件等。组件提供方需通过onRequest事件监听响应请求，并通过回调返回组件模板信息，事件监听接口请参见@ohos.pluginComponent (PluginComponentManager)。
 
 **起始版本：** 9
 
@@ -36,30 +36,26 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 pluginComponentManager.request(
   {
-    owner: {
-      bundleName: "com.example.user",
-      abilityName: "com.example.user.MainAbility",
-    },
-    target: {
+    want: {
       bundleName: "com.example.provider",
       abilityName: "com.example.provider.MainAbility",
     },
     name: "plugintemplate",
     data: {
-      "key1": "myapplication plugin component test",
+      "key_1": "plugin component test",
+      "key_2": 1111111,
     },
     jsonPath: "",
   },
   (err, data) => {
     if (err) {
-      console.error(`Failed to request. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    if (!data) {
+      console.error(`request_callback: err.code = ${err.code}, err.message = ${err.message}`);
       return;
     }
     console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
     console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source);
+    console.info("request_callback: data=" + JSON.stringify(data.data));
+    console.info("request_callback: extraData=" + JSON.stringify(data.extraData));
   }
-);
+)
 ```

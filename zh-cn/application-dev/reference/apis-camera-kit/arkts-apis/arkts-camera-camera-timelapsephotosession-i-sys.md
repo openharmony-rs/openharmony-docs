@@ -2,7 +2,7 @@
 
 TimeLapsePhotoSession extends Session, Focus, ManualFocus, AutoExposure, ManualExposure, ManualIso, WhiteBalance, Zoom, ColorEffect Implements a time-lapse photo session, which sets the parameters of the time-lapse photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
-**继承/实现关系：** TimeLapsePhotoSession extends [Session](arkts-camera-camera-session-i.md), [Focus](arkts-camera-camera-focus-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Zoom](arkts-camera-camera-zoom-i.md), [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)
+**继承/实现关系：** TimeLapsePhotoSession extends [Session](arkts-camera-camera-session-i.md), [Focus](arkts-camera-camera-focus-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
 **起始版本：** 12
 
@@ -13,6 +13,7 @@ TimeLapsePhotoSession extends Session, Focus, ManualFocus, AutoExposure, ManualE
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getSupportedTimeLapseIntervalRange
@@ -33,7 +34,7 @@ Obtains the supported time-lapse shooting interval range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | Interval range, in ms. The value depends on the underlying capability. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| Array&lt;number&gt; | Interval range, in ms. The value depends on the underlying capability. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
 
 **错误码：**
 
@@ -123,7 +124,7 @@ Obtains the time-lapse preview type.
 
 | 类型 | 说明 |
 | --- | --- |
-| [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md) | Preview type. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md) | Preview type. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
 
 **错误码：**
 
@@ -168,7 +169,7 @@ Obtains the time-lapse shooting state.
 
 | 类型 | 说明 |
 | --- | --- |
-| [TimeLapseRecordState](arkts-camera-camera-timelapserecordstate-e-sys.md) | Shooting state. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| [TimeLapseRecordState](arkts-camera-camera-timelapserecordstate-e-sys.md) | Shooting state. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
 
 **错误码：**
 
@@ -213,7 +214,7 @@ Checks whether Try AE is required.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether Try AE is required. **true** if required, **false** otherwise. The error code type is defined in [CameraErrorCode]{ |
+| boolean | Check result for whether Try AE is required. **true** if required, **false** otherwise. The error code type is defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
 
 **错误码：**
 
@@ -267,14 +268,6 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-function unregisterSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.off('error');
-}
-```
-
 ## off('focusStateChange')
 
 ```TypeScript
@@ -301,14 +294,6 @@ Unsubscribes from focus state change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-function unregisterFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.off('focusStateChange');
-}
-```
 
 ## off('isoInfoChange')
 
@@ -337,14 +322,6 @@ Unsubscribes from automatic ISO change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-function unregisterIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.off('isoInfoChange');
-}
-```
-
 ## off('exposureInfoChange')
 
 ```TypeScript
@@ -371,14 +348,6 @@ Unsubscribes from exposure information change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-function unregisterExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.off('exposureInfoChange');
-}
-```
 
 ## off('luminationInfoChange')
 
@@ -407,14 +376,6 @@ Unsubscribes from illumination change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-function unregisterLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.off('luminationInfoChange');
-}
-```
-
 ## off('tryAEInfoChange')
 
 ```TypeScript
@@ -441,14 +402,6 @@ Unsubscribes from Try AE change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-function unregisterTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.off('tryAEInfoChange');
-}
-```
 
 ## on('error')
 
@@ -477,20 +430,6 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError): void {
-  console.error(`Time lapse photo session error code: ${err.code}`);
-}
-
-function registerSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.on('error', callback);
-}
-```
-
 ## on('focusStateChange')
 
 ```TypeScript
@@ -517,24 +456,6 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, focusState: camera.FocusState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`Focus state: ${focusState}`);
-}
-
-function registerFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.on('focusStateChange', callback);
-}
-```
 
 ## on('isoInfoChange')
 
@@ -563,24 +484,6 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isoInfoCallback(err: BusinessError, info: camera.IsoInfo): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`ISO value: ${info.iso}`);
-}
-
-function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.on('isoInfoChange', isoInfoCallback);
-}
-```
-
 ## on('exposureInfoChange')
 
 ```TypeScript
@@ -607,24 +510,6 @@ Subscribes to exposure information change events to obtain the exposure informat
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function exposureInfoCallback(err: BusinessError, info: camera.ExposureInfo): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`exposureTimeValue: ${info.exposureTime}`);
-}
-
-function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.on('exposureInfoChange', exposureInfoCallback);
-}
-```
 
 ## on('luminationInfoChange')
 
@@ -653,24 +538,6 @@ Subscribes to illumination change events to obtain real-time illumination inform
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function luminationInfoCallback(err: BusinessError, info: camera.LuminationInfo): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`Lumination: ${info.lumination}`);
-}
-
-function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.on('luminationInfoChange', luminationInfoCallback);
-}
-```
-
 ## on('tryAEInfoChange')
 
 ```TypeScript
@@ -697,24 +564,6 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function tryAEInfoCallback(err: BusinessError, info: camera.TryAEInfo): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`TryAEInfo: ${info.isTryAEDone}, ${info.isTryAEHintNeeded}, ${info.previewType}, ${info.captureInterval}`);
-}
-
-function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
-  timeLapsePhotoSession.on('tryAEInfoChange', tryAEInfoCallback);
-}
-```
 
 ## setTimeLapseInterval
 

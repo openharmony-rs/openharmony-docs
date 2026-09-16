@@ -20,7 +20,11 @@ import { cliManager } from '@kit.AbilityKit';
 background?: boolean
 ```
 
-表示任务是否后台执行。true：后台执行，false：前台执行。默认值：false。
+表示任务是否后台执行。
+
+true：后台执行，false：前台执行。
+
+默认值：false。
 
 **类型：** boolean
 

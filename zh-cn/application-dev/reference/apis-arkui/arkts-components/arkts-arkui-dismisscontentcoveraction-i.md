@@ -1,15 +1,8 @@
 # DismissContentCoverAction
 
-Component content cover dismiss@interface DismissContentCoverAction
-
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## dismiss
 
@@ -17,7 +10,7 @@ Component content cover dismiss@interface DismissContentCoverAction
 dismiss: Callback<void>
 ```
 
-全屏模态页面关闭回调函数。开发者需要退出页面时调用。
+全屏模态页面关闭回调函数。须在onWillDismiss回调中调用此方法以关闭全屏模态页面；未调用时，全屏模态页面将保持打开状态不关闭。
 
 **类型：** [Callback](arkts-arkui-callback-i.md)&lt;void&gt;
 
@@ -25,7 +18,7 @@ dismiss: Callback<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +36,6 @@ reason: DismissReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

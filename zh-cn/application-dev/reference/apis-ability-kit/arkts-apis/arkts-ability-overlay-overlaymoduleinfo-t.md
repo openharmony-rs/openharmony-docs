@@ -10,4 +10,4 @@ OverlayModuleInfo信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
-**属性类型：** _OverlayModuleInfo.OverlayModuleInfo
+**类型：** [_OverlayModuleInfo.OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md)

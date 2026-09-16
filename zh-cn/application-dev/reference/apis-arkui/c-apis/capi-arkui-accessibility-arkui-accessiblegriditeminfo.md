@@ -6,7 +6,7 @@ typedef struct ArkUI_AccessibleGridItemInfo {...} ArkUI_AccessibleGridItemInfo
 
 ## 概述
 
-用于特定组件设置组件的属性值，如List、Flex、Select、Swiper组件。
+用于描述网格组件内某个网格项的无障碍属性。该结构体用于向无障碍服务提供网格项的位置、跨度、选中状态等信息，支持无障碍服务获取网格项的布局信息。
 
 **起始版本：** 13
 

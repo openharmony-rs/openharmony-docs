@@ -2,7 +2,7 @@
 
 配置分段按钮选项参数。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 当配置`symbol`和`icon`时，`symbol`的显示优先级更高。
 > 
@@ -24,7 +24,13 @@ import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesCha
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项无障碍说明accessibilityDescription。默认值：""值为undefined时，按默认值处理。装饰器类型：@Trace
+分段按钮选项无障碍说明accessibilityDescription。
+
+默认值：""
+
+值为undefined时，按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -32,7 +38,7 @@ accessibilityDescription?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +48,13 @@ accessibilityDescription?: ResourceStr
 accessibilityLevel?: string
 ```
 
-分段按钮选项无障碍重要性accessibilityLevel。默认值："auto"值为undefined时，按默认值处理。装饰器类型：@Trace
+分段按钮选项无障碍重要性accessibilityLevel。
+
+默认值："auto"
+
+值为undefined时，按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** string
 
@@ -50,7 +62,7 @@ accessibilityLevel?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +72,13 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本accessibilityText。默认值：""值为undefined时，按默认值处理。装饰器类型：@Trace
+分段按钮选项的无障碍文本accessibilityText。
+
+默认值：""
+
+值为undefined时，按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -68,7 +86,7 @@ accessibilityText?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +96,15 @@ accessibilityText?: ResourceStr
 enabled?: boolean
 ```
 
-分段按钮选项是否可用。默认值：true true：可用；false：不可用。值为undefined时，按默认值处理。装饰器类型：@Trace
+分段按钮选项是否可用。
+
+默认值：true
+
+true：可用；false：不可用。
+
+值为undefined时，按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** boolean
 
@@ -86,7 +112,7 @@ enabled?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +122,11 @@ enabled?: boolean
 icon?: ResourceStr
 ```
 
-分段按钮选项图片类型图标。默认值：undefined装饰器类型：@Trace
+分段按钮选项图片类型图标。
+
+默认值：undefined
+
+装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -104,7 +134,7 @@ icon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,15 +144,19 @@ icon?: ResourceStr
 iconModifier?: ImageModifier
 ```
 
-分段按钮选项图片类型图标属性的样式修改器。默认值：undefined装饰器类型：@Trace
+分段按钮选项图片类型图标属性的样式修改器。
 
-**类型：** ImageModifier
+默认值：undefined
+
+装饰器类型：@Trace
+
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,15 +166,19 @@ iconModifier?: ImageModifier
 symbol?: Resource
 ```
 
-分段按钮选项的HM Symbol类型图标。默认值：undefined装饰器类型：@Trace
+分段按钮选项的HM Symbol类型图标。
 
-**类型：** Resource
+默认值：undefined
+
+装饰器类型：@Trace
+
+**类型：** [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,15 +188,19 @@ symbol?: Resource
 symbolModifier?: SymbolGlyphModifier
 ```
 
-分段按钮选项HM Symbol类型图标属性样式修改器。默认值：undefined装饰器类型：@Trace
+分段按钮选项HM Symbol类型图标属性样式修改器。
 
-**类型：** SymbolGlyphModifier
+默认值：undefined
+
+装饰器类型：@Trace
+
+**类型：** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,7 +210,11 @@ symbolModifier?: SymbolGlyphModifier
 text?: ResourceStr
 ```
 
-分段按钮选项文本。默认值：undefined装饰器类型：@Trace
+分段按钮选项文本。
+
+默认值：undefined
+
+装饰器类型：@Trace
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -176,7 +222,7 @@ text?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,14 +232,18 @@ text?: ResourceStr
 textModifier?: TextModifier
 ```
 
-分段按钮选项文本属性样式修改器。默认值：undefined装饰器类型：@Trace
+分段按钮选项文本属性样式修改器。
 
-**类型：** TextModifier
+默认值：undefined
+
+装饰器类型：@Trace
+
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

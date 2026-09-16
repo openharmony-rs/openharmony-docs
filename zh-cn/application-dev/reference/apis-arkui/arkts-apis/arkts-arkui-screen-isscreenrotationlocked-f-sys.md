@@ -38,6 +38,17 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 查询当前自动转屏是否锁定
+screen.isScreenRotationLocked().then((isLocked: boolean) => {
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get the screen rotation lock status. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 查询当前自动转屏是否锁定
 screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -67,7 +78,7 @@ function isScreenRotationLocked(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前自动转屏处于锁定状态；返回false表示当前自动转屏不处于锁定状态。 |
 
 **错误码：**
 
@@ -77,13 +88,4 @@ function isScreenRotationLocked(): Promise<boolean>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 查询当前自动转屏是否锁定
-screen.isScreenRotationLocked().then((isLocked: boolean) => {
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get the screen rotation lock status. Code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [isScreenRotationLocked](#isscreenrotationlocked)

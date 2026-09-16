@@ -2,7 +2,7 @@
 
 ## 概述
 
-提供上下文数据结构AbilityRuntime_Context和相关接口用于获取当前上下文的应用文件路径、数据加密等级和进程名等信息。
+提供上下文数据结构[AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)和相关接口用于获取当前上下文的应用文件路径、数据加密等级和进程名等信息。
 
 **库：** libability_runtime.so
 
@@ -47,7 +47,7 @@
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的缓存目录。
 
@@ -60,13 +60,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取缓存目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的缓存目录。 |
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength |   在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength |   在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetTempDir()
 
@@ -74,7 +74,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的临时文件目录。
 
@@ -87,13 +87,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取临时文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的临时文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。The error code. |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。The error code. |
 
 ### OH_AbilityRuntime_Context_GetFilesDir()
 
@@ -101,7 +101,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的通用文件目录。
 
@@ -114,13 +114,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取通用文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的通用文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetDatabaseDir()
 
@@ -128,7 +128,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的数据库文件目录。
 
@@ -141,13 +141,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取数据库文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的数据库文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetPreferencesDir()
 
@@ -155,7 +155,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的首选项文件目录。
 
@@ -168,13 +168,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取首选项文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的首选项文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetBundleCodeDir()
 
@@ -182,7 +182,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的安装文件目录。
 
@@ -195,13 +195,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取安装文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的安装文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength |   在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength |   在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetDistributedFilesDir()
 
@@ -209,7 +209,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的分布式文件目录。
 
@@ -222,13 +222,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取分布式文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的分布式文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetResourceDir()
 
@@ -236,7 +236,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的资源目录。
 
@@ -249,13 +249,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取资源目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的资源目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetCloudFileDir()
 
@@ -263,7 +263,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的云文件目录。
 
@@ -276,13 +276,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取云文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的云文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetAreaMode()
 
@@ -290,7 +290,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode* areaMode)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的数据加密等级。
 
@@ -301,13 +301,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取数据加密等级的上下文。 |
-| [AbilityRuntime_AreaMode](capi-context-constant-h.md#abilityruntime_areamode)* areaMode | 指向接收数据加密等级的指针。 |
+| AbilityRuntime_AreaMode* areaMode | 指向接收数据加密等级的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参areaMode为空。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参areaMode为空。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_SetAreaMode()
 
@@ -315,7 +315,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_ContextHandle context, AbilityRuntime_AreaMode areaMode)
 ```
 
-**描述**
+**描述：**
 
 设置上下文的数据加密等级。
 
@@ -326,13 +326,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要设置数据加密等级的上下文。 |
-| [AbilityRuntime_AreaMode](capi-context-constant-h.md#abilityruntime_areamode) areaMode | 数据加密等级。 |
+| AbilityRuntime_AreaMode areaMode | 数据加密等级。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参context为空。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参context为空。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetLogFileDir()
 
@@ -340,7 +340,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_ContextHandle context, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文的日志文件目录。
 
@@ -353,13 +353,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取日志文件目录的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收上下文的日志文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 	返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 	返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 ### OH_AbilityRuntime_Context_GetProcessName()
 
@@ -367,7 +367,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime_ContextHandle context, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
-**描述**
+**描述：**
 
 获取上下文所在的进程名称。
 
@@ -380,12 +380,12 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime
 | [AbilityRuntime_ContextHandle](capi-abilityruntime-abilityruntime-context8h.md) context | 要获取进程名称的上下文。 |
 | char* buffer | 指向缓冲区的指针，用于接收进程名称。 |
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
-| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+| int32_t* writeLength | 在返回{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
+| AbilityRuntime_ErrorCode | 返回执行结果。      <br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 操作成功。      <br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或writeLength为空或context为空，或缓冲区大小小于需要写入的大小。      <br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 上下文不存在。 |
 
 

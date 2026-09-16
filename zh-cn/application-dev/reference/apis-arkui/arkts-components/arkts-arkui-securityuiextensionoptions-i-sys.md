@@ -8,18 +8,15 @@
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
-
 ## dpiFollowStrategy
 
 ```TypeScript
 dpiFollowStrategy?: SecurityDpiFollowStrategy
 ```
 
-设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。默认值：**FOLLOW_UI_EXTENSION_ABILITY_DPI**
+设置SecurityUIExtensionComponent内容分辨率跟随策略，用于控制嵌入的UIExtensionAbility内容是跟随宿主应用的分辨率还是使用自身的分辨率。
+
+默认值：**FOLLOW_UI_EXTENSION_ABILITY_DPI**
 
 **类型：** [SecurityDpiFollowStrategy](arkts-arkui-securitydpifollowstrategy-e-sys.md)
 
@@ -39,7 +36,9 @@ dpiFollowStrategy?: SecurityDpiFollowStrategy
 isTransferringCaller?: boolean
 ```
 
-在使用SecurityUIExtensionComponent嵌套时，设置当前组件是否转发上一级调用方的Caller信息（即发起调用的Ability身份信息），用于支持多级嵌套场景下的调用链传递。true：转发上一级的Caller信息；false：不转发上一级的Caller信息。默认值：**false**默认值：**false**
+在使用SecurityUIExtensionComponent嵌套时，设置当前组件是否转发上一级调用方的Caller信息（即发起调用的Ability身份信息），用于支持多级嵌套场景下的调用链传递。<br> true：转发上一级的Caller信息；false：不转发上一级的Caller信息。<br>默认值：**false**
+
+默认值：**false**
 
 **类型：** boolean
 

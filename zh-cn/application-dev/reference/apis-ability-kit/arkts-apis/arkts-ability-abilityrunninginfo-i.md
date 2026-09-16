@@ -1,6 +1,6 @@
 # AbilityRunningInfo
 
-AbilityRunningInfo是记录Ability运行信息和状态的数据结构，通过 [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md)方法获取。
+AbilityRunningInfo是记录Ability运行信息和状态的数据结构，通过[getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md)方法获取。
 
 **起始版本：** 14
 
@@ -30,7 +30,7 @@ abilityState: abilityManager.AbilityState
 
 Ability的状态。
 
-**类型：** abilityManager.AbilityState
+**类型：** [abilityManager.AbilityState](arkts-ability-abilitymanager-abilitystate-e.md)
 
 **默认值：** Enumerates state of the ability state info
 
@@ -76,7 +76,7 @@ processName: string
 startTime: number
 ```
 
-Ability的启动时间。
+Ability的启动时间，单位：ms。
 
 **类型：** number
 

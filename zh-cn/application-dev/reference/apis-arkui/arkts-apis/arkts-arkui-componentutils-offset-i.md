@@ -18,7 +18,9 @@ import { componentUtils } from '@kit.ArkUI';
 x: number
 ```
 
-x点坐标。单位: px
+x点坐标。
+
+单位: px
 
 **类型：** number
 
@@ -26,7 +28,7 @@ x点坐标。单位: px
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,9 @@ x点坐标。单位: px
 y: number
 ```
 
-y点坐标。单位: px
+y点坐标。
+
+单位: px
 
 **类型：** number
 
@@ -44,6 +48,6 @@ y点坐标。单位: px
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

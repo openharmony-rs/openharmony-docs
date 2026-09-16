@@ -2,6 +2,8 @@
 
 表示Agent可以执行的不同能力或功能。
 
+@typedef AgentSkill
+
 **起始版本：** 24
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -20,7 +22,7 @@ AgentSkill的详细描述。应清晰说明该技能的具体功能、适用场�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -38,7 +40,7 @@ AgentSkill可以处理的示例提示或使用场景。提供具体的示例可�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -56,7 +58,7 @@ AgentSkill的扩展配置项。用于存储技能级别的自定义扩展配置�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -74,7 +76,7 @@ AgentSkill的唯一标识符，在一个AgentCard中必须唯一。建议使用�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -92,7 +94,7 @@ AgentSkill支持的输入模式。使用MIME类型格式定义，例如["text/pl
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -110,7 +112,7 @@ AgentSkill的名称。用于在UI界面中展示，例如"Route Planning"（路�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -120,7 +122,7 @@ AgentSkill的名称。用于在UI界面中展示，例如"Route Planning"（路�
 outputModes?: Array<string>
 ```
 
-AgentSkill支持的输出模式。使用MIME类型格式定义，例如["text/plain", "application/html", "video/mp4"]。如果未设置，将使用AgentCard级别的 defaultOutputModes。该字段允许为特定技能自定义输出类型，覆盖默认设置。
+AgentSkill支持的输出模式。使用MIME类型格式定义，例如["text/plain", "application/html", "video/mp4"]。如果未设置，将使用AgentCard级别的defaultOutputModes。该字段允许为特定技能自定义输出类型，覆盖默认设置。
 
 **类型：** Array&lt;string&gt;
 
@@ -128,7 +130,7 @@ AgentSkill支持的输出模式。使用MIME类型格式定义，例如["text/pl
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -138,7 +140,7 @@ AgentSkill支持的输出模式。使用MIME类型格式定义，例如["text/pl
 tags: Array<string>
 ```
 
-描述AgentSkill能力的关键字标签。用于技能分类、检索和推荐，例如["maps", "routing", "navigation"]或["cooking", "recipe", "food"]。标签应简洁明了，便于用户理解和 搜索。
+描述AgentSkill能力的关键字标签。用于技能分类、检索和推荐，例如["maps", "routing", "navigation"]或["cooking", "recipe", "food"]。标签应简洁明了，便于用户理解和搜索。
 
 **类型：** Array&lt;string&gt;
 
@@ -146,6 +148,6 @@ tags: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core

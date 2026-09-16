@@ -26,13 +26,13 @@ function getInstalledBundleList(bundleFlags: number): Promise<Array<BundleInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息，详情请参考 [BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md)。 |
+| bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](arkts-ability-bundlemanager-bundleflag-e.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;BundleInfo&gt;&gt; | Promise对象，返回当前已安装应用的信息列表。 |
+| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt;&gt; | Promise对象，返回当前已安装应用的信息列表。 |
 
 **错误码：**
 

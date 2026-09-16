@@ -32,7 +32,7 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 
 | 类型 | 说明 |
 | --- | --- |
-| uiExtensionHost.UIExtensionHostWindowProxy | 宿主应用窗口信息。 |
+| [uiExtensionHost.UIExtensionHostWindowProxy](../../apis-arkui/arkts-apis/arkts-arkui-uiextensionhost-uiextensionhostwindowproxy-i-sys.md) | 宿主应用窗口信息。 |
 
 **错误码：**
 
@@ -107,7 +107,7 @@ sendData(data: Record<string, Object>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| data | Record &lt;string, Object&gt; | 是 | 发送给UIExtensionComponent控件的数据参数。<br>**起始版本：** 11 |
+| data | Record&lt;string, Object&gt; | 是 | 发送给UIExtensionComponent控件的数据参数。<br>**适用版本：** 11 |
 
 **错误码：**
 
@@ -171,7 +171,7 @@ setReceiveDataCallback(callback: (data: Record<string, Object>) => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (data: Record &lt;string, Object&gt;) =&gt; void | 是 | 回调函数，返回接收的数据。 |
+| callback | (data: Record&lt;string, Object&gt;) =&gt; void | 是 | 回调函数，返回接收的数据。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ setReceiveDataForResultCallback(callback: (data: Record<string, Object>) => Reco
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (data: Record &lt;string, Object&gt;) =&gt; Record &lt;string, Object&gt; | 是 | 回调函数，返回带返回值的接收的数据。 |
+| callback | (data: Record&lt;string, Object&gt;) =&gt; Record&lt;string, Object&gt; | 是 | 回调函数，返回带返回值的接收的数据。 |
 
 **错误码：**
 
@@ -272,7 +272,7 @@ struct Index {
 setWindowBackgroundColor(color: string): void
 ```
 
-设置UIExtensionAbility加载界面的背景色。该接口需要在 [loadContent()](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#loadcontent)调用生效后使用。
+设置UIExtensionAbility加载界面的背景色。该接口需要在[loadContent()](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#loadcontent)调用生效后使用。
 
 **起始版本：** 10
 
@@ -333,7 +333,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 启动Ability。使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -400,6 +400,56 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbility(want, startOptions, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbility`);
+    })
+  }
+
+  // ...
+}
+```
+
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbility(want, startOptions)
+      .then(() => {
+        console.info(`Succeeded in startAbility`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
+
 ## startAbility
 
 ```TypeScript
@@ -408,7 +458,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 启动Ability。使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -453,30 +503,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 **示例**
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbility(want, startOptions, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbility`);
-    })
-  }
-
-  // ...
-}
-```
+参见 [startAbility](#startability)
 
 ## startAbility
 
@@ -486,7 +513,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 启动Ability。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -511,7 +538,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -538,30 +565,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbility(want, startOptions)
-      .then(() => {
-        console.info(`Succeeded in startAbility`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbility, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+参见 [startAbility](#startability)
 
 ## startAbilityAsCaller
 
@@ -569,7 +573,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 startAbilityAsCaller(want: Want, callback: AsyncCallback<void>): void
 ```
 
-初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个 Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用callback异步回调。
+初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用callback异步回调。
 
 **起始版本：** 11
 
@@ -637,13 +641,73 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let localWant: Want = want;
+    localWant.bundleName = 'com.example.demo';
+    localWant.moduleName = 'entry';
+    localWant.abilityName = 'TestAbility';
+
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityAsCaller(localWant, startOptions, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbilityAsCaller`);
+    })
+  }
+
+  // ...
+}
+```
+
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let localWant: Want = want;
+    localWant.bundleName = 'com.example.demo';
+    localWant.moduleName = 'entry';
+    localWant.abilityName = 'TestAbility';
+
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityAsCaller(localWant, startOptions)
+      .then(() => {
+        console.info(`Succeeded in startAbilityAsCaller`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
+
 ## startAbilityAsCaller
 
 ```TypeScript
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<void>): void
 ```
 
-初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个 Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用callback异步回调。
+初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用callback异步回调。
 
 **起始版本：** 11
 
@@ -684,35 +748,7 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback<
 
 **示例**
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let localWant: Want = want;
-    localWant.bundleName = 'com.example.demo';
-    localWant.moduleName = 'entry';
-    localWant.abilityName = 'TestAbility';
-
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityAsCaller(localWant, startOptions, (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbilityAsCaller`);
-    })
-  }
-
-  // ...
-}
-```
+参见 [startAbilityAsCaller](#startabilityascaller)
 
 ## startAbilityAsCaller
 
@@ -720,7 +756,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 ```
 
-初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个 Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用Promise异步回调。
+初始Ability将自己的caller信息（如BundleName、AbilityName等）置于want参数中，传递给中间层的ExtensionAbility。当ExtensionAbility通过该接口拉起另外一个Ability，被拉起的Ability可以从onCreate生命周期获取到初始Ability的caller信息。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -741,7 +777,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -768,35 +804,7 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let localWant: Want = want;
-    localWant.bundleName = 'com.example.demo';
-    localWant.moduleName = 'entry';
-    localWant.abilityName = 'TestAbility';
-
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityAsCaller(localWant, startOptions)
-      .then(() => {
-        console.info(`Succeeded in startAbilityAsCaller`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityAsCaller, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+参见 [startAbilityAsCaller](#startabilityascaller)
 
 ## startAbilityForResult
 
@@ -804,14 +812,13 @@ export default class UIExtAbility extends UIExtensionAbility {
 startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 ```
 
-启动一个Ability，在Ability终止后返回结果给调用方。使用callback异步回调。 Ability的终止方式包括以下几种情况：  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。  
-- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+启动一个Ability，在Ability终止后返回结果给调用方。使用callback异步回调。Ability的终止方式包括以下几种情况：
 
-> **说明：**
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -878,20 +885,69 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
+      if (err) {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+        return;
+      }
+      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+    })
+  }
+
+  // ...
+}
+```
+
+```TypeScript
+import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let startOptions: StartOptions = {
+      displayId: 0
+    };
+
+    session.startAbilityForResult(want, startOptions)
+      .then((data: common.AbilityResult) => {
+        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
+      })
+      .catch((err: BusinessError) => {
+        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
+      });
+  }
+
+  // ...
+}
+```
+
 ## startAbilityForResult
 
 ```TypeScript
 startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void
 ```
 
-启动一个Ability，在Ability终止后返回结果给调用方。使用callback异步回调。 Ability的终止方式包括以下几种情况：  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。  
-- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+启动一个Ability，在Ability终止后返回结果给调用方。使用callback异步回调。Ability的终止方式包括以下几种情况：
 
-> **说明：**
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -936,30 +992,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 **示例**
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityForResult(want, startOptions, (err: BusinessError, data: common.AbilityResult) => {
-      if (err) {
-        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-        return;
-      }
-      console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-    })
-  }
-
-  // ...
-}
-```
+参见 [startAbilityForResult](#startabilityforresult)
 
 ## startAbilityForResult
 
@@ -967,14 +1000,13 @@ export default class UIExtAbility extends UIExtensionAbility {
 startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>
 ```
 
-启动一个Ability，在Ability终止后返回结果给调用方。使用Promise异步回调。 Ability的终止方式包括以下几种情况：  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止并且返回结果给调用方。  
-- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用  
-[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) 接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+启动一个Ability，在Ability终止后返回结果给调用方。使用Promise异步回调。Ability的终止方式包括以下几种情况：
 
-> **说明：**
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
+- 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
@@ -1026,27 +1058,4 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 **示例**
 
-```TypeScript
-import { UIExtensionContentSession, UIExtensionAbility, Want, StartOptions, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let startOptions: StartOptions = {
-      displayId: 0
-    };
-
-    session.startAbilityForResult(want, startOptions)
-      .then((data: common.AbilityResult) => {
-        console.info(`Succeeded in startAbilityForResult, data: ${JSON.stringify(data)}`);
-      })
-      .catch((err: BusinessError) => {
-        console.error(`Failed to startAbilityForResult, code: ${err.code}, msg: ${err.message}`);
-      });
-  }
-
-  // ...
-}
-```
+参见 [startAbilityForResult](#startabilityforresult)

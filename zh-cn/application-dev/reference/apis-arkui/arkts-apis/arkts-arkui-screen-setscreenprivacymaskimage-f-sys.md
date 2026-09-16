@@ -25,13 +25,13 @@ function setScreenPrivacyMaskImage(screenId: number, image?: image.PixelMap): Pr
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | screenId | number | 是 | 屏幕的id，该参数仅支持正整数输入。 |
-| image | image.PixelMap | 否 | 屏幕的隐私蒙版图片，不传入则使用默认隐私蒙版图片。 |
+| image | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 否 | 屏幕的隐私蒙版图片，不传入则使用默认隐私蒙版图片。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

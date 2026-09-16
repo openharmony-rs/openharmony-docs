@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## createCameraInputWithTokenId
@@ -17,7 +18,9 @@
 createCameraInputWithTokenId(camera: CameraDevice, tokenId: number): CameraInput
 ```
 
-Creates a CameraInput instance by camera and calling token.Before using this interface, first through the getSupportedCameras interface to query the current list of camera devices supported by the device, the developer needs to be based on specific scenarios to choose the camera device that meets the needs of the developer, and then use this interface to create a CameraInput instance.
+Creates a CameraInput instance by camera and calling token.
+
+Before using this interface, first through the getSupportedCameras interface to query the current list of camera devices supported by the device, the developer needs to be based on specific scenarios to choose the camera device that meets the needs of the developer, and then use this interface to create a CameraInput instance.
 
 **起始版本：** 24
 
@@ -98,13 +101,13 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | 是 | Supported preview profile, which is obtained through   [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability). |
+| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | 是 | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability). |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [DepthDataOutput](arkts-camera-camera-depthdataoutput-i-sys.md) | DepthDataOutput instance. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| [DepthDataOutput](arkts-camera-camera-depthdataoutput-i-sys.md) | DepthDataOutput instance. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
 
 **错误码：**
 
@@ -298,7 +301,7 @@ Mutes the camera device permanently.
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
-| type | PolicyType | 是 | Policy type. For details about the available options, see [PolicyType](arkts-camera-camera-policytype-e-sys.md). |
+| type | [PolicyType](arkts-camera-camera-policytype-e-sys.md) | 是 | Policy type. For details about the available options, see [PolicyType](arkts-camera-camera-policytype-e-sys.md). |
 
 **错误码：**
 
@@ -343,20 +346,6 @@ Unsubscribes from camera mute status events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, curMuted: boolean): void {
-  let isMuted: boolean = curMuted;
-}
-
-function unregisterCameraMute(cameraManager: camera.CameraManager): void {
-  cameraManager.off('cameraMute', callback);
-}
-```
 
 ## off('controlCenterStatusChange')
 
@@ -411,25 +400,6 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, curMuted: boolean): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  let isMuted: boolean = curMuted;
-  console.info(`cameraMute status: ${isMuted}`);
-}
-
-function registerCameraMute(cameraManager: camera.CameraManager): void {
-  cameraManager.on('cameraMute', callback);
-}
-```
 
 ## on('controlCenterStatusChange')
 

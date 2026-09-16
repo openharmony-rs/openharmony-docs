@@ -1,6 +1,8 @@
 # RotationChangeResult
 
-应用在窗口旋转变化时返回的信息，系统会根据此信息改变当前窗口矩形区域大小。当返回主窗口旋转变化的信息时，系统不改变主窗口的大小。应用窗口与系统窗口大小存在限制，具体限制与相关规则可见 [resize](arkts-arkui-window-window-i.md#resize)。
+应用在窗口旋转变化时返回的信息，系统会根据此信息改变当前窗口矩形区域大小。当返回主窗口旋转变化的信息时，系统不改变主窗口的大小。
+
+应用窗口与系统窗口大小存在限制，具体限制与相关规则可见[resize](arkts-arkui-window-window-i.md#resize)。
 
 **起始版本：** 19
 
@@ -20,11 +22,11 @@ rectType: RectType
 
 窗口矩形区域坐标系类型。
 
-**类型：** RectType
+**类型：** [RectType](arkts-arkui-window-recttype-e.md)
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,10 +38,10 @@ windowRect: Rect
 
 相对于屏幕或父窗坐标系的窗口矩形区域信息。
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 19
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager

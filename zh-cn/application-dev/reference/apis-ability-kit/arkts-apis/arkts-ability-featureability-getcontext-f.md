@@ -24,7 +24,7 @@ function getContext(): Context
 
 | 类型 | 说明 |
 | --- | --- |
-| Context | 返回应用程序上下文。 |
+| [Context](arkts-ability-featureability-context-t.md) | 返回应用程序上下文。 |
 
 **示例**
 

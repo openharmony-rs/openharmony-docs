@@ -1,15 +1,8 @@
 # LinearGradientBlurOptions
 
-@interface LinearGradientBlurOptions
-
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## direction
 
@@ -17,7 +10,11 @@
 direction: GradientDirection
 ```
 
-渐变模糊方向。默认值：GradientDirection.Bottom
+渐变模糊方向。
+
+默认值：
+
+GradientDirection.Bottom
 
 **类型：** [GradientDirection](../arkts-apis/arkts-arkui-gradientdirection-e.md)
 
@@ -25,7 +22,7 @@ direction: GradientDirection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,7 @@ direction: GradientDirection
 fractionStops: FractionStop[]
 ```
 
-数组中保存的每一个二元数组（取值0-1，小于0则为0，大于1则为1）表示[模糊程度, 模糊位置]；模糊位置需严格递增，开发者传入的数据不符合规范会记录日志，渐变模糊数组中二元数组个数必须大于等于2，否则渐变模糊不生效。
+数组中保存的每一个二元数组（取值0-1，小于0则为0，大于1则为1）表示[模糊分数, 模糊位置]；模糊位置需严格递增，开发者传入的数据不符合规范会记录日志，渐变模糊数组中二元数组个数必须大于等于2，否则渐变模糊不生效。
 
 **类型：** [FractionStop](arkts-arkui-fractionstop-t.md)[]
 
@@ -43,6 +40,6 @@ fractionStops: FractionStop[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

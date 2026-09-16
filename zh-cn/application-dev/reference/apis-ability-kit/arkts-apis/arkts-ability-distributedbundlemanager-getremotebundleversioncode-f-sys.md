@@ -28,14 +28,14 @@ function getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | 远程设备ID。可以通过 [getAvailableDeviceList](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync) 获取所有可信设备列表，取值为可信设备信息下networkId字段。 |
+| deviceId | string | 是 | 远程设备ID。可以通过[getAvailableDeviceList](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)获取所有可信设备列表，取值为可信设备信息下networkId字段。 |
 | bundleName | string | 是 | 应用的包名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| Promise&lt;number&gt; | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
 
 **错误码：**
 

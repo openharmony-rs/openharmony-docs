@@ -6,7 +6,7 @@ typedef struct ArkUI_AccessibleRangeInfo {...} ArkUI_AccessibleRangeInfo
 
 ## 概述
 
-用于特定组件设置组件的当前值、最大值、最小值，如Slider、Rating、Progress组件。
+用于表示特定组件（如Slider、Rating、Progress）的范围值信息，包含当前值、最大值和最小值，供无障碍服务读取并向障碍用户播报。
 
 **起始版本：** 13
 

@@ -16,7 +16,7 @@ function getAllDisplays(callback: AsyncCallback<Array<Display>>): void
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -49,6 +49,19 @@ display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: Array<display.Display> = [];
+let promise: Promise<Array<display.Display>> = display.getAllDisplays();
+promise.then((data: Array<display.Display>) => {
+  displayClass = data;
+  console.info(`Succeeded in obtaining all the display objects. Data:  ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 
 ## getAllDisplays
 
@@ -60,7 +73,7 @@ function getAllDisplays(): Promise<Array<Display>>
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -78,15 +91,4 @@ function getAllDisplays(): Promise<Array<Display>>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: Array<display.Display> = [];
-let promise: Promise<Array<display.Display>> = display.getAllDisplays();
-promise.then((data: Array<display.Display>) => {
-  displayClass = data;
-  console.info(`Succeeded in obtaining all the display objects. Data:  ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [getAllDisplays](#getalldisplays)

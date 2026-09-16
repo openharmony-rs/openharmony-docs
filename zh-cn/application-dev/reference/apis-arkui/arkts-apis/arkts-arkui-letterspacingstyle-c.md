@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## constructor
 
 ```TypeScript
@@ -23,7 +18,7 @@ constructor(value: LengthMetrics)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +26,7 @@ constructor(value: LengthMetrics)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | LengthMetrics | 是 | 文本字符间距设置项。如果LengthMetrics的unit值是PERCENT，该设置不生效。 |
+| value | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本字符间距设置项。如果LengthMetrics的unit值是PERCENT，该设置不生效。 |
 
 ## letterSpacing
 
@@ -39,7 +34,9 @@ constructor(value: LengthMetrics)
 readonly letterSpacing: number
 ```
 
-获取属性字符串的文本字符间距。单位：[vp](arkts-arkui-length-t.md)
+获取属性字符串的文本字符间距。
+
+单位：[vp](arkts-arkui-length-t.md)
 
 **类型：** number
 
@@ -47,6 +44,6 @@ readonly letterSpacing: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

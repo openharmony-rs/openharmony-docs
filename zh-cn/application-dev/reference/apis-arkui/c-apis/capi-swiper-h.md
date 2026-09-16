@@ -18,9 +18,9 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | 定义Swiper组件的导航指示器风格。 |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | 定义Swiper组件的数字导航指示器风格。 |
-| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | 定义Swiper组件的导航箭头风格。 |
+| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | 定义Swiper组件的导航指示器样式，用于在轮播等场景中展示当前位置和切换状态。支持自定义指示器的大小、颜色、间距等属性配置，能够提升用户对当前浏览位置的感知，增强用户交互体验，适用于需要展示轮播图片、广告位、内容导航等多种应用场景。 |
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | 定义Swiper组件的数字导航指示器样式，用于以数字形式展示当前位置和总页数。 |
+| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | 定义Swiper组件的导航箭头样式结构体，通过配置箭头位置、大小、颜色等属性实现翻页指引。 |
 
 ### 枚举
 
@@ -109,7 +109,7 @@
 enum ArkUI_SwiperArrow
 ```
 
-**描述**
+**描述：**
 
 Swiper导航点箭头枚举值。
 
@@ -127,7 +127,7 @@ Swiper导航点箭头枚举值。
 enum ArkUI_SwiperNestedScrollMode
 ```
 
-**描述**
+**描述：**
 
 Swiper组件和父组件的嵌套滚动模式。
 
@@ -144,7 +144,7 @@ Swiper组件和父组件的嵌套滚动模式。
 enum ArkUI_PageFlipMode
 ```
 
-**描述**
+**描述：**
 
 Swiper组件鼠标滚轮翻页模式。
 
@@ -161,7 +161,7 @@ Swiper组件鼠标滚轮翻页模式。
 enum ArkUI_SwiperAnimationMode
 ```
 
-**描述**
+**描述：**
 
 Swiper组件跳转到目标index的动画模式。
 
@@ -179,7 +179,7 @@ Swiper组件跳转到目标index的动画模式。
 enum ArkUI_SwiperIndicatorType
 ```
 
-**描述**
+**描述：**
 
 定义Swiper组件的导航指示器类型。
 
@@ -199,7 +199,7 @@ enum ArkUI_SwiperIndicatorType
 ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)
 ```
 
-**描述**
+**描述：**
 
 创建Swiper组件的导航指示器。
 
@@ -223,7 +223,7 @@ ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType
 void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 销毁Swiper组件的导航指示器指针。
 
@@ -241,7 +241,7 @@ void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置导航点距离Swiper组件左边的距离。
 
@@ -260,7 +260,7 @@ void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator,
 float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取导航点距离Swiper组件左边的距离。
 
@@ -284,7 +284,7 @@ float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator
 void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置导航点距离Swiper组件顶部的距离。
 
@@ -303,7 +303,7 @@ void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, f
 float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取导航点距离Swiper组件顶部的距离。
 
@@ -327,7 +327,7 @@ float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置导航点距离Swiper组件右边的距离。
 
@@ -346,7 +346,7 @@ void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, f
 float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取导航点距离Swiper组件右边的距离。
 
@@ -370,7 +370,7 @@ float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置导航点距离Swiper组件底部的距离。
 
@@ -389,7 +389,7 @@ void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator
 float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取导航点距离Swiper组件底部的距离。
 
@@ -413,7 +413,7 @@ float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicato
 void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置点指示器的点的宽度。
 
@@ -432,7 +432,7 @@ void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, flo
 float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件圆点导航指示器的宽。
 
@@ -456,7 +456,7 @@ float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件圆点导航指示器的高。
 
@@ -475,7 +475,7 @@ void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, fl
 float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件圆点导航指示器的高。
 
@@ -499,7 +499,7 @@ float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置被选中的Swiper组件圆点导航指示器的宽。
 
@@ -518,7 +518,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indica
 float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取被选中Swiper组件圆点导航指示器的宽。
 
@@ -542,7 +542,7 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indic
 void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置被选中的Swiper组件圆点导航指示器的高。
 
@@ -561,7 +561,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indic
 float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取被选中Swiper组件圆点导航指示器的高。
 
@@ -585,7 +585,7 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indi
 void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t mask)
 ```
 
-**描述**
+**描述：**
 
 设置是否显示Swiper组件圆点导航指示器的蒙版样式。
 
@@ -604,7 +604,7 @@ void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t 
 int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取是否显示Swiper组件圆点导航指示器的蒙版样式。
 
@@ -628,7 +628,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_t color)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件圆点导航指示器的颜色。
 
@@ -647,7 +647,7 @@ void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_
 uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件圆点导航指示器的颜色。
 
@@ -671,7 +671,7 @@ uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator, uint32_t selectedColor)
 ```
 
-**描述**
+**描述：**
 
 设置被选中Swiper组件圆点导航指示器的颜色。
 
@@ -690,7 +690,7 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取被选中Swiper组件圆点导航指示器的颜色。
 
@@ -714,7 +714,7 @@ uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indica
 int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)
 ```
 
-**描述**
+**描述：**
 
 设置圆点导航点指示器样式下，导航点显示个数的最大值。
 
@@ -739,7 +739,7 @@ int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取圆点导航点指示器样式下，导航点显示个数的最大值。
 
@@ -763,7 +763,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)
 ```
 
-**描述**
+**描述：**
 
 设置OH_ArkUI_SwiperIndicator_SetBottomPosition是否忽略导航点大小。
 
@@ -782,7 +782,7 @@ void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indic
 int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取OH_ArkUI_SwiperIndicator_SetBottomPosition是否忽略导航点大小。
 
@@ -806,7 +806,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* in
 void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float space)
 ```
 
-**描述**
+**描述：**
 
 设置导航点间距。
 
@@ -825,7 +825,7 @@ void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float s
 float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 Obtains 导航点间距。单位：vp。.
 
@@ -849,7 +849,7 @@ Obtains 导航点间距。单位：vp。.
 ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 ```
 
-**描述**
+**描述：**
 
 创建Swiper组件的数字导航指示器。
 
@@ -867,7 +867,7 @@ ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置数字导航指示器距离Swiper组件左边的距离，在从右至左显示的语言模式下，设置其距离Swiper组件右边的距离。
 
@@ -886,7 +886,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* 
 float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取数字导航指示器距离Swiper组件左边的距离，在从右至左显示的语言模式下，获取其距离Swiper组件右边的距离。
 
@@ -910,7 +910,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator*
 void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置数字导航指示器距离Swiper组件顶部的距离。
 
@@ -929,7 +929,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* in
 float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取数字导航指示器距离Swiper组件顶部的距离。
 
@@ -953,7 +953,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* i
 void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置数字导航指示器距离Swiper组件右边的距离，在从右至左显示的语言模式下，设置其距离Swiper组件左边的距离。
 
@@ -972,7 +972,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* in
 float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取数字导航指示器距离Swiper组件右边的距离，在从右至左显示的语言模式下，获取其距离Swiper组件左边的距离。
 
@@ -996,7 +996,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* i
 void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
-**描述**
+**描述：**
 
 设置数字导航指示器距离Swiper组件底部的距离。
 
@@ -1015,7 +1015,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator*
 float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取数字导航指示器距离Swiper组件底部的距离。
 
@@ -1039,7 +1039,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator
 void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t color)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件数字导航指示器字体颜色。
 
@@ -1058,7 +1058,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indi
 uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件数字导航指示器字体颜色。
 
@@ -1082,7 +1082,7 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* 
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t selectedColor)
 ```
 
-**描述**
+**描述：**
 
 设置被选中Swiper组件数字导航指示器字体颜色。
 
@@ -1101,7 +1101,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicat
 uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取被选中Swiper组件数字导航指示器字体颜色。
 
@@ -1125,7 +1125,7 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitInd
 void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件数字导航指示器字体大小。
 
@@ -1144,7 +1144,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indic
 float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件数字导航指示器字体大小。
 
@@ -1168,7 +1168,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indi
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)
 ```
 
-**描述**
+**描述：**
 
 设置被选中Swiper组件数字导航指示器字体大小。
 
@@ -1187,7 +1187,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicato
 float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取被选中Swiper组件数字导航指示器字体大小。
 
@@ -1211,7 +1211,7 @@ float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicat
 void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator *indicator)
 ```
 
-**描述**
+**描述：**
 
 销毁Swiper组件的数字导航指示器指针。
 
@@ -1229,7 +1229,7 @@ void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator *indicator
 void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)
 ```
 
-**描述**
+**描述：**
 
 设置OH_ArkUI_SwiperDigitIndicator_SetBottomPosition是否忽略导航点大小。
 
@@ -1248,7 +1248,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndica
 int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
-**描述**
+**描述：**
 
 获取OH_ArkUI_SwiperDigitIndicator_SetBottomPosition是否忽略导航点大小。
 
@@ -1272,7 +1272,7 @@ int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitInd
 ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 ```
 
-**描述**
+**描述：**
 
 创建Swiper组件的导航箭头。
 
@@ -1290,7 +1290,7 @@ ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle *arrowStyle, int32_t showBackground)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件导航箭头底板是否显示。
 
@@ -1309,7 +1309,7 @@ void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle *arrowSt
 int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件导航箭头底板是否显示。
 
@@ -1333,7 +1333,7 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arro
 void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件导航箭头显示位置。
 
@@ -1352,7 +1352,7 @@ void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arro
 int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件导航箭头显示位置。
 
@@ -1376,7 +1376,7 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* a
 void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件导航箭头底板大小。
 
@@ -1395,7 +1395,7 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowSt
 float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle *arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件导航箭头底板大小。
 
@@ -1419,7 +1419,7 @@ float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle *arrowS
 void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle *arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 销毁Swiper组件的导航箭头指针。
 
@@ -1437,7 +1437,7 @@ void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle *arrowStyle)
 void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle *arrowStyle, uint32_t backgroundColor)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件导航箭头底板颜色。
 
@@ -1456,7 +1456,7 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle *arrowS
 uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件导航箭头底板颜色。
 
@@ -1480,7 +1480,7 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* ar
 void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件导航箭头大小。
 
@@ -1499,7 +1499,7 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, 
 float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件导航箭头大小。
 
@@ -1523,7 +1523,7 @@ float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t arrowColor)
 ```
 
-**描述**
+**描述：**
 
 设置Swiper组件导航箭头颜色。
 
@@ -1542,7 +1542,7 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle,
 uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
-**描述**
+**描述：**
 
 获取Swiper组件导航箭头颜色。
 

@@ -6,26 +6,23 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## leadingMargin
 
 ```TypeScript
 leadingMargin?: LengthMetrics | LeadingMarginPlaceholder
 ```
 
-设置文本段落的缩进。不支持百分比。默认值：0
+设置文本段落的缩进。不支持百分比。
 
-**类型：** LengthMetrics \| [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-leadingmarginplaceholder-i.md)
+默认值：0
+
+**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; [LeadingMarginPlaceholder](../arkts-components/arkts-arkui-leadingmarginplaceholder-i.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,9 @@ leadingMargin?: LengthMetrics | LeadingMarginPlaceholder
 leadingMarginSpan?: LeadingMarginSpan
 ```
 
-设置文本段落的自定义缩进。不支持百分比。默认值：0
+设置文本段落的自定义缩进。不支持百分比。
+
+默认值：0
 
 **类型：** [LeadingMarginSpan](arkts-arkui-leadingmarginspan-c.md)
 
@@ -43,7 +42,7 @@ leadingMarginSpan?: LeadingMarginSpan
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,8 +52,13 @@ leadingMarginSpan?: LeadingMarginSpan
 maxLines?: number
 ```
 
-设置文本段落的最大行数。  
-**说明：** 仅在Text中生效，建议在组件侧设置。默认不限制。取值范围：[0, INT32_MAX]，传入负数时不限制。
+设置文本段落的最大行数。
+
+**说明：** 仅在Text中生效，建议在组件侧设置。
+
+默认不限制。
+
+取值范围：[0, INT32_MAX]，传入负数时不限制。
 
 **类型：** number
 
@@ -62,7 +66,7 @@ maxLines?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,8 +76,13 @@ maxLines?: number
 overflow?: TextOverflow
 ```
 
-设置文本段落超长时的显示方式。  
-**说明：** 仅在Text中生效，建议在组件侧设置。默认值：TextOverflow.None需配合maxLines使用，单独设置不生效。不支持TextOverflow.MARQUEE。
+设置文本段落超长时的显示方式。
+
+**说明：** 仅在Text中生效，建议在组件侧设置。
+
+默认值：TextOverflow.None
+
+需配合maxLines使用，单独设置不生效。不支持TextOverflow.MARQUEE。
 
 **类型：** [TextOverflow](arkts-arkui-textoverflow-e.md)
 
@@ -81,7 +90,7 @@ overflow?: TextOverflow
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,15 +100,17 @@ overflow?: TextOverflow
 paragraphSpacing?: LengthMetrics
 ```
 
-设置文本段落的段落间距。段落间距默认大小为0。不支持百分比。
+设置文本段落的段落间距。
 
-**类型：** LengthMetrics
+段落间距默认大小为0。不支持百分比。
+
+**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,8 +120,11 @@ paragraphSpacing?: LengthMetrics
 shaderStyle?: ShaderStyle
 ```
 
-设置文本着色器效果。  
-**默认效果：** 不传入时不应用着色器效果，使用fontColor设置的颜色。该接口与[TextStyleInterface](arkts-arkui-textstyleinterface-i.md)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于 [TextStyleInterface](arkts-arkui-textstyleinterface-i.md)中的fontColor。
+设置文本着色器效果。
+
+**默认效果：** 不传入时不应用着色器效果，使用fontColor设置的颜色。
+
+该接口与[TextStyleInterface](arkts-arkui-textstyleinterface-i.md)的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[TextStyleInterface](arkts-arkui-textstyleinterface-i.md)中的fontColor。
 
 **类型：** [ShaderStyle](arkts-arkui-shaderstyle-c.md)
 
@@ -118,7 +132,7 @@ shaderStyle?: ShaderStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,15 +142,15 @@ shaderStyle?: ShaderStyle
 tailIndents?: LengthMetrics | Array<LengthMetrics>
 ```
 
-设置文本段落的文本尾部缩进。不支持百分比。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。 默认值：0
+设置文本段落的文本尾部缩进。不支持百分比。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。默认值：0
 
-**类型：** LengthMetrics \| Array&lt;LengthMetrics&gt;
+**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md) &#124; Array&lt;[LengthMetrics](arkts-arkui-lengthmetrics-t.md)&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,15 +160,17 @@ tailIndents?: LengthMetrics | Array<LengthMetrics>
 textAlign?: TextAlign
 ```
 
-设置文本段落在水平方向的对齐方式。默认值：TextAlign.Start
+设置文本段落在水平方向的对齐方式。
 
-**类型：** TextAlign
+默认值：TextAlign.Start
+
+**类型：** [TextAlign](arkts-arkui-textalign-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,15 +180,17 @@ textAlign?: TextAlign
 textDirection?: TextDirection
 ```
 
-设置文本方向。默认值：TextDirection.DEFAULT
+设置文本方向。
 
-**类型：** TextDirection
+默认值：TextDirection.DEFAULT
+
+**类型：** [TextDirection](arkts-arkui-textdirection-e.md)
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,15 +200,17 @@ textDirection?: TextDirection
 textIndent?: LengthMetrics
 ```
 
-设置文本段落的首行文本缩进。不支持百分比。默认值：0
+设置文本段落的首行文本缩进。不支持百分比。
 
-**类型：** LengthMetrics
+默认值：0
+
+**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,15 +220,17 @@ textIndent?: LengthMetrics
 textVerticalAlign?: TextVerticalAlign
 ```
 
-设置文本段落在垂直方向的对齐方式。默认值：TextVerticalAlign.BASELINE
+设置文本段落在垂直方向的对齐方式。
 
-**类型：** TextVerticalAlign
+默认值：TextVerticalAlign.BASELINE
+
+**类型：** [TextVerticalAlign](arkts-arkui-textverticalalign-e.md)
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,14 +240,16 @@ textVerticalAlign?: TextVerticalAlign
 wordBreak?: WordBreak
 ```
 
-设置文本段落的断行规则。默认值：WordBreak.NORMAL
+设置文本段落的断行规则。
 
-**类型：** WordBreak
+默认值：WordBreak.NORMAL
+
+**类型：** [WordBreak](arkts-arkui-wordbreak-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

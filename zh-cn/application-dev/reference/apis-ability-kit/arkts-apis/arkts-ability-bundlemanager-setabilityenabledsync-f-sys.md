@@ -26,7 +26,7 @@ function setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | 需要被设置的组件。 |
+| info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | 是 | 需要被设置的组件。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **错误码：**

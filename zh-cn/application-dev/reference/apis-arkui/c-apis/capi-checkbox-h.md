@@ -28,7 +28,7 @@ Provides Checkbox node type definitions for <b>NativeNode</b> APIs.
 enum ArkUI_CheckboxShape
 ```
 
-**描述**
+**描述：**
 
 定义CheckBox组件形状。
 

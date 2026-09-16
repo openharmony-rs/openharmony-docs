@@ -12,19 +12,19 @@ import { uriPermissionManager } from '@kit.AbilityKit';
 function revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallback<number>): void
 ```
 
-撤销授权指定应用的URI。使用callback异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
+撤销授权指定应用的URI。使用callback异步回调。该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
-> **说明：**
+> **说明：** 
 > 
 > - 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
 > 
-> - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证
-> 其功能。
+> - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **起始版本：** 10
 
 **需要权限：** 
-- API版本10 - 11：ohos.permission.PROXY_AUTHORIZATION_URI
+- API版本12+：N/A
+- API版本10-11：ohos.permission.PROXY_AUTHORIZATION_URI
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -67,57 +67,6 @@ uriPermissionManager.revokeUriPermission(uri, targetBundleName, (error) => {
 });
 ```
 
-
-## revokeUriPermission
-
-```TypeScript
-function revokeUriPermission(uri: string, targetBundleName: string): Promise<number>
-```
-
-撤销授权指定应用的URI。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
-
-> **说明：**
-> 
-> - 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
-> 
-> - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证
-> 其功能。
-
-**起始版本：** 10
-
-**需要权限：** 
-- API版本10 - 11：ohos.permission.PROXY_AUTHORIZATION_URI
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。 |
-| targetBundleName | string | 是 | 被授权URI的应用包名。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 10 - 11 |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
-
-**示例**
-
 ```TypeScript
 import { uriPermissionManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,57 +82,6 @@ uriPermissionManager.revokeUriPermission(uri, targetBundleName)
   console.error(`Verification failed, err code: ${error.code}, err msg: ${error.message}.`);
 });
 ```
-
-
-## revokeUriPermission
-
-```TypeScript
-function revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number): Promise<void>
-```
-
-撤销授权指定应用的URI。使用Promise异步回调。 该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
-
-> **说明：**
-> 
-> - 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
-> 
-> - 该接口支持撤销授权给分身应用的URI权限，需要指定目标应用的应用包名和分身索引。
-> 
-> - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证
-> 其功能。
-
-**起始版本：** 14
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。 |
-| targetBundleName | string | 是 | 被授权应用的应用包名。 |
-| appCloneIndex | number | 是 | 被授权应用的分身索引，有效范围为[0, 1000], 取值为0时表示主应用。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
-| [16000081](../errorcode-ability.md#16000081-获取目标应用信息失败) | Failed to obtain the target application information. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
-
-**示例**
 
 ```TypeScript
 import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
@@ -226,3 +124,108 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+
+## revokeUriPermission
+
+```TypeScript
+function revokeUriPermission(uri: string, targetBundleName: string): Promise<number>
+```
+
+撤销授权指定应用的URI。使用Promise异步回调。该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
+
+> **说明：** 
+> 
+> - 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+> 
+> - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
+
+**起始版本：** 10
+
+**需要权限：** 
+- API版本12+：N/A
+- API版本10-11：ohos.permission.PROXY_AUTHORIZATION_URI
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。 |
+| targetBundleName | string | 是 | 被授权URI的应用包名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;number&gt; | Promise对象。返回0表示有权限，返回-1表示无权限。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied.<br>**适用版本：** 10 - 11 |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
+
+**示例**
+
+参见 [revokeUriPermission](#revokeuripermission)
+
+
+## revokeUriPermission
+
+```TypeScript
+function revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number): Promise<void>
+```
+
+撤销授权指定应用的URI。使用Promise异步回调。该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
+
+> **说明：** 
+> 
+> - 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+> 
+> - 该接口支持撤销授权给分身应用的URI权限，需要指定目标应用的应用包名和分身索引。
+> 
+> - 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
+
+**起始版本：** 14
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| uri | string | 是 | 指向文件的URI，scheme固定为"file"，参考[FileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)。 |
+| targetBundleName | string | 是 | 被授权应用的应用包名。 |
+| appCloneIndex | number | 是 | 被授权应用的分身索引，有效范围为[0, 1000], 取值为0时表示主应用。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000059](../errorcode-ability.md#16000059-指定的uri类型无效) | Invalid URI type. |
+| [16000081](../errorcode-ability.md#16000081-获取目标应用信息失败) | Failed to obtain the target application information. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported.<br>**适用版本：** 19+ |
+
+**示例**
+
+参见 [revokeUriPermission](#revokeuripermission)

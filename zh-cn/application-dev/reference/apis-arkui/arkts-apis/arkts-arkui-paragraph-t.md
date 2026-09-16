@@ -12,4 +12,4 @@ declare type Paragraph = import('../api/@ohos.graphics.text').default.Paragraph
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** import('../api/@ohos.graphics.text').default.Paragraph
+**类型：** import('../api/@ohos.graphics.text').default.Paragraph

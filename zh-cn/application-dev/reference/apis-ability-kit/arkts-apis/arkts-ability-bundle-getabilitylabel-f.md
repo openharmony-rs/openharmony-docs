@@ -12,7 +12,9 @@ import { bundle } from '@kit.AbilityKit';
 function getAbilityLabel(bundleName: string, abilityName: string, callback: AsyncCallback<string>): void
 ```
 
-通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。获取调用方自己的信息时不需要权限。
+通过Bundle名称和Ability组件名获取应用名称，使用callback异步回调。
+
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 8
 
@@ -31,6 +33,21 @@ function getAbilityLabel(bundleName: string, abilityName: string, callback: Asyn
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 程序启动作为入参的回调函数，返回应用名称信息。 |
 
 **示例**
+
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+let abilityName: string = "EntryAbility";
+
+bundle.getAbilityLabel(bundleName, abilityName)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -54,7 +71,9 @@ bundle.getAbilityLabel(bundleName, abilityName, (err, data) => {
 function getAbilityLabel(bundleName: string, abilityName: string): Promise<string>
 ```
 
-通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。获取调用方自己的信息时不需要权限。
+通过Bundle名称和ability名称获取应用名称，使用Promise异步回调。
+
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 8
 
@@ -75,21 +94,8 @@ function getAbilityLabel(bundleName: string, abilityName: string): Promise<strin
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise形式返回应用名称信息。 |
+| Promise&lt;string&gt; | Promise形式返回应用名称信息。 |
 
 **示例**
 
-```TypeScript
-import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleName: string = "com.example.myapplication";
-let abilityName: string = "EntryAbility";
-
-bundle.getAbilityLabel(bundleName, abilityName)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
+参见 [getAbilityLabel](#getabilitylabel)

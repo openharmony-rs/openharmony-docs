@@ -2,7 +2,7 @@
 
 配置文件中定义的权限详细信息。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-PermissionDef](arkts-ability-permissiondef-i-sys.md)替代。
 > 

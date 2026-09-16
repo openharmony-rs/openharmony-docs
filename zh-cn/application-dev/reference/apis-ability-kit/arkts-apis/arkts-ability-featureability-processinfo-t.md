@@ -12,4 +12,4 @@ export type ProcessInfo = _ProcessInfo
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _ProcessInfo
+**类型：** _ProcessInfo

@@ -68,7 +68,7 @@ enableAutoFill: boolean
 id: number
 ```
 
-The id of page node. 取值限定为整数。
+The id of page node.取值限定为整数。
 
 **类型：** number
 

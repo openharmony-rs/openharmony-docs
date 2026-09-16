@@ -1,6 +1,8 @@
 # ImageItem（系统接口）
 
-带有布局信息的图像对象。@interface ImageItem
+带有布局信息的图像对象。
+
+@interface ImageItem
 
 **起始版本：** 23
 
@@ -22,7 +24,7 @@ image: image.PixelMap
 
 图像解码信息。
 
-**类型：** image.PixelMap
+**类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
 **起始版本：** 23
 
@@ -40,7 +42,7 @@ rect: common2D.Rect
 
 显示图像的框的位置和大小信息。
 
-**类型：** common2D.Rect
+**类型：** [common2D.Rect](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-common2d-rect-i.md)
 
 **起始版本：** 23
 

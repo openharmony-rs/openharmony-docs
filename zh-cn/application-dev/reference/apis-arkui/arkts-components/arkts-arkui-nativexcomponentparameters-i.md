@@ -1,15 +1,10 @@
 # NativeXComponentParameters
 
-定义native xcomponent参数。使用此类构造参数创建的XComponent可以将其对应的FrameNode对象传递到Native侧，从而能够使用NDK接口进行surface生命周期相关设置和[组件事件监听](arkts-arkui-xcomponent-attribute.md#onload)。
+定义XComponent在Native侧使用的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的FrameNode对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和添加事件监听。
 
 **起始版本：** 19
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## imageAIOptions
 
@@ -25,7 +20,7 @@ imageAIOptions?: ImageAIOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +38,6 @@ XComponent的类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

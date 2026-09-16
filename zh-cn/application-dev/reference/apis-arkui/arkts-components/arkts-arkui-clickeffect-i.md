@@ -1,15 +1,10 @@
 # ClickEffect
 
-定义点击效果。
+定义点击回弹效果。
 
 **起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## level
 
@@ -17,8 +12,13 @@
 level: ClickEffectLevel
 ```
 
-设置当前组件的点击回弹效果。默认值：ClickEffectLevel.LIGHT  
-**说明：**当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比参照scale说明。
+点击回弹效果级别，其取值影响scale的默认缩放比例。
+
+默认值：ClickEffectLevel.LIGHT
+
+**说明：** 
+
+当level为undefined或者null时， ClickEffect采用ClickEffectLevel.LIGHT对应的回弹效果，缩放比的具体默认值请参见下方scale属性说明。
 
 **类型：** [ClickEffectLevel](../arkts-apis/arkts-arkui-clickeffectlevel-e.md)
 
@@ -28,7 +28,7 @@ level: ClickEffectLevel
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,8 +38,17 @@ level: ClickEffectLevel
 scale?: number
 ```
 
-回弹缩放比例，支持在设置ClickEffectLevel的基础上微调。  
-**说明：**当level为ClickEffectLevel.LIGHT时，默认值：0.90当level为ClickEffectLevel.MIDDLE或者ClickEffectLevel.HEAVY时，默认值：0.95当level为undefined或者null时，level为ClickEffectLevel.LIGHT，默认值：0.90当scale为undefined或者null时，使用当前level对应的默认缩放比例。
+回弹缩放比例，取值范围(0, 1]，支持在设置ClickEffectLevel的基础上微调。超出取值范围时，使用当前level对应的默认缩放比例。
+
+**说明：** 
+
+当level为ClickEffectLevel.LIGHT时，默认值：0.90
+
+当level为ClickEffectLevel.MIDDLE或者ClickEffectLevel.HEAVY时，默认值：0.95
+
+当level为undefined或者null时，level为ClickEffectLevel.LIGHT，默认值：0.90
+
+当scale为undefined或者null时，使用当前level对应的默认缩放比例。
 
 **类型：** number
 
@@ -47,6 +56,6 @@ scale?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

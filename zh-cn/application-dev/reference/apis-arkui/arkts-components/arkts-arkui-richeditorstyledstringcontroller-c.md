@@ -14,11 +14,6 @@ controller: RichEditorStyledStringController = new RichEditorStyledStringControl
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## getSelection
 
 ```TypeScript
@@ -31,7 +26,7 @@ getSelection(): RichEditorRange
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +34,7 @@ getSelection(): RichEditorRange
 
 | 类型 | 说明 |
 | --- | --- |
-| [RichEditorRange](arkts-arkui-richeditorrange-i.md) | 选中区域范围。 |
+| [RichEditorRange](arkts-arkui-richeditorrange-i.md) | 选中区域范围。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## getStyledString
 
@@ -53,7 +48,7 @@ getStyledString(): MutableStyledString
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +56,7 @@ getStyledString(): MutableStyledString
 
 | 类型 | 说明 |
 | --- | --- |
-| [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) | 富文本组件显示的属性字符串。 |
+| [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) | 富文本组件显示的属性字符串。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## onContentChanged
 
@@ -75,7 +70,7 @@ onContentChanged(listener: StyledStringChangedListener): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +88,7 @@ setStyledString(styledString: StyledString): void
 
 设置富文本组件显示的属性字符串。
 
-> **说明：**
+> **说明：** 
 > 
 > - 调用该接口时，会全量替换富文本组件的StyledString，并重新渲染。
 > 
@@ -103,7 +98,7 @@ setStyledString(styledString: StyledString): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,4 +106,4 @@ setStyledString(styledString: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 属性字符串。   **说明：** StyledString的子类 [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md)也可以作为入参值。 |
+| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 属性字符串。<br>**说明：** <br>StyledString的子类[MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md)也可以作为入参值。 |

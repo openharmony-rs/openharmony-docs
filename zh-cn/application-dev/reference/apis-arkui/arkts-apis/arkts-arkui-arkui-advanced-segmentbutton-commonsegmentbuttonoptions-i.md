@@ -18,15 +18,19 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, Tab
 backgroundBlurStyle?: BlurStyle
 ```
 
-背景模糊材质。默认值：BlurStyle.NONE值为undefined时，按默认值处理。
+背景模糊材质。
 
-**类型：** BlurStyle
+默认值：BlurStyle.NONE
+
+值为undefined时，按默认值处理。
+
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,8 +40,19 @@ backgroundBlurStyle?: BlurStyle
 backgroundBorderRadius?: LengthMetrics
 ```
 
-分段按钮整体容器的边框圆角半径。  
-**说明：**此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。对于胶囊类多选分段按钮（type为"capsule"且multiply为true），此属性不生效，需要用itemBorderRadius配置圆角。圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。默认值：`\$r('sys.float.segmentbutton_container_shape')`值为undefined时，按默认值处理。
+分段按钮整体容器的边框圆角半径。
+
+**说明：** 
+
+此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。
+
+对于胶囊类多选分段按钮（type为"capsule"且multiply为true），此属性不生效，需要用itemBorderRadius配置圆角。
+
+圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。
+
+默认值：`&#36;r('sys.float.segmentbutton_container_shape')`
+
+值为undefined时，按默认值处理。
 
 **类型：** LengthMetrics
 
@@ -45,7 +60,7 @@ backgroundBorderRadius?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +70,11 @@ backgroundBorderRadius?: LengthMetrics
 backgroundColor?: ResourceColor
 ```
 
-背景板颜色。默认值：\$r('sys.color.ohos_id_color_button_normal')值为undefined时，按默认值处理。
+背景板颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_button_normal')
+
+值为undefined时，按默认值处理。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -65,7 +84,7 @@ backgroundColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,15 +94,21 @@ backgroundColor?: ResourceColor
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-分段按钮组件的背景板的系统材质。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。默认值：无材质效果。从API版本26.0.0开始，除胶囊类多选分段按钮（即type为"capsule"且multiply为true）外，backgroundSystemMaterial设置自动反色的系统材质时，fontColor和 selectedFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
+分段按钮组件的背景板的系统材质。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。
 
-**类型：** uiMaterial.Material
+对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。
+
+默认值：无材质效果。
+
+从API版本26.0.0开始，除胶囊类多选分段按钮（即type为"capsule"且multiply为true）外，backgroundSystemMaterial设置自动反色的系统材质时，fontColor和selectedFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
+
+**类型：** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +118,11 @@ backgroundSystemMaterial?: uiMaterial.Material
 borderRadiusMode?: BorderRadiusMode
 ```
 
-边框圆角模式，用于控制圆角计算方式。默认值：BorderRadiusMode.DEFAULT值为undefined时，按默认值处理。
+边框圆角模式，用于控制圆角计算方式。
+
+默认值：BorderRadiusMode.DEFAULT
+
+值为undefined时，按默认值处理。
 
 **类型：** [BorderRadiusMode](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md)
 
@@ -103,7 +132,7 @@ borderRadiusMode?: BorderRadiusMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,9 +142,19 @@ borderRadiusMode?: BorderRadiusMode
 buttonPadding?: Padding | Dimension
 ```
 
-按钮内边距。默认值：仅图标按钮和仅文字按钮默认值：`{ top: 4, right: 8, bottom: 4, left: 8 }`图标+文本按钮默认值：`{ top: 6, right: 8, bottom: 6, left: 8 }`单位：vp值为undefined时，按默认值处理。
+按钮内边距。
 
-**类型：** Padding \| [Dimension](arkts-arkui-dimension-t.md)
+默认值：
+
+仅图标按钮和仅文字按钮默认值：`{ top: 4, right: 8, bottom: 4, left: 8 }`
+
+图标+文本按钮默认值：`{ top: 6, right: 8, bottom: 6, left: 8 }`
+
+单位：vp
+
+值为undefined时，按默认值处理。
+
+**类型：** Padding &#124; [Dimension](arkts-arkui-dimension-t.md)
 
 **默认值：** For text only / icon only buttons Padding { top: 4, right: 8, bottom: 4, left: 8 }. For text & icon buttons Padding { top: 6, right: 8, bottom: 6, left: 8 }.
 
@@ -123,7 +162,7 @@ buttonPadding?: Padding | Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,15 +172,19 @@ buttonPadding?: Padding | Dimension
 direction?: Direction
 ```
 
-布局方向。默认值：Direction.Auto值为undefined时，按默认值处理。
+布局方向。
 
-**类型：** Direction
+默认值：Direction.Auto
+
+值为undefined时，按默认值处理。
+
+**类型：** [Direction](arkts-arkui-direction-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,7 +194,11 @@ direction?: Direction
 fontColor?: ResourceColor
 ```
 
-按钮未选中态的文本颜色。默认值：\$r('sys.color.ohos_id_color_text_secondary')值为undefined时，按默认值处理。
+按钮未选中态的文本颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_text_secondary')
+
+值为undefined时，按默认值处理。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -159,7 +206,7 @@ fontColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -169,7 +216,13 @@ fontColor?: ResourceColor
 fontSize?: DimensionNoPercentage
 ```
 
-按钮未选中态的字体大小（不支持百分比设置）。默认值：\$r('sys.float.ohos_id_text_size_body2')单位：fp值为undefined时，按默认值处理。
+按钮未选中态的字体大小（不支持百分比设置）。
+
+默认值：&#36;r('sys.float.ohos_id_text_size_body2')
+
+单位：fp
+
+值为undefined时，按默认值处理。
 
 **类型：** [DimensionNoPercentage](arkts-arkui-dimensionnopercentage-t.md)
 
@@ -179,7 +232,7 @@ fontSize?: DimensionNoPercentage
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,9 +242,13 @@ fontSize?: DimensionNoPercentage
 fontWeight?: FontWeight
 ```
 
-按钮未选中态的字体粗细。默认值：FontWeight.Regular值为undefined时，按默认值处理。
+按钮未选中态的字体粗细。
 
-**类型：** FontWeight
+默认值：FontWeight.Regular
+
+值为undefined时，按默认值处理。
+
+**类型：** [FontWeight](arkts-arkui-fontweight-e.md)
 
 **默认值：** FontWeight.Regular
 
@@ -199,7 +256,7 @@ fontWeight?: FontWeight
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,8 +266,17 @@ fontWeight?: FontWeight
 imageSize?: SizeOptions
 ```
 
-图片尺寸。默认值：{ width: 24, height: 24 }单位：vp值为undefined时，按默认值处理。  
-**说明：**`imageSize`属性仅对图标按钮和图标+文本按钮生效，对纯文本按钮无效果。
+图片尺寸。
+
+默认值：{ width: 24, height: 24 }
+
+单位：vp
+
+值为undefined时，按默认值处理。
+
+**说明：** 
+
+`imageSize`属性仅对图标按钮和图标+文本按钮生效，对纯文本按钮无效果。
 
 **类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -220,7 +286,7 @@ imageSize?: SizeOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,8 +296,19 @@ imageSize?: SizeOptions
 itemBorderRadius?: LengthMetrics
 ```
 
-分段按钮中按钮项的边框圆角半径。  
-**说明：**此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。对于胶囊类多选分段按钮（type为"capsule"且multiply为true），只能控制两端的选项圆角。圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。默认值：`\$r('sys.float.segmentbutton_selected_background_shape')`值为undefined时，按默认值处理。
+分段按钮中按钮项的边框圆角半径。
+
+**说明：** 
+
+此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。
+
+对于胶囊类多选分段按钮（type为"capsule"且multiply为true），只能控制两端的选项圆角。
+
+圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。
+
+默认值：`&#36;r('sys.float.segmentbutton_selected_background_shape')`
+
+值为undefined时，按默认值处理。
 
 **类型：** LengthMetrics
 
@@ -239,7 +316,7 @@ itemBorderRadius?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -249,7 +326,15 @@ itemBorderRadius?: LengthMetrics
 localizedButtonPadding?: LocalizedPadding
 ```
 
-按钮内边距，支持随布局方向（LTR/RTL）自适应。默认值：仅图标按钮和仅文字按钮默认值： `{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`图标+文本按钮默认值： `{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`值为undefined时，按默认值处理。
+按钮内边距，支持随布局方向（LTR/RTL）自适应。
+
+默认值：
+
+仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`
+
+图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`
+
+值为undefined时，按默认值处理。
 
 **类型：** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
@@ -259,7 +344,7 @@ localizedButtonPadding?: LocalizedPadding
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,7 +354,13 @@ localizedButtonPadding?: LocalizedPadding
 localizedTextPadding?: LocalizedPadding
 ```
 
-文本内边距，支持随布局方向（LTR/RTL）自适应。默认值：0单位：vp值为undefined时，按默认值处理。
+文本内边距，支持随布局方向（LTR/RTL）自适应。
+
+默认值：0
+
+单位：vp
+
+值为undefined时，按默认值处理。
 
 **类型：** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
@@ -277,7 +368,7 @@ localizedTextPadding?: LocalizedPadding
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +378,15 @@ localizedTextPadding?: LocalizedPadding
 selectedBackgroundColor?: ResourceColor
 ```
 
-按钮选中态的背景板颜色。默认值：type为"tab"时，默认值为`\$r('sys.color.segment_button_checked_foreground_color')`。type为"capsule"时，默认值为`\$r('sys.color.ohos_id_color_emphasize')`。值为undefined时，按默认值处理。
+按钮选中态的背景板颜色。
+
+默认值：
+
+type为"tab"时，默认值为`&#36;r('sys.color.segment_button_checked_foreground_color')`。
+
+type为"capsule"时，默认值为`&#36;r('sys.color.ohos_id_color_emphasize')`。
+
+值为undefined时，按默认值处理。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -295,7 +394,7 @@ selectedBackgroundColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,7 +404,15 @@ selectedBackgroundColor?: ResourceColor
 selectedFontColor?: ResourceColor
 ```
 
-按钮选中态的文本颜色。默认值：type为"tab"时，默认值为`\$r('sys.color.ohos_id_color_text_primary')`。type为"capsule"时，默认值为`\$r('sys.color.ohos_id_color_foreground_contrary')`。值为undefined时，按默认值处理。
+按钮选中态的文本颜色。
+
+默认值：
+
+type为"tab"时，默认值为`&#36;r('sys.color.ohos_id_color_text_primary')`。
+
+type为"capsule"时，默认值为`&#36;r('sys.color.ohos_id_color_foreground_contrary')`。
+
+值为undefined时，按默认值处理。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -313,7 +420,7 @@ selectedFontColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -323,7 +430,13 @@ selectedFontColor?: ResourceColor
 selectedFontSize?: DimensionNoPercentage
 ```
 
-按钮选中态的字体大小（不支持百分比设置）。默认值：\$r('sys.float.ohos_id_text_size_body2')单位：fp值为undefined时，按默认值处理。
+按钮选中态的字体大小（不支持百分比设置）。
+
+默认值：&#36;r('sys.float.ohos_id_text_size_body2')
+
+单位：fp
+
+值为undefined时，按默认值处理。
 
 **类型：** [DimensionNoPercentage](arkts-arkui-dimensionnopercentage-t.md)
 
@@ -333,7 +446,7 @@ selectedFontSize?: DimensionNoPercentage
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,9 +456,13 @@ selectedFontSize?: DimensionNoPercentage
 selectedFontWeight?: FontWeight
 ```
 
-按钮选中态的字体粗细。默认值：FontWeight.Medium值为undefined时，按默认值处理。
+按钮选中态的字体粗细。
 
-**类型：** FontWeight
+默认值：FontWeight.Medium
+
+值为undefined时，按默认值处理。
+
+**类型：** [FontWeight](arkts-arkui-fontweight-e.md)
 
 **默认值：** FontWeight.Medium
 
@@ -353,7 +470,7 @@ selectedFontWeight?: FontWeight
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -363,9 +480,15 @@ selectedFontWeight?: FontWeight
 textPadding?: Padding | Dimension
 ```
 
-文本内边距。默认值：0单位：vp值为undefined时，按默认值处理。
+文本内边距。
 
-**类型：** Padding \| [Dimension](arkts-arkui-dimension-t.md)
+默认值：0
+
+单位：vp
+
+值为undefined时，按默认值处理。
+
+**类型：** Padding &#124; [Dimension](arkts-arkui-dimension-t.md)
 
 **默认值：** 0
 
@@ -373,6 +496,6 @@ textPadding?: Padding | Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

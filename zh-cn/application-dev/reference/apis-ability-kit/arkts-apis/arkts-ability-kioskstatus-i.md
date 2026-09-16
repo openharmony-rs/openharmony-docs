@@ -44,7 +44,7 @@ kioskBundleName: string
 kioskBundleUid: number
 ```
 
-进入Kiosk模式的应用的UID。
+进入Kiosk模式的应用的UID，由系统分配，为正整数。
 
 **类型：** number
 

@@ -12,13 +12,13 @@ import { autoFillManager } from '@kit.AbilityKit';
 export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void
 ```
 
-请求保存表单数据。使用callback异步回调。 如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。
+请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -33,7 +33,7 @@ export function requestAutoSave(context: UIContext, callback?: AutoSaveCallback)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes: 1. Get instance id failed;  2. Parse instance id failed; 3. The second parameter is not of type callback. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes: 1. Get instance id failed;<br>2. Parse instance id failed; 3. The second parameter is not of type callback. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -127,6 +127,85 @@ struct Index {
             try {
               // 发起保存请求
               autoFillManager.requestAutoSave(this.uiContext, callback);
+            } catch (error) {
+              console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+            }
+          })
+      }
+    }
+  }
+}
+```
+
+```TypeScript
+// Index.ets
+import { autoFillManager } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// request需按照实际工程配置
+let request: autoFillManager.SaveRequest = {
+  viewData: {
+    bundleName: "com.example.testBundleName",
+    pageUrl: "testPageUrl",
+    pageNodeInfos: [
+      {
+        id: 1,
+        autoFillType: autoFillManager.AutoFillType.USER_NAME,
+        value: "testValue1",
+        placeholder: "testPlaceholder1",
+        rect: {
+          left: 1,
+          top: 1,
+          width: 1,
+          height: 1,
+        },
+        isFocus: false
+      },
+      {
+        id: 2,
+        autoFillType: autoFillManager.AutoFillType.PASSWORD,
+        value: "testValue2",
+        placeholder: "testPlaceholder2",
+        rect: {
+          left: 1,
+          top: 1,
+          width: 1,
+          height: 1,
+        },
+        isFocus: false
+      }
+    ],
+    pageRect: {
+      left: 1,
+      top: 1,
+      width: 1,
+      height: 1
+    }
+  }
+}
+// 定义自动保存回调
+let callback: autoFillManager.AutoSaveCallback = {
+  onSuccess: () => {
+    console.info(`save request on success.`);
+  },
+  onFailure: () => {
+    console.error(`save request on failure.`);
+  }
+};
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    GridRow({ gutter: { y: 20 } }) {
+      GridCol({ span: 20 }) {
+        Button('requestAutoSave')
+          .onClick(() => {
+            try {
+              // 发起保存请求
+              autoFillManager.requestAutoSave(this.uiContext, request, callback);
             } catch (error) {
               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
             }

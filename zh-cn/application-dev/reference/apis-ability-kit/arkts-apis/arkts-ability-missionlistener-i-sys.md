@@ -97,7 +97,9 @@ onMissionCreated(mission: number): void
 
 **示例**
 
+```TypeScript
 详细示例请见[onMissionClosed](#onmissionclosed)。
+```
 
 ## onMissionDestroyed
 
@@ -121,7 +123,9 @@ onMissionDestroyed(mission: number): void
 
 **示例**
 
+```TypeScript
 详细示例请见[onMissionClosed](#onmissionclosed)。
+```
 
 ## onMissionIconUpdated
 
@@ -142,11 +146,13 @@ onMissionIconUpdated(mission: number, icon: image.PixelMap): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mission | number | 是 | 表示任务ID。 |
-| icon | image.PixelMap | 是 | 表示更新的任务图标。 |
+| icon | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 表示更新的任务图标。 |
 
 **示例**
 
+```TypeScript
 详细示例请见[onMissionClosed](#onmissionclosed)。
+```
 
 ## onMissionLabelUpdated
 
@@ -170,7 +176,9 @@ onMissionLabelUpdated(mission: number): void
 
 **示例**
 
+```TypeScript
 详细示例请见[onMissionClosed](#onmissionclosed)。
+```
 
 ## onMissionMovedToFront
 
@@ -194,7 +202,9 @@ onMissionMovedToFront(mission: number): void
 
 **示例**
 
+```TypeScript
 详细示例请见[onMissionClosed](#onmissionclosed)。
+```
 
 ## onMissionSnapshotChanged
 
@@ -218,4 +228,6 @@ onMissionSnapshotChanged(mission: number): void
 
 **示例**
 
+```TypeScript
 详细示例请见[onMissionClosed](#onmissionclosed)。
+```

@@ -30,7 +30,7 @@ getUIExtensionWindowProxy(): uiExtension.WindowProxy
 
 | 类型 | 说明 |
 | --- | --- |
-| uiExtension.WindowProxy | UIExtensionAbility组件的宿主应用窗口代理。 |
+| [uiExtension.WindowProxy](../../apis-arkui/arkts-apis/arkts-arkui-uiextension-windowproxy-i.md) | UIExtensionAbility组件的宿主应用窗口代理。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ struct Extension {
 loadContent(path: string, storage?: LocalStorage): void
 ```
 
-为[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)组件加载页面，支持通过 [LocalStorage](../../../ui/state-management/arkts-localstorage.md)传递状态属性给被加载的页面。该接口用于开发者在UIExtensionAbility组件的 [onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)生命周期中加载页面。
+为[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)组件加载页面，支持通过[LocalStorage](../../../ui/state-management/arkts-localstorage.md)传递状态属性给被加载的页面。该接口用于开发者在UIExtensionAbility组件的[onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)生命周期中加载页面。
 
 **起始版本：** 10
 
@@ -96,7 +96,7 @@ loadContent(path: string, storage?: LocalStorage): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| path | string | 是 | 要加载的页面所在的路径，该路径通过[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的 [pages标签](../../../quick-start/module-configuration-file.md#pages标签)配置。 |
+| path | string | 是 | 要加载的页面所在的路径，该路径通过[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的[pages标签](../../../quick-start/module-configuration-file.md#pages标签)配置。 |
 | storage | LocalStorage | 否 | 页面级UI状态存储单元，开发者可通过该参数为加载的页面传递状态属性。 |
 
 **错误码：**
@@ -138,7 +138,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 loadContentByName(name: string, storage?: LocalStorage): void
 ```
 
-为[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)组件加载 [命名路由](../../../ui/arkts-routing.md#命名路由)页面，支持通过 [LocalStorage](../../../ui/state-management/arkts-localstorage.md)传递状态属性给被加载的页面。该接口用于开发者在UIExtensionAbility组件的 [onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)生命周期中加载命名路由页面。
+为[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)组件加载[命名路由](../../../ui/arkts-routing.md#命名路由)页面，支持通过[LocalStorage](../../../ui/state-management/arkts-localstorage.md)传递状态属性给被加载的页面。该接口用于开发者在UIExtensionAbility组件的[onSessionCreate](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md#onsessioncreate)生命周期中加载命名路由页面。
 
 **起始版本：** 18
 
@@ -161,60 +161,12 @@ loadContentByName(name: string, storage?: LocalStorage): void
 
 **示例**
 
-UIExtensionAbility组件的实现：
-
 ```TypeScript
-// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
-import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import './pages/UIExtensionPage'; // 导入命名路由页面，示例代码以“./pages/UIExtensionPage.ets”文件为例，在实际代码开发过程中修改为真实路径和文件名称。
-
-export default class ShareExtAbility extends ShareExtensionAbility {
-  // 其他生命周期和实现
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let storage: LocalStorage = new LocalStorage();
-    storage.setOrCreate('session', session);
-
-    let name: string = 'UIExtPage'; // 命名路由页面的名字。
-    try {
-      session.loadContentByName(name, storage);
-    } catch (error) {
-      let code = (error as BusinessError).code;
-      let message = (error as BusinessError).message;
-      console.error(`Failed to load content by name ${name}, code: ${code}, msg: ${message}`);
-    }
-  }
-
-  // 其他生命周期和实现
-}
+UIExtensionAbility组件的实现：
 ```
 
-UIExtensionAbility组件加载的命名路由页面的实现：
-
 ```TypeScript
-// “./pages/UIExtensionPage.ets”文件的实现。
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-
-@Entry({ routeName: 'UIExtPage' }) // 通过“routeName”定义命名路由页面的名字。
-@Component
-struct UIExtensionPage {
-  @State message: string = 'Hello world';
-  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(20)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
+UIExtensionAbility组件加载的命名路由页面的实现：
 ```
 
 ## setWindowPrivacyMode
@@ -243,7 +195,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -272,6 +224,35 @@ export default class ShareExtAbility extends ShareExtensionAbility {
         .catch((err: BusinessError) => {
           console.error(`Failed to set window to privacy mode, code: ${err.code}, msg: ${err.message}`);
         });
+    } catch (e) {
+      let code = (e as BusinessError).code;
+      let msg = (e as BusinessError).message;
+      console.error(`Failed to set window to privacy mode, code: ${code}, msg: ${msg}`);
+    }
+  }
+
+  // ...
+}
+```
+
+```TypeScript
+// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  // ...
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    let isPrivacyMode: boolean = true;
+    try {
+      session.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
+        if (err) {
+          console.error(`Failed to set window to privacy mode, code: ${err.code}, msg: ${err.message}`);
+          return;
+        }
+        console.info(`Succeeded in setting window to privacy mode.`);
+      });
     } catch (e) {
       let code = (e as BusinessError).code;
       let msg = (e as BusinessError).message;
@@ -315,34 +296,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): voi
 
 **示例**
 
-```TypeScript
-// UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
-import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class ShareExtAbility extends ShareExtensionAbility {
-  // ...
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
-    let isPrivacyMode: boolean = true;
-    try {
-      session.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
-        if (err) {
-          console.error(`Failed to set window to privacy mode, code: ${err.code}, msg: ${err.message}`);
-          return;
-        }
-        console.info(`Succeeded in setting window to privacy mode.`);
-      });
-    } catch (e) {
-      let code = (e as BusinessError).code;
-      let msg = (e as BusinessError).message;
-      console.error(`Failed to set window to privacy mode, code: ${code}, msg: ${msg}`);
-    }
-  }
-
-  // ...
-}
-```
+参见 [setWindowPrivacyMode](#setwindowprivacymode)
 
 ## startAbilityByType
 
@@ -363,8 +317,8 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | UIExtensionAbility组件类型，取值详见 [通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
-| wantParam | Record &lt;string, Object&gt; | 是 | 表示启动UIExtensionAbility组件时传递的参数。 |
+| type | string | 是 | UIExtensionAbility组件类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
+| wantParam | Record&lt;string, Object&gt; | 是 | 表示启动UIExtensionAbility组件时传递的参数。 |
 | abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 表示启动UIExtensionAbility组件的执行结果。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为undefined，否则为错误对象。 |
 
@@ -373,7 +327,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
@@ -416,49 +370,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-## startAbilityByType
-
-```TypeScript
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback): Promise<void>
-```
-
-通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | string | 是 | UIExtensionAbility组件类型，取值详见 [通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
-| wantParam | Record &lt;string, Object&gt; | 是 | 表示启动UIExtensionAbility组件时传递的参数。 |
-| abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 表示启动UIExtensionAbility组件的执行结果。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
-| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released.<br>**适用版本：** 11 |
-
-**示例**
-
 ```TypeScript
 // UIExtensionAbility组件不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { UIExtensionContentSession, ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
@@ -492,6 +403,51 @@ export default class ShareExtAbility extends ShareExtensionAbility {
   // ...
 }
 ```
+
+## startAbilityByType
+
+```TypeScript
+startAbilityByType(type: string, wantParam: Record<string, Object>,
+    abilityStartCallback: AbilityStartCallback): Promise<void>
+```
+
+通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | string | 是 | UIExtensionAbility组件类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
+| wantParam | Record&lt;string, Object&gt; | 是 | 表示启动UIExtensionAbility组件时传递的参数。 |
+| abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 表示启动UIExtensionAbility组件的执行结果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
+| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released.<br>**适用版本：** 11 |
+
+**示例**
+
+参见 [startAbilityByType](#startabilitybytype)
 
 ## terminateSelf
 
@@ -553,28 +509,6 @@ struct Index {
 }
 ```
 
-## terminateSelf
-
-```TypeScript
-terminateSelf(): Promise<void>
-```
-
-销毁UIExtensionAbility组件自身，同时关闭对应的宿主应用窗口界面。使用Promise异步回调。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
-
-**示例**
-
 ```TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -606,6 +540,30 @@ struct Index {
   }
 }
 ```
+
+## terminateSelf
+
+```TypeScript
+terminateSelf(): Promise<void>
+```
+
+销毁UIExtensionAbility组件自身，同时关闭对应的宿主应用窗口界面。使用Promise异步回调。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**示例**
+
+参见 [terminateSelf](#terminateself)
 
 ## terminateSelfWithResult
 
@@ -678,40 +636,6 @@ struct Index {
 }
 ```
 
-## terminateSelfWithResult
-
-```TypeScript
-terminateSelfWithResult(parameter: AbilityResult): Promise<void>
-```
-
-销毁UIExtensionAbility组件自身，关闭对应的宿主应用窗口界面，并将结果返回给宿主应用。使用Promise异步回调。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
-**示例**
-
 ```TypeScript
 import { UIExtensionContentSession, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -753,3 +677,39 @@ struct Index {
   }
 }
 ```
+
+## terminateSelfWithResult
+
+```TypeScript
+terminateSelfWithResult(parameter: AbilityResult): Promise<void>
+```
+
+销毁UIExtensionAbility组件自身，关闭对应的宿主应用窗口界面，并将结果返回给宿主应用。使用Promise异步回调。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+
+**示例**
+
+参见 [terminateSelfWithResult](#terminateselfwithresult)

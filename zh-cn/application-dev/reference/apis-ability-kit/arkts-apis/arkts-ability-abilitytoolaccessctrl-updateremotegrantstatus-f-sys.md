@@ -11,7 +11,7 @@
 export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): Promise<void>
 ```
 
-更新远程授权状态。 该功能用于开启或关闭远程授权特性。 启用时，设备可以向远程设备授予权限； 禁用时，不允许远程授权。
+更新远程授权状态。该功能用于开启或关闭远程授权特性。启用时，设备可以向远程设备授予权限；禁用时，不允许远程授权。
 
 **起始版本：** 26.1.0
 
@@ -31,7 +31,7 @@ export function updateRemoteGrantStatus(remoteGrantStatus: RemoteGrantStatus): P
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 不会返回任何值的Promise。 |
+| Promise&lt;void&gt; | 不会返回任何值的Promise。 |
 
 **错误码：**
 

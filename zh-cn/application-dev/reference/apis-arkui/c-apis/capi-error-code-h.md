@@ -2,17 +2,15 @@
 
 ## 概述
 
-Declare the error codes of file management module.
+Defines the error code for the native module.
 
-**引用文件：** <filemanagement/fileio/error_code.h>
+**库：** libace_ndk.z.so
 
-**库：** NA
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
-**相关模块：** FileIO
+**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 ## 汇总
 
@@ -30,7 +28,7 @@ Declare the error codes of file management module.
 enum ArkUI_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 定义错误码枚举值。
 

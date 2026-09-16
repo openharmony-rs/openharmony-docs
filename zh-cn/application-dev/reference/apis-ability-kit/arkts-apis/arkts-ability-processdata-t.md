@@ -10,7 +10,7 @@ export type ProcessData = _ProcessData.default
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _ProcessData.default
+**类型：** _ProcessData.default
 
 **示例**
 

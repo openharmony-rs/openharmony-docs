@@ -19,7 +19,7 @@ function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): 
 
 **替代接口：** [getWantAgent](arkts-ability-wantagent-getwantagent-f.md)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -73,39 +73,6 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
-
-## getWantAgent
-
-```TypeScript
-function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
-```
-
-创建WantAgent。创建失败返回的WantAgent为空值。使用Promise异步回调。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [getWantAgent](arkts-ability-wantagent-getwantagent-f.md)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md) | 是 | WantAgent信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Promise对象，返回用于触发指定操作的WantAgent实例。 |
-
-**示例**
-
 ```TypeScript
 import wantAgent, { WantAgent as _WantAgent } from '@ohos.wantAgent';
 
@@ -138,3 +105,38 @@ wantAgent.getWantAgent({
     console.info('==========================>getWantAgentCallback=======================>');
 });
 ```
+
+
+## getWantAgent
+
+```TypeScript
+function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
+```
+
+创建WantAgent。创建失败返回的WantAgent为空值。使用Promise异步回调。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [getWantAgent](arkts-ability-wantagent-getwantagent-f.md)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| info | [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md) | 是 | WantAgent信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | Promise对象，返回用于触发指定操作的WantAgent实例。 |
+
+**示例**
+
+参见 [getWantAgent](#getwantagent)

@@ -1,6 +1,6 @@
 # WindowModeFollowStrategy（系统接口）
 
-表示不同类型的WindowModeFollowStrategy的枚举。
+窗口Mode跟随策略，用于设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。
 
 **起始版本：** 18
 

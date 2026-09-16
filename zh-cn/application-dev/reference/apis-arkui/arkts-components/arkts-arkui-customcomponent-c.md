@@ -1,17 +1,14 @@
 # CustomComponent
 
-自定义组件@extends CommonAttribute [since 7 - 17] @extends BaseCustomComponent [since 18]
+自定义组件
+
+@extends CommonAttribute [since 7 - 17] @extends BaseCustomComponent [since 18]
 
 **继承/实现关系：** CustomComponent extends [BaseCustomComponent](arkts-arkui-basecustomcomponent-c.md)
 
 **起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## aboutToReuse
 
@@ -21,18 +18,17 @@ aboutToReuse?(params: Record<string, Object | undefined | null>): void
 
 当一个可复用的自定义组件从复用缓存中重新加入到节点树时，触发aboutToReuse生命周期回调，并将组件的构造参数传递给该回调。
 
-> **说明：**
+> **说明：** 
 > 
 > * [避免对@Link/@ObjectLink/@Prop等自动更新的状态变量，在aboutToReuse()中重复赋值](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-component_reuse#避免对linkobjectlinkprop等自动更新的状态变量在abouttoreuse中重复赋值)。
 > 
-> * 在滑动场景中，使用组件复用通常需要用该回调函数去更新组件的状态变量，因此在该回调函数中应避免耗时操作，否则会导致丢帧卡顿。最佳实践请参考
-> [主线程耗时操作优化指导-组件复用回调](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316)。
+> * 在滑动场景中，使用组件复用通常需要用该回调函数去更新组件的状态变量，因此在该回调函数中应避免耗时操作，否则会导致丢帧卡顿。最佳实践请参考[主线程耗时操作优化指导-组件复用回调](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316)。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +36,7 @@ aboutToReuse?(params: Record<string, Object | undefined | null>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Record &lt;string, Object \ | undefined \| null&gt; | 是 | 自定义组件的构造参数。其中key为复用时外部传入的组件成员变量名，value为复用时外部传入的对应参数 值。<br>**起始版本：** 20 |
+| params | Record&lt;string, Object &#124; undefined &#124; null&gt; | 是 | 自定义组件的构造参数。其中key为复用时外部传入的组件成员变量名，value为复用时外部传入的对应参数值。<br>**适用版本：** 20 |
 
 ## onLayout
 

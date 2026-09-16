@@ -6,11 +6,6 @@ NavDestination自定义动画接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## curve
 
 ```TypeScript
@@ -19,13 +14,13 @@ curve?: Curve
 
 动画的曲线类型，默认值为Curve.EaseInOut。
 
-**类型：** Curve
+**类型：** [Curve](../arkts-apis/arkts-arkui-curve-e.md)
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +30,13 @@ curve?: Curve
 delay?: number
 ```
 
-转场动画的延迟。取值范围：[0, +∞)默认值：0（毫秒）单位：ms
+转场动画的延迟。
+
+取值范围：[0, +∞)
+
+默认值：0（毫秒）
+
+单位：ms
 
 **类型：** number
 
@@ -43,7 +44,7 @@ delay?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +54,13 @@ delay?: number
 duration?: number
 ```
 
-转场动画的持续时间。取值范围：[0, +∞)默认值：1000（毫秒）单位：ms
+转场动画的持续时间。
+
+取值范围：[0, +∞)
+
+默认值：1000（毫秒）
+
+单位：ms
 
 **类型：** number
 
@@ -61,7 +68,7 @@ duration?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,15 +78,15 @@ duration?: number
 event: Callback<void>
 ```
 
-指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animatetoimmediately)中 的event。
+指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animatetoimmediately)中的event。
 
-**类型：** Callback&lt;void&gt;
+**类型：** [Callback](arkts-arkui-callback-i.md)&lt;void&gt;
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,12 +98,12 @@ onTransitionEnd?: Callback<void>
 
 转场动画结束时的回调函数。
 
-**类型：** Callback&lt;void&gt;
+**类型：** [Callback](arkts-arkui-callback-i.md)&lt;void&gt;
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

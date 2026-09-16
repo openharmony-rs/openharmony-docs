@@ -9,6 +9,7 @@ Provides APIs to obtain the manual exposure range supported.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getSupportedExposureRange
@@ -29,7 +30,7 @@ Obtains the supported manual exposure durations.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | Array of manual exposure durations supported, in ms. |
+| Array&lt;number&gt; | Array of manual exposure durations supported, in ms. |
 
 **错误码：**
 

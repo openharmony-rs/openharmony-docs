@@ -4,6 +4,8 @@
 type NotifyMissionsChangedCallback = (deviceId: string) => void
 ```
 
+@typedef { function } NotifyMissionsChangedCallback
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。

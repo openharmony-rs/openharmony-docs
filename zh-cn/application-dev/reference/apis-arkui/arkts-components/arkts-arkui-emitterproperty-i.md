@@ -6,18 +6,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## annulusRegion
 
 ```TypeScript
 annulusRegion?: ParticleAnnulusRegion
 ```
 
-环形发射器参数。需要对应index的发射器形状为环形才生效。
+环形发射器参数。需要对应index的发射器形状为环形才生效，且对于环形发射器，position和size不生效。
 
 **类型：** [ParticleAnnulusRegion](arkts-arkui-particleannulusregion-i.md)
 
@@ -25,7 +20,7 @@ annulusRegion?: ParticleAnnulusRegion
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +30,9 @@ annulusRegion?: ParticleAnnulusRegion
 emitRate?: number
 ```
 
-发射器发射速率，即每秒发射粒子的数量。未传入时保持其当前的发射速率， 传入值小于0时取默认值5。emitRate值超过5000时会极大影响性能，建议设置参数小于5000。
+发射器发射速率，即每秒发射粒子的数量。
+
+未传入时保持其当前的发射速率， 传入值小于0时取默认值5。emitRate值超过5000时会严重影响性能，可能导致帧率大幅下降，建议设置参数小于5000。
 
 **类型：** number
 
@@ -43,14 +40,14 @@ emitRate?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## index
 
 ```TypeScript
-index : number
+index: number
 ```
 
 索引，取整，按初始化参数中发射器的数组索引指定对应的发射器。异常默认值为0。
@@ -61,7 +58,7 @@ index : number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,15 +68,19 @@ index : number
 position?: PositionT<number>
 ```
 
-发射器位置的数组，只支持number类型。未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。x、y的取值范围：(-∞, +∞)。
+发射器位置，只支持number类型。
 
-**类型：** [PositionT](arkts-arkui-positiont-comp-t.md)&lt;number&gt;
+未传入时保持其当前的发射器位置。需传入两个有效参数，若其中一个为异常值，则position不生效。当对应index的发射器形状为环形（ANNULUS）时，position不生效。
+
+x、y的取值范围：(-∞, +∞)。
+
+**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;number&gt;
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +90,9 @@ position?: PositionT<number>
 size?: SizeT<number>
 ```
 
-发射窗口的大小，只支持number类型。未传入时保持其当前发射窗口大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。
+发射器的大小，只支持number类型。
+
+未传入时保持其当前发射器大小。需传入两个有效参数且都大于0，若其中一个为异常值，则size不生效。当对应index的发射器形状为环形（ANNULUS）时，size不生效。
 
 **类型：** [SizeT](arkts-arkui-sizet-t.md)&lt;number&gt;
 
@@ -97,6 +100,6 @@ size?: SizeT<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

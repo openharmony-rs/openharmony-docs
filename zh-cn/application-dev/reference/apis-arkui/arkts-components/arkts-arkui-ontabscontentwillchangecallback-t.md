@@ -10,7 +10,7 @@ declare type OnTabsContentWillChangeCallback = (currentIndex: number, comingInde
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,4 +25,4 @@ declare type OnTabsContentWillChangeCallback = (currentIndex: number, comingInde
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 当回调函数handler的返回值为true时，Tabs可以切换到新页面。 |
+| boolean | 当回调函数handler的返回值为true时，Tabs可以切换到新页面。<br>当回调函数handler的返回值为false时，Tabs无法切换到新页面，仍然显示原来页面内容。 |

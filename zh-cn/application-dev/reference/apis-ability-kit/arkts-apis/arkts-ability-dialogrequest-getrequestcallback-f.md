@@ -14,7 +14,7 @@ function getRequestCallback(want: Want): RequestCallback
 
 从Want中获取请求方的RequestCallback。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口可以在ServiceExtensionAbility下使用，如果ServiceExtensionAbility实现了模态弹框，则能从Want中获取请求方的RequestCallback。其他场景使用该接口，均无法获取返回
 > 值。

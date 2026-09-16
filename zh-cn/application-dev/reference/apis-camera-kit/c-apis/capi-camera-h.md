@@ -46,7 +46,7 @@
 | [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | 物理光圈配置。 |
 | [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | 描述变焦点信息。 |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | 矩形定义。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br>例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为(w，h)，返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
-| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用{@link OH_Camera_GetCameraManager}方法创建指针。 |
+| [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | 相机管理器对象。<br> 可以使用[OH_Camera_GetCameraManager](capi-camera-h.md#oh_camera_getcameramanager)方法创建指针。 |
 
 ### 枚举
 
@@ -101,7 +101,7 @@
 enum Camera_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 相机错误代码的枚举。
 
@@ -130,7 +130,7 @@ enum Camera_ErrorCode
 enum Camera_Status
 ```
 
-**描述**
+**描述：**
 
 相机状态的枚举。
 
@@ -149,7 +149,7 @@ enum Camera_Status
 enum Camera_SceneMode
 ```
 
-**描述**
+**描述：**
 
 相机模式的枚举。
 
@@ -167,7 +167,7 @@ enum Camera_SceneMode
 enum Camera_Position
 ```
 
-**描述**
+**描述：**
 
 相机位置的枚举。
 
@@ -185,7 +185,7 @@ enum Camera_Position
 enum OH_Camera_AutomotiveCameraPosition
 ```
 
-**描述**
+**描述：**
 
 Car设备摄像头位置的枚举。
 
@@ -215,7 +215,7 @@ Car设备摄像头位置的枚举。
 enum Camera_Type
 ```
 
-**描述**
+**描述：**
 
 相机类型的枚举。
 
@@ -235,7 +235,7 @@ enum Camera_Type
 enum Camera_Connection
 ```
 
-**描述**
+**描述：**
 
 相机连接类型的枚举。
 
@@ -253,7 +253,7 @@ enum Camera_Connection
 enum OH_Camera_SensorColorFilterArrangement
 ```
 
-**描述**
+**描述：**
 
 传感器滤色阵列排列方式。
 
@@ -272,7 +272,7 @@ enum OH_Camera_SensorColorFilterArrangement
 enum Camera_Format
 ```
 
-**描述**
+**描述：**
 
 相机格式类型的枚举。
 
@@ -295,7 +295,7 @@ enum Camera_Format
 enum Camera_FlashMode
 ```
 
-**描述**
+**描述：**
 
 闪光模式的枚举。
 
@@ -314,7 +314,7 @@ enum Camera_FlashMode
 enum OH_Camera_FlashState
 ```
 
-**描述**
+**描述：**
 
 闪光灯状态枚举。
 
@@ -332,7 +332,7 @@ enum OH_Camera_FlashState
 enum Camera_ExposureMode
 ```
 
-**描述**
+**描述：**
 
 曝光模式的枚举。
 
@@ -352,7 +352,7 @@ enum Camera_ExposureMode
 enum OH_Camera_ExposureMeteringMode
 ```
 
-**描述**
+**描述：**
 
 曝光测光模式枚举。
 
@@ -370,7 +370,7 @@ enum OH_Camera_ExposureMeteringMode
 enum OH_Camera_ExposureState
 ```
 
-**描述**
+**描述：**
 
 枚举相机曝光状态。
 
@@ -387,7 +387,7 @@ enum OH_Camera_ExposureState
 enum Camera_FocusMode
 ```
 
-**描述**
+**描述：**
 
 聚焦模式的枚举。
 
@@ -406,7 +406,7 @@ enum Camera_FocusMode
 enum Camera_FocusState
 ```
 
-**描述**
+**描述：**
 
 焦点状态的枚举。
 
@@ -424,7 +424,7 @@ enum Camera_FocusState
 enum Camera_VideoStabilizationMode
 ```
 
-**描述**
+**描述：**
 
 录像防抖模式的枚举。
 
@@ -444,7 +444,7 @@ enum Camera_VideoStabilizationMode
 enum Camera_ImageRotation
 ```
 
-**描述**
+**描述：**
 
 图像旋转角度的枚举。
 
@@ -467,7 +467,7 @@ enum Camera_ImageRotation
 enum Camera_QualityLevel
 ```
 
-**描述**
+**描述：**
 
 图像质量等级的枚举。
 
@@ -485,7 +485,7 @@ enum Camera_QualityLevel
 enum Camera_MetadataObjectType
 ```
 
-**描述**
+**描述：**
 
 元数据对象类型的枚举。
 
@@ -510,7 +510,7 @@ enum Camera_MetadataObjectType
 enum Camera_TorchMode
 ```
 
-**描述**
+**描述：**
 
 手电筒模式的枚举。
 
@@ -531,7 +531,7 @@ enum Camera_TorchMode
 enum Camera_SmoothZoomMode
 ```
 
-**描述**
+**描述：**
 
 平滑变焦模式的枚举。
 
@@ -548,7 +548,7 @@ enum Camera_SmoothZoomMode
 enum Camera_PreconfigType
 ```
 
-**描述**
+**描述：**
 
 预配置照片分辨率的枚举。
 
@@ -568,7 +568,7 @@ enum Camera_PreconfigType
 enum Camera_PreconfigRatio
 ```
 
-**描述**
+**描述：**
 
 预配置照片比例的枚举。
 
@@ -586,7 +586,7 @@ enum Camera_PreconfigRatio
 enum Camera_HostDeviceType
 ```
 
-**描述**
+**描述：**
 
 远程设备类型枚举。
 
@@ -604,7 +604,7 @@ enum Camera_HostDeviceType
 enum Camera_FoldStatus
 ```
 
-**描述**
+**描述：**
 
 折叠状态枚举。
 
@@ -625,7 +625,7 @@ enum Camera_FoldStatus
 enum Camera_QualityPrioritization
 ```
 
-**描述**
+**描述：**
 
 录像质量优先级的枚举。
 
@@ -642,7 +642,7 @@ enum Camera_QualityPrioritization
 enum Camera_ConcurrentType
 ```
 
-**描述**
+**描述：**
 
 相机并发状态的枚举。
 
@@ -659,7 +659,7 @@ enum Camera_ConcurrentType
 enum Camera_PhotoQualityPrioritization
 ```
 
-**描述**
+**描述：**
 
 拍照画质优先策略枚举。
 
@@ -676,7 +676,7 @@ enum Camera_PhotoQualityPrioritization
 enum Camera_ControlCenterEffectType
 ```
 
-**描述**
+**描述：**
 
 控制器效果类型枚举。
 
@@ -695,7 +695,7 @@ enum Camera_ControlCenterEffectType
 enum OH_Camera_OISMode
 ```
 
-**描述**
+**描述：**
 
 光学防抖（Optical Image Stabilization）模式枚举。
 
@@ -713,7 +713,7 @@ enum OH_Camera_OISMode
 enum OH_Camera_OISAxes
 ```
 
-**描述**
+**描述：**
 
 光学防抖（OIS）轴枚举。
 
@@ -730,7 +730,7 @@ enum OH_Camera_OISAxes
 enum OH_Camera_MetadataObjectEmotion
 ```
 
-**描述**
+**描述：**
 
 元数据对象情绪类型枚举。
 
@@ -752,7 +752,7 @@ enum OH_Camera_MetadataObjectEmotion
 Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 ```
 
-**描述**
+**描述：**
 
 创建CameraManager实例。
 
@@ -776,7 +776,7 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 ```
 
-**描述**
+**描述：**
 
 删除CameraManager实例。
 

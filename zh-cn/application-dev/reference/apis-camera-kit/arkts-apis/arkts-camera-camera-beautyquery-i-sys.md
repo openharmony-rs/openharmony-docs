@@ -11,6 +11,7 @@ Provides APIs to obtain and set the beauty effect.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getSupportedBeautyRange
@@ -19,7 +20,14 @@ Provides APIs to obtain and set the beauty effect.
 getSupportedBeautyRange(type: BeautyType): Array<number>
 ```
 
-Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example. | Input Parameter | Example Return Value | Return Value Description | | ----------------| ---- | ---------| | AUTO | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] |Beauty levels supported when **type** is set to **AUTO**. The value **0** * means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels. | | SKIN_SMOOTH | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value * **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels. | | FACE_SLENDER | [0, 1, 2, 3, 4, 5] | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that * the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels. | | SKIN_TONE | [-1, 16242611] | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively. |
+Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
+
+| Input Parameter | Example Return Value | Return Value Description |  
+| ----------------| ---- | ---------|  
+| AUTO | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] |Beauty levels supported when **type** is set to **AUTO**. The value **0** * means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels. |
+| [SKIN_SMOOTH](arkts-camera-camera-beautytype-e-sys.md) | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value * **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels. |
+| [FACE_SLENDER](arkts-camera-camera-beautytype-e-sys.md) | [0, 1, 2, 3, 4, 5] | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that * the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels. |
+| [SKIN_TONE](arkts-camera-camera-beautytype-e-sys.md) | [-1, 16242611] | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively. |
 
 **起始版本：** 11
 
@@ -37,7 +45,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | Array of levels supported. |
+| Array&lt;number&gt; | Array of levels supported. |
 
 **错误码：**
 
@@ -55,17 +63,6 @@ function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSessi
     return [];
   }
   let beautyLevels: Array<number> = portraitPhotoSession.getSupportedBeautyRange(beautyTypes[0]);
-  return beautyLevels;
-}
-```
-
-```TypeScript
-function getSupportedBeautyRange(captureSession: camera.CaptureSession): Array<number> {
-  let beautyTypes: Array<camera.BeautyType> = captureSession.getSupportedBeautyTypes();
-  if (beautyTypes === undefined || beautyTypes.length <= 0) {
-    return [];
-  }
-  let beautyLevels: Array<number> = captureSession.getSupportedBeautyRange(beautyTypes[0]);
   return beautyLevels;
 }
 ```
@@ -102,13 +99,6 @@ Obtains the supported beauty types.
 ```TypeScript
 function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSession): Array<camera.BeautyType> {
   let beautyTypes: Array<camera.BeautyType> = portraitPhotoSession.getSupportedBeautyTypes();
-  return beautyTypes;
-}
-```
-
-```TypeScript
-function getSupportedBeautyTypes(captureSession: camera.CaptureSession): Array<camera.BeautyType> {
-  let beautyTypes: Array<camera.BeautyType> = captureSession.getSupportedBeautyTypes();
   return beautyTypes;
 }
 ```

@@ -14,4 +14,4 @@ declare type ResolutionQuality = import('../api/@ohos.multimedia.image').default
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** import('../api/@ohos.multimedia.image').default.ResolutionQuality
+**类型：** import('../api/@ohos.multimedia.image').default.ResolutionQuality

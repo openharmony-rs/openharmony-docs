@@ -2,13 +2,15 @@
 
 弹出框操作区按钮。
 
-> **说明：**
+> **说明：** 
 > 
 > buttonStyle和role优先级高于fontColor和background。如果buttonStyle和role设置的是默认值，那么fontColor和background可生效。
 > 
 > 若同时给多个按钮设置defaultFocus，那么默认焦点为设置defaultFocus按钮显示顺序的第一个。
 
 **起始版本：** 18
+
+**装饰器类型：** @ObservedV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,13 +26,17 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 action?: AdvancedDialogV2ButtonAction
 ```
 
-按钮的点击事件。默认无事件。
+按钮的点击事件。
+
+默认无事件。
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +52,7 @@ AdvancedDialogV2Button的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,15 +68,19 @@ AdvancedDialogV2Button的构造函数。
 background?: ColorMetrics
 ```
 
-按钮的背景。当buttonStyle和role为默认值时生效。默认值跟随buttonStyle。
+按钮的背景。当buttonStyle和role为默认值时生效。
+
+默认值跟随buttonStyle。
 
 **类型：** ColorMetrics
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +90,9 @@ background?: ColorMetrics
 buttonStyle?: ButtonStyleMode
 ```
 
-按钮的样式。默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。
+按钮的样式。
+
+默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。
 
 **类型：** [ButtonStyleMode](../arkts-components/arkts-arkui-buttonstylemode-e.md)
 
@@ -88,9 +100,11 @@ buttonStyle?: ButtonStyleMode
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,9 +120,11 @@ content: ResourceStr
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +134,13 @@ content: ResourceStr
 defaultFocus?: boolean
 ```
 
-是否为默认焦点。true：按钮是默认焦点。false：按钮不是默认焦点。默认值：false
+是否为默认焦点。
+
+true：按钮是默认焦点。
+
+false：按钮不是默认焦点。
+
+默认值：false
 
 **类型：** boolean
 
@@ -126,9 +148,11 @@ defaultFocus?: boolean
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +162,13 @@ defaultFocus?: boolean
 enabled?: boolean
 ```
 
-是否可用。true：按钮可用。false：按钮不可用。默认值：true
+是否可用。
+
+true：按钮可用。
+
+false：按钮不可用。
+
+默认值：true
 
 **类型：** boolean
 
@@ -146,9 +176,11 @@ enabled?: boolean
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,15 +190,19 @@ enabled?: boolean
 fontColor?: ColorMetrics
 ```
 
-按钮的字体颜色。当buttonStyle和role为默认值时生效。默认值跟随buttonStyle。
+按钮的字体颜色。当buttonStyle和role为默认值时生效。
+
+默认值跟随buttonStyle。
 
 **类型：** ColorMetrics
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,7 +212,9 @@ fontColor?: ColorMetrics
 role?: ButtonRole
 ```
 
-按钮的角色。默认值：ButtonRole.NORMAL
+按钮的角色。
+
+默认值：ButtonRole.NORMAL
 
 **类型：** [ButtonRole](../arkts-components/arkts-arkui-buttonrole-e.md)
 
@@ -184,9 +222,11 @@ role?: ButtonRole
 
 **起始版本：** 18
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,16 +236,20 @@ role?: ButtonRole
 textAlign?: TextAlign
 ```
 
-按钮文本的对齐方式。默认值：TextAlign.Start
+按钮文本的对齐方式。
 
-**类型：** TextAlign
+默认值：TextAlign.Start
+
+**类型：** [TextAlign](arkts-arkui-textalign-e.md)
 
 **默认值：** { TextAlign.Start }
 
 **起始版本：** 24
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -84,7 +84,7 @@ GET_RESOURCE_INFO_WITH_DRAWABLE_DESCRIPTOR = 0x00000010
 GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY = 0x00000020
 ```
 
-用于获取仅在桌面上展示图标的Ability资源，它仅在 [getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md) 和 [getAllLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md) 接口中生效。
+用于获取仅在桌面上展示图标的Ability资源，它仅在[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md)和[getAllLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md)接口中生效。
 
 **起始版本：** 20
 

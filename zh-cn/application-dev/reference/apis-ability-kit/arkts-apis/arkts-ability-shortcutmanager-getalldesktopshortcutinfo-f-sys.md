@@ -26,13 +26,13 @@ function getAllDesktopShortcutInfo(userId: number): Promise<Array<ShortcutInfo>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 被查询的用户id。可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| userId | number | 是 | 被查询的用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;ShortcutInfo&gt;&gt; | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
+| Promise&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt;&gt; | Promise对象，返回应用配置文件中定义的快捷方式信息。 |
 
 **错误码：**
 

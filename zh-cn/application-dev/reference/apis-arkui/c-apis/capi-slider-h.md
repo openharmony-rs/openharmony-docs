@@ -30,7 +30,7 @@ Provides Slider node type definitions for <b>NativeNode</b> APIs.
 enum ArkUI_SliderBlockStyle
 ```
 
-**描述**
+**描述：**
 
 定义滑块形状。
 
@@ -48,7 +48,7 @@ enum ArkUI_SliderBlockStyle
 enum ArkUI_SliderDirection
 ```
 
-**描述**
+**描述：**
 
 定义滑动条滑动方向。
 
@@ -65,7 +65,7 @@ enum ArkUI_SliderDirection
 enum ArkUI_SliderStyle
 ```
 
-**描述**
+**描述：**
 
 定义滑块与滑轨显示样式。
 

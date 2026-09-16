@@ -12,4 +12,4 @@ export type PluginModuleInfo = _PluginModuleInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PluginModuleInfo
+**类型：** _PluginModuleInfo

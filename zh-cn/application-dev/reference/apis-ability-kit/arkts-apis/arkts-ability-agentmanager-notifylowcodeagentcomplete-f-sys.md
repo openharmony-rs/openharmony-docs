@@ -12,7 +12,7 @@ import { agentManager } from '@kit.AbilityKit';
 function notifyLowCodeAgentComplete(agentId: string): Promise<void>
 ```
 
-通知指定的 [LOW_CODE](../../../reference/apis-ability-kit/js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类 型的AgentCard关联的Agent生命周期已结束。
+通知指定的[LOW_CODE](../../../reference/apis-ability-kit/js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)类型的AgentCard关联的Agent生命周期已结束。
 
 **起始版本：** 26.0.0
 
@@ -34,7 +34,7 @@ function notifyLowCodeAgentComplete(agentId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

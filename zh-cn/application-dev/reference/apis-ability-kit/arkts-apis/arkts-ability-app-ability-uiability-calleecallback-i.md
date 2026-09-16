@@ -30,10 +30,10 @@ import { UIAbility, Callee, CalleeCallback, Caller, OnReleaseCallback, OnRemoteS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| indata | rpc.MessageSequence | 是 | 发送需传递的数据。 |
+| indata | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | 是 | 发送需传递的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| rpc.Parcelable | 返回的数据对象。 |
+| [rpc.Parcelable](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-parcelable-i.md) | 返回的数据对象。 |

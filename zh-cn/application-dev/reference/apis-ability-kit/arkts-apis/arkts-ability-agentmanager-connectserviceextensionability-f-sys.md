@@ -12,9 +12,9 @@ import { agentManager } from '@kit.AbilityKit';
 function connectServiceExtensionAbility(context: AgentExtensionContext, want: Want, callback: ConnectOptions): number
 ```
 
-将AgentExtensionAbility连接到ServiceExtensionAbility。若目标ServiceExtensionAbility可见，可直接连接；若不可见，需申请 `ohos.permission.START_INVISIBLE_ABILITY`权限；若目标ServiceExtensionAbility位于远程设备上，需申请 `ohos.permission.DISTRIBUTED_DATASYNC`权限。
+将AgentExtensionAbility连接到ServiceExtensionAbility。若目标ServiceExtensionAbility可见，可直接连接；若不可见，需申请`ohos.permission.START_INVISIBLE_ABILITY`权限；若目标ServiceExtensionAbility位于远程设备上，需申请`ohos.permission.DISTRIBUTED_DATASYNC`权限。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
 
@@ -38,7 +38,7 @@ function connectServiceExtensionAbility(context: AgentExtensionContext, want: Wa
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回一个连接ID，用于标识当前AgentExtensionAbility与ServiceExtensionAbility之间的连接。该连接ID可用于后续调用 [disconnectServiceExtensionAbility]{ |
+| number | 返回一个连接ID，用于标识当前AgentExtensionAbility与ServiceExtensionAbility之间的连接。该连接ID可用于后续调用[disconnectServiceExtensionAbility](arkts-ability-agentmanager-disconnectserviceextensionability-f-sys.md)接口断开连接。 |
 
 **错误码：**
 

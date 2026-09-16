@@ -24,7 +24,7 @@ off(type: 'layout', callback?: () => void): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,8 +32,8 @@ off(type: 'layout', callback?: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'layout' | 是 | 必须填写字符串'layout'。layout：组件布局完成。<br>**起始版本：** 12 |
-| callback | () =&gt; void | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('layout')方法中的callback为相同对象时才能取消回调成功。<br>**起始版本：** 12 |
+| type | 'layout' | 是 | 必须填写字符串'layout'。<br>layout：组件布局完成。<br>**适用版本：** 12 |
+| callback | () =&gt; void | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('layout')方法中的callback为相同对象时才能取消回调成功。 |
 
 ## off('draw')
 
@@ -41,13 +41,13 @@ off(type: 'layout', callback?: () => void): void
 off(type: 'draw', callback?: () => void): void
 ```
 
-通过句柄取消注册回调，当组件绘制送显完成时不再触发指定的回调。
+通过句柄取消注册回调，当组件布局完成时不再触发指定的回调。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,8 +55,8 @@ off(type: 'draw', callback?: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'draw' | 是 | 必须填写字符串'draw'。draw：组件绘制送显完成。<br>**起始版本：** 12 |
-| callback | () =&gt; void | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('draw')方法中的callback为相同对象时才能取消回调成功。<br>**起始版本：** 12 |
+| type | 'draw' | 是 | 必须填写字符串'layout'。<br>layout：组件布局完成。<br>**适用版本：** 12 |
+| callback | () =&gt; void | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('layout')方法中的callback为相同对象时才能取消回调成功。 |
 
 ## off('drawChildren')
 
@@ -64,13 +64,13 @@ off(type: 'draw', callback?: () => void): void
 off(type: 'drawChildren', callback?: Callback<void>): void
 ```
 
-通过句柄取消注册回调，当组件的子组件绘制送显完成时不再触发指定的回调。如果组件树中存在多个drawChildren事件回调，取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+通过句柄取消注册回调，当组件布局完成时不再触发指定的回调。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,8 +78,8 @@ off(type: 'drawChildren', callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'drawChildren' | 是 | 必须填写字符串'drawChildren'。drawChildren：子组件绘制送显完成。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。 callback需要和on('drawChildren')方法中的callback为相同对象时才能取消回调成功。 |
+| type | 'drawChildren' | 是 | 必须填写字符串'layout'。<br>layout：组件布局完成。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和on('layout')方法中的callback为相同对象时才能取消回调成功。 |
 
 ## offDrawChildren
 
@@ -87,13 +87,13 @@ off(type: 'drawChildren', callback?: Callback<void>): void
 offDrawChildren(callback?: Callback<number[]>): void
 ```
 
-取消注册drawChildren事件回调。要实现在子组件绘制送显完成后停止触发特定回调，只需通过ComponentObserver句柄，取消注册该回调即可。 如果组件树中存在多个drawChildren事件回调，取消最顶层的回调后，其余drawChildren事件回调也无法生效。
+取消注册drawChildren事件回调。要实现在子组件绘制送显完成后停止触发特定回调，只需通过ComponentObserver句柄，取消注册该回调即可。如果组件树中存在多个drawChildren事件回调，取消最顶层的回调后，其余drawChildren事件回调也无法生效。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,7 +101,7 @@ offDrawChildren(callback?: Callback<number[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。 callback需要和onDrawChildren方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number[]&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和onDrawChildren方法中的callback为相同对象时才能取消回调成功。 |
 
 **示例**
 
@@ -146,13 +146,13 @@ struct ImageExample {
 offLayoutChildren(callback?: Callback<void>): void
 ```
 
-取消注册layoutChildren事件回调。要实现在子组件布局完成后停止触发特定回调，只需通过ComponentObserver句柄，取消注册该回调即可。 如果组件树中存在多个layoutChildren事件回调，取消最顶层的回调后，其余layoutChildren事件回调也无法生效。
+取消注册layoutChildren事件回调。要实现在子组件布局完成后停止触发特定回调，只需通过ComponentObserver句柄，取消注册该回调即可。如果组件树中存在多个layoutChildren事件回调，取消最顶层的回调后，其余layoutChildren事件回调也无法生效。以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过onLayoutChildren&lt;sup&gt;23+&lt;/sup&gt;接口监听子树中的节点完成布局时的回调事件。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,75 +160,12 @@ offLayoutChildren(callback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。 callback需要和onLayoutChildren方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和onLayoutChildren方法中的callback为相同对象时才能取消回调成功。 |
 
 **示例**
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren23+](#onlayoutchildren)接口监听子树中的节点完成布局时的回调事件。
-
 ```TypeScript
-import { inspector } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ImageExample {
-  build() {
-    Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-        Row({ space: 5 }) {
-          Image($r('app.media.startIcon'))
-            .width(110)
-            .height(110)
-            .border({ width: 1 })
-            .id('IMAGE_ID')
-        }
-        .id('ROW_ID')
-      }
-    }.height(320).width(360).padding({ right: 10, top: 10 })
-  }
-
-  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
-  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
-
-  aboutToAppear() {
-    let onLayoutComplete: () => void = (): void => {
-      // 根据需要补充实现代码
-    };
-    let onDrawComplete: () => void = (): void => {
-      // 根据需要补充实现代码
-    };
-    let onDrawChildrenComplete: () => void = (): void => {
-      // 根据需要补充实现代码
-    };
-    // 绑定当前js实例
-    let funcLayout = onLayoutComplete;
-    let funcDraw = onDrawComplete;
-    let funcDrawChildren = onDrawChildrenComplete;
-    let offFuncLayout = onLayoutComplete;
-    let offFuncDraw = onDrawComplete;
-    let offFuncDrawChildren = onDrawChildrenComplete;
-
-    this.listenerForImage.on('layout', funcLayout);
-    this.listenerForImage.on('draw', funcDraw);
-    this.listenerForRow.on('drawChildren', funcDrawChildren);
-
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-    // this.listenerForImage.off('layout', offFuncLayout)
-    // this.listenerForImage.off('draw', offFuncDraw)
-    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
-
-    let onLayoutChildrenComplete: () => void = (): void => {
-      // 监听到layoutChildren事件后，用户可以自定义实现逻辑。
-    };
-
-    let uniqueId: number = 0; // 替换为实际组件的uniqueId
-    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId.toString());
-    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete);
-  }
-
-  // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
-  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
-}
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过[onLayoutChildren23+](#onlayoutchildren)接口监听子树中的节点完成布局时的回调事件。
 ```
 
 ## on('layout')
@@ -237,13 +174,13 @@ struct ImageExample {
 on(type: 'layout', callback: () => void): void
 ```
 
-通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。请注意，该接口无法监听窗口尺寸变化，相关需求请参考on('windowSizeChange')。此外，布局回调和窗口尺寸变化回调之间不存在确定的执行顺序依赖。
+通过句柄为指定组件注册回调，当组件布局完成时会触发该回调。请注意，该接口无法监听窗口尺寸变化，相关需求请参考on('windowSizeChange')。此外，布局回调和窗口尺寸变化回调之间不存在确定的执行顺序依赖。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,8 +188,8 @@ on(type: 'layout', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'layout' | 是 | 必须填写字符串'layout'。layout：组件布局完成。<br>**起始版本：** 12 |
-| callback | () =&gt; void | 是 | 监听layout的回调。<br>**起始版本：** 12 |
+| type | 'layout' | 是 | 必须填写字符串'layout'。<br>layout：组件布局完成。<br>**适用版本：** 12 |
+| callback | () =&gt; void | 是 | 监听layout的回调。<br>**适用版本：** 12 |
 
 ## on('draw')
 
@@ -260,13 +197,13 @@ on(type: 'layout', callback: () => void): void
 on(type: 'draw', callback: () => void): void
 ```
 
-通过句柄注册回调，当组件绘制送显完成时会触发该回调。
+通过句柄为指定组件注册回调，当组件布局完成时会触发该回调。请注意，该接口无法监听窗口尺寸变化，相关需求请参考on('windowSizeChange')。此外，布局回调和窗口尺寸变化回调之间不存在确定的执行顺序依赖。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -274,8 +211,8 @@ on(type: 'draw', callback: () => void): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'draw' | 是 | 必须填写字符串'draw'。draw：组件绘制送显完成。<br>**起始版本：** 12 |
-| callback | () =&gt; void | 是 | 监听draw的回调。<br>**起始版本：** 12 |
+| type | 'draw' | 是 | 必须填写字符串'layout'。<br>layout：组件布局完成。<br>**适用版本：** 12 |
+| callback | () =&gt; void | 是 | 监听layout的回调。<br>**适用版本：** 12 |
 
 ## on('drawChildren')
 
@@ -283,13 +220,13 @@ on(type: 'draw', callback: () => void): void
 on(type: 'drawChildren', callback: Callback<void>): void
 ```
 
-通过ComponentObserver注册drawChildren事件回调方法。当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调方法。 如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。 当前节点注册回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
+通过句柄为指定组件注册回调，当组件布局完成时会触发该回调。请注意，该接口无法监听窗口尺寸变化，相关需求请参考on('windowSizeChange')。此外，布局回调和窗口尺寸变化回调之间不存在确定的执行顺序依赖。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,8 +234,8 @@ on(type: 'drawChildren', callback: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'drawChildren' | 是 | 必须填写字符串'drawChildren'。drawChildren：子组件绘制送显完成。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 监听drawChildren的回调。 |
+| type | 'drawChildren' | 是 | 必须填写字符串'layout'。<br>layout：组件布局完成。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 监听layout的回调。 |
 
 ## onDrawChildren
 
@@ -306,13 +243,13 @@ on(type: 'drawChildren', callback: Callback<void>): void
 onDrawChildren(callback: Callback<number[]>): void
 ```
 
-通过ComponentObserver注册drawChildren事件回调。使用callback异步回调。 与on('drawChildren')相比，本方法在回调中额外返回子组件的uniqueId信息（Callback&lt;number[]&gt;），便于开发者定位具体子组件。 如需获取子组件标识，建议使用本方法；若不需要子组件信息，两者均可使用。以当前注册事件回调的节点为根节点，当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调。 如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。 当前节点注册事件回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
+通过ComponentObserver注册drawChildren事件回调。使用callback异步回调。与on('drawChildren')相比，本方法在回调中额外返回子组件的uniqueId信息（Callback&lt;number[]&gt;），便于开发者定位具体子组件。如需获取子组件标识，建议使用本方法；若不需要子组件信息，两者均可使用。以当前注册事件回调的节点为根节点，当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。当前节点注册事件回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过onDrawChildren&lt;sup&gt;24+&lt;/sup&gt;接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,39 +261,8 @@ onDrawChildren(callback: Callback<number[]>): void
 
 **示例**
 
-以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过[onDrawChildren24+](#ondrawchildren)接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
-
 ```TypeScript
-import { inspector } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ImageExample {
-  build() {
-    Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-        Row({ space: 5 }) {
-          Image($r('app.media.startIcon'))
-            .width(110)
-            .height(110)
-            .border({ width: 1 })
-            .id('IMAGE_ID')
-        }
-        .id('ROW_ID')
-      }
-    }.height(320).width(360).padding({ right: 10, top: 10 })
-  }
-
-  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
-
-  aboutToAppear() {
-    let onDrawChildrenCompleteUniqueId: (childIds: number[]) => void = (childIds: number[]): void => {
-      // 从API version 24开始，新增onDrawChildren接口。监听到drawChildren事件后，用户可以自定义实现逻辑。
-    };
-
-    this.listenerForRow.onDrawChildren(onDrawChildrenCompleteUniqueId);
-  }
-}
+以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过[onDrawChildren24+](#ondrawchildren)接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
 ```
 
 ## onLayoutChildren
@@ -365,13 +271,13 @@ struct ImageExample {
 onLayoutChildren(callback: Callback<void>): void
 ```
 
-通过ComponentObserver注册layoutChildren事件回调。使用callback异步回调。以当前注册事件回调的节点为根节点，当子树中的节点位于UI组件主树中且完成布局时，会触发该回调。 如果组件树中存在多个layoutChildren事件回调，只会触发最顶层的layoutChildren事件回调。通过offLayoutChildren取消最顶层的回调后，其余layoutChildren事件回调也无法生效。 当前节点注册回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
+通过ComponentObserver注册layoutChildren事件回调。使用callback异步回调。以当前注册事件回调的节点为根节点，当子树中的节点位于UI组件主树中且完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发最顶层的layoutChildren事件回调。通过offLayoutChildren取消最顶层的回调后，其余layoutChildren事件回调也无法生效。当前节点注册回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

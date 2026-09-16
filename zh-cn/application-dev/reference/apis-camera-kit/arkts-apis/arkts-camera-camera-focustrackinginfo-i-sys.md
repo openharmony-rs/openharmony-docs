@@ -1,6 +1,6 @@
 # FocusTrackingInfo（系统接口）
 
-Describes the focus tracking information, which is obtained by calling VideoSessionForSys. on('focusTrackingInfoAvailable').
+Describes the focus tracking information, which is obtained by calling VideoSessionForSys. [on('focusTrackingInfoAvailable')](arkts-camera-camera-videosession-i-sys.md#onfocustrackinginfoavailable).
 
 **起始版本：** 15
 
@@ -11,6 +11,7 @@ Describes the focus tracking information, which is obtained by calling VideoSess
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## trackingMode
@@ -37,7 +38,7 @@ trackingRegion: Rect
 
 Tracking region.
 
-**类型：** Rect
+**类型：** [Rect](arkts-camera-camera-rect-i.md)
 
 **起始版本：** 15
 

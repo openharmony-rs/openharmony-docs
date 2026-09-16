@@ -6,11 +6,6 @@ NavDestination上下文信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## getConfigInRouteMap
 
 ```TypeScript
@@ -23,7 +18,7 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +26,7 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [RouteMapConfig](arkts-arkui-routemapconfig-i.md) \| undefined | Routing configuration of the current page. |
+| [RouteMapConfig](arkts-arkui-routemapconfig-i.md) &#124; undefined | Routing configuration of the current page.<br> **undefined** is returned when the page is not configured through the route table. |
 
 ## mode
 
@@ -39,7 +34,9 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 mode?: NavDestinationMode
 ```
 
-当前NavDestination的类型。 默认值：NavDestinationMode.Standard。从API version 22开始，该接口支持在原子化服务中使用。
+当前NavDestination的类型。默认值：NavDestinationMode.Standard。
+
+从API version 22开始，该接口支持在原子化服务中使用。
 
 **类型：** [NavDestinationMode](arkts-arkui-navdestinationmode-e.md)
 
@@ -47,7 +44,7 @@ mode?: NavDestinationMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +62,7 @@ navDestinationId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +80,7 @@ pathInfo: NavPathInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,6 +98,6 @@ pathStack: NavPathStack
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

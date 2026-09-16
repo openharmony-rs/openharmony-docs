@@ -1,15 +1,12 @@
 # LocalizedEdgeColors
 
-Defines the localized border color property.@interface LocalizedEdgeColors
+边框颜色，用于描述组件边框四条边的颜色。
+
+引入该对象时，至少传入一个参数。
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## bottom
 
@@ -17,7 +14,7 @@ Defines the localized border color property.@interface LocalizedEdgeColors
 bottom?: ResourceColor
 ```
 
-bottom property.
+组件下边框颜色。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -25,7 +22,7 @@ bottom property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,7 +34,9 @@ bottom property.
 end?: ResourceColor
 ```
 
-end property.
+组件右边框颜色。
+
+从右至左显示语言模式下为组件左边框颜色。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -45,7 +44,7 @@ end property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,7 +56,9 @@ end property.
 start?: ResourceColor
 ```
 
-start property.
+组件左边框颜色。
+
+从右至左显示语言模式下为组件右边框颜色。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -65,7 +66,7 @@ start property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -77,7 +78,7 @@ start property.
 top?: ResourceColor
 ```
 
-top property.
+组件上边框颜色。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -85,7 +86,7 @@ top property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 

@@ -30,7 +30,7 @@ function queryBusinessAbilityInfo(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | [BusinessAbilityFilter](arkts-ability-businessabilityrouter-businessabilityfilter-i-sys.md) | 是 | 用于按业务类型过滤的对象。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;BusinessAbilityInfo&gt;&gt; | 是 | 回调函数。返回查询到的Ability信息，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BusinessAbilityInfo](arkts-ability-businessabilityrouter-businessabilityinfo-t-sys.md)&gt;&gt; | 是 | 回调函数。返回查询到的Ability信息，否则为错误对象。 |
 
 **错误码：**
 
@@ -55,6 +55,25 @@ try {
       return;
     }
     console.info('queryBusinessAbilityInfo success');
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
+}
+```
+
+```TypeScript
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
+
+try {
+  businessAbilityRouter.queryBusinessAbilityInfo(filter)
+    .then(() => {
+      console.info('queryBusinessAbilityInfo success');
+    }).catch((error: BusinessError) => {
+    console.error('queryBusinessAbilityInfo failed ' + error.message);
   });
 } catch (error) {
   let message = (error as BusinessError).message;
@@ -89,7 +108,7 @@ function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;BusinessAbilityInfo&gt;&gt; | Promise对象，返回符合过滤条件的Ability信息。 |
+| Promise&lt;Array&lt;[BusinessAbilityInfo](arkts-ability-businessabilityrouter-businessabilityinfo-t-sys.md)&gt;&gt; | Promise对象，返回符合过滤条件的Ability信息。 |
 
 **错误码：**
 
@@ -101,21 +120,4 @@ function queryBusinessAbilityInfo(filter: BusinessAbilityFilter): Promise<Array<
 
 **示例**
 
-```TypeScript
-import { businessAbilityRouter } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
-
-try {
-  businessAbilityRouter.queryBusinessAbilityInfo(filter)
-    .then(() => {
-      console.info('queryBusinessAbilityInfo success');
-    }).catch((error: BusinessError) => {
-    console.error('queryBusinessAbilityInfo failed ' + error.message);
-  });
-} catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('queryBusinessAbilityInfo failed ' + message);
-}
-```
+参见 [queryBusinessAbilityInfo](#querybusinessabilityinfo)

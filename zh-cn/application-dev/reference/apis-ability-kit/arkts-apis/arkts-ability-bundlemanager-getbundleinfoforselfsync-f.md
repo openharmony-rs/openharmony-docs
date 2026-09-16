@@ -16,7 +16,7 @@ function getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -30,7 +30,7 @@ function getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleInfo | 返回BundleInfo对象。 |
+| [BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md) | 返回BundleInfo对象。 |
 
 **错误码：**
 

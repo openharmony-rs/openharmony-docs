@@ -12,4 +12,4 @@ DataAbilityOperation二级模块。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
-**属性类型：** _DataAbilityOperation
+**类型：** _DataAbilityOperation

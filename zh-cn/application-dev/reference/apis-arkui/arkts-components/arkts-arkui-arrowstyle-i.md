@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## arrowColor
 
 ```TypeScript
 arrowColor?: ResourceColor
 ```
 
-设置箭头颜色。默认值：'#182431'
+设置箭头颜色。
+
+默认值：'#182431'
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -27,7 +24,7 @@ arrowColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,8 +34,21 @@ arrowColor?: ResourceColor
 arrowSize?: Length
 ```
 
-设置箭头大小。在导航点两侧显示时：默认值：18vp在组件两侧显示时：默认值：24vp  
-**说明：**showBackground为true时，arrowSize为backgroundSize的3/4。不支持设置百分比。
+设置箭头大小。
+
+在导航点两侧显示时：
+
+默认值：18vp
+
+在组件两侧显示时：
+
+默认值：24vp
+
+**说明：** 
+
+showBackground为true时，arrowSize为backgroundSize的3/4。
+
+不支持设置百分比。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -48,7 +58,7 @@ arrowSize?: Length
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,17 +68,27 @@ arrowSize?: Length
 backgroundColor?: ResourceColor
 ```
 
-设置底板颜色。在导航点两侧显示：默认值：'#00000000'在组件两侧显示：默认值：'#19182431'
+设置底板颜色。
+
+在导航点两侧显示：
+
+默认值：'#00000000'
+
+在组件两侧显示：
+
+默认值：'#19182431'
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
-**默认值：** When isSidebarMiddle is false, the default value is #00000000, Otherwise,the default value is #1918243 1 [since 10 - 10] @default When isSidebarMiddle is false, the default value is #00000000, Otherwise, the default value is #1918243 1 [since 11]
+**默认值：** 
+- API版本10：When isSidebarMiddle is false, the default value is #00000000, Otherwise,the default value is #1918243 1
+- API版本11+：When isSidebarMiddle is false, the default value is #00000000, Otherwise, the default value is #1918243 1
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +98,17 @@ backgroundColor?: ResourceColor
 backgroundSize?: Length
 ```
 
-设置底板大小。在导航点两侧显示：默认值：24vp在组件两侧显示：默认值：32vp不支持设置百分比。
+设置底板大小。
+
+在导航点两侧显示：
+
+默认值：24vp
+
+在组件两侧显示：
+
+默认值：32vp
+
+不支持设置百分比。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -88,7 +118,7 @@ backgroundSize?: Length
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +128,11 @@ backgroundSize?: Length
 isSidebarMiddle?: boolean
 ```
 
-设置箭头显示位置。为true时箭头居中显示在Swiper组件两侧，为false时显示在导航点指示器两侧。默认值：false默认显示在导航点指示器两侧。
+设置箭头显示位置。为true时箭头居中显示在Swiper组件两侧，为false时显示在导航点指示器两侧。
+
+默认值：false
+
+默认显示在导航点指示器两侧。
 
 **类型：** boolean
 
@@ -108,7 +142,7 @@ isSidebarMiddle?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +152,9 @@ isSidebarMiddle?: boolean
 showBackground?: boolean
 ```
 
-设置箭头底板是否显示。为true时箭头底板显示，为false时箭头底板不显示。默认值：false
+设置箭头底板是否显示。为true时箭头底板显示，为false时箭头底板不显示。
+
+默认值：false
 
 **类型：** boolean
 
@@ -128,6 +164,6 @@ showBackground?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

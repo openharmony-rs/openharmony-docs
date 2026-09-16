@@ -24,7 +24,7 @@ dismiss: VoidCallback
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +34,7 @@ dismiss: VoidCallback
 reason: DismissReason
 ```
 
-无法关闭对话框的原因。
+触发弹出框关闭操作的原因类型。
 
 **类型：** [DismissReason](../arkts-components/arkts-arkui-dismissreason-e.md)
 
@@ -42,6 +42,6 @@ reason: DismissReason
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

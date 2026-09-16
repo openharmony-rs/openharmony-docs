@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines a set of text common enum and interface.
+定义文本类组件通用的枚举和接口，涵盖文本对齐、装饰线样式、复制粘贴、溢出处理、断行策略、菜单定制等多种能力，适用于文本输入框、文本显示等场景，帮助开发者灵活控制文本样式与交互行为，降低开发复杂度。
 
 **库：** libace_ndk.z.so
 
@@ -83,7 +83,7 @@ Defines a set of text common enum and interface.
 enum ArkUI_TextAlignment
 ```
 
-**描述**
+**描述：**
 
 定义字体水平对齐样式枚举值。
 
@@ -104,7 +104,7 @@ enum ArkUI_TextAlignment
 enum ArkUI_TextVerticalAlignment
 ```
 
-**描述**
+**描述：**
 
 定义文本垂直对齐样式枚举值。
 
@@ -123,7 +123,7 @@ enum ArkUI_TextVerticalAlignment
 enum ArkUI_TextContentAlign
 ```
 
-**描述**
+**描述：**
 
 定义文本内容区垂直对齐样式枚举值。
 
@@ -141,7 +141,7 @@ enum ArkUI_TextContentAlign
 enum ArkUI_TextDirection
 ```
 
-**描述**
+**描述：**
 
 定义文本排版方向枚举值。
 
@@ -160,7 +160,7 @@ enum ArkUI_TextDirection
 enum ArkUI_EnterKeyType
 ```
 
-**描述**
+**描述：**
 
 定义单行文本输入法回车键类型枚举值。
 
@@ -182,7 +182,7 @@ enum ArkUI_EnterKeyType
 enum ArkUI_TextDecorationType
 ```
 
-**描述**
+**描述：**
 
 定义装饰线类型枚举值。
 
@@ -201,7 +201,7 @@ enum ArkUI_TextDecorationType
 enum ArkUI_TextDecorationStyle
 ```
 
-**描述**
+**描述：**
 
 定义装饰线样式枚举值。
 
@@ -221,7 +221,7 @@ enum ArkUI_TextDecorationStyle
 enum ArkUI_TextCase
 ```
 
-**描述**
+**描述：**
 
 定义文本大小写枚举值。
 
@@ -239,7 +239,7 @@ enum ArkUI_TextCase
 enum ArkUI_TextCopyOptions
 ```
 
-**描述**
+**描述：**
 
 定义组件支持设置文本是否可复制粘贴。
 
@@ -258,7 +258,7 @@ enum ArkUI_TextCopyOptions
 enum ArkUI_TextOverflow
 ```
 
-**描述**
+**描述：**
 
 定义文本超长时的显示方式。
 
@@ -277,7 +277,7 @@ enum ArkUI_TextOverflow
 enum ArkUI_WordBreak
 ```
 
-**描述**
+**描述：**
 
 定义文本断行规则。
 
@@ -296,7 +296,7 @@ enum ArkUI_WordBreak
 enum ArkUI_EllipsisMode
 ```
 
-**描述**
+**描述：**
 
 定义文本省略位置。
 
@@ -316,7 +316,7 @@ enum ArkUI_EllipsisMode
 enum ArkUI_KeyboardAppearance
 ```
 
-**描述**
+**描述：**
 
 定义输入框拉起的键盘样式。
 
@@ -335,7 +335,7 @@ enum ArkUI_KeyboardAppearance
 enum ArkUI_TextMenuItemId
 ```
 
-**描述**
+**描述：**
 
 文本菜单项id枚举。
 
@@ -370,7 +370,7 @@ enum ArkUI_TextMenuItemId
 enum OH_ArkUI_LineBreakStrategy
 ```
 
-**描述**
+**描述：**
 
 换行策略类型枚举。
 
@@ -388,7 +388,7 @@ enum OH_ArkUI_LineBreakStrategy
 enum ArkUI_TextSpanType
 ```
 
-**描述**
+**描述：**
 
 自定义文本选择菜单的文本识别类型枚举。
 
@@ -407,7 +407,7 @@ enum ArkUI_TextSpanType
 enum ArkUI_TextResponseType
 ```
 
-**描述**
+**描述：**
 
 自定义文本选择菜单的响应类型枚举。
 
@@ -429,7 +429,7 @@ enum ArkUI_TextResponseType
 typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)
 ```
 
-**描述**
+**描述：**
 
 文本菜单创建事件回调函数，在文本菜单创建时会触发此回调函数，开发者可在此函数中设置菜单数据。
 
@@ -448,7 +448,7 @@ typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, voi
 typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)
 ```
 
-**描述**
+**描述：**
 
 文本菜单准备事件回调函数，当文本选择区域变化后显示菜单之前会触发此回调函数，开发者可在此函数中配置菜单数据。
 
@@ -467,7 +467,7 @@ typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, vo
 typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, int32_t start, int32_t end, void* userData)
 ```
 
-**描述**
+**描述：**
 
 文本菜单项点击事件回调函数，在菜单项被点击时触发此回调函数，开发者可在此函数中对系统默认处理行为进行拦截。
 
@@ -494,7 +494,7 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item, 
 ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 ```
 
-**描述**
+**描述：**
 
 创建文本输入框计数器的配置对象。
 
@@ -512,7 +512,7 @@ ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 ```
 
-**描述**
+**描述：**
 
 销毁文本输入框计数器的配置对象。
 
@@ -530,7 +530,7 @@ void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)
 ```
 
-**描述**
+**描述：**
 
 设置文本输入框未达到最大字符数时计数器的颜色。
 
@@ -549,7 +549,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* con
 void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config, uint32_t color)
 ```
 
-**描述**
+**描述：**
 
 设置文本输入框超出最大字符数时计数器的颜色。
 
@@ -568,7 +568,7 @@ void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterCon
 uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)
 ```
 
-**描述**
+**描述：**
 
 获取文本输入框未达到最大字符数时计数器的颜色。
 
@@ -592,7 +592,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig*
 uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)
 ```
 
-**描述**
+**描述：**
 
 获取文本输入框超出最大字符数时计数器的颜色。
 
@@ -616,7 +616,7 @@ uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounte
 ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 ```
 
-**描述**
+**描述：**
 
 创建文本菜单项对象。
 
@@ -634,7 +634,7 @@ ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
 void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 ```
 
-**描述**
+**描述：**
 
 释放文本菜单项对象。
 
@@ -652,7 +652,7 @@ void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
 ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 ```
 
-**描述**
+**描述：**
 
 创建文本菜单扩展项对象。
 
@@ -670,7 +670,7 @@ ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
 void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)
 ```
 
-**描述**
+**描述：**
 
 释放文本菜单扩展项对象。
 
@@ -688,7 +688,7 @@ void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOpt
 ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()
 ```
 
-**描述**
+**描述：**
 
 创建自定义文本选择菜单对象。
 
@@ -706,7 +706,7 @@ ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()
 void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)
 ```
 
-**描述**
+**描述：**
 
 释放自定义文本选择菜单对象。
 
@@ -724,7 +724,7 @@ void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* s
 ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()
 ```
 
-**描述**
+**描述：**
 
 创建文本内容基础控制器对象。
 
@@ -742,7 +742,7 @@ ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()
 void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController* controller)
 ```
 
-**描述**
+**描述：**
 
 销毁文本内容基础控制器对象。
 
@@ -760,7 +760,7 @@ void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController*
 void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseController* controller)
 ```
 
-**描述**
+**描述：**
 
 在编辑态时删除光标前字符。其他状态删除输入框组件的最后一个字符。
 
@@ -778,7 +778,7 @@ void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseCont
 void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseController *controller, int32_t start, int32_t end)
 ```
 
-**描述**
+**描述：**
 
 将起始索引与结束索引传递给与其绑定的输入框组件，并将此范围内的文字滚动到可视区域。
 
@@ -798,7 +798,7 @@ void OH_ArkUI_TextContentBaseController_ScrollToVisible(ArkUI_TextContentBaseCon
 OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
 ```
 
-**描述**
+**描述：**
 
 创建一个装饰线样式对象。当该对象不再使用时，请调用[OH_ArkUI_DecorationStyleOptions_Destroy](capi-text-common-h.md#oh_arkui_decorationstyleoptions_destroy)销毁。
 
@@ -816,7 +816,7 @@ OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()
 void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)
 ```
 
-**描述**
+**描述：**
 
 销毁装饰线样式对象。
 

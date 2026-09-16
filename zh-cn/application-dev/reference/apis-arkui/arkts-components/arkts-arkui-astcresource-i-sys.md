@@ -1,17 +1,14 @@
 # ASTCResource（系统接口）
 
-定义可以使用 ASTC 的资源。@interface ASTCResource
+定义可以使用 ASTC 的资源。
+
+@interface ASTCResource
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-
-## 导入模块
-
-```TypeScript
-```
 
 ## column
 

@@ -18,8 +18,17 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 max?: number
 ```
 
-设置最大值。默认值：100  
-**说明：**当出现异常情况min&gt;= max时，min取默认值0，max取默认值100。progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。@Trace
+设置最大值。
+
+默认值：100
+
+**说明：** 
+
+当出现异常情况min &gt;= max时，min取默认值0，max取默认值100。
+
+progress不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。
+
+@Trace
 
 **类型：** number
 
@@ -27,7 +36,7 @@ max?: number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -37,7 +46,11 @@ max?: number
 min?: number
 ```
 
-设置最小值。默认值：0@Trace
+设置最小值。
+
+默认值：0
+
+@Trace
 
 **类型：** number
 
@@ -45,7 +58,7 @@ min?: number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -55,12 +68,16 @@ min?: number
 progress?: number
 ```
 
-设置当前进度值。默认值：与参数min的取值一致@Trace
+设置当前进度值。
+
+默认值：与参数min的取值一致
+
+@Trace
 
 **类型：** number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

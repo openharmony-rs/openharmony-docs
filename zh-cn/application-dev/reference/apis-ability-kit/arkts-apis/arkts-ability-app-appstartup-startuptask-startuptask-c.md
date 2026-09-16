@@ -1,8 +1,16 @@
 # StartupTask
 
-The module provides capabilities related to startup tasks in [AppStartup](../../../application-models/app-startup.md).
+本模块提供[应用启动框架](../../../application-models/app-startup.md)任务的相关能力。开发者可继承StartupTask创建启动任务，并通过init执行初始化逻辑，通过onDependencyCompleted感知依赖任务完成。
+
+> **说明：** 
+> 
+> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 
+> 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 12
+
+**装饰器类型：** @Sendable
 
 **系统能力：** SystemCapability.Ability.AppStartup
 
@@ -36,7 +44,7 @@ init(context: AbilityStageContext): Promise<Object | void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Object \ | void&gt; | Promise used to return the execution result. |
+| Promise&lt;Object &#124; void&gt; | Promise对象，用于返回启动任务执行结果对象或void。 |
 
 **示例**
 
@@ -68,7 +76,12 @@ export default class StartupTask_001 extends StartupTask {
 onDependencyCompleted?(dependency: string, result: Object): void
 ```
 
-当依赖的启动任务执行完成时该方法将会被调用。
+当依赖的启动任务执行完成时回调该方法，开发者可在该方法中处理依赖任务的执行结果。
+
+> **说明：** 
+> 
+> 每当一个依赖任务完成时触发一次。该方法在[init](#init)方法之前被调用，可用于处理单个依赖任务的执行结果。
+> init方法则在所有依赖任务都完成后被调用一次。
 
 **起始版本：** 12
 

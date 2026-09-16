@@ -17,11 +17,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## disabledDateRange
 
 ```TypeScript
@@ -30,7 +25,7 @@ disabledDateRange?: DateRange[]
 
 设置禁用日期区间。不传此参数时不禁用任何日期。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 若日期区间内的开始日期或结束日期未设置或设置为异常值，则该日期区间无效。
 > 2. 若在日期区间内，结束日期早于开始日期，则该日期区间无效。
@@ -42,7 +37,7 @@ disabledDateRange?: DateRange[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +64,7 @@ end?: Date
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,12 +82,12 @@ hintRadius?: number | Resource
 
 > 默认值：16.0，即底板样式为圆形。
 
-> **说明：**
+> **说明：** 
 > 
 > 当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为16.0时，
 > 底板样式为圆形；当hintRadius为负数或大于16.0时，恢复为默认值16.0。
 
-**类型：** number \| Resource
+**类型：** number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **默认值：** 16.0
 
@@ -100,7 +95,7 @@ hintRadius?: number | Resource
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +105,7 @@ hintRadius?: number | Resource
 selected?: Date
 ```
 
-设置选中项的日期。当需要预设选中日期时传入此参数，不需要预设时使用当前系统日期。选中的日期未设置或日期格式不符合规范则为默认值。选中日期与 start、end参数的配合关系见[start和end设置规则](#start和end设置规则)。
+设置选中项的日期。当需要预设选中日期时传入此参数，不需要预设时使用当前系统日期。选中的日期未设置或日期格式不符合规范则为默认值。选中日期与start、end参数的配合关系见[start和end设置规则](#start和end设置规则)。
 
 > 默认值：当前系统日期。
 
@@ -124,7 +119,7 @@ selected?: Date
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,6 +146,6 @@ start?: Date
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

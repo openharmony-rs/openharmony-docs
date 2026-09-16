@@ -13,6 +13,7 @@ Provides the scene detection capability. It inherits from [SceneDetectionQuery](
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## enableSceneFeature

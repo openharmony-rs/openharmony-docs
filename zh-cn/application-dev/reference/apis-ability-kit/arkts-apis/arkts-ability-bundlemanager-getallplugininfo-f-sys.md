@@ -27,13 +27,13 @@ function getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Arra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hostBundleName | string | 是 | 表示安装插件的应用包名。 |
-| userId | number | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;PluginBundleInfo&gt;&gt; | Promise对象，返回Array &lt;PluginBundleInfo&gt;。 |
+| Promise&lt;Array&lt;PluginBundleInfo&gt;&gt; | Promise对象，返回Array&lt;PluginBundleInfo&gt;。 |
 
 **错误码：**
 

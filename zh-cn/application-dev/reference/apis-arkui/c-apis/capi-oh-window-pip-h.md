@@ -77,7 +77,7 @@
 enum PictureInPicture_PipTemplateType
 ```
 
-**描述**
+**描述：**
 
 画中画模板类型。
 
@@ -96,7 +96,7 @@ enum PictureInPicture_PipTemplateType
 enum PictureInPicture_PipControlGroup
 ```
 
-**描述**
+**描述：**
 
 画中画控制面板的控件组类型。
 
@@ -123,7 +123,7 @@ enum PictureInPicture_PipControlGroup
 enum PictureInPicture_PipControlType
 ```
 
-**描述**
+**描述：**
 
 控制面板控件类型枚举。
 
@@ -147,7 +147,7 @@ enum PictureInPicture_PipControlType
 enum PictureInPicture_PipControlStatus
 ```
 
-**描述**
+**描述：**
 
 控制面板控件状态枚举。
 
@@ -166,7 +166,7 @@ enum PictureInPicture_PipControlStatus
 enum PictureInPicture_PipState
 ```
 
-**描述**
+**描述：**
 
 画中画生命周期状态枚举。
 
@@ -190,7 +190,7 @@ enum PictureInPicture_PipState
 typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId, uint64_t surfaceId)
 ```
 
-**描述**
+**描述：**
 
 定义画中画窗口创建完成的回调函数。
 
@@ -210,7 +210,7 @@ typedef void (*WebPipStartPipCallback)(uint32_t controllerId, uint8_t requestId,
 typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_PipState state, int32_t errcode)
 ```
 
-**描述**
+**描述：**
 
 定义画中画窗口的生命周期回调函数。
 
@@ -230,7 +230,7 @@ typedef void (*WebPipLifecycleCallback)(uint32_t controllerId, PictureInPicture_
 typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)
 ```
 
-**描述**
+**描述：**
 
 定义画中画窗口的控件点击事件回调函数。
 
@@ -250,7 +250,7 @@ typedef void (*WebPipControlEventCallback)(uint32_t controllerId, PictureInPictu
 typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint32_t height, double scale)
 ```
 
-**描述**
+**描述：**
 
 定义画中画窗口的尺寸变化回调函数。
 
@@ -271,7 +271,7 @@ typedef void (*WebPipResizeCallback)(uint32_t controllerId, uint32_t width, uint
 int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
-**描述**
+**描述：**
 
 创建画中画参数配置器。
 
@@ -295,7 +295,7 @@ int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfi
 int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConfig)
 ```
 
-**描述**
+**描述：**
 
 销毁画中画参数配置器。
 
@@ -319,7 +319,7 @@ int32_t OH_PictureInPicture_DestroyPipConfig(PictureInPicture_PipConfig* pipConf
 int32_t OH_PictureInPicture_SetPipMainWindowId(PictureInPicture_PipConfig pipConfig, uint32_t mainWindowId)
 ```
 
-**描述**
+**描述：**
 
 Sets the 拉起画中画的主窗口Id。
 
@@ -344,7 +344,7 @@ Sets the 拉起画中画的主窗口Id。
 int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipTemplateType pipTemplateType)
 ```
 
-**描述**
+**描述：**
 
 设置画中画模板类型，默认为视频播放。
 
@@ -369,7 +369,7 @@ int32_t OH_PictureInPicture_SetPipTemplateType(PictureInPicture_PipConfig pipCon
 int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uint32_t width, uint32_t height)
 ```
 
-**描述**
+**描述：**
 
 设置画中画窗口大小，用于计算尺寸比例。
 
@@ -395,7 +395,7 @@ int32_t OH_PictureInPicture_SetPipRect(PictureInPicture_PipConfig pipConfig, uin
 int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipConfig, PictureInPicture_PipControlGroup* controlGroup, uint8_t controlGroupLength)
 ```
 
-**描述**
+**描述：**
 
 设置画中画控件组，需保证控件组与模板类型匹配。
 
@@ -421,7 +421,7 @@ int32_t OH_PictureInPicture_SetPipControlGroup(PictureInPicture_PipConfig pipCon
 int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, void* env)
 ```
 
-**描述**
+**描述：**
 
 设置拉起画中画的运行时环境。
 
@@ -446,7 +446,7 @@ int32_t OH_PictureInPicture_SetPipNapiEnv(PictureInPicture_PipConfig pipConfig, 
 int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint32_t* controllerId)
 ```
 
-**描述**
+**描述：**
 
 创建画中画控制器。
 
@@ -471,7 +471,7 @@ int32_t OH_PictureInPicture_CreatePip(PictureInPicture_PipConfig pipConfig, uint
 int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 删除画中画控制器。
 
@@ -495,7 +495,7 @@ int32_t OH_PictureInPicture_DeletePip(uint32_t controllerId)
 int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 开启画中画。
 
@@ -519,7 +519,7 @@ int32_t OH_PictureInPicture_StartPip(uint32_t controllerId)
 int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 关闭画中画。
 
@@ -543,7 +543,7 @@ int32_t OH_PictureInPicture_StopPip(uint32_t controllerId)
 int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t width, uint32_t height)
 ```
 
-**描述**
+**描述：**
 
 当媒体源切换时，向画中画控制器更新媒体源尺寸信息。
 
@@ -569,7 +569,7 @@ int32_t OH_PictureInPicture_UpdatePipContentSize(uint32_t controllerId, uint32_t
 int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, PictureInPicture_PipControlType controlType, PictureInPicture_PipControlStatus status)
 ```
 
-**描述**
+**描述：**
 
 更新画中画控制面板控件功能状态。
 
@@ -595,7 +595,7 @@ int32_t OH_PictureInPicture_UpdatePipControlStatus(uint32_t controllerId, Pictur
 int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureInPicture_PipControlType controlType, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 设置控制面板控件使能状态。
 
@@ -621,7 +621,7 @@ int32_t OH_PictureInPicture_SetPipControlEnabled(uint32_t controllerId, PictureI
 int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t windowId)
 ```
 
-**描述**
+**描述：**
 
 设置画中画主窗口ID。
 
@@ -646,7 +646,7 @@ int32_t OH_PictureInPicture_SetParentWindowId(uint32_t controllerId, uint32_t wi
 int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int32_t positionX, int32_t positionY, uint32_t width, uint32_t height)
 ```
 
-**描述**
+**描述：**
 
 设置画中画拉起动效开始时的位置和大小，可用于实现一镜到底效果。
 
@@ -674,7 +674,7 @@ int32_t OH_PictureInPicture_SetPipInitialSurfaceRect(uint32_t controllerId, int3
 int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 取消已设置的画中画拉起动效的起始位置和大小。
 
@@ -698,7 +698,7 @@ int32_t OH_PictureInPicture_UnsetPipInitialSurfaceRect(uint32_t controllerId)
 int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)
 ```
 
-**描述**
+**描述：**
 
 开启画中画窗口创建完成的监听。
 
@@ -723,7 +723,7 @@ int32_t OH_PictureInPicture_RegisterStartPipCallback(uint32_t controllerId, WebP
 int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, WebPipStartPipCallback callback)
 ```
 
-**描述**
+**描述：**
 
 关闭画中画窗口创建完成的监听。
 
@@ -748,7 +748,7 @@ int32_t OH_PictureInPicture_UnregisterStartPipCallback(uint32_t controllerId, We
 int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 关闭所有画中画窗口创建完成的监听。
 
@@ -772,7 +772,7 @@ int32_t OH_PictureInPicture_UnregisterAllStartPipCallbacks(uint32_t controllerId
 int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)
 ```
 
-**描述**
+**描述：**
 
 开启画中画生命周期状态的监听。
 
@@ -797,7 +797,7 @@ int32_t OH_PictureInPicture_RegisterLifecycleListener(uint32_t controllerId, Web
 int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, WebPipLifecycleCallback callback)
 ```
 
-**描述**
+**描述：**
 
 关闭画中画生命周期状态的监听。
 
@@ -822,7 +822,7 @@ int32_t OH_PictureInPicture_UnregisterLifecycleListener(uint32_t controllerId, W
 int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 关闭所有画中画生命周期状态的监听。
 
@@ -846,7 +846,7 @@ int32_t OH_PictureInPicture_UnregisterAllLifecycleListeners(uint32_t controllerI
 int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
-**描述**
+**描述：**
 
 开启画中画控制面板控件动作事件的监听。
 
@@ -871,7 +871,7 @@ int32_t OH_PictureInPicture_RegisterControlEventListener(uint32_t controllerId, 
 int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId, WebPipControlEventCallback callback)
 ```
 
-**描述**
+**描述：**
 
 关闭画中画控制面板控件动作事件的监听。
 
@@ -896,7 +896,7 @@ int32_t OH_PictureInPicture_UnregisterControlEventListener(uint32_t controllerId
 int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 关闭所有画中画控制面板控件动作事件的监听。
 
@@ -920,7 +920,7 @@ int32_t OH_PictureInPicture_UnregisterAllControlEventListeners(uint32_t controll
 int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)
 ```
 
-**描述**
+**描述：**
 
 开启画中画窗口尺寸变化事件的监听。
 
@@ -945,7 +945,7 @@ int32_t OH_PictureInPicture_RegisterResizeListener(uint32_t controllerId, WebPip
 int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebPipResizeCallback callback)
 ```
 
-**描述**
+**描述：**
 
 关闭画中画窗口尺寸变化事件的监听。
 
@@ -970,7 +970,7 @@ int32_t OH_PictureInPicture_UnregisterResizeListener(uint32_t controllerId, WebP
 int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 ```
 
-**描述**
+**描述：**
 
 关闭所有画中画窗口尺寸变化事件的监听。
 
@@ -994,7 +994,7 @@ int32_t OH_PictureInPicture_UnregisterAllResizeListeners(uint32_t controllerId)
 int32_t OH_PictureInPicture_SetAutoStartEnabled(uint32_t controllerId, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 设置是否在返回桌面时自动启动画中画，默认不自动拉起。
 

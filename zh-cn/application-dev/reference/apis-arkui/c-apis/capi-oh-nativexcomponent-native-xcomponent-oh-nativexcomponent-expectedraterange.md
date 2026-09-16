@@ -6,7 +6,7 @@ typedef struct OH_NativeXComponent_ExpectedRateRange {...} OH_NativeXComponent_E
 
 ## 概述
 
-定义期望帧率范围。
+定义期望帧率范围，用于设置XComponent渲染时的期望帧率区间，适用于需要对动画或渲染帧率进行精确控制的场景，可帮助在画面流畅度与功耗之间取得平衡。
 
 **起始版本：** 11
 

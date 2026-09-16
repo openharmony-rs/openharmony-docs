@@ -1,15 +1,12 @@
 # EventTarget
 
-[BaseEvent](arkts-arkui-baseevent-i.md)中参数target的类型。触发事件的元素对象的显示区域。
+[BaseEvent](arkts-arkui-baseevent-i.md)中参数target的类型。
+
+触发事件的元素对象的显示区域。
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## area
 
@@ -23,7 +20,7 @@ area: Area
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -43,7 +40,7 @@ id?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本15开始，该接口支持在ArkTS卡片中使用。
 

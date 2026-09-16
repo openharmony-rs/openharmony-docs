@@ -6,18 +6,23 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## count
 
 ```TypeScript
 count?: number
 ```
 
-栅格中元素的数量。默认值：3取值范围：当为上图下文形的栅格样式时，元素数量范围为[0, 6]。当为纯图标形的栅格样式时，元素数量范围[0, 4]。未设置、异常值按照默认值处理。
+栅格中元素的数量。
+
+默认值：3
+
+取值范围：
+
+当为上图下文形的栅格样式时，元素数量范围为[0, 6]。
+
+当为纯图标形的栅格样式时，元素数量范围[0, 4]。
+
+未设置、异常值按照默认值处理。
 
 **类型：** number
 
@@ -27,7 +32,7 @@ count?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,8 +42,17 @@ count?: number
 horizontalSize?: number
 ```
 
-栅格中元素的水平尺寸，表示栅格内每行可显示的元素数量。默认值：3  
-**说明：**当为上图下文形的栅格样式时，水平尺寸范围为[1, 3]，即栅格行数为[1, 2]。当为纯图标形的栅格样式时，水平尺寸范围为[1, 4]，即栅格行数为1。未设置、异常值按照默认值处理。
+栅格中元素的水平尺寸，表示栅格内每行可显示的元素数量。
+
+默认值：3
+
+**说明：** 
+
+当为上图下文形的栅格样式时，水平尺寸范围为[1, 3]，即栅格行数为[1, 2]。
+
+当为纯图标形的栅格样式时，水平尺寸范围为[1, 4]，即栅格行数为1。
+
+未设置、异常值按照默认值处理。
 
 **类型：** number
 
@@ -48,7 +62,7 @@ horizontalSize?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +72,9 @@ horizontalSize?: number
 position?: MenuGridPosition
 ```
 
-栅格在菜单中的位置。默认值：MenuGridPosition.TOP
+栅格在菜单中的位置。
+
+默认值：MenuGridPosition.TOP
 
 **类型：** [MenuGridPosition](arkts-arkui-menugridposition-e.md)
 
@@ -68,6 +84,6 @@ position?: MenuGridPosition
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -71,26 +71,3 @@ runningMultiInstances?: Array<RunningMultiInstanceInfo>
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**示例**
-
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let bundleName = 'ohos.samples.etsclock';
-  // 获取应用多开运行态信息
-  appManager.getRunningMultiAppInfo(bundleName)
-    .then((info: appManager.RunningMultiAppInfo) => {
-      console.info(`getRunningMultiAppInfo success, data: ${JSON.stringify(info)}`);
-    }).catch((err: BusinessError) => {
-      console.error(`getRunningMultiAppInfo failed, code: ${err.code}, message: ${err.message}`);
-    });
-} catch (err) {
-  // 处理入参错误异常
-  let code = (err as BusinessError).code;
-  let msg = (err as BusinessError).message;
-  console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
-}
-```

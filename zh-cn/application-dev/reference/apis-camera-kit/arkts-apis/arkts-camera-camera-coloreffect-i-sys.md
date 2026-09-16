@@ -13,6 +13,7 @@ ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sy
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getColorEffect

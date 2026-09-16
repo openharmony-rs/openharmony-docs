@@ -12,7 +12,7 @@ export function edgeColors(all: number): Edges<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -20,7 +20,7 @@ export function edgeColors(all: number): Edges<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| all | number | 是 | 边框颜色，ARGB格式，示例：0xffff00ff。 取值范围：[0, 0xffffffff] 超出范围时按边界值处理。 |
+| all | number | 是 | 边框颜色，ARGB格式，示例：0xffff00ff。<br>取值范围：[0, 0xffffffff] <br>超出范围时按边界值处理。 |
 
 **返回值：**
 

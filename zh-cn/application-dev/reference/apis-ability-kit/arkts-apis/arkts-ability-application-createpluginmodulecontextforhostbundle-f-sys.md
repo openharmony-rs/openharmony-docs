@@ -38,7 +38,7 @@ export function createPluginModuleContextForHostBundle(context: Context, pluginB
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Context](arkts-ability-context-c.md)&gt; | Promise对象。返回创建的Context，返回的Context中的属性processName和config与入参Context中的属性processName和config的值相 同。 |
+| Promise&lt;[Context](arkts-ability-context-c.md)&gt; | Promise对象。返回创建的Context，返回的Context中的属性processName和config与入参Context中的属性processName和config的值相同。 |
 
 **错误码：**
 

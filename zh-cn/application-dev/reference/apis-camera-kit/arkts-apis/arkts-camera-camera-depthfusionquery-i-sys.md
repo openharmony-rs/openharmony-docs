@@ -11,6 +11,7 @@ A class for querying depth fusion capabilities.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getDepthFusionThreshold
@@ -31,7 +32,7 @@ Obtains the depth fusion threshold.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | Depth fusion threshold. |
+| Array&lt;number&gt; | Depth fusion threshold. |
 
 **错误码：**
 

@@ -118,7 +118,7 @@ Defines the layout-related types for the native module.
 enum ArkUI_Alignment
 ```
 
-**描述**
+**描述：**
 
 定义布局对齐枚举值。
 
@@ -142,7 +142,7 @@ enum ArkUI_Alignment
 enum ArkUI_ItemAlignment
 ```
 
-**描述**
+**描述：**
 
 设置子组件在父容器交叉轴的对齐格式枚举值。
 
@@ -163,7 +163,7 @@ enum ArkUI_ItemAlignment
 enum ArkUI_FlexAlignment
 ```
 
-**描述**
+**描述：**
 
 定义垂直方向对齐方式。
 
@@ -184,7 +184,7 @@ enum ArkUI_FlexAlignment
 enum ArkUI_FlexDirection
 ```
 
-**描述**
+**描述：**
 
 定义Flex容器的主轴方向。
 
@@ -203,7 +203,7 @@ enum ArkUI_FlexDirection
 enum ArkUI_FlexWrap
 ```
 
-**描述**
+**描述：**
 
 定义Flex行列布局模式。
 
@@ -221,7 +221,7 @@ enum ArkUI_FlexWrap
 enum ArkUI_Direction
 ```
 
-**描述**
+**描述：**
 
 设置容器元素内主轴方向上的布局枚举值。
 
@@ -239,7 +239,7 @@ enum ArkUI_Direction
 enum ArkUI_Axis
 ```
 
-**描述**
+**描述：**
 
 定义方向或List组件排列方向枚举值。
 
@@ -256,7 +256,7 @@ enum ArkUI_Axis
 enum ArkUI_VerticalAlignment
 ```
 
-**描述**
+**描述：**
 
 定义垂直对齐方式。
 
@@ -274,7 +274,7 @@ enum ArkUI_VerticalAlignment
 enum ArkUI_HorizontalAlignment
 ```
 
-**描述**
+**描述：**
 
 定义语言方向对齐方式。
 
@@ -292,7 +292,7 @@ enum ArkUI_HorizontalAlignment
 enum ArkUI_SafeAreaEdge
 ```
 
-**描述**
+**描述：**
 
 定义扩展安全区域的方向的枚举值。
 
@@ -311,7 +311,7 @@ enum ArkUI_SafeAreaEdge
 enum ArkUI_LayoutSafeAreaType
 ```
 
-**描述**
+**描述：**
 
 定义扩展安全区域的枚举值。
 
@@ -327,7 +327,7 @@ enum ArkUI_LayoutSafeAreaType
 enum ArkUI_LayoutSafeAreaEdge
 ```
 
-**描述**
+**描述：**
 
 定义扩展安全区域的方向的枚举值。
 
@@ -349,7 +349,7 @@ enum ArkUI_LayoutSafeAreaEdge
 enum ArkUI_LocalizedAlignment
 ```
 
-**描述**
+**描述：**
 
 定义Stack容器中子组件的对齐规则。
 
@@ -373,7 +373,7 @@ enum ArkUI_LocalizedAlignment
 enum ArkUI_LayoutPolicy
 ```
 
-**描述**
+**描述：**
 
 布局策略枚举。
 
@@ -391,7 +391,7 @@ enum ArkUI_LayoutPolicy
 enum ArkUI_PixelRoundCalcPolicy
 ```
 
-**描述**
+**描述：**
 
 定义像素取整计算策略枚举。
 
@@ -412,7 +412,7 @@ enum ArkUI_PixelRoundCalcPolicy
 ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 ```
 
-**描述**
+**描述：**
 
 创建RelativeContainer容器内的辅助线信息。
 
@@ -436,7 +436,7 @@ ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 ```
 
-**描述**
+**描述：**
 
 销毁辅助线信息。
 
@@ -454,7 +454,7 @@ void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置辅助线的Id。
 
@@ -474,7 +474,7 @@ void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char
 void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, ArkUI_Axis value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置辅助线的方向。
 
@@ -494,7 +494,7 @@ void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, Ark
 void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline, float value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置距离容器左侧或者顶部的距离。
 
@@ -514,7 +514,7 @@ void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline,
 void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, float value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置距离容器右侧或者底部的距离。
 
@@ -534,7 +534,7 @@ void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, f
 const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取辅助线的Id。
 
@@ -559,7 +559,7 @@ const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int
 ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取辅助线的方向。
 
@@ -584,7 +584,7 @@ ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guidelin
 float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取辅助线距离容器左侧或者顶部的距离。
 
@@ -609,7 +609,7 @@ float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline
 float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取辅助线距离容器右侧或者底部的距离。
 
@@ -634,7 +634,7 @@ float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, 
 ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 ```
 
-**描述**
+**描述：**
 
 创建RelativeContainer容器内的屏障信息。
 
@@ -658,7 +658,7 @@ ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 ```
 
-**描述**
+**描述：**
 
 销毁屏障信息。
 
@@ -676,7 +676,7 @@ void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置屏障的Id。
 
@@ -696,7 +696,7 @@ void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char*
 void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkUI_BarrierDirection value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置屏障的方向。
 
@@ -716,7 +716,7 @@ void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkU
 void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 设置屏障的依赖的组件。
 
@@ -736,7 +736,7 @@ void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, c
 const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取屏障的Id。
 
@@ -761,7 +761,7 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取屏障的方向。
 
@@ -786,7 +786,7 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierStyle, int32_t index, int32_t referencedIndex)
 ```
 
-**描述**
+**描述：**
 
 获取屏障的依赖的组件。
 
@@ -812,7 +812,7 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取屏障的依赖的组件的个数。
 
@@ -837,7 +837,7 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 ```
 
-**描述**
+**描述：**
 
 创建相对容器中子组件的对齐规则信息。
 
@@ -855,7 +855,7 @@ ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 销毁相对容器中子组件的对齐规则信息。
 
@@ -873,7 +873,7 @@ void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
-**描述**
+**描述：**
 
 设置相对布局的左对齐方式。
 
@@ -893,7 +893,7 @@ void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, co
 void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
-**描述**
+**描述：**
 
 设置相对布局的右对齐方式。
 
@@ -913,7 +913,7 @@ void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, cons
 void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
-**描述**
+**描述：**
 
 设置相对布局的横向居中对齐方式。
 
@@ -933,7 +933,7 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption*
 void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
-**描述**
+**描述：**
 
 设置相对布局的顶部对齐方式。
 
@@ -953,7 +953,7 @@ void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, cons
 void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
-**描述**
+**描述：**
 
 设置相对布局的底部对齐方式。
 
@@ -973,7 +973,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, c
 void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
-**描述**
+**描述：**
 
 设置相对布局的纵向居中对齐方式。
 
@@ -993,7 +993,7 @@ void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* o
 void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* option, float horizontal)
 ```
 
-**描述**
+**描述：**
 
 设置组件在锚点约束下的水平方向上偏移参数。
 
@@ -1012,7 +1012,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* o
 void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* option, float vertical)
 ```
 
-**描述**
+**描述：**
 
 设置组件在锚点约束下的垂直方向上偏移参数。
 
@@ -1031,7 +1031,7 @@ void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* opt
 const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取左对齐参数的Id。
 
@@ -1055,7 +1055,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* o
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取左对齐参数的对齐方式。
 
@@ -1079,7 +1079,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_A
 const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取右对齐参数。
 
@@ -1103,7 +1103,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* opt
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取右对齐参数。
 
@@ -1127,7 +1127,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_Ali
 const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取横向居中对齐方式的参数。
 
@@ -1151,7 +1151,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRu
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取横向居中对齐方式的参数。
 
@@ -1175,7 +1175,7 @@ ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizon
 const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取顶部对齐的参数。
 
@@ -1199,7 +1199,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* opt
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取顶部对齐的参数。
 
@@ -1223,7 +1223,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_Align
 const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取底部对齐的参数。
 
@@ -1247,7 +1247,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* 
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取底部对齐的参数。
 
@@ -1271,7 +1271,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_Al
 const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取纵向居中对齐方式的参数。
 
@@ -1295,7 +1295,7 @@ const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRule
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取纵向居中对齐方式的参数。
 
@@ -1319,7 +1319,7 @@ ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(
 float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取水平方向上的bias值。
 
@@ -1343,7 +1343,7 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* 
 float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取垂直方向上的bias值。
 
@@ -1367,7 +1367,7 @@ float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* op
 ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 ```
 
-**描述**
+**描述：**
 
 创建PositionEdges属性对象。
 
@@ -1385,7 +1385,7 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)
 ```
 
-**描述**
+**描述：**
 
 深拷贝PositionEdges属性对象。
 
@@ -1409,7 +1409,7 @@ ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edge
 void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 ```
 
-**描述**
+**描述：**
 
 销毁PositionEdges属性对象。
 
@@ -1427,7 +1427,7 @@ void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 ```
 
-**描述**
+**描述：**
 
 设置PositionEdges属性对象的上方向值。
 
@@ -1446,7 +1446,7 @@ void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 ```
 
-**描述**
+**描述：**
 
 获取PositionEdges属性对象的上方向值。
 
@@ -1471,7 +1471,7 @@ int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 ```
 
-**描述**
+**描述：**
 
 设置PositionEdges属性对象的左方向值。
 
@@ -1490,7 +1490,7 @@ void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 ```
 
-**描述**
+**描述：**
 
 获取PositionEdges属性对象的左方向值。
 
@@ -1515,7 +1515,7 @@ int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 ```
 
-**描述**
+**描述：**
 
 设置PositionEdges属性对象的下方向值。
 
@@ -1534,7 +1534,7 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)
 ```
 
-**描述**
+**描述：**
 
 获取PositionEdges属性对象的下方向值。
 
@@ -1559,7 +1559,7 @@ int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* valu
 void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 ```
 
-**描述**
+**描述：**
 
 设置PositionEdges属性对象的右方向值。
 
@@ -1578,7 +1578,7 @@ void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)
 ```
 
-**描述**
+**描述：**
 
 获取PositionEdges属性对象的右方向值。
 
@@ -1603,7 +1603,7 @@ int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value
 ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 ```
 
-**描述**
+**描述：**
 
 创建PixelRoundPolicy属性对象。
 
@@ -1621,7 +1621,7 @@ ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 ```
 
-**描述**
+**描述：**
 
 释放PixelRoundPolicy属性对象。
 
@@ -1639,7 +1639,7 @@ void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
-**描述**
+**描述：**
 
 设置PixelRoundPolicy属性对象的上部方向值。
 
@@ -1658,7 +1658,7 @@ void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
-**描述**
+**描述：**
 
 获取PixelRoundPolicy属性对象的上部方向值。
 
@@ -1683,7 +1683,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
-**描述**
+**描述：**
 
 设置PixelRoundPolicy属性对象的前部方向值。
 
@@ -1702,7 +1702,7 @@ void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_Pi
 int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
-**描述**
+**描述：**
 
 获取PixelRoundPolicy属性对象的前部方向值。
 
@@ -1727,7 +1727,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI
 void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
-**描述**
+**描述：**
 
 设置PixelRoundPolicy属性对象的下部方向值。
 
@@ -1746,7 +1746,7 @@ void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_P
 int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
-**描述**
+**描述：**
 
 获取PixelRoundPolicy属性对象的下部方向值。
 
@@ -1771,7 +1771,7 @@ int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkU
 void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
-**描述**
+**描述：**
 
 设置PixelRoundPolicy属性对象的尾部方向值。
 
@@ -1790,7 +1790,7 @@ void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_Pixe
 int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
-**描述**
+**描述：**
 
 获取PixelRoundPolicy属性对象的尾部方向值。
 

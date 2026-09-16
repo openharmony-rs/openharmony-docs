@@ -1,6 +1,6 @@
 # Caller
 
-调用方Caller UIAbility通过[startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startabilitybycall)接口 拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
+调用方Caller UIAbility通过[startAbilityByCall](arkts-ability-uiabilitycontext-c.md#startabilitybycall)接口拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
 
 **起始版本：** 9
 
@@ -31,13 +31,13 @@ Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
-| data | rpc.Parcelable | 是 | 由Caller向Callee发送的消息内容，消息内容是序列化的数据。 |
+| data | [rpc.Parcelable](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-parcelable-i.md) | 是 | 由Caller向Callee发送的消息内容，消息内容是序列化的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -126,13 +126,13 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
-| data | rpc.Parcelable | 是 | 由Caller向Callee发送的消息内容，消息内容是序列化的数据。 |
+| data | [rpc.Parcelable](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-parcelable-i.md) | 是 | 由Caller向Callee发送的消息内容，消息内容是序列化的数据。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;rpc.MessageSequence&gt; | Promise对象，返回Callee UIAbility的应答数据。 |
+| Promise&lt;[rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md)&gt; | Promise对象，返回Callee UIAbility的应答数据。 |
 
 **错误码：**
 
@@ -232,26 +232,6 @@ off(type: 'release', callback: OnReleaseCallback): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**
-
-```TypeScript
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-
-let method = 'call_Function';
-
-export default class MainUIAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info('Callee onCreate is called');
-    try {
-      // 取消注册消息监听
-      this.callee.off(method);
-    } catch (error) {
-      console.error(`Callee.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
-    }
-  }
-}
-```
-
 ## off('release')
 
 ```TypeScript
@@ -277,10 +257,6 @@ off(type: 'release'): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
-**示例**
-
-参见 off
 
 ## on('release')
 
@@ -309,60 +285,6 @@ Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的
 | --- | --- |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
-
-**示例**
-
-```TypeScript
-import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-
-class MyMessageAble implements rpc.Parcelable {
-  name: string
-  str: string
-  num: number = 1
-
-  constructor(name: string, str: string) {
-    this.name = name;
-    this.str = str;
-  }
-
-  marshalling(messageSequence: rpc.MessageSequence) {
-    messageSequence.writeInt(this.num);
-    messageSequence.writeString(this.str);
-    console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
-    return true;
-  }
-
-  unmarshalling(messageSequence: rpc.MessageSequence) {
-    this.num = messageSequence.readInt();
-    this.str = messageSequence.readString();
-    console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
-    return true;
-  }
-}
-
-let method = 'call_Function';
-
-// 定义Callee端的消息处理回调函数
-function funcCallBack(pdata: rpc.MessageSequence) {
-  let msg = new MyMessageAble('test', '');
-  pdata.readParcelable(msg);
-  // 返回处理结果给Caller
-  return new MyMessageAble('test1', 'Callee test');
-}
-
-export default class MainUIAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info('Callee onCreate is called');
-    try {
-      // 注册消息监听，当Caller发送指定方法名时会触发回调
-      this.callee.on(method, funcCallBack);
-    } catch (error) {
-      console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
-    }
-  }
-}
-```
 
 ## onRelease
 

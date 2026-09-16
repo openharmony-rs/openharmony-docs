@@ -12,7 +12,10 @@ import { agentManager } from '@kit.AbilityKit';
 function updateAgentCard(agentCard: AgentCard): Promise<void>
 ```
 
-更新系统中已存在的AgentCard信息，当[SemVer版本](https://semver.org/)不低于当前已存在的AgentCard时执行覆盖更新。当SemVer版本相同时，系统优先保存通过 [registerAgentCard](arkts-ability-agentmanager-registeragentcard-f-sys.md)或[updateAgentCard](#updateagentcard系统接口)接口调用 时传入的AgentCard。系统会根据类型对appInfo进行校验：  
+更新系统中已存在的AgentCard信息，当[SemVer版本](https://semver.org/)不低于当前已存在的AgentCard时执行覆盖更新。当SemVer版本相同时，系统优先保存通过[registerAgentCard](arkts-ability-agentmanager-registeragentcard-f-sys.md)或[updateAgentCard](arkts-ability-agentmanager-updateagentcard-f-sys.md)接口调用时传入的AgentCard。
+
+系统会根据类型对appInfo进行校验：
+
 - APP、LOW_CODE类型：校验bundle和ability是否存在，并验证ability是否为agent类型。  
 - ATOMIC_SERVICE类型：在原子化服务已安装时，校验ability是否存在，并验证ability是否为agent类型。
 
@@ -36,7 +39,7 @@ function updateAgentCard(agentCard: AgentCard): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

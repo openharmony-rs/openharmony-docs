@@ -2,23 +2,18 @@
 
 CommonOptions定义日期时间选择器的通用选项。
 
-> **说明：**
+> **说明：** 
 > 
 > - Date构造函数参数顺序为：年、月索引（0-11）、日、时、分、秒。注意：年份参数需大于99或小于0以避免1900年代映射。
 > 
-> - Date的使用请参考[TimePickerOptions](../arkts-components/arkts-arkui-timepickeroptions-i.md)，需要注意的是，当需要设置1-99的年份日期时，
-> 不可使用new Date(1, 0, 1)写法，因为JavaScript的new Date(year, month, day)构造函数对1-99的年份有特殊处理，会自动加上1900，
-> 即变为1901年，因此此时推荐使用new Date('0001-01-01')写法。
+> - Date的使用请参考[TimePickerOptions](../arkts-components/arkts-arkui-timepickeroptions-i.md)，需要注意的是，当需要设置1-99的年份日期时，不可使用new Date(1, 0, 1)写法，因为JavaScript的new Date(year, month, day)构造函数对1-99的年份有特殊处理，会自动加上1900，即变为1901年，因此此时推荐使用new Date('0001-01-01')写法。
 > 
-> - DatePickerComponent的文本字号根据显示的总列数变化，当列数大于等于6列时，字号为14vp，其他情况下为16vp，当组件宽度过窄时，可能出现文本
-> 显示截断的情况。
+> - DatePickerComponent的文本字号根据显示的总列数变化，当列数大于等于6列时，字号为14vp，其他情况下为16vp，当组件宽度过窄时，可能出现文本显示截断的情况。
 > 
 > - 参数缺省或者设置为undefined时，均保持默认值。
 > 
-> - 在[DateOptions](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md)中设置start、end、selected时仅日期部分（年月日）设置生效，
-> 在[TimeOptions](arkts-arkui-arkui-advanced-datepickercomponent-timeoptions-c.md)中设置start、end、selected时仅时间部分（时分秒）设置生效。系统会根据配置的displayMode和对应的
-> Options类型，自动过滤Date对象的相应部分并应用约束。
-> **说明：**
+> - 在[DateOptions](arkts-arkui-arkui-advanced-datepickercomponent-dateoptions-c.md)中设置start、end、selected时仅日期部分（年月日）设置生效，在[TimeOptions](arkts-arkui-arkui-advanced-datepickercomponent-timeoptions-c.md)中设置start、end、selected时仅时间部分（时分秒）设置生效。系统会根据配置的displayMode和对应的Options类型，自动过滤Date对象的相应部分并应用约束。
+> **说明：** 
 > 
 > - onChange在用户选择日期或时间时触发，用于响应用户的选择操作。
 > 
@@ -67,15 +62,17 @@ import { DatePickerComponent, DatePickerComponentOptions, DisplayMode, DateMode,
 enableHapticFeedback?: boolean
 ```
 
-设置是否启用触控反馈。默认值：true  
+设置是否启用触控反馈。
+
+默认值：true
+
 - true：启用触控反馈，适用于需要增强用户交互体验的场景，如游戏、乐器类应用等。  
 - false：不启用触控反馈，适用于不需要触觉反馈或需要节省设备资源的场景。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 设置为true后，其生效情况取决于系统的硬件是否支持。
-> 2. 启用触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置
-> requestPermissions字段以开启振动权限，配置如下：
+> 2. 启用触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：
 > 
 > "requestPermissions": [{"name": "ohos.permission.VIBRATE"}]
 
@@ -87,7 +84,7 @@ enableHapticFeedback?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +100,7 @@ end?: Date
 
 > 取值范围：[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')]
 
-> **说明：**
+> **说明：** 
 > 
 > 设置了end且为有效值的场景下，loop不生效。
 
@@ -113,7 +110,7 @@ end?: Date
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,7 +120,8 @@ end?: Date
 loop?: boolean
 ```
 
-设置是否启用循环模式。  
+设置是否启用循环模式。
+
 - true：启用循环模式，支持滚动到边界时继续循环选择。  
 - false：不启用循环模式，滚动到边界时停止。
 
@@ -133,9 +131,9 @@ loop?: boolean
 > 
 > 循环模式适用于需要连续滚动选择的场景，如快速浏览年月；非循环模式适用于需要明确边界范围的场景。
 
-> **说明：**
+> **说明：** 
 > 
-> 设置了[start](#start)或[end](#end)且为有效值的场景下，本参数不生效。
+> 设置了[start](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)或[end](arkts-arkui-arkui-advanced-datepickercomponent-commonoptions-c.md)且为有效值的场景下，本参数不生效。
 
 **类型：** boolean
 
@@ -145,7 +143,7 @@ loop?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +161,7 @@ onChange?: Callback<DatePickerComponentResult>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,7 +179,7 @@ onScrollStop?: Callback<DatePickerComponentResult>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +193,7 @@ selected?: Date
 
 > 默认值为当前系统日期或时间。
 
-> **说明：**
+> **说明：** 
 > 
 > 在DateMode.MONTH_AND_DAY模式下，仅month和day字段参与选择；年份取selected指定值，未指定时取当前系统年份，滚动过程中保持不变。
 
@@ -207,7 +205,7 @@ selected?: Date
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,7 +221,7 @@ start?: Date
 
 > 取值范围：[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')]
 
-> **说明：**
+> **说明：** 
 > 
 > 设置了start且为有效值的场景下，loop不生效。
 
@@ -233,6 +231,6 @@ start?: Date
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

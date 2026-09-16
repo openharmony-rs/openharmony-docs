@@ -2,14 +2,13 @@
 
 ChipItemStyle定义了Chip的通用属性。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. Chip的大小有两种类型，一种是ChipSize，提供NORMAL和SMALL两种尺寸供选择；另一种是SizeOptions。
 > 
 > 2. backgroundColor、selectedBackgroundColor传入undefined时，显示默认背景颜色，传入非法值时，背景色透明。
 > 
-> 3. 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，fontColor使用系统预定义的可反色颜色资源（如`\$r('sys.color.font_primary')`），颜色
-> 自动适配到材质背景色的反色。
+> 3. 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，fontColor使用系统预定义的可反色颜色资源（如`&#36;r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。
 
 **起始版本：** 12
 
@@ -27,8 +26,13 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 backgroundColor?: ResourceColor
 ```
 
-Chip背景颜色。默认值：\$r('sys.color.ohos_id_color_button_normal')  
-**说明：**从API版本26.0.0开始，当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突；当 backgroundSystemMaterial为undefined时，backgroundColor属性生效。为undefined时，backgroundColor走默认值。
+Chip背景颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_button_normal')
+
+**说明：** 从API版本26.0.0开始，当设置backgroundSystemMaterial时，应将backgroundColor设为Color.Transparent，否则会与系统材质冲突；当backgroundSystemMaterial为undefined时，backgroundColor属性生效。
+
+为undefined时，backgroundColor走默认值。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -36,7 +40,7 @@ Chip背景颜色。默认值：\$r('sys.color.ohos_id_color_button_normal')
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,8 +50,13 @@ Chip背景颜色。默认值：\$r('sys.color.ohos_id_color_button_normal')
 fontColor?: ResourceColor
 ```
 
-Chip文字颜色。默认值：\$r('sys.color.ohos_id_color_text_primary')  
-**说明：**从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，fontColor使用系统预定义的可反色颜色资源，文字颜色自动适配到材质背景色的反色。为undefined时，fontColor走默认值。
+Chip文字颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_text_primary')
+
+**说明：** 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的系统材质时，fontColor使用系统预定义的可反色颜色资源，文字颜色自动适配到材质背景色的反色。
+
+为undefined时，fontColor走默认值。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -55,7 +64,7 @@ Chip文字颜色。默认值：\$r('sys.color.ohos_id_color_text_primary')
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,8 +74,13 @@ Chip文字颜色。默认值：\$r('sys.color.ohos_id_color_text_primary')
 selectedBackgroundColor?: ResourceColor
 ```
 
-Chip激活时的背景颜色。默认值：\$r('sys.color.ohos_id_color_emphasize')  
-**说明：**从API版本26.0.0开始，当设置selectedBackgroundSystemMaterial时，应将selectedBackgroundColor设为Color.Transparent，否则会与系统材质冲突； 当selectedBackgroundSystemMaterial为undefined时，selectedBackgroundColor属性生效。为undefined时，selectedBackgroundColor走默认值。
+Chip激活时的背景颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_emphasize')
+
+**说明：** 从API版本26.0.0开始，当设置selectedBackgroundSystemMaterial时，应将selectedBackgroundColor设为Color.Transparent，否则会与系统材质冲突；当selectedBackgroundSystemMaterial为undefined时，selectedBackgroundColor属性生效。
+
+为undefined时，selectedBackgroundColor走默认值。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -74,7 +88,7 @@ Chip激活时的背景颜色。默认值：\$r('sys.color.ohos_id_color_emphasiz
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,8 +98,13 @@ Chip激活时的背景颜色。默认值：\$r('sys.color.ohos_id_color_emphasiz
 selectedFontColor?: ResourceColor
 ```
 
-Chip激活时的文字颜色。默认值：\$r('sys.color.ohos_id_color_text_primary_contrary')  
-**说明：**从API版本26.0.0开始，selectedBackgroundSystemMaterial设置自动反色的系统材质时，selectedFontColor使用系统预定义的可反色颜色资源（如 `\$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。为undefined时，selectedFontColor走默认值。
+Chip激活时的文字颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_text_primary_contrary')
+
+**说明：** 从API版本26.0.0开始，selectedBackgroundSystemMaterial设置自动反色的系统材质时，selectedFontColor使用系统预定义的可反色颜色资源（如`&#36;r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。
+
+为undefined时，selectedFontColor走默认值。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -93,7 +112,7 @@ Chip激活时的文字颜色。默认值：\$r('sys.color.ohos_id_color_text_pri
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,14 +122,18 @@ Chip激活时的文字颜色。默认值：\$r('sys.color.ohos_id_color_text_pri
 size?: ChipSize | SizeOptions
 ```
 
-Chip尺寸，使用时需要从Chip组件引入ChipSize类型。默认值：ChipSize.NORMAL或{ height: 0, width: 0 }为undefined时，使用默认值。
+Chip尺寸，使用时需要从Chip组件引入ChipSize类型。
 
-**类型：** [ChipSize](arkts-arkui-arkui-advanced-chip-chipsize-e.md) \| [SizeOptions](arkts-arkui-sizeoptions-i.md)
+默认值：ChipSize.NORMAL或{ height: 0, width: 0 }
+
+为undefined时，使用默认值。
+
+**类型：** [ChipSize](arkts-arkui-arkui-advanced-chip-chipsize-e.md) &#124; [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

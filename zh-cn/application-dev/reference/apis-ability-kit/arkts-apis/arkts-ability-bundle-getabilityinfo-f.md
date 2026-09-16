@@ -12,7 +12,9 @@ import { bundle } from '@kit.AbilityKit';
 function getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback<AbilityInfo>): void
 ```
 
-通过Bundle名称和组件名获取Ability组件信息，使用callback异步回调。获取调用方自己的信息时不需要权限。
+通过Bundle名称和组件名获取Ability组件信息，使用callback异步回调。
+
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -31,6 +33,21 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-abilityinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 **示例**
+
+```TypeScript
+import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleName: string = "com.example.myapplication";
+let abilityName: string = "EntryAbility";
+
+bundle.getAbilityInfo(bundleName, abilityName)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
 
 ```TypeScript
 import bundle from '@ohos.bundle';
@@ -54,7 +71,9 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 function getAbilityInfo(bundleName: string, abilityName: string): Promise<AbilityInfo>
 ```
 
-通过Bundle名称和组件名获取Ability组件信息，使用Promise形式异步回调。获取调用方自己的信息时不需要权限。
+通过Bundle名称和组件名获取Ability组件信息，使用Promise形式异步回调。
+
+获取调用方自己的信息时不需要权限。
 
 **起始版本：** 7
 
@@ -79,17 +98,4 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 
 **示例**
 
-```TypeScript
-import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleName: string = "com.example.myapplication";
-let abilityName: string = "EntryAbility";
-
-bundle.getAbilityInfo(bundleName, abilityName)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
+参见 [getAbilityInfo](#getabilityinfo)

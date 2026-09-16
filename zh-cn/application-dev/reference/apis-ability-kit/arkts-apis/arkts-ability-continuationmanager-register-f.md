@@ -46,6 +46,38 @@ continuationManager.register((err, data) => {
 });
 ```
 
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+
+let token: number = -1;
+continuationManager.register(
+  {
+    deviceType: ["00E"]
+  },
+  (err, data) => {
+    if (err.code != 0) {
+      console.error('register failed, cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('register finished, ' + JSON.stringify(data));
+    token = data;
+});
+```
+
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let token: number = -1;
+continuationManager.register(
+  { deviceType: ["00E"] }).then((data) => {
+    console.info('register finished, ' + JSON.stringify(data));
+    token = data;
+  }).catch((err: BusinessError) => {
+    console.error('register failed, cause: ' + JSON.stringify(err));
+});
+```
+
 
 ## register
 
@@ -69,28 +101,12 @@ function register(options: ContinuationExtraParams, callback: AsyncCallback<numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ContinuationExtraParams | 是 | 过滤可选择设备列表的额外参数。 |
+| options | [ContinuationExtraParams](arkts-ability-continuationmanager-continuationextraparams-t.md) | 是 | 过滤可选择设备列表的额外参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | AsyncCallback形式返回流转管理服务连接后生成的token。 |
 
 **示例**
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-
-let token: number = -1;
-continuationManager.register(
-  {
-    deviceType: ["00E"]
-  },
-  (err, data) => {
-    if (err.code != 0) {
-      console.error('register failed, cause: ' + JSON.stringify(err));
-      return;
-    }
-    console.info('register finished, ' + JSON.stringify(data));
-    token = data;
-});
-```
+参见 [register](#register)
 
 
 ## register
@@ -115,26 +131,14 @@ function register(options?: ContinuationExtraParams): Promise<number>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ContinuationExtraParams | 否 | 过滤可选择设备列表的额外参数，该参数可缺省。 |
+| options | [ContinuationExtraParams](arkts-ability-continuationmanager-continuationextraparams-t.md) | 否 | 过滤可选择设备列表的额外参数，该参数可缺省。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise形式返回流转管理服务连接后生成的token。 |
+| Promise&lt;number&gt; | Promise形式返回流转管理服务连接后生成的token。 |
 
 **示例**
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let token: number = -1;
-continuationManager.register(
-  { deviceType: ["00E"] }).then((data) => {
-    console.info('register finished, ' + JSON.stringify(data));
-    token = data;
-  }).catch((err: BusinessError) => {
-    console.error('register failed, cause: ' + JSON.stringify(err));
-});
-```
+参见 [register](#register)

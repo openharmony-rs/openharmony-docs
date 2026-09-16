@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## WINDOW_AVOID_AREA
 
 ```TypeScript
@@ -19,13 +14,13 @@ static readonly WINDOW_AVOID_AREA: ReadonlySystemEnvKey<window.UIEnvWindowAvoidA
 
 系统环境变量避让区域键，用于获取窗口的避让区域，单位为vp。
 
-**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.UIEnvWindowAvoidAreaInfoVP&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;[window.UIEnvWindowAvoidAreaInfoVP](../arkts-apis/arkts-arkui-window-uienvwindowavoidareainfovp-i.md)&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,13 +32,13 @@ static readonly WINDOW_AVOID_AREA_PX: ReadonlySystemEnvKey<window.UIEnvWindowAvo
 
 系统环境变量避让区域键，用于获取窗口的避让区域，单位px。
 
-**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.UIEnvWindowAvoidAreaInfoPX&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;[window.UIEnvWindowAvoidAreaInfoPX](../arkts-apis/arkts-arkui-window-uienvwindowavoidareainfopx-i.md)&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +56,7 @@ static readonly WINDOW_DISPLAY_ID: ReadonlySystemEnvKey<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,13 +100,13 @@ static readonly WINDOW_SIZE: ReadonlySystemEnvKey<window.SizeInVP>
 
 系统环境变量窗口尺寸键，用于获取窗口的大小，单位为vp。
 
-**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;window.SizeInVP&gt;
+**类型：** [ReadonlySystemEnvKey](arkts-arkui-readonlysystemenvkey-c.md)&lt;[window.SizeInVP](../arkts-apis/arkts-arkui-window-sizeinvp-i.md)&gt;
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,7 +124,7 @@ static readonly WINDOW_SIZE_PX: ReadonlySystemEnvKey<window.Size>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,6 +142,6 @@ static readonly WINDOW_SYSTEM_DENSITY: ReadonlySystemEnvKey<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

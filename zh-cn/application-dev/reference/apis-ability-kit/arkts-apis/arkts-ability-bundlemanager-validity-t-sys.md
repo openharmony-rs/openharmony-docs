@@ -12,4 +12,4 @@ export type Validity = _AppProvisionInfo.Validity
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AppProvisionInfo.Validity
+**类型：** [_AppProvisionInfo.Validity](arkts-ability-appprovisioninfo-validity-i-sys.md)

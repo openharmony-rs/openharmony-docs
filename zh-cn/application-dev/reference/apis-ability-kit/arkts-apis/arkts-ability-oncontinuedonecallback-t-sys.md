@@ -4,6 +4,8 @@
 type OnContinueDoneCallback = (result: number) => void
 ```
 
+@typedef { function } OnContinueDoneCallback
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。

@@ -1,17 +1,14 @@
 # DatePickerDialogOptions
 
-日期选择器弹窗选项。继承自[DatePickerOptions](arkts-arkui-datepickeroptions-i.md)。
+日期选择器弹窗选项。
+
+继承自[DatePickerOptions](arkts-arkui-datepickeroptions-i.md)。
 
 **继承/实现关系：** DatePickerDialogOptions extends [DatePickerOptions](arkts-arkui-datepickeroptions-i.md)
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## distortionMode
 

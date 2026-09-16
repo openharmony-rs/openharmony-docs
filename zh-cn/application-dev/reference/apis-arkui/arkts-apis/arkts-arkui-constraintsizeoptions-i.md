@@ -1,15 +1,15 @@
 # ConstraintSizeOptions
 
-Defines the constrain size options.@interface ConstraintSizeOptions
+约束尺寸类型，用于描述组件布局时对尺寸大小的范围限制。
 
-**起始版本：** 11
+> **说明：** 
+> 
+> 在Row、Column、RelativeContainer组件中，width、height设置auto表
+> 示自适应子组件。在TextInput组件中，width设置auto表示自适应文本宽度。
+
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## maxHeight
 
@@ -17,15 +17,15 @@ Defines the constrain size options.@interface ConstraintSizeOptions
 maxHeight?: Length
 ```
 
-Defines the max height.
+元素最大高度。
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,15 +35,15 @@ Defines the max height.
 maxWidth?: Length
 ```
 
-Defines the max width.
+元素最大宽度。
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,15 +53,15 @@ Defines the max width.
 minHeight?: Length
 ```
 
-Defines the min height.
+元素最小高度。
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,14 +71,14 @@ Defines the min height.
 minWidth?: Length
 ```
 
-Defines the min width.
+元素最小宽度。
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -1,8 +1,8 @@
 # UIServiceExtensionAbility（系统接口）
 
-UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md). 主要用于向三方应用提供带界面的服务。
+UIServiceExtensionAbility提供浮窗组件相关扩展能力，继承自[ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md).主要用于向三方应用提供带界面的服务。
 
-**继承/实现关系：** UIServiceExtensionAbility extends ExtensionAbility
+**继承/实现关系：** UIServiceExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)
 
 **起始版本：** 14
 
@@ -22,7 +22,7 @@ import { UIServiceExtensionAbility } from '@kit.AbilityKit';
 onConnect(want: Want, proxy: UIServiceHostProxy): void
 ```
 
-UIServiceExtension生命周期回调。如果是 [connectUIServiceExtensionAbility()](arkts-ability-uiextensioncontext-c.md#connectuiserviceextensionability) 拉起的服务，会在[onCreate()](#oncreate)之后回调。接收一个 [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。
+UIServiceExtension生命周期回调。如果是[connectUIServiceExtensionAbility()](arkts-ability-uiextensioncontext-c.md#connectuiserviceextensionability)拉起的服务，会在[onCreate()](#oncreate)之后回调。接收一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。
 
 **起始版本：** 14
 
@@ -36,8 +36,8 @@ UIServiceExtension生命周期回调。如果是 [connectUIServiceExtensionAbili
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
-| proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) 对象，用于客户端和服务端进行通信。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
+| proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。 |
 
 **示例**
 
@@ -57,7 +57,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 onCreate(want: Want): void
 ```
 
-[UIServiceExtensionContext](../../apis-default/arkts-apis/arkts-uiserviceextensioncontext-c-sys.md)生命周期创建接口，执行初始化 业务逻辑操作。
+[UIServiceExtensionContext](arkts-ability-uiserviceextensioncontext-c-sys.md)生命周期创建接口，执行初始化业务逻辑操作。
 
 **起始版本：** 14
 
@@ -71,7 +71,7 @@ onCreate(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 
 **示例**
 
@@ -107,7 +107,7 @@ onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往客户端发送数据的Proxy。 |
-| data | Record &lt;string, Object&gt; | 是 | 表示接收到的数据。 |
+| data | Record&lt;string, Object&gt; | 是 | 表示接收到的数据。 |
 
 **示例**
 
@@ -169,7 +169,7 @@ onDisconnect(want: Want, proxy: UIServiceHostProxy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往发起方发送数据的Proxy。 |
 
 **示例**
@@ -190,7 +190,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 onRequest(want: Want, startId: number): void
 ```
 
-请求拉起UIServiceExtension服务处理。如果是 [startAbility](arkts-ability-uiabilitycontext-c.md#startability) 或者 [startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability) 拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
+请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
 
 **起始版本：** 14
 
@@ -204,7 +204,7 @@ onRequest(want: Want, startId: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前 [UIServiceExtensionAbility](#uiserviceextensionability系统接口)相关的 [Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | startId | number | 是 | 返回浮窗拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
 
 **示例**
@@ -239,7 +239,7 @@ UIServiceExtension创建后回调。UIServiceExtension服务创建窗口成功�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| window | window.Window | 是 | 表示已创建的Window。 |
+| window | [window.Window](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md) | 是 | 表示已创建的Window。 |
 
 **示例**
 
@@ -274,7 +274,7 @@ UIServiceExtension窗体创建前的回调。前台应用把要创建windows的�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| config | window.ExtensionWindowConfig | 是 | UIServiceExtension窗体配置信息。 |
+| config | [window.ExtensionWindowConfig](../../apis-arkui/arkts-apis/arkts-arkui-window-extensionwindowconfig-i-sys.md) | 是 | UIServiceExtension窗体配置信息。 |
 
 **示例**
 
@@ -297,7 +297,7 @@ context: UIServiceExtensionContext
 
 UIServiceExtension的上下文环境，继承自[ExtensionContext](arkts-ability-app-ability-extensionability-extensionability-c.md)。
 
-**类型：** [UIServiceExtensionContext](../../apis-default/arkts-apis/arkts-uiserviceextensioncontext-c-sys.md)
+**类型：** [UIServiceExtensionContext](arkts-ability-uiserviceextensioncontext-c-sys.md)
 
 **起始版本：** 14
 

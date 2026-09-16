@@ -18,7 +18,9 @@ import { font } from '@kit.ArkUI';
 to: number
 ```
 
-字体在应用中显示的weight值。可返回的值有100、400、700、900。
+字体在应用中显示的weight值。
+
+可返回的值有100、400、700、900。
 
 **类型：** number
 
@@ -26,7 +28,7 @@ to: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,9 @@ to: number
 weight: number
 ```
 
-字体原本的weight值。可返回的值有50、80、100、200。
+字体原本的weight值。
+
+可返回的值有50、80、100、200。
 
 **类型：** number
 
@@ -44,6 +48,6 @@ weight: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

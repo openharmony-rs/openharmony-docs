@@ -6,18 +6,19 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## amplitude
 
 ```TypeScript
 amplitude?: number
 ```
 
-The amplitude of the ripple field. The greater the amplitude, the stronger the force of the ripple field. Range of values:[0, +∞)
+描述粒子波动场波的幅值。幅值越大，波动场的力越大，粒子在波动场作用下产生的位移变化越明显，波纹扩散效果越强烈。
+
+取值范围：[0, +∞)
+
+默认值：0
+
+设置为负值时取默认值。
 
 **类型：** number
 
@@ -27,7 +28,7 @@ The amplitude of the ripple field. The greater the amplitude, the stronger the f
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +38,13 @@ The amplitude of the ripple field. The greater the amplitude, the stronger the f
 attenuation?: number
 ```
 
-The attenuation coefficient of the ripple field. The larger the attenuation coefficient, the faster the wave attenuates over time. Range of values:[0,1]
+描述粒子波动场波的衰减系数。衰减系数越大，则随时间的变化，波的衰减越快，粒子受到的波动场力随时间迅速减弱，波纹扩散效果逐渐消失。
+
+取值范围：[0, 1]
+
+默认值：0.0
+
+设置的数值不在范围内时取默认值。
 
 **类型：** number
 
@@ -47,7 +54,7 @@ The attenuation coefficient of the ripple field. The larger the attenuation coef
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,9 +64,11 @@ The attenuation coefficient of the ripple field. The larger the attenuation coef
 center?: PositionT<number>
 ```
 
-The central point where the ripple field generates force. The top-left corner of the component is the origin of coordinates. The coordinate unit is vp.
+粒子波动场产生力的中心位置。组件的左上角为坐标原点。坐标单位为vp。
 
-**类型：** [PositionT](arkts-arkui-positiont-comp-t.md)&lt;number&gt;
+默认值：{x:0, y:0}
+
+**类型：** [PositionT](arkts-arkui-positiont-t.md)&lt;number&gt;
 
 **默认值：** {x:0,y:0}
 
@@ -67,7 +76,7 @@ The central point where the ripple field generates force. The top-left corner of
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,7 +86,9 @@ The central point where the ripple field generates force. The top-left corner of
 region?: FieldRegion
 ```
 
-The region influenced by the ripple field.
+粒子波动场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。
+
+默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}
 
 **类型：** [FieldRegion](arkts-arkui-fieldregion-i.md)
 
@@ -87,7 +98,7 @@ The region influenced by the ripple field.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,7 +108,13 @@ The region influenced by the ripple field.
 wavelength?: number
 ```
 
-Wavelength, which is the distance over which a wave cycle changes. The larger the wavelength, the slower the wave changes with distance, and the less pronounced the wave fluctiations. Range of values:[0, +∞)
+描述粒子波动场的波长，即一个波周期的变化距离。波长越大，则随距离的变化，波的变化越慢，波动越不明显，粒子受波动影响的周期变长。
+
+取值范围：[0, +∞)
+
+默认值：0
+
+设置为负值时取默认值。
 
 **类型：** number
 
@@ -107,7 +124,7 @@ Wavelength, which is the distance over which a wave cycle changes. The larger th
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +134,13 @@ Wavelength, which is the distance over which a wave cycle changes. The larger th
 waveSpeed?: number
 ```
 
-Wave speed. The greater the wave speed, the faster the wave changes over time, and the more pronounced the wave motion. Range of values:[0, +∞)
+描述粒子波动场的波速。波速越大，则随时间的变化，波的变化越快，波动越明显，粒子受波动影响的响应越迅速。单位：vp/s。
+
+取值范围：[0, +∞)
+
+默认值：0
+
+设置为负值时取默认值。
 
 **类型：** number
 
@@ -127,6 +150,6 @@ Wave speed. The greater the wave speed, the faster the wave changes over time, a
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

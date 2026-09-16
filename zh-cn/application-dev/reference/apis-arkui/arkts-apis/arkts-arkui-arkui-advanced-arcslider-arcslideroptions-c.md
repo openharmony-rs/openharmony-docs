@@ -4,6 +4,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ObservedV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -22,7 +24,7 @@ ArcSliderOptions的构造函数。
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -38,11 +40,17 @@ ArcSliderOptions的构造函数。
 onChange?: ArcSliderChangeHandler
 ```
 
-弧形Slider的进度值发生变化时触发回调。默认值：不传入的情况，无回调。@Trace
+弧形Slider的进度值发生变化时触发回调。
+
+默认值：不传入的情况，无回调。
+
+@Trace
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -52,11 +60,17 @@ onChange?: ArcSliderChangeHandler
 onEnlarge?: ArcSliderEnlargeHandler
 ```
 
-弧形Slider放大或缩小时触发回调。默认值：不传入的情况，无回调。@Trace
+弧形Slider放大或缩小时触发回调。
+
+默认值：不传入的情况，无回调。
+
+@Trace
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -66,11 +80,17 @@ onEnlarge?: ArcSliderEnlargeHandler
 onTouch?: ArcSliderTouchHandler
 ```
 
-弧形Slider被触摸时触发回调。默认值：不传入的情况，无回调。@Trace
+弧形Slider被触摸时触发回调。
+
+默认值：不传入的情况，无回调。
+
+@Trace
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -80,13 +100,19 @@ onTouch?: ArcSliderTouchHandler
 digitalCrownSensitivity?: CrownSensitivity
 ```
 
-设置旋转表冠的灵敏度。默认值：CrownSensitivity.MEDIUM@Trace
+设置旋转表冠的灵敏度。
+
+默认值：CrownSensitivity.MEDIUM
+
+@Trace
 
 **类型：** [CrownSensitivity](arkts-arkui-crownsensitivity-e.md)
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -96,13 +122,19 @@ digitalCrownSensitivity?: CrownSensitivity
 layoutOptions?: ArcSliderLayoutOptions
 ```
 
-配置弧形Slider的样式信息。默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。@Trace
+配置弧形Slider的样式信息。
+
+默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
+
+@Trace
 
 **类型：** [ArcSliderLayoutOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderlayoutoptions-c.md)
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -112,13 +144,19 @@ layoutOptions?: ArcSliderLayoutOptions
 styleOptions?: ArcSliderStyleOptions
 ```
 
-配置弧形Slider的样式信息。默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。@Trace
+配置弧形Slider的样式信息。
+
+默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
+
+@Trace
 
 **类型：** [ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -128,12 +166,18 @@ styleOptions?: ArcSliderStyleOptions
 valueOptions?: ArcSliderValueOptions
 ```
 
-配置弧形Slider的样式信息。默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。@Trace
+配置弧形Slider的样式信息。
+
+默认值：[ArcSliderStyleOptions](arkts-arkui-arkui-advanced-arcslider-arcsliderstyleoptions-c.md)的各项子属性均取其默认值。
+
+@Trace
 
 **类型：** [ArcSliderValueOptions](arkts-arkui-arkui-advanced-arcslider-arcslidervalueoptions-c.md)
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

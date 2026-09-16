@@ -22,7 +22,7 @@ windowType: WindowType
 
 窗口类型。无默认类型，不配置会导致窗口创建失败。不支持TYPE_DIALOG类型。
 
-**类型：** WindowType
+**类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
 
 **起始版本：** 14
 

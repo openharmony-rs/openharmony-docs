@@ -12,7 +12,7 @@ import { abilityManager } from '@kit.AbilityKit';
 function preloadUIExtensionAbility(want: Want): Promise<number>
 ```
 
-预加载指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)并返回预加载UIExtensionAbility实例 的ID。使用Promise异步回调。
+预加载指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
 
 **起始版本：** 23
 
@@ -34,7 +34,7 @@ function preloadUIExtensionAbility(want: Want): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise对象，返回预加载的 [UIExtensionAbility]{ |
+| Promise&lt;number&gt; | Promise对象，返回预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)的ID，用于后续清除或管理操作。 |
 
 **错误码：**
 

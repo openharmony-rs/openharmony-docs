@@ -1,6 +1,6 @@
 # CompletionHandlerForAtomicService
 
-CompletionHandlerForAtomicService提供了 [onAtomicServiceRequestSuccess](#onatomicservicerequestsuccess) 和 [onAtomicServiceRequestFailure](#onatomicservicerequestfailure) 两个回调函数，分别在打开原子化服务成功和失败时回调。
+CompletionHandlerForAtomicService提供了[onAtomicServiceRequestSuccess](#onatomicservicerequestsuccess)和[onAtomicServiceRequestFailure](#onatomicservicerequestfailure)两个回调函数，分别在打开原子化服务成功和失败时回调。
 
 **起始版本：** 20
 
@@ -24,7 +24,7 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,7 +38,9 @@ onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMe
 
 **示例**
 
+```TypeScript
 参见CompletionHandlerForAtomicService示例。
+```
 
 ## onAtomicServiceRequestSuccess
 
@@ -52,7 +54,7 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,4 +66,6 @@ onAtomicServiceRequestSuccess(appId: string): void
 
 **示例**
 
+```TypeScript
 参见CompletionHandlerForAtomicService示例。
+```

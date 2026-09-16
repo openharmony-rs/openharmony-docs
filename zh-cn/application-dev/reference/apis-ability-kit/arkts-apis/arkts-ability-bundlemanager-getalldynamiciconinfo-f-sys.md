@@ -12,7 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAllDynamicIconInfo(userId?: number): Promise<Array<DynamicIconInfo>>
 ```
 
-查询指定用户下所有应用和所有分身的动态图标信息。使用Promise异步回调。查询当前用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。查询其他用户或者所有用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+查询指定用户下所有应用和所有分身的动态图标信息。使用Promise异步回调。
+
+查询当前用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+
+查询其他用户或者所有用户下所有应用和所有分身的动态图标信息时需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 **起始版本：** 20
 
@@ -32,7 +36,7 @@ function getAllDynamicIconInfo(userId?: number): Promise<Array<DynamicIconInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;DynamicIconInfo&gt;&gt; | Promise对象，返回查询到的动态图标信息。 |
+| Promise&lt;Array&lt;[DynamicIconInfo](arkts-ability-bundlemanager-dynamiciconinfo-t-sys.md)&gt;&gt; | Promise对象，返回查询到的动态图标信息。 |
 
 **错误码：**
 

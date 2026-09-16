@@ -59,7 +59,7 @@
 AbilityRuntime_StartOptions* OH_AbilityRuntime_CreateStartOptions(void)
 ```
 
-**描述**
+**描述：**
 
 创建{@link AbilityRuntime_StartOptions}对象。
 
@@ -77,7 +77,7 @@ AbilityRuntime_StartOptions* OH_AbilityRuntime_CreateStartOptions(void)
 AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyStartOptions(AbilityRuntime_StartOptions **startOptions)
 ```
 
-**描述**
+**描述：**
 
 销毁{@link AbilityRuntime_StartOptions}对象。
 
@@ -101,7 +101,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyStartOptions(AbilityRuntime_St
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowMode(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_WindowMode windowMode)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口模式。
 
@@ -112,7 +112,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowMode(AbilityRunt
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [AbilityRuntime_WindowMode](capi-context-constant-h.md#abilityruntime_windowmode) windowMode | 启动Ability时的窗口模式。取值范围参见AbilityRuntime_WindowMode。 |
+| AbilityRuntime_WindowMode windowMode | 启动Ability时的窗口模式。取值范围参见AbilityRuntime_WindowMode。 |
 
 **返回：**
 
@@ -126,7 +126,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowMode(AbilityRunt
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsDisplayId(AbilityRuntime_StartOptions *startOptions, int32_t displayId)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时窗口所在的屏幕ID。
 
@@ -151,7 +151,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsDisplayId(AbilityRunti
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWithAnimation(AbilityRuntime_StartOptions *startOptions, bool withAnimation)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时是否具有动画效果。
 
@@ -176,7 +176,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWithAnimation(AbilityR
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowLeft(AbilityRuntime_StartOptions *startOptions, int32_t windowLeft)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口左侧位置，单位为px。
 
@@ -201,7 +201,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowLeft(AbilityRunt
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowTop(AbilityRuntime_StartOptions *startOptions, int32_t windowTop)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口顶部位置，单位为px。
 
@@ -226,7 +226,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowTop(AbilityRunti
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t windowHeight)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口高度，单位为px。
 
@@ -251,7 +251,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowHeight(AbilityRu
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t windowWidth)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口宽度，单位为px。
 
@@ -276,7 +276,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowWidth(AbilityRun
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartVisibility(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_StartVisibility startVisibility)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时窗口和dock栏图标的显示模式。
 
@@ -287,7 +287,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartVisibility(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象，包含启动Ability时的显示模式配置信息。 |
-| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) startVisibility | 需要设置的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
+| AbilityRuntime_StartVisibility startVisibility | 需要设置的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
 
 **返回：**
 
@@ -301,7 +301,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartVisibility(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(AbilityRuntime_StartOptions *startOptions, OH_PixelmapNative *startWindowIcon)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口启动图标。图片数据大小限制为600MB。
 
@@ -326,7 +326,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(AbilityRuntime_StartOptions *startOptions, OH_PixelmapNative **startWindowIcon)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口启动图标。
 
@@ -351,7 +351,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundColor(AbilityRuntime_StartOptions *startOptions, const char *startWindowBackgroundColor)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口背景颜色。如果未设置，则默认采用{@link module.json5配置文件}中{@link abilities标签}的startWindowBackground字段的配置。
 
@@ -376,7 +376,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundC
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_SupportedWindowMode *supportedWindowModes, size_t size)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的组件所支持的窗口模式。如果未配置该字段，则默认采用该UIAbility对应的module.json5配置文件中，abilities标签的supportWindowMode字段的取值。
 
@@ -387,7 +387,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(A
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [AbilityRuntime_SupportedWindowMode](capi-context-constant-h.md#abilityruntime_supportedwindowmode) *supportedWindowModes | 启动Ability时的组件所支持的窗口模式。取值范围参见AbilityRuntime_SupportedWindowMode。 |
+| AbilityRuntime_SupportedWindowMode *supportedWindowModes | 启动Ability时的组件所支持的窗口模式。取值范围参见AbilityRuntime_SupportedWindowMode。 |
 | size_t size | 组件所支持的窗口模式大小。 |
 
 **返回：**
@@ -402,7 +402,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(A
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t minWindowWidth)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口最小宽度，单位为vp。
 
@@ -427,7 +427,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowWidth(Ability
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(AbilityRuntime_StartOptions *startOptions, int32_t maxWindowWidth)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口最大宽度，单位为vp。
 
@@ -452,7 +452,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(Ability
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t minWindowHeight)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口最小高度，单位为vp。
 
@@ -477,7 +477,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowHeight(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(AbilityRuntime_StartOptions *startOptions, int32_t maxWindowHeight)
 ```
 
-**描述**
+**描述：**
 
 设置启动Ability时的窗口最大高度，单位为vp。
 
@@ -502,7 +502,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowModeValue(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_WindowMode *windowMode)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口模式。
 
@@ -513,7 +513,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowModeValue(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [AbilityRuntime_WindowMode](capi-context-constant-h.md#abilityruntime_windowmode) *windowMode | 指向启动Ability时窗口模式的指针。取值范围参见AbilityRuntime_WindowMode。 |
+| AbilityRuntime_WindowMode *windowMode | 指向启动Ability时窗口模式的指针。取值范围参见AbilityRuntime_WindowMode。 |
 
 **返回：**
 
@@ -527,7 +527,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowModeValue(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayIdValue(AbilityRuntime_StartOptions *startOptions, int32_t *displayId)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时窗口所在的屏幕ID。
 
@@ -552,7 +552,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayIdValue(Ability
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWithAnimationValue(AbilityRuntime_StartOptions *startOptions, bool *withAnimation)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时是否具有动画效果。
 
@@ -577,7 +577,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWithAnimationValue(Abi
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeftValue(AbilityRuntime_StartOptions *startOptions, int32_t *windowLeft)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口左侧位置，单位为px。
 
@@ -602,7 +602,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeftValue(Abilit
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTopValue(AbilityRuntime_StartOptions *startOptions, int32_t *windowTop)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口顶部位置，单位为px。
 
@@ -627,7 +627,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTopValue(Ability
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *windowHeight)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口高度，单位为px。
 
@@ -652,7 +652,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeightValue(Abil
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *windowWidth)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口宽度，单位为px。
 
@@ -677,7 +677,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidthValue(Abili
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibilityValue(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_StartVisibility *startVisibility)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时窗口和dock栏图标的显示模式。
 
@@ -688,7 +688,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibilityValue(A
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) *startVisibility | 指向启动Ability时窗口和dock栏图标显示模式的指针。取值范围参见AbilityRuntime_StartVisibility。 |
+| AbilityRuntime_StartVisibility *startVisibility | 指向启动Ability时窗口和dock栏图标显示模式的指针。取值范围参见AbilityRuntime_StartVisibility。 |
 
 **返回：**
 
@@ -702,13 +702,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibilityValue(A
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundColorValue(AbilityRuntime_StartOptions *startOptions, char **startWindowBackgroundColor, size_t *size)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口背景颜色。
 
->**说明：** 
->If the background color is not set, [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned,
- *     *startWindowBackgroundColor remains NULL, and *size is set to 0.
+> **说明：**
+>
+> If the background color is not set, {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned, *startWindowBackgroundColor remains NULL, and *size is set to 0.
 
 **起始版本：** 26.0.0
 
@@ -732,13 +732,13 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModesValue(AbilityRuntime_StartOptions *startOptions, AbilityRuntime_SupportedWindowMode **supportedWindowModes, size_t *size)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的组件所支持的窗口模式。
 
->**说明：** 
->If no supported window modes are set, [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned,
- *     *supportedWindowModes remains NULL, and *size is set to 0.
+> **说明：**
+>
+> If no supported window modes are set, {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} is returned, *supportedWindowModes remains NULL, and *size is set to 0.
 
 **起始版本：** 26.0.0
 
@@ -747,7 +747,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModesVa
 | 参数项 | 描述 |
 | -- | -- |
 | AbilityRuntime_StartOptions *startOptions | AbilityRuntime_StartOptions对象。 |
-| [AbilityRuntime_SupportedWindowMode](capi-context-constant-h.md#abilityruntime_supportedwindowmode) **supportedWindowModes | 指向获取到的组件所支持窗口模式数组指针的二级指针，不能为空，且调用前必须指向空指针。取值范围参见AbilityRuntime_SupportedWindowMode。使用完毕后，需要调用free释放。 |
+| AbilityRuntime_SupportedWindowMode **supportedWindowModes | 指向获取到的组件所支持窗口模式数组指针的二级指针，不能为空，且调用前必须指向空指针。取值范围参见AbilityRuntime_SupportedWindowMode。使用完毕后，需要调用free释放。 |
 | size_t *size | 指向获取到的组件所支持窗口模式数量的指针，不能为空。 |
 
 **返回：**
@@ -762,7 +762,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModesVa
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *minWindowWidth)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口最小宽度，单位为vp。
 
@@ -787,7 +787,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidthValue(Ab
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidthValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowWidth)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口最大宽度，单位为vp。
 
@@ -812,7 +812,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidthValue(Ab
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *minWindowHeight)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口最小高度，单位为vp。
 
@@ -837,7 +837,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeightValue(A
 AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(AbilityRuntime_StartOptions *startOptions, int32_t *maxWindowHeight)
 ```
 
-**描述**
+**描述：**
 
 获取启动Ability时的窗口最大高度，单位为vp。
 

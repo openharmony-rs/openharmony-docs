@@ -18,7 +18,9 @@ import { ProgressButton } from '@kit.ArkUI';
 backgroundColor?: ResourceColor
 ```
 
-按钮背景色。默认值：\$r('sys.color.ohos_id_color_foreground_contrary')
+按钮背景色。
+
+默认值：&#36;r('sys.color.ohos_id_color_foreground_contrary')
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -26,7 +28,7 @@ backgroundColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,9 @@ backgroundColor?: ResourceColor
 borderColor?: ResourceColor
 ```
 
-按钮描边颜色。默认值：#330A59F7
+按钮描边颜色。
+
+默认值：#330A59F7
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -44,7 +48,7 @@ borderColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +58,9 @@ borderColor?: ResourceColor
 progressColor?: ResourceColor
 ```
 
-进度条颜色。默认值：#330A59F7
+进度条颜色。
+
+默认值：#330A59F7
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -62,7 +68,7 @@ progressColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +78,9 @@ progressColor?: ResourceColor
 textColor?: ResourceColor
 ```
 
-按钮文本颜色。默认值：系统默认值（#CE000000）
+按钮文本颜色。
+
+默认值：系统默认值（#CE000000）
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -80,6 +88,6 @@ textColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

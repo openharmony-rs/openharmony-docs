@@ -51,7 +51,7 @@ The file declares the common enums and definitions of the display.
 enum NativeDisplayManager_Rotation
 ```
 
-**描述**
+**描述：**
 
 屏幕顺时针的旋转角度。
 
@@ -70,7 +70,7 @@ enum NativeDisplayManager_Rotation
 enum NativeDisplayManager_Orientation
 ```
 
-**描述**
+**描述：**
 
 屏幕的旋转方向。
 
@@ -90,7 +90,7 @@ enum NativeDisplayManager_Orientation
 enum NativeDisplayManager_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 屏幕管理接口返回状态码枚举。
 
@@ -114,7 +114,7 @@ enum NativeDisplayManager_ErrorCode
 enum NativeDisplayManager_FoldDisplayMode
 ```
 
-**描述**
+**描述：**
 
 可折叠设备的显示模式枚举。
 
@@ -134,7 +134,7 @@ enum NativeDisplayManager_FoldDisplayMode
 enum NativeDisplayManager_DisplayState
 ```
 
-**描述**
+**描述：**
 
 显示设备的状态枚举。
 
@@ -156,7 +156,7 @@ enum NativeDisplayManager_DisplayState
 enum NativeDisplayManager_SourceMode
 ```
 
-**描述**
+**描述：**
 
 设备的显示模式枚举。
 

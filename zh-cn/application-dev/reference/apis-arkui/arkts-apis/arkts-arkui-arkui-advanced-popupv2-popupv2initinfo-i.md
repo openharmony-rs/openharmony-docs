@@ -18,13 +18,15 @@ import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 buttons?: [PopupV2Button?, PopupV2Button?]
 ```
 
-设置PopupV2操作按钮，按钮最多设置两个。默认不显示按钮。默认值：[{ text: '' }, { text: '' }]
+设置PopupV2操作按钮，按钮最多设置两个。默认不显示按钮。
+
+默认值：[{ text: '' }, { text: '' }]
 
 **类型：** [PopupV2Button?, PopupV2Button?]
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,13 +36,15 @@ buttons?: [PopupV2Button?, PopupV2Button?]
 direction?: Direction
 ```
 
-设置PopupV2的布局方向，用于控制文本排列与对齐方式，适用于国际化场景下的RTL（从右到左）布局。具体枚举值含义见Direction。默认值：Direction.Auto
+设置PopupV2的布局方向，用于控制文本排列与对齐方式，适用于国际化场景下的RTL（从右到左）布局。具体枚举值含义见Direction。
 
-**类型：** Direction
+默认值：Direction.Auto
+
+**类型：** [Direction](arkts-arkui-direction-e.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,14 +54,15 @@ direction?: Direction
 icon?: ResourceStr
 ```
 
-设置PopupV2图标。  
+设置PopupV2图标。
+
 **说明：** 默认值：''，不显示图标。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,13 +72,15 @@ icon?: ResourceStr
 iconModifier?: ImageModifier
 ```
 
-设置图标属性，如图标颜色、大小、边框等。默认值：undefined，使用系统图标属性。
+设置图标属性，如图标颜色、大小、边框等。
 
-**类型：** ImageModifier
+默认值：undefined，使用系统图标属性。
+
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,17 +90,21 @@ iconModifier?: ImageModifier
 maxWidth?: Dimension
 ```
 
-设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。默认值：400vp  
-**说明：**
+设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。
+
+默认值：400vp
+
+**说明：** 
+
 1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。
-2. maxWidth是数字类型，支持float和整型，例如`\$r('app.float.maxWidth')`、`\$r('app.integer.maxWidth')`。
+2. maxWidth是数字类型，支持float和整型，例如`&#36;r('app.float.maxWidth')`、`&#36;r('app.integer.maxWidth')`。
 3. 当类型为Resource时，如果未设置单位，默认单位为px。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,14 +114,15 @@ maxWidth?: Dimension
 message: ResourceStr
 ```
 
-设置PopupV2内容文本。  
+设置PopupV2内容文本。
+
 **说明：** 默认值：''，不显示内容文本。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,13 +132,15 @@ message: ResourceStr
 messageModifier?: TextModifier
 ```
 
-设置内容文本属性，如设置内容文本颜色、字体大小、字重等。默认值：undefined，使用系统内容文本属性。
+设置内容文本属性，如设置内容文本颜色、字体大小、字重等。
 
-**类型：** TextModifier
+默认值：undefined，使用系统内容文本属性。
+
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,13 +150,15 @@ messageModifier?: TextModifier
 onClose?: Callback<void>
 ```
 
-设置PopupV2关闭按钮回调函数。默认不设置关闭按钮回调函数。
+设置PopupV2关闭按钮回调函数。
+
+默认不设置关闭按钮回调函数。
 
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,13 +168,15 @@ onClose?: Callback<void>
 showClose?: boolean | Resource
 ```
 
-设置PopupV2关闭按钮。true：显示关闭按钮；false：不显示关闭按钮。Resource类型：显示对应的图标。默认值：true
+设置PopupV2关闭按钮。true：显示关闭按钮；false：不显示关闭按钮。Resource类型：显示对应的图标。
 
-**类型：** boolean \| Resource
+默认值：true
+
+**类型：** boolean &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,14 +186,15 @@ showClose?: boolean | Resource
 title?: ResourceStr
 ```
 
-设置PopupV2标题文本。  
+设置PopupV2标题文本。
+
 **说明：** 默认值：''，不显示标题文本。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,12 +204,14 @@ title?: ResourceStr
 titleModifier?: TextModifier
 ```
 
-设置标题文本属性，如设置标题颜色、字体大小、字重等。默认值：undefined，使用系统标题文本属性。
+设置标题文本属性，如设置标题颜色、字体大小、字重等。
 
-**类型：** TextModifier
+默认值：undefined，使用系统标题文本属性。
+
+**类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

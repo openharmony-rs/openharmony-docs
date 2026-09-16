@@ -26,10 +26,34 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ShowDialogOptions | 是 | 页面显示对话框信息描述。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;ShowDialogSuccessResponse&gt; | 是 | 对话框响应结果回调。 |
+| options | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | 是 | 页面显示对话框信息描述。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | 是 | 对话框响应结果回调。 |
 
 **示例**
+
+```TypeScript
+import prompt from '@ohos.prompt'
+prompt.showDialog({
+  title: 'Title Info',
+  message: 'Message Info',
+  buttons: [
+    {
+      text: 'button1',
+      color: '#000000'
+    },
+    {
+      text: 'button2',
+      color: '#000000'
+    }
+  ],
+})
+  .then(data => {
+    console.info('showDialog success, click button: ' + data.index);
+  })
+  .catch((err:Error) => {
+    console.info('showDialog error: ' + err);
+  })
+```
 
 ```TypeScript
 import prompt from '@ohos.prompt'
@@ -76,36 +100,14 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ShowDialogOptions | 是 | 对话框选项。 |
+| options | [ShowDialogOptions](arkts-arkui-prompt-showdialogoptions-i.md) | 是 | 对话框选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;ShowDialogSuccessResponse&gt; | 对话框响应结果。 |
+| Promise&lt;[ShowDialogSuccessResponse](arkts-arkui-prompt-showdialogsuccessresponse-i.md)&gt; | 对话框响应结果。 |
 
 **示例**
 
-```TypeScript
-import prompt from '@ohos.prompt'
-prompt.showDialog({
-  title: 'Title Info',
-  message: 'Message Info',
-  buttons: [
-    {
-      text: 'button1',
-      color: '#000000'
-    },
-    {
-      text: 'button2',
-      color: '#000000'
-    }
-  ],
-})
-  .then(data => {
-    console.info('showDialog success, click button: ' + data.index);
-  })
-  .catch((err:Error) => {
-    console.info('showDialog error: ' + err);
-  })
-```
+参见 [showDialog](#showdialog)

@@ -34,7 +34,7 @@
 | [char* OH_NativeBundle_GetCompatibleDeviceType()](#oh_nativebundle_getcompatibledevicetype) | 获取当前应用适用的设备类型。用于将手机应用分发到平板/2in1设备时，合理适配布局和字体大小。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。 |
 | [bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)](#oh_nativebundle_isdebugmode) | 查询当前应用是否处于调试模式。 |
 | [OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)](#oh_nativebundle_getmodulemetadata) | 获取当前应用程序的模块元数据数组。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。 |
-| [BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)](#oh_nativebundle_getabilityresourceinfo) | 获取支持打开特定文件类型的组件资源信息列表。在使用完该接口之后，为了防止内存泄漏，需要调用[OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy)进行释放。 |
+| [BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)](#oh_nativebundle_getabilityresourceinfo) | 获取支持打开特定文件类型的组件资源信息列表。在使用完该接口之后，为了防止内存泄漏，需要调用{@link OH_AbilityResourceInfo_Destroy}进行释放。 |
 
 ## 函数说明
 
@@ -44,7 +44,7 @@
 OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 ```
 
-**描述**
+**描述：**
 
 获取当前应用信息，包含应用包名和应用指纹信息。
 
@@ -62,7 +62,7 @@ OH_NativeBundle_ApplicationInfo OH_NativeBundle_GetCurrentApplicationInfo()
 char* OH_NativeBundle_GetAppId()
 ```
 
-**描述**
+**描述：**
 
 获取当前应用的appId。appId是应用的唯一标识，由应用包名和签名信息决定。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
 
@@ -80,7 +80,7 @@ char* OH_NativeBundle_GetAppId()
 char* OH_NativeBundle_GetAppIdentifier()
 ```
 
-**描述**
+**描述：**
 
 获取当前应用的应用程序标识符。该应用程序标识符在应用的整个生命周期中不会发生变化，包括版本更新、证书更改、公钥和私钥更改以及应用程序迁移。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
 
@@ -98,7 +98,7 @@ char* OH_NativeBundle_GetAppIdentifier()
 OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 ```
 
-**描述**
+**描述：**
 
 获取当前应用入口元素mainElement的信息，包括包名、模块名和组件名，在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
 
@@ -116,7 +116,7 @@ OH_NativeBundle_ElementName OH_NativeBundle_GetMainElementName()
 char* OH_NativeBundle_GetCompatibleDeviceType()
 ```
 
-**描述**
+**描述：**
 
 获取当前应用适用的设备类型。用于将手机应用分发到平板/2in1设备时，合理适配布局和字体大小。在使用此接口后，为了避免内存泄漏，需要手动释放接口返回的指针。
 
@@ -134,7 +134,7 @@ char* OH_NativeBundle_GetCompatibleDeviceType()
 bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 ```
 
-**描述**
+**描述：**
 
 查询当前应用是否处于调试模式。
 
@@ -158,7 +158,7 @@ bool OH_NativeBundle_IsDebugMode(bool* isDebugMode)
 OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 ```
 
-**描述**
+**描述：**
 
 获取当前应用程序的模块元数据数组。在使用该接口之后，为了防止内存泄漏，需要手动释放接口返回的指针。
 
@@ -182,9 +182,9 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo, size_t* size)
 ```
 
-**描述**
+**描述：**
 
-获取支持打开特定文件类型的组件资源信息列表。在使用完该接口之后，为了防止内存泄漏，需要调用[OH_AbilityResourceInfo_Destroy](capi-ability-resource-info-h.md#oh_abilityresourceinfo_destroy)进行释放。
+获取支持打开特定文件类型的组件资源信息列表。在使用完该接口之后，为了防止内存泄漏，需要调用{@link OH_AbilityResourceInfo_Destroy}进行释放。
 
 **需要权限：** ohos.permission.GET_ABILITY_INFO
 
@@ -195,13 +195,13 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityResourceInfo(char* fileType, O
 | 参数项 | 描述 |
 | -- | -- |
 | char* fileType | 表示待查询的特定文件类型，推荐使用{@link UTD类型}，比如：'general.plain-text'、'general.image'。目前也可以兼容使用{@link MIME type类型}和文件后缀名称，如：'text/xml' 、 '.png'等。文件后缀与文件类型的映射关系参见{@link UTD预置列表}。不支持传'\*\/\*'。 |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | 表示返回的组件资源信息列表。 |
+| OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo | 表示返回的组件资源信息列表。 |
 | size_t* size | 表示返回的组件资源信息列表大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [BundleManager_ErrorCode](capi-bundle-manager-common-h.md#bundlemanager_errorcode) | <ul><li>如果调用成功，返回[BUNDLE_MANAGER_ERROR_CODE_NO_ERROR](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。</li><li>      如果调用方没有正确的权限，返回[BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED](capi-bundle-manager-common-h.md#bundlemanager_errorcode)。</li></ul> |
+| BundleManager_ErrorCode | <ul><li>如果调用成功，返回{@link BUNDLE_MANAGER_ERROR_CODE_NO_ERROR}。</li><li>      如果调用方没有正确的权限，返回{@link BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED}。</li></ul> |
 
 

@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## content
 
 ```TypeScript
@@ -25,7 +20,7 @@ content: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +30,11 @@ content: ResourceStr
 icon?: ResourceStr
 ```
 
-菜单图标。不支持网络图片。默认值：undefined，不显示菜单图标。
+菜单图标。
+
+不支持网络图片。
+
+默认值：undefined，不显示菜单图标。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -43,7 +42,7 @@ icon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +60,7 @@ id: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +70,11 @@ id: TextMenuItemId
 labelInfo?: ResourceStr
 ```
 
-快捷键提示。该字段仅2in1设备支持。默认值：undefined，不显示快捷键提示。
+快捷键提示。
+
+该字段仅2in1设备支持。
+
+默认值：undefined，不显示快捷键提示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -79,6 +82,6 @@ labelInfo?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

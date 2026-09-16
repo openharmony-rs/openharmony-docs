@@ -12,4 +12,4 @@ module包含的ability组件信息。
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.ModuleAbilityInfo
+**类型：** [_PackInfo.ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md)

@@ -12,7 +12,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.ExecuteResult>): void
 ```
 
-执行意图调用的接口。使用callback异步回调。 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。 当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要 申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
+执行意图调用的接口。使用callback异步回调。当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **起始版本：** 11
 
@@ -29,7 +29,7 @@ function execute(param: ExecuteParam, callback: AsyncCallback<insightIntent.Exec
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | param | [ExecuteParam](arkts-ability-insightintentdriver-executeparam-i-sys.md) | 是 | 执行意图调用的参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;insightIntent.ExecuteResult&gt; | 是 | 回调函数，返回意图调用执行结果。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[insightIntent.ExecuteResult](arkts-ability-insightintent-executeresult-i.md)&gt; | 是 | 回调函数，返回意图调用执行结果。 |
 
 **错误码：**
 
@@ -89,6 +89,32 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
   }
 ```
 
+```TypeScript
+import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+
+  async function executeSearchMusicIntentPromise() {
+    let param: insightIntentDriver.ExecuteParam = {
+      bundleName: 'com.ohos.intentexecutedemo',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      insightIntentName: 'PlayMusic',
+      insightIntentParam: {
+        songName: 'City Of Stars',
+      },
+      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
+    };
+
+    try {
+      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
+      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
+      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
+    }
+  }
+```
+
 
 ## execute
 
@@ -96,7 +122,7 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
 function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 ```
 
-执行意图调用的接口。使用Promise异步回调。 当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。 当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要 申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
+执行意图调用的接口。使用Promise异步回调。当调用方在后台时，需要申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。当意图调用执行模式[ExecuteMode](arkts-ability-insightintent-executemode-e.md)取值为UI_ABILITY_BACKGROUND时，需要申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`权限。
 
 **起始版本：** 11
 
@@ -118,7 +144,7 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;insightIntent.ExecuteResult&gt; | Promise used to return the intent call execution result. |
+| Promise&lt;[insightIntent.ExecuteResult](arkts-ability-insightintent-executeresult-i.md)&gt; | Promise used to return the intent call execution result. |
 
 **错误码：**
 
@@ -146,28 +172,4 @@ function execute(param: ExecuteParam): Promise<insightIntent.ExecuteResult>
 
 **示例**
 
-```TypeScript
-import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  async function executeSearchMusicIntentPromise() {
-    let param: insightIntentDriver.ExecuteParam = {
-      bundleName: 'com.ohos.intentexecutedemo',
-      moduleName: 'entry',
-      abilityName: 'EntryAbility',
-      insightIntentName: 'PlayMusic',
-      insightIntentParam: {
-        songName: 'City Of Stars',
-      },
-      executeMode: insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND,
-    };
-
-    try {
-      let resultData: insightIntent.ExecuteResult = await insightIntentDriver.execute(param);
-      hilog.info(0x0000, 'testTag', 'execute insight intent return %{public}d', resultData.code);
-      hilog.info(0x0000, 'testTag', 'execute insight intent result %{public}s', JSON.stringify(resultData.result));
-    } catch (error) {
-      hilog.error(0x0000, 'testTag', 'execute insight intent error caught %{public}s', JSON.stringify(error));
-    }
-  }
-```
+参见 [execute](#execute)

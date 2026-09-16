@@ -56,6 +56,26 @@ try {
 }
 ```
 
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
+let bundleName: string = 'com.example.myapplication';
+let appIndex: number = 0;
+let isEnabled: boolean = true;
+let killProcess: boolean = false;
+
+try {
+  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
+  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
+}
+```
+
 
 ## setApplicationEnabledSync
 
@@ -80,7 +100,7 @@ function setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabl
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用包名 |
-| appIndex | number | 是 | 应用的分身索引 取值范围为全体整数。 |
+| appIndex | number | 是 | 应用的分身索引<br>取值范围为全体整数。 |
 | isEnabled | boolean | 是 | true表示启用应用程序，false表示启用应用程序。 |
 | killProcess | boolean | 是 | true表示应用进程在禁用时杀死应用程序进程，而值为false表示禁用时不会杀死应用程序进程 |
 
@@ -95,22 +115,4 @@ function setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabl
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
-let bundleName: string = 'com.example.myapplication';
-let appIndex: number = 0;
-let isEnabled: boolean = true;
-let killProcess: boolean = false;
-
-try {
-  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
-  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
-}
-```
+参见 [setApplicationEnabledSync](#setapplicationenabledsync)

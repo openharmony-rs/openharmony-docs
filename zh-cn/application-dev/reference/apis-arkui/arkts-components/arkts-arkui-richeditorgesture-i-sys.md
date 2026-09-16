@@ -6,20 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## onDoubleClick
 
 ```TypeScript
 onDoubleClick?: Callback<GestureEvent>
 ```
 
-双击事件回调函数，在用户双击操作完成时触发。回调参数为 [GestureEvent](../arkts-apis/arkts-arkui-gestureevent-i.md)对象，包含手势事件信息。
+双击事件回调函数，在用户双击操作完成时触发。回调参数为[GestureEvent](arkts-arkui-gestureevent-i.md)对象，包含手势事件信息。
 
-**类型：** Callback&lt;[GestureEvent](../arkts-apis/arkts-arkui-gestureevent-i.md)&gt;
+**类型：** [Callback](arkts-arkui-callback-i.md)&lt;[GestureEvent](arkts-arkui-gestureevent-i.md)&gt;
 
 **起始版本：** 14
 

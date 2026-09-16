@@ -8,18 +8,15 @@
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
-
 ## fluidLightMode
 
 ```TypeScript
 fluidLightMode?: KeyboardFluidLightMode
 ```
 
-键盘的流光效果。默认值：KeyboardFluidLightMode.NONE
+键盘的流光效果。
+
+默认值：KeyboardFluidLightMode.NONE
 
 **类型：** [KeyboardFluidLightMode](arkts-arkui-keyboardfluidlightmode-e-sys.md)
 
@@ -37,7 +34,9 @@ fluidLightMode?: KeyboardFluidLightMode
 gradientMode?: KeyboardGradientMode
 ```
 
-键盘的模糊效果。默认值：KeyboardGradientMode.NONE
+键盘的模糊效果。
+
+默认值：KeyboardGradientMode.NONE
 
 **类型：** [KeyboardGradientMode](arkts-arkui-keyboardgradientmode-e-sys.md)
 

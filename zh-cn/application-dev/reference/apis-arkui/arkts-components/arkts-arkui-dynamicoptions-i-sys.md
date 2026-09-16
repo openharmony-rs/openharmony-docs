@@ -8,18 +8,13 @@
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
-
 ## allowCrossProcessNesting
 
 ```TypeScript
 allowCrossProcessNesting?: boolean
 ```
 
-是否允许跨进程UIExtensionComponent嵌套。true：允许跨进程嵌套；false：不允许跨进程嵌套。默认值：false
+是否允许跨进程UIExtensionComponent嵌套。<br>true：允许跨进程嵌套；false：不允许跨进程嵌套。<br>默认值：false
 
 **类型：** boolean
 
@@ -55,7 +50,7 @@ allowOccupied?: boolean
 backgroundTransparent?: boolean
 ```
 
-是否启用组件背景透明。true：启用背景透明；false：不启用背景透明。默认值：false
+是否启用组件背景透明。<br>true：启用背景透明；false：不启用背景透明。<br>默认值：false
 
 **类型：** boolean
 
@@ -73,7 +68,7 @@ backgroundTransparent?: boolean
 entryPoint: string
 ```
 
-要加载的Abc页面入口。取值格式：'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。
+要加载的Abc页面入口。<br>取值格式：'bundleName/moduleName/pagePath'，例如'com.example.myapplication/entry/ets/pages/DynamicPage'。
 
 **类型：** string
 

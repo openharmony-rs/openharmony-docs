@@ -26,7 +26,7 @@ function showToast(options: ShowToastOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | ShowToastOptions | 是 | 文本弹窗选项。 |
+| options | [ShowToastOptions](arkts-arkui-prompt-showtoastoptions-i.md) | 是 | 文本弹窗选项。 |
 
 **示例**
 

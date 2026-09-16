@@ -1,6 +1,6 @@
 # AppStorageV2
 
-AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨Ability的数据共享。具体UI使用说明，详见 [AppStorageV2(应用全局的UI状态存储)](../../../ui/state-management/arkts-new-appstoragev2.md)。
+AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨Ability的数据共享。具体UI使用说明，详见[AppStorageV2(应用全局的UI状态存储)](../../../ui/state-management/arkts-new-appstoragev2.md)。
 
 **起始版本：** 12
 
@@ -9,7 +9,7 @@ AppStorageV2提供应用级全局共享状态变量的能力，开发者可以�
 ## 导入模块
 
 ```TypeScript
-import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo } from '@kit.ArkUI';
 ```
 
 ## connect
@@ -22,9 +22,9 @@ static connect<T extends object>(
   ): T | undefined
 ```
 
-将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取 默认值的构造器构造默认值，并返回。
+将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，并返回。
 
-> **说明：**
+> **说明：** 
 > 
 > 1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数（第二个参数非法也使用第三个参数作为默认构造器）。
 > 
@@ -38,7 +38,7 @@ static connect<T extends object>(
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,14 +47,14 @@ static connect<T extends object>(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md)&lt;T&gt; | 是 | 指定的类型，若未指定key，则使用type的name作为key。 |
-| keyOrDefaultCreator | string \| [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md)&lt;T&gt; | 否 | 指定的key，或者是获取默认值的构造器。默认值为undefined。 |
-| defaultCreator | [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md)&lt;T&gt; | 否 | 获取默认值的构造器。默认值为undefined。如果数据未存储在AppStorageV2中，且没有传递默认构造器，则返回 undefined。 |
+| keyOrDefaultCreator | string &#124; [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md)&lt;T&gt; | 否 | 指定的key，或者是获取默认值的构造器。默认值为undefined。 |
+| defaultCreator | [StorageDefaultCreator](arkts-arkui-storagedefaultcreator-t.md)&lt;T&gt; | 否 | 获取默认值的构造器。默认值为undefined。如果数据未存储在AppStorageV2中，且没有传递默认构造器，则返回undefined。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| T \| undefined | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
+| T &#124; undefined | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
 
 **示例**
 
@@ -84,7 +84,7 @@ static keys(): Array<string>
 
 获取[AppStorageV2](../../../ui/state-management/arkts-new-appstoragev2.md)中的所有key。
 
-> **说明：**
+> **说明：** 
 > 
 > key在Array中的顺序是无序的，与key插入到AppStorageV2中的顺序无关。
 
@@ -92,7 +92,7 @@ static keys(): Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +100,7 @@ static keys(): Array<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;string&gt; | 所有AppStorageV2中的key。 |
+| Array&lt;string&gt; | 所有AppStorageV2中的key。 |
 
 **示例**
 
@@ -115,9 +115,9 @@ const keys: Array<string> = AppStorageV2.keys();
 static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 ```
 
-将指定的键值对数据从[AppStorageV2](../../../ui/state-management/arkts-new-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失 败。
+将指定的键值对数据从[AppStorageV2](../../../ui/state-management/arkts-new-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失败。
 
-> **说明：**
+> **说明：** 
 > 
 > 删除AppStorageV2中不存在的key会报警告。
 
@@ -125,7 +125,7 @@ static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,7 +133,7 @@ static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| keyOrType | string \| [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md)&lt;T&gt; | 是 | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
+| keyOrType | string &#124; [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md)&lt;T&gt; | 是 | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
 
 **示例**
 

@@ -59,6 +59,22 @@ try {
 }
 ```
 
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let bundleName = 'bundleName';
+  quickFixManager.getApplicationQuickFixInfo(bundleName).then((data) => {
+    console.info(`getApplicationQuickFixInfo success: ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getApplicationQuickFixInfo err: ${error}`);
+  });
+} catch (paramError) {
+  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+}
+```
+
 
 ## getApplicationQuickFixInfo
 
@@ -100,18 +116,4 @@ function getApplicationQuickFixInfo(bundleName: string): Promise<ApplicationQuic
 
 **示例**
 
-```TypeScript
-import { quickFixManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let bundleName = 'bundleName';
-  quickFixManager.getApplicationQuickFixInfo(bundleName).then((data) => {
-    console.info(`getApplicationQuickFixInfo success: ${data}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getApplicationQuickFixInfo err: ${error}`);
-  });
-} catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-}
-```
+参见 [getApplicationQuickFixInfo](#getapplicationquickfixinfo)

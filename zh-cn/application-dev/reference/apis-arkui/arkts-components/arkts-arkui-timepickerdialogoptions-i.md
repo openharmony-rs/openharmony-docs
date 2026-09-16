@@ -1,17 +1,14 @@
 # TimePickerDialogOptions
 
-时间选择器弹窗选项。继承自[TimePickerOptions](arkts-arkui-timepickeroptions-i.md)。
+时间选择器弹窗选项。
+
+继承自[TimePickerOptions](arkts-arkui-timepickeroptions-i.md)。
 
 **继承/实现关系：** TimePickerDialogOptions extends [TimePickerOptions](arkts-arkui-timepickeroptions-i.md)
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## onAccept
 
@@ -23,7 +20,7 @@ onAccept?: (value: TimePickerResult) => void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,7 +40,7 @@ onCancel?: () => void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,7 +54,7 @@ onChange?: (value: TimePickerResult) => void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +72,7 @@ onDidAppear?: () => void
 
 弹窗弹出后的事件回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;(onAccept/onCancel/onChange)&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。
 > 
@@ -89,7 +86,7 @@ onDidAppear?: () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,7 +98,7 @@ onDidDisappear?: () => void
 
 弹窗消失后的事件回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;(onAccept/onCancel/onChange)&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。
 
@@ -109,7 +106,7 @@ onDidDisappear?: () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,7 +118,7 @@ onWillAppear?: () => void
 
 弹窗显示动效前的事件回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;(onAccept/onCancel/onChange)&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。
 > 
@@ -131,7 +128,7 @@ onWillAppear?: () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,7 +140,7 @@ onWillDisappear?: () => void
 
 弹窗退出动效前的事件回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 正常时序依次为：onWillAppear&gt;&gt;onDidAppear&gt;&gt;(onAccept/onCancel/onChange)&gt;&gt;onWillDisappear&gt;&gt;onDidDisappear。
 > 
@@ -153,7 +150,7 @@ onWillDisappear?: () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,13 +164,11 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 > 默认值：请参考[PickerDialogButtonStyle](arkts-arkui-pickerdialogbuttonstyle-i.md)。
 
-> **说明：**
+> **说明：** 
 > 
-> 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，
-> 保持默认值false。
+> 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。
 > 
-> 2. 按钮高度默认40vp，borderRadius单位为vp。在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形
-> ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
+> 2. 按钮高度默认40vp，borderRadius单位为vp。在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
 
 **类型：** [PickerDialogButtonStyle](arkts-arkui-pickerdialogbuttonstyle-i.md)
 
@@ -181,7 +176,7 @@ acceptButtonStyle?: PickerDialogButtonStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,7 +186,9 @@ acceptButtonStyle?: PickerDialogButtonStyle
 alignment?: DialogAlignment
 ```
 
-设置弹窗在垂直方向上的对齐方式。默认值：DialogAlignment.Default
+设置弹窗在垂直方向上的对齐方式。
+
+默认值：DialogAlignment.Default
 
 **类型：** [DialogAlignment](../arkts-apis/arkts-arkui-dialogalignment-e.md)
 
@@ -199,7 +196,7 @@ alignment?: DialogAlignment
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,15 +206,16 @@ alignment?: DialogAlignment
 backgroundBlurStyle?: BlurStyle
 ```
 
-弹窗背板模糊材质。默认值：BlurStyle.COMPONENT_ULTRA_THICK
+弹窗背板模糊材质。
 
-> **说明：**
+默认值：BlurStyle.COMPONENT_ULTRA_THICK
+
+> **说明：** 
 > 
-> 1. 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，
-> 否则显示的颜色将不符合预期效果。
+> 1. 设置为BlurStyle.NONE即可关闭背景虚化。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则显示的颜色将不符合预期效果。
 > 2. 从API版本26.0.0开始，设置systemMaterial后，backgroundBlurStyle不生效。
 
-**类型：** BlurStyle
+**类型：** [BlurStyle](arkts-arkui-blurstyle-e.md)
 
 **默认值：** BlurStyle.COMPONENT_ULTRA_THICK
 
@@ -225,7 +223,7 @@ backgroundBlurStyle?: BlurStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,7 +235,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 背景模糊效果参数，用于自定义弹窗背景模糊的显示样式，支持配置颜色模式、自适应颜色、缩放比例等属性，实现不同的背景模糊视觉效果。
 
-> **说明：**
+> **说明：** 
 > 
 > 未设置时沿用
 > backgroundBlurStyle
@@ -249,7 +247,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -259,9 +257,11 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 backgroundColor?: ResourceColor
 ```
 
-弹窗背板颜色。默认值：Color.Transparent
+弹窗背板颜色。
 
-> **说明：**
+默认值：Color.Transparent
+
+> **说明：** 
 > 
 > 1. 当设置了backgroundColor为非透明色时，backgroundBlurStyle需要设置为BlurStyle.NONE，否则显示的颜色将不符合预期效果。
 > 2. 从API版本26.0.0开始，设置systemMaterial后，backgroundColor不生效。
@@ -274,7 +274,7 @@ backgroundColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -286,7 +286,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 背景效果参数，用于自定义弹窗背景的显示效果，支持配置模糊半径、饱和度、亮度、颜色等属性，实现不同的背景视觉效果。
 
-> **说明：**
+> **说明：** 
 > 
 > 未设置时不生效，此时弹窗背景模糊效果由
 > backgroundBlurStyle
@@ -299,7 +299,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,13 +313,11 @@ cancelButtonStyle?: PickerDialogButtonStyle
 
 > 默认值：请参考[PickerDialogButtonStyle](arkts-arkui-pickerdialogbuttonstyle-i.md)。
 
-> **说明：**
+> **说明：** 
 > 
-> 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，
-> 保持默认值false。
+> 1. acceptButtonStyle与cancelButtonStyle中最多只能有一个primary字段配置为true，如果同时设置为true，则primary字段不生效，保持默认值false。
 > 
-> 2. 按钮高度默认40vp，borderRadius单位为vp。在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形
-> ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
+> 2. 按钮高度默认40vp，borderRadius单位为vp。在关怀模式-大字体场景下高度不变，即使按钮样式设置为圆角矩形ROUNDED_RECTANGLE，呈现效果依然是胶囊型按钮Capsule。
 
 **类型：** [PickerDialogButtonStyle](arkts-arkui-pickerdialogbuttonstyle-i.md)
 
@@ -327,7 +325,7 @@ cancelButtonStyle?: PickerDialogButtonStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,8 +339,7 @@ dateTimeOptions?: DateTimeOptions
 
 > 默认值：
 > 
-> - hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；
-> 12小时制默认为"numeric"，即没有前导0。
+> - hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。
 > 
 > - minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。
 
@@ -352,7 +349,7 @@ dateTimeOptions?: DateTimeOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -362,9 +359,11 @@ dateTimeOptions?: DateTimeOptions
 disappearTextStyle?: PickerTextStyle
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。默认值：
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。
 
-{color: '#ff182431', font: {size: '14fp', weight: FontWeight.Regular } }
+默认值：
+
+<br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>}
 
 **类型：** [PickerTextStyle](arkts-arkui-pickertextstyle-i.md)
 
@@ -372,7 +371,7 @@ disappearTextStyle?: PickerTextStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -382,10 +381,14 @@ disappearTextStyle?: PickerTextStyle
 enableCascade?: boolean
 ```
 
-设置上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。  
+设置上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。
+
 - true：自动切换。  
-- false：不自动切换。  
-默认值：false当enableCascade设置为true时，需要loop参数同时为true才能生效。loop用于控制选择器是否循环滚动。
+- false：不自动切换。
+
+默认值：false
+
+当enableCascade设置为true时，需要loop参数同时为true才能生效。loop用于控制选择器是否循环滚动。
 
 **类型：** boolean
 
@@ -395,7 +398,7 @@ enableCascade?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -405,12 +408,14 @@ enableCascade?: boolean
 enableHapticFeedback?: boolean
 ```
 
-设置是否开启触控反馈。  
+设置是否开启触控反馈。
+
 - true：开启触控反馈。  
-- false：不开启触控反馈。  
+- false：不开启触控反馈。
+
 默认值：true
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 设置为true后，其生效情况取决于系统的硬件是否支持。
 > 2. 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
@@ -425,7 +430,7 @@ enableHapticFeedback?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -435,9 +440,11 @@ enableHapticFeedback?: boolean
 enableHoverMode?: boolean
 ```
 
-是否响应悬停态。悬停态指折叠屏等设备处于悬停折叠状态时的交互模式，而非鼠标悬停。  
+是否响应悬停态。悬停态指折叠屏等设备处于悬停折叠状态时的交互模式，而非鼠标悬停。
+
 - true：响应悬停态。  
-- false：不响应悬停态。  
+- false：不响应悬停态。
+
 默认值：false
 
 **类型：** boolean
@@ -448,7 +455,7 @@ enableHoverMode?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,7 +465,9 @@ enableHoverMode?: boolean
 hoverModeArea?: HoverModeAreaType
 ```
 
-悬停态下弹窗默认展示区域。仅在enableHoverMode为true时生效。默认值：HoverModeAreaType.BOTTOM_SCREEN
+悬停态下弹窗默认展示区域。仅在enableHoverMode为true时生效。
+
+默认值：HoverModeAreaType.BOTTOM_SCREEN
 
 **类型：** [HoverModeAreaType](arkts-arkui-hovermodeareatype-e.md)
 
@@ -468,7 +477,7 @@ hoverModeArea?: HoverModeAreaType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -478,7 +487,9 @@ hoverModeArea?: HoverModeAreaType
 maskRect?: Rectangle
 ```
 
-弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。默认值：{ x: 0, y: 0, width: '100%', height: '100%' }
+弹窗遮蔽层区域，在遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。
+
+默认值：{ x: 0, y: 0, width: '100%', height: '100%' }
 
 **类型：** [Rectangle](arkts-arkui-rectangle-i.md)
 
@@ -486,7 +497,7 @@ maskRect?: Rectangle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -496,15 +507,17 @@ maskRect?: Rectangle
 offset?: Offset
 ```
 
-设置弹窗相对alignment所在位置的偏移量。默认值：{ dx: 0 , dy: 0 }
+设置弹窗相对alignment所在位置的偏移量。
 
-**类型：** Offset
+默认值：{ dx: 0 , dy: 0 }
+
+**类型：** [Offset](../arkts-apis/arkts-arkui-offset-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -514,20 +527,20 @@ offset?: Offset
 onEnterSelectedArea?: Callback<TimePickerResult>
 ```
 
-滑动过程中，当前滑动列滑动距离超过选中项高度的一半，选项进入分割线区域内，触发该回调。与onChange事件的差别在于，该事件在滑动过程中实时触发， 适合需要实时监听滑动场景；onChange在选项归位至选中项位置后触发，适合需要确认最终选中值的场景。
+滑动过程中，当前滑动列滑动距离超过选中项高度的一半，选项进入分割线区域内，触发该回调。与onChange事件的差别在于，该事件在滑动过程中实时触发，适合需要实时监听滑动场景；onChange在选项归位至选中项位置后触发，适合需要确认最终选中值的场景。
 
-> **说明：**
+> **说明：** 
 > 
 > 当enableCascade设置为true时，由于上午/下午列与小时列存在联动关系，不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点，
 > 而联动变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
 
-**类型：** Callback&lt;[TimePickerResult](arkts-arkui-timepickerresult-i.md)&gt;
+**类型：** [Callback](arkts-arkui-callback-i.md)&lt;[TimePickerResult](arkts-arkui-timepickerresult-i.md)&gt;
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -541,20 +554,13 @@ selectedTextStyle?: PickerTextStyle
 
 > 默认值：
 > 
-> 
-{   
-> 
-color: '#ff007dff',   
-> 
-font: {   
-> 
-size: '20fp',   
-> 
-weight: FontWeight.Medium   
-> 
-}   
-> 
-}
+> <br>{
+> <br>color: '#ff007dff',
+> <br>font: {
+> <br>size: '20fp',
+> <br>weight: FontWeight.Medium
+> <br>}
+> <br>}
 
 **类型：** [PickerTextStyle](arkts-arkui-pickertextstyle-i.md)
 
@@ -562,7 +568,7 @@ weight: FontWeight.Medium
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -572,19 +578,21 @@ weight: FontWeight.Medium
 shadow?: ShadowOptions | ShadowStyle
 ```
 
-设置弹窗背板的阴影。当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
+设置弹窗背板的阴影。
 
-> **说明：**
+当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。
+
+> **说明：** 
 > 
 > 从API版本26.0.0开始，设置systemMaterial后，shadow不生效。
 
-**类型：** [ShadowOptions](arkts-arkui-shadowoptions-i.md) \| [ShadowStyle](arkts-arkui-shadowstyle-e.md)
+**类型：** [ShadowOptions](arkts-arkui-shadowoptions-i.md) &#124; [ShadowStyle](arkts-arkui-shadowstyle-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -596,24 +604,18 @@ systemMaterial?: SystemUiMaterial
 
 设置弹窗的系统材质。
 
-> **说明：**
+> **说明：** 
 > 
-> - 默认值：[ImmersiveOptions](../arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的
-> [ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。
-> - 不同的材质具有不同的效果，该接口影响背景色backgroundColor、
-> 背景模糊
-> backgroundBlurStyle
-> 、背景效果backgroundEffect、边框颜色
-> borderColor、边框宽度borderWidth、阴影
-> shadow，当设置系统材质时，上述接口不生效。
+> - 默认值：[ImmersiveOptions](../arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)对象。设置undefined时与默认值保持一致。
+> - 不同的材质具有不同的效果，该接口影响背景色backgroundColor、背景模糊backgroundBlurStyle、背景效果backgroundEffect、边框颜色borderColor、边框宽度borderWidth、阴影shadow，当设置系统材质时，上述接口不生效。
 
-**类型：** SystemUiMaterial
+**类型：** [SystemUiMaterial](arkts-arkui-systemuimaterial-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -627,20 +629,13 @@ textStyle?: PickerTextStyle
 
 > 默认值：
 > 
-> 
-{   
-> 
-color: '#ff182431',   
-> 
-font: {   
-> 
-size: '16fp',   
-> 
-weight: FontWeight.Regular   
-> 
-}   
-> 
-}
+> <br>{
+> <br>color: '#ff182431',
+> <br>font: {
+> <br>size: '16fp',
+> <br>weight: FontWeight.Regular
+> <br>}
+> <br>}
 
 **类型：** [PickerTextStyle](arkts-arkui-pickertextstyle-i.md)
 
@@ -648,7 +643,7 @@ weight: FontWeight.Regular
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -658,9 +653,11 @@ weight: FontWeight.Regular
 useMilitaryTime?: boolean
 ```
 
-时间是否以24小时制展示。  
+时间是否以24小时制展示。
+
 - true：时间以24小时制展示。  
-- false：时间以12小时制展示。  
+- false：时间以12小时制展示。
+
 默认值：false
 
 > **说明：** 当设置为false时，enableCascade参数才能生效。
@@ -669,6 +666,6 @@ useMilitaryTime?: boolean
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

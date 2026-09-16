@@ -1,6 +1,8 @@
 # GetItemsInShapePathParams（系统接口）
 
-需要获取图像对象时设置的图像选项。@interface GetItemsInShapePathParams
+需要获取图像对象时设置的图像选项。
+
+@interface GetItemsInShapePathParams
 
 **起始版本：** 23
 
@@ -38,7 +40,7 @@ images: Array<ImageItem>
 ratio?: number
 ```
 
-所选区域中非透明空白像素的比例 相对于图像总像素的比例。默认值为0.15。
+所选区域中非透明空白像素的比例相对于图像总像素的比例。默认值为0.15。
 
 **类型：** number
 
@@ -58,7 +60,7 @@ shapePath: Array<common2D.Point>
 
 表示路径的点信息
 
-**类型：** Array&lt;common2D.Point&gt;
+**类型：** Array&lt;[common2D.Point](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-common2d-point-i.md)&gt;
 
 **起始版本：** 23
 

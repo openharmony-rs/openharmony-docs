@@ -11,6 +11,7 @@ Defines the PiP status data.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## centerPointOffset
@@ -21,7 +22,7 @@ centerPointOffset: Point
 
 Offset of PiP.
 
-**类型：** Point
+**类型：** [Point](arkts-camera-camera-point-i.md)
 
 **起始版本：** 20
 

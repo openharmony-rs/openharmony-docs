@@ -16,7 +16,7 @@ function initCurve(curve?: Curve): ICurve
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,10 +24,10 @@ function initCurve(curve?: Curve): ICurve
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| curve | Curve | 否 | 曲线类型。默认值：Curve.Linear |
+| curve | [Curve](arkts-arkui-curves-curve-e.md) | 否 | 曲线类型。<br>默认值：Curve.Linear |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| ICurve | 曲线的插值对象。 |
+| [ICurve](arkts-arkui-curves-icurve-i.md) | 曲线的插值对象，可通过其interpolate方法获取指定归一化时间点的曲线插值。 |

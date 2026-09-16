@@ -4,6 +4,8 @@
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -24,7 +26,7 @@ EditableSaveButtonV2的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,9 +46,11 @@ public onAction?: OnActionCallback
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +60,13 @@ public onAction?: OnActionCallback
 public defaultFocus: boolean
 ```
 
-是否默认获取焦点。true：获焦。false：不获焦。默认值：false。
+是否默认获取焦点。
+
+true：获焦。
+
+false：不获焦。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -64,9 +74,11 @@ public defaultFocus: boolean
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +88,13 @@ public defaultFocus: boolean
 public isRequired: boolean
 ```
 
-是否显示保存按钮。true：显示保存按钮。false：不显示保存按钮。默认值：true。
+是否显示保存按钮。
+
+true：显示保存按钮。
+
+false：不显示保存按钮。
+
+默认值：true。
 
 **类型：** boolean
 
@@ -84,8 +102,10 @@ public isRequired: boolean
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -18,7 +18,7 @@ import { StartupConfig } from '@kit.AbilityKit';
 startupListener?: StartupListener
 ```
 
-表示启动框架的监听器，该监听器将在所有启动任务完成时调用。
+启动框架的监听器，该监听器将在所有启动任务完成时调用。未设置该参数时，不进行回调通知。
 
 **类型：** [StartupListener](arkts-ability-app-appstartup-startuplistener-startuplistener-c.md)
 
@@ -34,7 +34,7 @@ startupListener?: StartupListener
 timeoutMs?: number
 ```
 
-执行所有启动任务的超时时间（单位：毫秒），默认值为10000毫秒。
+执行所有启动任务的超时时间（单位：ms），默认值为10000ms。超时后启动框架会停止等待，并通过startupListener.onCompleted回调返回超时错误。超时不会中断正在执行的启动任务，但会影响后续任务的执行。
 
 **类型：** number
 
@@ -45,34 +45,3 @@ timeoutMs?: number
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.AppStartup
-
-**示例**
-
-```TypeScript
-import { StartupConfig, StartupConfigEntry, StartupListener } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export default class MyStartupConfigEntry extends StartupConfigEntry {
-  onConfig() {
-    hilog.info(0x0000, 'testTag', `onConfig`);
-    let onCompletedCallback = (error: BusinessError<void>) => {
-      hilog.info(0x0000, 'testTag', `onCompletedCallback`);
-      if (error) {
-        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
-          error.message);
-      } else {
-        hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
-      }
-    };
-    let startupListener: StartupListener = {
-      'onCompleted': onCompletedCallback
-    };
-    let config: StartupConfig = {
-      'timeoutMs': 10000,
-      'startupListener': startupListener
-    };
-    return config;
-  }
-}
-```

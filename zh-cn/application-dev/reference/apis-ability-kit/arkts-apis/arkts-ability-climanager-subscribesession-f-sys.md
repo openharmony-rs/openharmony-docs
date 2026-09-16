@@ -14,7 +14,7 @@ function subscribeSession(sessionId: string, callback: ToolEventCallback): Promi
 
 订阅指定CLI工具会话的事件。会话运行期间，CLI工具产生的标准输出、标准错误、退出或错误事件通过回调返回。
 
-> **说明：**
+> **说明：** 
 > 
 > 会话仅限创建进程管理：只有调用`execTool`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
 
@@ -39,7 +39,7 @@ function subscribeSession(sessionId: string, callback: ToolEventCallback): Promi
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

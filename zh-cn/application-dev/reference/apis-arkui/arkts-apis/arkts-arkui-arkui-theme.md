@@ -1,0 +1,53 @@
+# @ohos.arkui.theme
+
+主题换肤
+
+
+## 导入模块
+
+```TypeScript
+import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColors } from '@kit.ArkUI';
+```
+
+## 汇总
+
+### 类
+
+| 名称 | 说明 |
+| --- | --- |
+| [ThemeControl](arkts-arkui-arkui-theme-themecontrol-c.md) | ThemeControl将自定义Theme应用于App组件内，实现App组件风格跟随Theme切换。 |
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [Colors](arkts-arkui-arkui-theme-colors-i.md) | 主题颜色资源。 |
+| [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | 自定义主题风格对象。 |
+| [Theme](arkts-arkui-arkui-theme-theme-i.md) | 当前生效的主题风格对象，可从[onWillApplyTheme](../arkts-components/arkts-arkui-basecustomcomponent-c.md#onwillapplytheme)中获取。 |
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [CustomColors](arkts-arkui-customcolors-t.md) | 自定义主题颜色资源类型。 |
+| [CustomDarkColors](arkts-arkui-customdarkcolors-t.md) | 自定义深色主题颜色资源类型。 |
+
+## 示例
+
+```TypeScript
+### 示例1（使用setDefaultTheme）
+
+该示例主要演示[ThemeControl](arkts-arkui-arkui-theme-themecontrol-c.md).[setDefaultTheme](arkts-arkui-arkui-theme-themecontrol-c.md#setdefaulttheme)的使用。
+
+
+
+
+```
+
+```TypeScript
+### 示例2（设置组件主题色）
+
+该示例主要演示使用Colors中的brand、primary、onPrimary和container设置组件主题色。
+
+从API版本26.0.0开始，Colors新增primary、onPrimary和container属性。
+```

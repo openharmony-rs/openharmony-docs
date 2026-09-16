@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getColorTintRange
@@ -23,7 +24,7 @@ getColorTintRange(): Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -31,30 +32,13 @@ getColorTintRange(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | 用于获取色调调节值的可调范围。若接口调用失败，返回undefined。 |
+| Array&lt;number&gt; | 用于获取色调调节值的可调范围。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getColorTintRange(session: camera.PhotoSession | camera.VideoSession): Array<number> {
-  let range: Array<number> = [];
-  try {
-    range = session.getColorTintRange();
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The getColorTintRange call failed. error code: ${err.code}`);
-  }
-  return range;
-}
-```
 
 ## getWhiteBalanceRange
 
@@ -66,7 +50,7 @@ getWhiteBalanceRange(): Array<number>
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -74,7 +58,7 @@ getWhiteBalanceRange(): Array<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。若接口调用失败，返回undefined。 |
+| Array&lt;number&gt; | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -82,23 +66,6 @@ getWhiteBalanceRange(): Array<number>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 19 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession): Array<number> {
-  let range: Array<number> = [];
-  try {
-    range = session.getWhiteBalanceRange();
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The getWhiteBalanceRange call failed. error code: ${err.code}`);
-  }
-  return range;
-}
-```
 
 ## isWhiteBalanceModeSupported
 
@@ -110,7 +77,7 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -133,21 +100,3 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application.<br>**适用版本：** 12 - 19 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.VideoSession): boolean {
-  let status: boolean = false;
-  try {
-  let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
-    status = session.isWhiteBalanceModeSupported(mode);
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
-  }
-  return status;
-}
-```

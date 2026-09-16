@@ -14,20 +14,17 @@ function restartSelfAtomicService(context: Context): void
 
 重启当前原子化服务。
 
-> **说明：**
+> **说明：** 
 > 
 > - 当前仅支持以独立窗口方式拉起原子化服务。
 > 
-> - 在调用本接口成功后的3秒内，再次调用本接口、
-> [ApplicationContext.restartApp()](arkts-ability-applicationcontext-c.md#restartapp)或
-> [UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp)接口中的任一接口，系统将返回错误码1
-> 6000064。
+> - 在调用本接口成功后的3秒内，再次调用本接口、[ApplicationContext.restartApp()](arkts-ability-applicationcontext-c.md#restartapp)或[UIAbilityContext.restartApp()](arkts-ability-uiabilitycontext-c.md#restartapp)接口中的任一接口，系统将返回错误码16000064。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -35,7 +32,7 @@ function restartSelfAtomicService(context: Context): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-c.md) | 是 | 当前Ability的上下文。   **说明：**当前仅支持 [UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。&lt;/br&gt; |
+| context | [Context](arkts-ability-context-c.md) | 是 | 当前Ability的上下文。<br>**说明：** 当前仅支持[UIAbilityContext](arkts-ability-uiabilitycontext-c.md)。&lt;/br&gt; |
 
 **错误码：**
 

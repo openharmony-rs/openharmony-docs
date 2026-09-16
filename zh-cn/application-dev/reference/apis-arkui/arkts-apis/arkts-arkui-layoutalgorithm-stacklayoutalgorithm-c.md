@@ -2,7 +2,7 @@
 
 堆叠布局算法类。
 
-> **说明：**
+> **说明：** 
 > 
 > StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为DynamicLayout组件的
 > 入参指定布局算法。
@@ -10,6 +10,8 @@
 **继承/实现关系：** StackLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
 
 **起始版本：** 24
+
+**装饰器类型：** @ObservedV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,7 +27,7 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,13 +39,25 @@ constructor(option?: StackLayoutAlgorithmOptions)
 | --- | --- | --- | --- |
 | option | [StackLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-stacklayoutalgorithmoptions-i.md) | 否 | 堆叠布局算法的构造入参，设置九宫格对齐格式。 |
 
+**示例**
+
+```TypeScript
+请参考DynamicLayout组件[示例2（切换布局算法）](../arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
+```
+
 ## alignContent
 
 ```TypeScript
 public alignContent?: LocalizedAlignment
 ```
 
-设置子组件在堆叠布局算法中对齐格式。默认值：LocalizedAlignment.CENTER非法值：按默认值处理。装饰器类型：@Trace
+设置子组件在堆叠布局算法中对齐格式。
+
+默认值：LocalizedAlignment.CENTER
+
+非法值：按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** [LocalizedAlignment](arkts-arkui-localizedalignment-e.md)
 
@@ -51,7 +65,7 @@ public alignContent?: LocalizedAlignment
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 

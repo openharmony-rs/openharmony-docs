@@ -1,8 +1,8 @@
 # UIAbilityContext
 
-UIAbilityContext是需要保存状态的[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)所对应的context，继承自Context，提供 UIAbility的相关配置信息以及操作UIAbility和ServiceExtensionAbility的方法，如启动UIAbility，停止当前UIAbilityContext所属的UIAbility，启动、停止、连接、断开连接 ServiceExtensionAbility等。
+UIAbilityContext是需要保存状态的[UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)所对应的context，继承自Context，提供UIAbility的相关配置信息以及操作UIAbility和ServiceExtensionAbility的方法，如启动UIAbility，停止当前UIAbilityContext所属的UIAbility，启动、停止、连接、断开连接ServiceExtensionAbility等。
 
-**继承/实现关系：** UIAbilityContext extends Context
+**继承/实现关系：** UIAbilityContext extends [Context](arkts-ability-context-c.md)
 
 **起始版本：** 9
 
@@ -14,13 +14,13 @@ UIAbilityContext是需要保存状态的[UIAbility](arkts-ability-app-ability-ui
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>
 ```
 
-当通过 [startAbilityForResult](#startabilityforresult) 或[openLink](#openlink)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与 [terminateSelfWithResult](#terminateselfwithresult) 不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。
+当通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink)拉起目标方UIAbility，且需要目标方返回结果时，目标方可以通过该接口将结果返回并拉起调用方。与[terminateSelfWithResult](#terminateselfwithresult)不同的是，本接口在返回时不会销毁当前UIAbility。使用Promise异步回调。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -29,13 +29,13 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | abilityResult | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 包含目标方返回给拉起方的结果。 |
-| requestCode | string | 是 | 通过 [startAbilityForResult](#startabilityforresult) 或[openLink](#openlink)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过want中的 [CALLER_REQUEST_CODE](arkts-app-ability-wantconstant.md)字段获取。 |
+| requestCode | string | 是 | 通过[startAbilityForResult](#startabilityforresult)或[openLink](#openlink)拉起目标方Ability且需要目标方返回结果时，系统生成的用于标识本次调用的requestCode。该值可以通过want中的[CALLER_REQUEST_CODE](arkts-ability-app-ability-wantconstant.md)字段获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -55,12 +55,12 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 ```
 
-将当前UIAbility连接到 AppServiceExtensionAbility 。通过返回的proxy与AppServiceExtensionAbility进行通信，以使用AppServiceExtensionAbility对外提供的能力。仅支持在主线程调用。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+将当前UIAbility连接到[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)。通过返回的proxy与AppServiceExtensionAbility进行通信，以使用AppServiceExtensionAbility对外提供的能力。仅支持在主线程调用。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > 如果
-> AppServiceExtensionAbility
+> [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)
 > 实例未启动，该接口的调用方必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即
 > [extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的
 > appIdentifierAllowList属性）中的应用。
@@ -75,14 +75,14 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 连接 AppServiceExtensionAbility 的Want信息。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 连接[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的Want信息。 |
 | callback | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、连接失败、断开的信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回连接id， [disconnectAppServiceExtensionAbility]{ |
+| number | 返回连接id，[disconnectAppServiceExtensionAbility](#disconnectappserviceextensionability)根据该连接id断开连接。 |
 
 **错误码：**
 
@@ -147,11 +147,13 @@ export default class EntryAbility extends UIAbility {
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 ```
 
-将当前UIAbility连接到一个[ServiceExtensionAbility](../../../application-models/extensionability-overview.md)，通过返回的proxy与 ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。仅支持在主线程调用。
+将当前UIAbility连接到一个[ServiceExtensionAbility](../../../application-models/extensionability-overview.md)，通过返回的proxy与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[设备内组件启动规则](../../../application-models/component-startup-rules-inner-device.md)、
+> [跨设备组件启动规则](../../../application-models/component-startup-rules-cross-device.md)。
+> 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **起始版本：** 9
 
@@ -170,7 +172,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回连接id，调用方可以通过 [disconnectServiceExtensionAbility]{ |
+| number | 返回连接id，调用方可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接id来断开连接。 |
 
 **错误码：**
 
@@ -239,17 +241,17 @@ export default class EntryAbility extends UIAbility {
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise<UIServiceProxy>
 ```
 
-连接一个UIServiceExtensionAbility。使用Promise异步回调。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+连接一个UIServiceExtensionAbility。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -264,7 +266,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[UIServiceProxy](arkts-ability-uiserviceproxy-i.md)&gt; | Promise对象，包含connectUIServiceExtensionAbility执行后返回的 [UIServiceProxy]{ |
+| Promise&lt;[UIServiceProxy](arkts-ability-uiserviceproxy-i.md)&gt; | Promise对象，包含connectUIServiceExtensionAbility执行后返回的[UIServiceProxy](arkts-ability-uiserviceproxy-i.md)对象。 |
 
 **错误码：**
 
@@ -355,7 +357,7 @@ struct UIServiceExtensionAbility {
 disconnectAppServiceExtensionAbility(connection: number): Promise<void>
 ```
 
-断开与 AppServiceExtensionAbility 的连接。仅支持在主线程调用。使用Promise异步回调。 断开连接之后，为了防止使用可能失效的remote对象进行通信，建议将连接成功时返回的remote对象设置为null。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+断开与[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的连接。仅支持在主线程调用。使用Promise异步回调。断开连接之后，为了防止使用可能失效的remote对象进行通信，建议将连接成功时返回的remote对象设置为null。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 20
 
@@ -367,13 +369,13 @@ disconnectAppServiceExtensionAbility(connection: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| connection | number | 是 | 在 [connectAppServiceExtensionAbility](#connectappserviceextensionability)返回的连接id。 |
+| connection | number | 是 | 在[connectAppServiceExtensionAbility](#connectappserviceextensionability)返回的连接id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -423,7 +425,7 @@ export default class EntryAbility extends UIAbility {
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<void>): void
 ```
 
-断开与[ServiceExtensionAbility](../../../application-models/extensionability-overview.md)的连接，断开连接之后开发者需要将连接成功时返回的 remote对象置空。使用callback异步回调。仅支持在主线程调用。
+断开与[ServiceExtensionAbility](../../../application-models/extensionability-overview.md)的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用callback异步回调。仅支持在主线程调用。
 
 **起始版本：** 9
 
@@ -435,78 +437,8 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即 [connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
+| connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当断开与ServiceExtensionAbility的连接成功，err为undefined；否则为错误对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    // connection为connectServiceExtensionAbility中的返回值
-    let connection = 1;
-    let commRemote: rpc.IRemoteObject | null;
-
-    try {
-      // 断开与ServiceExtensionAbility的连接
-      this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError) => {
-        commRemote = null;
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('disconnectServiceExtensionAbility succeed');
-      });
-    } catch (err) {
-      commRemote = null;
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
-
-## disconnectServiceExtensionAbility
-
-```TypeScript
-disconnectServiceExtensionAbility(connection: number): Promise<void>
-```
-
-断开与[ServiceExtensionAbility](../../../application-models/extensionability-overview.md)的连接，断开连接之后开发者需要将连接成功时返回的 remote对象置空。使用Promise异步回调。仅支持在主线程调用。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即 [connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -550,6 +482,78 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+```TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    // connection为connectServiceExtensionAbility中的返回值
+    let connection = 1;
+    let commRemote: rpc.IRemoteObject | null;
+
+    try {
+      // 断开与ServiceExtensionAbility的连接
+      this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError) => {
+        commRemote = null;
+        if (err.code) {
+          // 处理业务逻辑错误
+          console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      });
+    } catch (err) {
+      commRemote = null;
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`disconnectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+## disconnectServiceExtensionAbility
+
+```TypeScript
+disconnectServiceExtensionAbility(connection: number): Promise<void>
+```
+
+断开与[ServiceExtensionAbility](../../../application-models/extensionability-overview.md)的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用Promise异步回调。仅支持在主线程调用。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| connection | number | 是 | 连接的ServiceExtensionAbility的标识id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+**示例**
+
+参见 [disconnectServiceExtensionAbility](#disconnectserviceextensionability)
+
 ## disconnectUIServiceExtensionAbility
 
 ```TypeScript
@@ -558,15 +562,15 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>
 
 断开与UIServiceExtensionAbility的连接。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -580,7 +584,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -655,7 +659,7 @@ struct UIServiceExtensionAbility {
 hideAbility(): Promise<void>
 ```
 
-隐藏当前UIAbility。使用Promise异步回调。仅支持在主线程调用。 调用此接口前要求确保应用已添加至状态栏。 该接口仅在PC/2in1设备中、或处于自由多窗模式的Tablet设备中可正常调用，在其他设备中返回801错误码。
+隐藏当前UIAbility。使用Promise异步回调。仅支持在主线程调用。调用此接口前要求确保应用已添加至状态栏。该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 12
 
@@ -667,7 +671,7 @@ hideAbility(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -763,7 +767,7 @@ isTerminating(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -798,13 +802,13 @@ export default class EntryAbility extends UIAbility {
 moveAbilityToBackground(): Promise<void>
 ```
 
-将处于前台的UIAbility移动到后台。使用Promise异步回调。仅支持在主线程调用。<!--RP1--><!--RP1End--> 从API version 12开始，该接口仅在Phone、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。 从API version 13开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
+将处于前台的UIAbility移动到后台。使用Promise异步回调。仅支持在主线程调用。<br>&lt;!--RP1--&gt;&lt;!--RP1End--&gt;从API version 12开始，该接口仅在Phone、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。从API version 13开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -812,7 +816,7 @@ moveAbilityToBackground(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -865,22 +869,21 @@ struct Index {
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<AbilityResult>
 ```
 
-启动一个独立窗口的原子化服务。使用Promise异步回调。仅支持在主线程调用。 原子化服务被启动后，有如下情况：  
-- 正常情况下原子化服务可以通过  
-[terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身，并且返回结果给调用方。  
-- 异常情况下比如杀死原子化服务会返回异常结果给调用方，异常结果的resultCode为-1。  
-- 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用  
-[terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身时，只将正常结果返回给最后一个调用方, 其它调用方返回异常结果，异常结果中resultCode为-1。
+启动一个独立窗口的原子化服务。使用Promise异步回调。仅支持在主线程调用。原子化服务被启动后，有如下情况：
 
-> **说明：**
+- 正常情况下原子化服务可以通过[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并且返回结果给调用方。  
+- 异常情况下比如杀死原子化服务会返回异常结果给调用方，异常结果的resultCode为-1。  
+- 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方, 其它调用方返回异常结果，异常结果中resultCode为-1。
+
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -952,21 +955,22 @@ export default class EntryAbility extends UIAbility {
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<AbilityResult>): Promise<void>
 ```
 
-通过<!--RP2-->[App Linking](../../../application-models/app-linking-startup.md)<!--RP2End-->或 [Deep Linking](../../../application-models/deep-linking-startup.md)方式启动UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用 Promise异步回调。仅支持在主线程调用。 通过在link字段中传入标准格式的URL，基于隐式want匹配规则拉起目标UIAbility。目标方必须同时具备以下过滤器特征，才能处理App Linking链接：  
+通过&lt;!--RP2--&gt;[App Linking](../../../application-models/app-linking-startup.md)&lt;!--RP2End--&gt;或[Deep Linking](../../../application-models/deep-linking-startup.md)方式启动UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。通过在link字段中传入标准格式的URL，基于隐式want匹配规则拉起目标UIAbility。目标方必须同时具备以下过滤器特征，才能处理App Linking链接：
+
 - "actions"列表中包含"ohos.want.action.viewData"。  
 - "entities"列表中包含"entity.system.browsable"。  
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。  
-如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照 [startAbilityForResult](#startabilityforresult) 接口。 传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
+如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult)接口。传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -982,7 +986,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<Abili
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -1047,7 +1051,7 @@ struct Index {
             });
           }
           catch (e) {
-            hilog.error(DOMAIN, TAG, `exception occured, errCode ${JSON.stringify(e.code)}`);
+            hilog.error(DOMAIN, TAG, `exception occurred, errCode ${JSON.stringify(e.code)}`);
           }
         })
     }
@@ -1069,7 +1073,7 @@ reportDrawnCompleted(callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1128,11 +1132,11 @@ export default class EntryAbility extends UIAbility {
 requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResult>): void
 ```
 
-启动一个支持模态弹框的ServiceExtensionAbility。ServiceExtensionAbility被启动后，应用弹出模态弹框，通过调用 [setRequestResult](arkts-ability-dialogrequest-requestcallback-i.md#setrequestresult)接口返回结果给调用者。 使用callback异步回调。仅支持在主线程调用。
+启动一个支持模态弹框的ServiceExtensionAbility。ServiceExtensionAbility被启动后，应用弹出模态弹框，通过调用[setRequestResult](arkts-ability-dialogrequest-requestcallback-i.md#setrequestresult)接口返回结果给调用者。使用callback异步回调。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
@@ -1145,7 +1149,7 @@ requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResu
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-| result | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;dialogRequest.RequestResult&gt; | 是 | 回调函数，当启动一个支持模态弹框的ServiceExtensionAbility成功，err中code为0， data为模态弹框请求结果；否则err会返回对应的错误码和错误信息。 |
+| result | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[dialogRequest.RequestResult](arkts-ability-dialogrequest-requestresult-i.md)&gt; | 是 | 回调函数，当启动一个支持模态弹框的ServiceExtensionAbility成功，err中code为0，data为模态弹框请求结果；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1203,60 +1207,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## requestDialogService
-
-```TypeScript
-requestDialogService(want: Want): Promise<dialogRequest.RequestResult>
-```
-
-启动一个支持模态弹框的ServiceExtensionAbility。ServiceExtensionAbility被启动后，应用弹出模态弹框，通过调用 [setRequestResult](arkts-ability-dialogrequest-requestcallback-i.md#setrequestresult)接口返回结果给调用者。 使用Promise异步回调。仅支持在主线程调用。
-
-> **说明：**
-> 
-> 组件启动规则详见：组件启动规则（Stage模型）。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;dialogRequest.RequestResult&gt; | Promise that returns no value. |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
-| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
-| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
-| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
-| [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
-| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
-| [16000010](../errorcode-ability.md#16000010-不允许带迁移flag) | The call with the continuation and prepare continuation flag is forbidden. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
-| [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
-| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 10+ |
-| [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled.<br>**适用版本：** 10+ |
-| [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
-
-**示例**
-
 ```TypeScript
 import { UIAbility, Want, dialogRequest } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1288,15 +1238,71 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## requestDialogService
+
+```TypeScript
+requestDialogService(want: Want): Promise<dialogRequest.RequestResult>
+```
+
+启动一个支持模态弹框的ServiceExtensionAbility。ServiceExtensionAbility被启动后，应用弹出模态弹框，通过调用[setRequestResult](arkts-ability-dialogrequest-requestcallback-i.md#setrequestresult)接口返回结果给调用者。使用Promise异步回调。仅支持在主线程调用。
+
+> **说明：** 
+> 
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[dialogRequest.RequestResult](arkts-ability-dialogrequest-requestresult-i.md)&gt; | Promise that returns no value. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
+| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
+| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
+| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
+| [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
+| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000010](../errorcode-ability.md#16000010-不允许带迁移flag) | The call with the continuation and prepare continuation flag is forbidden. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
+| [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
+| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 10+ |
+| [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled.<br>**适用版本：** 10+ |
+| [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM.<br>**适用版本：** 10+ |
+
+**示例**
+
+参见 [requestDialogService](#requestdialogservice)
+
 ## restartApp
 
 ```TypeScript
 restartApp(want: Want): Promise<void>
 ```
 
-处于获焦状态的UIAbility可以通过该接口，重启当前UIAbility所在的进程，并拉起应用内的指定UIAbility。仅支持主线程调用。使用Promise异步回调。 如果指定UIAbility就是当前UIAbility，则会刷新窗口至初始状态；如果是其他UIAbility，则会跳转并打开新的UIAbility窗口。 该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
+处于获焦状态的UIAbility可以通过该接口，重启当前UIAbility所在的进程，并拉起应用内的指定UIAbility。仅支持主线程调用。使用Promise异步回调。如果指定UIAbility就是当前UIAbility，则会刷新窗口至初始状态；如果是其他UIAbility，则会跳转并打开新的UIAbility窗口。该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > 通过该接口重启进程时，不会触发进程中Ability的onDestroy生命周期回调。
 > 
@@ -1313,7 +1319,7 @@ restartApp(want: Want): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1327,7 +1333,7 @@ restartApp(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1393,7 +1399,7 @@ restoreWindowStage(localStorage: LocalStorage): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1430,7 +1436,7 @@ export default class EntryAbility extends UIAbility {
 setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise<void>
 ```
 
-设置当前UIAbility实例的图标和标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示。使用Promise异步回调。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+设置当前UIAbility实例的图标和标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 15
 
@@ -1445,13 +1451,13 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | label | string | 是 | 新的图标标签。标签长度不超过1024字节，且不可为空字符串。 |
-| icon | image.PixelMap | 是 | 新的图标。建议图标大小为512px*512px。 |
+| icon | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 新的图标。建议图标大小为512px*512px。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -1493,16 +1499,65 @@ export default class EntryAbility extends UIAbility {
       };
       let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
       // 设置UIAbility实例的图标和标签信息
-      this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
-        .then(() => {
-          console.info('setAbilityInstanceInfo success');
-        }).catch((err: BusinessError) => {
-        console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
-      });
+      try {
+        this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
+          .then(() => {
+            console.info('setAbilityInstanceInfo success');
+          }).catch((err: BusinessError) => {
+            console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+      }
     });
   }
 }
 ```
+
+## setAbilityInstanceInfo
+
+```TypeScript
+setAbilityInstanceInfo(label: string, icon: image.PixelMap, groupId: string): Promise<void>
+```
+
+设置当前UIAbility实例的图标和标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.SET_ABILITY_INSTANCE_INFO
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| label | string | 是 | 新的图标标签。标签长度不超过1024字节，且不可为空字符串。 |
+| icon | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 新的图标。建议图标大小为512px*512px。 |
+| groupId | string | 是 | 应用内UIAbility在快捷栏上的图标聚合标签。长度不超过64个字符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Window operations encountered failures. |
+
+**示例**
+
+参见 [setAbilityInstanceInfo](#setabilityinstanceinfo)
 
 ## setColorMode
 
@@ -1512,25 +1567,19 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 设置UIAbility的深浅色模式。调用该接口前需要保证该UIAbility对应页面已完成加载。仅支持主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
-> - 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在
-> [onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期中通过
-> loadContent方法加载页面之后调用。
+> - 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在[onWindowStageCreate()](arkts-ability-app-ability-uiability-uiability-c.md#onwindowstagecreate)生命周期中通过loadContent方法加载页面之后调用。
 > 
 > - 调用该接口后会创建新的资源管理器对象，如果此前有缓存资源管理器，需要进行更新。
 > 
-> - 深浅色模式生效的优先级：UIAbility的深浅色模式
-> 应用的深浅色模式（
-> [ApplicationContext.setColorMode](arkts-ability-applicationcontext-c.md#setcolormode)）
-> 系统的深浅色模
-> 式。
+> - 深浅色模式生效的优先级：UIAbility的深浅色模式应用的深浅色模式（[ApplicationContext.setColorMode](arkts-ability-applicationcontext-c.md#setcolormode)）系统的深浅色模式。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1538,7 +1587,7 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorMode | ConfigurationConstant.ColorMode | 是 | 设置颜色模式，包括:     - COLOR_MODE_DARK：深色模式     - COLOR_MODE_LIGHT：浅色 模式     - COLOR_MODE_NOT_SET：不设置（跟随系统或应用） |
+| colorMode | [ConfigurationConstant.ColorMode](arkts-ability-configurationconstant-colormode-e.md) | 是 | 设置颜色模式，包括:<br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用） |
 
 **错误码：**
 
@@ -1580,7 +1629,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1588,7 +1637,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | AbilityConstant.ContinueState | 是 | 流转状态。 |
+| state | [AbilityConstant.ContinueState](arkts-ability-abilityconstant-continuestate-e.md) | 是 | 流转状态。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当设置UIAbility任务的流转状态成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
@@ -1624,44 +1673,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setMissionContinueState
-
-```TypeScript
-setMissionContinueState(state: AbilityConstant.ContinueState): Promise<void>
-```
-
-设置UIAbility任务的流转状态。使用Promise异步回调。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| state | AbilityConstant.ContinueState | 是 | 流转状态。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
 ```TypeScript
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1677,6 +1688,46 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setMissionContinueState
+
+```TypeScript
+setMissionContinueState(state: AbilityConstant.ContinueState): Promise<void>
+```
+
+设置UIAbility任务的流转状态。使用Promise异步回调。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| state | [AbilityConstant.ContinueState](arkts-ability-abilityconstant-continuestate-e.md) | 是 | 流转状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+**示例**
+
+参见 [setMissionContinueState](#setmissioncontinuestate)
+
 ## setMissionLabel
 
 ```TypeScript
@@ -1689,7 +1740,7 @@ setMissionLabel(label: string, callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1727,44 +1778,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setMissionLabel
-
-```TypeScript
-setMissionLabel(label: string): Promise<void>
-```
-
-设置UIAbility在多任务界面中显示的名称。使用Promise异步回调。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| label | string | 是 | 任务的名称。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
 ```TypeScript
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1782,15 +1795,55 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setMissionLabel
+
+```TypeScript
+setMissionLabel(label: string): Promise<void>
+```
+
+设置UIAbility在多任务界面中显示的名称。使用Promise异步回调。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| label | string | 是 | 任务的名称。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+**示例**
+
+参见 [setMissionLabel](#setmissionlabel)
+
 ## setMissionWindowIcon
 
 ```TypeScript
 setMissionWindowIcon(windowIcon: image.PixelMap): Promise<void>
 ```
 
-设置当前UIAbility在应用窗口、任务中心应用卡片、快捷栏窗口快照的图标。使用Promise异步回调。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+设置当前UIAbility在应用窗口、任务中心应用卡片、快捷栏窗口快照的图标。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > setMissionWindowIcon<!--Del-->、
 > [setMissionIcon](arkts-ability-uiabilitycontext-c-sys.md#setmissionicon)
@@ -1808,13 +1861,13 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowIcon | image.PixelMap | 是 | 在应用窗口、任务中心应用卡片、快捷栏窗口快照显示的Ability图标。图标必须为正方形，且大小不能超过128M，否则返回401参数错误。 |
+| windowIcon | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 在应用窗口、任务中心应用卡片、快捷栏窗口快照显示的Ability图标。图标必须为正方形，且大小不能超过128M，否则返回401参数错误。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1866,9 +1919,9 @@ export default class EntryAbility extends UIAbility {
 setOnNewWantSkipScenarios(scenarios: number): Promise<void>
 ```
 
-在特定场景下拉起UIAbility时，如果不需要触发[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调，可以通过该接口设置。仅支持在主线 程调用。使用Promise异步回调。
+在特定场景下拉起UIAbility时，如果不需要触发[onNewWant](arkts-ability-app-ability-uiability-uiability-c.md#onnewwant)生命周期回调，可以通过该接口设置。仅支持在主线程调用。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口通常用于[onCreate](arkts-ability-app-ability-uiability-uiability-c.md#oncreate)生命周期回调中。入参取值建议包含所有的
 > [Scenarios](arkts-ability-contextconstant-scenarios-e.md)枚举值。详见下方示例代码。
@@ -1877,7 +1930,7 @@ setOnNewWantSkipScenarios(scenarios: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1891,7 +1944,7 @@ setOnNewWantSkipScenarios(scenarios: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1942,7 +1995,7 @@ setRestoreEnabled(enabled: boolean): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1985,7 +2038,7 @@ export default class EntryAbility extends UIAbility {
 showAbility(): Promise<void>
 ```
 
-显示当前UIAbility。使用Promise异步回调。仅支持在主线程调用。 调用此接口前要求确保应用已添加至状态栏。 该接口仅在PC/2in1设备中、或处于自由多窗模式的Tablet设备中可正常调用，在其他设备中返回801错误码。
+显示当前UIAbility。使用Promise异步回调。仅支持在主线程调用。调用此接口前要求确保应用已添加至状态栏。该接口仅在PC/2in1设备中、或处于[自由多窗模式](../../../windowmanager/window-terminology.md#自由多窗模式)的Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 12
 
@@ -1997,7 +2050,7 @@ showAbility(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -2089,15 +2142,15 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 启动一个UIAbility。使用callback异步回调。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2174,6 +2227,77 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+```TypeScript
+import { UIAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let options: StartOptions = {
+      displayId: 0
+    };
+
+    try {
+      // 启动UIAbility
+      this.context.startAbility(want, options, (err: BusinessError) => {
+        if (err.code) {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('startAbility succeed');
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+```TypeScript
+import { UIAbility, Want, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let options: StartOptions = {
+      displayId: 0
+    };
+
+    try {
+      // 启动UIAbility
+      this.context.startAbility(want, options)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ## startAbility
 
 ```TypeScript
@@ -2182,15 +2306,15 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 启动一个UIAbility。使用callback异步回调。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2240,41 +2364,7 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 
 **示例**
 
-```TypeScript
-import { UIAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      deviceId: '',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility'
-    };
-    let options: StartOptions = {
-      displayId: 0
-    };
-
-    try {
-      // 启动UIAbility
-      this.context.startAbility(want, options, (err: BusinessError) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbility succeed');
-      });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbility failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
+参见 [startAbility](#startability)
 
 ## startAbility
 
@@ -2284,15 +2374,15 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 启动一个UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2307,7 +2397,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2347,40 +2437,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 **示例**
 
-```TypeScript
-import { UIAbility, Want, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility'
-    };
-    let options: StartOptions = {
-      displayId: 0
-    };
-
-    try {
-      // 启动UIAbility
-      this.context.startAbility(want, options)
-        .then(() => {
-          // 执行正常业务
-          console.info('startAbility succeed');
-        })
-        .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
-        });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbility failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
+参见 [startAbility](#startability)
 
 ## startAbilityByCall
 
@@ -2388,18 +2445,17 @@ export default class EntryAbility extends UIAbility {
 startAbilityByCall(want: Want): Promise<Caller>
 ```
 
-该接口用于获取[Caller](arkts-ability-app-ability-uiability-caller-i.md)通信对象，以便于与 [Callee](arkts-ability-app-ability-uiability-callee-i.md)进行通信。如果指定UIAbility未启动，则会将UIAbility启动至前台或后台。使用Promise异步回调。仅支持在主线程调 用。 该接口不支持拉起启动模式为[specified模式](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility。
+该接口用于获取[Caller](arkts-ability-app-ability-uiability-caller-i.md)通信对象，以便于与[Callee](arkts-ability-app-ability-uiability-callee-i.md)进行通信。如果指定UIAbility未启动，则会将UIAbility启动至前台或后台。使用Promise异步回调。仅支持在主线程调用。该接口不支持拉起启动模式为[specified模式](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility。
 
-> **说明：**
+> **说明：** 
 > 
 > - 跨设备场景下，调用方与目标方必须为同一应用。
 > 
 > - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 > 
-> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见
-> 组件启动规则（Stage模型）。
+> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 > 
-> **说明：**
+> **说明：** 
 > 
 > - API version 10及之前版本，需申请ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（该权限仅系统应用可用）。
 > 
@@ -2409,7 +2465,7 @@ startAbilityByCall(want: Want): Promise<Caller>
 
 **需要权限：** 
 - API版本11+：ohos.permission.DISTRIBUTED_DATASYNC
-- API版本9 - 10：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
+- API版本9-10：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2456,129 +2512,16 @@ startAbilityByCall(want: Want): Promise<Caller>
 
 **示例**
 
+```TypeScript
 下面代码展示的是，调用方启动目标方到后台，获取Caller成功后发消息到目标方，然后释放Caller对象。
-
-```TypeScript
-import { Caller, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { rpc } from '@kit.IPCKit';
-
-const DOMAIN = 0x0000;
-const LOG_TAG = 'TEST_TAG';
-
-class TestParcelable implements rpc.Parcelable {
-  age: number = 0;
-  name: string = '';
-  marshalling(dataOut: rpc.MessageSequence): boolean {
-    dataOut.writeInt(this.age);
-    dataOut.writeString(this.name);
-    return true;
-  }
-  unmarshalling(dataIn: rpc.MessageSequence): boolean {
-    this.age = dataIn.readInt();
-    this.name = dataIn.readString();
-    return true;
-  }
-}
-
-export default class EntryAbility extends UIAbility {
-  async onForeground() {
-    let caller: Caller;
-    // 后台启动Ability
-    let wantBackground: Want = {
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-    };
-
-    try {
-      // 获取Caller通信对象，将UIAbility启动到后台
-      caller = await this.context.startAbilityByCall(wantBackground);
-      await caller.call('TEST_CALL', new TestParcelable());
-      caller.release();
-    } catch (err) {
-      // 处理入参错误异常
-      hilog.error(DOMAIN, LOG_TAG, `startAbilityByCall failed ${err}`);
-    }
-  }
-}
 ```
 
+```TypeScript
 下面代码展示，目标方启动后注册监听，销毁时取消监听。
-
-```TypeScript
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { rpc } from '@kit.IPCKit';
-
-const DOMAIN = 0x0000;
-const LOG_TAG = 'TEST_TAG';
-
-class TestParcelable implements rpc.Parcelable {
-  age: number = 0;
-  name: string = '';
-  marshalling(dataOut: rpc.MessageSequence): boolean {
-    dataOut.writeInt(this.age);
-    dataOut.writeString(this.name);
-    return true;
-  }
-  unmarshalling(dataIn: rpc.MessageSequence): boolean {
-    this.age = dataIn.readInt();
-    this.name = dataIn.readString();
-    return true;
-  }
-}
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    hilog.info(DOMAIN, LOG_TAG, '%{public}s', 'Ability onCreate');
-    // 注册监听
-    this.callee.on('TEST_CALL', (data: rpc.MessageSequence) => {
-      let recv = new TestParcelable();
-      data.readParcelable(recv);
-      recv.age++;
-      return recv;
-    });
-  }
-
-  onDestroy(): void {
-    hilog.info(DOMAIN, LOG_TAG, '%{public}s', 'Ability onDestroy');
-    // 取消监听
-    this.callee.off('TEST_CALL');
-  }
-}
 ```
 
-下面代码展示，调用方启动目标方到前台场景。
-
 ```TypeScript
-import { Caller, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
-const LOG_TAG = 'TEST_TAG';
-
-export default class EntryAbility extends UIAbility {
-  async onForeground() {
-    let caller: Caller;
-    // 启动UIAbility到前台，将parameters中的'ohos.aafwk.param.callAbilityToForeground'配置为true
-    let wantForeground: Want = {
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      parameters: {
-        'ohos.aafwk.param.callAbilityToForeground': true
-      }
-    };
-
-    try {
-      // 获取Caller通信对象，将UIAbility启动到前台
-      caller = await this.context.startAbilityByCall(wantForeground);
-      caller.release();
-    } catch (err) {
-      // 处理入参错误异常
-      hilog.error(DOMAIN, LOG_TAG, `startAbilityByCall failed ${err}`);
-    }
-  }
-}
+下面代码展示，调用方启动目标方到前台场景。
 ```
 
 ## startAbilityByType
@@ -2588,13 +2531,13 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
     abilityStartCallback: AbilityStartCallback, callback: AsyncCallback<void>): void
 ```
 
-通过type隐式启动[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)。使用callback异步回调。仅支持在主线 程调用，仅支持处于前台的应用调用。
+通过type隐式启动[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)。使用callback异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2602,8 +2545,8 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | string | 是 | 启动的UIExtensionAbility类型，取值详见 [通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
-| wantParam | Record &lt;string, Object&gt; | 是 | 表示扩展参数。 |
+| type | string | 是 | 启动的UIExtensionAbility类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
+| wantParam | Record&lt;string, Object&gt; | 是 | 表示扩展参数。 |
 | abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 回调函数，返回启动失败后的详细错误信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当接口调用成功，err为undefined；否则为错误对象。 |
 
@@ -2649,51 +2592,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## startAbilityByType
-
-```TypeScript
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback): Promise<void>
-```
-
-通过type隐式启动[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)。使用Promise异步回调。仅支持在主线程 调用，仅支持处于前台的应用调用。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| type | string | 是 | 启动的UIExtensionAbility类型，取值详见 [通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
-| wantParam | Record &lt;string, Object&gt; | 是 | 表示扩展参数。 |
-| abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 回调函数，返回启动失败后的详细错误信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
-| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released.<br>**适用版本：** 11 |
-
-**示例**
-
 ```TypeScript
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2721,28 +2619,75 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## startAbilityByType
+
+```TypeScript
+startAbilityByType(type: string, wantParam: Record<string, Object>,
+    abilityStartCallback: AbilityStartCallback): Promise<void>
+```
+
+通过type隐式启动[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)。使用Promise异步回调。仅支持在主线程调用，仅支持处于前台的应用调用。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | string | 是 | 启动的UIExtensionAbility类型，取值详见[通过startAbilityByType接口拉起垂类面板](../../../application-models/start-intent-panel.md#匹配规则)。 |
+| wantParam | Record&lt;string, Object&gt; | 是 | 表示扩展参数。 |
+| abilityStartCallback | [AbilityStartCallback](arkts-ability-abilitystartcallback-i.md) | 是 | 回调函数，返回启动失败后的详细错误信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
+| [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released.<br>**适用版本：** 11 |
+
+**示例**
+
+参见 [startAbilityByType](#startabilitybytype)
+
 ## startAbilityForResult
 
 ```TypeScript
 startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 ```
 
-启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。 UIAbility被启动后，有如下情况：  
-- 正常情况下可以通过调用  
-[terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身，并将结果返回给调用方。  
+启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。UIAbility被启动后，有如下情况：
+
+- 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。  
 - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。  
 - 如果被启动的UIAbility是[单实例模式](../../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调  
-用该接口启动，当这个UIAbility调用 [terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
+用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2820,28 +2765,99 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+```TypeScript
+import { UIAbility, Want, common, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let options: StartOptions = {
+      displayId: 0
+    };
+
+    try {
+      // 启动UIAbility并获取返回结果
+      this.context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
+        if (err.code) {
+          // 处理业务逻辑错误
+          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('startAbilityForResult succeed');
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+```TypeScript
+import { UIAbility, Want, common, StartOptions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let options: StartOptions = {
+      displayId: 0
+    };
+
+    try {
+      // 启动UIAbility并获取返回结果
+      this.context.startAbilityForResult(want, options)
+        .then((result: common.AbilityResult) => {
+          // 执行正常业务
+          console.info('startAbilityForResult succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ## startAbilityForResult
 
 ```TypeScript
 startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void
 ```
 
-启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。 UIAbility被启动后，有如下情况：  
-- 正常情况下可以通过调用  
-[terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身，并将结果返回给调用方。  
+启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。仅支持在主线程调用。UIAbility被启动后，有如下情况：
+
+- 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。  
 - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。  
 - 如果被启动的UIAbility是[单实例模式](../../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调  
-用该接口启动，当这个UIAbility调用 [terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
+用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2887,41 +2903,7 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 **示例**
 
-```TypeScript
-import { UIAbility, Want, common, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      deviceId: '',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility'
-    };
-    let options: StartOptions = {
-      displayId: 0
-    };
-
-    try {
-      // 启动UIAbility并获取返回结果
-      this.context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbilityForResult succeed');
-      });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
+参见 [startAbilityForResult](#startabilityforresult)
 
 ## startAbilityForResult
 
@@ -2929,22 +2911,22 @@ export default class EntryAbility extends UIAbility {
 startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult>
 ```
 
-启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。 UIAbility被启动后，有如下情况：  
-- 正常情况下可以通过调用  
-[terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身，并将结果返回给调用方。  
+启动一个UIAbility，并通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。仅支持在主线程调用。UIAbility被启动后，有如下情况：
+
+- 正常情况下可以通过调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身，并将结果返回给调用方。  
 - 异常情况下比如杀死UIAbility会将异常结果返回给调用方，异常结果中resultCode为-1。  
 - 如果被启动的UIAbility是[单实例模式](../../../application-models/uiability-launch-type.md#singleton启动模式)，且这个UIAbility被不同应用多次调  
-用该接口启动，当这个UIAbility调用 [terminateSelfWithResult](#terminateselfwithresult) 接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
+用该接口启动，当这个UIAbility调用[terminateSelfWithResult](#terminateselfwithresult)接口销毁自身时，只将正常结果返回给最后一个调用方，其它调用方返回异常结果，异常结果中resultCode为-1。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2995,40 +2977,7 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 **示例**
 
-```TypeScript
-import { UIAbility, Want, common, StartOptions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    let want: Want = {
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility'
-    };
-    let options: StartOptions = {
-      displayId: 0
-    };
-
-    try {
-      // 启动UIAbility并获取返回结果
-      this.context.startAbilityForResult(want, options)
-        .then((result: common.AbilityResult) => {
-          // 执行正常业务
-          console.info('startAbilityForResult succeed');
-        })
-        .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-        });
-    } catch (err) {
-      // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbilityForResult failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
+参见 [startAbilityForResult](#startabilityforresult)
 
 ## startAppServiceExtensionAbility
 
@@ -3036,12 +2985,12 @@ export default class EntryAbility extends UIAbility {
 startAppServiceExtensionAbility(want: Want): Promise<void>
 ```
 
-启动 AppServiceExtensionAbility 实例。使用Promise异步回调。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+启动[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口的调用方必须为
-> AppServiceExtensionAbility
+> [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)
 > 所属应用或者在AppServiceExtensionAbility支持的应用清单（即
 > [extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的
 > appIdentifierAllowList属性）中的应用。
@@ -3056,13 +3005,13 @@ startAppServiceExtensionAbility(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动 AppServiceExtensionAbility 的Want信息。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的Want信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3123,17 +3072,15 @@ export default class EntryAbility extends UIAbility {
 startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: StartOptions): Promise<void>
 ```
 
-在当前进程中启动应用程序自己的UIAbility。 从API version 23开始，该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。 从API version 22开始，该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+在当前进程中启动应用程序自己的UIAbility。从API version 23开始，该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 22开始，该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > - 只能冷启动目标UIAbility，如果目标UIAbility实例已经启动过，则启动失败。
 > 
-> - 通过该接口启动的UIAbility实例，将运行在调用方所在的进程中。其他关于目标UIAbility的进程相关的策略（例如在
-> [module.json5配置文件](../../../quick-start/module-configuration-file.md)中通过isolationProcess或isolationMode字段来指定进程），均
-> 不会生效。
+> - 通过该接口启动的UIAbility实例，将运行在调用方所在的进程中。其他关于目标UIAbility的进程相关的策略（例如在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中通过isolationProcess或isolationMode字段来指定进程），均不会生效。
 
-> **说明：**
+> **说明：** 
 > 
 > 
 > -目标UIAability只能是冷启动的。如果目标UIAability的实例已经
@@ -3154,15 +3101,15 @@ startSelfUIAbilityInCurrentProcess(want: Want, specifiedFlag: string, options?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动Ability的必要信息。只支持 [显式启动](../../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持 [隐式启动](../../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
-| specifiedFlag | string | 是 | UIAbility的ID。此ID不得与任何已运行的ID重复   - 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。    **说明：**当通过该接口拉起启动模式为 [specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发 [onAcceptWant](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwant)回调。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动Ability的必要信息。只支持[显式启动](../../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持[隐式启动](../../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
+| specifiedFlag | string | 是 | UIAbility的ID。此ID不得与任何已运行的ID重复   - 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。 <br>**说明：** <br>当通过该接口拉起启动模式为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发[onAcceptWant](arkts-ability-app-ability-abilitystage-abilitystage-c.md#onacceptwant)回调。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动Ability所携带的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3220,17 +3167,17 @@ export default class EntryAbility extends UIAbility {
 startUIServiceExtensionAbility(want: Want): Promise<void>
 ```
 
-启动一个UIServiceExtensionAbility。使用Promise异步回调。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+启动一个UIServiceExtensionAbility。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3244,7 +3191,7 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，包含接口执行结果。 |
+| Promise&lt;void&gt; | Promise对象，包含接口执行结果。 |
 
 **错误码：**
 
@@ -3309,12 +3256,12 @@ struct Index {
 stopAppServiceExtensionAbility(want: Want): Promise<void>
 ```
 
-停止 AppServiceExtensionAbility 实例。使用Promise异步回调。 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+停止[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)实例。使用Promise异步回调。该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口的调用方必须为
-> AppServiceExtensionAbility
+> [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)
 > 所属应用或者在AppServiceExtensionAbility支持的应用清单（即
 > [extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的
 > appIdentifierAllowList属性）中的应用。
@@ -3329,13 +3276,13 @@ stopAppServiceExtensionAbility(want: Want): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 停止 AppServiceExtensionAbility 的Want信息。 |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 停止[AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的Want信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -3394,7 +3341,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 
 销毁UIAbility自身。使用callback异步回调。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置
 > [removeMissionAfterTerminate](../../../quick-start/module-configuration-file.md#abilities标签)为true。
@@ -3403,7 +3350,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3427,49 +3374,12 @@ terminateSelf(callback: AsyncCallback<void>): void
 
 **示例**
 
-使用terminateSelf接口停止UIAbility示例代码如下，默认情况下应用会在最近任务列表中保留快照。
-
 ```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    try {
-      // 销毁UIAbility自身
-      this.context.terminateSelf((err: BusinessError) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('terminateSelf succeed');
-      });
-    } catch (err) {
-      // 捕获同步的参数错误
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`terminateSelf failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
+使用terminateSelf接口停止UIAbility示例代码如下，默认情况下应用会在最近任务列表中保留快照。
 ```
 
-（可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
-
 ```TypeScript
-{
-  "module": {
-    // ...
-    "abilities": [
-      {
-        // ...
-        "removeMissionAfterTerminate": true
-      }
-    ]
-  }
-}
+（可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 ```
 
 ## terminateSelf
@@ -3480,7 +3390,7 @@ terminateSelf(): Promise<void>
 
 销毁UIAbility自身。使用Promise异步回调。仅支持在主线程调用。
 
-> **说明：**
+> **说明：** 
 > 
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置
 > [removeMissionAfterTerminate](../../../quick-start/module-configuration-file.md#abilities标签)为true。
@@ -3489,7 +3399,7 @@ terminateSelf(): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3497,7 +3407,7 @@ terminateSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3512,50 +3422,7 @@ terminateSelf(): Promise<void>
 
 **示例**
 
-使用terminateSelf接口停止UIAbility示例代码如下，默认情况下应用会在最近任务列表中保留快照。
-
-```TypeScript
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onForeground() {
-    try {
-      // 销毁UIAbility自身
-      this.context.terminateSelf()
-        .then(() => {
-          // 执行正常业务
-          console.info('terminateSelf succeed');
-        })
-        .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
-          console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
-        });
-    } catch (err) {
-      // 捕获同步的参数错误
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`terminateSelf failed, code is ${code}, message is ${message}`);
-    }
-  }
-}
-```
-
-（可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
-
-```TypeScript
-{
-  "module": {
-    // ...
-    "abilities": [
-      {
-        // ...
-        "removeMissionAfterTerminate": true
-      }
-    ]
-  }
-}
-```
+参见 [terminateSelf](#terminateself)
 
 ## terminateSelfWithResult
 
@@ -3563,9 +3430,9 @@ export default class EntryAbility extends UIAbility {
 terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void
 ```
 
-销毁UIAbility自身。使用callback异步回调。仅支持在主线程调用。 仅当UIAbility通过 [startAbilityForResult](#startabilityforresult) 接口拉起时，调用terminateSelfWithResult接口销毁UIAbility，才会返回结果给调用方。
+销毁UIAbility自身。使用callback异步回调。仅支持在主线程调用。仅当UIAbility通过[startAbilityForResult](#startabilityforresult)接口拉起时，调用terminateSelfWithResult接口销毁UIAbility，才会返回结果给调用方。
 
-> **说明：**
+> **说明：** 
 > 
 > 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置
 > [removeMissionAfterTerminate](../../../quick-start/module-configuration-file.md#abilities标签)为true。
@@ -3574,7 +3441,7 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3637,53 +3504,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## terminateSelfWithResult
-
-```TypeScript
-terminateSelfWithResult(parameter: AbilityResult): Promise<void>
-```
-
-销毁UIAbility自身。使用Promise异步回调。仅支持在主线程调用。 仅当UIAbility通过 [startAbilityForResult](#startabilityforresult) 接口拉起时，调用terminateSelfWithResult接口销毁UIAbility，才会返回结果给调用方。
-
-> **说明：**
-> 
-> 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置
-> [removeMissionAfterTerminate](../../../quick-start/module-configuration-file.md#abilities标签)为true。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给startAbilityForResult?接口调用方的信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 9 |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 9 |
-| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission.<br>**适用版本：** 9 |
-| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
 ```TypeScript
 import { UIAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3722,6 +3542,55 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## terminateSelfWithResult
+
+```TypeScript
+terminateSelfWithResult(parameter: AbilityResult): Promise<void>
+```
+
+销毁UIAbility自身。使用Promise异步回调。仅支持在主线程调用。仅当UIAbility通过[startAbilityForResult](#startabilityforresult)接口拉起时，调用terminateSelfWithResult接口销毁UIAbility，才会返回结果给调用方。
+
+> **说明：** 
+> 
+> 调用该接口后，任务中心的任务默认不会清理，如需清理，需要配置
+> [removeMissionAfterTerminate](../../../quick-start/module-configuration-file.md#abilities标签)为true。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给startAbilityForResult?接口调用方的信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 9 |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 9 |
+| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission.<br>**适用版本：** 9 |
+| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+
+**示例**
+
+参见 [terminateSelfWithResult](#terminateselfwithresult)
+
 ## abilityInfo
 
 ```TypeScript
@@ -3736,7 +3605,7 @@ UIAbility的相关信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3754,7 +3623,7 @@ config: Configuration
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3772,7 +3641,7 @@ currentHapModuleInfo: HapModuleInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -3784,12 +3653,12 @@ windowStage: window.WindowStage
 
 当前WindowStage对象。仅支持在主线程调用。
 
-**类型：** window.WindowStage
+**类型：** [window.WindowStage](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

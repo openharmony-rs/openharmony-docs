@@ -24,7 +24,7 @@ function hasWindowFocus(callback: AsyncCallback<boolean>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。如果此Ability当前具有视窗焦点，则返回true；否则返回false。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 回调函数。<br>如果此Ability当前具有视窗焦点，则返回true；否则返回false。 |
 
 **示例**
 
@@ -38,6 +38,15 @@ featureAbility.hasWindowFocus((error, data) => {
   } else {
     console.info(`hasWindowFocus success, data: ${JSON.stringify(data)}`);
   }
+});
+```
+
+```TypeScript
+import { featureAbility } from '@kit.AbilityKit';
+
+// 检查Ability的主窗口是否具有窗口焦点
+featureAbility.hasWindowFocus().then((data) => {
+  console.info(`hasWindowFocus data: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -60,15 +69,8 @@ function hasWindowFocus(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象。如果此Ability当前具有视窗焦点，则返回true；否则返回false。 |
+| Promise&lt;boolean&gt; | Promise对象。如果此Ability当前具有视窗焦点，则返回true；否则返回false。 |
 
 **示例**
 
-```TypeScript
-import { featureAbility } from '@kit.AbilityKit';
-
-// 检查Ability的主窗口是否具有窗口焦点
-featureAbility.hasWindowFocus().then((data) => {
-  console.info(`hasWindowFocus data: ${JSON.stringify(data)}`);
-});
-```
+参见 [hasWindowFocus](#haswindowfocus)

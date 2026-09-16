@@ -1,6 +1,6 @@
 # PageInfo
 
-Defines the PageInfo type. The value of routerPageInfo indicates the information of the router page, or undefined if the frameNode does not have router page information. And the value of navDestinationInfo indicates the information of the navDestination, or undefined if the frameNode does not have navDestination information.
+Router和NavDestination等页面信息，若无对应的Router或NavDestination页面信息，则对应属性为undefined。
 
 **起始版本：** 12
 
@@ -21,15 +21,15 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 navDestinationInfo?: observer.NavDestinationInfo
 ```
 
-the property of navDestination information.
+NavDestination页面信息，包含当前NavDestination页面的导航状态和页面信息。当页面为NavDestination页面时，可通过此属性获取对应的NavDestination页面信息；若当前页面不是NavDestination页面，则该属性为undefined。若无对应的NavDestination页面信息，则该属性为undefined。
 
-**类型：** observer.NavDestinationInfo
+**类型：** [observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,14 +39,14 @@ the property of navDestination information.
 routerPageInfo?: observer.RouterPageInfo
 ```
 
-the property of router page information.
+Router页面信息，包含当前Router页面的路由状态和页面信息。当页面为Router页面时，可通过此属性获取对应的Router页面信息；若当前页面不是Router页面，则该属性为undefined。若无对应的Router页面信息，则该属性为undefined。
 
-**类型：** observer.RouterPageInfo
+**类型：** [observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

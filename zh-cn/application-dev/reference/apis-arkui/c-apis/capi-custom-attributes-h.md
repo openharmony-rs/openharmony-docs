@@ -12,5 +12,3 @@
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-## 汇总
-

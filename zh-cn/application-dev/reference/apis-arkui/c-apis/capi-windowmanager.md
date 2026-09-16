@@ -5,6 +5,7 @@
 Provides abilities of windowManager on the native side, such as picture in picture window.
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

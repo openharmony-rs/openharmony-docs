@@ -12,7 +12,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 function off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 ```
 
-注销监听应用组件开机自启动状态变化的回调函数。 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
+注销监听应用组件开机自启动状态变化的回调函数。从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
 **起始版本：** 11
 
@@ -39,26 +39,3 @@ function off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
-
-**示例**
-
-```TypeScript
-import { autoStartupManager, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 注销监听应用组件开机自启动状态变化
-  autoStartupManager.off('systemAutoStartup', {
-    onAutoStartupOn(data: common.AutoStartupInfo) {
-      console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
-    },
-    onAutoStartupOff(data: common.AutoStartupInfo) {
-      console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
-    }
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let msg = (err as BusinessError).message;
-  console.error(`autostartupmanager on failed, err code: ${code}, err msg: ${msg}.`);
-}
-```

@@ -21,7 +21,7 @@ info: CliCmdInfo | Permissions
 
 操作详细信息。
 
-**类型：** [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md) \| Permissions
+**类型：** [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md) &#124; Permissions
 
 **起始版本：** 26.0.0
 

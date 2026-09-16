@@ -32,7 +32,11 @@ customData: CustomData
 isPopup: boolean
 ```
 
-自动填充服务是否拉起popup窗口。true：当前拉起popup窗口。false：当前拉起模态窗。
+自动填充服务是否拉起popup窗口。
+
+true：当前拉起popup窗口。
+
+false：当前拉起模态窗。
 
 **类型：** boolean
 
@@ -58,6 +62,8 @@ type: AutoFillType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **系统接口：** 此接口为系统接口。
@@ -75,6 +81,8 @@ viewData: ViewData
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

@@ -12,14 +12,13 @@ import { featureAbility } from '@kit.AbilityKit';
 function startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback<AbilityResult>): void
 ```
 
-启动一个Ability。使用callback异步回调。启动Ability后，存在如下几种情况：  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) 接口使之终止并且返回结果给调用方。  
-- 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用  
-[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) 接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+启动一个Ability。使用callback异步回调。启动Ability后，存在如下几种情况：
 
-> **说明：**
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止并且返回结果给调用方。  
+- 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。  
+- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
 
@@ -67,44 +66,6 @@ featureAbility.startAbilityForResult(
 );
 ```
 
-
-## startAbilityForResult
-
-```TypeScript
-function startAbilityForResult(parameter: StartAbilityParameter): Promise<AbilityResult>
-```
-
-启动一个Ability。使用Promise异步回调。启动Ability后，存在如下几种情况：  
-- 正常情况下可通过调用  
-[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) 接口使之终止并且返回结果给调用方。  
-- 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用  
-[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md) 接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
-
-> **说明：**
-> 
-> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象，返回启动Ability的结果。 |
-
-**示例**
-
 ```TypeScript
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
@@ -139,3 +100,42 @@ featureAbility.startAbilityForResult(
   console.info(`startAbilityForResult data: ${JSON.stringify(data)}`);
 });
 ```
+
+
+## startAbilityForResult
+
+```TypeScript
+function startAbilityForResult(parameter: StartAbilityParameter): Promise<AbilityResult>
+```
+
+启动一个Ability。使用Promise异步回调。启动Ability后，存在如下几种情况：
+
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止并且返回结果给调用方。  
+- 异常情况下比如杀死Ability会返回异常信息给调用方, 异常信息中resultCode为-1。  
+- 如果被启动的Ability模式是单实例模式, 不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+
+> **说明：** 
+> 
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise对象，返回启动Ability的结果。 |
+
+**示例**
+
+参见 [startAbilityForResult](#startabilityforresult)

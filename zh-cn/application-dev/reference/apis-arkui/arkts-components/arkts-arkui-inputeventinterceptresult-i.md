@@ -6,18 +6,17 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## action
 
 ```TypeScript
 action: InputEventInterceptAction
 ```
 
-输入事件拦截动作。CONTINUE：允许事件继续传递到UI框架。BLOCK：阻止事件传递到UI框架。
+输入事件拦截动作。
+
+CONTINUE：允许事件继续传递到UI框架。
+
+BLOCK：阻止事件传递到UI框架。
 
 **类型：** [InputEventInterceptAction](../arkts-apis/arkts-arkui-inputeventinterceptaction-e.md)
 
@@ -25,6 +24,6 @@ action: InputEventInterceptAction
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

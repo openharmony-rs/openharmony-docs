@@ -31,81 +31,11 @@ function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000015](../errorcode-ability.md#16000015-服务超时) | Service timeout. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
-
-**示例**
-
-```TypeScript
-import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 用于存储创建的WantAgent实例
-let wantAgentData: _WantAgent;
-// WantAgentInfo对象
-let wantAgentInfo: wantAgent.WantAgentInfo = {
-  wants: [
-    {
-      deviceId: 'deviceId',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      action: 'action1',
-      entities: ['entity1'],
-      type: 'MIMETYPE',
-      uri: 'key={true,true,false}',
-      parameters:
-      {
-        mykey0: 2222,
-        mykey1: [1, 2, 3],
-        mykey2: '[1, 2, 3]',
-        mykey3: 'ssssssssssssssssssssssssss',
-        mykey4: [false, true, false],
-        mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
-        mykey6: true,
-      }
-    } as Want
-  ],
-  actionType: wantAgent.OperationType.START_ABILITIES,
-  requestCode: 0,
-  wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-};
-
-// 创建WantAgent实例的回调函数
-let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
-  if (err) {
-    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
-  } else {
-    wantAgentData = data;
-  }
-  // 获取Want数据的回调函数
-  let getWantCallback = (err: BusinessError, data: Want) => {
-    if (err.code) {
-      console.error(`Failed to getWant. Code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info(`getWant success, data: ${JSON.stringify(data)}.`);
-    }
-  }
-  try {
-    // 获取WantAgent对象的Want数据
-    wantAgent.getWant(wantAgentData, getWantCallback);
-  } catch(err) {
-    let code = (err as BusinessError).code;
-    let msg = (err as BusinessError).message;
-    console.error(`getWant failed, code: ${code}, message: ${msg}.`);
-  }
-}
-
-try {
-  // 创建WantAgent实例
-  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
-} catch(err) {
-  let code = (err as BusinessError).code;
-  let msg = (err as BusinessError).message;
-  console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
-}
-```
 
 
 ## getWant
@@ -138,74 +68,8 @@ function getWant(agent: WantAgent): Promise<Want>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System App. Interface caller is not a system app. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-服务未响应) | Service busy. There are concurrent tasks. Try again later. |
 | [16000015](../errorcode-ability.md#16000015-服务超时) | Service timeout. |
 | [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
-
-**示例**
-
-```TypeScript
-import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 用于存储创建的WantAgent实例
-let wantAgentData: _WantAgent;
-// WantAgentInfo对象
-let wantAgentInfo: wantAgent.WantAgentInfo = {
-  wants: [
-    {
-      deviceId: 'deviceId',
-      bundleName: 'com.example.myapplication',
-      abilityName: 'EntryAbility',
-      action: 'action1',
-      entities: ['entity1'],
-      type: 'MIMETYPE',
-      uri: 'key={true,true,false}',
-      parameters:
-      {
-        mykey0: 2222,
-        mykey1: [1, 2, 3],
-        mykey2: '[1, 2, 3]',
-        mykey3: 'ssssssssssssssssssssssssss',
-        mykey4: [false, true, false],
-        mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
-        mykey6: true,
-      }
-    } as Want
-  ],
-  actionType: wantAgent.OperationType.START_ABILITIES,
-  requestCode: 0,
-  wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-};
-
-// 创建WantAgent实例的回调函数
-let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
-  if (err) {
-    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
-  } else {
-    wantAgentData = data;
-  }
-  try {
-    // 获取WantAgent对象的Want数据
-    wantAgent.getWant(wantAgentData).then((data)=>{
-      console.info(`getWant success, data: ${JSON.stringify(data)}`);
-    }).catch((err: BusinessError)=>{
-      console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
-    });
-  } catch(err){
-    let code = (err as BusinessError).code;
-    let msg = (err as BusinessError).message;
-    console.error(`getWant failed, code: ${code}, message: ${msg}.`);
-  }
-}
-
-try {
-  // 创建WantAgent实例
-  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
-} catch(err) {
-  let code = (err as BusinessError).code;
-  let msg = (err as BusinessError).message;
-  console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
-}
-```

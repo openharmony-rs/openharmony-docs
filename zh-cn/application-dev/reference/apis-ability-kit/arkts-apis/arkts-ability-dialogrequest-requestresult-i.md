@@ -20,7 +20,7 @@ result: ResultCode
 
 表示结果码。
 
-**类型：** ResultCode
+**类型：** [ResultCode](arkts-ability-dialogrequest-resultcode-e.md)
 
 **起始版本：** 9
 

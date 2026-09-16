@@ -16,7 +16,7 @@ UNDEFINED = 0
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -26,12 +26,19 @@ UNDEFINED = 0
 FULL_SCREEN = 1
 ```
 
-表示APP全屏模式。  
-自由窗口状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。可通过[maximize()](arkts-arkui-window-window-i.md#maximize)和 [setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown)配置，当hover到热区时是否显示标题栏和 dock栏。当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。非自由窗口状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过 [setSpecificSystemBarEnabled()](arkts-arkui-window-window-i.md#setspecificsystembarenabled)配置是否显示状态栏。
+表示APP全屏模式。
+
+[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。
+
+可通过[maximize()](arkts-arkui-window-window-i.md#maximize)和[setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown)配置，当hover到热区时是否显示标题栏和dock栏。
+
+当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。
+
+非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](arkts-arkui-window-window-i.md#setspecificsystembarenabled)配置是否显示状态栏。
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -41,11 +48,11 @@ FULL_SCREEN = 1
 MAXIMIZE = 2
 ```
 
-表示APP窗口最大化模式，自由窗口状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非 自由窗口状态下，不存在该状态。
+表示APP窗口最大化模式，[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非[自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态下，不存在该状态。
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -59,7 +66,7 @@ MINIMIZE = 3
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -73,7 +80,7 @@ FLOATING = 4
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -87,6 +94,6 @@ SPLIT_SCREEN = 5
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager

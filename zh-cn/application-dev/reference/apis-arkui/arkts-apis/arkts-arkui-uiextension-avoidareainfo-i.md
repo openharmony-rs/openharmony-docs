@@ -20,13 +20,13 @@ area: window.AvoidArea
 
 窗口内容避让区域。
 
-**类型：** window.AvoidArea
+**类型：** [window.AvoidArea](arkts-arkui-window-avoidarea-i.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,12 +38,12 @@ type: window.AvoidAreaType
 
 窗口避让区类型。
 
-**类型：** window.AvoidAreaType
+**类型：** [window.AvoidAreaType](arkts-arkui-window-avoidareatype-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

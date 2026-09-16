@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## color
 
 ```TypeScript
 color?: ResourceColor
 ```
 
-分割线的颜色。默认值：#33182431
+分割线的颜色。
+
+默认值：#33182431
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -25,7 +22,7 @@ color?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,13 @@ color?: ResourceColor
 endMargin?: Length
 ```
 
-分割线与侧边栏底端的距离（不支持百分比设置）。默认值：0.0单位：vp取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
+分割线与侧边栏底端的距离（不支持百分比设置）。
+
+默认值：0.0
+
+单位：vp
+
+取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -45,7 +48,7 @@ endMargin?: Length
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +58,13 @@ endMargin?: Length
 startMargin?: Length
 ```
 
-分割线与侧边栏顶端的距离（不支持百分比设置）。默认值：0.0单位：vp取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
+分割线与侧边栏顶端的距离（不支持百分比设置）。
+
+默认值：0.0
+
+单位：vp
+
+取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -65,7 +74,7 @@ startMargin?: Length
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +84,13 @@ startMargin?: Length
 strokeWidth: Length
 ```
 
-分割线的线宽（不支持百分比设置）。默认值：0.0单位：vp取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
+分割线的线宽（不支持百分比设置）。
+
+默认值：0.0
+
+单位：vp
+
+取值范围：[0, +∞)。设置为小于0的值时，按默认值显示。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -85,6 +100,6 @@ strokeWidth: Length
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

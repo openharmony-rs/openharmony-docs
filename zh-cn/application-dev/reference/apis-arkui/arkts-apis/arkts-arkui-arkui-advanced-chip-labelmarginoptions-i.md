@@ -18,7 +18,19 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 left?: Dimension
 ```
 
-文本与左侧图标的间距，不支持百分比。默认值：size为ChipSize.SMALL时，left默认值：4size为ChipSize.NORMAL时，left默认值：6单位：vp超出取值范围按默认值处理。取值范围：[0, +∞)
+文本与左侧图标的间距，不支持百分比。
+
+默认值：
+
+size为ChipSize.SMALL时，left默认值：4
+
+size为ChipSize.NORMAL时，left默认值：6
+
+单位：vp
+
+超出取值范围按默认值处理。
+
+取值范围：[0, +∞)
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -26,7 +38,7 @@ left?: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +48,19 @@ left?: Dimension
 right?: Dimension
 ```
 
-文本与右侧图标之间间距，不支持百分比。默认值：size为ChipSize.SMALL时，right默认值：4size为ChipSize.NORMAL时，right默认值：6单位：vp超出取值范围按默认值处理。取值范围：[0, +∞)
+文本与右侧图标之间间距，不支持百分比。
+
+默认值：
+
+size为ChipSize.SMALL时，right默认值：4
+
+size为ChipSize.NORMAL时，right默认值：6
+
+单位：vp
+
+超出取值范围按默认值处理。
+
+取值范围：[0, +∞)
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -44,6 +68,6 @@ right?: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

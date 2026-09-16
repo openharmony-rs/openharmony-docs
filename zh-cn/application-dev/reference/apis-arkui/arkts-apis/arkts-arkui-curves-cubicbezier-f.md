@@ -12,11 +12,11 @@ import { curves } from '@kit.ArkUI';
 function cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 ```
 
-构造三阶贝塞尔曲线对象，曲线的值必须处于0-1之间。
+构造三阶贝塞尔曲线对象，曲线的两个控制点横坐标x1、x2的取值范围限定在0到1之间。
 
-> **说明：**
+> **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.cubicBezierCurve](arkts-arkui-curves-cubicbeziercurve-f.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **起始版本：** 7
 
@@ -30,10 +30,10 @@ function cubicBezier(x1: number, y1: number, x2: number, y2: number): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x1 | number | 是 | Value range [0, 1]. Note: If the value is less than 0, 0 is used. If the value is greater than 1, 1 is used. |
-| y1 | number | 是 | Value range (-∞, +∞). |
-| x2 | number | 是 | Value range [0, 1]. Note: If the value is less than 0, 0 is used. If the value is greater than 1, 1 is used. |
-| y2 | number | 是 | Value range (-∞, +∞). |
+| x1 | number | 是 | 确定贝塞尔曲线第一点横坐标。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
+| y1 | number | 是 | 确定贝塞尔曲线第一点纵坐标。<br>取值范围：(-∞, +∞) |
+| x2 | number | 是 | 确定贝塞尔曲线第二点横坐标。<br>取值范围：[0, 1] <br>**说明：** <br>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
+| y2 | number | 是 | 确定贝塞尔曲线第二点纵坐标。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 

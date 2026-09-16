@@ -13,7 +13,11 @@ function createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseC
     parentWindowEventListener: WindowEventListener): Promise<Window>
 ```
 
-创建一个子窗，并绑定父窗。使用Promise异步回调。子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。建议在父窗销毁后主动销毁创建的子窗。
+创建一个子窗，并绑定父窗。使用Promise异步回调。
+
+子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
+
+建议在父窗销毁后主动销毁创建的子窗。
 
 **起始版本：** 26.0.0
 

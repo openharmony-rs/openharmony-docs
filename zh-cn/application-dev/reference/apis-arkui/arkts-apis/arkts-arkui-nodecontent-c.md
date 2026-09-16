@@ -1,12 +1,12 @@
 # NodeContent
 
-NodeContent是ArkUI提供的ContentSlot的管理器，用于管理挂载到ContentSlot上的FrameNode节点内 容，支持动态添加、删除FrameNode节点。适用于需要通过ContentSlot动态管理FrameNode节点内容的场景，例如根据用户交互动态新增或移除文本、图片等自定义FrameNode节点。
+NodeContent是ArkUI提供的ContentSlot的管理器，用于管理挂载到ContentSlot上的FrameNode节点内容，支持动态添加、删除FrameNode节点。适用于需要通过ContentSlot动态管理FrameNode节点内容的场景，例如根据用户交互动态新增或移除文本、图片等自定义FrameNode节点。
 
-> **说明：**
+> **说明：** 
 > 
 > - NodeContent对象不支持使用JSON序列化。
 
-**继承/实现关系：** NodeContent extends Content
+**继承/实现关系：** NodeContent extends [Content](arkts-arkui-content-c.md)
 
 **起始版本：** 12
 
@@ -18,13 +18,13 @@ NodeContent是ArkUI提供的ContentSlot的管理器，用于管理挂载到Conte
 addFrameNode(node: FrameNode): void
 ```
 
-将FrameNode添加到NodeContent中，添加后FrameNode将通过关联的ContentSlot渲染显示。适用于需要动态管理ContentSlot中显示内容节点的场景，例如根据用户交互动态新增文本、图片等自定义 FrameNode节点。
+将FrameNode添加到NodeContent中，添加后FrameNode将通过关联的ContentSlot渲染显示。适用于需要动态管理ContentSlot中显示内容节点的场景，例如根据用户交互动态新增文本、图片等自定义FrameNode节点。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -38,7 +38,7 @@ addFrameNode(node: FrameNode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted."<br>**适用版本：** 22+ |
 
 ## constructor
 
@@ -52,7 +52,7 @@ constructor()
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,7 +92,7 @@ removeFrameNode(node: FrameNode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,73 +104,6 @@ removeFrameNode(node: FrameNode): void
 
 **示例**
 
-添加和删除NodeContent中的FrameNode节点。
-
 ```TypeScript
-// xxx.ets
-import { NodeContent, typeNode } from '@kit.ArkUI';
-
-class NodeContentCtrl {
-  content: NodeContent;
-  textNode: Array<typeNode.Text> = new Array();
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    this.content = new NodeContent();
-    this.uiContext = uiContext;
-  }
-
-  addNode() {
-    let node = typeNode.createNode(this.uiContext, 'Text');
-    node.initialize('ContentText:' + this.textNode.length).fontSize(20);
-    this.textNode.push(node);
-    this.content.addFrameNode(node);
-  }
-
-  removeNode() {
-    let node = this.textNode.pop();
-    if (node) {
-      this.content.removeFrameNode(node);
-    }
-  }
-
-  removeFront() {
-    let node = this.textNode.shift();
-    if (node) {
-      this.content.removeFrameNode(node);
-    }
-  }
-
-  getContent(): NodeContent {
-    return this.content;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  controller = new NodeContentCtrl(this.getUIContext());
-
-  build() {
-    Row() {
-      Column() {
-        ContentSlot(this.controller.getContent())
-        Button('AddToSlot')
-          .onClick(() => {
-            this.controller.addNode();
-          })
-        Button('RemoveBack')
-          .onClick(() => {
-            this.controller.removeNode();
-          })
-        Button('RemoveFront')
-          .onClick(() => {
-            this.controller.removeFront();
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
+添加和删除NodeContent中的FrameNode节点。
 ```

@@ -18,7 +18,19 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 end?: LengthMetrics
 ```
 
-文本与结束侧图标之间间距，不支持百分比。默认值：size为ChipSize.SMALL时，end默认值：`LengthMetrics.resource(\$r('sys.float.chip_small_text_margin'))`size为ChipSize.NORMAL时，end默认值：`LengthMetrics.resource(\$r('sys.float.chip_normal_text_margin'))`值为undefined时，按默认值处理。
+文本与结束侧图标之间间距，不支持百分比。
+
+默认值：
+
+size为ChipSize.SMALL时，end默认值：
+
+`LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin'))`
+
+size为ChipSize.NORMAL时，end默认值：
+
+`LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin'))`
+
+值为undefined时，按默认值处理。
 
 **类型：** LengthMetrics
 
@@ -26,7 +38,7 @@ end?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +48,19 @@ end?: LengthMetrics
 start?: LengthMetrics
 ```
 
-文本与起始侧图标的间距，不支持百分比。默认值：size为ChipSize.SMALL时，start默认值：`LengthMetrics.resource(\$r('sys.float.chip_small_text_margin'))`size为ChipSize.NORMAL时，start默认值：`LengthMetrics.resource(\$r('sys.float.chip_normal_text_margin'))`值为undefined时，按默认值处理。
+文本与起始侧图标的间距，不支持百分比。
+
+默认值：
+
+size为ChipSize.SMALL时，start默认值：
+
+`LengthMetrics.resource(&#36;r('sys.float.chip_small_text_margin'))`
+
+size为ChipSize.NORMAL时，start默认值：
+
+`LengthMetrics.resource(&#36;r('sys.float.chip_normal_text_margin'))`
+
+值为undefined时，按默认值处理。
 
 **类型：** LengthMetrics
 
@@ -44,6 +68,6 @@ start?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

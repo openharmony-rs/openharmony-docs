@@ -34,4 +34,4 @@ Material的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [MaterialOptions](arkts-arkui-uimaterial-materialoptions-i-sys.md) | 否 | 系统材质配置选项，包括材质类型。默认值：{type:MaterialType.NONE} |
+| options | [MaterialOptions](arkts-arkui-uimaterial-materialoptions-i-sys.md) | 否 | 系统材质配置选项，包括材质类型。当需要指定材质类型（如半透明效果）时传入此参数，不传入时使用默认材质配置`{type:MaterialType.NONE}`，即无系统材质效果。 |

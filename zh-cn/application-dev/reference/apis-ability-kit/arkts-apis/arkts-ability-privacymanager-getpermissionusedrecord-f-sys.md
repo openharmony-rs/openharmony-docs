@@ -69,6 +69,31 @@ privacyManager.getPermissionUsedRecord(request).then((data) => {
 });
 ```
 
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let request: privacyManager.PermissionUsedRequest = {
+    'tokenId': 1, // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
+    'isRemote': false,
+    'deviceId': 'device',
+    'bundleName': 'bundle',
+    'permissionNames': [],
+    'beginTime': 0,
+    'endTime': 1,
+    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
+};
+
+// 查询历史权限使用记录
+privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
+  if (err) {
+    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`getPermissionUsedRecord success, result: ${data}`);
+  }
+});
+```
+
 
 ## getPermissionUsedRecord
 
@@ -107,27 +132,4 @@ function getPermissionUsedRecord(
 
 **示例**
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let request: privacyManager.PermissionUsedRequest = {
-    'tokenId': 1, // 可以通过应用BundleInfo中的ApplicationInfo的accessTokenId字段获取。
-    'isRemote': false,
-    'deviceId': 'device',
-    'bundleName': 'bundle',
-    'permissionNames': [],
-    'beginTime': 0,
-    'endTime': 1,
-    'flag': privacyManager.PermissionUsageFlag.FLAG_PERMISSION_USAGE_DETAIL,
-};
-
-// 查询历史权限使用记录
-privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: privacyManager.PermissionUsedResponse) => {
-  if (err) {
-    console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getPermissionUsedRecord success, result: ${data}`);
-  }
-});
-```
+参见 [getPermissionUsedRecord](#getpermissionusedrecord)

@@ -6,18 +6,19 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## enableBlur
 
 ```TypeScript
 enableBlur?: boolean
 ```
 
-是否开启翻牌模糊效果。默认值：false true：开启翻牌模糊效果。false：不开启翻牌模糊效果。
+是否开启翻牌模糊效果。
+
+默认值：false
+
+true：开启翻牌模糊效果。
+
+false：不开启翻牌模糊效果。
 
 **类型：** boolean
 
@@ -25,7 +26,7 @@ enableBlur?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +36,9 @@ enableBlur?: boolean
 flipDirection?: FlipDirection
 ```
 
-翻牌方向。默认值：FlipDirection.DOWN
+翻牌方向。
+
+默认值：FlipDirection.DOWN
 
 **类型：** [FlipDirection](arkts-arkui-flipdirection-e.md)
 
@@ -43,6 +46,6 @@ flipDirection?: FlipDirection
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

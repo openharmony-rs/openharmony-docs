@@ -33,7 +33,7 @@ function isSharedBundleRunning(bundleName: string, versionCode: number): Promise
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
 
 **错误码：**
 
@@ -57,6 +57,21 @@ appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
   console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
+});
+```
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+const bundleName = 'com.example.myapplication';
+const versionCode = 1;
+
+appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
+  if (err) {
+    console.error(`err: ${JSON.stringify(err)}`);
+  } else {
+    console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
+  }
 });
 ```
 
@@ -96,17 +111,4 @@ function isSharedBundleRunning(bundleName: string, versionCode: number, callback
 
 **示例**
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-
-const bundleName = 'com.example.myapplication';
-const versionCode = 1;
-
-appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
-  if (err) {
-    console.error(`err: ${JSON.stringify(err)}`);
-  } else {
-    console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
-  }
-});
-```
+参见 [isSharedBundleRunning](#issharedbundlerunning)

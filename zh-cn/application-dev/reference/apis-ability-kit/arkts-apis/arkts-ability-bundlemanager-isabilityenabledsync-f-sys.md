@@ -24,7 +24,7 @@ function isAbilityEnabledSync(info: AbilityInfo): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | 表示关于检查ability的信息。 |
+| info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | 是 | 表示关于检查ability的信息。 |
 
 **返回值：**
 

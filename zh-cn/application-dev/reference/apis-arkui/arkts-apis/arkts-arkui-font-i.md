@@ -1,15 +1,14 @@
 # Font
 
-Defines the font used for text.@interface Font
+设置文本样式。
 
-**起始版本：** 11
+> **说明：** 
+> 
+> 可以使用[loadFontSync](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontcollection-c.md#loadfontsync)注册自定义字体。
+
+**起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## family
 
@@ -17,13 +16,15 @@ Defines the font used for text.@interface Font
 family?: string | Resource
 ```
 
-font family.
+字体列表。默认字体'HarmonyOS Sans'。
 
-**类型：** string \| [Resource](arkts-arkui-resource-t.md)
+使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。
 
-**起始版本：** 11
+**类型：** string &#124; [Resource](arkts-arkui-resource-t.md)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,13 +34,15 @@ font family.
 size?: Length
 ```
 
-font size.
+设置文本尺寸，Length为number类型时，使用fp单位。不支持设置百分比字符串。
+
+默认值：16.0
 
 **类型：** [Length](arkts-arkui-length-t.md)
 
-**起始版本：** 11
+**起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,13 +52,15 @@ font size.
 style?: FontStyle
 ```
 
-font style.
+设置文本的字体样式。
 
-**类型：** FontStyle
+默认值：FontStyle.Normal
 
-**起始版本：** 11
+**类型：** [FontStyle](arkts-arkui-fontstyle-e.md)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,12 +70,14 @@ font style.
 weight?: FontWeight | number | string
 ```
 
-font weight.
+设置文本的字体粗细，number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。
 
-**类型：** FontWeight \| number \| string
+默认值：400 | FontWeight.Normal
 
-**起始版本：** 11
+**类型：** [FontWeight](arkts-arkui-fontweight-e.md) &#124; number &#124; string
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

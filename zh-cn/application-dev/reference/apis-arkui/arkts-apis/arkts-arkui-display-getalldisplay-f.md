@@ -43,6 +43,17 @@ display.getAllDisplay((err: BusinessError, data: Array<display.Display>) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise: Promise<Array<display.Display>> = display.getAllDisplay();
+promise.then((data: Array<display.Display>) => {
+  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 
 ## getAllDisplay
 
@@ -68,13 +79,4 @@ function getAllDisplay(): Promise<Array<Display>>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise: Promise<Array<display.Display>> = display.getAllDisplay();
-promise.then((data: Array<display.Display>) => {
-  console.info(`Succeeded in obtaining all the display objects. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to obtain all the display objects. Code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [getAllDisplay](#getalldisplay)

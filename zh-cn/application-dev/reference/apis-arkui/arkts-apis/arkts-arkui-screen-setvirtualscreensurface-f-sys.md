@@ -36,7 +36,7 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string, callback: A
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
@@ -61,6 +61,43 @@ struct Index {
         return;
       }
       console.info('Succeeded in setting the surface for the virtual screen.');
+    });
+  }
+  build() {
+    RelativeContainer() {
+      XComponent({
+        type: XComponentType.SURFACE,
+        controller: this.xComponentController
+      })
+      Button('setSurface')
+        .onClick((event: ClickEvent) => {
+          this.setVirtualScreenSurface();
+      }).width('100%')
+      .height(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```TypeScript
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  xComponentController: XComponentController = new XComponentController();
+
+  setVirtualScreenSurface = () => {
+    let screenId: number = 1; // 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+    let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    // 设置虚拟屏幕的surface
+    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
+      console.info('Succeeded in setting the surface for the virtual screen.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
   }
   build() {
@@ -109,7 +146,7 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<vo
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -117,44 +154,9 @@ function setVirtualScreenSurface(screenId:number, surfaceId: string): Promise<vo
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
 
-```TypeScript
-// Index.ets
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  xComponentController: XComponentController = new XComponentController();
-
-  setVirtualScreenSurface = () => {
-    let screenId: number = 1; // 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
-    let surfaceId = this.xComponentController.getXComponentSurfaceId();
-    // 设置虚拟屏幕的surface
-    screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
-      console.info('Succeeded in setting the surface for the virtual screen.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
-    });
-  }
-  build() {
-    RelativeContainer() {
-      XComponent({
-        type: XComponentType.SURFACE,
-        controller: this.xComponentController
-      })
-      Button('setSurface')
-        .onClick((event: ClickEvent) => {
-          this.setVirtualScreenSurface();
-      }).width('100%')
-      .height(20)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+参见 [setVirtualScreenSurface](#setvirtualscreensurface)

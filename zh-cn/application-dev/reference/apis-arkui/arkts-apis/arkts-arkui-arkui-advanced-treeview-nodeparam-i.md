@@ -18,13 +18,15 @@ import { CallbackParam, NodeParam, TreeController, TreeListenType, TreeListener,
 container?: () => void
 ```
 
-绑定在节点上的右键菜单组件，用户右键点击节点时显示该菜单，需通过@Builder函数定义。默认值：() =&gt; void
+绑定在节点上的右键菜单组件，用户右键点击节点时显示该菜单，需通过@Builder函数定义。
+
+默认值：() =&gt; void
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +36,13 @@ container?: () => void
 currentNodeId?: number
 ```
 
-当前子节点Id。取值范围：大于等于-1。不能为根节点id（即不能为-1），不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。默认值：-1
+当前子节点Id。
+
+取值范围：大于等于-1。
+
+不能为根节点id（即不能为-1），不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。
+
+默认值：-1
 
 **类型：** number
 
@@ -42,7 +50,7 @@ currentNodeId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +60,9 @@ currentNodeId?: number
 editIcon?: ResourceStr
 ```
 
-编辑图标。若同时设置了symbolEditIconStyle，则以symbolEditIconStyle为准。默认值：空字符串
+编辑图标。若同时设置了symbolEditIconStyle，则以symbolEditIconStyle为准。
+
+默认值：空字符串
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -60,7 +70,7 @@ editIcon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +80,9 @@ editIcon?: ResourceStr
 icon?: ResourceStr
 ```
 
-图标。若同时设置了symbolIconStyle，则以symbolIconStyle为准。默认值：空字符串
+图标。若同时设置了symbolIconStyle，则以symbolIconStyle为准。
+
+默认值：空字符串
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -78,7 +90,7 @@ icon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +100,11 @@ icon?: ResourceStr
 isFolder?: boolean
 ```
 
-是否是目录。默认值：false true：是目录，可以包含子节点，支持展开/折叠操作；false：不是目录，为叶子节点。
+是否是目录。
+
+默认值：false
+
+true：是目录，可以包含子节点，支持展开/折叠操作；false：不是目录，为叶子节点。
 
 **类型：** boolean
 
@@ -96,7 +112,7 @@ isFolder?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +122,11 @@ isFolder?: boolean
 parentNodeId?: number
 ```
 
-父节点Id。取值范围：大于等于-1。默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。
+父节点Id。
+
+取值范围：大于等于-1。
+
+默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。
 
 **类型：** number
 
@@ -114,7 +134,7 @@ parentNodeId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +144,9 @@ parentNodeId?: number
 primaryTitle?: ResourceStr
 ```
 
-主标题。默认值：空字符串
+主标题。
+
+默认值：空字符串
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -132,7 +154,7 @@ primaryTitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +164,9 @@ primaryTitle?: ResourceStr
 secondaryTitle?: ResourceStr
 ```
 
-副标题。默认值：空字符串
+副标题。
+
+默认值：空字符串
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -150,7 +174,7 @@ secondaryTitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +184,9 @@ secondaryTitle?: ResourceStr
 selectedIcon?: ResourceStr
 ```
 
-选中图标。若同时设置了symbolSelectedIconStyle，则以symbolSelectedIconStyle为准。默认值：空字符串
+选中图标。若同时设置了symbolSelectedIconStyle，则以symbolSelectedIconStyle为准。
+
+默认值：空字符串
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -168,7 +194,7 @@ selectedIcon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,15 +204,17 @@ selectedIcon?: ResourceStr
 symbolEditIconStyle?: SymbolGlyphModifier
 ```
 
-Symbol编辑图标，优先级大于editIcon。默认值：undefined
+Symbol编辑图标，优先级大于editIcon。
 
-**类型：** SymbolGlyphModifier
+默认值：undefined
+
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,15 +224,17 @@ Symbol编辑图标，优先级大于editIcon。默认值：undefined
 symbolIconStyle?: SymbolGlyphModifier
 ```
 
-Symbol图标，优先级大于icon。默认值：undefined
+Symbol图标，优先级大于icon。
 
-**类型：** SymbolGlyphModifier
+默认值：undefined
+
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,14 +244,16 @@ Symbol图标，优先级大于icon。默认值：undefined
 symbolSelectedIconStyle?: SymbolGlyphModifier
 ```
 
-Symbol选中图标，优先级大于selectedIcon。默认值：undefined
+Symbol选中图标，优先级大于selectedIcon。
 
-**类型：** SymbolGlyphModifier
+默认值：undefined
+
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

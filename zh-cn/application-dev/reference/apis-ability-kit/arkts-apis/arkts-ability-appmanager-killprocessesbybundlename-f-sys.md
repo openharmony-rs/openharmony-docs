@@ -18,7 +18,7 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 
 **需要权限：** 
 - API版本14+：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
-- API版本9 - 13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,7 +34,7 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | The Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | The Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -46,6 +46,50 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'bundleName';
+let isClearPageStack = false;
+let appIndex = 1;
+
+try {
+  appManager.killProcessesByBundleName(bundleName, isClearPageStack, appIndex).then((data) => {
+    console.info('killProcessesByBundleName success.');
+  }).catch((err: BusinessError) => {
+    console.error(`killProcessesByBundleName fail, code: ${err.code}, msg:${err.message}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'bundleName';
+
+function killProcessesByBundleNameCallback(err: BusinessError) {
+  if (err) {
+    console.error(`killProcessesByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info('killProcessesByBundleNameCallback success.');
+  }
+}
+
+try {
+  appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
 
 ```TypeScript
 import { appManager } from '@kit.AbilityKit';
@@ -79,7 +123,7 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 
 **需要权限：** 
 - API版本14+：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
-- API版本9 - 13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -103,25 +147,4 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 
 **示例**
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'bundleName';
-
-function killProcessesByBundleNameCallback(err: BusinessError) {
-  if (err) {
-    console.error(`killProcessesByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
-  } else {
-    console.info('killProcessesByBundleNameCallback success.');
-  }
-}
-
-try {
-  appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
+参见 [killProcessesByBundleName](#killprocessesbybundlename)

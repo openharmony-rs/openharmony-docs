@@ -1,10 +1,5 @@
 # registerVsyncCallback（系统接口）
 
-## 导入模块
-
-```TypeScript
-```
-
 ## registerVsyncCallback
 
 ```TypeScript
@@ -18,6 +13,8 @@ function registerVsyncCallback(callback: (info: string) => void): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 **参数：**
 

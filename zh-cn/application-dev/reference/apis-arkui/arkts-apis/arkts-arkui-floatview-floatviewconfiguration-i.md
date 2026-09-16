@@ -34,7 +34,7 @@ context: BaseContext
 isConfirmOnClose?: boolean
 ```
 
-控制关闭窗口时是否弹出确认对话框.如果为 true，则点击关闭按钮时需要用户确认；如果为 false，则不需要确认，直接关闭。 默认值： 默认值为false。
+控制关闭窗口时是否弹出确认对话框.如果为 true，则点击关闭按钮时需要用户确认；如果为 false，则不需要确认，直接关闭。默认值： 默认值为false。
 
 **类型：** boolean
 

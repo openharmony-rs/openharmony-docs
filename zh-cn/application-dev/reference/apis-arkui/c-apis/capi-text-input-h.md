@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines a set of TextInput enum and interface.
+定义TextInput相关的枚举。支持多种输入类型配置（包括文本、数字、密码、邮箱、电话号码等）、清除按钮样式定制、自动填充内容类型设置和输入框风格选择，适用于登录注册、表单填写、搜索输入等需要用户交互输入的场景，帮助开发者快速实现符合业务需求的单行文本输入功能。
 
 **库：** libace_ndk.z.so
 
@@ -31,7 +31,7 @@ Defines a set of TextInput enum and interface.
 enum ArkUI_TextInputType
 ```
 
-**描述**
+**描述：**
 
 定义单行文本输入法类型枚举值。
 
@@ -57,7 +57,7 @@ enum ArkUI_TextInputType
 enum ArkUI_CancelButtonStyle
 ```
 
-**描述**
+**描述：**
 
 定义清除按钮样式枚举值。
 
@@ -75,7 +75,7 @@ enum ArkUI_CancelButtonStyle
 enum ArkUI_TextInputContentType
 ```
 
-**描述**
+**描述：**
 
 定义自动填充类型。
 
@@ -123,7 +123,7 @@ enum ArkUI_TextInputContentType
 enum ArkUI_TextInputStyle
 ```
 
-**描述**
+**描述：**
 
 定义输入框风格。
 

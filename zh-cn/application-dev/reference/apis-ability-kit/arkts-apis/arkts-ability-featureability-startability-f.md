@@ -14,7 +14,7 @@ function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<
 
 启动新的Ability。使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
 
@@ -62,39 +62,6 @@ featureAbility.startAbility(
 );
 ```
 
-
-## startAbility
-
-```TypeScript
-function startAbility(parameter: StartAbilityParameter): Promise<number>
-```
-
-启动新的Ability。使用Promise异步回调。
-
-> **说明：**
-> 
-> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
-
-**起始版本：** 6
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;number&gt; | Promise对象。返回0表示启动成功，返回其他表示启动失败。 |
-
-**示例**
-
 ```TypeScript
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
@@ -118,3 +85,38 @@ featureAbility.startAbility(
   console.info(`startAbility data: ${JSON.stringify(data)}`);
 });
 ```
+
+
+## startAbility
+
+```TypeScript
+function startAbility(parameter: StartAbilityParameter): Promise<number>
+```
+
+启动新的Ability。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
+
+**起始版本：** 6
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示被启动的Ability。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;number&gt; | Promise对象。返回0表示启动成功，返回其他表示启动失败。 |
+
+**示例**
+
+参见 [startAbility](#startability)

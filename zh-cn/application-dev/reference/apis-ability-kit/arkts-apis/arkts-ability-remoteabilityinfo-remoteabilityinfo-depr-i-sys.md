@@ -2,7 +2,7 @@
 
 remoteAbility信息。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-RemoteAbilityInfo](#remoteabilityinfo系统接口)替代。
 > 

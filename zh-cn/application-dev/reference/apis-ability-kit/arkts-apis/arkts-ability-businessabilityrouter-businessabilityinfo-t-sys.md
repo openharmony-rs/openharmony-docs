@@ -12,4 +12,4 @@ export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _BusinessAbilityInfo.BusinessAbilityInfo
+**类型：** [_BusinessAbilityInfo.BusinessAbilityInfo](arkts-ability-businessabilityinfo-i-sys.md)

@@ -1,6 +1,6 @@
 # MenuPolicy
 
-Define the menu pop-up policy@enum { number }
+菜单弹出的策略。
 
 **起始版本：** 12
 
@@ -12,13 +12,13 @@ Define the menu pop-up policy@enum { number }
 DEFAULT = 0
 ```
 
-Default value. The default logic of whether to pop up a menu depends on the scene.
+按照底层默认逻辑决定是否弹出菜单。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +28,13 @@ Default value. The default logic of whether to pop up a menu depends on the scen
 HIDE = 1
 ```
 
-Hide pop up menu.
+始终不弹出菜单。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,12 +44,12 @@ Hide pop up menu.
 SHOW = 2
 ```
 
-Show pop up menu.
+始终弹出菜单。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

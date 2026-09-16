@@ -26,7 +26,7 @@ function getForegroundUIAbilities(callback: AsyncCallback<Array<AbilityStateData
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AbilityStateData&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AbilityStateData](arkts-ability-abilitymanager-abilitystatedata-t.md)&gt;&gt; | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -52,6 +52,17 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
 });
 ```
 
+```TypeScript
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
+  console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
+});
+```
+
 
 ## getForegroundUIAbilities
 
@@ -73,7 +84,7 @@ function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;AbilityStateData&gt;&gt; | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+| Promise&lt;Array&lt;[AbilityStateData](arkts-ability-abilitymanager-abilitystatedata-t.md)&gt;&gt; | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -85,13 +96,4 @@ function getForegroundUIAbilities(): Promise<Array<AbilityStateData>>
 
 **示例**
 
-```TypeScript
-import { abilityManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
-  console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-  console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
-});
-```
+参见 [getForegroundUIAbilities](#getforegrounduiabilities)

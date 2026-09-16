@@ -1,6 +1,6 @@
 # SwiperContentInfo
 
-Swiper组件的内容区信息。
+Swiper组件的内容区信息，包含Swiper组件标识、唯一标识符及当前显示状态的子组件信息，用于获取Swiper运行时的内容区状态。
 
 **起始版本：** 22
 
@@ -21,7 +21,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 id: string
 ```
 
-Swiper组件的id。
+Swiper组件通过通用属性id设置的标识符，由开发者指定。
 
 **类型：** string
 
@@ -29,7 +29,7 @@ Swiper组件的id。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +47,7 @@ swiperItemInfos: Array<SwiperItemInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,7 +57,7 @@ swiperItemInfos: Array<SwiperItemInfo>
 uniqueId: number
 ```
 
-Swiper子组件的唯一标识符。
+Swiper组件的唯一标识符。
 
 **类型：** number
 
@@ -65,6 +65,6 @@ Swiper子组件的唯一标识符。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

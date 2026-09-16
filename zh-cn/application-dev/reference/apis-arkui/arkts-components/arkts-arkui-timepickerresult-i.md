@@ -6,24 +6,21 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## hour
 
 ```TypeScript
 hour: number
 ```
 
-选中时间的时。取值范围：[0-23]，与展示制式无关。
+选中时间的时。
+
+取值范围：[0-23]，与展示制式无关。
 
 **类型：** number
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,13 +30,15 @@ hour: number
 minute: number
 ```
 
-选中时间的分。取值范围：[0-59]
+选中时间的分。
+
+取值范围：[0-59]
 
 **类型：** number
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,7 +48,9 @@ minute: number
 second: number
 ```
 
-选中时间的秒。取值范围：[0-59]
+选中时间的秒。
+
+取值范围：[0-59]
 
 **类型：** number
 
@@ -57,6 +58,6 @@ second: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

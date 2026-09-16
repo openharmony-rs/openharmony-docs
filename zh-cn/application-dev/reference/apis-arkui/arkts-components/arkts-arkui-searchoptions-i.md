@@ -2,18 +2,13 @@
 
 Search初始化参数。
 
-> **说明：**
+> **说明：** 
 > 
-> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素
+> 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **起始版本：** 18
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## controller
 
@@ -27,7 +22,7 @@ controller?: SearchController
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,17 +32,25 @@ controller?: SearchController
 icon?: string
 ```
 
-设置搜索图标路径，默认使用系统搜索图标。  
-**说明：**icon的数据源支持使用相对路径显示图片和网络图片。
+设置搜索图标路径，默认使用系统搜索图标。
+
+**说明：** 
+
+icon的数据源支持使用相对路径显示图片和网络图片。
+
 - 支持的图片格式包括png、jpg、bmp、svg、gif、pixelmap和heif。
+
 - 支持Base64字符串。格式data:image/[png|jpeg|bmp|webp|heif];base64,[base64 data], 其中[base64 data]为Base64字符串数据。
-如果与属性searchIcon同时设置，则searchIcon优先。Wearable设备上默认图标大小为16vp。
+
+如果与属性searchIcon同时设置，则searchIcon优先。
+
+Wearable设备上默认图标大小为16vp。
 
 **类型：** string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,7 +66,7 @@ placeholder?: ResourceStr
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,10 +78,10 @@ value?: string | Bindable<string>
 
 Text input in the search text box.
 
-**类型：** string \| Bindable&lt;string&gt;
+**类型：** string &#124; Bindable&lt;string&gt;
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

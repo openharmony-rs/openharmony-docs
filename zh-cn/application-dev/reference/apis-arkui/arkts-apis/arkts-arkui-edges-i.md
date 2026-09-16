@@ -1,15 +1,10 @@
 # Edges
 
-Defines the Edges.@interface Edges
+位置类型，表示相对四边的偏移量。同时设置top和bottom，仅top生效；同时设置left和right，仅left生效。
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## bottom
 
@@ -17,7 +12,7 @@ Defines the Edges.@interface Edges
 bottom?: Dimension
 ```
 
-bottom property.
+相对底边的偏移量。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -25,7 +20,7 @@ bottom property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,7 +32,7 @@ bottom property.
 left?: Dimension
 ```
 
-left property.
+相对左边的偏移量。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -45,7 +40,7 @@ left property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,7 +52,7 @@ left property.
 right?: Dimension
 ```
 
-right property.
+相对右边的偏移量。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -65,7 +60,7 @@ right property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -77,7 +72,7 @@ right property.
 top?: Dimension
 ```
 
-top property.
+相对顶边的偏移量。
 
 **类型：** [Dimension](arkts-arkui-dimension-t.md)
 
@@ -85,7 +80,7 @@ top property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 

@@ -18,7 +18,9 @@ import { MarginType, PromptOptions, ExceptionPrompt } from '@kit.ArkUI';
 actionText?: ResourceStr
 ```
 
-指定当前异常提示的右侧图标按钮的文字内容。默认不设置或设置为undefined，文字内容不显示。
+指定当前异常提示的右侧图标按钮的文字内容。
+
+默认不设置或设置为undefined，文字内容不显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -26,7 +28,7 @@ actionText?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,9 @@ actionText?: ResourceStr
 icon?: ResourceStr
 ```
 
-指定当前异常提示的异常图标样式。默认不设置或设置为undefined，异常图标不显示。
+指定当前异常提示的异常图标样式。
+
+默认不设置或设置为undefined，异常图标不显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -44,7 +48,7 @@ icon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +58,13 @@ icon?: ResourceStr
 isShown?: boolean
 ```
 
-指定当前异常提示的显隐状态。true：显示状态。false：隐藏状态。默认值：false
+指定当前异常提示的显隐状态。
+
+true：显示状态。
+
+false：隐藏状态。
+
+默认值：false
 
 **类型：** boolean
 
@@ -62,7 +72,7 @@ isShown?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +90,7 @@ marginTop: Dimension
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +108,7 @@ marginType: MarginType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,15 +118,17 @@ marginType: MarginType
 symbolStyle?: SymbolGlyphModifier
 ```
 
-指定当前异常提示的异常Symbol图标样式，优先级大于icon。默认不设置或设置为undefined，Symbol图标不显示。
+指定当前异常提示的异常Symbol图标样式，优先级大于icon。
 
-**类型：** SymbolGlyphModifier
+默认不设置或设置为undefined，Symbol图标不显示。
+
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,11 +138,18 @@ symbolStyle?: SymbolGlyphModifier
 tip?: ResourceStr
 ```
 
-指定当前异常提示的文字提示内容。支持默认内置四种状态文字资源如下：
+指定当前异常提示的文字提示内容。
+
+支持默认内置四种状态文字资源如下：
+
 1.无网络状态：显示网络未连接：引用ohos_network_not_connected。
+
 2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。
+
 3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。
+
 4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。
+
 默认不设置或设置为undefined，文字提示内容不显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -139,6 +158,6 @@ tip?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

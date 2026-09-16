@@ -14,7 +14,7 @@ function find(id: string, callback: AsyncCallback<Window>): void
 
 查找id所对应的窗口，使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](arkts-arkui-window-findwindow-f.md)替代。
 
@@ -50,6 +50,19 @@ window.find('test', (err: BusinessError, data) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let windowClass: window.Window | undefined = undefined;
+let promise = window.find('test');
+promise.then((data) => {
+  windowClass = data;
+  console.info('Succeeded in finding the window. Data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to find the Window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 
 ## find
 
@@ -59,7 +72,7 @@ function find(id: string): Promise<Window>
 
 查找id所对应的窗口，使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[findWindow()](arkts-arkui-window-findwindow-f.md)替代。
 
@@ -85,15 +98,4 @@ function find(id: string): Promise<Window>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let windowClass: window.Window | undefined = undefined;
-let promise = window.find('test');
-promise.then((data) => {
-  windowClass = data;
-  console.info('Succeeded in finding the window. Data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`Failed to find the Window. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [find](#find)

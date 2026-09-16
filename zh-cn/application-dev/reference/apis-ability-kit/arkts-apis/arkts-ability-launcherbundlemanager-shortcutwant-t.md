@@ -10,4 +10,4 @@ export type ShortcutWant = _ShortcutWant
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
-**属性类型：** _ShortcutWant
+**类型：** _ShortcutWant

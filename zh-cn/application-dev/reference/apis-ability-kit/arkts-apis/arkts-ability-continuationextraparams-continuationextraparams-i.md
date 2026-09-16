@@ -1,6 +1,6 @@
 # ContinuationExtraParams
 
-流转管理入口中设备选择模块所需的过滤参数，可以作为 [startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md) 的入参。
+流转管理入口中设备选择模块所需的过滤参数，可以作为[startContinuationDeviceManager](arkts-ability-continuationmanager-startcontinuationdevicemanager-f.md)的入参。
 
 **起始版本：** 8
 
@@ -24,7 +24,7 @@ authInfo?: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -36,7 +36,7 @@ continuationMode?: continuationManager.ContinuationMode
 
 表示协同的模式。
 
-**类型：** continuationManager.ContinuationMode
+**类型：** [continuationManager.ContinuationMode](arkts-ability-continuationmanager-continuationmode-e.md)
 
 **起始版本：** 8
 
@@ -44,7 +44,7 @@ continuationMode?: continuationManager.ContinuationMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -64,7 +64,7 @@ description?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -84,7 +84,7 @@ deviceType?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -104,7 +104,7 @@ filter?: any
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
 
@@ -124,6 +124,6 @@ targetBundle?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager

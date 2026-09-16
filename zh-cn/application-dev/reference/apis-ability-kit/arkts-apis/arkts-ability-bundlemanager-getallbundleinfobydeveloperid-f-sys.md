@@ -32,7 +32,7 @@ function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;BundleInfo&gt; | 同步返回Array &lt;BundleInfo&gt;。 |
+| Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | 同步返回Array&lt;BundleInfo&gt;。 |
 
 **错误码：**
 

@@ -10,8 +10,8 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier
+**类型：** import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier

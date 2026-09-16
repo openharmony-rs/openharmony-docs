@@ -20,7 +20,11 @@ import { cliManager } from '@kit.AbilityKit';
 background?: boolean
 ```
 
-表示命令是否后台执行。true：后台执行，false：前台执行。默认值：false。
+表示命令是否后台执行。
+
+true：后台执行，false：前台执行。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -52,6 +56,28 @@ callback?: ToolEventCallback
 
 **系统接口：** 此接口为系统接口。
 
+## challenge
+
+```TypeScript
+challenge?: string
+```
+
+从访问令牌管理器获取的唯一标识符。
+
+默认值：""。
+
+**类型：** string
+
+**默认值：** ""
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## env
 
 ```TypeScript
@@ -63,6 +89,30 @@ env?: Record<string, string>
 **类型：** Record&lt;string, string&gt;
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+## isShellCommand
+
+```TypeScript
+isShellCommand?: boolean
+```
+
+表示命令是否作为Shell命令执行。
+
+true：作为Shell命令执行，false：不作为Shell命令执行。
+
+默认值：true。
+
+**类型：** boolean
+
+**默认值：** true
+
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -6,18 +6,17 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## closeSwipeAction
 
 ```TypeScript
 closeSwipeAction?: boolean
 ```
 
-系统返回键生效时是否收起ListItem的划出组件。true表示收起ListItem的划出组件；false表示不收起ListItem的划出组件。默认值：true
+系统返回键生效时是否收起ListItem的划出组件。
+
+true表示收起ListItem的划出组件；false表示不收起ListItem的划出组件。
+
+默认值：true
 
 **类型：** boolean
 
@@ -27,6 +26,6 @@ closeSwipeAction?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

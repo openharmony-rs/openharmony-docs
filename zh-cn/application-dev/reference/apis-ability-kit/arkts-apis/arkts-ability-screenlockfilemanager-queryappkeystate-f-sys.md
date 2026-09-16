@@ -26,7 +26,7 @@ function queryAppKeyState(dataType: DataType): KeyStatus
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| dataType | DataType | 是 | 锁屏下访问的敏感数据类型。 |
+| dataType | [DataType](arkts-ability-screenlockfilemanager-datatype-e.md) | 是 | 锁屏下访问的敏感数据类型。 |
 
 **返回值：**
 
@@ -46,6 +46,29 @@ function queryAppKeyState(dataType: DataType): KeyStatus
 | [29300002](../errorcode-screenLockFileManager.md#29300002-系统服务工作异常) | The system ability works abnormally. |
 
 **示例**
+
+```TypeScript
+// 查询锁屏下应用敏感数据访问权限
+import { screenLockFileManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+    // 查询密钥状态
+    let keyStatus = screenLockFileManager.queryAppKeyState();
+    // 判断密钥状态并处理不同情况
+    if (keyStatus === screenLockFileManager.KeyStatus.KEY_NOT_EXIST) {
+        hilog.info(0x0000, 'testTag', 'Key does not exist.');
+    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_RELEASED) {
+        hilog.info(0x0000, 'testTag', 'Key has been released.');
+    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_EXIST) {
+        hilog.info(0x0000, 'testTag', 'Key exists.');
+    }
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
+}
+```
 
 ```TypeScript
 // 查询锁屏下媒体类型数据的访问权限

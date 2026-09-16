@@ -28,7 +28,7 @@ Declares the APIs for implementing application access control.
 bool OH_AT_CheckSelfPermission(const char *permission)
 ```
 
-**描述**
+**描述：**
 
 校验应用是否被授予指定的权限。
 

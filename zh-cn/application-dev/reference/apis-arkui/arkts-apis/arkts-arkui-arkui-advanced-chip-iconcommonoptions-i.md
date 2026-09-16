@@ -2,7 +2,7 @@
 
 IconCommonOptions定义图标的共通属性。
 
-> **说明：**
+> **说明：** 
 > 
 > 仅在图片格式为SVG时，fillColor和activatedFillColor属性才生效。
 
@@ -22,7 +22,11 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 activatedFillColor?: ResourceColor
 ```
 
-Chip激活时的图标填充颜色。仅在图片格式为SVG时生效。默认值：\$r('sys.color.chip_active_icon_color')值为undefined时，按默认值处理。
+Chip激活时的图标填充颜色。仅在图片格式为SVG时生效。
+
+默认值：&#36;r('sys.color.chip_active_icon_color')
+
+值为undefined时，按默认值处理。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -30,7 +34,7 @@ Chip激活时的图标填充颜色。仅在图片格式为SVG时生效。默认�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +44,11 @@ Chip激活时的图标填充颜色。仅在图片格式为SVG时生效。默认�
 fillColor?: ResourceColor
 ```
 
-图标填充颜色。仅在图片格式为SVG时生效。默认值：\$r('sys.color.chip_usually_icon_color')值为undefined时，按默认值处理。
+图标填充颜色。仅在图片格式为SVG时生效。
+
+默认值：&#36;r('sys.color.chip_usually_icon_color')
+
+值为undefined时，按默认值处理。
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -48,7 +56,7 @@ fillColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,11 +66,18 @@ fillColor?: ResourceColor
 size?: SizeOptions
 ```
 
-图标大小，不支持百分比，异常值按默认值处理。默认值：  
-- 当ChipOptions.size为ChipSize.SMALL时，默认值为：{width: \$r('sys.float.chip_small_icon_size'), height: \$r('  
+图标大小，不支持百分比，异常值按默认值处理。
+
+默认值：
+
+- 当ChipOptions.size为ChipSize.SMALL时，默认值为：{width: &#36;r('sys.float.chip_small_icon_size'), height: &#36;r('  
 sys.float.chip_small_icon_size')}  
-- 当ChipOptions.size为ChipSize.NORMAL时，默认值为：{width: \$r('sys.float.chip_normal_icon_size'), height: \$r('  
-sys.float.chip_normal_icon_size')}单位：vp值为undefined时，按默认值处理。
+- 当ChipOptions.size为ChipSize.NORMAL时，默认值为：{width: &#36;r('sys.float.chip_normal_icon_size'), height: &#36;r('  
+sys.float.chip_normal_icon_size')}
+
+单位：vp
+
+值为undefined时，按默认值处理。
 
 **类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -70,7 +85,7 @@ sys.float.chip_normal_icon_size')}单位：vp值为undefined时，按默认值�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,6 +103,6 @@ src: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

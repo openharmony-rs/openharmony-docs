@@ -1,15 +1,10 @@
 # ItemFillPolicy
 
-定义一个适合WaterFlow、Grid、List和Swiper组件的响应式item布局。@interface ItemFillPolicy
+定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **起始版本：** 22
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## fillType
 
@@ -17,7 +12,7 @@
 fillType?: ResponsiveFillType
 ```
 
-指定不同响应断点的列数。
+为不同的响应式断点指定列数。默认值为BREAKPOINT_DEFAULT。
 
 **类型：** [ResponsiveFillType](arkts-arkui-responsivefilltype-t.md)
 
@@ -27,6 +22,6 @@ fillType?: ResponsiveFillType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

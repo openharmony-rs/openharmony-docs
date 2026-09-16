@@ -6,11 +6,6 @@ UIPickerComponent容器的参数说明。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## selectedIndex
 
 ```TypeScript
@@ -23,7 +18,7 @@ selectedIndex?: number
 
 > 默认值：0。当需要组件初始显示特定选项时传入此参数。
 
-> **说明：**
+> **说明：** 
 > 
 > 统计子组件的个数时，不包含Row容器内的子组件，Row容器及其子组件共同视为1个子组件。
 
@@ -35,6 +30,6 @@ selectedIndex?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

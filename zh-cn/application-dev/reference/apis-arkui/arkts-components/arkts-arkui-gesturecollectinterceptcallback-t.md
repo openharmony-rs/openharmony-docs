@@ -11,7 +11,7 @@ declare type GestureCollectInterceptCallback = (recognizers: Array<GestureRecogn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -19,8 +19,8 @@ declare type GestureCollectInterceptCallback = (recognizers: Array<GestureRecogn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| recognizers | Array&lt;[GestureRecognizer](../arkts-apis/arkts-arkui-gesturerecognizer-c.md)&gt; | 是 | 响应链上组件的手势识别器对象。 |
-| touchRecognizers | Array&lt;[TouchRecognizer](../arkts-apis/arkts-arkui-touchrecognizer-c.md)&gt; | 否 | 响应链上组件的触摸识别器对象。 默认值为null。 |
+| recognizers | Array&lt;[GestureRecognizer](arkts-arkui-gesturerecognizer-c.md)&gt; | 是 | 响应链上组件的手势识别器对象。 |
+| touchRecognizers | Array&lt;[TouchRecognizer](arkts-arkui-touchrecognizer-c.md)&gt; | 否 | 响应链上组件的触摸识别器对象。<br>默认值为null。 |
 
 **返回值：**
 

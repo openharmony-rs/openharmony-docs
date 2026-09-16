@@ -16,7 +16,7 @@ readonly compatiblePolicy: bundleManager.CompatiblePolicy
 
 共享包兼容策略的类型。
 
-**类型：** bundleManager.CompatiblePolicy
+**类型：** [bundleManager.CompatiblePolicy](arkts-ability-bundlemanager-compatiblepolicy-e.md)
 
 **起始版本：** 10
 

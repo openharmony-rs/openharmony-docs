@@ -12,13 +12,13 @@ skill标签对象。
 readonly actions: Array<string>
 ```
 
-Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md)。
+Skill接收的[Action集合](arkts-ability-wantconstant-action-depr-e.md#action)。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -34,7 +34,7 @@ Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启�
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -44,13 +44,13 @@ Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启�
 readonly entities: Array<string>
 ```
 
-Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md)。
+Skill接收的[Entity集合](arkts-ability-wantconstant-entity-depr-e.md#entity)。
 
 **类型：** Array&lt;string&gt;
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -66,6 +66,6 @@ Want匹配的Uri集合。
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

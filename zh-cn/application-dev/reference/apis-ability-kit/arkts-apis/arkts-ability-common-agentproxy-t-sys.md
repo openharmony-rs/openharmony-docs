@@ -14,4 +14,4 @@ export type AgentProxy = _AgentProxy
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AgentProxy
+**类型：** _AgentProxy

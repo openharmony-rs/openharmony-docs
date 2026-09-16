@@ -28,7 +28,7 @@
 enum AbilityBase_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 AbilityBase相关错误码枚举。
 

@@ -21,7 +21,7 @@ authStatusInfo?: AuthStatusInfo
 
 授权状态信息。
 
-**类型：** AuthStatusInfo
+**类型：** [AuthStatusInfo](arkts-ability-abilitytoolaccessctrl-authstatusinfo-i-sys.md)
 
 **起始版本：** 26.0.0
 
@@ -53,7 +53,7 @@ permissionStatus: abilityAccessCtrl.PermissionStatus
 
 权限状态。
 
-**类型：** abilityAccessCtrl.PermissionStatus
+**类型：** [abilityAccessCtrl.PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)
 
 **起始版本：** 26.0.0
 

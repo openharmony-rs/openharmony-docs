@@ -18,7 +18,11 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 description?: ResourceStr
 ```
 
-中间元素的描述内容。默认不设置或设置为undefined时，不显示描述内容。文本超长后无限换行显示。
+中间元素的描述内容。
+
+默认不设置或设置为undefined时，不显示描述内容。
+
+文本超长后无限换行显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -26,7 +30,7 @@ description?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,11 @@ description?: ResourceStr
 icon?: ResourceStr
 ```
 
-左侧元素的图标资源。默认不设置或设置为undefined时，不显示icon图标资源。同时设置symbolStyle时，只显示Symbol图标。
+左侧元素的图标资源。
+
+默认不设置或设置为undefined时，不显示icon图标资源。
+
+同时设置symbolStyle时，只显示Symbol图标。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -44,7 +52,7 @@ icon?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +62,9 @@ icon?: ResourceStr
 iconStyle?: IconTypeV2
 ```
 
-左侧元素的图标类型。默认不设置或设置为undefined时，不显示左侧图标资源。
+左侧元素的图标类型。
+
+默认不设置或设置为undefined时，不显示左侧图标资源。
 
 **类型：** [IconTypeV2](arkts-arkui-arkui-advanced-composelistitemv2-icontypev2-e.md)
 
@@ -62,7 +72,7 @@ iconStyle?: IconTypeV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +82,11 @@ iconStyle?: IconTypeV2
 primaryText?: ResourceStr
 ```
 
-中间元素的标题内容。默认不设置或设置为undefined时，不显示标题内容。文本超长后无限换行显示。
+中间元素的标题内容。
+
+默认不设置或设置为undefined时，不显示标题内容。
+
+文本超长后无限换行显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -80,7 +94,7 @@ primaryText?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +104,11 @@ primaryText?: ResourceStr
 secondaryText?: ResourceStr
 ```
 
-中间元素的副标题内容。默认不设置或设置为undefined时，不显示副标题内容。文本超长后无限换行显示。
+中间元素的副标题内容。
+
+默认不设置或设置为undefined时，不显示副标题内容。
+
+文本超长后无限换行显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -98,7 +116,7 @@ secondaryText?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,14 +126,16 @@ secondaryText?: ResourceStr
 symbolStyle?: SymbolGlyphModifier
 ```
 
-左侧元素的Symbol图标资源，优先级大于icon，同时设置时只显示Symbol图标。默认不设置或设置为undefined时，不显示Symbol图标。
+左侧元素的Symbol图标资源，优先级大于icon，同时设置时只显示Symbol图标。
 
-**类型：** SymbolGlyphModifier
+默认不设置或设置为undefined时，不显示Symbol图标。
+
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

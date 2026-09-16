@@ -14,7 +14,7 @@
 height: number
 ```
 
-AutoFill表单或页面节点的高度。
+AutoFill表单或页面节点的高度，单位是px。
 
 **类型：** number
 
@@ -32,7 +32,7 @@ AutoFill表单或页面节点的高度。
 left: number
 ```
 
-AutoFill表单或页面节点与页面左边界的距离。
+AutoFill表单或页面节点与页面左边界的距离，单位是px。
 
 **类型：** number
 
@@ -50,7 +50,7 @@ AutoFill表单或页面节点与页面左边界的距离。
 top: number
 ```
 
-AutoFill表单或页面节点与页面上边界的距离。
+AutoFill表单或页面节点与页面上边界的距离，单位是px。
 
 **类型：** number
 
@@ -68,7 +68,7 @@ AutoFill表单或页面节点与页面上边界的距离。
 width: number
 ```
 
-AutoFill表单或页面节点的宽度。
+AutoFill表单或页面节点的宽度，单位是px。
 
 **类型：** number
 

@@ -92,7 +92,7 @@ readonly displayName: string
 readonly domain: string
 ```
 
-表示意图垂域，用于将意图按垂直领域分类（例如：视频、音乐、游戏），取值范围参见 [各垂域的智慧分发特性列表](https://developer.huawei.com/consumer/cn/doc/service/intents-ai-distribution-characteristic-0000001901922213#section2656133582215) 中的垂域字段。
+表示意图垂域，用于将意图按垂直领域分类（例如：视频、音乐、游戏），取值范围参见[各垂域的智慧分发特性列表](https://developer.huawei.com/consumer/cn/doc/service/intents-ai-distribution-characteristic-0000001901922213#section2656133582215)中的垂域字段。
 
 **类型：** string
 
@@ -112,7 +112,7 @@ readonly entities: Array<EntityInfo>
 
 表示意图包含的实体信息。
 
-**类型：** Array&lt;EntityInfo&gt;
+**类型：** Array&lt;[EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md)&gt;
 
 **起始版本：** 20
 
@@ -164,8 +164,11 @@ readonly intentName: string
 readonly intentType: InsightIntentType
 ```
 
-表示通过意图装饰器定义的意图类型。  
-**说明：**对于使用配置文件开发的意图，该字段返回值默认为@InsightIntentEntry类 型装饰器。
+表示通过意图装饰器定义的意图类型。
+
+**说明：** 
+
+对于使用配置文件开发的意图，该字段返回值默认为@InsightIntentEntry类型装饰器。
 
 **类型：** [InsightIntentType](arkts-ability-insightintentdriver-insightintenttype-e-sys.md)
 
@@ -309,10 +312,13 @@ readonly schema: string
 readonly subIntentInfo: LinkIntentInfo | PageIntentInfo | FunctionIntentInfo | FormIntentInfo | EntryIntentInfo
 ```
 
-表示特定意图装饰器的意图信息。  
-**说明：**对于使用配置文件开发的意图，该字段返回值默认为[EntryIntentInfo](arkts-ability-insightintentdriver-entryintentinfo-i-sys.md)。
+表示特定意图装饰器的意图信息。
 
-**类型：** [LinkIntentInfo](arkts-ability-insightintentdriver-linkintentinfo-i-sys.md) \| [PageIntentInfo](arkts-ability-insightintentdriver-pageintentinfo-i-sys.md) \| [FunctionIntentInfo](arkts-ability-insightintentdriver-functionintentinfo-i.md) \| [FormIntentInfo](arkts-ability-insightintentdriver-formintentinfo-i-sys.md) \| [EntryIntentInfo](arkts-ability-insightintentdriver-entryintentinfo-i-sys.md)
+**说明：** 
+
+对于使用配置文件开发的意图，该字段返回值默认为[EntryIntentInfo](arkts-ability-insightintentdriver-entryintentinfo-i-sys.md)。
+
+**类型：** [LinkIntentInfo](arkts-ability-insightintentdriver-linkintentinfo-i-sys.md) &#124; [PageIntentInfo](arkts-ability-insightintentdriver-pageintentinfo-i-sys.md) &#124; [FunctionIntentInfo](arkts-ability-insightintentdriver-functionintentinfo-i-sys.md) &#124; [FormIntentInfo](arkts-ability-insightintentdriver-formintentinfo-i-sys.md) &#124; [EntryIntentInfo](arkts-ability-insightintentdriver-entryintentinfo-i-sys.md)
 
 **起始版本：** 20
 

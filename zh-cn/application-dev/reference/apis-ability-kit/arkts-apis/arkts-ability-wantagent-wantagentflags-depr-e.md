@@ -24,7 +24,7 @@ WantAgent仅能使用一次。
 
 **替代接口：** [ONE_TIME_FLAG](arkts-ability-wantagent-wantagentflags-e.md#one_time_flag)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,7 +42,7 @@ NO_BUILD_FLAG
 
 **替代接口：** [NO_BUILD_FLAG](arkts-ability-wantagent-wantagentflags-e.md#no_build_flag)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,7 +60,7 @@ CANCEL_PRESENT_FLAG
 
 **替代接口：** [CANCEL_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#cancel_present_flag)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -78,7 +78,7 @@ UPDATE_PRESENT_FLAG
 
 **替代接口：** [UPDATE_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#update_present_flag)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -96,7 +96,7 @@ WantAgent是不可变的。
 
 **替代接口：** [CONSTANT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#constant_flag)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -114,7 +114,7 @@ REPLACE_ELEMENT
 
 **替代接口：** [REPLACE_ELEMENT](arkts-ability-wantagent-wantagentflags-e.md#replace_element)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -132,7 +132,7 @@ REPLACE_ACTION
 
 **替代接口：** [REPLACE_ACTION](arkts-ability-wantagent-wantagentflags-e.md#replace_action)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -150,7 +150,7 @@ REPLACE_URI
 
 **替代接口：** [REPLACE_URI](arkts-ability-wantagent-wantagentflags-e.md#replace_uri)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -168,7 +168,7 @@ REPLACE_ENTITIES
 
 **替代接口：** [REPLACE_ENTITIES](arkts-ability-wantagent-wantagentflags-e.md#replace_entities)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -186,6 +186,6 @@ REPLACE_BUNDLE
 
 **替代接口：** [REPLACE_BUNDLE](arkts-ability-wantagent-wantagentflags-e.md#replace_bundle)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

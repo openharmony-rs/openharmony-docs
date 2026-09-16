@@ -53,6 +53,19 @@ quickFixManager.revokeQuickFix(bundleName, (err) => {
 });
 ```
 
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+
+quickFixManager.revokeQuickFix(bundleName).then(() => {
+  console.info(`revokeQuickFix ${bundleName} success.`);
+}).catch((err: BusinessError) => {
+  console.error(`revokeQuickFix ${bundleName} failed, err code: ${err.code}, err msg: ${err.message}.`);
+});
+```
+
 
 ## revokeQuickFix
 
@@ -80,7 +93,7 @@ function revokeQuickFix(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -94,15 +107,4 @@ function revokeQuickFix(bundleName: string): Promise<void>
 
 **示例**
 
-```TypeScript
-import { quickFixManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.example.myapplication';
-
-quickFixManager.revokeQuickFix(bundleName).then(() => {
-  console.info(`revokeQuickFix ${bundleName} success.`);
-}).catch((err: BusinessError) => {
-  console.error(`revokeQuickFix ${bundleName} failed, err code: ${err.code}, err msg: ${err.message}.`);
-});
-```
+参见 [revokeQuickFix](#revokequickfix)

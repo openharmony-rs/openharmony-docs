@@ -8,21 +8,23 @@ DataPanelShadowOptions继承自[MultiShadowOptions](arkts-arkui-multishadowoptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## colors
 
 ```TypeScript
 colors?: Array<ResourceColor | LinearGradient>
 ```
 
-各数据段投影的颜色。默认值：与valueColors值相同  
-**说明：**若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。
+各数据段投影的颜色。
 
-**类型：** Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) \| [LinearGradient](arkts-arkui-lineargradient-c.md)&gt;
+默认值：与valueColors值相同
+
+**说明：** 
+
+若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。
+
+若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。
+
+**类型：** Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [LinearGradient](arkts-arkui-lineargradient-c.md)&gt;
 
 **默认值：** Consistent with valueColors
 
@@ -30,6 +32,6 @@ colors?: Array<ResourceColor | LinearGradient>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

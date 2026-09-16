@@ -10,7 +10,7 @@ Navigation页面跳转前的拦截回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,8 +18,8 @@ Navigation页面跳转前的拦截回调。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| from | [NavPathInfo](arkts-arkui-navpathinfo-c.md) \| [NavBar](arkts-arkui-navbar-t.md) | 是 | 退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
-| to | [NavPathInfo](arkts-arkui-navpathinfo-c.md) \| [NavBar](arkts-arkui-navbar-t.md) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
+| from | [NavPathInfo](arkts-arkui-navpathinfo-c.md) &#124; [NavBar](arkts-arkui-navbar-t.md) | 是 | 退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
+| to | [NavPathInfo](arkts-arkui-navpathinfo-c.md) &#124; [NavBar](arkts-arkui-navbar-t.md) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
 | pathStack | [NavPathStack](arkts-arkui-navpathstack-c.md) | 是 | 页面栈。 |
 | operation | [NavigationOperation](arkts-arkui-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |
-| isAnimated | boolean | 是 | 页面跳转是否有动画。 true：页面跳转有动画。 false：页面跳转没有动画。 |
+| isAnimated | boolean | 是 | 页面跳转是否有动画。<br>true：页面跳转有动画。<br>false：页面跳转没有动画。 |

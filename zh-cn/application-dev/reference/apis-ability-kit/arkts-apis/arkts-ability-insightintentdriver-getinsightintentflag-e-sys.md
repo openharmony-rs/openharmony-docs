@@ -1,8 +1,8 @@
 # GetInsightIntentFlag（系统接口）
 
-意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于 [getAllInsightIntentInfo](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md)、 [getInsightIntentInfoByBundleName](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md)和 [getInsightIntentInfoByIntentName](arkts-ability-insightintentdriver-getinsightintentinfobyintentname-f-sys.md)接口查询意图信息。
+意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于[getAllInsightIntentInfo](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md)、[getInsightIntentInfoByBundleName](arkts-ability-insightintentdriver-getinsightintentinfobybundlename-f-sys.md)和[getInsightIntentInfoByIntentName](arkts-ability-insightintentdriver-getinsightintentinfobyintentname-f-sys.md)接口查询意图信息。
 
-> **说明：**
+> **说明：** 
 > 
 > - 对于使用配置文件开发的意图，通过上述接口查询的全量信息和简要信息完全一致。
 > 
@@ -27,10 +27,8 @@
 > | subIntentInfo | 是 | 是 |
 > | parameters | 是 | 是 |
 > | entities | 否 | 否 |
-> | developType&lt;sup&gt;23+&lt;/sup
-&gt; | 是 | 是 |
-> | subIntentInfoForConfiguration&lt;sup&gt;23+&lt;/sup
-&gt; | 否 | 否 |
+> | developType&lt;sup&gt;23+&lt;/sup&gt; | 是 | 是 |
+> | subIntentInfoForConfiguration&lt;sup&gt;23+&lt;/sup&gt; | 否 | 否 |
 
 **起始版本：** 20
 
@@ -44,7 +42,7 @@
 GET_FULL_INSIGHT_INTENT = 0x00000001
 ```
 
-查询[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)中的除entities以外的全量意图信息，详见下表。查询entities信息需要使用 GET_ENTITY_INFO。
+查询[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)中的除entities以外的全量意图信息，详见下表。查询entities信息需要使用GET_ENTITY_INFO。
 
 **起始版本：** 20
 
@@ -76,7 +74,7 @@ GET_SUMMARY_INSIGHT_INTENT = 0x00000002
 GET_ENTITY_INFO = 0x00000004
 ```
 
-查询[EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md)的信息，不可单独使用，必选结合GET_FULL_INSIGHT_INTENT或者 GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT | GET_ENTITY_INFO`。
+查询[EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md)的信息，不可单独使用，必选结合GET_FULL_INSIGHT_INTENT或者GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT | GET_ENTITY_INFO`。
 
 **起始版本：** 20
 

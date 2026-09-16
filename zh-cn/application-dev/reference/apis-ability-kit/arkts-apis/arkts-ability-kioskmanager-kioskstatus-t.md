@@ -12,4 +12,4 @@ Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应�
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _KioskStatus
+**类型：** _KioskStatus

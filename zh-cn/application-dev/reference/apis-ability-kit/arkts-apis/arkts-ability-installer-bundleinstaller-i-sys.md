@@ -35,13 +35,13 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要添加扩展资源的应用名称。 |
-| filePaths | Array &lt;string&gt; | 是 | 要添加扩展资源的资源路径。 |
+| filePaths | Array&lt;string&gt; | 是 | 要添加扩展资源的资源路径。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -98,13 +98,13 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待创建应用分身的包名。 |
-| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | 否 | 指定创建应用分身所需的其他参数，默认值：参照 [createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md)的默认值。 |
+| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | 否 | 指定创建应用分身所需的其他参数，默认值：参照[createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise对象。返回创建的分身应用索引值。 |
+| Promise&lt;number&gt; | Promise对象。返回创建的分身应用索引值。 |
 
 **错误码：**
 
@@ -169,13 +169,13 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待删除应用分身的包名。 |
 | appIndex | number | 是 | 待删除应用分身的索引。 |
-| userId | number | 否 | 待删除应用分身所属用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户。 |
+| userId | number | 否 | 待删除应用分身所属用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -215,50 +215,6 @@ try {
 }
 ```
 
-## destroyAppClone
-
-```TypeScript
-destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>
-```
-
-删除应用分身。使用Promise异步回调。
-
-**起始版本：** 15
-
-**需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| bundleName | string | 是 | 待删除应用分身的包名。 |
-| appIndex | number | 是 | 待删除应用分身的索引。 |
-| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身所需的其他参数，默认值：参照 [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md)的默认值。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
-| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
-| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
-| [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked. |
-
-**示例**
-
 ```TypeScript
 import { installer } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -292,6 +248,52 @@ try {
 }
 ```
 
+## destroyAppClone
+
+```TypeScript
+destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>
+```
+
+删除应用分身。使用Promise异步回调。
+
+**起始版本：** 15
+
+**需要权限：** ohos.permission.UNINSTALL_CLONE_BUNDLE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| bundleName | string | 是 | 待删除应用分身的包名。 |
+| appIndex | number | 是 | 待删除应用分身的索引。 |
+| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身所需的其他参数，默认值：参照[DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md)的默认值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-权限校验失败) | Calling interface without permission 'ohos.permission.UNINSTALL_CLONE_BUNDLE'. |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
+| [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
+| [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
+| [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked. |
+
+**示例**
+
+参见 [destroyAppClone](#destroyappclone)
+
 ## install
 
 ```TypeScript
@@ -300,7 +302,7 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 
 安装指定应用。使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的
 > appDistributionType字段说明。
@@ -309,8 +311,8 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 
 **需要权限：** 
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
-- API版本13 - 22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
-- API版本10 - 12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
+- API版本13-22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
+- API版本10-12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 - API版本9：ohos.permission.INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -321,8 +323,8 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array &lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -354,7 +356,7 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 | [17700054](../errorcode-bundle.md#17700054-权限校验失败导致应用安装失败) | Failed to install the HAP because the HAP requests wrong permissions.<br>**适用版本：** 11+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because the device has been controlled.<br>**适用版本：** 12+ |
 | [17700066](../errorcode-bundle.md#17700066-安装失败native软件包安装失败) | Failed to install the HAP because installing the native package failed.<br>**适用版本：** 12+ |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
 | [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
@@ -389,6 +391,58 @@ try {
 }
 ```
 
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, (err: BusinessError) => {
+            if (err) {
+                console.error('install failed:' + err.message);
+            } else {
+                console.info('install successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.install(hapFilePaths, installParam)
+            .then((data: void) => {
+                console.info('install successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('install failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
 ## install
 
 ```TypeScript
@@ -397,7 +451,7 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 安装指定应用。使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的
 > appDistributionType字段说明。
@@ -406,8 +460,8 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 **需要权限：** 
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
-- API版本13 - 22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
-- API版本10 - 12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
+- API版本13-22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
+- API版本10-12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 - API版本9：ohos.permission.INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -418,7 +472,7 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array &lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -449,35 +503,13 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 | [17700054](../errorcode-bundle.md#17700054-权限校验失败导致应用安装失败) | Failed to install the HAP because the HAP requests wrong permissions.<br>**适用版本：** 11+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because the device has been controlled.<br>**适用版本：** 12+ |
 | [17700066](../errorcode-bundle.md#17700066-安装失败native软件包安装失败) | Failed to install the HAP because installing the native package failed.<br>**适用版本：** 12+ |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
 | [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.install(hapFilePaths, (err: BusinessError) => {
-            if (err) {
-                console.error('install failed:' + err.message);
-            } else {
-                console.info('install successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [install](#install)
 
 ## install
 
@@ -487,7 +519,7 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 安装指定应用。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 安装不同分发类型的应用需要申请相应的权限，分发类型可以参考[ApplicationInfo](arkts-ability-applicationinfo-i.md)中的
 > appDistributionType字段说明。
@@ -496,8 +528,8 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 **需要权限：** 
 - API版本23+：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
-- API版本13 - 22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
-- API版本10 - 12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
+- API版本13-22：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
+- API版本10-12：ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 - API版本9：ohos.permission.INSTALL_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
@@ -508,14 +540,14 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array &lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值 。<br>**起始版本：** 12 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**适用版本：** 12 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -546,39 +578,13 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 | [17700054](../errorcode-bundle.md#17700054-权限校验失败导致应用安装失败) | Failed to install the HAP because the HAP requests wrong permissions.<br>**适用版本：** 11+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because the device has been controlled.<br>**适用版本：** 12+ |
 | [17700066](../errorcode-bundle.md#17700066-安装失败native软件包安装失败) | Failed to install the HAP because installing the native package failed.<br>**适用版本：** 12+ |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
 | [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.install(hapFilePaths, installParam)
-            .then((data: void) => {
-                console.info('install successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('install failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [install](#install)
 
 ## installPlugin
 
@@ -601,14 +607,14 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hostBundleName | string | 是 | 待安装插件的应用包名。 |
-| pluginFilePaths | Array &lt;string&gt; | 是 | 存储插件程序包的路径。当传入多个文件路径或者一个目录时，需确保这些文件是同一插件程序的HSP，且这些HSP的签名需要保持一致。 |
+| pluginFilePaths | Array&lt;string&gt; | 是 | 存储插件程序包的路径。当传入多个文件路径或者一个目录时，需确保这些文件是同一插件程序的HSP，且这些HSP的签名需要保持一致。 |
 | pluginParam | [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) | 否 | 指定安装插件所需的参数，默认值：参照 [PluginParam](arkts-ability-installer-pluginparam-i-sys.md) 的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -626,7 +632,7 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 | [17700017](../errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败) | Failed to install the plugin since the version of the plugin to install is too early. |
 | [17700048](../errorcode-bundle.md#17700048-代码签名校验失败) | Failed to install the plugin because the code signature verification is failed. |
 | [17700052](../errorcode-bundle.md#17700052-非开发者模式下不允许安装调试自分发插件或调试应用) | Failed to install the plugin because debug bundle cannot be installed under non-developer mode. |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the plugin because a plugin with the same bundle name but different signature information exists on the device. |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the plugin because a plugin with the same<br>bundle name but different signature information exists on the device. |
 | [17700087](../errorcode-bundle.md#17700087-当前设备不支持安装插件) | Failed to install the plugin because the current device does not support plugin. |
 | [17700088](../errorcode-bundle.md#17700088-应用缺少安装插件的权限) | Failed to install the plugin because the host application lacks ohos.permission.kernel.SUPPORT_PLUGIN. |
 | [17700089](../errorcode-bundle.md#17700089-插件的-plugindistributionids-解析失败) | Failed to install the plugin because the plugin id fails to be parsed. |
@@ -670,7 +676,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 
 在指定用户下安装指定bundleName的应用。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口不支持安装[签名证书的分发类型](arkts-ability-applicationinfo-i.md)为enterprise，enterprise_mdm和
 > enterprise_normal的应用。
@@ -688,13 +694,13 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 需要安装应用的包名。 |
-| userId | number | 否 | 需要安装应用的用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，userId需要大于0。默认值：调用方所在用户。 |
+| userId | number | 否 | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，userId需要大于0。默认值：调用方所在用户。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -706,7 +712,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700071](../errorcode-bundle.md#17700071-不允许企业应用安装) | It is not allowed to install the enterprise bundle. |
-| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>**适用版本：** 14+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例**
 
@@ -755,7 +761,7 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待恢复应用的包名。 |
-| installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -767,8 +773,8 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
-| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>**适用版本：** 14+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例**
 
@@ -791,6 +797,58 @@ try {
             } else {
                 console.info('recover successfully.');
             }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, (err: BusinessError) => {
+            if (err) {
+                console.error('recover failed:' + err.message);
+            } else {
+                console.info('recover successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.recover(bundleName, installParam)
+            .then((data: void) => {
+                console.info('recover successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('recover failed:' + error.message);
         });
     }).catch((error: BusinessError) => {
         console.error('getBundleInstaller failed. Cause: ' + error.message);
@@ -832,34 +890,12 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
-| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>**适用版本：** 14+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.recover(bundleName, (err: BusinessError) => {
-            if (err) {
-                console.error('recover failed:' + err.message);
-            } else {
-                console.info('recover successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [recover](#recover)
 
 ## recover
 
@@ -882,13 +918,13 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -899,38 +935,12 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
-| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited from being installed on this device or by specified users.<br>**适用版本：** 14+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.recover(bundleName, installParam)
-            .then((data: void) => {
-                console.info('recover successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('recover failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [recover](#recover)
 
 ## removeExtResource
 
@@ -953,13 +963,13 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要删除扩展资源的应用名称。 |
-| moduleNames | Array &lt;string&gt; | 是 | 要删除扩展资源的moduleNames。 |
+| moduleNames | Array&lt;string&gt; | 是 | 要删除扩展资源的moduleNames。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1016,7 +1026,7 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1051,6 +1061,84 @@ let installParam: installer.InstallParam = {
 try {
     installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
         data.uninstall(bundleName, installParam, (err: BusinessError) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, (err: BusinessError) => {
+            if (err) {
+                console.error('uninstall failed:' + err.message);
+            } else {
+                console.info('uninstall successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.ohos.demo';
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(bundleName, installParam)
+            .then((data: void) => {
+                console.info('uninstall successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('uninstall failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uninstallParam: installer.UninstallParam = {
+    bundleName: "com.ohos.demo",
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.uninstall(uninstallParam, (err: BusinessError) => {
             if (err) {
                 console.error('uninstall failed:' + err.message);
             } else {
@@ -1105,29 +1193,7 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(bundleName, (err: BusinessError) => {
-            if (err) {
-                console.error('uninstall failed:' + err.message);
-            } else {
-                console.info('uninstall successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [uninstall](#uninstall)
 
 ## uninstall
 
@@ -1150,13 +1216,13 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值 。<br>**起始版本：** 15 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**适用版本：** 15 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1176,33 +1242,7 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.ohos.demo';
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(bundleName, installParam)
-            .then((data: void) => {
-                console.info('uninstall successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('uninstall failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [uninstall](#uninstall)
 
 ## uninstall
 
@@ -1240,31 +1280,7 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let uninstallParam: installer.UninstallParam = {
-    bundleName: "com.ohos.demo",
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(uninstallParam, (err: BusinessError) => {
-            if (err) {
-                console.error('uninstall failed:' + err.message);
-            } else {
-                console.info('uninstall successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [uninstall](#uninstall)
 
 ## uninstall
 
@@ -1292,7 +1308,7 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1307,31 +1323,7 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let uninstallParam: installer.UninstallParam = {
-    bundleName: "com.ohos.demo",
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.uninstall(uninstallParam, (err: BusinessError) => {
-            if (err) {
-                console.error('uninstall failed:' + err.message);
-            } else {
-                console.info('uninstall successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [uninstall](#uninstall)
 
 ## uninstallNewPreinstalledApps
 
@@ -1355,13 +1347,13 @@ uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNames | Array &lt;string&gt; | 是 | 待卸载的应用的包名列表。 |
+| bundleNames | Array&lt;string&gt; | 是 | 待卸载的应用的包名列表。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -1423,7 +1415,7 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1485,13 +1477,13 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载更新应用的包名。 |
-| installParam | InstallParam | 否 | 指定卸载更新所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。其中 userId无法指定，调用本接口将对所有已安装相应应用的用户进行卸载更新操作。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定卸载更新所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。其中userId无法指定，调用本接口将对所有已安装相应应用的用户进行卸载更新操作。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1505,7 +1497,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700057](../errorcode-bundle.md#17700057-指定的应用不是预置应用) | Failed to uninstall updates because the HAP is not pre-installed. |
 | [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 13+ |
-| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
+| [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 
 **示例**
 
@@ -1556,8 +1548,8 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array &lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| installParam | InstallParam | 是 | 指定安装所需的其他参数。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1617,6 +1609,58 @@ try {
 }
 ```
 
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, (err: BusinessError) => {
+            if (err) {
+                console.error('updateBundleForSelf failed:' + err.message);
+            } else {
+                console.info('updateBundleForSelf successfully.');
+            }
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
+```TypeScript
+import { installer } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
+let installParam: installer.InstallParam = {
+    userId: 100,
+    isKeepData: false,
+    installFlag: 1,
+};
+
+try {
+    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
+        data.updateBundleForSelf(hapFilePaths, installParam)
+            .then((data: void) => {
+                console.info('updateBundleForSelf successfully: ' + JSON.stringify(data));
+        }).catch((error: BusinessError) => {
+            console.error('updateBundleForSelf failed:' + error.message);
+        });
+    }).catch((error: BusinessError) => {
+        console.error('getBundleInstaller failed. Cause: ' + error.message);
+    });
+} catch (error) {
+    let message = (error as BusinessError).message;
+    console.error('getBundleInstaller failed. Cause: ' + message);
+}
+```
+
 ## updateBundleForSelf
 
 ```TypeScript
@@ -1637,7 +1681,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array &lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1667,29 +1711,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.updateBundleForSelf(hapFilePaths, (err: BusinessError) => {
-            if (err) {
-                console.error('updateBundleForSelf failed:' + err.message);
-            } else {
-                console.info('updateBundleForSelf successfully.');
-            }
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [updateBundleForSelf](#updatebundleforself)
 
 ## updateBundleForSelf
 
@@ -1711,14 +1733,14 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array &lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签 名需要保持一致。 |
-| installParam | InstallParam | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1748,30 +1770,4 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 
 **示例**
 
-```TypeScript
-import { installer } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapFilePaths = ['/data/storage/el2/base/haps/entry/files/'];
-let installParam: installer.InstallParam = {
-    userId: 100,
-    isKeepData: false,
-    installFlag: 1,
-};
-
-try {
-    installer.getBundleInstaller().then((data: installer.BundleInstaller) => {
-        data.updateBundleForSelf(hapFilePaths, installParam)
-            .then((data: void) => {
-                console.info('updateBundleForSelf successfully: ' + JSON.stringify(data));
-        }).catch((error: BusinessError) => {
-            console.error('updateBundleForSelf failed:' + error.message);
-        });
-    }).catch((error: BusinessError) => {
-        console.error('getBundleInstaller failed. Cause: ' + error.message);
-    });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getBundleInstaller failed. Cause: ' + message);
-}
-```
+参见 [updateBundleForSelf](#updatebundleforself)

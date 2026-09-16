@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## action
 
 ```TypeScript
@@ -21,7 +16,7 @@ action?: () => void
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,11 +28,11 @@ icon?: string | Resource
 
 菜单栏单个选项的图标资源路径。
 
-**类型：** string \| Resource
+**类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +50,7 @@ isEnabled?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,16 +60,19 @@ isEnabled?: boolean
 symbolIcon?: SymbolGlyphModifier
 ```
 
-菜单栏单个选项的symbol资源（优先级高于icon）。  
-**说明：**不支持通过[SymbolGlyphModifier](../arkts-apis/arkts-arkui-symbolglyphmodifier-c.md)对象的 fontSize属性修改图标大小、effectStrategy 属性修改动效、[symbolEffect](arkts-arkui-symbolglyph-attribute.md#symboleffect)属性修改动 效类型。
+菜单栏单个选项的symbol资源（优先级高于icon）。
 
-**类型：** SymbolGlyphModifier
+**说明：** 
+
+不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、[symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect)属性修改动效类型。
+
+**类型：** [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,12 +82,14 @@ symbolIcon?: SymbolGlyphModifier
 value: string | Resource
 ```
 
-API version 9：显示菜单栏单个选项的文本。从API version 10开始，不显示菜单栏单个选项的文本。
+API version 9：显示菜单栏单个选项的文本。
 
-**类型：** string \| Resource
+从API version 10开始，不显示菜单栏单个选项的文本。
+
+**类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

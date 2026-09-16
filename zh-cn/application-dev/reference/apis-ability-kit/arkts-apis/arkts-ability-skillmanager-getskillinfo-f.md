@@ -21,7 +21,7 @@ function getSkillInfo(bundleName: string, moduleName: string, skillName: string,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -32,14 +32,14 @@ function getSkillInfo(bundleName: string, moduleName: string, skillName: string,
 | bundleName | string | 是 | 指定查询应用的包名。 |
 | moduleName | string | 是 | 指定查询技能所属模块的名称。 |
 | skillName | string | 是 | 指定查询技能的名称。 |
-| flags | number | 是 | { |
+| flags | number | 是 | [SkillInfoFlag](arkts-ability-skillmanager-skillinfoflag-e.md) - 指定返回的SkillInfo所包含的信息。详情请参考SkillInfoFlag。 |
 | userId | number | 否 | 指定查询的用户ID，可以通过getOsAccountLocalId获取。默认值：调用方所在用户。取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;SkillInfo&gt; | Promise对象，返回指定技能的SkillInfo。 |
+| Promise&lt;[SkillInfo](arkts-ability-skillmanager-skillinfo-t.md)&gt; | Promise对象，返回指定技能的SkillInfo。 |
 
 **错误码：**
 

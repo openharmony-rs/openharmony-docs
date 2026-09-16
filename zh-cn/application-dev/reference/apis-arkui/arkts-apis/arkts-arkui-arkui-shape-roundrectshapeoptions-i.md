@@ -1,6 +1,8 @@
 # RoundRectShapeOptions
 
-RectShape 带有圆角半径的构造函数参数。继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)。
+RectShape 带有圆角半径的构造函数参数。
+
+继承自[ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)。
 
 **继承/实现关系：** RoundRectShapeOptions extends [ShapeSize](arkts-arkui-arkui-shape-shapesize-i.md)
 
@@ -20,15 +22,23 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 radiusHeight?: number | string
 ```
 
-矩形形状圆角半径的高度。类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。单位：vp默认值：0vp取值为异常值时按照0vp处理。
+矩形形状圆角半径的高度。
 
-**类型：** number \| string
+类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。
+
+单位：vp
+
+默认值：0vp
+
+取值为异常值时按照0vp处理。
+
+**类型：** number &#124; string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -40,15 +50,23 @@ radiusHeight?: number | string
 radiusWidth?: number | string
 ```
 
-矩形形状圆角半径的宽度。类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。单位：vp默认值：0vp取值为异常值时按照0vp处理。
+矩形形状圆角半径的宽度。
 
-**类型：** number \| string
+类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。
+
+单位：vp
+
+默认值：0vp
+
+取值为异常值时按照0vp处理。
+
+**类型：** number &#124; string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 

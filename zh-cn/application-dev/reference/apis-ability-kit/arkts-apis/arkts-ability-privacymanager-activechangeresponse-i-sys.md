@@ -36,7 +36,9 @@ activeStatus: PermissionActiveStatus
 callingTokenId?: number
 ```
 
-接口调用方的应用身份标识，当activeStatus为INACTIVE时该值无效。默认值：0。
+接口调用方的应用身份标识，当activeStatus为INACTIVE时该值无效。
+
+默认值：0。
 
 **类型：** number
 
@@ -68,7 +70,7 @@ deviceId: string
 enhancedIdentity?: string
 ```
 
-扩展身份，用于标识调用方的附加身份信息。当需要区分同一应用下不同调用来源的权限使用记录时返回此字段。 最大长度为48。默认值：空字符串。
+扩展身份，用于标识调用方的附加身份信息。当需要区分同一应用下不同调用来源的权限使用记录时返回此字段。最大长度为48。默认值：空字符串。
 
 **类型：** string
 
@@ -118,7 +120,9 @@ tokenId: number
 usedType?: PermissionUsedType
 ```
 
-敏感权限使用类型，当activeStatus为INACTIVE时该值无效。默认值：NORMAL_TYPE。
+敏感权限使用类型，当activeStatus为INACTIVE时该值无效。
+
+默认值：NORMAL_TYPE。
 
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 

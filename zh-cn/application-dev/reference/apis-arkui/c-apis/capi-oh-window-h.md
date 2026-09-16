@@ -64,7 +64,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)
 ```
 
-**描述**
+**描述：**
 
 设置主窗口是否显示状态栏。
 
@@ -90,7 +90,7 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)
 ```
 
-**描述**
+**描述：**
 
 设置主窗口的状态栏内容颜色。
 
@@ -115,7 +115,7 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)
 ```
 
-**描述**
+**描述：**
 
 设置主窗口是否显示导航栏。<!--RP2--><!--RP2End-->
 
@@ -141,7 +141,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)
 ```
 
-**描述**
+**描述：**
 
 获取指定窗口的避让区域。
 
@@ -152,8 +152,8 @@ int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_Avoi
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
-| [WindowManager_AvoidAreaType](capi-oh-window-comm-h.md#windowmanager_avoidareatype) type | 避让区域的类型。 |
-| [WindowManager_AvoidArea](capi-windowmanager-windowmanager-avoidarea.md)* avoidArea | 返回指向指定窗口的避让区域的指针，作为出参使用。 |
+| WindowManager_AvoidAreaType type | 避让区域的类型。 |
+| WindowManager_AvoidArea* avoidArea | 返回指向指定窗口的避让区域的指针，作为出参使用。 |
 
 **返回：**
 
@@ -167,7 +167,7 @@ int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_Avoi
 int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 ```
 
-**描述**
+**描述：**
 
 判断指定窗口是否显示。
 
@@ -192,7 +192,7 @@ int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)
 int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 ```
 
-**描述**
+**描述：**
 
 显示指定窗口。
 
@@ -216,7 +216,7 @@ int32_t OH_WindowManager_ShowWindow(int32_t windowId)
 int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 ```
 
-**描述**
+**描述：**
 
 设置指定窗口是否可触。
 
@@ -241,7 +241,7 @@ int32_t OH_WindowManager_SetWindowTouchable(int32_t windowId, bool isTouchable)
 int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 ```
 
-**描述**
+**描述：**
 
 设置指定窗口是否可获焦。
 
@@ -266,7 +266,7 @@ int32_t OH_WindowManager_SetWindowFocusable(int32_t windowId, bool isFocusable)
 int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* color)
 ```
 
-**描述**
+**描述：**
 
 设置指定窗口背景颜色。
 
@@ -291,7 +291,7 @@ int32_t OH_WindowManager_SetWindowBackgroundColor(int32_t windowId, const char* 
 int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 ```
 
-**描述**
+**描述：**
 
 指定主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。
 
@@ -316,7 +316,7 @@ int32_t OH_WindowManager_SetWindowBrightness(int32_t windowId, float brightness)
 int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScreenOn)
 ```
 
-**描述**
+**描述：**
 
 设置指定窗口是否开启屏幕常亮。
 
@@ -341,7 +341,7 @@ int32_t OH_WindowManager_SetWindowKeepScreenOn(int32_t windowId, bool isKeepScre
 int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 ```
 
-**描述**
+**描述：**
 
 设置指定窗口是否开启隐私模式。
 
@@ -368,7 +368,7 @@ int32_t OH_WindowManager_SetWindowPrivacyMode(int32_t windowId, bool isPrivacy)
 int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_WindowProperties* windowProperties)
 ```
 
-**描述**
+**描述：**
 
 获取指定窗口属性。
 
@@ -379,7 +379,7 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
-| [WindowManager_WindowProperties](capi-windowmanager-windowmanager-windowproperties.md)* windowProperties | 返回指向指定窗口的属性的指针，作为出参使用。 |
+| WindowManager_WindowProperties* windowProperties | 返回指向指定窗口的属性的指针，作为出参使用。 |
 
 **返回：**
 
@@ -393,7 +393,7 @@ int32_t OH_WindowManager_GetWindowProperties(int32_t windowId, WindowManager_Win
 int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 ```
 
-**描述**
+**描述：**
 
 获取指定窗口截图。
 
@@ -404,7 +404,7 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。窗口id非法或者窗口已经销毁，不能获取指定窗口截图，需要传入有效的窗口id才能成功获取指定窗口截图。请通过窗口对象调用{@link getWindowProperties()}接口（ArkTS接口）获取有效的窗口id。 |
-| [OH_PixelmapNative](capi-windowmanager-struct.md)* pixelMap | 返回指向指定窗口的截图的指针，作为出参使用。 |
+| OH_PixelmapNative* pixelMap | 返回指向指定窗口的截图的指针，作为出参使用。 |
 
 **返回：**
 
@@ -418,7 +418,7 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowManager_Rect** windowLayoutInfoList, size_t* windowLayoutInfoSize)
 ```
 
-**描述**
+**描述：**
 
 获取指定屏幕上可见的窗口布局信息数组，按当前窗口层级排列，层级最高的对应数组下标为0。
 
@@ -429,7 +429,7 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowMan
 | 参数项 | 描述 |
 | -- | -- |
 | int64_t displayId | 指定屏幕的id。请通过窗口对象调用{@link getWindowProperties()}接口（ArkTS接口）获取有效的屏幕id。 |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md)** windowLayoutInfoList | 指定屏幕上可见的窗口布局信息数组的数组指针，作为出参使用。 |
+| WindowManager_Rect** windowLayoutInfoList | 指定屏幕上可见的窗口布局信息数组的数组指针，作为出参使用。 |
 | size_t* windowLayoutInfoSize | 指定屏幕上可见的窗口布局信息数组长度的指针，作为出参使用。 |
 
 **返回：**
@@ -444,7 +444,7 @@ int32_t OH_WindowManager_GetAllWindowLayoutInfoList(int64_t displayId, WindowMan
 void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowLayoutInfoList)
 ```
 
-**描述**
+**描述：**
 
 释放窗口布局信息数组占用的内存。
 
@@ -454,7 +454,7 @@ void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowL
 
 | 参数项 | 描述 |
 | -- | -- |
-| [WindowManager_Rect](capi-windowmanager-windowmanager-rect.md)* windowLayoutInfoList | 指定屏幕上可见的窗口布局信息数组的数组指针，可通过[OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist)接口获取。 |
+| WindowManager_Rect* windowLayoutInfoList | 指定屏幕上可见的窗口布局信息数组的数组指针，可通过[OH_WindowManager_GetAllWindowLayoutInfoList](capi-oh-window-h.md#oh_windowmanager_getallwindowlayoutinfolist)接口获取。 |
 
 ### OH_WindowManager_InjectTouchEvent()
 
@@ -462,7 +462,7 @@ void OH_WindowManager_ReleaseAllWindowLayoutInfoList(WindowManager_Rect* windowL
 int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* touchEvent, int32_t windowX, int32_t windowY)
 ```
 
-**描述**
+**描述：**
 
 将多模触摸事件注入给目标窗口，仅支持注入同进程窗口，且该注入不会触发窗口焦点和层级变化，不会触发窗口拖拽，事件会直接发送给ArkUI。该接口需要在指定窗口加载UI之后调用。
 
@@ -473,7 +473,7 @@ int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* to
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 |
-| Input_TouchEvent* touchEvent | 多模触摸事件，具体可见Input_TouchEvent，事件定义在oh_input_manager.h中。该参数包含的部分字段有参数限制，其中，action应为大于等于0且小于等于3的整数；id、displayX、displayY和actionTime应为不小于0的整数。以上参数不符合限制条件会返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示：窗口管理器服务异常。 |
+| Input_TouchEvent* touchEvent | 多模触摸事件，具体可见{@link Input_TouchEvent}，事件定义在oh_input_manager.h中。该参数包含的部分字段有参数限制，其中，action应为大于等于0且小于等于3的整数；id、displayX、displayY和actionTime应为不小于0的整数。以上参数不符合限制条件会返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示：窗口管理器服务异常。 |
 | int32_t windowX | 注入事件相对于注入窗口的落点横坐标。该参数为整数。 |
 | int32_t windowY | 注入事件相对于注入窗口的落点纵坐标。该参数为整数。 |
 
@@ -489,7 +489,7 @@ int32_t OH_WindowManager_InjectTouchEvent(int32_t windowId, Input_TouchEvent* to
 int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** infoList, size_t* mainWindowInfoSize)
 ```
 
-**描述**
+**描述：**
 
 获取全部主窗信息。
 
@@ -501,7 +501,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 | 参数项 | 描述 |
 | -- | -- |
-| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)** infoList | 指向主窗口信息列表的指针，作为出参使用。 |
+| WindowManager_MainWindowInfo** infoList | 指向主窗口信息列表的指针，作为出参使用。 |
 | size_t* mainWindowInfoSize | 指向主窗口信息数组长度的指针，作为出参使用。 |
 
 **返回：**
@@ -516,7 +516,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* infoList)
 ```
 
-**描述**
+**描述：**
 
 释放主窗口信息列表的内存。
 
@@ -526,7 +526,7 @@ void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* inf
 
 | 参数项 | 描述 |
 | -- | -- |
-| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)* infoList | 主窗信息列表。 |
+| WindowManager_MainWindowInfo* infoList | 主窗信息列表。 |
 
 ### OH_WindowManager_WindowSnapshotCallback()
 
@@ -534,7 +534,7 @@ void OH_WindowManager_ReleaseAllMainWindowInfo(WindowManager_MainWindowInfo* inf
 typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative** snapshotPixelMapList, size_t snapshotListSize)
 ```
 
-**描述**
+**描述：**
 
 接收主窗口截图列表的回调接口。
 
@@ -544,7 +544,7 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_PixelmapNative](capi-windowmanager-struct.md)\*\* snapshotPixelMapList | 窗口截图列表。 |
+| const OH_PixelmapNative\*\* snapshotPixelMapList | 窗口截图列表。 |
 | size_t snapshotListSize | 窗口截图列表的大小。 |
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -553,7 +553,7 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)
 ```
 
-**描述**
+**描述：**
 
 获取一个或多个指定windowId的主窗口截图。
 
@@ -567,7 +567,7 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 | -- | -- |
 | int32_t* windowIdList | 需要获取截图的主窗口ID列表。 |
 | size_t windowIdListSize | 主窗口ID列表的长度。 |
-| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) config | 获取窗口截图时的配置信息。 |
+| WindowManager_WindowSnapshotConfig config | 获取窗口截图时的配置信息。 |
 | [OH_WindowManager_WindowSnapshotCallback](capi-oh-window-h.md#oh_windowmanager_windowsnapshotcallback) callback | 获取窗口截图的回调对象。用于返回窗口截图列表，并按照指定的窗口ID列表顺序排列。 |
 
 **返回：**
@@ -582,7 +582,7 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)
 ```
 
-**描述**
+**描述：**
 
 释放主窗口截图列表的内存。
 
@@ -592,7 +592,7 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_PixelmapNative](capi-windowmanager-struct.md)* snapshotPixelMapList | 窗口截图列表。 |
+| const OH_PixelmapNative* snapshotPixelMapList | 窗口截图列表。 |
 
 ### OH_WindowManager_LockCursor()
 
@@ -600,7 +600,7 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)
 ```
 
-**描述**
+**描述：**
 
 锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随鼠标移动。仅支持获焦窗口调用，失焦之后会自动取消锁定。
 
@@ -627,7 +627,7 @@ int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovemen
 int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 ```
 
-**描述**
+**描述：**
 
 清除窗口设置的鼠标光标指定的模式。
 
@@ -653,7 +653,7 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_FrameMetrics* metrics, bool* isFirstDrawFrame)
 ```
 
-**描述**
+**描述：**
 
 判断当前帧是否为首帧。
 
@@ -663,14 +663,14 @@ int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_Fr
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | bool* isFirstDrawFrame | 作为出参使用，表示当前帧是否为首帧，true表示是首帧，false表示不是首帧。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见{@link WindowManager_ErrorCode}。 |
 
 ### OH_WindowManager_FrameMetrics_GetInputHandlingDuration()
 
@@ -678,7 +678,7 @@ int32_t OH_WindowManager_FrameMetrics_IsFirstDrawFrame(const OH_WindowManager_Fr
 int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)
 ```
 
-**描述**
+**描述：**
 
 获取当前帧中手势处理的耗时。
 
@@ -688,14 +688,14 @@ int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowMa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | uint64_t* duration | 作为出参使用，表示当前帧中手势处理的耗时，单位为纳秒。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见{@link WindowManager_ErrorCode}。 |
 
 ### OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration()
 
@@ -703,7 +703,7 @@ int32_t OH_WindowManager_FrameMetrics_GetInputHandlingDuration(const OH_WindowMa
 int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowManager_FrameMetrics* metrics, uint64_t* duration)
 ```
 
-**描述**
+**描述：**
 
 获取当前帧中布局测量的耗时。
 
@@ -713,14 +713,14 @@ int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowMa
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | uint64_t* duration | 作为出参使用，表示当前帧中布局测量的耗时，单位为纳秒。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见{@link WindowManager_ErrorCode}。 |
 
 ### OH_WindowManager_FrameMetrics_GetVsyncTimestamp()
 
@@ -728,7 +728,7 @@ int32_t OH_WindowManager_FrameMetrics_GetLayoutMeasureDuration(const OH_WindowMa
 int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)
 ```
 
-**描述**
+**描述：**
 
 获取当前帧开始的时间戳。
 
@@ -738,14 +738,14 @@ int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_F
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)* metrics | 帧率指标数据对象。 |
+| const OH_WindowManager_FrameMetrics* metrics | 帧率指标数据对象。 |
 | uint64_t* timestamp | 作为出参使用，表示当前帧开始的时间戳，单位为纳秒。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见{@link WindowManager_ErrorCode}。 |
 
 ### OH_WindowManager_RegisterFrameMetricsMeasuredCallback()
 
@@ -753,7 +753,7 @@ int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_F
 int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)
 ```
 
-**描述**
+**描述：**
 
 订阅窗口帧率指标变更监听事件。该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。应用注册帧率指标变更监听后，仅当客户端UI内容发生重绘（例如页面切换、响应式组件交互、设置背景色和透明度等）时才会触发已注册回调。如需取消订阅，请使用[OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback)接口。
 
@@ -764,13 +764,13 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口ID。 |
-| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | 用于返回帧率指标结果的回调函数。 |
+| OH_WindowManager_FrameMetricsMeasuredCallback callback | 用于返回帧率指标结果的回调函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：      1. 窗口未创建或已销毁；      2. 窗口状态异常。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：      1. 窗口未创建或已销毁；      2. 窗口状态异常。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见{@link WindowManager_ErrorCode}。 |
 
 ### OH_WindowManager_UnregisterFrameMetricsMeasuredCallback()
 
@@ -778,7 +778,7 @@ int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, 
 int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)
 ```
 
-**描述**
+**描述：**
 
 取消订阅窗口帧率指标变更监听事件。该接口依赖窗口页面内容加载，即需要在ArkTS侧loadContent()接口或setUIContent()接口生效后调用。如需订阅，请使用[OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback)接口。
 
@@ -789,13 +789,13 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口ID。 |
-| [OH_WindowManager_FrameMetricsMeasuredCallback](capi-oh-window-comm-h.md#oh_windowmanager_framemetricsmeasuredcallback) callback | 用于返回帧率指标结果的回调函数。 |
+| OH_WindowManager_FrameMetricsMeasuredCallback callback | 用于返回帧率指标结果的回调函数。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：      1. 窗口未创建或已销毁；      2. 窗口状态异常。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。      返回OK，表示函数调用成功。      返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。可能原因：      1. 窗口未创建或已销毁；      2. 窗口状态异常。      返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误，对应参数取值范围不合理。      具体可见{@link WindowManager_ErrorCode}。 |
 
 ### OH_WindowManager_DensityInfo_GetDefaultDensity()
 
@@ -803,7 +803,7 @@ int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId
 int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)
 ```
 
-**描述**
+**描述：**
 
 获取窗口所在屏幕的系统默认显示大小缩放因子。
 
@@ -813,7 +813,7 @@ int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_De
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 显示当前窗口的大小缩放因子信息。 |
+| const OH_WindowManager_DensityInfo* info | 显示当前窗口的大小缩放因子信息。 |
 | float* density | 系统默认显示尺寸比例因子 |
 
 **返回：**
@@ -828,7 +828,7 @@ int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_De
 int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)
 ```
 
-**描述**
+**描述：**
 
 获取窗口所在屏幕的系统显示大小缩放因子。
 
@@ -838,7 +838,7 @@ int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_Den
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 显示当前窗口的大小缩放因子信息。 |
+| const OH_WindowManager_DensityInfo* info | 显示当前窗口的大小缩放因子信息。 |
 | float* density | 系统显示尺寸比例因子 |
 
 **返回：**
@@ -853,7 +853,7 @@ int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_Den
 int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)
 ```
 
-**描述**
+**描述：**
 
 获取窗口的自定义显示大小缩放因子。
 
@@ -863,7 +863,7 @@ int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_Den
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 当前窗口所在屏幕的显示大小缩放因子信息。 |
+| const OH_WindowManager_DensityInfo* info | 当前窗口所在屏幕的显示大小缩放因子信息。 |
 | float* density | 窗口的自定义显示大小缩放因子。返回值-1表示没有自定义已设置显示大小缩放因子，或已重置。 |
 
 **返回：**
@@ -878,7 +878,7 @@ int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_Den
 int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)
 ```
 
-**描述**
+**描述：**
 
 获取窗口所在屏幕的系统显示大小缩放系数，窗口所在屏幕的系统默认显示大小缩放系数，以及当前窗口自定义设置的显示大小缩放系数。
 
@@ -889,7 +889,7 @@ int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowMan
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建window时的WindowId。 |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)** info | 显示当前窗口的显示密度信息。返回值NULL表示当前设备不支持此接口。 |
+| const OH_WindowManager_DensityInfo** info | 显示当前窗口的显示密度信息。返回值NULL表示当前设备不支持此接口。 |
 
 **返回：**
 
@@ -903,7 +903,7 @@ int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowMan
 int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
 ```
 
-**描述**
+**描述：**
 
 Listen for changes in the display size scaling factor information of the window. The callback function istriggered when any of the system display size scaling factor, system default display size scaling factor, orcustom display size scaling factor of the screen where the window resides changes.
 
@@ -914,13 +914,13 @@ Listen for changes in the display size scaling factor information of the window.
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | WindowId when window is created. |
-| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the result of density information. |
+| OH_WindowManager_DensityInfoCallback callback | Callback used to return the result of density information. |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:              1. The window is not created or destroyed;              2. This window state is abnormal.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          {@link WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL} this window state is abnormal. Possible cause:              1. The window is not created or destroyed;              2. This window state is abnormal.          {@link WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM} Parameter error. Possible cause:              1. Invalid parameter range. |
 
 ### OH_WindowManager_UnregisterDensityInfoChangeCallback()
 
@@ -928,7 +928,7 @@ Listen for changes in the display size scaling factor information of the window.
 int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
 ```
 
-**描述**
+**描述：**
 
 Unlisten for changes in the display size scaling factor information of the window. The callback function istriggered when any of the system display size scaling factor, system default display size scaling factor, orcustom display size scaling factor of the screen where the window resides changes.
 
@@ -939,13 +939,13 @@ Unlisten for changes in the display size scaling factor information of the windo
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | WindowId when window is created. |
-| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the result of density information. |
+| OH_WindowManager_DensityInfoCallback callback | Callback used to return the result of density information. |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          [WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL](capi-oh-window-comm-h.md#windowmanager_errorcode) this window state is abnormal. Possible cause:              1. The window is not created or destroyed;              2. This window state is abnormal.          [WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM](capi-oh-window-comm-h.md#windowmanager_errorcode) Parameter error. Possible cause:              1. Invalid parameter range. |
+| int32_t | Returns the status code of the execution.          {@link WS_OK} the function call is successful.          {@link WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL} this window state is abnormal. Possible cause:              1. The window is not created or destroyed;              2. This window state is abnormal.          {@link WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM} Parameter error. Possible cause:              1. Invalid parameter range. |
 
 ### OH_WindowManager_DensityInfo_Release()
 
@@ -953,7 +953,7 @@ Unlisten for changes in the display size scaling factor information of the windo
 int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)
 ```
 
-**描述**
+**描述：**
 
 释放DensityInfo指针指向的内存空间
 
@@ -963,7 +963,7 @@ int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | 显示当前窗口的DensityInfo。 |
+| const OH_WindowManager_DensityInfo* info | 显示当前窗口的DensityInfo。 |
 
 **返回：**
 

@@ -12,4 +12,4 @@ pack.info的包信息。
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.PackageConfig
+**类型：** [_PackInfo.PackageConfig](arkts-ability-bundlepackinfo-packageconfig-i-sys.md)

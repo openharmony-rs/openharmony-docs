@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```TypeScript
-import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo } from '@kit.ArkUI';
 ```
 
 ## getReusableInfo
@@ -25,7 +25,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ getReusableInfo(constructor: ReusableComponentConstructor,
 
 | 类型 | 说明 |
 | --- | --- |
-| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] \| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。 |
+| [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md)[] &#124; [IReusableInfo](arkts-arkui-arkui-statemanagement-ireusableinfo-i.md) &#124; undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array&lt;IReusableInfo&gt;`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例**
 
@@ -117,7 +117,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 调用空闲任务以预创建可复用组件并在首次使用前将其放入复用池。
 
-> **说明：**
+> **说明：** 
 > 
 > 1. `preRender`仅将池配置为接受的组件放入池中。预渲染池不接受的组件会立即创建并销毁。
 > 
@@ -129,7 +129,7 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,14 +137,14 @@ preRender(builder: WrappedBuilder<[]>, times: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个 [@Reusable](../../../ui/state-management/arkts-create-custom-components.md#reusable)/ [@ReusableV2](../../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
+| builder | [WrappedBuilder](../arkts-components/arkts-arkui-wrappedbuilder-c.md)&lt;[]&gt; | 是 | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../../ui/state-management/arkts-create-custom-components.md#reusable)/ [@ReusableV2](../../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
 | times | number | 是 | 执行@Builder函数的次数。取值范围为正整数。传入0或负数时不生效。传入小数时会向上取整。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 当空闲任务成功完成时兑现的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。 |
+| Promise&lt;void&gt; | 当空闲任务成功完成时兑现的Promise。Promise对象无返回结果。当预渲染任务执行失败时，Promise会被拒绝。 |
 
 **示例**
 

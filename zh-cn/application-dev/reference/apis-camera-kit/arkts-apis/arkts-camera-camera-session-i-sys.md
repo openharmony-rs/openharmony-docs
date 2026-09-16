@@ -1,6 +1,6 @@
 # Session
 
-会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功 能（录像，拍照）。
+会话类，保存一次相机运行所需要的所有资源[CameraInput](arkts-camera-camera-camerainput-i.md)、[CameraOutput](arkts-camera-camera-cameraoutput-i.md)，并向相机设备申请完成相机功能（录像，拍照）。
 
 **起始版本：** 11
 
@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getActiveParameter
@@ -108,7 +109,7 @@ Gets the values of the given key in camera metadata.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;string&gt; | The values of the key in camera metadata. |
+| Array&lt;string&gt; | The values of the key in camera metadata. |
 
 **错误码：**
 
@@ -139,7 +140,7 @@ Gets the supported keys in camera metadata.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;string&gt; | The supported keys in camera metadata. |
+| Array&lt;string&gt; | The supported keys in camera metadata. |
 
 **错误码：**
 
@@ -169,7 +170,7 @@ Sets key-value pairs parameters for the session.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| kvpairs | Record &lt;string, string&gt; | 是 | The pairs of tag name and value in camera metadata. |
+| kvpairs | Record&lt;string, string&gt; | 是 | The pairs of tag name and value in camera metadata. |
 
 **错误码：**
 

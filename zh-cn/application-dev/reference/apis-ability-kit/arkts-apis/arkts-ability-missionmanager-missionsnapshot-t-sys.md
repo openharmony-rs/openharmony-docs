@@ -12,4 +12,4 @@ export type MissionSnapshot = _MissionSnapshot
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _MissionSnapshot
+**类型：** _MissionSnapshot

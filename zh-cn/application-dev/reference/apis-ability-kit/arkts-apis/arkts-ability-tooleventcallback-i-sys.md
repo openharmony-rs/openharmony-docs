@@ -1,6 +1,8 @@
 # ToolEventCallback（系统接口）
 
-ToolEventCallback用于接收CLI工具进程运行期间产生的会话事件。@interface ToolEventCallback
+ToolEventCallback用于接收CLI工具进程运行期间产生的会话事件。
+
+@interface ToolEventCallback
 
 **起始版本：** 26.0.0
 

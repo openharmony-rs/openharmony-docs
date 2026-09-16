@@ -18,11 +18,13 @@ import { App, AppResponse, RequestFullWindowOptions, ScreenOnVisibleOptions } fr
 static getInfo(): AppResponse
 ```
 
-获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。从API version9开始，推荐使用 [bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md) 。
+获取当前应用配置文件中声明的信息。在Stage模型下接口返回值为null。
+
+从API version9开始，推荐使用[bundleManager.getBundleInfoForSelf](../../apis-ability-kit/arkts-apis/arkts-ability-bundlemanager-getbundleinfoforself-f.md)。
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -34,40 +36,12 @@ static getInfo(): AppResponse
 
 **示例**
 
-ArkTS示例：
-
 ```TypeScript
-import app, { AppResponse } from '@system.app';
-export default class Info {
-  getInfo() {
-    let info:AppResponse = app.getInfo();
-    console.info(JSON.stringify(info));
-  }
-}
+ArkTS示例：
 ```
 
-JS示例：
-
 ```TypeScript
-<!-- xxx.hml -->
-<div class="container">
-    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
-        app.getInfo example
-    </text>
-    <div class="info-item">
-        <text class="label">appName:</text>
-        <text class="value">{{appName}}</text>
-    </div>
-    <div class="info-item">
-        <text class="label">versionName:</text>
-        <text class="value">{{versionName}}</text>
-    </div>
-    <div class="info-item">
-        <text class="label">versionCode:</text>
-        <text class="value">{{versionCode}}</text>
-    </div>
-    <input type="button" value="getAppInfo" style="width: 240px; height: 50px; margin: 5px;" onclick="getAppInfo"></input>
-</div>
+JS示例：
 ```
 
 ```TypeScript
@@ -188,7 +162,9 @@ export default class Req {
 static screenOnVisible(options?: ScreenOnVisibleOptions): void
 ```
 
-定义屏幕唤醒时是否保持应用可见。该接口从API version 8 开始废弃。
+定义屏幕唤醒时是否保持应用可见。
+
+该接口从API version 8 开始废弃。
 
 **起始版本：** 3
 
@@ -212,7 +188,7 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,11 +233,13 @@ struct Index {
 static setImageFileCacheSize(value: number): void
 ```
 
-设置图像文件在解码前在磁盘上的缓存大小（字节）。如果未设置，应用程序将在磁盘上缓存 100MB 的图像文件。
+设置图像文件在解码前在磁盘上的缓存大小（字节）。
+
+如果未设置，应用程序将在磁盘上缓存 100MB 的图像文件。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,7 +277,7 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -344,40 +322,24 @@ struct Index {
 static terminate(): void
 ```
 
-退出当前Ability。在Stage模型下接口功能不生效。从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-featureability.md)。
+退出当前Ability。在Stage模型下接口功能不生效。
+
+从API version 7开始，推荐使用[`@ohos.ability.featureAbility`](../../apis-ability-kit/arkts-apis/arkts-ability-ability-featureability.md)。
 
 **起始版本：** 3
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
 **示例**
 
-ArkTS示例：
-
 ```TypeScript
-import app, { AppResponse } from '@system.app';
-export default class TerM {
-  terminate() {
-    app.terminate();
-  }
-}
+ArkTS示例：
 ```
 
-JS示例：
-
 ```TypeScript
-<!-- xxx.hml -->
-<div class="container">
-    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
-        app.terminate example
-    </text>
-    <text class="desc">
-        Click the button below to exit the app
-    </text>
-    <input type="button" value="exit app" style="width: 240px; height: 50px; margin: 5px;" onclick="terminateApp"></input>
-</div>
+JS示例：
 ```
 
 ```TypeScript

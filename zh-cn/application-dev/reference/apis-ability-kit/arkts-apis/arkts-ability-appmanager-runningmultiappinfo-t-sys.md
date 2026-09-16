@@ -12,4 +12,4 @@ export type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _RunningMultiAppInfo
+**类型：** _RunningMultiAppInfo

@@ -20,7 +20,7 @@ import { privacyManager } from '@kit.AbilityKit';
 beginTime?: number
 ```
 
-查询的起始时间。 单位为：毫秒。默认值：0，表示不限制起始时间。
+查询的起始时间。单位为：毫秒。默认值：0，表示不限制起始时间。
 
 **类型：** number
 
@@ -38,7 +38,9 @@ beginTime?: number
 bundleName?: string
 ```
 
-目标应用的包名。默认值：查询所有应用。
+目标应用的包名。
+
+默认值：查询所有应用。
 
 **类型：** string
 
@@ -54,7 +56,9 @@ bundleName?: string
 deviceId?: string
 ```
 
-目标应用所在设备的ID。默认值：本端设备ID。
+目标应用所在设备的ID。
+
+默认值：本端设备ID。
 
 **类型：** string
 
@@ -70,7 +74,7 @@ deviceId?: string
 endTime?: number
 ```
 
-查询的终止时间，不早于beginTime，否则返回错误码12100001。 单位为：毫秒。默认值：0，表示不限制终止时间。
+查询的终止时间，不早于beginTime，否则返回错误码12100001。单位为：毫秒。默认值：0，表示不限制终止时间。
 
 **类型：** number
 
@@ -104,7 +108,9 @@ flag: PermissionUsageFlag
 isRemote?: boolean
 ```
 
-指定是否查询远端设备。false表示查询本端设备的权限使用记录，true表示查询远端设备记录。默认值：false。
+指定是否查询远端设备。false表示查询本端设备的权限使用记录，true表示查询远端设备记录。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -122,7 +128,7 @@ isRemote?: boolean
 permissionNames?: Array<Permissions>
 ```
 
-需要查询的权限集合。 默认值：空，表示查询所有权限的使用记录。
+需要查询的权限集合。默认值：空，表示查询所有权限的使用记录。
 
 **类型：** Array&lt;Permissions&gt;
 
@@ -138,7 +144,9 @@ permissionNames?: Array<Permissions>
 tokenId?: number
 ```
 
-目标应用的身份标识。目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的 [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。 该参数必须为大于0的整数，传入0时返回错误码12100001。 BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md)。默认值：0，查询所有应用。
+目标应用的身份标识。目标应用的身份标识。可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid)字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md)。
+
+默认值：0，查询所有应用。
 
 **类型：** number
 

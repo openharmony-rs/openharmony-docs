@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义焦点管理的相关接口，主要用于主动转移焦点或管理控制焦点转移默认行为，控制焦点激活态。
+定义焦点管理接口，主要用于主动转移焦点、清除焦点、管理焦点转移默认行为、控制焦点激活态，以及设置按键事件的处理模式。适用于页面切换、键盘导航等需要统一管理焦点状态和焦点转移行为的场景，有助于提升焦点控制的可预测性和交互体验。
 
 **库：** libace_ndk.z.so
 
@@ -38,7 +38,7 @@
 enum ArkUI_KeyProcessingMode
 ```
 
-**描述**
+**描述：**
 
 按键事件处理的优先级。
 
@@ -58,7 +58,7 @@ enum ArkUI_KeyProcessingMode
 ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 ```
 
-**描述**
+**描述：**
 
 为特定节点请求焦点。
 
@@ -68,13 +68,13 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 节点。 |
+| ArkUI_NodeHandle node | 节点。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 错误码。      <br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 请求成功。      <br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE](capi-native-type-h.md#arkui_errorcode) 节点无法获得焦点。      <br>[ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR](capi-native-type-h.md#arkui_errorcode) 祖先节点无法获得焦点。      <br>[ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT](capi-native-type-h.md#arkui_errorcode) 节点不存在。 |
+| ArkUI_ErrorCode | 错误码。      <br>{@link ARKUI_ERROR_CODE_NO_ERROR} 请求成功。      <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE} 节点无法获得焦点。      <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR} 祖先节点无法获得焦点。      <br>{@link ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT} 节点不存在。 |
 
 ### OH_ArkUI_FocusClear()
 
@@ -82,7 +82,7 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 ```
 
-**描述**
+**描述：**
 
 将当前焦点清除到根容器节点。
 
@@ -92,7 +92,7 @@ void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UI实例对象指针。 |
+| ArkUI_ContextHandle uiContext | UI实例对象指针。 |
 
 ### OH_ArkUI_FocusActivate()
 
@@ -100,7 +100,7 @@ void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool isAutoInactive)
 ```
 
-**描述**
+**描述：**
 
 设置当前界面的焦点激活态，获焦节点显示焦点框。
 
@@ -110,7 +110,7 @@ void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool i
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UI实例对象指针。 |
+| ArkUI_ContextHandle uiContext | UI实例对象指针。 |
 | bool isActive | 设置是否进入/退出焦点激活态。true表示进入焦点激活态，false表示退出焦点激活态。 |
 | bool isAutoInactive | 当触摸事件或鼠标按下事件触发时，"true" 表示将状态设置为退出焦点激活态,"false" 表示在调用对应设置API前，保持当前状态。 |
 
@@ -120,7 +120,7 @@ void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool i
 void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTransfer)
 ```
 
-**描述**
+**描述：**
 
 设置页面切换时，焦点转移行为。
 
@@ -130,7 +130,7 @@ void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTrans
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UI实例对象指针。 |
+| ArkUI_ContextHandle uiContext | UI实例对象指针。 |
 | bool autoTransfer | 页面切换时，是否转移焦点。true表示页面切换时转移焦点，false表示页面切换时焦点不转移。 |
 
 ### OH_ArkUI_FocusSetKeyProcessingMode()
@@ -139,7 +139,7 @@ void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTrans
 void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_KeyProcessingMode mode)
 ```
 
-**描述**
+**描述：**
 
 设置按键事件处理的优先级。
 
@@ -149,7 +149,7 @@ void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_Key
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UI实例对象指针。 |
+| ArkUI_ContextHandle uiContext | UI实例对象指针。 |
 | [ArkUI_KeyProcessingMode](capi-native-interface-focus-h.md#arkui_keyprocessingmode) mode | 按键事件处理的优先级。 |
 
 

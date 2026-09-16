@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## icon
 
 ```TypeScript
@@ -19,13 +14,13 @@ icon: ResourceStr | SymbolGlyphModifier
 
 需要设置的图标。
 
-**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) \| SymbolGlyphModifier
+**类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,7 +32,7 @@ icon: ResourceStr | SymbolGlyphModifier
 index: number
 ```
 
-指定索引。 取值限定为整数。
+指定索引。取值限定为整数。
 
 **类型：** number
 
@@ -45,7 +40,7 @@ index: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 

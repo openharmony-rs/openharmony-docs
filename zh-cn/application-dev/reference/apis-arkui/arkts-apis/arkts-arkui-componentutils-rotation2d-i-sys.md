@@ -2,6 +2,8 @@
 
 描述二维空间中的旋转，可以通过旋转角度和旋转中心来定义。
 
+@typedef Rotation2D
+
 **起始版本：** 23
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

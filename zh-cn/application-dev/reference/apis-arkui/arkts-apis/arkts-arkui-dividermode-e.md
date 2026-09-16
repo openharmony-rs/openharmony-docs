@@ -1,6 +1,8 @@
 # DividerMode
 
-Menu divider mode.@enum { number }
+Menu divider mode.
+
+@enum { number }
 
 **起始版本：** 19
 
@@ -18,7 +20,7 @@ Menu divider mode floating above menu.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,6 +36,6 @@ Menu divider mode embedded in menu.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

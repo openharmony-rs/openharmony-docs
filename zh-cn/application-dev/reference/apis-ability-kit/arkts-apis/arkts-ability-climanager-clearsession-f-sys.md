@@ -14,7 +14,7 @@ function clearSession(sessionId: string): Promise<void>
 
 关闭指定CLI工具会话，并强制结束对应的工具进程。
 
-> **说明：**
+> **说明：** 
 > 
 > 会话仅限创建进程管理：只有调用`execTool`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
 
@@ -38,7 +38,7 @@ function clearSession(sessionId: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

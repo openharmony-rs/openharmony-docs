@@ -1,15 +1,12 @@
 # PixelRoundPolicy
 
-指定组件级像素取整的方向。@interface PixelRoundPolicy
+指定组件级像素取整的方向。
+
+@interface PixelRoundPolicy
 
 **起始版本：** 11
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## bottom
 
@@ -17,7 +14,7 @@
 bottom?: PixelRoundCalcPolicy
 ```
 
-组件底部边界取整对齐方式。 不设置pixelRound或者设置异常值时按四舍五入规则取整。
+组件底部边界取整对齐方式。<br>不设置pixelRound或者设置异常值时按四舍五入规则取整。
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
@@ -27,7 +24,7 @@ bottom?: PixelRoundCalcPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -39,7 +36,7 @@ bottom?: PixelRoundCalcPolicy
 end?: PixelRoundCalcPolicy
 ```
 
-组件尾部边界取整对齐方式。 不设置pixelRound或者设置异常值时按四舍五入规则取整。
+组件尾部边界取整对齐方式。<br>不设置pixelRound或者设置异常值时按四舍五入规则取整。
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
@@ -49,7 +46,7 @@ end?: PixelRoundCalcPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -61,7 +58,7 @@ end?: PixelRoundCalcPolicy
 start?: PixelRoundCalcPolicy
 ```
 
-组件前部边界取整对齐方式。 不设置pixelRound或者设置异常值时按四舍五入规则取整。
+组件前部边界取整对齐方式。<br>不设置pixelRound或者设置异常值时按四舍五入规则取整。
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
@@ -71,7 +68,7 @@ start?: PixelRoundCalcPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -83,7 +80,7 @@ start?: PixelRoundCalcPolicy
 top?: PixelRoundCalcPolicy
 ```
 
-组件上部边界取整对齐方式。 不设置pixelRound或者设置异常值时按四舍五入规则取整。
+组件上部边界取整对齐方式。<br>不设置pixelRound或者设置异常值时按四舍五入规则取整。
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
@@ -93,7 +90,7 @@ top?: PixelRoundCalcPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 

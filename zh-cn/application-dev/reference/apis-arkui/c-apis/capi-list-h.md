@@ -49,7 +49,7 @@
 enum ArkUI_ListItemAlignment
 ```
 
-**描述**
+**描述：**
 
 交叉轴方向的布局方式，默认值为ARKUI_LIST_ITEM_ALIGNMENT_START。
 
@@ -67,7 +67,7 @@ enum ArkUI_ListItemAlignment
 enum ArkUI_StickyStyle
 ```
 
-**描述**
+**描述：**
 
 定义列表是否吸顶和吸底枚举值。
 
@@ -86,7 +86,7 @@ enum ArkUI_StickyStyle
 enum ArkUI_ListItemGroupArea
 ```
 
-**描述**
+**描述：**
 
 定义{@link ListItemGroup}组件区域，默认值为ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE。
 
@@ -109,7 +109,7 @@ enum ArkUI_ListItemGroupArea
 ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 ```
 
-**描述**
+**描述：**
 
 创建ListChildrenMainSize接口设置的配置项。使用结束后需调用[OH_ArkUI_ListChildrenMainSizeOption_Dispose](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_dispose)释放资源。
 
@@ -127,7 +127,7 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)
 ```
 
-**描述**
+**描述：**
 
 销毁由[OH_ArkUI_ListChildrenMainSizeOption_Create](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_create)创建的ListChildrenMainSize实例。销毁后不得继续访问该实例。
 
@@ -145,7 +145,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)
 ```
 
-**描述**
+**描述：**
 
 设置{@link List}组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
@@ -170,7 +170,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)
 ```
 
-**描述**
+**描述：**
 
 获取{@link List}组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
@@ -194,7 +194,7 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)
 ```
 
-**描述**
+**描述：**
 
 调整{@link List}组件子项主轴尺寸数组的长度。扩大数组时，新增元素的初始值为-1。
 
@@ -213,7 +213,7 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)
 ```
 
-**描述**
+**描述：**
 
 从指定索引位置开始删除deleteCount个{@link List}组件子项主轴尺寸数组元素，并在该位置插入addCount个初始值为-1的元素。deleteCount超出剩余元素个数时，删除至数组末尾。
 
@@ -240,7 +240,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)
 ```
 
-**描述**
+**描述：**
 
 更新{@link List}组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
@@ -266,7 +266,7 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 获取{@link List}组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 

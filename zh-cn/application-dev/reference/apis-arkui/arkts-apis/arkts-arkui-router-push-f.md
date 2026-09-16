@@ -14,7 +14,7 @@ function push(options: RouterOptions): void
 
 跳转到应用内的指定页面。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
 > [pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)替代。
@@ -31,7 +31,7 @@ function push(options: RouterOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RouterOptions | 是 | 跳转页面描述信息。 |
+| options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 跳转页面描述信息。 |
 
 **示例**
 

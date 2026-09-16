@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 ```
 
-查询当前应用在app.json5中[alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用 Promise异步回调。
+查询当前应用在app.json5中[alternateIcons标签](../../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -24,7 +24,7 @@ function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;AlternateIconInfo&gt;&gt; | Promise对象，返回当前应用的备用图标信息。 |
+| Promise&lt;Array&lt;[AlternateIconInfo](arkts-ability-bundlemanager-alternateiconinfo-t.md)&gt;&gt; | Promise对象，返回当前应用的备用图标信息。 |
 
 **错误码：**
 

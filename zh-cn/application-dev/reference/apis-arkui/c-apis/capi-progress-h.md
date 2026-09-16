@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines a set of Progress enum and interface.
+定义Progress相关的枚举和接口，支持线性、环形、圆形、胶囊等多种进度条类型，并提供线性进度条样式选项的自定义能力（平滑动效、扫光效果、宽度、圆角），适用于需要展示任务进度、加载状态等场景，帮助开发者快速实现多样化的进度展示和交互反馈。
 
 **库：** libace_ndk.z.so
 
@@ -49,7 +49,7 @@ Defines a set of Progress enum and interface.
 enum ArkUI_ProgressType
 ```
 
-**描述**
+**描述：**
 
 定义进度条类型枚举值。
 
@@ -72,7 +72,7 @@ enum ArkUI_ProgressType
 void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)
 ```
 
-**描述**
+**描述：**
 
 销毁线性进度条样式信息。
 
@@ -90,7 +90,7 @@ void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption*
 void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 设置扫光效果的开关。
 
@@ -109,7 +109,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinea
 void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 设置进度平滑动效的开关。
 
@@ -128,7 +128,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLin
 void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)
 ```
 
-**描述**
+**描述：**
 
 设置进度条宽度。
 
@@ -147,7 +147,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyle
 void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)
 ```
 
-**描述**
+**描述：**
 
 设置进度条圆角半径。
 
@@ -166,7 +166,7 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyl
 bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取扫光效果的开关信息。
 
@@ -190,7 +190,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinea
 bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取进度平滑动效的开关信息。
 
@@ -214,7 +214,7 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLin
 float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取进度条宽度。
 
@@ -238,7 +238,7 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyl
 float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取进度条圆角半径值。
 
@@ -262,7 +262,7 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearSty
 ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建线性进度条样式信息。
 

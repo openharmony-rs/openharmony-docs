@@ -8,24 +8,21 @@ RichEditor组件控制器基类。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## closeSelectionMenu
 
 ```TypeScript
 closeSelectionMenu(): void
 ```
 
-关闭自定义选择菜单或系统默认选择菜单。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
+关闭自定义选择菜单或系统默认选择菜单。
+
+当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,13 +32,15 @@ closeSelectionMenu(): void
 deleteBackward(): void
 ```
 
-删除光标前字符或选中内容。没有内容被选中时，删除当前光标位置前的1个字符；有内容被选中时，删除选中内容。该接口不支持预上屏场景使用。
+删除光标前字符或选中内容。没有内容被选中时，删除当前光标位置前的1个字符；有内容被选中时，删除选中内容。
+
+该接口不支持预上屏场景使用。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,13 +50,15 @@ deleteBackward(): void
 getCaretOffset(): number
 ```
 
-返回当前光标所在位置。当无法获取光标位置时（例如controller未与组件绑定时），该接口返回-1。
+返回当前光标所在位置。
+
+当无法获取光标位置时（例如controller未与组件绑定时），该接口返回-1。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,7 +80,7 @@ getCaretRect(): RectResult | undefined
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,7 +88,7 @@ getCaretRect(): RectResult | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [RectResult](arkts-arkui-rectresult-i.md) \| undefined | 当前光标与RichEditor的相对位置。 |
+| [RectResult](arkts-arkui-rectresult-i.md) &#124; undefined | 当前光标与RichEditor的相对位置。 |
 
 ## getLayoutManager
 
@@ -101,7 +102,7 @@ getLayoutManager(): LayoutManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +110,7 @@ getLayoutManager(): LayoutManager
 
 | 类型 | 说明 |
 | --- | --- |
-| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | 布局管理器对象，可用于获取组件内容的布局位置等信息。 |
+| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | 布局管理器对象，可用于获取组件内容的布局位置等信息。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## getPreviewText
 
@@ -123,7 +124,7 @@ getPreviewText(): PreviewText
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,7 +132,7 @@ getPreviewText(): PreviewText
 
 | 类型 | 说明 |
 | --- | --- |
-| [PreviewText](../arkts-apis/arkts-arkui-previewtext-i.md) | 预上屏文本信息，包含输入法预显示的候选文本内容及起始位置。 |
+| [PreviewText](../arkts-apis/arkts-arkui-previewtext-i.md) | 预上屏文本信息，包含输入法预显示的候选文本内容及起始位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## getTypingStyle
 
@@ -145,7 +146,7 @@ getTypingStyle(): RichEditorTextStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +154,7 @@ getTypingStyle(): RichEditorTextStyle
 
 | 类型 | 说明 |
 | --- | --- |
-| [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md) | 用户预设的文本输入样式对象，包含字体颜色、大小、粗细等样式属性，可用于查询当前组件的输入文本样式配置。 |
+| [RichEditorTextStyle](arkts-arkui-richeditortextstyle-i.md) | 用户预设的文本输入样式对象，包含字体颜色、大小、粗细等样式属性，可用于查询当前组件的输入文本样式配置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## isEditing
 
@@ -167,7 +168,7 @@ isEditing(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,7 +188,7 @@ scrollToVisible(range?: TextRange): void
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -195,7 +196,7 @@ scrollToVisible(range?: TextRange): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 滚动到可视区域的内容范围，包括内容起始位置和终止位置。 起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。 未指定范围时，默认为全部内容。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | 否 | 滚动到可视区域的内容范围，包括内容起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部内容。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
 
 ## setCaretOffset
 
@@ -203,13 +204,15 @@ scrollToVisible(range?: TextRange): void
 setCaretOffset(offset: number): boolean
 ```
 
-设置光标位置。当controller未绑定组件或绑定controller的组件被释放时，该接口返回false，设置不成功。
+设置光标位置。
+
+当controller未绑定组件或绑定controller的组件被释放时，该接口返回false，设置不成功。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,7 +226,7 @@ setCaretOffset(offset: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 光标是否设置成功。 |
+| boolean | 光标是否设置成功。<br>true表示光标位置设置成功，false表示未成功。 |
 
 ## setSelection
 
@@ -231,7 +234,14 @@ setCaretOffset(offset: number): boolean
 setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
 ```
 
-设置组件内的内容选中，选中部分背板高亮。selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选中区。未获焦时调用该接口不产生选中效果。从API version 12开始，在PC/2in1设备（可通过deviceInfo.deviceType获取设备类型进行判断）中，无论options取何值，调用setSelection接口都不会弹出菜单；如果组件中已经存在菜单， 调用setSelection接口会关闭菜单。在非PC/2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
+设置组件内的内容选中，选中部分背板高亮。
+
+selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选中区。
+
+未获焦时调用该接口不产生选中效果。
+
+从API version 12开始，在PC/2in1设备（可通过deviceInfo.deviceType获取设备类型进行判断）中，无论options取何值，调用setSelection接口都不会弹出菜单；如果组件中已经存在菜单，调用setSelection接口会关闭菜单。在非PC/2in1设备中，options取值为MenuPolicy.DEFAULT时，遵循以下规则：
+
 1. 组件内有手柄菜单时，接口调用后不关闭菜单，并且调整菜单位置。
 2. 组件内有不带手柄的菜单时，接口调用后不关闭菜单，并且菜单位置不变。
 3. 组件内无菜单时，接口调用后也无菜单显示。
@@ -240,7 +250,7 @@ setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOp
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -249,8 +259,8 @@ setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | selectionStart | number | 是 | 选中开始位置。 |
-| selectionEnd | number | 是 | 选中结束位置。 |
-| options | [SelectionOptions](arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置，用于控制选中操作时的菜单弹出策略。 当需要自定义菜单弹出行为（如强制显示或隐藏菜单）时传入此参数； 省略时默认使用MenuPolicy.DEFAULT，遵循系统默认菜单弹出策略。 各MenuPolicy取值的适用场景请参考SelectionOptions对象说明。<br>**起始版本：** 12 |
+| selectionEnd | number | 是 | 选中结束位置，选中范围为[selectionStart, selectionEnd)，结束位置对应的内容不包含在内。 |
+| options | [SelectionOptions](arkts-arkui-selectionoptions-i.md) | 否 | 选择项配置，用于控制选中操作时的菜单弹出策略。<br>当需要自定义菜单弹出行为（如强制显示或隐藏菜单）时传入此参数；<br>省略时默认使用MenuPolicy.DEFAULT，遵循系统默认菜单弹出策略。<br>各MenuPolicy取值的适用场景请参考SelectionOptions对象说明。<br>**适用版本：** 12 |
 
 ## setStyledPlaceholder
 
@@ -264,7 +274,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -272,7 +282,7 @@ setStyledPlaceholder(styledString: StyledString): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](arkts-arkui-richeditor-attribute.md#placeholder)属性设 置的提示文本。 提示文本不支持触发属性字符串[GestureStyle](../arkts-apis/arkts-arkui-gesturestyle-c.md)样式绑定的手势事件，以及[UrlStyle](../arkts-apis/arkts-arkui-urlstyle-c.md)样式的超链接跳转能力。 |
+| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](arkts-arkui-richeditor-comp-attribute.md#placeholder)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](../arkts-apis/arkts-arkui-gesturestyle-c.md)样式绑定的手势事件，以及[UrlStyle](../arkts-apis/arkts-arkui-urlstyle-c.md)样式的超链接跳转能力。 |
 
 ## setTypingParagraphStyle
 
@@ -286,7 +296,7 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,13 +312,15 @@ setTypingParagraphStyle(style: RichEditorParagraphStyle): void
 setTypingStyle(value: RichEditorTextStyle): void
 ```
 
-设置用户预设的文本样式。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
+设置用户预设的文本样式。
+
+当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,12 +336,14 @@ setTypingStyle(value: RichEditorTextStyle): void
 stopEditing(): void
 ```
 
-退出编辑态。当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
+退出编辑态。
+
+当controller未绑定组件或绑定controller的组件被释放时，该接口调用无效。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

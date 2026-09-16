@@ -1,6 +1,10 @@
 # AbilityStage
 
-AbilityStage是一个[Module](../../../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源 预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。应用的[HAP](../../../quick-start/hap-package.md)/[HSP](../../../quick-start/in-app-hsp.md)在首次加载时会创建一个AbilityStage实例。当一 个Module中存在AbilityStage和其他组件（UIAbility/ExtensionAbility组件），AbilityStage实例会早于其他组件实例创建。AbilityStage拥有[onCreate()](#oncreate)、[onDestroy()](#ondestroy)生命周期回调和 [onAcceptWant()](#onacceptwant)、[onConfigurationUpdate()](#onconfigurationupdate) 、[onMemoryLevel()](#onmemorylevel)事件回调等。
+AbilityStage是一个[Module](../../../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器，用于进行Module级别的资源预加载、线程创建等初始化操作，以及维护Module下的应用状态。AbilityStage与Module一一对应，即一个Module拥有一个AbilityStage。
+
+应用的[HAP](../../../quick-start/hap-package.md)/[HSP](../../../quick-start/in-app-hsp.md)在首次加载时会创建一个AbilityStage实例。当一个Module中存在AbilityStage和其他组件（UIAbility/ExtensionAbility组件），AbilityStage实例会早于其他组件实例创建。
+
+AbilityStage拥有[onCreate()](#oncreate)、[onDestroy()](#ondestroy)生命周期回调和[onAcceptWant()](#onacceptwant)、[onConfigurationUpdate()](#onconfigurationupdate)、[onMemoryLevel()](#onmemorylevel)事件回调等。
 
 **起始版本：** 9
 
@@ -45,9 +49,11 @@ export default class MyAbilityStage extends AbilityStage {
 onAcceptWant(want: Want): string
 ```
 
-当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个 string作为待启动的UIAbility实例的唯一标识。同步接口，不支持异步回调。如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。
+当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个string作为待启动的UIAbility实例的唯一标识。同步接口，不支持异步回调。
 
-> **说明：**
+如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。
+
+> **说明：** 
 > 
 > 从API version 20开始，当[AbilityStage.onAcceptWantAsync](#onacceptwantasync)实现时，本回调函数将不会被触发。
 
@@ -55,7 +61,7 @@ onAcceptWant(want: Want): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -90,13 +96,15 @@ export default class MyAbilityStage extends AbilityStage {
 onAcceptWantAsync(want: Want): Promise<string>
 ```
 
-当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个 string作为待启动的UIAbility实例的唯一标识。使用Promise异步回调。如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。
+当启动模式配置为[specified](../../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility被拉起时，会触发该回调，并返回一个string作为待启动的UIAbility实例的唯一标识。使用Promise异步回调。
+
+如果系统中已经有相同标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -110,7 +118,7 @@ onAcceptWantAsync(want: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回一个string作为待启动的UIAbility实例的唯一标识。如果系统中已经有该标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 |
+| Promise&lt;string&gt; | Promise对象，返回一个string作为待启动的UIAbility实例的唯一标识。如果系统中已经有该标识的UIAbility实例存在，则复用已有实例，否则创建新的实例。 |
 
 **示例**
 
@@ -134,9 +142,9 @@ class MyAbilityStage extends AbilityStage {
 onConfigurationUpdate(newConfig: Configuration): void
 ```
 
-当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md)类中。同步接口 ，不支持异步回调。
+当系统全局配置（例如系统语言、深浅色等）发生变更时，会触发该回调。配置项均定义在[Configuration](arkts-ability-app-ability-configuration-configuration-i.md)类中。同步接口，不支持异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](arkts-ability-applicationcontext-c.md#setlanguage)接口
 > 设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见
@@ -146,7 +154,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -174,13 +182,15 @@ export default class MyAbilityStage extends AbilityStage {
 onCreate(): void
 ```
 
-在加载Module的第一个Ability实例前，系统会先创建对应的AbilityStage实例，并在AbilityStage创建完成后，自动触发该回调。开发者可以在该回调中执行Module的初始化操作（如资源预加载、线程创建等）。同步接口，不支持异步回调。
+在加载Module的第一个Ability实例前，系统会先创建对应的AbilityStage实例，并在AbilityStage创建完成后，自动触发该回调。
+
+开发者可以在该回调中执行Module的初始化操作（如资源预加载、线程创建等）。同步接口，不支持异步回调。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -208,7 +218,7 @@ onDestroy(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -257,9 +267,11 @@ export default class MyAbilityStage extends AbilityStage {
 onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 ```
 
-该接口用于监听系统内存状态变化。当整机可用内存变化到指定程度时，系统会触发该回调。开发者可通过实现此接口，在收到内存紧张事件时，及时释放非必要资源（如缓存数据、临时对象等），以避免应用进程被系统强制终止。同步接口，不支持异步回调。
+该接口用于监听系统内存状态变化。当整机可用内存变化到指定程度时，系统会触发该回调。开发者可通过实现此接口，在收到内存紧张事件时，及时释放非必要资源（如缓存数据、临时对象等），以避免应用进程被系统强制终止。
 
-> **说明：**
+同步接口，不支持异步回调。
+
+> **说明：** 
 > 
 > onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
 
@@ -267,7 +279,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -275,7 +287,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| level | AbilityConstant.MemoryLevel | 是 | 整机可用内存级别，对应的触发场景详见 [AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md)。 |
+| level | [AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](arkts-ability-abilityconstant-memorylevel-e.md)。 |
 
 **示例**
 
@@ -295,16 +307,24 @@ export default class MyAbilityStage extends AbilityStage {
 onNewProcessRequest(want: Want): string
 ```
 
-如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!-- DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。同步接口，不支持异步回调。如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onacceptwant)，将先收到onNewProcessRequest回调，再收到 onAcceptWant回调。<!--Del-->仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配 置isolationProcess字段为true。<!--DelEnd-->
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!-- DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。同步接口，不支持异步回调。
 
-> **说明：**
+如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。
+
+如果开发者同时实现onNewProcessRequest和[onAcceptWant](#onacceptwant)，将先收到onNewProcessRequest回调，再收到onAcceptWant回调。
+
+<!--Del-->
+
+仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)配置文件中配置isolationProcess字段为true。
+
+<!--DelEnd-->
+
+> **说明：** 
 > 
-> - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。&lt;!--DelEnd
-&gt; --
+> - 在API version 19及之前版本，仅支持在指定进程中启动UIAbility。<!--Del-->从API version 20开始，新增支持在指定进程中启动UIExtensionAbility。&lt;!--DelEnd &gt; --
 > 
 > 
-> - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync)实现时，本回调函
-> 数将不执行。
+> - 从API version 20开始，当[AbilityStage.onNewProcessRequestAsync](#onnewprocessrequestasync)实现时，本回调函数将不执行。
 
 **起始版本：** 11
 
@@ -343,13 +363,21 @@ export default class MyAbilityStage extends AbilityStage {
 onNewProcessRequestAsync(want: Want): Promise<string>
 ```
 
-如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!-- DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为 进程唯一标识。使用Promise异步回调。如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。<!--Del-->仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置 isolationProcess字段为true。<!--DelEnd-->
+如果UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->配置了在独立进程中运行（即[module.json5配置文件](../../../quick-start/module-configuration-file.md)中UIAbility<!--Del-->或UIExtensionAbility<!-- DelEnd-->的isolationProcess字段取值为true），当该UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->被拉起时，会触发该回调，并返回一个string作为进程唯一标识。使用Promise异步回调。
+
+如果该应用已有相同标识的进程存在，则待启动的UIAbility<!--Del-->或UIExtensionAbility<!--DelEnd-->运行在此进程中，否则创建新的进程。
+
+<!--Del-->
+
+仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配置isolationProcess字段为true。
+
+<!--DelEnd-->
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -363,7 +391,7 @@ onNewProcessRequestAsync(want: Want): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility<!--Del-->或UIExtensionAbility <!--DelEnd-->在此进程中运行，否则创建新的进程。 |
+| Promise&lt;string&gt; | Promise对象，返回一个由开发者自定义的进程字符串标识。如果该应用已有相同标识的进程存在，则UIAbility<!--Del-->或UIExtensionAbility <!--DelEnd-->在此进程中运行，否则创建新的进程。 |
 
 **示例**
 
@@ -389,7 +417,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 当应用被用户关闭时调用，可用于询问用户选择立即执行操作还是取消操作。同步接口，不支持异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。
 > 
@@ -401,7 +429,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -409,7 +437,7 @@ onPrepareTermination(): AbilityConstant.PrepareTermination
 
 | 类型 | 说明 |
 | --- | --- |
-| AbilityConstant.PrepareTermination | The user's choice. |
+| [AbilityConstant.PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md) | The user's choice. |
 
 **示例**
 
@@ -432,7 +460,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 当应用被用户关闭时调用，可用于询问用户选择立即执行操作还是取消操作。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > - 仅当应用正常退出（例如，通过doc栏/托盘关闭应用，或者应用随设备关机而退出）时会调用该接口。如果应用被强制关闭，则不会调用该接口。
 > 
@@ -444,7 +472,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -452,7 +480,7 @@ onPrepareTerminationAsync(): Promise<AbilityConstant.PrepareTermination>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;AbilityConstant.PrepareTermination&gt; | Promise used to return the user's choice. |
+| Promise&lt;[AbilityConstant.PrepareTermination](arkts-ability-abilityconstant-preparetermination-e.md)&gt; | Promise used to return the user's choice. |
 
 **示例**
 
@@ -483,6 +511,6 @@ AbilityStage上下文。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

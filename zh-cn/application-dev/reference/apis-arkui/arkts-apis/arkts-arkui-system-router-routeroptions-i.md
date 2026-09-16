@@ -22,7 +22,7 @@ import { SystemRouter, BackRouterOptions, DisableAlertBeforeBackPageOptions, Ena
 params?: Object
 ```
 
-表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的 key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。
+表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。
 
 **类型：** Object
 
@@ -41,9 +41,12 @@ uri: string
 ```
 
 目标页面的uri，可以是以下的两种格式：
-1. 页面的绝对路径，由config.json文件中的页面列表提供。例如：  
+
+1. 页面的绝对路径，由config.json文件中的页面列表提供。例如：
+
 - pages/index/index  
-- pages/detail/detail  
+- pages/detail/detail
+
 2. 特定路径。如果URI为斜杠（/），则显示主页。
 
 **类型：** string
