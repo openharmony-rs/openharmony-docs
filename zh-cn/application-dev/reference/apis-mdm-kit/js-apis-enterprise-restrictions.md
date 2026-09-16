@@ -1305,7 +1305,7 @@ try {
 | REMOTE_DESK   | 48   | 远程桌面能力。<br>**起始版本：** 26.0.0 |
 | REMOTE_DIAGNOSIS   | 49   | 远程诊断能力。<br>**起始版本：** 26.0.0 |
 | OTA_UPDATE   | 50   | 公网系统升级能力。<br>**起始版本：** 26.0.0 |
-| SYSTEM_ROLLBACK   | 51   | 系统回退能力。<br>**起始版本：** 26.1.0 |
+| SYSTEM_ROLLBACK   | 51   | 系统回退能力，禁用后无法回退系统版本。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.1.0 |
 
 ## FeatureForAccount
 
