@@ -9079,13 +9079,13 @@ Allows an application to access data on the external storage card of the dashcam
 
 ## ohos.permission.kernel.USB_CAPTURE
 
-Allows a system application to send the authorization results for model download requests to the model management service.
+Allows the app, after authorization, to directly monitor the sending and receiving of USB data packets on this device, including reading USB endpoint data and monitoring USB bus traffic. These capabilities can be used for USB packet capture, protocol analysis, and performance testing.Note:This permission may allow the app to read communication data from all USB devices connected to this device. Please grant this permission with caution.
 
-**Permission level**: system_basic
+**Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Certificate-based authorization**: true
+**Certificate-based authorization**: false
 
 **Supported devices**: PCs/2-in-1 devices
 
