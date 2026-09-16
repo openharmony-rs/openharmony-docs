@@ -521,7 +521,7 @@ Enumerates the states of the hydration progress.
 
 ## CallbackType<sup>26+</sup>
 
-Enumerates the callback types of cloud file data fetching.
+Enumerates the callback types of cloud file data fetching and dehydration authorization.
 
 **Since**: 26.1.0
 
@@ -533,7 +533,7 @@ Enumerates the callback types of cloud file data fetching.
 | --------- | -----| ------------------------|
 | FETCH_DATA  |  0   | Fetches cloud file data (starts hydration).|
 | CANCEL_FETCH_DATA    |  1   | Cancels fetching cloud file data (cancels hydration).  |
-| DEHYDRATE    |  2   | Authorization for dehydration.  |
+| DEHYDRATE    |  2   | Dehydration authorization request. Before dehydration, the system sends a dehydration authorization request to the third-party cloud disk application that has registered callbacks, and the application determines whether to allow the dehydration.  |
 
 ## HydratePriority<sup>26+</sup>
 

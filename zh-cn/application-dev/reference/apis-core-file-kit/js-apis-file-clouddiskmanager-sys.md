@@ -25,9 +25,9 @@ import { cloudDiskManager } from '@kit.CoreFileKit';
 
 同步根访问器，为系统文件管理应用提供获取所有已注册的同步根列表（包括路径、包名、状态等详细信息）的能力。
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 ### constructor
 
@@ -35,11 +35,11 @@ constructor()
 
 SyncFolderAccessor的构造函数，用于创建SyncFolderAccessor类的实例。
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
-**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
 
 **错误码：**
 
@@ -82,11 +82,11 @@ getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
 获取所有注册的同步根信息，适用于系统文件管理应用展示和管理三方云盘同步根列表的场景。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
-**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
 
 **返回值：**
 
@@ -145,9 +145,9 @@ try {
 
 **起始版本：** 26.1.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 ### constructor<sup>26+</sup>
 
@@ -157,9 +157,9 @@ CloudDiskSystemAccessor的构造函数，用于创建CloudDiskSystemAccessor类�
 
 **起始版本：** 26.1.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 **错误码：**
 
@@ -193,11 +193,11 @@ on(type: 'hydrateProgress', callback: Callback&lt;[HydrateProgress](#hydrateprog
 
 **起始版本：** 26.1.0
 
-**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -251,11 +251,11 @@ off(type: 'hydrateProgress', callback?: Callback&lt;[HydrateProgress](#hydratepr
 
 **起始版本：** 26.1.0
 
-**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -317,11 +317,11 @@ hydratePlaceholder(filePath: string, callbackType: [CallbackType](#callbacktype2
 
 **起始版本：** 26.1.0
 
-**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -399,11 +399,11 @@ dehydrateFile(filePath: string): Promise&lt;void&gt;
 
 **起始版本：** 26.1.0
 
-**需要权限**：ohos.permission.ACCESS_CLOUD_DISK_INFO
+**需要权限：**ohos.permission.ACCESS_CLOUD_DISK_INFO
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 **参数：**
 
@@ -463,9 +463,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 表示同步根信息，包含同步根的路径、包名、状态以及显示别名等详细信息，用于系统文件管理应用识别和管理不同云盘的同步根。
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 类型   | 只读 | 可选 | 说明      |
 | --------- | ------ | ---- | ---- | ---------------------------- |
@@ -479,9 +479,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 枚举，三方云盘同步根的状态。
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
@@ -494,9 +494,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 **起始版本：** 26.1.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 类型   | 只读 | 可选 | 说明      |
 | --------- | ------ | ---- | ---- | ---------------------------- |
@@ -511,9 +511,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 **起始版本：** 26.1.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
@@ -524,19 +524,19 @@ accessor.dehydrateFile(filePath).then(() => {
 
 ## CallbackType<sup>26+</sup>
 
-枚举，云盘文件数据获取的回调类型。
+枚举，云盘文件数据获取及脱水授权的回调类型。
 
 **起始版本：** 26.1.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
 | FETCH_DATA  |  0   | 获取云文件数据（发起水合）。|
 | CANCEL_FETCH_DATA    |  1   | 取消获取云文件数据（取消水合）。  |
-| DEHYDRATE    |  2   | 脱水授权。  |
+| DEHYDRATE    |  2   | 脱水授权请求。脱水执行前，系统通过该类型的回调向已注册回调的三方云盘应用发起脱水授权请求，由三方云盘应用决定是否允许本次脱水。  |
 
 ## HydratePriority<sup>26+</sup>
 
@@ -544,9 +544,9 @@ accessor.dehydrateFile(filePath).then(() => {
 
 **起始版本：** 26.1.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：**此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.CloudDiskManager
+**系统能力：**SystemCapability.FileManagement.CloudDiskManager
 
 | 名称      | 值  | 说明      |
 | --------- | -----| ------------------------|
