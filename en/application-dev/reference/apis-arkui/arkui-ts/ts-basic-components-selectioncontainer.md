@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T11:57:08.730Z -->
+<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T11:57:08.730Z pushedAt=2026-09-16T03:15:59.064Z -->
 
 The **SelectionContainer** component provides cross-node text selection, copying, and menu extension capabilities for multiple text nodes. It supports unified configuration of the caret color and highlight color of selected text, flexible text concatenation policies, and custom selection menus and menu extension options. It is suitable for scenarios where continuous text selection, unified copying, style customization, and menu extension are required across multiple **Text** components. It resolves the problem of fragmented text selection experience in multi-**Text** component scenarios and improves the user interaction experience in complex text layouts.
 
@@ -56,7 +56,7 @@ Creates a **SelectionContainer** component.
 
 copyOption(value: Optional\<CopyOptions>)
 
-Sets the copy option for the component. If this attribute is not used, the default value is **CopyOptions.InApp**.
+Sets the copy option for the component. If this API is not used, the default value is **CopyOptions.InApp**.
 
 > **NOTE**
 >
@@ -72,13 +72,13 @@ Sets the copy option for the component. If this attribute is not used, the defau
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| value | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CopyOptions](ts-appendix-enums.md#copyoptions9)> | Yes | Copy and paste configuration item, used to set the copyable range of text. For details, see the CopyOptions enum. |
+| value | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CopyOptions](ts-appendix-enums.md#copyoptions9)> | Yes | Copy options, used to set the copyable range of text. For details, see the **CopyOptions** enumeration. |
 
 ### caretColor
 
 caretColor(color: Optional\<ResourceColor>)
 
-Sets the caret color of the selected text. If this attribute is not used, the default caret color is **'#007DFF'** (blue).
+Sets the caret color of the selected text. If this API is not used, the default caret color is **'#007DFF'** (blue).
 
 > **NOTE**
 >
@@ -101,7 +101,7 @@ Sets the caret color of the selected text. If this attribute is not used, the de
 
 selectedBackgroundColor(color: Optional\<ResourceColor>)
 
-Sets the highlight color of the selected text. If this attribute is not used, the default highlight color of the selected text is **'#007DFF'** (blue). If the opacity is not set or is set to fully opaque, the default opacity is 20%.
+Sets the highlight color of the selected text. If this API is not used, the default highlight color of the selected text is **'#007DFF'** (blue). If the color is not set with opacity or is set to fully opaque, 20% opacity is used by default.
 
 > **NOTE**
 >
@@ -124,7 +124,7 @@ Sets the highlight color of the selected text. If this attribute is not used, th
 
 enableHapticFeedback(isEnabled: Optional\<boolean>)
 
-Sets whether to enable haptic feedback. If this attribute is not used, haptic feedback is enabled by default.
+Sets whether to enable haptic feedback. If this API is not used, haptic feedback is enabled by default.
 
 When haptic feedback is enabled, you need to set the **requestPermissions** field in the [module.json5 configuration file](../../../quick-start/module-configuration-file.md) of the project to enable the vibration permission. The configuration is as follows:
 
@@ -146,13 +146,13 @@ When haptic feedback is enabled, you need to set the **requestPermissions** fiel
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| isEnabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether to enable haptic feedback.<br>true indicates that haptic feedback is enabled, and false indicates that haptic feedback is disabled. |
+| isEnabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether to enable haptic feedback.<br>**true** indicates to enable, and **false** indicates to disable. |
 
 ### textJoinStyle
 
 textJoinStyle(style: Optional\<SelectionContainerTextJoinStyle>)
 
-Sets the concatenation method for the aggregated text in **SelectionContainer**. If this attribute is not used, the default value is **SelectionContainerTextJoinStyle.NEWLINE**, which means that different text nodes are concatenated with newline characters (\n).
+Sets the concatenation method for the aggregated text in **SelectionContainer**. If this API is not used, the default value is **SelectionContainerTextJoinStyle.NEWLINE**, which means that different text nodes are concatenated with newline characters (\n).
 
 > **NOTE**
 >
@@ -169,13 +169,13 @@ Sets the concatenation method for the aggregated text in **SelectionContainer**.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerTextJoinStyle](#selectioncontainertextjoinstyle)> | Yes | Text concatenation mode of the aggregated text. |
+| style | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerTextJoinStyle](#selectioncontainertextjoinstyle)> | Yes | Concatenation method of the aggregated text. |
 
 ### bindSelectionMenu
 
 bindSelectionMenu(spanType: Optional\<TextSpanType>, content: Optional\<CustomBuilder>, responseType: Optional\<TextResponseType>, options?: Optional\<SelectionContainerMenuOptions>)
 
-Sets a custom selection menu. If this attribute is not used, the default value of **spanType** is **TextSpanType.TEXT** and the default value of **responseType** is **TextResponseType.LONG_PRESS**.
+Sets a custom selection menu. If this API is not used, the default value of **spanType** is **TextSpanType.TEXT** and the default value of **responseType** is **TextResponseType.LONG_PRESS**.
 
 > **NOTE**
 >
@@ -194,7 +194,7 @@ Sets a custom selection menu. If this attribute is not used, the default value o
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| spanType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextSpanType](ts-basic-components-text.md#textspantype11)> | Yes | Type of the selection menu. It specifies the range of text types to which the selection menu applies. Different types correspond to different menu behaviors. For details about the meaning and applicable scenarios of each enum value, see [TextSpanType](ts-basic-components-text.md#textspantype11). |
+| spanType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextSpanType](ts-basic-components-text.md#textspantype11)> | Yes | Type of the selection menu. It specifies the range of text types to which the selection menu applies. Different types correspond to different menu behaviors. For details about the meaning and applicable scenarios of each enumerated value, see [TextSpanType](ts-basic-components-text.md#textspantype11). |
 | content | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CustomBuilder](ts-types.md#custombuilder8)> | Yes | Content of the selection menu. |
 | responseType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextResponseType](ts-basic-components-text.md#textresponsetype11)> | Yes | Response type of the selection menu. |
 | options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerMenuOptions](#selectioncontainermenuoptions)> | No | Options of the selection menu, used to configure callbacks for events such as menu appearance, disappearance, display, and hiding. Pass this parameter when you need to listen for these menu events. If it is not passed, menu events are not listened for by default. |
@@ -220,7 +220,7 @@ Sets the edit menu options for the selected text, including the menu text, icon,
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| editMenu | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerEditMenuOptions](#selectioncontainereditmenuoptions)> | Yes | Custom edit menu configuration. |
+| editMenu | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SelectionContainerEditMenuOptions](#selectioncontainereditmenuoptions)> | Yes | Custom edit menu options. |
 
 ## Events
 
@@ -275,7 +275,7 @@ Triggered before a copy operation is performed. This API returns the result asyn
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<string, boolean>> | Yes | Callback invoked before copying. Returning **true** indicates that copying is allowed, and returning **false** indicates that copying is not allowed. |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<string, boolean>> | Yes | Callback used to check before copying. The value **true** indicates that copying is allowed, and **false** indicates that copying is not allowed. |
 
 ### onCopy
 
@@ -298,7 +298,7 @@ Triggered when the copy button on the selection menu is tapped after the selecti
 
 | Name | Type | Required | Description |
 | ------ | ---- | ---- | ---- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<string>> | Yes | Callback for the copy event. |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<string>> | Yes | Callback for the copy operation. |
 
 ## SelectionContainerTextJoinStyle
 
@@ -312,8 +312,8 @@ Provides the concatenation method for text aggregation.
 
 | Name | Value | Description |
 | ---- | -- | ---- |
-| NEWLINE | 0 | Joined with a newline character `\n` between different text nodes. |
-| DIRECT | 1 | Joined directly between different text nodes without a separator. |
+| NEWLINE | 0 | Different text nodes are concatenated with newline characters (`\n`). |
+| DIRECT | 1 | Different text nodes are concatenated directly without separators. |
 
 ## SelectionContainerMenuOptions
 
@@ -325,12 +325,12 @@ Provides the configuration options in the selection menu.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| onAppear | [Callback](ts-types.md#callback12)\<string> | No | Yes | Triggered when the selection menu appears. The callback parameter is the selected text concatenated in the visual order of the Text components, and the concatenation method is determined by the textJoinStyle configuration. The default value is empty, and this callback is not triggered. |
-| onDisappear | [Callback](ts-types.md#callback12)\<void> | No | Yes | Triggered when the selection menu disappears. The default value is empty, and this callback is not triggered. |
-| onMenuShow | [Callback](ts-types.md#callback12)\<string> | No | Yes | Triggered when the selection menu is shown. The callback parameter is the selected text concatenated in the visual order of the Text components, and the concatenation method is determined by the textJoinStyle configuration. The default value is empty, and this callback is not triggered. |
-| onMenuHide | [Callback](ts-types.md#callback12)\<string> | No | Yes | Triggered when the selection menu is hidden. The callback parameter is the selected text concatenated in the visual order of the Text components, and the concatenation method is determined by the textJoinStyle configuration. The default value is empty, and this callback is not triggered. |
+| onAppear | [Callback](ts-types.md#callback12)\<string> | No | Yes | Triggered when the selection menu appears. The callback parameter is the selected text concatenated in the visual order of the **Text** components, and the concatenation method is determined by **textJoinStyle**. The default value is empty, which does not trigger this callback. |
+| onDisappear | [Callback](ts-types.md#callback12)\<void> | No | Yes | Triggered when the selection menu disappears. The default value is empty, which does not trigger this callback. |
+| onMenuShow | [Callback](ts-types.md#callback12)\<string> | No | Yes | Triggered when the selection menu is shown. The callback parameter is the selected text concatenated in the visual order of the **Text** components, and the concatenation method is determined by **textJoinStyle**. The default value is empty, which does not trigger this callback. |
+| onMenuHide | [Callback](ts-types.md#callback12)\<string> | No | Yes | Triggered when the selection menu is hidden. The callback parameter is the selected text concatenated in the visual order of the **Text** components, and the concatenation method is determined by **textJoinStyle**. The default value is empty, which does not trigger this callback. |
 
 ## OnMenuItemClickWithTextCallback
 
@@ -348,14 +348,14 @@ Called when a menu item is tapped. It can intercept the execution of system defa
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| menuItem | [TextMenuItem](ts-text-common.md#textmenuitem12) | Yes | Menu item that is currently clicked. |
+| menuItem | [TextMenuItem](ts-text-common.md#textmenuitem12) | Yes | Menu item currently tapped. |
 | value | string | Yes | Selected text content. |
 
 **Return value**
 
 | Type | Description |
 | ---- | ---- |
-| boolean | Processing result of the menu item click event. The value true indicates that the event has been processed, and false indicates the opposite. |
+| boolean | Processing result of the menu item tap event. The value **true** indicates that the event has been processed, and **false** indicates that it has not been processed. |
 
 ## SelectionContainerEditMenuOptions
 
@@ -367,11 +367,11 @@ Provides the custom edit menu options of **SelectionContainer**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| onCreateMenu | [OnCreateMenuCallback](ts-text-common.md#oncreatemenucallback) | No | Yes | Triggered before the menu is displayed each time. It passes in the default menu items and returns the processed menu items. The default value is empty, and this callback is not triggered. |
-| onMenuItemClick | [OnMenuItemClickWithTextCallback](#onmenuitemclickwithtextcallback) | No | Yes | Triggered when a menu item is clicked. It can intercept the default menu execution behavior of the system. The default value is empty, and this callback is not triggered. |
-| onPrepareMenu | [OnPrepareMenuCallback](ts-text-common.md#onpreparemenucallback20) | No | Yes | Triggered after the selected text content changes and before the menu is displayed. The menu data can be adjusted in this callback. The default value is empty, and this callback is not triggered. |
+| onCreateMenu | [OnCreateMenuCallback](ts-text-common.md#oncreatemenucallback) | No | Yes | Triggered before each menu is displayed, used to pass the default menu item and return the processed menu item. The default value is empty, which does not trigger this callback. |
+| onMenuItemClick | [OnMenuItemClickWithTextCallback](#onmenuitemclickwithtextcallback) | No | Yes | Triggered when a menu item is tapped, used to intercept the execution behavior of the system default menu. The default value is empty, which does not trigger this callback. |
+| onPrepareMenu | [OnPrepareMenuCallback](ts-text-common.md#onpreparemenucallback20) | No | Yes | Triggered after the selected text changes and before the menu is displayed. The menu data can be adjusted in this callback. The default value is empty, which does not trigger this callback. |
 
 ## SelectionContainerController
 
@@ -413,15 +413,15 @@ Provides the initial configuration options of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| controller | [SelectionContainerController](#selectioncontainercontroller) | No | No | Controller of the SelectionContainer. |
+| controller | [SelectionContainerController](#selectioncontainercontroller) | No | No | Controller of **SelectionContainer**. |
 
 ## Example
 
 ### Example 1: Selecting Text Across Nodes and Copying the Text
 
-This example demonstrates how to select text across multiple **Text** components, concatenate the selected text, and handle copy callbacks by using [SelectionContainer](#interfaces), [copyOption](#copyoption), [textJoinStyle](#textjoinstyle), [onTextSelectionChange](#ontextselectionchange), [onWillCopy](#onwillcopy), and [onCopy](#oncopy).
+This example demonstrates how to select text across multiple **Text** components, concatenate the selected text, and handle copy callbacks by using [SelectionContainer](#apis), [copyOption](#copyoption), [textJoinStyle](#textjoinstyle), [onTextSelectionChange](#ontextselectionchange), [onWillCopy](#onwillcopy), and [onCopy](#oncopy).
 
 Since API version 26.0.0, the **SelectionContainer** component and APIs such as **copyOption** are added.
 
@@ -445,10 +445,10 @@ struct SelectionContainerExample1 {
 
       SelectionContainer() {
         Column({ space: 8 }) {
-          Text('First paragraph: SelectionContainer supports selection across multiple Text components.')
+          Text('First paragraph: SelectionContainer supports selecting text across multiple Text components.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
-          Text('Second paragraph: The selection result is concatenated in the visual order of the Text components.')
+          Text('Second paragraph: The selected result is concatenated in the visual order of the Text components.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
           Text('Third paragraph: You can listen for selection changes, pre-copy validation, and copy completion events.')
@@ -465,13 +465,13 @@ struct SelectionContainerExample1 {
         console.info(`Selected text changed: ${JSON.stringify(value)}`);
       })
       .onWillCopy((value: string) => {
-        this.copiedText = `Preparing to copy: ${value}`;
-        console.info(`Preparing to copy text: ${value}`);
+        this.copiedText = `Ready to copy: ${value}`;
+        console.info(`Text ready to copy: ${value}`);
         return true;
       })
       .onCopy((value: string) => {
         this.copiedText = `Copy succeeded: ${value}`;
-        console.info(`Text copied successfully: ${value}`);
+        console.info(`Copied text: ${value}`);
       })
       .border({ width: 1, color: '#DCDCDC' })
       .padding(12)
@@ -568,15 +568,15 @@ struct SelectionContainerExample2 {
     Column() {
       Menu() {
         MenuItemGroup() {
-          MenuItem({ content: 'Custom copy', labelInfo: '' })
+          MenuItem({ content: 'Custom Copy', labelInfo: '' })
             .onClick(() => {
               console.info('Custom copy clicked');
             })
-          MenuItem({ content: 'Custom share', labelInfo: '' })
+          MenuItem({ content: 'Custom Sharing', labelInfo: '' })
             .onClick(() => {
-              console.info('Custom share clicked');
+              console.info('Custom sharing clicked');
             })
-          MenuItem({ content: 'Custom translation', labelInfo: '' })
+          MenuItem({ content: 'Custom Translation', labelInfo: '' })
             .onClick(() => {
               console.info('Custom translation clicked');
             })
@@ -622,11 +622,11 @@ struct SelectionContainerExample3 {
       menuItems.splice(targetIndex, 1);
     }
     let customItem1: TextMenuItem = {
-      content: 'Annotate',
+      content: 'Highlight',
       id: TextMenuItemId.of('highlight'),
     };
     let customItem2: TextMenuItem = {
-      content: 'Favorite',
+      content: 'Bookmark',
       id: TextMenuItemId.of('bookmark'),
     };
     let customItem3: TextMenuItem = {
@@ -637,7 +637,7 @@ struct SelectionContainerExample3 {
       content: 'Export',
       id: TextMenuItemId.of('export'),
     };
-    // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+    // Replace $r('app.media.startIcon') with the image resource file you use.
     let customItem5: TextMenuItem = {
       content: 'Push',
       icon: $r('app.media.startIcon'),
@@ -655,27 +655,27 @@ struct SelectionContainerExample3 {
     console.info(`Menu item clicked: ${menuItem.content}, text: ${text}`);
     if (menuItem.id.equals(TextMenuItemId.COPY)) {
       this.selectedText = `Copied: ${text}`;
-      console.info(`System copy operation intercepted, return true: ${text}`);
+      console.info(`Intercept the system copy operation, return true: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      this.selectedText = `Select all operation: ${text}`;
-      console.info(`Select all operation not intercepted, return false: execute the system default behavior`);
+      this.selectedText = `Select-all operation: ${text}`;
+      console.info(`Do not intercept the select-all operation, return false: Execute the system default behavior`);
       return false;
     }
     if (menuItem.id.equals(TextMenuItemId.of('highlight'))) {
-      this.selectedText = `Annotated: ${text}`;
-      console.info(`Custom menu item clicked: Annotate, text: ${text}`);
+      this.selectedText = `Highlighted: ${text}`;
+      console.info(`Custom menu item clicked: Highlight, text: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of('bookmark'))) {
-      this.selectedText = `Favorited: ${text}`;
-      console.info(`Custom menu item clicked: Favorite, text: ${text}`);
+      this.selectedText = `Bookmarked: ${text}`;
+      console.info(`Custom menu item clicked: Bookmark, text: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of('comment'))) {
       this.selectedText = `Commented: ${text}`;
-      console.info(`Custom menu item clicked: Annotate, text: ${text}`);
+      console.info(`Custom menu item clicked: Comment, text: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of('export'))) {
@@ -702,7 +702,7 @@ struct SelectionContainerExample3 {
 
       SelectionContainer() {
         Column({ space: 8 }) {
-          Text('First paragraph: SelectionContainer supports extended menu options.')
+          Text('First paragraph: SelectionContainer supports extension menu options.')
             .fontSize(18)
           Text('Second paragraph: You can remove system menu items and add custom menu items.')
             .fontSize(18)
@@ -737,7 +737,7 @@ struct SelectionContainerExample3 {
 
 ### Example 4: Closing the Selection Menu and Clearing Text Selection Through the Controllers
 
-This example demonstrates how to close the selection menu and clear the text selection by passing [SelectionContainerController](#selectioncontainercontroller) through [SelectionContainer](#interfaces) and calling [closeSelectionMenu](#closeselectionmenu) and [clearTextSelection](#cleartextselection).
+This example demonstrates how to close the selection menu and clear the text selection by passing [SelectionContainerController](#selectioncontainercontroller) through [SelectionContainer](#apis) and calling [closeSelectionMenu](#closeselectionmenu) and [clearTextSelection](#cleartextselection).
 
 Since API version 26.0.0, the [SelectionContainerController](#selectioncontainercontroller) and [SelectionContainerOptions](#selectioncontaineroptions) APIs are added.
 
@@ -755,7 +755,7 @@ struct SelectionContainerControllerExample {
 
   build() {
     Column({ space: 12 }) {
-      Text('Long press the area below to select text across nodes, and then tap the button to close the selection menu or clear the selected text.')
+      Text('Long press the area below to select text across nodes, and then click the button to close the selection menu or clear the text selection.')
         .fontSize(16)
 
       SelectionContainer({ controller: this.controller }) {
@@ -763,7 +763,7 @@ struct SelectionContainerControllerExample {
           Text('First paragraph: SelectionContainer supports selecting text across multiple Text components.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
-          Text('Second paragraph: After selection, you can close the selection menu or clear the selected text through the controller.')
+          Text('Second paragraph: After selection, you can close the selection menu or clear the text selection through the controller.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
         }
@@ -774,11 +774,11 @@ struct SelectionContainerControllerExample {
       .width('100%')
 
       Row({ space: 12 }) {
-        Button('Close selection menu')
+        Button('Close Selection Menu')
           .onClick(() => {
             this.controller.closeSelectionMenu();
           })
-        Button('Clear text selection')
+        Button('Clear Text Selection')
           .onClick(() => {
             this.controller.clearTextSelection();
           })
@@ -791,5 +791,3 @@ struct SelectionContainerControllerExample {
 ```
 
 ![selectionContainerController](figures/selectionContainerController.gif)
-
-<!--no_check-->

@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T12:22:45.321Z -->
+<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-09-03T12:22:45.321Z pushedAt=2026-09-16T06:21:17.725Z -->
 
 The **Text** component is used to display text content. It supports the configuration of font styles, text alignment, line height, and decorative lines. It also supports mixed arrangement of images and text, text selection, and text recognition. This component is applicable to various application scenarios where text information needs to be displayed.
 
@@ -122,7 +122,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 | caretColor<sup>14+</sup> | Sets the color of the handle for the selected area in the text component.|
 | copyOption<sup>9+</sup> | Sets whether copy and paste operations are allowed.|
 | draggable<sup>9+</sup> | Sets the drag effect of the selected text.|
-| selectedBackgroundColor<sup>14+</sup> | Sets the highlight color of selected text. |
+| selectedBackgroundColor<sup>14+</sup> | Sets the highlight color of the selected text. |
 | selection<sup>11+</sup> | Sets text selection.|
 | textSelectable<sup>12+</sup> | Sets whether the text is selectable and focusable.|
 
@@ -736,7 +736,7 @@ Sets font variations.
 
 **Since**: 26.0.0
 
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.1.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -1347,7 +1347,7 @@ Sets whether to enable hanging punctuation at line ends. Hanging punctuation is 
 
 selectedBackgroundColor(color: ResourceColor)
 
-Sets the highlight color of the selected text. If opacity is not set or is set to fully opaque, the default opacity is 20%. If this API is not called, the default highlight color of the selected text is '#007DFF' (blue).
+Sets the highlight color of the selected text. If the color is not set with opacity or is set to fully opaque, 20% opacity is used by default. If this API is not used, the default highlight color of the selected text is **'#007DFF'** (blue).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -1961,15 +1961,15 @@ Describes the initialization options of the **Marquee** component.
 
 | Name               | Type                                             | Read-Only| Optional| Description                                                                                 |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
-| start              | boolean                                         | No | No| Whether to start the marquee.<br>**true**: Start the marquee. **false**: Do not start the marquee.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| step               | number                                          | No | Yes| Step length of the scrolling animation text.<br>Unit: vp<br>Value range: (0, Text width]. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **4.0** (in vp)<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                        |
-| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes | Spacing between two rounds of the marquee. Unit: vp. When the unit attribute of the LengthMetrics object is LengthUnit.PERCENT, the current setting does not take effect and the default value is used.<br>Default value: 48.0vp <br>**Atomic service API:** Since API version 23, this API can be used in atomic services. |
-| loop               | number                                          | No | Yes| Number of times the marquee will scroll. If the value is less than or equal to **0**, the marquee will scroll continuously.<br>Default value: **-1**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                         |
-| fromStart          | boolean                                         | No | Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, **false** to scroll in reverse.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| delay              | number                                          | No | Yes| Time interval between scroll movements.<br>The value range is [0, +∞). If the value is a negative number, the default value is used.<br>Default value: **0**<br>Unit: millisecond<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
-| fadeout            | boolean                                         | No | Yes| Whether to apply a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.<br>When this parameter is set to **true**: if the text content exceeds the display range, a fade-out effect is applied to the edges of the partially visible text; if text is partially visible at both ends, the fade-out effect is applied to both ends. The **clip** attribute is automatically locked to **true** and cannot be set to **false**.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18) | No | Yes| Policy for starting the marquee. This attribute takes effect only when **start** is set to **true**.<br>Default value: **MarqueeStartPolicy.ON_FOCUS** for TVs and **MarqueeStartPolicy.DEFAULT** for other devices<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
-| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy23) | No | Yes| Scrolling policy of the marquee after its attributes are updated.<br>This attribute takes effect when the marquee is in the playing state and the text width exceeds the width of the marquee component.<br>Default value: **MarqueeUpdatePolicy.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| start              | boolean                                         | No | No| Whether to start the marquee.<br>**true**: Start the marquee. **false**: Do not start the marquee.<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
+| step               | number                                          | No | Yes| Step length of the scrolling animation text.<br>Unit: vp<br>Value range: (0, Text width]. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **4.0vp**<br>**Atomic service API:** This API can be used in atomic services since API version 18.                                                        |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes | Spacing between two rounds of the marquee. The unit is vp. When the **unit** attribute of the **LengthMetrics** object is **LengthUnit.PERCENT**, the current setting does not take effect and the default value is used.<br>Default value: **48.0vp** <br>**Atomic service API:** This API can be used in atomic services since API version 23. |
+| loop               | number                                          | No | Yes| Number of times the marquee will scroll. If the value is less than or equal to **0**, the marquee will scroll continuously.<br>Default value: **-1**<br>**Atomic service API:** This API can be used in atomic services since API version 18.                                         |
+| fromStart          | boolean                                         | No | Yes| Whether the text scrolls from the start.<br>**true** to scroll from the start, and **false** to scroll in reverse.<br>Default value: **true**<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
+| delay              | number                                          | No | Yes| Time interval between scroll movements.<br>The value range is [0, +∞). If the value is a negative number, the default value is used.<br>Default value: **0**<br>Unit: millisecond<br>**Atomic service API:** This API can be used in atomic services since API version 18.  |
+| fadeout            | boolean                                         | No | Yes| Whether to apply a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.<br>When this parameter is set to **true**: if the text content exceeds the display range, a fade-out effect is applied to the edges of the partially visible text; if text is partially visible at both ends, the fade-out effect is applied to both ends. The **clip** attribute is automatically locked to **true** and cannot be set to **false**.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
+| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18) | No | Yes| Policy for starting the marquee. This attribute takes effect only when **start** is set to **true**.<br>Default value: **MarqueeStartPolicy.ON_FOCUS** for TVs and **MarqueeStartPolicy.DEFAULT** for other devices<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy23) | No | Yes| Scrolling policy of the marquee after its attributes are updated.<br>This attribute takes effect when the marquee is in the playing state and the text width exceeds the width of the marquee component.<br>Default value: **MarqueeUpdatePolicy.DEFAULT**<br>**Atomic service API:** This API can be used in atomic services since API version 23.|
 
 ## MarqueeStartPolicy<sup>18+</sup>
 
@@ -4023,5 +4023,3 @@ struct Utf16GlyphHighlightPage {
 The display effect may vary depending on the device sizes and is for reference only.
 
 ![textUtf16GlyphHighlight](figures/textUtf16GlyphHighlight.gif)
-
-<!--no_check-->
