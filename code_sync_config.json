@@ -35521,7 +35521,7 @@
 						"start_line":20
 					},
 					{
-						"end_line":31,
+						"end_line":32,
 						"name":"aip_getTextEmbeddingModel_operating_parameter",
 						"start_line":24
 					},
