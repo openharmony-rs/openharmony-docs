@@ -16,7 +16,7 @@ WantAgent仅能使用一次，trigger触发后自动cancel取消。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -30,7 +30,7 @@ NO_BUILD_FLAG
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,7 +44,7 @@ CANCEL_PRESENT_FLAG
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -58,7 +58,7 @@ UPDATE_PRESENT_FLAG
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -72,7 +72,7 @@ WantAgent是不可变的。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -86,7 +86,7 @@ REPLACE_ELEMENT
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -100,7 +100,7 @@ REPLACE_ACTION
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -114,7 +114,7 @@ REPLACE_URI
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -128,7 +128,7 @@ REPLACE_ENTITIES
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -142,6 +142,6 @@ REPLACE_BUNDLE
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

@@ -16,7 +16,7 @@ ROTATION_0 = 0
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -30,7 +30,7 @@ ROTATION_90 = 90
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -44,7 +44,7 @@ ROTATION_180 = 180
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -58,6 +58,6 @@ ROTATION_270 = 270
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

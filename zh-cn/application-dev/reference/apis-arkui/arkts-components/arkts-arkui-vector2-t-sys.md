@@ -14,4 +14,4 @@ declare type Vector2 = import('../api/arkui/Graphics').Vector2
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** import('../api/arkui/Graphics').Vector2
+**类型：** import('../api/arkui/Graphics').Vector2

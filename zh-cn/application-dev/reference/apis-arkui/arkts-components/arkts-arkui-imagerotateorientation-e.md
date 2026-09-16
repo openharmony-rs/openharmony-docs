@@ -12,14 +12,17 @@
 AUTO = 0
 ```
 
-读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。  
-[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)和[DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md)类型的图片不包含头信息，调 用该接口时图片显示效果不变化。
+读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。
+
+[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)和[DrawableDescriptor](arkts-arkui-drawabledescriptor-t.md)类型的图片不包含头信息，调用该接口时图片显示效果不变化。
+
+![imageRotateOrientation_0](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_0.png)
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,7 +40,7 @@ UP = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -51,11 +54,13 @@ RIGHT = 2
 
 将当前图片顺时针旋转90度后显示。
 
+![imageRotateOrientation_2](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_2.png)
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -69,11 +74,13 @@ DOWN = 3
 
 将当前图片顺时针旋转180度后显示。
 
+![imageRotateOrientation_3](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_3.png)
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -87,11 +94,13 @@ LEFT = 4
 
 将当前图片顺时针旋转270度后显示。
 
+![imageRotateOrientation_4](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_4.png)
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -105,11 +114,13 @@ UP_MIRRORED = 5
 
 将当前图片水平翻转后显示。
 
+![imageRotateOrientation_5](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_5.png)
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -123,11 +134,13 @@ RIGHT_MIRRORED = 6
 
 将当前图片水平翻转再顺时针旋转90度后显示。
 
+![imageRotateOrientation_6](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_6.png)
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -141,11 +154,13 @@ DOWN_MIRRORED = 7
 
 将当前图片垂直翻转后显示。
 
+![imageRotateOrientation_7](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_7.png)
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -159,11 +174,13 @@ LEFT_MIRRORED = 8
 
 将当前图片水平翻转再顺时针旋转270度后显示。
 
+![imageRotateOrientation_8](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_8.png)
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 

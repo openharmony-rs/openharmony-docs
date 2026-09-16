@@ -22,7 +22,7 @@ The callback is used to return the form id.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,11 +34,11 @@ formBindingData?: formBindingData.FormBindingData
 
 Indicates the form data.
 
-**类型：** formBindingData.FormBindingData
+**类型：** [formBindingData.FormBindingData](../../apis-form-kit/arkts-apis/arkts-form-formbindingdata-formbindingdata-i.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +54,6 @@ The style of the menu item.
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

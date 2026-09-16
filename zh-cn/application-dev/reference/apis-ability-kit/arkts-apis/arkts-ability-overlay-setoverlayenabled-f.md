@@ -24,7 +24,7 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: Asyn
 | --- | --- | --- | --- |
 | moduleName | string | 是 | overlay特征module的名称。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置指定module的overlay禁用使能状态成功时，err为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置指定module的overlay禁用使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -35,6 +35,27 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: Asyn
 | [17700033](../errorcode-bundle.md#17700033-指定的module不是overlay特征的module) | The specified module is not an overlay module. |
 
 **示例**
+
+```TypeScript
+import { overlay } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let moduleName = "feature";
+let isEnabled = false;
+
+try {
+  overlay.setOverlayEnabled(moduleName, isEnabled)
+    .then(() => {
+      console.info('setOverlayEnabled success');
+    }).catch((err: BusinessError) => {
+    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
+}
+```
 
 ```TypeScript
 import { overlay } from '@kit.AbilityKit';
@@ -82,7 +103,7 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -94,23 +115,4 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 
 **示例**
 
-```TypeScript
-import { overlay } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let moduleName = "feature";
-let isEnabled = false;
-
-try {
-  overlay.setOverlayEnabled(moduleName, isEnabled)
-    .then(() => {
-      console.info('setOverlayEnabled success');
-    }).catch((err: BusinessError) => {
-    console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
-}
-```
+参见 [setOverlayEnabled](#setoverlayenabled)

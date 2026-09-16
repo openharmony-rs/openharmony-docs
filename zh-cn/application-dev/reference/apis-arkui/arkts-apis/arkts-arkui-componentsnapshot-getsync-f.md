@@ -14,7 +14,7 @@ function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。
 
-> **说明：**
+> **说明：** 
 > 
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
@@ -22,7 +22,7 @@ function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,13 +37,13 @@ function getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| image.PixelMap | 截图返回的结果。 |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 截图返回的结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameters types.   3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID. |
 | [160002](../errorcode-snapshot.md#160002-截图超时) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-截图选项中设置的色彩空间或动态范围模式不受支持) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |

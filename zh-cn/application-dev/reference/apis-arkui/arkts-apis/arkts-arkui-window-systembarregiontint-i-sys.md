@@ -70,7 +70,7 @@ region?: Rect
 
 当前系统栏的位置及大小。默认值为{0,0,0,0}。
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 8
 
@@ -86,7 +86,7 @@ type: WindowType
 
 当前属性改变的系统栏类型，仅支持类型为导航栏、状态栏的系统栏。
 
-**类型：** WindowType
+**类型：** [WindowType](arkts-arkui-window-windowtype-e.md)
 
 **起始版本：** 8
 

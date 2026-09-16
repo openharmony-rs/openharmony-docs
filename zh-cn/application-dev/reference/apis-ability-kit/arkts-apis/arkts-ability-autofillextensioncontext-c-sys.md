@@ -1,8 +1,8 @@
 # AutoFillExtensionContext（系统接口）
 
-AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自 [ExtensionContext](arkts-ability-extensioncontext-c.md)。
+AutoFillExtensionContext模块是AutoFillExtensionAbility的上下文环境，继承自[ExtensionContext](arkts-ability-extensioncontext-c.md)。
 
-**继承/实现关系：** AutoFillExtensionContext extends ExtensionContext
+**继承/实现关系：** AutoFillExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
 **起始版本：** 11
 
@@ -36,7 +36,7 @@ reloadInModal(customData: CustomData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -49,91 +49,12 @@ reloadInModal(customData: CustomData): Promise<void>
 
 **示例**
 
-当点击账号选择界面选择任意账号时，调用reloadInModal接口再次触发自动填充服务，在AutoFillExtensionAbility的onFillRequest生命周期中拉起模态页面。
-
 ```TypeScript
-// AutoFillAbility.ts
-import { AutoFillExtensionAbility, autoFillManager, UIExtensionContentSession } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
+通过点击账号密码输入框触发自动填充服务时，在[AutoFillExtensionAbility](arkts-ability-app-ability-autofillextensionability-autofillextensionability-c-sys.md)的onFillRequest生命周期中拉起账号选择界面。
 
-export default class AutoFillAbility extends AutoFillExtensionAbility {
-  // ...
-  onFillRequest(session: UIExtensionContentSession,
-    request: autoFillManager.FillRequest,
-    callback: autoFillManager.FillRequestCallback) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
-    try {
-      // 创建LocalStorage并存储自动填充所需的数据
-      let storage_fill: LocalStorage = new LocalStorage(
-        {
-          'session': session,
-          'message': "AutoFill Page",
-          'fillCallback': callback,
-          'viewData': request.viewData,
-          'autoFillExtensionContext': this.context,
-          'customData': request.customData
-        } as Record<string, Object>);
-      if (request.customData == undefined) {
-        // 加载自动填充处理界面
-        session.loadContent('pages/AccountPage', storage_fill);
-      } else {
-        // 拉起模态页面
-        session.loadContent('pages/ReloadInModal', storage_fill);
-      }
-    } catch (err) {
-      hilog.error(0x0000, 'testTag', '%{public}s', 'autofill failed to load content');
-    }
-  }
-}
+当点击账号选择界面选择任意账号时，调用reloadInModal接口再次触发自动填充服务，在AutoFillExtensionAbility的onFillRequest生命周期中拉起模态页面。
 ```
 
-当点击账号选择界面选择任意账号时，调用reloadInModal接口。
-
 ```TypeScript
-// AccountPage.ets
-import { autoFillManager, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct AccountPage {
-  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  viewData: autoFillManager.ViewData | undefined = this.storage?.get<autoFillManager.ViewData>('viewData');
-  context: common.AutoFillExtensionContext | undefined = this.storage?.get<common.AutoFillExtensionContext>('autoFillExtensionContext');
-
-
-  build() {
-    Row() {
-      Column() {
-        List({ space: 10, initialIndex: 0 }) {
-          ListItem() {
-            Text('HelloWorld789456')
-              .width('100%')
-              .height(40)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(5)
-          }
-          .onClick(() => {
-            if (this.viewData != undefined) {
-              if (this.context != undefined) {
-                // 调用reloadInModal接口重新触发自动填充，传递自定义数据用于模态页面
-                this.context.reloadInModal({ data: { viewData: 20, text: 'HelloWorld789456' } }).then(() => {
-                  console.info('reloadInModal successfully.')
-                }).catch((err: BusinessError) => {
-                  console.error(`reloadInModal failed. Code: ${err.code}, message: ${err.message}`);
-                })
-              }
-            }
-          });
-        }
-        // ...
-      }
-      .width('100%')
-      .shadow(ShadowStyle.OUTER_FLOATING_SM)
-    }
-    .height('100%')
-    .shadow(ShadowStyle.OUTER_FLOATING_SM)
-  }
-}
+当点击账号选择界面选择任意账号时，调用reloadInModal接口。
 ```

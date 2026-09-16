@@ -84,7 +84,7 @@
 typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)
 ```
 
-**描述**
+**描述：**
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧启动回调。
 
@@ -102,7 +102,7 @@ typedef void (*OH_PhotoOutput_OnFrameStart)(Camera_PhotoOutput* photoOutput)
 typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)
 ```
 
-**描述**
+**描述：**
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧快门回调。
 
@@ -113,7 +113,7 @@ typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, C
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)\* photoOutput | 传递回调的拍照输出实例。 |
-| [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md)\* info | 回调传递的帧快门回调信息。 |
+| Camera_FrameShutterInfo\* info | 回调传递的帧快门回调信息。 |
 
 ### OH_PhotoOutput_OnFrameEnd()
 
@@ -121,7 +121,7 @@ typedef void (*OH_PhotoOutput_OnFrameShutter)(Camera_PhotoOutput* photoOutput, C
 typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)
 ```
 
-**描述**
+**描述：**
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出帧结束回调。
 
@@ -140,7 +140,7 @@ typedef void (*OH_PhotoOutput_OnFrameEnd)(Camera_PhotoOutput* photoOutput, int32
 typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)
 ```
 
-**描述**
+**描述：**
 
 在[PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md)中被调用的拍照输出错误回调。
 
@@ -151,11 +151,11 @@ typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_E
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)\* photoOutput | 传递回调的拍照输出实例。 |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 拍照输出的错误码。 |
+| Camera_ErrorCode errorCode | 拍照输出的错误码。 |
 
 **参考：**
 
-[CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
+CAMERA_SERVICE_FATAL_ERROR
 
 
 ### OH_PhotoOutput_CaptureEnd()
@@ -164,7 +164,7 @@ typedef void (*OH_PhotoOutput_OnError)(Camera_PhotoOutput* photoOutput, Camera_E
 typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32_t frameCount)
 ```
 
-**描述**
+**描述：**
 
 拍照结束回调。
 
@@ -183,7 +183,7 @@ typedef void (*OH_PhotoOutput_CaptureEnd)(Camera_PhotoOutput* photoOutput, int32
 typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOutput, Camera_CaptureStartInfo* Info)
 ```
 
-**描述**
+**描述：**
 
 拍照开始回调。
 
@@ -194,7 +194,7 @@ typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOut
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)\* photoOutput | 传递回调的拍照输出实例。 |
-| info | the [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) which is delivered by the callback. |
+| info | the {@link Camera_CaptureStartInfo} which is delivered by the callback. |
 
 ### OH_PhotoOutput_OnFrameShutterEnd()
 
@@ -202,7 +202,7 @@ typedef void (*OH_PhotoOutput_CaptureStartWithInfo)(Camera_PhotoOutput* photoOut
 typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* Info)
 ```
 
-**描述**
+**描述：**
 
 拍照曝光结束回调。
 
@@ -213,7 +213,7 @@ typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)\* photoOutput | 传递回调的拍照输出实例。 |
-| info | the [Camera_CaptureStartInfo](capi-oh-camera-camera-capturestartinfo.md) which is delivered by the callback. |
+| info | the {@link Camera_CaptureStartInfo} which is delivered by the callback. |
 
 ### OH_PhotoOutput_CaptureReady()
 
@@ -221,7 +221,7 @@ typedef void (*OH_PhotoOutput_OnFrameShutterEnd)(Camera_PhotoOutput* photoOutput
 typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)
 ```
 
-**描述**
+**描述：**
 
 拍照准备就绪回调。收到回调后，可以继续进行下一次拍照。
 
@@ -239,7 +239,7 @@ typedef void (*OH_PhotoOutput_CaptureReady)(Camera_PhotoOutput* photoOutput)
 typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* photoOutput, int64_t duration)
 ```
 
-**描述**
+**描述：**
 
 预计拍照时间回调。
 
@@ -258,7 +258,7 @@ typedef void (*OH_PhotoOutput_EstimatedCaptureDuration)(Camera_PhotoOutput* phot
 typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)
 ```
 
-**描述**
+**描述：**
 
 照片输出可用高分辨率图像回调。
 
@@ -277,7 +277,7 @@ typedef void (*OH_PhotoOutput_PhotoAvailable)(Camera_PhotoOutput* photoOutput, O
 typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutput, OH_MediaAsset* photoAsset)
 ```
 
-**描述**
+**描述：**
 
 输出照片资源可用回调。
 
@@ -296,7 +296,7 @@ typedef void (*OH_PhotoOutput_PhotoAssetAvailable)(Camera_PhotoOutput* photoOutp
 Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)
 ```
 
-**描述**
+**描述：**
 
 注册拍照输出更改事件回调。
 
@@ -313,7 +313,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_UnregisterCallback()
 
@@ -321,7 +321,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCallback(Camera_PhotoOutput* photoOutput
 Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutput, PhotoOutput_Callbacks* callback)
 ```
 
-**描述**
+**描述：**
 
 注销拍照输出更改事件回调。
 
@@ -338,7 +338,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutp
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_RegisterCaptureStartWithInfoCallback()
 
@@ -346,7 +346,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCallback(Camera_PhotoOutput* photoOutp
 Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)
 ```
 
-**描述**
+**描述：**
 
 注册拍照开始事件回调。
 
@@ -363,7 +363,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_Phot
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_GetPhotoRotation()
 
@@ -371,7 +371,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureStartWithInfoCallback(Camera_Phot
 Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)
 ```
 
-**描述**
+**描述：**
 
 获取照片旋转角度。
 
@@ -383,13 +383,13 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于获取照片旋转角度的拍照输出实例。 |
 | int deviceDegree | 当前设备旋转角度。 |
-| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 照片旋转角度的结果。 |
+| Camera_ImageRotation* imageRotation | 照片旋转角度的结果。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree()
 
@@ -397,7 +397,7 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotation(Camera_PhotoOutput* photoOutput
 Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_PhotoOutput* photoOutput, Camera_ImageRotation* imageRotation)
 ```
 
-**描述**
+**描述：**
 
 获取照片旋转角度。
 
@@ -408,13 +408,13 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_Photo
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于获取照片旋转角度的拍照输出实例。 |
-| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | 照片旋转角度的结果。 |
+| Camera_ImageRotation* imageRotation | 照片旋转角度的结果。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback()
 
@@ -422,7 +422,7 @@ Camera_ErrorCode OH_PhotoOutput_GetPhotoRotationWithoutDeviceDegree(Camera_Photo
 Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureStartWithInfo callback)
 ```
 
-**描述**
+**描述：**
 
 注销拍照开始事件回调。
 
@@ -439,7 +439,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_Ph
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_RegisterCaptureEndCallback()
 
@@ -447,7 +447,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureStartWithInfoCallback(Camera_Ph
 Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)
 ```
 
-**描述**
+**描述：**
 
 注册拍照结束事件回调。
 
@@ -464,7 +464,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_UnregisterCaptureEndCallback()
 
@@ -472,7 +472,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureEndCallback(Camera_PhotoOutput* p
 Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureEnd callback)
 ```
 
-**描述**
+**描述：**
 
 注销拍照结束事件回调。
 
@@ -489,7 +489,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput*
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_RegisterFrameShutterEndCallback()
 
@@ -497,7 +497,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureEndCallback(Camera_PhotoOutput*
 Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)
 ```
 
-**描述**
+**描述：**
 
 注册拍照曝光结束事件回调。
 
@@ -514,7 +514,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutp
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_UnregisterFrameShutterEndCallback()
 
@@ -522,7 +522,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterFrameShutterEndCallback(Camera_PhotoOutp
 Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_OnFrameShutterEnd callback)
 ```
 
-**描述**
+**描述：**
 
 注销拍照曝光结束事件回调。
 
@@ -539,7 +539,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_RegisterCaptureReadyCallback()
 
@@ -547,7 +547,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterFrameShutterEndCallback(Camera_PhotoOu
 Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)
 ```
 
-**描述**
+**描述：**
 
 注册拍照就绪事件回调。收到回调后，可以继续进行下一次拍照。
 
@@ -564,7 +564,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput*
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_UnregisterCaptureReadyCallback()
 
@@ -572,7 +572,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterCaptureReadyCallback(Camera_PhotoOutput*
 Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_CaptureReady callback)
 ```
 
-**描述**
+**描述：**
 
 注销拍照就绪事件回调。
 
@@ -589,7 +589,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback()
 
@@ -597,7 +597,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterCaptureReadyCallback(Camera_PhotoOutpu
 Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)
 ```
 
-**描述**
+**描述：**
 
 注册预计拍照时间事件回调。
 
@@ -614,7 +614,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback()
 
@@ -622,7 +622,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterEstimatedCaptureDurationCallback(Camera_
 Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_EstimatedCaptureDuration callback)
 ```
 
-**描述**
+**描述：**
 
 注销预计拍照时间事件回调。
 
@@ -639,7 +639,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camer
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_RegisterPhotoAvailableCallback()
 
@@ -647,7 +647,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterEstimatedCaptureDurationCallback(Camer
 Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)
 ```
 
-**描述**
+**描述：**
 
 注册输出照片可用回调。
 
@@ -664,7 +664,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_UnregisterPhotoAvailableCallback()
 
@@ -672,7 +672,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAvailableCallback(Camera_PhotoOutpu
 Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAvailable callback)
 ```
 
-**描述**
+**描述：**
 
 注销输出照片可用回调。
 
@@ -689,7 +689,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOut
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_RegisterPhotoAssetAvailableCallback()
 
@@ -697,7 +697,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAvailableCallback(Camera_PhotoOut
 Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)
 ```
 
-**描述**
+**描述：**
 
 注册输出照片资源可用回调。
 
@@ -714,7 +714,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_Photo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback()
 
@@ -722,7 +722,7 @@ Camera_ErrorCode OH_PhotoOutput_RegisterPhotoAssetAvailableCallback(Camera_Photo
 Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_PhotoOutput* photoOutput, OH_PhotoOutput_PhotoAssetAvailable callback)
 ```
 
-**描述**
+**描述：**
 
 注销输出照片资源可用回调。
 
@@ -739,7 +739,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_Pho
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_Capture()
 
@@ -747,7 +747,7 @@ Camera_ErrorCode OH_PhotoOutput_UnregisterPhotoAssetAvailableCallback(Camera_Pho
 Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 ```
 
-**描述**
+**描述：**
 
 拍摄照片。<br>必须在{@link OH_PreviewOutput_Release}之前调用，否则会导致无法拍照。
 
@@ -763,7 +763,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_Capture_WithCaptureSetting()
 
@@ -771,7 +771,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture(Camera_PhotoOutput* photoOutput)
 Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* photoOutput, Camera_PhotoCaptureSetting setting)
 ```
 
-**描述**
+**描述：**
 
 使用捕获设置捕获拍照。
 
@@ -782,13 +782,13 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* p
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于捕获拍照的拍照输出实例。 |
-| [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) setting | 用于捕获拍照的[Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md)。 |
+| Camera_PhotoCaptureSetting setting | 用于捕获拍照的{@link Camera_PhotoCaptureSetting}。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_Release()
 
@@ -796,7 +796,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSetting(Camera_PhotoOutput* p
 Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 ```
 
-**描述**
+**描述：**
 
 释放拍照输出。
 
@@ -812,7 +812,7 @@ Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_IsMirrorSupported()
 
@@ -820,7 +820,7 @@ Camera_ErrorCode OH_PhotoOutput_Release(Camera_PhotoOutput* photoOutput)
 Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)
 ```
 
-**描述**
+**描述：**
 
 检查是否支持镜像拍照。
 
@@ -837,7 +837,7 @@ Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_EnableMirror()
 
@@ -845,7 +845,7 @@ Camera_ErrorCode OH_PhotoOutput_IsMirrorSupported(Camera_PhotoOutput* photoOutpu
 Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 是否启用动态照片镜像拍照。
 
@@ -862,7 +862,7 @@ Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_GetActiveProfile()
 
@@ -870,7 +870,7 @@ Camera_ErrorCode OH_PhotoOutput_EnableMirror(Camera_PhotoOutput* photoOutput, bo
 Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput, Camera_Profile** profile)
 ```
 
-**描述**
+**描述：**
 
 获取当前照片输出配置文件。
 
@@ -881,13 +881,13 @@ Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 传递当前配置文件的拍照输出实例。 |
-| [Camera_Profile](capi-oh-camera-camera-profile.md)** profile | 如果方法调用成功，将记录照片输出配置文件。 |
+| Camera_Profile** profile | 如果方法调用成功，将记录照片输出配置文件。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_DeleteProfile()
 
@@ -895,7 +895,7 @@ Camera_ErrorCode OH_PhotoOutput_GetActiveProfile(Camera_PhotoOutput* photoOutput
 Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 ```
 
-**描述**
+**描述：**
 
 删除照片配置文件实例。
 
@@ -905,13 +905,13 @@ Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Camera_Profile](capi-oh-camera-camera-profile.md)* profile | 要被删除的照片配置文件实例。 |
+| Camera_Profile* profile | 要被删除的照片配置文件实例。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoOutput_IsMovingPhotoSupported()
 
@@ -919,7 +919,7 @@ Camera_ErrorCode OH_PhotoOutput_DeleteProfile(Camera_Profile* profile)
 Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photoOutput, bool* isSupported)
 ```
 
-**描述**
+**描述：**
 
 检查是否支持动态照片。
 
@@ -936,7 +936,7 @@ Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_EnableMovingPhoto()
 
@@ -944,7 +944,7 @@ Camera_ErrorCode OH_PhotoOutput_IsMovingPhotoSupported(Camera_PhotoOutput* photo
 Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutput, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 是否启用动态照片。
 
@@ -961,7 +961,7 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_IsPhotoQualityPrioritizationSupported()
 
@@ -969,7 +969,7 @@ Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutpu
 Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization, bool* isSupported)
 ```
 
-**描述**
+**描述：**
 
 检查是否支持指定的拍照画质优先策略。
 
@@ -980,14 +980,14 @@ Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_Pho
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于获取是否支持拍照画质优先策略的拍照输出实例。 |
-| [Camera_PhotoQualityPrioritization](capi-camera-h.md#camera_photoqualityprioritization) qualityPrioritization | 要检查的拍照画质优先策略。 |
+| Camera_PhotoQualityPrioritization qualityPrioritization | 要检查的拍照画质优先策略。 |
 | bool* isSupported | 是否支持指定的拍照画质优先策略。true表示支持，false表示不支持。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_SetPhotoQualityPrioritization()
 
@@ -995,7 +995,7 @@ Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_Pho
 Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)
 ```
 
-**描述**
+**描述：**
 
 设置拍照画质优先策略。
 
@@ -1006,13 +1006,13 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 用于设置拍照画质优先策略的拍照输出实例。 |
-| [Camera_PhotoQualityPrioritization](capi-camera-h.md#camera_photoqualityprioritization) qualityPrioritization | 要设置的拍照画质优先策略。 |
+| Camera_PhotoQualityPrioritization qualityPrioritization | 要设置的拍照画质优先策略。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_Capture_WithCaptureSettingExt()
 
@@ -1020,7 +1020,7 @@ Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput
 Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)
 ```
 
-**描述**
+**描述：**
 
 使用扩展拍照设置执行拍照操作。
 
@@ -1037,7 +1037,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SESSION_NOT_RUNNING：捕获会话未运行。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoOutput_CreatePhotoCaptureSettingExt()
 
@@ -1045,7 +1045,7 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)
 ```
 
-**描述**
+**描述：**
 
 创建拍照扩展设置实例。
 
@@ -1062,7 +1062,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
 
 ### OH_PhotoCaptureSettingExt_SetCompressionQuality()
 
@@ -1070,7 +1070,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)
 ```
 
-**描述**
+**描述：**
 
 拍照扩展设置中的图片压缩质量。
 
@@ -1087,7 +1087,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
 
 ### OH_PhotoCaptureSettingExt_SetImageRotation()
 
@@ -1095,7 +1095,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)
 ```
 
-**描述**
+**描述：**
 
 拍照扩展设置中的图像旋转角度。
 
@@ -1106,13 +1106,13 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-oh-camera-photocapturesettingext.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 |
-| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation) rotation | 图像旋转角度，定义在[Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)枚举中。 |
+| Camera_ImageRotation rotation | 图像旋转角度，定义在{@link Camera_ImageRotation}枚举中。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
 
 ### OH_PhotoCaptureSettingExt_SetMirror()
 
@@ -1120,7 +1120,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)
 ```
 
-**描述**
+**描述：**
 
 拍照扩展设置中的镜像效果。
 
@@ -1137,7 +1137,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
 
 ### OH_PhotoOutput_DestroyPhotoCaptureSettingExt()
 
@@ -1145,7 +1145,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)
 ```
 
-**描述**
+**描述：**
 
 销毁拍照扩展设置对象的实例。
 
@@ -1161,7 +1161,7 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
 ### OH_PhotoCaptureSettingExt_SetLocation()
 
@@ -1169,7 +1169,7 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)
 ```
 
-**描述**
+**描述：**
 
 拍照扩展设置中的图片位置信息。
 
@@ -1180,13 +1180,13 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-oh-camera-photocapturesettingext.md)* photoCaptureSettingExt | 指向扩展拍照设置实例的指针。 |
-| [Camera_Location](capi-oh-camera-camera-location.md) location | 图片位置，定义在[Camera_Location](capi-oh-camera-camera-location.md)。 |
+| Camera_Location location | 图片位置，定义在{@link Camera_Location}。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
+| Camera_ErrorCode | CAMERA_OK：方法调用成功。      <br>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。      <br>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。 |
 
 ### OH_PhotoOutput_EnableAutoExtendedGainmapDelivery()
 
@@ -1194,7 +1194,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOutput* photoOutput, bool enabled)
 ```
 
-**描述**
+**描述：**
 
 是否启用自动扩展增益图（Gainmap）的输出。
 
@@ -1211,7 +1211,7 @@ Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOu
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul>     <br><li>CAMERA_OK：方法调用成功。</li>     <br><li>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。</li>     <br><li>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。</li>     <br><li>CAMERA_SESSION_NOT_CONFIG：会话未配置。</li>     <br><li>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。</li>     <br></ul> |
+| Camera_ErrorCode | <ul>     <br><li>CAMERA_OK：方法调用成功。</li>     <br><li>CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。</li>     <br><li>CAMERA_OPERATION_NOT_ALLOWED：操作不允许。</li>     <br><li>CAMERA_SESSION_NOT_CONFIG：会话未配置。</li>     <br><li>CAMERA_SERVICE_FATAL_ERROR：相机服务异常。</li>     <br></ul> |
 
 ### OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported()
 
@@ -1219,7 +1219,7 @@ Camera_ErrorCode OH_PhotoOutput_EnableAutoExtendedGainmapDelivery(Camera_PhotoOu
 bool OH_PhotoOutput_IsAutoExtendedGainmapDeliverySupported(const Camera_PhotoOutput* photoOutput)
 ```
 
-**描述**
+**描述：**
 
 检查是否支持自动扩展增益图（Gainmap）的输出。
 

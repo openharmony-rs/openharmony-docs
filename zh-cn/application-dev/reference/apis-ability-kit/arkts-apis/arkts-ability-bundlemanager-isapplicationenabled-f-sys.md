@@ -25,13 +25,13 @@ function isApplicationEnabled(bundleName: string, appIndex: number): Promise<boo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| appIndex | number | 是 | 表示分身应用的索引。appIndex为0时，表示获取主应用的禁用或使能状态。appIndex大于0时，表示获取指定分身应用的禁用或使能状态。 |
+| appIndex | number | 是 | 表示分身应用的索引。<br> appIndex为0时，表示获取主应用的禁用或使能状态。appIndex大于0时，表示获取指定分身应用的禁用或使能状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象，返回true表示当前应用为使能状态，返回false表示当前应用为禁用状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示当前应用为使能状态，返回false表示当前应用为禁用状态。 |
 
 **错误码：**
 
@@ -43,6 +43,46 @@ function isApplicationEnabled(bundleName: string, appIndex: number): Promise<boo
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
 **示例**
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  bundleManager.isApplicationEnabled(bundleName, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'isApplicationEnabled successfully: %{public}s', JSON.stringify(data));
+    }
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed: %{public}s', message);
+}
+```
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  bundleManager.isApplicationEnabled(bundleName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'isApplicationEnabled successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', message);
+}
+```
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -83,7 +123,7 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，返回true表示当前应用为使能状态，返回 false表示应用为禁用状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，返回true表示当前应用为使能状态，返回false表示应用为禁用状态。 |
 
 **错误码：**
 
@@ -95,26 +135,7 @@ function isApplicationEnabled(bundleName: string, callback: AsyncCallback<boolea
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = 'com.example.myapplication';
-
-try {
-  bundleManager.isApplicationEnabled(bundleName, (err, data) => {
-    if (err) {
-      hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed: %{public}s', err.message);
-    } else {
-      hilog.info(0x0000, 'testTag', 'isApplicationEnabled successfully: %{public}s', JSON.stringify(data));
-    }
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed: %{public}s', message);
-}
-```
+参见 [isApplicationEnabled](#isapplicationenabled)
 
 
 ## isApplicationEnabled
@@ -141,7 +162,7 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象，返回true表示当前应用为使能状态，返回false表示当前应用为禁用状态。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示当前应用为使能状态，返回false表示当前应用为禁用状态。 |
 
 **错误码：**
 
@@ -153,21 +174,4 @@ function isApplicationEnabled(bundleName: string): Promise<boolean>
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = 'com.example.myapplication';
-
-try {
-  bundleManager.isApplicationEnabled(bundleName).then((data) => {
-    hilog.info(0x0000, 'testTag', 'isApplicationEnabled successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', message);
-}
-```
+参见 [isApplicationEnabled](#isapplicationenabled)

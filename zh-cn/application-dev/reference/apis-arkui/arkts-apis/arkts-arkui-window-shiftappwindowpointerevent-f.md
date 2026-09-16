@@ -12,11 +12,13 @@ import { window } from '@kit.ArkUI';
 function shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Promise<void>
 ```
 
-主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。源窗口仅在onTouch事件（事件类型必须为 TouchType.Down）的回调方法中调用此接口才会有鼠标输入事件转移效果，成功调用此接口后，系统会向源窗口补发鼠标按键抬起（TouchType.Up）事件，并且向目标窗口补发鼠标按键按下（TouchType.Down）事件。
+主窗口和子窗口可正常调用，用于将鼠标输入事件从源窗口转移到目标窗口。使用Promise异步回调。
+
+源窗口仅在onTouch事件（事件类型必须为TouchType.Down）的回调方法中调用此接口才会有鼠标输入事件转移效果，成功调用此接口后，系统会向源窗口补发鼠标按键抬起（TouchType.Up）事件，并且向目标窗口补发鼠标按键按下（TouchType.Down）事件。
 
 **起始版本：** 15
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -24,14 +26,14 @@ function shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sourceWindowId | number | 是 | 源窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。 |
-| targetWindowId | number | 是 | 目标窗口id。推荐使用 [getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。 |
+| sourceWindowId | number | 是 | 源窗口id。推荐使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。 |
+| targetWindowId | number | 是 | 目标窗口id。推荐使用[getWindowProperties()](arkts-arkui-window-window-i.md#getwindowproperties)方法获取窗口id属性。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

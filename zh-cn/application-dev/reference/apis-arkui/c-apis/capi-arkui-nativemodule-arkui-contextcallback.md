@@ -37,6 +37,6 @@ typedef struct ArkUI_ContextCallback {...} ArkUI_ContextCallback
 void (*callback)(void* userData)
 ```
 
-**描述**
+**描述：**
 
 

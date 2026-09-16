@@ -28,7 +28,7 @@ The file declares the capability to take screenshots.
 NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uint32_t displayId, OH_PixelmapNative **pixelMap)
 ```
 
-**描述**
+**描述：**
 
 获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。
 

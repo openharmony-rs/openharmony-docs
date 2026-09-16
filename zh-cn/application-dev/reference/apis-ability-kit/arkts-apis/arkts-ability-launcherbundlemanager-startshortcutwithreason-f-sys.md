@@ -12,7 +12,9 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options?: StartOptions): Promise<void>
 ```
 
-根据指定的快捷方式信息，拉起对应的Ability，并携带快捷方式的启动原因。使用Promise异步回调。被拉起方可以通过[LaunchParam](arkts-ability-abilityconstant-launchparam-i.md)的launchReasonMessage字段获取到 启动原因，并根据启动原因进行业务逻辑处理。
+根据指定的快捷方式信息，拉起对应的Ability，并携带快捷方式的启动原因。使用Promise异步回调。
+
+被拉起方可以通过[LaunchParam](arkts-ability-abilityconstant-launchparam-i.md)的launchReasonMessage字段获取到启动原因，并根据启动原因进行业务逻辑处理。
 
 **起始版本：** 20
 
@@ -26,15 +28,15 @@ function startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shortcutInfo | ShortcutInfo | 是 | 应用的快捷方式信息。 |
-| startReason | string | 是 | 快捷方式的启动原因，取值包括： [AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](../../../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#常量) ，表示桌面快捷方式启动。 |
+| shortcutInfo | [ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md) | 是 | 应用的快捷方式信息。 |
+| startReason | string | 是 | 快捷方式的启动原因，取值包括：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](../../../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | 否 | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

@@ -1,10 +1,12 @@
 # ApplicationStateObserver
 
-应用状态监听器，可以作为入参传入 on('applicationState') 方法，监听应用的生命周期变化。   
-> **说明：**
+应用状态监听器，可以作为入参传入 on('applicationState') 方法，监听应用的生命周期变化。  
+> **说明：** 
 > 
 > 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-## 导入模块  
+
+## 导入模块
+
 ```ts
 import { appManager } from '@kit.AbilityKit';
 ```
@@ -127,7 +129,7 @@ onProcessDied(processData: ProcessData): void
 onProcessStateChanged(processData: ProcessData): void
 ```
 
-进程状态更新时执行的回调函数。
+进程状态发生变化时执行的回调函数。
 
 **起始版本：** 14
 

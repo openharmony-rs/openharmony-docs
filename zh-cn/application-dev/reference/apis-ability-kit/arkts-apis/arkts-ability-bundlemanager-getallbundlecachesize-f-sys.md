@@ -12,7 +12,9 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAllBundleCacheSize(): Promise<number>
 ```
 
-获取全局缓存大小，单位：字节。使用Promise异步回调。有程序运行时的应用的缓存、或者在[应用配置指南](../../../../device-dev/subsystems/subsys-app-privilege-config-guide.md)中已配置“ AllowAppDataNotCleared”特权的应用的缓存，无法被获取。
+获取全局缓存大小，单位：字节。使用Promise异步回调。
+
+有程序运行时的应用的缓存、或者在[应用配置指南](../../../../device-dev/subsystems/subsys-app-privilege-config-guide.md)中已配置“ AllowAppDataNotCleared”特权的应用的缓存，无法被获取。
 
 **起始版本：** 15
 
@@ -26,7 +28,7 @@ function getAllBundleCacheSize(): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise对象。返回全局缓存大小，以字节为单位。 |
+| Promise&lt;number&gt; | Promise对象。返回全局缓存大小，以字节为单位。 |
 
 **错误码：**
 

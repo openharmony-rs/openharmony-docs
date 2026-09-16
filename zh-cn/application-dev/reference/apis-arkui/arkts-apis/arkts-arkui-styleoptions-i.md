@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## length
 
 ```TypeScript
 length?: number
 ```
 
-设置属性字符串样式的长度。当length的值小于0或超出字符串长度与start的差值时，按字符串长度与start的差值处理。
+设置属性字符串样式的长度。
+
+当length的值小于0或超出字符串长度与start的差值时，按字符串长度与start的差值处理。
 
 **类型：** number
 
@@ -25,7 +22,7 @@ length?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,9 @@ length?: number
 start?: number
 ```
 
-设置属性字符串样式的开始位置。当start的值小于0或超出字符串长度时，按0处理。
+设置属性字符串样式的开始位置。
+
+当start的值小于0或超出字符串长度时，按0处理。
 
 **类型：** number
 
@@ -43,7 +42,7 @@ start?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,7 +60,7 @@ styledKey: StyledStringKey
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,6 +78,6 @@ styledValue: StyledStringValue
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

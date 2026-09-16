@@ -4,13 +4,13 @@
 declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Array<string>
 ```
 
-[usingPopup](arkts-arkui-alphabetindexer-attribute.md#usingpopup)设置值为true，索引项被选中时触发的事件。
+[usingPopup](arkts-arkui-alphabetindexer-comp-attribute.md#usingpopup)设置值为true，索引项被选中时触发的事件。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,4 +24,4 @@ declare type OnAlphabetIndexerRequestPopupDataCallback  = (index: number) => Arr
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;string&gt; | string array corresponding to the index |
+| Array&lt;string&gt; | string array corresponding to the index |

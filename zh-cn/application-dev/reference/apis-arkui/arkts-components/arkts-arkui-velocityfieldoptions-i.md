@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## region
 
 ```TypeScript
 region?: FieldRegion
 ```
 
-The region influenced by the velocity field.
+粒子速度场影响的区域信息，其中区域信息包括区域形状、区域大小以及区域中心位置。
+
+默认值：{shape:DisturbanceFieldShape.RECT, position:{x:0, y:0}, size:{width:0, height:0}}
 
 **类型：** [FieldRegion](arkts-arkui-fieldregion-i.md)
 
@@ -27,7 +24,7 @@ The region influenced by the velocity field.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +34,9 @@ The region influenced by the velocity field.
 velocity?: Vector2T<number>
 ```
 
-The velocity values in each direction of the velocity field. Particles only acquire this velocity when within the range of the velocity field; once they leave the range of the velocity field, they are no longer influenced by it and do not gain this additional velocity.
+粒子速度场的各方向速度值。粒子只有在速度场作用范围内时获得该速度，离开速度场范围后不受该速度场影响，不获得该额外的速度。单位：vp/s。
+
+默认值：{x:0, y:0}
 
 **类型：** [Vector2T](arkts-arkui-vector2t-t.md)&lt;number&gt;
 
@@ -47,6 +46,6 @@ The velocity values in each direction of the velocity field. Particles only acqu
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

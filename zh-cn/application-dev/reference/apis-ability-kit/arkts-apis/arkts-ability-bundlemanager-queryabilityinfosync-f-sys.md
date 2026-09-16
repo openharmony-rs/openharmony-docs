@@ -12,7 +12,9 @@ import { bundleManager } from '@kit.AbilityKit';
 function queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array<AbilityInfo>
 ```
 
-以同步方法根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。获取调用方自身的信息时不需要权限。
+以同步方法根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
@@ -28,13 +30,13 @@ function queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number)
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 表示包含要查询的应用Bundle名称的Want。 |
 | abilityFlags | number | 是 | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](arkts-ability-bundlemanager-abilityflag-e.md)。 |
-| userId | number | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;AbilityInfo&gt; | Array &lt;AbilityInfo&gt;信息。 |
+| Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt; | Array&lt;AbilityInfo&gt;信息。 |
 
 **错误码：**
 

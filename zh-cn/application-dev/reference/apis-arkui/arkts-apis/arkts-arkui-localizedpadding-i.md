@@ -1,15 +1,10 @@
 # LocalizedPadding
 
-Defines the localized padding property.@interface LocalizedPadding
+内边距类型，用于描述组件不同方向的内边距。
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## bottom
 
@@ -17,7 +12,7 @@ Defines the localized padding property.@interface LocalizedPadding
 bottom?: LengthMetrics
 ```
 
-bottom property.
+下内边距，组件内元素距组件底部的尺寸。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -25,7 +20,7 @@ bottom property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,7 +32,11 @@ bottom property.
 end?: LengthMetrics
 ```
 
-end property.
+右内边距，组件内元素距组件右边界的尺寸。
+
+从右至左显示语言模式下为
+
+左内边距，组件内元素距组件左边界的尺寸。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -45,7 +44,7 @@ end property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,7 +56,11 @@ end property.
 start?: LengthMetrics
 ```
 
-start property.
+左内边距，组件内元素距组件左边界的尺寸。
+
+从右至左显示语言模式下为
+
+右内边距，组件内元素距组件右边界的尺寸。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -65,7 +68,7 @@ start property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -77,7 +80,7 @@ start property.
 top?: LengthMetrics
 ```
 
-top property.
+上内边距，组件内元素距组件顶部的尺寸。
 
 **类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
@@ -85,7 +88,7 @@ top property.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 

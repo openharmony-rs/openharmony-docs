@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## onHover
 
 ```TypeScript
@@ -23,7 +18,7 @@ onHover?: OnHoverCallback
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,7 +36,7 @@ gesture?: RichEditorGesture
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +54,7 @@ imageStyle?: RichEditorImageSpanStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +64,9 @@ imageStyle?: RichEditorImageSpanStyle
 offset?: number
 ```
 
-添加图片的位置。省略时，添加到所有内容的末尾。当值小于0时，设置在所有内容最前面；当值大于所有内容长度时，设置在所有内容最后面。
+添加图片的位置。省略时，添加到所有内容的末尾。
+
+当值小于0时，设置在所有内容最前面；当值大于所有内容长度时，设置在所有内容最后面。
 
 **类型：** number
 
@@ -77,6 +74,6 @@ offset?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

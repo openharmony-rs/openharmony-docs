@@ -12,4 +12,4 @@ export type PermissionDef = _PermissionDef
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PermissionDef
+**类型：** _PermissionDef

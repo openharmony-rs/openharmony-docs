@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## expected
 
 ```TypeScript
 expected: number
 ```
 
-期望的最优帧率，单位为帧/秒（fps）。取值范围为[min, max]。设置为0时，将跟随应用的帧率。
+期望的最优帧率，单位为帧/秒（fps）。
+
+取值范围为[min, max]，超出范围时不生效。设置为0时，将跟随应用的帧率。
 
 **类型：** number
 
@@ -25,7 +22,7 @@ expected: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,9 @@ expected: number
 max: number
 ```
 
-期望的最大帧率，单位为帧/秒（fps）。取值范围为[min, 设备最大帧率]。
+期望的最大帧率，单位为帧/秒（fps）。
+
+取值范围为[min, 设备最大帧率]。设备最大帧率取决于设备屏幕的刷新率，例如60Hz屏幕的设备最大帧率为60fps，120Hz屏幕的设备最大帧率为120fps。
 
 **类型：** number
 
@@ -43,7 +42,7 @@ max: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +52,9 @@ max: number
 min: number
 ```
 
-期望的最小帧率，单位为帧/秒（fps）。取值范围为[0, 设备最大帧率]。
+期望的最小帧率，单位为帧/秒（fps）。
+
+取值范围为[0, 设备最大帧率]。
 
 **类型：** number
 
@@ -61,6 +62,6 @@ min: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

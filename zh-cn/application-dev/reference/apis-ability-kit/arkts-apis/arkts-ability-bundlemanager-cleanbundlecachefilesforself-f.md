@@ -16,7 +16,7 @@ function cleanBundleCacheFilesForSelf(): Promise<void>
 
 **起始版本：** 21
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -24,7 +24,7 @@ function cleanBundleCacheFilesForSelf(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例**
 

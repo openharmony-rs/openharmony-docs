@@ -37,7 +37,7 @@ typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2
 int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
 ```
 
-**描述**
+**描述：**
 
 Sets the callback for gesture interruption events.
 
@@ -53,6 +53,6 @@ Sets the callback for gesture interruption events.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 

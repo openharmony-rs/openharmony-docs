@@ -20,11 +20,11 @@ backgroundImage?: Resource
 
 弹框背景图片。默认为纯色背景，颜色值为#EBEEF5。
 
-**类型：** Resource
+**类型：** [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ bottomOffsetType?: BottomOffset
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,11 +52,11 @@ foregroundImage?: Resource
 
 弹框前景图片。默认为空，即不显示前景图片。
 
-**类型：** Resource
+**类型：** [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +72,7 @@ iconStyle?: IconStyle
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,13 +82,13 @@ iconStyle?: IconStyle
 onDialogClick?: Callback<void>
 ```
 
-点击弹框任意位置后触发的用户自定义动作。默认调用closeDialog方法关闭弹框。 说明：点击关闭按钮区域时仅触发onDialogClose，不触发本回调；若需同时触发，请在onDialogClose中显式调用本回调逻辑。
+点击弹框任意位置后触发的用户自定义动作。默认调用closeDialog方法关闭弹框。说明：点击关闭按钮区域时仅触发onDialogClose，不触发本回调；若需同时触发，请在onDialogClose中显式调用本回调逻辑。
 
 **类型：** Callback&lt;void&gt;
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +104,7 @@ onDialogClose?: Callback<void>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,7 +120,7 @@ subtitle?: ResourceStr
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,13 +130,13 @@ subtitle?: ResourceStr
 subtitleColor?: ResourceStr | Color
 ```
 
-弹框副标题文本颜色。默认为\$r('sys.color.ohos_id_color_text_secondary_contrary')。
+弹框副标题文本颜色。默认为&#36;r('sys.color.ohos_id_color_text_secondary_contrary')。
 
-**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) \| Color
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [Color](arkts-arkui-color-e.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +152,7 @@ title?: ResourceStr
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,13 +162,13 @@ title?: ResourceStr
 titleColor?: ResourceStr | Color
 ```
 
-弹框主标题文本颜色。默认为\$r('sys.color.ohos_id_color_text_primary_contrary')。
+弹框主标题文本颜色。默认为&#36;r('sys.color.ohos_id_color_text_primary_contrary')。
 
-**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) \| Color
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [Color](arkts-arkui-color-e.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,7 +184,7 @@ titlePosition?: TitlePosition
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,6 +200,6 @@ UI上下文实例。
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

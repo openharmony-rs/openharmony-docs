@@ -35,11 +35,40 @@ function getAllApplicationInfo(bundleFlags: number,
 
 ```TypeScript
 import bundle from '@ohos.bundle';
+import { BusinessError } from '@ohos.base';
+
+let bundleFlags: number = 8;
+let userId: number = 100;
+
+bundle.getAllApplicationInfo(bundleFlags, userId)
+  .then((data) => {
+    console.info('Operation successful. Data: ' + JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    console.error('Operation failed. Cause: ' + JSON.stringify(error));
+  })
+```
+
+```TypeScript
+import bundle from '@ohos.bundle';
 
 let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
 let userId: number = 100;
 
 bundle.getAllApplicationInfo(bundleFlags, userId, (err, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. Data:' + JSON.stringify(data));
+})
+```
+
+```TypeScript
+import bundle from '@ohos.bundle';
+
+let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+
+bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
   if (err) {
     console.error('Operation failed. Cause: ' + JSON.stringify(err));
     return;
@@ -74,19 +103,7 @@ function getAllApplicationInfo(bundleFlags: number, callback: AsyncCallback<Arra
 
 **示例**
 
-```TypeScript
-import bundle from '@ohos.bundle';
-
-let bundleFlags: number = bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
-
-bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful. Data:' + JSON.stringify(data));
-})
-```
+参见 [getAllApplicationInfo](#getallapplicationinfo)
 
 
 ## getAllApplicationInfo
@@ -120,17 +137,4 @@ function getAllApplicationInfo(bundleFlags: number, userId?: number): Promise<Ar
 
 **示例**
 
-```TypeScript
-import bundle from '@ohos.bundle';
-import { BusinessError } from '@ohos.base';
-
-let bundleFlags: number = 8;
-let userId: number = 100;
-
-bundle.getAllApplicationInfo(bundleFlags, userId)
-  .then((data) => {
-    console.info('Operation successful. Data: ' + JSON.stringify(data));
-  }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  })
-```
+参见 [getAllApplicationInfo](#getallapplicationinfo)

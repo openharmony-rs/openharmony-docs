@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## backgroundBlurStyle
 
 ```TypeScript
@@ -19,13 +14,13 @@ backgroundBlurStyle?: BlurStyle
 
 工具栏背景模糊样式，设置后，工具栏将应用指定的模糊样式；不设置时关闭背景模糊效果。
 
-**类型：** BlurStyle
+**类型：** [BlurStyle](arkts-arkui-blurstyle-e.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,8 +30,13 @@ backgroundBlurStyle?: BlurStyle
 backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 ```
 
-工具栏背景模糊选项。  
-**说明：**只在设置了backgroundBlurStyle时生效。不建议与backgroundEffect同时使用。
+工具栏背景模糊选项。
+
+**说明：** 
+
+只在设置了backgroundBlurStyle时生效。
+
+不建议与backgroundEffect同时使用。
 
 **类型：** [BackgroundBlurStyleOptions](arkts-arkui-backgroundblurstyleoptions-i.md)
 
@@ -44,7 +44,7 @@ backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,7 +62,7 @@ backgroundColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,8 +72,11 @@ backgroundColor?: ResourceColor
 backgroundEffect?: BackgroundEffectOptions
 ```
 
-设置工具栏背景属性包括：模糊半径，亮度，饱和度，颜色等。  
-**说明：**不建议与backgroundBlurStyleOptions同时使用。
+设置工具栏背景属性包括：模糊半径，亮度，饱和度，颜色等。
+
+**说明：** 
+
+不建议与backgroundBlurStyleOptions同时使用。
 
 **类型：** [BackgroundEffectOptions](arkts-arkui-backgroundeffectoptions-i.md)
 
@@ -81,7 +84,7 @@ backgroundEffect?: BackgroundEffectOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +94,9 @@ backgroundEffect?: BackgroundEffectOptions
 barStyle?: BarStyle
 ```
 
-设置工具栏布局方式。默认值：BarStyle.STANDARD
+设置工具栏布局方式。
+
+默认值：BarStyle.STANDARD
 
 **类型：** [BarStyle](arkts-arkui-barstyle-e.md)
 
@@ -101,7 +106,7 @@ barStyle?: BarStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,7 +116,11 @@ barStyle?: BarStyle
 hideItemValue?: boolean
 ```
 
-设置是否隐藏工具栏的文本，默认显示文本。true：隐藏工具栏的文本；false：不隐藏工具栏的文本。默认值：false
+设置是否隐藏工具栏的文本，默认显示文本。
+
+true：隐藏工具栏的文本；false：不隐藏工具栏的文本。
+
+默认值：false
 
 **类型：** boolean
 
@@ -121,7 +130,7 @@ hideItemValue?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,6 +148,6 @@ moreButtonOptions?: MoreButtonOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

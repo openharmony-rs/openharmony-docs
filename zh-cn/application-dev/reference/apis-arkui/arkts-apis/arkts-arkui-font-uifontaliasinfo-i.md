@@ -26,7 +26,7 @@ name: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +36,9 @@ name: string
 weight: number
 ```
 
-当weight&gt;0时表示此字体集只包含所指定weight的字体，当weight=0时，表示此字体集包含所有字体。可返回的值有0、100、400、700、900。
+当weight&gt;0时表示此字体集只包含所指定weight的字体，当weight=0时，表示此字体集包含所有字体。
+
+可返回的值有0、100、400、700、900。
 
 **类型：** number
 
@@ -44,6 +46,6 @@ weight: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

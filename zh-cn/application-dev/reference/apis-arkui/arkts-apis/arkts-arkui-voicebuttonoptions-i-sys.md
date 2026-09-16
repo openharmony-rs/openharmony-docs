@@ -8,18 +8,17 @@
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
-
 ## enabled
 
 ```TypeScript
 enabled?: boolean
 ```
 
-输入框启用或禁用语音按钮。true表示启用语音按钮，false表示禁用语音按钮。默认值：false
+输入框启用或禁用语音按钮。
+
+true表示启用语音按钮，false表示禁用语音按钮。
+
+默认值：false
 
 **类型：** boolean
 
@@ -27,7 +26,7 @@ enabled?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -12,7 +12,9 @@ import { bundleManager } from '@kit.AbilityKit';
 function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCallback<Array<SharedBundleInfo>>): void
 ```
 
-获取指定的共享包信息。使用callback异步回调。获取调用方自身的信息时不需要权限。
+获取指定的共享包信息。使用callback异步回调。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
@@ -28,7 +30,7 @@ function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: 
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
 | moduleName | string | 是 | 表示被查询的module的name。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;SharedBundleInfo&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时 ，err为undefined，data为获取的指定共享包信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[SharedBundleInfo](arkts-ability-bundlemanager-sharedbundleinfo-t-sys.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获取的指定共享包信息。 |
 
 **错误码：**
 
@@ -64,6 +66,26 @@ try {
 }
 ```
 
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let moduleName = 'library';
+
+try {
+  bundleManager.getSharedBundleInfo(bundleName, moduleName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
+}
+```
+
 
 ## getSharedBundleInfo
 
@@ -71,7 +93,9 @@ try {
 function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Array<SharedBundleInfo>>
 ```
 
-获取指定的共享包信息。使用Promise异步回调。获取调用方自身的信息时不需要权限。
+获取指定的共享包信息。使用Promise异步回调。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
@@ -92,7 +116,7 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;SharedBundleInfo&gt;&gt; | Promise对象，返回指定的共享包信息。 |
+| Promise&lt;Array&lt;[SharedBundleInfo](arkts-ability-bundlemanager-sharedbundleinfo-t-sys.md)&gt;&gt; | Promise对象，返回指定的共享包信息。 |
 
 **错误码：**
 
@@ -106,22 +130,4 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = 'com.example.myapplication';
-let moduleName = 'library';
-
-try {
-  bundleManager.getSharedBundleInfo(bundleName, moduleName).then((data) => {
-    hilog.info(0x0000, 'testTag', 'getSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
-}
-```
+参见 [getSharedBundleInfo](#getsharedbundleinfo)

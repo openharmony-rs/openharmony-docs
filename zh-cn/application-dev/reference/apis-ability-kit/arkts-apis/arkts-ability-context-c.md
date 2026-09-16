@@ -2,7 +2,7 @@
 
 Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及执行应用级操作的回调。
 
-**继承/实现关系：** Context extends BaseContext
+**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
 
 **起始版本：** 9
 
@@ -20,7 +20,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -28,7 +28,7 @@ createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| areaMode | contextConstant.AreaMode | 是 | 指定的数据加密等级。 |
+| areaMode | [contextConstant.AreaMode](arkts-ability-contextconstant-areamode-e.md) | 是 | 指定的数据加密等级。 |
 
 **返回值：**
 
@@ -65,13 +65,13 @@ export default class EntryAbility extends UIAbility {
 createDisplayContext(displayId: number): Context
 ```
 
-根据指定的物理屏幕ID创建带有屏幕信息（包括屏幕密度[ScreenDensity](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-screendensity-e.md)和屏幕方向 [Direction](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-direction-e.md)）的应用上下文。
+根据指定的物理屏幕ID创建带有屏幕信息（包括屏幕密度[ScreenDensity](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-screendensity-e.md)和屏幕方向[Direction](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-direction-e.md)）的应用上下文。
 
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -123,7 +123,7 @@ createModuleContext(moduleName: string): Context
 
 根据模块名创建上下文。
 
-> **说明：**
+> **说明：** 
 > 
 > - 仅支持获取本应用中其他Module的Context和应用内HSP的Context，不支持获取其他应用的Context。
 > - 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
@@ -136,7 +136,7 @@ createModuleContext(moduleName: string): Context
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -178,6 +178,23 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+```TypeScript
+import { common, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let moduleContext: common.Context;
+    try {
+      moduleContext = this.context.createModuleContext('com.example.test', 'entry');
+    } catch (error) {
+      console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## getApplicationContext
 
 ```TypeScript
@@ -190,7 +207,7 @@ getApplicationContext(): ApplicationContext
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -198,7 +215,7 @@ getApplicationContext(): ApplicationContext
 
 | 类型 | 说明 |
 | --- | --- |
-| [ApplicationContext](arkts-ability-applicationcontext-c.md) | 应用上下文。 |
+| [ApplicationContext](arkts-ability-applicationcontext-c.md) | 应用上下文，提供应用级别的上下文能力，包括应用生命周期管理、环境变量配置等。 |
 
 **错误码：**
 
@@ -238,7 +255,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -247,7 +264,7 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | dataGroupID | string | 是 | 原子化服务类型的应用创建时，系统会指定分配唯一Group ID。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。   **说明：**仅支持应用el2加密级别。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | 回调函数。当获取共享目录成功，err为undefined，data为对应的共享目录，如果不存在则返回为空；否则为错误对象。<br>**说明：** 仅支持应用el2加密级别。 |
 
 **错误码：**
 
@@ -257,6 +274,27 @@ getGroupDir(dataGroupID: string, callback: AsyncCallback<string>): void
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
 **示例**
+
+```TypeScript
+import { common, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let groupId = '1';
+    let getGroupDirContext: common.Context = this.context;
+    try {
+      // 通过Group ID获取共享目录（Promise方式）
+      getGroupDirContext.getGroupDir(groupId).then(data => {
+        console.info('getGroupDir result:' + data);
+      })
+    } catch (error) {
+      console.error(`Failed to get group directory. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    }
+  }
+}
+```
 
 ```TypeScript
 import { common, UIAbility } from '@kit.AbilityKit';
@@ -291,7 +329,7 @@ getGroupDir(dataGroupID: string): Promise<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -305,7 +343,7 @@ getGroupDir(dataGroupID: string): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回对应的共享目录。如果不存在则返回为空，仅支持应用el2加密级别。 |
+| Promise&lt;string&gt; | Promise对象，返回对应的共享目录。如果不存在则返回为空，仅支持应用el2加密级别。 |
 
 **错误码：**
 
@@ -316,26 +354,7 @@ getGroupDir(dataGroupID: string): Promise<string>
 
 **示例**
 
-```TypeScript
-import { common, UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate() {
-    console.info('MyAbility onCreate');
-    let groupId = '1';
-    let getGroupDirContext: common.Context = this.context;
-    try {
-      // 通过Group ID获取共享目录（Promise方式）
-      getGroupDirContext.getGroupDir(groupId).then(data => {
-        console.info('getGroupDir result:' + data);
-      })
-    } catch (error) {
-      console.error(`Failed to get group directory. Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-    }
-  }
-}
-```
+参见 [getGroupDir](#getgroupdir)
 
 ## isContextOf
 
@@ -349,7 +368,7 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -357,7 +376,7 @@ isContextOf(contextType: contextConstant.ContextType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| contextType | contextConstant.ContextType | 是 | 上下文类型。 |
+| contextType | [contextConstant.ContextType](arkts-ability-contextconstant-contexttype-e.md) | 是 | 上下文类型。 |
 
 **返回值：**
 
@@ -395,7 +414,7 @@ applicationInfo: ApplicationInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -407,13 +426,13 @@ area: contextConstant.AreaMode
 
 文件分区信息，按加密等级AreaMode进行分区。
 
-**类型：** contextConstant.AreaMode
+**类型：** [contextConstant.AreaMode](arkts-ability-contextconstant-areamode-e.md)
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -423,7 +442,7 @@ area: contextConstant.AreaMode
 bundleCodeDir: string
 ```
 
-安装包目录。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)访问资源，详情参考 [应用沙箱目录](../../../file-management/app-sandbox-directory.md)。
+安装包目录。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)访问资源，详情参考[应用沙箱目录](../../../file-management/app-sandbox-directory.md)。
 
 **类型：** string
 
@@ -431,7 +450,7 @@ bundleCodeDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -449,7 +468,7 @@ cacheDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -467,7 +486,7 @@ cloudFileDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -485,7 +504,7 @@ databaseDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -503,7 +522,7 @@ distributedFilesDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -521,7 +540,7 @@ eventHub: EventHub
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -539,7 +558,7 @@ filesDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -557,7 +576,7 @@ get logFileDir(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -575,7 +594,7 @@ preferences目录，详情参考[应用沙箱目录](../../../file-management/ap
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -593,7 +612,7 @@ processName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -605,9 +624,9 @@ resourceDir: string
 
 资源目录。
 
-> **说明：**
+> **说明：** 
 > 
-> 需要开发者手动在`\&lt;module-name&gt;\resource`路径下创建`resfile`目录。创建的`resfile`目录仅支持以只读方式访问。
+> 需要开发者手动在`\&lt;module-name&gt;\resources`路径下创建`resfile`目录。创建的`resfile`目录仅支持以只读方式访问。
 
 **类型：** string
 
@@ -615,7 +634,7 @@ resourceDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -627,13 +646,13 @@ resourceManager: resmgr.ResourceManager
 
 资源管理对象。
 
-**类型：** resmgr.ResourceManager
+**类型：** [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md)
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -651,6 +670,6 @@ tempDir: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

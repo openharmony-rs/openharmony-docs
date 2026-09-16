@@ -29,7 +29,7 @@ function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | cmd | string | 是 | 要执行的Shell命令。 |
-| execCmdOptions | [ExecCmdOptions](arkts-ability-climanager-execcmdoptions-i-sys.md) | 否 | 执行命令的可选参数。默认值：详见[ExecCmdOptions](arkts-ability-climanager-execcmdoptions-i-sys.md)的具体属性 默认值。 |
+| execCmdOptions | [ExecCmdOptions](arkts-ability-climanager-execcmdoptions-i-sys.md) | 否 | 执行命令的可选参数。默认值：详见[ExecCmdOptions](arkts-ability-climanager-execcmdoptions-i-sys.md)的具体属性默认值。 |
 
 **返回值：**
 

@@ -49,6 +49,17 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = window.toggleShownStateForAllAppWindows();
+promise.then(() => {
+  console.info('Succeeded in toggling shown state for all app windows.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 
 ## toggleShownStateForAllAppWindows
 
@@ -68,7 +79,7 @@ function toggleShownStateForAllAppWindows(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -80,13 +91,4 @@ function toggleShownStateForAllAppWindows(): Promise<void>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = window.toggleShownStateForAllAppWindows();
-promise.then(() => {
-  console.info('Succeeded in toggling shown state for all app windows.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [toggleShownStateForAllAppWindows](#toggleshownstateforallappwindows)

@@ -22,18 +22,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## key
 
 ```TypeScript
 key(value: string): T
 ```
 
-设置组件的唯一标识，唯一性由开发者保证。调用成功后，组件将被赋予指定的唯一标识字符串，可在测试场景中精确定位该组件实例。与[id](arkts-arkui-securitycomponentmethod-c.md#id) 同时使用时，后设置的标识值会覆盖先设置的标识值，建议仅设置id。此接口仅用于应用测试场景，验证安全控件的属性设置和交互行为。生产环境请使用公开接口[id](arkts-arkui-securitycomponentmethod-c.md#id)。
+设置组件的唯一标识，唯一性由开发者保证。调用成功后，组件将被赋予指定的唯一标识字符串，可在测试场景中精确定位该组件实例。与[id](arkts-arkui-securitycomponentmethod-c.md#id)同时使用时，后设置的标识值会覆盖先设置的标识值，建议仅设置id。
+
+此接口仅用于应用测试场景，验证安全控件的属性设置和交互行为。生产环境请使用公开接口[id](arkts-arkui-securitycomponentmethod-c.md#id)。
 
 **起始版本：** 10
 
@@ -42,6 +39,8 @@ key(value: string): T
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 **参数：**
 

@@ -14,9 +14,9 @@ function init(curve?: Curve): string
 
 插值曲线的初始化函数，可以根据入参创建一个插值曲线对象。
 
-> **说明：**
+> **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[Curves.initCurve](arkts-arkui-curves-initcurve-f.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃。
 
 **起始版本：** 7
 
@@ -30,7 +30,7 @@ function init(curve?: Curve): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| curve | Curve | 否 | 曲线类型。默认值：Curve.Linear |
+| curve | [Curve](arkts-arkui-curves-curve-e.md) | 否 | 曲线类型。<br>默认值：Curve.Linear |
 
 **返回值：**
 

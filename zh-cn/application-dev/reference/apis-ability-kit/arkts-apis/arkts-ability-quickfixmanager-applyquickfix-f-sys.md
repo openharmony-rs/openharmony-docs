@@ -26,7 +26,7 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapModuleQuickFixFiles | Array &lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
+| hapModuleQuickFixFiles | Array&lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当快速修复的补丁安装成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -58,6 +58,23 @@ try {
 }
 ```
 
+```TypeScript
+import { quickFixManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hapModuleQuickFixFiles = ['/data/storage/el2/base/entry.hqf'];
+
+try {
+  quickFixManager.applyQuickFix(hapModuleQuickFixFiles).then(() => {
+    console.info(`applyQuickFix success`);
+  }).catch((error: BusinessError) => {
+    console.error(`applyQuickFix err: ${error}`);
+  });
+} catch (paramError) {
+  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+}
+```
+
 
 ## applyQuickFix
 
@@ -79,13 +96,13 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapModuleQuickFixFiles | Array &lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
+| hapModuleQuickFixFiles | Array&lt;string&gt; | 是 | 快速修复补丁文件（补丁文件需包含有效的文件路径）。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -99,19 +116,4 @@ function applyQuickFix(hapModuleQuickFixFiles: Array<string>): Promise<void>
 
 **示例**
 
-```TypeScript
-import { quickFixManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let hapModuleQuickFixFiles = ['/data/storage/el2/base/entry.hqf'];
-
-try {
-  quickFixManager.applyQuickFix(hapModuleQuickFixFiles).then(() => {
-    console.info(`applyQuickFix success`);
-  }).catch((error: BusinessError) => {
-    console.error(`applyQuickFix err: ${error}`);
-  });
-} catch (paramError) {
-  console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
-}
-```
+参见 [applyQuickFix](#applyquickfix)

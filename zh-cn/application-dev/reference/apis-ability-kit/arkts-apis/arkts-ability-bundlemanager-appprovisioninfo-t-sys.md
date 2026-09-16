@@ -12,4 +12,4 @@ export type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AppProvisionInfo.AppProvisionInfo
+**类型：** [_AppProvisionInfo.AppProvisionInfo](arkts-ability-appprovisioninfo-i-sys.md)

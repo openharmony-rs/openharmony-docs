@@ -12,11 +12,11 @@ import { matrix4 } from '@kit.ArkUI';
 function identity(): Matrix4Transit
 ```
 
-Matrix的初始化函数，可以返回一个单位矩阵对象。
+Matrix的初始化函数，可以返回一个初始的单位矩阵对象，可作为后续矩阵变换操作的基础。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -24,7 +24,7 @@ Matrix的初始化函数，可以返回一个单位矩阵对象。
 
 | 类型 | 说明 |
 | --- | --- |
-| Matrix4Transit | 单位矩阵对象。 |
+| [Matrix4Transit](arkts-arkui-matrix4-matrix4transit-i.md) | 单位矩阵对象。 |
 
 **示例**
 

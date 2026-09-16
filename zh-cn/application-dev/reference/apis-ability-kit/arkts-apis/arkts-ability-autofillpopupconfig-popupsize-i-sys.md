@@ -14,7 +14,7 @@
 height: number
 ```
 
-气泡弹窗的高。
+气泡弹窗的高，单位是px。
 
 **类型：** number
 
@@ -32,7 +32,7 @@ height: number
 width: number
 ```
 
-气泡弹窗的宽。
+气泡弹窗的宽，单位是px。
 
 **类型：** number
 

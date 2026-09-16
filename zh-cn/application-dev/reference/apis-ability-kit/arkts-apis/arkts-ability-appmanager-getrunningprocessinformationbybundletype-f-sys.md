@@ -27,13 +27,13 @@ function getRunningProcessInformationByBundleType(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleType | bundleManager.BundleType | 是 | 表示要查询的包类型。 |
+| bundleType | [bundleManager.BundleType](arkts-ability-bundlemanager-bundletype-e.md) | 是 | 表示要查询的包类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;ProcessInformation&gt;&gt; | Promise对象，返回特定包类型的运行进程的信息。 |
+| Promise&lt;Array&lt;[ProcessInformation](arkts-ability-appmanager-processinformation-t.md)&gt;&gt; | Promise对象，返回特定包类型的运行进程的信息。 |
 
 **错误码：**
 

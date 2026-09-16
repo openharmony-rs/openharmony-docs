@@ -8,18 +8,15 @@
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
-
 ## color
 
 ```TypeScript
 color?: ResourceColor
 ```
 
-光源颜色。默认值：Color.White
+光源颜色。
+
+默认值：Color.White
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 

@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## icon
 
 ```TypeScript
@@ -19,13 +14,13 @@ icon: string | Resource
 
 图片资源。当icon为string类型时，表示图片存放的路径，例如"/common/hello.png"；当icon为Resource类型时，表示资源引用。
 
-**类型：** string \| Resource
+**类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,12 +34,12 @@ text?: string | Resource
 
 > 默认值：空字符串
 
-> **说明：**
+> **说明：** 
 > 
 > 1. 未设置该属性时，使用默认值。
 > 2. 当文本长度大于列宽时，文本被截断。
 
-**类型：** string \| Resource
+**类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **默认值：** ""
 
@@ -52,6 +47,6 @@ text?: string | Resource
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

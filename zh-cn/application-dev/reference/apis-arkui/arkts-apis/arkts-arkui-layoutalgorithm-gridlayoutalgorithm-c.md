@@ -2,7 +2,7 @@
 
 网格布局算法类。
 
-> **说明：**
+> **说明：** 
 > 
 > GridLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为DynamicLayout组件的入
 > 参指定布局算法。
@@ -10,6 +10,8 @@
 **继承/实现关系：** GridLayoutAlgorithm implements [LayoutAlgorithm](arkts-arkui-layoutalgorithm-i.md)
 
 **起始版本：** 24
+
+**装饰器类型：** @ObservedV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,7 +27,7 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,13 +37,25 @@ constructor(option?: GridLayoutAlgorithmOptions)
 | --- | --- | --- | --- |
 | option | [GridLayoutAlgorithmOptions](arkts-arkui-layoutalgorithm-gridlayoutalgorithmoptions-i.md) | 否 | 网格布局算法的构造入参，设置网格布局的列数、列间距、行间距。 |
 
+**示例**
+
+```TypeScript
+请参考DynamicLayout组件[示例2（切换布局算法）](../arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
+```
+
 ## columnsGap
 
 ```TypeScript
 public columnsGap?: LengthMetrics
 ```
 
-列与列之间的间距。默认值：LengthMetrics.vp(0)非法值：按默认值处理。装饰器类型：@Trace
+列与列之间的间距。
+
+默认值：LengthMetrics.vp(0)
+
+非法值：按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -51,7 +65,7 @@ public columnsGap?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,9 +75,15 @@ public columnsGap?: LengthMetrics
 public columnsTemplate?: string | ItemFillPolicy
 ```
 
-设置当前网格布局的列数。默认值：'1fr'非法值：按默认值处理。装饰器类型：@Trace
+设置当前网格布局的列数。
 
-**类型：** string \| [ItemFillPolicy](arkts-arkui-itemfillpolicy-i.md)
+默认值：'1fr'
+
+非法值：按默认值处理。
+
+装饰器类型：@Trace
+
+**类型：** string &#124; [ItemFillPolicy](arkts-arkui-itemfillpolicy-i.md)
 
 **默认值：** '1fr'
 
@@ -71,7 +91,7 @@ public columnsTemplate?: string | ItemFillPolicy
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,7 +101,13 @@ public columnsTemplate?: string | ItemFillPolicy
 public rowsGap?: LengthMetrics
 ```
 
-行与行之间的间距。默认值：LengthMetrics.vp(0)非法值：按默认值处理。装饰器类型：@Trace
+行与行之间的间距。
+
+默认值：LengthMetrics.vp(0)
+
+非法值：按默认值处理。
+
+装饰器类型：@Trace
 
 **类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -91,6 +117,6 @@ public rowsGap?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

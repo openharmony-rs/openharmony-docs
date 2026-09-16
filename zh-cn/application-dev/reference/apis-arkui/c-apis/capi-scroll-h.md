@@ -40,7 +40,7 @@
 enum ArkUI_EdgeEffect
 ```
 
-**描述**
+**描述：**
 
 定义边缘滑动效果枚举值。Grid、Scroll、WaterFlow组件默认值为ARKUI_EDGE_EFFECT_NONE，List组件默认值为ARKUI_EDGE_EFFECT_SPRING。
 
@@ -58,7 +58,7 @@ enum ArkUI_EdgeEffect
 enum ArkUI_BarState
 ```
 
-**描述**
+**描述：**
 
 定义文本控制滚动条状态枚举值。
 
@@ -76,7 +76,7 @@ enum ArkUI_BarState
 enum ArkUI_EffectEdge
 ```
 
-**描述**
+**描述：**
 
 定义边缘效果生效边缘的方向枚举值。
 
@@ -93,7 +93,7 @@ enum ArkUI_EffectEdge
 enum ArkUI_ScrollDirection
 ```
 
-**描述**
+**描述：**
 
 定义{@link Scroll}组件排列方向枚举值。
 
@@ -112,7 +112,7 @@ enum ArkUI_ScrollDirection
 enum ArkUI_ScrollSnapAlign
 ```
 
-**描述**
+**描述：**
 
 定义列表项滚动结束对齐效果枚举值。
 
@@ -131,7 +131,7 @@ enum ArkUI_ScrollSnapAlign
 enum ArkUI_ScrollSnapAnimationSpeed
 ```
 
-**描述**
+**描述：**
 
 列表限位滚动动画速度。
 
@@ -148,7 +148,7 @@ enum ArkUI_ScrollSnapAnimationSpeed
 enum ArkUI_ScrollBarDisplayMode
 ```
 
-**描述**
+**描述：**
 
 定义滚动条状态枚举值。
 
@@ -166,7 +166,7 @@ enum ArkUI_ScrollBarDisplayMode
 enum ArkUI_ContentClipMode
 ```
 
-**描述**
+**描述：**
 
 定义滚动容器的内容层裁剪区域枚举值。
 
@@ -184,7 +184,7 @@ enum ArkUI_ContentClipMode
 enum ArkUI_ScrollNestedMode
 ```
 
-**描述**
+**描述：**
 
 定义嵌套滚动选项。
 
@@ -203,7 +203,7 @@ enum ArkUI_ScrollNestedMode
 enum ArkUI_ScrollEdge
 ```
 
-**描述**
+**描述：**
 
 定义滚动到的边缘位置。
 
@@ -222,7 +222,7 @@ enum ArkUI_ScrollEdge
 enum ArkUI_ScrollAlignment
 ```
 
-**描述**
+**描述：**
 
 滚动到具体item时的对齐方式。
 
@@ -241,7 +241,7 @@ enum ArkUI_ScrollAlignment
 enum ArkUI_ScrollState
 ```
 
-**描述**
+**描述：**
 
 定义当前滚动状态。
 
@@ -259,7 +259,7 @@ enum ArkUI_ScrollState
 enum ArkUI_ScrollSource
 ```
 
-**描述**
+**描述：**
 
 定义滚动来源枚举值。
 

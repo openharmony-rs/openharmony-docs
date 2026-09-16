@@ -37,7 +37,7 @@ Defines the common property and method types for the native module.
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | 创建一个截图选项，当返回值不再使用时必须通过OH_ArkUI_DestroySnapshotOptions())释放。 |
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | 创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。 |
 | [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | 销毁截图选项指针。 |
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | 配置截图选项中的缩放属性。 |
 | [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | 设置截图选项中的色彩空间。 |
@@ -59,7 +59,7 @@ Defines the common property and method types for the native module.
 enum ArkUI_HitTestMode
 ```
 
-**描述**
+**描述：**
 
 触摸测试控制枚举值。
 
@@ -80,7 +80,7 @@ enum ArkUI_HitTestMode
 enum ArkUI_Visibility
 ```
 
-**描述**
+**描述：**
 
 控制组件的显隐枚举值。
 
@@ -98,7 +98,7 @@ enum ArkUI_Visibility
 enum ArkUI_HoverEffect
 ```
 
-**描述**
+**描述：**
 
 组件被悬停时的效果。
 
@@ -117,7 +117,7 @@ enum ArkUI_HoverEffect
 enum ArkUI_FocusPriority
 ```
 
-**描述**
+**描述：**
 
 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
 
@@ -135,7 +135,7 @@ enum ArkUI_FocusPriority
 enum ArkUI_FocusMove
 ```
 
-**描述**
+**描述：**
 
 定义焦点移动方向的枚举值。
 
@@ -156,7 +156,7 @@ enum ArkUI_FocusMove
 enum ArkUI_ResponseRegionSupportedTool
 ```
 
-**描述**
+**描述：**
 
 定义支持响应区域设置的事件工具类型。
 
@@ -175,7 +175,7 @@ enum ArkUI_ResponseRegionSupportedTool
 enum ArkUI_RawInputEventType
 ```
 
-**描述**
+**描述：**
 
 原始输入事件类型枚举。
 
@@ -195,9 +195,9 @@ enum ArkUI_RawInputEventType
 ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 ```
 
-**描述**
+**描述：**
 
-创建一个截图选项，当返回值不再使用时必须通过OH_ArkUI_DestroySnapshotOptions())释放。
+创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。
 
 **起始版本：** 15
 
@@ -213,7 +213,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 ```
 
-**描述**
+**描述：**
 
 销毁截图选项指针。
 
@@ -231,7 +231,7 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)
 ```
 
-**描述**
+**描述：**
 
 配置截图选项中的缩放属性。
 
@@ -256,7 +256,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)
 ```
 
-**描述**
+**描述：**
 
 设置截图选项中的色彩空间。
 
@@ -282,7 +282,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)
 ```
 
-**描述**
+**描述：**
 
 设置截图选项中的动态范围模式。
 
@@ -308,7 +308,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 ```
 
-**描述**
+**描述：**
 
 创建可见区域变化监听的参数。
 
@@ -326,7 +326,7 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)
 ```
 
-**描述**
+**描述：**
 
 销毁可见区域变化监听的参数。
 
@@ -344,7 +344,7 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)
 ```
 
-**描述**
+**描述：**
 
 设置阈值数组。
 
@@ -370,7 +370,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)
 ```
 
-**描述**
+**描述：**
 
 设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。
 
@@ -395,7 +395,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)
 ```
 
-**描述**
+**描述：**
 
 设置可见区域计算模式。
 
@@ -420,7 +420,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)
 ```
 
-**描述**
+**描述：**
 
 获取阈值数组。
 
@@ -446,7 +446,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取预期更新间隔。
 
@@ -470,7 +470,7 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取可见区域计算模式。
 

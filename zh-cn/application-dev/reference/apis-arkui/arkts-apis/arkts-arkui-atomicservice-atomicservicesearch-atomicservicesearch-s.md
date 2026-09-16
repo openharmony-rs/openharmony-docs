@@ -2,11 +2,13 @@
 
 AtomicServiceSearch为开发者提供满足定制化需求的功能，内容包括默认显示的搜索区、可自定义的选择区和功能区（最多两个）。
 
-> **说明：**
+> **说明：** 
 > 
 > 该组件从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **起始版本：** 18
+
+**装饰器类型：** @Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +30,7 @@ Search组件控制器，用于设置输入光标的位置、退出编辑态等�
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +46,7 @@ operation?: OperationParams
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +62,9 @@ placeholder?: ResourceStr
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Prop
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +80,9 @@ search搜索区可支持的事件及样式。默认值为undefined。
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Prop
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,7 +98,9 @@ select选择区的内容、事件及样式。默认值为undefined。
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Prop
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,6 +116,8 @@ value?: ResourceStr
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Prop
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

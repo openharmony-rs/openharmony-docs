@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## foldStatus
@@ -19,11 +20,11 @@ readonly foldStatus: FoldStatus
 
 折叠屏折叠状态。
 
-**类型：** FoldStatus
+**类型：** [FoldStatus](arkts-camera-camera-foldstatus-e.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -39,6 +40,6 @@ readonly supportedCameras: Array<CameraDevice>
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

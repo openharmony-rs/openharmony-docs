@@ -16,7 +16,7 @@ function on(eventType: string, callback: OnPushEventCallback | OnRequestEventCal
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,7 +25,7 @@ function on(eventType: string, callback: OnPushEventCallback | OnRequestEventCal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | eventType | string | 是 | 监听的事件类型，可选值为："push"、"request"。"push"：指组件提供方向使用方主动推送数据。"request"：指组件使用方向提供方主动请求数据。 |
-| callback | [OnPushEventCallback](arkts-arkui-plugincomponentmanager-onpusheventcallback-t.md) \| [OnRequestEventCallback](arkts-arkui-plugincomponentmanager-onrequesteventcallback-t.md) | 是 | 对应监听回调， push事件对应回调类型为OnPushEventCallback，request事件对应回调类型为OnRequestEventCallback。 |
+| callback | [OnPushEventCallback](arkts-arkui-plugincomponentmanager-onpusheventcallback-t.md) &#124; [OnRequestEventCallback](arkts-arkui-plugincomponentmanager-onrequesteventcallback-t.md) | 是 | 对应监听回调，push事件对应回调类型为OnPushEventCallback，request事件对应回调类型为OnRequestEventCallback。 |
 
 **示例**
 
@@ -45,7 +45,7 @@ const onRequestListener = (source:Want, name:string, data:pluginComponentManager
   console.info("onRequestListener source=" + JSON.stringify(source));
   console.info("onRequestListener name=" + name);
   console.info("onRequestListener data=" + JSON.stringify(data));
-  let returnData: Record<string, string | pluginComponentManager.KVObject> = { "template": "ets/pages/plugin.js", "data": data };
+  const returnData: Record<string, string | pluginComponentManager.KVObject> = { "template": "ets/pages/plugin.js", "data": data };
   return returnData;
 }
 pluginComponentManager.on("push", onPushListener);

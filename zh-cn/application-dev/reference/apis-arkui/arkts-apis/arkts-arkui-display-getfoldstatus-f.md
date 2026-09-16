@@ -16,7 +16,7 @@ function getFoldStatus(): FoldStatus
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -24,7 +24,7 @@ function getFoldStatus(): FoldStatus
 
 | 类型 | 说明 |
 | --- | --- |
-| FoldStatus | FoldStatus对象，返回当前可折叠设备的折叠状态。 |
+| [FoldStatus](arkts-arkui-display-foldstatus-e.md) | FoldStatus对象，返回当前可折叠设备的折叠状态。 |
 
 **错误码：**
 

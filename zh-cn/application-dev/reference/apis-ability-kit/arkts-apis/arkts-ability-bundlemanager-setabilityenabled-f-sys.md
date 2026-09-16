@@ -26,15 +26,15 @@ function setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boole
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | 需要被设置的组件。 |
-| appIndex | number | 是 | 表示分身应用的索引。appIndex为0时，表示设置主应用组件的禁用或使能状态。appIndex大于0时，表示设置指定分身应用组件的禁用或使能状态。 |
+| info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | 是 | 需要被设置的组件。 |
+| appIndex | number | 是 | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用组件的禁用或使能状态。appIndex大于0时，表示设置指定分身应用组件的禁用或使能状态。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -48,6 +48,72 @@ function setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boole
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
 **示例**
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName: "com.example.myapplication",
+  abilityName: "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.setAbilityEnabled(info, false, err => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', err.message);
+      } else {
+        hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
+      }
+    });
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
+
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName: "com.example.myapplication",
+  abilityName: "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.setAbilityEnabled(info, false).then(() => {
+      hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
+    }).catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', err.message);
+    });
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
@@ -102,9 +168,9 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: Asyn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | 需要被设置的组件。 |
+| info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | 是 | 需要被设置的组件。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置组件禁用或使能状态成功时，err为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置组件禁用或使能状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -118,39 +184,7 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: Asyn
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Want } from '@kit.AbilityKit';
-
-let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
-let userId = 100;
-let want: Want = {
-  bundleName: "com.example.myapplication",
-  abilityName: "EntryAbility"
-};
-
-try {
-  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo) => {
-    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
-    let info = abilitiesInfo[0];
-
-    bundleManager.setAbilityEnabled(info, false, err => {
-      if (err) {
-        hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', err.message);
-      } else {
-        hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
-      }
-    });
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
-}
-```
+参见 [setAbilityEnabled](#setabilityenabled)
 
 
 ## setAbilityEnabled
@@ -173,14 +207,14 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | AbilityInfo | 是 | 需要被设置的组件。 |
+| info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | 是 | 需要被设置的组件。 |
 | isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -194,34 +228,4 @@ function setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise<void>
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Want } from '@kit.AbilityKit';
-
-let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
-let userId = 100;
-let want: Want = {
-  bundleName: "com.example.myapplication",
-  abilityName: "EntryAbility"
-};
-
-try {
-  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo) => {
-    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
-    let info = abilitiesInfo[0];
-
-    bundleManager.setAbilityEnabled(info, false).then(() => {
-      hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', err.message);
-    });
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
-}
-```
+参见 [setAbilityEnabled](#setabilityenabled)

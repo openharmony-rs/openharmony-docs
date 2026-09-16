@@ -6,7 +6,7 @@ typedef struct ArkUI_AccessibilityActionArguments ArkUI_AccessibilityActionArgum
 
 ## 概述
 
-用于设置无障碍操作的具体参数。
+表示无障碍操作的具体参数。当无障碍服务（如读屏软件、语音助手）请求在指定节点上执行无障碍操作（如选择文本、设置光标位置）时，系统通过该结构体向第三方平台传递操作所需的附加上下文信息，第三方平台可在executeAccessibilityAction回调中调用OH_ArkUI_FindAccessibilityActionArgumentByKey获取指定参数的值。适用于第三方平台需要解析并响应无障碍操作参数的场景，例如读屏软件触发的文本选择、语音助手触发的无障碍交互等。
 
 **起始版本：** 13
 

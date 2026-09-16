@@ -1,15 +1,8 @@
 # Filter
 
-多条件筛选，帮助用户在大量信息中找到所需内容，应结合具体场景选择合适筛选方式。多条件筛选控件由筛选器与悬浮条构成，悬浮条可下拉展示悬浮筛选器。筛选器样式可分为多行可折叠类型与多行列表类型，并可以在筛选器最后一行附加快捷筛选器。
-
-> **说明：**
-> 
-> - 该组件仅可在Stage模型下使用。
-> 
-> - 如果Filter设置通用属性和通用事件，编译工具链会额外生
-> 成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到Filter本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议Filter设置通用属性和通用事件。
-
 **起始版本：** 10
+
+**装饰器类型：** @Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +24,7 @@ container: () => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +40,7 @@ onFilterChanged: (filterResults: Array<FilterResult>) => void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +64,7 @@ additionFilters?: FilterParams
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,7 +74,9 @@ additionFilters?: FilterParams
 filterType?: FilterType
 ```
 
-筛选器的样式类型。默认值：FilterType.LIST_FILTER
+筛选器的样式类型。
+
+默认值：FilterType.LIST_FILTER
 
 **类型：** [FilterType](arkts-arkui-arkui-advanced-filter-filtertype-e.md)
 
@@ -89,7 +84,7 @@ filterType?: FilterType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,6 +102,6 @@ multiFilters: Array<FilterParams>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

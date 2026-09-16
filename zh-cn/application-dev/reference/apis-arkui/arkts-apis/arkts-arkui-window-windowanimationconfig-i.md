@@ -24,7 +24,7 @@ curve: WindowAnimationCurve
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -34,13 +34,17 @@ curve: WindowAnimationCurve
 duration?: number
 ```
 
-动画播放的时长，单位毫秒（ms）。默认值：0，最大值：3000。根据动画曲线类型决定是否必填。
+动画播放的时长，单位毫秒（ms）。
+
+默认值：0，最大值：3000。
+
+根据动画曲线类型决定是否必填。
 
 **类型：** number
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -56,6 +60,6 @@ param?: WindowAnimationCurveParam
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager

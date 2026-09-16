@@ -35,9 +35,26 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
+
+```TypeScript
+import appManager from '@ohos.application.appManager';
+import { BusinessError } from '@ohos.base';
+
+let bundleName = 'bundleName';
+
+function clearUpApplicationDataCallback(err: BusinessError, data: void) {
+  if (err) {
+    console.error(`ClearUpApplicationDataCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`ClearUpApplicationDataCallback success, data: ${JSON.stringify(data)}.`);
+  }
+}
+
+appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
+```
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';
@@ -83,19 +100,4 @@ function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void
 
 **示例**
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
-
-let bundleName = 'bundleName';
-
-function clearUpApplicationDataCallback(err: BusinessError, data: void) {
-  if (err) {
-    console.error(`ClearUpApplicationDataCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
-  } else {
-    console.info(`ClearUpApplicationDataCallback success, data: ${JSON.stringify(data)}.`);
-  }
-}
-
-appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
-```
+参见 [clearUpApplicationData](#clearupapplicationdata)

@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## equals
 
 ```TypeScript
@@ -23,7 +18,7 @@ equals(id: TextMenuItemId): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +32,7 @@ equals(id: TextMenuItemId): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 两个TextMenuItemId是否相等。 |
+| boolean | 两个TextMenuItemId是否相等。<br>true表示相等，false表示不相等。 |
 
 ## of
 
@@ -51,7 +46,7 @@ static of(id: ResourceStr): TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,7 +76,7 @@ static readonly address: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +86,7 @@ static readonly address: TextMenuItemId
 static readonly AI_WRITER: TextMenuItemId
 ```
 
-<!--RP1--><!--RP1End-->可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
+&lt;!--RP1--&gt;&lt;!--RP1End--&gt;可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -99,7 +94,7 @@ static readonly AI_WRITER: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +104,7 @@ static readonly AI_WRITER: TextMenuItemId
 static readonly askAI: TextMenuItemId
 ```
 
-<!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
+&lt;!--RP2--&gt;&lt;!--RP2End--&gt;对选中的文本提供AI问询能力，为一级菜单项。该菜单项依赖大模型能力，否则不生效。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -117,7 +112,7 @@ static readonly askAI: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +122,7 @@ static readonly askAI: TextMenuItemId
 static readonly autoFill: TextMenuItemId
 ```
 
-自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持Search、TextInput、 TextArea或RichEditor。
+自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持Search、TextInput、TextArea或RichEditor。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -135,7 +130,7 @@ static readonly autoFill: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +148,7 @@ static readonly CAMERA_INPUT: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,7 +166,7 @@ static readonly COLLABORATION_SERVICE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,7 +184,7 @@ static readonly COPY: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,7 +202,7 @@ static readonly CUT: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,7 +220,7 @@ static readonly dateTime: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +238,7 @@ static readonly email: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,7 +248,7 @@ static readonly email: TextMenuItemId
 static readonly passwordVault: TextMenuItemId
 ```
 
-密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持Search、TextInput、 TextArea或RichEditor。
+密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持Search、TextInput、TextArea或RichEditor。
 
 **类型：** [TextMenuItemId](arkts-arkui-textmenuitemid-c.md)
 
@@ -261,7 +256,7 @@ static readonly passwordVault: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -279,7 +274,7 @@ static readonly PASTE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,7 +292,7 @@ static readonly phoneNumber: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -315,7 +310,7 @@ static readonly SEARCH: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -333,7 +328,7 @@ static readonly SELECT_ALL: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -351,7 +346,7 @@ static readonly SHARE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,7 +364,7 @@ static readonly TRANSLATE: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -387,6 +382,6 @@ static readonly url: TextMenuItemId
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

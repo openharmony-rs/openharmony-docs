@@ -34,7 +34,7 @@ function makeExpand(options:Array<ExpandOption>, callback: AsyncCallback<number>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
@@ -61,6 +61,25 @@ screen.makeExpand(expandOptionArray, (err: BusinessError, data: number) => {
   }
   groupId = data;
   console.info(`Succeeded in expanding the screen. Data: ${data}`);
+});
+```
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class ExpandOption {
+  screenId: number = 0;
+  startX: number = 0;
+  startY: number = 0;
+}
+let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
+let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
+let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
+// 将屏幕设置为扩展模式
+screen.makeExpand(expandOptionArray).then((data: number) => {
+  console.info(`Succeeded in expanding the screen. Data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -91,33 +110,16 @@ function makeExpand(options:Array<ExpandOption>): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
+| Promise&lt;number&gt; | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class ExpandOption {
-  screenId: number = 0;
-  startX: number = 0;
-  startY: number = 0;
-}
-let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
-let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
-let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
-// 将屏幕设置为扩展模式
-screen.makeExpand(expandOptionArray).then((data: number) => {
-  console.info(`Succeeded in expanding the screen. Data: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [makeExpand](#makeexpand)

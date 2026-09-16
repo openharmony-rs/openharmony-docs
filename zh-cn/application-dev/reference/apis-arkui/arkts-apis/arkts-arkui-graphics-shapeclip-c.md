@@ -18,7 +18,7 @@ ShapeClip的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +34,7 @@ setCircleShape(circle: Circle): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,51 +45,6 @@ setCircleShape(circle: Circle): void
 | circle | [Circle](arkts-arkui-graphics-circle-i.md) | 是 | 圆形的形状。 |
 
 **示例**
-
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const mask = new ShapeMask();
-    mask.setCircleShape({ centerY: uiContext.vp2px(75), centerX: uiContext.vp2px(75), radius: uiContext.vp2px(75) });
-    mask.fillColor = 0X55FF0000;
-
-    const renderNode = new RenderNode();
-    renderNode.frame = {
-      x: 0,
-      y: 0,
-      width: 150,
-      height: 150
-    };
-    renderNode.backgroundColor = 0XFF00FF00;
-    renderNode.shapeMask = mask;
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -153,7 +108,7 @@ setCommandPath(path: CommandPath): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,52 +119,6 @@ setCommandPath(path: CommandPath): void
 | path | [CommandPath](arkts-arkui-graphics-commandpath-i.md) | 是 | 路径绘制指令。 |
 
 **示例**
-
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-const mask = new ShapeMask();
-mask.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-mask.fillColor = 0X55FF0000;
-
-const renderNode = new RenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeMask = mask;
-
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -272,7 +181,7 @@ setOvalShape(oval: Rect): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -283,46 +192,6 @@ setOvalShape(oval: Rect): void
 | oval | [Rect](arkts-arkui-rect-t.md) | 是 | 椭圆形的形状。 |
 
 **示例**
-
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const mask = new ShapeMask();
-    mask.setOvalShape({ left: 0, right: uiContext.vp2px(150), top: 0, bottom: uiContext.vp2px(100) });
-    mask.fillColor = 0X55FF0000;
-
-    const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-    renderNode.backgroundColor = 0XFF00FF00;
-    renderNode.shapeMask = mask;
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -390,7 +259,7 @@ setRectShape(rect: Rect): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -401,56 +270,6 @@ setRectShape(rect: Rect): void
 | rect | [Rect](arkts-arkui-rect-t.md) | 是 | 矩形的形状。 |
 
 **示例**
-
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeMask } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const mask = new ShapeMask();
-    mask.setRectShape({
-      left: 0,
-      right: uiContext.vp2px(150),
-      top: 0,
-      bottom: uiContext.vp2px(150)
-    });
-    mask.fillColor = 0X55FF0000;
-
-    const renderNode = new RenderNode();
-    renderNode.frame = {
-      x: 0,
-      y: 0,
-      width: 150,
-      height: 150
-    };
-    renderNode.backgroundColor = 0XFF00FF00;
-    renderNode.shapeMask = mask;
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
@@ -521,7 +340,7 @@ setRoundRectShape(roundRect: RoundRect): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,55 +351,6 @@ setRoundRectShape(roundRect: RoundRect): void
 | roundRect | [RoundRect](arkts-arkui-graphics-roundrect-i.md) | 是 | 圆角矩形的形状。 |
 
 **示例**
-
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeMask, RoundRect } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const mask = new ShapeMask();
-    const roundRect: RoundRect = {
-      rect: { left: 0, top: 0, right: uiContext.vp2px(150), bottom: uiContext.vp2px(150) },
-      corners: {
-        topLeft: { x: 32, y: 32 },
-        topRight: { x: 32, y: 32 },
-        bottomLeft: { x: 32, y: 32 },
-        bottomRight: { x: 32, y: 32 }
-      }
-    };
-    mask.setRoundRectShape(roundRect);
-    mask.fillColor = 0X55FF0000;
-
-    const renderNode = new RenderNode();
-    renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
-    renderNode.backgroundColor = 0XFF00FF00;
-    renderNode.shapeMask = mask;
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
-```
 
 ```TypeScript
 import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';

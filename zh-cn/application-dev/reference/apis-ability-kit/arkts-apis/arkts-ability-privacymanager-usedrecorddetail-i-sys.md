@@ -20,7 +20,7 @@ import { privacyManager } from '@kit.AbilityKit';
 accessDuration: number
 ```
 
-访问时长。 单位为：毫秒。
+访问时长。单位为：毫秒。
 
 **类型：** number
 
@@ -36,7 +36,9 @@ accessDuration: number
 count?: number
 ```
 
-访问次数。在accessRecords中表示成功访问次数，在rejectRecords中表示失败或拒绝次数。默认值：0。
+访问次数。在accessRecords中表示成功访问次数，在rejectRecords中表示失败或拒绝次数。
+
+默认值：0。
 
 **类型：** number
 
@@ -52,9 +54,11 @@ count?: number
 lockScreenStatus?: number
 ```
 
-访问时的锁屏状态。  
+访问时的锁屏状态。
+
 - 1，表示非锁屏场景使用权限。  
-- 2，表示锁屏场景使用权限。  
+- 2，表示锁屏场景使用权限。
+
 默认值：1。
 
 **类型：** number
@@ -87,7 +91,7 @@ status: number
 timestamp: number
 ```
 
-访问时的时间戳。 单位为：毫秒。
+访问时的时间戳。单位为：毫秒。
 
 **类型：** number
 
@@ -103,7 +107,9 @@ timestamp: number
 usedType?: PermissionUsedType
 ```
 
-敏感权限访问方式。默认值：NORMAL_TYPE。
+敏感权限访问方式。
+
+默认值：NORMAL_TYPE。
 
 **类型：** [PermissionUsedType](arkts-ability-privacymanager-permissionusedtype-e-sys.md)
 

@@ -2,7 +2,7 @@
 
 SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect Implements a slow-motion video session, which sets the parameters of the slow-motion video mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
 
-**继承/实现关系：** SlowMotionVideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md), [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)
+**继承/实现关系：** SlowMotionVideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
 **起始版本：** 12
 
@@ -13,6 +13,7 @@ SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorE
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## isSlowMotionDetectionSupported
@@ -33,7 +34,7 @@ Checks whether the device supports slow-motion detection.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of slow-motion detection. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode]{ |
+| boolean | Check result for the support of slow-motion detection. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
 
 **错误码：**
 
@@ -87,14 +88,6 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-function unregisterSessionError(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.off('error');
-}
-```
-
 ## off('focusStateChange')
 
 ```TypeScript
@@ -121,14 +114,6 @@ Unsubscribes from focus state change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-function unregisterFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.off('focusStateChange');
-}
-```
 
 ## off('smoothZoomInfoAvailable')
 
@@ -157,14 +142,6 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-function unregisterSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.off('smoothZoomInfoAvailable');
-}
-```
-
 ## off('slowMotionStatus')
 
 ```TypeScript
@@ -191,14 +168,6 @@ Unsubscribes from slow-motion status change events.
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.off('slowMotionStatus');
-}
-```
 
 ## on('error')
 
@@ -227,20 +196,6 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError): void {
-  console.error(`Portrait photo session error code: ${err.code}`);
-}
-
-function registerSessionError(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.on('error', callback);
-}
-```
-
 ## on('focusStateChange')
 
 ```TypeScript
@@ -267,24 +222,6 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, focusState: camera.FocusState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`Focus state: ${focusState}`);
-}
-
-function registerFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.on('focusStateChange', callback);
-}
-```
 
 ## on('smoothZoomInfoAvailable')
 
@@ -313,24 +250,6 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, smoothZoomInfo: camera.SmoothZoomInfo): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`The duration of smooth zoom: ${smoothZoomInfo.duration}`);
-}
-
-function registerSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.on('smoothZoomInfoAvailable', callback);
-}
-```
-
 ## on('slowMotionStatus')
 
 ```TypeScript
@@ -358,24 +277,6 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, slowMotionStatus: camera.SlowMotionStatus): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-  console.info(`The slow motion status: ${slowMotionStatus}`);
-}
-
-function registerSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideoSession): void {
-  slowMotionVideoSession.on('slowMotionStatus', callback);
-}
-```
-
 ## setSlowMotionDetectionArea
 
 ```TypeScript
@@ -394,7 +295,7 @@ Sets an area for slow-motion detection.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| area | Rect | 是 | Area. |
+| area | [Rect](arkts-camera-camera-rect-i.md) | 是 | Area. |
 
 **错误码：**
 

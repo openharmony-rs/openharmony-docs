@@ -26,7 +26,7 @@ function getDisposedStatus(appId: string, callback: AsyncCallback<Want>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要查询的应用的appId。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见 [获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | 是 | 回调函数。当获取应用的处置状态成功时，err为null，data为获取到的处置状态；否则为错误对象。 |
 
 **错误码：**
@@ -40,6 +40,26 @@ function getDisposedStatus(appId: string, callback: AsyncCallback<Want>): void
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
 **示例**
+
+```TypeScript
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let appId = "com.example.myapplication_xxxxx";
+
+try {
+  appControl.getDisposedStatus(appId)
+    .then((data) => {
+      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
+    }).catch((error: BusinessError) => {
+    let message = (error as BusinessError).message;
+    console.error('getDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
+}
+```
 
 ```TypeScript
 import { appControl } from '@kit.AbilityKit';
@@ -83,7 +103,7 @@ function getDisposedStatus(appId: string): Promise<Want>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 要查询的应用的appId。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见 [获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 
 **返回值：**
 
@@ -103,22 +123,4 @@ function getDisposedStatus(appId: string): Promise<Want>
 
 **示例**
 
-```TypeScript
-import { appControl } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let appId = "com.example.myapplication_xxxxx";
-
-try {
-  appControl.getDisposedStatus(appId)
-    .then((data) => {
-      console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
-    }).catch((error: BusinessError) => {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
-  });
-} catch (error) {
-  let message = (error as BusinessError).message;
-  console.error('getDisposedStatus failed ' + message);
-}
-```
+参见 [getDisposedStatus](#getdisposedstatus)

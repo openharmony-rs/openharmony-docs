@@ -26,7 +26,7 @@ function getAbilityRunningInfos(callback: AsyncCallback<Array<AbilityRunningInfo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;AbilityRunningInfo&gt;&gt; | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的 UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[AbilityRunningInfo](arkts-ability-abilitymanager-abilityrunninginfo-t.md)&gt;&gt; | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码：**
 
@@ -43,16 +43,17 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  abilityManager.getAbilityRunningInfos((err: BusinessError, data: Array<abilityManager.AbilityRunningInfo>) => {
-    if (err) {
-      console.error(`getAbilityRunningInfos fail, error: ${JSON.stringify(err)}`);
-    } else {
+  // 获取UIAbility运行时相关信息
+  abilityManager.getAbilityRunningInfos()
+    .then((data: abilityManager.AbilityRunningInfo[]) => {
       console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
-    }
-  });
-} catch (paramError) {
-  let code: number = (paramError as BusinessError).code;
-  let message: string = (paramError as BusinessError).message;
-  console.error(`error.code: ${code}, error.message: ${message}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);
+    })
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let msg = (e as BusinessError).message;
+  console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}`);
 }
 ```

@@ -28,7 +28,7 @@ The file declares the error codes defined by BundleManager.
 enum BundleManager_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 枚举错误码，详细介绍请参见{@link 通用错误码}。
 

@@ -12,4 +12,4 @@ export type UIExtensionContext = _UIExtensionContext.default
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _UIExtensionContext.default
+**类型：** _UIExtensionContext.default

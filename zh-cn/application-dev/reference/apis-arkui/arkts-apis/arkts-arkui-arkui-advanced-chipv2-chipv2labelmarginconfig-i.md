@@ -18,7 +18,21 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 left?: LengthMetrics
 ```
 
-文本与左侧图标之间间距，不支持百分比。传入百分比时按默认值处理。默认值：无左侧图标时，left默认值：0。有左侧图标且size为ChipV2Size.SMALL时，left默认值：4。有左侧图标且size为ChipV2Size.NORMAL时，left默认值：6。单位：vp超出取值范围按默认值处理。取值范围：[0, +∞)
+文本与左侧图标之间间距，不支持百分比。传入百分比时按默认值处理。
+
+默认值：
+
+无左侧图标时，left默认值：0。
+
+有左侧图标且size为ChipV2Size.SMALL时，left默认值：4。
+
+有左侧图标且size为ChipV2Size.NORMAL时，left默认值：6。
+
+单位：vp
+
+超出取值范围按默认值处理。
+
+取值范围：[0, +∞)
 
 **类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -26,7 +40,7 @@ left?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +50,21 @@ left?: LengthMetrics
 right?: LengthMetrics
 ```
 
-文本与右侧图标之间间距，不支持百分比。传入百分比时按默认值处理。默认值：无右侧图标时，right默认值：0。有右侧图标且size为ChipV2Size.SMALL时，right默认值：4。有右侧图标且size为ChipV2Size.NORMAL时，right默认值：6。单位：vp超出取值范围按默认值处理。取值范围：[0, +∞)
+文本与右侧图标之间间距，不支持百分比。传入百分比时按默认值处理。
+
+默认值：
+
+无右侧图标时，right默认值：0。
+
+有右侧图标且size为ChipV2Size.SMALL时，right默认值：4。
+
+有右侧图标且size为ChipV2Size.NORMAL时，right默认值：6。
+
+单位：vp
+
+超出取值范围按默认值处理。
+
+取值范围：[0, +∞)
 
 **类型：** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -44,6 +72,6 @@ right?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

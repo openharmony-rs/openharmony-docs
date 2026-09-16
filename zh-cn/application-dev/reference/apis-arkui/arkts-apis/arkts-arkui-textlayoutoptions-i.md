@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## constraintWidth
 
 ```TypeScript
@@ -19,7 +14,7 @@ constraintWidth?: LengthMetrics
 
 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。
 
-**类型：** LengthMetrics
+**类型：** [LengthMetrics](arkts-arkui-lengthmetrics-t.md)
 
 **起始版本：** 20
 

@@ -1,15 +1,10 @@
 # TranslateOptions
 
-Defines the options of translate.@interface TranslateOptions
+定义平移选项。
 
 **起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## x
 
@@ -17,13 +12,19 @@ Defines the options of translate.@interface TranslateOptions
 x?: number | string
 ```
 
-Translation distance along the x-axis. For the number type, the unit is VP, and the value range is (-∞, +∞). For the string type, the value follows the format of length string type.
+x轴的平移距离。
 
-**类型：** number \| string
+类型为number时，单位为vp，取值范围为(-∞, +∞)。
+
+默认值：0
+
+类型为string时，形式参考[Length](../arkts-apis/arkts-arkui-length-t.md)的string类型。
+
+**类型：** number &#124; string
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -35,13 +36,19 @@ Translation distance along the x-axis. For the number type, the unit is VP, and 
 y?: number | string
 ```
 
-The param of y direction.
+y轴的平移距离。
 
-**类型：** number \| string
+类型为number时，单位为vp，取值范围为(-∞, +∞)。
+
+默认值：0
+
+类型为string时，形式参考[Length](../arkts-apis/arkts-arkui-length-t.md)的string类型。
+
+**类型：** number &#124; string
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -53,13 +60,19 @@ The param of y direction.
 z?: number | string
 ```
 
-The param of z direction.
+z轴的平移距离。z轴方向移动时由于观察点位置不变，z的值接近观察点组件会有放大效果，远离则缩小。
 
-**类型：** number \| string
+类型为number时，单位为vp，取值范围为(-∞, +∞)。
+
+默认值：0
+
+类型为string时，形式参考[Length](../arkts-apis/arkts-arkui-length-t.md)的string类型。
+
+**类型：** number &#124; string
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

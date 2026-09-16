@@ -2,14 +2,13 @@
 
 日期选择器组件的参数说明。
 
-> **说明：**
+> **说明：** 
 > 
 > - Date的使用请参考[TimePickerOptions](arkts-arkui-timepickeroptions-i.md)。
 > 
 > - 在DatePicker组件滑动过程中修改DatePickerOptions中的属性，会导致这些属性无法生效。
 > 
-> - 如果需要设置的起止日期范围在\[Date('1900-01-31'), Date('2100-12-31')]之外，推荐使用
-> [DatePickerComponent](../arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponent-s.md)。
+> - 如果需要设置的起止日期范围在\[Date('1900-01-31'), Date('2100-12-31')]之外，推荐使用[DatePickerComponent](../arkts-apis/arkts-arkui-arkui-advanced-datepickercomponent-datepickercomponent-s.md)。
 
 > **起始日期、结束日期和选中日期的异常情形说明：**
 > 
@@ -27,18 +26,13 @@
 > - 起始日期与结束日期同时早于系统有效范围：起始日期与结束日期取系统有效范围最早日期。
 > - 起始日期与结束日期同时晚于系统有效范围：起始日期与结束日期取系统有效范围最晚日期。
 
-> **说明：**
+> **说明：** 
 > 
 > 先处理起始日期与结束日期的异常情形，再处理选中日期的异常情形。
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## end
 
@@ -52,17 +46,18 @@ end?: Date
 
 > 取值范围：[Date('1900-01-31'), Date('2100-12-31')]
 
-> **说明：**
+> **说明：** 
 > 
 > 设置了start或end且为非默认值的场景下，canLoop不生效。
 
 **类型：** Date
 
-**默认值：** Date('2100-12-31') [since 11]
+**默认值：** 
+- API版本11+：Date('2100-12-31')
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,22 +67,23 @@ end?: Date
 mode?: DatePickerMode
 ```
 
-设置日期展示模式。适用于需要自定义日期展示列的场景，如仅需选择年月或月日。不传入时默认为DatePickerMode.DATE，显示年、月、日三列。在[DatePickerDialog](arkts-arkui-datepickerdialog-c.md)中，当 [DatePickerDialogOptions](arkts-arkui-datepickerdialogoptions-i.md)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。 这是为保证布局合理性，当showTime为true时会额外显示时间列。
+设置日期展示模式。适用于需要自定义日期展示列的场景，如仅需选择年月或月日。不传入时默认为DatePickerMode.DATE，显示年、月、日三列。
 
-> **说明：**
+在[DatePickerDialog](arkts-arkui-datepickerdialog-c.md)中，当[DatePickerDialogOptions](arkts-arkui-datepickerdialogoptions-i.md)的showTime设置为true时，此参数不生效，默认显示年、月、日三列。这是为保证布局合理性，当showTime为true时会额外显示时间列。
+
+> **说明：** 
 > 
 > 上述DatePickerDialog相关限制仅适用于DatePickerDialog组件。
 
 **类型：** [DatePickerMode](arkts-arkui-datepickermode-e.md)
 
-**默认值：** DatePickerMode.DATE - which means to display three columns: year, month, and day. 
-Decimal values are rounded off.
+**默认值：** DatePickerMode.DATE - which means to display three columns: year, month, and day. <br>Decimal values are rounded off.
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,15 +100,16 @@ selected?: Date
 > Date对象可配置的日期范围：[Date('1900-01-31'), Date('2100-12-31')]，selected参数的有效取值范围：必须在start和end参数设置的日
 > 期范围内。
 
-> 从API version 10开始，该参数支持[\$\$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+> 从API version 10开始，该参数支持[&#36;&#36;](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 **类型：** Date
 
-**默认值：** current system date [since 11]
+**默认值：** 
+- API版本11+：current system date
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,16 +125,17 @@ start?: Date
 
 > 取值范围：[Date('1900-01-31'), Date('2100-12-31')]
 
-> **说明：**
+> **说明：** 
 > 
 > 设置了start或end且为非默认值的场景下，canLoop不生效。
 
 **类型：** Date
 
-**默认值：** Date('1970-1-1') [since 11]
+**默认值：** 
+- API版本11+：Date('1970-1-1')
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -6,18 +6,17 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## animated
 
 ```TypeScript
 animated?: boolean
 ```
 
-是否支持转场动画。true：支持转场动画；false：不支持转场动画。默认值：true
+是否支持转场动画。
+
+true：支持转场动画；false：不支持转场动画。
+
+默认值：true
 
 **类型：** boolean
 
@@ -25,7 +24,7 @@ animated?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +34,9 @@ animated?: boolean
 launchMode?: LaunchMode
 ```
 
-路由栈的操作模式。默认值：LaunchMode.STANDARD
+路由栈的操作模式。
+
+默认值：LaunchMode.STANDARD
 
 **类型：** [LaunchMode](arkts-arkui-launchmode-e.md)
 
@@ -43,6 +44,6 @@ launchMode?: LaunchMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

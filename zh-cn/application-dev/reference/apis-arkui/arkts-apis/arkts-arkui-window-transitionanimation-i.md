@@ -24,7 +24,7 @@ config: WindowAnimationConfig
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,16 +40,6 @@ opacity?: number
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**示例**
-
-```TypeScript
-try {
-  windowClass.opacity(0.5);
-} catch (exception) {
-  console.error(`Failed to opacity. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```

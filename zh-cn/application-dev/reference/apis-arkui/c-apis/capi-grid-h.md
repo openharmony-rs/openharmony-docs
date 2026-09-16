@@ -48,7 +48,7 @@
 enum ArkUI_GridItemAlignment
 ```
 
-**描述**
+**描述：**
 
 {@link GridItem}对齐方式枚举。
 
@@ -65,7 +65,7 @@ enum ArkUI_GridItemAlignment
 enum ArkUI_GridItemStyle
 ```
 
-**描述**
+**描述：**
 
 GridItem样式枚举。
 
@@ -85,7 +85,7 @@ GridItem样式枚举。
 ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 ```
 
-**描述**
+**描述：**
 
 创建Grid布局选项。使用完毕后调用OH_ArkUI_GridLayoutOptions_Dispose销毁。
 
@@ -103,7 +103,7 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 ```
 
-**描述**
+**描述：**
 
 销毁Grid布局选项并释放资源。
 
@@ -121,7 +121,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)
 ```
 
-**描述**
+**描述：**
 
 设置Grid中不规则GridItem的索引数组。
 
@@ -147,7 +147,7 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)
 ```
 
-**描述**
+**描述：**
 
 获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时，irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。
 
@@ -173,7 +173,7 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize (*callback)(int32_t itemIndex, void* userData))
 ```
 
-**描述**
+**描述：**
 
 Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 
@@ -193,7 +193,7 @@ Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (*callback)(int32_t itemIndex, void* userData))
 ```
 
-**描述**
+**描述：**
 
 Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。
 

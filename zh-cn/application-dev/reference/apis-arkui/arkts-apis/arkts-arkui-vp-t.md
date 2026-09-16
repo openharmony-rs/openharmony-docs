@@ -4,13 +4,13 @@
 declare type VP = `${number}vp` | number
 ```
 
-定义长度属性，可以是数字或以 vp 为单位的数字。
+长度类型，用于描述以vp为单位的长度。
 
-**起始版本：** 23
+**起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
@@ -18,5 +18,5 @@ declare type VP = `${number}vp` | number
 
 | 类型 | 说明 |
 | --- | --- |
-| `\${number}vp` |  |
-| number |  |
+| `&#36;{number}vp` | Viewport pixel unit. The unit vp can be included, for example, **'10vp'**. |
+| number | 需要指定数字，如10。 |

@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## id
 
 ```TypeScript
@@ -25,7 +20,7 @@ id: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +30,9 @@ id: string
 parentX: number
 ```
 
-按压点相对于父组件左上角的x轴坐标。单位：vp
+按压点相对于父组件左上角的x轴坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -43,7 +40,7 @@ parentX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +50,9 @@ parentX: number
 parentY: number
 ```
 
-按压点相对于父组件左上角的y轴坐标。单位：vp
+按压点相对于父组件左上角的y轴坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -61,7 +60,7 @@ parentY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,7 +78,7 @@ rect: RectResult
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +88,9 @@ rect: RectResult
 windowX: number
 ```
 
-按压点相对于窗口左上角的x轴坐标。单位：vp
+按压点相对于窗口左上角的x轴坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -97,7 +98,7 @@ windowX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +108,9 @@ windowX: number
 windowY: number
 ```
 
-按压点相对于窗口左上角的y轴坐标。单位：vp
+按压点相对于窗口左上角的y轴坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -115,7 +118,7 @@ windowY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,7 +128,9 @@ windowY: number
 x: number
 ```
 
-按压点相对于子组件左上角的x轴坐标。单位：vp
+按压点相对于子组件左上角的x轴坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -133,7 +138,7 @@ x: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,7 +148,9 @@ x: number
 y: number
 ```
 
-按压点相对于子组件左上角的y轴坐标。单位：vp
+按压点相对于子组件左上角的y轴坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -151,6 +158,6 @@ y: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -1,15 +1,10 @@
 # ContextMenu
 
-在页面范围内关闭通过 [bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu) 属性绑定的菜单。
+在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu)属性绑定的菜单。
 
 **起始版本：** 8
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## close
 
@@ -17,9 +12,9 @@
 static close()
 ```
 
-在页面范围内关闭通过 [bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu) 绑定的菜单。常用于页面跳转、拖拽开始等需要主动关闭已显示菜单的交互场景。
+在页面范围内关闭通过[bindContextMenu](../arkts-components/arkts-arkui-commonmethod-c.md#bindcontextmenu)绑定的菜单。常用于页面跳转、拖拽开始等需要主动关闭已显示菜单的交互场景。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 18开始废弃，建议使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
 > [getContextMenuController](arkts-arkui-arkui-uicontext-uicontext-c.md#getcontextmenucontroller)获取
@@ -35,6 +30,6 @@ static close()
 
 **替代接口：** close
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

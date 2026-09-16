@@ -24,7 +24,7 @@ function isArkChildProcessSupported(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 是否允许调用者创建ArkTS子进程。 |
+| boolean | 是否允许调用者创建ArkTS子进程。<br>true：允许创建ArkTS子进程。<br>false：不允许创建ArkTS子进程。<br>默认值：false。 |
 
 **示例**
 

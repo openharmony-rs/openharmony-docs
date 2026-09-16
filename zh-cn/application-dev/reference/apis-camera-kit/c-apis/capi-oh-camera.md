@@ -5,6 +5,7 @@
 Provide the definition of the C interface for the camera module.
 
 **起始版本：** 11
+
 ## 文件汇总
 
 | 名称 | 描述 |

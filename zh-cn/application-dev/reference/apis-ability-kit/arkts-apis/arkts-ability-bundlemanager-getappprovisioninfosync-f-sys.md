@@ -12,7 +12,9 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo
 ```
 
-以同步方法根据bundleName和userId获取应用的provision配置文件信息并返回结果。获取调用方自身的信息时不需要权限。
+以同步方法根据bundleName和userId获取应用的provision配置文件信息并返回结果。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
@@ -27,13 +29,13 @@ function getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 指定的bundleName。 |
-| userId | number | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| AppProvisionInfo | AppProvisionInfo对象，返回应用的provision配置文件信息。 |
+| [AppProvisionInfo](arkts-ability-bundlemanager-appprovisioninfo-t-sys.md) | AppProvisionInfo对象，返回应用的provision配置文件信息。 |
 
 **错误码：**
 

@@ -1,6 +1,6 @@
 # Direction
 
-表示屏幕方向的枚举，用于[Configuration.direction](arkts-ability-app-ability-configuration-configuration-i.md)字段。开发者可以使用这些预置枚举设置或获取系统/应 用的显示方向。
+表示屏幕方向的枚举，用于[Configuration.direction](arkts-ability-app-ability-configuration-configuration-i.md)字段。开发者可以使用这些预置枚举设置或获取系统/应用的显示方向。
 
 **起始版本：** 9
 
@@ -16,7 +16,7 @@ DIRECTION_NOT_SET = -1
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -30,7 +30,7 @@ DIRECTION_VERTICAL = 0
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -44,6 +44,6 @@ DIRECTION_HORIZONTAL = 1
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityBase

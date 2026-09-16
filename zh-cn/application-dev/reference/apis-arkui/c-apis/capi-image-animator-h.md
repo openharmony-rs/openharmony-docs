@@ -31,7 +31,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | 使用图片路径创建帧图片信息，图片格式为svg、png和jpg。支持应用沙箱内的相对路径和绝对路径。 |
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | 使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。 |
+| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | 使用{@link ArkUI_DrawableDescriptor}对象创建帧图片信息，图片格式为Resource和PixelMap。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_dispose) | 销毁帧图片对象指针。用于释放由[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_createfromstring)和[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor)创建的对象，避免内存泄漏。 |
 | [void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)](#oh_arkui_imageanimatorframeinfo_setwidth) | 设置图片宽度。 |
 | [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getwidth) | 获取图片宽度。 |
@@ -52,7 +52,7 @@
 enum ArkUI_AnimationStatus
 ```
 
-**描述**
+**描述：**
 
 定义帧动画的播放状态。
 
@@ -74,12 +74,13 @@ enum ArkUI_AnimationStatus
 ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)
 ```
 
-**描述**
+**描述：**
 
 使用图片路径创建帧图片信息，图片格式为svg、png和jpg。支持应用沙箱内的相对路径和绝对路径。
 
->**说明：** 
->返回的帧图片对象使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
+> **说明：**
+>
+> 返回的帧图片对象使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
 
 **起始版本：** 12
 
@@ -101,12 +102,13 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(c
 ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)
 ```
 
-**描述**
+**描述：**
 
-使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息，图片格式为Resource和PixelMap。
+使用{@link ArkUI_DrawableDescriptor}对象创建帧图片信息，图片格式为Resource和PixelMap。
 
->**说明：** 
->返回的帧图片对象使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
+> **说明：**
+>
+> 返回的帧图片对象使用完毕后需调用[OH_ArkUI_ImageAnimatorFrameInfo_Dispose](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_dispose)释放，避免内存泄漏。
 
 **起始版本：** 12
 
@@ -114,7 +116,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | 使用Resource或PixelMap创建的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象指针。 |
+| ArkUI_DrawableDescriptor* drawable | 使用Resource或PixelMap创建的{@link ArkUI_DrawableDescriptor}对象指针。 |
 
 **返回：**
 
@@ -128,7 +130,7 @@ ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawable
 void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
-**描述**
+**描述：**
 
 销毁帧图片对象指针。用于释放由[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_createfromstring)和[OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor](capi-image-animator-h.md#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor)创建的对象，避免内存泄漏。
 
@@ -146,7 +148,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* image
 void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)
 ```
 
-**描述**
+**描述：**
 
 设置图片宽度。
 
@@ -165,7 +167,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imag
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
-**描述**
+**描述：**
 
 获取图片宽度。
 
@@ -189,7 +191,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* i
 void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)
 ```
 
-**描述**
+**描述：**
 
 设置图片高度。
 
@@ -208,7 +210,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* ima
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
-**描述**
+**描述：**
 
 获取图片高度。
 
@@ -232,7 +234,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* 
 void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)
 ```
 
-**描述**
+**描述：**
 
 设置图片相对于组件左上角的纵向坐标。
 
@@ -251,7 +253,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageI
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
-**描述**
+**描述：**
 
 获取图片相对于组件左上角的纵向坐标。
 
@@ -275,7 +277,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* ima
 void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)
 ```
 
-**描述**
+**描述：**
 
 设置图片相对于组件左上角的横向坐标。
 
@@ -294,7 +296,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* image
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
-**描述**
+**描述：**
 
 获取图片相对于组件左上角的横向坐标。
 
@@ -318,7 +320,7 @@ int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* im
 void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)
 ```
 
-**描述**
+**描述：**
 
 设置图片的播放时长。
 
@@ -337,7 +339,7 @@ void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* i
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
-**描述**
+**描述：**
 
 获取图片的播放时长。
 

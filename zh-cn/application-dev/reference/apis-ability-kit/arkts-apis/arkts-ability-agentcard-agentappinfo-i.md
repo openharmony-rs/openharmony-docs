@@ -2,6 +2,8 @@
 
 Agent的应用信息。
 
+@typedef AgentAppInfo
+
 **起始版本：** 24
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
@@ -20,7 +22,7 @@ Agent所属AgentExtensionAbility的Ability名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -38,7 +40,7 @@ Agent所属AgentExtensionAbility的Bundle名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -56,7 +58,7 @@ Agent支持的设备类型列表。取值范围参考[deviceTypes](../../../quic
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -74,7 +76,7 @@ Agent运行的最低应用版本要求。使用语义化版本号格式（如"1.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -92,6 +94,6 @@ Agent所属AgentExtensionAbility的Module名称。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core

@@ -1,11 +1,10 @@
 # RenderNode
 
-提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。RenderNode还支持渲染节点树管理（添加、删除、查询子节点）、背景色与不透明度等视觉属性设置、变换（缩放、旋转、平移、变换矩阵）、阴影 、边框、遮罩与裁剪、模糊效果等能力，适用于在Stage模型下进行自定义渲染与节点树管理的场景。
+提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。RenderNode还支持渲染节点树管理（添加、删除、查询子节点）、背景色与不透明度等视觉属性设置、变换（缩放、旋转、平移、变换矩阵）、阴影、边框、遮罩与裁剪、模糊效果等能力，适用于在Stage模型下进行自定义渲染与节点树管理的场景。
 
-> **说明：**
+> **说明：** 
 > 
-> - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中持有的FrameNode仅用于将该
-> BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
+> - 不建议对BuilderNode中的RenderNode进行修改操作。BuilderNode中持有的FrameNode仅用于将该BuilderNode作为子节点挂载到其他FrameNode上，对该FrameNode或对应的RenderNode进行属性设置与子节点操作可能会产生未定义行为，包括但不限于显示异常、事件异常、稳定性问题等。
 > 
 > - RenderNode对象不支持使用JSON序列化。
 
@@ -25,7 +24,7 @@ appendChild(node: RenderNode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +38,7 @@ appendChild(node: RenderNode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -106,7 +105,7 @@ clearChildren(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,7 +172,7 @@ RenderNode的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,13 +225,13 @@ struct Index {
 dispose(): void
 ```
 
-立即释放当前RenderNode。调用此方法后，RenderNode将解除与后端实体节点的引用关系，再次调用该节点的接口可能会出现crash或返回默认值。可通过 [isDisposed](#isdisposed)接口查询节点是否已释放。
+立即释放当前RenderNode。调用此方法后，RenderNode将解除与后端实体节点的引用关系，再次调用该节点的接口可能会出现crash或返回默认值。可通过[isDisposed](#isdisposed)接口查询节点是否已释放。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -296,9 +295,11 @@ struct Index {
 draw(context: DrawContext): void
 ```
 
-绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见 [调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
+绘制方法，需要开发者进行实现。该方法会在RenderNode进行绘制时被调用。
 
-> **说明：**
+该接口的[DrawContext](arkts-arkui-graphics-drawcontext-c.md)中的Canvas是用于记录指令的临时Canvas，并非节点的真实Canvas。使用请参见[调整自定义绘制Canvas的变换矩阵](../../../ui/arkts-user-defined-arktsNode-renderNode.md#调整自定义绘制canvas的变换矩阵)。
+
+> **说明：** 
 > 
 > RenderNode初始化时，会调用两次draw方法。第一次调用是在首次创建FrameNode时触发Render流程，第二次调用是在首次设置modifier时触发绘制。后续绘制流程皆由modifier触发。
 
@@ -306,7 +307,7 @@ draw(context: DrawContext): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,148 +319,20 @@ draw(context: DrawContext): void
 
 **示例**
 
+```TypeScript
 ArkTS侧代码：
-
-```TypeScript
-// Index.ets
-import bridge from 'libentry.so'; // 该 .so 文件由开发者通过 NAPI 编写并生成
-import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
-
-// 继承RenderNode，实现自定义绘制方法
-class MyRenderNode extends RenderNode {
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  // 绘制RenderNode时调用此函数
-  draw(context: DrawContext) {
-    // 需要将 context 中的宽度和高度从vp转换为px
-    bridge.nativeOnDraw(0, context, this.uiContext.vp2px(context.size.width), this.uiContext.vp2px(context.size.height));
-  }
-}
-
-// 继承NodeController实现自定义UI控制器
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      const renderNode = new MyRenderNode(uiContext);
-      renderNode.size = { width: 100, height: 100 };
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-  build() {
-    Row() {
-      NodeContainer(this.myNodeController)
-    }
-  }
-}
 ```
 
+```TypeScript
 C++侧可通过NAPI来获取Canvas，并进行后续的自定义绘制操作。
-
-```TypeScript
-// native_bridge.cpp
-#include "napi/native_api.h"
-#include <native_drawing/drawing_canvas.h>
-#include <native_drawing/drawing_color.h>
-#include <native_drawing/drawing_path.h>
-#include <native_drawing/drawing_pen.h>
-
-static napi_value OnDraw(napi_env env, napi_callback_info info)
-{
-    size_t argc = 4;
-    napi_value args[4] = { nullptr };
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int32_t id;
-    napi_get_value_int32(env, args[0], &id);
-    
-    // 获取 Canvas 指针
-    void* temp = nullptr;
-    napi_unwrap(env, args[1], &temp);
-    OH_Drawing_Canvas *canvas = reinterpret_cast<OH_Drawing_Canvas*>(temp);
-    
-    // 获取 Canvas 宽度
-    int32_t width;
-    napi_get_value_int32(env, args[2], &width);
-    
-    // 获取 Canvas 高度
-    int32_t height;
-    napi_get_value_int32(env, args[3], &height);
-    
-    // 传入canvas、height、width等信息至绘制函数中进行自定义绘制
-    auto path = OH_Drawing_PathCreate();
-    OH_Drawing_PathMoveTo(path, width / 4, height / 4);
-    OH_Drawing_PathLineTo(path, width * 3 / 4, height / 4);
-    OH_Drawing_PathLineTo(path, width * 3 / 4, height * 3 / 4);
-    OH_Drawing_PathLineTo(path, width / 4, height * 3 / 4);
-    OH_Drawing_PathLineTo(path, width / 4, height / 4);
-    OH_Drawing_PathClose(path);
-    
-    auto pen = OH_Drawing_PenCreate();
-    OH_Drawing_PenSetWidth(pen, 10);
-    OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-    OH_Drawing_CanvasAttachPen(canvas, pen);
-    
-    OH_Drawing_CanvasDrawPath(canvas, path);
-    OH_Drawing_CanvasDetachPen(canvas);
-    OH_Drawing_PenDestroy(pen);
-    OH_Drawing_PathDestroy(path);
-
-    return nullptr;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        { "nativeOnDraw", nullptr, OnDraw, nullptr, nullptr, nullptr, napi_default, nullptr }
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
 ```
 
+```TypeScript
 修改工程中的文件，添加如下内容：
-
-同时在工程中的文件中，添加自定义绘制函数在ArkTS侧的定义，如：
+```
 
 ```TypeScript
-import { DrawContext } from '@kit.ArkUI';
-
-export const nativeOnDraw: (id: number, context: DrawContext, width: number, height: number) => number;
+同时在工程中的文件中，添加自定义绘制函数在ArkTS侧的定义，如：
 ```
 
 ## getChild
@@ -474,7 +347,7 @@ getChild(index: number): RenderNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -488,7 +361,7 @@ getChild(index: number): RenderNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 子节点。若该RenderNode不包含所查询的子节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) &#124; null | 子节点。若该RenderNode不包含所查询的子节点，则返回空对象null。 |
 
 **示例**
 
@@ -563,7 +436,7 @@ getFirstChild(): RenderNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -571,7 +444,7 @@ getFirstChild(): RenderNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 首个子节点。若该RenderNode不包含子节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) &#124; null | 首个子节点。若该RenderNode不包含子节点，则返回空对象null。 |
 
 **示例**
 
@@ -651,7 +524,7 @@ getNextSibling(): RenderNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -659,7 +532,7 @@ getNextSibling(): RenderNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 当前RenderNode的下一个同级节点。若该RenderNode不包含下一个同级节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) &#124; null | 当前RenderNode的下一个同级节点。若该RenderNode不包含下一个同级节点，则返回空对象null。 |
 
 **示例**
 
@@ -744,7 +617,7 @@ getPreviousSibling(): RenderNode | null
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -752,7 +625,7 @@ getPreviousSibling(): RenderNode | null
 
 | 类型 | 说明 |
 | --- | --- |
-| [RenderNode](arkts-arkui-rendernode-c.md) \| null | 当前RenderNode的上一个同级节点。若该RenderNode不包含上一个同级节点，则返回空对象null。 |
+| [RenderNode](arkts-arkui-rendernode-c.md) &#124; null | 当前RenderNode的上一个同级节点。若该RenderNode不包含上一个同级节点，则返回空对象null。 |
 
 **示例**
 
@@ -837,7 +710,7 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -846,13 +719,13 @@ insertChildAfter(child: RenderNode, sibling: RenderNode | null): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | child | [RenderNode](arkts-arkui-rendernode-c.md) | 是 | 需要添加的子节点。 |
-| sibling | [RenderNode](arkts-arkui-rendernode-c.md) \| null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
+| sibling | [RenderNode](arkts-arkui-rendernode-c.md) &#124; null | 是 | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 100025 | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
+| [100025](../errorcode-node.md#100025-传入参数不符合要求) | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: its corresponding FrameNode cannot be adopted."<br>**适用版本：** 22+ |
 
 **示例**
 
@@ -926,13 +799,13 @@ struct Index {
 invalidate(): void
 ```
 
-该方法会触发RenderNode的重新渲染，重新渲染时会调用[draw](#draw)方法。若开发者继承了RenderNode并实现了draw方法，调用invalidate()后将重新执行draw方 法中的绘制逻辑。
+该方法会触发RenderNode的重新渲染，重新渲染时会调用[draw](#draw)方法。若开发者继承了RenderNode并实现了draw方法，调用invalidate()后将重新执行draw方法中的绘制逻辑。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1011,7 +884,7 @@ isDisposed(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1111,7 +984,7 @@ removeChild(node: RenderNode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1182,10 +1055,10 @@ struct Index {
 ## backgroundBlur
 
 ```TypeScript
-get backgroundBlur(): BackgroundBlur
+set backgroundBlur(blurValue: BackgroundBlur | undefined)
 ```
 
-获取背景模糊效果。
+设置当前RenderNode的背景模糊效果，对节点背景区域进行模糊处理。
 
 **类型：** [BackgroundBlur](arkts-arkui-graphics-backgroundblur-i.md)
 
@@ -1193,7 +1066,7 @@ get backgroundBlur(): BackgroundBlur
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1281,23 +1154,41 @@ struct Index {
 }
 ```
 
+```TypeScript
+get backgroundBlur(): BackgroundBlur
+```
+
+获取背景模糊效果。
+
+**类型：** [BackgroundBlur](arkts-arkui-graphics-backgroundblur-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [backgroundBlur](#backgroundblur)
+
 ## backgroundColor
 
 ```TypeScript
-get backgroundColor(): number
+set backgroundColor(color: number)
 ```
 
-获取当前RenderNode的背景颜色。
+设置当前RenderNode的背景颜色。
 
 **类型：** number
-
-**默认值：** 0X00000000 [since 11 - 11]
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1341,23 +1232,44 @@ struct Index {
 }
 ```
 
+```TypeScript
+get backgroundColor(): number
+```
+
+获取当前RenderNode的背景颜色。
+
+**类型：** number
+
+**默认值：** 
+- API版本11：0X00000000
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [backgroundColor](#backgroundcolor)
+
 ## borderColor
 
 ```TypeScript
-get borderColor(): Edges<number>
+set borderColor(color: Edges<number>)
 ```
 
-获取当前RenderNode的边框颜色。
+设置当前RenderNode的边框颜色。
 
 **类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
-
-**默认值：** 0XFF000000
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1405,23 +1317,43 @@ struct Index {
 }
 ```
 
-## borderRadius
-
 ```TypeScript
-get borderRadius(): BorderRadiuses
+get borderColor(): Edges<number>
 ```
 
-获取当前RenderNode的边框圆角。
+获取当前RenderNode的边框颜色。
 
-**类型：** [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
 
-**默认值：** 0
+**默认值：** 0XFF000000
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [borderColor](#bordercolor)
+
+## borderRadius
+
+```TypeScript
+set borderRadius(radius: BorderRadiuses)
+```
+
+设置当前RenderNode的边框圆角。
+
+**类型：** [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1468,13 +1400,35 @@ struct Index {
 }
 ```
 
+```TypeScript
+get borderRadius(): BorderRadiuses
+```
+
+获取当前RenderNode的边框圆角。
+
+**类型：** [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
+
+**默认值：** 0
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [borderRadius](#borderradius)
+
 ## borderStyle
 
 ```TypeScript
-get borderStyle(): Edges<BorderStyle>
+set borderStyle(style: Edges<BorderStyle>)
 ```
 
-获取当前RenderNode的边框样式。
+设置当前RenderNode的边框样式。
 
 **类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;[BorderStyle](arkts-arkui-borderstyle-e.md)&gt;
 
@@ -1482,7 +1436,7 @@ get borderStyle(): Edges<BorderStyle>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1535,23 +1489,41 @@ struct Index {
 }
 ```
 
-## borderWidth
-
 ```TypeScript
-get borderWidth(): Edges<number>
+get borderStyle(): Edges<BorderStyle>
 ```
 
-获取当前RenderNode的边框宽度。
+获取当前RenderNode的边框样式。
 
-**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
-
-**默认值：** 0
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;[BorderStyle](arkts-arkui-borderstyle-e.md)&gt;
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [borderStyle](#borderstyle)
+
+## borderWidth
+
+```TypeScript
+set borderWidth(width: Edges<number>)
+```
+
+设置当前RenderNode的边框宽度。
+
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1598,23 +1570,43 @@ struct Index {
 }
 ```
 
+```TypeScript
+get borderWidth(): Edges<number>
+```
+
+获取当前RenderNode的边框宽度。
+
+**类型：** [Edges](arkts-arkui-graphics-edges-i.md)&lt;number&gt;
+
+**默认值：** 0
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [borderWidth](#borderwidth)
+
 ## clipToFrame
 
 ```TypeScript
-get clipToFrame(): boolean
+set clipToFrame(useClip: boolean)
 ```
 
-获取当前RenderNode是否需要进行剪裁。
+设置是否对当前RenderNode剪裁。若设置为true，则超出该RenderNode大小的部分将会被截断。
 
 **类型：** boolean
-
-**默认值：** true [since 11 - 11]
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1665,13 +1657,36 @@ struct Index {
 }
 ```
 
+```TypeScript
+get clipToFrame(): boolean
+```
+
+获取当前RenderNode是否需要进行剪裁。
+
+**类型：** boolean
+
+**默认值：** 
+- API版本11：true
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [clipToFrame](#cliptoframe)
+
 ## contentBlur
 
 ```TypeScript
-get contentBlur(): ContentBlur
+set contentBlur(blurValue: ContentBlur | undefined)
 ```
 
-背景模糊效果。默认值为{radius: 0}。
+设置当前RenderNode的内容模糊效果，对节点绘制内容进行模糊处理。
 
 **类型：** [ContentBlur](arkts-arkui-graphics-contentblur-i.md)
 
@@ -1679,7 +1694,7 @@ get contentBlur(): ContentBlur
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1767,13 +1782,33 @@ struct Index {
 }
 ```
 
+```TypeScript
+get contentBlur(): ContentBlur
+```
+
+背景模糊效果。默认值为{radius: 0}。
+
+**类型：** [ContentBlur](arkts-arkui-graphics-contentblur-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [contentBlur](#contentblur)
+
 ## foregroundBlur
 
 ```TypeScript
-get foregroundBlur(): ForegroundBlur
+set foregroundBlur(blurValue: ForegroundBlur | undefined)
 ```
 
-获取内容模糊效果。
+设置当前RenderNode的前景模糊效果，对节点前景区域进行模糊处理。
 
 **类型：** [ForegroundBlur](arkts-arkui-graphics-foregroundblur-i.md)
 
@@ -1781,7 +1816,7 @@ get foregroundBlur(): ForegroundBlur
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1868,23 +1903,41 @@ struct Index {
 }
 ```
 
+```TypeScript
+get foregroundBlur(): ForegroundBlur
+```
+
+获取内容模糊效果。
+
+**类型：** [ForegroundBlur](arkts-arkui-graphics-foregroundblur-i.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [foregroundBlur](#foregroundblur)
+
 ## frame
 
 ```TypeScript
-get frame(): Frame
+set frame(frame: Frame)
 ```
 
-获取当前RenderNode的大小和位置。
+设置当前RenderNode的大小和位置。当和position、size同时使用时，以后设置的为准。
 
 **类型：** [Frame](arkts-arkui-graphics-frame-i.md)
-
-**默认值：** Frame { x: 0, y: 0, width: 0, height: 0 } [since 11 - 11]
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1929,13 +1982,36 @@ struct Index {
 }
 ```
 
+```TypeScript
+get frame(): Frame
+```
+
+获取当前RenderNode的大小和位置。
+
+**类型：** [Frame](arkts-arkui-graphics-frame-i.md)
+
+**默认值：** 
+- API版本11：Frame { x: 0, y: 0, width: 0, height: 0 }
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [frame](#frame)
+
 ## label
 
 ```TypeScript
-get label(): string
+set label(label: string)
 ```
 
-获取当前RenderNode的标签。
+设置当前RenderNode的标签。若当前节点是通过new创建的RenderNode，则设置的标签信息会显示在节点Inspector信息的属性中。
 
 **类型：** string
 
@@ -1943,7 +2019,7 @@ get label(): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1990,23 +2066,41 @@ struct Index {
 }
 ```
 
-## lengthMetricsUnit
-
 ```TypeScript
-get lengthMetricsUnit(): LengthMetricsUnit
+get label(): string
 ```
 
-获取RenderNode各个属性使用的单位。
+获取当前RenderNode的标签。
 
-**类型：** [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)
-
-**默认值：** LengthMetricsUnit.DEFAULT
+**类型：** string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [label](#label)
+
+## lengthMetricsUnit
+
+```TypeScript
+set lengthMetricsUnit(unit: LengthMetricsUnit)
+```
+
+设置RenderNode各个属性使用的单位。适用于需要精确像素控制（如使用PX单位）或跟随系统默认排版（如使用DEFAULT单位）的场景。
+
+**类型：** [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2069,23 +2163,45 @@ struct Index {
 }
 ```
 
-## markNodeGroup
-
 ```TypeScript
-get markNodeGroup(): boolean
+get lengthMetricsUnit(): LengthMetricsUnit
 ```
 
-获取当前节点是否标记了优先绘制。
+获取RenderNode各个属性使用的单位。
 
-**类型：** boolean
+**类型：** [LengthMetricsUnit](arkts-arkui-graphics-lengthmetricsunit-e.md)
 
-**默认值：** false
+**默认值：** LengthMetricsUnit.DEFAULT
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [lengthMetricsUnit](#lengthmetricsunit)
+
+## markNodeGroup
+
+```TypeScript
+set markNodeGroup(isNodeGroup: boolean)
+```
+
+标记是否优先绘制节点及其子节点。若设置为true，则透明度等属性将在节点绘制完毕后再进行合成，适用于多个半透明节点重叠且需要正确合成透明度效果的场景。设置效果如下：
+
+![markNodeGroup](../../../reference/apis-arkui/figures/renderNode-markNodeGroup.png)
+
+**类型：** boolean
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2150,23 +2266,43 @@ struct Index {
 }
 ```
 
+```TypeScript
+get markNodeGroup(): boolean
+```
+
+获取当前节点是否标记了优先绘制。
+
+**类型：** boolean
+
+**默认值：** false
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [markNodeGroup](#marknodegroup)
+
 ## opacity
 
 ```TypeScript
-get opacity(): number
+set opacity(value: number)
 ```
 
-获取当前RenderNode的不透明度。
+设置当前RenderNode的不透明度。若输入的数值小于0，会被视为0。若输入的数值大于1，会被视为1。
 
 **类型：** number
-
-**默认值：** 1 [since 11 - 11]
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2212,23 +2348,44 @@ struct Index {
 }
 ```
 
-## pivot
-
 ```TypeScript
-get pivot(): Pivot
+get opacity(): number
 ```
 
-获取当前RenderNode的轴心。
+获取当前RenderNode的不透明度。
 
-**类型：** [Pivot](arkts-arkui-pivot-t.md)
+**类型：** number
 
-**默认值：** Pivot { x: 0.5, y: 0.5 } [since 11 - 11]
+**默认值：** 
+- API版本11：1
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [opacity](#opacity)
+
+## pivot
+
+```TypeScript
+set pivot(pivot: Pivot)
+```
+
+设置当前RenderNode的轴心，影响RenderNode的缩放和旋转效果。
+
+**类型：** [Pivot](arkts-arkui-pivot-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2276,23 +2433,44 @@ struct Index {
 }
 ```
 
-## position
-
 ```TypeScript
-get position(): Position
+get pivot(): Pivot
 ```
 
-获取当前RenderNode的位置。
+获取当前RenderNode的轴心。
 
-**类型：** [Position](arkts-arkui-position-t.md)
+**类型：** [Pivot](arkts-arkui-pivot-t.md)
 
-**默认值：** Position { x: 0, y: 0 } [since 11 - 11]
+**默认值：** 
+- API版本11：Pivot { x: 0.5, y: 0.5 }
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [pivot](#pivot)
+
+## position
+
+```TypeScript
+set position(position: Position)
+```
+
+设置当前RenderNode的位置。当和frame同时使用时，以后设置的为准。
+
+**类型：** [Position](arkts-arkui-position-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2338,23 +2516,44 @@ struct Index {
 }
 ```
 
-## rotation
-
 ```TypeScript
-get rotation(): Rotation
+get position(): Position
 ```
 
-获取当前RenderNode的旋转角度。
+获取当前RenderNode的位置。
 
-**类型：** [Rotation](arkts-arkui-rotation-t.md)
+**类型：** [Position](arkts-arkui-position-t.md)
 
-**默认值：** Rotation { x: 0, y: 0, z: 0 } [since 11 - 11]
+**默认值：** 
+- API版本11：Position { x: 0, y: 0 }
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [position](#position)
+
+## rotation
+
+```TypeScript
+set rotation(rotation: Rotation)
+```
+
+设置当前RenderNode的旋转角度。旋转效果以pivot设置的轴心为中心进行旋转。
+
+**类型：** [Rotation](arkts-arkui-rotation-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2400,23 +2599,44 @@ struct Index {
 }
 ```
 
-## scale
-
 ```TypeScript
-get scale(): Scale
+get rotation(): Rotation
 ```
 
-获取当前RenderNode的缩放比例。
+获取当前RenderNode的旋转角度。
 
-**类型：** [Scale](arkts-arkui-scale-t.md)
+**类型：** [Rotation](arkts-arkui-rotation-t.md)
 
-**默认值：** Scale { x: 1, y: 1 } [since 11 - 11]
+**默认值：** 
+- API版本11：Rotation { x: 0, y: 0, z: 0 }
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [rotation](#rotation)
+
+## scale
+
+```TypeScript
+set scale(scale: Scale)
+```
+
+设置当前RenderNode的缩放比例。缩放效果以pivot设置的轴心为中心进行缩放。
+
+**类型：** [Scale](arkts-arkui-scale-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2462,23 +2682,44 @@ struct Index {
 }
 ```
 
-## shadowAlpha
-
 ```TypeScript
-get shadowAlpha(): number
+get scale(): Scale
 ```
 
-获取当前RenderNode的阴影颜色的Alpha值。
+获取当前RenderNode的缩放比例。
 
-**类型：** number
+**类型：** [Scale](arkts-arkui-scale-t.md)
 
-**默认值：** 0 [since 11 - 11]
+**默认值：** 
+- API版本11：Scale { x: 1, y: 1 }
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [scale](#scale)
+
+## shadowAlpha
+
+```TypeScript
+set shadowAlpha(alpha: number)
+```
+
+设置当前RenderNode的阴影颜色的Alpha值。若设置了该属性，则阴影颜色的不透明度以该属性为准，覆盖shadowColor中的Alpha值。
+
+**类型：** number
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2527,23 +2768,44 @@ struct Index {
 }
 ```
 
-## shadowColor
-
 ```TypeScript
-get shadowColor(): number
+get shadowAlpha(): number
 ```
 
-获取当前RenderNode的阴影颜色。
+获取当前RenderNode的阴影颜色的Alpha值。
 
 **类型：** number
 
-**默认值：** 0X00000000 [since 11 - 11]
+**默认值：** 
+- API版本11：0
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shadowAlpha](#shadowalpha)
+
+## shadowColor
+
+```TypeScript
+set shadowColor(color: number)
+```
+
+设置当前RenderNode的阴影颜色，ARGB格式。若设置了shadowAlpha，则不透明度以shadowAlpha为准。
+
+**类型：** number
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2590,23 +2852,44 @@ struct Index {
 }
 ```
 
-## shadowElevation
-
 ```TypeScript
-get shadowElevation(): number
+get shadowColor(): number
 ```
 
-获取当前RenderNode的阴影的光照高度。
+获取当前RenderNode的阴影颜色。
 
 **类型：** number
 
-**默认值：** 0 [since 11 - 11]
+**默认值：** 
+- API版本11：0X00000000
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shadowColor](#shadowcolor)
+
+## shadowElevation
+
+```TypeScript
+set shadowElevation(elevation: number)
+```
+
+设置当前RenderNode的阴影的光照高度。光照高度用于模拟光源相对于节点的高度，值越大阴影越扩散。
+
+**类型：** number
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2654,23 +2937,44 @@ struct Index {
 }
 ```
 
-## shadowOffset
-
 ```TypeScript
-get shadowOffset(): Offset
+get shadowElevation(): number
 ```
 
-获取当前RenderNode的阴影偏移。
+获取当前RenderNode的阴影的光照高度。
 
-**类型：** [Offset](arkts-arkui-offset-t.md)
+**类型：** number
 
-**默认值：** Offset { x: 0, y: 0 } [since 11 - 11]
+**默认值：** 
+- API版本11：0
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shadowElevation](#shadowelevation)
+
+## shadowOffset
+
+```TypeScript
+set shadowOffset(offset: Offset)
+```
+
+设置当前RenderNode的阴影偏移。
+
+**类型：** [Offset](arkts-arkui-offset-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2718,23 +3022,44 @@ struct Index {
 }
 ```
 
-## shadowRadius
-
 ```TypeScript
-get shadowRadius(): number
+get shadowOffset(): Offset
 ```
 
-获取当前RenderNode的阴影模糊半径。
+获取当前RenderNode的阴影偏移。
 
-**类型：** number
+**类型：** [Offset](arkts-arkui-offset-t.md)
 
-**默认值：** 0 [since 11 - 11]
+**默认值：** 
+- API版本11：Offset { x: 0, y: 0 }
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shadowOffset](#shadowoffset)
+
+## shadowRadius
+
+```TypeScript
+set shadowRadius(radius: number)
+```
+
+设置当前RenderNode的阴影模糊半径。
+
+**类型：** number
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2788,13 +3113,36 @@ struct Index {
 }
 ```
 
+```TypeScript
+get shadowRadius(): number
+```
+
+获取当前RenderNode的阴影模糊半径。
+
+**类型：** number
+
+**默认值：** 
+- API版本11：0
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shadowRadius](#shadowradius)
+
 ## shapeClip
 
 ```TypeScript
-get shapeClip(): ShapeClip
+set shapeClip(shapeClip: ShapeClip)
 ```
 
-获取当前RenderNode的裁剪形状。
+设置当前RenderNode的裁剪形状。
 
 **类型：** [ShapeClip](arkts-arkui-graphics-shapeclip-c.md)
 
@@ -2802,7 +3150,7 @@ get shapeClip(): ShapeClip
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2906,13 +3254,33 @@ struct Index {
 }
 ```
 
+```TypeScript
+get shapeClip(): ShapeClip
+```
+
+获取当前RenderNode的裁剪形状。
+
+**类型：** [ShapeClip](arkts-arkui-graphics-shapeclip-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shapeClip](#shapeclip)
+
 ## shapeMask
 
 ```TypeScript
-get shapeMask(): ShapeMask
+set shapeMask(shapeMask: ShapeMask)
 ```
 
-获取当前RenderNode的遮罩。
+设置当前RenderNode的遮罩。
 
 **类型：** [ShapeMask](arkts-arkui-graphics-shapemask-c.md)
 
@@ -2920,7 +3288,7 @@ get shapeMask(): ShapeMask
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2974,23 +3342,41 @@ struct Index {
 }
 ```
 
+```TypeScript
+get shapeMask(): ShapeMask
+```
+
+获取当前RenderNode的遮罩。
+
+**类型：** [ShapeMask](arkts-arkui-graphics-shapemask-c.md)
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [shapeMask](#shapemask)
+
 ## size
 
 ```TypeScript
-get size(): Size
+set size(size: Size)
 ```
 
-获取当前RenderNode的大小。
+设置当前RenderNode的大小。当和frame同时使用时，以后设置的为准。
 
 **类型：** Size
-
-**默认值：** Size { width: 0, height: 0 } [since 11 - 11]
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3035,31 +3421,44 @@ struct Index {
 }
 ```
 
-## transform
-
 ```TypeScript
-get transform(): Matrix4
+get size(): Size
 ```
 
-获取当前RenderNode的变换矩阵。默认值为：  
-```ts
-[
- 1, 0, 0, 0,
- 0, 1, 0, 0,
- 0, 0, 1, 0,
- 0, 0, 0, 1
-]
-```
+获取当前RenderNode的大小。
 
-**类型：** [Matrix4](arkts-arkui-matrix4-t.md)
+**类型：** Size
 
-**默认值：** Matrix4 [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ] [since 11 - 11]
+**默认值：** 
+- API版本11：Size { width: 0, height: 0 }
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [size](#size)
+
+## transform
+
+```TypeScript
+set transform(transform: Matrix4)
+```
+
+设置当前RenderNode的变换矩阵。
+
+**类型：** [Matrix4](arkts-arkui-matrix4-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3110,23 +3509,52 @@ struct Index {
 }
 ```
 
-## translation
-
 ```TypeScript
-get translation(): Translation
+get transform(): Matrix4
 ```
 
-获取当前RenderNode的平移量。
+获取当前RenderNode的变换矩阵。默认值为：  
+```ts
+[
+ 1, 0, 0, 0,
+ 0, 1, 0, 0,
+ 0, 0, 1, 0,
+ 0, 0, 0, 1
+]
+```
 
-**类型：** [Translation](arkts-arkui-translation-t.md)
+**类型：** [Matrix4](arkts-arkui-matrix4-t.md)
 
-**默认值：** Translation { x: 0, y: 0 } [since 11 - 11]
+**默认值：** 
+- API版本11：Matrix4 [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 ]
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [transform](#transform)
+
+## translation
+
+```TypeScript
+set translation(translation: Translation)
+```
+
+设置当前RenderNode的平移量。
+
+**类型：** [Translation](arkts-arkui-translation-t.md)
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3171,3 +3599,26 @@ struct Index {
   }
 }
 ```
+
+```TypeScript
+get translation(): Translation
+```
+
+获取当前RenderNode的平移量。
+
+**类型：** [Translation](arkts-arkui-translation-t.md)
+
+**默认值：** 
+- API版本11：Translation { x: 0, y: 0 }
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+参见 [translation](#translation)

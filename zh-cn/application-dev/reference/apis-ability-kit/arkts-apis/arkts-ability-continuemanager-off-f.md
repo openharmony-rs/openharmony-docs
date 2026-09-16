@@ -12,7 +12,9 @@ import { continueManager } from '@kit.AbilityKit';
 function off(type: 'prepareContinue', context: Context, callback?: AsyncCallback<ContinueResultInfo>): void
 ```
 
-在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。说明：快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用module.json5配置文件的continueType标签的取值中添加"_ContinueQuickStart"后缀，可以开启快速拉起功能。
+在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
+
+说明：快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用module.json5配置文件的continueType标签的取值中添加"_ContinueQuickStart"后缀，可以开启快速拉起功能。
 
 **起始版本：** 18
 
@@ -26,7 +28,7 @@ function off(type: 'prepareContinue', context: Context, callback?: AsyncCallback
 | --- | --- | --- | --- |
 | type | 'prepareContinue' | 是 | 固定值：prepareContinue。若未填写，则注销所有已注册的回调；若已填写，则注销指定的回调函数。 |
 | context | [Context](arkts-ability-context-c.md) | 是 | Ability（应用组件）的Context。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ContinueResultInfo](arkts-ability-continuemanager-continueresultinfo-i.md)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获取到的回调函数注销结果。否则为错误对 象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ContinueResultInfo](arkts-ability-continuemanager-continueresultinfo-i.md)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获取到的回调函数注销结果。否则为错误对象。 |
 
 **错误码：**
 

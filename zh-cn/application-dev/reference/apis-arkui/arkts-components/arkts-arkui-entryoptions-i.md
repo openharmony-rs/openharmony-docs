@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## routeName
 
 ```TypeScript
@@ -25,7 +20,7 @@ routeName? : string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -37,7 +32,7 @@ routeName? : string
 storage? : LocalStorage
 ```
 
-页面级的UI状态存储。当需要在页面外部预先创建并管理UI状态、或需要将已有的LocalStorage实例绑定到此页面以实现状态共享时，传入此参数。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。当 useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
+页面级的UI状态存储。当需要在页面外部预先创建并管理UI状态、或需要将已有的LocalStorage实例绑定到此页面以实现状态共享时，传入此参数。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
 **类型：** [LocalStorage](../arkts-apis/arkts-arkui-localstorage-c.md)
 
@@ -45,7 +40,7 @@ storage? : LocalStorage
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -57,7 +52,7 @@ storage? : LocalStorage
 useSharedStorage? : boolean
 ```
 
-是否使用 [loadContent](../arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent) 传入的LocalStorage实例。默认值false。true：使用共享的LocalStorage实例（前提条件：需确保loadContent接口已传入LocalStorage实例；若未传入，则创建新的LocalStorage实例 ）。false：不使用共享的LocalStorage实例。当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
+是否使用[loadContent](../arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent)传入的LocalStorage实例。默认值false。true：使用共享的LocalStorage实例（前提条件：需确保loadContent接口已传入LocalStorage实例；若未传入，则创建新的LocalStorage实例）。false：不使用共享的LocalStorage实例。当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
 **类型：** boolean
 
@@ -65,21 +60,8 @@ useSharedStorage? : boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例**
-
-```TypeScript
-// 设置路由页面名字为myPage
-@Entry({ routeName: 'myPage' })
-@Component
-struct Index {
-  build() {
-    Text('Index')
-  }
-}
-```

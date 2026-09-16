@@ -30,7 +30,7 @@ function getSignatureInfo(uid: number): SignatureInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| SignatureInfo | 返回SignatureInfo对象。 |
+| [SignatureInfo](arkts-ability-bundlemanager-signatureinfo-t.md) | 返回SignatureInfo对象。 |
 
 **错误码：**
 

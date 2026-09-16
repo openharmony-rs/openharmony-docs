@@ -20,7 +20,7 @@ size: window.Size
 
 更新模板类型时需要提供的窗口尺寸。
 
-**类型：** window.Size
+**类型：** [window.Size](arkts-arkui-window-size-i.md)
 
 **起始版本：** 26.0.0
 

@@ -12,4 +12,4 @@ export type AlternateIconInfo = _BundleInfo.AlternateIconInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**属性类型：** _BundleInfo.AlternateIconInfo
+**类型：** [_BundleInfo.AlternateIconInfo](arkts-ability-bundleinfo-alternateiconinfo-i.md)

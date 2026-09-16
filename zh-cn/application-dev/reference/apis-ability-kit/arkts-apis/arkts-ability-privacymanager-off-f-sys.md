@@ -15,9 +15,11 @@ function off(
     callback?: Callback<ActiveChangeResponse>): void
 ```
 
-取消订阅指定权限列表的权限使用状态变更事件。取消订阅成功后，将不再接收指定权限列表的状态变更通知。取消订阅时，若不传入回调函数，则批量删除permissionList下的所有回调函数。
+取消订阅指定权限列表的权限使用状态变更事件。取消订阅成功后，将不再接收指定权限列表的状态变更通知。
 
-> **说明：**
+取消订阅时，若不传入回调函数，则批量删除permissionList下的所有回调函数。
+
+> **说明：** 
 > 该接口通常与[on](arkts-ability-privacymanager-on-f-sys.md)配套使用，用于取消通过on创建的监听关系。
 
 **起始版本：** 9
@@ -33,8 +35,8 @@ function off(
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'activeStateChange' | 是 | 取消订阅事件类型，固定为'activeStateChange'，权限使用状态变更事件。 |
-| permissionList | Array &lt;Permissions&gt; | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致。 取值约束：数组长度不能超过1024。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md)&gt; | 否 | 回调函数，返回取消订阅指定tokenId与指定权限名状态变更事件的对象。需与 on 传入的callback一致；不传入此参数时，将批量删除permissionList下的所有回调函数。 取值约束：数组长度不能超过1024。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与on的输入一致。<br>取值约束：数组长度不能超过1024。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ActiveChangeResponse](arkts-ability-privacymanager-activechangeresponse-i-sys.md)&gt; | 否 | 回调函数，返回取消订阅指定tokenId与指定权限名状态变更事件的对象。需与[on](arkts-ability-privacymanager-on-f-sys.md#onactivestatechange)传入的callback一致；不传入此参数时，将批量删除permissionList下的所有回调函数。<br>取值约束：数组长度不能超过1024。 |
 
 **错误码：**
 

@@ -4,6 +4,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ObservedV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
 ## 导入模块
@@ -22,7 +24,7 @@ ArcSliderLayoutOptions的构造函数。
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -38,7 +40,11 @@ ArcSliderLayoutOptions的构造函数。
 position?: ArcSliderPosition
 ```
 
-弧形Slider的屏幕显示位置。默认值：ArcSliderPosition.RIGHT@Trace
+弧形Slider的屏幕显示位置。
+
+默认值：ArcSliderPosition.RIGHT
+
+@Trace
 
 **类型：** [ArcSliderPosition](arkts-arkui-arkui-advanced-arcslider-arcsliderposition-e.md)
 
@@ -46,7 +52,9 @@ position?: ArcSliderPosition
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -56,7 +64,11 @@ position?: ArcSliderPosition
 reverse?: boolean
 ```
 
-设置弧形Slider的滑动方向。值为false时表示从上往下滑。默认值：true，表示从下往上滑动。@Trace
+设置弧形Slider的滑动方向。值为false时表示从上往下滑。
+
+默认值：true，表示从下往上滑动。
+
+@Trace
 
 **类型：** boolean
 
@@ -64,6 +76,8 @@ reverse?: boolean
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**装饰器类型：** @Trace
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

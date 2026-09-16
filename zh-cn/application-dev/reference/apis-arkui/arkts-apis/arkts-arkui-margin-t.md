@@ -4,14 +4,16 @@
 declare type Margin = Padding
 ```
 
-Defines the margin property.
+外边距类型，用于描述组件不同方向的外边距。
 
-**起始版本：** 11
+引入该对象时，至少传入一个参数。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**起始版本：** 7
 
-**卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** Padding
+**类型：** Padding

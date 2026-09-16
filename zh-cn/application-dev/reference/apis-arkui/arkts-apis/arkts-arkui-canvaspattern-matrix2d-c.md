@@ -18,7 +18,7 @@ constructor()
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -36,7 +36,7 @@ identity(): Matrix2D
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -60,7 +60,7 @@ invert(): Matrix2D
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -84,7 +84,7 @@ multiply(other?: Matrix2D): Matrix2D
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -94,7 +94,7 @@ multiply(other?: Matrix2D): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| other | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 否 | 目标矩阵。异常值undefined和null按无效值处理。默认值：null |
+| other | [Matrix2D](arkts-arkui-canvaspattern-matrix2d-c.md) | 否 | 目标矩阵。<br>异常值undefined和null按无效值处理。<br>默认值：null |
 
 **返回值：**
 
@@ -114,7 +114,7 @@ rotate(rx?: number, ry?: number): Matrix2D
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -124,8 +124,8 @@ rotate(rx?: number, ry?: number): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rx | number | 否 | 旋转点的水平方向坐标，取值范围无限制。异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。默认单位：vp |
-| ry | number | 否 | 旋转点的垂直方向坐标，取值范围无限制。异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。默认单位：vp |
+| rx | number | 否 | 旋转点的水平方向坐标，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp |
+| ry | number | 否 | 旋转点的垂直方向坐标，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp |
 
 **返回值：**
 
@@ -145,7 +145,7 @@ scale(sx?: number, sy?: number): Matrix2D
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -155,8 +155,8 @@ scale(sx?: number, sy?: number): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sx | number | 否 | 水平缩放比例系数，取值范围无限制。异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。默认值：1.0 |
-| sy | number | 否 | 垂直缩放比例系数，取值范围无限制。异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。默认值：1.0 |
+| sx | number | 否 | 水平缩放比例系数，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：1.0 |
+| sy | number | 否 | 垂直缩放比例系数，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：1.0 |
 
 **返回值：**
 
@@ -176,7 +176,7 @@ translate(tx?: number, ty?: number): Matrix2D
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -186,8 +186,8 @@ translate(tx?: number, ty?: number): Matrix2D
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| tx | number | 否 | 水平方向平移距离，取值范围无限制。异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。默认单位：vp默认值：0 |
-| ty | number | 否 | 垂直方向平移距离，取值范围无限制。异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。默认单位：vp默认值：0 |
+| tx | number | 否 | 水平方向平移距离，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp<br>默认值：0 |
+| ty | number | 否 | 垂直方向平移距离，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：vp<br>默认值：0 |
 
 **返回值：**
 
@@ -201,7 +201,7 @@ translate(tx?: number, ty?: number): Matrix2D
 rotateX?: number
 ```
 
-水平倾斜系数，取值范围无限制。异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
+水平倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
 
 **类型：** number
 
@@ -209,7 +209,7 @@ rotateX?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -221,7 +221,7 @@ rotateX?: number
 rotateY?: number
 ```
 
-垂直倾斜系数，取值范围无限制。异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
+垂直倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
 
 **类型：** number
 
@@ -229,7 +229,7 @@ rotateY?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -241,7 +241,7 @@ rotateY?: number
 scaleX?: number
 ```
 
-水平缩放系数，取值范围无限制。异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
+水平缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
 
 **类型：** number
 
@@ -249,7 +249,7 @@ scaleX?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -261,7 +261,7 @@ scaleX?: number
 scaleY?: number
 ```
 
-垂直缩放系数，取值范围无限制。异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
+垂直缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。
 
 **类型：** number
 
@@ -269,7 +269,7 @@ scaleY?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -281,7 +281,7 @@ scaleY?: number
 translateX?: number
 ```
 
-水平平移距离，取值范围无限制。异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。默认单位：vp
+水平平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。<br>默认单位：vp
 
 **类型：** number
 
@@ -289,7 +289,7 @@ translateX?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -301,7 +301,7 @@ translateX?: number
 translateY?: number
 ```
 
-垂直平移距离，取值范围无限制。异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。默认单位：vp
+垂直平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。<br>默认单位：vp
 
 **类型：** number
 
@@ -309,7 +309,7 @@ translateY?: number
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 

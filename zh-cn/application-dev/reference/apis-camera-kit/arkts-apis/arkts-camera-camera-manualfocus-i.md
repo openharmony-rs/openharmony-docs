@@ -11,6 +11,7 @@ ManualFocus object.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getFocusDistance
@@ -23,7 +24,7 @@ Gets current focus distance, ranging from 0.0 to 1.0, with 0.0 being shortest di
 
 **起始版本：** 24
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -51,7 +52,7 @@ Sets focus distance. Possible distance values range from 0.0 to 1.0, with 0.0 be
 
 **起始版本：** 24
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

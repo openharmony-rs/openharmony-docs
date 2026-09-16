@@ -11,6 +11,7 @@ Provides the API to obtain the color effects supported.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getSupportedColorEffects

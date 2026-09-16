@@ -24,7 +24,7 @@ countryOrRegion: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -34,15 +34,17 @@ countryOrRegion: string
 dir: "ltr" | "rtl"
 ```
 
-文字布局方向。取值范围：  
-- ltr：从左到右。  
+文字布局方向。取值范围：
+
+- ltr：从左到右。
+
 - rtl：从右到左。
 
-**类型：** "ltr" \| "rtl"
+**类型：** "ltr" &#124; "rtl"
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -58,6 +60,6 @@ language: string
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite

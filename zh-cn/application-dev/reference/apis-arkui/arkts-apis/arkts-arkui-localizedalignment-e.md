@@ -1,6 +1,8 @@
 # LocalizedAlignment
 
-LocalizedAlignment enumeration description.@enum { string }
+LocalizedAlignment enumeration description.
+
+@enum { string }
 
 **起始版本：** 20
 
@@ -18,7 +20,7 @@ Top Start.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -36,7 +38,7 @@ The top is centered horizontally.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -54,7 +56,7 @@ Top tail end.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -72,7 +74,7 @@ The starting end is centered longitudinally.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -90,7 +92,7 @@ Center horizontal and vertical.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -108,7 +110,7 @@ The tail end is centered longitudinally.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -126,7 +128,7 @@ Bottom starting end.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -144,7 +146,7 @@ The bottom is centered horizontally.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
@@ -162,7 +164,7 @@ Bottom end.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 

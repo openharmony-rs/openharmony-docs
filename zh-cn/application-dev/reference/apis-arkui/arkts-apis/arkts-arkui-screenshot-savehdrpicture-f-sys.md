@@ -12,16 +12,17 @@ import { screenshot } from '@kit.ArkUI';
 function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.PixelMap>>
 ```
 
-获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。  
+获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。
+
 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。  
 - 当物理屏不存在HDR资源时，与[save](arkts-arkui-screenshot-save-f-sys.md)  
-接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备 [save](arkts-arkui-screenshot-save-f-sys.md)接口的裁剪、拉伸、旋转功能。
+接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](arkts-arkui-screenshot-save-f-sys.md)接口的裁剪、拉伸、旋转功能。
 
 **起始版本：** 20
 
 **需要权限：** 
 - API版本22+：ohos.permission.CAPTURE_SCREEN or ohos.permission.CUSTOM_SCREEN_RECORDING
-- API版本20 - 21：ohos.permission.CAPTURE_SCREEN
+- API版本20-21：ohos.permission.CAPTURE_SCREEN
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -37,7 +38,7 @@ function saveHdrPicture(options?: HdrScreenshotOptions): Promise<Array<image.Pix
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;image.PixelMap&gt;&gt; | Promise used to return an array of PixelMap objects. If the screen contains HDR resources (even if they are partially obscured), the array contains two PixelMaps: the first is an SDR PixelMap, and the second is an HDR PixelMap. If there are no HDR resources, the array contains a single SDR PixelMap. |
+| Promise&lt;Array&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt;&gt; | Promise used to return an array of PixelMap objects. If the screen contains HDR resources (even if they are partially obscured), the array contains two PixelMaps: the first is an SDR PixelMap, and the second is an HDR PixelMap. If there are no HDR resources, the array contains a single SDR PixelMap. |
 
 **错误码：**
 

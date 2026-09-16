@@ -14,4 +14,4 @@ export type PopupSize = _AutoFillPopupConfig.PopupSize
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AutoFillPopupConfig.PopupSize
+**类型：** [_AutoFillPopupConfig.PopupSize](arkts-ability-autofillpopupconfig-popupsize-i-sys.md)

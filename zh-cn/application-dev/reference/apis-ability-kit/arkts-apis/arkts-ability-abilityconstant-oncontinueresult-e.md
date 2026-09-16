@@ -18,7 +18,7 @@ AGREE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,7 +34,7 @@ REJECT = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,24 +44,12 @@ REJECT = 1
 MISMATCH = 2
 ```
 
-表示版本不匹配：迁移发起端应用可以在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中获取到迁移目标端应用的版本号，进行协商后，如果版本不 匹配导致无法迁移，可以返回该结果。
+表示版本不匹配：迁移发起端应用可以在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中获取到迁移目标端应用的版本号，进行协商后，如果版本不匹配导致无法迁移，可以返回该结果。
 
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**示例**
-
-```TypeScript
-import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
-export default class MyAbility extends UIAbility {
-  onContinue(wantParam: Record<string, Object>) {
-    return AbilityConstant.OnContinueResult.AGREE;
-  }
-}
-```

@@ -18,7 +18,9 @@ import { ComposeListItemV2, ContentItemV2, ContentItemV2Options, IconTypeV2, Ope
 arrow?: OperateIconV2
 ```
 
-列表项右侧元素为箭头。默认不设置或设置为undefined时，不显示箭头。
+列表项右侧元素为箭头。
+
+默认不设置或设置为undefined时，不显示箭头。
 
 **类型：** [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md)
 
@@ -26,7 +28,7 @@ arrow?: OperateIconV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +38,9 @@ arrow?: OperateIconV2
 button?: OperateButtonV2
 ```
 
-列表项右侧元素为按钮。默认不设置或设置为undefined时，不显示按钮。
+列表项右侧元素为按钮。
+
+默认不设置或设置为undefined时，不显示按钮。
 
 **类型：** [OperateButtonV2](arkts-arkui-arkui-advanced-composelistitemv2-operatebuttonv2-c.md)
 
@@ -44,7 +48,7 @@ button?: OperateButtonV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +58,9 @@ button?: OperateButtonV2
 checkbox?: OperateCheckV2
 ```
 
-列表项右侧元素为多选框。默认不设置或设置为undefined时，不显示多选框。
+列表项右侧元素为多选框。
+
+默认不设置或设置为undefined时，不显示多选框。
 
 **类型：** [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md)
 
@@ -62,7 +68,7 @@ checkbox?: OperateCheckV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +78,11 @@ checkbox?: OperateCheckV2
 icon?: OperateIconV2
 ```
 
-左侧元素的图标资源。默认不设置或设置为undefined，表示不显示icon图标资源。同时设置symbolStyle时，只显示Symbol图标。
+左侧元素的图标资源。
+
+默认不设置或设置为undefined，表示不显示icon图标资源。
+
+同时设置symbolStyle时，只显示Symbol图标。
 
 **类型：** [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md)
 
@@ -80,7 +90,7 @@ icon?: OperateIconV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +100,11 @@ icon?: OperateIconV2
 image?: ResourceStr
 ```
 
-列表项右侧元素为图片。默认不设置或设置为undefined时，不显示图片。同时设置symbolStyle时，只显示Symbol图标。
+列表项右侧元素为图片。
+
+默认不设置或设置为undefined时，不显示图片。
+
+同时设置symbolStyle时，只显示Symbol图标。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -98,7 +112,7 @@ image?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +122,9 @@ image?: ResourceStr
 radio?: OperateCheckV2
 ```
 
-列表项右侧元素为单选框。默认不设置或设置为undefined时，不显示单选框。
+列表项右侧元素为单选框。
+
+默认不设置或设置为undefined时，不显示单选框。
 
 **类型：** [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md)
 
@@ -116,7 +132,7 @@ radio?: OperateCheckV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +142,9 @@ radio?: OperateCheckV2
 subIcon?: OperateIconV2
 ```
 
-列表项右侧元素的第二个图标。默认不设置或设置为undefined时，不显示第二个图标。
+列表项右侧元素的第二个图标。
+
+默认不设置或设置为undefined时，不显示第二个图标。
 
 **类型：** [OperateIconV2](arkts-arkui-arkui-advanced-composelistitemv2-operateiconv2-c.md)
 
@@ -134,7 +152,7 @@ subIcon?: OperateIconV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,15 +162,17 @@ subIcon?: OperateIconV2
 symbolStyle?: SymbolGlyphModifier
 ```
 
-列表项右侧元素为Symbol图标资源，优先级大于image，同时设置时只显示Symbol图标。默认不设置或设置为undefined时，不显示Symbol图标。
+列表项右侧元素为Symbol图标资源，优先级大于image，同时设置时只显示Symbol图标。
 
-**类型：** SymbolGlyphModifier
+默认不设置或设置为undefined时，不显示Symbol图标。
+
+**类型：** [SymbolGlyphModifier](../arkts-components/arkts-arkui-symbolglyphmodifier-t.md)
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,7 +182,9 @@ symbolStyle?: SymbolGlyphModifier
 text?: ResourceStr
 ```
 
-列表项右侧元素为文字。默认不设置或设置为undefined时，不显示文字。
+列表项右侧元素为文字。
+
+默认不设置或设置为undefined时，不显示文字。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -170,7 +192,7 @@ text?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +202,9 @@ text?: ResourceStr
 toggle?: OperateCheckV2
 ```
 
-列表项右侧元素为开关。默认不设置或设置为undefined时，不显示开关。
+列表项右侧元素为开关。
+
+默认不设置或设置为undefined时，不显示开关。
 
 **类型：** [OperateCheckV2](arkts-arkui-arkui-advanced-composelistitemv2-operatecheckv2-c.md)
 
@@ -188,6 +212,6 @@ toggle?: OperateCheckV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

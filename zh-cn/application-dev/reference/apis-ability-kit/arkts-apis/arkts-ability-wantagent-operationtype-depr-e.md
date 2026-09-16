@@ -24,7 +24,7 @@ UNKNOWN_TYPE = 0
 
 **替代接口：** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#unknown_type)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -42,7 +42,7 @@ START_ABILITY
 
 **替代接口：** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#start_ability)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,7 +60,7 @@ START_ABILITIES
 
 **替代接口：** [START_ABILITIES](arkts-ability-wantagent-operationtype-e.md#start_abilities)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -78,7 +78,7 @@ START_SERVICE
 
 **替代接口：** [START_SERVICE](arkts-ability-wantagent-operationtype-e.md#start_service)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -96,6 +96,6 @@ SEND_COMMON_EVENT
 
 **替代接口：** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#send_common_event)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

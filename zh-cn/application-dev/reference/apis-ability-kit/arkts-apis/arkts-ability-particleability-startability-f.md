@@ -14,7 +14,7 @@ function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<
 
 启动指定的particleAbility。使用callback异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
 
@@ -60,39 +60,6 @@ particleAbility.startAbility(
 );
 ```
 
-
-## startAbility
-
-```TypeScript
-function startAbility(parameter: StartAbilityParameter): Promise<void>
-```
-
-启动指定的particleAbility。使用Promise异步回调。
-
-> **说明：**
-> 
-> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示启动的ability。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**示例**
-
 ```TypeScript
 import { particleAbility, wantConstant } from '@kit.AbilityKit';
 
@@ -114,3 +81,38 @@ particleAbility.startAbility(
   console.info('particleAbility startAbility');
 });
 ```
+
+
+## startAbility
+
+```TypeScript
+function startAbility(parameter: StartAbilityParameter): Promise<void>
+```
+
+启动指定的particleAbility。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 组件启动规则详见：[组件启动规则（FA模型）](../../../application-models/component-startup-rules-fa.md)。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示启动的ability。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
+参见 [startAbility](#startability)

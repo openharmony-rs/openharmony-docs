@@ -6,7 +6,7 @@ typedef struct ArkUI_ContentTransitionEffect ArkUI_ContentTransitionEffect
 
 ## 概述
 
-Set the types and parameters related to content transition effects.
+设置与内容转场效果相关的类型和参数。
 
 **起始版本：** 21
 

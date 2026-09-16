@@ -52,6 +52,23 @@ try {
 }
 ```
 
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+try {
+  // 清理所有未锁定的任务
+  missionManager.clearAllMissions().then((data) => {
+    console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
+}
+```
+
 
 ## clearAllMissions
 
@@ -77,23 +94,8 @@ function clearAllMissions(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
-
-try {
-  // 清理所有未锁定的任务
-  missionManager.clearAllMissions().then((data) => {
-    console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
-}
-```
+参见 [clearAllMissions](#clearallmissions)

@@ -2,7 +2,7 @@
 
 栅格元素排列方向。
 
-> **说明：**
+> **说明：** 
 > 
 > - 栅格元素仅支持Row/RowReverse排列，不支持Column/ColumnReverse方向排列。
 > 
@@ -14,7 +14,7 @@
 > 
 > - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。
 > 
-> 
+> ![figures/gridRowOffsetToNextLine.png](../../../reference/apis-arkui/arkui-ts/figures/gridRowOffsetToNextLine.png)
 
 **起始版本：** 9
 
@@ -30,7 +30,7 @@ Row = 0
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -46,7 +46,7 @@ RowReverse = 1
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

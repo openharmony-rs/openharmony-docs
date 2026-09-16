@@ -20,12 +20,12 @@ uiExtensionHostWindowProxyRect: window.Rect
 
 组件（EmbeddedComponent或UIExtensionComponent）的位置和宽高。
 
-**类型：** window.Rect
+**类型：** [window.Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

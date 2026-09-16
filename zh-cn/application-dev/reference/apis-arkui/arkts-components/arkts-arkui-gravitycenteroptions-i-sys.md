@@ -1,6 +1,11 @@
 # GravityCenterOptions（系统接口）
 
-定义引力中心的参数。
+定义引力中心参数。
+
+> **说明：** 
+> 
+> 此参数必须与[unionMode](arkts-arkui-unioneffectcontainer-comp-attribute.md#unionmode)一起使用，且unionMode须为UnionMode.GRAVITY_UNION，
+> 同时useUnionEffect的value须为true时才生效，单独设置不生效。
 
 **起始版本：** 26.0.0
 
@@ -8,18 +13,17 @@
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
-
 ## gravityCenter
 
 ```TypeScript
 gravityCenter?: boolean
 ```
 
-指定当前组件是否为引力中心。 默认值： 非。
+指定当前组件是否为引力中心。
+
+设置为true表示当前组件是引力中心；设置为false表示当前组件不是引力中心。
+
+默认值：false
 
 **类型：** boolean
 
@@ -37,7 +41,13 @@ gravityCenter?: boolean
 gravityIntensity?: number
 ```
 
-定义引力中心吸引力/排斥力的引力强度。 负数是排斥力，正数是吸引力。 默认值： 0。
+定义引力中心处吸引力或排斥力的强度。
+
+仅在gravityCenter为true时生效。
+
+默认值：0
+
+负数表示排斥力，正数表示吸引力。
 
 **类型：** number
 
@@ -48,7 +58,3 @@ gravityIntensity?: number
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-
-**示例**
-
-示例请参考[UnionEffectContainer示例](ts-container-unioneffectcomponent-sys.md#示例)。

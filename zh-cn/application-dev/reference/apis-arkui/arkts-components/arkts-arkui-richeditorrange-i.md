@@ -6,18 +6,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## end
 
 ```TypeScript
 end?: number
 ```
 
-文本的结束位置，省略或者超出文本范围时表示无穷大。
+文本的结束位置，与start共同表示选中文本的范围[start, end)，结束位置对应的内容不包含在内，省略或者超出文本范围时表示无穷大。
 
 **类型：** number
 
@@ -27,7 +22,7 @@ end?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +42,6 @@ start?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

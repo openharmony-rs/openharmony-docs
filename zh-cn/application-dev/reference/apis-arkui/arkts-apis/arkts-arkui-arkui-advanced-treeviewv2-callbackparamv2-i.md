@@ -18,7 +18,13 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 childIndex?: number
 ```
 
-返回子索引。取值范围：大于等于-1。默认值：-1仅在节点移动事件中有效，表示移动后的位置索引。
+返回子索引。
+
+取值范围：大于等于-1。
+
+默认值：-1
+
+仅在节点移动事件中有效，表示移动后的位置索引。
 
 **类型：** number
 
@@ -26,7 +32,7 @@ childIndex?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +42,9 @@ childIndex?: number
 currentNodeId: number
 ```
 
-返回当前子节点id。取值范围：大于等于0。
+返回当前子节点id。
+
+取值范围：大于等于0。
 
 **类型：** number
 
@@ -44,7 +52,7 @@ currentNodeId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +62,11 @@ currentNodeId: number
 parentNodeId?: number
 ```
 
-返回当前父节点id。取值范围：大于等于-1。默认值：-1
+返回当前父节点id。
+
+取值范围：大于等于-1。
+
+默认值：-1
 
 **类型：** number
 
@@ -62,6 +74,6 @@ parentNodeId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

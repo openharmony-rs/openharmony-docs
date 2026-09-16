@@ -2,7 +2,7 @@
 
 Context是Stage模型的上下文基类，主要用于访问特定应用程序的资源，以及执行应用级操作的回调。
 
-**继承/实现关系：** Context extends BaseContext
+**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
 
 **起始版本：** 9
 
@@ -16,10 +16,9 @@ createBundleContext(bundleName: string): Context
 
 根据Bundle名称创建安装包的上下文。
 
-> **说明：**
+> **说明：** 
 > 
-> - stage模型多module的情况下可能发生资源id冲突的情况，建议使用
-> [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md)替代。
+> - stage模型多module的情况下可能发生资源id冲突的情况，建议使用[application.createModuleContext](arkts-ability-application-createmodulecontext-f.md)替代。
 
 **起始版本：** 9
 
@@ -124,6 +123,24 @@ export default class EntryAbility extends UIAbility {
     console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
+      // 根据模块名创建上下文
+      moduleContext = this.context.createModuleContext('entry');
+    } catch (error) {
+      console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+    }
+  }
+}
+```
+
+```TypeScript
+import { common, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    let moduleContext: common.Context;
+    try {
       moduleContext = this.context.createModuleContext('com.example.test', 'entry');
     } catch (error) {
       console.error(`createModuleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
@@ -161,7 +178,7 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 | 类型 | 说明 |
 | --- | --- |
-| resmgr.ResourceManager | 资源管理对象。 |
+| [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md) | 资源管理对象。 |
 
 **错误码：**
 
@@ -197,7 +214,7 @@ export default class EntryAbility extends UIAbility {
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 ```
 
-该接口用于OEM厂商预置的[系统级HSP](../../../quick-start/application-package-glossary.md#系统级hsp)创建自己的 [ResourceManager](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)。
+该接口用于OEM厂商预置的[系统级HSP](../../../quick-start/application-package-glossary.md#系统级hsp)创建自己的[ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)。
 
 **起始版本：** 12
 
@@ -218,7 +235,7 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 
 | 类型 | 说明 |
 | --- | --- |
-| resmgr.ResourceManager | 系统HSP模块资源管理对象。 |
+| [resmgr.ResourceManager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md) | 系统HSP模块资源管理对象。 |
 
 **错误码：**
 

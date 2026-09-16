@@ -28,7 +28,7 @@ onCancel(fillContent?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| fillContent | string | 否 | 表示通知自动填充取消后，返回给输入法框架的填充内容。<br>**起始版本：** 12 |
+| fillContent | string | 否 | 表示通知自动填充取消后，返回给输入法框架的填充内容。<br>**适用版本：** 12 |
 
 **错误码：**
 
@@ -36,7 +36,7 @@ onCancel(fillContent?: string): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission denied, non-system app called system api. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:  1.The input parameter is not valid parameter;  2. Mandatory parameters are left unspecified.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br>1.The input parameter is not valid parameter; <br>2. Mandatory parameters are left unspecified.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -201,81 +201,13 @@ struct AutoFillPage {
 }
 ```
 
-```TypeScript
-// MyAutoFillExtensionAbility.ts
-import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
-  onSaveRequest(session: UIExtensionContentSession,
-    request: autoFillManager.SaveRequest,
-    callback: autoFillManager.SaveRequestCallback) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
-    try {
-      let storageData: Record<string, string | autoFillManager.SaveRequestCallback | autoFillManager.ViewData> = {
-        'message': 'AutoFill Page',
-        'saveCallback': callback,
-        'viewData': request.viewData
-      }
-      let storage_save = new LocalStorage(storageData);
-      if (session) {
-        session.loadContent('pages/SavePage', storage_save);
-      } else {
-        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
-      }
-    } catch (err) {
-      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
-    }
-  }
-}
-```
-
-```TypeScript
-// SavePage.ets
-import { autoFillManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct SavePage {
-  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
-  // saveCallback由AutoFillExtensionAbility的onSaveRequest回调传入LocalStorage
-  saveCallback: autoFillManager.SaveRequestCallback | undefined =
-    this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
-
-  build() {
-    Row() {
-      Column() {
-        Text('Save Page')
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-
-      Button('onFailure')
-        .onClick(() => {
-          hilog.error(0x0000, 'testTag', 'autofill onFailure');
-          try {
-            this.saveCallback?.onFailure();
-          } catch (error) {
-            console.error(`catch error, code: ${(error as BusinessError).code},
-              message: ${(error as BusinessError).message}`);
-          }
-        })
-        .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
 ## onSuccess
 
 ```TypeScript
 onSuccess(response: FillResponse): void
 ```
 
-通知自动填充请求已成功完成。
+自动填充或者生成密码时的回调对象，可以通过此回调通知客户端成功或者失败。
 
 **起始版本：** 11
 

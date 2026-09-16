@@ -12,7 +12,9 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 ```
 
-查询当前用户下指定应用的快捷方式信息ShortcutInfo，只支持查询主应用的ShortcutInfo，查询分身应用请使用 [getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md)。获取调用方自身的信息时不需要权限。
+查询当前用户下指定应用的快捷方式信息ShortcutInfo，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md)。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 10
 
@@ -32,7 +34,7 @@ function getShortcutInfoSync(bundleName: string): Array<ShortcutInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;ShortcutInfo&gt; | Array形式返回当前用户下指定应用的[ShortcutInfo]{ |
+| Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt; | Array形式返回当前用户下指定应用的ShortcutInfo。 |
 
 **错误码：**
 
@@ -61,6 +63,20 @@ try {
 }
 ```
 
+```TypeScript
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
+  console.info('data is ' + JSON.stringify(data));
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+
 
 ## getShortcutInfoSync
 
@@ -68,7 +84,9 @@ try {
 function getShortcutInfoSync(bundleName: string, userId: number): Array<ShortcutInfo>
 ```
 
-查询指定用户下指定应用的快捷方式信息ShortcutInfo，只支持查询主应用的ShortcutInfo，查询分身应用请使用 [getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md)。获取调用方自身的信息时不需要权限。
+查询指定用户下指定应用的快捷方式信息ShortcutInfo，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](arkts-ability-launcherbundlemanager-getshortcutinfobyappindex-f-sys.md)。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 13
 
@@ -83,13 +101,13 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| userId | number | 是 | 表示用户ID，可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;ShortcutInfo&gt; | Array形式返回指定用户下指定应用的[ShortcutInfo]{ |
+| Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt; | Array形式返回指定用户下指定应用的ShortcutInfo。 |
 
 **错误码：**
 
@@ -105,16 +123,4 @@ function getShortcutInfoSync(bundleName: string, userId: number): Array<Shortcut
 
 **示例**
 
-```TypeScript
-import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
-  console.info('data is ' + JSON.stringify(data));
-} catch (errData) {
-  let code = (errData as BusinessError).code;
-  let message = (errData as BusinessError).message;
-  console.error(`errData is errCode:${code}  message:${message}`);
-}
-```
+参见 [getShortcutInfoSync](#getshortcutinfosync)

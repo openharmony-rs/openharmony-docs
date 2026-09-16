@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## selectedColor
 
 ```TypeScript
@@ -19,7 +14,7 @@ selectedColor?: ResourceColor
 
 设置开关开启时开关的背景颜色。
 
-> 默认值：\$r('sys.color.ohos_id_color_text_primary_actived')。
+> 默认值：&#36;r('sys.color.ohos_id_color_text_primary_actived')。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -29,7 +24,7 @@ selectedColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,7 +46,7 @@ strokeColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,7 +58,7 @@ unselectedColor?: ResourceColor
 
 设置开关未开启时开关的边框颜色。
 
-> 默认值：\$r('sys.color.ohos_id_color_switch_outline_off')。
+> 默认值：&#36;r('sys.color.ohos_id_color_switch_outline_off')。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -73,6 +68,6 @@ unselectedColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

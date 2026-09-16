@@ -6,7 +6,7 @@ typedef struct OH_NativeXComponent_TouchEvent {...} OH_NativeXComponent_TouchEve
 
 ## 概述
 
-触摸事件。
+触摸事件。当用户在XComponent组件上进行触摸操作时，通过该结构体可获取触摸点的坐标、触摸类型、接触面积、压力、时间戳等信息，适用于需要在Native层处理XComponent触摸交互的场景。
 
 **起始版本：** 8
 

@@ -1,6 +1,8 @@
 # Zoom
 
-Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。变焦类，对设备变焦操作。
+Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。
+
+变焦类，对设备变焦操作。
 
 **继承/实现关系：** Zoom extends [ZoomQuery](arkts-camera-camera-zoomquery-i.md)
 
@@ -11,6 +13,7 @@ Zoom继承自[ZoomQuery](arkts-camera-camera-zoomquery-i.md)。变焦类，对�
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getZoomCenterPoint
@@ -31,7 +34,7 @@ Gets zoom center point.
 
 | 类型 | 说明 |
 | --- | --- |
-| Point | The current zoom center point. |
+| [Point](arkts-camera-camera-point-i.md) | The current zoom center point. |
 
 **错误码：**
 
@@ -95,7 +98,7 @@ Sets zoom center point.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| point | Point | 是 | Target zoom center point. |
+| point | [Point](arkts-camera-camera-point-i.md) | 是 | Target zoom center point. |
 
 **错误码：**
 

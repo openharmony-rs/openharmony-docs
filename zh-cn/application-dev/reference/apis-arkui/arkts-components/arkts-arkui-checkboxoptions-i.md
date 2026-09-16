@@ -6,25 +6,25 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## group
 
 ```TypeScript
 group?: string
 ```
 
-用于指定多选框所属群组的名称（即所属CheckboxGroup的名称）。默认值：undefined，默认状态下配合[CheckboxGroupOptions](arkts-arkui-checkboxgroupoptions-i.md)属性group信息为undefined的节点使用。  
-**说明：**未配合使用CheckboxGroup组件时，此值无用。
+用于指定多选框所属群组的名称（即所属CheckboxGroup的名称）。
+
+默认值：undefined，默认状态下配合[CheckboxGroupOptions](arkts-arkui-checkboxgroupoptions-i.md)属性group信息为undefined的节点使用。
+
+**说明：** 
+
+未配合使用CheckboxGroup组件时，此值无用。
 
 **类型：** string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -44,7 +44,7 @@ indicatorBuilder?: CustomBuilder
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,13 +54,15 @@ indicatorBuilder?: CustomBuilder
 name?: string
 ```
 
-指定多选框名称，用于标识不同的多选框实例。默认值：undefined，取值为undefined无效果。
+指定多选框名称，用于标识不同的多选框实例。
+
+默认值：undefined，取值为undefined无效果。
 
 **类型：** string
 
 **起始版本：** 8
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

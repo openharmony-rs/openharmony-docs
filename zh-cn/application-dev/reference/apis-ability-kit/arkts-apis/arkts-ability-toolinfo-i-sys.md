@@ -2,6 +2,8 @@
 
 ToolInfo用于描述系统命令行工具（CLI）的基本信息，包括工具名称、版本、描述、可执行路径、输入输出模式等。
 
+@typedef ToolInfo
+
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core

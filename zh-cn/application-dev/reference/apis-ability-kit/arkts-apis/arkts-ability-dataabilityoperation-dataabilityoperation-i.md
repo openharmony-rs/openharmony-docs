@@ -1,6 +1,6 @@
 # DataAbilityOperation
 
-定义DataAbility数据操作方式，可以作为 executeBatch 的入参，操作数据库的信息。
+定义DataAbility数据操作方式，可以作为[executeBatch](../../../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperexecutebatch)的入参，操作数据库的信息。
 
 **起始版本：** 7
 
@@ -46,7 +46,7 @@ predicates?: dataAbility.DataAbilityPredicates
 
 指示要设置的筛选条件。如果此参数为空，则操作所有数据记录。
 
-**类型：** dataAbility.DataAbilityPredicates
+**类型：** [dataAbility.DataAbilityPredicates](../../apis-arkdata/arkts-apis/arkts-arkdata-dataability-dataabilitypredicates-c.md)
 
 **起始版本：** 7
 
@@ -78,7 +78,7 @@ type: featureAbility.DataAbilityOperationType
 
 指示数据操作类型。
 
-**类型：** featureAbility.DataAbilityOperationType
+**类型：** [featureAbility.DataAbilityOperationType](arkts-ability-featureability-dataabilityoperationtype-e.md)
 
 **起始版本：** 7
 
@@ -108,9 +108,9 @@ uri: string
 valueBackReferences?: rdb.ValuesBucket
 ```
 
-指示包含一组键值对的valuesBucket对象。
+指示数据值的反向引用，用于应用批处理中前一步操作生成的键值。
 
-**类型：** rdb.ValuesBucket
+**类型：** [rdb.ValuesBucket](../../apis-arkdata/arkts-apis/arkts-arkdata-rdb-valuesbucket-t.md)
 
 **起始版本：** 7
 
@@ -126,7 +126,7 @@ valuesBucket?: rdb.ValuesBucket
 
 指示要操作的数据值。
 
-**类型：** rdb.ValuesBucket
+**类型：** [rdb.ValuesBucket](../../apis-arkdata/arkts-apis/arkts-arkdata-rdb-valuesbucket-t.md)
 
 **起始版本：** 7
 

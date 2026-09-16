@@ -4,6 +4,8 @@
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @ObservedV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -24,7 +26,7 @@ EditableLeftIconV2的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,9 +46,11 @@ public onAction?: OnActionCallback
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +60,13 @@ public onAction?: OnActionCallback
 public defaultFocus: boolean
 ```
 
-是否默认获取焦点。true：获焦。false：不获焦。默认值：false。
+是否默认获取焦点。
+
+true：获焦。
+
+false：不获焦。
+
+默认值：false。
 
 **类型：** boolean
 
@@ -64,9 +74,11 @@ public defaultFocus: boolean
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +88,9 @@ public defaultFocus: boolean
 public iconType: EditableLeftIconTypeV2
 ```
 
-图标类型。默认值：EditableLeftIconTypeV2.Back。
+图标类型。
+
+默认值：EditableLeftIconTypeV2.Back。
 
 **类型：** [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md)
 
@@ -84,8 +98,10 @@ public iconType: EditableLeftIconTypeV2
 
 **起始版本：** 26.0.0
 
+**装饰器类型：** @Trace
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -2,6 +2,8 @@
 
 互操作Ability生命周期回调，用于监听Ability的生命周期状态变化。
 
+@typedef InteropAbilityLifecycleCallback
+
 **起始版本：** 23
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore

@@ -26,7 +26,7 @@ function getPermissionUsedRecordToggleStatus(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象，返回true，表示当前用户的开关状态值为开启。返回false，表示当前用户的开关状态值为关闭。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true，表示当前用户的开关状态值为开启。返回false，表示当前用户的开关状态值为关闭。 |
 
 **错误码：**
 
@@ -56,6 +56,18 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((status) => {
 });
 ```
 
+```TypeScript
+import { privacyManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
+privacyManager.getPermissionUsedRecordToggleStatus(subProfileId).then((status: boolean) => {
+  console.info(`getPermissionUsedRecordToggleStatus success, status: ${status}`);
+}).catch((err: BusinessError): void => {
+  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
 
 ## getPermissionUsedRecordToggleStatus
 
@@ -79,13 +91,13 @@ function getPermissionUsedRecordToggleStatus(subProfileId: number): Promise<bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subProfileId | number | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。 取值限定为整数。取值约束：该参数必须为大于0的整数。 |
+| subProfileId | number | 是 | 子身份资料的标识符。可以通过[OsAccountSubProfile.id](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id)获取。<br>取值限定为整数。取值约束：该参数必须为大于0的整数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象，返回true，表示指定子身份资料的开关状态值为开启。返回false，表示指定子身份资料的开关状态值为关闭 |
+| Promise&lt;boolean&gt; | Promise对象，返回true，表示指定子身份资料的开关状态值为开启。返回false，表示指定子身份资料的开关状态值为关闭 |
 
 **错误码：**
 
@@ -99,14 +111,4 @@ function getPermissionUsedRecordToggleStatus(subProfileId: number): Promise<bool
 
 **示例**
 
-```TypeScript
-import { privacyManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let subProfileId: number = 100001; // 请替换为当前用户子身份资料的有效id。
-privacyManager.getPermissionUsedRecordToggleStatus(subProfileId).then((status: boolean) => {
-  console.info(`getPermissionUsedRecordToggleStatus success, status: ${status}`);
-}).catch((err: BusinessError): void => {
-  console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [getPermissionUsedRecordToggleStatus](#getpermissionusedrecordtogglestatus)

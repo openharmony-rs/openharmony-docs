@@ -34,7 +34,7 @@ position: Position
 
 以displayId所指定屏幕左上角为原点的坐标值。
 
-**类型：** Position
+**类型：** [Position](arkts-arkui-display-position-i.md)
 
 **起始版本：** 20
 

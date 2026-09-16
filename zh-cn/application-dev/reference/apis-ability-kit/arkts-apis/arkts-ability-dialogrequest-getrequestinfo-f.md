@@ -14,7 +14,7 @@ function getRequestInfo(want: Want): RequestInfo
 
 从Want中获取请求方的RequestInfo。
 
-> **说明：**
+> **说明：** 
 > 
 > 该接口可以在ServiceExtensionAbility下使用，如果ServiceExtensionAbility实现了模态弹框，则能从Want中获取请求方的RequestInfo。其他场景使用该接口，均无法获取返回值。
 
@@ -32,7 +32,7 @@ function getRequestInfo(want: Want): RequestInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| RequestInfo | 请求方RequestInfo，用于绑定模态窗口。 |
+| [RequestInfo](arkts-ability-dialogrequest-requestinfo-i.md) | 请求方RequestInfo，用于绑定模态窗口。 |
 
 **错误码：**
 

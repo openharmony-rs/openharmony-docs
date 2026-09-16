@@ -9,6 +9,7 @@ Provides APIs to check whether a camera device supports manual ISO setting and o
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getSupportedIsoRange
@@ -21,7 +22,7 @@ Get a array of supported standard ISO sensitivity values, as defined in ISO 1223
 
 **起始版本：** 24
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

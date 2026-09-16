@@ -9,6 +9,7 @@
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## compressionQuality
@@ -17,7 +18,9 @@
 compressionQuality?: number
 ```
 
-图片压缩质量值，取值范围为(1, 100)。当compressionQuality未下发时，默认按quality生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
+图片压缩质量值，取值范围为(1, 100)。
+
+当compressionQuality未下发时，默认按quality生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与compressionQuality均未下发则图片质量默认是高等。
 
 **类型：** number
 
@@ -25,7 +28,7 @@ compressionQuality?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -37,11 +40,11 @@ location?: Location
 
 图片地理位置信息（默认以设备硬件信息为准）。
 
-**类型：** Location
+**类型：** [Location](arkts-camera-camera-location-i.md)
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -57,7 +60,7 @@ mirror?: boolean
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -67,13 +70,15 @@ mirror?: boolean
 quality?: QualityLevel
 ```
 
-图片质量。当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与 compressionQuality均未下发则图片质量默认是高等。
+图片质量。
 
-**类型：** QualityLevel
+当quality未下发时，默认按compressionQuality下发生效；若quality与compressionQuality同时下发则按compressionQuality下发生效；若quality与compressionQuality均未下发则图片质量默认是高等。
+
+**类型：** [QualityLevel](arkts-camera-camera-qualitylevel-e.md)
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -89,6 +94,6 @@ rotation?: ImageRotation
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

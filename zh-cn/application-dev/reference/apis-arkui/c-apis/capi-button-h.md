@@ -28,7 +28,7 @@ Provides Button node type definitions for <b>NativeNode</b> APIs.
 enum ArkUI_ButtonType
 ```
 
-**描述**
+**描述：**
 
 定义按钮样式枚举值。
 

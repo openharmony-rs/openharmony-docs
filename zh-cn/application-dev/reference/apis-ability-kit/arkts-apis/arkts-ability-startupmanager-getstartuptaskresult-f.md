@@ -24,13 +24,13 @@ function getStartupTaskResult(startupTask: string): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。 |
+| startupTask | string | 是 | 启动任务[StartupTask](arkts-ability-app-appstartup-startuptask-startuptask-c.md)的名称或预加载so名称。名称需与配置文件startup_config.json中配置的name取值保持一致，详见[定义启动任务配置](../../../application-models/app-startup.md#定义启动任务配置)和[定义预加载so任务配置](../../../application-models/app-startup.md#定义预加载so任务配置)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Object | 输入为启动任务名时，返回指定的启动任务 [init]{ |
+| Object | 输入为启动任务名时，返回指定的启动任务[init](arkts-ability-app-appstartup-startuptask-startuptask-c.md#init)返回的执行结果。输入为so文件名时，返回undefined。 |
 
 **错误码：**
 

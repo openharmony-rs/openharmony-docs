@@ -14,4 +14,4 @@ declare type StyledStringMarshallingValue = UserDataSpan
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** [UserDataSpan](arkts-arkui-userdataspan-c.md)
+**类型：** [UserDataSpan](arkts-arkui-userdataspan-c.md)

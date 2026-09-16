@@ -2,16 +2,11 @@
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-commonconfiguration-i.md)。
 
-**继承/实现关系：** RadioConfiguration extends CommonConfiguration\<RadioConfiguration>
+**继承/实现关系：** RadioConfiguration extends CommonConfiguration<RadioConfiguration>
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## checked
 
@@ -19,7 +14,11 @@
 checked: boolean
 ```
 
-设置单选框的选中状态。默认值：false值为true时，单选框被选中。值为false时，单选框不被选中。
+设置单选框的选中状态。
+
+默认值：false
+
+值为true时，单选框被选中。值为false时，单选框不被选中。
 
 **类型：** boolean
 
@@ -27,7 +26,7 @@ checked: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,15 +36,17 @@ checked: boolean
 triggerChange: Callback<boolean>
 ```
 
-用于触发单选框选中状态变化的回调函数。值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。
+用于触发单选框选中状态变化的回调函数。
 
-**类型：** Callback&lt;boolean&gt;
+值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。
+
+**类型：** [Callback](arkts-arkui-callback-i.md)&lt;boolean&gt;
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,6 +64,6 @@ value: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

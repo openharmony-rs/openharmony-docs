@@ -54,6 +54,43 @@ try {
 }
 ```
 
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+let testMissionId = 2;
+try {
+  // 将指定任务切换到前台，并指定窗口模式
+  missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err, data) => {
+    if (err) {
+      console.error(`moveMissionToFront failed. Code: ${err.code}, message: ${err.message}.`);
+    } else {
+      console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`moveMissionToFront sync failed. Code: ${error.code}, message: ${error.message}.`);
+}
+```
+
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+let testMissionId = 2;
+try {
+  // 将指定任务切换到前台
+  missionManager.moveMissionToFront(testMissionId).then((data) => {
+    console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`moveMissionToFront failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`moveMissionToFront failed. Cause: ${error.message}`);
+}
+```
+
 
 ## moveMissionToFront
 
@@ -85,25 +122,7 @@ function moveMissionToFront(missionId: number, options: StartOptions, callback: 
 
 **示例**
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
-
-let testMissionId = 2;
-try {
-  // 将指定任务切换到前台，并指定窗口模式
-  missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err, data) => {
-    if (err) {
-      console.error(`moveMissionToFront failed. Code: ${err.code}, message: ${err.message}.`);
-    } else {
-      console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
-    }
-  });
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`moveMissionToFront sync failed. Code: ${error.code}, message: ${error.message}.`);
-}
-```
+参见 [moveMissionToFront](#movemissiontofront)
 
 
 ## moveMissionToFront
@@ -137,23 +156,8 @@ function moveMissionToFront(missionId: number, options?: StartOptions): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
-
-let testMissionId = 2;
-try {
-  // 将指定任务切换到前台
-  missionManager.moveMissionToFront(testMissionId).then((data) => {
-    console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`moveMissionToFront failed. Cause: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`moveMissionToFront failed. Cause: ${error.message}`);
-}
-```
+参见 [moveMissionToFront](#movemissiontofront)

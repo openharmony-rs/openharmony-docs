@@ -1,6 +1,6 @@
 # LinkParamCategory
 
-@InsightIntentLink 装饰器的意图参数类别，用于定义意图参数的传递形式。
+[@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink)装饰器的意图参数类别，用于定义意图参数的传递形式。
 
 **起始版本：** 20
 
@@ -18,7 +18,7 @@ LINK = 'link'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -34,6 +34,6 @@ WANT = 'want'
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

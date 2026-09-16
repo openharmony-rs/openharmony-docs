@@ -14,7 +14,7 @@ function getDragPreview(): DragPreview
 
 返回一个代表拖拽背板的对象。
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 11开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
 > [getDragController](arkts-arkui-arkui-uicontext-uicontext-c.md#getdragcontroller)方法获取当前UI
@@ -28,7 +28,7 @@ function getDragPreview(): DragPreview
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

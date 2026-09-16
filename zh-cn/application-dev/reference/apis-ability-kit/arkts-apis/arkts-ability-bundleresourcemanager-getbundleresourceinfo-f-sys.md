@@ -33,7 +33,7 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: number): Bund
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleResourceInfo | 返回指定应用的BundleResourceInfo。 |
+| [BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md) | 返回指定应用的BundleResourceInfo。 |
 
 **错误码：**
 
@@ -110,7 +110,7 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIn
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleResourceInfo | 返回指定应用的BundleResourceInfo。 |
+| [BundleResourceInfo](arkts-ability-bundleresourcemanager-bundleresourceinfo-t-sys.md) | 返回指定应用的BundleResourceInfo。 |
 
 **错误码：**
 

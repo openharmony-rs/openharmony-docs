@@ -28,7 +28,7 @@ readonly multiAppModeType: bundleManager.MultiAppModeType
 
 应用多开模式的类型。
 
-**类型：** bundleManager.MultiAppModeType
+**类型：** [bundleManager.MultiAppModeType](arkts-ability-bundlemanager-multiappmodetype-e.md)
 
 **起始版本：** 12
 

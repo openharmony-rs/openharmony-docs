@@ -1,6 +1,6 @@
 # LightStatus（系统接口）
 
-Enumerates the camera light statuses, which are obtained by calling VideoSessionForSys. on('lightStatusChange').
+Enumerates the camera light statuses, which are obtained by calling VideoSessionForSys. [on('lightStatusChange')](arkts-camera-camera-videosession-i-sys.md#onlightstatuschange).
 
 **起始版本：** 18
 

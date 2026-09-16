@@ -12,9 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback<image.PixelMap>): void
 ```
 
-通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，使用callback异步回调。获取调用方信息时不需要权限。
+通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，使用callback异步回调。
 
-> **说明：**
+获取调用方信息时不需要权限。
+
+> **说明：** 
 > 
 > 从API version 9开始支持，从API version 10开始废弃，建议使用
 > [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)
@@ -39,7 +41,7 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
 | moduleName | string | 是 | 要查询的应用Module名称。 |
 | abilityName | string | 是 | 要查询的Ability组件名。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;image.PixelMap&gt; | 是 | 回调函数，返回指定[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，作为程序启动 时的入参。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | 回调函数，返回指定[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，作为程序启动时的入参。 |
 
 **错误码：**
 
@@ -67,16 +69,14 @@ let moduleName: string = "entry";
 let abilityName: string = "EntryAbility";
 
 try {
-  bundleManager.getAbilityIcon(bundleName, moduleName, abilityName, (err, data) => {
-    if (err) {
-      hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', err.message);
-    } else {
-      hilog.info(0x0000, 'testTag', 'getAbilityIcon successfully: %{public}s', JSON.stringify(data));
-    }
-  });
+  bundleManager.getAbilityIcon(bundleName, moduleName, abilityName).then((data) => {
+    hilog.info(0x0000,'testTag', 'getAbilityIcon successful. Data: %{public}s',JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000,'testTag', 'getAbilityIcon failed. Cause: %{public}s',error.message);
+  })
 } catch (err) {
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', message);
+  hilog.error(0x0000, 'testTag', 'getAbilityIcon failed. Cause: %{public}s', message);
 }
 ```
 
@@ -87,9 +87,11 @@ try {
 function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise<image.PixelMap>
 ```
 
-通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-multimedia-image.md)，使用Promise异步回调。获取调用方信息时不需要权限。
+通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md)，使用Promise异步回调。
 
-> **说明：**
+获取调用方信息时不需要权限。
+
+> **说明：** 
 > 
 > 从API version 9开始支持，从API version 10开始废弃，建议使用
 > [getMediaContent](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getmediacontent)
@@ -119,7 +121,7 @@ function getAbilityIcon(bundleName: string, moduleName: string, abilityName: str
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;image.PixelMap&gt; | Promise used to return PixelMap. |
+| Promise&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | Promise used to return PixelMap. |
 
 **错误码：**
 

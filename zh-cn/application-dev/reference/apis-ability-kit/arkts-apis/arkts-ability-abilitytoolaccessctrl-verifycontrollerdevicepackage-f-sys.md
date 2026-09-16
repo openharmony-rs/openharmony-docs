@@ -12,7 +12,7 @@ export function verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], r
     Promise<boolean[]>
 ```
 
-验证来自控制器设备的授权包。 验证控制器设备发送的远程授权包。 它验证票证和远程设备信息，以确保授权是合法的。
+验证来自控制器设备的授权包。验证控制器设备发送的远程授权包。它验证票证和远程设备信息，以确保授权是合法的。
 
 **起始版本：** 26.1.0
 
@@ -33,7 +33,7 @@ export function verifyControllerDevicePackage(ticketInfo: RemoteAuthPackage[], r
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean[]&gt; | Promise用于返回\\${boolean[]}。 |
+| Promise&lt;boolean[]&gt; | Promise用于返回&#36;{boolean[]}。 |
 
 **错误码：**
 

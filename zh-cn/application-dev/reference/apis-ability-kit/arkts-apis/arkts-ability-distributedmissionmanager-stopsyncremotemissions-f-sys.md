@@ -28,7 +28,7 @@ function stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | MissionDeviceInfo | 是 | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。 |
+| parameter | [MissionDeviceInfo](arkts-ability-distributedmissionmanager-missiondeviceinfo-t-sys.md) | 是 | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，停止同步远端任务列表成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -36,7 +36,7 @@ function stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -57,6 +57,24 @@ try {
       }
       console.info('stopSyncRemoteMissions finished');}
   )
+} catch (error) {
+  console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+```TypeScript
+import { distributedMissionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedMissionManager.stopSyncRemoteMissions(
+    {
+      deviceId: ""
+    }).then(() => {
+      console.info('stopSyncRemoteMissions finished successfully');
+    }).catch((error: BusinessError) => {
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
+  });
 } catch (error) {
   console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
 }
@@ -85,37 +103,21 @@ function stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | MissionDeviceInfo | 是 | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。 |
+| parameter | [MissionDeviceInfo](arkts-ability-distributedmissionmanager-missiondeviceinfo-t-sys.md) | 是 | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 返回的Promise对象，操作成功时表示远端设备任务列表同步已成功停止，失败时返回错误信息。 |
+| Promise&lt;void&gt; | 返回的Promise对象，操作成功时表示远端设备任务列表同步已成功停止，失败时返回错误信息。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;  2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
-```TypeScript
-import { distributedMissionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  distributedMissionManager.stopSyncRemoteMissions(
-    {
-      deviceId: ""
-    }).then(() => {
-      console.info('stopSyncRemoteMissions finished successfully');
-    }).catch((error: BusinessError) => {
-    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
-}
-```
+参见 [stopSyncRemoteMissions](#stopsyncremotemissions)

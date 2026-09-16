@@ -13,6 +13,7 @@ Implements depth data output. It inherits from [CameraOutput](arkts-camera-camer
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## off('depthDataAvailable')
@@ -42,23 +43,6 @@ Unsubscribes from depth data availability events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, depthData: camera.DepthData): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-}
-
-function unRegisterDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
-  depthDataOutput.off('depthDataAvailable', callback);
-}
-```
-
 ## off('error')
 
 ```TypeScript
@@ -86,14 +70,6 @@ Unsubscribes from DepthDataOutput error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-function unregisterDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {
-  depthDataOutput.off('error');
-}
-```
-
 ## on('depthDataAvailable')
 
 ```TypeScript
@@ -102,7 +78,7 @@ on(type: 'depthDataAvailable', callback: AsyncCallback<DepthData>): void
 
 Subscribes to depth data availability events. This API uses an asynchronous callback to return the result.
 
-> **NOTE：**
+> **NOTE:** 
 > 
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
 
@@ -125,23 +101,6 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(err: BusinessError, depthData: camera.DepthData): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
-}
-
-function registerDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): void {
-  depthDataOutput.on('depthDataAvailable', callback);
-}
-```
-
 ## on('error')
 
 ```TypeScript
@@ -150,7 +109,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to DepthDataOutput error events. This API uses an asynchronous callback to return the result.
 
-> **NOTE：**
+> **NOTE:** 
 > 
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
 
@@ -173,20 +132,6 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not System Application. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function callback(depthDataOutputError: BusinessError): void {
-  console.error(`Depth data output error code: ${depthDataOutputError.code}`);
-}
-
-function registerDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): void {
-  depthDataOutput.on('error', callback);
-}
-```
-
 ## start
 
 ```TypeScript
@@ -205,7 +150,7 @@ Starts depth data output. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -229,66 +174,6 @@ function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
 }
 ```
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function startCaptureSession(captureSession: camera.CaptureSession): void {
-  captureSession.start().then(() => {
-    console.info('Promise returned to indicate the session start success.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to start the session, error code: ${err.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
-  metadataOutput.start().then(() => {
-    console.info('Callback returned with metadata output started.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to metadata output start, error code: ${error.code}`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
-  previewOutput.start().then(() => {
-    console.info('Promise returned with preview output started.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to preview output start, error code: ${error.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function startCaptureSession(session: camera.Session): void {
-  session.start().then(() => {
-    console.info('Promise returned to indicate the session start success.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to start the session, error code: ${error.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function startVideoOutput(videoOutput: camera.VideoOutput): void {
-  videoOutput.start().then(() => {
-    console.info('Promise returned to indicate that start method execution success.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to video output start, error code: ${error.code}.`);
-  });
-}
-```
-
 ## stop
 
 ```TypeScript
@@ -307,7 +192,7 @@ Stops depth data output. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **错误码：**
 
@@ -327,66 +212,6 @@ function stopDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
     console.info('Promise returned to indicate that stop method execution success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to depth data output stop, error code: ${error.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stopCaptureSession(captureSession: camera.CaptureSession): void {
-  captureSession.stop().then(() => {
-    console.info('Promise returned to indicate the session stop success.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to stop the session, error code: ${err.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
-  metadataOutput.stop().then(() => {
-    console.info('Callback returned with metadata output stopped.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to metadata output stop, error code: ${error.code}`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
-  previewOutput.stop().then(() => {
-    console.info('Callback returned with preview output stopped.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to preview output stop, error code: ${error.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stopCaptureSession(session: camera.Session): void {
-  session.stop().then(() => {
-    console.info('Promise returned to indicate the session stop success.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to stop the session, error code: ${error.code}.`);
-  });
-}
-```
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function stopVideoOutput(videoOutput: camera.VideoOutput): void {
-  videoOutput.stop().then(() => {
-    console.info('Promise returned to indicate that stop method execution success.');
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to video output stop, error code: ${error.code}.`);
   });
 }
 ```

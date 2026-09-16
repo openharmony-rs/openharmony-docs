@@ -24,7 +24,7 @@ arrayValue: string[]
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -34,12 +34,14 @@ arrayValue: string[]
 selected: number
 ```
 
-初始选中项索引值，若超出索引值范围，则取默认值0。该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
+初始选中项索引值，若超出索引值范围，则取默认值0。
+
+该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 
 **类型：** number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

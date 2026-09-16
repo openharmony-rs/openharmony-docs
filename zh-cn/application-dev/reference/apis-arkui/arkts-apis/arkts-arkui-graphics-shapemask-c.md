@@ -18,7 +18,7 @@ ShapeMask的构造函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +34,7 @@ setCircleShape(circle: Circle): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,56 +91,6 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
-
-const clip = new ShapeClip();
-clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-
-const renderNode = new RenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeClip = clip;
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .borderWidth(1)
-      Button('setCircleShape')
-        .onClick(() => {
-          renderNode.shapeClip.setCircleShape({ centerY: 75, centerX: 75, radius: 75 });
-
-        })
-    }
-  }
-}
-```
-
 ## setCommandPath
 
 ```TypeScript
@@ -153,7 +103,7 @@ setCommandPath(path: CommandPath): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -211,55 +161,6 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
-
-const clip = new ShapeClip();
-clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-
-const renderNode = new RenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeClip = clip;
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .borderWidth(1)
-      Button('setCommandPath')
-        .onClick(() => {
-          renderNode.shapeClip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-        })
-    }
-  }
-}
-```
-
 ## setOvalShape
 
 ```TypeScript
@@ -272,7 +173,7 @@ setOvalShape(oval: Rect): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,60 +225,6 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
-
-const clip = new ShapeClip();
-clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-
-const renderNode = new RenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeClip = clip;
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .borderWidth(1)
-      Button('setOvalShape')
-        .onClick(() => {
-          renderNode.shapeClip.setOvalShape({
-            left: 0,
-            right: this.getUIContext().vp2px(150),
-            top: 0,
-            bottom: this.getUIContext().vp2px(100)
-          });
-        })
-    }
-  }
-}
-```
-
 ## setRectShape
 
 ```TypeScript
@@ -390,7 +237,7 @@ setRectShape(rect: Rect): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,63 +299,6 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
-
-const clip = new ShapeClip();
-clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-
-const renderNode = new RenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-renderNode.backgroundColor = 0xff519db4;
-renderNode.shapeClip = clip;
-const shapeClip = renderNode.shapeClip;
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .borderWidth(1)
-        .margin({ bottom: 20 })
-      Button('setRectShape')
-        .onClick(() => {
-          shapeClip.setRectShape({
-            left: 0,
-            right: 150,
-            top: 0,
-            bottom: 150
-          });
-          renderNode.shapeClip = shapeClip;
-        })
-    }.margin(20)
-  }
-}
-```
-
 ## setRoundRectShape
 
 ```TypeScript
@@ -521,7 +311,7 @@ setRoundRectShape(roundRect: RoundRect): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -582,75 +372,19 @@ struct Index {
 }
 ```
 
-```TypeScript
-import { RenderNode, FrameNode, NodeController, ShapeClip } from '@kit.ArkUI';
-
-const clip = new ShapeClip();
-clip.setCommandPath({ commands: 'M100 0 L0 100 L50 200 L150 200 L200 100 Z' });
-
-const renderNode = new RenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-renderNode.backgroundColor = 0XFF00FF00;
-renderNode.shapeClip = clip;
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
-    }
-
-    return this.rootNode;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.myNodeController)
-        .borderWidth(1)
-      Button('setRoundRectShape')
-        .onClick(() => {
-          renderNode.shapeClip.setRoundRectShape({
-            rect: {
-              left: 0,
-              top: 0,
-              right: this.getUIContext().vp2px(150),
-              bottom: this.getUIContext().vp2px(150)
-            },
-            corners: {
-              topLeft: { x: 32, y: 32 },
-              topRight: { x: 32, y: 32 },
-              bottomLeft: { x: 32, y: 32 },
-              bottomRight: { x: 32, y: 32 }
-            }
-          });
-        })
-    }
-  }
-}
-```
-
 ## fillColor
 
 ```TypeScript
 fillColor: number
 ```
 
-遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。取值范围：[0, 0xffffffff]超出范围时按默认值处理。通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md)方式 与RenderNode本身的颜色混合，生成最终颜色。
+遮罩的填充颜色，使用ARGB格式。默认值为`0XFF000000`。
+
+取值范围：[0, 0xffffffff]
+
+超出范围时按默认值处理。
+
+通过fillColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md)方式与RenderNode本身的颜色混合，生成最终颜色。
 
 **类型：** number
 
@@ -660,7 +394,7 @@ fillColor: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -670,7 +404,13 @@ fillColor: number
 strokeColor: number
 ```
 
-遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。取值范围：[0, 0xffffffff]超出范围时按默认值处理。通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md) 方式与RenderNode本身的颜色混合，生成最终颜色。
+遮罩的边框颜色，使用ARGB格式。默认值为`0XFF000000`。
+
+取值范围：[0, 0xffffffff]
+
+超出范围时按默认值处理。
+
+通过strokeColor的透明度和亮度生成一个仅含透明度的颜色。亮度越高，颜色越透明。然后，使用[BlendMode.SRC_IN](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-blendmode-e.md)方式与RenderNode本身的颜色混合，生成最终颜色。
 
 **类型：** number
 
@@ -680,7 +420,7 @@ strokeColor: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -690,7 +430,11 @@ strokeColor: number
 strokeWidth: number
 ```
 
-遮罩的边框宽度，单位为px。默认值为0。取值范围：[0, +∞)负数按默认值处理。
+遮罩的边框宽度，单位为px。默认值为0。
+
+取值范围：[0, +∞)
+
+负数按默认值处理。
 
 **类型：** number
 
@@ -700,6 +444,6 @@ strokeWidth: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

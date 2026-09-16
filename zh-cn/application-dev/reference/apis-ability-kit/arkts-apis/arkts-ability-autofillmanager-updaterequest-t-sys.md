@@ -14,4 +14,4 @@ export type UpdateRequest = _AutoFillRequest.UpdateRequest
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AutoFillRequest.UpdateRequest
+**类型：** [_AutoFillRequest.UpdateRequest](arkts-ability-autofillrequest-updaterequest-i-sys.md)

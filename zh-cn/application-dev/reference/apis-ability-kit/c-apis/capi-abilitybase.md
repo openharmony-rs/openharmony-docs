@@ -2,11 +2,12 @@
 
 ## 概述
 
-描述Want的方法。
+作为Ability Kit的基础定义模块，AbilityBase提供了组件启动参数{@link Want}的定义与接口，可以用于应用组件间的信息传递。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
 **起始版本：** 15
+
 ## 文件汇总
 
 | 名称 | 描述 |

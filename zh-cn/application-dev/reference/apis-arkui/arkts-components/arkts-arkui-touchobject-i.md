@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## getCurrentLocalPosition
 
 ```TypeScript
@@ -23,7 +18,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +34,9 @@ getCurrentLocalPosition?(): Coordinate2D
 displayX: number
 ```
 
-触摸点在当前应用屏幕坐标系中的X坐标。单位：vp
+触摸点在当前应用屏幕坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -47,7 +44,7 @@ displayX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,7 +54,9 @@ displayX: number
 displayY: number
 ```
 
-触摸点在当前应用屏幕坐标系中的Y坐标。单位：vp
+触摸点在当前应用屏幕坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -65,7 +64,7 @@ displayY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +74,11 @@ displayY: number
 globalDisplayX?: number
 ```
 
-触摸点在全局坐标系中的X坐标。单位：vp取值范围：[0, +∞)
+触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+
+单位：vp
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -83,7 +86,7 @@ globalDisplayX?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +96,11 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-触摸点在全局坐标系中的Y坐标。单位：vp取值范围：[0, +∞)
+触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+
+单位：vp
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -101,7 +108,7 @@ globalDisplayY?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,7 +126,7 @@ hand?: InteractionHand
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,7 +136,9 @@ hand?: InteractionHand
 height?: number
 ```
 
-当前手指按压区域的高度。单位：vp
+当前手指按压区域的高度。
+
+单位：vp
 
 **类型：** number
 
@@ -137,7 +146,7 @@ height?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +162,7 @@ id: number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +172,9 @@ id: number
 pressedTime?: number
 ```
 
-当前手指按下的时间。单位：ns
+当前手指按下的时间。
+
+单位：ns
 
 **类型：** number
 
@@ -171,7 +182,7 @@ pressedTime?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,7 +192,9 @@ pressedTime?: number
 pressure?: number
 ```
 
-当前手指按压的压力值。取值范围：[0,65535)，压力越大，值越大。
+当前手指按压的压力值。
+
+取值范围：[0,65535)，压力越大，值越大。
 
 **类型：** number
 
@@ -189,7 +202,7 @@ pressure?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +212,9 @@ pressure?: number
 screenX: number
 ```
 
-触摸点在当前应用窗口坐标系中的X坐标。单位：vp
+触摸点在当前应用窗口坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -217,7 +232,9 @@ screenX: number
 screenY: number
 ```
 
-触摸点在当前应用窗口坐标系中的Y坐标。单位：vp
+触摸点在当前应用窗口坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -241,7 +258,7 @@ type: TouchType
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -251,7 +268,9 @@ type: TouchType
 width?: number
 ```
 
-当前手指按压区域的宽度。单位：vp
+当前手指按压区域的宽度。
+
+单位：vp
 
 **类型：** number
 
@@ -259,7 +278,7 @@ width?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,7 +288,9 @@ width?: number
 windowX: number
 ```
 
-触摸点在当前应用窗口坐标系中的X坐标。单位：vp
+触摸点在当前应用窗口坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -277,7 +298,7 @@ windowX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +308,9 @@ windowX: number
 windowY: number
 ```
 
-触摸点在当前应用窗口坐标系中的Y坐标。单位：vp
+触摸点在当前应用窗口坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -295,7 +318,7 @@ windowY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -305,13 +328,15 @@ windowY: number
 x: number
 ```
 
-触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。单位：vp
+触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。
+
+单位：vp
 
 **类型：** number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,12 +346,14 @@ x: number
 y: number
 ```
 
-触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。单位：vp
+触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

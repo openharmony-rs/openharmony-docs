@@ -42,7 +42,7 @@ Scene where a tripod is used for photo capture. This is a system API.
 LOW_LIGHT_BOOST = 2
 ```
 
-Scene for number exposure photography. This is a system API.
+Scene for long exposure photography. This is a system API.
 
 **起始版本：** 13
 

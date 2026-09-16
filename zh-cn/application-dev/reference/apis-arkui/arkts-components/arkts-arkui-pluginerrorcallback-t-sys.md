@@ -4,7 +4,7 @@
 declare type PluginErrorCallback = (info: PluginErrorData) => void
 ```
 
-发生错误时触发的回调。
+发生错误时触发事件回调。
 
 **起始版本：** 18
 

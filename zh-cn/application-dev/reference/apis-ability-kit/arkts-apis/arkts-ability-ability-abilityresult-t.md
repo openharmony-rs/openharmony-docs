@@ -12,4 +12,4 @@ AbilityResult二级模块。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-**属性类型：** _AbilityResult
+**类型：** _AbilityResult

@@ -12,11 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function canOpenLink(link: string): boolean
 ```
 
-根据给定的链接判断目标应用是否可访问，链接中的scheme需要在[module.json5文件](../../../quick-start/module-configuration-file.md)的querySchemes字段 下配置。
+根据给定的链接判断目标应用是否可访问，链接中的scheme需要在[module.json5文件](../../../quick-start/module-configuration-file.md)的querySchemes字段下配置。
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

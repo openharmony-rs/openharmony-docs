@@ -12,7 +12,9 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 function requestRebuildHyperSnap(): void
 ```
 
-请求重新初始化应用快启。此方法会销毁当前进程已经初始化的快启数据，系统将在合适的时机重新进行快启初始化。
+请求重新初始化应用快启。
+
+此方法会销毁当前进程已经初始化的快启数据，系统将在合适的时机重新进行快启初始化。
 
 **起始版本：** 24
 

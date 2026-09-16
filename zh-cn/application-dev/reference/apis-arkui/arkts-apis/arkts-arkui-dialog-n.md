@@ -26,7 +26,7 @@ import { dialog, DialogBaseAlignment, DialogButtonOrientation, DialogState, Dial
 | [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md) | 所有Dialog类型共享的基本选项。 |
 | [DialogMessage](arkts-arkui-dialog-dialogmessage-i.md) | 对话框的消息选项。 |
 | [DialogStyleOptions](arkts-arkui-dialog-dialogstyleoptions-i.md) | 固定样式对话框的选项。 |
-| [DialogCustomOptions](arkts-arkui-dialog-dialogcustomoptions-i.md) | 自定义样式对话框的选项。 对话内容作为present()方法的第一个参数提供。 不在此选项对象中。 |
+| [DialogCustomOptions](arkts-arkui-dialog-dialogcustomoptions-i.md) | 自定义样式对话框的选项。对话内容作为present()方法的第一个参数提供。不在此选项对象中。 |
 
 <!--Del-->
 ### 接口（系统接口）

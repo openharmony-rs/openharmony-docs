@@ -28,7 +28,7 @@ function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCall
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | AsyncCallback &lt;MissionInfo&gt; | 是 | 执行结果回调函数，返回任务信息。 |
+| callback | AsyncCallback&lt;[MissionInfo](arkts-ability-missionmanager-missioninfo-t-sys.md)&gt; | 是 | 执行结果回调函数，返回任务信息。 |
 
 **错误码：**
 
@@ -77,6 +77,26 @@ missionManager.getMissionInfos('', 10)
   });
 ```
 
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testMissionId = 1;
+
+try {
+  missionManager.getMissionInfo('', testMissionId)
+    .then((data: missionManager.MissionInfo) => {
+      console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`getMissionInfo failed. Code: ${error.code}, message: ${error.message}`);
+    });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionInfo failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 
 ## getMissionInfo
 
@@ -105,7 +125,7 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;MissionInfo&gt; | Promise对象，返回任务信息。 |
+| Promise&lt;[MissionInfo](arkts-ability-missionmanager-missioninfo-t-sys.md)&gt; | Promise对象，返回任务信息。 |
 
 **错误码：**
 
@@ -117,22 +137,4 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 
 **示例**
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let testMissionId = 1;
-
-try {
-  missionManager.getMissionInfo('', testMissionId)
-    .then((data: missionManager.MissionInfo) => {
-      console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
-    })
-    .catch((error: BusinessError) => {
-      console.error(`getMissionInfo failed. Code: ${error.code}, message: ${error.message}`);
-    });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`getMissionInfo failed. Code: ${err.code}, message: ${err.message}`);
-}
-```
+参见 [getMissionInfo](#getmissioninfo)

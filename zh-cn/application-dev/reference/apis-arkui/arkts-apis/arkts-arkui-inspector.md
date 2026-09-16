@@ -1,29 +1,23 @@
-# @ohos.arkui.inspector(布局回调)
+# inspector
 
-提供注册组件布局和组件绘制送显完成回调通知的能力。适用于需要在组件布局或绘制送显完成后执行自定义逻辑的场景，帮助开发者精准掌控组件渲染时机。
+inspector的性能分析（Profiler）工具。
 
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-import { inspector } from '@kit.ArkUI';
-```
+@namespace Profiler
 
 ## 汇总
 
-### 函数
+### 命名空间
 
 | 名称 | 说明 |
 | --- | --- |
-| [createComponentObserver(布局回调)](arkts-arkui-inspector-createcomponentobserver-f.md) | 绑定指定组件，返回对应的监听句柄。 |
+| [Profiler](arkts-arkui-profiler-n.md) | inspector的性能分析（Profiler）工具。 |
 
-### 接口
+<!--Del-->
+### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [ComponentObserver(布局回调)](arkts-arkui-inspector-componentobserver-i.md) | 组件布局和组件绘制送显完成回调的句柄，通过该句柄可调用以下方法。 |
+| [getInspectorNodeById](arkts-arkui-inspector-getinspectornodebyid-f-sys.md) | 根据节点id获取inspector节点信息。 |
+| [getInspectorNodes](arkts-arkui-inspector-getinspectornodes-f-sys.md) | 获取inspector节点信息。 |
+| [setAppBgColor](arkts-arkui-inspector-setappbgcolor-f-sys.md) | 设置应用背景颜色。 |
+<!--DelEnd-->

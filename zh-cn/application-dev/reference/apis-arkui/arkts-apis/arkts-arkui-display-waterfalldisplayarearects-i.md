@@ -20,11 +20,11 @@ readonly bottom: Rect
 
 瀑布曲面区域的底部矩形区域。
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-display-rect-i.md)
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -36,11 +36,11 @@ readonly left: Rect
 
 瀑布曲面区域的左侧矩形区域。
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-display-rect-i.md)
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -52,11 +52,11 @@ readonly right: Rect
 
 瀑布曲面区域的右侧矩形区域。
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-display-rect-i.md)
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -68,10 +68,10 @@ readonly top: Rect
 
 瀑布曲面区域的顶部矩形区域。
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-display-rect-i.md)
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

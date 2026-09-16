@@ -31,7 +31,7 @@
 enum AbilityRuntime_AreaMode
 ```
 
-**描述**
+**描述：**
 
 文件数据加密等级。
 
@@ -51,7 +51,7 @@ enum AbilityRuntime_AreaMode
 enum AbilityRuntime_StartVisibility
 ```
 
-**描述**
+**描述：**
 
 启动Ability时的窗口和dock栏图标的显示模式。例如：需要在后台静默启动服务而不显示UI时使用隐藏模式；需要正常显示UI并与用户交互时使用显示模式。
 
@@ -68,7 +68,7 @@ enum AbilityRuntime_StartVisibility
 enum AbilityRuntime_WindowMode
 ```
 
-**描述**
+**描述：**
 
 窗口模式。
 
@@ -85,7 +85,7 @@ enum AbilityRuntime_WindowMode
 enum AbilityRuntime_SupportedWindowMode
 ```
 
-**描述**
+**描述：**
 
 | 枚举项 | 描述 |
 | -- | -- |

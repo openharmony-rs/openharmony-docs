@@ -29,7 +29,7 @@ function getBundlePackInfo(bundleName: string,
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | bundlePackFlag | [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 是 | 指示要查询的应用包标志。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;BundlePackInfo&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined， data为获取到的BundlePackInfo信息。否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundlePackInfo](arkts-ability-freeinstall-bundlepackinfo-t-sys.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为获取到的BundlePackInfo信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -40,26 +40,6 @@ function getBundlePackInfo(bundleName: string,
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
-
-**示例**
-
-```TypeScript
-import { freeInstall } from '@kit.AbilityKit';
-
-let bundleName = 'com.example.myapplication';
-let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
-try {
-  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
-    if (err) {
-      console.error('Operation failed:' + JSON.stringify(err));
-    } else {
-      console.info('Operation succeed:' + JSON.stringify(data));
-    }
-  });
-} catch (err) {
-  console.error('Operation failed:' + JSON.stringify(err));
-}
-```
 
 
 ## getBundlePackInfo
@@ -89,7 +69,7 @@ function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;BundlePackInfo&gt; | Promise对象，返回BundlePackInfo信息。 |
+| Promise&lt;[BundlePackInfo](arkts-ability-freeinstall-bundlepackinfo-t-sys.md)&gt; | Promise对象，返回BundlePackInfo信息。 |
 
 **错误码：**
 
@@ -100,22 +80,3 @@ function getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag):
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
-
-**示例**
-
-```TypeScript
-import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.example.myapplication';
-let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
-try {
-  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
-    console.info('Operation succeed:' + JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    console.error('Operation failed:' + JSON.stringify(err));
-  });
-} catch (err) {
-  console.error('Operation failed:' + JSON.stringify(err));
-}
-```

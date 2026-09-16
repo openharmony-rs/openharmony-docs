@@ -1,0 +1,80 @@
+# DataPanel
+
+数据面板组件，用于将多个数据占比情况使用占比图进行展示，支持环形和线性两种展示类型，可自定义颜色、阴影、底板等视觉效果，适用于存储容量、任务进度、资源占比等数据可视化场景，帮助用户直观了解数据分布情况。
+
+> **说明：** > > - 该组件从API版本26.0.0开始支持WithTheme。
+
+## 子组件
+
+无
+
+## DataPanel
+
+```TypeScript
+DataPanel(options: DataPanelOptions)
+```
+
+创建数据面板组件。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [DataPanelOptions](arkts-arkui-datapaneloptions-i.md) | 是 | 数据面板配置选项，用于设置数据面板的数据值列表、最大值和数据面板类型。 |
+
+## 汇总
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [ColorStop](arkts-arkui-colorstop-i.md) | 颜色断点类型，用于描述渐变色颜色断点。 |
+| [DataPanelConfiguration](arkts-arkui-datapanelconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](arkts-arkui-commonconfiguration-i.md)。 |
+| [DataPanelOptions](arkts-arkui-datapaneloptions-i.md) | 数据面板选项。 |
+| [DataPanelShadowOptions](arkts-arkui-datapanelshadowoptions-i.md) | DataPanelShadowOptions继承自[MultiShadowOptions](arkts-arkui-multishadowoptions-i.md)，具有MultiShadowOptions的全部属性。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [DataPanelType](arkts-arkui-datapaneltype-e.md) | 数据面板的类型。 |
+
+## 示例
+
+```TypeScript
+### 示例1（设置数据面板类型）
+
+该示例通过[DataPanelOptions](#datapaneloptions对象说明)的type属性，实现了设置数据面板的类型的功能。
+
+
+```
+
+```TypeScript
+### 示例2（设置渐变色和阴影）
+
+该示例通过[valueColors](arkts-arkui-datapanel-comp-attribute.md#valuecolors)和[trackShadow](#trackshadow10)接口设置[LinearGradient](#lineargradient10)颜色，实现了设置渐变色效果和阴影效果。
+
+
+```
+
+```TypeScript
+### 示例3（设置关闭动画和阴影）
+
+该示例通过[closeEffect](arkts-arkui-datapanel-comp-attribute.md#closeeffect)接口，实现了关闭数据占比图表旋转动效和投影效果的功能。
+
+
+```
+
+```TypeScript
+### 示例4（设置定制内容区）
+
+该示例通过[contentModifier](#contentmodifier12)接口，实现了定制数据面板内容区的功能。
+```

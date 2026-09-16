@@ -30,7 +30,7 @@ buttonDirection?: DialogButtonOrientation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +40,7 @@ buttonDirection?: DialogButtonOrientation
 buttons?: Array<DialogButton>
 ```
 
-对话框中的按钮数组。 提供时，对话框显示为带有按钮的警报样式对话框。 与图纸一起使用时，按钮显示在图纸列表下方。
+对话框中的按钮数组。提供时，对话框显示为带有按钮的警报样式对话框。与图纸一起使用时，按钮显示在图纸列表下方。
 
 **类型：** Array&lt;[DialogButton](arkts-arkui-dialog-dialogbutton-i.md)&gt;
 
@@ -48,7 +48,7 @@ buttons?: Array<DialogButton>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +58,7 @@ buttons?: Array<DialogButton>
 gridCount?: number
 ```
 
-对话框的网格计数。 取值限定为整数。
+对话框的网格计数。取值限定为整数。
 
 **类型：** number
 
@@ -66,7 +66,7 @@ gridCount?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +84,7 @@ message?: DialogMessage
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +94,7 @@ message?: DialogMessage
 sheets?: Array<DialogSheet>
 ```
 
-action-sheet样式的表单项数组。 提供时，对话框将显示供用户选择的工作表项目。
+action-sheet样式的表单项数组。提供时，对话框将显示供用户选择的工作表项目。
 
 **类型：** Array&lt;[DialogSheet](arkts-arkui-dialog-dialogsheet-i.md)&gt;
 
@@ -102,7 +102,7 @@ action-sheet样式的表单项数组。 提供时，对话框将显示供用户�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,7 +120,7 @@ subtitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,6 +138,6 @@ title?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

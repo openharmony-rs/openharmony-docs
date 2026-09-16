@@ -20,11 +20,11 @@ readonly creaseRects: Array<Rect>
 
 折痕区域。
 
-**类型：** Array&lt;Rect&gt;
+**类型：** Array&lt;[Rect](arkts-arkui-display-rect-i.md)&gt;
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -40,6 +40,6 @@ readonly displayId: number
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager

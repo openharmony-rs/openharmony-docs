@@ -6,7 +6,7 @@ typedef struct OH_NativeXComponent_HistoricalPoint {...} OH_NativeXComponent_His
 
 ## 概述
 
-历史触摸点。
+历史触摸点。在触摸事件处理中，系统会记录触摸轨迹中的历史触摸点信息，用于还原高速滑动等场景下的完整触摸轨迹。每个历史触摸点包含该时刻触摸点的坐标、类型、压力、时间戳、倾斜角度等属性，适用于需要分析触摸轨迹、手势识别等场景。
 
 **起始版本：** 10
 

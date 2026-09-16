@@ -39,7 +39,7 @@ The file declares the APIs for a window to filter multimodal key events. When a 
 typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 ```
 
-**描述**
+**描述：**
 
 定义多模按键的过滤函数。
 
@@ -49,7 +49,7 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| Input_KeyEvent\* keyEvent | 多模按键事件，具体可见Input_KeyEvent，事件定义在oh_input_manager中。 |
+| Input_KeyEvent\* keyEvent | 多模按键事件，具体可见{@link Input_KeyEvent}，事件定义在oh_input_manager中。 |
 
 **返回：**
 
@@ -63,7 +63,7 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter keyEventFilter)
 ```
 
-**描述**
+**描述：**
 
 注册按键事件的过滤函数。
 
@@ -80,7 +80,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数keyEventFilter无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数keyEventFilter无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
 
 ### OH_NativeWindowManager_UnregisterKeyEventFilter()
 
@@ -88,7 +88,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)
 ```
 
-**描述**
+**描述：**
 
 取消注册窗口的按键事件过滤函数。
 
@@ -104,7 +104,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
 
 ### OH_NativeWindowManager_MouseEventFilter()
 
@@ -112,7 +112,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t 
 typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)
 ```
 
-**描述**
+**描述：**
 
 定义多模鼠标事件的过滤函数。
 
@@ -122,7 +122,7 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 
 | 参数项 | 描述 |
 | -- | -- |
-| Input_MouseEvent\* mouseEvent | 多模鼠标事件，具体可见Input_MouseEvent，事件定义在oh_input_manager中。 |
+| Input_MouseEvent\* mouseEvent | 多模鼠标事件，具体可见{@link Input_MouseEvent}，事件定义在oh_input_manager中。 |
 
 **返回：**
 
@@ -136,7 +136,7 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter mouseEventFilter)
 ```
 
-**描述**
+**描述：**
 
 注册鼠标事件的过滤函数。
 
@@ -153,7 +153,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数mouseEventFilter无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数mouseEventFilter无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
 
 ### OH_NativeWindowManager_UnregisterMouseEventFilter()
 
@@ -161,7 +161,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)
 ```
 
-**描述**
+**描述：**
 
 取消注册窗口的鼠标事件过滤函数。
 
@@ -177,7 +177,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
 
 ### OH_NativeWindowManager_TouchEventFilter()
 
@@ -185,7 +185,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_
 typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)
 ```
 
-**描述**
+**描述：**
 
 定义多模触摸事件的过滤函数。
 
@@ -195,7 +195,7 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 
 | 参数项 | 描述 |
 | -- | -- |
-| Input_TouchEvent\* touchEvent | 多模触摸事件，具体可见Input_TouchEvent，事件定义在oh_input_manager中。 |
+| Input_TouchEvent\* touchEvent | 多模触摸事件，具体可见{@link Input_TouchEvent}，事件定义在oh_input_manager中。 |
 
 **返回：**
 
@@ -209,7 +209,7 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter touchEventFilter)
 ```
 
-**描述**
+**描述：**
 
 注册触摸事件的过滤函数。
 
@@ -226,7 +226,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数touchEventFilter无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示参数touchEventFilter无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
 
 ### OH_NativeWindowManager_UnregisterTouchEventFilter()
 
@@ -234,7 +234,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)
 ```
 
-**描述**
+**描述：**
 
 取消注册窗口的触摸事件过滤函数。
 
@@ -250,7 +250,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示参数windowId无效。</li>      <li>返回SERVICE_ERROR，表示窗口管理服务异常。</li>      </ul> |
 
 ### OH_NativeWindowManager_GetKeyEventFilter()
 
@@ -258,7 +258,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_
 WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowId, OH_NativeWindowManager_KeyEventFilter* outKeyEventFilter)
 ```
 
-**描述**
+**描述：**
 
 获取指定窗口注册的多模按键事件过滤函数。
 
@@ -275,7 +275,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowI
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示入参windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示入参outKeyEventFilter为NULL。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示入参windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示入参outKeyEventFilter为NULL。</li>      </ul> |
 
 ### OH_NativeWindowManager_GetMouseEventFilter()
 
@@ -283,7 +283,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetKeyEventFilter(int32_t windowI
 WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windowId, OH_NativeWindowManager_MouseEventFilter* outMouseEventFilter)
 ```
 
-**描述**
+**描述：**
 
 获取指定窗口注册的多模鼠标事件过滤函数。
 
@@ -300,7 +300,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windo
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示入参windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示入参outMouseEventFilter为NULL。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示入参windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示入参outMouseEventFilter为NULL。</li>      </ul> |
 
 ### OH_NativeWindowManager_GetTouchEventFilter()
 
@@ -308,7 +308,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetMouseEventFilter(int32_t windo
 WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windowId, OH_NativeWindowManager_TouchEventFilter* outTouchEventFilter)
 ```
 
-**描述**
+**描述：**
 
 获取指定窗口注册的多模触摸事件过滤函数。
 
@@ -325,6 +325,6 @@ WindowManager_ErrorCode OH_NativeWindowManager_GetTouchEventFilter(int32_t windo
 
 | 类型 | 说明 |
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示入参windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示入参outTouchEventFilter为NULL。</li>      </ul> |
+| WindowManager_ErrorCode | 函数返回的执行结果。      <ul>      <li>返回OK，表示接口调用成功。</li>      <li>返回INVALID_WINDOW_ID，表示入参windowId无效。</li>      <li>返回WINDOW_MANAGER_ERRORCODE_INVALID_PARAM，表示入参outTouchEventFilter为NULL。</li>      </ul> |
 
 

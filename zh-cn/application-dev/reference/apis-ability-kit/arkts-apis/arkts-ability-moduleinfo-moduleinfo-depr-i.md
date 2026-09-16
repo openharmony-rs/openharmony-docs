@@ -2,15 +2,15 @@
 
 应用程序的模块信息。
 
-> **说明：**
+> **说明：** 
 > 
-> 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[bundleManager-HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md#hapmoduleinfo)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md)
+**替代接口：** [HapModuleInfo](arkts-ability-hapmoduleinfo-hapmoduleinfo-depr-i.md#hapmoduleinfo)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -40,7 +40,7 @@ readonly moduleName: string
 readonly moduleSourceDir: string
 ```
 
-安装目录。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-resourcemanager.md)访问资源。
+安装目录。不能拼接路径访问资源文件，请使用[资源管理接口](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md)访问资源。
 
 **类型：** string
 

@@ -11,7 +11,7 @@
 export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): Promise<boolean[]>
 ```
 
-对受控设备的授权包进行校验。 对被控设备发送的远程授权包进行校验。 它验证票证以确保授权是合法的。
+对受控设备的授权包进行校验。对被控设备发送的远程授权包进行校验。它验证票证以确保授权是合法的。
 
 **起始版本：** 26.1.0
 
@@ -31,7 +31,7 @@ export function verifyControlledDevicePackage(ticketInfo: RemoteAuthPackage[]): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean[]&gt; | Promise用于返回\\${boolean[]}。 |
+| Promise&lt;boolean[]&gt; | Promise用于返回&#36;{boolean[]}。 |
 
 **错误码：**
 

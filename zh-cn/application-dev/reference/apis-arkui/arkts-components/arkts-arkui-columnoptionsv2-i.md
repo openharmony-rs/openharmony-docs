@@ -6,19 +6,27 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## space
 
 ```TypeScript
 space?: SpaceType
 ```
 
-设置纵向布局元素垂直方向间距。space为负数或者[justifyContent](arkts-arkui-column-attribute.md#justifycontent)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、 FlexAlign.SpaceEvenly时，space不生效。取值范围：[0, +∞)默认值：0单位：vp非法值：按默认值处理。  
-**说明：**space取值是大于等于0的数字，或者可以转换为非负数字的字符串，或者可以转换为数字的Resource类型数据。
+设置纵向布局元素垂直方向间距。
+
+space为负数或者[justifyContent](arkts-arkui-column-comp-attribute.md#justifycontent)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。
+
+取值范围：[0, +∞)
+
+默认值：0
+
+单位：vp
+
+非法值：按默认值处理。
+
+**说明：** 
+
+space取值是大于等于0的数字，或者可以转换为非负数字的字符串，或者可以转换为数字的Resource类型数据。
 
 **类型：** [SpaceType](arkts-arkui-spacetype-t.md)
 
@@ -26,7 +34,7 @@ space?: SpaceType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 

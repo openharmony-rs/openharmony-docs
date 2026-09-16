@@ -1,6 +1,6 @@
 # DialogCustomOptions
 
-自定义样式对话框的选项。 对话内容作为present()方法的第一个参数提供。 不在此选项对象中。
+自定义样式对话框的选项。对话内容作为present()方法的第一个参数提供。不在此选项对象中。
 
 **继承/实现关系：** DialogCustomOptions extends [DialogBaseOptions](arkts-arkui-dialog-dialogbaseoptions-i.md)
 
@@ -30,6 +30,6 @@ customStyle?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

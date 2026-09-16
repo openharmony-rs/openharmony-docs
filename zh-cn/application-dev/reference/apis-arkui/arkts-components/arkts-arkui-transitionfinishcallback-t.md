@@ -4,13 +4,13 @@
 declare type TransitionFinishCallback = (transitionIn: boolean) => void
 ```
 
-组件转场动画的结束回调类型。
+定义组件转场动画结束回调的类型。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -20,4 +20,4 @@ declare type TransitionFinishCallback = (transitionIn: boolean) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| transitionIn | boolean | 是 | 该入参表示转场动画的结束回调类型。 该参数为true表示该转场回调是出现动画的结束回调，该参数为false表示该转场回调是消失动画的结束回调。 |
+| transitionIn | boolean | 是 | 转场动画的结束回调类型。<br>true表示出现动画结束回调，false表示消失动画结束回调。 |

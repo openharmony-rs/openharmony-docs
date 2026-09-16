@@ -6,7 +6,7 @@ typedef struct AbilityBase_Want AbilityBase_Want
 
 ## 概述
 
-Want数据结构。
+声明元能力Want结构。
 
 **起始版本：** 15
 

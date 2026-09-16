@@ -14,7 +14,7 @@ function getSupportedProcessCachePids(bundleName : string): Promise<Array<number
 
 查询当前应用中支持缓存后快速启动的进程PID。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > 本接口仅支持获取调用者所在系统账号下的进程PID。
 
@@ -38,7 +38,7 @@ function getSupportedProcessCachePids(bundleName : string): Promise<Array<number
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;Array &lt;number&gt;&gt; | Promise对象。返回一个数组，包含当前应用中支持缓存后快速启动的所有进程PID。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回一个数组，包含当前应用中支持缓存后快速启动的所有进程PID。 |
 
 **错误码：**
 

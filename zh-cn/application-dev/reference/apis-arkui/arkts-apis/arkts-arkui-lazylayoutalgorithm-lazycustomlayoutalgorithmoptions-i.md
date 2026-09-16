@@ -14,7 +14,7 @@ axis?: Axis
 
 定义懒加载布局的主轴方向。
 
-**类型：** Axis
+**类型：** [Axis](arkts-arkui-axis-e.md)
 
 **默认值：** Axis.Vertical
 
@@ -22,6 +22,6 @@ axis?: Axis
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

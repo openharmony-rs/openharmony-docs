@@ -6,20 +6,17 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## curve
 
 ```TypeScript
 curve?: Curve | ICurve
 ```
 
-设置动画曲线。默认值：Curve.Linear
+设置动画曲线。
 
-**类型：** Curve \| ICurve
+默认值：Curve.Linear
+
+**类型：** [Curve](../arkts-apis/arkts-arkui-curve-e.md) &#124; [ICurve](arkts-arkui-icurve-i.md)
 
 **默认值：** Curve.Linear
 
@@ -27,7 +24,7 @@ curve?: Curve | ICurve
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +34,11 @@ curve?: Curve | ICurve
 endMillis: number
 ```
 
-动画结束时间。单位：毫秒。取值范围：[0, +∞)。
+动画结束时间。
+
+单位：毫秒。
+
+取值范围：[0, +∞)。传入负值时取默认值0。
 
 **类型：** number
 
@@ -45,7 +46,7 @@ endMillis: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,7 +64,7 @@ from: T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +74,11 @@ from: T
 startMillis: number
 ```
 
-动画开始时间。单位：毫秒。取值范围：[0, +∞)。
+动画开始时间。
+
+单位：毫秒。
+
+取值范围：[0, +∞)。传入负值时取默认值0。
 
 **类型：** number
 
@@ -81,7 +86,7 @@ startMillis: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,6 +104,6 @@ to: T
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

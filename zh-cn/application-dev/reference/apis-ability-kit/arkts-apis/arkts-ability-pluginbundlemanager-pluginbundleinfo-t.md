@@ -12,4 +12,4 @@ export type PluginBundleInfo = _PluginBundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**属性类型：** _PluginBundleInfo
+**类型：** _PluginBundleInfo

@@ -43,22 +43,3 @@ function getDialogSessionInfo(dialogSessionId: string): DialogSessionInfo
 | [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
 | [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
-```TypeScript
-import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
-
-const TAG: string = '[testTag] UIExtAbility';
-
-export default class UIExtAbility extends UIExtensionAbility {
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    // want由系统内部指定，dialogSessionId为内置参数
-    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
-
-    // 查询DialogSessionInfo
-    let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
-    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-  }
-}
-```

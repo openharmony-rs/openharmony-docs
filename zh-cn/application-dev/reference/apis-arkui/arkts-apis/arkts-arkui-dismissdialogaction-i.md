@@ -6,11 +6,6 @@ Dialog关闭的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## dismiss
 
 ```TypeScript
@@ -19,13 +14,13 @@ dismiss: Callback<void>
 
 Dialog关闭回调函数。开发者需要退出时调用，不需要退出时无需调用。
 
-**类型：** Callback&lt;void&gt;
+**类型：** [Callback](../arkts-components/arkts-arkui-callback-i.md)&lt;void&gt;
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +38,6 @@ Dialog无法关闭原因。根据开发者需要选择不同操作下，Dialog�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

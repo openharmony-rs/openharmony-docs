@@ -1,6 +1,8 @@
 # AgentProxy（系统接口）
 
-AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。@interface AgentProxy
+AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送消息。
+
+@interface AgentProxy
 
 **起始版本：** 24
 
@@ -14,7 +16,7 @@ AgentExtensionAbility的代理对象，用于向AgentExtensionAbility等发送�
 authorize(handshakeData: string): void
 ```
 
-向AgentExtensionAbility发送鉴权。
+客户端调用此接口向AgentExtensionAbility服务端发送安全认证请求。
 
 **起始版本：** 24
 
@@ -28,7 +30,7 @@ authorize(handshakeData: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handshakeData | string | 是 | 要发送的握手数据。 |
+| handshakeData | string | 是 | 待发送给AgentExtensionAbility服务端的安全认证数据。 |
 
 **错误码：**
 
@@ -42,7 +44,7 @@ authorize(handshakeData: string): void
 sendData(data: string): void
 ```
 
-向AgentExtensionAbility发送数据。
+客户端调用此接口向AgentExtensionAbility服务端发送数据。
 
 **起始版本：** 24
 

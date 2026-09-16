@@ -6,9 +6,11 @@ declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) 
 
 开始拖拽列表或网格元素时触发的回调。
 
+@typedef { function } OnItemDragStartCallback
+
 **起始版本：** 23
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

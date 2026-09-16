@@ -6,18 +6,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## range
 
 ```TypeScript
 range: [number, number]
 ```
 
-段落起始和结束位置。
+段落起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的内容不包含在内。
 
 **类型：** [number, number]
 
@@ -25,7 +20,7 @@ range: [number, number]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +38,6 @@ style: RichEditorParagraphStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

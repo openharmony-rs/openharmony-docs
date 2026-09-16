@@ -45,6 +45,19 @@ display.getDefaultDisplay((err: BusinessError, data: display.Display) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+let promise: Promise<display.Display> = display.getDefaultDisplay();
+promise.then((data: display.Display) => {
+  displayClass = data;
+  console.info(`Succeeded in obtaining the default display object. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to obtain the default display object. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 
 ## getDefaultDisplay
 
@@ -70,15 +83,4 @@ function getDefaultDisplay(): Promise<Display>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: display.Display | null = null;
-let promise: Promise<display.Display> = display.getDefaultDisplay();
-promise.then((data: display.Display) => {
-  displayClass = data;
-  console.info(`Succeeded in obtaining the default display object. Data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to obtain the default display object. Code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [getDefaultDisplay](#getdefaultdisplay)

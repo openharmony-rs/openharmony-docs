@@ -1,6 +1,6 @@
 # PageIntentDecoratorInfo
 
-PageIntentDecoratorInfo继承自[IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)，用于描述 @InsightIntentPage 装饰器支持的参数，例如目标页面的 [NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navigation-attribute.md#navdestination)名称。
+PageIntentDecoratorInfo继承自[IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)，用于描述[@InsightIntentPage](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#navdestination)名称。
 
 **继承/实现关系：** PageIntentDecoratorInfo extends [IntentDecoratorInfo](arkts-ability-app-ability-insightintentdecorator-intentdecoratorinfo-i.md)
 
@@ -20,7 +20,7 @@ import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, Insi
 navDestinationName?: string
 ```
 
-表示与意图绑定 [NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navigation-attribute.md#navdestination)的名称。
+表示与意图绑定[NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md#navdestination)的名称。
 
 **类型：** string
 
@@ -28,7 +28,7 @@ navDestinationName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -38,7 +38,7 @@ navDestinationName?: string
 navigationId?: string
 ```
 
-表示与意图绑定的[NavDestination组件](../../apis-arkui/arkts-components/arkts-arkui-navigation-attribute.md)的id属性。
+表示与意图绑定的[NavDestination组件](../../apis-arkui/arkts-components/arkts-arkui-navigation-comp-attribute.md)的id属性。
 
 **类型：** string
 
@@ -46,7 +46,7 @@ navigationId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,7 +64,7 @@ pagePath: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -82,6 +82,6 @@ uiAbility?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

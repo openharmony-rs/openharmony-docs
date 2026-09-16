@@ -1,17 +1,12 @@
 # Storage（系统接口）
 
-持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存 储的场景。
+持久化存储后端接口，提供基于键值对（key-value）的数据持久化能力，包括数据的读取、写入、清除和删除。PersistentStorage通过该接口实现AppStorage数据的本地持久化，适用于需要对应用数据进行灵活本地持久化存储的场景。
 
 **起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
-
-## 导入模块
-
-```TypeScript
-```
 
 ## clear
 
@@ -90,7 +85,7 @@ get(key: string): string | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| string \| undefined | key对应的值；key不存在时返回undefined。 |
+| string &#124; undefined | key对应的值；key不存在时返回undefined。 |
 
 ## set
 

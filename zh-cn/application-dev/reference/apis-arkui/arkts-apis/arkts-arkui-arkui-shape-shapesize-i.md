@@ -18,15 +18,25 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 height?: number | string
 ```
 
-形状的高度。类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。单位：vp默认值：0vp取值为异常值时按照0vp处理。不设置时默认值为0vp。
+形状的高度。
 
-**类型：** number \| string
+类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。
+
+单位：vp
+
+默认值：0vp
+
+取值为异常值时按照0vp处理。
+
+不设置时默认值为0vp。
+
+**类型：** number &#124; string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
@@ -38,15 +48,25 @@ height?: number | string
 width?: number | string
 ```
 
-形状的宽度。类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。单位：vp默认值：0vp取值为异常值时按照0vp处理。不设置时默认值为0vp。
+形状的宽度。
 
-**类型：** number \| string
+类型为number时取值范围是[0, +∞)，string时是[Length](arkts-arkui-length-t.md)。
+
+单位：vp
+
+默认值：0vp
+
+取值为异常值时按照0vp处理。
+
+不设置时默认值为0vp。
+
+**类型：** number &#124; string
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 

@@ -12,4 +12,4 @@ UIAbility首帧绘制完成回调上报数据结构。
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AbilityFirstFrameStateData.default
+**类型：** _AbilityFirstFrameStateData.default

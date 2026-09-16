@@ -12,4 +12,4 @@ UIAbility首帧绘制完成事件监听对象。
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AbilityFirstFrameStateObserver.default
+**类型：** _AbilityFirstFrameStateObserver.default

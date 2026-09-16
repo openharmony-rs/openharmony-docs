@@ -10,7 +10,7 @@ type OnCreateMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuIt
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,7 @@ type OnCreateMenuCallback = (menuItems: Array<TextMenuItem>) => Array<TextMenuIt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | 是 | 当前显示的菜单项。 **说明：** 对默认菜单项的名称、图标、快捷键提示修改不生效。 |
+| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | 是 | 当前显示的菜单项。<br>**说明：** <br>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
 
 **返回值：**
 

@@ -18,7 +18,13 @@ import { floatView } from '@kit.ArkUI';
 reason: string
 ```
 
-标准悬浮窗矩形区域变化的原因。原因和对应含义如下："POSITION_CHANGE"：位置变化"SIZE_CHANGE"：大小变化"RECT_CHANGE"：位置大小同时变化
+标准悬浮窗矩形区域变化的原因。原因和对应含义如下：
+
+"POSITION_CHANGE"：位置变化
+
+"SIZE_CHANGE"：大小变化
+
+"RECT_CHANGE"：位置大小同时变化
 
 **类型：** string
 
@@ -36,7 +42,7 @@ windowRect: window.Rect
 
 标准悬浮窗窗口矩形区域。
 
-**类型：** window.Rect
+**类型：** [window.Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 26.0.0
 

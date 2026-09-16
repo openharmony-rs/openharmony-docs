@@ -9,6 +9,7 @@ Provides APIs to obtain the manual exposure range supported.
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## getExposureBiasStep
@@ -23,7 +24,7 @@ Get exposure bias step.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -50,7 +51,7 @@ Gets the supported manual exposure duration range, units: microseconds.
 
 **起始版本：** 24
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -58,7 +59,7 @@ Gets the supported manual exposure duration range, units: microseconds.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;number&gt; | The array of manual exposure range. |
+| Array&lt;number&gt; | The array of manual exposure range. |
 
 **错误码：**
 

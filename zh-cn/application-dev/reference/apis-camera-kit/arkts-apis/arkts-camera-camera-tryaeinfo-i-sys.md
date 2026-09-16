@@ -11,6 +11,7 @@ Describes the Try AE parameters. Try AE indicates that the hardware reports the 
 ## 导入模块
 
 ```TypeScript
+import { camera } from '@kit.CameraKit';
 ```
 
 ## captureInterval

@@ -46,6 +46,19 @@ continuationManager.unregister(token, (err) => {
 });
 ```
 
+```TypeScript
+import { continuationManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let token: number = 1;
+continuationManager.unregister(token)
+  .then(() => {
+    console.info('unregister finished. ');
+  }).catch((err: BusinessError) => {
+    console.error('unregister failed, cause: ' + JSON.stringify(err));
+});
+```
+
 
 ## unregister
 
@@ -75,19 +88,8 @@ function unregister(token: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise形式返回接口调用结果。 |
+| Promise&lt;void&gt; | Promise形式返回接口调用结果。 |
 
 **示例**
 
-```TypeScript
-import { continuationManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let token: number = 1;
-continuationManager.unregister(token)
-  .then(() => {
-    console.info('unregister finished. ');
-  }).catch((err: BusinessError) => {
-    console.error('unregister failed, cause: ' + JSON.stringify(err));
-});
-```
+参见 [unregister](#unregister)

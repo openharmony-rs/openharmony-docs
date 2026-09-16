@@ -1,6 +1,6 @@
 # TriggerInfo
 
-作为[trigger](../../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagenttrigger)的入参定义触发WantAgent所需 要的信息。
+作为[trigger](arkts-ability-wantagent-trigger-f.md)的入参定义触发WantAgent所需要的信息。
 
 **起始版本：** 7
 
@@ -12,7 +12,7 @@
 startOptions?: StartOptions
 ```
 
-触发启动Ability的wantAgent时，由该属性指定启动参数。
+当触发wantAgent启动Ability时，由该属性指定启动参数。
 
 **类型：** [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)
 

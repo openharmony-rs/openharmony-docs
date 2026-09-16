@@ -2,7 +2,7 @@
 
 文本装饰线样式接口对象说明。
 
-> **说明：**
+> **说明：** 
 > 
 > 当文字的下边缘轮廓与装饰线位置相交时，会触发下划线避让规则，下划线将在这些字符处避让文字。常见“gjyqp”等英文字符。
 > 
@@ -12,18 +12,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## color
 
 ```TypeScript
 color?: ResourceColor
 ```
 
-装饰线颜色。默认值：Color.Black
+装饰线颜色。
+
+默认值：Color.Black
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -31,7 +28,7 @@ color?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,15 +38,17 @@ color?: ResourceColor
 style?: TextDecorationStyle
 ```
 
-装饰线样式。具体枚举及说明请参考TextDecorationStyle。默认值：TextDecorationStyle.SOLID。
+装饰线样式。具体枚举及说明请参考TextDecorationStyle。
 
-**类型：** TextDecorationStyle
+默认值：TextDecorationStyle.SOLID。
+
+**类型：** [TextDecorationStyle](arkts-arkui-textdecorationstyle-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +58,12 @@ style?: TextDecorationStyle
 thicknessScale?: number
 ```
 
-装饰线粗细缩放。默认值：1.0取值范围：[0, +∞)  
+装饰线粗细缩放。
+
+默认值：1.0
+
+取值范围：[0, +∞)
+
 **说明：** 负值按默认值处理。
 
 **类型：** number
@@ -68,7 +72,7 @@ thicknessScale?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,14 +82,16 @@ thicknessScale?: number
 type: TextDecorationType
 ```
 
-装饰线类型。具体枚举及说明请参考TextDecorationType。默认值：TextDecorationType.None。
+装饰线类型。具体枚举及说明请参考TextDecorationType。
 
-**类型：** TextDecorationType
+默认值：TextDecorationType.None。
+
+**类型：** [TextDecorationType](arkts-arkui-textdecorationtype-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

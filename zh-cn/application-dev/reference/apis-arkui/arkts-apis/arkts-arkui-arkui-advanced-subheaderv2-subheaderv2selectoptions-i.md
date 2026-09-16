@@ -18,13 +18,15 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 onSelect?: SubHeaderV2SelectOnSelect
 ```
 
-下拉菜单选中某一项的回调。默认值：undefined
+下拉菜单选中某一项的回调。
+
+默认值：undefined
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +36,13 @@ onSelect?: SubHeaderV2SelectOnSelect
 defaultFocus?: boolean
 ```
 
-下拉按钮是否为默认焦点。true：下拉按钮是默认焦点。false：下拉按钮不是默认焦点。默认值：false
+下拉按钮是否为默认焦点。
+
+true：下拉按钮是默认焦点。
+
+false：下拉按钮不是默认焦点。
+
+默认值：false
 
 **类型：** boolean
 
@@ -44,7 +52,7 @@ defaultFocus?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +62,9 @@ defaultFocus?: boolean
 id?: string
 ```
 
-下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。默认值：undefined，表示不设置下拉按钮id。
+下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。
+
+默认值：undefined，表示不设置下拉按钮id。
 
 **类型：** string
 
@@ -62,7 +72,7 @@ id?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,7 +90,7 @@ options: SelectOption[]
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +108,7 @@ selectedContent?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +118,13 @@ selectedContent?: ResourceStr
 selectedIndex?: number
 ```
 
-设置下拉菜单初始选项的索引。第一项的索引为0。当不设置selectedIndex属性时，默认选择值为-1，菜单项不选中。
+设置下拉菜单初始选项的索引。
+
+第一项的索引为0。
+
+当不设置selectedIndex属性时，
+
+默认选择值为-1，菜单项不选中。
 
 **类型：** number
 
@@ -116,6 +132,6 @@ selectedIndex?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

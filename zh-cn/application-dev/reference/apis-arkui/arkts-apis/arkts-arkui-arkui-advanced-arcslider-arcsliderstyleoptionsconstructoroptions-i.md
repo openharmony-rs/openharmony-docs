@@ -18,7 +18,13 @@ import { ArcSlider, ArcSliderPosition, ArcSliderOptions, ArcSliderOptionsConstru
 activeTrackThickness?: number
 ```
 
-放大状态下弧形Slider的描边粗细，单位：vp。默认值：24取值范围：[24, 36]，异常值按默认值处理。@Trace
+放大状态下弧形Slider的描边粗细，单位：vp。
+
+默认值：24
+
+取值范围：[24, 36]，异常值按默认值处理。
+
+@Trace
 
 **类型：** number
 
@@ -26,7 +32,7 @@ activeTrackThickness?: number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -36,7 +42,11 @@ activeTrackThickness?: number
 selectedColor?: string
 ```
 
-设置描边高亮色。默认值：#FF5EA1FF@Trace
+设置描边高亮色。
+
+默认值：#FF5EA1FF
+
+@Trace
 
 **类型：** string
 
@@ -44,7 +54,7 @@ selectedColor?: string
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -54,7 +64,13 @@ selectedColor?: string
 trackBlur?: number
 ```
 
-设置描边背景模糊值，单位：vp。默认值：20设置小于0的值时，按照默认值处理。@Trace
+设置描边背景模糊值，单位：vp。
+
+默认值：20
+
+设置小于0的值时，按照默认值处理。
+
+@Trace
 
 **类型：** number
 
@@ -62,7 +78,7 @@ trackBlur?: number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -72,7 +88,11 @@ trackBlur?: number
 trackColor?: string
 ```
 
-设置描边背景色。默认值：#33FFFFFF@Trace
+设置描边背景色。
+
+默认值：#33FFFFFF
+
+@Trace
 
 **类型：** string
 
@@ -80,7 +100,7 @@ trackColor?: string
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -90,7 +110,13 @@ trackColor?: string
 trackThickness?: number
 ```
 
-正常状态下弧形Slider的描边粗细，单位：vp。默认值：5取值范围：[5, 16]，异常值按默认值处理。@Trace
+正常状态下弧形Slider的描边粗细，单位：vp。
+
+默认值：5
+
+取值范围：[5, 16]，异常值按默认值处理。
+
+@Trace
 
 **类型：** number
 
@@ -98,6 +124,6 @@ trackThickness?: number
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

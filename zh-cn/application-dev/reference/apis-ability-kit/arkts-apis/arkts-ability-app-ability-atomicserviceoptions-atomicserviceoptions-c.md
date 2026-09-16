@@ -1,6 +1,6 @@
 # AtomicServiceOptions
 
-**AtomicServiceOptions**可以作为 [openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice)的入参，用于携带参数。继承自 [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)。
+**AtomicServiceOptions**可以作为[openAtomicService()](arkts-ability-uiabilitycontext-c.md#openatomicservice)的入参，用于携带参数。继承自[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)。
 
 **继承/实现关系：** AtomicServiceOptions extends [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)
 
@@ -28,7 +28,7 @@ completionHandlerForAtomicService?: CompletionHandlerForAtomicService
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -46,7 +46,7 @@ flags?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -64,6 +64,6 @@ parameters?: Record<string, Object>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

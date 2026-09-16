@@ -10,4 +10,4 @@ export type ShortcutInfo = _ShortcutInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
-**属性类型：** _ShortcutInfo
+**类型：** _ShortcutInfo

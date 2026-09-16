@@ -69,7 +69,7 @@ role: Role
 
 设备角色。
 
-**类型：** Role
+**类型：** [Role](arkts-ability-abilitytoolaccessctrl-role-e-sys.md)
 
 **起始版本：** 26.1.0
 

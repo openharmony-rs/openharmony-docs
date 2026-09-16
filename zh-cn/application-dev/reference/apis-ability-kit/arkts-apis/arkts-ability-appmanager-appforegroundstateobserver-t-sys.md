@@ -12,4 +12,4 @@ export type AppForegroundStateObserver = _AppForegroundStateObserver.default
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AppForegroundStateObserver.default
+**类型：** _AppForegroundStateObserver.default

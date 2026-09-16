@@ -2,7 +2,7 @@
 
 Context模块提供了Ability或Application的上下文的基础能力，包括允许访问特定于应用程序的资源、请求和验证权限等。
 
-**继承/实现关系：** Context extends BaseContext
+**继承/实现关系：** Context extends [BaseContext](arkts-ability-basecontext-c.md)
 
 **起始版本：** 6
 
@@ -146,7 +146,7 @@ getAppType(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回此应用的类型。 |
+| Promise&lt;string&gt; | Promise对象，返回此应用的类型。 |
 
 ## getAppVersionInfo
 
@@ -226,7 +226,7 @@ getBundleName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回当前ability的Bundle名称。 |
+| Promise&lt;string&gt; | Promise对象，返回当前ability的Bundle名称。 |
 
 ## getCacheDir
 
@@ -266,7 +266,7 @@ getCacheDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回该应用程序的内部存储目录。 |
+| Promise&lt;string&gt; | Promise对象，返回该应用程序的内部存储目录。 |
 
 ## getCallingBundle
 
@@ -306,7 +306,7 @@ getCallingBundle(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回ability调用方的Bundle名称。 |
+| Promise&lt;string&gt; | Promise对象，返回ability调用方的Bundle名称。 |
 
 ## getDisplayOrientation
 
@@ -326,7 +326,7 @@ getDisplayOrientation(callback: AsyncCallback<bundle.DisplayOrientation>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;bundle.DisplayOrientation&gt; | 是 | 回调函数，返回屏幕显示方向。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md)&gt; | 是 | 回调函数，返回屏幕显示方向。 |
 
 ## getDisplayOrientation
 
@@ -346,7 +346,7 @@ getDisplayOrientation(): Promise<bundle.DisplayOrientation>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;bundle.DisplayOrientation&gt; | Indicates the screen display direction. |
+| Promise&lt;[bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md)&gt; | Indicates the screen display direction. |
 
 ## getElementName
 
@@ -354,7 +354,7 @@ getDisplayOrientation(): Promise<bundle.DisplayOrientation>
 getElementName(callback: AsyncCallback<ElementName>): void
 ```
 
-获取当前ability的ohos.bundleManager.ElementName对象。使用callback异步回调。 此方法仅适用于页面功能。
+获取当前ability的ohos.bundleManager.ElementName对象。使用callback异步回调。此方法仅适用于页面功能。
 
 **起始版本：** 7
 
@@ -374,7 +374,7 @@ getElementName(callback: AsyncCallback<ElementName>): void
 getElementName(): Promise<ElementName>
 ```
 
-获取当前能力的ohos.bundleManager.ElementName对象。使用Promise异步回调。 此方法仅适用于页面功能。
+获取当前能力的ohos.bundleManager.ElementName对象。使用Promise异步回调。此方法仅适用于页面功能。
 
 **起始版本：** 7
 
@@ -430,7 +430,7 @@ getExternalCacheDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
+| Promise&lt;string&gt; | Promise对象，返回应用程序的缓存目录的绝对路径。 |
 
 ## getFilesDir
 
@@ -470,7 +470,7 @@ getFilesDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回内部存储器上此应用程序的文件目录。 |
+| Promise&lt;string&gt; | Promise对象，返回内部存储器上此应用程序的文件目录。 |
 
 ## getHapModuleInfo
 
@@ -518,7 +518,7 @@ getHapModuleInfo(): Promise<HapModuleInfo>
 getOrCreateDistributedDir(): Promise<string>
 ```
 
-获取Ability或应用的分布式文件路径。使用callback异步回调。 如果分布式文件路径不存在，系统将创建一个路径并返回创建的路径。
+获取Ability或应用的分布式文件路径。使用callback异步回调。如果分布式文件路径不存在，系统将创建一个路径并返回创建的路径。
 
 **起始版本：** 7
 
@@ -530,7 +530,7 @@ getOrCreateDistributedDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
+| Promise&lt;string&gt; | 回调函数，返回Ability或应用的分布式文件路径。若路径不存在，系统将创建一个路径并返回创建的路径。 |
 
 ## getOrCreateDistributedDir
 
@@ -538,7 +538,7 @@ getOrCreateDistributedDir(): Promise<string>
 getOrCreateDistributedDir(callback: AsyncCallback<string>): void
 ```
 
-获取Ability或应用的分布式文件路径。使用Promise异步回调。 如果分布式文件路径不存在，系统将创建一个路径并返回创建的路径。
+获取Ability或应用的分布式文件路径。使用Promise异步回调。如果分布式文件路径不存在，系统将创建一个路径并返回创建的路径。
 
 **起始版本：** 7
 
@@ -558,7 +558,7 @@ getOrCreateDistributedDir(callback: AsyncCallback<string>): void
 getOrCreateLocalDir(): Promise<string>
 ```
 
-获取应用程序的本地根目录。使用Promise异步回调。 如果是第一次调用，将创建目录。
+获取应用程序的本地根目录。使用Promise异步回调。如果是第一次调用，将创建目录。
 
 **起始版本：** 7
 
@@ -570,7 +570,7 @@ getOrCreateLocalDir(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回应用程序的本地根目录。 |
+| Promise&lt;string&gt; | Promise对象，返回应用程序的本地根目录。 |
 
 ## getOrCreateLocalDir
 
@@ -578,7 +578,7 @@ getOrCreateLocalDir(): Promise<string>
 getOrCreateLocalDir(callback: AsyncCallback<string>): void
 ```
 
-获取应用程序的本地根目录。使用callback异步回调。 如果是第一次调用，将创建目录。
+获取应用程序的本地根目录。使用callback异步回调。如果是第一次调用，将创建目录。
 
 **起始版本：** 7
 
@@ -670,7 +670,7 @@ getProcessName(): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回当前进程的名称。 |
+| Promise&lt;string&gt; | Promise对象，返回当前进程的名称。 |
 
 ## isUpdatingConfigurations
 
@@ -710,7 +710,7 @@ isUpdatingConfigurations(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象，返回true表示该Ability的配置正在更改，否则返回false。 |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示该Ability的配置正在更改，否则返回false。 |
 
 ## printDrawnCompleted
 
@@ -750,7 +750,7 @@ printDrawnCompleted(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象 |
 
 ## requestPermissionsFromUser
 
@@ -774,8 +774,8 @@ requestPermissionsFromUser(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissions | Array &lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
-| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)的请求代码。 |
+| permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
+| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
 | resultCallback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)&gt; | 是 | 回调函数，返回授权结果信息。 |
 
 ## requestPermissionsFromUser
@@ -796,8 +796,8 @@ requestPermissionsFromUser(permissions: Array<string>, requestCode: number): Pro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissions | Array &lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
-| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md)的请求代码。 |
+| permissions | Array&lt;string&gt; | 是 | 指示要请求的权限列表。此参数不能为null。 |
+| requestCode | number | 是 | 指示要传递给[PermissionRequestResult](arkts-ability-context-permissionrequestresult-depr-i.md#permissionrequestresult)的请求代码。 |
 
 **返回值：**
 
@@ -823,7 +823,7 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| orientation | bundle.DisplayOrientation | 是 | 指示当前能力的新方向。 |
+| orientation | [bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md) | 是 | 指示当前能力的新方向。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置当前Ability的显示方向成功，err为undefined，否则为错误对象。 |
 
 ## setDisplayOrientation
@@ -844,13 +844,13 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| orientation | bundle.DisplayOrientation | 是 | 表示屏幕显示方向。 |
+| orientation | [bundle.DisplayOrientation](arkts-ability-bundle-displayorientation-e.md) | 是 | 表示屏幕显示方向。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setShowOnLockScreen
 
@@ -901,7 +901,7 @@ setShowOnLockScreen(show: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## setWakeUpScreen
 
@@ -956,7 +956,7 @@ setWakeUpScreen(wakeUp: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 ## verifyPermission
 
@@ -983,7 +983,7 @@ verifyPermission(permission: string, options?: PermissionOptions): Promise<numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
+| Promise&lt;number&gt; | Promise对象，如果pid和uid具有权限，则使用0进行异步回调；否则使用-1回调。 |
 
 ## verifyPermission
 

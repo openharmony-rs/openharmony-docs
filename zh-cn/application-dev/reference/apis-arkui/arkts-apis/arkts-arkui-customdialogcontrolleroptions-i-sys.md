@@ -2,7 +2,7 @@
 
 自定义弹窗的样式。
 
-> **说明：**
+> **说明：** 
 > 
 > - 按下返回键和ESC键时会让弹窗退出。
 > 
@@ -16,18 +16,11 @@
 > 
 > 需要注意：在动画播放过程中，页面不响应触摸、滑动、点击操作。关闭默认弹窗动画效果可设置openAnimation和closeAnimation的duration为0。
 > 
-> - 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用
-> [组件导航子页面显示类型的弹窗类型](../../../ui/arkts-navigation-navdestination.md#页面显示类型)或者
-> [页面级弹出框](../../../ui/arkts-embedded-dialog.md)。
+> - 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用[组件导航子页面显示类型的弹窗类型](../../../ui/arkts-navigation-navdestination.md#页面显示类型)或者[页面级弹出框](../../../ui/arkts-embedded-dialog.md)。
 
 **起始版本：** 7
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## distortionMode
 

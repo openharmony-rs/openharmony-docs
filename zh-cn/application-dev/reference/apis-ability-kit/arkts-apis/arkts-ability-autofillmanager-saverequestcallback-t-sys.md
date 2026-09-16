@@ -14,4 +14,4 @@ export type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AutoFillRequest.SaveRequestCallback
+**类型：** [_AutoFillRequest.SaveRequestCallback](arkts-ability-autofillrequest-saverequestcallback-i-sys.md)

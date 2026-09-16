@@ -6,7 +6,7 @@ typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator
 
 ## 概述
 
-定义Swiper组件的数字导航指示器风格。
+定义Swiper组件的数字导航指示器样式，用于以数字形式展示当前位置和总页数。
 
 **起始版本：** 19
 

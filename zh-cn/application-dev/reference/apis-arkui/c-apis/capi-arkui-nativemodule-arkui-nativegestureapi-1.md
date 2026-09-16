@@ -53,7 +53,7 @@ typedef struct ArkUI_NativeGestureAPI_1 {...} ArkUI_NativeGestureAPI_1
 ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNum)
 ```
 
-**描述**
+**描述：**
 
 创建敲击手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -76,7 +76,7 @@ ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNu
 ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)
 ```
 
-**描述**
+**描述：**
 
 创建长按手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -100,7 +100,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)
 ```
 
-**描述**
+**描述：**
 
 创建滑动手势。与[createSwipeGesture](capi-arkui-nativemodule-arkui-nativegestureapi-1.md#createswipegesture)（快滑手势）不同，滑动手势基于最小拖动距离触发，快滑手势基于最小滑动速度触发。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -124,7 +124,7 @@ ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDi
 ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distanceNum)
 ```
 
-**描述**
+**描述：**
 
 创建捏合手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -147,7 +147,7 @@ ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distan
 ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double angleNum)
 ```
 
-**描述**
+**描述：**
 
 创建旋转手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -170,7 +170,7 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 ArkUI_GestureRecognizer* (*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)
 ```
 
-**描述**
+**描述：**
 
 创建快滑手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -194,7 +194,7 @@ ArkUI_GestureRecognizer* (*createSwipeGesture)(int32_t fingersNum, ArkUI_Gesture
 ArkUI_GestureRecognizer* (*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)
 ```
 
-**描述**
+**描述：**
 
 创建手势组。创建成功后，可调用addChildGesture()向该手势组添加子手势，再通过addGestureToNode()将手势组绑定到节点；不再使用时可按需调用removeChildGesture()移除子手势，并调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
@@ -216,9 +216,15 @@ ArkUI_GestureRecognizer* (*createGroupGesture)(ArkUI_GroupGestureMode gestureMod
 void (*dispose)(ArkUI_GestureRecognizer* recognizer)
 ```
 
-**描述**
+**描述：**
 
 销毁通过createTapGesture()、createLongPressGesture()、createPanGesture()、createPinchGesture()、createRotationGesture()、createSwipeGesture()、createGroupGesture()或createTapGestureWithDistanceThreshold()创建的手势，释放资源。若手势已通过addGestureToNode()添加到节点，建议先调用removeGestureFromNode()解除节点绑定后再调用dispose()；调用dispose()后不得继续使用该手势指针。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture to be disposed of. |
 
 ### addChildGesture()
 
@@ -226,7 +232,7 @@ void (*dispose)(ArkUI_GestureRecognizer* recognizer)
 int32_t (*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)
 ```
 
-**描述**
+**描述：**
 
 Adds a gesture to a gesture group.
 
@@ -241,7 +247,7 @@ Adds a gesture to a gesture group.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs, for example, attempting to          add a gesture to an object that is not a gesture group. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs, for example, attempting to          add a gesture to an object that is not a gesture group. |
 
 ### removeChildGesture()
 
@@ -249,7 +255,7 @@ Adds a gesture to a gesture group.
 int32_t (*removeChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)
 ```
 
-**描述**
+**描述：**
 
 Removes a gesture from a gesture group.
 
@@ -264,7 +270,7 @@ Removes a gesture from a gesture group.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 ### setGestureEventTarget()
 
@@ -272,7 +278,7 @@ Removes a gesture from a gesture group.
 int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventActionTypeMask actionTypeMask, void* extraParams,void (*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams))
 ```
 
-**描述**
+**描述：**
 
 Registers a callback for gestures.
 
@@ -289,7 +295,7 @@ Registers a callback for gestures.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 ### addGestureToNode()
 
@@ -297,7 +303,7 @@ Registers a callback for gestures.
 int32_t (*addGestureToNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer, ArkUI_GesturePriority mode,ArkUI_GestureMask mask)
 ```
 
-**描述**
+**描述：**
 
 Adds a gesture to a UI component.
 
@@ -305,7 +311,7 @@ Adds a gesture to a UI component.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the ArkUI component node to which you want to add the gesture. |
+| ArkUI_NodeHandle node | Pointer to the ArkUI component node to which you want to add the gesture. |
 |  [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Gesture to be added to the UI component. |
 |  [ArkUI_GesturePriority](capi-native-gesture-h.md#arkui_gesturepriority) mode | Mode of the gesture. |
 | [ArkUI_GestureMask](capi-native-gesture-h.md#arkui_gesturemask) mask | Gesture masking mode. |
@@ -314,7 +320,7 @@ Adds a gesture to a UI component.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 ### removeGestureFromNode()
 
@@ -322,7 +328,7 @@ Adds a gesture to a UI component.
 int32_t (*removeGestureFromNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer)
 ```
 
-**描述**
+**描述：**
 
 Removes a gesture from a node.
 
@@ -330,14 +336,14 @@ Removes a gesture from a node.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the node from which you want to remove the gesture. |
+| ArkUI_NodeHandle node | Pointer to the node from which you want to remove the gesture. |
 |  [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Gesture to be removed. |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 ### setGestureInterrupterToNode()
 
@@ -345,7 +351,7 @@ Removes a gesture from a node.
 int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
 ```
 
-**描述**
+**描述：**
 
 Sets a gesture interruption callback for a node.
 
@@ -360,7 +366,7 @@ Sets a gesture interruption callback for a node.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Error code.          <br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Error code.          <br>Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 ### getGestureType()
 
@@ -368,7 +374,7 @@ Sets a gesture interruption callback for a node.
 ArkUI_GestureRecognizerType (*getGestureType)(ArkUI_GestureRecognizer* recognizer)
 ```
 
-**描述**
+**描述：**
 
 获取手势类别。
 
@@ -390,7 +396,7 @@ ArkUI_GestureRecognizerType (*getGestureType)(ArkUI_GestureRecognizer* recognize
 int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event))
 ```
 
-**描述**
+**描述：**
 
 Sets the callback function for the parallel internal gesture event.
 
@@ -406,7 +412,7 @@ Sets the callback function for the parallel internal gesture event.
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.          <br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs. |
+| int32_t | Returns {@link ARKUI_ERROR_CODE_NO_ERROR} if the operation is successful.          <br>Returns {@link ARKUI_ERROR_CODE_PARAM_INVALID} if a parameter error occurs. |
 
 ### createTapGestureWithDistanceThreshold()
 
@@ -414,7 +420,7 @@ Sets the callback function for the parallel internal gesture event.
 ArkUI_GestureRecognizer* (*createTapGestureWithDistanceThreshold)(int32_t countNum, int32_t fingersNum, double distanceThreshold)
 ```
 
-**描述**
+**描述：**
 
 创建带移动范围限制的敲击手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 

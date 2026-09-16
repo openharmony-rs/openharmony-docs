@@ -18,7 +18,11 @@ import { componentSnapshot } from '@kit.ArkUI';
 maxHeight: number
 ```
 
-组件截图的最大高度限制。取值范围：（-∞，+∞）单位：px
+组件截图的最大高度限制。
+
+取值范围：(0, +∞)。异常值为-1，表示查询组件截图尺寸限制失败。
+
+单位：px
 
 **类型：** number
 
@@ -26,7 +30,7 @@ maxHeight: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,11 @@ maxHeight: number
 maxWidth: number
 ```
 
-组件截图的最大宽度限制。取值范围：（-∞，+∞）单位：px
+组件截图的最大宽度限制。
+
+取值范围：(0, +∞)。异常值为-1，表示查询组件截图尺寸限制失败。
+
+单位：px
 
 **类型：** number
 
@@ -44,6 +52,6 @@ maxWidth: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -38,7 +38,7 @@ bundleName?: string
 intentFlags: number
 ```
 
-意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于表示查询全量意图信息或者简要意图信息，取值可参考 [GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md)。
+意图信息（[InsightIntentInfo](arkts-ability-insightintentdriver-insightintentinfo-i-sys.md)）的标识，用于表示查询全量意图信息或者简要意图信息，取值可参考[GetInsightIntentFlag](arkts-ability-insightintentdriver-getinsightintentflag-e-sys.md)。
 
 **类型：** number
 
@@ -92,8 +92,11 @@ moduleName?: string
 userId?: number
 ```
 
-目标意图所属的用户ID。  
-**说明：**如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+目标意图所属的用户ID。
+
+**说明：** 
+
+如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
 
 **类型：** number
 

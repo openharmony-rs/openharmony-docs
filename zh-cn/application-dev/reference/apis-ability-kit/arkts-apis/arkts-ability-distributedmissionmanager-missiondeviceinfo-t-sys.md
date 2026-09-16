@@ -4,7 +4,7 @@
 export type MissionDeviceInfo = _MissionDeviceInfo
 ```
 
-可以作为 [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md) 的入参，表示注册监听时所需参数的对象，包含deviceId等设备标识符字段。
+可以作为[registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md)的入参，表示注册监听时所需参数的对象，包含deviceId等设备标识符字段。
 
 **起始版本：** 10
 
@@ -14,4 +14,4 @@ export type MissionDeviceInfo = _MissionDeviceInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _MissionDeviceInfo
+**类型：** _MissionDeviceInfo

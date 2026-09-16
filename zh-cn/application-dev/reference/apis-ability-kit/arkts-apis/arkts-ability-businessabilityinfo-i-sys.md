@@ -2,6 +2,8 @@
 
 包含基本业务路由信息。
 
+@typedef BusinessAbilityInfo
+
 **起始版本：** 10
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -48,7 +50,7 @@ readonly businessType: businessAbilityRouter.BusinessType
 
 标识枚举业务类型。
 
-**类型：** businessAbilityRouter.BusinessType
+**类型：** [businessAbilityRouter.BusinessType](arkts-ability-businessabilityrouter-businesstype-e-sys.md)
 
 **起始版本：** 10
 

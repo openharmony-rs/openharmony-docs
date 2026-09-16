@@ -6,13 +6,13 @@
 function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined
 ```
 
-获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动 事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取Scroll节点中持有的UIScrollEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,11 +27,7 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIScrollEvent](../arkts-components/arkts-arkui-uiscrollevent-i.md) \| undefined | Scroll节点类型的滚动事件，若获取失败，则返回undefined。 |
-
-**示例**
-
-完整示例请参考滚动事件示例。
+| [UIScrollEvent](../arkts-components/arkts-arkui-uiscrollevent-i.md) &#124; undefined | Scroll节点类型的滚动事件，若获取失败，则返回undefined。 |
 
 
 ## getEvent
@@ -40,13 +36,13 @@ function getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefine
 function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 ```
 
-获取List节点中持有的UIListEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声 明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取List节点中持有的UIListEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -61,11 +57,7 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIListEvent](../arkts-components/arkts-arkui-uilistevent-i.md) \| undefined | List节点类型的滚动事件，若获取失败，则返回undefined。 |
-
-**示例**
-
-完整示例请参考滚动事件示例。
+| [UIListEvent](../arkts-components/arkts-arkui-uilistevent-i.md) &#124; undefined | List节点类型的滚动事件，若获取失败，则返回undefined。 |
 
 
 ## getEvent
@@ -74,13 +66,13 @@ function getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined
 ```
 
-获取[WaterFlow](arkts-arkui-typenode-waterflow-t.md)节点中持有的UIWaterFlowEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则 返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取[WaterFlow](arkts-arkui-typenode-waterflow-t.md)节点中持有的UIWaterFlowEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,11 +87,7 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIWaterFlowEvent](../arkts-components/arkts-arkui-uiwaterflowevent-i.md) \| undefined | WaterFlow节点类型的滚动事件，若获取失败，则返回undefined。 |
-
-**示例**
-
-完整示例请参考滚动事件示例。
+| [UIWaterFlowEvent](../arkts-components/arkts-arkui-uiwaterflowevent-i.md) &#124; undefined | WaterFlow节点类型的滚动事件，若获取失败，则返回undefined。 |
 
 
 ## getEvent
@@ -108,13 +96,13 @@ function getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | un
 function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 ```
 
-获取Grid节点中持有的UIGridEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声 明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
+获取Grid节点中持有的UIGridEvent对象，用于设置滚动事件。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则返回undefined。该接口不支持声明式方式创建的节点。设置的滚动事件与声明式定义的事件平行；设置的滚动事件不覆盖原有的声明式事件。同时设置两个事件回调的时候，优先回调声明式事件。
 
 **起始版本：** 19
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,8 +117,4 @@ function getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIGridEvent](../arkts-components/arkts-arkui-uigridevent-i.md) \| undefined | Grid节点类型的滚动事件，若获取失败，则返回undefined。 |
-
-**示例**
-
-完整示例请参考滚动事件示例。
+| [UIGridEvent](../arkts-components/arkts-arkui-uigridevent-i.md) &#124; undefined | Grid节点类型的滚动事件，若获取失败，则返回undefined。 |

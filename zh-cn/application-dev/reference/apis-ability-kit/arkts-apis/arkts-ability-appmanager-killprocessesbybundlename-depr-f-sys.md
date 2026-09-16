@@ -35,9 +35,26 @@ function killProcessesByBundleName(bundleName: string): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
+
+```TypeScript
+import appManager from '@ohos.application.appManager';
+import { BusinessError } from '@ohos.base';
+
+let bundleName = 'bundleName';
+
+function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
+  if (err) {
+    console.error(`KillProcessesByBundleNameCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`KillProcessesByBundleNameCallback success, data: ${JSON.stringify(data)}.`);
+  }
+}
+
+appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
+```
 
 ```TypeScript
 import appManager from '@ohos.application.appManager';
@@ -83,19 +100,4 @@ function killProcessesByBundleName(bundleName: string, callback: AsyncCallback<v
 
 **示例**
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
-
-let bundleName = 'bundleName';
-
-function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
-  if (err) {
-    console.error(`KillProcessesByBundleNameCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
-  } else {
-    console.info(`KillProcessesByBundleNameCallback success, data: ${JSON.stringify(data)}.`);
-  }
-}
-
-appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
-```
+参见 [killProcessesByBundleName](#killprocessesbybundlename)

@@ -20,7 +20,7 @@ import { windowAnimationManager } from '@kit.ArkUI';
 readonly abilityName: string
 ```
 
-/* 动画目标窗口所对应的Ability名称。 @readonly
+/* 动画目标窗口所对应的Ability名称。@readonly
 
 **类型：** string
 
@@ -36,7 +36,7 @@ readonly abilityName: string
 readonly bundleName: string
 ```
 
-动画目标窗口所对应的包名。 @readonly
+动画目标窗口所对应的包名。@readonly
 
 **类型：** string
 
@@ -52,7 +52,7 @@ readonly bundleName: string
 readonly missionId: number
 ```
 
-/* 任务ID，多任务中用于与ability进行匹配。 @readonly
+/* 任务ID，多任务中用于与ability进行匹配。@readonly
 
 **类型：** number
 
@@ -68,9 +68,9 @@ readonly missionId: number
 readonly windowBounds: RRect
 ```
 
-/* 动画目标窗口所对应的实际大小。 @readonly
+/* 动画目标窗口所对应的实际大小。@readonly
 
-**类型：** RRect
+**类型：** [RRect](arkts-arkui-windowanimationmanager-rrect-i-sys.md)
 
 **起始版本：** 9
 

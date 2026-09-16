@@ -16,7 +16,7 @@ function isCaptured(): boolean
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -24,7 +24,7 @@ function isCaptured(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | boolean值，返回设备的屏幕显示信息是否存在被获取的情况。返回true表示设备的屏幕信息存在被获取的情况，可能为：设备正处于截屏、投屏、录屏状态，或已创建虚拟屏幕(虚拟屏幕可能被应用获 取屏幕图像)；返回false则表示设备的屏幕信息不存在被获取的情况。 |
+| boolean | boolean值，返回设备的屏幕显示信息是否存在被获取的情况。返回true表示设备的屏幕信息存在被获取的情况，可能为：设备正处于截屏、投屏、录屏状态，或已创建虚拟屏幕(虚拟屏幕可能被应用获取屏幕图像)；返回false则表示设备的屏幕信息不存在被获取的情况。 |
 
 **错误码：**
 
@@ -40,6 +40,16 @@ let ret: boolean = false;
 ret = display.isCaptured();
 ```
 
+```TypeScript
+try {
+  const bundleList: Array<string> = ['com.example.app'];
+  let ret = display.isCaptured(bundleList);
+  console.info(`The screen is captured or not: ${ret}`);
+} catch (err) {
+  console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 
 ## isCaptured
 
@@ -53,7 +63,7 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -61,7 +71,7 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleNameList | Array &lt;string&gt; | 是 | 需要检查的应用包名称列表。数组的最大大小为100。 |
+| bundleNameList | Array&lt;string&gt; | 是 | 需要检查的应用包名称列表。数组的最大大小为100。 |
 
 **返回值：**
 
@@ -78,12 +88,4 @@ function isCaptured(bundleNameList: Array<string>): boolean
 
 **示例**
 
-```TypeScript
-try {
-  const bundleList: Array<string> = ['com.example.app'];
-  let ret = display.isCaptured(bundleList);
-  console.info(`The screen is captured or not: ${ret}`);
-} catch (err) {
-  console.error(`Failed to get display isCaptured. Code: ${err.code}, message: ${err.message}`);
-}
-```
+参见 [isCaptured](#iscaptured)

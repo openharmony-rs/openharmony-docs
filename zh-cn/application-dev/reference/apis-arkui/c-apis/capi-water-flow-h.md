@@ -56,7 +56,7 @@
 enum ArkUI_WaterFlowLayoutMode
 ```
 
-**描述**
+**描述：**
 
 定义{@link WaterFlow}组件布局模式枚举值。
 
@@ -76,7 +76,7 @@ enum ArkUI_WaterFlowLayoutMode
 ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 ```
 
-**描述**
+**描述：**
 
 创建{@link FlowItem}分组配置信息，初始数组长度为1。使用结束后需调用[OH_ArkUI_WaterFlowSectionOption_Dispose](capi-water-flow-h.md#oh_arkui_waterflowsectionoption_dispose)释放资源。
 
@@ -94,7 +94,7 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)
 ```
 
-**描述**
+**描述：**
 
 销毁由[OH_ArkUI_WaterFlowSectionOption_Create](capi-water-flow-h.md#oh_arkui_waterflowsectionoption_create)创建的{@link FlowItem}分组配置信息。销毁后不得继续访问该指针。
 
@@ -112,7 +112,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)
 ```
 
-**描述**
+**描述：**
 
 设置FlowItem分组配置信息数组长度。扩容时保留原有配置，并在数组末尾新增分组配置；缩容时保留新长度范围内的配置，删除其余配置。
 
@@ -131,7 +131,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* optio
 int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)
 ```
 
-**描述**
+**描述：**
 
 获取{@link FlowItem}分组配置信息数组长度。
 
@@ -155,7 +155,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)
 ```
 
-**描述**
+**描述：**
 
 设置分组中{@link FlowItem}数量。
 
@@ -175,7 +175,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 通过{@link FlowItem}分组配置信息获取对应索引下的{@link FlowItem}数量。
 
@@ -200,7 +200,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkUI_WaterFlowSectionOption* option, int32_t index, float (*callback)(int32_t itemIndex))
 ```
 
-**描述**
+**描述：**
 
 为分组配置信息数组中索引为index的分组注册用于提供{@link FlowItem}主轴尺寸的回调。WaterFlow布局该分组内的FlowItem时，将当前FlowItem在WaterFlow中的索引作为itemIndex传入回调，并将回调返回值作为该FlowItem的主轴尺寸。主轴尺寸在纵向布局时为高度，在横向布局时为宽度。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](capi-water-flow-h.md#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。
 
@@ -220,7 +220,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData(ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (*callback)(int32_t itemIndex, void* userData))
 ```
 
-**描述**
+**描述：**
 
 为分组配置信息数组中索引为index的分组注册用于提供{@link FlowItem}主轴尺寸的回调，同时保存传入的userData。WaterFlow布局该分组内的FlowItem时，将当前FlowItem在WaterFlow中的索引和userData分别作为回调的第一个、第二个参数传入。userData仅用于向回调传递附加数据，FlowItem的主轴尺寸由回调返回值提供。主轴尺寸在纵向布局时为高度，在横向布局时为宽度。
 
@@ -241,7 +241,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)
 ```
 
-**描述**
+**描述：**
 
 设置布局栅格，纵向布局时为列数，横向布局时为行数。
 
@@ -261,7 +261,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption*
 int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 通过{@link FlowItem}分组配置信息获取对应索引下的布局栅格数。
 
@@ -286,7 +286,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)
 ```
 
-**描述**
+**描述：**
 
 设置分组的列间距。
 
@@ -306,7 +306,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* 
 float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 通过FlowItem分组配置信息获取对应索引下的分组的列间距。
 
@@ -331,7 +331,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption*
 void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)
 ```
 
-**描述**
+**描述：**
 
 设置指定分组的行间距。
 
@@ -351,7 +351,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 通过{@link FlowItem}分组配置信息获取对应索引下的分组的行间距。
 
@@ -376,7 +376,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index, float marginTop, float marginRight, float marginBottom, float marginLeft)
 ```
 
-**描述**
+**描述：**
 
 设置分组的外边距。
 
@@ -399,7 +399,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* opt
 ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述**
+**描述：**
 
 通过{@link FlowItem}分组配置信息获取对应索引下的分组的外边距。
 

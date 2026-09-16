@@ -31,7 +31,7 @@ function setFoldDisplayMode(mode: FoldDisplayMode): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
@@ -43,6 +43,18 @@ try {
   let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_FULL;
   // 设置折叠显示模式为全屏显示
   display.setFoldDisplayMode(mode);
+} catch (exception) {
+  console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+```TypeScript
+import { display } from '@kit.ArkUI';
+
+try {
+  let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN;
+  // 设置折叠显示模式为主屏幕显示并指定原因为“backSelfie”
+  display.setFoldDisplayMode(mode, 'backSelfie');
 } catch (exception) {
   console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
 }
@@ -79,14 +91,4 @@ function setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 **示例**
 
-```TypeScript
-import { display } from '@kit.ArkUI';
-
-try {
-  let mode: display.FoldDisplayMode = display.FoldDisplayMode.FOLD_DISPLAY_MODE_MAIN;
-  // 设置折叠显示模式为主屏幕显示并指定原因为“backSelfie”
-  display.setFoldDisplayMode(mode, 'backSelfie');
-} catch (exception) {
-  console.error(`Failed to change the fold display mode. Code: ${exception.code}, message: ${exception.message}`);
-}
-```
+参见 [setFoldDisplayMode](#setfolddisplaymode)

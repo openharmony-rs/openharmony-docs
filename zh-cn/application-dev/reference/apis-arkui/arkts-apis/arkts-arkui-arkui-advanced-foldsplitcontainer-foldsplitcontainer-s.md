@@ -1,15 +1,26 @@
 # FoldSplitContainer
 
-FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开态（设备完全展开状态）、悬停态（设备半折叠状态）以及折叠态（设备完全折叠状态）的区域控制。适用于折叠屏应用的响应式布局适配场景，可帮助开发者实现多屏状态下的智 能分栏布局，提升用户体验。折叠状态详情可参考[display.FoldStatus](arkts-arkui-display-foldstatus-e.md)。
+FoldSplitContainer分栏布局，实现折叠屏二分栏、三分栏在展开态（设备完全展开状态）、悬停态（设备半折叠状态）以及折叠态（设备完全折叠状态）的区域控制。适用于折叠屏应用的响应式布局适配场景，可帮助开发者实现多屏状态下的智能分栏布局，提升用户体验。折叠状态详情可参考[display.FoldStatus](arkts-arkui-display-foldstatus-e.md)。
 
-> **说明：**
+> **说明：** 
 > 
-> - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 窗口宽度小于等于600vp时默认使用二分栏，窗口宽度大于600vp时在上下分栏的同时可支持扩展区域，窗口宽度大于600vp且在横屏半折状态下可触发悬停态布局。悬停态布局时会增加折痕区的避让并且扩展区域不可以贯穿折痕区，悬停态可设置不展示扩展区域，详情请参考[示例](arkts-arkui-arkui-advanced-foldsplitcontainer-foldsplitcontainer-s.md)。
 > 
-> - 窗口宽度小于等于600vp时默认使用二分栏，窗口宽度大于600vp时在上下分栏的同时可支持扩展区域，窗口宽度大于600vp且在横屏半折状态下可触发悬停态布局。悬停态布局时会增加折痕区的避让并且扩展区域不可以贯穿折痕区，悬停态可
-> 设置不展示扩展区域，详情请参考[FoldSplitContainer](arkts-arkui-arkui-advanced-foldsplitcontainer-foldsplitcontainer-s.md)。
+> - 如果FoldSplitContainer设置[通用属性](../arkts-components/arkts-arkui-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到FoldSplitContainer本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议FoldSplitContainer设置通用属性和通用事件。
+
+## 导入模块
+
+```ts
+import { FoldSplitContainer } from '@kit.ArkUI';
+```
+
+## 子组件
+
+无
 
 **起始版本：** 12
+
+**装饰器类型：** @Component
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +42,7 @@ onHoverStatusChange?: OnHoverStatusChangeHandler
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,15 +52,19 @@ onHoverStatusChange?: OnHoverStatusChangeHandler
 animationOptions?: AnimateParam | null
 ```
 
-设置动画效果相关的参数，null表示关闭动效。默认值：null
+设置动画效果相关的参数，null表示关闭动效。
 
-**类型：** [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) \| null
+默认值：null
+
+**类型：** [AnimateParam](../arkts-components/arkts-arkui-animateparam-i.md) &#124; null
 
 **起始版本：** 12
 
+**装饰器类型：** @Prop
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,9 +80,11 @@ expandedLayoutOptions: ExpandedRegionLayoutOptions
 
 **起始版本：** 12
 
+**装饰器类型：** @Prop
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,9 +100,11 @@ extra?: Callback<void>
 
 **起始版本：** 12
 
+**装饰器类型：** @BuilderParam
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,9 +120,11 @@ foldedLayoutOptions: FoldedRegionLayoutOptions
 
 **起始版本：** 12
 
+**装饰器类型：** @Prop
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,9 +140,11 @@ hoverModeLayoutOptions: HoverModeRegionLayoutOptions
 
 **起始版本：** 12
 
+**装饰器类型：** @Prop
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,9 +160,11 @@ primary: Callback<void>
 
 **起始版本：** 12
 
+**装饰器类型：** @BuilderParam
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,8 +180,10 @@ secondary: Callback<void>
 
 **起始版本：** 12
 
+**装饰器类型：** @BuilderParam
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

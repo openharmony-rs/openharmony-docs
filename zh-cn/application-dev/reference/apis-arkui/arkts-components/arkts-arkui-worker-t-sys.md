@@ -4,7 +4,7 @@
 declare type Worker = import('../api/@ohos.worker').default.Worker
 ```
 
-用于运行Abc的Worker线程对象。
+用于运行Abc的Worker线程对象。需通过worker.ThreadWorker创建。
 
 **起始版本：** 26.0.0
 
@@ -14,4 +14,4 @@ declare type Worker = import('../api/@ohos.worker').default.Worker
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** import('../api/@ohos.worker').default.Worker
+**类型：** import('../api/@ohos.worker').default.Worker

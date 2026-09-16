@@ -1,15 +1,10 @@
 # TransitionEffect
 
-定义TransitionEffect类指定转场效果。
+TransitionEffect以函数的形式指定转场效果。
 
 **起始版本：** 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## animation
 
@@ -23,7 +18,7 @@ animation(value: AnimateParam): TransitionEffect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -33,13 +28,13 @@ animation(value: AnimateParam): TransitionEffect
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 动画参数。 &lt;/br&gt;该参数只用来指定动画参数，其入参AnimateParam的onFinish回调不生效。 &lt;/br&gt;如果通过combine进行 TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
+| value | [AnimateParam](arkts-arkui-animateparam-i.md) | 是 | 动画参数。<br>该参数仅用于指定动画参数，其入参AnimateParam的onFinish回调不生效。<br>如果通过combine进行TransitionEffect的组合，前一TransitionEffect的动画参数也可用于后一TransitionEffect。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 当前动画效果。 |
+| [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 返回配置了指定动画参数的TransitionEffect对象，该动画参数将在转场效果中生效。 |
 
 ## asymmetric
 
@@ -50,13 +45,13 @@ static asymmetric(
   ): TransitionEffect<"asymmetric">
 ```
 
-设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体效果可参考 示例2。
+设置非对称的转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。适用于需要出现和消失采用不同动画策略的场景。具体效果可参考[示例2](../../../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#示例2使用不同接口实现图片出现消失)。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -66,14 +61,14 @@ static asymmetric(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定出现的转场效果。如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
-| disappear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定消失的转场效果。如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
+| appear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定出现的转场效果。<br>如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
+| disappear | [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 是 | 指定消失的转场效果。<br>如不通过asymmetric函数构造TransitionEffect，则表明该效果在组件出现和消失时均生效。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"asymmetric"&gt; | 当前动画非对称的转场效果。 |
+| [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"asymmetric"&gt; | 返回表示非对称转场效果的TransitionEffect对象，出现和消失分别使用不同的转场动画。 |
 
 ## combine
 
@@ -87,7 +82,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -103,7 +98,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 组合过渡效应。 |
+| [TransitionEffect](arkts-arkui-transitioneffect-c.md) | 组合过渡效果。 |
 
 ## constructor
 
@@ -117,7 +112,7 @@ constructor(type: Type, effect: Effect)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -127,21 +122,8 @@ constructor(type: Type, effect: Effect)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [Type](../../apis-arkts/arkts-apis/arkts-arkts-util-type-e.md) | 是 | 转场类型。 |
-| effect | [Effect](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-effect-i.md) | 是 | 转场参数。 |
-
-**示例**
-
-```TypeScript
-@Builder
-function myBuilder(value: string, size: number) {
-  Text(value)
-    .fontSize(size)
-}
-
-// 使用WrappedBuilder封装myBuilder
-let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(myBuilder);
-```
+| type | [Type](../arkts-apis/arkts-arkui-arkui-statemanagement-type-d.md) | 是 | 转场类型，指定该转场效果生效的场景。默认值：TransitionType.All，即插入删除都生效。不指定type时默认为TransitionType.All。 |
+| effect | [Effect](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-effect-i.md) | 是 | 转场效果配置，用于指定具体的转场动画效果，包括透明度、平移、旋转、缩放等转场效果的参数设置。 |
 
 ## move
 
@@ -149,13 +131,13 @@ let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, n
 static move(edge: TransitionEdge): TransitionEffect<"move">
 ```
 
-设置组件转场时从屏幕边缘滑入和滑出的效果。
+设置组件转场时从窗口边缘滑入和滑出的效果。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -165,13 +147,13 @@ static move(edge: TransitionEdge): TransitionEffect<"move">
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| edge | [TransitionEdge](arkts-arkui-transitionedge-e.md) | 是 | 组件转场时从屏幕边缘滑入和滑出的效果，本质为平移效果，为插入时起点和删除时终点的值。 |
+| edge | [TransitionEdge](arkts-arkui-transitionedge-e.md) | 是 | 组件转场时从窗口边缘滑入和滑出的效果，本质为平移效果，为插入时起点和删除时终点的值。与translate不同的是，move通过TransitionEdge自动根据窗口边缘位置计算偏移量（含RTL/LTR方向适配），无需手动指定具体偏移值，适用于从窗口边缘滑入滑出的场景；translate需手动指定偏移值，适用于需要自定义偏移方向和距离的场景。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"move"&gt; | 当前动画从屏幕边缘滑入和滑出的效果。 |
+| [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"move"&gt; | 当前动画从窗口边缘滑入和滑出的效果。 |
 
 ## opacity
 
@@ -185,7 +167,7 @@ static opacity(alpha: number): TransitionEffect<"opacity">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -195,13 +177,13 @@ static opacity(alpha: number): TransitionEffect<"opacity">
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| alpha | number | 是 | 组件转场时的透明度效果，为插入时起点和删除时终点的值。取值范围：[0, 1]   **说明：** 设置小于0的非法值按0处理，大于1的非法值按1处理。 |
+| alpha | number | 是 | 组件转场时的透明度效果，为插入时起点和删除时终点的值。<br>取值范围：[0, 1] <br>**说明：** <br>设置小于0的非法值按0处理，大于1的非法值按1处理。当alpha取值为1时（与默认值相同），不产生透明度转场动画，组件直接出现或消失。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"opacity"&gt; | 当前动画透明度效果。 |
+| [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"opacity"&gt; | 返回表示透明度转场效果的TransitionEffect对象，用于配置组件出现和消失时的透明度过渡动画。 |
 
 ## rotate
 
@@ -215,7 +197,7 @@ static rotate(options: RotateOptions): TransitionEffect<"rotate">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -225,7 +207,7 @@ static rotate(options: RotateOptions): TransitionEffect<"rotate">
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [RotateOptions](arkts-arkui-rotateoptions-i.md) | 是 | 组件转场时的旋转效果，为插入时起点和删除时终点的值。   -x：横向的旋转向量分量。   -y：纵向的旋转向量分量。   -z：竖向的旋转向量分量。    - centerX、centerY指旋转中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为旋转中心点。   - 中心点为(0, 0)代表组件的左上角。   -centerZ指 z轴锚点，即3D旋转中心点的z轴分量，centerZ默认值是0。   -perspective指视距，不支持perspective属性做转场动画。 |
+| options | [RotateOptions](arkts-arkui-rotateoptions-i.md) | 是 | 组件转场时的旋转效果，为插入时起点和删除时终点的值。<br>-angle：旋转角度，单位为度（°），决定绕旋转轴的旋转幅度。<br>-x：横向的旋转向量分量。<br>-y：纵向的旋转向量分量。<br>-z：竖向的旋转向量分量。<br>- centerX、centerY指旋转中心点，centerX和centerY默认值是“50%”，数值类型单位为vp，即默认以组件的中心点为旋转中心点。字符串格式支持百分比（如“50%”）。<br>- 中心点为(0, 0)代表组件的左上角。<br>- 设置centerX、centerY为非法字符串时（例如，“illegalString”），默认值为“0”。<br>-centerZ指z轴锚点，即3D旋转中心点的z轴分量，centerZ默认值是0。<br>-perspective指视距，不支持perspective属性做转场动画。 |
 
 **返回值：**
 
@@ -245,7 +227,7 @@ static scale(options: ScaleOptions): TransitionEffect<"scale">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -255,7 +237,7 @@ static scale(options: ScaleOptions): TransitionEffect<"scale">
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [ScaleOptions](arkts-arkui-scaleoptions-i.md) | 是 | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时， 组件入场动画的缩放值将从0.4开始执行。   -x：横向放大倍数（或缩小比例）。   -y：纵向放大倍数（或缩小比例）。   -z：当前为二维显示，该参数无效。   - centerX、centerY指缩放 中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。   - 中心点为(0, 0)代表组件的左上角。   **说明：** 设置centerX、centerY为非法字符串 时（例如，"illegalString"），默认值为"0"。 |
+| options | [ScaleOptions](arkts-arkui-scaleoptions-i.md) | 是 | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行乘法叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.8×0.5=0.4开始执行。<br>- x：横向放大倍数（或缩小比例）。<br>- y：纵向放大倍数（或缩小比例）。<br>- z：当前为二维显示，该参数无效。<br>- centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br>- 中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
 
 **返回值：**
 
@@ -275,7 +257,7 @@ static translate(options: TranslateOptions): TransitionEffect<"translate">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -285,7 +267,7 @@ static translate(options: TranslateOptions): TransitionEffect<"translate">
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [TranslateOptions](arkts-arkui-translateoptions-i.md) | 是 | 组件转场时的平移效果，为插入时起点和删除时终点的值。   -x：横向的平移距离。   -y：纵向的平移距离。   -z：竖向的平移距离。 |
+| options | [TranslateOptions](arkts-arkui-translateoptions-i.md) | 是 | 组件转场时的平移效果，为插入时起点和删除时终点的值。<br>-x：横向的平移距离。<br>-y：纵向的平移距离。<br>-z：竖向的平移距离。 |
 
 **返回值：**
 
@@ -299,7 +281,7 @@ static translate(options: TranslateOptions): TransitionEffect<"translate">
 static readonly IDENTITY: TransitionEffect<"identity">
 ```
 
-禁用转场效果。
+禁用转场效果。如果在动画范围内触发组件的上下树或可见性改变，而该组件未配置transition，会给该组件加上默认的透明度转场效果（即TransitionEffect.OPACITY），如不需要此默认效果，可配置IDENTITY来禁用，使该组件直接出现或消失。
 
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"identity"&gt;
 
@@ -307,7 +289,7 @@ static readonly IDENTITY: TransitionEffect<"identity">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -327,7 +309,7 @@ static readonly OPACITY: TransitionEffect<"opacity">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -353,7 +335,7 @@ static readonly SLIDE: TransitionEffect<
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
@@ -365,7 +347,7 @@ static readonly SLIDE: TransitionEffect<
 static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">
 ```
 
-指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小 缩放比例为0.8。
+指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可通过.animation()方法指定自定义动画参数来覆盖自带参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.85。
 
 **类型：** [TransitionEffect](arkts-arkui-transitioneffect-c.md)&lt;"slideSwitch"&gt;
 
@@ -373,7 +355,7 @@ static readonly SLIDE_SWITCH: TransitionEffect<"slideSwitch">
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 

@@ -1,15 +1,12 @@
 # CustomSpan
 
-自定义绘制Span，仅提供基类，具体实现由开发者定义。适用于需要在文本流中嵌入自定义绘制内容的场景，例如在文本中绘制自定义图标、进度条、特殊装饰效果等。自定义绘制Span拖拽显示的缩略图为空白。
+自定义绘制Span，仅提供基类，具体实现由开发者定义。适用于需要在文本流中嵌入自定义绘制内容的场景，例如在文本中绘制自定义图标、进度条、特殊装饰效果等。
+
+自定义绘制Span拖拽显示的缩略图为空白。
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## invalidate
 
@@ -23,7 +20,7 @@ invalidate(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,7 +36,7 @@ abstract onDraw(context: DrawContext,  drawInfo: CustomSpanDrawInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +44,7 @@ abstract onDraw(context: DrawContext,  drawInfo: CustomSpanDrawInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | DrawContext | 是 | 图形绘制上下文。    **说明：** DrawContext的canvas方法获取的画布是Text组件的画布，绘制时不会超出Text组件的范围。 |
+| context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。<br>**说明：** <br>DrawContext的canvas方法获取的画布是Text组件的画布，绘制时不会超出Text组件的范围。 |
 | drawInfo | [CustomSpanDrawInfo](arkts-arkui-customspandrawinfo-i.md) | 是 | 自定义绘制Span的绘制信息。 |
 
 ## onMeasure
@@ -62,7 +59,7 @@ abstract onMeasure(measureInfo: CustomSpanMeasureInfo) : CustomSpanMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,4 +73,4 @@ abstract onMeasure(measureInfo: CustomSpanMeasureInfo) : CustomSpanMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| [CustomSpanMetrics](arkts-arkui-customspanmetrics-i.md) | 自定义绘制Span的尺寸信息。 |
+| [CustomSpanMetrics](arkts-arkui-customspanmetrics-i.md) | 自定义绘制Span的尺寸信息。<br>**说明：** <br>最终的CustomSpan的高度是由当前Text组件的行高所决定的。当height不传值，则默认取Text组件的fontSize的值作为CustomSpan的高度；当height大于当前行的其他子组件的高度时，此时height即为Text组件的行高。 |

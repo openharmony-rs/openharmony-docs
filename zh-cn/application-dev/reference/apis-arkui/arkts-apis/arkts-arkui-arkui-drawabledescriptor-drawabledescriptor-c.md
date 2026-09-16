@@ -24,7 +24,7 @@ getPixelMap(): image.PixelMap
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,7 +32,7 @@ getPixelMap(): image.PixelMap
 
 | 类型 | 说明 |
 | --- | --- |
-| image.PixelMap | PixelMap |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md) |
 
 **错误码：**
 
@@ -42,7 +42,9 @@ getPixelMap(): image.PixelMap
 
 **示例**
 
+```TypeScript
 示例请参考[LayeredDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md)中的示例代码。
+```
 
 ## invalidate
 
@@ -50,13 +52,13 @@ getPixelMap(): image.PixelMap
 invalidate(): void
 ```
 
-重新绘制DrawableDescriptor。当前仅支持 [PictureDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-picturedrawabledescriptor-c.md)类型，其他DrawableDescriptor子类型触 发后无效果。若DrawableDescriptor未绑定任何组件，则不会执行任何操作。
+重新绘制DrawableDescriptor。当前仅支持[PictureDrawableDescriptor](arkts-arkui-arkui-drawabledescriptor-picturedrawabledescriptor-c.md)类型，其他DrawableDescriptor子类型触发后无效果。若DrawableDescriptor未绑定任何组件，则不会执行任何操作。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +68,13 @@ invalidate(): void
 isReleased(): boolean
 ```
 
-查询DrawableDescriptor是否已被释放。返回true表示已释放，此时调用 [getPixelMap](#getpixelmap)、 [getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground)、 [getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground)、 [getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask)、 [loadSync](#loadsync)、 [load](#load)等接口会抛出111002错误；返回false表示未释放，对象可正 常使用。
+查询DrawableDescriptor是否已被释放。返回true表示已释放，此时调用[getPixelMap](#getpixelmap)、[getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground)、[getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground)、[getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask)、[loadSync](#loadsync)、[load](#load)等接口会抛出111002错误；返回false表示未释放，对象可正常使用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,7 +94,7 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 **起始版本：** 21
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,7 +113,9 @@ load(): Promise<DrawableDescriptorLoadedResult>
 
 **示例**
 
+```TypeScript
 示例请参考[DrawableDescriptorLoadedResult](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)中的示例代码。
+```
 
 ## loadSync
 
@@ -123,7 +127,7 @@ loadSync(): DrawableDescriptorLoadedResult
 
 **起始版本：** 21
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +146,9 @@ loadSync(): DrawableDescriptorLoadedResult
 
 **示例**
 
+```TypeScript
 示例请参考[DrawableDescriptorLoadedResult](arkts-arkui-arkui-drawabledescriptor-drawabledescriptorloadedresult-i.md)中的示例代码。
+```
 
 ## release
 
@@ -150,13 +156,13 @@ loadSync(): DrawableDescriptorLoadedResult
 release(): void
 ```
 
-释放DrawableDescriptor持有的资源。调用release后，该对象将不可用，再调用 [getPixelMap](#getpixelmap)、 [getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground)、 [getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground)、 [getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask)、 [loadSync](#loadsync)、 [load](#load)等接口会抛出111002错误。重复调用release不会崩溃。
+释放DrawableDescriptor持有的资源。调用release后，该对象将不可用，再调用[getPixelMap](#getpixelmap)、[getForeground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getforeground)、[getBackground](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getbackground)、[getMask](arkts-arkui-arkui-drawabledescriptor-layereddrawabledescriptor-c.md#getmask)、[loadSync](#loadsync)、[load](#load)等接口会抛出111002错误。重复调用release不会崩溃。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

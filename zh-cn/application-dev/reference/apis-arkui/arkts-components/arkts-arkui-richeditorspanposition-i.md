@@ -6,11 +6,6 @@ Span位置信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## spanIndex
 
 ```TypeScript
@@ -25,7 +20,7 @@ Span索引值。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +30,7 @@ Span索引值。
 spanRange: [number, number]
 ```
 
-Span内容在RichEditor内的起始和结束位置。
+Span内容在RichEditor内的起始和结束位置，取值范围为[起始位置, 结束位置)，结束位置对应的Span不包含在内。
 
 **类型：** [number, number]
 
@@ -43,6 +38,6 @@ Span内容在RichEditor内的起始和结束位置。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

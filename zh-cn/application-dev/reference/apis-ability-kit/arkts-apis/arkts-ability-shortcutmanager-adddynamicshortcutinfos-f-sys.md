@@ -26,14 +26,14 @@ function addDynamicShortcutInfos(shortcutInfo: Array<ShortcutInfo>, userId: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shortcutInfo | Array &lt;ShortcutInfo&gt; | 是 | 待添加的动态快捷方式信息。通过本接口提交时，会做如下校验： &lt;/br&gt; 1.ShortcutInfo中的sourceType字段会被设置为2 。 &lt;/br&gt; 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。 &lt;/br&gt; 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校 验对应的ability是否存在，不存在时，会抛出17700003错误码。 |
-| userId | number | 是 | 动态快捷方式所属的用户id。可以通过 [getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户，取值范围：大于等于0。 |
+| shortcutInfo | Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt; | 是 | 待添加的动态快捷方式信息。通过本接口提交时，会做如下校验：&lt;/br&gt; 1.ShortcutInfo中的sourceType字段会被设置为2。&lt;/br&gt; 2.ShortcutInfo中的moduleName字段在对应的应用中不存在时，会抛出17700002错误码。&lt;/br&gt; 3.ShortcutInfo中的hostAbility字段被设置为非空的字符串时，会校验对应的ability是否存在，不存在时，会抛出17700003错误码。 |
+| userId | number | 是 | 动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -49,7 +49,7 @@ function addDynamicShortcutInfos(shortcutInfo: Array<ShortcutInfo>, userId: numb
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 | [17700070](../errorcode-bundle.md#17700070-指定的快捷方式id不合法) | The specified shortcut id is illegal. |
-| [18100001](../errorcode-bundle.md#18100001-shortcutinfo列表中bundlename和appindex不一一对应) | A combination of bundleName and appIndex in the shutcutInfo list is different from the others. |
+| [18100001](../errorcode-bundle.md#18100001-shortcutinfo列表中bundlename和appindex不一一对应) | A combination of bundleName and appIndex in the shortcutInfo list is different from the others. |
 
 **示例**
 

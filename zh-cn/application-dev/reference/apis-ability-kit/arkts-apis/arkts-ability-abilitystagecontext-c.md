@@ -1,8 +1,8 @@
 # AbilityStageContext
 
-AbilityStageContext是AbilityStage的上下文环境，继承自Context。 AbilityStageContext提供允许访问特定于abilityStage的资源的能力，包括获取AbilityStage对应的ModuleInfo对象、环境变化对象。
+AbilityStageContext是AbilityStage的上下文环境，继承自Context。AbilityStageContext提供允许访问特定于abilityStage的资源的能力，包括获取AbilityStage对应的ModuleInfo对象、环境变化对象。
 
-**继承/实现关系：** AbilityStageContext extends Context
+**继承/实现关系：** AbilityStageContext extends [Context](arkts-ability-context-c.md)
 
 **起始版本：** 9
 
@@ -14,7 +14,7 @@ AbilityStageContext是AbilityStage的上下文环境，继承自Context。 Abili
 config: Configuration
 ```
 
-环境变量。
+环境配置对象。
 
 **类型：** [Configuration](arkts-ability-app-ability-configuration-configuration-i.md)
 
@@ -22,7 +22,7 @@ config: Configuration
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,7 +32,7 @@ config: Configuration
 currentHapModuleInfo: HapModuleInfo
 ```
 
-AbilityStage对应的ModuleInfo对象。
+AbilityStage对应的HapModuleInfo对象，可用来获取当前模块的名称、路径等信息。
 
 **类型：** [HapModuleInfo](arkts-ability-hapmoduleinfo-i.md)
 
@@ -40,7 +40,7 @@ AbilityStage对应的ModuleInfo对象。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -50,7 +50,7 @@ AbilityStage对应的ModuleInfo对象。
 launchElement?: ElementName
 ```
 
-启动能力Stage的ElementName对象。
+创建AbilityStage时的元素名称信息。
 
 **类型：** [ElementName](arkts-ability-elementname-i.md)
 
@@ -58,6 +58,6 @@ launchElement?: ElementName
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

@@ -30,7 +30,8 @@ readonly bundleName: string
 readonly descriptionId?: number
 ```
 
-应用描述Id。  
+应用描述Id。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **类型：** number

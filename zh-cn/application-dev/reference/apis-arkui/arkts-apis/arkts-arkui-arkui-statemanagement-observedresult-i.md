@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```TypeScript
-import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo } from '@kit.ArkUI';
 ```
 
 ## decoratorInfo
@@ -26,7 +26,7 @@ decoratorInfo: Array<DecoratorInfo>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +36,11 @@ decoratorInfo: Array<DecoratorInfo>
 isObserved: boolean
 ```
 
-对象是否可被观察。true：表示是可被观察对象。false：表示不是可被观察对象。
+对象是否可被观察。
+
+true：表示是可被观察对象。
+
+false：表示不是可被观察对象。
 
 **类型：** boolean
 
@@ -44,7 +48,7 @@ isObserved: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +58,12 @@ isObserved: boolean
 reason: string
 ```
 
-对象是否可被观察的原因。不可被观察原因：对象本身是不可被观察的。可被观察原因或使用场景：
+对象是否可被观察的原因。
+
+不可被观察原因：对象本身是不可被观察的。
+
+可被观察原因或使用场景：
+
 1. V1对象被[@Observed](../../../ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](arkts-arkui-arkui-statemanagement-uiutils-c.md#makev1observed)方法转换的。
 2. V1对象被[@Observed](../../../ui/state-management/arkts-observed-and-objectlink.md)装饰器装饰或对象是被[makeV1Observed](arkts-arkui-arkui-statemanagement-uiutils-c.md#makev1observed)方法转换的，但对象没有被UI组件使用。
 3. V1对象被[enableV2Compatibility](arkts-arkui-arkui-statemanagement-uiutils-c.md#enablev2compatibility)方法转换后传入V2组件。
@@ -72,6 +81,6 @@ reason: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

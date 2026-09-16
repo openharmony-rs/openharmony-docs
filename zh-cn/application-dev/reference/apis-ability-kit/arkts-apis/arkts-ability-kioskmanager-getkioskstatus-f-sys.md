@@ -12,7 +12,7 @@ import { kioskManager } from '@kit.AbilityKit';
 function getKioskStatus(): Promise<KioskStatus>
 ```
 
-获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+获取系统Kiosk模式的状态信息（包括当前系统是否处于Kiosk模式、进入Kiosk模式应用的名称和UID）。使用Promise异步回调。该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ function getKioskStatus(): Promise<KioskStatus>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;KioskStatus&gt; | Promise对象，返回当前Kiosk状态信息。 |
+| Promise&lt;[KioskStatus](arkts-ability-kioskmanager-kioskstatus-t.md)&gt; | Promise对象，返回当前Kiosk状态信息。 |
 
 **错误码：**
 

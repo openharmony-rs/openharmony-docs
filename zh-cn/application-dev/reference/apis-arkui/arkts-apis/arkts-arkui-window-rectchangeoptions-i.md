@@ -20,11 +20,11 @@ reason: RectChangeReason
 
 窗口矩形变化的原因。
 
-**类型：** RectChangeReason
+**类型：** [RectChangeReason](arkts-arkui-window-rectchangereason-e.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -36,10 +36,10 @@ rect: Rect
 
 New value of the window rectangle.
 
-**类型：** Rect
+**类型：** [Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 12
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager

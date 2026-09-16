@@ -4,6 +4,8 @@
 
 **起始版本：** 10
 
+**装饰器类型：** @CustomDialog
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -18,7 +20,9 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 content: ResourceStr
 ```
 
-操作确认弹出框内容。默认不设置或设置为undefined，确认弹出框内容不显示。
+操作确认弹出框内容。
+
+默认不设置或设置为undefined，确认弹出框内容不显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -26,7 +30,7 @@ content: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,8 @@ content: ResourceStr
 controller: CustomDialogController
 ```
 
-操作确认弹出框控制器，用于控制弹出框的显示和隐藏。  
+操作确认弹出框控制器，用于控制弹出框的显示和隐藏。
+
 **说明：** 未使用@Require装饰，构造时不强制校验参数。
 
 **类型：** [CustomDialogController](arkts-arkui-customdialogcontroller-c.md)
@@ -45,7 +50,7 @@ controller: CustomDialogController
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +60,9 @@ controller: CustomDialogController
 primaryButton?: ButtonOptions
 ```
 
-操作确认弹出框左侧按钮。默认不设置或设置为undefined，确认弹出框左侧按钮不显示。
+操作确认弹出框左侧按钮。
+
+默认不设置或设置为undefined，确认弹出框左侧按钮不显示。
 
 **类型：** [ButtonOptions](arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md)
 
@@ -63,7 +70,7 @@ primaryButton?: ButtonOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +80,10 @@ primaryButton?: ButtonOptions
 primaryTitle?: ResourceStr
 ```
 
-操作确认弹出框一级标题。默认不设置或设置为undefined，确认弹出框一级标题不显示。  
+操作确认弹出框一级标题。
+
+默认不设置或设置为undefined，确认弹出框一级标题不显示。
+
 **说明：** 标题超过两行会显示“...”。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -82,7 +92,7 @@ primaryTitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,7 +102,9 @@ primaryTitle?: ResourceStr
 secondaryButton?: ButtonOptions
 ```
 
-操作确认弹出框右侧按钮。默认不设置或设置为undefined，确认弹出框右侧按钮不显示。
+操作确认弹出框右侧按钮。
+
+默认不设置或设置为undefined，确认弹出框右侧按钮不显示。
 
 **类型：** [ButtonOptions](arkts-arkui-arkui-advanced-dialog-buttonoptions-c.md)
 
@@ -100,7 +112,7 @@ secondaryButton?: ButtonOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +122,10 @@ secondaryButton?: ButtonOptions
 secondaryTitle?: ResourceStr
 ```
 
-操作确认弹出框二级标题。默认不设置或设置为undefined，确认弹出框二级标题不显示。  
+操作确认弹出框二级标题。
+
+默认不设置或设置为undefined，确认弹出框二级标题不显示。
+
 **说明：** 标题超过两行会显示“...”。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -119,7 +134,7 @@ secondaryTitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,13 +146,13 @@ theme?: Theme | CustomTheme
 
 主题信息，可以是CustomTheme或从onWillApplyTheme中获取的Theme实例。
 
-**类型：** [Theme](arkts-arkui-arkui-theme-theme-i.md) \| [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md)
+**类型：** [Theme](arkts-arkui-arkui-theme-theme-i.md) &#124; [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,7 +162,9 @@ theme?: Theme | CustomTheme
 themeColorMode?: ThemeColorMode
 ```
 
-自定义弹出框深浅色模式。默认值：ThemeColorMode.SYSTEM
+自定义弹出框深浅色模式。
+
+默认值：ThemeColorMode.SYSTEM
 
 **类型：** [ThemeColorMode](../arkts-components/arkts-arkui-themecolormode-e.md)
 
@@ -155,6 +172,6 @@ themeColorMode?: ThemeColorMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

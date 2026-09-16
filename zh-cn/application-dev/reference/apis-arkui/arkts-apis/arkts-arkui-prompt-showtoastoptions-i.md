@@ -24,7 +24,7 @@ bottom?: string | number
 
 设置弹窗边框距离屏幕底部的位置，无上限值，默认单位vp。
 
-**类型：** string \| number
+**类型：** string &#124; number
 
 **起始版本：** 8
 

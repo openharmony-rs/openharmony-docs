@@ -22,7 +22,7 @@ ArcSwiperController的构造函数。
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -36,7 +36,7 @@ finishAnimation(handler?: FinishAnimationHandler)
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -44,7 +44,7 @@ finishAnimation(handler?: FinishAnimationHandler)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| handler | [FinishAnimationHandler](arkts-arkui-finishanimationhandler-t.md) | 否 | 动画结束的回调。默认值：不传入时无回调。 |
+| handler | [FinishAnimationHandler](arkts-arkui-finishanimationhandler-t.md) | 否 | 动画结束的回调。<br>默认值：不传入时无回调。 |
 
 ## showNext
 
@@ -56,7 +56,7 @@ showNext()
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -70,6 +70,6 @@ showPrevious()
 
 **起始版本：** 18
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

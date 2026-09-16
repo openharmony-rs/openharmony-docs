@@ -12,13 +12,13 @@
 UNKNOWN = -1
 ```
 
-拖拽结果尚未设置，在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)， [onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)， onDrop中使用。
+拖拽结果尚未设置，在[onDragStart](arkts-arkui-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)，[onDrop](arkts-arkui-commonmethod-c.md#ondrop)中使用。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,13 +28,13 @@ UNKNOWN = -1
 DRAG_SUCCESSFUL = 0
 ```
 
-拖拽成功，在onDrop中使用。
+拖拽成功，在[onDrop](arkts-arkui-commonmethod-c.md#ondrop)中使用。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,13 +44,13 @@ DRAG_SUCCESSFUL = 0
 DRAG_FAILED = 1
 ```
 
-拖拽失败，在onDrop中使用。
+拖拽失败，在[onDrop](arkts-arkui-commonmethod-c.md#ondrop)中使用。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,13 +60,13 @@ DRAG_FAILED = 1
 DRAG_CANCELED = 2
 ```
 
-拖拽取消，在onDrop中使用。
+拖拽取消，在[onDrop](arkts-arkui-commonmethod-c.md#ondrop)中使用。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,13 +76,13 @@ DRAG_CANCELED = 2
 DROP_ENABLED = 3
 ```
 
-组件允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)， [onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
+组件允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,12 +92,12 @@ DROP_ENABLED = 3
 DROP_DISABLED = 4
 ```
 
-组件不允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)， [onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
+组件不允许落入，在[onDragEnter](arkts-arkui-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-commonmethod-c.md#ondragleave)中使用。
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

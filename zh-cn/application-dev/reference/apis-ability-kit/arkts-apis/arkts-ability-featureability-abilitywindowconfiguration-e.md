@@ -75,11 +75,3 @@ WINDOW_MODE_FLOATING = 102
 **模型约束：** 此接口仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**示例**
-
-```TypeScript
-import { featureAbility } from '@kit.AbilityKit';
-
-featureAbility.AbilityWindowConfiguration.WINDOW_MODE_UNDEFINED
-```

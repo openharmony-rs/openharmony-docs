@@ -183,23 +183,3 @@ try {
   console.error(`ShowWindowWithCustomAnimation error code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let windowClass: window.Window | undefined = undefined;
-let config: window.Configuration = {
-  name: "systemTypeWindow",
-  windowType: window.WindowType.TYPE_PANEL, // 根据需要自选系统窗口类型
-  ctx: this.context
-};
-let promise = window.createWindow(config);
-promise.then((data) => {
-  windowClass = data;
-  console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
-});
-```

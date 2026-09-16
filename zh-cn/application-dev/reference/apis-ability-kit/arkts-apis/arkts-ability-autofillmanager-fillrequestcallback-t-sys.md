@@ -14,4 +14,4 @@ export type FillRequestCallback = _AutoFillRequest.FillRequestCallback
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _AutoFillRequest.FillRequestCallback
+**类型：** [_AutoFillRequest.FillRequestCallback](arkts-ability-autofillrequest-fillrequestcallback-i-sys.md)

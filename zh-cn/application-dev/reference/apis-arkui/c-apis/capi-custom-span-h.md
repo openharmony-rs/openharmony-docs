@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines a set of CustomSpan enum and interface.
+定义CustomSpan相关的结构体和接口，用于实现自定义绘制Span的精确尺寸测量、布局排版和绘制效果。支持开发者在富文本编辑器、聊天应用、文档应用等场景中实现图文混排、表情内嵌、自定义标记等功能，提供灵活的自定义绘制Span能力，帮助开发者提升开发效率，实现更丰富的文本排版效果。
 
 **库：** libace_ndk.z.so
 
@@ -48,7 +48,7 @@ Defines a set of CustomSpan enum and interface.
 void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 ```
 
-**描述**
+**描述：**
 
 销毁自定义段落组件测量信息。
 
@@ -66,7 +66,7 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)
 ```
 
-**描述**
+**描述：**
 
 获取自定义段落组件的父节点Text的字体大小。
 
@@ -90,7 +90,7 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 ```
 
-**描述**
+**描述：**
 
 销毁自定义段落组件度量信息。
 
@@ -108,7 +108,7 @@ void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)
 ```
 
-**描述**
+**描述：**
 
 设置自定义段落组件的宽度。
 
@@ -133,7 +133,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)
 ```
 
-**描述**
+**描述：**
 
 设置自定义段落组件的高度。
 
@@ -158,7 +158,7 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 ```
 
-**描述**
+**描述：**
 
 销毁自定义段落组件绘制信息。
 
@@ -176,7 +176,7 @@ void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 ```
 
-**描述**
+**描述：**
 
 获取自定义段落组件相对于挂载组件的x轴偏移值。
 
@@ -200,7 +200,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 ```
 
-**描述**
+**描述：**
 
 获取自定义段落组件相对于挂载组件的上边距。
 
@@ -224,7 +224,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 ```
 
-**描述**
+**描述：**
 
 获取自定义段落组件相对于挂载组件的下边距。
 
@@ -248,7 +248,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 ```
 
-**描述**
+**描述：**
 
 获取自定义段落组件相对于挂载组件的基线偏移量。
 
@@ -272,7 +272,7 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建自定义段落组件测量信息。
 
@@ -290,7 +290,7 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建自定义段落组件度量信息。
 
@@ -308,7 +308,7 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 ```
 
-**描述**
+**描述：**
 
 创建自定义段落组件绘制信息。
 

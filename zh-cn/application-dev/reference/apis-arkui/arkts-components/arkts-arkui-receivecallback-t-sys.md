@@ -14,4 +14,4 @@ declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<strin
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** import('../api/@ohos.base').Callback&lt;Record&lt;string, Object&gt;&gt;
+**类型：** import('../api/@ohos.base').Callback&lt;Record&lt;string, Object&gt;&gt;

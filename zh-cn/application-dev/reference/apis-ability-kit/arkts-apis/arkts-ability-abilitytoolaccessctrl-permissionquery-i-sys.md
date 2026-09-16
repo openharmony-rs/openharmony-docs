@@ -19,7 +19,7 @@
 callerTokenId?: number
 ```
 
-主叫token标识。 取值范围：(-∞,+∞)。
+主叫token标识。取值范围：(-∞,+∞)。
 
 **类型：** number
 
@@ -69,7 +69,7 @@ operationInfo: OperationInfo[]
 
 操作信息列表。
 
-**类型：** OperationInfo[]
+**类型：** [OperationInfo](arkts-ability-abilitytoolaccessctrl-operationinfo-i-sys.md)[]
 
 **起始版本：** 26.0.0
 
@@ -99,7 +99,7 @@ remoteInfo?: RemoteInfo
 ticketExpireTimeMs?: number
 ```
 
-凭据过期时间，单位为毫秒。 取值范围：(-∞,+∞)。
+凭据过期时间，单位为毫秒。取值范围：(-∞,+∞)。
 
 **类型：** number
 

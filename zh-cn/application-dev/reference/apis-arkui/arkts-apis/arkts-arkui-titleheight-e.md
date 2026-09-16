@@ -1,6 +1,8 @@
 # TitleHeight
 
-Title height.@enum { number }
+Title height.
+
+@enum { number }
 
 **起始版本：** 11
 
@@ -16,7 +18,7 @@ Title height when only main title is available.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,6 +32,6 @@ Title height when main title and subtitle are both available.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

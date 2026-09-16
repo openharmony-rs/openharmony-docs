@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines a set of Text enum and interface.
+定义Text相关的枚举和接口，用于配置文本样式、控制跑马灯效果、实现文本实体识别以及管理文本控制器等功能。适用于需要自定义文本显示效果、实现动态文本交互、识别文本中特殊实体（如地址、电话号码）以及精确控制文本字体粗细等场景。通过这些配置接口，开发者可以灵活控制文本组件的显示效果和交互行为，提升用户体验。
 
 **库：** libace_ndk.z.so
 
@@ -20,9 +20,9 @@ Defines a set of Text enum and interface.
 | -- | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | 定义文本实体识别的配置，通过设置需要识别的实体类型（如电话号码、网址、邮箱、地址、日期等），在文本组件中启用对应的实体检测功能，检测到的实体将以可交互形式呈现。适用于聊天消息中自动识别联系方式、文档中提取链接等场景。 |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | ArkUI_TextMarqueeOptions | 定义文本跑马灯模式配置项，用于配置文本跑马灯效果的各项显示参数。适用于需要在有限空间内循环展示较长文本内容的场景，如通知栏滚动消息、标题滚动展示等，可有效解决文本超出显示区域时的展示问题。 |
-| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | 定义文本组件的控制器，用于在Native侧对文本组件进行控制和交互。可通过{@link OH_ArkUI_TextController_Create}创建控制器对象，创建后必须在使用完毕后调用{@link OH_ArkUI_TextController_Destroy}接口销毁对象以释放资源，二者必须成对使用，否则会导致内存泄漏。创建控制器后，可使用{@link OH_ArkUI_TextController_SetStyledString}等接口设置文本组件的属性字符串，实现对文本内容的动态管理和样式控制。适用于需要在Native层操作文本组件的场景。 |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | 定义文本的字体粗细配置，适用于需要精确控制文本字体粗细或需要文本字体粗细跟随设备字体设置变化的应用场景。可以通过{@link OH_ArkUI_FontWeightConfigs_Create}接口创建文本字体粗细配置对象，使用完毕后必须调用{@link OH_ArkUI_FontWeightConfigs_Destroy}接口销毁对象以释放资源，避免内存泄漏。配置创建后通过{@link OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight}接口设置是否启用可变字重调节。配置创建后通过{@link OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight}接口查看是否启用了可变字重调节。配置创建后通过{@link OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory}接口设置文本字体粗细是否跟随设备的字体粗细级别更新。配置创建后通过{@link OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory}接口查看文本字体粗细是否跟随设备的字体粗细级别更新。当该配置对象被使用且不为空指针时，若用户未通过接口显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。当该配置为空指针时，不应用默认值，文本字体粗细行为与父组件保持一致。 |
-| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | 定义文本的字体配置，当前支持通过相关接口设置和获取字体粗细配置，适用于需要自定义字体粗细显示效果的场景。可以通过{@link OH_ArkUI_FontConfigs_Create}接口创建字体配置对象，通过{@link OH_ArkUI_FontConfigs_Destroy}接口销毁字体配置对象。配置创建后通过{@link OH_ArkUI_FontConfigs_SetFontWeightConfigs}接口设置字体粗细配置，通过{@link OH_ArkUI_FontConfigs_GetFontWeightConfigs}接口获取字体粗细配置。 |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | 定义文本组件的控制器，用于在Native侧对文本组件进行控制和交互。可通过[OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create)创建控制器对象，创建后必须在使用完毕后调用[OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy)接口销毁对象以释放资源，二者必须成对使用，否则会导致内存泄漏。创建控制器后，可使用{@link OH_ArkUI_TextController_SetStyledString}等接口设置文本组件的属性字符串，实现对文本内容的动态管理和样式控制。适用于需要在Native层操作文本组件的场景。 |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | 定义文本的字体粗细配置，适用于需要精确控制文本字体粗细或需要文本字体粗细跟随设备字体设置变化的应用场景。可以通过[OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create)接口创建文本字体粗细配置对象，使用完毕后必须调用[OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy)接口销毁对象以释放资源，避免内存泄漏。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](capi-text-h.md#oh_arkui_fontweightconfigs_setenablevariablefontweight)接口设置是否启用可变字重调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](capi-text-h.md#oh_arkui_fontweightconfigs_getenablevariablefontweight)接口查看是否启用了可变字重调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](capi-text-h.md#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory)接口设置文本字体粗细是否跟随设备的字体粗细级别更新。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](capi-text-h.md#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory)接口查看文本字体粗细是否跟随设备的字体粗细级别更新。当该配置对象被使用且不为空指针时，若用户未通过接口显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。当该配置为空指针时，不应用默认值，文本字体粗细行为与父组件保持一致。 |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | 定义文本的字体配置，当前支持通过相关接口设置和获取字体粗细配置，适用于需要自定义字体粗细显示效果的场景。可以通过[OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create)接口创建字体配置对象，通过[OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy)接口销毁字体配置对象。配置创建后通过[OH_ArkUI_FontConfigs_SetFontWeightConfigs](capi-text-h.md#oh_arkui_fontconfigs_setfontweightconfigs)接口设置字体粗细配置，通过[OH_ArkUI_FontConfigs_GetFontWeightConfigs](capi-text-h.md#oh_arkui_fontconfigs_getfontweightconfigs)接口获取字体粗细配置。 |
 | [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md) | OH_ArkUI_NativeModule_LineSpacingOptions | 定义文本行间距选项。 |
 
 ### 枚举
@@ -40,8 +40,8 @@ Defines a set of Text enum and interface.
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()](#oh_arkui_textmarqueeoptions_create) | 创建文本跑马灯模式配置项。 |
-| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | 销毁文本跑马灯模式配置项指针。 |
+| [ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()](#oh_arkui_textmarqueeoptions_create) | 创建文本跑马灯模式配置项。当该对象不再使用时，请调用[OH_ArkUI_TextMarqueeOptions_Dispose](capi-text-h.md#oh_arkui_textmarqueeoptions_dispose)销毁，以释放资源避免内存泄漏。 |
+| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | 销毁文本跑马灯模式配置项指针。与[OH_ArkUI_TextMarqueeOptions_Create](capi-text-h.md#oh_arkui_textmarqueeoptions_create)成对使用，否则会导致内存泄漏。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)](#oh_arkui_textmarqueeoptions_setstart) | 设置文本跑马灯模式配置项是否播放。 |
 | [bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstart) | 获取文本跑马灯模式配置项是否播放。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)](#oh_arkui_textmarqueeoptions_setstep) | 设置文本跑马灯模式配置项的步长。 |
@@ -60,18 +60,18 @@ Defines a set of Text enum and interface.
 | [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | 获取文本跑马灯模式配置项的启动策略。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | 设置文本跑马灯模式配置项的更新策略。 |
 | [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | 获取文本跑马灯模式配置项的更新策略。 |
-| [OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()](#oh_arkui_textdatadetectorconfig_create) | 创建一个文本实体识别配置对象。当该对象不再使用时，请调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁。 |
+| [OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()](#oh_arkui_textdatadetectorconfig_create) | 创建一个文本实体识别配置对象。当该对象不再使用时，请调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁，以释放资源避免内存泄漏。 |
 | [void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* config)](#oh_arkui_textdatadetectorconfig_destroy) | 销毁文本实体识别配置对象。 |
-| [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | 创建一个文本控制器对象。 |
-| [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | 销毁文本控制器。 |
-| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | 创建文本字体粗细配置对象。 |
-| [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | 销毁文本字体粗细配置对象。 |
-| [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | 设置是否启用可变字重调节。 |
+| [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | 创建一个文本控制器对象。当该对象不再使用时，请调用[OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy)销毁，以释放资源避免内存泄漏。 |
+| [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | 销毁文本控制器。与[OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create)成对使用，否则会导致内存泄漏。 |
+| [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | 创建文本字体粗细配置对象。当该对象不再使用时，请调用[OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy)销毁，以释放资源避免内存泄漏。 |
+| [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | 销毁文本字体粗细配置对象。与[OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create)成对使用，否则会导致内存泄漏。若该对象已被SetFontWeightConfigs设置到FontConfigs中，应在销毁FontConfigs之后再销毁FontWeightConfigs，或在确保FontConfigs不再使用后再销毁FontWeightConfigs，以避免FontConfigs持有无效指针。 |
+| [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | 设置是否启用可变字重调节。可变字重调节允许字体在100到900之间以任意整数值显示字重，实现更细腻的字体粗细控制。 |
 | [bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenablevariablefontweight) | 获取文本字体粗细配置对象是否启用了可变字重调节。 |
 | [void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) | 设置设备的字体粗细级别改变时文本字体粗细是否自动更新。 |
 | [bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) | 获取文本字体粗细是否跟随设备的字体粗细级别更新。 |
-| [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | 创建文本字体配置对象。 |
-| [void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_destroy) | 销毁文本字体配置对象。 |
+| [OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()](#oh_arkui_fontconfigs_create) | 创建文本字体配置对象。当该对象不再使用时，请调用[OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy)销毁，以释放资源避免内存泄漏。 |
+| [void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_destroy) | 销毁文本字体配置对象。与[OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create)成对使用，否则会导致内存泄漏。销毁FontConfigs前，应先销毁通过SetFontWeightConfigs设置的FontWeightConfigs对象（如果不再使用），或确保FontWeightConfigs的生命周期长于FontConfigs，以避免悬空指针问题。 |
 | [void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)](#oh_arkui_fontconfigs_setfontweightconfigs) | 设置文本字体配置对象的文本字体粗细配置。 |
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)](#oh_arkui_fontconfigs_getfontweightconfigs) | 获取文本字体配置对象的文本字体粗细配置。 |
 | [OH_ArkUI_NativeModule_LineSpacingOptions *OH_ArkUI_NativeModule_LineSpacingOptions_Create()](#oh_arkui_nativemodule_linespacingoptions_create) | 创建文本行间距选项对象。使用完毕后需要调用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。 |
@@ -87,7 +87,7 @@ Defines a set of Text enum and interface.
 enum ArkUI_FontStyle
 ```
 
-**描述**
+**描述：**
 
 定义字体样式枚举值。
 
@@ -104,7 +104,7 @@ enum ArkUI_FontStyle
 enum ArkUI_FontWeight
 ```
 
-**描述**
+**描述：**
 
 定义字体粗细/字重枚举值。
 
@@ -134,7 +134,7 @@ enum ArkUI_FontWeight
 enum ArkUI_TextHeightAdaptivePolicy
 ```
 
-**描述**
+**描述：**
 
 定义文本自适应高度的方式。
 
@@ -152,7 +152,7 @@ enum ArkUI_TextHeightAdaptivePolicy
 enum ArkUI_TextDataDetectorType
 ```
 
-**描述**
+**描述：**
 
 定义文本识别的实体类型。
 
@@ -171,7 +171,7 @@ enum ArkUI_TextDataDetectorType
 enum ArkUI_MarqueeStartPolicy
 ```
 
-**描述**
+**描述：**
 
 定义跑马灯启动策略枚举。
 
@@ -188,7 +188,7 @@ enum ArkUI_MarqueeStartPolicy
 enum ArkUI_MarqueeUpdatePolicy
 ```
 
-**描述**
+**描述：**
 
 定义跑马灯更新策略枚举。
 
@@ -208,9 +208,9 @@ enum ArkUI_MarqueeUpdatePolicy
 ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 ```
 
-**描述**
+**描述：**
 
-创建文本跑马灯模式配置项。
+创建文本跑马灯模式配置项。当该对象不再使用时，请调用[OH_ArkUI_TextMarqueeOptions_Dispose](capi-text-h.md#oh_arkui_textmarqueeoptions_dispose)销毁，以释放资源避免内存泄漏。
 
 **起始版本：** 23
 
@@ -218,7 +218,7 @@ ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_TextMarqueeOptions*](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | 创建文本跑马灯模式配置项的对象指针。 |
+| [ArkUI_TextMarqueeOptions*](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | 返回指向文本跑马灯模式配置项对象的指针。如果创建失败，返回空指针。使用后需调用[OH_ArkUI_TextMarqueeOptions_Dispose](capi-text-h.md#oh_arkui_textmarqueeoptions_dispose)销毁。 |
 
 ### OH_ArkUI_TextMarqueeOptions_Dispose()
 
@@ -226,9 +226,9 @@ ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
-销毁文本跑马灯模式配置项指针。
+销毁文本跑马灯模式配置项指针。与[OH_ArkUI_TextMarqueeOptions_Create](capi-text-h.md#oh_arkui_textmarqueeoptions_create)成对使用，否则会导致内存泄漏。
 
 **起始版本：** 23
 
@@ -244,7 +244,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项是否播放。
 
@@ -255,7 +255,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| bool start | 是否播放。true表示播放，false表示不播放。 |
+| bool start | 是否播放。true表示播放，false表示不播放。默认值：true。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetStart()
 
@@ -263,7 +263,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool
 bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项是否播放。
 
@@ -287,7 +287,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的步长。
 
@@ -298,7 +298,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| float step | 步长。单位：vp。 |
+| float step | 步长。单位：vp。取值范围：(0, 文本长度]，超出取值范围时取4.0vp。默认值：4.0vp。设置步长后，跑马灯每次移动的距离为该步长值，步长越大滚动速度越快。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetStep()
 
@@ -306,7 +306,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float
 float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的步长。
 
@@ -330,7 +330,7 @@ float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的首尾间距。
 
@@ -341,7 +341,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| float spacing | 首尾间距。单位：vp。 |
+| float spacing | 首尾间距。单位：vp。取值范围：[0, +∞)，超出取值范围时取48.0vp。默认值：48.0vp。设置后，跑马灯滚动一轮结束时，首尾文字之间的间隔距离为该间距值。建议根据显示区域宽度设置。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 
@@ -349,7 +349,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的首尾间距。
 
@@ -373,7 +373,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的重复滚动的次数，小于等于零时无限循环。
 
@@ -384,7 +384,7 @@ void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| int32_t loop | 重复滚动的次数。 |
+| int32_t loop | 重复滚动的次数。小于等于零时无限循环。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetLoop()
 
@@ -392,7 +392,7 @@ void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32
 int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的重复滚动的次数。
 
@@ -416,7 +416,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的运行方向。
 
@@ -427,7 +427,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| bool fromStart | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。 |
+| bool fromStart | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。默认值：true。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetFromStart()
 
@@ -435,7 +435,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, 
 bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的运行方向。
 
@@ -459,7 +459,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的每轮滚动延迟时间。
 
@@ -470,7 +470,7 @@ void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int3
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| int32_t delay | 每轮滚动延迟时间，单位为毫秒。 |
+| int32_t delay | 每轮滚动延迟时间，单位为毫秒。取值范围：[0, +∞)。默认值：0。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetDelay()
 
@@ -478,7 +478,7 @@ void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int3
 int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的每轮滚动延迟时间。
 
@@ -502,7 +502,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项是否支持文字超长时的渐隐效果。当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。<br> 若两端均有文字未完全显示，则两端同时应用渐隐效果。<br> 在渐隐效果开启状态下，{@link ArkUI_NodeAttributeType}中的NODE_CLIP属性将自动锁定为true，不允许设置为false。
 
@@ -513,7 +513,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
-| bool fadeout | 跑马灯是否支持文字超长时的渐隐效果。<br>     true表示支持渐隐效果，false表示不支持渐隐效果。 |
+| bool fadeout | 跑马灯是否支持文字超长时的渐隐效果。<br>     true表示支持渐隐效果，此时NODE_CLIP属性将自动锁定为true，不允许设置为false。<br>     false表示不支持渐隐效果。 |
 
 ### OH_ArkUI_TextMarqueeOptions_GetFadeout()
 
@@ -521,7 +521,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项是否支持文字超长时的渐隐效果。
 
@@ -537,7 +537,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持文字超长时的渐隐效果。 |
+| bool | 是否支持文字超长时的渐隐效果。true表示支持渐隐效果，false表示不支持渐隐效果。 |
 
 ### OH_ArkUI_TextMarqueeOptions_SetStartPolicy()
 
@@ -545,7 +545,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的启动策略。
 
@@ -564,7 +564,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的启动策略。
 
@@ -588,7 +588,7 @@ ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMa
 void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)
 ```
 
-**描述**
+**描述：**
 
 设置文本跑马灯模式配置项的更新策略。
 
@@ -607,7 +607,7 @@ void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* optio
 ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本跑马灯模式配置项的更新策略。
 
@@ -631,9 +631,9 @@ ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_Text
 OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()
 ```
 
-**描述**
+**描述：**
 
-创建一个文本实体识别配置对象。当该对象不再使用时，请调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁。
+创建一个文本实体识别配置对象。当该对象不再使用时，请调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁，以释放资源避免内存泄漏。
 
 **起始版本：** 24
 
@@ -641,7 +641,7 @@ OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_ArkUI_TextDataDetectorConfig*](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。 |
+| [OH_ArkUI_TextDataDetectorConfig*](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | 指向[OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)对象的指针。如果创建失败，返回空指针。          使用后需调用[OH_ArkUI_TextDataDetectorConfig_Destroy](capi-text-h.md#oh_arkui_textdatadetectorconfig_destroy)销毁。 |
 
 ### OH_ArkUI_TextDataDetectorConfig_Destroy()
 
@@ -649,7 +649,7 @@ OH_ArkUI_TextDataDetectorConfig* OH_ArkUI_TextDataDetectorConfig_Create()
 void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* config)
 ```
 
-**描述**
+**描述：**
 
 销毁文本实体识别配置对象。
 
@@ -667,9 +667,9 @@ void OH_ArkUI_TextDataDetectorConfig_Destroy(OH_ArkUI_TextDataDetectorConfig* co
 OH_ArkUI_TextController* OH_ArkUI_TextController_Create()
 ```
 
-**描述**
+**描述：**
 
-创建一个文本控制器对象。
+创建一个文本控制器对象。当该对象不再使用时，请调用[OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy)销毁，以释放资源避免内存泄漏。
 
 **起始版本：** 26.0.0
 
@@ -677,7 +677,7 @@ OH_ArkUI_TextController* OH_ArkUI_TextController_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_ArkUI_TextController*](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | 返回指向文本组件控制器对象的指针。如果创建失败，返回空指针。 |
+| [OH_ArkUI_TextController*](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | 返回指向文本组件控制器对象的指针。如果创建失败，返回空指针。使用后需调用[OH_ArkUI_TextController_Destroy](capi-text-h.md#oh_arkui_textcontroller_destroy)销毁。 |
 
 ### OH_ArkUI_TextController_Destroy()
 
@@ -685,9 +685,9 @@ OH_ArkUI_TextController* OH_ArkUI_TextController_Create()
 void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)
 ```
 
-**描述**
+**描述：**
 
-销毁文本控制器。
+销毁文本控制器。与[OH_ArkUI_TextController_Create](capi-text-h.md#oh_arkui_textcontroller_create)成对使用，否则会导致内存泄漏。
 
 **起始版本：** 26.0.0
 
@@ -703,9 +703,9 @@ void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)
 OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()
 ```
 
-**描述**
+**描述：**
 
-创建文本字体粗细配置对象。
+创建文本字体粗细配置对象。当该对象不再使用时，请调用[OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy)销毁，以释放资源避免内存泄漏。
 
 **起始版本：** 24
 
@@ -713,7 +713,7 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | 返回指向文本字体粗细配置对象的指针。如果创建失败，返回空指针。 |
+| [OH_ArkUI_FontWeightConfigs*](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | 返回指向文本字体粗细配置对象的指针。如果创建失败，返回空指针。使用后需调用[OH_ArkUI_FontWeightConfigs_Destroy](capi-text-h.md#oh_arkui_fontweightconfigs_destroy)销毁。当配置对象为空指针时，不应用默认值，          文本字体粗细行为与父组件保持一致。 |
 
 ### OH_ArkUI_FontWeightConfigs_Destroy()
 
@@ -721,9 +721,9 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()
 void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)
 ```
 
-**描述**
+**描述：**
 
-销毁文本字体粗细配置对象。
+销毁文本字体粗细配置对象。与[OH_ArkUI_FontWeightConfigs_Create](capi-text-h.md#oh_arkui_fontweightconfigs_create)成对使用，否则会导致内存泄漏。若该对象已被SetFontWeightConfigs设置到FontConfigs中，应在销毁FontConfigs之后再销毁FontWeightConfigs，或在确保FontConfigs不再使用后再销毁FontWeightConfigs，以避免FontConfigs持有无效指针。
 
 **起始版本：** 24
 
@@ -739,9 +739,9 @@ void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)
 void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)
 ```
 
-**描述**
+**描述：**
 
-设置是否启用可变字重调节。
+设置是否启用可变字重调节。可变字重调节允许字体在100到900之间以任意整数值显示字重，实现更细腻的字体粗细控制。
 
 **起始版本：** 24
 
@@ -758,7 +758,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本字体粗细配置对象是否启用了可变字重调节。
 
@@ -782,7 +782,7 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight(OH_ArkUI_FontWeightC
 void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option, bool enable)
 ```
 
-**描述**
+**描述：**
 
 设置设备的字体粗细级别改变时文本字体粗细是否自动更新。
 
@@ -801,7 +801,7 @@ void OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontWeightConfigs* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本字体粗细是否跟随设备的字体粗细级别更新。
 
@@ -825,9 +825,9 @@ bool OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory(OH_ArkUI_FontW
 OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()
 ```
 
-**描述**
+**描述：**
 
-创建文本字体配置对象。
+创建文本字体配置对象。当该对象不再使用时，请调用[OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy)销毁，以释放资源避免内存泄漏。
 
 **起始版本：** 24
 
@@ -835,7 +835,7 @@ OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_ArkUI_FontConfigs*](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | 返回指向文本字体配置对象的指针。如果创建失败，返回空指针。 |
+| [OH_ArkUI_FontConfigs*](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | 返回指向文本字体配置对象的指针。如果创建失败，返回空指针。使用后需调用[OH_ArkUI_FontConfigs_Destroy](capi-text-h.md#oh_arkui_fontconfigs_destroy)销毁。 |
 
 ### OH_ArkUI_FontConfigs_Destroy()
 
@@ -843,9 +843,9 @@ OH_ArkUI_FontConfigs* OH_ArkUI_FontConfigs_Create()
 void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)
 ```
 
-**描述**
+**描述：**
 
-销毁文本字体配置对象。
+销毁文本字体配置对象。与[OH_ArkUI_FontConfigs_Create](capi-text-h.md#oh_arkui_fontconfigs_create)成对使用，否则会导致内存泄漏。销毁FontConfigs前，应先销毁通过SetFontWeightConfigs设置的FontWeightConfigs对象（如果不再使用），或确保FontWeightConfigs的生命周期长于FontConfigs，以避免悬空指针问题。
 
 **起始版本：** 24
 
@@ -861,7 +861,7 @@ void OH_ArkUI_FontConfigs_Destroy(OH_ArkUI_FontConfigs* option)
 void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_ArkUI_FontWeightConfigs* fontWeightConfigs)
 ```
 
-**描述**
+**描述：**
 
 设置文本字体配置对象的文本字体粗细配置。
 
@@ -872,7 +872,7 @@ void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向待修改的文本字体配置对象的指针。 |
-| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | 文本字体粗细配置。当该配置不为空指针时，若用户未显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）。当该配置为空指针时，不应用上述默认值，文本字体粗细行为与父组件保持一致。 |
+| [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md)* fontWeightConfigs | 文本字体粗细配置。当该配置不为空指针时，若用户未显式设置，各项配置将使用默认值（可变字重调节默认为禁用，文本字体粗细跟随设备字体粗细级别更新默认为启用）；字重weight可通过相关接口设置，取值范围为[100, 900]。当该配置为空指针时，不应用上述默认值，文本字体粗细行为与父组件保持一致。 |
 
 ### OH_ArkUI_FontConfigs_GetFontWeightConfigs()
 
@@ -880,7 +880,7 @@ void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_
 OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_FontConfigs* option)
 ```
 
-**描述**
+**描述：**
 
 获取文本字体配置对象的文本字体粗细配置。
 
@@ -890,7 +890,7 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_F
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向文本字体配置对象的指针。 |
+| [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md)* option | 指向文本字体配置对象的指针。若未设置或设置时为空指针，则返回空指针。 |
 
 **返回：**
 
@@ -904,7 +904,7 @@ OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontConfigs_GetFontWeightConfigs(OH_ArkUI_F
 OH_ArkUI_NativeModule_LineSpacingOptions *OH_ArkUI_NativeModule_LineSpacingOptions_Create()
 ```
 
-**描述**
+**描述：**
 
 创建文本行间距选项对象。使用完毕后需要调用[OH_ArkUI_NativeModule_LineSpacingOptions_Destroy](capi-text-h.md#oh_arkui_nativemodule_linespacingoptions_destroy)销毁对象。
 
@@ -922,7 +922,7 @@ OH_ArkUI_NativeModule_LineSpacingOptions *OH_ArkUI_NativeModule_LineSpacingOptio
 void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_LineSpacingOptions *options)
 ```
 
-**描述**
+**描述：**
 
 销毁文本行间距选项对象。
 
@@ -940,7 +940,7 @@ void OH_ArkUI_NativeModule_LineSpacingOptions_Destroy(OH_ArkUI_NativeModule_Line
 ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_ArkUI_NativeModule_LineSpacingOptions *options, bool onlyBetweenLines)
 ```
 
-**描述**
+**描述：**
 
 设置文本行间距选项的onlyBetweenLines参数。当设置为true时，行间距仅在行之间应用，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方也会存在行间距。
 
@@ -957,7 +957,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 结果码。      <ul>      <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示操作成功。</li>      <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示options参数为空。</li>      </ul> |
+| ArkUI_ErrorCode | 结果码。      <ul>      <li>{@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。</li>      <li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示options参数为空。</li>      </ul> |
 
 ### OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines()
 
@@ -965,7 +965,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_SetOnlyBetweenLines(OH_
 ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(const OH_ArkUI_NativeModule_LineSpacingOptions *options, bool *onlyBetweenLines)
 ```
 
-**描述**
+**描述：**
 
 获取文本行间距选项的onlyBetweenLines参数。
 
@@ -982,6 +982,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_LineSpacingOptions_GetOnlyBetweenLines(con
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | 结果码。      <ul>      <li>[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode) 表示操作成功。</li>      <li>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode) 表示任意参数为空。</li>      </ul> |
+| ArkUI_ErrorCode | 结果码。      <ul>      <li>{@link ARKUI_ERROR_CODE_NO_ERROR} 表示操作成功。</li>      <li>{@link ARKUI_ERROR_CODE_PARAM_INVALID} 表示任意参数为空。</li>      </ul> |
 
 

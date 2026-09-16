@@ -24,7 +24,7 @@ function setDragSwitchState(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 设置开关状态。false：关闭，true：开启。 |
+| enabled | boolean | 是 | 设置开关状态。<br>false：关闭，true：开启。 |
 
 **错误码：**
 

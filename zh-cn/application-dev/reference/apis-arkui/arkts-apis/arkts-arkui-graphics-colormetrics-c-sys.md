@@ -26,7 +26,7 @@ static createHDRColor(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要在当前窗口调用 [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色 域模式。 |
+| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要在当前窗口调用[setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色域模式。 |
 | red | number | 是 | 颜色的R分量（红色），取值范围：[0, +∞)。大于1.0的值会使能HDR特性。传入负数时将被自动钳位到0.0。 |
 | green | number | 是 | 颜色的G分量（绿色），取值范围：[0, +∞)。大于1.0的值会使能HDR特性。传入负数时将被自动钳位到0.0。 |
 | blue | number | 是 | 颜色的B分量（蓝色），取值范围：[0, +∞)。大于1.0的值会使能HDR特性。传入负数时将被自动钳位到0.0。 |
@@ -45,7 +45,7 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
     red: number, green: number, blue: number, alpha?: number): ColorMetrics
 ```
 
-使用ColorSpace、线性曝光系数和rgba格式颜色实例化支持HDR的ColorMetrics类。如不需要通过曝光系数调节，可使用 [createHDRColor](#createhdrcolor)直接设置RGB分量值大于1.0来呈现HDR效果。适用于需要按线性比例均匀调整HDR亮度的场景，如HDR图像预览、视频播放器色彩调 节。
+使用ColorSpace、线性曝光系数和rgba格式颜色实例化支持HDR的ColorMetrics类。如不需要通过曝光系数调节，可使用[createHDRColor](#createhdrcolor)直接设置RGB分量值大于1.0来呈现HDR效果。适用于需要按线性比例均匀调整HDR亮度的场景，如HDR图像预览、视频播放器色彩调节。
 
 **起始版本：** 26.0.0
 
@@ -60,7 +60,7 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | linearExposure | number | 是 | 线性曝光系数，取值范围：[1, +∞)。1.0表示标准曝光系数，大于1.0的值表示线性增加的曝光程度。传入小于1.0的值时将被自动钳位到1.0。 |
-| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要在当前窗口调用 [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色 域模式。 |
+| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要在当前窗口调用[setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色域模式。 |
 | red | number | 是 | 颜色的R分量（红色），值是0.0~1.0的浮点数。超出范围时将被自动钳位到[0.0, 1.0]范围内。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0.0~1.0的浮点数。超出范围时将被自动钳位到[0.0, 1.0]范围内。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0.0~1.0的浮点数。超出范围时将被自动钳位到[0.0, 1.0]范围内。 |
@@ -79,7 +79,7 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
     red: number, green: number, blue: number, alpha?: number): ColorMetrics
 ```
 
-使用ColorSpace、对数型曝光系数和rgba格式颜色实例化支持HDR的ColorMetrics类。与 [createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure)相比，两者均通过曝光系数创建HDR色彩，区别在于本方法使 用对数型曝光系数（指数级增加曝光程度），后者使用线性曝光系数（线性增加曝光程度），开发者可根据所需的曝光调节方式选择。如不需要通过曝光系数调节，可使用 [createHDRColor](#createhdrcolor)直接设置RGB分量值大于1.0来呈现HDR效果。适用于需要按对数关系调整HDR亮度（更贴近人眼感知）的场景，如HDR照片编辑、影 视后期调色。
+使用ColorSpace、对数型曝光系数和rgba格式颜色实例化支持HDR的ColorMetrics类。与[createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure)相比，两者均通过曝光系数创建HDR色彩，区别在于本方法使用对数型曝光系数（指数级增加曝光程度），后者使用线性曝光系数（线性增加曝光程度），开发者可根据所需的曝光调节方式选择。如不需要通过曝光系数调节，可使用[createHDRColor](#createhdrcolor)直接设置RGB分量值大于1.0来呈现HDR效果。适用于需要按对数关系调整HDR亮度（更贴近人眼感知）的场景，如HDR照片编辑、影视后期调色。
 
 **起始版本：** 26.0.0
 
@@ -94,7 +94,7 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | exposure | number | 是 | 对数型曝光系数，取值范围：[0, +∞)。0.0表示标准曝光系数，大于0.0的值表示指数级增加的曝光程度。传入负数时将被自动钳位到0.0。 |
-| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要在当前窗口调用 [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色 域模式。 |
+| colorSpace | ColorSpace | 是 | 色彩空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要在当前窗口调用[setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace)接口，将当前窗口设置为广色域模式。 |
 | red | number | 是 | 颜色的R分量（红色），值是0.0~1.0的浮点数。超出范围时将被自动钳位到[0.0, 1.0]范围内。 |
 | green | number | 是 | 颜色的G分量（绿色），值是0.0~1.0的浮点数。超出范围时将被自动钳位到[0.0, 1.0]范围内。 |
 | blue | number | 是 | 颜色的B分量（蓝色），值是0.0~1.0的浮点数。超出范围时将被自动钳位到[0.0, 1.0]范围内。 |
@@ -112,7 +112,7 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace,
 getBlueValue(): number
 ```
 
-获取ColorMetrics颜色的B分量（蓝色）。
+获取ColorMetrics颜色的B分量，以浮点数形式返回蓝色通道值。
 
 **起始版本：** 26.0.0
 
@@ -126,7 +126,7 @@ getBlueValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 颜色的B分量（蓝色），值是大于等于0的浮点数。 |
+| number | 颜色的B分量（蓝色），值是大于等于0的浮点数。取值范围：对于SDR颜色，取值范围为[0.0, 1.0]。对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |
 
 ## getColorSpace
 
@@ -156,7 +156,7 @@ getColorSpace(): ColorSpace
 getGreenValue(): number
 ```
 
-获取ColorMetrics颜色的G分量（绿色）。
+获取ColorMetrics颜色的G分量，以浮点数形式返回绿色通道值。
 
 **起始版本：** 26.0.0
 
@@ -170,7 +170,7 @@ getGreenValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 颜色的G分量（绿色），值是大于等于0的浮点数。 |
+| number | 颜色的G分量（绿色），值是大于等于0的浮点数。取值范围：对于SDR颜色，取值范围是[0.0, 1.0]。对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |
 
 ## getRedValue
 
@@ -178,7 +178,7 @@ getGreenValue(): number
 getRedValue(): number
 ```
 
-获取ColorMetrics颜色的R分量（红色）。
+获取ColorMetrics颜色的R分量，以浮点数形式返回红色通道值。
 
 **起始版本：** 26.0.0
 
@@ -192,7 +192,7 @@ getRedValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 颜色的R分量（红色），值是大于等于0的浮点数。 |
+| number | 颜色的R分量（红色），值是大于等于0的浮点数。取值范围：对于SDR颜色，取值范围为[0.0, 1.0]。对于HDR颜色，该值可以大于1.0，以表示扩展亮度。 |
 
 ## isHDR
 
@@ -214,4 +214,4 @@ isHDR(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | ColorMetrics是否呈现了HDR色彩。当色彩是通过createHDRColorWith系列方法（如 [createHDRColorWithLinearExposure]{ |
+| boolean | ColorMetrics是否呈现了HDR色彩。当色彩是通过createHDRColorWith系列方法（如[createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure)）创建，或任意RGB分量值大于1.0时，将返回true；否则返回false，表示ColorMetrics未呈现HDR色彩。 |

@@ -12,7 +12,9 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAbilityLabel(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback<string>): void
 ```
 
-获取指定bundleName、moduleName和abilityName的label。使用callback异步回调。获取调用方自身的信息时不需要权限。
+获取指定bundleName、moduleName和abilityName的label。使用callback异步回调。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 9
 
@@ -29,7 +31,7 @@ function getAbilityLabel(bundleName: string, moduleName: string, abilityName: st
 | bundleName | string | 是 | 表示应用程序的bundleName。 |
 | moduleName | string | 是 | 表示Module名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined， data为获指定组件的Label值；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当获取成功时，err为undefined，data为获指定组件的Label值；否则为错误对象。 |
 
 **错误码：**
 
@@ -70,6 +72,27 @@ try {
 }
 ```
 
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let moduleName = 'entry';
+let abilityName = 'EntryAbility';
+
+try {
+  bundleManager.getAbilityLabel(bundleName, moduleName, abilityName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAbilityLabel successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', message);
+}
+```
+
 
 ## getAbilityLabel
 
@@ -77,7 +100,9 @@ try {
 function getAbilityLabel(bundleName: string, moduleName: string, abilityName: string): Promise<string>
 ```
 
-获取指定bundleName、moduleName和abilityName的label。使用Promise异步回调。获取调用方自身的信息时不需要权限。
+获取指定bundleName、moduleName和abilityName的label。使用Promise异步回调。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 9
 
@@ -99,7 +124,7 @@ function getAbilityLabel(bundleName: string, moduleName: string, abilityName: st
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;string&gt; | Promise对象，返回指定组件的label值。 |
+| Promise&lt;string&gt; | Promise对象，返回指定组件的label值。 |
 
 **错误码：**
 
@@ -117,23 +142,4 @@ function getAbilityLabel(bundleName: string, moduleName: string, abilityName: st
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = 'com.example.myapplication';
-let moduleName = 'entry';
-let abilityName = 'EntryAbility';
-
-try {
-  bundleManager.getAbilityLabel(bundleName, moduleName, abilityName).then((data) => {
-    hilog.info(0x0000, 'testTag', 'getAbilityLabel successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', err.message);
-  });
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', message);
-}
-```
+参见 [getAbilityLabel](#getabilitylabel)

@@ -68,7 +68,7 @@
 enum DrawableDescriptor_AnimationStatus
 ```
 
-**描述**
+**描述：**
 
 定义DrawableDescriptor动图的播放状态。
 
@@ -87,7 +87,7 @@ enum DrawableDescriptor_AnimationStatus
 enum DrawableDescriptor_AnimationStopMode
 ```
 
-**描述**
+**描述：**
 
 定义[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)动图的停止模式。
 
@@ -107,7 +107,7 @@ enum DrawableDescriptor_AnimationStopMode
 ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)
 ```
 
-**描述**
+**描述：**
 
 使用PixelMap创建DrawableDescriptor对象。
 
@@ -131,7 +131,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap(OH_PixelmapNativeHandle* array, int32_t size)
 ```
 
-**描述**
+**描述：**
 
 使用PixelMap图片数组创建DrawableDescriptor对象。
 
@@ -156,7 +156,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap
 void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
-**描述**
+**描述：**
 
 销毁DrawableDescriptor对象指针。
 
@@ -174,7 +174,7 @@ void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescr
 OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
-**描述**
+**描述：**
 
 获取PixelMap图片对象指针。
 
@@ -198,7 +198,7 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
-**描述**
+**描述：**
 
 获取用于播放动画的PixelMap图片数组数据。
 
@@ -222,7 +222,7 @@ OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(Ar
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
-**描述**
+**描述：**
 
 获取用于播放动画的PixelMap图片数组的大小。
 
@@ -246,7 +246,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableD
 void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t duration)
 ```
 
-**描述**
+**描述：**
 
 设置PixelMap图片数组播放总时长。
 
@@ -265,7 +265,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
-**描述**
+**描述：**
 
 获取PixelMap图片数组播放总时长。
 
@@ -289,7 +289,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)
 ```
 
-**描述**
+**描述：**
 
 设置PixelMap图片数组播放次数。
 
@@ -308,7 +308,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor)
 ```
 
-**描述**
+**描述：**
 
 获取PixelMap图片数组播放次数。
 
@@ -332,7 +332,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescript
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t size)
 ```
 
-**描述**
+**描述：**
 
 设置动图中的单帧播放时间。
 
@@ -358,7 +358,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)
 ```
 
-**描述**
+**描述：**
 
 获取动图中的单帧播放时间。
 
@@ -384,7 +384,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDes
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)
 ```
 
-**描述**
+**描述：**
 
 设置动图是否自动播放。
 
@@ -409,7 +409,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)
 ```
 
-**描述**
+**描述：**
 
 获取动图是否自动播放。
 
@@ -434,7 +434,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)
 ```
 
-**描述**
+**描述：**
 
 设置动图的停止模式。
 
@@ -459,7 +459,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescripto
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)
 ```
 
-**描述**
+**描述：**
 
 获取动图的停止模式。
 
@@ -484,7 +484,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDes
 int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor *drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController** controller)
 ```
 
-**描述**
+**描述：**
 
 创建动图控制器。当需要手动控制动图播放而非使用自动播放时，通过本接口获取控制器，再调用StartAnimation/Pause等控制接口。
 
@@ -510,7 +510,7 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
-**描述**
+**描述：**
 
 销毁动图控制器。
 
@@ -528,7 +528,7 @@ void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescri
 int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
-**描述**
+**描述：**
 
 从首帧开始播放。
 
@@ -552,7 +552,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_Anim
 int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
-**描述**
+**描述：**
 
 停止动图播放。停止后的位置由[OH_ArkUI_DrawableDescriptor_SetAnimationStopMode](capi-drawable-descriptor-h.md#oh_arkui_drawabledescriptor_setanimationstopmode)设置的停止模式决定：DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME时回到首帧，DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME时停留在最后一帧。
 
@@ -576,7 +576,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
-**描述**
+**描述：**
 
 从当前帧恢复动图播放。
 
@@ -600,7 +600,7 @@ int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_Ani
 int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
-**描述**
+**描述：**
 
 暂停动图的播放，保持在当前帧。
 
@@ -624,7 +624,7 @@ int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_Anim
 int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status)
 ```
 
-**描述**
+**描述：**
 
 获取动图的播放状态。
 

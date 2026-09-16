@@ -26,13 +26,13 @@ function terminateMission(missionId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| missionId | number | 是 | 任务ID，可通过 [getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md) 获取。 |
+| missionId | number | 是 | 任务ID，可通过[getMissionInfos](arkts-ability-missionmanager-getmissioninfos-f-sys.md)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 

@@ -2,15 +2,11 @@
 
 UIContext实例对象。
 
-> **说明：**
+> **说明：** 
 
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 > 
-> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的
-> getUIContext()方法获取UIContext实例，第二种是通过自定
-> 义组件内置方法getUIContext()获取UIContext
-> 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext)获取UIContext实例。本文中
-> UIContext对象以uiContext表示。
+> - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的getUIContext()方法获取UIContext实例，第二种是通过自定义组件内置方法getUIContext()获取UIContext 实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](arkts-arkui-arkui-uicontext-uicontext-c.md#getcallingscopeuicontext)获取UIContext实例。本文中UIContext对象以uiContext表示。
 
 **起始版本：** 10
 
@@ -37,7 +33,7 @@ clearResourceCache(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12 - 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +84,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 组件的id。 |
-| isFrozen | boolean | 是 | 是否设置冻结。true表示设置冻结，false表示设置不冻结。默认值为false。 |
+| isFrozen | boolean | 是 | 是否设置冻结。<br>true表示设置冻结，false表示设置不冻结。<br>默认值为false。 |
 
 **错误码：**
 
@@ -117,7 +113,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uniqueId | number | 是 | 组件的uniqueId。 |
-| isFrozen | boolean | 是 | 是否设置冻结。true表示设置冻结，false表示设置不冻结。默认值为false。 |
+| isFrozen | boolean | 是 | 是否设置冻结。<br>true表示设置冻结，false表示设置不冻结。<br>默认值为false。 |
 
 **错误码：**
 
@@ -151,11 +147,13 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [LuminanceSampler](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md) \| undefined | the luminance sampler or undefined. |
+| [LuminanceSampler](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md) &#124; undefined | the luminance sampler or undefined. |
 
 **示例**
 
+```TypeScript
 参考[offBackgroundLuminanceChange](arkts-arkui-arkui-uicontext-luminancesampler-c-sys.md#offbackgroundluminancechange)接口的示例。
+```
 
 ## recycleInvisibleImageMemory
 
@@ -177,7 +175,7 @@ recycleInvisibleImageMemory(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 使能开关项：true开启，false关闭； 默认不开启，由系统应用按需开启。 默认值：false 默认值：false 默认值：false 默认值：false 配置为异常undefined时，恢复为默认值false |
+| enabled | boolean | 是 | 使能开关项：true开启，false关闭；默认不开启，由系统应用按需开启。<br>默认值：false <br>默认值：false <br>默认值：false <br>默认值：false <br>配置为异常undefined时，恢复为默认值false |
 
 **示例**
 
@@ -211,7 +209,7 @@ setDynamicDimming(id: string, value: number): void
 
 通过该方法设置组件的压暗程度。
 
-> **说明：**
+> **说明：** 
 > 
 > 设置该属性后设置其他效果类属性会导致效果冲突。
 

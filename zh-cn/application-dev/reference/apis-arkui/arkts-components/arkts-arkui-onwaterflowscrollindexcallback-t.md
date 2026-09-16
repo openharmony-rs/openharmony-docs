@@ -10,7 +10,7 @@ WaterFlow组件可见区域item变化事件的回调类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本19开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,5 +18,5 @@ WaterFlow组件可见区域item变化事件的回调类型。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| first | number | 是 | 当前显示的瀑布流起始位置的索引值。 正常取值范围：[0, 子组件总数-1]。列表为空时存在特殊取值，详见 [onScrollIndex](arkts-arkui-waterflow-attribute.md#onscrollindex)事件说明。 |
-| last | number | 是 | 当前显示的瀑布流终止位置的索引值。 正常取值范围：[0, 子组件总数-1]。列表为空时存在特殊取值，详见 [onScrollIndex](arkts-arkui-waterflow-attribute.md#onscrollindex)事件说明。 |
+| first | number | 是 | 当前显示的瀑布流起始位置的索引值。<br>正常取值范围：[0, 子组件总数-1]。列表为空时存在特殊取值，详见[onScrollIndex](arkts-arkui-waterflow-comp-attribute.md#onscrollindex)事件说明。 |
+| last | number | 是 | 当前显示的瀑布流终止位置的索引值。<br>正常取值范围：[0, 子组件总数-1]。列表为空时存在特殊取值，详见[onScrollIndex](arkts-arkui-waterflow-comp-attribute.md#onscrollindex)事件说明。 |

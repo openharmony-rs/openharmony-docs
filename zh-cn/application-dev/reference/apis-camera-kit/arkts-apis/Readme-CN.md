@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-camerakit-->
 
-- [@ohos.multimedia.camera](arkts-multimedia-camera.md)
+- [@ohos.multimedia.camera(相机管理)](arkts-camera-multimedia-camera.md)
   - [getCameraManager](arkts-camera-camera-getcameramanager-f.md)
   <!--Del-->
   - [EffectSuggestionStatus(系统接口)](arkts-camera-camera-effectsuggestionstatus-c-sys.md)<!--DelEnd-->
@@ -152,21 +152,26 @@
   <!--Del-->
   - [Photo(系统接口)](arkts-camera-camera-photo-i-sys.md)<!--DelEnd-->
   - [PhotoCaptureSetting](arkts-camera-camera-photocapturesetting-i.md)
-  - [PhotoConflictFunctions](arkts-camera-camera-photoconflictfunctions-i.md)
-  - [PhotoFunctions](arkts-camera-camera-photofunctions-i.md)
+  <!--Del-->
+  - [PhotoConflictFunctions(系统接口)](arkts-camera-camera-photoconflictfunctions-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PhotoFunctions(系统接口)](arkts-camera-camera-photofunctions-i-sys.md)<!--DelEnd-->
   - [PhotoOutput](arkts-camera-camera-photooutput-i.md)
   <!--Del-->
   - [PhotoOutput(系统接口)](arkts-camera-camera-photooutput-i-sys.md)<!--DelEnd-->
   - [PhotoSession](arkts-camera-camera-photosession-i.md)
   <!--Del-->
   - [PhotoSession(系统接口)](arkts-camera-camera-photosession-i-sys.md)<!--DelEnd-->
-  - [PhotoSessionForSys](arkts-camera-camera-photosessionforsys-i.md)
+  <!--Del-->
+  - [PhotoSessionForSys(系统接口)](arkts-camera-camera-photosessionforsys-i-sys.md)<!--DelEnd-->
   - [PhysicalAperture](arkts-camera-camera-physicalaperture-i.md)
   - [Point](arkts-camera-camera-point-i.md)
   <!--Del-->
   - [Portrait(系统接口)](arkts-camera-camera-portrait-i-sys.md)<!--DelEnd-->
-  - [PortraitPhotoConflictFunctions](arkts-camera-camera-portraitphotoconflictfunctions-i.md)
-  - [PortraitPhotoFunctions](arkts-camera-camera-portraitphotofunctions-i.md)
+  <!--Del-->
+  - [PortraitPhotoConflictFunctions(系统接口)](arkts-camera-camera-portraitphotoconflictfunctions-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PortraitPhotoFunctions(系统接口)](arkts-camera-camera-portraitphotofunctions-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [PortraitPhotoSession(系统接口)](arkts-camera-camera-portraitphotosession-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -213,8 +218,10 @@
   - [TripodDetectionResult(系统接口)](arkts-camera-camera-tripoddetectionresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TryAEInfo(系统接口)](arkts-camera-camera-tryaeinfo-i-sys.md)<!--DelEnd-->
-  - [VideoConflictFunctions](arkts-camera-camera-videoconflictfunctions-i.md)
-  - [VideoFunctions](arkts-camera-camera-videofunctions-i.md)
+  <!--Del-->
+  - [VideoConflictFunctions(系统接口)](arkts-camera-camera-videoconflictfunctions-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [VideoFunctions(系统接口)](arkts-camera-camera-videofunctions-i-sys.md)<!--DelEnd-->
   - [VideoOutput](arkts-camera-camera-videooutput-i.md)
   <!--Del-->
   - [VideoOutput(系统接口)](arkts-camera-camera-videooutput-i-sys.md)<!--DelEnd-->
@@ -222,7 +229,8 @@
   - [VideoSession](arkts-camera-camera-videosession-i.md)
   <!--Del-->
   - [VideoSession(系统接口)](arkts-camera-camera-videosession-i-sys.md)<!--DelEnd-->
-  - [VideoSessionForSys](arkts-camera-camera-videosessionforsys-i.md)
+  <!--Del-->
+  - [VideoSessionForSys(系统接口)](arkts-camera-camera-videosessionforsys-i-sys.md)<!--DelEnd-->
   - [WhiteBalance](arkts-camera-camera-whitebalance-i.md)
   <!--Del-->
   - [WhiteBalance(系统接口)](arkts-camera-camera-whitebalance-i-sys.md)<!--DelEnd-->
@@ -338,7 +346,7 @@
   - [VideoMetaType(系统接口)](arkts-camera-camera-videometatype-e-sys.md)<!--DelEnd-->
   - [VideoStabilizationMode](arkts-camera-camera-videostabilizationmode-e.md)
   - [WhiteBalanceMode](arkts-camera-camera-whitebalancemode-e.md)
-- [@ohos.multimedia.cameraPicker](arkts-multimedia-camerapicker.md)
+- [@ohos.multimedia.cameraPicker(相机选择器)](arkts-camera-multimedia-camerapicker.md)
   - [pick](arkts-camera-camerapicker-pick-f.md)
   - [PickerProfile](arkts-camera-camerapicker-pickerprofile-c.md)
   - [PickerResult](arkts-camera-camerapicker-pickerresult-c.md)

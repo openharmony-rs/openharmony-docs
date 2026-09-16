@@ -12,7 +12,7 @@ import { kioskManager } from '@kit.AbilityKit';
 function enterKioskMode(context: UIAbilityContext): Promise<void>
 ```
 
-进入Kiosk模式。使用Promise异步回调。 该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+进入Kiosk模式。使用Promise异步回调。该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **起始版本：** 20
 
@@ -30,7 +30,7 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 

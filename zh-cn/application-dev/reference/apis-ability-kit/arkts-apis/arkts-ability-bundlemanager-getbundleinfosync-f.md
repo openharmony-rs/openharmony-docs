@@ -12,7 +12,9 @@ import { bundleManager } from '@kit.AbilityKit';
 function getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): BundleInfo
 ```
 
-以同步方法根据给定的bundleName、bundleFlags和userId获取BundleInfo。获取调用方自身的信息时不需要权限。
+以同步方法根据给定的bundleName、bundleFlags和userId获取BundleInfo。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 14
 
@@ -26,13 +28,13 @@ function getBundleInfoSync(bundleName: string, bundleFlags: number, userId: numb
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用Bundle名称。 |
 | bundleFlags | number | 是 | 指定返回的BundleInfo所包含的信息。 |
-| userId | number | 是 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleInfo | 返回BundleInfo对象。 |
+| [BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md) | 返回BundleInfo对象。 |
 
 **错误码：**
 
@@ -64,6 +66,22 @@ try {
 }
 ```
 
+```TypeScript
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION;
+try {
+  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleInfoSync successfully: %{public}s', JSON.stringify(data));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfoSync failed: %{public}s', message);
+}
+```
+
 
 ## getBundleInfoSync
 
@@ -71,7 +89,9 @@ try {
 function getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 ```
 
-以同步方法根据给定的bundleName、bundleFlags获取调用方所在用户下的BundleInfo。获取调用方自身的信息时不需要权限。
+以同步方法根据给定的bundleName、bundleFlags获取调用方所在用户下的BundleInfo。
+
+获取调用方自身的信息时不需要权限。
 
 **起始版本：** 14
 
@@ -90,7 +110,7 @@ function getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| BundleInfo | 返回BundleInfo对象。 |
+| [BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md) | 返回BundleInfo对象。 |
 
 **错误码：**
 
@@ -103,18 +123,4 @@ function getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 **示例**
 
-```TypeScript
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let bundleName = 'com.example.myapplication';
-let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION;
-try {
-  let data = bundleManager.getBundleInfoSync(bundleName, bundleFlags);
-  hilog.info(0x0000, 'testTag', 'getBundleInfoSync successfully: %{public}s', JSON.stringify(data));
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getBundleInfoSync failed: %{public}s', message);
-}
-```
+参见 [getBundleInfoSync](#getbundleinfosync)

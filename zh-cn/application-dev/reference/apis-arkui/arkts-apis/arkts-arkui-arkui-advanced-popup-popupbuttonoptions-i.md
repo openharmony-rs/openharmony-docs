@@ -18,13 +18,15 @@ import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOpt
 action?: () => void
 ```
 
-设置按钮click回调。默认不执行任何操作。
+设置按钮click回调。
+
+默认不执行任何操作。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +36,9 @@ action?: () => void
 fontColor?: ResourceColor
 ```
 
-设置按钮文本字体颜色。默认值：`\$r('sys.color.ohos_id_color_text_primary_activated')`
+设置按钮文本字体颜色。
+
+默认值：`&#36;r('sys.color.ohos_id_color_text_primary_activated')`
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -42,7 +46,7 @@ fontColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,15 +56,23 @@ fontColor?: ResourceColor
 fontSize?: number | string | Resource
 ```
 
-设置按钮文本字体大小。默认值：`\$r('sys.float.ohos_id_text_size_button2')`string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。为number类型时默认单位：fp。设置值为异常值时取默认值。
+设置按钮文本字体大小。
 
-**类型：** number \| string \| Resource
+默认值：`&#36;r('sys.float.ohos_id_text_size_button2')`
+
+string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。
+
+为number类型时默认单位：fp。
+
+设置值为异常值时取默认值。
+
+**类型：** number &#124; string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,6 +90,6 @@ text: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

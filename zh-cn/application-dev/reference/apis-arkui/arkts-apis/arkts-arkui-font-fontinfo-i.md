@@ -26,7 +26,7 @@ family: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +44,7 @@ fullName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +54,11 @@ fullName: string
 italic: boolean
 ```
 
-系统字体是否倾斜。默认值：false值为true，表示斜体字体，值为false，表示非斜体字体。
+系统字体是否倾斜。
+
+默认值：false
+
+值为true，表示斜体字体，值为false，表示非斜体字体。
 
 **类型：** boolean
 
@@ -62,7 +66,7 @@ italic: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +76,11 @@ italic: boolean
 monoSpace: boolean
 ```
 
-系统字体是否等宽。默认值：false值为true，表示等宽字体，值为false，表示非等宽字体。
+系统字体是否等宽。
+
+默认值：false
+
+值为true，表示等宽字体，值为false，表示非等宽字体。
 
 **类型：** boolean
 
@@ -80,7 +88,7 @@ monoSpace: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +106,7 @@ path: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +124,7 @@ postScriptName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +142,7 @@ subfamily: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,7 +152,11 @@ subfamily: string
 symbolic: boolean
 ```
 
-系统字体是否支持符号字体。默认值：false值为true，表示支持符号字体，值为false，表示不支持符号字体。
+系统字体是否支持符号字体。
+
+默认值：false
+
+值为true，表示支持符号字体，值为false，表示不支持符号字体。
 
 **类型：** boolean
 
@@ -152,7 +164,7 @@ symbolic: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,7 +174,11 @@ symbolic: boolean
 weight: number
 ```
 
-系统字体的字重。取值范围：[100,900]，取值间隔为100，分别对应[FontWeight](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontweight-e.md)枚举中的值。默认值：100
+系统字体的字重。
+
+取值范围：[100,900]，取值间隔为100，分别对应[FontWeight](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontweight-e.md)枚举中的值。
+
+默认值：100
 
 **类型：** number
 
@@ -170,7 +186,7 @@ weight: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +196,9 @@ weight: number
 width: number
 ```
 
-系统字体的宽度。取值范围：[1,9]，取值间隔为1，分别对应[FontWidth](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontwidth-e.md)枚举中的值。
+系统字体的宽度。
+
+取值范围：[1,9]，取值间隔为1，分别对应[FontWidth](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-text-fontwidth-e.md)枚举中的值。
 
 **类型：** number
 
@@ -188,39 +206,6 @@ width: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例**
-
-直接使用font可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用UIContext中的getFont方法获取当前UI上下文关联的Font对象。
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct FontExample {
-  private fontInfo = this.getUIContext().getFont().getFontByName('');
-
-  build() {
-    Column() {
-      Button('getFontByName')
-        .onClick(() => {
-          this.fontInfo =
-            this.getUIContext().getFont().getFontByName('HarmonyOS Sans Italic');
-          console.info('getFontByName(): path = ' + this.fontInfo.path);
-          console.info('getFontByName(): postScriptName = ' + this.fontInfo.postScriptName);
-          console.info('getFontByName(): fullName = ' + this.fontInfo.fullName);
-          console.info('getFontByName(): family = ' + this.fontInfo.family);
-          console.info('getFontByName(): subfamily = ' + this.fontInfo.subfamily);
-          console.info('getFontByName(): weight = ' + this.fontInfo.weight);
-          console.info('getFontByName(): width = ' + this.fontInfo.width);
-          console.info('getFontByName(): italic = ' + this.fontInfo.italic);
-          console.info('getFontByName(): monoSpace = ' + this.fontInfo.monoSpace);
-          console.info('getFontByName(): symbolic = ' + this.fontInfo.symbolic);
-        })
-    }.width('100%')
-  }
-}
-```

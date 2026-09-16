@@ -14,17 +14,11 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 
 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。
 
-> **说明：**
+> **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)
-> 替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
-> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 9
 
@@ -32,7 +26,7 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 
 **替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -40,90 +34,14 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RouterOptions | 是 | 替换页面描述信息。 |
+| options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 替换页面描述信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameters types.   3. Parameter verification failed. |
-| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
-| [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
-
-**示例**
-
-```TypeScript
-import { router } from '@kit.ArkUI';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceUrl({
-  url: 'pages/detail',
-  params: new RouterParams('message')
-}, (err) => {
-  if (err) {
-    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('replaceUrl success');
-})
-```
-
-
-## replaceUrl
-
-```TypeScript
-function replaceUrl(options: RouterOptions): Promise<void>
-```
-
-用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。
-
-> **说明：**
-> 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过
-> [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
-> 
-> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
-
-**起始版本：** 9
-
-**废弃版本：** 18
-
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions)
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Lite
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | RouterOptions | 是 | 替换页面描述信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | 异常返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameters types.   3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -154,54 +72,53 @@ router.replaceUrl({
   })
 ```
 
-
-## replaceUrl
-
 ```TypeScript
-function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
+import { router } from '@kit.ArkUI';
+
+class RouterParams {
+  data1: string;
+
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
+
+router.replaceUrl({
+  url: 'pages/detail',
+  params: new RouterParams('message')
+}, (err) => {
+  if (err) {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('replaceUrl success');
+})
 ```
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。
+```TypeScript
+import { router } from '@kit.ArkUI';
 
-> **说明：**
-> 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)
-> 替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
-> 
-> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+import { BusinessError } from '@kit.BasicServicesKit';
 
-**起始版本：** 9
+class RouterParams {
+  data1: string;
 
-**废弃版本：** 18
+  constructor(str: string) {
+    this.data1 = str;
+  }
+}
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Lite
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| options | RouterOptions | 是 | 替换页面描述信息。 |
-| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 替换页面使用的模式。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameters types.   3. Parameter verification failed. |
-| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
-| [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
-
-**示例**
+router.replaceUrl({
+  url: 'pages/detail',
+  params: new RouterParams('message')
+}, router.RouterMode.Standard)
+  .then(() => {
+    console.info(`replaceUrl finish`);
+  })
+  .catch((err: BusinessError) => {
+    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
+  })
+```
 
 ```TypeScript
 import { router } from '@kit.ArkUI';
@@ -230,30 +147,24 @@ router.replaceUrl({
 ## replaceUrl
 
 ```TypeScript
-function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
+function replaceUrl(options: RouterOptions): Promise<void>
 ```
 
 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。
 
-> **说明：**
+> **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用
-> [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)
-> 替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
-> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的
-> [getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的
-> [Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
 **起始版本：** 9
 
 **废弃版本：** 18
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions)
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 
@@ -261,46 +172,117 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | RouterOptions | 是 | 替换页面描述信息。 |
+| options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 替换页面描述信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 异常返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
+| [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
+
+**示例**
+
+参见 [replaceUrl](#replaceurl)
+
+
+## replaceUrl
+
+```TypeScript
+function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback<void>): void
+```
+
+用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。
+
+> **说明：** 
+> 
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> 
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+
+**起始版本：** 9
+
+**废弃版本：** 18
+
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Lite
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 替换页面描述信息。 |
+| mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 替换页面使用的模式。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异常响应回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
+| [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
+
+**示例**
+
+参见 [replaceUrl](#replaceurl)
+
+
+## replaceUrl
+
+```TypeScript
+function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
+```
+
+用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。
+
+> **说明：** 
+> 
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> 
+> - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
+
+**起始版本：** 9
+
+**废弃版本：** 18
+
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Lite
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [RouterOptions](arkts-arkui-router-routeroptions-i.md) | 是 | 替换页面描述信息。 |
 | mode | [RouterMode](arkts-arkui-router-routermode-e.md) | 是 | 跳转页面使用的模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 异常返回结果。 |
+| Promise&lt;void&gt; | 异常返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:   1. Mandatory parameters are left unspecified.   2. Incorrect parameters types.   3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
 **示例**
 
-```TypeScript
-import { router } from '@kit.ArkUI';
-
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class RouterParams {
-  data1: string;
-
-  constructor(str: string) {
-    this.data1 = str;
-  }
-}
-
-router.replaceUrl({
-  url: 'pages/detail',
-  params: new RouterParams('message')
-}, router.RouterMode.Standard)
-  .then(() => {
-    console.info(`replaceUrl finish`);
-  })
-  .catch((err: BusinessError) => {
-    console.error(`replaceUrl failed. Code: ${err.code}, message: ${err.message}`);
-  })
-```
+参见 [replaceUrl](#replaceurl)

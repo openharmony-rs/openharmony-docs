@@ -1,6 +1,6 @@
 # InsightIntentContext
 
-本模块提供意图执行上下文，是[意图执行基类](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md)和 [@InsightIntentEntry的意图执行基类](arkts-ability-app-ability-insightintententryexecutor-insightintententryexecutor-c.md)的属性，为意图执行提 供基础能力，例如启动本应用内的[UIAbility组件](arkts-ability-app-ability-uiability-uiability-c.md)。
+本模块提供意图执行上下文，是[意图执行基类](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md)和[@InsightIntentEntry的意图执行基类](arkts-ability-app-ability-insightintententryexecutor-insightintententryexecutor-c.md)的属性，为意图执行提供基础能力，例如启动本应用内的[UIAbility组件](arkts-ability-app-ability-uiability-uiability-c.md)。
 
 **起始版本：** 11
 
@@ -24,7 +24,7 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -32,7 +32,7 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| returnMode | insightIntent.ReturnMode | 是 | 意图执行结果的返回形式。 |
+| returnMode | [insightIntent.ReturnMode](arkts-ability-insightintent-returnmode-e.md) | 是 | 意图执行结果的返回形式。 |
 
 **错误码：**
 
@@ -95,7 +95,7 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -103,7 +103,7 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| returnMode | insightIntent.ReturnMode | 是 | 意图执行结果的返回形式。 |
+| returnMode | [insightIntent.ReturnMode](arkts-ability-insightintent-returnmode-e.md) | 是 | 意图执行结果的返回形式。 |
 
 **错误码：**
 
@@ -165,7 +165,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -237,56 +237,6 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 }
 ```
 
-## startAbility
-
-```TypeScript
-startAbility(want: Want): Promise<void>
-```
-
-启动UIAbility组件，仅支持启动本应用内的UIAbility组件。使用Promise异步回调。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动UIAbility组件的want信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
-| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
-| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
-| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
-| [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
-| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
-| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
-| [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
-| [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
-| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
-| [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
-| [16000061](../errorcode-ability.md#16000061-不支持的操作) | Operation not supported. |
-| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
-
-**示例**
-
 ```TypeScript
 import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -321,13 +271,65 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
 }
 ```
 
+## startAbility
+
+```TypeScript
+startAbility(want: Want): Promise<void>
+```
+
+启动UIAbility组件，仅支持启动本应用内的UIAbility组件。使用Promise异步回调。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 启动UIAbility组件的want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
+| [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
+| [16000005](../errorcode-ability.md#16000005-指定的进程权限校验失败) | The specified process does not have the permission. |
+| [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
+| [16000008](../errorcode-ability.md#16000008-众测应用到期) | The crowdtesting application expires. |
+| [16000009](../errorcode-ability.md#16000009-wukong模式不允许启动停止ability) | An ability cannot be started or stopped in Wukong mode. |
+| [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
+| [16000012](../errorcode-ability.md#16000012-应用被管控) | The application is controlled. |
+| [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
+| [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
+| [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
+| [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
+| [16000061](../errorcode-ability.md#16000061-不支持的操作) | Operation not supported. |
+| [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
+
+**示例**
+
+参见 [startAbility](#startability)
+
 ## instanceId
 
 ```TypeScript
 instanceId: number
 ```
 
-意图实例唯一ID。用于通过 [insightIntentProvider.sendExecuteResult接口] sendExecuteResult 和 [insightIntentProvider.sendIntentResult接口] sendIntentResult返回指定意图的执行结果。
+意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult接口] sendExecuteResult 和[insightIntentProvider.sendIntentResult接口] sendIntentResult返回指定意图的执行结果。
 
 **类型：** number
 
@@ -335,6 +337,6 @@ instanceId: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

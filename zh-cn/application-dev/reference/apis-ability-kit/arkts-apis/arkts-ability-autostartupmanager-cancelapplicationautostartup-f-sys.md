@@ -12,7 +12,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 function cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback<void>): void
 ```
 
-取消应用组件开机自启动。使用callback异步回调。 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
+取消应用组件开机自启动。使用callback异步回调。从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
 **起始版本：** 11
 
@@ -42,31 +42,6 @@ function cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCall
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
 
-**示例**
-
-```TypeScript
-import { autoStartupManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 取消应用组件开机自启动
-  autoStartupManager.cancelApplicationAutoStartup({
-    bundleName: 'com.example.autostartupapp',
-    abilityName: 'EntryAbility'
-  }, (err: BusinessError) => {
-    if (err) {
-      console.error(`cancelApplicationAutoStartup failed, err code: ${err.code}, msg: ${err.message}.`);
-      return;
-    }
-    console.info(`cancelApplicationAutoStartup success.`);
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let msg = (err as BusinessError).message;
-  console.error(`cancelApplicationAutoStartup failed, err code: ${code}, err msg: ${msg}.`);
-}
-```
-
 
 ## cancelApplicationAutoStartup
 
@@ -74,7 +49,7 @@ try {
 function cancelApplicationAutoStartup(info: AutoStartupInfo): Promise<void>
 ```
 
-取消应用组件开机自启动。使用Promise异步回调。 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
+取消应用组件开机自启动。使用Promise异步回调。从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
 **起始版本：** 11
 
@@ -96,7 +71,7 @@ function cancelApplicationAutoStartup(info: AutoStartupInfo): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -108,26 +83,3 @@ function cancelApplicationAutoStartup(info: AutoStartupInfo): Promise<void>
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
 | [16000013](../errorcode-ability.md#16000013-应用被edm管控) | The application is controlled by EDM. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
-
-**示例**
-
-```TypeScript
-import { autoStartupManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  // 取消应用组件开机自启动
-  autoStartupManager.cancelApplicationAutoStartup({
-    bundleName: 'com.example.autostartupapp',
-    abilityName: 'EntryAbility'
-  }).then(() => {
-    console.info(`cancelApplicationAutoStartup success.`);
-  }).catch((err: BusinessError) => {
-    console.error(`cancelApplicationAutoStartup failed, err code: ${err.code}, msg: ${err.message}.`);
-  });
-} catch (err) {
-  let code = (err as BusinessError).code;
-  let msg = (err as BusinessError).message;
-  console.error(`cancelApplicationAutoStartup failed, err code: ${code}, err msg: ${msg}.`);
-}
-```

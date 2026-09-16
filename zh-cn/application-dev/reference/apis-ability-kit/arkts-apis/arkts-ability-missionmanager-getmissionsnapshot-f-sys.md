@@ -28,7 +28,7 @@ function getMissionSnapShot(deviceId: string, missionId: number, callback: Async
 | --- | --- | --- | --- |
 | deviceId | string | 是 | 设备ID，本机默认为空字符串。 |
 | missionId | number | 是 | 任务ID。 |
-| callback | AsyncCallback &lt;MissionSnapshot&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
+| callback | AsyncCallback&lt;[MissionSnapshot](arkts-ability-missionmanager-missionsnapshot-t-sys.md)&gt; | 是 | 执行结果回调函数，返回任务快照信息。 |
 
 **错误码：**
 
@@ -54,6 +54,25 @@ try {
     } else {
       console.info(`getMissionSnapShot successfully: ${JSON.stringify(data)}`);
     }
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
+}
+```
+
+```TypeScript
+import { missionManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// testMissionId为任务ID，可通过getMissionInfos接口获取真实有效的任务ID
+let testMissionId = 2;
+
+try {
+  missionManager.getMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
+    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionSnapShot failed. Code: ${error.code}, message: ${error.message}.`);
   });
 } catch (error) {
   let err: BusinessError = error as BusinessError;
@@ -89,7 +108,7 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;MissionSnapshot&gt; | Promise对象，返回任务快照信息。 |
+| Promise&lt;[MissionSnapshot](arkts-ability-missionmanager-missionsnapshot-t-sys.md)&gt; | Promise对象，返回任务快照信息。 |
 
 **错误码：**
 
@@ -101,21 +120,4 @@ function getMissionSnapShot(deviceId: string, missionId: number): Promise<Missio
 
 **示例**
 
-```TypeScript
-import { missionManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// testMissionId为任务ID，可通过getMissionInfos接口获取真实有效的任务ID
-let testMissionId = 2;
-
-try {
-  missionManager.getMissionSnapShot('', testMissionId).then((data: missionManager.MissionSnapshot) => {
-    console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getMissionSnapShot failed. Code: ${error.code}, message: ${error.message}.`);
-  });
-} catch (error) {
-  let err: BusinessError = error as BusinessError;
-  console.error(`getMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
-}
-```
+参见 [getMissionSnapShot](#getmissionsnapshot)

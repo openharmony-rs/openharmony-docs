@@ -16,7 +16,7 @@ function convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): 
 
 **起始版本：** 20
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -30,7 +30,7 @@ function convertRelativeToGlobalCoordinate(relativePosition: RelativePosition): 
 
 | 类型 | 说明 |
 | --- | --- |
-| Position | 返回相对于主屏左上角的全局坐标。 |
+| [Position](arkts-arkui-display-position-i.md) | 返回相对于主屏左上角的全局坐标。 |
 
 **错误码：**
 

@@ -1,15 +1,10 @@
 # AccessibilityOptions
 
-Defines the struct of AccessibilityOptions.@interface AccessibilityOptions
+定义AccessibilityOptions的结构体。
 
 **起始版本：** 14
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## accessibilityPreferred
 
@@ -17,7 +12,13 @@ Defines the struct of AccessibilityOptions.@interface AccessibilityOptions
 accessibilityPreferred?: boolean
 ```
 
-accessibilityPreferred -在连接子组件字符串时，是否应该优先考虑accessibilityText。
+若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。
+
+若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。
+
+若accessibilityPreferred设置为false，表示不启用此功能。
+
+默认值：false
 
 **类型：** boolean
 
@@ -25,7 +26,7 @@ accessibilityPreferred -在连接子组件字符串时，是否应该优先考�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +36,7 @@ accessibilityPreferred -在连接子组件字符串时，是否应该优先考�
 actionControllerId?: string
 ```
 
-通过该可选参数指定特定ID的子组件，配置AccessibilityGroup的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。
+指定特定唯一标识ID的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。**说明：** 如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。当前只支持无障碍点击操作。如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。默认值：无指定组件。
 
 **类型：** string
 
@@ -43,7 +44,7 @@ actionControllerId?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +54,17 @@ actionControllerId?: string
 actionControllerRoleType?: AccessibilityRoleType
 ```
 
-stateControllerRoleType - 通过该可选参数指定特定类型的子组件，配置AccessibilityGroup的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。
+指定特定类型的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。
+
+**说明：** 
+
+如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。
+
+当前只支持无障碍点击操作。
+
+不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。
+
+默认值：无指定组件
 
 **类型：** [AccessibilityRoleType](../arkts-components/arkts-arkui-accessibilityroletype-e.md)
 
@@ -61,7 +72,7 @@ stateControllerRoleType - 通过该可选参数指定特定类型的子组件，
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +82,7 @@ stateControllerRoleType - 通过该可选参数指定特定类型的子组件，
 stateControllerId?: string
 ```
 
-stateControllerId -通过该可选参数指定特定ID的子组件，配置AccessibilityGroup的容器组件进行无障碍聚合后，会将该子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。
+指定特定唯一标识ID的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。**说明：** 如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。默认值：无指定组件。
 
 **类型：** string
 
@@ -79,7 +90,7 @@ stateControllerId -通过该可选参数指定特定ID的子组件，配置Acces
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +100,15 @@ stateControllerId -通过该可选参数指定特定ID的子组件，配置Acces
 stateControllerRoleType?: AccessibilityRoleType
 ```
 
-stateControllerRoleType - 通过该可选参数指定特定类型的子组件，配置AccessibilityGroup的容器组件进行无障碍聚合后，会将该子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。
+指定特定类型的子组件。配置accessibilityGroup的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。
+
+**说明：** 
+
+如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。
+
+不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。
+
+默认值：无指定组件
 
 **类型：** [AccessibilityRoleType](../arkts-components/arkts-arkui-accessibilityroletype-e.md)
 
@@ -97,6 +116,6 @@ stateControllerRoleType - 通过该可选参数指定特定类型的子组件，
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

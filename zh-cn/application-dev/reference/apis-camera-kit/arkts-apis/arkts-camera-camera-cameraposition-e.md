@@ -16,7 +16,7 @@ CAMERA_POSITION_UNSPECIFIED = 0
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -30,7 +30,7 @@ CAMERA_POSITION_BACK = 1
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -44,7 +44,7 @@ CAMERA_POSITION_FRONT = 2
 
 **起始版本：** 10
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -54,7 +54,9 @@ CAMERA_POSITION_FRONT = 2
 CAMERA_POSITION_FOLD_INNER = 3
 ```
 
-折叠态相机。从API version 11开始支持，从API version 12开始废弃。
+折叠态相机。
+
+从API version 11开始支持，从API version 12开始废弃。
 
 **起始版本：** 11
 
@@ -62,6 +64,6 @@ CAMERA_POSITION_FOLD_INNER = 3
 
 **替代接口：** null
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

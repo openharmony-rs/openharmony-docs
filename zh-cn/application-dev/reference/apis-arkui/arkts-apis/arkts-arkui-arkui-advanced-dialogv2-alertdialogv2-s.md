@@ -4,6 +4,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ComponentV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -24,9 +26,11 @@ content: ResourceStr
 
 **起始版本：** 18
 
+**装饰器类型：** @Require
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +40,9 @@ content: ResourceStr
 primaryButton?: AdvancedDialogV2Button
 ```
 
-确认弹出框左侧按钮。默认不显示。
+确认弹出框左侧按钮。
+
+默认不显示。
 
 **类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
@@ -44,7 +50,7 @@ primaryButton?: AdvancedDialogV2Button
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +60,10 @@ primaryButton?: AdvancedDialogV2Button
 primaryTitle?: ResourceStr
 ```
 
-确认弹出框标题。默认不显示。  
+确认弹出框标题。
+
+默认不显示。
+
 **说明：** 标题超过两行会显示“...”。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -63,7 +72,7 @@ primaryTitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +82,9 @@ primaryTitle?: ResourceStr
 secondaryButton?: AdvancedDialogV2Button
 ```
 
-确认弹出框右侧按钮。默认不显示。
+确认弹出框右侧按钮。
+
+默认不显示。
 
 **类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
@@ -81,7 +92,7 @@ secondaryButton?: AdvancedDialogV2Button
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +102,10 @@ secondaryButton?: AdvancedDialogV2Button
 secondaryTitle?: ResourceStr
 ```
 
-确认弹出框辅助文本。默认不显示。  
+确认弹出框辅助文本。
+
+默认不显示。
+
 **说明：** 标题超过两行会显示“...”。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -100,6 +114,6 @@ secondaryTitle?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

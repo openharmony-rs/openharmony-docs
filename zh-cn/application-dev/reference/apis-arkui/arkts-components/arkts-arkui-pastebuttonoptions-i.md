@@ -2,7 +2,7 @@
 
 用于设置粘贴控件的图标、文本、按钮类型等属性。
 
-> **说明：**
+> **说明：** 
 > - 建议icon或text至少传入一个。
 > 
 > - 如果icon、text都不传入，PasteButton将使用默认样式创建，默认样式：PasteIconStyle默认样式为LINES；PasteDescription默认样式为PASTEButtonType默认样式为Capsule。
@@ -13,26 +13,21 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## buttonType
 
 ```TypeScript
 buttonType?: ButtonType
 ```
 
-设置粘贴控件的按钮形状。 Capsule。 默认值：ButtonType。
+设置粘贴控件的按钮形状。Capsule。默认值：ButtonType。
 
-**类型：** ButtonType
+**类型：** [ButtonType](arkts-arkui-buttontype-e.md)
 
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +37,7 @@ buttonType?: ButtonType
 icon?: PasteIconStyle
 ```
 
-设置粘贴控件的图标风格。 默认值：不显示图标。 若同时也不传text，控件将显示为默认样式。
+设置粘贴控件的图标风格。默认值：不显示图标。<br>若同时也不传text，控件将显示为默认样式。
 
 **类型：** [PasteIconStyle](arkts-arkui-pasteiconstyle-e.md)
 
@@ -50,7 +45,7 @@ icon?: PasteIconStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +55,7 @@ icon?: PasteIconStyle
 text?: PasteDescription
 ```
 
-设置粘贴控件的文本描述。 默认值：不显示文本描述。 若同时也不传icon，控件将显示为默认样式。
+设置粘贴控件的文本描述。默认值：不显示文本描述。<br>若同时也不传icon，控件将显示为默认样式。
 
 **类型：** [PasteDescription](arkts-arkui-pastedescription-e.md)
 
@@ -68,6 +63,6 @@ text?: PasteDescription
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

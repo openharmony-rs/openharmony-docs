@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## showMode
 
 ```TypeScript
 showMode?: TextMenuShowMode
 ```
 
-菜单的显示模式。默认值：TextMenuShowMode.DEFAULT
+菜单的显示模式。
+
+默认值：TextMenuShowMode.DEFAULT
 
 **类型：** [TextMenuShowMode](arkts-arkui-textmenushowmode-e.md)
 
@@ -25,6 +22,6 @@ showMode?: TextMenuShowMode
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本16开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本16开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

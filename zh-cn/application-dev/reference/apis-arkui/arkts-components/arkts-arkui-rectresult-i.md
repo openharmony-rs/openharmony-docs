@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## height
 
 ```TypeScript
 height: number
 ```
 
-内容高度大小。单位：vp
+内容高度大小。
+
+单位：vp
 
 **类型：** number
 
@@ -25,7 +22,7 @@ height: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +32,9 @@ height: number
 width: number
 ```
 
-内容宽度大小。单位：vp
+内容宽度大小。
+
+单位：vp
 
 **类型：** number
 
@@ -43,7 +42,7 @@ width: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +52,9 @@ width: number
 x: number
 ```
 
-水平方向横坐标。单位：vp
+水平方向横坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -61,7 +62,7 @@ x: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,7 +72,9 @@ x: number
 y: number
 ```
 
-竖直方向纵坐标。单位：vp
+竖直方向纵坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -79,6 +82,6 @@ y: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

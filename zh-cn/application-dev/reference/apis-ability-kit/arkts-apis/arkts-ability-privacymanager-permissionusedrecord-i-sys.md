@@ -36,7 +36,9 @@ accessCount: number
 accessRecords: Array<UsedRecordDetail>
 ```
 
-访问记录集合，仅当flag为FLAG_PERMISSION_USAGE_DETAIL时生效。默认值：查询最近10条成功访问记录。
+访问记录集合，仅当flag为FLAG_PERMISSION_USAGE_DETAIL时生效。
+
+默认值：查询最近10条成功访问记录。
 
 **类型：** Array&lt;[UsedRecordDetail](arkts-ability-privacymanager-usedrecorddetail-i-sys.md)&gt;
 
@@ -70,7 +72,7 @@ enhancedIdentity?: string
 lastAccessDuration: number
 ```
 
-最后一次访问时长。 单位为：毫秒。
+最后一次访问时长。单位为：毫秒。
 
 **类型：** number
 
@@ -86,7 +88,7 @@ lastAccessDuration: number
 lastAccessTime: number
 ```
 
-最后一次访问时间。 单位为：毫秒。
+最后一次访问时间。单位为：毫秒。
 
 **类型：** number
 
@@ -102,7 +104,7 @@ lastAccessTime: number
 lastRejectTime: number
 ```
 
-最后一次拒绝时间。 单位为：毫秒。
+最后一次拒绝时间。单位为：毫秒。
 
 **类型：** number
 
@@ -150,7 +152,9 @@ rejectCount: number
 rejectRecords: Array<UsedRecordDetail>
 ```
 
-拒绝记录集合，仅当flag为FLAG_PERMISSION_USAGE_DETAIL时生效。默认值：查询最近10条失败或拒绝记录。
+拒绝记录集合，仅当flag为FLAG_PERMISSION_USAGE_DETAIL时生效。
+
+默认值：查询最近10条失败或拒绝记录。
 
 **类型：** Array&lt;[UsedRecordDetail](arkts-ability-privacymanager-usedrecorddetail-i-sys.md)&gt;
 

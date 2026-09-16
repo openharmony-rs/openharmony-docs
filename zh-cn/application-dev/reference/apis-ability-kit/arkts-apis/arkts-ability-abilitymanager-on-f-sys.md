@@ -27,7 +27,7 @@ function on(type: 'abilityForegroundState', observer: AbilityForegroundStateObse
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'abilityForegroundState' | 是 | 调用接口类型，固定填'abilityForegroundState'字符串。 |
-| observer | AbilityForegroundStateObserver | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
+| observer | [AbilityForegroundStateObserver](arkts-ability-abilitymanager-abilityforegroundstateobserver-t-sys.md) | 是 | Ability状态观测器，用于观测Ability的启动和退出。 |
 
 **错误码：**
 
@@ -37,23 +37,3 @@ function on(type: 'abilityForegroundState', observer: AbilityForegroundStateObse
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Not system application. |
 | [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-**示例**
-
-```TypeScript
-import { abilityManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let observer: abilityManager.AbilityForegroundStateObserver = {
-  onAbilityStateChanged(abilityStateData) {
-    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
-  },
-};
-try {
-  abilityManager.on('abilityForegroundState', observer);
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`error: ${code}, ${message} `);
-}
-```

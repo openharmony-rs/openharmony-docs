@@ -1,8 +1,8 @@
 # DispatchInfo（系统接口）
 
-免安装结构体和接口版本信息类，通过接口 [freeInstall.getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md) 获取。
+免安装结构体和接口版本信息类，通过接口[freeInstall.getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md)获取。
 
-> **说明：**
+> **说明：** 
 > 
 > 本模块为系统接口。
 

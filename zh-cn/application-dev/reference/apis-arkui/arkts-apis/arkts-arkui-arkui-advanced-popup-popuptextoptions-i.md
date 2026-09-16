@@ -18,7 +18,9 @@ import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOpt
 fontColor?: ResourceColor
 ```
 
-设置文本字体颜色。默认值：`\$r('sys.color.ohos_id_color_text_secondary')`
+设置文本字体颜色。
+
+默认值：`&#36;r('sys.color.ohos_id_color_text_secondary')`
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -26,7 +28,7 @@ fontColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,15 +38,21 @@ fontColor?: ResourceColor
 fontSize?: number | string | Resource
 ```
 
-设置文本字体大小。默认值：`\$r('sys.float.ohos_id_text_size_body2')`string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。number：取值范围(0,+∞)。为number类型时默认单位：fp。
+设置文本字体大小。
 
-**类型：** number \| string \| Resource
+默认值：`&#36;r('sys.float.ohos_id_text_size_body2')`
+
+string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。
+
+number：取值范围(0,+∞)。为number类型时默认单位：fp。
+
+**类型：** number &#124; string &#124; [Resource](arkts-arkui-resource-t.md)
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,15 +62,21 @@ fontSize?: number | string | Resource
 fontWeight?: number | FontWeight | string
 ```
 
-设置文本字体粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。默认值：FontWeight.Regular
+设置文本字体粗细。
 
-**类型：** number \| FontWeight \| string
+number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。
+
+string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
+
+默认值：FontWeight.Regular
+
+**类型：** number &#124; [FontWeight](arkts-arkui-fontweight-e.md) &#124; string
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,6 +94,6 @@ text: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,6 +4,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ComponentV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -18,7 +20,10 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 content?: ResourceStr
 ```
 
-加载弹出框内容。默认为空。  
+加载弹出框内容。
+
+默认为空。
+
 **说明：** 内容超过十行会显示“...”。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -27,6 +32,6 @@ content?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -31,14 +31,14 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 | bundleName | string | 是 | 表示应用程序的包名。 |
 | moduleName | string | 是 | 表示模块的名称。 |
 | abilityName | string | 是 | 表示UIAbility组件的名称。 |
-| userId | number | 否 | 表示用户ID，可以通过 [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) 获取。默认值：调用方所在用户。取值范围：大于等于0。 |
-| appIndex | number | 否 | 表示应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。默认值：0 |
+| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。<br>默认值：调用方所在用户。<br>取值范围：大于等于0。 |
+| appIndex | number | 否 | 表示应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。<br>默认值：0 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array &lt;ShortcutInfo&gt; | Array形式返回指定用户下指定UIAbility的 [ShortcutInfo]{ |
+| Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt; | Array形式返回指定用户下指定UIAbility的[ShortcutInfo](arkts-ability-shortcutinfo-i.md)。 |
 
 **错误码：**
 

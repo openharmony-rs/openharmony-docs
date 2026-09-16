@@ -50,7 +50,7 @@ The file declares the common enums and definitions of the window manager.
 enum WindowManager_ErrorCode
 ```
 
-**描述**
+**描述：**
 
 窗口管理接口返回状态码枚举。
 
@@ -80,7 +80,7 @@ enum WindowManager_ErrorCode
 enum WindowManager_AvoidAreaType
 ```
 
-**描述**
+**描述：**
 
 避让区域枚举类型。
 
@@ -100,7 +100,7 @@ enum WindowManager_AvoidAreaType
 enum WindowManager_WindowType
 ```
 
-**描述**
+**描述：**
 
 窗口类型。
 
@@ -122,7 +122,7 @@ enum WindowManager_WindowType
 typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)
 ```
 
-**描述**
+**描述：**
 
 帧率指标回调类型。
 
@@ -134,7 +134,7 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)
 ```
 
-**描述**
+**描述：**
 
 density信息回调类型。
 

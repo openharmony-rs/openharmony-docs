@@ -12,4 +12,4 @@ export type DynamicIconInfo = _BundleInfo.DynamicIconInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _BundleInfo.DynamicIconInfo
+**类型：** [_BundleInfo.DynamicIconInfo](arkts-ability-bundleinfo-dynamiciconinfo-i-sys.md)

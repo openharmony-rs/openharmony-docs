@@ -11,11 +11,11 @@
 export declare function clearTimeout(timeoutID?: number): void
 ```
 
-取消通过调用setTimeout()建立的定时器。 定时器对象保存在创建它的线程内，删除定时器时需要在该线程中进行。
+取消通过调用setTimeout()建立的定时器。定时器对象保存在创建它的线程内，删除定时器时需要在该线程中进行。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,4 +23,4 @@ export declare function clearTimeout(timeoutID?: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| timeoutID | number | 否 | 要取消定时器的ID，需要与调用setTimeout()设置定时器的返回值一致。 如果省略该参数或指定的定时器ID不存在时，不会取消任何定时任务。 |
+| timeoutID | number | 否 | 要取消定时器的ID，需要与调用setTimeout()设置定时器的返回值一致。如果省略该参数或指定的定时器ID不存在时，不会取消任何定时任务。 |

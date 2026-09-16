@@ -10,12 +10,12 @@ declare type InputEventType = TouchEvent | MouseEvent | AxisEvent
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | --- | --- |
-| TouchEvent | 触摸事件。 |
-| MouseEvent | 鼠标事件。 |
+| [TouchEvent](../arkts-components/arkts-arkui-touchevent-i.md) | 触摸事件。 |
+| [MouseEvent](../arkts-components/arkts-arkui-mouseevent-i.md) | 鼠标事件。 |
 | [AxisEvent](../arkts-components/arkts-arkui-axisevent-i.md) | 轴事件。 |

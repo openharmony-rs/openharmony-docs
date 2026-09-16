@@ -14,7 +14,7 @@ function isAutoStartupSupported(): boolean
 
 检查当前设备是否支持开机自启动。
 
-> **说明：**
+> **说明：** 
 > 
 > 建议在调用[autoStartupManager.getAutoStartupStatusForSelf](arkts-ability-autostartupmanager-getautostartupstatusforself-f.md) 之前，先调
 > 用该接口检查设备能力。如果返回false，则表明当前设备不支持开机自启动。

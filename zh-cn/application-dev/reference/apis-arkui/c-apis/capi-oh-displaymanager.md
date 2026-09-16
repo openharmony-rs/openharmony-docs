@@ -7,6 +7,7 @@ Defines the data structures for the C APIs of the display module.
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **起始版本：** 12
+
 ## 文件汇总
 
 | 名称 | 描述 |

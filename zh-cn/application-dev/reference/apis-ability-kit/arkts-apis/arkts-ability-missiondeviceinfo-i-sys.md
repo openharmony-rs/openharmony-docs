@@ -1,6 +1,6 @@
 # MissionDeviceInfo（系统接口）
 
-可以作为 [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md) 的入参，表示注册监听时所需参数的对象，包含deviceId等设备标识符字段。
+可以作为[registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md)的入参，表示注册监听时所需参数的对象，包含deviceId等设备标识符字段。
 
 **起始版本：** 9
 

@@ -1,9 +1,10 @@
 # Package
 
 
-> **说明：**
+> **说明：** 
 > 
 > 从API version 3开始支持，从API version 9开始废弃。
+
 指示应用包是否已安装。
 
 **起始版本：** 3
@@ -39,27 +40,3 @@ static hasInstalled(options: CheckPackageHasInstalledOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [CheckPackageHasInstalledOptions](arkts-ability-system-package-checkpackagehasinstalledoptions-i.md) | 是 | Options |
-
-**示例**
-
-```TypeScript
-import Package from '@system.package';
-
-@Entry
-@Component
-struct MainPage {
-  hasInstalled() {
-    Package.hasInstalled({
-      bundleName: 'com.example.bundlename',
-      success: (data) => {
-        console.info('package has installed: ' + data);
-      },
-      fail: (msg:string, code) => {
-        console.error('query package fail, code: ' + code + ', data: ' + msg);
-      },
-    });
-  }
-  build() {
-  }
-}
-```

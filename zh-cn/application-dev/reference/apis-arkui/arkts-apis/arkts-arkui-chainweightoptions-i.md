@@ -1,15 +1,10 @@
 # ChainWeightOptions
 
-Defines the ChainWeightOptions interface.@interface ChainWeightOptions
+链中组件的布局权重。
 
 **起始版本：** 14
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## horizontal
 
@@ -17,7 +12,11 @@ Defines the ChainWeightOptions interface.@interface ChainWeightOptions
 horizontal?: number
 ```
 
-Horizontal ChainWeight.
+组件在水平方向的布局权重，设置大于0的数字时生效。
+
+默认值：0
+
+异常值：0
 
 **类型：** number
 
@@ -25,7 +24,7 @@ Horizontal ChainWeight.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +34,11 @@ Horizontal ChainWeight.
 vertical?: number
 ```
 
-Vertical ChainWeight.
+组件在竖直方向的布局权重，设置大于0的数字时生效。
+
+默认值：0
+
+异常值：0
 
 **类型：** number
 
@@ -43,6 +46,6 @@ Vertical ChainWeight.
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

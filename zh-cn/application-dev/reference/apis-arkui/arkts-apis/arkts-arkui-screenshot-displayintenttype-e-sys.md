@@ -1,6 +1,8 @@
 # DisplayIntentType（系统接口）
 
-枚举截图显示意图类型。@enum { number }
+枚举截图显示意图类型。
+
+@enum { int }
 
 **起始版本：** 24
 

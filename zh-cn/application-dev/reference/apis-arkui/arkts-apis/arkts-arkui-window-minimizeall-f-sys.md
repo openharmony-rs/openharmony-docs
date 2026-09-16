@@ -62,6 +62,25 @@ try {
 }
 ```
 
+```TypeScript
+import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+displayClass = display.getDefaultDisplaySync();
+
+try {
+  let promise = window.minimizeAll(displayClass.id);
+  promise.then(() => {
+    console.info('Succeeded in minimizing all windows.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 
 ## minimizeAll
 
@@ -87,7 +106,7 @@ function minimizeAll(id: number): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -99,21 +118,4 @@ function minimizeAll(id: number): Promise<void>
 
 **示例**
 
-```TypeScript
-import { display } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayClass: display.Display | null = null;
-displayClass = display.getDefaultDisplaySync();
-
-try {
-  let promise = window.minimizeAll(displayClass.id);
-  promise.then(() => {
-    console.info('Succeeded in minimizing all windows.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to minimize all windows. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to minimize all windows. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
+参见 [minimizeAll](#minimizeall)

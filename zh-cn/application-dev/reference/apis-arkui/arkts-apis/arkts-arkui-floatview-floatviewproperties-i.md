@@ -18,10 +18,13 @@ import { floatView } from '@kit.ArkUI';
 avoidArea: window.AvoidArea
 ```
 
-标准悬浮窗内容的避让区域。  
-**注意：**通过[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext)或 [setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件 的组件时，请注意避让这些区域。
+标准悬浮窗内容的避让区域。
 
-**类型：** window.AvoidArea
+**注意：**
+
+通过[setUIContext()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontext)或[setUIContextByName()](arkts-arkui-floatview-floatviewcontroller-i.md#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。
+
+**类型：** [window.AvoidArea](arkts-arkui-window-avoidarea-i.md)
 
 **起始版本：** 26.0.0
 
@@ -35,7 +38,7 @@ avoidArea: window.AvoidArea
 displayId: number
 ```
 
-标准悬浮窗所在屏幕ID。 取值限定为整数。
+标准悬浮窗所在屏幕ID。取值限定为整数。
 
 **类型：** number
 
@@ -83,7 +86,7 @@ templateType: FloatViewTemplateType
 windowId: number
 ```
 
-标准悬浮窗窗口ID。 取值限定为整数。
+标准悬浮窗窗口ID。取值限定为整数。
 
 **类型：** number
 
@@ -101,7 +104,7 @@ windowRect: window.Rect
 
 标准悬浮窗窗口矩形区域。
 
-**类型：** window.Rect
+**类型：** [window.Rect](arkts-arkui-window-rect-i.md)
 
 **起始版本：** 26.0.0
 

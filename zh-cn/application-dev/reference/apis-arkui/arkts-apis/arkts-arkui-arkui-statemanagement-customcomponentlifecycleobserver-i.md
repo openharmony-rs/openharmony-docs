@@ -1,6 +1,6 @@
 # CustomComponentLifecycleObserver
 
-开发者注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。与生命周期装饰器的区别在于：生命周期装饰器由组件自身响应生命周期事件， CustomComponentLifecycleObserver从外部观察组件生命周期事件；若仅需组件自身响应生命周期变化，使用生命周期装饰器即可，若需集中监控多个组件的生命周期， 则使用CustomComponentLifecycleObserver。
+开发者注册自定义组件生命周期回调后，当该自定义组件的生命周期发生变化时，将触发监听器中相应的生命周期回调。与生命周期装饰器的区别在于：生命周期装饰器由组件自身响应生命周期事件，CustomComponentLifecycleObserver从外部观察组件生命周期事件；若仅需组件自身响应生命周期变化，使用生命周期装饰器即可，若需集中监控多个组件的生命周期，则使用CustomComponentLifecycleObserver。
 
 **起始版本：** 23
 
@@ -9,7 +9,7 @@
 ## 导入模块
 
 ```TypeScript
-import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo } from '@kit.ArkUI';
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo } from '@kit.ArkUI';
 ```
 
 ## aboutToAppear
@@ -18,13 +18,13 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 aboutToAppear?(): void
 ```
 
-aboutToAppear函数在创建自定义组件的新实例后、其build()函数执行之前被调用。开发者可以在此阶段修改状态变量，更改将在后续执行build()函数中生效。 其功能与aboutToAppear类似，受自定义组件状态机约束， 在被监听的自定义组件向CustomComponentLifecycleState.APPEARED转变时触发回调。
+aboutToAppear函数在创建自定义组件的新实例后、其build()函数执行之前被调用。开发者可以在此阶段修改状态变量，更改将在后续执行build()函数中生效。其功能与aboutToAppear类似，受自定义组件状态机约束，在被监听的自定义组件向CustomComponentLifecycleState.APPEARED转变时触发回调。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,13 +34,13 @@ aboutToAppear函数在创建自定义组件的新实例后、其build()函数执
 aboutToDisappear?(): void
 ```
 
-aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。 其功能与aboutToDisappear类似，不同的是， CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束， 只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
+aboutToDisappear函数在自定义组件被销毁之前执行。不建议在aboutToDisappear函数中修改状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。其功能与aboutToDisappear类似，不同的是，CustomComponentLifecycleObserver中的aboutToDisappear函数受状态机约束，只有被监听的自定义组件状态向CustomComponentLifecycleState.DISAPPEARED转变前触发回调。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,15 +50,106 @@ aboutToDisappear函数在自定义组件被销毁之前执行。不建议在abou
 aboutToRecycle?(): void
 ```
 
-当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.BUILT 到CustomComponentLifecycleState.RECYCLED阶段触发回调。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件， 对每个完成回收的子组件调用子组件中注册的aboutToRecycle函数。
+当组件被回收后，先执行应用程序中定义的资源释放等回收操作，完成回收后调用aboutToRecycle函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.BUILT到CustomComponentLifecycleState.RECYCLED阶段触发回调。随后该组件被冻结，以避免该组件处于复用池时进行UI更新。最后，回收会递归遍历所有子组件，对每个完成回收的子组件调用子组件中注册的aboutToRecycle函数。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export class Message {
+  value: string | undefined;
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State isChildVisible: boolean = true;
+
+  build() {
+    Column() {
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.isChildVisible = !this.isChildVisible;
+        })
+      if (this.isChildVisible) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        Child({ message: new Message('Child') })
+          .reuseId('Child')
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('AboutToReuse');
+  @ComponentInit
+  myInit(): void {
+    registerObserver(UIUtils.getLifecycle(this));
+  }
+  @ComponentDisappear
+  myDisappear(): void {
+    unRegisterObserver(UIUtils.getLifecycle(this));
+  }
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(30)
+    }
+  }
+}
+
+export class MyObserver implements CustomComponentLifecycleObserver {
+  // 重写CustomComponentLifecycleObserver中的生命周期事件。
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
+  }
+  onDidBuild() {
+    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
+  }
+  aboutToReuse(params?: Record<string, Object | undefined | null>) {
+    // params存在时，为V1的复用；
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
+  }
+  aboutToRecycle() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
+  }
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
+  }
+}
+
+// 创建Observer对象
+const observer = new MyObserver();
+
+export function registerObserver(lifeCycle: CustomComponentLifecycle) {
+  // 向lifeCycle注册监听
+  lifeCycle.addObserver(observer);
+}
+
+export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
+  // 向lifeCycle取消注册监听
+  lifeCycle.removeObserver(observer);
+}
+```
 
 ## aboutToReuse
 
@@ -66,9 +157,9 @@ aboutToRecycle?(): void
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 ```
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.RECYCLED 到CustomComponentLifecycleState.BUILT阶段触发回调。最后，复用会递归遍历所有子组件，对每个完成复用的子组件调用子组件中注册的aboutToReuse函数。在状态管理V1的组件里， 该函数允许有一个入参或者无参，当params存在时表示V1组件的复用回调；在状态管理V2的组件里，该函数没有入参。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，受自定义组件状态机约束，即从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发回调。最后，复用会递归遍历所有子组件，对每个完成复用的子组件调用子组件中注册的aboutToReuse函数。在状态管理V1的组件里，该函数允许有一个入参或者无参，当params存在时表示V1组件的复用回调；在状态管理V2的组件里，该函数没有入参。
 
-> **说明：**
+> **说明：** 
 > 
 > - 在状态管理V1的组件里，aboutToReuse函数允许有一个入参或者无参。入参params建议为Record\&lt;string, Object \| undefined \| null\&gt;类型。
 > 
@@ -78,7 +169,7 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +177,7 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | Record &lt;string, Object \ | undefined \| null&gt; | 否 | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。不传此参数时，复用回调函数无入参。 |
+| params | Record&lt;string, Object &#124; undefined &#124; null&gt; | 否 | 组件复用时接收的构造参数，仅V1组件的复用回调支持该参数。不传此参数时，复用回调函数无入参。 |
 
 ## onDidBuild
 
@@ -94,12 +185,12 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 onDidBuild?(): void
 ```
 
-onDidBuild函数在自定义组件的build()函数执行后被调用，受自定义组件状态机约束，在被监听的自定义组件状态向CustomComponentLifecycleState.BUILT转变时触发回调。 开发者可以在此阶段实现不影响实际UI的功能，例如事件数据上报。
+onDidBuild函数在自定义组件的build()函数执行后被调用，受自定义组件状态机约束，在被监听的自定义组件状态向CustomComponentLifecycleState.BUILT转变时触发回调。开发者可以在此阶段实现不影响实际UI的功能，例如事件数据上报。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

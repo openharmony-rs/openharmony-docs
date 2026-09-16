@@ -1,17 +1,14 @@
 # TextEditControllerEx
 
-文本扩展编辑控制器。继承自[TextBaseController](arkts-arkui-textbasecontroller-i.md)。
+文本扩展编辑控制器。
+
+继承自[TextBaseController](arkts-arkui-textbasecontroller-i.md)。
 
 **继承/实现关系：** TextEditControllerEx extends [TextBaseController](arkts-arkui-textbasecontroller-i.md)
 
 **起始版本：** 12
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## getCaretOffset
 
@@ -25,7 +22,7 @@ getCaretOffset(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +44,7 @@ getPreviewText?(): PreviewText
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +66,7 @@ isEditing(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +88,7 @@ setCaretOffset(offset: number): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -105,7 +102,7 @@ setCaretOffset(offset: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 光标是否设置成功。 |
+| boolean | 光标是否设置成功。<br>true表示光标设置成功，false表示设置失败。 |
 
 ## stopEditing
 
@@ -119,6 +116,6 @@ stopEditing(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

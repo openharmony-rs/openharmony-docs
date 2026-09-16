@@ -36,7 +36,7 @@ function killProcessWithAccount(bundleName: string, accountId: number): Promise<
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **示例**
 
@@ -53,6 +53,24 @@ appManager.killProcessWithAccount(bundleName, accountId)
   .catch((err: BusinessError) => {
     console.error(`KillProcessWithAccount failed, error code: ${err.code}, error msg: ${err.message}.`);
   });
+```
+
+```TypeScript
+import appManager from '@ohos.application.appManager';
+import { BusinessError } from '@ohos.base';
+
+let bundleName = 'bundleName';
+let accountId = 0;
+
+function killProcessWithAccountCallback(err: BusinessError, data: void) {
+  if (err) {
+    console.error(`KillProcessWithAccountCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
+  } else {
+    console.info(`KillProcessWithAccountCallback success, data: ${JSON.stringify(data)}`);
+  }
+}
+
+appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
 ```
 
 
@@ -86,20 +104,4 @@ function killProcessWithAccount(bundleName: string, accountId: number, callback:
 
 **示例**
 
-```TypeScript
-import appManager from '@ohos.application.appManager';
-import { BusinessError } from '@ohos.base';
-
-let bundleName = 'bundleName';
-let accountId = 0;
-
-function killProcessWithAccountCallback(err: BusinessError, data: void) {
-  if (err) {
-    console.error(`KillProcessWithAccountCallback failed, error code: ${err.code}, error msg: ${err.message}.`);
-  } else {
-    console.info(`KillProcessWithAccountCallback success, data: ${JSON.stringify(data)}`);
-  }
-}
-
-appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
-```
+参见 [killProcessWithAccount](#killprocesswithaccount)

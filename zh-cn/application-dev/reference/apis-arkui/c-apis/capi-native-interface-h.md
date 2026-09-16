@@ -20,13 +20,18 @@ Provides a unified entry for the native module APIs.
 | -- | -- | -- |
 | [ArkUI_NativeAPIVariantKind](#arkui_nativeapivariantkind) | ArkUI_NativeAPIVariantKind | Defines the native API types. |
 
+### 宏定义
+
+| 名称 | 描述 |
+| -- | -- |
+| OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)<br>do {<br>void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType);<br>if (anyNativeAPI) {<br>structPtr = (structType*)(anyNativeAPI);<br>}<br>} while (0) | Obtains the macro function corresponding to a struct pointer based on the struct type.<br>**起始版本：** 12 |
+
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
 | [void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)](#oh_arkui_querymoduleinterfacebyname) | Obtains the native API set of a specified type. |
 | [const char* OH_ArkUI_NativeModule_GetErrorMessage()](#oh_arkui_nativemodule_geterrormessage) | 获取最新的错误消息，该消息包含错误码、方法名称及错误原因。当其他接口返回错误码时，会保存对应的错误信息，通过此接口可获取当前存储的错误消息。此接口返回的信息可能随版本演进，仅用于输出以辅助分析和定位问题，不得用于逻辑判断。返回的字符串为系统创建的全局字符串，可能被其他线程修改。调用方不能对其内容进行修改，如果有对齐编辑的需要，自行创建字符串拷贝内容。无需调用方进行内存释放。 |
-| [ OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)](#oh_arkui_getmoduleinterface) | Obtains the macro function corresponding to a struct pointer based on the struct type. |
 
 ## 枚举类型说明
 
@@ -36,7 +41,7 @@ Provides a unified entry for the native module APIs.
 enum ArkUI_NativeAPIVariantKind
 ```
 
-**描述**
+**描述：**
 
 Defines the native API types.
 
@@ -59,7 +64,7 @@ Defines the native API types.
 void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)
 ```
 
-**描述**
+**描述：**
 
 Obtains the native API set of a specified type.
 
@@ -84,7 +89,7 @@ Obtains the native API set of a specified type.
 const char* OH_ArkUI_NativeModule_GetErrorMessage()
 ```
 
-**描述**
+**描述：**
 
 获取最新的错误消息，该消息包含错误码、方法名称及错误原因。当其他接口返回错误码时，会保存对应的错误信息，通过此接口可获取当前存储的错误消息。此接口返回的信息可能随版本演进，仅用于输出以辅助分析和定位问题，不得用于逻辑判断。返回的字符串为系统创建的全局字符串，可能被其他线程修改。调用方不能对其内容进行修改，如果有对齐编辑的需要，自行创建字符串拷贝内容。无需调用方进行内存释放。
 
@@ -95,17 +100,5 @@ const char* OH_ArkUI_NativeModule_GetErrorMessage()
 | 类型 | 说明 |
 | -- | -- |
 | const char* | 返回最新的错误信息。 |
-
-### OH_ArkUI_GetModuleInterface()
-
-```c
-OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr) \do { \void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType) \if (anyNativeAPI) { \structPtr = (structType*)(anyNativeAPI) \} \} while (0)
-```
-
-**描述**
-
-Obtains the macro function corresponding to a struct pointer based on the struct type.
-
-**起始版本：** 12
 
 

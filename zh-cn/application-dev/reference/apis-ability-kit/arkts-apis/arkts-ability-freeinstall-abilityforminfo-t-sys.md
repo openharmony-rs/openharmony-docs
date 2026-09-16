@@ -12,4 +12,4 @@ export type AbilityFormInfo = _PackInfo.AbilityFormInfo
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.AbilityFormInfo
+**类型：** [_PackInfo.AbilityFormInfo](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md)

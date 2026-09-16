@@ -12,4 +12,4 @@ export type BundleOptions = _BundleInfo.BundleOptions
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _BundleInfo.BundleOptions
+**类型：** [_BundleInfo.BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md)

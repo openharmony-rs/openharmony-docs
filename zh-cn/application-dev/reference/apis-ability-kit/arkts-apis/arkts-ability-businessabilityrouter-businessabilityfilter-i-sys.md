@@ -22,7 +22,7 @@ businessType: BusinessType
 
 标识Ability信息的类型。
 
-**类型：** BusinessType
+**类型：** [BusinessType](arkts-ability-businessabilityrouter-businesstype-e-sys.md)
 
 **起始版本：** 10
 

@@ -16,15 +16,17 @@ import { EditableLeftIconType, EditableTitleBar, EditableTitleBarMenuItem, Edita
 backgroundBlurStyle?: BlurStyle
 ```
 
-标题栏背景模糊样式。默认值：BlurStyle.NONE
+标题栏背景模糊样式。
 
-**类型：** BlurStyle
+默认值：BlurStyle.NONE
+
+**类型：** [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md)
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +36,9 @@ backgroundBlurStyle?: BlurStyle
 backgroundColor?: ResourceColor
 ```
 
-标题栏背景色。默认值：'#00000000'
+标题栏背景色。
+
+默认值：'#00000000'
 
 **类型：** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -42,7 +46,7 @@ backgroundColor?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +56,9 @@ backgroundColor?: ResourceColor
 safeAreaEdges?: Array<SafeAreaEdge>
 ```
 
-配置扩展安全区域的方向。默认值：[SafeAreaEdge.TOP]
+配置扩展安全区域的方向。
+
+默认值：[SafeAreaEdge.TOP]
 
 **类型：** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-safeareaedge-e.md)&gt;
 
@@ -60,7 +66,7 @@ safeAreaEdges?: Array<SafeAreaEdge>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +76,9 @@ safeAreaEdges?: Array<SafeAreaEdge>
 safeAreaTypes?: Array<SafeAreaType>
 ```
 
-配置扩展安全区域的类型。默认值：[SafeAreaType.SYSTEM]
+配置扩展安全区域的类型。
+
+默认值：[SafeAreaType.SYSTEM]
 
 **类型：** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-safeareatype-e.md)&gt;
 
@@ -78,6 +86,6 @@ safeAreaTypes?: Array<SafeAreaType>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

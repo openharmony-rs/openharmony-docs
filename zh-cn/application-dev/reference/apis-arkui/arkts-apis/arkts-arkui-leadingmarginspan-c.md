@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## getLeadingMargin
 
 ```TypeScript
@@ -23,7 +18,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +26,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 | 类型 | 说明 |
 | --- | --- |
-| LengthMetrics | 文本段落的缩进。不支持百分比。 |
+| [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 文本段落的缩进。不支持百分比。<br>默认值：0 |
 
 ## onDraw
 
@@ -45,7 +40,7 @@ abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,5 +48,5 @@ abstract onDraw(context: DrawContext, drawInfo: LeadingMarginSpanDrawInfo): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | DrawContext | 是 | 图形绘制上下文。 DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
+| context | [DrawContext](../arkts-components/arkts-arkui-drawcontext-t.md) | 是 | 图形绘制上下文。<br>DrawContext的canvas方法获取的是组件的画布，绘制时不会超出组件的范围。 |
 | drawInfo | [LeadingMarginSpanDrawInfo](arkts-arkui-leadingmarginspandrawinfo-i.md) | 是 | 自定义绘制信息。 |

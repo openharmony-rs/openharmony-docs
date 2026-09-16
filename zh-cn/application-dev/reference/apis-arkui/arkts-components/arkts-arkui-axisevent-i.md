@@ -8,11 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## getCurrentLocalPosition
 
 ```TypeScript
@@ -25,7 +20,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +42,7 @@ getHorizontalAxisValue(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,7 +50,7 @@ getHorizontalAxisValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 水平轴值。 |
+| number | 水平轴值。<br>单位：vp |
 
 ## getPinchAxisScaleValue
 
@@ -69,7 +64,7 @@ getPinchAxisScaleValue(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本21开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,7 +72,7 @@ getPinchAxisScaleValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 双指缩放比例。 |
+| number | 双指缩放比例。<br> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。<br>默认值：0 <br>取值范围：[0, +∞)<br> |
 
 ## getVerticalAxisValue
 
@@ -91,7 +86,7 @@ getVerticalAxisValue(): number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +94,7 @@ getVerticalAxisValue(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 垂直轴值。 |
+| number | 垂直轴值。<br>单位：vp |
 
 ## hasAxis
 
@@ -113,7 +108,7 @@ hasAxis(axisType: AxisType): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -121,13 +116,13 @@ hasAxis(axisType: AxisType): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| axisType | AxisType | 是 | 轴事件的轴类型。 |
+| axisType | [AxisType](../arkts-apis/arkts-arkui-axistype-e.md) | 是 | 轴事件的轴类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 此轴事件是否包含指定的轴类型。 |
+| boolean | 此轴事件是否包含指定的轴类型。<br>true：包含指定的轴类型；false：不包含指定的轴类型。 |
 
 ## action
 
@@ -143,7 +138,7 @@ action: AxisAction
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +148,9 @@ action: AxisAction
 displayX: number
 ```
 
-鼠标光标在当前应用屏幕坐标系中的X坐标。单位：vp
+鼠标光标在当前应用屏幕坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -161,7 +158,7 @@ displayX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,7 +168,9 @@ displayX: number
 displayY: number
 ```
 
-鼠标光标在当前应用屏幕坐标系中的Y坐标。单位：vp
+鼠标光标在当前应用屏幕坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -179,7 +178,7 @@ displayY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -189,8 +188,13 @@ displayY: number
 eventHandleId?: number
 ```
 
-用于事件处理的唯一标识。取值范围：[0, +∞)  
-**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分 发一次字段会增加100000。多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
+用于事件处理的唯一标识。
+
+取值范围：[0, +∞)
+
+**说明：** 在使用[postInputEventWithStrategy](../arkts-apis/arkts-arkui-buildernode-c.md#postinputeventwithstrategy)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。
+
+多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。
 
 **类型：** number
 
@@ -198,7 +202,7 @@ eventHandleId?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,7 +212,11 @@ eventHandleId?: number
 globalDisplayX?: number
 ```
 
-鼠标光标在全局坐标系中的X坐标。单位：vp取值范围：[0, +∞)
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+
+单位：vp
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -216,7 +224,7 @@ globalDisplayX?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,7 +234,11 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-鼠标光标在全局坐标系中的Y坐标。单位：vp取值范围：[0, +∞)
+鼠标光标在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+
+单位：vp
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -234,7 +246,7 @@ globalDisplayY?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,7 +264,7 @@ propagation: Callback<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -262,7 +274,8 @@ propagation: Callback<void>
 scrollStep?: number
 ```
 
-鼠标轴滚动步长配置。  
+鼠标轴滚动步长配置。
+
 **说明：** 仅支持鼠标滚轮，取值范围：[0~65535]
 
 **类型：** number
@@ -271,7 +284,7 @@ scrollStep?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,7 +294,9 @@ scrollStep?: number
 windowX: number
 ```
 
-鼠标光标在当前应用窗口坐标系中的X坐标。单位：vp
+鼠标光标在当前应用窗口坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -289,7 +304,7 @@ windowX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -299,7 +314,9 @@ windowX: number
 windowY: number
 ```
 
-鼠标光标在当前应用窗口坐标系中的Y坐标。单位：vp
+鼠标光标在当前应用窗口坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -307,7 +324,7 @@ windowY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -317,7 +334,9 @@ windowY: number
 x: number
 ```
 
-鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。单位：vp
+鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -325,7 +344,7 @@ x: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -335,7 +354,9 @@ x: number
 y: number
 ```
 
-鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。单位：vp
+鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -343,6 +364,6 @@ y: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本17开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

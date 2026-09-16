@@ -1,6 +1,6 @@
 # MaterialType
 
-系统材质类型枚举。@enum { number } [since 23 - 24]
+系统材质类型枚举。
 
 **起始版本：** 26.0.0
 
@@ -12,7 +12,8 @@
 NONE = 0
 ```
 
-无系统材质效果。对应的效果为背景色 backgroundColor为 透明色，边框颜色borderColor为透明色，边框宽度borderWidth为0，无阴影 shadow。  
+无系统材质效果。对应的效果为背景色backgroundColor为透明色，边框颜色borderColor为透明色，边框宽度borderWidth为0，无阴影shadow。
+
 **系统接口：** 此接口为系统接口。
 
 **起始版本：** 23
@@ -31,7 +32,16 @@ NONE = 0
 SEMI_TRANSPARENT = 1
 ```
 
-半透明系统材质效果。对应的效果为：背景色 backgroundColor： 浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。边框颜色borderColor为混合10%的透明度的theme.colors.compForegroundPrimary的 [token](../../../ui/theme_skinning.md#系统缺省token色值)值。边框宽度borderWidth为1vp。阴影shadow为ShadowStyle.OUTER_DEFAULT_SM。  
+半透明系统材质效果。对应的效果为：
+
+背景色backgroundColor：浅色模式为"#f2f1f3f5"，深色模式为"#f2303131"。
+
+边框颜色borderColor为theme.colors.compForegroundPrimary的[token](../../../ui/theme_skinning.md#系统缺省token色值)值以10%透明度（alpha值）进行混合叠加。
+
+边框宽度borderWidth为1vp。
+
+阴影shadow为ShadowStyle.OUTER_DEFAULT_SM。
+
 **系统接口：** 此接口为系统接口。
 
 **起始版本：** 23

@@ -6,18 +6,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## backgroundBlurStyle
 
 ```TypeScript
 backgroundBlurStyle?: BlurStyle
 ```
 
-设置蒙层模糊材质。默认值：BlurStyle.BACKGROUND_THIN
+设置蒙层模糊材质。
+
+默认值：BlurStyle.BACKGROUND_THIN
 
 **类型：** [BlurStyle](arkts-arkui-blurstyle-e.md)
 
@@ -27,7 +24,7 @@ backgroundBlurStyle?: BlurStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +34,9 @@ backgroundBlurStyle?: BlurStyle
 color?: ResourceColor
 ```
 
-设置蒙层颜色。默认值：\$r('sys.color.ohos_id_color_mask_thin')
+设置蒙层颜色。
+
+默认值：&#36;r('sys.color.ohos_id_color_mask_thin')
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -45,6 +44,6 @@ color?: ResourceColor
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -20,7 +20,7 @@ maxSize: window.Size
 
 标准悬浮窗的最大尺寸。
 
-**类型：** window.Size
+**类型：** [window.Size](arkts-arkui-window-size-i.md)
 
 **起始版本：** 26.0.0
 
@@ -36,7 +36,7 @@ minSize: window.Size
 
 标准悬浮窗的最小尺寸。
 
-**类型：** window.Size
+**类型：** [window.Size](arkts-arkui-window-size-i.md)
 
 **起始版本：** 26.0.0
 

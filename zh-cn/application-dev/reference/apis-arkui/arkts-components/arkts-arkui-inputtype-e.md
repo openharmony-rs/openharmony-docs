@@ -12,11 +12,13 @@
 Normal
 ```
 
-基本输入模式，无特殊限制。内联输入风格只支持InputType.Normal类型。
+基本输入模式，无特殊限制。
+
+内联输入风格只支持InputType.Normal类型。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,11 +28,13 @@ Normal
 Number
 ```
 
-纯数字输入模式。不支持负数、小数。
+纯数字输入模式。
+
+不支持负数、小数。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,11 +44,13 @@ Number
 PhoneNumber
 ```
 
-电话号码输入模式。支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
+电话号码输入模式。
+
+支持输入数字、空格、+ 、-、*、#、(、)，长度不限。
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,11 +60,13 @@ PhoneNumber
 Email
 ```
 
-邮箱地址输入模式。支持数字、字母、下划线、小数点、!、#、\$、%、&、'、"、*、+、-、/、=、?、^、`、{、|、}、~，以及@字符（只能存在一个@字符）。
+邮箱地址输入模式。
+
+支持数字、字母、下划线、小数点、!、#、&#36;、%、&、'、"、*、+、-、/、=、?、^、`、{、|、}、~，以及@字符（只能存在一个@字符）。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,11 +76,19 @@ Email
 Password
 ```
 
-密码输入模式。默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。密码输入模式中，[decoration](arkts-arkui-textinput-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)、 [lineHeight](arkts-arkui-textinput-attribute.md#lineheight)不生效。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。
+密码输入模式。
+
+默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。
+
+TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。
+
+密码输入模式中，[decoration](arkts-arkui-textinput-comp-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight)不生效。
+
+在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,13 +98,19 @@ Password
 NUMBER_PASSWORD = 8
 ```
 
-纯数字密码输入模式。默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。密码输入模式中，[decoration](arkts-arkui-textinput-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)、 [lineHeight](arkts-arkui-textinput-attribute.md#lineheight)、[fontFeature](arkts-arkui-textinput-attribute.md#fontfeature)不生效。在已启用密码保险箱的 情况下，支持用户名、密码的自动保存和自动填充。
+纯数字密码输入模式。
+
+默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。
+
+TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。
+
+密码输入模式中，[decoration](arkts-arkui-textinput-comp-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight)、[fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature)不生效。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,13 +120,15 @@ NUMBER_PASSWORD = 8
 USER_NAME = 10
 ```
 
-用户名输入模式，无特殊限制。在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充，用于配合[InputType.Password](#password)、 [InputType.NUMBER_PASSWORD](#number_password)、[InputType.NEW_PASSWORD](#new_password)完成用户名密码配对填充。
+用户名输入模式，无特殊限制。
+
+在已启用密码保险箱的情况下，支持用户名的自动保存和自动填充，用于配合[InputType.Password](arkts-arkui-inputtype-e.md)、[InputType.NUMBER_PASSWORD](arkts-arkui-inputtype-e.md)、[InputType.NEW_PASSWORD](arkts-arkui-inputtype-e.md)完成用户名密码配对填充。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,13 +138,19 @@ USER_NAME = 10
 NEW_PASSWORD = 11
 ```
 
-新密码输入模式。默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。密码输入模式中，[decoration](arkts-arkui-textinput-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-attribute.md#showunderline)、 [lineHeight](arkts-arkui-textinput-attribute.md#lineheight)、[fontFeature](arkts-arkui-textinput-attribute.md#fontfeature)不生效。在已启用密码保险箱的 情况下，支持自动生成新密码。
+新密码输入模式。
+
+默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。
+
+TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。
+
+密码输入模式中，[decoration](arkts-arkui-textinput-comp-attribute.md#decoration)、[showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline)、[lineHeight](arkts-arkui-textinput-comp-attribute.md#lineheight)、[fontFeature](arkts-arkui-textinput-comp-attribute.md#fontfeature)不生效。在已启用密码保险箱的情况下，支持自动生成新密码。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,13 +160,15 @@ NEW_PASSWORD = 11
 NUMBER_DECIMAL = 12
 ```
 
-带小数点的数字输入模式。支持数字，小数点（只能存在一个小数点）。不支持负数（包括负数整数和负数小数）。若需支持负数输入，请使用[inputFilter](arkts-arkui-textinput-attribute.md#inputfilter)属性实现负数过滤。
+带小数点的数字输入模式。
+
+支持数字，小数点（只能存在一个小数点）。不支持负数（包括负数整数和负数小数）。若需支持负数输入，请使用[inputFilter](arkts-arkui-textinput-comp-attribute.md#inputfilter)属性实现负数过滤。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +184,7 @@ URL = 13
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -168,6 +200,6 @@ ONE_TIME_CODE = 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

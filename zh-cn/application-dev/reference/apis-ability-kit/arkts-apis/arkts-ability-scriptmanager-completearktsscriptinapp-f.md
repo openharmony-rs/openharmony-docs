@@ -18,7 +18,7 @@ function completeArkTSScriptInApp(context: Context, requestCode: string, result:
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -28,13 +28,13 @@ function completeArkTSScriptInApp(context: Context, requestCode: string, result:
 | --- | --- | --- | --- |
 | context | [Context](arkts-ability-context-c.md) | 是 | Ability上下文，用于临时文件授权。 |
 | requestCode | string | 是 | 用于标识当前操作的请求码。 |
-| result | ExecuteResult | 是 | ArkTS脚本的执行结果。 |
+| result | [ExecuteResult](arkts-ability-scriptmanager-executeresult-i.md) | 是 | ArkTS脚本的执行结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

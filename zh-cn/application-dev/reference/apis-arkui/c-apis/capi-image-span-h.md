@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines a set of ImageSpan enum and interface.
+定义ImageSpan相关的枚举，用于在富文本中嵌入图片并控制图片与文本的对齐方式。支持多种对齐模式，适用于图文混排场景，可实现图片与文本的精确对齐，提升富文本的展示效果。
 
 **库：** libace_ndk.z.so
 
@@ -28,7 +28,7 @@ Defines a set of ImageSpan enum and interface.
 enum ArkUI_ImageSpanAlignment
 ```
 
-**描述**
+**描述：**
 
 定义图片基于文本的对齐方式。
 

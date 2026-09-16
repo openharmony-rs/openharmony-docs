@@ -41,7 +41,7 @@
 typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element, OHIPCRemoteProxy *proxy)
 ```
 
-**描述**
+**描述：**
 
 回调接口已成功连接。
 
@@ -52,7 +52,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRun
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | 表示指向[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)实例的指针。 |
-| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) \*element | 表示模块对象扩展功能的元素名称。 |
+| AbilityBase_Element \*element | 表示模块对象扩展功能的元素名称。 |
 | OHIPCRemoteProxy \*proxy | 表示远程对象实例。 |
 
 ### OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback()
@@ -61,7 +61,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnConnectCallback)(OH_AbilityRun
 typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityBase_Element *element)
 ```
 
-**描述**
+**描述：**
 
 回调接口已成功断开连接。
 
@@ -72,7 +72,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_Ability
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | 表示指向[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)实例的指针。 |
-| [AbilityBase_Element](capi-abilitybase-abilitybase-element.md) \*element | 表示模块对象扩展功能的元素名称。 |
+| AbilityBase_Element \*element | 表示模块对象扩展功能的元素名称。 |
 
 ### OH_AbilityRuntime_ConnectOptions_OnFailedCallback()
 
@@ -80,7 +80,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback)(OH_Ability
 typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRuntime_ConnectOptions *connectOptions, AbilityRuntime_ErrorCode code)
 ```
 
-**描述**
+**描述：**
 
 连接失败时调用回调接口。
 
@@ -91,7 +91,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRunt
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md) \*connectOptions | 表示指向[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)实例的指针。 |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) code | 表示失败的错误代码。 |
+| AbilityRuntime_ErrorCode code | 表示失败的错误代码。 |
 
 ### OH_AbilityRuntime_CreateConnectOptions()
 
@@ -99,7 +99,7 @@ typedef void (*OH_AbilityRuntime_ConnectOptions_OnFailedCallback)(OH_AbilityRunt
 OH_AbilityRuntime_ConnectOptions* OH_AbilityRuntime_CreateConnectOptions()
 ```
 
-**描述**
+**描述：**
 
 创建一个ConnectOptions对象。
 
@@ -117,7 +117,7 @@ OH_AbilityRuntime_ConnectOptions* OH_AbilityRuntime_CreateConnectOptions()
 AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRuntime_ConnectOptions *connectOptions)
 ```
 
-**描述**
+**描述：**
 
 销毁指定的ConnectOptions对象。
 
@@ -133,7 +133,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRunti
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。      <br>[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) 操作成功。      <br>[ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode) connectOptions无效。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR} 操作成功。      <br>{@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID} connectOptions无效。 |
 
 ### OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback()
 
@@ -141,7 +141,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyConnectOptions(OH_AbilityRunti
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnConnectCallback onConnectCallback)
 ```
 
-**描述**
+**描述：**
 
 将回调[OH_AbilityRuntime_ConnectOptions_OnConnectCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_onconnectcallback)设置为[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。
 
@@ -158,7 +158,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(O
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。  [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)-成功。  [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)-参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。  {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}-成功。  {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}-参数校验失败。 |
 
 ### OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallback()
 
@@ -166,7 +166,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnConnectCallback(O
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback onDisconnectCallback)
 ```
 
-**描述**
+**描述：**
 
 将回调[OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_ondisconnectcallback)设置为[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。
 
@@ -183,7 +183,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallbac
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。  [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)-成功。  [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)-参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。  {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}-成功。  {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}-参数校验失败。 |
 
 ### OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback()
 
@@ -191,7 +191,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnDisconnectCallbac
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback(OH_AbilityRuntime_ConnectOptions *connectOptions, OH_AbilityRuntime_ConnectOptions_OnFailedCallback onFailedCallback)
 ```
 
-**描述**
+**描述：**
 
 将回调[OH_AbilityRuntime_ConnectOptions_OnFailedCallback](capi-connect-options-h.md#oh_abilityruntime_connectoptions_onfailedcallback)设置为[OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)。
 
@@ -208,6 +208,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectOptions_SetOnFailedCallback(OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回特定的错误码。  [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)-成功。  [ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)-参数校验失败。 |
+| AbilityRuntime_ErrorCode | 返回特定的错误码。  {@link ABILITY_RUNTIME_ERROR_CODE_NO_ERROR}-成功。  {@link ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID}-参数校验失败。 |
 
 

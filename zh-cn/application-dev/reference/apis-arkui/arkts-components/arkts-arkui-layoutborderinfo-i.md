@@ -1,6 +1,8 @@
 # LayoutBorderInfo
 
-子组件边框信息@interface LayoutBorderInfo
+子组件边框信息
+
+@interface LayoutBorderInfo
 
 **起始版本：** 9
 
@@ -9,11 +11,6 @@
 **替代接口：** Measurable/Layoutable
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## borderWidth
 

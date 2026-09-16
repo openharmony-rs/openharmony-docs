@@ -18,7 +18,7 @@ autoRefresh?(value: boolean): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -26,7 +26,7 @@ autoRefresh?(value: boolean): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 使用[resource](#resource)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。 true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。 false表示不主动监听系统配置变化。 |
+| value | boolean | 是 | 使用[resource](#resource)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。<br>true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。 |
 
 **返回值：**
 
@@ -65,7 +65,7 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +73,7 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。<br>取值范围：(-∞, +∞) |
 | unit | [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | 否 | 长度属性的单位，默认为VP。 |
 
 ## fp
@@ -88,7 +88,7 @@ static fp(value: number): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +96,7 @@ static fp(value: number): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -116,7 +116,7 @@ static lpx(value: number): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +124,7 @@ static lpx(value: number): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -144,7 +144,7 @@ static percent(value: number): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -152,7 +152,7 @@ static percent(value: number): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 取值范围：[0, 1] 超出范围时按边界值处理。 |
+| value | number | 是 | 长度属性的值。<br>取值范围：[0, 1] <br>超出范围时按边界值处理。 |
 
 **返回值：**
 
@@ -172,7 +172,7 @@ static px(value: number): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +180,7 @@ static px(value: number): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -200,7 +200,7 @@ static resource(value: Resource): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,48 +218,8 @@ static resource(value: Resource): LengthMetrics
 
 **示例**
 
-使用LengthMetrics设置Row的padding和margin属性。
-
 ```TypeScript
-import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SizeExample {
-  build() {
-    Column({ space: 10 }) {
-      Text('margin and padding:')
-        .fontSize(12)
-        .fontColor(0xCCCCCC)
-        .width('90%')
-      Row() {
-        Row() {
-          Row()
-            .size({ width: '100%', height: '100%' })
-            .backgroundColor('#ffd5d5d5')
-        }
-        .width(80)
-        .height(80)
-        .padding({
-          top: new LengthMetrics(20, LengthUnit.VP),
-          bottom: LengthMetrics.px(15),
-          start: LengthMetrics.vp(10),
-          end: LengthMetrics.fp(20)
-        })
-        .margin({
-          top: LengthMetrics.percent(0.1),
-          bottom: LengthMetrics.lpx(20),
-          start: LengthMetrics.resource($r('app.float.row_margin_start')),
-          end: LengthMetrics.vp(10)
-        })
-        .backgroundColor(Color.White)
-      }
-      .backgroundColor('#ff2787d9')
-    }
-    .width('100%')
-    .margin({ top: 5 })
-  }
-}
+使用LengthMetrics设置Row的padding和margin属性。
 ```
 
 ## vp
@@ -274,7 +234,7 @@ static vp(value: number): LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,7 +242,7 @@ static vp(value: number): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 长度属性的值。 取值范围：(-∞, +∞) |
+| value | number | 是 | 长度属性的值。<br>取值范围：(-∞, +∞) |
 
 **返回值：**
 
@@ -306,7 +266,7 @@ public unit: LengthUnit
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,7 +276,11 @@ public unit: LengthUnit
 public value: number
 ```
 
-长度属性的值。取值范围：(-∞, +∞)。当unit为PERCENT时，value表示百分比（1表示100%），参考尺寸取决于具体使用场景；其余单位表示对应单位的绝对长度。
+长度属性的值。
+
+取值范围：(-∞, +∞)。
+
+当unit为PERCENT时，value表示百分比（1表示100%），参考尺寸取决于具体使用场景；其余单位表示对应单位的绝对长度。
 
 **类型：** number
 
@@ -324,6 +288,6 @@ public value: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

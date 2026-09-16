@@ -16,6 +16,6 @@ type ParamsInterface = {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**属性类型：** {
+**类型：** {
   [key: string]: Object;
 }

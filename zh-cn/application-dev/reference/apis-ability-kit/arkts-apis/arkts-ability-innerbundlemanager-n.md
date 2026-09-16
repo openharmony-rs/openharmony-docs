@@ -2,10 +2,10 @@
 
 本模块提供launcher应用使用的接口。
 
-> **说明：**
+> **说明：** 
 > 
-> 本模块从API version 9开始不再支持。建议使用[launcherBundleManager](arkts-bundle-launcherbundlemanager.md)
-> 及bundleMonitor替代。
+> 本模块从API version 9开始不再支持。建议使用[launcherBundleManager](arkts-ability-bundle-launcherbundlemanager.md)
+> 及[bundleMonitor](arkts-ability-bundle-bundlemonitor.md)替代。
 > 
 > 本模块为系统接口。
 
@@ -13,7 +13,7 @@
 
 **废弃版本：** 9
 
-**替代接口：** [launcherBundleManager](arkts-bundle-launcherbundlemanager.md)
+**替代接口：** [launcherBundleManager](arkts-ability-bundle-launcherbundlemanager.md)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -34,10 +34,10 @@ import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 | --- | --- |
 | [getLauncherAbilityInfos](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md) | 根据给定的Bundle名称获取LauncherAbilityInfos，使用callback异步回调。 |
 | [getLauncherAbilityInfos](arkts-ability-innerbundlemanager-getlauncherabilityinfos-f-sys.md) | 根据给定的Bundle名称获取LauncherAbilityInfos，使用Promise异步回调。 |
-| on | 注册Callback。 |
-| on | 注册Callback。 |
-| off | 取消注册Callback。 |
-| off | 取消注册Callback。 |
+| [on](arkts-ability-innerbundlemanager-on-f-sys.md#onbundlestatuschange) | 注册Callback。 |
+| [on](arkts-ability-innerbundlemanager-on-f-sys.md#onbundlestatuschange) | 注册Callback。 |
+| [off](arkts-ability-innerbundlemanager-off-f-sys.md#offbundlestatuschange) | 取消注册Callback。 |
+| [off](arkts-ability-innerbundlemanager-off-f-sys.md#offbundlestatuschange) | 取消注册Callback。 |
 | [getAllLauncherAbilityInfos](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md) | 获取所有的LauncherAbilityInfos，使用callback异步回调。 |
 | [getAllLauncherAbilityInfos](arkts-ability-innerbundlemanager-getalllauncherabilityinfos-f-sys.md) | 获取LauncherAbilityInfos，使用Promise异步回调。 |
 | [getShortcutInfos](arkts-ability-innerbundlemanager-getshortcutinfos-f-sys.md) | 根据给定的Bundle名称获取快捷方式信息，使用callback异步回调。 |

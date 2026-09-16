@@ -8,11 +8,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## getCurrentLocalPosition
 
 ```TypeScript
@@ -25,7 +20,7 @@ getCurrentLocalPosition?(): Coordinate2D
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,14 +36,15 @@ getCurrentLocalPosition?(): Coordinate2D
 preventDefault: () => void
 ```
 
-阻止默认事件。  
-**说明：** 该接口仅支持部分组件使用，当前支持组件：RichEditor、Hyperlink，不支持的组件使用时会抛出异常。暂不支持异步调用和提供Modifier接口。
+阻止默认事件。
+
+**说明：**  该接口仅支持部分组件使用，当前支持组件：RichEditor、Hyperlink，不支持的组件使用时会抛出异常。暂不支持异步调用和提供Modifier接口。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +60,9 @@ preventDefault: () => void
 displayX: number
 ```
 
-点击位置在当前应用屏幕坐标系中的X坐标。单位：vp
+点击位置在当前应用屏幕坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -72,7 +70,7 @@ displayX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +80,9 @@ displayX: number
 displayY: number
 ```
 
-点击位置在当前应用屏幕坐标系中的Y坐标。单位：vp
+点击位置在当前应用屏幕坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -90,7 +90,7 @@ displayY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +100,11 @@ displayY: number
 globalDisplayX?: number
 ```
 
-点击位置在全局坐标系中的X坐标。单位：vp取值范围：[0, +∞)
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。
+
+单位：vp
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -108,7 +112,7 @@ globalDisplayX?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +122,11 @@ globalDisplayX?: number
 globalDisplayY?: number
 ```
 
-点击位置在全局坐标系中的Y坐标。单位：vp取值范围：[0, +∞)
+点击位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。
+
+单位：vp
+
+取值范围：[0, +∞)
 
 **类型：** number
 
@@ -126,7 +134,7 @@ globalDisplayY?: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,7 +152,7 @@ hand?: InteractionHand
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,7 +162,9 @@ hand?: InteractionHand
 screenX: number
 ```
 
-点击位置在当前应用窗口坐标系中的X坐标。单位：vp
+点击位置在当前应用窗口坐标系中的X坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -172,7 +182,9 @@ screenX: number
 screenY: number
 ```
 
-点击位置在当前应用窗口坐标系中的Y坐标。单位：vp
+点击位置在当前应用窗口坐标系中的Y坐标。
+
+单位：vp
 
 **类型：** number
 
@@ -190,7 +202,9 @@ screenY: number
 windowX: number
 ```
 
-点击位置在当前应用窗口坐标系中的X坐标。onClick的distanceThreshold设置后，点击位置为抬手点。单位：vp
+点击位置在当前应用窗口坐标系中的X坐标。onClick的distanceThreshold设置后，点击位置为抬手点。
+
+单位：vp
 
 **类型：** number
 
@@ -198,7 +212,7 @@ windowX: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,7 +222,9 @@ windowX: number
 windowY: number
 ```
 
-点击位置在当前应用窗口坐标系中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。单位：vp
+点击位置在当前应用窗口坐标系中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。
+
+单位：vp
 
 **类型：** number
 
@@ -216,7 +232,7 @@ windowY: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -226,13 +242,15 @@ windowY: number
 x: number
 ```
 
-点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的 [distanceThreshold](arkts-arkui-commonmethod-c.md#onclick)设置后，点击位置为抬手 点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。单位：vp
+点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。onClick的[distanceThreshold](arkts-arkui-commonmethod-c.md#onclick)设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。
+
+单位：vp
 
 **类型：** number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
@@ -244,13 +262,15 @@ x: number
 y: number
 ```
 
-点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。触发事件的是键盘或手柄 时，点击位置为被点击元素的中心点。单位：vp
+点击位置在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。onClick的distanceThreshold设置后，点击位置为抬手点。触发事件的是键盘或手柄时，点击位置为被点击元素的中心点。
+
+单位：vp
 
 **类型：** number
 
 **起始版本：** 7
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

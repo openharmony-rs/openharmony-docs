@@ -1,8 +1,10 @@
 # LazyVWaterFlowLayoutAttribute
 
-定义懒加载垂直瀑布流布局属性。@extends LazyWaterFlowLayoutAttribute&lt;LazyVWaterFlowLayoutAttribute&gt;
+定义懒加载垂直瀑布流布局属性。
 
-**继承/实现关系：** LazyVWaterFlowLayoutAttribute extends LazyWaterFlowLayoutAttribute\<LazyVWaterFlowLayoutAttribute>
+@extends LazyWaterFlowLayoutAttribute&lt;LazyVWaterFlowLayoutAttribute&gt;
+
+**继承/实现关系：** LazyVWaterFlowLayoutAttribute extends LazyWaterFlowLayoutAttribute<LazyVWaterFlowLayoutAttribute>
 
 **起始版本：** 26.0.0
 
@@ -26,7 +28,7 @@ columnsTemplate(value: string | ItemFillPolicy | undefined): LazyVWaterFlowLayou
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +36,7 @@ columnsTemplate(value: string | ItemFillPolicy | undefined): LazyVWaterFlowLayou
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string \| [ItemFillPolicy](arkts-arkui-itemfillpolicy-i.md) \| undefined | 是 | 布局中的列数。 默认值：'1fr' |
+| value | string &#124; [ItemFillPolicy](arkts-arkui-itemfillpolicy-i.md) &#124; undefined | 是 | 布局中的列数。<br>默认值：'1fr' |
 
 **返回值：**
 

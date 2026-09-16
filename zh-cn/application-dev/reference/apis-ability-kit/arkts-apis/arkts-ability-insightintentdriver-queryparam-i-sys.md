@@ -2,6 +2,8 @@
 
 查询洞察意图实体时的Param。
 
+@typedef QueryParam
+
 **起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -94,7 +96,7 @@ queryEntityParam: insightIntent.QueryEntityParam
 
 查询实体的param。
 
-**类型：** insightIntent.QueryEntityParam
+**类型：** [insightIntent.QueryEntityParam](arkts-ability-insightintent-queryentityparam-i.md)
 
 **起始版本：** 26.0.0
 
@@ -110,7 +112,7 @@ queryEntityParam: insightIntent.QueryEntityParam
 userId?: number
 ```
 
-目标用户ID。 如果调用方应用的用户ID与目标用户ID不一致，则需要申请权限： oos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。 取值范围为全体整数。
+目标用户ID。如果调用方应用的用户ID与目标用户ID不一致，则需要申请权限：oos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。取值范围为全体整数。
 
 **类型：** number
 

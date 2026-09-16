@@ -24,7 +24,7 @@ function isShortcutSupported(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 表示当前设备是否支持快捷方式。 |
+| boolean | 表示当前设备是否支持快捷方式。<br>返回值为true表示当前设备支持快捷方式；返回值为false表示当前设备不支持快捷方式。 |
 
 **示例**
 

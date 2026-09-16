@@ -1,6 +1,8 @@
 # Profiler
 
-inspector的性能分析（Profiler）工具。@namespace Profiler
+inspector的性能分析（Profiler）工具。
+
+@namespace Profiler
 
 **起始版本：** 8
 
@@ -8,10 +10,7 @@ inspector的性能分析（Profiler）工具。@namespace Profiler
 
 **系统接口：** 此接口为系统接口。
 
-## 导入模块
-
-```TypeScript
-```
+**测试接口：** 此接口仅在自动化测试脚本中使用。
 
 ## 汇总
 

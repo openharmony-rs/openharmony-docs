@@ -4,6 +4,8 @@
 
 **起始版本：** 18
 
+**装饰器类型：** @ComponentV2
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 导入模块
@@ -18,13 +20,15 @@ import { AlertDialogV2, AdvancedDialogV2Button, AdvancedDialogV2ButtonOptions, A
 onCheckedChange?: AdvancedDialogV2OnCheckedChange
 ```
 
-选择框的选中状态改变事件。默认无事件。
+选择框的选中状态改变事件。
+
+默认无事件。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,7 +38,9 @@ onCheckedChange?: AdvancedDialogV2OnCheckedChange
 checked?: boolean
 ```
 
-checked为true时，表示选择框已选中。checked为false时，表示选择框未选中。默认值：false
+checked为true时，表示选择框已选中。checked为false时，表示选择框未选中。
+
+默认值：false
 
 **类型：** boolean
 
@@ -42,7 +48,7 @@ checked为true时，表示选择框已选中。checked为false时，表示选择
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +58,9 @@ checked为true时，表示选择框已选中。checked为false时，表示选择
 checkTips?: ResourceStr
 ```
 
-选择框的提示内容。默认不显示。
+选择框的提示内容。
+
+默认不显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -60,7 +68,7 @@ checkTips?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +78,9 @@ checkTips?: ResourceStr
 content?: ResourceStr
 ```
 
-提示弹出框内容。默认不显示。
+提示弹出框内容。
+
+默认不显示。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -78,7 +88,7 @@ content?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +98,9 @@ content?: ResourceStr
 imageBorderColor?: ColorMetrics
 ```
 
-图片描边颜色。默认值：Color.Black
+图片描边颜色。
+
+默认值：Color.Black
 
 **类型：** ColorMetrics
 
@@ -96,7 +108,7 @@ imageBorderColor?: ColorMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,7 +118,9 @@ imageBorderColor?: ColorMetrics
 imageBorderWidth?: LengthMetrics
 ```
 
-图片描边宽度。默认无描边效果。
+图片描边宽度。
+
+默认无描边效果。
 
 **类型：** LengthMetrics
 
@@ -114,7 +128,7 @@ imageBorderWidth?: LengthMetrics
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,13 +140,15 @@ imageRes: ResourceStr | PixelMap
 
 展示的图片。
 
-**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) \| PixelMap
+**类型：** [ResourceStr](arkts-arkui-resourcestr-t.md) &#124; [PixelMap](../arkts-components/arkts-arkui-pixelmap-t.md)
 
 **起始版本：** 18
 
+**装饰器类型：** @Require
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +158,9 @@ imageRes: ResourceStr | PixelMap
 imageSize?: SizeOptions
 ```
 
-自定义图片尺寸。默认值：64*64vp
+自定义图片尺寸。
+
+默认值：64*64vp
 
 **类型：** [SizeOptions](arkts-arkui-sizeoptions-i.md)
 
@@ -150,7 +168,7 @@ imageSize?: SizeOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +178,9 @@ imageSize?: SizeOptions
 primaryButton?: AdvancedDialogV2Button
 ```
 
-提示弹出框左侧按钮。默认不显示。
+提示弹出框左侧按钮。
+
+默认不显示。
 
 **类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
@@ -168,7 +188,7 @@ primaryButton?: AdvancedDialogV2Button
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,7 +198,9 @@ primaryButton?: AdvancedDialogV2Button
 secondaryButton?: AdvancedDialogV2Button
 ```
 
-提示弹出框右侧按钮。默认不显示。
+提示弹出框右侧按钮。
+
+默认不显示。
 
 **类型：** [AdvancedDialogV2Button](arkts-arkui-arkui-advanced-dialogv2-advanceddialogv2button-c.md)
 
@@ -186,7 +208,7 @@ secondaryButton?: AdvancedDialogV2Button
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -196,7 +218,10 @@ secondaryButton?: AdvancedDialogV2Button
 title?: ResourceStr
 ```
 
-提示弹出框标题。默认不显示。  
+提示弹出框标题。
+
+默认不显示。
+
 **说明：** 标题超过两行会显示“...”。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
@@ -205,6 +230,6 @@ title?: ResourceStr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

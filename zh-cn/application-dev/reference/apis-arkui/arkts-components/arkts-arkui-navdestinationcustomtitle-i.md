@@ -6,11 +6,6 @@ NavDestination自定义标题。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## builder
 
 ```TypeScript
@@ -23,7 +18,7 @@ builder: CustomBuilder
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,12 +28,14 @@ builder: CustomBuilder
 height: TitleHeight | Length
 ```
 
-设置标题栏高度。取值范围：[0, +∞)。
+设置标题栏高度。
 
-**类型：** [TitleHeight](../arkts-apis/arkts-arkui-titleheight-e.md) \| [Length](../arkts-apis/arkts-arkui-length-t.md)
+取值范围：[0, +∞)。
+
+**类型：** [TitleHeight](../arkts-apis/arkts-arkui-titleheight-e.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **起始版本：** 9
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

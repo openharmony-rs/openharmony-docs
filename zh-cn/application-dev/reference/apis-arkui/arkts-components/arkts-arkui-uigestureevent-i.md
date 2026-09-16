@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## addGesture
 
 ```TypeScript
@@ -23,7 +18,7 @@ addGesture<T>(gesture: GestureHandler<T>, priority?: GesturePriority, mask?: Ges
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,9 +26,9 @@ addGesture<T>(gesture: GestureHandler<T>, priority?: GesturePriority, mask?: Ges
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gesture | [GestureHandler](../arkts-apis/arkts-arkui-gesturehandler-c.md)&lt;T&gt; | 是 | 手势处理器对象。 |
-| priority | [GesturePriority](../arkts-apis/arkts-arkui-gesturepriority-e.md) | 否 | 绑定手势的优先级。默认值：GesturePriority.NORMAL |
-| mask | [GestureMask](../arkts-apis/arkts-arkui-gesturemask-e.md) | 否 | 事件响应设置。默认值：GestureMask.Normal |
+| gesture | [GestureHandler](arkts-arkui-gesturehandler-c.md)&lt;T&gt; | 是 | 手势处理器对象。 |
+| priority | [GesturePriority](arkts-arkui-gesturepriority-e.md) | 否 | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
+| mask | [GestureMask](arkts-arkui-gesturemask-e.md) | 否 | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ## addParallelGesture
 
@@ -47,7 +42,7 @@ addParallelGesture<T>(gesture: GestureHandler<T>, mask?: GestureMask): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,8 +50,8 @@ addParallelGesture<T>(gesture: GestureHandler<T>, mask?: GestureMask): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| gesture | [GestureHandler](../arkts-apis/arkts-arkui-gesturehandler-c.md)&lt;T&gt; | 是 | 手势处理器对象。 |
-| mask | [GestureMask](../arkts-apis/arkts-arkui-gesturemask-e.md) | 否 | 事件响应设置。默认值：GestureMask.Normal |
+| gesture | [GestureHandler](arkts-arkui-gesturehandler-c.md)&lt;T&gt; | 是 | 手势处理器对象。 |
+| mask | [GestureMask](arkts-arkui-gesturemask-e.md) | 否 | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ## clearGestures
 
@@ -70,7 +65,7 @@ clearGestures(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,7 +81,7 @@ removeGestureByTag(tag: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

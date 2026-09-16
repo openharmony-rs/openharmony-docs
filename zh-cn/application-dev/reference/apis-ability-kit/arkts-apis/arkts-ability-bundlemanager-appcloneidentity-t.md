@@ -10,4 +10,4 @@ export type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-**属性类型：** _BundleInfo.AppCloneIdentity
+**类型：** [_BundleInfo.AppCloneIdentity](arkts-ability-bundleinfo-appcloneidentity-i.md)

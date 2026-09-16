@@ -12,4 +12,4 @@ module的api版本。
 
 **系统接口：** 此接口为系统接口。
 
-**属性类型：** _PackInfo.ApiVersion
+**类型：** [_PackInfo.ApiVersion](arkts-ability-bundlepackinfo-apiversion-i-sys.md)

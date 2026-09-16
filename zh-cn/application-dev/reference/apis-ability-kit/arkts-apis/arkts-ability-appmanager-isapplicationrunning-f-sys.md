@@ -32,7 +32,7 @@ function isApplicationRunning(bundleName: string): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
 
 **错误码：**
 
@@ -56,6 +56,27 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 }).catch((error: BusinessError) => {
   console.error(`error: ${JSON.stringify(error)}`);
 });
+```
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+
+try {
+  appManager.isApplicationRunning(bundleName, (err, data) => {
+    if (err) {
+      console.error(`err: ${JSON.stringify(err)}`);
+    } else {
+      console.info(`The application running is: ${JSON.stringify(data)}`);
+    }
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
 ```
 
 
@@ -93,23 +114,4 @@ function isApplicationRunning(bundleName: string, callback: AsyncCallback<boolea
 
 **示例**
 
-```TypeScript
-import { appManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let bundleName = 'com.example.myapplication';
-
-try {
-  appManager.isApplicationRunning(bundleName, (err, data) => {
-    if (err) {
-      console.error(`err: ${JSON.stringify(err)}`);
-    } else {
-      console.info(`The application running is: ${JSON.stringify(data)}`);
-    }
-  });
-} catch (paramError) {
-  let code = (paramError as BusinessError).code;
-  let message = (paramError as BusinessError).message;
-  console.error(`[appManager] error: ${code}, ${message}`);
-}
-```
+参见 [isApplicationRunning](#isapplicationrunning)

@@ -1,6 +1,6 @@
 # ViewData
 
-查看自动填充的数据。
+自动填充的视图数据信息。
 
 **起始版本：** 26.0.0
 
@@ -12,7 +12,7 @@
 abilityName: string
 ```
 
-Ability名称。
+Ability名称，用于指定自动填充数据所属的Ability。
 
 **类型：** string
 
@@ -66,7 +66,7 @@ isUserSelected: boolean
 moduleName: string
 ```
 
-模块名称。
+模块名称，用于指定自动填充数据所属的模块。
 
 **类型：** string
 

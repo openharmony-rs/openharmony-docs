@@ -1,6 +1,8 @@
 # ImageRepeat
 
-ImageRepeat enumeration description@enum { number }
+ImageRepeat enumeration description
+
+@enum { number }
 
 **起始版本：** 11
 
@@ -16,7 +18,7 @@ Do not draw the picture again.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -32,7 +34,7 @@ Repeat the drawing only on the horizontal axis.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -48,7 +50,7 @@ Repeat the drawing only on the vertical axis.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -64,7 +66,7 @@ Draw the picture repeatedly on both axes.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 

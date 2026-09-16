@@ -1,6 +1,6 @@
 # AppVersionInfo
 
-应用版本信息，可以通过 getAppVersionInfo获取当前应 用的版本信息。
+应用版本信息，可以通过[getAppVersionInfo](../../../reference/apis-ability-kit/js-apis-inner-app-context.md#contextgetappversioninfo7)获取当前应用的版本信息。
 
 **起始版本：** 7
 
@@ -23,7 +23,7 @@ readonly appName: string
 **模型约束：** 
 - API版本12+：此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -44,7 +44,7 @@ readonly versionCode: number
 **模型约束：** 
 - API版本12+：此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -65,6 +65,6 @@ readonly versionName: string
 **模型约束：** 
 - API版本12+：此接口仅可在FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

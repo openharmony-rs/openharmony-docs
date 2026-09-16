@@ -31,7 +31,7 @@ extraInfo?: { [key: string]: any }
 
 **替代接口：** [extraInfo](arkts-ability-wantagent-completedata-i.md#extrainfo)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -51,7 +51,7 @@ finalCode: number
 
 **替代接口：** [finalCode](arkts-ability-wantagent-completedata-i.md#finalcode)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -71,7 +71,7 @@ finalData: string
 
 **替代接口：** [finalData](arkts-ability-wantagent-completedata-i.md#finaldata)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -91,7 +91,7 @@ info: WantAgent
 
 **替代接口：** [info](arkts-ability-wantagent-completedata-i.md#info)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -111,6 +111,6 @@ want: Want
 
 **替代接口：** [want](arkts-ability-wantagent-completedata-i.md#want)
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

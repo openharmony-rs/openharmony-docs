@@ -12,7 +12,7 @@ import { featureAbility } from '@kit.AbilityKit';
 function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void
 ```
 
-停止当前的Ability。使用callback异步回调。如果该Ability是通过调用 [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md) 接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用 [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md) 接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。
+停止当前的Ability。使用callback异步回调。如果该Ability是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。
 
 **起始版本：** 7
 
@@ -65,35 +65,6 @@ featureAbility.terminateSelfWithResult(
 );
 ```
 
-
-## terminateSelfWithResult
-
-```TypeScript
-function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
-```
-
-停止当前的Ability。使用Promise异步回调。如果该Ability是通过调用 [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md) 接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用 [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md) 接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 表示停止Ability之后返回的结果。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
-
-**示例**
-
 ```TypeScript
 import { featureAbility, wantConstant } from '@kit.AbilityKit';
 
@@ -128,3 +99,34 @@ featureAbility.terminateSelfWithResult(
   console.info('==========================>terminateSelfWithResult=======================>');
 });
 ```
+
+
+## terminateSelfWithResult
+
+```TypeScript
+function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
+```
+
+停止当前的Ability。使用Promise异步回调。如果该Ability是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时会将结果返回给调用者，如果该Ability不是通过调用[startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md)接口被拉起的，调用terminateSelfWithResult接口时不会有结果返回给调用者。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 表示停止Ability之后返回的结果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**示例**
+
+参见 [terminateSelfWithResult](#terminateselfwithresult)

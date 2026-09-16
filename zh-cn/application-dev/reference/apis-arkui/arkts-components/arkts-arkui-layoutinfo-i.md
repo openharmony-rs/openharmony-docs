@@ -1,6 +1,8 @@
 # LayoutInfo
 
-子组件布局位置信息@interface LayoutInfo
+子组件布局位置信息
+
+@interface LayoutInfo
 
 **起始版本：** 9
 
@@ -9,11 +11,6 @@
 **替代接口：** [Layoutable](arkts-arkui-layoutable-i.md)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## 导入模块
-
-```TypeScript
-```
 
 ## constraint
 

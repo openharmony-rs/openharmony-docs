@@ -6,11 +6,6 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## 导入模块
-
-```TypeScript
-```
-
 ## content
 
 ```TypeScript
@@ -25,7 +20,7 @@ content: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +30,9 @@ content: string
 options?: TextChangeOptions
 ```
 
-变化的文本内容信息。默认值：undefined。
+变化的文本内容信息。
+
+默认值：undefined。
 
 **类型：** [TextChangeOptions](arkts-arkui-textchangeoptions-i.md)
 
@@ -43,7 +40,7 @@ options?: TextChangeOptions
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -53,7 +50,9 @@ options?: TextChangeOptions
 previewText?: PreviewText
 ```
 
-预上屏的内容信息。默认值：undefined，表示无预上屏内容。
+预上屏的内容信息。
+
+默认值：undefined，表示无预上屏内容。
 
 **类型：** [PreviewText](arkts-arkui-previewtext-i.md)
 
@@ -61,6 +60,6 @@ previewText?: PreviewText
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

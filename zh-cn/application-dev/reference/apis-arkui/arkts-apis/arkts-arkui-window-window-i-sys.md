@@ -1,6 +1,8 @@
 # Window
 
-当前窗口实例，窗口管理器管理的基本单元。下列API示例中都需先使用 [getLastWindow()](arkts-arkui-window-getlastwindow-f.md)、 [createWindow()](arkts-arkui-window-createwindow-f.md)、 [findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
+当前窗口实例，窗口管理器管理的基本单元。
+
+下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md)、[createWindow()](arkts-arkui-window-createwindow-f.md)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
 **起始版本：** 6
 
@@ -18,20 +20,17 @@ import { window } from '@kit.ArkUI';
 attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise<void>
 ```
 
-设置一级子窗与主窗保持相对位置不变。使用Promise异步回调。该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
+设置一级子窗与主窗保持相对位置不变。使用Promise异步回调。
 
-> **说明：**
+该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
+
+> **说明：** 
 > 
 > - 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
 > 
-> - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用
-> [detachLayoutToParentWindow()](#detachlayouttoparentwindow)接口解绑，否则效果将持续。
+> - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用[detachLayoutToParentWindow()](#detachlayouttoparentwindow)接口解绑，否则效果将持续。
 > 
-> - 当子窗调用该接口后，再调用
-> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、
-> [maximize()](arkts-arkui-window-window-i.md#maximize)、
-> [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗
-> 口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
+> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
 
 **起始版本：** 24
 
@@ -45,14 +44,14 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| anchorInfo | [WindowAnchorInfo](arkts-arkui-window-windowanchorinfo-i-sys.md) | 否 | 一级子窗与主窗保持相对位置不变时的锚点参数。若不传，默认逻辑参考 [WindowAnchorInfo](arkts-arkui-window-windowanchorinfo-i-sys.md)。 |
-| attachOptions | [SubWindowAttachOptions](arkts-arkui-window-subwindowattachoptions-i-sys.md) | 否 | 设置子窗布局的附加参数。若不传，默认逻辑参考 [SubWindowAttachOptions](arkts-arkui-window-subwindowattachoptions-i-sys.md)。 |
+| anchorInfo | [WindowAnchorInfo](arkts-arkui-window-windowanchorinfo-i-sys.md) | 否 | 一级子窗与主窗保持相对位置不变时的锚点参数。若不传，默认逻辑参考[WindowAnchorInfo](arkts-arkui-window-windowanchorinfo-i-sys.md)。 |
+| attachOptions | [SubWindowAttachOptions](arkts-arkui-window-subwindowattachoptions-i-sys.md) | 否 | 设置子窗布局的附加参数。若不传，默认逻辑参考[SubWindowAttachOptions](arkts-arkui-window-subwindowattachoptions-i-sys.md)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -131,97 +130,14 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| token | rpc.RemoteObject | 是 | 目标窗口token值。 |
+| token | [rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) | 是 | 目标窗口token值。 |
 | deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-
-**示例**
-
-```TypeScript
-import { rpc } from '@kit.IPCKit';
-import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export class Property {
-  public value: Object
-
-  constructor(value: Object) {
-    this.value = value
-  }
-}
-
-export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onRequest(want: Want, startId: number) {
-    console.info('onRequest');
-    let config: window.Configuration = {
-      name: 'test',
-      windowType: window.WindowType.TYPE_DIALOG,
-      ctx: this.context
-    };
-    try {
-      window.createWindow(config, (err: BusinessError, data) => {
-        const errCode: number = err?.code;
-        if (errCode) {
-          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
-          return;
-        }
-        if (!data) {
-          console.error('data is null');
-          return;
-        }
-        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
-        let value = token.value as rpc.RemoteObject;
-        let promise = data.bindDialogTarget(value, () => {
-          console.info('Dialog Window Need Destroy.');
-        });
-        promise.then(() => {
-          console.info('Succeeded in binding dialog target.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
-        });
-      });
-    } catch (err) {
-      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
-    }
-  }
-}
-```
-
-## bindDialogTarget
-
-```TypeScript
-bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
-```
-
-绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
-
-**起始版本：** 9
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| token | rpc.RemoteObject | 是 | 目标窗口token值。 |
-| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -286,43 +202,95 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## bindDialogTarget
-
 ```TypeScript
-bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>): Promise<void>
+import { rpc } from '@kit.IPCKit';
+import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export class Property {
+  public value: Object
+
+  constructor(value: Object) {
+    this.value = value
+  }
+}
+
+export default class ServiceExtAbility extends ServiceExtensionAbility {
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
+    let config: window.Configuration = {
+      name: 'test',
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
+        const errCode: number = err?.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        if (!data) {
+          console.error('data is null');
+          return;
+        }
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        let promise = data.bindDialogTarget(value, () => {
+          console.info('Dialog Window Need Destroy.');
+        });
+        promise.then(() => {
+          console.info('Succeeded in binding dialog target.');
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
+        });
+      });
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
+    }
+  }
+}
 ```
 
-绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
+```TypeScript
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-**起始版本：** 9
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| requestInfo | dialogRequest.RequestInfo | 是 | 目标窗口RequestInfo值。 |
-| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-
-**示例**
+export default class ServiceExtAbility extends ServiceExtensionAbility {
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
+    let config: window.Configuration = {
+      name: 'test', windowType: window.WindowType.TYPE_DIALOG, ctx: this.context
+    };
+    try {
+      window.createWindow(config, (err: BusinessError, data) => {
+        let errCode: number = err?.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
+          return;
+        }
+        if (!data) {
+          console.error('data is null');
+          return;
+        }
+        let requestInfo = dialogRequest.getRequestInfo(want);
+        data.bindDialogTarget(requestInfo, () => {
+          console.info('Dialog Window Need Destroy.');
+          }, (err: BusinessError) => {
+          let errCode: number = err?.code;
+          if (errCode) {
+            console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
+            return;
+          }
+          console.info('Succeeded in binding dialog target.');
+        });
+      });
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
+    }
+  }
+}
+```
 
 ```TypeScript
 import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
@@ -365,6 +333,81 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 ## bindDialogTarget
 
 ```TypeScript
+bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
+```
+
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| token | [rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) | 是 | 目标窗口token值。 |
+| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+
+**示例**
+
+参见 [bindDialogTarget](#binddialogtarget)
+
+## bindDialogTarget
+
+```TypeScript
+bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>): Promise<void>
+```
+
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
+
+**起始版本：** 9
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| requestInfo | [dialogRequest.RequestInfo](../../apis-ability-kit/arkts-apis/arkts-ability-dialogrequest-requestinfo-i.md) | 是 | 目标窗口RequestInfo值。 |
+| deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+
+**示例**
+
+参见 [bindDialogTarget](#binddialogtarget)
+
+## bindDialogTarget
+
+```TypeScript
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback<void>, callback: AsyncCallback<void>): void
 ```
 
@@ -380,7 +423,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| requestInfo | dialogRequest.RequestInfo | 是 | 目标窗口RequestInfo值。 |
+| requestInfo | [dialogRequest.RequestInfo](../../apis-ability-kit/arkts-apis/arkts-ability-dialogrequest-requestinfo-i.md) | 是 | 目标窗口RequestInfo值。 |
 | deathCallback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | 是 | 目标窗口销毁监听。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
@@ -395,45 +438,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 **示例**
 
-```TypeScript
-import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onRequest(want: Want, startId: number) {
-    console.info('onRequest');
-    let config: window.Configuration = {
-      name: 'test', windowType: window.WindowType.TYPE_DIALOG, ctx: this.context
-    };
-    try {
-      window.createWindow(config, (err: BusinessError, data) => {
-        let errCode: number = err?.code;
-        if (errCode) {
-          console.error(`Failed to create the window. Cause code: ${err?.code}, message: ${err?.message}`);
-          return;
-        }
-        if (!data) {
-          console.error('data is null');
-          return;
-        }
-        let requestInfo = dialogRequest.getRequestInfo(want);
-        data.bindDialogTarget(requestInfo, () => {
-          console.info('Dialog Window Need Destroy.');
-          }, (err: BusinessError) => {
-          let errCode: number = err?.code;
-          if (errCode) {
-            console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
-            return;
-          }
-          console.info('Succeeded in binding dialog target.');
-        });
-      });
-    } catch (err) {
-      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
-    }
-  }
-}
-```
+参见 [bindDialogTarget](#binddialogtarget)
 
 ## detachLayoutToParentWindow
 
@@ -443,17 +448,13 @@ detachLayoutToParentWindow(): Promise<void>
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
 > - 子窗调用接口时需保持子窗处于协同状态。
 > 
 > - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。
 > 
-> - 解除协同后，调用
-> [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、
-> [maximize()](arkts-arkui-window-window-i.md#maximize)、
-> [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口
-> 位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
+> - 解除协同后，调用[moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto)、[maximize()](arkts-arkui-window-window-i.md#maximize)、[setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
 
 **起始版本：** 24
 
@@ -467,7 +468,7 @@ detachLayoutToParentWindow(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -630,6 +631,17 @@ windowClass.hide((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.hide();
+promise.then(() => {
+  console.info('Succeeded in hiding the window.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide the window. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## hide
 
 ```TypeScript
@@ -648,7 +660,7 @@ hide(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -659,16 +671,7 @@ hide(): Promise<void>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = windowClass.hide();
-promise.then(() => {
-  console.info('Succeeded in hiding the window.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide the window. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [hide](#hide)
 
 ## hideNonSystemFloatingWindows
 
@@ -676,7 +679,9 @@ promise.then(() => {
 hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置是否隐藏非系统级悬浮窗口（[windowType](arkts-arkui-window-windowtype-e.md)类型为TYPE_FLOAT），使用callback异步回调。非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会 被上层的非系统级悬浮窗口遮挡。
+设置是否隐藏非系统级悬浮窗口（[windowType](arkts-arkui-window-windowtype-e.md)类型为TYPE_FLOAT），使用callback异步回调。
+
+非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡。
 
 **起始版本：** 11
 
@@ -747,45 +752,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## hideNonSystemFloatingWindows
-
-```TypeScript
-hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>
-```
-
-设置是否隐藏非系统级悬浮窗口（[windowType](arkts-arkui-window-windowtype-e.md)类型为TYPE_FLOAT），使用Promise异步回调。非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会 被上层的非系统级悬浮窗口遮挡。
-
-**起始版本：** 11
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| shouldHide | boolean | 是 | 指示是否隐藏非系统级的悬浮窗口，true表示隐藏，false表示不隐藏。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
-
-**示例**
-
 ```TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -828,6 +794,49 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+## hideNonSystemFloatingWindows
+
+```TypeScript
+hideNonSystemFloatingWindows(shouldHide: boolean): Promise<void>
+```
+
+设置是否隐藏非系统级悬浮窗口（[windowType](arkts-arkui-window-windowtype-e.md)类型为TYPE_FLOAT），使用Promise异步回调。
+
+非系统级悬浮窗口是指非系统应用创建的悬浮窗口。默认情况下，一个系统应用主窗口可以与非系统级悬浮窗口共同显示，即该主窗口可以被上层的非系统级悬浮窗口遮挡，如果设置为true，则所有的非系统级悬浮窗口都会被隐藏，此时该主窗口就不会被上层的非系统级悬浮窗口遮挡。
+
+**起始版本：** 11
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| shouldHide | boolean | 是 | 指示是否隐藏非系统级的悬浮窗口，true表示隐藏，false表示不隐藏。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+
+**示例**
+
+参见 [hideNonSystemFloatingWindows](#hidenonsystemfloatingwindows)
 
 ## hideWithAnimation
 
@@ -873,6 +882,17 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.hideWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in hiding the window with animation.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## hideWithAnimation
 
 ```TypeScript
@@ -891,7 +911,7 @@ hideWithAnimation(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -904,16 +924,7 @@ hideWithAnimation(): Promise<void>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = windowClass.hideWithAnimation();
-promise.then(() => {
-  console.info('Succeeded in hiding the window with animation.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide the window with animation. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [hideWithAnimation](#hidewithanimation)
 
 ## isMainWindowFullScreenAcrossDisplays
 
@@ -933,7 +944,7 @@ isMainWindowFullScreenAcrossDisplays(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;boolean&gt; | Promise对象。返回true表示当前窗口的主窗口跨多块屏幕使用全屏模式显示，返回false表示当前窗口的主窗口未跨多块屏幕使用全屏模式显示。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前窗口的主窗口跨多块屏幕使用全屏模式显示，返回false表示当前窗口的主窗口未跨多块屏幕使用全屏模式显示。 |
 
 **错误码：**
 
@@ -981,7 +992,7 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boole
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mainWindowFullScreenAcrossDisplaysChanged' | 是 | 监听事件，固定为'mainWindowFullScreenAcrossDisplaysChanged'，即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化。 |
-| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口的主窗口跨多块 屏幕使用全屏模式显示的状态变化回调。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。 |
 
 **错误码：**
 
@@ -992,24 +1003,6 @@ off(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback?: Callback<boole
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
-
-**示例**
-
-```TypeScript
-const callback = (mainWindowFullScreenAcrossDisplaysChanged: boolean) => {
-  // ...
-}
-try {
-  // 通过on接口开启监听
-  windowClass.on('mainWindowFullScreenAcrossDisplaysChanged', callback);
-  // 关闭指定callback的监听
-  windowClass.off('mainWindowFullScreenAcrossDisplaysChanged', callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
-  windowClass.off('mainWindowFullScreenAcrossDisplaysChanged');
-} catch (exception) {
-  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
 
 ## on('mainWindowFullScreenAcrossDisplaysChanged')
 
@@ -1030,7 +1023,7 @@ on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'mainWindowFullScreenAcrossDisplaysChanged' | 是 | 监听事件，固定为'mainWindowFullScreenAcrossDisplaysChanged'，即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化。 |
-| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。true表示主窗口进入跨多块屏幕使用全屏模式显示状态，false表示主窗口退出 跨多块屏幕使用全屏模式显示状态。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。即本窗口的主窗口跨多块屏幕使用全屏模式显示的状态变化回调。true表示主窗口进入跨多块屏幕使用全屏模式显示状态，false表示主窗口退出跨多块屏幕使用全屏模式显示状态。 |
 
 **错误码：**
 
@@ -1041,19 +1034,6 @@ on(type: 'mainWindowFullScreenAcrossDisplaysChanged', callback: Callback<boolean
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
-
-**示例**
-
-```TypeScript
-const callback = (mainWindowFullScreenAcrossDisplaysChanged: boolean) => {
-  console.info(`main window across displays changed. Data: ${mainWindowFullScreenAcrossDisplaysChanged}`);
-}
-try {
-  windowClass.on('mainWindowFullScreenAcrossDisplaysChanged', callback);
-} catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
 
 ## opacity
 
@@ -1100,7 +1080,9 @@ try {
 raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 ```
 
-将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用 [showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+将同一个主窗口下的子窗口抬升到目标子窗口之上。使用callback异步回调。
+
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -1112,7 +1094,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接 口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -1169,46 +1151,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## raiseAboveTarget
-
-```TypeScript
-raiseAboveTarget(windowId: number): Promise<void>
-```
-
-将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用 [showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
-
-**起始版本：** 10
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接 口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Mandatory parameters are left unspecified. |
-| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
-| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
-
-**示例**
-
 ```TypeScript
 // EntryAbility.ets
 import { window } from '@kit.ArkUI';
@@ -1247,13 +1189,62 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## raiseAboveTarget
+
+```TypeScript
+raiseAboveTarget(windowId: number): Promise<void>
+```
+
+将同一个主窗下的子窗口提升到目标子窗口之上。使用Promise异步回调。
+
+使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
+
+**起始版本：** 10
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| windowId | number | 是 | 目标子窗口的id，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: Mandatory parameters are left unspecified. |
+| [801](../../errorcode-universal.md#801-该设备不支持此api) | Capability not supported. Failed to call the API due to limited device capabilities. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
+
+**示例**
+
+参见 [raiseAboveTarget](#raiseabovetarget)
+
 ## raiseMainWindowAboveTarget
 
 ```TypeScript
 raiseMainWindowAboveTarget(windowId: number): Promise<void>
 ```
 
-将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。仅支持系统应用主窗口调用。传入目标主窗口的id，调用窗口和目标窗口需满足：同应用进程、显示在同一物理屏、层级低于锁屏、非置顶主窗、非模态主窗且无模应用子窗。  
+将主窗口的层级调整至同应用下的另一个主窗口之上，子窗口的层级会跟随所属主窗口变动。使用Promise异步回调。
+
+仅支持系统应用主窗口调用。
+
+传入目标主窗口的id，调用窗口和目标窗口需满足：同应用进程、显示在同一物理屏、层级低于锁屏、非置顶主窗、非模态主窗且无模应用子窗。
+
 - 应用主窗口或者它的子窗口如果是焦点窗口，此主窗口调用该接口降低层级后则自动失焦，由当前层级最高的应用窗口获焦。  
 - 应用主窗口调用该接口调整层级后超过当前焦点窗口，则被抬升主窗口及其子窗口中，层级最高的窗口自动获焦；应用主窗口调用该接口调整层级后未超过当前焦点窗口，则焦点不做转移。
 
@@ -1267,13 +1258,13 @@ raiseMainWindowAboveTarget(windowId: number): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| windowId | number | 是 | 目标主窗口的id，该参数为整数，通过 [getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到 [properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
+| windowId | number | 是 | 目标主窗口的id，该参数为整数，通过[getWindowProperties](arkts-arkui-window-window-i.md#getwindowproperties)接口获取到[properties](arkts-arkui-window-windowproperties-i.md)后，再通过properties.id获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1414,7 +1405,9 @@ export default class RaiseMainWindowAbility extends UIAbility {
 raiseToAppTop(callback: AsyncCallback<void>): void
 ```
 
-提升应用子窗口到应用顶层。使用callback异步回调。使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow) 并执行完毕。
+提升应用子窗口到应用顶层。使用callback异步回调。
+
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -1477,7 +1470,11 @@ export default class EntryAbility extends UIAbility {
 requestFocus(isFocused: boolean): Promise<void>
 ```
 
-支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用 on('windowEvent') 监听窗口获焦/失焦状态。获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。失焦请求发送后，窗口无条件失焦。
+支持当前窗口主动请求获焦/失焦，使用Promise异步回调。调用成功即返回，该接口返回值不代表最终获焦/失焦生效结果。可使用[on('windowEvent')](arkts-arkui-window-window-i.md#onwindowevent)监听窗口获焦/失焦状态。
+
+获焦请求发送后，窗口获焦结果受到窗口可获焦属性及窗口可见状态的限制。获焦成功的窗口需满足以下约束：1.窗口支持获焦；2.窗口可见（窗口已显示，未销毁且未退至后台）。
+
+失焦请求发送后，窗口无条件失焦。
 
 **起始版本：** 13
 
@@ -1495,7 +1492,7 @@ requestFocus(isFocused: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1539,7 +1536,7 @@ rotate(rotateOptions: RotateOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotateOptions | RotateOptions | 是 | 旋转参数。 |
+| rotateOptions | [RotateOptions](../arkts-components/arkts-arkui-rotateoptions-i.md) | 是 | 旋转参数。 |
 
 **错误码：**
 
@@ -1585,7 +1582,7 @@ scale(scaleOptions: ScaleOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scaleOptions | ScaleOptions | 是 | 缩放参数。 |
+| scaleOptions | [ScaleOptions](../arkts-components/arkts-arkui-scaleoptions-i.md) | 是 | 缩放参数。 |
 
 **错误码：**
 
@@ -1618,7 +1615,11 @@ try {
 setBackdropBlur(radius: number): void
 ```
 
-设置窗口背景模糊。窗口背景是指窗口覆盖的下层区域，与窗口大小相同。需要通过[setWindowBackgroundColor](arkts-arkui-window-window-i.md#setwindowbackgroundcolor)将窗口内容背景设置成透明，否则无法看到模糊效果。
+设置窗口背景模糊。
+
+窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
+
+需要通过[setWindowBackgroundColor](arkts-arkui-window-window-i.md#setwindowbackgroundcolor)将窗口内容背景设置成透明，否则无法看到模糊效果。
 
 **起始版本：** 9
 
@@ -1670,7 +1671,7 @@ setBackdropBlurStyle(blurStyle: BlurStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| blurStyle | BlurStyle | 是 | 表示窗口背景模糊类型。 |
+| blurStyle | [BlurStyle](../arkts-components/arkts-arkui-blurstyle-e.md) | 是 | 表示窗口背景模糊类型。 |
 
 **错误码：**
 
@@ -1775,7 +1776,11 @@ try {
 setDefaultDensityEnabled(enabled: boolean): void
 ```
 
-设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在 [loadContent()](arkts-arkui-window-window-i.md#loadcontent) 或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效 后使用。不调用此接口进行设置，则表示不使用系统默认Density。当存在同时使用该接口、 [setDefaultDensityEnabled(true)](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12) 和[setCustomDensity](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity)时，以最后调用的设置 效果为准。
+设置窗口是否使用所在屏幕的系统默认Density。Stage模型下，该接口需要在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)调用生效后使用。
+
+不调用此接口进行设置，则表示不使用系统默认Density。
+
+当存在同时使用该接口、[setDefaultDensityEnabled(true)](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#setcustomdensity15)时，以最后调用的设置效果为准。
 
 **起始版本：** 20
 
@@ -1787,7 +1792,7 @@ setDefaultDensityEnabled(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | 设置是否使用系统默认Density。true表示使用系统默认Density，窗口不跟随系统显示大小变化重新布局；false表示不使用系统默认Density，窗口跟随系统 显示大小变化重新布局。 |
+| enabled | boolean | 是 | 设置是否使用系统默认Density。true表示使用系统默认Density，窗口不跟随系统显示大小变化重新布局；false表示不使用系统默认Density，窗口跟随系统显示大小变化重新布局。 |
 
 **错误码：**
 
@@ -1806,34 +1811,6 @@ try {
 } catch (exception) {
   console.error(`Failed to set default density enabled. Cause code: ${exception.code}, message: ${exception.message}`);
 }
-```
-
-```TypeScript
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit'
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-      windowStage.loadContent("pages/page2", (err: BusinessError) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        console.info('Succeeded in loading the content.');
-      try {
-        windowStage.setDefaultDensityEnabled(true);
-        console.info('Succeeded in setting default density enabled.');
-      } catch (exception) {
-        console.error(`Failed to set default density enabled. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-};
 ```
 
 ## setForbidSplitMove
@@ -1905,45 +1882,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setForbidSplitMove
-
-```TypeScript
-setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>
-```
-
-设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
-
-**起始版本：** 9
-
-**废弃版本：** 26.0.0
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| isForbidSplitMove | boolean | 是 | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-
-**示例**
-
 ```TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -1977,6 +1915,47 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setForbidSplitMove
+
+```TypeScript
+setForbidSplitMove(isForbidSplitMove: boolean): Promise<void>
+```
+
+设置主窗口在分屏模式下是否被禁止移动，使用Promise异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| isForbidSplitMove | boolean | 是 | 窗口在分屏模式下是否被禁止移动。true表示禁止；false表示不禁止。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+
+**示例**
+
+参见 [setForbidSplitMove](#setforbidsplitmove)
+
 ## setHandwritingFlag
 
 ```TypeScript
@@ -2001,7 +1980,7 @@ setHandwritingFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2037,7 +2016,9 @@ try {
 setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>
 ```
 
-禁止/使能主窗口点击抬升功能。使用Promise异步回调。点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
+禁止/使能主窗口点击抬升功能。使用Promise异步回调。
+
+点击主窗口时，默认会抬升主窗口及其子窗口。调用此接口禁止主窗口点击抬升后（即传入false），点击主窗口时不会将其及子窗口进行抬升，保持原有状态不变；点击子窗口时，主窗口会连同子窗口一起被抬升。
 
 **起始版本：** 23
 
@@ -2055,7 +2036,7 @@ setMainWindowRaiseByClickEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2106,7 +2087,11 @@ export default class EntryAbility extends UIAbility {
 setRaiseByClickEnabled(enable: boolean, callback: AsyncCallback<void>): void
 ```
 
-禁止/使能子窗口点击抬升功能。使用callback异步回调。通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow) 并执行完毕。
+禁止/使能子窗口点击抬升功能。使用callback异步回调。
+
+通常来说，点击一个子窗口，会将该子窗口显示到最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口显示到最上方，而是保持不变。
+
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)并执行完毕。
 
 **起始版本：** 10
 
@@ -2176,32 +2161,21 @@ export default class EntryAbility extends UIAbility {
 setRotationLocked(locked: boolean): Promise<void>
 ```
 
-仅支持[系统窗口](../../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、 sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+仅支持[系统窗口](../../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
 
-> **说明：**
+> **说明：** 
 > 
-> - 如果在锁定期间主窗口通过
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)
-> 设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
+> - 如果在锁定期间主窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)设置显示方向属性，则解除旋转锁定后该窗口在前台还原最后一次的方向请求。
 > 
-> - 如果在锁定期间系统窗口通过
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)
-> 设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)
-> 设置显示方向。
+> - 如果在锁定期间系统窗口通过[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)设置显示方向属性，则解除旋转锁定后该窗口在前台且层级最高时还原最后一次的方向请求。低层级窗口通过setRotationLocked设置旋转锁定不会影响高层级系统窗口调用[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)设置显示方向。
 > 
 > - 如果在锁定期间sensor方向发生了变化，则解除旋转锁定后还原到最后一次的sensor方向。
 > 
-> - 如果在锁定期间应用调用
-> [setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)
-> 设置屏幕方向，忽略该次屏幕方向设置。
+> - 如果在锁定期间应用调用[setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)设置屏幕方向，忽略该次屏幕方向设置。
 > 
-> - 解除锁定时，根据主窗口的显示方向属性
-> [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)
-> 、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。
+> - 解除锁定时，根据主窗口的显示方向属性[setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)、sensor方向等决定应用显示方向，具体见[窗口旋转简介](../../../windowmanager/window-rotation.md#窗口旋转简介)。
 > 
-> - 不影响应用[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)
-> orientation属性设置的启动方向。
+> - 不影响应用[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)orientation属性设置的启动方向。
 
 **起始版本：** 22
 
@@ -2219,7 +2193,7 @@ setRotationLocked(locked: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2293,7 +2267,9 @@ try {
 setSingleFrameComposerEnabled(enable: boolean): Promise<void>
 ```
 
-禁止/使能单帧合成渲染节点的功能。使用Promise异步回调。单帧合成渲染节点的功能主要用于跟手性要求较高的场景，使能该功能之后可以降低渲染节点的上屏延时。通过setSingleFrameComposerEnabled接口，如果enable设置为true，则使能单帧合成渲染节点的功能，否 则禁止单帧合成渲染节点的功能。
+禁止/使能单帧合成渲染节点的功能。使用Promise异步回调。
+
+单帧合成渲染节点的功能主要用于跟手性要求较高的场景，使能该功能之后可以降低渲染节点的上屏延时。通过setSingleFrameComposerEnabled接口，如果enable设置为true，则使能单帧合成渲染节点的功能，否则禁止单帧合成渲染节点的功能。
 
 **起始版本：** 11
 
@@ -2311,7 +2287,7 @@ setSingleFrameComposerEnabled(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2346,7 +2322,9 @@ try {
 setSnapshotSkip(isSkip: boolean): void
 ```
 
-截屏、录屏或投屏是否忽略当前窗口。此接口一般用于禁止截屏、录屏或投屏的场景。若要实现窗口始终在前台忽略截屏、录屏或投屏，在窗口从后台回到前台时，需要通过 on('windowEvent') 监听窗口生命周期变化，在后台状态时设置为false，而在前台状态时设置为true。
+截屏、录屏或投屏是否忽略当前窗口。此接口一般用于禁止截屏、录屏或投屏的场景。
+
+若要实现窗口始终在前台忽略截屏、录屏或投屏，在窗口从后台回到前台时，需要通过[on('windowEvent')](arkts-arkui-window-window-i.md#onwindowevent)监听窗口生命周期变化，在后台状态时设置为false，而在前台状态时设置为true。
 
 **起始版本：** 9
 
@@ -2358,7 +2336,7 @@ setSnapshotSkip(isSkip: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。true表示忽略当前窗口，false表示不忽略当前窗口。 &lt;/br&gt; |
+| isSkip | boolean | 是 | 截屏、录屏或投屏是否忽略当前窗口，默认为false。<br>true表示忽略当前窗口，false表示不忽略当前窗口。&lt;/br&gt; |
 
 **错误码：**
 
@@ -2385,7 +2363,9 @@ try {
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 ```
 
-设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
+设置主窗标题栏上的最大化、最小化、分屏按钮是否可见。
+
+仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
 **起始版本：** 12
 
@@ -2473,7 +2453,7 @@ setTopmost(isTopmost: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2575,12 +2555,28 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-系统api权限校验失败) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let enable = true;
+  let promise = windowClass.setWaterMarkFlag(enable);
+  promise.then(() => {
+    console.info('Succeeded in setting water mark flag of window.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set water mark flag of window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set water mark flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2624,13 +2620,13 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.  2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-参数检查失败) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300008](../errorcode-window.md#1300008-显示设备异常) | The display device is abnormal. |
@@ -2638,21 +2634,7 @@ setWaterMarkFlag(enable: boolean): Promise<void>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let enable = true;
-  let promise = windowClass.setWaterMarkFlag(enable);
-  promise.then(() => {
-    console.info('Succeeded in setting water mark flag of window.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to set water mark flag of window. Cause code: ${err.code}, message: ${err.message}`);
-  });
-} catch (exception) {
-  console.error(`Failed to set water mark flag of window. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
+参见 [setWaterMarkFlag](#setwatermarkflag)
 
 ## setWindowMode
 
@@ -2672,13 +2654,13 @@ setWindowMode(mode: WindowMode): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | WindowMode | 是 | 窗口模式。 |
+| mode | [WindowMode](arkts-arkui-window-windowmode-e-sys.md) | 是 | 窗口模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2690,6 +2672,41 @@ setWindowMode(mode: WindowMode): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
+
+```TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    let windowClass: window.Window | undefined = undefined;
+    windowStage.getMainWindow((err: BusinessError, data) => {
+      const errCode: number = err.code;
+      if (errCode) {
+        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      windowClass = data;
+      let mode = window.WindowMode.FULLSCREEN;
+      try {
+        windowClass.setWindowMode(mode, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in setting the window mode.');
+        });
+      } catch (exception) {
+        console.error(`Failed to set the window mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+    });
+  }
+}
+```
 
 ```TypeScript
 // EntryAbility.ets
@@ -2742,7 +2759,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | WindowMode | 是 | 窗口模式。 |
+| mode | [WindowMode](arkts-arkui-window-windowmode-e-sys.md) | 是 | 窗口模式。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -2756,40 +2773,7 @@ setWindowMode(mode: WindowMode, callback: AsyncCallback<void>): void
 
 **示例**
 
-```TypeScript
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      windowClass = data;
-      let mode = window.WindowMode.FULLSCREEN;
-      try {
-        windowClass.setWindowMode(mode, (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(`Failed to set the window mode. Cause code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info('Succeeded in setting the window mode.');
-        });
-      } catch (exception) {
-        console.error(`Failed to set the window mode. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
-    });
-  }
-}
-```
+参见 [setWindowMode](#setwindowmode)
 
 ## setWindowType
 
@@ -2811,15 +2795,29 @@ setWindowType(type: WindowType): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | WindowType | 是 | 窗口类型。 |
+| type | [WindowType](arkts-arkui-window-windowtype-e.md) | 是 | 窗口类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let type = window.WindowType.TYPE_SYSTEM_ALERT;
+windowClass.setWindowType(type, (err: BusinessError) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to set the window type. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in setting the window type.');
+});
+```
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2853,24 +2851,12 @@ setWindowType(type: WindowType, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | WindowType | 是 | 窗口类型。 |
+| type | [WindowType](arkts-arkui-window-windowtype-e.md) | 是 | 窗口类型。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let type = window.WindowType.TYPE_SYSTEM_ALERT;
-windowClass.setWindowType(type, (err: BusinessError) => {
-  const errCode: number = err.code;
-  if (errCode) {
-    console.error(`Failed to set the window type. Cause code: ${err.code}, message: ${err.message}`);
-    return;
-  }
-  console.info('Succeeded in setting the window type.');
-});
-```
+参见 [setWindowType](#setwindowtype)
 
 ## showWithAnimation
 
@@ -2916,6 +2902,17 @@ windowClass.showWithAnimation((err: BusinessError) => {
 });
 ```
 
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let promise = windowClass.showWithAnimation();
+promise.then(() => {
+  console.info('Succeeded in showing the window with animation.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## showWithAnimation
 
 ```TypeScript
@@ -2934,7 +2931,7 @@ showWithAnimation(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise &lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2947,16 +2944,7 @@ showWithAnimation(): Promise<void>
 
 **示例**
 
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let promise = windowClass.showWithAnimation();
-promise.then(() => {
-  console.info('Succeeded in showing the window with animation.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to show the window with animation. Cause code: ${err.code}, message: ${err.message}`);
-});
-```
+参见 [showWithAnimation](#showwithanimation)
 
 ## translate
 
@@ -2976,7 +2964,7 @@ translate(translateOptions: TranslateOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| translateOptions | TranslateOptions | 是 | 平移参数，单位为px。 |
+| translateOptions | [TranslateOptions](../arkts-components/arkts-arkui-translateoptions-i.md) | 是 | 平移参数，单位为px。 |
 
 **错误码：**
 

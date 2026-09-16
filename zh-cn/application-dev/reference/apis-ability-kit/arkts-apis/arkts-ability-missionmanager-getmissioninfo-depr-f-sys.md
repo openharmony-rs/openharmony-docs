@@ -56,6 +56,23 @@ missionManager.getMissionInfo('', missionId, (error, mission) => {
 });
 ```
 
+```TypeScript
+import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
+
+let testMissionId = 1;
+try {
+  // 获取指定任务信息
+  missionManager.getMissionInfo('', testMissionId).then((data) => {
+    console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`getMissionInfo failed. Cause: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`getMissionInfo failed. Cause: ${error.message}`);
+}
+```
+
 
 ## getMissionInfo
 
@@ -92,19 +109,4 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 
 **示例**
 
-```TypeScript
-import missionManager from '@ohos.application.missionManager';
-import { BusinessError } from '@ohos.base';
-
-let testMissionId = 1;
-try {
-  // 获取指定任务信息
-  missionManager.getMissionInfo('', testMissionId).then((data) => {
-    console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`getMissionInfo failed. Cause: ${error.message}`);
-  });
-} catch (error) {
-  console.error(`getMissionInfo failed. Cause: ${error.message}`);
-}
-```
+参见 [getMissionInfo](#getmissioninfo)

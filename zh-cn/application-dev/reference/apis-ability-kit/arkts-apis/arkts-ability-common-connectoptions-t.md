@@ -12,4 +12,4 @@ export type ConnectOptions = _ConnectOptions
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**属性类型：** _ConnectOptions
+**类型：** _ConnectOptions

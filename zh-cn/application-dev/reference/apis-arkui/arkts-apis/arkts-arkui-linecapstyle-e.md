@@ -1,6 +1,8 @@
 # LineCapStyle
 
-LineCapStyle enumeration description@enum { number }
+LineCapStyle enumeration description
+
+@enum { number }
 
 **起始版本：** 11
 
@@ -16,7 +18,7 @@ The two ends of the dividing line are parallel lines.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -32,7 +34,7 @@ The two ends of the dividing line are semicircles.
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
@@ -48,7 +50,7 @@ Extends half a circle at the end of the path with a width equal to half the divi
 
 **起始版本：** 11
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务API中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API版本11开始，该接口支持在ArkTS卡片中使用。
 
