@@ -104,8 +104,6 @@
      onWorkStart(workInfo: workScheduler.WorkInfo) {
        // ...
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
-       // 打印 parameters中的参数，如：参数key1
-       console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
      }
    
      // 延迟任务结束回调。当延迟任务2分钟超时或应用调用stopWork接口取消任务时，触发该回调。
