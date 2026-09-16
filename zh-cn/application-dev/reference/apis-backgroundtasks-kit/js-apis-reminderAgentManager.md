@@ -58,7 +58,7 @@ ArkTS-Sta: publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
 
@@ -148,7 +148,7 @@ ArkTS-Sta: publishReminder(reminderReq: ReminderRequest): Promise\<int>
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
 
@@ -216,7 +216,7 @@ ArkTS-Sta: cancelReminder(reminderId: int, callback: AsyncCallback\<void>): void
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700003    | The reminder does not exist. |
 | 1700004    | The bundle name does not exist. |
 
@@ -288,7 +288,7 @@ ArkTS-Sta: cancelReminder(reminderId: int): Promise\<void>
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700003    | The reminder does not exist. |
 | 1700004    | The bundle name does not exist. |
 
@@ -345,7 +345,7 @@ getValidReminders(callback: AsyncCallback<Array\<ReminderRequest>>): void
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **示例：**
@@ -406,7 +406,7 @@ getValidReminders(): Promise\<Array\<ReminderRequest>>
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **示例：**
@@ -460,7 +460,7 @@ cancelAllReminders(callback: AsyncCallback\<void>): void
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **示例：**
@@ -521,7 +521,7 @@ cancelAllReminders(): Promise\<void>
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **示例：**
@@ -576,7 +576,7 @@ addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback\<void>): voi
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -652,7 +652,7 @@ addNotificationSlot(slot: NotificationSlot): Promise\<void>
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -714,7 +714,7 @@ removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback\
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -783,7 +783,7 @@ removeNotificationSlot(slotType: notification.SlotType): Promise\<void>
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -818,7 +818,9 @@ reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT
 
 getAllValidReminders(): Promise\<Array\<ReminderInfo>>
 
-获取当前应用设置的所有[有效（未过期）的代理提醒](../../task-management/agent-powered-reminder.md#约束与限制)。使用Promise异步回调。该接口调用需要申请ohos.permission.PUBLISH_AGENT_REMINDER权限。
+获取当前应用设置的所有[有效（未过期）的代理提醒](../../task-management/agent-powered-reminder.md#约束与限制)。使用Promise异步回调。
+
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -875,6 +877,8 @@ ArkTS-Sta: addExcludeDate(reminderId: int, date: Date): Promise\<void>
 
 为指定id的周期性的日历提醒，添加不提醒日期（如每天提醒的日历，设置周二不提醒）。使用Promise异步回调。
 
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
+
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
 **ArkTS-Dyn起始版本：** 12
@@ -901,7 +905,7 @@ ArkTS-Sta: addExcludeDate(reminderId: int, date: Date): Promise\<void>
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700003  | The reminder does not exist.                   |
 
 **示例：**
@@ -942,6 +946,8 @@ ArkTS-Dyn: deleteExcludeDates(reminderId: number): Promise\<void>
 ArkTS-Sta: deleteExcludeDates(reminderId: int): Promise\<void>
 
 为指定id的周期性的日历提醒，删除设置的所有不提醒日期。使用Promise异步回调。
+
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
@@ -1006,6 +1012,8 @@ ArkTS-Dyn: getExcludeDates(reminderId: number): Promise\<Array\<Date>>
 ArkTS-Sta: getExcludeDates(reminderId: int): Promise\<Array\<Date>>
 
 为指定id的周期性的日历提醒，查询设置的所有不提醒日期。使用Promise异步回调。
+
+**需要权限：** ohos.permission.PUBLISH_AGENT_REMINDER
 
 **系统能力：** SystemCapability.Notification.ReminderAgent
 
