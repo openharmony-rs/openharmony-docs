@@ -975,7 +975,7 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | ArkTS-Dyn: string<br>ArkTS-Sta: string \| undefined | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| <feature-tag-value>。<br>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: string<br>ArkTS-Sta: string \| undefined | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| \<feature-tag-value\>。<br>取值为undefined时，按默认值处理。 |
 
 Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。
 
