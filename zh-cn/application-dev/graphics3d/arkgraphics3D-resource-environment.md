@@ -145,7 +145,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
              envEntity.indirectDiffuseFactor.w = 1;
              resolve(envEntity);
            }).catch((err: string) => {
-             console.error('Environment mapping material create failed: ' + err + '.');
+             console.error('Environment create failed: ' + err + '.');
              reject(err);
            });
          }).catch((err: string) => {
@@ -205,7 +205,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    Button('Add to Environment')
      // ...
      .onClick(async (): Promise<void> => {
-       console.info('Start to replace with a material of image');
+       console.info('Start to add environment to scene');
    
        if (!this.scene || !this.cam) {
          return;
