@@ -627,4 +627,4 @@ needTransferComponent数组中可选枚举类型说明：
  
 needTransferComponent数组中枚举值大小写错用，导致编译报错
 
-needTransferComponent数组中枚举值存在重复![屏幕截图 2026-09-16 104536.png](https://raw.gitcode.com/user-images/assets/10770604/e04e9ee6-6043-43a7-a0dd-76990a79e748/屏幕截图_2026-09-16_104536.png '屏幕截图 2026-09-16 104536.png')
+needTransferComponent数组中枚举值存在重复
