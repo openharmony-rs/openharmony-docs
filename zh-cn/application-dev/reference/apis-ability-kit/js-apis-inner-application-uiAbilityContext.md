@@ -4190,6 +4190,144 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### setAbilityInstanceInfo
+
+setAbilityInstanceInfo(label: string, icon: image.PixelMap, groupId: string): Promise&lt;void&gt;
+
+设置当前UIAbility实例的图标、标签和图标聚合标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示，groupId用于设置快捷栏中应用内UIAbility的图标聚合标签。使用Promise异步回调。
+
+**需要权限**： ohos.permission.SET_ABILITY_INSTANCE_INFO
+
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| label | string | 是 | 新的图标标签。标签长度不超过1024字节，且不可为空字符串。 |
+| icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 新的图标。建议图标大小为512px*512px。 |
+| groupId | string | 是 | 快捷栏中应用内UIAbility的图标聚合标签。长度不超过64个字符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象。成功时不返回业务数据，仅表示操作完成；失败时返回错误对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 801 | Capability not supported. |
+| 16000011 | The context does not exist. |
+| 16000050 | Window operations encountered failures. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', async (err, data) => {
+      if (err.code) {
+        console.error(`loadContent failed, code is ${err.code}`);
+        return;
+      }
+
+      let newLabel: string = 'instance label';
+      let groupId: string = 'group label';
+      let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+      let bufferArr = new Uint8Array(color);
+      for (let i = 0; i < bufferArr.length; i += 4) {
+        bufferArr[i] = 255;
+        bufferArr[i+1] = 0;
+        bufferArr[i+2] = 122;
+        bufferArr[i+3] = 255;
+      }
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
+      };
+      let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
+      // 设置UIAbility实例的图标、标签和图标聚合标签信息
+      try {
+        this.context.setAbilityInstanceInfo(newLabel, imagePixelMap, groupId)
+          .then(() => {
+            console.info('setAbilityInstanceInfo success');
+          }).catch((err: BusinessError) => {
+            console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+      }
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+import { image } from '@kit.ImageKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', 'EntryAbility onCreate');
+    let newLabel: string = 'instance label';
+    let groupId: string = 'group label';
+    let color = new ArrayBuffer(512 * 512 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+    let bufferArr = new Uint8Array(color);
+    for (let i = 0; i < bufferArr.length; i += 4) {
+      bufferArr[i] = 255;
+      bufferArr[i + 1] = 0;
+      bufferArr[i + 2] = 122;
+      bufferArr[i + 3] = 255;
+    }
+    let opts: image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height: 512, width: 512 }
+    };
+    image.createPixelMap(color, opts)
+      .then((imagePixelMap: image.PixelMap): void => {
+        try {
+          // 设置UIAbility实例的图标、标签和图标聚合标签信息
+          this.context.setAbilityInstanceInfo(newLabel, imagePixelMap, groupId)
+            .then(() => {
+              console.info('setAbilityInstanceInfo success');
+            }).catch((err: Error): void => {
+              console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+            })
+        } catch (paramError) {
+          let code = (paramError as BusinessError).code;
+          let message = (paramError as BusinessError).message;
+          console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+        }
+      });
+  }
+}
+```
+
 ### revokeDelegator<sup>17+</sup>
 
 revokeDelegator(): Promise&lt;void&gt;
