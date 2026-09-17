@@ -91,7 +91,6 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
    输出结果如下所示：
 
    ```json
-   strRes:
    {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note",
     "_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":"element","_name":"title","_parent":"note",
     "_elements":[{"_type":"text","_text":"Happy"}]},{"_type":"element","_name":"todo","_parent":"note","_elements":
