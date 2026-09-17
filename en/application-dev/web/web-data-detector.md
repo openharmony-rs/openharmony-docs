@@ -1,13 +1,15 @@
 # Using Smart Text Data Detector
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:10:27.415Z pushedAt=2026-09-15T13:41:20.396Z -->
+
 Since API version 20, ArkWeb provides the text segmentation and recognition feature on HTML5 pages, enabling segmented-text highlighting, long-press preview, and text-selection menus extension. To use this feature, set [enableDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enabledatadetector20) to **true**. The default value is **false**.
 
-This feature is mainly used to automatically identify entities such as phone numbers and URLs on HTML5 pages and provide convenient interaction operations. For example, a user can click a phone number to make a call or click an URL to view the address on the map, improving user experience.
+This feature is mainly used to automatically identify entities such as phone numbers and URLs on HTML5 pages and provide convenient interaction operations. For example, a user can click a phone number to make a call or click a URL to view the address on the map, improving user experience.
 
 The recognizable entity types include phone numbers, URLs, email addresses, addresses, and time. For details, see [TextDataDetectorType](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectortype11).
 
@@ -24,7 +26,7 @@ The filtering rules for highlighting special entities are as follows:
 
 After being highlighted, text entities on the page are converted into hyperlinks. When they are touched or left-clicked, the operation menu is displayed based on the entity type.
 
-<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -32,7 +34,6 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   webController: webview.WebviewController = new webview.WebviewController();
 
   build() {
@@ -112,16 +113,16 @@ If [copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.
 
 ![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)
 
-The [custom menu](web_menu.md#custom-menu) bound by [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) does not affect the long-press preview menu of text segmentation. Long-pressing the highlighted text segmentation hyperlink does not display the custom hyperlink menu, and long-pressing a common hyperlink does not display the text segmentation preview menu.
+The [custom menu](web-menu.md#custom-menu) bound through [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) does not affect the data detection long-press preview menu. Long-pressing a highlighted data detection hyperlink does not bring up the custom hyperlink menu, and long-pressing a regular hyperlink does not bring up the data detection preview menu either.
 
 
 ## Text Selection Menu Extension
 Since API version 22, the [enableSelectedDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableselecteddatadetector22) can be used to configure whether to enable the AI option in the text selection menu.
 
-In the non-editing area, if the selected text meets the following conditions, the corresponding AI option are displayed in the text selection menu:
+In a non-editing area, when the selected text meets the following conditions, the text selection menu displays the corresponding AI menu item:
 
 - The UTF-8-encoded selected text does not exceed 255 bytes.
-- The selected text contains only one entity word that matches the recognition type. (You can configure the recognition type supported by [dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20).)
+- The selected text contains only one entity that matches a detection type (the supported detection types can be configured through [dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)).
 - The text is not in the **Select all** operation state.
 
 ![web-data-detector-selection-menu](figures/web-data-detector-selection-menu.gif)

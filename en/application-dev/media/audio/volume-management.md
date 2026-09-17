@@ -1,12 +1,11 @@
 # Volume Management
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b065b5b02aeefe715acab92287399dde4481a96c translatedAt=2026-08-06T01:57:29.467Z pushedAt=2026-08-06T10:33:26.467Z -->
+<!-- md-trans-meta sourceCommit=65489c89343a3bc54293aa5d7333785c8fe8dbf4 translatedAt=2026-09-01T02:34:01.284Z pushedAt=2026-09-02T03:33:58.475Z -->
 
 This module provides capabilities for managing playback volume, covering system volume, application volume, and audio stream volume.
 
@@ -19,11 +18,8 @@ The system volume is managed globally by OpenHarmony and applies to all applicat
 The following lists the common stream types and their corresponding system volumes.
 
 - Media volume: used for media playback such as music, videos, and games.
-
 - Call volume: used for voice calls.
-
 - Ringtone volume: used for incoming call ringtones.
-
 - Alarm volume: used for alarm notifications.
 
 The application volume is a type of volume control provided by OpenHarmony for third-party applications to manage the volume of all audio streams within that application. Once set, all audio streams initiated by the application will use this volume level by default. In addition, applications with the system application permission can adjust the volume of specific applications by using their UIDs.
@@ -36,7 +32,6 @@ The following describes the relationship between the system volume, application 
 
   The adjustment range for the app volume and audio stream volume is limited by the system volume. For example, if the system media volume is set to 50% and the app volume is set to 100%, the final output volume of the application can only reach 50% (50% * 100%).<br>
   The audio stream volume provides finer-grained control over the app volume. Third-party applications that have set the app volume can further use the audio stream volume to exercise more precise control over specific audio streams.
-
 - Synergy: The final output volume of an application is determined collectively by the system volume, app volume, and audio stream volume. For example, if the system media volume is set to 50%, the app volume is set to 50%, and the audio stream volume for a media audio stream in the application is set to 100%, the final output volume of that audio stream is 25% (50% * 50% * 100%).
 
 OpenHarmony achieves precise volume control for applications through the coordinated use of the system volume, app volume, and audio stream volume.
@@ -112,6 +107,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 You can set an event to listen for system volume changes.
 
+> **NOTE**
+>
+> The system volumes of different output devices are independent of each other. When the output device of an audio stream changes, the system volume of that stream type on the current device may differ from that on the original device. You can [listen for changes in the highest-priority output device](audio-output-device-management.md#listening-for-changes-of-the-output-device-with-the-highest-priority), and after the device changes, re-query the volume value through the system volume query API [getVolumeByStream](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20) to update the volume state maintained on the application side.
+
 <!-- @[onStreamVolumeChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 ``` TypeScript
@@ -132,11 +131,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 <!--Del-->
-
 ### Adjusting the System Volume (for System Applications Only)
 
-Currently, adjusting the system volume is mainly conducted by using system APIs, which are available for the physical volume button and the Settings application. When the user presses the volume button, a system API is called to adjust the system volume, including the volume for media, ringtone, or notification.
-
+Currently, system volume adjustment mainly relies on system APIs, which serve the physical volume buttons and the Settings application. When the user presses the volume button, a system API is called to adjust the system volume, including the volume for media, ringtone, or notification.
 <!--DelEnd-->
 
 ### Adjusting the System Volume Using the Volume Panel
@@ -200,7 +197,6 @@ let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 ```
 
 <!--Del-->
-
 ### Adjusting the Application Volume Based on the UID (for System Applications Only)
 
 ``` TypeScript
@@ -240,7 +236,6 @@ let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
 audioVolumeManager.on('appVolumeChangeForUid', uid, appVolumeChangeForUidCallback);
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 ```
-
 <!--DelEnd-->
 
 ## Audio Stream Volume
@@ -281,7 +276,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 <!--Del-->
-
 ### Listening for Active Stream Changes (for System Applications Only)
 
 You can set an event to listen for active stream changes.
@@ -299,5 +293,4 @@ audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback)
 // Cancel all subscriptions to the event.
 audioVolumeManager.off('activeVolumeTypeChange');
 ```
-
 <!--DelEnd-->

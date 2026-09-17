@@ -1,12 +1,11 @@
 # Integrating the Lyrics Component
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend@devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J@devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f289f9b7f512c60afced71d0967cd3e528360476 translatedAt=2026-08-10T03:45:58.915Z pushedAt=2026-08-10T06:45:47.943Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:47:40.197Z pushedAt=2026-09-15T13:37:57.483Z -->
 
 Starting from API version 23, the system provides the lyrics component feature. The lyrics component is displayed as a floating window on the system desktop, supporting lyrics content display, component hiding, component locking, and other operations. Apps are not currently supported to customize the component style. This document describes the development steps for app access to the lyrics component.
 
@@ -14,7 +13,7 @@ Starting from API version 23, the system provides the lyrics component feature. 
 
 1. Call the [isDesktopLyricSupported](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23) API to check whether the system/device supports the lyrics component capability. If the callback returns `true`, the lyrics component capability is supported.
 
-2. Create an [AVSession instance](../avsession/avsession-access-scene.md#creating-avsession), and fill in LRC-format lyrics data through [setting metadata information](avsession-access-scene.md#setting-metadata-information), including time tags and corresponding lyrics text. For lyrics data that does not conform to the LRC format, the system may encounter parsing errors, resulting in failure to display the lyrics content.
+2. Create an [AVSession instance](../avsession/avsession-access-scene.md#creating-avsession), and fill in LRC-format lyrics data through [setting metadata information](../avsession/avsession-access-scene.md#setting-metadata-information), including time tags and corresponding lyrics text. For lyrics data that does not conform to the LRC format, the system may encounter parsing errors, resulting in failure to display the lyrics content.
 
 3. Call the [enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23) API to enable the lyrics component by passing `true` as the parameter.
 

@@ -3,10 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
-<!-- md-trans-meta sourceCommit=956fea084c5f89c2b8306f0b49ee44f16e3ae05f translatedAt=2026-08-04T12:26:05.135Z pushedAt=2026-08-04T13:16:34.236Z -->
+<!-- md-trans-meta sourceCommit=c599f82c02f7407b71e7915753c9241968205fc2 translatedAt=2026-09-14T09:35:33.510Z pushedAt=2026-09-15T13:32:05.091Z -->
 
 A set of effective internationalization guidelines for UI design can not only establish the tonality of products, but also ensure consistent user experience. Complying with the following guidelines can effectively improve the quality of your products targeted at global markets.
 
@@ -16,14 +16,14 @@ The length of translations can vary significantly across languages, which may ca
 
 **Table 1** Reserved space on the UI for translation
 
-| Number of English Characters| Ratio of Reserved Space| 
+| Number of English Characters| Ratio of Reserved Space|
 | -------- | -------- |
-| Less than or equal to 10| 100% to 200% | 
-| Greater than or equal to 11 and less than or equal to 20| 80% to 100% | 
-| Greater than or equal to 21 and less than or equal to 30| 60% to 80% | 
-| Greater than or equal to 31 and less than or equal to 50| 40% to 60% | 
-| Greater than or equal to 51 and less than or equal to 70| 30% to 40% | 
-| Greater than or equal to 71| 30% | 
+| Less than or equal to 10| 100% to 200% |
+| Greater than or equal to 11, less than or equal to 20 | 80%–100% |
+| Greater than or equal to 21, less than or equal to 30 | 60%–80% |
+| Greater than or equal to 31, less than or equal to 50 | 40%–60% |
+| Greater than or equal to 51, less than or equal to 70 | 30%–40% |
+| Greater than or equal to 71| 30% |
 
 ## UI Mirroring
 

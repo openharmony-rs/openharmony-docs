@@ -16,7 +16,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component can only be used in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ExceptionPromptV2**, the compilation toolchain will generate an additional node __Common__ and mount the universal attributes or universal events on __Common__, rather than directly applying them to **ExceptionPromptV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **ExceptionPromptV2**.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ExceptionPromptV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and mount the universal attributes or universal events on \_\_Common\_\_, rather than directly applying them to **ExceptionPromptV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **ExceptionPromptV2**.
 
 **Since:** 26.0.0
 
@@ -218,7 +218,7 @@ struct Index {
 }
 ```
 
-![ExceptionPromptV2-01](figures/image-exceptionpromptv2-01.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2 Setting an Exception Prompt of the Dialog Box Type
 
@@ -342,7 +342,7 @@ struct Index1 {
 }
 ```
 
-![ExceptionPromptV2_02](figures/image-exceptionpromptv2-02.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting a Symbol Icon
 
@@ -386,5 +386,4 @@ struct Index {
 }
 ```
 
-![ExceptionPromptV2_03](figures/image-exceptionpromptv2-03.png)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

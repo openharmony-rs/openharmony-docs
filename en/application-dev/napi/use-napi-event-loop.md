@@ -1,19 +1,16 @@
 # Running or Stopping an Event Loop in an Asynchronous Thread Using Node-API Extension APIs
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:41:53.141Z pushedAt=2026-08-12T11:16:00.360Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:42:08.784Z pushedAt=2026-09-16T08:26:16.356Z -->
 
 ## **Scenario**
-
 When calling asynchronous ArkTS APIs in the ArkTS running environment, you can use **napi_run_event_loop** to run an event loop and use **napi_stop_event_loop** to stop an event loop.
 
 ## Example
-
 If asynchronous ArkTS APIs are called, you can use **napi_run_event_loop** to run the events in the asynchronous thread cyclically. The underlying asynchronous tasks in the event queue will be processed based on the event loop mode. Currently, Node-API provides two modes for running event loops: **napi_event_mode_nowait** and **napi_event_mode_default**.
 
 If **napi_event_mode_nowait** is used, the current asynchronous thread will not be blocked while the system attempts to process a task in the underlying event queue. After the task is complete, the event loop stops. If there is no task in the event queue, the event loop stops immediately.
@@ -21,9 +18,7 @@ If **napi_event_mode_nowait** is used, the current asynchronous thread will not 
 If **napi_event_mode_default** is used, the system blocks the current asynchronous thread and keeps trying to obtain tasks from the event queue and execute these tasks. If you do not want the current thread to be blocked, use **napi_stop_event_loop** to stop the event loop.
 
 ### Sample Code
-
 - Functionality implementation
-
   <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
 
   ``` C++
@@ -187,7 +182,6 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
   ```
 
 - Declare the APIs.
-
   <!-- @[napi_event_loop_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
   ``` TypeScript
@@ -196,9 +190,7 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
   ```
 
 - Configure the compile settings.
-
 1. Configure the CMakeLists.txt file as follows:
-
    ``` text
    // CMakeLists.txt
    # the minimum version of CMake.
@@ -236,7 +228,6 @@ If **napi_event_mode_default** is used, the system blocks the current asynchrono
    ```
 
 - ArkTS sample code
-
   ``` TypeScript
   // Import the header file.
   import testNapi from 'libentry.so'

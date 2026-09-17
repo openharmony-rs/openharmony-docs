@@ -3,9 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
-<!--Designer: @wangyanglan; @liumingxiang-->
+<!--Designer: @wanyanglan; @liumingxiang-->
 <!--Tester: @nobuggers; @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=aa0a67ae9790115e74a1e29268966a05ae945ba8 translatedAt=2026-09-09T03:04:09.177Z pushedAt=2026-09-09T04:05:31.085Z -->
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
@@ -226,3 +227,4 @@
 - Error Codes<!--arkgraphics-arkts-errcode-->
   - [colorSpaceManager Error Codes](errorcode-colorspace-manager.md)
   - [Drawing and Display Error Codes](errorcode-drawing.md)
+

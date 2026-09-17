@@ -660,7 +660,7 @@ struct Index {
 
  **配置参考**
  
-1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）。
 2. 配置请求级CA证书：
    - 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
    - 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
@@ -720,7 +720,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 **JSON配置文件示例**
 
-预置应用级证书的配置例子如下（具体配置路径可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）：
+预置应用级证书的配置例子如下（具体配置路径可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）：
 
 ```json
 {
@@ -828,7 +828,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 ### 配置不信任用户安装的CA证书
 
-系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)。
 
 ```json5
 {
@@ -841,7 +841,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 ```
 ### 明文HTTP访问权限配置说明
 
-该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)。
 > **说明：**
 >
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
@@ -866,7 +866,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
       }
     ],
     "component-config": {
-        "Request": true, // 可选，自API version 20开始支持配置该属性，默认值为true。配置为true表示支持禁止明文传输，false表示不支持禁止明文传输。
+        "Request": true, // 可选，自API version 20开始支持配置该属性，默认值为true。配置为true表示开启明文HTTP功能，配置为false表示关闭明文HTTP功能。
         "Network Kit": true, // 可选，自API version 20开始支持配置该属性。
         "ArkWeb": false, // 可选，自API version 20开始支持配置该属性。
         "Media Kit": false, // 可选，自API version 23开始支持配置该属性。
@@ -886,11 +886,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true表示适用于子域，false表示不适用于子域。默认为true。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。默认为true。 |
 |name         | string         | 否| 配置主域名。 |
 |component-config<sup>20+</sup>                    | object         |  否| 指示每个组件的明文配置。优先级最高。|
-|Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。|
-|Network Kit                 | boolean          |否| Network Kit从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。 |
-|ArkWeb                    | boolean          |否| ArkWeb从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
-|Media Kit                    | boolean          |否| Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
-|Remote Communication Kit                    | boolean          |否| Remote Communication Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
+|Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示配置开启，false表示配置关闭，默认为true。|
+|Network Kit                 | boolean          |否| Network Kit从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示配置开启，false表示配置关闭，默认为true。 |
+|ArkWeb                    | boolean          |否| ArkWeb从API version 20开始支持配置开启或关闭明文HTTP功能。true表示配置开启，false表示配置关闭，默认为false。 |
+|Media Kit                    | boolean          |否| Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示配置开启，false表示配置关闭，默认为false。 |
+|Remote Communication Kit                    | boolean          |否| Remote Communication Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示配置开启，false表示配置关闭，默认为false。 |
 
 ## HTTP拦截器
 

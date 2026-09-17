@@ -4,13 +4,14 @@
 <!--Owner: @jsjzju-->
 <!--Designer: @jsjzju-->
 <!--Tester: @lixueqing-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=d6c75d7117be51a617a4e8ef9c1ecbe1ea65d494 translatedAt=2026-09-09T03:03:09.690Z pushedAt=2026-09-09T03:23:18.377Z -->
 
 This topic describes how to use functions in common compression and decompression scenarios.
 
 ## Available APIs
 
-For details about more APIs and their usage, see [Zip](../../reference/apis-basic-services-kit/js-apis-zlib.md).
+The following are the main APIs used in the example. For more APIs and their usage, see [@ohos.zlib (Zip Module)](../../reference/apis-basic-services-kit/js-apis-zlib.md).
 
 | API                                                      | Description                    |
 | ------------------------------------------------------------ | ---------------------------- |
@@ -29,7 +30,7 @@ For details about more APIs and their usage, see [Zip](../../reference/apis-basi
 Create a test file **data.txt** in the application sandbox directory and write data for testing. The sample code is as follows:
 
   <!-- @[deflate_and_inflate_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages/Index.ets) -->
-  
+
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
   
@@ -68,9 +69,9 @@ Create a test file **data.txt** in the application sandbox directory and write d
 ### Compressing and Decompressing .zip Files
 
 Use [zlib.compressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibcompressfile9-1) to compress the **data.txt** into to the **data.zip** file, and use [zlib.decompressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.md#zlibdecompressfile9-1) to decompress the .zip file to the application sandbox directory. The sample code is as follows:
-  
+
   <!-- @[deflate_and_inflate_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages1/Index.ets) -->
-  
+
   ``` TypeScript
   import { BusinessError, zlib } from '@kit.BasicServicesKit';
   
@@ -113,10 +114,10 @@ Use [zlib.compressFile()](../../reference/apis-basic-services-kit/js-apis-zlib.m
 
 ### Compressing and Decompressing Buffers of Known Sizes
 
-For data in a buffer with a known size, use [compress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compress12) to compress the data into a destination buffer, [compressBound()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compressbound12) to calculate the upper limit of the compression size of the destination buffer, and [uncompress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#uncompress12) to decompress the buffer that stores the compressed data. To check the size of the destination buffer after decompression, obtain and save the original data size before compression. The sample code is as follows:
+For data in a buffer of a known size, use [compress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compress12) to compress it into a destination buffer, use [compressBound()](../../reference/apis-basic-services-kit/js-apis-zlib.md#compressbound12) to calculate the upper limit of the destination buffer size, and use [uncompress()](../../reference/apis-basic-services-kit/js-apis-zlib.md#uncompress12) to decompress the buffer that stores the compressed data. Since the size of the original data after decompression cannot be obtained during decompression, to determine the size of the destination buffer after decompression, you need to obtain and save the size of the original data before compression. The following is the example code.
 
   <!-- @[deflate_and_inflate_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages2/Index.ets) -->
-  
+
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
   import { BusinessError, zlib } from '@kit.BasicServicesKit';
@@ -199,12 +200,13 @@ For data in a buffer with a known size, use [compress()](../../reference/apis-ba
   }
   ```
 
+
 ### Compressing and Decompressing Buffers of Unknown Sizes (.zlib Format)
 
 For data in a buffer with an unknown size, use [deflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#deflate12) to compress the data read from an original input stream and [inflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#inflate12) to decompress the data read from a compressed input stream. The sample code is as follows:
 
-  <!-- @[deflate_and_inflate_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages3/Index.ets) -->
-  
+  <!-- @[deflate_and_inflate_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages3/Index.ets)  -->
+
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
   import { zlib } from '@kit.BasicServicesKit';
@@ -252,17 +254,25 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
     let outBuf = new ArrayBuffer(BUFLEN); // Initialize an output buffer.
     // Create a compressed object instance.
     let zip = zlib.createZipSync();
-    // Initialize the stream status.
-    let initStatus = zip.deflateInit(strm, zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED);
-    console.info('deflateInit ret: ' + (await initStatus).valueOf());
+    try {
+      // Initialize the stream state.
+      let initStatus = zip.deflateInit(strm, zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED);
+      console.info('deflateInit ret: ' + (await initStatus).valueOf());
+    } catch (err) {
+      console.info('deflateInit err: ' + JSON.stringify(err));
+    }
     do {
-      // Read data from a file to a buffer.
-      let readLen = fs.readSync(src.fd, inBuf);
-      console.info('readSync readLen: ' + readLen);
-      flush = readLen == 0 ? zlib.CompressFlushMode.FINISH : zlib.CompressFlushMode.NO_FLUSH;
-      // Set the input buffer.
-      strm.availableIn = readLen;
-      strm.nextIn = inBuf;
+      try {
+        // Read data from the file into the buffer.
+        let readLen = fs.readSync(src.fd, inBuf);
+        console.info('readSync readLen: ' + readLen);
+        flush = readLen == 0 ? zlib.CompressFlushMode.FINISH : zlib.CompressFlushMode.NO_FLUSH;
+        // Set the input buffer.
+        strm.availableIn = readLen;
+        strm.nextIn = inBuf;
+      } catch (err) {
+        console.info('readSync err: ' + JSON.stringify(err));
+      }
       do {
         // Set the output buffer.
         strm.availableOut = BUFLEN;
@@ -291,8 +301,12 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
         }
       } while (strm.availableOut == 0); // Compress the remaining data in the input buffer cyclically until all data is compressed.
     } while (flush != zlib.CompressFlushMode.FINISH); // Read data from the file cyclically until all data is read.
-    // Release resources.
-    zip.deflateEnd(strm);
+    try {
+      // Release resources.
+      zip.deflateEnd(strm);
+    } catch (err) {
+      console.info('deflateEnd err: ' + JSON.stringify(err));
+    }
   }
   
   // Continuously read compressed data from a file, decompress the data, and write the data to another file.
@@ -304,19 +318,27 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
     let outBuf = new ArrayBuffer(BUFLEN); // Initialize an output buffer.
     // Create a compressed object instance.
     let zip = zlib.createZipSync();
-    // Initialize the stream status.
-    let initStatus = zip.inflateInit(strm);
-    console.info('inflateInit ret: ' + (await initStatus).valueOf());
+    try {
+      // Initialize the stream state.
+      let initStatus = zip.inflateInit(strm);
+      console.info('inflateInit ret: ' + (await initStatus).valueOf());
+    } catch (err) {
+      console.info('inflateInit err: ' + JSON.stringify(err));
+    }
     do {
-      // Read the compressed data from the file to the buffer.
-      let readLen = fs.readSync(src.fd, inBuf);
-      console.info('readSync readLen: ' + readLen);
-      if (readLen == 0) {
-        break;
+      try {
+        // Read compressed data from the file into the buffer.
+        let readLen = fs.readSync(src.fd, inBuf);
+        console.info('readSync readLen: ' + readLen);
+        if (readLen == 0) {
+          break;
+        }
+        // Set the input buffer.
+        strm.availableIn = readLen;
+        strm.nextIn = inBuf;
+      } catch (err) {
+        console.info('readSync err: ' + JSON.stringify(err));
       }
-      // Set the input buffer.
-      strm.availableIn = readLen;
-      strm.nextIn = inBuf;
       do {
         // Set the output buffer.
         strm.availableOut = BUFLEN;
@@ -346,18 +368,21 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
         }
       } while (strm.availableOut == 0)  // Decompress the remaining data in the input buffer cyclically until all data is decompressed.
     } while (status != zlib.ReturnStatus.STREAM_END.valueOf())  // Read data from the file cyclically until all data is read.
-    // Release resources.
-    zip.inflateEnd(strm);
+    try {
+      // Release resources.
+      zip.inflateEnd(strm);
+    } catch (err) {
+      console.info('inflateEnd err: ' + JSON.stringify(err));
+    }
   }
   ```
-
 
 ### Compressing and Decompressing Buffers of Unknown Sizes (.gzip Format)
 
 For data in a buffer with an unknown size, use [deflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#deflate12) to compress the data read from an original input stream and [inflate()](../../reference/apis-basic-services-kit/js-apis-zlib.md#inflate12) to decompress the data read from a compressed input stream. The sample code is as follows:
 
-  <!-- @[deflate_and_inflate_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages4/Index.ets) -->
-  
+  <!-- @[deflate_and_inflate_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/DeflateAndInflate/entry/src/main/ets/pages4/Index.ets)  -->
+
   ``` TypeScript
   import { fileIo as fs} from '@kit.CoreFileKit';
   import { zlib } from '@kit.BasicServicesKit';
@@ -405,20 +430,28 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
     let outBuf = new ArrayBuffer(BUFLEN); // Initialize an output buffer.
     // Create a compressed object instance.
     let zip = zlib.createZipSync();
-    // Initialize the stream status. If windowBits is greater than 15, the .gzip format is used.
-    let windowBits = 15 + 16;
-    let initStatus = zip.deflateInit2(strm, zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED,
-      zlib.CompressMethod.DEFLATED, windowBits, zlib.MemLevel.MEM_LEVEL_DEFAULT,
-      zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY);
-    console.info('deflateInit2 ret: ' + (await initStatus).valueOf());
+    try {
+      // Initialize the stream state. Enable gzip format when windowBits > 15.
+      let windowBits = 15 + 16;
+      let initStatus = zip.deflateInit2(strm, zlib.CompressLevel.COMPRESS_LEVEL_BEST_SPEED,
+        zlib.CompressMethod.DEFLATED, windowBits, zlib.MemLevel.MEM_LEVEL_DEFAULT,
+        zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY);
+      console.info('deflateInit2 ret: ' + (await initStatus).valueOf());
+    } catch (err) {
+      console.info('deflateInit2 err: ' + JSON.stringify(err));
+    }
     do {
-      // Read data from a file to a buffer.
-      let readLen = fs.readSync(src.fd, inBuf);
-      console.info('readSync readLen: ' + readLen);
-      flush = readLen == 0 ? zlib.CompressFlushMode.FINISH : zlib.CompressFlushMode.NO_FLUSH;
-      // Set the input buffer.
-      strm.availableIn = readLen;
-      strm.nextIn = inBuf;
+      try {
+        // Read data from the file into the buffer.
+        let readLen = fs.readSync(src.fd, inBuf);
+        console.info('readSync readLen: ' + readLen);
+        flush = readLen == 0 ? zlib.CompressFlushMode.FINISH : zlib.CompressFlushMode.NO_FLUSH;
+        // Set the input buffer.
+        strm.availableIn = readLen;
+        strm.nextIn = inBuf;
+      } catch (err) {
+        console.info('readSync err: ' + JSON.stringify(err));
+      }
       do {
         // Set the output buffer.
         strm.availableOut = BUFLEN;
@@ -447,8 +480,12 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
         }
       } while (strm.availableOut == 0); // Compress the remaining data in the input buffer cyclically until all data is compressed.
     } while (flush != zlib.CompressFlushMode.FINISH); // Read data from the file cyclically until all data is read.
-    // Release resources.
-    zip.deflateEnd(strm);
+    try {
+      // Release resources.
+      zip.deflateEnd(strm);
+    } catch (err) {
+      console.info('deflateEnd err: ' + JSON.stringify(err));
+    }
   }
   
   // Continuously read compressed data from a file, decompress the data, and write the data to another file.
@@ -460,20 +497,28 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
     let outBuf = new ArrayBuffer(BUFLEN); // Initialize an output buffer.
     // Create a compressed object instance.
     let zip = zlib.createZipSync();
-    // Initialize the stream status. If windowBits is greater than 15, the .gzip format is used.
-    let windowBits = 15 + 16;
-    let initStatus = zip.inflateInit2(strm, windowBits);
-    console.info('inflateInit2 ret: ' + (await initStatus).valueOf());
+    try {
+      // Initialize the stream state. Enable gzip format when windowBits > 15.
+      let windowBits = 15 + 16;
+      let initStatus = zip.inflateInit2(strm, windowBits);
+      console.info('inflateInit2 ret: ' + (await initStatus).valueOf());
+    } catch (err) {
+      console.info('inflateInit2 err: ' + JSON.stringify(err));
+    }
     do {
-      // Read the compressed data from the file to the buffer.
-      let readLen = fs.readSync(src.fd, inBuf);
-      console.info('readSync readLen: ' + readLen);
-      if (readLen == 0) {
-        break;
+      try {
+        // Read compressed data from the file into the buffer.
+        let readLen = fs.readSync(src.fd, inBuf);
+        console.info('readSync readLen: ' + readLen);
+        if (readLen == 0) {
+          break;
+        }
+        // Set the input buffer.
+        strm.availableIn = readLen;
+        strm.nextIn = inBuf;
+      } catch (err) {
+        console.info('readSync err: ' + JSON.stringify(err));
       }
-      // Set the input buffer.
-      strm.availableIn = readLen;
-      strm.nextIn = inBuf;
       do {
         // Set the output buffer.
         strm.availableOut = BUFLEN;
@@ -503,18 +548,21 @@ For data in a buffer with an unknown size, use [deflate()](../../reference/apis-
         }
       } while (strm.availableOut == 0)  // Decompress the remaining data in the input buffer cyclically until all data is decompressed.
     } while (status != zlib.ReturnStatus.STREAM_END.valueOf())  // Read data from the file cyclically until all data is read.
-    // Release resources.
-    zip.inflateEnd(strm);
+    try {
+      // Release resources.
+      zip.inflateEnd(strm);
+    } catch (err) {
+      console.info('inflateEnd err: ' + JSON.stringify(err));
+    }
   }
   ```
-
 
 ## FAQs
 
 1. 17800005 Incorrect Input Data
 
-   For details about the possible causes and solution, see [error code 17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-incorrect-input-data).
+   For possible causes and handling steps, see error code [17800005](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800005-incorrect-input-data).
 
 2. 17800007 Incorrect Input Buffer
 
-   For details about the possible causes and solution, see [error code 17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-incorrect-input-buffer).
+   For possible causes and handling steps, see error code [17800007](../../reference/apis-basic-services-kit/errorcode-zlib.md#17800007-incorrect-input-buffer).

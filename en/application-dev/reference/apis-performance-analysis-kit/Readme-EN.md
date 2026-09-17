@@ -15,12 +15,12 @@
   - [@ohos.hiTraceMeter (HiTraceMeter)](js-apis-hitracemeter.md)
   - [@ohos.hiviewdfx.FaultLogExtensionAbility (Delayed Fault Notification)](js-apis-hiviewdfx-FaultLogExtensionAbility.md)
   - [@ohos.hiviewdfx.FaultLogExtensionContext (Delayed Fault Notification Context)](js-apis-hiviewdfx-FaultLogExtensionContext.md)
-  - [@ohos.hiviewdfx.hiAppEvent (HiAppEvent)](js-apis-hiviewdfx-hiappevent.md)
+  - [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](js-apis-hiviewdfx-hiappevent.md)
   - [@ohos.hiviewdfx.hiRetrieval (Application Grayscale)](js-apis-hiretrieval.md)
   - [@ohos.hiviewdfx.jsLeakWatcher (JS Leak Watcher)](js-apis-jsleakwatcher.md)
   <!--Del-->
   - [@ohos.hiSysEvent (HiSysEvent)(System API)](js-apis-hisysevent-sys.md)
-  - [@ohos.logLibrary (Log Library)(System API)](js-apis-loglibrary-sys.md)
+  - [@ohos.logLibrary (Log Library) (System API)](js-apis-loglibrary-sys.md)
   <!--DelEnd-->
   - APIs No Longer Maintained<!--performance-analysis-arkts-dep-->
     - [@ohos.bytrace (ByTrace)](js-apis-bytrace.md)

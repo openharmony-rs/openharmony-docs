@@ -1,4 +1,4 @@
-# @ohos.enterprise.applicationManager（应用管理）
+# @ohos.enterprise.applicationManager (应用管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -32,14 +32,14 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 > **说明：**
 >
 > 若指定应用正在运行，将其加入禁止名单后，系统将立即终止该应用进程。
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -89,13 +89,15 @@ removeDisallowedRunningBundlesSync(admin: Want, appIds:  Array\<string>, account
 
 将应用从当前/指定用户下的应用运行禁止名单中移除。移除后，该应用将允许在当前/指定用户下运行。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -262,14 +264,14 @@ addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId:
 > 2. 如果应用运行禁止名单非空，不支持再使用本接口添加应用运行允许名单，否则会报9200010冲突错误码。应用运行禁止名单相关接口包括[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated-1)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundlesdeprecated-2)<!--DelEnd-->。
 >
 > 3. 本接口仅对三方应用生效，系统应用不受该名单管控，默认可以运行。
+>
+> 4. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -319,13 +321,15 @@ removeAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, account
 
 将应用从指定用户下的应用运行允许名单中移除。移除后，该应用将不允许在指定用户下运行。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -482,6 +486,10 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 
 为当前用户添加开机自启动应用名单。通过本接口添加至自启动名单的应用，禁止用户在设备上手动取消应用自启动<!--RP4--><!--RP4End-->，但可通过[removeAutoStartApps](#applicationmanagerremoveautostartapps)接口将应用从自启动名单中移除。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -489,8 +497,6 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 **设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。从API version 24开始，该接口新增支持配置应用开机自启时是否隐藏UI界面，隐藏UI界面的能力仅在PC/2in1和Tablet的PC模式中可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -537,7 +543,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.addAutoStartApps(wantTemp, autoStartApps);
   console.info('Succeeded in adding auto start applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add auto start applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -548,6 +554,10 @@ removeAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 
 为当前用户删除开机自启动应用名单。删除后，应用将不再开机自启动。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -555,8 +565,6 @@ removeAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 **设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -598,7 +606,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.removeAutoStartApps(wantTemp, autoStartApps);
   console.info('Succeeded in removing auto start applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -608,6 +616,10 @@ removeAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number)
 
 删除指定用户的开机自启动应用名单中的指定应用。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -615,8 +627,6 @@ removeAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number)
 **设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -659,7 +669,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.removeAutoStartApps(wantTemp, autoStartApps, 100);
   console.info('Succeeded in removing auto start applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove auto start applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -718,7 +728,7 @@ let wantTemp: Want = {
 try {
   let res: Array<Want> = applicationManager.getAutoStartApps(wantTemp);
   console.info(`Succeeded in adding auto start apps: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -735,7 +745,7 @@ try {
     }
   },
   // ...
-]
+];
 ```
 
 
@@ -803,13 +813,17 @@ try {
     }
   },
   // ...
-]
+];
 ```
 ## applicationManager.addAutoStartApps<sup>20+</sup>
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
 
 为指定用户添加开机自启动应用名单，并设置是否禁止该用户手动取消应用自启动<!--RP4--><!--RP4End-->。<br>通过本接口、[addAutoStartApps](#applicationmanageraddautostartapps)接口均可添加开机自启动应用名单，两个接口的设置可同时生效。同一用户下，开机自启动应用名单最多支持包含10个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加7个应用。
+
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -818,8 +832,6 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, di
 **设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。从API version 24开始，该接口新增支持配置应用开机自启时是否隐藏UI界面，隐藏UI界面的能力仅在PC/2in1和Tablet的PC模式中可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -868,7 +880,7 @@ let autoStartApps: Array<Want> = [
 try {
   applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
   console.info('Succeeded in adding auto start applications and set disallowModify.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -927,7 +939,7 @@ let wantTemp: Want = {
 try {
   let res: Array<Want> = applicationManager.getAutoStartApps(wantTemp, 100);
   console.info(`Succeeded in getting auto start apps: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -944,7 +956,7 @@ try {
     }
   },
   // ...
-]
+];
 ```
 
 
@@ -1012,7 +1024,7 @@ try {
     }
   },
   // ...
-]
+];
 ```
 ## applicationManager.isModifyAutoStartAppsDisallowed<sup>20+</sup>
 
@@ -1073,7 +1085,7 @@ let autoStartApp: Want = {
 try {
   let res: boolean = applicationManager.isModifyAutoStartAppsDisallowed(wantTemp, autoStartApp, 100);
   console.info(`Succeeded in getting disallow modify auto start app: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get disallow modify auto start app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1084,6 +1096,15 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): v
 
 添加保活应用名单，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<!--RP7--><!--RP7End--><br>通过本接口添加至保活名单的应用，禁止用户在设备上手动取消保活<!--RP6--><!--RP6End-->，但可通过[removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14)接口将应用从保活名单中移除。<br>如果将应用添加至应用禁止运行名单[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
 
+> **说明：**
+>
+>- 应用如果需要支持保活，其[module.json5配置文件](../../quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当mainElement启动后，系统才会执行应用保活操作。
+>- 在PC/2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
+>- 当被保活的应用进程退出时，系统将尝试重启该进程，连续3次重启失败后将不再继续重启。
+>- 被保活的应用卸载后，会将该应用从保活名单中移除。
+>- 若应用添加到保活名单时未启动，后续启动时保活失败，将从保活名单中移除。
+>- 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1091,8 +1112,6 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): v
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1144,6 +1163,15 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, di
 
 添加保活应用名单，并设置是否禁止用户手动取消保活，添加后将自动保活应用进程。在开机和应用被杀死后，由系统主动拉起应用进程。<br>通过本接口、[addKeepAliveApps](#applicationmanageraddkeepaliveapps14)接口均可添加保活应用名单，两个接口的设置可同时生效。同一用户下，保活应用名单最多支持包含5个应用。例如：若当前名单中已有3个应用，则最多还能通过本接口为当前用户添加2个应用。<br>如果通过[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)接口将应用添加至应用禁止运行名单，就不能将应用添加至保活应用名单，否则会报9200010冲突错误码。<br>如果需要在Phone/Tablet设备使用类似功能，可以调用[addUserNonStopApps](#applicationmanageraddusernonstopapps22)或者[addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22)接口，具体功能请参考相关文档。
 
+> **说明：**
+>
+>- 应用如果需要支持保活，其[module.json5配置文件](../../quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当mainElement启动后，系统才会执行应用保活操作。
+>- 在PC/2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
+>- 当被保活的应用进程退出时，系统将尝试重启该进程，连续3次重启失败后将不再继续重启。
+>- 被保活的应用卸载后，会将该应用从保活名单中移除。
+>- 若应用添加到保活名单时未启动，后续启动时保活失败，将从保活名单中移除。
+>- 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1151,8 +1179,6 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, di
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1205,6 +1231,10 @@ removeKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number)
 
 移除保活应用名单中的指定应用。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1212,8 +1242,6 @@ removeKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number)
 **设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用无效果。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1310,7 +1338,7 @@ let wantTemp: Want = {
 
 try {
   let result: Array<string> = applicationManager.getKeepAliveApps(wantTemp, 100);
-  console.info('Succeeded in getting keep alive apps.');
+  console.info(`Succeeded in getting keep alive apps. Result is ${result}`);
 } catch (err) {
   console.error(`Failed to get keep alive apps. Code is ${err.code}, message is ${err.message}`);
 }
@@ -1426,7 +1454,7 @@ let keepAliveApp: string = 'com.example.keepAliveApplication';
 try {
   let res: boolean = applicationManager.isModifyKeepAliveAppsDisallowed(wantTemp, 100, keepAliveApp);
   console.info(`Succeeded in getting disallow modify keep alive app: ${JSON.stringify(res)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get disallow modify keep alive app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1494,13 +1522,15 @@ setAllowedKioskApps(admin: Want, appIdentifiers: Array&lt;string&gt;): void
 
 Kiosk模式为系统层面提供的一种应用运行模式，该模式下会将设备锁定在单个应用或者一组应用运行，同时对锁屏状态、状态栏、手势操作和关键功能进行控制，防止用户在设备上启动其它应用或执行其它操作。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_KIOSK
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1693,13 +1723,15 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
 在非Kiosk模式下，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_KIOSK
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **设备行为差异：** 该接口在PC/2in1设备上调用无效果，在Phone和Tablet设备上可正常调用。
 
@@ -1757,6 +1789,10 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 
 从API版本26.0.0开始，调用[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount)接口禁用[SUPER_HUB](./js-apis-enterprise-restrictions.md#featureforaccount)后，再调用该接口将中转站添加到不可关停应用名单时，会发生策略冲突，抛出9200010错误码。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1764,8 +1800,6 @@ addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applicatio
 **设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API version 24开始，该接口在PC/2in1设备可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1810,7 +1844,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.addUserNonStopApps(wantTemp, applicationInstances);
   console.info('Succeeded in adding UserNonStop applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1821,6 +1855,10 @@ removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applica
 
 为指定用户删除不可关停应用名单。删除后，用户可以在设备上正常关停该应用。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1828,8 +1866,6 @@ removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applica
 **设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API version 24开始，该接口在PC/2in1设备可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1873,7 +1909,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.removeUserNonStopApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing UserNonStop applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1931,7 +1967,7 @@ let wantTemp: Want = {
 try {
   let result: Array<common.ApplicationInstance> = applicationManager.getUserNonStopApps(wantTemp);
   console.info(`Succeeded in getting UserNonStop applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get UserNonStop applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -1994,6 +2030,10 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.Applica
 
 冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -2001,8 +2041,6 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.Applica
 **设备行为差异：** 在API版本26.0.0之前，该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API版本26.0.0开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2046,7 +2084,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.addFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in adding FreezeExempted applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2057,6 +2095,10 @@ removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.Appl
 
 为指定用户删除后台防冻结应用名单。删除后，应用可以被系统冻结。执行删除策略时，若参数列表中包含未安装应用，删除操作仍能成功执行；已安装的应用将被删除，未安装的应用不影响删除操作。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -2064,8 +2106,6 @@ removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.Appl
 **设备行为差异：** 在API版本26.0.0之前，该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API版本26.0.0开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2109,7 +2149,7 @@ let applicationInstances: Array<common.ApplicationInstance> = [
 try {
   applicationManager.removeFreezeExemptedApps(wantTemp, applicationInstances);
   console.info('Succeeded in removing FreezeExempted applications.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2167,7 +2207,7 @@ let wantTemp: Want = {
 try {
   let result: Array<common.ApplicationInstance> = applicationManager.getFreezeExemptedApps(wantTemp);
   console.info(`Succeeded in getting FreezeExempted applications, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get FreezeExempted applications. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2228,13 +2268,15 @@ setAbilityDisabled(admin: Want, bundleName: string, accountId: number, abilityNa
 
 设置是否禁用指定应用（系统应用和三方应用均支持）的Ability组件。当前仅支持UIAbility类型，禁用后无法拉起此Ability组件的用户界面。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -2276,7 +2318,7 @@ try {
   let abilityName: string = "EntryAbility";
   applicationManager.setAbilityDisabled(wantTemp, bundleName, accountId, abilityName, true);
   console.info('Succeeded in setting ability disabled');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set ability disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2340,7 +2382,7 @@ try {
   let abilityName: string = "EntryAbility";
   let isDisabled: boolean = applicationManager.isAbilityDisabled(wantTemp, bundleName, accountId, abilityName);
   console.info(`Succeeded in querying whether the ability is disabled, isDisabled: ${isDisabled}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2424,6 +2466,8 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 > 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
 >
 > 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
+>
+> 8.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -2432,8 +2476,6 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -2480,7 +2522,7 @@ try {
   let abilityName: string = 'EntryAbility';
   applicationManager.addDockApp(wantTemp, bundleName, abilityName, 3);
   console.info('Succeeded in adding dock app.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add dock app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2542,7 +2584,7 @@ try {
   let abilityName: string = 'EntryAbility';
   applicationManager.removeDockApp(wantTemp, bundleName, abilityName);
   console.info('Succeeded in removing dock app.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove dock app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2599,7 +2641,7 @@ let wantTemp: Want = {
 try {
   let result: Array<applicationManager.DockInfo> = applicationManager.getDockApps(wantTemp);
   console.info(`Succeeded in getting dock apps, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2613,7 +2655,7 @@ try {
     "index": 5
   },
   // ...
-]
+];
 ```
 
 
@@ -2628,7 +2670,8 @@ addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, account
 > 1.如果Kiosk模式与通知允许名单策略同时设置，那么设置Kiosk模式的应用与通知允许名单中的应用都可以发送通知。<br>
 > 2.当已经通过[setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated)设置了禁用设备通知能力时，再通过本接口设置通知允许名单，会抛出错误码9200010。<br>
 > 3.通知允许名单对系统服务不生效，系统服务始终可以发送通知。系统应用受通知允许名单管控。<br>
-> 4.支持跨用户设置，设置后跨用户立即生效。
+> 4.支持跨用户设置，设置后跨用户立即生效。<br>
+> 5.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -2637,8 +2680,6 @@ addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, account
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2690,13 +2731,15 @@ removeAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, acco
 
 **起始版本：** 26.0.0
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2807,7 +2850,8 @@ addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;str
 > **说明：**
 >
 > 1.如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
-> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。
+> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。<br>
+> 3.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -2816,8 +2860,6 @@ addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;str
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2866,9 +2908,10 @@ try {
 try {
   // 需根据实际情况进行替换
   let appIdentifiers: Array<string> = ['6917****3569'];
-  applicationManager.addAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  applicationManager.addAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers,
+    applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
   console.info('Succeeded in adding allowed distribute ability conn bundles.');
-} catch(err) {
+} catch (err) {
   console.error(`Failed to add allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
 }
 // 执行以上两个步骤后，在100用户下，仅应用6917****3569可以通过协同业务向其他设备传输数据，其他应用无法向其他设备传输数据。
@@ -2883,13 +2926,15 @@ removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;
 
 **起始版本：** 26.0.0
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2927,10 +2972,11 @@ try {
   // 需根据实际情况进行替换
   let appIdentifiers: Array<string> = ['6917****3569'];
   let accountId: number = 100;
-  applicationManager.removeAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  applicationManager.removeAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers,
+    applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
   console.info('Succeeded in removing allowed distribute ability conn bundles.');
   // 注意：移除用户下允许使用协同业务的应用名单后，是否需要解除禁用该用户下的设备间单向传输数据能力，应根据实际业务需求判断。
-} catch(err) {
+} catch (err) {
   console.error(`Failed to remove allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -2989,9 +3035,10 @@ let wantTemp: Want = {
 try {
   // 需根据实际情况进行替换
   let accountId: number = 100;
-  let result: Array<string> = applicationManager.getAllowedDistributeAbilityConnBundles(wantTemp, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
+  let result: Array<string> = applicationManager.getAllowedDistributeAbilityConnBundles(wantTemp,
+    applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
   console.info(`Succeeded in getting allowed distribute ability conn bundles: ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -3077,17 +3124,17 @@ async function queryTrafficStats() {
     // 需根据实际情况进行替换
     type: connection.NetBearType.BEARER_CELLULAR,
     // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 00:00:00.000的数据（月份从0开始计算）
-    startTime: Math.floor(new Date(2026, 3, 15, 0, 0, 0, 0).getTime() / 1000),
-    endTime: Math.floor(new Date(2026, 3, 16, 0, 0, 0, 0).getTime() / 1000),
+    startTime: Math.floor(new Date(2026, 4, 15, 0, 0, 0, 0).getTime() / 1000),
+    endTime: Math.floor(new Date(2026, 4, 16, 0, 0, 0, 0).getTime() / 1000),
     // 网络类型为BEARER_CELLULAR时，需要传simId；网络类型为BEARER_WIFI时，不需要传simId；
     simId: simId
-  }
+  };
   await applicationManager.queryTrafficStats(wantTemp, bundleName, appIndex, accountId, networkInfo)
     .then(result => {
       console.info('Succeeded in querying traffic stats.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to query traffic stats. Code is ${error.code}, message is ${error.message}`);
-    })
+    });
 }
 ```
 
@@ -3145,9 +3192,10 @@ let bundleName: string = 'com.example.myapplication';
 // 被查询应用的分身索引，需根据实际情况进行替换
 let appIndex: number = 0;
 try {
-  let result: Array<applicationManager.WindowStateInfo> = applicationManager.getApplicationWindowStates(wantTemp, bundleName, appIndex);
+  let result: Array<applicationManager.WindowStateInfo> =
+    applicationManager.getApplicationWindowStates(wantTemp, bundleName, appIndex);
   console.info(`Succeeded in getting application window states, result: ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get application window states. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -3301,12 +3349,13 @@ let wantTemp: Want = {
 
 try {
   // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 23:59:59.999的数据（月份从0开始计算）
-  let startTime: number = new Date(2026, 3, 15, 0, 0, 0, 0).getTime();
-  let endTime: number = new Date(2026, 3, 16, 23, 59, 59, 999).getTime();
+  let startTime: number = new Date(2026, 4, 15, 0, 0, 0, 0).getTime();
+  let endTime: number = new Date(2026, 4, 16, 23, 59, 59, 999).getTime();
   let accountId: number = 100;
-  let result: Array<applicationManager.BundleStatsInfo> = applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
+  let result: Array<applicationManager.BundleStatsInfo> =
+    applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
   console.info(`Succeeded in querying bundle stats infos, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -3333,9 +3382,10 @@ try {
   let startTime: number = lastMonthFirstDay.getTime();
   let endTime: number = lastMonthLastDay.getTime();
   let accountId: number = 100;
-  let result: Array<applicationManager.BundleStatsInfo> = applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
+  let result: Array<applicationManager.BundleStatsInfo> =
+    applicationManager.queryBundleStatsInfos(wantTemp, startTime, endTime, accountId);
   console.info(`Succeeded in querying bundle stats infos, result : ${JSON.stringify(result)}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -3353,6 +3403,8 @@ addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 > 2、如果被隐藏的应用有应用分身，会同步隐藏应用分身。
 >
 > 3、不能把桌面所有应用都添加到隐藏名单中，否则所有应用都会显示到桌面上。
+>
+> 4、在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -3363,8 +3415,6 @@ addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -3414,6 +3464,8 @@ removeHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 > **说明：**
 >
 > 取消隐藏的应用会从桌面第2屏开始找空位显示；如果第2~18屏无空位，则在第1屏找空位；如果第1屏无空位，则在第2屏第1个应用的位置创建小文件夹放置应用。
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -3424,8 +3476,6 @@ removeHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 

@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=fac0950bf9ce36a7be6bff54fc08d2eb5f9ecd7e translatedAt=2026-09-14T09:22:19.757Z pushedAt=2026-09-15T13:12:35.332Z -->
 
 This document describes how to develop an ArkTS widget based on the declarative paradigm.
 
@@ -43,7 +44,7 @@ Unlike JS widgets, ArkTS widgets support logic code execution. The widget page c
 ## ArkTS Widget Types
 ArkTS widgets are classified into dynamic widgets, static widgets, and interactive widgets.
 
-The overall running framework and rendering process of static widgets are the same as those of dynamic widgets. The main difference is that after the widget rendering service renders the widget content, the widget host uses the last frame of rendered data as a static image, and the widget rendering instance releases all running resources of the widget to save memory. As such, frequent updating of static widgets causes continuous creation and destruction of resources, resulting in increased power consumption.<br>
+The overall runtime framework and rendering process of a static widget are the same as those of a dynamic widget. The main difference is that after the widget rendering service finishes rendering the widget content, the widget host uses the data of the last rendered frame as a static image for display. In addition, the widget instance in the widget rendering service releases all runtime resources of the widget to save memory. Therefore, frequent refresh causes the runtime resources of a static widget to be repeatedly created and destroyed, increasing the power consumption of the widget.<br/>
 
 | Widget Type| Supported Capability| Scenario| Pros and Cons|
 | ------- | ------ | ------- | ------- | 
@@ -67,8 +68,6 @@ The **FormLink** component is provided for interactions between static widgets a
 
 ### Interactive Widget
 Interactive widgets are supported since API version 20. They provide overflow animations and implement human-machine interactions to improve information notifications, shallow interactions, and playability. For details, see [Overview of Interactive Widgets](arkts-ui-liveform-overview.md).
-
-<!--RP1--><!--RP1End-->
 
 ## Constraints
 ArkTS widgets support running logic code within the UI. Compared to JS widgets, they offer more robust capabilities but also introduce an increased risk of malicious activities conducted through the widgets. The code (in **widget.abc**) that carries the ArkTS widget UI runs in the system public FRS process and is finally displayed in the widget host (generally the home screen application). To ensure the stability of the system rendering process, isolation security between widgets, and resource usage such as memory and power consumption, the following constraints are imposed on the capabilities available to the ArkTS widget UI:

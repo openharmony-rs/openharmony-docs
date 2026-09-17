@@ -1,12 +1,11 @@
 # Loading a Module in the Main Thread Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:42:33.552Z pushedAt=2026-08-12T11:16:22.960Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:44:19.952Z pushedAt=2026-09-16T08:26:39.256Z -->
 
 ## **Scenario**
 
@@ -27,17 +26,13 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 ## Constraints
 
 - Do not use this API in non-main threads.
-
 - Do not use this API in the **Init()** function.
-
 - Do not load a file in the callback function of a thread-safe function.
-
 - Calling this API in the signal function is insecure. Direct calling may cause stack overflow.
 
 You are advised to use [napi_load_module_with_info](use-napi-load-module-with-info.md) to load modules. This API supports more scenarios.
 
 ## Scenarios Supported by napi_load_module
-
 | Scenario           | Scenario Description          | Remarks                        |
 | :------------- | :----------------------------- | :--------------------------- |
 | System module       |    Load **@ohos.** or **@system.**. | -                            |
@@ -167,7 +162,6 @@ You are advised to use [napi_load_module_with_info](use-napi-load-module-with-in
         return result;
     }
     ```
-
 - **Loading a File Path in a Module**
 
     For example, load a module from a file as shown in the following ArkTS code:
@@ -593,7 +587,6 @@ You are advised to use [napi_load_module_with_info](use-napi-load-module-with-in
       }
     }
     ```
-
 3. Call **napi_load_module** to load **har2** to **har1**, call the **test** function, and obtain the **value** variable.
 
     ```cpp

@@ -1,12 +1,11 @@
 # Switching Between Input Methods
-
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b8aa633cba260f62cfd1846a2d514205881380a2 translatedAt=2026-08-04T08:29:23.353Z pushedAt=2026-08-04T08:57:51.156Z -->
+<!-- md-trans-meta sourceCommit=c4600a44573a6aee547e47f52cb983f9fbf70114 translatedAt=2026-08-26T02:54:15.208Z pushedAt=2026-08-26T03:23:22.144Z -->
 
 You can use the APIs of the input method framework service to easily switch between input methods and input method subtypes.
 
@@ -25,14 +24,17 @@ You can use the APIs of the input method framework service to easily switch betw
    ``` TypeScript
    async switchCurrentInputMethodSubtype(item: InputMethodSubtype) {
      try {
-       await inputMethod.switchCurrentInputMethodSubtype(item);
-       this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+       let isSuccess = await inputMethod.switchCurrentInputMethodSubtype(item);
+       if (isSuccess) {
+         this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+       }
      } catch (err) {
        let error: BusinessError = err as BusinessError;
        console.error(`SwitchCurrentInputMethodSubtype error: ${error.code} ${error.message}`);
      }
    }
    ```
+
 
 2. Register a listener in the input method application for subtype changes, so as to load a subtype-specific keyboard UI.
 
@@ -42,10 +44,10 @@ You can use the APIs of the input method framework service to easily switch betw
    // Register a listener in the input method application for subtype changes.
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-       AppStorage.setOrCreate('subtypeChange', 0);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.english);
      }
      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-       AppStorage.setOrCreate('subtypeChange', 1);
+       AppStorage.setOrCreate('subtypeChange', CustomInputMethodSubtype.chinese);
      }
    });
    ```
@@ -78,6 +80,7 @@ In the input method application in use, call [switchInputMethod](../reference/ap
 In the input method application in use, call [switchCurrentInputMethodAndSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodandsubtype9) with the target [InputMethodProperty](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8) and [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype) to switch to the specified subtype of another input method.
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { inputMethod } from '@kit.IMEKit';
 
 export class KeyboardController {

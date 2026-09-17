@@ -6,11 +6,11 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-06T13:51:02.594Z pushedAt=2026-08-07T09:56:50.379Z -->
+<!-- md-trans-meta sourceCommit=85acaeeff256506c8e1cb0a264579789c64b9379 translatedAt=2026-09-16T02:56:24.908Z pushedAt=2026-09-16T08:06:26.150Z -->
 
 ## Basic Concepts
 
-Region of Interest (ROI) video encoding has been supported since API version 20. This feature is an advanced optimization technology extended based on the hardware H.264/H.265 encoding capability. Its core logic is to allocate more encoding resources to the specified key regions in the frame to achieve high-quality encoding. It ensures the clear presentation of content in ROI regions under limited bandwidth, which significantly enhances the overall visual experience.
+Region of Interest (ROI) video encoding has been supported since API version 20. This feature is an advanced optimization technology extended based on the hardware H.264/H.265 encoding capability. Its core logic is to allocate more encoding resources to the specified key regions in the frame to achieve high-quality encoding, which ensures the clear presentation of content in ROI regions under limited bandwidth and significantly enhances the overall visual experience.
 
 You can define ROI regions in the video frame (for example, human faces in live streaming, license plates in video security, etc.), and adjust the encoding quality difference between ROI and non-ROI regions by setting quality offset parameters, thus realizing the differentiated allocation of encoding resources.
 
@@ -19,18 +19,13 @@ You can define ROI regions in the video frame (for example, human faces in live 
 ROI video encoding applies to scenarios where the bit rate cannot meet the video quality requirements due to limited network bandwidth, and the key frame content (ROI regions) can be clearly defined. Examples include video calls, live video streaming, video security, and more.
 
 Recommended ROI regions for each scenario are as follows:
-
 - Live fashion shows: Set the anchor's facial region as the ROI to optimize facial details (e.g., skin tone and facial feature contours), enhancing the audience's immersive viewing experience.
-
 - Outdoor live streaming: Set the anchor's main body/core shooting scenes (for example, natural scenery and core areas of sports event footage) as the ROI to ensure the clarity of core content when the mobile network bandwidth fluctuates.
-
-- E-commerce live streaming: Set the product display area (for example, makeup color testing and electronic product details) as the ROI to clearly present the product's appearance, material, and functional details, helping to improve product conversion rates.
-
+- E-commerce live streaming: Set the product display area (for example, makeup color testing and electronic product details) as the ROI to clearly present the product's appearance, material, and functional details, helping to drive product sales.
 - Online course videos: Set the areas of courseware text, lecture notes charts, and blackboard writing content as the ROI to ensure the clear readability of knowledge points, reduce visual fatigue, and improve teaching effectiveness.
-
 - Video security: Set key regions in the camera frame (for example, human faces, license plates, entrances and exits) as the ROI to improve the clarity of capture, facilitating subsequent identification and analysis.
 
-Based on different encoding modes and ROI configuration methods, three ROI encoding development examples are provided. You can choose the appropriate one according to your actual service requirements and technical architecture.
+Based on the encoding mode and ROI configuration method, the ROI encoding development examples are divided into two types: [configuring ROI via NativeBuffer metadata (recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended) and [configuring ROI via the encoding input parameter callback](#method-2-configuring-roi-via-the-encoding-input-parameter-callback). You can choose based on your actual business and technical architecture.
 
 | Scenario| Live Streaming/Video Call| Video Recording| Editing & Export/Content Publishing|
 | :----: |:----:|:----:| :----: |
@@ -39,20 +34,20 @@ Based on different encoding modes and ROI configuration methods, three ROI encod
 | **Direct Producer of Encoded Video Frames** | Graphics | Graphics | App |
 | **Encoding mode**| Surface mode| Surface mode| Buffer mode|
 | **ROI Parameter Configuration Method** | NativeBuffer metadata configuration (recommended) | Encoding input parameter callback configuration | Encoding input buffer callback configuration |
-| **Development Example** | [Surface mode - Method 1](#method-1-configuring-roi-via-nativebuffer-metadata-recommended) | [Surface mode - Method 2](#method-2-configuring-roi-via-the-encoding-input-parameter-callback) | [Buffer mode](#method-3-configuring-roi-in-buffer-mode) |
+| **Development Example** | [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended) | [Surface Mode: Encoding Input Parameter Callback](#surface-mode-encoding-input-parameter-callback) | [Buffer Mode: Encoding Input Buffer Callback](#buffer-mode-encoding-input-buffer-callback) |
 
 > **NOTE**
 >
-> - Both live streaming and recording scenarios use Surface mode encoding, differing only in the ROI configuration method. The NativeBuffer metadata configuration method is recommended, as it is simple to implement and naturally aligned with encoding frames.
-> - If the metadata of the encoder input buffer cannot be modified during frame processing (for example, when camera frames are directly sent to the encoder surface), you can choose the encoding input parameter callback configuration method.
+> - Both live streaming and recording scenarios use Surface mode encoding. The only difference lies in the ROI configuration method. [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended) is simple to implement and naturally aligned with the encoded frames.
+> - If the metadata of the encoder input buffer cannot be modified during frame processing (for example, when camera frames are directly sent to the encoder Surface), you can choose the encoding input parameter callback configuration method.
 
 ## Constraints
 
 **Supported encoders**: H.264 8-bit hardware encoding, H.265 8-bit hardware encoding, and H.265 10-bit hardware encoding
 
-Supported bit rate control modes: variable bit rate (VBR), constant bit rate (CBR) and stable quality rate control (SQR)
+**Supported bit rate control modes:** variable bit rate (VBR), constant bit rate (CBR) and stable quality rate control (SQR)
 
-**ROI detection and identification capability dependency:** The encoder does not have built-in ROI detection and recognition capability, so the effectiveness of ROI encoding technology relies on the ROI information provided by you. You can design and implement ROI recognition capabilities based on your service scenarios, or reduce development costs by calling the face region information natively provided by the system camera module. For details, see [Metadata (C/C++)](../camera/native-camera-metadata.md).
+**Dependent on ROI detection and recognition capability:** The encoder does not have the ROI detection and recognition capability, so the ROI encoding technology takes effect depending on the ROI information you input. You can design and implement the ROI recognition capability based on your business scenario, or obtain the ROI region through the face region information (metadata) natively provided by the system camera module to reduce development costs. For metadata configuration and retrieval, see [Metadata (ArkTS)](../camera/camera-metadata.md) and [Metadata (C/C++)](../camera/native-camera-metadata.md). For the development steps of extracting ROI information from the video frame NativeBuffer metadata, see [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
 ## Parameter Requirements
 
@@ -63,7 +58,6 @@ When ROI data comes from the NativeBuffer metadata of a camera frame, you do not
 **String format:**
 
 - Key-value pair format (recommended): `Top,Left-Bottom,Right=dqp:-6,slb:1`
-
 - Numeric-only format (legacy compatible): `Top,Left-Bottom,Right=DeltaQp`
 
 **Rectangle region definition:**
@@ -74,18 +68,14 @@ An ROI is a rectangular region. **Top**, **Left** and **Bottom**, **Right** defi
 | Parameter | Description | Value Range | Mandatory | Default Behavior |
 | :----: | :----: | :----: |:----:|:----------------:|
 | dqp | Quantization parameter offset (DeltaQP) | [-51, 51] | No | When not set, the encoder uses the default QP strategy (=-3). |
-| slb | Semantic label | 0 (other) or 1 (face) | No | This parameter is only used to distinguish ROI region types and does not affect encoding behavior. |
+| slb | Semantic Label | 0 (unspecified) or 1 (face) | No | This parameter is only used for developers to distinguish ROI region types and does not affect encoding behavior. |
 
 - A negative dqp value indicates that the encoding quality of the ROI region is better than that of non-ROI regions. The larger the absolute value, the greater the quality difference.
-
 - The slb value corresponds to the [OH_VideoMetadataRoiSemanticLabel](../../reference/apis-avcodec-kit/capi-native-avcodec-videobase-h.md#oh_videometadataroisemanticlabel) enumeration: `OH_VIDEO_METADATA_ROI_SEM_LABEL_OTHER` (0) indicates an unspecified region type, and `OH_VIDEO_METADATA_ROI_SEM_LABEL_FACE` (1) indicates a face region.
-
 - Multiple ROI parameters are connected by semicolons (;). An example of multi-ROI configuration is `100,50-300,200=dqp:-6,slb:1;400,30-600,200=dqp:-3`.
 
 **Quantity and area constraints:**
-
 - A maximum of 6 ROI regions are supported per frame. Excess ROI regions will be ignored in the order of configuration.
-
 - The total ROI area must not exceed 1/5 of the image area. The areas are accumulated in the order of configuration, and only the ROI regions whose cumulative area stays within the limit take effect.
 
 **Figure 1: ROI coordinates and maximum allowed area ratio**
@@ -94,33 +84,23 @@ An ROI is a rectangular region. **Top**, **Left** and **Bottom**, **Right** defi
 
 ## Effectiveness Mechanism
 
-Two methods are supported for ROI configuration: **NativeBuffer metadata configuration** and **encoding input callback configuration**. The encoding input callback configuration method includes encoding input parameter callback (Surface mode) and encoding input buffer callback (Buffer mode).
-
-- (Recommended) NativeBuffer metadata configuration: Starting from API version 22, the ROI enumeration **OH_REGION_OF_INTEREST_METADATA** of **OH_NativeBuffer_MetaDataKey** can be used to configure ROI parameters in the NativeBuffer metadata.
-
-- Encoding input callback configuration method: The video encoding parameter **OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS** is used to configure ROI parameters in the encoding input callback.
+The following two methods are supported for configuring ROI:
+- [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended): Starting from API version 22, the ROI enumeration `OH_REGION_OF_INTEREST_METADATA` of `OH_NativeBuffer_MetaDataKey` can be used to configure ROI parameters in the NativeBuffer metadata.
+- [Method 2: Configuring ROI via the Encoding Input Parameter Callback](#method-2-configuring-roi-via-the-encoding-input-parameter-callback): Use the video encoding parameter `OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS` to configure ROI parameters in the encoding input callback, including the encoding input parameter callback (Surface mode) and the encoding input buffer callback (Buffer mode).
 
 **General effectiveness mechanism:**
-
 1. ROI parameters support frame-by-frame delivery and take effect in real time. You do not need to query capabilities or configure global switches.
-
 2. If the system encoder does not support ROI encoding, the encoder ignores ROI parameters and performs normal encoding.
-
 3. The valid range of **DeltaQp** is [-51, 51]. The encoder overlays **DeltaQp** on the QP of the ROI region, and then limits the result to the range [minQp, maxQp] to obtain the final QP.
-
 4. When no ROI parameters are configured for a frame, if ROI encoding takes effect for the previous frame, the ROI information of the previous frame is reused for ROI encoding of the current frame. If normal encoding is used for the previous frame, normal encoding is performed for the current frame.
-
 5. If the ROI parameters configured for a frame fail to parse any valid ROI information, normal encoding will be performed.
-
 6. If multiple ROI regions overlap, only the first configured ROI region will take effect at the overlapping area in the order of configuration.
 
-**Unique mechanism of NativeBuffer metadata configuration method**: A maximum of 256 bytes of character length is supported; the excess part will be truncated.
+**Mechanism unique to method 1:** A maximum of 256 bytes of characters is supported, and the excess part is truncated.
 
 **Empty string handling differences:**
-
-- NativeBuffer metadata configuration method: Empty strings are not allowed to be configured. An empty string is regarded as no ROI parameters configured, and the current frame will inherit the historical frame information for ROI encoding.
-
-- Encoding input callback configuration method: Empty strings are allowed to be configured, but since no valid ROI information can be parsed, normal encoding will be performed actually.
+- Method 1: Empty strings are not allowed to be configured. This is regarded as having no ROI parameters configured, and the current frame inherits the historical frame information for ROI encoding.
+- Method 2: Empty strings are allowed to be configured, but since no valid ROI information can be parsed, normal encoding will be performed actually.
 
 > **NOTE**
 >
@@ -128,13 +108,11 @@ Two methods are supported for ROI configuration: **NativeBuffer metadata configu
 
 **Effectiveness priority**: If ROI parameters are configured via both methods for a frame, only the ROI parameters delivered via the encoding input callback configuration method will take effect, regardless of whether valid ROI information can be parsed from them.
 
-## Development Example
+## Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)
 
-The following development examples are organized by encoding mode. Surface mode and buffer mode share the same ROI information acquisition and assembly process, differing only in how the ROI is configured to the encoder.
+Surface mode and Buffer mode share the same ROI information acquisition and assembly process. The difference lies in how ROI is configured to the encoder.
 
 When the camera outputs a video frame, if an ROI region (such as a face) is detected, the ROI information is written into the NativeBuffer metadata of the frame. You can directly extract it from each frame without additional callback APIs or timestamp matching. For details, see [OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey).
-
-### Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)
 
 In surface mode, the camera outputs video frames to the surface of `OH_NativeImage`. In the frame processing thread, you extract ROI information from the NativeBuffer metadata of each frame, assemble it into a configuration string, and then write the ROI string into the NativeBuffer metadata of the encoder input frame, thereby delivering the ROI to the encoder frame by frame (as shown in figure 2).
 
@@ -293,7 +271,13 @@ The development procedure is as follows:
    }
    ```
 
-### Method 2: Configuring ROI via the Encoding Input Parameter Callback
+## Method 2: Configuring ROI via the Encoding Input Parameter Callback
+
+Method 2 uses the video encoding parameter `OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS` to configure ROI parameters in the encoding input callback. Depending on the encoding mode, it is divided into the following two modes:
+- Surface mode: configured through the encoding input parameter callback registered by `OH_VideoEncoder_RegisterParameterCallback`.
+- Buffer mode: in the `OnNeedInputBuffer` callback, obtain the format through `OH_AVBuffer_GetParameter` and then set the ROI string.
+
+### Surface Mode: Encoding Input Parameter Callback
 
 This method is also applicable to Surface mode. ROI information is extracted from the NativeBuffer metadata of the frame, and the configuration is completed through the encoding input parameter callback registered via `OH_VideoEncoder_RegisterParameterCallback` (as shown in figure 3).
 
@@ -305,7 +289,7 @@ The encoder triggers the parameter callback when receiving a video frame. Since 
 
 The development procedure is as follows:
 
-1. Link dynamic libraries in **CMakeList.txt**.
+1. Link dynamic libraries in `CMakeLists.txt`.
 
    Same as step 1 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
@@ -335,7 +319,7 @@ The development procedure is as follows:
 
 5. Register the encoding input parameter callback.
 
-   After creating the encoder and before calling `Configure`, register the encoding input parameter callback. It must be registered before `Configure`; otherwise, the callback will not take effect.
+   The callback must be registered after the encoder is created and before Configure; otherwise, it does not take effect.
 
    <!-- @[roi_register_parameter_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/VideoEncoder.cpp) -->
 
@@ -390,7 +374,7 @@ The development procedure is as follows:
 
    ``` C++
    int64_t pts = OH_NativeImage_GetTimestamp(nativeImage_);
-   if (roiPathType_ == ROI_PATH_METADATA_CALLBACK && onRoiStrAssembled_) {
+   if ((roiPathType_ == ROI_PATH_METADATA_CALLBACK || roiPathType_ == ROI_PATH_BUFFER_MODE) && onRoiStrAssembled_) {
        onRoiStrAssembled_(pts, assembledRoiStr);
    }
    ```
@@ -413,13 +397,15 @@ The development procedure is as follows:
    }
    ```
 
+
+
 > **NOTE**
 >
 > The RoiQueue stores ROI entries sorted by PTS. The encoding callback retrieves the entry with the smallest PTS to ensure the order consistency between frames and ROI data. If the queue is empty, it waits for up to 3 ms before returning an empty string. The queue automatically cleans up stale entries older than 2 seconds to prevent unbounded growth. The ROI string (including an empty ROI string) must be enqueued for each frame. An empty ROI string is used to explicitly indicate that no ROI region is configured for the frame. When disabling ROI, call `ClearRoiQueue` to clear the queue.
 
-### Method 3: Configuring ROI in Buffer Mode
+### Buffer Mode: Encoding Input Buffer Callback
 
-In buffer mode, video frames are sent to the encoder through `OH_VideoEncoder_PushInputBuffer`. You need to configure ROI information while filling frame pixel data in the `OnNeedInputBuffer` callback. Since there is no encoder surface in buffer mode, the frame pixel data must be copied from the camera frame buffer and pushed into the frame queue together with the ROI string for consumption by the encoding callback (as shown in figure 4).
+In Buffer mode, video frames are sent to the encoder through `OH_VideoEncoder_PushInputBuffer`. Because Buffer mode has no encoder surface, the ROI string cannot be delivered through NativeBuffer metadata and must be configured through the encoding input callback: in the frame processing thread, push the ROI string together with the frame PTS into RoiQueue (the same PTS synchronization queue as in [Surface Mode: Encoding Input Parameter Callback](#surface-mode-encoding-input-parameter-callback)); when the encoder requests an input buffer, the `OnNeedInputBuffer` callback is triggered, in which the ROI string is retrieved from RoiQueue and set into the input buffer parameters (as shown in Figure 4).
 
 **Figure 4: ROI configuration process via the encoding input buffer callback API**
 
@@ -427,7 +413,7 @@ In buffer mode, video frames are sent to the encoder through `OH_VideoEncoder_Pu
 
 The detailed development procedure is as follows:
 
-1. Link dynamic libraries in `CMakeList.txt`.
+1. Link dynamic libraries in `CMakeLists.txt`.
 
    Same as step 1 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
@@ -439,75 +425,13 @@ The detailed development procedure is as follows:
 
    Same as step 3 in [Method 1: Configuring ROI via NativeBuffer Metadata (Recommended)](#method-1-configuring-roi-via-nativebuffer-metadata-recommended).
 
-4. Define the frame data structure and frame queue.
+4. Pass the ROI string together with the frame PTS to RoiQueue.
 
-   In Buffer mode, the encoder requests input buffers through callbacks. You need to encapsulate the pixel data of the camera frame and the ROI string into a frame data item, and push it into a thread-safe frame queue for consumption by the encoding callback.
+   After extracting and assembling the ROI string in the frame processing thread, push the ROI string into RoiQueue indexed by PTS so that the encoding callback can retrieve it in frame order. The passing method is the same as step 7 in [Surface Mode: Encoding Input Parameter Callback](#surface-mode-encoding-input-parameter-callback).
 
-   <!-- @[roi_frame_item_struct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/common/FrameQueue.h) -->
+5. Configure ROI information in the encoding input buffer callback.
 
-   ``` C
-   // Frame data item for Buffer mode encoding.
-   constexpr uint32_t FRAME_QUEUE_POP_TIMEOUT_MS = 4;
-   constexpr size_t FRAME_QUEUE_MAX_SIZE = 3;
-   
-   struct FrameItem {
-       std::vector<uint8_t> pixels;
-       int32_t width = 0;
-       int32_t height = 0;
-       std::string roiStr;
-   };
-   ```
-
-5. Push the frame pixel data and ROI string into the frame queue.
-
-   In the frame processing thread, read the pixel data from the camera frame buffer and push it into the frame queue together with the assembled ROI string.
-
-   <!-- @[roi_buffer_pixel_read](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/render/render_thread.cpp) -->
-
-   ``` C++
-   // Buffer mode: Read pixel data from the camera frame and push it into the frame queue.
-   BufferHandle *bufferHandle = OH_NativeWindow_GetBufferHandleFromNative(InBuffer);
-   if (bufferHandle == nullptr) {
-       return;
-   }
-   OH_NativeBuffer *cameraNativeBuffer = nullptr;
-   int32_t ret = OH_NativeBuffer_FromNativeWindowBuffer(InBuffer, &cameraNativeBuffer);
-   if (ret != 0 || cameraNativeBuffer == nullptr) {
-       return;
-   }
-   void *virAddr = nullptr;
-   ret = OH_NativeBuffer_Map(cameraNativeBuffer, &virAddr);
-   if (ret != 0 || virAddr == nullptr) {
-       return;
-   }
-   int32_t frameWidth = bufferHandle->width;
-   int32_t frameHeight = bufferHandle->height;
-   int32_t stride = bufferHandle->stride;
-   int32_t frameSize = stride * frameHeight;
-   FrameItem frameItem;
-   frameItem.width = frameWidth;
-   frameItem.height = frameHeight;
-   frameItem.roiStr = assembledRoiStr;
-   frameItem.pixels.resize(frameSize);
-   std::copy(static_cast<uint8_t *>(virAddr),
-             static_cast<uint8_t *>(virAddr) + frameSize,
-             frameItem.pixels.data());
-   frameQueue_->Push(frameItem);
-   OH_NativeBuffer_Unmap(cameraNativeBuffer);
-   OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "RenderThread",
-                ""Buffer mode: pushed frame to queue, size: %{public}d, ROI: %{public}s"",
-                frameSize, assembledRoiStr.c_str());
-   ```
-
-   > **NOTE**
-   >
-   > Buffer mode requires copying pixel data from the camera frame buffer to the app memory, which incurs additional data copy overhead and results in higher latency compared to the zero-copy mechanism of Surface mode. You should choose the appropriate encoding mode based on your actual scenario.
-
-6. Configure ROI information in the encoding input buffer callback.
-
-   When the encoder requests an input buffer, the `OnNeedInputBuffer` callback is triggered. In the callback, the buffer is enqueued for processing by the consumer thread. The consumer thread in Buffer mode retrieves the buffer from the queue, calls `FillBufferModeInput` to pop a frame data item from the frame queue, copies the pixel data into the encoder buffer, and sets the ROI string after obtaining the format through `OH_AVBuffer_GetParameter`.
-
-   The `OnNeedInputBuffer` callback enqueues the buffer for processing by the consumer thread as follows:
+   When the encoder requests an input buffer, the `OnNeedInputBuffer` callback is triggered. In the callback, retrieve the ROI string with the smallest PTS from RoiQueue, obtain the parameter format of the input buffer through `OH_AVBuffer_GetParameter`, set the ROI string using `OH_AVFormat_SetStringValue`, call `OH_AVBuffer_SetParameter` to write it back to the buffer so that the configuration takes effect, and finally enqueue the buffer for the consumer thread to fill in the frame pixel data.
 
    <!-- @[roi_buffer_input_callback_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp) -->
 
@@ -518,67 +442,25 @@ The detailed development procedure is as follows:
            return;
        }
        CodecUserData *codecUserData = static_cast<CodecUserData *>(userData);
+       // Buffer mode: Obtain the ROI string from RoiQueue and set it to the input Buffer parameters.
+       if (codecUserData->roiPathType == ROI_PATH_BUFFER_MODE && codecUserData->roiQueue != nullptr) {
+           std::string roiStr = codecUserData->roiQueue->Pop();
+           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+           if (format != nullptr) {
+               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, roiStr.c_str());
+               OH_AVBuffer_SetParameter(buffer, format);
+               OH_AVFormat_Destroy(format);
+           }
+       }
        std::unique_lock<std::mutex> lock(codecUserData->inputMutex);
        codecUserData->inputBufferInfoQueue.emplace(index, buffer);
        codecUserData->inputCond.notify_all();
    }
    ```
 
-   The following example shows how the consumer thread in Buffer mode retrieves a buffer from the queue and calls `FillBufferModeInput` to fill the frame data and ROI:
+   > **NOTE**
+   >
+   > - After the ROI configuration is complete, you also need to fill the input buffer with frame pixel data and send it to the encoder through `OH_VideoEncoder_PushInputBuffer`. This is not elaborated here. For details, see the description of [Buffer mode](video-encoding.md#buffer-mode) in asynchronous-mode video encoding.
+   > - `OH_AVBuffer_GetParameter` returns a copy of the parameters. You must call `OH_AVBuffer_SetParameter` to write it back for the ROI configuration to take effect, and call `OH_AVFormat_Destroy` to release it after use.
+   > - The PTS synchronization mechanism of RoiQueue and the clearing process when ROI is disabled are the same as described in [Surface Mode: Encoding Input Parameter Callback](#surface-mode-encoding-input-parameter-callback).
 
-   <!-- @[roi_buffer_mode_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
-
-   ``` C++
-   void Recorder::VideoEncBufferInputThread()
-   {
-       while (isStarted_) {
-           CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-           std::unique_lock<std::mutex> lock(encContext_->inputMutex);
-           bool condRet = encContext_->inputCond.wait_for(
-               lock, std::chrono::seconds(THREAD_WAIT_TIMEOUT_SEC),
-               [this]() { return !isStarted_ || !encContext_->inputBufferInfoQueue.empty(); });
-           CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-           CHECK_AND_CONTINUE_LOG(!encContext_->inputBufferInfoQueue.empty(),
-               "Buffer queue is empty, continue, cond ret: %{public}d", condRet);
-   
-           CodecBufferInfo bufferInfo = encContext_->inputBufferInfoQueue.front();
-           encContext_->inputBufferInfoQueue.pop();
-           lock.unlock();
-   
-           OH_AVBuffer *buffer = reinterpret_cast<OH_AVBuffer *>(bufferInfo.buffer);
-           FillBufferModeInput(bufferInfo.bufferIndex, buffer);
-       }
-   }
-   ```
-
-   The implementation of `FillBufferModeInput` is as follows:
-
-   <!-- @[roi_buffer_mode_fill_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp) -->
-
-   ``` C++
-   void Recorder::FillBufferModeInput(uint32_t index, OH_AVBuffer *buffer)
-   {
-       FrameItem frameItem;
-       if (!encContext_->frameQueue->Pop(frameItem, std::chrono::milliseconds(FRAME_QUEUE_POP_TIMEOUT_MS))) {
-           OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
-           return;
-       }
-       uint8_t *bufferAddr = OH_AVBuffer_GetAddr(buffer);
-       int32_t bufferCapacity = OH_AVBuffer_GetCapacity(buffer);
-       if (bufferAddr != nullptr && bufferCapacity >= static_cast<int32_t>(frameItem.pixels.size())) {
-           std::copy(frameItem.pixels.data(), frameItem.pixels.data() + frameItem.pixels.size(), bufferAddr);
-           OH_AVCodecBufferAttr attr;
-           attr.size = static_cast<int32_t>(frameItem.pixels.size());
-           attr.offset = 0;
-           attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-           OH_AVBuffer_SetBufferAttr(buffer, &attr);
-       }
-       if (!frameItem.roiStr.empty()) {
-           OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-           if (format != nullptr) {
-               OH_AVFormat_SetStringValue(format, OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS, frameItem.roiStr.c_str());
-           }
-       }
-       OH_VideoEncoder_PushInputBuffer(videoEncoder_->GetCodec(), index);
-   }
-   ```

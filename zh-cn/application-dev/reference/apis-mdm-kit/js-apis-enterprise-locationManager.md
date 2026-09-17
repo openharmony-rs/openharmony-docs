@@ -1,4 +1,4 @@
-# @ohos.enterprise.locationManager（位置服务管理）
+# @ohos.enterprise.locationManager (位置服务管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -37,14 +37,13 @@ setLocationPolicy(admin: Want, policy: LocationPolicy): void
 > - 禁用：在需要保护隐私或节省电量的场景下设置。
 > - 强制开启：在设备安全追踪、资产管理等场景下设置。
 > - 默认：取消策略限制，由用户自主控制。
+> - 在多个MDM应用场景下，遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 
@@ -79,7 +78,7 @@ let wantTemp: Want = {
 try {
   locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
   console.info(`Succeeded in setting location policy.`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to set location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -135,7 +134,7 @@ let wantTemp: Want = {
 try {
   let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
   console.info(`Succeeded in getting location policy. policy: ${result}`);
-} catch(err) {
+} catch (err) {
   console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```

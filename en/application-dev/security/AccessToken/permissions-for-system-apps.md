@@ -5660,7 +5660,7 @@ With this permission, the application can call the API to obtain the local accou
 
 **Certificate-based authorization**: true
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 24
 
@@ -5954,7 +5954,7 @@ Allows an application to configure the encryption policy for a volume.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 

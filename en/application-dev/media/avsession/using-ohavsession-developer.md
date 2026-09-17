@@ -1,10 +1,11 @@
 # AVSession Provider (C/C++)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:54:16.544Z pushedAt=2026-09-15T13:38:23.467Z -->
 
 The OHAVSession module provides C APIs to implement an AVSession provider. An audio and video application needs to access the AVSession service as a provider in order to display media information in the controller (for example, Media Controller) and respond to playback control commands delivered by the controller.
 
@@ -31,7 +32,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 ## How to Develop
 
 To access a local session with the NDK, perform the following steps:
-1. Create a session and activate the media. Specifically, pass the session type (specified by **AVSession_Type**), custom tag, bundle name, and ability name.
+1. Create and activate a session. Pass the session type `AVSession_Type`, a custom TAG, and the bundle name and Ability name of the application.
 
    <!-- @[create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -91,7 +92,7 @@ To access a local session with the NDK, perform the following steps:
    OH_AVSession_SetAVMetadata(avsession, ohMetadata);
    ```
 
-   When the AVMetadata is no longer needed, call **OH_AVMetadataBuilder_Destroy** to destroy it and do not use it anymore.
+   After using `AVMetadata`, you should call `OH_AVMetadata_Destroy` to destroy the metadata object and `OH_AVMetadataBuilder_Destroy` to destroy the builder. The metadata object and builder must not be used after they are destroyed.
 
    <!-- @[destroy_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -126,8 +127,9 @@ To access a local session with the NDK, perform the following steps:
 
    > **NOTE**
    >
-   > After the provider registers a listener for fixed playback control commands, the commands will be reflected in **getValidCommands()** of the controller. In other words, the controller determines that the command is valid and triggers the corresponding event as required. To ensure that the playback control commands delivered by the controller can be executed normally, the provider should not use a null implementation for listening.
-   > To avoid any exception, call the API to unregister the listener when the service ends.
+   > - When the media session provider registers listeners for the relevant fixed playback control command events, the listened events are reflected in the `getValidCommands()` method of the media session controller. That is, the media session controller considers these methods valid and therefore triggers the corresponding events when needed. To ensure that the playback control commands delivered by the media session controller can be executed properly, the media session provider must not register empty listeners that contain no logic.
+   >
+   > - After calling a registration API, call the corresponding unregistration API when the service ends to avoid exceptions.
 
    Currently, the following playback control commands are supported:
    - Play

@@ -7,11 +7,11 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API version 23开始，算法库支持从私钥对象中获取公钥对象的操作。
+从API版本23开始，算法库支持从私钥对象中获取公钥对象的操作。
 
 以RSA为例，根据私钥对象获取公钥对象。
 
-对应的算法规格请查看[非对称密钥加解密算法规格：RSA](crypto-asym-encrypt-decrypt-spec.md#rsa)。
+对应的算法规格请查看[非对称密钥加解密算法规格：RSA](crypto-encryption-decryption.md#rsa)。
 
 ## 开发步骤
 
@@ -92,8 +92,8 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = await priKey.getPubKey();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = await priKey.getPubKey();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
@@ -165,8 +165,8 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = priKey.getPubKeySync();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = priKey.getPubKeySync();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);

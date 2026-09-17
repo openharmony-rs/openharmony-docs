@@ -1,19 +1,16 @@
 # Calling an ArkTS Method with Return Value of a promise Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:43:41.475Z pushedAt=2026-08-12T11:16:31.033Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:44:53.713Z pushedAt=2026-09-16T08:26:41.253Z -->
 
 ## When to Use
-
 You can call the ArkTS APIs, which return a promise, in the created ArkTS runtime environment as follows:
 
 ## Calling an ArkTS Method Asynchronously
-
 Use C++ to call the ArkTS method that returns a promise through the Node-API.
 
 Bind the [Promise](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-promise) object to a C++ callback to process the result returned asynchronously.
@@ -21,9 +18,7 @@ Bind the [Promise](https://developer.huawei.com/consumer/en/doc/harmonyos-guides
 Convert data types: Convert the JavaScript result to C++-usable data in the callback.
 
 ### Sample Code
-
 - Module registration
-
     ```c++
     #include "hilog/log.h"
     #include "napi/native_api.h"
@@ -116,7 +111,6 @@ Convert data types: Convert the JavaScript result to C++-usable data in the call
     ```
 
 - API declaration
-
     ```ts
     // index.d.ts
     export const callArkTSAsync: (func: Function) => void;
@@ -147,7 +141,6 @@ Convert data types: Convert the JavaScript result to C++-usable data in the call
     ```
 
 - ArkTS sample code
-
     ```ts
     // index.ets
     import testNapi from 'libentry.so';

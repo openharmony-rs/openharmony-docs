@@ -1,10 +1,11 @@
 # Using Secure Shield Mode
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:18:55.522Z pushedAt=2026-09-15T13:41:49.580Z -->
 
 The Secure Shield mode is a system-level security mode provided for users with high security requirements. This mode restricts basic device capabilities to enhance security and effectively defend against targeted attacks through the remote attack surface.
 
@@ -20,15 +21,15 @@ When the Secure Shield mode is enabled, ArkWeb reduces the attack surface by res
 
 - The MathML capability.
 
-- The speech recognition capability of the Web Speech API.
+- The Web Speech API for speech recognition and speech synthesis is prohibited.
 
 - The **RTCDataChannel** API.
 
-- The **MediaDevices.getUserMedia** API, which is used to prompt users to allow access to the media input device.
+- The **MediaDevices.getUserMedia** API, which prompts the user to allow access to media input devices (microphones and cameras), is prohibited.
 
 - The Service Worker capability.
 
-- Non-proxy UDP traffic. This prevents WebRTC from disclosing the real source IP address.
+- Non-proxy UDP traffic is prohibited to prevent WebRTC from leaking the real source IP.
 
 - The JIT capability.
 
@@ -59,7 +60,7 @@ When an application is running, you can check whether the corresponding function
 
 - Check whether the frontend code calls the **MediaDevices.getUserMedia** API, which is used to access streaming media devices, such as cameras and microphones. When the Secure Shield mode is used, the exception "can't use getUserMedia on advancedSecurityMode!" is thrown when related APIs are called.
 
-- Check whether the frontend code calls the ServiceWorker APIs, which are used to implement functionalities such as offline cache, network request interception, and notification push and cannot be created in Secure Shield mode.
+- Check whether the frontend code calls Service Worker-related APIs. This mechanism implements offline caching, network request interception, and push notifications, and cannot be created in Shield Guard Mode.
 
 - Check whether WebRTC uses non-proxy UDP transmission, which is prohibited in Secure Shield mode. The application needs to verify the network functionalities and performance in the WebRTC scenario.
 

@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=1054d8b030836fe58bcf3a3108bf6f34b102d289 translatedAt=2026-09-15T10:51:14.950Z pushedAt=2026-09-16T07:50:15.680Z -->
 
 ```c
 typedef struct Rdb_DataObserver {...} Rdb_DataObserver
@@ -28,3 +29,4 @@ Defines a struct for the data observer.
 | ------------------------------------------------------------ | ------------------------ |
 | void* context                                                | Pointer to the context of the data observer.|
 | [Rdb_SubscribeCallback](capi-rdb-rdb-subscribecallback.md) callback | Callback used to return the result.      |
+

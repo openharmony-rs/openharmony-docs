@@ -204,8 +204,6 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 23
-
 **系统能力：** SystemCapability.Base
 
 | 名称                   | 值   | 说明                           |

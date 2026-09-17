@@ -16,7 +16,7 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component can only be used in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **EditableTitleBarV2**, the compilation toolchain will generate an additional node __Common__ and mount the universal attributes or universal events on __Common__, rather than directly applying them to **EditableTitleBarV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **EditableTitleBarV2**.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **EditableTitleBarV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and mount the universal attributes or universal events on \_\_Common\_\_, rather than directly applying them to **EditableTitleBarV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **EditableTitleBarV2**.
 
 **Since:** 26.0.0
 
@@ -550,7 +550,7 @@ struct EditableTitleBarV2Demo01 {
 }
 ```
 
-![EditableTitleBarV2_01](figures/image-editabletitlebarv2-example-01.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Title Bar with Avatar and Blur Background
 
@@ -698,7 +698,7 @@ struct EditableTitleBarV2Demo02 {
 }
 ```
 
-![EditableTitleBarV2_02](figures/image-editabletitlebarv2-example-02.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Custom Button Announcement on the Right
 
@@ -779,7 +779,7 @@ struct EditableTitleBarV2Demo03 {
 }
 ```
 
-![EditableTitleBarV2_03](figures/image-editabletitlebarv2-example-03.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 4: Setting the Left Icon as the Default Focus
 
@@ -816,7 +816,7 @@ struct EditableTitleBarV2Demo04 {
 }
 ```
 
-![EditableTitleBarV2_04](figures/image-editabletitlebarv2-example-04.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 5: Setting the Right Custom Icon as the Default Focus
 
@@ -876,7 +876,7 @@ struct EditableTitleBarV2Demo05 {
 }
 ```
 
-![EditableTitleBarV2_05](figures/image-editabletitlebarv2-example-05.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 6: Setting a Symbol Icon
 
@@ -965,5 +965,4 @@ struct Index {
 }
 ```
 
-![EditableTitleBarV2_06](figures/image-editabletitlebarv2-example-06.png)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

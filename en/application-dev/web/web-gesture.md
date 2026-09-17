@@ -1,10 +1,12 @@
 # Interacting with Applications Using Gestures
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:15:57.173Z pushedAt=2026-09-15T13:41:34.496Z -->
+
 On mobile or touch-enabled web applications, users interact with web pages through gestures. ArkWeb supports the recognition of common gestures, such as touch and hold, swipe, and tap, providing a rich user interaction experience.
 ## ArkWeb Gesture Recognition
 ArkWeb receives the ArkUI [touch event](../ui/arkts-interaction-development-guide-touch-screen.md#touch-event) and identifies the gesture. For details about the distribution policy of touch events, see [Basic Interaction Principles](../ui/arkts-interaction-basic-principles.md). ArkWeb gestures comply with the touch events, UI events, and pointer events defined by the W3C standard.
@@ -80,7 +82,7 @@ struct Index {
 ## ArkWep Gesture Judgment
 - ArkUI gestures
 
-  ArkWeb consumes some ArkUI gestures, for example, [pan gesture](../ui/arkts-gesture-events-single-gesture.md#pan-gesture-pangesture). If you want to process these gestures by yourself instead of ArkWeb, see [Gesture Conflict Handling](../ui/arkts-gesture-events-gesture-judge.md).
+  ArkWeb consumes some ArkUI gestures, for example, the [swipe gesture](../ui/arkts-gesture-events-single-gesture.md#swipe-gesture-swipegesture). If you want to handle these gestures yourself instead of letting ArkWeb consume them, refer to ArkUI's [gesture conflict handling](../ui/arkts-gesture-events-gesture-judge.md). For a specific example, see [example](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#example).
 
 - ArkWeb gestures
 
@@ -113,27 +115,30 @@ struct Index {
 
   build() {
     Column() {
-      Web({ src: 'https://www.example.com', controller: this.controller })// Replace the URL with the actual URL.
+      Web({ src: 'https://www.example.com', controller: this.controller }) // Replace it with a real website manually.
     }
   }
 
   onBackPress() {
-    // Check whether a specific number of steps forward or backward can be performed on the current page. A positive number indicates forward, and a negative number indicates backward.
-    if (this.controller.accessStep(-1)) {
-      this.controller.backward(); // Return to the previous web page.
-      // Execute the custom return logic.
-      return true;
-    } else {
-      // Execute the default return logic to return to the previous page.
-      return false;
+    try {
+      // Whether the current page can go forward or backward by the given step (-1). A positive value indicates forward, and a negative value indicates backward.
+      if (this.controller.accessStep(-1)) {
+        this.controller.backward(); // Return to the previous web page.
+        // Execute the user-defined back logic.
+        return true;
+      }
+    } catch (err) {
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
+    // Execute the default system back logic to return to the previous page.
+    return false;
   }
 }
 ```
 
 ### Why cannot I interact with the web page after it is loaded?
 
-The web page may determine its behavior based on other platforms' **User-Agent**. To solve this problem, you can set a custom **User-Agent** in the **Web** component. For example:
+The web page may determine its behavior based on other platforms' **User-Agent**. To solve this problem, you can use [setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) to set a custom **User-Agent** in the **Web** component. For example:
 
 <!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
 
@@ -157,4 +162,25 @@ struct Index {
     }
   }
 }
+```
+
+### How to handle a blank page caused by excessive fling speed?
+
+The **Web** component extends the viewport meta tag by adding two attributes, `max-fling-speed-x` and `max-fling-speed-y`, to control the fling speed of the page. You can adjust the attribute values based on your actual requirements.
+
+> **NOTE**
+>
+> `max-fling-speed-x` limits the horizontal fling speed, and `max-fling-speed-y` limits the vertical fling speed, in vp/s.
+
+The following is an example HTML snippet:
+```html
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500">
+```
+
+```html
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-x=4500">
+```
+
+```html
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500, max-fling-speed-x=4500">
 ```

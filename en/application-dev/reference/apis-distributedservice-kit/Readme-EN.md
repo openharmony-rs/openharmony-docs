@@ -4,13 +4,14 @@
 <!--Owner: @hobbycao;@huangkai71-->
 <!--Designer: @gsxiaowen;@lee_jet520-->
 <!--Tester: @hanjiawei;@Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS APIs<!--distributed-service-arkts-->
   
   - [@ohos.distributedDeviceManager (Device Management)](js-apis-distributedDeviceManager.md)
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management)](js-apis-distributed-abilityConnectionManager.md)
   - [@ohos.application.DistributedExtensionAbility (Distributed Extension)](js-apis-distributedExtensionAbility.md)
+  - [@ohos.application.DistributedExtensionContext (Distributed Extension Context)](js-apis-distributedExtensionContext.md)
   - [@ohos.distributedsched.linkEnhance (Enhanced Connection)](js-apis-link-enhance.md)
   - [@ohos.distributedsched.proxyChannelManager (Proxy Channel Management)](js-apis-proxyChannelManager.md)
   
@@ -21,7 +22,7 @@
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management) (System API)](js-apis-distributed-abilityConnectionManager-sys.md)
   - [@ohos.cooperate (Screen Hopping) (system API)](js-apis-devicestatus-cooperate-sys.md)
   - APIs No Longer Maintained<!--distributed-service-dep-->
-    - [@ohos.distributedHardware.deviceManager (Device Management) (System API) (To be Deleted)](js-apis-device-manager-sys.md)
+    - [@ohos.distributedHardware.deviceManager (Device Management) (System API)](js-apis-device-manager-sys.md)
   
   <!--DelEnd-->
 - C APIs<!--distributed-service-c-->

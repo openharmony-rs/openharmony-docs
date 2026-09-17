@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9220e32aeab3bba13d7f75a8c64b9726e4bbffe1 translatedAt=2026-08-11T01:42:09.195Z pushedAt=2026-08-11T02:41:39.782Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=2058a696dfae025aecb385ae301d1efe33545c92 translatedAt=2026-09-14T09:56:11.344Z pushedAt=2026-09-15T13:38:36.358Z -->
 
 To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provided by DRM Kit and Media Kit.
 
@@ -32,14 +32,14 @@ To play DRM-protected content using AVPlayer, you can use the ArkTS APIs provide
    async function initPlayer() {
    playerHandle = await media.createAVPlayer();
    playerHandle.on('mediaKeySystemInfoUpdate', async (mediaKeySystemInfo: drm.MediaKeySystemInfo[]) => {
-   console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemInfo))
+     console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemInfo))
    // Process DRM information.
    // Set a decryption session.
    })
    }
    ```
 
-4. Call [createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem) and [createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession) to create MediaKeySystem and MediaKeySession instances based on the UUID in the DRM information.
+4. Call [createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem) and [createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1) to create MediaKeySystem and MediaKeySession instances based on the UUID in the DRM information.
 
    ```ts
    let mediaKeySystem: drm.MediaKeySystem

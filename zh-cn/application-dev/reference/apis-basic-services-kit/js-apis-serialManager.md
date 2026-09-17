@@ -10,15 +10,7 @@
 本模块主要用于管理串口设备的访问和通信，提供打开和关闭设备、读写数据、配置参数、权限管理等功能，解决了应用与串口设备通信时的权限申请、设备配置、数据传输等问题，使用该模块可以简化串口设备访问流程，提高开发效率。
 
 **典型使用流程：**
-```mermaid
-graph LR
-    A[调用getPortList获取串口列表] --> B[调用requestSerialRight请求权限]
-    B --> C[调用open打开串口]
-    C --> D[调用getAttribute/setAttribute配置串口参数（可选）]
-    D --> E[调用read/write或readSync/writeSync进行数据读写]
-    E --> F[调用close关闭串口]
-    F --> G[如需移除权限，调用cancelSerialRight]
-```
+![SerialManager](../figures/SerialManager.png)
 
 **使用场景**：
 - **嵌入式设备通信**：与各类嵌入式设备进行数据交互，如传感器数据采集、设备状态监控等
@@ -119,7 +111,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 // 获取串口列表
 function hasSerialRightExample() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
-  console.info('portList: '+ JSON.stringify(portList));
+  console.info('portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');
     return;
@@ -307,6 +299,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
 
+
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 **参数：**
@@ -409,6 +402,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -518,7 +512,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 |---------|------------|----|------------------|
 | portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。取值范围[0, +∞)，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0或不传参时，表示不等待直接返回。传入负数时抛出参数错误异常。具体值需根据设备响应速度和数据量合理设置。 |
 
 **返回值：**
 
@@ -631,7 +625,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 |---------|------------|----|------------------|
 | portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。取值范围[0, +∞)，具体值需根据设备响应速度和数据量合理设置。 |
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0或不传参时，表示不等待直接返回。传入负数时抛出参数错误异常。具体值需根据设备响应速度和数据量合理设置。 |
 
 **返回值：**
 
@@ -735,7 +729,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。|
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在写入数据时等待缓冲区可写，在指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。|
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在写入数据时等待缓冲区可写，在指定时间后返回。默认值0或不传参时，表示不等待直接返回。传入负数时抛出参数错误异常。具体值需根据设备响应速度和数据量合理设置。|
 
 **返回值：**
 
@@ -849,7 +843,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象，必须使用getPortList返回的有效端口号，传入无效值时抛出错误码31400003异常。 |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区，包含要发送到串口设备的二进制数据。每次写入的数据长度不超过4KB，超过会导致数据丢失，长数据建议分包写入。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在写入数据时等待缓冲区可写，在指定时间后返回。默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。|
+| timeout | number     | 否  | 超时时间（单位：毫秒）。API在写入数据时等待缓冲区可写，在指定时间后返回。默认值0或不传参时，表示不等待直接返回。传入负数时抛出参数错误异常。具体值需根据设备响应速度和数据量合理设置。|
 
 **返回值：**
 
@@ -949,6 +943,7 @@ close(portId: number): void
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
 - 需要先调用[requestSerialRight](#serialmanagerrequestserialright)申请访问权限
 - 需要先调用[open](#serialmanageropen)打开串口
+
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1095,7 +1090,7 @@ async function cancelSerialRightExample() {
   // 取消已经授予的权限
   try {
     serialManager.cancelSerialRight(portId);
-    console.info('cancelSerialRight success, portId: '+ portId);
+    console.info('cancelSerialRight success, portId: ' + portId);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to cancel serial right. Code: ${err.code}, message: ${err.message}`);

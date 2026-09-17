@@ -9,7 +9,7 @@
 
 ## 概述
 
-声明与绘图模块中的对象相关的函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+声明与绘图模块中的蒙版滤波器对象相关的函数。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
 **引用文件：** <native_drawing/drawing_mask_filter.h>
 
@@ -34,7 +34,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)](#oh_drawing_maskfiltercreateblur) | 创建具有模糊效果的蒙版滤波器。 |
-| [void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)](#oh_drawing_maskfilterdestroy) | 销毁蒙版滤波器对象，并收回该对象占用的内存。 |
+| [void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)](#oh_drawing_maskfilterdestroy) | 销毁蒙版滤波器对象，并回收该对象占用的内存。 |
 
 ## 枚举类型说明
 
@@ -97,7 +97,7 @@ void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 
 **描述**
 
-销毁蒙版滤波器对象，并收回该对象占用的内存。
+销毁蒙版滤波器对象，并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

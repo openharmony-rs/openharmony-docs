@@ -7,7 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 <!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:30.807Z pushedAt=2026-07-24T03:22:53.703Z -->
 
-Starting from API version 23, ArkTS widgets support development with state management V2. You are advised to use <a href="./arkts-state-management-overview.md#decorator-overview-1">V2 decorators</a> instead of <a href="./arkts-state-management-overview.md#decorator-overview">V1 decorators</a> for state management, to achieve better component rendering performance and state synchronization capabilities.
+Starting from API version 23, ArkTS widgets support development with state management V2. You are advised to use [V2 decorators](./arkts-state-management-overview.md#state-management-v2-decorators) instead of [V1 decorators](./arkts-state-management-overview.md#state-management-v1-decorators) for state management, to achieve better component rendering performance and state synchronization capabilities.
 
 The state management migration for widgets is largely consistent with that for common app pages. For migration of general scenarios such as intra-component and data object state variables, see [Migration for Component State Variables](./arkts-v1-v2-migration-inner-component.md) and [Migration for Data Object State Variables](./arkts-v1-v2-migration-inner-class.md). This document only describes the differences specific to widgets, namely the data receiving mechanism between the widget provider and the widget UI.
 

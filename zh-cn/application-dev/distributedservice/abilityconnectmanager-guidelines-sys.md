@@ -1,4 +1,4 @@
-# 跨设备连接UIAbility开发指南
+# 跨设备连接UIAbility开发指南（仅对系统应用开放）
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
@@ -73,7 +73,7 @@
 ### 搭建环境
 
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)。
+2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
 
@@ -327,9 +327,9 @@ registerSessionEvent(sessionId: number) {
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', "sendData success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
+    hilog.info(0x0000, 'testTag', "sendData failed");
   })
   ```
 
@@ -438,7 +438,7 @@ registerSessionEvent(sessionId: number) {
 **解决措施**
 
 - 针对原因1，设备A和设备B开启USB调试功能，用USB线连接设备和PC。执行shell命令：
-   
+  
   ```shell
   hdc shell
   hidumper -s 4700 -a "buscenter -l remote_device_info"

@@ -6,19 +6,19 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=aa0a67ae9790115e74a1e29268966a05ae945ba8 translatedAt=2026-08-03T11:24:22.047Z pushedAt=2026-08-04T07:50:39.146Z -->
+<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:30:44.141Z pushedAt=2026-09-02T01:50:00.610Z -->
 
 ## Overview
 
-A TextBlob is a set of texts. You can draw both a single text and a paragraph by using TextBlobs.
+A TextBlob is a collection of text. You can draw both a single character and a large block of text by using TextBlobs.
 
 In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
-This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md). This topic describes the typography policies and related usage.
+This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md).
 
 ## Basic TextBlob Drawing
 
-The Canvas component draws TextBlobs using **drawTextBlob()**. This function takes three parameters: **TextBlob** object, and X and Y coordinates of the left end point of the text baseline.
+Canvas draws TextBlobs using **drawTextBlob()**. This function takes three parameters: a **TextBlob** object, and the X and Y coordinates of the left end point of the text baseline.
 
 For details about the **Canvas** object, see [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](canvas-get-result-draw-arkts.md).
 
@@ -31,13 +31,9 @@ The following uses the **makeFromString()** API as an example to create a **Text
 - **font** object, which is used to set and obtain various font attributes, such as the font size, text style, font alignment mode, font rendering mode, and font stroke mode. For details about the APIs, see [Font](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md).
 
 - Text encoding mode. The following modes are supported:
-
   - **TEXT_ENCODING_UTF8**: One byte is used to indicate UTF-8 or ASCII characters.
-
   - **TEXT_ENCODING_UTF16**: Two bytes are used to indicate most Unicode characters.
-
   - **TEXT_ENCODING_UTF32**: Four bytes are used to indicate all Unicode characters.
-
   - **TEXT_ENCODING_GLYPH_ID**: Two bytes are used to indicate the glyph index.
 
 The sample code and effect are as follows:
@@ -110,7 +106,7 @@ let brush = new drawing.Brush();
 let pen = new drawing.Pen();
 // Set anti-aliasing.
 brush.setAntiAlias(true);
-// Set the stroke color.
+// Set the fill color.
 brush.setColor(0xFF, 0xFF, 0xFF, 0xFF);
 
 pen.setAntiAlias(true);
@@ -204,7 +200,7 @@ canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 
 ## Single-Character Drawing
 
-Single character drawing is a fine-grained control technique for text rendering in graphics rendering. Compared with TextBlob drawing, its core advantage lies in leveraging the font fallback mechanism: when the current font cannot display a certain character, it automatically falls back to the system font to render the character, improving compatibility with special characters and preventing missing characters. Additionally, single character drawing supports configuring font features (such as ligatures and alternative glyphs) on a per-character basis, meeting complex typesetting requirements and enhancing user experience. For detailed API information, see [drawSingleCharacter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
+Single character drawing is a fine-grained control technique for text rendering in graphics rendering. Compared with TextBlob drawing, its core advantage lies in leveraging the font fallback mechanism: when the current font cannot display a certain character, it automatically falls back to the system font to render the character, improving compatibility with special characters and preventing missing characters. Additionally, single character drawing supports configuring font features (such as ligatures and alternative glyphs) on a per-character basis, meeting complex typography requirements and enhancing user experience. For detailed API information, see [drawSingleCharacter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
 
 Basic scenario: drawing characters without font features
 
@@ -263,11 +259,9 @@ for (let s of text) {
 > If `drawSingleCharacterWithFeatures` and `measureSingleCharacter` are used together, or `drawSingleCharacter` and `measureSingleCharacterWithFeatures` are used together, font drawing may overlap.
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
-
 <!--RP1End-->

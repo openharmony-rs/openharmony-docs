@@ -6,7 +6,7 @@
 <!--Designer: @tanyihua-->
 <!--Tester: @panny060-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=84e5c687623c619df721fa927b62d6782396d98d translatedAt=2026-08-04T13:30:05.315Z pushedAt=2026-08-05T08:04:01.830Z -->
+<!-- md-trans-meta sourceCommit=27aa2665467fe729505224e92e55f0dd00edbc06 translatedAt=2026-08-22T01:39:47.242Z pushedAt=2026-08-22T03:35:36.184Z -->
 
 ## When to Use
 
@@ -36,12 +36,12 @@ typedef unsigned int OH_QoS_GewuRequest;
 
 ### Functions
 
-| Function Name                      | Description                       |
+| Function Name               | Description                |
 | --------------------------- | -------------------------- |
-| `OH_QoS_GewuCreateSession`  | Creates a session.                   |
-| `OH_QoS_GewuDestroySession` | Destroys a session.                   |
-| `OH_QoS_GewuSubmitRequest`  | Submits a request.                   |
-| `OH_QoS_GewuAbortRequest`   | Aborts a request.                   |
+| `OH_QoS_GewuCreateSession`  | Creates a session             |
+| `OH_QoS_GewuDestroySession` | Destroys a session            |
+| `OH_QoS_GewuSubmitRequest`  | Submits a request             |
+| `OH_QoS_GewuAbortRequest`   | Aborts a request              |
 
 **`OH_QoS_GewuCreateSession`**
 
@@ -66,7 +66,7 @@ OH_QoS_GewuCreateSessionResult OH_QoS_GewuCreateSession(const char* attributes);
 
 **Parameters**
 
-* `const char* attributes`: JSON string of session attributes. This JSON string supports the following field:
+`const char* attributes`: JSON string of session attributes. This JSON string supports the following field:
 
     * **"model"**: string, indicating the path of the model used by the session.
 
@@ -78,7 +78,7 @@ Example of the `attributes` JSON string:
 }
 ```
 
-**Return Values**
+**Returns**
 
 If the session is created successfully, the `error` field in the returned `OH_QoS_GewuCreateSessionResult` is `OH_QOS_GEWU_OK`, and `session` is the handle of the created session.
 
@@ -102,7 +102,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuDestroySession(OH_QoS_GewuSession session);
 
 * `OH_QoS_GewuSession session`: handle of the session to be destroyed.
 
-**Return Values**
+**Returns**
 
 If the session is destroyed successfully, the return value is `OH_QOS_GEWU_OK`.
 
@@ -170,7 +170,7 @@ The parameters of the `OH_QoS_GewuOnResponse` callback function are as follows:
 
         * **"length"**: the number of tokens exceeds the limit.
 
-**Return Values**
+**Returns**
 
 If the request is submitted successfully, the `error` field in the returned `OH_QoS_GewuSubmitRequestResult` is `OH_QOS_GEWU_OK`, and `request` is the request handle.
 
@@ -200,7 +200,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 * `OH_QoS_GewuRequest request`: handle of the request to be aborted.
 
-**Return Values**
+**Returns**
 
 If the request is aborted successfully, the return value is `OH_QOS_GEWU_OK`.
 
@@ -208,7 +208,7 @@ If the request fails to be aborted, the return value indicates the cause of the 
 
 ## Example
 
-The following is an example:
+The example is as follows:
 
 ```CPP
 #include <future>
@@ -225,7 +225,7 @@ The following is an example:
 
 using json = nlohmann::json;
 
-/*Saves the chat state.*/
+/* Used to save the chat state. */
 struct ChatContext {
 public:
     ChatContext()
@@ -246,7 +246,7 @@ public:
     bool earlyAbort = false;
 };
 
-/*Callback invoked when an inference result is received.*/
+/* Callback function invoked when an inference result is received. */
 void OnChatResponse(void *context, const char *response)
 {
     ChatContext *chatContext = static_cast<ChatContext *>(context);
@@ -256,6 +256,11 @@ void OnChatResponse(void *context, const char *response)
     }
     try {
         json responseJson = json::parse(response);
+        std::string role = responseJson.at("message").at("role").get<std::string>();
+        if (role != "assistant") {
+            DEMO_LOGW("Discarding invalid response due to incorrect role");
+            return;
+        }
         chatContext->responseContent += responseJson.at("message").at("content").get<std::string>();
         json finishReasonJson = responseJson.at("finish_reason");
         if (!finishReasonJson.is_null()) {
@@ -279,12 +284,12 @@ int Demo(void)
 {
     DEMO_LOGI("Demo starts");
     json attrJson = {
-        /*Model file location. Modify as needed.*/
+        /* Model file location. Modify it based on the actual situation. */
         {"model", "/data/storage/el2/base/files/qwen2-awq"},
     };
     std::string attrStr = attrJson.dump(4);
 
-    /*Creates a session.*/
+    /* Create a session. */
     OH_QoS_GewuCreateSessionResult createResult = OH_QoS_GewuCreateSession(attrStr.c_str());
     if (createResult.error != OH_QOS_GEWU_OK) {
         DEMO_LOGE("failed to create session, error=%d", (int)createResult.error);
@@ -292,7 +297,7 @@ int Demo(void)
     }
     OH_QoS_GewuSession session = createResult.session;
 
-    /*Creates and submits a request.*/
+    /* Create and submit a request. */
     ChatContext context;
     json requestJson = {
         {"messages", json::array({
@@ -312,7 +317,7 @@ int Demo(void)
     OH_QoS_GewuRequest request = submitResult.request;
     context.Join();
 
-    /* Abort the request early. */
+    /* Abort the request in advance. */
     if (context.earlyAbort) {
         OH_QoS_GewuErrorCode error = OH_QoS_GewuAbortRequest(session, request);
         if (error != OH_QOS_GEWU_OK) {

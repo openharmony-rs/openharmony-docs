@@ -1,12 +1,11 @@
 # Using Display to Obtain Display Properties and Listen for Status Changes (ArkTS)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5894207a89aa0ba2ff5ba646c58fe095f9c1b27c translatedAt=2026-08-01T02:50:46.018Z pushedAt=2026-08-01T06:47:52.289Z -->
+<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:15:39.581Z pushedAt=2026-09-15T13:10:51.056Z -->
 
 ## When to Use
 
@@ -15,9 +14,7 @@
 Typical scenarios for utilizing display properties are as follows:
 
 - Display information query: You can query the display resolution, physical pixel density, logical pixel density, refresh rate, dimensions, rotation direction, and rotation angle. For details, see [Display Properties](../reference/apis-arkui/js-apis-display.md#attributes).
-
 - Display status monitoring: You can listen for changes in the rotation, resolution, and refresh rate of the display.
-
 - Folding state monitoring: You can check whether the device is foldable and listen for changes in its folding state (whether it is unfolded or folded).
 
 ## Available APIs
@@ -44,9 +41,7 @@ The following table lists the common APIs related to display properties. For det
 The display object provides APIs to obtain display properties and listen for changes. You can use any of the following methods to obtain a display object, depending on your service requirements:
 
 - Use **getDefaultDisplaySync()** to obtain the default display object.
-
 - Use **getAllDisplays()** to obtain all display objects.
-
 - Use **getDisplayByIdSync()** to obtain a display object with a specific display ID.
 
 The following example demonstrates how to use **getDefaultDisplaySync()** to obtain the default display object:

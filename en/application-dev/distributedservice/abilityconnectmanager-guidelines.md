@@ -5,6 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:43:30.461Z pushedAt=2026-09-16T06:29:02.791Z -->
 
 
 ## Introduction
@@ -22,7 +23,7 @@ Since API version 18, the system has supported cross-device collaborative connec
 Before you start developing cross-device connection management for applications, familiarize yourself with the following concepts:
 
 - **Distributed Management Service (DMS)**
-  
+
   DMS is the distributed component management framework that provides distributed component management capabilities.
 
 - **UIAbility**
@@ -30,7 +31,7 @@ Before you start developing cross-device connection management for applications,
   [UIAbility](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/uiability-overview) describes the UI interaction capabilities of an application. It is responsible for managing the lifecycle of application pages, user interaction, and UI rendering.
 
 - **Byte stream**
-  
+
   A byte stream is data of the [ArrayBuffer Object](../arkts-utils/arraybuffer-object.md) type and can be used to store binary data such as image or audio data.
 
 ### Implementation Principles
@@ -68,7 +69,7 @@ Prepare devices A and B that can sign in to a HUAWEI ID. The devices must be suc
 ### Setting Up the Environment
 
 1. Install DevEco Studio on the PC. For details, see [Downloading Software](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-download-V5) and [Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-install-V5). DevEco Studio 4.1 or later is required.
-2. Update the public SDK to API version 18 or later.
+2. Update the public-SDK to API 18 or later.
 3. Connect either debugging device, device A or device B, to the PC using a USB cable.
 4. Enable Wi-Fi and Bluetooth on devices A and B. If the devices are signed in with the same HUAWEI ID, they automatically form a network. If they are not signed in with the same HUAWEI ID, first use [Discovering Devices](devicemanager-guidelines.md#discovering-devices) and [Binding a Device](devicemanager-guidelines.md#binding-a-device) to establish a trusted relationship and complete networking.
 
@@ -376,7 +377,7 @@ After application-side development is complete, install the application on devic
 **Solution**
 
 - For cause 1, enable USB debugging on devices A and B, and connect the devices to the PC using USB cables. Run the following shell command:
-   
+
   ```shell
   hdc shell
   hidumper -s 4700 -a "buscenter -l remote_device_info"

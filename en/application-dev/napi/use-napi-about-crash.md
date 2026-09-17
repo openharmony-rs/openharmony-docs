@@ -1,12 +1,11 @@
 # Analyzing Error Logs and Crashes Triggered by Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:39:09.946Z pushedAt=2026-08-12T11:07:45.788Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:29:48.029Z pushedAt=2026-09-16T08:21:13.295Z -->
 
 The maintenance and debugging measures mentioned in this topic rely on the Ark runtime multi-thread check. Therefore, you are advised to enable this feature before debugging. For details about how to enable Ark runtime multi-thread check, see [Analyzing CPP Crash](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-multi-thread-check).
 
@@ -39,17 +38,11 @@ The inconsistency in **napi_env** occurs in the following scenarios:
 The following APIs may trigger this error:
 
 1. napi_get_reference_value
-
 2. napi_delete_reference*
-
 3. napi_queue_async_work
-
 4. napi_queue_async_work_with_qos
-
 5. napi_cancel_async_work
-
 6. napi_call_threadsafe_function*
-
 7. napi_release_threadsafe_function*
 
 > The APIs with an asterisk (\*) can only trigger the log information in the second scenario. The APIs without an asterisk (\*) can trigger the log information in both scenarios.
@@ -244,7 +237,7 @@ napi_value TriggerDFXDelRef(napi_env, napi_callback_info info)
         napi_value obj = nullptr;
         STRICT_NAPI_CALL(napi_create_object(localEnv, &obj));
         napi_ref ref = nullptr;
-        // Call napi_delete_reference to destroy the reference to avoid memory leaks.
+        // Call napi_delete_reference after use to release the reference and avoid memory leaks.
         napi_create_reference(localEnv, obj, 1, &ref);
         if (!localEnv.RecreateSame()) {
             if (ref != nullptr) {
@@ -383,13 +376,9 @@ Unless otherwise specified, the maintenance and debugging measures used in this 
 The following APIs may trigger this type of error:
 
 1. napi_add_env_cleanup_hook*
-
 2. napi_remove_env_cleanup_hook*
-
 3. napi_add_async_cleanup_hook
-
 4. napi_set_instance_data
-
 5. napi_get_instance_data
 
 > When the triggering conditions are met in the debugging process, the APIs with an asterisk (*) can print the ERROR log with call stack information instead of interrupting the process.
@@ -537,11 +526,8 @@ napi_value TriggerDFXInsGetXT(napi_env env, napi_callback_info info)
 ### Coverage Scope and Key Logs
 
 When a callback function contains logic errors such as null pointer dereference or array out-of-bounds access, an app crash occurs. If a crash occurs with compilation optimization enabled, the crash call stack only shows the function that called the callback, without indicating which .so shared library the actual callback function belongs to. You can locate the issue by following these steps:
-
 1. Obtain the printed callback function pointer (in decimal).
-
 2. Convert the pointer to hexadecimal.
-
 3. Match the hexadecimal address in the Maps section of the crash file to identify which .so shared library the function that actually caused the crash belongs to.
 
 > **Key logs**
@@ -551,11 +537,8 @@ When a callback function contains logic errors such as null pointer dereference 
 The coverage scope of this DFX measure is as follows:
 
 1. A crash occurs during the execution of finalize_cb in napi_wrap, napi_wrap_enhance, or napi_add_finalizer.
-
 2. A crash occurs during the execution of finalize_cb in napi_set_instance_data.
-
 3. A crash occurs during the execution of complete in napi_async_work related APIs.
-
 4. A crash occurs during the execution of thread_finalize_cb and call_js_cb in threadsafe_function related APIs.
 
 ### Cases and Sample Code

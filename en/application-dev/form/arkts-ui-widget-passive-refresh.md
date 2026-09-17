@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f2cd623d606ddf44ee1a12cd7214615ae69df40f translatedAt=2026-08-03T02:28:13.175Z pushedAt=2026-08-03T07:30:40.909Z -->
+<!-- md-trans-meta sourceCommit=04869f9e89f730a6d0eb27f25db0b204c50aad54 translatedAt=2026-08-22T01:26:49.866Z pushedAt=2026-08-22T03:14:56.474Z -->
 
 This section provides the development guidelines for passive update. For details about the update process, see [Passive Update](./arkts-ui-widget-interaction-overview.md#passive-update).
 
@@ -97,7 +97,7 @@ Form Kit provides the following methods for interval-based update:
   }
   ```
 
-After an interval-based or next refresh is triggered, the system calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback of FormExtensionAbility. In this callback, you can use the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API to refresh the widget content. For details about the `onUpdateForm` lifecycle callback, see [Managing ArkTS Widget Lifecycle](./arkts-ui-widget-lifecycle.md).
+After an interval-based or next update is triggered, the system calls the [onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform) lifecycle callback of FormExtensionAbility. In this callback, you can use the [updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform) API to refresh the widget content. For details about the `onUpdateForm` lifecycle callback, see [Managing ArkTS Widget Lifecycle](./arkts-ui-widget-lifecycle.md).
 
 **Constraints**
 

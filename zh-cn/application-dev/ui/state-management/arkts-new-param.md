@@ -1,4 +1,4 @@
-# \@Param：组件外部输入
+# \@Param装饰器：组件外部输入
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->

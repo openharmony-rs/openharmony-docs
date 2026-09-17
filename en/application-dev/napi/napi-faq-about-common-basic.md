@@ -1,10 +1,11 @@
 # FAQs About Basic Functionalities
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=4ca878ceb382eef6024acebc16b707981782bb76 translatedAt=2026-09-16T03:04:22.105Z pushedAt=2026-09-16T08:19:01.755Z -->
 
 ## What should I do if the module fails to be loaded and the error message "Error message: is not callable" is displayed?
 
@@ -27,7 +28,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
     napi_module_register(&demoModule);
 }
 ```
-  
+
 - Answer: 
 1. You can locate and resolve the issue based on the following topics:    
 
@@ -73,7 +74,7 @@ During multi-thread development, ArkTS functions can be executed only on the thr
 
 References 
 
-[Implementing Communication Between Native Child Threads and the UI Main Thread](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-native-sub-main-comm)
+<!--Del-->[Communication Between Native Subthread and UI Main Thread](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/native_subthread-to-uimain)<!--DelEnd-->
 
 [Asynchronous Task Development Using Node-API](use-napi-asynchronous-task.md)  
 
@@ -200,10 +201,10 @@ What are the precautions for using **napi_env** in multi-thread mode? Is there a
 
 2. When using **env** to call Node-APIs, note that most Node-APIs can only be called on the ArkTS thread to which **env** belongs. Otherwise, thread-safety issues may arise.
 
-      
+   <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)<!--DelEnd-->
 3. Do not cache napi_env. Otherwise, thread-safety issues and **use-after-free** issues may occur.
 
-    
+   <!--Del-->[Reference](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)<!--DelEnd-->
 
 4. [Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73)
 
@@ -212,9 +213,9 @@ What are the precautions for using **napi_env** in multi-thread mode? Is there a
 
 - Question:  
 
-The expected execution sequence of **napi_call_threadsafe_function** is a -> b -> c. 
+The execution sequence of **napi_call_threadsafe_function** does not meet the expectation.  
 
-  
+Expected: a -> b -> c  
 
 posttask(a);  
 
@@ -222,7 +223,7 @@ posttask(b);
 
 posttask(c);  
 
-However, the actual execution sequence is b -> a -> c. 
+Actual: b -> a -> c  
 
 - Answer: 
 1. Check whether the same **napi_threadsafe_function** instance is used. If not, the execution sequence may be different.  
@@ -291,7 +292,7 @@ Answer:
 
 ## How do I locate the fault if the return value of a Node-API is not "napi_ok"
 
-When a Node-API is successfully executed, **napi_ok** is returned. If the return value is not **napi_ok**, see [Node-API Status Codes](napi_status_introduction.md).
+When a Node-API is successfully executed, **napi_ok** is returned. If the return value is not **napi_ok**, see [Node-API Status Codes](napi-status-introduction.md).
 
 Locate the fault as follows:
 
@@ -370,7 +371,7 @@ void FinalizeB(napi_env env, void* data, void* hint) {
 
 Answer: 
 
-Cause 1: The return value of **napi_call_threadsafe_function** is not **napi_ok**. Check whether all the return values of the **napi_call_threadsafe_function** calls are **napi_ok**. If not, locate the cause by referring to [Node-API Status Codes](napi_status_introduction.md). 
+Cause 1: The return value of `napi_call_threadsafe_function` is not `napi_ok`. Check whether all the return values of the `napi_call_threadsafe_function` calls are `napi_ok`. If not, locate the cause of the return value not being `napi_ok` by referring to [Node-API Status Codes](napi-status-introduction.md).
 
 Cause 2: The ArkTS thread to which **env** belongs is blocked. The callback of **napi_call_threadsafe_function** is executed on the ArkTS thread to which **env** belongs. If the ArkTS thread is blocked, the thread-safe function callback will not be executed.
 

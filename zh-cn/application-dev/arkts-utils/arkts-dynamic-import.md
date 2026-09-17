@@ -10,7 +10,7 @@
 动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/ohpm包/Native库等，并且HAR模块之间可通过变量动态import来访问彼此导出的内容，可避免编译期强依赖，实现模块解耦。
 
 ## 技术适用场景介绍
-应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替[静态import](../quick-start/arkts-language-guide-module-system.md#静态导入)。下面是可能会需要动态import的场景：
+应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替[静态import](../quick-start/introduction-to-arkts.md#导入)。下面是可能会需要动态import的场景：
 
 * 当静态import的模块明显降低了代码的加载速度且很少被使用，或者并不需要马上使用它。
 * 当静态import的模块明显占用了大量的系统内存且很少被使用。
@@ -107,9 +107,9 @@ import('harlibrary').then((ns: ESObject) => {
 
 >**说明：**
 > 
-> 1.当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
-> 2.本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
-> 3.import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
+> 1. 当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
+> 2. 本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
+> 3. import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
 
 ## 动态import实现中的关键点
 

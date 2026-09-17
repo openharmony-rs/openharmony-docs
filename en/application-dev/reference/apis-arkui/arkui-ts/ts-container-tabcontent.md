@@ -243,7 +243,7 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [IndicatorStyle](#indicatorstyle10) | [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
+| value | [IndicatorStyle](#indicatorstyle10) \| [DrawableTabBarIndicator](#drawabletabbarindicator22)| Yes  | Indicator style object for the selected subtab.<br>**IndicatorStyle**: common indicator style.<br>**DrawableTabBarIndicator**: image indicator style.|
 
 > **NOTE**
 > - **IndicatorStyle**: a solid line. By default, the animation transition effect is displayed when a tab is switched.

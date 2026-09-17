@@ -2,18 +2,16 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=43c1adf3f25f07bf57adc71363909a2bed19eb63 translatedAt=2026-08-11T01:52:27.040Z pushedAt=2026-08-11T12:14:34.594Z -->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=6d605decf40142075029c14b3e6fb59bd1308296 translatedAt=2026-09-14T09:59:10.177Z pushedAt=2026-09-15T13:39:26.540Z -->
 
 Screen capture enables you to collect screen data for scenarios like screen recording, meeting sharing, and live streaming. By calling the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapture) module, you can collect audio and video data from both internal and external sources. The AVScreenCapture module works with the Window and Graphics modules to complete video capture.
 
 Starting from API version 22, the following capabilities are introduced to screen capture on PCs/2-in-1 devices:
-
 - Capture while the screen is off but not locked: This requires the ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
-
 - Capture without privacy protection pop-ups: This requires the ohos.permission.CUSTOM_SCREEN_RECORDING permission. For details about the permission configuration, see [Requesting Restricted Permissions](../../security/AccessToken/restricted-permissions.md).
 
 ## Workflow Overview
@@ -86,7 +84,6 @@ After creating the AVScreenCapture instance, configure the required audio parame
 If microphone audio capture needs to be configured, do as follows:
 
 - Configure the ohos.permission.MICROPHONE permission. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
-
 - Apply for a continuous task. For details, see [Continuous Task](../../task-management/continuous-task.md).
 
 When you save the captured content to a file, only internal capture is enabled by default. The microphone can be dynamically enabled or disabled during capture. Once enabled, both internal and external (microphone) audio can be recorded simultaneously.
@@ -118,7 +115,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 
 ### Configuring Video Capture Parameters
 
-The video capture information [OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md) includes the input specifications [OH_VideoCaptureInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videocaptureinfo.md) and output specifications [OH_VideoEncInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoencinfo.md).
+The video capture information [OH_VideoInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoinfo.md) includes the input specifications [OH_VideoCaptureInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videocaptureinfo.md) and output specifications [OH_VideoEncInfo](../../reference/apis-media-kit/capi-avscreencapture-oh-videoencinfo.md). When configuring the screen capture width and height, [set the correct video width and height](../avcodec/obtain-supported-codecs.md#setting-the-correct-video-width-and-height).
 
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
@@ -581,6 +578,8 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
+
+
 **OH_AVScreenCapture_StrategyForPickerPopUp is set to the default value**
 
 For PCs/2-in-1 devices, phones, and tablet devices, the screen capture popup behavior differs.
@@ -588,9 +587,7 @@ For PCs/2-in-1 devices, phones, and tablet devices, the screen capture popup beh
 - On PCs/2-in-1 devices, different popup behaviors occur depending on the capture mode.
 
   - **Capturing a Specified Screen (OH_CAPTURE_SPECIFIED_SCREEN)**: After screen capture starts, the shared content selection popup is displayed, and the screen corresponding to the **displayId** parameter is selected by default.
-
   - **Capturing the Home Screen (OH_CAPTURE_HOME_SCREEN)**: After screen capture starts, the shared content selection popup is not displayed. Only the privacy protection popup is displayed. The **displayId** parameter does not take effect, and the home screen ID is used by default.
-
   - **Capturing a Specified Window (OH_CAPTURE_SPECIFIED_WINDOW)**: When a single window ID is passed, the shared content selection popup is displayed and the specified window is selected by default. When multiple window IDs are passed, the shared content selection popup is not displayed, and only the privacy protection popup is displayed.
 
 - On phones and tablet devices, the picker is not displayed in any capture mode. Only the privacy protection popup is displayed.

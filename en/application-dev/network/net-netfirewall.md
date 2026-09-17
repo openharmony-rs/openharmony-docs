@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4606664f710e584bd6ff3bf94fe143ad758cd129 translatedAt=2026-09-01T02:47:51.519Z pushedAt=2026-09-02T07:17:06.785Z -->
 
 ## Introduction
 
@@ -14,15 +15,15 @@ The network firewall module provides the following functions:
 - DNS policy configuration, including the domain names allowed or not allowed for resolution and the DNS server (active or standby) used for resolution (application level).
 
 > **NOTE**
-> To maximize the application running efficiency, all APIs are called asynchronously in callback or promise mode. The following code examples use the promise mode. For details about the APIs, see [API Reference](../reference/apis-network-kit/js-apis-net-netfirewall.md).
+> To ensure app running efficiency, all API calls are asynchronous. For asynchronous APIs, a promise is provided. The following examples use the promise mode. For more modes, see [@ohos.net.netFirewall (Network Firewall)](../reference/apis-network-kit/js-apis-net-netfirewall.md).
 
 ## When to Use
 
 Typical firewall scenarios include:
 - IP address-based access control
 1. Restricting network access for specific applications
-2. Restricting network communication to specific IP addresses, protocols, and ports
-3. Restricting network communication of specific applications to specific IP addresses, protocols, and ports
+2. Restricting network communication to specific IP addresses, protocols, ports, and physical NICs.
+3. Restricting network communication of specific applications to specific IP addresses, protocols, ports, and physical NICs.
 4. Applying interception rules immediately after they are delivered. For TCP, any existing intercepted TCP connections must be disconnected.
 - Domain name-based access control
 1. Restricting DNS resolution for specific domain names. Only standard unencrypted DNS is restricted. Encrypted DNS and private DNS are not affected.
@@ -42,7 +43,7 @@ The following describes the development procedure specific to each application s
 2. Import the **netFirewall** namespace from **@kit.NetworkKit**.
 
    <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // Import the netFirewall namespace from @kit.NetworkKit.
    import { netFirewall } from '@kit.NetworkKit';
@@ -52,7 +53,7 @@ The following describes the development procedure specific to each application s
 3. Call **setNetFirewallPolicy** to enable the firewall.
 
    <!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // IP address type
    interface IpType{
@@ -86,7 +87,7 @@ The following describes the development procedure specific to each application s
 4. Call **addNetFirewallRule** to add firewall rules.
 
    <!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // Initialize firewall rules for specific types of IP addresses.
    let ipRule: netFirewall.NetFirewallRule = {
@@ -135,7 +136,8 @@ The following describes the development procedure specific to each application s
          startPort: 443,
          endPort: 443
        }] as IpPort[],
-     userId: 100
+     userId: 100,
+     interface:'wlan0' // Supported since API version 26.0.0.
    };
    // Add firewall rules.
    netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
@@ -152,7 +154,7 @@ The following describes the development procedure specific to each application s
 2. Import the **netFirewall** namespace from **@kit.NetworkKit**.
 
    <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // Import the netFirewall namespace from @kit.NetworkKit.
    import { netFirewall } from '@kit.NetworkKit';
@@ -162,7 +164,7 @@ The following describes the development procedure specific to each application s
 3. Call **setNetFirewallPolicy** to enable the firewall.
 
    <!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    interface domain{
      isWildcard: boolean;
@@ -186,7 +188,7 @@ The following describes the development procedure specific to each application s
 4. Call **addNetFirewallRule** to add firewall rules.
 
    <!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // Initialize firewall rules for specific types of domain names.
    let domainRule: netFirewall.NetFirewallRule = {
@@ -202,10 +204,20 @@ The following describes the development procedure specific to each application s
          isWildcard: false,
          domain: 'www.HarmonyOS.cn'
        },{
-       isWildcard: true,
-       domain: '*.HarmonyOS.cn'
+         isWildcard: true,
+         domain: '*.HarmonyOS.cn'
+       },{
+         isWildcard: true,
+         domain: '*w.HarmonyOS.cn' // Supported since API version 26.0.0.
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.*' // Supported since API version 26.0.0.
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.c*' // Supported since API version 26.0.0.
      }] as domain[],
-     userId: 100
+     userId: 100,
+     interface:'wlan0' // Supported since API version 26.0.0.
    };
    
    // Add firewall rules.

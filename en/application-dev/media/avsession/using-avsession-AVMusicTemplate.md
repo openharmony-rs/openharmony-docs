@@ -1,12 +1,11 @@
 # Using the Audio Template
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0a01984e064addd1496bb377cb750acc6d67693d translatedAt=2026-08-10T03:48:05.691Z pushedAt=2026-08-10T07:51:07.497Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:50:46.079Z pushedAt=2026-09-15T13:38:12.633Z -->
 
 Starting from API version 23, media applications can integrate with the playback control center through the audio template capability. This capability provides a unified user interface and playback control experience for audio and video content, reducing application-side development effort. This section describes the audio template APIs and the basic development workflow, including integrating with the playback control center, reporting media information (such as the title, author, and playback state), and responding to playback control commands (such as play, pause, search, and favorite) issued by the playback control center.
 
@@ -119,7 +118,6 @@ The basic steps for a media application to access the audio template are as foll
    To display the main audio template interface, register both of the following callbacks:
 
    - [onQueryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymaintabs): Registers a callback for querying the main tabs. Return the collection of tab data to display on the main interface. The `tabId` for **Home** must be `"minePage"`.
-
    - [onQueryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplate.md#onquerymediatabcontent): Registers the listener for querying media tab content events. Provides page display content data based on the `tabId`.
 
    <!-- @[template_register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateProvider/entry/src/main/ets/manager/TemplateManager.ets) -->

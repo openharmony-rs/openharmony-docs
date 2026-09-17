@@ -3000,7 +3000,7 @@ When the **Swiper** width falls within the [sm](../../../ui/arkts-layout-develop
 
 ![swiper](figures/displaycount_1.jpg)
 
-When the **Swiper** width falls within the [md](../../../ui/arkts-layout-development-grid-layout.md#breakpoints], two columns are displayed.
+When the **Swiper** width falls within the [md](../../../ui/arkts-layout-development-grid-layout.md#breakpoints), two columns are displayed.
 
 ![swiper](figures/displaycount_2.jpg)
 

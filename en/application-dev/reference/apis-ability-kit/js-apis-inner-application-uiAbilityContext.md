@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3eda1cb235ac8f0dfd9fd410f670260f7b392e09 translatedAt=2026-09-09T03:11:33.561Z pushedAt=2026-09-09T06:31:59.435Z -->
 
 UIAbilityContext provides the context environment for a [UIAbility](./js-apis-app-ability-uiAbility.md). It inherits from [Context](./js-apis-inner-application-context.md). For details about the relationships and differences between various types of contexts, see [Context](../../application-models/application-context-stage.md).
 
@@ -63,7 +64,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -74,21 +75,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -152,34 +153,36 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>Applicable version: 12+ |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>Applicable version: 9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>Applicable version: 9 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+|
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000067 | The StartOptions check failed. <br>Applicable version: 12+ |
+| 16000068 | The ability is already running. <br>Applicable version: 12+ |
+| 16300003 | The target application is not the current application. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -252,9 +255,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 801 | Capability not support. |
+| 801 | Capability not support. <br>Applicable version: 12+ |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -264,24 +267,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.  |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000067 | The StartOptions check failed. |
-| 16000068 | The ability is already running. |
-| 16300003 | The target application is not the current application. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000067 | The StartOptions check failed. <br>Applicable version: 12+ |
+| 16000068 | The ability is already running. <br>Applicable version: 12+ |
+| 16300003 | The target application is not the current application. <br>Applicable version: 12+ |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -352,7 +355,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -363,21 +366,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+|
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -447,30 +450,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>Applicable version: 9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>Applicable version: 9 |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+|
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -550,7 +555,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -561,21 +566,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
+| 16000019 | No matching ability is found. <br>Applicable version: 12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 | 16200001 | The caller has been released. |
 
 **Example**
@@ -641,6 +646,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -717,6 +725,9 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -798,6 +809,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -878,6 +892,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 9 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -956,15 +973,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>Applicable version: 10+ |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
+| 16000006 | Cross-user operations are not allowed. <br>Applicable version: 10+ |
+| 16000008 | The crowdtesting application expires. <br>Applicable version: 10+ |
 | 16000011 | The context does not exist.        |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
 | 16000050 | Internal error. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000053 | The ability is not on the top of the UI. <br>Applicable version: 10+ |
+| 16000055 | Installation-free timed out. <br>Applicable version: 10+ |
 
 **Example**
 
@@ -1179,21 +1198,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>Applicable version: 9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. <br>Applicable version: 12+ |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.Sending restart message to system service failed. 3.System service failed to communicate with dependency module. 4.Non-system applications are only allowed to call this interface across devices, not on the current device. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>Applicable Version: 14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000073 | The app clone index is invalid. <br>Applicable version: 12+ |
+| 16000076 | The app instance key is invalid. <br>Applicable Version: 14+ |
+| 16000077 | The number of app instances reaches the limit. <br>Applicable Version: 14+ |
+| 16000078 | The multi-instance is not supported. <br>Applicable Version: 14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>Applicable Version: 14+ |
+| 16200001 | The caller has been released. <br>Applicable version: 9 |
+| 16000080 | Creating a new instance is not supported. <br>Applicable Version: 14+ |
 
 **Example**
 
@@ -1423,6 +1444,8 @@ Sets the mission continuation state of this UIAbility. This API uses an asynchro
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior difference:** This API does not take effect when called on a Wearable device that does not support distributed services.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -1464,6 +1487,8 @@ Sets the mission continuation state of this UIAbility. This API uses a promise t
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior difference:** This API does not take effect when called on a Wearable device that does not support distributed services.
 
 **Parameters**
 
@@ -1518,7 +1543,7 @@ Restores the WindowStage data in the UIAbility. It can be called only on the mai
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| localStorage | LocalStorage | Yes| Storage used to store the restored window stage.|
+| localStorage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes | Storage data used to restore the window stage. |
 
 **Error codes**
 
@@ -1605,7 +1630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1616,8 +1641,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1688,7 +1713,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1699,8 +1724,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist. |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
+| 16000012 | The application is controlled. <br>Applicable version: 10+ |
+| 16000013 | The application is controlled by EDM. <br>Applicable version: 10+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
@@ -1825,6 +1850,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 11  |
+| 16200001 | The caller has been released. <br>Applicable version: 11  |
+| 16000002 | Incorrect ability type. <br>Applicable version: 11  |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1840,7 +1870,7 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code:` + code + `name:` + name + `message:` + message);
       },
       onResult: (abilityResult: common.AbilityResult) => {
         console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
@@ -1888,6 +1918,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | The application does not have permission to call the interface. <br>Applicable version: 11 |
+| 16000004 | Cannot start an invisible component. <br>Applicable version: 11 |
+| 16200001 | The caller has been released. <br>Applicable version: 11 |
+| 16000002 | Incorrect ability type. <br>Applicable version: 11 |
+| 16000001 | The specified ability does not exist. <br>Applicable version: 11 |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000050 | Internal error. |
 
@@ -1904,7 +1939,7 @@ export default class EntryAbility extends UIAbility {
     };
     let abilityStartCallback: common.AbilityStartCallback = {
       onError: (code: number, name: string, message: string) => {
-        console.info(`code:` + code + `name:` + name + `message:` + message);
+        console.error(`code:` + code + `name:` + name + `message:` + message);
       },
       onResult: (abilityResult: common.AbilityResult) => {
         console.info(`resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
@@ -2131,8 +2166,10 @@ Moves this UIAbility from the foreground to the background. This API uses a prom
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Device behavior differences**
-- Starting from API version 12, this API can be properly called on phones, wearables, and TVs. If it is called on other device types, error code 16000061 is returned.
-- Starting from API version 13, this API can be properly called on phones, tablets, wearables, and TVs. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 12, this API can be properly called only on phones. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 13, this API can be properly called only on phones and tablets. If it is called on other device types, error code 16000061 is returned.
+- Starting from API version 18, this API can be called normally only on Phone, Tablet, and Wearable devices. On other devices, error code 16000061 is returned.
+- Starting from API version 19, this API can be called normally only on Phone, Tablet, Wearable, and TV devices. On other devices, error code 16000061 is returned.
 
 **Return value**
 
@@ -2175,7 +2212,7 @@ struct Index {
             context.moveAbilityToBackground().then(() => {
               console.info(`moveAbilityToBackground success.`);
             }).catch((err: BusinessError) => {
-              console.info(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
+              console.error(`moveAbilityToBackground error: ${JSON.stringify(err)}.`);
             });
           });
       }
@@ -2195,7 +2232,7 @@ Opens an atomic service in an independent window. This API uses a promise to ret
 After an atomic service is started, the following situations may occur:
  - Normally, the atomic service can call [terminateSelfWithResult](#terminateselfwithresult) to terminate itself. The result is returned to the caller.
  - If an exception occurs, for example, the atomic service is killed, an exception result, in which **resultCode** is **-1**, is returned to the caller.
- - If the atomic service is started multiple times by different applications calling this API, when the atomic service calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
+ - If different applications call this API multiple times to start the same atomic service, when the atomic service calls [terminateSelfWithResult](#terminateselfwithresult) to destroy itself, the normal result is returned only to the last caller, and an exception result, in which **resultCode** is **-1**, is returned to the other callers.
 
 > **NOTE**
 >
@@ -2328,7 +2365,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
 | 16000053 | The ability is not on the top of the UI. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>Applicable version: 23+ |
 
 **Example**
 
@@ -2370,7 +2407,7 @@ struct Index {
             });
           }
           catch (e) {
-            hilog.error(DOMAIN, TAG, `exception occured, errCode ${JSON.stringify(e.code)}`);
+            hilog.error(DOMAIN, TAG, `exception occurred, errCode ${JSON.stringify(e.code)}`);
           }
         })
     }
@@ -2395,7 +2432,7 @@ Returns the startup result to the caller of [startAbilityForResult](#startabilit
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | abilityResult | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Result returned to the caller.|
-| requestCode  |  string | Yes| Request code generated by the system when the target UIAbility is started using [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12). The value can be obtained from the [CALLER_REQUEST_CODE](js-apis-app-ability-wantConstant.md) field in **want**.|
+| requestCode  |  string | Yes | requestCode generated by the system to identify this call when the target ability is started through [startAbilityForResult](#startabilityforresult) or [openLink](#openlink12) and needs to return a result. This value can be obtained through the CALLER_REQUEST_CODE field in [wantConstant](js-apis-app-ability-wantConstant.md). |
 
 **Return value**
 
@@ -2418,13 +2455,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000075 | BackToCaller is not supported. |
 
 **Example**
-The caller uses **startAbilityForResult** to start a UIAbility, and the target UIAbility calls **backToCallerAbilityWithResult** to return the result to the caller.
+The caller starts the target through the startAbilityForResult API, and the target then calls the backToCallerAbilityWithResult API to return to the caller.
 
 ```ts
 // Caller
 // index.ets
 import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -2533,9 +2570,15 @@ setRestoreEnabled(enabled: boolean): void
 
 Sets whether to enable backup and restore for this UIAbility.
 
+> **NOTE**
+>
+> If the application sets [removeMissionAfterTerminate](../../quick-start/module-configuration-file.md#abilities) to true, the backup and restore function does not take effect.
+
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: The UIAbility backup and restore function takes effect only on Phone, Tablet, Wearable, and TV devices. PC/2in1 devices do not support the backup and restore function. On Tablet devices, the backup and restore function does not take effect after free multi-window is enabled.
 
 **Parameters**
 
@@ -2647,10 +2690,10 @@ struct Index {
               context.startUIServiceExtensionAbility(startWant).then(() => {
                 console.info('startUIServiceExtensionAbility success');
               }).catch((error: BusinessError) => {
-                console.info('startUIServiceExtensionAbility error', JSON.stringify(error));
+                console.error('startUIServiceExtensionAbility error', JSON.stringify(error));
               })
             } catch (err) {
-              console.info('startUIServiceExtensionAbility failed', JSON.stringify(err));
+              console.error('startUIServiceExtensionAbility failed', JSON.stringify(err));
             }
           })
       }
@@ -2747,12 +2790,12 @@ struct UIServiceExtensionAbility {
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.info(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
     };
   }
 
@@ -2859,12 +2902,12 @@ struct UIServiceExtensionAbility {
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.info(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(TAG + `disconnectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
     }
   }
 }
@@ -2936,12 +2979,19 @@ export default class EntryAbility extends UIAbility {
         editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 512, width: 512 }
       };
       let imagePixelMap: image.PixelMap = await image.createPixelMap(color, opts);
-      this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
-        .then(() => {
-          console.info('setAbilityInstanceInfo success');
-        }).catch((err: BusinessError) => {
-        console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
-      });
+      // Set the icon and label information of the UIAbility instance.
+      try {
+        this.context.setAbilityInstanceInfo(newLabel, imagePixelMap)
+          .then(() => {
+            console.info('setAbilityInstanceInfo success');
+          }).catch((err: BusinessError) => {
+            console.error(`setAbilityInstanceInfo failed, code is ${err.code}, message is ${err.message}`);
+          });
+      } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`setAbilityInstanceInfo failed, code is ${code}, message is ${message}`);
+      }
     });
   }
 }
@@ -3037,7 +3087,7 @@ Sets the dark/light color mode for this UIAbility. Before calling this API, ensu
 
 | Name| Type         | Mandatory| Description                |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md) | Yes  | Color mode. The options are as follows:<br> - **COLOR_MODE_DARK**: dark mode.<br> - **COLOR_MODE_LIGHT**: light mode.<br> - **COLOR_MODE_NOT_SET**: not set (following the system or application).|
+| colorMode | [ConfigurationConstant](js-apis-app-ability-configurationConstant.md).ColorMode | Yes | Color mode to set, which can be any of the following:<br> - COLOR_MODE_DARK: dark mode <br> - COLOR_MODE_LIGHT: light mode <br> - COLOR_MODE_NOT_SET: not set (follows the system or application) |
 
 **Error codes**
 
@@ -3452,7 +3502,9 @@ Starts the application's own UIAbility within the current process.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+- Since API version 23, this API can be properly called only on PCs/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+- Since API version 22, this API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3675,6 +3727,146 @@ export default class EntryAbility extends UIAbility {
     }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
+  }
+}
+```
+
+### startSelf
+
+startSelf(): Promise\<void>
+
+Starts the current UIAbility instance and switches it to the foreground. This API is used to bring a native UIAbility that stays in an intermediate phase to the foreground. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> For a UIAbility configured with a native module, its startup may stay in a specific phase due to the startupPhase configuration: PRE_WINDOW or PRE_FOREGROUND.
+> If the UIAbility is not configured with a native module, calling this API returns error code 801.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 801 | Capability not supported, because starting self to foreground from background is not supported in current device or current UIAbility is a non-native UIAbility. |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000082 | The UIAbility is being started. The UIAbility has not completed onCreate or onWindowStageCreate. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    try {
+      setTimeout((): void => {
+        this.context.startSelf()
+          .then((): void => {
+            console.info('startSelf succeed');
+          })
+          .catch((err: BusinessError): void => {
+            console.error(`startSelf failed, code is ${err.code}, message is ${err.message}`);
+          });
+      }, 100);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelf failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### startSelfUIAbilityInChildProcess
+
+startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<void>
+
+Starts the UIAbility of the current application in a child process. The UIAbility in the child process supports loading native modules. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> The lifecycle of the child process follows that of the parent process. When the parent process exits, the child process exits automatically.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | Yes | Necessary information for starting the ability. Only [explicit start](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want) is supported, and [implicit start](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) is not supported. |
+| specifiedFlag | string  | Yes | Custom UIAbility identifier defined by the developer. This identifier must be different from the identifiers of the UIAbilities that have been started. Otherwise, an error is returned. <br>**NOTE**<br>When this API is used to start a UIAbility whose launch type is [specified](../../application-models/uiability-launch-type.md), the [onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant) callback will not be triggered. |
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID | Error Message |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**Example**
+
+```ts
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ChildProcessAbility'
+    };
+    let instanceFlag = 'instance1';
+    try {
+      this.context.startSelfUIAbilityInChildProcess(want, instanceFlag)
+        .then(() => {
+          console.info('startSelfUIAbilityInChildProcess succeed');
+        })
+        .catch((err: BusinessError) => {
+          console.error(`startSelfUIAbilityInChildProcess failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInChildProcess failed, code is ${code}, message is ${message}`);
+    }
   }
 }
 ```

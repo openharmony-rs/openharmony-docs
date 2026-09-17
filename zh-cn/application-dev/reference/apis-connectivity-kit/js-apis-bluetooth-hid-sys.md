@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-hid模块提供了访问蓝牙hid相关功能的方法。
+hid模块提供了访问蓝牙[HID](../../connectivity/bluetooth/terminology.md#hid)（人机接口设备，Human Interface Device）相关功能的方法，支持对HidHost profile进行连接和断开等操作，适用于蓝牙键盘、鼠标等人机接口设备的连接管理。
 
 > **说明：**
 >
@@ -23,13 +23,13 @@ import { hid } from '@kit.ConnectivityKit';
 
 ## HidHostProfile
 
-使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](./js-apis-bluetooth-hid.md#hidcreatehidhostprofile)方法构造此实例。
+HidHostProfile类提供蓝牙HID设备的连接和断开等管理功能，适用于系统应用中管理蓝牙HID设备的场景。使用HidHostProfile方法之前需要创建该类的实例进行操作，通过[createHidHostProfile()](./js-apis-bluetooth-hid.md#hidcreatehidhostprofile)方法构造此实例。
 
 ### connect
 
 connect(deviceId: string): void
 
-连接设备的HidHost服务。
+连接设备的HidHost服务。使用场景：当应用需要与蓝牙键盘、鼠标、游戏手柄等HID外设建立连接并进行输入交互时，调用此接口发起HID Host连接。
 
 **系统接口**：此接口为系统接口。
 
@@ -75,7 +75,7 @@ try {
 
 disconnect(deviceId: string): void
 
-断开连接设备的HidHost服务。
+断开连接设备的HidHost服务。使用场景：当HID设备不再使用、需要切换至其他HID设备、或需要释放蓝牙HID连接资源时，调用此接口断开当前HID Host连接。
 
 **系统接口**：此接口为系统接口。
 

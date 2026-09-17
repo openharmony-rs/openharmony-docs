@@ -1,12 +1,11 @@
 # Wrapping a Native Object in an ArkTS Object
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:43:42.491Z pushedAt=2026-08-12T11:16:45.525Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:45:07.944Z pushedAt=2026-09-16T08:26:42.978Z -->
 
 ## When to Use
 
@@ -182,7 +181,7 @@ You can use **napi_wrap** to wrap a C++ object in an ArkTS object, and use **nap
             MyObject* obj = new MyObject(value);
 
             obj->env_ = env;
-            // Bind the ArkTS object (jsThis) to the C++ object (obj) through napi_wrap.
+            // Bind the ArkTS object jsThis with the C++ object obj through napi_wrap.
             status = napi_wrap(env,
                                jsThis,
                                reinterpret_cast<void*>(obj),

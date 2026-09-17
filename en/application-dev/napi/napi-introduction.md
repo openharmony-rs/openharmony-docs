@@ -1,12 +1,11 @@
 # Node-API Overview
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=55937cedd84663aa9d6536de5dd8b342158f2bef translatedAt=2026-08-12T06:27:46.144Z pushedAt=2026-08-12T09:55:31.594Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:07:56.759Z pushedAt=2026-09-16T08:19:12.189Z -->
 
 ## When to Use
 

@@ -5,10 +5,11 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d3e763cf5b2a2ec58eb5834339066fc04b3f3b26 translatedAt=2026-09-15T11:36:50.021Z pushedAt=2026-09-16T07:50:15.707Z -->
 
 ## Overview
 
-Defines APIs and structs related to the Uniform Type Descriptors (UTDs).
+Defines the APIs and data structs related to the standardized data type description. If the parameter type is char*, the string must end with a null character ('\0').
 
 **File to include**: <database/udmf/utd.h>
 
@@ -84,7 +85,7 @@ void OH_Utd_Destroy(OH_Utd* pThis)
 
 **Description**
 
-Destroys an [OH_Utd](capi-udmf-oh-utd.md) instance.
+Destroys the instance object pointed to by the [OH_Utd](capi-udmf-oh-utd.md) pointer of a unified data type. After destruction, the pointer becomes invalid and must not be used again; otherwise, undefined behavior occurs.
 
 **Since**: 12
 
@@ -213,13 +214,13 @@ Obtains the relationships between the data from an [OH_Utd](capi-udmf-oh-utd.md)
 | Name                         | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
 | [OH_Utd](capi-udmf-oh-utd.md)* pThis | Pointer to the [OH_Utd](capi-udmf-oh-utd.md) instance.|
-| unsigned int* count             | Pointer to the number of data types obtained.          |
+| unsigned int* count             | Output parameter. The number of data types in the result set will be written to this variable.           |
 
 **Returns**
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the relationship information obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char** | When the input parameter is valid, returns the string pointer list of the ownership relationship result set; otherwise, returns nullptr.<br>When the pointer is no longer needed, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy the corresponding instance in a timely manner; otherwise, a memory leak will occur. |
 
 ### OH_Utd_GetFilenameExtensions()
 
@@ -245,7 +246,7 @@ Obtains the file name extensions associated with an [OH_Utd](capi-udmf-oh-utd.md
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the file name extensions obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char** | When the input parameter is valid, returns the string pointer list of the filename suffix result set; otherwise returns nullptr.<br>When the pointer is no longer needed, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy the corresponding instance in a timely manner; otherwise, a memory leak will occur. |
 
 ### OH_Utd_GetMimeTypes()
 
@@ -271,7 +272,7 @@ Obtains the MIME types associated with an [OH_Utd](capi-udmf-oh-utd.md) instance
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the MIME types obtained if the operation is successful; returns **nullptr** otherwise.|
+| const char** | When the input parameter is valid, returns the string pointer list of the MIME type result set; otherwise returns nullptr.<br>When the pointer is no longer needed, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy the corresponding instance in a timely manner; otherwise, a memory leak will occur. |
 
 ### OH_Utd_GetTypesByFilenameExtension()
 
@@ -297,7 +298,7 @@ Obtains the UTDs based on the file name extensions.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the UTDs obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | When the input parameter is valid, returns the string list of the standard data description type result set; otherwise, returns nullptr.<br>When the pointer is no longer needed, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy the corresponding instance in a timely manner; otherwise, a memory leak will occur. |
 
 ### OH_Utd_GetTypesByMimeType()
 
@@ -323,7 +324,7 @@ Obtains the UTDs based on the MIME types.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a double pointer to the UTDs obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | When the input parameter is valid, returns the string list of the standard data description type result set; otherwise, returns nullptr.<br>When the pointer is no longer needed, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy the corresponding instance in a timely manner; otherwise, a memory leak will occur. |
 
 ### OH_Utd_BelongsTo()
 
@@ -437,7 +438,7 @@ void OH_Utd_DestroyStringList(const char** list, unsigned int count)
 
 **Description**
 
-Destroys a UTD list.
+Destroys the string list of the standard data description type result set. After destruction, the list pointer becomes invalid and must not be used again; otherwise, undefined behavior occurs.
 
 **Since**: 12
 
@@ -448,3 +449,4 @@ Destroys a UTD list.
 | ------------------ | ------------------------------------ |
 | const char** list  | Double pointer to the UTD list to destroy.                |
 | unsigned int count | Length of the UTD list.|
+

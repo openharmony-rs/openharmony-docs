@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T11:52:53.861Z pushedAt=2026-06-24T02:59:01.562Z -->
+<!-- md-trans-meta sourceCommit=16d7453c9b7290af1cac1a3e0ab286e48cdd84be translatedAt=2026-08-31T01:19:42.314Z pushedAt=2026-09-01T01:56:40.832Z -->
 
 - ArkTS APIs<!--data-protection-arkts-->
   - [@ohos.dlpPermission (DLP)](js-apis-dlppermission.md)

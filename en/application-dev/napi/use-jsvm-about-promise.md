@@ -1,31 +1,25 @@
 # Implementing Asynchronous Operations Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:33:05.981Z pushedAt=2026-08-12T10:57:56.363Z -->
+<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:20:39.904Z pushedAt=2026-09-16T08:20:30.654Z -->
 
 ## Introduction
 
-JSVM-API provides APIs for implementing asynchronous operations. An asynchronous operation is used for a time-consuming task, for example, downloading data from network or reading a large file. Unlike a synchronous operation which blocks the main thread, the asynchronous operation is executed in the background. When an asynchronous operation is complete, it will be put into the task queue and executed when the main thread is idle.
+JSVM-API provides APIs for implementing asynchronous operations. An asynchronous operation is used for a time-consuming task, for example, downloading data from the network or reading a large file. Unlike a synchronous operation which blocks the main thread, the asynchronous operation is executed in the background. When an asynchronous operation is complete, it will be put into the task queue and executed when the main thread is idle.
 
 ## Basic Concepts
 
 Promise is an object used to handle asynchronous operations in JavaScript. A Promise has three states: pending, fulfilled, and rejected. The initial state of a Promise is pending. The resolve function can change its state from pending to fulfilled, and the reject function can change its state from pending to rejected. Once a Promise is fulfilled or rejected, its state cannot be changed. The following are some basic concepts:
 
 - Synchronous: Code is executed line by line in sequence. Each line of code is executed after the previous line of code is executed. During synchronous execution, if an operation takes a long time, the execution of the entire application will be blocked until the operation is complete.
-
-- Asynchronous: Tasks can be executed concurrently without waiting for the end of the previous task. In JS, common asynchronous operations apply for timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
-
+- Asynchronous: Tasks can be executed concurrently without waiting for the end of the previous task. In JS, common asynchronous operations include timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
 - **Promise**: a JS object used to handle asynchronous operations. Generally, it is exposed externally by using **then()**, **catch()**, or **finally()** to custom logic.
-
 - **deferred**: a utility object associated with the **Promise** object to set **resolve()** and **reject()** of **Promise**. It is used internally to maintain the state of the asynchronous model and set the **resolve()** and **reject()** callbacks.
-
 - **resolve**: a function used to change the promise state from **pending** to **fulfilled**. The parameters passed to **resolve()** can be obtained from **then()** of the **Promise** object.
-
 - **reject**: a function used to change the promise state from **pending** to **rejected**. The parameters passed to **reject()** can be obtained from **catch()** of the **Promise** object.
 
 **Promise** allows multiple callbacks to be called in a chain, providing better code readability and a better way to deal with asynchronous operations. JSVM-API provides APIs for implementing JS promises in C/C++.
@@ -90,7 +84,6 @@ const char *SRC_CALL_NATIVE = R"JS(isPromise())JS";
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_IsPromise success:0
 ```
@@ -181,18 +174,17 @@ const char *SRC_CALL_NATIVE_RESOLVE_REJECT_DEFERRED2 = R"JS(resolveRejectDeferre
 ```
 
 Expected result:
-
 ```txt
 JSVM CreatePromise success:1
 OH_JSVM_ResolveDeferred resolve
 OH_JSVM_RejectDeferred reject
 ```
 
-## OH_JSVM_PromiseRegisterHandler
+### OH_JSVM_PromiseRegisterHandler
 
 Call **OH_JSVM_PromiseRegisterHandler** to register a callback that is invoked after a promise is fulfilled rejected. It is equivalent to calling the native **Promise.then()** or **Promise.catch()**.
 
-The following describes only part of the C++ code. For details about other framework code, such as the **TestJSVM** function, see the implementation of **OH_JSVM_SetMicrotaskPolicy** in [Working with Tasks Using JSVM-API](use-jsvm-execute_tasks.md).
+The following describes only part of the C++ code. For details about other framework code, such as the `TestJSVM` function, see the implementation of `OH_JSVM_SetMicrotaskPolicy` in [Working with Tasks Using JSVM-API](use-jsvm-execute-tasks.md).
 
 ``` C++
 static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {
@@ -283,7 +275,6 @@ static void RunDemo(JSVM_VM vm, JSVM_Env env) {
 ```
 
 Expected result:
-
 ```txt
 Before promise resolved, x1: 0, x2: 0
 After promise resolved, x1: 2, x2: 3

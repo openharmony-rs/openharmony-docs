@@ -1,12 +1,11 @@
 # Performing JSON Operations Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa3fc214ef4b265f033bc3f0d0a2df54f511a497 translatedAt=2026-08-12T06:32:25.297Z pushedAt=2026-08-12T10:56:22.747Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:55:46.892Z pushedAt=2026-08-26T03:34:26.413Z -->
 
 ## Introduction
 
@@ -83,7 +82,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-JSVM_PropertyDescriptor descriptor[] = {
+static JSVM_PropertyDescriptor descriptor[] = {
     {"jsonParseNumber", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"jsonParseObject", nullptr, method + 1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -93,7 +92,6 @@ static const char *STR_TASK = R"JS(jsonParseNumber();jsonParseObject();)JS";
 ```
 
 ## Expected result:
-
 ``` C++
 Test JSVM jsonParseNumber: 10.555000
 

@@ -1,12 +1,11 @@
 # Working with Class Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=5c6e465f4cb7e5e44777311b9850301a734295d4 translatedAt=2026-08-12T06:38:11.271Z pushedAt=2026-08-12T11:05:59.296Z -->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:28:11.811Z pushedAt=2026-09-16T08:21:06.669Z -->
 
 ## Introduction
 
@@ -17,15 +16,12 @@ Node-API provides APIs for managing ArkTS classes, for example, defining an ArkT
 To begin with, it is important to understand the following basic concepts:
 
 - Class: a template used to create an object. It provides a way to define object properties and methods in a structured manner. Classes in ArkTS are based on prototypes and added with unique syntax and semantics.
-
 - Instance: an object created from a class. A class defines the structure and behavior of an object, and an instance is a specific representation of a class. Instantiating a class allows access to the properties and methods defined in the class. Each instance has its own property values.
-
 - Prototype: ArkTS also employs classes to implement inheritance across types. Defined in the early EcmaScript specifications, the prototype concept is used to achieve object inheritance via prototype chains. For details about the prototype concept, see [EcmaScript Language Specification](https://262.ecma-international.org/#sec-terms-and-definitions-prototype).
 
 ## Available APIs
 
 The following Node-API APIs are mainly used to handle classes. Their usage scenarios are as follows:
-
 | API| Description|
 | -------- | -------- |
 | napi_new_instance | Creates an instance based on the given constructor.|
@@ -43,9 +39,10 @@ If you are just starting out with Node-API, see [Node-API Development Process](u
 
 Call **napi_new_instance** to create an ArkTS instance with the given constructor. This API returns an instance that can be called from ArkTS.
 
-> **NOTE**
+> **Description**
 >
-> If **constructor** is not of the function type, **napi_function_expected** will be returned.
+> - If the **constructor** parameter is not of the function type, **napi_function_expected** is returned.
+> - After **napi_new_instance** is executed, microtask execution is triggered.
 
 CPP code:
 

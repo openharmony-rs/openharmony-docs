@@ -2,10 +2,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @LiuChao-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:42:04.322Z pushedAt=2026-06-25T06:59:01.618Z -->
+<!-- md-trans-meta sourceCommit=2d7b4266499e3556fe42ddb8c4180af3db492816 translatedAt=2026-09-14T08:57:53.821Z pushedAt=2026-09-15T12:34:27.178Z -->
 
 ## When to Use
 
@@ -13,11 +13,11 @@ Sensor Service Kit enables applications to obtain raw data from sensors and prov
 
 - The sensor module provides APIs for applications to access the underlying sensor hardware. Using these APIs, you can query sensors on your device and subscribe to sensor data. Based on the sensor data obtained, you can customize algorithms and develop various sensor-based applications, such as compass, motion-controlled games, and fitness and health applications.
   - Local sensors: sensors built into the device. Typical examples include accelerometers, gyroscopes, and temperature sensors.
-  - Dynamic sensors: external sensors. The sensor module supports refined control over dynamic sensors, To manage dynamically connected devices, use **sensor.on()** to enable listening for device status change events. When receiving a device disconnection event, you must call **sensor.off()** to disable event listening for this device to prevent memory leaks or API call exceptions.
+  - Dynamic sensors: external sensors. The sensor module supports refined control over dynamic sensors. To manage dynamically connected devices, use **sensor.on()** to enable listening for device status change events. When receiving a device disconnection event, you must call **sensor.off()** to disable event listening for this device to prevent memory leaks or API call exceptions.
 
 - The vibrator module maximally unlocks the capabilities of the vibrator device. By expanding the vibrator services, it achieves an integrated design of vibration and interaction, creating a delicate and sophisticated vibration experience that takes user interaction efficiency and usability to the next level.
   - Local vibrators: vibrators built into the device. Typical examples include rotor vibrators and linear vibrators.
-  - Dynamic vibrators: external vibrators, which support independent control and management based on information such as device connection status and vibrator status. Dynamic vibrators are widely used in connected devices, such as joysticks, remote controls, and external vibrators. To manage these devices, use **vibrator.on('vibratorStateChange', callback)** to enable listening for device connection and disconnection events.
+  - Dynamic vibrators: multiple external motors that support independent control and flexible management based on information such as device connection status and vibrator status. Dynamic vibrators are widely used in external devices, such as joysticks, remote controls, and other peripherals. To manage these dynamically connected devices, use **vibrator.on('vibratorStateChange', callback)** to listen for device connection and disconnection events.
 
 
 ## Constraints

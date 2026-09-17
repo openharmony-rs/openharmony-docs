@@ -9,7 +9,7 @@
 
 将键盘输入设备的原始事件映射为归一化交互的意图事件，如键盘上空格键映射后的事件为INTENTION_SELECT，意图为选中。
 
->  **说明：**
+> **说明：**
 > 
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -23,9 +23,9 @@ import { IntentionCode } from '@kit.InputKit';
 
 意图事件枚举值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称                               | 值   |  说明        |
 | -------------------------------- | ------ | --------------------------- |

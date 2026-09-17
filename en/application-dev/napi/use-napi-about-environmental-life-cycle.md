@@ -1,12 +1,11 @@
 # Associating Data with a Running Environment to Tie Their Lifecycle Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=a532c051393ee6daffab1a4714987334ac546623 translatedAt=2026-08-12T06:39:18.187Z pushedAt=2026-08-12T11:10:19.830Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:32:52.594Z pushedAt=2026-09-16T08:21:26.592Z -->
 
 ## Introduction
 
@@ -19,7 +18,6 @@ By associating the data with the currently running environment, the C++ data str
 ## Available APIs
 
 The following table lists the APIs.
-
 | API| Description|
 | -------- | -------- |
 | napi_set_instance_data | Associates data with the currently running environment.|
@@ -144,7 +142,7 @@ ArkTS code
 let data = 5;
 testNapi.setInstanceData(data);
 let value = testNapi.getInstanceData();
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_instance_data:%{public}d', value);
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_instance_data:%{public}d', value);
 ```
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
@@ -159,5 +157,4 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ## Notes
 
 1. When `napi_set_instance_data` is called a second time in the same runtime environment, the `FinalizeCallback` registered during the first call is executed, and the original `instance_data` has been released and is no longer valid.
-
 2. During the destruction of the runtime environment, the `FinalizeCallback` registered through the `napi_set_instance_data` API is executed. At this point, the runtime environment is no longer valid. Do not access ArkTS objects such as `napi_ref` and `napi_value` in this callback.

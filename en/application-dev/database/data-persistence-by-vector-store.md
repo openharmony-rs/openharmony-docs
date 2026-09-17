@@ -1,12 +1,12 @@
 # Persisting Vector Store Data (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @htt1997-->
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ff292cc0ec52b7ba83c260663f48a659c1ef8f7d translatedAt=2026-07-27T08:16:47.227Z pushedAt=2026-07-27T09:06:36.488Z -->
+<!-- md-trans-meta sourceCommit=6879538b2b1a4844febd6a46491da3f73fa2dd07 translatedAt=2026-09-14T08:32:30.066Z pushedAt=2026-09-15T07:55:34.441Z -->
+
 
 ## When to Use
 
@@ -16,12 +16,11 @@ Since API version 18, data in vector stores can be persisted.
 ## Basic Concepts
 
 - **ResultSet**: a set of query results, which allows access to the required data in flexible modes.
-
 - **floatvector**: vector data, for example, **[1.0, 3.0, 2.4, 5.1, 6.2, 11.7]**.
 
 ## Constraints
 
-- The default log mode is Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)), and the default flush mode is [FULL](data-terminology.md#full).
+- The system uses the Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)) mode for logging by default, and flushes data to disk in [FULL mode](data-terminology.md#full-mode) by default.
 
 - By default, there are four read connections and one write connection. A thread can perform the read operation when acquiring an idle read connection. If there is no idle read connection, a new read connection will be created.
 
@@ -346,7 +345,6 @@ The following are APIs for the vector database persistence feature. For details 
 
      DROP INDEX table_name.index_name;
      ```
-
    - Extended syntax:
 
      ```sql
@@ -408,13 +406,10 @@ The following are APIs for the vector database persistence feature. For details 
 8. Manually reclaim disk fragmentation generated during index deletion. This function is supported since API version 20.
 
     After the vector store deletes vectors on the table where the GSDiskANN index has been created, disk defragmentation is automatically performed. However, automatic disk defragmentation may not be triggered in the following scenarios:
-
     - After vectors are deleted from the GSDiskANN index, the vector store is closed immediately.
-
     - After vectors are deleted in batches from the GSDiskANN index, no operation is performed on the table.
 
    Therefore, the following statement is provided for you to trigger the disk defragmentation from the GSDiskANN index:
-
    ```sql
    PRAGMA DISKANN_ASYNC_COLLECTING;
    ```

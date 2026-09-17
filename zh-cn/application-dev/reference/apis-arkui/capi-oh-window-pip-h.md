@@ -294,7 +294,7 @@ int32_t OH_PictureInPicture_CreatePipConfig(PictureInPicture_PipConfig* pipConfi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | 用于接受创建的画中画参数配置器。 |
+| [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)* pipConfig | 用于接收创建的画中画参数配置器。 |
 
 **返回：**
 

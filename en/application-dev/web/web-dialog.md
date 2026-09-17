@@ -1,10 +1,11 @@
 # Displaying Web Page Dialog Boxes
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:10:56.100Z pushedAt=2026-09-15T13:41:22.364Z -->
 
 In HTML, JavaScript can be used to create the following types of dialog boxes: **window.alert(message)**, **window.confirm(message)**, and **window.prompt(message, defaultValue)**. These dialog boxes can be used to convey information, confirm operations, or request input from users.
 
@@ -20,7 +21,7 @@ An application can listen for the **alert** method of a web page through the [on
 
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
     <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
-    
+
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -39,9 +40,9 @@ An application can listen for the **alert** method of a web page through the [on
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  title: 'from' + event.url + 'warning',
+                  title: 'Warning',
                   message: event.message,
-                  confirm:{
+                  confirm: {
                     value: 'confirm',
                     action: () => {
                       console.info('Alert confirmed.');
@@ -59,7 +60,8 @@ An application can listen for the **alert** method of a web page through the [on
       }
     }
     ```
-  Loaded HTML:
+
+  HTML to load.
   ```html
   <!-- test.html -->
   <!DOCTYPE html>
@@ -71,7 +73,7 @@ An application can listen for the **alert** method of a web page through the [on
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -89,9 +91,9 @@ An application can listen for the **alert** method of a web page through the [on
   </html>
   ```
 
-- Create a dialog box using [CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog).
-    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
-    
+- Use [AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog) to create a dialog.
+    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
+
     ``` TypeScript
     import { AlertDialog } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
@@ -130,7 +132,7 @@ An application can listen for the **alert** method of a web page through the [on
               if (event) {
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
-                this.title = 'from' + event.url + 'warning';
+                this.title = 'Warning';
                 this.message = event.message;
                 this.result = event.result;
                 this.dialogControllerAlert.open();
@@ -141,6 +143,7 @@ An application can listen for the **alert** method of a web page through the [on
       }
     }
     ```
+
   Loaded HTML:
   ```html
   <!-- alert.html -->
@@ -153,7 +156,7 @@ An application can listen for the **alert** method of a web page through the [on
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -184,8 +187,8 @@ The confirm dialog box is used to check whether the user accepts an operation su
 An application can listen for the **confirm** method of a web page through the [onConfirm](../reference/apis-arkweb/arkts-basic-components-web-events.md#onconfirm) event and create a dialog box.
 
 - Create a dialog box using [AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md).
-    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) -->
-    
+    <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
+
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     
@@ -204,7 +207,7 @@ An application can listen for the **confirm** method of a web page through the [
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  title: 'from' + event.url + 'news',
+                  title: 'Confirm',
                   message: event.message,
                   primaryButton: {
                     value: 'cancel',
@@ -242,7 +245,7 @@ An application can listen for the **confirm** method of a web page through the [
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -263,9 +266,9 @@ An application can listen for the **confirm** method of a web page through the [
   </html>
   ```
 
-- Create a dialog box using [CustomDialog-ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog).
+- Use [ConfirmDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#confirmdialog) to create a dialog.
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) -->
-    
+
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { ConfirmDialog } from '@kit.ArkUI';
@@ -278,7 +281,7 @@ An application can listen for the **confirm** method of a web page through the [
       @State result: JsResult | null = null;
       webviewController: webview.WebviewController = new webview.WebviewController();
       isChecked = false;
-      dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
+      dialogControllerConfirmDialog: CustomDialogController = new CustomDialogController({
         builder: ConfirmDialog({
           title: this.title,
           content: this.message,
@@ -307,7 +310,7 @@ An application can listen for the **confirm** method of a web page through the [
         }),
         onWillDismiss: () => {
           this.result?.handleCancel();
-          this.dialogControllerCheckBox.close();
+          this.dialogControllerConfirmDialog.close();
         },
         autoCancel: true
       })
@@ -322,10 +325,10 @@ An application can listen for the **confirm** method of a web page through the [
                 } else {
                   console.info('event.url:' + event.url);
                   console.info('event.message:' + event.message);
-                  this.title = 'from' + event.url + 'news';
+                  this.title = 'Confirm';
                   this.message = event.message;
                   this.result = event.result;
-                  this.dialogControllerCheckBox.open();
+                  this.dialogControllerConfirmDialog.open();
                 }
               }
               return true;
@@ -334,6 +337,7 @@ An application can listen for the **confirm** method of a web page through the [
       }
     }
     ```
+
   Loaded HTML:
   ```html
   <!-- confirm.html -->
@@ -346,7 +350,7 @@ An application can listen for the **confirm** method of a web page through the [
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -372,7 +376,7 @@ An application can listen for the **confirm** method of a web page through the [
 ## Implementing the Prompt Dialog Box
 
 You can use **window.prompt()** to display a dialog box and wait for the user to submit text or cancel the dialog box. The user needs to input a value and then click **OK **or **Cancel**. If **OK** is clicked, the input value is returned. If **Cancel** is clicked, **null** is returned.
-- The optional parameter **message** is a text displayed to the user. If no message is required, this parameter can be ignored.
+- The optional parameter `message` is a string of text to display to the user. It can be omitted if there is nothing to display in the prompt window.
 - The optional parameter **defaultValue** is a string that contains the default value displayed in the text input field.
 - The return value is a string of the text input by the user or **null**.
 
@@ -380,9 +384,9 @@ The prompt box is used to prompt users to input a value, which is usually used i
 
 An application can listen for the **prompt** method of a web page through the [onPrompt](../reference/apis-arkweb/arkts-basic-components-web-events.md#onprompt9) event and create a dialog box.
 
-- Create a dialog box using [CustomDialog-CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12).
-    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) -->
-    
+- Use [CustomContentDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#customcontentdialog12) to create a dialog.
+    <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) --> 
+
     ``` TypeScript
     import { CustomContentDialog } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
@@ -447,7 +451,7 @@ An application can listen for the **prompt** method of a web page through the [o
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 console.info('event.value:' + event.value);
-                this.title = 'from' + event.url + 'news';
+                this.title = 'Prompt';
                 this.message = event.message;
                 this.promptResult = event.value;
                 this.result = event.result;
@@ -459,6 +463,7 @@ An application can listen for the **prompt** method of a web page through the [o
       }
     }
     ```
+
   Loaded HTML:
   ```html
   <!-- prompt.html -->
@@ -471,7 +476,7 @@ An application can listen for the **prompt** method of a web page through the [o
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>

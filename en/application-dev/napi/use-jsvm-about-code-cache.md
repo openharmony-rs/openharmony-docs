@@ -1,27 +1,23 @@
 # Accelerating Compilation Using a Code Cache
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=d475d826f8ab6e97b4b69944b8a9a6d84f792324 translatedAt=2026-08-12T06:30:22.495Z pushedAt=2026-08-12T11:36:22.168Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:12.243Z pushedAt=2026-09-02T06:19:15.000Z -->
 
 ## Introduction to Code Cache
 
-JSVM-API provides APIs for creating a code cache and using the code cache to store and manage compiled code to accelerate compilation. The code cache stores the code that has been compiled into native code by the compiler. This helps speed up the execution by avoiding repeated compilation of the same code. The procedure for creating and using a code cache is as follows:
+JSVM-API provides APIs for creating a code cache and using the code cache to store and manage compiled code to accelerate compilation. Obtaining and using it involves the following parts:
 
 - Use the **compile** APIs to obtain **JSVM_Script**.
-
 - Call **OH_JSVM_CreateCodeCache** with the passed-in **JSVM_Script** to create a code cache.
-
 - Save the created code cache. During the next compilation, pass the code cache as a parameter to the **compile** APIs.
 
-The compilation using the code cache greatly reduces the compilation time because the serialized script in the code cache only needs to be deserialized, eliminating the need for parsing and compiling the code. In this way, the compilation process is simplified as a process for reading data.
+The compilation using the code cache greatly reduces the compilation time because the serialized script in the code cache only needs to be deserialized, eliminating the need for parsing and compiling the code. In this way, the compilation process is simplified to a single data read.
 
 ## Code Cache Verification Specifications
-
 | Specification      | Description                                           |
 | ---------- | -------------------------------------------------- |
 | Integrity verification | Checks whether the actual length of the cache is the same as that when the cache is generated.                |
@@ -123,7 +119,6 @@ const char *SRC_CALL_NATIVE = R"JS(UseCodeCache();)JS";
 ```
 
 Expected result:
-
 ```txt
 first run result: 98304
 second run result: 98304
@@ -132,14 +127,13 @@ cache rejected: 0
 
 ## Precautions
 
-In the preceding code, a code cache is used for compilation. In **OH_JSVM_CompileScript(env, jsSrc, dataPtr, length, true, &cacheRejected, &script)**,
+In the preceding code, a code cache is used for compilation: **OH_JSVM_CompileScript(env, jsSrc, dataPtr, length, true, &cacheRejected, &script)**
 
-the **cacheRejected** parameter is passed in to obtain whether the code cache is rejected in the compilation process. This status includes several situations:
+In this API, the **cacheRejected** parameter is passed in to obtain whether the code cache is rejected in the compilation process. This status includes several situations:
 
--Code cache verification failed
+- Code cache verification failed
 
--Code cache verification successful
-
-- The code cache is not verified because there is a compilation cache in the memory
+- Code cache verification successful
+- The code cache is not verified when there is a compilation cache in the memory.
 
 **cacheRejected** will be set to **true** in the first case and to **false** in the latter two cases. Therefore, it is important to note that even if **cacheRejected** is **false**, it does not necessarily mean that the code cache is used.

@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4a96aa11c3168794bd2d004d44f378705ce38391 translatedAt=2026-08-11T01:41:29.546Z pushedAt=2026-08-11T02:42:56.107Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=804e49693463f2a26dff2f7a605cb4a15d07f377 translatedAt=2026-09-14T09:56:58.507Z pushedAt=2026-09-15T13:38:38.729Z -->
 
 ## When to Use
 
@@ -36,6 +36,7 @@ For detailed API descriptions, see [DRM](../../reference/apis-drm-kit/capi-drm.m
 3. Obtain the name and ID list of the DRM solutions supported by the device.
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count specifies the number of DRM plugins supported by the device. Pass in the actual number.
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));

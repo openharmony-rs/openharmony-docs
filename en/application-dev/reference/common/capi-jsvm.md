@@ -1,16 +1,31 @@
 # JSVM
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:50:08.668Z pushedAt=2026-08-27T06:57:20.105Z -->
 
 ## Overview
 
-This module provides standard JavaScript (JS) engine capabilities. The standard JS engine is a JS code execution engine that strictly complies with the ECMAScript. It supports the standard libraries defined by [ECMAScript](https://tc39.es/ecma262/) and provides complete [native APIs](../../napi/jsvm-introduction.md) to implement interaction between C++ and JS modules. Just-In-Time (JIT) compiler is used to accelerate code execution and provide secure and efficient JS execution capabilities for applications. The capabilities of the standard JS engine are provided through a stable set of application binary interfaces (ABIs), that is, JSVM-APIs. They can be dynamically linked to JS engine libraries of different versions to shield the differences between engine interfaces. JSVM-APIs provide capabilities such as engine lifecycle management, JS context management, JS code execution, JS/C++ interoperability, execution environment snapshot, and code cache.<br> Platform: ARM64.<br> Usage: Link **libjsvm.so** in the SDK and include the **ark_runtime/jsvm.h** file in the C++ code.<br>
+Provides standard JavaScript engine capabilities. Function overview: The standard JS engine is a JavaScript code execution engine that strictly complies with the ECMAScript specification. It supports the standard libraries defined in the [ECMAScript specification](https://ecma262.com/) and provides a complete set of [native APIs for C++-JS interaction](../../napi/jsvm-introduction.md). It accelerates code execution through JIT compilation, providing apps with secure and efficient JS execution capabilities. The capabilities of the standard JS engine are provided through a stable ABI (Application Binary Interface), namely JSVM-API (JavaScript Virtual Machine API). JSVM-API supports dynamic linking to JS engine libraries of different versions, thereby shielding developers from the differences between engine interfaces. JSVM-API provides capabilities such as engine lifecycle management, JS context management, JS code execution, JS/C++ interoperation, execution environment snapshots, and code cache.
+
+**Platform:** arm64 platform.
+
+**Usage:** Link libjsvm.so in the SDK and include the ark_runtime/jsvm.h header file in C++ code.
+
+**Use scenario:** Scenarios that require cross-language calls between C++ and JavaScript.
+
+**Problem solved:** Provides a standard JavaScript execution environment to ensure code compatibility.
+
+**Benefits:** Strictly complies with the ECMAScript specification to ensure standardized execution of JavaScript code. JIT compilation accelerates code execution and improves app performance. A stable ABI is provided to reduce engine upgrade costs.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
+
 ## Files
 
 | Name| Description|

@@ -2,23 +2,27 @@
 
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
-<!--Owner: @SukiEvas-->
+<!--Owner: @ctssss-->
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=ea2d8082679fb01eb444ae8d25a7681c82490ad7 translatedAt=2026-05-25T06:57:04.051Z pushedAt=2026-05-27T13:09:59.116Z -->
+<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:13:45.817Z pushedAt=2026-09-02T09:34:14.199Z -->
+
 
 This module provides the capability of displaying ads, covering native, roll, splash, and other ad styles.
+
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
 ```typescript
 import { AdComponent } from '@kit.AdsKit';
 ```
+
 
 ## AdComponent
 
@@ -40,13 +44,13 @@ Ad display component, which provides the capability of displaying native, roll, 
 
 **Parameters**
 
-| **Parameter Name** | **Type** | Mandatory | Description |
-| -------- | -------- | -------- | -------- |
-| ads | advertising.[Advertisement](js-apis-advertising.md#advertisement)[] | Yes | Array of ad objects.<br/>NOTE: For non-roll ad types, the component only displays the first data in the array.<br/>Atomic service API: This API can be used in atomic services since API version 12. |
-| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | Ad display parameters.<br/>Atomic service API: This API can be used in atomic services since API version 12. |
-| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes | Callback for ad status changes.<br/>Atomic service API: This API can be used in atomic services since API version 12. |
-| adRenderer<sup>12+</sup> | () =&gt; void | No | Application self-rendered ad style. The application self-rendered ad style is a restricted capability. For details, please consult [Traffic Monetization Official Website Customer Support](https://developer.huawei.com/consumer/en/doc/monetize/support-0000001061434261).<br/>Atomic service API: This API can be used in atomic services since API version 20.<br/>Decorator type: \@BuilderParam |
-| rollPlayState<sup>15+</sup> | number | No | Used to provide the playback status of roll ads externally. Set to 1 for playing and 2 for paused. The default value is 2. Other values are invalid and do not change the previous playback status. The page where the roll ad is located needs to be associated with the property through \@State. For usage methods, refer to the [sample code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ads-publisher-service-roll#section4281165885118).<br/>Atomic service API: This API can be used in atomic services since API version 20.<br/>Decorator type: \@Prop |
+| **Name** | **Type** | Mandatory | **Decorator Type** | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| ads | advertising.[Advertisement](js-apis-advertisement.md#advertisement)[] | Yes | - | Array of ad objects.<br/>Note: For non-roll ad types, the component displays only the first item in the array.<br/>Atomic service API: This API can be used in atomic services since API version 12. |
+| displayOptions | advertising.[AdDisplayOptions](js-apis-advertising.md#addisplayoptions) | Yes | - | Ad display parameters.<br/>Atomic service API: This API can be used in atomic services since API version 12. |
+| interactionListener | advertising.[AdInteractionListener](js-apis-advertising.md#adinteractionlistener) | Yes | - | Callback for ad status changes.<br/>Atomic service API: This API can be used in atomic services since API version 12. |
+| adRenderer<sup>12+</sup> | () =&gt; void | No | \@BuilderParam | Application self-rendered ad style. The application self-rendered ad style is a restricted capability. For details, contact Traffic Monetization Official Website Customer Support.<br/>Atomic service API: This API can be used in atomic services since API version 20. |
+| rollPlayState<sup>15+</sup> | number | No | \@Prop | Provides the roll ad playback state externally. Set 1 for playing and 2 for paused. The default value is 2. Other values are invalid and do not change the previous playback state. On the page where the roll ad is located, associate the attribute through \@State. For usage, refer to [Sample Code](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ads-publisher-service-roll#displaying-an-ad).<br/>Atomic service API: This API can be used in atomic services since API version 20. |
 
 > **NOTE**
 >
@@ -96,12 +100,17 @@ struct Index {
 }
 ```
 
+
 ### build
+
 
 build(): void
 
+
 A constructor used to create an **AdComponent** object.
 
+
 **Atomic service API:** This API can be used in atomic services since API version 12.
+
 
 **System capability**: SystemCapability.Advertising.Ads

@@ -5,7 +5,8 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=ed1caafb45357aa980ce242d8f0e108215e96f57 translatedAt=2026-09-09T03:01:38.539Z pushedAt=2026-09-09T03:24:40.679Z -->
 
 - Developing USB Services<!--usb-dev-->
   - [USB Service Development Overview](usbManager/usbHost-overview.md)

@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bb88bb94d89f6d282aea4674234254f4d4bb26 translatedAt=2026-09-15T10:53:27.261Z pushedAt=2026-09-16T07:50:15.686Z -->
 
 ```c
 typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
@@ -26,7 +27,8 @@ Defines a struct for statistics of the overall device-cloud sync (upload and dow
 
 | Name               | Description                                   |
 | ------------------- | --------------------------------------- |
-| int version         | Version of the **OH_TableDetails** struct.|
+| int version         | Version of the **Rdb_ProgressDetails** struct. |
 | int schedule        | Device-cloud sync process.                     |
-| int code            | Device-cloud sync state.               |
+| int code            | Status code of the device-cloud sync process.                |
 | int32_t tableLength | Number of the tables synced between the device and cloud.               |
+

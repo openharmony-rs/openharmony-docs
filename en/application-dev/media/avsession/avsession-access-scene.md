@@ -1,10 +1,11 @@
 # Accessing AVSession
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=369710cff3973caa44641c0ce96a5dee83aa0d0f translatedAt=2026-09-14T09:46:32.731Z pushedAt=2026-09-15T13:37:55.024Z -->
 
 In addition to implementing audio and video features, audio and video applications need to access AVSession provided by AVSession Kit. This topic uses typical cases to describe display and control scenarios for accessing AVSession, providing adaptation references for developers.
 
@@ -92,7 +93,7 @@ The application uses [setAVMetadata](../../reference/apis-avsession-kit/arkts-ap
 
 ### Metadata Information
 
-Metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) includes the IDs of the current media asset (**assetId**), previous media asset (**previousAssetId**), and next media asset (**nextAssetId**), title, author, album, writer, and duration.
+Metadata information [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10) includes the ID of the current media (`assetId`), ID of the previous media (`previousAssetId`), ID of the next media (`nextAssetId`), title (`title`), album author (`author`), artist (`artist`), album name (`album`), lyricist (`writer`), media image (`mediaImage`), and media duration (`duration`).
 
 <!-- @[setAVMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetAVMetadata.ets) -->
 
@@ -154,9 +155,9 @@ Metadata [AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.
 
 > **NOTE**
 >
-> - The **lyric** field supports only lyrics in LRC format, that is, timestamp plus lyric text, for example, `[00:25.44]lyric text`. If lyrics in other formats are passed in, the system controller may fail to parse them and display lyrics abnormally.
+> - The `lyric` field supports only lyrics in LRC format (time tags plus lyric information, for example, `[00:25.44]lyric information`). If you pass lyrics in other formats, the system Media Controller may fail to parse them, causing abnormal lyric display.
 >
-> - The size of each lyric string cannot exceed 40960 bytes. Otherwise, lyric information fails to be set due to system transfer limits.
+> - The size of both the `lyric` field and the `singleLyricText` field must not exceed 40960 bytes. Otherwise, the lyric information fails to be set due to system transmission limits.
 
 <!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
@@ -360,7 +361,7 @@ The application uses [setAVPlaybackState](../../reference/apis-avsession-kit/ark
 
 ### Playback State Information
 
-Playback state information [AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10) includes the playback state (**state**), playback position (**position**), playback speed (**speed**), buffered time (**bufferedTime**), loop mode (**loopMode**), whether the media asset is favorited (**isFavorite**), ID of the media asset being played (**activeItemId**), and custom media data (**extras**).
+Playback state information [AVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avplaybackstate10) includes the playback state of the current media (`state`), playback position (`position`, which contains the elapsed playback time `elapsedTime` and the update timestamp `updateTime`), playback speed (`speed`), buffered time (`bufferedTime`), loop mode (`loopMode`), whether the media is marked as favorite (`isFavorite`), ID of the media being played (`activeItemId`), and custom media data (`extras`).
 
 <!-- @[settingGeneralStateInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets) -->
 
@@ -732,12 +733,13 @@ struct Index {
 
 When an application correctly accesses AVSession according to the preceding process, sets metadata information and correct playback state information, and registers control commands, the system notification and lock screen display information about the playing application when the application enters the playing state.
 
+
 ## Adapting to Bluetooth and Wired Key Events
 
 After an application correctly accesses AVSession, it can listen for Bluetooth and wired headset key events by registering control commands. AVSession provides the following two implementation methods:
 - Method 1 (recommended)
 
-  Register the required control commands as needed. For details, see [Control Command Processing](#control-command-processing). Currently, the following AVSession control commands can be converted:
+  You can register the required control commands as needed by referring to [Control Command Processing](#control-command-processing). The AVSession control commands that can be converted are as follows:
   | Control Command| Description  |
   | ------  | -------------------------|
   | play    | Plays the media.|
@@ -748,52 +750,62 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
   | fastForward    | Fast-forwards.|
   | rewind    | Rewinds.|
 
-  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
+  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->  
 
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  // ...
+  
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello world';
-
+    // ...
+  
     build() {
       Column() {
+        // ...
         Text(this.message)
           .onClick(async () => {
             try {
               let context = this.getUIContext().getHostContext() as Context;
               let type: AVSessionManager.AVSessionType = 'audio';
               let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
-              // Set the necessary media information. This step is mandatory. Otherwise, the application cannot receive control events.
+              // ...
+              // Set the necessary media information. This must be set; otherwise, control events cannot be received.
               let metadata: AVSessionManager.AVMetadata = {
-                assetId: '0', // Specified by the application, used to identify the media asset in the application media library.
+                assetId: '0', // Specified by the application to identify the media in the application's media library.
                 title: 'TITLE',
                 mediaImage: 'IMAGE',
                 artist: 'ARTIST'
               };
               session.setAVMetadata(metadata).then(() => {
                 console.info(`SetAVMetadata successfully`);
+                // ...
               }).catch((err: BusinessError) => {
                 console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+                // ...
               });
-              // Generally, logic processing on the player is implemented in the listener.
-              // After the processing is complete, use the setter to synchronize the playback information. For details, see the code snippet above.
+              // Generally, corresponding logic processing is performed on the player in the listener.
+              // After processing, synchronize the playback-related information through the set API. Refer to the use case above.
               session.on('play', () => {
                 console.info(`on play , do play task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('play') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
+                // ...
+                // If this command is not supported yet, do not register it; or if it is registered but not used temporarily, cancel the listening through session.off('play').
+                // After processing, use setAVPlaybackState to report the playback state.
               });
               session.on('pause', () => {
                 console.info(`on pause , do pause task`);
-                // If this command is not supported, do not register it. If the command has been registered but is not used temporarily, use session.off('pause') to cancel listening.
-                // After the processing is complete, call setAVPlayState to report the playback state.
+                // ...
+                // If this command is not supported yet, do not register it; or if it is registered but not used temporarily, cancel the listening through session.off('pause').
+                // After processing, use setAVPlaybackState to report the playback state.
               });
+              // ...
             } catch (err) {
               if (err) {
                 console.error(`AVSession create Error: Code: ${err.code}, message: ${err.message}`);
+                // ...
               }
             }
           })
@@ -805,7 +817,8 @@ After an application correctly accesses AVSession, it can listen for Bluetooth a
   ```
 
 - Method 2
-  Register the [on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) command through AVSession. This callback directly forwards media key events [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). The application needs to identify the key event type and respond to the event to implement the corresponding function. Currently, the following key event types can be forwarded:
+
+  Register the [on('handleKeyEvent')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) command through AVSession. This callback directly forwards the media key event [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). You need to identify the type of the key event and respond to the event to implement the corresponding function. The key event types that can be forwarded are as follows:
 
   | Key Type ([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode))| Description  |
   | ------  | -------------------------|
