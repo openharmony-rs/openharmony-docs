@@ -1,18 +1,19 @@
 # AVSession Provider (ArkTS)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:53:04.565Z pushedAt=2026-09-15T13:38:19.820Z -->
 
 An audio and video application needs to access the AVSession service as a provider in order to display media information in the controller (for example, Media Controller) and respond to playback control commands delivered by the controller.
 
 ## Basic Concepts
 
-- AVMetadata: media data related attributes, including the IDs of the current media asset (assetId), previous media asset (previousAssetId), and next media asset (nextAssetId), title, author, album, writer, and duration.
+- AVMetadata: describes media data related attributes, including the ID of the current media asset (`assetId`), the ID of the previous media asset (`previousAssetId`), the ID of the next media asset (`nextAssetId`), title, artist, album author (`author`), album name (`album`), lyricist (`writer`), and media duration (`duration`).
 
-- AVPlaybackState: playback state attributes, including the playback state, position, speed, buffered time, loop mode, media item being played (activeItemId), custom media data (extras), and whether the media asset is favorited (isFavorite).
+- AVPlaybackState: describes media playback state related attributes, including the current media playback state (`state`), playback position (`position`), playback speed (`speed`), buffered time (`bufferedTime`), loop mode (`loopMode`), whether the media is marked as favorite (`isFavorite`), the ID of the media item being played (`activeItemId`), and custom media data (`extras`).
 
 ## Available APIs
 
@@ -27,7 +28,7 @@ For details about the APIs, see [Module Description](../../reference/apis-avsess
 | setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sets the AVSession playback state.|
 | setLaunchAbility(ability: WantAgent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Starts a UIAbility.|
 | getController(callback: AsyncCallback&lt;AVSessionController&gt;): void<sup>10+<sup> | Obtains the controller of the AVSession.|
-| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | Obtains the output device information.|
+| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+</sup> | Obtains information about the output device. |
 | activate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Activates the AVSession.|
 | deactivate(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Deactivates this session.|
 | destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Destroys the AVSession.|
@@ -245,10 +246,10 @@ To enable an audio and video application to access the AVSession service as a pr
    }
    ```
 
-4. Set a custom session event. The controller performs an operation after receiving the event.
+4. Send an immediate custom session event so that the controller performs a corresponding operation after receiving the event.
 
    > **NOTE**<br>
-   > The data set through **dispatchSessionEvent** is not saved in the AVSession object or AVSession service.
+   > The data sent via the **dispatchSessionEvent** method is not saved in the session object or the AVSession service.
 
    <!-- @[dispatchSessionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DispatchSessionEvent.ets) -->
 
@@ -343,6 +344,7 @@ To enable an audio and video application to access the AVSession service as a pr
 
    Fixed playback control commands on the session side include basic operation commands such as play, pause, previous, and next. For details, see [AVControlCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avcontrolcommand10).
 
+   Control scenarios include tapping the media control center, removing notifications from the media control center, wearing Bluetooth earphones, pressing buttons on Bluetooth or wired earphones, and using voice assistant controls.
 
    <!-- @[fixedPlaybackControlCommands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/FixedPlaybackControlCommands.ets) -->
 

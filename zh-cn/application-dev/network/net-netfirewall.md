@@ -203,8 +203,17 @@
          isWildcard: false,
          domain: 'www.HarmonyOS.cn'
        },{
-       isWildcard: true,
-       domain: '*.HarmonyOS.cn'
+         isWildcard: true,
+         domain: '*.HarmonyOS.cn'
+       },{
+         isWildcard: true,
+         domain: '*w.HarmonyOS.cn' // 从API版本26.0.0开始支持
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.*' // 从API版本26.0.0开始支持
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.c*' // 从API版本26.0.0开始支持
      }] as domain[],
      userId: 100,
      interface:'wlan0' // 从API版本26.0.0开始支持

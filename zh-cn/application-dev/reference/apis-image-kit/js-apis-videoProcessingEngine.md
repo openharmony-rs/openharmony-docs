@@ -278,7 +278,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, le
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
 
-sync function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
+function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
   // 示例：width可配置为1024，height可配置为1280。
@@ -327,7 +327,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
 
-sync function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
+function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
   // 示例：scale可配置为2.0。

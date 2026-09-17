@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -140,6 +140,8 @@ Enumerates the NFC card emulation types.
 > 
 > This API is supported since API version 6 and deprecated since API version 9. Use [hasHceCapability](#cardemulationhashcecapability9) instead.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
 
 | Name  | Value   | Description      |
@@ -151,6 +153,8 @@ Enumerates the NFC card emulation types.
 ## CardType<sup>9+</sup>
 
 Enumerates the types of services used by the card emulation application.
+
+**Model restriction**: This API can be used in both the stage and FA models.
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
 
@@ -170,6 +174,8 @@ Checks whether a certain type of card emulation is supported.
 > **NOTE**
 > 
 > This API is supported since API version 6 and deprecated since API version 9. Use [hasHceCapability](#cardemulationhashcecapability9) instead.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
 
@@ -229,7 +235,7 @@ Checks whether the device supports HCE.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -263,6 +269,8 @@ isDefaultService(elementName: ElementName, type: CardType): boolean
 
 Checks whether an application is the default application of the specified service type.
 
+**Model restriction**: This API can be used in both the stage and FA models.
+
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
@@ -286,7 +294,7 @@ Checks whether an application is the default application of the specified servic
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -330,6 +338,8 @@ Starts HCE, including enabling this application to run in the foreground prefere
 > **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. Use [start](#start9) instead.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
@@ -346,11 +356,13 @@ Starts HCE, including enabling this application to run in the foreground prefere
 | ------- | -------------------------------------- |
 | boolean | Returns **true** if HCE is started or has been started; returns **false** otherwise.|
 
-**ArkTS example**
+**Example**
+
+ArkTS example:
 
 For details, see the example of [on](#on8).
 
-**JS example**
+JS example:
 
 ```xml
 <!-- Applicable to lite wearables -->
@@ -403,7 +415,7 @@ export default  {
         var hceService = new cardEmulation.HceService();
         hceService.startHCE([
             "F0010203040506", "A0000000041010"
-        ])
+        ]);
     }
 }
 ```
@@ -413,6 +425,8 @@ export default  {
 start(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), aidList: string[]): void
 
 Starts HCE, including enabling this application to run in the foreground preferentially and dynamically registering the AID list.
+
+**Model restriction**: This API can be used in both the stage and FA models.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -431,7 +445,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -447,6 +461,8 @@ Stops HCE, including exiting the current application from the foreground, releas
 > **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. Use [stop](#stop9) instead.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
@@ -457,11 +473,13 @@ Stops HCE, including exiting the current application from the foreground, releas
 | ------- | -------------------------------------- |
 | boolean | **true** if HCE is stopped or disabled; **false** otherwise.|
 
-**ArkTS example**
+**Example**
+
+ArkTS example:
 
 For details, see the example of [on](#on8).
 
-**JS example**
+JS example:
 
 ```xml
 <!-- Applicable to lite wearables -->
@@ -523,6 +541,8 @@ stop(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elemen
 
 Stops HCE, including canceling the subscription of APDU data, exiting this application from the foreground, and releasing the dynamically registered AID list. The application needs to call this API in **onDestroy** of the HCE page.
 
+**Model restriction**: This API can be used in both the stage and FA models.
+
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
@@ -539,7 +559,7 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -551,6 +571,8 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 
 Subscribes to events indicating receiving of APDUs from the peer card reader. The application needs to call this API in **onCreate()** of the HCE page. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used in both the stage and FA models.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -569,13 +591,15 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 
-**ArkTS example**
+**Example**
+
+ArkTS example:
 ```js
 // Applicable to devices other than lite wearables
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -593,7 +617,7 @@ export default class EntryAbility extends UIAbility {
       bundleName: want.bundleName ?? '',
       abilityName: want.abilityName ?? '',
       moduleName: want.moduleName
-    }
+    };
     const apduCallback: AsyncCallback<number[]> = (err, data) => {
       // Implement data processing and handle exceptions.
       console.info("got apdu data");
@@ -608,7 +632,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-**JS example**
+JS example:
 <!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
@@ -631,14 +655,14 @@ export default {
     cardEmulation.hasHceCapability();
     cardEmulation.isDefaultService(appName, cardEmulation.CardType.PAYMENT);
     cardEmulation.isDefaultService(appName, cardEmulation.CardType.OTHER);
-    let HceService = new cardEmulation.HceService();
+    let hceService = new cardEmulation.HceService();
 
-    HceService.start(appName, this.paymentAid);
-    HceService.on("hceCmd", (data) => {
+    hceService.start(appName, this.paymentAid);
+    hceService.on("hceCmd", (data) => {
       console.info('data:' + data);
       // Data to be sent by the application. The following data is for reference only.
       let responseData = [0x1, 0x2];
-      HceService.transmit(responseData, () => {
+      hceService.transmit(responseData, () => {
         console.info('sendResponse start');
       });
       console.info('sendResponse end');
@@ -655,6 +679,8 @@ export default {
 off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 
 Unsubscribes from events indicating receiving of APDUs from the peer card reader. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used in both the stage and FA models.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -673,7 +699,7 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -700,7 +726,7 @@ export default class EntryAbility extends UIAbility {
       bundleName: want.bundleName ?? '',
       abilityName: want.abilityName ?? '',
       moduleName: want.moduleName
-    }
+    };
     hceService.on('hceCmd', apduCallback);
   }
   onDestroy() {
@@ -721,6 +747,8 @@ Sends a response to the peer card reader.
 > **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. Use [transmit](#transmit9) instead.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
@@ -731,11 +759,13 @@ Sends a response to the peer card reader.
 | ------------ | -------- | ---- | -------------------------------------------------- |
 | responseApdu | number[] | Yes  | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**.|
 
-**ArkTS example**
+**Example**
+
+ArkTS example:
 
 For details, see the example of [transmit](#transmit9).
 
-**JS example**
+JS example:
 
 ```xml
 <!-- Applicable to lite wearables -->
@@ -795,7 +825,7 @@ export default  {
             } else {
                 console.info('callback => Operation hceCmd failed. Cause: ${JSON.stringify(err.data)}');
             }
-        })
+        });
     }
 }
 ```
@@ -805,6 +835,8 @@ export default  {
 transmit(response: number[]): Promise\<void>
 
 Transmits an APDU to the peer card reader. This API uses a promise to return the result. The application calls this API only after receiving an APDU sent by the card reader via [on](#on8).
+
+**Model restriction**: This API can be used in both the stage and FA models.
 
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
@@ -828,7 +860,7 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -875,6 +907,8 @@ transmit(response: number[], callback: AsyncCallback\<void>): void
 
 Sends APDU data to the peer card reader. The application can call this API only after receiving an APDU sent by the card reader via [on](#on8). This API uses an asynchronous callback to return the result.
 
+**Model restriction**: This API can be used in both the stage and FA models.
+
 **Required permissions**: ohos.permission.NFC_CARD_EMULATION
 
 **System capability**: SystemCapability.Communication.NFC.CardEmulation
@@ -892,7 +926,7 @@ Sends APDU data to the peer card reader. The application can call this API only 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |

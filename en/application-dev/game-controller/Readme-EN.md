@@ -5,8 +5,8 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=e5bc67b4e035fae4d3debdff78f31873a4466939 translatedAt=2026-08-03T10:57:52.458Z pushedAt=2026-08-03T10:59:28.184Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=233eb431f8ea7c656c5b56931386bbeb010828c6 translatedAt=2026-08-22T01:30:20.215Z pushedAt=2026-08-22T03:23:19.713Z -->
 
 - [About This Kit](game-controller-introduction.md)
 

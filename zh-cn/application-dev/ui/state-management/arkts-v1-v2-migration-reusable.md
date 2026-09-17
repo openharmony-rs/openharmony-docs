@@ -104,7 +104,7 @@ ReusableV2Component().reuse({reuseId: () => 'groupA'})
 
 **迁移规则**
 
-组件复用V1中，当开发者打开复用组件的冻结开关freezeWhenInactive时，才会冻结复用池中的组件，详细规则参考[自定义组件冻结功能](./arkts-custom-components-freeze.md)。而在组件复用V2中，会自动开启冻结，详细规则参考[复用阶段的冻结](./arkts-new-reusableV2.md#复用阶段的冻结)。
+组件复用V1中，当开发者打开复用组件的冻结开关freezeWhenInactive时，才会冻结复用池中的组件，详细规则参考[自定义组件冻结](./arkts-custom-components-freeze.md)。而在组件复用V2中，会自动开启冻结，详细规则参考[复用阶段的冻结](./arkts-new-reusableV2.md#复用阶段的冻结)。
 
 
 ### LazyForEach->Repeat

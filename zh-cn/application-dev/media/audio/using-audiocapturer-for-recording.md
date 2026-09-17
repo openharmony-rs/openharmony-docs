@@ -74,6 +74,11 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    > - **线程管理**：不建议使用多线程来处理数据读取。若需使用多线程读取数据，需要做好线程管理。
    > - **线程耗时**：`readData` 方法所在的线程中，不建议执行耗时任务。否则可能会导致数据处理线程响应回调延迟，进而引发录音数据缺失、卡顿、杂音等音频效果问题。
    > - **注册回调**：开发者应避免在主线程中注册回调，以免被其他业务阻塞导致响应回调不及时造成卡顿。建议使用独立的异步线程池处理回调。
+   > - **高负载阻塞风险**：在高负载场景下，承载回调的ArkTS执行上下文可能被其他业务的任务持续占用，导致回调调度延迟。此类场景会产生和主线程阻塞类似的录音数据缺失、卡顿或杂音问题。处理高负载时，应降低同一执行上下文中非必要任务的执行频率，避免多个定时任务同时运行，必要时暂停其他非关键业务。
+   > - **录音过载确认**：录音过程中，系统音频模块将音频输入数据写入与应用侧音频客户端共享的录音缓冲区，应用侧音频客户端从该缓冲区读取数据。应用侧读取数据的速率低于系统音频模块写入速率时，未处理的数据会持续积压。当共享缓冲区剩余可写空间不足以容纳一个完整音频帧时，系统音频模块判定发生过载。此时输入数据不会写入共享缓冲区，应用侧无法读取数据。过载计数用于记录检测到的过载情况，ArkTS应用可调用[getOverflowCount()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcount12)或[getOverflowCountSync()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#getoverflowcountsync12)查询过载音频帧数量。从API版本26.0.0及以上，使用[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)输出录音快照时，也可查看其中的`overflowCount`，用于录音结束后的问题定位。高负载或任务队列积压期间，如果过载计数持续增加，应优先降低任务竞争、限制队列长度或主动停止录音流。
+   > - **业务静音处理**：当前可通过以下方式实现录音静音。
+   >   1. 静音期间仍需保持录音流运行：应用在`readData`回调中复制采集数据，并将副本中的全部采样数据设置为静音值后保存或发送。有符号PCM格式的静音值为`0`；`SAMPLE_FORMAT_U8`格式的静音值为`0x80`。
+   >   2. 业务允许静音期间不再采集数据：由应用主动停止录音流，后续需要录音时再重新启动，以停止采集替代静音处理。
 
    <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
    

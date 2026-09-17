@@ -39,7 +39,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
 
 - 添加文本样式
 
-  设置color、font-size、allow-scale、word-spacing、text-align属性分别为文本添加颜色、大小、缩放、文本之间的间距和文本在水平方向的对齐方式。 
+  设置color、font-size、allow-scale、word-spacing、text-align属性分别为文本添加颜色、大小、是否允许缩放、文本之间的间距和文本在水平方向的对齐方式。
 
   ```html
   <!-- xxx.hml -->
@@ -72,7 +72,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考[tex
 
 - 添加划线
 
-  设置text-decoration和text-decoration-color属性为文本添加划线和划线颜色，text-decoration枚举值请参考    text自有样式。
+  设置text-decoration和text-decoration-color属性为文本添加划线和划线颜色，text-decoration枚举值请参考text自有样式。
 
   ```html
   <!-- xxx.hml -->

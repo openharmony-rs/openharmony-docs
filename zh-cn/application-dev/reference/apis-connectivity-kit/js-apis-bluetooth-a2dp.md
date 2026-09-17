@@ -37,7 +37,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-创建蓝牙媒体[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)实例。通过该实例可以使用本端作为A2DP Source设备的方法，如：获取和其他设备间的蓝牙媒体音频播放状态。
+创建蓝牙媒体[A2DP Source](../../connectivity/bluetooth/terminology.md#a2dp-source)实例。通过该实例，可以使用本端作为A2DP Source设备时提供的各项方法，如：获取和其他设备间的蓝牙媒体音频播放状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -81,7 +81,7 @@ try {
 
 getPlayingState(deviceId: string): PlayingState
 
-获取本端和对端设备间的媒体音频播放状态。
+获取本端和对端设备间的媒体音频播放状态。例如，在音乐播放器应用中可用于检查蓝牙音频是否正在播放，从而同步更新界面的播放/暂停按钮状态。
 
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取媒体音频播放状态。
 
@@ -152,8 +152,8 @@ try {
 | codecBitsPerSample  | [CodecBitsPerSample](#codecbitspersample11)  | 否    | 否    | 每个采样点的位深，默认值为CODEC_BITS_PER_SAMPLE_NONE。 |
 | codecChannelMode    | [CodecChannelMode](#codecchannelmode11) | 否    | 否    | 编解码器的声道模式，默认值为CODEC_CHANNEL_MODE_NONE。 |
 | codecSampleRate     | [CodecSampleRate](#codecsamplerate11) | 否    | 否    | 编解码器的采样率，默认值为CODEC_SAMPLE_RATE_NONE。 |
-| codecBitRate<sup>19+<sup/>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 编解码器的码率，默认值为CODEC_BIT_RATE_ABR。 |
-| codecFrameLength<sup>19+<sup/>     | [CodecFrameLength](#codecframelength19) | 否    | 是    |编解码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。 |
+| codecBitRate<sup>19+</sup>     | [CodecBitRate](#codecbitrate19) | 否    | 是    | 编解码器的码率，默认值为CODEC_BIT_RATE_ABR。 |
+| codecFrameLength<sup>19+</sup>     | [CodecFrameLength](#codecframelength19) | 否    | 是    |编解码器的帧长，默认值为CODEC_FRAME_LENGTH_10MS。 |
 
 ## CodecInfoList<sup>19+</sup>
 
@@ -231,7 +231,7 @@ try {
 
 ## CodecBitRate<sup>19+</sup>
 
-枚举，蓝牙媒体音频编解码器的码率，表示单位时间内音频数据的传输量，单位为kbps。码率影响音频音质和文件大小。
+枚举，蓝牙媒体音频编解码器的码率，表示单位时间内音频数据的传输量，单位为kbps。码率影响音频音质和传输带宽。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -245,13 +245,13 @@ try {
 | CODEC_BIT_RATE_480000  | 5 | 480kbps |
 | CODEC_BIT_RATE_640000  | 6 | 640kbps |
 | CODEC_BIT_RATE_960000  | 7 | 960kbps |
-| CODEC_BIT_RATE_ABR  | 8 | 自适应码率（根据网络条件自动调整）。|
+| CODEC_BIT_RATE_ABR  | 8 | 自适应码率（根据蓝牙链路质量自动调整）。|
 | CODEC_BIT_RATE_1500000<sup>21+</sup>  | 9 | 1500kbps |
 | CODEC_BIT_RATE_2300000<sup>21+</sup>  | 10 | 2300kbps |
 
 ## CodecFrameLength<sup>19+</sup>
 
-枚举，蓝牙媒体音频编解码器的帧长，表示一帧音频数据播放的时长。
+枚举，蓝牙媒体音频编解码器的帧长，表示一帧音频数据播放的时长，单位为ms。帧长影响音频传输的延迟和效率。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 

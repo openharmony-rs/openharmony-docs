@@ -1,4 +1,4 @@
-# Managing the Input Method Using hdc Commands
+# IME Tool
 
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->

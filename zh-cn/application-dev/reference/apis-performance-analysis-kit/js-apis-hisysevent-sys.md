@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lyj_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -26,6 +26,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | FAULT | 1 | 错误事件类型。 |
@@ -39,6 +41,8 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | domain | string | 否 | 否 | 事件领域。 |
@@ -51,9 +55,11 @@ import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 
 write(info: SysEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用callback方式作为异步回调。适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要异步记录系统事件以避免阻塞主线程的场景，能够提升应用响应性能。使用callback方式作为异步回调。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -112,9 +118,11 @@ try {
 
 write(info: SysEventInfo): Promise&lt;void&gt;
 
-系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，使用promise方式作为异步回调。适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。
+系统事件打点接口，接收[SysEventInfo](#syseventinfo)类型的对象作为事件参数，适用于需要链式调用处理异步结果的场景，能够使代码更加简洁优雅。使用promise方式作为异步回调。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -187,6 +195,8 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | WHOLE_WORD | 1 | 全词匹配类型。 |
@@ -198,6 +208,8 @@ try {
 系统事件订阅规则对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -211,6 +223,8 @@ try {
 系统事件订阅者对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -227,6 +241,8 @@ addWatcher(watcher: Watcher): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -285,6 +301,8 @@ removeWatcher(watcher: Watcher): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型  | 必填 | 说明  |
@@ -338,6 +356,8 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | beginTime | number | 否 | 否 | 查询的系统事件起始时间（13位时间戳），表示距1970年1月1日0时0分0秒0毫秒的毫秒数。使用-1表示不限制起始时间。与endTime配合使用时，两者取交集。建议设置合理的时间范围以优化查询性能。 |
@@ -352,6 +372,8 @@ try {
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | domain | string | 否 | 否 | 查询包含的事件领域。 |
@@ -363,6 +385,8 @@ try {
 系统事件查询者对象接口。
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -378,6 +402,8 @@ query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -459,6 +485,8 @@ exportSysEvents(queryArg: QueryArg, rules: QueryRule[]): number
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -551,6 +579,8 @@ subscribe(rules: QueryRule[]): number
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型                      | 必填 | 说明                                       |
@@ -635,6 +665,8 @@ unsubscribe(): void
 **需要权限：** ohos.permission.READ_DFX_SYSEVENT
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
 
 **错误码：**
 

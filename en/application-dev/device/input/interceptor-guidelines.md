@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c557fc878b00a6eb2a3211f12739d2d4a9bfd804 translatedAt=2026-07-28T02:35:27.530Z pushedAt=2026-07-28T03:02:26.214Z -->
+<!-- md-trans-meta sourceCommit=f771d833faf36ca8b13c1491a42033e94d5bb3f7 translatedAt=2026-09-14T08:48:43.792Z pushedAt=2026-09-15T10:36:11.140Z -->
 
 ## Introduction
 
@@ -27,7 +27,7 @@ The following table lists the APIs for creating and deleting event interception.
 
 ### Linking a Dynamic Library
 
-Before calling interception-related APIs, you need to link the related dynamic library. You can do this by editing the **CMakeList.txt** file as follows:
+Before calling the APIs for creating and deleting event interception, you need to link the related dynamic library. You can do this by editing the CMakeLists.txt file as follows:
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -81,6 +81,7 @@ static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info inf
     // ...
 }
 ```
+
 
 - **Input Events (Mouse, Touch, and Axis Events)**
 

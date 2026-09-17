@@ -1,7 +1,7 @@
 # 使用Node-API接口在主线程中进行模块加载
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -174,7 +174,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
     export {value, test};
     ```
 
-1. 需要当前模块的build-profile.json5文件中进行以下配置：
+1. 需要在当前模块的build-profile.json5文件中进行以下配置：
 
     ```json
     {

@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=6ac4ec266f1c1406b953d4c6e8f9d336d60e6c38 translatedAt=2026-08-03T02:28:51.636Z pushedAt=2026-08-03T07:38:40.572Z -->
+<!-- md-trans-meta sourceCommit=828e43f2d444a1ccec6e0e0a50f347ffb4390aa2 translatedAt=2026-09-14T09:26:06.155Z pushedAt=2026-09-15T13:13:33.914Z -->
 
 ## A
 
@@ -72,7 +71,7 @@
 
 ### Temporary Widget
 
-  A widget type that is displayed temporarily in response to specific events or user actions and disappears automatically afterward. It is the counterpart of a normal widget. Temporary widgets are currently not used by widget hosts.
+A widget type that is not persistently saved by the widget host. A temporary widget is not automatically destroyed while the widget host process is alive; it is automatically cleared by the system only when the widget host process exits. Therefore, you must proactively delete a temporary widget when it is no longer in use, or convert it to a normal widget if long-term retention is required. As opposed to a normal widget, it is a concept that belongs to the widget host.
 
 ## W
 

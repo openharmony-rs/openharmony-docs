@@ -1,12 +1,11 @@
 # Performing Lifecycle Management Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=f34ddda28f1bcebae0ddfbd293a9ffe8cb2789f9 translatedAt=2026-08-12T06:35:57.861Z pushedAt=2026-08-12T11:03:22.503Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:44:17.855Z pushedAt=2026-09-02T06:50:01.000Z -->
 
 ## Introduction
 
@@ -27,11 +26,8 @@ Each **JSVM_Value** belongs to a specific **HandleScope** instance, which is cre
 JSVM-API provides APIs for creating and manipulating JS objects, managing references to and lifecycle of the JS objects, and registering garbage collection (GC) callbacks in C/C++. Before you get started, you need to understand the following concepts:
 
 - Scope: used to ensure that the objects created within a certain scope remain active and are properly cleared when no longer required. JSVM-API provides APIs for creating and closing normal and escapable scopes.
-
 - Reference management: JSVM-API provides APIs for creating, deleting, and managing object references to extend the object lifecycle and prevent memory leaks when objects are used.
-
 - Escapable scope: used to return the values created within the **escapable_handle_scope** to a parent scope. It is created by **OH_JSVM_OpenEscapableHandleScope** and closed by **OH_JSVM_CloseEscapableHandleScope**.
-
 - GC callback: You can register GC callbacks to perform specific cleanup operations when JS objects are garbage-collected.
 
 Understanding these concepts helps you securely and effectively manipulate JavaScript objects and manage object lifecycles.
@@ -107,7 +103,6 @@ const char *SRC_CALL_NATIVE = "HandleScopeFor()";
 ```
 
 Expected result:
-
 ```txt
 JSVM HandleScopeFor: success
 ```
@@ -181,9 +176,7 @@ JSVM EscapableHandleScopeTest: success
 ### OH_JSVM_CreateReference, OH_JSVM_DeleteReference, and OH_JSVM_GetReferenceValue
 
 1. Call **OH_JSVM_CreateReference** to create a reference for a JS variable to extend its lifecycle.
-
 2. Call **OH_JSVM_GetReferenceValue** to obtain the JS variable associated with the reference.
-
 3. Call **OH_JSVM_DeleteReference** to delete the reference.
 
 The caller must manage the reference lifecycle. During the reference validity period, the JS variable will not be garbage-collected.
@@ -334,7 +327,6 @@ const char *SRC_CALL_NATIVE = R"JS(RunDemo();)JS";
 ```
 
 Expected result:
-
 ```ts
 JSVM: finalizer added.
 JSVM: before call gc.

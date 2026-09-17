@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
@@ -60,7 +60,7 @@ createData(mimeType: string, value: ValueType): PasteData
 
 Creates a **PasteData** object of the specified type and creates a **PasteData** instance based on the input MIME type and data content. After this API is called, the system verifies the MIME type, encapsulates the data content, and returns a **PasteData** object that can be used in subsequent pasteboard operations. The value of **mimeType** can contain a maximum of 1024 bytes, and the value type must match the MIME type.
 
-**Use scenarios**: Use this method when you need to save date of a single type (such as plain text, HTML, or images) to the pasteboard.
+**Use scenarios**: Use this method when you need to save data of a single type (such as plain text, HTML, or images) to the pasteboard.
 
 **Parameter selection suggestions**: Use the defined constant types (for example, **MIMETYPE_TEXT_PLAIN**) for **mimeType**. If you need to pass data in a custom format, you can use a custom MIME type.
 
@@ -72,14 +72,8 @@ Creates a **PasteData** object of the specified type and creates a **PasteData**
 
 | Name| Type| Mandatory| Description                                                                                                    |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------|
-| mimeType | string | Yes| MIME type corresponding to the pasteboard data. Details are described below.|
+| mimeType | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.|
 | value | [ValueType](#valuetype9) | Yes| Content of custom data. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the app's copy and paste performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
-
-**mimeType description**
-
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types, which cannot be the same as those defined in constants.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
 
 **Return value**
 
@@ -91,7 +85,7 @@ Creates a **PasteData** object of the specified type and creates a **PasteData**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -127,17 +121,7 @@ Creates a **PasteData** object that contains multiple types of data. Multiple MI
 
 | Name| Type| Mandatory| Description |
 | -------- |------------------------------------------------| -------- |-----------|
-| data | [Record](../../quick-start/introduction-to-arkts.md#object-literal)&lt;string, [ValueType](#valuetype9)&gt;| Yes| **Record** object. The key is the MIME type, and the value is the corresponding data. Details are described below.|
-
-**data description**
-
-- **Key of Record**: MIME type corresponding to the pasteboard data.
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
-- **Value of Record**: Data of the MIME type specified in the key.
-- **Default MIME type**: The MIME type specified by the first key-value pair in **Record** is used as the default MIME type of the first **PasteDataRecord** entry in the **PasteData** object.
-- **Data reading for non-default types**: Data of non-default types can be read only using [getData](#getdata14).
+| data | [Record](../../quick-start/introduction-to-arkts.md#object-literal)&lt;string, [ValueType](#valuetype9)&gt;| Yes| The key of **Record** can be the MIME type corresponding to the pasteboard data, including HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants). Alternatively, the key could be a custom MIME type, whose parameter, the length of **mimeType**, cannot exceed 1024 bytes.<br>The value of **Record** is the data corresponding to the MIME type specified in the key.<br>The first MIME type specified by the key-value in **Record** is used as the default MIME type of the first **PasteDataRecord** in the **PasteData** object. Data of non-default types can be read only by using the [getData](#getdata14) API.|
 
 **Return value**
 
@@ -149,7 +133,7 @@ Creates a **PasteData** object that contains multiple types of data. Multiple MI
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -195,14 +179,8 @@ Creates a data record of the specified type and encapsulates the data record int
 
 | Name| Type| Mandatory| Description               |
 | -------- | -------- | -------- |-------------------|
-| mimeType | string | Yes| MIME type corresponding to the pasteboard data. Details are described below. |
+| mimeType | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes.|
 | value | [ValueType](#valuetype9) | Yes| Data content of the specified type. You are advised to select a proper data type based on the actual scenario. Using a large data object will affect the pasteboard performance and memory usage. For the **ArrayBuffer** type, you are advised to set a proper data size. For the **PixelMap** type, you are advised to release objects that are no longer used in a timely manner.|
-
-**mimeType description**
-
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
 
 **Return value**
 
@@ -214,7 +192,7 @@ Creates a data record of the specified type and encapsulates the data record int
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types;  3. Parameter verification failed. |
 
@@ -665,29 +643,15 @@ Obtains parameters when an application uses the file copy capability provided by
 
 | Name               | Type                                         | Read-Only| Optional| Description                                                        |
 | ------------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| destUri             | string                                        | No| Yes| Destination URI for copying files. The value must comply with the URI format. Details are described below.|
+| destUri             | string                                        | No| Yes| URI of the destination directory for the file copied. If file processing is not supported, this parameter is not required. If the application involves complex file processing policies or needs to distinguish file multipathing storage, you are advised not to set this parameter but let the application copy files by itself. This parameter is left empty by default.|
 | fileConflictOptions | [FileConflictOptions](#fileconflictoptions15) | No| Yes| Options used to resolve file copy conflicts. Set this parameter to **OVERWRITE** when the latest file content must be used in the destination URI. Set this parameter to **SKIP** when the original file in the destination URI needs to be retained to prevent accidental overwriting. The default value is **OVERWRITE**.|
 | progressIndicator   | [ProgressIndicator](#progressindicator15)     | No| No| Progress indicator options. You can use the default progress indicator as required. If this parameter is set to **DEFAULT**, the default system progress indicator is used. If this parameter is set to **NONE**, the app progress indicator is used. Only in the second case, the **progressListener** and **progressSignal** parameters are valid.|
 | progressListener    | [ProgressListener](#progresslistener15)       | No| Yes| Listener for progress data changes, which is used to obtain the pasting progress. This parameter is valid only when **progressIndicator** is set to **NONE**. When **progressIndicator** is set to **DEFAULT**, this parameter is invalid. By default, this parameter is left empty (the progress is not listened to).|
-| progressSignal      | [ProgressSignal](#progresssignal15)           | No| Yes| Function for canceling the progress indicator. Details are described below.|
-
-**destUri description**
-
-- **Usage**: Set the destination URI for copying files.
-- **Use scenarios**:
-- If file processing is not supported, you do not need to set this parameter.
-- If complex file processing policies are involved or multipathing file storage is required, you are advised to leave this parameter unspecified and let the app handle file copying.
-- **Default value**: empty.
-
-**progressSignal description**
-
-- **Usage**: Define a function for canceling the progress indicator. The task can be canceled during pasting.
-- **Usage conditions**: This parameter is valid only when [ProgressIndicator](#progressindicator15) is set to **NONE**.
-- **Default value**: empty.
+| progressSignal      | [ProgressSignal](#progresssignal15)           | No| Yes| Function for canceling the paste task. This parameter is valid only when [ProgressIndicator](#progressindicator15) is set to **NONE**. This parameter is left empty by default.|
 
 ## PasteDataRecord<sup>7+</sup>
 
-Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definition of the content on the pasteboard. The pasteboard content consists of one or more plain text, HTML, URI, or Want records.
+Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definition of the content on the pasteboard. The pasteboard content consists of one or more plain text, HTML, URI, or Want records. The default data type of a **PasteDataRecord** cannot be changed after the record is created. You must specify the correct default data type when creating a **PasteDataRecord**. To update the attributes of a **PasteDataRecord**, use [addEntry](#addentry14).
 
 ### Attributes
 
@@ -697,13 +661,13 @@ Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definiti
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| htmlText| string | Yes| No| HTML text. The value must comply with the standard HTML format.|
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| No| Want content.|
-| mimeType | string | Yes| No| Default data type.|
-| plainText | string | Yes| No| Plain text.|
-| uri | string | Yes| No| URI text. The value must comply with the standard URI format.|
-| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| No| Pixel map.|
-| data<sup>9+</sup> | Record<string, ArrayBuffer> | Yes| No| Content of custom data.|
+| htmlText| string | No| No| HTML text. The value must comply with the standard HTML format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | No| No| Want content. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| mimeType | string | No| No| Default data type. Modifications to this attribute are invalid.|
+| plainText | string | No| No| Plain text. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| uri | string | No| No| URI text. The value must comply with the standard URI format. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| No| Pixel map. Modifications to this attribute are invalid. To update the attribute value, use [addEntry](#addentry14).|
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | No| No| Content of custom data. Modifications to this attribute are invalid.|
 
 ### toPlainText<sup>9+</sup>
 
@@ -741,20 +705,14 @@ Adds custom data of an extra type to **PasteDataRecord**. The MIME type added us
 
 | Name  | Type| Mandatory| Description               |
 |-------| -------- | -------- |-------------------|
-| type  | string | Yes| MIME type corresponding to the pasteboard data. Details are described below. |
+| type  | string | Yes| MIME type of custom data. The value can be a predefined MIME type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type. The value of **mimeType** cannot exceed 1024 bytes. |
 | value | [ValueType](#valuetype9) | Yes| Content of custom data.         |
-
-**mimeType description**
-
-- **MIME types**: HTML, WANT, plain text, URI, and PixelMap defined in [Constants](#constants).
-- **Custom types**: You can use custom MIME types.
-- **Length limit**: The length of **mimeType** cannot exceed 1024 bytes. If the length exceeds 1024 bytes, error code 401 is returned.
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -797,7 +755,7 @@ Obtains the intersection of the input MIME type and the MIME type of the pastebo
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -841,7 +799,7 @@ Obtains custom data of the specified MIME type from **PasteDataRecord**. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -889,7 +847,7 @@ Forcibly converts the content in a **PasteData** object to text. This API uses a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: Incorrect parameters types. |
 
@@ -1157,7 +1115,7 @@ Adds a data record to this pasteboard, and adds its type to **mimeTypes** in [Pa
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 12900002 | The number of records exceeds the upper limit, <br>**Applicable versions**: 9|
@@ -1260,7 +1218,7 @@ Sets a [PasteDataProperty](#pastedataproperty7) object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1338,7 +1296,7 @@ Obtains the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1422,7 +1380,7 @@ Checks whether the pasteboard contains data of the specified MIME type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1453,7 +1411,7 @@ Removes the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1486,7 +1444,7 @@ Replaces the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1538,8 +1496,7 @@ pasteComplete(): void
 
 Notifies the pasteboard service that the paste is complete, and resources such as the cross-device channel can be released. This API should be called after **pasteStart()** is called and data processing is complete to prevent resource waste. If this API is not called, the cross-device channel may be occupied for a long time, affecting subsequent cross-device paste operations.
 
-**Process**
-
+For details about how to use **pasteComplete()** and other APIs, see the following:
 1. Obtain the pasteboard data by calling **getData()**.
 2. Reserve the cross-device channel by calling **pasteStart()**.
 3. Use the pasteboard data.
@@ -1698,7 +1655,7 @@ Obtains the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1736,7 +1693,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1774,7 +1731,7 @@ Removes the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1853,7 +1810,7 @@ Subscribes to the content change event of the system pasteboard. After this meth
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1895,7 +1852,7 @@ Unsubscribes from the system pasteboard content change event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1934,7 +1891,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2011,7 +1968,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 27787278 | Replication is prohibited. |
@@ -2062,7 +2019,7 @@ Writes a **PasteData** object to the pasteboard. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 27787278 | Replication is prohibited. |
@@ -2089,9 +2046,7 @@ systemPasteboard.setData(pasteData).then((data: void) => {
 
 getData(callback: AsyncCallback&lt;PasteData&gt;): void
 
-Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses an asynchronous callback to return the result. After this API is called, the system reads the current content from the pasteboard service and returns a **PasteData** object using a callback. After the data is read successfully, the app can obtain the specific data content (such as text, HTML, and URI) using the **PasteData** object.
-
-**Use scenarios**: This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Compared with **getDataSync**, **getData** does not block the UI thread and is suitable for processing a large amount of data or remote data.
+Obtains data from the system pasteboard and encapsulates the data into a **PasteData** object. This API uses an asynchronous callback to return the result. After this API is called, the system reads the current content from the pasteboard service and returns a **PasteData** object using a callback. After the data is read successfully, the app can obtain the specific data content (such as text, HTML, and URI) using the **PasteData** object. This API can be used to read data from the pasteboard asynchronously, such as when the UI response is required or the main thread should not be blocked. Compared with [getDataSync](#getdatasync11), **getData** does not block the UI thread and is suitable for processing a large amount of data or remote data.
 
 **Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -2109,7 +2064,7 @@ Obtains data from the system pasteboard and encapsulates the data into a **Paste
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**Applicable versions**: 12 and later|
@@ -2157,7 +2112,7 @@ Obtains data from the system pasteboard and encapsulates the data into a **Paste
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**Applicable versions**: 12 and later|
@@ -2226,7 +2181,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2295,7 +2250,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2363,7 +2318,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2439,7 +2394,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2510,7 +2465,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2583,7 +2538,7 @@ Checks whether the data in the pasteboard is from another device. Transferring d
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2621,7 +2576,7 @@ Obtains the name of the application that provides data.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2663,7 +2618,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401 | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2696,7 +2651,7 @@ Clears data in the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2716,11 +2671,7 @@ try {
 
 getDataSync(): PasteData
 
-Reads data in the system pasteboard. This API returns the result synchronously.
-
-**Use scenarios**: This API is used to obtain pasteboard data synchronously in key service processes or process pasteboard data immediately.
-
-**Development suggestions**: Do not call this API on the UI thread to prevent blocking the UI. Use the asynchronous API **getData** to process a large amount of data or remote data.
+Reads data in the system pasteboard. This API returns the result synchronously. This API is used to obtain pasteboard data synchronously in key service processes or process pasteboard data immediately. Do not call this API on the UI thread to prevent blocking the UI. Use the asynchronous API [getData](#getdata9) to process a large amount of data or remote data.
 
 **Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -2738,7 +2689,7 @@ Reads data in the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**Applicable versions**: 12 and later|
@@ -2777,7 +2728,7 @@ Writes data to the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2815,7 +2766,7 @@ Checks whether the system pasteboard contains data. This API returns the result 
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2855,7 +2806,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses a promise to r
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 27787277 | Another copy or paste operation is in progress. |
@@ -2904,7 +2855,7 @@ Reads data in the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2951,7 +2902,7 @@ Writes a **PasteData** object to the pasteboard. This API uses a promise to retu
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 27787277 | Another copy or paste operation is in progress. |
@@ -3006,7 +2957,7 @@ Writes data to the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 12900005 | Excessive processing time for internal data. |
@@ -3069,7 +3020,7 @@ Sets pasteable range of pasteboard data for applications.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -3109,7 +3060,7 @@ Deletes the global pasteable range of the application.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -3135,8 +3086,8 @@ Describes the modes supported by the pasteboard.
 | URL                              | 0   | URL.                                                             |
 | NUMBER                        | 1   | Number.                                                   |
 | EMAIL_ADDRESS | 2   | Email address.|
-| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model constraint**: This API can be used only in the stage model.|
-| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model constraint**: This API can be used only in the stage model.|
+| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model restriction**: This API can be used only in the stage model.|
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ### detectPatterns<sup>13+</sup>
 
@@ -3164,7 +3115,7 @@ Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
 
@@ -3250,7 +3201,7 @@ Obtains the pasteboard data and progress. This API uses a promise to return the 
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error.                                             |

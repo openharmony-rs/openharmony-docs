@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ebc0a80be1b2f8220c2fa84507c9565501616813 translatedAt=2026-08-06T13:50:42.349Z pushedAt=2026-08-07T10:02:32.153Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T02:01:48.511Z pushedAt=2026-08-22T03:55:14.654Z -->
 
 ## Basic Concepts
 
@@ -32,9 +32,9 @@ A bitstream is organized by one or more Group of Pictures (GOPs). A GOP is a col
 
 A GOP can be further divided into one or more Temporal Group of Pictures (TGOPs), and each TGOP is composed by a base layer (BL) and one or more associated enhancement layers (ELs). For example, frame 0 to frame 7 in the foregoing four-layer temporally scalable bitstream form a TGOP.
 
-- BL: bottom layer (L0) in the GOP. In temporal scalability, this layer is encoded at the lowest frame rate.
+- Base layer (BL): bottom layer (L0) in the GOP. In temporal scalability, this layer is encoded at the lowest frame rate.
 
-- EL: layers above the BL. There are L1, L2, and L3 in ascending order. In temporal scalability, the lowest EL encodes, based on the BL, the frames at a higher frame rate; a higher EL encodes, based on the BL or a lower EL, the frames at a higher frame rate.
+- Enhancement layer (EL): layers above the BL. There are L1, L2, and L3 in ascending order. In temporal scalability, the lowest EL encodes, based on the BL, the frames at a higher frame rate; a higher EL encodes, based on the BL or a lower EL, the frames at a higher frame rate.
 
 ### How to Implement the Structure of a Temporally Scalable Bitstream
 

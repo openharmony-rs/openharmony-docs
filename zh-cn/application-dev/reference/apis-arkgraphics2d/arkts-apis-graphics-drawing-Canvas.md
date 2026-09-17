@@ -330,6 +330,8 @@ class DrawingRenderNode extends RenderNode {
     let spotColor : common2D.Color = {alpha: 0xFF, red: 0xFF, green: 0, blue: 0};
     let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
     canvas.drawShadow(path, planeParams, devLightPos, 30, ambientColor, spotColor, shadowFlag);
+    canvas.detachPen();
+    canvas.detachBrush();
   }
 }
 ```

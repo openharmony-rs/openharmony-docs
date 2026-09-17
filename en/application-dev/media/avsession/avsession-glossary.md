@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=497188cd4064e68a7f5286f253e8d8e9ce5a37b0 translatedAt=2026-08-10T03:46:42.683Z pushedAt=2026-08-10T07:15:34.283Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:48:32.671Z pushedAt=2026-09-15T13:38:01.699Z -->
 
 ## A
 
@@ -52,7 +51,7 @@ Indicates whether to continue playback when the app goes to the background. It i
 
 ### DisplayTag
 
-A tag that identifies the media audio source, used to display media audio source information in the control center. Currently, the `TAG_AUDIO_VIVID` tag is supported, indicating that the media audio source is Audio Vivid.
+A tag that identifies the media audio source, used to display media audio information in the control center. Currently, the `TAG_AUDIO_VIVID` tag is supported, indicating that the audio source is Audio Vivid.
 
 ## P
 

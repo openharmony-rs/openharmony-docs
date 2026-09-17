@@ -1,10 +1,12 @@
 # jsvm_types.h
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=37cfbf44f0027523cb1a164e0fc24cbc14f1bf78 translatedAt=2026-08-27T03:50:22.992Z pushedAt=2026-08-27T06:55:28.416Z -->
 
 ## Overview
 
@@ -21,6 +23,12 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 **Related module**: [JSVM](capi-jsvm.md)
 
 ## Summary
+
+### Macros
+
+| Name | Description |
+| -------- | -------- |
+| **JSVM_CDECL** | Specifies the C calling convention for functions. It is mainly used in the declaration of callback function pointers to ensure that callback functions use a unified C calling convention across platforms.<br>When the preprocessor directive _WIN32 detects the Windows platform, **JSVM_CDECL** is assigned the value "__cdecl", indicating the use of the C calling convention. When the preprocessor directive _WIN32 detects a non-Windows platform, no marker is required and **JSVM_CDECL** is empty. |
 
 ### Structs
 
@@ -92,8 +100,9 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------| -- | -- |
 | [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)](#jsvm_finalize)                                                     | JSVM_CDECL* JSVM_Finalize | Defines a pointer to the **JSVM_Finalize** function. It is passed in when a native object or data is associated with a JavaScript object, and is called when the associated JavaScript object is reclaimed by the GC to execute the native cleanup action.|
 | [typedef void (JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied)](#jsvm_finalizearraybuffer)                   | JSVM_CDECL* JSVM_FinalizeArrayBuffer | Defines a pointer to the **JSVM_FinalizeArrayBuffer** function, which can be passed when the [OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory) API is called. The function is called to execute the native cleanup action when the **ArrayBuffer** object created by the API is reclaimed by GC. (This API can be used only after the **JSVM_EXPERIMENTAL** macro is defined.)|
-| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | Defines a pointer to the callback of the ASCII output stream. **data** indicates the pointer to the output data. **size** indicates the size of the output data. **void** is a null pointer that points to the end of the stream. **streamData** indicates the pointer passed to the API function together with the callback. The API function generates data to the output stream.|
+| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | Defines a pointer to the output stream callback. The parameter **data** is a pointer to the output data. The parameter **size** is the size of the output data. A null data pointer indicates the end of the stream. The parameter **streamData** is the pointer passed to the API function together with the callback, and the API function generates data to the output stream. |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_handlerforgc)                         | JSVM_CDECL* JSVM_HandlerForGC | Defines a pointer to the handler for GC callback.|
+| [typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)](#jsvm_handlerforheapthreshold)                         | JSVM_CDECL* JSVM_HandlerForHeapThreshold | Defines a pointer to the heap memory threshold callback. |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)](#jsvm_handlerforoomerror)                             | JSVM_CDECL* JSVM_HandlerForOOMError | Defines a pointer to the handler for OOM-Error callback.|
 | [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)](#jsvm_handlerforfatalerror)                                       | JSVM_CDECL* JSVM_HandlerForFatalError | Defines a pointer to the handler for Fatal-Error callback.|
 | [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Defines a pointer to the handler for Promise-Reject callback.|
@@ -219,7 +228,7 @@ Enumerates complete status codes indicating whether the JSVM-API call is success
 | JSVM_DETACHABLE_ARRAYBUFFER_EXPECTED | Detachable array buffer expected.|
 | JSVM_WOULD_DEADLOCK | Would be in deadlock.|
 | JSVM_NO_EXTERNAL_BUFFERS_ALLOWED | No external buffers allowed.|
-| JSVM_CANNOT_RUN_JS | Cannot run JavaSript.|
+| JSVM_CANNOT_RUN_JS | Cannot run JavaScript.|
 | JSVM_INVALID_TYPE | Invalid type.<br>**Since**: 18|
 | JSVM_JIT_MODE_EXPECTED | JIT mode expected.<br>**Since**: 18|
 
@@ -308,6 +317,7 @@ enum JSVM_CompileMode
 Defines an enum for the compilation modes when **id** is **JSVM_COMPILE_MODE**.
 
 **Since**: 12
+
 | Enum Item| Description|
 | -- | -- |
 | JSVM_COMPILE_MODE_DEFAULT | Default compilation mode.|
@@ -411,8 +421,8 @@ Enumerates cache types.
 
 | Enum Item| Description|
 | -- | -- |
-| JSVM_CACHE_TYPE_JS | JavaScript cache, which is generated by **OH_JSVM_CreateCodeCache**.|
-| JSVM_CACHE_TYPE_WASM | WebAssembly cache, which is generated by **OH_JSVM_CreateWasmCache**.|
+| JSVM_CACHE_TYPE_JS | JS cache generated by the **OH_JSVM_CreateCodeCache** API. |
+| JSVM_CACHE_TYPE_WASM | WebAssembly cache generated by the **OH_JSVM_CreateWasmCache** API. |
 
 ### JSVM_MicrotaskPolicy
 
@@ -445,12 +455,12 @@ Enumerates categories of the JSVM internal trace events.
 
 | Enum Item| Description|
 | -- | -- |
-| JSVM_TRACE_VM | Collects the calls of main JSVM APIs, for example, executing JS scripts.|
-| JSVM_TRACE_COMPILE | Collects the calls of compilation APIs, for example, background compilation.|
-| JSVM_TRACE_EXECUTE | Collects the calls of APIs related to the running status, for example, task interruption and microtasks.|
+| JSVM_TRACE_VM | Collects calls to major JSVM APIs, for example, executing JS scripts. |
+| JSVM_TRACE_COMPILE | Collects calls to compilation-related APIs, for example, background compilation. |
+| JSVM_TRACE_EXECUTE | Collects calls to APIs related to the running state, for example, interruption and microtasks. |
 | JSVM_TRACE_RUNTIME | Collects information about the external function calls.|
 | JSVM_TRACE_STACK_TRACE | Collects stack trace information from the JSVM.|
-| JSVM_TRACE_WASM | Collects the calls of main WASM APIs, for example, compiling and instantiating WASM modules.|
+| JSVM_TRACE_WASM | Collects calls to major WASM-related APIs, for example, compiling and instantiating WASM modules. |
 | JSVM_TRACE_WASM_DETAILED | Collects detailed WASM API calls, for example, background compilation and jumpboard compilation.|
 
 ### JSVM_CBTriggerTimeForGC
@@ -588,7 +598,6 @@ Enumerates debugging options.
 | -- | -- |
 | JSVM_SCOPE_CHECK | Scope check.|
 
-
 ## Function Description
 
 ### JSVM_Finalize()
@@ -625,7 +634,7 @@ Defines a pointer to the **JSVM_FinalizeArrayBuffer** function, which can be pas
 
 - The callback function may be called on a non-JSVM main thread. If the callback needs to access the shared status, atomic operations or locks must be used for synchronization.
 
-- The memory release policy is determined based on the **copied** parameter.
+- The memory release policy is determined based on the **copied** parameter. For details, see [Creating an ArrayBuffer from External Memory Using JSVM-API](../../napi/use-jsvm-about-external-arraybuffer.md).
 
 **Since**: 26.0.0
 
@@ -637,7 +646,7 @@ typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* str
 
 **Description**
 
-Defines a pointer to the callback of the ASCII output stream. **data** indicates the pointer to the output data. **size** indicates the size of the output data. **void** is a null pointer that points to the end of the stream. **streamData** indicates the pointer passed to the API function together with the callback. The API function generates data to the output stream.
+Defines a pointer to the callback function type for the output stream. The parameter **data** is a pointer to the output data. The parameter **size** is the size of the output data. A null data pointer indicates the end of the stream. The parameter **streamData** is a pointer that is passed to the API function together with the callback, and the API function generates data to the output stream.
 
 **Since**: 12
 
@@ -658,6 +667,18 @@ typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSV
 Defines a pointer to the handler for GC callback.
 
 **Since**: 18
+
+### JSVM_HandlerForHeapThreshold()
+
+```c
+typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)
+```
+
+**Description**
+
+Defines a pointer to the callback function type for the heap memory threshold.
+
+**Since**: 26.0.0
 
 ### JSVM_HandlerForOOMError()
 

@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=9ef024c70eb3ae7edb61d2396b2b553cb7d287cd translatedAt=2026-07-31T01:27:34.897Z pushedAt=2026-07-31T09:27:42.320Z -->
+<!-- md-trans-meta sourceCommit=387418431118b0206a5f06ecae6bfd10ec6dc0f0 translatedAt=2026-09-16T02:35:43.921Z pushedAt=2026-09-16T03:33:12.586Z -->
 
 ## Overview
 
@@ -444,9 +444,9 @@ For details, see [Exception Code Call Stack Formats](jscrash-guidelines.md#excep
 
 Null pointer dereference often occurs in the following scenarios:
 
-1. When a crash is in format of **SIGSEGV(SEGV_MAPERR)\@0x00000000** or the values of the registers such as **r0** and **r1** in the **Register** field are **0**, a null pointer may be passed in when the function is called.
+1. When a crash is in the format of SIGSEGV(SEGV_MAPERR)\@0x00000000 or the values of the registers such as **r0** and **r1** in the **Register** field are **0**, a null pointer may be passed in when the function is called.
 
-2. When a crash is in format of **SIGSEGV(SEGV_MAPERR)\@0x0000000c** (smaller than the size of a memory page) or the value of the registers such as **r1** in the **Register** field is small, a null pointer may be passed in when the struct member of the input parameter is called.
+2. When a crash is in the format of SIGSEGV(SEGV_MAPERR)\@0x0000000c (smaller than the size of a memory page) or the value of the registers such as **r1** in the **Register** field is small, a null pointer may be passed in when the struct member of the input parameter is called.
 
 In this scenario, a message is printed in the log, indicating that the fault may be caused by a null pointer dereference. The following is an example process crash log archived by DevEco Studio in FaultLog:
 
@@ -1013,7 +1013,7 @@ In OpenHarmony, the call stack is obtained based on the backtrace table (which r
 
 **Enabling Compilation Options**
 
-For example, in CMake, add **set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")** to **CMakeList.txt**.
+For example, you can add `set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")` in `CMakeLists.txt`.
 
 ### What should I do if the app exits due to a SIGPIPE exception?
 
@@ -1102,5 +1102,3 @@ App bundle name with pid xxxx exit with signal:13
 
 <!--RP10-->
 <!--RP10End-->
-
-<!--no_check-->

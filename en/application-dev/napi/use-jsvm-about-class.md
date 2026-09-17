@@ -1,12 +1,11 @@
 # Working with Classes Using JSVM-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2b8002975a0c421d94edbe70b3817da05adefb9a translatedAt=2026-08-12T06:31:18.710Z pushedAt=2026-08-12T10:53:12.996Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:08.051Z pushedAt=2026-09-02T03:50:03.905Z -->
 
 ## Introduction
 
@@ -17,7 +16,6 @@ JSVM-API provides APIs for managing JavaScript (JS) classes, for example, defini
 To begin with, it is important to understand the following basic concepts:
 
 - Class: a template used to create an object. It provides a way to define object properties and methods in a structured manner. Classes in JavaScript are based on prototypes. Moreover, unique syntax and semantics of classes are introduced.
-
 - Instance: an object created from a class. A class defines the structure and behavior of an object, and an instance is a specific representation of a class. Instantiating a class allows access to the properties and methods defined in the class. Each instance has its own property values.
 
 ## Available APIs
@@ -92,7 +90,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 
 JS example:
-
 ``` C++
 const char *srcCallNative = R"JS( 
    function Fruit(name) {
@@ -101,15 +98,12 @@ const char *srcCallNative = R"JS(
    newInstance(Fruit, "apple");
 )JS";
 ```
-
 **Execution result**
 
 The following information is displayed in the log:
-
 ``` C++
 NewInstance:{"name":"apple"}
 ```
-
 ### OH_JSVM_GetNewTarget
 
 Call **OH_JSVM_GetNewTarget** to obtain the **new.target** value in a function. In JS, **new.target** is a special meta-property used to determine whether a function or constructor is called using the **new** operator.
@@ -201,17 +195,14 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 
 JS example:
-
 ``` C++
 const char *srcCallNative = R"JS( 
     defineClass();
 )JS";
 ```
-
 **Execution result**
 
 The following information is displayed in the log:
-
 ``` C++
 Create Instance
 
@@ -225,14 +216,13 @@ NAPI MyObject::New newTarget == nullptr
 
 NewInstance:{"name":"lilei"}
 ```
-
 ### OH_JSVM_Wrap
 
 Call **OH_JSVM_Wrap** to wrap a native instance in a JS object. You can use **OH_JSVM_Unwrap()** to retrieve the native instance later.
 
 ### OH_JSVM_Unwrap
 
-Call **OH_JSVM_Unwrap** to unwrap the native instance that is previously encapsulated in a JS object.
+Call **OH_JSVM_Unwrap** to unwrap the native instance that is previously wrapped in a JS object.
 
 ### OH_JSVM_RemoveWrap
 
@@ -323,7 +313,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 ```
 
 JS example:
-
 ``` C++
 const char *srcCallNative = R"JS( 
     class Obj {};
@@ -331,11 +320,9 @@ const char *srcCallNative = R"JS(
     removeWrap(new Obj());
 )JS";
 ```
-
 **Execution result**
 
 The following information is displayed in the log:
-
 ``` C++
 JSVM wrap
 
@@ -349,18 +336,13 @@ JSVM OH_JSVM_RemoveWrap success
 
 JSVM deref_item
 ```
-
 ### OH_JSVM_DefineClassWithOptions
-
 > **NOTE**
 >
 > The parent class passed in must be created by using an **OH_JSVM_DefineClass** API. Otherwise, the **JSVM_INVALID_ARG** error will be returned.
 **DefineClassOptions** supports the following options:
-
 - **JSVM_DEFINE_CLASS_NORMAL**: defines a class in normal mode. The default status is **JSVM_DEFINE_CLASS_NORMAL**.
-
 - JSVM_DEFINE_CLASS_WITH_COUNT: reserves inter-field slots for the created class.
-
 - **JSVM_DEFINE_CLASS_WITH_PROPERTY_HANDLER**: sets a listener property for the created class and sets a callback to be invoked when it is called as a function.
 
 CPP code:
@@ -533,17 +515,13 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 ```
-
 JS example:
-
 ``` C++
 const char *srcCallNative = R"JS(testDefineClassWithOptions();)JS";
 ```
-
 **Execution result**
 
 The following information is displayed in the log:
-
 ``` C++
 Run OH_JSVM_DefineClassWithOptions: Success
 ```

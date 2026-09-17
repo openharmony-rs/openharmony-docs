@@ -50,7 +50,7 @@ sendMms\(context: Context, mmsParams: MmsParams, callback: AsyncCallback&lt;void
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                            |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -378,13 +378,13 @@ downloadMms\(context: Context, mmsParams: MmsParams\): Promise&lt;void&gt;
 | 参数名   | 类型                        | 必填 | 说明                                     |
 | -------- | --------------------------- | ---- | ---------------------------------------- |
 | context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
-| mmsParams | [MmsParams](#mmsparams11) | 是   | 发送彩信的参数和回调，参考[MmsParams](#mmsparams11)。 |
+| mmsParams | [MmsParams](#mmsparams11) | 是   | 下载彩信的参数和回调，参考[MmsParams](#mmsparams11)。 |
 
 **返回值：**
 
 | 类型            | 说明                                                         |
 | --------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | 以Promise形式返回发送彩信的结果。 |
+| Promise&lt;void&gt; | 以Promise形式返回下载彩信的结果。 |
 
 **错误码：**
 
@@ -849,7 +849,7 @@ splitMessage\(content: string\): Promise\<Array\<string\>\>
 
 | 类型                    | 说明                                |
 | ----------------------- | ----------------------------------- |
-| Promise<Array<string\>> | 以Promise形式返回多个片段的的结果。 |
+| Promise\<Array<string\>> | 以Promise形式返回多个片段的结果。 |
 
 **错误码：**
 
@@ -1412,6 +1412,62 @@ promise.then(() => {
 });
 ```
 
+## sms.setCBConfigList<sup>23+</sup>
+
+setCBConfigList\(configs: CBConfigListConfigs\): Promise\<void\>
+
+打开小区广播列表。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.RECEIVE_SMS
+
+**系统能力**：SystemCapability.Telephony.SmsMms
+
+**参数：**
+
+| 参数名  | 类型                                 | 必填 | 说明         |
+| ------- | ------------------------------------ | ---- | ------------ |
+| configs | [CBConfigListConfigs](#cbconfiglistconfigs23) | 是   | 表示小区广播配置列表configs。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | 以Promise形式返回设置的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cbConfigListConfigs: sms.CBConfigListConfigs = {
+    slotId: 0,
+    messageIds: [100, 200, 300],
+    ranType: sms.RanType.TYPE_GSM
+};
+let promise = sms.setCBConfigList(cbConfigListConfigs);
+promise.then(() => {
+    console.info('setCBConfigList success.');
+}).catch((err: BusinessError) => {
+    console.error('setCBConfigList failed, code: ${err.code}, message: ${err.message}');
+})
+```
+
 ## sms.getSmsSegmentsInfo<sup>8+</sup>
 
 getSmsSegmentsInfo\(slotId: number, message: string, force7bit: boolean, callback: AsyncCallback\<SmsSegmentsInfo\>\): void
@@ -1898,6 +1954,57 @@ sms.encodeMms(mmsInformation).then((data: number[]) => {
 ```
 
 
+## sms.getSmsShortCodeType<sup>23+</sup>
+
+getSmsShortCodeType\(slotId: number, destAddr: string\): Promise\<SmsShortCodeType\>
+
+获取拟发送短信的目标地址短码类型。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SEND_MESSAGES
+
+**系统能力**：SystemCapability.Telephony.SmsMms
+
+**参数：**
+
+| 参数名   | 类型                                | 必填 | 说明       |
+| -------- | ----------------------------------- | ---- | ---------- |
+| slotId   | number                              | 是   | 表示用于发送短信的SIM卡所在的槽位的ID。<br>- 0：卡槽1<br>- 1：卡槽2 |
+| destAddr | string                              | 是   | 表示发送短信的目的地址。<br>取值范围:\[0,+∞\) |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.    |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300004  | Do not have sim card.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let destAddr: string = '10086';
+
+sms.getSmsShortCodeType(slotId, destAddr)
+    .then((type: sms.SmsShortCodeType) => {
+        console.info('getSmsShortCodeType succeed, type: ${type}');
+    }).catch((err: BusinessError) => {
+        console.error('getSmsShortCodeType failed, code: ${err.code}, message: ${err.message}');
+    });
+```
+
+
 ## MmsParams<sup>11+</sup>
 
 发送彩信的参数。
@@ -2272,6 +2379,20 @@ SIM卡消息状态。
 | SMS_ENCODING_8BIT    | 2    | 8位短信编码  |
 | SMS_ENCODING_16BIT   | 3    | 16位短信编码 |
 
+## CBConfigListConfigs<sup>23+</sup>
+
+定义小区广播列表配置。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.SmsMms
+
+|  名称  | 类型                                   | 只读 | 可选 | 说明           |
+| ------ | -------------------------------------- | ---- | ---- | -------------- |
+| slotId | number                                 | 否   | 否   | 指定当前小区广播配置列表对应的卡槽。        |
+| messageIds   | number[]                         | 否   | 否   | 定义当前小区广播列表的消息号。|
+| ranType | [RanType](#rantype7)                  | 否   | 否   | 定义当前小区广播列表接入网类型。|
+
 ## SimMessageOptions<sup>7+</sup>
 
 SIM卡消息选项。
@@ -2362,3 +2483,17 @@ SIM卡短消息。
 | encodeCount          | number                                   | 是   | 编码计数     |
 | encodeCountRemaining | number                                   | 是   | 剩余编码计数 |
 | scheme               | [SmsEncodingScheme](#smsencodingscheme8) | 是   | 短信编码方案 |
+
+## SmsShortCodeType<sup>23+</sup>
+
+短信短码类型。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.SmsMms
+
+|         名称         | 值   | 说明         |
+| -------------------- | ---- | ------------ |
+| SMS_SHORT_CODE_TYPE_UNKNOWN | -1    | 未知短信编码 |
+| SMS_SHORT_CODE_TYPE_NOT_PREMIUM    | 0    | 非付费短码类型  |
+| SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM    | 1    | 潜在付费短码类型  |

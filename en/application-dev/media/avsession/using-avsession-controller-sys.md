@@ -1,10 +1,11 @@
 # AVSession Controller (for System Applications Only)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:51:59.039Z pushedAt=2026-09-15T13:38:16.363Z -->
 
 Media Controller preset in OpenHarmony functions as the controller to interact with audio and video applications, for example, obtaining and displaying media information and delivering playback control commands.
 
@@ -244,7 +245,7 @@ To enable a system application to access the AVSession service as a controller, 
     });
     // Subscribe to custom playback name changes.
     controller.on('queueTitleChange', (title) => {
-      console.info(`Caught queue title change, title is ${title}`);
+      console.info(`Caught queue title change, queue title is ${title}`);
     });
    }
    ```
@@ -254,10 +255,15 @@ To enable a system application to access the AVSession service as a controller, 
    ```ts
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    async function getInfoFromSessionByController() {
-     // It is assumed that an AVSessionController object corresponding to the session already exists. For details about how to create an AVSessionController object, see the code snippet above.
-     let controller = await AVSessionManager.createController("");
-     // Obtain the session ID.
-     let sessionId = controller.sessionId;
+     // Obtain the descriptors of all sessions in the current system.
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // Obtain the sessionId of the target session to create a controller.
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
      console.info(`get sessionId by controller : isActive : ${sessionId}`);
      // Obtain the activation state of the session.
      let isActive = await controller.isActive();
@@ -299,7 +305,7 @@ To enable a system application to access the AVSession service as a controller, 
    import { avSession as AVSessionManager } from '@kit.AVSessionKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   async function  sendCommandToSessionByController() {
+   async function sendCommandToSessionByController() {
      // Obtain descriptors of all sessions in the system.
      let descriptors = await AVSessionManager.getAllSessionDescriptors();
      if (descriptors.length === 0) {
@@ -357,8 +363,15 @@ To enable a system application to access the AVSession service as a controller, 
    import { BusinessError } from '@kit.BasicServicesKit';
 
    async function destroyController() {
-     // It is assumed that an AVSessionController object corresponding to the session already exists. For details about how to create an AVSessionController object, see the code snippet above.
-     let controller = await AVSessionManager.createController("");
+     // Obtain the descriptors of all sessions in the current system.
+     let descriptors = await AVSessionManager.getAllSessionDescriptors();
+     if (descriptors.length === 0) {
+       console.error(`No session in system, can not create controller.`);
+       return;
+     }
+     // Obtain the sessionId of the target session to create a controller.
+     let sessionId = descriptors[0].sessionId;
+     let controller = await AVSessionManager.createController(sessionId);
 
      // Destroy the AVSessionController object. After being destroyed, it is no longer available.
      controller.destroy((err: BusinessError) => {

@@ -1,12 +1,12 @@
 # Stationary Development
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=6f0a1695ab4f18a5c5302addc7947b60c1d6021e translatedAt=2026-07-28T02:37:11.928Z pushedAt=2026-07-28T06:28:15.686Z -->
+<!-- md-trans-meta sourceCommit=e99e3b6ac6d7c1d97882fa9d3b068fd08262f383 translatedAt=2026-09-01T02:18:54.970Z pushedAt=2026-09-01T12:42:34.875Z -->
+
 
 ## When to Use
 
@@ -81,7 +81,7 @@ If the relative stationary and absolute stationary capabilities are required, yo
 
    ``` TypeScript
    import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. Subscribe to the event indicating entering the absolute still state, and the event is reported once per second.
@@ -91,9 +91,7 @@ If the relative stationary and absolute stationary capabilities are required, yo
    ``` TypeScript
    let reportLatencyNs = 1000000000; // Unit: nanoseconds
    try {
-     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-       console.info('data=' + JSON.stringify(data));
-     })
+     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, this.callback)
      // ...
    } catch (error) {
      let message = (error as BusinessError).message;
@@ -123,9 +121,7 @@ If the relative stationary and absolute stationary capabilities are required, yo
 
    ``` TypeScript
    try {
-     stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-       console.info('data=' + JSON.stringify(data));
-     })
+     stationary.off('still', stationary.ActivityEvent.ENTER, this.callback)
      // ...
    } catch (error) {
      let message = (error as BusinessError).message;

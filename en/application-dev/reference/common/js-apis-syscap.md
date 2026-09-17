@@ -1,10 +1,12 @@
 # SysCap
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
-<!--Designer: @liveery-->
+<!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f4b612cc31aee9b84569bb08c2529a230ab54b6e translatedAt=2026-08-27T03:50:35.713Z pushedAt=2026-08-27T07:20:27.908Z -->
 
 SystemCapability (SysCap) refers to a standalone feature in the operating system. Different devices support different SysCap sets. Each SysCap corresponds to one or more APIs. You can determine whether an API can be used by checking SysCap support.
 

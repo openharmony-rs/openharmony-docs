@@ -1,12 +1,11 @@
 # Setting ArkTS Object Properties Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:41:12.594Z pushedAt=2026-08-12T11:14:51.606Z -->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:37:20.462Z pushedAt=2026-09-16T08:36:25.741Z -->
 
 ## Introduction
 
@@ -17,17 +16,13 @@ Node-API provides APIs for obtaining and setting properties of ArkTS objects in 
 Before working with ArkTS objects using Node-API, you need to understand the following concepts:
 
 - Object: a composite data type that allows values of different types in an independent entity in ArkTS. An object is a collection of properties and methods. A property is a value associated with the object, and a method is an operation that the object can perform.
-
 - Property: a feature, in the key-value format, of an object in ArkTS. Each property has a name (key or identifier) and a value. The property value can be of any data type, including the basic type, object, and function.
-
 - Enumerable property: a property in ArkTS with **enumerable** set to **true**. An enumerable property can be traversed by **for...in**.
-
 - Own property: a property defined for an object rather than inherited from the prototype chain.
 
 ## Available APIs
 
 The following table lists the APIs for manipulating ArkTS object properties.  
-
 | API| Description|
 | -------- | -------- |
 | napi_get_property_names | Obtains the names of the enumerable properties of an object in an array of strings.  |
@@ -35,7 +30,7 @@ The following table lists the APIs for manipulating ArkTS object properties.
 | napi_get_property | Obtains the requested property of an object and passes it to another function for processing.|
 | napi_has_property | Checks whether an object has the specified property. This can prevent the exception or error caused by access to a property that does not exist.|
 | napi_delete_property | Deletes a property from an ArkTS object.|
-| napi_has_own_property | Checks whether an object has the specified own property.|
+| napi_has_own_property | Behaves the same as napi_has_property. It checks whether the specified property exists in the object, avoiding exceptions caused by accessing a property that does not exist. |
 | napi_set_named_property | Sets a property with the specified name for an ArkTS object.|
 | napi_get_named_property | Obtains the value of a property in an ArkTS object.|
 | napi_has_named_property | Checks whether an ArkTS object has the property with the specified name.|
@@ -186,7 +181,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    // The first parameter passed in is the object to check, and the second is the property to check. Obtain the corresponding value by calling the napi_get_property API.
+    // The first parameter passed in is the object to check, and the second parameter is the property to check. Obtain the corresponding value by calling the napi_get_property API.
     napi_value result;
     napi_status status = napi_get_property(env, args[0], args[1], &result);
     if (status != napi_ok) {
@@ -266,7 +261,6 @@ API declaration:
 ``` TypeScript
 export const hasProperty: (obj: Object, key: number | string) => boolean | undefined; // napi_has_property
 ```
-
 ArkTS code:
 
 <!-- @[ark_napi_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
@@ -370,7 +364,7 @@ export function napiDeleteProperty() {
 
 ### napi_has_own_property
 
-Call **napi_has_own_property** to check whether an ArkTS object has its own property.
+Behaves consistently with napi_has_property. It is used to check whether a specified property exists in an object, avoiding exceptions caused by accessing a property that does not exist.
 
 CPP code:
 
@@ -437,6 +431,76 @@ export function napiHasOwnProperty() {
     testNapi.napiHasOwnProperty(myObj, 'myProperty'));
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_own_property inherited: %{public}s',
     testNapi.napiHasOwnProperty(myObj, 'inheritedProperty'));
+}
+```
+
+Currently, the behavior of `napi_has_own_property` is consistent with that of `napi_has_property` (it traverses the prototype chain). If you need to check only own properties without traversing the prototype chain, you can use Node-API to equivalently implement the functionality of `Object.prototype.hasOwnProperty.call(obj, key)`. The C++ example code is as follows:
+
+``` C++
+// Implement the napi_has_own_property functionality equivalently (check only own properties).
+static napi_value HasOwnPropertyEquivalent(napi_env env, napi_callback_info info)
+{
+    // Receive the two parameters passed from ArkTS.
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // Check whether the first parameter is an object.
+    napi_valuetype valueTypeObj;
+    napi_typeof(env, args[0], &valueTypeObj);
+    if (valueTypeObj != napi_object) {
+        napi_throw_error(env, nullptr, "First argument must be an object.");
+        return nullptr;
+    }
+    // Check whether the second parameter is a string.
+    valueTypeObj = napi_undefined;
+    napi_typeof(env, args[1], &valueTypeObj);
+    if (valueTypeObj != napi_string) {
+        napi_throw_error(env, nullptr, "Second argument must be a string.");
+        return nullptr;
+    }
+    // Obtain the global object.
+    napi_value global = nullptr;
+    napi_status status = napi_get_global(env, &global);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_global failed");
+        return nullptr;
+    }
+    // Obtain the Object constructor.
+    napi_value objectCtor = nullptr;
+    status = napi_get_named_property(env, global, "Object", &objectCtor);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get Object failed");
+        return nullptr;
+    }
+    // Obtain Object.prototype.
+    napi_value prototype = nullptr;
+    status = napi_get_named_property(env, objectCtor, "prototype", &prototype);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get Object.prototype failed");
+        return nullptr;
+    }
+    // Obtain the Object.prototype.hasOwnProperty function.
+    napi_value hasOwnProperty = nullptr;
+    status = napi_get_named_property(env, prototype, "hasOwnProperty", &hasOwnProperty);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get hasOwnProperty failed");
+        return nullptr;
+    }
+    // Call hasOwnProperty with args[0] as this and args[1] as the argument,
+    // equivalent to Object.prototype.hasOwnProperty.call(obj, key), which checks only own properties without traversing the prototype chain.
+    napi_value argv[1] = { args[1] };
+    napi_value callResult = nullptr;
+    status = napi_call_function(env, args[0], hasOwnProperty, 1, argv, &callResult);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_call_function failed");
+        return nullptr;
+    }
+    // Convert the result to bool and return it.
+    bool hasProperty = false;
+    napi_get_value_bool(env, callResult, &hasProperty);
+    napi_value result;
+    napi_get_boolean(env, hasProperty, &result);
+    return result;
 }
 ```
 

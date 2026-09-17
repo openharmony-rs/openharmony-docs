@@ -1,12 +1,11 @@
 # Local AVSession Overview
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9d0f59dbcae46303a4fbbc3dcb2ffb4bcae1691a translatedAt=2026-08-10T03:46:48.148Z pushedAt=2026-08-10T07:46:33.100Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:50:05.073Z pushedAt=2026-09-15T13:38:08.373Z -->
 
 ## Interaction Process
 
@@ -36,7 +35,7 @@ In the local AVSession, the provider exchanges information with the controller t
 
 ## AVSessionManager
 
-AVSessionManager provides the capability of managing sessions. It can create an AVSession object, create an AVSessionController object, send control commands, and listen for session state changes.
+AVSessionManager provides the types and functions for creating an AVSession, creating an AVSessionController, sending system control events, and listening for AVSession state changes.
 
 In fact, unlike AVSession and AVSessionController objects, AVSessionManager is not a concrete object but the module namespace of the media session. In actual programming, you can import it as follows:
 
@@ -78,9 +77,7 @@ struct Index {
   }
 }
 ```
-
 <!--Del-->
-
 The code snippet below shows how the controller creates an AVSessionController object by using AVSessionManager:
 
 ```ts
@@ -96,7 +93,6 @@ async function createController() {
   }
 }
 ```
-
 <!--DelEnd-->
 
 For more methods of AVSessionManager, see the API documentation: [Module Description](../../reference/apis-avsession-kit/arkts-apis-avsession.md).

@@ -1,12 +1,11 @@
 # Sensor Development (C/C++)
-
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @LiuChao-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=170a00b0e372b90729da5ee919e1bd4343fab341 translatedAt=2026-07-28T02:36:05.631Z pushedAt=2026-07-28T03:29:58.017Z -->
+<!-- md-trans-meta sourceCommit=2d7b4266499e3556fe42ddb8c4180af3db492816 translatedAt=2026-09-14T08:51:17.447Z pushedAt=2026-09-15T12:26:48.572Z -->
 
 ## When to Use
 
@@ -19,7 +18,7 @@ For details about the APIs, see [Sensor](../../reference/apis-sensor-service-kit
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)     | Obtains information about all sensors on the device.                                |
-| OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber) | Subscribe to sensor data. The system will report sensor data to the subscriber at the specified frequency.<br>To subscribe to data of acceleration sensors, request the **ohos.permission.ACCELEROMETER** permission.<br>To subscribe to data of gyroscope sensors, request the **ohos.permission.GYROSCOPE** permission.<br>To subscribe to data of pedometer-related sensors, request the **ohos.permission.ACTIVITY_MOTION** permission.<br>To subscribe to data of health-related sensors, such as heart rate sensors, request the **ohos.permission.READ_HEALTH_DATA** permission. Otherwise, the subscription fails.<br>You do not need to request any permission to subscribe to data of other types of sensors.|
+| OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_SubscriptionAttribute *attribute, const Sensor_Subscriber *subscriber) | Subscribes to sensor data. The system reports sensor data to the user at the specified frequency.<br/>To subscribe to the accelerometer, request the ohos.permission.ACCELEROMETER permission.<br/>To subscribe to the gyroscope, request the ohos.permission.GYROSCOPE permission.<br/>To subscribe to pedometer-related sensors, request the ohos.permission.ACTIVITY_MOTION permission.<br/>To subscribe to health-related sensors, such as the heart rate sensor, request the ohos.permission.READ_HEALTH_DATA permission; otherwise, the subscription fails.<br/>No permission is required to subscribe to other sensors. |
 | OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Sensor_Subscriber *subscriber) | Unsubscribes from sensor data.<br/>To unsubscribe from data of acceleration sensors, request the **ohos.permission.ACCELEROMETER** permission.<br/>To unsubscribe from the data of gyroscope sensors, request the **ohos.permission.GYROSCOPE** permission.<br/>To unsubscribe from the data of pedometer-related sensors, request the **ohos.permission.ACTIVITY_MOTION** permission.<br/>To unsubscribe from the data of health-related sensors, request the **ohos.permission.READ_HEALTH_DATA** permission. Otherwise, the unsubscription will fail.<br/>Unsubscribing from the data of other sensors does not require any permission. |
 | OH_Sensor_CreateInfos(uint32_t count)                        | Creates an array of instances with the given number. For details, see [Sensor_Info](../../reference/apis-sensor-service-kit/capi-sensor-sensor-info.md).|
 | OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count) | Destroys the array of instances and reclaims the memory. For details, see [Sensor_Info](../../reference/apis-sensor-service-kit/capi-sensor-sensor-info.md).|
@@ -32,7 +31,7 @@ For details about the APIs, see [Sensor](../../reference/apis-sensor-service-kit
 | OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorType) | Obtains the sensor type.                                            |
 | OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestamp) | Obtains the timestamp of sensor data.                                    |
 | OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *accuracy) | Obtains the accuracy of sensor data.                                      |
-| OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length) | Obtains sensor data.<br>The data length and content depend on the sensor type. The format of the sensor data reported is as follows:<br>- SENSOR_TYPE_ACCELEROMETER: data[0], data[1], and data[2], indicating the acceleration around the x, y, and z axes of a device, respectively, in m/s².<br>- SENSOR_TYPE_GYROSCOPE: data[0], data[1], and data[2], indicating the angular velocity of rotation around the x, y, and z axes of a device, respectively, in rad/s.<br>- SENSOR_TYPE_AMBIENT_LIGHT: data[0], indicating the ambient light intensity, in lux. Since API version 12, two extra data records are returned, where **data[1]** indicates the color temperature (in kelvin), and **data[2]** indicates the infrared luminance (in cd/m²).<br> - SENSOR_TYPE_MAGNETIC_FIELD: data[0], data[1], and data[2], indicating the magnetic field strength around the x, y, and z axes of a device, respectively, in μT.<br>- SENSOR_TYPE_BAROMETER: data[0], indicating the atmospheric pressure, in hPa.<br>- SENSOR_TYPE_HALL: data[0], indicating the opening/closing state of the flip cover. The value **0** means that the flip cover is opened, and a value greater than 0 means that the flip cover is closed.<br>- SENSOR_TYPE_PROXIMITY: data[0], indicating the approaching state. The value **0** means the two objects are close to each other, and a value greater than 0 means that they are far away from each other.<br>- SENSOR_TYPE_ORIENTATION: data[0], data[1], and data[2], indicating the rotation angles of a device around the z, x, and y axes, respectively, in degree.<br>- SENSOR_TYPE_GRAVITY: data[0], data[1], and data[2], indicating the gravitational acceleration around the x, y, and z axes of a device, respectively, in m/s².<br>- SENSOR_TYPE_ROTATION_VECTOR: data[0], data[1] and data[2], indicating the rotation angles of a device around the x, y, and z axes, respectively, in degree. data[3] indicates the rotation vector.<br>- SENSOR_TYPE_PEDOMETER_DETECTION: data[0], indicating the pedometer detection status. The value **1** means that the number of detected steps changes.<br>- SENSOR_TYPE_PEDOMETER: data[0], indicating the number of steps a user has walked.<br>- SENSOR_TYPE_HEART_RATE: data[0], indicating the heart rate value.|
+| OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length) | Obtains sensor data.<br>The data length and content depend on the sensor type. The format of the sensor data reported is as follows:<br>- SENSOR_TYPE_ACCELEROMETER: data[0], data[1], and data[2], indicating the acceleration along the x, y, and z axes of a device, respectively, in m/s².<br>- SENSOR_TYPE_GYROSCOPE: data[0], data[1], and data[2], indicating the angular velocity of rotation along the x, y, and z axes of a device, respectively, in rad/s.<br>- SENSOR_TYPE_AMBIENT_LIGHT: data[0], indicating the ambient light intensity, in lux. Since API version 12, two extra data records are returned, where **data[1]** indicates the color temperature (in kelvin), and **data[2]** indicates the infrared luminance (in cd/m²).<br> - SENSOR_TYPE_MAGNETIC_FIELD: data[0], data[1], and data[2], indicating the magnetic field strength along the x, y, and z axes of a device, respectively, in μT.<br>- SENSOR_TYPE_BAROMETER: data[0], indicating the atmospheric pressure, in hPa.<br>- SENSOR_TYPE_HALL: data[0], indicating the opening/closing state of the flip cover. The value **0** means that the flip cover is opened, and a value greater than 0 means that the flip cover is closed.<br>- SENSOR_TYPE_PROXIMITY: data[0], indicating the approaching state. The value **0** means the two objects are close to each other, and a value greater than 0 means that they are far away from each other.<br>- SENSOR_TYPE_ORIENTATION: data[0], data[1], and data[2], indicating the rotation angles of a device along the z, x, and y axes, respectively, in degrees.<br>- SENSOR_TYPE_GRAVITY: data[0], data[1], and data[2], indicating the gravitational acceleration along the x, y, and z axes of a device, respectively, in m/s².<br>- SENSOR_TYPE_ROTATION_VECTOR: data[0], data[1], and data[2], indicating the rotation angles of a device along the x, y, and z axes, respectively, in degrees. data[3] indicates the rotation vector element.<br>- SENSOR_TYPE_PEDOMETER_DETECTION: data[0], indicating the pedometer detection status. The value **1** means that the number of detected steps changes.<br>- SENSOR_TYPE_PEDOMETER: data[0], indicating the number of steps a user has walked.<br>- SENSOR_TYPE_HEART_RATE: data[0], indicating the heart rate value.|
 | OH_Sensor_CreateSubscriptionId(void)                         | Creates a **Sensor_SubscriptionId** instance.                        |
 | OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)   | Destroys a **Sensor_SubscriptionId** instance and reclaims memory.                  |
 | OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_Type sensorType) | Sets the sensor type.                                            |
@@ -42,6 +41,7 @@ For details about the APIs, see [Sensor](../../reference/apis-sensor-service-kit
 | OH_Sensor_CreateSubscriber(void)                             | Creates a **Sensor_Subscriber** instance.                             |
 | OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)   | Destroys a **Sensor_Subscriber** instance and reclaims memory.                       |
 | OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sensor_EventCallback callback) | Sets a callback function to report sensor data.                          |
+
 
 ## How to Develop
 
@@ -84,7 +84,7 @@ The following uses the acceleration sensor as an example to describe the develop
 
 5. Define constants.
 
-   <!-- @[sensor_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) -->
 
    ``` C++
    const int SENSOR_LOG_DOMAIN = 0xD002700;
@@ -95,7 +95,6 @@ The following uses the acceleration sensor as an example to describe the develop
    constexpr int32_t SLEEP_TIME_MS = 1000;
    constexpr int64_t INVALID_VALUE = -1;
    constexpr float INVALID_RESOLUTION = -1.0F;
-   Sensor_Subscriber *g_user = nullptr;
    ```
 
 6. Define a callback function to receive sensor data.
@@ -153,7 +152,7 @@ The following uses the acceleration sensor as an example to describe the develop
 
 7. Obtain information about all sensors on the device. 
 
-   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_get_sensors_info_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) -->
 
    ``` C++
    static int32_t GetSensorInfo(Sensor_Info *sensorInfoTemp)
@@ -223,6 +222,7 @@ The following uses the acceleration sensor as an example to describe the develop
        ret = OH_Sensor_GetInfos(sensors, &count);
        if (ret != SENSOR_SUCCESS) {
            OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get all sensor info failed");
+           OH_Sensor_DestroyInfos(sensors, count);
            return nullptr;
        }
        for (uint32_t i = 0; i < count; ++i) {
@@ -230,6 +230,7 @@ The following uses the acceleration sensor as an example to describe the develop
            ret = GetSensorInfo(sensorInfoTemp);
            if (ret != SENSOR_SUCCESS) {
                OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "get sensor info failed");
+               OH_Sensor_DestroyInfos(sensors, count);
                return nullptr;
            }
        }
@@ -246,65 +247,102 @@ The following uses the acceleration sensor as an example to describe the develop
 
 8. Subscribe to and unsubscribe from sensor data.
 
-   <!-- @[sensor_capi_subscriber_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) --> 
+   <!-- @[sensor_capi_subscriber_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorCapiSamples/entry/src/main/cpp/oh_sensor_capi.cpp) -->
 
    ``` C++
-   static napi_value Subscriber(napi_env env, napi_callback_info info)
+   static void DestroySubscriberResources(Sensor_SubscriptionAttribute *attr, Sensor_SubscriptionId *id,
+       Sensor_Subscriber *sensorSubscriber)
    {
-       // Create a Sensor_Subscriber instance.
-       g_user = OH_Sensor_CreateSubscriber();
-       // Set the callback used to return sensor data.
-       int32_t ret = OH_SensorSubscriber_SetCallback(g_user, SensorDataCallbackImpl);
-       if (ret != SENSOR_SUCCESS) {
-           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_SensorSubscriber_SetCallback failed");
+       if (attr != nullptr) {
+           OH_Sensor_DestroySubscriptionAttribute(attr);
+       }
+       if (id != nullptr) {
+           OH_Sensor_DestroySubscriptionId(id);
+       }
+       if (sensorSubscriber != nullptr) {
+           OH_Sensor_DestroySubscriber(sensorSubscriber);
+       }
+   }
+   
+   static Sensor_SubscriptionId *CreateAndConfigSubscriptionId()
+   {
+       Sensor_SubscriptionId *id = OH_Sensor_CreateSubscriptionId();
+       if (id == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create subscription id failed");
            return nullptr;
        }
-       // Create a Sensor_SubscriptionId instance.
-       Sensor_SubscriptionId *id = OH_Sensor_CreateSubscriptionId();
-       // Set the sensor type. For example, if you use SENSOR_TYPE_ACCELEROMETER, you need to request the ohos.permission.ACCELEROMETER permission.
+       // Set the sensor type. In this example, SENSOR_TYPE_ACCELEROMETER is set, which requires the ohos.permission.ACCELEROMETER permission.
        // Configure the required permission as instructed in step 2 in the Sensor Development.
-       ret = OH_SensorSubscriptionId_SetType(id, SENSOR_ID);
+       int32_t ret = OH_SensorSubscriptionId_SetType(id, SENSOR_ID);
        if (ret != SENSOR_SUCCESS) {
            OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_SensorSubscriptionId_SetType failed");
+           OH_Sensor_DestroySubscriptionId(id);
            return nullptr;
        }
-       // Create a Sensor_SubscriptionAttribute instance.
+       return id;
+   }
+   
+   static Sensor_SubscriptionAttribute *CreateAndConfigSubscriptionAttribute()
+   {
        Sensor_SubscriptionAttribute *attr = OH_Sensor_CreateSubscriptionAttribute();
+       if (attr == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create subscription attribute failed");
+           return nullptr;
+       }
        // Set the sensor data reporting interval.
-       ret = OH_SensorSubscriptionAttribute_SetSamplingInterval(attr, SENSOR_SAMPLE_PERIOD);
+       int32_t ret = OH_SensorSubscriptionAttribute_SetSamplingInterval(attr, SENSOR_SAMPLE_PERIOD);
        if (ret != SENSOR_SUCCESS) {
            OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG,
                "OH_SensorSubscriptionAttribute_SetSamplingInterval failed");
+           OH_Sensor_DestroySubscriptionAttribute(attr);
+           return nullptr;
+       }
+       return attr;
+   }
+   
+   static napi_value Subscriber(napi_env env, napi_callback_info info)
+   {
+       // Create a Sensor_Subscriber instance.
+       Sensor_Subscriber *sensorSubscriber = OH_Sensor_CreateSubscriber();
+       if (sensorSubscriber == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "create subscriber failed");
+           return nullptr;
+       }
+       // Set the callback function to report sensor data.
+       int32_t ret = OH_SensorSubscriber_SetCallback(sensorSubscriber, SensorDataCallbackImpl);
+       if (ret != SENSOR_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_SensorSubscriber_SetCallback failed");
+           DestroySubscriberResources(nullptr, nullptr, sensorSubscriber);
+           return nullptr;
+       }
+       Sensor_SubscriptionId *id = CreateAndConfigSubscriptionId();
+       if (id == nullptr) {
+           DestroySubscriberResources(nullptr, nullptr, sensorSubscriber);
+           return nullptr;
+       }
+       Sensor_SubscriptionAttribute *attr = CreateAndConfigSubscriptionAttribute();
+       if (attr == nullptr) {
+           DestroySubscriberResources(nullptr, id, sensorSubscriber);
            return nullptr;
        }
        // Subscribe to sensor data.
-       ret = OH_Sensor_Subscribe(id, attr, g_user);
+       ret = OH_Sensor_Subscribe(id, attr, sensorSubscriber);
        if (ret != SENSOR_SUCCESS) {
            OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Subscribe failed");
+           DestroySubscriberResources(attr, id, sensorSubscriber);
            return nullptr;
        }
        OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Subscribe successful");
        std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
        // Unsubscribe from sensor data.
-       ret = OH_Sensor_Unsubscribe(id, g_user);
+       ret = OH_Sensor_Unsubscribe(id, sensorSubscriber);
        if (ret != SENSOR_SUCCESS) {
            OH_LOG_Print(LOG_APP, LOG_ERROR, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Unsubscribe failed");
+           DestroySubscriberResources(attr, id, sensorSubscriber);
            return nullptr;
        }
        OH_LOG_Print(LOG_APP, LOG_INFO, SENSOR_LOG_DOMAIN, TAG, "OH_Sensor_Unsubscribe successful");
-       if (id != nullptr) {
-           // Destroy the Sensor_SubscriptionId instance.
-           OH_Sensor_DestroySubscriptionId(id);
-       }
-       if (attr != nullptr) {
-           // Destroy the Sensor_SubscriptionAttribute instance.
-           OH_Sensor_DestroySubscriptionAttribute(attr);
-       }
-       if (g_user != nullptr) {
-           // Destroy the Sensor_Subscriber instance and reclaim memory.
-           OH_Sensor_DestroySubscriber(g_user);
-           g_user = nullptr;
-       }
+       DestroySubscriberResources(attr, id, sensorSubscriber);
        return nullptr;
    }
    ```

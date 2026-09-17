@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran; @mr-chencxy-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee; @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=0b0b919feb897ec43ac7fdad1144cd1226ef164c translatedAt=2026-08-06T13:42:42.667Z pushedAt=2026-08-07T06:02:28.610Z -->
+<!-- md-trans-meta sourceCommit=b9c98a219f801ec4122d94457486779ae7ed9ac3 translatedAt=2026-08-22T01:58:30.817Z pushedAt=2026-08-22T03:36:26.025Z -->
 
 Audio and Video Codec (AVCodec) Kit provides atomic capabilities in the media system, including audio and video encoding/decoding, media file multiplexing and demultiplexing, and media data input.
 

@@ -1,12 +1,11 @@
 # Implementing Background Recording
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ZhengYong21-->
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=bbcf4d0737e3916a6a65e6c508a141a7e736f3d3 translatedAt=2026-08-06T01:50:02.615Z pushedAt=2026-08-06T08:38:40.806Z -->
+<!-- md-trans-meta sourceCommit=c7dfcf9a3bf802a0c5871cdc5f98038582216a4b translatedAt=2026-09-01T02:33:07.879Z pushedAt=2026-09-02T03:01:01.057Z -->
 
 Starting from API version 9, the background continuous task development feature is supported. An app can configure a background continuous task to enable background recording.
 
@@ -14,18 +13,14 @@ Background recording refers to the scenario where an app continues to capture au
 
 Background recording involves microphone capture and background running. An app must simultaneously meet the requirements for microphone permission, recording capability implementation, background continuous task declaration, and system control. Recording must not be started without the user's awareness or authorization.
 
+
 ## Constraints
 
 - User authorization: Microphone permission must be obtained before recording. After the user revokes the permission, the app must immediately stop recording and release resources.
-
 - User awareness: A clear user-perceptible indication must be maintained during background recording, such as a notification or status prompt showing that recording is in progress.
-
 - Scenario matching: The background mode declaration must align with the actual service. After requesting a recording-type continuous task, the app must actually perform recording operations. When only playback, media control, or media session control is required, declaring the background recording mode is unnecessary.
-
 - Minimal acquisition: The app must capture audio only when the user triggers a recording task, and stop promptly after the task ends to avoid prolonged microphone occupancy.
-
 - Resource release: When the app enters the background, exits, crashes, or completes recording, the audio capturer, file handles, and background task state must be kept consistent to prevent a situation where recording has stopped but the background task remains active.
-
 - Privacy compliance: Recording content that the user has not confirmed must not be automatically uploaded in the background. The saving, uploading, sharing, and deletion of recording files must follow user authorization.
 
 ## How to Develop
@@ -53,17 +48,16 @@ For details about how to implement the recording feature, see [Using AudioCaptur
 
    The app must start the recording task in the foreground. After the recording starts, the app can switch to the background to continue recording. Starting recording directly in the background will fail.
 
-Before recording starts, the app must confirm that the user has explicitly triggered the recording operation, and handle exception scenarios such as microphone permission not granted, device being occupied, and storage path being unavailable. For details about recording development, see [Audio Recording Development](audio-recording-overview.md).
+   Before recording starts, the app must confirm that the user has explicitly triggered the recording operation, and handle exception scenarios such as microphone permission not granted, device being occupied, and storage path being unavailable. For details about recording development, see [Audio Recording Development](audio-recording-overview.md).
 
-For scenarios where app background recording is interrupted by other audio streams and cannot be recovered, the following solution is recommended:
+   For scenarios where app background recording is interrupted by other audio streams and cannot be recovered, the following solution is recommended:
 
-- When app recording is interrupted in the background and start fails upon receiving a focus restoration notification, a dialog can be displayed to remind the user to open the app again and manually restart recording.
-
-- Use the audio recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `MUTE_WHEN_INTERRUPTED`. This configures the recording stream focus policy to the mute-when-interrupted mode. When recording is stopped or paused due to interruption by another app, it enters a muted recording state where the recorded audio is silent. After the other app completes its recording action, audible data recording resumes.
+   - When app recording is interrupted in the background and start fails upon receiving a focus restoration notification, a dialog can be displayed to remind the user to open the app again and manually restart recording.
+   - Use the audio recording API [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24) with `AudioSessionBehaviorFlags` set to `MUTE_WHEN_INTERRUPTED`. This configures the recording stream focus policy to the mute-when-interrupted mode. When recording is stopped or paused due to interruption by another app, it enters a muted recording state where the recorded audio is silent. After the other app completes its recording action, audible data recording resumes.
 
 3. Apply for a recording-type continuous task.
 
-When recording needs to continue running in the background, the app must apply for a continuous task of the `AUDIO_RECORDING` type so that the system can identify that the background task matches the recording service.
+   When recording needs to continue running in the background, the app must apply for a continuous task of the `AUDIO_RECORDING` type so that the system can identify that the background task matches the recording service.
 
    <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
 
@@ -96,7 +90,7 @@ When recording needs to continue running in the background, the app must apply f
          // Obtain the WantAgent object through the getWantAgent method in the wantAgent module.
          wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
            try {
-             let list: string[] = ['audioPlayback'];
+             let list: string[] = ['audioPlayback', 'audioRecording'];
              backgroundTaskManager.startBackgroundRunning(context, list, wantAgentObj)
                .then(() => {
                  console.info('Operate startBackgroundRunning succeeded');
@@ -114,11 +108,11 @@ When recording needs to continue running in the background, the app must apply f
      }
    ```
 
-When a continuous task fails to start, the app must avoid continuing to run in background recording mode. It should stop recording or guide the user back to the foreground. For the complete process of requesting and canceling a continuous task, see [Continuous Task (ArkTS)](../../task-management/continuous-task.md).
+   When a continuous task fails to start, the app must avoid continuing to run in background recording mode. It should stop recording or guide the user back to the foreground. For the complete process of requesting and canceling a continuous task, see [Continuous Task (ArkTS)](../../task-management/continuous-task.md).
 
 4. Stop recording and release resources.
 
-When the user stops recording, recording is abnormally interrupted, or the service ends, the app must call the [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8) API of AudioCapturer to stop recording, release audio capture resources, and simultaneously cancel the continuous task of the recording type.
+   When the user stops recording, recording is abnormally interrupted, or the service ends, the app must call the [release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8) API of AudioCapturer to stop recording, release audio capture resources, and simultaneously cancel the continuous task of the recording type.
 
    <!-- @[background_task_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
 

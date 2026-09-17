@@ -316,7 +316,9 @@ struct ColumnAndRowBuild {
 ## 减少应用滑动白块
 
 应用通过增大List/Grid控件的cachedCount参数，调整UI的加载范围。cachedCount表示屏幕外List/Grid预加载item的个数。  
+
 如果需要请求网络图片，可以在item滑动到屏幕显示之前，提前下载好内容，从而减少滑动白块。  
+
 如下是使用cachedCount参数的例子：
 
 ```ts
@@ -361,6 +363,6 @@ class MyDataSource implements IDataSource {
 ![list2](figures/list2.gif)
 
 **使用说明：**
-cachedCount的增加会增大UI的cpu、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
+cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
 
 更多关于cachedCount的使用指导，请参考文档[列表场景性能提升实践](list-perf-improvement.md#缓存列表项)。

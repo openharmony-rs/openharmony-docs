@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b8aa633cba260f62cfd1846a2d514205881380a2 translatedAt=2026-08-04T08:30:00.664Z pushedAt=2026-08-04T08:59:50.934Z -->
+<!-- md-trans-meta sourceCommit=95b635b2657acaf53c78b86c96c7e9bdaf7f7668 translatedAt=2026-08-22T01:39:10.483Z pushedAt=2026-08-22T03:35:23.238Z -->
 
 ## When to Use
 
@@ -151,7 +151,7 @@ The entry is the **InputMethodNdkDemo** function.
 
 > **NOTE**
 >
-> Dependencies of **libohinputmethod.so** and **libhilog_ndk.z.so** should be added to the **CMakeList.txt** file.
+> Dependencies of `libohinputmethod.so` and `libhilog_ndk.z.so` should be added to the `CMakeLists.txt` file.
 
    <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
 

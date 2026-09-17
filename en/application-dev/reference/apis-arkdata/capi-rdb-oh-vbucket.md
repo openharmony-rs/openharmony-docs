@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=25e362cbd0c84d5eeff6cfae5eb123fa6f04919a translatedAt=2026-09-15T10:47:47.905Z pushedAt=2026-09-16T07:50:15.676Z -->
 
 ```c
 typedef struct {...} OH_VBucket
@@ -25,7 +26,7 @@ Defines a struct for the types of the key and value in a KV pair.
 | Name               | Description                          |
 | ------------------- | ------------------------------ |
 | int64_t id          | Unique identifier of the **OH_VBucket** struct.|
-| uint16_t capability | Number of the KV pairs in the struct.|
+| uint16_t capability | Capacity of the key-value pairs stored in the struct. |
 
 
 ### Member Functions
@@ -41,7 +42,7 @@ Defines a struct for the types of the key and value in a KV pair.
 | [int (*destroy)(OH_VBucket *bucket)](#destroy)               | Destroys an **OH_VBucket** object and reclaims the memory occupied.       |
 
 
-### Member Function Description
+## Member Function Description
 
 ### putText()
 
@@ -60,14 +61,14 @@ Puts a char* value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table. It must not be a null pointer.               |
 | const char *value  | Pointer to the value to put.  |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putInt64()
 
@@ -86,14 +87,14 @@ Puts an int64_t value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table. It must not be a null pointer.               |
 | int64_t value      | Pointer to the value to put.  |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putReal()
 
@@ -112,14 +113,14 @@ Puts a double value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table. It must not be a null pointer.               |
 | double value       | Pointer to the value to put.  |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putBlob()
 
@@ -138,15 +139,15 @@ Puts a const uint8_t * value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table. It must not be a null pointer.               |
 | const uint8_t *value | Pointer to the value to put.|
-| uint32_t size      | Value length.             |
+| uint32_t size      | Byte length of value.              |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### putNull()
 
@@ -165,13 +166,13 @@ Puts a null value into the **OH_VBucket** object in the given column.
 | Name            | Description                          |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | Pointer to the **OH_VBucket** instance.|
-| const char *field  | Pointer to the column name in the database table.              |
+| const char *field  | Column name in the database table. It must not be a null pointer.               |
 
 **Returns**
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### clear()
 
@@ -181,7 +182,7 @@ int (*clear)(OH_VBucket *bucket)
 
 **Description**
 
-Clears the [OH_VBucket](capi-rdb-oh-vbucket.md) object.
+Clears an **OH_VBucket** object.
 
 **Since**: 10
 
@@ -195,7 +196,7 @@ Clears the [OH_VBucket](capi-rdb-oh-vbucket.md) object.
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
 
 ### destroy()
 
@@ -205,7 +206,7 @@ int (*destroy)(OH_VBucket *bucket)
 
 **Description**
 
-Destroys the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaims the memory occupied by the object.
+Destroys an **OH_VBucket** object and reclaims the memory occupied.
 
 **Since**: 10
 
@@ -219,4 +220,5 @@ Destroys the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaims the memory
 
 | Type| Description                                      |
 | ---- | ------------------------------------------ |
-| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.|
+| int  | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode). |
+

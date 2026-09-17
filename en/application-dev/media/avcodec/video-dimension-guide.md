@@ -2,11 +2,11 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=decdba1ffe3d86631313429b08804662a902a71a translatedAt=2026-08-06T13:48:25.664Z pushedAt=2026-08-07T08:27:49.517Z -->
+<!-- md-trans-meta sourceCommit=314c6fd63070b00e5f16e6c476230720bee34ae2 translatedAt=2026-08-22T01:59:43.933Z pushedAt=2026-08-22T03:37:02.636Z -->
 
 ## Overview
 
@@ -326,8 +326,8 @@ Therefore, you should requery the stride value each time `OnStreamChanged` is tr
 
 - [Video Decoding](video-decoding.md): Complete workflow for Surface mode and Buffer mode.
 
-- [Codec Base API Reference](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md): Definitions of all key names.
+- [native_avcodec_base.h](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md): Definitions of all key names.
 
-- [AVCodec Kit API Reference - VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md): Encoder APIs.
+- [native_avcodec_videoencoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md): Encoder APIs.
 
-- [AVCodec Kit API Reference - VideoDecoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md): Decoder APIs.
+- [native_avcodec_videodecoder.h](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md): Decoder APIs.

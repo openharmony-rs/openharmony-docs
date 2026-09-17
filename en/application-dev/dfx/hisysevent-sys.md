@@ -6,7 +6,7 @@
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=21f16bae140f7b5f2abb79842e99b02e603814c2 translatedAt=2026-07-31T01:32:40.192Z pushedAt=2026-07-31T07:42:49.529Z -->
+<!-- md-trans-meta sourceCommit=8e1eef2a4922834f8bd82bee91f4c03f1cc409a5 translatedAt=2026-09-16T02:37:49.761Z pushedAt=2026-09-16T03:42:14.706Z -->
 
 hisysevent is a built-in tool that helps you subscribe to real-time system events and query historical system events.
 
@@ -16,7 +16,7 @@ hisysevent is a built-in tool that helps you subscribe to real-time system event
 
 - The devices are properly connected and **hdc shell** is executed.
 
-- The **hisysevent** command is executed on the device to call related capabilities.
+- The **hisysevent** command is executed in the terminal to call related capabilities.
 
 ## Subscribing to Real-Time System Events
 

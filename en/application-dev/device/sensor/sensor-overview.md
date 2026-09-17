@@ -1,14 +1,14 @@
 # Sensor Overview
-
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @LiuChao-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=170a00b0e372b90729da5ee919e1bd4343fab341 translatedAt=2026-07-28T02:36:17.549Z pushedAt=2026-07-28T04:27:28.139Z -->
+<!-- md-trans-meta sourceCommit=2d7b4266499e3556fe42ddb8c4180af3db492816 translatedAt=2026-09-14T08:57:22.881Z pushedAt=2026-09-15T10:37:24.713Z -->
 
 ## Sensor Types
+
 
 Sensors are an abstraction of underlying sensor hardware. Your application can access the underlying sensor hardware via the sensors. Using the [@ohos.sensor (Sensor)](../../reference/apis-sensor-service-kit/js-apis-sensor.md) APIs, you can query sensors on your device, subscribe to sensor data, customize algorithms based on sensor data, and develop various sensor-based applications, such as compass, motion-controlled games, and fitness and health applications.
 
@@ -53,6 +53,7 @@ The following modules work cooperatively to implement sensors: Sensor API, Senso
 - Sensor Service: interacts with the HD_IDL module to receive, parse, and distribute data, manages foreground and background policies and sensors of a device, and controls sensor permissions.
 
 - HDF layer: selects proper policies based on the hardware first in first out (FIFO) and frequency, and adapts to different devices.
+
 
 ## Constraints
 

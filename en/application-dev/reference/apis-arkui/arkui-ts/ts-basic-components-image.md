@@ -417,7 +417,7 @@ Specifies whether to load the image synchronously. When loading a small local im
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
-If image flickering occurs during loading, set **syncLoad** to **true**. For details, see [Optimizing Concurrent Tasks](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-click-to-click-response-optimization#section715115119192).
+If image flickering occurs during loading, set **syncLoad** to **true**. For details, see Optimizing Concurrent Tasks.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

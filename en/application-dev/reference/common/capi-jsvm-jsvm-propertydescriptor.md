@@ -1,10 +1,12 @@
 # JSVM_PropertyDescriptor
-<!--Kit: Common Basic Capability-->
+
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-27T03:48:41.845Z pushedAt=2026-08-27T06:43:09.891Z -->
 
 ```c
 typedef struct {...} JSVM_PropertyDescriptor
@@ -13,6 +15,8 @@ typedef struct {...} JSVM_PropertyDescriptor
 ## Overview
 
 Defines property descriptor.
+
+**System capability:** SystemCapability.ArkCompiler.JSVM
 
 **Since**: 11
 
@@ -31,5 +35,5 @@ Defines property descriptor.
 | [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) method | Method represented using the **value** property of the property descriptor object.|
 | [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) getter | Callback used to obtain a property.|
 | [JSVM_Callback](capi-jsvm-jsvm-callbackstruct8h.md) setter | Callback used to set a property.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Value retrieved by **getter** of the data property.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | Value retrieved by **get** of the data property.|
 | [JSVM_PropertyAttributes](capi-jsvm-types-h.md#jsvm_propertyattributes) attributes | Attributes associated with a specific property.|

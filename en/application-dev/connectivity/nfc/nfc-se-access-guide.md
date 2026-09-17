@@ -2,22 +2,19 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:38.314Z pushedAt=2026-06-22T03:38:15.306Z -->
+<!-- md-trans-meta sourceCommit=4df20884379aac255f1543b2903732709a7e9dcf translatedAt=2026-09-14T08:26:36.211Z pushedAt=2026-09-14T11:09:56.909Z -->
 
 ## Introduction
-
 An electronic device may have one or more secure elements (SEs), such as the embedded SE (eSE) and SIM card. Access control for SEs is implemented in accordance with the Global Platform Access Control (GPAC) specification.
 
 ## When to Use
-
 An application can access an SE through APIs, for example, writing data to an SE to emulate an NFC card on an electronic device. The card data may be stored in an eSE or a SIM card SE. Generally, access control rules (GPAC specifications) are preset on the SE. The application must have the corresponding permissions, as described in [@ohos.secureElement (SE Channel Management)](../../reference/apis-connectivity-kit/js-apis-secureElement.md). In other words, the application can access the SE only after passing the access control permission verification of the element.
 
 ## Available APIs
-
 For the complete API reference and sample code of the SE, see [@ohos.secureElement (SE Channel Management)](../../reference/apis-connectivity-kit/js-apis-secureElement.md).
 
 The following APIs are required for accessing an SE.
@@ -31,16 +28,13 @@ The following APIs are required for accessing an SE.
 | transmit(command: number[]): Promise\<number[]>   | API version 10   | Sends APDU data to the SE.                                   |
 | close(): void    |   API version 10  | Closes the channel.                                                            |
 
+
 ## How to Develop
 
 ### Accessing an SE
-
-1. Import related modules.
-
+1. Import the required SE modules.
 2. Check whether the device supports SEs.
-
 3. Access an SE and read or write data.
-
 4. Release channel resources.
 
 > **NOTE**
@@ -75,19 +69,25 @@ export default class EntryAbility extends UIAbility {
   }
 
   private async omaTest() {
-    // Create an SEService instance for SE access.
-    await omapi.createService().then((data) => {
-      if (data == undefined || !data.isConnected()) {
-        hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+    try {
+      // Create an SE service to access the SE.
+      await omapi.createService().then((data) => {
+        if (data == undefined || !data.isConnected()) {
+          hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+          return;
+        }
+        seService = data;
+        hilog.info(0x0000, 'testTag', 'secure element service connected.');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
+        return;
+      });
+    } catch (error) {
+      if (error as BusinessError) {
+        hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         return;
       }
-      seService = data;
-      hilog.info(0x0000, 'testTag', 'secure element service connected.');
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
-      return;
-    });
-
+    }
     // Obtain all supported readers on the device, that is, the list of all SEs.
     try {
       seReaders = seService.getReaders();
@@ -139,11 +139,12 @@ export default class EntryAbility extends UIAbility {
 
     if (seChannel == undefined) {
       hilog.error(0x0000, 'testTag', 'seChannel invalid.');
+      seSession.close();
       seService.shutdown();
       return;
     }
 
-    // Send APDUs to the SE over the logical channel. Set testApduData correctly based on actual service requirements, and ensue that the APDU format complies with the APDU specification.
+    // Send APDUs to the SE over the logical channel. Set testApduData correctly based on actual service requirements, and ensure that the APDU format complies with the APDU specification.
     let testApduData = [0x01, 0x02, 0x03, 0x04];
     try {
       let response: number[] = await seChannel.transmit(testApduData);
@@ -158,7 +159,8 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       hilog.error(0x0000, 'testTag', 'seChannel.close() exception = %{public}s.', JSON.stringify(exception));
     }
-
+    // Close the seSession, which also closes all channels opened by this session.
+    seSession.close();
     // Close the service, and disable the binding relationship between the application and the SE service.
     seService.shutdown();
   }

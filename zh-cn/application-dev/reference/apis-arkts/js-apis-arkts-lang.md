@@ -20,7 +20,9 @@
 import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
 ```
 
-## lang.ISendable
+## lang
+
+### ISendable
 是所有[Sendable](../../arkts-utils/arkts-sendable.md#基础概念)对象类型（除`null`和`undefined`）的父类型。实现该接口后，自定义类的实例将支持跨线程传递。自身不定义任何方法和属性。
 
 ArkTS中，ISendable类型的对象是Object类型的实例，遵循Object类型的基本特征，同时支持跨线程传递。
@@ -48,7 +50,7 @@ class CustomData implements lang.ISendable {
 ```
 
 ## RetentionPolicy<sup>24+</sup>
-描述[注解](../../quick-start/arkts-language-guide-annotations.md#注解的基础概念)类型保留策略的枚举类型。其枚举值和[Retention](#retention24)结合使用，以指定注解的生命周期。
+描述[注解](../../quick-start/introduction-to-arkts.md#注解)类型保留策略的枚举类型。其枚举值和[Retention](#retention24)结合使用，以指定注解的生命周期。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

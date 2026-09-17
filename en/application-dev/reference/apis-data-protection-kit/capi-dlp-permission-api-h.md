@@ -5,7 +5,7 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T11:52:59.814Z pushedAt=2026-06-24T02:59:01.570Z -->
+<!-- md-trans-meta sourceCommit=676f6d27174ea722c497b7a1f1f7a960444d82e4 translatedAt=2026-08-31T01:10:50.750Z pushedAt=2026-08-31T10:49:58.401Z -->
 
 ## Overview
 
@@ -105,7 +105,7 @@ Obtains the permission information of this DLP file.
 | Parameter| Description|
 | -- | -- |
 | [DLP_FileAccess](#dlp_fileaccess) *dlpFileAccess | User permission on the DLP file, for example, read-only.|
-| uint32_t *flags | Pointer to the operation permissions allowed for the DLP file. The options are as follows:<br>**0x00000000** indicates no permission on the file.<br>**0x00000001** indicates the permission for viewing the file.<br>**0x00000002** indicates the permission for saving the file.<br>**0x00000004** indicates the permission for saving the file as another file.<br>**0x00000008** indicates the permission for editing the file.<br>**0x00000010** indicates the permission for capturing screenshots of the file.<br>**0x00000020** indicates the permission for sharing the screen, on which the file is open.<br>**0x00000040** indicates the permission for recording the screen, on which the file is open.<br>**0x00000080** indicates the permission for copying the file.<br>**0x00000100** indicates the permission for printing the file.<br>**0x00000200** indicates the permission for exporting the file.<br>**0x00000400** indicates the permission for modifying the permissions on the file.|
+| uint32_t *flags | Pointer to the operation permissions allowed for the DLP file. The options are as follows:<br>**0x00000000** indicates no permission on the file.<br>**0x00000001** indicates the permission for viewing the file.<br>**0x00000002** indicates the permission for saving the file.<br>**0x00000004** indicates the permission for saving the file as another file.<br>**0x00000008** indicates the permission for editing the file.<br>**0x00000010** indicates the permission for capturing screenshots of the file.<br>**0x00000020** indicates the permission for sharing the screen, on which the file is open.<br>**0x00000040** indicates the permission for recording the screen, on which the file is open.<br>**0x00000080** indicates the permission for copying the file.<br>**0x00000100** indicates the permission for printing the file.<br>**0x00000200** indicates the permission for exporting the file.<br>**0x00000400** indicates the permission for modifying the permissions on the file. |
 
 **Return value**
 
@@ -130,7 +130,7 @@ Obtains the original file name of a DLP file.
 
 | Parameter| Description|
 | -- | -- |
-| const char *fileName | Pointer to the target file whose original file name is to be obtained.|
+| const char *fileName | Pointer to the target file whose original file name is to be obtained. The length cannot exceed 256 bytes. |
 | char **originalFileName | Double pointer to the original file name obtained.|
 
 **Return value**
@@ -231,3 +231,5 @@ Cleans the sandbox application configuration.
 | Type| Description|
 | -- | -- |
 | [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|
+
+

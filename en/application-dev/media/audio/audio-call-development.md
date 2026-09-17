@@ -1,12 +1,11 @@
 # Developing Audio Call
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3863b055c6e9408de6b26fc09812f154ff7c048c translatedAt=2026-08-06T01:42:12.414Z pushedAt=2026-08-06T02:18:43.124Z -->
+<!-- md-trans-meta sourceCommit=50bea4f0f1f10cbac3c507e2e5f64f12337256be translatedAt=2026-09-14T09:38:42.383Z pushedAt=2026-09-15T13:36:19.660Z -->
 
 During an audio call, the app needs to simultaneously perform audio output (playing the peer voice) and audio input (recording the local voice). You can use AudioRenderer for audio output and AudioCapturer for audio input, and leverage the 3A algorithms (acoustic echo cancellation, noise suppression, and automatic gain control) provided since API version 8 to improve call quality.
 
@@ -17,30 +16,21 @@ For call scenarios, the system automatically enables the 3A algorithm based on t
 The 3A algorithm typically includes the following audio processing capabilities:
 
 - Acoustic Echo Cancellation (AEC): Suppresses the echo caused by the speaker sound being re-captured by the microphone.
-
 - Automatic Noise Suppression (ANS): Reduces the impact of environmental noise on the call voice.
-
 - Automatic Gain Control (AGC): Dynamically adjusts the capture volume to keep the voice within an appropriate loudness range.
 
 ### How It Takes Effect
 
 - When playing the peer voice, `usage` in `AudioRendererInfo` must be set to [STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_VIDEO_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) to identify the VoIP voice call playback stream. When this type of playback stream starts, it triggers the 3A algorithm.
-
 - When recording the local voice, `source` in `AudioCapturerInfo` must be set to [SOURCE_TYPE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) to identify the voice call capture stream.
-
 - For the detailed development process of playback and recording, see [Audio Call Development](audio-call-development.md#audio-call-development) below.
 
 ### Notes
 
 - The 3A processing is automatically determined by the system based on device capabilities and the current audio path. The processing effect is not guaranteed to be identical across all devices and routes.
-
 - In call scenarios, do not superimpose custom noise reduction, echo cancellation, or gain processing from the app, as this may conflict with the system 3A strategy and cause sound distortion, volume fluctuation, or voice anomalies.
-
 - If the input or output device is switched during a call, the system may reselect the audio path. The app should monitor device changes and reconfirm the call experience.
-
 - When developing call services, configure both the playback stream and the recording stream according to the call scenario. If a playback type other than `STREAM_USAGE_VOICE_COMMUNICATION` or `STREAM_USAGE_VIDEO_COMMUNICATION` is used, or a recording type other than `SOURCE_TYPE_VOICE_COMMUNICATION` is used, the system cannot identify the call scenario, and processing strategies such as echo cancellation, noise suppression, and automatic gain control may not take effect or may produce unexpected results.
-
-- Starting the recording stream alone does not enable 3A. A call-type playback stream must also be started simultaneously.
 
 ## Audio Call Development
 
@@ -54,7 +44,7 @@ The examples in each of the following steps are code snippets. You can click the
 
 This process is similar to the process of [using AudioRenderer to develop audio playback (ArkTS)](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->   
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // Import the audio module.
@@ -104,7 +94,7 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // If the data passed in the current callback is less than one frame, fill the blank area with silence data. Otherwise, noise may occur during playback.
+      // If the data passed in the current callback is less than one frame, fill the blank area with silence data; otherwise, noise will occur during playback.
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
@@ -220,7 +210,7 @@ async function stop() {
 // Destroy the instance and release resources.
 async function release() {
   if (audioRenderer !== undefined) {
-    // The AudioRenderer can be released only when it is not in the released state.
+    // The renderer can be released only when it is not in the released state.
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
       console.info('Renderer already released');
       // ...
@@ -247,7 +237,7 @@ This process is similar to the process of [using AudioCapturer to develop audio 
 
 You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->   
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // Import the audio module.
@@ -370,7 +360,7 @@ async function stop() {
 // Destroy the instance and release resources.
 async function release() {
   if (audioCapturer !== undefined) {
-    // The AudioCapturer can be released only when it is not in the STATE_RELEASED or STATE_NEW state.
+    // Release the capturer only when its state is neither STATE_RELEASED nor STATE_NEW.
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
       console.info('Capturer already released');

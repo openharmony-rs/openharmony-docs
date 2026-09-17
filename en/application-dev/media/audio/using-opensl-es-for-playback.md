@@ -1,12 +1,11 @@
 # Using OpenSL ES for Audio Playback (C/C++)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1ff9e9cd1ebb6561090ad32be99073f8301559bf translatedAt=2026-08-06T01:55:16.937Z pushedAt=2026-08-06T10:09:52.953Z -->
+<!-- md-trans-meta sourceCommit=fe6cafc35b7c2ea1e5b32d816e822fcfb388d90d translatedAt=2026-09-14T09:45:32.317Z pushedAt=2026-09-15T13:37:11.329Z -->
 
 OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform, free audio processing library. It provides standardized, high-performance, low-latency APIs for app developers on embedded mobile multimedia devices. The Native API of OpenHarmony is implemented based on the [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specification developed by the [Khronos Group](https://www.khronos.org/). Developers can use the relevant APIs on OpenHarmony through &lt;SLES/OpenSLES.h&gt; and &lt;SLES/OpenSLES_OpenHarmony.h&gt;.
 
@@ -24,7 +23,7 @@ For app developers who adopted OpenHarmony earlier, a reference for switching fr
 
 Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio playback functionalities.
 
-If an API that has not been implemented on OpenHarmony is called, **SL_RESULT_FEATURE_UNSUPPORTED** is returned.
+Calling an unimplemented API returns **SL_RESULT_FEATURE_UNSUPPORTED**. Currently, no related extensions are available.
 
 The following lists the OpenSL ES APIs that have been implemented on OpenHarmony. For details, see the [OpenSL ES](https://www.khronos.org/opensles/) specifications.
 
@@ -38,35 +37,23 @@ The following lists the OpenSL ES APIs that have been implemented on OpenHarmony
   | SL_IID_OH_BUFFERQUEUE | Provides the callback registration interface for audio playback stream data.|
 
 - **Engine APIs implemented on OpenHarmony**
-
   - SLresult (\*CreateAudioPlayer) (SLEngineItf self, SLObjectItf \* pPlayer, SLDataSource \*pAudioSrc, SLDataSink \*pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID \* pInterfaceIds, const SLboolean \* pInterfaceRequired)
-
   - SLresult (\*CreateAudioRecorder) (SLEngineItf self, SLObjectItf \* pRecorder, SLDataSource \*pAudioSrc, SLDataSink \*pAudioSnk, SLuint32 numInterfaces, const SLInterfaceID \* pInterfaceIds, const SLboolean \* pInterfaceRequired)
-
   - SLresult (\*CreateOutputMix) (SLEngineItf self, SLObjectItf \* pMix, SLuint32 numInterfaces, const SLInterfaceID \* pInterfaceIds, const SLboolean \* pInterfaceRequired)
 
 - **Object APIs implemented on OpenHarmony**
-
   - SLresult (\*Realize) (SLObjectItf self, SLboolean async)
-
   - SLresult (\*GetState) (SLObjectItf self, SLuint32 \* pState)
-
   - SLresult (\*GetInterface) (SLObjectItf self, const SLInterfaceID iid, void \* pInterface)
-
   - void (\*Destroy) (SLObjectItf self)
 
 - **Playback APIs implemented on OpenHarmony**
-
   - SLresult (\*SetPlayState) (SLPlayItf self, SLuint32 state)
-
   - SLresult (\*GetPlayState) (SLPlayItf self, SLuint32 \*pState)
 
 - **Volume control APIs implemented on OpenHarmony**
-
   - SLresult (\*SetVolumeLevel) (SLVolumeItf self, SLmillibel level)
-
   - SLresult (\*GetVolumeLevel) (SLVolumeItf self, SLmillibel \*pLevel)
-
   - SLresult (\*GetMaxVolumeLevel) (SLVolumeItf  self, SLmillibel \*pMaxLevel)
 
 - **BufferQueue APIs implemented on OpenHarmony**

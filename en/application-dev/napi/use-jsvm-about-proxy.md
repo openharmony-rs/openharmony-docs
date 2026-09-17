@@ -1,35 +1,31 @@
-# Using Proxy APIs Provided by JSVM-API
-
+# Working with Proxies Using JSVM-API
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:33:06.107Z pushedAt=2026-08-12T11:00:13.778Z -->
+<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:42:14.767Z pushedAt=2026-09-02T06:35:50.967Z -->
 
 ## Introduction
-
 This topic walks you through on how to use JSVM-API to create a proxy instance, check whether the given **JSVM_Value** is of the proxy type, and obtain the target object from the given proxy.
 
 ## Available APIs
 
 | API                    | Description                                           |
 | ---------------------- | ----------------------------------------------- |
-| OH_JSVM_CreateProxy    | Creates a proxy. This API is equivalent to calling **new Proxy (target, handler)** in JS.|
+| OH_JSVM_CreateProxy    | Creates a Proxy, which is equivalent to executing new Proxy(target, handler) in JS. |
 | OH_JSVM_IsProxy        | Checks whether the **JSVM_Value** is of the proxy type.                  |
 | OH_JSVM_ProxyGetTarget | Obtains the target object of the specified proxy.                               |
 
 ## Example
-
 If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in proxy-related APIs.
 
 CPP code:
-
 ```cpp
 // Define OH_JSVM_CreateProxy.
 static JSVM_Value CreateProxy(JSVM_Env env, JSVM_CallbackInfo info) {
-    // Pass in two parameters: target and handler.
+    // Receive two input parameters. The first parameter is target, and the second parameter is handler.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
@@ -110,7 +106,6 @@ const char *srcCallNative = R"JS(
 ```
 
 Expected result:
-
 ```txt
 JSVM OH_JSVM_CreateProxy: success
 JSVM OH_JSVM_IsProxy: success: is a proxy

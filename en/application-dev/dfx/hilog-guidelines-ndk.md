@@ -6,7 +6,7 @@
 <!--Designer: @milkbread123-->
 <!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=3120a9eb545cca6ffdcd89f28e2434c3ac8d5a79 translatedAt=2026-07-31T01:31:53.351Z pushedAt=2026-07-31T07:29:06.328Z -->
+<!-- md-trans-meta sourceCommit=3bab2b5b5264b2a320ce362e13ec1f6589bae7b3 translatedAt=2026-09-14T09:11:53.437Z pushedAt=2026-09-15T13:10:07.638Z -->
 
 During application development, you can log from your application's key code. Through logs, you can find out how the application is running. For example, the logs can tell you whether the application is running properly, and whether the code execution sequence and logic branch are correct.
 
@@ -122,14 +122,12 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
 4. The output is as follows:
 
 <!--RP2-->
-
    ```txt
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     Failed to visit path.
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an error level log
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              I     this is an another info level log
    01-02 08:39:38.915   9012-9012     A03200/MY_TAG                   com.example.hilogDemo              E     this is an another error level log
    ```
-
 <!--RP2End-->
 
 ### Registering a Log Callback
@@ -137,7 +135,7 @@ The maximum size of a log file is 4096 bytes. Excess content will be discarded.
 > **NOTE**
 >
 > 1. Do not recursively call HiLog APIs in the callback function. Otherwise, circular calls may occur.
->
+> 
 > 2. A process needs to register the callback function only once. If the callback function is registered multiple times, the last registered callback function takes effect.
 
 ```c++

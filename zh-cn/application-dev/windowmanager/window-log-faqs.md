@@ -278,7 +278,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
         return;
     }
     // 立即加载页面内容
-    windowClass.loadContent('pages/SubWindowPage', (err) => {
+    windowClass.setUIContent('pages/SubWindowPage', (err) => {
         if (err.code) {
             console.error('Failed to load content.');
             return;

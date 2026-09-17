@@ -6,13 +6,16 @@
 <!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=aa0a67ae9790115e74a1e29268966a05ae945ba8 translatedAt=2026-08-03T11:21:45.131Z pushedAt=2026-08-04T07:16:38.978Z -->
+<!-- md-trans-meta sourceCommit=0edaaef5de1186c959319c99afaf3d467527fe8c translatedAt=2026-09-01T02:30:14.676Z pushedAt=2026-09-02T01:42:49.276Z -->
 
 A pixel map is a data structure used to store and represent images in memory. It is an uncompressed collection of pixels. Images in formats such as JPEG or PNG are compressed, which are different from pixel maps. If you need to draw JPEG or PNG images on the screen, decode them into the pixel map format first. For details about image decoding, see [Introduction to Image Kit](../media/image/image-overview.md).
 
+
 Drawing pixel maps using the **Drawing** APIs (C/C++) depends on the **PixelMap** module, which can read or write image data and obtain image information. For details about the **PixelMap** APIs, see [drawing_pixel_map.h](../reference/apis-arkgraphics2d/capi-drawing-pixel-map-h.md).
 
+
 You can create a **PixelMap** instance using multiple APIs. The following uses **OH_Drawing_PixelMapGetFromOhPixelMapNative()** as an example.
+
 
 1. Add link libraries.
 
@@ -60,7 +63,7 @@ You can create a **PixelMap** instance using multiple APIs. The following uses *
            pixels[i * RGBA_SIZE + 2] = 0xFF; // Assign a value to the blue channel while keeping other channels at 0. The color is displayed in blue.
        }
    }
-   // Set the pixel map format (length, width, color type, and alpha type).
+   // Set the pixelmap format (width, height, color type, and alpha type).
    OH_Pixelmap_InitializationOptions *createOps = nullptr;
    OH_PixelmapInitializationOptions_Create(&createOps);
    OH_PixelmapInitializationOptions_SetWidth(createOps, width);
@@ -82,11 +85,11 @@ You can create a **PixelMap** instance using multiple APIs. The following uses *
    OH_Drawing_PixelMap *pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
    ```
 
-5. Draw the pixel map.
+5. Draw the PixelMap.
 
    Use **OH_Drawing_CanvasDrawPixelMapRect()** to draw the pixel map. The function takes five parameters: (1) canvas; (2) **PixelMap** object; (3) cropping area of the pixels in the pixel map; (4) area displayed on the canvas; (5) sampling option object.
 
-   The sampling option object (**OH_Drawing_SamplingOptions**) indicates the specific method of sampling from the original pixel data (that is, the pixel map) to generate new pixel values. For details, see [drawing_sampling_options.h](../reference/apis-arkgraphics2d/capi-drawing-sampling-options-h.md).
+   The sampling option object (**OH_Drawing_SamplingOptions**) indicates the specific method of sampling from the original pixel data to generate new pixel values. For details, see [drawing_sampling_options.h](../reference/apis-arkgraphics2d/capi-drawing-sampling-options-h.md).
 
    <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -97,7 +100,7 @@ You can create a **PixelMap** instance using multiple APIs. The following uses *
    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(value200_, value200_, value800_, value600_);
    // Sampling option object.
    OH_Drawing_SamplingOptions* samplingOptions = OH_Drawing_SamplingOptionsCreate(
-       OH_Drawing_FilterMode::FILTER_MODE_LINEAR, OH_Drawing_MipmapMode::MIPMAP_MODE_LINEAR);
+       FILTER_MODE_LINEAR, MIPMAP_MODE_LINEAR);
    // Draw the pixel map.
    OH_Drawing_CanvasDrawPixelMapRect(canvas, pixelMap, src, dst, samplingOptions);
    ```
@@ -108,6 +111,11 @@ You can create a **PixelMap** instance using multiple APIs. The following uses *
 
    ``` C++
    OH_PixelmapNative_Release(pixelMapNative);
+   OH_PixelmapInitializationOptions_Release(createOps);
+   OH_Drawing_PixelMapDissolve(pixelMap);
+   OH_Drawing_RectDestroy(src);
+   OH_Drawing_RectDestroy(dst);
+   OH_Drawing_SamplingOptionsDestroy(samplingOptions);
    delete[] pixels;
    ```
 
@@ -116,11 +124,9 @@ You can create a **PixelMap** instance using multiple APIs. The following uses *
    ![Screenshot_20241225200426678](figures/Screenshot_20241225200426678.jpg)
 
 <!--RP1-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
-
 <!--RP1End-->
