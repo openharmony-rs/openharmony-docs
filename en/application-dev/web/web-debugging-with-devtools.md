@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:52:18.285Z pushedAt=2026-09-02T07:28:52.651Z -->
+<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:55:59.872Z pushedAt=2026-09-16T08:45:23.909Z -->
 
 
 The **Web** component supports debugging of web frontend pages by using DevTools, a web frontend development and debugging tool that allows you to debug an application's frontend pages on a PC. Before you do this, use [setWebDebuggingAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess) to enable frontend page debugging for the **Web** component and make sure the test device connected to the PC runs 4.1.0 or a later version.
@@ -460,7 +460,7 @@ The port forwarding may be invalid due to the following reasons:
   * Ensure that the domain socket exists on the device.
   * Ensure that the process ID in the domain socket name is the same as that of the application to be debugged.
   * Delete unnecessary forwarding tasks from hdc.
-  * After the domain socket is successfully forwarded, open **http://localhost:9222/json** using the Chrome on the PC. Change **9222** in the URL to the actual TCP port number.
+  * After the domain socket is successfully forwarded, open `http://localhost:9222/json` using the Chrome on the PC. Change `9222` in the URL to the actual TCP port number.
 
     - If the web page has content, port forwarding is successful. In this case, wait for the page to be debugged to appear on the Chrome debugging page. See [Waiting for the Page to Be Debugged](#waiting-for-the-page-to-be-debugged).<br/>
     ![chrome_localhost](figures/devtools_resources_chrome_localhost.jpg)
@@ -468,7 +468,7 @@ The port forwarding may be invalid due to the following reasons:
     - If an error web page is displayed, port forwarding fails. See the solution in [What should I do if port forwarding fails?](#what-should-i-do-if-port-forwarding-fails).<br/>
     ![chrome_localhost_refused](figures/devtools_resources_chrome_localhost_refused.jpg)
 
-  * If the **http://localhost:9222/json** page is normally displayed on Chrome, but the debugging target cannot be found on the Chrome debugging page, perform the following operations:
+  * If the `http://localhost:9222/json` page is normally displayed on Chrome, but the debugging target cannot be found on the Chrome debugging page, perform the following operations:
     - Ensure that the port number in **Configure** on the Chrome debugging page is the same as the TCP port number specified for port forwarding.
     - In this topic, the default TCP port number is **9222**.<br>
       If you use another TCP port number (for example, **9223**), change the TCP port number in [port forwarding](#port-forwarding) and the port number in [Configure on the Chrome debugging tool page](#opening-the-debugging-tool-page-in-chrome) accordingly.
@@ -513,4 +513,4 @@ The port forwarding may be invalid due to the following reasons:
 * Solution 1: Upgrade the Chrome browser to the latest version.
 * Solution 2: If you do not want to upgrade the browser, manually combine the URL. The complete URL is **devtools://devtools/bundled/inspector.html?ws=localhost:9222/devtools/page/xxx**.
   - The URL consists of two parts. The first part **devtools://devtools/bundled/inspector.html** is fixed. The second part **?ws=localhost:9222/devtools/page/xxx** needs to be modified based on the actual configuration.
-  - After the port forwarding is successful, use Chrome to open the **http://localhost:9222/json** page. Replace **9222** in the URL with the actual TCP port number. Then, obtain the value **?ws** and the following part of **devtoolsFrontendUrl**.
+  - After the port forwarding is successful, use Chrome to open the `http://localhost:9222/json` page. Replace `9222` in the URL with the actual TCP port number. Then, obtain the value "?ws" and the following part of "devtoolsFrontendUrl".

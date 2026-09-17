@@ -1,12 +1,11 @@
 # Creating an ArkTS Runtime Environment Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:41:39.506Z pushedAt=2026-08-12T11:15:47.160Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:40:44.102Z pushedAt=2026-09-16T08:26:10.230Z -->
 
 ## When to Use
 
@@ -166,7 +165,6 @@ A maximum of 64 runtime environments can be created for a process.
   ```
 
 - Import the header file of ArkTS.
-
   ``` TypeScript
   import testNapi from 'libentry.so';
   ```

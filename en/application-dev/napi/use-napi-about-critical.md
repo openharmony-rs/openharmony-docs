@@ -2,17 +2,17 @@
 
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=88fc26dbb0c9f93d86550b575acd5207366a25bd translatedAt=2026-08-12T06:38:16.250Z pushedAt=2026-08-12T11:09:56.412Z -->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:30:42.112Z pushedAt=2026-09-16T08:24:30.542Z -->
 
 The Node-API extension APIs **napi_open_critical_scope** and **napi_close_critical_scope** are used to open and close a critical scope, respectively.
 
 > **NOTE**
 >
-> Non-critical APIs cannot be used in a critical scope, and only one critical scope can be opened in an execution environment. You are advised to open a critical scope only when critical APIs are required, and close the scope in a timely manner after the APIs are used.
+> Non-critical APIs cannot be used within a critical scope, and only one critical scope can be opened in the same execution environment. Opening a critical scope blocks GC. Keeping a critical scope open for a long time may cause issues such as memory shortage and lag. It is recommended that a critical scope be opened only when critical APIs are needed and closed promptly after use.
 
 ## When to Use
 
@@ -28,11 +28,11 @@ After the critical scope is closed, do not use the critical API or its return re
 | napi_close_critical_scope                      | Closes a critical scope.                         | napi_generic_failure       |
 | napi_get_buffer_string_utf16_in_critical_scope | Obtains the UTF-16 encoding memory buffer data of an ArkTS string.| napi_generic_failure       |
 
->**NOTE** 
+> **NOTE**
 >
->1. To obtain the memory buffer of an ArkTS string stored in UTF-16-encoding format, use **napi_get_buffer_string_utf16_in_critical_scope**. Otherwise, an error will be returned.
->  
->2. **napi_create_string_utf16** and **napi_create_string_utf8** are used to pass the input data to the VM in the specified encoding format. These functions do not control the internal storage encoding format of strings in the VM.
+> 1. Only when an ArkTS string is stored in UTF-16 encoding can `napi_get_buffer_string_utf16_in_critical_scope` correctly obtain its memory buffer; otherwise, the function returns an error.
+>
+> 2. `napi_create_string_utf16` and `napi_create_string_utf8` are used to pass the input data to the VM in the specified encoding format. These functions do not control the internal storage encoding format of strings in the VM.
 
 ## Sample Code
 

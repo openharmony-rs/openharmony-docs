@@ -1,17 +1,15 @@
 # FAQs About Memory Leaks
-
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=88fc26dbb0c9f93d86550b575acd5207366a25bd translatedAt=2026-08-12T06:27:35.938Z pushedAt=2026-08-12T09:52:45.937Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:05:17.136Z pushedAt=2026-09-16T08:19:04.744Z -->
 
 ## Is there any mechanism to check whether napi_ref leaks
 
 - Question: When **napi_create_reference** is used to create a reference to a JS object, **napi_delete_reference** needs to be used to release the JS object. If **napi_delete_reference** is not used, the JS object memory may leak. Is there any mechanism to check or test whether **napi_ref** leaks? 
-
 - Answer:
 
 Use Allocation provided by DevEco Studio. 
@@ -31,7 +29,6 @@ You need to understand the Node-API lifecycle mechanism. The references are as f
 [Performing Lifecycle Management Using Node-API](use-napi-life-cycle.md) 
 
 Common causes of memory leaks during Node-API development: 
-
 1. **napi_value** is not managed by **napi_handle_scope**. As a result, the ArkTS object held by **napi_value** cannot be released. This problem often occurs in [direct use of uv_queue_work](napi-guidelines.md#asynchronous-tasks). To solve this problem, add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs.
 
     You can analyze the snapshot to locate the cause of the leak. If the **distance** of the leaked ArkTS object is **1**, the object may be held by native (**napi_value** is a pointer to the native owner), and **napi_value** is not within the range of **napi_handle_scope**.  

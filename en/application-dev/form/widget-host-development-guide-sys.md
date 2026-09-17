@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=828e43f2d444a1ccec6e0e0a50f347ffb4390aa2 translatedAt=2026-09-14T09:30:18.624Z pushedAt=2026-09-15T13:30:44.960Z -->
+<!-- md-trans-meta sourceCommit=d481e097cac045f53d92fd46720fadbf7f4baf8e translatedAt=2026-09-16T02:52:35.305Z pushedAt=2026-09-16T06:59:34.182Z -->
 
 ## Widget Overview
 
@@ -208,7 +208,11 @@ struct formHostSample {
     // Delete all widgets.
     this.formIds.forEach((id) => {
       hilog.info(DOMAIN_NUMBER, TAG, 'delete all form');
-      formHost.deleteForm(id);
+      formHost.deleteForm(id).then(() => {
+        hilog.info(DOMAIN_NUMBER, TAG, `formHost deleteForm success, formid: ${id}`);
+      }).catch((error: BusinessError) => {
+        hilog.error(DOMAIN_NUMBER, TAG, `formHost deleteForm failed, code: formid: ${id}, ${error.code}, message: ${error.message}`);
+      });
     });
     // Unsubscribe from bundle installation events.
     try {

@@ -1,12 +1,11 @@
 # Working with Functions Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:40:06.561Z pushedAt=2026-08-12T11:14:17.703Z -->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:34:29.787Z pushedAt=2026-09-16T08:25:46.852Z -->
 
 ## Introduction
 
@@ -27,7 +26,6 @@ Functions are blocks of reusable code that performs specific tasks or operations
 ## Example
 
 If you are just starting out with Node-API, see [Node-API Development Process](use-napi-process.md). The following demonstrates only the C++ and ArkTS code related to function invocation.
-
 ## napi_get_cb_info
 
 Use **napi_get_cb_info** to obtain detailed information about function calls.
@@ -144,7 +142,10 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 
 Use **napi_call_function** to call an ArkTS function from a C/C++ addon.
 
-**Note:** The length of argv passed to napi_call_function must be no less than argc; if argc is 0, nullptr can be passed; otherwise, each argv element must be a valid `napi_value`.
+Notes:
+- The length of **argv** passed to **napi_call_function** must be no less than **argc**.
+- When **argc** is **0**, **nullptr** can be passed; otherwise, each **argv** element must be a valid **napi_value**.
+- After **napi_call_function** is executed, microtasks are triggered.
 
 CPP code:
 

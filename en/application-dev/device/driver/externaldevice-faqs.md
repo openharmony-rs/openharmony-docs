@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=3ef7f69a75e36b1756789f3b838cf0a1fdcb6208 translatedAt=2026-09-01T02:12:45.029Z pushedAt=2026-09-01T11:57:34.168Z -->
+<!-- md-trans-meta sourceCommit=212c062cf9929960ddfc3ef82147fe9a963da757 translatedAt=2026-09-16T02:34:30.289Z pushedAt=2026-09-16T03:29:40.414Z -->
 
 ## Failed to Find the Header File During Compilation or Running
 
@@ -49,6 +49,16 @@ The message "code:9568347 error: install parse native so failed" is displayed du
 ### Solution
 
 According to the solution provided in [What should I do if "code:9568347 error: install parse native so failed" is displayed during HAP installation or error message "TypeError: Cannot read property xxx of undefined" is displayed during HAP running?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5) in application debugging, manually set **abiFilters** in **buildOption/externalNativeOptions** in the **build-profile.json5** file.
+
+## HAP Installation Fails with Error 9568289 After the ohos.permission.ACCESS_DDK_DRIVERS Permission Is Granted
+
+### Symptom
+
+The ACL permission `ohos.permission.ACCESS_DDK_DRIVERS` has been granted and packaged into the HAP application package along with the project, but the error "9568289 grant request permissions failed" is reported during HAP installation.
+
+### Solution
+
+Currently, the application and operation process for the `ohos.permission.ACCESS_DDK_DRIVERS` permission in the application market is under maintenance. If your project uses the [bindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19) and [unbindDriverWithDeviceId](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19) APIs, you can replace them with the [bindDeviceDriver](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerbinddevicedriverdeprecated-1) and [unbindDevice](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md#devicemanagerunbinddevicedeprecated-1) APIs. The service functions of these APIs are exactly the same.
 
 ## When Using a DDK API That Sends Data Based on a Buffer, Data Is Not Sent According to the Specified offset and bufferLength
 

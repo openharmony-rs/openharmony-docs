@@ -5,7 +5,7 @@
 <!--Designer: @fang-jinxu-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:38:45.714Z pushedAt=2026-09-02T07:08:40.282Z -->
+<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:19:04.981Z pushedAt=2026-09-16T08:20:09.613Z -->
 
 - [About This Kit](ndk-development-overview.md)
 - [Creating an NDK Project](create-with-ndk.md)
@@ -21,7 +21,7 @@
     - [Using fdsan](fdsan.md)
   - Using Node-API for ArkTS/JS and C/C++ Language Interaction<!--using-napi-interaction-with-cpp-->
     - [Node-API Overview](napi-introduction.md)
-    - [Node-API Status Codes](napi_status_introduction.md)
+    - [Node-API Status Codes](napi-status-introduction.md)
     - [Node-API Data Types and APIs](napi-data-types-interfaces.md)
     - [Node-API Development Specifications](napi-guidelines.md)
     - [Node-API Development Process](use-napi-process.md)

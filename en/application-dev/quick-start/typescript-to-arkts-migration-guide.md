@@ -6,7 +6,7 @@
 <!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=794b6743937ba8e73afda64d9d8cea1a536cda7c translatedAt=2026-09-14T10:03:01.057Z pushedAt=2026-09-15T13:39:44.562Z -->
+<!-- md-trans-meta sourceCommit=e5a8b53118a7829ca524ea0f0985d43bf735b6de translatedAt=2026-09-16T03:50:02.671Z pushedAt=2026-09-16T08:44:27.489Z -->
 
 ArkTS restricts the features of TypeScript (TS) that undermine development correctness or increase runtime overhead. This topic lists the TypeScript features restricted by ArkTS and provides recipes on code refactoring. ArkTS retains most syntax features of TypeScript. TypeScript features that are not mentioned in this topic are fully supported by ArkTS. For example, the custom decorators supported by ArkTS have the same syntax as those supported by TypeScript. After code refactoring based on the recipes in this topic, the code is still valid TypeScript code.
 
@@ -925,7 +925,7 @@ let f = (s: string) => {
 
 **Error code: 10605090**
 
-ArkTS supports type inference for function return types, but this functionality is currently restricted. In particular, when the expression in the **return** statement is a call to a function or method whose return value type is omitted, a compile-time error occurs. If this is the case, specify the return type explicitly.
+ArkTS supports function return type inference in certain scenarios. However, if the expression in a `return` statement calls a function or method whose return type is not explicitly specified, a compile-time error occurs. In this case, explicitly specify the return type.
 
 **TypeScript**
 

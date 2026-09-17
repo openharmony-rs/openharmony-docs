@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:57:16.268Z pushedAt=2026-08-26T03:37:13.187Z -->
+<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:20:39.904Z pushedAt=2026-09-16T08:20:30.654Z -->
 
 ## Introduction
 
@@ -184,7 +184,7 @@ OH_JSVM_RejectDeferred reject
 
 Call **OH_JSVM_PromiseRegisterHandler** to register a callback that is invoked after a promise is fulfilled rejected. It is equivalent to calling the native **Promise.then()** or **Promise.catch()**.
 
-The following describes only part of the C++ code. For details about other framework code, such as the **TestJSVM** function, see the implementation of **OH_JSVM_SetMicrotaskPolicy** in [Working with Tasks Using JSVM-API](use-jsvm-execute-tasks.md).
+The following describes only part of the C++ code. For details about other framework code, such as the `TestJSVM` function, see the implementation of `OH_JSVM_SetMicrotaskPolicy` in [Working with Tasks Using JSVM-API](use-jsvm-execute-tasks.md).
 
 ``` C++
 static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {

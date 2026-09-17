@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:55:12.830Z pushedAt=2026-09-02T07:30:43.172Z -->
+<!-- md-trans-meta sourceCommit=92781ffc3b028932f548099b2ef0ba88371e83b0 translatedAt=2026-09-16T04:04:13.861Z pushedAt=2026-09-16T08:48:57.192Z -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -292,6 +292,8 @@ In ArkTS, provide custom response information for intercepted requests.
     return true;
    })
    ```
+
+Network interception supports streaming requests. You can call [didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12) or [OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata) multiple times to construct the response body in chunks. When returning the response body for the last time, call [didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12) or [OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish) to notify the Web component that the intercepted request has been completed.
 
 Before calling [OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) or [didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12) to end the current request, you must return a response header to the web kernel through [OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) or [didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12). Otherwise, the request cannot be ended.
 

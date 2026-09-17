@@ -1,12 +1,11 @@
 # Error Handling Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:12:17.593Z pushedAt=2026-08-22T06:50:05.357Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:33:09.809Z pushedAt=2026-09-16T08:21:28.824Z -->
 
 ## Introduction
 
@@ -17,11 +16,8 @@ Node-API provides APIs for handling errors occurred in ArkTS code via exceptions
 Exceptions and errors are common concepts in ArkTS programming. An exception indicates the presence of an unexpected condition, and an error indicates that the application cannot perform certain operations correctly. Node-API provides a set of APIs for handling errors occurred in ArkTS code via exceptions. Read on the following to learn basic concepts related to error handling:
 
 - Exception: indicates an unexpected condition that may occur during the execution of an application. It can be a syntax error, runtime error, or logic error. For example, the division of a non-zero value with zero and an operation on undefined variables are exceptions.
-
 - Error: indicates that the application cannot perform some operations. Errors can be defined by the underlying system, API, or developer.
-
 - **TypeError**: indicates that the type of an operation or value does not meet the expectation. Generally, this error is caused by an incorrect data type.
-
 - **RangeError**: indicates that a value is not in the expected range. For example, an index beyond the array length is accessed.
 
 These concepts are important in exception and error handling. Properly using methods to capture, handle, or report exceptions and errors help improve application stability.  
@@ -29,7 +25,6 @@ These concepts are important in exception and error handling. Properly using met
 ## Available APIs
 
 The following [Node-APIs](../reference/native-lib/napi.md#symbols-exported-from-the-node-api-library) are used to handle errors and exceptions during interaction with ArkTS. Procedure:
-
 | API| Description|
 | -------- | -------- |
 | napi_create_error, napi_create_type_error, napi_create_range_error| Creates an error, which can be thrown to ArkTS using **napi_throw**.|
@@ -751,7 +746,6 @@ try {
 ```
 
 ### napi_fatal_exception
-
 Call **napi_fatal_exception** in the context of the main thread to throw a fatal exception. As a result, the application is terminated and a crash log is generated. Exercise caution when using this API. Avoid frequently calling this API during normal operations.
 
 CPP code:

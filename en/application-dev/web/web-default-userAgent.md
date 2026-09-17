@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 <!--RP1-->
-<!-- md-trans-meta sourceCommit=5191f5de3eca0919d8d5e44823dbef1bf6b74270 translatedAt=2026-09-01T02:52:21.650Z pushedAt=2026-09-02T07:29:28.604Z -->
+<!-- md-trans-meta sourceCommit=511bb5fce50bf1615b068552c2a1f2432adc2fed translatedAt=2026-09-16T03:57:14.346Z pushedAt=2026-09-16T08:45:37.314Z -->
 
 User-Agent (UA) is a special string that contains key information such as the device type, operating system, and version. In web development, UA is used by the server to identify the source device of the request and its features, so that the server can provide custom content and services. If UAs cannot be correctly identified on a page, multiple exceptions may occur. For example, a page layout optimized for a mobile device may be displayed in disorder on a desktop device, and vice versa. In addition, some browser features or CSS styles are supported only in specific browser versions. If a page cannot successfully identify the UA, rendering problems or logic errors may occur.
 
@@ -251,7 +251,7 @@ A: The website displays different styles of pages based on different UAs. For mo
 
 Q: Why can't I open some web pages or the message "Unsupported browser" is displayed?
 
-A: The web page is not adapted to the OpenHarmony UA. It is necessary for the web page to perform compatibility processing for the **OpenHarmony** identifier.
+A: The web page is not adapted to the OpenHarmony UA, so the page needs to handle the "OpenHarmony" identifier for compatibility. Before the page is adapted, you can call [setCustomUserAgent()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) to append other compatibility fields to the default UA for temporary transitional adaptation.
 
 Q: Why does the page redirect in a loop?
 
