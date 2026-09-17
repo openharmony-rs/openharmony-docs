@@ -67275,5 +67275,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-playback-concurrency-audio-session-overview.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioKeyboardSoundSample/entry/src/main/ets/common/controllers/KeyboardSoundController.ets",
+				"functions":[
+					{
+						"end_line":153,
+						"name":"keyboard_notification_mix",
+						"start_line":106
+					}
+				]
+			}
+		]
 	}
 ]
