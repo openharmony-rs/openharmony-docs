@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:50:42.026Z pushedAt=2026-09-16T09:06:22.455Z -->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:50:42.026Z pushedAt=2026-09-17T01:13:30.978Z -->
 
 This module implements Bluetooth-based network sharing through the [Personal Area Networking (PAN)](../../connectivity/bluetooth/terminology.md#pan). It allows the local device to function as an [NAP](../../connectivity/bluetooth/terminology.md#nap) or [PANU](../../connectivity/bluetooth/terminology.md#panu) device to query the PAN support status, network sharing status, and connection status. This module is applicable to scenarios where Bluetooth is used for PAN sharing.
 
@@ -117,7 +117,7 @@ try {
 
 isTetheringOn(): boolean
 
-Obtains the tethering status when the local devices is used as the NAP.
+Obtains the tethering status when the local device is used as the NAP.
 
 **Since**: 26.0.0
 
