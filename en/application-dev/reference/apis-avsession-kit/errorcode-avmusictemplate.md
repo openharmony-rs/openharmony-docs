@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=008efa88ee32d17b84c16292894f1139607c6cb8 translatedAt=2026-09-01T13:11:36.457Z pushedAt=2026-09-07T11:16:24.716Z -->
 
 > **NOTE**
 >
@@ -26,7 +27,7 @@ The connection to the media enhancement service fails.
 
 **Solution**
 
-Restart the device.
+The device is restarted.
 
 ## 35000002 Audio Template Controller Creation Failure
 
@@ -40,11 +41,12 @@ Failed to create the audio template controller.
 
 **Possible Causes**
 
-The **sessionId** parameter for creating the controller is invalid.
+The **sessionId** parameter for creating the **AVMusicTemplateController** is invalid. The **sessionId** must be a valid string and correspond to an already created **AVMusicTemplate** instance.
 
 **Solution**
 
-Check whether the **sessionId** is empty or whether an application has created the **AVMusicTemplate** corresponding to the **sessionId**.
+1. Check whether **sessionId** is empty or valid. In an application process, a **sessionId** corresponds to an **AVMusicTemplateController**.
+2. Check whether an application has created the **AVMusicTemplate** corresponding to the **sessionId**.
 
 ## 35000003 Template Listener Not Registered
 
@@ -63,7 +65,7 @@ The template listener fails to be registered.
 **Solution**
 
 1. Check whether the **AVMusicTemplate** instance is properly created in the application.
-2. Check whether other core features in the application are abnormal.
+2. Check whether the functions related to the audio template in the application are abnormal, such as the creation of an **AVMusicTemplate** instance or registration of a controller.
 
 ## 35000004 Template Controller Callback Not Registered
 
@@ -100,7 +102,7 @@ The audio template has not been created.
 
 **Solution**
 
-1. Check whether the **AVMusicTemplate** instance is properly created in the application.
+1. Check whether the **sessionId** is empty and whether an **AVMusicTemplate** instance has been created for the **sessionId**.
 2. Check whether other core features in the application are abnormal.
 
 ## 35000006 Template Controller Does Not Exist
@@ -177,7 +179,7 @@ The communication of the media enhancement service is abnormal.
 1. Check whether other core features in the application are abnormal.
 2. Restart the device.
 
-## 350000010 Maximum Transmission Capacity Exceeded
+## 35000010 Maximum Transmission Capacity Exceeded
 
 **Error Message**
 
@@ -189,13 +191,13 @@ The data exceeds the maximum transmission capacity.
 
 **Possible Causes**
 
-The size of the data to be transmitted exceeds the 1 MB limit.
+The size of the metadata transmitted through the **AVMusicTemplate** APIs exceeds the 1 MB limit.
 
 **Solution**
 
-Transmit the data exceeding 1 MB in batches.
+Transfer data larger than 1 MB in batches.
 
-## 350000011 Data Writing Error, Invalid Data
+## 35000011 Data Writing Error, Invalid Data
 
 **Error Message**
 
@@ -203,7 +205,7 @@ The data write error, data is invalid.
 
 **Description**
 
-Failed to write data. The data is unavailable.
+Failed to write data. The data is invalid.
 
 **Possible Causes**
 
@@ -213,7 +215,7 @@ Failed to write data.
 
 Check whether the data to be transmitted contains invalid properties or values.
 
-## 350000012 Audio Template Error
+## 35000012 Audio Template Error
 
 **Error Message**
 

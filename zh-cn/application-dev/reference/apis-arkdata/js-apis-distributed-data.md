@@ -660,7 +660,7 @@ constructor()
 | 名称  | 类型 | 可读 | 可写 | 说明                    |
 | ---   | ----  | ----  | ----  | ----------------------- |
 | nullable<sup>8+</sup>  | boolean | 是 | 是 | 表示数据库字段是否可以为空。   |
-| default<sup>8+</sup>  | string | 是 | 是 | 表示Fieldnode的默认值。 |
+| default<sup>8+</sup>  | string | 是 | 是 | 表示FieldNode的默认值。 |
 | type<sup>8+</sup>  | number | 是 | 是 | 表示指定节点对应数据类型的值。 |
 
 ### constructor<sup>8+</sup>
@@ -2400,7 +2400,7 @@ try {
         });
     });
 }catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
+    console.error('PutBatch e ' + JSON.stringify(e));
 }
 ```
 
@@ -2455,7 +2455,7 @@ try {
         console.error('putBatch fail ' + JSON.stringify(err));
     });
 }catch(e) {
-    console.info('PutBatch e ' + JSON.stringify(e));
+    console.error('PutBatch e ' + JSON.stringify(e));
 }
 ```
 

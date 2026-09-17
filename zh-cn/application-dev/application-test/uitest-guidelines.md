@@ -628,7 +628,7 @@ export default function abilityTest() {
 | 参数    |   二级参数   |说明       | 
 |---------|---------|------------|
 | -p | \<savePath\> | 指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
-| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的截图。<br> **说明：** 从API version 20开始支持该命令。|
+| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的截图。未指定该参数时，默认获取displayId为0的屏幕下的截图。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 存储路径：/data/local/tmp，文件名：时间戳 + .png。
@@ -646,7 +646,7 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
 | -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明：**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的id。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
-| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
+| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。未指定该参数时，默认获取displayId为0的屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。

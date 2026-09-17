@@ -365,7 +365,7 @@
    <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
    
    ``` TypeScript
-   console.info("in tolevel");
+   console.info("in toplevel");
    ```
 2. 代码块中的调用。  
 

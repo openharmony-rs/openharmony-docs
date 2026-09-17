@@ -1,14 +1,16 @@
 # swiper.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ca610c3b31eac2a84ffac21a107ce522b473feb1 translatedAt=2026-08-27T08:56:49.213Z pushedAt=2026-08-28T08:43:39.704Z -->
 
 ## Overview
 
-Defines the enumerations and APIs of the **Swiper** component.
+Defines the enumerations and APIs of the **Swiper** component for implementing scenarios such as carousel display and content navigation. It supports custom navigation indicators (dot/number types), navigation arrow styles, nested scrolling modes, mouse wheel page-turning modes, and animation modes, helping users quickly build carousel interaction experiences.
 
 **File to include:** <arkui/node_attributes/swiper.h>
 
@@ -28,9 +30,9 @@ Defines the enumerations and APIs of the **Swiper** component.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style of the **Swiper** component, which is used to display the current position and switching status in scenarios such as carousel.|
+| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style of the **Swiper** component, which is used to display the current position and switching state in scenarios such as carousel. It supports custom configuration of attributes such as the size, color, and spacing of the indicator, which improves the user's perception of the current browsing position and enhances the user interaction experience. It is applicable to various application scenarios such as displaying carousel images, ad slots, and content navigation. |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component, which is used to display the current position and total number of pages in digits.|
-| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style of the **Swiper** component, which is used to provide more intuitive page turning instructions in scenarios such as carousel.|
+| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style struct of the **Swiper** component, which provides page-turning guidance by configuring attributes such as the arrow position, size, and color. |
 
 ### Enums
 
@@ -46,18 +48,18 @@ Defines the enumerations and APIs of the **Swiper** component.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)](#oh_arkui_swiperindicator_create) | Creates a navigation indicator for the **Swiper** component.|
+| [ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)](#oh_arkui_swiperindicator_create) | Creates a navigation indicator for the **Swiper** component. After calling this API, you must call **OH_ArkUI_SwiperIndicator_Dispose** to dispose of the navigation indicator object pointer to release resources after use, so as to avoid memory leaks. |
 | [void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_dispose) | Disposes of the pointer to the navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setstartposition) | Sets the distance between a navigation indicator and the left edge of the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getstartposition) | Obtains the distance between the navigation indicator and the left edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setstartposition) | Sets the distance between the navigation indicator and the left side of the **Swiper** component. In the language mode displayed from right to left, use this API to set its distance from the right side of the **Swiper** component. |
+| [float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getstartposition) | Obtains the distance between the navigation indicator and the left side of the **Swiper** component. In the language mode displayed from right to left, use the API to obtain its distance from the right side of the **Swiper** component. |
 | [void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_settopposition) | Sets the distance between a navigation indicator and the top edge of the **Swiper** component.|
 | [float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_gettopposition) | Obtains the distance between the navigation indicator and the top edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setendposition) | Sets the distance between a navigation indicator and the right edge of the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getendposition) | Obtains the distance between the navigation indicator and the right edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setbottomposition) | Sets the distance between a navigation indicator and the bottom edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setendposition) | Sets the distance between the navigation indicator and the right side of the **Swiper** component. In the language mode displayed from right to left, use this API to set its distance from the left side of the **Swiper** component. |
+| [float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getendposition) | Obtains the distance between the navigation indicator and the right side of the **Swiper** component. In the language mode displayed from right to left, use this API to obtain its distance from the left side of the Swiper component. |
+| [void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setbottomposition) | Sets the distance between the navigation indicator and the bottom of the **Swiper** component. You can use **OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom** to set whether to ignore the navigation indicator size. |
 | [float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getbottomposition) | Obtains the distance between the navigation indicator and the bottom edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperindicator_setignoresizeofbottom) | Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getignoresizeofbottom) | Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
+| [void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperindicator_setignoresizeofbottom) | Sets whether **OH_ArkUI_SwiperIndicator_SetBottomPosition** ignores the navigation indicator size. The value **1** indicates to ignore the navigation indicator size, and **0** indicates the opposite. |
+| [int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getignoresizeofbottom) | Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size.|
 | [void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setitemwidth) | Sets the width of a dot-style navigation indicator for the **Swiper** component.|
 | [float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getitemwidth) | Obtains the width of the dot-style navigation indicator of the **Swiper** component.|
 | [void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setitemheight) | Sets the height of a dot-style navigation indicator for the **Swiper** component.|
@@ -72,17 +74,17 @@ Defines the enumerations and APIs of the **Swiper** component.
 | [uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getcolor) | Obtains the color of the dot-style navigation indicator of the **Swiper** component.|
 | [void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator, uint32_t selectedColor)](#oh_arkui_swiperindicator_setselectedcolor) | Sets the color of a selected dot-style navigation indicator for the **Swiper** component.|
 | [uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselectedcolor) | Obtains the color of the selected dot-style navigation indicator of the **Swiper** component.|
-| [int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)](#oh_arkui_swiperindicator_setmaxdisplaycount) | Sets the maximum number of dots for a dot-style navigation indicator.|
-| [int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getmaxdisplaycount) | Obtains the maximum number of dots for the dot-style navigation indicator.|
-| [ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()](#oh_arkui_swiperdigitindicator_create) | Creates a digit-style navigation indicator for the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_destroy) | Destroy the pointer to the digit-style navigation indicator of the **Swiper** component.|
+| [int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)](#oh_arkui_swiperindicator_setmaxdisplaycount) | Sets the maximum number of dots for a dot-style navigation indicator. |
+| [int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getmaxdisplaycount) | Obtains the maximum number of dots for the dot-style navigation indicator. |
+| [ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()](#oh_arkui_swiperdigitindicator_create) | Creates a digit-style navigation indicator for the **Swiper** component. After calling this API, you must call **OH_ArkUI_SwiperDigitIndicator_Destroy** to destroy the digit-style navigation indicator object pointer to release resources after use, so as to avoid memory leaks. |
+| [void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_destroy) | Destroys the pointer to the digit-style navigation indicator of the **Swiper** component.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setstartposition) | Sets the start position of a digit-style navigation indicator for the **Swiper** component. This determines the distance from the left edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the right edge of the **Swiper** component.|
 | [float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getstartposition) | Obtains the start position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge of the **Swiper** component.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_settopposition) | Sets the distance from a digit-style navigation indicator to the top edge of the **Swiper** component.|
 | [float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_gettopposition) | Obtains the distance from the digit-style navigation indicator to the top edge of the **Swiper** component.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setendposition) | Sets the end position of a digit-style navigation indicator for the **Swiper** component. This determines the distance from the right edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the left edge of the **Swiper** component.|
 | [float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getendposition) | Obtains the end position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setbottomposition) | Sets the distance from a digit-style navigation indicator to the bottom edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setbottomposition) | Sets the distance from a digit-style navigation indicator to the bottom edge of the **Swiper** component. You can use [OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) to set whether to ignore the navigation indicator size. |
 | [float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getbottomposition) | Obtains the distance from the digit-style navigation indicator to the bottom edge of the **Swiper** component.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t color)](#oh_arkui_swiperdigitindicator_setfontcolor) | Sets the font color of a digit-style navigation indicator for the **Swiper** component.|
 | [uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontcolor) | Obtains the font color of the digit-style navigation indicator for the **Swiper** component.|
@@ -92,27 +94,24 @@ Defines the enumerations and APIs of the **Swiper** component.
 | [float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontsize) | Obtains the font size of the digit-style navigation indicator of the **Swiper** component.|
 | [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)](#oh_arkui_swiperdigitindicator_setselectedfontsize) | Sets the font size of a selected digit-style navigation indicator for the **Swiper** component.|
 | [float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontsize) | Obtains the font size of the selected digit-style navigation indicator of the **Swiper** component.|
-| [ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()](#oh_arkui_swiperarrowstyle_create) | Creates a navigation arrow for the **Swiper** component.|
+| [ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()](#oh_arkui_swiperarrowstyle_create) | Creates a navigation arrow for the **Swiper** component. After calling this API, you must call **OH_ArkUI_SwiperArrowStyle_Destroy** to destroy the navigation arrow object pointer to release resources after use, so as to avoid memory leaks. |
 | [void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_destroy) | Destroys the navigation arrow pointer of the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showBackground)](#oh_arkui_swiperarrowstyle_setshowbackground) | Sets whether to display the background of a navigation arrow for the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showBackground)](#oh_arkui_swiperarrowstyle_setshowbackground) | Sets whether to display the background of a navigation arrow for the **Swiper** component. After the background display is enabled, the value of **arrowSize** will be fixed to 3/4 of the value of **backgroundSize**. |
 | [int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getshowbackground) | Obtains whether the background of the navigation arrow is displayed for the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)](#oh_arkui_swiperarrowstyle_setshowsidebarmiddle) | Sets the position of a navigation arrow for the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)](#oh_arkui_swiperarrowstyle_setshowsidebarmiddle) | Sets the position of a navigation arrow for the **Swiper** component. The mode on both sides of the navigation indicator is suitable for scenarios where navigation areas are concentrated for interaction, and the mode on both sides of the **Swiper** component is suitable for scenarios where quick page turning is required over a large area. |
 | [int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getshowsidebarmiddle) | Obtains the position of the navigation arrow for the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)](#oh_arkui_swiperarrowstyle_setbackgroundsize) | Sets the background size for a navigation arrow of the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)](#oh_arkui_swiperarrowstyle_setbackgroundsize) | Sets the background size for a navigation arrow of the **Swiper** component. When the navigation arrow background is displayed (set through [OH_ArkUI_SwiperArrowStyle_SetShowBackground](#oh_arkui_swiperarrowstyle_setshowbackground)), the value of **arrowSize** will be fixed to 3/4 of the value of **backgroundSize**. |
 | [float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getbackgroundsize) | Obtains the background size of the navigation arrow of the **Swiper** component.|
 | [void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t backgroundColor)](#oh_arkui_swiperarrowstyle_setbackgroundcolor) | Sets the background color for a navigation arrow of the **Swiper** component.|
 | [uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getbackgroundcolor) | Obtains the background color of the navigation arrow of the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)](#oh_arkui_swiperarrowstyle_setarrowsize) | Sets the size for a navigation arrow of the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)](#oh_arkui_swiperarrowstyle_setarrowsize) | Sets the size for a navigation arrow of the **Swiper** component. When the navigation arrow background is displayed (set through **OH_ArkUI_SwiperArrowStyle_SetShowBackground**), the value of **arrowSize** is fixed to 3/4 of the value of **backgroundSize**, and setting **arrowSize** is invalid in this case. |
 | [float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getarrowsize) | Obtains the size of the navigation arrow of the **Swiper** component.|
 | [void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t arrowColor)](#oh_arkui_swiperarrowstyle_setarrowcolor) | Sets the color for a navigation arrow of the **Swiper** component.|
 | [uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getarrowcolor) | Obtains the color of the navigation arrow of the **Swiper** component.|
 | [void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float space)](#oh_arkui_swiperindicator_setspace) | Sets the spacing between navigation indicators.|
 | [float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getspace) | Obtains the spacing between navigation indicators.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) | Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getignoresizeofbottom) | Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_showprevious) | Displays the previous page of the **ArcSwiper** node.|
-| [int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_shownext) | Displays the next page of the **ArcSwiper** node.|
-| [int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)](#oh_arkui_arcswiper_finishanimation) | Finishes the animation being executed by the **ArcSwiper** node.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) | Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size.|
+| [int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getignoresizeofbottom) | Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size.|
 
 ## Enumeration Description
 
@@ -130,9 +129,9 @@ Enumerates arrow styles of the navigation indicator of the **Swiper** component.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation indicator.|
-| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation indicator.|
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation indicator.|
+| ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation indicator in **Swiper**. |
+| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation indicator in **Swiper**. |
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation indicator in **Swiper**. |
 
 ### ArkUI_SwiperNestedScrollMode
 
@@ -203,7 +202,6 @@ Enumerates the navigation indicator types of the **Swiper** component.
 | ARKUI_SWIPER_INDICATOR_TYPE_DOT | Dot type.|
 | ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | Digit type.|
 
-
 ## Function Description
 
 ### OH_ArkUI_SwiperIndicator_Create()
@@ -214,7 +212,7 @@ ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType
 
 **Description**
 
-Creates a navigation indicator for the **Swiper** component.
+Creates a navigation indicator for the **Swiper** component. After calling this API, you must call **OH_ArkUI_SwiperIndicator_Dispose** to dispose of the navigation indicator object pointer to release resources after use, so as to avoid memory leaks.
 
 **Since:** 12
 
@@ -222,7 +220,7 @@ Creates a navigation indicator for the **Swiper** component.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SwiperIndicatorType](capi-swiper-h.md#arkui_swiperindicatortype) type | Type of the navigation indicator.|
+| [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype) type | Type of the navigation indicator. [ARKUI_SWIPER_INDICATOR_TYPE_DOT](#arkui_swiperindicatortype) indicates a dot-style indicator, which applies to general carousel scenarios. [ARKUI_SWIPER_INDICATOR_TYPE_DIGIT](#arkui_swiperindicatortype) indicates a digit-style indicator, which applies to navigation scenarios that require precise display of the current page number and total page count (such as content navigation and step guidance). |
 
 **Returns**
 
@@ -256,7 +254,7 @@ void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator,
 
 **Description**
 
-Sets the distance between a navigation indicator and the left edge of the **Swiper** component.
+Sets the distance between a navigation indicator and the left edge of the **Swiper** component. In the language mode displayed from right to left, use this API to set its distance from the right side of the **Swiper** component.
 
 **Since:** 12
 
@@ -265,7 +263,7 @@ Sets the distance between a navigation indicator and the left edge of the **Swip
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator object.|
-| float value | Distance between the navigation indicator and the left edge of the **Swiper** component. Default value: **0**, in vp.|
+| float value | Distance between the navigation indicator and the left edge of the **Swiper** component. In the language mode displayed from right to left, it indicates the distance from the right side of the **Swiper** component. Default value: **0**. Unit: vp. |
 
 ### OH_ArkUI_SwiperIndicator_GetStartPosition()
 
@@ -275,7 +273,7 @@ float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator
 
 **Description**
 
-Obtains the distance between the navigation indicator and the left edge of the **Swiper** component.
+Obtains the distance between the navigation indicator and the left edge of the **Swiper** component. In the language mode displayed from right to left, use this API to obtain its distance from the right side of the **Swiper** component.
 
 **Since:** 12
 
@@ -342,7 +340,7 @@ void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, f
 
 **Description**
 
-Sets the distance between a navigation indicator and the right edge of the **Swiper** component.
+Sets the distance between the navigation indicator and the right edge of the **Swiper** component. In the language mode displayed from right to left, use this API to set its distance from the left side of the **Swiper** component.
 
 **Since:** 12
 
@@ -351,7 +349,7 @@ Sets the distance between a navigation indicator and the right edge of the **Swi
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator object.|
-| float value | Distance between the navigation indicator and the right edge of the **Swiper** component. Default value: **0**, in vp.|
+| float value | Distance between the navigation indicator and the right edge of the **Swiper** component. In the language mode displayed from right to left, it indicates the distance from the left side of the **Swiper** component. Default value: **0**. Unit: vp. |
 
 ### OH_ArkUI_SwiperIndicator_GetEndPosition()
 
@@ -361,7 +359,7 @@ float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 
 **Description**
 
-Obtains the distance between the navigation indicator and the right edge of the **Swiper** component.
+Obtains the distance from the navigation indicator to the right edge of the **Swiper** component. In the language mode displayed from right to left, use this API to obtain its distance to the left side of the **Swiper** component.
 
 **Since:** 12
 
@@ -385,7 +383,7 @@ void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator
 
 **Description**
 
-Sets the distance between a navigation indicator and the bottom edge of the **Swiper** component.
+Sets the distance between a navigation indicator and the bottom edge of the **Swiper** component. You can use [OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom](#oh_arkui_swiperindicator_setignoresizeofbottom) to set whether to ignore the navigation indicator size.
 
 **Since:** 12
 
@@ -394,7 +392,7 @@ Sets the distance between a navigation indicator and the bottom edge of the **Sw
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator object.|
-| float value | Distance between the navigation indicator and the bottom edge of the **Swiper** component. Default value: **0**, in vp.|
+| float value | Distance between the navigation indicator and the bottom edge of the **Swiper** component, in vp. Default value: **0**. When [OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom](#oh_arkui_swiperindicator_setignoresizeofbottom) is set to **1**, the navigation indicator size is ignored when the distance from the bottom edge is calculated. |
 
 ### OH_ArkUI_SwiperIndicator_GetBottomPosition()
 
@@ -428,7 +426,7 @@ void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indic
 
 **Description**
 
-Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.
+Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the navigation indicator size.
 
 **Since:** 19
 
@@ -437,7 +435,7 @@ Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the 
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator object.|
-| int32_t ignoreSize | Whether to ignore the indicator size when positioning the indicator. The value **1** means to ignore the indicator size when positioning the indicator, and **0** means the opposite. The default value is **0**.|
+| int32_t ignoreSize | Whether to ignore the navigation indicator size. The value **1** indicates to ignore the navigation indicator size, in which case the bottom distance calculation of [OH_ArkUI_SwiperIndicator_SetBottomPosition](#oh_arkui_swiperindicator_setbottomposition) will ignore the navigation indicator size; the value **0** indicates not to ignore. The default value is **0**. |
 
 ### OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom()
 
@@ -447,7 +445,7 @@ int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* in
 
 **Description**
 
-Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.
+Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the navigation indicator size.
 
 **Since:** 19
 
@@ -461,79 +459,7 @@ Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores t
 
 | Type| Description|
 | -- | -- |
-| int32_t | Whether the indicator size is ignored when positioning the indicator.|
-
-### OH_ArkUI_ArcSwiper_ShowPrevious()
-
-```c
-int32_t OH_ArkUI_ArcSwiper_ShowPrevious(ArkUI_NodeHandle node)
-```
-
-**Description**
-
-Displays the previous page of the **ArcSwiper** node.
-
-**Since:** 26.1.0
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Error code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
-
-### OH_ArkUI_ArcSwiper_ShowNext()
-
-```c
-int32_t OH_ArkUI_ArcSwiper_ShowNext(ArkUI_NodeHandle node)
-```
-
-**Description**
-
-Displays the next page of the **ArcSwiper** node.
-
-**Since:** 26.1.0
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Error code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
-
-### OH_ArkUI_ArcSwiper_FinishAnimation()
-
-```c
-int32_t OH_ArkUI_ArcSwiper_FinishAnimation(ArkUI_NodeHandle node)
-```
-
-**Description**
-
-Finishes the animation being executed by the **ArcSwiper** node.
-
-**Since:** 26.1.0
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Error code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Whether the indicator size is ignored.|
 
 ### OH_ArkUI_SwiperIndicator_SetItemWidth()
 
@@ -662,7 +588,7 @@ Obtains the width of the selected dot-style navigation indicator of the **Swiper
 
 | Type| Description|
 | -- | -- |
-| float | Width of the dot-style navigation indicator. The unit is vp.|
+| float | Width of the selected dot-style navigation indicator. Unit: vp. |
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedItemHeight()
 
@@ -705,7 +631,7 @@ Obtains the height of the selected dot-style navigation indicator of the **Swipe
 
 | Type| Description|
 | -- | -- |
-| float | Height of the dot-style navigation indicator. The unit is vp.|
+| float | Height of the selected dot-style navigation indicator. Unit: vp. |
 
 ### OH_ArkUI_SwiperIndicator_SetMask()
 
@@ -724,7 +650,7 @@ Sets whether to enable the mask for a dot-style navigation indicator for the **S
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator object.|
-| int32_t mask | Whether to enable the mask. The value **1** means to enable, and **0** means the opposite.|
+| int32_t mask | Whether to enable the mask. The value **1** means to enable, and **0** means the opposite. Default value: **0**. |
 
 ### OH_ArkUI_SwiperIndicator_GetMask()
 
@@ -748,7 +674,7 @@ Obtains whether the mask is enabled for the dot-style navigation indicator of th
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **1** if the mask is enabled; returns **0** otherwise.|
+| int32_t | Whether the mask is enabled. The value **1** indicates that the mask is enabled, and **0** indicates the opposite. |
 
 ### OH_ArkUI_SwiperIndicator_SetColor()
 
@@ -853,7 +779,7 @@ Sets the maximum number of dots for a dot-style navigation indicator.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator object.|
-| int32_t maxDisplayCount | Maximum number of dots. Value range: [6, 9].|
+| int32_t maxDisplayCount | Maximum number of dots displayed. The valid value range is [6, 9], and the default value is **6**. A smaller value (for example, 6 to 7) arranges the dots more compactly, which is suitable for scenarios with fewer pages and limited interface space. A larger value (for example, 8 to 9) provides wider spacing between the dots and clearer position indication, which is suitable for scenarios with more pages or when clearer position awareness is required. |
 
 **Returns**
 
@@ -911,7 +837,7 @@ void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator
 
 **Description**
 
-Destroy the pointer to the digit-style navigation indicator of the **Swiper** component.
+Destroys the pointer to the digit-style navigation indicator of the **Swiper** component.
 
 **Since:** 19
 
@@ -1058,7 +984,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator*
 
 **Description**
 
-Sets the distance from a digit-style navigation indicator to the bottom edge of the **Swiper** component.
+Sets the distance from a digit-style navigation indicator to the bottom edge of the **Swiper** component. You can use [OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) to set whether to ignore the navigation indicator size.
 
 **Since:** 19
 
@@ -1067,7 +993,7 @@ Sets the distance from a digit-style navigation indicator to the bottom edge of 
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator object.|
-| float value | Distance from the digit-style navigation indicator to the bottom of the **Swiper** component. Default value: **0**, in vp.|
+| float value | Distance from the digit-style navigation indicator to the bottom of the **Swiper** component. Default value: **0**, in vp. When [OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) is set to **1**, the navigation indicator size is ignored when the distance from the bottom is calculated. |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetBottomPosition()
 
@@ -1153,7 +1079,7 @@ Sets the font color of a selected digit-style navigation indicator for the **Swi
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator object.|
-| uint32_t selectedColor | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. Default value: **0xFF182431**.|
+| uint32_t selectedColor | Font color of the selected digit-style navigation indicator, in 0xARGB format, for example, **0xFFFF0000** indicates red. |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor()
 
@@ -1273,7 +1199,7 @@ ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 
 **Description**
 
-Creates a navigation arrow for the **Swiper** component.
+Creates a navigation arrow for the **Swiper** component. After calling this API, you must call **OH_ArkUI_SwiperArrowStyle_Destroy** to destroy the navigation arrow object pointer to release resources after use, so as to avoid memory leaks.
 
 **Since:** 19
 
@@ -1309,7 +1235,7 @@ void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowSt
 
 **Description**
 
-Sets whether to display the background of a navigation arrow for the **Swiper** component.
+Sets whether to display the background of a navigation arrow for the **Swiper** component. After the background display is enabled, the value of **arrowSize** will be fixed to 3/4 of the value of **backgroundSize**.
 
 **Since:** 19
 
@@ -1352,7 +1278,7 @@ void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arro
 
 **Description**
 
-Sets the position of a navigation arrow for the **Swiper** component.
+Sets the position of a navigation arrow for the **Swiper** component. The mode on both sides of the navigation indicator is suitable for scenarios where navigation areas are used for centralized interaction, and the mode on both sides of the **Swiper** component is suitable for scenarios where pages need to be turned quickly within a large area.
 
 **Since:** 19
 
@@ -1395,7 +1321,7 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowSt
 
 **Description**
 
-Sets the background size for a navigation arrow of the **Swiper** component.
+Sets the background size for a navigation arrow of the **Swiper** component. When the navigation arrow background is displayed (set through [OH_ArkUI_SwiperArrowStyle_SetShowBackground](#oh_arkui_swiperarrowstyle_setshowbackground)), the value of **arrowSize** will be fixed to 3/4 of the value of **backgroundSize**.
 
 **Since:** 19
 
@@ -1404,7 +1330,7 @@ Sets the background size for a navigation arrow of the **Swiper** component.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md)* arrowStyle | Pointer to the navigation arrow object.|
-| float backgroundSize | Background size of the navigation arrow, in vp. Default value: 24 vp when displayed on both sides of the navigation indicator and 32 vp when displayed on both sides of the **Swiper** component.|
+| float backgroundSize | Background size of the navigation arrow, in vp. Default value: 24 vp on both sides of the navigation indicator, and 32 vp on both sides of the **Swiper** component. When the background display is enabled through [OH_ArkUI_SwiperArrowStyle_SetShowBackground](#oh_arkui_swiperarrowstyle_setshowbackground), the value of **arrowSize** will be fixed to 3/4 of the value of **backgroundSize**. |
 
 ### OH_ArkUI_SwiperArrowStyle_GetBackgroundSize()
 
@@ -1481,7 +1407,7 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, 
 
 **Description**
 
-Sets the size for a navigation arrow of the **Swiper** component.
+Sets the size for a navigation arrow of the **Swiper** component. When the navigation arrow background is displayed (set through **OH_ArkUI_SwiperArrowStyle_SetShowBackground**), the value of **arrowSize** is fixed to 3/4 of the value of **backgroundSize**, and setting **arrowSize** in this case does not take effect.
 
 **Since:** 19
 
@@ -1610,7 +1536,7 @@ void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndica
 
 **Description**
 
-Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.
+Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the navigation indicator size.
 
 **Since:** 19
 
@@ -1619,7 +1545,7 @@ Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the navigation indicator object.|
-| int32_t ignoreSize | Whether to ignore the indicator size when positioning the indicator. The value **1** means to ignore the indicator size when positioning the indicator, and **0** means the opposite. The default value is **0**.|
+| int32_t ignoreSize | Whether to ignore the navigation indicator size. The value **1** indicates to ignore the navigation indicator size, in which case the bottom distance calculation of [OH_ArkUI_SwiperDigitIndicator_SetBottomPosition](#oh_arkui_swiperdigitindicator_setbottomposition) will ignore the navigation indicator size; **0** indicates not to ignore. The default value is **0**. |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom()
 
@@ -1629,7 +1555,7 @@ int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitInd
 
 **Description**
 
-Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.
+Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the navigation indicator size.
 
 **Since:** 19
 
@@ -1637,10 +1563,10 @@ Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API igno
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the navigation indicator object.|
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator object. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Whether the indicator size is ignored when positioning the indicator.|
+| int32_t | Whether the navigation indicator size is ignored. The value **1** indicates the navigation indicator size is ignored, and **0** indicates the opposite. |

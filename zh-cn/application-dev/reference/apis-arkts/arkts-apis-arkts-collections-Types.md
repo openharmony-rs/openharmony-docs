@@ -23,7 +23,7 @@ ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自�
 
 | 类型 | 说明   |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | 所有Sendable类型的父类型。 |
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | 所有Sendable类型的父类型。 |
 
 ## ArrayFromMapFn<sup>18+</sup>
 type ArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType
@@ -93,6 +93,7 @@ ArkTS Array归约函数类型，被Array类的[reduceRight](arkts-apis-arkts-col
 | 类型   | 说明                          |
 | ------ | --------------------------- |
 | AccType | 归约函数的结果，该结果会作为下一次调用ArrayReduceCallback时的previousValue参数。 |
+
 ## ArrayElementPredicateFn
 
 type ArrayElementPredicateFn\<ElementType> = (value: ElementType) => boolean

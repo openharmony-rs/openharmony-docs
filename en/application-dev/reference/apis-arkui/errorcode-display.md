@@ -1,10 +1,11 @@
 # Display Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-08-29T09:19:07.341Z pushedAt=2026-08-31T02:33:52.326Z -->
 
 > **NOTE**
 >
@@ -52,7 +53,7 @@ This error code is reported when the display manager service is abnormal.
 2. The bottom-layer graphics synthesis and rendering are abnormal.
 
 **Solution**<br>
-Try again later or restart the device.
+The system service is working abnormally. Try again later or restart the device.
 
 ## 1400004 Parameter Error
 **Error Message**<br>

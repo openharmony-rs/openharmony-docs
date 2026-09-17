@@ -547,7 +547,7 @@ try {
   console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“.myts”，“general.plain-text”查不到预置数据类型则按返回根据入参信息生成的动态类型。
+// 根据“.myts”，“general.plain-text”查不到预置数据类型则返回根据入参信息生成的动态类型。
 try {
   let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
   if (typeId) {
@@ -609,7 +609,7 @@ try {
   console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“image/myimage”, “general.image”查不到预置数据类型则按返回根据入参信息生成的动态类型。
+// 根据“image/myimage”, “general.image”查不到预置数据类型则返回根据入参信息生成的动态类型。
 try {
   let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
   if (typeId) {
@@ -671,7 +671,7 @@ try {
   console.error(`getUniformDataTypesByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
-// 根据“.myts”，“general.plain-text”查不到预置数据类型则按返回根据入参信息生成的动态类型列表。
+// 根据“.myts”，“general.plain-text”查不到预置数据类型则返回根据入参信息生成的动态类型列表。
 try {
   let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension('.myts', 'general.plain-text');
   for (let flexTypeId of flexTypeIds) {

@@ -28,4 +28,4 @@ typedef struct NetConn_TraceRouteOption {...} NetConn_TraceRouteOption
 | 名称 | 描述 |
 | -- | -- |
 | uint8_t maxJumpNumber | 探测结果最大跳数，需要和TraceRouteInfo设置一致，最大可设置30跳，默认为30跳。 |
-| NetConn_PacketsType packetsType | 探测包协议类型，默认为NETCONN_PACKETS_ICMP。 |
+| [NetConn_PacketsType](capi-net-connection-type-h.md#netconn_packetstype) packetsType | 探测包协议类型，默认为NETCONN_PACKETS_ICMP。 |

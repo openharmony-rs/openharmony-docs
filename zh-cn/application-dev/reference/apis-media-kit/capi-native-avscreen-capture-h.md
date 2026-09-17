@@ -207,7 +207,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StartScreenRecording(struct OH_AV
 
 启动录屏，调用此接口，可保存录屏文件。与OH_AVScreenCapture_StopScreenRecording配合使用。
 
-录屏存文件场景需要再初始化时配置合法的视频编码参数、音频编码参数等，详见[OH_AVScreenCapture_Init](#oh_avscreencapture_init)。
+录屏存文件场景需要在初始化时配置合法的视频编码参数、音频编码参数等，详见[OH_AVScreenCapture_Init](#oh_avscreencapture_init)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -1286,6 +1286,10 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCaptureAreaHighlight(struct OH
 设置屏幕捕获区域高亮模式。
 
 在录屏过程中，可对指定的捕获区域进行高亮显示，以区分捕获区域与非捕获区域的视觉效果，帮助用户识别当前录屏范围。适用于需要在录屏过程中突出显示捕获区域边界的场景，如多区域录制时帮助用户识别当前录制范围，或教学演示中标识重点操作区域。
+
+> **说明：**
+>
+> 此功能只在[OH_CaptureMode](capi-native-avscreen-capture-base-h.md#oh_capturemode)设置为OH_CAPTURE_SPECIFIED_WINDOW指定窗口进行录制，或使用Picker选择窗口进行录制时生效。
 
 **起始版本：** 22
 

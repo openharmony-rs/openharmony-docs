@@ -2573,7 +2573,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeGalleryFormInfoDemo');
   let info: photoAccessHelper.GalleryFormInfo = {
-    // formId是一个由纯数字组成的字符串，移除卡片时assertUris不填。
+    // formId是一个由纯数字组成的字符串，移除卡片时assetUris不填。
     formId: "20230116123"
   }
 
@@ -2619,7 +2619,7 @@ getAlbumsByIds(albumIds: Array&lt;number&gt;): Promise&lt;Map&lt;number, Album&g
 | 201      | Permission denied.                                           |
 | 202      | Called by non-system application.                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 14000011       | Internal system error.         |
+| 14000011       | System inner fail.         |
 
 **示例：**
 
@@ -2879,11 +2879,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2938,11 +2938,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2999,11 +2999,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -3057,11 +3057,11 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -7402,8 +7402,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
 | displayName | string | 否 | 否 | 图片资产的显示名称。|
 | size | number  | 否 | 否 | 图片资产文件大小，单位：字节（Byte）。|
-| dateAdded | number | 否 | 否 | 添加了图片资产数据，单位：秒（s）。|
-| dateModified | number | 否 | 否 | 更改了图片资产数据，单位：秒（s）。|
+| dateAdded | number | 否 | 否 | 添加图片资产数据的时间戳，单位：秒（s）。|
+| dateModified | number | 否 | 否 | 更改图片资产数据的时间戳，单位：秒（s）。|
 | duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒（ms）。|
 | width | number | 否 | 否 | 图片资产的像素宽度，单位：像素（px）。|
 | height | number | 否 | 否 | 图片资产的像素高度，单位：像素（px）。|
@@ -13088,7 +13088,7 @@ onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): 
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changeData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -13612,8 +13612,10 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 | SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  慢动作视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与CINEMATIC_VIDEO相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
 
 ## NotifyChangeType<sup>20+</sup>
 
@@ -13753,6 +13755,7 @@ async function example(context: Context) {
 | EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。 |
 | IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
 | FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0 |
+| CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.1.0 |
 
 ## AlbumOperationType
 
@@ -13788,7 +13791,7 @@ async function example(context: Context) {
 | --- | --- | --- | --- | --- |
 | attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。|
 | type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。 |
-| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。|
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20。<br>在API版本26.0.0，数组中的每个字符串长度不超过500个字符。<br>从API版本26.1.0开始，数组中的每个字符串长度不超过8192个字符。|
 
 ## AlbumAttributeInfo
 
@@ -14489,6 +14492,7 @@ try {
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 | HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  删除原文件在家庭存储设备的本地元数据和缩略图。 |
+| SHARE_RETAIN_FORCE |  2 |  删除共享相册的本地元数据、缩略图和原图。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 

@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceSettings（设备设置管理）
+# @ohos.enterprise.deviceSettings (设备设置管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -28,13 +28,15 @@ setValue(admin: Want, item: string, value: string): void
 
 设置设备策略。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -61,6 +63,7 @@ setValue(admin: Want, item: string, value: string): void
 ```ts
 import { deviceSettings } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
+import { inputMethod } from '@kit.IMEKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -68,12 +71,58 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+// 设置设备息屏时间为3秒
 try {
   // 需根据实际情况进行替换
   deviceSettings.setValue(wantTemp, 'screenOff', '3000');
   console.info(`Succeeded in setting screen off time.`);
 } catch (err) {
   console.error(`Failed to set screen off time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置系统时间，value为要设置的系统时间（单位：毫秒）
+try {
+  // 需根据实际情况进行替换
+  deviceSettings.setValue(wantTemp, 'dateTime', '1698768000000');
+  console.info(`Succeeded in setting date time.`);
+} catch (err) {
+  console.error(`Failed to set date time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置设备电源策略，超时灭屏后自动进入睡眠，延迟时间为60000毫秒（该能力仅支持PC/2in1设备）
+try {
+  // 需根据实际情况进行替换
+  let powerPolicyString: string = JSON.stringify({
+    powerPolicyAction: 1,
+    delayTime: 60000
+  });
+  let value: string = JSON.stringify({
+    powerScene: 0,
+    powerPolicy: powerPolicyString
+  });
+  deviceSettings.setValue(wantTemp, 'powerPolicy', value);
+  console.info(`Succeeded in setting power policy.`);
+} catch (err) {
+  console.error(`Failed to set power policy. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置护眼模式为全天开启，value可设置为on或off
+try {
+  // 需根据实际情况进行替换
+  deviceSettings.setValue(wantTemp, 'eyeComfort', 'on');
+  console.info(`Succeeded in setting eye comfort.`);
+} catch (err) {
+  console.error(`Failed to set eye comfort. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 设置默认输入法，value为输入法应用包名
+try {
+  // 需根据实际情况进行替换
+  let currentInputMethod: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod();
+  deviceSettings.setValue(wantTemp, 'defaultInputMethod', currentInputMethod.name);
+  console.info(`Succeeded in setting default input method.`);
+} catch (err) {
+  console.error(`Failed to set default input method. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -125,12 +174,31 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+// 获取设备息屏时间，返回设备息屏时间（单位：毫秒）
 try {
   // 参数需根据实际情况进行替换
   let result: string = deviceSettings.getValue(wantTemp, 'screenOff');
   console.info(`Succeeded in getting screen off time, result : ${result}`);
 } catch (err) {
   console.error(`Failed to get screen off time. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 获取设备电源策略（仅支持PC/2in1设备），返回JSON字符串{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = deviceSettings.getValue(wantTemp, 'powerPolicy');
+  console.info(`Succeeded in getting power policy, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
+}
+
+// 获取护眼模式开关状态，返回值为on、off或unknown
+try {
+  // 参数需根据实际情况进行替换
+  let result: string = deviceSettings.getValue(wantTemp, 'eyeComfort');
+  console.info(`Succeeded in getting eye comfort, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get eye comfort. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -140,13 +208,15 @@ setHomeWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 
 设置桌面壁纸，使用Promise异步回调。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -207,13 +277,15 @@ setUnlockWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 
 设置锁屏壁纸，使用Promise异步回调。企业设备管理应用可通过此接口统一设置企业设备的锁屏壁纸，用于企业形象展示或安全管控等场景。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -577,13 +649,15 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
 **起始版本：** 26.0.0
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 

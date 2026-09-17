@@ -345,15 +345,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.kernel.ALLOW_WRITABLE_CODE_MEMORY
 
-允许应用申请可写可执行匿名内存。
-
-<!--RP10-->
-针对使用跨平台框架开发的应用，用于应用申请可写可执行的匿名内存。当前仅平板、2in1设备应用可申请此权限。
-<!--RP10End-->
+允许应用申请可写可执行匿名内存，该能力主要用于为应用自带引擎（如 JS 引擎、游戏脚本引擎等）提供即时编译（JIT）能力，提升代码执行效率。
+ 
+<!--RP10--><!--RP10End-->
 
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+ 
+<!--RP108--><!--RP108End-->
 
 **起始版本**：14
 
@@ -1651,5 +1653,59 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Car
+
+**起始版本**：26.1.0
+
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+
+允许应用在开发者模式下且本地调试时使用aa工具以调试应用。
+
+<!--RP107--><!--RP107End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
+## ohos.permission.kernel.ALLOW_PTRACE_READ
+
+允许应用通过PTRACE读能力获取应用内进程的寄存器及内存信息。
+
+<!--RP110--><!--RP110End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+## ohos.permission.GET_ALL_BUNDLE_INFO
+ 
+允许应用获取设备已安装的应用列表。
+ 
+<!--RP111--><!--RP111End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：用户授权（user_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.1.0
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+允许应用进入考试场景，系统服务将弹窗提醒用户进入考试模式后会限制系统能力，防止用户考试作弊或泄密，在保障考试公平的同时保护用户权益。
+
+<!--RP112--><!--RP112End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.1.0

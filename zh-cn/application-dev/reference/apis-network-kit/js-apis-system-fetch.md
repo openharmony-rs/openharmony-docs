@@ -7,8 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+本模块提供网络数据请求能力，可通过URL发起HTTP/HTTPS请求并获取服务器返回的数据，支持自定义请求头、请求方法和响应类型，适用于应用需要访问网络资源或与后端服务交互的场景，可满足应用内网络通信需求。
+
 > **说明：**
-> - 从API Version 6开始，该接口不再维护，推荐使用新接口[@ohos.net.http](js-apis-http.md)。
+> - 从API Version 6开始，该接口不再维护，推荐使用新接口[@ohos.net.http (数据请求)](js-apis-http.md)。
 > 
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -38,7 +40,7 @@ fetch(options:{
 
 通过网络获取数据。
 
-**系统能力：** SystemCapability.Communication.NetStack 
+**系统能力**：SystemCapability.Communication.NetStack 
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -63,7 +65,7 @@ fetch(options:{
 
 ## FetchResponse<sup>3+</sup>
 
-**系统能力：** SystemCapability.Communication.NetStack 
+**系统能力**：SystemCapability.Communication.NetStack 
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -91,7 +93,7 @@ fetch.fetch({
     console.info(JSON.stringify(response));
   },
   fail: (data: Object, code) => {
-    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: =' + code);
+    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: ' + code);
   }
 });
 ```

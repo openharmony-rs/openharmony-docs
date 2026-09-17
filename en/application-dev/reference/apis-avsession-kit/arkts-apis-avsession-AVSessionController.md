@@ -1,8 +1,8 @@
 # Interface (AVSessionController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -44,7 +44,6 @@ struct Index {
   private sessionId: string = "";
   private avsessionController?: avSession.AVSessionController;
   private currentAVSession?: avSession.AVSession;
-  context = this.getUIContext();
 
   aboutToAppear(): void {
 
@@ -317,7 +316,7 @@ avcontroller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
 
 getAVQueueItems(callback: AsyncCallback\<Array\<AVQueueItem>>): void
 
-Obtains the information related to the items in the playlist. This API uses an asynchronous callback to return the result.
+Obtains the information related to the items in the queue. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -595,7 +594,7 @@ avcontroller.sendAVKeyEvent(event, (err: BusinessError) => {
 
 getLaunchAbility(): Promise\<WantAgent>
 
-Obtains the WantAgent object saved by the application in the session. This API uses a promise to return the result.
+Obtains the **WantAgent** object saved by the application in the session. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -620,7 +619,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-avcontroller.getLaunchAbility().then((agent: object) => {
+import { WantAgent } from '@kit.AbilityKit';
+
+avcontroller.getLaunchAbility().then((agent: WantAgent) => {
   console.info(`Succeeded in getting launch ability: ${agent}`);
 });
 ```
@@ -629,7 +630,7 @@ avcontroller.getLaunchAbility().then((agent: object) => {
 
 getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 
-Obtains the WantAgent object saved by the application in the session. This API uses an asynchronous callback to return the result.
+Obtains the **WantAgent** object saved by the application in the session. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -652,7 +653,9 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-avcontroller.getLaunchAbility((err: BusinessError, agent: object) => {
+import { WantAgent } from '@kit.AbilityKit';
+
+avcontroller.getLaunchAbility((err: BusinessError, agent: WantAgent) => {
   if (err) {
     console.error(`Failed to get launch ability, code: ${err.code}, message: ${err.message}`);
     return;
@@ -976,10 +979,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600102  | The session does not exist.     |
-| 6600103  | The session controller does not exist.   |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 | 6600105  | Invalid session command. |
-| 6600106  | The session is not activated.                |
+| 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |
 
 **Example**
@@ -1074,8 +1077,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------- |
 | 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.|
 | 6600101  | Session service exception. |
-| 6600102  | The session does not exist.     |
-| 6600103  | The session controller does not exist.   |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 | 6600105  | Invalid session command. |
 | 6600106  | The session is not activated. |
 | 6600107  | Too many commands or events. |
@@ -1123,8 +1126,8 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
-| 6600102  | The session does not exist.                                  |
-| 6600103  | The session controller does not exist.                       |
+| 6600102  | The session does not exist. |
+| 6600103  | The session controller does not exist. |
 
 **Example**
 
@@ -1139,7 +1142,6 @@ struct Index {
   private sessionId: string = "";
   private controller: avSession.AVSessionController | undefined = undefined;
   private currentAVSession?: avSession.AVSession;
-  context = this.getUIContext();
 
   aboutToAppear(): void {
     avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio")
@@ -1148,11 +1150,8 @@ struct Index {
         this.sessionId = this.currentAVSession.sessionId;
         this.controller = await this.currentAVSession.getController();
         console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
+        (this.controller as avSession.AVSessionController).sendCustomData({ customData: "This is my data" });
       });
-
-    if (this.controller !== undefined) {
-      (this.controller as avSession.AVSessionController).sendCustomData({ customData: "This is my data" })
-    }
   }
 
   build() {
@@ -1210,7 +1209,6 @@ struct Index {
   private sessionId: string = "";
   private controller: avSession.AVSessionController | undefined = undefined;
   private currentAVSession?: avSession.AVSession;
-  context = this.getUIContext();
 
   aboutToAppear(): void {
 
@@ -1220,12 +1218,10 @@ struct Index {
         this.sessionId = this.currentAVSession.sessionId;
         this.controller = await this.currentAVSession.getController();
         console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
+        (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
+          console.info(`Succeeded in getting extras: ${extras}`);
+        });
       });
-    if (this.controller !== undefined) {
-      (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
-        console.info(`Succeeded in getting extras: ${extras}`);
-      });
-    }
   }
 
   build() {
@@ -1314,7 +1310,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-let controller: avSession.AVSessionController | ESObject;
+let controller: avSession.AVSessionController | undefined;
 const COMMON_COMMAND_STRING_1 = 'AUDIO_GET_VOLUME';
 const COMMON_COMMAND_STRING_2 = 'AUDIO_GET_AVAILABLE_DEVICES';
 const COMMON_COMMAND_STRING_3 = 'AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO';
@@ -1411,7 +1407,7 @@ Unsubscribes from the change events of the desktop lyrics enabling state. This A
 
 | Name| Type                  | Mandatory| Description                           |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<boolean> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>This parameter is optional. If it is not specified, the change events for the desktop lyrics enabling state of all sessions are unsubscribed.|
+| callback   | Callback\<boolean> | No  | Callback used to return the result. The value **true** indicates that the desktop lyrics feature is enabled, and **false** indicates the opposite.<br>This parameter is optional. If it is not specified, the change events for the desktop lyrics enabling state of all sessions are unsubscribed.|
 
 **Error codes**
 
@@ -1549,7 +1545,7 @@ Unsubscribes from the change events of the desktop lyrics visibility. This API u
 
 | Name| Type                  | Mandatory| Description                           |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<boolean> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>This parameter is optional. If it is not specified, the change events of all sessions' desktop lyrics visibility are unsubscribed.|
+| callback   | Callback\<boolean> | No  | Callback used to return the result. The value **true** indicates that the desktop lyrics are displayed, and **false** indicates the opposite.<br>This parameter is optional. If it is not specified, the change events of all sessions' desktop lyrics visibility are unsubscribed.|
 
 **Error codes**
 
@@ -1580,7 +1576,7 @@ Sets the desktop lyric state of the current session. This API uses a promise to 
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| state | [DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23) | Yes  | Desktop lyrics state.|
+| state | [DesktopLyricState](arkts-apis-avsession-i.md#desktoplyricstate23) | Yes  | Desktop lyrics state.|
 
 **Return value**
 
@@ -1623,7 +1619,7 @@ Obtains the desktop lyric state of the current session. This API uses a promise 
 
 | Type          | Description                         |
 | -------------- | ----------------------------- |
-| Promise\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise used to return the state of the desktop lyric.|
+| Promise\<[DesktopLyricState](arkts-apis-avsession-i.md#desktoplyricstate23)> |  Promise used to return the state of the desktop lyric.|
 
 **Error codes**
 
@@ -1657,7 +1653,7 @@ Subscribes to the change events of the desktop lyrics state. This API uses an as
 
 | Name| Type                  | Mandatory| Description                           |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | Yes  | Callback used to return the desktop lyric state.|
+| callback   | Callback\<[DesktopLyricState](arkts-apis-avsession-i.md#desktoplyricstate23)> | Yes  | Callback used to return the desktop lyric state.|
 
 **Error codes**
 
@@ -1690,7 +1686,7 @@ Unsubscribes from the change events of the desktop lyrics state. This API uses a
 
 | Name| Type                  | Mandatory| Description                           |
 | ------ | ---------------------- | ---- | -------------------------------- |
-| callback   | Callback\<[DesktopLyricState](./arkts-apis-avsession-i.md#desktoplyricstate23)> | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>This parameter is optional. If it is not specified, the change events of all sessions' desktop lyrics state are unsubscribed.|
+| callback   | Callback\<[DesktopLyricState](arkts-apis-avsession-i.md#desktoplyricstate23)> | No  | Callback used to return the desktop lyrics state.<br>This parameter is optional. If it is not specified, the change events of all sessions' desktop lyrics state are unsubscribed.|
 
 **Error codes**
 
@@ -1724,8 +1720,8 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'metadataChange'** is triggered when the session metadata requires an update.<br>"Requires an update" means the corresponding property value has been reset, regardless of whether the new value matches the old one.|
-| filter   | Array\<keyof AVMetadata>\|'all' | Yes  |**'all'** indicates that any metadata field change will trigger the event, and **Array\<keyof AVMetadata>** indicates that only changes to the listed metadata field will trigger the event.|
-| callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | Yes  | Callback used for subscription. The **data** parameter in the callback indicates the metadata that requires an update, but not the complete current metadata set.  |
+| filter   | Array\<keyof AVMetadata>\|'all' | Yes  |**Array\<keyof AVMetadata>** indicates monitoring for updates to fields in the array.<br>The value **'all'** indicates monitoring for updates to all metadata fields.|
+| callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void                    | Yes  | Callback used to return the result. The **data** parameter in the callback indicates the changed metadata. It contains only the changed metadata attributes and does not represent the complete current metadata set.  |
 
 **Error codes**
 
@@ -1764,8 +1760,8 @@ Unsubscribes from metadata change events. If a callback is specified, the corres
 
 | Name  | Type                                              | Mandatory| Description                                                   |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------ |
-| type     | string                                           | Yes  | Event type, which is **'metadataChange'** in this case.        |
-| callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void        | No  | Callback used for subscription. The **data** parameter in the callback indicates the metadata that requires an update, but not the complete current metadata set.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                        |
+| type     | string                                           | Yes  | Type of the event to be unsubscribed from. Currently, only the **'metadataChange'** event is supported.        |
+| callback | (data: [AVMetadata](arkts-apis-avsession-i.md#avmetadata10)) => void        | No  | Callback used to return the result. The **data** parameter in the callback indicates the changed metadata. It contains only the changed metadata attributes and does not represent the complete current metadata set.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                        |
 
 **Error codes**
 
@@ -1800,7 +1796,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'playbackStateChange'** is triggered when the playback state requires an update.<br>"Requires an update" means the corresponding property value has been reset, regardless of whether the new value matches the old one.|
-| filter   | Array\<keyof AVPlaybackState>\|'all' | Yes  | The value **'all'** indicates monitoring for updates to all playback state fields,<br>while **Array\<keyof AVPlaybackstate>** indicates monitoring for updates to fields in the array.|
+| filter   | Array\<keyof AVPlaybackState>\|'all' | Yes  | **Array\<keyof AVPlaybackState>** indicates monitoring for updates to fields in the array.<br>The value **'all'** indicates monitoring for updates to all playback state fields,|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void       | Yes  | Callback function, where the **state** parameter indicates the playback state that requires an update, but not the complete current playback state set.|
 
 **Error codes**
@@ -1839,8 +1835,8 @@ Unsubscribes from playback state change events. If a callback is specified, the 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'playbackStateChange'** in this case.   |
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | No  | Callback function, where the **state** parameter indicates the playback state that requires an update, but not the complete current playback state set.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                    |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'playbackStateChange'** event is supported.   |
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | No  | Callback function, where the **state** parameter indicates the playback state that requires an update, but not the complete current playback state set.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                    |
 
 **Error codes**
 
@@ -1875,8 +1871,8 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'callMetadataChange'** is triggered when the call metadata changes.|
-| filter   |  Array\<keyof CallMetadata>\|'all'| Yes  |**'all'** indicates that any call metadata field change will trigger the event, and **Array<keyof CallMetadata\>** indicates that only changes to the listed metadata field will trigger the event. \| 'all'.|
-| callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>   | Yes  | Callback used for subscription. The **callmetadata** parameter in the callback indicates the changed call metadata.|
+| filter   |  Array\<keyof CallMetadata>\|'all'| Yes  |**Array<keyof CallMetadata\>** indicates monitoring for updates to fields in the array.<br>The value **'all'** indicates monitoring for updates to all call metadata fields.|
+| callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>   | Yes  | Callback used to return the result. The **callmetadata** parameter in the callback indicates the changed call metadata.|
 
 **Error codes**
 
@@ -1914,8 +1910,8 @@ Unsubscribes from call metadata change events. If a callback is specified, the c
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'callMetadataChange'** in this case.   |
-| callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>       | No  | Callback used for unsubscription. The **calldata** parameter in the callback indicates the changed call metadata.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.     |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'callMetadataChange'** event is supported.   |
+| callback | Callback<[CallMetadata](arkts-apis-avsession-i.md#callmetadata11)\>       | No  | Callback used to return the result. The **calldata** parameter in the callback indicates the changed call metadata.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.     |
 
 **Error codes**
 
@@ -1950,7 +1946,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description     |
 | --------| -----------|-----|------------|
 | type     | string    | Yes  | Event type. The event **'callStateChange'** is triggered when the call state changes.|
-| filter   |  Array\<keyof AVCallState>\|'all' | Yes  | **'all'** indicates that any call state field change will trigger the event, and **Array\<keyof AVCallState>** indicates that only changes to the listed call state field will trigger the event. \| 'all'.|
+| filter   |  Array\<keyof AVCallState>\|'all' | Yes  | **Array\<keyof AVCallState>** indicates monitoring for updates to fields in the array.<br>The value **'all'** indicates monitoring for updates to all call state fields.|
 | callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>       | Yes  | Callback used to return the result, where the **callstate** parameter indicates the new call state.|
 
 **Error codes**
@@ -1989,8 +1985,8 @@ Unsubscribes from call state change events. If a callback is specified, the corr
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'callStateChange'** in this case.   |
-| callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>           | No  | Callback used to return the result, where the **callstate** parameter indicates the new call state.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.     |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'callStateChange'** event is supported.   |
+| callback | Callback<[AVCallState](arkts-apis-avsession-i.md#avcallstate11)\>           | No  | Callback used to return the result, where the **callstate** parameter indicates the new call state.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.     |
 
 **Error codes**
 
@@ -2025,7 +2021,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type      | Mandatory| Description                                                        |
 | -------- | ---------- | ---- | ------------------------------------------------------------ |
 | type     | string     | Yes  | Event type. Event **'sessionDestroy'** is triggered when a session is destroyed.|
-| callback | () => void | Yes  | Callback used to return the result. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                 |
+| callback | () => void | Yes  | Callback invoked when a session is destroyed.                 |
 
 **Error codes**
 
@@ -2059,8 +2055,8 @@ Unsubscribes from session destruction events. If a callback is specified, the co
 
 | Name  | Type      | Mandatory| Description                                                     |
 | -------- | ---------- | ---- | ----------------------------------------------------- |
-| type     | string     | Yes  | Event type, which is **'sessionDestroy'** in this case.        |
-| callback | () => void | No  | Callback used to return the result. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                                              |
+| type     | string     | Yes  | Type of the event to be unsubscribed from. Currently, only the **'sessionDestroy'** event is supported.        |
+| callback | () => void | No  | Callback used to return the result, which is the same as that registered using the **on** method.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                                              |
 
 **Error codes**
 
@@ -2129,8 +2125,8 @@ Unsubscribes from session activation state change events. If a callback is speci
 
 | Name  | Type                       | Mandatory| Description                                                     |
 | -------- | --------------------------- | ---- | ----------------------------------------------------- |
-| type     | string                      | Yes  | Event type, which is **'activeStateChange'** in this case.     |
-| callback | (isActive: boolean) => void | No  | Callback used to return the result. The **isActive** parameter in the callback specifies whether the session is activated. **true** if activated, **false** otherwise.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                  |
+| type     | string                      | Yes  | Type of the event to be unsubscribed from. Currently, only the **'activeStateChange'** event is supported.     |
+| callback | (isActive: boolean) => void | No  | Callback used to return the result. The **isActive** parameter in the callback specifies whether the session is activated. **true** if activated, **false** otherwise.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                  |
 
 **Error codes**
 
@@ -2200,8 +2196,8 @@ Unsubscribes from valid command change events. If a callback is specified, the c
 
 | Name  | Type                                                        | Mandatory| Description                                                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'validCommandChange'** in this case.        |
-| callback | (commands: Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>) => void | No  | Callback used to return the result. The **commands** parameter in the callback is a set of valid commands.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.         |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'validCommandChange'** event is supported.        |
+| callback | (commands: Array<[AVControlCommandType](arkts-apis-avsession-t.md#avcontrolcommandtype10)\>) => void | No  | Callback used to return the result. The **commands** parameter in the callback is a set of valid commands.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.         |
 
 **Error codes**
 
@@ -2236,7 +2232,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                  | Yes  | Event type. The event **'outputDeviceChange'** is triggered when the output device changes.|
-| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback used for subscription. The **device** parameter in the callback indicates the output device information.                        |
+| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback used to return the result. The **device** parameter in the callback indicates the output device information.                        |
 
 **Error codes**
 
@@ -2270,8 +2266,8 @@ Unsubscribes from output device change events. If a callback is specified, the c
 
 | Name  | Type                                                   | Mandatory| Description                                                     |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------ |
-| type     | string                                                  | Yes  | Event type, which is **'outputDeviceChange'** in this case.     |
-| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | No  | Callback function, where the **device** parameter specifies the output device information.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                        |
+| type     | string                                                  | Yes  | Type of the event to be unsubscribed from. Currently, only the **'outputDeviceChange'** event is supported.     |
+| callback | (state: [ConnectionState](arkts-apis-avsession-e.md#connectionstate10), device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | No  | Callback function, where the **device** parameter specifies the output device information.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                        |
 
 **Error codes**
 
@@ -2306,7 +2302,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'sessionEvent'** is triggered when the session event changes.|
-| callback | (sessionEvent: string, args: {[key: string]: Object}) => void  | Yes  | Callback used for subscription. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.|
+| callback | (sessionEvent: string, args: {[key: string]: Object}) => void  | Yes  | Callback used to return the result. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.|
 
 **Error codes**
 
@@ -2341,7 +2337,7 @@ Unsubscribes from session events. If a callback is specified, the corresponding 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | Yes  | Event type, which is **'sessionEvent'** in this case.   |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'sessionEvent'** event is supported.   |
 | callback | (sessionEvent: string, args: {[key: string]: Object}) => void     | No  | Callback used for unsubscription. **sessionEvent** in the callback indicates the name of the session event that changes, and **args** indicates the parameters carried in the event.|
 
 **Error codes**
@@ -2377,7 +2373,7 @@ Multiple callbacks can be registered for this event. To ensure only the latest c
 | Name  | Type                                                  | Mandatory| Description                                                                        |
 | -------- | ----------------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
 | type     | string                                                | Yes  | Event type. The event **'queueItemsChange'** is triggered when one or more items in the playlist changes.|
-| callback | (items: Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>) => void  | Yes  | Callback used for subscription. The **items** parameter in the callback indicates the changed items in the playlist.                           |
+| callback | (items: Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>) => void  | Yes  | Callback used to return the result. The **items** parameter in the callback indicates the changed items in the playlist.                           |
 
 **Error codes**
 
@@ -2411,8 +2407,8 @@ Unsubscribes from playback item change events. If a callback is specified, the c
 
 | Name   | Type                                                | Mandatory| Description                                                                                               |
 | -------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------------------------------- |
-| type     | string                                               | Yes  | Event type, which is **'queueItemsChange'** in this case.                                                    |
-| callback | (items: Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>) => void | No  | Callback used for unsubscription. The **items** parameter in the callback indicates the changed items in the playlist.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                                               | Yes  | Type of the event to be unsubscribed from. Currently, only the **'queueItemsChange'** event is supported.                                                    |
+| callback | (items: Array<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)\>) => void | No  | Callback used for unsubscription. The **items** parameter in the callback indicates the changed items in the playlist.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -2445,7 +2441,7 @@ Subscribes to playlist name change events. This API is called by the controller.
 | Name  | Type                    | Mandatory| Description                                                                            |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------- |
 | type     | string                  | Yes  | Event type. The event **'queueTitleChange'** is triggered when the playlist name changes.|
-| callback | (title: string) => void | Yes  | Callback used for subscription. The **title** parameter in the callback indicates the changed playlist name.                               |
+| callback | (title: string) => void | Yes  | Callback used to return the result. The **title** parameter in the callback indicates the changed playlist name.                               |
 
 **Error codes**
 
@@ -2479,8 +2475,8 @@ Unsubscribes from playlist name change events. If a callback is specified, the c
 
 | Name   | Type                   | Mandatory| Description                                                                                                   |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
-| type     | string                  | Yes  | Event type, which is **'queueTitleChange'** in this case.                                                        |
-| callback | (title: string) => void | No  | Callback used for unsubscription. The **items** parameter in the callback indicates the changed playlist name.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                  | Yes  | Type of the event to be unsubscribed from. Currently, only the **'queueTitleChange'** event is supported.                                                        |
+| callback | (title: string) => void | No  | Callback used for unsubscription. The **title** parameter in the callback indicates the changed playlist name.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -2513,7 +2509,7 @@ Subscribes to custom media packet change events. This API is called by the contr
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The event **'extrasChange'** is triggered when the provider sets a custom media packet.|
-| callback |  (extras: {[key: string]: Object}) => void   | Yes  | Callback used for subscription. The **extras** parameter in the callback indicates the custom media packet set by the provider. This packet is the same as that set in **dispatchSessionEvent**.|
+| callback |  (extras: {[key: string]: Object}) => void   | Yes  | Callback used to return the result. The **extras** parameter in the callback indicates the custom media packet set by the provider. This packet is the same as that set in **dispatchSessionEvent**.|
 
 **Error codes**
 
@@ -2547,8 +2543,8 @@ Unsubscribes from custom media packet change events. If a callback is specified,
 
 | Name   | Type                   | Mandatory| Description                                                                                                   |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
-| type     | string                  | Yes  | Event type, which is **'extrasChange'** in this case.                                                        |
-|  callback |  (extras: {[key: string]: Object}) => void | No  | Callback used for unsubscription.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                  | Yes  | Type of the event to be unsubscribed from. Currently, only the **'extrasChange'** event is supported.                                                        |
+|  callback |  (extras: {[key: string]: Object}) => void | No  | Callback used to return the result. **extras** indicates the custom media data packet newly set by the media provider.<br>This parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -2589,14 +2585,14 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.|
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **Example**
 
 ```ts
-avcontroller.on('customDataChange', (callback) => {
-  console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+avcontroller.on('customDataChange', (data) => {
+  console.info(`Caught customDataChange event,the new data is: ${JSON.stringify(data)}`);
 });
 
 ```
@@ -2615,8 +2611,8 @@ Unsubscribes from events indicating that custom data is sent to a remote device.
 
 | Name  | Type                              | Mandatory| Description                                                        |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                             | Yes  | Event type, which is **'customDataChange'** in this case.        |
-| callback | Callback\<Record\<string, Object>> | No  | Callback used for unsubscription. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                             | Yes  | Type of the event to be unsubscribed from. Currently, only the **'customDataChange'** event is supported.        |
+| callback | Callback\<Record\<string, Object>> | No  | Callback used to receive the custom data. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
 
@@ -2624,7 +2620,7 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.|
+| 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **Example**
@@ -2757,6 +2753,10 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 
 ```ts
 avcontroller.getAVCallState((err: BusinessError, callstate: avSession.AVCallState) => {
+  if (err) {
+    console.error(`Failed to get AV call state, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
@@ -2820,7 +2820,11 @@ For details about the error codes, see [AVSession Management Error Codes](errorc
 **Example**
 
 ```ts
-avcontroller.getCallMetadata((calldata: avSession.CallMetadata) => {
+avcontroller.getCallMetadata((err: BusinessError, calldata: avSession.CallMetadata) => {
+  if (err) {
+    console.error(`Failed to get call metadata, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 });
 ```

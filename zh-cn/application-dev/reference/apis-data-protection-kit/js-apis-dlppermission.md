@@ -1027,6 +1027,84 @@ if (context !== undefined) {
 }
 ```
 
+## dlpPermission.startDLPManagerForResult
+
+startDLPManagerForResult(context: common.Context, want: Want, window: window.Window): Promise&lt;DLPManagerResult&gt;
+
+在指定窗口内以无边框形式打开DLP权限管理应用。使用Promise异步回调。
+
+该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
+
+> **说明：**
+>
+> 该接口仅支持域账号调用。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.DataLossPrevention
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| context | [common.Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 当前应用上下文。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 请求对象，必须包含uri和displayName字段。 |
+| window | [window.Window](../apis-arkui/arkts-apis-window-Window.md) | 是 | 应用创建的窗口实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[DLPManagerResult](#dlpmanagerresult11)&gt; | Promise对象。打开DLP权限管理应用并退出后的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 801 | Capability not supported because car not support DLP feature. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+| 19100016 | The uri field is missing in the want parameter. |
+| 19100017 | The displayName field is missing in the want parameter. |
+
+**示例：**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { common, Want } from '@kit.AbilityKit';
+import { UIContext, window } from '@kit.ArkUI';
+
+let config: window.Configuration = {
+  name: "dlp_test_window",
+  windowType: window.WindowType.TYPE_FLOAT,
+  ctx: new UIContext().getHostContext() as common.Context
+};
+window.createWindow(config).then((windowClass) => {
+  windowClass.setUIContent('pages/index/BlankPage');
+  windowClass.setWindowFocusable(true);
+  windowClass.setWindowBackgroundColor("#00000000");
+
+  let context = new UIContext().getHostContext() as common.Context; // 获取当前Context。
+  if (context !== undefined) {
+    let want: Want = {
+      "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+      "parameters": {
+        "displayName": "1.txt"
+      }
+    }; // 构造请求参数，必须包含文件uri和displayName。
+    dlpPermission.startDLPManagerForResult(context, want, windowClass).then((res) => {
+      console.info('res.resultCode', res.resultCode);
+      console.info('res.want', JSON.stringify(res.want));
+      windowClass.destroyWindow();
+    }); // 打开DLP权限管理应用。
+  }
+});
+```
+
 ## dlpPermission.setSandboxAppConfig<sup>11+</sup>
 setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 

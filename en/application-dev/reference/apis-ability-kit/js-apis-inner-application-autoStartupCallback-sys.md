@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e2c3267fc728379ed661f6395560cc18d085c54a translatedAt=2026-09-03T11:51:37.184Z pushedAt=2026-09-05T10:47:30.705Z -->
 
 The module defines the callback to be invoked when auto-startup is set or canceled for an application component.
 
@@ -38,15 +39,17 @@ Called when auto-startup is set for an application component.
 import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Define the auto-startup callback object.
 let autoStartupCallback: common.AutoStartupCallback = {
-  onAutoStartupOn(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOn(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOn, info: ${JSON.stringify(info)}.`);
   },
-  onAutoStartupOff(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOff(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOff, info: ${JSON.stringify(info)}.`);
   }
-}
+};
 
+// Subscribe to the system auto-startup event.
 try {
   autoStartupManager.on('systemAutoStartup', autoStartupCallback);
 } catch (err) {
@@ -78,15 +81,17 @@ Called when the auto-startup setting of an application component is canceled.
 import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Define the auto-startup callback object.
 let autoStartupCallback: common.AutoStartupCallback = {
-  onAutoStartupOn(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOn(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOn, info: ${JSON.stringify(info)}.`);
   },
-  onAutoStartupOff(data: common.AutoStartupInfo) {
-    console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
+  onAutoStartupOff(info: common.AutoStartupInfo) {
+    console.info(`autostartupmanager onAutoStartupOff, info: ${JSON.stringify(info)}.`);
   }
-}
+};
 
+// Subscribe to the system auto-startup event.
 try {
   autoStartupManager.on('systemAutoStartup', autoStartupCallback);
 } catch (err) {

@@ -26,7 +26,8 @@ struct OhosImageSourceProperty {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char* value = nullptr | 定义图像源属性键值字符串头地址。 |
-| size_t size = 0 | 定义图像源属性键值字符串大小。 |
-
+| char* value = nullptr | 定义图像源属性键值字符串头地址。仅适用于C++编译环境。 |
+| size_t size = 0 | 定义图像源属性键值字符串大小。仅适用于C++编译环境。 |
+| char* value | 定义图像源属性键值字符串头地址。仅适用于C编译环境。 |
+| size_t size | 定义图像源属性键值字符串大小。仅适用于C编译环境。 |
 
