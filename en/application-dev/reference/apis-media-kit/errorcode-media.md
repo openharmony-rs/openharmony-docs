@@ -376,11 +376,11 @@ Unsupported request.
 
 **Description**
 
-The client request parameter is incorrect or exceeds the processing capability.
+The request is not supported due to a network protocol error.
 
 **Possible Causes**
 
-The client request parameter is incorrect or exceeds the processing capability.
+The request is not supported due to a network protocol error.
 
 **Solution**
 
