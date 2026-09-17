@@ -36,7 +36,9 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 ## DataSetSize
 
-枚举隐私协议支持的数据集大小。数据集大小定义单个结果密文可以包含的比较次数，生成的结果密文总数由elements.size÷dataSetSize决定。请根据隐私搜索中元素的数量与每个结果密文可接受的大小选择合适的取值。
+枚举隐私协议支持的数据集大小。数据集大小定义单个结果密文可以包含的比较次数，生成的结果密文总数由elements.size÷dataSetSize决定。
+
+请根据隐私搜索中元素的数量与每个结果密文可接受的大小选择合适的取值。
 
 **起始版本**：26.1.0
 
