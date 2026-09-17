@@ -257,7 +257,7 @@ struct WebComponent {
 
 ### 关闭上下文菜单
 
-`onContextMenuShow`触发后，应用需要结束本次菜单操作。上述示例在`bindPopup`的`onStateChange`中监听弹窗关闭，并调用`event.result`对应的[closeContextMenu](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#closecontextmenu9)。仅将弹窗状态设为不显示，不能替代关闭Web上下文菜单。若重复长按图片时回调只触发一次，先检查上一次菜单关闭时是否调用了该接口；若菜单已关闭，再检查网页是否拦截了`contextmenu`事件。
+`onContextMenuShow`触发后，应用需要结束本次菜单操作。上述示例在`onContextMenuShow`回调中通过`event.result`获取上下文菜单结果对象并保存至`this.result`，然后在`bindPopup`的`onStateChange`中监听弹窗关闭，调用`this.result!.closeContextMenu()`关闭Web上下文菜单。仅将弹窗状态设为不显示，不能替代调用[closeContextMenu](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#closecontextmenu9)。若重复长按图片时回调只触发一次，先检查上一次菜单关闭时是否调用了该接口；若菜单已关闭，再检查网页是否拦截了`contextmenu`事件。
 
 ## 自定义菜单
 自定义菜单赋予开发者灵活控制菜单触发时机与视觉呈现的能力，使应用能够根据用户操作场景动态匹配功能入口，显著简化开发过程中的界面适配工作，同时让交互体验更贴近用户直觉。
@@ -578,7 +578,7 @@ html示例
 若应用需要保存PDF内嵌图片，应从PDF原始文件或提供PDF的服务获取图片数据，再执行保存。若应用在生成PDF前已有原图地址，可保留该地址，并参考下方示例的图片下载与保存流程；下方示例本身不能提取PDF中的图片。
 
 1. 创建MenuBuilder组件作为菜单弹窗，使用[SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)组件实现图片保存，通过bindContextMenu将MenuBuilder与Web绑定。
-2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
+2. 在onContextMenuShow回调中调用[getLastHitTest](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getlasthittest18)获取图片URL并保存至`this.imgUrl`。用户点击保存按钮后，根据URL类型调用`copyLocalPicToDir`（本地图片）或`copyUrlPicToDir`（网络图片），将图片保存至应用沙箱。
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
 <!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
