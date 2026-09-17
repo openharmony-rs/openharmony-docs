@@ -1,4 +1,4 @@
-# @ohos.bluetooth.connection (Bluetooth connection Module)
+# @ohos.bluetooth.connection (Bluetooth Connection Module)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -6,7 +6,7 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=cc0fc565309f1feee1e8ea853938538a7ace0021 translatedAt=2026-09-15T02:36:10.385Z pushedAt=2026-09-16T02:07:31.164Z -->
+<!-- md-trans-meta sourceCommit=cc0fc565309f1feee1e8ea853938538a7ace0021 translatedAt=2026-09-15T02:36:10.385Z pushedAt=2026-09-17T00:59:29.265Z -->
 
 The **connection** module provides capabilities such as Bluetooth device pairing, connection, status query, device scanning and discovery, scanning mode setting, battery level information obtaining, and event subscription. It is applicable to scenarios where Bluetooth device discovery, pairing, connection, and information query need to be implemented in an app.
 
