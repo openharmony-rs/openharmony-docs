@@ -58,3 +58,4 @@
     - [Hi3516标准系统入门（IDE方式）](quickstart-appendix-hi3516-ide.md)
     - [Hi3516标准系统入门（命令行方式）](quickstart-appendix-hi3516-pkg.md)
     - [应用适配器CSS属性说明](application-adapter/README-CN.md)
+    - [轻量系统路由页面转场动效开发指导](application-adapter/quickstart-lite-router-page-transition.md)
