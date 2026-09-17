@@ -63946,11 +63946,6 @@
 						"end_line":1286,
 						"name":"roi_parameter_callback_str_passing",
 						"start_line":1281
-					},
-					{
-						"end_line":1140,
-						"name":"roi_buffer_pixel_read",
-						"start_line":1097
 					}
 				]
 			},
@@ -63986,13 +63981,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/common/FrameQueue.h",
-				"functions":[
-					{
-						"end_line":39,
-						"name":"roi_frame_item_struct",
-						"start_line":27
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/capbilities/codec/CodecCallback.cpp",
@@ -64006,18 +63995,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/cpp/recorder/Recorder.cpp",
-				"functions":[
-					{
-						"end_line":296,
-						"name":"roi_buffer_mode_callback",
-						"start_line":275
-					},
-					{
-						"end_line":423,
-						"name":"roi_buffer_mode_fill_input",
-						"start_line":315
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
