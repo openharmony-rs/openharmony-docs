@@ -602,7 +602,7 @@ getAllBundleInfoInstances(bundleName: string, bundleFlags: number): Promise\<Arr
 
 根据给定的bundleName和bundleFlags，获取系统中所有的BundleInfo。使用Promise异步回调。
 
-当bundleFlags中携带[GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE](#bundleflag)标记时，可获取应用在任一设备模式下的BundleInfo。
+当bundleFlags中携带[GET_BUNDLE_INFO_OF_ALL_DEVICE_MODE](#bundleflag12)标记时，可获取应用在任一设备模式下的BundleInfo。
 
 **起始版本：** 26.1.0
 
