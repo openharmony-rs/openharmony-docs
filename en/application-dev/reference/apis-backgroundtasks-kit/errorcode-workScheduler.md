@@ -6,7 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=d5faa0a49f7aa05b46e226421c5d5fb30796f2fe translatedAt=2026-09-15T12:49:02.061Z pushedAt=2026-09-17T03:42:50.278Z -->
+<!-- md-trans-meta sourceCommit=d5faa0a49f7aa05b46e226421c5d5fb30796f2fe translatedAt=2026-09-15T12:49:02.061Z pushedAt=2026-09-17T09:32:27.635Z -->
 
 > **NOTE**
 >
@@ -91,7 +91,7 @@ Invalid input parameter.
 1. Check whether the bundle name in **workInfo** matches the app UID.
 2. If this error occurs when you cancel or query a deferred task, ensure that the task has been correctly created.
 3. Check whether the ability name in **taskInfo** is a launcher ability.
-4. If you want to complete, query, or cancel a registered update task in the background , check whether the task ID is correct.
+4. If you want to complete, query, or cancel a registered update task in the background, check whether the task ID is correct.
 
 ## 9700005 StartWork Failure
 
