@@ -552,7 +552,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
     API version 20之前布局显示（xs设备未配置栅格列数，取默认列数12）：
 
-    ![gridLayoutColumnOption](figures/gridLayoutColumnOption.gif)
+    ![gridLayoutColumnOption-w800](figures/gridLayoutColumnOption.gif)
 
     API version 20及以后布局显示（xs设备继承sm设备栅格列数）：
 
