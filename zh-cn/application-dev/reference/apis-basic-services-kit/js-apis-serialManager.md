@@ -54,7 +54,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口设备清单 
 function getPortListExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -110,7 +110,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function hasSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');
@@ -175,7 +175,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function requestSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -248,7 +248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function openExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -275,6 +275,7 @@ async function openExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 关闭串口
@@ -339,7 +340,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function getAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -366,6 +367,7 @@ async function getAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 获取串口配置
@@ -438,7 +440,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function setAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -465,6 +467,7 @@ async function setAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 设置串口配置
@@ -547,7 +550,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function readExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -574,6 +577,7 @@ async function readExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 异步读取
@@ -660,7 +664,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function readSyncExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -687,6 +691,7 @@ async function readSyncExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 同步读取
@@ -765,7 +770,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function writeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -792,6 +797,7 @@ async function writeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 异步写入
@@ -879,7 +885,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function writeSyncExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -906,6 +912,7 @@ async function writeSyncExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 同步写入
@@ -978,7 +985,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function closeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -1005,6 +1012,7 @@ async function closeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
 
@@ -1067,7 +1075,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function cancelSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
