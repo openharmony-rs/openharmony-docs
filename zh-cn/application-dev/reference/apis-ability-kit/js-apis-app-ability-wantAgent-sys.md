@@ -325,6 +325,8 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                            |
@@ -401,7 +403,7 @@ class MyAbility extends UIAbility {
       // 创建wantAgent对象
       wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
         if (err) {
-          console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+          console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
         } else {
           wantAgentData = data;
         }

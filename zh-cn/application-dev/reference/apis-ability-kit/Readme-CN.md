@@ -13,7 +13,6 @@
     - [@ohos.app.ability.abilityLifecycleCallback (UIAbility生命周期回调监听器)](js-apis-app-ability-abilityLifecycleCallback.md)
     - [@ohos.app.ability.AbilityStage (AbilityStage组件管理器)](js-apis-app-ability-abilityStage.md)
     - [@ohos.app.ability.ActionExtensionAbility (支持业务操作自定义的ExtensionAbility组件)](js-apis-app-ability-actionExtensionAbility.md)
-    - [@ohos.app.ability.AgentUIExtensionAbility (带界面的智能体扩展组件)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.app.ability.application (应用工具类)](js-apis-app-ability-application.md)
     - [@ohos.app.ability.ApplicationStateChangeCallback (应用进程状态变化监听器)](js-apis-app-ability-applicationStateChangeCallback.md)
     - [@ohos.app.ability.appMemoryOptimizer (应用内存优化器)](js-apis-app-ability-appMemoryOptimizer.md)
@@ -57,6 +56,7 @@
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)
     - [@ohos.app.agent.agentConstant (Agent常量)](js-apis-app-agent-agentConstant.md)
     - [@ohos.app.agent.AgentExtensionAbility (智能体扩展组件)](js-apis-app-agent-agentExtensionAbility.md)
+    - [@ohos.app.agent.AgentUIExtensionAbility (带界面的智能体扩展组件)](js-apis-agent-agentUIExtensionAbility.md)
     - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](js-apis-app-ability-abilityConstant-sys.md)
