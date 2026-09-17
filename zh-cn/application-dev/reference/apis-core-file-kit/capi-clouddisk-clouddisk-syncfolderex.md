@@ -30,7 +30,7 @@ typedef struct OH_CloudDisk_SyncFolderEx {...} OH_CloudDisk_SyncFolderEx
 | CloudDisk_SyncFolderPath path | 同步根路径，用于指定云盘同步的根目录位置。 |
 | [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | 同步根路径状态，具体取值及含义参见[CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate)。 |
 | [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | 同步根路径别名信息，用于设置同步根路径的显示名称，便于用户识别和管理。
-| isSupportPlaceHolder | 同步根路径是否支持占位符。 |
+| isSupportPlaceHolder | 同步根路径是否支持占位符。true：表示同步根支持占位符，false：表示同步根不支持占位符。默认值为false。 |
 
 ### 宏定义
 
