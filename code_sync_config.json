@@ -41761,7 +41761,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":190,
+						"end_line":193,
 						"name":"init_sendable",
 						"start_line":15
 					}
@@ -50809,7 +50809,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingSendable.ets",
 				"functions":[
 					{
-						"end_line":145,
+						"end_line":155,
 						"name":"taskpool_frequently_operate_database",
 						"start_line":16
 					}
@@ -51172,7 +51172,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/SharedArrayBufferObject.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":64,
 						"name":"example_pass_obj",
 						"start_line":16
 					}
@@ -51231,7 +51231,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets",
 				"functions":[
 					{
-						"end_line":78,
+						"end_line":79,
 						"name":"implement_child_thread_task",
 						"start_line":16
 					}
