@@ -334,7 +334,7 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 > **说明：**
 >
-> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则，任意MDM应用取消激活时，该应用设置的设备锁屏口令策略会被清除。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
