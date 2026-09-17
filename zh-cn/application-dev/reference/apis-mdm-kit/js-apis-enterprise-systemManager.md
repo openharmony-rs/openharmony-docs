@@ -1859,7 +1859,7 @@ try {
 
 addAllowedPrinterIPAddressesForDevice(ipAddresses: Array&lt;string&gt;): void
 
-为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[systemManager.addAllowedPrinterIPAddressesForAccount](#systemManager.addAllowedPrinterIPAddressesForAccount26.1+)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictions.setDisallowedPolicy)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为设备添加白名单后，可通过[system.removeAllowedPrinterIPAddressesForDevice](#systemManager.removeAllowedPrinterIPAddressesForDevice(ipAddresses:%20Array)26.1+)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
+为当前设备添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[systemManager.addAllowedPrinterIPAddressesForAccount](#systemManager.addAllowedPrinterIPAddressesForAccount26.1+)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictions.setDisallowedPolicy)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为设备添加白名单后，可通过[systemManager.removeAllowedPrinterIPAddressesForDevice](#systemManager.removeAllowedPrinterIPAddressesForDevice(ipAddresses:%20Array)26.1+)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -2011,7 +2011,7 @@ try {
 
 addAllowedPrinterIPAddressesForAccount(ipAddresses: Array&lt;string&gt;): void
 
-为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[systemManager.addAllowedPrinterIPAddressesForDevice](#systemManager.addAllowedPrinterIPAddressesForDevice26.1+)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictions.setDisallowedPolicy)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为设备添加白名单后，可通过[system.removeAllowedPrinterIPAddressesForDevice](#systemManager.removeAllowedPrinterIPAddressesForDevice(ipAddresses:%20Array)26.1+)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
+为当前用户添加基于IP的网络打印机白名单策略。设置该策略后，只有IP在白名单内的网络打印机，允许打印，不在白名单内的网络打印机无法打印。已通过[systemManager.addAllowedPrinterIPAddressesForDevice](#systemManager.addAllowedPrinterIPAddressesForDevice26.1+)接口设置白名单后，再调用本接口设置白名单，会报策略冲突（9200010）。已通过[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictions.setDisallowedPolicy)禁用打印机功能或通过[restrictions.setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)禁用当前用户打印功能后，再调用本接口设置策略，策略可设置成功，但打印功能依然被禁用。为设备添加白名单后，可通过[systemManager.removeAllowedPrinterIPAddressesForDevice](#systemManager.removeAllowedPrinterIPAddressesForDevice(ipAddresses:%20Array)26.1+)接口移除白名单，当白名单为空时，所有网络打印机均不受本策略管控。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
