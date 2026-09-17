@@ -56,7 +56,7 @@ XML解析及转换需要确保传入的XML数据符合XML标准格式。
      // attributesKey: "_attributes" 转换后属性使用_attributes标识
      // textKey: "_text" 转换后标签值使用_text标识
      // cdataKey: "_cdata" 转换后未解析数据使用_cdata标识
-     // docTypeKey: "_doctype" 转换后文档类型使用_doctype标识
+     // doctypeKey: "_doctype" 转换后文档类型使用_doctype标识
      // commentKey: "_comment" 转换后注释使用_comment标识
      // parentKey: "_parent" 转换后父类使用_parent标识
      // typeKey: "_type" 转换后元素类型使用_type标识
