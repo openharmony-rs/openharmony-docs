@@ -203,3 +203,45 @@ Base64编码表如下：
 | base64索引值 | 16 | 20 | 8 | － |
 | base64字符 | Q | U | I | = |
 
+## 为什么HashSet和TreeSet的add方法添加已存在元素时返回true
+
+[HashSet](../reference/apis-arkts/js-apis-hashset.md)和[TreeSet](../reference/apis-arkts/js-apis-treeset.md)的add方法在API参考中的返回值描述为：成功添加新元素至容器返回true，当元素已存在时返回false。当前代码实现中，添加已存在的元素时返回值同样为true，与API参考中的返回值描述存在差异。
+
+> **说明：**
+>
+> 该差异仅体现在返回值上，不影响集合功能。已存在的元素不会重复添加，容器的length保持不变，集合元素的唯一性不受影响。
+
+规避方案：不要通过add方法的返回值判断元素是否已存在，可在调用add方法前先使用has方法判断，或对比调用add方法前后容器的length是否发生变化。
+
+**示例代码**
+
+```ts
+import { HashSet, TreeSet } from '@kit.ArkTS';
+
+// 创建HashSet实例并添加元素
+let hashSet = new HashSet<string>();
+hashSet.add('squirrel');
+// 添加已存在的元素
+let result = hashSet.add('squirrel');
+console.info('result:', result);
+// 期望输出: result: false
+// 实际输出: result: true
+console.info('length:', hashSet.length); // length: 1，元素未重复添加
+
+// 创建TreeSet实例并添加元素
+let treeSet = new TreeSet<string>();
+treeSet.add('squirrel');
+// 添加已存在的元素
+let treeResult = treeSet.add('squirrel');
+console.info('treeResult:', treeResult);
+// 期望输出: treeResult: false
+// 实际输出: treeResult: true
+console.info('length:', treeSet.length); // length: 1，元素未重复添加
+
+// 推荐做法：先通过has方法判断，避免依赖add方法的返回值
+let value = 'sparrow';
+if (!hashSet.has(value)) {
+  hashSet.add(value);
+}
+```
+

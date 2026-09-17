@@ -290,7 +290,7 @@ struct Index {
 
 on(type: 'change', listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。建议在应用主线程执行此操作，且需要在此线程退出前取消监听。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -390,7 +390,7 @@ struct Index {
 
 off(type: 'change', listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
+取消监听输入设备的热插拔事件。使用callback异步回调。取消监听需要与注册监听在同一线程执行。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -639,7 +639,7 @@ struct Index {
 
 ## inputDevice.supportKeys<sup>9+</sup>
 
-supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
+supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback&lt;Array&lt;boolean&gt;&gt;): void
 
 查询指定输入设备是否支持指定按键，使用callback异步回调。
 
@@ -1197,7 +1197,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 
 输入设备的轴信息。
 
-**系统能力**： SystemCapability.MultimodalInput.Input.InputDevice
+**系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |

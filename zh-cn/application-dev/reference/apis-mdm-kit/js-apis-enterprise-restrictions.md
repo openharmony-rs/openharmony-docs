@@ -1,4 +1,4 @@
-# @ohos.enterprise.restrictions（限制类策略）
+# @ohos.enterprise.restrictions (限制类策略)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -47,6 +47,8 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 > **说明：**
 > 
 > 本接口为设备级禁用策略，影响设备所有用户。如需针对特定用户设置禁用策略，请使用[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated)接口。
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
 
 **起始版本：** 12
 
@@ -60,8 +62,6 @@ setDisallowedPolicy(admin: Want, feature: string, disallow: boolean): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -254,13 +254,15 @@ setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, a
 
 **替代接口：** [restrictions.setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -374,13 +376,15 @@ addDisallowedListForAccount(admin: Want, feature: string, list: Array\<string>, 
 
 为指定用户添加禁止使用某特性的应用名单。指定用户下，添加到名单中的应用不允许使用指定的特性能力。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -430,13 +434,15 @@ removeDisallowedListForAccount(admin: Want, feature: string, list: Array\<string
 
 为指定用户移除禁止使用某特性的应用名单。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -550,13 +556,15 @@ setUserRestriction(admin: Want, settingsItem: string, restricted: boolean): void
 
 **替代接口：** [restrictions.setUserRestriction](#restrictionssetuserrestriction)
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -672,13 +680,15 @@ setUserRestrictionForAccount(admin: Want, settingsItem: string, accountId: numbe
 
 **替代接口：** [restrictions.setUserRestrictionForAccount](#restrictionssetuserrestrictionforaccount)
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -793,13 +803,15 @@ setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): 
 
 设置禁用/启用指定设备特性，禁用后相关设备特性无法被使用。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -906,13 +918,15 @@ setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow:
 
 **起始版本：** 26.0.0
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -1258,6 +1272,7 @@ try {
 | 名称                        | 值  | 说明    |
 | ----------------------------| ----| ------------------------------- |
 | WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。 |
+| X_KEY   | 1   | X键能力。禁用后将无法使用X键直达应用或服务（例如开启相机、手电筒、计算器等）。<br>**起始版本：** 26.1.0 |
 | LOCAL_INPUT   | 2   | 本地输入（包含键盘、鼠标、触控板、触摸屏等）被禁用后，无法通过本地输入进行操作。重启设备可解除禁用。在息屏状态下禁用会导致屏幕无法唤醒，若禁用后屏幕自动息屏，同样会导致无法唤醒屏幕。<br>**起始版本：** 26.0.0 |
 | TRAFFIC_REDIRECTION   | 5   | 网络流量重定向管控策略。禁用后，无法将TCP流量重定向到其它端口，取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | CORE_DUMP   | 6   | 创建文件转储。禁用后，无法通过任务管理器创建文件转储。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
@@ -1305,6 +1320,7 @@ try {
 | REMOTE_DESK   | 48   | 远程桌面能力。<br>**起始版本：** 26.0.0 |
 | REMOTE_DIAGNOSIS   | 49   | 远程诊断能力。<br>**起始版本：** 26.0.0 |
 | OTA_UPDATE   | 50   | 公网系统升级能力。<br>**起始版本：** 26.0.0 |
+| SYSTEM_ROLLBACK   | 51   | 系统回退能力，禁用后无法回退系统版本。当前仅支持手机、平板设备使用。<br>**起始版本：** 26.1.0 |
 
 ## FeatureForAccount
 

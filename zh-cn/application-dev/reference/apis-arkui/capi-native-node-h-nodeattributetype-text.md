@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的文本显示类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。用于在Native开发场景中通过属性设置、属性获取接口配置文本组件的样式属性，如字体大小、颜色、行高、装饰线等，实现对文本显示效果的精细化控制和自定义。
+定义ArkUI在Native侧可以设置的文本显示类组件相关属性样式集合，包含Text、Span、ImageSpan组件属性设置。用于在Native开发场景中通过属性设置、属性获取接口配置文本组件的样式属性，如字体大小、颜色、行高、装饰线等，实现对文本显示效果的精细化控制和自定义。
 
 **起始版本：** 12
 
@@ -1676,3 +1676,34 @@ NODE_IMAGE_SPAN_SUPPORT_SVG2 = 3005
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否启用SVG新解析能力开关。1表示支持SVG解析新能力，0表示保持原有SVG解析能力。 |
+
+## NODE_IMAGE_SPAN_RESIZABLE
+
+```c
+NODE_IMAGE_SPAN_RESIZABLE = 3006
+```
+
+imageSpan组件图片拉伸时，支持通过设置边缘宽度或者使用栅格对象调整其大小，支持属性设置、属性重置和属性获取接口。接口调用时需要保证设置和获取的参数类型是相同的。<br>
+作为属性设置方法参数、属性获取方法返回值的[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 左边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[1].f32 | 上边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[2].f32 | 右边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[3].f32 | 下边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .object | 栅格对象，参数类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 左边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[1].f32 | 上边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[2].f32 | 右边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[3].f32 | 下边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .object | 栅格对象，参数类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |

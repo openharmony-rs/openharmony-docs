@@ -786,7 +786,7 @@ struct Index {
   | fastForward    | 快进命令。 |
   | rewind    | 快退命令。 |
 
-  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->
+  <!-- @[adaptingToBluetoothMethodOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/AdaptingToBluetoothMethodOne.ets) -->  
   
   ``` TypeScript
   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -829,13 +829,13 @@ struct Index {
                 console.info(`on play , do play task`);
                 // ...
                 // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('play')取消监听。
-                // 处理完毕后，请使用setAVPlayState上报播放状态。
+                // 处理完毕后，请使用setAVPlaybackState上报播放状态。
               });
               session.on('pause', () => {
                 console.info(`on pause , do pause task`);
                 // ...
                 // 如暂不支持该指令，请勿注册；或在注册后但暂不使用时，通过session.off('pause')取消监听。
-                // 处理完毕后，请使用setAVPlayState上报播放状态。
+                // 处理完毕后，请使用setAVPlaybackState上报播放状态。
               });
               // ...
             } catch (err) {

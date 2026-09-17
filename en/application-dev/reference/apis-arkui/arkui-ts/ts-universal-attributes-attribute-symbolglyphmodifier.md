@@ -6,12 +6,15 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-01T12:06:57.873Z -->
 
-**SymbolGlyphModifier** is used to dynamically set the attributes and styles of the **SymbolGlyph** component. The **if/else** statements can be used. [SymbolGlyph](./ts-basic-components-symbolGlyph.md) is a component used to display symbol glyphs.
+SymbolGlyphModifier is used to dynamically set the attributes and styles of the SymbolGlyph component. It supports using if/else statements to dynamically adjust the component style based on conditions, and is suitable for scenarios where the icon appearance needs to change dynamically according to the application state or user interaction. [SymbolGlyph](./ts-basic-components-symbolGlyph.md) is a component used to display icon symbols.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## SymbolGlyphModifier
 
@@ -35,13 +38,13 @@ A constructor used to create a **SymbolGlyphModifier** object.
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| src | [Resource](ts-types.md#resource) | No  | Resource information.|
+| src | [Resource](./ts-types.md#resource) | No  | Sets the symbol icon resource to be displayed by the SymbolGlyph component. If not passed, no resource is loaded. |
 
 ### applyNormalAttribute
 
 applyNormalAttribute?(instance: SymbolGlyphAttribute): void
 
-Applies the style of a component in the normal state.
+Sets the style of the component in the normal state (that is, the default interaction state in which the component is not pressed, does not have focus, and so on). This method is a callback method that is automatically invoked by the framework when the component is in the normal state. Developers can dynamically set the style of the SymbolGlyph component by modifying the properties of the instance object in the method body.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -51,11 +54,11 @@ Applies the style of a component in the normal state.
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| instance | [SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md) | Yes  | Dynamic attribute setting for the SymbolGlyph component.|
+| instance | [SymbolGlyphAttribute](./ts-basic-components-symbolGlyph.md) | Yes | Instance of SymbolGlyphAttribute, used to dynamically set the properties and styles of the SymbolGlyph component. |
 
 ## Example
 
-This example demonstrates how to use [SymbolGlyphModifier](#symbolglyphmodifier) and the [cancelButton](ts-basic-components-textinput.md#cancelbutton18) attribute of the **TextInput** component to customize the style of the symbol-type cancel button on the right side of the text box.
+This example demonstrates the effect of customizing the style of the clear button with a symbol type on the right through [SymbolGlyphModifier](#symbolglyphmodifier) and the [cancelButton](./ts-basic-components-textinput.md#cancelbutton18) attribute of the TextInput component.
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -65,7 +68,7 @@ import { SymbolGlyphModifier } from '@kit.ArkUI';
 @Component
 struct Index {
   @State text: string = '';
-  symbolModifier: SymbolGlyphModifier =
+  symbolGlyphModifier: SymbolGlyphModifier =
     new SymbolGlyphModifier($r('sys.symbol.trash')).fontColor([Color.Red]).fontSize(16).fontWeight(FontWeight.Regular);
 
   build() {
@@ -74,7 +77,7 @@ struct Index {
         .height(50)
         .cancelButton({
           style: CancelButtonStyle.CONSTANT,
-          icon: this.symbolModifier // The symbol type is supported since API version 18.
+          icon: this.symbolGlyphModifier // SymbolGlyph type is supported since API version 18.
         })
     }.margin(10)
   }

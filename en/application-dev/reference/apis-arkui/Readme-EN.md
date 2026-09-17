@@ -5,7 +5,7 @@
 <!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7a27c5311b602813785718927e61dde763283c9c translatedAt=2026-09-02T07:41:06.925Z pushedAt=2026-09-02T08:59:13.041Z -->
+<!-- md-trans-meta sourceCommit=7de03cfbcae05b8742b86957c66bf822463293e7 translatedAt=2026-09-17T08:21:43.462Z pushedAt=2026-09-17T08:30:09.484Z -->
 
 - ArkTS API<!--arkui-arkts-->
   - UI<!--ui-->
@@ -18,7 +18,7 @@
     - [@ohos.arkui.inspector (Layout Callback)](js-apis-arkui-inspector.md)
     - [@ohos.arkui.node (Custom Node)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (Observer)](js-apis-arkui-observer.md)
-    - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
+    - [@ohos.arkui.Prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
     - [@ohos.arkui.shape (Shape)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme (Theme)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
@@ -165,7 +165,7 @@
       - [Axis Event](arkui-ts/ts-universal-events-axis.md)
       - [Key Event](arkui-ts/ts-universal-events-key.md)
       - [Crown Event](arkui-ts/ts-universal-events-crown.md)
-      - [Focus Axis Event](arkui-ts/ts-universal-events-focus_axis.md)
+      - [Focus Axis Event](arkui-ts/ts-universal-events-focus-axis.md)
     - Interaction Response Events<!--interaction-events-->
       - [Click Event](arkui-ts/ts-universal-events-click.md)
       - [Drag Event](arkui-ts/ts-universal-events-drag-drop.md)
@@ -271,8 +271,8 @@
       - [Toolbar Configuration](arkui-ts/ts-universal-attributes-toolbar.md)
       - [Node Inspector Label](arkui-ts/ts-universal-attributes-inspector-label.md)
   - Gesture Handling<!--gesture-handling-->
-    - Binding Gestures<!--gesture-binding-->
-      - [Gesture Binding](arkui-ts/ts-gesture-settings.md)
+    - Gesture Binding<!--gesture-binding-->
+      - [Binding Gesture Events](arkui-ts/ts-gesture-settings.md)
       - [Bound Gesture Configuration](arkui-ts/ts-uigestureevent.md)
       - [Gesture Handler](arkui-ts/ts-gesturehandler.md)
     - Basic Gestures<!--basic-gestures-->
@@ -1018,6 +1018,6 @@
     - [Display Error Codes](errorcode-display.md)
     - [Window Error Codes](errorcode-window.md)
   - UI Compilation<!--arkui-compile-arkts-errcode-->
-    - [Compilation Error Codes](_ark_ui_compile.md)
+    - [Compilation Error Codes](errorcode-arkui-compile.md)
 
 <!--no_check-->

@@ -3,24 +3,25 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:07:02.581Z pushedAt=2026-09-05T10:47:30.538Z -->
 
 The module provides permission details defined in the configuration file.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
-> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-PermissionDef](js-apis-bundleManager-permissionDef-sys.md) instead.
 >
-> The APIs provided by this module are system APIs.
+> Since API version 9, this module is no longer maintained. You are advised to use [PermissionDef](js-apis-bundleManager-permissionDef-sys.md) instead.
+>
+> This module is a system API.
 
 ## **PermissionDef**<sup>(deprecated)<sup>
 
 > **NOTE**
 >
-> This API has been supported since API version 8 and deprecated since API version 9. You are advised to use [bundleManager-PermissionDef](js-apis-bundleManager-permissionDef-sys.md#permissiondef) instead.
+> Supported since API version 8 and deprecated since API version 9. You are advised to use [PermissionDef](js-apis-bundleManager-permissionDef-sys.md#permissiondef) instead.
 
  **System capability**: SystemCapability.BundleManager.BundleFramework
 

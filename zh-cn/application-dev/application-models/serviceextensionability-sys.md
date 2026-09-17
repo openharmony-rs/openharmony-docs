@@ -53,7 +53,7 @@ ServiceExtensionAbility可以被其他组件启动或连接，并根据调用者
 
 - **onConnect**
 
-  当另一个组件调用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法与该服务连接时，触发该回调。开发者在此方法中，返回一个远端代理对象（[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)），客户端拿到这个对象后可以通过这个对象与服务端进行RPC通信，同时系统侧也会将该远端代理对象（IRemoteObject）储存。后续若有组件再调用connectServiceExtensionAbility()方法，系统侧会直接将所保存的远端代理对象（IRemoteObject）返回，而不再触发该回调。
+  当另一个组件调用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法与该服务连接时，触发该回调。开发者在此方法中，返回一个远端代理对象（[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)），客户端拿到这个对象后可以通过这个对象与服务端进行RPC通信，同时系统侧也会将该远端代理对象（IRemoteObject）存储。后续若有组件再调用connectServiceExtensionAbility()方法，系统侧会直接将所保存的远端代理对象（IRemoteObject）返回，而不再触发该回调。
 
 - **onDisconnect**
 
@@ -662,9 +662,9 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       });
   
       let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
-      let accessManger = abilityAccessCtrl.createAtManager();
+      let accessManager = abilityAccessCtrl.createAtManager();
       // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例
-      let grantStatus = accessManger.verifyAccessTokenSync(callerTokenId, 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED');
+      let grantStatus = accessManager.verifyAccessTokenSync(callerTokenId, 'ohos.permission.GET_BUNDLE_INFO_PRIVILEGED');
       if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_DENIED) {
         hilog.info(DOMAIN_NUMBER, TAG, 'PERMISSION_DENIED');
         callback(ERR_DENY, data); // 鉴权失败，返回错误

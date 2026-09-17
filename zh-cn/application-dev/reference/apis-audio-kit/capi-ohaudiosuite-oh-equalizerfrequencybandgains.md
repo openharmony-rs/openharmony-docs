@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_EqualizerFrequencyBandGains
+typedef struct OH_EqualizerFrequencyBandGains {...} OH_EqualizerFrequencyBandGains
 ```
 
 ## 概述

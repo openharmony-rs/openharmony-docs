@@ -1,7 +1,7 @@
 # Node-API
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -349,6 +349,10 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 当参数object不是Object或Function对象时，该导出接口返回napi_object_expected。
 
+**说明：**
+
+- 该接口与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。
+
 ### napi_set_named_property
 
 **返回：**
@@ -421,11 +425,19 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 当参数func不是Function对象时，该导出接口返回napi_function_expected。
 
+**说明：**
+
+- 该函数执行后会触发微任务执行。
+
 ### napi_new_instance
 
 **返回：**
 
 - 当参数constructor不是Function对象时，该导出接口返回napi_function_expected。
+
+**说明：**
+
+- 该函数执行后会触发微任务执行。
 
 ### napi_define_class
 
@@ -518,11 +530,15 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - promise的then方法的resolve或者reject回调中出现异常时，如果promise没有catch块，代码会继续执行不会崩溃；如果promise有catch块，则异常会被该catch块捕获。
 
+- 该函数执行后会触发微任务执行。
+
 ### napi_reject_deferred
 
 **说明：**
 
 - promise的then方法的resolve或者reject回调中出现异常时，如果promise没有catch块，代码会继续执行不会崩溃；如果promise有catch块，则异常会被该catch块捕获。
+
+- 该函数执行后会触发微任务执行。
 
 ### napi_create_threadsafe_function
 

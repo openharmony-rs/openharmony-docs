@@ -6,7 +6,7 @@
 <!--Designer: @yangzhongkai-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=7b9a2b20c0ccde8a6fcec022ec0fcbcafa6267c4 translatedAt=2026-07-06T02:47:03.625Z pushedAt=2026-07-06T07:59:02.411Z -->
+<!-- md-trans-meta sourceCommit=acba00b4edca6db1d20615b479cf478c7de4ec19 translatedAt=2026-09-03T08:29:10.695Z pushedAt=2026-09-05T10:47:30.055Z -->
 
 ## Overview
 
@@ -542,7 +542,7 @@ Sets the data encryption level of the context.
 
 | Type | Description |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Returns the execution result.<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - Operation successful.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - The input parameter areaMode is null.<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - The context does not exist. |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | Result code.<br>Returns ABILITY_RUNTIME_ERROR_CODE_NO_ERROR if the operation is successful.<br>Returns ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID if the input parameter context is empty.<br>Returns ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST if the context does not exist. |
 
 **Example:**
 

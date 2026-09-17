@@ -1,4 +1,4 @@
-# USB实时传输
+# USB实时传输（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
@@ -171,94 +171,99 @@
    <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
-     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
-     return;
-   }
-   let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-   try {
-     if (!usbManager.hasRight(usbDevice.name)) {
-       console.error('permission denied');
-       this.logInfo_ += '\n[ERROR] permission denied';
-       return;
-     }
-   } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
-     return;
-   }
-   
-   let devicePipe: usbManager.USBDevicePipe;
-   try {
-     devicePipe = usbManager.connectDevice(usbDevice);
-   } catch (error) {
-     console.error(`connectDevice failed ${error}`);
-     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
-     return
-   }
-   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
-   let usbInterfaces: usbManager.USBInterface[] = [];
-   let usbInterface: usbManager.USBInterface | undefined = undefined;
-   let usbEndpoints: usbManager.USBEndpoint[] = [];
-   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
-   for (let i = 0; i < usbConfigs?.length; i++) {
-     usbInterfaces = usbConfigs[i]?.interfaces;
-     for (let j = 0; j < usbInterfaces?.length; j++) {
-       usbEndpoints = usbInterfaces[j]?.endpoints;
-       usbEndpoint = usbEndpoints?.find((value) => {
-         // direction为请求方向，0表示写入数据，128表示读取数据
-         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-       })
-       if (usbEndpoint !== undefined) {
-         usbInterface = usbInterfaces[j];
-         break;
-       }
-     }
-   }
-   if (usbEndpoint === undefined) {
-     console.error(`get usbEndpoint error`);
-     this.logInfo_ += '\n[ERROR] get usbEndpoint error';
-     return;
-   }
+    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+      console.error('deviceList_ is empty');
+      this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+      return;
+    }
+    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
+    try {
+      if (!usbManager.hasRight(usbDevice.name)) {
+        console.error('permission denied');
+        this.logInfo_ += '\n[ERROR] permission denied';
+        return;
+      }
+    } catch (error) {
+      console.error(`USB hasRight failed: ${error}`);
+      this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+      return;
+    }
+
+    let devicePipe: usbManager.USBDevicePipe;
+    try {
+      devicePipe = usbManager.connectDevice(usbDevice);
+    } catch (error) {
+      console.error(`connectDevice failed ${error}`);
+      this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
+      return
+    }
+    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
+    let usbInterfaces: usbManager.USBInterface[] = [];
+    let usbInterface: usbManager.USBInterface | undefined = undefined;
+    let usbEndpoints: usbManager.USBEndpoint[] = [];
+    let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
+    for (let i = 0; i < usbConfigs?.length; i++) {
+      usbInterfaces = usbConfigs[i]?.interfaces;
+      for (let j = 0; j < usbInterfaces?.length; j++) {
+        usbEndpoints = usbInterfaces[j]?.endpoints;
+        usbEndpoint = usbEndpoints?.find((value) => {
+          // direction为请求方向，0表示写入数据，128表示读取数据
+          return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+        })
+        if (usbEndpoint !== undefined) {
+          usbInterface = usbInterfaces[j];
+          break;
+        }
+      }
+    }
+    if (usbEndpoint === undefined) {
+      console.error(`get usbEndpoint error`);
+      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
+      return;
+    }
+    if (usbInterface === undefined) {
+      console.error(`get usbInterface error`);
+      this.logInfo_ += '\n[ERROR] get usbInterface error';
+      return;
+    }
    ```
 
    
 5. 连接设备，注册通信接口。
 
-   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-   
-   ``` TypeScript
-   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-   try {
-     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-     if (claimInterfaceResult !== 0) {
-       console.error(`claimInterface error = ${claimInterfaceResult}`)
-       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
-       return;
-     }
-   } catch (error) {
-     console.error(`USB claimInterface failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
-     return;
-   }
-   
-   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
-   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-     try {
-       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-       if (setInterfaceResult !== 0) {
-         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
-         return;
-       }
-     } catch (error) {
-       console.error(`USB setInterface failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
-       return;
-     }
-   }
-   ```
+    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+    try {
+      let claimInterfaceResult: number = this.claimUsbInterface(devicePipe, usbInterface);
+      if (claimInterfaceResult !== 0) {
+        console.error(`claimInterface error = ${claimInterfaceResult}`)
+        this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+        return;
+      }
+    } catch (error) {
+      console.error(`USB claimInterface failed: ${error}`);
+      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+      return;
+    }
+    
+    // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
+    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+      try {
+        let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+        if (setInterfaceResult !== 0) {
+          console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+          this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
+          return;
+        }
+      } catch (error) {
+        console.error(`USB setInterface failed: ${error}`);
+        this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
+        return;
+      }
+    }
+    ```
 
 
 6. 传输数据。

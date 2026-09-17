@@ -6,12 +6,13 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=520f9a32cdb2e9a005e54fc92b1c491413781b64 translatedAt=2026-09-15T12:58:12.739Z pushedAt=2026-09-17T08:49:21.512Z -->
 
 The **BackgroundTaskManager** module provides APIs to manage background tasks.
 
-If a service needs to be continued when the application or service module is running in the background (not visible to users), the application or service module can request a transient task to delay the suspension or a continuous task to prevent the suspension.
+If there is a service that needs to continue or be executed later when the application or service module is running in the background (not visible to users), the application or service module can request a transient task to delayed suspension or a continuous task to avoid entering the suspended state based on the service type.
 
-If an application has a task that needs to be continued when the application is switched to the background and can be completed within a short period of time, the application can request a transient task. For example, if a user chooses to clear junk files in the **Files** application and exits the application, the application can request a transient task to complete the cleanup.
+If an application has a task that cannot be interrupted and can be completed within a short period of time (for example, when a user clicks to clear junk files in the **Files** application, and the application needs to request a transient task to complete the cleanup if the user switches to the background before the cleanup is complete), the application can use the transient task mechanism.
 
 If an application has a service that can be intuitively perceived by users and needs to run in the background for a long period of time (for example, music playback in the background), the application can request a continuous task.
 
@@ -34,9 +35,9 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspendInfo
 
-Requests delayed suspension after the application switches to the background.
+Requests delayed suspension for a background application.
 
-The default duration of delayed suspension is 3 minutes when the battery level is higher than or equal to the broadcast low battery level and 1 minute when the battery level is lower than the broadcast low battery level.
+The default duration of delayed suspension is 3 minutes in normal cases and 1 minute when the battery is low (based on the system low battery broadcast).
 
 > **NOTE**
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.requestSuspendDelay](js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay) instead.
@@ -47,40 +48,38 @@ The default duration of delayed suspension is 3 minutes when the battery level i
 
 | Name     | Type                  | Mandatory  | Description                            |
 | -------- | -------------------- | ---- | ------------------------------ |
-| reason   | string               | Yes   | Reason for delayed transition to the suspended state.                    |
+| reason   | string               | Yes   | Reason for delayed suspension.                    |
 | callback | Callback&lt;void&gt; | Yes   | Invoked when a delay is about to time out. Generally, this callback is used to notify the application 6 seconds before the delay times out.|
 
 **Return value**
 
 | Type                                   | Description       |
 | ------------------------------------- | --------- |
-| [DelaySuspendInfo](#delaysuspendinfodeprecated) | Information about the suspension delay.|
+| [DelaySuspendInfo](#delaysuspendinfodeprecated) | Information about the suspension delay, including the ID and remaining time of the current task. |
 
 **Example**
 
-  ```ts
-  import backgroundTaskManager from '@ohos.backgroundTaskManager';
-  import { BusinessError } from '@ohos.base';
+```ts
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
   
-  // Set the reason for delayed suspension.
-  let myReason = 'test requestSuspendDelay';
-  // Request delayed suspension.
-  let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-      console.info("Request suspension delay will time out.");
-  })
-  // Print the delayed suspension information.
-  let id = delayInfo.requestId;
-  let time = delayInfo.actualDelayTime;
-  console.info("The requestId is: " + id);
-  console.info("The actualDelayTime is: " + time);
-  ```
-
+// Set the reason for delayed suspension.
+let myReason = 'test requestSuspendDelay';
+// Request delayed suspension.
+let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+  console.info('Request suspension delay will time out.');
+})
+// Print the delayed suspension information.
+let id = delayInfo.requestId;
+let time = delayInfo.actualDelayTime;
+console.info('The requestId is: ' + id);
+console.info('The actualDelayTime is: ' + time);
+```
 
 ## backgroundTaskManager.getRemainingDelayTime<sup>(deprecated)</sup>
 
 getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the remaining duration before the application is suspended. This API uses an asynchronous callback to return the result.
+Obtains the remaining duration before the app is suspended. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.getRemainingDelayTime](js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime) instead.
@@ -92,30 +91,29 @@ Obtains the remaining duration before the application is suspended. This API use
 | Name      | Type                         | Mandatory  | Description                                      |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
 | requestId | number                      | Yes   | ID of the suspension delay request. The value is obtained by calling [requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelaydeprecated).|
-| callback  | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the remaining duration before the application is suspended, in milliseconds.|
+| callback  | AsyncCallback&lt;number&gt; | Yes    | Callback used to return the remaining time of the transient task, in milliseconds. |
 
 **Example**
 
-  ```ts
-  import backgroundTaskManager from '@ohos.backgroundTaskManager';
-  import { BusinessError } from '@ohos.base';
+```ts
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
+import { BusinessError } from '@ohos.base';
 
-  let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
-  backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessError, res: number) => {
-      if(err) {
-          console.info('callback => Operation getRemainingDelayTime failed. Cause: ' + err.code);
-      } else {
-          console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
-      }
-  })
-  ```
-
+let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
+backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessError, res: number) => {
+  if (err) {
+    console.error(`callback => Operation getRemainingDelayTime failed. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+  }
+});
+```
 
 ## backgroundTaskManager.getRemainingDelayTime<sup>(deprecated)</sup>
 
 getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 
-Obtains the remaining duration before the application is suspended. This API uses a promise to return the result.
+Obtains the remaining duration before the app is suspended. This API uses a promise to return the result.
 
 > **NOTE**
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.getRemainingDelayTime](js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1) instead.
@@ -132,7 +130,7 @@ Obtains the remaining duration before the application is suspended. This API use
 
 | Type                   | Description                                      |
 | --------------------- | ---------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the remaining duration before the application is suspended, in milliseconds.|
+| Promise&lt;number&gt; | Promise used to return the remaining duration before the application is suspended, in milliseconds. |
 
 **Example**
 
@@ -140,14 +138,13 @@ Obtains the remaining duration before the application is suspended. This API use
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import { BusinessError } from '@ohos.base';
 
-let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
-    backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
-    console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
+let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
+backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId).then((res:number) => {
+  console.info('promise => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
 }).catch((err : BusinessError) => {
-    console.info('promise => Operation getRemainingDelayTime failed. Cause: ' + err.code);
-})
+  console.info(`promise => Operation getRemainingDelayTime failed. Code: ${err.code}, message: ${err.message}`);
+});
 ```
-
 
 ## backgroundTaskManager.cancelSuspendDelay<sup>(deprecated)</sup>
 
@@ -168,11 +165,12 @@ Cancels the suspension delay.
 
 **Example**
 
-  ```ts
-  let delayInfo = backgroundTaskManager.requestSuspendDelay("test", () => {});
-  backgroundTaskManager.cancelSuspendDelay(delayInfo.requestId);
-  ```
+```ts
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
+let delayInfo = backgroundTaskManager.requestSuspendDelay('test', () => {});
+backgroundTaskManager.cancelSuspendDelay(delayInfo.requestId);
+```
 
 ## backgroundTaskManager.startBackgroundRunning<sup>(deprecated)</sup>
 
@@ -194,7 +192,7 @@ Requests a continuous task from the system. This API uses an asynchronous callba
 | context   | Context                                       | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | bgMode    | [BackgroundMode](#backgroundmodedeprecated)            | Yes  | Background mode requested.                                      |
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Notification parameter, which is used to specify the target page that is redirected to when a continuous task notification is clicked.            |
-| callback  | AsyncCallback&lt;void&gt;                     | Yes  | Callback used to return the result.                        |
+| callback  | AsyncCallback&lt;void&gt;                     | Yes   | Callback used to return the result. If the continuous task is requested, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Example**
 
@@ -206,34 +204,34 @@ import featureAbility from '@ohos.ability.featureAbility';
 import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-function callback(err: BusinessError, data: void) {
+const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error("Operation startBackgroundRunning failed Cause: " + err);
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
-    console.info("Operation startBackgroundRunning succeeded");
+    console.info('Operation startBackgroundRunning succeeded');
   }
 }
 
 let wantAgentInfo : wantAgent.WantAgentInfo = {
   wants: [
     {
-      bundleName: "com.example.myapplication",
-      abilityName: "EntryAbility"
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
     }
   ],
-  operationType: wantAgent.OperationType.START_ABILITY,
+  actionType: wantAgent.OperationType.START_ABILITY,
   requestCode: 0,
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
 wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
   backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
-    backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback)
+    backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback);
 });
 
 ```
 
-Stage model:
+stage model example:
 
 ```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -243,11 +241,11 @@ import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import { BusinessError } from '@ohos.base';
 
-function callback(err: BusinessError, data: void) {
+const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error("Operation startBackgroundRunning failed Cause: " + err);
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
-    console.info("Operation startBackgroundRunning succeeded");
+    console.info('Operation startBackgroundRunning succeeded');
   }
 }
 
@@ -256,18 +254,18 @@ export default class EntryAbility extends UIAbility {
     let wantAgentInfo : wantAgent.WantAgentInfo = {
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
-      operationType: wantAgent.OperationType.START_ABILITY,
+      actionType: wantAgent.OperationType.START_ABILITY,
       requestCode: 0,
       wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
     };
 
     wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
       backgroundTaskManager.startBackgroundRunning(this.context,
-        backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback)
+        backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj, callback);
     });
   }
 };
@@ -291,14 +289,14 @@ Requests a continuous task from the system. This API uses a promise to return th
 | Name   | Type                                         | Mandatory| Description                                                        |
 | --------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context   | Context                                       | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| bgMode    | [BackgroundMode](#backgroundmodedeprecated)            | Yes  | Background mode requested.                                      |
-| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Notification parameter, which is used to specify the target page that is redirected to when a continuous task notification is clicked.              |
+| bgMode    | [BackgroundMode](#backgroundmodedeprecated)            | Yes  | Background mode requested from the system.                                      |
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md) | Yes  | Notification parameter, which specifies the page to be redirected to when a continuous task notification is clicked.              |
 
 **Return value**
 
 | Type            | Description              |
 | -------------- | ---------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value. |
 
 **Example**
 
@@ -313,11 +311,11 @@ import { BusinessError } from '@ohos.base';
 let wantAgentInfo : wantAgent.WantAgentInfo = {
   wants: [
     {
-      bundleName: "com.example.myapplication",
-      abilityName: "EntryAbility"
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
     }
   ],
-  operationType: wantAgent.OperationType.START_ABILITY,
+  actionType: wantAgent.OperationType.START_ABILITY,
   requestCode: 0,
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
@@ -325,14 +323,14 @@ let wantAgentInfo : wantAgent.WantAgentInfo = {
 wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
   backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
     backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
-    console.info("Operation startBackgroundRunning succeeded");
+    console.info('Operation startBackgroundRunning succeeded');
   }).catch((err: BusinessError) => {
-    console.error("Operation startBackgroundRunning failed Cause: " + err);
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   });
 });
 ```
 
-Stage model:
+stage model example:
 
 ```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -347,12 +345,12 @@ export default class EntryAbility extends UIAbility {
     let wantAgentInfo : wantAgent.WantAgentInfo = {
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
       // Type of the operation to perform after the notification is clicked.
-      operationType: wantAgent.OperationType.START_ABILITY,
+      actionType: wantAgent.OperationType.START_ABILITY,
       requestCode: 0,
       // Execution attribute of the operation to perform after the notification is clicked.
       wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
@@ -361,9 +359,9 @@ export default class EntryAbility extends UIAbility {
     wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
       backgroundTaskManager.startBackgroundRunning(this.context,
         backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
-        console.info("Operation startBackgroundRunning succeeded");
+        console.info('Operation startBackgroundRunning succeeded');
       }).catch((err: BusinessError) => {
-        console.error("Operation startBackgroundRunning failed Cause: " + err);
+        console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
       });
     });
   }
@@ -374,7 +372,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context, callback: AsyncCallback&lt;void&gt;): void
 
-Requests to cancel a continuous task. This API uses an asynchronous callback to return the result.
+Requests to cancel a continuous task from the system. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning) instead.
@@ -386,7 +384,7 @@ Requests to cancel a continuous task. This API uses an asynchronous callback to 
 | Name     | Type                       | Mandatory  | Description                                      |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | context  | Context                   | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.                  |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the continuous task is canceled, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Example**
 
@@ -397,11 +395,11 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 import featureAbility from '@ohos.ability.featureAbility';
 import { BusinessError } from '@ohos.base';
 
-function callback(err: BusinessError, data: void) {
+const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error("Operation stopBackgroundRunning failed Cause: " + err);
+    console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
-    console.info("Operation stopBackgroundRunning succeeded");
+    console.info('Operation stopBackgroundRunning succeeded');
   }
 }
 
@@ -409,7 +407,7 @@ backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext(), callbac
 
 ```
 
-Stage model:
+stage model example:
 
 ```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -418,11 +416,11 @@ import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import { BusinessError } from '@ohos.base';
 
-function callback(err: BusinessError, data: void) {
+const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error("Operation stopBackgroundRunning failed Cause: " + err);
+    console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
-    console.info("Operation stopBackgroundRunning succeeded");
+    console.info('Operation stopBackgroundRunning succeeded');
   }
 }
 
@@ -437,7 +435,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context): Promise&lt;void&gt;
 
-Requests to cancel a continuous task. This API uses a promise to return the result.
+Requests to cancel a continuous task from the system. This API uses a promise to return the result.
 
 > **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1) instead.
@@ -454,7 +452,7 @@ Requests to cancel a continuous task. This API uses a promise to return the resu
 
 | Type            | Description              |
 | -------------- | ---------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value. |
 
 **Example**
 
@@ -467,14 +465,14 @@ import { BusinessError } from '@ohos.base';
 
 // Cancel a continuous task.
 backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext()).then(() => {
-  console.info("Operation stopBackgroundRunning succeeded");
+  console.info('Operation stopBackgroundRunning succeeded');
 }).catch((err: BusinessError) => {
-  console.error("Operation stopBackgroundRunning failed Cause: " + err);
+  console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
 });
 
 ```
 
-Stage model:
+stage model example:
 
 ```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -487,9 +485,9 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // Cancel a continuous task.
     backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-      console.info("Operation stopBackgroundRunning succeeded");
+      console.info('Operation stopBackgroundRunning succeeded');
     }).catch((err: BusinessError) => {
-      console.error("Operation stopBackgroundRunning failed Cause: " + err);
+      console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
     });
   }
 };
@@ -504,10 +502,10 @@ Provides the information about the suspension delay.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-| Name            | Type    | Read-Only  | Optional  | Description                                      |
+| Name            | Type    | read-only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| requestId       | number | No   | No   | ID of the suspension delay request.                              |
-| actualDelayTime | number | No   | No   | Actual suspension delay duration of the application, in milliseconds.<br>The default duration is 180000 when the battery level is higher than or equal to the broadcast low battery level and 60000 when the battery level is lower than the broadcast low battery level.|
+| requestId       | number | No   | No   | ID of the delayed suspension request.                              |
+| actualDelayTime | number | No   | No   | Actual delayed suspension duration of the application, unit: ms.<br>The default duration is 180000 in normal cases and 60000 when the battery is low (based on the system low battery broadcast).|
 
 ## BackgroundMode<sup>(deprecated)</sup>
 
@@ -526,4 +524,4 @@ Defines the type of a continuous task.
 | LOCATION                | 4    | Positioning and navigation.                 |
 | BLUETOOTH_INTERACTION   | 5    | Bluetooth-related task.                 |
 | MULTI_DEVICE_CONNECTION | 6    | Multi-device connection.                |
-| TASK_KEEPING            | 9    | Computing task (effective only for specific devices).       |
+| TASK_KEEPING            | 9    | Computing tasks.<br>**Note:** Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.        |
