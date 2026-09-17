@@ -5,29 +5,28 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c0ac8fcc98a238d8876502f1ec9d63a5c16c2a67 translatedAt=2026-09-03T12:49:54.145Z -->
 
-**TimePicker** is a component for selecting a time by sliding. It supports 12/24-hour formats, multiple time formats (hour/minute/second), loop scrolling, style customization, and time range restrictions. It is suitable for scenarios where users need to select a time, such as schedule arrangement, time reservation, and task management. It improves user experience, reduces input errors, and can be quickly integrated into applications.
+The **TimePicker** component is used to select time by sliding. It supports the 12-hour and 24-hour formats, multiple time formats (hour/minute/second), cyclic scrolling, style customization, and time range limitation. It is applicable to scenarios where users need to select time, such as schedule arrangement, time reservation, and task management. It improves user experience, reduces input errors, and can be quickly integrated into applications.
 
 >  **NOTE**
 >
-> - This component is supported since API version 8. New APIs added in later versions are marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - It is not recommended to modify attribute data of this component during animation.
+> - Avoid changing component attributes during animation processes.
 >
-> - The maximum number of displayed rows differs between landscape and portrait modes. In portrait mode, the default is 5 rows. In landscape mode, it depends on the system configuration, and the default is 3 rows when not configured. You can use the following parameter to view the specific configuration value: $r('sys.float.ohos_id_picker_show_count_landscape').
+> - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode, use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
 
 
 ## Child Components
 
-This is a basic component, and it is not recommended to include child components.
+This component is a basic component and does not contain child components.
 
 
 ## APIs
 
 TimePicker(options?: TimePickerOptions)
 
-Creates a sliding picker, which uses a 24-hour time range by default. It is suitable for scenarios where a time needs to be selected, such as schedule arrangement, alarm setting, and time recording.
+Creates a time picker, which uses the 24-hour time format by default. It is applicable to scenarios where time needs to be selected, such as scheduling, reminder settings, and time recording.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -37,7 +36,7 @@ Creates a sliding picker, which uses a 24-hour time range by default. It is suit
 
 | Name | Type                                           | Mandatory| Description                    |
 | ------- | ----------------------------------------------- | ---- | ------------------------ |
-| options | [TimePickerOptions](#timepickeroptions) | No   | Parameters for configuring the TimePicker component. Pass this parameter when you need to customize the initial selected time, time format, time range, and other configurations. If this parameter is not passed, the default configuration is used (the initial selected time is the current system time, the time format is hour and minute by default, and the time range is 00:00-23:59 by default, with the default end time being 23:59:59). |
+| options | [TimePickerOptions](#timepickeroptions) | No  | Parameters of the time picker. This parameter is passed when you need to customize the initial selected time, time format, and time range. If this parameter is not passed, the default settings are used. (The initial selected time is the current system time, the default time format is hour and minute, and the default time range is 00:00-23:59 (the default end time is 23:59:59).)|
 
 ## TimePickerOptions
 
@@ -47,10 +46,10 @@ Describes the parameters of the time picker.
 
 | Name                | Type                                           | Read Only| Optional| Description                                                        |
 | -------------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| selected             | Date                                            | No   | Yes   | Sets the time of the selected item.<br>Default value: current system time<br>Since API version 10, this parameter supports [$$](../../../ui/state-management/arkts-two-way-sync.md) two-way binding variables.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11) | No   | Yes   | Specifies the format of the TimePicker to be displayed.<br>Default value: TimePickerFormat.HOUR_MINUTE <br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
-| start<sup>18+</sup>  | Date                                            | No   | Yes   | Specifies the start time of the TimePicker component.<br>Default value: the start time is 00:00:00 (hour = 0, minute = 0)<br>**Note:**<br>1. Only the set hour and minute take effect.<br>2. When start or end is set to a non-default value, loop does not take effect. <br>**Atomic service API:** Since API version 18, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
-| end<sup>18+</sup>    | Date                                            | No   | Yes   | Specifies the end time of the TimePicker component.<br>Default value: the end time is 23:59:59 (hour = 23, minute = 59)<br>**Note:**<br>1. Only the set hour and minute take effect.<br>2. When start or end is set to a non-default value, loop does not take effect. <br>**Atomic service API:** Since API version 18, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+| selected             | Date                                            | No  | Yes  | Time of the selected item.<br>Default value: current system time<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11)| No  | Yes  | Time format.<br>Default value: **TimePickerFormat.HOUR_MINUTE**<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.|
+| start<sup>18+</sup>  | Date                                            | No  | Yes  | Start time of the time picker.<br>Default value: **00:00:00** (hour = 0, minute = 0)<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** or **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Model restriction**: This API can be used only in the stage model.|
+| end<sup>18+</sup>    | Date                                            | No  | Yes  | End time of the time picker.<br>Default value: **23:59:59** (hour = 23, minute = 59)<br>**NOTE**<br>1. Only the hour and minute values take effect.<br>2. If **start** or **end** is set and is not the default value, **loop** does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Model restriction**: This API can be used only in the stage model.|
 
 Property modifications made to **TimePickerOptions** during the **TimePicker** scrolling process may not take effect.
 
@@ -64,19 +63,19 @@ Obtains the current system date and time.
 
 | Name  | Type  | Mandatory| Description  |
 | ------- | ------ | ---- | ------ |
-| value   | number&nbsp;\|&nbsp;string  | Yes | Sets the date format.<br>number: milliseconds, the number of milliseconds elapsed since 00:00:00 on January 1, 1970. Value range: [0, +∞).<br>string: a string in time format, for example, '2025-02-20 08:00:00' or '2025-02-20T08:00:00'. |
+| value   | number&nbsp;\|&nbsp;string  | Yes| Date format.<br>**number**: number of milliseconds since 00:00:00 on January 1, 1970. The value range is [0, +∞).<br>**string**: date string in formats such as 2025-02-20 08:00:00 or 2025-02-20T08:00:00.|
 
 **Method 3**: new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
 
 | Name  | Type  | Mandatory| Description  |
 | --------| ------ | ---- | ------ |
 | year        | number | Yes  | Year, for example, **2025**.|
-| monthIndex  | number | Yes   | Month index (value range: 0 to 11), where 0 indicates January and 11 indicates December. For example, 0 indicates January and 2 indicates March. A value out of range causes a date calculation error.|
+| monthIndex  | number | Yes  | Month index (value range: 0-11), where **0** indicates January and **11** indicates December. For example, the value **0** indicates January, and the value **2** indicates March. If the value is out of range, the date calculation will be incorrect.|
 | date        | number | No  | Date, for example, **10** (if **hours** is set, **date** cannot be omitted).|
-| hours       | number | No   | Hour (value range: [0, 23]). A value out of range causes a date calculation error. For example, 15 (if minutes is set, hours cannot be omitted). Unit: hour.|
-| minutes     | number | No   | Minute (value range: [0, 59]). A value out of range causes a date calculation error. For example, 20 (if seconds is set, minutes cannot be omitted). Unit: minute.|
-| seconds     | number | No   | Second (value range: [0, 59]). A value out of range causes a date calculation error. For example, 20 (if ms is set, seconds cannot be omitted). Unit: second.|
-| ms          | number | No   | Millisecond (value range: [0, 999]). A value out of range causes a date calculation error. For example, 10. Unit: ms (millisecond).|
+| hours       | number | No  | Hour. The value range is [0, 23]. If the value is out of range, the date calculation will be incorrect. For example, **15** (if **minutes** is set, **hours** cannot be omitted). Unit: hour|
+| minutes     | number | No  | Minute. The value range is [0, 59]. If the value is out of range, the date calculation will be incorrect. For example, **20** (if **seconds** is set, **minutes** cannot be omitted). Unit: minute|
+| seconds     | number | No  | Second. The value range is [0, 59]. If the value is out of range, the date calculation will be incorrect. For example, **20** (if **ms** is set, **seconds** cannot be omitted). Unit: second|
+| ms          | number | No  | Millisecond. The value range is [0, 999]. If the value is out of range, the date calculation will be incorrect. For example, **10**. Unit: ms.|
 
 **Handling in the case of date configuration exceptions**
 
@@ -112,7 +111,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 useMilitaryTime(value: boolean)
 
-Sets whether the time is displayed in 24-hour format. If this API is not used, the system time format is used by default. The 24-hour format is suitable for precise time recording and scheduling scenarios, while the 12-hour format is suitable for more intuitive time display requirements such as daily alarm setting.
+Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. The 24-hour format is suitable for precise time recording and scheduling, while the 12-hour format is applicable to more intuitive time display requirements such as daily reminder settings.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -122,7 +121,7 @@ Sets whether the time is displayed in 24-hour format. If this API is not used, t
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value | boolean | Yes | Whether the time is displayed in 24-hour format.<br>- true: The time is displayed in 24-hour format.<br>- false: The time is displayed in 12-hour format. |
+| value  | boolean | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.|
 
 ### useMilitaryTime<sup>18+</sup>
 
@@ -140,7 +139,7 @@ Sets whether the time is displayed in 24-hour format. If this attribute is not s
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether the displayed time is in 24-hour format.<br>- true: The displayed time is in 24-hour format.<br>- false: The displayed time is in 12-hour format.<br>When the value of isMilitaryTime is undefined, the system setting is followed.|
+| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to display the time in 24-hour format or 12-hour format.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>When the value is **undefined**, the system time format is used by default.|
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -158,7 +157,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the edge items (the second item above or below the selected item).<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight of edge items (the second item above or below the selected item).<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>} |
 
 >  **NOTE**
 >
@@ -180,7 +179,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes   | Text color, font size, and font weight of the edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>When the value of style is undefined, the default value is used. |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for edge items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -202,7 +201,7 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the options.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>} |
 
 >  **NOTE**
 >
@@ -224,7 +223,7 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes   | Text color, font size, and font weight of the options.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>When the value of style is undefined, the default value is used. |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Text color, font size, and font weight for candidate items.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 >  **NOTE**
 >
@@ -246,13 +245,13 @@ Sets the text color, font size, and font weight of the selected item.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes   | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>} |
+| value  | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | Yes  | Font color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>} |
 
 ### selectedTextStyle<sup>18+</sup>
 
 selectedTextStyle(style: Optional\<PickerTextStyle>)
 
-Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle10), the **style** parameter additionally supports the **undefined** type.
+Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle10), this API supports the **undefined** type for the **style** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -264,13 +263,13 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes   | Text color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>When the value of style is undefined, the default value is used. |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight of the selected item.<br>Default value:<br>{<br>color: '#ff007dff',<br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### loop<sup>11+</sup>
 
 loop(value: boolean)
 
-Sets whether to enable loop mode. Loop mode is suitable for scenarios where the time needs to be selected through continuous scrolling, while non-loop mode is suitable for scenarios with a fixed time range restriction.
+Sets whether to enable loop scrolling. The loop mode is applicable to scenarios where time needs to be continuously scrolled, while the non-loop mode is applicable to scenarios where the time range is fixed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -282,7 +281,7 @@ Sets whether to enable loop mode. Loop mode is suitable for scenarios where the 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to enable loop mode.<br>- true: loop mode is enabled.<br>- false: loop mode is disabled.<br>Default value: true<br>**Note:** When start or end is set to a non-default value, loop does not take effect. |
+| value  | boolean | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.<br>**Note**: If **start** or **end** is set and is not the default value, **loop** does not take effect.|
 
 ### loop<sup>18+</sup>
 
@@ -290,9 +289,9 @@ loop(isLoop: Optional\<boolean>)
 
 Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop11), this API supports the **undefined** type for the **isLoop** parameter.
 
->  **NOTE**
+> **NOTE**
 >
-> When **start** or **end** is set to a non-default value, **loop** does not take effect.
+> If **start** or **end** is set and is not the default value, **loop** does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -304,13 +303,13 @@ Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop1
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes   | Whether to enable loop mode.<br>- true: enable loop mode.<br>- false: disable loop mode.<br>Default value: true<br>When the value of isLoop is undefined, the default value is used. |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable loop scrolling.<br>- **true**: Enable loop scrolling.<br>- **false**: Disable loop scrolling.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
 
 ### dateTimeOptions<sup>12+</sup>
 
 dateTimeOptions(value: DateTimeOptions)
 
-Sets whether to display a leading zero for the hour, minute, and second. '2-digit' is suitable for scenarios where a unified format is required (such as tables and reports), while 'numeric' is suitable for more concise display requirements.
+Sets whether to display a leading zero for the hours, minutes, and seconds. **'2-digit'** is applicable to scenarios where a unified format is required (such as tables and reports), while **'numeric'** is suitable for simpler display requirements.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -322,7 +321,7 @@ Sets whether to display a leading zero for the hour, minute, and second. '2-digi
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DateTimeOptions](#datetimeoptions12) | Yes   | Sets whether to display leading zeros for the hour, minute, and second.<br>Default value:<br>hour: The default value is "2-digit" in the 24-hour format, which sets whether the hour is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". The default value is "numeric" in the 12-hour format, that is, no leading zero.<br>minute: The default value is "2-digit", which sets whether the minute is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X".<br>second: The default value is "2-digit", which sets whether the second is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X".<br> When the values of hour, minute, and second are set to undefined, the display effect follows the same rules as their default values.|
+| value  | [DateTimeOptions](#datetimeoptions12) | Yes  | Whether to display a leading zero for the hours, minutes, and seconds.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### dateTimeOptions<sup>18+</sup>
 
@@ -340,13 +339,13 @@ Sets whether to display a leading zero for the hours, minutes, and seconds. Comp
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes   | Sets whether the hour, minute, and second are displayed with a leading zero. Currently, only the hour, minute, and second parameters are supported.<br>Default value:<br>hour: The default value is "2-digit" in the 24-hour format. Sets whether the hour is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". The default value is "numeric" in the 12-hour format, that is, no leading zero.<br>minute: The default value is "2-digit". Sets whether the minute is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X".<br>second: The default value is "2-digit". Sets whether the second is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X".<br> When the values of hour, minute, and second are set to undefined, the display effect follows the same rules as their default values.|
+| timeFormat  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[DateTimeOptions](#datetimeoptions12)> | Yes  | Whether to display a leading zero for the hours, minutes, and seconds. Currently only the configuration of the **hour**, **minute**, and **second** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**second**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br> If **hour**, **minute**, or **second** is set to **undefined**, the display follows the default rules.|
 
 ### enableHapticFeedback<sup>12+</sup>
 
 enableHapticFeedback(enable: boolean)
 
-Sets whether to enable haptic feedback.
+Whether to enable haptic feedback.
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
@@ -372,13 +371,13 @@ To enable haptic feedback, you must declare the following permission under **req
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- | ----- |-------------------------------------------------------------------------------------|
-| enable  | boolean | Yes   | Whether to enable haptic feedback.<br>- true: Enable haptic feedback.<br>- false: Disable haptic feedback.<br>Default value: true<br>If this parameter is set to true but the system hardware does not support the vibration function, no vibration feedback is generated. |
+| enable  | boolean | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If this parameter is set to **true** and the system hardware does not support vibration, no haptic vibration will be generated.|
 
 ### enableHapticFeedback<sup>18+</sup>
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
-Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12), the enable parameter additionally supports the undefined type.
+Whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback12), this API supports the **undefined** type for the **enable** parameter.
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
@@ -400,13 +399,13 @@ To enable haptic feedback, you must declare the following permission under **req
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes   | Whether to enable haptic feedback.<br>- true: haptic feedback is enabled.<br>- false: haptic feedback is disabled.<br>Default value: true<br>When the value of enable is undefined, the default value is used.<br>If the value is set to true but the system hardware does not support vibration, no vibration feedback is generated. |
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>If the value of **enable** is **undefined**, the default value is used.<br>If this parameter is set to **true** and the system hardware does not support vibration, no haptic vibration will be generated.|
 
 ### enableCascade<sup>18+</sup>
 
 enableCascade(enabled: boolean)
 
-Sets whether the AM/PM indicator automatically switches based on the hour value. This takes effect only when [useMilitaryTime](#usemilitarytime) is set to false. Automatic switching applies to daily consumer scenarios such as alarms and schedules that emphasize operation efficiency and a smooth experience, while manual switching applies to scenarios such as healthcare and legal affairs that demand strict time precision and tolerate no ambiguity.
+Sets whether the AM/PM indicator automatically switches based on the hour value. Only takes effect when [useMilitaryTime](#usemilitarytime) is set to **false**. Automatic switching is suitable for daily consumer scenarios that prioritize operational efficiency and smooth user experience, such as alarm clocks and calendars. Manual switching is ideal for scenarios that demand high time accuracy and clarity, such as healthcare and legal services.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -418,21 +417,21 @@ Sets whether the AM/PM indicator automatically switches based on the hour value.
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled | boolean | Yes | Whether the AM/PM indicator automatically switches based on the hour. This parameter takes effect only when useMilitaryTime is set to false.<br>- true: automatically switches. When enabled is set to true, it takes effect only when the loop parameter is also set to true.<br>- false: does not automatically switch. The AM/PM indicator must be selected manually and is not automatically adjusted based on the hour.<br>Default value: false |
+| enabled | boolean | Yes  | Sets whether the AM/PM indicator automatically switches based on the hour value. This setting only takes effect when **useMilitaryTime** is set to **false**.<br>- **true**: The AM/PM indicator automatically switches based on the hour value. When **enabled** is set to **true**, it only takes effect if the **loop** parameter is also **true**.<br>- **false**: The AM/PM indicator remains static regardless of hour changes. The AM/PM indicator needs to be manually selected and does not automatically adjust based on the hour value.<br>Default value: **false**.|
 
-> **NOTE**
+>**NOTE**
 >
 > **Constraints:**
 >
-> - If the loop parameter is false or is not set to true, enableCascade(true) does not take effect, and the AM/PM indicator does not switch automatically.
-> - loop(true) must be set to enable the automatic switching feature.
-> - When a non-default start/end is set, the automatic switching of enableCascade also does not take effect.
-> - There is a dependency on useMilitaryTime: enableCascade takes effect only when useMilitaryTime is false (12-hour format).
+> - If the **loop** parameter is set to **false** or not set to **true**, **enableCascade(true)** will not take effect, and the AM/PM indicator will not automatically switch.
+> - The automatic switching feature can be enabled only when **loop(true)** is also set.
+> - If **start** or **end** is set and is not the default value, the automatic switching of **enableCascade** does not take effect.
+> - This parameter depends on **useMilitaryTime**. **enableCascade** takes effect only when **useMilitaryTime** is set to **false** (12-hour format).
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
-Sets the crown sensitivity. High sensitivity applies to scenarios where the time needs to be adjusted quickly, and low sensitivity applies to scenarios where the time needs to be adjusted precisely.
+Sets the sensitivity to the digital crown rotation. High sensitivity is suitable for scenarios where time needs to be quickly adjusted, while low sensitivity is suitable for scenarios where time needs to be precisely adjusted.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -444,7 +443,7 @@ Sets the crown sensitivity. High sensitivity applies to scenarios where the time
 
 | Name  | Type                                    | Mandatory  | Description                     |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes    | Crown response sensitivity.<br>Default value: CrownSensitivity.MEDIUM, indicating a moderate response speed.                    |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | Yes   | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**                   |
 
 >  **NOTE**
 >
@@ -458,9 +457,9 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onChange(callback:&nbsp;(value:&nbsp;TimePickerResult )&nbsp;=&gt;&nbsp;void)
 
-Triggered when the time option returns to the selected item position after the TimePicker is scrolled. It cannot be triggered by the state variable of two-way binding. It applies to scenarios where operations such as saving and updating the UI need to be performed after the user confirms the time selection.
+Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. This event is applicable to scenarios where users need to save data or update the UI after they confirm the time selection.
 
-The callback is triggered after the scroll animation ends. If you need to obtain index changes quickly, use the [onEnterSelectedArea](#onenterselectedarea18) API instead. Note that when [enableCascade](#enablecascade18) is set to true, because the AM/PM column and the hour column are linked, the behavior of this callback may not meet expectations, and it is not recommended to use it in this scenario.
+This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead. Note that when [enableCascade](#enablecascade18) is set to **true**, the callback behavior may not meet expectations because the AM/PM column is linked with the hour column. Therefore, this callback is not recommended in this scenario.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -470,7 +469,7 @@ The callback is triggered after the scroll animation ends. If you need to obtain
 
 | Name| Type                                         | Mandatory| Description          |
 | ------ | --------------------------------------------- | ---- | -------------- |
-| value  | [TimePickerResult](#timepickerresult) | Yes   | Selected time result. The value of hour ranges from 0 to 23, regardless of the display format. |
+| value  | [TimePickerResult](#timepickerresult)| Yes  | Selected time. The value of **hour** ranges from 0 to 23, regardless of the display format.|
 
 ### onChange<sup>18+</sup>
 
@@ -478,7 +477,7 @@ onChange(callback: Optional\<OnTimePickerChangeCallback>)
 
 Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
-The callback is triggered after the scroll animation ends. If you need to obtain index changes quickly, use the [onEnterSelectedArea](#onenterselectedarea18) API instead. Note that when [enableCascade](#enablecascade18) is set to true, because the AM/PM column and the hour column are linked, the behavior of this callback may not meet expectations, and it is not recommended to use it in this scenario.
+This callback is triggered only after the scroll animation completes. To obtain real-time index changes, use [onEnterSelectedArea](#onenterselectedarea18) instead. Note that when [enableCascade](#enablecascade18) is set to **true**, the callback behavior may not meet expectations because the AM/PM column is linked with the hour column. Therefore, this callback is not recommended in this scenario.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -490,15 +489,15 @@ The callback is triggered after the scroll animation ends. If you need to obtain
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnTimePickerChangeCallback](#ontimepickerchangecallback18)> | Yes | Callback invoked when the time is selected.<br>When the value of callback is undefined, the callback is not used. |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnTimePickerChangeCallback](#ontimepickerchangecallback18)> | Yes  | Callback invoked when a time option is selected.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ### onEnterSelectedArea<sup>18+</sup>
 
 onEnterSelectedArea(callback: Callback\<TimePickerResult>)
 
-Triggered when an option enters the divider area during the scrolling of the TimePicker. It applies to scenarios that require a quick response, such as updating the UI in real time and validating the time range in real time during scrolling. Compared with onChange, this callback is triggered earlier and is suitable for scenarios that require immediate feedback.
+Triggered during the scrolling of the time picker when an item enters the divider area. It applies to scenarios that require quick response, such as real-time UI update and time range verification during the scrolling process. Compared with **onChange**, this callback is triggered earlier and is suitable for scenarios that require instant feedback.
 
-The difference from the [onChange](#onchange) event is that this event is triggered earlier than the [onChange](#onchange) event. When the scroll distance of the scrolled column exceeds half the height of the selected item, the option has already entered the divider area, and this event is triggered. When [enableCascade](#enablecascade18) is set to true, because the AM/PM column and the hour column are linked (that is, the AM/PM indicator is automatically adjusted based on the hour value), it is not recommended to use this callback. This callback marks the point at which the option enters the divider area during scrolling, while the options changed by the linkage do not involve scrolling. Therefore, in the return value of the callback, only the value of the currently scrolled column changes normally, and the values of the other unscrolled columns remain unchanged.
+Compared with the [onChange](#onchange) event, this event is triggered earlier, specifically when the scroll distance of the column exceeds half the height of the selected item, which indicates that the item has entered the divider area. When [enableCascade](#enablecascade18) is set to **true**, this callback is not recommended because the AM/PM column is linked with the hour column (the AM/PM identifier automatically adjusts based on the hour). This callback indicates the moment an option enters the divider area during scrolling, and only the value of the currently scrolled column will change. The values of other non-scrolled columns will remain unchanged.
 
 > **NOTE**
 >
@@ -530,7 +529,7 @@ Defines the options for a **DateTimeOptions** object.
 
 | Type                                                        | Description                                      |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| import('../api/@ohos.intl').default.[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | Configuration options that can be set when creating a time and date formatting object. |
+| import('../api/@ohos.intl').default.[DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | Options for creating the **DateTimeOptions** object.|
 
 ## OnTimePickerChangeCallback<sup>18+</sup>
 
@@ -548,11 +547,11 @@ Triggered when a time is selected.
 
 | Name| Type                                         | Mandatory| Description          |
 | ------ | --------------------------------------------- | ---- | -------------- |
-| result | [TimePickerResult](#timepickerresult) | Yes | Selected time result. The value of hour ranges from 0 to 23, regardless of the display format. |
+| result | [TimePickerResult](#timepickerresult)| Yes  | Selected time. The value of **hour** ranges from 0 to 23, regardless of the display format.|
 
 ## TimePickerResult
 
-Returns the selected time result, where hour ranges from 0 to 23, regardless of the display format.
+Returns the selected time. The value of **hour** ranges from 0 to 23, regardless of the display format.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -560,9 +559,9 @@ Returns the selected time result, where hour ranges from 0 to 23, regardless of 
 
 | Name                | Type  | Read Only| Optional| Description                               |
 | -------------------- | ------ | ---- | ---- | ----------------------------------- |
-| hour                 | number | No   | No   | Hour of the selected time.<br>Value range: [0-23], independent of the display format. |
-| minute               | number | No   | No   | Minute of the selected time.<br>Value range: [0-59] |
-| second<sup>11+</sup> | number | No   | No   | Second of the selected time.<br>Value range: [0-59]<br>**Model restriction:** This API can be used only in the stage model. |
+| hour                 | number | No  | No  | Hour portion of the selected time.<br>Value range: [0-23], irrelevant to the display format.|
+| minute               | number | No  | No  | Minute portion of the selected time.<br>Value range: [0-59]|
+| second<sup>11+</sup> | number | No  | No  | Second portion of the selected time.<br>Value range: [0-59]<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## Example
 
@@ -771,9 +770,9 @@ struct TimePickerExample {
 
 ![timePicker](figures/TimePickerDemo6.png)
 
-### Example 7: Setting AM/PM to Follow the Time Linkage
+### Example 7: Enabling the AM/PM Indicator to Automatically Switch Based on the Hour Value in 12-hour Format
 
-This example uses [enableCascade](#enablecascade18) and [loop](#loop11) to implement the linkage of AM/PM following the time in the 12-hour format.
+This example demonstrates how to enable the AM/PM indicator to automatically switch based on the hour value in 12-hour format using [enableCascade](#enablecascade18) and [loop](#loop11).
 
 The **enableCascade** API is added since API version 18.
 
