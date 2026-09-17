@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=cc99e5187aa152bc96569f8b87fca412b6552a60 translatedAt=2026-09-15T13:34:38.088Z pushedAt=2026-09-16T07:50:15.747Z -->
 
 The **sendableRelationalStore** module provides APIs for obtaining **ValuesBucket** of the sendable type from the query result set and transferring it between concurrent instances.
 
@@ -249,7 +250,7 @@ Converts the array data that can be passed across threads into the data that can
 
 | Name| Type           | Mandatory| Description                     |
 | ------ | --------------- | ---- | :------------------------ |
-| values  | collections.Array\<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | Yes  | Array data that can be passed across threads.|
+| values  | [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | Yes   | Array data that can be passed across threads. |
 
 **Return value**
 
@@ -296,7 +297,7 @@ Converts the array data that cannot be passed across threads into the data that 
 
 | Type                                  | Description                       |
 | -------------------------------------- | --------------------------- |
-| collections.Array\<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | Array data that can be passed across threads.|
+| [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[ValueType](#valuetype)> | Array data that can be passed across threads. |
 
 **Error codes**
 
@@ -445,7 +446,7 @@ async function insert(context: Context, dataItem: sendableRelationalStore.Values
   console.info(`Create table test successfully!`);
 
   // Insert data.
-  const rowId = await store.insertSync("test", dataItem);
+  const rowId = store.insertSync("test", dataItem);
   await store.close();
   return rowId;
 }
@@ -457,6 +458,7 @@ async function queryByName(context: Context, name: string) {
     securityLevel: relationalStore.SecurityLevel.S3,
   };
 
+  let result: sendableRelationalStore.ValuesBucket | undefined;
   let store = await relationalStore.getRdbStore(context, CONFIG);
   console.info(`Get store successfully!`);
 
@@ -466,9 +468,11 @@ async function queryByName(context: Context, name: string) {
   const resultSet = await store.query(predicates);
   if (resultSet.rowCount > 0 && resultSet.goToFirstRow()) {
     // Obtain the cross-thread transferable ValuesBucket to return the query result.
-    return resultSet.getSendableRow();
+    result = resultSet.getSendableRow();
   }
-  return null;
+  resultSet.close();
+  await store.close();
+  return result;
 }
 
 

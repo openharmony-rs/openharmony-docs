@@ -1,10 +1,11 @@
 # @ohos.data.dataSharePredicates (DataShare Predicates) (System API)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=fc12a60303b8bc12e62d7efd248367077be6ad48 translatedAt=2026-09-15T12:44:29.684Z pushedAt=2026-09-16T07:50:15.732Z -->
 
 You can use **DataSharePredicates** to specify conditions for [updating](js-apis-data-dataShare-sys.md#update), [deleting](js-apis-data-dataShare-sys.md#delete), and [querying](js-apis-data-dataShare-sys.md#query) data when **DataShare** is used to manage data.
 
@@ -12,7 +13,7 @@ The APIs provided by **DataSharePredicates** correspond to the filter criteria o
 
 **DataSharePredicates** applies to the following scenario:
 
-- It is used as the search criteria when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
+- It is used as the search criteria when APIs of the [RDB store](js-apis-data-relationalStore-sys.md) and [distributed KV store](js-apis-distributedKVStore-sys.md) are called. In this scenario, use the corresponding predicate based on the database type.
 
 > **NOTE**
 >
@@ -37,7 +38,7 @@ Provides methods for setting different **DataSharePredicates** objects. This typ
 
 contains(field: string, value: string): DataSharePredicates
 
-Creates a **DataSharePredicates** object to match the data that contains the specified value.
+This API is used to configure the predicate to match the field that contains the specified value.
 
 Currently, only RDB store supports this predicate.
 
@@ -348,7 +349,7 @@ prefixKey(prefix: string): DataSharePredicates
 
 Creates a **DataSharePredicates** object to match the data with the specified key prefix.
 
-Currently, only the KVDB supports this **DataSharePredicates** object.
+Currently, only the KV store supports this predicate.
 
 **System API**: This is a system API.
 
@@ -379,7 +380,7 @@ inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 
 Creates a **DataSharePredicates** object to match the data whose keys are within the given range.
 
-Currently, only the KVDB supports this **DataSharePredicates** object.
+Currently, only the KV store supports this predicate.
 
 **System API**: This is a system API.
 

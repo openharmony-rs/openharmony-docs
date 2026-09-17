@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=65982c099488c74d4e622abe3bbf966201e7cc98 translatedAt=2026-09-15T09:49:50.321Z pushedAt=2026-09-16T07:50:15.621Z -->
 
 > **NOTE**
 > 
@@ -32,11 +33,11 @@ Defines the types of the value in a KV pair. The type varies with the parameter 
 
 | Type   | Description                |
 | ------- | -------------------- |
-| null<sup>10+</sup>    | Null.  |
+| null    | The value is null.   |
 | number  | Number.  |
 | string  | String. |
 | boolean | Boolean.|
-| Uint8Array<sup>10+</sup>           | Uint8 array.           |
+| Uint8Array           | The value is a Uint8 array.            |
 | Asset<sup>10+</sup>  | [Asset](arkts-apis-data-relationalStore-i.md#asset10).<br>If the value type is Asset, the type in the SQL statement for creating a table must be ASSET.|
 | Assets<sup>10+</sup> | [Assets](#assets10).<br>If the value type is Assets, the type in the SQL statement for creating a table must be ASSETS.|
 | Float32Array<sup>12+</sup> | Array of 32-bit floating-point numbers.<br>If the field type is Float32Array, the type in the SQL statement for creating a table must be floatvector(128).|
@@ -54,7 +55,7 @@ Defines the data in the form of a KV pair. **ValuesBucket** cannot be passed acr
 | ---------------- | ---------------------------- |
 | Record<string, [ValueType](#valuetype)> | Types of the key and value in a KV pair. The key type is string, and the value type is [ValueType](#valuetype).|
 
-## PRIKeyType<sup>10+</sup> 
+## PRIKeyType<sup>10+</sup>
 
 type PRIKeyType = number | string
 
@@ -71,7 +72,7 @@ Enumerates the types of the primary key in a row of a database table.
 
 type UTCTime = Date
 
-Represents the data type of the UTC time.
+Data type used to represent UTC time.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -79,7 +80,7 @@ Represents the data type of the UTC time.
 | ---- | --------------- |
 | Date | UTC time.|
 
-## ModifyTime<sup>10+</sup> 
+## ModifyTime<sup>10+</sup>
 
 type ModifyTime = Map<PRIKeyType, UTCTime>
 
@@ -89,7 +90,7 @@ Represents the data type of the primary key and modification time of a database 
 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
-| Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | The key is the primary key of a row in the database table, and the value is the last modification time of the row in UTC format.|
+| Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | The key is the primary key of a row in the database table, and the value indicates the last modification time of the row, in UTC format. |
 
 ## RowData<sup>23+</sup>
 

@@ -5,6 +5,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=315af7fbe1ff3251dfebf4c4e58304dd13ed2f09 translatedAt=2026-09-15T14:13:00.113Z pushedAt=2026-09-16T07:50:15.760Z -->
 
 The **distributedKVStore** module implements collaboration between databases for different devices that form a Super Device. You can use the APIs provided by this module to save application data to a distributed key-value (KV) store and perform operations, such as adding, deleting, modifying, querying, and synchronizing data in distributed KV stores.
 
@@ -30,7 +31,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 ## SingleKVStore
 
-Implements data management in a single KV store, such as adding data, deleting data, and subscribing to data changes or data sync completion.
+Provides APIs for data management in a single KV store, such as adding data, deleting data, and subscribing to data changes or data sync completion events.
 
 Before calling **SingleKVStore** APIs, you need to use [getKVStore](js-apis-distributedKVStore.md#getkvstore) to create a **SingleKVStore** instance.
 
@@ -38,7 +39,7 @@ Before calling **SingleKVStore** APIs, you need to use [getKVStore](js-apis-dist
 
 putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Writes batch data to this single KV store. This API uses an asynchronous callback to return the result.
+Writes key-value pairs in batches. Each **ValuesBucket** object contains a key and a value. This API uses an asynchronous callback to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -51,7 +52,7 @@ Writes batch data to this single KV store. This API uses an asynchronous callbac
 | Name  | Type                                                    | Mandatory| Description              |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | value    | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | Yes  | Data to write.|
-| callback | AsyncCallback&lt;void&gt;                                     | Yes  | Callback used to return the result.        |
+| callback | AsyncCallback&lt;void&gt;                                     | Yes   | Callback function. If the operation succeeds, err is undefined; otherwise, err is an error object.         |
 
 **Error codes**
 
@@ -59,7 +60,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                            |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
@@ -68,7 +69,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | ID| **Error Message**                                |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> Applicable versions: 10+ |
 
 **Example**
 
@@ -77,20 +78,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {key:"name", value: "LiSi"};
-  let bucket2: ValuesBucket = {key:"age", value: 20};
-  let bucket3: ValuesBucket = {key:"deposits", value: 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people, (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
-  })
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -98,7 +99,7 @@ try {
 
 putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
-Writes batch data to this single KV store. This API uses a promise to return the result.
+Writes key-value pairs in batches. Each **ValuesBucket** object contains a key and a value. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -124,7 +125,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                            |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
@@ -133,7 +134,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | ID| **Error Message**                                |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> Applicable versions: 10+ |
 
 **Example**
 
@@ -142,18 +143,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {key:"name", value: "LiSi"};
-  let bucket2: ValuesBucket = {key:"age", value: 20};
-  let bucket3: ValuesBucket = {key:"deposits", value: 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people).then(() => {
-    console.info(`Succeeded in putting patch`);
+    console.info(`Succeeded in putting batch`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to do putBatch error.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to do putBatch error. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -173,8 +174,8 @@ Deletes KV pairs from this KV store. This API uses an asynchronous callback to r
 
 | Name    | Type                                                    | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the KV pairs to delete. If this parameter is **null**, define the processing logic.|
-| callback   | AsyncCallback&lt;void&gt;                                    | Yes  | Callback used to return the result.                                     |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes   | Filter indicator. Not allowed to be null. |
+| callback   | AsyncCallback&lt;void&gt;                                    | Yes   | Callback function. If the operation succeeds, **err** is **undefined**; otherwise, **err** is an error object.                                      |
 
 **Error codes**
 
@@ -182,7 +183,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                    |
 | 15100005    | Database or result set already closed. |
@@ -191,7 +192,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | ID| **Error Message**                                |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> Applicable versions: 10+ |
 
 **Example**
 
@@ -201,27 +202,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore.put("name", "bob", (err:BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  kvStore.put('name', 'bob', (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     if (kvStore != null) {
-      kvStore.delete(predicates, (err:BusinessError) => {
-        if (err == undefined) {
-          console.info('Succeeded in deleting');
+      kvStore.delete(predicates, (err: BusinessError) => {
+        if (err) {
+          console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
         } else {
-          console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+          console.info('Succeeded in deleting');
         }
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -241,7 +242,7 @@ Deletes KV pairs from this KV store. This API uses a promise to return the resul
 
 | Name    | Type                                                    | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the KV pairs to delete. If this parameter is **null**, define the processing logic.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Indicates the filter condition. It cannot be null. |
 
 **Return value**
 
@@ -255,7 +256,7 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                            |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
@@ -264,7 +265,7 @@ For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
 | ID| **Error Message**                                |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> Applicable versions: 10+ |
 
 **Example**
 
@@ -274,23 +275,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore.put("name", "bob").then(() => {
+  kvStore.put('name', 'bob').then(() => {
     console.info(`Succeeded in putting data`);
     if (kvStore != null) {
       kvStore.delete(predicates).then(() => {
         console.info('Succeeded in deleting');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -298,7 +299,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-Obtains a **KVStoreResultSet** object that matches the specified conditions. This API uses an asynchronous callback to return the result.
+Obtains the **KVStoreResultSet** object that matches the specified **Predicates** object. This API uses an asynchronous callback to return the result. After the result set is obtained, call [closeResultSet](js-apis-distributedKVStore.md#closeresultset) in a timely manner to close the result set and release resources.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -310,7 +311,7 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions. Thi
 
 | Name    | Type                                                    | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.             |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter indicator. Not allowed to be null. |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | Yes  | Callback used to return the **KVStoreResultSet** object obtained.|
 
 **Error codes**
@@ -319,9 +320,9 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. <br> Applicable versions: 10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -334,27 +335,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred. Code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -362,7 +363,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-Obtains a **KVStoreResultSet** object that matches the specified conditions. This API uses a promise to return the result.
+Obtains the **KVStoreResultSet** object that matches the specified **Predicates** object. This API uses a promise to return the result. After the result set is obtained, call [closeResultSet](js-apis-distributedKVStore.md#closeresultset) in a timely manner to close the result set and release resources.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -374,13 +375,13 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions. Thi
 
 | Name    | Type                                                    | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter indicator. Not allowed to be null. |
 
 **Return value**
 
 | Type                                                | Description                     |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise that returns no value.|
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise used to return a **KVStoreResultSet** object. |
 
 **Error codes**
 
@@ -388,9 +389,9 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. <br> Applicable versions: 10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -403,7 +404,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -411,16 +412,16 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -438,7 +439,7 @@ Before calling **DeviceKVStore** APIs, you need to use [getKVStore](js-apis-dist
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-Obtains a **KVStoreResultSet** object that matches the specified conditions for this device. This API uses an asynchronous callback to return the result.
+Obtains the **KVStoreResultSet** object on this device that matches the specified **Predicates** object. This API uses an asynchronous callback to return the result. After the result set is obtained, call [closeResultSet](js-apis-distributedKVStore.md#closeresultset) in a timely manner to close the result set and release resources.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -450,7 +451,7 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.             |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes   | Filter condition. Not allowed to be null.              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | Yes  | Callback used to return the **KVStoreResultSet** object obtained.|
 
 **Error codes**
@@ -459,9 +460,9 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. <br> Applicable versions: 10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -474,27 +475,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -502,7 +503,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-Obtains a **KVStoreResultSet** object that matches the specified conditions for this device. This API uses a promise to return the result.
+Obtains the **KVStoreResultSet** object on this device that matches the specified **Predicates** object. This API uses a promise to return the result. After the result set is obtained, call [closeResultSet](js-apis-distributedKVStore.md#closeresultset) in a timely manner to close the result set and release resources.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -514,13 +515,13 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 
 | Name    | Type                                                        | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.|
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter condition, not allowed to be null. |
 
 **Return value**
 
 | Type                                                | Description                     |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise that returns no value.|
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise used to return the **KVStoreResultSet** object. |
 
 **Error codes**
 
@@ -528,9 +529,9 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. <br> Applicable versions: 10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -543,7 +544,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -551,15 +552,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -567,11 +568,11 @@ try {
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-Obtains a **KVStoreResultSet** object that matches the specified conditions for a device. This API uses an asynchronous callback to return the result.
+Obtains the **KVStoreResultSet** object on the specified device that matches the specified **Predicates** object. This API uses an asynchronous callback to return the result. After the result set is obtained, call [closeResultSet](js-apis-distributedKVStore.md#closeresultset) in a timely manner to close the result set and release resources.
 > **NOTE**
 >
-> **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
-> For details about how to obtain **deviceId**, see the example of [sync](js-apis-distributedKVStore.md#sync).
+> The **deviceId** is obtained by calling [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
+> For details about how to obtain **deviceId**, see [sync API example](js-apis-distributedKVStore.md#sync).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -583,8 +584,8 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 
 | Name    | Type                                                    | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| deviceId  | string                                                       | Yes  | ID of the target device.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.             |
+| deviceId  | string                                                       | Required   | Network ID of the device whose data is to be queried. This parameter cannot be left empty.                                     |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Required   | Filter indicator. It is not allowed to be null.              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | Yes  | Callback used to return the **KVStoreResultSet** object obtained.|
 
 **Error codes**
@@ -593,9 +594,9 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. <br> Applicable versions: 10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -608,27 +609,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -636,11 +637,11 @@ try {
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-Obtains a **KVStoreResultSet** object that matches the specified conditions for a device. This API uses a promise to return the result.
+Obtains the **KVStoreResultSet** object on the specified device that matches the specified **Predicates** object. This API uses a promise to return the result. After the result set is obtained, call [closeResultSet](js-apis-distributedKVStore.md#closeresultset) in a timely manner to close the result set and release resources.
 > **NOTE**
 >
-> **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
-> For details about how to obtain **deviceId**, see the example of [sync](js-apis-distributedKVStore.md#sync).
+> The **deviceId** is obtained by calling [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
+> For details about how to obtain **deviceId**, see [sync API example](js-apis-distributedKVStore.md#sync).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -652,14 +653,14 @@ Obtains a **KVStoreResultSet** object that matches the specified conditions for 
 
 | Name    | Type                                                    | Mandatory| Description                                           |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| deviceId  | string                                                       | Yes  | ID of the target device.                                    |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | **DataSharePredicates** object that specifies the **KVStoreResultSet** object to obtain. If this parameter is **null**, define the processing logic.|
+| deviceId  | string                                                       | Yes   | Network ID of the device whose data is to be queried. This parameter cannot be left empty.                                     |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes   | Filter condition. It cannot be null. |
 
 **Return value**
 
 | Type                                                | Description                     |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise that returns no value.|
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise used to return the **KVStoreResultSet** object. |
 
 **Error codes**
 
@@ -667,9 +668,9 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 
 | ID| **Error Message**                          |
 | ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max limits.                     |
+| 15100001     | Over max limits. <br> Applicable versions: 10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -682,7 +683,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -690,14 +691,14 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
