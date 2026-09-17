@@ -171,61 +171,66 @@
    <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-      console.error('deviceList_ is empty');
-      this.logInfo_ += '\n[ERROR] deviceList_ is empty';
-      return;
-    }
-    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-    try {
-      if (!usbManager.hasRight(usbDevice.name)) {
-        console.error('permission denied');
-        this.logInfo_ += '\n[ERROR] permission denied';
-        return;
-      }
-    } catch (error) {
-      console.error(`USB hasRight failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
-      return;
-    }
-
-    let devicePipe: usbManager.USBDevicePipe;
-    try {
-      devicePipe = usbManager.connectDevice(usbDevice);
-    } catch (error) {
-      console.error(`connectDevice failed ${error}`);
-      this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
-      return
-    }
-    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
-    let usbInterfaces: usbManager.USBInterface[] = [];
-    let usbInterface: usbManager.USBInterface | undefined = undefined;
-    let usbEndpoints: usbManager.USBEndpoint[] = [];
-    let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
-    for (let i = 0; i < usbConfigs?.length; i++) {
-      usbInterfaces = usbConfigs[i]?.interfaces;
-      for (let j = 0; j < usbInterfaces?.length; j++) {
-        usbEndpoints = usbInterfaces[j]?.endpoints;
-        usbEndpoint = usbEndpoints?.find((value) => {
-          // direction为请求方向，0表示写入数据，128表示读取数据
-          return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-        })
-        if (usbEndpoint !== undefined) {
-          usbInterface = usbInterfaces[j];
-          break;
-        }
-      }
-    }
-    if (usbEndpoint === undefined) {
-      console.error(`get usbEndpoint error`);
-      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
-      return;
-    }
-    if (usbInterface === undefined) {
-      console.error(`get usbInterface error`);
-      this.logInfo_ += '\n[ERROR] get usbInterface error';
-      return;
-    }
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList_ is empty');
+     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     return;
+   }
+   let usbDevice: usbManager.USBDevice = this.deviceList_[0];
+   try {
+     if (!usbManager.hasRight(usbDevice.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     return;
+   }
+   
+   let devicePipe: usbManager.USBDevicePipe;
+   try {
+     devicePipe = usbManager.connectDevice(usbDevice);
+     if (!devicePipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+   } catch (error) {
+     console.error(`connectDevice failed ${error}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
+     return
+   }
+   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
+   let usbInterfaces: usbManager.USBInterface[] = [];
+   let usbInterface: usbManager.USBInterface | undefined = undefined;
+   let usbEndpoints: usbManager.USBEndpoint[] = [];
+   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
+   for (let i = 0; i < usbConfigs?.length; i++) {
+     usbInterfaces = usbConfigs[i]?.interfaces;
+     for (let j = 0; j < usbInterfaces?.length; j++) {
+       usbEndpoints = usbInterfaces[j]?.endpoints;
+       usbEndpoint = usbEndpoints?.find((value) => {
+         // direction为请求方向，0表示写入数据，128表示读取数据
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+       })
+       if (usbEndpoint !== undefined) {
+         usbInterface = usbInterfaces[j];
+         break;
+       }
+     }
+   }
+   if (usbEndpoint === undefined) {
+     console.error(`get usbEndpoint error`);
+     this.logInfo_ += '\n[ERROR] get usbEndpoint error';
+     return;
+   }
+   if (usbInterface === undefined) {
+     console.error(`get usbInterface error`);
+     this.logInfo_ += '\n[ERROR] get usbInterface error';
+     return;
+   }
    ```
 
    
@@ -281,19 +286,21 @@
        type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
        timeout: 2000,
        length: 10,
-       callback: () => {
+       callback: (err: BusinessError , callBackData: usbManager.SubmitTransferCallback) => {
+         if (err) {
+           console.error(`transfer error: ${err}`);
+           this.logInfo_ += '\n[ERROR] transfer error: ' + JSON.stringify(err);
+           return;
+         }
+         console.info(`callBackData = ${callBackData}`);
+         this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
+         console.info('transfer success,result = ' + transferParams?.buffer.toString());
+         this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
        },
        userData: new Uint8Array(10),
        buffer: new Uint8Array(10),
        isoPacketCount: 2,
      };
-   
-     transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
-       console.info(`callBackData = ${callBackData}`);
-       this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-       console.info('transfer success,result = ' + transferParams?.buffer.toString());
-       this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
-     }
      usbManager.usbSubmitTransfer(transferParams);
      console.info('USB transfer request submitted.');
      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
@@ -311,11 +318,21 @@
    ``` TypeScript
    try {
      usbManager.usbCancelTransfer(transferParams);
+   } catch (error) {
+     console.error(`usbCancelTransfer failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: ' + JSON.stringify(error);
+   }
+   try {
      usbManager.releaseInterface(devicePipe, usbInterface);
+   } catch (error) {
+     console.error(`releaseInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: ' + JSON.stringify(error);
+   }
+   try {
      usbManager.closePipe(devicePipe);
    } catch (error) {
-     console.error(`release failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
+     console.error(`closePipe failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: ' + JSON.stringify(error);
    }
    ```
 

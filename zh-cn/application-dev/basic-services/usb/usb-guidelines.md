@@ -170,6 +170,11 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
      }
      // 打开设备，获取数据传输通道。
      let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+     if (!pipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
      if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
        console.error('invalid interface');
        this.logInfo_ += '\n[ERROR] invalid interface';
@@ -179,8 +184,27 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
      /*
        打开对应接口，在设备信息（deviceList）中选取对应的interface。
        interface1为设备配置中的一个接口。
+       开关关闭时调用claimInterface（共享式占用，返回0成功），
+       开关打开时调用claimInterfaceExclusive（独占式占用，失败抛出BusinessError）。
       */
-     usbManager.claimInterface(pipe, interface1, true);
+     if (this.isExclusiveClaim_) {
+       usbManager.claimInterfaceExclusive(pipe, interface1, true, (conflict: usbManager.InterfaceConflictInfo) => {
+         // 其他应用claim同一接口时的异步冲突通知
+         const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+           `interfaceId = ${conflict.interfaceId}`;
+         console.info(`interface conflict: ${conflictMsg}`);
+         this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+       });
+       console.info('claimInterfaceExclusive success');
+       this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+     } else {
+       let claimInterfaceResult: number = usbManager.claimInterface(pipe, interface1, true);
+       if (claimInterfaceResult !== 0) {
+         console.error(`claimInterface error = ${claimInterfaceResult}`);
+         this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+         return;
+       }
+     }
      this.pipe_ = pipe;
      this.interface_ = interface1;
      console.info('open device success');
