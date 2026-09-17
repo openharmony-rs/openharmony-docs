@@ -195,7 +195,7 @@ radiusWidth(rWidth: number \| string): RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [RectShape](#rectshape) | 返回设置圆角半径的宽度后的RectShape对象，可用于链式调用继续配置矩形形状。 |
+| [RectShape](#rectshape) | 返回设置圆角半径宽度后的RectShape对象，可用于链式调用继续配置矩形形状。 |
 
 ### radiusHeight
 
