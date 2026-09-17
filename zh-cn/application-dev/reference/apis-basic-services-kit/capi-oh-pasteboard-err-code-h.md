@@ -25,7 +25,7 @@
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
+| -- | -- |
 | [PASTEBOARD_ErrCode](#pasteboard_errcode) | PASTEBOARD_ErrCode | 错误码信息。 |
 
 ## 枚举类型说明
