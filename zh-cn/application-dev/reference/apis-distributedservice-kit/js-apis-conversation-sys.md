@@ -21,10 +21,9 @@
 ## 属性
 **系统能力：** SystemCapability.Communication.SoftBus.Core
 
-
 ## 导入模块
 
-```js
+```TypeScript
 import { conversation } from '@kit.DistributedServiceKit';
 ```
 

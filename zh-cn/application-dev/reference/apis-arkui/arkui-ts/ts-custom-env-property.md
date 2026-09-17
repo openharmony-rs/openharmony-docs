@@ -1,4 +1,4 @@
-# \@CustomEnv：自定义环境变量 (ArkTS-Dyn)
+# @CustomEnv：自定义环境变量 (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
@@ -95,7 +95,7 @@ static create\<T\>(): CustomEnvKey\<T\>
 
 |类型|说明| 
 | ----- | ----- | 
-| [CustomEnvKey\<T\>](#customenvkeys)| 自定义环境变量Key，用于标识要获取的自定义环境变量。 | 
+| [CustomEnvKey](#customenvkeys)\<T\>| 自定义环境变量Key，用于标识要获取的自定义环境变量。 | 
 
 **示例：**
 

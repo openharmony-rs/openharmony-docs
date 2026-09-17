@@ -462,7 +462,7 @@ let p = lock.lockAsync<void, string>(
 | --------- | ------------------------------- | ---- | ---- | --------------------------------------------------------- |
 | name      | string                          | 否   | 否   | 锁的名称。                                                |
 | mode      | [AsyncLockMode](#asynclockmode) | 否   | 否   | 锁的模式。                                                |
-| contextId | number                          | 否   | 否   | [AsyncLockMode](#asynclockmode)调用者的执行上下文标识符。 |
+| contextId | number                          | 否   | 否   | [AsyncLock](#asynclock)调用者的执行上下文标识符。 |
 
 ## AbortSignal
 

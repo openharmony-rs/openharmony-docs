@@ -815,7 +815,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityByType(type: string, wantParam: Record\<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
 
-通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -886,7 +886,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityByType(type: string, wantParam: Record\<string, RecordData>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
 
-通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility。使用callback异步回调。仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -957,7 +957,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityByType(type: string, wantParam: Record\<string, Object>, abilityStartCallback: AbilityStartCallback): Promise\<void>
 
-通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility组件。使用Promise异步回调。仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1033,7 +1033,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 startAbilityByType(type: string, wantParam: Record\<string, RecordData>, abilityStartCallback: AbilityStartCallback): Promise\<void>
 
-通过type隐式启动UIExtensionAbility。使用Promise异步回调。仅支持处于前台的应用调用。
+通过type隐式启动UIExtensionAbility。使用Promise异步回调。仅支持处于前台的应用调用。该接口不支持启动分身应用的UIExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

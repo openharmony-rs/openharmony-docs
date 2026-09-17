@@ -76,3 +76,15 @@
 | ------- | ------ | ---- | ---- | ------------------ |
 | name   | string | 否   | 否   | 字体特征的名称。通常为4个ASCII字符组成的标签（如liga、frac、case等），需对应的ttf文件支持才能生效。建议通过字体查看工具或查阅字体文档，确定有效名称。|
 | value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 字体特征的数值，浮点数。需要对应的ttf文件支持才能生效。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。|
+
+## RecordCmd
+
+描述一组已录制的绘制指令。该对象为不可变对象，由[RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)创建，可传递给[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)进行指令回放，从而复现已录制的绘制操作。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0

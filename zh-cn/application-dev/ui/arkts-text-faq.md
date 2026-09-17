@@ -32,13 +32,13 @@
 
 ArkTS-Dyn示例：
 
-  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
+  <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakExample.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   @Entry
   @Component
-  struct WordBreakd {
+  struct WordBreakExample {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -230,9 +230,9 @@ ArkTS-Sta示例：
 
 实现步骤：
 
-1.将标签和长文本放在同一个沿水平方向布局的容器Row中。
+1. 将标签和长文本放在同一个沿水平方向布局的容器Row中。
 
-2.中间长文本设置textOverflow属性为TextOverflow.Ellipsis，空间不足时截断文本，显示省略号。
+2. 中间长文本设置textOverflow属性为TextOverflow.Ellipsis，空间不足时截断文本，显示省略号。
 
 实现案例请参考[实现热搜榜](./arkts-common-components-text-display.md#实现热搜榜)，该示例中，文字“1”、“爆”就是“我是热搜词条”的两个标签。这种实现方式写法简便，适合单行文本添加标签的场景。
 
@@ -242,13 +242,13 @@ ArkTS-Sta示例：
 
 实现步骤：
 
-1.将标签和长文本放在Stack中。
+1. 将标签和长文本放在Stack中。
 
-2.在组件显示之前的回调[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
+2. 在组件显示之前的回调[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中，使用[measureTextSize](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#measuretextsize12)计算前标签的宽度，作为中间多行文本的首行缩进距离。
 
-3.在组件显示之前的回调aboutToAppear中，通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
+3. 在组件显示之前的回调aboutToAppear中，通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)计算中间多行文本最后一行的宽度、除最后一行文本之外的高度，作为后标签的偏移量offset。
 
-4.设置后标签相对于Stack左上角的偏移量。
+4. 设置后标签相对于Stack左上角的偏移量。
 
 ArkTS-Dyn示例：
 
@@ -766,14 +766,14 @@ ArkTS-Sta示例：
 
 ArkTS-Dyn示例：
 
-  <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
+  <!-- @[Text_Long_Two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTwo.ets) -->
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   
   @Entry
   @Component
-  struct TextLongTow {
+  struct TextLongTwo {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
@@ -916,26 +916,31 @@ ArkTS-Sta示例：
 
 想要使长按手势对文本不生效，可以设置触发时间小于系统菜单触发时间（500ms）的自定义长按手势。
 
-```ts
-// xxx.ets
+<!-- @[How_To_Disable_Text_Long_Press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToDisableTextLongPress.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct TextExample8 {
+export struct HowToDisableTextLongPressExample {
   build() {
-    Column() {
-      Text("TextTextTextText")
-        .copyOption(CopyOptions.InApp)
-        .gesture(LongPressGesture({ repeat: false, duration: 400 })
-          .onAction(() => {
-          }))
-        .margin({
-          top: 100,
-          bottom: 100,
-          left: 100,
-          right: 100
-        })
+    NavDestination() {
+      Column() {
+        Text('TextTextTextText')
+          .copyOption(CopyOptions.InApp)
+          .gesture(LongPressGesture({ repeat: false, duration: 400 })
+            .onAction(() => {
+            }))
+          .margin({
+            top: 100,
+            bottom: 100,
+            left: 100,
+            right: 100
+          })
+      }
+      .height('100%')
     }
-    .height('100%')
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.How_To_Disable_Text_Long_Press'))
   }
 }
 ```

@@ -1,4 +1,4 @@
-# @ohos.enterprise.securityManager（安全管理）
+# @ohos.enterprise.securityManager (安全管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -332,13 +332,15 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 设置设备锁屏口令策略。策略设置后，当用户设置锁屏口令时，如果设置的锁屏口令不符合要求，会有安全提示重新设置锁屏口令。适用于企业安全合规场景，如强制要求员工使用强密码、定期更换密码等，降低企业数据泄露风险。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -501,13 +503,15 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 
 > **说明：**
 >
-> 1.该接口能力仅在设备无锁屏密码时生效。
+> 1. 该接口能力仅在设备无锁屏密码时生效。
 > 
-> 2.设备默认属于启用滑动解锁的状态。
+> 2. 设备默认属于启用滑动解锁的状态。
 >
-> 3.设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
+> 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
 > 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+>
+> 5.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -518,8 +522,6 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -623,13 +625,15 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 
 设置设备剪贴板策略。策略设置后，应用将按照设置的策略限制剪贴板的使用范围。适用于企业数据防泄露场景，如限制敏感应用（如企业邮箱、财务系统）的剪贴板使用范围，防止敏感数据被复制到非授权应用，降低数据泄露风险。企业可通过此接口控制应用的剪贴板使用权限，防止敏感数据通过剪贴板泄露到未授权应用，增强企业数据安全防护能力。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -790,13 +794,15 @@ setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy
 
 设置指定用户下指定应用的设备剪贴板策略。策略设置后，指定应用的剪贴板将按照策略限制使用范围。企业可为不同用户的不同应用配置差异化的剪贴板使用权限，实现精细化的数据访问控制，满足多用户多应用场景下的安全管控需求。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -961,17 +967,17 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
 > **说明：**
 >
-> 1.本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+> 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 >
 > 2.水印图片会以平铺方式重复覆盖整个应用界面。
+>
+> 3.在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占), 同一个用户下的同一个应用的水印独占。不同用户、不同应用的水印[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1075,13 +1081,15 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 
 设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** 同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1213,6 +1221,10 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 
   强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -1220,8 +1232,6 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 
@@ -1390,13 +1400,15 @@ installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, f
 
 规格约束：<br>1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；<br>2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；<br>3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1521,9 +1533,11 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 
 > **说明：**
 >
-> 1.屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
+> 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
 > 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+>
+> 3.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -1532,8 +1546,6 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1641,11 +1653,13 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 
 > **说明：**
 >
-> 1.只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
+> 1. 只能禁用[权限APL等级](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)为normal或system_basic的权限，否则返回错误码9201045。
 >
-> 2.单个用户下最多可以禁用200个权限。
+> 2. 单个用户下最多可以禁用200个权限。
 >
 > 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
+>
+> 4.在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **起始版本：** 26.0.0
 
@@ -1654,8 +1668,6 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** 针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1768,15 +1780,17 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 
 > **说明：**
 >
-> 1.必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
+> 1. 必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能添加应用到权限使用例外名单，否则返回错误码9201044。
 >
-> 2.应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
+> 2. 应用实际未申请指定权限时，不可将应用添加到权限使用例外名单中。例如相机权限被禁用时，A应用实际未申请相机权限，则不能添加A应用到相机权限使用例外名单中，返回错误码9200012。可以通过[bm dump](../../tools/bm-tool.md#查询应用信息命令dump)命令查询应用是否申请指定权限。
 >
-> 3.当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
+> 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
-> 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
+> 4. 所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
 > 5.系统应用和普通应用都可以添加。
+>
+> 6.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -1785,8 +1799,6 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1850,6 +1862,8 @@ removeAllowedPermissionBundle(admin: Want, permission: string, applicationInstan
 > **说明：**
 >
 > 必须先通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口禁用权限后，才能从权限使用例外名单移除应用，否则返回错误码9201044。
+>
+> 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -1858,8 +1872,6 @@ removeAllowedPermissionBundle(admin: Want, permission: string, applicationInstan
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -1982,6 +1994,8 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 > 当水印属性[properties](#watermarkproperties)行列参数的取值范围是[1, 255]内的整数。若传入小于1或大于255的值，接口会返回错误码9200012。
 >
 > 当水印属性行数和列数都为1时，居中显示单个水印图片。当水印属性行数为m，列数为n时，按m行n列的网格布局排列显示m\*n个水印图片。当水印属性行列参数过大，导致网格布局无法适应窗口大小时，水印会以窗口左上角为原点，以平铺方式重复覆盖整个应用窗口界面，水印图片超出界面右侧、下侧的部分会被裁剪（例如屏幕宽高是1260\*2720，水印图片宽高是100\*100，若设置的行数超过27，或设置的列数超过12，水印会以平铺方式重复覆盖整个应用窗口界面）。
+>
+> 在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -1990,8 +2004,6 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，同一个用户下的同一个应用的水印独占。不同用户、不同应用的水印[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -2153,6 +2165,115 @@ try {
 }
 ```
 
+
+## securityManager.setDeviceSecurityLevelPolicy
+
+setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
+
+设置设备安全级别策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全级别。
+
+> **说明：**
+>
+> 1. 设备安全级别是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
+>
+> 2. DSL0：出厂默认安全，设备保持出厂时的默认安全配置，未对系统安全能力做降级，安全性最高。
+>
+> 3. DSL1：降低安全性，在DSL0的基础上适度放宽部分系统安全管控，安全性低于DSL0。
+>
+> 4. DSL2：宽松安全性，在DSL1的基础上进一步放宽系统安全管控，安全性最低。
+>
+> 5. 本接口用于设置用户可选择的设备安全级别范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全级别策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+    securityManager.setDeviceSecurityLevelPolicy(securityManager.DeviceSecurityLevelPolicy.ALLOW_BALANCED);
+    console.info('setDeviceSecurityLevelPolicy success');
+} catch (err) {
+    console.error('setDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
+## securityManager.getDeviceSecurityLevelPolicy
+
+getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
+
+获取设备安全级别策略。
+
+> **说明：**
+>
+> 1. 本接口返回的设备安全级别策略为用户可选择的设备安全级别范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
+>
+> 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全级别策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 9200001 | The application is not an administrator application of the device. |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+try {
+    let policy = securityManager.getDeviceSecurityLevelPolicy();
+    console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
+} catch (err) {
+    console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
 ## CertBlob
 
 证书信息。
@@ -2253,3 +2374,19 @@ try {
 | ----------- | -------- | ------------------------------- |
 | SCRYPT_HKDF_AES | 0  | SCRYPT-HKDF-AES组合加密算法。 |
 | SCRYPT_HKDF_SM4 | 1  | SCRYPT-HKDF-SM4组合加密算法。 |
+
+## DeviceSecurityLevelPolicy
+
+设备安全级别策略枚举。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DEFAULT_ENFORCED | 0 | 仅可选出厂默认安全（DSL0）。 |
+| ALLOW_BALANCED | 1 | 可选出厂默认安全（DSL0）和降低安全性（DSL1）。 |
+| ALLOW_FLEXIBLE | 2 | 可选出厂默认安全（DSL0）、降低安全性（DSL1）和宽松安全性（DSL2）。 |

@@ -62,7 +62,7 @@ class IFace {
   uid?: number = 0
 }
 statistics.on('netStatsChange', (data: IFace) => {
-  console.info('on netStatsChange' + JSON.stringify(data));
+  console.error('on netStatsChange' + JSON.stringify(data));
 });
 ```
 

@@ -1,4 +1,4 @@
-# webSocket错误码
+# WebSocket错误码
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -104,7 +104,7 @@ WebSocket 连接已经建立。
 
 **错误信息**
 
-Can't listen to the given NIC.
+Can't listen on the given NIC.
 
 **错误描述**
 
@@ -122,7 +122,7 @@ WebSocketServer服务器配置文件中的IP地址无效。
 
 **错误信息**
 
-Can't listen to the given Port.
+Can't listen on the given Port.
 
 **错误描述**
 
@@ -135,6 +135,24 @@ WebSocketServer服务器配置文件中的端口号无效。
 **处理步骤**
 
 检查端口号的有效性。
+
+## 2302006 WebSocketServer连接不存在
+ 
+**错误信息**
+ 
+websocket connection does not exist.
+ 
+**错误描述**
+ 
+WebSocketServer连接不存在。
+ 
+**可能原因**
+ 
+被操作（关闭连接或发送消息）的WebSocketServer连接已被断开或不存在。
+ 
+**处理步骤**
+ 
+检查该连接是否仍然有效，必要时重新建立连接后再操作。
 
 ## 2302007 WebsocketServer当前监听的端口已被占用
 

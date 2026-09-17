@@ -145,7 +145,7 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
              envEntity.indirectDiffuseFactor.w = 1;
              resolve(envEntity);
            }).catch((err: string) => {
-              console.error('Environment create failed: ' + err + '.');
+             console.error('Environment create failed: ' + err + '.');
              reject(err);
            });
          }).catch((err: string) => {
@@ -204,8 +204,8 @@ ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
    ``` TypeScript
    Button('Add to Environment')
      // ...
-      .onClick(async (): Promise<void> => {
-        console.info('Start to add environment to scene');
+     .onClick(async (): Promise<void> => {
+       console.info('Start to add environment to scene');
    
        if (!this.scene || !this.cam) {
          return;

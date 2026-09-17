@@ -385,7 +385,7 @@ enum anonymous6
 **描述：**
 
 
-定义[焦点轴事件](./arkui-ts/ts-universal-events-focus_axis.md)的轴类型。
+定义[焦点轴事件](./arkui-ts/ts-universal-events-focus-axis.md)的轴类型。
 
 **起始版本：** 15
 

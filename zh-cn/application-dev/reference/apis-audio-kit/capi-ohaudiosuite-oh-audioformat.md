@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AudioFormat
+typedef struct OH_AudioFormat {...} OH_AudioFormat
 ```
 
 ## 概述
