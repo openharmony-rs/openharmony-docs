@@ -96,7 +96,7 @@
     };
     ```
 
-4. 启动星闪广播，返回advertisingId表示本次启动的广播ID。其中advertisingParams为第3步构造的广播参数。
+4. 启动星闪广播，返回advertisingId表示本次广播的ID。其中advertisingParams为第3步构造的广播参数。
 
     <!-- @[advertising_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     

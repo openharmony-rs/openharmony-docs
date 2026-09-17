@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-合作设备集合是由多个成员设备协同提供特定服务的整体，例如一副星闪耳机包含左右两个耳机单元。当配对的外设属于某个合作设备集合时，通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)接口仅能获取该集合中首个配对的成员设备，无法直接获取其他成员设备信息。作为集合使用者，可通过主动查询或订阅通知的方式，获取该合作设备集合内所有成员设备的完整信息。
+合作设备集合（Coordinated Devices Set Management，CDSM）是由多个成员设备协同提供特定服务的整体，例如一副星闪耳机包含左右两个耳机单元。当配对的外设属于某个合作设备集合时，通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)接口仅能获取该集合中首个配对的成员设备，无法直接获取其他成员设备信息。作为集合使用者，可通过主动查询或订阅通知的方式，获取该合作设备集合内所有成员设备的完整信息。
 
 开发前需按[开发准备](nearlink-preparations-guide.md)完成权限声明与运行时申请，并确保设备已开启星闪（参见[开发准备 > 查询星闪开关状态](nearlink-preparations-guide.md#查询星闪开关状态)），且已配对设备属于某个合作设备集合，已通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取集合中成员设备的地址。
 
@@ -35,7 +35,7 @@
     import { cdsm } from '@kit.ConnectivityKit';
     ```
 
-2. 定义合作设备集合客户端（CDSM客户端）变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取的设备地址，且该设备是合作设备集合的成员设备。
+2. 定义CDSM客户端变量与设备地址变量，供后续步骤使用。其中deviceAddress是通过[getPairedDevices()](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managergetpaireddevices)获取的设备地址，且该设备是合作设备集合的成员设备。
 
     <!-- @[cdsm_declare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/CdsmPage.ets) -->
     
