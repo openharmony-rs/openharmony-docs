@@ -6,17 +6,17 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=520f9a32cdb2e9a005e54fc92b1c491413781b64 translatedAt=2026-09-15T12:56:39.894Z pushedAt=2026-09-17T06:33:38.068Z -->
+<!-- md-trans-meta sourceCommit=520f9a32cdb2e9a005e54fc92b1c491413781b64 translatedAt=2026-09-15T12:56:39.894Z pushedAt=2026-09-17T10:27:56.944Z -->
 
 The **BackgroundTaskManager** module provides APIs to manage background tasks.
 
-If there is a service that needs to continue executing or be executed later when the application or service module is running in the background (not visible to users), the application or service module can request a transient task to delay the suspension or a continuous task to avoid the suspension based on the service type.
+If a service needs to be continued when the application or service module is running in the background (not visible to users), the application or service module can request a transient task to delay the suspension or a continuous task to prevent the suspension.
 
-If an application has a task that cannot be interrupted when the application is switched to the background and can be completed within a short period of time, the application can request a transient task. For example, if the user exists the application before the cleanup is completed, the application can request a transient task to complete the cleanup.
+If an application has a task that needs to be continued when the application is switched to the background and can be completed within a short period of time, the application can request a transient task. For example, if a user chooses to clear junk files in the Files application and exits the application, the application can request a transient task to complete the cleanup.
 
 If an application has a service that can be intuitively perceived by users and needs to run in the background for a long period of time (for example, music playback in the background), the application can request a continuous task.
 
-For privileged system applications, an independent efficiency resource request API is provided.
+If a privileged system application needs to use certain system resources (for example, it wants to receive common events when suspended), it can request efficiency resources.
 
 >  **NOTE**
 >
