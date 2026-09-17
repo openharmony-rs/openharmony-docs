@@ -19,8 +19,8 @@
 
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
-2. 调用[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，随机生成非对称密钥对象（KeyPair）。
-   
+2. 调用[AsyKeyGenerator.convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12-1)，传入私钥的二进制数据，生成非对称密钥对象（KeyPair）。
+
    KeyPair对象中包括公钥PubKey、私钥PriKey。
 
 3. 调用[PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded)获取KeyPair中公钥对象的二进制数据。
