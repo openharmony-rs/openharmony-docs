@@ -87,6 +87,7 @@
     - [轻图形-SVG开发指导](quick-start/application-adapter/quickstart-lite-graphics-svg.md)
     - [轻图形-动画开发指导](quick-start/application-adapter/quickstart-lite-graphics-animation.md)
     - [轻图形-线性渐变开发指导](quick-start/application-adapter/quickstart-lite-graphics-gradient.md)
+    - [轻量系统路由页面转场动效开发指导](quick-start/application-adapter/quickstart-lite-router-page-transition.md)
   - [获取源码](get-code/sourcecode-acquire.md)
 - 隐私和安全
   - [隐私保护](security/security-privacy-protection.md)
