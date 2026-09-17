@@ -124,6 +124,7 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_NEW_PASSWORD<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 11 | 新密码编辑框。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 该参数仅可在Stage模型下使用。|
 | PATTERN_NUMBER_DECIMAL<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 12 | 带小数点的数字编辑框。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 该参数仅可在Stage模型下使用。|
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 13 | 验证码编辑框。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 该参数仅可在Stage模型下使用。|
+| PATTERN_ONE_TIME_CODE_NUMBER | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 15 | 数字验证码编辑框。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0 <br/>**模型约束：** 该参数仅可在Stage模型下使用。|
 | OPTION_ASCII | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 20 | 允许输入ASCII值。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | OPTION_NONE | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 0 | 不指定编辑框输入属性。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | OPTION_AUTO_CAP_CHARACTERS | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 2 | 允许输入字符。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
