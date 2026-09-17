@@ -11,7 +11,7 @@
 - 服务端：服务的承载方，创建服务并声明其中的属性（Property），接收并响应客户端对属性的读写请求；属性值变化时，可向已开启通知的客户端推送更新。
 - 客户端：服务的使用方，扫描发现服务端设备并发起连接，连接后可获取服务端支持的服务列表，读取或写入属性，并订阅属性变化通知。
 
-服务端创建服务并声明属性后，客户端可扫描发现并连接服务端，获取服务列表、读写属性并订阅属性变化通知；交互完成后，可通过[disconnect()](../../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md#disconnect)断开连接。
+服务端创建服务并声明属性后，客户端可扫描发现并连接服务端，获取服务列表、读写属性并订阅属性变化通知，交互完成后断开连接。
 
 典型开发场景如：键盘、鼠标等外围设备作为服务端向中心设备提供输入服务，中心设备上的应用作为客户端访问外围设备的服务与属性。
 
@@ -197,6 +197,7 @@ SSAP客户端连接功能，完整的API说明以及示例代码请参考：[@oh
 | -------- | -------- |
 | createClient(address: string): Client | 创建SSAP客户端实例。 |
 | connect(): Promise&lt;void&gt; | 向服务端发起连接。使用Promise异步回调。 |
+| disconnect(): Promise&lt;void&gt; | 向服务端发起断连，断开已有连接或者终止正在建立的连接。使用Promise异步回调。 |
 | getServices(): Promise&lt;Array&lt;Service&gt;&gt; | 获取服务端支持的服务列表。使用Promise异步回调。 |
 | readProperty(property: Property): Promise&lt;Property&gt; | 读取服务端属性。使用Promise异步回调。 |
 | writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void&gt; | 写入服务端属性。使用Promise异步回调。 |
