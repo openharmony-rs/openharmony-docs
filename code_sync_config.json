@@ -327,7 +327,7 @@
 						"start_line":98
 					},
 					{
-						"end_line":179,
+						"end_line":184,
 						"name":"connectDevice",
 						"start_line":126
 					},
@@ -367,7 +367,7 @@
 						"start_line":98
 					},
 					{
-						"end_line":179,
+						"end_line":184,
 						"name":"connectDevice",
 						"start_line":126
 					},
@@ -407,7 +407,7 @@
 						"start_line":98
 					},
 					{
-						"end_line":179,
+						"end_line":184,
 						"name":"connectDevice",
 						"start_line":126
 					},
@@ -442,9 +442,9 @@
 						"start_line":98
 					},
 					{
-						"end_line":338,
+						"end_line":328,
 						"name":"interruptTransfer_getEndpoint",
-						"start_line":282
+						"start_line":267
 					},
 					{
 						"end_line":347,
@@ -452,14 +452,14 @@
 						"start_line":319
 					},
 					{
-						"end_line":304,
+						"end_line":391,
 						"name":"interruptTransfer_interruptTransfer",
-						"start_line":273
+						"start_line":358
 					},
 					{
-						"end_line":314,
+						"end_line":411,
 						"name":"interruptTransfer_release",
-						"start_line":305
+						"start_line":392
 					}
 				]
 			}
@@ -487,9 +487,9 @@
 						"start_line":98
 					},
 					{
-						"end_line":456,
+						"end_line":476,
 						"name":"isochronousTransfer_getEndpoint",
-						"start_line":400
+						"start_line":415
 					},
 					{
 						"end_line":493,
@@ -497,14 +497,14 @@
 						"start_line":450
 					},
 					{
-						"end_line":406,
+						"end_line":554,
 						"name":"isochronousTransfer_isochronousTransfer",
-						"start_line":375
+						"start_line":521
 					},
 					{
-						"end_line":416,
+						"end_line":574,
 						"name":"isochronousTransfer_release",
-						"start_line":407
+						"start_line":555
 					}
 				]
 			}
@@ -537,14 +537,14 @@
 						"start_line":72
 					},
 					{
-						"end_line":108,
+						"end_line":113,
 						"name":"serialRead",
 						"start_line":86
 					},
 					{
-						"end_line":134,
+						"end_line":144,
 						"name":"serialWrite",
-						"start_line":112
+						"start_line":117
 					},
 					{
 						"end_line":189,
@@ -582,14 +582,14 @@
 						"start_line":72
 					},
 					{
-						"end_line":154,
+						"end_line":159,
 						"name":"getSerialConfig",
-						"start_line":138
+						"start_line":148
 					},
 					{
-						"end_line":175,
+						"end_line":180,
 						"name":"setSerialConfig",
-						"start_line":158
+						"start_line":163
 					}
 				]
 			}
@@ -64516,7 +64516,7 @@
 						"start_line":105
 					},
 					{
-						"end_line":179,
+						"end_line":184,
 						"name":"connectDevice",
 						"start_line":126
 					},
