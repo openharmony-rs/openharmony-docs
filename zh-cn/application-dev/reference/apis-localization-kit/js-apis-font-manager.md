@@ -17,7 +17,7 @@
 >
 >  - 本模块首批接口从API version 26.0.1开始支持。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ## 导入模块
 
@@ -33,7 +33,7 @@ import { fontManager } from '@kit.LocalizationKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -46,7 +46,7 @@ import { fontManager } from '@kit.LocalizationKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 ### onServiceDied
 
@@ -58,7 +58,7 @@ onServiceDied(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **示例：**
 
@@ -82,10 +82,10 @@ installScopeFont(url: string, scope: FontScope): Promise&lt;void&gt;
 >
 > - 安装成功后，应用可以通过字体名称使用该字体。同一字体路径不可重复安装。
 >
-> - 支持安装的字体文件个数最大数量为200.从26.1.0版本开始，PC/2in1支持安装的字体文件最大数量为800。
+> - 支持安装的字体文件个数最大数量为200.从26.0.1版本开始，PC/2in1支持安装的字体文件最大数量为800。
 
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
@@ -142,7 +142,7 @@ uninstallScopeFont(url: string): Promise&lt;void&gt;
 
 根据字体路径卸载已安装的应用级或会话级字体。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
@@ -194,7 +194,7 @@ getFontScope(url: string): Promise&lt;FontScope&gt;
 
 查询指定路径字体的作用范围。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
@@ -249,7 +249,7 @@ onFontObserver(observer: FontClientObserver): void
 >
 > 每个应用最多可注册一个监听器，重复注册将返回错误。同一设备上最多支持5个不同应用同时注册监听器。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
@@ -299,7 +299,7 @@ offFontObserver(): void
 
 注销字体服务状态监听器。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **需要权限：** ohos.permission.UPDATE_SCOPE_FONT
 
