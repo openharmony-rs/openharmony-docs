@@ -498,9 +498,9 @@ With this permission, the application can detect information such as the user's 
 
 ## ohos.permission.kernel.USB_CAPTURE
 
-Allows an application to capture usb data packets.
+Allows an application to capture USB data packets.
 
-With this permission, the application needs user authentication before it can capture USB data packets. Otherwise, this operation is not allowed.
+With this permission, the application can capture capture USB packets only after being authenticated by the user.
 
 **Permission level**: normal
 
