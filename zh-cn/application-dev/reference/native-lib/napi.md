@@ -536,6 +536,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - 参数js_object不为Object或Function对象时，该导出接口返回napi_object_expected。
 
+- 当对同一个js_object重复调用napi_wrap时，OpenHarmony中后者会覆盖前者的包装，标准库中返回napi_invalid_arg。
+
 ### napi_unwrap
 
 **返回：**
