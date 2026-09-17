@@ -155,7 +155,7 @@ try {
 | state   | [SyncFolderState](#syncfolderstate) | 否   | 否   | 同步根的同步状态，取值为INACTIVE（未激活）或ACTIVE（激活），详见SyncFolderState。   |
 | displayNameResId   | number | 否   | 是   | 资源ID，用于映射文件管理应用列表中显示的别名。当三方云盘应用通过资源ID指定显示别名时，此字段包含对应的资源ID；未指定时默认值为undefined，表示不使用资源ID指定的别名。与customAlias均可用于设置显示别名，两者同时存在时以系统实现为准。   |
 | customAlias   | string | 否   | 是   | 在文件管理应用列表显示的自定义别名。当三方云盘应用直接指定自定义别名时，此字段包含对应的别名内容；未指定时默认值为undefined。与displayNameResId均可用于设置显示别名，两者同时存在时以系统实现为准。   |
-| isSupportPlaceHolder   | bool | 否   | 是   | 同步根是否支持占位符，true：表示同步根支持占位符，false：表示同步根不支持占位符。默认值为false
+| isSupportPlaceHolder   | bool | 否   | 是   | 同步根是否支持占位符，true：表示同步根支持占位符，false：表示同步根不支持占位符。默认值为false。<br>**起始版本**：26.1.0 <br>**模型约束**：此接口仅可在Stage模型下使用。
 ## SyncFolderState
 
 枚举，三方云盘同步根的状态。
