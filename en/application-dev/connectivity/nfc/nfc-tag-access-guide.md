@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14590d68853f69038a380c014c45493c45390d81 translatedAt=2026-09-01T02:09:37.507Z pushedAt=2026-09-01T11:29:40.671Z -->
+<!-- md-trans-meta sourceCommit=4df20884379aac255f1543b2903732709a7e9dcf translatedAt=2026-09-14T08:27:44.774Z pushedAt=2026-09-14T11:20:49.128Z -->
 
 ## Introduction
 Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read data from tags or write data to tags.<br>
@@ -441,3 +441,13 @@ want = {
         "entities": ["entity.system.home"]
     }
 ```
+
+## FAQs
+
+### What Are the Commonly Used Apps for Reading and Writing NFC Tags?
+
+NFC tag assistant and NFC tag tools.
+
+### How to Implement App Redirection Through NFC Tap?
+
+Write an NDEF record containing the redirection information of the target app to the NFC tag. After the device taps the tag, the system parses the NDEF record and redirects to the corresponding app. For the tag format and card writing method, see [NDEF Format Tag Customization](#ndef-format-tag-customization).

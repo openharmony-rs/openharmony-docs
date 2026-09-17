@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c557fc878b00a6eb2a3211f12739d2d4a9bfd804 translatedAt=2026-07-28T02:35:32.646Z pushedAt=2026-07-28T03:14:27.050Z -->
+<!-- md-trans-meta sourceCommit=f771d833faf36ca8b13c1491a42033e94d5bb3f7 translatedAt=2026-09-14T08:49:39.194Z pushedAt=2026-09-15T10:37:00.809Z -->
 
 ## When to Use
 
@@ -33,7 +33,7 @@ The following table lists the APIs for creating and deleting event listeners. Fo
 
 ### Linking Dynamic Libraries
 
-Before calling listener-related APIs, you need to link the related dynamic libraries. To link dynamic libraries, add the following configuration to the **CMakeLists.txt** file:
+Before calling the APIs for creating and deleting event listeners, you need to link the related dynamic library. To link the dynamic library, add the following configuration to the `CMakeLists.txt` file:
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -88,6 +88,7 @@ static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
 }
 ```
 
+
 - **Mouse event**
 
 <!-- @[mouse_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
@@ -131,6 +132,7 @@ static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
 }
 ```
 
+
 - **Touch event**
 
 <!-- @[touch_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
@@ -168,6 +170,7 @@ static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
     // ...
 }
 ```
+
 
 - **Axis event**
 
@@ -301,3 +304,4 @@ static napi_value RemoveScrollAxisEventMonitor(napi_env env, napi_callback_info 
     // ...
 }
 ```
+

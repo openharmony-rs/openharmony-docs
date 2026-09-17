@@ -1,16 +1,16 @@
 # Distributed AVSession Overview (for System Applications Only)
-
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4575f288d13c429dbede3c0b33d0bfd71bcb7755 translatedAt=2026-08-10T03:45:54.421Z pushedAt=2026-08-10T07:41:26.398Z -->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-14T09:49:25.956Z pushedAt=2026-09-15T13:38:06.142Z -->
 
 With distributed AVSession, OpenHarmony allows users to project locally played media to a distributed device for a better playback effect. For example, users can project audio played on a tablet to a smart speaker.
 
 After the user initiates a projection, the media information is synchronized to the distributed device in real time, and the user can control the playback (for example, previous, next, play, and pause) on the distributed device. From the perspective of the user, the playback control operation on the distributed device is the same as that on the local device.
+
 
 ## Interaction Process
 

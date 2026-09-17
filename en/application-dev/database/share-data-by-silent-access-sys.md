@@ -1,12 +1,12 @@
 # Silent Access via DatamgrService (ArkTS) (for System Applications Only)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=3e6ec40cecc1b515626e27a6d6d8ae46a6630201 translatedAt=2026-08-15T01:43:51.296Z pushedAt=2026-08-15T06:25:24.109Z -->
+<!-- md-trans-meta sourceCommit=83627f931a3d4181bdf684edadfb6dd7d2e32c12 translatedAt=2026-09-14T08:40:43.373Z pushedAt=2026-09-15T08:13:10.203Z -->
+
 
 ## When to Use
 
@@ -20,18 +20,23 @@ However, **DatamgrService** supports basic database access and data hosting only
 
 If the service processing is too complex to be encapsulated, use [DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md) to start the data provider.
 
+
 ## Working Principles
 
 The **DatamgrService** can serve as a proxy to access the following data:
 
 - Persistent data: data in the database of the data provider. It is stored in the sandbox directory of the data provider and can be shared in declaration mode by the data provider. Persistent data is configured as data tables for access.
 
+
 - Process data: process data, in the JSON or byte format, managed by **DatamgrService**. It is stored in the **DatamgrService** sandbox directory, and is automatically deleted 10 days after no subscription.
+
+
 
 | Type | Location     | Data Format       | Validity Period         | Scenario                             |
 | ----- | --------- | ----------- | ------------ | --------------------------------- |
 | Persistent data| Sandbox directory of the data provider | Database tables   | Permanent        | RDB data used for schedules and meetings.     |
 | Process data | DatamgrService sandbox directory| JSON or byte| Automatically deleted 10 days after no subscription| Time-sensitive data in simple format used for step count, weather, and heart rate monitoring.|
+
 
 **Figure 1** Silent access
 
@@ -60,16 +65,12 @@ The **DatamgrService** can serve as a proxy to access the following data:
 ## Constraints
 
 - Currently, only the RDB stores support silent access.
-
 - The system supports a maximum of 32 concurrent query operations. Excess query requests need to be processed with retry logic.
-
 - After the query is complete, the shared data result set returned should be released promptly after use. For details, see [close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
-
 - The proxy is not allowed to create a database for persistent data. To create a database, you must start the data provider.
-
 - If the data provider is an application with a normal signature, the data read/write permission must be system_basic or higher.
-
 - Calling the silent access API (**insert**, **delete**, **update**, or **query**) must comply with the traffic control mechanism: Every 30 seconds is a traffic control period. If the number of API calls in the traffic control period is greater than or equal to 3000, the API call fails in the remaining time of the traffic control period. The API can be called again in the next traffic control period. Avoid calling the API frequently in a short period of time.
+
 
 ## Available APIs
 
@@ -144,7 +145,6 @@ The following walks you through on how to share an RDB store.
      }
    ]
    ```
-
    **Table 2** Fields in my_config.json
 
    | Name | Description                                    | Mandatory  |
@@ -169,6 +169,7 @@ The following walks you through on how to share an RDB store.
    ```
 
 ### Data Consumer Application Development
+
 
 1. Import dependencies.
 

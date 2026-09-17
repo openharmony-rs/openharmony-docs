@@ -5,7 +5,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=bf2c7dec6618c889ba9f8aba11f191335ed707dc translatedAt=2026-09-01T02:11:54.594Z pushedAt=2026-09-01T11:39:51.242Z -->
+<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:33:26.697Z pushedAt=2026-09-16T03:25:28.188Z -->
 
 ## Development Tool and Configuration
 
@@ -15,7 +15,7 @@ Download and install [DevEco Studio](https://developer.huawei.com/consumer/en/do
 
 ## SDK Version Configuration
 
-The ArkTS APIs provided by the peripheral management module are applicable only when the SDK is of API version 10 or later.
+The ArkTS APIs provided by the extended peripheral management module are applicable only when the SDK is of API version 10 or later.
 
 The following table lists the SDK versions required to develop dedicated peripheral drivers or enhanced peripheral drivers based on the DDK.
 

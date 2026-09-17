@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:38:18.379Z pushedAt=2026-09-02T03:46:34.226Z -->
+<!-- md-trans-meta sourceCommit=2ef4fc705e90909eae85f03b810d01076231d3b3 translatedAt=2026-09-16T03:00:38.033Z pushedAt=2026-09-16T08:13:11.914Z -->
 
 ## Data Types
 
@@ -2554,7 +2554,7 @@ Start the running of a task queue in a JSVM and check whether there are micro ta
 
 Example:
 
-[Working with Tasks Using JSVM-API](use-jsvm-execute_tasks.md)
+[Working with Tasks Using JSVM-API](use-jsvm-execute-tasks.md)
 
 ### Background Deserialization
 

@@ -1,19 +1,15 @@
 # Building and Managing ArkGraphics 3D Scenes
-
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=6d1ae9d89bb67c5cd52bcfa31ee99566b7e7d30f translatedAt=2026-08-04T08:00:08.388Z pushedAt=2026-08-04T08:16:47.259Z -->
+<!-- md-trans-meta sourceCommit=e71c7c42a1e9c6cd7995c37c9e93faab7103ecc5 translatedAt=2026-09-14T09:34:06.893Z pushedAt=2026-09-15T13:19:29.617Z -->
 
 A 3D scene consists of three essential parts: light, camera, and model.
-
 - Light provides illumination for a 3D scene so that the models in the 3D scene become visible. Without light, the rendering result is all black.
-
 - The camera acts as a viewer of the 3D scene. In essence, 3D rendering is to observe a 3D scene from a perspective and project it to a 2D image. Without a camera, no rendering result is obtained.
-
 - A model in a 3D scene is used to describe a shape, structure, and appearance of an object, and generally has attributes such as meshes, materials, textures, and animations. Popular 3D model formats are OBJ, FBX, and glTF.
 
 After a model is loaded, it can be presented to users through the [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) rendering component of ArkUI. Component3D is responsible for rendering the ArkGraphics 3D scene onto the interface. In the custom scene mode, you can use ArkTS APIs to create and manage camera and light source nodes, thereby setting appropriate viewing angles and lighting effects. In the automatic scene mode, the framework will automatically create basic cameras and lighting based on the model. The ArkTS APIs can use NAPIs to call the capabilities implemented by C++ APIs in AGP.
@@ -21,7 +17,6 @@ After a model is loaded, it can be presented to users through the [Component3D](
 ![3D scene display process](./figures/scene.PNG)
 
 ## Model Loading and Display
-
 Models come in a multitude of formats, but currently, ArkGraphics 3D supports only the loading of glTF models. glTF represents 3D scenes. For details about glTF, see [glTF-2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html).
 
 A glTF model can contain key elements of a 3D scene, including the light, camera, and model. If a glTF model contains a camera, you can use the APIs provided by ArkGraphics 3D to load the glTF model to render the 3D scene in the camera view. If the model does not contain a camera, you can use the ArkGraphics 3D APIs to create a camera for rendering. Due to the large size, a 3D model is usually loaded in asynchronous mode. After a model is loaded, a scene object is returned, based on which you can edit the 3D scene.
@@ -75,7 +70,7 @@ The texture images referenced in a glTF model support the following formats:
 
    ``` TypeScript
    // Create a Camera.
-   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   this.cam = await rf.createCamera({ name: 'Camera' });
    // Set proper camera parameters.
    this.cam.enabled = true;
    this.cam.position.z = 5;
@@ -274,7 +269,7 @@ ArkGraphics 3D provides APIs for creating light and modifying light parameters. 
      this.scene = globalScene;
      this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
      this.rf = this.scene.getResourceFactory();
-     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+     this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
      // Initialize color value
@@ -317,11 +312,8 @@ ArkGraphics 3D provides APIs for creating light and modifying light parameters. 
    ```
 
 <!--RP1-->
-
 ## Samples
 
 The following sample is provided to help you better understand how to efficiently use models, cameras, and light:
-
 - [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
-
 <!--RP1End-->

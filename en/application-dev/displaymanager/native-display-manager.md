@@ -1,12 +1,11 @@
 # Using OH_DisplayManager to Obtain Basic Display Information and Listen for Status Changes (C/C++)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=29b93dd65f2c2bece618ae2ef74ed53bea969af2 translatedAt=2026-08-01T02:50:44.945Z pushedAt=2026-08-01T06:43:10.460Z -->
+<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:14:06.532Z pushedAt=2026-09-15T13:10:26.067Z -->
 
 ## When to Use
 
@@ -40,7 +39,6 @@ The following table lists the common APIs. For more API description, see [OH_Dis
 |OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(uint32_t listenerIndex)|Cancels the listening for folded/unfolded state changes of the display.|
 
 ## Linking the Dynamic Library in the CMake Script
-
 <!-- @[add_display_target_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt) -->
 
 ``` Text
@@ -202,6 +200,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
     }
     ```
 
+
 2. Call **OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener** to register a listener for folded/unfolded state changes of the display. Call **OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener** to cancel the listening for the folded/unfolded state changes.
 
     <!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
@@ -312,7 +311,7 @@ private callFoldableCallback(): void {
   this.promptAction.openToast({ message: 'Call register displayMode' }).catch((error: Error) => {
     console.error(`callFoldableCallback error ${JSON.stringify(error)}`);
   }).then(() => {
-    let registerIndex = displayNapi.registerFoldDisplayModeChange();
+    let registerIndex: number = displayNapi.registerFoldDisplayModeChange();
     console.info(`register foldable value is: ${registerIndex}`);
     console.info(`unregister foldable value is: ${displayNapi.unregisterFoldDisplayModeChange(registerIndex)}`);
   });
@@ -330,7 +329,7 @@ private callDealListenCallback(): void {
   this.promptAction.openToast({ message: 'Call register change' }).catch((error: Error) => {
     console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
   }).then(() => {
-    let registerIndex = displayNapi.registerDisplayChange();
+    let registerIndex: number = displayNapi.registerDisplayChange();
     console.info(`register display change value is: ${registerIndex}`);
     console.info(`unregister display change value is: ${displayNapi.unregisterDisplayChange(registerIndex)}`);
   });

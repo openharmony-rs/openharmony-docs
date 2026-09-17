@@ -1,10 +1,11 @@
 # Background Playback
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6e63a0e266900a11bfa74fe24b3b676187cc5558 translatedAt=2026-09-16T02:58:45.836Z pushedAt=2026-09-16T08:06:29.595Z -->
 
 In actual application scenarios, most audio and video applications require background playback. This topic describes how to implement long-duration background playback.
 
@@ -14,8 +15,7 @@ Before diving in, you should understand the following basic concepts to effectiv
 
 - Continuous task: Refer to [Continuous Task (ArkTS)](../../task-management/continuous-task.md).
 
-  Actions such as returning to the home screen, locking the screen, or switching applications can push an application to the background. When an application is pushed to the background and resumes activity, it may cause rapid battery drain and UI lag. To reduce battery consumption and ensure a smooth user experience, the system manages applications pushed to the background, including process suspension and termination.
-
+  Actions such as returning to the home screen, locking the screen, or switching applications can push an application to the background. When an application is pushed to the background and resumes activity, it may cause rapid battery drain and UI lag. To reduce battery consumption and ensure a smooth user experience, the system manages applications pushed to the background, including process suspension and termination.<br>
   If an application has a perceivable task that needs to run in an extended period of time in the background, it can request a continuous task to prevent itself from being suspended. Examples of continuous tasks include music playback and video playback in the background.
 
 - AVSession: Refer to [Introduction to AVSession Kit](../avsession/avsession-overview.md).
@@ -47,13 +47,10 @@ The basic steps for audio and video applications to achieve background playback 
 An application can use AudioRenderer, AVPlayer, or another third-party or self-developed player to play audio and video.
 
 - AudioRenderer: When using AudioRenderer to create an audio stream, pay attention to using the appropriate audio stream type. Different stream types have a decisive impact on volume control, audio focus management, and input/output devices. For details, see [Choosing the Right Playback Stream Type](../audio/using-right-streamusage-for-playback.md).
-
-  Additionally, you must correctly handle audio focus. The system has preset default audio focus strategies that manage all playback and recording audio streams based on the type of audio stream and the order in which they start. During application playback or recording, if another audio stream requests focus, the system will handle the focus according to the focus strategy. If the focus of this audio stream changes, the system automatically performs necessary operations (such as pausing, resuming, lowering volume, and restoring volume) and notifies the application of the change through the audio focus event (InterruptEvent). For details, see [Handling Audio Focus Changes](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).
-
+  Additionally, you must correctly handle audio focus. The system has preset default audio focus strategies that manage all playback and recording audio streams based on the type of audio stream and the order in which they start. During application playback or recording, if another audio stream requests focus, the system will handle the focus according to the focus strategy. If the focus of this audio stream changes, the system automatically performs necessary operations (such as pausing, resuming, lowering volume, and restoring volume) and notifies the application of the change through the audio focus event (InterruptEvent). For details, see [Handling Audio Focus Changes](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).<br>
   For details about the development, see [Using AudioRenderer for Audio Playback (ArkTS)](../audio/using-audiorenderer-for-playback.md).
 
 - AVPlayer: Using AVPlayer can achieve end-to-end playback of raw media resources. To achieve background playback or playback with the screen off, you need to access AVSession and request continuous tasks to prevent playback from being forcibly interrupted by the system. [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) can set the focus management strategy through the **audioInterruptMode** property, which defaults to **SHARE_MODE**.
-
   For details about the development, see [Using AVPlayer to Play Audio (ArkTS)](../media/using-avplayer-for-playback.md).
 
 ### Accessing AVSession
@@ -92,7 +89,6 @@ Before an application switches to the background, it can call [setBackgroundPlay
 ### Playback Mode Description
 
 The system supports the following playback modes:
-
 - **ENABLE_BACKGROUND_PLAY (background playback supported)**: The application continues playback after switching to the background.
 - **DISABLE_BACKGROUND_PLAY (background playback not supported)**: The application does not continue playback after switching to the background.
 

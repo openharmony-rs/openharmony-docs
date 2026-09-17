@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=670330ce7b7f0060b3f6555082d7236b79eeba8f translatedAt=2026-09-15T10:12:44.011Z pushedAt=2026-09-16T07:50:15.631Z -->
 
 ## Overview
 
@@ -56,7 +57,7 @@ Creates an **OH_Data_VBuckets** instance.
 
 | Type                                        | Description                                                        |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) | Returns a pointer to the [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) instance if the operation is successful; returns **nullptr** otherwise.<br>Use [OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy) to release the memory in time.|
+| [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) * | Pointer to the [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) instance if the operation is successful; **nullptr** otherwise.<br>After use, you must call [OH_VBuckets_Destroy](capi-oh-data-values-buckets-h.md#oh_vbuckets_destroy) to release the memory. |
 
 ### OH_VBuckets_Destroy()
 
@@ -160,3 +161,4 @@ Obtains the number of **OH_VBucket**s in an **OH_Data_VBuckets** instance.
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
 | int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+

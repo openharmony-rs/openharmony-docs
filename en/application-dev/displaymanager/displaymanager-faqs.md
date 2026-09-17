@@ -1,12 +1,11 @@
 # Display Development FAQs
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
+<!--Designer: @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=5894207a89aa0ba2ff5ba646c58fe095f9c1b27c translatedAt=2026-08-01T02:50:09.669Z pushedAt=2026-08-01T06:42:21.204Z -->
+<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:13:25.836Z pushedAt=2026-09-15T13:10:13.320Z -->
 
 <!--RP1-->
 <!--RP1End-->

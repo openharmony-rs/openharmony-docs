@@ -1,12 +1,11 @@
 # Working with Objects Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2cc827181a31e0a77238ca42eb3b41991d5fd686 translatedAt=2026-08-12T06:40:18.837Z pushedAt=2026-08-12T11:14:25.268Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:35:21.620Z pushedAt=2026-09-16T08:25:50.345Z -->
 
 ## Overview
 
@@ -17,13 +16,11 @@ Node-API provides APIs for basic object operations, including creating an object
 You may need to define and operate objects when using Node-API in development. For example, define an API with an object as an input parameter, perform operations on the object, and have a result object returned. In this process, you need to ensure that the API definition is clear and compatible with the properties and methods of the object.
 
 - API: defines the interaction protocol between components. An API includes input parameters, output result, and possible error handling. By calling APIs, components can interact and exchange data with each other without knowing the internal implementation details.
-
 - Object: a composite data type that allows values of different types in an independent entity in ArkTS. An object is a collection of properties and methods. A property is a value associated with an object, and a method is an operation that the object can perform.
 
 ## Available APIs
 
 The following table lists the APIs for operating and managing ArkTS objects.
-
 | API| Description|
 | -------- | -------- |
 | napi_get_prototype | Obtains the prototype of an ArkTS object. You can use this API to obtain the prototype object in C/C++.|
@@ -299,7 +296,6 @@ try {
 Call **napi_typeof** to obtain the ArkTS type of an ArkTS value.
 
 **NOTE**<br>**napi_typeof** can determine the following types.  
-
 |Type| 
 |-----|
 |undefined|
@@ -455,7 +451,6 @@ API declaration:
 ``` TypeScript
 export const napiInstanceOf: (date: Object, construct: Object) => boolean | undefined; // napi_instanceof
 ```
-
 ArkTS code:
 
 <!-- @[ark_napi_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) -->

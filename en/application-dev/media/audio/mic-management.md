@@ -1,12 +1,11 @@
 # Managing Microphone Mute State
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zyy0412-->
-<!--Designer: @weixin_41398971-->
+<!--Owner: @songshenke-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3fe644941755c7ef785f22b59c73ecb8389cc6db translatedAt=2026-08-06T01:51:14.377Z pushedAt=2026-08-06T08:43:50.871Z -->
+<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-09-14T09:42:38.158Z pushedAt=2026-09-15T13:36:55.629Z -->
 
 The microphone is used to record audio data. To deliver an optimal recording effect, you are advised to query the microphone state before starting recording and listen for state changes during recording.
 
@@ -67,7 +66,6 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
    ```
 
    <!--Del-->
-
 4. (For system applications only) Call [setMicMute](../../reference/apis-audio-kit/js-apis-audio-sys.md#setmicmute11) to mute or unmute the microphone. To mute the microphone, pass in **true**. To unmute the microphone, pass in **false**.
 
    ``` TypeScript
@@ -143,5 +141,4 @@ async function test(){
   await isMicrophoneMute();
 }
 ```
-
    <!--DelEnd--> 

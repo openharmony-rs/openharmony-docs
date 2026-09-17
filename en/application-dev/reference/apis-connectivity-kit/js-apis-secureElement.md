@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -42,7 +42,7 @@ Enumerates the SE service states.
 
 newSEService(type: 'serviceState', callback: Callback\<ServiceState>): SEService
 
-Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time-consuming. Therefore, this API supports only the asynchronous mode. This API uses an asynchronous callback to return the result.
+Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time-consuming. Therefore, only asynchronous APIs are provided. This API uses an asynchronous callback to return the result.
 
 The returned **SEService** instance is available only when **true** is returned by the specified callback or [isConnected](#seserviceisconnected).
 
@@ -68,7 +68,7 @@ The returned **SEService** instance is available only when **true** is returned 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------|
 | 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
@@ -85,7 +85,7 @@ function secureElementDemo() {
     // Obtain the service.
     try {
         seService = omapi.newSEService("serviceState", (state) => {
-        hilog.info(0x0000, 'testTag', 'se service state = %{public}s', JSON.stringify(state));
+            hilog.info(0x0000, 'testTag', 'se service state = %{public}s', JSON.stringify(state));
         });
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'newSEService error %{public}s', JSON.stringify(error));
@@ -99,7 +99,7 @@ function secureElementDemo() {
 
 ## omapi.createService<sup>12+</sup>
 
-createService(): Promise\<SEService>;
+createService(): Promise\<SEService>
 
 Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time-consuming. Therefore, only asynchronous APIs are provided. This API uses a promise to return the result.
 
@@ -117,7 +117,7 @@ The **SEService** object is available only when [isConnected](#seserviceisconnec
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -138,7 +138,7 @@ function secureElementDemo() {
             return;
         }
         hilog.info(0x0000, 'testTag', 'seservice state connected');
-    }).catch((error : BusinessError)=> {
+    }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
     });
 }
@@ -146,7 +146,7 @@ function secureElementDemo() {
 
 ## omapi.on('stateChanged')<sup>18+</sup>
 
-on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
+on(type: 'stateChanged', callback: Callback\<ServiceState>): void
 
 Enables listening for service status change events.
 
@@ -165,7 +165,7 @@ Call this API to register a callback after you use [omapi.newSEService](#omapine
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -192,7 +192,7 @@ Disables listening for service status change events.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -214,7 +214,7 @@ function seStateOffCb(data: omapi.ServiceState) {
 }
 
 function secureElementDemo() {
-    try{
+    try {
         omapi.createService().then((data) => {
             seService = data;
             if (seService == undefined || !seService.isConnected()) {
@@ -222,7 +222,7 @@ function secureElementDemo() {
                 return;
             }
             hilog.info(0x0000, 'testTag', 'seservice state connected');
-        }).catch((error : BusinessError)=> {
+        }).catch((error: BusinessError) => {
             hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
         });
         omapi.on('stateChanged', seStateOnCb);
@@ -231,7 +231,7 @@ function secureElementDemo() {
             hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         }
     }
-    try{
+    try {
         omapi.off('stateChanged', seStateOffCb);
     } catch (error) {
         if (error as BusinessError) {
@@ -263,7 +263,7 @@ Obtains available SE readers, which include all the SEs on the device.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -312,7 +312,7 @@ Checks whether this SE service is connected.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -334,7 +334,7 @@ function secureElementDemo() {
             return;
         }
         hilog.info(0x0000, 'testTag', 'seservice state connected');
-    }).catch((error : BusinessError)=> {
+    }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
     });
 }
@@ -352,7 +352,7 @@ Releases all SE resources allocated to this SE service. After that, [isConnected
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -393,7 +393,7 @@ Obtains the version of the Open Mobile API (OMAPI) specification used.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -438,7 +438,7 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 For details about error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -480,7 +480,7 @@ Checks whether the SE corresponding to this reader is available.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -523,7 +523,7 @@ Opens a session to connect to an SE in this reader. Multiple sessions can be ope
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -566,7 +566,7 @@ Closes all sessions opened on this reader. All channels opened by these sessions
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -626,7 +626,7 @@ Obtains the reader that provides this session.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -679,7 +679,7 @@ Obtains the Answer to Reset (ATR) of this SE. If the ATR of this SE is not avail
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -715,7 +715,7 @@ Closes the session with the SE. All channels opened by this session will be clos
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 801  | Capability not supported. |
 | 3300101  | IllegalStateError, service state exception. |
@@ -738,7 +738,7 @@ try {
 }
 ```
 
-### Session. isClosed
+### Session.isClosed
 
 isClosed(): boolean
 
@@ -756,7 +756,7 @@ Checks whether this session is closed.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -791,7 +791,7 @@ Closes all channels opened on this session.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |801 | Capability not supported.          |
 | 3300101  | IllegalStateError, service state exception. |
@@ -838,7 +838,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -864,7 +864,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openBasicChannel(aidArray).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openBasicChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -896,7 +896,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -962,7 +962,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -989,7 +989,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openBasicChannel(aidArray, p2).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openBasicChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -1022,7 +1022,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1088,7 +1088,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1114,7 +1114,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openLogicalChannel(aidArray).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -1146,7 +1146,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1212,7 +1212,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1239,7 +1239,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openLogicalChannel(aidArray, p2).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -1272,7 +1272,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1296,7 +1296,7 @@ let p2 : number = 0x00;
 // Initialize seSession before using it.
 function secureElementDemo() {
     try {
-    // Set the AID of the application selected on the channel.
+        // Set the AID of the application selected on the channel.
         seSession.openLogicalChannel(aidArray, p2, (error, data) => {
             if (error) {
                 hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
@@ -1335,7 +1335,7 @@ Obtains the session used to open this channel.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1370,7 +1370,7 @@ Closes this channel.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1403,13 +1403,13 @@ Checks whether this channel is a basic channel.
 
 | **Type**| **Description**                                                    |
 | -------- | ------------------------------------------------------------ |
-| boolean  | **true** if the channel is a basic channel; **false** otherwise.|
+| boolean  | Checks whether this channel is a basic channel. **true** if the channel is a basic channel; **false** otherwise.|
 
 **Error codes**
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1449,7 +1449,7 @@ Checks whether this channel is closed.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1489,7 +1489,7 @@ Obtains the response data including the status word of **SELECT Applet**.
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                                 |
+| ID| Error Message                                 |
 | -------- | ----------------------------------------- |
 | 801  | Capability not supported. |
 
@@ -1535,7 +1535,7 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses a promise to 
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1585,7 +1585,7 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchrono
 
 For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
@@ -1606,12 +1606,12 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
 try {
     seChannel.transmit(cmdData, (error, response) => {
-    if (error) {
-        hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
-    } else {
-        // If the chip captures an exception, an all zero value is returned for response.
-        hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
-    }
+        if (error) {
+            hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
+        } else {
+            // If the chip captures an exception, an all zero value is returned for response.
+            hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
+        }
     });
 } catch (exception) {
     hilog.error(0x0000, 'testTag', 'transmit exception %{public}s', JSON.stringify(exception));

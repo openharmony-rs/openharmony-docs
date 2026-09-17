@@ -1,12 +1,11 @@
 # Passing a Task with the Specified Priority to an ArkTS Thread from an Asynchronous Thread Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:28:58.015Z pushedAt=2026-08-12T10:47:56.678Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:20:05.757Z pushedAt=2026-09-16T08:20:13.195Z -->
 
 You can use **napi_call_threadsafe_function_with_priority** to pass a task with a specified priority and enqueuing mode to an ArkTS thread from an asynchronous thread in a thread-safe manner. Then, the task will be processed based on its priority and enqueuing mode.
 
@@ -25,7 +24,6 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 | isTail         | Whether to add the task to the end (tail) of the task queue. The value **true** means to add the task to the end of the task queue; the value **false** means to add the task to the head of the queue.|
 
 ## When to Use
-
 Pass a task to the ArkTS main thread from an asynchronous thread in a thread-safe manner. Then, the task will be processed based on its priority and enqueuing mode.
 
 ## Calling an ArkTS API Asynchronously
@@ -184,7 +182,6 @@ Pass a task to the ArkTS main thread from an asynchronous thread in a thread-saf
 - Configure compile settings.
 
   Configure the **CMakeLists.txt** file as follows:
-
   ```text
   # the minimum version of CMake.
   cmake_minimum_required(VERSION 3.5.0)
@@ -204,7 +201,6 @@ Pass a task to the ArkTS main thread from an asynchronous thread in a thread-saf
   ```
 
 - Import the header file of ArkTS.
-
   ``` TypeScript
   import testNapi from 'libentry.so';
   ```

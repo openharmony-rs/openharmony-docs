@@ -1,12 +1,11 @@
 # About This Kit
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29aa363c8c07cd0d943043ae209ad0a85fcdc3c5 translatedAt=2026-08-06T01:42:45.045Z pushedAt=2026-08-06T10:37:31.709Z -->
+<!-- md-trans-meta sourceCommit=fe6cafc35b7c2ea1e5b32d816e822fcfb388d90d translatedAt=2026-09-14T09:39:58.465Z pushedAt=2026-09-15T13:36:38.718Z -->
 
 Audio Kit provides scenario-specific audio playback and recording APIs to help you quickly build HD audio collection and immersive playback capabilities.
 
@@ -15,29 +14,21 @@ Audio Kit provides scenario-specific audio playback and recording APIs to help y
 - Low-latency playback
 
    Unified low-latency and non-low-latency audio playback APIs are provided to achieve the lowest audio output latency on various hardware devices. For example, low-latency APIs can be used to implement fast and smooth audio playback in scenarios such as gaming, prompt/alarm tones, and Karaoke.
-
 <!--Del-->
-
 - Low-power playback
 
    In long-duration audio playback scenarios such as music playing and audiobook listening, a differentiated audio buffer processing mechanism is used for both screen-on and screen-off scenes. This helps audio playback consume less power by reducing the CPU wake-up frequency.
-
 <!--DelEnd-->
-
 - Audio effect mode
 
    Applications can enable or disable the system audio effects as required to deliver the optimal audio effect output.
 
    The system provides scenario-specific audio effects, for example, audio effects for music playing, audiobook listening, and movie watching. If your application requires custom audio effects, you can disable the system audio effects.
-
 <!--Del-->
-
 - Spatial audio
 
    Spatial audio APIs are provided. Applications can play audio sources in different formats (stereo, multi-channel, and Audio Vivid), and users can get a sense of space and direction while wearing TWS earbuds for listening.
-
 <!--DelEnd-->
-
 - Audio-haptic
 
    Provides AudioHaptic APIs to implement low-delay synchronous control of audio and haptic streams. When the audio-haptic effect is enabled, users can get rhythmic auditory and haptic feedback while typing or having incoming calls.

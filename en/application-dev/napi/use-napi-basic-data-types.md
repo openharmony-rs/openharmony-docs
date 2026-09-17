@@ -1,12 +1,11 @@
 # Creating Basic Data Types Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=ce54139d1685b975f701d518f7149cf8c16360b0 translatedAt=2026-08-22T02:13:35.519Z pushedAt=2026-08-22T06:57:11.308Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:41:44.568Z pushedAt=2026-09-16T08:26:14.610Z -->
 
 ## Introduction
 
@@ -17,15 +16,12 @@ The ArkTS Number type represents a double-precision 64-bit binary IEEE 754 value
 Before using Node-API to create and obtain numbers, you need to understand the following concepts:
 
 - Number type<br>When using Node-API, you may need to convert values of number types between C and ArkTS. When converting the data, pay attention to the data range, signedness (signed or unsigned), and precision (single or double precision).
-
 - Error handling<br>You also need to use Node-API to capture and handle errors that may occur during the conversion. For example, when an integer is created, you may need to capture and handle memory allocation failures or other runtime errors.
-
 - Interaction between ArkTS and Node-API<br>During the development, you need to consider the interaction between ArkTS and Node-API, including how to pass the data of the number type and return the correct value.
 
 ## Available APIs
 
 The following table lists the APIs provided by the Node-API module for converting number types between ArkTS and C/C++.
-
 | API| Description|
 | -------- | -------- |
 | [napi_get_value_uint32](#napi_get_value_uint32) | Obtains a C uint32_t value from an ArkTS number.|

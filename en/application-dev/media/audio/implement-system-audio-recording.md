@@ -1,14 +1,13 @@
 # Implementing System Audio Recording
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=e927321177bf4cc8f913140aea3aa3b5b4a59784 translatedAt=2026-08-15T01:57:16.592Z pushedAt=2026-08-15T09:37:42.987Z -->
+<!-- md-trans-meta sourceCommit=d5c0f2d5c92d7a4890612f993e7c9ef586088914 translatedAt=2026-09-16T02:53:39.055Z pushedAt=2026-09-16T07:02:47.214Z -->
 
-Starting from API version 26.0.0, Audio Kit supports apps in recording system audio using AudioCapturer (ArkTS API) or OH_AudioCapturer (C API). This topic describes the specific development methods.
+Starting from API version 26.0.0, Audio Kit supports recording system audio using AudioCapturer (ArkTS) or OH_AudioCapturer (C/C++). This topic describes how to implement this feature.
 
 Phone, Tablet, and TV devices support the `SystemCapability.Multimedia.Audio.PlaybackCapture` system capability. For other devices, you can use [canIUse()](../../reference/common/js-apis-syscap.md#caniuse) to check whether this system capability is supported. When developing with the ArkTS API, only the Stage model is supported.
 
@@ -20,16 +19,12 @@ If you need to record the screen and system audio at the same time, see [Using A
 
 ## How to Develop
 
-The basic process of capturing internal recording audio using AudioCapturer (ArkTS API) or OH_AudioCapturer (C API) is as follows:
+The basic process for capturing system audio using AudioCapturer (ArkTS) or OH_AudioCapturer (C/C++) is as follows:
 
 1. Create an audio capturer, and configure the audio stream parameters and internal recording mode.
-
 2. Register the audio data callback to prepare for receiving the captured PCM data.
-
 3. Call the internal recording start API of the corresponding language, and confirm the start result in the asynchronous callback.
-
 4. After the start succeeds, process the internal recording PCM data through the audio data callback.
-
 5. Stop capture, cancel the listener, and release the audio capturer resources.
 
 For ArkTS development, read this topic together with the API descriptions of [AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md), [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8), and [AudioPlaybackCaptureMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioplaybackcapturemode).
@@ -44,14 +39,17 @@ If the user selects **Allow**, the asynchronous callback returns a successful st
 
 The start API is a non-blocking API. While waiting for the user to operate the dialog box and for the system to return the asynchronous callback, the app must not block the current thread through loop waiting, synchronous lock waiting, or other means. The C API start API returning `AUDIOSTREAM_SUCCESS` only indicates that the start request has been submitted successfully, and cannot be used as the final authorization result.
 
-### Development Steps and Precautions for AudioCapturer (ArkTS API)
+<!--Del-->
+
+<!--DelEnd-->
+
+### Development Steps and Notes (ArkTS)
 
 The following ArkTS example contains code snippets. Based on your actual service requirements, you can write the captured PCM data to a file, feed it to an encoder, or pass it to a custom audio processing module.
 
 1. Import the module.
 
    <!-- @[PlaybackCaptureImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
-
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -75,7 +73,6 @@ The following ArkTS example contains code snippets. Based on your actual service
    > A user authorization check is also performed when internal recording starts. On some devices, a system authorization or privacy prompt dialog is displayed, and the authorization result is returned through the `requestPlaybackCaptureStart()` callback.
 
    <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
-
    ``` TypeScript
    let audioStreamInfo: audio.AudioStreamInfo = {
      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -105,7 +102,6 @@ The following ArkTS example contains code snippets. Based on your actual service
    The callback returns PCM data. Based on your business requirements, you can write the data to a file, feed it to an encoder, or pass it to a custom audio processing module. The following example counts the number of PCM data bytes received.
 
    <!-- @[PlaybackCaptureGlobalState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
-
    ``` TypeScript
    let audioCapturer: audio.AudioCapturer | undefined = undefined;
    let isPlaybackCaptureStarted: boolean = false;
@@ -115,7 +111,6 @@ The following ArkTS example contains code snippets. Based on your actual service
    ```
 
    <!-- @[PlaybackCaptureReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
-
    ``` TypeScript
      private readDataCallback: Callback<ArrayBuffer> = (buffer: ArrayBuffer): void => {
        readBytes += buffer.byteLength;
@@ -140,7 +135,6 @@ The following ArkTS example contains code snippets. Based on your actual service
    > The internal recording capturer cannot be started through the `start()` API. After calling `requestPlaybackCaptureStart()`, the app should consider internal recording as started successfully only when `STATE_SUCCESS` is received.
 
    <!-- @[RequestPlaybackCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
-
    ``` TypeScript
    if (audioCapturer === undefined) {
      return;
@@ -173,7 +167,6 @@ The following ArkTS example contains code snippets. Based on your actual service
    After the app finishes internal recording, stop AudioCapturer and release the resources. Before releasing, cancel the `readData` listener to avoid processing callbacks after the object is released.
 
    <!-- @[ReleasePlaybackCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
-
    ``` TypeScript
    private async releasePlaybackCapture(): Promise<void> {
      if (audioCapturer === undefined) {
@@ -194,7 +187,7 @@ The following ArkTS example contains code snippets. Based on your actual service
    }
    ```
 
-### OH_AudioCapturer (C API) Development Steps and Precautions
+### Development Steps and Notes (C/C++)
 
 The following C/C++ examples are code snippets that demonstrate the complete lifecycle of creating, starting, stopping, and releasing an OH_AudioCapturer. For the basic recording process of OH_AudioCapturer, see [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
 
@@ -203,14 +196,12 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    The internal recording start API is asynchronous. After the start function returns, continue to save the `OH_AudioCapturer` instance so that failure scenarios can be handled in the start result callback, and stop and release the instance when the service ends. A mutual exclusion lock is used to protect the global capturer pointer, preventing the start result callback, repeated starts, and active stops from accessing the pointer simultaneously.
 
    <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    #include <ohaudio/native_audiocapturer.h>
    #include <ohaudio/native_audiostreambuilder.h>
    ```
 
    <!-- @[PlaybackCaptureConstants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    constexpr int32_t PLAYBACK_CAPTURE_SAMPLE_RATE = 48000;
    constexpr int32_t PLAYBACK_CAPTURE_CHANNEL_COUNT = 2;
@@ -219,7 +210,6 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    ```
 
    <!-- @[PlaybackCaptureGlobalState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    std::mutex g_playbackCaptureMutex;
    OH_AudioCapturer* g_playbackCaptureCapturer = nullptr;
@@ -232,7 +222,6 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    The audio data callback returns the internal recording PCM data. Do not perform time-consuming tasks in the callback. If internal recording fails to start or the user has not granted authorization, release the created capturer in time.
 
    <!-- @[PlaybackCaptureReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    void MyOnPlaybackCaptureReadData(
        OH_AudioCapturer* capturer,
@@ -248,7 +237,6 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    ```
 
    <!-- @[PlaybackCaptureStartCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    void MyOnPlaybackCaptureStart(
        OH_AudioCapturer* capturer,
@@ -294,7 +282,6 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    When the exclude-self mode is used alone, most audio streams that are allowed to be captured are recorded, excluding the audio played by the app itself. When it is combined with the media mode, only media audio is recorded, excluding the audio played by the app itself.
 
    <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    bool ConfigurePlaybackCaptureBuilder(OH_AudioStreamBuilder* builder)
    {
@@ -399,7 +386,6 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
    After the service ends, call [OH_AudioCapturer_Stop()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_stop) to stop capture, and call [OH_AudioCapturer_Release()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_release) to release resources.
 
    <!-- @[StopPlaybackCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ``` C++
    napi_value StopPlaybackCapture(napi_env env, napi_callback_info info)
    {
@@ -434,7 +420,4 @@ The following C/C++ examples are code snippets that demonstrate the complete lif
 The playback end can control whether other apps are allowed to record by configuring the privacy attribute of its own audio stream. When the system establishes an internal recording capture link, it filters out playback streams marked as privacy-protected, so call content, account information, or other private content is not captured by internal recording. This configuration is a playback-end capability and does not require additional processing by the internal recording app.
 
 - When developing with ArkTS APIs, the playback end can use `privacyType` in [AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8) to control whether the playback stream is allowed to be recorded by other apps.
-
 - When developing with C APIs, the playback end can use [OH_AudioStreamBuilder_SetRendererPrivacy()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererprivacy) to control whether the playback stream is allowed to be recorded by other apps.
-
-<!--no_check-->

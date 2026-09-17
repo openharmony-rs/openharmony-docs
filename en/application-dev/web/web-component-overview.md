@@ -1,17 +1,15 @@
 # About This Kit
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=214dbbb9f70f3bd6331e1162daebb110a88ce31d translatedAt=2026-08-14T03:44:05.235Z pushedAt=2026-08-14T07:22:32.974Z -->
+<!-- md-trans-meta sourceCommit=ad5469fbcda822087d5c238527a41ea4012361c4 translatedAt=2026-09-16T03:51:15.085Z pushedAt=2026-09-16T08:44:41.280Z -->
 
 ## When to Use
 
 ArkWeb provides **Web** components to display web page content in apps. You can use the components in the following scenarios:
-
 - Web page integration: Apps can use **Web** components to embed web page content to reduce development costs and improve development and O&M efficiency.
 
 - Web browsing: Browser apps can use **Web** components to open third-party web pages, browse web pages in traceless mode, and set advertisement blocking.
@@ -52,7 +50,7 @@ To access online web pages through the **Web** component, you must add the netwo
 
 ## Constraints
 
-- You can obtain the support for W3C standards based on the ArkWeb kernel version at related websites. For example, https://developer.mozilla.org/en-US/ and https://webassembly.org/features/.
+- You can obtain the support for W3C standards based on the ArkWeb kernel version at related websites. For example, `https://developer.mozilla.org/en-US/` and `https://webassembly.org/features/`.
 
 - Web kernel version: ArkWeb is developed based on the Google Chromium kernel. The following table lists the mapping between the system version and the Chromium version.
 
@@ -63,11 +61,9 @@ To access online web pages through the **Web** component, you must add the netwo
   | OpenHarmony 6.0 | M132 (default, recommended; see [M114->M132 Migration Guide](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md))<br>M114 (optional; if your app needs to switch to this kernel, see [M114 Kernel Adaptation Guide on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)) |
   | OpenHarmony 6.1 | M132 |
   | OpenHarmony 7.0 | M144 (default, recommended; see [M132->M144 Migration Guide](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md))<br>M132 (optional; if your app needs to switch to this kernel, see [M132 Kernel Adaptation Guide on OpenHarmony 7.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)) |
-
 <!--RP3--><!--RP3End-->
 
 <!--RP4--><!--RP4End-->
-
 ## Samples
 
 The following samples are provided to help you better understand how to develop **Web** components:

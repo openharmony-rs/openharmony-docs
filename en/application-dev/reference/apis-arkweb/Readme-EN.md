@@ -1,10 +1,11 @@
 # ArkWeb API Reference
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-09T03:05:46.955Z pushedAt=2026-09-09T04:24:25.491Z -->
 
 - ArkTS API<!--arkweb-arkts-->
   - @ohos.web.webview (Webview)<!--js-apis-webview-->
@@ -24,6 +25,9 @@
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
     - [Class (SecurityParams)](arkts-apis-webview-SecurityParams.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
+    - [AIPageCommand](arkts-apis-webview-AIPageCommand.md)
+    - [AIPageInteraction](arkts-apis-webview-AIPageInteraction.md)
+    - [AIPageResult](arkts-apis-webview-AIPageResult.md)
     - [Class (WebCookieManager)](arkts-apis-webview-WebCookieManager.md)
     - [Class (WebDataBase)](arkts-apis-webview-WebDataBase.md)
     - [Class (WebDownloadDelegate)](arkts-apis-webview-WebDownloadDelegate.md)
@@ -38,7 +42,6 @@
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
     - [Class (UserAgentBrandVersion)](arkts-apis-webview-UserAgentBrandVersion.md)
     - [Class (UserAgentMetadata)](arkts-apis-webview-UserAgentMetadata.md)
-    - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)
     - [Interface (NativeMediaPlayerHandler)](arkts-apis-webview-NativeMediaPlayerHandler.md)
@@ -47,9 +50,9 @@
     - [Enums](arkts-apis-webview-e.md)
     - [Types](arkts-apis-webview-t.md)
   - [@ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)](arkts-apis-netErrorList.md)
-  - [@ohos.web.webNativeMessagingExtensionAbility](arkts-apis-web-webNativeMessagingExtensionAbility.md)
-  - [@ohos.web.webNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md)
-  - [@ohos.web.webNativeMessagingExtensionManager](arkts-apis-web-webNativeMessagingExtensionManager.md)
+  - [@ohos.web.WebNativeMessagingExtensionAbility (Web Native Messaging Extension Ability)](arkts-apis-web-webNativeMessagingExtensionAbility.md)
+  - [@ohos.web.WebNativeMessagingExtensionContext (Web Native Messaging Extension Context)](arkts-apis-web-webNativeMessagingExtensionContext.md)
+  - [@ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)](arkts-apis-web-webNativeMessagingExtensionManager.md)
 - ArkTS Components<!--arkweb-comp-->
   - Web<!--ts-basic-components-web-->
     - [Components](arkts-basic-components-web.md)
@@ -69,6 +72,7 @@
     - [Class (PermissionRequest)](arkts-basic-components-web-PermissionRequest.md)
     - [Class (ScreenCaptureHandler)](arkts-basic-components-web-ScreenCaptureHandler.md)
     - [Class (SslErrorHandler)](arkts-basic-components-web-SslErrorHandler.md)
+    - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Class (WebContextMenuParam)](arkts-basic-components-web-WebContextMenuParam.md)
     - [Class (WebContextMenuResult)](arkts-basic-components-web-WebContextMenuResult.md)
     - [Class (WebCookie)](arkts-basic-components-web-WebCookie.md)

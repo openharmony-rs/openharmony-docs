@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=107fe5c0a216b877df989f6c85557a4bab9140bc translatedAt=2026-09-15T10:08:29.794Z pushedAt=2026-09-16T07:50:15.627Z -->
 
 ## Overview
 
@@ -62,7 +63,7 @@ Obtains the length of a floating-point array in the specified column of the curr
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_STEP_RESULT_CLOSED** indicates the result set is closed.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int  | Result code.<br>Returns **RDB_OK** if the operation is successful.<br>Returns **RDB_E_ERROR** if a common database error occurs.<br>Returns **RDB_E_INVALID_ARGS** if the parameter is invalid.<br>Returns **RDB_E_SQLITE_CORRUPT** if the database is corrupted.<br>Returns **RDB_E_STEP_RESULT_CLOSED** if the queried result set is closed.<br>Returns **RDB_E_ALREADY_CLOSED** if the database is already closed.<br>Returns **RDB_E_SQLITE_PERM** if an SQLite error occurs: access permission denied.<br>Returns **RDB_E_SQLITE_BUSY** if an SQLite error occurs: the database file is locked.<br>Returns **RDB_E_SQLITE_LOCKED** if an SQLite error occurs: a table in the database is locked.<br>Returns **RDB_E_SQLITE_NOMEM** if an SQLite error occurs: the database is out of memory.<br>Returns **RDB_E_SQLITE_IOERR** if an SQLite error occurs: a disk I/O error occurs.<br>Returns **RDB_E_SQLITE_TOO_BIG** if an SQLite error occurs: the TEXT or BLOB exceeds the size limit.<br>Returns **RDB_E_SQLITE_MISMATCH** if an SQLite error occurs: the data type does not match. |
 
 ### OH_Cursor_GetFloatVector()
 
@@ -91,4 +92,7 @@ Obtains the value in the specified column of the current row in the form of a fl
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns an execution result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_STEP_RESULT_CLOSED** indicates the result set is closed.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int  | Result code.<br>Returns **RDB_OK** if the operation is successful.<br>Returns **RDB_E_ERROR** if a common database error occurs.<br>Returns **RDB_E_INVALID_ARGS** if the parameter is invalid.<br>Returns **RDB_E_SQLITE_CORRUPT** if the database is corrupted.<br>Returns **RDB_E_STEP_RESULT_CLOSED** if the queried result set is closed.<br>Returns **RDB_E_ALREADY_CLOSED** if the database is already closed.<br>Returns **RDB_E_SQLITE_PERM** if an SQLite error occurs: access permission denied.<br>Returns **RDB_E_SQLITE_BUSY** if an SQLite error occurs: the database file is locked.<br>Returns **RDB_E_SQLITE_LOCKED** if an SQLite error occurs: a table in the database is locked.<br>Returns **RDB_E_SQLITE_NOMEM** if an SQLite error occurs: the database is out of memory.<br>Returns **RDB_E_SQLITE_IOERR** if an SQLite error occurs: a disk I/O error occurs.<br>Returns **RDB_E_SQLITE_TOO_BIG** if an SQLite error occurs: the TEXT or BLOB exceeds the size limit.<br>Returns **RDB_E_SQLITE_MISMATCH** if an SQLite error occurs: the data type does not match. |
+
+
+

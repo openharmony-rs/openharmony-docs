@@ -1,10 +1,11 @@
 # oh_preferences_err_code.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=46486cda4babacde48f0ca5226e7dc9df57d7cc8 translatedAt=2026-09-15T10:17:43.134Z pushedAt=2026-09-16T07:50:15.636Z -->
 
 ## Overview
 
@@ -53,3 +54,4 @@ Enumerates the error codes.
 | PREFERENCES_ERROR_MALLOC = 15500012               | Memory allocation fails.            |
 | PREFERENCES_ERROR_KEY_NOT_FOUND = 15500013        | The key does not exist.               |
 | PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT = 15500019 | Failed to obtain the data change subscription service.|
+

@@ -1,19 +1,22 @@
-# API References<!--api-reference-->
+# API Reference<!--api-reference-->
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @RayShih-->
 <!--Designer: @RayShih-->
 <!--Tester: @RayShih-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=d5083c2f8ca4fec00ce80e896ba7f7b16698d9ae translatedAt=2026-09-09T03:06:30.509Z pushedAt=2026-09-09T04:26:30.952Z -->
+
 - API Reference Overview<!--ref-overview-api-->
   - [Development Description](development-intro-api.md)
+  - [SystemCapability Usage Guide](syscap.md)
   - [SystemCapability](syscap.md)
 <!--Del-->
-- SystemCapability List<!--syscap-list-->
   - [Phone](phone-syscap-list.md)
   - [Tablet](tablet-syscap-list.md)
   - [LiteWearable](litewearable-syscap-list.md)
   - [TV](tv-syscap-list.md)
+  - [Wearable](wearable-syscap-list.md)
   - [Wearable](wearable-syscap-list.md)
 <!--DelEnd-->
 - [Universal Error Codes](errorcode-universal.md)
@@ -36,6 +39,7 @@
 - [Calendar Kit API Reference](apis-calendar-kit/Readme-EN.md)
 - [Camera Kit API Reference](apis-camera-kit/Readme-EN.md)
 - [Connectivity Kit API Reference](apis-connectivity-kit/Readme-EN.md)
+- [Content Embed Kit API Reference](apis-content-embed-kit/Readme-EN.md)
 - [Contacts Kit API Reference](apis-contacts-kit/Readme-EN.md)
 - [Core File Kit API Reference](apis-core-file-kit/Readme-EN.md)
 - [Crypto Architecture Kit API Reference](apis-crypto-architecture-kit/Readme-EN.md)

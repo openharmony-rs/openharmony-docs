@@ -2,11 +2,11 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:40:51.771Z pushedAt=2026-08-12T11:15:00.224Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:39:43.649Z pushedAt=2026-09-16T08:26:04.254Z -->
 
 OpenHarmony APIs provide the capability of sharing strong references across ArkTS threads in the same process. Unlike **napi_ref**, **napi_sendable_ref** supports operations across ArkTS threads, but also has some restrictions.
 
@@ -272,7 +272,6 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
       }
    }
    ```
-
    ```ts
    // Worker.ets
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
@@ -321,13 +320,8 @@ You can use the [napi_create_strong_sendable_reference](../reference/native-lib/
    ```
 
 ## Precautions
-
 1. **napi_sendable_ref** can be created only for [Sendable objects](../arkts-utils/arkts-sendable.md#sendable-data-types).
-
 2. **napi_sendable_ref** can be used across ArkTS threads. When performing multithreaded operations, the caller must manage the release timing to avoid issues related to using after release.
-
 3. Within the same process, a maximum of 51200 **napi_sendable_ref** instances can coexist.
-
 4. **napi_sendable_ref** is different from other reference types. Therefore, you cannot forcibly convert **napi_ref** or **napi_strong_ref** to **napi_sendable_ref**. **napi_delete_strong_sendable_reference** and **napi_get_strong_sendable_reference_value** accept only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
-
 5. When using the **napi_create_strong_sendable_reference**, **napi_get_strong_sendable_reference_value**, and **napi_delete_strong_sendable_reference** APIs, ensure that the input **env** parameter is the ArkTS thread environment object of the current API. Otherwise, [multithreading safety issues](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) may occur.

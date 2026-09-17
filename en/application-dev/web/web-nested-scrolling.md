@@ -1,12 +1,11 @@
 # Implementing Nested Scrolling
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=7d9da61d5748443c8417f5109acd8738a9878032 translatedAt=2026-08-14T03:48:05.082Z pushedAt=2026-08-14T09:15:38.801Z -->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-14T10:17:19.948Z pushedAt=2026-09-15T13:41:41.644Z -->
 
 There may be times when you want to implement nested scrolling for the **Web** component. A typical use case is a page that contains multiple scrollable areas including the **Web** component, whose scrolling is intrinsically linked with the scroll positions in other areas. To implement nested scrolling between **Web** components and ArkUI scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you should set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute for the **Web** components after receiving the scrolling gesture events.
 
@@ -105,13 +104,9 @@ HTML file to be loaded:
 
 </html>
 ```
-
 ![web-nested-scrolling](figures/web-nested-scrolling2.gif)
-
 ## FAQs About Using nestedScroll
-
 ### In a Parent-First Scrolling Scenario, the Web Component Stops Scrolling When It Performs Inertial Scrolling (Fling) and the Parent Component Reaches the Boundary Without Fully Consuming the Scroll Velocity
-
 This issue exists in versions earlier than API 26.0.0 and has been fixed in API 26.0.0. To achieve the effect of "parent-first without interrupting Web scrolling" on earlier versions, use [Solution 2: Distributing Scrolling Offsets Through the Parent Scroll Component](#distributing-scrolling-offsets-through-the-parent-scroll-component).
 
 ## Distributing Scrolling Offsets Through the Parent Scroll Component
@@ -125,7 +120,6 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
     (2) If the web page scrolls to the bottom but the **Scroll** component has not yet scrolled to the bottom, only the **Scroll** component scrolls, and the scrolling offset is not sent to the **Web** and **List** components.
 
     (3) If the **Scroll** component scrolls to the bottom, the scrolling offset is sent to the **List** component, and the **Scroll** component does not scroll.
-
 2. Scrolling down:
 
     (1) If the **List** component does not scroll to the top, the **Scroll** component sends the scrolling offset to the **List** component, and the **Scroll** component does not scroll.
@@ -139,13 +133,10 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
 1. Disable the scrolling gestures of the **Web** component.
 
     (1) Call [setScrollable](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setscrollable12) to disable touch scrolling.
-
     ```ts
     this.webController.setScrollable(false, webview.ScrollType.EVENT);
     ```
-
     (2) Then use the [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13) method to prevent the built-in scrolling gesture of the **Web** component from being triggered.
-
     ```ts
     .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
@@ -154,13 +145,10 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
       return GestureJudgeResult.CONTINUE;
     })
     ```
-
 2. How to disable the gestures of the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component.
-
     ```ts
     .enableScrollInteraction(false)
     ```
-
 3. Check whether the **List** and **Scroll** components scroll to the boundary.
 
    (1) The component scrolls to the top boundary: **scroller.currentOffset().yOffset <= 0**;
@@ -180,25 +168,18 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
    (5) Obtain the height of the **Web** component window: webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
 
    (6) Obtain the scrolling offset of the **Web** component: webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
-
 5. Disable the scrolling feature of the **Scroll** component.
 
    Bind the **Scroll** component to the [onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9) event and return the remaining scrolling offset as **0**. Then the **Scroll** component does not scroll and does not stop the inertial scrolling animation.
-
 6. How to distribute the scrolling offset to the **List** component.
-
     ```ts
     this.listScroller.scrollBy(0, offset)
     ```
-
 7. How to distribute the scrolling offset to the **Web** component.
-
     ```ts
     this.webController.scrollBy(0, offset)
     ```
-
 8. Set [bypassVsyncCondition](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bypassvsynccondition20) of the **Web** component to **WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET** to accelerate the drawing of the first scrolling frame.
-
     ```ts
     .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
     ```
@@ -348,7 +329,5 @@ HTML file to be loaded:
 </body>
 </html>
 ```
-
 ![web-nested-scrolling](figures/web-gesture-scrolling.gif)
-
 <!--RP1--><!--RP1End-->

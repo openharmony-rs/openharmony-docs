@@ -47,8 +47,8 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 > - 设置expandSafeArea()时，不传参，走默认值处理；设置expandSafeArea([],[])时，相当于入参是空数组，此时expandSafeArea属性设置无效。
 >   
 > - 组件设置expandSafeArea生效的条件为：  
->  1.type为SafeAreaType.KEYBOARD时默认生效，表现为组件不避让键盘。<br>
->  2.设置其他type时，仅当组件边界与安全区域重合，组件才能延伸到安全区域下。例如：设备顶部状态栏高度为100，组件在屏幕中的绝对位置需要为0 <= y <= 100。
+>   1. type为SafeAreaType.KEYBOARD时默认生效，表现为组件不避让键盘。<br>
+>   2. 设置其他type时，仅当组件边界与安全区域重合，组件才能延伸到安全区域下。例如：设备顶部状态栏高度为100，组件在屏幕中的绝对位置需要为0 <= y <= 100。
 >   
 > - 组件延伸到避让区时，在避让区的事件如点击事件等可能会被系统拦截，优先给状态栏等系统组件响应。
 >  

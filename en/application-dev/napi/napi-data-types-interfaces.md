@@ -5,7 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-08T08:21:50.316Z pushedAt=2026-09-08T08:24:14.598Z -->
+<!-- md-trans-meta sourceCommit=099d2f0bb805c74cb41780582ea4e8e363b016e3 translatedAt=2026-09-16T03:02:20.841Z pushedAt=2026-09-16T08:15:40.470Z -->
 
 ## Data Types
 
@@ -481,7 +481,7 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_get_property | Obtains the requested property of an object.|
 | napi_has_property | Checks whether an object has the specified property.|
 | napi_delete_property | Deletes a property from an object.|
-| napi_has_own_property | Checks whether an object has the own property specified by **key**.|
+| napi_has_own_property | Behaves the same as **napi_has_property**. Checks whether the given object has the given property. |
 | napi_set_named_property | Sets a property with the specified name for an object.|
 | napi_get_named_property | Obtains the property with the specified name in an object.|
 | napi_has_named_property | Checks whether an object has the property with the specified name.|

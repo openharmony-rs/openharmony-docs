@@ -170,7 +170,7 @@ In certain scenarios, developers need to specify the window ratio allocation of 
 
 2. Create a Want object and specify the UIAbility to start. For details about how to obtain the UIAbilityContext, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
-3. Starting from API version 26.0.0, you can set the window allocation ratio through the splitRatio field of StartOptions. For details about splitRatio, see [StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) and [SplitRatioPreference](../reference/apis-arkui/arkts-apis-window-e.md#splitratiopreference).
+3. Starting from API version 26.0.0, you can set the window allocation ratio through the splitRatio field of StartOptions. For details about splitRatio, see [StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md) and [SplitRatioPreference](../reference/apis-arkui/arkts-apis-window-e.md).
 
 4. Call the startAbility interface to start the target UIAbility.
 

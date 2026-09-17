@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:39.518Z pushedAt=2026-06-25T06:57:31.069Z -->
+<!-- md-trans-meta sourceCommit=29ec5e2798cba0f61c9ee386abf0db610c29644e translatedAt=2026-09-14T08:46:04.353Z pushedAt=2026-09-15T10:34:50.360Z -->
 
 ## When to Use
 
@@ -35,7 +35,7 @@ When a user enters text, the input method determines whether to launch the virtu
 
 ### How to Develop
 
-1. Call the [getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9) API to obtain the list of connected input devices. Call the [getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9) API to traverse all connected devices to check whether a physical keyboard exists. If a physical keyboard exists, mark the physical keyboard as connected. This step ensures that your application detects all inserted input devices before listening for device hot-swap events.
+1. Call the [getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9) API to obtain the list of connected input devices, traverse all connected devices, and call the [getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9) API for each device to check whether a physical keyboard exists. If a physical keyboard exists, mark the physical keyboard as connected. This step ensures that your application detects all inserted input devices before listening for device hot-swap events.
 2. Call the [on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceonchange9) API to listen for device hot-swap events. If a physical keyboard is inserted, mark the physical keyboard as connected. If a physical keyboard is removed, mark the physical keyboard as disconnected.
 
 <!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
@@ -108,3 +108,4 @@ struct Index {
   }
 }
 ```
+

@@ -1,12 +1,11 @@
 # Working with Primitives Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:41:04.492Z pushedAt=2026-08-12T11:14:35.034Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:36:03.383Z pushedAt=2026-09-16T08:25:55.450Z -->
 
 ## Introduction
 
@@ -21,7 +20,6 @@ Before using Node-API to operate ArkTS objects, you need to understand the follo
 ## Available APIs
 
 The following table lists the APIs for converting data between ArkTS and C/C++ types.
-
 | API| Description|
 | -------- | -------- |
 | napi_coerce_to_bool | Forcibly converts an ArkTS value to an ArkTS Boolean value.|
@@ -288,7 +286,6 @@ let data = testNapi.getBoolean<string>('sss', '1');
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_boolean:%{public}s', value);
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_boolean:%{public}s', data);
 ```
-
 ### napi_get_value_bool
 
 Call **napi_get_value_bool** to obtain the C Boolean equivalent of an ArkTS Boolean value.

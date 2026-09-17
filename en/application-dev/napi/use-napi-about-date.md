@@ -1,12 +1,11 @@
 # Working with Date Using Node-API
-
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-08-12T06:38:44.322Z pushedAt=2026-08-12T11:10:07.033Z -->
+<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:32:25.646Z pushedAt=2026-09-16T08:21:24.450Z -->
 
 ## Overview
 
@@ -23,7 +22,6 @@ With the functions for interacting with the **Date** object, the JSVM module can
 ## Available APIs
 
 The following table lists the APIs for manipulating ArkTS date in C/C++.  
-
 | API| Description|
 | -------- | -------- |
 | napi_create_date | Creates an ArkTS **Date** object.|
