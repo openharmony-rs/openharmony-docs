@@ -8,6 +8,8 @@
 
 本模块提供管理和组织脚本信息的能力，支持应用的ArkTS脚本执行结果上报。
 
+**起始版本：** 26.0.0
+
 > **说明：**
 >
 > - 本模块仅适用于ArkTS-Dyn。
@@ -21,8 +23,6 @@
 ```ts
 import { scriptManager } from '@kit.AbilityKit';
 ```
-
-**起始版本：** 26.0.0
 
 ## ExecuteResult
 

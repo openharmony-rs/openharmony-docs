@@ -2042,7 +2042,7 @@ ArkTS-Sta: type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: int) => voi
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -2064,7 +2064,7 @@ ArkTS-Sta: type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **ArkTS-Dyn起始版本：** 23
 
