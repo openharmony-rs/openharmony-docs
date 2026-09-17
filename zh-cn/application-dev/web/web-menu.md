@@ -254,10 +254,18 @@ struct WebComponent {
 </html>
 ```
 ![onContextMenuShow](./figures/onContextMenuShow.gif)
+
+### 关闭上下文菜单
+
+`onContextMenuShow`触发后，应用需要结束本次菜单操作。上述示例在`bindPopup`的`onStateChange`中监听弹窗关闭，并调用`event.result`对应的[closeContextMenu](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#closecontextmenu9)。仅将弹窗状态设为不显示，不能替代关闭Web上下文菜单。若重复长按图片时回调只触发一次，先检查上一次菜单关闭时是否调用了该接口；若菜单已关闭，再检查网页是否拦截了`contextmenu`事件。
+
 ## 自定义菜单
 自定义菜单赋予开发者灵活控制菜单触发时机与视觉呈现的能力，使应用能够根据用户操作场景动态匹配功能入口，显著简化开发过程中的界面适配工作，同时让交互体验更贴近用户直觉。
 
 开发者可通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)接口实现自定义菜单功能。目前，已额外支持通过长按图片、链接和文本，触发自定义菜单及自定义文本菜单。
+
+图片处于选中态时，落在选区内的点击可能用于处理选区或菜单，页面的`click`事件可能不会触发。若应用需要在图片被选中时提供操作入口，可通过下方的`bindSelectionMenu`为图片配置菜单项；若需要响应页面的普通点击，应先退出选中态，再点击图片。
+
 1. 创建[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件作为菜单弹窗。
 2. 通过Web组件的[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)方法绑定MenuBuilder菜单弹窗。将[WebElementType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webelementtype13)设置为WebElementType.IMAGE，[responseType](../reference/apis-arkweb/arkts-basic-components-web-e.md#webresponsetype13)设置为WebResponseType.LONG_PRESS，表示长按图片时弹出菜单。在[options](../reference/apis-arkweb/arkts-basic-components-web-i.md#selectionmenuoptionsext13)中定义菜单显示回调onAppear、菜单消失回调onDisappear、预览窗口preview和菜单类型menuType。
 
@@ -565,6 +573,10 @@ html示例
 ![bindSelectionMenu_link](./figures/web-menu-bindselectionmenu-link.gif)
 
 ## Web菜单保存图片
+本节示例处理网页中的图片元素：通过`getLastHitTest().extra`取得图片地址，再将图片保存到图库。PDF内嵌图片不一定作为网页图片元素参与命中测试；长按PDF中的图片时，不能依赖`onContextMenuShow`或`getLastHitTest().extra`取得其地址。
+
+若应用需要保存PDF内嵌图片，应从PDF原始文件或提供PDF的服务获取图片数据，再执行保存。若应用在生成PDF前已有原图地址，可保留该地址，并参考下方示例的图片下载与保存流程；下方示例本身不能提取PDF中的图片。
+
 1. 创建MenuBuilder组件作为菜单弹窗，使用[SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)组件实现图片保存，通过bindContextMenu将MenuBuilder与Web绑定。
 2. 在onContextMenuShow中获取图片url，通过copyLocalPicToDir或copyUrlPicToDir将图片保存至应用沙箱。
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
