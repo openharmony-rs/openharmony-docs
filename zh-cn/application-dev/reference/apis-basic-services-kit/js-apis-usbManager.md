@@ -957,28 +957,22 @@ async function bulkTransfer() {
     console.error(`connect device failed`);
     return;
   }
-  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+  for (let i = 0; i < device.configs?.[0]?.interfaces?.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: int = usbManager.claimInterface(devicePipe, interfaces);
-      if (ret !== 0) {
-        console.error(`claim interface failed`);
-        continue;
-      }
+      if (ret !== 0) { continue; }
       let buffer = new Uint8Array(128);
-      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: int) => {
-        console.info(`bulkTransfer = ${ret}`);
-        let relIntfRet: int = usbManager.releaseInterface(devicePipe, interfaces);
-        console.info(`releaseInterface = ${relIntfRet}`);
-        if (i === device.configs?.[0]?.interfaces.length - 1) {
-          usbManager.closePipe(devicePipe);
-        }
+      await usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((size: int) => {
+        console.info(`bulkTransfer = ${size}`);
       }).catch((error) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
+      usbManager.releaseInterface(devicePipe, interfaces);
     }
   }
+  usbManager.closePipe(devicePipe);
 }
 ```
 
@@ -1052,7 +1046,8 @@ async function usbSubmitTransfer() {
     return value.direction === 0 && value.type === 2;
   });
   // 声明接口控制权，force参数为true表示强制获取。
-  let ret: int = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: int = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     return;
@@ -1162,7 +1157,8 @@ async function usbCancelTransfer() {
     return;
   }
   // 声明接口控制权，force参数为true表示强制获取。
-  let ret: int = usbManager.claimInterface(devicePipe, device.configs?.[0]?.interfaces?.[0], true);
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  let ret: int = usbManager.claimInterface(devicePipe, interfaces, true);
   if (ret !== 0) {
     console.error(`claim interface failed`);
     return;
@@ -1678,8 +1674,8 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 ```ts
 let param: usbManager.USBControlParams = {
   request: 0x06,
-  reqType: 0x80,
-  target: 0,
+  reqType: usbManager.USBControlRequestType.USB_REQUEST_TYPE_STANDARD,
+  target: usbManager.USBRequestTargetType.USB_REQUEST_TARGET_DEVICE,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
